@@ -4,10 +4,10 @@ useful resource to developers who are working with facebook's JS SDK and would l
 changed recently.
 
 My server runs a nightly cronjob to download the latest file from 
-http://connect.facebook.net/en_US/all.js, de-minifies it, and push the changes to github.
+http://connect.facebook.net/en_US/all.js, de-minify it, and push the changes to github.
 
 
-To run your own copy, (which I recommend) you'll need to fork the github project, edit the shell 
+To run your own copy (which I recommend), you'll need to fork the github project, edit the shell 
 script, and then set up an appropriate crontab. Mine looks like this:
 
 0 5 * * * /home/nfriedly/facebook/connect-js/./update_fb_github.sh 2>&1 > /dev/null
