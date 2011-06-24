@@ -1,4 +1,4 @@
-/*1308831533,169586027,JIT Construction: v396123,en_US*/
+/*1308905006,169909124,JIT Construction: v396710,en_US*/
 
 if (!window.FB) window.FB = {
     _apiKey: null,
@@ -7,7 +7,6 @@ if (!window.FB) window.FB = {
     _logging: true,
     _inCanvas: ((window.location.search.indexOf('fb_sig_in_iframe=1') > -1) || (window.location.search.indexOf('session=') > -1) || (window.location.search.indexOf('signed_request=') > -1) || (window.name.indexOf('iframe_canvas') > -1) || (window.name.indexOf('app_runner') > -1)),
     _https: (window.name.indexOf('_fb_https') > -1),
-    _not_https: (window.name.indexOf('iframe_canvas') == 0 && window.name.indexOf('_fb_https') < 0),
     _domain: {
         api: 'https://api.facebook.com/',
         api_read: 'https://api-read.facebook.com/',
@@ -22,24 +21,23 @@ if (!window.FB) window.FB = {
     _locale: null,
     _localeIsRtl: false,
     getDomain: function(a) {
-        var b = FB._https || (!FB._not_https && window.location.protocol == 'https:');
         switch (a) {
         case 'api':
             return FB._domain.api;
         case 'api_read':
             return FB._domain.api_read;
         case 'cdn':
-            return b ? FB._domain.https_cdn : FB._domain.cdn;
+            return (window.location.protocol == 'https:' || FB._https) ? FB._domain.https_cdn : FB._domain.cdn;
         case 'https_cdn':
             return FB._domain.https_cdn;
         case 'graph':
             return FB._domain.graph;
         case 'staticfb':
-            return b ? FB._domain.https_staticfb : FB._domain.staticfb;
+            return (document.referrer.indexOf('https:') == 0 || FB._https) ? FB._domain.https_staticfb : FB._domain.staticfb;
         case 'https_staticfb':
             return FB._domain.https_staticfb;
         case 'www':
-            return b ? FB._domain.https_www : FB._domain.www;
+            return (window.location.protocol == 'https:' || FB._https) ? FB._domain.https_www : FB._domain.www;
         case 'https_www':
             return FB._domain.https_www;
         }
