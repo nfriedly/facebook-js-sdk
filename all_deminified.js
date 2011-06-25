@@ -1,4 +1,4 @@
-/*1308905006,169909124,JIT Construction: v396710,en_US*/
+/*1308988241,169898601,JIT Construction: v397243,en_US*/
 
 if (!window.FB) window.FB = {
     _apiKey: null,
@@ -681,7 +681,7 @@ FB.provide('Helper', {
 });
 FB.provide('TemplateData', {
     _initialized: false,
-    _version: null,
+    _version: 0,
     _localStorageTimeout: 60 * 60 * 24,
     enabled: function() {
         return FB.TemplateData._initialized && FB.TemplateData.supportsLocalStorage() && FB._userStatus == 'connected' && FB.TemplateData.getResponse();
@@ -715,6 +715,7 @@ FB.provide('TemplateData', {
         return a ? a.currentUserID : 0;
     },
     init: function(a) {
+        if (!a) return;
         FB.TemplateData._initialized = true;
         FB.TemplateData._version = a;
         if (FB.TemplateData.supportsLocalStorage() && !('FB_templateDataResponse' in localStorage)) FB.TemplateData.clear();
@@ -1434,7 +1435,7 @@ FB.subclass('TemplateUI', 'Obj', function(a) {
 FB.provide('TemplateUI', {
     _timer: null,
     _cache: {},
-    _version: 1,
+    _version: 0,
     init: function() {
         FB.TemplateData.init(FB.TemplateUI._version);
         FB.TemplateUI.initCache();
@@ -1458,11 +1459,22 @@ FB.provide('TemplateUI', {
         FB.TemplateUI._timer = setInterval(FB.TemplateUI.populateCache, 2000);
     },
     supportsTemplate: function(b, a) {
-        return FB.TemplateData.enabled() && ((b === 'feed' && FB.TemplateUI.feedParamsAllowTemplate(a.params)) || b === 'apprequests');
-        a.params.display === 'touch' && a.params.in_iframe && FB.UA.mobile();
+        return FB.TemplateData.enabled() && FB.TemplateUI.paramsAllowTemplate(b, a.params) && a.params.display === 'touch' && a.params.in_iframe && FB.UA.mobile();
     },
-    feedParamsAllowTemplate: function(a) {
-        return !a.to && !('attachment' in a) && !('source' in a);
+    paramsAllowTemplate: function(c, a) {
+        var b = {
+            feed: {
+                to: 1,
+                attachment: 1,
+                source: 1
+            },
+            apprequests: {
+                to: 1,
+                suggestions: 1
+            }
+        };
+        for (var d in b[c]) if (a[d]) return false;
+        return true;
     }
 });
 FB.provide('', {
