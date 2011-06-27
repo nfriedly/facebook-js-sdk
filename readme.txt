@@ -6,6 +6,8 @@ changed recently.
 My server runs a nightly cronjob to download the latest file from 
 http://connect.facebook.net/en_US/all.js, de-minify it, and push the changes to github.
 
+The script removes the timestamp from the beginning of all.js because sometimes that is all that
+had changed.
 
 To run your own copy (which I recommend), you'll need to fork the github project, edit the shell 
 script, and then set up an appropriate crontab. Mine looks like this:
