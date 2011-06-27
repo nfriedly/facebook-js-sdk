@@ -19,6 +19,6 @@ cd `dirname $0`
 /usr/bin/python jsbeautifier.py -o all_deminified.js all.js
 
 # and, lastly, send it to github
-/usr/bin/git add -u
+/usr/bin/git add *.js
 /usr/bin/git commit -m `date --rfc-3339=date`
 /usr/bin/git push origin master
