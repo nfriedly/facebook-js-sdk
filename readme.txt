@@ -9,7 +9,7 @@ http://connect.facebook.net/en_US/all.js, de-minify it, and push the changes to 
 The script removes the timestamp from the beginning of all.js because sometimes that is all that
 had changed.
 
-To run your own copy (which I recommend), you'll need to fork the github project, edit the shell 
+To run your own copy (which I recommend), you'll need to fork the github project, test the shell 
 script, and then set up an appropriate crontab. Mine looks like this:
 
 0 5 * * * /home/nfriedly/facebook/connect-js/./update_fb_github.sh 2>&1 > /dev/null
@@ -20,6 +20,9 @@ and bugs in it can be filled at http://http://bugs.developers.facebook.net/
 
 
 Credit for the idea goes to Roger Hu - http://hustoknow.blogspot.com/
+
+The shell script is copyright Nathan Friedly <http:// nfriedly.com> and released under an MIT 
+License.
 
 The JS is copyright Facebook, Inc. and, to the best of my knowledge, released under an Apache 2.0 
 License

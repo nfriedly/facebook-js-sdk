@@ -1,7 +1,7 @@
 # Facebook all.js deminifyier and updater script.
 # Tracks changes to all.js with some help
 #
-# By Nathan Friedly <nathan@nfriedly.com>
+# By Nathan Friedly - http://nfriedly.com
 #
 # This script is released under an MIT License. Accompanying files 
 # may have different licenses.
