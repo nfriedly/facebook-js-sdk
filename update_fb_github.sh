@@ -13,7 +13,7 @@ cd `dirname $0`
 
 # use sed to remove the timestamp from the beginning
 # (avoids usless commits where nothing but the timestamp changed)
-/bin/sed -i 's/\/\*[0-9]\+,[0-9]\+,JIT/\/*\[timestamp removed\],JIT/'
+/bin/sed -i 's/\/\*[0-9]\+,[0-9]\+,JIT/\/*\[timestamp removed\],JIT/' all.js
 
 # deminify the script
 /usr/bin/python jsbeautifier.py -o all_deminified.js all.js
