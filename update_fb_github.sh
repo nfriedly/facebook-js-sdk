@@ -30,7 +30,10 @@ if [[ $DIFF != "" ]]; then
 
 	# and, lastly, send it to github
 	/usr/bin/git add *.js
-	/usr/bin/git commit -m `date --rfc-3339=date`
+	
+	# commit with yesterday's date since this is typically run
+	# shortly after midnight
+	/usr/bin/git commit -m "FB changes from `date --date=yesterday +'%A, %B %-d, %Y'`"
 	/usr/bin/git push origin master
 else 
 	
