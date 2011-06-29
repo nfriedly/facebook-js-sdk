@@ -1,3 +1,5 @@
+#! /bin/bash
+
 # Facebook all.js deminifyier and updater script.
 # Tracks changes to all.js & all.css with some help
 #
@@ -23,8 +25,7 @@ JS_CHANGES=$(/usr/bin/diff --brief --ignore-matching-lines=\/\*.*\*\/  all.js al
 CSS_CHANGES=$(/usr/bin/diff --brief --ignore-matching-lines=\/\*.*\*\/  all.css all_old.css)
 
 # if anything has changed besides the timestamp
-# empty strings = no changes, and empty strings are falsy
-if [ $JS_CHANGES -o $CSS_CHANGES ]
+if [[ $JS_CHANGES != "" || $CSS_CHANGES != "" ]]
 then
 	
 	# get rid of the old file
