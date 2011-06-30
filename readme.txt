@@ -22,7 +22,7 @@ Documentation for the JavaScript SDK is at http://developers.facebook.com/docs/r
 
 Credit for the idea goes to Roger Hu - http://hustoknow.blogspot.com/
 
-The shell script and csstidy wrapper are copyright Nathan Friedly http://nfriedly.com - and released under an MIT License.
+The shell script and csstidy wrapper are copyright Nathan Friedly http://nfriedly.com and released under an MIT License.
 
 The JS is copyright Facebook, Inc. and, to the best of my knowledge, released under an Apache 2.0 License
 
