@@ -18,7 +18,7 @@ if(!isset($argv[2])){
 }
 
 // fire up css tidy
-require('csstidy-1.3/class.csstidy.php');
+require('lib/csstidy-1.3/class.csstidy.php');
 $css = new csstidy();
 
 // put all settings on "no shenanigans" mode

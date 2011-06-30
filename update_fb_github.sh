@@ -44,7 +44,7 @@ getChanges(){
 # change  to the directory where this script is located
 cd `dirname $0`
 
-
+# check for js/css changes
 JS_CHANGES=$(getChanges "js")
 
 CSS_CHANGES=$(getChanges "css")
@@ -64,7 +64,7 @@ if [[ $CSS_CHANGES ]]; then
 	
 	# deminify the file	
 	# this requires php5-cli
-	/usr/bin/php lib/csstidy_wrapper.php all.css all_deminified.css
+	/usr/bin/php csstidy_wrapper.php all.css all_deminified.css
 	
 	# add it to the staging area
 	/usr/bin/git add *.css
