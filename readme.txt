@@ -1,6 +1,6 @@
 Since https://github.com/facebook/connect-js hasn't recieved a meaningfull update in months, even though facebook has pushed new JS/CSS to production nearly every week, this project aims to provide a useful resource to developers who are working with facebook's JS SDK and would like to see what has changed recently. 
 
-My server runs a nightly cronjob to download the latest file from http://connect.facebook.net/en_US/all.js and the accompanying all.css, de-minify them, and push the changes to github.
+My server runs a nightly cronjob that downloads the latest http://connect.facebook.net/en_US/all.js and the accompanying all.css, de-minifies them, and push any changes to github.
 
 The script does not commit if only the timestamp at the top has changed.
 
@@ -10,9 +10,12 @@ To run your own copy (which I recommend), you'll need to fork the github project
 
 MAILTO="nathan@[my_site].com"
 # m h dom mon dow command
-0 5 * * * /home/nfriedly/facebook/connect-js/./update_fb_github.sh > /dev/null 
+0 5 * * * /home/nfriedly/facebook/connect-js/./update_fb_github.sh > /dev/null
 
 This setup sends me an email if there were errors, but not if everything worked successfully.
+
+The CSS Tidy wrapper requires php5-cli:
+sudo aptitude install php5-cli
 
 ---
 

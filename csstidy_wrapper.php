@@ -3,7 +3,7 @@
 /**
 * Wrapper for the PHP version of CSS Tidy to allow it to accept command line arguments. 
 * 
-* (I tried the linux version but I couldn't get the binary to work to the source to compile without errors..)
+* (I tried the linux version but I couldn't get the binary to work or the source to compile without errors..)
 * 
 * Requires php5-cli to work:
 * sudo aptitude install php5-cli
