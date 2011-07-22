@@ -1,4 +1,4 @@
-/*1310165320,169571950,JIT Construction: v402856,en_US*/
+/*1310548774,169555842,JIT Construction: v404504,en_US*/
 
 if (!window.FB) window.FB = {
     _apiKey: null,
@@ -1933,6 +1933,7 @@ FB.provide('Canvas.EarlyFlush', {
     },
     _maybeSample: function() {
         if (!FB._inCanvas || !FB._apiKey || !FB.Canvas.EarlyFlush._sampleRate) return;
+        if (window.name.indexOf('_fb_https') > -1) return;
         var a = Math.random();
         if (a > 1 / FB.Canvas.EarlyFlush._sampleRate) return;
         if (FB.Canvas.EarlyFlush._appIdsBlacklist == '*') return;
@@ -3738,11 +3739,11 @@ FB.subclass('XFBML.LoginButton', 'XFBML.ButtonElement', null, {
             return this._getLoginText();
         default:
             FB.log('Unknown status: ' + this.status);
-            return FB.Intl._tx("Login");
+            return FB.Intl._tx("Log In");
         }
     },
     _getLoginText: function() {
-        return this._attr.length == 'short' ? FB.Intl._tx("Login") : FB.Intl._tx("Login with Facebook");
+        return this._attr.length == 'short' ? FB.Intl._tx("Log In") : FB.Intl._tx("Log In with Facebook");
     },
     onClick: function() {
         if (!this._attr.registration_url) {
