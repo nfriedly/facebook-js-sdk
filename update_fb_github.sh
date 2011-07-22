@@ -27,18 +27,20 @@ getChanges(){
 	# compare the latest with the backup to see if anything besides the
 	# timestamp comment at the top changed
 	local changes=$(/usr/bin/diff --brief --ignore-matching-lines=\/\*.*\*\/  all.$1 all_old.$1)
-	
-	if [[ changes == "" ]]; then 
-		# no changes, or only the timestamp changed
-		# put back the old file
-		mv all_old.$1 all.$1
-		return 0
-	else
+	 
+	# an empty string is falsy, a string with text is truthy
+	if [[ $changes ]]; then 
 		# something else has changed
 		# get rid of the old file
 		rm all_old.$1
-		return 1
+	else
+		# no changes, or only the timestamp changed
+		# put back the old file
+		mv all_old.$1 all.$1
 	fi
+	
+	# this is the "return" value - some text if there were changes or "" otherwise
+	echo $changes
 }
 
 # change  to the directory where this script is located
