@@ -1,4 +1,4 @@
-/*1310077818,169918592,JIT Construction: v402312,en_US*/
+/*1310165320,169571950,JIT Construction: v402856,en_US*/
 
 if (!window.FB) window.FB = {
     _apiKey: null,
@@ -1682,7 +1682,7 @@ FB.provide('Auth', {
         });
     },
     _staticAuthHandler: function(a, c) {
-        if (c && c.data && c.data.status) {
+        if (c && c.data && c.data.status && c.data.status == 'connected') {
             var b = FB.Auth.setSession(c.data.session || null, c.data.status);
             a && a(b);
         } else FB.ui({
