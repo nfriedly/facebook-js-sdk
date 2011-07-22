@@ -1,4 +1,4 @@
-/*1311123181,169920104,JIT Construction: v407899,en_US*/
+/*1311291418,169548669,JIT Construction: v409162,en_US*/
 
 if (!window.FB) window.FB = {
     _apiKey: null,
@@ -498,7 +498,7 @@ FB.provide('ApiServer', {
         FB.ApiServer.oauthRequest(b, 'restserver.php', 'get', e, a);
     },
     oauthRequest: function(b, f, c, e, a) {
-        if (FB._session && FB._session.access_token && !e.access_token) e.access_token = FB._session.access_token;
+        if (FB.getAccessToken()) e.access_token = FB.getAccessToken();
         e.sdk = 'joey';
         e.pretty = 0;
         var d = a;
@@ -1332,11 +1332,19 @@ FB.provide('', {
             FB.log('"method" is a required parameter for FB.ui().');
             return null;
         }
-        if (f.method == 'permissions.request' && (f.display == 'iframe' || f.display == 'dialog')) {
-            var h = f.perms.split(',');
-            for (var e = 0; e < h.length; e++) {
-                var g = h[e].trim();
-                if (!FB.initSitevars.iframePermissions[g.trim()]) {
+        if ((f.method == 'permissions.request' || f.method == 'permissions.oauth') && (f.display == 'iframe' || f.display == 'dialog')) {
+            var h;
+            var i;
+            if (FB._oauth) {
+                h = f.scope;
+                i = h.split(/\s|,/g);
+            } else {
+                h = f.perms;
+                i = h.split(',');
+            }
+            for (var e = 0; e < i.length; e++) {
+                var g = i[e].trim();
+                if (g && !FB.initSitevars.iframePermissions[g]) {
                     f.display = 'popup';
                     break;
                 }
@@ -1345,10 +1353,12 @@ FB.provide('', {
         var a = FB.UIServer.prepareCall(f, b);
         if (!a) return null;
         var d = a.params.display;
-        if (d == 'dialog') d = 'iframe';
+        if (d === 'dialog') {
+            d = 'iframe';
+        } else if (d === 'none') d = 'hidden';
         var c = FB.UIServer[d];
         if (!c) {
-            FB.log('"display" must be one of "popup", "iframe", "touch", "async",' + ' or "hidden".');
+            FB.log('"display" must be one of "popup", ' + '"dialog", "iframe", "touch", "async", "hidden", or "none"');
             return null;
         }
         c(a);
@@ -1372,14 +1382,14 @@ FB.provide('UIServer', {
         var g = h.method.toLowerCase(),
             f = FB.copy({}, FB.UIServer.Methods[g]),
             e = FB.guid(),
-            c = (f.noHttps !== true) && (FB._https || (g !== 'auth.status'));
+            c = (f.noHttps !== true) && (FB._https || (g !== 'auth.status' && g != 'login.status'));
         FB.UIServer._forceHTTPS = c;
         FB.copy(h, {
             api_key: FB._apiKey,
             app_id: FB._apiKey,
             locale: FB._locale,
             sdk: 'joey',
-            access_token: c && FB._session && FB._session.access_token || undefined
+            access_token: c && FB.getAccessToken() || undefined
         });
         h.display = FB.UIServer.getDisplayMode(f, h);
         if (!f.url) f.url = 'dialog/' + g;
@@ -1423,7 +1433,7 @@ FB.provide('UIServer', {
         return a.length > 2000;
     },
     getDisplayMode: function(a, b) {
-        if (b.display === 'hidden') return 'hidden';
+        if (b.display === 'hidden' || b.display === 'none') return b.display;
         if (FB.Canvas.isTabIframe() && b.display !== 'popup') return 'async';
         if (FB.UA.mobile() || b.display === 'touch') return 'touch';
         if (!FB._session && b.display == 'dialog' && !a.loggedOutIframe) {
@@ -1435,7 +1445,7 @@ FB.provide('UIServer', {
     },
     getXdRelation: function(a) {
         if (a === 'popup' || a === 'touch') return 'opener';
-        if (a === 'dialog' || a === 'iframe' || a === 'hidden') return 'parent';
+        if (a === 'dialog' || a === 'iframe' || a === 'hidden' || a === 'none') return 'parent';
         if (a === 'async') return 'parent.frames[' + window.name + ']';
     },
     popup: function(b) {
@@ -1449,7 +1459,7 @@ FB.provide('UIServer', {
             e = parseInt(h + ((g - k) / 2), 10),
             j = parseInt(i + ((f - d) / 2.5), 10),
             c = ('width=' + k + ',height=' + d + ',left=' + e + ',top=' + j + ',scrollbars=1');
-        if (b.params && b.params.method == 'permissions.request') c += ',location=1,toolbar=0';
+        if (b.params && (b.params.method == 'permissions.request' || b.params.method == 'permissions.oauth')) c += ',location=1,toolbar=0';
         if (b.post) {
             FB.UIServer.setActiveNode(b, window.open('about:blank', b.id, c));
             FB.Content.submitToTarget({
@@ -1623,7 +1633,12 @@ FB.provide('', {
             return;
         }
         if (a) if (!b && FB.Auth._loadState == 'loaded') {
-            a({
+            if (FB._oauth) {
+                a({
+                    status: FB._userStatus,
+                    authResponse: FB._authResponse
+                });
+            } else a({
                 status: FB._userStatus,
                 session: FB._session
             });
@@ -1638,16 +1653,42 @@ FB.provide('', {
             };
         if (FB.UA.mobile() && window.postMessage && window.localStorage) {
             FB.Auth.staticAuthCheck(c);
+        } else if (FB._oauth) {
+            FB.ui({
+                method: 'login.status',
+                display: 'none'
+            }, c);
         } else FB.ui({
             method: 'auth.status',
             display: 'hidden'
         }, c);
     },
     getSession: function() {
+        if (FB._oauth) throw new Error('FB.getSession incompatible with OAuth2.');
         return FB._session;
     },
+    getAuthResponse: function() {
+        if (!FB._oauth) throw new Error('getAuthResponse called when OAuth2 support is ' + 'disabled.  Please fix.');
+        return FB._authResponse;
+    },
+    getAccessToken: function() {
+        if (FB._oauth) {
+            return (FB._authResponse && FB._authResponse.accessToken) || null;
+        } else return (FB._session && FB._session.access_token) || null;
+    },
+    getUserID: function() {
+        if (FB._oauth) {
+            return FB._userID;
+        } else return (FB._session && FB._session.uid) || 0;
+    },
     login: function(a, b) {
-        FB.ui(FB.copy({
+        if (FB._oauth) {
+            if (b && b.perms) throw new Error('OAuth2 specification states that \'perms\' ' + 'should now be called \'scope\'.  Please update.');
+            FB.ui(FB.copy({
+                method: 'permissions.oauth',
+                display: 'popup'
+            }, b || {}), a);
+        } else FB.ui(FB.copy({
             method: 'permissions.request',
             display: 'popup'
         }, b || {}), a);
@@ -1688,16 +1729,30 @@ FB.provide('Auth', {
             }
         });
     },
-    _staticAuthHandler: function(a, c) {
-        if (c && c.data && c.data.status && c.data.status == 'connected') {
-            var b = FB.Auth.setSession(c.data.session || null, c.data.status);
-            a && a(b);
+    _staticAuthHandler: function(b, d) {
+        if (d && d.data && d.data.status && d.data.status == 'connected') {
+            var c;
+            var f = d.data.status;
+            if (FB._oauth) {
+                var a = d.data.authResponse || null;
+                c = FB.Auth.setAuthResponse(a, f);
+            } else {
+                var e = d.data.session || null;
+                c = FB.Auth.setSession(e, f);
+            }
+            b && b(c);
+        } else if (FB._oauth) {
+            FB.ui({
+                method: 'login.status',
+                display: 'none'
+            }, b);
         } else FB.ui({
             method: 'auth.status',
             display: 'hidden'
-        }, a);
+        }, b);
     },
     setSession: function(e, g) {
+        if (FB._oauth) throw new Error('FB.Auth.setSession incompatible with OAuth2.');
         var b = !FB._session && e,
             c = FB._session && !e,
             a = FB._session && e && FB._session.uid != e.uid,
@@ -1722,6 +1777,33 @@ FB.provide('Auth', {
             FB.getLoginStatus(null, true);
         }, 1200000);
         return d;
+    },
+    setAuthResponse: function(a, g) {
+        if (!FB._oauth) throw new Error('FB.Auth.setAuthResponse only compatible with OAuth2.');
+        var d = !FB._authResponse && a,
+            e = FB._authResponse && !a,
+            c = FB._authResponse && a && FB._authResponse.userID != a.userID,
+            b = d || e || c,
+            h = g != FB._userStatus;
+        var f = {
+            authResponse: a,
+            status: g
+        };
+        FB._authResponse = a;
+        FB._userID = a && a.userID || 0;
+        FB._userStatus = g;
+        if (e || c) FB.Event.fire('auth.logout', f);
+        if (d || c) FB.Event.fire('auth.login', f);
+        if (b) FB.Event.fire('auth.authResponseChange', f);
+        if (h) FB.Event.fire('auth.statusChange', f);
+        if (FB.Auth._refreshTimer) {
+            window.clearTimeout(FB.Auth._refreshTimer);
+            delete FB.Auth._refreshTimer;
+        }
+        if (FB.Auth._loadState && a) FB.Auth._refreshTimer = window.setTimeout(function() {
+            FB.getLoginStatus(null, true);
+        }, 1200000);
+        return f;
     },
     xdHandler: function(a, b, f, c, e, d) {
         return FB.UIServer._xdNextHandler(FB.Auth.xdResponseWrapper(a, e, d), b, f, c);
@@ -1750,6 +1832,84 @@ FB.provide('Auth', {
     },
     _getSessionOrigin: function() {
         return 1;
+    },
+    xdNewHandler: function(b, c, d, a) {
+        if (!FB._oauth) throw new Error('xdNewHandler should not be invoked unless ' + 'OAuth2 is being used.');
+        return FB.UIServer._xdNextHandler(FB.Auth.xdNewResponseWrapper(b, a), c, d, true);
+    },
+    xdNewResponseWrapper: function(b, a) {
+        if (!FB._oauth) throw new Error('xdNewResponseWrapper should not be invoked unless ' + 'OAuth2 is being used.');
+        return function(d) {
+            if (d.access_token) {
+                var e = FB.Auth.parseSignedRequest(d.signed_request);
+                a = {
+                    accessToken: d.access_token,
+                    userID: e.user_id,
+                    expiresIn: parseInt(d.expires_in, 10),
+                    signedRequest: d.signed_request
+                };
+                FB.Auth.setAuthResponse(a, 'connected');
+                if (FB.Cookie.getEnabled()) {
+                    var c = (new Date()).getTime() + 1000 * a.expiresIn;
+                    FB.Cookie.setSignedRequestCookie(d.signed_request, c);
+                }
+            } else if (!FB._authResponse && a) {
+                FB.Auth.setAuthResponse(a, 'connected');
+            } else {
+                var f;
+                if (d.error && d.error === 'not_authorized') {
+                    f = 'not_authorized';
+                } else f = 'unknown';
+                FB.Auth.setAuthResponse(null, f);
+                if (FB.Cookie.getEnabled()) FB.Cookie.clearSignedRequestCookie();
+            }
+            if (d && d.fb_https && !FB._https) FB._https = true;
+            response = {
+                authResponse: FB._authResponse,
+                status: FB._userStatus
+            };
+            b && b(response);
+        };
+    },
+    getOrigin: function() {
+        if (FB.UA.nativeApp()) {
+            return 3;
+        } else if (FB._inMobileCanvas) {
+            return 2;
+        } else return 1;
+    },
+    parseSignedRequest: function(d) {
+        if (!d) return null;
+        var a = d.split('.', 2);
+        var c = a[1];
+        var b = FB.Auth.base64URLDecode(c);
+        return FB.JSON.parse(b);
+    },
+    base64URLDecode: function(j) {
+        j = j.replace(/\-/g, '+').replace(/\_/g, '/');
+        if (j.length % 4 !== 0) {
+            var m = 4 - j.length % 4;
+            for (var d = 0; d < m; d++) j = j + '=';
+        }
+        var k = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
+        var l = "";
+        var a, b, c = "";
+        var e, f, g, h = "";
+        for (var i = 0; i < j.length; i += 4) {
+            e = k.indexOf(j.charAt(i));
+            f = k.indexOf(j.charAt(i + 1));
+            g = k.indexOf(j.charAt(i + 2));
+            h = k.indexOf(j.charAt(i + 3));
+            a = (e << 2) | (f >> 4);
+            b = ((f & 15) << 4) | (g >> 2);
+            c = ((g & 3) << 6) | h;
+            l = l + String.fromCharCode(a);
+            if (g != 64) l = l + String.fromCharCode(b);
+            if (h != 64) l = l + String.fromCharCode(c);
+            a = b = c = "";
+            e = f = g = h = "";
+        }
+        return unescape(l);
     }
 });
 FB.provide('UIServer.Methods', {
@@ -1782,15 +1942,50 @@ FB.provide('UIServer.Methods', {
             return a;
         }
     },
+    'permissions.oauth': {
+        url: 'dialog/oauth',
+        size: {
+            width: 627,
+            height: 326
+        },
+        transform: function(a) {
+            if (!FB._apiKey) {
+                FB.log('FB.login() called before FB.init().');
+                return;
+            }
+            if (FB._authResponse && !a.params.scope) {
+                FB.log('FB.login() called when user is already connected.');
+                a.cb && a.cb({
+                    status: FB._userStatus,
+                    authResponse: FB._authResponse
+                });
+                return;
+            }
+            var b = a.cb,
+                c = a.id;
+            delete a.cb;
+            FB.copy(a.params, {
+                client_id: FB._apiKey,
+                redirect_uri: FB.Auth.xdNewHandler(b, c, 'opener'),
+                origin: FB.Auth.getOrigin(),
+                response_type: 'token,signed_request'
+            });
+            return a;
+        }
+    },
     'auth.logout': {
         url: 'logout.php',
         transform: function(a) {
             if (!FB._apiKey) {
                 FB.log('FB.logout() called before calling FB.init().');
-            } else if (!FB._session) {
+            } else if (FB._oauth && !FB._authResponse) {
+                FB.log('FB.logout() called without an access token.');
+            } else if (!FB._oauth && !FB._session) {
                 FB.log('FB.logout() called without a session.');
             } else {
-                a.params.next = FB.Auth.xdHandler(a.cb, a.id, 'parent', false, 'unknown');
+                if (FB._oauth) {
+                    a.params.next = FB.Auth.xdNewHandler(a.cb, a.id, 'parent');
+                } else a.params.next = FB.Auth.xdHandler(a.cb, a.id, 'parent', false, 'unknown');
                 return a;
             }
         }
@@ -1809,6 +2004,21 @@ FB.provide('UIServer.Methods', {
                 session_version: 3,
                 extern: FB._inCanvas ? 0 : 2,
                 session_origin: FB.Auth._getSessionOrigin()
+            });
+            return a;
+        }
+    },
+    'login.status': {
+        url: 'dialog/oauth',
+        transform: function(a) {
+            var b = a.cb,
+                c = a.id;
+            delete a.cb;
+            FB.copy(a.params, {
+                client_id: FB._apiKey,
+                redirect_uri: FB.Auth.xdNewHandler(b, c, 'parent'),
+                origin: FB.Auth.getOrigin(),
+                response_type: 'token,signed_request,code'
             });
             return a;
         }
@@ -1833,15 +2043,36 @@ FB.provide('Cookie', {
         }
         return b;
     },
-    setRaw: function(c, b, a) {
-        document.cookie = 'fbs_' + FB._apiKey + '="' + c + '"' + (c && b == 0 ? '' : '; expires=' + new Date(b * 1000).toGMTString()) + '; path=/' + (a ? '; domain=.' + a : '');
-        FB.Cookie._domain = a;
+    loadSignedRequest: function() {
+        var a = document.cookie.match('\\bfbsr_' + FB._apiKey + '=([^;]*)\\b');
+        if (!a) return null;
+        return a[1];
+    },
+    setSignedRequestCookie: function(b, a) {
+        if (!FB._oauth) throw new Error('FB.Cookie.setSignedRequestCookie should only be ' + 'used with OAuth2.');
+        if (!b) throw new Error('Value passed to FB.Cookie.setSignedRequestCookie ' + 'was empty.');
+        if (!FB.Cookie.getEnabled()) return;
+        FB.Cookie.setRaw('fbsr_', b, a);
+    },
+    clearSignedRequestCookie: function() {
+        if (!FB._oauth) throw new Error('FB.Cookie.setSignedRequestCookie should only be ' + 'used with OAuth2.');
+        if (!FB.Cookie.getEnabled()) return;
+        FB.Cookie.setRaw('fbsr_', '', 0);
+    },
+    setRaw: function(c, e, d, a) {
+        var b = new Date(d * 1000).toGMTString();
+        document.cookie = c + FB._apiKey + '=' + e + (e && d === 0 ? '' : '; expires=' + b) + '; path=/' + (a ? '; domain=.' + a : '');
     },
     set: function(a) {
-        a ? FB.Cookie.setRaw(FB.QS.encode(a), a.expires, a.base_domain) : FB.Cookie.clear();
+        if (!a) {
+            FB.Cookie.clear();
+            return;
+        }
+        FB.Cookie.setRaw('fbs_', '"' + FB.QS.encode(a) + '"', a.expires, a.base_domain);
+        FB.Cookie._domain = a.base_domain;
     },
     clear: function() {
-        FB.Cookie.setRaw('', 0, FB.Cookie._domain);
+        FB.Cookie.setRaw('fbs_', '', 0, FB.Cookie._domain);
     }
 });
 FB.provide('Frictionless', {
@@ -1898,7 +2129,9 @@ FB.provide('', {
             logging: true,
             status: true
         });
+        FB._userID = 0;
         FB._apiKey = a.appId || a.apiKey;
+        FB._oauth = a.oauth;
         if (!a.logging && window.location.toString().indexOf('fb_debug=1') < 0) FB._logging = false;
         FB.XD.init(a.channelUrl);
         if (FB.UA.mobile() && FB.TemplateUI && a.useCachedDialogs !== false) {
@@ -1909,8 +2142,18 @@ FB.provide('', {
         if (a.frictionlessRequests) FB.Frictionless.init();
         if (FB._apiKey) {
             FB.Cookie.setEnabled(a.cookie);
-            a.session = a.session || FB.Cookie.load();
-            FB.Auth.setSession(a.session, a.session ? 'connected' : 'unknown');
+            if (FB._oauth) {
+                if (a.authResponse) {
+                    FB.Auth.setAuthResponse(a.authResponse, 'connected');
+                } else {
+                    var c = FB.Cookie.loadSignedRequest();
+                    var b = FB.Auth.parseSignedRequest(c);
+                    FB._userID = (b && b.user_id) || 0;
+                }
+            } else {
+                a.session = a.session || FB.Cookie.load();
+                FB.Auth.setSession(a.session, a.session ? 'connected' : 'unknown');
+            }
             if (a.status) FB.getLoginStatus();
         }
         if (FB._inCanvas) FB.Canvas.init();
@@ -1920,11 +2163,11 @@ FB.provide('', {
         if (a.xfbml) window.setTimeout(function() {
             if (FB.XFBML) if (FB.initSitevars.parseXFBMLBeforeDomReady) {
                 FB.XFBML.parse();
-                var b = window.setInterval(function() {
+                var d = window.setInterval(function() {
                     FB.XFBML.parse();
                 }, 100);
                 FB.Dom.ready(function() {
-                    window.clearInterval(b);
+                    window.clearInterval(d);
                     FB.XFBML.parse();
                 });
             } else FB.Dom.ready(FB.XFBML.parse);
