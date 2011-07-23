@@ -1,4 +1,4 @@
-/*1309316231,169588090,JIT Construction: v398760,en_US*/
+/*1311152260,169902720,JIT Construction: v407899,en_US*/
 .fb_hidden
 {
 	position:absolute;
@@ -41,6 +41,7 @@
 
 .fb_dialog
 {
+	background:rgba(82,82,82,.7);
 	position:absolute;
 	top:-10000px;
 	z-index:10001;
@@ -48,18 +49,9 @@
 
 .fb_dialog_advanced
 {
-	background:rgba(82,82,82,.7);
 	padding:10px;
 	-moz-border-radius:8px;
 	-webkit-border-radius:8px;
-}
-
-.fb_dialog_advanced.fb_mobile
-{
-	background:rgba(82,82,82,.7);
-	padding:3px;
-	-moz-border-radius:2px;
-	-webkit-border-radius:2px;
 }
 
 .fb_dialog_content
@@ -83,9 +75,11 @@
 	right:7px;
 }
 
-.fb_mobile .fb_dialog_close_icon
+.fb_dialog_mobile .fb_dialog_close_icon
 {
-	top:11px;
+	top:5px;
+	left:5px;
+	right:auto;
 }
 
 .fb_dialog_close_icon:hover
@@ -191,12 +185,12 @@
 	line-height:0;
 }
 
-.fb_dialog.loading.fb_mobile .fb_dialog_iframe
+.fb_dialog.loading.fb_dialog_mobile .fb_dialog_iframe
 {
 	background:url(https://s-static.ak.facebook.com/rsrc.php/v1/zQ/r/pQebR9nCkAT.gif) no-repeat 50% 50%;
 }
 
-.fb_dialog.loading.fb_mobile iframe
+.fb_dialog.loading.fb_dialog_mobile iframe
 {
 	visibility:hidden;
 }
@@ -238,6 +232,16 @@
 #fb_dialog_loader_close
 {
 	float:right;
+}
+
+.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon
+{
+	visibility:hidden;
+}
+
+.fb_dialog.loading.fb_dialog_mobile .fb_dialog_close_icon
+{
+	visibility:visible;
 }
 
 .fb_iframe_widget
