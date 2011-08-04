@@ -1,4 +1,4 @@
-/*1312336592,169897091,JIT Construction: v415417,en_US*/
+/*1312424145,169873026,JIT Construction: v416050,en_US*/
 
 if (!window.FB) window.FB = {
     _apiKey: null,
@@ -494,7 +494,9 @@ FB.provide('ApiServer', {
         if (FB.Auth && c === 'auth_revokeauthorization') {
             var d = a;
             a = function(f) {
-                if (f === true) FB.Auth.setSession(null, 'notConnected');
+                if (f === true) if (FB._oauth) {
+                    FB.Auth.setAuthResponse(null, 'not_authorized');
+                } else FB.Auth.setSession(null, 'notConnected');
                 d && d(f);
             };
         }
@@ -4032,7 +4034,7 @@ FB.subclass('XFBML.LoginButton', 'XFBML.ButtonElement', null, {
         var a = this.getOriginalHTML();
         if (a) return a;
         if (!this._attr.registration_url) {
-            if (FB.getSession() && this._attr.autologoutlink) {
+            if (FB.getAccessToken() && this._attr.autologoutlink) {
                 return FB.Intl._tx("Facebook Logout");
             } else return this._getLoginText();
         } else switch (this._attr.status) {
@@ -4041,7 +4043,7 @@ FB.subclass('XFBML.LoginButton', 'XFBML.ButtonElement', null, {
         case 'notConnected':
             return FB.Intl._tx("Register");
         case 'connected':
-            if (FB.getSession() && this._attr.autologoutlink) return FB.Intl._tx("Facebook Logout");
+            if (FB.getAccessToken() && this._attr.autologoutlink) return FB.Intl._tx("Facebook Logout");
             return this._getLoginText();
         default:
             FB.log('Unknown status: ' + this.status);
@@ -4053,7 +4055,7 @@ FB.subclass('XFBML.LoginButton', 'XFBML.ButtonElement', null, {
     },
     onClick: function() {
         if (!this._attr.registration_url) {
-            if (!FB.getSession() || !this._attr.autologoutlink) {
+            if (!FB.getAccessToken() || !this._attr.autologoutlink) {
                 FB.login(FB.bind(this._authCallback, this), {
                     perms: this._attr.perms
                 });
@@ -4070,7 +4072,7 @@ FB.subclass('XFBML.LoginButton', 'XFBML.ButtonElement', null, {
             window.top.location = this._attr.registration_url;
             break;
         case 'connected':
-            if (!FB.getSession() || !this._attr.autologoutlink) {
+            if (!FB.getAccessToken() || !this._attr.autologoutlink) {
                 this._authCallback();
             } else FB.logout(FB.bind(this._authCallback, this));
             break;
