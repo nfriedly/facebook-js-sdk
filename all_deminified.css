@@ -1,4 +1,4 @@
-/*1312966549,169573752,JIT Construction: v420074,en_US*/
+/*1313139339,169595780,JIT Construction: v421347,en_US*/
 .fb_hidden
 {
 	position:absolute;
@@ -221,7 +221,7 @@
 .fb_dialog_content .dialog_header
 {
 	-webkit-box-shadow:white 0 1px 1px -1px inset;
-	background:0 to(#2D4C8A));
+	background:0 to(#2C4987));
 	border-bottom:1px solid;
 	border-color:#1d4088;
 	color:#fff;
@@ -242,14 +242,14 @@
 .fb_dialog_content .dialog_header td.header_left
 {
 	font-size:12px;
-	padding-left:5px;
+	padding-left:4px;
 	width:80px;
 }
 
 .fb_dialog_content .dialog_header td.header_right
 {
 	font-size:12px;
-	padding-right:5px;
+	padding-right:4px;
 	width:80px;
 }
 
@@ -262,7 +262,8 @@
 	-webkit-box-shadow:rgba(0,0,0,.117188) 0 1px 1px inset, rgba(255,255,255,.167969) 0 1px 0;
 	display:inline-block;
 	margin-top:3px;
-	max-width:75px;
+	max-width:85px;
+	min-width:64px;
 	line-height:18px;
 	padding:4px 12px;
 	position:relative;
