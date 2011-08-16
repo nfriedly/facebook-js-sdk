@@ -23,7 +23,7 @@ Official FB links:
 
 Documentation for the JavaScript SDK: http://developers.facebook.com/docs/reference/javascript/
 
-Bug Tracker: http://http://bugs.developers.facebook.net/
+Bug Tracker: http://bugs.developers.facebook.net/
 
 Change Log: https://developers.facebook.com/docs/changelog/
 
