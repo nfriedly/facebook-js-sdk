@@ -4,6 +4,9 @@ My server runs a nightly cronjob that downloads the latest http://connect.facebo
 
 The script does not commit if only the timestamp at the top has changed.
 
+Facebook's official Change Log: https://developers.facebook.com/docs/changelog/
+Facebook's official Platform Live Status: https://developers.facebook.com/live_status
+
 ---
 
 To run your own copy (which I recommend), you'll need to fork the github project, test the shell script, and then set up an appropriate crontab. Mine looks like this:
