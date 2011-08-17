@@ -1,4 +1,4 @@
-/*1313139339,169595780,JIT Construction: v421347,en_US*/
+/*1313571313,169926276,JIT Construction: v424118,en_US*/
 .fb_hidden
 {
 	position:absolute;
@@ -202,12 +202,21 @@
 	padding:5px 0 7px 26px;
 }
 
+body.fb_hidden
+{
+	margin:0;
+	position:absolute;
+	left:-10000px;
+	top:-10000px;
+	width:100%;
+}
+
 .fb_dialog.fb_dialog_mobile.loading
 {
 	background:url(https://s-static.ak.facebook.com/rsrc.php/v1/yO/r/_j03izEX40U.gif) white no-repeat 50% 180px;
-	left:0;
 	min-width:100%;
-	min-height:640px;
+	min-height:5000px;
+	overflow:hidden;
 	position:absolute;
 	top:0;
 	z-index:10001;
@@ -242,15 +251,15 @@
 .fb_dialog_content .dialog_header td.header_left
 {
 	font-size:12px;
-	padding-left:4px;
-	width:80px;
+	padding-left:5px;
+	width:60px;
 }
 
 .fb_dialog_content .dialog_header td.header_right
 {
 	font-size:12px;
-	padding-right:4px;
-	width:80px;
+	padding-right:5px;
+	width:60px;
 }
 
 .fb_dialog_content .touchable_button
@@ -263,7 +272,6 @@
 	display:inline-block;
 	margin-top:3px;
 	max-width:85px;
-	min-width:64px;
 	line-height:18px;
 	padding:4px 12px;
 	position:relative;
@@ -276,6 +284,7 @@
 	color:#fff;
 	font:12px Helvetica, sans-serif;
 	font-weight:bold;
+	margin:2px -12px;
 	text-shadow:rgba(0,30,84,.296875) 0 -1px 0;
 }
 
