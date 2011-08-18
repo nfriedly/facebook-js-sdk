@@ -1,9 +1,14 @@
-/*1313571313,169926276,JIT Construction: v424118,en_US*/
+/*1313657707,169551983,JIT Construction: v424768,en_US*/
 .fb_hidden
 {
 	position:absolute;
 	top:-10000px;
 	z-index:10001;
+}
+
+.fb_invisible
+{
+	display:none;
 }
 
 .fb_reset
