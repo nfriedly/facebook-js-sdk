@@ -1,4 +1,4 @@
-/*1313657707,169551983,JIT Construction: v424768,en_US*/
+/*1314176075,169939332,JIT Construction: v428305,en_US*/
 .fb_hidden
 {
 	position:absolute;
@@ -295,7 +295,9 @@ body.fb_hidden
 
 .fb_dialog_content .dialog_header .header_center
 {
+	color:#fff;
 	font-size:16px;
+	font-weight:bold;
 	line-height:18px;
 	text-align:center;
 }
