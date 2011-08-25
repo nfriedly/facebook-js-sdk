@@ -1,4 +1,4 @@
-/*1314140564,169554561,JIT Construction: v428034,en_US*/
+/*1314251344,169573998,JIT Construction: v429311,en_US*/
 
 if (!window.FB) window.FB = {
     _apiKey: null,
@@ -5102,7 +5102,7 @@ FB.widgetPipeEnabledApps = {
 };
 FB.widgetPipeTagCountThreshold = 4;
 FB.provide("Canvas.EarlyFlush", {
-    "_appIdsBlacklist": [],
+    "_appIdsBlacklist": [144959615576466],
     "_sampleRate": 500
 }, true);
 FB.provide("XFBML.ConnectBar", {
