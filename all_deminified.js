@@ -1,4 +1,4 @@
-/*1314251344,169573998,JIT Construction: v429311,en_US*/
+/*1314312930,169901159,JIT Construction: v429896,en_US*/
 
 if (!window.FB) window.FB = {
     _apiKey: null,
@@ -2462,6 +2462,7 @@ FB.provide('XFBML', {
                     var isLogin = false;
                     var showFaces = true;
                     var renderInIframe = false;
+                    var addToProfile = false;
                     if (tagInfo.className === 'FB.XFBML.LoginButton') {
                         addToProfile = (tagInfo.localName == 'add-to-profile');
                         renderInIframe = getBoolAttr('render-in-iframe');
@@ -2471,13 +2472,21 @@ FB.provide('XFBML', {
                     }
                     element = dom._element = new fn(dom);
                     if (isLogin) {
+                        showFaces = !! showFaces;
                         var extraParams = {
                             show_faces: showFaces,
                             add_to_profile: addToProfile
                         };
                         if (addToProfile) extraParams.width = 300;
-                        var perms = dom.getAttribute('perms');
-                        if (perms) extraParams.perms = perms;
+                        var scope = dom.getAttribute('scope');
+                        if (scope) {
+                            if (FB._oauth) {
+                                extraParams.scope = scope;
+                            } else extraParams.perms = scope;
+                        } else {
+                            var perms = dom.getAttribute('perms');
+                            if (perms) extraParams.perms = perms;
+                        }
                         element.setExtraParams(extraParams);
                     }
                     element.subscribe('render', cb);
