@@ -1,4 +1,4 @@
-/*1314312930,169901159,JIT Construction: v429896,en_US*/
+/*1314403685,169922671,JIT Construction: v430698,en_US*/
 
 if (!window.FB) window.FB = {
     _apiKey: null,
@@ -2170,21 +2170,23 @@ FB.provide('Frictionless', {
             if (a.session) FB.Frictionless._updateRecipients();
         });
     },
-    _processRequestResponse: function(a) {
-        return function(d) {
-            var c = d && typeof d.frictionless_value !== 'undefined';
-            var e = d && d.updated_frictionless;
-            if (FB.Frictionless._useFrictionless && (e || c)) {
+    _processRequestResponse: function(a, b) {
+        return function(e) {
+            var d = e && typeof e.frictionless_value !== 'undefined';
+            var f = e && e.updated_frictionless;
+            if (FB.Frictionless._useFrictionless && (f || d)) {
                 FB.Frictionless._updateRecipients();
-                if (c) {
-                    var b = [];
-                    FB.Array.forEach(d.request_ids, function(f) {
-                        b.push(f);
+                if (d) {
+                    var c = [];
+                    FB.Array.forEach(e.request_ids, function(g) {
+                        c.push(g);
                     }, false);
-                    d.request_ids = b;
+                    e.request_ids = c;
                 }
             }
-            a && a(d);
+            if (!b && e.frictionless) FB.Dialog._hideLoader();
+            delete e.frictionless;
+            a && a(e);
         };
     },
     isAllowed: function(c) {
@@ -2362,8 +2364,8 @@ FB.provide('UIServer.Methods', {
         transform: function(a) {
             a = FB.UIServer.MobileIframableMethod.transform(a);
             if (FB.Frictionless && FB.Frictionless._useFrictionless) {
-                a.cb = FB.Frictionless._processRequestResponse(a.cb);
                 a.hideLoader = FB.Frictionless.isAllowed(a.params.to);
+                a.cb = FB.Frictionless._processRequestResponse(a.cb, a.hideLoader);
             }
             return a;
         },
