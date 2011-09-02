@@ -1,4 +1,4 @@
-/*1314867599,169938290,JIT Construction: v433230,en_US*/
+/*1314953993,169589868,JIT Construction: v434178,en_US*/
 
 .fb_hidden{position:absolute;top:-10000px;z-index:10001}
 .fb_invisible{display:none}
@@ -48,15 +48,15 @@ white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:
 white-space:nowrap}
 .fb_dialog_content .dialog_header table{height:43px;width:100%
 }
-.fb_dialog_content .dialog_header td.header_left{font-size: 12px;padding-left:5px;width:60px
+.fb_dialog_content .dialog_header td.header_left{font-size: 12px;padding-left:5px;vertical-align:middle;width:60px
 }
-.fb_dialog_content .dialog_header td.header_right{font-size: 12px;padding-right:5px;width:60px
+.fb_dialog_content .dialog_header td.header_right{font-size: 12px;padding-right:5px;vertical-align:middle;width:60px
 }
 .fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0 0, 0 100%, from(#4966A6),
-color-stop(0.5, #355492), to(#2A4887));border:1px solid #29447e;-webkit-background-clip:padding-box;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset,
+color-stop(0.5, #355492), to(#2A4887));border:1px solid #29447e;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset,
 rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}
 .fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}
-.fb_dialog_content .dialog_header .header_center{color:#fff;font-size: 16px;font-weight:bold;line-height:18px;text-align:center}
+.fb_dialog_content .dialog_header .header_center{color:#fff;font-size: 16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}
 .fb_dialog_content .dialog_content{background:url(https://s-static.ak.facebook.com/rsrc.php/v1/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #555;border-bottom:0;border-top:0;height:150px}
 .fb_dialog_content .dialog_footer{background:#f2f2f2;border:1px solid #555;border-top-color:#ccc;height:40px}
 #fb_dialog_loader_close{float:left}

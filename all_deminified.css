@@ -1,4 +1,4 @@
-/*1314867599,169938290,JIT Construction: v433230,en_US*/
+/*1314953993,169589868,JIT Construction: v434178,en_US*/
 .fb_hidden
 {
 	position:absolute;
@@ -274,6 +274,7 @@ body.fb_hidden
 {
 	font-size:12px;
 	padding-left:5px;
+	vertical-align:middle;
 	width:60px;
 }
 
@@ -281,6 +282,7 @@ body.fb_hidden
 {
 	font-size:12px;
 	padding-right:5px;
+	vertical-align:middle;
 	width:60px;
 }
 
@@ -289,6 +291,7 @@ body.fb_hidden
 	background:0 color-stop(0.5,#355492), to(#2A4887));
 	border:1px solid #29447e;
 	-webkit-background-clip:padding-box;
+	-webkit-border-radius:3px;
 	-webkit-box-shadow:rgba(0,0,0,.117188) 0 1px 1px inset, rgba(255,255,255,.167969) 0 1px 0;
 	display:inline-block;
 	margin-top:3px;
@@ -316,6 +319,7 @@ body.fb_hidden
 	font-weight:bold;
 	line-height:18px;
 	text-align:center;
+	vertical-align:middle;
 }
 
 .fb_dialog_content .dialog_content
