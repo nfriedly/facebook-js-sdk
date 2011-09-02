@@ -19,15 +19,23 @@ sudo aptitude install php5-cli
 
 ---
 
-Official FB links:
+Official FB links
 
-Documentation for the JavaScript SDK: http://developers.facebook.com/docs/reference/javascript/
+Documentation for the JavaScript SDK: 
+  http://developers.facebook.com/docs/reference/javascript/
 
-Bug Tracker: http://bugs.developers.facebook.net/
+Bug Tracker: 
+  http://bugs.developers.facebook.net/
 
-Change Log: https://developers.facebook.com/docs/changelog/
+Recent Changes & Current Status:
+  Change Log: https://developers.facebook.com/docs/changelog/
+  Platform Live Status: https://developers.facebook.com/live_status
+  JSON feed of current push status and most recent Platform Live Status issue: https://www.facebook.com/feeds/api_status.php
 
-Platform Live Status: https://developers.facebook.com/live_status
+Upcomming & Long-term Changes: 
+  Code that will be released within a day or two -- be sure to label any bugs as BETA: https://developers.facebook.com/support/beta-tier/
+  Developer Blog: https://developers.facebook.com/blog/
+  Platform Roadmap: https://developers.facebook.com/roadmap/
 
 ---
 
