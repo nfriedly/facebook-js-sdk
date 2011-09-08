@@ -1,4 +1,4 @@
-/*1315181516,169573497,JIT Construction: v434551,en_US*/
+/*1315439832,169915507,JIT Construction: v436457,en_US*/
 
 if (!window.FB) window.FB = {
     _apiKey: null,
@@ -118,6 +118,10 @@ FB.provide('Array', {
                 c.forEach(a);
             } else for (var b = 0, e = c.length; b < e; b++) a(c[b], b, c);
         } else for (var d in c) if (f || c.hasOwnProperty(d)) a(c[d], d, c);
+    },
+    toArray: function(b) {
+        for (var c = 0, a = [], d = b.length; c < d; c++) a[c] = b[c];
+        return a;
     }
 });
 FB.provide('QS', {
@@ -912,19 +916,26 @@ FB.provide('Canvas', {
             channelUrl: a
         });
     },
-    setSize: function(b) {
-        if (typeof b != "object") b = {};
-        b = b || {};
-        if (b.width == null || b.height == null) b = FB.copy(b, FB.Canvas._computeContentSize());
-        b = FB.copy(b, {
+    setSize: function(e) {
+        if (typeof e != "object") e = {};
+        var c = 0,
+            b = 0;
+        e = e || {};
+        if (e.width == null || e.height == null) {
+            e = FB.copy(e, FB.Canvas._computeContentSize());
+            c = 16;
+            b = 4;
+        }
+        e = FB.copy(e, {
             frame: window.name || 'iframe_canvas'
         });
-        if (FB.Canvas._lastSize[b.frame]) {
-            var a = FB.Canvas._lastSize[b.frame].height;
-            if (FB.Canvas._lastSize[b.frame].width == b.width && (b.height <= a && (Math.abs(a - b.height) <= 16))) return false;
+        if (FB.Canvas._lastSize[e.frame]) {
+            var d = FB.Canvas._lastSize[e.frame].height;
+            var a = e.height - d;
+            if (FB.Canvas._lastSize[e.frame].width == e.width && (a <= b && a >= -c)) return false;
         }
-        FB.Canvas._lastSize[b.frame] = b;
-        FB.Arbiter.inform('setSize', b);
+        FB.Canvas._lastSize[e.frame] = e;
+        FB.Arbiter.inform('setSize', e);
         return true;
     },
     scrollTo: function(a, b) {
@@ -978,20 +989,31 @@ FB.provide('Canvas', {
     },
     _computeContentSize: function() {
         var a = document.body,
-            c = document.documentElement,
-            d = 0,
-            b = Math.max(Math.max(a.offsetHeight, a.scrollHeight) + a.offsetTop, Math.max(c.offsetHeight, c.scrollHeight) + c.offsetTop);
+            e = document.documentElement,
+            i = 0,
+            d = Math.max(a.offsetTop, 0),
+            h = Math.max(e.offsetTop, 0),
+            c = a.scrollHeight + d,
+            b = a.offsetHeight + d,
+            g = e.scrollHeight + h,
+            f = e.offsetHeight + h;
+        if (FB.initSitevars.computeContentSizeVersion >= 1) if (FB.UA._safari || FB.UA._chrome) {
+            c = 0;
+        } else if (FB.UA._firefox || FB.UA._opera) {
+            if (FB.initSitevars.computeContentSizeVersion >= 2) g = 0;
+        } else if (FB.UA._ie) g == f;
+        bottom = Math.max(c, b, g, f);
         if (a.offsetWidth < a.scrollWidth) {
-            d = a.scrollWidth + a.offsetLeft;
-        } else FB.Array.forEach(a.childNodes, function(e) {
-            var f = e.offsetWidth + e.offsetLeft;
-            if (f > d) d = f;
+            i = a.scrollWidth + a.offsetLeft;
+        } else FB.Array.forEach(a.childNodes, function(j) {
+            var k = j.offsetWidth + j.offsetLeft;
+            if (k > i) i = k;
         });
-        if (c.clientLeft > 0) d += (c.clientLeft * 2);
-        if (c.clientTop > 0) b += (c.clientTop * 2);
+        if (e.clientLeft > 0) i += (e.clientLeft * 2);
+        if (e.clientTop > 0) bottom += (e.clientTop * 2);
         return {
-            height: b,
-            width: d
+            height: bottom,
+            width: i
         };
     }
 });
@@ -1074,6 +1096,14 @@ FB.provide('Dom', {
             b.className = b.className.replace(a, '');
             FB.Dom.removeCss(b, a);
         }
+    },
+    getByClass: function(b, c) {
+        c = c || document.body;
+        if (c.getElementsByClassName) return FB.Array.toArray(c.getElementsByClassName(b));
+        var a = c.getElementsByTagName('*'),
+            d = [];
+        for (var e = 0, f = a.length; e < f; e++) if (this.containsCss(a[e], b)) d[d.length] = a[e];
+        return d;
     },
     getStyle: function(a, c) {
         var d = false,
@@ -1235,14 +1265,22 @@ FB.Class('Obj', null, FB.copy({
 }, FB.EventProvider));
 FB.subclass('Dialog', 'Obj', function(a) {
     this.id = a;
+    if (!FB.Dialog._dialogs) {
+        FB.Dialog._dialogs = {};
+        FB.Dialog._addOrientationHandler();
+    }
     FB.Dialog._dialogs[a] = this;
 }, {});
 FB.provide('Dialog', {
-    _dialogs: {},
+    _dialogs: null,
     _lastYOffset: 0,
     _loaderEl: null,
     _stack: [],
     _active: null,
+    _popStateListenerOn: false,
+    _hideOnPopState: function(a) {
+        FB.Dialog.hide(FB.Dialog._stack.pop());
+    },
     get: function(a) {
         return FB.Dialog._dialogs[a];
     },
@@ -1334,6 +1372,16 @@ FB.provide('Dialog', {
         b.style.left = (d > 0 ? d : 0) + 'px';
         b.style.top = (h > 0 ? h : 0) + 'px';
     },
+    _handleOrientationChange: function() {
+        if (FB.UA.iPad()) {
+            FB.Dialog._centerActive(FB.Canvas.getPageInfo());
+        } else for (var a in FB.Dialog._dialogs) if (document.getElementById(a)) document.getElementById(a).style.width = FB.UIServer.getDefaultSize().width + 'px';
+    },
+    _addOrientationHandler: function() {
+        if (!FB.UA.mobile()) return;
+        var a = "onorientationchange" in window ? 'orientationchange' : 'resize';
+        FB.Event.listen(window, a, FB.Dialog._handleOrientationChange);
+    },
     create: function(e) {
         e = e || {};
         var d = document.createElement('div'),
@@ -1372,6 +1420,10 @@ FB.provide('Dialog', {
             FB.Dialog._makeActive(b);
             FB.Dialog._stack.push(b);
             if ('fbCallID' in a) FB.Dialog.get(a.fbCallID).fire('iframe_show');
+            if (!FB.Event._popStateListenerOn) {
+                FB.Event.listen(window, 'popstate', FB.Dialog._hideOnPopState);
+                FB.Event._popStateListenerOn = true;
+            }
         }
     },
     hide: function(a) {
@@ -1380,6 +1432,10 @@ FB.provide('Dialog', {
             FB.Dialog._lowerActive();
             FB.Dialog._restoreBodyPosition();
             if ('fbCallID' in a) FB.Dialog.get(a.fbCallID).fire('iframe_hide');
+            if (FB.Event._popStateListenerOn) {
+                FB.Event.unlisten(window, 'popstate', FB.Dialog._hideOnPopState);
+                FB.Event._popStateListenerOn = false;
+            }
         }
     },
     remove: function(a) {
@@ -1400,6 +1456,10 @@ FB.provide('Dialog', {
                 a.parentNode.removeChild(a);
             }, 3000);
         }
+    },
+    isActive: function(a) {
+        var b = FB.Dialog._findRoot(a);
+        return b && b === FB.Dialog._active;
     }
 });
 FB.provide('', {
@@ -1610,6 +1670,7 @@ FB.provide('UIServer', {
                 className: b.className,
                 width: b.size.width,
                 height: b.size.height,
+                id: b.id,
                 onInsert: a,
                 onload: function(c) {
                     FB.Content.submitToTarget({
@@ -1625,30 +1686,17 @@ FB.provide('UIServer', {
             className: b.className,
             width: b.size.width,
             height: b.size.height,
+            id: b.id,
             name: b.frameName,
             onInsert: a
         });
-    },
-    _handleOrientationChange: function(b) {
-        var a = FB.UIServer._loadedNodes[b];
-        if (!a) return;
-        if (FB.UA.iPad()) {
-            FB.Dialog._centerActive(FB.Canvas.getPageInfo());
-        } else a.style.width = FB.UIServer.getDefaultSize().width + 'px';
-    },
-    _addOrientationHandler: function(b) {
-        if (!FB.UA.mobile()) return;
-        FB.UIServer._handleOrientationChange(b);
-        var a = "onorientationchange" in window ? 'orientationchange' : 'resize';
-        window.addEventListener(a, FB.bind(FB.UIServer._handleOrientationChange, null, b));
     },
     _handleResizeMessage: function(b, a) {
         var c = FB.UIServer._loadedNodes[b];
         if (a.height) c.style.height = a.height + 'px';
         if (a.width) c.style.width = a.width + 'px';
-        FB.UIServer._addOrientationHandler(b);
         FB.Arbiter.inform('resize.ack', a || {}, 'parent.frames[' + c.name + ']', true);
-        FB.Dialog.show(c);
+        if (!FB.Dialog.isActive(c)) FB.Dialog.show(c);
     },
     _triggerDefault: function(a) {
         FB.UIServer._xdRecv({
@@ -2437,6 +2485,14 @@ FB.provide('', {
 FB.UIServer.Methods['auth.login'] = FB.UIServer.Methods['permissions.request'];
 FB.provide('XFBML', {
     _renderTimeout: 30000,
+    getElements: function(b, f, d) {
+        var a = FB.Array,
+            e = FB.XFBML._getDomElements(b, f, d),
+            c = FB.Dom.getByClass(f + '-' + d, b);
+        e = a.toArray(e);
+        c = a.toArray(c);
+        return a.merge(e, c);
+    },
     parse: function(d, b) {
         d = d || document.body;
         var c = 1,
@@ -2451,7 +2507,7 @@ FB.provide('XFBML', {
         if (FB.XFBML._widgetPipeIsEnabled()) FB.Array.forEach(FB.XFBML._tagInfos, function(f) {
             if (f.supportsWidgetPipe) {
                 var h = f.xmlns ? f.xmlns : 'fb';
-                var g = FB.XFBML._getDomElements(d, h, f.localName);
+                var g = FB.XFBML.getElements(d, h, f.localName);
                 a[f.localName] = g;
                 FB.XFBML._widgetPipeEnabledTagCount += g.length;
             }
@@ -2461,7 +2517,7 @@ FB.provide('XFBML', {
             var h;
             if (a[g.localName] !== undefined) {
                 h = a[g.localName];
-            } else h = FB.XFBML._getDomElements(d, g.xmlns, g.localName);
+            } else h = FB.XFBML.getElements(d, g.xmlns, g.localName);
             for (var f = 0; f < h.length; f++) {
                 c++;
                 FB.XFBML._processElement(h[f], g, e);
@@ -2481,6 +2537,13 @@ FB.provide('XFBML', {
         var a = FB.XFBML._widgetPipeEnabledTagCount > 1;
         return a;
     },
+    getBoolAttr: function(b, a) {
+        a = FB.XFBML.getAttr(b, a);
+        return (a && FB.Array.indexOf(['true', '1', 'yes', 'on'], a.toLowerCase()) > -1);
+    },
+    getAttr: function(b, a) {
+        return (b.getAttribute(a) || b.getAttribute(a.replace(/-/g, '_')) || b.getAttribute(a.replace(/-/g, '')) || b.getAttribute('data-' + a) || b.getAttribute('data-' + a.replace(/_/g, '-')) || b.getAttribute('data-' + a.replace(/_/g, '')) || null);
+    },
     _processElement: function(dom, tagInfo, cb) {
         var element = dom._element;
         if (element) {
@@ -2489,19 +2552,15 @@ FB.provide('XFBML', {
         } else {
             var processor = function() {
                     var fn = eval(tagInfo.className);
-                    var getBoolAttr = function(attr) {
-                            var attr = dom.getAttribute(attr);
-                            return (attr && FB.Array.indexOf(['true', '1', 'yes', 'on'], attr.toLowerCase()) > -1);
-                        };
                     var isLogin = false;
                     var showFaces = true;
                     var renderInIframe = false;
                     var addToProfile = false;
                     if (tagInfo.className === 'FB.XFBML.LoginButton') {
                         addToProfile = (tagInfo.localName == 'add-to-profile');
-                        renderInIframe = getBoolAttr('render-in-iframe');
-                        showFaces = addToProfile || getBoolAttr('show-faces') || getBoolAttr('show_faces');
-                        isLogin = addToProfile || renderInIframe || showFaces || getBoolAttr('oneclick');
+                        renderInIframe = FB.XFBML.getBoolAttr(dom, 'render-in-iframe');
+                        showFaces = addToProfile || FB.XFBML.getBoolAttr(dom, 'show-faces');
+                        isLogin = addToProfile || renderInIframe || showFaces || FB.XFBML.getBoolAttr(dom, 'oneclick');
                         if (isLogin) fn = FB.XFBML.Login;
                     }
                     element = dom._element = new fn(dom);
@@ -2880,14 +2939,12 @@ FB.Class('XFBML.Element', function(a) {
     this.dom = a;
 }, FB.copy({
     getAttribute: function(b, a, c) {
-        var d = (this.dom.getAttribute(b) || this.dom.getAttribute(b.replace(/-/g, '_')) || this.dom.getAttribute(b.replace(/-/g, '')));
+        var d = FB.XFBML.getAttr(this.dom, b);
         return d ? (c ? c(d) : d) : a;
     },
     _getBoolAttribute: function(b, a) {
-        return this.getAttribute(b, a, function(c) {
-            c = c.toLowerCase();
-            return c == 'true' || c == '1' || c == 'yes' || c == 'on';
-        });
+        if (FB.XFBML.getAttr(this.dom, b) === null) return a;
+        return FB.XFBML.getBoolAttr(this.dom, b);
     },
     _getPxAttribute: function(b, a) {
         return this.getAttribute(b, a, function(c) {
@@ -3600,6 +3657,7 @@ FB.subclass('XFBML.Facepile', 'XFBML.IframeWidget', null, {
             width: this._getPxAttribute('width', 200),
             ref: this.getAttribute('ref'),
             size: this.getAttribute('size', 'small'),
+            extended_social_context: this.getAttribute('extended_social_context', false),
             login_text: this.dom.innerHTML
         };
         this.clear();
@@ -3729,7 +3787,8 @@ FB.subclass('XFBML.EdgeWidget', 'XFBML.IframeWidget', null, {
             show_faces: this._shouldShowFaces(),
             no_resize: this._getBoolAttribute('no_resize'),
             send: this.getAttribute('send'),
-            url_map: this.getAttribute('url_map')
+            url_map: this.getAttribute('url_map'),
+            extended_social_context: this._getBoolAttribute('extended_social_context', false)
         };
         return true;
     },
@@ -3876,7 +3935,8 @@ FB.subclass('XFBML.EdgeWidget', 'XFBML.IframeWidget', null, {
             relativeHeightOffset: (b ? this._getHeightOffset(c) : this._getHeightOffset()),
             relativeWidthOffset: (d ? this._getWidthOffset(c) : this._getWidthOffset()),
             error: c.error,
-            siderender: c.siderender
+            siderender: c.siderender,
+            extended_social_context: c.extended_social_context
         };
     },
     _getWidthOffset: function(c) {
@@ -3931,6 +3991,7 @@ FB.subclass('XFBML.SendButtonFormWidget', 'XFBML.EdgeCommentWidget', function(a)
     this._attr.colorscheme = a.colorscheme;
     this._attr.error = a.error;
     this._attr.siderender = a.siderender;
+    this._attr.extended_social_context = a.extended_social_context;
 }, {
     _showLoader: true,
     getUrlBits: function() {
@@ -3955,7 +4016,8 @@ FB.subclass('XFBML.Send', 'XFBML.EdgeWidget', null, {
             font: this.getAttribute('font'),
             colorscheme: this.getAttribute('colorscheme', 'light'),
             href: this.getAttribute('href', window.location.href),
-            ref: this.getAttribute('ref')
+            ref: this.getAttribute('ref'),
+            extended_social_context: this.getAttribute('extended_social_context', false)
         };
         return true;
     },
@@ -3984,7 +4046,7 @@ FB.subclass('XFBML.Send', 'XFBML.EdgeWidget', null, {
 });
 FB.provide('XFBML.Send', {
     Dimensions: {
-        width: 56,
+        width: 80,
         height: 25
     }
 });
@@ -4740,7 +4802,7 @@ FB.subclass('XFBML.SocialBar', 'XFBML.IframeWidget', null, {
     getSize: function() {
         return {
             height: 25,
-            width: 145
+            width: 91
         };
     },
     calculateVisibility: function() {
