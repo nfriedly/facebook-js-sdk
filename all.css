@@ -1,4 +1,4 @@
-/*1314953993,169589868,JIT Construction: v434178,en_US*/
+/*1315558756,169585530,JIT Construction: v437537,en_US*/
 
 .fb_hidden{position:absolute;top:-10000px;z-index:10001}
 .fb_invisible{display:none}
@@ -9,6 +9,7 @@
 .fb_dialog_content{background:#fff;color:#333}
 .fb_dialog_close_icon{background:url(https://s-static.ak.facebook.com/rsrc.php/v1/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;_background-image:url(https://s-static.ak.facebook.com/rsrc.php/v1/yL/r/s816eWC-2sl.gif);cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px;top:8px\9;right:7px\9}
 .fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}
+.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}
 .fb_dialog_close_icon:hover{background:url(https://s-static.ak.facebook.com/rsrc.php/v1/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent;_background-image:url(https://s-static.ak.facebook.com/rsrc.php/v1/yL/r/s816eWC-2sl.gif)}
 .fb_dialog_close_icon:active{background:url(https://s-static.ak.facebook.com/rsrc.php/v1/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent;_background-image:url(https://s-static.ak.facebook.com/rsrc.php/v1/yL/r/s816eWC-2sl.gif)}
 .fb_dialog_loader{background-color:#f2f2f2;border:1px solid #606060;font-size: 24px;padding:20px}

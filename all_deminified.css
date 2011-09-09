@@ -1,4 +1,4 @@
-/*1314953993,169589868,JIT Construction: v434178,en_US*/
+/*1315558756,169585530,JIT Construction: v437537,en_US*/
 .fb_hidden
 {
 	position:absolute;
@@ -85,6 +85,14 @@
 	top:5px;
 	left:5px;
 	right:auto;
+}
+
+.fb_dialog_padding
+{
+	background-color:transparent;
+	position:absolute;
+	width:1px;
+	z-index:-1;
 }
 
 .fb_dialog_close_icon:hover
