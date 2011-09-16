@@ -1,4 +1,4 @@
-/*1315961661,169893995,JIT Construction: v440498,en_US*/
+/*1316133537,169906293,JIT Construction: v442386,en_US*/
 
 if (!window.FB) window.FB = {
     _apiKey: null,
@@ -2312,7 +2312,7 @@ FB.provide('', {
         FB.XD.init(a.channelUrl);
         if (FB.UA.mobile() && FB.TemplateUI && a.useCachedDialogs !== false) {
             FB.TemplateUI.init();
-            FB.Event.subscribe('auth.sessionChange', FB.TemplateData.update);
+            FB.Event.subscribe('auth.statusChange', FB.TemplateData.update);
         }
         if (a.reportTemplates) FB.reportTemplates = true;
         if (a.frictionlessRequests) FB.Frictionless.init();
@@ -3227,6 +3227,7 @@ FB.subclass('XFBML.Activity', 'XFBML.IframeWidget', null, {
             action: this.getAttribute('action'),
             max_age: this.getAttribute('max_age'),
             font: this.getAttribute('font'),
+            linktarget: this.getAttribute('linktarget', '_blank'),
             header: this._getBoolAttribute('header'),
             height: this._getPxAttribute('height', 300),
             recommendations: this._getBoolAttribute('recommendations'),
@@ -4533,6 +4534,7 @@ FB.subclass('XFBML.Recommendations', 'XFBML.IframeWidget', null, {
             filter: this.getAttribute('filter'),
             font: this.getAttribute('font'),
             action: this.getAttribute('action'),
+            linktarget: this.getAttribute('linktarget', '_blank'),
             max_age: this.getAttribute('max_age'),
             header: this._getBoolAttribute('header'),
             height: this._getPxAttribute('height', 300),
@@ -4618,6 +4620,9 @@ FB.subclass('XFBML.Registration', 'XFBML.IframeWidget', null, {
             name: 'registration',
             params: this._attr
         };
+    },
+    getDefaultWebDomain: function() {
+        return 'https_www';
     },
     _onAuthLogin: function() {
         if (!FB.getSession()) FB.getLoginStatus();
