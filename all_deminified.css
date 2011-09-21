@@ -1,4 +1,4 @@
-/*1315558756,169585530,JIT Construction: v437537,en_US*/
+/*1316595495,169923693,JIT Construction: v446229,en_US*/
 .fb_hidden
 {
 	position:absolute;
@@ -220,6 +220,7 @@ body.fb_hidden
 	height:100%;
 	margin:0;
 	left:-10000px;
+	overflow:visible;
 	position:absolute;
 	top:-10000px;
 	width:100%;
@@ -274,6 +275,7 @@ body.fb_hidden
 
 .fb_dialog_content .dialog_header table
 {
+	-webkit-font-smoothing:subpixel-antialiased;
 	height:43px;
 	width:100%;
 }
@@ -317,6 +319,7 @@ body.fb_hidden
 	font:12px Helvetica, sans-serif;
 	font-weight:bold;
 	margin:2px -12px;
+	padding:2px 6px 3px;
 	text-shadow:rgba(0,30,84,.296875) 0 -1px 0;
 }
 
@@ -865,4 +868,21 @@ a.fb_button_small_rtl:active
 .FB_Loader
 {
 	margin-top:0;
+}
+
+.fbpluginrecommendationsbar
+{
+	position:fixed!important;
+	bottom:0;
+	z-index:999;
+}
+
+.fbpluginrecommendationsbarleft
+{
+	left:10px;
+}
+
+.fbpluginrecommendationsbarright
+{
+	right:10px;
 }
