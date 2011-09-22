@@ -1,4 +1,4 @@
-/*1316564603,169902722,JIT Construction: v445942,en_US*/
+/*1316655342,169573241,JIT Construction: v447266,en_US*/
 
 if (!window.FB) window.FB = {
     _apiKey: null,
@@ -895,16 +895,13 @@ FB.provide('Canvas', {
             var c = false;
             for (var e = 0; e < b.childNodes.length; e++) if (b.childNodes[e].nodeName == "PARAM" && b.childNodes[e].name == "wmode") if (b.childNodes[e].value != "window" && b.childNodes[e].value != "default") c = true;
             if (!c) if (f.state == 'opened') {
-                b.style.old_visibility = b.style.visibility;
+                b._old_visibility = b.style.visibility;
                 b.style.visibility = 'hidden';
             } else if (f.state == 'closed') {
-                b.style.visibility = b.style.old_visibility;
-                b.style.old_visibility = '';
+                b.style.visibility = b._old_visibility;
+                delete b._old_visibility;
             }
         }
-    },
-    _setHideFlashCallback: function(a) {
-        if (a) FB.Canvas._hideFlashCallback = a;
     },
     init: function() {
         var b = FB.Dom.getViewportInfo();
@@ -2082,8 +2079,8 @@ FB.provide('Auth', {
 FB.provide('UIServer.Methods', {
     'permissions.request': {
         size: {
-            width: (FB.UA.mobile() ? null : 627),
-            height: (FB.UA.mobile() ? null : 326)
+            width: (FB.UA.mobile() ? null : 640),
+            height: (FB.UA.mobile() ? null : 241)
         },
         transform: function(a) {
             if (!FB._apiKey) {
@@ -2337,10 +2334,7 @@ FB.provide('', {
             }
             if (a.status) FB.getLoginStatus();
         }
-        if (FB._inCanvas) {
-            if (a.hideFlashCallback) FB.Canvas._setHideFlashCallback(a.hideFlashCallback);
-            FB.Canvas.init();
-        }
+        if (FB._inCanvas) FB.Canvas.init();
         FB.Event.subscribe('xfbml.parse', function() {
             FB.XFBML.IframeWidget.batchWidgetPipeRequests();
         });
@@ -4968,7 +4962,7 @@ FB.provide("Arbiter", {
     "_canvasProxyUrl": "connect\/canvas_proxy.php?version=3"
 }, true);
 FB.provide('Auth', {
-    "_xdStorePath": "xd_localstorage\/"
+    "_xdStorePath": "xd_localstorage\/v2"
 }, true);
 FB.initSitevars = {
     "parseXFBMLBeforeDomReady": false,
