@@ -1,4 +1,4 @@
-/*1316854679,169943156,JIT Construction: v448446,en_US*/
+/*1317200259,169887876,JIT Construction: v449869,en_US*/
 
 .fb_hidden{position:absolute;top:-10000px;z-index:10001}
 .fb_invisible{display:none}
@@ -41,7 +41,7 @@ body.fb_hidden{height:100%;margin:0;left:-10000px;overflow:visible;position:abso
 }
 .fb_dialog.fb_dialog_mobile.loading{background:url(https://s-static.ak.facebook.com/rsrc.php/v1/yO/r/_j03izEX40U.gif)
 white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}
-.fb_dialog.fb_dialog_mobile.loading.centered{min-height:590px;min-width:500px}
+.fb_dialog.fb_dialog_mobile.loading.centered{max-height:590px;min-height:590px;max-width:500px;min-width:500px}
 #fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;left:-10000px;top:-10000px;width:30000px;min-height:30000px;z-index:10000}
 #fb-root #fb_dialog_ipad_overlay.hidden{display:none}
 .fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}

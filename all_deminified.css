@@ -1,4 +1,4 @@
-/*1316854679,169943156,JIT Construction: v448446,en_US*/
+/*1317200259,169887876,JIT Construction: v449869,en_US*/
 .fb_hidden
 {
 	position:absolute;
@@ -239,7 +239,9 @@ body.fb_hidden
 
 .fb_dialog.fb_dialog_mobile.loading.centered
 {
+	max-height:590px;
 	min-height:590px;
+	max-width:500px;
 	min-width:500px;
 }
 
