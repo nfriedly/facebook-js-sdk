@@ -1,4 +1,4 @@
-/*1317200259,169887876,JIT Construction: v449869,en_US*/
+/*1317459444,169591162,JIT Construction: v451912,en_US*/
 .fb_hidden
 {
 	position:absolute;
@@ -217,6 +217,7 @@
 
 body.fb_hidden
 {
+	-webkit-transform:none;
 	height:100%;
 	margin:0;
 	left:-10000px;
