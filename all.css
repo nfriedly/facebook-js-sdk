@@ -1,4 +1,4 @@
-/*1317459444,169591162,JIT Construction: v451912,en_US*/
+/*1317805023,169905537,JIT Construction: v453330,en_US*/
 
 .fb_hidden{position:absolute;top:-10000px;z-index:10001}
 .fb_invisible{display:none}
@@ -42,7 +42,7 @@ body.fb_hidden{-webkit-transform:none;height:100%;margin:0;left:-10000px;overflo
 .fb_dialog.fb_dialog_mobile.loading{background:url(https://s-static.ak.facebook.com/rsrc.php/v1/yO/r/_j03izEX40U.gif)
 white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}
 .fb_dialog.fb_dialog_mobile.loading.centered{max-height:590px;min-height:590px;max-width:500px;min-width:500px}
-#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;left:-10000px;top:-10000px;width:30000px;min-height:30000px;z-index:10000}
+#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;left:0;top:0;width:100%;min-height:100%;z-index:10000}
 #fb-root #fb_dialog_ipad_overlay.hidden{display:none}
 .fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}
 .fb_dialog_mobile .fb_dialog_iframe,
