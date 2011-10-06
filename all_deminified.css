@@ -1,4 +1,4 @@
-/*1317805023,169905537,JIT Construction: v453330,en_US*/
+/*1317891418,169924225,JIT Construction: v453907,en_US*/
 .fb_hidden
 {
 	position:absolute;
@@ -265,11 +265,6 @@ body.fb_hidden
 .fb_dialog.fb_dialog_mobile.loading iframe
 {
 	visibility:hidden;
-}
-
-.fb_dialog_mobile .fb_dialog_iframe,.fb_dialog.fb_dialog_mobile.centered
-{
-	-webkit-box-shadow:0 0 7px 7px rgba(0,0,0,.05), 0 0 10px 10px rgba(0,0,0,.05);
 }
 
 .fb_dialog_content .dialog_header
