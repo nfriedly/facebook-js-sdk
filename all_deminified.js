@@ -1,4 +1,4 @@
-/*1318230724,169917046,JIT Construction: v455543,en_US*/
+/*1318303519,169932141,JIT Construction: v455923,en_US*/
 
 if (!window.FB) window.FB = {
     _apiKey: null,
@@ -5245,7 +5245,7 @@ FB.provide('Auth', {
 FB.initSitevars = {
     "parseXFBMLBeforeDomReady": false,
     "computeContentSizeVersion": 0,
-    "corsKillSwitch": 1,
+    "enableMobile": 1,
     "iframePermissions": {
         "read_stream": false,
         "manage_mailbox": false,
