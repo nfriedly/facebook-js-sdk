@@ -1,4 +1,4 @@
-/*1318303519,169932141,JIT Construction: v455923,en_US*/
+/*1318378193,169903993,JIT Construction: v456768,en_US*/
 
 if (!window.FB) window.FB = {
     _apiKey: null,
@@ -511,22 +511,51 @@ FB.provide('ApiServer', {
         var b = FB.ApiServer._readOnlyCalls[c] ? 'api_read' : 'api';
         FB.ApiServer.oauthRequest(b, 'restserver.php', 'get', e, a);
     },
-    oauthRequest: function(b, f, c, e, a) {
-        if (!e.access_token && FB.getAccessToken()) e.access_token = FB.getAccessToken();
-        e.sdk = 'joey';
-        e.pretty = 0;
-        var d = a;
+    oauthRequest: function(b, g, d, f, a) {
+        if (!f.access_token && FB.getAccessToken()) f.access_token = FB.getAccessToken();
+        f.sdk = 'joey';
+        f.pretty = 0;
+        var e = a;
         a = function(h) {
-            if (FB.Auth && h && FB._session && FB._session.access_token == e.access_token && (h.error_code === '190' || (h.error && (h.error === 'invalid_token' || h.error.type === 'OAuthException')))) FB.getLoginStatus(null, true);
-            d && d(h);
+            if (FB.Auth && h && FB._session && FB._session.access_token == f.access_token && (h.error_code === '190' || (h.error && (h.error === 'invalid_token' || h.error.type === 'OAuthException')))) FB.getLoginStatus(null, true);
+            e && e(h);
         };
         try {
-            FB.ApiServer.jsonp(b, f, c, FB.JSON.flatten(e), a);
-        } catch (g) {
+            FB.ApiServer.jsonp(b, g, d, FB.JSON.flatten(f), a);
+        } catch (c) {
+            try {
+                if (!FB.initSitevars.corsKillSwitch && FB.ApiServer.corsPost(b, g, d, FB.JSON.flatten(f), a)) return;
+            } catch (e2_ignore) {}
             if (FB.Flash.hasMinVersion()) {
-                FB.ApiServer.flash(b, f, c, FB.JSON.flatten(e), a);
-            } else throw new Error('Flash is required for this API call.');
+                FB.ApiServer.flash(b, g, d, FB.JSON.flatten(f), a);
+            } else throw new Error('Your browser does not support long connect ' + 'requests. You can fix this problem by upgrading your browser ' + 'or installing the latest version of Flash');
         }
+    },
+    corsPost: function(c, g, e, f, a) {
+        var i = FB.getDomain(c) + g;
+        if (c == 'graph') f.method = e;
+        var d = FB.QS.encode(f);
+        var b = 'application/x-www-form-urlencoded';
+        var h = FB.ApiServer._createCORSRequest('POST', i, b);
+        if (h) {
+            h.onload = function() {
+                a && a(FB.JSON.parse(h.responseText));
+            };
+            h.send(d);
+            return true;
+        } else return false;
+    },
+    _createCORSRequest: function(b, c, a) {
+        if (!window.XMLHttpRequest) return null;
+        var d = new XMLHttpRequest();
+        if ("withCredentials" in d) {
+            d.open(b, c, true);
+            d.setRequestHeader('Content-type', a);
+        } else if (window.XDomainRequest) {
+            d = new XDomainRequest();
+            d.open(b, c);
+        } else d = null;
+        return d;
     },
     jsonp: function(b, f, d, e, a) {
         var c = FB.guid(),
@@ -891,11 +920,12 @@ FB.provide('Canvas', {
         FB.Arbiter.inform('getPageInfo', c, 'top');
         return FB.Canvas._pageInfo;
     },
+    _flashClassID: "CLSID:D27CDB6E-AE6D-11CF-96B8-444553540000",
     _hideFlashCallback: function(f) {
         var a = window.document.getElementsByTagName('object');
         for (var d = 0; d < a.length; d++) {
             var b = a[d];
-            if (b.type != "application/x-shockwave-flash") continue;
+            if (b.type != "application/x-shockwave-flash" && b.classid.toUpperCase() != FB.Canvas._flashClassID) continue;
             var c = false;
             for (var e = 0; e < b.childNodes.length; e++) if (b.childNodes[e].nodeName == "PARAM" && b.childNodes[e].name == "wmode") if (b.childNodes[e].value == "opaque" || b.childNodes[e].value == "transparent") c = true;
             if (!c) if (f.state == 'opened') {
@@ -2366,7 +2396,7 @@ FB.provide('', {
         });
         FB._userID = 0;
         FB._apiKey = a.appId || a.apiKey;
-        FB._oauth = a.oauth;
+        FB._oauth = FB.forceOAuth || !! a.oauth;
         if (!a.logging && window.location.toString().indexOf('fb_debug=1') < 0) FB._logging = false;
         if (FB.initSitevars.enableMobile) FB.UA._enableMobile = true;
         FB.XD.init(a.channelUrl);
@@ -5278,6 +5308,7 @@ FB.initSitevars = {
         "read_deals": false
     }
 };
+FB.forceOAuth = false;
 FB.widgetPipeEnabledApps = {
     "111476658864976": 1,
     "cca6477272fc5cb805f85a84f20fca1d": 1,
@@ -5296,20 +5327,20 @@ FB.provide("TemplateUI", {
 }, true);
 FB.provide("XFBML.ConnectBar", {
     "imgs": {
-        "buttonUrl": "rsrc.php\/v1\/yY\/r\/h_Y6u1wrZPW.png",
-        "missingProfileUrl": "rsrc.php\/v1\/yo\/r\/UlIqmHJn-SK.gif"
+        "buttonUrl": "rsrc.php\/v1\/yD\/r\/vTpCGF2NWj7.png",
+        "missingProfileUrl": "rsrc.php\/v1\/ym\/r\/nMw9YWcvr3_.gif"
     }
 }, true);
 FB.provide("XFBML.ProfilePic", {
     "_defPicMap": {
-        "pic": "rsrc.php\/v1\/yh\/r\/C5yt7Cqf3zU.jpg",
-        "pic_big": "rsrc.php\/v1\/yL\/r\/HsTZSDw4avx.gif",
-        "pic_big_with_logo": "rsrc.php\/v1\/y5\/r\/SRDCaeCL7hM.gif",
-        "pic_small": "rsrc.php\/v1\/yi\/r\/odA9sNLrE86.jpg",
-        "pic_small_with_logo": "rsrc.php\/v1\/yD\/r\/k1xiRXKnlGd.gif",
-        "pic_square": "rsrc.php\/v1\/yo\/r\/UlIqmHJn-SK.gif",
-        "pic_square_with_logo": "rsrc.php\/v1\/yX\/r\/9dYJBPDHXwZ.gif",
-        "pic_with_logo": "rsrc.php\/v1\/yu\/r\/fPPR9f2FJ3t.gif"
+        "pic": "rsrc.php\/v1\/yp\/r\/2cLuhrLzxsT.jpg",
+        "pic_big": "rsrc.php\/v1\/ya\/r\/Vh4HEOBGqoq.gif",
+        "pic_big_with_logo": "rsrc.php\/v1\/yl\/r\/gbd23PK7Uts.gif",
+        "pic_small": "rsrc.php\/v1\/yJ\/r\/uLqQ0MPKchK.jpg",
+        "pic_small_with_logo": "rsrc.php\/v1\/yh\/r\/vMk65SFB5Ka.gif",
+        "pic_square": "rsrc.php\/v1\/ym\/r\/nMw9YWcvr3_.gif",
+        "pic_square_with_logo": "rsrc.php\/v1\/y6\/r\/KqC4dWrYX1S.gif",
+        "pic_with_logo": "rsrc.php\/v1\/yG\/r\/-So-t1Fe5ja.gif"
     }
 }, true);
 if (FB.Dom && FB.Dom.addCssRules) {
