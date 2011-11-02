@@ -1,4 +1,4 @@
-/*1317891418,169924225,JIT Construction: v453907,en_US*/
+/*1320224080,169579116,JIT Construction: v466714,en_US*/
 
 .fb_hidden{position:absolute;top:-10000px;z-index:10001}
 .fb_invisible{display:none}
@@ -159,6 +159,9 @@ a.fb_button_small_rtl:active{background-position:right -458px}
 .fb_edge_widget_with_comment span.fb_send_button_form_widget.dark .FB_Loader{background-color:#000;border-bottom:2px solid #ccc}
 .fb_edge_widget_with_comment span.fb_send_button_form_widget.siderender
 .FB_Loader{margin-top:0}
-.fbpluginrecommendationsbar{position:fixed !important;bottom:0;z-index:999}
+.fbpluginrecommendationsbarleft,
+.fbpluginrecommendationsbarright{position:fixed !important;bottom:0;z-index:999}
+/* @noflip */
 .fbpluginrecommendationsbarleft{left:10px}
+/* @noflip */
 .fbpluginrecommendationsbarright{right:10px}
