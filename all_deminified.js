@@ -1,4 +1,4 @@
-/*1320703569,169922669,JIT Construction: v468330,en_US*/
+/*1321047179,169588079,JIT Construction: v470960,en_US*/
 
 if (!window.FB) window.FB = {
     _apiKey: null,
@@ -704,6 +704,7 @@ FB.provide('XD', {
     },
     handler: function(a, f, c, d, b) {
         if (window.location.toString().indexOf(FB.XD.Fragment._magic) > 0) return 'javascript:false;//';
+        if (FB.initSitevars.forceSecureXdProxy) b = true;
         var g = FB.getDomain((b ? 'https_' : '') + 'cdn') + FB.XD._xdProxyUrl + '#';
         d = d || FB.guid();
         f = f || 'opener';
@@ -1549,6 +1550,7 @@ FB.provide('Dialog', {
 });
 FB.provide('', {
     ui: function(f, b) {
+        f = FB.copy({}, f);
         if (!f.method) {
             FB.log('"method" is a required parameter for FB.ui().');
             return null;
@@ -1645,7 +1647,7 @@ FB.provide('UIServer', {
         } else {
             a.params = FB.JSON.flatten(a.params);
             var b = FB.QS.encode(a.params);
-            if (FB.UIServer.urlTooLongForIE(a.url + b)) {
+            if (!FB.UA.nativeApp() && FB.UIServer.urlTooLongForIE(a.url + '?' + b)) {
                 a.post = true;
             } else if (b) a.url += '?' + b;
         }
@@ -3325,7 +3327,7 @@ FB.provide('URI', {
     resolve: function(b) {
         if (!b) return window.location.href;
         var a = document.createElement('div');
-        a.innerHTML = '<a href="' + b.replace('"', '&quot;') + '"></a>';
+        a.innerHTML = '<a href="' + b.replace(/"/g, '&quot;') + '"></a>';
         return a.firstChild.href;
     }
 });
@@ -3801,7 +3803,7 @@ FB.subclass('XFBML.Comments', 'XFBML.IframeWidget', null, {
     getSize: function() {
         return {
             width: this._attr.width,
-            height: 200
+            height: 160
         };
     },
     getUrlBits: function() {
@@ -5356,6 +5358,7 @@ FB.initSitevars = {
     "parseXFBMLBeforeDomReady": false,
     "computeContentSizeVersion": 0,
     "enableMobile": 1,
+    "forceSecureXdProxy": 1,
     "iframePermissions": {
         "read_stream": false,
         "manage_mailbox": false,
