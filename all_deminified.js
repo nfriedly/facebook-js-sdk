@@ -1,4 +1,4 @@
-/*1322017302,169902205,JIT Construction: v476372,en_US*/
+/*1322699251,169582464,JIT Construction: v479137,en_US*/
 
 if (!window.FB) window.FB = {
     _apiKey: null,
@@ -921,6 +921,12 @@ FB.provide('Canvas', {
         FB.Arbiter.inform('getPageInfo', c, 'top');
         return FB.Canvas._pageInfo;
     },
+    hideFlashElement: function(a) {
+        a.style.visibility = 'hidden';
+    },
+    showFlashElement: function(a) {
+        a.style.visibility = '';
+    },
     _flashClassID: "CLSID:D27CDB6E-AE6D-11CF-96B8-444553540000",
     _hideFlashCallback: function(g) {
         var a = window.document.getElementsByTagName('object');
@@ -940,8 +946,8 @@ FB.provide('Canvas', {
                     };
                     setTimeout(function(j) {
                         if (j.state == 'opened') {
-                            j.elem.style.visibility = 'hidden';
-                        } else j.elem.style.visibility = '';
+                            FB.Canvas.hideFlashElement(j.elem);
+                        } else FB.Canvas.showFlashElement(j.elem);
                     }.bind(this, b), i);
                     FB.Canvas._devHideFlashCallback(b);
                 } else if (g.state == 'opened') {
@@ -4183,7 +4189,7 @@ FB.subclass('XFBML.EdgeWidget', 'XFBML.IframeWidget', null, {
             ref: this.getAttribute('ref'),
             show_faces: this._shouldShowFaces(),
             no_resize: this._getBoolAttribute('no_resize'),
-            send: this.getAttribute('send'),
+            send: this._getBoolAttribute('send'),
             url_map: this.getAttribute('url_map'),
             extended_social_context: this._getBoolAttribute('extended_social_context', false)
         };
@@ -4207,8 +4213,8 @@ FB.subclass('XFBML.EdgeWidget', 'XFBML.IframeWidget', null, {
     _getWidgetHeight: function() {
         var b = this._getLayout();
         var e = this._shouldShowFaces() ? 'show' : 'hide';
-        var d = this.getAttribute('send');
-        var a = 65 + (d && d !== 'false' ? 25 : 0);
+        var d = this._getBoolAttribute('send');
+        var a = 65 + (d ? 25 : 0);
         var c = {
             standard: {
                 show: 80,
@@ -4231,11 +4237,11 @@ FB.subclass('XFBML.EdgeWidget', 'XFBML.IframeWidget', null, {
     },
     _getWidgetWidth: function() {
         var e = this._getLayout();
-        var h = this.getAttribute('send');
+        var h = this._getBoolAttribute('send');
         var i = this._shouldShowFaces() ? 'show' : 'hide';
         var g = (this.getAttribute('action') === 'recommend');
-        var k = (g ? 265 : 225) + (h && h !== false ? 60 : 0);
-        var c = (g ? 130 : 90) + (h && h !== 'false' ? 60 : 0);
+        var k = (g ? 265 : 225) + (h ? 60 : 0);
+        var c = (g ? 130 : 90) + (h ? 60 : 0);
         var b = this.getAttribute('action') === 'recommend' ? 100 : 55;
         var j = this.getAttribute('action') === 'recommend' ? 90 : 50;
         var f = {
