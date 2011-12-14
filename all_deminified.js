@@ -1,4 +1,4 @@
-/*1323233131,169889667,JIT Construction: v482216,en_US*/
+/*1323847680,169549419,JIT Construction: v485662,en_US*/
 
 if (!window.FB) window.FB = {
     _apiKey: null,
@@ -815,7 +815,7 @@ FB.provide('UA', {
     },
     mobile: function() {
         FB.UA._populate();
-        return !FB._inCanvas && FB.UA._enableMobile && this._mobile;
+        return !FB._inCanvas && this._mobile;
     },
     nativeApp: function() {
         return FB.UA.mobile() && navigator.userAgent.match(/FBAN\/\w+;/i);
@@ -1073,34 +1073,6 @@ FB.provide('Canvas', {
         };
     }
 });
-FB.provide('Intl', {
-    _punctCharClass: ('[' + '.!?' + '\u3002' + '\uFF01' + '\uFF1F' + '\u0964' + '\u2026' + '\u0EAF' + '\u1801' + '\u0E2F' + '\uFF0E' + ']'),
-    _endsInPunct: function(a) {
-        if (typeof a != 'string') return false;
-        return a.match(new RegExp(FB.Intl._punctCharClass + '[' + ')"' + "'" + '\u00BB' + '\u0F3B' + '\u0F3D' + '\u2019' + '\u201D' + '\u203A' + '\u3009' + '\u300B' + '\u300D' + '\u300F' + '\u3011' + '\u3015' + '\u3017' + '\u3019' + '\u301B' + '\u301E' + '\u301F' + '\uFD3F' + '\uFF07' + '\uFF09' + '\uFF3D' + '\s' + ']*$'));
-    },
-    _tx: function(d, a) {
-        if (a !== undefined) if (typeof a != 'object') {
-            FB.log('The second arg to FB.Intl._tx() must be an Object for ' + 'tx(' + d + ', ...)');
-        } else {
-            var c;
-            for (var b in a) if (a.hasOwnProperty(b)) {
-                if (FB.Intl._endsInPunct(a[b])) {
-                    c = new RegExp('\{' + b + '\}' + FB.Intl._punctCharClass + '*', 'g');
-                } else c = new RegExp('\{' + b + '\}', 'g');
-                d = d.replace(c, a[b]);
-            }
-        }
-        return d;
-    },
-    tx: function(b, a) {
-        function c(e, d) {
-            void(0);
-        }
-        if (!FB.Intl._stringTable) return null;
-        return FBIntern.Intl._tx(FB.Intl._stringTable[b], a);
-    }
-});
 FB.provide('String', {
     trim: function(a) {
         return a.replace(/^\s*|\s*$/g, '');
@@ -1266,6 +1238,34 @@ FB.provide('Dom', {
         } else oldonload();
     };
 })();
+FB.provide('Intl', {
+    _punctCharClass: ('[' + '.!?' + '\u3002' + '\uFF01' + '\uFF1F' + '\u0964' + '\u2026' + '\u0EAF' + '\u1801' + '\u0E2F' + '\uFF0E' + ']'),
+    _endsInPunct: function(a) {
+        if (typeof a != 'string') return false;
+        return a.match(new RegExp(FB.Intl._punctCharClass + '[' + ')"' + "'" + '\u00BB' + '\u0F3B' + '\u0F3D' + '\u2019' + '\u201D' + '\u203A' + '\u3009' + '\u300B' + '\u300D' + '\u300F' + '\u3011' + '\u3015' + '\u3017' + '\u3019' + '\u301B' + '\u301E' + '\u301F' + '\uFD3F' + '\uFF07' + '\uFF09' + '\uFF3D' + '\s' + ']*$'));
+    },
+    _tx: function(d, a) {
+        if (a !== undefined) if (typeof a != 'object') {
+            FB.log('The second arg to FB.Intl._tx() must be an Object for ' + 'tx(' + d + ', ...)');
+        } else {
+            var c;
+            for (var b in a) if (a.hasOwnProperty(b)) {
+                if (FB.Intl._endsInPunct(a[b])) {
+                    c = new RegExp('\{' + b + '\}' + FB.Intl._punctCharClass + '*', 'g');
+                } else c = new RegExp('\{' + b + '\}', 'g');
+                d = d.replace(c, a[b]);
+            }
+        }
+        return d;
+    },
+    tx: function(b, a) {
+        function c(e, d) {
+            void(0);
+        }
+        if (!FB.Intl._stringTable) return null;
+        return FBIntern.Intl._tx(FB.Intl._stringTable[b], a);
+    }
+});
 FB.provide('', {
     bind: function() {
         var a = Array.prototype.slice.call(arguments),
@@ -2379,28 +2379,19 @@ FB.provide('Frictionless', {
         });
     },
     _processRequestResponse: function(a, b) {
-        return function(e) {
-            var d = e && typeof e.frictionless_value !== 'undefined';
-            var f = e && e.updated_frictionless;
-            if (FB.Frictionless._useFrictionless && (f || d)) {
-                FB.Frictionless._updateRecipients();
-                if (d) {
-                    var c = [];
-                    FB.Array.forEach(e.request_ids, function(g) {
-                        c.push(g);
-                    }, false);
-                    e.request_ids = c;
-                }
-            }
-            if (e) {
-                if (!b && e.frictionless) {
+        return function(c) {
+            var d = c && c.updated_frictionless;
+            if (FB.Frictionless._useFrictionless && d) FB.Frictionless._updateRecipients();
+            if (c) {
+                if (!b && c.frictionless) {
                     FB.Dialog._hideLoader();
                     FB.Dialog._restoreBodyPosition();
                     FB.Dialog._hideIPadOverlay();
                 }
-                delete e.frictionless;
+                delete c.frictionless;
+                delete c.updated_frictionless;
             }
-            a && a(e);
+            a && a(c);
         };
     },
     isAllowed: function(c) {
@@ -2428,7 +2419,6 @@ FB.provide('', {
         FB._apiKey = a.appId || a.apiKey;
         FB._oauth = FB.forceOAuth || !! a.oauth;
         if (!a.logging && window.location.toString().indexOf('fb_debug=1') < 0) FB._logging = false;
-        if (FB.initSitevars.enableMobile) FB.UA._enableMobile = true;
         FB.XD.init(a.channelUrl);
         if (FB.UA.mobile() && FB.TemplateUI && FB.TemplateData && FB.TemplateData._enabled && a.useCachedDialogs !== false) {
             FB.TemplateUI.init();
@@ -5361,7 +5351,7 @@ FB.provide("Flash", {
         [10, 3, 181, 34],
         [11, 0, 0]
     ],
-    "_swfPath": "rsrc.php\/v1\/yK\/r\/RIxWozDt5Qq.swf"
+    "_swfPath": "rsrc.php\/v1\/yD\/r\/GL74y29Am1r.swf"
 }, true);
 FB.provide("XD", {
     "_xdProxyUrl": "connect\/xd_proxy.php?version=3"
@@ -5409,7 +5399,7 @@ FB.initSitevars = {
         "read_deals": false
     }
 };
-FB.forceOAuth = false;
+FB.forceOAuth = true;
 FB.widgetPipeEnabledApps = {
     "111476658864976": 1,
     "cca6477272fc5cb805f85a84f20fca1d": 1,
