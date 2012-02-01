@@ -31,21 +31,21 @@ The CSS Tidy wrapper requires php5-cli: ` sudo aptitude install php5-cli`
 Official FB links
 -----------------
 
-Documentation for the JavaScript SDK: 
+**Documentation for the JavaScript SDK:** 
 
 * http://developers.facebook.com/docs/reference/javascript/
 
-Bug Tracker: 
+**Bug Tracker:** 
 
-* http://bugs.developers.facebook.net/
+* https://developers.facebook.com/bugs 
 
-Recent Changes & Current Status:
+**Recent Changes & Current Status:**
 
 * Change Log: https://developers.facebook.com/docs/changelog/
 * Platform Live Status: https://developers.facebook.com/live_status
 * JSON feed of current push status and most recent Platform Live Status issue: https://www.facebook.com/feeds/api_status.php
 
-Upcomming & Long-term Changes: 
+**Upcomming & Long-term Changes:** 
 
 * Code that will be released within a day or two -- be sure to label any bugs as BETA: https://developers.facebook.com/support/beta-tier/
 * Developer Blog: https://developers.facebook.com/blog/
