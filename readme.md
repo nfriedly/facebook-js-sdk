@@ -24,8 +24,7 @@ set up an appropriate crontab. Mine looks like this:
 
 This setup sends me an email if there were errors, but not if everything worked successfully.
 
-The CSS Tidy wrapper requires php5-cli:
-sudo aptitude install php5-cli
+The CSS Tidy wrapper requires php5-cli: ` sudo aptitude install php5-cli`
 
 ---
 
