@@ -1,4 +1,4 @@
-/*1328059350,169937253,JIT Construction: v503137,en_US*/
+/*1328233987,169584751,JIT Construction: v504373,en_US*/
 
 if (!window.FB) window.FB = {
     _apiKey: null,
@@ -1242,34 +1242,37 @@ FB.provide('Dom', {
         } else oldonload();
     };
 })();
-FB.provide('Intl', {
-    _punctCharClass: ('[' + '.!?' + '\u3002' + '\uFF01' + '\uFF1F' + '\u0964' + '\u2026' + '\u0EAF' + '\u1801' + '\u0E2F' + '\uFF0E' + ']'),
-    _endsInPunct: function(a) {
-        if (typeof a != 'string') return false;
-        return a.match(new RegExp(FB.Intl._punctCharClass + '[' + ')"' + "'" + '\u00BB' + '\u0F3B' + '\u0F3D' + '\u2019' + '\u201D' + '\u203A' + '\u3009' + '\u300B' + '\u300D' + '\u300F' + '\u3011' + '\u3015' + '\u3017' + '\u3019' + '\u301B' + '\u301E' + '\u301F' + '\uFD3F' + '\uFF07' + '\uFF09' + '\uFF3D' + '\s' + ']*$'));
-    },
-    _tx: function(d, a) {
-        if (a !== undefined) if (typeof a != 'object') {
-            FB.log('The second arg to FB.Intl._tx() must be an Object for ' + 'tx(' + d + ', ...)');
+FB.provide('Intl', (function() {
+    var b = ('[' + '.!?' + '\u3002' + '\uFF01' + '\uFF1F' + '\u0964' + '\u2026' + '\u0EAF' + '\u1801' + '\u0E2F' + '\uFF0E' + ']');
+
+    function a(e) {
+        if (typeof e != 'string') return false;
+        return e.match(new RegExp(b + '[' + ')"' + "'" + '\u00BB' + '\u0F3B' + '\u0F3D' + '\u2019' + '\u201D' + '\u203A' + '\u3009' + '\u300B' + '\u300D' + '\u300F' + '\u3011' + '\u3015' + '\u3017' + '\u3019' + '\u301B' + '\u301E' + '\u301F' + '\uFD3F' + '\uFF07' + '\uFF09' + '\uFF3D' + '\s' + ']*$'));
+    }
+    function c(h, e) {
+        if (e !== undefined) if (typeof e != 'object') {
+            FB.log('The second arg to FB.Intl._tx() must be an Object for ' + 'tx(' + h + ', ...)');
         } else {
-            var c;
-            for (var b in a) if (a.hasOwnProperty(b)) {
-                if (FB.Intl._endsInPunct(a[b])) {
-                    c = new RegExp('\{' + b + '\}' + FB.Intl._punctCharClass + '*', 'g');
-                } else c = new RegExp('\{' + b + '\}', 'g');
-                d = d.replace(c, a[b]);
+            var g;
+            for (var f in e) if (e.hasOwnProperty(f)) {
+                if (a(e[f])) {
+                    g = new RegExp('\{' + f + '\}' + b + '*', 'g');
+                } else g = new RegExp('\{' + f + '\}', 'g');
+                h = h.replace(g, e[f]);
             }
         }
-        return d;
-    },
-    tx: function(b, a) {
-        function c(e, d) {
-            void(0);
-        }
-        if (!FB.Intl._stringTable) return null;
-        return FBIntern.Intl._tx(FB.Intl._stringTable[b], a);
+        return h;
     }
-});
+    function d(f, e) {
+        if (!FB.Intl._stringTable) return null;
+        return c(FB.Intl._stringTable[f], e);
+    }
+    d._ = c;
+    return {
+        tx: d,
+        _tx: c
+    };
+})());
 FB.provide('', {
     bind: function() {
         var a = Array.prototype.slice.call(arguments),
@@ -2396,8 +2399,8 @@ FB.provide('UIServer.MobileIframableMethod', {
 FB.provide('UIServer.Methods', {
     'stream.share': {
         size: {
-            width: 575,
-            height: 380
+            width: 650,
+            height: 340
         },
         url: 'sharer.php',
         transform: function(a) {
@@ -2676,6 +2679,9 @@ FB.provide('XFBML', {
     }, {
         localName: 'share-button',
         className: 'FB.XFBML.ShareButton'
+    }, {
+        localName: 'social-context',
+        className: 'FB.XFBML.SocialContext'
     }, {
         localName: 'subscribe',
         className: 'FB.XFBML.Subscribe'
@@ -5147,6 +5153,33 @@ FB.subclass('XFBML.ShareButton', 'XFBML.Element', null, {
             }
         } else this._count.wait(FB.bind(this._renderButton, this, false));
         return '<span class="fb_share_count_inner">' + b + '</span>';
+    }
+});
+FB.subclass('XFBML.SocialContext', 'XFBML.IframeWidget', null, {
+    setupAndValidate: function() {
+        var a = this.getAttribute('size', 'small');
+        this._attr = {
+            channel: this.getChannelUrl(),
+            width: this._getPxAttribute('width', 400),
+            height: this._getPxAttribute('height', 100),
+            ref: this.getAttribute('ref'),
+            size: this.getAttribute('size'),
+            keywords: this.getAttribute('keywords'),
+            urls: this.getAttribute('urls')
+        };
+        return true;
+    },
+    getSize: function() {
+        return {
+            width: this._attr.width,
+            height: this._attr.height
+        };
+    },
+    getUrlBits: function() {
+        return {
+            name: 'social_context',
+            params: this._attr
+        };
     }
 });
 FB.subclass('XFBML.Subscribe', 'XFBML.EdgeWidget', null, {
