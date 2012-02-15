@@ -1,4 +1,4 @@
-/*1326880084,169906046,JIT Construction: v496429,en_US*/
+/*1329299140,169923703,JIT Construction: v509896,en_US*/
 .fb_hidden
 {
 	position:absolute;
@@ -841,19 +841,8 @@ a.fb_button_small_rtl:active
 	position:absolute;
 }
 
-.fb_edge_widget_with_comment span.fb_edge_comment_widget iframe.fb_ltr
-{
-	left:-4px;
-}
-
-.fb_edge_widget_with_comment span.fb_edge_comment_widget iframe.fb_rtl
-{
-	left:2px;
-}
-
 .fb_edge_widget_with_comment span.fb_send_button_form_widget
 {
-	left:0;
 	z-index:1;
 }
 
