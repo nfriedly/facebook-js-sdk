@@ -1,4 +1,4 @@
-/*1329263722,169925240,JIT Construction: v509896,en_US*/
+/*1329959856,169902964,JIT Construction: v513378,en_US*/
 
 if (!window.FB) window.FB = {
     _apiKey: null,
@@ -1960,11 +1960,7 @@ FB.provide('', {
             delete b.perms;
             FB.log('OAuth2 specification states that \'perms\' ' + 'should now be called \'scope\'.  Please update.');
         }
-        FB.ui(FB.copy({
-            method: 'permissions.oauth',
-            display: 'popup',
-            domain: location.hostname
-        }, b || {}), a);
+        FB.Auth.login(a, b);
     },
     logout: function(a) {
         FB.ui({
@@ -1976,6 +1972,13 @@ FB.provide('', {
 FB.provide('Auth', {
     _callbacks: [],
     _xdStorePath: 'xd_localstorage/',
+    login: function(a, b) {
+        FB.ui(FB.copy({
+            method: 'permissions.oauth',
+            display: 'popup',
+            domain: location.hostname
+        }, b || {}), a);
+    },
     fetchLoginStatus: function(a) {
         if (FB.UA.mobile() && window.postMessage && window.localStorage) {
             FB.Auth.staticAuthCheck(a);
@@ -4431,6 +4434,7 @@ FB.subclass('XFBML.LiveStream', 'XFBML.IframeWidget', null, {
     setupAndValidate: function() {
         this._attr = {
             app_id: this.getAttribute('event-app-id'),
+            href: this.getAttribute('href', window.location.href),
             height: this._getPxAttribute('height', 500),
             hideFriendsTab: this.getAttribute('hide-friends-tab'),
             redesigned: this._getBoolAttribute('redesigned-stream'),
