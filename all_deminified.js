@@ -1,4 +1,4 @@
-/*1329959856,169902964,JIT Construction: v513378,en_US*/
+/*1330040795,169914217,JIT Construction: v513656,en_US*/
 
 if (!window.FB) window.FB = {
     _apiKey: null,
@@ -5349,7 +5349,7 @@ FB.widgetPipeEnabledApps = {
 };
 FB.widgetPipeTagCountThreshold = 4;
 FB.provide("TemplateData", {
-    "_enabled": true
+    "_enabled": 0
 }, true);
 FB.provide("TemplateUI", {
     "_version": 19
