@@ -1,5 +1,18 @@
-/*1329299140,169923703,JIT Construction: v509896,en_US*/
-.fb_hidden
+/*1331725394,169908866,JIT Construction: v523214,en_US*/
+var FB;if (typeof FB === undefined)
+{
+	FB:{;
+}
+
+; (function()
+{
+}
+
+; var __DEV__ = 0; function __d()
+{
+}
+
+var __e = __d; .fb_hidden
 {
 	position:absolute;
 	top:-10000px;
@@ -890,4 +903,8 @@ a.fb_button_small_rtl:active
 .fbpluginrecommendationsbarright
 {
 	right:10px;
+}	
+}
+
+	
 }

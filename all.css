@@ -1,6 +1,6 @@
-/*1329299140,169923703,JIT Construction: v509896,en_US*/
+/*1331725394,169908866,JIT Construction: v523214,en_US*/
 
-.fb_hidden{position:absolute;top:-10000px;z-index:10001}
+var FB;if (typeof FB === "undefined") {  FB = {};  (function() {    function bagofholding() {};    var __DEV__ = 0;    function __d() { FB.__d.apply(FB, arguments); }    var __e = __d;    .fb_hidden{position:absolute;top:-10000px;z-index:10001}
 .fb_invisible{display:none}
 .fb_reset{background:none;border-spacing:0;border:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size: 11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}
 .fb_link img{border:none}
@@ -163,3 +163,4 @@ a.fb_button_small_rtl:active{background-position:right -458px}
 .fbpluginrecommendationsbarleft{left:10px}
 /* @noflip */
 .fbpluginrecommendationsbarright{right:10px}
+;    ;  }).call(FB);}
