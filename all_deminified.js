@@ -1,4 +1,4 @@
-/*1332316501,169918831,JIT Construction: v526390,en_US*/
+/*1332373768,169908603,JIT Construction: v526949,en_US*/
 
 var FB;
 if (!FB) {
@@ -887,24 +887,29 @@ if (!FB) {
                 u = 'context';
 
             function v(ga) {
+                if (!b[ga]) throw new Error('Requiring module "' + ga + '" that has not been loaded yet. ' + 'Did you forget to run arc build?');
                 var ha = b[ga],
-                    ia, ja;
+                    ia, ja, ka;
                 if (ha[m] && ha[h] & g) y();
+                if (ha[m]) {
+                    ka = 'Requiring module "' + ga + '" with unresolved dependencies';
+                    throw new Error(ka);
+                }
                 if (!ha[j]) {
-                    var ka = ha[j] = {},
-                        la = ha[n];
-                    if (Object.prototype.toString.call(la) === '[object Function]') {
-                        var ma = [],
-                            na = ha[k],
-                            oa = na.length;
-                        if (ha[h] & g) oa = Math.min(oa, la.length);
-                        for (ja = 0; ja < oa; ja++) {
-                            ia = na[ja];
-                            ma.push(ia === l ? ha : (ia === j ? ka : v(ia)));
+                    var la = ha[j] = {},
+                        ma = ha[n];
+                    if (Object.prototype.toString.call(ma) === '[object Function]') {
+                        var na = [],
+                            oa = ha[k],
+                            pa = oa.length;
+                        if (ha[h] & g) pa = Math.min(pa, ma.length);
+                        for (ja = 0; ja < pa; ja++) {
+                            ia = oa[ja];
+                            na.push(ia === l ? ha : (ia === j ? la : v(ia)));
                         }
-                        var pa = la.apply(ha[u] || a, ma);
-                        if (pa) ha[j] = pa;
-                    } else ha[j] = la;
+                        var qa = ma.apply(ha[u] || a, na);
+                        if (qa) ha[j] = qa;
+                    } else ha[j] = ma;
                 }
                 if (ha[i]-- === 1) delete b[ga];
                 return ha[j];
@@ -2746,7 +2751,7 @@ if (!FB) {
                 } else if (FB.UA.nativeApp() && !a.ui_created) {
                     a.frame = a.id;
                     FB.Native.onready(function() {
-                        FB.UIServer.setLoadedNode(a, FB.Native.open(a.url + '#cb=' + a.frameName));
+                        FB.UIServer.setLoadedNode(a, FB.Native.open(a.url + '#cb=' + a.frameName), 'native');
                     });
                     FB.UIServer._popupMonitor();
                 } else if (!a.ui_created) FB.UIServer.popup(a);
@@ -2833,7 +2838,7 @@ if (!FB) {
                 var a;
                 for (var b in FB.UIServer._loadedNodes) if (FB.UIServer._loadedNodes.hasOwnProperty(b) && b in FB.UIServer._defaultCb) {
                     var c = FB.UIServer._loadedNodes[b];
-                    if (c.type != 'popup') continue;
+                    if (c.type != 'popup' && c.type != 'native') continue;
                     win = c.node;
                     try {
                         if (win.closed) {
