@@ -1,4 +1,4 @@
-/*1332898920,169910651,JIT Construction: v532289,en_US*/
+/*1333588046,169910387,JIT Construction: v536313,en_US*/
 
 var FB;
 if (!FB) {
@@ -215,7 +215,7 @@ if (!FB) {
                         a.onload && a.onload(a.root.firstChild);
                     }
                 };
-                if (FB.UA.ie()) {
+                if (document.attachEvent) {
                     var e = ('<iframe' + ' id="' + a.id + '"' + ' name="' + a.name + '"' + (a.title ? ' title="' + a.title + '"' : '') + (a.className ? ' class="' + a.className + '"' : '') + ' style="border:none;' + (a.width ? 'width:' + a.width + 'px;' : '') + (a.height ? 'height:' + a.height + 'px;' : '') + '"' + ' src="javascript:false;"' + ' frameborder="0"' + ' scrolling="no"' + ' allowtransparency="true"' + ' onload="FB.Content._callbacks.' + b + '()"' + '></iframe>');
                     a.root.innerHTML = '<iframe src="javascript:false"' + ' frameborder="0"' + ' scrolling="no"' + ' style="height:1px"></iframe>';
                     c = true;
@@ -282,10 +282,10 @@ if (!FB) {
                 FB.Flash.embedSWF('XdComm', FB.getDomain('cdn_foreign') + FB.Flash._swfPath);
             },
             embedSWF: function(a, b, c) {
-                var d = FB.UA.ie(),
+                var d = !! document.attachEvent,
                     e = ('<object ' + 'type="application/x-shockwave-flash" ' + 'id="' + a + '" ' + (c ? 'flashvars="' + c + '" ' : '') + (d ? 'name="' + a + '" ' : '') + (d ? '' : 'data="' + b + '" ') + (d ? 'classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" ' : '') + 'allowscriptaccess="always">' + '<param name="movie" value="' + b + '"></param>' + '<param name="allowscriptaccess" value="always"></param>' + '</object>');
                 FB.Content.appendHidden(e);
-                if (d >= 9) {
+                if (FB.UA.ie() >= 9) {
                     if (!FB.Flash._unloadRegistered) {
                         var f = function() {
                                 FB.Array.forEach(FB.Flash._names, function(g, h) {
@@ -739,17 +739,16 @@ if (!FB) {
             _nonOpenerOrigin: null,
             init: function(a) {
                 if (FB.XD._origin) return;
-                var b = FB.UA.ie(),
-                    c = (window.location.protocol + '//' + window.location.host + '/' + FB.guid());
-                if (window.postMessage && !b) {
-                    FB.XD._origin = c;
+                var b = (window.location.protocol + '//' + window.location.host + '/' + FB.guid());
+                if (window.addEventListener && !window.attachEvent && window.postMessage) {
+                    FB.XD._origin = b;
                     FB.XD.PostMessage.init();
                     FB.XD._transport = 'postmessage';
                 } else if (!a && FB.Flash.hasMinVersion()) {
                     if (document.getElementById('fb-root')) {
-                        var d = document.domain;
-                        if (d == 'facebook.com') d = window.location.host;
-                        FB.XD._origin = (window.location.protocol + '//' + d + '/' + FB.guid());
+                        var c = document.domain;
+                        if (c == 'facebook.com') c = window.location.host;
+                        FB.XD._origin = (window.location.protocol + '//' + c + '/' + FB.guid());
                         FB.XD.Flash.init();
                         FB.XD._transport = 'flash';
                     } else {
@@ -761,10 +760,11 @@ if (!FB) {
                     FB.XD._transport = 'fragment';
                     FB.XD.Fragment._channelUrl = a || window.location.toString();
                 }
-                if (FB.XD._transport != 'postmessage' && b <= 8 && window.postMessage) {
+                var d = !! window.attachEvent;
+                if (FB.XD._transport != 'postmessage' && d && window.postMessage) {
                     FB.XD._openerTransport = FB.XD._transport;
                     FB.XD._openerOrigin = FB.XD._origin;
-                    FB.XD._nonOpenerOrigin = c;
+                    FB.XD._nonOpenerOrigin = b;
                 }
             },
             resolveRelation: function(a) {
@@ -3361,7 +3361,7 @@ if (!FB) {
                 FB._userID = 0;
                 FB._apiKey = a.appId || a.apiKey;
                 if (!a.logging && window.location.toString().indexOf('fb_debug=1') < 0) FB._logging = false;
-                FB.XD.init(a.channelUrl);
+                FB.XD.init(a.channelUrl ? FB.URI.resolve(a.channelUrl) : null);
                 if (FB.UA.mobile() && FB.TemplateUI && FB.TemplateData && FB.TemplateData._enabled && a.useCachedDialogs !== false) {
                     FB.TemplateUI.init();
                     FB.Event.subscribe('auth.statusChange', FB.TemplateData.update);
@@ -6282,12 +6282,12 @@ if (!FB) {
         __d("XDConfig", [], {
             "XdUrl": "connect\/xd_arbiter.php?version=4",
             "Flash": {
-                "path": "https:\/\/s-static.facebook.net\/rsrc.php\/v1\/ys\/r\/WON-TVLCpDP.swf"
+                "path": "https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v1\/ys\/r\/WON-TVLCpDP.swf"
             },
             "useCdn": true
         });
         __d("SDKConfig", [], {
-            "legacy": true
+            "legacy": false
         });;
     }).call(FB);
 }
