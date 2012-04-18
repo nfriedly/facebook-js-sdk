@@ -1,4 +1,4 @@
-/*1331898184,169914492,JIT Construction: v524375,en_US*/
+/*1334750279,169937008,JIT Construction: v543117,en_US*/
 var FB;if (!FB)
 {
 	FB:{;
@@ -80,8 +80,8 @@ var __e = __d; .fb_hidden
 
 .fb_dialog_close_icon
 {
-	background:url(https://s-static.ak.facebook.com/rsrc.php/v1/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;
-	_background-image:url(https://s-static.ak.facebook.com/rsrc.php/v1/yL/r/s816eWC-2sl.gif);
+	background:url(https://s-static.ak.fbcdn.net/rsrc.php/v1/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;
+	_background-image:url(https://s-static.ak.fbcdn.net/rsrc.php/v1/yL/r/s816eWC-2sl.gif);
 	cursor:pointer;
 	display:block;
 	height:15px;
@@ -110,14 +110,14 @@ var __e = __d; .fb_hidden
 
 .fb_dialog_close_icon:hover
 {
-	background:url(https://s-static.ak.facebook.com/rsrc.php/v1/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent;
-	_background-image:url(https://s-static.ak.facebook.com/rsrc.php/v1/yL/r/s816eWC-2sl.gif);
+	background:url(https://s-static.ak.fbcdn.net/rsrc.php/v1/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent;
+	_background-image:url(https://s-static.ak.fbcdn.net/rsrc.php/v1/yL/r/s816eWC-2sl.gif);
 }
 
 .fb_dialog_close_icon:active
 {
-	background:url(https://s-static.ak.facebook.com/rsrc.php/v1/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent;
-	_background-image:url(https://s-static.ak.facebook.com/rsrc.php/v1/yL/r/s816eWC-2sl.gif);
+	background:url(https://s-static.ak.fbcdn.net/rsrc.php/v1/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent;
+	_background-image:url(https://s-static.ak.fbcdn.net/rsrc.php/v1/yL/r/s816eWC-2sl.gif);
 }
 
 .fb_dialog_loader
@@ -138,28 +138,28 @@ var __e = __d; .fb_hidden
 
 .fb_dialog_top_left
 {
-	background:url(https://s-static.ak.facebook.com/rsrc.php/v1/ye/r/8YeTNIlTZjm.png) no-repeat 0 0;
+	background:url(https://s-static.ak.fbcdn.net/rsrc.php/v1/ye/r/8YeTNIlTZjm.png) no-repeat 0 0;
 	left:-10px;
 	top:-10px;
 }
 
 .fb_dialog_top_right
 {
-	background:url(https://s-static.ak.facebook.com/rsrc.php/v1/ye/r/8YeTNIlTZjm.png) no-repeat 0 -10px;
+	background:url(https://s-static.ak.fbcdn.net/rsrc.php/v1/ye/r/8YeTNIlTZjm.png) no-repeat 0 -10px;
 	right:-10px;
 	top:-10px;
 }
 
 .fb_dialog_bottom_left
 {
-	background:url(https://s-static.ak.facebook.com/rsrc.php/v1/ye/r/8YeTNIlTZjm.png) no-repeat 0 -20px;
+	background:url(https://s-static.ak.fbcdn.net/rsrc.php/v1/ye/r/8YeTNIlTZjm.png) no-repeat 0 -20px;
 	bottom:-10px;
 	left:-10px;
 }
 
 .fb_dialog_bottom_right
 {
-	background:url(https://s-static.ak.facebook.com/rsrc.php/v1/ye/r/8YeTNIlTZjm.png) no-repeat 0 -30px;
+	background:url(https://s-static.ak.fbcdn.net/rsrc.php/v1/ye/r/8YeTNIlTZjm.png) no-repeat 0 -30px;
 	right:-10px;
 	bottom:-10px;
 }
@@ -223,7 +223,7 @@ var __e = __d; .fb_hidden
 
 .fb_dialog_content .dialog_title > span
 {
-	background:url(https://s-static.ak.facebook.com/rsrc.php/v1/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;
+	background:url(https://s-static.ak.fbcdn.net/rsrc.php/v1/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;
 	float:left;
 	padding:5px 0 7px 26px;
 }
@@ -242,7 +242,7 @@ body.fb_hidden
 
 .fb_dialog.fb_dialog_mobile.loading
 {
-	background:url(https://s-static.ak.facebook.com/rsrc.php/v1/yO/r/_j03izEX40U.gif) white no-repeat 50% 50%;
+	background:url(https://s-static.ak.fbcdn.net/rsrc.php/v1/yO/r/_j03izEX40U.gif) white no-repeat 50% 50%;
 	min-height:100%;
 	min-width:100%;
 	overflow:hidden;
@@ -357,7 +357,7 @@ body.fb_hidden
 
 .fb_dialog_content .dialog_content
 {
-	background:url(https://s-static.ak.facebook.com/rsrc.php/v1/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;
+	background:url(https://s-static.ak.fbcdn.net/rsrc.php/v1/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;
 	border:1px solid #555;
 	border-bottom:0;
 	border-top:0;
@@ -396,13 +396,15 @@ body.fb_hidden
 
 .fb_iframe_widget iframe
 {
-	position:relative;
-	vertical-align:text-bottom;
+	position:absolute;
+	z-index:1;
 }
 
 .fb_iframe_widget span
 {
 	position:relative;
+	display:inline-block;
+	vertical-align:text-bottom;
 }
 
 .fb_hide_iframes iframe
@@ -431,7 +433,7 @@ body.fb_hidden
 
 .fb_iframe_widget_loader .FB_Loader
 {
-	background:url(https://s-static.ak.facebook.com/rsrc.php/v1/y9/r/jKEcVPZFk-2.gif) no-repeat;
+	background:url(https://s-static.ak.fbcdn.net/rsrc.php/v1/y9/r/jKEcVPZFk-2.gif) no-repeat;
 	height:32px;
 	width:32px;
 	margin-left:-16px;
@@ -442,7 +444,7 @@ body.fb_hidden
 
 .fb_button_simple,.fb_button_simple_rtl
 {
-	background-image:url(https://s-static.ak.facebook.com/rsrc.php/v1/yH/r/eIpbnVKI9lR.png);
+	background-image:url(https://s-static.ak.fbcdn.net/rsrc.php/v1/yH/r/eIpbnVKI9lR.png);
 	background-repeat:no-repeat;
 	cursor:pointer;
 	outline:none;
@@ -472,7 +474,7 @@ a.fb_button_simple:hover .fb_button_text,a.fb_button_simple_rtl:hover .fb_button
 
 .fb_button,.fb_button_rtl
 {
-	background:#29447e url(https://s-static.ak.facebook.com/rsrc.php/v1/yL/r/FGFbc80dUKj.png);
+	background:#29447e url(https://s-static.ak.fbcdn.net/rsrc.php/v1/yL/r/FGFbc80dUKj.png);
 	background-repeat:no-repeat;
 	cursor:pointer;
 	display:inline-block;
@@ -483,7 +485,7 @@ a.fb_button_simple:hover .fb_button_text,a.fb_button_simple_rtl:hover .fb_button
 
 .fb_button .fb_button_text,.fb_button_rtl .fb_button_text
 {
-	background:#5f78ab url(https://s-static.ak.facebook.com/rsrc.php/v1/yL/r/FGFbc80dUKj.png);
+	background:#5f78ab url(https://s-static.ak.fbcdn.net/rsrc.php/v1/yL/r/FGFbc80dUKj.png);
 	border-top:solid 1px #879ac0;
 	border-bottom:solid 1px #1a356e;
 	color:#fff;
@@ -696,7 +698,7 @@ a.fb_button_small_rtl:active
 	width:6px;
 	height:7px;
 	background-repeat:no-repeat;
-	background-image:url(https://s-static.ak.facebook.com/rsrc.php/v1/yU/r/bSOHtKbCGYI.png);
+	background-image:url(https://s-static.ak.fbcdn.net/rsrc.php/v1/yU/r/bSOHtKbCGYI.png);
 }
 
 .fb_share_count_nub_right
@@ -707,7 +709,7 @@ a.fb_button_small_rtl:active
 	width:5px;
 	height:10px;
 	background-repeat:no-repeat;
-	background-image:url(https://s-static.ak.facebook.com/rsrc.php/v1/yX/r/i_oIVTKMYsL.png);
+	background-image:url(https://s-static.ak.fbcdn.net/rsrc.php/v1/yX/r/i_oIVTKMYsL.png);
 	vertical-align:top;
 	background-position:right 5px;
 	z-index:10;
