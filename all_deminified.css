@@ -1,4 +1,4 @@
-/*1334750279,169937008,JIT Construction: v543117,en_US*/
+/*1334923069,169910390,JIT Construction: v544399,en_US*/
 var FB;if (!FB)
 {
 	FB:{;
@@ -405,6 +405,7 @@ body.fb_hidden
 	position:relative;
 	display:inline-block;
 	vertical-align:text-bottom;
+	text-align:justify;
 }
 
 .fb_hide_iframes iframe
