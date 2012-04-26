@@ -1,4 +1,4 @@
-/*1335316613,169926254,JIT Construction: v546667,en_US*/
+/*1335400240,169932158,JIT Construction: v547449,en_US*/
 
 var FB;
 if (!FB) {
@@ -3679,7 +3679,9 @@ if (!FB) {
                             j.Insights.impression({
                                 lid: 113,
                                 name: 'url_parse_error',
-                                payload: document.referrer
+                                payload: {
+                                    url: document.referrer
+                                }
                             });
                             return;
                         }
@@ -3689,7 +3691,9 @@ if (!FB) {
                             j.Insights.impression({
                                 lid: 113,
                                 name: 'url_parse_error',
-                                payload: location.href
+                                payload: {
+                                    url: location.href
+                                }
                             });
                             return;
                         }
@@ -5246,10 +5250,11 @@ if (!FB) {
         FB.provide('Insights', {
             impression: function(a, b) {
                 var c = FB.guid(),
-                    d = "//ah8.facebook.com/impression.php/" + c + "/",
+                    d = FB.getDomain(location.protocol == 'https:' ? 'https_www' : 'www') + "impression.php/" + c + "/",
                     e = new Image(1, 1),
                     f = [];
                 if (!a.api_key && FB._apiKey) a.api_key = FB._apiKey;
+                a = FB.JSON.flatten(a);
                 for (var g in a) f.push(encodeURIComponent(g) + '=' + encodeURIComponent(a[g]));
                 d += '?' + f.join('&');
                 if (b) e.onload = b;
