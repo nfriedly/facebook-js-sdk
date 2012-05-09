@@ -1,4 +1,4 @@
-/*1335959808,169904759,JIT Construction: v550633,en_US*/
+/*1336564573,169919608,JIT Construction: v554488,en_US*/
 var FB;
 if (!FB)
 {
@@ -13,6 +13,10 @@ if (!FB)
 ;
 var __DEV__ = 0;
 function __d()
+{
+}
+
+function require()
 {
 }
 
@@ -402,6 +406,10 @@ body.fb_hidden
 .fb_iframe_widget iframe
 {
 	position:absolute;
+}
+
+.fb_iframe_widget_lift
+{
 	z-index:1;
 }
 
