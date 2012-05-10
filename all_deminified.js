@@ -1,4 +1,4 @@
-/*1336541153,169896561,JIT Construction: v554488,en_US*/
+/*1336609991,169897836,JIT Construction: v555087,en_US*/
 
 var FB;
 if (!FB) {
@@ -539,7 +539,7 @@ if (!FB) {
                             r = window[r] || {};
                         }
                         var w = r[s];
-                        if (s !== 'bind' && typeof w == 'function') return w.apply(r, u);
+                        if (typeof r !== 'function') if (typeof w == 'function') return w.apply(r, u);
                         if (t) v = /\s(.*)\]/.exec(o.call(r).toLowerCase())[1];
                         var x = p[v];
                         if (!x) throw new Error('No polyfill registered for ' + v);
@@ -1119,6 +1119,12 @@ if (!FB) {
             }
         });
         FB.provide('JSON', {
+            stringify: function(a) {
+                return ES5('JSON', 'stringify', false, a);
+            },
+            parse: function(a) {
+                return ES5('JSON', 'parse', false, a);
+            },
             flatten: function(a) {
                 var b = {};
                 for (var c in a) if (a.hasOwnProperty(c)) {
