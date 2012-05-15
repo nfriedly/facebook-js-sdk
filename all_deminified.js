@@ -1,4 +1,4 @@
-/*1336609991,169897836,JIT Construction: v555087,en_US*/
+/*1337044270,169896562,JIT Construction: v557325,en_US*/
 
 var FB;
 if (!FB) {
@@ -7088,7 +7088,7 @@ if (!FB) {
             "migrate": 1
         });
         __d("XDConfig", [], {
-            "XdUrl": "connect\/xd_arbiter.php?version=5",
+            "XdUrl": "connect\/xd_arbiter.php?version=6",
             "Flash": {
                 "path": "https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v1\/ys\/r\/WON-TVLCpDP.swf"
             },
@@ -7174,7 +7174,7 @@ FB.widgetPipeEnabledApps = {
     "179150165472010": 1
 };
 FB.widgetPipeTagCountThreshold = 4;
-FB._iframeLoginButton = false;
+FB._iframeLoginButton = true;
 FB.provide("TemplateData", {
     "_enabled": 0
 }, true);
