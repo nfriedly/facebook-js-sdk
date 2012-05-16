@@ -1,4 +1,4 @@
-/*1337044270,169896562,JIT Construction: v557325,en_US*/
+/*1337130685,169936000,JIT Construction: v558274,en_US*/
 
 var FB;
 if (!FB) {
@@ -521,7 +521,8 @@ if (!FB) {
                         m = b('JSON3'),
                         n = Array.prototype.slice,
                         o = Object.prototype.toString,
-                        p = {
+                        p = {},
+                        q = {
                             array: g,
                             'function': h,
                             string: i,
@@ -530,24 +531,29 @@ if (!FB) {
                             Date: l,
                             JSON: m
                         };
-
-                    function q(r, s, t) {
-                        var u = n.call(arguments, 3),
-                            v;
-                        if (!t) {
-                            v = r;
-                            r = window[r] || {};
+                    for (var r in q) {
+                        if (!q.hasOwnProperty(r)) continue;
+                        var s = q[r],
+                            t = r === r.toLowerCase() ? window[r.replace(/^\w/, function(x) {
+                                return x.toUpperCase();
+                            })].prototype : window[r];
+                        for (var u in s) {
+                            if (!s.hasOwnProperty(u)) continue;
+                            if (!t) {
+                                p[r + '.' + u] = s[u];
+                                continue;
+                            }
+                            var v = t[u];
+                            p[r + '.' + u] = v && /\{\s+\[native code\]\s\}/.test(v) ? v : s[u];
                         }
-                        var w = r[s];
-                        if (typeof r !== 'function') if (typeof w == 'function') return w.apply(r, u);
-                        if (t) v = /\s(.*)\]/.exec(o.call(r).toLowerCase())[1];
-                        var x = p[v];
-                        if (!x) throw new Error('No polyfill registered for ' + v);
-                        w = x[s];
-                        if (!w) throw new Error('Polyfill ' + v + ' does not have a method ' + w);
-                        return w.apply(r, u);
                     }
-                    e.exports = q;
+                    function w(x, y, z) {
+                        var aa = n.call(arguments, 3),
+                            ba = z ? /\s(.*)\]/.exec(o.call(x).toLowerCase())[1] : x,
+                            ca = p[ba + '.' + y] || x[y];
+                        if (typeof ca === 'function') return ca.apply(x, aa);
+                    }
+                    e.exports = w;
                 });
                 ES5 = require('ES5');
                 return ES5.apply(null, arguments);
@@ -868,79 +874,112 @@ if (!FB) {
                 return c;
             }
         });
-        FB.provide('UA', {
-            ie: function() {
-                return FB.UA._populate() || this._ie;
-            },
-            firefox: function() {
-                return FB.UA._populate() || this._firefox;
-            },
-            opera: function() {
-                return FB.UA._populate() || this._opera;
-            },
-            safari: function() {
-                return FB.UA._populate() || this._safari;
-            },
-            chrome: function() {
-                return FB.UA._populate() || this._chrome;
-            },
-            windows: function() {
-                return FB.UA._populate() || this._windows;
-            },
-            osx: function() {
-                return FB.UA._populate() || this._osx;
-            },
-            linux: function() {
-                return FB.UA._populate() || this._linux;
-            },
-            ios: function() {
-                FB.UA._populate();
-                return FB.UA.mobile() && this._ios;
-            },
-            mobile: function() {
-                FB.UA._populate();
-                return !FB._inCanvas && this._mobile;
-            },
-            nativeApp: function() {
-                return FB.UA.mobile() && navigator.userAgent.match(/FBAN\/\w+;/i);
-            },
-            android: function() {
-                FB.UA._populate();
-                return FB.UA.mobile() && this._android;
-            },
-            iPad: function() {
-                FB.UA._populate();
-                return FB.UA.mobile() && this._iPad;
-            },
-            _populated: false,
-            _populate: function() {
-                if (FB.UA._populated) return;
-                FB.UA._populated = true;
-                var a = /(?:MSIE.(\d+\.\d+))|(?:(?:Firefox|GranParadiso|Iceweasel).(\d+\.\d+))|(?:Opera(?:.+Version.|.)(\d+\.\d+))|(?:AppleWebKit.(\d+(?:\.\d+)?))/.exec(navigator.userAgent),
-                    b = /(Mac OS X)|(Windows)|(Linux)/.exec(navigator.userAgent),
-                    c = /\b(iPhone|iP[ao]d)/.exec(navigator.userAgent);
-                FB.UA._iPad = /\b(iPad)/.exec(navigator.userAgent);
-                FB.UA._android = navigator.userAgent.match(/Android/i);
-                FB.UA._mobile = c || FB.UA._android || navigator.userAgent.match(/Mobile/i);
-                if (a) {
-                    FB.UA._ie = a[1] ? parseFloat(a[1]) : NaN;
-                    if (FB.UA._ie >= 8 && !window.HTMLCollection) FB.UA._ie = 7;
-                    FB.UA._firefox = a[2] ? parseFloat(a[2]) : NaN;
-                    FB.UA._opera = a[3] ? parseFloat(a[3]) : NaN;
-                    FB.UA._safari = a[4] ? parseFloat(a[4]) : NaN;
-                    if (FB.UA._safari) {
-                        a = /(?:Chrome\/(\d+\.\d+))/.exec(navigator.userAgent);
-                        FB.UA._chrome = a && a[1] ? parseFloat(a[1]) : NaN;
-                    } else FB.UA._chrome = NaN;
-                } else FB.UA._ie = FB.UA._firefox = FB.UA._opera = FB.UA._chrome = FB.UA._safari = NaN;
-                if (b) {
-                    FB.UA._osx = !! b[1];
-                    FB.UA._windows = !! b[2];
-                    FB.UA._linux = !! b[3];
-                } else FB.UA._osx = FB.UA._windows = FB.UA._linux = false;
-                FB.UA._ios = c;
+        __d("copyProperties", [], function(a, b, c, d, e, f) {
+            function g(h, i) {
+                h = h || {};
+                i = i || {};
+                for (var j in i) h[j] = i[j];
+                if (i.hasOwnProperty && i.hasOwnProperty('toString') && (typeof i.toString != 'undefined') && (h.toString !== i.toString)) h.toString = i.toString;
+                return h;
             }
+            e.exports = g;
         });
+        __d("FB", [], function(a, b, c, d, e, f) {
+            var g = window.FB;
+            e.exports = g;
+        });
+        __d("UserAgent", [], function(a, b, c, d, e, f) {
+            var g = false,
+                h, i, j, k, l, m, n, o, p, q, r, s, t, u;
+
+            function v() {
+                if (g) return;
+                g = true;
+                var x = navigator.userAgent,
+                    y = /(?:MSIE.(\d+\.\d+))|(?:(?:Firefox|GranParadiso|Iceweasel).(\d+\.\d+))|(?:Opera(?:.+Version.|.)(\d+\.\d+))|(?:AppleWebKit.(\d+(?:\.\d+)?))/.exec(x),
+                    z = /(Mac OS X)|(Windows)|(Linux)/.exec(x);
+                r = /\b(iPhone|iP[ao]d)/.exec(x);
+                s = /\b(iP[ao]d)/.exec(x);
+                p = /Android/i.exec(x);
+                t = /FBAN\/\w+;/i.exec(x);
+                u = /Mobile/i.exec(x);
+                q = !! (/Win64/.exec(x));
+                if (y) {
+                    h = y[1] ? parseFloat(y[1]) : NaN;
+                    if (h && document.documentMode) h = document.documentMode;
+                    i = y[2] ? parseFloat(y[2]) : NaN;
+                    j = y[3] ? parseFloat(y[3]) : NaN;
+                    k = y[4] ? parseFloat(y[4]) : NaN;
+                    if (k) {
+                        y = /(?:Chrome\/(\d+\.\d+))/.exec(x);
+                        l = y && y[1] ? parseFloat(y[1]) : NaN;
+                    } else l = NaN;
+                } else h = i = j = l = k = NaN;
+                if (z) {
+                    if (z[1]) {
+                        var aa = /(?:Mac OS X (\d+(?:[._]\d+)?))/.exec(x);
+                        m = aa ? parseFloat(aa[1].replace('_', '.')) : true;
+                    } else m = false;
+                    n = !! z[2];
+                    o = !! z[3];
+                } else m = n = o = false;
+            }
+            var w = {
+                ie: function() {
+                    return v() || h;
+                },
+                ie64: function() {
+                    return w.ie() && q;
+                },
+                firefox: function() {
+                    return v() || i;
+                },
+                opera: function() {
+                    return v() || j;
+                },
+                safari: function() {
+                    return v() || k;
+                },
+                chrome: function() {
+                    return v() || l;
+                },
+                windows: function() {
+                    return v() || n;
+                },
+                osx: function() {
+                    return v() || m;
+                },
+                linux: function() {
+                    return v() || o;
+                },
+                iphone: function() {
+                    return v() || r;
+                },
+                mobile: function() {
+                    return v() || (r || s || p || u);
+                },
+                nativeApp: function() {
+                    return v() || t;
+                },
+                android: function() {
+                    return v() || p;
+                },
+                ipad: function() {
+                    return v() || s;
+                }
+            };
+            e.exports = w;
+        });
+        __d("legacy:fb.ua", ["copyProperties", "FB", "UserAgent"], function(a, b, c, d) {
+            var e = b('copyProperties'),
+                f = b('FB'),
+                g = b('UserAgent'),
+                h = e({}, g);
+            h.mobile = function() {
+                return !f._inCanvas && g.mobile();
+            };
+            f.provide('UA', h);
+        }, 3);
         FB.provide('Content', {
             _root: null,
             _hiddenRoot: null,
@@ -1344,16 +1383,6 @@ if (!FB) {
                 });
             }
         });
-        __d("copyProperties", [], function(a, b, c, d, e, f) {
-            function g(h, i) {
-                h = h || {};
-                i = i || {};
-                for (var j in i) h[j] = i[j];
-                if (i.hasOwnProperty && i.hasOwnProperty('toString') && (typeof i.toString != 'undefined') && (h.toString !== i.toString)) h.toString = i.toString;
-                return h;
-            }
-            e.exports = g;
-        });
         __d("flattenObject", [], function(a, b, c, d, e, f) {
             function g(h) {
                 var i = {};
@@ -1383,21 +1412,30 @@ if (!FB) {
             var g = {
                 encode: function(h) {
                     var i = [];
-                    for (var j in h) if (h.hasOwnProperty(j)) i.push(encodeURIComponent(j) + '=' + encodeURIComponent(h[j]));
+                    ES5(ES5('Object', 'keys', false, h), 'forEach', true, function(j) {
+                        var k = h[j];
+                        if (typeof k === 'undefined') return;
+                        if (k === null) {
+                            i.push(j);
+                            return;
+                        }
+                        i.push(encodeURIComponent(j) + '=' + encodeURIComponent(k));
+                    });
                     return i.join('&');
                 },
                 decode: function(h) {
-                    var i = h.split('&'),
-                        j = i.length,
-                        k = {};
-                    while (j--) {
-                        var l = i[j].split('=', 2);
-                        k[decodeURIComponent(l[0])] = decodeURIComponent(l[1]);
+                    var i = {};
+                    if (h === '') return i;
+                    var j = h.split('&'),
+                        k = j.length;
+                    while (k--) {
+                        var l = j[k].split('=', 2);
+                        i[decodeURIComponent(l[0])] = l.length === 2 ? decodeURIComponent(l[1]) : null;
                     }
-                    return k;
+                    return i;
                 },
                 appendToUrl: function(h, i) {
-                    return h + (~ES5(h, 'indexOf', true, '?') ? '&' : '?') + (typeof i == 'string' ? i : g.encode(i));
+                    return h + (~ES5(h, 'indexOf', true, '?') ? '&' : '?') + (typeof i === 'string' ? i : g.encode(i));
                 }
             };
             e.exports = g;
@@ -1482,73 +1520,6 @@ if (!FB) {
                 }
             };
             e.exports = h;
-        });
-        __d("UserAgent", [], function(a, b, c, d, e, f) {
-            var g = false,
-                h, i, j, k, l, m, n, o, p, q;
-
-            function r() {
-                if (g) return;
-                g = true;
-                var t = navigator.userAgent,
-                    u = /(?:MSIE.(\d+\.\d+))|(?:(?:Firefox|GranParadiso|Iceweasel).(\d+\.\d+))|(?:Opera(?:.+Version.|.)(\d+\.\d+))|(?:AppleWebKit.(\d+(?:\.\d+)?))/.exec(t),
-                    v = /(Mac OS X)|(Windows)|(Linux)/.exec(t),
-                    w = /\b(iPhone|iP[ao]d)/.exec(t);
-                p = !! (/Win64/.exec(t));
-                if (u) {
-                    h = u[1] ? parseFloat(u[1]) : NaN;
-                    if (h && document.documentMode) h = document.documentMode;
-                    i = u[2] ? parseFloat(u[2]) : NaN;
-                    j = u[3] ? parseFloat(u[3]) : NaN;
-                    k = u[4] ? parseFloat(u[4]) : NaN;
-                    if (k) {
-                        u = /(?:Chrome\/(\d+\.\d+))/.exec(t);
-                        l = u && u[1] ? parseFloat(u[1]) : NaN;
-                    } else l = NaN;
-                } else h = i = j = l = k = NaN;
-                if (v) {
-                    if (v[1]) {
-                        var x = /(?:Mac OS X (\d+(?:[._]\d+)?))/.exec(t);
-                        m = x ? parseFloat(x[1].replace('_', '.')) : true;
-                    } else m = false;
-                    n = !! v[2];
-                    o = !! v[3];
-                } else m = n = o = false;
-                q = w;
-            }
-            var s = {
-                ie: function() {
-                    return r() || h;
-                },
-                ie64: function() {
-                    return s.ie() && p;
-                },
-                firefox: function() {
-                    return r() || i;
-                },
-                opera: function() {
-                    return r() || j;
-                },
-                safari: function() {
-                    return r() || k;
-                },
-                chrome: function() {
-                    return r() || l;
-                },
-                windows: function() {
-                    return r() || n;
-                },
-                osx: function() {
-                    return r() || m;
-                },
-                linux: function() {
-                    return r() || o;
-                },
-                iphone: function() {
-                    return r() || q;
-                }
-            };
-            e.exports = s;
         });
         __d("guid", [], function(a, b, c, d, e, f) {
             function g() {
@@ -1916,9 +1887,10 @@ if (!FB) {
                 this._protocol = p[4] || location.protocol.replace(/:/, '');
                 this._domain = p[6] || location.hostname;
                 this._port = p[8] || (p[6] ? (this._protocol == 'http' ? '80' : '443') : location.port);
-                this._path = p[9] || '/';
+                this._path = p[9] || '';
                 this._search = p[11] || '';
                 this._fragment = p[13] || '';
+                if (this._path.substring(0, 1) != '/') this._path = '/' + this._path;
                 if (!l.test(decodeURIComponent(this._domain.toLowerCase()))) {
                     i.error('Invalid characters found in domain name: %s', this._domain);
                     throw new URIError('Domain contained invalid characters.');
@@ -2040,7 +2012,7 @@ if (!FB) {
                     delete ca.transport;
                 } else fa = ['jsonp', 'cors', 'flash'];
                 var ga = function(ka) {
-                        if (r && ('error' in ka || 'error_code' in ka)) if (ka.error_code == '190' || ka.error == 'invalid_token' || (ka.error.type == 'OAuthException' && ka.error.code == 190)) r();
+                        if (r && ka && typeof ka == 'object') if ('error' in ka || 'error_code' in ka) if (ka.error_code == '190' || ka.error == 'invalid_token' || (ka.error.type == 'OAuthException' && ka.error.code == 190)) r();
                         da(ka);
                     };
                 for (var ha = 0; ha < fa.length; ha++) {
@@ -2095,27 +2067,30 @@ if (!FB) {
             k.setSwfUrl(p.FlashRequest.swfUrl);
             e.exports = z;
         });
-        __d("FB", [], function(a, b, c, d, e, f) {
-            var g = window.FB;
-            e.exports = g;
-        });
-        __d("legacy:fb.api", ["ApiClient", "FB", "SDKConfig"], function(a, b, c, d) {
+        __d("legacy:fb.api", ["ApiClient", "FB", "GlobalCallback", "SDKConfig"], function(a, b, c, d) {
             var e = c('SDKConfig'),
                 f = b('ApiClient'),
-                g = b('FB');
+                g = b('FB'),
+                h = b('GlobalCallback');
+            f.setDefaultParams({
+                sdk: 'joey'
+            });
+            h.setPrefix('FB._callbacks');
 
-            function h() {
-                var i = g.getAccessToken(),
-                    j = function() {
-                        if (i == g.getAccessToken()) g.getLoginStatus(null, true);
+            function i() {
+                var j = g.getAccessToken(),
+                    k = function() {
+                        if (j == g.getAccessToken()) g.getLoginStatus(null, true);
                     };
                 f.setClientID(g._apiKey);
-                f.setAccessToken(i, j);
+                f.setAccessToken(j, k);
                 if (typeof arguments[0] === 'string') {
                     f.graph.apply(f, arguments);
                 } else f.rest.apply(f, arguments);
             }
-            if (e.migrate) g.provide('api', h, true);
+            if (e.migrate) g.provide('', {
+                api: i
+            }, true);
         }, 3);
         FB.provide('EventProvider', {
             subscribers: function() {
@@ -3072,18 +3047,18 @@ if (!FB) {
             _createMobileLoader: function() {
                 var a = FB.UA.nativeApp() ? '' : ('<table>' + '  <tbody>' + '    <tr>' + '      <td class="header_left">' + '        <label class="touchable_button">' + '          <input type="submit" value="' + FB.Intl.tx._("Cancel") + '"' + '            id="fb_dialog_loader_close"/>' + '        </label>' + '      </td>' + '      <td class="header_center">' + '        <div>' + FB.Intl.tx._("Loading...") + '</div>' + '      </td>' + '      <td class="header_right">' + '      </td>' + '    </tr>' + '  </tbody>' + '</table>');
                 return FB.Dialog.create({
-                    classes: 'loading' + (FB.UA.iPad() ? ' centered' : ''),
+                    classes: 'loading' + (FB.UA.ipad() ? ' centered' : ''),
                     content: ('<div class="dialog_header">' + a + '</div>')
                 });
             },
             _restoreBodyPosition: function() {
-                if (!FB.UA.iPad()) {
+                if (!FB.UA.ipad()) {
                     var a = document.getElementsByTagName('body')[0];
                     FB.Dom.removeCss(a, 'fb_hidden');
                 }
             },
             _showIPadOverlay: function() {
-                if (!FB.UA.iPad()) return;
+                if (!FB.UA.ipad()) return;
                 if (!FB.Dialog._overlayEl) {
                     FB.Dialog._overlayEl = document.createElement('div');
                     FB.Dialog._overlayEl.setAttribute('id', 'fb_dialog_ipad_overlay');
@@ -3092,7 +3067,7 @@ if (!FB) {
                 FB.Dialog._overlayEl.className = '';
             },
             _hideIPadOverlay: function() {
-                if (FB.UA.iPad()) FB.Dialog._overlayEl.className = 'hidden';
+                if (FB.UA.ipad()) FB.Dialog._overlayEl.className = 'hidden';
             },
             showLoader: function(a, b) {
                 FB.Dialog._showIPadOverlay();
@@ -3150,7 +3125,7 @@ if (!FB) {
                 i += c.scrollTop;
                 if (FB.UA.mobile()) {
                     var j = 100;
-                    if (FB.UA.iPad()) {
+                    if (FB.UA.ipad()) {
                         j += (c.height - e) / 2;
                     } else {
                         var k = document.getElementsByTagName('body')[0];
@@ -3165,7 +3140,7 @@ if (!FB) {
                 b.style.top = (i > 0 ? i : 0) + 'px';
             },
             _setDialogSizes: function() {
-                if (!FB.UA.mobile() || FB.UA.iPad()) return;
+                if (!FB.UA.mobile() || FB.UA.ipad()) return;
                 for (var a in FB.Dialog._dialogs) if (document.getElementById(a)) {
                     var b = document.getElementById(a);
                     b.style.width = FB.UIServer.getDefaultSize().width + 'px';
@@ -3178,7 +3153,7 @@ if (!FB) {
                     return;
                 }
                 FB.Dialog._availScreenWidth = screen.availWidth;
-                if (FB.UA.iPad()) {
+                if (FB.UA.ipad()) {
                     FB.Dialog._centerActive();
                 } else for (var b in FB.Dialog._dialogs) if (document.getElementById(b)) document.getElementById(b).style.width = FB.UIServer.getDefaultSize().width + 'px';
             },
@@ -3451,7 +3426,7 @@ if (!FB) {
                 a.root = FB.Dialog.create({
                     onClose: b,
                     closeIcon: true,
-                    classes: (FB.UA.iPad() ? 'centered' : '')
+                    classes: (FB.UA.ipad() ? 'centered' : '')
                 });
                 if (!a.hideLoader) FB.Dialog.showLoader(b, a.size.width);
                 FB.Dom.addCss(a.root, 'fb_dialog_iframe');
@@ -3479,7 +3454,7 @@ if (!FB) {
                 FB.Arbiter.inform('showDialog', a);
             },
             getDefaultSize: function() {
-                if (FB.UA.mobile()) if (FB.UA.iPad()) {
+                if (FB.UA.mobile()) if (FB.UA.ipad()) {
                     return {
                         width: 500,
                         height: 590
@@ -4099,6 +4074,9 @@ if (!FB) {
                 return FB.Canvas.Prefetcher.setCollectionMode(a);
             }
         });
+        FB.Dom.ready(function() {
+            FB.require('DOMWrapper').setRoot(FB.Content.appendHidden(document.createElement('div')));
+        });
         FB.provide('', {
             initSitevars: {},
             init: function(a) {
@@ -4108,15 +4086,10 @@ if (!FB) {
                     status: true
                 });
                 FB._userID = 0;
-                FB._apiKey = a.appId || a.apiKey;
-                FB._scope = a.scope;
                 if (!a.logging && ES5(window.location.toString(), 'indexOf', true, 'fb_debug=1') < 0) FB._logging = false;
+                if ('appId' in a || 'apiKey' in a) FB._apiKey = a.appId || a.apiKey;
+                if ('scope' in a) FB._scope = a.scope;
                 if (!FB._initialized) {
-                    FB.require('GlobalCallback').setPrefix('FB._callbacks');
-                    FB.require('DOMWrapper').setRoot(FB.Content.appendHidden(document.createElement('div')));
-                    FB.require('ApiClient').setDefaultParams({
-                        sdk: 'joey'
-                    });
                     FB.XD.init(a.channelUrl ? FB.URI.resolve(a.channelUrl) : null);
                     if (FB.UA.mobile() && FB.TemplateUI && FB.TemplateData && FB.TemplateData._enabled && a.useCachedDialogs !== false) {
                         FB.TemplateUI.init();
@@ -7174,7 +7147,7 @@ FB.widgetPipeEnabledApps = {
     "179150165472010": 1
 };
 FB.widgetPipeTagCountThreshold = 4;
-FB._iframeLoginButton = true;
+FB._iframeLoginButton = false;
 FB.provide("TemplateData", {
     "_enabled": 0
 }, true);
