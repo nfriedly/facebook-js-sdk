@@ -1,4 +1,4 @@
-/*1337130685,169936000,JIT Construction: v558274,en_US*/
+/*1337210633,169912951,JIT Construction: v558818,en_US*/
 
 var FB;
 if (!FB) {
@@ -5358,8 +5358,13 @@ if (!FB) {
                     registration_url: this.getAttribute('registration-url'),
                     login_text: this.dom.innerHTML
                 };
+                if (!this._extraParams.show_faces) this._attr.width = this.dom.parentNode.offsetWidth;
+                var a = this.getAttribute('on-login');
+                if (a) FB.Event.subscribe('auth.statusChange', ES5(function(c) {
+                    FB.Helper.invokeHandler(a, this, [c]);
+                }, 'bind', true, this));
                 this.clear();
-                for (var a in this._extraParams) this._attr[a] = this._extraParams[a];
+                for (var b in this._extraParams) this._attr[b] = this._extraParams[b];
                 return true;
             },
             setExtraParams: function(a) {
