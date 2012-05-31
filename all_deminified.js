@@ -1,563 +1,596 @@
-/*1337729333,169912964,JIT Construction: v561754,en_US*/
+/*1338425360,169894523,JIT Construction: v565860,en_US*/
 
-var FB;
-if (!FB) {
-    FB = {};
-    (function() {
-        function bagofholding() {};
-        var __DEV__ = 0;
+window.FB || (function() {
+    var ES5 = function() {
+            __d("ES5ArrayPrototype", [], function(a, b, c, d, e, f) {
+                var g = {};
+                g.map = function(h, i) {
+                    if (typeof h != 'function') throw new TypeError();
+                    var j, k = this.length,
+                        l = new Array(k);
+                    for (j = 0; j < k; ++j) if (j in this) l[j] = h.call(i, this[j], j, this);
+                    return l;
+                };
+                g.forEach = function(h, i) {
+                    g.map.call(this, h, i);
+                };
+                g.filter = function(h, i) {
+                    if (typeof h != 'function') throw new TypeError();
+                    var j, k, l = this.length,
+                        m = [];
+                    for (j = 0; j < l; ++j) if (j in this) {
+                        k = this[j];
+                        if (h.call(i, k, j, this)) m.push(k);
+                    }
+                    return m;
+                };
+                g.every = function(h, i) {
+                    if (typeof h != 'function') throw new TypeError();
+                    var j = new Object(this),
+                        k = j.length;
+                    for (var l = 0; l < k; l++) if (l in j) if (!h.call(i, j[l], l, j)) return false;
+                    return true;
+                };
+                g.some = function(h, i) {
+                    if (typeof h != 'function') throw new TypeError();
+                    var j = new Object(this),
+                        k = j.length;
+                    for (var l = 0; l < k; l++) if (l in j) if (h.call(i, j[l], l, j)) return true;
+                    return false;
+                };
+                g.indexOf = function(h, i) {
+                    var j = this.length;
+                    i |= 0;
+                    if (i < 0) i += j;
+                    for (; i < j; i++) if (i in this && this[i] === h) return i;
+                    return -1;
+                };
+                e.exports = g;
+            });
+            __d("ES5FunctionPrototype", [], function(a, b, c, d, e, f) {
+                var g = {};
+                g.bind = function(h) {
+                    if (typeof this != 'function') throw new TypeError('Bind must be called on a function');
+                    var i = this,
+                        j = Array.prototype.slice.call(arguments, 1);
 
-        function __d() {
-            FB.__d.apply(FB, arguments);
-        }
-
-        function require() {
-            return FB.require.apply(null, arguments);
-        }
-        var ES5 = function() {
-                __d("ES5ArrayPrototype", [], function(a, b, c, d, e, f) {
-                    var g = {};
-                    g.map = function(h, i) {
-                        if (typeof h != 'function') throw new TypeError();
-                        var j, k = this.length,
-                            l = new Array(k);
-                        for (j = 0; j < k; ++j) if (j in this) l[j] = h.call(i, this[j], j, this);
-                        return l;
+                    function k() {
+                        return i.apply(h, j.concat(Array.prototype.slice.call(arguments)));
+                    }
+                    k.displayName = 'bound:' + (i.displayName || i.name || '(?)');
+                    k.toString = function l() {
+                        return 'bound: ' + i;
                     };
-                    g.forEach = function(h, i) {
-                        g.map.call(this, h, i);
-                    };
-                    g.filter = function(h, i) {
-                        if (typeof h != 'function') throw new TypeError();
-                        var j, k, l = this.length,
-                            m = [];
-                        for (j = 0; j < l; ++j) if (j in this) {
-                            k = this[j];
-                            if (h.call(i, k, j, this)) m.push(k);
-                        }
-                        return m;
-                    };
-                    g.every = function(h, i) {
-                        if (typeof h != 'function') throw new TypeError();
-                        var j = new Object(this),
-                            k = j.length;
-                        for (var l = 0; l < k; l++) if (l in j) if (!h.call(i, j[l], l, j)) return false;
-                        return true;
-                    };
-                    g.some = function(h, i) {
-                        if (typeof h != 'function') throw new TypeError();
-                        var j = new Object(this),
-                            k = j.length;
-                        for (var l = 0; l < k; l++) if (l in j) if (h.call(i, j[l], l, j)) return true;
-                        return false;
-                    };
-                    g.indexOf = function(h, i) {
-                        var j = this.length;
-                        i |= 0;
-                        if (i < 0) i += j;
-                        for (; i < j; i++) if (i in this && this[i] === h) return i;
-                        return -1;
-                    };
-                    e.exports = g;
-                });
-                __d("ES5FunctionPrototype", [], function(a, b, c, d, e, f) {
-                    var g = {};
-                    g.bind = function(h) {
-                        if (typeof this != 'function') throw new TypeError('Bind must be called on a function');
-                        var i = this,
-                            j = Array.prototype.slice.call(arguments, 1);
-
-                        function k() {
-                            return i.apply(h, j.concat(Array.prototype.slice.call(arguments)));
-                        }
-                        k.displayName = 'bound:' + (i.displayName || i.name || '(?)');
-                        k.toString = function l() {
-                            return 'bound: ' + i;
+                    return k;
+                };
+                e.exports = g;
+            });
+            __d("ES5StringPrototype", [], function(a, b, c, d, e, f) {
+                var g = {};
+                g.trim = function() {
+                    if (this == null) throw new TypeError('String.prototype.trim called on null or undefined');
+                    return String.prototype.replace.call(this, /^\s+|\s+$/g, '');
+                };
+                e.exports = g;
+            });
+            __d("ES5Array", [], function(a, b, c, d, e, f) {
+                var g = {};
+                g.isArray = function(h) {
+                    return Object.prototype.toString.call(h) == '[object Array]';
+                };
+                e.exports = g;
+            });
+            __d("ES5Object", [], function(a, b, c, d, e, f) {
+                var g = {};
+                g.create = function(h) {
+                    var i = typeof h;
+                    if (i != 'object' && i != 'function') throw new TypeError('Object prototype may only be a Object or null');
+                    var j = new Function();
+                    j.prototype = h;
+                    return new j();
+                };
+                g.keys = function(h) {
+                    var i = typeof h;
+                    if (i != 'object' && i != 'function' || h === null) throw new TypeError('Object.keys called on non-object');
+                    var j = [];
+                    for (var k in h) if (Object.prototype.hasOwnProperty.call(h, k)) j.push(k);
+                    var l = !({
+                        toString: true
+                    }).propertyIsEnumerable('toString'),
+                        m = ['toString', 'toLocaleString', 'valueOf', 'hasOwnProperty', 'isPrototypeOf', 'prototypeIsEnumerable', 'constructor'];
+                    if (l) for (var n = 0; n < m.length; n++) {
+                        var o = m[n];
+                        if (Object.prototype.hasOwnProperty.call(h, o)) j.push(o);
+                    }
+                    return j;
+                };
+                e.exports = g;
+            });
+            __d("ES5Date", [], function(a, b, c, d, e, f) {
+                var g = {};
+                g.now = function() {
+                    return new Date().getTime();
+                };
+                e.exports = g;
+            });
+            /**
+             * @providesModule JSON3
+             * @option preserve-header
+             *
+             *! JSON v3.1 | http://bestiejs.github.com/json3 | Copyright 2012, Kit Cambridge | http://kit.mit-license.org
+             */
+            __d("JSON3", [], function(a, b, c, d, e, f) {
+                var g = {}.toString,
+                    h = {}.hasOwnProperty,
+                    i, j, k;
+                j = typeof f.stringify == "function";
+                k = typeof f.parse == "function";
+                (function() {
+                    var l = '{"result":[1,true,false,null,"\\u0000\\b\\n\\f\\r\\t"]}',
+                        m, n, o;
+                    if (j) {
+                        m = function q() {
+                            return 1;
                         };
-                        return k;
-                    };
-                    e.exports = g;
-                });
-                __d("ES5StringPrototype", [], function(a, b, c, d, e, f) {
-                    var g = {};
-                    g.trim = function() {
-                        if (this == null) throw new TypeError('String.prototype.trim called on null or undefined');
-                        return String.prototype.replace.call(this, /^\s+|\s+$/g, '');
-                    };
-                    e.exports = g;
-                });
-                __d("ES5Array", [], function(a, b, c, d, e, f) {
-                    var g = {};
-                    g.isArray = function(h) {
-                        return Object.prototype.toString.call(h) == '[object Array]';
-                    };
-                    e.exports = g;
-                });
-                __d("ES5Object", [], function(a, b, c, d, e, f) {
-                    var g = {};
-                    g.create = function(h) {
-                        var i = typeof h;
-                        if (i != 'object' && i != 'function') throw new TypeError('Object prototype may only be a Object or null');
-                        var j = new Function();
-                        j.prototype = h;
-                        return new j();
-                    };
-                    g.keys = function(h) {
-                        var i = typeof h;
-                        if (i != 'object' && i != 'function' || h === null) throw new TypeError('Object.keys called on non-object');
-                        var j = [];
-                        for (var k in h) if (Object.prototype.hasOwnProperty.call(h, k)) j.push(k);
-                        var l = !({
-                            toString: true
-                        }).propertyIsEnumerable('toString'),
-                            m = ['toString', 'toLocaleString', 'valueOf', 'hasOwnProperty', 'isPrototypeOf', 'prototypeIsEnumerable', 'constructor'];
-                        if (l) for (var n = 0; n < m.length; n++) {
-                            var o = m[n];
-                            if (Object.prototype.hasOwnProperty.call(h, o)) j.push(o);
-                        }
-                        return j;
-                    };
-                    e.exports = g;
-                });
-                __d("ES5Date", [], function(a, b, c, d, e, f) {
-                    var g = {};
-                    g.now = function() {
-                        return new Date().getTime();
-                    };
-                    e.exports = g;
-                });
-                /**
-                 * @providesModule JSON3
-                 * @option preserve-header
-                 *
-                 *! JSON v3.1 | http://bestiejs.github.com/json3 | Copyright 2012, Kit Cambridge | http://kit.mit-license.org
-                 */
-                __d("JSON3", [], function(a, b, c, d, e, f) {
-                    var g = {}.toString,
-                        h = {}.hasOwnProperty,
-                        i, j, k;
-                    j = typeof f.stringify == "function";
-                    k = typeof f.parse == "function";
-                    (function() {
-                        var l = '{"result":[1,true,false,null,"\\u0000\\b\\n\\f\\r\\t"]}',
-                            m, n, o;
-                        if (j) {
-                            m = function q() {
-                                return 1;
-                            };
-                            m.toJSON = m;
-                            try {
-                                switch (false) {
-                                case f.stringify(0) === "0":
-                                case f.stringify(new(0).constructor()) === "0":
-                                case f.stringify(new "".constructor()) == '""':
-                                case f.stringify(g) === void 0:
-                                case f.stringify(void 0) === void 0:
-                                case f.stringify() === void 0:
-                                case f.stringify(m) === "1":
-                                case f.stringify([m]) == "[1]":
-                                case f.stringify([void 0]) == "[null]":
-                                case f.stringify(null) == "null":
-                                case f.stringify([void 0, g, null]) == "[null,null,null]":
-                                case f.stringify({
-                                        result: [m, true, false, null, "\0\b\n\f\r\t"]
-                                    }) == l:
-                                case f.stringify(null, m) === "1":
-                                case f.stringify([1, 2], null, 1) == "[\n 1,\n 2\n]":
-                                case (m = new Date(-8.64e+15)).getUTCFullYear() != -271821 || f.stringify(m) == '"-271821-04-20T00:00:00.000Z"':
-                                case (m = new Date(8.64e+15)).getUTCFullYear() != 275760 || f.stringify(m) == '"+275760-09-13T00:00:00.000Z"':
-                                    j = false;
-                                }
-                            } catch (p) {
+                        m.toJSON = m;
+                        try {
+                            switch (false) {
+                            case f.stringify(0) === "0":
+                            case f.stringify(new(0).constructor()) === "0":
+                            case f.stringify(new "".constructor()) == '""':
+                            case f.stringify(g) === void 0:
+                            case f.stringify(void 0) === void 0:
+                            case f.stringify() === void 0:
+                            case f.stringify(m) === "1":
+                            case f.stringify([m]) == "[1]":
+                            case f.stringify([void 0]) == "[null]":
+                            case f.stringify(null) == "null":
+                            case f.stringify([void 0, g, null]) == "[null,null,null]":
+                            case f.stringify({
+                                    result: [m, true, false, null, "\0\b\n\f\r\t"]
+                                }) == l:
+                            case f.stringify(null, m) === "1":
+                            case f.stringify([1, 2], null, 1) == "[\n 1,\n 2\n]":
+                            case (m = new Date(-8.64e+15)).getUTCFullYear() != -271821 || f.stringify(m) == '"-271821-04-20T00:00:00.000Z"':
+                            case (m = new Date(8.64e+15)).getUTCFullYear() != 275760 || f.stringify(m) == '"+275760-09-13T00:00:00.000Z"':
                                 j = false;
                             }
-                        }
-                        if (k) try {
-                            if (f.parse("0") === 0 && !f.parse(false)) {
-                                o = f.parse(l);
-                                if ((k = o.result.length == 5 && o.result[0] == 1)) {
-                                    try {
-                                        k = !f.parse('"\t"');
-                                    } catch (p) {}
-                                    if (k) try {
-                                        k = f.parse("+1") != 1 && f.parse("01") != 1;
-                                    } catch (p) {}
-                                }
-                            }
                         } catch (p) {
-                            k = false;
+                            j = false;
                         }
-                    })();
-                    if (typeof h != "function") h = (function() {
-                        var l, m = {},
-                            n = m.constructor;
-                        if ((m.__proto__ = null, m.__proto__ = {
-                            toString: 1
-                        }, m).toString != g) {
-                            l = function o(p) {
-                                var q = this.__proto__,
-                                    r = p in (this.__proto__ = null, this);
-                                this.__proto__ = q;
-                                return r;
-                            };
-                        } else l = function o(p) {
-                            var q = (this.constructor || n).prototype;
-                            return p in this && !(p in q && this[p] === q[p]);
+                    }
+                    if (k) try {
+                        if (f.parse("0") === 0 && !f.parse(false)) {
+                            o = f.parse(l);
+                            if ((k = o.result.length == 5 && o.result[0] == 1)) {
+                                try {
+                                    k = !f.parse('"\t"');
+                                } catch (p) {}
+                                if (k) try {
+                                    k = f.parse("+1") != 1 && f.parse("01") != 1;
+                                } catch (p) {}
+                            }
+                        }
+                    } catch (p) {
+                        k = false;
+                    }
+                })();
+                if (typeof h != "function") h = (function() {
+                    var l, m = {},
+                        n = m.constructor;
+                    if ((m.__proto__ = null, m.__proto__ = {
+                        toString: 1
+                    }, m).toString != g) {
+                        l = function o(p) {
+                            var q = this.__proto__,
+                                r = p in (this.__proto__ = null, this);
+                            this.__proto__ = q;
+                            return r;
                         };
-                        m = null;
-                        return l;
-                    })();
-                    i = (function() {
-                        var l, m, n, o = 0;
+                    } else l = function o(p) {
+                        var q = (this.constructor || n).prototype;
+                        return p in this && !(p in q && this[p] === q[p]);
+                    };
+                    m = null;
+                    return l;
+                })();
+                i = (function() {
+                    var l, m, n, o = 0;
 
-                        function p() {
-                            this.valueOf = 0;
-                        }
-                        p.prototype.valueOf = 0;
-                        l = new p();
-                        for (m in l) if (h.call(l, m)) o += 1;
-                        l = null;
-                        if (!o) {
-                            l = ["valueOf", "toString", "toLocaleString", "propertyIsEnumerable", "isPrototypeOf", "hasOwnProperty", "constructor"];
-                            n = function q(r, s) {
-                                var t = g.call(r) == "[object Function]",
-                                    u, v;
-                                for (u in r) if (!(t && u == "prototype") && h.call(r, u)) s(u);
-                                for (v = l.length; v--;) {
-                                    u = l[v];
-                                    if (h.call(r, u)) s(u);
-                                }
-                            };
-                        } else if (o == 2) {
-                            n = function q(r, s) {
-                                var t = {},
-                                    u = g.call(r) == "[object Function]",
-                                    v;
-                                for (v in r) if (!(u && v == "prototype") && !h.call(t, v) && (t[v] = 1) && h.call(r, v)) s(v);
-                            };
-                        } else n = function q(r, s) {
+                    function p() {
+                        this.valueOf = 0;
+                    }
+                    p.prototype.valueOf = 0;
+                    l = new p();
+                    for (m in l) if (h.call(l, m)) o += 1;
+                    l = null;
+                    if (!o) {
+                        l = ["valueOf", "toString", "toLocaleString", "propertyIsEnumerable", "isPrototypeOf", "hasOwnProperty", "constructor"];
+                        n = function q(r, s) {
                             var t = g.call(r) == "[object Function]",
                                 u, v;
-                            for (u in r) if (!(t && u == "prototype") && h.call(r, u) && !(v = u === "constructor")) s(u);
-                            if (v || h.call(r, "constructor")) s("constructor");
+                            for (u in r) if (!(t && u == "prototype") && h.call(r, u)) s(u);
+                            for (v = l.length; v--;) {
+                                u = l[v];
+                                if (h.call(r, u)) s(u);
+                            }
                         };
-                        return n;
-                    })();
-                    if (!j) f.stringify = (function() {
-                        var l = {
-                            "\\": "\\\\",
-                            '"': '\\"',
-                            "\b": "\\b",
-                            "\f": "\\f",
-                            "\n": "\\n",
-                            "\r": "\\r",
-                            "\t": "\\t"
+                    } else if (o == 2) {
+                        n = function q(r, s) {
+                            var t = {},
+                                u = g.call(r) == "[object Function]",
+                                v;
+                            for (v in r) if (!(u && v == "prototype") && !h.call(t, v) && (t[v] = 1) && h.call(r, v)) s(v);
                         };
+                    } else n = function q(r, s) {
+                        var t = g.call(r) == "[object Function]",
+                            u, v;
+                        for (u in r) if (!(t && u == "prototype") && h.call(r, u) && !(v = u === "constructor")) s(u);
+                        if (v || h.call(r, "constructor")) s("constructor");
+                    };
+                    return n;
+                })();
+                if (!j) f.stringify = (function() {
+                    var l = {
+                        "\\": "\\\\",
+                        '"': '\\"',
+                        "\b": "\\b",
+                        "\f": "\\f",
+                        "\n": "\\n",
+                        "\r": "\\r",
+                        "\t": "\\t"
+                    };
 
-                        function m(q, r) {
-                            r = "000000" + (r || 0);
-                            return r.slice(r.length - q);
+                    function m(q, r) {
+                        r = "000000" + (r || 0);
+                        return r.slice(r.length - q);
+                    }
+                    function n(q) {
+                        var r = '"',
+                            s = 0,
+                            t;
+                        for (; t = q.charAt(s); s += 1) r += '\\"\b\f\n\r\t'.indexOf(t) > -1 ? l[t] : t < " " ? "\\u00" + m(2, t.charCodeAt(0).toString(16)) : t;
+                        return r + '"';
+                    }
+                    function o(q, r, s, t, u, v, w) {
+                        var x = r[q],
+                            y, z, aa, ba, ca, da, ea, fa;
+                        if (typeof x == "object" && x) if (g.call(x) == "[object Date]" && !h.call(x, "toJSON")) {
+                            if (x > -1 / 0 && x < 1 / 0) {
+                                z = x.getUTCFullYear();
+                                x = (z <= 0 || z >= 10000 ? (z < 0 ? "-" : "+") + m(6, z < 0 ? -z : z) : m(4, z)) + "-" + m(2, x.getUTCMonth() + 1) + "-" + m(2, x.getUTCDate()) + "T" + m(2, x.getUTCHours()) + ":" + m(2, x.getUTCMinutes()) + ":" + m(2, x.getUTCSeconds()) + "." + m(3, x.getUTCMilliseconds()) + "Z";
+                            } else x = null;
+                        } else if (typeof x.toJSON == "function") x = x.toJSON(q);
+                        if (s) x = s.call(r, q, x);
+                        if (x === null) return "null";
+                        y = g.call(x);
+                        switch (y) {
+                        case "[object Boolean]":
+                            return "" + x;
+                        case "[object Number]":
+                            return x > -1 / 0 && x < 1 / 0 ? "" + x : "null";
+                        case "[object String]":
+                            return n(x);
                         }
-                        function n(q) {
-                            var r = '"',
-                                s = 0,
-                                t;
-                            for (; t = q.charAt(s); s += 1) r += '\\"\b\f\n\r\t'.indexOf(t) > -1 ? l[t] : t < " " ? "\\u00" + m(2, t.charCodeAt(0).toString(16)) : t;
-                            return r + '"';
-                        }
-                        function o(q, r, s, t, u, v, w) {
-                            var x = r[q],
-                                y, z, aa, ba, ca, da, ea, fa;
-                            if (typeof x == "object" && x) if (g.call(x) == "[object Date]" && !h.call(x, "toJSON")) {
-                                if (x > -1 / 0 && x < 1 / 0) {
-                                    z = x.getUTCFullYear();
-                                    x = (z <= 0 || z >= 10000 ? (z < 0 ? "-" : "+") + m(6, z < 0 ? -z : z) : m(4, z)) + "-" + m(2, x.getUTCMonth() + 1) + "-" + m(2, x.getUTCDate()) + "T" + m(2, x.getUTCHours()) + ":" + m(2, x.getUTCMinutes()) + ":" + m(2, x.getUTCSeconds()) + "." + m(3, x.getUTCMilliseconds()) + "Z";
-                                } else x = null;
-                            } else if (typeof x.toJSON == "function") x = x.toJSON(q);
-                            if (s) x = s.call(r, q, x);
-                            if (x === null) return "null";
-                            y = g.call(x);
-                            switch (y) {
-                            case "[object Boolean]":
-                                return "" + x;
-                            case "[object Number]":
-                                return x > -1 / 0 && x < 1 / 0 ? "" + x : "null";
-                            case "[object String]":
-                                return n(x);
-                            }
-                            if (typeof x == "object") {
-                                for (da = w.length; da--;) if (w[da] == x) throw TypeError("Cyclic structures cannot be serialized.");
-                                w.push(x);
-                                aa = [];
-                                ea = v;
-                                v += u;
-                                if (y == "[object Array]") {
-                                    for (ca = 0, da = x.length; ca < da; fa || (fa = true), ca++) {
-                                        ba = o(ca, x, s, t, u, v, w);
-                                        aa.push(ba === void 0 ? "null" : ba);
-                                    }
-                                    return fa ? (u ? "[\n" + v + aa.join(",\n" + v) + "\n" + ea + "]" : ("[" + aa.join(",") + "]")) : "[]";
-                                } else {
-                                    i(t || x, function(ga) {
-                                        var ha = o(ga, x, s, t, u, v, w);
-                                        if (ha !== void 0) aa.push(n(ga) + ":" + (u ? " " : "") + ha);
-                                        fa || (fa = true);
-                                    });
-                                    return fa ? (u ? "{\n" + v + aa.join(",\n" + v) + "\n" + ea + "}" : ("{" + aa.join(",") + "}")) : "{}";
+                        if (typeof x == "object") {
+                            for (da = w.length; da--;) if (w[da] == x) throw TypeError("Cyclic structures cannot be serialized.");
+                            w.push(x);
+                            aa = [];
+                            ea = v;
+                            v += u;
+                            if (y == "[object Array]") {
+                                for (ca = 0, da = x.length; ca < da; fa || (fa = true), ca++) {
+                                    ba = o(ca, x, s, t, u, v, w);
+                                    aa.push(ba === void 0 ? "null" : ba);
                                 }
-                                w.pop();
+                                return fa ? (u ? "[\n" + v + aa.join(",\n" + v) + "\n" + ea + "]" : ("[" + aa.join(",") + "]")) : "[]";
+                            } else {
+                                i(t || x, function(ga) {
+                                    var ha = o(ga, x, s, t, u, v, w);
+                                    if (ha !== void 0) aa.push(n(ga) + ":" + (u ? " " : "") + ha);
+                                    fa || (fa = true);
+                                });
+                                return fa ? (u ? "{\n" + v + aa.join(",\n" + v) + "\n" + ea + "}" : ("{" + aa.join(",") + "}")) : "{}";
+                            }
+                            w.pop();
+                        }
+                    }
+                    function p(q, r, s) {
+                        var t = "",
+                            u, v, w, x;
+                        if (typeof r == "function" || typeof r == "object" && r) if (g.call(r) == "[object Function]") {
+                            u = r;
+                        } else if (g.call(r) == "[object Array]") {
+                            v = {};
+                            for (w = r.length; w--;) {
+                                x = r[w];
+                                if (x && (g.call(x) == "[object String]" || g.call(x) == "[object Number]")) v[x] = 1;
                             }
                         }
-                        function p(q, r, s) {
-                            var t = "",
-                                u, v, w, x;
-                            if (typeof r == "function" || typeof r == "object" && r) if (g.call(r) == "[object Function]") {
-                                u = r;
-                            } else if (g.call(r) == "[object Array]") {
-                                v = {};
-                                for (w = r.length; w--;) {
-                                    x = r[w];
-                                    if (x && (g.call(x) == "[object String]" || g.call(x) == "[object Number]")) v[x] = 1;
-                                }
-                            }
-                            if (s != null && s !== "") if (g.call(s) == "[object Number]") {
-                                if ((s -= s % 1) > 0) for (t = "", s > 10 && (s = 10); t.length < s;) t += " ";
-                            } else if (g.call(s) == "[object String]") t = s.length <= 10 ? s : s.slice(0, 10);
-                            return o("$", {
-                                $: q
-                            }, u, v, t, "", []);
-                        }
-                        return p;
-                    })();
-                    if (!k) f.parse = (function() {
-                        var l = {
-                            "\\": "\\",
-                            '"': '"',
-                            "/": "/",
-                            b: "\b",
-                            t: "\t",
-                            n: "\n",
-                            f: "\f",
-                            r: "\r"
-                        },
-                            m = "".constructor.fromCharCode;
+                        if (s != null && s !== "") if (g.call(s) == "[object Number]") {
+                            if ((s -= s % 1) > 0) for (t = "", s > 10 && (s = 10); t.length < s;) t += " ";
+                        } else if (g.call(s) == "[object String]") t = s.length <= 10 ? s : s.slice(0, 10);
+                        return o("$", {
+                            $: q
+                        }, u, v, t, "", []);
+                    }
+                    return p;
+                })();
+                if (!k) f.parse = (function() {
+                    var l = {
+                        "\\": "\\",
+                        '"': '"',
+                        "/": "/",
+                        b: "\b",
+                        t: "\t",
+                        n: "\n",
+                        f: "\f",
+                        r: "\r"
+                    },
+                        m = "".constructor.fromCharCode;
 
-                        function n(s) {
-                            this.source = s;
-                            this.index = 0;
-                        }
-                        n.prototype.lex = o;
+                    function n(s) {
+                        this.source = s;
+                        this.index = 0;
+                    }
+                    n.prototype.lex = o;
 
-                        function o() {
-                            for (var s = this.source, t = this.source.length, u, v, w, x, y; this.index < t;) {
-                                u = s.charAt(this.index);
-                                switch (u) {
-                                case "\t":
-                                case "\r":
-                                case "\n":
-                                case " ":
-                                    this.index += 1;
-                                    break;
-                                case "{":
-                                case "}":
-                                case "[":
-                                case "]":
-                                case ":":
-                                case ",":
-                                    this.index += 1;
-                                    return u;
-                                case '"':
-                                    v = "@";
-                                    this.index += 1;
-                                    while (this.index < t) {
-                                        u = s.charAt(this.index);
-                                        if (u < " ") {
-                                            throw SyntaxError("Unescaped control character in string.");
-                                        } else if (u == "\\") {
-                                            this.index += 1;
-                                            u = s.charAt(this.index);
-                                            if ('\\"/btnfr'.indexOf(u) > -1) {
-                                                v += l[u];
-                                                this.index += 1;
-                                            } else if (u == "u") {
-                                                w = this.index += 1;
-                                                for (x = this.index + 4; this.index < x; this.index += 1) {
-                                                    u = s.charAt(this.index);
-                                                    if (!(u >= "0" && u <= "9" || u >= "a" && u <= "f" || u >= "A" && u <= "F")) throw SyntaxError("Invalid Unicode escape sequence in string.");
-                                                }
-                                                v += m("0x" + s.slice(w, this.index));
-                                            } else throw SyntaxError("Invalid escape sequence in string.");
-                                        } else {
-                                            if (u == '"') break;
-                                            v += u;
-                                            this.index += 1;
-                                        }
-                                    }
-                                    if (s.charAt(this.index) == '"') {
+                    function o() {
+                        for (var s = this.source, t = this.source.length, u, v, w, x, y; this.index < t;) {
+                            u = s.charAt(this.index);
+                            switch (u) {
+                            case "\t":
+                            case "\r":
+                            case "\n":
+                            case " ":
+                                this.index += 1;
+                                break;
+                            case "{":
+                            case "}":
+                            case "[":
+                            case "]":
+                            case ":":
+                            case ",":
+                                this.index += 1;
+                                return u;
+                            case '"':
+                                v = "@";
+                                this.index += 1;
+                                while (this.index < t) {
+                                    u = s.charAt(this.index);
+                                    if (u < " ") {
+                                        throw SyntaxError("Unescaped control character in string.");
+                                    } else if (u == "\\") {
                                         this.index += 1;
-                                        return v;
-                                    }
-                                    throw SyntaxError("Unterminated string.");
-                                default:
-                                    w = this.index;
-                                    if (u == "-") {
-                                        y = true;
-                                        u = s.charAt(this.index += 1);
-                                    }
-                                    if (u >= "0" && u <= "9") {
-                                        if (u == "0" && (u = s.charAt(this.index + 1), u >= "0" && u <= "9")) throw SyntaxError("Illegal octal literal.");
-                                        y = false;
-                                        for (; this.index < t && (u = s.charAt(this.index), u >= "0" && u <= "9"); this.index += 1);
-                                        if (s.charAt(this.index) == ".") {
-                                            x = this.index += 1;
-                                            for (; x < t && (u = s.charAt(x), u >= "0" && u <= "9"); x += 1);
-                                            if (x == this.index) throw SyntaxError("Illegal trailing decimal.");
-                                            this.index = x;
-                                        }
                                         u = s.charAt(this.index);
-                                        if (u == "e" || u == "E") {
-                                            u = s.charAt(this.index += 1);
-                                            if (u == "+" || u == "-") this.index += 1;
-                                            for (x = this.index; x < t && (u = s.charAt(x), u >= "0" && u <= "9"); x += 1);
-                                            if (x == this.index) throw SyntaxError("Illegal empty exponent.");
-                                            this.index = x;
-                                        }
-                                        return +s.slice(w, this.index);
+                                        if ('\\"/btnfr'.indexOf(u) > -1) {
+                                            v += l[u];
+                                            this.index += 1;
+                                        } else if (u == "u") {
+                                            w = this.index += 1;
+                                            for (x = this.index + 4; this.index < x; this.index += 1) {
+                                                u = s.charAt(this.index);
+                                                if (!(u >= "0" && u <= "9" || u >= "a" && u <= "f" || u >= "A" && u <= "F")) throw SyntaxError("Invalid Unicode escape sequence in string.");
+                                            }
+                                            v += m("0x" + s.slice(w, this.index));
+                                        } else throw SyntaxError("Invalid escape sequence in string.");
+                                    } else {
+                                        if (u == '"') break;
+                                        v += u;
+                                        this.index += 1;
                                     }
-                                    if (y) throw SyntaxError("Unexpected `-`.");
-                                    if (u == "t" && s.slice(this.index, this.index + 4) == "true") {
-                                        this.index += 4;
-                                        return true;
-                                    } else if (u == "f" && s.slice(this.index, this.index + 5) == "false") {
-                                        this.index += 5;
-                                        return false;
-                                    } else if (u == "n" && s.slice(this.index, this.index + 4) == "null") {
-                                        this.index += 4;
-                                        return null;
-                                    }
-                                    throw SyntaxError("Unrecognized token.");
                                 }
+                                if (s.charAt(this.index) == '"') {
+                                    this.index += 1;
+                                    return v;
+                                }
+                                throw SyntaxError("Unterminated string.");
+                            default:
+                                w = this.index;
+                                if (u == "-") {
+                                    y = true;
+                                    u = s.charAt(this.index += 1);
+                                }
+                                if (u >= "0" && u <= "9") {
+                                    if (u == "0" && (u = s.charAt(this.index + 1), u >= "0" && u <= "9")) throw SyntaxError("Illegal octal literal.");
+                                    y = false;
+                                    for (; this.index < t && (u = s.charAt(this.index), u >= "0" && u <= "9"); this.index += 1);
+                                    if (s.charAt(this.index) == ".") {
+                                        x = this.index += 1;
+                                        for (; x < t && (u = s.charAt(x), u >= "0" && u <= "9"); x += 1);
+                                        if (x == this.index) throw SyntaxError("Illegal trailing decimal.");
+                                        this.index = x;
+                                    }
+                                    u = s.charAt(this.index);
+                                    if (u == "e" || u == "E") {
+                                        u = s.charAt(this.index += 1);
+                                        if (u == "+" || u == "-") this.index += 1;
+                                        for (x = this.index; x < t && (u = s.charAt(x), u >= "0" && u <= "9"); x += 1);
+                                        if (x == this.index) throw SyntaxError("Illegal empty exponent.");
+                                        this.index = x;
+                                    }
+                                    return +s.slice(w, this.index);
+                                }
+                                if (y) throw SyntaxError("Unexpected `-`.");
+                                if (u == "t" && s.slice(this.index, this.index + 4) == "true") {
+                                    this.index += 4;
+                                    return true;
+                                } else if (u == "f" && s.slice(this.index, this.index + 5) == "false") {
+                                    this.index += 5;
+                                    return false;
+                                } else if (u == "n" && s.slice(this.index, this.index + 4) == "null") {
+                                    this.index += 4;
+                                    return null;
+                                }
+                                throw SyntaxError("Unrecognized token.");
                             }
-                            return "$";
                         }
-                        n.prototype.get = p;
+                        return "$";
+                    }
+                    n.prototype.get = p;
 
-                        function p(s) {
-                            var t, u, v;
-                            if (s == "$") throw SyntaxError("Unexpected end-of-file.");
-                            if (typeof s == "string") {
-                                if (s.charAt(0) == "@") return s.slice(1);
-                                switch (s) {
-                                case "[":
-                                    t = [];
-                                    for (;; u || (u = true)) {
+                    function p(s) {
+                        var t, u, v;
+                        if (s == "$") throw SyntaxError("Unexpected end-of-file.");
+                        if (typeof s == "string") {
+                            if (s.charAt(0) == "@") return s.slice(1);
+                            switch (s) {
+                            case "[":
+                                t = [];
+                                for (;; u || (u = true)) {
+                                    s = this.lex();
+                                    if (s == "]") break;
+                                    if (u) if (s == ",") {
                                         s = this.lex();
-                                        if (s == "]") break;
-                                        if (u) if (s == ",") {
-                                            s = this.lex();
-                                            if (s == "]") throw SyntaxError("Unexpected trailing `,` in array literal.");
-                                        } else throw SyntaxError("A comma (`,`) must separate the previous array element from the next.");
-                                        if (s == ",") throw SyntaxError("Unexpected `,` in array literal.");
-                                        t.push(this.get(s));
-                                    }
-                                    return t;
-                                case "{":
-                                    t = {};
-                                    for (;; u || (u = true)) {
+                                        if (s == "]") throw SyntaxError("Unexpected trailing `,` in array literal.");
+                                    } else throw SyntaxError("A comma (`,`) must separate the previous array element from the next.");
+                                    if (s == ",") throw SyntaxError("Unexpected `,` in array literal.");
+                                    t.push(this.get(s));
+                                }
+                                return t;
+                            case "{":
+                                t = {};
+                                for (;; u || (u = true)) {
+                                    s = this.lex();
+                                    if (s == "}") break;
+                                    if (u) if (s == ",") {
                                         s = this.lex();
-                                        if (s == "}") break;
-                                        if (u) if (s == ",") {
-                                            s = this.lex();
-                                            if (s == "}") throw SyntaxError("Unexpected trailing `,`. in object literal.");
-                                        } else throw SyntaxError("A comma (`,`) must separate the previous object member from the next.");
-                                        if (s == ",") throw SyntaxError("Unexpected `,` in object literal.");
-                                        if (typeof s != "string" || s.charAt(0) != "@") throw SyntaxError("Object property names must be double-quoted strings.");
-                                        if (this.lex() != ":") throw SyntaxError("A single colon (`:`) must separate each object property name from the value.");
-                                        t[s.slice(1)] = this.get(this.lex());
-                                    }
-                                    return t;
+                                        if (s == "}") throw SyntaxError("Unexpected trailing `,`. in object literal.");
+                                    } else throw SyntaxError("A comma (`,`) must separate the previous object member from the next.");
+                                    if (s == ",") throw SyntaxError("Unexpected `,` in object literal.");
+                                    if (typeof s != "string" || s.charAt(0) != "@") throw SyntaxError("Object property names must be double-quoted strings.");
+                                    if (this.lex() != ":") throw SyntaxError("A single colon (`:`) must separate each object property name from the value.");
+                                    t[s.slice(1)] = this.get(this.lex());
                                 }
-                                throw SyntaxError("Expected `[` or `{`.");
+                                return t;
                             }
-                            return s;
+                            throw SyntaxError("Expected `[` or `{`.");
                         }
-                        function q(s, t, u) {
-                            var v = s[t],
-                                w, x;
-                            if (typeof v == "object" && v) if (g.call(v) == "[object Array]") {
-                                for (w = v.length; w--;) {
-                                    x = q(v, w, u);
-                                    if (x === void 0) {
-                                        v.splice(w, 1);
-                                    } else v[w] = x;
-                                }
-                            } else i(v, function(y) {
-                                var z = q(v, y, u);
-                                if (z === void 0) {
-                                    delete v[y];
-                                } else v[y] = z;
-                            });
-                            return u.call(s, t, v);
-                        }
-                        function r(s, t) {
-                            var u = new n("" + s),
-                                v = u.get(u.lex());
-                            if (u.lex() != "$") throw SyntaxError("Expected end-of-file.");
-                            return t && g.call(t) == "[object Function]" ? q({
-                                $: v
-                            }, "$", t) : v;
-                        }
-                        return r;
-                    })();
-                    e.exports = f;
-                });
-                __d("ES5", ["ES5ArrayPrototype", "ES5FunctionPrototype", "ES5StringPrototype", "ES5Array", "ES5Object", "ES5Date", "JSON3"], function(a, b, c, d, e, f) {
-                    var g = b('ES5ArrayPrototype'),
-                        h = b('ES5FunctionPrototype'),
-                        i = b('ES5StringPrototype'),
-                        j = b('ES5Array'),
-                        k = b('ES5Object'),
-                        l = b('ES5Date'),
-                        m = b('JSON3'),
-                        n = Array.prototype.slice,
-                        o = Object.prototype.toString,
-                        p = {},
-                        q = {
-                            array: g,
-                            'function': h,
-                            string: i,
-                            Object: k,
-                            Array: j,
-                            Date: l,
-                            JSON: m
-                        };
-                    for (var r in q) {
-                        if (!q.hasOwnProperty(r)) continue;
-                        var s = q[r],
-                            t = r === r.toLowerCase() ? window[r.replace(/^\w/, function(x) {
-                                return x.toUpperCase();
-                            })].prototype : window[r];
-                        for (var u in s) {
-                            if (!s.hasOwnProperty(u)) continue;
-                            if (!t) {
-                                p[r + '.' + u] = s[u];
-                                continue;
+                        return s;
+                    }
+                    function q(s, t, u) {
+                        var v = s[t],
+                            w, x;
+                        if (typeof v == "object" && v) if (g.call(v) == "[object Array]") {
+                            for (w = v.length; w--;) {
+                                x = q(v, w, u);
+                                if (x === void 0) {
+                                    v.splice(w, 1);
+                                } else v[w] = x;
                             }
-                            var v = t[u];
-                            p[r + '.' + u] = v && /\{\s+\[native code\]\s\}/.test(v) ? v : s[u];
+                        } else i(v, function(y) {
+                            var z = q(v, y, u);
+                            if (z === void 0) {
+                                delete v[y];
+                            } else v[y] = z;
+                        });
+                        return u.call(s, t, v);
+                    }
+                    function r(s, t) {
+                        var u = new n("" + s),
+                            v = u.get(u.lex());
+                        if (u.lex() != "$") throw SyntaxError("Expected end-of-file.");
+                        return t && g.call(t) == "[object Function]" ? q({
+                            $: v
+                        }, "$", t) : v;
+                    }
+                    return r;
+                })();
+                e.exports = f;
+            });
+            __d("ES5", ["ES5ArrayPrototype", "ES5FunctionPrototype", "ES5StringPrototype", "ES5Array", "ES5Object", "ES5Date", "JSON3"], function(a, b, c, d, e, f) {
+                var g = b('ES5ArrayPrototype'),
+                    h = b('ES5FunctionPrototype'),
+                    i = b('ES5StringPrototype'),
+                    j = b('ES5Array'),
+                    k = b('ES5Object'),
+                    l = b('ES5Date'),
+                    m = b('JSON3'),
+                    n = Array.prototype.slice,
+                    o = Object.prototype.toString,
+                    p = {},
+                    q = {
+                        array: g,
+                        'function': h,
+                        string: i,
+                        Object: k,
+                        Array: j,
+                        Date: l,
+                        JSON: m
+                    };
+                for (var r in q) {
+                    if (!q.hasOwnProperty(r)) continue;
+                    var s = q[r],
+                        t = r === r.toLowerCase() ? window[r.replace(/^\w/, function(x) {
+                            return x.toUpperCase();
+                        })].prototype : window[r];
+                    for (var u in s) {
+                        if (!s.hasOwnProperty(u)) continue;
+                        if (!t) {
+                            p[r + '.' + u] = s[u];
+                            continue;
                         }
+                        var v = t[u];
+                        p[r + '.' + u] = v && /\{\s+\[native code\]\s\}/.test(v) ? v : s[u];
                     }
-                    function w(x, y, z) {
-                        var aa = n.call(arguments, 3),
-                            ba = z ? /\s(.*)\]/.exec(o.call(x).toLowerCase())[1] : x,
-                            ca = p[ba + '.' + y] || x[y];
-                        if (typeof ca === 'function') return ca.apply(x, aa);
-                    }
-                    e.exports = w;
-                });
-                ES5 = require('ES5');
-                return ES5.apply(null, arguments);
-            };;
+                }
+                function w(x, y, z) {
+                    var aa = n.call(arguments, 3),
+                        ba = z ? /\s(.*)\]/.exec(o.call(x).toLowerCase())[1] : x,
+                        ca = p[ba + '.' + y] || x[y];
+                    if (typeof ca === 'function') return ca.apply(x, aa);
+                }
+                e.exports = w;
+            });
+            ES5 = require('ES5');
+            return ES5.apply(null, arguments);
+        };;
+    var FB = {};
+    var __DEV__ = 0;
+
+    function bagofholding() {};
+
+    function __c() {
+        __d("UrlMapConfig", [], {
+            "www": "www.facebook.com",
+            "m": "m.facebook.com",
+            "connect": "connect.facebook.net",
+            "api_https": "api.facebook.com",
+            "api_read_https": "api-read.facebook.com",
+            "graph_https": "graph.facebook.com",
+            "fbcdn_http": "s-static.ak.fbcdn.net",
+            "fbcdn_https": "s-static.ak.fbcdn.net",
+            "cdn_http": "static.ak.facebook.com",
+            "cdn_https": "s-static.ak.facebook.com"
+        });
+        __d("SDKConfig", [], {
+            "migrate": true,
+            "seal": false,
+            "errorHandling": {
+                "rate": 0.01
+            }
+        });
+        __d("ApiClientConfig", [], {
+            "FlashRequest": {
+                "swfUrl": "https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v1\/y5\/r\/SrnvQJBTxo-.swf"
+            }
+        });
+        __d("XDConfig", [], {
+            "XdUrl": "connect\/xd_arbiter.php?version=6",
+            "Flash": {
+                "path": "https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v1\/ys\/r\/WON-TVLCpDP.swf"
+            },
+            "useCdn": true
+        });
+    }
+
+    function __d() {
+        FB.__d.apply(FB, arguments);
+    }
+
+    function require() {
+        return FB.require.apply(null, arguments);
+    }(function() {
         (function(a) {
             if (a.require) return;
             var b = {},
@@ -716,169 +749,7 @@ if (!FB) {
             };
             a.__e = a.__d;
         })(this);
-        if (window.FB && !window.FB.copy)(function() {
-            var a = /iframe_canvas|app_runner|dialog/.test(window.name);
-
-            function b(c, d, e, f) {
-                for (var g in d) if (e || typeof c[g] === 'undefined') c[g] = f ? f(d[g]) : d[g];
-                return c;
-            }
-            b(window.FB, {
-                _apiKey: null,
-                _authResponse: null,
-                _userStatus: 'unknown',
-                _logging: true,
-                _inCanvas: a,
-                _https: (function() {
-                    if (location.protocol == 'https:' && (window == top || !a)) return true;
-                    if (/_fb_https?/.test(window.name)) return ES5(window.name, 'indexOf', true, '_fb_https') != -1;
-                })(),
-                onlyUseHttps: function() {
-                    return FB._https === true;
-                },
-                onlyUseHttp: function() {
-                    return FB._https === false && location.protocol == 'http:';
-                },
-                _domain: {
-                    api: 'https://api.facebook.com/',
-                    api_read: 'https://api-read.facebook.com/',
-                    cdn: 'http://static.ak.fbcdn.net/',
-                    https_cdn: 'https://s-static.ak.fbcdn.net/',
-                    graph: 'https://graph.facebook.com/',
-                    staticfb: 'http://static.ak.facebook.com/',
-                    https_staticfb: 'https://s-static.ak.facebook.com/',
-                    www: 'http://www.facebook.com/',
-                    https_www: 'https://www.facebook.com/',
-                    m: 'http://m.facebook.com/',
-                    https_m: 'https://m.facebook.com/'
-                },
-                _locale: null,
-                _localeIsRtl: false,
-                getDomain: function(c, d) {
-                    var e = !d && (window.location.protocol == 'https:' || FB._https);
-                    switch (c) {
-                    case 'api':
-                        return FB._domain.api;
-                    case 'api_read':
-                        return FB._domain.api_read;
-                    case 'cdn':
-                        return e ? FB._domain.https_cdn : FB._domain.cdn;
-                    case 'cdn_foreign':
-                        return FB._domain.cdn_foreign;
-                    case 'https_cdn':
-                        return FB._domain.https_cdn;
-                    case 'graph':
-                        return FB._domain.graph;
-                    case 'staticfb':
-                        return e ? FB._domain.https_staticfb : FB._domain.staticfb;
-                    case 'https_staticfb':
-                        return FB._domain.https_staticfb;
-                    case 'www':
-                        return e ? FB._domain.https_www : FB._domain.www;
-                    case 'https_www':
-                        return FB._domain.https_www;
-                    case 'm':
-                        return e ? FB._domain.https_m : FB._domain.m;
-                    case 'https_m':
-                        return FB._domain.https_m;
-                    }
-                },
-                copy: b,
-                create: function(c, d) {
-                    var e = window.FB,
-                        f = c ? c.split('.') : [],
-                        g = f.length;
-                    for (var h = 0; h < g; h++) {
-                        var i = f[h],
-                            j = e[i];
-                        if (!j) {
-                            j = (d && h + 1 == g) ? d : {};
-                            e[i] = j;
-                        }
-                        e = j;
-                    }
-                    return e;
-                },
-                provide: function(c, d, e) {
-                    return FB.copy(typeof c == 'string' ? FB.create(c) : c, d, e);
-                },
-                guid: function() {
-                    return 'f' + (Math.random() * (1 << 30)).toString(16).replace('.', '');
-                },
-                log: function(c) {
-                    if (FB._logging) if (window.Debug && window.Debug.writeln) {
-                        window.Debug.writeln(c);
-                    } else if (window.console) window.console.log(c);
-                    if (FB.Event) FB.Event.fire('fb.log', c);
-                },
-                $: function(c) {
-                    return document.getElementById(c);
-                }
-            });
-        })();
-        FB.provide('Array', {
-            merge: function(a, b) {
-                for (var c = 0; c < b.length; c++) if (ES5(a, 'indexOf', true, b[c]) < 0) a.push(b[c]);
-                return a;
-            },
-            forEach: function(a, b, c) {
-                if (!a) return;
-                if (Object.prototype.toString.apply(a) === '[object Array]' || (!(a instanceof Function) && typeof a.length == 'number')) {
-                    if (a.forEach) {
-                        ES5(a, 'forEach', true, b);
-                    } else for (var d = 0, e = a.length; d < e; d++) b(a[d], d, a);
-                } else for (var f in a) if (c || a.hasOwnProperty(f)) b(a[f], f, a);
-            },
-            toArray: function(a) {
-                for (var b = 0, c = [], d = a.length; b < d; b++) c[b] = a[b];
-                return c;
-            }
-        });
-        FB.provide('QS', {
-            encode: function(a, b, c) {
-                b = b === undefined ? '&' : b;
-                c = c === false ?
-                function(e) {
-                    return e;
-                } : encodeURIComponent;
-                var d = [];
-                ES5(FB.Array, 'forEach', true, a, function(e, f) {
-                    if (e !== null && typeof e != 'undefined') d.push(c(f) + '=' + c(e));
-                });
-                d.sort();
-                return d.join(b);
-            },
-            decode: function(a) {
-                var b = decodeURIComponent,
-                    c = {},
-                    d = a.split('&'),
-                    e, f;
-                for (e = 0; e < d.length; e++) {
-                    f = d[e].split('=', 2);
-                    if (f && f[0]) c[b(f[0])] = b(f[1] || '');
-                }
-                return c;
-            }
-        });
-        __d("copyProperties", [], function(a, b, c, d, e, f) {
-            function g(h, i, j, k, l, m, n) {
-                h = h || {};
-                var o = [i, j, k, l, m],
-                    p = 0,
-                    q;
-                while (o[p]) {
-                    q = o[p++];
-                    for (var r in q) h[r] = q[r];
-                    if (q.hasOwnProperty && q.hasOwnProperty('toString') && (typeof q.toString != 'undefined') && (h.toString !== q.toString)) h.toString = q.toString;
-                }
-                return h;
-            }
-            e.exports = g;
-        });
-        __d("FB", [], function(a, b, c, d, e, f) {
-            var g = window.FB;
-            e.exports = g;
-        });
+        if (typeof __c === "function") __c();
         __d("UserAgent", [], function(a, b, c, d, e, f) {
             var g = false,
                 h, i, j, k, l, m, n, o, p, q, r, s, t, u;
@@ -961,6 +832,289 @@ if (!FB) {
             };
             e.exports = w;
         });
+        __d("applyWithGuard", ["UserAgent"], function(a, b, c, d, e, f) {
+            var g = b('UserAgent'),
+                h;
+
+            function i(k) {
+                var l = {
+                    line: k.lineNumber || k.line,
+                    message: k.message,
+                    name: k.name,
+                    script: k.fileName || k.sourceURL || k.script,
+                    stack: k.stackTrace || k.stack
+                };
+                l._originalError = k;
+                if (g.chrome() && /([\w:\.\/]+\.js):(\d+)/.test(k.stack)) {
+                    l.script = RegExp.$1;
+                    l.line = parseInt(RegExp.$2, 10);
+                }
+                for (var m in l)(l[m] == null && delete l[m]);
+                return l;
+            }
+            function j(k, l, m) {
+                if (!h) return k.apply(l, m || []);
+                try {
+                    return k.apply(l, m || []);
+                } catch (n) {
+                    h(i(n));
+                }
+            }
+            j.setErrorHandler = function(k) {
+                h = k;
+            };
+            e.exports = j;
+        });
+        __d("guid", [], function(a, b, c, d, e, f) {
+            function g() {
+                return 'f' + (Math.random() * (1 << 30)).toString(16).replace('.', '');
+            }
+            e.exports = g;
+        });
+        __d("dotAccess", [], function(a, b, c, d, e, f) {
+            function g(h, i, j) {
+                var k = i.split('.');
+                do {
+                    var l = k.shift();
+                    h = h[l] || j && (h[l] = {});
+                } while (k.length && h);
+                return h;
+            }
+            e.exports = g;
+        });
+        __d("copyProperties", [], function(a, b, c, d, e, f) {
+            function g(h, i, j, k, l, m, n) {
+                h = h || {};
+                var o = [i, j, k, l, m],
+                    p = 0,
+                    q;
+                while (o[p]) {
+                    q = o[p++];
+                    for (var r in q) h[r] = q[r];
+                    if (q.hasOwnProperty && q.hasOwnProperty('toString') && (typeof q.toString != 'undefined') && (h.toString !== q.toString)) h.toString = q.toString;
+                }
+                return h;
+            }
+            e.exports = g;
+        });
+        __d("QueryString", [], function(a, b, c, d, e, f) {
+            var g = {
+                encode: function(h) {
+                    var i = [];
+                    ES5(ES5('Object', 'keys', false, h), 'forEach', true, function(j) {
+                        var k = h[j];
+                        if (typeof k === 'undefined') return;
+                        if (k === null) {
+                            i.push(j);
+                            return;
+                        }
+                        i.push(encodeURIComponent(j) + '=' + encodeURIComponent(k));
+                    });
+                    return i.join('&');
+                },
+                decode: function(h) {
+                    var i = {};
+                    if (h === '') return i;
+                    var j = h.split('&'),
+                        k = j.length;
+                    while (k--) {
+                        var l = j[k].split('=', 2);
+                        i[decodeURIComponent(l[0])] = l.length === 2 ? decodeURIComponent(l[1]) : null;
+                    }
+                    return i;
+                },
+                appendToUrl: function(h, i) {
+                    return h + (~ES5(h, 'indexOf', true, '?') ? '&' : '?') + (typeof i === 'string' ? i : g.encode(i));
+                }
+            };
+            e.exports = g;
+        });
+        __d("UrlMap", ["UrlMapConfig"], function(a, b, c, d, e, f) {
+            var g = c('UrlMapConfig'),
+                h = {
+                    resolve: function(i, j) {
+                        var k = typeof j == 'undefined' ? location.protocol.replace(':', '') : j ? 'https' : 'http';
+                        if (i in g) return k + '://' + g[i];
+                        if (typeof j == 'undefined' && i + '_' + k in g) return k + '://' + g[i + '_' + k];
+                        if (j !== true && i + '_http' in g) return 'http://' + g[i + '_http'];
+                        if (j !== false && i + '_https' in g) return 'https://' + g[i + '_https'];
+                    }
+                };
+            e.exports = h;
+        });
+        __d("FB", ["applyWithGuard", "guid", "dotAccess", "copyProperties", "QueryString", "UrlMap", "SDKConfig"], function(a, b, c, d, e, f) {
+            var g = c('SDKConfig'),
+                h = b('applyWithGuard'),
+                i = b('guid'),
+                j = b('dotAccess'),
+                k = b('copyProperties'),
+                l = b('QueryString'),
+                m = b('UrlMap'),
+                n, o;
+            if (g.seal) {
+                n = FB;
+                o = window.FB = {};
+            } else n = window.FB = FB;
+            var p = g.errorHandling.rate;
+            if (p && Math.floor(Math.random() * 100) + 1 < p) h.setErrorHandler(function(u) {
+                var v = l.appendToUrl(m.resolve('www', true) + '/common/scribe_endpoint.php', {
+                    c: 'jssdk_error',
+                    d: ES5('JSON', 'stringify', false, {
+                        error: u.name || u.message,
+                        extra: u
+                    })
+                });
+                (new Image()).src = v;
+                throw u;
+            });
+
+            function q(u, v) {
+                var w = u ? j(n, u, true) : n;
+                if (g.seal) var x = u ? j(o, u, true) : o;
+                ES5(ES5('Object', 'keys', false, v), 'forEach', true, function(y) {
+                    var z = v[y];
+                    w[y] = z;
+                    if (g.seal) if (typeof z === 'function' && !/^_/.test(y)) x[y] = function() {
+                        var aa = ES5(Array.prototype.slice.call(arguments), 'map', true, function(ba) {
+                            return typeof ba === 'function' ?
+                            function() {
+                                var ca = arguments;
+                                setTimeout(function() {
+                                    ba.apply(null, ca);
+                                }, 0);
+                            } : ba;
+                        });
+                        return h(z, w, aa);
+                    };
+                });
+            }
+            var r = /iframe_canvas|app_runner|dialog/.test(window.name),
+                s = (function() {
+                    if (location.protocol == 'https:' && (window == top || !r)) return true;
+                    if (/_fb_https?/.test(window.name)) return ES5(window.name, 'indexOf', true, '_fb_https') != -1;
+                })();
+
+            function t(u, v, w, x) {
+                for (var y in v) if (w || typeof u[y] === 'undefined') u[y] = x ? x(v[y]) : v[y];
+                return u;
+            }
+            k(n, {
+                _apiKey: null,
+                _authResponse: null,
+                _userStatus: 'unknown',
+                _logging: true,
+                _inCanvas: r,
+                _https: s,
+                onlyUseHttps: function() {
+                    return n._https === true;
+                },
+                onlyUseHttp: function() {
+                    return n._https === false && location.protocol == 'http:';
+                },
+                _locale: null,
+                _localeIsRtl: false,
+                getDomain: function(u, v) {
+                    var w = !v && (window.location.protocol == 'https:' || n._https);
+                    switch (u) {
+                    case 'api':
+                        return n._domain.api;
+                    case 'api_read':
+                        return n._domain.api_read;
+                    case 'cdn':
+                        return w ? n._domain.https_cdn : n._domain.cdn;
+                    case 'cdn_foreign':
+                        return n._domain.cdn_foreign;
+                    case 'https_cdn':
+                        return n._domain.https_cdn;
+                    case 'graph':
+                        return n._domain.graph;
+                    case 'staticfb':
+                        return w ? n._domain.https_staticfb : n._domain.staticfb;
+                    case 'https_staticfb':
+                        return n._domain.https_staticfb;
+                    case 'www':
+                        return w ? n._domain.https_www : n._domain.www;
+                    case 'https_www':
+                        return n._domain.https_www;
+                    case 'm':
+                        return w ? n._domain.https_m : n._domain.m;
+                    case 'https_m':
+                        return n._domain.https_m;
+                    }
+                },
+                copy: t,
+                create: function(u, v) {
+                    var w = u.split('.');
+                    u = w.pop();
+                    var x = w.length ? j(n, w.join('.'), true) : n;
+                    return u in x ? x[u] : x[u] = (v || {});
+                },
+                provide: q,
+                guid: i,
+                log: function(u) {
+                    if (n._logging) if (window.Debug && window.Debug.writeln) {
+                        window.Debug.writeln(u);
+                    } else if (window.console) window.console.log(u);
+                    if (n.Event) n.Event.fire('fb.log', u);
+                },
+                $: function(u) {
+                    return document.getElementById(u);
+                },
+                dotAccess: j,
+                applyWithGuard: h
+            });
+            if (o) k(o, {
+                provide: q
+            });
+            e.exports = n;
+        });
+        __d("legacy:fb.prelude", ["FB"], function(a, b, c, d) {
+            var e = b('FB');
+        }, 3);
+        FB.provide('Array', {
+            merge: function(a, b) {
+                for (var c = 0; c < b.length; c++) if (ES5(a, 'indexOf', true, b[c]) < 0) a.push(b[c]);
+                return a;
+            },
+            forEach: function(a, b, c) {
+                if (!a) return;
+                if (Object.prototype.toString.apply(a) === '[object Array]' || (!(a instanceof Function) && typeof a.length == 'number')) {
+                    if (a.forEach) {
+                        ES5(a, 'forEach', true, b);
+                    } else for (var d = 0, e = a.length; d < e; d++) b(a[d], d, a);
+                } else for (var f in a) if (c || a.hasOwnProperty(f)) b(a[f], f, a);
+            },
+            toArray: function(a) {
+                for (var b = 0, c = [], d = a.length; b < d; b++) c[b] = a[b];
+                return c;
+            }
+        });
+        FB.provide('QS', {
+            encode: function(a, b, c) {
+                b = b === undefined ? '&' : b;
+                c = c === false ?
+                function(e) {
+                    return e;
+                } : encodeURIComponent;
+                var d = [];
+                ES5(FB.Array, 'forEach', true, a, function(e, f) {
+                    if (e !== null && typeof e != 'undefined') d.push(c(f) + '=' + c(e));
+                });
+                d.sort();
+                return d.join(b);
+            },
+            decode: function(a) {
+                var b = decodeURIComponent,
+                    c = {},
+                    d = a.split('&'),
+                    e, f;
+                for (e = 0; e < d.length; e++) {
+                    f = d[e].split('=', 2);
+                    if (f && f[0]) c[b(f[0])] = b(f[1] || '');
+                }
+                return c;
+            }
+        });
         __d("legacy:fb.ua", ["copyProperties", "FB", "UserAgent"], function(a, b, c, d) {
             var e = b('copyProperties'),
                 f = b('FB'),
@@ -974,7 +1128,6 @@ if (!FB) {
         FB.provide('Content', {
             _root: null,
             _hiddenRoot: null,
-            _callbacks: {},
             append: function(a, b) {
                 if (!b) if (!FB.Content._root) {
                     FB.Content._root = b = FB.$('fb-root');
@@ -1012,40 +1165,41 @@ if (!FB) {
                 a.name = a.name || FB.guid();
                 var b = FB.guid(),
                     c = false,
-                    d = false;
-                FB.Content._callbacks[b] = function() {
+                    d = false,
+                    e = window.FB._callbacks || (window.FB._callbacks = {});
+                e[b] = function() {
                     if (c && !d) {
                         d = true;
                         a.onload && a.onload(a.root.firstChild);
                     }
                 };
                 if (document.attachEvent) {
-                    var e = ('<iframe' + ' id="' + a.id + '"' + ' name="' + a.name + '"' + (a.title ? ' title="' + a.title + '"' : '') + (a.className ? ' class="' + a.className + '"' : '') + ' style="border:none;' + (a.width ? 'width:' + a.width + 'px;' : '') + (a.height ? 'height:' + a.height + 'px;' : '') + '"' + ' src="javascript:false;"' + ' frameborder="0"' + ' scrolling="no"' + ' allowtransparency="true"' + ' onload="FB.Content._callbacks.' + b + '()"' + '></iframe>');
+                    var f = ('<iframe' + ' id="' + a.id + '"' + ' name="' + a.name + '"' + (a.title ? ' title="' + a.title + '"' : '') + (a.className ? ' class="' + a.className + '"' : '') + ' style="border:none;' + (a.width ? 'width:' + a.width + 'px;' : '') + (a.height ? 'height:' + a.height + 'px;' : '') + '"' + ' src="javascript:false;"' + ' frameborder="0"' + ' scrolling="no"' + ' allowtransparency="true"' + ' onload="FB._callbacks.' + b + '()"' + '></iframe>');
                     a.root.innerHTML = '<iframe src="javascript:false"' + ' frameborder="0"' + ' scrolling="no"' + ' style="height:1px"></iframe>';
                     c = true;
                     window.setTimeout(function() {
-                        a.root.innerHTML = e;
+                        a.root.innerHTML = f;
                         a.root.firstChild.src = a.url;
                         a.onInsert && a.onInsert(a.root.firstChild);
                     }, 0);
                 } else {
-                    var f = document.createElement('iframe');
-                    f.id = a.id;
-                    f.name = a.name;
-                    f.onload = FB.Content._callbacks[b];
-                    f.scrolling = 'no';
-                    f.style.border = 'none';
-                    f.style.overflow = 'hidden';
-                    if (a.title) f.title = a.title;
-                    if (a.className) f.className = a.className;
-                    if (a.height) f.style.height = a.height + 'px';
+                    var g = document.createElement('iframe');
+                    g.id = a.id;
+                    g.name = a.name;
+                    g.onload = e[b];
+                    g.scrolling = 'no';
+                    g.style.border = 'none';
+                    g.style.overflow = 'hidden';
+                    if (a.title) g.title = a.title;
+                    if (a.className) g.className = a.className;
+                    if (a.height) g.style.height = a.height + 'px';
                     if (a.width) if (a.width == '100%') {
-                        f.style.width = a.width;
-                    } else f.style.width = a.width + 'px';
-                    a.root.appendChild(f);
+                        g.style.width = a.width;
+                    } else g.style.width = a.width + 'px';
+                    a.root.appendChild(g);
                     c = true;
-                    f.src = a.url;
-                    a.onInsert && a.onInsert(f);
+                    g.src = a.url;
+                    a.onInsert && a.onInsert(g);
                 }
             },
             submitToTarget: function(a, b) {
@@ -1177,7 +1331,6 @@ if (!FB) {
         });
         FB.provide('ApiServer', {
             METHODS: ['get', 'post', 'delete', 'put'],
-            _callbacks: {},
             _readOnlyCalls: {
                 fql_query: true,
                 fql_multiquery: true,
@@ -1297,12 +1450,16 @@ if (!FB) {
                     }
                 };
                 d.onload = function() {
-                    d.onload = Function.prototype;
-                    if ('onload' in e) e.onload(d);
+                    FB.applyWithGuard(function() {
+                        d.onload = Function.prototype;
+                        if ('onload' in e) e.onload(d);
+                    });
                 };
                 d.onerror = function() {
-                    d.onerror = Function.prototype;
-                    if ('onerror' in e) e.onerror(d);
+                    FB.applyWithGuard(function() {
+                        d.onerror = Function.prototype;
+                        if ('onerror' in e) e.onerror(d);
+                    });
                 };
                 d.onreadystatechange = function() {
                     if (d.readyState == 4) if (d.status == 200) {
@@ -1310,67 +1467,74 @@ if (!FB) {
                     } else d.onerror();
                 };
                 d.onprogress = Function.prototype;
+                d.ontimeout = Function.prototype;
                 return e;
             },
             jsonp: function(a, b, c, d, e) {
                 var f = FB.guid(),
                     g = document.getElementsByTagName('script')[0],
-                    h = document.createElement('script');
+                    h = document.createElement('script'),
+                    i = window.FB._callbacks || (window.FB._callbacks = {});
                 d = FB.copy({}, d);
                 if (a === 'graph' && c !== 'get') d.method = c;
-                d.callback = 'FB.ApiServer._callbacks.' + f;
-                var i = (FB.getDomain(a) + b + (ES5(b, 'indexOf', true, '?') > -1 ? '&' : '?') + FB.QS.encode(d));
-                if (i.length > 2000) throw new Error('JSONP only support a maximum of 2000 bytes of input.');
-                FB.ApiServer._callbacks[f] = function(k) {
-                    e && e(k);
-                    delete FB.ApiServer._callbacks[f];
-                    h.parentNode.removeChild(h);
+                d.callback = 'FB._callbacks.' + f;
+                var j = (FB.getDomain(a) + b + (ES5(b, 'indexOf', true, '?') > -1 ? '&' : '?') + FB.QS.encode(d));
+                if (j.length > 2000) throw new Error('JSONP only support a maximum of 2000 bytes of input.');
+                i[f] = function(l) {
+                    FB.applyWithGuard(function() {
+                        e && e(l);
+                        delete i[f];
+                        h.parentNode.removeChild(h);
+                    });
                 };
                 h.onerror = function() {
-                    if (f in FB.ApiServer._callbacks) FB.ApiServer._callbacks[f]({
+                    if (f in i) i[f]({
                         error: 'load-error: unknown'
                     });
                 };
-                var j = function() {
+                var k = function() {
                         setTimeout(function() {
-                            if (f in FB.ApiServer._callbacks) h.onerror();
+                            if (f in i) h.onerror();
                         }, 0);
                     };
                 if (h.addEventListener) {
-                    h.addEventListener("load", j, false);
+                    h.addEventListener("load", k, false);
                 } else h.onreadystatechange = function() {
-                    if (/loaded|complete/.test(this.readyState)) j();
+                    if (/loaded|complete/.test(this.readyState)) k();
                 };
-                h.src = i;
+                h.src = j;
                 g.parentNode.insertBefore(h, g);
             },
             flash: function(a, b, c, d, e) {
-                if (!window.FB_OnXdHttpResult) window.FB_OnXdHttpResult = function(f, g) {
-                    FB.ApiServer._callbacks[f](decodeURIComponent(g));
+                var f = window.FB._callbacks || (window.FB._callbacks = {});
+                if (!window.FB_OnXdHttpResult) window.FB_OnXdHttpResult = function(g, h) {
+                    FB.applyWithGuard(function() {
+                        f[g](decodeURIComponent(h));
+                    });
                 };
                 d = FB.copy({}, d);
                 FB.Flash.onReady(function() {
                     if (a === 'graph') d.suppress_http_code = 1;
-                    var f = FB.getDomain(a) + b,
-                        g = FB.QS.encode(d);
+                    var g = FB.getDomain(a) + b,
+                        h = FB.QS.encode(d);
                     if (c === 'get') {
-                        if (f.length + g.length > 2000) {
+                        if (g.length + h.length > 2000) {
                             if (a === 'graph') d.method = 'get';
                             c = 'post';
-                            g = FB.QS.encode(d);
+                            h = FB.QS.encode(d);
                         } else {
-                            f += (ES5(f, 'indexOf', true, '?') > -1 ? '&' : '?') + g;
-                            g = '';
+                            g += (ES5(g, 'indexOf', true, '?') > -1 ? '&' : '?') + h;
+                            h = '';
                         }
                     } else if (c !== 'post') {
                         if (a === 'graph') d.method = c;
                         c = 'post';
-                        g = FB.QS.encode(d);
+                        h = FB.QS.encode(d);
                     }
-                    var h = document.XdComm.sendXdHttpRequest(c.toUpperCase(), f, g, null);
-                    FB.ApiServer._callbacks[h] = function(i) {
-                        e && e(ES5('JSON', 'parse', false, i));
-                        delete FB.ApiServer._callbacks[h];
+                    var i = document.XdComm.sendXdHttpRequest(c.toUpperCase(), g, h, null);
+                    f[i] = function(j) {
+                        e && e(ES5('JSON', 'parse', false, j));
+                        delete f[i];
                     };
                 });
             }
@@ -1400,106 +1564,80 @@ if (!FB) {
             }
             e.exports = g;
         });
-        __d("QueryString", [], function(a, b, c, d, e, f) {
-            var g = {
-                encode: function(h) {
-                    var i = [];
-                    ES5(ES5('Object', 'keys', false, h), 'forEach', true, function(j) {
-                        var k = h[j];
-                        if (typeof k === 'undefined') return;
-                        if (k === null) {
-                            i.push(j);
-                            return;
-                        }
-                        i.push(encodeURIComponent(j) + '=' + encodeURIComponent(k));
-                    });
-                    return i.join('&');
-                },
-                decode: function(h) {
-                    var i = {};
-                    if (h === '') return i;
-                    var j = h.split('&'),
-                        k = j.length;
-                    while (k--) {
-                        var l = j[k].split('=', 2);
-                        i[decodeURIComponent(l[0])] = l.length === 2 ? decodeURIComponent(l[1]) : null;
-                    }
-                    return i;
-                },
-                appendToUrl: function(h, i) {
-                    return h + (~ES5(h, 'indexOf', true, '?') ? '&' : '?') + (typeof i === 'string' ? i : g.encode(i));
-                }
-            };
-            e.exports = g;
-        });
-        __d("CORSRequest", ["QueryString"], function(a, b, c, d, e, f) {
-            var g = b('QueryString');
+        __d("CORSRequest", ["applyWithGuard", "QueryString"], function(a, b, c, d, e, f) {
+            var g = b('applyWithGuard'),
+                h = b('QueryString');
 
-            function h(k, l) {
+            function i(l, m) {
                 if (!window.XMLHttpRequest) return null;
-                var m = new XMLHttpRequest();
-                if ('withCredentials' in m) {
-                    m.open(k, l, true);
-                    m.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                var n = new XMLHttpRequest();
+                if ('withCredentials' in n) {
+                    n.open(l, m, true);
+                    n.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
                 } else if (window.XDomainRequest) {
-                    m = new XDomainRequest();
+                    n = new XDomainRequest();
                     try {
-                        m.open(k, l);
-                    } catch (n) {
+                        n.open(l, m);
+                    } catch (o) {
                         return null;
                     }
                 } else return null;
-                var o = {
-                    send: function(p) {
-                        m.send(p);
+                var p = {
+                    send: function(q) {
+                        n.send(q);
                     }
                 };
-                m.onload = function() {
-                    m.onload = Function.prototype;
-                    if ('onload' in o) o.onload(m);
+                n.onload = function() {
+                    g(function() {
+                        n.onload = Function.prototype;
+                        if ('onload' in p) p.onload(n);
+                    });
                 };
-                m.onerror = function() {
-                    m.onerror = Function.prototype;
-                    if ('onerror' in o) o.onerror(m);
+                n.onerror = function() {
+                    g(function() {
+                        n.onerror = Function.prototype;
+                        if ('onerror' in p) p.onerror(n);
+                    });
                 };
-                m.onreadystatechange = function() {
-                    if (m.readyState == 4) if (m.status == 200) {
-                        m.onload();
-                    } else m.onerror();
+                n.onreadystatechange = function() {
+                    if (n.readyState == 4) if (n.status == 200) {
+                        n.onload();
+                    } else n.onerror();
                 };
-                m.onprogress = Function.prototype;
-                return o;
+                n.onprogress = Function.prototype;
+                n.ontimeout = Function.prototype;
+                return p;
             }
-            function i(k, l, m, n) {
-                m.suppress_http_code = 1;
-                var o = g.encode(m);
-                if (l != 'post') {
-                    k = g.appendToUrl(k, o);
-                    o = '';
+            function j(l, m, n, o) {
+                n.suppress_http_code = 1;
+                var p = h.encode(n);
+                if (m != 'post') {
+                    l = h.appendToUrl(l, p);
+                    p = '';
                 }
-                var p = h(l, k);
-                if (!p) return false;
-                p.onload = function(q) {
-                    n(ES5('JSON', 'parse', false, q.responseText));
+                var q = i(m, l);
+                if (!q) return false;
+                q.onload = function(r) {
+                    o(ES5('JSON', 'parse', false, r.responseText));
                 };
-                p.onerror = function(q) {
-                    if (q.responseText) {
-                        n(ES5('JSON', 'parse', false, q.responseText));
-                    } else n({
+                q.onerror = function(r) {
+                    if (r.responseText) {
+                        o(ES5('JSON', 'parse', false, r.responseText));
+                    } else o({
                         error: {
                             type: 'http',
                             message: 'unknown error',
-                            status: q.status
+                            status: r.status
                         }
                     });
                 };
-                p.send(o);
+                q.send(p);
                 return true;
             }
-            var j = {
-                execute: i
+            var k = {
+                execute: j
             };
-            e.exports = j;
+            e.exports = k;
         });
         __d("DOMWrapper", [], function(a, b, c, d, e, f) {
             var g, h, i = {
@@ -1517,12 +1655,6 @@ if (!FB) {
                 }
             };
             e.exports = i;
-        });
-        __d("guid", [], function(a, b, c, d, e, f) {
-            function g() {
-                return 'f' + (Math.random() * (1 << 30)).toString(16).replace('.', '');
-            }
-            e.exports = g;
         });
         __d("Flash", ["DOMWrapper", "QueryString", "UserAgent", "copyProperties", "guid"], function(a, b, c, d, e, f) {
             var g = b('DOMWrapper'),
@@ -1598,17 +1730,6 @@ if (!FB) {
                 }
             };
             e.exports = s;
-        });
-        __d("dotAccess", [], function(a, b, c, d, e, f) {
-            function g(h, i, j) {
-                var k = i.split('.');
-                do {
-                    var l = k.shift();
-                    h = h[l] || j && (h[l] = {});
-                } while (k.length && h);
-                return h;
-            }
-            e.exports = g;
         });
         __d("GlobalCallback", ["dotAccess"], function(a, b, c, d, e, f) {
             var g = b('dotAccess'),
@@ -1854,19 +1975,6 @@ if (!FB) {
             };
             e.exports = j;
         });
-        __d("UrlMap", ["UrlMapConfig"], function(a, b, c, d, e, f) {
-            var g = c('UrlMapConfig'),
-                h = {
-                    resolve: function(i, j) {
-                        var k = typeof j == 'undefined' ? location.protocol.replace(':', '') : j ? 'https' : 'http';
-                        if (i in g) return k + '://' + g[i];
-                        if (typeof j == 'undefined' && i + '_' + k in g) return k + '://' + g[i + '_' + k];
-                        if (j !== true && i + '_http' in g) return 'http://' + g[i + '_http'];
-                        if (j !== false && i + '_https' in g) return 'https://' + g[i + '_https'];
-                    }
-                };
-            e.exports = h;
-        });
         __d("URL", ["copyProperties", "QueryString", "Log"], function(a, b, c, d, e, f) {
             var g = b('copyProperties'),
                 h = b('QueryString'),
@@ -2010,7 +2118,13 @@ if (!FB) {
                     delete ca.transport;
                 } else fa = ['jsonp', 'cors', 'flash'];
                 var ga = function(ka) {
-                        if (r && ka && typeof ka == 'object') if ('error' in ka || 'error_code' in ka) if (ka.error_code == '190' || ka.error == 'invalid_token' || (ka.error.type == 'OAuthException' && ka.error.code == 190)) r();
+                        var la = false;
+                        if (r && ka && typeof ka == 'object') {
+                            if (ka.error) {
+                                if (ka.error == 'invalid_token' || (ka.error.type == 'OAuthException' && ka.error.code == 190)) la = true;
+                            } else if (ka.error_code) if (ka.error_code == '190') la = true;
+                            if (la) r();
+                        }
                         da(ka);
                     };
                 for (var ha = 0; ha < fa.length; ha++) {
@@ -2128,14 +2242,17 @@ if (!FB) {
                 });
             },
             listen: function(a, event, b) {
+                b.wrapper = function() {
+                    FB.applyWithGuard(b, this, arguments);
+                };
                 if (a.addEventListener) {
-                    a.addEventListener(event, b, false);
-                } else if (a.attachEvent) a.attachEvent('on' + event, b);
+                    a.addEventListener(event, b.wrapper, false);
+                } else if (a.attachEvent) a.attachEvent('on' + event, b.wrapper);
             },
             unlisten: function(a, event, b) {
                 if (a.removeEventListener) {
-                    a.removeEventListener(event, b, false);
-                } else if (a.detachEvent) a.detachEvent('on' + event, b);
+                    a.removeEventListener(event, b.wrapper, false);
+                } else if (a.detachEvent) a.detachEvent('on' + event, b.wrapper);
             }
         });
         FB.provide('Event', FB.EventProvider);
@@ -2155,6 +2272,27 @@ if (!FB) {
                 }
             });
         }, 3);
+        __d("resolveWindow", [], function(a, b, c, d, e, f) {
+            function g(h) {
+                var i = window,
+                    j = h.split('.');
+                try {
+                    for (var l = 0; l < j.length; l++) {
+                        var m = j[l],
+                            n = /^frames\[['"]?([a-zA-Z0-9\-_]+)['"]?\]$/.exec(m);
+                        if (n) {
+                            i = i.frames[n[1]];
+                        } else if (m === 'opener' || m === 'parent' || m === 'top') {
+                            i = i[m];
+                        } else return null;
+                    }
+                } catch (k) {
+                    return null;
+                }
+                return i;
+            }
+            e.exports = g;
+        });
         __d("DOMEventListener", [], function(a, b, c, d, e, f) {
             var g, h;
             if (window.addEventListener) {
@@ -2369,217 +2507,200 @@ if (!FB) {
             })());
             e.exports = q;
         });
-        __d("resolveWindow", [], function(a, b, c, d, e, f) {
-            function g(h) {
-                var i = window,
-                    j = h.split('.');
-                try {
-                    for (var l = 0; l < j.length; l++) {
-                        var m = j[l],
-                            n = /^frames\[['"]?([a-zA-Z0-9\-_]+)['"]?\]$/.exec(m);
-                        if (n) {
-                            i = i.frames[n[1]];
-                        } else if (m === 'opener' || m === 'parent' || m === 'top') {
-                            i = i[m];
-                        } else return null;
-                    }
-                } catch (k) {
-                    return null;
-                }
-                return i;
-            }
-            e.exports = g;
-        });
-        __d("SDK_XD", ["XDM", "Log", "QueryString", "Queue", "resolveWindow", "guid", "XDConfig"], function(a, b, c, d, e, f) {
+        __d("SDK_XD", ["applyWithGuard", "guid", "resolveWindow", "FB", "XDM", "Log", "QueryString", "Queue", "XDConfig"], function(a, b, c, d, e, f) {
             var g = c('XDConfig'),
-                h = b('XDM'),
-                i = b('Log'),
-                j = b('QueryString'),
-                k = b('Queue'),
-                l = b('resolveWindow'),
-                m = b('guid'),
-                n = new k(),
-                o = new k(),
-                p = new k(),
-                q, r, s = m(),
-                t = m(),
-                u = location.protocol + '//' + location.host,
-                v, w = false,
-                x = {};
+                h = b('applyWithGuard'),
+                i = b('guid'),
+                j = b('resolveWindow'),
+                k = b('FB'),
+                l = b('XDM'),
+                m = b('Log'),
+                n = b('QueryString'),
+                o = b('Queue'),
+                p = new o(),
+                q = new o(),
+                r = new o(),
+                s, t, u = i(),
+                v = i(),
+                w = location.protocol + '//' + location.host,
+                x, y = false,
+                z = {};
 
-            function y(ea) {
-                i.info('Remote XD can talk to facebook.com (%s)', ea);
-                if (ea == 'canvas') {
-                    FB._inCanvas = true;
-                } else FB.Canvas._isTabIframe = true;
+            function aa(ga) {
+                m.info('Remote XD can talk to facebook.com (%s)', ga);
+                if (ga == 'canvas') {
+                    k._inCanvas = true;
+                } else k.Canvas._isTabIframe = true;
             }
-            function z(ea, fa) {
-                if (!fa) {
-                    i.error('No senderOrigin');
+            function ba(ga, ha) {
+                if (!ha) {
+                    m.error('No senderOrigin');
                     throw new Error();
                 }
-                var ga = /^https?/.exec(fa)[0];
-                switch (ea.xd_action) {
+                var ia = /^https?/.exec(ha)[0];
+                switch (ga.xd_action) {
                 case 'proxy_ready':
-                    var ha, ia;
-                    if (ga == 'https') {
-                        ha = p;
-                        ia = r;
+                    var ja, ka;
+                    if (ia == 'https') {
+                        ja = r;
+                        ka = t;
                     } else {
-                        ha = o;
-                        ia = q;
+                        ja = q;
+                        ka = s;
                     }
-                    if (ea.registered) {
-                        y(ea.registered);
-                        n = ha.merge(n);
+                    if (ga.registered) {
+                        aa(ga.registered);
+                        p = ja.merge(p);
                     }
-                    i.info('Proxy ready, starting queue %s containing %s messages', ga + 'ProxyQueue', ha.getLength());
-                    ha.start(function(ka) {
-                        v.send(j.encode(ka), fa, ia.contentWindow, t + '_' + ga);
+                    m.info('Proxy ready, starting queue %s containing %s messages', ia + 'ProxyQueue', ja.getLength());
+                    ja.start(function(ma) {
+                        x.send(n.encode(ma), ha, ka.contentWindow, v + '_' + ia);
                     });
                     break;
                 case 'plugin_ready':
-                    i.info('Plugin %s ready, protocol: %s', ea.name, ga);
-                    x[ea.name] = {
-                        protocol: ga
+                    m.info('Plugin %s ready, protocol: %s', ga.name, ia);
+                    z[ga.name] = {
+                        protocol: ia
                     };
-                    if (k.exists(ea.name)) {
-                        var ja = k.get(ea.name);
-                        i.debug('Enqueuing %s messages for %s in %s', ja.getLength(), ea.name, ga + 'ProxyQueue');
-                        (ga == 'https' ? p : o).merge(ja);
+                    if (o.exists(ga.name)) {
+                        var la = o.get(ga.name);
+                        m.debug('Enqueuing %s messages for %s in %s', la.getLength(), ga.name, ia + 'ProxyQueue');
+                        (ia == 'https' ? r : q).merge(la);
                     }
                     break;
                 }
-                if (ea.data) aa(ea.data, fa);
+                if (ga.data) ca(ga.data, ha);
             }
-            function aa(ea, fa) {
-                if (typeof ea == 'string') if (ea.substring(0, 1) == '{') {
-                    try {
-                        ea = ES5('JSON', 'parse', false, ea);
-                    } catch (ga) {
-                        i.warn('Failed to decode %s as JSON', ea);
+            function ca(ga, ha) {
+                h(function() {
+                    if (typeof ga == 'string') if (ga.substring(0, 1) == '{') {
+                        try {
+                            ga = ES5('JSON', 'parse', false, ga);
+                        } catch (ia) {
+                            m.warn('Failed to decode %s as JSON', ga);
+                            return;
+                        }
+                    } else ga = n.decode(ga);
+                    if (!ha) if (ga.xd_sig == u) ha = ga.xd_origin;
+                    if (ga.xd_action) {
+                        ba(ga, ha);
                         return;
                     }
-                } else ea = j.decode(ea);
-                if (!fa) if (ea.xd_sig == s) fa = ea.xd_origin;
-                if (ea.xd_action) {
-                    z(ea, fa);
-                    return;
-                }
-                if (ea.access_token) FB._https = /^https/.test(u);
-                if (ea.cb) {
-                    var ha = FB.XD._callbacks[ea.cb];
-                    if (!FB.XD._forever[ea.cb]) delete FB.XD._callbacks[ea.cb];
-                    if (ha) ha(ea);
-                }
+                    if (ga.access_token) k._https = /^https/.test(w);
+                    if (ga.cb) {
+                        var ja = k.XD._callbacks[ga.cb];
+                        if (!k.XD._forever[ga.cb]) delete k.XD._callbacks[ga.cb];
+                        if (ja) ja(ga);
+                    }
+                });
             }
-            var ba = function() {
-                    var ea = document.createElement("form"),
-                        fa = ea.appendChild(document.createElement("input")),
-                        ga;
-                    fa.name = m();
-                    ga = fa !== ea.elements[fa.name];
-                    ea = fa = null;
-                    ba = function() {
-                        return ga;
+            var da = function() {
+                    var ga = document.createElement("form"),
+                        ha = ga.appendChild(document.createElement("input")),
+                        ia;
+                    ha.name = i();
+                    ia = ha !== ga.elements[ha.name];
+                    ga = ha = null;
+                    da = function() {
+                        return ia;
                     };
-                    return ga;
+                    return ia;
                 };
 
-            function ca(ea) {
-                var fa = ba() ? document.createElement('<iframe name="' + ea.name + '"/>') : document.createElement("IFRAME");
-                fa.name = fa.id = ea.name;
-                fa.src = "javascript:false";
-                ea.root.appendChild(fa);
-                fa.src = ea.url;
-                return fa;
+            function ea(ga) {
+                var ha = da() ? document.createElement('<iframe name="' + ga.name + '"/>') : document.createElement("iframe");
+                ha.name = ha.id = ga.name;
+                ha.src = "javascript:false";
+                ga.root.appendChild(ha);
+                ha.src = ga.url;
+                return ha;
             }
-            var da = {
+            var fa = {
                 _callbacks: {},
                 _forever: {},
-                _channel: t,
-                _origin: u,
-                onMessage: aa,
-                recv: aa,
-                init: function(ea) {
-                    if (w) return;
-                    var fa = ea ? /\/\/.*?(\/[^#]*)/.exec(ea)[1] : location.pathname + location.search;
-                    fa += (~ES5(fa, 'indexOf', true, '?') ? '&' : '?') + 'fb_xd_fragment#xd_sig=' + s + '&';
-                    var ga = FB.Content.appendHidden(document.createElement('div')),
-                        ha = h.create({
-                            root: ga,
-                            channel: t,
+                _channel: v,
+                _origin: w,
+                onMessage: ca,
+                recv: ca,
+                init: function(ga) {
+                    if (y) return;
+                    var ha = ga ? /\/\/.*?(\/[^#]*)/.exec(ga)[1] : location.pathname + location.search;
+                    ha += (~ES5(ha, 'indexOf', true, '?') ? '&' : '?') + 'fb_xd_fragment#xd_sig=' + u + '&';
+                    var ia = k.Content.appendHidden(document.createElement('div')),
+                        ja = l.create({
+                            root: ia,
+                            channel: v,
                             channelPath: '/' + g.XdUrl + '#',
                             flashUrl: g.Flash.path,
-                            whenReady: function(ma) {
-                                v = ma;
+                            whenReady: function(oa) {
+                                x = oa;
                             },
-                            onMessage: aa
+                            onMessage: ca
                         }),
-                        ia = {
-                            channel: t,
+                        ka = {
+                            channel: v,
                             origin: location.protocol + '//' + location.host,
-                            channel_path: fa,
-                            transport: ha
+                            channel_path: ha,
+                            transport: ja
                         },
-                        ja = g.XdUrl + '#' + j.encode(ia),
-                        ka = g.useCdn ? FB._domain.staticfb : 'http://www.facebook.com/',
-                        la = g.useCdn ? FB._domain.https_staticfb : 'https://www.facebook.com/';
-                    if (!FB.onlyUseHttps()) q = ca({
-                        url: ka + ja,
+                        la = g.XdUrl + '#' + n.encode(ka),
+                        ma = g.useCdn ? k._domain.staticfb : 'http://www.facebook.com/',
+                        na = g.useCdn ? k._domain.https_staticfb : 'https://www.facebook.com/';
+                    if (!k.onlyUseHttps()) s = ea({
+                        url: ma + la,
                         name: 'fb_xdm_frame_http',
-                        root: ga
+                        root: ia
                     });
-                    r = ca({
-                        url: la + ja,
+                    t = ea({
+                        url: na + la,
                         name: 'fb_xdm_frame_https',
-                        root: ga
+                        root: ia
                     });
-                    w = true;
+                    y = true;
                 },
-                sendToFacebook: function(ea, fa) {
-                    if (ea == 'facebook') {
-                        fa.relation = 'parent.parent';
-                        n.enqueue(fa);
+                sendToFacebook: function(ga, ha) {
+                    if (ga == 'facebook') {
+                        ha.relation = 'parent.parent';
+                        p.enqueue(ha);
                     } else {
-                        fa.relation = 'parent.frames["' + ea + '"]';
-                        var ga = x[ea];
-                        if (ga) {
-                            i.debug('Enqueuing message for plugin %s in %s', ea, ga.protocol + 'ProxyQueue');
-                            (ga.protocol == 'https' ? p : o).enqueue(fa);
+                        ha.relation = 'parent.frames["' + ga + '"]';
+                        var ia = z[ga];
+                        if (ia) {
+                            m.debug('Enqueuing message for plugin %s in %s', ga, ia.protocol + 'ProxyQueue');
+                            (ia.protocol == 'https' ? r : q).enqueue(ha);
                         } else {
-                            i.debug('Buffering message for plugin %s', ea);
-                            k.get(ea).enqueue(fa);
+                            m.debug('Buffering message for plugin %s', ga);
+                            o.get(ga).enqueue(ha);
                         }
                     }
                 },
-                handler: function(ea, fa, ga, ha) {
-                    ha = ha || m();
-                    if (ga) FB.XD._forever[ha] = true;
-                    FB.XD._callbacks[ha] = ea;
-                    var ia = location.protocol == 'https:' ? FB._domain.https_staticfb : FB._domain.staticfb,
-                        ja = g.useCdn ? ia : location.protocol + '//www.facebook.com/';
-                    return ja + g.XdUrl + '#' + j.encode({
-                        cb: ha,
-                        origin: u + '/' + t,
+                handler: function(ga, ha, ia, ja) {
+                    ja = ja || i();
+                    if (ia) k.XD._forever[ja] = true;
+                    k.XD._callbacks[ja] = ga;
+                    var ka = location.protocol == 'https:' ? k._domain.https_staticfb : k._domain.staticfb,
+                        la = g.useCdn ? ka : location.protocol + '//www.facebook.com/';
+                    return la + g.XdUrl + '#' + n.encode({
+                        cb: ja,
+                        origin: w + '/' + v,
                         domain: location.hostname,
-                        relation: fa || 'opener'
+                        relation: ha || 'opener'
                     });
                 }
             };
             (function() {
-                var ea = location.href.match(/[?&]fb_xd_fragment#(.*)$/);
-                if (ea) {
+                var ga = location.href.match(/[?&]fb_xd_fragment#(.*)$/);
+                if (ga) {
                     document.documentElement.style.display = 'none';
-                    var fa = j.decode(ea[1]),
-                        ga = l(fa.xd_rel);
-                    i.debug('Passing fragment based message: %s', ea[1]);
-                    ga.FB.XD.onMessage(fa);
+                    var ha = n.decode(ga[1]),
+                        ia = j(ha.xd_rel);
+                    m.debug('Passing fragment based message: %s', ga[1]);
+                    ia.FB.XD.onMessage(ha);
                     document.open();
                     document.close();
                 }
             })();
-            e.exports = da;
+            e.exports = fa;
         });
         __d("legacy:fb.xd", ["FB", "SDK_XD"], function(a, b, c, d) {
             var e = b('FB'),
@@ -4308,47 +4429,47 @@ if (!FB) {
             getAttr: function(a, b) {
                 return (a.getAttribute(b) || a.getAttribute(b.replace(/_/g, '-')) || a.getAttribute(b.replace(/-/g, '_')) || a.getAttribute(b.replace(/-/g, '')) || a.getAttribute(b.replace(/_/g, '')) || a.getAttribute('data-' + b) || a.getAttribute('data-' + b.replace(/_/g, '-')) || a.getAttribute('data-' + b.replace(/-/g, '_')) || a.getAttribute('data-' + b.replace(/-/g, '')) || a.getAttribute('data-' + b.replace(/_/g, '')) || null);
             },
-            _processElement: function(dom, tagInfo, cb) {
-                var element = dom._element;
-                if (element) {
-                    element.subscribe('render', cb);
-                    element.process();
+            _processElement: function(a, b, c) {
+                var d = a._element;
+                if (d) {
+                    d.subscribe('render', c);
+                    d.process();
                 } else {
-                    var processor = function() {
-                            var fn = eval(tagInfo.className),
-                                isLogin = false,
-                                showFaces = true,
-                                showLoginFace = false,
-                                renderInIframe = false,
-                                addToTimeline = (tagInfo.className === 'FB.XFBML.AddToTimeline');
-                            if ((tagInfo.className === 'FB.XFBML.LoginButton') || addToTimeline) {
-                                renderInIframe = FB.XFBML.getBoolAttr(dom, 'render-in-iframe');
-                                mode = FB.XFBML.getAttr(dom, 'mode');
-                                showFaces = (addToTimeline && mode != 'button') || FB.XFBML.getBoolAttr(dom, 'show-faces');
-                                showLoginFace = FB.XFBML.getBoolAttr(dom, 'show-login-face');
-                                isLogin = addToTimeline || renderInIframe || FB._iframeLoginButton || showFaces || showLoginFace || FB.XFBML.getBoolAttr(dom, 'oneclick');
-                                if (isLogin && !addToTimeline) fn = FB.XFBML.Login;
+                    var e = function() {
+                            var f = FB.dotAccess(FB, b.className.replace(/^FB\./, '')),
+                                g = false,
+                                h = true,
+                                i = false,
+                                j = false,
+                                k = (b.className === 'FB.XFBML.AddToTimeline');
+                            if ((b.className === 'FB.XFBML.LoginButton') || k) {
+                                j = FB.XFBML.getBoolAttr(a, 'render-in-iframe');
+                                mode = FB.XFBML.getAttr(a, 'mode');
+                                h = (k && mode != 'button') || FB.XFBML.getBoolAttr(a, 'show-faces');
+                                i = FB.XFBML.getBoolAttr(a, 'show-login-face');
+                                g = k || j || FB._iframeLoginButton || h || i || FB.XFBML.getBoolAttr(a, 'oneclick');
+                                if (g && !k) f = FB.XFBML.Login;
                             }
-                            element = dom._element = new fn(dom);
-                            if (isLogin) {
-                                showFaces = !! showFaces;
-                                showLoginFace = !! showLoginFace;
-                                var extraParams = {
-                                    show_faces: showFaces,
-                                    show_login_face: showLoginFace,
-                                    add_to_profile: addToTimeline,
+                            d = a._element = new f(a);
+                            if (g) {
+                                h = !! h;
+                                i = !! i;
+                                var l = {
+                                    show_faces: h,
+                                    show_login_face: i,
+                                    add_to_profile: k,
                                     mode: mode
                                 },
-                                    scope = FB.XFBML.getAttr(dom, 'scope') || FB.XFBML.getAttr(dom, 'perms');
-                                if (scope) extraParams.scope = scope;
-                                element.setExtraParams(extraParams);
+                                    m = FB.XFBML.getAttr(a, 'scope') || FB.XFBML.getAttr(a, 'perms');
+                                if (m) l.scope = m;
+                                d.setExtraParams(l);
                             }
-                            element.subscribe('render', cb);
-                            element.process();
+                            d.subscribe('render', c);
+                            d.process();
                         };
-                    if (FB.CLASSES[tagInfo.className.substr(3)]) {
-                        processor();
-                    } else FB.log('Tag ' + tagInfo.className + ' was not found.');
+                    if (FB.CLASSES[b.className.substr(3)]) {
+                        e();
+                    } else FB.log('Tag ' + b.className + ' was not found.');
                 }
             },
             _getDomElements: function(a, b, c) {
@@ -7054,35 +7175,9 @@ if (!FB) {
             }
         });
         void(0);;
-        __d("UrlMapConfig", [], {
-            "www": "www.facebook.com",
-            "m": "m.facebook.com",
-            "connect": "connect.facebook.net",
-            "api_https": "api.facebook.com",
-            "api_read_https": "api-read.facebook.com",
-            "graph_https": "graph.facebook.com",
-            "fbcdn_http": "s-static.ak.fbcdn.net",
-            "fbcdn_https": "s-static.ak.fbcdn.net",
-            "cdn_http": "static.ak.facebook.com",
-            "cdn_https": "s-static.ak.facebook.com"
-        });
-        __d("ApiClientConfig", [], {
-            "FlashRequest": {
-                "swfUrl": "https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v1\/y5\/r\/SrnvQJBTxo-.swf"
-            }
-        });
-        __d("SDKConfig", [], {
-            "migrate": 0
-        });
-        __d("XDConfig", [], {
-            "XdUrl": "connect\/xd_arbiter.php?version=6",
-            "Flash": {
-                "path": "https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v1\/ys\/r\/WON-TVLCpDP.swf"
-            },
-            "useCdn": true
-        });;
     }).call(FB);
-}
+})()
+
 
 FB.provide("", {
     "_domain": {
@@ -7109,6 +7204,9 @@ FB.provide("Flash", {
     ],
     "_swfPath": "rsrc.php\/v1\/ym\/r\/WT2HOUZkT6k.swf"
 }, true);
+FB.provide("Arbiter", {
+    "_canvasProxyUrl": "connect\/canvas_proxy.php?version=6"
+}, true);
 FB.provide('Auth', {
     "_xdStorePath": "xd_localstorage\/v2"
 }, true);
@@ -7116,52 +7214,55 @@ FB.provide("Canvas.Prefetcher", {
     "_appIdsBlacklist": [144959615576466],
     "_sampleRate": 500
 }, true);
-FB.initSitevars = {
-    "parseXFBMLBeforeDomReady": false,
-    "computeContentSizeVersion": 0,
-    "enableMobile": 1,
-    "enableMobileComments": 1,
-    "forceSecureXdProxy": 1,
-    "iframePermissions": {
-        "read_stream": false,
-        "manage_mailbox": false,
-        "manage_friendlists": false,
-        "read_mailbox": false,
-        "publish_checkins": true,
-        "status_update": true,
-        "photo_upload": true,
-        "video_upload": true,
-        "sms": false,
-        "create_event": true,
-        "rsvp_event": true,
-        "offline_access": true,
-        "email": true,
-        "xmpp_login": false,
-        "create_note": true,
-        "share_item": true,
-        "export_stream": false,
-        "publish_stream": true,
-        "publish_likes": true,
-        "ads_management": false,
-        "contact_email": true,
-        "access_private_data": false,
-        "read_insights": false,
-        "read_requests": false,
-        "read_friendlists": true,
-        "manage_pages": false,
-        "physical_login": false,
-        "manage_groups": false,
-        "read_deals": false
-    }
-};
-FB.forceOAuth = true;
-FB.widgetPipeEnabledApps = {
-    "111476658864976": 1,
-    "cca6477272fc5cb805f85a84f20fca1d": 1,
-    "179150165472010": 1
-};
-FB.widgetPipeTagCountThreshold = 4;
-FB._iframeLoginButton = false;
+FB.provide('', {
+    "initSitevars": {
+        "parseXFBMLBeforeDomReady": false,
+        "computeContentSizeVersion": 0,
+        "enableMobile": 1,
+        "enableMobileComments": 1,
+        "forceSecureXdProxy": 1,
+        "iframePermissions": {
+            "read_stream": false,
+            "manage_mailbox": false,
+            "manage_friendlists": false,
+            "read_mailbox": false,
+            "publish_checkins": true,
+            "status_update": true,
+            "photo_upload": true,
+            "video_upload": true,
+            "sms": false,
+            "create_event": true,
+            "rsvp_event": true,
+            "offline_access": true,
+            "email": true,
+            "xmpp_login": false,
+            "create_note": true,
+            "share_item": true,
+            "export_stream": false,
+            "publish_stream": true,
+            "publish_likes": true,
+            "ads_management": false,
+            "contact_email": true,
+            "access_private_data": false,
+            "read_insights": false,
+            "read_requests": false,
+            "read_friendlists": true,
+            "manage_pages": false,
+            "physical_login": false,
+            "manage_groups": false,
+            "read_deals": false
+        }
+    },
+    "widgetPipeEnabledApps": {
+        "111476658864976": 1,
+        "cca6477272fc5cb805f85a84f20fca1d": 1,
+        "179150165472010": 1
+    },
+    "widgetPipeTagCountThreshold": 4
+});
+FB.provide('', {
+    "_iframeLoginButton": 0
+});
 FB.provide("TemplateData", {
     "_enabled": 0
 }, true);
@@ -7187,5 +7288,5 @@ FB.provide("XFBML.ProfilePic", {
     }
 }, true);
 if (FB.Dom && FB.Dom.addCssRules) {
-    FB.Dom.addCssRules(".fb_hidden{position:absolute;top:-10000px;z-index:10001}\n.fb_invisible{display:none}\n.fb_reset{background:none;border-spacing:0;border:0;color:#000;cursor:auto;direction:ltr;font-family:\"lucida grande\", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}\n.fb_link img{border:none}\n.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}\n.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px}\n.fb_dialog_content{background:#fff;color:#333}\n.fb_dialog_close_icon{background:url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v2\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;_background-image:url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v2\/yL\/r\/s816eWC-2sl.gif);cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px;top:8px\\9;right:7px\\9}\n.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}\n.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}\n.fb_dialog_close_icon:hover{background:url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v2\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent;_background-image:url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v2\/yL\/r\/s816eWC-2sl.gif)}\n.fb_dialog_close_icon:active{background:url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v2\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent;_background-image:url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v2\/yL\/r\/s816eWC-2sl.gif)}\n.fb_dialog_loader{background-color:#f2f2f2;border:1px solid #606060;font-size:24px;padding:20px}\n.fb_dialog_top_left,\n.fb_dialog_top_right,\n.fb_dialog_bottom_left,\n.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}\n.fb_dialog_top_left{background:url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}\n.fb_dialog_top_right{background:url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}\n.fb_dialog_bottom_left{background:url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}\n.fb_dialog_bottom_right{background:url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}\n.fb_dialog_vert_left,\n.fb_dialog_vert_right,\n.fb_dialog_horiz_top,\n.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}\n.fb_dialog_vert_left,\n.fb_dialog_vert_right{width:10px;height:100\u0025}\n.fb_dialog_vert_left{margin-left:-10px}\n.fb_dialog_vert_right{right:0;margin-right:-10px}\n.fb_dialog_horiz_top,\n.fb_dialog_horiz_bottom{width:100\u0025;height:10px}\n.fb_dialog_horiz_top{margin-top:-10px}\n.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}\n.fb_dialog_iframe{line-height:0}\n.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #3b5998;color:#fff;font-size:14px;font-weight:bold;margin:0}\n.fb_dialog_content .dialog_title > span{background:url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v2\/yd\/r\/Cou7n-nqK52.gif)\nno-repeat 5px 50\u0025;float:left;padding:5px 0 7px 26px}\nbody.fb_hidden{-webkit-transform:none;height:100\u0025;margin:0;left:-10000px;overflow:visible;position:absolute;top:-10000px;width:100\u0025\n}\n.fb_dialog.fb_dialog_mobile.loading{background:url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v2\/yO\/r\/_j03izEX40U.gif)\nwhite no-repeat 50\u0025 50\u0025;min-height:100\u0025;min-width:100\u0025;overflow:hidden;position:absolute;top:0;z-index:10001}\n.fb_dialog.fb_dialog_mobile.loading.centered{max-height:590px;min-height:590px;max-width:500px;min-width:500px}\n#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;left:0;top:0;width:100\u0025;min-height:100\u0025;z-index:10000}\n#fb-root #fb_dialog_ipad_overlay.hidden{display:none}\n.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}\n.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0 0, 0 100\u0025, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}\n.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100\u0025\n}\n.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px\n}\n.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px\n}\n.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0 0, 0 100\u0025, from(#4966A6),\ncolor-stop(0.5, #355492), to(#2A4887));border:1px solid #29447e;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset,\nrgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}\n.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}\n.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}\n.fb_dialog_content .dialog_content{background:url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v2\/y9\/r\/jKEcVPZFk-2.gif) no-repeat 50\u0025 50\u0025;border:1px solid #555;border-bottom:0;border-top:0;height:150px}\n.fb_dialog_content .dialog_footer{background:#f2f2f2;border:1px solid #555;border-top-color:#ccc;height:40px}\n#fb_dialog_loader_close{float:left}\n.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}\n.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}\n.fb_iframe_widget{position:relative;display:-moz-inline-block;display:inline-block}\n.fb_iframe_widget iframe{position:absolute}\n.fb_iframe_widget_lift{z-index:1}\n.fb_iframe_widget span{position:relative;display:inline-block;vertical-align:text-bottom;text-align:justify}\n.fb_hide_iframes iframe{position:relative;left:-10000px}\n.fb_iframe_widget_loader{position:relative;display:inline-block}\n.fb_iframe_widget_fluid{display:inline}\n.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}\n.fb_iframe_widget_loader .FB_Loader{background:url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v1\/y9\/r\/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50\u0025;z-index:4}\n.fb_button_simple,\n.fb_button_simple_rtl{background-image:url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v1\/yH\/r\/eIpbnVKI9lR.png);background-repeat:no-repeat;cursor:pointer;outline:none;text-decoration:none}\n.fb_button_simple_rtl{background-position:right 0}\n.fb_button_simple .fb_button_text{margin:0 0 0 20px;padding-bottom:1px}\n.fb_button_simple_rtl .fb_button_text{margin:0 10px 0 0}\na.fb_button_simple:hover .fb_button_text,\na.fb_button_simple_rtl:hover .fb_button_text,\n.fb_button_simple:hover .fb_button_text,\n.fb_button_simple_rtl:hover .fb_button_text{text-decoration:underline}\n.fb_button,\n.fb_button_rtl{background:#29447e url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v1\/yL\/r\/FGFbc80dUKj.png);background-repeat:no-repeat;cursor:pointer;display:inline-block;padding:0 0 0 1px;text-decoration:none;outline:none}\n.fb_button .fb_button_text,\n.fb_button_rtl .fb_button_text{background:#5f78ab url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v1\/yL\/r\/FGFbc80dUKj.png);border-top:solid 1px #879ac0;border-bottom:solid 1px #1a356e;color:#fff;display:block;font-family:\"lucida grande\",tahoma,verdana,arial,sans-serif;font-weight:bold;padding:2px 6px 3px 6px;margin:1px 1px 0 21px;text-shadow:none}\na.fb_button,\na.fb_button_rtl,\n.fb_button,\n.fb_button_rtl{text-decoration:none}\na.fb_button:active .fb_button_text,\na.fb_button_rtl:active .fb_button_text,\n.fb_button:active .fb_button_text,\n.fb_button_rtl:active .fb_button_text{border-bottom:solid 1px #29447e;border-top:solid 1px #45619d;background:#4f6aa3;text-shadow:none}\n.fb_button_xlarge,\n.fb_button_xlarge_rtl{background-position:left -60px;font-size:24px;line-height:30px}\n.fb_button_xlarge .fb_button_text{padding:3px 8px 3px 12px;margin-left:38px}\na.fb_button_xlarge:active{background-position:left -99px}\n.fb_button_xlarge_rtl{background-position:right -268px}\n.fb_button_xlarge_rtl .fb_button_text{padding:3px 8px 3px 12px;margin-right:39px}\na.fb_button_xlarge_rtl:active{background-position:right -307px}\n.fb_button_large,\n.fb_button_large_rtl{background-position:left -138px;font-size:13px;line-height:16px}\n.fb_button_large .fb_button_text{margin-left:24px;padding:2px 6px 4px 6px}\na.fb_button_large:active{background-position:left -163px}\n.fb_button_large_rtl{background-position:right -346px}\n.fb_button_large_rtl .fb_button_text{margin-right:25px}\na.fb_button_large_rtl:active{background-position:right -371px}\n.fb_button_medium,\n.fb_button_medium_rtl{background-position:left -188px;font-size:11px;line-height:14px}\na.fb_button_medium:active{background-position:left -210px}\n.fb_button_medium_rtl{background-position:right -396px}\n.fb_button_text_rtl,\n.fb_button_medium_rtl .fb_button_text{padding:2px 6px 3px 6px;margin-right:22px}\na.fb_button_medium_rtl:active{background-position:right -418px}\n.fb_button_small,\n.fb_button_small_rtl{background-position:left -232px;font-size:10px;line-height:10px}\n.fb_button_small .fb_button_text{padding:2px 6px 3px;margin-left:17px}\na.fb_button_small:active,\n.fb_button_small:active{background-position:left -250px}\n.fb_button_small_rtl{background-position:right -440px}\n.fb_button_small_rtl .fb_button_text{padding:2px 6px;margin-right:18px}\na.fb_button_small_rtl:active{background-position:right -458px}\n.fb_share_count_wrapper{position:relative;float:left}\n.fb_share_count{background:#b0b9ec none repeat scroll 0 0;color:#333;font-family:\"lucida grande\", tahoma, verdana, arial, sans-serif;text-align:center}\n.fb_share_count_inner{background:#e8ebf2;display:block}\n.fb_share_count_right{margin-left:-1px;display:inline-block}\n.fb_share_count_right .fb_share_count_inner{border-top:solid 1px #e8ebf2;border-bottom:solid 1px #b0b9ec;margin:1px 1px 0 1px;font-size:10px;line-height:10px;padding:2px 6px 3px;font-weight:bold}\n.fb_share_count_top{display:block;letter-spacing:-1px;line-height:34px;margin-bottom:7px;font-size:22px;border:solid 1px #b0b9ec}\n.fb_share_count_nub_top{border:none;display:block;position:absolute;left:7px;top:35px;margin:0;padding:0;width:6px;height:7px;background-repeat:no-repeat;background-image:url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v1\/yU\/r\/bSOHtKbCGYI.png)}\n.fb_share_count_nub_right{border:none;display:inline-block;padding:0;width:5px;height:10px;background-repeat:no-repeat;background-image:url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v1\/yX\/r\/i_oIVTKMYsL.png);vertical-align:top;background-position:right 5px;z-index:10;left:2px;margin:0 2px 0 0;position:relative}\n.fb_share_no_count{display:none}\n.fb_share_size_Small .fb_share_count_right .fb_share_count_inner{font-size:10px}\n.fb_share_size_Medium .fb_share_count_right .fb_share_count_inner{font-size:11px;padding:2px 6px 3px;letter-spacing:-1px;line-height:14px}\n.fb_share_size_Large .fb_share_count_right .fb_share_count_inner{font-size:13px;line-height:16px;padding:2px 6px 4px;font-weight:normal;letter-spacing:-1px}\n.fb_share_count_hidden .fb_share_count_nub_top,\n.fb_share_count_hidden .fb_share_count_top,\n.fb_share_count_hidden .fb_share_count_nub_right,\n.fb_share_count_hidden .fb_share_count_right{visibility:hidden}\n.fb_connect_bar_container div,\n.fb_connect_bar_container span,\n.fb_connect_bar_container a,\n.fb_connect_bar_container img,\n.fb_connect_bar_container strong{background:none;border-spacing:0;border:0;direction:ltr;font-style:normal;font-variant:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal;vertical-align:baseline}\n.fb_connect_bar_container{position:fixed;left:0 !important;right:0 !important;height:42px !important;padding:0 25px !important;margin:0 !important;vertical-align:middle !important;border-bottom:1px solid #333 !important;background:#3b5998 !important;z-index:99999999 !important;overflow:hidden !important}\n.fb_connect_bar_container_ie6{position:absolute;top:expression(document.compatMode==\"CSS1Compat\"? document.documentElement.scrollTop+\"px\":body.scrollTop+\"px\")}\n.fb_connect_bar{position:relative;margin:auto;height:100\u0025;width:100\u0025;padding:6px 0 0 0 !important;background:none;color:#fff !important;font-family:\"lucida grande\", tahoma, verdana, arial, sans-serif !important;font-size:13px !important;font-style:normal !important;font-variant:normal !important;font-weight:normal !important;letter-spacing:normal !important;line-height:1 !important;text-decoration:none !important;text-indent:0 !important;text-shadow:none !important;text-transform:none !important;white-space:normal !important;word-spacing:normal !important}\n.fb_connect_bar a:hover{color:#fff}\n.fb_connect_bar .fb_profile img{height:30px;width:30px;vertical-align:middle;margin:0 6px 5px 0}\n.fb_connect_bar div a,\n.fb_connect_bar span,\n.fb_connect_bar span a{color:#bac6da;font-size:11px;text-decoration:none}\n.fb_connect_bar .fb_buttons{float:right;margin-top:7px}\n.fb_edge_widget_with_comment{position:relative;*z-index:1000}\n.fb_edge_widget_with_comment span.fb_edge_comment_widget{position:absolute}\n.fb_edge_widget_with_comment span.fb_send_button_form_widget{z-index:1}\n.fb_edge_widget_with_comment span.fb_send_button_form_widget .FB_Loader{left:0;top:1px;margin-top:6px;margin-left:0;background-position:50\u0025 50\u0025;background-color:#fff;height:150px;width:394px;border:1px #666 solid;border-bottom:2px solid #283e6c;z-index:1}\n.fb_edge_widget_with_comment span.fb_send_button_form_widget.dark .FB_Loader{background-color:#000;border-bottom:2px solid #ccc}\n.fb_edge_widget_with_comment span.fb_send_button_form_widget.siderender\n.FB_Loader{margin-top:0}\n.fbpluginrecommendationsbarleft,\n.fbpluginrecommendationsbarright{position:fixed !important;bottom:0;z-index:999}\n\/* \u0040noflip *\/\n.fbpluginrecommendationsbarleft{left:10px}\n\/* \u0040noflip *\/\n.fbpluginrecommendationsbarright{right:10px}\n", ["fb.css.base", "fb.css.dialog", "fb.css.iframewidget", "fb.css.button", "fb.css.sharebutton", "fb.css.connectbarwidget", "fb.css.edgecommentwidget", "fb.css.sendbuttonformwidget", "fb.css.plugin.recommendationsbar"]);
+    FB.Dom.addCssRules(".fb_hidden{position:absolute;top:-10000px;z-index:10001}\n.fb_invisible{display:none}\n.fb_reset{background:none;border-spacing:0;border:0;color:#000;cursor:auto;direction:ltr;font-family:\"lucida grande\", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}\n.fb_link img{border:none}\n.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}\n.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px}\n.fb_dialog_content{background:#fff;color:#333}\n.fb_dialog_close_icon{background:url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v2\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;_background-image:url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v2\/yL\/r\/s816eWC-2sl.gif);cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px;top:8px\\9;right:7px\\9}\n.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}\n.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}\n.fb_dialog_close_icon:hover{background:url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v2\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent;_background-image:url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v2\/yL\/r\/s816eWC-2sl.gif)}\n.fb_dialog_close_icon:active{background:url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v2\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent;_background-image:url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v2\/yL\/r\/s816eWC-2sl.gif)}\n.fb_dialog_loader{background-color:#f2f2f2;border:1px solid #606060;font-size:24px;padding:20px}\n.fb_dialog_top_left,\n.fb_dialog_top_right,\n.fb_dialog_bottom_left,\n.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}\n.fb_dialog_top_left{background:url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}\n.fb_dialog_top_right{background:url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}\n.fb_dialog_bottom_left{background:url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}\n.fb_dialog_bottom_right{background:url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}\n.fb_dialog_vert_left,\n.fb_dialog_vert_right,\n.fb_dialog_horiz_top,\n.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}\n.fb_dialog_vert_left,\n.fb_dialog_vert_right{width:10px;height:100\u0025}\n.fb_dialog_vert_left{margin-left:-10px}\n.fb_dialog_vert_right{right:0;margin-right:-10px}\n.fb_dialog_horiz_top,\n.fb_dialog_horiz_bottom{width:100\u0025;height:10px}\n.fb_dialog_horiz_top{margin-top:-10px}\n.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}\n.fb_dialog_iframe{line-height:0}\n.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #3b5998;color:#fff;font-size:14px;font-weight:bold;margin:0}\n.fb_dialog_content .dialog_title > span{background:url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v2\/yd\/r\/Cou7n-nqK52.gif)\nno-repeat 5px 50\u0025;float:left;padding:5px 0 7px 26px}\nbody.fb_hidden{-webkit-transform:none;height:100\u0025;margin:0;left:-10000px;overflow:visible;position:absolute;top:-10000px;width:100\u0025\n}\n.fb_dialog.fb_dialog_mobile.loading{background:url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v2\/yO\/r\/_j03izEX40U.gif)\nwhite no-repeat 50\u0025 50\u0025;min-height:100\u0025;min-width:100\u0025;overflow:hidden;position:absolute;top:0;z-index:10001}\n.fb_dialog.fb_dialog_mobile.loading.centered{max-height:590px;min-height:590px;max-width:500px;min-width:500px}\n#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;left:0;top:0;width:100\u0025;min-height:100\u0025;z-index:10000}\n#fb-root #fb_dialog_ipad_overlay.hidden{display:none}\n.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}\n.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0 0, 0 100\u0025, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}\n.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100\u0025\n}\n.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px\n}\n.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px\n}\n.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0 0, 0 100\u0025, from(#4966A6),\ncolor-stop(0.5, #355492), to(#2A4887));border:1px solid #29447e;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset,\nrgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}\n.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}\n.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}\n.fb_dialog_content .dialog_content{background:url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v2\/y9\/r\/jKEcVPZFk-2.gif) no-repeat 50\u0025 50\u0025;border:1px solid #555;border-bottom:0;border-top:0;height:150px}\n.fb_dialog_content .dialog_footer{background:#f2f2f2;border:1px solid #555;border-top-color:#ccc;height:40px}\n#fb_dialog_loader_close{float:left}\n.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}\n.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}\n.fb_iframe_widget{position:relative;display:-moz-inline-block;display:inline-block}\n.fb_iframe_widget iframe{position:absolute}\n.fb_iframe_widget_lift{z-index:1}\n.fb_iframe_widget span{position:relative;display:inline-block;vertical-align:text-bottom;text-align:justify}\n.fb_hide_iframes iframe{position:relative;left:-10000px}\n.fb_iframe_widget_loader{position:relative;display:inline-block}\n.fb_iframe_widget_fluid{display:inline}\n.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}\n.fb_iframe_widget_loader .FB_Loader{background:url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v2\/y9\/r\/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50\u0025;z-index:4}\n.fb_button_simple,\n.fb_button_simple_rtl{background-image:url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v2\/yH\/r\/eIpbnVKI9lR.png);background-repeat:no-repeat;cursor:pointer;outline:none;text-decoration:none}\n.fb_button_simple_rtl{background-position:right 0}\n.fb_button_simple .fb_button_text{margin:0 0 0 20px;padding-bottom:1px}\n.fb_button_simple_rtl .fb_button_text{margin:0 10px 0 0}\na.fb_button_simple:hover .fb_button_text,\na.fb_button_simple_rtl:hover .fb_button_text,\n.fb_button_simple:hover .fb_button_text,\n.fb_button_simple_rtl:hover .fb_button_text{text-decoration:underline}\n.fb_button,\n.fb_button_rtl{background:#29447e url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v2\/yL\/r\/FGFbc80dUKj.png);background-repeat:no-repeat;cursor:pointer;display:inline-block;padding:0 0 0 1px;text-decoration:none;outline:none}\n.fb_button .fb_button_text,\n.fb_button_rtl .fb_button_text{background:#5f78ab url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v2\/yL\/r\/FGFbc80dUKj.png);border-top:solid 1px #879ac0;border-bottom:solid 1px #1a356e;color:#fff;display:block;font-family:\"lucida grande\",tahoma,verdana,arial,sans-serif;font-weight:bold;padding:2px 6px 3px 6px;margin:1px 1px 0 21px;text-shadow:none}\na.fb_button,\na.fb_button_rtl,\n.fb_button,\n.fb_button_rtl{text-decoration:none}\na.fb_button:active .fb_button_text,\na.fb_button_rtl:active .fb_button_text,\n.fb_button:active .fb_button_text,\n.fb_button_rtl:active .fb_button_text{border-bottom:solid 1px #29447e;border-top:solid 1px #45619d;background:#4f6aa3;text-shadow:none}\n.fb_button_xlarge,\n.fb_button_xlarge_rtl{background-position:left -60px;font-size:24px;line-height:30px}\n.fb_button_xlarge .fb_button_text{padding:3px 8px 3px 12px;margin-left:38px}\na.fb_button_xlarge:active{background-position:left -99px}\n.fb_button_xlarge_rtl{background-position:right -268px}\n.fb_button_xlarge_rtl .fb_button_text{padding:3px 8px 3px 12px;margin-right:39px}\na.fb_button_xlarge_rtl:active{background-position:right -307px}\n.fb_button_large,\n.fb_button_large_rtl{background-position:left -138px;font-size:13px;line-height:16px}\n.fb_button_large .fb_button_text{margin-left:24px;padding:2px 6px 4px 6px}\na.fb_button_large:active{background-position:left -163px}\n.fb_button_large_rtl{background-position:right -346px}\n.fb_button_large_rtl .fb_button_text{margin-right:25px}\na.fb_button_large_rtl:active{background-position:right -371px}\n.fb_button_medium,\n.fb_button_medium_rtl{background-position:left -188px;font-size:11px;line-height:14px}\na.fb_button_medium:active{background-position:left -210px}\n.fb_button_medium_rtl{background-position:right -396px}\n.fb_button_text_rtl,\n.fb_button_medium_rtl .fb_button_text{padding:2px 6px 3px 6px;margin-right:22px}\na.fb_button_medium_rtl:active{background-position:right -418px}\n.fb_button_small,\n.fb_button_small_rtl{background-position:left -232px;font-size:10px;line-height:10px}\n.fb_button_small .fb_button_text{padding:2px 6px 3px;margin-left:17px}\na.fb_button_small:active,\n.fb_button_small:active{background-position:left -250px}\n.fb_button_small_rtl{background-position:right -440px}\n.fb_button_small_rtl .fb_button_text{padding:2px 6px;margin-right:18px}\na.fb_button_small_rtl:active{background-position:right -458px}\n.fb_share_count_wrapper{position:relative;float:left}\n.fb_share_count{background:#b0b9ec none repeat scroll 0 0;color:#333;font-family:\"lucida grande\", tahoma, verdana, arial, sans-serif;text-align:center}\n.fb_share_count_inner{background:#e8ebf2;display:block}\n.fb_share_count_right{margin-left:-1px;display:inline-block}\n.fb_share_count_right .fb_share_count_inner{border-top:solid 1px #e8ebf2;border-bottom:solid 1px #b0b9ec;margin:1px 1px 0 1px;font-size:10px;line-height:10px;padding:2px 6px 3px;font-weight:bold}\n.fb_share_count_top{display:block;letter-spacing:-1px;line-height:34px;margin-bottom:7px;font-size:22px;border:solid 1px #b0b9ec}\n.fb_share_count_nub_top{border:none;display:block;position:absolute;left:7px;top:35px;margin:0;padding:0;width:6px;height:7px;background-repeat:no-repeat;background-image:url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v2\/yU\/r\/bSOHtKbCGYI.png)}\n.fb_share_count_nub_right{border:none;display:inline-block;padding:0;width:5px;height:10px;background-repeat:no-repeat;background-image:url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v2\/yX\/r\/i_oIVTKMYsL.png);vertical-align:top;background-position:right 5px;z-index:10;left:2px;margin:0 2px 0 0;position:relative}\n.fb_share_no_count{display:none}\n.fb_share_size_Small .fb_share_count_right .fb_share_count_inner{font-size:10px}\n.fb_share_size_Medium .fb_share_count_right .fb_share_count_inner{font-size:11px;padding:2px 6px 3px;letter-spacing:-1px;line-height:14px}\n.fb_share_size_Large .fb_share_count_right .fb_share_count_inner{font-size:13px;line-height:16px;padding:2px 6px 4px;font-weight:normal;letter-spacing:-1px}\n.fb_share_count_hidden .fb_share_count_nub_top,\n.fb_share_count_hidden .fb_share_count_top,\n.fb_share_count_hidden .fb_share_count_nub_right,\n.fb_share_count_hidden .fb_share_count_right{visibility:hidden}\n.fb_connect_bar_container div,\n.fb_connect_bar_container span,\n.fb_connect_bar_container a,\n.fb_connect_bar_container img,\n.fb_connect_bar_container strong{background:none;border-spacing:0;border:0;direction:ltr;font-style:normal;font-variant:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal;vertical-align:baseline}\n.fb_connect_bar_container{position:fixed;left:0 !important;right:0 !important;height:42px !important;padding:0 25px !important;margin:0 !important;vertical-align:middle !important;border-bottom:1px solid #333 !important;background:#3b5998 !important;z-index:99999999 !important;overflow:hidden !important}\n.fb_connect_bar_container_ie6{position:absolute;top:expression(document.compatMode==\"CSS1Compat\"? document.documentElement.scrollTop+\"px\":body.scrollTop+\"px\")}\n.fb_connect_bar{position:relative;margin:auto;height:100\u0025;width:100\u0025;padding:6px 0 0 0 !important;background:none;color:#fff !important;font-family:\"lucida grande\", tahoma, verdana, arial, sans-serif !important;font-size:13px !important;font-style:normal !important;font-variant:normal !important;font-weight:normal !important;letter-spacing:normal !important;line-height:1 !important;text-decoration:none !important;text-indent:0 !important;text-shadow:none !important;text-transform:none !important;white-space:normal !important;word-spacing:normal !important}\n.fb_connect_bar a:hover{color:#fff}\n.fb_connect_bar .fb_profile img{height:30px;width:30px;vertical-align:middle;margin:0 6px 5px 0}\n.fb_connect_bar div a,\n.fb_connect_bar span,\n.fb_connect_bar span a{color:#bac6da;font-size:11px;text-decoration:none}\n.fb_connect_bar .fb_buttons{float:right;margin-top:7px}\n.fb_edge_widget_with_comment{position:relative;*z-index:1000}\n.fb_edge_widget_with_comment span.fb_edge_comment_widget{position:absolute}\n.fb_edge_widget_with_comment span.fb_send_button_form_widget{z-index:1}\n.fb_edge_widget_with_comment span.fb_send_button_form_widget .FB_Loader{left:0;top:1px;margin-top:6px;margin-left:0;background-position:50\u0025 50\u0025;background-color:#fff;height:150px;width:394px;border:1px #666 solid;border-bottom:2px solid #283e6c;z-index:1}\n.fb_edge_widget_with_comment span.fb_send_button_form_widget.dark .FB_Loader{background-color:#000;border-bottom:2px solid #ccc}\n.fb_edge_widget_with_comment span.fb_send_button_form_widget.siderender\n.FB_Loader{margin-top:0}\n.fbpluginrecommendationsbarleft,\n.fbpluginrecommendationsbarright{position:fixed !important;bottom:0;z-index:999}\n\/* \u0040noflip *\/\n.fbpluginrecommendationsbarleft{left:10px}\n\/* \u0040noflip *\/\n.fbpluginrecommendationsbarright{right:10px}\n", ["fb.css.base", "fb.css.dialog", "fb.css.iframewidget", "fb.css.button", "fb.css.sharebutton", "fb.css.connectbarwidget", "fb.css.edgecommentwidget", "fb.css.sendbuttonformwidget", "fb.css.plugin.recommendationsbar"]);
 }
