@@ -1,4 +1,4 @@
-/*1338624093,169941620,JIT Construction: v567223,en_US*/
+/*1338937297,169904255,JIT Construction: v568892,en_US*/
 
 window.FB || (function() {
     var ES5 = function() {
@@ -563,16 +563,16 @@ window.FB || (function() {
             "cdn_http": "static.ak.facebook.com",
             "cdn_https": "s-static.ak.facebook.com"
         });
+        __d("ApiClientConfig", [], {
+            "FlashRequest": {
+                "swfUrl": "https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v1\/y5\/r\/SrnvQJBTxo-.swf"
+            }
+        });
         __d("SDKConfig", [], {
             "migrate": true,
             "seal": false,
             "errorHandling": {
                 "rate": 0.01
-            }
-        });
-        __d("ApiClientConfig", [], {
-            "FlashRequest": {
-                "swfUrl": "https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v1\/y5\/r\/SrnvQJBTxo-.swf"
             }
         });
         __d("XDConfig", [], {
@@ -749,7 +749,46 @@ window.FB || (function() {
             };
             a.__e = a.__d;
         })(this);
-        if (typeof __c === "function") __c();
+        __d("copyProperties", [], function(a, b, c, d, e, f) {
+            function g(h, i, j, k, l, m, n) {
+                h = h || {};
+                var o = [i, j, k, l, m],
+                    p = 0,
+                    q;
+                while (o[p]) {
+                    q = o[p++];
+                    for (var r in q) h[r] = q[r];
+                    if (q.hasOwnProperty && q.hasOwnProperty('toString') && (typeof q.toString != 'undefined') && (h.toString !== q.toString)) h.toString = q.toString;
+                }
+                return h;
+            }
+            e.exports = g;
+        });
+        __d("flattenObject", [], function(a, b, c, d, e, f) {
+            function g(h) {
+                var i = {};
+                for (var j in h) if (h.hasOwnProperty(j)) {
+                    var k = h[j];
+                    if (null === k || undefined === k) {
+                        continue;
+                    } else if (typeof k == 'string') {
+                        i[j] = k;
+                    } else i[j] = ES5('JSON', 'stringify', false, k);
+                }
+                return i;
+            }
+            e.exports = g;
+        });
+        __d("sprintf", [], function(a, b, c, d, e, f) {
+            function g(h, i) {
+                i = Array.prototype.slice.call(arguments, 1);
+                var j = 0;
+                return h.replace(/%s/g, function(k) {
+                    return i[j++];
+                });
+            }
+            e.exports = g;
+        });
         __d("UserAgent", [], function(a, b, c, d, e, f) {
             var g = false,
                 h, i, j, k, l, m, n, o, p, q, r, s, t, u;
@@ -865,38 +904,6 @@ window.FB || (function() {
             };
             e.exports = j;
         });
-        __d("guid", [], function(a, b, c, d, e, f) {
-            function g() {
-                return 'f' + (Math.random() * (1 << 30)).toString(16).replace('.', '');
-            }
-            e.exports = g;
-        });
-        __d("dotAccess", [], function(a, b, c, d, e, f) {
-            function g(h, i, j) {
-                var k = i.split('.');
-                do {
-                    var l = k.shift();
-                    h = h[l] || j && (h[l] = {});
-                } while (k.length && h);
-                return h;
-            }
-            e.exports = g;
-        });
-        __d("copyProperties", [], function(a, b, c, d, e, f) {
-            function g(h, i, j, k, l, m, n) {
-                h = h || {};
-                var o = [i, j, k, l, m],
-                    p = 0,
-                    q;
-                while (o[p]) {
-                    q = o[p++];
-                    for (var r in q) h[r] = q[r];
-                    if (q.hasOwnProperty && q.hasOwnProperty('toString') && (typeof q.toString != 'undefined') && (h.toString !== q.toString)) h.toString = q.toString;
-                }
-                return h;
-            }
-            e.exports = g;
-        });
         __d("QueryString", [], function(a, b, c, d, e, f) {
             var g = {
                 encode: function(h) {
@@ -927,641 +934,6 @@ window.FB || (function() {
                     return h + (~ES5(h, 'indexOf', true, '?') ? '&' : '?') + (typeof i === 'string' ? i : g.encode(i));
                 }
             };
-            e.exports = g;
-        });
-        __d("UrlMap", ["UrlMapConfig"], function(a, b, c, d, e, f) {
-            var g = c('UrlMapConfig'),
-                h = {
-                    resolve: function(i, j) {
-                        var k = typeof j == 'undefined' ? location.protocol.replace(':', '') : j ? 'https' : 'http';
-                        if (i in g) return k + '://' + g[i];
-                        if (typeof j == 'undefined' && i + '_' + k in g) return k + '://' + g[i + '_' + k];
-                        if (j !== true && i + '_http' in g) return 'http://' + g[i + '_http'];
-                        if (j !== false && i + '_https' in g) return 'https://' + g[i + '_https'];
-                    }
-                };
-            e.exports = h;
-        });
-        __d("FB", ["applyWithGuard", "guid", "dotAccess", "copyProperties", "QueryString", "UrlMap", "SDKConfig"], function(a, b, c, d, e, f) {
-            var g = c('SDKConfig'),
-                h = b('applyWithGuard'),
-                i = b('guid'),
-                j = b('dotAccess'),
-                k = b('copyProperties'),
-                l = b('QueryString'),
-                m = b('UrlMap'),
-                n, o;
-            if (g.seal) {
-                n = FB;
-                o = window.FB = {};
-            } else n = window.FB = FB;
-            var p = g.errorHandling.rate;
-            if (p && Math.floor(Math.random() * 100) + 1 < p) h.setErrorHandler(function(u) {
-                var v = l.appendToUrl(m.resolve('www', true) + '/common/scribe_endpoint.php', {
-                    c: 'jssdk_error',
-                    d: ES5('JSON', 'stringify', false, {
-                        error: u.name || u.message,
-                        extra: u
-                    })
-                });
-                (new Image()).src = v;
-                throw u;
-            });
-
-            function q(u, v) {
-                var w = u ? j(n, u, true) : n;
-                if (g.seal) var x = u ? j(o, u, true) : o;
-                ES5(ES5('Object', 'keys', false, v), 'forEach', true, function(y) {
-                    var z = v[y];
-                    w[y] = z;
-                    if (g.seal) if (typeof z === 'function' && !/^_/.test(y)) x[y] = function() {
-                        var aa = ES5(Array.prototype.slice.call(arguments), 'map', true, function(ba) {
-                            return typeof ba === 'function' ?
-                            function() {
-                                var ca = arguments;
-                                setTimeout(function() {
-                                    ba.apply(null, ca);
-                                }, 0);
-                            } : ba;
-                        });
-                        return h(z, w, aa);
-                    };
-                });
-            }
-            var r = /iframe_canvas|app_runner|dialog/.test(window.name),
-                s = (function() {
-                    if (location.protocol == 'https:' && (window == top || !r)) return true;
-                    if (/_fb_https?/.test(window.name)) return ES5(window.name, 'indexOf', true, '_fb_https') != -1;
-                })();
-
-            function t(u, v, w, x) {
-                for (var y in v) if (w || typeof u[y] === 'undefined') u[y] = x ? x(v[y]) : v[y];
-                return u;
-            }
-            k(n, {
-                _apiKey: null,
-                _authResponse: null,
-                _userStatus: 'unknown',
-                _logging: true,
-                _inCanvas: r,
-                _https: s,
-                onlyUseHttps: function() {
-                    return n._https === true;
-                },
-                onlyUseHttp: function() {
-                    return n._https === false && location.protocol == 'http:';
-                },
-                _locale: null,
-                _localeIsRtl: false,
-                getDomain: function(u, v) {
-                    var w = !v && (window.location.protocol == 'https:' || n._https);
-                    switch (u) {
-                    case 'api':
-                        return n._domain.api;
-                    case 'api_read':
-                        return n._domain.api_read;
-                    case 'cdn':
-                        return w ? n._domain.https_cdn : n._domain.cdn;
-                    case 'cdn_foreign':
-                        return n._domain.cdn_foreign;
-                    case 'https_cdn':
-                        return n._domain.https_cdn;
-                    case 'graph':
-                        return n._domain.graph;
-                    case 'staticfb':
-                        return w ? n._domain.https_staticfb : n._domain.staticfb;
-                    case 'https_staticfb':
-                        return n._domain.https_staticfb;
-                    case 'www':
-                        return w ? n._domain.https_www : n._domain.www;
-                    case 'https_www':
-                        return n._domain.https_www;
-                    case 'm':
-                        return w ? n._domain.https_m : n._domain.m;
-                    case 'https_m':
-                        return n._domain.https_m;
-                    }
-                },
-                copy: t,
-                create: function(u, v) {
-                    var w = u.split('.');
-                    u = w.pop();
-                    var x = w.length ? j(n, w.join('.'), true) : n;
-                    return u in x ? x[u] : x[u] = (v || {});
-                },
-                provide: q,
-                guid: i,
-                log: function(u) {
-                    if (n._logging) if (window.Debug && window.Debug.writeln) {
-                        window.Debug.writeln(u);
-                    } else if (window.console) window.console.log(u);
-                    if (n.Event) n.Event.fire('fb.log', u);
-                },
-                $: function(u) {
-                    return document.getElementById(u);
-                },
-                dotAccess: j,
-                applyWithGuard: h
-            });
-            if (o) k(o, {
-                provide: q
-            });
-            e.exports = n;
-        });
-        __d("legacy:fb.prelude", ["FB"], function(a, b, c, d) {
-            var e = b('FB');
-        }, 3);
-        FB.provide('Array', {
-            merge: function(a, b) {
-                for (var c = 0; c < b.length; c++) if (ES5(a, 'indexOf', true, b[c]) < 0) a.push(b[c]);
-                return a;
-            },
-            forEach: function(a, b, c) {
-                if (!a) return;
-                if (Object.prototype.toString.apply(a) === '[object Array]' || (!(a instanceof Function) && typeof a.length == 'number')) {
-                    if (a.forEach) {
-                        ES5(a, 'forEach', true, b);
-                    } else for (var d = 0, e = a.length; d < e; d++) b(a[d], d, a);
-                } else for (var f in a) if (c || a.hasOwnProperty(f)) b(a[f], f, a);
-            },
-            toArray: function(a) {
-                for (var b = 0, c = [], d = a.length; b < d; b++) c[b] = a[b];
-                return c;
-            }
-        });
-        FB.provide('QS', {
-            encode: function(a, b, c) {
-                b = b === undefined ? '&' : b;
-                c = c === false ?
-                function(e) {
-                    return e;
-                } : encodeURIComponent;
-                var d = [];
-                ES5(FB.Array, 'forEach', true, a, function(e, f) {
-                    if (e !== null && typeof e != 'undefined') d.push(c(f) + '=' + c(e));
-                });
-                d.sort();
-                return d.join(b);
-            },
-            decode: function(a) {
-                var b = decodeURIComponent,
-                    c = {},
-                    d = a.split('&'),
-                    e, f;
-                for (e = 0; e < d.length; e++) {
-                    f = d[e].split('=', 2);
-                    if (f && f[0]) c[b(f[0])] = b(f[1] || '');
-                }
-                return c;
-            }
-        });
-        __d("legacy:fb.ua", ["copyProperties", "FB", "UserAgent"], function(a, b, c, d) {
-            var e = b('copyProperties'),
-                f = b('FB'),
-                g = b('UserAgent'),
-                h = e({}, g);
-            h.mobile = function() {
-                return !f._inCanvas && g.mobile();
-            };
-            f.provide('UA', h);
-        }, 3);
-        FB.provide('Content', {
-            _root: null,
-            _hiddenRoot: null,
-            append: function(a, b) {
-                if (!b) if (!FB.Content._root) {
-                    FB.Content._root = b = FB.$('fb-root');
-                    if (!b) {
-                        FB.log('The "fb-root" div has not been created, auto-creating');
-                        FB.Content._root = b = document.createElement('div');
-                        b.id = 'fb-root';
-                        if (FB.UA.ie() || !document.body) {
-                            FB.Dom.ready(function() {
-                                document.body.appendChild(b);
-                            });
-                        } else document.body.appendChild(b);
-                    }
-                    b.className += ' fb_reset';
-                } else b = FB.Content._root;
-                if (typeof a == 'string') {
-                    var c = document.createElement('div');
-                    b.appendChild(c).innerHTML = a;
-                    return c;
-                } else return b.appendChild(a);
-            },
-            appendHidden: function(a) {
-                if (!FB.Content._hiddenRoot) {
-                    var b = document.createElement('div'),
-                        c = b.style;
-                    c.position = 'absolute';
-                    c.top = '-10000px';
-                    c.width = c.height = 0;
-                    FB.Content._hiddenRoot = FB.Content.append(b);
-                }
-                return FB.Content.append(a, FB.Content._hiddenRoot);
-            },
-            insertIframe: function(a) {
-                a.id = a.id || FB.guid();
-                a.name = a.name || FB.guid();
-                var b = FB.guid(),
-                    c = false,
-                    d = false,
-                    e = window.FB._callbacks || (window.FB._callbacks = {});
-                e[b] = function() {
-                    if (c && !d) {
-                        d = true;
-                        a.onload && a.onload(a.root.firstChild);
-                    }
-                };
-                if (document.attachEvent) {
-                    var f = ('<iframe' + ' id="' + a.id + '"' + ' name="' + a.name + '"' + (a.title ? ' title="' + a.title + '"' : '') + (a.className ? ' class="' + a.className + '"' : '') + ' style="border:none;' + (a.width ? 'width:' + a.width + 'px;' : '') + (a.height ? 'height:' + a.height + 'px;' : '') + '"' + ' src="javascript:false;"' + ' frameborder="0"' + ' scrolling="no"' + ' allowtransparency="true"' + ' onload="FB._callbacks.' + b + '()"' + '></iframe>');
-                    a.root.innerHTML = '<iframe src="javascript:false"' + ' frameborder="0"' + ' scrolling="no"' + ' style="height:1px"></iframe>';
-                    c = true;
-                    window.setTimeout(function() {
-                        a.root.innerHTML = f;
-                        a.root.firstChild.src = a.url;
-                        a.onInsert && a.onInsert(a.root.firstChild);
-                    }, 0);
-                } else {
-                    var g = document.createElement('iframe');
-                    g.id = a.id;
-                    g.name = a.name;
-                    g.onload = e[b];
-                    g.scrolling = 'no';
-                    g.style.border = 'none';
-                    g.style.overflow = 'hidden';
-                    if (a.title) g.title = a.title;
-                    if (a.className) g.className = a.className;
-                    if (a.height) g.style.height = a.height + 'px';
-                    if (a.width) if (a.width == '100%') {
-                        g.style.width = a.width;
-                    } else g.style.width = a.width + 'px';
-                    a.root.appendChild(g);
-                    c = true;
-                    g.src = a.url;
-                    a.onInsert && a.onInsert(g);
-                }
-            },
-            submitToTarget: function(a, b) {
-                var c = document.createElement('form');
-                c.action = a.url;
-                c.target = a.target;
-                c.method = (b) ? 'GET' : 'POST';
-                FB.Content.appendHidden(c);
-                ES5(FB.Array, 'forEach', true, a.params, function(d, e) {
-                    if (d !== null && d !== undefined) {
-                        var f = document.createElement('input');
-                        f.name = e;
-                        f.value = d;
-                        c.appendChild(f);
-                    }
-                });
-                c.submit();
-                c.parentNode.removeChild(c);
-            }
-        });
-        FB.provide('Flash', {
-            _minVersions: [
-                [9, 0, 159, 0],
-                [10, 0, 22, 87]
-            ],
-            _swfPath: 'swf/XdComm.swf',
-            _callbacks: [],
-            _names: {},
-            _unloadRegistered: false,
-            init: function() {
-                if (FB.Flash._init) return;
-                FB.Flash._init = true;
-                window.FB_OnFlashXdCommReady = function() {
-                    FB.Flash._ready = true;
-                    for (var a = 0, b = FB.Flash._callbacks.length; a < b; a++) FB.Flash._callbacks[a]();
-                    FB.Flash._callbacks = [];
-                };
-                FB.Flash.embedSWF('XdComm', FB.getDomain('cdn_foreign') + FB.Flash._swfPath);
-            },
-            embedSWF: function(a, b, c) {
-                var d = !! document.attachEvent,
-                    e = ('<object ' + 'type="application/x-shockwave-flash" ' + 'id="' + a + '" ' + (c ? 'flashvars="' + c + '" ' : '') + (d ? 'name="' + a + '" ' : '') + (d ? '' : 'data="' + b + '" ') + (d ? 'classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" ' : '') + 'allowscriptaccess="always">' + '<param name="movie" value="' + b + '"></param>' + '<param name="allowscriptaccess" value="always"></param>' + '</object>');
-                FB.Content.appendHidden(e);
-                if (FB.UA.ie() >= 9) {
-                    if (!FB.Flash._unloadRegistered) {
-                        var f = function() {
-                                ES5(FB.Array, 'forEach', true, FB.Flash._names, function(g, h) {
-                                    var i = document.getElementById(h);
-                                    if (i) i.removeNode(true);
-                                });
-                            };
-                        window.attachEvent('onunload', f);
-                        FB.Flash._unloadRegistered = true;
-                    }
-                    FB.Flash._names[a] = true;
-                }
-            },
-            hasMinVersion: function() {
-                try {
-                    if (typeof FB.Flash._hasMinVersion === 'undefined') {
-                        var b, c, d, e = [];
-                        try {
-                            b = new ActiveXObject('ShockwaveFlash.ShockwaveFlash').GetVariable('$version');
-                        } catch (f) {
-                            if (navigator.mimeTypes.length > 0) {
-                                var g = 'application/x-shockwave-flash';
-                                if (navigator.mimeTypes[g] && navigator.mimeTypes[g].enabledPlugin) {
-                                    var h = 'Shockwave Flash';
-                                    b = (navigator.plugins[h + ' 2.0'] || navigator.plugins[h]).description;
-                                }
-                            }
-                        }
-                        if (b) {
-                            var i = b.replace(/\D+/g, ',').match(/^,?(.+),?$/)[1].split(',');
-                            for (c = 0, d = i.length; c < d; c++) e.push(parseInt(i[c], 10));
-                        }
-                        FB.Flash._hasMinVersion = false;
-                        majorVersion: for (c = 0, d = FB.Flash._minVersions.length; c < d; c++) {
-                            var j = FB.Flash._minVersions[c];
-                            if (j[0] != e[0]) continue;
-                            for (var k = 1, l = j.length, m = e.length;
-                            (k < l && k < m); k++) if (e[k] < j[k]) {
-                                FB.Flash._hasMinVersion = false;
-                                continue majorVersion;
-                            } else {
-                                FB.Flash._hasMinVersion = true;
-                                if (e[k] > j[k]) break majorVersion;
-                            }
-                        };
-                    }
-                } catch (a) {
-                    FB.Flash._hasMinVersion = false;
-                }
-                return FB.Flash._hasMinVersion;
-            },
-            onReady: function(a) {
-                FB.Flash.init();
-                if (FB.Flash._ready) {
-                    window.setTimeout(a, 0);
-                } else FB.Flash._callbacks.push(a);
-            }
-        });
-        FB.provide('JSON', {
-            stringify: function(a) {
-                return ES5('JSON', 'stringify', false, a);
-            },
-            parse: function(a) {
-                return ES5('JSON', 'parse', false, a);
-            },
-            flatten: function(a) {
-                var b = {};
-                for (var c in a) if (a.hasOwnProperty(c)) {
-                    var d = a[c];
-                    if (null === d || undefined === d) {
-                        continue;
-                    } else if (typeof d == 'string') {
-                        b[c] = d;
-                    } else b[c] = ES5('JSON', 'stringify', false, d);
-                }
-                return b;
-            }
-        });
-        FB.provide('', {
-            api: function() {
-                if (typeof arguments[0] === 'string') {
-                    FB.ApiServer.graph.apply(FB.ApiServer, arguments);
-                } else FB.ApiServer.rest.apply(FB.ApiServer, arguments);
-            }
-        });
-        FB.provide('ApiServer', {
-            METHODS: ['get', 'post', 'delete', 'put'],
-            _readOnlyCalls: {
-                fql_query: true,
-                fql_multiquery: true,
-                friends_get: true,
-                notifications_get: true,
-                stream_get: true,
-                users_getinfo: true
-            },
-            graph: function() {
-                var a = Array.prototype.slice.call(arguments),
-                    b = a.shift().match(/\/?([^?]*)\??([^#]*)/),
-                    c = b[1],
-                    d = a.shift(),
-                    e, f, g;
-                while (d) {
-                    var h = typeof d;
-                    if (h === 'string' && !e) {
-                        e = d.toLowerCase();
-                    } else if (h === 'function' && !g) {
-                        g = d;
-                    } else if (h === 'object' && !f) {
-                        f = d;
-                    } else {
-                        FB.log('Invalid argument passed to FB.api(): ' + d);
-                        return;
-                    }
-                    d = a.shift();
-                }
-                e = e || 'get';
-                f = FB.copy(f || {}, FB.QS.decode(b[2]));
-                if (ES5(FB.ApiServer.METHODS, 'indexOf', true, e) < 0) {
-                    FB.log('Invalid method passed to FB.api(): ' + e);
-                    return;
-                }
-                FB.ApiServer.oauthRequest('graph', c, e, f, g);
-            },
-            rest: function(a, b) {
-                var c = a.method.toLowerCase().replace('.', '_');
-                if (FB.Auth && c === 'auth_revokeauthorization') {
-                    var d = b;
-                    b = function(f) {
-                        if (f === true) FB.Auth.setAuthResponse(null, 'not_authorized');
-                        d && d(f);
-                    };
-                }
-                a.format = 'json-strings';
-                a.api_key = FB._apiKey;
-                var e = FB.ApiServer._readOnlyCalls[c] ? 'api_read' : 'api';
-                FB.ApiServer.oauthRequest(e, 'restserver.php', 'get', a, b);
-            },
-            oauthRequest: function(a, b, c, d, e) {
-                if (!d.access_token && FB.getAccessToken()) d.access_token = FB.getAccessToken();
-                d.sdk = 'joey';
-                d.pretty = 0;
-                var f = e;
-                e = function(i) {
-                    if (FB.Auth && i && FB.getAccessToken() == d.access_token) if (i.error == 'invalid_token' || i.error_code == '190' || (i.error && i.error.type == 'OAuthException' && i.error.code == 190)) FB.getLoginStatus(null, true);
-                    f && f(i);
-                };
-                d = FB.JSON.flatten(d);
-                try {
-                    FB.ApiServer.jsonp(a, b, c, d, e);
-                    return;
-                } catch (g) {}
-                try {
-                    if (FB.ApiServer.corsPost(a, b, c, d, e)) return;
-                } catch (h) {}
-                if (FB.Flash.hasMinVersion()) {
-                    FB.ApiServer.flash(a, b, c, d, e);
-                    return;
-                }
-                e({
-                    error: 'no-transport'
-                });
-            },
-            corsPost: function(a, b, c, d, e) {
-                var f = FB.getDomain(a) + b;
-                d = FB.copy({}, d);
-                if (a == 'graph') d.method = c;
-                var g = FB.QS.encode(d),
-                    h = 'application/x-www-form-urlencoded',
-                    i = FB.ApiServer._createCORSRequest('POST', f, h);
-                if (i) {
-                    if (e) {
-                        i.onload = function(j) {
-                            e(ES5('JSON', 'parse', false, j.responseText));
-                        };
-                        i.onerror = function(j) {
-                            var k;
-                            try {
-                                k = ES5('JSON', 'parse', false, j.responseText);
-                            } catch (l) {}
-                            if (!k || !k.error) k = {
-                                error: 'load-error: status ' + j.status,
-                                raw: j.responseText
-                            };
-                            e(k);
-                        };
-                    }
-                    i.send(g);
-                    return true;
-                } else return false;
-            },
-            _createCORSRequest: function(a, b, c) {
-                if (!window.XMLHttpRequest) return null;
-                var d = function() {},
-                    e = new XMLHttpRequest();
-                if ("withCredentials" in e) {
-                    e.open(a, b, true);
-                    e.setRequestHeader('Content-type', c);
-                } else if (window.XDomainRequest) {
-                    e = new XDomainRequest();
-                    e.open(a, b);
-                } else return null;
-                var f = {
-                    send: function(g) {
-                        e.send(g);
-                    }
-                };
-                e.onload = function() {
-                    FB.applyWithGuard(function() {
-                        e.onload = d;
-                        if ('onload' in f) f.onload(e);
-                    });
-                };
-                e.onerror = function() {
-                    FB.applyWithGuard(function() {
-                        e.onerror = d;
-                        if ('onerror' in f) f.onerror(e);
-                    });
-                };
-                e.onreadystatechange = function() {
-                    if (e.readyState == 4) if (e.status == 200) {
-                        e.onload();
-                    } else e.onerror();
-                };
-                e.onprogress = e.ontimeout = d;
-                return f;
-            },
-            jsonp: function(a, b, c, d, e) {
-                var f = FB.guid(),
-                    g = document.getElementsByTagName('script')[0],
-                    h = document.createElement('script'),
-                    i = window.FB._callbacks || (window.FB._callbacks = {});
-                d = FB.copy({}, d);
-                if (a === 'graph' && c !== 'get') d.method = c;
-                d.callback = 'FB._callbacks.' + f;
-                var j = (FB.getDomain(a) + b + (ES5(b, 'indexOf', true, '?') > -1 ? '&' : '?') + FB.QS.encode(d));
-                if (j.length > 2000) throw new Error('JSONP only support a maximum of 2000 bytes of input.');
-                i[f] = function(l) {
-                    FB.applyWithGuard(function() {
-                        e && e(l);
-                        delete i[f];
-                        h.parentNode.removeChild(h);
-                    });
-                };
-                h.onerror = function() {
-                    if (f in i) i[f]({
-                        error: 'load-error: unknown'
-                    });
-                };
-                var k = function() {
-                        setTimeout(function() {
-                            if (f in i) h.onerror();
-                        }, 0);
-                    };
-                if (h.addEventListener) {
-                    h.addEventListener("load", k, false);
-                } else h.onreadystatechange = function() {
-                    if (/loaded|complete/.test(this.readyState)) k();
-                };
-                h.src = j;
-                g.parentNode.insertBefore(h, g);
-            },
-            flash: function(a, b, c, d, e) {
-                var f = window.FB._callbacks || (window.FB._callbacks = {});
-                if (!window.FB_OnXdHttpResult) window.FB_OnXdHttpResult = function(g, h) {
-                    FB.applyWithGuard(function() {
-                        f[g](decodeURIComponent(h));
-                    });
-                };
-                d = FB.copy({}, d);
-                FB.Flash.onReady(function() {
-                    if (a === 'graph') d.suppress_http_code = 1;
-                    var g = FB.getDomain(a) + b,
-                        h = FB.QS.encode(d);
-                    if (c === 'get') {
-                        if (g.length + h.length > 2000) {
-                            if (a === 'graph') d.method = 'get';
-                            c = 'post';
-                            h = FB.QS.encode(d);
-                        } else {
-                            g += (ES5(g, 'indexOf', true, '?') > -1 ? '&' : '?') + h;
-                            h = '';
-                        }
-                    } else if (c !== 'post') {
-                        if (a === 'graph') d.method = c;
-                        c = 'post';
-                        h = FB.QS.encode(d);
-                    }
-                    var i = document.XdComm.sendXdHttpRequest(c.toUpperCase(), g, h, null);
-                    f[i] = function(j) {
-                        e && e(ES5('JSON', 'parse', false, j));
-                        delete f[i];
-                    };
-                });
-            }
-        });
-        __d("flattenObject", [], function(a, b, c, d, e, f) {
-            function g(h) {
-                var i = {};
-                for (var j in h) if (h.hasOwnProperty(j)) {
-                    var k = h[j];
-                    if (null === k || undefined === k) {
-                        continue;
-                    } else if (typeof k == 'string') {
-                        i[j] = k;
-                    } else i[j] = ES5('JSON', 'stringify', false, k);
-                }
-                return i;
-            }
-            e.exports = g;
-        });
-        __d("sprintf", [], function(a, b, c, d, e, f) {
-            function g(h, i) {
-                i = Array.prototype.slice.call(arguments, 1);
-                var j = 0;
-                return h.replace(/%s/g, function(k) {
-                    return i[j++];
-                });
-            }
             e.exports = g;
         });
         __d("CORSRequest", ["applyWithGuard", "QueryString"], function(a, b, c, d, e, f) {
@@ -1656,6 +1028,12 @@ window.FB || (function() {
             };
             e.exports = i;
         });
+        __d("guid", [], function(a, b, c, d, e, f) {
+            function g() {
+                return 'f' + (Math.random() * (1 << 30)).toString(16).replace('.', '');
+            }
+            e.exports = g;
+        });
         __d("Flash", ["DOMWrapper", "QueryString", "UserAgent", "copyProperties", "guid"], function(a, b, c, d, e, f) {
             var g = b('DOMWrapper'),
                 h = b('QueryString'),
@@ -1730,6 +1108,17 @@ window.FB || (function() {
                 }
             };
             e.exports = s;
+        });
+        __d("dotAccess", [], function(a, b, c, d, e, f) {
+            function g(h, i, j) {
+                var k = i.split('.');
+                do {
+                    var l = k.shift();
+                    h = h[l] || j && (h[l] = {});
+                } while (k.length && h);
+                return h;
+            }
+            e.exports = g;
         });
         __d("GlobalCallback", ["dotAccess"], function(a, b, c, d, e, f) {
             var g = b('dotAccess'),
@@ -1975,6 +1364,19 @@ window.FB || (function() {
             };
             e.exports = j;
         });
+        __d("UrlMap", ["UrlMapConfig"], function(a, b, c, d, e, f) {
+            var g = c('UrlMapConfig'),
+                h = {
+                    resolve: function(i, j) {
+                        var k = typeof j == 'undefined' ? location.protocol.replace(':', '') : j ? 'https' : 'http';
+                        if (i in g) return k + '://' + g[i];
+                        if (typeof j == 'undefined' && i + '_' + k in g) return k + '://' + g[i + '_' + k];
+                        if (j !== true && i + '_http' in g) return 'http://' + g[i + '_http'];
+                        if (j !== false && i + '_https' in g) return 'https://' + g[i + '_https'];
+                    }
+                };
+            e.exports = h;
+        });
         __d("URL", ["copyProperties", "QueryString", "Log"], function(a, b, c, d, e, f) {
             var g = b('copyProperties'),
                 h = b('QueryString'),
@@ -2179,31 +1581,215 @@ window.FB || (function() {
             k.setSwfUrl(p.FlashRequest.swfUrl);
             e.exports = z;
         });
-        __d("legacy:fb.api", ["ApiClient", "FB", "GlobalCallback", "SDKConfig"], function(a, b, c, d) {
+        __d("safeEval", [], function(a, b, c, d, e, f) {
+            function g(h) {
+                if (h === null || typeof h === 'undefined') return;
+                if (typeof h !== 'string') return h;
+                return Function('return eval("' + h.replace(/"/g, '\\"') + '");')();
+            }
+            e.exports = g;
+        });
+        __d("FB", ["applyWithGuard", "guid", "dotAccess", "copyProperties", "safeEval", "GlobalCallback", "QueryString", "UrlMap", "SDKConfig"], function(a, b, c, d, e, f) {
+            var g = c('SDKConfig'),
+                h = b('applyWithGuard'),
+                i = b('guid'),
+                j = b('dotAccess'),
+                k = b('copyProperties'),
+                l = b('safeEval'),
+                m = b('GlobalCallback'),
+                n = b('QueryString'),
+                o = b('UrlMap'),
+                p, q;
+            if (g.seal) {
+                p = FB;
+                q = window.FB = {};
+            } else p = window.FB = FB;
+            m.setPrefix('FB._callbacks');
+            var r = g.errorHandling.rate;
+            if (r && Math.floor(Math.random() * 100) + 1 < r) h.setErrorHandler(function(w) {
+                var x = n.appendToUrl(o.resolve('www', true) + '/common/scribe_endpoint.php', {
+                    c: 'jssdk_error',
+                    d: ES5('JSON', 'stringify', false, {
+                        error: w.name || w.message,
+                        extra: w
+                    })
+                });
+                (new Image()).src = x;
+                throw w;
+            });
+
+            function s(w, x) {
+                var y = w ? j(p, w, true) : p;
+                if (g.seal) var z = w ? j(q, w, true) : q;
+                ES5(ES5('Object', 'keys', false, x), 'forEach', true, function(aa) {
+                    var ba = x[aa];
+                    y[aa] = ba;
+                    if (g.seal) if (typeof ba === 'function' && !/^_/.test(aa)) z[aa] = function() {
+                        var ca = ES5(Array.prototype.slice.call(arguments), 'map', true, function(da) {
+                            return typeof da === 'function' ?
+                            function() {
+                                var ea = arguments;
+                                setTimeout(function() {
+                                    da.apply(null, ea);
+                                }, 0);
+                            } : da;
+                        });
+                        return h(ba, y, ca);
+                    };
+                });
+            }
+            var t = /iframe_canvas|app_runner|dialog/.test(window.name),
+                u = (function() {
+                    if (location.protocol == 'https:' && (window == top || !t)) return true;
+                    if (/_fb_https?/.test(window.name)) return ES5(window.name, 'indexOf', true, '_fb_https') != -1;
+                })();
+
+            function v(w, x, y, z) {
+                for (var aa in x) if (y || typeof w[aa] === 'undefined') w[aa] = z ? z(x[aa]) : x[aa];
+                return w;
+            }
+            k(p, {
+                _apiKey: null,
+                _authResponse: null,
+                _userStatus: 'unknown',
+                _logging: true,
+                _inCanvas: t,
+                _https: u,
+                onlyUseHttps: function() {
+                    return p._https === true;
+                },
+                onlyUseHttp: function() {
+                    return p._https === false && location.protocol == 'http:';
+                },
+                _locale: null,
+                _localeIsRtl: false,
+                getDomain: function(w, x) {
+                    var y = !x && (window.location.protocol == 'https:' || p._https);
+                    switch (w) {
+                    case 'api':
+                        return p._domain.api;
+                    case 'api_read':
+                        return p._domain.api_read;
+                    case 'cdn':
+                        return y ? p._domain.https_cdn : p._domain.cdn;
+                    case 'cdn_foreign':
+                        return p._domain.cdn_foreign;
+                    case 'https_cdn':
+                        return p._domain.https_cdn;
+                    case 'graph':
+                        return p._domain.graph;
+                    case 'staticfb':
+                        return y ? p._domain.https_staticfb : p._domain.staticfb;
+                    case 'https_staticfb':
+                        return p._domain.https_staticfb;
+                    case 'www':
+                        return y ? p._domain.https_www : p._domain.www;
+                    case 'https_www':
+                        return p._domain.https_www;
+                    case 'm':
+                        return y ? p._domain.https_m : p._domain.m;
+                    case 'https_m':
+                        return p._domain.https_m;
+                    }
+                },
+                copy: v,
+                create: function(w, x) {
+                    var y = w.split('.');
+                    w = y.pop();
+                    var z = y.length ? j(p, y.join('.'), true) : p;
+                    return w in z ? z[w] : z[w] = (x || {});
+                },
+                provide: s,
+                guid: i,
+                log: function(w) {
+                    if (p._logging) if (window.Debug && window.Debug.writeln) {
+                        window.Debug.writeln(w);
+                    } else if (window.console) window.console.log(w);
+                    if (p.Event) p.Event.fire('fb.log', w);
+                },
+                $: function(w) {
+                    return document.getElementById(w);
+                },
+                dotAccess: j,
+                applyWithGuard: h,
+                safeEval: l
+            });
+            if (q) k(q, {
+                provide: s
+            });
+            e.exports = p;
+        });
+        __d("legacy:fb.api", ["ApiClient", "FB", "SDKConfig"], function(a, b, c, d) {
             var e = c('SDKConfig'),
                 f = b('ApiClient'),
-                g = b('FB'),
-                h = b('GlobalCallback');
+                g = b('FB');
             f.setDefaultParams({
                 sdk: 'joey'
             });
-            h.setPrefix('FB._callbacks');
 
-            function i() {
-                var j = g.getAccessToken(),
-                    k = function() {
-                        if (j == g.getAccessToken()) g.getLoginStatus(null, true);
+            function h() {
+                var i = g.getAccessToken(),
+                    j = function() {
+                        if (i == g.getAccessToken()) g.getLoginStatus(null, true);
                     };
                 f.setClientID(g._apiKey);
-                f.setAccessToken(j, k);
+                f.setAccessToken(i, j);
                 if (typeof arguments[0] === 'string') {
                     f.graph.apply(f, arguments);
                 } else f.rest.apply(f, arguments);
             }
-            if (e.migrate) g.provide('', {
-                api: i
+            g.provide('', {
+                api: h
             }, true);
         }, 3);
+        if (typeof __c === "function") __c();
+        __d("legacy:fb.prelude", ["FB"], function(a, b, c, d) {
+            var e = b('FB');
+        }, 3);
+        FB.provide('Array', {
+            merge: function(a, b) {
+                for (var c = 0; c < b.length; c++) if (ES5(a, 'indexOf', true, b[c]) < 0) a.push(b[c]);
+                return a;
+            },
+            forEach: function(a, b, c) {
+                if (!a) return;
+                if (Object.prototype.toString.apply(a) === '[object Array]' || (!(a instanceof Function) && typeof a.length == 'number')) {
+                    if (a.forEach) {
+                        ES5(a, 'forEach', true, b);
+                    } else for (var d = 0, e = a.length; d < e; d++) b(a[d], d, a);
+                } else for (var f in a) if (c || a.hasOwnProperty(f)) b(a[f], f, a);
+            },
+            toArray: function(a) {
+                for (var b = 0, c = [], d = a.length; b < d; b++) c[b] = a[b];
+                return c;
+            }
+        });
+        FB.provide('QS', {
+            encode: function(a, b, c) {
+                b = b === undefined ? '&' : b;
+                c = c === false ?
+                function(e) {
+                    return e;
+                } : encodeURIComponent;
+                var d = [];
+                ES5(FB.Array, 'forEach', true, a, function(e, f) {
+                    if (e !== null && typeof e != 'undefined') d.push(c(f) + '=' + c(e));
+                });
+                d.sort();
+                return d.join(b);
+            },
+            decode: function(a) {
+                var b = decodeURIComponent,
+                    c = {},
+                    d = a.split('&'),
+                    e, f;
+                for (e = 0; e < d.length; e++) {
+                    f = d[e].split('=', 2);
+                    if (f && f[0]) c[b(f[0])] = b(f[1] || '');
+                }
+                return c;
+            }
+        });
         FB.provide('EventProvider', {
             subscribers: function() {
                 if (!this._subscribersMap) this._subscribersMap = {};
@@ -2872,20 +2458,125 @@ window.FB || (function() {
                     f = a.scrollHeight + d,
                     g = a.offsetHeight + d,
                     h = b.scrollHeight + e,
-                    i = b.offsetHeight + e;
-                bottom = Math.max(f, g, h, i);
+                    i = b.offsetHeight + e,
+                    j = Math.max(f, g, h, i);
                 if (a.offsetWidth < a.scrollWidth) {
                     c = a.scrollWidth + a.offsetLeft;
-                } else ES5(FB.Array.toArray(a.childNodes), 'forEach', true, function(j) {
-                    var k = j.offsetWidth + j.offsetLeft;
-                    if (k > c) c = k;
+                } else ES5(FB.Array.toArray(a.childNodes), 'forEach', true, function(k) {
+                    var l = k.offsetWidth + k.offsetLeft;
+                    if (l > c) c = l;
                 });
                 if (b.clientLeft > 0) c += (b.clientLeft * 2);
-                if (b.clientTop > 0) bottom += (b.clientTop * 2);
+                if (b.clientTop > 0) j += (b.clientTop * 2);
                 return {
-                    height: bottom,
+                    height: j,
                     width: c
                 };
+            }
+        });
+        __d("legacy:fb.ua", ["copyProperties", "FB", "UserAgent"], function(a, b, c, d) {
+            var e = b('copyProperties'),
+                f = b('FB'),
+                g = b('UserAgent'),
+                h = e({}, g);
+            h.mobile = function() {
+                return !f._inCanvas && g.mobile();
+            };
+            f.provide('UA', h);
+        }, 3);
+        FB.provide('Content', {
+            _root: null,
+            _hiddenRoot: null,
+            append: function(a, b) {
+                if (!b) if (!FB.Content._root) {
+                    FB.Content._root = b = FB.$('fb-root');
+                    if (!b) {
+                        FB.log('The "fb-root" div has not been created, auto-creating');
+                        FB.Content._root = b = document.createElement('div');
+                        b.id = 'fb-root';
+                        if (FB.UA.ie() || !document.body) {
+                            FB.Dom.ready(function() {
+                                document.body.appendChild(b);
+                            });
+                        } else document.body.appendChild(b);
+                    }
+                    b.className += ' fb_reset';
+                } else b = FB.Content._root;
+                if (typeof a == 'string') {
+                    var c = document.createElement('div');
+                    b.appendChild(c).innerHTML = a;
+                    return c;
+                } else return b.appendChild(a);
+            },
+            appendHidden: function(a) {
+                if (!FB.Content._hiddenRoot) {
+                    var b = document.createElement('div'),
+                        c = b.style;
+                    c.position = 'absolute';
+                    c.top = '-10000px';
+                    c.width = c.height = 0;
+                    FB.Content._hiddenRoot = FB.Content.append(b);
+                }
+                return FB.Content.append(a, FB.Content._hiddenRoot);
+            },
+            insertIframe: function(a) {
+                a.id = a.id || FB.guid();
+                a.name = a.name || FB.guid();
+                var b = FB.guid(),
+                    c = false,
+                    d = false,
+                    e = window.FB._callbacks || (window.FB._callbacks = {});
+                e[b] = function() {
+                    if (c && !d) {
+                        d = true;
+                        a.onload && a.onload(a.root.firstChild);
+                    }
+                };
+                if (document.attachEvent) {
+                    var f = ('<iframe' + ' id="' + a.id + '"' + ' name="' + a.name + '"' + (a.title ? ' title="' + a.title + '"' : '') + (a.className ? ' class="' + a.className + '"' : '') + ' style="border:none;' + (a.width ? 'width:' + a.width + 'px;' : '') + (a.height ? 'height:' + a.height + 'px;' : '') + '"' + ' src="javascript:false;"' + ' frameborder="0"' + ' scrolling="no"' + ' allowtransparency="true"' + ' onload="FB._callbacks.' + b + '()"' + '></iframe>');
+                    a.root.innerHTML = '<iframe src="javascript:false"' + ' frameborder="0"' + ' scrolling="no"' + ' style="height:1px"></iframe>';
+                    c = true;
+                    window.setTimeout(function() {
+                        a.root.innerHTML = f;
+                        a.root.firstChild.src = a.url;
+                        a.onInsert && a.onInsert(a.root.firstChild);
+                    }, 0);
+                } else {
+                    var g = document.createElement('iframe');
+                    g.id = a.id;
+                    g.name = a.name;
+                    g.onload = e[b];
+                    g.scrolling = 'no';
+                    g.style.border = 'none';
+                    g.style.overflow = 'hidden';
+                    if (a.title) g.title = a.title;
+                    if (a.className) g.className = a.className;
+                    if (a.height) g.style.height = a.height + 'px';
+                    if (a.width) if (a.width == '100%') {
+                        g.style.width = a.width;
+                    } else g.style.width = a.width + 'px';
+                    a.root.appendChild(g);
+                    c = true;
+                    g.src = a.url;
+                    a.onInsert && a.onInsert(g);
+                }
+            },
+            submitToTarget: function(a, b) {
+                var c = document.createElement('form');
+                c.action = a.url;
+                c.target = a.target;
+                c.method = (b) ? 'GET' : 'POST';
+                FB.Content.appendHidden(c);
+                ES5(FB.Array, 'forEach', true, a.params, function(d, e) {
+                    if (d !== null && d !== undefined) {
+                        var f = document.createElement('input');
+                        f.name = e;
+                        f.value = d;
+                        c.appendChild(f);
+                    }
+                });
+                c.submit();
+                c.parentNode.removeChild(c);
             }
         });
         FB.provide('String', {
@@ -3037,30 +2728,30 @@ window.FB || (function() {
             }
         });
         (function() {
-            function domReady() {
+            function a() {
                 FB.Dom._isReady = true;
                 FB.Event.fire('dom.ready');
                 FB.Event.clear('dom.ready');
             }
-            if (FB.Dom._isReady || document.readyState == 'complete') return domReady();
+            if (FB.Dom._isReady || document.readyState == 'complete') return a();
             if (document.addEventListener) {
-                document.addEventListener('DOMContentLoaded', domReady, false);
-            } else if (document.attachEvent) document.attachEvent('onreadystatechange', domReady);
+                document.addEventListener('DOMContentLoaded', a, false);
+            } else if (document.attachEvent) document.attachEvent('onreadystatechange', a);
             if (FB.UA.ie() && window === top)(function() {
                 try {
                     document.documentElement.doScroll('left');
-                } catch (error) {
+                } catch (c) {
                     setTimeout(arguments.callee, 0);
                     return;
                 }
-                domReady();
+                a();
             })();
-            var oldonload = window.onload;
+            var b = window.onload;
             window.onload = function() {
-                domReady();
-                if (oldonload) if (typeof oldonload == 'string') {
-                    eval(oldonload);
-                } else oldonload();
+                a();
+                if (b) if (typeof b == 'string') {
+                    FB.safeEval(b);
+                } else b();
             };
         })();
         FB.provide('Intl', (function() {
@@ -3367,6 +3058,26 @@ window.FB || (function() {
             isActive: function(a) {
                 var b = FB.Dialog._findRoot(a);
                 return b && b === FB.Dialog._active;
+            }
+        });
+        FB.provide('JSON', {
+            stringify: function(a) {
+                return ES5('JSON', 'stringify', false, a);
+            },
+            parse: function(a) {
+                return ES5('JSON', 'parse', false, a);
+            },
+            flatten: function(a) {
+                var b = {};
+                for (var c in a) if (a.hasOwnProperty(c)) {
+                    var d = a[c];
+                    if (null === d || undefined === d) {
+                        continue;
+                    } else if (typeof d == 'string') {
+                        b[c] = d;
+                    } else b[c] = ES5('JSON', 'stringify', false, d);
+                }
+                return b;
             }
         });
         FB.provide('', {
@@ -4675,30 +4386,33 @@ window.FB || (function() {
                 FB.Data._waitToProcess();
                 return c;
             },
-            waitOn: function(dependencies, callback) {
-                var result = new FB.Waitable(),
-                    count = dependencies.length;
-                if (typeof(callback) == 'string') {
-                    var s = callback;
-                    callback = function(args) {
-                        return eval(s);
+            waitOn: function(a, b) {
+                var c = new FB.Waitable(),
+                    d = a.length;
+                if (typeof(b) == 'string') {
+                    var e = b;
+                    b = function(f) {
+                        return FB.safeEval(e);
                     };
                 }
-                ES5(dependencies, 'forEach', true, function(item) {
-                    item.monitor('value', function() {
-                        var done = false;
-                        if (FB.Data._getValue(item) !== undefined) {
-                            count--;
-                            done = true;
+                ES5(a, 'forEach', true, function(f) {
+                    f.monitor('value', function() {
+                        var g = false;
+                        if (FB.Data._getValue(f) !== undefined) {
+                            d--;
+                            g = true;
                         }
-                        if (count === 0) {
-                            var value = callback(ES5(dependencies, 'map', true, FB.Data._getValue));
-                            result.set(value !== undefined ? value : true);
+                        if (d === 0) {
+                            var h = b(ES5(a, 'map', true, FB.Data._getValue));
+                            c.set(h !== undefined ? h : true);
                         }
-                        return done;
+                        return g;
                     });
                 });
-                return result;
+                return c;
+            },
+            process: function(a) {
+                FB.Data._process(a);
             },
             _getValue: function(a) {
                 return FB.Type.isType(a, FB.Waitable) ? a.value : a;
@@ -4719,31 +4433,33 @@ window.FB || (function() {
             _waitToProcess: function() {
                 if (FB.Data.timer < 0) FB.Data.timer = setTimeout(FB.Data._process, 10);
             },
-            _process: function() {
+            _process: function(a) {
                 FB.Data.timer = -1;
-                var a = {},
-                    b = FB.Data.queue;
+                var b = {},
+                    c = FB.Data.queue;
+                if (!c.length) return;
                 FB.Data.queue = [];
-                for (var c = 0; c < b.length; c++) {
-                    var d = b[c];
-                    if (d.where.type == 'index' && !d.hasDependency) {
-                        FB.Data._mergeIndexQuery(d, a);
-                    } else a[d.name] = d;
+                for (var d = 0; d < c.length; d++) {
+                    var e = c[d];
+                    if (e.where.type == 'index' && !e.hasDependency) {
+                        FB.Data._mergeIndexQuery(e, b);
+                    } else b[e.name] = e;
                 }
-                var e = {
+                var f = {
                     q: {}
                 };
-                FB.copy(e.q, a, true, function(f) {
-                    return f.toFql();
+                FB.copy(f.q, b, true, function(g) {
+                    return g.toFql();
                 });
-                e.queries = ES5('JSON', 'stringify', false, e.queries);
-                FB.api('/fql', 'GET', e, function(f) {
-                    if (f.error) {
-                        ES5(ES5('Object', 'keys', false, a), 'forEach', true, function(g) {
-                            a[g].error(new Error(f.error.message));
+                f.queries = ES5('JSON', 'stringify', false, f.queries);
+                if (a) f.access_token = a;
+                FB.api('/fql', 'GET', f, function(g) {
+                    if (g.error) {
+                        ES5(ES5('Object', 'keys', false, b), 'forEach', true, function(h) {
+                            b[h].error(new Error(g.error.message));
                         });
-                    } else ES5(f.data, 'forEach', true, function(g) {
-                        a[g.name].set(g.fql_result_set);
+                    } else ES5(g.data, 'forEach', true, function(h) {
+                        b[h.name].set(h.fql_result_set);
                     });
                 });
             },
@@ -4863,10 +4579,10 @@ window.FB || (function() {
                 if (c) b = '<a class="fb_link" href="' + c + '">' + b + '</a>';
                 return b;
             },
-            invokeHandler: function(handler, scope, args) {
-                if (handler) if (typeof handler === 'string') {
-                    eval(handler);
-                } else if (handler.apply) handler.apply(scope, args || []);
+            invokeHandler: function(a, b, c) {
+                if (a) if (typeof a === 'string') {
+                    FB.safeEval(a);
+                } else if (a.apply) a.apply(b, c || []);
             },
             fireEvent: function(a, b) {
                 var c = b._attr.href;
@@ -5563,6 +5279,7 @@ window.FB || (function() {
                     href: this.getAttribute('href'),
                     permalink: this.getAttribute('permalink'),
                     publish_feed: this.getAttribute('publish_feed'),
+                    order_by: this.getAttribute('order_by'),
                     mobile: this._getBoolAttribute('mobile')
                 };
                 if (FB.initSitevars.enableMobileComments && FB.UA.mobile() && a.mobile !== false) a.mobile = true;
@@ -7196,13 +6913,6 @@ FB.provide("", {
     },
     "_locale": "en_US",
     "_localeIsRtl": false
-}, true);
-FB.provide("Flash", {
-    "_minVersions": [
-        [10, 3, 181, 34],
-        [11, 0, 0]
-    ],
-    "_swfPath": "rsrc.php\/v1\/ym\/r\/WT2HOUZkT6k.swf"
 }, true);
 FB.provide("Arbiter", {
     "_canvasProxyUrl": "connect\/canvas_proxy.php?version=6"
