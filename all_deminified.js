@@ -1,4 +1,4 @@
-/*1339554686,169913962,JIT Construction: v573035,en_US*/
+/*1340162486,169914491,JIT Construction: v577001,en_US*/
 
 window.FB || (function() {
     var ES5 = function() {
@@ -565,19 +565,19 @@ window.FB || (function() {
         });
         __d("ApiClientConfig", [], {
             "FlashRequest": {
-                "swfUrl": "https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v1\/y5\/r\/SrnvQJBTxo-.swf"
+                "swfUrl": "https:\/\/connect.facebook.net\/rsrc.php\/v1\/y5\/r\/SrnvQJBTxo-.swf"
             }
         });
         __d("SDKConfig", [], {
-            "seal": false,
+            "seal": true,
             "errorHandling": {
-                "rate": 0
+                "rate": 2
             }
         });
         __d("XDConfig", [], {
             "XdUrl": "connect\/xd_arbiter.php?version=8",
             "Flash": {
-                "path": "https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v1\/ys\/r\/WON-TVLCpDP.swf"
+                "path": "https:\/\/connect.facebook.net\/rsrc.php\/v1\/ys\/r\/WON-TVLCpDP.swf"
             },
             "useCdn": true
         });
@@ -1631,7 +1631,7 @@ window.FB || (function() {
                     z[ba] = ca;
                     if (g.seal) if (typeof ca === 'function' && !/^_/.test(ba)) aa[ba] = function() {
                         var da = ES5(Array.prototype.slice.call(arguments), 'map', true, function(ea) {
-                            return typeof ea === 'function' ?
+                            return typeof ea === 'function' && /^function/.test(ea.toString()) ?
                             function() {
                                 var fa = arguments;
                                 setTimeout(function() {
@@ -1748,7 +1748,7 @@ window.FB || (function() {
                 api: h
             }, true);
         }, 3);
-        if (typeof __c === "function") __c();
+        __c();
         __d("legacy:fb.prelude", ["FB"], function(a, b, c, d) {
             var e = b('FB');
         }, 3);
@@ -2105,7 +2105,7 @@ window.FB || (function() {
             })());
             e.exports = r;
         });
-        __d("SDK_XD", ["applyWithGuard", "guid", "resolveWindow", "FB", "XDM", "Log", "QueryString", "Queue", "XDConfig"], function(a, b, c, d, e, f) {
+        __d("SDK_XD", ["applyWithGuard", "guid", "resolveWindow", "FB", "XDM", "Log", "QueryString", "Queue", "URL", "XDConfig"], function(a, b, c, d, e, f) {
             var g = c('XDConfig'),
                 h = b('applyWithGuard'),
                 i = b('guid'),
@@ -2115,191 +2115,193 @@ window.FB || (function() {
                 m = b('Log'),
                 n = b('QueryString'),
                 o = b('Queue'),
-                p = new o(),
+                p = b('URL'),
                 q = new o(),
                 r = new o(),
-                s, t, u = i(),
-                v = i(),
-                w = location.protocol + '//' + location.host,
-                x, y = false,
-                z = {};
+                s = new o(),
+                t, u, v = i(),
+                w = i(),
+                x = location.protocol + '//' + location.host,
+                y, z = false,
+                aa = {};
 
-            function aa(ga) {
-                m.info('Remote XD can talk to facebook.com (%s)', ga);
-                if (ga == 'canvas') {
+            function ba(ha) {
+                m.info('Remote XD can talk to facebook.com (%s)', ha);
+                if (ha == 'canvas') {
                     k._inCanvas = true;
                 } else k.Canvas._isTabIframe = true;
             }
-            function ba(ga, ha) {
-                if (!ha) {
+            function ca(ha, ia) {
+                if (!ia) {
                     m.error('No senderOrigin');
                     throw new Error();
                 }
-                var ia = /^https?/.exec(ha)[0];
-                switch (ga.xd_action) {
+                var ja = /^https?/.exec(ia)[0];
+                switch (ha.xd_action) {
                 case 'proxy_ready':
-                    var ja, ka;
-                    if (ia == 'https') {
-                        ja = r;
-                        ka = t;
-                    } else {
-                        ja = q;
+                    var ka, la;
+                    if (ja == 'https') {
                         ka = s;
+                        la = u;
+                    } else {
+                        ka = r;
+                        la = t;
                     }
-                    if (ga.registered) {
-                        aa(ga.registered);
-                        p = ja.merge(p);
+                    if (ha.registered) {
+                        ba(ha.registered);
+                        q = ka.merge(q);
                     }
-                    m.info('Proxy ready, starting queue %s containing %s messages', ia + 'ProxyQueue', ja.getLength());
-                    ja.start(function(ma) {
-                        x.send(n.encode(ma), ha, ka.contentWindow, v + '_' + ia);
+                    m.info('Proxy ready, starting queue %s containing %s messages', ja + 'ProxyQueue', ka.getLength());
+                    ka.start(function(na) {
+                        y.send(n.encode(na), ia, la.contentWindow, w + '_' + ja);
                     });
                     break;
                 case 'plugin_ready':
-                    m.info('Plugin %s ready, protocol: %s', ga.name, ia);
-                    z[ga.name] = {
-                        protocol: ia
+                    m.info('Plugin %s ready, protocol: %s', ha.name, ja);
+                    aa[ha.name] = {
+                        protocol: ja
                     };
-                    if (o.exists(ga.name)) {
-                        var la = o.get(ga.name);
-                        m.debug('Enqueuing %s messages for %s in %s', la.getLength(), ga.name, ia + 'ProxyQueue');
-                        (ia == 'https' ? r : q).merge(la);
+                    if (o.exists(ha.name)) {
+                        var ma = o.get(ha.name);
+                        m.debug('Enqueuing %s messages for %s in %s', ma.getLength(), ha.name, ja + 'ProxyQueue');
+                        (ja == 'https' ? s : r).merge(ma);
                     }
                     break;
                 }
-                if (ga.data) ca(ga.data, ha);
+                if (ha.data) da(ha.data, ia);
             }
-            function ca(ga, ha) {
+            function da(ha, ia) {
+                if (ia && ia !== 'native' && !p(ia).isFacebookURL()) return;
                 h(function() {
-                    if (typeof ga == 'string') if (ga.substring(0, 1) == '{') {
+                    if (typeof ha == 'string') if (ha.substring(0, 1) == '{') {
                         try {
-                            ga = ES5('JSON', 'parse', false, ga);
-                        } catch (ia) {
-                            m.warn('Failed to decode %s as JSON', ga);
+                            ha = ES5('JSON', 'parse', false, ha);
+                        } catch (ja) {
+                            m.warn('Failed to decode %s as JSON', ha);
                             return;
                         }
-                    } else ga = n.decode(ga);
-                    if (!ha) if (ga.xd_sig == u) ha = ga.xd_origin;
-                    if (ga.xd_action) {
-                        ba(ga, ha);
+                    } else ha = n.decode(ha);
+                    if (!ia) if (ha.xd_sig == v) ia = ha.xd_origin;
+                    if (ha.xd_action) {
+                        ca(ha, ia);
                         return;
                     }
-                    if (ga.access_token) k._https = /^https/.test(w);
-                    if (ga.cb) {
-                        var ja = k.XD._callbacks[ga.cb];
-                        if (!k.XD._forever[ga.cb]) delete k.XD._callbacks[ga.cb];
-                        if (ja) ja(ga);
+                    if (ha.access_token) k._https = /^https/.test(x);
+                    if (ha.cb) {
+                        var ka = k.XD._callbacks[ha.cb];
+                        if (!k.XD._forever[ha.cb]) delete k.XD._callbacks[ha.cb];
+                        if (ka) ka(ha);
                     }
                 });
             }
-            var da = function() {
-                    var ga = document.createElement("form"),
-                        ha = ga.appendChild(document.createElement("input")),
-                        ia;
-                    ha.name = i();
-                    ia = ha !== ga.elements[ha.name];
-                    ga = ha = null;
-                    da = function() {
-                        return ia;
+            var ea = function() {
+                    var ha = document.createElement("form"),
+                        ia = ha.appendChild(document.createElement("input")),
+                        ja;
+                    ia.name = i();
+                    ja = ia !== ha.elements[ia.name];
+                    ha = ia = null;
+                    ea = function() {
+                        return ja;
                     };
-                    return ia;
+                    return ja;
                 };
 
-            function ea(ga) {
-                var ha = da() ? document.createElement('<iframe name="' + ga.name + '"/>') : document.createElement("iframe");
-                ha.name = ha.id = ga.name;
-                ha.src = "javascript:false";
-                ga.root.appendChild(ha);
-                ha.src = ga.url;
-                return ha;
+            function fa(ha) {
+                var ia = ea() ? document.createElement('<iframe name="' + ha.name + '"/>') : document.createElement("iframe");
+                ia.name = ia.id = ha.name;
+                ia.src = "javascript:false";
+                ha.root.appendChild(ia);
+                ia.src = ha.url;
+                return ia;
             }
-            var fa = {
+            var ga = {
                 _callbacks: {},
                 _forever: {},
-                _channel: v,
-                _origin: w,
-                onMessage: ca,
-                recv: ca,
-                init: function(ga, ha) {
-                    if (y) return;
-                    var ia = ga ? /\/\/.*?(\/[^#]*)/.exec(ga)[1] : location.pathname + location.search;
-                    ia += (~ES5(ia, 'indexOf', true, '?') ? '&' : '?') + 'fb_xd_fragment#xd_sig=' + u + '&';
-                    var ja = k.Content.appendHidden(document.createElement('div')),
-                        ka = l.create({
-                            root: ja,
-                            channel: v,
+                _channel: w,
+                _origin: x,
+                onMessage: da,
+                recv: da,
+                init: function(ha, ia) {
+                    if (z) return;
+                    var ja = ha ? /\/\/.*?(\/[^#]*)/.exec(ha)[1] : location.pathname + location.search;
+                    ja += (~ES5(ja, 'indexOf', true, '?') ? '&' : '?') + 'fb_xd_fragment#xd_sig=' + v + '&';
+                    var ka = k.Content.appendHidden(document.createElement('div')),
+                        la = l.create({
+                            root: ka,
+                            channel: w,
                             channelPath: '/' + g.XdUrl + '#',
                             flashUrl: g.Flash.path,
-                            whenReady: function(pa) {
-                                x = pa;
+                            whenReady: function(qa) {
+                                y = qa;
                             },
-                            onMessage: ca
+                            onMessage: da
                         }),
-                        la = {
-                            channel: v,
+                        ma = {
+                            channel: w,
                             origin: location.protocol + '//' + location.host,
-                            channel_path: ia,
-                            transport: ka,
-                            xd_name: ha
+                            channel_path: ja,
+                            transport: la,
+                            xd_name: ia
                         },
-                        ma = g.XdUrl + '#' + n.encode(la),
-                        na = g.useCdn ? k._domain.staticfb : 'http://www.facebook.com/',
-                        oa = g.useCdn ? k._domain.https_staticfb : 'https://www.facebook.com/';
-                    if (!k.onlyUseHttps()) s = ea({
-                        url: na + ma,
+                        na = g.XdUrl + '#' + n.encode(ma),
+                        oa = g.useCdn ? k._domain.staticfb : 'http://www.facebook.com/',
+                        pa = g.useCdn ? k._domain.https_staticfb : 'https://www.facebook.com/';
+                    if (!k.onlyUseHttps()) t = fa({
+                        url: oa + na,
                         name: 'fb_xdm_frame_http',
-                        root: ja
+                        root: ka
                     });
-                    t = ea({
-                        url: oa + ma,
+                    u = fa({
+                        url: pa + na,
                         name: 'fb_xdm_frame_https',
-                        root: ja
+                        root: ka
                     });
-                    y = true;
+                    z = true;
                 },
-                sendToFacebook: function(ga, ha) {
-                    if (ga == 'facebook') {
-                        ha.relation = 'parent.parent';
-                        p.enqueue(ha);
+                sendToFacebook: function(ha, ia) {
+                    if (ha == 'facebook') {
+                        ia.relation = 'parent.parent';
+                        q.enqueue(ia);
                     } else {
-                        ha.relation = 'parent.frames["' + ga + '"]';
-                        var ia = z[ga];
-                        if (ia) {
-                            m.debug('Enqueuing message for plugin %s in %s', ga, ia.protocol + 'ProxyQueue');
-                            (ia.protocol == 'https' ? r : q).enqueue(ha);
+                        ia.relation = 'parent.frames["' + ha + '"]';
+                        var ja = aa[ha];
+                        if (ja) {
+                            m.debug('Enqueuing message for plugin %s in %s', ha, ja.protocol + 'ProxyQueue');
+                            (ja.protocol == 'https' ? s : r).enqueue(ia);
                         } else {
-                            m.debug('Buffering message for plugin %s', ga);
-                            o.get(ga).enqueue(ha);
+                            m.debug('Buffering message for plugin %s', ha);
+                            o.get(ha).enqueue(ia);
                         }
                     }
                 },
-                handler: function(ga, ha, ia, ja) {
-                    ja = ja || i();
-                    if (ia) k.XD._forever[ja] = true;
-                    k.XD._callbacks[ja] = ga;
-                    var ka = location.protocol == 'https:' ? k._domain.https_staticfb : k._domain.staticfb,
-                        la = g.useCdn ? ka : location.protocol + '//www.facebook.com/';
-                    return la + g.XdUrl + '#' + n.encode({
-                        cb: ja,
-                        origin: w + '/' + v,
+                handler: function(ha, ia, ja, ka) {
+                    ka = ka || i();
+                    if (ja) k.XD._forever[ka] = true;
+                    k.XD._callbacks[ka] = ha;
+                    var la = location.protocol == 'https:' ? k._domain.https_staticfb : k._domain.staticfb,
+                        ma = g.useCdn ? la : location.protocol + '//www.facebook.com/';
+                    return ma + g.XdUrl + '#' + n.encode({
+                        cb: ka,
+                        origin: x + '/' + w,
                         domain: location.hostname,
-                        relation: ha || 'opener'
+                        relation: ia || 'opener'
                     });
                 }
             };
             (function() {
-                var ga = location.href.match(/[?&]fb_xd_fragment#(.*)$/);
-                if (ga) {
+                var ha = location.href.match(/[?&]fb_xd_fragment#(.*)$/);
+                if (ha) {
                     document.documentElement.style.display = 'none';
-                    var ha = n.decode(ga[1]),
-                        ia = j(ha.xd_rel);
-                    m.debug('Passing fragment based message: %s', ga[1]);
-                    ia.FB.XD.onMessage(ha);
+                    var ia = n.decode(ha[1]),
+                        ja = j(ia.xd_rel);
+                    m.debug('Passing fragment based message: %s', ha[1]);
+                    ja.FB.XD.onMessage(ia);
                     document.open();
                     document.close();
                 }
             })();
-            e.exports = fa;
+            e.exports = ga;
         });
         __d("legacy:fb.xd", ["FB", "SDK_XD"], function(a, b, c, d) {
             var e = b('FB'),
