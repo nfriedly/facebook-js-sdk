@@ -1,4 +1,4 @@
-/*1340946086,169931643,JIT Construction: v582828,en_US*/
+/*1341020200,169920384,JIT Construction: v583455,en_US*/
 
 window.FB || (function() {
     var ES5 = function() {
@@ -4279,9 +4279,6 @@ window.FB || (function() {
                 localName: 'connect-bar',
                 className: 'FB.XFBML.ConnectBar'
             }, {
-                localName: 'degrees',
-                className: 'FB.XFBML.Degrees'
-            }, {
                 localName: 'fan',
                 className: 'FB.XFBML.Fan'
             }, {
@@ -4319,9 +4316,6 @@ window.FB || (function() {
                 localName: 'profile-pic',
                 className: 'FB.XFBML.ProfilePic'
             }, {
-                localName: 'question',
-                className: 'FB.XFBML.Question'
-            }, {
                 localName: 'recommendations',
                 className: 'FB.XFBML.Recommendations'
             }, {
@@ -4345,12 +4339,6 @@ window.FB || (function() {
             }, {
                 localName: 'subscribe',
                 className: 'FB.XFBML.Subscribe'
-            }, {
-                localName: 'typeahead',
-                className: 'FB.XFBML.Typeahead'
-            }, {
-                localName: 'want',
-                className: 'FB.XFBML.Want'
             }],
             _widgetPipeEnabledTagCount: 0,
             _widgetPipeIsEnabled: function() {
@@ -5682,31 +5670,6 @@ window.FB || (function() {
                 missingProfileUrl: 'pics/q_silhouette.gif'
             }
         });
-        FB.subclass('XFBML.Degrees', 'XFBML.IframeWidget', null, {
-            _showLoader: false,
-            setupAndValidate: function() {
-                this._attr = {
-                    api_key: FB._apiKey,
-                    channel_url: this.getChannelUrl(),
-                    font: this.getAttribute('font'),
-                    href: this.getAttribute('href'),
-                    colorscheme: this.getAttribute('color-scheme')
-                };
-                return true;
-            },
-            getSize: function() {
-                return {
-                    width: 500,
-                    height: 25
-                };
-            },
-            getUrlBits: function() {
-                return {
-                    name: 'degrees',
-                    params: this._attr
-                };
-            }
-        });
         FB.subclass('XFBML.Fan', 'XFBML.IframeWidget', null, {
             _visibleAfter: 'load',
             setupAndValidate: function() {
@@ -6525,42 +6488,6 @@ window.FB || (function() {
                 thumb: 'pic_small'
             }
         });
-        FB.subclass('XFBML.Question', 'XFBML.IframeWidget', null, {
-            _visibleAfter: 'load',
-            setupAndValidate: function() {
-                this._attr = {
-                    channel: this.getChannelUrl(),
-                    api_key: FB._apiKey,
-                    permalink: this.getAttribute('permalink'),
-                    id: this.getAttribute('id'),
-                    width: this._getPxAttribute('width', 400),
-                    height: 0,
-                    questiontext: this.getAttribute('questiontext'),
-                    options: this.getAttribute('options')
-                };
-                this.subscribe('xd.firstVote', ES5(this._onInitialVote, 'bind', true, this));
-                this.subscribe('xd.vote', ES5(this._onChangedVote, 'bind', true, this));
-                return true;
-            },
-            getSize: function() {
-                return {
-                    width: this._attr.width,
-                    height: this._attr.height
-                };
-            },
-            getUrlBits: function() {
-                return {
-                    name: 'question',
-                    params: this._attr
-                };
-            },
-            _onInitialVote: function(a) {
-                FB.Event.fire('question.firstVote', this._attr.permalink, a.vote);
-            },
-            _onChangedVote: function(a) {
-                FB.Event.fire('question.vote', this._attr.permalink, a.vote);
-            }
-        });
         FB.subclass('XFBML.Recommendations', 'XFBML.IframeWidget', null, {
             _visibleAfter: 'load',
             _refreshOnAuthChange: true,
@@ -6954,60 +6881,6 @@ window.FB || (function() {
                     d = e[a].min;
                 } else if (d > e[a].max) d = e[a].max;
                 return d;
-            }
-        });
-        FB.subclass('XFBML.Typeahead', 'XFBML.IframeWidget', null, {
-            getUrlBits: function() {
-                return {
-                    name: 'typeahead',
-                    params: this._attr
-                };
-            },
-            setupAndValidate: function() {
-                this._attr = {
-                    channel: this.getChannelUrl(),
-                    api_key: FB._apiKey,
-                    font: this.getAttribute('font'),
-                    width: this.getAttribute('width')
-                };
-                this._showLoader = false;
-                return true;
-            },
-            getSize: function() {
-                return {
-                    width: this._attr.width || 300,
-                    height: 22
-                };
-            }
-        });
-        FB.subclass('XFBML.Want', 'XFBML.IframeWidget', null, {
-            _showLoader: false,
-            setupAndValidate: function() {
-                this._attr = {
-                    api_key: FB._apiKey,
-                    channel_url: this.getChannelUrl(),
-                    font: this.getAttribute('font'),
-                    href: FB.URI.resolve(this.getAttribute('href', window.location.href)),
-                    colorscheme: this.getAttribute('color-scheme'),
-                    show_faces: this._getBoolAttribute('show-faces', true),
-                    width: this._getWidgetWidth()
-                };
-                return true;
-            },
-            getSize: function() {
-                return {
-                    width: this._getWidgetWidth(),
-                    height: this._getBoolAttribute('show-faces', true) ? 80 : 35
-                };
-            },
-            _getWidgetWidth: function() {
-                return Math.min(Math.max(this._getPxAttribute('width', 450), 225), 900);
-            },
-            getUrlBits: function() {
-                return {
-                    name: 'want',
-                    params: this._attr
-                };
             }
         });
         void(0);;
