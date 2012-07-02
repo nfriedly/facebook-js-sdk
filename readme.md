@@ -65,3 +65,9 @@ The JS is copyright Facebook, Inc. and, to the best of my knowledge, released un
 Other files included in lib/ have their own licenses.
 
 This is obviously not endorsed or supported by Facebook - if it was, they'd probably update their own github account.
+
+---
+Related
+-------
+
+https://github.com/tomwaddington/facebook-js-sdk is a similar project that gets updated 3 times per day.
