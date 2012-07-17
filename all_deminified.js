@@ -1,4 +1,4 @@
-/*1342007344,169904258,JIT Construction: v588685,en_US*/
+/*1342525758,169917287,JIT Construction: v592070,en_US*/
 
 window.FB || (function() {
     var ES5 = function() {
@@ -569,12 +569,13 @@ window.FB || (function() {
             }
         });
         __d("SDKConfig", [], {
+            "xfbmlUseLegacy": true,
             "errorHandling": {
                 "rate": 2
             },
             "api": {
                 "mode": "warn",
-                "whitelist": ["api", "init", "ui", "getAccessToken", "getAuthResponse", "getLoginStatus", "getUserID", "login", "logout", "Event", "Event.subscribe", "Event.unsubscribe", "XFBML", "XFBML.parse", "Canvas", "Canvas.Prefetcher.addStaticResource", "Canvas.Prefetcher.setCollectionMode", "Canvas.getPageInfo", "Canvas.hideFlashElement", "Canvas.showFlashElement", "Canvas.scrollTo", "Canvas.setAutoGrow", "Canvas.setAutoResize", "Canvas.setDoneLoading", "Canvas.setSize", "Canvas.setUrlHandler", "Canvas.startTimer", "Canvas.stopTimer", "Insights.impression", "Dom", "Dom.addCssRules", "Arbiter", "Arbiter.inform", "JSON", "JSON.parse", "JSON.stringify", "XD", "XD.onMessage", "Music", "Music.send", "Payment", "Payment.setSize", "CanvasInsights", "CanvasInsights.setDoneLoading", "Payment.init", "Music.init", "Music.flashCallback", "Data", "Data.waitOn", "Data.query"]
+                "whitelist": ["api", "init", "ui", "getAccessToken", "getAuthResponse", "getLoginStatus", "getUserID", "login", "logout", "Event", "Event.subscribe", "Event.unsubscribe", "XFBML", "XFBML.parse", "Canvas", "Canvas.Prefetcher.addStaticResource", "Canvas.Prefetcher.setCollectionMode", "Canvas.getPageInfo", "Canvas.hideFlashElement", "Canvas.showFlashElement", "Canvas.scrollTo", "Canvas.setAutoGrow", "Canvas.setAutoResize", "Canvas.setDoneLoading", "Canvas.setSize", "Canvas.setUrlHandler", "Canvas.startTimer", "Canvas.stopTimer", "Insights.impression", "Dom", "Dom.addCssRules", "Arbiter", "Arbiter.inform", "JSON", "JSON.parse", "JSON.stringify", "XD", "XD.onMessage", "Music", "Music.send", "Payment", "Payment.setSize", "UA", "UA.nativeApp", "Payment.init", "Music.init", "Music.flashCallback", "Data", "Data.waitOn", "Data.query"]
             }
         });
         __d("XDConfig", [], {
@@ -4096,6 +4097,12 @@ window.FB || (function() {
             initSitevars: {},
             init: function(a) {
                 if (FB._initialized) FB.log('FB.init has already been called - this could indicate a problem');
+                if (typeof a === 'string') {
+                    FB.log('FB.init called with invalid parameters');
+                    a = {
+                        apiKey: a
+                    };
+                }
                 a = FB.copy(a || {}, {
                     logging: true,
                     status: true
