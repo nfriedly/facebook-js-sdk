@@ -1,4 +1,4 @@
-/*1343216249,172700697,JIT Construction: v597466,en_US*/
+/*1343389060,172654360,JIT Construction: v599053,en_US*/
 
 window.FB || (function() {
     var ES5 = function() {
@@ -714,11 +714,13 @@ window.FB || (function() {
             function p(t) {
                 var u = b[t];
                 if (u.special & f) i(t);
-                var v = c[t];
+                var v = c[t],
+                    w = [];
                 if (v) {
                     delete c[t];
-                    for (var w in v) if (h.call(v, w)) if (!--b[w].waiting) p(w);
+                    for (var x in v) if (h.call(v, x)) if (!--b[x].waiting) w.push(x);
                 }
+                for (var y = 0; y < w.length; y++) p(w[y]);
             }
             function q(t, u) {
                 b[t] = {
@@ -1636,12 +1638,14 @@ window.FB || (function() {
                     },
                     log: function(j, k, l, m) {
                         (new Image()).src = h.appendToUrl(g.resolve('www', true) + '/impression.php', {
-                            appId: j,
-                            eventaction: 'platform_app_issue',
-                            source: 'jssdk',
-                            type: k,
-                            category: l,
-                            payload: m
+                            lid: 113,
+                            api_key: j,
+                            payload: ES5('JSON', 'stringify', false, {
+                                source: 'jssdk',
+                                type: k,
+                                category: l,
+                                payload: m
+                            })
                         });
                     }
                 };
@@ -1724,6 +1728,13 @@ window.FB || (function() {
                                 o.warn('The method FB.%s is not officially supported by ' + 'Facebook and access to it will soon be removed.', ia);
                                 if (!w.hasOwnProperty(ia)) {
                                     n.log(s._apiKey, n.TYPE.WARNING, n.CATEGORY.DEPRECATED, 'FB.' + ia);
+                                    p.log('jssdk_error', {
+                                        appId: s._apiKey,
+                                        error: 'Private method used',
+                                        extra: {
+                                            args: ia
+                                        }
+                                    });
                                     w[ia] = true;
                                 }
                             }
@@ -1820,8 +1831,7 @@ window.FB || (function() {
                 safeEval: l
             });
             if (t) k(t, {
-                provide: y,
-                Insights: n
+                provide: y
             });
             e.exports = s;
         });

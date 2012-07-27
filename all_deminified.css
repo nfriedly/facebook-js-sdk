@@ -1,4 +1,4 @@
-/*1341402693,169932923,JIT Construction: v585470,en_US*/
+/*1343389772,169924462,JIT Construction: v599053,en_US*/
 window.FB || (function()
 {
 	varFB:{;
@@ -154,7 +154,7 @@ function o(t)
 function p(t)
 {
 	varu:b[t];
-	varv:c[t];
+	varv:c[t],w=[];
 }	
 }
 
@@ -417,7 +417,7 @@ body.fb_hidden
 
 .fb_dialog.fb_dialog_mobile.loading
 {
-	background:url(https://s-static.ak.fbcdn.net/rsrc.php/v2/yO/r/_j03izEX40U.gif) white no-repeat 50% 50%;
+	background:url(https://s-static.ak.fbcdn.net/rsrc.php/v2/ya/r/3rhSv5V8j3o.gif) white no-repeat 50% 50%;
 	min-height:100%;
 	min-width:100%;
 	overflow:hidden;
