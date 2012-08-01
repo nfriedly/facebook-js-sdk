@@ -1,4 +1,4 @@
-/*1343389060,172654360,JIT Construction: v599053,en_US*/
+/*1343821064,169941616,JIT Construction: v602059,en_US*/
 
 window.FB || (function() {
     var ES5 = function() {
@@ -117,386 +117,368 @@ window.FB || (function() {
              * @providesModule JSON3
              * @option preserve-header
              *
-             *! JSON v3.1 | http://bestiejs.github.com/json3 | Copyright 2012, Kit Cambridge | http://kit.mit-license.org
+             *! JSON v3.2.3 | http://bestiejs.github.com/json3 | Copyright 2012, Kit Cambridge | http://kit.mit-license.org
              */
             __d("JSON3", [], function(a, b, c, d, e, f) {
-                var g = {}.toString,
-                    h = {}.hasOwnProperty,
-                    i, j, k;
-                j = typeof f.stringify == "function";
-                k = typeof f.parse == "function";
                 (function() {
-                    var l = '{"result":[1,true,false,null,"\\u0000\\b\\n\\f\\r\\t"]}',
-                        m, n, o;
-                    if (j) {
-                        m = function q() {
+                    var g = {}.toString,
+                        h, i, j, k = e.exports = {},
+                        l = '{"A":[1,true,false,null,"\\u0000\\b\\n\\f\\r\\t"]}',
+                        m, n, o, p, q, r, s, t, u, v, w, x, y, z, aa, ba = new Date(-3509827334573292),
+                        ca, da, ea;
+                    try {
+                        ba = ba.getUTCFullYear() == -109252 && ba.getUTCMonth() === 0 && ba.getUTCDate() == 1 && ba.getUTCHours() == 10 && ba.getUTCMinutes() == 37 && ba.getUTCSeconds() == 6 && ba.getUTCMilliseconds() == 708;
+                    } catch (fa) {}
+                    if (!ba) {
+                        ca = Math.floor;
+                        da = [0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334];
+                        ea = function(ga, ha) {
+                            return da[ha] + 365 * (ga - 1970) + ca((ga - 1969 + (ha = +(ha > 1))) / 4) - ca((ga - 1901 + ha) / 100) + ca((ga - 1601 + ha) / 400);
+                        };
+                    }
+                    if (typeof JSON == "object" && JSON) {
+                        k.stringify = JSON.stringify;
+                        k.parse = JSON.parse;
+                    }
+                    if ((m = typeof k.stringify == "function" && !ea)) {
+                        (ba = function() {
                             return 1;
-                        };
-                        m.toJSON = m;
+                        }).toJSON = ba;
                         try {
-                            switch (false) {
-                            case f.stringify(0) === "0":
-                            case f.stringify(new(0).constructor()) === "0":
-                            case f.stringify(new "".constructor()) == '""':
-                            case f.stringify(g) === void 0:
-                            case f.stringify(void 0) === void 0:
-                            case f.stringify() === void 0:
-                            case f.stringify(m) === "1":
-                            case f.stringify([m]) == "[1]":
-                            case f.stringify([void 0]) == "[null]":
-                            case f.stringify(null) == "null":
-                            case f.stringify([void 0, g, null]) == "[null,null,null]":
-                            case f.stringify({
-                                    result: [m, true, false, null, "\0\b\n\f\r\t"]
-                                }) == l:
-                            case f.stringify(null, m) === "1":
-                            case f.stringify([1, 2], null, 1) == "[\n 1,\n 2\n]":
-                            case (m = new Date(-8.64e+15)).getUTCFullYear() != -271821 || f.stringify(m) == '"-271821-04-20T00:00:00.000Z"':
-                            case (m = new Date(8.64e+15)).getUTCFullYear() != 275760 || f.stringify(m) == '"+275760-09-13T00:00:00.000Z"':
-                                j = false;
-                            }
-                        } catch (p) {
-                            j = false;
+                            m = k.stringify(0) === "0" && k.stringify(new Number()) === "0" && k.stringify(new String()) == '""' && k.stringify(g) === j && k.stringify(j) === j && k.stringify() === j && k.stringify(ba) === "1" && k.stringify([ba]) == "[1]" && k.stringify([j]) == "[null]" && k.stringify(null) == "null" && k.stringify([j, g, null]) == "[null,null,null]" && k.stringify({
+                                result: [ba, true, false, null, "\0\b\n\f\r\t"]
+                            }) == l && k.stringify(null, ba) === "1" && k.stringify([1, 2], null, 1) == "[\n 1,\n 2\n]" && k.stringify(new Date(-8.64e+15)) == '"-271821-04-20T00:00:00.000Z"' && k.stringify(new Date(8.64e+15)) == '"+275760-09-13T00:00:00.000Z"' && k.stringify(new Date(-62198755200000)) == '"-000001-01-01T00:00:00.000Z"' && k.stringify(new Date(-1)) == '"1969-12-31T23:59:59.999Z"';
+                        } catch (fa) {
+                            m = false;
                         }
                     }
-                    if (k) try {
-                        if (f.parse("0") === 0 && !f.parse(false)) {
-                            o = f.parse(l);
-                            if ((k = o.result.length == 5 && o.result[0] == 1)) {
+                    if (typeof k.parse == "function") try {
+                        if (k.parse("0") === 0 && !k.parse(false)) {
+                            ba = k.parse(l);
+                            if ((r = ba.A.length == 5 && ba.A[0] == 1)) {
                                 try {
-                                    k = !f.parse('"\t"');
-                                } catch (p) {}
-                                if (k) try {
-                                    k = f.parse("+1") != 1 && f.parse("01") != 1;
-                                } catch (p) {}
+                                    r = !k.parse('"\t"');
+                                } catch (fa) {}
+                                if (r) try {
+                                    r = k.parse("01") != 1;
+                                } catch (fa) {}
                             }
                         }
-                    } catch (p) {
-                        k = false;
+                    } catch (fa) {
+                        r = false;
                     }
-                })();
-                if (typeof h != "function") h = (function() {
-                    var l, m = {},
-                        n = m.constructor;
-                    if ((m.__proto__ = null, m.__proto__ = {
-                        toString: 1
-                    }, m).toString != g) {
-                        l = function o(p) {
-                            var q = this.__proto__,
-                                r = p in (this.__proto__ = null, this);
-                            this.__proto__ = q;
-                            return r;
-                        };
-                    } else l = function o(p) {
-                        var q = (this.constructor || n).prototype;
-                        return p in this && !(p in q && this[p] === q[p]);
-                    };
-                    m = null;
-                    return l;
-                })();
-                i = (function() {
-                    var l, m, n, o = 0;
-
-                    function p() {
-                        this.valueOf = 0;
-                    }
-                    p.prototype.valueOf = 0;
-                    l = new p();
-                    for (m in l) if (h.call(l, m)) o += 1;
-                    l = null;
-                    if (!o) {
-                        l = ["valueOf", "toString", "toLocaleString", "propertyIsEnumerable", "isPrototypeOf", "hasOwnProperty", "constructor"];
-                        n = function q(r, s) {
-                            var t = g.call(r) == "[object Function]",
-                                u, v;
-                            for (u in r) if (!(t && u == "prototype") && h.call(r, u)) s(u);
-                            for (v = l.length; v--;) {
-                                u = l[v];
-                                if (h.call(r, u)) s(u);
-                            }
-                        };
-                    } else if (o == 2) {
-                        n = function q(r, s) {
-                            var t = {},
-                                u = g.call(r) == "[object Function]",
-                                v;
-                            for (v in r) if (!(u && v == "prototype") && !h.call(t, v) && (t[v] = 1) && h.call(r, v)) s(v);
-                        };
-                    } else n = function q(r, s) {
-                        var t = g.call(r) == "[object Function]",
-                            u, v;
-                        for (u in r) if (!(t && u == "prototype") && h.call(r, u) && !(v = u === "constructor")) s(u);
-                        if (v || h.call(r, "constructor")) s("constructor");
-                    };
-                    return n;
-                })();
-                if (!j) f.stringify = (function() {
-                    var l = {
-                        "\\": "\\\\",
-                        '"': '\\"',
-                        "\b": "\\b",
-                        "\f": "\\f",
-                        "\n": "\\n",
-                        "\r": "\\r",
-                        "\t": "\\t"
-                    };
-
-                    function m(q, r) {
-                        r = "000000" + (r || 0);
-                        return r.slice(r.length - q);
-                    }
-                    function n(q) {
-                        var r = '"',
-                            s = 0,
-                            t;
-                        for (; t = q.charAt(s); s += 1) r += '\\"\b\f\n\r\t'.indexOf(t) > -1 ? l[t] : t < " " ? "\\u00" + m(2, t.charCodeAt(0).toString(16)) : t;
-                        return r + '"';
-                    }
-                    function o(q, r, s, t, u, v, w) {
-                        var x = r[q],
-                            y, z, aa, ba, ca, da, ea, fa;
-                        if (typeof x == "object" && x) if (g.call(x) == "[object Date]" && !h.call(x, "toJSON")) {
-                            if (x > -1 / 0 && x < 1 / 0) {
-                                z = x.getUTCFullYear();
-                                x = (z <= 0 || z >= 10000 ? (z < 0 ? "-" : "+") + m(6, z < 0 ? -z : z) : m(4, z)) + "-" + m(2, x.getUTCMonth() + 1) + "-" + m(2, x.getUTCDate()) + "T" + m(2, x.getUTCHours()) + ":" + m(2, x.getUTCMinutes()) + ":" + m(2, x.getUTCSeconds()) + "." + m(3, x.getUTCMilliseconds()) + "Z";
-                            } else x = null;
-                        } else if (typeof x.toJSON == "function") x = x.toJSON(q);
-                        if (s) x = s.call(r, q, x);
-                        if (x === null) return "null";
-                        y = g.call(x);
-                        switch (y) {
-                        case "[object Boolean]":
-                            return "" + x;
-                        case "[object Number]":
-                            return x > -1 / 0 && x < 1 / 0 ? "" + x : "null";
-                        case "[object String]":
-                            return n(x);
-                        }
-                        if (typeof x == "object") {
-                            for (da = w.length; da--;) if (w[da] == x) throw TypeError("Cyclic structures cannot be serialized.");
-                            w.push(x);
-                            aa = [];
-                            ea = v;
-                            v += u;
-                            if (y == "[object Array]") {
-                                for (ca = 0, da = x.length; ca < da; fa || (fa = true), ca++) {
-                                    ba = o(ca, x, s, t, u, v, w);
-                                    aa.push(ba === void 0 ? "null" : ba);
-                                }
-                                return fa ? (u ? "[\n" + v + aa.join(",\n" + v) + "\n" + ea + "]" : ("[" + aa.join(",") + "]")) : "[]";
+                    ba = l = null;
+                    if (!m || !r) {
+                        if (!(h = {}.hasOwnProperty)) h = function(ga) {
+                            var ha = {},
+                                ia;
+                            if ((ha.__proto__ = null, ha.__proto__ = {
+                                toString: 1
+                            }, ha).toString != g) {
+                                h = function(ja) {
+                                    var ka = this.__proto__,
+                                        la = ja in (this.__proto__ = null, this);
+                                    this.__proto__ = ka;
+                                    return la;
+                                };
                             } else {
-                                i(t || x, function(ga) {
-                                    var ha = o(ga, x, s, t, u, v, w);
-                                    if (ha !== void 0) aa.push(n(ga) + ":" + (u ? " " : "") + ha);
-                                    fa || (fa = true);
-                                });
-                                return fa ? (u ? "{\n" + v + aa.join(",\n" + v) + "\n" + ea + "}" : ("{" + aa.join(",") + "}")) : "{}";
+                                ia = ha.constructor;
+                                h = function(ja) {
+                                    var ka = (this.constructor || ia).prototype;
+                                    return ja in this && !(ja in ka && this[ja] === ka[ja]);
+                                };
                             }
-                            w.pop();
-                        }
-                    }
-                    function p(q, r, s) {
-                        var t = "",
-                            u, v, w, x;
-                        if (typeof r == "function" || typeof r == "object" && r) if (g.call(r) == "[object Function]") {
-                            u = r;
-                        } else if (g.call(r) == "[object Array]") {
-                            v = {};
-                            for (w = r.length; w--;) {
-                                x = r[w];
-                                if (x && (g.call(x) == "[object String]" || g.call(x) == "[object Number]")) v[x] = 1;
-                            }
-                        }
-                        if (s != null && s !== "") if (g.call(s) == "[object Number]") {
-                            if ((s -= s % 1) > 0) for (t = "", s > 10 && (s = 10); t.length < s;) t += " ";
-                        } else if (g.call(s) == "[object String]") t = s.length <= 10 ? s : s.slice(0, 10);
-                        return o("$", {
-                            $: q
-                        }, u, v, t, "", []);
-                    }
-                    return p;
-                })();
-                if (!k) f.parse = (function() {
-                    var l = {
-                        "\\": "\\",
-                        '"': '"',
-                        "/": "/",
-                        b: "\b",
-                        t: "\t",
-                        n: "\n",
-                        f: "\f",
-                        r: "\r"
-                    },
-                        m = "".constructor.fromCharCode;
-
-                    function n(s) {
-                        this.source = s;
-                        this.index = 0;
-                    }
-                    n.prototype.lex = o;
-
-                    function o() {
-                        for (var s = this.source, t = this.source.length, u, v, w, x, y; this.index < t;) {
-                            u = s.charAt(this.index);
-                            switch (u) {
-                            case "\t":
-                            case "\r":
-                            case "\n":
-                            case " ":
-                                this.index += 1;
-                                break;
-                            case "{":
-                            case "}":
-                            case "[":
-                            case "]":
-                            case ":":
-                            case ",":
-                                this.index += 1;
-                                return u;
-                            case '"':
-                                v = "@";
-                                this.index += 1;
-                                while (this.index < t) {
-                                    u = s.charAt(this.index);
-                                    if (u < " ") {
-                                        throw SyntaxError("Unescaped control character in string.");
-                                    } else if (u == "\\") {
-                                        this.index += 1;
-                                        u = s.charAt(this.index);
-                                        if ('\\"/btnfr'.indexOf(u) > -1) {
-                                            v += l[u];
-                                            this.index += 1;
-                                        } else if (u == "u") {
-                                            w = this.index += 1;
-                                            for (x = this.index + 4; this.index < x; this.index += 1) {
-                                                u = s.charAt(this.index);
-                                                if (!(u >= "0" && u <= "9" || u >= "a" && u <= "f" || u >= "A" && u <= "F")) throw SyntaxError("Invalid Unicode escape sequence in string.");
+                            ha = null;
+                            return h.call(this, ga);
+                        };
+                        i = function(ga, ha) {
+                            var ia = 0,
+                                ja, ka, la, ma;
+                            (ja = function() {
+                                this.valueOf = 0;
+                            }).prototype.valueOf = 0;
+                            ka = new ja();
+                            for (la in ka) if (h.call(ka, la)) ia++;
+                            ja = ka = null;
+                            if (!ia) {
+                                ka = ["valueOf", "toString", "toLocaleString", "propertyIsEnumerable", "isPrototypeOf", "hasOwnProperty", "constructor"];
+                                ma = function(na, oa) {
+                                    var pa = g.call(na) == "[object Function]",
+                                        qa, ra;
+                                    for (qa in na) if (!(pa && qa == "prototype") && h.call(na, qa)) oa(qa);
+                                    for (ra = ka.length; qa = ka[--ra]; h.call(na, qa) && oa(qa));
+                                };
+                            } else if (ia == 2) {
+                                ma = function(na, oa) {
+                                    var pa = {},
+                                        qa = g.call(na) == "[object Function]",
+                                        ra;
+                                    for (ra in na) if (!(qa && ra == "prototype") && !h.call(pa, ra) && (pa[ra] = 1) && h.call(na, ra)) oa(ra);
+                                };
+                            } else ma = function(na, oa) {
+                                var pa = g.call(na) == "[object Function]",
+                                    qa, ra;
+                                for (qa in na) if (!(pa && qa == "prototype") && h.call(na, qa) && !(ra = qa === "constructor")) oa(qa);
+                                if (ra || h.call(na, (qa = "constructor"))) oa(qa);
+                            };
+                            return ma(ga, ha);
+                        };
+                        if (!m) {
+                            n = {
+                                "\\": "\\\\",
+                                '"': '\\"',
+                                "\b": "\\b",
+                                "\f": "\\f",
+                                "\n": "\\n",
+                                "\r": "\\r",
+                                "\t": "\\t"
+                            };
+                            o = function(ga, ha) {
+                                return ("000000" + (ha || 0)).slice(-ga);
+                            };
+                            p = function(ga) {
+                                var ha = '"',
+                                    ia = 0,
+                                    ja;
+                                for (; ja = ga.charAt(ia); ia++) ha += '\\"\b\f\n\r\t'.indexOf(ja) > -1 ? n[ja] : ja < " " ? "\\u00" + o(2, ja.charCodeAt(0).toString(16)) : ja;
+                                return ha + '"';
+                            };
+                            q = function(ga, ha, ia, ja, ka, la, ma) {
+                                var na = ha[ga],
+                                    oa, pa, qa, ra, sa, ta, ua, va, wa, xa, ya, za, ab, bb, cb;
+                                if (typeof na == "object" && na) {
+                                    oa = g.call(na);
+                                    if (oa == "[object Date]" && !h.call(na, "toJSON")) {
+                                        if (na > -1 / 0 && na < 1 / 0) {
+                                            if (ea) {
+                                                ra = ca(na / 86400000);
+                                                for (pa = ca(ra / 365.2425) + 1970 - 1; ea(pa + 1, 0) <= ra; pa++);
+                                                for (qa = ca((ra - ea(pa, 0)) / 30.42); ea(pa, qa + 1) <= ra; qa++);
+                                                ra = 1 + ra - ea(pa, qa);
+                                                sa = (na % 86400000 + 86400000) % 86400000;
+                                                ta = ca(sa / 3600000) % 24;
+                                                ua = ca(sa / 60000) % 60;
+                                                va = ca(sa / 1000) % 60;
+                                                wa = sa % 1000;
+                                            } else {
+                                                pa = na.getUTCFullYear();
+                                                qa = na.getUTCMonth();
+                                                ra = na.getUTCDate();
+                                                ta = na.getUTCHours();
+                                                ua = na.getUTCMinutes();
+                                                va = na.getUTCSeconds();
+                                                wa = na.getUTCMilliseconds();
                                             }
-                                            v += m("0x" + s.slice(w, this.index));
-                                        } else throw SyntaxError("Invalid escape sequence in string.");
+                                            na = (pa <= 0 || pa >= 10000 ? (pa < 0 ? "-" : "+") + o(6, pa < 0 ? -pa : pa) : o(4, pa)) + "-" + o(2, qa + 1) + "-" + o(2, ra) + "T" + o(2, ta) + ":" + o(2, ua) + ":" + o(2, va) + "." + o(3, wa) + "Z";
+                                        } else na = null;
+                                    } else if (typeof na.toJSON == "function" && ((oa != "[object Number]" && oa != "[object String]" && oa != "[object Array]") || h.call(na, "toJSON"))) na = na.toJSON(ga);
+                                }
+                                if (ia) na = ia.call(ha, ga, na);
+                                if (na === null) return "null";
+                                oa = g.call(na);
+                                if (oa == "[object Boolean]") {
+                                    return "" + na;
+                                } else if (oa == "[object Number]") {
+                                    return na > -1 / 0 && na < 1 / 0 ? "" + na : "null";
+                                } else if (oa == "[object String]") return p(na);
+                                if (typeof na == "object") {
+                                    for (ab = ma.length; ab--;) if (ma[ab] === na) throw TypeError();
+                                    ma.push(na);
+                                    xa = [];
+                                    bb = la;
+                                    la += ka;
+                                    if (oa == "[object Array]") {
+                                        for (za = 0, ab = na.length; za < ab; cb || (cb = true), za++) {
+                                            ya = q(za, na, ia, ja, ka, la, ma);
+                                            xa.push(ya === j ? "null" : ya);
+                                        }
+                                        return cb ? (ka ? "[\n" + la + xa.join(",\n" + la) + "\n" + bb + "]" : ("[" + xa.join(",") + "]")) : "[]";
                                     } else {
-                                        if (u == '"') break;
-                                        v += u;
-                                        this.index += 1;
+                                        i(ja || na, function(db) {
+                                            var eb = q(db, na, ia, ja, ka, la, ma);
+                                            if (eb !== j) xa.push(p(db) + ":" + (ka ? " " : "") + eb);
+                                            cb || (cb = true);
+                                        });
+                                        return cb ? (ka ? "{\n" + la + xa.join(",\n" + la) + "\n" + bb + "}" : ("{" + xa.join(",") + "}")) : "{}";
                                     }
+                                    ma.pop();
                                 }
-                                if (s.charAt(this.index) == '"') {
-                                    this.index += 1;
-                                    return v;
+                            };
+                            k.stringify = function(ga, ha, ia) {
+                                var ja, ka, la, ma, na, oa;
+                                if (typeof ha == "function" || typeof ha == "object" && ha) if (g.call(ha) == "[object Function]") {
+                                    ka = ha;
+                                } else if (g.call(ha) == "[object Array]") {
+                                    la = {};
+                                    for (ma = 0, na = ha.length; ma < na; oa = ha[ma++], ((g.call(oa) == "[object String]" || g.call(oa) == "[object Number]") && (la[oa] = 1)));
                                 }
-                                throw SyntaxError("Unterminated string.");
-                            default:
-                                w = this.index;
-                                if (u == "-") {
-                                    y = true;
-                                    u = s.charAt(this.index += 1);
-                                }
-                                if (u >= "0" && u <= "9") {
-                                    if (u == "0" && (u = s.charAt(this.index + 1), u >= "0" && u <= "9")) throw SyntaxError("Illegal octal literal.");
-                                    y = false;
-                                    for (; this.index < t && (u = s.charAt(this.index), u >= "0" && u <= "9"); this.index += 1);
-                                    if (s.charAt(this.index) == ".") {
-                                        x = this.index += 1;
-                                        for (; x < t && (u = s.charAt(x), u >= "0" && u <= "9"); x += 1);
-                                        if (x == this.index) throw SyntaxError("Illegal trailing decimal.");
-                                        this.index = x;
-                                    }
-                                    u = s.charAt(this.index);
-                                    if (u == "e" || u == "E") {
-                                        u = s.charAt(this.index += 1);
-                                        if (u == "+" || u == "-") this.index += 1;
-                                        for (x = this.index; x < t && (u = s.charAt(x), u >= "0" && u <= "9"); x += 1);
-                                        if (x == this.index) throw SyntaxError("Illegal empty exponent.");
-                                        this.index = x;
-                                    }
-                                    return +s.slice(w, this.index);
-                                }
-                                if (y) throw SyntaxError("Unexpected `-`.");
-                                if (u == "t" && s.slice(this.index, this.index + 4) == "true") {
-                                    this.index += 4;
-                                    return true;
-                                } else if (u == "f" && s.slice(this.index, this.index + 5) == "false") {
-                                    this.index += 5;
-                                    return false;
-                                } else if (u == "n" && s.slice(this.index, this.index + 4) == "null") {
-                                    this.index += 4;
-                                    return null;
-                                }
-                                throw SyntaxError("Unrecognized token.");
-                            }
+                                if (ia) if (g.call(ia) == "[object Number]") {
+                                    if ((ia -= ia % 1) > 0) for (ja = "", ia > 10 && (ia = 10); ja.length < ia; ja += " ");
+                                } else if (g.call(ia) == "[object String]") ja = ia.length <= 10 ? ia : ia.slice(0, 10);
+                                return q("", (oa = {}, oa[""] = ga, oa), ka, la, ja, "", []);
+                            };
                         }
-                        return "$";
-                    }
-                    n.prototype.get = p;
-
-                    function p(s) {
-                        var t, u, v;
-                        if (s == "$") throw SyntaxError("Unexpected end-of-file.");
-                        if (typeof s == "string") {
-                            if (s.charAt(0) == "@") return s.slice(1);
-                            switch (s) {
-                            case "[":
-                                t = [];
-                                for (;; u || (u = true)) {
-                                    s = this.lex();
-                                    if (s == "]") break;
-                                    if (u) if (s == ",") {
-                                        s = this.lex();
-                                        if (s == "]") throw SyntaxError("Unexpected trailing `,` in array literal.");
-                                    } else throw SyntaxError("A comma (`,`) must separate the previous array element from the next.");
-                                    if (s == ",") throw SyntaxError("Unexpected `,` in array literal.");
-                                    t.push(this.get(s));
+                        if (!r) {
+                            s = String.fromCharCode;
+                            t = {
+                                "\\": "\\",
+                                '"': '"',
+                                "/": "/",
+                                b: "\b",
+                                t: "\t",
+                                n: "\n",
+                                f: "\f",
+                                r: "\r"
+                            };
+                            u = function() {
+                                z = aa = null;
+                                throw SyntaxError();
+                            };
+                            v = function() {
+                                var ga = aa,
+                                    ha = ga.length,
+                                    ia, ja, ka, la, ma;
+                                while (z < ha) {
+                                    ia = ga.charAt(z);
+                                    if ("\t\r\n ".indexOf(ia) > -1) {
+                                        z++;
+                                    } else if ("{}[]:,".indexOf(ia) > -1) {
+                                        z++;
+                                        return ia;
+                                    } else if (ia == '"') {
+                                        for (ja = "@", z++; z < ha;) {
+                                            ia = ga.charAt(z);
+                                            if (ia < " ") {
+                                                u();
+                                            } else if (ia == "\\") {
+                                                ia = ga.charAt(++z);
+                                                if ('\\"/btnfr'.indexOf(ia) > -1) {
+                                                    ja += t[ia];
+                                                    z++;
+                                                } else if (ia == "u") {
+                                                    ka = ++z;
+                                                    for (la = z + 4; z < la; z++) {
+                                                        ia = ga.charAt(z);
+                                                        if (!(ia >= "0" && ia <= "9" || ia >= "a" && ia <= "f" || ia >= "A" && ia <= "F")) u();
+                                                    }
+                                                    ja += s("0x" + ga.slice(ka, z));
+                                                } else u();
+                                            } else {
+                                                if (ia == '"') break;
+                                                ja += ia;
+                                                z++;
+                                            }
+                                        }
+                                        if (ga.charAt(z) == '"') {
+                                            z++;
+                                            return ja;
+                                        }
+                                        u();
+                                    } else {
+                                        ka = z;
+                                        if (ia == "-") {
+                                            ma = true;
+                                            ia = ga.charAt(++z);
+                                        }
+                                        if (ia >= "0" && ia <= "9") {
+                                            if (ia == "0" && (ia = ga.charAt(z + 1), ia >= "0" && ia <= "9")) u();
+                                            ma = false;
+                                            for (; z < ha && (ia = ga.charAt(z), ia >= "0" && ia <= "9"); z++);
+                                            if (ga.charAt(z) == ".") {
+                                                la = ++z;
+                                                for (; la < ha && (ia = ga.charAt(la), ia >= "0" && ia <= "9"); la++);
+                                                if (la == z) u();
+                                                z = la;
+                                            }
+                                            ia = ga.charAt(z);
+                                            if (ia == "e" || ia == "E") {
+                                                ia = ga.charAt(++z);
+                                                if (ia == "+" || ia == "-") z++;
+                                                for (la = z; la < ha && (ia = ga.charAt(la), ia >= "0" && ia <= "9"); la++);
+                                                if (la == z) u();
+                                                z = la;
+                                            }
+                                            return +ga.slice(ka, z);
+                                        }
+                                        if (ma) u();
+                                        if (ga.slice(z, z + 4) == "true") {
+                                            z += 4;
+                                            return true;
+                                        } else if (ga.slice(z, z + 5) == "false") {
+                                            z += 5;
+                                            return false;
+                                        } else if (ga.slice(z, z + 4) == "null") {
+                                            z += 4;
+                                            return null;
+                                        }
+                                        u();
+                                    }
                                 }
-                                return t;
-                            case "{":
-                                t = {};
-                                for (;; u || (u = true)) {
-                                    s = this.lex();
-                                    if (s == "}") break;
-                                    if (u) if (s == ",") {
-                                        s = this.lex();
-                                        if (s == "}") throw SyntaxError("Unexpected trailing `,`. in object literal.");
-                                    } else throw SyntaxError("A comma (`,`) must separate the previous object member from the next.");
-                                    if (s == ",") throw SyntaxError("Unexpected `,` in object literal.");
-                                    if (typeof s != "string" || s.charAt(0) != "@") throw SyntaxError("Object property names must be double-quoted strings.");
-                                    if (this.lex() != ":") throw SyntaxError("A single colon (`:`) must separate each object property name from the value.");
-                                    t[s.slice(1)] = this.get(this.lex());
+                                return "$";
+                            };
+                            w = function(ga) {
+                                var ha, ia, ja;
+                                if (ga == "$") u();
+                                if (typeof ga == "string") {
+                                    if (ga.charAt(0) == "@") return ga.slice(1);
+                                    if (ga == "[") {
+                                        ha = [];
+                                        for (;; ia || (ia = true)) {
+                                            ga = v();
+                                            if (ga == "]") break;
+                                            if (ia) if (ga == ",") {
+                                                ga = v();
+                                                if (ga == "]") u();
+                                            } else u();
+                                            if (ga == ",") u();
+                                            ha.push(w(ga));
+                                        }
+                                        return ha;
+                                    } else if (ga == "{") {
+                                        ha = {};
+                                        for (;; ia || (ia = true)) {
+                                            ga = v();
+                                            if (ga == "}") break;
+                                            if (ia) if (ga == ",") {
+                                                ga = v();
+                                                if (ga == "}") u();
+                                            } else u();
+                                            if (ga == "," || typeof ga != "string" || ga.charAt(0) != "@" || v() != ":") u();
+                                            ha[ga.slice(1)] = w(v());
+                                        }
+                                        return ha;
+                                    }
+                                    u();
                                 }
-                                return t;
-                            }
-                            throw SyntaxError("Expected `[` or `{`.");
+                                return ga;
+                            };
+                            y = function(ga, ha, ia) {
+                                var ja = x(ga, ha, ia);
+                                if (ja === j) {
+                                    delete ga[ha];
+                                } else ga[ha] = ja;
+                            };
+                            x = function(ga, ha, ia) {
+                                var ja = ga[ha],
+                                    ka;
+                                if (typeof ja == "object" && ja) if (g.call(ja) == "[object Array]") {
+                                    for (ka = ja.length; ka--;) y(ja, ka, ia);
+                                } else i(ja, function(la) {
+                                    y(ja, la, ia);
+                                });
+                                return ia.call(ga, ha, ja);
+                            };
+                            k.parse = function(ga, ha) {
+                                z = 0;
+                                aa = ga;
+                                var ia = w(v());
+                                if (v() != "$") u();
+                                z = aa = null;
+                                return ha && g.call(ha) == "[object Function]" ? x((ba = {}, ba[""] = ia, ba), "", ha) : ia;
+                            };
                         }
-                        return s;
                     }
-                    function q(s, t, u) {
-                        var v = s[t],
-                            w, x;
-                        if (typeof v == "object" && v) if (g.call(v) == "[object Array]") {
-                            for (w = v.length; w--;) {
-                                x = q(v, w, u);
-                                if (x === void 0) {
-                                    v.splice(w, 1);
-                                } else v[w] = x;
-                            }
-                        } else i(v, function(y) {
-                            var z = q(v, y, u);
-                            if (z === void 0) {
-                                delete v[y];
-                            } else v[y] = z;
-                        });
-                        return u.call(s, t, v);
-                    }
-                    function r(s, t) {
-                        var u = new n("" + s),
-                            v = u.get(u.lex());
-                        if (u.lex() != "$") throw SyntaxError("Expected end-of-file.");
-                        return t && g.call(t) == "[object Function]" ? q({
-                            $: v
-                        }, "$", t) : v;
-                    }
-                    return r;
-                })();
-                e.exports = f;
+                }).call(this);
             });
             __d("ES5", ["ES5ArrayPrototype", "ES5FunctionPrototype", "ES5StringPrototype", "ES5Array", "ES5Object", "ES5Date", "JSON3"], function(a, b, c, d, e, f) {
                 var g = b('ES5ArrayPrototype'),
@@ -596,165 +578,168 @@ window.FB || (function() {
     }(function() {
         (function(a) {
             if (a.require) return;
-            var b = {},
+            var b = Object.prototype.toString,
                 c = {},
                 d = {},
-                e = 0,
-                f = 1,
-                g = 2,
-                h = Object.prototype.hasOwnProperty;
+                e = {},
+                f = 0,
+                g = 1,
+                h = 2,
+                i = Object.prototype.hasOwnProperty;
 
-            function i(t) {
-                var u = b[t],
-                    v, w, x;
-                if (!b[t]) {
-                    x = 'Requiring unknown module "' + t + '"';
-                    throw new Error(x);
+            function j(u) {
+                var v = c[u],
+                    w, x, y;
+                if (!c[u]) {
+                    y = 'Requiring unknown module "' + u + '"';
+                    throw new Error(y);
                 }
-                if (u.waiting && u.special & g) l();
-                if (u.waiting) {
-                    x = 'Requiring module "' + t + '" with unresolved dependencies';
-                    throw new Error(x);
+                if (v.waiting && v.special & h) m();
+                if (v.waiting) {
+                    y = 'Requiring module "' + u + '" with unresolved dependencies';
+                    throw new Error(y);
                 }
-                if (!u.exports) {
-                    var y = u.exports = {},
-                        z = u.factory;
-                    if (typeof z === 'string') {
-                        var aa = '(' + z + ')';
-                        z = (eval)(aa);
+                if (!v.exports) {
+                    var z = v.exports = {},
+                        aa = v.factory;
+                    if (typeof aa === 'string') {
+                        var ba = '(' + aa + ')';
+                        aa = (eval)(ba);
                     }
-                    if (Object.prototype.toString.call(z) === '[object Function]') {
-                        var ba = [],
-                            ca = u.dependencies,
-                            da = ca.length;
-                        if (u.special & g) da = Math.min(da, z.length);
-                        for (w = 0; w < da; w++) {
-                            v = ca[w];
-                            ba.push(v === 'module' ? u : (v === 'exports' ? y : i(v)));
+                    if (b.call(aa) === '[object Function]') {
+                        var ca = [],
+                            da = v.dependencies,
+                            ea = da.length;
+                        if (v.special & h) ea = Math.min(ea, aa.length);
+                        for (x = 0; x < ea; x++) {
+                            w = da[x];
+                            ca.push(w === 'module' ? v : (w === 'exports' ? z : j(w)));
                         }
-                        var ea = z.apply(u.context || a, ba);
-                        if (ea) u.exports = ea;
-                    } else u.exports = z;
+                        var fa = aa.apply(v.context || a, ca);
+                        if (fa) v.exports = fa;
+                    } else v.exports = aa;
                 }
-                if (u.refcount-- === 1) delete b[t];
-                return u.exports;
+                if (v.refcount-- === 1) delete c[u];
+                return v.exports;
             }
-            function j(t, u, v, w, x, y) {
-                if (u === undefined) {
-                    u = [];
-                    v = t;
-                    t = n();
-                } else if (v === undefined) {
-                    v = u;
-                    u = t;
-                    t = n();
+            function k(u, v, w, x, y, z) {
+                if (v === undefined) {
+                    v = [];
+                    w = u;
+                    u = o();
+                } else if (w === undefined) {
+                    w = v;
+                    if (b.call(u) === '[object Array]') {
+                        v = u;
+                        u = o();
+                    } else v = [];
                 }
-                var z = b[t];
-                if (z) {
-                    if (y) z.refcount += y;
+                var aa = c[u];
+                if (aa) {
+                    if (z) aa.refcount += z;
                     return;
-                } else if (!u && !v && y) {
-                    d[t] = (d[t] || 0) + y;
+                } else if (!v && !w && z) {
+                    e[u] = (e[u] || 0) + z;
                     return;
                 } else {
-                    z = {
-                        id: t
+                    aa = {
+                        id: u
                     };
-                    z.refcount = (d[t] || 0) + (y || 0);
-                    delete d[t];
+                    aa.refcount = (e[u] || 0) + (z || 0);
+                    delete e[u];
                 }
-                z.factory = v;
-                z.dependencies = u;
-                z.context = x;
-                z.special = w;
-                b[t] = z;
-                o(t);
+                aa.factory = w;
+                aa.dependencies = v;
+                aa.context = y;
+                aa.special = x;
+                c[u] = aa;
+                p(u);
             }
-            function k(t, u, v) {
-                j(t, u, undefined, f, v, 1);
+            function l(u, v, w) {
+                k(u, v, undefined, g, w, 1);
             }
-            function l() {
-                var t = {},
-                    u;
-                for (u in c) if (h.call(c, u)) if (b[u] && !t[u] && b[u].special & g) m({}, u, t);
+            function m() {
+                var u = {},
+                    v;
+                for (v in d) if (i.call(d, v)) if (c[v] && !u[v] && c[v].special & h) n({}, v, u);
             }
-            function m(t, u, v) {
-                v[u] = 1;
-                var w = c[u],
-                    x;
-                if (!w) return;
-                t[u] = 1;
-                for (x in w) if (h.call(w, x)) {
-                    if (!b[x].special & g) continue;
-                    if (t[x]) {
-                        delete w[x];
-                        b[x].waiting--;
-                        if (!b[x].waiting) p(x);
-                    } else m(t, x, v);
+            function n(u, v, w) {
+                w[v] = 1;
+                var x = d[v],
+                    y;
+                if (!x) return;
+                u[v] = 1;
+                for (y in x) if (i.call(x, y)) {
+                    if (!c[y].special & h) continue;
+                    if (u[y]) {
+                        delete x[y];
+                        c[y].waiting--;
+                        if (!c[y].waiting) q(y);
+                    } else n(u, y, w);
                 }
-                t[u] = 0;
+                u[v] = 0;
             }
-            function n() {
-                return '__mod__' + e++;
+            function o() {
+                return '__mod__' + f++;
             }
-            function o(t) {
-                var u = b[t],
-                    v = 0;
-                for (var w = 0; w < u.dependencies.length; w++) {
-                    var x = u.dependencies[w];
-                    if (!b[x] || b[x].waiting) {
-                        c[x] || (c[x] = {});
-                        if (!c[x][t]) v++;
-                        c[x][t] = 1;
+            function p(u) {
+                var v = c[u],
+                    w = 0;
+                for (var x = 0; x < v.dependencies.length; x++) {
+                    var y = v.dependencies[x];
+                    if (!c[y] || c[y].waiting) {
+                        d[y] || (d[y] = {});
+                        if (!d[y][u]) w++;
+                        d[y][u] = 1;
                     }
                 }
-                u.waiting = v;
-                if (!v) p(t);
+                v.waiting = w;
+                if (!w) q(u);
             }
-            function p(t) {
-                var u = b[t];
-                if (u.special & f) i(t);
-                var v = c[t],
-                    w = [];
-                if (v) {
-                    delete c[t];
-                    for (var x in v) if (h.call(v, x)) if (!--b[x].waiting) w.push(x);
+            function q(u) {
+                var v = c[u];
+                if (v.special & g) j(u);
+                var w = d[u],
+                    x = [];
+                if (w) {
+                    delete d[u];
+                    for (var y in w) if (i.call(w, y)) if (!--c[y].waiting) x.push(y);
                 }
-                for (var y = 0; y < w.length; y++) p(w[y]);
+                for (var z = 0; z < x.length; z++) q(x[z]);
             }
-            function q(t, u) {
-                b[t] = {
-                    id: t
+            function r(u, v) {
+                c[u] = {
+                    id: u
                 };
-                b[t].exports = u;
+                c[u].exports = v;
             }
-            q('module', 0);
-            q('exports', 0);
-            q('define', j);
-            q('global', a);
-            q('require', i);
-            q('requireDynamic', i);
-            q('requireLazy', k);
-            j.amd = {};
-            a.define = j;
-            a.require = i;
-            a.requireDynamic = i;
-            a.requireLazy = k;
-            i.__debug = {
-                modules: b,
-                deps: c
+            r('module', 0);
+            r('exports', 0);
+            r('define', k);
+            r('global', a);
+            r('require', j);
+            r('requireDynamic', j);
+            r('requireLazy', l);
+            k.amd = {};
+            a.define = k;
+            a.require = j;
+            a.requireDynamic = j;
+            a.requireLazy = l;
+            j.__debug = {
+                modules: c,
+                deps: d
             };
-            var r = false,
-                s = function(t, u, v, w) {
-                    j(t, u, v, w || g);
-                    if (b[t].waiting && !r) r = setTimeout(function() {
-                        l();
-                        r = false;
+            var s = false,
+                t = function(u, v, w, x) {
+                    k(u, v, w, x || h);
+                    if (c[u].waiting && !s) s = setTimeout(function() {
+                        m();
+                        s = false;
                     }, 9);
                 };
-            a.__d = function(t, u, v, w) {
-                u = ['global', 'require', 'requireDynamic', 'requireLazy', 'module', 'exports'].concat(u);
-                s(t, u, v, w);
+            a.__d = function(u, v, w, x) {
+                v = ['global', 'require', 'requireDynamic', 'requireLazy', 'module', 'exports'].concat(v);
+                t(u, v, w, x);
             };
             a.__e = a.__d;
         })(this);;
@@ -2669,8 +2654,8 @@ window.FB || (function() {
                     FB.Canvas._timer = null;
                 }
             },
-            setAutoResize: function(a, b) {
-                return FB.Canvas.setAutoGrow(a, b);
+            setAutoResize: function() {
+                FB.log('FB.setAutoResize() is no longer functional and will be removed ' + 'on September 5th. This code will throw an exception then. Use ' + 'FB.setAutoGrow() instead.');
             },
             isTabIframe: function() {
                 return FB.Canvas._isTabIframe;
@@ -4577,6 +4562,9 @@ window.FB || (function() {
             }, {
                 localName: 'recommendations-bar',
                 className: 'FB.XFBML.RecommendationsBar'
+            }, {
+                localName: 'rectangle',
+                className: 'FB.XFBML.Rectangle'
             }, {
                 localName: 'registration',
                 className: 'FB.XFBML.Registration'
@@ -6881,6 +6869,32 @@ window.FB || (function() {
         FB.XFBML.RecommendationsBar.markRead = function(a) {
             FB.Event.fire('xfbml.recommendationsbar.read', a || window.location.href);
         };
+        FB.subclass('XFBML.Rectangle', 'XFBML.IframeWidget', null, {
+            _widgetPipeEnabled: true,
+            setupAndValidate: function() {
+                this._attr = {
+                    channel: this.getChannelUrl(),
+                    api_key: FB._apiKey,
+                    color: this.getAttribute('color'),
+                    render_time: this.getAttribute('render_time'),
+                    height: this._getPxAttribute('height', 50),
+                    width: this._getPxAttribute('width', 200)
+                };
+                return true;
+            },
+            getSize: function() {
+                return {
+                    width: this._attr.width,
+                    height: this._attr.height
+                };
+            },
+            getUrlBits: function() {
+                return {
+                    name: 'test_rectangle',
+                    params: this._attr
+                };
+            }
+        });
         FB.subclass('XFBML.Registration', 'XFBML.IframeWidget', null, {
             _visibleAfter: 'immediate',
             _baseHeight: 167,
