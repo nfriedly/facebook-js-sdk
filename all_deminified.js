@@ -1,4 +1,4 @@
-/*1343821064,169941616,JIT Construction: v602059,en_US*/
+/*1344425868,169919336,JIT Construction: v606334,en_US*/
 
 window.FB || (function() {
     var ES5 = function() {
@@ -545,13 +545,9 @@ window.FB || (function() {
             "cdn_http": "static.ak.facebook.com",
             "cdn_https": "s-static.ak.facebook.com"
         });
-        __d("ApiClientConfig", [], {
-            "FlashRequest": {
-                "swfUrl": "https:\/\/connect.facebook.net\/rsrc.php\/v1\/y5\/r\/SrnvQJBTxo-.swf"
-            }
-        });
         __d("SDKConfig", [], {
             "xfbmlUseLegacy": true,
+            "migrate": true,
             "errorHandling": {
                 "rate": 2
             },
@@ -560,12 +556,21 @@ window.FB || (function() {
                 "whitelist": ["api", "init", "ui", "getAccessToken", "getAuthResponse", "getLoginStatus", "getUserID", "login", "logout", "Event", "Event.subscribe", "Event.unsubscribe", "XFBML", "XFBML.parse", "Canvas", "Canvas.Prefetcher.addStaticResource", "Canvas.Prefetcher.setCollectionMode", "Canvas.getPageInfo", "Canvas.hideFlashElement", "Canvas.showFlashElement", "Canvas.scrollTo", "Canvas.setAutoGrow", "Canvas.setAutoResize", "Canvas.setDoneLoading", "Canvas.setSize", "Canvas.setUrlHandler", "Canvas.startTimer", "Canvas.stopTimer", "Insights.impression", "Dom", "Dom.addCssRules", "Arbiter", "Arbiter.inform", "JSON", "JSON.parse", "JSON.stringify", "XD", "XD.onMessage", "Music", "Music.send", "Payment", "Payment.setSize", "UA", "UA.nativeApp", "Payment.init", "Music.init", "Music.flashCallback", "Data", "Data.waitOn", "Data.query"]
             }
         });
+        __d("ApiClientConfig", [], {
+            "FlashRequest": {
+                "swfUrl": "https:\/\/connect.facebook.net\/rsrc.php\/v1\/y5\/r\/SrnvQJBTxo-.swf"
+            }
+        });
         __d("XDConfig", [], {
             "XdUrl": "connect\/xd_arbiter.php?version=9",
             "Flash": {
                 "path": "https:\/\/connect.facebook.net\/rsrc.php\/v1\/ys\/r\/WON-TVLCpDP.swf"
             },
             "useCdn": true
+        });
+        __d("CanvasPrefetcherConfig", [], {
+            "blacklist": [144959615576466],
+            "sampleRate": 500
         });
     }
 
@@ -743,6 +748,23 @@ window.FB || (function() {
             };
             a.__e = a.__d;
         })(this);;
+        __d("guid", [], function(a, b, c, d, e, f) {
+            function g() {
+                return 'f' + (Math.random() * (1 << 30)).toString(16).replace('.', '');
+            }
+            e.exports = g;
+        });
+        __d("dotAccess", [], function(a, b, c, d, e, f) {
+            function g(h, i, j) {
+                var k = i.split('.');
+                do {
+                    var l = k.shift();
+                    h = h[l] || j && (h[l] = {});
+                } while (k.length && h);
+                return h;
+            }
+            e.exports = g;
+        });
         __d("copyProperties", [], function(a, b, c, d, e, f) {
             function g(h, i, j, k, l, m, n) {
                 h = h || {};
@@ -758,19 +780,21 @@ window.FB || (function() {
             }
             e.exports = g;
         });
-        __d("flattenObject", [], function(a, b, c, d, e, f) {
+        __d("safeEval", [], function(a, b, c, d, e, f) {
             function g(h) {
-                var i = {};
-                for (var j in h) if (h.hasOwnProperty(j)) {
-                    var k = h[j];
-                    if (null === k || undefined === k) {
-                        continue;
-                    } else if (typeof k == 'string') {
-                        i[j] = k;
-                    } else i[j] = ES5('JSON', 'stringify', false, k);
-                }
-                return i;
+                if (h === null || typeof h === 'undefined') return;
+                if (typeof h !== 'string') return h;
+                return Function('return eval("' + h.replace(/"/g, '\\"') + '");')();
             }
+            e.exports = g;
+        });
+        __d("AssertionError", [], function(a, b, c, d, e, f) {
+            function g(h) {
+                Error.prototype.constructor.call(this, h);
+                if (h) this.message = h;
+            }
+            g.prototype = new TypeError();
+            g.prototype.constructor = g;
             e.exports = g;
         });
         __d("sprintf", [], function(a, b, c, d, e, f) {
@@ -782,6 +806,59 @@ window.FB || (function() {
                 });
             }
             e.exports = g;
+        });
+        __d("Assert", ["AssertionError", "sprintf"], function(a, b, c, d, e, f) {
+            var g = b('AssertionError'),
+                h = b('sprintf');
+
+            function i(q) {
+                return ES5(q, 'bind', true, null, Array.prototype.slice.call(arguments, 1));
+            }
+            function j(q, r) {
+                if (!q) throw new g(r);
+                return q;
+            }
+            function k(q, r, s) {
+                var t = Object.prototype.toString.call(r),
+                    u = /\s(\w*)/.exec(t)[1].toLowerCase();
+                j(~ES5(q, 'indexOf', true, u), s || h('Expression is of type %s, not %s', u, q));
+                return r;
+            }
+            function l(q, r, s) {
+                j(r instanceof q, s || 'Expression not instance of type');
+                return r;
+            }
+            var m = {
+                isInstanceOf: l,
+                isTrue: j,
+                type: k
+            },
+                n = ['Array', 'Boolean', 'Date', 'Function', 'Null', 'Number', 'Object', 'Regexp', 'String', 'Undefined'],
+                o = n.length;
+            while (o--) {
+                var p = n[o];
+                m['is' + p] = i(k, p.toLowerCase());
+            }
+            e.exports = m;
+        });
+        __d("wrapFunction", ["Assert"], function(a, b, c, d, e, f) {
+            var g = b('Assert'),
+                h = {};
+
+            function i(j, k, l) {
+                g.isFunction(j);
+                k = k || 'default';
+                return function() {
+                    var m = k in h ? h[k](j, l) : j;
+                    return m.apply(this, arguments);
+                };
+            }
+            i.setWrapper = function(j, k) {
+                g.isFunction(j);
+                k = k || 'default';
+                h[k] = j;
+            };
+            e.exports = i;
         });
         __d("UserAgent", [], function(a, b, c, d, e, f) {
             var g = false,
@@ -865,46 +942,18 @@ window.FB || (function() {
             };
             e.exports = w;
         });
-        __d("applyWithGuard", ["UserAgent"], function(a, b, c, d, e, f) {
-            var g = b('UserAgent'),
-                h;
-
-            function i(k) {
-                var l = {
-                    line: k.lineNumber || k.line,
-                    message: k.message,
-                    name: k.name,
-                    script: k.fileName || k.sourceURL || k.script,
-                    stack: k.stackTrace || k.stack
+        __d("UrlMap", ["UrlMapConfig"], function(a, b, c, d, e, f) {
+            var g = c('UrlMapConfig'),
+                h = {
+                    resolve: function(i, j) {
+                        var k = typeof j == 'undefined' ? location.protocol.replace(':', '') : j ? 'https' : 'http';
+                        if (i in g) return k + '://' + g[i];
+                        if (typeof j == 'undefined' && i + '_' + k in g) return k + '://' + g[i + '_' + k];
+                        if (j !== true && i + '_http' in g) return 'http://' + g[i + '_http'];
+                        if (j !== false && i + '_https' in g) return 'https://' + g[i + '_https'];
+                    }
                 };
-                l._originalError = k;
-                if (g.chrome() && /([\w:\.\/]+\.js):(\d+)/.test(k.stack)) {
-                    l.script = RegExp.$1;
-                    l.line = parseInt(RegExp.$2, 10);
-                }
-                for (var m in l)(l[m] == null && delete l[m]);
-                return l;
-            }
-            function j(k, l, m, n) {
-                m = m || [];
-                if (!h) return k.apply(l, m);
-                try {
-                    return k.apply(l, m);
-                } catch (o) {
-                    var p = i(o);
-                    p.entry = n;
-                    var q = ES5(Array.prototype.slice.call(m), 'map', true, function(r) {
-                        var s = Object.prototype.toString.call(r);
-                        return (/^\[object (String|Number|Boolean|Object|Date)\]$/).test(s) ? r : r.toString();
-                    });
-                    p.args = ES5('JSON', 'stringify', false, q).substring(0, 200);
-                    h(p);
-                }
-            }
-            j.setErrorHandler = function(k) {
-                h = k;
-            };
-            e.exports = j;
+            e.exports = h;
         });
         __d("QueryString", [], function(a, b, c, d, e, f) {
             var g = {
@@ -938,8 +987,521 @@ window.FB || (function() {
             };
             e.exports = g;
         });
-        __d("CORSRequest", ["applyWithGuard", "QueryString"], function(a, b, c, d, e, f) {
-            var g = b('applyWithGuard'),
+        __d("sdk.Scribe", ["UrlMap", "QueryString"], function(a, b, c, d, e, f) {
+            var g = b('UrlMap'),
+                h = b('QueryString');
+
+            function i(k, l) {
+                (new Image()).src = h.appendToUrl(g.resolve('www', true) + '/common/scribe_endpoint.php', {
+                    c: k,
+                    m: ES5('JSON', 'stringify', false, l)
+                });
+            }
+            var j = {
+                log: i
+            };
+            e.exports = j;
+        });
+        __d("Type", ["copyProperties", "Assert"], function(a, b, c, d, e, f) {
+            var g = b('copyProperties'),
+                h = b('Assert');
+
+            function i() {
+                var n = this.__mixins;
+                if (n) for (var o = 0; o < n.length; o++) n[o].apply(this, arguments);
+            }
+            function j(n, o, p, q) {
+                h.isFunction(n);
+                if (o && o.prototype instanceof i === false) throw new Error('parent type does not inherit from MixinTarget');
+                o = o || i;
+                var r = new Function();
+                r.prototype = o.prototype;
+                n.prototype = new r();
+                g(n.prototype, p);
+                n.prototype.__mixins = o.prototype.__mixins ? Array.prototype.slice.call(o.prototype.__mixins) : [];
+                if (q) k(n, q);
+                n.prototype.parent = function() {
+                    this.parent = o.prototype.parent;
+                    o.apply(this, arguments);
+                };
+                n.prototype.parentCall = function(s) {
+                    return o.prototype[s].apply(this, Array.prototype.slice.call(arguments, 1));
+                };
+                return n;
+            }
+            function k(n, o) {
+                var p = n.prototype;
+                h.isFunction(n);
+                h.isInstanceOf(i, p, 'target does not inherit from MixinTarget');
+                if (Object.prototype.toString.call(o) != '[object Array]') o = [o];
+                for (var q = 0; q < o.length; q++) {
+                    var r = o[q];
+                    if (typeof r == 'function') {
+                        p.__mixins.push(r);
+                        r = r.prototype;
+                    }
+                    ES5(ES5('Object', 'keys', false, r), 'forEach', true, function(s) {
+                        p[s] = r[s];
+                    });
+                }
+            }
+            function l(n, o) {
+                h.isObject(n);
+                h.isFunction(o);
+                if (n instanceof o) return true;
+                if (n instanceof i) for (var p = 0; p < n.__mixins.length; p++) if (n.__mixins[p] == o) return true;
+                return false;
+            }
+            var m = {
+                extend: j,
+                mixin: k,
+                instanceOf: l
+            };
+            e.exports = m;
+        });
+        __d("ObservableMixin", ["Assert"], function(a, b, c, d, e, f) {
+            var g = b('Assert');
+
+            function h() {
+                this.__observableEvents = {};
+            }
+            h.prototype = {
+                inform: function(i) {
+                    g.isString(i);
+                    var j = Array.prototype.slice.call(arguments, 1),
+                        k = this.getSubscribers(i);
+                    for (var l = 0; l < k.length; l++) try {
+                        k[l].apply(this, j);
+                    } catch (m) {
+                        setTimeout(function() {
+                            throw m;
+                        }, 0);
+                    }
+                    return this;
+                },
+                getSubscribers: function(i) {
+                    g.isString(i);
+                    return this.__observableEvents[i] || (this.__observableEvents[i] = []);
+                },
+                clearSubscribers: function(i) {
+                    g.isString(i);
+                    if (i) this.__observableEvents[i] = [];
+                    return this;
+                },
+                clearAllSubscribers: function() {
+                    this.__observableEvents = {};
+                    return this;
+                },
+                subscribe: function(i, j) {
+                    g.isString(i);
+                    g.isFunction(j);
+                    var k = this.getSubscribers(i);
+                    k.push(j);
+                    return this;
+                },
+                unsubscribe: function(i, j) {
+                    g.isString(i);
+                    g.isFunction(j);
+                    var k = this.getSubscribers(i);
+                    for (var l = 0; l < k.length; l++) if (k[l] == j) {
+                        k.splice(l, 1);
+                        break;
+                    }
+                    return this;
+                }
+            };
+            e.exports = h;
+        });
+        __d("sdk.Model", ["Assert", "Type", "ObservableMixin"], function(a, b, c, d, e, f) {
+            var g = b('Assert'),
+                h = b('Type'),
+                i = b('ObservableMixin'),
+                j = h.extend(function(k) {
+                    g.isObject(k);
+                    this.parent();
+                    var l = {},
+                        m = this;
+                    ES5(ES5('Object', 'keys', false, k), 'forEach', true, function(n) {
+                        l[n] = k[n];
+                        m['set' + n] = function(o) {
+                            if (o === l[n]) return this;
+                            l[n] = o;
+                            m.inform(n + '.change', o);
+                            return m;
+                        };
+                        m['get' + n] = function() {
+                            return l[n];
+                        };
+                    });
+                }, null, null, i);
+            e.exports = j;
+        });
+        __d("sdk.Runtime", ["sdk.Model", "copyProperties"], function(a, b, c, d, e, f) {
+            var g = b('sdk.Model'),
+                h = b('copyProperties'),
+                i = {
+                    UNKNOWN: 0,
+                    PAGETAB: 1,
+                    CANVAS: 2,
+                    PLATFORM: 4
+                },
+                j = new g({
+                    AccessToken: '',
+                    UserID: 0,
+                    ClientID: '',
+                    Initialized: false,
+                    LoginStatus: 'unknown',
+                    Environment: i.UNKNOWN
+                });
+            h(j, {
+                ENVIRONMENTS: i,
+                isEnvironment: function(k) {
+                    var l = this.getEnvironment();
+                    return (k | l) === l;
+                }
+            });
+            (function() {
+                var k = /app_runner/.test(window.name) ? i.PAGETAB : /iframe_canvas/.test(window.name) ? i.CANVAS : i.UNKNOWN;
+                if ((k | i.PAGETAB) === k) k = k | i.CANVAS;
+                j.setEnvironment(k);
+            })();
+            e.exports = j;
+        });
+        __d("sdk.ErrorHandling", ["UserAgent", "sdk.Scribe", "sdk.Runtime", "wrapFunction", "SDKConfig"], function(a, b, c, d, e, f) {
+            var g = b('UserAgent'),
+                h = b('sdk.Scribe'),
+                i = c('SDKConfig'),
+                j = b('sdk.Runtime'),
+                k = b('wrapFunction'),
+                l = false;
+
+            function m(s) {
+                typeof console !== 'undefined' && typeof bagofholding === 'function';
+                delete s._originalError;
+                h.log('jssdk_error', {
+                    appId: j.getClientID(),
+                    error: s.name || s.message,
+                    extra: s
+                });
+                throw s;
+            }
+            function n(s) {
+                var t = {
+                    line: s.lineNumber || s.line,
+                    message: s.message,
+                    name: s.name,
+                    script: s.fileName || s.sourceURL || s.script,
+                    stack: s.stackTrace || s.stack
+                };
+                t._originalError = s;
+                if (g.chrome() && /([\w:\.\/]+\.js):(\d+)/.test(s.stack)) {
+                    t.script = RegExp.$1;
+                    t.line = parseInt(RegExp.$2, 10);
+                }
+                for (var u in t)(t[u] == null && delete t[u]);
+                return t;
+            }
+            function o(s, t) {
+                return function() {
+                    if (!l) return s.apply(this, arguments);
+                    try {
+                        return s.apply(this, arguments);
+                    } catch (u) {
+                        var v = n(u);
+                        v.entry = t;
+                        var w = ES5(Array.prototype.slice.call(arguments), 'map', true, function(x) {
+                            var y = Object.prototype.toString.call(x);
+                            return (/^\[object (String|Number|Boolean|Object|Date)\]$/).test(y) ? x : x.toString();
+                        });
+                        v.args = ES5('JSON', 'stringify', false, w).substring(0, 200);
+                        m(v);
+                    }
+                };
+            }
+            function p(s) {
+                return function() {
+                    try {
+                        return s.apply(this, arguments);
+                    } catch (t) {
+                        setTimeout(function() {
+                            throw t;
+                        }, 0);
+                        return false;
+                    }
+                };
+            }
+            var q = i.errorHandling.rate;
+            if (q && Math.floor(Math.random() * 100) + 1 < q) l = true;
+            if (l) k.setWrapper(o, 'entry');
+            var r = {
+                guard: o,
+                unguard: p
+            };
+            e.exports = r;
+        });
+        __d("GlobalCallback", ["wrapFunction", "dotAccess"], function(a, b, c, d, e, f) {
+            var g = b('wrapFunction'),
+                h = b('dotAccess'),
+                i, j, k = 0,
+                l = {
+                    setPrefix: function(m) {
+                        i = h(window, m, true);
+                        j = m;
+                    },
+                    create: function(m) {
+                        if (!i) this.setPrefix('window.__globalCallbacks');
+                        var n = '__gcb' + (++k);
+                        i[n] = g(m, 'entry', 'GlobalCallback');
+                        return j + '.' + n;
+                    },
+                    remove: function(m) {
+                        var n = m.substring(j.length + 1);
+                        delete i[n];
+                    }
+                };
+            e.exports = l;
+        });
+        __d("sdk.Insights", ["UrlMap", "QueryString"], function(a, b, c, d, e, f) {
+            var g = b('UrlMap'),
+                h = b('QueryString'),
+                i = {
+                    TYPE: {
+                        NOTICE: 'notice',
+                        WARNING: 'warn',
+                        ERROR: 'error'
+                    },
+                    CATEGORY: {
+                        DEPRECATED: 'deprecated',
+                        APIERROR: 'apierror'
+                    },
+                    log: function(j, k, l, m) {
+                        (new Image()).src = h.appendToUrl(g.resolve('www', true) + '/impression.php', {
+                            lid: 113,
+                            api_key: j,
+                            payload: ES5('JSON', 'stringify', false, {
+                                source: 'jssdk',
+                                type: k,
+                                category: l,
+                                payload: m
+                            })
+                        });
+                    }
+                };
+            e.exports = i;
+        });
+        __d("Log", ["sprintf"], function(a, b, c, d, e, f) {
+            var g = b('sprintf'),
+                h = {
+                    DEBUG: 3,
+                    INFO: 2,
+                    WARNING: 1,
+                    ERROR: 0
+                };
+
+            function i(k, l) {
+                var m = Array.prototype.slice.call(arguments, 2),
+                    n = g.apply(null, m);
+                if (j.level >= k && window.console) console[l in console ? l : 'log'](n);
+            }
+            var j = {
+                level: -1,
+                Level: h,
+                debug: ES5(i, 'bind', true, null, h.DEBUG, 'debug'),
+                info: ES5(i, 'bind', true, null, h.INFO, 'debug'),
+                warn: ES5(i, 'bind', true, null, h.WARNING, 'debug'),
+                error: ES5(i, 'bind', true, null, h.ERROR, 'debug')
+            };
+            e.exports = j;
+        });
+        __d("FB", ["guid", "dotAccess", "copyProperties", "safeEval", "wrapFunction", "sdk.ErrorHandling", "GlobalCallback", "sdk.Insights", "Log", "sdk.Scribe", "QueryString", "UrlMap", "sdk.Runtime", "SDKConfig"], function(a, b, c, d, e, f) {
+            var g = c('SDKConfig'),
+                h = b('guid'),
+                i = b('dotAccess'),
+                j = b('copyProperties'),
+                k = b('safeEval'),
+                l = b('wrapFunction'),
+                m = b('sdk.ErrorHandling'),
+                n = b('GlobalCallback'),
+                o = b('sdk.Insights'),
+                p = b('Log'),
+                q = b('sdk.Scribe'),
+                r = b('QueryString'),
+                s = b('UrlMap'),
+                t = b('sdk.Runtime'),
+                u, v, w, x = i(g, 'api.mode'),
+                y = {};
+            u = FB;
+            v = window.FB = {};
+            n.setPrefix('FB._callbacks');
+            if (i(g, 'api.whitelist.length')) {
+                w = {};
+                ES5(g.api.whitelist, 'forEach', true, function(fa) {
+                    w[fa] = 1;
+                });
+            }
+            function z(fa, ga, ha, ia) {
+                var ja;
+                if (/^_/.test(ha)) {
+                    ja = 'hide';
+                } else if (w && !w[ga]) ja = x;
+                switch (ja) {
+                case 'hide':
+                    return;
+                case 'stub':
+                    return function() {
+                        p.warn('The method FB.%s has been removed from the JS SDK.', ga);
+                    };
+                    break;
+                default:
+                    return m.guard(function() {
+                        if (ja === 'warn') {
+                            p.warn('The method FB.%s is not officially supported by ' + 'Facebook and access to it will soon be removed.', ga);
+                            if (!y.hasOwnProperty(ga)) {
+                                o.log(u._apiKey, o.TYPE.WARNING, o.CATEGORY.DEPRECATED, 'FB.' + ga);
+                                q.log('jssdk_error', {
+                                    appId: u._apiKey,
+                                    error: 'Private method used',
+                                    extra: {
+                                        args: ga
+                                    }
+                                });
+                                y[ga] = true;
+                            }
+                        }
+                        var ka = ES5(Array.prototype.slice.call(arguments), 'map', true, function(qa) {
+                            return typeof qa === 'function' && /^function/.test(qa.toString()) ? m.unguard(qa) : qa;
+                        }),
+                            la = fa.apply(ia, ka);
+                        if (la && typeof la === 'object') {
+                            var ma = Function();
+                            ma.prototype = la;
+                            var na = new ma();
+                            for (var oa in la) {
+                                var pa = la[oa];
+                                if (typeof pa !== 'function' || oa === 'constructor') continue;
+                                na[oa] = z(pa, ga + ':' + oa, oa, la);
+                            }
+                            return na;
+                        }
+                        return la;
+                    }, ga);
+                }
+            }
+            function aa(fa, ga) {
+                var ha = fa ? i(u, fa, true) : u,
+                    ia = fa ? i(v, fa, true) : v;
+                ES5(ES5('Object', 'keys', false, ga), 'forEach', true, function(ja) {
+                    var ka = ga[ja];
+                    ha[ja] = ka;
+                    if (typeof ka === 'function') {
+                        var la = (fa ? fa + '.' : '') + ja,
+                            ma = z(ka, la, ja, ha);
+                        if (ma) ia[ja] = ma;
+                    }
+                });
+            }
+            var ba = /iframe_canvas|app_runner/.test(window.name),
+                ca = /dialog/.test(window.name),
+                da = (function() {
+                    if (location.protocol == 'https:' && (window == top || !(ba || ca))) return true;
+                    if (/_fb_https?/.test(window.name)) return ES5(window.name, 'indexOf', true, '_fb_https') != -1;
+                })();
+
+            function ea(fa, ga, ha, ia) {
+                for (var ja in ga) if (ha || typeof fa[ja] === 'undefined') fa[ja] = ia ? ia(ga[ja]) : ga[ja];
+                return fa;
+            }
+            j(u, {
+                _apiKey: null,
+                _authResponse: null,
+                _userStatus: 'unknown',
+                _logging: true,
+                _inCanvas: ba,
+                _https: da,
+                onlyUseHttps: function() {
+                    return u._https === true;
+                },
+                onlyUseHttp: function() {
+                    return u._https === false && location.protocol == 'http:';
+                },
+                _locale: null,
+                _localeIsRtl: false,
+                getDomain: function(fa, ga) {
+                    var ha = !ga && (window.location.protocol == 'https:' || u._https);
+                    switch (fa) {
+                    case 'api':
+                        return u._domain.api;
+                    case 'api_read':
+                        return u._domain.api_read;
+                    case 'cdn':
+                        return ha ? u._domain.https_cdn : u._domain.cdn;
+                    case 'cdn_foreign':
+                        return u._domain.cdn_foreign;
+                    case 'https_cdn':
+                        return u._domain.https_cdn;
+                    case 'graph':
+                        return u._domain.graph;
+                    case 'staticfb':
+                        return ha ? u._domain.https_staticfb : u._domain.staticfb;
+                    case 'https_staticfb':
+                        return u._domain.https_staticfb;
+                    case 'www':
+                        return ha ? u._domain.https_www : u._domain.www;
+                    case 'https_www':
+                        return u._domain.https_www;
+                    case 'm':
+                        return ha ? u._domain.https_m : u._domain.m;
+                    case 'https_m':
+                        return u._domain.https_m;
+                    }
+                },
+                copy: ea,
+                create: function(fa, ga) {
+                    var ha = fa.split('.');
+                    fa = ha.pop();
+                    var ia = ha.length ? i(u, ha.join('.'), true) : u;
+                    return fa in ia ? ia[fa] : ia[fa] = (ga || {});
+                },
+                provide: aa,
+                guid: h,
+                log: function(fa) {
+                    if (u._logging) if (window.Debug && window.Debug.writeln) {
+                        window.Debug.writeln(fa);
+                    } else if (window.console) window.console.log(fa);
+                    if (u.Event) u.Event.fire('fb.log', fa);
+                },
+                $: function(fa) {
+                    return document.getElementById(fa);
+                },
+                dotAccess: i,
+                Runtime: t,
+                guard: m.guard,
+                unguard: m.unguard,
+                wrapFunction: l,
+                safeEval: k
+            });
+            if (v) j(v, {
+                provide: aa
+            });
+            e.exports = u;
+        });
+        __d("flattenObject", [], function(a, b, c, d, e, f) {
+            function g(h) {
+                var i = {};
+                for (var j in h) if (h.hasOwnProperty(j)) {
+                    var k = h[j];
+                    if (null === k || undefined === k) {
+                        continue;
+                    } else if (typeof k == 'string') {
+                        i[j] = k;
+                    } else i[j] = ES5('JSON', 'stringify', false, k);
+                }
+                return i;
+            }
+            e.exports = g;
+        });
+        __d("CORSRequest", ["wrapFunction", "QueryString"], function(a, b, c, d, e, f) {
+            var g = b('wrapFunction'),
                 h = b('QueryString');
 
             function i(l, m) {
@@ -963,18 +1525,14 @@ window.FB || (function() {
                         n.send(t);
                     }
                 },
-                    r = function() {
+                    r = g(function() {
                         r = o;
-                        g(function() {
-                            if ('onload' in q) q.onload(n);
-                        }, null, null, 'XMLHttpRequest:load');
-                    },
-                    s = function() {
+                        if ('onload' in q) q.onload(n);
+                    }, 'entry', 'XMLHttpRequest:load'),
+                    s = g(function() {
                         s = o;
-                        g(function() {
-                            if ('onerror' in q) q.onerror(n);
-                        }, null, null, 'XMLHttpRequest:error');
-                    };
+                        if ('onerror' in q) q.onerror(n);
+                    }, 'entry', 'XMLHttpRequest:error');
                 n.onload = function() {
                     r();
                 };
@@ -1035,12 +1593,6 @@ window.FB || (function() {
                 }
             };
             e.exports = i;
-        });
-        __d("guid", [], function(a, b, c, d, e, f) {
-            function g() {
-                return 'f' + (Math.random() * (1 << 30)).toString(16).replace('.', '');
-            }
-            e.exports = g;
         });
         __d("Flash", ["DOMWrapper", "QueryString", "UserAgent", "copyProperties", "guid"], function(a, b, c, d, e, f) {
             var g = b('DOMWrapper'),
@@ -1116,41 +1668,6 @@ window.FB || (function() {
                 }
             };
             e.exports = s;
-        });
-        __d("dotAccess", [], function(a, b, c, d, e, f) {
-            function g(h, i, j) {
-                var k = i.split('.');
-                do {
-                    var l = k.shift();
-                    h = h[l] || j && (h[l] = {});
-                } while (k.length && h);
-                return h;
-            }
-            e.exports = g;
-        });
-        __d("GlobalCallback", ["applyWithGuard", "dotAccess"], function(a, b, c, d, e, f) {
-            var g = b('applyWithGuard'),
-                h = b('dotAccess'),
-                i, j, k = 0,
-                l = {
-                    setPrefix: function(m) {
-                        i = h(window, m, true);
-                        j = m;
-                    },
-                    create: function(m) {
-                        if (!i) this.setPrefix('window.__globalCallbacks');
-                        var n = '__gcb' + (++k);
-                        i[n] = function() {
-                            return g(m, null, arguments, 'GlobalCallback');
-                        };
-                        return j + '.' + n;
-                    },
-                    remove: function(m) {
-                        var n = m.substring(j.length + 1);
-                        delete i[n];
-                    }
-                };
-            e.exports = l;
         });
         __d("Queue", ["copyProperties"], function(a, b, c, d, e, f) {
             var g = b('copyProperties'),
@@ -1354,43 +1871,6 @@ window.FB || (function() {
             };
             e.exports = k;
         });
-        __d("Log", ["sprintf"], function(a, b, c, d, e, f) {
-            var g = b('sprintf'),
-                h = {
-                    DEBUG: 3,
-                    INFO: 2,
-                    WARNING: 1,
-                    ERROR: 0
-                };
-
-            function i(k, l) {
-                var m = Array.prototype.slice.call(arguments, 2),
-                    n = g.apply(null, m);
-                if (j.level >= k && window.console) console[l in console ? l : 'log'](n);
-            }
-            var j = {
-                level: -1,
-                Level: h,
-                debug: ES5(i, 'bind', true, null, h.DEBUG, 'debug'),
-                info: ES5(i, 'bind', true, null, h.INFO, 'debug'),
-                warn: ES5(i, 'bind', true, null, h.WARNING, 'debug'),
-                error: ES5(i, 'bind', true, null, h.ERROR, 'debug')
-            };
-            e.exports = j;
-        });
-        __d("UrlMap", ["UrlMapConfig"], function(a, b, c, d, e, f) {
-            var g = c('UrlMapConfig'),
-                h = {
-                    resolve: function(i, j) {
-                        var k = typeof j == 'undefined' ? location.protocol.replace(':', '') : j ? 'https' : 'http';
-                        if (i in g) return k + '://' + g[i];
-                        if (typeof j == 'undefined' && i + '_' + k in g) return k + '://' + g[i + '_' + k];
-                        if (j !== true && i + '_http' in g) return 'http://' + g[i + '_http'];
-                        if (j !== false && i + '_https' in g) return 'https://' + g[i + '_https'];
-                    }
-                };
-            e.exports = h;
-        });
         __d("URL", ["copyProperties", "QueryString", "Log"], function(a, b, c, d, e, f) {
             var g = b('copyProperties'),
                 h = b('QueryString'),
@@ -1584,9 +2064,11 @@ window.FB || (function() {
                 w(ea, 'get', aa, ba);
             }
             var z = {
-                setAccessToken: function(aa, ba) {
+                setAccessToken: function(aa) {
                     q = aa;
-                    r = ba;
+                },
+                setInvalidAccessTokenHandler: function(aa) {
+                    r = aa;
                 },
                 setClientID: function(aa) {
                     s = aa;
@@ -1600,248 +2082,37 @@ window.FB || (function() {
             k.setSwfUrl(p.FlashRequest.swfUrl);
             e.exports = z;
         });
-        __d("safeEval", [], function(a, b, c, d, e, f) {
-            function g(h) {
-                if (h === null || typeof h === 'undefined') return;
-                if (typeof h !== 'string') return h;
-                return Function('return eval("' + h.replace(/"/g, '\\"') + '");')();
-            }
-            e.exports = g;
-        });
-        __d("sdk.Insights", ["UrlMap", "QueryString"], function(a, b, c, d, e, f) {
-            var g = b('UrlMap'),
-                h = b('QueryString'),
-                i = {
-                    TYPE: {
-                        NOTICE: 'notice',
-                        WARNING: 'warn',
-                        ERROR: 'error'
-                    },
-                    CATEGORY: {
-                        DEPRECATED: 'deprecated',
-                        APIERROR: 'apierror'
-                    },
-                    log: function(j, k, l, m) {
-                        (new Image()).src = h.appendToUrl(g.resolve('www', true) + '/impression.php', {
-                            lid: 113,
-                            api_key: j,
-                            payload: ES5('JSON', 'stringify', false, {
-                                source: 'jssdk',
-                                type: k,
-                                category: l,
-                                payload: m
-                            })
-                        });
-                    }
-                };
-            e.exports = i;
-        });
-        __d("sdk.Scribe", ["UrlMap", "QueryString"], function(a, b, c, d, e, f) {
-            var g = b('UrlMap'),
-                h = b('QueryString');
-
-            function i(k, l) {
-                (new Image()).src = h.appendToUrl(g.resolve('www', true) + '/common/scribe_endpoint.php', {
-                    c: k,
-                    m: ES5('JSON', 'stringify', false, l)
-                });
-            }
-            var j = {
-                log: i
-            };
-            e.exports = j;
-        });
-        __d("FB", ["applyWithGuard", "guid", "dotAccess", "copyProperties", "safeEval", "GlobalCallback", "sdk.Insights", "Log", "sdk.Scribe", "QueryString", "UrlMap", "SDKConfig"], function(a, b, c, d, e, f) {
-            var g = c('SDKConfig'),
-                h = b('applyWithGuard'),
-                i = b('guid'),
-                j = b('dotAccess'),
-                k = b('copyProperties'),
-                l = b('safeEval'),
-                m = b('GlobalCallback'),
-                n = b('sdk.Insights'),
-                o = b('Log'),
-                p = b('sdk.Scribe'),
-                q = b('QueryString'),
-                r = b('UrlMap'),
-                s, t, u, v = j(g, 'api.mode'),
-                w = {};
-            s = FB;
-            t = window.FB = {};
-            m.setPrefix('FB._callbacks');
-            if (j(g, 'api.whitelist.length')) {
-                u = {};
-                ES5(g.api.whitelist, 'forEach', true, function(da) {
-                    u[da] = 1;
-                });
-            }
-            var x = g.errorHandling.rate;
-            if (x && Math.floor(Math.random() * 100) + 1 < x) h.setErrorHandler(function(da) {
-                typeof console !== 'undefined' && typeof bagofholding === 'function';
-                delete da._originalError;
-                p.log('jssdk_error', {
-                    appId: s._apiKey,
-                    error: da.name || da.message,
-                    extra: da
-                });
-                throw da;
+        __d("sdk.api", ["ApiClient", "sdk.Runtime"], function(a, b, c, d, e, f) {
+            var g = b('ApiClient'),
+                h = b('sdk.Runtime'),
+                i;
+            h.subscribe('ClientID.change', function(k) {
+                g.setClientID(k);
             });
-
-            function y(da, ea) {
-                var fa = da ? j(s, da, true) : s,
-                    ga = da ? j(t, da, true) : t;
-                ES5(ES5('Object', 'keys', false, ea), 'forEach', true, function(ha) {
-                    var ia = (da ? da + '.' : '') + ha,
-                        ja = ea[ha],
-                        ka, la;
-                    fa[ha] = ja;
-                    if (typeof ja !== 'function') return;
-                    if (/^_/.test(ha)) {
-                        ka = 'hide';
-                    } else if (u && !u[ia]) ka = v;
-                    switch (ka) {
-                    case 'hide':
-                        return;
-                    case 'stub':
-                        la = function() {
-                            o.warn('The method FB.%s has been removed from the JS SDK.', ia);
-                        };
-                        break;
-                    default:
-                        la = function() {
-                            if (ka === 'warn') {
-                                o.warn('The method FB.%s is not officially supported by ' + 'Facebook and access to it will soon be removed.', ia);
-                                if (!w.hasOwnProperty(ia)) {
-                                    n.log(s._apiKey, n.TYPE.WARNING, n.CATEGORY.DEPRECATED, 'FB.' + ia);
-                                    p.log('jssdk_error', {
-                                        appId: s._apiKey,
-                                        error: 'Private method used',
-                                        extra: {
-                                            args: ia
-                                        }
-                                    });
-                                    w[ia] = true;
-                                }
-                            }
-                            var ma = ES5(Array.prototype.slice.call(arguments), 'map', true, function(na) {
-                                return typeof na === 'function' && /^function/.test(na.toString()) ?
-                                function() {
-                                    var oa = arguments;
-                                    setTimeout(function() {
-                                        na.apply(null, oa);
-                                    }, 0);
-                                } : na;
-                            });
-                            return h(ja, fa, ma, ia);
-                        };
-                    }
-                    if (la) ga[ha] = la;
-                });
-            }
-            var z = /iframe_canvas|app_runner/.test(window.name),
-                aa = /dialog/.test(window.name),
-                ba = (function() {
-                    if (location.protocol == 'https:' && (window == top || !(z || aa))) return true;
-                    if (/_fb_https?/.test(window.name)) return ES5(window.name, 'indexOf', true, '_fb_https') != -1;
-                })();
-
-            function ca(da, ea, fa, ga) {
-                for (var ha in ea) if (fa || typeof da[ha] === 'undefined') da[ha] = ga ? ga(ea[ha]) : ea[ha];
-                return da;
-            }
-            k(s, {
-                _apiKey: null,
-                _authResponse: null,
-                _userStatus: 'unknown',
-                _logging: true,
-                _inCanvas: z,
-                _https: ba,
-                onlyUseHttps: function() {
-                    return s._https === true;
-                },
-                onlyUseHttp: function() {
-                    return s._https === false && location.protocol == 'http:';
-                },
-                _locale: null,
-                _localeIsRtl: false,
-                getDomain: function(da, ea) {
-                    var fa = !ea && (window.location.protocol == 'https:' || s._https);
-                    switch (da) {
-                    case 'api':
-                        return s._domain.api;
-                    case 'api_read':
-                        return s._domain.api_read;
-                    case 'cdn':
-                        return fa ? s._domain.https_cdn : s._domain.cdn;
-                    case 'cdn_foreign':
-                        return s._domain.cdn_foreign;
-                    case 'https_cdn':
-                        return s._domain.https_cdn;
-                    case 'graph':
-                        return s._domain.graph;
-                    case 'staticfb':
-                        return fa ? s._domain.https_staticfb : s._domain.staticfb;
-                    case 'https_staticfb':
-                        return s._domain.https_staticfb;
-                    case 'www':
-                        return fa ? s._domain.https_www : s._domain.www;
-                    case 'https_www':
-                        return s._domain.https_www;
-                    case 'm':
-                        return fa ? s._domain.https_m : s._domain.m;
-                    case 'https_m':
-                        return s._domain.https_m;
-                    }
-                },
-                copy: ca,
-                create: function(da, ea) {
-                    var fa = da.split('.');
-                    da = fa.pop();
-                    var ga = fa.length ? j(s, fa.join('.'), true) : s;
-                    return da in ga ? ga[da] : ga[da] = (ea || {});
-                },
-                provide: y,
-                guid: i,
-                log: function(da) {
-                    if (s._logging) if (window.Debug && window.Debug.writeln) {
-                        window.Debug.writeln(da);
-                    } else if (window.console) window.console.log(da);
-                    if (s.Event) s.Event.fire('fb.log', da);
-                },
-                $: function(da) {
-                    return document.getElementById(da);
-                },
-                dotAccess: j,
-                applyWithGuard: h,
-                safeEval: l
+            h.subscribe('AccessToken.change', function(k) {
+                i = k;
+                g.setAccessToken(k);
             });
-            if (t) k(t, {
-                provide: y
-            });
-            e.exports = s;
-        });
-        __d("legacy:fb.api", ["ApiClient", "FB", "SDKConfig"], function(a, b, c, d) {
-            var e = c('SDKConfig'),
-                f = b('ApiClient'),
-                g = b('FB');
-            f.setDefaultParams({
+            g.setDefaultParams({
                 sdk: 'joey'
             });
+            g.setInvalidAccessTokenHandler(function() {
+                if (i === h.getAccessToken()) h.setAccessToken(null);
+            });
 
-            function h() {
-                var i = g.getAccessToken(),
-                    j = function() {
-                        if (i == g.getAccessToken()) g.getLoginStatus(null, true);
-                    };
-                f.setClientID(g._apiKey);
-                f.setAccessToken(i, j);
+            function j() {
                 if (typeof arguments[0] === 'string') {
-                    f.graph.apply(f, arguments);
-                } else f.rest.apply(f, arguments);
+                    g.graph.apply(g, arguments);
+                } else g.rest.apply(g, arguments);
             }
-            g.provide('', {
-                api: h
-            }, true);
+            e.exports = j;
+        });
+        __d("legacy:fb.api", ["FB", "sdk.api"], function(a, b, c, d) {
+            var e = b('FB'),
+                f = b('sdk.api');
+            e.provide('', {
+                api: f
+            });
         }, 3);
         __c();
         __d("legacy:fb.prelude", ["FB"], function(a, b, c, d) {
@@ -1929,9 +2200,7 @@ window.FB || (function() {
                 });
             },
             listen: function(a, event, b) {
-                b.wrapper = function() {
-                    FB.applyWithGuard(b, this, arguments, a + ':' + event);
-                };
+                b.wrapper = FB.wrapFunction(b, 'entry', a + ':' + event);
                 if (a.addEventListener) {
                     a.addEventListener(event, b.wrapper, false);
                 } else if (a.attachEvent) a.attachEvent('on' + event, b.wrapper);
@@ -1943,22 +2212,6 @@ window.FB || (function() {
             }
         });
         FB.provide('Event', FB.EventProvider);
-        __d("legacy:fb.arbiter", ["FB"], function(a, b, c, d) {
-            var e = b('FB');
-            e.provide('Arbiter', {
-                BEHAVIOR_EVENT: 'e',
-                BEHAVIOR_PERSISTENT: 'p',
-                BEHAVIOR_STATE: 's',
-                inform: function(f, g, h, i, j) {
-                    e.XD.sendToFacebook('facebook', {
-                        method: f,
-                        params: ES5('JSON', 'stringify', false, g || {}),
-                        behavior: j || e.Arbiter.BEHAVIOR_PERSISTENT,
-                        relation: h
-                    });
-                }
-            });
-        }, 3);
         __d("resolveWindow", [], function(a, b, c, d, e, f) {
             function g(h) {
                 var i = window,
@@ -2285,220 +2538,264 @@ window.FB || (function() {
             });
             e.exports = i;
         });
-        __d("SDK_XD", ["applyWithGuard", "guid", "resolveWindow", "FB", "XDM", "Log", "QueryString", "Queue", "URL", "JSONRPC", "XDConfig"], function(a, b, c, d, e, f) {
+        __d("sdk.RPC", ["Assert", "JSONRPC", "Queue"], function(a, b, c, d, e, f) {
+            var g = b('Assert'),
+                h = b('JSONRPC'),
+                i = b('Queue'),
+                j = new i(),
+                k = new h(function(m) {
+                    j.enqueue(m);
+                }),
+                l = {
+                    local: k.local,
+                    remote: k.remote,
+                    stub: ES5(k.stub, 'bind', true, k),
+                    setInQueue: function(m) {
+                        g.isInstanceOf(i, m);
+                        m.start(function(n) {
+                            k.read(n);
+                        });
+                    },
+                    getOutQueue: function() {
+                        return j;
+                    }
+                };
+            e.exports = l;
+        });
+        __d("sdk.XD", ["guid", "resolveWindow", "wrapFunction", "FB", "XDM", "Log", "QueryString", "Queue", "URL", "sdk.RPC", "sdk.Runtime", "XDConfig"], function(a, b, c, d, e, f) {
             var g = c('XDConfig'),
-                h = b('applyWithGuard'),
-                i = b('guid'),
-                j = b('resolveWindow'),
+                h = b('guid'),
+                i = b('resolveWindow'),
+                j = b('wrapFunction'),
                 k = b('FB'),
                 l = b('XDM'),
                 m = b('Log'),
                 n = b('QueryString'),
                 o = b('Queue'),
                 p = b('URL'),
-                q = b('JSONRPC'),
-                r = new o(),
+                q = b('sdk.RPC'),
+                r = b('sdk.Runtime'),
                 s = new o(),
                 t = new o(),
-                u, v, w = i(),
-                x = i(),
-                y = location.protocol + '//' + location.host,
-                z, aa = false,
-                ba = {},
-                ca;
+                u = new o(),
+                v, w, x = h(),
+                y = h(),
+                z = location.protocol + '//' + location.host,
+                aa, ba = false,
+                ca = {},
+                da = new o();
+            q.setInQueue(da);
 
-            function da(ka) {
-                m.info('Remote XD can talk to facebook.com (%s)', ka);
-                if (ka == 'canvas') {
+            function ea(la) {
+                m.info('Remote XD can talk to facebook.com (%s)', la);
+                if (la == 'canvas') {
+                    r.setEnvironment(r.ENVIRONMENTS.CANVAS);
                     k._inCanvas = true;
-                } else k.Canvas._isTabIframe = true;
+                } else {
+                    r.setEnvironment(r.ENVIRONMENTS.PAGETAB);
+                    k.Canvas._isTabIframe = true;
+                }
             }
-            function ea(ka, la) {
-                if (!la) {
+            function fa(la, ma) {
+                if (!ma) {
                     m.error('No senderOrigin');
                     throw new Error();
                 }
-                var ma = /^https?/.exec(la)[0];
-                switch (ka.xd_action) {
+                var na = /^https?/.exec(ma)[0];
+                switch (la.xd_action) {
                 case 'proxy_ready':
-                    var na, oa;
-                    if (ma == 'https') {
-                        na = t;
-                        oa = v;
-                    } else {
-                        na = s;
+                    var oa, pa;
+                    if (na == 'https') {
                         oa = u;
+                        pa = w;
+                    } else {
+                        oa = t;
+                        pa = v;
                     }
-                    if (ka.registered) {
-                        da(ka.registered);
-                        r = na.merge(r);
+                    if (la.registered) {
+                        ea(la.registered);
+                        s = oa.merge(s);
                     }
-                    m.info('Proxy ready, starting queue %s containing %s messages', ma + 'ProxyQueue', na.getLength());
-                    na.start(function(qa) {
-                        z.send(typeof qa === 'string' ? qa : n.encode(qa), la, oa.contentWindow, x + '_' + ma);
+                    m.info('Proxy ready, starting queue %s containing %s messages', na + 'ProxyQueue', oa.getLength());
+                    oa.start(function(ra) {
+                        aa.send(typeof ra === 'string' ? ra : n.encode(ra), ma, pa.contentWindow, y + '_' + na);
                     });
                     break;
                 case 'plugin_ready':
-                    m.info('Plugin %s ready, protocol: %s', ka.name, ma);
-                    ba[ka.name] = {
-                        protocol: ma
+                    m.info('Plugin %s ready, protocol: %s', la.name, na);
+                    ca[la.name] = {
+                        protocol: na
                     };
-                    if (o.exists(ka.name)) {
-                        var pa = o.get(ka.name);
-                        m.debug('Enqueuing %s messages for %s in %s', pa.getLength(), ka.name, ma + 'ProxyQueue');
-                        (ma == 'https' ? t : s).merge(pa);
+                    if (o.exists(la.name)) {
+                        var qa = o.get(la.name);
+                        m.debug('Enqueuing %s messages for %s in %s', qa.getLength(), la.name, na + 'ProxyQueue');
+                        (na == 'https' ? u : t).merge(qa);
                     }
                     break;
                 }
-                if (ka.data) fa(ka.data, la);
+                if (la.data) ga(la.data, ma);
             }
-            function fa(ka, la) {
-                h(function() {
-                    if (la && la !== 'native' && !p(la).isFacebookURL()) return;
-                    if (typeof ka == 'string') {
-                        if (/^FB_RPC:/.test(ka)) {
-                            ca.read(ka.substring(7));
-                            return;
-                        }
-                        if (ka.substring(0, 1) == '{') {
-                            try {
-                                ka = ES5('JSON', 'parse', false, ka);
-                            } catch (ma) {
-                                m.warn('Failed to decode %s as JSON', ka);
-                                return;
-                            }
-                        } else ka = n.decode(ka);
-                    }
-                    if (!la) if (ka.xd_sig == w) la = ka.xd_origin;
-                    if (ka.xd_action) {
-                        ea(ka, la);
+            function ga(la, ma) {
+                if (ma && ma !== 'native' && !p(ma).isFacebookURL()) return;
+                if (typeof la == 'string') {
+                    if (/^FB_RPC:/.test(la)) {
+                        da.enqueue(la.substring(7));
                         return;
                     }
-                    if (ka.access_token) k._https = /^https/.test(y);
-                    if (ka.cb) {
-                        var na = k.XD._callbacks[ka.cb];
-                        if (!k.XD._forever[ka.cb]) delete k.XD._callbacks[ka.cb];
-                        if (na) na(ka);
-                    }
-                }, null, null, 'XD:message');
+                    if (la.substring(0, 1) == '{') {
+                        try {
+                            la = ES5('JSON', 'parse', false, la);
+                        } catch (na) {
+                            m.warn('Failed to decode %s as JSON', la);
+                            return;
+                        }
+                    } else la = n.decode(la);
+                }
+                if (!ma) if (la.xd_sig == x) ma = la.xd_origin;
+                if (la.xd_action) {
+                    fa(la, ma);
+                    return;
+                }
+                if (la.access_token) k._https = /^https/.test(z);
+                if (la.cb) {
+                    var oa = k.XD._callbacks[la.cb];
+                    if (!k.XD._forever[la.cb]) delete k.XD._callbacks[la.cb];
+                    if (oa) oa(la);
+                }
             }
-            var ga = function() {
-                    var ka = document.createElement("form"),
-                        la = ka.appendChild(document.createElement("input")),
-                        ma;
-                    la.name = i();
-                    ma = la !== ka.elements[la.name];
-                    ka = la = null;
-                    ga = function() {
-                        return ma;
+            var ha = function() {
+                    var la = document.createElement("form"),
+                        ma = la.appendChild(document.createElement("input")),
+                        na;
+                    ma.name = h();
+                    na = ma !== la.elements[ma.name];
+                    la = ma = null;
+                    ha = function() {
+                        return na;
                     };
-                    return ma;
+                    return na;
                 };
 
-            function ha(ka) {
-                var la = ga() ? document.createElement('<iframe name="' + ka.name + '"/>') : document.createElement("iframe");
-                la.name = la.id = ka.name;
-                la.src = "javascript:false";
-                ka.root.appendChild(la);
-                la.src = ka.url;
-                return la;
+            function ia(la) {
+                var ma = ha() ? document.createElement('<iframe name="' + la.name + '"/>') : document.createElement("iframe");
+                ma.name = ma.id = la.name;
+                ma.src = "javascript:false";
+                la.root.appendChild(ma);
+                ma.src = la.url;
+                return ma;
             }
-            function ia(ka, la) {
-                if (ka == 'facebook') {
-                    la.relation = 'parent.parent';
-                    r.enqueue(la);
+            function ja(la, ma) {
+                if (la == 'facebook') {
+                    ma.relation = 'parent.parent';
+                    s.enqueue(ma);
                 } else {
-                    la.relation = 'parent.frames["' + ka + '"]';
-                    var ma = ba[ka];
-                    if (ma) {
-                        m.debug('Enqueuing message for plugin %s in %s', ka, ma.protocol + 'ProxyQueue');
-                        (ma.protocol == 'https' ? t : s).enqueue(la);
+                    ma.relation = 'parent.frames["' + la + '"]';
+                    var na = ca[la];
+                    if (na) {
+                        m.debug('Enqueuing message for plugin %s in %s', la, na.protocol + 'ProxyQueue');
+                        (na.protocol == 'https' ? u : t).enqueue(ma);
                     } else {
-                        m.debug('Buffering message for plugin %s', ka);
-                        o.get(ka).enqueue(la);
+                        m.debug('Buffering message for plugin %s', la);
+                        o.get(la).enqueue(ma);
                     }
                 }
             }
-            ca = new q(function(ka) {
-                ia('facebook', 'FB_RPC:' + ka);
+            q.getOutQueue().start(function(la) {
+                ja('facebook', 'FB_RPC:' + la);
             });
-            var ja = {
-                rpc: ca,
+            var ka = {
+                rpc: q,
                 _callbacks: {},
                 _forever: {},
-                _channel: x,
-                _origin: y,
-                onMessage: fa,
-                recv: fa,
-                init: function(ka, la) {
-                    if (aa) return;
-                    var ma = ka ? /\/\/.*?(\/[^#]*)/.exec(ka)[1] : location.pathname + location.search;
-                    ma += (~ES5(ma, 'indexOf', true, '?') ? '&' : '?') + 'fb_xd_fragment#xd_sig=' + w + '&';
-                    var na = k.Content.appendHidden(document.createElement('div')),
-                        oa = l.create({
-                            root: na,
-                            channel: x,
+                _channel: y,
+                _origin: z,
+                onMessage: ga,
+                recv: ga,
+                init: function(la, ma) {
+                    if (ba) return;
+                    var na = la ? /\/\/.*?(\/[^#]*)/.exec(la)[1] : location.pathname + location.search;
+                    na += (~ES5(na, 'indexOf', true, '?') ? '&' : '?') + 'fb_xd_fragment#xd_sig=' + x + '&';
+                    var oa = k.Content.appendHidden(document.createElement('div')),
+                        pa = l.create({
+                            root: oa,
+                            channel: y,
                             channelPath: '/' + g.XdUrl + '#',
                             flashUrl: g.Flash.path,
-                            whenReady: function(pa) {
-                                z = pa;
-                                var qa = {
-                                    channel: x,
+                            whenReady: function(qa) {
+                                aa = qa;
+                                var ra = {
+                                    channel: y,
                                     origin: location.protocol + '//' + location.host,
-                                    channel_path: ma,
-                                    transport: oa,
-                                    xd_name: la
+                                    channel_path: na,
+                                    transport: pa,
+                                    xd_name: ma
                                 },
-                                    ra = g.XdUrl + '#' + n.encode(qa),
-                                    sa = g.useCdn ? k._domain.staticfb : 'http://www.facebook.com/',
-                                    ta = g.useCdn ? k._domain.https_staticfb : 'https://www.facebook.com/';
-                                if (!k.onlyUseHttps()) u = ha({
-                                    url: sa + ra,
+                                    sa = g.XdUrl + '#' + n.encode(ra),
+                                    ta = g.useCdn ? k._domain.staticfb : 'http://www.facebook.com/',
+                                    ua = g.useCdn ? k._domain.https_staticfb : 'https://www.facebook.com/';
+                                if (!k.onlyUseHttps()) v = ia({
+                                    url: ta + sa,
                                     name: 'fb_xdm_frame_http',
-                                    root: na
+                                    root: oa
                                 });
-                                v = ha({
-                                    url: ta + ra,
+                                w = ia({
+                                    url: ua + sa,
                                     name: 'fb_xdm_frame_https',
-                                    root: na
+                                    root: oa
                                 });
                             },
-                            onMessage: fa
+                            onMessage: j(ga, 'entry', 'XD:message')
                         });
-                    aa = true;
+                    ba = true;
                 },
-                sendToFacebook: ia,
-                handler: function(ka, la, ma, na) {
-                    na = na || i();
-                    if (ma) k.XD._forever[na] = true;
-                    k.XD._callbacks[na] = ka;
-                    var oa = location.protocol == 'https:' ? k._domain.https_staticfb : k._domain.staticfb,
-                        pa = g.useCdn ? oa : location.protocol + '//www.facebook.com/';
-                    return pa + g.XdUrl + '#' + n.encode({
-                        cb: na,
-                        origin: y + '/' + x,
+                sendToFacebook: ja,
+                inform: function(la, ma, na, oa, pa) {
+                    ja('facebook', {
+                        method: la,
+                        params: ES5('JSON', 'stringify', false, ma || {}),
+                        behavior: pa || 'p',
+                        relation: na
+                    });
+                },
+                handler: function(la, ma, na, oa) {
+                    oa = oa || h();
+                    if (na) k.XD._forever[oa] = true;
+                    k.XD._callbacks[oa] = la;
+                    var pa = location.protocol == 'https:' ? k._domain.https_staticfb : k._domain.staticfb,
+                        qa = g.useCdn ? pa : location.protocol + '//www.facebook.com/';
+                    return qa + g.XdUrl + '#' + n.encode({
+                        cb: oa,
+                        origin: z + '/' + y,
                         domain: location.hostname,
-                        relation: la || 'opener'
+                        relation: ma || 'opener'
                     });
                 }
             };
             (function() {
-                var ka = location.href.match(/[?&]fb_xd_fragment#(.*)$/);
-                if (ka) {
+                var la = location.href.match(/[?&]fb_xd_fragment#(.*)$/);
+                if (la) {
                     document.documentElement.style.display = 'none';
-                    var la = n.decode(ka[1]),
-                        ma = j(la.xd_rel);
-                    m.debug('Passing fragment based message: %s', ka[1]);
-                    ma.FB.XD.onMessage(la);
+                    var ma = n.decode(la[1]),
+                        na = i(ma.xd_rel);
+                    m.debug('Passing fragment based message: %s', la[1]);
+                    var oa = na.FB;
+                    oa.wrapFunction(oa.XD.onMessage, 'entry', 'XD:message')(ma);
                     document.open();
                     document.close();
                 }
             })();
-            e.exports = ja;
+            e.exports = ka;
         });
-        __d("legacy:fb.xd", ["FB", "SDK_XD"], function(a, b, c, d) {
+        __d("legacy:fb.arbiter", ["FB", "sdk.XD"], function(a, b, c, d) {
             var e = b('FB'),
-                f = b('SDK_XD');
+                f = b('sdk.XD');
+            e.provide('Arbiter', {
+                inform: f.inform
+            });
+        }, 3);
+        __d("legacy:fb.xd", ["FB", "sdk.XD"], function(a, b, c, d) {
+            var e = b('FB'),
+                f = b('sdk.XD');
             e.provide('XD', f);
         }, 3);
         FB.provide('Canvas', {
@@ -2561,36 +2858,36 @@ window.FB || (function() {
             _flashClassID: "CLSID:D27CDB6E-AE6D-11CF-96B8-444553540000",
             _hideFlashCallback: function(a) {
                 var b = window.document.getElementsByTagName('object');
-                for (var c = 0; c < b.length; c++) {
-                    var d = b[c];
-                    if (d.type.toLowerCase() != "application/x-shockwave-flash" && (!d.classid || d.classid.toUpperCase() != FB.Canvas._flashClassID)) continue;
-                    var e = false;
-                    for (var f = 0; f < d.childNodes.length; f++) if (d.childNodes[f].nodeName.toLowerCase() == "param" && d.childNodes[f].name.toLowerCase() == "wmode") if (d.childNodes[f].value.toLowerCase() == "opaque" || d.childNodes[f].value.toLowerCase() == "transparent") e = true;
-                    if (!e) {
-                        var g = Math.random();
-                        if (g <= 1 / 1000) FB.api(FB._apiKey + '/occludespopups', 'post', {});
+                ES5(FB.Array.toArray(b), 'forEach', true, function(c) {
+                    var c = b[i];
+                    if (c.type.toLowerCase() != "application/x-shockwave-flash" && (!c.classid || c.classid.toUpperCase() != FB.Canvas._flashClassID)) return;
+                    var d = false;
+                    for (var e = 0; e < c.childNodes.length; e++) if (c.childNodes[e].nodeName.toLowerCase() == "param" && c.childNodes[e].name.toLowerCase() == "wmode") if (c.childNodes[e].value.toLowerCase() == "opaque" || c.childNodes[e].value.toLowerCase() == "transparent") d = true;
+                    if (!d) {
+                        var f = Math.random();
+                        if (f <= 1 / 1000) FB.api(FB._apiKey + '/occludespopups', 'post', {});
                         if (FB.Canvas._devHideFlashCallback) {
-                            var h = 200,
-                                i = {
+                            var g = 200,
+                                h = {
                                     state: a.state,
-                                    elem: d
+                                    elem: c
                                 },
-                                j = ES5(function(k) {
-                                    if (k.state == 'opened') {
-                                        FB.Canvas.hideFlashElement(k.elem);
-                                    } else FB.Canvas.showFlashElement(k.elem);
-                                }, 'bind', true, this, i);
-                            setTimeout(j, h);
-                            FB.Canvas._devHideFlashCallback(i);
+                                j = ES5(function(i) {
+                                    if (i.state == 'opened') {
+                                        FB.Canvas.hideFlashElement(i.elem);
+                                    } else FB.Canvas.showFlashElement(i.elem);
+                                }, 'bind', true, this, h);
+                            setTimeout(j, g);
+                            FB.Canvas._devHideFlashCallback(h);
                         } else if (a.state == 'opened') {
-                            d._old_visibility = d.style.visibility;
-                            d.style.visibility = 'hidden';
+                            c._old_visibility = c.style.visibility;
+                            c.style.visibility = 'hidden';
                         } else if (a.state == 'closed') {
-                            d.style.visibility = d._old_visibility;
-                            delete d._old_visibility;
+                            c.style.visibility = c._old_visibility;
+                            delete c._old_visibility;
                         }
                     }
-                }
+                });
             },
             _devHideFlashCallback: null,
             _setHideFlashCallback: function(a) {
@@ -2670,9 +2967,6 @@ window.FB || (function() {
                 if (!FB._initialized) FB.log('FB.init is required for setUrlHandler to take effect');
                 var b = FB.XD.handler(a, 'top.frames[' + window.name + ']', true);
                 FB.Arbiter.inform('setUrlHandler', b);
-                FB.Event.listen(window, 'load', function() {
-                    FB.Arbiter.inform('setUrlHandler', b);
-                });
             },
             startTimer: function() {
                 FB.Canvas._passAppTtiMessage(null, 'StartIframeAppTtiTimer');
@@ -2718,6 +3012,314 @@ window.FB || (function() {
         FB.XD.rpc.stub('setSize');
         FB.XD.rpc.stub('scrollTo');
         FB.XD.rpc.stub('showDialog');
+        __d("hasArrayNature", [], function(a, b, c, d, e, f) {
+            function g(h) {
+                return ( !! h && (typeof h == 'object' || typeof h == 'function') && ('length' in h) && !('setInterval' in h) && (Object.prototype.toString.call(h) === "[object Array]" || ('callee' in h) || ('item' in h)));
+            }
+            e.exports = g;
+        });
+        __d("createArrayFrom", ["hasArrayNature"], function(a, b, c, d, e, f) {
+            var g = b('hasArrayNature');
+
+            function h(i) {
+                if (!g(i)) return [i];
+                if (i.item) {
+                    var j = i.length,
+                        k = new Array(j);
+                    while (j--) k[j] = i[j];
+                    return k;
+                }
+                return Array.prototype.slice.call(i);
+            }
+            e.exports = h;
+        });
+        __d("sdk.computeContentSize", ["DOMWrapper", "createArrayFrom"], function(a, b, c, d, e, f) {
+            var g = b('DOMWrapper'),
+                h = b('createArrayFrom');
+
+            function i() {
+                var j = g.getWindow().document,
+                    k = j.body,
+                    l = j.documentElement,
+                    m = 0,
+                    n = Math.max(k.offsetTop, 0),
+                    o = Math.max(l.offsetTop, 0),
+                    p = k.scrollHeight + n,
+                    q = k.offsetHeight + n,
+                    r = l.scrollHeight + o,
+                    s = l.offsetHeight + o,
+                    t = Math.max(p, q, r, s);
+                if (k.offsetWidth < k.scrollWidth) {
+                    m = k.scrollWidth + k.offsetLeft;
+                } else ES5(h(k.childNodes), 'forEach', true, function(u) {
+                    var v = u.offsetWidth + u.offsetLeft;
+                    if (v > m) m = v;
+                });
+                if (l.clientLeft > 0) m += (l.clientLeft * 2);
+                if (l.clientTop > 0) t += (l.clientTop * 2);
+                return {
+                    height: t,
+                    width: m
+                };
+            }
+            e.exports = i;
+        });
+        __d("sdk.Canvas.IframeHandling", ["sdk.Runtime", "Log", "sdk.RPC", "sdk.computeContentSize"], function(a, b, c, d, e, f) {
+            var g = b('sdk.Runtime'),
+                h = b('Log'),
+                i = b('sdk.RPC'),
+                j = b('sdk.computeContentSize'),
+                k = null,
+                l;
+
+            function m(p) {
+                if (!g.getInitialized() && arguments.callee.caller != n) h.warn('FB.init is required for setSize to take effect');
+                if (typeof p != 'object') p = {};
+                var q = 0,
+                    r = 0;
+                if (!p.height) {
+                    p.height = j().height;
+                    q = 16;
+                    r = 4;
+                }
+                if (!p.frame) p.frame = window.name || 'iframe_canvas';
+                if (l) {
+                    var s = l.height,
+                        t = p.height - s;
+                    if (t <= r && t >= -q) return false;
+                }
+                l = p;
+                i.remote.setSize(p);
+                return true;
+            }
+            function n(p, q) {
+                if (!g.getInitialized()) h.warn('FB.init is required for setAutoGrow to take effect');
+                if (q === undefined && typeof p === 'number') {
+                    q = p;
+                    p = true;
+                }
+                if (p || p === undefined) {
+                    if (k === null) k = setInterval(m, q || 100);
+                    m();
+                } else if (k !== null) {
+                    clearInterval(k);
+                    k = null;
+                }
+            }
+            i.stub('setSize');
+            var o = {
+                setSize: m,
+                setAutoGrow: n,
+                setAutoResize: function() {
+                    h.error('FB.setAutoResize() is no longer functional and will be ' + 'removed on September 5th. This code will throw an exception then. ' + 'Use FB.setAutoGrow() instead.');
+                }
+            };
+            e.exports = o;
+        });
+        __d("sdk.Canvas.Environment", ["sdk.Runtime", "Log", "sdk.RPC"], function(a, b, c, d, e, f) {
+            var g = b('sdk.Runtime'),
+                h = b('Log'),
+                i = b('sdk.RPC');
+
+            function j(m) {
+                if (typeof m !== 'function') {
+                    h.error('FB.Canvas.getPageInfo called without a callback');
+                    return;
+                }
+                if (!g.getInitialized()) h.warn('FB.init is required for getPageInfo to take effect');
+                i.remote.getPageInfo(function(n) {
+                    m(n.result);
+                });
+            }
+            function k(m, n) {
+                if (!g.getInitialized()) h.warn('FB.init is required for scrollTo to take effect');
+                i.remote.scrollTo({
+                    x: m || 0,
+                    y: n || 0
+                });
+            }
+            i.stub('getPageInfo');
+            i.stub('scrollTo');
+            var l = {
+                getPageInfo: j,
+                scrollTo: k
+            };
+            e.exports = l;
+        });
+        __d("sdk.Canvas.Tti", ["sdk.RPC", "sdk.Runtime"], function(a, b, c, d, e, f) {
+            var g = b('sdk.RPC'),
+                h = b('sdk.Runtime');
+
+            function i(n, o) {
+                var p = {
+                    appId: h.getClientID(),
+                    time: (new Date()).getTime(),
+                    name: o
+                },
+                    q = [p];
+                if (n) q.push(function(r) {
+                    n(r.result);
+                });
+                g.remote.logTtiMessage.apply(null, q);
+            }
+            function j() {
+                i(null, 'StartIframeAppTtiTimer');
+            }
+            function k(n) {
+                i(n, 'StopIframeAppTtiTimer');
+            }
+            function l(n) {
+                i(n, 'RecordIframeAppTti');
+            }
+            g.stub('logTtiMessage');
+            var m = {
+                setDoneLoading: l,
+                startTimer: j,
+                stopTimer: k
+            };
+            e.exports = m;
+        });
+        __d("sdk.Canvas.Flash", ["sdk.api", "sdk.RPC", "Log", "sdk.Runtime", "createArrayFrom"], function(a, b, c, d, e, f) {
+            var g = b('sdk.api'),
+                h = b('sdk.RPC'),
+                i = b('Log'),
+                j = b('sdk.Runtime'),
+                k = b('createArrayFrom'),
+                l = 'CLSID:D27CDB6E-AE6D-11CF-96B8-444553540000',
+                m = null;
+
+            function n(r) {
+                r.style.visibility = 'hidden';
+            }
+            function o(r) {
+                r.style.visibility = '';
+            }
+            function p(r) {
+                i.info('hideFlashCallback called with %s', r.state);
+                var s = window.document.getElementsByTagName('object');
+                ES5(k(s), 'forEach', true, function(t) {
+                    if (t.type.toLowerCase() != "application/x-shockwave-flash" && (!t.classid || t.classid.toUpperCase() != l)) return;
+                    for (var u = 0; u < t.childNodes.length; u++) {
+                        var v = t.childNodes[u];
+                        if (/param/i.test(v.nodeName) && /wmode/i.test(v.name) && /opaque|transparent/i.test(v.value)) return;
+                    }
+                    if (m) {
+                        i.info('Calling developer specified callback');
+                        var w = {
+                            state: r.state,
+                            elem: t
+                        };
+                        m(w);
+                        setTimeout(function() {
+                            if (w.state == 'opened') {
+                                n(t);
+                            } else o(t);
+                        }, 200);
+                    } else if (r.state == 'opened') {
+                        t._old_visibility = t.style.visibility;
+                        t.style.visibility = 'hidden';
+                    } else if (r.state == 'closed') {
+                        t.style.visibility = t._old_visibility || 'auto';
+                        delete t._old_visibility;
+                    }
+                    if (Math.random() <= 1 / 1000) g(j.getClientID() + '/occludespopups', 'post', {});
+                });
+            }
+            h.local.hideFlashObjects = function() {
+                p({
+                    state: 'opened'
+                });
+            };
+            h.local.showFlashObjects = function() {
+                p({
+                    state: 'closed'
+                });
+            };
+            var q = {
+                _setHideFlashCallback: function(r) {
+                    m = r;
+                },
+                hideFlashElement: n,
+                showFlashElement: o
+            };
+            e.exports = q;
+        });
+        __d("sdk.Canvas.Navigation", ["sdk.RPC", "Log", "sdk.Runtime"], function(a, b, c, d, e, f) {
+            var g = b('sdk.RPC'),
+                h = b('Log'),
+                i = b('sdk.Runtime');
+
+            function j(n) {
+                if (typeof n !== 'string') {
+                    h.error('FB.Canvas.setHash must have a String as argument');
+                    return;
+                }
+                n = n.replace(/[{}<\[\]>#%"]/, encodeURIComponent);
+                g.remote.setHash(n);
+            }
+            function k(n) {
+                if (typeof n !== 'function') {
+                    h.error('FB.Canvas.getHash called without a callback');
+                    return;
+                }
+                g.remote.getHash(function(o) {
+                    n(o.result);
+                });
+            }
+            function l(n) {
+                if (!i.getInitialized()) h.warn('FB.init is required for setUrlHandler to take effect');
+                g.local.navigate = function(o) {
+                    h.info('navigate %s', o);
+                    n({
+                        path: o
+                    });
+                };
+                g.remote.setNavigationEnabled(true);
+            }
+            g.stub('setNavigationEnabled');
+            g.stub('getHash');
+            g.stub('setHash');
+            var m = {
+                getHash: k,
+                setHash: j,
+                setUrlHandler: l
+            };
+            e.exports = m;
+        });
+        __d("sdk.Canvas", ["copyProperties", "sdk.RPC", "sdk.Runtime", "sdk.Canvas.IframeHandling", "sdk.Canvas.Environment", "sdk.Canvas.Tti", "sdk.Canvas.Flash", "sdk.Canvas.Navigation"], function(a, b, c, d, e, f) {
+            var g = b('copyProperties'),
+                h = b('sdk.RPC'),
+                i = b('sdk.Runtime'),
+                j = b('sdk.Canvas.IframeHandling'),
+                k = b('sdk.Canvas.Environment'),
+                l = b('sdk.Canvas.Tti'),
+                m = b('sdk.Canvas.Flash'),
+                n = b('sdk.Canvas.Navigation');
+            h.stub('showDialog');
+            var o = {
+                init: function() {},
+                isTabIframe: function() {
+                    return i.isEnvironment(i.ENVIRONMENTS.PAGETAB);
+                }
+            };
+            g(o, j);
+            g(o, k);
+            g(o, l);
+            g(o, m);
+            g(o, n);
+            e.exports = o;
+        });
+        __d("legacy:fb.canvas", ["FB", "sdk.Canvas", "SDKConfig"], function(a, b, c, d) {
+            var e = b('FB'),
+                f = c('SDKConfig'),
+                g = b('sdk.Canvas');
+            if (f.migrate) {
+                e.provide('Canvas', g);
+                e.provide('CanvasInsights', {
+                    setDoneLoading: g.setDoneLoading
+                });
+            }
+        }, 3);
         __d("legacy:fb.ua", ["copyProperties", "FB", "UserAgent"], function(a, b, c, d) {
             var e = b('copyProperties'),
                 f = b('FB'),
@@ -3062,7 +3664,7 @@ window.FB || (function() {
             isType: function(a, b) {
                 while (a) if (a.constructor === b || a === b) {
                     return true;
-                } else a = a._base;
+                } else a = a._base || a.constructor.prototype._base;
                 return false;
             }
         });
@@ -3806,6 +4408,9 @@ window.FB || (function() {
                         authResponse: a,
                         status: b
                     };
+                FB.Runtime.setAccessToken(a && a.accessToken || null);
+                FB.Runtime.setLoginStatus(b);
+                FB.Runtime.setUserID(c);
                 FB._authResponse = a;
                 FB._userID = c;
                 FB._userStatus = b;
@@ -3968,6 +4573,59 @@ window.FB || (function() {
                 FB.Canvas.setDoneLoading(a);
             }
         });
+        __d("sdk.Canvas.Prefetcher", ["sdk.api", "createArrayFrom", "sdk.Runtime", "CanvasPrefetcherConfig"], function(a, b, c, d, e, f) {
+            var g = b('sdk.api'),
+                h = b('createArrayFrom'),
+                i = c('CanvasPrefetcherConfig'),
+                j = b('sdk.Runtime'),
+                k = {
+                    AUTOMATIC: 0,
+                    MANUAL: 1
+                },
+                l = i.sampleRate,
+                m = i.blacklist,
+                n = k.AUTOMATIC,
+                o = [];
+
+            function p() {
+                var u = {
+                    object: 'data',
+                    link: 'href',
+                    script: 'src'
+                };
+                if (n == k.AUTOMATIC) ES5(ES5('Object', 'keys', false, u), 'forEach', true, function(v) {
+                    var w = u[v];
+                    ES5(h(document.getElementsByTagName(v)), 'forEach', true, function(x) {
+                        if (x[w]) o.push(x[w]);
+                    });
+                });
+                if (o.length === 0) return;
+                g(j.getClientID() + '/staticresources', 'post', {
+                    urls: ES5('JSON', 'stringify', false, o),
+                    is_https: location.protocol === 'https:'
+                });
+                o = [];
+            }
+            function q() {
+                if (!j.isEnvironment(j.ENVIRONMENTS.CANVAS) || !j.getClientID() || !l) return;
+                if (Math.random() > 1 / l || m == '*' || ~ES5(m, 'indexOf', true, j.getClientID())) return;
+                setTimeout(p, 30000);
+            }
+            function r(u) {
+                n = u;
+            }
+            function s(u) {
+                o.push(u);
+            }
+            var t = {
+                COLLECT_AUTOMATIC: k.AUTOMATIC,
+                COLLECT_MANUAL: k.MANUAL,
+                addStaticResource: s,
+                setCollectionMode: r,
+                _maybeSample: q
+            };
+            e.exports = t;
+        });
         FB.provide('Cookie', {
             _domain: null,
             _enabled: false,
@@ -4121,6 +4779,12 @@ window.FB || (function() {
                 return FB.Canvas.Prefetcher.setCollectionMode(a);
             }
         });
+        __d("legacy:fb.canvas.prefetcher", ["FB", "sdk.Canvas.Prefetcher", "SDKConfig"], function(a, b, c, d) {
+            var e = b('FB'),
+                f = c('SDKConfig'),
+                g = b('sdk.Canvas.Prefetcher');
+            if (f.migrate) e.provide('Canvas.Prefetcher', g);
+        }, 3);
         FB.Dom.ready(function() {
             FB.require('DOMWrapper').setRoot(FB.Content.appendHidden(document.createElement('div')));
         });
@@ -4141,7 +4805,10 @@ window.FB || (function() {
                 });
                 FB._userID = 0;
                 if (!a.logging && ES5(window.location.toString(), 'indexOf', true, 'fb_debug=1') < 0) FB._logging = false;
-                if ('appId' in a || 'apiKey' in a) FB._apiKey = a.appId || a.apiKey;
+                if ('appId' in a || 'apiKey' in a) {
+                    FB._apiKey = a.appId || a.apiKey;
+                    FB.Runtime.setClientID(FB._apiKey);
+                }
                 if ('scope' in a) FB._scope = a.scope;
                 if (!FB._initialized) {
                     FB.XD.init(a.channelUrl ? FB.URI.resolve(a.channelUrl) : null, a.xdProxyName);
@@ -4185,7 +4852,13 @@ window.FB || (function() {
                         } else FB.Dom.ready(FB.XFBML.parse);
                     }, 0);
                 }
-                FB._initialized = true;
+                if (!FB._initialized) {
+                    FB._initialized = true;
+                    FB.Runtime.setInitialized(true);
+                    FB.Runtime.subscribe('AccessToken.change', function(d) {
+                        if (!d) FB.getLoginStatus(null, true);
+                    });
+                }
             }
         });
         FB.provide('UIServer.MobileIframableMethod', {
@@ -4926,10 +5599,10 @@ window.FB || (function() {
                 this.fire("error", a);
             },
             wait: function(a, b) {
-                if (b) this.subscribe('error', b);
+                if (b) this.subscribe('error', FB.unguard(b));
                 this.monitor('value', ES5(this, 'bind', true, function() {
                     if (this.value !== undefined) {
-                        a(this.value);
+                        FB.unguard(a)(this.value);
                         return true;
                     }
                 }));
