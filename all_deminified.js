@@ -1,4 +1,4 @@
-/*1344425868,169919336,JIT Construction: v606334,en_US*/
+/*1344512268,169900142,JIT Construction: v606826,en_US*/
 
 window.FB || (function() {
     var ES5 = function() {
@@ -553,7 +553,56 @@ window.FB || (function() {
             },
             "api": {
                 "mode": "warn",
-                "whitelist": ["api", "init", "ui", "getAccessToken", "getAuthResponse", "getLoginStatus", "getUserID", "login", "logout", "Event", "Event.subscribe", "Event.unsubscribe", "XFBML", "XFBML.parse", "Canvas", "Canvas.Prefetcher.addStaticResource", "Canvas.Prefetcher.setCollectionMode", "Canvas.getPageInfo", "Canvas.hideFlashElement", "Canvas.showFlashElement", "Canvas.scrollTo", "Canvas.setAutoGrow", "Canvas.setAutoResize", "Canvas.setDoneLoading", "Canvas.setSize", "Canvas.setUrlHandler", "Canvas.startTimer", "Canvas.stopTimer", "Insights.impression", "Dom", "Dom.addCssRules", "Arbiter", "Arbiter.inform", "JSON", "JSON.parse", "JSON.stringify", "XD", "XD.onMessage", "Music", "Music.send", "Payment", "Payment.setSize", "UA", "UA.nativeApp", "Payment.init", "Music.init", "Music.flashCallback", "Data", "Data.waitOn", "Data.query"]
+                "whitelist": {
+                    "0": "api",
+                    "1": "init",
+                    "2": "ui",
+                    "3": "getAccessToken",
+                    "4": "getAuthResponse",
+                    "5": "getLoginStatus",
+                    "6": "getUserID",
+                    "7": "login",
+                    "8": "logout",
+                    "9": "Event",
+                    "10": "Event.subscribe",
+                    "11": "Event.unsubscribe",
+                    "12": "XFBML",
+                    "13": "XFBML.parse",
+                    "14": "Canvas",
+                    "15": "Canvas.Prefetcher.addStaticResource",
+                    "16": "Canvas.Prefetcher.setCollectionMode",
+                    "17": "Canvas.getPageInfo",
+                    "18": "Canvas.hideFlashElement",
+                    "19": "Canvas.showFlashElement",
+                    "20": "Canvas.scrollTo",
+                    "21": "Canvas.setAutoGrow",
+                    "22": "Canvas.setAutoResize",
+                    "23": "Canvas.setDoneLoading",
+                    "24": "Canvas.setSize",
+                    "25": "Canvas.setUrlHandler",
+                    "26": "Canvas.startTimer",
+                    "27": "Canvas.stopTimer",
+                    "29": "Dom",
+                    "30": "Dom.addCssRules",
+                    "31": "Arbiter",
+                    "32": "Arbiter.inform",
+                    "33": "Insights",
+                    "34": "Insights.impression",
+                    "36": "XD",
+                    "37": "XD.onMessage",
+                    "38": "Music",
+                    "39": "Music.send",
+                    "40": "Payment",
+                    "41": "Payment.setSize",
+                    "42": "UA",
+                    "43": "UA.nativeApp",
+                    "44": "Payment.init",
+                    "45": "Music.init",
+                    "46": "Music.flashCallback",
+                    "47": "Data",
+                    "48": "Data.waitOn",
+                    "49": "Data.query"
+                }
             }
         });
         __d("ApiClientConfig", [], {
@@ -1368,22 +1417,24 @@ window.FB || (function() {
                                 y[ga] = true;
                             }
                         }
-                        var ka = ES5(Array.prototype.slice.call(arguments), 'map', true, function(qa) {
-                            return typeof qa === 'function' && /^function/.test(qa.toString()) ? m.unguard(qa) : qa;
+                        var ka = ES5(Array.prototype.slice.call(arguments), 'map', true, function(ra) {
+                            return typeof ra === 'function' && /^function/.test(ra.toString()) ? m.unguard(ra) : ra;
                         }),
-                            la = fa.apply(ia, ka);
+                            la = fa.apply(ia, ka),
+                            ma, na = true;
                         if (la && typeof la === 'object') {
-                            var ma = Function();
-                            ma.prototype = la;
-                            var na = new ma();
-                            for (var oa in la) {
-                                var pa = la[oa];
-                                if (typeof pa !== 'function' || oa === 'constructor') continue;
-                                na[oa] = z(pa, ga + ':' + oa, oa, la);
+                            var oa = Function();
+                            oa.prototype = la;
+                            ma = new oa();
+                            for (var pa in la) {
+                                var qa = la[pa];
+                                if (typeof qa !== 'function' || pa === 'constructor') continue;
+                                na = false;
+                                ma[pa] = z(qa, ga + ':' + pa, pa, la);
                             }
-                            return na;
                         }
-                        return la;
+                        if (!na) return ma;
+                        return na ? la : ma;
                     }, ga);
                 }
             }
@@ -4408,8 +4459,8 @@ window.FB || (function() {
                         authResponse: a,
                         status: b
                     };
-                FB.Runtime.setAccessToken(a && a.accessToken || null);
                 FB.Runtime.setLoginStatus(b);
+                FB.Runtime.setAccessToken(a && a.accessToken || null);
                 FB.Runtime.setUserID(c);
                 FB._authResponse = a;
                 FB._userID = c;
@@ -4856,7 +4907,7 @@ window.FB || (function() {
                     FB._initialized = true;
                     FB.Runtime.setInitialized(true);
                     FB.Runtime.subscribe('AccessToken.change', function(d) {
-                        if (!d) FB.getLoginStatus(null, true);
+                        if (!d && FB.Runtime.getLoginStatus() === 'connected') FB.getLoginStatus(null, true);
                     });
                 }
             }
