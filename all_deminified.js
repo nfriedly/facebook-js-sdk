@@ -1,4 +1,4 @@
-/*1344512268,169900142,JIT Construction: v606826,en_US*/
+/*1345030784,169907822,JIT Construction: v610441,en_US*/
 
 window.FB || (function() {
     var ES5 = function() {
@@ -553,56 +553,7 @@ window.FB || (function() {
             },
             "api": {
                 "mode": "warn",
-                "whitelist": {
-                    "0": "api",
-                    "1": "init",
-                    "2": "ui",
-                    "3": "getAccessToken",
-                    "4": "getAuthResponse",
-                    "5": "getLoginStatus",
-                    "6": "getUserID",
-                    "7": "login",
-                    "8": "logout",
-                    "9": "Event",
-                    "10": "Event.subscribe",
-                    "11": "Event.unsubscribe",
-                    "12": "XFBML",
-                    "13": "XFBML.parse",
-                    "14": "Canvas",
-                    "15": "Canvas.Prefetcher.addStaticResource",
-                    "16": "Canvas.Prefetcher.setCollectionMode",
-                    "17": "Canvas.getPageInfo",
-                    "18": "Canvas.hideFlashElement",
-                    "19": "Canvas.showFlashElement",
-                    "20": "Canvas.scrollTo",
-                    "21": "Canvas.setAutoGrow",
-                    "22": "Canvas.setAutoResize",
-                    "23": "Canvas.setDoneLoading",
-                    "24": "Canvas.setSize",
-                    "25": "Canvas.setUrlHandler",
-                    "26": "Canvas.startTimer",
-                    "27": "Canvas.stopTimer",
-                    "29": "Dom",
-                    "30": "Dom.addCssRules",
-                    "31": "Arbiter",
-                    "32": "Arbiter.inform",
-                    "33": "Insights",
-                    "34": "Insights.impression",
-                    "36": "XD",
-                    "37": "XD.onMessage",
-                    "38": "Music",
-                    "39": "Music.send",
-                    "40": "Payment",
-                    "41": "Payment.setSize",
-                    "42": "UA",
-                    "43": "UA.nativeApp",
-                    "44": "Payment.init",
-                    "45": "Music.init",
-                    "46": "Music.flashCallback",
-                    "47": "Data",
-                    "48": "Data.waitOn",
-                    "49": "Data.query"
-                }
+                "whitelist": ["Arbiter", "Arbiter.inform", "Canvas", "Canvas.Prefetcher.addStaticResource", "Canvas.Prefetcher.setCollectionMode", "Canvas.getPageInfo", "Canvas.hideFlashElement", "Canvas.scrollTo", "Canvas.setAutoGrow", "Canvas.setAutoResize", "Canvas.setDoneLoading", "Canvas.setSize", "Canvas.setUrlHandler", "Canvas.showFlashElement", "Canvas.startTimer", "Canvas.stopTimer", "Data", "Data.query", "Data.waitOn", "Dom", "Dom.addCssRules", "Event", "Event.subscribe", "Event.unsubscribe", "Insights", "Insights.impression", "Music", "Music.flashCallback", "Music.init", "Music.send", "Payment", "Payment.init", "Payment.setSize", "UA", "UA.nativeApp", "XD", "XD.onMessage", "XFBML", "XFBML.parse", "api", "getAccessToken", "getAuthResponse", "getLoginStatus", "getUserID", "init", "login", "logout", "ui"]
             }
         });
         __d("ApiClientConfig", [], {
@@ -2263,245 +2214,6 @@ window.FB || (function() {
             }
         });
         FB.provide('Event', FB.EventProvider);
-        __d("resolveWindow", [], function(a, b, c, d, e, f) {
-            function g(h) {
-                var i = window,
-                    j = h.split('.');
-                try {
-                    for (var l = 0; l < j.length; l++) {
-                        var m = j[l],
-                            n = /^frames\[['"]?([a-zA-Z0-9\-_]+)['"]?\]$/.exec(m);
-                        if (n) {
-                            i = i.frames[n[1]];
-                        } else if (m === 'opener' || m === 'parent' || m === 'top') {
-                            i = i[m];
-                        } else return null;
-                    }
-                } catch (k) {
-                    return null;
-                }
-                return i;
-            }
-            e.exports = g;
-        });
-        __d("DOMEventListener", [], function(a, b, c, d, e, f) {
-            var g, h;
-            if (window.addEventListener) {
-                g = function(j, k, l) {
-                    j.addEventListener(k, l, false);
-                };
-                h = function(j, k, l) {
-                    j.removeEventListener(k, l, false);
-                };
-            } else if (window.attachEvent) {
-                g = function(j, k, l) {
-                    j.attachEvent('on' + k, l);
-                };
-                h = function(j, k, l) {
-                    j.detachEvent('on' + k, l);
-                };
-            }
-            var i = {
-                add: function(j, k, l) {
-                    g(j, k, l);
-                    return {
-                        remove: function() {
-                            h(j, k, l);
-                            j = null;
-                        }
-                    };
-                },
-                remove: h
-            };
-            e.exports = i;
-        });
-        __d("XDM", ["copyProperties", "guid", "DOMEventListener", "DOMWrapper", "Flash", "Log", "UserAgent"], function(a, b, c, d, e, f) {
-            var g = b('copyProperties'),
-                h = b('guid'),
-                i = b('DOMEventListener'),
-                j = b('DOMWrapper'),
-                k = b('Flash'),
-                l = b('Log'),
-                m = b('UserAgent'),
-                n = {},
-                o = {
-                    transports: []
-                },
-                p = j.getWindow();
-
-            function q(s) {
-                var t = {},
-                    u = s.length,
-                    v = o.transports;
-                while (u--) t[s[u]] = 1;
-                u = v.length;
-                while (u--) {
-                    var w = v[u],
-                        x = n[w];
-                    if (!t[w] && x.isAvailable()) return w;
-                }
-            }
-            var r = {
-                register: function(s, t) {
-                    l.debug('Registering %s as XDM provider', s);
-                    o.transports.push(s);
-                    n[s] = t;
-                },
-                create: function(s) {
-                    if (!s.whenReady && !s.onMessage) {
-                        l.error('An instance without whenReady or onMessage makes no sense');
-                        throw new Error('An instance without whenReady or ' + 'onMessage makes no sense');
-                    }
-                    if (!s.channel) {
-                        l.warn('Missing channel name, selecting at random');
-                        s.channel = h();
-                    }
-                    if (!s.whenReady) s.whenReady = bagofholding;
-                    if (!s.onMessage) s.onMessage = bagofholding;
-                    var t = s.transport || q(s.blacklist || []),
-                        u = n[t];
-                    if (u && u.isAvailable()) {
-                        l.debug('%s is available', t);
-                        u.init(s);
-                        return t;
-                    }
-                }
-            };
-            r.register('fragment', (function() {
-                var s = false,
-                    t, u = location.protocol + '//' + location.host;
-
-                function v(w) {
-                    var x = document.createElement('iframe');
-                    x.src = 'javascript:false';
-                    var y = i.add(x, 'load', function() {
-                        y.remove();
-                        setTimeout(function() {
-                            x.parentNode.removeChild(x);
-                        }, 5000);
-                    });
-                    t.appendChild(x);
-                    x.src = w;
-                }
-                return {
-                    isAvailable: function() {
-                        return true;
-                    },
-                    init: function(w) {
-                        l.debug('init fragment');
-                        var x = {
-                            send: function(y, z, aa, ba) {
-                                l.debug('sending to: %s (%s)', z + w.channelPath, ba);
-                                v(z + w.channelPath + y + '&xd_rel=parent.parent&relation=parent.parent&xd_origin=' + encodeURIComponent(u));
-                            }
-                        };
-                        if (s) {
-                            w.whenReady(x);
-                            return;
-                        }
-                        t = w.root;
-                        s = true;
-                        w.whenReady(x);
-                    }
-                };
-            })());
-            r.register('flash', (function() {
-                var s = false,
-                    t, u = {},
-                    v = false,
-                    w = 15000,
-                    x;
-                return {
-                    isAvailable: function() {
-                        return k.checkMinVersion('8.0.24');
-                    },
-                    init: function(y) {
-                        l.debug('init flash: ' + y.channel);
-                        var z = {
-                            send: function(ca, da, ea, fa) {
-                                l.debug('sending to: %s (%s)', da, fa);
-                                t.postMessage(ca, da, fa);
-                            }
-                        };
-                        if (s) {
-                            y.whenReady(z);
-                            return;
-                        }
-                        var aa = y.root.appendChild(p.document.createElement('div')),
-                            ba = h();
-                        u[ba] = function() {
-                            clearTimeout(x);
-                            l.info('xdm.swf called the callback');
-                            delete u[ba];
-                            ba = h();
-                            u[ba] = function(ca, da) {
-                                ca = decodeURIComponent(ca);
-                                l.debug('received message %s from %s', ca, da);
-                                y.onMessage(ca, da);
-                            };
-                            t.init(y.channel, 'FB_XDM_CALLBACKS.' + ba);
-                            y.whenReady(z);
-                        };
-                        p.FB_XDM_CALLBACKS = u;
-                        t = k.embed(y.flashUrl, aa, null, {
-                            protocol: location.protocol.replace(':', ''),
-                            host: location.host,
-                            callback: 'FB_XDM_CALLBACKS.' + ba,
-                            log: v
-                        });
-                        x = setTimeout(function() {
-                            l.warn('The Flash component did not load within %s ms - ' + 'verify that the container is not set to hidden or invisible ' + 'using CSS as this will cause some browsers to not load ' + 'the components', w);
-                        }, w);
-                        s = true;
-                    }
-                };
-            })());
-            r.register('postmessage', (function() {
-                var s = false;
-                return {
-                    isAvailable: function() {
-                        return !!p.postMessage;
-                    },
-                    init: function(t) {
-                        l.debug('init postMessage: ' + t.channel);
-                        var u = '_FB_' + t.channel,
-                            v = {
-                                send: function(w, x, y, z) {
-                                    if (p === y) {
-                                        l.error('Invalid windowref, equal to window (self)');
-                                        throw new Error();
-                                    }
-                                    l.debug('sending to: %s (%s)', x, z);
-                                    var aa = function() {
-                                            y.postMessage('_FB_' + z + w, x);
-                                        };
-                                    if (m.ie() == 8) {
-                                        setTimeout(aa, 0);
-                                    } else aa();
-                                }
-                            };
-                        if (s) {
-                            t.whenReady(v);
-                            return;
-                        }
-                        i.add(p, 'message', function(event) {
-                            var w = event.data,
-                                x = event.origin || 'native';
-                            if (typeof w != 'string') {
-                                l.warn('Received message of type %s from %s, expected a string', typeof w, x);
-                                return;
-                            }
-                            l.debug('received message %s from %s', w, x);
-                            if (w.substring(0, u.length) == u) w = w.substring(u.length);
-                            t.onMessage(w, x);
-                        });
-                        t.whenReady(v);
-                        s = true;
-                    }
-                };
-            })());
-            e.exports = r;
-        });
         __d("JSONRPC", ["copyProperties", "Log"], function(a, b, c, d, e, f) {
             var g = b('copyProperties'),
                 h = b('Log');
@@ -2613,456 +2325,6 @@ window.FB || (function() {
                 };
             e.exports = l;
         });
-        __d("sdk.XD", ["guid", "resolveWindow", "wrapFunction", "FB", "XDM", "Log", "QueryString", "Queue", "URL", "sdk.RPC", "sdk.Runtime", "XDConfig"], function(a, b, c, d, e, f) {
-            var g = c('XDConfig'),
-                h = b('guid'),
-                i = b('resolveWindow'),
-                j = b('wrapFunction'),
-                k = b('FB'),
-                l = b('XDM'),
-                m = b('Log'),
-                n = b('QueryString'),
-                o = b('Queue'),
-                p = b('URL'),
-                q = b('sdk.RPC'),
-                r = b('sdk.Runtime'),
-                s = new o(),
-                t = new o(),
-                u = new o(),
-                v, w, x = h(),
-                y = h(),
-                z = location.protocol + '//' + location.host,
-                aa, ba = false,
-                ca = {},
-                da = new o();
-            q.setInQueue(da);
-
-            function ea(la) {
-                m.info('Remote XD can talk to facebook.com (%s)', la);
-                if (la == 'canvas') {
-                    r.setEnvironment(r.ENVIRONMENTS.CANVAS);
-                    k._inCanvas = true;
-                } else {
-                    r.setEnvironment(r.ENVIRONMENTS.PAGETAB);
-                    k.Canvas._isTabIframe = true;
-                }
-            }
-            function fa(la, ma) {
-                if (!ma) {
-                    m.error('No senderOrigin');
-                    throw new Error();
-                }
-                var na = /^https?/.exec(ma)[0];
-                switch (la.xd_action) {
-                case 'proxy_ready':
-                    var oa, pa;
-                    if (na == 'https') {
-                        oa = u;
-                        pa = w;
-                    } else {
-                        oa = t;
-                        pa = v;
-                    }
-                    if (la.registered) {
-                        ea(la.registered);
-                        s = oa.merge(s);
-                    }
-                    m.info('Proxy ready, starting queue %s containing %s messages', na + 'ProxyQueue', oa.getLength());
-                    oa.start(function(ra) {
-                        aa.send(typeof ra === 'string' ? ra : n.encode(ra), ma, pa.contentWindow, y + '_' + na);
-                    });
-                    break;
-                case 'plugin_ready':
-                    m.info('Plugin %s ready, protocol: %s', la.name, na);
-                    ca[la.name] = {
-                        protocol: na
-                    };
-                    if (o.exists(la.name)) {
-                        var qa = o.get(la.name);
-                        m.debug('Enqueuing %s messages for %s in %s', qa.getLength(), la.name, na + 'ProxyQueue');
-                        (na == 'https' ? u : t).merge(qa);
-                    }
-                    break;
-                }
-                if (la.data) ga(la.data, ma);
-            }
-            function ga(la, ma) {
-                if (ma && ma !== 'native' && !p(ma).isFacebookURL()) return;
-                if (typeof la == 'string') {
-                    if (/^FB_RPC:/.test(la)) {
-                        da.enqueue(la.substring(7));
-                        return;
-                    }
-                    if (la.substring(0, 1) == '{') {
-                        try {
-                            la = ES5('JSON', 'parse', false, la);
-                        } catch (na) {
-                            m.warn('Failed to decode %s as JSON', la);
-                            return;
-                        }
-                    } else la = n.decode(la);
-                }
-                if (!ma) if (la.xd_sig == x) ma = la.xd_origin;
-                if (la.xd_action) {
-                    fa(la, ma);
-                    return;
-                }
-                if (la.access_token) k._https = /^https/.test(z);
-                if (la.cb) {
-                    var oa = k.XD._callbacks[la.cb];
-                    if (!k.XD._forever[la.cb]) delete k.XD._callbacks[la.cb];
-                    if (oa) oa(la);
-                }
-            }
-            var ha = function() {
-                    var la = document.createElement("form"),
-                        ma = la.appendChild(document.createElement("input")),
-                        na;
-                    ma.name = h();
-                    na = ma !== la.elements[ma.name];
-                    la = ma = null;
-                    ha = function() {
-                        return na;
-                    };
-                    return na;
-                };
-
-            function ia(la) {
-                var ma = ha() ? document.createElement('<iframe name="' + la.name + '"/>') : document.createElement("iframe");
-                ma.name = ma.id = la.name;
-                ma.src = "javascript:false";
-                la.root.appendChild(ma);
-                ma.src = la.url;
-                return ma;
-            }
-            function ja(la, ma) {
-                if (la == 'facebook') {
-                    ma.relation = 'parent.parent';
-                    s.enqueue(ma);
-                } else {
-                    ma.relation = 'parent.frames["' + la + '"]';
-                    var na = ca[la];
-                    if (na) {
-                        m.debug('Enqueuing message for plugin %s in %s', la, na.protocol + 'ProxyQueue');
-                        (na.protocol == 'https' ? u : t).enqueue(ma);
-                    } else {
-                        m.debug('Buffering message for plugin %s', la);
-                        o.get(la).enqueue(ma);
-                    }
-                }
-            }
-            q.getOutQueue().start(function(la) {
-                ja('facebook', 'FB_RPC:' + la);
-            });
-            var ka = {
-                rpc: q,
-                _callbacks: {},
-                _forever: {},
-                _channel: y,
-                _origin: z,
-                onMessage: ga,
-                recv: ga,
-                init: function(la, ma) {
-                    if (ba) return;
-                    var na = la ? /\/\/.*?(\/[^#]*)/.exec(la)[1] : location.pathname + location.search;
-                    na += (~ES5(na, 'indexOf', true, '?') ? '&' : '?') + 'fb_xd_fragment#xd_sig=' + x + '&';
-                    var oa = k.Content.appendHidden(document.createElement('div')),
-                        pa = l.create({
-                            root: oa,
-                            channel: y,
-                            channelPath: '/' + g.XdUrl + '#',
-                            flashUrl: g.Flash.path,
-                            whenReady: function(qa) {
-                                aa = qa;
-                                var ra = {
-                                    channel: y,
-                                    origin: location.protocol + '//' + location.host,
-                                    channel_path: na,
-                                    transport: pa,
-                                    xd_name: ma
-                                },
-                                    sa = g.XdUrl + '#' + n.encode(ra),
-                                    ta = g.useCdn ? k._domain.staticfb : 'http://www.facebook.com/',
-                                    ua = g.useCdn ? k._domain.https_staticfb : 'https://www.facebook.com/';
-                                if (!k.onlyUseHttps()) v = ia({
-                                    url: ta + sa,
-                                    name: 'fb_xdm_frame_http',
-                                    root: oa
-                                });
-                                w = ia({
-                                    url: ua + sa,
-                                    name: 'fb_xdm_frame_https',
-                                    root: oa
-                                });
-                            },
-                            onMessage: j(ga, 'entry', 'XD:message')
-                        });
-                    ba = true;
-                },
-                sendToFacebook: ja,
-                inform: function(la, ma, na, oa, pa) {
-                    ja('facebook', {
-                        method: la,
-                        params: ES5('JSON', 'stringify', false, ma || {}),
-                        behavior: pa || 'p',
-                        relation: na
-                    });
-                },
-                handler: function(la, ma, na, oa) {
-                    oa = oa || h();
-                    if (na) k.XD._forever[oa] = true;
-                    k.XD._callbacks[oa] = la;
-                    var pa = location.protocol == 'https:' ? k._domain.https_staticfb : k._domain.staticfb,
-                        qa = g.useCdn ? pa : location.protocol + '//www.facebook.com/';
-                    return qa + g.XdUrl + '#' + n.encode({
-                        cb: oa,
-                        origin: z + '/' + y,
-                        domain: location.hostname,
-                        relation: ma || 'opener'
-                    });
-                }
-            };
-            (function() {
-                var la = location.href.match(/[?&]fb_xd_fragment#(.*)$/);
-                if (la) {
-                    document.documentElement.style.display = 'none';
-                    var ma = n.decode(la[1]),
-                        na = i(ma.xd_rel);
-                    m.debug('Passing fragment based message: %s', la[1]);
-                    var oa = na.FB;
-                    oa.wrapFunction(oa.XD.onMessage, 'entry', 'XD:message')(ma);
-                    document.open();
-                    document.close();
-                }
-            })();
-            e.exports = ka;
-        });
-        __d("legacy:fb.arbiter", ["FB", "sdk.XD"], function(a, b, c, d) {
-            var e = b('FB'),
-                f = b('sdk.XD');
-            e.provide('Arbiter', {
-                inform: f.inform
-            });
-        }, 3);
-        __d("legacy:fb.xd", ["FB", "sdk.XD"], function(a, b, c, d) {
-            var e = b('FB'),
-                f = b('sdk.XD');
-            e.provide('XD', f);
-        }, 3);
-        FB.provide('Canvas', {
-            _timer: null,
-            _lastSize: {},
-            _isTabIframe: !! ~ES5(window.name, 'indexOf', true, 'app_runner_'),
-            _pageInfo: {
-                clientWidth: 0,
-                clientHeight: 0,
-                scrollLeft: 0,
-                scrollTop: 0,
-                offsetLeft: 0,
-                offsetTop: 0
-            },
-            getPageInfo: function(a) {
-                if (typeof a !== 'function') {
-                    FB.log('FB.Canvas.getPageInfo called without a callback');
-                    return;
-                }
-                if (FB.initSitevars.rpc) {
-                    FB.XD.rpc.remote.getPageInfo(function(e) {
-                        if (e.result) a(e.result);
-                    });
-                } else {
-                    var b = 'top.frames[' + window.name + ']',
-                        c = FB.XD.handler(function(e) {
-                            for (var f in FB.Canvas._pageInfo) if (e[f]) FB.Canvas._pageInfo[f] = e[f] | 0;
-                            a && a(FB.Canvas._pageInfo);
-                        }, b, true),
-                        d = {
-                            channelUrl: c,
-                            frame: window.name
-                        };
-                    FB.Arbiter.inform('getPageInfo', d, 'top');
-                }
-            },
-            getHash: function(a) {
-                if (typeof a !== 'function') {
-                    FB.log('FB.Canvas.getHash called without a callback');
-                    return;
-                }
-                FB.XD.rpc.remote.getHash(function(b) {
-                    a(b.result);
-                });
-            },
-            setHash: function(a) {
-                if (typeof a !== 'string') {
-                    FB.log('FB.Canvas.setHash must have a String as argument');
-                    return;
-                }
-                a = a.replace(/[{}<\[\]>#%"]/, encodeURIComponent);
-                FB.XD.rpc.remote.setHash(a);
-            },
-            hideFlashElement: function(a) {
-                a.style.visibility = 'hidden';
-            },
-            showFlashElement: function(a) {
-                a.style.visibility = '';
-            },
-            _flashClassID: "CLSID:D27CDB6E-AE6D-11CF-96B8-444553540000",
-            _hideFlashCallback: function(a) {
-                var b = window.document.getElementsByTagName('object');
-                ES5(FB.Array.toArray(b), 'forEach', true, function(c) {
-                    var c = b[i];
-                    if (c.type.toLowerCase() != "application/x-shockwave-flash" && (!c.classid || c.classid.toUpperCase() != FB.Canvas._flashClassID)) return;
-                    var d = false;
-                    for (var e = 0; e < c.childNodes.length; e++) if (c.childNodes[e].nodeName.toLowerCase() == "param" && c.childNodes[e].name.toLowerCase() == "wmode") if (c.childNodes[e].value.toLowerCase() == "opaque" || c.childNodes[e].value.toLowerCase() == "transparent") d = true;
-                    if (!d) {
-                        var f = Math.random();
-                        if (f <= 1 / 1000) FB.api(FB._apiKey + '/occludespopups', 'post', {});
-                        if (FB.Canvas._devHideFlashCallback) {
-                            var g = 200,
-                                h = {
-                                    state: a.state,
-                                    elem: c
-                                },
-                                j = ES5(function(i) {
-                                    if (i.state == 'opened') {
-                                        FB.Canvas.hideFlashElement(i.elem);
-                                    } else FB.Canvas.showFlashElement(i.elem);
-                                }, 'bind', true, this, h);
-                            setTimeout(j, g);
-                            FB.Canvas._devHideFlashCallback(h);
-                        } else if (a.state == 'opened') {
-                            c._old_visibility = c.style.visibility;
-                            c.style.visibility = 'hidden';
-                        } else if (a.state == 'closed') {
-                            c.style.visibility = c._old_visibility;
-                            delete c._old_visibility;
-                        }
-                    }
-                });
-            },
-            _devHideFlashCallback: null,
-            _setHideFlashCallback: function(a) {
-                FB.Canvas._devHideFlashCallback = a;
-            },
-            init: function() {
-                var a = FB.XD.handler(FB.Canvas._hideFlashCallback, 'top.frames[' + window.name + ']', true);
-                FB.Arbiter.inform('iframeSetupFlashHiding', {
-                    channelUrl: a
-                });
-            },
-            setSize: function(a) {
-                if (!FB._initialized && arguments.callee.caller != FB.setAutoGrow) FB.log('FB.init is required for setSize to take effect');
-                if (typeof a != "object") a = {};
-                var b = 0,
-                    c = 0;
-                a = a || {};
-                if (a.width == null || a.height == null) {
-                    a = FB.copy(a, FB.Canvas._computeContentSize());
-                    b = 16;
-                    c = 4;
-                }
-                a = FB.copy(a, {
-                    frame: window.name || 'iframe_canvas'
-                });
-                if (FB.Canvas._lastSize[a.frame]) {
-                    var d = FB.Canvas._lastSize[a.frame].height,
-                        e = a.height - d;
-                    if (FB.Canvas._lastSize[a.frame].width == a.width && (e <= c && e >= -b)) return false;
-                }
-                FB.Canvas._lastSize[a.frame] = a;
-                if (FB.initSitevars.rpc) {
-                    FB.XD.rpc.remote.setSize(a);
-                } else FB.Arbiter.inform('setSize', a);
-                return true;
-            },
-            scrollTo: function(a, b) {
-                if (!FB._initialized) FB.log('FB.init is required for scrollTo to take effect');
-                if (FB.initSitevars.rpc) {
-                    FB.XD.rpc.remote.scrollTo({
-                        x: a,
-                        y: b
-                    });
-                } else FB.Arbiter.inform('scrollTo', {
-                    frame: window.name || 'iframe_canvas',
-                    x: a,
-                    y: b
-                });
-            },
-            setAutoGrow: function(a, b) {
-                if (!FB._initialized) FB.log('FB.init is required for setAutoGrow to take effect');
-                if (b === undefined && typeof a == "number") {
-                    b = a;
-                    a = true;
-                }
-                if (a === undefined || a) {
-                    if (FB.Canvas._timer === null) FB.Canvas._timer = window.setInterval(FB.Canvas.setSize, b || 100);
-                    FB.Canvas.setSize();
-                } else if (FB.Canvas._timer !== null) {
-                    window.clearInterval(FB.Canvas._timer);
-                    FB.Canvas._timer = null;
-                }
-            },
-            setAutoResize: function() {
-                FB.log('FB.setAutoResize() is no longer functional and will be removed ' + 'on September 5th. This code will throw an exception then. Use ' + 'FB.setAutoGrow() instead.');
-            },
-            isTabIframe: function() {
-                return FB.Canvas._isTabIframe;
-            },
-            setDoneLoading: function(a) {
-                FB.Canvas._passAppTtiMessage(a, 'RecordIframeAppTti');
-            },
-            stopTimer: function(a) {
-                FB.Canvas._passAppTtiMessage(a, 'StopIframeAppTtiTimer');
-            },
-            setUrlHandler: function(a) {
-                if (!FB._initialized) FB.log('FB.init is required for setUrlHandler to take effect');
-                var b = FB.XD.handler(a, 'top.frames[' + window.name + ']', true);
-                FB.Arbiter.inform('setUrlHandler', b);
-            },
-            startTimer: function() {
-                FB.Canvas._passAppTtiMessage(null, 'StartIframeAppTtiTimer');
-            },
-            _passAppTtiMessage: function(a, b) {
-                var c = null;
-                if (a) c = FB.XD.handler(a, 'top.frames[' + window.name + ']', false);
-                FB.Arbiter.inform(b, {
-                    frame: window.name || 'iframe_canvas',
-                    time: (new Date()).getTime(),
-                    appId: parseInt(FB._apiKey, 10),
-                    channelUrl: c
-                });
-            },
-            _computeContentSize: function() {
-                var a = document.body,
-                    b = document.documentElement,
-                    c = 0,
-                    d = Math.max(a.offsetTop, 0),
-                    e = Math.max(b.offsetTop, 0),
-                    f = a.scrollHeight + d,
-                    g = a.offsetHeight + d,
-                    h = b.scrollHeight + e,
-                    i = b.offsetHeight + e,
-                    j = Math.max(f, g, h, i);
-                if (a.offsetWidth < a.scrollWidth) {
-                    c = a.scrollWidth + a.offsetLeft;
-                } else ES5(FB.Array.toArray(a.childNodes), 'forEach', true, function(k) {
-                    var l = k.offsetWidth + k.offsetLeft;
-                    if (l > c) c = l;
-                });
-                if (b.clientLeft > 0) c += (b.clientLeft * 2);
-                if (b.clientTop > 0) j += (b.clientTop * 2);
-                return {
-                    height: j,
-                    width: c
-                };
-            }
-        });
-        FB.XD.rpc.stub('getPageInfo');
-        FB.XD.rpc.stub('getHash');
-        FB.XD.rpc.stub('setHash');
-        FB.XD.rpc.stub('setSize');
-        FB.XD.rpc.stub('scrollTo');
-        FB.XD.rpc.stub('showDialog');
         __d("hasArrayNature", [], function(a, b, c, d, e, f) {
             function g(h) {
                 return ( !! h && (typeof h == 'object' || typeof h == 'function') && ('length' in h) && !('setInterval' in h) && (Object.prototype.toString.call(h) === "[object Array]" || ('callee' in h) || ('item' in h)));
@@ -3348,7 +2610,6 @@ window.FB || (function() {
                 n = b('sdk.Canvas.Navigation');
             h.stub('showDialog');
             var o = {
-                init: function() {},
                 isTabIframe: function() {
                     return i.isEnvironment(i.ENVIRONMENTS.PAGETAB);
                 }
@@ -3360,16 +2621,13 @@ window.FB || (function() {
             g(o, n);
             e.exports = o;
         });
-        __d("legacy:fb.canvas", ["FB", "sdk.Canvas", "SDKConfig"], function(a, b, c, d) {
+        __d("legacy:fb.canvas", ["FB", "sdk.Canvas"], function(a, b, c, d) {
             var e = b('FB'),
-                f = c('SDKConfig'),
-                g = b('sdk.Canvas');
-            if (f.migrate) {
-                e.provide('Canvas', g);
-                e.provide('CanvasInsights', {
-                    setDoneLoading: g.setDoneLoading
-                });
-            }
+                f = b('sdk.Canvas');
+            e.provide('Canvas', f);
+            e.provide('CanvasInsights', {
+                setDoneLoading: f.setDoneLoading
+            });
         }, 3);
         __d("legacy:fb.ua", ["copyProperties", "FB", "UserAgent"], function(a, b, c, d) {
             var e = b('copyProperties'),
@@ -3476,6 +2734,475 @@ window.FB || (function() {
                 c.parentNode.removeChild(c);
             }
         });
+        __d("resolveWindow", [], function(a, b, c, d, e, f) {
+            function g(h) {
+                var i = window,
+                    j = h.split('.');
+                try {
+                    for (var l = 0; l < j.length; l++) {
+                        var m = j[l],
+                            n = /^frames\[['"]?([a-zA-Z0-9\-_]+)['"]?\]$/.exec(m);
+                        if (n) {
+                            i = i.frames[n[1]];
+                        } else if (m === 'opener' || m === 'parent' || m === 'top') {
+                            i = i[m];
+                        } else return null;
+                    }
+                } catch (k) {
+                    return null;
+                }
+                return i;
+            }
+            e.exports = g;
+        });
+        __d("DOMEventListener", [], function(a, b, c, d, e, f) {
+            var g, h;
+            if (window.addEventListener) {
+                g = function(j, k, l) {
+                    j.addEventListener(k, l, false);
+                };
+                h = function(j, k, l) {
+                    j.removeEventListener(k, l, false);
+                };
+            } else if (window.attachEvent) {
+                g = function(j, k, l) {
+                    j.attachEvent('on' + k, l);
+                };
+                h = function(j, k, l) {
+                    j.detachEvent('on' + k, l);
+                };
+            }
+            var i = {
+                add: function(j, k, l) {
+                    g(j, k, l);
+                    return {
+                        remove: function() {
+                            h(j, k, l);
+                            j = null;
+                        }
+                    };
+                },
+                remove: h
+            };
+            e.exports = i;
+        });
+        __d("XDM", ["copyProperties", "guid", "DOMEventListener", "DOMWrapper", "Flash", "Log", "UserAgent"], function(a, b, c, d, e, f) {
+            var g = b('copyProperties'),
+                h = b('guid'),
+                i = b('DOMEventListener'),
+                j = b('DOMWrapper'),
+                k = b('Flash'),
+                l = b('Log'),
+                m = b('UserAgent'),
+                n = {},
+                o = {
+                    transports: []
+                },
+                p = j.getWindow();
+
+            function q(s) {
+                var t = {},
+                    u = s.length,
+                    v = o.transports;
+                while (u--) t[s[u]] = 1;
+                u = v.length;
+                while (u--) {
+                    var w = v[u],
+                        x = n[w];
+                    if (!t[w] && x.isAvailable()) return w;
+                }
+            }
+            var r = {
+                register: function(s, t) {
+                    l.debug('Registering %s as XDM provider', s);
+                    o.transports.push(s);
+                    n[s] = t;
+                },
+                create: function(s) {
+                    if (!s.whenReady && !s.onMessage) {
+                        l.error('An instance without whenReady or onMessage makes no sense');
+                        throw new Error('An instance without whenReady or ' + 'onMessage makes no sense');
+                    }
+                    if (!s.channel) {
+                        l.warn('Missing channel name, selecting at random');
+                        s.channel = h();
+                    }
+                    if (!s.whenReady) s.whenReady = bagofholding;
+                    if (!s.onMessage) s.onMessage = bagofholding;
+                    var t = s.transport || q(s.blacklist || []),
+                        u = n[t];
+                    if (u && u.isAvailable()) {
+                        l.debug('%s is available', t);
+                        u.init(s);
+                        return t;
+                    }
+                }
+            };
+            r.register('fragment', (function() {
+                var s = false,
+                    t, u = location.protocol + '//' + location.host;
+
+                function v(w) {
+                    var x = document.createElement('iframe');
+                    x.src = 'javascript:false';
+                    var y = i.add(x, 'load', function() {
+                        y.remove();
+                        setTimeout(function() {
+                            x.parentNode.removeChild(x);
+                        }, 5000);
+                    });
+                    t.appendChild(x);
+                    x.src = w;
+                }
+                return {
+                    isAvailable: function() {
+                        return true;
+                    },
+                    init: function(w) {
+                        l.debug('init fragment');
+                        var x = {
+                            send: function(y, z, aa, ba) {
+                                l.debug('sending to: %s (%s)', z + w.channelPath, ba);
+                                v(z + w.channelPath + y + '&xd_rel=parent.parent&relation=parent.parent&xd_origin=' + encodeURIComponent(u));
+                            }
+                        };
+                        if (s) {
+                            w.whenReady(x);
+                            return;
+                        }
+                        t = w.root;
+                        s = true;
+                        w.whenReady(x);
+                    }
+                };
+            })());
+            r.register('flash', (function() {
+                var s = false,
+                    t, u = {},
+                    v = false,
+                    w = 15000,
+                    x;
+                return {
+                    isAvailable: function() {
+                        return k.checkMinVersion('8.0.24');
+                    },
+                    init: function(y) {
+                        l.debug('init flash: ' + y.channel);
+                        var z = {
+                            send: function(ca, da, ea, fa) {
+                                l.debug('sending to: %s (%s)', da, fa);
+                                t.postMessage(ca, da, fa);
+                            }
+                        };
+                        if (s) {
+                            y.whenReady(z);
+                            return;
+                        }
+                        var aa = y.root.appendChild(p.document.createElement('div')),
+                            ba = h();
+                        u[ba] = function() {
+                            clearTimeout(x);
+                            l.info('xdm.swf called the callback');
+                            delete u[ba];
+                            ba = h();
+                            u[ba] = function(ca, da) {
+                                ca = decodeURIComponent(ca);
+                                l.debug('received message %s from %s', ca, da);
+                                y.onMessage(ca, da);
+                            };
+                            t.init(y.channel, 'FB_XDM_CALLBACKS.' + ba);
+                            y.whenReady(z);
+                        };
+                        p.FB_XDM_CALLBACKS = u;
+                        t = k.embed(y.flashUrl, aa, null, {
+                            protocol: location.protocol.replace(':', ''),
+                            host: location.host,
+                            callback: 'FB_XDM_CALLBACKS.' + ba,
+                            log: v
+                        });
+                        x = setTimeout(function() {
+                            l.warn('The Flash component did not load within %s ms - ' + 'verify that the container is not set to hidden or invisible ' + 'using CSS as this will cause some browsers to not load ' + 'the components', w);
+                        }, w);
+                        s = true;
+                    }
+                };
+            })());
+            r.register('postmessage', (function() {
+                var s = false;
+                return {
+                    isAvailable: function() {
+                        return !!p.postMessage;
+                    },
+                    init: function(t) {
+                        l.debug('init postMessage: ' + t.channel);
+                        var u = '_FB_' + t.channel,
+                            v = {
+                                send: function(w, x, y, z) {
+                                    if (p === y) {
+                                        l.error('Invalid windowref, equal to window (self)');
+                                        throw new Error();
+                                    }
+                                    l.debug('sending to: %s (%s)', x, z);
+                                    var aa = function() {
+                                            y.postMessage('_FB_' + z + w, x);
+                                        };
+                                    if (m.ie() == 8) {
+                                        setTimeout(aa, 0);
+                                    } else aa();
+                                }
+                            };
+                        if (s) {
+                            t.whenReady(v);
+                            return;
+                        }
+                        i.add(p, 'message', function(event) {
+                            var w = event.data,
+                                x = event.origin || 'native';
+                            if (typeof w != 'string') {
+                                l.warn('Received message of type %s from %s, expected a string', typeof w, x);
+                                return;
+                            }
+                            l.debug('received message %s from %s', w, x);
+                            if (w.substring(0, u.length) == u) w = w.substring(u.length);
+                            t.onMessage(w, x);
+                        });
+                        t.whenReady(v);
+                        s = true;
+                    }
+                };
+            })());
+            e.exports = r;
+        });
+        __d("sdk.XD", ["guid", "resolveWindow", "wrapFunction", "FB", "XDM", "Log", "QueryString", "Queue", "URL", "sdk.RPC", "sdk.Runtime", "XDConfig"], function(a, b, c, d, e, f) {
+            var g = c('XDConfig'),
+                h = b('guid'),
+                i = b('resolveWindow'),
+                j = b('wrapFunction'),
+                k = b('FB'),
+                l = b('XDM'),
+                m = b('Log'),
+                n = b('QueryString'),
+                o = b('Queue'),
+                p = b('URL'),
+                q = b('sdk.RPC'),
+                r = b('sdk.Runtime'),
+                s = new o(),
+                t = new o(),
+                u = new o(),
+                v, w, x = h(),
+                y = h(),
+                z = location.protocol + '//' + location.host,
+                aa, ba = false,
+                ca = {},
+                da = new o();
+            q.setInQueue(da);
+
+            function ea(la) {
+                m.info('Remote XD can talk to facebook.com (%s)', la);
+                if (la == 'canvas') {
+                    r.setEnvironment(r.ENVIRONMENTS.CANVAS);
+                    k._inCanvas = true;
+                } else {
+                    r.setEnvironment(r.ENVIRONMENTS.PAGETAB);
+                    k.Canvas._isTabIframe = true;
+                }
+            }
+            function fa(la, ma) {
+                if (!ma) {
+                    m.error('No senderOrigin');
+                    throw new Error();
+                }
+                var na = /^https?/.exec(ma)[0];
+                switch (la.xd_action) {
+                case 'proxy_ready':
+                    var oa, pa;
+                    if (na == 'https') {
+                        oa = u;
+                        pa = w;
+                    } else {
+                        oa = t;
+                        pa = v;
+                    }
+                    if (la.registered) {
+                        ea(la.registered);
+                        s = oa.merge(s);
+                    }
+                    m.info('Proxy ready, starting queue %s containing %s messages', na + 'ProxyQueue', oa.getLength());
+                    oa.start(function(ra) {
+                        aa.send(typeof ra === 'string' ? ra : n.encode(ra), ma, pa.contentWindow, y + '_' + na);
+                    });
+                    break;
+                case 'plugin_ready':
+                    m.info('Plugin %s ready, protocol: %s', la.name, na);
+                    ca[la.name] = {
+                        protocol: na
+                    };
+                    if (o.exists(la.name)) {
+                        var qa = o.get(la.name);
+                        m.debug('Enqueuing %s messages for %s in %s', qa.getLength(), la.name, na + 'ProxyQueue');
+                        (na == 'https' ? u : t).merge(qa);
+                    }
+                    break;
+                }
+                if (la.data) ga(la.data, ma);
+            }
+            function ga(la, ma) {
+                if (ma && ma !== 'native' && !p(ma).isFacebookURL()) return;
+                if (typeof la == 'string') {
+                    if (/^FB_RPC:/.test(la)) {
+                        da.enqueue(la.substring(7));
+                        return;
+                    }
+                    if (la.substring(0, 1) == '{') {
+                        try {
+                            la = ES5('JSON', 'parse', false, la);
+                        } catch (na) {
+                            m.warn('Failed to decode %s as JSON', la);
+                            return;
+                        }
+                    } else la = n.decode(la);
+                }
+                if (!ma) if (la.xd_sig == x) ma = la.xd_origin;
+                if (la.xd_action) {
+                    fa(la, ma);
+                    return;
+                }
+                if (la.access_token) k._https = /^https/.test(z);
+                if (la.cb) {
+                    var oa = k.XD._callbacks[la.cb];
+                    if (!k.XD._forever[la.cb]) delete k.XD._callbacks[la.cb];
+                    if (oa) oa(la);
+                }
+            }
+            var ha = function() {
+                    var la = document.createElement("form"),
+                        ma = la.appendChild(document.createElement("input")),
+                        na;
+                    ma.name = h();
+                    na = ma !== la.elements[ma.name];
+                    la = ma = null;
+                    ha = function() {
+                        return na;
+                    };
+                    return na;
+                };
+
+            function ia(la) {
+                var ma = ha() ? document.createElement('<iframe name="' + la.name + '"/>') : document.createElement("iframe");
+                ma.name = ma.id = la.name;
+                ma.src = "javascript:false";
+                la.root.appendChild(ma);
+                ma.src = la.url;
+                return ma;
+            }
+            function ja(la, ma) {
+                if (la == 'facebook') {
+                    ma.relation = 'parent.parent';
+                    s.enqueue(ma);
+                } else {
+                    ma.relation = 'parent.frames["' + la + '"]';
+                    var na = ca[la];
+                    if (na) {
+                        m.debug('Enqueuing message for plugin %s in %s', la, na.protocol + 'ProxyQueue');
+                        (na.protocol == 'https' ? u : t).enqueue(ma);
+                    } else {
+                        m.debug('Buffering message for plugin %s', la);
+                        o.get(la).enqueue(ma);
+                    }
+                }
+            }
+            q.getOutQueue().start(function(la) {
+                ja('facebook', 'FB_RPC:' + la);
+            });
+            var ka = {
+                rpc: q,
+                _callbacks: {},
+                _forever: {},
+                _channel: y,
+                _origin: z,
+                onMessage: ga,
+                recv: ga,
+                init: function(la, ma) {
+                    if (ba) return;
+                    var na = la ? /\/\/.*?(\/[^#]*)/.exec(la)[1] : location.pathname + location.search;
+                    na += (~ES5(na, 'indexOf', true, '?') ? '&' : '?') + 'fb_xd_fragment#xd_sig=' + x + '&';
+                    var oa = k.Content.appendHidden(document.createElement('div')),
+                        pa = l.create({
+                            root: oa,
+                            channel: y,
+                            channelPath: '/' + g.XdUrl + '#',
+                            flashUrl: g.Flash.path,
+                            whenReady: function(qa) {
+                                aa = qa;
+                                var ra = {
+                                    channel: y,
+                                    origin: location.protocol + '//' + location.host,
+                                    channel_path: na,
+                                    transport: pa,
+                                    xd_name: ma
+                                },
+                                    sa = g.XdUrl + '#' + n.encode(ra),
+                                    ta = g.useCdn ? k._domain.staticfb : 'http://www.facebook.com/',
+                                    ua = g.useCdn ? k._domain.https_staticfb : 'https://www.facebook.com/';
+                                if (!k.onlyUseHttps()) v = ia({
+                                    url: ta + sa,
+                                    name: 'fb_xdm_frame_http',
+                                    root: oa
+                                });
+                                w = ia({
+                                    url: ua + sa,
+                                    name: 'fb_xdm_frame_https',
+                                    root: oa
+                                });
+                            },
+                            onMessage: j(ga, 'entry', 'XD:message')
+                        });
+                    ba = true;
+                },
+                sendToFacebook: ja,
+                inform: function(la, ma, na, oa, pa) {
+                    ja('facebook', {
+                        method: la,
+                        params: ES5('JSON', 'stringify', false, ma || {}),
+                        behavior: pa || 'p',
+                        relation: na
+                    });
+                },
+                handler: function(la, ma, na, oa) {
+                    oa = oa || h();
+                    if (na) k.XD._forever[oa] = true;
+                    k.XD._callbacks[oa] = la;
+                    var pa = location.protocol == 'https:' ? k._domain.https_staticfb : k._domain.staticfb,
+                        qa = g.useCdn ? pa : location.protocol + '//www.facebook.com/';
+                    return qa + g.XdUrl + '#' + n.encode({
+                        cb: oa,
+                        origin: z + '/' + y,
+                        domain: location.hostname,
+                        relation: ma || 'opener'
+                    });
+                }
+            };
+            (function() {
+                var la = location.href.match(/[?&]fb_xd_fragment#(.*)$/);
+                if (la) {
+                    document.documentElement.style.display = 'none';
+                    var ma = n.decode(la[1]),
+                        na = i(ma.xd_rel);
+                    m.debug('Passing fragment based message: %s', la[1]);
+                    na.FB.XD.onMessage(ma);
+                    document.open();
+                    document.close();
+                }
+            })();
+            e.exports = ka;
+        });
+        __d("legacy:fb.arbiter", ["FB", "sdk.XD"], function(a, b, c, d) {
+            var e = b('FB'),
+                f = b('sdk.XD');
+            e.provide('Arbiter', {
+                inform: f.inform
+            });
+        }, 3);
         FB.provide('String', {
             format: function(a) {
                 if (!FB.String.format._formatRE) FB.String.format._formatRE = /(\{[^\}^\{]+\})/g;
@@ -3727,6 +3454,11 @@ window.FB || (function() {
                 }
             }
         }, FB.EventProvider));
+        __d("legacy:fb.xd", ["FB", "sdk.XD"], function(a, b, c, d) {
+            var e = b('FB'),
+                f = b('sdk.XD');
+            e.provide('XD', f);
+        }, 3);
         FB.subclass('Dialog', 'Obj', function(a) {
             this.id = a;
             if (!FB.Dialog._dialogs) {
@@ -4619,11 +4351,6 @@ window.FB || (function() {
                 }
             }
         });
-        FB.provide('CanvasInsights', {
-            setDoneLoading: function(a) {
-                FB.Canvas.setDoneLoading(a);
-            }
-        });
         __d("sdk.Canvas.Prefetcher", ["sdk.api", "createArrayFrom", "sdk.Runtime", "CanvasPrefetcherConfig"], function(a, b, c, d, e, f) {
             var g = b('sdk.api'),
                 h = b('createArrayFrom'),
@@ -4677,241 +4404,11 @@ window.FB || (function() {
             };
             e.exports = t;
         });
-        FB.provide('Cookie', {
-            _domain: null,
-            _enabled: false,
-            setEnabled: function(a) {
-                FB.Cookie._enabled = !! a;
-                if (typeof a == 'string') FB.Cookie._domain = a;
-            },
-            getEnabled: function() {
-                return FB.Cookie._enabled;
-            },
-            loadMeta: function() {
-                var a = document.cookie.match('\\bfbm_' + FB._apiKey + '=([^;]*)\\b'),
-                    b;
-                if (a) {
-                    b = FB.QS.decode(a[1]);
-                    if (!FB.Cookie._domain) FB.Cookie._domain = b.base_domain;
-                }
-                return b;
-            },
-            loadSignedRequest: function() {
-                var a = document.cookie.match('\\bfbsr_' + FB._apiKey + '=([^;]*)\\b');
-                if (!a) return null;
-                return a[1];
-            },
-            setSignedRequestCookie: function(a, b, c) {
-                if (!a) throw new Error('Value passed to FB.Cookie.setSignedRequestCookie ' + 'was empty.');
-                if (!FB.Cookie.getEnabled()) return;
-                if (c) {
-                    var d = FB.QS.encode({
-                        base_domain: c
-                    });
-                    FB.Cookie.setRaw('fbm_', d, b, c);
-                }
-                FB.Cookie._domain = c;
-                FB.Cookie.setRaw('fbsr_', a, b, c);
-            },
-            clearSignedRequestCookie: function() {
-                if (!FB.Cookie.getEnabled()) return;
-                FB.Cookie.setRaw('fbsr_', '', 0, FB.Cookie._domain);
-            },
-            setRaw: function(a, b, c, d) {
-                if (d) {
-                    document.cookie = a + FB._apiKey + '=; expires=Wed, 04 Feb 2004 08:00:00 GMT;';
-                    document.cookie = a + FB._apiKey + '=; expires=Wed, 04 Feb 2004 08:00:00 GMT;' + 'domain=' + location.hostname + ';';
-                }
-                var e = new Date(c).toGMTString();
-                document.cookie = a + FB._apiKey + '=' + b + (b && c === 0 ? '' : '; expires=' + e) + '; path=/' + (d ? '; domain=' + d : '');
-            }
-        });
-        FB.provide('Frictionless', {
-            _allowedRecipients: {},
-            _useFrictionless: false,
-            _updateRecipients: function() {
-                FB.Frictionless._allowedRecipients = {};
-                FB.api('/me/apprequestformerrecipients', function(a) {
-                    if (!a || a.error) return;
-                    ES5(a.data, 'forEach', true, function(b) {
-                        FB.Frictionless._allowedRecipients[b.recipient_id] = true;
-                    }, false);
-                });
-            },
-            init: function() {
-                FB.Frictionless._useFrictionless = true;
-                FB.getLoginStatus(function(a) {
-                    if (a.status == 'connected') FB.Frictionless._updateRecipients();
-                });
-                FB.Event.subscribe('auth.login', function(a) {
-                    if (a.authResponse) FB.Frictionless._updateRecipients();
-                });
-            },
-            _processRequestResponse: function(a, b) {
-                return function(c) {
-                    var d = c && c.updated_frictionless;
-                    if (FB.Frictionless._useFrictionless && d) FB.Frictionless._updateRecipients();
-                    if (c) {
-                        if (!b && c.frictionless) {
-                            FB.Dialog._hideLoader();
-                            FB.Dialog._restoreBodyPosition();
-                            FB.Dialog._hideIPadOverlay();
-                        }
-                        delete c.frictionless;
-                        delete c.updated_frictionless;
-                    }
-                    a && a(c);
-                };
-            },
-            isAllowed: function(a) {
-                if (!a) return false;
-                if (typeof a === 'number') return FB.Frictionless._allowedRecipients[a];
-                if (typeof a === 'string') a = a.split(',');
-                a = ES5(a, 'map', true, function(d) {
-                    return ES5(d, 'trim', true);
-                });
-                var b = true,
-                    c = false;
-                ES5(a, 'forEach', true, function(d) {
-                    b = b && FB.Frictionless._allowedRecipients[d];
-                    c = true;
-                }, false);
-                return b && c;
-            }
-        });
-        FB.provide('Canvas.Prefetcher', {
-            _sampleRate: 0,
-            _appIdsBlacklist: [],
-            _links: [],
-            COLLECT_AUTOMATIC: 0,
-            COLLECT_MANUAL: 1,
-            _collectionMode: 0,
-            addStaticResource: function(a) {
-                if (!FB._inCanvas || !FB._apiKey) return;
-                FB.Canvas.Prefetcher._links.push(a);
-            },
-            setCollectionMode: function(a) {
-                if (!FB._inCanvas || !FB._apiKey) return false;
-                if (a != FB.Canvas.Prefetcher.COLLECT_AUTOMATIC && a != FB.Canvas.Prefetcher.COLLECT_MANUAL) return false;
-                FB.Canvas.Prefetcher._collectionMode = a;
-            },
-            _maybeSample: function() {
-                if (!FB._inCanvas || !FB._apiKey || !FB.Canvas.Prefetcher._sampleRate) return;
-                var a = Math.random();
-                if (a > 1 / FB.Canvas.Prefetcher._sampleRate) return;
-                if (FB.Canvas.Prefetcher._appIdsBlacklist == '*') return;
-                if (ES5(FB.Canvas.Prefetcher._appIdsBlacklist, 'indexOf', true, parseInt(FB._apiKey, 10)) != -1) return;
-                window.setTimeout(FB.Canvas.Prefetcher._sample, 30000);
-            },
-            _sample: function() {
-                var a = {
-                    object: 'data',
-                    link: 'href',
-                    script: 'src'
-                };
-                if (FB.Canvas.Prefetcher._collectionMode == FB.Canvas.Prefetcher.COLLECT_AUTOMATIC) ES5(FB.Array, 'forEach', true, a, function(c, d) {
-                    ES5(FB.Array.toArray(window.document.getElementsByTagName(d)), 'forEach', true, function(e) {
-                        if (e[c]) FB.Canvas.Prefetcher._links.push(e[c]);
-                    });
-                });
-                var b = ES5('JSON', 'stringify', false, FB.Canvas.Prefetcher._links);
-                FB.api(FB._apiKey + '/staticresources', 'post', {
-                    urls: b,
-                    is_https: FB._https
-                });
-                FB.Canvas.Prefetcher._links = [];
-            }
-        });
-        FB.provide('Canvas.EarlyFlush', {
-            addResource: function(a) {
-                return FB.Canvas.Prefetcher.addStaticResource(a);
-            },
-            setCollectionMode: function(a) {
-                return FB.Canvas.Prefetcher.setCollectionMode(a);
-            }
-        });
-        __d("legacy:fb.canvas.prefetcher", ["FB", "sdk.Canvas.Prefetcher", "SDKConfig"], function(a, b, c, d) {
+        __d("legacy:fb.canvas.prefetcher", ["FB", "sdk.Canvas.Prefetcher"], function(a, b, c, d) {
             var e = b('FB'),
-                f = c('SDKConfig'),
-                g = b('sdk.Canvas.Prefetcher');
-            if (f.migrate) e.provide('Canvas.Prefetcher', g);
+                f = b('sdk.Canvas.Prefetcher');
+            e.provide('Canvas.Prefetcher', f);
         }, 3);
-        FB.Dom.ready(function() {
-            FB.require('DOMWrapper').setRoot(FB.Content.appendHidden(document.createElement('div')));
-        });
-        FB.require('Log').level = 1;
-        FB.provide('', {
-            initSitevars: {},
-            init: function(a) {
-                if (FB._initialized) FB.log('FB.init has already been called - this could indicate a problem');
-                if (typeof a === 'string') {
-                    FB.log('FB.init called with invalid parameters');
-                    a = {
-                        apiKey: a
-                    };
-                }
-                a = FB.copy(a || {}, {
-                    logging: true,
-                    status: true
-                });
-                FB._userID = 0;
-                if (!a.logging && ES5(window.location.toString(), 'indexOf', true, 'fb_debug=1') < 0) FB._logging = false;
-                if ('appId' in a || 'apiKey' in a) {
-                    FB._apiKey = a.appId || a.apiKey;
-                    FB.Runtime.setClientID(FB._apiKey);
-                }
-                if ('scope' in a) FB._scope = a.scope;
-                if (!FB._initialized) {
-                    FB.XD.init(a.channelUrl ? FB.URI.resolve(a.channelUrl) : null, a.xdProxyName);
-                    if (FB.UA.mobile() && FB.TemplateUI && FB.TemplateData && FB.TemplateData._enabled && a.useCachedDialogs !== false) {
-                        FB.TemplateUI.init();
-                        FB.Event.subscribe('auth.statusChange', FB.TemplateData.update);
-                    }
-                }
-                if (a.frictionlessRequests) FB.Frictionless.init();
-                if (FB._apiKey) {
-                    FB.Cookie.setEnabled(a.cookie);
-                    if (a.authResponse) {
-                        FB.Auth.setAuthResponse(a.authResponse, 'connected');
-                    } else {
-                        var b = FB.Cookie.loadSignedRequest(),
-                            c = FB.Auth.parseSignedRequest(b);
-                        FB._userID = (c && c.user_id) || 0;
-                        FB.Cookie.loadMeta();
-                    }
-                    if (a.status) FB.getLoginStatus();
-                }
-                if (FB.Canvas && FB._inCanvas) {
-                    FB.Canvas._setHideFlashCallback(a.hideFlashCallback);
-                    FB.Canvas.init();
-                    if (FB.Canvas.Prefetcher) FB.Canvas.Prefetcher._maybeSample();
-                }
-                if (FB.XFBML && a.xfbml) {
-                    if (FB.XFBML.IframeWidget) FB.Event.subscribe('xfbml.parse', function() {
-                        FB.XFBML.IframeWidget.batchWidgetPipeRequests();
-                    });
-                    window.setTimeout(function() {
-                        if (FB.initSitevars.parseXFBMLBeforeDomReady) {
-                            FB.XFBML.parse();
-                            var d = window.setInterval(function() {
-                                FB.XFBML.parse();
-                            }, 100);
-                            FB.Dom.ready(function() {
-                                window.clearInterval(d);
-                                FB.XFBML.parse();
-                            });
-                        } else FB.Dom.ready(FB.XFBML.parse);
-                    }, 0);
-                }
-                if (!FB._initialized) {
-                    FB._initialized = true;
-                    FB.Runtime.setInitialized(true);
-                    FB.Runtime.subscribe('AccessToken.change', function(d) {
-                        if (!d && FB.Runtime.getLoginStatus() === 'connected') FB.getLoginStatus(null, true);
-                    });
-                }
-            }
-        });
         FB.provide('UIServer.MobileIframableMethod', {
             transform: function(a) {
                 if (a.params.display === 'touch' && a.params.access_token && window.postMessage) {
@@ -5834,6 +5331,183 @@ window.FB || (function() {
             },
             timer: -1,
             queue: []
+        });
+        FB.provide('Frictionless', {
+            _allowedRecipients: {},
+            _useFrictionless: false,
+            _updateRecipients: function() {
+                FB.Frictionless._allowedRecipients = {};
+                FB.api('/me/apprequestformerrecipients', function(a) {
+                    if (!a || a.error) return;
+                    ES5(a.data, 'forEach', true, function(b) {
+                        FB.Frictionless._allowedRecipients[b.recipient_id] = true;
+                    }, false);
+                });
+            },
+            init: function() {
+                FB.Frictionless._useFrictionless = true;
+                FB.getLoginStatus(function(a) {
+                    if (a.status == 'connected') FB.Frictionless._updateRecipients();
+                });
+                FB.Event.subscribe('auth.login', function(a) {
+                    if (a.authResponse) FB.Frictionless._updateRecipients();
+                });
+            },
+            _processRequestResponse: function(a, b) {
+                return function(c) {
+                    var d = c && c.updated_frictionless;
+                    if (FB.Frictionless._useFrictionless && d) FB.Frictionless._updateRecipients();
+                    if (c) {
+                        if (!b && c.frictionless) {
+                            FB.Dialog._hideLoader();
+                            FB.Dialog._restoreBodyPosition();
+                            FB.Dialog._hideIPadOverlay();
+                        }
+                        delete c.frictionless;
+                        delete c.updated_frictionless;
+                    }
+                    a && a(c);
+                };
+            },
+            isAllowed: function(a) {
+                if (!a) return false;
+                if (typeof a === 'number') return FB.Frictionless._allowedRecipients[a];
+                if (typeof a === 'string') a = a.split(',');
+                a = ES5(a, 'map', true, function(d) {
+                    return ES5(d, 'trim', true);
+                });
+                var b = true,
+                    c = false;
+                ES5(a, 'forEach', true, function(d) {
+                    b = b && FB.Frictionless._allowedRecipients[d];
+                    c = true;
+                }, false);
+                return b && c;
+            }
+        });
+        FB.provide('Cookie', {
+            _domain: null,
+            _enabled: false,
+            setEnabled: function(a) {
+                FB.Cookie._enabled = !! a;
+                if (typeof a == 'string') FB.Cookie._domain = a;
+            },
+            getEnabled: function() {
+                return FB.Cookie._enabled;
+            },
+            loadMeta: function() {
+                var a = document.cookie.match('\\bfbm_' + FB._apiKey + '=([^;]*)\\b'),
+                    b;
+                if (a) {
+                    b = FB.QS.decode(a[1]);
+                    if (!FB.Cookie._domain) FB.Cookie._domain = b.base_domain;
+                }
+                return b;
+            },
+            loadSignedRequest: function() {
+                var a = document.cookie.match('\\bfbsr_' + FB._apiKey + '=([^;]*)\\b');
+                if (!a) return null;
+                return a[1];
+            },
+            setSignedRequestCookie: function(a, b, c) {
+                if (!a) throw new Error('Value passed to FB.Cookie.setSignedRequestCookie ' + 'was empty.');
+                if (!FB.Cookie.getEnabled()) return;
+                if (c) {
+                    var d = FB.QS.encode({
+                        base_domain: c
+                    });
+                    FB.Cookie.setRaw('fbm_', d, b, c);
+                }
+                FB.Cookie._domain = c;
+                FB.Cookie.setRaw('fbsr_', a, b, c);
+            },
+            clearSignedRequestCookie: function() {
+                if (!FB.Cookie.getEnabled()) return;
+                FB.Cookie.setRaw('fbsr_', '', 0, FB.Cookie._domain);
+            },
+            setRaw: function(a, b, c, d) {
+                if (d) {
+                    document.cookie = a + FB._apiKey + '=; expires=Wed, 04 Feb 2004 08:00:00 GMT;';
+                    document.cookie = a + FB._apiKey + '=; expires=Wed, 04 Feb 2004 08:00:00 GMT;' + 'domain=' + location.hostname + ';';
+                }
+                var e = new Date(c).toGMTString();
+                document.cookie = a + FB._apiKey + '=' + b + (b && c === 0 ? '' : '; expires=' + e) + '; path=/' + (d ? '; domain=' + d : '');
+            }
+        });
+        FB.Dom.ready(function() {
+            FB.require('DOMWrapper').setRoot(FB.Content.appendHidden(document.createElement('div')));
+        });
+        FB.require('Log').level = 1;
+        FB.provide('', {
+            initSitevars: {},
+            init: function(a) {
+                if (FB._initialized) FB.log('FB.init has already been called - this could indicate a problem');
+                if (typeof a === 'string') {
+                    FB.log('FB.init called with invalid parameters');
+                    a = {
+                        apiKey: a
+                    };
+                }
+                a = FB.copy(a || {}, {
+                    logging: true,
+                    status: true
+                });
+                FB._userID = 0;
+                if (!a.logging && ES5(window.location.toString(), 'indexOf', true, 'fb_debug=1') < 0) FB._logging = false;
+                if ('appId' in a || 'apiKey' in a) {
+                    FB._apiKey = a.appId || a.apiKey;
+                    FB.Runtime.setClientID(FB._apiKey);
+                }
+                if ('scope' in a) FB._scope = a.scope;
+                if (!FB._initialized) {
+                    FB.XD.init(a.channelUrl ? FB.URI.resolve(a.channelUrl) : null, a.xdProxyName);
+                    if (FB.UA.mobile() && FB.TemplateUI && FB.TemplateData && FB.TemplateData._enabled && a.useCachedDialogs !== false) {
+                        FB.TemplateUI.init();
+                        FB.Event.subscribe('auth.statusChange', FB.TemplateData.update);
+                    }
+                }
+                if (a.frictionlessRequests) FB.Frictionless.init();
+                if (FB._apiKey) {
+                    FB.Cookie.setEnabled(a.cookie);
+                    if (a.authResponse) {
+                        FB.Auth.setAuthResponse(a.authResponse, 'connected');
+                    } else {
+                        var b = FB.Cookie.loadSignedRequest(),
+                            c = FB.Auth.parseSignedRequest(b);
+                        FB._userID = (c && c.user_id) || 0;
+                        FB.Cookie.loadMeta();
+                    }
+                    if (a.status) FB.getLoginStatus();
+                }
+                if (FB.Canvas && FB._inCanvas) {
+                    FB.Canvas._setHideFlashCallback(a.hideFlashCallback);
+                    if (FB.Canvas.Prefetcher) FB.Canvas.Prefetcher._maybeSample();
+                }
+                if (FB.XFBML && a.xfbml) {
+                    if (FB.XFBML.IframeWidget) FB.Event.subscribe('xfbml.parse', function() {
+                        FB.XFBML.IframeWidget.batchWidgetPipeRequests();
+                    });
+                    window.setTimeout(function() {
+                        if (FB.initSitevars.parseXFBMLBeforeDomReady) {
+                            FB.XFBML.parse();
+                            var d = window.setInterval(function() {
+                                FB.XFBML.parse();
+                            }, 100);
+                            FB.Dom.ready(function() {
+                                window.clearInterval(d);
+                                FB.XFBML.parse();
+                            });
+                        } else FB.Dom.ready(FB.XFBML.parse);
+                    }, 0);
+                }
+                if (!FB._initialized) {
+                    FB._initialized = true;
+                    FB.Runtime.setInitialized(true);
+                    FB.Runtime.subscribe('AccessToken.change', function(d) {
+                        if (!d && FB.Runtime.getLoginStatus() === 'connected') FB.getLoginStatus(null, true);
+                    });
+                }
+            }
         });
         window.setTimeout(function() {
             var a = /(connect.facebook.net|facebook.com\/assets.php).*?#(.*)/;
@@ -7777,15 +7451,8 @@ FB.provide("", {
     "_locale": "en_US",
     "_localeIsRtl": false
 }, true);
-FB.provide("Arbiter", {
-    "_canvasProxyUrl": "connect\/canvas_proxy.php?version=9"
-}, true);
 FB.provide('Auth', {
     "_xdStorePath": "xd_localstorage\/v2"
-}, true);
-FB.provide("Canvas.Prefetcher", {
-    "_appIdsBlacklist": [144959615576466],
-    "_sampleRate": 500
 }, true);
 FB.provide('', {
     "initSitevars": {
