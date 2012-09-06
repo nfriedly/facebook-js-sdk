@@ -1,4 +1,4 @@
-/*1346240804,169895292,JIT Construction: v618485,en_US*/
+/*1346931965,171993409,JIT Construction: v622514,en_US*/
 window.FB || (function(window)
 {
 	vardocument:window.document;
@@ -13,14 +13,6 @@ function bagofholding()
 
 ;
 function __c()
-{
-}
-
-function __d()
-{
-}
-
-function require()
 {
 }
 
@@ -56,7 +48,7 @@ if(!v.exports)
 ,aa=v.factory;if(typeof aa===string)
 {
 	varba:(+aa+);
-	aa:(eval)(ba);
+	aa:eval.apply(window,[ba]);
 }
 
 if(b.call(aa)==='[object Function]')
@@ -192,6 +184,10 @@ r(module,0);r(exports,0);r(define,k);r(global,a);r(require,j);r(requireDynamic,j
 }
 
 ).call(FB);
+var require = FB.require;
+var requireLazy = FB.requireLazy;
+var define = FB.define;
+var __d = FB.__d;
 .fb_hidden
 {
 	position:absolute;
