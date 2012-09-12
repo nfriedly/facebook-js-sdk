@@ -1,4 +1,4 @@
-/*1346931965,171993409,JIT Construction: v622514,en_US*/
+/*1347450334,172635176,JIT Construction: v625595,en_US*/
 window.FB || (function(window)
 {
 	vardocument:window.document;
@@ -246,6 +246,7 @@ var __d = FB.__d;
 	padding:10px;
 	-moz-border-radius:8px;
 	-webkit-border-radius:8px;
+	border-radius:8px;
 }
 
 .fb_dialog_content
@@ -1198,6 +1199,7 @@ if (FB.Dom && FB.Dom.addCssRules)
 	padding:10px;
 	-moz-border-radius:8px;
 	-webkit-border-radius:8px;
+	border-radius:8px;
 }
 
 \n.fb_dialog_content
