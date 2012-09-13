@@ -1,4 +1,4 @@
-/*1347449657,172642354,JIT Construction: v625595,en_US*/
+/*1347536137,171990837,JIT Construction: v626389,en_US*/
 
 window.FB || (function(window) {
     var document = window.document;
@@ -547,7 +547,7 @@ window.FB || (function(window) {
         });
         __d("SDKConfig", [], {
             "xfbmlUseLegacy": true,
-            "migrate": false,
+            "migrate": true,
             "errorHandling": {
                 "rate": 4
             },
@@ -5930,9 +5930,13 @@ window.FB || (function(window) {
             }
         });
     }, 3);
-    FB.Dom.ready(function() {
-        FB.require('DOMWrapper').setRoot(FB.Content.appendHidden(document.createElement('div')));
-    });
+    (function() {
+        var a = document.createElement('div');
+        FB.require('DOMWrapper').setRoot(a);
+        FB.Dom.ready(function() {
+            FB.Content.appendHidden(a);
+        });
+    })();
     FB.require('Log').level = 1;
     FB.provide('', {
         initSitevars: {},
