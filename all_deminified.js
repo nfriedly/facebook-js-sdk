@@ -1,4 +1,4 @@
-/*1347536137,171990837,JIT Construction: v626389,en_US*/
+/*1347622459,172654639,JIT Construction: v627188,en_US*/
 
 window.FB || (function(window) {
     var document = window.document;
@@ -5064,91 +5064,102 @@ window.FB || (function(window) {
             if (document.namespaces && !document.namespaces.item.fb) document.namespaces.add('fb');
         } catch (a) {}
     }());
-    __d("XFBML", ["FB", "Log", "ObservableMixin", "copyProperties", "createArrayFrom", "dotAccess"], function(a, b, c, d, e, f) {
-        var g = b('FB'),
-            h = b('Log'),
-            i = b('ObservableMixin'),
-            j = b('copyProperties'),
-            k = b('createArrayFrom'),
-            l = b('dotAccess'),
-            m = {},
+    __d("XFBML", ["Assert", "FB", "Log", "ObservableMixin", "copyProperties", "createArrayFrom", "dotAccess"], function(a, b, c, d, e, f) {
+        var g = b('Assert'),
+            h = b('FB'),
+            i = b('Log'),
+            j = b('ObservableMixin'),
+            k = b('copyProperties'),
+            l = b('createArrayFrom'),
+            m = b('dotAccess'),
             n = {},
-            o = 0;
+            o = {},
+            p = 0,
+            q = new j();
 
-        function p(v) {
-            return v.scopeName ? (v.scopeName + ':' + v.nodeName) : '';
+        function r(w) {
+            return w.scopeName ? (w.scopeName + ':' + w.nodeName) : '';
         }
-        function q(v) {
-            return m[v.nodeName.toLowerCase()] || m[p(v).toLowerCase()];
+        function s(w) {
+            return n[w.nodeName.toLowerCase()] || n[r(w).toLowerCase()];
         }
-        function r(v) {
-            var w = ES5(v.className, 'trim', true);
-            if (!n[w]) return undefined;
-            if (!v.childNodes || v.childNodes.length === 0 || (v.childNodes.length == 1 && v.childNodes[0].nodeType == 3) || v.getAttribute('fb-xfbml-state')) return n[w];
+        function t(w) {
+            var x = ES5(w.className, 'trim', true);
+            if (!o[x]) return undefined;
+            if (!w.childNodes || w.childNodes.length === 0 || (w.childNodes.length == 1 && w.childNodes[0].nodeType == 3) || w.getAttribute('fb-xfbml-state')) return o[x];
         }
-        function s(v) {
-            var w = {};
-            ES5(k(v.attributes), 'forEach', true, function(x) {
-                w[x.name] = x.value;
+        function u(w) {
+            var x = {};
+            ES5(l(w.attributes), 'forEach', true, function(y) {
+                x[y.name] = y.value;
             });
-            return w;
+            return x;
         }
-        function t(v, w, x) {
-            var y = ++o;
-            h.info('XFBML Parsing Start %s', y);
-            var z = 1,
-                aa = 0,
-                ba = function() {
-                    z--;
-                    if (z === 0) {
-                        h.info('XFBML Parsing Finish %s, %s tags found', y, aa);
-                        w();
-                        u.inform('render', y, aa);
+        function v(w, x, y) {
+            var z = ++p;
+            i.info('XFBML Parsing Start %s', z);
+            var aa = 1,
+                ba = 0,
+                ca = function() {
+                    aa--;
+                    if (aa === 0) {
+                        i.info('XFBML Parsing Finish %s, %s tags found', z, ba);
+                        x();
+                        q.inform('render', z, ba);
                     }
+                    g.isTrue(aa >= 0, 'onrender() has been called too many times');
                 };
-            ES5(k(v.getElementsByTagName('*')), 'forEach', true, function(da) {
-                if (!x && da.getAttribute('fb-xfbml-state')) return;
-                var ea = q(da) || r(da);
-                if (!ea) return;
-                z++;
+            ES5(l(w.getElementsByTagName('*')), 'forEach', true, function(ea) {
+                if (!y && ea.getAttribute('fb-xfbml-state')) return;
+                var fa = s(ea) || t(ea);
+                if (!fa) return;
                 aa++;
-                var fa = ea.ctor || l(g, ea.className.substr(3)),
-                    ga = new fa(da, ea.xmlns, ea.localName, s(da));
-                ga.subscribe('render', function() {
-                    da.setAttribute('fb-xfbml-state', 'rendered');
-                    ba();
+                ba++;
+                var ga = fa.ctor || m(h, fa.className.substr(3)),
+                    ha = new ga(ea, fa.xmlns, fa.localName, u(ea));
+                ha.subscribe('render', function ja() {
+                    ha.unsubscribe('render', ja);
+                    ea.setAttribute('fb-xfbml-state', 'rendered');
+                    ca();
                 });
-                var ha = function() {
-                        if (da.getAttribute('fb-xfbml-state') == 'parsed') {
-                            u.subscribe('render', ha);
+                var ia = function() {
+                        if (ea.getAttribute('fb-xfbml-state') == 'parsed') {
+                            q.subscribe('render.queue', ia);
                         } else {
-                            da.setAttribute('fb-xfbml-state', 'parsed');
-                            ga.process();
+                            ea.setAttribute('fb-xfbml-state', 'parsed');
+                            ha.process();
                         }
                     };
-                ha();
+                ia();
             });
-            u.inform('parse', y, aa);
-            var ca = 30000;
+            q.inform('parse', z, ba);
+            var da = 30000;
             window.setTimeout(function() {
-                if (z > 0) h.warn('%s tags failed to render in %s ms', z, ca);
-            }, ca);
-            ba();
+                if (aa > 0) i.warn('%s tags failed to render in %s ms', aa, da);
+            }, da);
+            ca();
         }
-        var u = j(new i(), {
-            registerTag: function(v) {
-                m[v.xmlns + ':' + v.localName] = v;
-                n[v.xmlns + '-' + v.localName] = v;
+        q.subscribe('render', function() {
+            var w = q.getSubscribers('render.queue');
+            q.clearSubscribers('render.queue');
+            ES5(w, 'forEach', true, function(x) {
+                x();
+            });
+        });
+        k(q, {
+            registerTag: function(w) {
+                n[w.xmlns + ':' + w.localName] = w;
+                o[w.xmlns + '-' + w.localName] = w;
             },
-            parse: function(v, w) {
-                t(v || document.body, w ||
+            parse: function(w, x) {
+                v(w || document.body, x ||
                 function() {}, true);
             },
             parseNew: function() {
-                t(document.body, function() {}, false);
+                v(document.body, function() {}, false);
             }
         });
-        e.exports = u;
+        e.exports = q;
     });
     __d("PluginCustomClass", [], function(a, b, c, d, e, f) {
         var g = ['activity', 'add-profile-tab', 'add-to-timeline', 'bookmark', 'comments', 'comments-count', 'connect-bar', 'fan', 'like', 'like-box', 'login', 'login-button', 'facepile', 'friendpile', 'name', 'page-events', 'profile-pic', 'recommendations', 'recommendations-bar', 'registration', 'send', 'share-button', 'social-context'];
