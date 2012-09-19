@@ -1,4 +1,4 @@
-/*1347622459,172654639,JIT Construction: v627188,en_US*/
+/*1348054156,172627505,JIT Construction: v630157,en_US*/
 
 window.FB || (function(window) {
     var document = window.document;
@@ -746,23 +746,6 @@ window.FB || (function(window) {
     var requireLazy = FB.requireLazy;
     var define = FB.define;
     var __d = FB.__d;
-    __d("guid", [], function(a, b, c, d, e, f) {
-        function g() {
-            return 'f' + (Math.random() * (1 << 30)).toString(16).replace('.', '');
-        }
-        e.exports = g;
-    });
-    __d("dotAccess", [], function(a, b, c, d, e, f) {
-        function g(h, i, j) {
-            var k = i.split('.');
-            do {
-                var l = k.shift();
-                h = h[l] || j && (h[l] = {});
-            } while (k.length && h);
-            return h;
-        }
-        e.exports = g;
-    });
     __d("copyProperties", [], function(a, b, c, d, e, f) {
         function g(h, i, j, k, l, m, n) {
             h = h || {};
@@ -778,96 +761,16 @@ window.FB || (function(window) {
         }
         e.exports = g;
     });
-    __d("safeEval", [], function(a, b, c, d, e, f) {
-        function g(h) {
-            if (h === null || typeof h === 'undefined') return;
-            if (typeof h !== 'string') return h;
-            return Function('return eval("' + h.replace(/"/g, '\\"') + '");')();
+    __d("dotAccess", [], function(a, b, c, d, e, f) {
+        function g(h, i, j) {
+            var k = i.split('.');
+            do {
+                var l = k.shift();
+                h = h[l] || j && (h[l] = {});
+            } while (k.length && h);
+            return h;
         }
         e.exports = g;
-    });
-    __d("ManagedError", [], function(a, b, c, d, e, f) {
-        function g(h, i) {
-            Error.prototype.constructor.call(this, h);
-            this.message = h;
-            this.innerError = i;
-        }
-        g.prototype = new Error();
-        g.prototype.constructor = g;
-        e.exports = g;
-    });
-    __d("AssertionError", ["ManagedError"], function(a, b, c, d, e, f) {
-        var g = b('ManagedError');
-
-        function h(i) {
-            g.prototype.constructor.apply(this, arguments);
-        }
-        h.prototype = new g();
-        h.prototype.constructor = h;
-        e.exports = h;
-    });
-    __d("sprintf", [], function(a, b, c, d, e, f) {
-        function g(h, i) {
-            i = Array.prototype.slice.call(arguments, 1);
-            var j = 0;
-            return h.replace(/%s/g, function(k) {
-                return i[j++];
-            });
-        }
-        e.exports = g;
-    });
-    __d("Assert", ["AssertionError", "sprintf"], function(a, b, c, d, e, f) {
-        var g = b('AssertionError'),
-            h = b('sprintf');
-
-        function i(q) {
-            return ES5(q, 'bind', true, null, Array.prototype.slice.call(arguments, 1));
-        }
-        function j(q, r) {
-            if (!q) throw new g(r);
-            return q;
-        }
-        function k(q, r, s) {
-            var t = Object.prototype.toString.call(r),
-                u = /\s(\w*)/.exec(t)[1].toLowerCase();
-            j(~ES5(q, 'indexOf', true, u), s || h('Expression is of type %s, not %s', u, q));
-            return r;
-        }
-        function l(q, r, s) {
-            j(r instanceof q, s || 'Expression not instance of type');
-            return r;
-        }
-        var m = {
-            isInstanceOf: l,
-            isTrue: j,
-            type: k
-        },
-            n = ['Array', 'Boolean', 'Date', 'Function', 'Null', 'Number', 'Object', 'Regexp', 'String', 'Undefined'],
-            o = n.length;
-        while (o--) {
-            var p = n[o];
-            m['is' + p] = i(k, p.toLowerCase());
-        }
-        e.exports = m;
-    });
-    __d("wrapFunction", ["Assert"], function(a, b, c, d, e, f) {
-        var g = b('Assert'),
-            h = {};
-
-        function i(j, k, l) {
-            g.isFunction(j);
-            k = k || 'default';
-            return function() {
-                var m = k in h ? h[k](j, l) : j;
-                return m.apply(this, arguments);
-            };
-        }
-        i.setWrapper = function(j, k) {
-            g.isFunction(j);
-            k = k || 'default';
-            h[k] = j;
-        };
-        e.exports = i;
     });
     __d("UserAgent", [], function(a, b, c, d, e, f) {
         var g = false,
@@ -1010,6 +913,75 @@ window.FB || (function(window) {
             log: i
         };
         e.exports = j;
+    });
+    __d("ManagedError", [], function(a, b, c, d, e, f) {
+        function g(h, i) {
+            Error.prototype.constructor.call(this, h);
+            this.message = h;
+            this.innerError = i;
+        }
+        g.prototype = new Error();
+        g.prototype.constructor = g;
+        e.exports = g;
+    });
+    __d("AssertionError", ["ManagedError"], function(a, b, c, d, e, f) {
+        var g = b('ManagedError');
+
+        function h(i) {
+            g.prototype.constructor.apply(this, arguments);
+        }
+        h.prototype = new g();
+        h.prototype.constructor = h;
+        e.exports = h;
+    });
+    __d("sprintf", [], function(a, b, c, d, e, f) {
+        function g(h, i) {
+            i = Array.prototype.slice.call(arguments, 1);
+            var j = 0;
+            return h.replace(/%s/g, function(k) {
+                return i[j++];
+            });
+        }
+        e.exports = g;
+    });
+    __d("Assert", ["AssertionError", "sprintf"], function(a, b, c, d, e, f) {
+        var g = b('AssertionError'),
+            h = b('sprintf');
+
+        function i(p, q) {
+            if (!p) throw new g(q);
+            return p;
+        }
+        function j(p, q, r) {
+            var s = Object.prototype.toString.call(q),
+                t = /\s(\w*)/.exec(s)[1].toLowerCase();
+            i(~ES5(p, 'indexOf', true, t), r || h('Expression is of type %s, not %s', t, p));
+            return q;
+        }
+        function k(p, q, r) {
+            i(q instanceof p, r || 'Expression not instance of type');
+            return q;
+        }
+        var l = {
+            isInstanceOf: k,
+            isTrue: i,
+            type: j,
+            define: function(p, q) {
+                l.isString(p);
+                l.isFunction(q);
+                p = p.substring(0, 1).toUpperCase() + p.substring(1).toLowerCase();
+                l['is' + p] = function(r, s) {
+                    i(q(r), s);
+                };
+            }
+        },
+            m = ['Array', 'Boolean', 'Date', 'Function', 'Null', 'Number', 'Object', 'Regexp', 'String', 'Undefined'],
+            n = m.length;
+        while (n--) {
+            var o = m[n];
+            l['is' + o] = ES5(j, 'bind', true, null, o.toLowerCase());
+        }
+        e.exports = l;
     });
     __d("Type", ["copyProperties", "Assert"], function(a, b, c, d, e, f) {
         var g = b('copyProperties'),
@@ -1171,7 +1143,7 @@ window.FB || (function(window) {
                 UserID: 0,
                 ClientID: '',
                 Initialized: false,
-                LoginStatus: 'unknown',
+                LoginStatus: undefined,
                 Environment: i.UNKNOWN,
                 Secure: undefined,
                 UseCookie: false
@@ -1189,6 +1161,25 @@ window.FB || (function(window) {
             j.setEnvironment(k);
         })();
         e.exports = j;
+    });
+    __d("wrapFunction", ["Assert"], function(a, b, c, d, e, f) {
+        var g = b('Assert'),
+            h = {};
+
+        function i(j, k, l) {
+            g.isFunction(j);
+            k = k || 'default';
+            return function() {
+                var m = k in h ? h[k](j, l) : j;
+                return m.apply(this, arguments);
+            };
+        }
+        i.setWrapper = function(j, k) {
+            g.isFunction(j);
+            k = k || 'default';
+            h[k] = j;
+        };
+        e.exports = i;
     });
     __d("sdk.ErrorHandling", ["UserAgent", "sdk.Scribe", "sdk.Runtime", "wrapFunction", "ManagedError", "SDKConfig"], function(a, b, c, d, e, f) {
         var g = b('UserAgent'),
@@ -1265,6 +1256,18 @@ window.FB || (function(window) {
         };
         e.exports = s;
     });
+    __d("sdk.getContextType", ["UserAgent", "sdk.Runtime"], function(a, b, c, d, e, f) {
+        var g = b('UserAgent'),
+            h = b('sdk.Runtime');
+
+        function i() {
+            if (g.nativeApp()) return 3;
+            if (g.mobile()) return 2;
+            if (h.isEnvironment(h.ENVIRONMENTS.CANVAS)) return 5;
+            return 1;
+        }
+        e.exports = i;
+    });
     __d("GlobalCallback", ["wrapFunction", "dotAccess"], function(a, b, c, d, e, f) {
         var g = b('wrapFunction'),
             h = b('dotAccess'),
@@ -1286,6 +1289,12 @@ window.FB || (function(window) {
                 }
             };
         e.exports = l;
+    });
+    __d("guid", [], function(a, b, c, d, e, f) {
+        function g() {
+            return 'f' + (Math.random() * (1 << 30)).toString(16).replace('.', '');
+        }
+        e.exports = g;
     });
     __d("sdk.Insights", ["guid", "QueryString", "sdk.Runtime", "UrlMap"], function(a, b, c, d, e, f) {
         var g = b('guid'),
@@ -1352,188 +1361,198 @@ window.FB || (function(window) {
         };
         e.exports = j;
     });
-    __d("FB", ["guid", "dotAccess", "copyProperties", "safeEval", "wrapFunction", "sdk.ErrorHandling", "GlobalCallback", "sdk.Insights", "Log", "sdk.Scribe", "sdk.Runtime", "SDKConfig"], function(a, b, c, d, e, f) {
-        var g = c('SDKConfig'),
-            h = b('guid'),
-            i = b('dotAccess'),
-            j = b('copyProperties'),
-            k = b('safeEval'),
-            l = b('wrapFunction'),
-            m = b('sdk.ErrorHandling'),
-            n = b('GlobalCallback'),
-            o = b('sdk.Insights'),
-            p = b('Log'),
+    __d("safeEval", [], function(a, b, c, d, e, f) {
+        function g(h) {
+            if (h === null || typeof h === 'undefined') return;
+            if (typeof h !== 'string') return h;
+            return Function('return eval("' + h.replace(/"/g, '\\"') + '");')();
+        }
+        e.exports = g;
+    });
+    __d("FB", ["copyProperties", "dotAccess", "sdk.ErrorHandling", "sdk.getContextType", "GlobalCallback", "guid", "sdk.Insights", "Log", "sdk.Runtime", "safeEval", "sdk.Scribe", "wrapFunction", "SDKConfig"], function(a, b, c, d, e, f) {
+        var g = b('copyProperties'),
+            h = b('dotAccess'),
+            i = b('sdk.ErrorHandling'),
+            j = b('sdk.getContextType'),
+            k = b('GlobalCallback'),
+            l = b('guid'),
+            m = b('sdk.Insights'),
+            n = b('Log'),
+            o = b('sdk.Runtime'),
+            p = b('safeEval'),
             q = b('sdk.Scribe'),
-            r = b('sdk.Runtime'),
-            s, t, u, v = i(g, 'api.mode'),
-            w = {};
-        s = FB;
-        t = window.FB = {};
-        n.setPrefix('FB._callbacks');
-        if (i(g, 'api.whitelist.length')) {
-            u = {};
-            ES5(g.api.whitelist, 'forEach', true, function(ca) {
-                u[ca] = 1;
+            r = c('SDKConfig'),
+            s = b('wrapFunction'),
+            t, u, v, w = h(r, 'api.mode'),
+            x = {};
+        t = FB;
+        u = window.FB = {};
+        k.setPrefix('FB._callbacks');
+        if (h(r, 'api.whitelist.length')) {
+            v = {};
+            ES5(r.api.whitelist, 'forEach', true, function(da) {
+                v[da] = 1;
             });
         }
-        function x(ca, da, ea, fa) {
-            var ga;
-            if (/^_/.test(ea)) {
-                ga = 'hide';
-            } else if (u && !u[da]) ga = v;
-            switch (ga) {
+        function y(da, ea, fa, ga) {
+            var ha;
+            if (/^_/.test(fa)) {
+                ha = 'hide';
+            } else if (v && !v[ea]) ha = w;
+            switch (ha) {
             case 'hide':
                 return;
             case 'stub':
                 return function() {
-                    p.warn('The method FB.%s has been removed from the JS SDK.', da);
+                    n.warn('The method FB.%s has been removed from the JS SDK.', ea);
                 };
                 break;
             default:
-                return m.guard(function() {
-                    if (ga === 'warn') {
-                        p.warn('The method FB.%s is not officially supported by ' + 'Facebook and access to it will soon be removed.', da);
-                        if (!w.hasOwnProperty(da)) {
-                            o.log(o.TYPE.WARNING, o.CATEGORY.DEPRECATED, 'FB.' + da);
+                return i.guard(function() {
+                    if (ha === 'warn') {
+                        n.warn('The method FB.%s is not officially supported by ' + 'Facebook and access to it will soon be removed.', ea);
+                        if (!x.hasOwnProperty(ea)) {
+                            m.log(m.TYPE.WARNING, m.CATEGORY.DEPRECATED, 'FB.' + ea);
                             q.log('jssdk_error', {
-                                appId: s._apiKey,
+                                appId: t._apiKey,
                                 error: 'Private method used',
                                 extra: {
-                                    args: da
+                                    args: ea
                                 }
                             });
-                            w[da] = true;
+                            x[ea] = true;
                         }
                     }
-                    var ha = ES5(Array.prototype.slice.call(arguments), 'map', true, function(oa) {
-                        return typeof oa === 'function' && /^function/.test(oa.toString()) ? m.unguard(oa) : oa;
+                    var ia = ES5(Array.prototype.slice.call(arguments), 'map', true, function(pa) {
+                        return typeof pa === 'function' && /^function/.test(pa.toString()) ? i.unguard(pa) : pa;
                     }),
-                        ia = ca.apply(fa, ha),
-                        ja, ka = true;
-                    if (ia && typeof ia === 'object') {
-                        var la = Function();
-                        la.prototype = ia;
-                        ja = new la();
-                        for (var ma in ia) {
-                            var na = ia[ma];
-                            if (typeof na !== 'function' || ma === 'constructor') continue;
-                            ka = false;
-                            ja[ma] = x(na, da + ':' + ma, ma, ia);
+                        ja = da.apply(ga, ia),
+                        ka, la = true;
+                    if (ja && typeof ja === 'object') {
+                        var ma = Function();
+                        ma.prototype = ja;
+                        ka = new ma();
+                        for (var na in ja) {
+                            var oa = ja[na];
+                            if (typeof oa !== 'function' || na === 'constructor') continue;
+                            la = false;
+                            ka[na] = y(oa, ea + ':' + na, na, ja);
                         }
                     }
-                    if (!ka) return ja;
-                    return ka ? ia : ja;
-                }, da);
+                    if (!la) return ka;
+                    return la ? ja : ka;
+                }, ea);
             }
         }
-        function y(ca, da) {
-            var ea = ca ? i(s, ca, true) : s,
-                fa = ca ? i(t, ca, true) : t;
-            ES5(ES5('Object', 'keys', false, da), 'forEach', true, function(ga) {
-                var ha = da[ga];
-                ea[ga] = ha;
-                if (typeof ha === 'function') {
-                    var ia = (ca ? ca + '.' : '') + ga,
-                        ja = x(ha, ia, ga, ea);
-                    if (ja) fa[ga] = ja;
+        function z(da, ea) {
+            var fa = da ? h(t, da, true) : t,
+                ga = da ? h(u, da, true) : u;
+            ES5(ES5('Object', 'keys', false, ea), 'forEach', true, function(ha) {
+                var ia = ea[ha];
+                fa[ha] = ia;
+                if (typeof ia === 'function') {
+                    var ja = (da ? da + '.' : '') + ha,
+                        ka = y(ia, ja, ha, fa);
+                    if (ka) ga[ha] = ka;
                 }
             });
         }
-        var z = /iframe_canvas|app_runner/.test(window.name),
-            aa = /dialog/.test(window.name);
-        r.setSecure((function() {
-            if (location.protocol == 'https:' && (window == top || !(z || aa))) return true;
+        var aa = /iframe_canvas|app_runner/.test(window.name),
+            ba = /dialog/.test(window.name);
+        o.setSecure((function() {
+            if (location.protocol == 'https:' && (window == top || !(aa || ba))) return true;
             if (/_fb_https?/.test(window.name)) return ES5(window.name, 'indexOf', true, '_fb_https') != -1;
         })());
 
-        function ba(ca, da, ea, fa) {
-            for (var ga in da) if (ea || typeof ca[ga] === 'undefined') ca[ga] = fa ? fa(da[ga]) : da[ga];
-            return ca;
+        function ca(da, ea, fa, ga) {
+            for (var ha in ea) if (fa || typeof da[ha] === 'undefined') da[ha] = ga ? ga(ea[ha]) : ea[ha];
+            return da;
         }
-        j(s, {
+        g(t, {
             _apiKey: null,
             _authResponse: null,
             _logging: true,
-            _inCanvas: z,
+            _inCanvas: aa,
             onlyUseHttps: function() {
-                return r.getSecure() === true;
+                return o.getSecure() === true;
             },
             onlyUseHttp: function() {
-                return r.setSecure() === false && location.protocol == 'http:';
+                return o.setSecure() === false && location.protocol == 'http:';
             },
             _locale: null,
             _localeIsRtl: false,
-            getDomain: function(ca, da) {
-                var ea = !da && (window.location.protocol == 'https:' || r.getSecure());
-                switch (ca) {
+            getDomain: function(da, ea) {
+                var fa = !ea && (window.location.protocol == 'https:' || o.getSecure());
+                switch (da) {
                 case 'api':
-                    return s._domain.api;
+                    return t._domain.api;
                 case 'api_read':
-                    return s._domain.api_read;
+                    return t._domain.api_read;
                 case 'cdn':
-                    return ea ? s._domain.https_cdn : s._domain.cdn;
+                    return fa ? t._domain.https_cdn : t._domain.cdn;
                 case 'cdn_foreign':
-                    return s._domain.cdn_foreign;
+                    return t._domain.cdn_foreign;
                 case 'https_cdn':
-                    return s._domain.https_cdn;
+                    return t._domain.https_cdn;
                 case 'graph':
-                    return s._domain.graph;
+                    return t._domain.graph;
                 case 'staticfb':
-                    return ea ? s._domain.https_staticfb : s._domain.staticfb;
+                    return fa ? t._domain.https_staticfb : t._domain.staticfb;
                 case 'https_staticfb':
-                    return s._domain.https_staticfb;
+                    return t._domain.https_staticfb;
                 case 'www':
-                    return ea ? s._domain.https_www : s._domain.www;
+                    return fa ? t._domain.https_www : t._domain.www;
                 case 'https_www':
-                    return s._domain.https_www;
+                    return t._domain.https_www;
                 case 'm':
-                    return ea ? s._domain.https_m : s._domain.m;
+                    return fa ? t._domain.https_m : t._domain.m;
                 case 'https_m':
-                    return s._domain.https_m;
+                    return t._domain.https_m;
                 }
             },
-            copy: ba,
-            create: function(ca, da) {
-                var ea = ca.split('.');
-                ca = ea.pop();
-                var fa = ea.length ? i(s, ea.join('.'), true) : s;
-                return ca in fa ? fa[ca] : fa[ca] = (da || {});
+            copy: ca,
+            create: function(da, ea) {
+                var fa = da.split('.');
+                da = fa.pop();
+                var ga = fa.length ? h(t, fa.join('.'), true) : t;
+                return da in ga ? ga[da] : ga[da] = (ea || {});
             },
-            provide: y,
-            guid: h,
-            log: function(ca) {
-                if (s._logging) if (window.Debug && window.Debug.writeln) {
-                    window.Debug.writeln(ca);
-                } else if (window.console) window.console.log(ca);
-                if (s.Event) s.Event.fire('fb.log', ca);
+            provide: z,
+            guid: l,
+            log: function(da) {
+                if (t._logging) if (window.Debug && window.Debug.writeln) {
+                    window.Debug.writeln(da);
+                } else if (window.console) window.console.log(da);
+                if (t.Event) t.Event.fire('fb.log', da);
             },
-            $: function(ca) {
-                return document.getElementById(ca);
+            $: function(da) {
+                return document.getElementById(da);
             },
-            dotAccess: i,
-            Runtime: r,
-            guard: m.guard,
-            unguard: m.unguard,
-            wrapFunction: l,
-            safeEval: k
+            dotAccess: h,
+            Runtime: o,
+            guard: i.guard,
+            unguard: i.unguard,
+            wrapFunction: s,
+            safeEval: p,
+            _getContextType: j
         });
-        if (t) j(t, {
+        if (u) g(u, {
             provide: function() {
-                p.error('FB.provide is no longer supported');
-                if (!w.hasOwnProperty('provide')) {
-                    o.log(o.TYPE.ERROR, o.CATEGORY.DEPRECATED, 'FB.provide');
+                n.error('FB.provide is no longer supported');
+                if (!x.hasOwnProperty('provide')) {
+                    m.log(m.TYPE.ERROR, m.CATEGORY.DEPRECATED, 'FB.provide');
                     q.log('jssdk_error', {
-                        appId: s._apiKey,
+                        appId: t._apiKey,
                         error: 'Private method used',
                         extra: {
                             args: 'provide'
                         }
                     });
-                    w.provide = true;
+                    x.provide = true;
                 }
             }
         });
-        e.exports = s;
+        e.exports = t;
     });
     __d("flattenObject", [], function(a, b, c, d, e, f) {
         function g(h) {
@@ -2182,625 +2201,59 @@ window.FB || (function(window) {
             api: f
         });
     }, 3);
-    __c();
-    __d("legacy:fb.prelude", ["FB"], function(a, b, c, d) {
-        var e = b('FB');
-    }, 3);
-    FB.provide('Array', {
-        merge: function(a, b) {
-            for (var c = 0; c < b.length; c++) if (ES5(a, 'indexOf', true, b[c]) < 0) a.push(b[c]);
-            return a;
-        },
-        forEach: function(a, b, c) {
-            if (!a) return;
-            if (Object.prototype.toString.apply(a) === '[object Array]' || (!(a instanceof Function) && typeof a.length == 'number')) {
-                if (a.forEach) {
-                    ES5(a, 'forEach', true, b);
-                } else for (var d = 0, e = a.length; d < e; d++) b(a[d], d, a);
-            } else for (var f in a) if (c || a.hasOwnProperty(f)) b(a[f], f, a);
-        },
-        toArray: function(a) {
-            for (var b = 0, c = [], d = a.length; b < d; b++) c[b] = a[b];
-            return c;
-        }
-    });
-    FB.provide('EventProvider', {
-        subscribers: function() {
-            if (!this._subscribersMap) this._subscribersMap = {};
-            return this._subscribersMap;
-        },
-        subscribe: function(a, b) {
-            var c = this.subscribers();
-            if (!c[a]) {
-                c[a] = [b];
-            } else c[a].push(b);
-        },
-        unsubscribe: function(a, b) {
-            var c = this.subscribers()[a];
-            ES5(FB.Array, 'forEach', true, c, function(d, e) {
-                if (d == b) c[e] = null;
-            });
-        },
-        monitor: function(a, b) {
-            if (!b()) {
-                var c = this,
-                    d = function() {
-                        if (b.apply(b, arguments)) c.unsubscribe(a, d);
-                    };
-                this.subscribe(a, d);
-            }
-        },
-        clear: function(a) {
-            delete this.subscribers()[a];
-        },
-        fire: function() {
-            var a = Array.prototype.slice.call(arguments),
-                b = a.shift(),
-                c = this.subscribers()[b];
-            if (c) ES5(c, 'forEach', true, function(d) {
-                if (d) d.apply(this, a);
-            });
-        },
-        listen: function(a, event, b) {
-            b.wrapper = FB.wrapFunction(b, 'entry', a + ':' + event);
-            if (a.addEventListener) {
-                a.addEventListener(event, b.wrapper, false);
-            } else if (a.attachEvent) a.attachEvent('on' + event, b.wrapper);
-        },
-        unlisten: function(a, event, b) {
-            if (a.removeEventListener) {
-                a.removeEventListener(event, b.wrapper, false);
-            } else if (a.detachEvent) a.detachEvent('on' + event, b.wrapper);
-        }
-    });
-    FB.provide('Event', FB.EventProvider);
-    __d("JSONRPC", ["copyProperties", "Log"], function(a, b, c, d, e, f) {
-        var g = b('copyProperties'),
-            h = b('Log');
+    __d("sdk.Cookie", ["QueryString", "sdk.Runtime"], function(a, b, c, d, e, f) {
+        var g = b('QueryString'),
+            h = b('sdk.Runtime'),
+            i = null;
 
-        function i(j) {
-            this._counter = 0;
-            this._callbacks = {};
-            this.remote = {};
-            this.local = {};
-            this._write = j;
-        }
-        g(i.prototype, {
-            stub: function(j) {
-                this.remote[j] = ES5(function() {
-                    var k = Array.prototype.slice.call(arguments),
-                        l = {
-                            jsonrpc: '2.0',
-                            method: j
-                        };
-                    if (typeof k[k.length - 1] == 'function') {
-                        l.id = ++this._counter;
-                        this._callbacks[l.id] = k.pop();
-                    }
-                    l.params = k;
-                    this._write(ES5('JSON', 'stringify', false, l), {
-                        method: j
-                    });
-                }, 'bind', true, this);
-            },
-            read: function(j, k) {
-                var l = ES5('JSON', 'parse', false, j),
-                    m = l.id;
-                if (!l.method) {
-                    if (!this._callbacks[m]) {
-                        h.warn('Could not find callback %s', m);
-                        return;
-                    }
-                    var n = this._callbacks[m];
-                    delete this._callbacks[m];
-                    delete l.id;
-                    delete l.jsonrpc;
-                    n(l);
-                    return;
-                }
-                var o = this,
-                    p = this.local[l.method],
-                    q;
-                if (m) {
-                    q = function(t, u) {
-                        var v = {
-                            jsonrpc: '2.0',
-                            id: m
-                        };
-                        v[t] = u;
-                        setTimeout(function() {
-                            o._write(ES5('JSON', 'stringify', false, v), k);
-                        }, 0);
-                    };
-                } else q = function() {};
-                if (!p) {
-                    h.error('Method "%s" has not been defined', l.method);
-                    q('error', {
-                        code: -32601,
-                        message: 'Method not found',
-                        data: l.method
-                    });
-                    return;
-                }
-                l.params.push(ES5(q, 'bind', true, null, 'result'));
-                l.params.push(ES5(q, 'bind', true, null, 'error'));
-                try {
-                    var s = p.apply(k || null, l.params);
-                    if (typeof s !== 'undefined') q('result', s);
-                } catch (r) {
-                    h.error('Invokation of RPC method %s resulted in the error: %s', l.method, r.message);
-                    q('error', {
-                        code: -32603,
-                        message: 'Internal error',
-                        data: r.message
-                    });
-                }
+        function j(m, n, o) {
+            m = m + h.getClientID();
+            if (i) {
+                document.cookie = m + '=; expires=Wed, 04 Feb 2004 08:00:00 GMT;';
+                document.cookie = m + '=; expires=Wed, 04 Feb 2004 08:00:00 GMT;' + 'domain=' + location.hostname + ';';
             }
-        });
-        e.exports = i;
-    });
-    __d("sdk.RPC", ["Assert", "JSONRPC", "Queue"], function(a, b, c, d, e, f) {
-        var g = b('Assert'),
-            h = b('JSONRPC'),
-            i = b('Queue'),
-            j = new i(),
-            k = new h(function(m) {
-                j.enqueue(m);
-            }),
-            l = {
-                local: k.local,
-                remote: k.remote,
-                stub: ES5(k.stub, 'bind', true, k),
-                setInQueue: function(m) {
-                    g.isInstanceOf(i, m);
-                    m.start(function(n) {
-                        k.read(n);
-                    });
-                },
-                getOutQueue: function() {
-                    return j;
-                }
-            };
-        e.exports = l;
-    });
-    __d("hasArrayNature", [], function(a, b, c, d, e, f) {
-        function g(h) {
-            return ( !! h && (typeof h == 'object' || typeof h == 'function') && ('length' in h) && !('setInterval' in h) && (Object.prototype.toString.call(h) === "[object Array]" || ('callee' in h) || ('item' in h)));
+            var p = new Date(o).toGMTString();
+            document.cookie = m + '=' + n + (n && o === 0 ? '' : '; expires=' + p) + '; path=/' + (i ? '; domain=' + i : '');
         }
-        e.exports = g;
-    });
-    __d("createArrayFrom", ["hasArrayNature"], function(a, b, c, d, e, f) {
-        var g = b('hasArrayNature');
-
-        function h(i) {
-            if (!g(i)) return [i];
-            if (i.item) {
-                var j = i.length,
-                    k = new Array(j);
-                while (j--) k[j] = i[j];
-                return k;
-            }
-            return Array.prototype.slice.call(i);
+        function k(m) {
+            m = m + h.getClientID();
+            var n = new RegExp('\\b' + m + '=([^;]*)\\b');
+            return n.test(document.cookie) ? RegExp.$1 : null;
         }
-        e.exports = h;
-    });
-    __d("sdk.computeContentSize", ["DOMWrapper", "createArrayFrom"], function(a, b, c, d, e, f) {
-        var g = b('DOMWrapper'),
-            h = b('createArrayFrom');
-
-        function i() {
-            var j = g.getWindow().document,
-                k = j.body,
-                l = j.documentElement,
-                m = 0,
-                n = Math.max(k.offsetTop, 0),
-                o = Math.max(l.offsetTop, 0),
-                p = k.scrollHeight + n,
-                q = k.offsetHeight + n,
-                r = l.scrollHeight + o,
-                s = l.offsetHeight + o,
-                t = Math.max(p, q, r, s);
-            if (k.offsetWidth < k.scrollWidth) {
-                m = k.scrollWidth + k.offsetLeft;
-            } else ES5(h(k.childNodes), 'forEach', true, function(u) {
-                var v = u.offsetWidth + u.offsetLeft;
-                if (v > m) m = v;
-            });
-            if (l.clientLeft > 0) m += (l.clientLeft * 2);
-            if (l.clientTop > 0) t += (l.clientTop * 2);
-            return {
-                height: t,
-                width: m
-            };
-        }
-        e.exports = i;
-    });
-    __d("sdk.Canvas.IframeHandling", ["sdk.Runtime", "Log", "sdk.RPC", "sdk.computeContentSize"], function(a, b, c, d, e, f) {
-        var g = b('sdk.Runtime'),
-            h = b('Log'),
-            i = b('sdk.RPC'),
-            j = b('sdk.computeContentSize'),
-            k = null,
-            l;
-
-        function m(p) {
-            if (!g.getInitialized() && arguments.callee.caller != n) h.warn('FB.init is required for setSize to take effect');
-            if (typeof p != 'object') p = {};
-            var q = 0,
-                r = 0;
-            if (!p.height) {
-                p.height = j().height;
-                q = 16;
-                r = 4;
-            }
-            if (!p.frame) p.frame = window.name || 'iframe_canvas';
-            if (l) {
-                var s = l.height,
-                    t = p.height - s;
-                if (t <= r && t >= -q) return false;
-            }
-            l = p;
-            i.remote.setSize(p);
-            return true;
-        }
-        function n(p, q) {
-            if (!g.getInitialized()) h.warn('FB.init is required for setAutoGrow to take effect');
-            if (q === undefined && typeof p === 'number') {
-                q = p;
-                p = true;
-            }
-            if (p || p === undefined) {
-                if (k === null) k = setInterval(m, q || 100);
-                m();
-            } else if (k !== null) {
-                clearInterval(k);
-                k = null;
-            }
-        }
-        i.stub('setSize');
-        var o = {
-            setSize: m,
-            setAutoGrow: n
-        };
-        e.exports = o;
-    });
-    __d("sdk.Canvas.Environment", ["sdk.Runtime", "Log", "sdk.RPC"], function(a, b, c, d, e, f) {
-        var g = b('sdk.Runtime'),
-            h = b('Log'),
-            i = b('sdk.RPC');
-
-        function j(m) {
-            if (typeof m !== 'function') {
-                h.error('FB.Canvas.getPageInfo called without a callback');
-                return;
-            }
-            if (!g.getInitialized()) h.warn('FB.init is required for getPageInfo to take effect');
-            i.remote.getPageInfo(function(n) {
-                m(n.result);
-            });
-        }
-        function k(m, n) {
-            if (!g.getInitialized()) h.warn('FB.init is required for scrollTo to take effect');
-            i.remote.scrollTo({
-                x: m || 0,
-                y: n || 0
-            });
-        }
-        i.stub('getPageInfo');
-        i.stub('scrollTo');
         var l = {
-            getPageInfo: j,
-            scrollTo: k
+            setDomain: function(m) {
+                i = m;
+                var n = g.encode({
+                    base_domain: i
+                }),
+                    o = new Date();
+                o.setFullYear(o.getFullYear() + 1);
+                j('fbm_', n, o.getTime());
+            },
+            getDomain: function() {
+                return i;
+            },
+            loadMeta: function() {
+                var m = k('fbm_');
+                if (m) {
+                    var n = g.decode(m);
+                    if (!i) i = n.base_domain;
+                    return n;
+                }
+            },
+            loadSignedRequest: function() {
+                return k('fbsr_');
+            },
+            setSignedRequestCookie: function(m, n) {
+                if (!m) throw new Error('Value passed to Cookie.setSignedRequestCookie ' + 'was empty.');
+                j('fbsr_', m, n);
+            },
+            clearSignedRequestCookie: function() {
+                j('fbsr_', '', 0);
+            },
+            setRaw: j
         };
         e.exports = l;
-    });
-    __d("sdk.Canvas.Tti", ["sdk.RPC", "sdk.Runtime"], function(a, b, c, d, e, f) {
-        var g = b('sdk.RPC'),
-            h = b('sdk.Runtime');
-
-        function i(n, o) {
-            var p = {
-                appId: h.getClientID(),
-                time: (new Date()).getTime(),
-                name: o
-            },
-                q = [p];
-            if (n) q.push(function(r) {
-                n(r.result);
-            });
-            g.remote.logTtiMessage.apply(null, q);
-        }
-        function j() {
-            i(null, 'StartIframeAppTtiTimer');
-        }
-        function k(n) {
-            i(n, 'StopIframeAppTtiTimer');
-        }
-        function l(n) {
-            i(n, 'RecordIframeAppTti');
-        }
-        g.stub('logTtiMessage');
-        var m = {
-            setDoneLoading: l,
-            startTimer: j,
-            stopTimer: k
-        };
-        e.exports = m;
-    });
-    __d("sdk.Canvas.Flash", ["sdk.api", "sdk.RPC", "Log", "sdk.Runtime", "createArrayFrom"], function(a, b, c, d, e, f) {
-        var g = b('sdk.api'),
-            h = b('sdk.RPC'),
-            i = b('Log'),
-            j = b('sdk.Runtime'),
-            k = b('createArrayFrom'),
-            l = 'CLSID:D27CDB6E-AE6D-11CF-96B8-444553540000',
-            m = null;
-
-        function n(r) {
-            r.style.visibility = 'hidden';
-        }
-        function o(r) {
-            r.style.visibility = '';
-        }
-        function p(r) {
-            i.info('hideFlashCallback called with %s', r.state);
-            var s = window.document.getElementsByTagName('object');
-            ES5(k(s), 'forEach', true, function(t) {
-                if (t.type.toLowerCase() != "application/x-shockwave-flash" && (!t.classid || t.classid.toUpperCase() != l)) return;
-                for (var u = 0; u < t.childNodes.length; u++) {
-                    var v = t.childNodes[u];
-                    if (/param/i.test(v.nodeName) && /wmode/i.test(v.name) && /opaque|transparent/i.test(v.value)) return;
-                }
-                if (m) {
-                    i.info('Calling developer specified callback');
-                    var w = {
-                        state: r.state,
-                        elem: t
-                    };
-                    m(w);
-                    setTimeout(function() {
-                        if (w.state == 'opened') {
-                            n(t);
-                        } else o(t);
-                    }, 200);
-                } else if (r.state == 'opened') {
-                    t._old_visibility = t.style.visibility;
-                    t.style.visibility = 'hidden';
-                } else if (r.state == 'closed') {
-                    t.style.visibility = t._old_visibility || 'auto';
-                    delete t._old_visibility;
-                }
-                if (Math.random() <= 1 / 1000) g(j.getClientID() + '/occludespopups', 'post', {});
-            });
-        }
-        h.local.hideFlashObjects = function() {
-            p({
-                state: 'opened'
-            });
-        };
-        h.local.showFlashObjects = function() {
-            p({
-                state: 'closed'
-            });
-        };
-        var q = {
-            _setHideFlashCallback: function(r) {
-                m = r;
-            },
-            hideFlashElement: n,
-            showFlashElement: o
-        };
-        e.exports = q;
-    });
-    __d("sdk.Canvas.Navigation", ["sdk.RPC", "Log", "sdk.Runtime"], function(a, b, c, d, e, f) {
-        var g = b('sdk.RPC'),
-            h = b('Log'),
-            i = b('sdk.Runtime');
-
-        function j(n) {
-            if (typeof n !== 'string') {
-                h.error('FB.Canvas.setHash must have a String as argument');
-                return;
-            }
-            n = n.replace(/[{}<\[\]>#%"]/, encodeURIComponent);
-            g.remote.setHash(n);
-        }
-        function k(n) {
-            if (typeof n !== 'function') {
-                h.error('FB.Canvas.getHash called without a callback');
-                return;
-            }
-            g.remote.getHash(function(o) {
-                n(o.result);
-            });
-        }
-        function l(n) {
-            if (!i.getInitialized()) h.warn('FB.init is required for setUrlHandler to take effect');
-            g.local.navigate = function(o) {
-                h.info('navigate %s', o);
-                n({
-                    path: o
-                });
-            };
-            g.remote.setNavigationEnabled(true);
-        }
-        g.stub('setNavigationEnabled');
-        g.stub('getHash');
-        g.stub('setHash');
-        var m = {
-            getHash: k,
-            setHash: j,
-            setUrlHandler: l
-        };
-        e.exports = m;
-    });
-    __d("sdk.Canvas", ["copyProperties", "sdk.RPC", "sdk.Runtime", "sdk.Canvas.IframeHandling", "sdk.Canvas.Environment", "sdk.Canvas.Tti", "sdk.Canvas.Flash", "sdk.Canvas.Navigation"], function(a, b, c, d, e, f) {
-        var g = b('copyProperties'),
-            h = b('sdk.RPC'),
-            i = b('sdk.Runtime'),
-            j = b('sdk.Canvas.IframeHandling'),
-            k = b('sdk.Canvas.Environment'),
-            l = b('sdk.Canvas.Tti'),
-            m = b('sdk.Canvas.Flash'),
-            n = b('sdk.Canvas.Navigation');
-        h.stub('showDialog');
-        var o = {
-            isTabIframe: function() {
-                return i.isEnvironment(i.ENVIRONMENTS.PAGETAB);
-            }
-        };
-        g(o, j);
-        g(o, k);
-        g(o, l);
-        g(o, m);
-        g(o, n);
-        e.exports = o;
-    });
-    __d("legacy:fb.canvas", ["FB", "sdk.Canvas"], function(a, b, c, d) {
-        var e = b('FB'),
-            f = b('sdk.Canvas');
-        e.provide('Canvas', f);
-        e.provide('CanvasInsights', {
-            setDoneLoading: f.setDoneLoading
-        });
-    }, 3);
-    __d("legacy:fb.ua", ["copyProperties", "FB", "UserAgent"], function(a, b, c, d) {
-        var e = b('copyProperties'),
-            f = b('FB'),
-            g = b('UserAgent'),
-            h = e({}, g);
-        h.mobile = function() {
-            return !f._inCanvas && g.mobile();
-        };
-        f.provide('UA', h);
-    }, 3);
-    __d("insertIframe", ["guid", "GlobalCallback"], function(a, b, c, d, e, f) {
-        var g = b('guid'),
-            h = b('GlobalCallback');
-
-        function i(j) {
-            j.id = j.id || g();
-            j.name = j.name || g();
-            var k = false,
-                l = false,
-                m = function() {
-                    if (k && !l) {
-                        l = true;
-                        j.onload && j.onload(j.root.firstChild);
-                    }
-                },
-                n = h.create(m);
-            if (document.attachEvent) {
-                var o = ('<iframe' + ' id="' + j.id + '"' + ' name="' + j.name + '"' + (j.title ? ' title="' + j.title + '"' : '') + (j.className ? ' class="' + j.className + '"' : '') + ' style="border:none;' + (j.width ? 'width:' + j.width + 'px;' : '') + (j.height ? 'height:' + j.height + 'px;' : '') + '"' + ' src="javascript:false;"' + ' frameborder="0"' + ' scrolling="no"' + ' allowtransparency="true"' + ' onload="' + n + '()"' + '></iframe>');
-                j.root.innerHTML = ('<iframe src="javascript:false"' + ' frameborder="0"' + ' scrolling="no"' + ' style="height:1px"></iframe>');
-                k = true;
-                window.setTimeout(function() {
-                    j.root.innerHTML = o;
-                    j.root.firstChild.src = j.url;
-                    j.onInsert && j.onInsert(j.root.firstChild);
-                }, 0);
-            } else {
-                var p = document.createElement('iframe');
-                p.id = j.id;
-                p.name = j.name;
-                p.onload = m;
-                p.scrolling = 'no';
-                p.style.border = 'none';
-                p.style.overflow = 'hidden';
-                if (j.title) p.title = j.title;
-                if (j.className) p.className = j.className;
-                if (j.height !== undefined) p.style.height = j.height + 'px';
-                if (j.width !== undefined) if (j.width == '100%') {
-                    p.style.width = j.width;
-                } else p.style.width = j.width + 'px';
-                j.root.appendChild(p);
-                k = true;
-                p.src = j.url;
-                j.onInsert && j.onInsert(p);
-            }
-        }
-        e.exports = i;
-    });
-    __d("legacy:insertIframe", ["FB", "insertIframe"], function(a, b, c, d) {
-        var e = b('FB'),
-            f = b('insertIframe');
-        e.provide('Content', {
-            insertIframe: f
-        });
-    }, 3);
-    FB.provide('Content', {
-        _root: null,
-        _hiddenRoot: null,
-        append: function(a, b) {
-            if (!b) if (!FB.Content._root) {
-                FB.Content._root = b = FB.$('fb-root');
-                if (!b) {
-                    FB.log('The "fb-root" div has not been created, auto-creating');
-                    FB.Content._root = b = document.createElement('div');
-                    b.id = 'fb-root';
-                    if (FB.UA.ie() || !document.body) {
-                        FB.Dom.ready(function() {
-                            document.body.appendChild(b);
-                        });
-                    } else document.body.appendChild(b);
-                }
-                b.className += ' fb_reset';
-            } else b = FB.Content._root;
-            if (typeof a == 'string') {
-                var c = document.createElement('div');
-                b.appendChild(c).innerHTML = a;
-                return c;
-            } else return b.appendChild(a);
-        },
-        appendHidden: function(a) {
-            if (!FB.Content._hiddenRoot) {
-                var b = document.createElement('div'),
-                    c = b.style;
-                c.position = 'absolute';
-                c.top = '-10000px';
-                c.width = c.height = 0;
-                FB.Content._hiddenRoot = FB.Content.append(b);
-            }
-            return FB.Content.append(a, FB.Content._hiddenRoot);
-        },
-        submitToTarget: function(a, b) {
-            var c = document.createElement('form');
-            c.action = a.url;
-            c.target = a.target;
-            c.method = (b) ? 'GET' : 'POST';
-            FB.Content.appendHidden(c);
-            ES5(FB.Array, 'forEach', true, a.params, function(d, e) {
-                if (d !== null && d !== undefined) {
-                    var f = document.createElement('input');
-                    f.name = e;
-                    f.value = d;
-                    c.appendChild(f);
-                }
-            });
-            c.submit();
-            c.parentNode.removeChild(c);
-        }
-    });
-    __d("resolveWindow", [], function(a, b, c, d, e, f) {
-        function g(h) {
-            var i = window,
-                j = h.split('.');
-            try {
-                for (var l = 0; l < j.length; l++) {
-                    var m = j[l],
-                        n = /^frames\[['"]?([a-zA-Z0-9\-_]+)['"]?\]$/.exec(m);
-                    if (n) {
-                        i = i.frames[n[1]];
-                    } else if (m === 'opener' || m === 'parent' || m === 'top') {
-                        i = i[m];
-                    } else return null;
-                }
-            } catch (k) {
-                return null;
-            }
-            return i;
-        }
-        e.exports = g;
     });
     __d("sdk.createIframe", ["copyProperties", "guid"], function(a, b, c, d, e, f) {
         var g = b('copyProperties'),
@@ -2828,6 +2281,85 @@ window.FB || (function(window) {
             return l;
         }
         e.exports = j;
+    });
+    __d("Base64", [], function(a, b, c, d, e, f) {
+        var g = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
+
+        function h(l) {
+            l = (l.charCodeAt(0) << 16) | (l.charCodeAt(1) << 8) | l.charCodeAt(2);
+            return String.fromCharCode(g.charCodeAt(l >>> 18), g.charCodeAt((l >>> 12) & 63), g.charCodeAt((l >>> 6) & 63), g.charCodeAt(l & 63));
+        }
+        var i = '>___?456789:;<=_______' + '\0\1\2\3\4\5\6\7\b\t\n\13\f\r\16\17\20\21\22\23\24\25\26\27\30\31' + '______\32\33\34\35\36\37 !"#$%&\'()*+,-./0123';
+
+        function j(l) {
+            l = (i.charCodeAt(l.charCodeAt(0) - 43) << 18) | (i.charCodeAt(l.charCodeAt(1) - 43) << 12) | (i.charCodeAt(l.charCodeAt(2) - 43) << 6) | i.charCodeAt(l.charCodeAt(3) - 43);
+            return String.fromCharCode(l >>> 16, (l >>> 8) & 255, l & 255);
+        }
+        var k = {
+            encode: function(l) {
+                l = unescape(encodeURI(l));
+                var m = (l.length + 2) % 3;
+                l = (l + '\0\0'.slice(m)).replace(/[\s\S]{3}/g, h);
+                return l.slice(0, l.length + m - 2) + '=='.slice(m);
+            },
+            decode: function(l) {
+                l = l.replace(/[^A-Za-z0-9+\/]/g, '');
+                var m = (l.length + 3) & 3;
+                l = (l + 'AAA'.slice(m)).replace(/..../g, j);
+                l = l.slice(0, l.length + m - 3);
+                try {
+                    return decodeURIComponent(escape(l));
+                } catch (n) {
+                    throw new Error('Not valid UTF-8');
+                }
+            },
+            encodeObject: function(l) {
+                return k.encode(ES5('JSON', 'stringify', false, l));
+            },
+            decodeObject: function(l) {
+                return ES5('JSON', 'parse', false, k.decode(l));
+            },
+            encodeNums: function(l) {
+                return String.fromCharCode.apply(String, ES5(l, 'map', true, function(m) {
+                    return g.charCodeAt((m | -(m > 63)) & -(m > 0) & 63);
+                }));
+            }
+        };
+        e.exports = k;
+    });
+    __d("sdk.SignedRequest", ["Base64"], function(a, b, c, d, e, f) {
+        var g = b('Base64');
+
+        function h(j) {
+            if (!j) return null;
+            var k = j.split('.', 2)[1].replace(/\-/g, '+').replace(/\_/g, '/');
+            return g.decodeObject(k);
+        }
+        var i = {
+            parse: h
+        };
+        e.exports = i;
+    });
+    __d("resolveWindow", [], function(a, b, c, d, e, f) {
+        function g(h) {
+            var i = window,
+                j = h.split('.');
+            try {
+                for (var l = 0; l < j.length; l++) {
+                    var m = j[l],
+                        n = /^frames\[['"]?([a-zA-Z0-9\-_]+)['"]?\]$/.exec(m);
+                    if (n) {
+                        i = i.frames[n[1]];
+                    } else if (m === 'opener' || m === 'parent' || m === 'top') {
+                        i = i[m];
+                    } else return null;
+                }
+            } catch (k) {
+                return null;
+            }
+            return i;
+        }
+        e.exports = g;
     });
     __d("DOMEventListener", [], function(a, b, c, d, e, f) {
         var g, h;
@@ -3046,6 +2578,115 @@ window.FB || (function(window) {
         })());
         e.exports = q;
     });
+    __d("JSONRPC", ["copyProperties", "Log"], function(a, b, c, d, e, f) {
+        var g = b('copyProperties'),
+            h = b('Log');
+
+        function i(j) {
+            this._counter = 0;
+            this._callbacks = {};
+            this.remote = {};
+            this.local = {};
+            this._write = j;
+        }
+        g(i.prototype, {
+            stub: function(j) {
+                this.remote[j] = ES5(function() {
+                    var k = Array.prototype.slice.call(arguments),
+                        l = {
+                            jsonrpc: '2.0',
+                            method: j
+                        };
+                    if (typeof k[k.length - 1] == 'function') {
+                        l.id = ++this._counter;
+                        this._callbacks[l.id] = k.pop();
+                    }
+                    l.params = k;
+                    this._write(ES5('JSON', 'stringify', false, l), {
+                        method: j
+                    });
+                }, 'bind', true, this);
+            },
+            read: function(j, k) {
+                var l = ES5('JSON', 'parse', false, j),
+                    m = l.id;
+                if (!l.method) {
+                    if (!this._callbacks[m]) {
+                        h.warn('Could not find callback %s', m);
+                        return;
+                    }
+                    var n = this._callbacks[m];
+                    delete this._callbacks[m];
+                    delete l.id;
+                    delete l.jsonrpc;
+                    n(l);
+                    return;
+                }
+                var o = this,
+                    p = this.local[l.method],
+                    q;
+                if (m) {
+                    q = function(t, u) {
+                        var v = {
+                            jsonrpc: '2.0',
+                            id: m
+                        };
+                        v[t] = u;
+                        setTimeout(function() {
+                            o._write(ES5('JSON', 'stringify', false, v), k);
+                        }, 0);
+                    };
+                } else q = function() {};
+                if (!p) {
+                    h.error('Method "%s" has not been defined', l.method);
+                    q('error', {
+                        code: -32601,
+                        message: 'Method not found',
+                        data: l.method
+                    });
+                    return;
+                }
+                l.params.push(ES5(q, 'bind', true, null, 'result'));
+                l.params.push(ES5(q, 'bind', true, null, 'error'));
+                try {
+                    var s = p.apply(k || null, l.params);
+                    if (typeof s !== 'undefined') q('result', s);
+                } catch (r) {
+                    h.error('Invokation of RPC method %s resulted in the error: %s', l.method, r.message);
+                    q('error', {
+                        code: -32603,
+                        message: 'Internal error',
+                        data: r.message
+                    });
+                }
+            }
+        });
+        e.exports = i;
+    });
+    __d("sdk.RPC", ["Assert", "JSONRPC", "Queue"], function(a, b, c, d, e, f) {
+        var g = b('Assert'),
+            h = b('JSONRPC'),
+            i = b('Queue'),
+            j = new i(),
+            k = new h(function(m) {
+                j.enqueue(m);
+            }),
+            l = {
+                local: k.local,
+                remote: k.remote,
+                stub: ES5(k.stub, 'bind', true, k),
+                setInQueue: function(m) {
+                    g.isInstanceOf(i, m);
+                    m.start(function(n) {
+                        k.read(n);
+                    });
+                },
+                getOutQueue: function() {
+                    return j;
+                }
+            };
+        e.exports = l;
+    });
     __d("sdk.XD", ["guid", "resolveWindow", "wrapFunction", "sdk.createIframe", "FB", "XDM", "Log", "QueryString", "Queue", "URL", "sdk.RPC", "sdk.Runtime", "XDConfig"], function(a, b, c, d, e, f) {
         var g = c('XDConfig'),
             h = b('guid'),
@@ -3252,6 +2893,620 @@ window.FB || (function(window) {
         })();
         e.exports = ja;
     });
+    __d("sdk.Auth", ["sdk.Cookie", "copyProperties", "sdk.createIframe", "DOMWrapper", "sdk.getContextType", "guid", "ObservableMixin", "QueryString", "sdk.Runtime", "sdk.SignedRequest", "UrlMap", "URL", "sdk.XD"], function(a, b, c, d, e, f) {
+        var g = b('sdk.Cookie'),
+            h = b('copyProperties'),
+            i = b('sdk.createIframe'),
+            j = b('DOMWrapper'),
+            k = b('sdk.getContextType'),
+            l = b('guid'),
+            m = b('ObservableMixin'),
+            n = b('QueryString'),
+            o = b('sdk.Runtime'),
+            p = b('sdk.SignedRequest'),
+            q = b('UrlMap'),
+            r = b('URL'),
+            s = b('sdk.XD'),
+            t, u, v = new m();
+
+        function w(aa, ba) {
+            var ca = o.getUserID(),
+                da = 0;
+            if (aa) if (aa.userID) {
+                da = aa.userID;
+            } else if (aa.signedRequest) {
+                var ea = p.parse(aa.signedRequest);
+                if (ea && ea.user_id) da = ea.user_id;
+            }
+            var fa = !ca && aa,
+                ga = ca && !aa,
+                ha = aa && ca && ca != da,
+                ia = aa != t,
+                ja = ba != (o.getLoginStatus() || 'unknown');
+            o.setLoginStatus(ba);
+            o.setAccessToken(aa && aa.accessToken || null);
+            o.setUserID(da);
+            t = aa;
+            var ka = {
+                authResponse: aa,
+                status: ba
+            };
+            if (ga || ha) v.inform('logout', ka);
+            if (fa || ha) v.inform('login', ka);
+            if (ia) v.inform('authresponse.change', ka);
+            if (ja) v.inform('status.change', ka);
+            return ka;
+        }
+        function x() {
+            return t;
+        }
+        function y(aa, ba, ca) {
+            return function(da) {
+                var ea;
+                if (da && da.access_token) {
+                    var fa = p.parse(da.signed_request);
+                    ba = {
+                        accessToken: da.access_token,
+                        userID: fa.user_id,
+                        expiresIn: parseInt(da.expires_in, 10),
+                        signedRequest: da.signed_request
+                    };
+                    if (o.getUseCookie()) {
+                        var ga = ba.expiresIn === 0 ? 0 : (new Date()).getTime() + ba.expiresIn * 1000,
+                            ha = g.getDomain();
+                        if (!ha && da.base_domain) g.setDomain('.' + da.base_domain);
+                        g.setSignedRequestCookie(da.signed_request, ga);
+                    }
+                    ea = 'connected';
+                    w(ba, ea);
+                } else if (ca === 'logout' || ca === 'login_status') {
+                    if (da.error && da.error === 'not_authorized') {
+                        ea = 'not_authorized';
+                    } else ea = 'unknown';
+                    w(null, ea);
+                    if (o.getUseCookie()) g.clearSignedRequestCookie();
+                }
+                if (da && da.https == 1) o.setSecure(true);
+                if (aa) aa({
+                    authResponse: ba,
+                    status: o.getLoginStatus()
+                });
+                return ba;
+            };
+        }
+        function z(aa) {
+            var ba;
+            if (u) {
+                clearTimeout(u);
+                u = null;
+            }
+            var ca = y(aa, t, 'login_status'),
+                da = r(q.resolve('www', true) + '/dialog/oauth').setSearch(n.encode({
+                    client_id: o.getClientID(),
+                    response_type: 'token,signed_request,code',
+                    display: 'none',
+                    domain: location.hostname,
+                    origin: k(),
+                    redirect_uri: s.handler(function(ea) {
+                        ba.parentNode.removeChild(ba);
+                        if (ca(ea)) u = setTimeout(function() {
+                            z();
+                        }, 1200000);
+                    }, 'parent'),
+                    sdk: 'joey'
+                }));
+            ba = i({
+                root: j.getRoot(),
+                name: l(),
+                url: da.toString(),
+                style: {
+                    display: 'none'
+                }
+            });
+        }
+        h(v, {
+            fetchLoginStatus: z,
+            setAuthResponse: w,
+            getAuthResponse: x,
+            parseSignedRequest: p.parse,
+            xdResponseWrapper: y
+        });
+        e.exports = v;
+    });
+    __c();
+    __d("legacy:fb.prelude", ["FB"], function(a, b, c, d) {
+        var e = b('FB');
+    }, 3);
+    FB.provide('Array', {
+        merge: function(a, b) {
+            for (var c = 0; c < b.length; c++) if (ES5(a, 'indexOf', true, b[c]) < 0) a.push(b[c]);
+            return a;
+        },
+        forEach: function(a, b, c) {
+            if (!a) return;
+            if (Object.prototype.toString.apply(a) === '[object Array]' || (!(a instanceof Function) && typeof a.length == 'number')) {
+                if (a.forEach) {
+                    ES5(a, 'forEach', true, b);
+                } else for (var d = 0, e = a.length; d < e; d++) b(a[d], d, a);
+            } else for (var f in a) if (c || a.hasOwnProperty(f)) b(a[f], f, a);
+        },
+        toArray: function(a) {
+            for (var b = 0, c = [], d = a.length; b < d; b++) c[b] = a[b];
+            return c;
+        }
+    });
+    FB.provide('EventProvider', {
+        subscribers: function() {
+            if (!this._subscribersMap) this._subscribersMap = {};
+            return this._subscribersMap;
+        },
+        subscribe: function(a, b) {
+            var c = this.subscribers();
+            if (!c[a]) {
+                c[a] = [b];
+            } else c[a].push(b);
+        },
+        unsubscribe: function(a, b) {
+            var c = this.subscribers()[a];
+            ES5(FB.Array, 'forEach', true, c, function(d, e) {
+                if (d == b) c[e] = null;
+            });
+        },
+        monitor: function(a, b) {
+            if (!b()) {
+                var c = this,
+                    d = function() {
+                        if (b.apply(b, arguments)) c.unsubscribe(a, d);
+                    };
+                this.subscribe(a, d);
+            }
+        },
+        clear: function(a) {
+            delete this.subscribers()[a];
+        },
+        fire: function() {
+            var a = Array.prototype.slice.call(arguments),
+                b = a.shift(),
+                c = this.subscribers()[b];
+            if (c) ES5(c, 'forEach', true, function(d) {
+                if (d) d.apply(this, a);
+            });
+        },
+        listen: function(a, event, b) {
+            b.wrapper = FB.wrapFunction(b, 'entry', a + ':' + event);
+            if (a.addEventListener) {
+                a.addEventListener(event, b.wrapper, false);
+            } else if (a.attachEvent) a.attachEvent('on' + event, b.wrapper);
+        },
+        unlisten: function(a, event, b) {
+            if (a.removeEventListener) {
+                a.removeEventListener(event, b.wrapper, false);
+            } else if (a.detachEvent) a.detachEvent('on' + event, b.wrapper);
+        }
+    });
+    FB.provide('Event', FB.EventProvider);
+    __d("sdk.Event", ["FB"], function(a, b, c, d, e, f) {
+        var g = b('FB');
+        e.exports = g.Event;
+    });
+    __d("hasArrayNature", [], function(a, b, c, d, e, f) {
+        function g(h) {
+            return ( !! h && (typeof h == 'object' || typeof h == 'function') && ('length' in h) && !('setInterval' in h) && (Object.prototype.toString.call(h) === "[object Array]" || ('callee' in h) || ('item' in h)));
+        }
+        e.exports = g;
+    });
+    __d("createArrayFrom", ["hasArrayNature"], function(a, b, c, d, e, f) {
+        var g = b('hasArrayNature');
+
+        function h(i) {
+            if (!g(i)) return [i];
+            if (i.item) {
+                var j = i.length,
+                    k = new Array(j);
+                while (j--) k[j] = i[j];
+                return k;
+            }
+            return Array.prototype.slice.call(i);
+        }
+        e.exports = h;
+    });
+    __d("sdk.computeContentSize", ["DOMWrapper", "createArrayFrom"], function(a, b, c, d, e, f) {
+        var g = b('DOMWrapper'),
+            h = b('createArrayFrom');
+
+        function i() {
+            var j = g.getWindow().document,
+                k = j.body,
+                l = j.documentElement,
+                m = 0,
+                n = Math.max(k.offsetTop, 0),
+                o = Math.max(l.offsetTop, 0),
+                p = k.scrollHeight + n,
+                q = k.offsetHeight + n,
+                r = l.scrollHeight + o,
+                s = l.offsetHeight + o,
+                t = Math.max(p, q, r, s);
+            if (k.offsetWidth < k.scrollWidth) {
+                m = k.scrollWidth + k.offsetLeft;
+            } else ES5(h(k.childNodes), 'forEach', true, function(u) {
+                var v = u.offsetWidth + u.offsetLeft;
+                if (v > m) m = v;
+            });
+            if (l.clientLeft > 0) m += (l.clientLeft * 2);
+            if (l.clientTop > 0) t += (l.clientTop * 2);
+            return {
+                height: t,
+                width: m
+            };
+        }
+        e.exports = i;
+    });
+    __d("sdk.Canvas.IframeHandling", ["sdk.Runtime", "Log", "sdk.RPC", "sdk.computeContentSize"], function(a, b, c, d, e, f) {
+        var g = b('sdk.Runtime'),
+            h = b('Log'),
+            i = b('sdk.RPC'),
+            j = b('sdk.computeContentSize'),
+            k = null,
+            l;
+
+        function m(p) {
+            if (!g.getInitialized() && arguments.callee.caller != n) h.warn('FB.init is required for setSize to take effect');
+            if (typeof p != 'object') p = {};
+            var q = 0,
+                r = 0;
+            if (!p.height) {
+                p.height = j().height;
+                q = 16;
+                r = 4;
+            }
+            if (!p.frame) p.frame = window.name || 'iframe_canvas';
+            if (l) {
+                var s = l.height,
+                    t = p.height - s;
+                if (t <= r && t >= -q) return false;
+            }
+            l = p;
+            i.remote.setSize(p);
+            return true;
+        }
+        function n(p, q) {
+            if (!g.getInitialized()) h.warn('FB.init is required for setAutoGrow to take effect');
+            if (q === undefined && typeof p === 'number') {
+                q = p;
+                p = true;
+            }
+            if (p || p === undefined) {
+                if (k === null) k = setInterval(m, q || 100);
+                m();
+            } else if (k !== null) {
+                clearInterval(k);
+                k = null;
+            }
+        }
+        i.stub('setSize');
+        var o = {
+            setSize: m,
+            setAutoGrow: n
+        };
+        e.exports = o;
+    });
+    __d("sdk.Canvas.Environment", ["sdk.Runtime", "Log", "sdk.RPC"], function(a, b, c, d, e, f) {
+        var g = b('sdk.Runtime'),
+            h = b('Log'),
+            i = b('sdk.RPC');
+
+        function j(m) {
+            if (typeof m !== 'function') {
+                h.error('FB.Canvas.getPageInfo called without a callback');
+                return;
+            }
+            if (!g.getInitialized()) h.warn('FB.init is required for getPageInfo to take effect');
+            i.remote.getPageInfo(function(n) {
+                m(n.result);
+            });
+        }
+        function k(m, n) {
+            if (!g.getInitialized()) h.warn('FB.init is required for scrollTo to take effect');
+            i.remote.scrollTo({
+                x: m || 0,
+                y: n || 0
+            });
+        }
+        i.stub('getPageInfo');
+        i.stub('scrollTo');
+        var l = {
+            getPageInfo: j,
+            scrollTo: k
+        };
+        e.exports = l;
+    });
+    __d("sdk.Canvas.Tti", ["sdk.RPC", "sdk.Runtime"], function(a, b, c, d, e, f) {
+        var g = b('sdk.RPC'),
+            h = b('sdk.Runtime');
+
+        function i(n, o) {
+            var p = {
+                appId: h.getClientID(),
+                time: (new Date()).getTime(),
+                name: o
+            },
+                q = [p];
+            if (n) q.push(function(r) {
+                n(r.result);
+            });
+            g.remote.logTtiMessage.apply(null, q);
+        }
+        function j() {
+            i(null, 'StartIframeAppTtiTimer');
+        }
+        function k(n) {
+            i(n, 'StopIframeAppTtiTimer');
+        }
+        function l(n) {
+            i(n, 'RecordIframeAppTti');
+        }
+        g.stub('logTtiMessage');
+        var m = {
+            setDoneLoading: l,
+            startTimer: j,
+            stopTimer: k
+        };
+        e.exports = m;
+    });
+    __d("sdk.Canvas.Flash", ["sdk.api", "sdk.RPC", "Log", "sdk.Runtime", "createArrayFrom"], function(a, b, c, d, e, f) {
+        var g = b('sdk.api'),
+            h = b('sdk.RPC'),
+            i = b('Log'),
+            j = b('sdk.Runtime'),
+            k = b('createArrayFrom'),
+            l = 'CLSID:D27CDB6E-AE6D-11CF-96B8-444553540000',
+            m = null;
+
+        function n(r) {
+            r.style.visibility = 'hidden';
+        }
+        function o(r) {
+            r.style.visibility = '';
+        }
+        function p(r) {
+            i.info('hideFlashCallback called with %s', r.state);
+            var s = window.document.getElementsByTagName('object');
+            ES5(k(s), 'forEach', true, function(t) {
+                if (t.type.toLowerCase() != "application/x-shockwave-flash" && (!t.classid || t.classid.toUpperCase() != l)) return;
+                for (var u = 0; u < t.childNodes.length; u++) {
+                    var v = t.childNodes[u];
+                    if (/param/i.test(v.nodeName) && /wmode/i.test(v.name) && /opaque|transparent/i.test(v.value)) return;
+                }
+                if (m) {
+                    i.info('Calling developer specified callback');
+                    var w = {
+                        state: r.state,
+                        elem: t
+                    };
+                    m(w);
+                    setTimeout(function() {
+                        if (w.state == 'opened') {
+                            n(t);
+                        } else o(t);
+                    }, 200);
+                } else if (r.state == 'opened') {
+                    t._old_visibility = t.style.visibility;
+                    t.style.visibility = 'hidden';
+                } else if (r.state == 'closed') {
+                    t.style.visibility = t._old_visibility || '';
+                    delete t._old_visibility;
+                }
+                if (Math.random() <= 1 / 1000) g(j.getClientID() + '/occludespopups', 'post', {});
+            });
+        }
+        h.local.hideFlashObjects = function() {
+            p({
+                state: 'opened'
+            });
+        };
+        h.local.showFlashObjects = function() {
+            p({
+                state: 'closed'
+            });
+        };
+        var q = {
+            _setHideFlashCallback: function(r) {
+                m = r;
+            },
+            hideFlashElement: n,
+            showFlashElement: o
+        };
+        e.exports = q;
+    });
+    __d("sdk.Canvas.Navigation", ["sdk.RPC", "Log", "sdk.Runtime"], function(a, b, c, d, e, f) {
+        var g = b('sdk.RPC'),
+            h = b('Log'),
+            i = b('sdk.Runtime');
+
+        function j(n) {
+            if (typeof n !== 'string') {
+                h.error('FB.Canvas.setHash must have a String as argument');
+                return;
+            }
+            n = n.replace(/[{}<\[\]>#%"]/, encodeURIComponent);
+            g.remote.setHash(n);
+        }
+        function k(n) {
+            if (typeof n !== 'function') {
+                h.error('FB.Canvas.getHash called without a callback');
+                return;
+            }
+            g.remote.getHash(function(o) {
+                n(o.result);
+            });
+        }
+        function l(n) {
+            if (!i.getInitialized()) h.warn('FB.init is required for setUrlHandler to take effect');
+            g.local.navigate = function(o) {
+                h.info('navigate %s', o);
+                n({
+                    path: o
+                });
+            };
+            g.remote.setNavigationEnabled(true);
+        }
+        g.stub('setNavigationEnabled');
+        g.stub('getHash');
+        g.stub('setHash');
+        var m = {
+            getHash: k,
+            setHash: j,
+            setUrlHandler: l
+        };
+        e.exports = m;
+    });
+    __d("sdk.Canvas", ["copyProperties", "sdk.RPC", "sdk.Runtime", "sdk.Canvas.IframeHandling", "sdk.Canvas.Environment", "sdk.Canvas.Tti", "sdk.Canvas.Flash", "sdk.Canvas.Navigation"], function(a, b, c, d, e, f) {
+        var g = b('copyProperties'),
+            h = b('sdk.RPC'),
+            i = b('sdk.Runtime'),
+            j = b('sdk.Canvas.IframeHandling'),
+            k = b('sdk.Canvas.Environment'),
+            l = b('sdk.Canvas.Tti'),
+            m = b('sdk.Canvas.Flash'),
+            n = b('sdk.Canvas.Navigation');
+        h.stub('showDialog');
+        var o = {
+            isTabIframe: function() {
+                return i.isEnvironment(i.ENVIRONMENTS.PAGETAB);
+            }
+        };
+        g(o, j);
+        g(o, k);
+        g(o, l);
+        g(o, m);
+        g(o, n);
+        e.exports = o;
+    });
+    __d("legacy:fb.canvas", ["FB", "sdk.Canvas"], function(a, b, c, d) {
+        var e = b('FB'),
+            f = b('sdk.Canvas');
+        e.provide('Canvas', f);
+        e.provide('CanvasInsights', {
+            setDoneLoading: f.setDoneLoading
+        });
+    }, 3);
+    __d("legacy:fb.ua", ["copyProperties", "FB", "UserAgent"], function(a, b, c, d) {
+        var e = b('copyProperties'),
+            f = b('FB'),
+            g = b('UserAgent'),
+            h = e({}, g);
+        h.mobile = function() {
+            return !f._inCanvas && g.mobile();
+        };
+        f.provide('UA', h);
+    }, 3);
+    __d("insertIframe", ["guid", "GlobalCallback"], function(a, b, c, d, e, f) {
+        var g = b('guid'),
+            h = b('GlobalCallback');
+
+        function i(j) {
+            j.id = j.id || g();
+            j.name = j.name || g();
+            var k = false,
+                l = false,
+                m = function() {
+                    if (k && !l) {
+                        l = true;
+                        j.onload && j.onload(j.root.firstChild);
+                    }
+                },
+                n = h.create(m);
+            if (document.attachEvent) {
+                var o = ('<iframe' + ' id="' + j.id + '"' + ' name="' + j.name + '"' + (j.title ? ' title="' + j.title + '"' : '') + (j.className ? ' class="' + j.className + '"' : '') + ' style="border:none;' + (j.width ? 'width:' + j.width + 'px;' : '') + (j.height ? 'height:' + j.height + 'px;' : '') + '"' + ' src="javascript:false;"' + ' frameborder="0"' + ' scrolling="no"' + ' allowtransparency="true"' + ' onload="' + n + '()"' + '></iframe>');
+                j.root.innerHTML = ('<iframe src="javascript:false"' + ' frameborder="0"' + ' scrolling="no"' + ' style="height:1px"></iframe>');
+                k = true;
+                window.setTimeout(function() {
+                    j.root.innerHTML = o;
+                    j.root.firstChild.src = j.url;
+                    j.onInsert && j.onInsert(j.root.firstChild);
+                }, 0);
+            } else {
+                var p = document.createElement('iframe');
+                p.id = j.id;
+                p.name = j.name;
+                p.onload = m;
+                p.scrolling = 'no';
+                p.style.border = 'none';
+                p.style.overflow = 'hidden';
+                if (j.title) p.title = j.title;
+                if (j.className) p.className = j.className;
+                if (j.height !== undefined) p.style.height = j.height + 'px';
+                if (j.width !== undefined) if (j.width == '100%') {
+                    p.style.width = j.width;
+                } else p.style.width = j.width + 'px';
+                j.root.appendChild(p);
+                k = true;
+                p.src = j.url;
+                j.onInsert && j.onInsert(p);
+            }
+        }
+        e.exports = i;
+    });
+    __d("legacy:insertIframe", ["FB", "insertIframe"], function(a, b, c, d) {
+        var e = b('FB'),
+            f = b('insertIframe');
+        e.provide('Content', {
+            insertIframe: f
+        });
+    }, 3);
+    FB.provide('Content', {
+        _root: null,
+        _hiddenRoot: null,
+        append: function(a, b) {
+            if (!b) if (!FB.Content._root) {
+                FB.Content._root = b = FB.$('fb-root');
+                if (!b) {
+                    FB.log('The "fb-root" div has not been created, auto-creating');
+                    FB.Content._root = b = document.createElement('div');
+                    b.id = 'fb-root';
+                    if (FB.UA.ie() || !document.body) {
+                        FB.Dom.ready(function() {
+                            document.body.appendChild(b);
+                        });
+                    } else document.body.appendChild(b);
+                }
+                b.className += ' fb_reset';
+            } else b = FB.Content._root;
+            if (typeof a == 'string') {
+                var c = document.createElement('div');
+                b.appendChild(c).innerHTML = a;
+                return c;
+            } else return b.appendChild(a);
+        },
+        appendHidden: function(a) {
+            if (!FB.Content._hiddenRoot) {
+                var b = document.createElement('div'),
+                    c = b.style;
+                c.position = 'absolute';
+                c.top = '-10000px';
+                c.width = c.height = 0;
+                FB.Content._hiddenRoot = FB.Content.append(b);
+            }
+            return FB.Content.append(a, FB.Content._hiddenRoot);
+        },
+        submitToTarget: function(a, b) {
+            var c = document.createElement('form');
+            c.action = a.url;
+            c.target = a.target;
+            c.method = (b) ? 'GET' : 'POST';
+            FB.Content.appendHidden(c);
+            ES5(FB.Array, 'forEach', true, a.params, function(d, e) {
+                if (d !== null && d !== undefined) {
+                    var f = document.createElement('input');
+                    f.name = e;
+                    f.value = d;
+                    c.appendChild(f);
+                }
+            });
+            c.submit();
+            c.parentNode.removeChild(c);
+        }
+    });
     __d("legacy:fb.arbiter", ["FB", "sdk.XD"], function(a, b, c, d) {
         var e = b('FB'),
             f = b('sdk.XD');
@@ -3259,181 +3514,146 @@ window.FB || (function(window) {
             inform: f.inform
         });
     }, 3);
-    FB.provide('String', {
-        format: function(a) {
-            if (!FB.String.format._formatRE) FB.String.format._formatRE = /(\{[^\}^\{]+\})/g;
-            var b = arguments;
-            return a.replace(FB.String.format._formatRE, function(c, d) {
-                var e = parseInt(d.substr(1), 10),
-                    f = b[e + 1];
-                if (f === null || f === undefined) return '';
-                return f.toString();
-            });
-        },
-        escapeHTML: function(a) {
-            var b = document.createElement('div');
-            b.appendChild(document.createTextNode(a));
-            return b.innerHTML.replace(/"/g, '&quot;').replace(/'/g, '&#39;');
-        },
-        quote: function(a) {
-            var b = /["\\\x00-\x1f\x7f-\x9f]/g,
-                c = {
-                    '\b': '\\b',
-                    '\t': '\\t',
-                    '\n': '\\n',
-                    '\f': '\\f',
-                    '\r': '\\r',
-                    '"': '\\"',
-                    '\\': '\\\\'
-                };
-            return b.test(a) ? '"' + a.replace(b, function(d) {
-                var e = c[d];
-                if (e) return e;
-                e = d.charCodeAt();
-                return '\\u00' + Math.floor(e / 16).toString(16) + (e % 16).toString(16);
-            }) + '"' : '"' + a + '"';
+    __d("sdk.domReady", [], function(a, b, c, d, e, f) {
+        var g, h = "readyState" in document ? /loaded|complete/.test(document.readyState) : !! document.body;
+
+        function i() {
+            if (!g) return;
+            var l;
+            while (l = g.shift()) l();
+            g = null;
         }
-    });
-    FB.provide('Dom', {
-        containsCss: function(a, b) {
-            var c = ' ' + a.className + ' ';
-            return ES5(c, 'indexOf', true, ' ' + b + ' ') >= 0;
-        },
-        addCss: function(a, b) {
-            if (!FB.Dom.containsCss(a, b)) a.className = a.className + ' ' + b;
-        },
-        removeCss: function(a, b) {
-            if (FB.Dom.containsCss(a, b)) {
-                a.className = a.className.replace(b, '');
-                FB.Dom.removeCss(a, b);
-            }
-        },
-        getByClass: function(a, b, c) {
-            b = b || document.body;
-            c = c || '*';
-            if (b.querySelectorAll) return FB.Array.toArray(b.querySelectorAll(c + '.' + a));
-            var d = b.getElementsByTagName(c),
-                e = [];
-            for (var f = 0, g = d.length; f < g; f++) if (this.containsCss(d[f], a)) e[e.length] = d[f];
-            return e;
-        },
-        getStyle: function(a, b) {
-            var c = false,
-                d = a.style;
-            if (a.currentStyle) {
-                b = b.replace(/-(\w)/g, function(e, f) {
-                    return f.toUpperCase();
-                });
-                c = a.currentStyle[b];
-            } else {
-                b = b.replace(/[A-Z]/g, function(e) {
-                    return '-' + e.toLowerCase();
-                });
-                if (window.getComputedStyle) {
-                    c = document.defaultView.getComputedStyle(a, null).getPropertyValue(b);
-                    if (b == 'background-position-y' || b == 'background-position-x') if (c == 'top' || c == 'left') c = '0px';
-                }
-            }
-            if (b == 'opacity') {
-                if (a.filters && a.filters.alpha) return c;
-                return c * 100;
-            }
-            return c;
-        },
-        setStyle: function(a, b, c) {
-            var d = a.style;
-            if (b == 'opacity') {
-                if (c >= 100) c = 99.999;
-                if (c < 0) c = 0;
-                d.opacity = c / 100;
-                d.MozOpacity = c / 100;
-                d.KhtmlOpacity = c / 100;
-                if (a.filters) if (a.filters.alpha == undefined) {
-                    a.filter = "alpha(opacity=" + c + ")";
-                } else a.filters.alpha.opacity = c;
-            } else d[b] = c;
-        },
-        addScript: function(a) {
-            var b = document.createElement('script');
-            b.type = "text/javascript";
-            b.src = a;
-            return document.getElementsByTagName('head')[0].appendChild(b);
-        },
-        addCssRules: function(a, b) {
-            if (!FB.Dom._cssRules) FB.Dom._cssRules = {};
-            var c = true;
-            ES5(b, 'forEach', true, function(f) {
-                if (!(f in FB.Dom._cssRules)) {
-                    c = false;
-                    FB.Dom._cssRules[f] = true;
-                }
-            });
-            if (c) return;
-            if (!FB.UA.ie()) {
-                var d = document.createElement('style');
-                d.type = 'text/css';
-                d.textContent = a;
-                document.getElementsByTagName('head')[0].appendChild(d);
-            } else try {
-                document.createStyleSheet().cssText = a;
-            } catch (e) {
-                if (document.styleSheets[0]) document.styleSheets[0].cssText += a;
-            }
-        },
-        getViewportInfo: function() {
-            var a = (document.documentElement && document.compatMode == 'CSS1Compat') ? document.documentElement : document.body;
-            return {
-                scrollTop: a.scrollTop || document.body.scrollTop,
-                scrollLeft: a.scrollLeft || document.body.scrollLeft,
-                width: self.innerWidth ? self.innerWidth : a.clientWidth,
-                height: self.innerHeight ? self.innerHeight : a.clientHeight
-            };
-        },
-        ready: function(a) {
-            if (FB.Dom._isReady) {
-                a && a();
-            } else FB.Event.subscribe('dom.ready', a);
-        },
-        getPosition: function(a) {
-            var b = 0,
-                c = 0;
-            do {
-                b += a.offsetLeft;
-                c += a.offsetTop;
-            } while (a = a.offsetParent);
-            return {
-                x: b,
-                y: c
-            };
-        }
-    });
-    (function() {
-        function a() {
-            FB.Dom._isReady = true;
-            FB.Event.fire('dom.ready');
-            FB.Event.clear('dom.ready');
-        }
-        if (FB.Dom._isReady || document.readyState == 'complete') return a();
-        if (document.addEventListener) {
-            document.addEventListener('DOMContentLoaded', a, false);
-        } else if (document.attachEvent) document.attachEvent('onreadystatechange', a);
-        if (FB.UA.ie() && window == window.top)(function() {
-            try {
-                document.documentElement.doScroll('left');
-            } catch (c) {
-                setTimeout(arguments.callee, 0);
+        function j(l) {
+            if (g) {
+                g.push(l);
                 return;
+            } else l();
+        }
+        if (!h) {
+            g = [];
+            if (document.addEventListener) {
+                document.addEventListener('DOMContentLoaded', i, false);
+                window.addEventListener('load', i, false);
+            } else if (document.attachEvent) {
+                document.attachEvent('onreadystatechange', i);
+                window.attachEvent('onload', i);
             }
-            a();
-        })();
-        var b = window.onload;
-        window.onload = function() {
-            a();
-            if (b) if (typeof b == 'string') {
-                FB.safeEval(b);
-            } else b();
+            if (document.documentElement.doScroll && window == window.top) {
+                var k = function() {
+                        try {
+                            document.documentElement.doScroll('left');
+                        } catch (l) {
+                            setTimeout(k, 0);
+                            return;
+                        }
+                        i();
+                    };
+                k();
+            }
+        }
+        e.exports = j;
+    }, 3);
+    __d("sdk.DOM", ["Assert", "createArrayFrom", "DOMEventListener", "sdk.domReady", "UserAgent"], function(a, b, c, d, e, f) {
+        var g = b('Assert'),
+            h = b('createArrayFrom'),
+            i = b('DOMEventListener'),
+            j = b('sdk.domReady'),
+            k = b('UserAgent'),
+            l = {};
+
+        function m(w, x) {
+            var y = ' ' + w.className + ' ';
+            return ES5(y, 'indexOf', true, ' ' + x + ' ') >= 0;
+        }
+        function n(w, x) {
+            if (!m(w, x)) w.className = w.className + ' ' + x;
+        }
+        function o(w, x) {
+            var y = new RegExp('\\s*' + x, 'g');
+            w.className = ES5(w.className.replace(y, ''), 'trim', true);
+        }
+        function p(w, x, y) {
+            x = x || document.body;
+            y = y || '*';
+            if (x.querySelectorAll) return h(x.querySelectorAll(y + '.' + w));
+            var z = x.getElementsByTagName(y),
+                aa = [];
+            for (var ba = 0, ca = z.length; ba < ca; ba++) if (m(z[ba], w)) aa[aa.length] = z[ba];
+            return aa;
+        }
+        function q(w, x) {
+            x = x.replace(/-(\w)/g, function(aa, ba) {
+                return ba.toUpperCase();
+            });
+            var y = w.currentStyle || document.defaultView.getComputedStyle(w, null),
+                z = y[x];
+            if (/backgroundPosition?/.test(x) && /top|left/.test(z)) z = '0%';
+            return z;
+        }
+        function r(w, x, y) {
+            x = x.replace(/-(\w)/g, function(z, aa) {
+                return aa.toUpperCase();
+            });
+            w.style[x] = y;
+        }
+        function s(w, x) {
+            var y = true;
+            for (var z = 0, aa; aa = x[z++];) if (!(aa in l)) {
+                y = false;
+                l[aa] = true;
+            }
+            if (y) return;
+            if (!k.ie()) {
+                var ba = document.createElement('style');
+                ba.type = 'text/css';
+                ba.textContent = w;
+                document.getElementsByTagName('head')[0].appendChild(ba);
+            } else try {
+                document.createStyleSheet().cssText = w;
+            } catch (ca) {
+                if (document.styleSheets[0]) document.styleSheets[0].cssText += w;
+            }
+        }
+        function t() {
+            var w = (document.documentElement && document.compatMode == 'CSS1Compat') ? document.documentElement : document.body;
+            return {
+                scrollTop: w.scrollTop || document.body.scrollTop,
+                scrollLeft: w.scrollLeft || document.body.scrollLeft,
+                width: window.innerWidth ? window.innerWidth : w.clientWidth,
+                height: window.innerHeight ? window.innerHeight : w.clientHeight
+            };
+        }
+        function u(w) {
+            var x = 0,
+                y = 0;
+            do {
+                x += w.offsetLeft;
+                y += w.offsetTop;
+            } while (w = w.offsetParent);
+            return {
+                x: x,
+                y: y
+            };
+        }
+        var v = {
+            containsCss: m,
+            addCss: n,
+            removeCss: o,
+            getByClass: p,
+            getStyle: q,
+            setStyle: r,
+            addCssRules: s,
+            getViewportInfo: t,
+            getPosition: u,
+            ready: j
         };
-    })();
+        e.exports = v;
+    });
+    __d("legacy:fb.dom", ["FB", "sdk.DOM"], function(a, b, c, d) {
+        var e = b('FB'),
+            f = b('sdk.DOM');
+        e.provide('Dom', f);
+    }, 3);
     FB.provide('Intl', (function() {
         var a = ('[' + '.!?' + '\u3002' + '\uFF01' + '\uFF1F' + '\u0964' + '\u2026' + '\u0EAF' + '\u1801' + '\u0E2F' + '\uFF0E' + ']');
 
@@ -4151,446 +4371,75 @@ window.FB || (function(window) {
             return FB.UIServer._xdNextHandler(FB.Auth.xdResponseWrapper(a, d, e), b, c, true);
         }
     });
-    __d("sdk.Cookie", ["QueryString", "sdk.Runtime"], function(a, b, c, d, e, f) {
-        var g = b('QueryString'),
-            h = b('sdk.Runtime'),
-            i = null;
-
-        function j(m, n, o) {
-            m = m + h.getClientID();
-            if (i) {
-                document.cookie = m + '=; expires=Wed, 04 Feb 2004 08:00:00 GMT;';
-                document.cookie = m + '=; expires=Wed, 04 Feb 2004 08:00:00 GMT;' + 'domain=' + location.hostname + ';';
-            }
-            var p = new Date(o).toGMTString();
-            document.cookie = m + '=' + n + (n && o === 0 ? '' : '; expires=' + p) + '; path=/' + (i ? '; domain=' + i : '');
-        }
-        function k(m) {
-            m = m + h.getClientID();
-            var n = new RegExp('\\b' + m + '=([^;]*)\\b');
-            return n.test(document.cookie) ? RegExp.$1 : null;
-        }
-        var l = {
-            setDomain: function(m) {
-                i = m;
-                var n = g.encode({
-                    base_domain: i
-                }),
-                    o = new Date();
-                o.setFullYear(o.getFullYear() + 1);
-                j('fbm_', n, o.getTime());
-            },
-            getDomain: function() {
-                return i;
-            },
-            loadMeta: function() {
-                var m = k('fbm_');
-                if (m) {
-                    var n = g.decode(m);
-                    if (!i) i = n.base_domain;
-                    return n;
-                }
-            },
-            loadSignedRequest: function() {
-                return k('fbsr_');
-            },
-            setSignedRequestCookie: function(m, n) {
-                if (!m) throw new Error('Value passed to Cookie.setSignedRequestCookie ' + 'was empty.');
-                j('fbsr_', m, n);
-            },
-            clearSignedRequestCookie: function() {
-                j('fbsr_', '', 0);
-            },
-            setRaw: j
-        };
-        e.exports = l;
+    __d("sdk.ui", ["FB"], function(a, b, c, d, e, f) {
+        var g = b('FB');
+        e.exports = g.ui;
     });
-    __d("sdk.getContextType", ["UserAgent", "sdk.Runtime"], function(a, b, c, d, e, f) {
-        var g = b('UserAgent'),
-            h = b('sdk.Runtime');
-
-        function i() {
-            if (g.nativeApp()) return 3;
-            if (g.mobile()) return 2;
-            if (h.isEnvironment(h.ENVIRONMENTS.CANVAS)) return 5;
-            return 1;
-        }
-        e.exports = i;
-    });
-    __d("Base64", [], function(a, b, c, d, e, f) {
-        var g = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
-
-        function h(l) {
-            l = (l.charCodeAt(0) << 16) | (l.charCodeAt(1) << 8) | l.charCodeAt(2);
-            return String.fromCharCode(g.charCodeAt(l >>> 18), g.charCodeAt((l >>> 12) & 63), g.charCodeAt((l >>> 6) & 63), g.charCodeAt(l & 63));
-        }
-        var i = '>___?456789:;<=_______' + '\0\1\2\3\4\5\6\7\b\t\n\13\f\r\16\17\20\21\22\23\24\25\26\27\30\31' + '______\32\33\34\35\36\37 !"#$%&\'()*+,-./0123';
-
-        function j(l) {
-            l = (i.charCodeAt(l.charCodeAt(0) - 43) << 18) | (i.charCodeAt(l.charCodeAt(1) - 43) << 12) | (i.charCodeAt(l.charCodeAt(2) - 43) << 6) | i.charCodeAt(l.charCodeAt(3) - 43);
-            return String.fromCharCode(l >>> 16, (l >>> 8) & 255, l & 255);
-        }
-        var k = {
-            encode: function(l) {
-                l = unescape(encodeURI(l));
-                var m = (l.length + 2) % 3;
-                l = (l + '\0\0'.slice(m)).replace(/[\s\S]{3}/g, h);
-                return l.slice(0, l.length + m - 2) + '=='.slice(m);
-            },
-            decode: function(l) {
-                l = l.replace(/[^A-Za-z0-9+\/]/g, '');
-                var m = (l.length + 3) & 3;
-                l = (l + 'AAA'.slice(m)).replace(/..../g, j);
-                l = l.slice(0, l.length + m - 3);
-                try {
-                    return decodeURIComponent(escape(l));
-                } catch (n) {
-                    throw new Error('Not valid UTF-8');
-                }
-            },
-            encodeObject: function(l) {
-                return k.encode(ES5('JSON', 'stringify', false, l));
-            },
-            decodeObject: function(l) {
-                return ES5('JSON', 'parse', false, k.decode(l));
-            },
-            encodeNums: function(l) {
-                return String.fromCharCode.apply(String, ES5(l, 'map', true, function(m) {
-                    return g.charCodeAt((m | -(m > 63)) & -(m > 0) & 63);
-                }));
-            }
-        };
-        e.exports = k;
-    });
-    __d("sdk.SignedRequest", ["Base64"], function(a, b, c, d, e, f) {
-        var g = b('Base64');
-
-        function h(j) {
-            if (!j) return null;
-            var k = j.split('.', 2)[1].replace(/\-/g, '+').replace(/\_/g, '/');
-            return g.decodeObject(k);
-        }
-        var i = {
-            parse: h
-        };
-        e.exports = i;
-    });
-    __d("sdk.Auth", ["sdk.Cookie", "copyProperties", "sdk.createIframe", "DOMWrapper", "sdk.getContextType", "guid", "ObservableMixin", "QueryString", "sdk.Runtime", "sdk.SignedRequest", "UrlMap", "URL", "sdk.XD"], function(a, b, c, d, e, f) {
-        var g = b('sdk.Cookie'),
-            h = b('copyProperties'),
-            i = b('sdk.createIframe'),
-            j = b('DOMWrapper'),
-            k = b('sdk.getContextType'),
-            l = b('guid'),
-            m = b('ObservableMixin'),
-            n = b('QueryString'),
-            o = b('sdk.Runtime'),
-            p = b('sdk.SignedRequest'),
-            q = b('UrlMap'),
-            r = b('URL'),
-            s = b('sdk.XD'),
-            t, u, v = new m();
-
-        function w(aa, ba) {
-            var ca = o.getUserID(),
-                da = 0;
-            if (aa) if (aa.userID) {
-                da = aa.userID;
-            } else if (aa.signedRequest) {
-                var ea = p.parse(aa.signedRequest);
-                if (ea && ea.user_id) da = ea.user_id;
-            }
-            var fa = !ca && aa,
-                ga = ca && !aa,
-                ha = aa && ca && ca != da,
-                ia = aa != t,
-                ja = ba != o.getLoginStatus();
-            o.setLoginStatus(ba);
-            o.setAccessToken(aa && aa.accessToken || null);
-            o.setUserID(da);
-            t = aa;
-            var ka = {
-                authResponse: aa,
-                status: ba
-            };
-            if (ga || ha) v.inform('logout', ka);
-            if (fa || ha) v.inform('login', ka);
-            if (ia) v.inform('authresponse.change', ka);
-            if (ja) v.inform('status.change', ka);
-            return ka;
-        }
-        function x() {
-            return t;
-        }
-        function y(aa, ba, ca) {
-            return function(da) {
-                var ea;
-                if (da && da.access_token) {
-                    var fa = p.parse(da.signed_request);
-                    ba = {
-                        accessToken: da.access_token,
-                        userID: fa.user_id,
-                        expiresIn: parseInt(da.expires_in, 10),
-                        signedRequest: da.signed_request
-                    };
-                    if (o.getUseCookie()) {
-                        var ga = ba.expiresIn === 0 ? 0 : (new Date()).getTime() + ba.expiresIn * 1000,
-                            ha = g.getDomain();
-                        if (!ha && da.base_domain) g.setDomain('.' + da.base_domain);
-                        g.setSignedRequestCookie(da.signed_request, ga);
-                    }
-                    ea = 'connected';
-                    w(ba, ea);
-                } else if (ca === 'logout' || ca === 'login_status') {
-                    if (da.error && da.error === 'not_authorized') {
-                        ea = 'not_authorized';
-                    } else ea = 'unknown';
-                    w(null, ea);
-                    if (o.getUseCookie()) g.clearSignedRequestCookie();
-                }
-                if (da && da.https == 1) o.setSecure(true);
-                if (aa) aa({
-                    authResponse: ba,
-                    status: o.getLoginStatus()
-                });
-                return ba;
-            };
-        }
-        function z(aa) {
-            var ba;
-            if (u) {
-                clearTimeout(u);
-                u = null;
-            }
-            var ca = y(aa, t, 'login_status'),
-                da = r(q.resolve('www', true) + '/dialog/oauth/').setSearch(n.encode({
-                    client_id: o.getClientID(),
-                    response_type: 'token,signed_request,code',
-                    display: 'none',
-                    domain: location.hostname,
-                    origin: k(),
-                    redirect_uri: s.handler(function(ea) {
-                        ba.parentNode.removeChild(ba);
-                        if (ca(ea)) u = setTimeout(function() {
-                            z();
-                        }, 1200000);
-                    }, 'parent'),
-                    sdk: 'joey'
-                }));
-            ba = i({
-                root: j.getRoot(),
-                name: l(),
-                url: da.toString(),
-                style: {
-                    display: 'none'
-                }
-            });
-        }
-        h(v, {
-            fetchLoginStatus: z,
-            setAuthResponse: w,
-            getAuthResponse: x,
-            parseSignedRequest: p.parse,
-            xdResponseWrapper: y
-        });
-        e.exports = v;
-    });
-    __d("legacy:fb.auth", ["sdk.Auth", "copyProperties", "FB", "sdk.getContextType", "guid", "Log", "sdk.Runtime", "sdk.SignedRequest", "UrlMap", "UserAgent", "sdk.XD", "SDKConfig"], function(a, b, c, d) {
+    __d("legacy:fb.auth", ["sdk.Auth", "copyProperties", "sdk.Event", "FB", "Log", "sdk.Runtime", "sdk.ui", "SDKConfig"], function(a, b, c, d) {
         var e = b('sdk.Auth'),
             f = b('copyProperties'),
-            g = b('FB'),
-            h = b('sdk.getContextType'),
-            i = b('guid'),
-            j = b('Log'),
-            k = b('sdk.Runtime'),
-            l = c('SDKConfig'),
-            m = b('sdk.SignedRequest'),
-            n = b('UrlMap'),
-            o = b('UserAgent'),
-            p = b('sdk.XD');
-        g.provide('', {
-            _getContextType: h,
-            getLoginStatus: function(q, r) {
-                if (!k.getClientID()) {
-                    j.warn('FB.getLoginStatus() called before calling FB.init().');
+            g = b('sdk.Event'),
+            h = b('FB'),
+            i = b('Log'),
+            j = b('sdk.Runtime'),
+            k = c('SDKConfig'),
+            l = b('sdk.ui'),
+            m;
+        h.provide('', {
+            getLoginStatus: function(n, o) {
+                if (!j.getClientID()) {
+                    i.warn('FB.getLoginStatus() called before calling FB.init().');
                     return;
                 }
-                if (q) if (!r && g.Auth._loadState == 'loaded') {
-                    q({
-                        status: k.getLoginStatus(),
-                        authResponse: g.getAuthResponse()
+                if (n) if (!o && m == 'loaded') {
+                    n({
+                        status: j.getLoginStatus(),
+                        authResponse: h.getAuthResponse()
                     });
                     return;
-                } else g.Event.subscribe('FB.loginStatus', q);
-                if (!r && g.Auth._loadState == 'loading') return;
-                g.Auth._loadState = 'loading';
-                var s = function(t) {
-                        g.Auth._loadState = 'loaded';
-                        g.Event.fire('FB.loginStatus', t);
-                        g.Event.clear('FB.loginStatus');
+                } else g.subscribe('FB.loginStatus', n);
+                if (!o && m == 'loading') return;
+                m = 'loading';
+                var p = function(q) {
+                        m = 'loaded';
+                        g.fire('FB.loginStatus', q);
+                        g.clear('FB.loginStatus');
                     };
-                g.Auth.fetchLoginStatus(s);
+                e.fetchLoginStatus(p);
             },
             getAuthResponse: function() {
-                return g.Auth.getAuthResponse();
+                return e.getAuthResponse();
             },
             getAccessToken: function() {
-                return k.getAccessToken() || null;
+                return j.getAccessToken() || null;
             },
             getUserID: function() {
-                return k.getUserID();
+                return j.getUserID();
             },
-            login: function(q, r) {
-                if (r && r.perms && !r.scope) {
-                    r.scope = r.perms;
-                    delete r.perms;
-                    j.warn('OAuth2 specification states that \'perms\' ' + 'should now be called \'scope\'.  Please update.');
+            login: function(n, o) {
+                if (o && o.perms && !o.scope) {
+                    o.scope = o.perms;
+                    delete o.perms;
+                    i.warn('OAuth2 specification states that \'perms\' ' + 'should now be called \'scope\'.  Please update.');
                 }
-                g.ui(f({
+                l(f({
                     method: 'permissions.oauth',
-                    display: l.useAsync && g._inCanvas ? 'async' : 'popup',
+                    display: j.isEnvironment(j.ENVIRONMENTS.CANVAS) && k.useAsync ? 'async' : 'popup',
                     domain: location.hostname
-                }, r || {}), q);
+                }, o || {}), n);
             },
-            logout: function(q) {
-                g.ui({
+            logout: function(n) {
+                l({
                     method: 'auth.logout',
                     display: 'hidden'
-                }, q);
+                }, n);
             }
         });
-        if (l.migrate) {
-            g.provide('Auth', e);
-            e.subscribe('logout', ES5(g.Event.fire, 'bind', true, g.Event, 'auth.logout'));
-            e.subscribe('login', ES5(g.Event.fire, 'bind', true, g.Event, 'auth.login'));
-            e.subscribe('authresponse.change', ES5(g.Event.fire, 'bind', true, g.Event, 'auth.authResponseChange'));
-            e.subscribe('status.change', ES5(g.Event.fire, 'bind', true, g.Event, 'auth.statusChange'));
-        } else g.provide('Auth', {
-            _callbacks: [],
-            _xdStorePath: 'xd_localstorage/',
-            fetchLoginStatus: function(q) {
-                if (o.mobile() && window.postMessage && window.localStorage) {
-                    g.Auth.staticAuthCheck(q);
-                } else g.ui({
-                    method: 'login.status',
-                    display: 'none',
-                    domain: location.hostname
-                }, q);
-            },
-            staticAuthCheck: function(q) {
-                var r = n.resolve('cdn', true);
-                g.Content.insertIframe({
-                    root: g.Content.appendHidden(''),
-                    className: 'FB_UI_Hidden',
-                    url: r + '/' + g.Auth._xdStorePath,
-                    onload: function(s) {
-                        var t = frames[s.name],
-                            u = i(),
-                            v = false,
-                            w = function(x) {
-                                if (!v) {
-                                    v = true;
-                                    g.Auth._staticAuthHandler(q, x);
-                                }
-                            };
-                        p.handler(w, 'parent', true, u);
-                        setTimeout(w, 500);
-                        t.postMessage(ES5('JSON', 'stringify', false, {
-                            method: 'getItem',
-                            params: ['LoginInfo_' + k.getClientID(), true],
-                            returnCb: u
-                        }), r);
-                    }
-                });
-            },
-            _staticAuthHandler: function(q, r) {
-                if (r && r.data && r.data.status && r.data.status == 'connected') {
-                    var s, t = r.data.status;
-                    if (r.data.https == 1) k.setSecure(true);
-                    var u = r.data.authResponse || null;
-                    s = g.Auth.setAuthResponse(u, t);
-                    q && q(s);
-                }
-                g.ui({
-                    method: 'login.status',
-                    display: 'none'
-                }, q);
-            },
-            setAuthResponse: function(q, r) {
-                var s = k.getUserID(),
-                    t = 0;
-                if (q) if (q.userID) {
-                    t = q.userID;
-                } else if (q.signedRequest) {
-                    var u = m.parse(q.signedRequest);
-                    if (u && u.user_id) t = u.user_id;
-                }
-                var v = !s && q,
-                    w = s && !q,
-                    x = q && s != t,
-                    y = q != g._authResponse,
-                    z = r != k.getLoginStatus(),
-                    aa = {
-                        authResponse: q,
-                        status: r
-                    };
-                k.setLoginStatus(r);
-                k.setAccessToken(q && q.accessToken || null);
-                k.setUserID(t);
-                g._authResponse = q;
-                if (w || x) g.Event.fire('auth.logout', aa);
-                if (v || x) g.Event.fire('auth.login', aa);
-                if (y) g.Event.fire('auth.authResponseChange', aa);
-                if (z) g.Event.fire('auth.statusChange', aa);
-                if (g.Auth._refreshTimer) {
-                    clearTimeout(g.Auth._refreshTimer);
-                    delete g.Auth._refreshTimer;
-                }
-                if (g.Auth._loadState && q) g.Auth._refreshTimer = setTimeout(function() {
-                    g.getLoginStatus(null, true);
-                }, 1200000);
-                return aa;
-            },
-            getAuthResponse: function() {
-                return g._authResponse;
-            },
-            xdResponseWrapper: function(q, r, s) {
-                return function(t) {
-                    if (t && t.access_token) {
-                        var u = m.parse(t.signed_request);
-                        r = {
-                            accessToken: t.access_token,
-                            userID: u.user_id,
-                            expiresIn: parseInt(t.expires_in, 10),
-                            signedRequest: t.signed_request
-                        };
-                        if (k.getUseCookie()) {
-                            var v = r.expiresIn === 0 ? 0 : (new Date()).getTime() + r.expiresIn * 1000,
-                                w = g.Cookie.getDomain();
-                            if (!w && t.base_domain) g.Cookie.setDomain('.' + t.base_domain);
-                            g.Cookie.setSignedRequestCookie(t.signed_request, v);
-                        }
-                        g.Auth.setAuthResponse(r, 'connected');
-                    } else if (!g._authResponse && r) {
-                        g.Auth.setAuthResponse(r, 'connected');
-                    } else if (s === 'logout' || s === 'login_status') {
-                        var x;
-                        if (t.error && t.error === 'not_authorized') {
-                            x = 'not_authorized';
-                        } else x = 'unknown';
-                        g.Auth.setAuthResponse(null, x);
-                        if (k.getUseCookie()) g.Cookie.clearSignedRequestCookie();
-                    }
-                    if (t && t.https == 1) k.setSecure(true);
-                    var y = {
-                        authResponse: g._authResponse,
-                        status: k.getLoginStatus()
-                    };
-                    q && q(y);
-                };
-            },
-            parseSignedRequest: m.parse
-        });
+        h.provide('Auth', e);
+        e.subscribe('logout', ES5(g.fire, 'bind', true, g, 'auth.logout'));
+        e.subscribe('login', ES5(g.fire, 'bind', true, g, 'auth.login'));
+        e.subscribe('authresponse.change', ES5(g.fire, 'bind', true, g, 'auth.authResponseChange'));
+        e.subscribe('status.change', ES5(g.fire, 'bind', true, g, 'auth.statusChange'));
     }, 3);
     __d("sdk.Canvas.Prefetcher", ["sdk.api", "createArrayFrom", "sdk.Runtime", "CanvasPrefetcherConfig"], function(a, b, c, d, e, f) {
         var g = b('sdk.api'),
@@ -4841,12 +4690,14 @@ window.FB || (function(window) {
     }, 3);
     __d("PluginTags", [], function(a, b, c, d, e, f) {
         var g = {
-            shared_activity: {},
             privacy_selector: {},
             send_to_mobile: {
                 max_rows: 'string',
                 show_faces: 'bool',
                 size: 'string'
+            },
+            shared_activity: {
+                header: 'bool'
             },
             subscribe: {
                 href: 'url',
@@ -5064,7 +4915,20 @@ window.FB || (function(window) {
             if (document.namespaces && !document.namespaces.item.fb) document.namespaces.add('fb');
         } catch (a) {}
     }());
-    __d("XFBML", ["Assert", "FB", "Log", "ObservableMixin", "copyProperties", "createArrayFrom", "dotAccess"], function(a, b, c, d, e, f) {
+    __d("runOnce", [], function(a, b, c, d, e, f) {
+        function g(h) {
+            var i, j;
+            return function() {
+                if (!i) {
+                    i = true;
+                    j = h();
+                }
+                return j;
+            };
+        }
+        e.exports = g;
+    });
+    __d("XFBML", ["Assert", "FB", "Log", "ObservableMixin", "copyProperties", "createArrayFrom", "dotAccess", "runOnce"], function(a, b, c, d, e, f) {
         var g = b('Assert'),
             h = b('FB'),
             i = b('Log'),
@@ -5072,94 +4936,99 @@ window.FB || (function(window) {
             k = b('copyProperties'),
             l = b('createArrayFrom'),
             m = b('dotAccess'),
-            n = {},
+            n = b('runOnce'),
             o = {},
-            p = 0,
-            q = new j();
+            p = {},
+            q = 0,
+            r = new j();
 
-        function r(w) {
-            return w.scopeName ? (w.scopeName + ':' + w.nodeName) : '';
+        function s(x) {
+            return x.scopeName ? (x.scopeName + ':' + x.nodeName) : '';
         }
-        function s(w) {
-            return n[w.nodeName.toLowerCase()] || n[r(w).toLowerCase()];
+        function t(x) {
+            return o[x.nodeName.toLowerCase()] || o[s(x).toLowerCase()];
         }
-        function t(w) {
-            var x = ES5(w.className, 'trim', true);
-            if (!o[x]) return undefined;
-            if (!w.childNodes || w.childNodes.length === 0 || (w.childNodes.length == 1 && w.childNodes[0].nodeType == 3) || w.getAttribute('fb-xfbml-state')) return o[x];
-        }
-        function u(w) {
-            var x = {};
-            ES5(l(w.attributes), 'forEach', true, function(y) {
-                x[y.name] = y.value;
+        function u(x) {
+            var y = ES5(ES5(x.className, 'trim', true).split(/\s+/), 'filter', true, function(z) {
+                return p[z];
             });
-            return x;
+            if (y.length === 0) return undefined;
+            if (!x.childNodes || x.childNodes.length === 0 || (x.childNodes.length == 1 && x.childNodes[0].nodeType == 3) || x.getAttribute('fb-xfbml-state')) return p[y[0]];
         }
-        function v(w, x, y) {
-            var z = ++p;
-            i.info('XFBML Parsing Start %s', z);
-            var aa = 1,
-                ba = 0,
-                ca = function() {
-                    aa--;
-                    if (aa === 0) {
-                        i.info('XFBML Parsing Finish %s, %s tags found', z, ba);
-                        x();
-                        q.inform('render', z, ba);
+        function v(x) {
+            var y = {};
+            ES5(l(x.attributes), 'forEach', true, function(z) {
+                y[z.name] = z.value;
+            });
+            return y;
+        }
+        function w(x, y, z) {
+            g.isTrue(x.nodeType && x.nodeType === 1);
+            g.isTrue( !! x.getElementsByTagName);
+            g.isFunction(y);
+            var aa = ++q;
+            i.info('XFBML Parsing Start %s', aa);
+            var ba = 1,
+                ca = 0,
+                da = function() {
+                    ba--;
+                    if (ba === 0) {
+                        i.info('XFBML Parsing Finish %s, %s tags found', aa, ca);
+                        y();
+                        r.inform('render', aa, ca);
                     }
-                    g.isTrue(aa >= 0, 'onrender() has been called too many times');
+                    g.isTrue(ba >= 0, 'onrender() has been called too many times');
                 };
-            ES5(l(w.getElementsByTagName('*')), 'forEach', true, function(ea) {
-                if (!y && ea.getAttribute('fb-xfbml-state')) return;
-                var fa = s(ea) || t(ea);
-                if (!fa) return;
-                aa++;
+            ES5(l(x.getElementsByTagName('*')), 'forEach', true, function(fa) {
+                if (!z && fa.getAttribute('fb-xfbml-state')) return;
+                var ga = t(fa) || u(fa);
+                if (!ga) return;
                 ba++;
-                var ga = fa.ctor || m(h, fa.className.substr(3)),
-                    ha = new ga(ea, fa.xmlns, fa.localName, u(ea));
-                ha.subscribe('render', function ja() {
-                    ha.unsubscribe('render', ja);
-                    ea.setAttribute('fb-xfbml-state', 'rendered');
-                    ca();
-                });
-                var ia = function() {
-                        if (ea.getAttribute('fb-xfbml-state') == 'parsed') {
-                            q.subscribe('render.queue', ia);
+                ca++;
+                var ha = ga.ctor || m(h, ga.className.substr(3)),
+                    ia = new ha(fa, ga.xmlns, ga.localName, v(fa));
+                ia.subscribe('render', n(function() {
+                    fa.setAttribute('fb-xfbml-state', 'rendered');
+                    da();
+                }));
+                var ja = function() {
+                        if (fa.getAttribute('fb-xfbml-state') == 'parsed') {
+                            r.subscribe('render.queue', ja);
                         } else {
-                            ea.setAttribute('fb-xfbml-state', 'parsed');
-                            ha.process();
+                            fa.setAttribute('fb-xfbml-state', 'parsed');
+                            ia.process();
                         }
                     };
-                ia();
+                ja();
             });
-            q.inform('parse', z, ba);
-            var da = 30000;
+            r.inform('parse', aa, ca);
+            var ea = 30000;
             window.setTimeout(function() {
-                if (aa > 0) i.warn('%s tags failed to render in %s ms', aa, da);
-            }, da);
-            ca();
+                if (ba > 0) i.warn('%s tags failed to render in %s ms', ba, ea);
+            }, ea);
+            da();
         }
-        q.subscribe('render', function() {
-            var w = q.getSubscribers('render.queue');
-            q.clearSubscribers('render.queue');
-            ES5(w, 'forEach', true, function(x) {
-                x();
+        r.subscribe('render', function() {
+            var x = r.getSubscribers('render.queue');
+            r.clearSubscribers('render.queue');
+            ES5(x, 'forEach', true, function(y) {
+                y();
             });
         });
-        k(q, {
-            registerTag: function(w) {
-                n[w.xmlns + ':' + w.localName] = w;
-                o[w.xmlns + '-' + w.localName] = w;
+        k(r, {
+            registerTag: function(x) {
+                o[x.xmlns + ':' + x.localName] = x;
+                p[x.xmlns + '-' + x.localName] = x;
             },
-            parse: function(w, x) {
-                v(w || document.body, x ||
+            parse: function(x, y) {
+                w(x || document.body, y ||
                 function() {}, true);
             },
             parseNew: function() {
-                v(document.body, function() {}, false);
+                w(document.body, function() {}, false);
             }
         });
-        e.exports = q;
+        e.exports = r;
     });
     __d("PluginCustomClass", [], function(a, b, c, d, e, f) {
         var g = ['activity', 'add-profile-tab', 'add-to-timeline', 'bookmark', 'comments', 'comments-count', 'connect-bar', 'fan', 'like', 'like-box', 'login', 'login-button', 'facepile', 'friendpile', 'name', 'page-events', 'profile-pic', 'recommendations', 'recommendations-bar', 'registration', 'send', 'share-button', 'social-context'];
@@ -5609,6 +5478,9 @@ window.FB || (function(window) {
             return a;
         }
     });
+    FB.Event.subscribe('xfbml.parse', function() {
+        FB.XFBML.IframeWidget.batchWidgetPipeRequests();
+    });
     FB.subclass('XFBML.CreateEventButton', 'XFBML.IframeWidget', null, {
         setupAndValidate: function() {
             this._attr = {
@@ -5626,6 +5498,41 @@ window.FB || (function(window) {
                 name: 'create_event_button',
                 params: this._attr
             };
+        }
+    });
+    FB.provide('String', {
+        format: function(a) {
+            if (!FB.String.format._formatRE) FB.String.format._formatRE = /(\{[^\}^\{]+\})/g;
+            var b = arguments;
+            return a.replace(FB.String.format._formatRE, function(c, d) {
+                var e = parseInt(d.substr(1), 10),
+                    f = b[e + 1];
+                if (f === null || f === undefined) return '';
+                return f.toString();
+            });
+        },
+        escapeHTML: function(a) {
+            var b = document.createElement('div');
+            b.appendChild(document.createTextNode(a));
+            return b.innerHTML.replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+        },
+        quote: function(a) {
+            var b = /["\\\x00-\x1f\x7f-\x9f]/g,
+                c = {
+                    '\b': '\\b',
+                    '\t': '\\t',
+                    '\n': '\\n',
+                    '\f': '\\f',
+                    '\r': '\\r',
+                    '"': '\\"',
+                    '\\': '\\\\'
+                };
+            return b.test(a) ? '"' + a.replace(b, function(d) {
+                var e = c[d];
+                if (e) return e;
+                e = d.charCodeAt();
+                return '\\u00' + Math.floor(e / 16).toString(16) + (e % 16).toString(16);
+            }) + '"' : '"' + a + '"';
         }
     });
     FB.subclass('Waitable', 'Obj', function() {}, {
@@ -5877,155 +5784,91 @@ window.FB || (function(window) {
             return b && c;
         }
     });
-    __d("legacy:fb.cookie", ["sdk.Cookie", "FB", "QueryString", "sdk.Runtime", "SDKConfig"], function(a, b, c, d) {
-        var e = b('sdk.Cookie'),
-            f = b('FB'),
-            g = b('QueryString'),
-            h = b('sdk.Runtime'),
-            i = c('SDKConfig');
-        if (i.migrate) {
-            f.provide('Cookie', e);
-        } else f.provide('Cookie', {
-            _domain: null,
-            _enabled: false,
-            setEnabled: function(j) {
-                f.Cookie._enabled = !! j;
-                if (typeof j == 'string') f.Cookie._domain = j;
-            },
-            getEnabled: function() {
-                return h.getUseCookie();
-            },
-            setDomain: function(j) {
-                f.Cookie._domain = j;
-                var k = g.encode({
-                    base_domain: f.Cookie._domain
-                }),
-                    l = new Date();
-                l.setFullYear(l.getFullYear() + 1);
-                f.Cookie.setRaw('fbm_', k, l.getTime());
-            },
-            getDomain: function() {
-                return f.Cookie._domain;
-            },
-            loadMeta: function() {
-                var j = document.cookie.match('\\bfbm_' + f._apiKey + '=([^;]*)\\b'),
-                    k;
-                if (j) {
-                    k = g.decode(j[1]);
-                    if (!f.Cookie._domain) f.Cookie._domain = k.base_domain;
+    __d("sdk.Frictionless", ["FB"], function(a, b, c, d, e, f) {
+        var g = b('FB');
+        e.exports = g.Frictionless;
+    });
+    __d("legacy:fb.init", ["sdk.Auth", "sdk.Canvas", "sdk.Canvas.Prefetcher", "sdk.Cookie", "copyProperties", "DOMWrapper", "sdk.domReady", "sdk.Event", "FB", "sdk.Frictionless", "Log", "sdk.Runtime", "sdk.SignedRequest", "UserAgent", "sdk.XD"], function(a, b, c, d) {
+        var e = b('sdk.Auth'),
+            f = b('sdk.Canvas'),
+            g = b('sdk.Canvas.Prefetcher'),
+            h = b('sdk.Cookie'),
+            i = b('copyProperties'),
+            j = b('DOMWrapper'),
+            k = b('sdk.domReady'),
+            l = b('sdk.Event'),
+            m = b('FB'),
+            n = b('sdk.Frictionless'),
+            o = b('Log'),
+            p = b('sdk.Runtime'),
+            q = b('sdk.SignedRequest'),
+            r = b('UserAgent'),
+            s = b('sdk.XD'),
+            t = document.createElement('div');
+        j.setRoot(t);
+        k(function() {
+            o.info('domReady');
+            m.Content.appendHidden(t);
+        });
+        p.subscribe('AccessToken.change', function(u) {
+            if (!u && p.getLoginStatus() === 'connected') m.getLoginStatus(null, true);
+        });
+        p.subscribe('ClientID.change', function(u) {
+            m._apiKey = u;
+        });
+        o.level = 1;
+        m.provide('', {
+            initSitevars: {},
+            init: function(u) {
+                if (p.getInitialized()) o.warn('FB.init has already been called - this could indicate a problem');
+                if (/number|string/.test(typeof u)) {
+                    o.warn('FB.init called with invalid parameters');
+                    u = {
+                        apiKey: u
+                    };
                 }
-                return k;
-            },
-            loadSignedRequest: function() {
-                var j = document.cookie.match('\\bfbsr_' + f._apiKey + '=([^;]*)\\b');
-                if (!j) return null;
-                return j[1];
-            },
-            setSignedRequestCookie: function(j, k) {
-                if (!j) throw new Error('Value passed to FB.Cookie.setSignedRequestCookie ' + 'was empty.');
-                if (!h.getUseCookie()) return;
-                f.Cookie.setRaw('fbsr_', j, k);
-            },
-            clearSignedRequestCookie: function() {
-                if (!h.getUseCookie()) return;
-                f.Cookie.setRaw('fbsr_', '', 0);
-            },
-            setRaw: function(j, k, l) {
-                var m = f.Cookie._domain;
-                if (m) {
-                    document.cookie = j + f._apiKey + '=; expires=Wed, 04 Feb 2004 08:00:00 GMT;';
-                    document.cookie = j + f._apiKey + '=; expires=Wed, 04 Feb 2004 08:00:00 GMT;' + 'domain=' + location.hostname + ';';
+                u = i({
+                    logging: true,
+                    status: true
+                }, u || {});
+                if (!u.logging && ES5(window.location.toString(), 'indexOf', true, 'fb_debug=1') < 0) m._logging = false;
+                var v = u.appId || u.apiKey;
+                if (/number|string/.test(typeof v)) p.setClientID(v.toString());
+                if ('scope' in u) m._scope = u.scope;
+                if (u.cookie) {
+                    p.setUseCookie(true);
+                    if (typeof u.cookie === 'string') h.setDomain(u.cookie);
                 }
-                var n = new Date(l).toGMTString();
-                document.cookie = j + f._apiKey + '=' + k + (k && l === 0 ? '' : '; expires=' + n) + '; path=/' + (m ? '; domain=' + m : '');
+                if (p.getClientID()) if (u.authResponse) {
+                    e.setAuthResponse(u.authResponse, 'connected');
+                } else if (p.getUseCookie()) {
+                    var w = h.loadSignedRequest();
+                    try {
+                        var y = q.parse(w);
+                        p.setUserID(y.user_id || 0);
+                    } catch (x) {
+                        h.clearSignedRequestCookie();
+                    }
+                    h.loadMeta();
+                }
+                if (p.isEnvironment(p.ENVIRONMENTS.CANVAS)) {
+                    f._setHideFlashCallback(u.hideFlashCallback);
+                    g._maybeSample();
+                }
+                if (!p.getInitialized()) {
+                    p.setInitialized(true);
+                    s.init(u.channelUrl ? m.URI.resolve(u.channelUrl) : null, u.xdProxyName);
+                    if (r.mobile() && m.TemplateUI && m.TemplateData && m.TemplateData._enabled && u.useCachedDialogs !== false) {
+                        m.TemplateUI.init();
+                        l.subscribe('auth.statusChange', m.TemplateData.update);
+                    }
+                }
+                if (u.status) m.getLoginStatus();
+                if (u.frictionlessRequests) n.init();
+                if (m.XFBML && u.xfbml) k(m.XFBML.parse);
             }
         });
     }, 3);
-    (function() {
-        var a = document.createElement('div');
-        FB.require('DOMWrapper').setRoot(a);
-        FB.Dom.ready(function() {
-            FB.Content.appendHidden(a);
-        });
-    })();
-    FB.require('Log').level = 1;
-    FB.provide('', {
-        initSitevars: {},
-        init: function(a) {
-            if (FB._initialized) FB.log('FB.init has already been called - this could indicate a problem');
-            if (typeof a === 'string') {
-                FB.log('FB.init called with invalid parameters');
-                a = {
-                    apiKey: a
-                };
-            }
-            a = FB.copy(a || {}, {
-                logging: true,
-                status: true
-            });
-            if (!a.logging && ES5(window.location.toString(), 'indexOf', true, 'fb_debug=1') < 0) FB._logging = false;
-            if ('appId' in a || 'apiKey' in a) {
-                FB._apiKey = a.appId || a.apiKey;
-                FB.Runtime.setClientID(FB._apiKey);
-            }
-            if ('scope' in a) FB._scope = a.scope;
-            if (!FB._initialized) {
-                FB.XD.init(a.channelUrl ? FB.URI.resolve(a.channelUrl) : null, a.xdProxyName);
-                if (FB.UA.mobile() && FB.TemplateUI && FB.TemplateData && FB.TemplateData._enabled && a.useCachedDialogs !== false) {
-                    FB.TemplateUI.init();
-                    FB.Event.subscribe('auth.statusChange', FB.TemplateData.update);
-                }
-            }
-            if (a.cookie) {
-                FB.Runtime.setUseCookie(true);
-                if (typeof a.cookie === 'string') FB.Cookie.setDomain(a.cookie);
-            }
-            if (FB._apiKey) {
-                if (a.authResponse) {
-                    FB.Auth.setAuthResponse(a.authResponse, 'connected');
-                } else if (FB.Runtime.getUseCookie()) {
-                    var b = FB.Cookie.loadSignedRequest();
-                    try {
-                        var d = FB.Auth.parseSignedRequest(b);
-                        FB.Runtime.setUserID(d.user_id || 0);
-                    } catch (c) {
-                        FB.Cookie.clearSignedRequestCookie();
-                    }
-                    FB.Cookie.loadMeta();
-                }
-                if (a.status) FB.getLoginStatus();
-            }
-            if (FB.Canvas && FB._inCanvas) {
-                FB.Canvas._setHideFlashCallback(a.hideFlashCallback);
-                if (FB.Canvas.Prefetcher) FB.Canvas.Prefetcher._maybeSample();
-            }
-            if (FB.XFBML && a.xfbml) {
-                if (FB.XFBML.IframeWidget) FB.Event.subscribe('xfbml.parse', function() {
-                    FB.XFBML.IframeWidget.batchWidgetPipeRequests();
-                });
-                window.setTimeout(function() {
-                    if (FB.initSitevars.parseXFBMLBeforeDomReady) {
-                        FB.XFBML.parse();
-                        var e = window.setInterval(function() {
-                            FB.XFBML.parse();
-                        }, 100);
-                        FB.Dom.ready(function() {
-                            window.clearInterval(e);
-                            FB.XFBML.parse();
-                        });
-                    } else FB.Dom.ready(FB.XFBML.parse);
-                }, 0);
-            }
-            if (!FB._initialized) {
-                FB._initialized = true;
-                FB.Runtime.setInitialized(true);
-                FB.Runtime.subscribe('AccessToken.change', function(e) {
-                    if (!e && FB.Runtime.getLoginStatus() === 'connected') FB.getLoginStatus(null, true);
-                });
-            }
-            if (a.frictionlessRequests) FB.Frictionless.init();
-        }
-    });
     window.setTimeout(function() {
         var a = /(connect.facebook.net|facebook.com\/assets.php).*?#(.*)/;
         ES5(FB.Array.toArray(document.getElementsByTagName('script')), 'forEach', true, function(b) {
@@ -7220,7 +7063,6 @@ window.FB || (function(window) {
         }
     });
     FB.subclass('XFBML.Like', 'XFBML.EdgeWidget', null, {
-        _widgetPipeEnabled: false,
         getUrlBits: function() {
             return {
                 name: 'like',
