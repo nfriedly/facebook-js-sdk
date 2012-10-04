@@ -1,4 +1,4 @@
-/*1349263945,172008246,JIT Construction: v639278,en_US*/
+/*1349350347,172643622,JIT Construction: v639991,en_US*/
 
 try {
     window.FB || (function(window) {
@@ -6501,7 +6501,7 @@ try {
                     width: this._getWidgetWidth(),
                     font: this.getAttribute('font'),
                     layout: this._getLayout(),
-                    colorscheme: this.getAttribute('color-scheme'),
+                    colorscheme: this.getAttribute('color-scheme', 'light'),
                     action: this.getAttribute('action'),
                     ref: this.getAttribute('ref'),
                     show_faces: this._shouldShowFaces(),
