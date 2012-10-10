@@ -1,4 +1,4 @@
-/*1349264628,172648231,JIT Construction: v639278,en_US*/
+/*1349869392,172014908,JIT Construction: v644018,en_US*/
 try
 {
 	windowFBfunctionwindowvardocument:window.document;
@@ -48,7 +48,7 @@ if(!v.exports)
 ,aa=v.factory;if(typeof aa===string)
 {
 	varba:(+aa+);
-	aa:eval.apply(window,[ba]);
+	aa:eval.apply(a,[ba]);
 }
 
 if(b.call(aa)==='[object Function]')
@@ -188,6 +188,7 @@ var require = FB.require;
 var requireLazy = FB.requireLazy;
 var define = FB.define;
 var __d = FB.__d;
+var __t = FB.__t;
 .fb_hidden
 {
 	position:absolute;
@@ -313,6 +314,7 @@ var __d = FB.__d;
 	position:absolute;
 }
 
+/* @noflip */
 .fb_dialog_top_left
 {
 	background:url(https://s-static.ak.fbcdn.net/rsrc.php/v2/yR/x/8YeTNIlTZjm.png) no-repeat 0 0;
@@ -320,6 +322,7 @@ var __d = FB.__d;
 	top:-10px;
 }
 
+/* @noflip */
 .fb_dialog_top_right
 {
 	background:url(https://s-static.ak.fbcdn.net/rsrc.php/v2/yR/x/8YeTNIlTZjm.png) no-repeat 0 -10px;
@@ -327,6 +330,7 @@ var __d = FB.__d;
 	top:-10px;
 }
 
+/* @noflip */
 .fb_dialog_bottom_left
 {
 	background:url(https://s-static.ak.fbcdn.net/rsrc.php/v2/yR/x/8YeTNIlTZjm.png) no-repeat 0 -20px;
@@ -334,6 +338,7 @@ var __d = FB.__d;
 	left:-10px;
 }
 
+/* @noflip */
 .fb_dialog_bottom_right
 {
 	background:url(https://s-static.ak.fbcdn.net/rsrc.php/v2/yR/x/8YeTNIlTZjm.png) no-repeat 0 -30px;
@@ -1108,10 +1113,7 @@ FB.provide(,
 }	
 }
 
-,widgetPipeEnabledApps:
-{
-	111476658864976:1,cca6477272fc5cb805f85a84f20fca1d:1,179150165472010:1;
-}	
+	
 }
 
 );
@@ -1266,28 +1268,28 @@ if (FB.Dom && FB.Dom.addCssRules)
 	position:absolute;
 }
 
-\n.fb_dialog_top_left
+\n\/* \u0040noflip *\/\n.fb_dialog_top_left
 {
 	background:url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v2\/yR\/x\/8YeTNIlTZjm.png) no-repeat 0 0;
 	left:-10px;
 	top:-10px;
 }
 
-\n.fb_dialog_top_right
+\n\/* \u0040noflip *\/\n.fb_dialog_top_right
 {
 	background:url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v2\/yR\/x\/8YeTNIlTZjm.png) no-repeat 0 -10px;
 	right:-10px;
 	top:-10px;
 }
 
-\n.fb_dialog_bottom_left
+\n\/* \u0040noflip *\/\n.fb_dialog_bottom_left
 {
 	background:url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v2\/yR\/x\/8YeTNIlTZjm.png) no-repeat 0 -20px;
 	bottom:-10px;
 	left:-10px;
 }
 
-\n.fb_dialog_bottom_right
+\n\/* \u0040noflip *\/\n.fb_dialog_bottom_right
 {
 	background:url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v2\/yR\/x\/8YeTNIlTZjm.png) no-repeat 0 -30px;
 	right:-10px;
