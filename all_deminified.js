@@ -1,4 +1,4 @@
-/*1349869130,172666156,JIT Construction: v644018,en_US*/
+/*1349955548,172624150,JIT Construction: v645172,en_US*/
 
 try {
     window.FB || (function(window) {
@@ -7568,13 +7568,7 @@ try {
         }, true);
         FB.provide('', {
             "initSitevars": {
-                "parseXFBMLBeforeDomReady": false,
-                "computeContentSizeVersion": 0,
-                "enableMobile": 1,
                 "enableMobileComments": 1,
-                "forceSecureXdProxy": 1,
-                "useAsync": 0,
-                "rpc": 1,
                 "iframePermissions": {
                     "read_stream": false,
                     "manage_mailbox": false,

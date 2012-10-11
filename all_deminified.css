@@ -1,4 +1,4 @@
-/*1349869392,172014908,JIT Construction: v644018,en_US*/
+/*1349955787,171989823,JIT Construction: v645172,en_US*/
 try
 {
 	windowFBfunctionwindowvardocument:window.document;
@@ -1109,7 +1109,7 @@ FB.provide(Auth,
 ,true);
 FB.provide(,
 {
-	initSitevars:{parseXFBMLBeforeDomReady:false,computeContentSizeVersion:0,enableMobile:1,enableMobileComments:1,forceSecureXdProxy:1,useAsync:0,rpc:1,iframePermissions:{read_stream:false,manage_mailbox:false,manage_friendlists:false,read_mailbox:false,publish_checkins:true,status_update:true,photo_upload:true,video_upload:true,sms:false,create_event:true,rsvp_event:true,offline_access:true,email:true,xmpp_login:false,create_note:true,share_item:true,export_stream:false,publish_stream:true,publish_likes:true,ads_management:false,contact_email:true,access_private_data:false,read_insights:false,read_requests:false,read_friendlists:true,manage_pages:false,physical_login:false,manage_groups:false,read_deals:false;
+	initSitevars:{enableMobileComments:1,iframePermissions:{read_stream:false,manage_mailbox:false,manage_friendlists:false,read_mailbox:false,publish_checkins:true,status_update:true,photo_upload:true,video_upload:true,sms:false,create_event:true,rsvp_event:true,offline_access:true,email:true,xmpp_login:false,create_note:true,share_item:true,export_stream:false,publish_stream:true,publish_likes:true,ads_management:false,contact_email:true,access_private_data:false,read_insights:false,read_requests:false,read_friendlists:true,manage_pages:false,physical_login:false,manage_groups:false,read_deals:false;
 }	
 }
 

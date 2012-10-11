@@ -1,4 +1,4 @@
-/*1349869392,172014908,JIT Construction: v644018,en_US*/
+/*1349955787,171989823,JIT Construction: v645172,en_US*/
 
 try {window.FB || (function(window) {
 var document = window.document;
@@ -187,7 +187,7 @@ a.fb_button_small_rtl:active{background-position:right -458px}
 
 FB.provide("", {"_domain":{"api":"https:\/\/api.facebook.com\/","api_read":"https:\/\/api-read.facebook.com\/","cdn":"https:\/\/s-static.ak.fbcdn.net\/","cdn_foreign":"https:\/\/connect.facebook.net\/","graph":"https:\/\/graph.facebook.com\/","https_cdn":"https:\/\/s-static.ak.fbcdn.net\/","https_staticfb":"https:\/\/s-static.ak.facebook.com\/","https_www":"https:\/\/www.facebook.com\/","staticfb":"http:\/\/static.ak.facebook.com\/","www":"https:\/\/www.facebook.com\/","m":"https:\/\/m.facebook.com\/","https_m":"https:\/\/m.facebook.com\/"},"_locale":"en_US","_localeIsRtl":false}, true);
 FB.provide('Auth', {"_xdStorePath":"xd_localstorage\/v2"}, true);
-FB.provide('', {"initSitevars":{"parseXFBMLBeforeDomReady":false,"computeContentSizeVersion":0,"enableMobile":1,"enableMobileComments":1,"forceSecureXdProxy":1,"useAsync":0,"rpc":1,"iframePermissions":{"read_stream":false,"manage_mailbox":false,"manage_friendlists":false,"read_mailbox":false,"publish_checkins":true,"status_update":true,"photo_upload":true,"video_upload":true,"sms":false,"create_event":true,"rsvp_event":true,"offline_access":true,"email":true,"xmpp_login":false,"create_note":true,"share_item":true,"export_stream":false,"publish_stream":true,"publish_likes":true,"ads_management":false,"contact_email":true,"access_private_data":false,"read_insights":false,"read_requests":false,"read_friendlists":true,"manage_pages":false,"physical_login":false,"manage_groups":false,"read_deals":false}}});
+FB.provide('', {"initSitevars":{"enableMobileComments":1,"iframePermissions":{"read_stream":false,"manage_mailbox":false,"manage_friendlists":false,"read_mailbox":false,"publish_checkins":true,"status_update":true,"photo_upload":true,"video_upload":true,"sms":false,"create_event":true,"rsvp_event":true,"offline_access":true,"email":true,"xmpp_login":false,"create_note":true,"share_item":true,"export_stream":false,"publish_stream":true,"publish_likes":true,"ads_management":false,"contact_email":true,"access_private_data":false,"read_insights":false,"read_requests":false,"read_friendlists":true,"manage_pages":false,"physical_login":false,"manage_groups":false,"read_deals":false}}});
 FB.provide("TemplateData", {"_enabled":0}, true);
 FB.provide("TemplateUI", {"_version":19}, true);
 FB.provide("XFBML.ConnectBar", {"imgs":{"buttonUrl":"rsrc.php\/v2\/yY\/r\/h_Y6u1wrZPW.png","missingProfileUrl":"rsrc.php\/v2\/yo\/r\/UlIqmHJn-SK.gif"}}, true);
