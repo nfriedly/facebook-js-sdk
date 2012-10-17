@@ -1,7 +1,13 @@
-/*1349955787,171989823,JIT Construction: v645172,en_US*/
+/*1350474157,171990583,JIT Construction: v649768,en_US*/
+/**
+ * Copyright Facebook Inc.
+ *
+ * Licensed under the Apache License, Version 2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
+ */
 try
 {
-	windowFBfunctionwindowvardocument:window.document;
+	windowFBfunctionwindowvarself:window, document = window.document;
 	varFB:{;
 }
 
