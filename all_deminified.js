@@ -1,4 +1,4 @@
-/*1351078375,172631848,JIT Construction: v655092,en_US*/
+/*1351164785,172025137,JIT Construction: v655928,en_US*/
 
 /**
  * Copyright Facebook Inc.
@@ -626,7 +626,7 @@ try {
             },
             "api": {
                 "mode": "warn",
-                "whitelist": ["Arbiter", "Arbiter.inform", "Canvas", "Canvas.Prefetcher.addStaticResource", "Canvas.Prefetcher.setCollectionMode", "Canvas.getPageInfo", "Canvas.hideFlashElement", "Canvas.scrollTo", "Canvas.setAutoGrow", "Canvas.setDoneLoading", "Canvas.setSize", "Canvas.setUrlHandler", "Canvas.showFlashElement", "Canvas.startTimer", "Canvas.stopTimer", "Data", "Data.query", "Data.waitOn", "Dom", "Dom.addCssRules", "Event", "Event.subscribe", "Event.unsubscribe", "Insights", "Insights.impression", "Music", "Music.flashCallback", "Music.init", "Music.send", "Payment", "Payment.init", "Payment.setSize", "UA", "UA.nativeApp", "XD", "XD.onMessage", "XFBML", "XFBML.parse", "api", "getAccessToken", "getAuthResponse", "getLoginStatus", "getUserID", "init", "login", "logout", "ui", "ThirdPartyProvider", "ThirdPartyProvider.sendData", "ThirdPartyProvider.init", "ui:subscribe", "Data.query:wait", "Data.waitOn:wait", "Frictionless.isAllowed"]
+                "whitelist": ["Arbiter", "Arbiter.inform", "Canvas", "Canvas.Prefetcher.addStaticResource", "Canvas.Prefetcher.setCollectionMode", "Canvas.getPageInfo", "Canvas.hideFlashElement", "Canvas.scrollTo", "Canvas.setAutoGrow", "Canvas.setDoneLoading", "Canvas.setSize", "Canvas.setUrlHandler", "Canvas.showFlashElement", "Canvas.startTimer", "Canvas.stopTimer", "Data", "Data.query", "Data.waitOn", "Dom", "Dom.addCssRules", "Event", "Event.subscribe", "Event.unsubscribe", "Insights", "Insights.impression", "Music", "Music.flashCallback", "Music.init", "Music.send", "Payment", "Payment.init", "Payment.setSize", "UA", "UA.nativeApp", "XD", "XD.onMessage", "XFBML", "XFBML.parse", "api", "getAccessToken", "getAuthResponse", "getLoginStatus", "getUserID", "init", "login", "logout", "ui", "ThirdPartyProvider", "ThirdPartyProvider.sendData", "ThirdPartyProvider.init", "ui:subscribe", "Data.query:wait", "Data.waitOn:wait", "Frictionless.isAllowed", "XFBML.RecommendationsBar", "XFBML.RecommendationsBar.markRead"]
             },
             "initSitevars": {
                 "enableMobileComments": 1,
@@ -2895,7 +2895,7 @@ try {
                         }
                         function ia(qa) {
                             if (ES5('Array', 'isArray', false, qa)) return ES5(qa, 'map', true, ia);
-                            if (typeof qa === 'object' && qa.__wrapped) return qa.__wrapped;
+                            if (qa && typeof qa === 'object' && qa.__wrapped) return qa.__wrapped;
                             return typeof qa === 'function' && /^function/.test(qa.toString()) ? m.unguard(qa) : qa;
                         }
                         var ja = ES5(Array.prototype.slice.call(arguments), 'map', true, ia),
@@ -3373,32 +3373,33 @@ try {
                 tx: k
             };
         });
-        __d("sdk.Dialog", ["sdk.Canvas.Environment", "sdk.Content", "sdk.DOM", "sdk.Event", "ge", "sdk.Intl", "ObservableMixin", "sdk.Runtime", "Type", "UserAgent"], function(a, b, c, d, e, f) {
+        __d("sdk.Dialog", ["sdk.Canvas.Environment", "sdk.Content", "sdk.DOM", "DOMEventListener", "sdk.Event", "ge", "sdk.Intl", "ObservableMixin", "sdk.Runtime", "Type", "UserAgent"], function(a, b, c, d, e, f) {
             var g = b('sdk.Canvas.Environment'),
                 h = b('sdk.Content'),
                 i = b('sdk.DOM'),
-                j = b('sdk.Event'),
-                k = b('ge'),
-                l = b('sdk.Intl'),
-                m = b('ObservableMixin'),
-                n = b('sdk.Runtime'),
-                o = b('Type'),
-                p = b('UserAgent'),
-                q = o.extend({
-                    constructor: function(s, t) {
+                j = b('DOMEventListener'),
+                k = b('sdk.Event'),
+                l = b('ge'),
+                m = b('sdk.Intl'),
+                n = b('ObservableMixin'),
+                o = b('sdk.Runtime'),
+                p = b('Type'),
+                q = b('UserAgent'),
+                r = p.extend({
+                    constructor: function(t, u) {
                         this.parent();
-                        this.id = s;
-                        this.display = t;
-                        if (!r._dialogs) {
-                            r._dialogs = {};
-                            r._addOrientationHandler();
+                        this.id = t;
+                        this.display = u;
+                        if (!s._dialogs) {
+                            s._dialogs = {};
+                            s._addOrientationHandler();
                         }
-                        r._dialogs[s] = this;
+                        s._dialogs[t] = this;
                     }
-                }, m),
-                r = {
-                    newInstance: function(s, t) {
-                        return new q(s, t);
+                }, n),
+                s = {
+                    newInstance: function(t, u) {
+                        return new r(t, u);
                     },
                     _dialogs: null,
                     _lastYOffset: 0,
@@ -3406,144 +3407,144 @@ try {
                     _overlayEl: null,
                     _stack: [],
                     _active: null,
-                    get: function(s) {
-                        return r._dialogs[s];
+                    get: function(t) {
+                        return s._dialogs[t];
                     },
-                    _findRoot: function(s) {
-                        while (s) {
-                            if (i.containsCss(s, 'fb_dialog')) return s;
-                            s = s.parentNode;
+                    _findRoot: function(t) {
+                        while (t) {
+                            if (i.containsCss(t, 'fb_dialog')) return t;
+                            t = t.parentNode;
                         }
                     },
-                    _createWWWLoader: function(s) {
-                        s = parseInt(s, 10);
-                        s = s ? s : 460;
-                        return r.create({
+                    _createWWWLoader: function(t) {
+                        t = parseInt(t, 10);
+                        t = t ? t : 460;
+                        return s.create({
                             content: ('<div class="dialog_title">' + '  <a id="fb_dialog_loader_close">' + '    <div class="fb_dialog_close_icon"></div>' + '  </a>' + '  <span>Facebook</span>' + '  <div style="clear:both;"></div>' + '</div>' + '<div class="dialog_content"></div>' + '<div class="dialog_footer"></div>'),
-                            width: s
+                            width: t
                         });
                     },
                     _createMobileLoader: function() {
-                        var s = p.nativeApp() ? '' : ('<table>' + '  <tbody>' + '    <tr>' + '      <td class="header_left">' + '        <label class="touchable_button">' + '          <input type="submit" value="' + l.tx._("Cancel") + '"' + '            id="fb_dialog_loader_close"/>' + '        </label>' + '      </td>' + '      <td class="header_center">' + '        <div>' + l.tx._("Loading...") + '</div>' + '      </td>' + '      <td class="header_right">' + '      </td>' + '    </tr>' + '  </tbody>' + '</table>');
-                        return r.create({
-                            classes: 'loading' + (p.ipad() ? ' centered' : ''),
-                            content: ('<div class="dialog_header">' + s + '</div>')
+                        var t = q.nativeApp() ? '' : ('<table>' + '  <tbody>' + '    <tr>' + '      <td class="header_left">' + '        <label class="touchable_button">' + '          <input type="submit" value="' + m.tx._("Cancel") + '"' + '            id="fb_dialog_loader_close"/>' + '        </label>' + '      </td>' + '      <td class="header_center">' + '        <div>' + m.tx._("Loading...") + '</div>' + '      </td>' + '      <td class="header_right">' + '      </td>' + '    </tr>' + '  </tbody>' + '</table>');
+                        return s.create({
+                            classes: 'loading' + (q.ipad() ? ' centered' : ''),
+                            content: ('<div class="dialog_header">' + t + '</div>')
                         });
                     },
                     _restoreBodyPosition: function() {
-                        if (!p.ipad()) {
-                            var s = document.getElementsByTagName('body')[0];
-                            i.removeCss(s, 'fb_hidden');
+                        if (!q.ipad()) {
+                            var t = document.getElementsByTagName('body')[0];
+                            i.removeCss(t, 'fb_hidden');
                         }
                     },
                     _showIPadOverlay: function() {
-                        if (!p.ipad()) return;
-                        if (!r._overlayEl) {
-                            r._overlayEl = document.createElement('div');
-                            r._overlayEl.setAttribute('id', 'fb_dialog_ipad_overlay');
-                            h.append(r._overlayEl, null);
+                        if (!q.ipad()) return;
+                        if (!s._overlayEl) {
+                            s._overlayEl = document.createElement('div');
+                            s._overlayEl.setAttribute('id', 'fb_dialog_ipad_overlay');
+                            h.append(s._overlayEl, null);
                         }
-                        r._overlayEl.className = '';
+                        s._overlayEl.className = '';
                     },
                     _hideIPadOverlay: function() {
-                        if (p.ipad()) r._overlayEl.className = 'hidden';
+                        if (q.ipad()) s._overlayEl.className = 'hidden';
                     },
-                    showLoader: function(s, t) {
-                        r._showIPadOverlay();
-                        if (!r._loaderEl) r._loaderEl = r._findRoot(p.mobile() ? r._createMobileLoader() : r._createWWWLoader(t));
-                        if (!s) s = function() {};
-                        var u = k('fb_dialog_loader_close');
-                        i.removeCss(u, 'fb_hidden');
-                        u.onclick = function() {
-                            r._hideLoader();
-                            r._restoreBodyPosition();
-                            r._hideIPadOverlay();
-                            s();
+                    showLoader: function(t, u) {
+                        s._showIPadOverlay();
+                        if (!s._loaderEl) s._loaderEl = s._findRoot(q.mobile() ? s._createMobileLoader() : s._createWWWLoader(u));
+                        if (!t) t = function() {};
+                        var v = l('fb_dialog_loader_close');
+                        i.removeCss(v, 'fb_hidden');
+                        v.onclick = function() {
+                            s._hideLoader();
+                            s._restoreBodyPosition();
+                            s._hideIPadOverlay();
+                            t();
                         };
-                        var v = k('fb_dialog_ipad_overlay');
-                        if (v) v.ontouchstart = u.onclick;
-                        r._makeActive(r._loaderEl);
+                        var w = l('fb_dialog_ipad_overlay');
+                        if (w) w.ontouchstart = v.onclick;
+                        s._makeActive(s._loaderEl);
                     },
                     _hideLoader: function() {
-                        if (r._loaderEl && r._loaderEl == r._active) r._loaderEl.style.top = '-10000px';
+                        if (s._loaderEl && s._loaderEl == s._active) s._loaderEl.style.top = '-10000px';
                     },
-                    _makeActive: function(s) {
-                        r._setDialogSizes();
-                        r._lowerActive();
-                        r._active = s;
-                        if (n.isEnvironment(n.ENVIRONMENTS.CANVAS)) g.getPageInfo(function(t) {
-                            r._centerActive(t);
+                    _makeActive: function(t) {
+                        s._setDialogSizes();
+                        s._lowerActive();
+                        s._active = t;
+                        if (o.isEnvironment(o.ENVIRONMENTS.CANVAS)) g.getPageInfo(function(u) {
+                            s._centerActive(u);
                         });
-                        r._centerActive();
+                        s._centerActive();
                     },
                     _lowerActive: function() {
-                        if (!r._active) return;
-                        r._active.style.top = '-10000px';
-                        r._active = null;
+                        if (!s._active) return;
+                        s._active.style.top = '-10000px';
+                        s._active = null;
                     },
-                    _removeStacked: function(s) {
-                        r._stack = ES5(r._stack, 'filter', true, function(t) {
-                            return t != s;
+                    _removeStacked: function(t) {
+                        s._stack = ES5(s._stack, 'filter', true, function(u) {
+                            return u != t;
                         });
                     },
-                    _centerActive: function(s) {
-                        var t = r._active;
-                        if (!t) return;
-                        var u = i.getViewportInfo(),
-                            v = parseInt(t.offsetWidth, 10),
-                            w = parseInt(t.offsetHeight, 10),
-                            x = u.scrollLeft + (u.width - v) / 2,
-                            y = (u.height - w) / 2.5;
-                        if (x < y) y = x;
-                        var z = u.height - w - y,
-                            aa = (u.height - w) / 2;
-                        if (s) aa = s.scrollTop - s.offsetTop + (s.clientHeight - w) / 2;
-                        if (aa < y) {
-                            aa = y;
-                        } else if (aa > z) aa = z;
-                        aa += u.scrollTop;
-                        if (p.mobile()) {
-                            var ba = 100;
-                            if (p.ipad()) {
-                                ba += (u.height - w) / 2;
+                    _centerActive: function(t) {
+                        var u = s._active;
+                        if (!u) return;
+                        var v = i.getViewportInfo(),
+                            w = parseInt(u.offsetWidth, 10),
+                            x = parseInt(u.offsetHeight, 10),
+                            y = v.scrollLeft + (v.width - w) / 2,
+                            z = (v.height - x) / 2.5;
+                        if (y < z) z = y;
+                        var aa = v.height - x - z,
+                            ba = (v.height - x) / 2;
+                        if (t) ba = t.scrollTop - t.offsetTop + (t.clientHeight - x) / 2;
+                        if (ba < z) {
+                            ba = z;
+                        } else if (ba > aa) ba = aa;
+                        ba += v.scrollTop;
+                        if (q.mobile()) {
+                            var ca = 100;
+                            if (q.ipad()) {
+                                ca += (v.height - x) / 2;
                             } else {
-                                var ca = document.getElementsByTagName('body')[0];
-                                i.addCss(ca, 'fb_hidden');
-                                x = 10000;
-                                aa = 10000;
+                                var da = document.getElementsByTagName('body')[0];
+                                i.addCss(da, 'fb_hidden');
+                                y = 10000;
+                                ba = 10000;
                             }
-                            var da = i.getByClass('fb_dialog_padding', t);
-                            if (da.length) da[0].style.height = ba + 'px';
+                            var ea = i.getByClass('fb_dialog_padding', u);
+                            if (ea.length) ea[0].style.height = ca + 'px';
                         }
-                        t.style.left = (x > 0 ? x : 0) + 'px';
-                        t.style.top = (aa > 0 ? aa : 0) + 'px';
+                        u.style.left = (y > 0 ? y : 0) + 'px';
+                        u.style.top = (ba > 0 ? ba : 0) + 'px';
                     },
                     _setDialogSizes: function() {
-                        if (!p.mobile() || p.ipad()) return;
-                        for (var s in r._dialogs) if (document.getElementById(s)) {
-                            var t = document.getElementById(s);
-                            t.style.width = r.getDefaultSize().width + 'px';
-                            t.style.height = r.getDefaultSize().height + 'px';
+                        if (!q.mobile() || q.ipad()) return;
+                        for (var t in s._dialogs) if (document.getElementById(t)) {
+                            var u = document.getElementById(t);
+                            u.style.width = s.getDefaultSize().width + 'px';
+                            u.style.height = s.getDefaultSize().height + 'px';
                         }
                     },
                     getDefaultSize: function() {
-                        if (p.mobile()) if (p.ipad()) {
+                        if (q.mobile()) if (q.ipad()) {
                             return {
                                 width: 500,
                                 height: 590
                             };
-                        } else if (p.android()) {
+                        } else if (q.android()) {
                             return {
                                 width: screen.availWidth,
                                 height: screen.availHeight
                             };
                         } else {
-                            var s = window.innerWidth,
-                                t = window.innerHeight,
-                                u = s / t > 1.2;
+                            var t = window.innerWidth,
+                                u = window.innerHeight,
+                                v = t / u > 1.2;
                             return {
-                                width: s,
-                                height: Math.max(t, (u ? screen.width : screen.height))
+                                width: t,
+                                height: Math.max(u, (v ? screen.width : screen.height))
                             };
                         }
                         return {
@@ -3551,102 +3552,102 @@ try {
                             height: 240
                         };
                     },
-                    _handleOrientationChange: function(s) {
-                        if (p.android() && screen.availWidth == r._availScreenWidth) {
-                            setTimeout(r._handleOrientationChange, 50);
+                    _handleOrientationChange: function(t) {
+                        if (q.android() && screen.availWidth == s._availScreenWidth) {
+                            setTimeout(s._handleOrientationChange, 50);
                             return;
                         }
-                        r._availScreenWidth = screen.availWidth;
-                        if (p.ipad()) {
-                            r._centerActive();
-                        } else for (var t in r._dialogs) if (document.getElementById(t)) document.getElementById(t).style.width = r.getDefaultSize().width + 'px';
+                        s._availScreenWidth = screen.availWidth;
+                        if (q.ipad()) {
+                            s._centerActive();
+                        } else for (var u in s._dialogs) if (document.getElementById(u)) document.getElementById(u).style.width = s.getDefaultSize().width + 'px';
                     },
                     _addOrientationHandler: function() {
-                        if (!p.mobile()) return;
-                        var s = "onorientationchange" in window ? 'orientationchange' : 'resize';
-                        r._availScreenWidth = screen.availWidth;
-                        j.listen(window, s, r._handleOrientationChange);
+                        if (!q.mobile()) return;
+                        var t = "onorientationchange" in window ? 'orientationchange' : 'resize';
+                        s._availScreenWidth = screen.availWidth;
+                        j.add(window, t, s._handleOrientationChange);
                     },
-                    create: function(s) {
-                        s = s || {};
-                        var t = document.createElement('div'),
-                            u = document.createElement('div'),
-                            v = 'fb_dialog';
-                        if (s.closeIcon && s.onClose) {
-                            var w = document.createElement('a');
-                            w.className = 'fb_dialog_close_icon';
-                            w.onclick = s.onClose;
-                            t.appendChild(w);
+                    create: function(t) {
+                        t = t || {};
+                        var u = document.createElement('div'),
+                            v = document.createElement('div'),
+                            w = 'fb_dialog';
+                        if (t.closeIcon && t.onClose) {
+                            var x = document.createElement('a');
+                            x.className = 'fb_dialog_close_icon';
+                            x.onclick = t.onClose;
+                            u.appendChild(x);
                         }
-                        v += ' ' + (s.classes || '');
-                        if (p.ie()) {
-                            v += ' fb_dialog_legacy';
-                            ES5(['vert_left', 'vert_right', 'horiz_top', 'horiz_bottom', 'top_left', 'top_right', 'bottom_left', 'bottom_right'], 'forEach', true, function(z) {
-                                var aa = document.createElement('span');
-                                aa.className = 'fb_dialog_' + z;
-                                t.appendChild(aa);
+                        w += ' ' + (t.classes || '');
+                        if (q.ie()) {
+                            w += ' fb_dialog_legacy';
+                            ES5(['vert_left', 'vert_right', 'horiz_top', 'horiz_bottom', 'top_left', 'top_right', 'bottom_left', 'bottom_right'], 'forEach', true, function(aa) {
+                                var ba = document.createElement('span');
+                                ba.className = 'fb_dialog_' + aa;
+                                u.appendChild(ba);
                             });
-                        } else v += p.mobile() ? ' fb_dialog_mobile' : ' fb_dialog_advanced';
-                        if (s.content) h.append(s.content, u);
-                        t.className = v;
-                        var x = parseInt(s.width, 10);
-                        if (!isNaN(x)) t.style.width = x + 'px';
-                        u.className = 'fb_dialog_content';
-                        t.appendChild(u);
-                        if (p.mobile()) {
-                            var y = document.createElement('div');
-                            y.className = 'fb_dialog_padding';
-                            t.appendChild(y);
+                        } else w += q.mobile() ? ' fb_dialog_mobile' : ' fb_dialog_advanced';
+                        if (t.content) h.append(t.content, v);
+                        u.className = w;
+                        var y = parseInt(t.width, 10);
+                        if (!isNaN(y)) u.style.width = y + 'px';
+                        v.className = 'fb_dialog_content';
+                        u.appendChild(v);
+                        if (q.mobile()) {
+                            var z = document.createElement('div');
+                            z.className = 'fb_dialog_padding';
+                            u.appendChild(z);
                         }
-                        h.append(t);
-                        if (s.visible) r.show(t);
-                        return u;
+                        h.append(u);
+                        if (t.visible) s.show(u);
+                        return v;
                     },
-                    show: function(s) {
-                        var t = r._findRoot(s);
+                    show: function(t) {
+                        var u = s._findRoot(t);
+                        if (u) {
+                            s._removeStacked(u);
+                            s._hideLoader();
+                            s._makeActive(u);
+                            s._stack.push(u);
+                            if ('fbCallID' in t) s.get(t.fbCallID).inform('iframe_show');
+                        }
+                    },
+                    hide: function(t) {
+                        var u = s._findRoot(t);
+                        if (u == s._active) {
+                            s._lowerActive();
+                            s._restoreBodyPosition();
+                            s._hideIPadOverlay();
+                            if ('fbCallID' in t) s.get(t.fbCallID).inform('iframe_hide');
+                        }
+                    },
+                    remove: function(t) {
+                        t = s._findRoot(t);
                         if (t) {
-                            r._removeStacked(t);
-                            r._hideLoader();
-                            r._makeActive(t);
-                            r._stack.push(t);
-                            if ('fbCallID' in s) r.get(s.fbCallID).inform('iframe_show');
-                        }
-                    },
-                    hide: function(s) {
-                        var t = r._findRoot(s);
-                        if (t == r._active) {
-                            r._lowerActive();
-                            r._restoreBodyPosition();
-                            r._hideIPadOverlay();
-                            if ('fbCallID' in s) r.get(s.fbCallID).inform('iframe_hide');
-                        }
-                    },
-                    remove: function(s) {
-                        s = r._findRoot(s);
-                        if (s) {
-                            var t = r._active == s;
-                            r._removeStacked(s);
-                            if (t) {
-                                r._hideLoader();
-                                if (r._stack.length > 0) {
-                                    r.show(r._stack.pop());
+                            var u = s._active == t;
+                            s._removeStacked(t);
+                            if (u) {
+                                s._hideLoader();
+                                if (s._stack.length > 0) {
+                                    s.show(s._stack.pop());
                                 } else {
-                                    r._lowerActive();
-                                    r._restoreBodyPosition();
-                                    r._hideIPadOverlay();
+                                    s._lowerActive();
+                                    s._restoreBodyPosition();
+                                    s._hideIPadOverlay();
                                 }
-                            } else if (r._active === null && r._stack.length > 0) r.show(r._stack.pop());
+                            } else if (s._active === null && s._stack.length > 0) s.show(s._stack.pop());
                             setTimeout(function() {
-                                s.parentNode.removeChild(s);
+                                t.parentNode.removeChild(t);
                             }, 3000);
                         }
                     },
-                    isActive: function(s) {
-                        var t = r._findRoot(s);
-                        return t && t === r._active;
+                    isActive: function(t) {
+                        var u = s._findRoot(t);
+                        return u && u === s._active;
                     }
                 };
-            e.exports = r;
+            e.exports = s;
         });
         __d("sdk.Frictionless", ["sdk.Auth", "sdk.api", "sdk.Event", "sdk.Dialog"], function(a, b, c, d, e, f) {
             var g = b('sdk.Auth'),
@@ -5092,7 +5093,7 @@ try {
                 return z;
             }
             function x(y, z, aa) {
-                g.isTrue(y.nodeType && y.nodeType === 1 && !! y.getElementsByTagName, 'Invalid DOM node passed to FB.XFBML.parse()');
+                g.isTrue(y && y.nodeType && y.nodeType === 1 && !! y.getElementsByTagName, 'Invalid DOM node passed to FB.XFBML.parse()');
                 g.isFunction(z, 'Invalid callback passed to FB.XFBML.parse()');
                 var ba = ++q;
                 l.info('XFBML Parsing Start %s', ba);
@@ -7238,13 +7239,15 @@ try {
                 });
             e.exports = i;
         });
-        __d("legacy:fb.xfbml", ["FB", "sdk.Event", "XFBML", "IframePlugin", "PluginTags", "sdk.XFBML.Comments", "sdk.XFBML.CommentsCount", "sdk.XFBML.ConnectBar", "sdk.XFBML.Fan", "sdk.XFBML.Like", "sdk.XFBML.LikeBox", "sdk.XFBML.LiveStream", "sdk.XFBML.LoginButton", "sdk.XFBML.Name", "sdk.XFBML.ProfilePic", "sdk.XFBML.RecommendationsBar", "sdk.XFBML.Registration", "sdk.XFBML.Send", "sdk.XFBML.SocialContext"], function(a, b, c, d) {
-            var e = b('FB'),
+        __d("legacy:fb.xfbml", ["sdk.domReady", "sdk.Event", "FB", "IframePlugin", "PluginTags", "wrapFunction", "XFBML", "sdk.XFBML.Comments", "sdk.XFBML.CommentsCount", "sdk.XFBML.ConnectBar", "sdk.XFBML.Fan", "sdk.XFBML.Like", "sdk.XFBML.LikeBox", "sdk.XFBML.LiveStream", "sdk.XFBML.LoginButton", "sdk.XFBML.Name", "sdk.XFBML.ProfilePic", "sdk.XFBML.RecommendationsBar", "sdk.XFBML.Registration", "sdk.XFBML.Send", "sdk.XFBML.SocialContext"], function(a, b, c, d) {
+            var e = b('sdk.domReady'),
                 f = b('sdk.Event'),
-                g = b('XFBML'),
+                g = b('FB'),
                 h = b('IframePlugin'),
                 i = b('PluginTags'),
-                j = {
+                j = b('wrapFunction'),
+                k = b('XFBML'),
+                l = {
                     comments: b('sdk.XFBML.Comments'),
                     comments_count: b('sdk.XFBML.CommentsCount'),
                     connect_bar: b('sdk.XFBML.ConnectBar'),
@@ -7260,38 +7263,37 @@ try {
                     send: b('sdk.XFBML.Send'),
                     social_context: b('sdk.XFBML.SocialContext')
                 };
-            ES5(ES5('Object', 'keys', false, i), 'forEach', true, function(l) {
-                g.registerTag({
+            ES5(ES5('Object', 'keys', false, i), 'forEach', true, function(n) {
+                k.registerTag({
                     xmlns: 'fb',
-                    localName: l.replace(/_/g, '-'),
-                    ctor: h.withParams(i[l])
+                    localName: n.replace(/_/g, '-'),
+                    ctor: h.withParams(i[n])
                 });
             });
-            ES5(ES5('Object', 'keys', false, j), 'forEach', true, function(l) {
-                g.registerTag({
+            ES5(ES5('Object', 'keys', false, l), 'forEach', true, function(n) {
+                k.registerTag({
                     xmlns: 'fb',
-                    localName: l.replace(/_/g, '-'),
-                    ctor: j[l]
+                    localName: n.replace(/_/g, '-'),
+                    ctor: l[n]
                 });
             });
-            e.provide('XFBML', {
-                parse: g.parse
+            g.provide('XFBML', {
+                parse: k.parse
             });
-            e.provide('XFBML.RecommendationsBar', {
-                markRead: function(l) {
-                    f.fire('xfbml.recommendationsbar.read', l || window.location.href);
+            g.provide('XFBML.RecommendationsBar', {
+                markRead: function(n) {
+                    f.fire('xfbml.recommendationsbar.read', n || window.location.href);
                 }
             });
-            g.subscribe('parse', ES5(f.fire, 'bind', true, f, 'xfbml.parse'));
-            g.subscribe('render', ES5(f.fire, 'bind', true, f, 'xfbml.render'));
-            f.subscribe('init:post', function(l) {
-                if (l.xfbml) g.parse();
+            k.subscribe('parse', ES5(f.fire, 'bind', true, f, 'xfbml.parse'));
+            k.subscribe('render', ES5(f.fire, 'bind', true, f, 'xfbml.render'));
+            f.subscribe('init:post', function(n) {
+                if (n.xfbml) setTimeout(j(ES5(e, 'bind', true, null, k.parse), 'entry', 'init:post:xfbml.parse'), 0);
             });
             try {
                 if (document.namespaces && !document.namespaces.item.fb) document.namespaces.add('fb');
-            } catch (k) {}
+            } catch (m) {}
         }, 3);
-        require('sdk.Event').listen = require('DOMEventListener').add;
         void(0);
 
     }).call({}, window.inDapIF ? parent.window : window);
