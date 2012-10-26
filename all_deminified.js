@@ -1,4 +1,4 @@
-/*1351164785,172025137,JIT Construction: v655928,en_US*/
+/*1351251189,172027961,JIT Construction: v656775,en_US*/
 
 /**
  * Copyright Facebook Inc.
@@ -834,7 +834,6 @@ try {
                 if (m) for (var n = 0; n < m.length; n++) m[n].apply(this, arguments);
             }
             function j(m, n) {
-                h.isObject(n);
                 h.isFunction(m);
                 if (n instanceof m) return true;
                 if (n instanceof i) for (var o = 0; o < n.__mixins.length; o++) if (n.__mixins[o] == m) return true;
@@ -4256,9 +4255,10 @@ try {
                         delete o.perms;
                         j.warn('OAuth2 specification states that \'perms\' ' + 'should now be called \'scope\'.  Please update.');
                     }
+                    var p = k.isEnvironment(k.ENVIRONMENTS.CANVAS) || k.isEnvironment(k.ENVIRONMENTS.PAGETAB);
                     m(g({
                         method: 'permissions.oauth',
-                        display: k.isEnvironment(k.ENVIRONMENTS.CANVAS) ? 'async' : 'popup',
+                        display: p ? 'async' : 'popup',
                         domain: location.hostname
                     }, o || {}), n);
                 },
@@ -5033,6 +5033,13 @@ try {
                         return false;
                     }
                 }
+            });
+        }, 3);
+        __d("legacy:fb.ua", ["FB", "UserAgent"], function(a, b, c, d) {
+            var e = b('FB'),
+                f = b('UserAgent');
+            e.provide('UA', {
+                nativeApp: f.nativeApp
             });
         }, 3);
         __d("legacy:fb.ui", ["FB", "sdk.ui"], function(a, b, c, d) {
