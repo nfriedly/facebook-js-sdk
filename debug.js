@@ -1,4 +1,4 @@
-/*1351288916,172648991,JIT Construction: v657317,en_US*/
+/*1351662957,172694562,JIT Construction: v660014,en_US*/
 
 /**
  * Copyright Facebook Inc.
@@ -2468,16 +2468,6 @@ if(!domIsReady) {
 module.exports = domReady;
 
 },3);
-__d("ge",[],function(global,require,requireDynamic,requireLazy,module,exports) {
-
-
-function ge(arg) {
-  return typeof arg == 'string' ? document.getElementById(arg) : arg;
-}
-
-module.exports = ge;
-
-});
 __d("wrapFunction",["Assert"],function(global,require,requireDynamic,requireLazy,module,exports) {
 
 var Assert = require('Assert');
@@ -2648,10 +2638,9 @@ function insertIframe(opts) {
 module.exports = insertIframe;
 
 });
-__d("sdk.Content",["sdk.domReady","ge","Log","UserAgent","insertIframe"],function(global,require,requireDynamic,requireLazy,module,exports) {
+__d("sdk.Content",["sdk.domReady","Log","UserAgent","insertIframe"],function(global,require,requireDynamic,requireLazy,module,exports) {
 
 var domReady = require('sdk.domReady');
-var ge = require('ge');
 var Log = require('Log');
 var UserAgent = require('UserAgent');
 var insertIframe = require('insertIframe');
@@ -2665,7 +2654,7 @@ var Content = {
   append: function(content, root) {
         if (!root) {
       if (!visibleRoot) {
-        visibleRoot = root = ge('fb-root');
+        visibleRoot = root = document.getElementById('fb-root');
         if (!root) {
           Log.warn('The "fb-root" div has not been created, auto-creating');
                     visibleRoot = root = document.createElement('div');
@@ -5358,14 +5347,13 @@ module.exports = {
   tx: tx};
 
 });
-__d("sdk.Dialog",["sdk.Canvas.Environment","sdk.Content","sdk.DOM","DOMEventListener","sdk.Event","ge","sdk.Intl","ObservableMixin","sdk.Runtime","Type","UserAgent"],function(global,require,requireDynamic,requireLazy,module,exports) {
+__d("sdk.Dialog",["sdk.Canvas.Environment","sdk.Content","sdk.DOM","DOMEventListener","sdk.Event","sdk.Intl","ObservableMixin","sdk.Runtime","Type","UserAgent"],function(global,require,requireDynamic,requireLazy,module,exports) {
 
 var CanvasEnvironment = require('sdk.Canvas.Environment');
 var Content = require('sdk.Content');
 var DOM = require('sdk.DOM');
 var DOMEventListener = require('DOMEventListener');
 var Event = require('sdk.Event');
-var ge = require('ge');
 var Intl = require('sdk.Intl');
 var ObservableMixin = require('ObservableMixin');
 var Runtime = require('sdk.Runtime');
@@ -5512,7 +5500,7 @@ var Dialog = {
                     if (!cb) {
       cb = function() {};
     }
-    var loaderClose = ge('fb_dialog_loader_close');
+    var loaderClose = document.getElementById('fb_dialog_loader_close');
     DOM.removeCss(loaderClose, 'fb_hidden');
     loaderClose.onclick = function() {
       Dialog._hideLoader();
@@ -5520,7 +5508,7 @@ var Dialog = {
       Dialog._hideIPadOverlay();
       cb();
     };
-    var iPadOverlay = ge('fb_dialog_ipad_overlay');
+    var iPadOverlay = document.getElementById('fb_dialog_ipad_overlay');
     if (iPadOverlay) {
       iPadOverlay.ontouchstart = loaderClose.onclick;
     }
@@ -5623,10 +5611,12 @@ var Dialog = {
       return;
     }
     for (var id in Dialog._dialogs) {
-      if (document.getElementById(id)) {
+      if (Dialog._dialogs.hasOwnProperty(id)) {
         var iframe = document.getElementById(id);
-        iframe.style.width = Dialog.getDefaultSize().width + 'px';
-        iframe.style.height = Dialog.getDefaultSize().height + 'px';
+        if (iframe) {
+          iframe.style.width = Dialog.getDefaultSize().width + 'px';
+          iframe.style.height = Dialog.getDefaultSize().height + 'px';
+        }
       }
     }
   },
@@ -5670,10 +5660,13 @@ var Dialog = {
     if (UserAgent.ipad()) {
       Dialog._centerActive();
     } else {
+      var width = Dialog.getDefaultSize().width;
       for (var id in Dialog._dialogs) {
-                if (document.getElementById(id)) {
-          document.getElementById(id).style.width =
-            Dialog.getDefaultSize().width + 'px';
+        if (Dialog._dialogs.hasOwnProperty(id)) {
+                    var iframe = document.getElementById(id);
+          if (iframe) {
+            iframe.style.width = width + 'px';
+          }
         }
       }
     }
@@ -7859,6 +7852,87 @@ FB.provide('', {
 
 
 },3);
+__d("Miny",[],function(global,require,requireDynamic,requireLazy,module,exports) {
+
+var MAGIC = 'Miny1';
+
+var _indexMap = {encode: [], decode: {}};
+var LO = 'wxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-_'.split('');
+function getIndexMap(length) {
+  for (var i = _indexMap.encode.length; i < length; i++) {
+        var s = i.toString(32).split('');
+    s[s.length - 1] = LO[parseInt(s[s.length - 1], 32)];
+    s = s.join('');
+
+    _indexMap.encode[i] = s;
+    _indexMap.decode[s] = i;
+  }
+
+  return _indexMap;
+}
+
+function encode(s) {
+    var parts = s.match(/\w+|\W+/g);
+
+      var dict = {};
+  for (var i = 0; i < parts.length; i++) {
+    dict[parts[i]] = (dict[parts[i]] || 0) + 1;
+  }
+
+      var byCount = ES5('Object', 'keys', false,dict);
+  byCount.sort(function(a,b) {
+    return dict[a] < dict[b] ? 1 : (dict[b] < dict[a] ? -1 : 0);
+  });
+
+    var encodeMap = getIndexMap(byCount.length).encode;
+  for (i = 0; i < byCount.length; i++) {
+    dict[byCount[i]] = encodeMap[i];
+  }
+
+    var codes = [];
+  for (i = 0; i < parts.length; i++) {
+    codes[i] = dict[parts[i]];
+  }
+
+    for (i = 0; i < byCount.length; i++) {
+    byCount[i] = byCount[i].replace(/'~'/g, '\\~');
+  }
+
+  return [MAGIC, byCount.length].
+         concat(byCount).
+         concat(codes.join('')).
+         join('~');
+}
+
+function decode(s) {
+  var fields = s.split('~');
+
+  if (fields.shift() != MAGIC) {
+    throw new Error('Not a Miny stream');
+  }
+  var nKeys = parseInt(fields.shift(), 10);
+  var codes = fields.pop();
+  codes = codes.match(/[0-9a-v]*[\-w-zA-Z_]/g);
+
+    var dict = fields;
+
+  var decodeMap = getIndexMap(nKeys).decode;
+  var parts = [];
+  for (var i = 0; i < codes.length; i++) {
+    parts[i] = dict[decodeMap[codes[i]]];
+  }
+
+  return parts.join('');
+}
+
+var Miny = {
+  encode: encode,
+  decode: decode
+};
+
+module.exports = Miny;
+
+});
 __d("runOnce",[],function(global,require,requireDynamic,requireLazy,module,exports) {
 
 function runOnce(func) {
@@ -8019,11 +8093,12 @@ copyProperties(XFBML, {
 module.exports = XFBML;
 
 });
-__d("PluginPipe",["sdk.Content","copyProperties","guid","insertIframe","ObservableMixin","QueryString","sdk.Runtime","UrlMap","UserAgent","XFBML","PluginPipeConfig","SDKConfig"],function(global,require,requireDynamic,requireLazy,module,exports) {
+__d("PluginPipe",["sdk.Content","copyProperties","guid","insertIframe","Miny","ObservableMixin","QueryString","sdk.Runtime","UrlMap","UserAgent","XFBML","PluginPipeConfig","SDKConfig"],function(global,require,requireDynamic,requireLazy,module,exports) {
 var Content = require('sdk.Content');
 var copyProperties = require('copyProperties');
 var guid = require('guid');
 var insertIframe = require('insertIframe');
+var Miny = require('Miny');
 var ObservableMixin = require('ObservableMixin');
 var PluginPipeConfig = requireDynamic('PluginPipeConfig');
 var QueryString = require('QueryString');
@@ -8089,17 +8164,24 @@ function insertPipe(plugins) {
       params: plugin.params
     };
   });
-  params = {
-    plugins: ES5('JSON', 'stringify', false,params)
-  };
+
+  var raw = ES5('JSON', 'stringify', false,params);
+  var miny = Miny.encode(raw);
+  var use_miny = miny.length < raw.length;
+
+  var qs = QueryString.encode({
+    miny: use_miny,
+    plugins: use_miny ? miny : raw
+  });
 
   ES5(plugins, 'forEach', true,function(plugin) {
     var frame = document.getElementsByName(plugin.config.name)[0];
     frame.onload = plugin.config.onload;
   });
 
+
   insertIframe({
-    url: UrlMap.resolve('www') + '/plugins/pipe/?' + QueryString.encode(params),
+    url: UrlMap.resolve('www') + '/plugins/pipe/?' + qs,
     root: root,
     name: guid(),
     className: 'fb_hidden fb_invisible'
@@ -8213,7 +8295,8 @@ var IframePlugin = Type.extend({
     this.subscribe('xd.resize.iframe', resizer(elem, 'iframe'));
     this.subscribe('xd.resize.flow', resizeBubbler(getVal(attr, 'plugin_id')));
 
-        var url = UrlMap.resolve('www') + '/plugins/' + tag + '.php?';
+    var secure = Runtime.getSecure() || window.location.protocol == 'https:';
+        var url = UrlMap.resolve('www', secure) + '/plugins/' + tag + '.php?';
     var params = {};
     validate(this.getParams(), elem, attr, params);
     validate(baseParams, elem, attr, params);
