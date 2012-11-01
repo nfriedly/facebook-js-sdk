@@ -1,4 +1,4 @@
-/*1351662957,172694562,JIT Construction: v660014,en_US*/
+/*1351728269,171977788,JIT Construction: v660994,en_US*/
 
 /**
  * Copyright Facebook Inc.
@@ -4130,7 +4130,7 @@ var UserAgent = require('UserAgent');
 
 var cssRules = {};
 
-function getAttr( dom,  name)  {__t([dom,'DOMElement','dom'],[name,'string','name']);
+function getAttr( dom,  name)  {__t([dom,'DOMElement','dom'],[name,'string','name']); return __t([function(){
   var attribute = (
     dom.getAttribute(name) ||
     dom.getAttribute(name.replace(/_/g, '-')) ||
@@ -4146,14 +4146,14 @@ function getAttr( dom,  name)  {__t([dom,'DOMElement','dom'],[name,'string','nam
   return attribute
     ? String(attribute)
     : null;
-}
+}.apply(this, arguments), 'string?']);}
 
-function getBoolAttr( dom,  name)  {__t([dom,'DOMElement','dom'],[name,'string','name']);
+function getBoolAttr( dom,  name)  {__t([dom,'DOMElement','dom'],[name,'string','name']); return __t([function(){
   var attribute = getAttr(dom, name);
   return attribute
     ? /^(true|1|yes|on)$/.test(attribute)
     : null;
-}
+}.apply(this, arguments), 'boolean?']);}
 
 function getProp( dom,  name)  {__t([dom,'DOMElement','dom'],[name,'string','name']); return __t([function(){
   Assert.isTrue(!!dom, 'element not specified');
