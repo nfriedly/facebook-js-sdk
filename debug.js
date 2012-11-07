@@ -1,4 +1,4 @@
-/*1351728269,171977788,JIT Construction: v660994,en_US*/
+/*1352274209,172634162,JIT Construction: v665918,en_US*/
 
 /**
  * Copyright Facebook Inc.
@@ -27,31 +27,37 @@ var __t = (function() {
   var handler;
 
   function getType(value) {
-    var type = typeof value;
+    var type;
     var subType;
-    if (type === 'object') {
-      if (typeof HTMLElement === 'object'
-            ? value instanceof HTMLElement
-            : value && value.nodeType === 1 &&
-              typeof value.nodeName === 'string') {
-        // If it's an HTMLElement, extract the subtype
-         type = 'DOMElement';
-         subType = value.nodeName.toUpperCase();
-      } else {
-        // else, check if it is actually an array
-        type = toString.call(value).slice(8, -1);
-        switch (type) {
-          case 'Array':
-            if (value.length) {
-              subType = getType(value[0]);
-            }
-            // fall through
-          case 'Object':
-          case 'RegExp':
-          case 'Date':
-          case 'Null':
-            type = type.toLowerCase();
-            break;
+    if (value === undefined) {
+      type = 'undefined';
+    } else if (value === null) {
+      type = 'null';
+    } else {
+      type = typeof value;
+      if (type === 'object') {
+        if (typeof HTMLElement === 'object'
+              ? value instanceof HTMLElement
+              : value.nodeType === 1 &&
+                typeof value.nodeName === 'string') {
+          // If it's an HTMLElement, extract the subtype
+           type = 'DOMElement';
+           subType = value.nodeName.toUpperCase();
+        } else {
+          // else, check if it is actually an array
+          type = toString.call(value).slice(8, -1);
+          switch (type) {
+            case 'Array':
+              if (value.length) {
+                subType = getType(value[0]);
+              }
+              // fall through
+            case 'Object':
+            case 'RegExp':
+            case 'Date':
+              type = type.toLowerCase();
+              break;
+          }
         }
       }
     }
@@ -110,7 +116,7 @@ var __t = (function() {
 })();
 /*/TC*/
 
-/* B-L9rRInf5i */
+/* dXfDAwBiK0q */
 
 /**
  * This is a lightweigh implementation of require and __d which is used by the
@@ -129,7 +135,7 @@ var require, __d;
   var defaultDeps =
     ['global', 'require', 'requireDynamic', 'requireLazy', 'module', 'exports'];
 
-  require = function(/*string*/ id, /*boolean?*/ soft) {/*TC*/__t([id,'string','id']);/*/TC*/
+  require = function(/*string*/ id, /*boolean?*/ soft) {/*TC*/__t([id,'string','id'],[soft,'boolean?','soft']);/*/TC*/
     if (resolved.hasOwnProperty(id)) {
       return resolved[id];
     }
@@ -163,7 +169,7 @@ var require, __d;
   };
 
   __d = function(/*string*/ id, /*array<string>*/ deps, factory,
-      /*number?*/ _special) {/*TC*/__t([id,'string','id']);/*/TC*/
+      /*number?*/ _special) {/*TC*/__t([id,'string','id'],[_special,'number?','_special']);/*/TC*/
     if (typeof factory === 'function') {
       map[id] = {
         factory: factory,
@@ -1295,7 +1301,7 @@ ES5 = require('ES5');
 return ES5.apply(null, arguments);
 };
 
-__d("sdk.RuntimeConfig",[],{"locale":"en_US","rtl":false});__d("UrlMapConfig",[],{"www":"www.facebook.com","m":"m.facebook.com","connect":"connect.facebook.net","api_https":"api.facebook.com","api_read_https":"api-read.facebook.com","graph_https":"graph.facebook.com","fbcdn_http":"s-static.ak.fbcdn.net","fbcdn_https":"s-static.ak.fbcdn.net","cdn_http":"static.ak.facebook.com","cdn_https":"s-static.ak.facebook.com"});__d("XDConfig",[],{"XdUrl":"connect\/xd_arbiter.php?version=11","Flash":{"path":"https:\/\/connect.facebook.net\/rsrc.php\/v1\/ys\/r\/WON-TVLCpDP.swf"},"useCdn":true});__d("SDKConfig",[],{"evenbiggerandbigger":"change","errorHandling":{"rate":4},"api":{"mode":"warn","whitelist":["Arbiter","Arbiter.inform","Canvas","Canvas.Prefetcher.addStaticResource","Canvas.Prefetcher.setCollectionMode","Canvas.getPageInfo","Canvas.hideFlashElement","Canvas.scrollTo","Canvas.setAutoGrow","Canvas.setDoneLoading","Canvas.setSize","Canvas.setUrlHandler","Canvas.showFlashElement","Canvas.startTimer","Canvas.stopTimer","Data","Data.query","Data.waitOn","Dom","Dom.addCssRules","Event","Event.subscribe","Event.unsubscribe","Insights","Insights.impression","Music","Music.flashCallback","Music.init","Music.send","Payment","Payment.init","Payment.setSize","UA","UA.nativeApp","XD","XD.onMessage","XFBML","XFBML.parse","api","getAccessToken","getAuthResponse","getLoginStatus","getUserID","init","login","logout","ui","ThirdPartyProvider","ThirdPartyProvider.sendData","ThirdPartyProvider.init","ui:subscribe","Data.query:wait","Data.waitOn:wait","Frictionless.isAllowed","XFBML.RecommendationsBar","XFBML.RecommendationsBar.markRead"]},"initSitevars":{"enableMobileComments":1,"iframePermissions":{"read_stream":false,"manage_mailbox":false,"manage_friendlists":false,"read_mailbox":false,"publish_checkins":true,"status_update":true,"photo_upload":true,"video_upload":true,"sms":false,"create_event":true,"rsvp_event":true,"offline_access":true,"email":true,"xmpp_login":false,"create_note":true,"share_item":true,"export_stream":false,"publish_stream":true,"publish_likes":true,"ads_management":false,"contact_email":true,"access_private_data":false,"read_insights":false,"read_requests":false,"read_friendlists":true,"manage_pages":false,"physical_login":false,"manage_groups":false,"read_deals":false}}});__d("CssConfig",[],{"rules":".fb_hidden{position:absolute;top:-10000px;z-index:10001}\n.fb_invisible{display:none}\n.fb_reset{background:none;border-spacing:0;border:0;color:#000;cursor:auto;direction:ltr;font-family:\"lucida grande\", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}\n.fb_link img{border:none}\n.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}\n.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px}\n.fb_dialog_content{background:#fff;color:#333}\n.fb_dialog_close_icon{background:url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v2\/yA\/x\/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;_background-image:url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v2\/y6\/x\/s816eWC-2sl.gif);cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px;top:8px\\9;right:7px\\9}\n.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}\n.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}\n.fb_dialog_close_icon:hover{background:url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v2\/yA\/x\/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent;_background-image:url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v2\/y6\/x\/s816eWC-2sl.gif)}\n.fb_dialog_close_icon:active{background:url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v2\/yA\/x\/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent;_background-image:url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v2\/y6\/x\/s816eWC-2sl.gif)}\n.fb_dialog_loader{background-color:#f2f2f2;border:1px solid #606060;font-size:24px;padding:20px}\n.fb_dialog_top_left,\n.fb_dialog_top_right,\n.fb_dialog_bottom_left,\n.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}\n\/* \u0040noflip *\/\n.fb_dialog_top_left{background:url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v2\/yR\/x\/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}\n\/* \u0040noflip *\/\n.fb_dialog_top_right{background:url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v2\/yR\/x\/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}\n\/* \u0040noflip *\/\n.fb_dialog_bottom_left{background:url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v2\/yR\/x\/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}\n\/* \u0040noflip *\/\n.fb_dialog_bottom_right{background:url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v2\/yR\/x\/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}\n.fb_dialog_vert_left,\n.fb_dialog_vert_right,\n.fb_dialog_horiz_top,\n.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}\n.fb_dialog_vert_left,\n.fb_dialog_vert_right{width:10px;height:100\u0025}\n.fb_dialog_vert_left{margin-left:-10px}\n.fb_dialog_vert_right{right:0;margin-right:-10px}\n.fb_dialog_horiz_top,\n.fb_dialog_horiz_bottom{width:100\u0025;height:10px}\n.fb_dialog_horiz_top{margin-top:-10px}\n.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}\n.fb_dialog_iframe{line-height:0}\n.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #3b5998;color:#fff;font-size:14px;font-weight:bold;margin:0}\n.fb_dialog_content .dialog_title > span{background:url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v2\/yD\/x\/Cou7n-nqK52.gif)\nno-repeat 5px 50\u0025;float:left;padding:5px 0 7px 26px}\nbody.fb_hidden{-webkit-transform:none;height:100\u0025;margin:0;left:-10000px;overflow:visible;position:absolute;top:-10000px;width:100\u0025\n}\n.fb_dialog.fb_dialog_mobile.loading{background:url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v2\/yc\/x\/3rhSv5V8j3o.gif)\nwhite no-repeat 50\u0025 50\u0025;min-height:100\u0025;min-width:100\u0025;overflow:hidden;position:absolute;top:0;z-index:10001}\n.fb_dialog.fb_dialog_mobile.loading.centered{max-height:590px;min-height:590px;max-width:500px;min-width:500px}\n#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;left:0;top:0;width:100\u0025;min-height:100\u0025;z-index:10000}\n#fb-root #fb_dialog_ipad_overlay.hidden{display:none}\n.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}\n.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0 0, 0 100\u0025, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}\n.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100\u0025\n}\n.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px\n}\n.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px\n}\n.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0 0, 0 100\u0025, from(#4966A6),\ncolor-stop(0.5, #355492), to(#2A4887));border:1px solid #29447e;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset,\nrgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}\n.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}\n.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}\n.fb_dialog_content .dialog_content{background:url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v2\/yJ\/x\/jKEcVPZFk-2.gif) no-repeat 50\u0025 50\u0025;border:1px solid #555;border-bottom:0;border-top:0;height:150px}\n.fb_dialog_content .dialog_footer{background:#f2f2f2;border:1px solid #555;border-top-color:#ccc;height:40px}\n#fb_dialog_loader_close{float:left}\n.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}\n.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}\n.fb_iframe_widget{position:relative;display:-moz-inline-block;display:inline-block}\n.fb_iframe_widget iframe{position:absolute}\n.fb_iframe_widget_lift{z-index:1}\n.fb_iframe_widget span{position:relative;display:inline-block;vertical-align:text-bottom;text-align:justify}\n.fb_hide_iframes iframe{position:relative;left:-10000px}\n.fb_iframe_widget_loader{position:relative;display:inline-block}\n.fb_iframe_widget_fluid{display:inline}\n.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}\n.fb_iframe_widget_loader .FB_Loader{background:url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v2\/yJ\/x\/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50\u0025;z-index:4}\n.fb_button_simple,\n.fb_button_simple_rtl{background-image:url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v2\/yH\/x\/eIpbnVKI9lR.png);background-repeat:no-repeat;cursor:pointer;outline:none;text-decoration:none}\n.fb_button_simple_rtl{background-position:right 0}\n.fb_button_simple .fb_button_text{margin:0 0 0 20px;padding-bottom:1px}\n.fb_button_simple_rtl .fb_button_text{margin:0 10px 0 0}\na.fb_button_simple:hover .fb_button_text,\na.fb_button_simple_rtl:hover .fb_button_text,\n.fb_button_simple:hover .fb_button_text,\n.fb_button_simple_rtl:hover .fb_button_text{text-decoration:underline}\n.fb_button,\n.fb_button_rtl{background:#29447e url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v2\/yl\/x\/FGFbc80dUKj.png);background-repeat:no-repeat;cursor:pointer;display:inline-block;padding:0 0 0 1px;text-decoration:none;outline:none}\n.fb_button .fb_button_text,\n.fb_button_rtl .fb_button_text{background:#5f78ab url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v2\/yl\/x\/FGFbc80dUKj.png);border-top:solid 1px #879ac0;border-bottom:solid 1px #1a356e;color:#fff;display:block;font-family:\"lucida grande\",tahoma,verdana,arial,sans-serif;font-weight:bold;padding:2px 6px 3px 6px;margin:1px 1px 0 21px;text-shadow:none}\na.fb_button,\na.fb_button_rtl,\n.fb_button,\n.fb_button_rtl{text-decoration:none}\na.fb_button:active .fb_button_text,\na.fb_button_rtl:active .fb_button_text,\n.fb_button:active .fb_button_text,\n.fb_button_rtl:active .fb_button_text{border-bottom:solid 1px #29447e;border-top:solid 1px #45619d;background:#4f6aa3;text-shadow:none}\n.fb_button_xlarge,\n.fb_button_xlarge_rtl{background-position:left -60px;font-size:24px;line-height:30px}\n.fb_button_xlarge .fb_button_text{padding:3px 8px 3px 12px;margin-left:38px}\na.fb_button_xlarge:active{background-position:left -99px}\n.fb_button_xlarge_rtl{background-position:right -268px}\n.fb_button_xlarge_rtl .fb_button_text{padding:3px 8px 3px 12px;margin-right:39px}\na.fb_button_xlarge_rtl:active{background-position:right -307px}\n.fb_button_large,\n.fb_button_large_rtl{background-position:left -138px;font-size:13px;line-height:16px}\n.fb_button_large .fb_button_text{margin-left:24px;padding:2px 6px 4px 6px}\na.fb_button_large:active{background-position:left -163px}\n.fb_button_large_rtl{background-position:right -346px}\n.fb_button_large_rtl .fb_button_text{margin-right:25px}\na.fb_button_large_rtl:active{background-position:right -371px}\n.fb_button_medium,\n.fb_button_medium_rtl{background-position:left -188px;font-size:11px;line-height:14px}\na.fb_button_medium:active{background-position:left -210px}\n.fb_button_medium_rtl{background-position:right -396px}\n.fb_button_text_rtl,\n.fb_button_medium_rtl .fb_button_text{padding:2px 6px 3px 6px;margin-right:22px}\na.fb_button_medium_rtl:active{background-position:right -418px}\n.fb_button_small,\n.fb_button_small_rtl{background-position:left -232px;font-size:10px;line-height:10px}\n.fb_button_small .fb_button_text{padding:2px 6px 3px;margin-left:17px}\na.fb_button_small:active,\n.fb_button_small:active{background-position:left -250px}\n.fb_button_small_rtl{background-position:right -440px}\n.fb_button_small_rtl .fb_button_text{padding:2px 6px;margin-right:18px}\na.fb_button_small_rtl:active{background-position:right -458px}\n.fb_share_count_wrapper{position:relative;float:left}\n.fb_share_count{background:#b0b9ec none repeat scroll 0 0;color:#333;font-family:\"lucida grande\", tahoma, verdana, arial, sans-serif;text-align:center}\n.fb_share_count_inner{background:#e8ebf2;display:block}\n.fb_share_count_right{margin-left:-1px;display:inline-block}\n.fb_share_count_right .fb_share_count_inner{border-top:solid 1px #e8ebf2;border-bottom:solid 1px #b0b9ec;margin:1px 1px 0 1px;font-size:10px;line-height:10px;padding:2px 6px 3px;font-weight:bold}\n.fb_share_count_top{display:block;letter-spacing:-1px;line-height:34px;margin-bottom:7px;font-size:22px;border:solid 1px #b0b9ec}\n.fb_share_count_nub_top{border:none;display:block;position:absolute;left:7px;top:35px;margin:0;padding:0;width:6px;height:7px;background-repeat:no-repeat;background-image:url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v2\/yP\/x\/bSOHtKbCGYI.png)}\n.fb_share_count_nub_right{border:none;display:inline-block;padding:0;width:5px;height:10px;background-repeat:no-repeat;background-image:url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v2\/yL\/x\/i_oIVTKMYsL.png);vertical-align:top;background-position:right 5px;z-index:10;left:2px;margin:0 2px 0 0;position:relative}\n.fb_share_no_count{display:none}\n.fb_share_size_Small .fb_share_count_right .fb_share_count_inner{font-size:10px}\n.fb_share_size_Medium .fb_share_count_right .fb_share_count_inner{font-size:11px;padding:2px 6px 3px;letter-spacing:-1px;line-height:14px}\n.fb_share_size_Large .fb_share_count_right .fb_share_count_inner{font-size:13px;line-height:16px;padding:2px 6px 4px;font-weight:normal;letter-spacing:-1px}\n.fb_share_count_hidden .fb_share_count_nub_top,\n.fb_share_count_hidden .fb_share_count_top,\n.fb_share_count_hidden .fb_share_count_nub_right,\n.fb_share_count_hidden .fb_share_count_right{visibility:hidden}\n.fb_connect_bar_container div,\n.fb_connect_bar_container span,\n.fb_connect_bar_container a,\n.fb_connect_bar_container img,\n.fb_connect_bar_container strong{background:none;border-spacing:0;border:0;direction:ltr;font-style:normal;font-variant:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal;vertical-align:baseline}\n.fb_connect_bar_container{position:fixed;left:0 !important;right:0 !important;height:42px !important;padding:0 25px !important;margin:0 !important;vertical-align:middle !important;border-bottom:1px solid #333 !important;background:#3b5998 !important;z-index:99999999 !important;overflow:hidden !important}\n.fb_connect_bar_container_ie6{position:absolute;top:expression(document.compatMode==\"CSS1Compat\"? document.documentElement.scrollTop+\"px\":body.scrollTop+\"px\")}\n.fb_connect_bar{position:relative;margin:auto;height:100\u0025;width:100\u0025;padding:6px 0 0 0 !important;background:none;color:#fff !important;font-family:\"lucida grande\", tahoma, verdana, arial, sans-serif !important;font-size:13px !important;font-style:normal !important;font-variant:normal !important;font-weight:normal !important;letter-spacing:normal !important;line-height:1 !important;text-decoration:none !important;text-indent:0 !important;text-shadow:none !important;text-transform:none !important;white-space:normal !important;word-spacing:normal !important}\n.fb_connect_bar a:hover{color:#fff}\n.fb_connect_bar .fb_profile img{height:30px;width:30px;vertical-align:middle;margin:0 6px 5px 0}\n.fb_connect_bar div a,\n.fb_connect_bar span,\n.fb_connect_bar span a{color:#bac6da;font-size:11px;text-decoration:none}\n.fb_connect_bar .fb_buttons{float:right;margin-top:7px}\n.fb_edge_widget_with_comment{position:relative;*z-index:1000}\n.fb_edge_widget_with_comment span.fb_edge_comment_widget{position:absolute}\n.fb_edge_widget_with_comment span.fb_send_button_form_widget{z-index:1}\n.fb_edge_widget_with_comment span.fb_send_button_form_widget .FB_Loader{left:0;top:1px;margin-top:6px;margin-left:0;background-position:50\u0025 50\u0025;background-color:#fff;height:150px;width:394px;border:1px #666 solid;border-bottom:2px solid #283e6c;z-index:1}\n.fb_edge_widget_with_comment span.fb_send_button_form_widget.dark .FB_Loader{background-color:#000;border-bottom:2px solid #ccc}\n.fb_edge_widget_with_comment span.fb_send_button_form_widget.siderender\n.FB_Loader{margin-top:0}\n.fbpluginrecommendationsbarleft,\n.fbpluginrecommendationsbarright{position:fixed !important;bottom:0;z-index:999}\n\/* \u0040noflip *\/\n.fbpluginrecommendationsbarleft{left:10px}\n\/* \u0040noflip *\/\n.fbpluginrecommendationsbarright{right:10px}\n","components":["fb.css.base","fb.css.dialog","fb.css.iframewidget","fb.css.button","fb.css.sharebutton","fb.css.connectbarwidget","fb.css.edgecommentwidget","fb.css.sendbuttonformwidget","fb.css.plugin.recommendationsbar"]});__d("ApiClientConfig",[],{"FlashRequest":{"swfUrl":"https:\/\/connect.facebook.net\/rsrc.php\/v1\/y5\/r\/SrnvQJBTxo-.swf"}});__d("CanvasPrefetcherConfig",[],{"blacklist":[144959615576466],"sampleRate":500});__d("PluginPipeConfig",[],{"threshold":0,"enabledApps":{"111476658864976":1,"cca6477272fc5cb805f85a84f20fca1d":1,"179150165472010":1}});__d("ConnectBarConfig",[],{"imgs":{"buttonUrl":"rsrc.php\/v2\/yY\/r\/h_Y6u1wrZPW.png","missingProfileUrl":"rsrc.php\/v2\/yo\/r\/UlIqmHJn-SK.gif"}});__d("ProfilePicConfig",[],{"defPicMap":{"pic":"rsrc.php\/v1\/yh\/r\/C5yt7Cqf3zU.jpg","pic_big":"rsrc.php\/v2\/yL\/r\/HsTZSDw4avx.gif","pic_big_with_logo":"rsrc.php\/v2\/y5\/r\/SRDCaeCL7hM.gif","pic_small":"rsrc.php\/v1\/yi\/r\/odA9sNLrE86.jpg","pic_small_with_logo":"rsrc.php\/v2\/yD\/r\/k1xiRXKnlGd.gif","pic_square":"rsrc.php\/v2\/yo\/r\/UlIqmHJn-SK.gif","pic_square_with_logo":"rsrc.php\/v2\/yX\/r\/9dYJBPDHXwZ.gif","pic_with_logo":"rsrc.php\/v2\/yu\/r\/fPPR9f2FJ3t.gif"}});
+__d("sdk.RuntimeConfig",[],{"locale":"en_US","rtl":false});__d("UrlMapConfig",[],{"www":"www.facebook.com","m":"m.facebook.com","connect":"connect.facebook.net","api_https":"api.facebook.com","api_read_https":"api-read.facebook.com","graph_https":"graph.facebook.com","fbcdn_http":"s-static.ak.fbcdn.net","fbcdn_https":"s-static.ak.fbcdn.net","cdn_http":"static.ak.facebook.com","cdn_https":"s-static.ak.facebook.com"});__d("XDConfig",[],{"XdUrl":"connect\/xd_arbiter.php?version=15","Flash":{"path":"https:\/\/connect.facebook.net\/rsrc.php\/v1\/ys\/r\/WON-TVLCpDP.swf"},"useCdn":true});__d("SDKConfig",[],{"tagCountLogRate":0.01,"errorHandling":{"rate":4},"api":{"mode":"warn","whitelist":["Arbiter","Arbiter.inform","Canvas","Canvas.Prefetcher.addStaticResource","Canvas.Prefetcher.setCollectionMode","Canvas.getPageInfo","Canvas.hideFlashElement","Canvas.scrollTo","Canvas.setAutoGrow","Canvas.setDoneLoading","Canvas.setSize","Canvas.setUrlHandler","Canvas.showFlashElement","Canvas.startTimer","Canvas.stopTimer","Data","Data.query","Data.waitOn","Dom","Dom.addCssRules","Event","Event.subscribe","Event.unsubscribe","Insights","Insights.impression","Music","Music.flashCallback","Music.init","Music.send","Payment","Payment.init","Payment.setSize","UA","UA.nativeApp","XD","XD.onMessage","XFBML","XFBML.parse","api","getAccessToken","getAuthResponse","getLoginStatus","getUserID","init","login","logout","ui","ThirdPartyProvider","ThirdPartyProvider.sendData","ThirdPartyProvider.init","ui:subscribe","Data.query:wait","Data.waitOn:wait","Frictionless.isAllowed","XFBML.RecommendationsBar","XFBML.RecommendationsBar.markRead"]},"initSitevars":{"enableMobileComments":1,"iframePermissions":{"read_stream":false,"manage_mailbox":false,"manage_friendlists":false,"read_mailbox":false,"publish_checkins":true,"status_update":true,"photo_upload":true,"video_upload":true,"sms":false,"create_event":true,"rsvp_event":true,"offline_access":true,"email":true,"xmpp_login":false,"create_note":true,"share_item":true,"export_stream":false,"publish_stream":true,"publish_likes":true,"ads_management":false,"contact_email":true,"access_private_data":false,"read_insights":false,"read_requests":false,"read_friendlists":true,"manage_pages":false,"physical_login":false,"manage_groups":false,"read_deals":false}}});__d("CssConfig",[],{"rules":".fb_hidden{position:absolute;top:-10000px;z-index:10001}\n.fb_invisible{display:none}\n.fb_reset{background:none;border-spacing:0;border:0;color:#000;cursor:auto;direction:ltr;font-family:\"lucida grande\", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}\n.fb_link img{border:none}\n.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}\n.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px}\n.fb_dialog_content{background:#fff;color:#333}\n.fb_dialog_close_icon{background:url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v2\/yA\/x\/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;_background-image:url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v2\/y6\/x\/s816eWC-2sl.gif);cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px;top:8px\\9;right:7px\\9}\n.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}\n.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}\n.fb_dialog_close_icon:hover{background:url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v2\/yA\/x\/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent;_background-image:url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v2\/y6\/x\/s816eWC-2sl.gif)}\n.fb_dialog_close_icon:active{background:url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v2\/yA\/x\/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent;_background-image:url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v2\/y6\/x\/s816eWC-2sl.gif)}\n.fb_dialog_loader{background-color:#f2f2f2;border:1px solid #606060;font-size:24px;padding:20px}\n.fb_dialog_top_left,\n.fb_dialog_top_right,\n.fb_dialog_bottom_left,\n.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}\n\/* \u0040noflip *\/\n.fb_dialog_top_left{background:url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v2\/yR\/x\/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}\n\/* \u0040noflip *\/\n.fb_dialog_top_right{background:url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v2\/yR\/x\/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}\n\/* \u0040noflip *\/\n.fb_dialog_bottom_left{background:url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v2\/yR\/x\/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}\n\/* \u0040noflip *\/\n.fb_dialog_bottom_right{background:url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v2\/yR\/x\/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}\n.fb_dialog_vert_left,\n.fb_dialog_vert_right,\n.fb_dialog_horiz_top,\n.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}\n.fb_dialog_vert_left,\n.fb_dialog_vert_right{width:10px;height:100\u0025}\n.fb_dialog_vert_left{margin-left:-10px}\n.fb_dialog_vert_right{right:0;margin-right:-10px}\n.fb_dialog_horiz_top,\n.fb_dialog_horiz_bottom{width:100\u0025;height:10px}\n.fb_dialog_horiz_top{margin-top:-10px}\n.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}\n.fb_dialog_iframe{line-height:0}\n.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #3b5998;color:#fff;font-size:14px;font-weight:bold;margin:0}\n.fb_dialog_content .dialog_title > span{background:url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v2\/yD\/x\/Cou7n-nqK52.gif)\nno-repeat 5px 50\u0025;float:left;padding:5px 0 7px 26px}\nbody.fb_hidden{-webkit-transform:none;height:100\u0025;margin:0;left:-10000px;overflow:visible;position:absolute;top:-10000px;width:100\u0025\n}\n.fb_dialog.fb_dialog_mobile.loading{background:url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v2\/yc\/x\/3rhSv5V8j3o.gif)\nwhite no-repeat 50\u0025 50\u0025;min-height:100\u0025;min-width:100\u0025;overflow:hidden;position:absolute;top:0;z-index:10001}\n.fb_dialog.fb_dialog_mobile.loading.centered{max-height:590px;min-height:590px;max-width:500px;min-width:500px}\n#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;left:0;top:0;width:100\u0025;min-height:100\u0025;z-index:10000}\n#fb-root #fb_dialog_ipad_overlay.hidden{display:none}\n.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}\n.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0 0, 0 100\u0025, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}\n.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100\u0025\n}\n.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px\n}\n.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px\n}\n.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0 0, 0 100\u0025, from(#4966A6),\ncolor-stop(0.5, #355492), to(#2A4887));border:1px solid #29447e;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset,\nrgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}\n.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}\n.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}\n.fb_dialog_content .dialog_content{background:url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v2\/yJ\/x\/jKEcVPZFk-2.gif) no-repeat 50\u0025 50\u0025;border:1px solid #555;border-bottom:0;border-top:0;height:150px}\n.fb_dialog_content .dialog_footer{background:#f2f2f2;border:1px solid #555;border-top-color:#ccc;height:40px}\n#fb_dialog_loader_close{float:left}\n.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}\n.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}\n.fb_iframe_widget{position:relative;display:-moz-inline-block;display:inline-block}\n.fb_iframe_widget iframe{position:absolute}\n.fb_iframe_widget_lift{z-index:1}\n.fb_iframe_widget span{position:relative;display:inline-block;vertical-align:text-bottom;text-align:justify}\n.fb_hide_iframes iframe{position:relative;left:-10000px}\n.fb_iframe_widget_loader{position:relative;display:inline-block}\n.fb_iframe_widget_fluid{display:inline}\n.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}\n.fb_iframe_widget_loader .FB_Loader{background:url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v2\/yJ\/x\/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50\u0025;z-index:4}\n.fb_button_simple,\n.fb_button_simple_rtl{background-image:url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v2\/yH\/x\/eIpbnVKI9lR.png);background-repeat:no-repeat;cursor:pointer;outline:none;text-decoration:none}\n.fb_button_simple_rtl{background-position:right 0}\n.fb_button_simple .fb_button_text{margin:0 0 0 20px;padding-bottom:1px}\n.fb_button_simple_rtl .fb_button_text{margin:0 10px 0 0}\na.fb_button_simple:hover .fb_button_text,\na.fb_button_simple_rtl:hover .fb_button_text,\n.fb_button_simple:hover .fb_button_text,\n.fb_button_simple_rtl:hover .fb_button_text{text-decoration:underline}\n.fb_button,\n.fb_button_rtl{background:#29447e url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v2\/yl\/x\/FGFbc80dUKj.png);background-repeat:no-repeat;cursor:pointer;display:inline-block;padding:0 0 0 1px;text-decoration:none;outline:none}\n.fb_button .fb_button_text,\n.fb_button_rtl .fb_button_text{background:#5f78ab url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v2\/yl\/x\/FGFbc80dUKj.png);border-top:solid 1px #879ac0;border-bottom:solid 1px #1a356e;color:#fff;display:block;font-family:\"lucida grande\",tahoma,verdana,arial,sans-serif;font-weight:bold;padding:2px 6px 3px 6px;margin:1px 1px 0 21px;text-shadow:none}\na.fb_button,\na.fb_button_rtl,\n.fb_button,\n.fb_button_rtl{text-decoration:none}\na.fb_button:active .fb_button_text,\na.fb_button_rtl:active .fb_button_text,\n.fb_button:active .fb_button_text,\n.fb_button_rtl:active .fb_button_text{border-bottom:solid 1px #29447e;border-top:solid 1px #45619d;background:#4f6aa3;text-shadow:none}\n.fb_button_xlarge,\n.fb_button_xlarge_rtl{background-position:left -60px;font-size:24px;line-height:30px}\n.fb_button_xlarge .fb_button_text{padding:3px 8px 3px 12px;margin-left:38px}\na.fb_button_xlarge:active{background-position:left -99px}\n.fb_button_xlarge_rtl{background-position:right -268px}\n.fb_button_xlarge_rtl .fb_button_text{padding:3px 8px 3px 12px;margin-right:39px}\na.fb_button_xlarge_rtl:active{background-position:right -307px}\n.fb_button_large,\n.fb_button_large_rtl{background-position:left -138px;font-size:13px;line-height:16px}\n.fb_button_large .fb_button_text{margin-left:24px;padding:2px 6px 4px 6px}\na.fb_button_large:active{background-position:left -163px}\n.fb_button_large_rtl{background-position:right -346px}\n.fb_button_large_rtl .fb_button_text{margin-right:25px}\na.fb_button_large_rtl:active{background-position:right -371px}\n.fb_button_medium,\n.fb_button_medium_rtl{background-position:left -188px;font-size:11px;line-height:14px}\na.fb_button_medium:active{background-position:left -210px}\n.fb_button_medium_rtl{background-position:right -396px}\n.fb_button_text_rtl,\n.fb_button_medium_rtl .fb_button_text{padding:2px 6px 3px 6px;margin-right:22px}\na.fb_button_medium_rtl:active{background-position:right -418px}\n.fb_button_small,\n.fb_button_small_rtl{background-position:left -232px;font-size:10px;line-height:10px}\n.fb_button_small .fb_button_text{padding:2px 6px 3px;margin-left:17px}\na.fb_button_small:active,\n.fb_button_small:active{background-position:left -250px}\n.fb_button_small_rtl{background-position:right -440px}\n.fb_button_small_rtl .fb_button_text{padding:2px 6px;margin-right:18px}\na.fb_button_small_rtl:active{background-position:right -458px}\n.fb_share_count_wrapper{position:relative;float:left}\n.fb_share_count{background:#b0b9ec none repeat scroll 0 0;color:#333;font-family:\"lucida grande\", tahoma, verdana, arial, sans-serif;text-align:center}\n.fb_share_count_inner{background:#e8ebf2;display:block}\n.fb_share_count_right{margin-left:-1px;display:inline-block}\n.fb_share_count_right .fb_share_count_inner{border-top:solid 1px #e8ebf2;border-bottom:solid 1px #b0b9ec;margin:1px 1px 0 1px;font-size:10px;line-height:10px;padding:2px 6px 3px;font-weight:bold}\n.fb_share_count_top{display:block;letter-spacing:-1px;line-height:34px;margin-bottom:7px;font-size:22px;border:solid 1px #b0b9ec}\n.fb_share_count_nub_top{border:none;display:block;position:absolute;left:7px;top:35px;margin:0;padding:0;width:6px;height:7px;background-repeat:no-repeat;background-image:url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v2\/yP\/x\/bSOHtKbCGYI.png)}\n.fb_share_count_nub_right{border:none;display:inline-block;padding:0;width:5px;height:10px;background-repeat:no-repeat;background-image:url(https:\/\/s-static.ak.fbcdn.net\/rsrc.php\/v2\/yL\/x\/i_oIVTKMYsL.png);vertical-align:top;background-position:right 5px;z-index:10;left:2px;margin:0 2px 0 0;position:relative}\n.fb_share_no_count{display:none}\n.fb_share_size_Small .fb_share_count_right .fb_share_count_inner{font-size:10px}\n.fb_share_size_Medium .fb_share_count_right .fb_share_count_inner{font-size:11px;padding:2px 6px 3px;letter-spacing:-1px;line-height:14px}\n.fb_share_size_Large .fb_share_count_right .fb_share_count_inner{font-size:13px;line-height:16px;padding:2px 6px 4px;font-weight:normal;letter-spacing:-1px}\n.fb_share_count_hidden .fb_share_count_nub_top,\n.fb_share_count_hidden .fb_share_count_top,\n.fb_share_count_hidden .fb_share_count_nub_right,\n.fb_share_count_hidden .fb_share_count_right{visibility:hidden}\n.fb_connect_bar_container div,\n.fb_connect_bar_container span,\n.fb_connect_bar_container a,\n.fb_connect_bar_container img,\n.fb_connect_bar_container strong{background:none;border-spacing:0;border:0;direction:ltr;font-style:normal;font-variant:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal;vertical-align:baseline}\n.fb_connect_bar_container{position:fixed;left:0 !important;right:0 !important;height:42px !important;padding:0 25px !important;margin:0 !important;vertical-align:middle !important;border-bottom:1px solid #333 !important;background:#3b5998 !important;z-index:99999999 !important;overflow:hidden !important}\n.fb_connect_bar_container_ie6{position:absolute;top:expression(document.compatMode==\"CSS1Compat\"? document.documentElement.scrollTop+\"px\":body.scrollTop+\"px\")}\n.fb_connect_bar{position:relative;margin:auto;height:100\u0025;width:100\u0025;padding:6px 0 0 0 !important;background:none;color:#fff !important;font-family:\"lucida grande\", tahoma, verdana, arial, sans-serif !important;font-size:13px !important;font-style:normal !important;font-variant:normal !important;font-weight:normal !important;letter-spacing:normal !important;line-height:1 !important;text-decoration:none !important;text-indent:0 !important;text-shadow:none !important;text-transform:none !important;white-space:normal !important;word-spacing:normal !important}\n.fb_connect_bar a:hover{color:#fff}\n.fb_connect_bar .fb_profile img{height:30px;width:30px;vertical-align:middle;margin:0 6px 5px 0}\n.fb_connect_bar div a,\n.fb_connect_bar span,\n.fb_connect_bar span a{color:#bac6da;font-size:11px;text-decoration:none}\n.fb_connect_bar .fb_buttons{float:right;margin-top:7px}\n.fb_edge_widget_with_comment{position:relative;*z-index:1000}\n.fb_edge_widget_with_comment span.fb_edge_comment_widget{position:absolute}\n.fb_edge_widget_with_comment span.fb_send_button_form_widget{z-index:1}\n.fb_edge_widget_with_comment span.fb_send_button_form_widget .FB_Loader{left:0;top:1px;margin-top:6px;margin-left:0;background-position:50\u0025 50\u0025;background-color:#fff;height:150px;width:394px;border:1px #666 solid;border-bottom:2px solid #283e6c;z-index:1}\n.fb_edge_widget_with_comment span.fb_send_button_form_widget.dark .FB_Loader{background-color:#000;border-bottom:2px solid #ccc}\n.fb_edge_widget_with_comment span.fb_send_button_form_widget.siderender\n.FB_Loader{margin-top:0}\n.fbpluginrecommendationsbarleft,\n.fbpluginrecommendationsbarright{position:fixed !important;bottom:0;z-index:999}\n\/* \u0040noflip *\/\n.fbpluginrecommendationsbarleft{left:10px}\n\/* \u0040noflip *\/\n.fbpluginrecommendationsbarright{right:10px}\n","components":["fb.css.base","fb.css.dialog","fb.css.iframewidget","fb.css.button","fb.css.sharebutton","fb.css.connectbarwidget","fb.css.edgecommentwidget","fb.css.sendbuttonformwidget","fb.css.plugin.recommendationsbar"]});__d("ApiClientConfig",[],{"FlashRequest":{"swfUrl":"https:\/\/connect.facebook.net\/rsrc.php\/v1\/y5\/r\/SrnvQJBTxo-.swf"}});__d("CanvasPrefetcherConfig",[],{"blacklist":[144959615576466],"sampleRate":500});__d("PluginPipeConfig",[],{"threshold":0,"enabledApps":{"111476658864976":1,"cca6477272fc5cb805f85a84f20fca1d":1,"179150165472010":1}});__d("ConnectBarConfig",[],{"imgs":{"buttonUrl":"rsrc.php\/v2\/yY\/r\/h_Y6u1wrZPW.png","missingProfileUrl":"rsrc.php\/v2\/yo\/r\/UlIqmHJn-SK.gif"}});__d("ProfilePicConfig",[],{"defPicMap":{"pic":"rsrc.php\/v1\/yh\/r\/C5yt7Cqf3zU.jpg","pic_big":"rsrc.php\/v2\/yL\/r\/HsTZSDw4avx.gif","pic_big_with_logo":"rsrc.php\/v2\/y5\/r\/SRDCaeCL7hM.gif","pic_small":"rsrc.php\/v1\/yi\/r\/odA9sNLrE86.jpg","pic_small_with_logo":"rsrc.php\/v2\/yD\/r\/k1xiRXKnlGd.gif","pic_square":"rsrc.php\/v2\/yo\/r\/UlIqmHJn-SK.gif","pic_square_with_logo":"rsrc.php\/v2\/yX\/r\/9dYJBPDHXwZ.gif","pic_with_logo":"rsrc.php\/v2\/yu\/r\/fPPR9f2FJ3t.gif"}});
 __d("QueryString",[],function(global,require,requireDynamic,requireLazy,module,exports) {
 
 var QueryString = {
@@ -1305,14 +1311,17 @@ var QueryString = {
     var pairs = [];
     ES5(ES5('Object', 'keys', false,bag), 'forEach', true,function(key) {
       var value = bag[key];
-            if (typeof value === 'undefined') {
+      
+      if (typeof value === 'undefined') {
         return;
       }
-            if (value === null) {
+      
+      if (value === null) {
         pairs.push(key);
         return;
       }
-            pairs.push(encodeURIComponent(key) +
+      
+      pairs.push(encodeURIComponent(key) +
                  '=' +
                  encodeURIComponent(value));
     });
@@ -1351,6 +1360,40 @@ var QueryString = {
 module.exports = QueryString;
 
 });
+__d("copyProperties",[],function(global,require,requireDynamic,requireLazy,module,exports) {
+
+
+function copyProperties(obj, a, b, c, d, e, f) {
+  obj = obj || {};
+
+  if (__DEV__) {
+    if (f) {
+      throw new Error('Too many arguments passed to copyProperties');
+    }
+  }
+
+  var args = [a, b, c, d, e];
+  var ii = 0, v;
+  while (args[ii]) {
+    v = args[ii++];
+    for (var k in v) {
+      obj[k] = v[k];
+    }
+
+    
+    
+    if (v.hasOwnProperty && v.hasOwnProperty('toString') &&
+        (typeof v.toString != 'undefined') && (obj.toString !== v.toString)) {
+      obj.toString = v.toString;
+    }
+  }
+
+  return obj;
+}
+
+module.exports = copyProperties;
+
+});
 __d("ManagedError",[],function(global,require,requireDynamic,requireLazy,module,exports) {
 
 function ManagedError(message, innerError) {
@@ -1381,13 +1424,13 @@ module.exports = AssertionError;
 __d("sprintf",[],function(global,require,requireDynamic,requireLazy,module,exports) {
 
 
-function sprintf( str, argsdotdot)  {__t([str,'string','str']); return __t([function(){
+function sprintf(/*string*/ str, argsdotdot) /*string*/ {/*TC*/__t([str,'string','str']); return __t([function(){/*/TC*/
   argsdotdot = Array.prototype.slice.call(arguments, 1);
   var index = 0;
   return str.replace(/%s/g, function(match) {
     return argsdotdot[index++];
   });
-}.apply(this, arguments), 'string']);}
+/*TC*/}.apply(this, arguments), 'string']);/*/TC*/}
 
 module.exports = sprintf;
 
@@ -1399,15 +1442,15 @@ var AssertionError = require('AssertionError');
 var sprintf = require('sprintf');
 
 
-function assert(expression, message) {
+function assert(/*boolean*/ expression, /*string?*/ message) /*boolean*/ {/*TC*/__t([expression,'boolean','expression'],[message,'string?','message']); return __t([function(){/*/TC*/
   if (!expression) {
     throw new AssertionError(message);
   }
   return expression;
-}
+/*TC*/}.apply(this, arguments), 'boolean']);/*/TC*/}
 
 
-function assertType(type, expression, message) {
+function assertType(/*string*/ type, expression, /*string?*/ message) {/*TC*/__t([type,'string','type'],[message,'string?','message']);/*/TC*/
   var actualType;
 
   if (expression === undefined) {
@@ -1420,14 +1463,14 @@ function assertType(type, expression, message) {
   }
 
   assert(
-    ~ES5(type, 'indexOf', true,actualType),
+    ES5(type, 'indexOf', true,actualType) !== -1,
     message || sprintf('Expression is of type %s, not %s', actualType, type)
   );
   return expression;
 }
 
 
-function assertInstanceOf(type, expression, message) {
+function assertInstanceOf(/*function*/ type, expression, /*string?*/ message) {/*TC*/__t([type,'function','type'],[message,'string?','message']);/*/TC*/
   assert(
     expression instanceof type,
     message || 'Expression not instance of type'
@@ -1435,74 +1478,45 @@ function assertInstanceOf(type, expression, message) {
   return expression;
 }
 
+function define(/*string*/ type, /*function*/ test) {/*TC*/__t([type,'string','type'],[test,'function','test']);/*/TC*/
+  Assert['is' + type] = test;
+  Assert['maybe' + type] = function(expression, message) {
+    
+    if (expression != null) {
+      test(expression, message);
+    }
+  };
+}
+
 var Assert = {
   isInstanceOf: assertInstanceOf,
   isTrue      : assert,
   type        : assertType,
-  define      : function(type, fn) {
-    Assert.isString(type);
-    Assert.isFunction(fn);
-
+  define      : function(/*string*/ type, /*function*/ fn) {/*TC*/__t([type,'string','type'],[fn,'function','fn']);/*/TC*/
     type = type.substring(0, 1).toUpperCase() +
       type.substring(1).toLowerCase();
 
-    Assert['is' + type] = function(expression, message) {
+    define(type, function(expression, message) {
       assert(fn(expression), message);
-    };
+    });
   }
 };
 
-var TYPES = [
-  'Array',
-  'Boolean',
-  'Date',
-  'Function',
-  'Null',
-  'Number',
-  'Object',
-  'Regexp',
-  'String',
-  'Undefined'];
 
-var i = TYPES.length;
-while (i--) {
-  var type = TYPES[i];
-  Assert['is' + type] = ES5(assertType, 'bind', true,null, type.toLowerCase());
-}
+ES5(['Array',
+ 'Boolean',
+ 'Date',
+ 'Function',
+ 'Null',
+ 'Number',
+ 'Object',
+ 'Regexp',
+ 'String',
+ 'Undefined'], 'forEach', true,function(/*string*/ type) {/*TC*/__t([type,'string','type']);/*/TC*/
+   define(type, ES5(assertType, 'bind', true,null, type.toLowerCase()));
+ });
 
 module.exports = Assert;
-
-});
-__d("copyProperties",[],function(global,require,requireDynamic,requireLazy,module,exports) {
-
-
-function copyProperties(obj, a, b, c, d, e, f) {
-  obj = obj || {};
-
-  if (__DEV__) {
-    if (f) {
-      throw new Error('Too many arguments passed to copyProperties');
-    }
-  }
-
-  var args = [a, b, c, d, e];
-  var ii = 0, v;
-  while (args[ii]) {
-    v = args[ii++];
-    for (var k in v) {
-      obj[k] = v[k];
-    }
-
-            if (v.hasOwnProperty && v.hasOwnProperty('toString') &&
-        (typeof v.toString != 'undefined') && (obj.toString !== v.toString)) {
-      obj.toString = v.toString;
-    }
-  }
-
-  return obj;
-}
-
-module.exports = copyProperties;
 
 });
 __d("Type",["copyProperties","Assert"],function(global,require,requireDynamic,requireLazy,module,exports) {
@@ -1520,14 +1534,15 @@ function Type() {
 }
 
 
-function instanceOf(constructor, which) {
-  Assert.isFunction(constructor);
+function instanceOf(/*function*/ constructor, which) /*boolean*/ {/*TC*/__t([constructor,'function','constructor']); return __t([function(){/*/TC*/
 
-    if (which instanceof constructor) {
+  
+  if (which instanceof constructor) {
     return true;
   }
 
-    if (which instanceof Type) {
+  
+  if (which instanceof Type) {
     for (var i = 0; i < which.__mixins.length; i++) {
       if (which.__mixins[i] == constructor) {
         return true;
@@ -1536,82 +1551,92 @@ function instanceOf(constructor, which) {
   }
 
   return false;
-}
+/*TC*/}.apply(this, arguments), 'boolean']);/*/TC*/}
 
 
-function mixin(to, from) {
+function mixin(/*function*/ to, from) {/*TC*/__t([to,'function','to']);/*/TC*/
   var prototype = to.prototype;
 
-  if (Object.prototype.toString.call(from) != '[object Array]') {
+  if (!ES5('Array', 'isArray', false,from)) {
     from = [from];
   }
 
   for (var i = 0; i < from.length; i++) {
     var mixinFrom = from[i];
-        if(typeof mixinFrom == 'function') {
+    
+    if(typeof mixinFrom == 'function') {
       prototype.__mixins.push(mixinFrom);
       mixinFrom = mixinFrom.prototype;
     }
-        ES5(ES5('Object', 'keys', false,mixinFrom), 'forEach', true,function(key) {
+    
+    ES5(ES5('Object', 'keys', false,mixinFrom), 'forEach', true,function(key) {
       prototype[key] = mixinFrom[key];
     });
   }
 }
 
 
-function extend(from, prototype, mixins) {
+function extend(/*function?*/ from, /*object?*/ prototype, mixins)
+    /*function*/ {/*TC*/__t([from,'function?','from'],[prototype,'object?','prototype']); return __t([function(){/*/TC*/
   var constructor = prototype && prototype.hasOwnProperty('constructor')
     ? prototype.constructor
     : function() {this.parent.apply(this, arguments);};
 
   Assert.isFunction(constructor);
 
-    if (from && from.prototype instanceof Type === false) {
+  
+  if (from && from.prototype instanceof Type === false) {
     throw new Error('parent type does not inherit from Type');
   }
   from = from || Type;
 
-    var F = new Function();
+  
+  var F = new Function();
   F.prototype = from.prototype;
   constructor.prototype = new F();
   copyProperties(constructor.prototype, prototype);
 
-      constructor.prototype.__mixins = from.prototype.__mixins
+  
+  
+  constructor.prototype.__mixins = from.prototype.__mixins
     ? Array.prototype.slice.call(from.prototype.__mixins)
     : [];
 
-    if (mixins) {
+  
+  if (mixins) {
     mixin(constructor, mixins);
   }
 
-    constructor.prototype.parent = function() {
+  
+  constructor.prototype.parent = function() {
     this.parent = from.prototype.parent;
     from.apply(this, arguments);
   };
 
-    constructor.prototype.parentCall = function(method) {
+  
+  constructor.prototype.parentCall = function(/*string*/ method) {/*TC*/__t([method,'string','method']);/*/TC*/
     return from.prototype[method].apply(this,
       Array.prototype.slice.call(arguments, 1));
   };
 
-  constructor.extend = function(prototype, mixins) {
+  constructor.extend = function(/*object?*/ prototype, mixins) {/*TC*/__t([prototype,'object?','prototype']);/*/TC*/
     return extend(this, prototype, mixins);
   };
   return constructor;
-}
+/*TC*/}.apply(this, arguments), 'function']);/*/TC*/}
 
 copyProperties(Type.prototype, {
-  instanceOf: function(type) {
+  instanceOf: function(/*function*/ type) /*boolean*/ {/*TC*/__t([type,'function','type']); return __t([function(){/*/TC*/
     return instanceOf(type, this);
-  }
+  /*TC*/}.apply(this, arguments), 'boolean']);/*/TC*/}
 });
 
 copyProperties(Type, {
-  extend: function(prototype, mixins) {
+  extend: function(prototype, mixins) /*function*/ {/*TC*/ return __t([function(){/*/TC*/
     return typeof prototype === 'function'
       ? extend.apply(null, arguments)
       : extend(null, prototype, mixins);
-  },
+  /*TC*/}.apply(this, arguments), 'function']);/*/TC*/},
   instanceOf: instanceOf
 });
 
@@ -1627,7 +1652,7 @@ function ObservableMixin() {
 ObservableMixin.prototype = {
 
   
-  inform: function( what ) {__t([what,'string','what']);
+  inform: function(/*string*/ what /*, args*/) {/*TC*/__t([what,'string','what']);/*/TC*/
 
     var args = Array.prototype.slice.call(arguments, 1);
     var list = Array.prototype.slice.call(this.getSubscribers(what));
@@ -1636,21 +1661,23 @@ ObservableMixin.prototype = {
       try {
         list[i].apply(this, args);
       } catch(e) {
-                        setTimeout(function() { throw e; }, 0);
+        
+        
+        setTimeout(function() { throw e; }, 0);
       }
     }
     return this;
   },
 
   
-  getSubscribers: function( toWhat)  {__t([toWhat,'string','toWhat']); return __t([function(){
+  getSubscribers: function(/*string*/ toWhat) /*array*/ {/*TC*/__t([toWhat,'string','toWhat']); return __t([function(){/*/TC*/
 
     return this.__observableEvents[toWhat] ||
       (this.__observableEvents[toWhat] = []);
-  }.apply(this, arguments), 'array']);},
+  /*TC*/}.apply(this, arguments), 'array']);/*/TC*/},
 
   
-  clearSubscribers: function( toWhat) {__t([toWhat,'string','toWhat']);
+  clearSubscribers: function(/*string*/ toWhat) {/*TC*/__t([toWhat,'string','toWhat']);/*/TC*/
 
     if (toWhat) {
       this.__observableEvents[toWhat] = [];
@@ -1665,7 +1692,7 @@ ObservableMixin.prototype = {
   },
 
   
-  subscribe: function( toWhat,  withWhat) {__t([toWhat,'string','toWhat'],[withWhat,'function','withWhat']);
+  subscribe: function(/*string*/ toWhat, /*function*/ withWhat) {/*TC*/__t([toWhat,'string','toWhat'],[withWhat,'function','withWhat']);/*/TC*/
 
     var list = this.getSubscribers(toWhat);
     list.push(withWhat);
@@ -1673,7 +1700,7 @@ ObservableMixin.prototype = {
   },
 
   
-  unsubscribe: function( toWhat,  withWhat) {__t([toWhat,'string','toWhat'],[withWhat,'function','withWhat']);
+  unsubscribe: function(/*string*/ toWhat, /*function*/ withWhat) {/*TC*/__t([toWhat,'string','toWhat'],[withWhat,'function','withWhat']);/*/TC*/
 
     var list = this.getSubscribers(toWhat);
     for (var i = 0; i < list.length; i++) {
@@ -1686,7 +1713,7 @@ ObservableMixin.prototype = {
   },
 
   
-  monitor: function( toWhat,  withWhat) {__t([toWhat,'string','toWhat'],[withWhat,'function','withWhat']);
+  monitor: function(/*string*/ toWhat, /*function*/ withWhat) {/*TC*/__t([toWhat,'string','toWhat'],[withWhat,'function','withWhat']);/*/TC*/
     if (!withWhat()) {
       var monitor = ES5(function(value) {
         if (withWhat.apply(withWhat, arguments)) {
@@ -1704,24 +1731,25 @@ ObservableMixin.prototype = {
 module.exports = ObservableMixin;
 
 });
-__d("sdk.Model",["Assert","Type","ObservableMixin"],function(global,require,requireDynamic,requireLazy,module,exports) {
+__d("sdk.Model",["Type","ObservableMixin"],function(global,require,requireDynamic,requireLazy,module,exports) {
 
-var Assert = require('Assert');
 var Type = require('Type');
 var ObservableMixin = require('ObservableMixin');
 
 var Model = Type.extend({
-  constructor: function(properties) {
-    Assert.isObject(properties);
+  constructor: function(/*object*/ properties) {/*TC*/__t([properties,'object','properties']);/*/TC*/
     this.parent();
 
-        var propContainer = {};
+    
+    var propContainer = {};
     var model = this;
 
-    ES5(ES5('Object', 'keys', false,properties), 'forEach', true,function(name) {
-            propContainer[name] = properties[name];
+    ES5(ES5('Object', 'keys', false,properties), 'forEach', true,function(/*string*/ name) {/*TC*/__t([name,'string','name']);/*/TC*/
+      
+      propContainer[name] = properties[name];
 
-            model['set' + name] = function(value) {
+      
+      model['set' + name] = function(value) {
         if (value === propContainer[name]) {
           return this;
         }
@@ -1730,7 +1758,8 @@ var Model = Type.extend({
         return model;
       };
 
-            model['get' + name] = function() {
+      
+      model['get' + name] = function() {
         return propContainer[name];
       };
     });
@@ -1771,10 +1800,10 @@ copyProperties(Runtime, {
 
   ENVIRONMENTS: ENVIRONMENTS,
 
-  isEnvironment: function(target) {
+  isEnvironment: function(/*number*/ target) /*boolean*/ {/*TC*/__t([target,'number','target']); return __t([function(){/*/TC*/
     var environment = this.getEnvironment();
     return (target | environment) === environment;
-  }
+  /*TC*/}.apply(this, arguments), 'boolean']);/*/TC*/}
 });
 
 (function() {
@@ -1784,7 +1813,8 @@ copyProperties(Runtime, {
       ? ENVIRONMENTS.CANVAS
       : ENVIRONMENTS.UNKNOWN;
 
-    if ((environment | ENVIRONMENTS.PAGETAB) === environment) {
+  
+  if ((environment | ENVIRONMENTS.PAGETAB) === environment) {
     environment = environment | ENVIRONMENTS.CANVAS;
   }
   Runtime.setEnvironment(environment);
@@ -1799,16 +1829,20 @@ var QueryString = require('QueryString');
 var Runtime = require('sdk.Runtime');
 
 
+
 var domain = null;
 
 
-function setRaw(prefix, val, ts) {
+function setRaw(/*string*/ prefix, /*string*/ val, /*number*/ ts) {/*TC*/__t([prefix,'string','prefix'],[val,'string','val'],[ts,'number','ts']);/*/TC*/
   prefix = prefix + Runtime.getClientID();
 
   var useDomain = domain && domain !== '.';
-    if (useDomain) {
-        document.cookie = prefix + '=; expires=Wed, 04 Feb 2004 08:00:00 GMT;';
-        document.cookie = prefix  + '=; expires=Wed, 04 Feb 2004 08:00:00 GMT;' +
+  
+  if (useDomain) {
+    
+    document.cookie = prefix + '=; expires=Wed, 04 Feb 2004 08:00:00 GMT;';
+    
+    document.cookie = prefix  + '=; expires=Wed, 04 Feb 2004 08:00:00 GMT;' +
       'domain=' + location.hostname + ';';
   }
 
@@ -1819,18 +1853,19 @@ function setRaw(prefix, val, ts) {
     (useDomain ? '; domain=' + domain : '');
 }
 
-function getRaw(prefix) {
+function getRaw(/*string*/ prefix) /*string?*/ {/*TC*/__t([prefix,'string','prefix']); return __t([function(){/*/TC*/
   prefix = prefix + Runtime.getClientID();
   var regExp = new RegExp('\\b' + prefix + '=([^;]*)\\b');
   return regExp.test(document.cookie)
     ? RegExp.$1
     : null;
-}
+/*TC*/}.apply(this, arguments), 'string?']);/*/TC*/}
 
 var Cookie = {
-  setDomain: function(val) {
+  setDomain: function(/*string?*/ val) {/*TC*/__t([val,'string?','val']);/*/TC*/
     domain = val;
-        var meta  = QueryString.encode({
+    
+    var meta  = QueryString.encode({
       base_domain: domain && domain !== '.' ? domain : ''
     });
     var expiration = new Date();
@@ -1838,29 +1873,32 @@ var Cookie = {
     setRaw('fbm_', meta, expiration.getTime());
   },
 
-  getDomain: function() {
+  getDomain: function() /*string?*/ {/*TC*/ return __t([function(){/*/TC*/
     return domain;
-  },
+  /*TC*/}.apply(this, arguments), 'string?']);/*/TC*/},
 
   
-  loadMeta: function() {
+  loadMeta: function() /*object?*/ {/*TC*/ return __t([function(){/*/TC*/
     var cookie = getRaw('fbm_');
     if (cookie) {
-            var meta = QueryString.decode(cookie);
+      
+      var meta = QueryString.decode(cookie);
       if (!domain) {
-                domain = meta.base_domain;
+        
+        domain = meta.base_domain;
       }
       return meta;
     }
-  },
+  /*TC*/}.apply(this, arguments), 'object?']);/*/TC*/},
 
   
-  loadSignedRequest: function() {
+  loadSignedRequest: function() /*string?*/ {/*TC*/ return __t([function(){/*/TC*/
     return getRaw('fbsr_');
-  },
+  /*TC*/}.apply(this, arguments), 'string?']);/*/TC*/},
 
   
-  setSignedRequestCookie: function(signedRequest, expiration) {
+  setSignedRequestCookie: function(/*string*/ signedRequest,
+      /*number*/ expiration) {/*TC*/__t([signedRequest,'string','signedRequest'],[expiration,'number','expiration']);/*/TC*/
     if (!signedRequest) {
       throw new Error('Value passed to Cookie.setSignedRequestCookie ' +
                       'was empty.');
@@ -1893,7 +1931,10 @@ __d("sdk.createIframe",["copyProperties","guid"],function(global,require,require
 var copyProperties = require('copyProperties');
 var guid = require('guid');
 
-var hasNamePropertyBug = function() {
+
+
+
+var hasNamePropertyBug = function() /*boolean*/ {/*TC*/ return __t([function(){/*/TC*/
     var form = document.createElement("form"),
         input = form.appendChild(document.createElement("input")),
         hasBug;
@@ -1902,9 +1943,9 @@ var hasNamePropertyBug = function() {
     form = input = null;
     hasNamePropertyBug = function() { return hasBug; };
     return hasBug;
-};
+/*TC*/}.apply(this, arguments), 'boolean']);/*/TC*/};
 
-function createIframe(opts) {
+function createIframe(/*object*/ opts) /*DOMElement*/ {/*TC*/__t([opts,'object','opts']); return __t([function(){/*/TC*/
   var frame = hasNamePropertyBug()
     ? document.createElement('<iframe name="' + opts.name + '"/>')
     : document.createElement("iframe");
@@ -1913,27 +1954,36 @@ function createIframe(opts) {
     copyProperties(frame.style, opts.style);
   }
   frame.name = frame.id = opts.name;
-            frame.src = "javascript:false";
+  
+  
+  
+  
+  
+  frame.src = "javascript:false";
   opts.root.appendChild(frame);
-      frame.src = opts.url;
+  
+  
+  frame.src = opts.url;
   return frame;
-}
+/*TC*/}.apply(this, arguments), 'DOMElement']);/*/TC*/}
 
 module.exports = createIframe;
 
 });
 __d("DOMWrapper",[],function(global,require,requireDynamic,requireLazy,module,exports) {
-
+/*global self:true*/
 var rootElement,
     windowRef;
 
+
+
 var DOMWrapper = {
-  setRoot: function(root) {
+  setRoot: function(/*DOMElement?*/ root) {/*TC*/__t([root,'DOMElement?','root']);/*/TC*/
     rootElement = root;
   },
-  getRoot: function() {
+  getRoot: function() /*DOMElement*/ {/*TC*/ return __t([function(){/*/TC*/
     return rootElement || document.body;
-  },
+  /*TC*/}.apply(this, arguments), 'DOMElement']);/*/TC*/},
   setWindow: function(win) {
     windowRef = win;
   },
@@ -1951,11 +2001,15 @@ __d("UserAgent",[],function(global,require,requireDynamic,requireLazy,module,exp
 
 var _populated = false;
 
+
 var _ie, _firefox, _opera, _safari, _chrome;
+
 
 var _osx, _windows, _linux, _android;
 
+
 var _win64;
+
 
 var _iphone, _ipad, _native;
 
@@ -1968,7 +2022,11 @@ function _populate() {
 
   _populated = true;
 
-          var uas = navigator.userAgent;
+  
+  
+  
+  
+  var uas = navigator.userAgent;
   var agent = /(?:MSIE.(\d+\.\d+))|(?:(?:Firefox|GranParadiso|Iceweasel).(\d+\.\d+))|(?:Opera(?:.+Version.|.)(\d+\.\d+))|(?:AppleWebKit.(\d+(?:\.\d+)?))/.exec(uas);
   var os    = /(Mac OS X)|(Windows)|(Linux)/.exec(uas);
 
@@ -1978,18 +2036,27 @@ function _populate() {
   _native = /FBAN\/\w+;/i.exec(uas);
   _mobile = /Mobile/i.exec(uas);
 
-            _win64 = !!(/Win64/.exec(uas));
+  
+  
+  
+  
+  
+  _win64 = !!(/Win64/.exec(uas));
 
   if (agent) {
     _ie = agent[1] ? parseFloat(agent[1]) : NaN;
-        if (_ie && document.documentMode) {
+    
+    if (_ie && document.documentMode) {
       _ie = document.documentMode;
     }
     _firefox = agent[2] ? parseFloat(agent[2]) : NaN;
     _opera   = agent[3] ? parseFloat(agent[3]) : NaN;
     _safari  = agent[4] ? parseFloat(agent[4]) : NaN;
     if (_safari) {
-                        agent = /(?:Chrome\/(\d+\.\d+))/.exec(uas);
+      
+      
+      
+      agent = /(?:Chrome\/(\d+\.\d+))/.exec(uas);
       _chrome = agent && agent[1] ? parseFloat(agent[1]) : NaN;
     } else {
       _chrome = NaN;
@@ -2000,7 +2067,12 @@ function _populate() {
 
   if (os) {
     if (os[1]) {
-                                    var ver = /(?:Mac OS X (\d+(?:[._]\d+)?))/.exec(uas);
+      
+      
+      
+      
+      
+      var ver = /(?:Mac OS X (\d+(?:[._]\d+)?))/.exec(uas);
 
       _osx = ver ? parseFloat(ver[1].replace('_', '.')) : true;
     } else {
@@ -2075,7 +2147,8 @@ var UserAgent = {
   },
 
   nativeApp: function() {
-        return _populate() || _native;
+    
+    return _populate() || _native;
   },
 
   android: function() {
@@ -2095,8 +2168,14 @@ __d("sdk.getContextType",["UserAgent","sdk.Runtime"],function(global,require,req
 var UserAgent = require('UserAgent');
 var Runtime = require('sdk.Runtime');
 
-function getContextType() {
-              if (UserAgent.nativeApp()) {
+function getContextType() /*number*/ {/*TC*/ return __t([function(){/*/TC*/
+  
+  
+  
+  
+  
+  
+  if (UserAgent.nativeApp()) {
     return 3;
   }
   if (UserAgent.mobile()) {
@@ -2106,14 +2185,14 @@ function getContextType() {
     return 5;
   }
   return 1;
-}
+/*TC*/}.apply(this, arguments), 'number']);/*/TC*/}
 
 module.exports = getContextType;
 
 });
 __d("Log",["sprintf"],function(global,require,requireDynamic,requireLazy,module,exports) {
 
-
+/*globals console */
 
 var sprintf = require('sprintf');
 
@@ -2124,7 +2203,7 @@ var Level = {
   ERROR    : 0
 };
 
-function doLog(level, name ) {
+function doLog(level, name/*, args*/ ) {
   var args = Array.prototype.slice.call(arguments, 2);
   var msg = sprintf.apply(null, args);
   var console = window.console;
@@ -2154,6 +2233,7 @@ __d("Base64",[],function(global,require,requireDynamic,requireLazy,module,export
 
 
 
+
 var en =
   'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
 function en3(c) {
@@ -2162,6 +2242,9 @@ function en3(c) {
     en.charCodeAt(c >>> 18), en.charCodeAt((c >>> 12) & 63),
     en.charCodeAt((c >>> 6) & 63), en.charCodeAt(c & 63));
 }
+
+
+
 
 var de =
   '>___?456789:;<=_______' +
@@ -2177,17 +2260,20 @@ function de4(c) {
 
 var Base64 = {
   encode: function(s) {
-        s = unescape(encodeURI(s));
+    
+    s = unescape(encodeURI(s));
     var i = (s.length + 2) % 3;
     s = (s + '\0\0'.slice(i)).replace(/[\s\S]{3}/g, en3);
     return s.slice(0, s.length + i - 2) + '=='.slice(i);
   },
   decode: function(s) {
-        s = s.replace(/[^A-Za-z0-9+\/]/g, '');
+    
+    s = s.replace(/[^A-Za-z0-9+\/]/g, '');
     var i = (s.length + 3) & 3;
     s = (s + 'AAA'.slice(i)).replace(/..../g, de4);
     s = s.slice(0, s.length + i - 3);
-        try { return decodeURIComponent(escape(s)); }
+    
+    try { return decodeURIComponent(escape(s)); }
     catch (_) { throw new Error('Not valid UTF-8'); }
   },
   encodeObject: function(obj) {
@@ -2196,7 +2282,8 @@ var Base64 = {
   decodeObject: function(b64) {
     return ES5('JSON', 'parse', false,Base64.decode(b64));
   },
-    encodeNums: function(l) {
+  
+  encodeNums: function(l) {
     return String.fromCharCode.apply(String, ES5(l, 'map', true,function(val) {
       return en.charCodeAt((val | -(val > 63)) & -(val > 0) & 63);
     }));
@@ -2210,15 +2297,16 @@ __d("sdk.SignedRequest",["Base64"],function(global,require,requireDynamic,requir
 
 var Base64 = require('Base64');
 
-function parse(signed_request) {
+function parse(/*string?*/ signed_request) /*object?*/ {/*TC*/__t([signed_request,'string?','signed_request']); return __t([function(){/*/TC*/
   if (!signed_request) {
     return null;
   }
 
-    var payload = signed_request.split('.', 2)[1]
+  
+  var payload = signed_request.split('.', 2)[1]
     .replace(/\-/g, '+').replace(/\_/g, '/');
   return Base64.decodeObject(payload);
-}
+/*TC*/}.apply(this, arguments), 'object?']);/*/TC*/}
 
 
 var SignedRequest = {
@@ -2234,61 +2322,81 @@ var UrlMapConfig = requireDynamic('UrlMapConfig');
 
 var UrlMap = {
   
-  resolve: function(key, https) {
+  resolve: function(/*string*/ key, /*boolean?*/ https) /*string*/ {/*TC*/__t([key,'string','key'],[https,'boolean?','https']); return __t([function(){/*/TC*/
     var protocol = typeof https == 'undefined'
       ? location.protocol.replace(':', '')
       : https ? 'https' : 'http';
 
-        if (key in UrlMapConfig) {
+    
+    if (key in UrlMapConfig) {
       return protocol + '://' + UrlMapConfig[key];
     }
 
-        if (typeof https == 'undefined' && key + '_' + protocol in UrlMapConfig) {
+    
+    if (typeof https == 'undefined' && key + '_' + protocol in UrlMapConfig) {
       return protocol + '://' + UrlMapConfig[key + '_' + protocol];
     }
 
-        if (https !== true && key + '_http' in UrlMapConfig) {
+    
+    if (https !== true && key + '_http' in UrlMapConfig) {
       return 'http://' + UrlMapConfig[key + '_http'];
     }
 
-        if (https !== false && key + '_https' in UrlMapConfig) {
+    
+    if (https !== false && key + '_https' in UrlMapConfig) {
       return 'https://' + UrlMapConfig[key + '_https'];
     }
-  }
+  /*TC*/}.apply(this, arguments), 'string']);/*/TC*/}
 };
 
 module.exports = UrlMap;
 
 });
-__d("URL",["copyProperties","QueryString","Log"],function(global,require,requireDynamic,requireLazy,module,exports) {
+__d("URL",["Assert","copyProperties","QueryString","Log"],function(global,require,requireDynamic,requireLazy,module,exports) {
 
+var Assert = require('Assert');
 var copyProperties = require('copyProperties');
 var QueryString = require('QueryString');
 var Log = require('Log');
 
+
+
 var urlRe = new RegExp(
-  '(' +     '(((\\w+):)?//)' +     '(.*?@)?' +     '([^~/?#:]+)' +     '(:(\\d+))?' +   ')?' +
-  '([^\\?$#]+)?' +   '(\\?([^$#]+))?' +   '(#([^$]+))?' );
+  '(' + 
+    '(((\\w+):)?//)' + 
+    '(.*?@)?' + 
+    '([^~/?#:]+)' + 
+    '(:(\\d+))?' + 
+  ')?' +
+  '([^\\?$#]+)?' + 
+  '(\\?([^$#]+))?' + 
+  '(#([^$]+))?' 
+);
+
 
 var bannedRe = /[\0\\]/;
+
 var unsafeRe = /[^\w\-\.,;\/?:@=&%#$~+!*'\[\]()]+/g;
+
 var domainRe = /^[a-z0-9.][a-z0-9\-\.]+[a-z0-9.]$/;
+
 var facebookRe = /\.facebook\.com$/;
 
 
-function URL(url) {
-  if (typeof url != 'string') {
-    throw new TypeError('The passed argument was of invalid type.');
-  }
+function URL(/*string*/ url) {/*TC*/__t([url,'string','url']);/*/TC*/
+  Assert.isString(url, 'The passed argument was of invalid type.');
+
   if (bannedRe.test(url)) {
     throw new URIError('The passed argument could not be parsed as a url.');
   }
 
-    if (this instanceof URL === false) {
+  
+  if (this instanceof URL === false) {
     return new URL(url);
   }
 
-    var match = url
+  
+  var match = url
     .replace(unsafeRe, function(m) {
       Log.warn('Escaping unescaped character \\x%s from "%s"',
         m.charCodeAt(0).toString(16), url);
@@ -2300,7 +2408,10 @@ function URL(url) {
     throw new URIError('The passed argument could not be parsed as a url.');
   }
 
-        var useDefaults = !!location.hostname;
+  
+  
+  
+  var useDefaults = !!location.hostname;
 
   this.setProtocol(match[4] ||
     (useDefaults ? location.protocol.replace(/:/, '') : ''));
@@ -2314,7 +2425,8 @@ function URL(url) {
     this._path = '/' + this._path;
   }
 
-    if (this._domain &&
+  
+  if (this._domain &&
       !domainRe.test(decodeURIComponent(this._domain.toLowerCase()))) {
     Log.error('Invalid characters found in domain name: %s', this._domain);
     throw new URIError('Domain contained invalid characters.');
@@ -2324,90 +2436,90 @@ function URL(url) {
 copyProperties(URL.prototype, {
   constructor : URL,
 
-  getProtocol: function() {
+  getProtocol: function() /*string*/ {/*TC*/ return __t([function(){/*/TC*/
     return this._protocol;
-  },
-  setProtocol: function(protocol) {
+  /*TC*/}.apply(this, arguments), 'string']);/*/TC*/},
+  setProtocol: function(/*string*/ protocol) /*object*/ {/*TC*/__t([protocol,'string','protocol']); return __t([function(){/*/TC*/
     this._protocol = protocol;
     return this;
-  },
+  /*TC*/}.apply(this, arguments), 'object']);/*/TC*/},
 
-  getDomain: function() {
+  getDomain: function() /*string*/ {/*TC*/ return __t([function(){/*/TC*/
     return this._domain;
-  },
-  setDomain: function(domain) {
+  /*TC*/}.apply(this, arguments), 'string']);/*/TC*/},
+  setDomain: function(/*string*/ domain) /*object*/ {/*TC*/__t([domain,'string','domain']); return __t([function(){/*/TC*/
     this._domain = domain;
     return this;
-  },
+  /*TC*/}.apply(this, arguments), 'object']);/*/TC*/},
 
-  getPort: function() {
+  getPort: function() /*string*/ {/*TC*/ return __t([function(){/*/TC*/
     return this._port;
-  },
-  setPort: function(port) {
+  /*TC*/}.apply(this, arguments), 'string']);/*/TC*/},
+  setPort: function(port) /*object*/ {/*TC*/ return __t([function(){/*/TC*/
     this._port = port;
     return this;
-  },
+  /*TC*/}.apply(this, arguments), 'object']);/*/TC*/},
 
-  getPath: function() {
+  getPath: function() /*string*/ {/*TC*/ return __t([function(){/*/TC*/
     return this._path;
-  },
-  setPath: function(path) {
+  /*TC*/}.apply(this, arguments), 'string']);/*/TC*/},
+  setPath: function(path) /*object*/ {/*TC*/ return __t([function(){/*/TC*/
     this._path = path;
     return this;
-  },
+  /*TC*/}.apply(this, arguments), 'object']);/*/TC*/},
 
-  getSearch: function() {
+  getSearch: function() /*string*/ {/*TC*/ return __t([function(){/*/TC*/
     return this._search;
-  },
-  setSearch: function(search) {
+  /*TC*/}.apply(this, arguments), 'string']);/*/TC*/},
+  setSearch: function(search) /*object*/ {/*TC*/ return __t([function(){/*/TC*/
     this._search = search;
     return this;
-  },
+  /*TC*/}.apply(this, arguments), 'object']);/*/TC*/},
 
-  getFragment: function() {
+  getFragment: function() /*string*/ {/*TC*/ return __t([function(){/*/TC*/
     return this._fragment;
-  },
-  setFragment: function(fragment) {
+  /*TC*/}.apply(this, arguments), 'string']);/*/TC*/},
+  setFragment: function(fragment) /*object*/ {/*TC*/ return __t([function(){/*/TC*/
     this._fragment = fragment;
     return this;
-  },
+  /*TC*/}.apply(this, arguments), 'object']);/*/TC*/},
 
-  getParsedSearch: function() {
+  getParsedSearch: function() /*object*/ {/*TC*/ return __t([function(){/*/TC*/
     return QueryString.decode(this._search);
-  },
+  /*TC*/}.apply(this, arguments), 'object']);/*/TC*/},
 
-  getParsedFragment: function() {
+  getParsedFragment: function() /*object*/ {/*TC*/ return __t([function(){/*/TC*/
     return QueryString.decode(this._fragment);
-  },
+  /*TC*/}.apply(this, arguments), 'object']);/*/TC*/},
 
-  isFacebookURL: function() {
+  isFacebookURL: function() /*boolean*/ {/*TC*/ return __t([function(){/*/TC*/
     return facebookRe.test(this._domain);
-  },
+  /*TC*/}.apply(this, arguments), 'boolean']);/*/TC*/},
 
-  toString: function() {
+  toString: function() /*string*/ {/*TC*/ return __t([function(){/*/TC*/
     return (this._protocol ? this._protocol + ':' : '') +
       (this._domain ? '//' + this._domain : '') +
       (this._port ? ':' + this._port : '') +
       this._path +
       (this._search ? '?' + this._search : '') +
       (this._fragment ? '#' + this._fragment : '');
-  },
-  valueOf: function() {
+  /*TC*/}.apply(this, arguments), 'string']);/*/TC*/},
+  valueOf: function() /*string*/ {/*TC*/ return __t([function(){/*/TC*/
     return this.toString();
-  }
+  /*TC*/}.apply(this, arguments), 'string']);/*/TC*/}
 });
 
 copyProperties(URL, {
 
-  getCurrent: function() {
+  getCurrent: function() /*object*/ {/*TC*/ return __t([function(){/*/TC*/
     return new URL(location.href);
-  },
+  /*TC*/}.apply(this, arguments), 'object']);/*/TC*/},
 
-  getReferrer: function() {
+  getReferrer: function() /*object?*/ {/*TC*/ return __t([function(){/*/TC*/
     return document.referrer
       ? new URL(document.referrer)
       : null;
-  }
+  /*TC*/}.apply(this, arguments), 'object?']);/*/TC*/}
 
 });
 
@@ -2418,7 +2530,12 @@ __d("sdk.domReady",[],function(global,require,requireDynamic,requireLazy,module,
 var queue;
 var domIsReady = "readyState" in document
   ? /loaded|complete/.test(document.readyState)
-            : !!document.body;
+  
+  
+  
+  
+  
+  : !!document.body;
 
 function flush() {
   if (!queue) {
@@ -2432,7 +2549,7 @@ function flush() {
   queue = null;
 }
 
-function domReady(fn) {
+function domReady(/*function*/ fn) {/*TC*/__t([fn,'function','fn']);/*/TC*/
   if (queue) {
     queue.push(fn);
     return;
@@ -2451,10 +2568,14 @@ if(!domIsReady) {
     window.attachEvent('onload', flush);
   }
 
-      if (document.documentElement.doScroll && window == window.top) {
+  
+  
+  if (document.documentElement.doScroll && window == window.top) {
     var test = function() {
       try {
-                        document.documentElement.doScroll('left');
+        
+        
+        document.documentElement.doScroll('left');
       } catch(error) {
         setTimeout(test, 0);
         return;
@@ -2468,6 +2589,99 @@ if(!domIsReady) {
 module.exports = domReady;
 
 },3);
+__d("sdk.Content",["sdk.domReady","Log","UserAgent"],function(global,require,requireDynamic,requireLazy,module,exports) {
+
+var domReady = require('sdk.domReady');
+var Log = require('Log');
+var UserAgent = require('UserAgent');
+
+var visibleRoot;
+var hiddenRoot;
+
+var Content = {
+
+  
+  append: function(content, /*DOMElement?*/ root) /*DOMElement*/{/*TC*/__t([root,'DOMElement?','root']);/*/TC*/
+    
+    if (!root) {
+      if (!visibleRoot) {
+        visibleRoot = root = document.getElementById('fb-root');
+        if (!root) {
+          Log.warn('The "fb-root" div has not been created, auto-creating');
+          
+          visibleRoot = root = document.createElement('div');
+          root.id = 'fb-root';
+          
+          
+          
+          
+          
+          if (UserAgent.ie() || !document.body) {
+            domReady(function() {
+              document.body.appendChild(root);
+            });
+          } else {
+            document.body.appendChild(root);
+          }
+        }
+        root.className += ' fb_reset';
+      } else {
+        root = visibleRoot;
+      }
+    }
+
+    if (typeof content == 'string') {
+      var div = document.createElement('div');
+      root.appendChild(div).innerHTML = content;
+      return div;
+    } else {
+      return root.appendChild(content);
+    }
+  },
+
+  
+  appendHidden: function(content) /*DOMElement*/ {/*TC*/ return __t([function(){/*/TC*/
+    if (!hiddenRoot) {
+      var
+        hiddenRoot = document.createElement('div'),
+        style      = hiddenRoot.style;
+      style.position = 'absolute';
+      style.top      = '-10000px';
+      style.width    = style.height = 0;
+      hiddenRoot = Content.append(hiddenRoot);
+    }
+
+    return Content.append(content, hiddenRoot);
+  /*TC*/}.apply(this, arguments), 'DOMElement']);/*/TC*/},
+
+  
+  submitToTarget: function(/*object*/ opts, /*boolean?*/ get) {/*TC*/__t([opts,'object','opts'],[get,'boolean?','get']);/*/TC*/
+    var form = document.createElement('form');
+    form.action = opts.url;
+    form.target = opts.target;
+    form.method = (get) ? 'GET' : 'POST';
+    Content.appendHidden(form);
+
+    for (var key in opts.params) {
+      if (opts.params.hasOwnProperty(key)) {
+        var val = opts.params[key];
+        if (val !== null && val !== undefined) {
+          var input = document.createElement('input');
+          input.name = key;
+          input.value = val;
+          form.appendChild(input);
+        }
+      }
+    }
+
+    form.submit();
+    form.parentNode.removeChild(form);
+  }
+};
+
+module.exports = Content;
+
+});
 __d("wrapFunction",["Assert"],function(global,require,requireDynamic,requireLazy,module,exports) {
 
 var Assert = require('Assert');
@@ -2495,252 +2709,25 @@ wrapFunction.setWrapper = function(fn, type) {
 module.exports = wrapFunction;
 
 });
-__d("dotAccess",[],function(global,require,requireDynamic,requireLazy,module,exports) {
-
-function dotAccess(head, path, create) {
-  var stack = path.split('.');
-  do {
-    var key = stack.shift();
-    head = head[key] || create && (head[key] = {});
-  } while(stack.length && head);
-  return head;
-}
-
-module.exports = dotAccess;
-
-});
-__d("GlobalCallback",["wrapFunction","dotAccess"],function(global,require,requireDynamic,requireLazy,module,exports) {
-
-var wrapFunction = require('wrapFunction');
-var dotAccess = require('dotAccess');
-
-var rootObject;
-var callbackPrefix;
-var counter = 0;
-
-var GlobalCallback = {
-
-  setPrefix: function(prefix) {
-    rootObject = dotAccess(window, prefix, true);
-    callbackPrefix = prefix;
-  },
-
-  create: function(fn) {
-    if (!rootObject) {
-                  this.setPrefix('window.__globalCallbacks');
-    }
-    var id = '__gcb' + (++counter);
-    rootObject[id] = wrapFunction(fn, 'entry', 'GlobalCallback');
-
-    return callbackPrefix + '.' + id;
-  },
-
-  remove: function(name) {
-    var id = name.substring(callbackPrefix.length + 1);
-    delete rootObject[id];
-  }
-
-};
-
-module.exports = GlobalCallback;
-
-});
-__d("insertIframe",["guid","GlobalCallback"],function(global,require,requireDynamic,requireLazy,module,exports) {
-
-var guid = require('guid');
-var GlobalCallback = require('GlobalCallback');
-
-function insertIframe(opts) {
-
-    
-  opts.id = opts.id || guid();
-  opts.name = opts.name || guid();
-
-            var srcSet = false;
-  var onloadDone = false;
-  var callback = function() {
-    if (srcSet && !onloadDone) {
-      onloadDone = true;
-      opts.onload && opts.onload(opts.root.firstChild);
-    }
-  };
-  var globalCallback = GlobalCallback.create(callback);
-
-
-      
-  if (document.attachEvent) {
-            var html = (
-      '<iframe' +
-        ' id="' + opts.id + '"' +
-        ' name="' + opts.name + '"' +
-        (opts.title ? ' title="' + opts.title + '"' : '') +
-        (opts.className ? ' class="' + opts.className + '"' : '') +
-        ' style="border:none;' +
-        (opts.width ? 'width:' + opts.width + 'px;' : '') +
-        (opts.height ? 'height:' + opts.height + 'px;' : '') +
-        '"' +
-        ' src="javascript:false;"' +
-        ' frameborder="0"' +
-        ' scrolling="no"' +
-        ' allowtransparency="true"' +
-        ' onload="' + globalCallback + '()"' +
-        '></iframe>'
-    );
-
-                                    opts.root.innerHTML = (
-      '<iframe src="javascript:false"' +
-        ' frameborder="0"' +
-        ' scrolling="no"' +
-        ' style="height:1px"></iframe>'
-    );
-
-        srcSet = true;
-
-                        window.setTimeout(function() {
-      opts.root.innerHTML = html;
-      opts.root.firstChild.src = opts.url;
-      opts.onInsert && opts.onInsert(opts.root.firstChild);
-    }, 0);
-
-  } else {
-                var node = document.createElement('iframe');
-    node.id = opts.id;
-    node.name = opts.name;
-    node.onload = callback;
-    node.scrolling = 'no';
-    node.style.border = 'none';
-    node.style.overflow = 'hidden';
-    if (opts.title) {
-      node.title = opts.title;
-    }
-    if (opts.className) {
-      node.className = opts.className;
-    }
-    if (opts.height !== undefined) {
-      node.style.height = opts.height + 'px';
-    }
-    if (opts.width !== undefined) {
-      if (opts.width == '100%') {
-        node.style.width = opts.width;
-      } else {
-        node.style.width = opts.width + 'px';
-      }
-    }
-    opts.root.appendChild(node);
-
-        srcSet = true;
-
-    node.src = opts.url;
-    opts.onInsert && opts.onInsert(node);
-  }
-}
-
-module.exports = insertIframe;
-
-});
-__d("sdk.Content",["sdk.domReady","Log","UserAgent","insertIframe"],function(global,require,requireDynamic,requireLazy,module,exports) {
-
-var domReady = require('sdk.domReady');
-var Log = require('Log');
-var UserAgent = require('UserAgent');
-var insertIframe = require('insertIframe');
-
-var visibleRoot;
-var hiddenRoot;
-
-var Content = {
-
-  
-  append: function(content, root) {
-        if (!root) {
-      if (!visibleRoot) {
-        visibleRoot = root = document.getElementById('fb-root');
-        if (!root) {
-          Log.warn('The "fb-root" div has not been created, auto-creating');
-                    visibleRoot = root = document.createElement('div');
-          root.id = 'fb-root';
-                                                            if (UserAgent.ie() || !document.body) {
-            domReady(function() {
-              document.body.appendChild(root);
-            });
-          } else {
-            document.body.appendChild(root);
-          }
-        }
-        root.className += ' fb_reset';
-      } else {
-        root = visibleRoot;
-      }
-    }
-
-    if (typeof content == 'string') {
-      var div = document.createElement('div');
-      root.appendChild(div).innerHTML = content;
-      return div;
-    } else {
-      return root.appendChild(content);
-    }
-  },
-
-  
-  appendHidden: function(content) {
-    if (!hiddenRoot) {
-      var
-        hiddenRoot = document.createElement('div'),
-        style      = hiddenRoot.style;
-      style.position = 'absolute';
-      style.top      = '-10000px';
-      style.width    = style.height = 0;
-      hiddenRoot = Content.append(hiddenRoot);
-    }
-
-    return Content.append(content, hiddenRoot);
-  },
-
-  
-  submitToTarget: function(opts, get) {
-    var form = document.createElement('form');
-    form.action = opts.url;
-    form.target = opts.target;
-    form.method = (get) ? 'GET' : 'POST';
-    Content.appendHidden(form);
-
-    for (var key in opts.params) {
-      if (opts.params.hasOwnProperty(key)) {
-        var val = opts.params[key];
-        if (val !== null && val !== undefined) {
-          var input = document.createElement('input');
-          input.name = key;
-          input.value = val;
-          form.appendChild(input);
-        }
-      }
-    }
-
-    form.submit();
-    form.parentNode.removeChild(form);
-  },
-  insertIframe: insertIframe
-};
-
-module.exports = Content;
-
-});
 __d("sdk.Event",["wrapFunction"],function(global,require,requireDynamic,requireLazy,module,exports) {
 
 var wrapFunction = require('wrapFunction');
 
 var Event = {
   
-  subscribers: function() {
-                    if (!this._subscribersMap) {
+  subscribers: function() /*object*/ {/*TC*/ return __t([function(){/*/TC*/
+    
+    
+    
+    
+    if (!this._subscribersMap) {
       this._subscribersMap = {};
     }
     return this._subscribersMap;
-  },
+  /*TC*/}.apply(this, arguments), 'object']);/*/TC*/},
 
   
-  subscribe: function(name, cb) {
+  subscribe: function(/*string*/ name, /*function*/ cb) {/*TC*/__t([name,'string','name'],[cb,'function','cb']);/*/TC*/
     var subs = this.subscribers();
 
     if (!subs[name]) {
@@ -2751,7 +2738,7 @@ var Event = {
   },
 
   
-  unsubscribe: function(name, cb) {
+  unsubscribe: function(/*string*/ name, /*function*/ cb) {/*TC*/__t([name,'string','name'],[cb,'function','cb']);/*/TC*/
     var subs = this.subscribers()[name];
     if (subs) {
       ES5(subs, 'forEach', true,function(value, key) {
@@ -2763,7 +2750,7 @@ var Event = {
   },
 
   
-  monitor: function(name, callback) {
+  monitor: function(/*string*/ name, /*function*/ callback) {/*TC*/__t([name,'string','name'],[callback,'function','callback']);/*/TC*/
     if (!callback()) {
       var
         ctx = this,
@@ -2778,7 +2765,7 @@ var Event = {
   },
 
   
-  clear: function(name) {
+  clear: function(/*string*/ name) {/*TC*/__t([name,'string','name']);/*/TC*/
     delete this.subscribers()[name];
   },
 
@@ -2791,7 +2778,9 @@ var Event = {
 
     if (subs) {
       ES5(subs, 'forEach', true,function(sub) {
-                        if (sub) {
+        
+        
+        if (sub) {
           sub.apply(this, args);
         }
       });
@@ -2811,14 +2800,17 @@ var registry = {};
 
 
 function Queue(opts) {
-    this._opts = copyProperties({
+  
+  this._opts = copyProperties({
     interval: 0,
     processor: null
   }, opts);
 
-    this._queue = [];
+  
+  this._queue = [];
   this._stopped = true;
 }
+
 
 copyProperties(Queue.prototype, {
 
@@ -2895,6 +2887,7 @@ copyProperties(Queue.prototype, {
 
 });
 
+
 copyProperties(Queue, {
 
   
@@ -2920,19 +2913,24 @@ copyProperties(Queue, {
 
 });
 
+
 module.exports = Queue;
 
 });
 __d("resolveURI",[],function(global,require,requireDynamic,requireLazy,module,exports) {
 
-function resolveURI(uri) {
-  if (!uri) {     return window.location.href;
+function resolveURI(/*string?*/ uri) /*string*/ {/*TC*/__t([uri,'string?','uri']); return __t([function(){/*/TC*/
+  if (!uri) { 
+    return window.location.href;
   }
 
   var div = document.createElement('div');
-      div.innerHTML = '<a href="' + uri.replace(/"/g, '&quot;') + '"></a>';
+  
+  
+  div.innerHTML = '<a href="' + uri.replace(/"/g, '&quot;') + '"></a>';
 
-  return div.firstChild.href; }
+  return div.firstChild.href; 
+/*TC*/}.apply(this, arguments), 'string']);/*/TC*/}
 
 module.exports = resolveURI;
 
@@ -2942,12 +2940,14 @@ __d("resolveWindow",[],function(global,require,requireDynamic,requireLazy,module
 
 
 function resolveWindow(path) {
-  var node = window;   var parts = path.split('.');
+  var node = window; 
+  var parts = path.split('.');
 
   try {
     for (var i = 0; i < parts.length; i++) {
       var part = parts[i];
-            var matches = /^frames\[['"]?([a-zA-Z0-9\-_]+)['"]?\]$/.exec(part);
+      
+      var matches = /^frames\[['"]?([a-zA-Z0-9\-_]+)['"]?\]$/.exec(part);
 
       if (matches) {
         node = node.frames[matches[1]];
@@ -2972,7 +2972,7 @@ __d("JSONRPC",["copyProperties","Log"],function(global,require,requireDynamic,re
 var copyProperties = require('copyProperties');
 var Log = require('Log');
 
-function JSONRPC(write) {
+function JSONRPC(/*function*/ write) {/*TC*/__t([write,'function','write']);/*/TC*/
   this._counter = 0;
   this._callbacks = {};
 
@@ -2985,7 +2985,7 @@ function JSONRPC(write) {
 copyProperties(JSONRPC.prototype, {
 
   
-  stub: function(stub) {
+  stub: function(/*string*/ stub) {/*TC*/__t([stub,'string','stub']);/*/TC*/
     this.remote[stub] = ES5(function() {
       var args = Array.prototype.slice.call(arguments),
           message = {
@@ -3005,11 +3005,12 @@ copyProperties(JSONRPC.prototype, {
   },
 
   
-  read: function(message, context) {
+  read: function(/*string*/ message, context) {/*TC*/__t([message,'string','message']);/*/TC*/
     var rpc = ES5('JSON', 'parse', false,message), id = rpc.id;
 
     if (!rpc.method) {
-            if (!this._callbacks[id]) {
+      
+      if (!this._callbacks[id]) {
         Log.warn('Could not find callback %s', id);
         return;
       }
@@ -3023,21 +3024,26 @@ copyProperties(JSONRPC.prototype, {
       return;
     }
 
-        var instance = this, method = this.local[rpc.method], send;
+    
+    var instance = this, method = this.local[rpc.method], send;
     if (id) {
-            send = function(type, value) {
+      
+      send = function(/*string*/ type, value) {/*TC*/__t([type,'string','type']);/*/TC*/
         var response = {
           jsonrpc: '2.0',
           id: id
         };
         response[type] = value;
 
-                        setTimeout(function() {
+        
+        
+        setTimeout(function() {
           instance._write(ES5('JSON', 'stringify', false,response), context);
         }, 0);
       };
     } else {
-            send = function() {};
+      
+      send = function() {};
     }
 
     if (!method) {
@@ -3051,12 +3057,15 @@ copyProperties(JSONRPC.prototype, {
       return;
     }
 
-        rpc.params.push(ES5(send, 'bind', true,null, 'result'));
+    
+    rpc.params.push(ES5(send, 'bind', true,null, 'result'));
     rpc.params.push(ES5(send, 'bind', true,null, 'error'));
 
-        try {
+    
+    try {
       var returnValue = method.apply(context || null, rpc.params);
-            if (typeof returnValue !== 'undefined') {
+      
+      if (typeof returnValue !== 'undefined') {
         send('result', returnValue);
       }
     } catch(rpcEx) {
@@ -3083,7 +3092,7 @@ var JSONRPC = require('JSONRPC');
 var Queue = require('Queue');
 
 var outQueue = new Queue();
-var jsonrpc = new JSONRPC(function(message) {
+var jsonrpc = new JSONRPC(function(/*string*/ message) {/*TC*/__t([message,'string','message']);/*/TC*/
   outQueue.enqueue(message);
 });
 
@@ -3091,16 +3100,16 @@ var RPC = {
   local: jsonrpc.local,
   remote: jsonrpc.remote,
   stub: ES5(jsonrpc.stub, 'bind', true,jsonrpc),
-  setInQueue: function(queue) {
+  setInQueue: function(/*object*/ queue) {/*TC*/__t([queue,'object','queue']);/*/TC*/
     Assert.isInstanceOf(Queue, queue);
 
-    queue.start(function(message) {
+    queue.start(function(/*string*/ message) {/*TC*/__t([message,'string','message']);/*/TC*/
       jsonrpc.read(message);
     });
   },
-  getOutQueue: function() {
+  getOutQueue: function() /*object*/ {/*TC*/ return __t([function(){/*/TC*/
     return outQueue;
-  }
+  /*TC*/}.apply(this, arguments), 'object']);/*/TC*/}
 };
 
 module.exports = RPC;
@@ -3114,21 +3123,23 @@ var add, remove;
 
 if (window.addEventListener) {
 
-    add = function(target,  name,  listener) {__t([name,'string','name'],[listener,'function','listener']);
+  
+  add = function(target, /*string*/ name, /*function*/ listener) {/*TC*/__t([name,'string','name'],[listener,'function','listener']);/*/TC*/
     listener.wrapper = wrapFunction(listener, 'entry', target + ':' + name);
     target.addEventListener(name, listener.wrapper, false);
   };
-  remove = function(target,  name,  listener) {__t([name,'string','name'],[listener,'function','listener']);
+  remove = function(target, /*string*/ name, /*function*/ listener) {/*TC*/__t([name,'string','name'],[listener,'function','listener']);/*/TC*/
     target.removeEventListener(name, listener.wrapper, false);
   };
 
 } else if (window.attachEvent) {
 
-    add = function(target,  name,  listener) {__t([name,'string','name'],[listener,'function','listener']);
+  
+  add = function(target, /*string*/ name, /*function*/ listener) {/*TC*/__t([name,'string','name'],[listener,'function','listener']);/*/TC*/
     listener.wrapper = wrapFunction(listener, 'entry', target + ':' + name);
     target.attachEvent('on' + name, listener.wrapper);
   };
-  remove = function(target,  name,  listener) {__t([name,'string','name'],[listener,'function','listener']);
+  remove = function(target, /*string*/ name, /*function*/ listener) {/*TC*/__t([name,'string','name'],[listener,'function','listener']);/*/TC*/
     target.detachEvent('on' + name, listener.wrapper);
   };
 
@@ -3137,10 +3148,15 @@ if (window.addEventListener) {
 var DOMEventListener = {
 
   
-  add: function(target,  name,  listener) {__t([name,'string','name'],[listener,'function','listener']);
-            add(target, name, listener);
+  add: function(target, /*string*/ name, /*function*/ listener) {/*TC*/__t([name,'string','name'],[listener,'function','listener']);/*/TC*/
+    
+    
+    add(target, name, listener);
     return {
-                        remove: function() {
+      
+      
+      
+      remove: function() {
         remove(target, name, listener);
         target = null;
       }
@@ -3156,7 +3172,7 @@ module.exports = DOMEventListener;
 });
 __d("Flash",["DOMWrapper","QueryString","UserAgent","copyProperties","guid"],function(global,require,requireDynamic,requireLazy,module,exports) {
 
-
+/*globals ActiveXObject */
 
 var DOMWrapper = require('DOMWrapper');
 var QueryString = require('QueryString');
@@ -3195,7 +3211,9 @@ function normalize(s) {
 
 function register(id) {
   if (!unloadHandlerAttached) {
-            if (UserAgent.ie() >= 9) {
+    
+    
+    if (UserAgent.ie() >= 9) {
       window.attachEvent('onunload', unloadRegisteredSWFs);
     }
     unloadHandlerAttached = true;
@@ -3208,24 +3226,30 @@ var Flash = {
 
   
   embed: function(src, container, params, flashvars) {
-        var id = guid();
-        src = encodeURI(src);
+    
+    var id = guid();
+    
+    src = encodeURI(src);
 
-        params = copyProperties({
+    
+    params = copyProperties({
         allowscriptaccess: 'always',
         flashvars: flashvars,
         movie: src
       },
       params || {});
 
-        if (typeof params.flashvars == 'object') {
+    
+    if (typeof params.flashvars == 'object') {
       params.flashvars = QueryString.encode(params.flashvars);
     }
 
-        var pElements = [];
+    
+    var pElements = [];
     for (var key in params) {
       if (params.hasOwnProperty(key) && params[key]) {
-                pElements.push('<param name="' + encodeURI(key) + '" value="' +
+        
+        pElements.push('<param name="' + encodeURI(key) + '" value="' +
           encodeURI(params[key]) + '">');
       }
     }
@@ -3255,7 +3279,8 @@ var Flash = {
     var flashVersion;
 
     if (navigator.plugins && typeof navigator.plugins[name] == 'object') {
-                var description = navigator.plugins[name].description;
+        
+        var description = navigator.plugins[name].description;
         if (description && navigator.mimeTypes &&
               navigator.mimeTypes[mimeType] &&
               navigator.mimeTypes[mimeType].enabledPlugin) {
@@ -3321,7 +3346,7 @@ module.exports = emptyFunction;
 });
 __d("XDM",["DOMEventListener","DOMWrapper","Flash","Log","UserAgent","emptyFunction","guid"],function(global,require,requireDynamic,requireLazy,module,exports) {
 
-
+/*globals __fbNative */
 
 var DOMEventListener = require('DOMEventListener');
 var DOMWrapper = require('DOMWrapper');
@@ -3423,7 +3448,11 @@ XDM.register('fragment', (function() {
         send: function(message, origin, windowRef, channel) {
           Log.debug('sending to: %s (%s)',
             origin + config.channelPath, channel);
-                                                  insertIframe(origin + config.channelPath + message +
+          
+          
+          
+          
+          insertIframe(origin + config.channelPath + message +
             '&xd_rel=parent.parent&relation=parent.parent&xd_origin=' +
             encodeURIComponent(senderOrigin));
         }
@@ -3450,7 +3479,9 @@ XDM.register('flash', (function() {
 
   return {
     isAvailable: function() {
-                  return Flash.checkMinVersion('8.0.24');
+      
+      
+      return Flash.checkMinVersion('8.0.24');
     },
     init: function(config) {
       Log.debug('init flash: ' + config.channel);
@@ -3519,9 +3550,14 @@ XDM.register('postmessage', (function() {
           }
           Log.debug('sending to: %s (%s)', origin, channel);
           var send = function() {
-                        windowRef.postMessage('_FB_' + channel + message, origin);
+            
+            windowRef.postMessage('_FB_' + channel + message, origin);
           };
-                                                  if (UserAgent.ie() == 8) {
+          
+          
+          
+          
+          if (UserAgent.ie() == 8) {
             setTimeout(send, 0);
           } else{
             send();
@@ -3535,7 +3571,9 @@ XDM.register('postmessage', (function() {
 
       DOMEventListener.add(window, 'message', function(event) {
         var message = event.data;
-                        var origin = event.origin || 'native';
+        
+        
+        var origin = event.origin || 'native';
         if (typeof message != 'string') {
           Log.warn('Received message of type %s from %s, expected a string',
             typeof message, origin);
@@ -3543,7 +3581,8 @@ XDM.register('postmessage', (function() {
         }
 
         Log.debug('received message %s from %s', message, origin);
-                if (message.substring(0, prefix.length) == prefix) {
+        
+        if (message.substring(0, prefix.length) == prefix) {
           message = message.substring(prefix.length);
         }
         config.onMessage(message, origin);
@@ -3593,7 +3632,7 @@ var pluginRegistry = {};
 var rpcQueue = new Queue();
 RPC.setInQueue(rpcQueue);
 
-function onRegister(registeredAs) {
+function onRegister(/*string*/ registeredAs) {/*TC*/__t([registeredAs,'string','registeredAs']);/*/TC*/
   Log.info('Remote XD can talk to facebook.com (%s)', registeredAs);
   Runtime.setEnvironment(
     registeredAs === 'canvas'
@@ -3601,7 +3640,7 @@ function onRegister(registeredAs) {
       : Runtime.ENVIRONMENTS.PAGETAB);
 }
 
-function handleAction(message, senderOrigin) {
+function handleAction(/*object*/ message, /*string?*/ senderOrigin) {/*TC*/__t([message,'object','message'],[senderOrigin,'string?','senderOrigin']);/*/TC*/
   if (!senderOrigin) {
     Log.error('No senderOrigin');
     throw new Error();
@@ -3653,10 +3692,14 @@ function handleAction(message, senderOrigin) {
       break;
   }
 
-    if (message.data) {
+  
+  if (message.data) {
     onMessage(message.data, senderOrigin);
   }
 }
+
+
+
 
 function onMessage(message, senderOrigin) {
   if (senderOrigin && senderOrigin !== 'native' &&
@@ -3668,7 +3711,8 @@ function onMessage(message, senderOrigin) {
       rpcQueue.enqueue(message.substring(7));
       return;
     }
-        if (message.substring(0, 1) == '{') {
+    
+    if (message.substring(0, 1) == '{') {
       try {
         message = ES5('JSON', 'parse', false,message);
       } catch (decodeException) {
@@ -3680,8 +3724,10 @@ function onMessage(message, senderOrigin) {
     }
   }
   
+
   if (!senderOrigin) {
-        if (message.xd_sig == proxySecret) {
+    
+    if (message.xd_sig == proxySecret) {
       senderOrigin = message.xd_origin;
     }
   }
@@ -3691,11 +3737,14 @@ function onMessage(message, senderOrigin) {
     return;
   }
 
-      if (message.access_token) {
+  
+  
+  if (message.access_token) {
     Runtime.setSecure(/^https/.test(origin));
   }
 
-    if (message.cb) {
+  
+  if (message.cb) {
     var cb = XD._callbacks[message.cb];
     if (!XD._forever[message.cb]) {
       delete XD._callbacks[message.cb];
@@ -3706,7 +3755,7 @@ function onMessage(message, senderOrigin) {
   }
 }
 
-function sendToFacebook(recipient, message) {
+function sendToFacebook(/*string*/ recipient, message) {/*TC*/__t([recipient,'string','recipient']);/*/TC*/
   if (recipient == 'facebook') {
     message.relation = 'parent.parent';
     facebookQueue.enqueue(message);
@@ -3727,38 +3776,50 @@ function sendToFacebook(recipient, message) {
 }
 
 
-RPC.getOutQueue().start(function(message) {
+RPC.getOutQueue().start(function(/*string*/ message) {/*TC*/__t([message,'string','message']);/*/TC*/
   sendToFacebook('facebook', 'FB_RPC:' + message);
 });
 
-function init(channelUrl, xdProxyName) {
+function init(/*string?*/ channelUrl, /*string?*/ xdProxyName) {/*TC*/__t([channelUrl,'string?','channelUrl'],[xdProxyName,'string?','xdProxyName']);/*/TC*/
   if (inited) {
     return;
   }
 
-      var channelPath = channelUrl
+  
+  
+  var channelPath = channelUrl
     ? /\/\/.*?(\/[^#]*)/.exec(channelUrl)[1]
     : location.pathname + location.search;
 
   channelPath += (~ES5(channelPath, 'indexOf', true,'?') ? '&' : '?') +
     'fb_xd_fragment#xd_sig=' + proxySecret + '&';
 
-    var container = Content.appendHidden(document.createElement('div'));
+  
+  var container = Content.appendHidden(document.createElement('div'));
 
-    var transport = XDM.create({
+  
+  var transport = XDM.create({
     root: container,
     channel: channel,
     channelPath: '/' + XDConfig.XdUrl + '#',
     flashUrl: XDConfig.Flash.path,
-    whenReady: function(instance) {
+    whenReady: function(/*object*/ instance) {/*TC*/__t([instance,'object','instance']);/*/TC*/
       xdm = instance;
-            var proxyData = {
-        channel: channel,         origin: location.protocol + '//' + location.host,         channel_path: channelPath,         transport: transport,         xd_name: xdProxyName       };
+      
+      var proxyData = {
+        channel: channel, 
+        origin: location.protocol + '//' + location.host, 
+        channel_path: channelPath, 
+        transport: transport, 
+        xd_name: xdProxyName 
+      };
 
       var proxyUrl = '/' + XDConfig.XdUrl +
         '#' + QueryString.encode(proxyData);
 
-                  var httpDomain = XDConfig.useCdn
+      
+      
+      var httpDomain = XDConfig.useCdn
        ? UrlMap.resolve('cdn', false)
        : 'http://www.facebook.com';
 
@@ -3766,15 +3827,21 @@ function init(channelUrl, xdProxyName) {
        ? UrlMap.resolve('cdn', true)
        : 'https://www.facebook.com';
 
-                  if (Runtime.getSecure() !== true) {
-                        httpProxyFrame = createIframe({
+      
+      
+      if (Runtime.getSecure() !== true) {
+        
+        
+        httpProxyFrame = createIframe({
           url       : httpDomain + proxyUrl,
           name      : 'fb_xdm_frame_http',
           root      : container
         });
       }
 
-                  httpsProxyFrame = createIframe({
+      
+      
+      httpsProxyFrame = createIframe({
         url       : httpsDomain + proxyUrl,
         name      : 'fb_xdm_frame_https',
         root      : container
@@ -3792,7 +3859,9 @@ function init(channelUrl, xdProxyName) {
 
 
 var XD = {
-      rpc: RPC,
+  
+  
+  rpc: RPC,
 
   _callbacks: {},
   _forever: {},
@@ -3809,7 +3878,8 @@ var XD = {
   sendToFacebook: sendToFacebook,
 
   
-  inform: function(method, params, relation, https, behavior) {
+  inform: function(/*string*/ method, /*object?*/ params, /*string?*/ relation,
+      /*string?*/ behavior) {/*TC*/__t([method,'string','method'],[params,'object?','params'],[relation,'string?','relation'],[behavior,'string?','behavior']);/*/TC*/
     sendToFacebook('facebook', {
       method: method,
       params: ES5('JSON', 'stringify', false,params || {}),
@@ -3819,27 +3889,32 @@ var XD = {
   },
 
   
-  handler: function(cb, relation, forever, id) {
+  handler: function(/*function*/ cb, /*string?*/ relation, /*boolean?*/ forever,
+      /*string?*/ id) /*string*/ {/*TC*/__t([cb,'function','cb'],[relation,'string?','relation'],[forever,'boolean?','forever'],[id,'string?','id']); return __t([function(){/*/TC*/
     var handlerDomain = XDConfig.useCdn
       ? UrlMap.resolve('cdn', location.protocol == 'https:')
       : location.protocol + '//www.facebook.com';
 
-                return handlerDomain + '/' + XDConfig.XdUrl + '#' + QueryString.encode({
+    
+    
+    
+    return handlerDomain + '/' + XDConfig.XdUrl + '#' + QueryString.encode({
       cb        : this.registerCallback(cb, forever, id),
       origin    : origin + '/' + channel,
       domain    : location.hostname,
       relation  : relation || 'opener'
     });
-  },
+  /*TC*/}.apply(this, arguments), 'string']);/*/TC*/},
 
-  registerCallback: function(cb, persistent, id) {
+  registerCallback: function(/*function*/ cb, /*boolean?*/ persistent,
+      /*string?*/ id) /*string*/ {/*TC*/__t([cb,'function','cb'],[persistent,'boolean?','persistent'],[id,'string?','id']); return __t([function(){/*/TC*/
     id = id || guid();
     if (persistent) {
       XD._forever[id] = true;
     }
     XD._callbacks[id] = cb;
     return id;
-  }
+  /*TC*/}.apply(this, arguments), 'string']);/*/TC*/}
 };
 
 
@@ -3849,19 +3924,21 @@ var XD = {
   var match = location.href.match(/[?&]fb_xd_fragment#(.*)$/);
 
   if (match) {
-        document.documentElement.style.display = 'none';
+    
+    document.documentElement.style.display = 'none';
 
     var message = QueryString.decode(match[1]);
     var targetWindow = resolveWindow(message.xd_rel);
     Log.debug('Passing fragment based message: %s', match[1]);
     targetWindow.FB_XD_onMessage(message);
 
-        document.open();
+    
+    document.open();
     document.close();
   }
 })();
 
-Event.subscribe('init:post', function(options) {
+Event.subscribe('init:post', function(/*object*/ options) {/*TC*/__t([options,'object','options']);/*/TC*/
   init(
     options.channelUrl ? resolveURI(options.channelUrl) : null,
     options.xdProxyName
@@ -3895,11 +3972,15 @@ var timer;
 
 var Auth = new ObservableMixin();
 
-function setAuthResponse(authResponse, status) {
+function setAuthResponse(/*object?*/ authResponse, /*string*/ status) {/*TC*/__t([authResponse,'object?','authResponse'],[status,'string','status']);/*/TC*/
   var currentUserID = Runtime.getUserID();
   var userID = 0;
   if (authResponse) {
-                    if (authResponse.userID) {
+    
+    
+    
+    
+    if (authResponse.userID) {
       userID = authResponse.userID;
     } else if (authResponse.signedRequest) {
       var parsedSignedRequest =
@@ -3917,7 +3998,9 @@ function setAuthResponse(authResponse, status) {
     authResponseChange = authResponse != currentAuthResponse,
     statusChange = status != (Runtime.getLoginStatus() || 'unknown');
 
-      Runtime.setLoginStatus(status);
+  
+  
+  Runtime.setLoginStatus(status);
   Runtime.setAccessToken(authResponse && authResponse.accessToken || null);
   Runtime.setUserID(userID);
 
@@ -3943,16 +4026,18 @@ function setAuthResponse(authResponse, status) {
   return response;
 }
 
-function getAuthResponse() {
+function getAuthResponse() /*object?*/ {/*TC*/ return __t([function(){/*/TC*/
   return currentAuthResponse;
-}
+/*TC*/}.apply(this, arguments), 'object?']);/*/TC*/}
 
-function xdResponseWrapper(cb, authResponse, method) {
-  return function (params) {
+function xdResponseWrapper(/*function*/ cb, /*object?*/ authResponse,
+    /*string?*/ method) /*function*/ {/*TC*/__t([cb,'function','cb'],[authResponse,'object?','authResponse'],[method,'string?','method']); return __t([function(){/*/TC*/
+  return function (/*object?*/ params) /*object?*/ {/*TC*/__t([params,'object?','params']); return __t([function(){/*/TC*/
     var status;
 
     if (params && params.access_token) {
-            var parsedSignedRequest = SignedRequest.parse(params.signed_request);
+      
+      var parsedSignedRequest = SignedRequest.parse(params.signed_request);
       authResponse = {
         accessToken: params.access_token,
         userID: parsedSignedRequest.user_id,
@@ -3962,10 +4047,15 @@ function xdResponseWrapper(cb, authResponse, method) {
 
       if (Runtime.getUseCookie()) {
         var expirationTime = authResponse.expiresIn === 0
-          ? 0           : ES5('Date', 'now', false) + authResponse.expiresIn * 1000;
+          ? 0 
+          : ES5('Date', 'now', false) + authResponse.expiresIn * 1000;
         var baseDomain = Cookie.getDomain();
         if (!baseDomain && params.base_domain) {
-                                                  Cookie.setDomain('.' + params.base_domain);
+          
+          
+          
+          
+          Cookie.setDomain('.' + params.base_domain);
         }
         Cookie.setSignedRequestCookie(params.signed_request,
                                          expirationTime);
@@ -3973,7 +4063,11 @@ function xdResponseWrapper(cb, authResponse, method) {
       status = 'connected';
       setAuthResponse(authResponse, status);
     } else if (method === 'logout' || method === 'login_status') {
-                              if (params.error && params.error === 'not_authorized') {
+      
+      
+      
+      
+      if (params.error && params.error === 'not_authorized') {
         status = 'not_authorized';
       } else {
         status = 'unknown';
@@ -3984,7 +4078,8 @@ function xdResponseWrapper(cb, authResponse, method) {
       }
     }
 
-        if (params && params.https == 1) {
+    
+    if (params && params.https == 1) {
       Runtime.setSecure(true);
     }
 
@@ -3995,10 +4090,10 @@ function xdResponseWrapper(cb, authResponse, method) {
       });
     }
     return authResponse;
-  };
-}
+  /*TC*/}.apply(this, arguments), 'object?']);/*/TC*/};
+/*TC*/}.apply(this, arguments), 'function']);/*/TC*/}
 
-function fetchLoginStatus(fn) {
+function fetchLoginStatus(/*function*/ fn) {/*TC*/__t([fn,'function','fn']);/*/TC*/
   var frame;
 
   if (timer) {
@@ -4016,12 +4111,14 @@ function fetchLoginStatus(fn) {
       display: 'none',
       domain: location.hostname,
       origin: getContextType(),
-      redirect_uri: XD.handler(function(response) {
+      redirect_uri: XD.handler(function(/*object*/ response) {/*TC*/__t([response,'object','response']);/*/TC*/
         frame.parentNode.removeChild(frame);
         if (handleResponse(response)) {
-                    timer = setTimeout(function() {
-            fetchLoginStatus();
-          }, 1200000);         }
+          
+          timer = setTimeout(function() {
+            fetchLoginStatus(function() {});
+          }, 1200000); 
+        }
       }, 'parent'),
       sdk: 'joey'
     }));
@@ -4036,13 +4133,15 @@ function fetchLoginStatus(fn) {
 }
 
 var loadState;
-function getLoginStatus(cb, force) {
+function getLoginStatus(/*function?*/ cb, /*boolean?*/ force) {/*TC*/__t([cb,'function?','cb'],[force,'boolean?','force']);/*/TC*/
   if (!Runtime.getClientID()) {
     Log.warn('FB.getLoginStatus() called before calling FB.init().');
     return;
   }
 
-      if (cb) {
+  
+  
+  if (cb) {
     if (!force && loadState == 'loaded') {
       cb({ status: Runtime.getLoginStatus(),
            authResponse: getAuthResponse()});
@@ -4052,16 +4151,20 @@ function getLoginStatus(cb, force) {
     }
   }
 
-    if (!force && loadState == 'loading') {
+  
+  if (!force && loadState == 'loading') {
     return;
   }
 
   loadState = 'loading';
 
-    var lsCb = function(response) {
-        loadState = 'loaded';
+  
+  var lsCb = function(/*object?*/ response) {/*TC*/__t([response,'object?','response']);/*/TC*/
+    
+    loadState = 'loaded';
 
-        Auth.inform('FB.loginStatus', response);
+    
+    Auth.inform('FB.loginStatus', response);
     Auth.clearSubscribers('FB.loginStatus');
   };
 
@@ -4074,10 +4177,25 @@ copyProperties(Auth, {
   setAuthResponse: setAuthResponse,
   getAuthResponse: getAuthResponse,
   parseSignedRequest: SignedRequest.parse,
-    xdResponseWrapper: xdResponseWrapper
+  
+  xdResponseWrapper: xdResponseWrapper
 });
 
 module.exports = Auth;
+
+});
+__d("dotAccess",[],function(global,require,requireDynamic,requireLazy,module,exports) {
+
+function dotAccess(head, path, create) {
+  var stack = path.split('.');
+  do {
+    var key = stack.shift();
+    head = head[key] || create && (head[key] = {});
+  } while(stack.length && head);
+  return head;
+}
+
+module.exports = dotAccess;
 
 });
 __d("hasArrayNature",[],function(global,require,requireDynamic,requireLazy,module,exports) {
@@ -4085,14 +4203,21 @@ __d("hasArrayNature",[],function(global,require,requireDynamic,requireLazy,modul
 
 function hasArrayNature(obj) {
   return (
-        !!obj &&
-        (typeof obj == 'object' || typeof obj == 'function') &&
-        ('length' in obj) &&
-        !('setInterval' in obj) &&
+    
+    !!obj &&
+    
+    (typeof obj == 'object' || typeof obj == 'function') &&
+    
+    ('length' in obj) &&
+    
+    !('setInterval' in obj) &&
     (
-            Object.prototype.toString.call(obj) === "[object Array]" ||
-            ('callee' in obj) ||
-            ('item' in obj)
+      
+      Object.prototype.toString.call(obj) === "[object Array]" ||
+      
+      ('callee' in obj) ||
+      
+      ('item' in obj)
     )
   );
 }
@@ -4110,7 +4235,8 @@ function createArrayFrom(obj) {
     return [obj];
   }
   if (obj.item) {
-        var l = obj.length, ret = new Array(l);
+    
+    var l = obj.length, ret = new Array(l);
     while (l--) { ret[l] = obj[l]; }
     return ret;
   }
@@ -4130,7 +4256,7 @@ var UserAgent = require('UserAgent');
 
 var cssRules = {};
 
-function getAttr( dom,  name)  {__t([dom,'DOMElement','dom'],[name,'string','name']); return __t([function(){
+function getAttr(/*DOMElement*/ dom, /*string*/ name) /*string?*/ {/*TC*/__t([dom,'DOMElement','dom'],[name,'string','name']); return __t([function(){/*/TC*/
   var attribute = (
     dom.getAttribute(name) ||
     dom.getAttribute(name.replace(/_/g, '-')) ||
@@ -4146,16 +4272,16 @@ function getAttr( dom,  name)  {__t([dom,'DOMElement','dom'],[name,'string','nam
   return attribute
     ? String(attribute)
     : null;
-}.apply(this, arguments), 'string?']);}
+/*TC*/}.apply(this, arguments), 'string?']);/*/TC*/}
 
-function getBoolAttr( dom,  name)  {__t([dom,'DOMElement','dom'],[name,'string','name']); return __t([function(){
+function getBoolAttr(/*DOMElement*/ dom, /*string*/ name) /*boolean?*/ {/*TC*/__t([dom,'DOMElement','dom'],[name,'string','name']); return __t([function(){/*/TC*/
   var attribute = getAttr(dom, name);
   return attribute
     ? /^(true|1|yes|on)$/.test(attribute)
     : null;
-}.apply(this, arguments), 'boolean?']);}
+/*TC*/}.apply(this, arguments), 'boolean?']);/*/TC*/}
 
-function getProp( dom,  name)  {__t([dom,'DOMElement','dom'],[name,'string','name']); return __t([function(){
+function getProp(/*DOMElement*/ dom, /*string*/ name) /*string*/ {/*TC*/__t([dom,'DOMElement','dom'],[name,'string','name']); return __t([function(){/*/TC*/
   Assert.isTrue(!!dom, 'element not specified');
   Assert.isString(name);
 
@@ -4164,9 +4290,9 @@ function getProp( dom,  name)  {__t([dom,'DOMElement','dom'],[name,'string','nam
   } catch (e) {
     throw new Error('Could not read property ' + name + ' : ' + e.message);
   }
-}.apply(this, arguments), 'string']);}
+/*TC*/}.apply(this, arguments), 'string']);/*/TC*/}
 
-function html( dom,  content) {__t([dom,'DOMElement','dom'],[content,'string','content']);
+function html(/*DOMElement*/ dom, /*string*/ content) {/*TC*/__t([dom,'DOMElement','dom'],[content,'string','content']);/*/TC*/
   Assert.isTrue(!!dom, 'element not specified');
   Assert.isString(content);
 
@@ -4178,16 +4304,16 @@ function html( dom,  content) {__t([dom,'DOMElement','dom'],[content,'string','c
 }
 
 
-function hasClass( dom,  className)  {__t([dom,'DOMElement','dom'],[className,'string','className']); return __t([function(){
+function hasClass(/*DOMElement*/ dom, /*string*/ className) /*boolean*/ {/*TC*/__t([dom,'DOMElement','dom'],[className,'string','className']); return __t([function(){/*/TC*/
   Assert.isTrue(!!dom, 'element not specified');
   Assert.isString(className);
 
   var cssClassWithSpace = ' ' + getProp(dom, 'className') + ' ';
   return ES5(cssClassWithSpace, 'indexOf', true,' ' + className + ' ') >= 0;
-}.apply(this, arguments), 'boolean']);}
+/*TC*/}.apply(this, arguments), 'boolean']);/*/TC*/}
 
 
-function addClass( dom,  className) {__t([dom,'DOMElement','dom'],[className,'string','className']);
+function addClass(/*DOMElement*/ dom, /*string*/ className) {/*TC*/__t([dom,'DOMElement','dom'],[className,'string','className']);/*/TC*/
   Assert.isTrue(!!dom, 'element not specified');
   Assert.isString(className);
 
@@ -4197,7 +4323,7 @@ function addClass( dom,  className) {__t([dom,'DOMElement','dom'],[className,'st
 }
 
 
-function removeClass( dom,  className) {__t([dom,'DOMElement','dom'],[className,'string','className']);
+function removeClass(/*DOMElement*/ dom, /*string*/ className) {/*TC*/__t([dom,'DOMElement','dom'],[className,'string','className']);/*/TC*/
   Assert.isTrue(!!dom, 'element not specified');
   Assert.isString(className);
 
@@ -4206,7 +4332,7 @@ function removeClass( dom,  className) {__t([dom,'DOMElement','dom'],[className,
 }
 
 
-function getByClass( className, dom, tagName)  {__t([className,'string','className']);
+function getByClass(/*string*/ className, dom, tagName) /*array<DOMElement>*/ {/*TC*/__t([className,'string','className']);/*/TC*/
   Assert.isString(className);
 
   dom = dom || document.body;
@@ -4227,11 +4353,12 @@ function getByClass( className, dom, tagName)  {__t([className,'string','classNa
 }
 
 
-function getStyle( dom,  styleProp)  {__t([dom,'DOMElement','dom'],[styleProp,'string','styleProp']); return __t([function(){
+function getStyle(/*DOMElement*/ dom, /*string*/ styleProp) /*string*/ {/*TC*/__t([dom,'DOMElement','dom'],[styleProp,'string','styleProp']); return __t([function(){/*/TC*/
   Assert.isTrue(!!dom, 'element not specified');
   Assert.isString(styleProp);
 
-    styleProp = styleProp.replace(/-(\w)/g, function(m, g1) {
+  
+  styleProp = styleProp.replace(/-(\w)/g, function(m, g1) {
     return g1.toUpperCase();
   });
 
@@ -4240,27 +4367,33 @@ function getStyle( dom,  styleProp)  {__t([dom,'DOMElement','dom'],[styleProp,'s
 
   var computedStyle = currentStyle[styleProp];
 
-        if (/backgroundPosition?/.test(styleProp) &&
+  
+  
+  
+  if (/backgroundPosition?/.test(styleProp) &&
       /top|left/.test(computedStyle)) {
     computedStyle = '0%';
   }
   return computedStyle;
-}.apply(this, arguments), 'string']);}
+/*TC*/}.apply(this, arguments), 'string']);/*/TC*/}
 
 
-function setStyle( dom,  styleProp, value) {__t([dom,'DOMElement','dom'],[styleProp,'string','styleProp']);
+function setStyle(/*DOMElement*/ dom, /*string*/ styleProp, value) {/*TC*/__t([dom,'DOMElement','dom'],[styleProp,'string','styleProp']);/*/TC*/
   Assert.isTrue(!!dom, 'element not specified');
   Assert.isString(styleProp);
 
-    styleProp = styleProp.replace(/-(\w)/g, function(m, g1) {
+  
+  styleProp = styleProp.replace(/-(\w)/g, function(m, g1) {
     return g1.toUpperCase();
   });
   dom.style[styleProp] = value;
 }
 
 
-function addCssRules( styles,  names) {__t([styles,'string','styles']);
-      var allIncluded = true;
+function addCssRules(/*string*/ styles, /*array<string>*/ names) {/*TC*/__t([styles,'string','styles']);/*/TC*/
+  
+  
+  var allIncluded = true;
   for (var i = 0, id; id = names[i++];) {
     if (!(id in cssRules)) {
       allIncluded = false;
@@ -4281,7 +4414,10 @@ function addCssRules( styles,  names) {__t([styles,'string','styles']);
     try {
       document.createStyleSheet().cssText = styles;
     } catch (exc) {
-                        if (document.styleSheets[0]) {
+      
+      
+      
+      if (document.styleSheets[0]) {
         document.styleSheets[0].cssText += styles;
       }
     }
@@ -4289,21 +4425,23 @@ function addCssRules( styles,  names) {__t([styles,'string','styles']);
 }
 
 
-function getViewportInfo()  { return __t([function(){
-    var root = (document.documentElement && document.compatMode == 'CSS1Compat')
+function getViewportInfo() /*object*/ {/*TC*/ return __t([function(){/*/TC*/
+  
+  var root = (document.documentElement && document.compatMode == 'CSS1Compat')
     ? document.documentElement
     : document.body;
 
   return {
-        scrollTop  : root.scrollTop || document.body.scrollTop,
+    
+    scrollTop  : root.scrollTop || document.body.scrollTop,
     scrollLeft : root.scrollLeft || document.body.scrollLeft,
     width      : window.innerWidth  ? window.innerWidth  : root.clientWidth,
     height     : window.innerHeight ? window.innerHeight : root.clientHeight
   };
-}.apply(this, arguments), 'object']);}
+/*TC*/}.apply(this, arguments), 'object']);/*/TC*/}
 
 
-function getPosition( node)  {__t([node,'DOMElement','node']); return __t([function(){
+function getPosition(/*DOMElement*/ node) /*object*/ {/*TC*/__t([node,'DOMElement','node']); return __t([function(){/*/TC*/
   Assert.isTrue(!!node, 'element not specified');
 
   var x = 0,
@@ -4314,7 +4452,8 @@ function getPosition( node)  {__t([node,'DOMElement','node']); return __t([funct
   } while (node = node.offsetParent);
 
   return {x: x, y: y};
-}.apply(this, arguments), 'object']);}
+/*TC*/}.apply(this, arguments), 'object']);/*/TC*/}
+
 
 var DOM = {
   containsCss: hasClass,
@@ -4346,9 +4485,9 @@ __d("sdk.Scribe",["UrlMap","QueryString"],function(global,require,requireDynamic
 var UrlMap = require('UrlMap');
 var QueryString = require('QueryString');
 
-function log(category, data) {
+function log(/*string*/ category, /*object*/ data) {/*TC*/__t([category,'string','category'],[data,'object','data']);/*/TC*/
   (new Image()).src = QueryString.appendToUrl(
-    UrlMap.resolve('www', true) + '/common/scribe_endpoint.php',
+    UrlMap.resolve('www', /*force ssl*/true) + '/common/scribe_endpoint.php',
     {
       c: category,
       m: ES5('JSON', 'stringify', false,data)
@@ -4374,7 +4513,7 @@ var ManagedError = require('ManagedError');
 
 var handleError = false;
 
-function errorHandler(error) {
+function errorHandler(/*object*/ error) {/*TC*/__t([error,'object','error']);/*/TC*/
   var originalError = error._originalError;
   delete error._originalError;
   Scribe.log('jssdk_error', {
@@ -4383,11 +4522,12 @@ function errorHandler(error) {
     extra: error
   });
 
-    throw originalError;
+  
+  throw originalError;
 }
 
 
-function normalizeError(err) {
+function normalizeError(err) /*object*/ {/*TC*/ return __t([function(){/*/TC*/
   var info = {
     line: err.lineNumber || err.line,
     message: err.message,
@@ -4396,37 +4536,47 @@ function normalizeError(err) {
     stack: err.stackTrace || err.stack
   };
 
-    info._originalError = err;
+  
+  info._originalError = err;
 
-          if (UserAgent.chrome() && /([\w:\.\/]+\.js):(\d+)/.test(err.stack)) {
+  
+  
+  
+  
+  if (UserAgent.chrome() && /([\w:\.\/]+\.js):(\d+)/.test(err.stack)) {
     info.script = RegExp.$1;
     info.line = parseInt(RegExp.$2, 10);
   }
 
-    for (var k in info) {
+  
+  for (var k in info) {
     (info[k] == null && delete info[k]);
   }
   return info;
-}
+/*TC*/}.apply(this, arguments), 'object']);/*/TC*/}
 
-function guard(func, entry) {
+function guard(/*function*/ func, /*string?*/ entry) /*function*/ {/*TC*/__t([func,'function','func'],[entry,'string?','entry']); return __t([function(){/*/TC*/
   return function() {
-            if (!handleError) {
+    
+    
+    if (!handleError) {
       return func.apply(this, arguments);
     }
 
     try {
       return func.apply(this, arguments);
     } catch(error) {
-                  if (error instanceof ManagedError) {
+      
+      
+      if (error instanceof ManagedError) {
         throw error;
       }
 
       var data = normalizeError(error);
       data.entry = entry;
 
-            var sanitizedArgs =
-          ES5(Array.prototype.slice.call(arguments), 'map', true,function(arg) {
+      
+      var sanitizedArgs = ES5(Array.prototype.slice.call(arguments), 'map', true,function(arg) {
         var type = Object.prototype.toString.call(arg);
         return (/^\[object (String|Number|Boolean|Object|Date)\]$/).test(type)
           ? arg
@@ -4437,9 +4587,9 @@ function guard(func, entry) {
       errorHandler(data);
     }
   };
-}
+/*TC*/}.apply(this, arguments), 'function']);/*/TC*/}
 
-function unguard(func) {
+function unguard(/*function*/ func) /*function*/ {/*TC*/__t([func,'function','func']); return __t([function(){/*/TC*/
   if (!func.__wrapper) {
     func.__wrapper = function() {
       try {
@@ -4453,9 +4603,11 @@ function unguard(func) {
     };
   }
   return func.__wrapper;
-}
+/*TC*/}.apply(this, arguments), 'function']);/*/TC*/}
+
 
 var sampleRate = SDKConfig.errorHandling.rate;
+
 if (sampleRate && Math.floor(Math.random() * 100) + 1 <= sampleRate) {
   handleError = true;
 }
@@ -4473,31 +4625,90 @@ var ErrorHandler = {
 module.exports = ErrorHandler;
 
 });
-__d("sdk.Insights",["guid","QueryString","sdk.Runtime","UrlMap"],function(global,require,requireDynamic,requireLazy,module,exports) {
+__d("GlobalCallback",["wrapFunction","dotAccess"],function(global,require,requireDynamic,requireLazy,module,exports) {
+
+var wrapFunction = require('wrapFunction');
+var dotAccess = require('dotAccess');
+
+
+
+var rootObject;
+var callbackPrefix;
+var counter = 0;
+
+var GlobalCallback = {
+
+  setPrefix: function(/*string*/ prefix) {/*TC*/__t([prefix,'string','prefix']);/*/TC*/
+    rootObject = dotAccess(window, prefix, true);
+    callbackPrefix = prefix;
+  },
+
+  create: function(/*function*/ fn) /*string*/ {/*TC*/__t([fn,'function','fn']); return __t([function(){/*/TC*/
+    if (!rootObject) {
+      
+      
+      this.setPrefix('window.__globalCallbacks');
+    }
+    var id = '__gcb' + (++counter);
+    rootObject[id] = wrapFunction(fn, 'entry', 'GlobalCallback');
+
+    return callbackPrefix + '.' + id;
+  /*TC*/}.apply(this, arguments), 'string']);/*/TC*/},
+
+  remove: function(/*string*/ name) {/*TC*/__t([name,'string','name']);/*/TC*/
+    var id = name.substring(callbackPrefix.length + 1);
+    delete rootObject[id];
+  }
+
+};
+
+module.exports = GlobalCallback;
+
+});
+__d("sdk.Impressions",["guid","QueryString","sdk.Runtime","UrlMap"],function(global,require,requireDynamic,requireLazy,module,exports) {
 
 var guid = require('guid');
 var QueryString = require('QueryString');
 var Runtime = require('sdk.Runtime');
 var UrlMap = require('UrlMap');
 
-function request(params, callback) {
+function request(/*object*/ params) {
   var clientID = Runtime.getClientID();
 
-  if(!params.api_key && clientID) {
+  if (!params.api_key && clientID) {
     params.api_key = clientID;
   }
 
   var image = new Image();
-  if (callback) {
-    image.onload = callback;
-  }
 
   image.src = QueryString.appendToUrl(
-    UrlMap.resolve('www', true) +
+    UrlMap.resolve('www', /*force ssl*/true) +
       '/impression.php/' + guid() + '/',
     params
   );
 }
+
+var Impressions = {
+  log: function(/*number*/ lid, /*object*/ payload) {
+    if (!payload.source) {
+      payload.source = 'jssdk';
+    }
+
+    request({
+      lid: lid, 
+      payload: ES5('JSON', 'stringify', false,payload)
+    });
+  },
+
+  impression: request
+};
+
+module.exports = Impressions;
+
+});
+__d("sdk.Insights",["sdk.Impressions"],function(global,require,requireDynamic,requireLazy,module,exports) {
+
+var Impressions = require('sdk.Impressions');
 
 var Insights = {
   TYPE: {
@@ -4510,19 +4721,22 @@ var Insights = {
     APIERROR: 'apierror'
   },
 
-    log: function(type, category, content) {
-    request({
-      lid: 113,       payload: ES5('JSON', 'stringify', false,{
-        source: 'jssdk',
-        type: type,
-        category: category,
-        payload: content
-      })
-    });
+  
+  log: function(/*string*/ type, /*string*/ category, /*string*/ content) {/*TC*/__t([type,'string','type'],[category,'string','category'],[content,'string','content']);/*/TC*/
+    var payload = {
+      source: 'jssdk',
+      type: type,
+      category: category,
+      payload: content
+    };
+
+    Impressions.log(
+      113, 
+      payload
+    );
   },
-    impression: function(params, cb) {
-    request(params, cb);
-  }
+  
+  impression: Impressions.impression
 };
 
 module.exports = Insights;
@@ -4551,10 +4765,13 @@ var apiWhitelist, apiWhitelistMode = dotAccess(SDKConfig, 'api.mode');
 var logged = {};
 externalInterface = window.FB = {};
 var FB = {};
+
 if (__DEV__) {
   FB.require = require;
   window._FB = FB
 }
+
+
 
 
 Log.level = __DEV__ ? 3 : 1;
@@ -4572,9 +4789,11 @@ domReady(function() {
   }
 });
 
-Runtime.subscribe('AccessToken.change', function(value) {
+Runtime.subscribe('AccessToken.change', function(/*string?*/ value) {/*TC*/__t([value,'string?','value']);/*/TC*/
   if (!value && Runtime.getLoginStatus() === 'connected') {
-            Auth.getLoginStatus(null, true);
+    
+    
+    Auth.getLoginStatus(null, true);
   }
 });
 
@@ -4582,12 +4801,13 @@ Runtime.subscribe('AccessToken.change', function(value) {
 
 if (dotAccess(SDKConfig, 'api.whitelist.length')) {
   apiWhitelist = {};
-  ES5(SDKConfig.api.whitelist, 'forEach', true,function(key) {
+  ES5(SDKConfig.api.whitelist, 'forEach', true,function(/*string*/ key) {/*TC*/__t([key,'string','key']);/*/TC*/
     apiWhitelist[key] = 1;
   });
 }
 
-function protect(fn, accessor, key, context) {
+function protect(/*function*/ fn, /*string*/ accessor, /*string*/ key,
+    /*object*/ context) /*function?*/ {/*TC*/__t([fn,'function','fn'],[accessor,'string','accessor'],[key,'string','key'],[context,'object','context']); return __t([function(){/*/TC*/
   var exportMode;
   if (/^_/.test(key)) {
     exportMode = 'hide';
@@ -4605,7 +4825,7 @@ function protect(fn, accessor, key, context) {
       };
       break;
     default:
-      return ErrorHandling.guard(function() {
+      return ErrorHandling.guard(function(/*args*/) {
         if (exportMode === 'warn') {
           Log.warn('The method FB.%s is not officially supported by ' +
             'Facebook and access to it will soon be removed.', accessor);
@@ -4616,7 +4836,8 @@ function protect(fn, accessor, key, context) {
               'FB.' + accessor
             );
 
-                        Scribe.log('jssdk_error', {
+            
+            Scribe.log('jssdk_error', {
               appId: Runtime.getClientID(),
               error: 'Private method used',
               extra: {args: accessor}
@@ -4631,9 +4852,15 @@ function protect(fn, accessor, key, context) {
             return ES5(val, 'map', true,unwrap);
           }
           if (val && typeof val === 'object' && val.__wrapped) {
-                        return val.__wrapped;
+            
+            return val.__wrapped;
           }
-                                                            return typeof val === 'function' && /^function/.test(val.toString())
+          
+          
+          
+          
+          
+          return typeof val === 'function' && /^function/.test(val.toString())
             ? ErrorHandling.unguard(val)
             : val;
         }
@@ -4645,12 +4872,17 @@ function protect(fn, accessor, key, context) {
         var isPlainObject = true;
 
         if (result && typeof result === 'object') {
-                                        var F = Function();
+          
+          
+          
+          var F = Function();
           F.prototype = result;
           facade = new F();
           facade.__wrapped = result;
 
-                              for (var key in result) {
+          
+          
+          for (var key in result) {
             var property = result[key];
             if (typeof property !== 'function' || key === 'constructor') {
               continue;
@@ -4668,18 +4900,19 @@ function protect(fn, accessor, key, context) {
           : facade;
       }, accessor);
   }
-}
+/*TC*/}.apply(this, arguments), 'function?']);/*/TC*/}
 
 
-function provide(name, source) {
+function provide(/*string*/ name, /*object*/ source) {/*TC*/__t([name,'string','name'],[source,'object','source']);/*/TC*/
   var externalTarget = name
     ? dotAccess(externalInterface, name, true)
     : externalInterface;
 
-  ES5(ES5('Object', 'keys', false,source), 'forEach', true,function(key) {
+  ES5(ES5('Object', 'keys', false,source), 'forEach', true,function(/*string*/ key) {/*TC*/__t([key,'string','key']);/*/TC*/
     var value = source[key];
 
-        if (typeof value === 'function') {
+    
+    if (typeof value === 'function') {
       var accessor = (name ? name + '.' : '') + key;
       var exportedProperty = protect(value, accessor, key, source);
       if (exportedProperty) {
@@ -4689,19 +4922,30 @@ function provide(name, source) {
   });
 }
 
-Runtime.setSecure((function() {
-    var inCanvas = /iframe_canvas|app_runner/.test(window.name);
+
+
+Runtime.setSecure((function() /*boolean?*/ {/*TC*/ return __t([function(){/*/TC*/
+  
+  var inCanvas = /iframe_canvas|app_runner/.test(window.name);
   var inDialog = /dialog/.test(window.name);
 
-      if (location.protocol == 'https:' &&
+  
+  
+  if (location.protocol == 'https:' &&
       (window == top || !(inCanvas || inDialog))) {
-                return true;
+    
+    
+    
+    return true;
   }
 
-      if (/_fb_https?/.test(window.name)) {
+  
+  
+  if (/_fb_https?/.test(window.name)) {
     return ES5(window.name, 'indexOf', true,'_fb_https') != -1;
   }
-})());
+/*TC*/}.apply(this, arguments), 'boolean?']);/*/TC*/})());
+
 
 copyProperties(FB, {
 
@@ -4716,7 +4960,7 @@ module.exports = FB;
 __d("flattenObject",[],function(global,require,requireDynamic,requireLazy,module,exports) {
 
 
-function flattenObject(obj) {
+function flattenObject(/*object*/ obj) /*object*/ {/*TC*/__t([obj,'object','obj']); return __t([function(){/*/TC*/
   var flat = {};
   for (var key in obj) {
     if (obj.hasOwnProperty(key)) {
@@ -4730,17 +4974,17 @@ function flattenObject(obj) {
     }
   }
   return flat;
-}
+/*TC*/}.apply(this, arguments), 'object']);/*/TC*/}
 
 module.exports = flattenObject;
 
 });
 __d("CORSRequest",["wrapFunction","QueryString"],function(global,require,requireDynamic,requireLazy,module,exports) {
-
+/*global self:true*/
 var wrapFunction = require('wrapFunction');
 var QueryString = require('QueryString');
 
-function createCORSRequest(method, url) {
+function createCORSRequest(/*string*/ method, /*string*/ url) /*object?*/ {/*TC*/__t([method,'string','method'],[url,'string','url']); return __t([function(){/*/TC*/
    if (!self.XMLHttpRequest) {
     return null;
    }
@@ -4753,9 +4997,19 @@ function createCORSRequest(method, url) {
    } else if (self.XDomainRequest) {
      xhr = new XDomainRequest();
      try {
-                                   xhr.open(method, url);
+       
+       
+       
+       
+       xhr.open(method, url);
 
-                                                 xhr.onprogress = xhr.ontimeout = noop;
+       
+       
+       
+       
+       
+       
+       xhr.onprogress = xhr.ontimeout = noop;
      } catch (accessDeniedError) {
        return null;
      }
@@ -4764,7 +5018,7 @@ function createCORSRequest(method, url) {
    }
 
    var wrapper = {
-     send: function(data) {
+     send: function(/*string*/ data) {/*TC*/__t([data,'string','data']);/*/TC*/
        xhr.send(data);
      }
    };
@@ -4781,7 +5035,11 @@ function createCORSRequest(method, url) {
      }
    }, 'entry', 'XMLHttpRequest:error');
 
-            
+   
+   
+   
+   
+
    xhr.onload = function() {
      onload();
    };
@@ -4801,9 +5059,10 @@ function createCORSRequest(method, url) {
    };
 
    return wrapper;
-}
+/*TC*/}.apply(this, arguments), 'object?']);/*/TC*/}
 
-function execute(url, method, params, cb) {
+function execute(/*string*/ url, /*string*/ method, /*object*/ params,
+    /*function*/ cb) /*boolean*/ {/*TC*/__t([url,'string','url'],[method,'string','method'],[params,'object','params'],[cb,'function','cb']); return __t([function(){/*/TC*/
   params.suppress_http_code = 1;
   var data = QueryString.encode(params);
 
@@ -4835,7 +5094,7 @@ function execute(url, method, params, cb) {
   };
   request.send(data);
   return true;
-}
+/*TC*/}.apply(this, arguments), 'boolean']);/*/TC*/}
 
 var CORSRequest = {
   execute: execute
@@ -4851,14 +5110,18 @@ var GlobalCallback = require('GlobalCallback');
 var QueryString    = require('QueryString');
 var Queue          = require('Queue');
 
-var flashQueue; var requestCallbacks = {}; var swfUrl; var swf; 
+var flashQueue; 
+var requestCallbacks = {}; 
+var swfUrl; 
+var swf; 
+
 function initFlash() {
   if (!swfUrl) {
     throw new Error('swfUrl has not been set');
   }
 
   var initCallback = GlobalCallback.create(function() {
-    flashQueue.start(function(item) {
+    flashQueue.start(function(/*object*/ item) {/*TC*/__t([item,'object','item']);/*/TC*/
       var id = swf.execute(
         item.method,
         item.url,
@@ -4871,7 +5134,9 @@ function initFlash() {
     });
   });
 
-    var requestCallback = GlobalCallback.create(function(id, status, response) {
+  
+  var requestCallback = GlobalCallback.create(function(/*string*/ id,
+      /*number*/ status, /*string*/ response) {/*TC*/__t([id,'string','id'],[status,'number','status'],[response,'string','response']);/*/TC*/
     var data;
     try {
       data = ES5('JSON', 'parse', false,decodeURIComponent(response));
@@ -4898,23 +5163,32 @@ function initFlash() {
 }
 
 
-function execute(url, method, params, cb) {
-      params.suppress_http_code = 1;
+function execute(/*string*/ url, /*string*/ method, /*object*/ params,
+    /*function*/ cb) /*boolean*/ {/*TC*/__t([url,'string','url'],[method,'string','method'],[params,'object','params'],[cb,'function','cb']); return __t([function(){/*/TC*/
+  
+  
+  params.suppress_http_code = 1;
 
-        if (!params.method) {
+  
+  
+  
+  if (!params.method) {
     params.method = method;
   }
 
 
   var body = QueryString.encode(params);
   if (method === 'get' && url.length + body.length < 2000) {
-            url = QueryString.appendToUrl(url, body);
+    
+    
+    url = QueryString.appendToUrl(url, body);
     body = '';
   } else {
     method = 'post';
   }
 
-    if (!flashQueue) {
+  
+  if (!flashQueue) {
     if (!Flash.isAvailable()) {
       return false;
     }
@@ -4922,17 +5196,18 @@ function execute(url, method, params, cb) {
     initFlash();
   }
 
-    flashQueue.enqueue({
+  
+  flashQueue.enqueue({
     method: method,
     url: url,
     body: body,
     callback: cb
   });
   return true;
-}
+/*TC*/}.apply(this, arguments), 'boolean']);/*/TC*/}
 
 var FlashRequest = {
-  setSwfUrl: function(swf_url) {
+  setSwfUrl: function(/*string*/ swf_url) {/*TC*/__t([swf_url,'string','swf_url']);/*/TC*/
     swfUrl = swf_url;
   },
   execute: execute
@@ -4948,7 +5223,8 @@ var GlobalCallback = require('GlobalCallback');
 var QueryString    = require('QueryString');
 
 
-function execute(url, method, params, cb) {
+function execute(/*string*/ url, /*string*/ method, /*object*/ params,
+    /*function*/ cb) /*boolean*/ {/*TC*/__t([url,'string','url'],[method,'string','method'],[params,'object','params'],[cb,'function','cb']); return __t([function(){/*/TC*/
   var script = document.createElement('script');
 
   var callbackWrapper = function(response) {
@@ -4960,7 +5236,8 @@ function execute(url, method, params, cb) {
 
   params.callback = GlobalCallback.create(callbackWrapper);
 
-    if (!params.method) {
+  
+  if (!params.method) {
     params.method = method;
   }
 
@@ -4970,7 +5247,8 @@ function execute(url, method, params, cb) {
     return false;
   }
 
-    script.onerror = function() {
+  
+  script.onerror = function() {
     callbackWrapper({
       error: {
         type   : 'http',
@@ -4979,9 +5257,12 @@ function execute(url, method, params, cb) {
     });
   };
 
-    var ensureCallbackCalled = function() {
+  
+  var ensureCallbackCalled = function() {
     setTimeout(function() {
-                  callbackWrapper({
+      
+      
+      callbackWrapper({
         error: {
           type   : 'http',
           message: 'unknown error'
@@ -5002,7 +5283,7 @@ function execute(url, method, params, cb) {
   script.src = url;
   DOMWrapper.getRoot().appendChild(script);
   return true;
-}
+/*TC*/}.apply(this, arguments), 'boolean']);/*/TC*/}
 
 var JSONPRequest = {
   execute: execute
@@ -5062,7 +5343,8 @@ var READONLYCALLS = {
 };
 
 
-function request(url, method, params, cb) {
+function request(/*string*/ url, /*string*/ method, /*object*/ params,
+    /*function?*/ cb) {/*TC*/__t([url,'string','url'],[method,'string','method'],[params,'object','params'],[cb,'function?','cb']);/*/TC*/
   if (!params.access_token) {
     params.access_token = accessToken;
   }
@@ -5083,7 +5365,9 @@ function request(url, method, params, cb) {
     flash: FlashRequest
   };
 
-      var transports;
+  
+  
+  var transports;
   if (params.transport) {
     transports = [params.transport];
     delete params.transport;
@@ -5128,7 +5412,7 @@ function request(url, method, params, cb) {
 }
 
 
-function requestUsingGraph(path) {
+function requestUsingGraph(/*string*/ path) {/*TC*/__t([path,'string','path']);/*/TC*/
   Assert.isString(path, 'Invalid path');
   var url;
   var args = {};
@@ -5139,7 +5423,8 @@ function requestUsingGraph(path) {
     throw new ArgumentError(e.message, e);
   }
 
-    ES5(Array.prototype.slice.call(arguments, 1), 'forEach', true,function(argument) {
+  
+  ES5(Array.prototype.slice.call(arguments, 1), 'forEach', true,function(argument) {
     args[typeof argument] = argument;
   });
 
@@ -5147,7 +5432,7 @@ function requestUsingGraph(path) {
   var params = copyProperties(args.object || {}, url.getParsedSearch());
   var callback = args['function'];
 
-  Assert.isTrue(METHODS[method],
+  Assert.isTrue(method in METHODS,
     sprintf('Invalid method passed to ApiClient: %s', method));
 
   params.method = method;
@@ -5156,7 +5441,7 @@ function requestUsingGraph(path) {
 }
 
 
-function requestUsingRest(params, cb) {
+function requestUsingRest(/*object*/ params, /*function?*/ cb) {/*TC*/__t([params,'object','params'],[cb,'function?','cb']);/*/TC*/
   Assert.isObject(params);
   Assert.isString(params.method, 'method missing');
 
@@ -5170,21 +5455,22 @@ function requestUsingRest(params, cb) {
 }
 
 var ApiClient = {
-  setAccessToken: function(access_token) {
+  setAccessToken: function(/*string?*/ access_token) {/*TC*/__t([access_token,'string?','access_token']);/*/TC*/
     accessToken = access_token;
   },
-  setInvalidAccessTokenHandler: function(invalid_token_callback) {
+  setInvalidAccessTokenHandler: function(/*function?*/ invalid_token_callback) {/*TC*/__t([invalid_token_callback,'function?','invalid_token_callback']);/*/TC*/
     invalidTokenCallback = invalid_token_callback;
   },
-  setClientID: function(client_id) {
+  setClientID: function(/*string?*/ client_id) {/*TC*/__t([client_id,'string?','client_id']);/*/TC*/
     clientID = client_id;
   },
-  setDefaultParams: function(default_params) {
+  setDefaultParams: function(/*object?*/ default_params) {/*TC*/__t([default_params,'object?','default_params']);/*/TC*/
     defaultParams = default_params;
   },
   rest: requestUsingRest,
   graph: requestUsingGraph
 };
+
 
 FlashRequest.setSwfUrl(ApiClientConfig.FlashRequest.swfUrl);
 
@@ -5198,11 +5484,11 @@ var Runtime    = require('sdk.Runtime');
 
 var currentAccessToken;
 
-Runtime.subscribe('ClientID.change', function(value) {
+Runtime.subscribe('ClientID.change', function(/*string?*/ value) {/*TC*/__t([value,'string?','value']);/*/TC*/
   ApiClient.setClientID(value);
 });
 
-Runtime.subscribe('AccessToken.change', function(value) {
+Runtime.subscribe('AccessToken.change', function(/*string?*/ value) {/*TC*/__t([value,'string?','value']);/*/TC*/
   currentAccessToken = value;
   ApiClient.setAccessToken(value);
 });
@@ -5212,15 +5498,18 @@ ApiClient.setDefaultParams({
 });
 
 ApiClient.setInvalidAccessTokenHandler(function() {
-    if (currentAccessToken === Runtime.getAccessToken()) {
-        Runtime.setAccessToken(null);
+  
+  if (currentAccessToken === Runtime.getAccessToken()) {
+    
+    Runtime.setAccessToken(null);
   }
 });
 
 
 function api() {
 
-    if (typeof arguments[0] === 'string') {
+  
+  if (typeof arguments[0] === 'string') {
     ApiClient.graph.apply(ApiClient, arguments);
   } else {
     ApiClient.rest.apply(ApiClient, arguments);
@@ -5246,7 +5535,7 @@ var Runtime = require('sdk.Runtime');
 var Log = require('Log');
 var RPC = require('sdk.RPC');
 
-function getPageInfo(appCallback) {
+function getPageInfo(/*function*/ appCallback) {/*TC*/__t([appCallback,'function','appCallback']);/*/TC*/
   if (typeof appCallback !== 'function') {
     Log.error('FB.Canvas.getPageInfo called without a callback');
     return;
@@ -5255,12 +5544,12 @@ function getPageInfo(appCallback) {
     Log.warn('FB.init is required for getPageInfo to take effect');
   }
 
-  RPC.remote.getPageInfo(function(response) {
+  RPC.remote.getPageInfo(function(/*object*/ response) {/*TC*/__t([response,'object','response']);/*/TC*/
     appCallback(response.result);
   });
 }
 
-function scrollTo(x, y) {
+function scrollTo(/*number?*/ x, /*number?*/ y) {/*TC*/__t([x,'number?','x'],[y,'number?','y']);/*/TC*/
   if (!Runtime.getInitialized()) {
     Log.warn('FB.init is required for scrollTo to take effect');
   }
@@ -5288,28 +5577,67 @@ var Log = require('Log');
 var _punctCharClass = (
   '[' +
     '.!?' +
-    '\u3002' +      '\uFF01' +      '\uFF1F' +      '\u0964' +      '\u2026' +      '\u0EAF' +      '\u1801' +      '\u0E2F' +      '\uFF0E' +    ']'
+    '\u3002' +  
+    '\uFF01' +  
+    '\uFF1F' +  
+    '\u0964' +  
+    '\u2026' +  
+    '\u0EAF' +  
+    '\u1801' +  
+    '\u0E2F' +  
+    '\uFF0E' +  
+  ']'
 );
 
 
-function _endsInPunct(str) {
+function _endsInPunct(/*string?*/ str) /*boolean*/ {/*TC*/__t([str,'string?','str']); return __t([function(){/*/TC*/
   if (typeof str != 'string') {
     return false;
   }
 
-  return str.match(new RegExp(
+  return !!str.match(new RegExp(
     _punctCharClass +
     '[' +
       ')"' +
       "'" +
-                                                '\u00BB' +        '\u0F3B' +        '\u0F3D' +        '\u2019' +        '\u201D' +        '\u203A' +        '\u3009' +        '\u300B' +        '\u300D' +        '\u300F' +        '\u3011' +        '\u3015' +        '\u3017' +        '\u3019' +        '\u301B' +        '\u301E' +        '\u301F' +        '\uFD3F' +        '\uFF07' +        '\uFF09' +        '\uFF3D' +        '\\s' +
+      
+      
+      
+      
+      
+      
+      
+      '\u00BB' +  
+      '\u0F3B' +  
+      '\u0F3D' +  
+      '\u2019' +  
+      '\u201D' +  
+      '\u203A' +  
+      '\u3009' +  
+      '\u300B' +  
+      '\u300D' +  
+      '\u300F' +  
+      '\u3011' +  
+      '\u3015' +  
+      '\u3017' +  
+      '\u3019' +  
+      '\u301B' +  
+      '\u301E' +  
+      '\u301F' +  
+      '\uFD3F' +  
+      '\uFF07' +  
+      '\uFF09' +  
+      '\uFF3D' +  
+      '\\s' +
     ']*$'
   ));
-}
+/*TC*/}.apply(this, arguments), 'boolean']);/*/TC*/}
 
 
-function _substituteTokens(str, args) {
-      if (args !== undefined) {
+function _substituteTokens(/*string*/ str, /*object?*/ args) /*string*/ {/*TC*/__t([str,'string','str'],[args,'object?','args']); return __t([function(){/*/TC*/
+  
+  
+  if (args !== undefined) {
     if (typeof args != 'object') {
       Log.error(
         'The second arg to FB.Intl.tx() must be an Object for ' +
@@ -5319,9 +5647,13 @@ function _substituteTokens(str, args) {
       var regexp;
       for (var key in args) {
         if (args.hasOwnProperty(key)) {
-                    
+          
+          
+
           if (_endsInPunct(args[key])) {
-                                    regexp = new RegExp('\\{' + key + '\\}' +
+            
+            
+            regexp = new RegExp('\\{' + key + '\\}' +
                                   _punctCharClass + '*',
                                 'g');
           } else {
@@ -5333,12 +5665,13 @@ function _substituteTokens(str, args) {
     }
   }
   return str;
-}
+/*TC*/}.apply(this, arguments), 'string']);/*/TC*/}
 
 
 function tx() {
   throw new Error('Placeholder function');
 }
+
 
 tx._ = _substituteTokens;
 
@@ -5363,7 +5696,7 @@ var UserAgent = require('UserAgent');
 
 
 var Constructor = Type.extend({
-  constructor: function(id, display) {
+  constructor: function(/*string*/ id, /*string*/ display) {/*TC*/__t([id,'string','id'],[display,'string','display']);/*/TC*/
     this.parent();
     this.id = id;
     this.display = display;
@@ -5377,9 +5710,9 @@ var Constructor = Type.extend({
 
 var Dialog = {
 
-  newInstance: function(id, display) {
+  newInstance: function(/*string*/ id, /*string*/ display) /*object*/ {/*TC*/__t([id,'string','id'],[display,'string','display']); return __t([function(){/*/TC*/
     return new Constructor(id, display);
-  },
+  /*TC*/}.apply(this, arguments), 'object']);/*/TC*/},
 
   
   _dialogs: null,
@@ -5398,23 +5731,22 @@ var Dialog = {
   _active: null,
 
   
-  get: function(id) {
+  get: function(/*string*/ id) /*object*/ {/*TC*/__t([id,'string','id']); return __t([function(){/*/TC*/
     return Dialog._dialogs[id];
-  },
+  /*TC*/}.apply(this, arguments), 'object']);/*/TC*/},
 
 
   
-  _findRoot: function(node) {
+  _findRoot: function(/*DOMElement*/ node) /*DOMElement*/ {/*TC*/__t([node,'DOMElement','node']); return __t([function(){/*/TC*/
     while (node) {
       if (DOM.containsCss(node, 'fb_dialog')) {
         return node;
       }
       node = node.parentNode;
     }
-  },
+  /*TC*/}.apply(this, arguments), 'DOMElement']);/*/TC*/},
 
-  _createWWWLoader: function(width) {
-    width = parseInt(width, 10);
+  _createWWWLoader: function(/*number*/ width) /*DOMElement*/ {/*TC*/__t([width,'number','width']); return __t([function(){/*/TC*/
     width = width ? width : 460;
     return Dialog.create({
       content: (
@@ -5429,10 +5761,15 @@ var Dialog = {
       '<div class="dialog_footer"></div>'),
       width: width
     });
-  },
+  /*TC*/}.apply(this, arguments), 'DOMElement']);/*/TC*/},
 
-  _createMobileLoader: function() {
-                        var chrome = UserAgent.nativeApp()
+  _createMobileLoader: function() /*DOMElement*/ {/*TC*/ return __t([function(){/*/TC*/
+    
+    
+    
+    
+    
+    var chrome = UserAgent.nativeApp()
       ? ''
       : ('<table>' +
         '  <tbody>' +
@@ -5460,7 +5797,7 @@ var Dialog = {
           chrome +
         '</div>')
     });
-  },
+  /*TC*/}.apply(this, arguments), 'DOMElement']);/*/TC*/},
 
   _restoreBodyPosition: function() {
     if (!UserAgent.ipad()) {
@@ -5488,7 +5825,7 @@ var Dialog = {
   },
 
   
-  showLoader: function(cb, width) {
+  showLoader: function(/*function?*/ cb, /*number*/ width) {/*TC*/__t([cb,'function?','cb'],[width,'number','width']);/*/TC*/
     Dialog._showIPadOverlay();
 
     if (!Dialog._loaderEl) {
@@ -5497,7 +5834,11 @@ var Dialog = {
         : Dialog._createWWWLoader(width));
     }
 
-                    if (!cb) {
+    
+    
+    
+    
+    if (!cb) {
       cb = function() {};
     }
     var loaderClose = document.getElementById('fb_dialog_loader_close');
@@ -5524,7 +5865,7 @@ var Dialog = {
   },
 
   
-  _makeActive: function(el) {
+  _makeActive: function(/*DOMElement*/ el) {/*TC*/__t([el,'DOMElement','el']);/*/TC*/
     Dialog._setDialogSizes();
     Dialog._lowerActive();
     Dialog._active = el;
@@ -5546,14 +5887,14 @@ var Dialog = {
   },
 
   
-  _removeStacked: function(dialog) {
+  _removeStacked: function(/*DOMElement*/ dialog) {/*TC*/__t([dialog,'DOMElement','dialog']);/*/TC*/
     Dialog._stack = ES5(Dialog._stack, 'filter', true,function(node) {
       return node != dialog;
     });
   },
 
   
-  _centerActive: function(pageInfo) {
+  _centerActive: function(/*object?*/ pageInfo) {/*TC*/__t([pageInfo,'object?','pageInfo']);/*/TC*/
     var dialog = Dialog._active;
     if (!dialog) {
       return;
@@ -5564,30 +5905,62 @@ var Dialog = {
     var height = parseInt(dialog.offsetHeight, 10);
     var left = view.scrollLeft + (view.width - width) / 2;
 
-                                var minTop = (view.height - height) / 2.5;
+    
+    
+    
+    
+    
+    
+    
+    var minTop = (view.height - height) / 2.5;
     if (left < minTop) {
       minTop = left;
     }
     var maxTop = view.height - height - minTop;
 
-        var top = (view.height - height) / 2;
+    
+    var top = (view.height - height) / 2;
     if (pageInfo) {
       top = pageInfo.scrollTop - pageInfo.offsetTop +
         (pageInfo.clientHeight - height) / 2;
     }
 
-        if (top < minTop) {
+    
+    if (top < minTop) {
       top = minTop;
     } else if (top > maxTop) {
       top = maxTop;
     }
 
-        top += view.scrollTop;
+    
+    top += view.scrollTop;
 
-            if (UserAgent.mobile()) {
-                                                                                                                  var paddingHeight = 100;
+    
+    
+    if (UserAgent.mobile()) {
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      var paddingHeight = 100;
 
-                  if (UserAgent.ipad()) {
+      
+      
+      if (UserAgent.ipad()) {
         paddingHeight += (view.height - height) / 2;
       } else {
         var body = document.getElementsByTagName('body')[0];
@@ -5620,7 +5993,7 @@ var Dialog = {
       }
     }
   },
-  getDefaultSize: function() {
+  getDefaultSize: function() /*object*/ {/*TC*/ return __t([function(){/*/TC*/
     if (UserAgent.mobile()) {
       if (UserAgent.ipad()) {
         return {
@@ -5628,7 +6001,9 @@ var Dialog = {
           height: 590
         };
       } else if (UserAgent.android()) {
-                        return {
+        
+        
+        return {
           width: screen.availWidth,
           height: screen.availHeight
         };
@@ -5636,7 +6011,18 @@ var Dialog = {
         var width = window.innerWidth;
         var height = window.innerHeight;
         var isLandscape = width / height > 1.2;
-                                                                                                return {
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        return {
           width: width,
           height: Math.max(height,
                          (isLandscape ? screen.width : screen.height))
@@ -5644,12 +6030,20 @@ var Dialog = {
       }
     }
     return {width: 575, height: 240};
-  },
+  /*TC*/}.apply(this, arguments), 'object']);/*/TC*/},
 
 
   
   _handleOrientationChange: function(e) {
-                                    if (UserAgent.android() &&
+    
+    
+    
+    
+    
+    
+    
+    
+    if (UserAgent.android() &&
         screen.availWidth == Dialog._availScreenWidth) {
       setTimeout(Dialog._handleOrientationChange, 50);
       return;
@@ -5663,7 +6057,8 @@ var Dialog = {
       var width = Dialog.getDefaultSize().width;
       for (var id in Dialog._dialogs) {
         if (Dialog._dialogs.hasOwnProperty(id)) {
-                    var iframe = document.getElementById(id);
+          
+          var iframe = document.getElementById(id);
           if (iframe) {
             iframe.style.width = width + 'px';
           }
@@ -5677,7 +6072,10 @@ var Dialog = {
     if (!UserAgent.mobile()) {
       return;
     }
-                var event_name = "onorientationchange" in window
+    
+    
+    
+    var event_name = "onorientationchange" in window
       ? 'orientationchange'
       : 'resize';
 
@@ -5686,7 +6084,7 @@ var Dialog = {
   },
 
   
-  create: function(opts) {
+  create: function(/*object*/ opts) /*DOMElement*/ {/*TC*/__t([opts,'object','opts']); return __t([function(){/*/TC*/
     opts = opts || {};
 
     var
@@ -5694,7 +6092,8 @@ var Dialog = {
       contentRoot = document.createElement('div'),
       className   = 'fb_dialog';
 
-        if (opts.closeIcon && opts.onClose) {
+    
+    if (opts.closeIcon && opts.onClose) {
       var closeIcon = document.createElement('a');
       closeIcon.className = 'fb_dialog_close_icon';
       closeIcon.onclick = opts.onClose;
@@ -5703,7 +6102,8 @@ var Dialog = {
 
     className += ' ' + (opts.classes || '');
 
-        if (UserAgent.ie()) {
+    
+    if (UserAgent.ie()) {
       className += ' fb_dialog_legacy';
       ES5([ 'vert_left',
         'vert_right',
@@ -5712,7 +6112,7 @@ var Dialog = {
         'top_left',
         'top_right',
         'bottom_left',
-        'bottom_right'], 'forEach', true,function(name) {
+        'bottom_right'], 'forEach', true,function(/*string*/ name) {/*TC*/__t([name,'string','name']);/*/TC*/
           var span = document.createElement('span');
           span.className = 'fb_dialog_' + name;
           dialog.appendChild(span);
@@ -5747,10 +6147,10 @@ var Dialog = {
     }
 
     return contentRoot;
-  },
+  /*TC*/}.apply(this, arguments), 'DOMElement']);/*/TC*/},
 
   
-  show: function(dialog) {
+  show: function(/*DOMElement*/ dialog) {/*TC*/__t([dialog,'DOMElement','dialog']);/*/TC*/
     var root = Dialog._findRoot(dialog);
     if (root) {
       Dialog._removeStacked(root);
@@ -5764,7 +6164,7 @@ var Dialog = {
   },
 
   
-  hide: function(dialog) {
+  hide: function(/*DOMElement*/ dialog) {/*TC*/__t([dialog,'DOMElement','dialog']);/*/TC*/
     var root = Dialog._findRoot(dialog);
     if (root == Dialog._active) {
       Dialog._lowerActive();
@@ -5777,7 +6177,7 @@ var Dialog = {
   },
 
   
-  remove: function(dialog) {
+  remove: function(/*DOMElement*/ dialog) {/*TC*/__t([dialog,'DOMElement','dialog']);/*/TC*/
     dialog = Dialog._findRoot(dialog);
     if (dialog) {
       var is_active = Dialog._active == dialog;
@@ -5795,17 +6195,23 @@ var Dialog = {
         Dialog.show(Dialog._stack.pop());
       }
 
-                                          setTimeout(function() {
+      
+      
+      
+      
+      
+      
+      setTimeout(function() {
         dialog.parentNode.removeChild(dialog);
       }, 3000);
     }
   },
 
   
-  isActive: function(node) {
+  isActive: function(/*DOMElement*/ node) /*boolean*/ {/*TC*/__t([node,'DOMElement','node']); return __t([function(){/*/TC*/
     var root = Dialog._findRoot(node);
     return root && root === Dialog._active;
-  }
+  /*TC*/}.apply(this, arguments), 'boolean']);/*/TC*/}
 
 };
 
@@ -5821,7 +6227,9 @@ var Dialog = require('sdk.Dialog');
 
 var Frictionless = {
 
-      _allowedRecipients: {},
+  
+  
+  _allowedRecipients: {},
 
   _useFrictionless: false,
 
@@ -5832,21 +6240,21 @@ var Frictionless = {
       if (!response || response.error) {
         return;
       }
-      ES5(response.data, 'forEach', true,function(recipient) {
+      ES5(response.data, 'forEach', true,function(/*object*/ recipient) {/*TC*/__t([recipient,'object','recipient']);/*/TC*/
         Frictionless._allowedRecipients[recipient.recipient_id] = true;
-      }, false);
+      });
     });
   },
 
   
   init: function() {
     Frictionless._useFrictionless = true;
-    Auth.getLoginStatus(function(response) {
+    Auth.getLoginStatus(function(/*object*/ response) {/*TC*/__t([response,'object','response']);/*/TC*/
       if (response.status == 'connected') {
         Frictionless._updateRecipients();
       }
     });
-    Event.subscribe('auth.login', function(login) {
+    Event.subscribe('auth.login', function(/*object*/ login) {/*TC*/__t([login,'object','login']);/*/TC*/
       if (login.authResponse) {
         Frictionless._updateRecipients();
       }
@@ -5854,11 +6262,14 @@ var Frictionless = {
   },
 
   
-  _processRequestResponse: function(cb, hidden) {
-    return function(params) {
+  _processRequestResponse: function(/*function*/ cb, /*boolean? */hidden)
+      /*function*/ {/*TC*/__t([cb,'function','cb']); return __t([function(){/*/TC*/
+    return function(/*object?*/ params) {/*TC*/__t([params,'object?','params']);/*/TC*/
       var updated = params && params.updated_frictionless;
       if (Frictionless._useFrictionless && updated) {
-                        Frictionless._updateRecipients();
+        
+        
+        Frictionless._updateRecipients();
       }
 
       if (params) {
@@ -5870,35 +6281,36 @@ var Frictionless = {
         delete params.frictionless;
         delete params.updated_frictionless;
       }
-            cb && cb(params);
+      
+      cb && cb(params);
     };
-  },
+  /*TC*/}.apply(this, arguments), 'function']);/*/TC*/},
 
   
-  isAllowed: function(user_ids) {
+  isAllowed: function(user_ids) /*boolean*/ {/*TC*/ return __t([function(){/*/TC*/
     if (!user_ids) {
       return false;
     }
 
     if (typeof user_ids === 'number') {
-      return Frictionless._allowedRecipients[user_ids];
+      return user_ids in Frictionless._allowedRecipients;
     }
     if (typeof user_ids === 'string') {
       user_ids = user_ids.split(',');
     }
-    user_ids = ES5(user_ids, 'map', true,function(s) {return ES5(s,'trim', true);});
+    user_ids = ES5(user_ids, 'map', true,function(s) {return ES5(String(s),'trim', true);});
 
     var allowed = true;
     var has_user_ids = false;
-    ES5(user_ids, 'forEach', true,function(user_id) {
-      allowed = allowed && Frictionless._allowedRecipients[user_id];
+    ES5(user_ids, 'forEach', true,function(/*string*/ user_id) {/*TC*/__t([user_id,'string','user_id']);/*/TC*/
+      allowed = allowed && user_id in Frictionless._allowedRecipients;
       has_user_ids = true;
-    }, false);
+    });
     return allowed && has_user_ids;
-  }
+  /*TC*/}.apply(this, arguments), 'boolean']);/*/TC*/}
 };
 
-Event.subscribe('init:post', function(options) {
+Event.subscribe('init:post', function(/*object*/ options) {/*TC*/__t([options,'object','options']);/*/TC*/
   if (options.frictionlessRequests) {
     Frictionless.init();
   }
@@ -5906,6 +6318,129 @@ Event.subscribe('init:post', function(options) {
 
 
 module.exports = Frictionless;
+
+});
+__d("insertIframe",["guid","GlobalCallback"],function(global,require,requireDynamic,requireLazy,module,exports) {
+
+var guid = require('guid');
+var GlobalCallback = require('GlobalCallback');
+
+function insertIframe(/*object*/ opts) {/*TC*/__t([opts,'object','opts']);/*/TC*/
+
+  
+  
+
+  opts.id = opts.id || guid();
+  opts.name = opts.name || guid();
+
+  
+  
+  
+  
+  
+  var srcSet = false;
+  var onloadDone = false;
+  var callback = function() {
+    if (srcSet && !onloadDone) {
+      onloadDone = true;
+      opts.onload && opts.onload(opts.root.firstChild);
+    }
+  };
+  var globalCallback = GlobalCallback.create(callback);
+
+
+  
+  
+  
+
+  if (document.attachEvent) {
+    
+    
+    var html = (
+      '<iframe' +
+        ' id="' + opts.id + '"' +
+        ' name="' + opts.name + '"' +
+        (opts.title ? ' title="' + opts.title + '"' : '') +
+        (opts.className ? ' class="' + opts.className + '"' : '') +
+        ' style="border:none;' +
+        (opts.width ? 'width:' + opts.width + 'px;' : '') +
+        (opts.height ? 'height:' + opts.height + 'px;' : '') +
+        '"' +
+        ' src="javascript:false;"' +
+        ' frameborder="0"' +
+        ' scrolling="no"' +
+        ' allowtransparency="true"' +
+        ' onload="' + globalCallback + '()"' +
+        '></iframe>'
+    );
+
+    
+    
+    
+    
+    
+    
+    
+    
+    opts.root.innerHTML = (
+      '<iframe src="javascript:false"' +
+        ' frameborder="0"' +
+        ' scrolling="no"' +
+        ' style="height:1px"></iframe>'
+    );
+
+    
+    srcSet = true;
+
+    
+    
+    
+    
+    
+    window.setTimeout(function() {
+      opts.root.innerHTML = html;
+      opts.root.firstChild.src = opts.url;
+      opts.onInsert && opts.onInsert(opts.root.firstChild);
+    }, 0);
+
+  } else {
+    
+    
+    
+    var node = document.createElement('iframe');
+    node.id = opts.id;
+    node.name = opts.name;
+    node.onload = callback;
+    node.scrolling = 'no';
+    node.style.border = 'none';
+    node.style.overflow = 'hidden';
+    if (opts.title) {
+      node.title = opts.title;
+    }
+    if (opts.className) {
+      node.className = opts.className;
+    }
+    if (opts.height !== undefined) {
+      node.style.height = opts.height + 'px';
+    }
+    if (opts.width !== undefined) {
+      if (opts.width == '100%') {
+        node.style.width = opts.width;
+      } else {
+        node.style.width = opts.width + 'px';
+      }
+    }
+    opts.root.appendChild(node);
+
+    
+    srcSet = true;
+
+    node.src = opts.url;
+    opts.onInsert && opts.onInsert(node);
+  }
+}
+
+module.exports = insertIframe;
 
 });
 __d("sdk.Native",["copyProperties","Log","UserAgent"],function(global,require,requireDynamic,requireLazy,module,exports) {
@@ -5919,22 +6454,30 @@ var NATIVE_READY_EVENT = 'fbNativeReady';
 var Native = {
 
   
-  onready: function( func) {__t([func,'function','func']);
-        if (!UserAgent.nativeApp()) {
+  onready: function(/*function*/ func) {/*TC*/__t([func,'function','func']);/*/TC*/
+    
+    if (!UserAgent.nativeApp()) {
       Log.error('FB.Native.onready only works when the page is rendered ' +
              'in a WebView of the native Facebook app. Test if this is the ' +
              'case calling FB.UA.nativeApp()');
       return;
     }
 
-                    if (window.__fbNative && !this.nativeReady) {
+    
+    
+    
+    
+    if (window.__fbNative && !this.nativeReady) {
       copyProperties(this, window.__fbNative);
     }
 
-        if (this.nativeReady) {
+    
+    if (this.nativeReady) {
       func();
     } else {
-                  var nativeReadyCallback = function(evt) {
+      
+      
+      var nativeReadyCallback = function(evt) {
         window.removeEventListener(NATIVE_READY_EVENT, nativeReadyCallback);
         this.onready(func);
       };
@@ -5970,57 +6513,75 @@ var UserAgent = require('UserAgent');
 var XD = require('sdk.XD');
 
 var MobileIframeable = {
-  transform: function(call) {
-                if (call.params.display === 'touch' &&
+  transform: function(/*object*/ call) /*object*/ {/*TC*/__t([call,'object','call']); return __t([function(){/*/TC*/
+    
+    
+    
+    if (call.params.display === 'touch' &&
         call.params.access_token &&
         window.postMessage
        ) {
-                  call.params.channel = UIServer._xdChannelHandler(
+      
+      
+      call.params.channel = UIServer._xdChannelHandler(
         call.id,
         'parent'
       );
-            if (!UserAgent.nativeApp()) {
+      
+      if (!UserAgent.nativeApp()) {
         call.params.in_iframe = 1;
       }
       return call;
     } else {
       return UIServer.genericTransform(call);
     }
-  },
-  getXdRelation: function(params) {
+  /*TC*/}.apply(this, arguments), 'object']);/*/TC*/},
+  getXdRelation: function(/*object*/ params) /*string*/ {/*TC*/__t([params,'object','params']); return __t([function(){/*/TC*/
     var display = params.display;
     if (display === 'touch' && window.postMessage && params.in_iframe) {
-                        return 'parent';
+      
+      
+      
+      return 'parent';
     }
     return UIServer.getXdRelation(params);
-  }
+  /*TC*/}.apply(this, arguments), 'string']);/*/TC*/}
 };
 
 var Methods = {
   'stream.share': {
     size      : { width: 670, height: 340 },
     url       : 'sharer.php',
-    transform : function(call) {
+    transform : function(/*object*/ call) /*object*/ {/*TC*/__t([call,'object','call']); return __t([function(){/*/TC*/
       if (!call.params.u) {
         call.params.u = window.location.toString();
       }
       call.params.display = 'popup';
       return call;
-    }
+    /*TC*/}.apply(this, arguments), 'object']);/*/TC*/}
   },
 
-    'auth.logintofacebook': {
+  
+  'auth.logintofacebook': {
     size            : { width: 530, height: 287 },
     url             : 'login.php',
-    transform       : function(call) {
-                  call.params.skip_api_login = 1;
+    transform       : function(/*object*/ call) /*object*/ {/*TC*/__t([call,'object','call']); return __t([function(){/*/TC*/
+      
+      
+      call.params.skip_api_login = 1;
 
-                                    var relation = UIServer.getXdRelation(call.params);
+      
+      
+      
+      
+      
+      var relation = UIServer.getXdRelation(call.params);
       var next = UIServer._xdResult(
           call.cb,
           call.id,
           relation,
-          true         );
+          true 
+        );
       call.params.next =
         UrlMap.resolve('www') + '/login.php?' + QueryString.encode({
             api_key: Runtime.getClientID(),
@@ -6029,10 +6590,11 @@ var Methods = {
         });
 
       return call;
-    }
+    /*TC*/}.apply(this, arguments), 'object']);/*/TC*/}
   },
-    'apprequests': {
-    transform: function(call) {
+  
+  'apprequests': {
+    transform: function(/*object*/ call) /*object*/ {/*TC*/__t([call,'object','call']); return __t([function(){/*/TC*/
       call = MobileIframeable.transform(call);
 
       call.params.frictionless = Frictionless &&
@@ -6040,21 +6602,25 @@ var Methods = {
       if (call.params.frictionless) {
 
         if (Frictionless.isAllowed(call.params.to)) {
-                                                  call.params.display = 'iframe';
+          
+          
+          
+          
+          call.params.display = 'iframe';
           call.params.in_iframe = true;
-                    call.hideLoader = true;
+          
+          call.hideLoader = true;
         }
 
-                call.cb = Frictionless._processRequestResponse(
+        
+        call.cb = Frictionless._processRequestResponse(
           call.cb,
           call.hideLoader
         );
       }
       return call;
-    },
-    getXdRelation: function(params) {
-      return MobileIframeable.getXdRelation(params);
-    }
+    /*TC*/}.apply(this, arguments), 'object']);/*/TC*/},
+    getXdRelation: MobileIframeable.getXdRelation
   },
   'feed': MobileIframeable,
 
@@ -6062,13 +6628,16 @@ var Methods = {
     url       : 'dialog/oauth',
     size      : { width: (UserAgent.mobile() ? null : 627),
                   height: (UserAgent.mobile() ? null : 326) },
-    transform : function(call) {
+    transform : function(/*object*/ call) /*object*/ {/*TC*/__t([call,'object','call']); return __t([function(){/*/TC*/
       if (!Runtime.getClientID()) {
         Log.error('Log.errorin() called before FB.init().');
         return;
       }
 
-                        if (Auth.getAuthResponse() && !call.params.scope) {
+      
+      
+      
+      if (Auth.getAuthResponse() && !call.params.scope) {
         Log.error('Log.errorin() called when user is already connected.');
         call.cb && call.cb({ status: Runtime.getLoginStatus(),
                              authResponse: Auth.getAuthResponse()});
@@ -6109,12 +6678,12 @@ var Methods = {
       }
 
       return call;
-    }
+    /*TC*/}.apply(this, arguments), 'object']);/*/TC*/}
   },
 
   'auth.logout': {
     url       : 'logout.php',
-    transform : function(call) {
+    transform : function(/*object*/ call) /*object*/ {/*TC*/__t([call,'object','call']); return __t([function(){/*/TC*/
       if (!Runtime.getClientID()) {
         Log.error('Log.errorout() called before calling FB.init().');
       } else if (!Auth.getAuthResponse()) {
@@ -6127,12 +6696,12 @@ var Methods = {
                                              'logout');
         return call;
       }
-    }
+    /*TC*/}.apply(this, arguments), 'object']);/*/TC*/}
   },
 
   'login.status': {
     url       : 'dialog/oauth',
-    transform : function(call) {
+    transform : function(/*object*/ call) /*object*/ {/*TC*/__t([call,'object','call']); return __t([function(){/*/TC*/
       var
         cb = call.cb,
         id = call.id;
@@ -6150,19 +6719,20 @@ var Methods = {
       });
 
       return call;
-    }
+    /*TC*/}.apply(this, arguments), 'object']);/*/TC*/}
   }
 };
 
 var UIServer = {
   
   Methods: Methods,
-    _loadedNodes   : {},
+  
+  _loadedNodes   : {},
   _defaultCb     : {},
   _resultToken   : '"xxRESULTTOKENxx"',
 
   
-  genericTransform: function(call) {
+  genericTransform: function(/*object*/ call) /*object*/ {/*TC*/__t([call,'object','call']); return __t([function(){/*/TC*/
     if (call.params.display == 'dialog' || call.params.display == 'iframe') {
       copyProperties(call.params, {
         display: 'iframe',
@@ -6171,19 +6741,23 @@ var UIServer = {
     }
 
     return call;
-  },
+  /*TC*/}.apply(this, arguments), 'object']);/*/TC*/},
 
   
-  prepareCall: function(params, cb) {
+  prepareCall: function(/*object*/ params, /*function*/ cb) /*object*/ {/*TC*/__t([params,'object','params'],[cb,'function','cb']); return __t([function(){/*/TC*/
     var
       name   = params.method.toLowerCase(),
       method = copyProperties({}, UIServer.Methods[name]),
       id     = guid(),
-                        forceHTTPS = (method.noHttps !== true) &&
+      
+      
+      
+      forceHTTPS = (method.noHttps !== true) &&
                    (Runtime.getSecure() ||
                     (name !== 'auth.status' && name != 'login.status'));
 
-        copyProperties(params, {
+    
+    copyProperties(params, {
       api_key      : Runtime.getClientID(),
       app_id       : Runtime.getClientID(),
       locale       : Runtime.getLocale(),
@@ -6191,13 +6765,16 @@ var UIServer = {
       access_token : forceHTTPS && Runtime.getAccessToken() || undefined
     });
 
-        params.display = UIServer.getDisplayMode(method, params);
+    
+    params.display = UIServer.getDisplayMode(method, params);
 
-        if (!method.url) {
+    
+    if (!method.url) {
       method.url = 'dialog/' + name;
     }
 
-        var call = {
+    
+    var call = {
       cb     : cb,
       id     : id,
       size   : method.size || UIServer.getDefaultSize(),
@@ -6208,18 +6785,22 @@ var UIServer = {
       dialog : Dialog.newInstance(id, params.display)
     };
 
-        var transform = method.transform
+    
+    var transform = method.transform
       ? method.transform
       : UIServer.genericTransform;
     if (transform) {
       call = transform(call);
 
-            if (!call) {
+      
+      if (!call) {
         return;
       }
     }
 
-            var getXdRelationFn = method.getXdRelation || UIServer.getXdRelation;
+    
+    
+    var getXdRelationFn = method.getXdRelation || UIServer.getXdRelation;
     var relation = getXdRelationFn(call.params);
     if (!(call.id in UIServer._defaultCb) &&
         !('next' in call.params) &&
@@ -6228,7 +6809,8 @@ var UIServer = {
         call.cb,
         call.id,
         relation,
-        true       );
+        true 
+      );
     }
     if (relation === 'parent') {
       copyProperties(call.params, {
@@ -6236,21 +6818,30 @@ var UIServer = {
       }, true);
     }
 
-        call = UIServer.prepareParams(call);
+    
+    call = UIServer.prepareParams(call);
 
     return call;
-  },
+  /*TC*/}.apply(this, arguments), 'object']);/*/TC*/},
 
-  prepareParams: function(call) {
+  prepareParams: function(/*object*/ call) /*object*/ {/*TC*/__t([call,'object','call']); return __t([function(){/*/TC*/
     var method = call.params.method;
-                    if (call.params.display !== 'async') {
+    
+    
+    
+    
+    if (call.params.display !== 'async') {
       delete call.params.method;
     }
 
-        call.params = flattenObject(call.params);
+    
+    call.params = flattenObject(call.params);
     var encodedQS = QueryString.encode(call.params);
 
-                if (!UserAgent.nativeApp() &&
+    
+    
+    
+    if (!UserAgent.nativeApp() &&
         UIServer.urlTooLongForIE(call.url + '?' + encodedQS)) {
       call.post = true;
     } else if (encodedQS) {
@@ -6258,14 +6849,14 @@ var UIServer = {
     }
 
     return call;
-  },
+  /*TC*/}.apply(this, arguments), 'object']);/*/TC*/},
 
-  urlTooLongForIE: function(fullURL) {
+  urlTooLongForIE: function(/*string*/ fullURL) /*boolean*/ {/*TC*/__t([fullURL,'string','fullURL']); return __t([function(){/*/TC*/
     return fullURL.length > 2000;
-  },
+  /*TC*/}.apply(this, arguments), 'boolean']);/*/TC*/},
 
   
-  getDisplayMode: function(method, params) {
+  getDisplayMode: function(/*object*/ method, /*object*/ params) /*string*/ {/*TC*/__t([method,'object','method'],[params,'object','params']); return __t([function(){/*/TC*/
     if (params.display === 'hidden' ||
         params.display === 'none') {
       return params.display;
@@ -6277,11 +6868,13 @@ var UIServer = {
       return 'async';
     }
 
-        if (UserAgent.mobile() || params.display === 'touch') {
+    
+    if (UserAgent.mobile() || params.display === 'touch') {
       return 'touch';
     }
 
-        if (!Runtime.getAccessToken() &&
+    
+    if (!Runtime.getAccessToken() &&
         params.display == 'dialog' &&
         !method.loggedOutIframe) {
       Log.error('"dialog" mode can only be used when the user is connected.');
@@ -6292,11 +6885,12 @@ var UIServer = {
       return method.connectDisplay;
     }
 
-        return params.display || (Runtime.getAccessToken() ? 'dialog' : 'popup');
-  },
+    
+    return params.display || (Runtime.getAccessToken() ? 'dialog' : 'popup');
+  /*TC*/}.apply(this, arguments), 'string']);/*/TC*/},
 
   
-  getXdRelation: function(params) {
+  getXdRelation: function(/*object*/ params) /*string*/ {/*TC*/__t([params,'object','params']); return __t([function(){/*/TC*/
     var display = params.display;
     if (display === 'popup' || display === 'touch') {
       return 'opener';
@@ -6308,11 +6902,12 @@ var UIServer = {
     if (display === 'async') {
       return 'parent.frames[' + window.name + ']';
     }
-  },
+  /*TC*/}.apply(this, arguments), 'string']);/*/TC*/},
 
   
-  popup: function(call) {
-        var
+  popup: function(/*object*/ call) {/*TC*/__t([call,'object','call']);/*/TC*/
+    
+    var
       _screenX   = typeof window.screenX      != 'undefined'
         ? window.screenX
         : window.screenLeft,
@@ -6325,7 +6920,10 @@ var UIServer = {
       outerHeight = typeof window.outerHeight != 'undefined'
         ? window.outerHeight
         : (document.documentElement.clientHeight - 22), 
-                  width    = UserAgent.mobile() ? null : call.size.width,
+
+      
+      
+      width    = UserAgent.mobile() ? null : call.size.width,
       height   = UserAgent.mobile() ? null : call.size.height,
       screenX  = (_screenX < 0) ? window.screen.width + _screenX : _screenX,
       left     = parseInt(screenX + ((outerWidth - width) / 2), 10),
@@ -6347,7 +6945,8 @@ var UIServer = {
     }
     features = features.join(',');
 
-        var popup;
+    
+    var popup;
     if (call.post) {
       popup = window.open('about:blank', call.id, features);
       if (popup) {
@@ -6365,19 +6964,24 @@ var UIServer = {
       }
     }
 
-        if (!popup) {
+    
+    if (!popup) {
       //TODO: signal failure
       return;
     }
 
-        if (call.id in UIServer._defaultCb) {
+    
+    if (call.id in UIServer._defaultCb) {
       UIServer._popupMonitor();
     }
   },
 
-  setLoadedNode: function(call, node, type) {
+  setLoadedNode: function(/*object*/ call, node, /*string?*/ type) {/*TC*/__t([call,'object','call'],[type,'string?','type']);/*/TC*/
     if (call.params && call.params.display != 'popup') {
-                        node.fbCallID = call.id;
+      
+      
+      
+      node.fbCallID = call.id;
     }
     node = {
       node: node,
@@ -6394,14 +6998,14 @@ var UIServer = {
   },
 
   
-  hidden: function(call) {
+  hidden: function(/*object*/ call) {/*TC*/__t([call,'object','call']);/*/TC*/
     call.className = 'FB_UI_Hidden';
     call.root = Content.appendHidden('');
     UIServer._insertIframe(call);
   },
 
   
-  iframe: function(call) {
+  iframe: function(/*object*/ call) {/*TC*/__t([call,'object','call']);/*/TC*/
     call.className = 'FB_UI_Dialog';
     var onClose = function() {
       UIServer._triggerDefault(call.id);
@@ -6419,9 +7023,11 @@ var UIServer = {
   },
 
   
-  touch: function(call) {
+  touch: function(/*object*/ call) {/*TC*/__t([call,'object','call']);/*/TC*/
     if (call.params && call.params.in_iframe) {
-                  if (call.ui_created) {
+      
+      
+      if (call.ui_created) {
         Dialog.showLoader(function() {
           UIServer._triggerDefault(call.id);
         }, 0);
@@ -6429,43 +7035,56 @@ var UIServer = {
         UIServer.iframe(call);
       }
     } else if (UserAgent.nativeApp() && !call.ui_created) {
-                  call.frame = call.id;
+      
+      
+      call.frame = call.id;
       Native.onready(function() {
-                                                        UIServer.setLoadedNode(
+        
+        
+        
+        
+        
+        
+        UIServer.setLoadedNode(
           call,
           Native.open(call.url + '#cb=' + call.frameName),
           'native');
       });
       UIServer._popupMonitor();
     } else if (!call.ui_created) {
-            UIServer.popup(call);
+      
+      UIServer.popup(call);
     }
   },
 
   
-  async: function(call) {
+  async: function(/*object*/ call) {/*TC*/__t([call,'object','call']);/*/TC*/
     call.params.redirect_uri = location.protocol + '//' +
       location.host + location.pathname;
 
-    RPC.remote.showDialog(call.params, function(response) {
+    RPC.remote.showDialog(call.params, function(/*object*/ response) {/*TC*/__t([response,'object','response']);/*/TC*/
       call.cb(response.result);
     });
   },
 
-  getDefaultSize: function() {
+  getDefaultSize: function() /*object*/ {/*TC*/ return __t([function(){/*/TC*/
     return Dialog.getDefaultSize();
-  },
+  /*TC*/}.apply(this, arguments), 'object']);/*/TC*/},
 
   
-  _insertIframe: function(call) {
-                UIServer._loadedNodes[call.id] = false;
-    var activate = function(node) {
+  _insertIframe: function(/*object*/ call) {/*TC*/__t([call,'object','call']);/*/TC*/
+    
+    
+    
+    UIServer._loadedNodes[call.id] = false;
+    var activate = function(/*DOMElement*/ node) {/*TC*/__t([node,'DOMElement','node']);/*/TC*/
       if (call.id in UIServer._loadedNodes) {
         UIServer.setLoadedNode(call, node, 'iframe');
       }
     };
 
-        if (call.post) {
+    
+    if (call.post) {
       insertIframe({
         url       : 'about:blank',
         root      : call.root,
@@ -6474,7 +7093,7 @@ var UIServer = {
         height    : call.size.height,
         id        : call.id,
         onInsert  : activate,
-        onload    : function(node) {
+        onload    : function(/*DOMElement*/ node) {/*TC*/__t([node,'DOMElement','node']);/*/TC*/
           Content.submitToTarget({
             url    : call.url,
             target : node.name,
@@ -6497,7 +7116,7 @@ var UIServer = {
   },
 
   
-  _handleResizeMessage: function(frame, data) {
+  _handleResizeMessage: function(/*string*/ frame, /*object*/ data) {/*TC*/__t([frame,'string','frame'],[data,'object','data']);/*/TC*/
     var node = UIServer.getLoadedNode(frame);
     if (!node) {
       return;
@@ -6521,7 +7140,7 @@ var UIServer = {
   },
 
   
-  _triggerDefault: function(id) {
+  _triggerDefault: function(/*string*/ id) {/*TC*/__t([id,'string','id']);/*/TC*/
     UIServer._xdRecv(
       { frame: id },
       UIServer._defaultCb[id] || function() {}
@@ -6530,9 +7149,11 @@ var UIServer = {
 
   
   _popupMonitor: function() {
-        var found;
+    
+    var found;
     for (var id in UIServer._loadedNodes) {
-            if (UIServer._loadedNodes.hasOwnProperty(id) &&
+      
+      if (UIServer._loadedNodes.hasOwnProperty(id) &&
           id in UIServer._defaultCb) {
         var node = UIServer._loadedNodes[id];
         if (node.type != 'popup' && node.type != 'native') {
@@ -6541,31 +7162,35 @@ var UIServer = {
         var win = node.node;
 
         try {
-                    if (win.closed) {
+          
+          if (win.closed) {
             UIServer._triggerDefault(id);
           } else {
-            found = true;           }
+            found = true; 
+          }
         } catch (y) {
-                  }
+          
+        }
       }
     }
 
     if (found && !UIServer._popupInterval) {
-            UIServer._popupInterval = window.setInterval(
-        UIServer._popupMonitor,
-        100
-      );
+      
+      UIServer._popupInterval = setInterval(UIServer._popupMonitor, 100);
     } else if (!found && UIServer._popupInterval) {
-            clearInterval(UIServer._popupInterval);
+      
+      clearInterval(UIServer._popupInterval);
       UIServer._popupInterval = null;
     }
   },
 
   
-  _xdChannelHandler: function(frame, relation) {
-    return XD.handler(function(data) {
+  _xdChannelHandler: function(/*string*/ frame, /*string*/ relation)
+      /*string*/ {/*TC*/__t([frame,'string','frame'],[relation,'string','relation']); return __t([function(){/*/TC*/
+    return XD.handler(function(/*object*/ data) {/*TC*/__t([data,'object','data']);/*/TC*/
       var node = UIServer.getLoadedNode(frame);
-      if (!node) {         return;
+      if (!node) { 
+        return;
       }
 
       if (data.type == 'resize') {
@@ -6579,10 +7204,11 @@ var UIServer = {
         Event.fire(data.event);
       }
     }, relation, true, null);
-  },
+  /*TC*/}.apply(this, arguments), 'string']);/*/TC*/},
 
   
-  _xdNextHandler: function(cb, frame, relation, isDefault) {
+  _xdNextHandler: function(/*function*/ cb, /*string*/ frame,
+       /*string*/ relation, /*boolean*/ isDefault) /*string*/ {/*TC*/__t([cb,'function','cb'],[frame,'string','frame'],[relation,'string','relation'],[isDefault,'boolean','isDefault']); return __t([function(){/*/TC*/
     if (isDefault) {
       UIServer._defaultCb[frame] = cb;
     }
@@ -6590,39 +7216,48 @@ var UIServer = {
     return XD.handler(function(data) {
       UIServer._xdRecv(data, cb);
     }, relation) + '&frame=' + frame;
-  },
+  /*TC*/}.apply(this, arguments), 'string']);/*/TC*/},
 
   
-  _xdRecv: function(data, cb) {
+  _xdRecv: function(/*object*/ data, /*function*/ cb) {/*TC*/__t([data,'object','data'],[cb,'function','cb']);/*/TC*/
     var frame = UIServer.getLoadedNode(data.frame);
     if (frame) {
-            try {
+      
+      try {
         if (DOM.containsCss(frame, 'FB_UI_Hidden')) {
-                              setTimeout(function() {
-                        frame.parentNode.parentNode.removeChild(frame.parentNode);
+          
+          
+          setTimeout(function() {
+            
+            frame.parentNode.parentNode.removeChild(frame.parentNode);
           }, 3000);
         } else if (DOM.containsCss(frame, 'FB_UI_Dialog')) {
           Dialog.remove(frame);
         }
       } catch (x) {
-              }
+        
+      }
 
-            try {
+      
+      try {
         if (frame.close) {
           frame.close();
           UIServer._popupCount--;
         }
       } catch (y) {
-              }
+        
+      }
 
     }
-        delete UIServer._loadedNodes[data.frame];
+    
+    delete UIServer._loadedNodes[data.frame];
     delete UIServer._defaultCb[data.frame];
     cb(data);
   },
 
   
-  _xdResult: function(cb, frame, target, isDefault) {
+  _xdResult: function(/*function*/ cb, /*string*/ frame, /*string*/ target,
+      /*boolean*/ isDefault) /*string*/ {/*TC*/__t([cb,'function','cb'],[frame,'string','frame'],[target,'string','target'],[isDefault,'boolean','isDefault']); return __t([function(){/*/TC*/
     return (
       UIServer._xdNextHandler(function(params) {
         cb && cb(params.result &&
@@ -6631,23 +7266,25 @@ var UIServer = {
       }, frame, target, isDefault) +
       '&result=' + encodeURIComponent(UIServer._resultToken)
     );
-  },
+  /*TC*/}.apply(this, arguments), 'string']);/*/TC*/},
 
-  xdHandler: function(cb, frame, target, authResponse, method) {
+  xdHandler: function(/*function*/ cb, /*string*/ frame, /*string*/ target,
+      /*object?*/ authResponse, /*string*/ method) /*string*/ {/*TC*/__t([cb,'function','cb'],[frame,'string','frame'],[target,'string','target'],[authResponse,'object?','authResponse'],[method,'string','method']); return __t([function(){/*/TC*/
     return UIServer._xdNextHandler(
       Auth.xdResponseWrapper(cb, authResponse, method),
       frame,
       target,
       true);
-  }
+  /*TC*/}.apply(this, arguments), 'string']);/*/TC*/}
 
 };
 
 module.exports = UIServer;
 
 });
-__d("sdk.ui",["copyProperties","Log","sdk.Runtime","sdk.UIServer","SDKConfig"],function(global,require,requireDynamic,requireLazy,module,exports) {
+__d("sdk.ui",["Assert","copyProperties","Log","sdk.Runtime","sdk.UIServer","SDKConfig"],function(global,require,requireDynamic,requireLazy,module,exports) {
 
+var Assert = require('Assert');
 var copyProperties = require('copyProperties');
 var Log = require('Log');
 var Runtime = require('sdk.Runtime');
@@ -6655,14 +7292,18 @@ var SDKConfig = requireDynamic('SDKConfig');
 var UIServer = require('sdk.UIServer');
 
 
-function ui(params, cb) {
+function ui(/*object*/ params, /*function?*/ cb) /*object*/ {/*TC*/__t([params,'object','params'],[cb,'function?','cb']); return __t([function(){/*/TC*/
+  Assert.isObject(params);
+  Assert.maybeFunction(cb);
+
   params = copyProperties({}, params);
   if (!params.method) {
     Log.error('"method" is a required parameter for FB.ui().');
     return null;
   }
 
-    if ((params.method == 'permissions.request' ||
+  
+  if ((params.method == 'permissions.request' ||
        params.method == 'permissions.oauth') &&
       (params.display == 'iframe' || params.display == 'dialog')) {
     var perms = 'scope' in params
@@ -6670,22 +7311,32 @@ function ui(params, cb) {
       : Runtime.getScope();
     if (perms) {
       var requested_perms = perms.split(/\s|,/g);
-                  for (var i = 0; i < requested_perms.length; i++) {
+      
+      
+      for (var i = 0; i < requested_perms.length; i++) {
         var perm = ES5(requested_perms[i],'trim', true);
-                        if (perm && !SDKConfig.initSitevars.iframePermissions[perm]) {
+        
+        
+        if (perm && !SDKConfig.initSitevars.iframePermissions[perm]) {
           params.display = 'popup';
-                              break;
+          
+          
+          break;
         }
       }
     }
   }
 
   var call = UIServer.prepareCall(params, cb || function() {});
-  if (!call) {     return null;
+  if (!call) { 
+    return null;
   }
 
-    var displayName = call.params.display;
-  if (displayName === 'dialog') {                                      displayName = 'iframe';
+  
+  var displayName = call.params.display;
+  if (displayName === 'dialog') { 
+                                 
+    displayName = 'iframe';
   } else if (displayName === 'none') {
     displayName = 'hidden';
   }
@@ -6699,7 +7350,7 @@ function ui(params, cb) {
 
   displayFn(call);
   return call.dialog;
-}
+/*TC*/}.apply(this, arguments), 'object']);/*/TC*/}
 
 module.exports = ui;
 
@@ -6775,12 +7426,15 @@ Event.subscribe('init:post', function(options) {
     if (options.authResponse) {
       Auth.setAuthResponse(options.authResponse, 'connected');
     } else if (Runtime.getUseCookie()) {
-                  var signedRequest = Cookie.loadSignedRequest();
+      
+      
+      var signedRequest = Cookie.loadSignedRequest();
       try {
         var parsedSignedRequest = SignedRequest.parse(signedRequest);
         Runtime.setUserID(parsedSignedRequest.user_id || 0);
       } catch (e) {
-                Cookie.clearSignedRequestCookie();
+        
+        Cookie.clearSignedRequestCookie();
       }
       Cookie.loadMeta();
     }
@@ -6794,7 +7448,7 @@ var DOMWrapper = require('DOMWrapper');
 var createArrayFrom = require('createArrayFrom');
 
 
-function computeContentSize() {
+function computeContentSize() /*object*/ {/*TC*/ return __t([function(){/*/TC*/
   var document = DOMWrapper.getWindow().document;
   var body = document.body,
       docElement = document.documentElement,
@@ -6810,7 +7464,7 @@ function computeContentSize() {
   if (body.offsetWidth < body.scrollWidth) {
     right = body.scrollWidth + body.offsetLeft;
   } else {
-    ES5(createArrayFrom(body.childNodes), 'forEach', true,function(child) {
+    ES5(createArrayFrom(body.childNodes), 'forEach', true,function(/*DOMElement*/ child) {/*TC*/__t([child,'DOMElement','child']);/*/TC*/
       var childRight = child.offsetWidth + child.offsetLeft;
       if (childRight > right) {
         right = childRight;
@@ -6829,7 +7483,7 @@ function computeContentSize() {
     height: bottom,
     width: right
   };
-}
+/*TC*/}.apply(this, arguments), 'object']);/*/TC*/}
 
 module.exports = computeContentSize;
 
@@ -6844,19 +7498,25 @@ var computeContentSize = require('sdk.computeContentSize');
 var autoGrowTimer = null;
 var autoGrowLastSize;
 
-function setSize(params) {
+function setSize(/*object?*/ params) /*boolean*/ {/*TC*/__t([params,'object?','params']); return __t([function(){/*/TC*/
   if (!Runtime.getInitialized() &&
       arguments.callee.caller != setAutoGrow) {
     Log.warn('FB.init is required for setSize to take effect');
   }
-    if (typeof params != 'object') {
+  
+  if (typeof params != 'object') {
     params = {};
   }
   var minShrink = 0,
       minGrow = 0;
   if (!params.height) {
     params.height = computeContentSize().height;
-                        minShrink = 16;
+    
+    
+    
+    
+    
+    minShrink = 16;
     minGrow = 4;
   }
 
@@ -6874,7 +7534,7 @@ function setSize(params) {
   autoGrowLastSize = params;
   RPC.remote.setSize(params);
   return true;
-}
+/*TC*/}.apply(this, arguments), 'boolean']);/*/TC*/}
 
 function setAutoGrow(on, interval) {
   if (!Runtime.getInitialized()) {
@@ -6914,16 +7574,16 @@ __d("sdk.Canvas.Tti",["sdk.RPC","sdk.Runtime"],function(global,require,requireDy
 var RPC = require('sdk.RPC');
 var Runtime = require('sdk.Runtime');
 
-function passAppTtiMessage(callback, messageName) {
+function passAppTtiMessage(/*function?*/ callback, /*string*/ messageName) {/*TC*/__t([callback,'function?','callback'],[messageName,'string','messageName']);/*/TC*/
   var params = {
     appId: Runtime.getClientID(),
-    time: (new Date()).getTime(),
+    time: ES5('Date', 'now', false),
     name: messageName
   };
 
   var args = [params];
   if (callback) {
-    args.push(function(response) {
+    args.push(function(/*object*/ response) {/*TC*/__t([response,'object','response']);/*/TC*/
       callback(response.result);
     });
   }
@@ -6936,12 +7596,12 @@ function startTimer() {
   passAppTtiMessage(null, 'StartIframeAppTtiTimer');
 }
 
-function stopTimer(callback) {
+function stopTimer(/*function?*/ callback) {/*TC*/__t([callback,'function?','callback']);/*/TC*/
   passAppTtiMessage(callback, 'StopIframeAppTtiTimer');
 }
 
 
-function setDoneLoading(callback) {
+function setDoneLoading(/*function?*/ callback) {/*TC*/__t([callback,'function?','callback']);/*/TC*/
   passAppTtiMessage(callback, 'RecordIframeAppTti');
 }
 
@@ -6968,21 +7628,21 @@ var flashClassID = 'CLSID:D27CDB6E-AE6D-11CF-96B8-444553540000';
 var devHideFlashCallback = null;
 
 
-function hideFlashElement(elem) {
+function hideFlashElement(/*DOMElement*/ elem) {/*TC*/__t([elem,'DOMElement','elem']);/*/TC*/
   elem.style.visibility = 'hidden';
 }
 
 
-function showFlashElement(elem) {
+function showFlashElement(/*DOMElement*/ elem) {/*TC*/__t([elem,'DOMElement','elem']);/*/TC*/
   elem.style.visibility = '';
 }
 
 
-function hideFlashCallback(params) {
+function hideFlashCallback(/*object*/ params) {/*TC*/__t([params,'object','params']);/*/TC*/
   Log.info('hideFlashCallback called with %s', params.state);
 
   var candidates = window.document.getElementsByTagName('object');
-  ES5(createArrayFrom(candidates), 'forEach', true,function(elem) {
+  ES5(createArrayFrom(candidates), 'forEach', true,function(/*DOMElement*/ elem) {/*TC*/__t([elem,'DOMElement','elem']);/*/TC*/
     if (elem.type.toLowerCase() != "application/x-shockwave-flash" &&
         (!elem.classid ||
         elem.classid.toUpperCase() != flashClassID)) {
@@ -6999,7 +7659,10 @@ function hideFlashCallback(params) {
 
     if (devHideFlashCallback) {
       Log.info('Calling developer specified callback');
-                        var devArgs = { state : params.state, elem : elem };
+      
+      
+      
+      var devArgs = { state : params.state, elem : elem };
       devHideFlashCallback(devArgs);
       setTimeout(function() {
         if (devArgs.state == 'opened') {
@@ -7032,7 +7695,8 @@ RPC.local.showFlashObjects = function() {
 };
 
 var Flash = {
-    _setHideFlashCallback: function(callback) {
+  
+  _setHideFlashCallback: function(/*function?*/ callback) {/*TC*/__t([callback,'function?','callback']);/*/TC*/
     devHideFlashCallback = callback;
   },
 
@@ -7043,46 +7707,42 @@ var Flash = {
 module.exports = Flash;
 
 });
-__d("sdk.Canvas.Navigation",["sdk.RPC","Log","sdk.Runtime"],function(global,require,requireDynamic,requireLazy,module,exports) {
+__d("sdk.Canvas.Navigation",["Assert","sdk.RPC","Log","sdk.Runtime"],function(global,require,requireDynamic,requireLazy,module,exports) {
 
+var Assert = require('Assert');
 var RPC = require('sdk.RPC');
 var Log = require('Log');
 var Runtime = require('sdk.Runtime');
 
 
-function setHash(hash) {
-  if (typeof hash !== 'string') {
-    Log.error('FB.Canvas.setHash must have a String as argument');
-    return;
-  }
+function setHash(/*string*/ hash) {/*TC*/__t([hash,'string','hash']);/*/TC*/
+  Assert.isString(hash, 'FB.Canvas.setHash must have a String as argument');
 
-    hash = hash.replace(/[{}<\[\]>#%"]/, encodeURIComponent);
+  
+  hash = hash.replace(/[{}<\[\]>#%"]/, encodeURIComponent);
   RPC.remote.setHash(hash);
 }
 
 
-function getHash(appCallback) {
-  if (typeof appCallback !== 'function') {
-    Log.error('FB.Canvas.getHash called without a callback');
-    return;
-  }
+function getHash(/*function*/ appCallback) {/*TC*/__t([appCallback,'function','appCallback']);/*/TC*/
+  Assert.isFunction(appCallback, 'FB.Canvas.getHash called without a callback');
 
-  RPC.remote.getHash(function(response) {
+  RPC.remote.getHash(function(/*object*/ response) {/*TC*/__t([response,'object','response']);/*/TC*/
     appCallback(response.result);
   });
 }
 
 
-function setUrlHandler(callback) {
+function setUrlHandler(/*function*/ callback) {/*TC*/__t([callback,'function','callback']);/*/TC*/
   if (!Runtime.getInitialized()) {
     Log.warn('FB.init is required for setUrlHandler to take effect');
   }
-  RPC.local.navigate = function(path) {
-    Log.info('navigate %s', path);
+  RPC.local.navigate = function(/*string*/ path) {/*TC*/__t([path,'string','path']);/*/TC*/
     callback({ path: path });
   };
   RPC.remote.setNavigationEnabled(true);
 }
+
 
 RPC.stub('setNavigationEnabled');
 RPC.stub('getHash');
@@ -7111,12 +7771,7 @@ var CanvasNavigation     = require('sdk.Canvas.Navigation');
 
 RPC.stub('showDialog');
 
-var Canvas = {
-    isTabIframe: function() {
-    return Runtime.isEnvironment(Runtime.ENVIRONMENTS.PAGETAB);
-  }
-};
-
+var Canvas = {};
 
 copyProperties(Canvas, CanvasIframeHandling);
 copyProperties(Canvas, CanvasEnvironment);
@@ -7165,16 +7820,17 @@ var collectionMode = COLLECT.AUTOMATIC;
 var links = [];
 
 function sample() {
-    var resourceFieldsByTag = {
+  
+  var resourceFieldsByTag = {
     object: 'data',
     link: 'href',
     script: 'src'
   };
 
   if (collectionMode == COLLECT.AUTOMATIC) {
-    ES5(ES5('Object', 'keys', false,resourceFieldsByTag), 'forEach', true,function(tagName) {
+    ES5(ES5('Object', 'keys', false,resourceFieldsByTag), 'forEach', true,function(/*string*/ tagName) {/*TC*/__t([tagName,'string','tagName']);/*/TC*/
       var propertyName = resourceFieldsByTag[tagName];
-      ES5(createArrayFrom(document.getElementsByTagName(tagName)), 'forEach', true,function(tag) {
+      ES5(createArrayFrom(document.getElementsByTagName(tagName)), 'forEach', true,function(/*DOMElement*/ tag) {/*TC*/__t([tag,'DOMElement','tag']);/*/TC*/
           if (tag[propertyName]) {
             links.push(tag[propertyName]);
           }
@@ -7186,7 +7842,8 @@ function sample() {
     return;
   }
 
-    api(Runtime.getClientID() + '/staticresources', 'post', {
+  
+  api(Runtime.getClientID() + '/staticresources', 'post', {
     urls: ES5('JSON', 'stringify', false,links),
     is_https: location.protocol === 'https:'
   });
@@ -7206,16 +7863,17 @@ function maybeSample() {
     return;
   }
 
-    setTimeout(sample, 30000);
+  
+  setTimeout(sample, 30000);
 }
 
 
-function setCollectionMode(mode) {
+function setCollectionMode(/*number*/ mode) {/*TC*/__t([mode,'number','mode']);/*/TC*/
   collectionMode = mode;
 }
 
 
-function addStaticResource(url) {
+function addStaticResource(/*string*/ url) {/*TC*/__t([url,'string','url']);/*/TC*/
   links.push(url);
 }
 
@@ -7226,7 +7884,8 @@ var CanvasPrefetcher = {
   addStaticResource: addStaticResource,
   setCollectionMode: setCollectionMode,
 
-    _maybeSample: maybeSample
+  
+  _maybeSample: maybeSample
 };
 
 module.exports = CanvasPrefetcher;
@@ -7286,25 +7945,26 @@ FB.provide('', {
   }
 });
 
+
 UIServer.Methods['auth.login'] = UIServer.Methods['permissions.request'];
 
 },3);
 __d("mergeArrays",[],function(global,require,requireDynamic,requireLazy,module,exports) {
 
-function mergeArrays( target,  source)  {__t([target,'array','target'],[source,'array','source']); return __t([function(){
+function mergeArrays(/*array*/ target, /*array*/ source) /*array*/ {/*TC*/__t([target,'array','target'],[source,'array','source']); return __t([function(){/*/TC*/
   for (var i=0; i < source.length; i++) {
     if (ES5(target, 'indexOf', true,source[i]) < 0) {
       target.push(source[i]);
     }
   }
   return target;
-}.apply(this, arguments), 'array']);}
+/*TC*/}.apply(this, arguments), 'array']);/*/TC*/}
 module.exports = mergeArrays;
 
 });
 __d("format",[],function(global,require,requireDynamic,requireLazy,module,exports) {
 
-function format( str, argsdotdot)  {
+function format(/*string*/ str, argsdotdot) /*string*/ {
   argsdotdot = Array.prototype.slice.call(arguments, 1);
   return str.replace(/\{(\d+)\}/g, function(_, index) {
     var value = argsdotdot[Number(index)];
@@ -7350,19 +8010,21 @@ var Waitable = Model.extend({
   },
 
   
-  wait: function(callback, errorHandler) {
-        if (errorHandler) {
+  wait: function(/*function?*/ callback, /*function?*/ errorHandler) {/*TC*/__t([callback,'function?','callback'],[errorHandler,'function?','errorHandler']);/*/TC*/
+    
+    if (errorHandler) {
       this.subscribe('error', errorHandler);
     }
 
-    this.monitor('Value.change', ES5(function() {
+    this.monitor('Value.change', ES5(function() /*boolean?*/ {/*TC*/ return __t([function(){/*/TC*/
       var value = this.getValue();
       if (value !== undefined) {
-                this.value = value;
+        
+        this.value = value;
         callback(value);
         return true;
       }
-    }, 'bind', true,this));
+    /*TC*/}.apply(this, arguments), 'boolean?']);/*/TC*/}, 'bind', true,this));
   }
 });
 
@@ -7380,21 +8042,28 @@ var Waitable = require('sdk.Waitable');
 
 
 
-function toFields(s) {
+function toFields(/*string*/ s) /*array<string>*/ {/*TC*/__t([s,'string','s']);/*/TC*/
   return ES5(s.split(','), 'map', true,function(s) {return ES5(s,'trim', true);});
 }
 
 
-function parseWhere(s) {
-      var
+function parseWhere(/*string*/ s) /*object*/ {/*TC*/__t([s,'string','s']); return __t([function(){/*/TC*/
+  
+  
+  var
     re = (/^\s*(\w+)\s*=\s*(.*)\s*$/i).exec(s),
     result,
     value,
     type = 'unknown';
   if (re) {
-        value = re[2];
-            if (/^(["'])(?:\\?.)*?\1$/.test(value)) {
-                  value = safeEval(value);
+    
+    value = re[2];
+    
+    
+    if (/^(["'])(?:\\?.)*?\1$/.test(value)) {
+      
+      
+      value = safeEval(value);
       type = 'index';
     } else if (/^\d+\.?\d*$/.test(value)) {
       type = 'index';
@@ -7402,18 +8071,20 @@ function parseWhere(s) {
   }
 
   if (type == 'index') {
-        result = { type: 'index', key: re[1], value: value };
+    
+    result = { type: 'index', key: re[1], value: value };
   } else {
-        result = { type: 'unknown', value: s };
+    
+    result = { type: 'unknown', value: s };
   }
   return result;
-}
+/*TC*/}.apply(this, arguments), 'object']);/*/TC*/}
 
-function encode(value) {
+function encode(value) /*string*/ {/*TC*/ return __t([function(){/*/TC*/
   return typeof value === 'string'
     ? ES5('JSON', 'stringify', false,value)
     : value;
-}
+/*TC*/}.apply(this, arguments), 'string']);/*/TC*/}
 
 var counter = 1;
 
@@ -7422,32 +8093,36 @@ var Query = Waitable.extend({
     this.parent();
     this.name = 'v_' + counter++;
   },
-    hasDependency: function(value) {
+  
+  hasDependency: function(/*boolean?*/ value) /*boolean*/ {/*TC*/__t([value,'boolean?','value']); return __t([function(){/*/TC*/
     if (arguments.length) {
       this._hasDependency = value;
     }
-    return this._hasDependency;
-  },
+    return !!this._hasDependency;
+  /*TC*/}.apply(this, arguments), 'boolean']);/*/TC*/},
 
   
-  parse: function(args) {
+  parse: function(/*array*/ args) /*object*/ {/*TC*/__t([args,'array','args']); return __t([function(){/*/TC*/
     var
       fql = format.apply(null, args),
-      re = (/^select (.*?) from (\w+)\s+where (.*)$/i).exec(fql);     this.fields = toFields(re[1]);
+      re = (/^select (.*?) from (\w+)\s+where (.*)$/i).exec(fql); 
+    this.fields = toFields(re[1]);
     this.table = re[2];
     this.where = parseWhere(re[3]);
 
     for (var i=1; i < args.length; i++) {
       if (Type.instanceOf(Query, args[i])) {
-                        args[i].hasDependency(true);
+        
+        
+        args[i].hasDependency(true);
       }
     }
 
     return this;
-  },
+  /*TC*/}.apply(this, arguments), 'object']);/*/TC*/},
 
   
-  toFql: function() {
+  toFql: function() /*string*/ {/*TC*/ return __t([function(){/*/TC*/
     var s = 'select ' + this.fields.join(',') + ' from ' +
             this.table + ' where ';
     switch (this.where.type) {
@@ -7467,13 +8142,13 @@ var Query = Waitable.extend({
         break;
     }
     return s;
-  },
+  /*TC*/}.apply(this, arguments), 'string']);/*/TC*/},
 
 
   
-  toString: function() {
+  toString: function() /*string*/ {/*TC*/ return __t([function(){/*/TC*/
     return '#' + this.name;
-  }
+  /*TC*/}.apply(this, arguments), 'string']);/*/TC*/}
 });
 
 module.exports = Query;
@@ -7493,29 +8168,32 @@ var Waitable = require('sdk.Waitable');
 
 var Data = {
   
-  query: function(template, data) {
+  query: function(/*string*/ template, data) /*object*/ {/*TC*/__t([template,'string','template']); return __t([function(){/*/TC*/
     var query = new Query().parse(arguments);
     Data.queue.push(query);
     Data._waitToProcess();
     return query;
-  },
+  /*TC*/}.apply(this, arguments), 'object']);/*/TC*/},
 
   
-  waitOn: function(dependencies, callback) {
+  waitOn: function(/*array*/ dependencies, /*function*/ callback) /*object*/ {/*TC*/__t([dependencies,'array','dependencies'],[callback,'function','callback']); return __t([function(){/*/TC*/
     var
       result = new Waitable(),
       count = dependencies.length;
 
-            if (typeof(callback) == 'string') {
+    
+    
+    if (typeof(callback) == 'string') {
       var s = callback;
       callback = ErrorHandling.unguard(function() { return safeEval(s); });
     }
 
-    ES5(dependencies, 'forEach', true,function(item) {
+    ES5(dependencies, 'forEach', true,function(/*object*/ item) {/*TC*/__t([item,'object','item']);/*/TC*/
       item.monitor('Value.change', function() {
         var done = false;
         if (Data._getValue(item) !== undefined) {
-                    item.value = item.getValue();
+          
+          item.value = item.getValue();
           count--;
           done = true;
         }
@@ -7527,10 +8205,10 @@ var Data = {
       });
     });
     return result;
-  },
+  /*TC*/}.apply(this, arguments), 'object']);/*/TC*/},
 
   
-  process: function(token) {
+  process: function(/*string?*/ token) {/*TC*/__t([token,'string?','token']);/*/TC*/
     Data._process(token);
   },
 
@@ -7542,7 +8220,8 @@ var Data = {
   },
 
   
-  _selectByIndex: function(fields, table, name, value) {
+  _selectByIndex: function(/*array*/ fields, /*string*/ table, /*string*/ name,
+      /*string*/ value) /*object*/ {/*TC*/__t([fields,'array','fields'],[table,'string','table'],[name,'string','name'],[value,'string','value']); return __t([function(){/*/TC*/
     var query = new Query();
     query.fields = fields;
     query.table = table;
@@ -7550,7 +8229,7 @@ var Data = {
     Data.queue.push(query);
     Data._waitToProcess();
     return query;
-  },
+  /*TC*/}.apply(this, arguments), 'object']);/*/TC*/},
 
   
   _waitToProcess: function() {
@@ -7562,7 +8241,7 @@ var Data = {
   },
 
   
-  _process: function(token) {
+  _process: function(/*string?*/ token) {/*TC*/__t([token,'string?','token']);/*/TC*/
     Data.timer = -1;
 
     var
@@ -7584,7 +8263,8 @@ var Data = {
       }
     }
 
-        var params = { q : {} };
+    
+    var params = { q : {} };
     for (var key in mqueries) {
       if (mqueries.hasOwnProperty(key)) {
         params.q[key] = mqueries[key].toFql();
@@ -7595,13 +8275,13 @@ var Data = {
       params.access_token = token;
     }
 
-    api('/fql', 'GET', params, function(result) {
+    api('/fql', 'GET', params, function(/*object*/ result) {/*TC*/__t([result,'object','result']);/*/TC*/
       if (result.error) {
-        ES5(ES5('Object', 'keys', false,mqueries), 'forEach', true,function(key) {
+        ES5(ES5('Object', 'keys', false,mqueries), 'forEach', true,function(/*string*/ key) {/*TC*/__t([key,'string','key']);/*/TC*/
           mqueries[key].error(new Error(result.error.message));
         });
       } else {
-        ES5(result.data, 'forEach', true,function(o) {
+        ES5(result.data, 'forEach', true,function(/*object*/ o) {/*TC*/__t([o,'object','o']);/*/TC*/
           mqueries[o.name].setValue(o.fql_result_set);
         });
       }
@@ -7609,7 +8289,7 @@ var Data = {
   },
 
   
-  _mergeIndexQuery: function(item, mqueries) {
+  _mergeIndexQuery: function(/*object*/ item, /*array<object>*/ mqueries) {/*TC*/__t([item,'object','item']);/*/TC*/
     var key = item.where.key,
     value = item.where.value;
 
@@ -7622,11 +8302,13 @@ var Data = {
       master.where = {type: 'in', key: key, value: []};
     }
 
-        mergeArrays(master.fields, item.fields);
+    
+    mergeArrays(master.fields, item.fields);
     mergeArrays(master.where.value, [value]);
 
-        master.wait(function(r) {
-      item.setValue(ES5(r, 'filter', true,function(x) {
+    
+    master.wait(function(/*array<object>*/ r) {
+      item.setValue(ES5(r, 'filter', true,function(/*object*/ x) {/*TC*/__t([x,'object','x']);/*/TC*/
         return x[key] == value;
       }));
     });
@@ -7674,13 +8356,14 @@ var Runtime = require('sdk.Runtime');
 var wrapFunction = require('wrapFunction');
 
 
-function init(options) {
+function init(/*object?*/ options) {/*TC*/__t([options,'object?','options']);/*/TC*/
   if (Runtime.getInitialized()) {
     Log.warn(
       'FB.init has already been called - this could indicate a problem');
   }
 
-    if (/number|string/.test(typeof options)) {
+  
+  if (/number|string/.test(typeof options)) {
     Log.warn('FB.init called with invalid parameters');
     options = {apiKey: options};
   }
@@ -7710,8 +8393,13 @@ function init(options) {
   Event.fire('init:post', options);
 }
 
+
+
+
 setTimeout(wrapFunction(function() {
-      var pattern = /(connect.facebook.net|facebook.com\/assets.php).*?#(.*)/;
+  
+  
+  var pattern = /(connect.facebook.net|facebook.com\/assets.php).*?#(.*)/;
   ES5(createArrayFrom(document.getElementsByTagName('script')), 'forEach', true,function(script) {
     if (script.src) {
       var match = pattern.exec(script.src);
@@ -7729,7 +8417,8 @@ setTimeout(wrapFunction(function() {
     }
   });
 
-    if (window.fbAsyncInit && !window.fbAsyncInit.hasRun) {
+  
+  if (window.fbAsyncInit && !window.fbAsyncInit.hasRun) {
     window.fbAsyncInit.hasRun = true;
     window.fbAsyncInit();
   }
@@ -7752,6 +8441,9 @@ __d("legacy:fb.json",["FB","ManagedError"],function(global,require,requireDynami
 
 var FB = require('FB');
 var ManagedError = require('ManagedError');
+
+
+
 
 FB.provide('JSON', {
   stringify: function(obj) {
@@ -7809,12 +8501,12 @@ copyProperties(UIServer.Methods, {
   },
   'pay': {
     size      : { width: 555, height: 120 },
-    noHttps   : true,
     connectDisplay : 'popup',
     transform : function(call) {
       call.cb = callbackWrapper(call.cb);
       if (!Runtime.isEnvironment(Runtime.ENVIRONMENTS.CANVAS)) {
-                call.params.order_info = ES5('JSON', 'stringify', false,call.params.order_info);
+        
+        call.params.order_info = ES5('JSON', 'stringify', false,call.params.order_info);
         return call;
       }
       var handler = XD.handler(
@@ -7856,11 +8548,13 @@ __d("Miny",[],function(global,require,requireDynamic,requireLazy,module,exports)
 
 var MAGIC = 'Miny1';
 
+
 var _indexMap = {encode: [], decode: {}};
 var LO = 'wxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-_'.split('');
 function getIndexMap(length) {
   for (var i = _indexMap.encode.length; i < length; i++) {
-        var s = i.toString(32).split('');
+    
+    var s = i.toString(32).split('');
     s[s.length - 1] = LO[parseInt(s[s.length - 1], 32)];
     s = s.join('');
 
@@ -7871,30 +8565,39 @@ function getIndexMap(length) {
   return _indexMap;
 }
 
-function encode(s) {
-    var parts = s.match(/\w+|\W+/g);
 
-      var dict = {};
+function encode(s) {
+  
+  var parts = s.match(/\w+|\W+/g);
+
+  
+  
+  var dict = {};
   for (var i = 0; i < parts.length; i++) {
     dict[parts[i]] = (dict[parts[i]] || 0) + 1;
   }
 
-      var byCount = ES5('Object', 'keys', false,dict);
+  
+  
+  var byCount = ES5('Object', 'keys', false,dict);
   byCount.sort(function(a,b) {
     return dict[a] < dict[b] ? 1 : (dict[b] < dict[a] ? -1 : 0);
   });
 
-    var encodeMap = getIndexMap(byCount.length).encode;
+  
+  var encodeMap = getIndexMap(byCount.length).encode;
   for (i = 0; i < byCount.length; i++) {
     dict[byCount[i]] = encodeMap[i];
   }
 
-    var codes = [];
+  
+  var codes = [];
   for (i = 0; i < parts.length; i++) {
     codes[i] = dict[parts[i]];
   }
 
-    for (i = 0; i < byCount.length; i++) {
+  
+  for (i = 0; i < byCount.length; i++) {
     byCount[i] = byCount[i].replace(/'~'/g, '\\~');
   }
 
@@ -7903,6 +8606,7 @@ function encode(s) {
          concat(codes.join('')).
          join('~');
 }
+
 
 function decode(s) {
   var fields = s.split('~');
@@ -7914,7 +8618,8 @@ function decode(s) {
   var codes = fields.pop();
   codes = codes.match(/[0-9a-v]*[\-w-zA-Z_]/g);
 
-    var dict = fields;
+  
+  var dict = fields;
 
   var decodeMap = getIndexMap(nKeys).decode;
   var parts = [];
@@ -7949,38 +8654,46 @@ function runOnce(func) {
 module.exports = runOnce;
 
 });
-__d("XFBML",["Assert","copyProperties","createArrayFrom","dotAccess","FB","Log","ObservableMixin","runOnce"],function(global,require,requireDynamic,requireLazy,module,exports) {
+__d("XFBML",["Assert","copyProperties","createArrayFrom","dotAccess","FB","sdk.Impressions","Log","ObservableMixin","runOnce","wrapFunction","SDKConfig"],function(global,require,requireDynamic,requireLazy,module,exports) {
 
 var Assert = require('Assert');
 var copyProperties = require('copyProperties');
 var createArrayFrom = require('createArrayFrom');
 var dotAccess = require('dotAccess');
 var FB = require('FB');
+var Impressions = require('sdk.Impressions');
 var Log = require('Log');
 var ObservableMixin = require('ObservableMixin');
 var runOnce = require('runOnce');
+var SDKConfig = requireDynamic('SDKConfig');
+var wrapFunction = require('wrapFunction');
 
-var xfbml = {}; var html5 = {}; 
+
+var xfbml = {}; 
+var html5 = {}; 
+
 var parseCount = 0;
 
 var XFBML = new ObservableMixin();
 
-function propStr(object, property) {
+function propStr(object, /*string*/ property) /*string*/ {/*TC*/__t([property,'string','property']); return __t([function(){/*/TC*/
   return object[property] + '';
-}
+/*TC*/}.apply(this, arguments), 'string']);/*/TC*/}
 
-function nodeNameIE(element) {
-      return element.scopeName
+function nodeNameIE(/*DOMElement*/ element) /*string*/ {/*TC*/__t([element,'DOMElement','element']); return __t([function(){/*/TC*/
+  
+  
+  return element.scopeName
     ? (element.scopeName + ':' + element.nodeName)
     : '';
-}
+/*TC*/}.apply(this, arguments), 'string']);/*/TC*/}
 
-function xfbmlInfo(element) {
+function xfbmlInfo(/*DOMElement*/ element) /*object?*/ {/*TC*/__t([element,'DOMElement','element']); return __t([function(){/*/TC*/
   return xfbml[propStr(element, 'nodeName').toLowerCase()]
     || xfbml[nodeNameIE(element).toLowerCase()];
-}
+/*TC*/}.apply(this, arguments), 'object?']);/*/TC*/}
 
-function html5Info(element) {
+function html5Info(/*DOMElement*/ element) /*object?*/ {/*TC*/__t([element,'DOMElement','element']); return __t([function(){/*/TC*/
   var classNames = ES5(ES5(propStr(element, 'className'),'trim', true).split(/\s+/), 'filter', true,
     function(className) { return html5.hasOwnProperty(className); });
 
@@ -7988,24 +8701,30 @@ function html5Info(element) {
     return undefined;
   }
 
-              if (!element.childNodes ||
+  
+  
+  
+  
+  
+  
+  if (!element.childNodes ||
       element.childNodes.length === 0 ||
       (element.childNodes.length == 1 &&
        element.childNodes[0].nodeType == 3 ) ||
       element.getAttribute('fb-xfbml-state')) {
     return html5[classNames[0]];
   }
-}
+/*TC*/}.apply(this, arguments), 'object?']);/*/TC*/}
 
-function attr(element) {
+function attr(/*DOMElement*/ element) /*object*/ {/*TC*/__t([element,'DOMElement','element']); return __t([function(){/*/TC*/
   var attrs = {};
   ES5(createArrayFrom(element.attributes), 'forEach', true,function(at) {
     attrs[propStr(at, 'name')] = propStr(at, 'value');
   });
   return attrs;
-}
+/*TC*/}.apply(this, arguments), 'object']);/*/TC*/}
 
-function parse(dom, callback, reparse) {
+function parse(/*DOMElement*/ dom, /*function*/ callback, /*boolean*/ reparse) {/*TC*/__t([dom,'DOMElement','dom'],[callback,'function','callback'],[reparse,'boolean','reparse']);/*/TC*/
   Assert.isTrue(
     dom && dom.nodeType && dom.nodeType === 1 && !!dom.getElementsByTagName,
     'Invalid DOM node passed to FB.XFBML.parse()');
@@ -8014,7 +8733,11 @@ function parse(dom, callback, reparse) {
   var pc = ++parseCount;
   Log.info('XFBML Parsing Start %s', pc);
 
-          var count = 1;
+  
+  
+  
+  
+  var count = 1;
   var tags = 0;
   var onrender = function() {
     count--;
@@ -8026,29 +8749,44 @@ function parse(dom, callback, reparse) {
     Assert.isTrue(count >= 0, 'onrender() has been called too many times');
   };
 
-  ES5(createArrayFrom(dom.getElementsByTagName('*')), 'forEach', true,function(element) {
+  ES5(createArrayFrom(dom.getElementsByTagName('*')), 'forEach', true,function(
+      /*DOMElement*/ element) {/*TC*/__t([element,'DOMElement','element']);/*/TC*/
     if (!reparse && element.getAttribute('fb-xfbml-state')) {
-      return;     }
+      return; 
+    }
 
     var info = xfbmlInfo(element) || html5Info(element);
     if (!info) {
-      return;     }
+      return; 
+    }
 
     count++;
     tags++;
     var renderer =
       new info.ctor(element, info.xmlns, info.localName, attr(element));
-                renderer.subscribe('render', runOnce(function() {
-                              element.setAttribute('fb-xfbml-state', 'rendered');
+    
+    
+    
+    renderer.subscribe('render', runOnce(function() {
+      
+      
+      
+      
+      element.setAttribute('fb-xfbml-state', 'rendered');
       onrender();
     }));
 
     var render = function() {
-                  if (element.getAttribute('fb-xfbml-state') == 'parsed') {
-                        XFBML.subscribe('render.queue', render);
+      
+      
+      if (element.getAttribute('fb-xfbml-state') == 'parsed') {
+        
+        
+        XFBML.subscribe('render.queue', render);
       } else {
         element.setAttribute('fb-xfbml-state', 'parsed');
-        renderer.process();       }
+        renderer.process(); 
+      }
     };
 
     render();
@@ -8056,32 +8794,38 @@ function parse(dom, callback, reparse) {
 
   XFBML.inform('parse', pc, tags);
 
-  var timeout = 30000;   window.setTimeout(function() {
+  var timeout = 30000; 
+  window.setTimeout(function() {
     if (count > 0) {
       Log.warn('%s tags failed to render in %s ms', count, timeout);
     }
   }, timeout);
 
-  onrender(); }
+  onrender(); 
+}
 
 XFBML.subscribe('render', function() {
   var q = XFBML.getSubscribers('render.queue');
   XFBML.clearSubscribers('render.queue');
   ES5(q, 'forEach', true,function(r) { r(); });
-    });
+  
+  
+});
 
 copyProperties(XFBML, {
 
-  registerTag: function(info) {
+  registerTag: function(/*object*/ info) {/*TC*/__t([info,'object','info']);/*/TC*/
     var fqn = info.xmlns + ':' + info.localName;
     Assert.isUndefined(xfbml[fqn], fqn + ' already registered');
 
     xfbml[fqn] = info;
 
-            html5[info.xmlns + '-' + info.localName] = info;
+    
+    
+    html5[info.xmlns + '-' + info.localName] = info;
   },
 
-  parse: function(dom, cb) {
+  parse: function(/*DOMElement?*/ dom, /*function?*/ cb) {/*TC*/__t([dom,'DOMElement?','dom'],[cb,'function?','cb']);/*/TC*/
     parse(dom || document.body, cb || function(){},  true);
   },
 
@@ -8089,6 +8833,22 @@ copyProperties(XFBML, {
     parse(document.body, function(){},  false);
   }
 });
+
+var logTagCount = function(/*number*/ parseCount, /*number*/ numTags) {/*TC*/__t([parseCount,'number','parseCount'],[numTags,'number','numTags']);/*/TC*/
+  if (Math.random() < SDKConfig.tagCountLogRate) {
+    
+    
+    setTimeout(
+      wrapFunction(
+        ES5(Impressions.log, 'bind', true,null, 102, {tag_count: numTags}),
+        'entry',
+        'xfbml-insights-log'),
+      5000
+    );
+  }
+  XFBML.unsubscribe('parse', logTagCount);
+};
+XFBML.subscribe('parse', logTagCount);
 
 module.exports = XFBML;
 
@@ -8109,21 +8869,22 @@ var UserAgent = require('UserAgent');
 var XFBML = require('XFBML');
 
 var PluginPipe = new ObservableMixin();
+
 var threshold = PluginPipeConfig.threshold;
 var queued = [];
 
-function isEnabled() {
-  return SDKConfig.usePluginPipe &&
+function isEnabled() /*boolean*/ {/*TC*/ return __t([function(){/*/TC*/
+  return !!(SDKConfig.usePluginPipe &&
          (UserAgent.chrome() || UserAgent.firefox()) &&
-         PluginPipeConfig.enabledApps[Runtime.getClientID()] !== undefined;
-}
+         PluginPipeConfig.enabledApps[Runtime.getClientID()]);
+/*TC*/}.apply(this, arguments), 'boolean']);/*/TC*/}
 
 function insertPlugins() {
   var q = queued;
   queued = [];
 
   if (q.length <= threshold) {
-    ES5(q, 'forEach', true,function(plugin) {
+    ES5(q, 'forEach', true,function(/*object*/ plugin) {/*TC*/__t([plugin,'object','plugin']);/*/TC*/
       insertIframe(plugin.config);
     });
     return;
@@ -8137,7 +8898,7 @@ function insertPlugins() {
     }
   }
 
-  ES5(q, 'forEach', true,function(plugin) {
+  ES5(q, 'forEach', true,function(/*object*/ plugin) {/*TC*/__t([plugin,'object','plugin']);/*/TC*/
     var config = {};
     for (var key in plugin.config) {
       config[key] = plugin.config[key];
@@ -8153,12 +8914,12 @@ function insertPlugins() {
 
 XFBML.subscribe('parse', insertPlugins);
 
-function insertPipe(plugins) {
+function insertPipe(/*array<object>*/ plugins) {
   var root = document.createElement('span');
   Content.appendHidden(root);
 
   var params = {};
-  ES5(plugins, 'forEach', true,function(plugin){
+  ES5(plugins, 'forEach', true,function(/*object*/ plugin){/*TC*/__t([plugin,'object','plugin']);/*/TC*/
     params[plugin.config.name] = {
       plugin: plugin.tag,
       params: plugin.params
@@ -8174,7 +8935,7 @@ function insertPipe(plugins) {
     plugins: use_miny ? miny : raw
   });
 
-  ES5(plugins, 'forEach', true,function(plugin) {
+  ES5(plugins, 'forEach', true,function(/*object*/ plugin) {/*TC*/__t([plugin,'object','plugin']);/*/TC*/
     var frame = document.getElementsByName(plugin.config.name)[0];
     frame.onload = plugin.config.onload;
   });
@@ -8189,7 +8950,7 @@ function insertPipe(plugins) {
 }
 
 copyProperties(PluginPipe, {
-  add: function(plugin) {
+  add: function(/*object*/ plugin) /*boolean*/ {/*TC*/__t([plugin,'object','plugin']); return __t([function(){/*/TC*/
     var enabled = isEnabled();
     enabled && queued.push({
       config: plugin._config,
@@ -8197,7 +8958,7 @@ copyProperties(PluginPipe, {
       params: plugin._params
     });
     return enabled;
-  }
+  /*TC*/}.apply(this, arguments), 'boolean']);/*/TC*/}
 });
 
 module.exports = PluginPipe;
@@ -8225,45 +8986,59 @@ var baseParams = {
   width: 'px',
   height: 'px',
   ref: 'string',
-  color_scheme: 'string' };
+  color_scheme: 'string' 
+};
 
-function resizer(root, tagName) {
-  return function(message) {
-        var element = root.getElementsByTagName(tagName)[0];
+function resizer(/*DOMElement*/ root, /*string*/ tagName) /*function*/ {/*TC*/__t([root,'DOMElement','root'],[tagName,'string','tagName']); return __t([function(){/*/TC*/
+  return function(/*object*/ message) {/*TC*/__t([message,'object','message']);/*/TC*/
+    
+    var element = root.getElementsByTagName(tagName)[0];
     message.width && (element.style.width = message.width + 'px');
     message.height && (element.style.height = message.height + 'px');
 
-        var span = root.getElementsByTagName('span')[0];
+    
+    var span = root.getElementsByTagName('span')[0];
     var iframe = root.getElementsByTagName('iframe')[0];
     var identical = iframe.style.height === span.style.height &&
       iframe.style.width === span.style.width;
     var method = identical ? 'removeCss' : 'addCss';
     DOM[method](iframe, 'fb_iframe_widget_lift');
   };
-}
+/*TC*/}.apply(this, arguments), 'function']);/*/TC*/}
 
-function resizeBubbler(pluginID) {
-  return function(msg) {
+function resizeBubbler(/*string?*/ pluginID) /*function*/ {/*TC*/__t([pluginID,'string?','pluginID']); return __t([function(){/*/TC*/
+  return function(/*object*/ msg) {/*TC*/__t([msg,'object','msg']);/*/TC*/
     var message = { width: msg.width, height: msg.height, pluginID: pluginID };
     Event.fire('xfbml.resize', message);
   }
-}
+/*TC*/}.apply(this, arguments), 'function']);/*/TC*/}
 
 var types = {
-    string: function(value) { return value; },
-  bool: function(value) {
+  
+  string: function(/*string?*/ value) /*string?*/ {/*TC*/__t([value,'string?','value']); return __t([function(){/*/TC*/
+    return value;
+  /*TC*/}.apply(this, arguments), 'string?']);/*/TC*/},
+  bool: function(/*string?*/ value) /*boolean?*/ {/*TC*/__t([value,'string?','value']); return __t([function(){/*/TC*/
     return value ? (/^(?:true|1|yes|on)$/i).test(value) : undefined;
-  },
-  url: function(value) { return resolveURI(value); },
-  url_maybe: function(value) { return value ? resolveURI(value) : value; },
-  hostname: function(value) { return value || window.location.hostname; },
-  px: function(value) {
+  /*TC*/}.apply(this, arguments), 'boolean?']);/*/TC*/},
+  url: function(/*string?*/ value) /*string?*/ {/*TC*/__t([value,'string?','value']); return __t([function(){/*/TC*/
+    return resolveURI(value);
+  /*TC*/}.apply(this, arguments), 'string?']);/*/TC*/},
+  url_maybe: function(/*string?*/ value) /*string?*/ {/*TC*/__t([value,'string?','value']); return __t([function(){/*/TC*/
+    return value ? resolveURI(value) : value;
+  /*TC*/}.apply(this, arguments), 'string?']);/*/TC*/},
+  hostname: function(/*string?*/ value) /*string?*/ {/*TC*/__t([value,'string?','value']); return __t([function(){/*/TC*/
+    return value || window.location.hostname;
+  /*TC*/}.apply(this, arguments), 'string?']);/*/TC*/},
+  px: function(/*string?*/ value) /*number?*/ {/*TC*/__t([value,'string?','value']); return __t([function(){/*/TC*/
     return (/^(\d+)(?:px)?$/).test(value) ? parseInt(RegExp.$1, 10) : undefined;
-  },
-  text: function(value) { return value; }
+  /*TC*/}.apply(this, arguments), 'number?']);/*/TC*/},
+  text: function(/*string?*/ value) /*string?*/ {/*TC*/__t([value,'string?','value']); return __t([function(){/*/TC*/
+    return value;
+  /*TC*/}.apply(this, arguments), 'string?']);/*/TC*/}
 };
 
-function getVal(attr, key) {
+function getVal(/*object*/ attr, /*string*/ key) {/*TC*/__t([attr,'object','attr'],[key,'string','key']);/*/TC*/
   var val =
     attr[key] ||
     attr[key.replace(/_/g, '-')] ||
@@ -8275,28 +9050,34 @@ function getVal(attr, key) {
   return val;
 }
 
-function validate(defn, elem, attr, params) {
+function validate(/*object*/ defn, /*DOMElement*/ elem, /*object*/ attr,
+    /*object*/ params) {/*TC*/__t([defn,'object','defn'],[elem,'DOMElement','elem'],[attr,'object','attr'],[params,'object','params']);/*/TC*/
   ES5(ES5('Object', 'keys', false,defn), 'forEach', true,function(key) {
     if (defn[key] == 'text' && !attr[key]) {
-      attr[key] = elem.textContent || elem.innerText;       elem.setAttribute(key, attr[key]);     }
+      attr[key] = elem.textContent || elem.innerText; 
+      elem.setAttribute(key, attr[key]); 
+    }
     params[key] = types[defn[key]](getVal(attr, key));
   });
 }
 
 var IframePlugin = Type.extend({
-  constructor: function(elem, ns, tag, attr) {
+  constructor: function(/*DOMElement*/ elem, /*string*/ ns, /*string*/ tag,
+      /*object*/ attr) {/*TC*/__t([elem,'DOMElement','elem'],[ns,'string','ns'],[tag,'string','tag'],[attr,'object','attr']);/*/TC*/
     this.parent();
     tag = tag.replace(/-/g, '_');
 
+    var pluginId = getVal(attr, 'plugin_id');
     this.subscribe('xd.resize', resizer(elem, 'span'));
     this.subscribe('xd.resize', resizer(elem, 'iframe'));
-    this.subscribe('xd.resize', resizeBubbler(getVal(attr, 'plugin_id')));
+    this.subscribe('xd.resize', resizeBubbler(pluginId));
     this.subscribe('xd.resize.flow', resizer(elem, 'span'));
+    this.subscribe('xd.resize.flow', resizeBubbler(pluginId));
     this.subscribe('xd.resize.iframe', resizer(elem, 'iframe'));
-    this.subscribe('xd.resize.flow', resizeBubbler(getVal(attr, 'plugin_id')));
 
     var secure = Runtime.getSecure() || window.location.protocol == 'https:';
-        var url = UrlMap.resolve('www', secure) + '/plugins/' + tag + '.php?';
+    
+    var url = UrlMap.resolve('www', secure) + '/plugins/' + tag + '.php?';
     var params = {};
     validate(this.getParams(), elem, attr, params);
     validate(baseParams, elem, attr, params);
@@ -8304,19 +9085,19 @@ var IframePlugin = Type.extend({
     params.locale = Runtime.getLocale();
     params.sdk = 'joey';
     var xd = ES5(function(msg) { this.inform('xd.' + msg.type, msg); }, 'bind', true,this);
-    params.channel = XD.handler(xd, 'parent.parent',  true);
+    params.channel = XD.handler(xd, 'parent.parent', /*forever=*/ true);
 
     DOM.addCss(elem, 'fb_iframe_widget');
 
     var name = guid();
-    this.subscribe('xd.verify', function(msg) {
+    this.subscribe('xd.verify', function(/*object*/ msg) {/*TC*/__t([msg,'object','msg']);/*/TC*/
       XD.sendToFacebook(
         name, { method: 'xd/verify', params: ES5('JSON', 'stringify', false,msg.token) });
     });
 
     this.subscribe(
       'xd.refreshLoginStatus', ES5(Auth.getLoginStatus, 'bind', true,
-        Auth, ES5(this.inform, 'bind', true,this, 'login.status'), true));
+        Auth, ES5(this.inform, 'bind', true,this, 'login.status'), /*force*/true));
 
     var flow = document.createElement('span');
     flow.style.width = '0px';
@@ -8329,7 +9110,11 @@ var IframePlugin = Type.extend({
       root: flow,
       url: url + QueryString.encode(params),
       name: name,
-                              width: params.width || 1000,
+      
+      
+      
+      
+      width: params.width || 1000,
       height: params.height || 1000,
       onload: ES5(this.inform, 'bind', true,this, 'render')
     };
@@ -8347,9 +9132,9 @@ var IframePlugin = Type.extend({
 
 IframePlugin.getVal = getVal;
 
-IframePlugin.withParams = function(params) {
+IframePlugin.withParams = function(/*object*/ params) /*function*/ {/*TC*/__t([params,'object','params']); return __t([function(){/*/TC*/
   return IframePlugin.extend({ getParams: function() { return params; } });
-};
+/*TC*/}.apply(this, arguments), 'function']);/*/TC*/};
 
 module.exports = IframePlugin;
 
@@ -8458,7 +9243,7 @@ var ObservableMixin = require('ObservableMixin');
 
 var Element = Type.extend({
   
-  constructor: function(dom, ns, plugin) {
+  constructor: function(/*DOMElement*/ dom) {/*TC*/__t([dom,'DOMElement','dom']);/*/TC*/
     this.parent();
     this.dom = dom;
   },
@@ -8468,7 +9253,8 @@ var Element = Type.extend({
   },
 
   
-  getAttribute: function(name, defaultValue, transform) {
+  getAttribute: function(/*string*/ name, defaultValue,
+      /*function?*/ transform) {/*TC*/__t([name,'string','name'],[transform,'function?','transform']);/*/TC*/
     var value = DOM.getAttr(this.dom, name);
     return value
       ? transform
@@ -8478,45 +9264,48 @@ var Element = Type.extend({
   },
 
   
-  _getBoolAttribute: function(name, defaultValue) {
+  _getBoolAttribute: function(/*string*/ name, /*boolean?*/ defaultValue)
+      /*boolean?*/ {/*TC*/__t([name,'string','name'],[defaultValue,'boolean?','defaultValue']); return __t([function(){/*/TC*/
     var value = DOM.getBoolAttr(this.dom, name);
     return value === null
       ? defaultValue
       : value;
-  },
+  /*TC*/}.apply(this, arguments), 'boolean?']);/*/TC*/},
 
   
-  _getPxAttribute: function(name, defaultValue) {
-    return this.getAttribute(name, defaultValue, function(s) {
+  _getPxAttribute: function(/*string*/ name, /*number?*/ defaultValue)
+      /*number?*/ {/*TC*/__t([name,'string','name'],[defaultValue,'number?','defaultValue']); return __t([function(){/*/TC*/
+    return this.getAttribute(name, defaultValue, function(/*string*/ s)
+        /*number*/ {/*TC*/__t([s,'string','s']); return __t([function(){/*/TC*/
       var size = parseInt(s.replace('px', ''), 10);
       if (isNaN(size)) {
         return defaultValue;
       } else {
         return size;
       }
-    });
-  },
+    /*TC*/}.apply(this, arguments), 'number']);/*/TC*/});
+  /*TC*/}.apply(this, arguments), 'number?']);/*/TC*/},
 
   
-  _getAttributeFromList: function(name, defaultValue, allowed) {
-    return this.getAttribute(name, defaultValue, function(s) {
+  _getAttributeFromList: function(/*string*/ name, /*string*/ defaultValue,
+      /*array<string>*/ allowed) /*string*/ {/*TC*/__t([name,'string','name'],[defaultValue,'string','defaultValue']); return __t([function(){/*/TC*/
+    return this.getAttribute(name, defaultValue, function(/*string*/ s)
+        /*string*/ {/*TC*/__t([s,'string','s']); return __t([function(){/*/TC*/
       s = s.toLowerCase();
-      if (ES5(allowed, 'indexOf', true,s) > -1) {
-        return s;
-      } else {
-        return defaultValue;
-      }
-    });
-  },
+      return (ES5(allowed, 'indexOf', true,s) > -1)
+        ? s
+        : defaultValue;
+    /*TC*/}.apply(this, arguments), 'string']);/*/TC*/});
+  /*TC*/}.apply(this, arguments), 'string']);/*/TC*/},
 
   
-  isValid: function() {
+  isValid: function() /*boolean?*/ {/*TC*/ return __t([function(){/*/TC*/
     for (var dom = this.dom; dom; dom = dom.parentNode) {
       if (dom == document.body) {
         return true;
       }
     }
-  },
+  /*TC*/}.apply(this, arguments), 'boolean?']);/*/TC*/},
 
   
   clear: function() {
@@ -8571,48 +9360,59 @@ var IframeWidget = Element.extend({
   
   _borderReset: false,
 
-  ///////////////////////////////////////////////////////////////////////////  ///////////////////////////////////////////////////////////////////////////  
-  getUrlBits: function() {
+  ///////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////
+  
+  getUrlBits: function() /*object*/ {/*TC*/ return __t([function(){/*/TC*/
     throw new Error('Inheriting class needs to implement getUrlBits().');
-  },
+  /*TC*/}.apply(this, arguments), 'object']);/*/TC*/},
 
-  ///////////////////////////////////////////////////////////////////////////  ///////////////////////////////////////////////////////////////////////////  
-  setupAndValidate: function() {
+  ///////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////
+  
+  setupAndValidate: function() /*boolean*/ {/*TC*/ return __t([function(){/*/TC*/
     return true;
-  },
+  /*TC*/}.apply(this, arguments), 'boolean']);/*/TC*/},
 
   
   oneTimeSetup: function() {},
 
   
-  getSize: function() {},
+  getSize: function() /*object*/ {/*TC*/ return __t([function(){/*/TC*//*TC*/}.apply(this, arguments), 'object']);/*/TC*/},
 
   
-  getIframeName: function() {
+  getIframeName: function() /*string?*/ {/*TC*/ return __t([function(){/*/TC*/
     return this._iframeName;
-  },
+  /*TC*/}.apply(this, arguments), 'string?']);/*/TC*/},
 
   
-  getIframeTitle: function() {},
+  getIframeTitle: function() /*string?*/ {/*TC*/ return __t([function(){/*/TC*//*TC*/}.apply(this, arguments), 'string?']);/*/TC*/},
 
-  ///////////////////////////////////////////////////////////////////////////  ///////////////////////////////////////////////////////////////////////////  
-  getChannelUrl: function() {
+  ///////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////
+  
+  getChannelUrl: function() /*string*/ {/*TC*/ return __t([function(){/*/TC*/
     if (!this._channelUrl) {
-                  var self = this;
+      
+      
+      var self = this;
       this._channelUrl = XD.handler(function(message) {
         self.fire('xd.' + message.type, message);
       }, 'parent.parent', true);
     }
     return this._channelUrl;
-  },
+  /*TC*/}.apply(this, arguments), 'string']);/*/TC*/},
 
   
-  getIframeNode: function() {
-            return this.dom.getElementsByTagName('iframe')[0];
-  },
+  getIframeNode: function() /*DOMElement?*/ {/*TC*/ return __t([function(){/*/TC*/
+    
+    
+    return this.dom.getElementsByTagName('iframe')[0];
+  /*TC*/}.apply(this, arguments), 'DOMElement?']);/*/TC*/},
 
   
-  arbiterInform: function(event, message, behavior) {
+  arbiterInform: function(/*string*/ event, /*object?*/ message,
+      /*string?*/ behavior) {/*TC*/__t([event,'string','event'],[message,'object?','message'],[behavior,'string?','behavior']);/*/TC*/
     XD.sendToFacebook(
       this.getIframeName(), {
         method: event,
@@ -8621,19 +9421,23 @@ var IframeWidget = Element.extend({
       });
   },
 
-  _arbiterInform: function(event, message, behavior) {
+  _arbiterInform: function(/*string*/ event, /*object*/  message,
+      /*string?*/ behavior) {/*TC*/__t([event,'string','event'],[behavior,'string?','behavior']);/*/TC*/
     var relation = 'parent.frames["' + this.getIframeNode().name + '"]';
     XD.inform(event, message, relation, behavior);
   },
 
   
-  getDefaultWebDomain: function() {
+  getDefaultWebDomain: function() /*string*/ {/*TC*/ return __t([function(){/*/TC*/
     return UrlMap.resolve('www');
-  },
+  /*TC*/}.apply(this, arguments), 'string']);/*/TC*/},
 
-  ///////////////////////////////////////////////////////////////////////////  ///////////////////////////////////////////////////////////////////////////  
-  process: function(force) {
-        if (this._done) {
+  ///////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////
+  
+  process: function(/*boolean?*/ force) {/*TC*/__t([force,'boolean?','force']);/*/TC*/
+    
+    if (this._done) {
       if (!this._allowReProcess && !force) {
         return;
       }
@@ -8645,22 +9449,26 @@ var IframeWidget = Element.extend({
 
     this._iframeName = this.getIframeName() || this._iframeName || guid();
     if (!this.setupAndValidate()) {
-            this.fire('render');
+      
+      this.fire('render');
       return;
     }
 
-        if (this._showLoader) {
+    
+    if (this._showLoader) {
       this._addLoader();
     }
 
-        DOM.addCss(this.dom, 'fb_iframe_widget');
+    
+    DOM.addCss(this.dom, 'fb_iframe_widget');
     if (this._visibleAfter != 'immediate') {
       DOM.addCss(this.dom, 'fb_hide_iframes');
     } else {
       this.subscribe('iframe.onload', ES5(this.fire, 'bind', true,this, 'render'));
     }
 
-        var size = this.getSize() || {};
+    
+    var size = this.getSize() || {};
     var url = this.getFullyQualifiedURL();
 
     if (size.width == '100%') {
@@ -8688,18 +9496,22 @@ var IframeWidget = Element.extend({
   },
 
   
-  generateWidgetPipeIframeName: function() {
+  generateWidgetPipeIframeName: function() /*string*/ {/*TC*/ return __t([function(){/*/TC*/
     widgetPipeIframeCount++;
     return 'fb_iframe_' + widgetPipeIframeCount;
-  },
+  /*TC*/}.apply(this, arguments), 'string']);/*/TC*/},
 
   
-  getFullyQualifiedURL: function() {
-                var url = this._getURL();
+  getFullyQualifiedURL: function() /*string*/ {/*TC*/ return __t([function(){/*/TC*/
+    
+    
+    
+    var url = this._getURL();
     url += '?' + QueryString.encode(this._getQS());
 
     if (url.length > 2000) {
-            url = 'about:blank';
+      
+      url = 'about:blank';
       var onload = ES5(function() {
         this._postRequest();
         this.unsubscribe('iframe.onload', onload);
@@ -8708,17 +9520,19 @@ var IframeWidget = Element.extend({
     }
 
     return url;
-  },
+  /*TC*/}.apply(this, arguments), 'string']);/*/TC*/},
 
    
 
-  _getWidgetPipeShell: function() {
+  _getWidgetPipeShell: function() /*string*/ {/*TC*/ return __t([function(){/*/TC*/
     return UrlMap.resolve('www') + '/common/widget_pipe_shell.php';
-  },
+  /*TC*/}.apply(this, arguments), 'string']);/*/TC*/},
 
   
   _oneTimeSetup: function() {
-            this.subscribe('xd.resize', ES5(this._handleResizeMsg, 'bind', true,this));
+    
+    
+    this.subscribe('xd.resize', ES5(this._handleResizeMsg, 'bind', true,this));
     this.subscribe('xd.resize', ES5(this._bubbleResizeEvent, 'bind', true,this));
 
     this.subscribe('xd.resize.iframe', ES5(this._resizeIframe, 'bind', true,this));
@@ -8732,11 +9546,13 @@ var IframeWidget = Element.extend({
       ui({ method: 'auth.logout', display: 'hidden' }, function() {});
     });
 
-        if (this._refreshOnAuthChange) {
+    
+    if (this._refreshOnAuthChange) {
       this._setupAuthRefresh();
     }
 
-        if (this._visibleAfter == 'load') {
+    
+    if (this._visibleAfter == 'load') {
       this.subscribe('iframe.onload', ES5(this._makeVisible, 'bind', true,this));
     }
 
@@ -8745,7 +9561,8 @@ var IframeWidget = Element.extend({
           this.arbiterInform('xd/verify', message.token);
         }, 'bind', true,this));
 
-        this.oneTimeSetup();
+    
+    this.oneTimeSetup();
   },
 
   
@@ -8757,13 +9574,14 @@ var IframeWidget = Element.extend({
 
   
   _setupAuthRefresh: function() {
-    Auth.getLoginStatus(ES5(function(response) {
+    Auth.getLoginStatus(ES5(function(/*object*/ response) {/*TC*/__t([response,'object','response']);/*/TC*/
       var lastStatus = response.status;
-      Event.subscribe('auth.statusChange', ES5(function(response) {
+      Event.subscribe('auth.statusChange', ES5(function(/*object*/ response) {/*TC*/__t([response,'object','response']);/*/TC*/
         if (!this.isValid()) {
           return;
         }
-                if (lastStatus == 'unknown' || response.status == 'unknown') {
+        
+        if (lastStatus == 'unknown' || response.status == 'unknown') {
           this.process(true);
         }
         lastStatus = response.status;
@@ -8772,7 +9590,7 @@ var IframeWidget = Element.extend({
   },
 
   
-  _handleResizeMsg: function(message) {
+  _handleResizeMsg: function(/*object*/ message) {/*TC*/__t([message,'object','message']);/*/TC*/
     if (!this.isValid()) {
       return;
     }
@@ -8788,7 +9606,7 @@ var IframeWidget = Element.extend({
   },
 
   
-  _bubbleResizeEvent: function(message) {
+  _bubbleResizeEvent: function(/*object*/ message) {/*TC*/__t([message,'object','message']);/*/TC*/
     var filtered_message = {
       height: message.height,
       width: message.width,
@@ -8798,14 +9616,14 @@ var IframeWidget = Element.extend({
     Event.fire('xfbml.resize', filtered_message);
   },
 
-  _resizeIframe: function(message) {
+  _resizeIframe: function(/*object*/ message) {/*TC*/__t([message,'object','message']);/*/TC*/
     var iframe = this.getIframeNode();
     message.height && (iframe.style.height = message.height + 'px');
     message.width && (iframe.style.width = message.width + 'px');
     this._updateIframeZIndex();
   },
 
-  _resizeFlow: function(message) {
+  _resizeFlow: function(/*object*/ message) {/*TC*/__t([message,'object','message']);/*/TC*/
     var span = this.dom.getElementsByTagName('span')[0];
     message.height && (span.style.height = message.height + 'px');
     message.width && (span.style.width = message.width + 'px');
@@ -8843,24 +9661,24 @@ var IframeWidget = Element.extend({
   },
 
   
-  _getQS: function() {
+  _getQS: function() /*object*/ {/*TC*/ return __t([function(){/*/TC*/
     return copyProperties({
       api_key      : Runtime.getClientID(),
       locale       : Runtime.getLocale(),
       sdk          : 'joey',
       ref          : this.getAttribute('ref')
     }, this.getUrlBits().params);
-  },
+  /*TC*/}.apply(this, arguments), 'object']);/*/TC*/},
 
   
-  _getURL: function() {
+  _getURL: function() /*string*/ {/*TC*/ return __t([function(){/*/TC*/
     var
       domain = this.getDefaultWebDomain(),
       static_path = '';
 
     return domain + '/plugins/' + static_path +
            this.getUrlBits().name + '.php';
-  },
+  /*TC*/}.apply(this, arguments), 'string']);/*/TC*/},
 
   
   _postRequest: function() {
@@ -8876,25 +9694,25 @@ var widgetPipeIframeCount = 0;
 var masterWidgetPipeIframe = null;
 var allWidgetPipeIframes = {};
 
-function groupWidgetPipeDescriptions() {
+function groupWidgetPipeDescriptions() /*object*/ {/*TC*/ return __t([function(){/*/TC*/
   var widgetPipeDescriptions = {};
   for (var key in allWidgetPipeIframes) {
     var controller = allWidgetPipeIframes[key];
 
-    var widgetPipeDescription = {
+    widgetPipeDescriptions[key] = {
       widget: controller.getUrlBits().name,
       params: controller._getQS()
     };
-
-    widgetPipeDescriptions[key] = widgetPipeDescription;
   }
 
   return widgetPipeDescriptions;
-}
+/*TC*/}.apply(this, arguments), 'object']);/*/TC*/}
 
 function batchWidgetPipeRequests() {
   if (!masterWidgetPipeIframe) {
-            return;
+    
+    
+    return;
   }
 
   var widgetPipeDescriptions = groupWidgetPipeDescriptions();
@@ -8909,7 +9727,9 @@ function batchWidgetPipeRequests() {
   };
   var widgetPipeIframeName = guid();
   var masterWidgetPipeDom = masterWidgetPipeIframe.dom;
-      var masterWidgetPipeSpan =
+  
+  
+  var masterWidgetPipeSpan =
     masterWidgetPipeDom.appendChild(document.createElement('span'));
   insertIframe({
     url: 'about:blank',
@@ -8946,8 +9766,9 @@ var Comments = IframeWidget.extend({
   _refreshOnAuthChange: true,
 
   
-  setupAndValidate: function() {
-        var attr = {
+  setupAndValidate: function() /*boolean*/ {/*TC*/ return __t([function(){/*/TC*/
+    
+    var attr = {
       channel_url : this.getChannelUrl(),
       colorscheme : this.getAttribute('colorscheme'),
       numposts    : this.getAttribute('num-posts', 10),
@@ -8966,7 +9787,8 @@ var Comments = IframeWidget.extend({
       delete attr.width;
     }
 
-        if (!attr.href) {
+    
+    if (!attr.href) {
       attr.migrated    = this.getAttribute('migrated');
       attr.xid         = this.getAttribute('xid');
       attr.title       = this.getAttribute('title', document.title);
@@ -8977,8 +9799,12 @@ var Comments = IframeWidget.extend({
       attr.css         = this.getAttribute('css');
       attr.notify      = this.getAttribute('notify');
 
-            if (!attr.xid) {
-                                var index = ES5(document.URL, 'indexOf', true,'#');
+      
+      if (!attr.xid) {
+        
+        
+        
+        var index = ES5(document.URL, 'indexOf', true,'#');
         if (index > 0) {
           attr.xid = encodeURIComponent(document.URL.substring(0, index));
         }
@@ -8995,14 +9821,16 @@ var Comments = IframeWidget.extend({
           '&url=' + encodeURIComponent(attr.url);
       }
     } else {
-            var fb_comment_id = this.getAttribute('fb_comment_id');
+      
+      var fb_comment_id = this.getAttribute('fb_comment_id');
       if (!fb_comment_id) {
         fb_comment_id =
           QueryString.decode(
             document.URL.substring(
               ES5(document.URL, 'indexOf', true,'?') + 1)).fb_comment_id;
         if (fb_comment_id && ES5(fb_comment_id, 'indexOf', true,'#') > 0) {
-                    fb_comment_id =
+          
+          fb_comment_id =
             fb_comment_id.substring(0,
                                     ES5(fb_comment_id, 'indexOf', true,'#'));
         }
@@ -9012,7 +9840,10 @@ var Comments = IframeWidget.extend({
         attr.fb_comment_id = fb_comment_id;
         this.subscribe('render',
                        ES5(function() {
-                                                                                                            if (!window.location.hash) {
+                           
+                           
+                           
+                           if (!window.location.hash) {
                              window.location.hash = this.getIframeNode().id;
                            }
                          }, 'bind', true,this));
@@ -9021,7 +9852,7 @@ var Comments = IframeWidget.extend({
 
     this._attr = attr;
     return true;
-  },
+  /*TC*/}.apply(this, arguments), 'boolean']);/*/TC*/},
 
   
   oneTimeSetup: function() {
@@ -9034,32 +9865,33 @@ var Comments = IframeWidget.extend({
   },
 
   
-  getSize: function() {
+  getSize: function() /*object*/ {/*TC*/ return __t([function(){/*/TC*/
     if (this._attr.mobile) {
       return { width: '100%', height: 160 };
     }
     return { width: this._attr.width, height: 160 };
-  },
+  /*TC*/}.apply(this, arguments), 'object']);/*/TC*/},
 
   
-  getUrlBits: function() {
+  getUrlBits: function() /*object*/ {/*TC*/ return __t([function(){/*/TC*/
     return { name: 'comments', params: this._attr };
-  },
+  /*TC*/}.apply(this, arguments), 'object']);/*/TC*/},
 
   
-  getDefaultWebDomain: function() {
+  getDefaultWebDomain: function() /*string*/ {/*TC*/ return __t([function(){/*/TC*/
     return UrlMap.resolve(
       this._attr.mobile
         ? 'm'
         : 'www',
       true
     );
-  },
+  /*TC*/}.apply(this, arguments), 'string']);/*/TC*/},
 
   
-  _handleCommentMsg: function(message) {
+  _handleCommentMsg: function(/*object*/ message) {/*TC*/__t([message,'object','message']);/*/TC*/
     //TODO (naitik) what should we be giving the developers here? is there a
-        if (!this.isValid()) {
+    
+    if (!this.isValid()) {
       return;
     }
     Event.fire('comments.add', {
@@ -9069,7 +9901,7 @@ var Comments = IframeWidget.extend({
     });
   },
 
-  _handleCommentCreatedMsg: function(message) {
+  _handleCommentCreatedMsg: function(/*object*/ message) {/*TC*/__t([message,'object','message']);/*/TC*/
     if (!this.isValid()) {
       return;
     }
@@ -9083,7 +9915,7 @@ var Comments = IframeWidget.extend({
     Event.fire('comment.create', eventArgs);
   },
 
-  _handleCommentRemovedMsg: function(message) {
+  _handleCommentRemovedMsg: function(/*object*/ message) {/*TC*/__t([message,'object','message']);/*/TC*/
     if (!this.isValid()) {
       return;
     }
@@ -9114,7 +9946,7 @@ var CommentsCount = Element.extend({
     var href = this.getAttribute('href', window.location.href);
 
     Data._selectByIndex(['commentsbox_count'], 'link_stat', 'url', href)
-      .wait(ES5(function(value) {
+      .wait(ES5(function(/*array<object>*/ value) {
         var c = value[0].commentsbox_count;
 
         DOM.html(
@@ -9140,50 +9972,63 @@ __d("sdk.Anim",["sdk.DOM"],function(global,require,requireDynamic,requireLazy,mo
 var DOM = require('sdk.DOM');
 var Anim = {
   
-  ate: function(dom, props, duration, callback) {
-    duration = !isNaN(parseFloat(duration)) && duration >= 0 ? duration : 750;
+  ate: function(/*DOMElement*/ dom, /*object*/ props, /*number?*/ duration,
+      /*function?*/ callback) {/*TC*/__t([dom,'DOMElement','dom'],[props,'object','props'],[duration,'number?','duration'],[callback,'function?','callback']);/*/TC*/
+    duration = !isNaN(parseFloat(duration)) && duration >= 0
+      ? duration
+      : 750;
     var
       frame_speed = 40,
       from        = {},
       to          = {},
       begin       = null,
-      s           = dom.style,
       timer       = setInterval(ES5(function() {
         if (!begin) { begin = ES5('Date', 'now', false); }
-                var pd = 1;
+        
+        var pd = 1;
         if (duration != 0) {
           pd = Math.min((ES5('Date', 'now', false) - begin) / duration, 1);
         }
         for (var prop in props) if (props.hasOwnProperty(prop)) {
           var value = props[prop];
-          if (!from[prop]) {             var style = DOM.getStyle(dom, prop);
-                        if (style === false) { return; }
-            from[prop] = this._parseCSS(style+'');           }
-          if (!to[prop]) {             to[prop] = this._parseCSS(value.toString());
+          if (!from[prop]) { 
+            var style = DOM.getStyle(dom, prop);
+            
+            if (style === false) { return; }
+            from[prop] = this._parseCSS(style+''); 
           }
-          var next = '';           ES5(from[prop], 'forEach', true,function(pair, i) {
+          if (!to[prop]) { 
+            to[prop] = this._parseCSS(value.toString());
+          }
+          var next = ''; 
+          ES5(from[prop], 'forEach', true,function(/*object*/ pair, /*number*/ i) {/*TC*/__t([pair,'object','pair'],[i,'number','i']);/*/TC*/
             
             if (isNaN(to[prop][i].numPart) && to[prop][i].textPart == '?') {
               next = pair.numPart + pair.textPart;
             
             } else if (isNaN(pair.numPart)) {
               next = pair.textPart;
-                        } else {
+            
+            } else {
               next +=
-                (pair.numPart +                  Math.ceil((to[prop][i].numPart - pair.numPart) *
+                (pair.numPart + 
+                 Math.ceil((to[prop][i].numPart - pair.numPart) *
                             Math.sin(Math.PI/2 * pd))) +
-                to[prop][i].textPart + ' ';             }
+                to[prop][i].textPart + ' '; 
+            }
           });
-                    DOM.setStyle(dom, prop, next);
+          
+          DOM.setStyle(dom, prop, next);
         }
-        if (pd == 1) {           clearInterval(timer);
+        if (pd == 1) { 
+          clearInterval(timer);
           if (callback) { callback(dom); }
         }
       }, 'bind', true,this), frame_speed);
   },
 
   
-  _parseCSS: function(css) {
+  _parseCSS: function(/*string*/ css) /*array<object>*/ {/*TC*/__t([css,'string','css']);/*/TC*/
     var ret = [];
     ES5(css.split(' '), 'forEach', true,function(peice) {
       var num = parseInt(peice, 10);
@@ -9207,11 +10052,11 @@ var map = {
   '/': '&#x2F;'
 };
 
-function escapeHTML( value)  {__t([value,'string','value']); return __t([function(){
+function escapeHTML(/*string*/ value) /*string*/ {/*TC*/__t([value,'string','value']); return __t([function(){/*/TC*/
   return value.replace(re, function(m) {
     return map[m];
   });
-}.apply(this, arguments), 'string']);}
+/*TC*/}.apply(this, arguments), 'string']);/*/TC*/}
 module.exports = escapeHTML;
 
 });
@@ -9226,32 +10071,37 @@ var UrlMap = require('UrlMap');
 
 var Helper = {
   
-  isUser: function(id) {
+  isUser: function(id) /*boolean*/ {/*TC*/ return __t([function(){/*/TC*/
     return id < 2200000000 ||
-      (id >= 100000000000000 &&         id <= 100099999989999) ||       (id >= 89000000000000 &&          id <= 89999999999999);      },
+      (id >= 100000000000000 &&  
+       id <= 100099999989999) || 
+      (id >= 89000000000000 &&   
+       id <= 89999999999999);    
+  /*TC*/}.apply(this, arguments), 'boolean']);/*/TC*/},
 
   
-  upperCaseFirstChar: function(s) {
+  upperCaseFirstChar: function(/*string*/ s) /*string*/ {/*TC*/__t([s,'string','s']); return __t([function(){/*/TC*/
     if (s.length > 0) {
       return s.substr(0, 1).toUpperCase() + s.substr(1);
     }
     else {
       return s;
     }
-  },
+  /*TC*/}.apply(this, arguments), 'string']);/*/TC*/},
 
   
-  getProfileLink: function(userInfo, html, href) {
+  getProfileLink: function(/*object?*/ userInfo, /*string*/ html,
+      /*string?*/ href) /*string*/ {/*TC*/__t([userInfo,'object?','userInfo'],[html,'string','html'],[href,'string?','href']); return __t([function(){/*/TC*/
     href = href || (userInfo ? UrlMap.resolve('www') + '/profile.php?id=' +
                     userInfo.uid : null);
     if (href) {
       html = '<a class="fb_link" href="' + href + '">' + html + '</a>';
     }
     return html;
-  },
+  /*TC*/}.apply(this, arguments), 'string']);/*/TC*/},
 
   
-  invokeHandler: function(handler, scope, args) {
+  invokeHandler: function(handler, /*object?*/ scope, /*array?*/ args) {/*TC*/__t([scope,'object?','scope'],[args,'array?','args']);/*/TC*/
     if (handler) {
       if (typeof handler === 'string') {
         ErrorHandling.unguard(safeEval)(handler);
@@ -9262,12 +10112,14 @@ var Helper = {
   },
 
   
-  fireEvent: function(eventName, eventSource) {
+  fireEvent: function(/*string*/ eventName, /*object*/ eventSource) {/*TC*/__t([eventName,'string','eventName'],[eventSource,'object','eventSource']);/*/TC*/
     var href = eventSource._attr.href;
-    eventSource.fire(eventName, href);     Event.fire(eventName, href, eventSource);   },
+    eventSource.fire(eventName, href); 
+    Event.fire(eventName, href, eventSource); 
+  },
 
   
-  executeFunctionByName: function(functionName ) {
+  executeFunctionByName: function(/*string*/ functionName /*, args */) {/*TC*/__t([functionName,'string','functionName']);/*/TC*/
     var args = Array.prototype.slice.call(arguments, 1);
     var namespaces = functionName.split(".");
     var func = namespaces.pop();
@@ -9307,15 +10159,22 @@ var ConnectBar = Element.extend({
   _initialHeight: null,
   _initTopMargin: 0,
   _picFieldName: 'pic_square',
-  _page: null,   _displayed: false,   _notDisplayed: false,   _container: null,
+  _page: null, 
+  _displayed: false, 
+  _notDisplayed: false, 
+  _container: null,
   _animationSpeed: 0, 
+
   
   process: function() {
-        Auth.getLoginStatus(ES5(function(resp) {
-      Event.monitor('auth.statusChange', ES5(function() {
-                if (this.isValid() && Runtime.getLoginStatus() == 'connected') {
+    
+    Auth.getLoginStatus(ES5(function(/*object*/ resp) {/*TC*/__t([resp,'object','resp']);/*/TC*/
+      Event.monitor('auth.statusChange', ES5(function() /*boolean*/ {/*TC*/ return __t([function(){/*/TC*/
+        
+        if (this.isValid() && Runtime.getLoginStatus() == 'connected') {
           this._uid = Runtime.getUserID();
-          api({             method: 'Connect.shouldShowConnectBar'
+          api({ 
+            method: 'Connect.shouldShowConnectBar'
           }, ES5(function(showBar) {
             if (showBar != 2) {
               this._animationSpeed = (showBar == 0) ? 750 : 0;
@@ -9327,7 +10186,8 @@ var ConnectBar = Element.extend({
         } else {
           this._noRender();
         }
-        return false;       }, 'bind', true,this));
+        return false; 
+      /*TC*/}.apply(this, arguments), 'boolean']);/*/TC*/}, 'bind', true,this));
     }, 'bind', true,this));
   },
 
@@ -9338,7 +10198,7 @@ var ConnectBar = Element.extend({
                                     'user', 'uid', this._uid);
     var q2 = Data._selectByIndex(['display_name'], 'application',
                                     'api_key', Runtime.getClientID());
-    Data.waitOn([q1, q2], ES5(function(data) {
+    Data.waitOn([q1, q2], ES5(function(/*array<array<object>>*/ data) {
       data[0][0].site_name = data[1][0].display_name;
       if (!this._displayed) {
         this._displayed = true;
@@ -9372,10 +10232,11 @@ var ConnectBar = Element.extend({
   },
 
   
-  _renderConnectBar: function(info) {
+  _renderConnectBar: function(/*object*/ info) {/*TC*/__t([info,'object','info']);/*/TC*/
     var bar = document.createElement('div'),
         container = document.createElement('div');
-        bar.className = 'fb_connect_bar';
+    
+    bar.className = 'fb_connect_bar';
     container.className = 'fb_reset fb_connect_bar_container';
     container.appendChild(bar);
     document.body.appendChild(container);
@@ -9411,10 +10272,9 @@ var ConnectBar = Element.extend({
       info.profile_url,
       UrlMap.resolve('www') + '/sitetour/connect.php'
     ));
-    var _this = this;
-    ES5(createArrayFrom(bar.getElementsByTagName('a')), 'forEach', true,function(el) {
-      el.onclick = ES5(_this._clickHandler, 'bind', true,_this);
-    });
+    ES5(createArrayFrom(bar.getElementsByTagName('a')), 'forEach', true,function(/*DOMElement*/ el) {/*TC*/__t([el,'DOMElement','el']);/*/TC*/
+        el.onclick = ES5(this._clickHandler, 'bind', true,this);
+      }, this);
     this._page = document.body;
     var top_margin = 0;
     if (this._page.parentNode) {
@@ -9426,14 +10286,17 @@ var ConnectBar = Element.extend({
     }
     top_margin = isNaN(top_margin) ? 0 : top_margin;
     this._initTopMargin = top_margin;
-    if (!window.XMLHttpRequest) {       container.className += " fb_connect_bar_container_ie6";
+    if (!window.XMLHttpRequest) { 
+      container.className += " fb_connect_bar_container_ie6";
     } else {
       container.style.top = (-1*this._initialHeight) + 'px';
       Anim.ate(container, { top: '0px' }, this._animationSpeed);
     }
     var move = { marginTop: this._initTopMargin + this._initialHeight + 'px' }
-    if (UserAgent.ie()) {       move.backgroundPositionY = this._initialHeight + 'px'
-    } else {       move.backgroundPosition = '? ' + this._initialHeight + 'px'
+    if (UserAgent.ie()) { 
+      move.backgroundPositionY = this._initialHeight + 'px'
+    } else { 
+      move.backgroundPosition = '? ' + this._initialHeight + 'px'
     }
     Anim.ate(this._page, move, this._animationSpeed);
   },
@@ -9445,7 +10308,8 @@ var ConnectBar = Element.extend({
     while (el.nodeName != 'A') { el = el.parentNode; }
     switch (el.className) {
       case 'fb_bar_close':
-        api({           method: 'Connect.connectBarMarkAcknowledged'
+        api({ 
+          method: 'Connect.connectBarMarkAcknowledged'
         });
         Insights.impression({
           lid: 104,
@@ -9459,7 +10323,8 @@ var ConnectBar = Element.extend({
         break;
       case 'fb_no_thanks':
         this._closeConnectBar();
-        api({           method: 'Connect.connectBarMarkAcknowledged'
+        api({ 
+          method: 'Connect.connectBarMarkAcknowledged'
         });
         Insights.impression({
           lid: 104,
@@ -9481,14 +10346,16 @@ var ConnectBar = Element.extend({
   _closeConnectBar: function() {
     this._notDisplayed = true;
     var move = { marginTop: this._initTopMargin + 'px' }
-    if (UserAgent.ie()) {       move.backgroundPositionY = '0px'
-    } else {       move.backgroundPosition = '? 0px'
+    if (UserAgent.ie()) { 
+      move.backgroundPositionY = '0px'
+    } else { 
+      move.backgroundPosition = '? 0px'
     }
     var speed = (this._animationSpeed == 0) ? 0 : 300;
     Anim.ate(this._page, move, speed);
     Anim.ate(this._container, {
       top: (-1 * this._initialHeight) + 'px'
-    }, speed, function(el) {
+    }, speed, function(/*DOMElement*/ el) {/*TC*/__t([el,'DOMElement','el']);/*/TC*/
       el.parentNode.removeChild(el);
     });
     this.fire('connectbar.onclose');
@@ -9510,7 +10377,7 @@ var Fan = IframeWidget.extend({
   _visibleAfter: 'load',
 
   
-  setupAndValidate: function() {
+  setupAndValidate: function() /*boolean*/ {/*TC*/ return __t([function(){/*/TC*/
     this._attr = {
       api_key     : Runtime.getClientID(),
       connections : this.getAttribute('connections', '10'),
@@ -9523,7 +10390,8 @@ var Fan = IframeWidget.extend({
       width       : this._getPxAttribute('width', 300)
     };
 
-        if (!this._attr.id && !this._attr.name) {
+    
+    if (!this._attr.id && !this._attr.name) {
       Log.error('<fb:fan> requires one of the "id" or "name" attributes.');
       return false;
     }
@@ -9541,23 +10409,24 @@ var Fan = IframeWidget.extend({
         height = 550;
       }
     }
-        if (this._attr.logobar) {
+    
+    if (this._attr.logobar) {
       height += 25;
     }
 
     this._attr.height = height;
     return true;
-  },
+  /*TC*/}.apply(this, arguments), 'boolean']);/*/TC*/},
 
   
-  getSize: function() {
+  getSize: function() /*object*/ {/*TC*/ return __t([function(){/*/TC*/
     return { width: this._attr.width, height: this._attr.height };
-  },
+  /*TC*/}.apply(this, arguments), 'object']);/*/TC*/},
 
   
-  getUrlBits: function() {
+  getUrlBits: function() /*object*/ {/*TC*/ return __t([function(){/*/TC*/
     return { name: 'fan', params: this._attr };
-  }
+  /*TC*/}.apply(this, arguments), 'object']);/*/TC*/}
 });
 
 module.exports = Fan;
@@ -9571,8 +10440,8 @@ var DOM = require('sdk.DOM');
 var nextZIndex = 10000;
 
 var Widget = IframeWidget.extend({
-  constructor: function(opts) {
-    this.parent();
+  constructor: function(/*object*/ opts) {/*TC*/__t([opts,'object','opts']);/*/TC*/
+    this.parent(opts.commentNode);
     this._iframeWidth = opts.width + 1;
     this._iframeHeight = opts.height;
     this._attr = {
@@ -9586,22 +10455,24 @@ var Widget = IframeWidget.extend({
     DOM.addCss(this.dom, 'fb_edge_comment_widget');
   },
 
-  ///////////////////////////////////////////////////////////////////////////  ///////////////////////////////////////////////////////////////////////////  
+  ///////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////
+  
   _visibleAfter: 'load',
   _showLoader: false,
 
   
-  getSize: function() {
+  getSize: function() /*object*/ {/*TC*/ return __t([function(){/*/TC*/
     return {
       width: this._iframeWidth,
       height: this._iframeHeight
     };
-  },
+  /*TC*/}.apply(this, arguments), 'object']);/*/TC*/},
 
   
-  getUrlBits: function() {
+  getUrlBits: function() /*object*/ {/*TC*/ return __t([function(){/*/TC*/
     return { name: 'comment_widget_shell', params: this._attr };
-  }
+  /*TC*/}.apply(this, arguments), 'object']);/*/TC*/}
 });
 
 module.exports = Widget;
@@ -9622,7 +10493,7 @@ var EdgeWidget = IframeWidget.extend({
   _rootPadding: null,
 
   
-  setupAndValidate : function() {
+  setupAndValidate : function() /*boolean*/ {/*TC*/ return __t([function(){/*/TC*/
     DOM.addCss(this.dom, 'fb_edge_widget_with_comment');
     this._attr = {
       channel_url             : this.getChannelUrl(),
@@ -9650,7 +10521,7 @@ var EdgeWidget = IframeWidget.extend({
     };
 
     return true;
-  },
+  /*TC*/}.apply(this, arguments), 'boolean']);/*/TC*/},
 
   oneTimeSetup : function() {
     this.subscribe('xd.authPrompted', ES5(this._onAuthPrompt, 'bind', true,this));
@@ -9664,19 +10535,18 @@ var EdgeWidget = IframeWidget.extend({
       ES5(this._handleEdgeCommentDialogHide, 'bind', true,this));
     this.subscribe('xd.showEdgeCommentDialog',
       ES5(this._handleEdgeCommentDialogShow, 'bind', true,this));
-
   },
 
   
-  getSize: function() {
+  getSize: function() /*object*/ {/*TC*/ return __t([function(){/*/TC*/
     return {
       width: this._getWidgetWidth(),
       height: this._getWidgetHeight()
     };
-  },
+  /*TC*/}.apply(this, arguments), 'object']);/*/TC*/},
 
   
-  _getWidgetHeight : function() {
+  _getWidgetHeight : function() /*number*/ {/*TC*/ return __t([function(){/*/TC*/
     var layout = this._getLayout();
     var should_show_faces = this._shouldShowFaces() ? 'show' : 'hide';
     var send = this._getBoolAttribute('send');
@@ -9687,10 +10557,10 @@ var EdgeWidget = IframeWidget.extend({
         'button_count' : {'show': 21, 'hide': 21},
         'simple' : {'show': 20, 'hide': 20}};
     return layoutToDefaultHeightMap[layout][should_show_faces];
-  },
+  /*TC*/}.apply(this, arguments), 'number']);/*/TC*/},
 
   
-  _getWidgetWidth : function() {
+  _getWidgetWidth : function() /*number*/ {/*TC*/ return __t([function(){/*/TC*/
     var layout = this._getLayout();
     var send = this._getBoolAttribute('send');
     var should_show_faces = this._shouldShowFaces() ? 'show' : 'hide';
@@ -9731,24 +10601,24 @@ var EdgeWidget = IframeWidget.extend({
     }
 
     return width;
-  },
+  /*TC*/}.apply(this, arguments), 'number']);/*/TC*/},
 
   
-  _getLayout : function() {
+  _getLayout : function() /*string*/ {/*TC*/ return __t([function(){/*/TC*/
     return this._getAttributeFromList(
       'layout',
       'standard',
       ['standard', 'button_count', 'box_count', 'simple']);
-  },
+  /*TC*/}.apply(this, arguments), 'string']);/*/TC*/},
 
   
-  _shouldShowFaces : function() {
+  _shouldShowFaces : function() /*boolean*/ {/*TC*/ return __t([function(){/*/TC*/
     return this._getLayout() === 'standard' &&
            this._getBoolAttribute('show-faces', true);
-  },
+  /*TC*/}.apply(this, arguments), 'boolean']);/*/TC*/},
 
   
-  _handleEdgeCommentDialogPresentation : function(message) {
+  _handleEdgeCommentDialogPresentation : function(/*object*/ message) {/*TC*/__t([message,'object','message']);/*/TC*/
     if (!this.isValid()) {
       return;
     }
@@ -9760,7 +10630,8 @@ var EdgeWidget = IframeWidget.extend({
   },
 
   
-  _createEdgeCommentWidget : function(message, comment_node) {
+  _createEdgeCommentWidget : function(/*object*/ message,
+      /*DOMElement*/ comment_node) /*object*/ {/*TC*/__t([message,'object','message'],[comment_node,'DOMElement','comment_node']); return __t([function(){/*/TC*/
     var opts = {
       commentNode          : comment_node,
       externalUrl          : message.externalURL,
@@ -9777,18 +10648,18 @@ var EdgeWidget = IframeWidget.extend({
       paddingLeft          : this._rootPadding.left
     };
     return new EdgeCommentWidget(opts);
-  },
+  /*TC*/}.apply(this, arguments), 'object']);/*/TC*/},
 
   
 
-  _getHeightOffset : function(message) {
+  _getHeightOffset : function(/*object*/ message) /*number*/ {/*TC*/__t([message,'object','message']); return __t([function(){/*/TC*/
     return parseFloat(message['anchorGeometry[y]']) +
            parseFloat(message['anchorPosition[y]']) +
            this._rootPadding.top;
-  },
+  /*TC*/}.apply(this, arguments), 'number']);/*/TC*/},
 
   
-  _getWidthOffset : function(message) {
+  _getWidthOffset : function(/*object*/ message) /*number*/ {/*TC*/__t([message,'object','message']); return __t([function(){/*/TC*/
     var off = parseFloat(message['anchorPosition[x]']) + this._rootPadding.left;
     var plugin_left = DOM.getPosition(this.dom).x;
     var plugin_width = this.dom.offsetWidth;
@@ -9807,11 +10678,11 @@ var EdgeWidget = IframeWidget.extend({
     }
 
     return off;
-  },
+  /*TC*/}.apply(this, arguments), 'number']);/*/TC*/},
 
   
-  _getCommonEdgeCommentWidgetOpts : function(message,
-                                             comment_node) {
+  _getCommonEdgeCommentWidgetOpts : function(/*object*/ message,
+      /*DOMElement*/ comment_node) /*object*/ {/*TC*/__t([message,'object','message'],[comment_node,'DOMElement','comment_node']); return __t([function(){/*/TC*/
     return {
       colorscheme             : this._attr.colorscheme,
       commentNode             : comment_node,
@@ -9833,10 +10704,10 @@ var EdgeWidget = IframeWidget.extend({
       anchorTargetY           : parseFloat(message['query[anchorTargetY]']) +
                                 this._rootPadding.top
     };
-  },
+  /*TC*/}.apply(this, arguments), 'object']);/*/TC*/},
 
   
-  _handleEdgeCommentDialogDismissal : function(message) {
+  _handleEdgeCommentDialogDismissal : function(/*object*/ message) {/*TC*/__t([message,'object','message']);/*/TC*/
     if (this._commentWidgetNode) {
       this.dom.removeChild(this._commentWidgetNode);
       delete this._commentWidgetNode;
@@ -9858,10 +10729,12 @@ var EdgeWidget = IframeWidget.extend({
   },
 
   
-  _fireEventAndInvokeHandler: function(eventName, eventAttribute) {
+  _fireEventAndInvokeHandler: function(/*string*/ eventName,
+      /*string*/ eventAttribute) {/*TC*/__t([eventName,'string','eventName'],[eventAttribute,'string','eventAttribute']);/*/TC*/
     Helper.fireEvent(eventName, this);
     Helper.invokeHandler(
-      this.getAttribute(eventAttribute), this, [this._attr.href]);   },
+      this.getAttribute(eventAttribute), this, [this._attr.href]); 
+  },
 
   
   _onEdgeCreate: function() {
@@ -9890,7 +10763,7 @@ var DOM = require('sdk.DOM');
 var Event = require('sdk.Event');
 
 var SendButtonFormWidget = EdgeCommentWidget.extend({
-  constructor: function(opts) {
+  constructor: function(/*object*/ opts) {/*TC*/__t([opts,'object','opts']);/*/TC*/
     this.parent(opts);
 
     DOM.addCss(this.dom, 'fb_send_button_form_widget');
@@ -9899,7 +10772,8 @@ var SendButtonFormWidget = EdgeCommentWidget.extend({
       (typeof opts.siderender != 'undefined' && opts.siderender) ?
         'siderender' : '');
 
-        this._attr.nodeImageURL = opts.nodeImageURL;
+    
+    this._attr.nodeImageURL = opts.nodeImageURL;
     this._attr.nodeRef      = opts.nodeRef;
     this._attr.nodeTitle    = opts.nodeTitle;
     this._attr.nodeURL      = opts.nodeURL;
@@ -9909,23 +10783,34 @@ var SendButtonFormWidget = EdgeCommentWidget.extend({
     this._attr.anchorTargetX = opts.anchorTargetX;
     this._attr.anchorTargetY = opts.anchorTargetY;
 
-        this._attr.channel      = this.getChannelUrl();
+    
+    this._attr.channel      = this.getChannelUrl();
 
-                this._attr.controllerID = opts.controllerID;
+    
+    
+    
+    this._attr.controllerID = opts.controllerID;
 
-        this._attr.colorscheme  = opts.colorscheme;
+    
+    this._attr.colorscheme  = opts.colorscheme;
 
-        this._attr.error        = opts.error;
+    
+    this._attr.error        = opts.error;
 
-        this._attr.siderender   = opts.siderender;
+    
+    this._attr.siderender   = opts.siderender;
 
-        this._attr.extended_social_context = opts.extended_social_context;
+    
+    this._attr.extended_social_context = opts.extended_social_context;
   },
-        _showLoader: true,
+  
+  
+  
+  _showLoader: true,
 
-  getUrlBits: function() {
+  getUrlBits: function() /*object*/ {/*TC*/ return __t([function(){/*/TC*/
     return { name: 'send_button_form_shell', params: this._attr };
-  },
+  /*TC*/}.apply(this, arguments), 'object']);/*/TC*/},
 
   oneTimeSetup: function() {
     this.subscribe('xd.messageSent', ES5(this._onMessageSent, 'bind', true,this));
@@ -9948,13 +10833,17 @@ var XFBML = require('XFBML');
 var Like = EdgeWidget.extend({
 
   
-  getUrlBits: function() {
+  getUrlBits: function() /*object*/ {/*TC*/ return __t([function(){/*/TC*/
     return { name: 'like', params: this._attr };
-  },
+  /*TC*/}.apply(this, arguments), 'object']);/*/TC*/},
 
   
-  _createEdgeCommentWidget: function(message, comment_node) {
-                if ('send' in this._attr &&
+  _createEdgeCommentWidget: function(/*object*/ message,
+      /*DOMElement*/ comment_node) /*object*/ {/*TC*/__t([message,'object','message'],[comment_node,'DOMElement','comment_node']); return __t([function(){/*/TC*/
+    
+    
+    
+    if ('send' in this._attr &&
         'widget_type' in message &&
         message.widget_type == 'send') {
       var opts = this._getCommonEdgeCommentWidgetOpts(message, comment_node);
@@ -9962,12 +10851,12 @@ var Like = EdgeWidget.extend({
     } else {
       return this.parentCall("_createEdgeCommentWidget", message, comment_node);
     }
-  },
+  /*TC*/}.apply(this, arguments), 'object']);/*/TC*/},
 
   
-  getIframeTitle: function() {
+  getIframeTitle: function() /*string*/ {/*TC*/ return __t([function(){/*/TC*/
     return 'Like this content on Facebook.';
-  }
+  /*TC*/}.apply(this, arguments), 'string']);/*/TC*/}
 });
 
 module.exports = Like;
@@ -9984,7 +10873,7 @@ var LikeBox = EdgeWidget.extend({
   _visibleAfter: 'load',
 
   
-  setupAndValidate: function() {
+  setupAndValidate: function() /*boolean*/ {/*TC*/ return __t([function(){/*/TC*/
     this._attr = {
       channel     : this.getChannelUrl(),
       api_key     : Runtime.getClientID(),
@@ -10006,13 +10895,16 @@ var LikeBox = EdgeWidget.extend({
       this._attr.force_wall = true;
     }
 
-            if (this._attr.connections === '0') {
+    
+    
+    if (this._attr.connections === '0') {
       this._attr.show_faces = false;
     } else if (this._attr.connections) {
       this._attr.show_faces = true;
     }
 
-        if (!this._attr.id && !this._attr.name && !this._attr.href) {
+    
+    if (!this._attr.id && !this._attr.name && !this._attr.href) {
       Log.error('<fb:like-box> requires one of the "id" or "name" attributes.');
       return false;
     }
@@ -10033,7 +10925,8 @@ var LikeBox = EdgeWidget.extend({
           height += 300;
         }
 
-                if (this._attr.header &&
+        
+        if (this._attr.header &&
             this._attr.header !== '0') {
          height += 32;
         }
@@ -10042,21 +10935,22 @@ var LikeBox = EdgeWidget.extend({
 
     this._attr.height = height;
 
-        this.subscribe('xd.likeboxLiked', ES5(this._onLiked, 'bind', true,this));
+    
+    this.subscribe('xd.likeboxLiked', ES5(this._onLiked, 'bind', true,this));
     this.subscribe('xd.likeboxUnliked', ES5(this._onUnliked, 'bind', true,this));
 
     return true;
-  },
+  /*TC*/}.apply(this, arguments), 'boolean']);/*/TC*/},
 
   
-  getSize: function() {
+  getSize: function() /*object*/ {/*TC*/ return __t([function(){/*/TC*/
     return { width: this._attr.width, height: this._attr.height };
-  },
+  /*TC*/}.apply(this, arguments), 'object']);/*/TC*/},
 
   
-  getUrlBits: function() {
+  getUrlBits: function() /*object*/ {/*TC*/ return __t([function(){/*/TC*/
     return { name: 'likebox', params: this._attr };
-  },
+  /*TC*/}.apply(this, arguments), 'object']);/*/TC*/},
 
   
   _onLiked: function() {
@@ -10081,7 +10975,7 @@ var LiveStream = IframeWidget.extend({
   _visibleAfter: 'load',
 
   
-  setupAndValidate: function() {
+  setupAndValidate: function() /*boolean*/ {/*TC*/ return __t([function(){/*/TC*/
     this._attr = {
       app_id : this.getAttribute('event-app-id'),
       href : this.getAttribute('href', window.location.href),
@@ -10095,21 +10989,21 @@ var LiveStream = IframeWidget.extend({
     };
 
     return true;
-  },
+  /*TC*/}.apply(this, arguments), 'boolean']);/*/TC*/},
 
   
-  getSize: function() {
+  getSize: function() /*object*/ {/*TC*/ return __t([function(){/*/TC*/
     return { width: this._attr.width, height: this._attr.height };
-  },
+  /*TC*/}.apply(this, arguments), 'object']);/*/TC*/},
 
   
-  getUrlBits: function() {
+  getUrlBits: function() /*object*/ {/*TC*/ return __t([function(){/*/TC*/
     var name = this._attr.redesigned ? 'live_stream_box' : 'livefeed';
     if (this._getBoolAttribute('modern', false)) {
       name = 'live_stream';
     }
     return { name: name, params: this._attr };
-  }
+  /*TC*/}.apply(this, arguments), 'object']);/*/TC*/}
 });
 
 module.exports = LiveStream;
@@ -10121,20 +11015,22 @@ var Helper = require('sdk.Helper');
 var IframePlugin = require('IframePlugin');
 
 var LoginButton = IframePlugin.extend({
-  constructor: function(elem, ns, tag, attr) {
+  constructor: function(/*DOMElement*/ elem, /*string*/ ns, /*string*/ tag,
+      /*object*/ attr) {/*TC*/__t([elem,'DOMElement','elem'],[ns,'string','ns'],[tag,'string','tag'],[attr,'object','attr']);/*/TC*/
     this.parent(elem, ns, tag, attr);
     var onlogin = IframePlugin.getVal(attr, 'on_login');
     if (onlogin) {
-      this.subscribe('login.status', function(response) {
+      this.subscribe('login.status', function(/*object*/ response) {/*TC*/__t([response,'object','response']);/*/TC*/
         Helper.invokeHandler(onlogin, null, [response]);
       });
     }
   },
 
-  getParams: function() {
+  getParams: function() /*object*/ {/*TC*/ return __t([function(){/*/TC*/
     return {
       scope: 'string',
-      perms: 'string',       size: 'string',
+      perms: 'string', 
+      size: 'string',
       login_text: 'text',
       show_faces: 'bool',
       max_rows: 'string',
@@ -10143,7 +11039,7 @@ var LoginButton = IframePlugin.extend({
       auto_logout_link: 'bool',
       one_click: 'bool'
     };
-  }
+  /*TC*/}.apply(this, arguments), 'object']);/*/TC*/}
 });
 
 module.exports = LoginButton;
@@ -10199,24 +11095,28 @@ var Name = Element.extend({
     }
 
     var data;
-        Event.monitor('auth.statusChange', ES5(function() {
-            if (!this.isValid()) {
+    
+    Event.monitor('auth.statusChange', ES5(function() {
+      
+      if (!this.isValid()) {
         this.fire('render');
-        return true;       }
+        return true; 
+      }
 
       if (!this._uid || this._uid == 'loggedinuser') {
         this._uid = Runtime.getUserID();
       }
 
       if (!this._uid) {
-        return;       }
+        return; 
+      }
 
       if (Helper.isUser(this._uid)) {
         data = Data._selectByIndex(fields, 'user', 'uid', this._uid);
       } else {
         data = Data._selectByIndex(['name', 'id'], 'profile', 'id', this._uid);
       }
-      data.wait(ES5(function(data) {
+      data.wait(ES5(function(/*array<object>*/ data) {
         if (this._subjectId == this._uid) {
           this._renderPronoun(data[0]);
         } else {
@@ -10228,7 +11128,7 @@ var Name = Element.extend({
   },
 
   
-  _renderPronoun: function(userInfo) {
+  _renderPronoun: function(/*object*/ userInfo) {/*TC*/__t([userInfo,'object','userInfo']);/*/TC*/
     var
       word = '',
       objective = this._objective;
@@ -10327,7 +11227,7 @@ var Name = Element.extend({
   },
 
   
-  _renderOther: function(userInfo) {
+  _renderOther: function(/*object*/ userInfo) {/*TC*/__t([userInfo,'object','userInfo']);/*/TC*/
     var
       name = '',
       html = '';
@@ -10340,7 +11240,8 @@ var Name = Element.extend({
           name = 'yourself';
         }
       } else {
-                if (this._possessive) {
+        
+        if (this._possessive) {
           name = 'your';
         } else {
           name = 'you';
@@ -10348,13 +11249,18 @@ var Name = Element.extend({
       }
     }
     else if (userInfo) {
-            if (null === userInfo.first_name) {
+      
+      if (null === userInfo.first_name) {
         userInfo.first_name = '';
       }
       if (null === userInfo.last_name) {
         userInfo.last_name = '';
       }
-                              if (this._firstnameonly && userInfo.first_name !== undefined) {
+      
+      
+      
+      
+      if (this._firstnameonly && userInfo.first_name !== undefined) {
         name = escapeHTML(userInfo.first_name);
       } else if (this._lastnameonly && userInfo.last_name !== undefined) {
         name = escapeHTML(userInfo.last_name);
@@ -10427,7 +11333,8 @@ var ProfilePic = Element.extend({
       style = this.dom.style,
       uid = this.getAttribute('uid');
 
-        if (this._getBoolAttribute('facebook-logo')) {
+    
+    if (this._getBoolAttribute('facebook-logo')) {
       picFieldName += '_with_logo';
     }
 
@@ -10440,16 +11347,19 @@ var ProfilePic = Element.extend({
       style.height = height;
     }
 
-    var renderFn = ES5(function(result) {
+    var renderFn = ES5(function(/*array<object>*/ result) {
       var
         userInfo = result ? result[0] : null,
         imgSrc = userInfo ? userInfo[picFieldName] : null;
 
       if (!imgSrc) {
-                imgSrc = UrlMap.resolve('fbcdn') +
+        
+        imgSrc = UrlMap.resolve('fbcdn') +
           ProfilePicConfig.defPicMap[picFieldName];
       }
-                  var
+      
+      
+      var
         styleValue = (
           (width ? 'width:' + width + ';' : '') +
           (height ? 'height:' + width + ';' : '')
@@ -10474,27 +11384,33 @@ var ProfilePic = Element.extend({
       this.fire('render');
     }, 'bind', true,this);
 
-        Event.monitor('auth.statusChange', ES5(function() {
+    
+    Event.monitor('auth.statusChange', ES5(function() /*boolean?*/ {/*TC*/ return __t([function(){/*/TC*/
       //Is Element still in DOM tree
       if (!this.isValid()) {
         this.fire('render');
-        return true;       }
+        return true; 
+      }
 
       if (this.getAttribute('uid', null) == 'loggedinuser') {
         uid = Runtime.getUserID();
       }
 
-            if (Runtime.getLoginStatus() !== 'unknown' && uid) {
-                        Data._selectByIndex(
+      
+      if (Runtime.getLoginStatus() !== 'unknown' && uid) {
+        
+        
+        Data._selectByIndex(
           ['name', picFieldName],
           Helper.isUser(uid) ? 'user' : 'profile',
           Helper.isUser(uid) ? 'uid' : 'id',
           uid
         ).wait(renderFn);
       } else {
-                renderFn();
+        
+        renderFn();
       }
-    }, 'bind', true,this));
+    /*TC*/}.apply(this, arguments), 'boolean?']);/*/TC*/}, 'bind', true,this));
   }
 });
 
@@ -10512,14 +11428,15 @@ var Runtime = require('sdk.Runtime');
 
 var Bar = IframeWidget.extend({
 
-  getUrlBits: function() {
+  getUrlBits: function() /*object*/ {/*TC*/ return __t([function(){/*/TC*/
     return { name: 'recommendations_bar', params: this._attr };
-  },
+  /*TC*/}.apply(this, arguments), 'object']);/*/TC*/},
 
-  setupAndValidate: function() {
+  setupAndValidate: function() /*boolean*/ {/*TC*/ return __t([function(){/*/TC*/
 
 
-    function interval_queue(interval, func) {
+    function interval_queue(/*number*/ interval, /*function*/ func)
+        /*function*/ {/*TC*/__t([interval,'number','interval'],[func,'function','func']); return __t([function(){/*/TC*/
       var last_run = 0;
       var queued = null;
 
@@ -10528,21 +11445,23 @@ var Bar = IframeWidget.extend({
         queued = null;
         last_run = ES5('Date', 'now', false);
       }
-      return function() {         if (!queued) {
+      return function() /*boolean*/ {/*TC*/ return __t([function(){/*/TC*/
+        if (!queued) {
           var now = ES5('Date', 'now', false);
           if (now - last_run < interval) {
-            queued = window.setTimeout(run, interval - (now - last_run));
+            queued = setTimeout(run, interval - (now - last_run));
           } else {
             run();
           }
         }
         return true;
-      };
-    }
+      /*TC*/}.apply(this, arguments), 'boolean']);/*/TC*/};
+    /*TC*/}.apply(this, arguments), 'function']);/*/TC*/}
 
-    function validate_trigger(trigger) {
+    function validate_trigger(/*string?*/ trigger) {/*TC*/__t([trigger,'string?','trigger']);/*/TC*/
       if (trigger.match(/^\d+(?:\.\d+)?%$/)) {
-                var percent = Math.min(Math.max(parseInt(trigger, 10), 0), 100);
+        
+        var percent = Math.min(Math.max(parseInt(trigger, 10), 0), 100);
         trigger = percent / 100;
       } else if (trigger != 'manual' && trigger != 'onvisible') {
         trigger = 'onvisible';
@@ -10550,14 +11469,16 @@ var Bar = IframeWidget.extend({
       return trigger;
     }
 
-    function validate_read_time(read_time) {
+    function validate_read_time(/*string?*/ read_time) /*number*/ {/*TC*/__t([read_time,'string?','read_time']); return __t([function(){/*/TC*/
       return Math.max(parseInt(read_time, 10) || 30, 10);
-    }
+    /*TC*/}.apply(this, arguments), 'number']);/*/TC*/}
 
-    function validate_side(side) {
-      if (side == 'left' || side == 'right') {         return side;
+    function validate_side(/*string?*/ side) /*string*/ {/*TC*/__t([side,'string?','side']); return __t([function(){/*/TC*/
+      if (side == 'left' || side == 'right') { 
+        return side;
       }
-      return Runtime.getRtl() ? 'left' : 'right';     }
+      return Runtime.getRtl() ? 'left' : 'right'; 
+    /*TC*/}.apply(this, arguments), 'string']);/*/TC*/}
 
     this._attr = {
       channel      : this.getChannelUrl(),
@@ -10592,14 +11513,15 @@ var Bar = IframeWidget.extend({
           'platform/plugins/recommendations_bar/action',
           null,
           Arbiter.BEHAVIOR_STATE),
-        this._attr.read_time * 1000);       return true;
+        this._attr.read_time * 1000); 
+      return true;
     }, 'bind', true,this);
     DOMEventListener.add(window, 'scroll', action);
     DOMEventListener.add(document.documentElement, 'click', action);
     DOMEventListener.add(document.documentElement, 'mousemove', action);
 
     if (this._attr.trigger == "manual") {
-      var manual = ES5(function(href) {
+      var manual = ES5(function(/*string*/ href) /*boolean*/ {/*TC*/__t([href,'string','href']); return __t([function(){/*/TC*/
         if (href == this._attr.href) {
           Event.unsubscribe('xfbml.recommendationsbar.read', manual);
           this.arbiterInform(
@@ -10608,7 +11530,7 @@ var Bar = IframeWidget.extend({
             Arbiter.BEHAVIOR_STATE);
         }
         return true;
-      }, 'bind', true,this);
+      /*TC*/}.apply(this, arguments), 'boolean']);/*/TC*/}, 'bind', true,this);
       Event.subscribe('xfbml.recommendationsbar.read', manual);
     } else {
       var trigger = interval_queue(500, ES5(function() {
@@ -10622,7 +11544,8 @@ var Bar = IframeWidget.extend({
       }, 'bind', true,this));
       DOMEventListener.add(window, 'scroll', trigger);
       DOMEventListener.add(window, 'resize', trigger);
-      trigger();     }
+      trigger(); 
+    }
 
     this.visible = false;
     var visible = interval_queue(500, ES5(function() {
@@ -10638,11 +11561,12 @@ var Bar = IframeWidget.extend({
     DOMEventListener.add(window, 'scroll', visible);
     DOMEventListener.add(window, 'resize', visible);
     visible(); 
+
     this.focused = true;
-    var toggleFocused = ES5(function() {
+    var toggleFocused = ES5(function() /*boolean*/ {/*TC*/ return __t([function(){/*/TC*/
       this.focused = !this.focused;
       return true;
-    }, 'bind', true,this);
+    /*TC*/}.apply(this, arguments), 'boolean']);/*/TC*/}, 'bind', true,this);
     DOMEventListener.add(window, 'blur', toggleFocused);
     DOMEventListener.add(window, 'focus', toggleFocused);
 
@@ -10653,16 +11577,25 @@ var Bar = IframeWidget.extend({
     }, 'bind', true,this));
 
     return true;
-  },
+  /*TC*/}.apply(this, arguments), 'boolean']);/*/TC*/},
 
-  getSize: function() {
-        return {
+  getSize: function() /*object*/ {/*TC*/ return __t([function(){/*/TC*/
+    
+    return {
       height: 25, width: (this._attr.action == 'recommend' ? 140 : 96) };
-  },
+  /*TC*/}.apply(this, arguments), 'object']);/*/TC*/},
 
-  calculateVisibility: function() {
+  calculateVisibility: function() /*boolean*/ {/*TC*/ return __t([function(){/*/TC*/
     var fold = document.documentElement.clientHeight; 
-                                if (!this.focused && window.console && window.console.firebug) {
+
+    
+    
+    
+    
+    
+    
+    
+    if (!this.focused && window.console && window.console.firebug) {
       return this.visible;
     }
 
@@ -10671,13 +11604,16 @@ var Bar = IframeWidget.extend({
         return false;
 
       case "onvisible":
-                var elem = this.dom.getBoundingClientRect().top;
+        
+        var elem = this.dom.getBoundingClientRect().top;
         return elem <= fold;
 
-      default:         var scroll = window.pageYOffset || document.body.scrollTop;
-        var height = document.documentElement.scrollHeight;         return (scroll + fold) / height >= this._attr.trigger;
+      default: 
+        var scroll = window.pageYOffset || document.body.scrollTop;
+        var height = document.documentElement.scrollHeight; 
+        return (scroll + fold) / height >= this._attr.trigger;
     }
-  }
+  /*TC*/}.apply(this, arguments), 'boolean']);/*/TC*/}
 });
 
 module.exports = Bar;
@@ -10695,15 +11631,22 @@ var Registration = IframeWidget.extend({
   _visibleAfter: 'immediate',
 
   
-      _baseHeight: 167,
-    _fieldHeight: 28,
-
-    _skinnyWidth: 520,
-      _skinnyBaseHeight: 173,
-    _skinnyFieldHeight: 52,
+  
+  
+  _baseHeight: 167,
+  
+  _fieldHeight: 28,
 
   
-  setupAndValidate: function() {
+  _skinnyWidth: 520,
+  
+  
+  _skinnyBaseHeight: 173,
+  
+  _skinnyFieldHeight: 52,
+
+  
+  setupAndValidate: function() /*boolean*/ {/*TC*/ return __t([function(){/*/TC*/
     this._attr = {
       action       : this.getAttribute('action'),
       border_color : this.getAttribute('border-color'),
@@ -10720,19 +11663,23 @@ var Registration = IframeWidget.extend({
       width        : this._getPxAttribute('width', 600),
       target       : this.getAttribute('target')
     };
-        
+    
+    
+
     if (this._attr.onvalidate) {
-      this.subscribe('xd.validate', ES5(function(message) {
+      this.subscribe('xd.validate', ES5(function(/*object*/ message) {/*TC*/__t([message,'object','message']);/*/TC*/
         var value = ES5('JSON', 'parse', false,message.value);
         var callback = ES5(function(errors) {
           this.arbiterInform('Registration.Validation',
                              { errors: errors, id: message.id });
         }, 'bind', true,this);
 
-                var response = Helper.executeFunctionByName(this._attr.onvalidate,
+        
+        var response = Helper.executeFunctionByName(this._attr.onvalidate,
                                                        value, callback);
 
-                if (response) {
+        
+        if (response) {
           callback(response);
         }
       }, 'bind', true,this));
@@ -10742,25 +11689,28 @@ var Registration = IframeWidget.extend({
     this.subscribe('xd.authLogout', ES5(this._onAuthLogout, 'bind', true,this));
 
     return true;
-  },
+  /*TC*/}.apply(this, arguments), 'boolean']);/*/TC*/},
 
   
-  getSize: function() {
+  getSize: function() /*object*/ {/*TC*/ return __t([function(){/*/TC*/
     return { width: this._attr.width, height: this._getHeight() };
-  },
+  /*TC*/}.apply(this, arguments), 'object']);/*/TC*/},
 
-  _getHeight: function() {
+  _getHeight: function() /*number*/ {/*TC*/ return __t([function(){/*/TC*/
     if (this._attr.height) {
       return this._attr.height;
     }
     var fields;
     if (!this._attr.fields) {
-            fields = ['name'];
+      
+      fields = ['name'];
     } else {
       try {
-                fields = ES5('JSON', 'parse', false,this._attr.fields);
+        
+        fields = ES5('JSON', 'parse', false,this._attr.fields);
       } catch (e) {
-                fields = this._attr.fields.split(/,/);
+        
+        fields = this._attr.fields.split(/,/);
       }
     }
 
@@ -10769,17 +11719,17 @@ var Registration = IframeWidget.extend({
     } else {
       return this._baseHeight + fields.length * this._fieldHeight;
     }
-  },
+  /*TC*/}.apply(this, arguments), 'number']);/*/TC*/},
 
   
-  getUrlBits: function() {
+  getUrlBits: function() /*object*/ {/*TC*/ return __t([function(){/*/TC*/
     return { name: 'registration', params: this._attr };
-  },
+  /*TC*/}.apply(this, arguments), 'object']);/*/TC*/},
 
   
-  getDefaultWebDomain: function() {
+  getDefaultWebDomain: function() /*string*/ {/*TC*/ return __t([function(){/*/TC*/
     return UrlMap.resolve('www', true);
-  },
+  /*TC*/}.apply(this, arguments), 'string']);/*/TC*/},
 
   
   _onAuthLogin: function() {
@@ -10811,7 +11761,7 @@ var SendButtonFormWidget = require('sdk.XFBML.SendButtonFormWidget');
 
 var Send = EdgeWidget.extend({
   
-  setupAndValidate: function() {
+  setupAndValidate: function() /*boolean*/ {/*TC*/ return __t([function(){/*/TC*/
     DOM.addCss(this.dom, 'fb_edge_widget_with_comment');
     this._attr = {
       channel                 : this.getChannelUrl(),
@@ -10830,26 +11780,27 @@ var Send = EdgeWidget.extend({
     };
 
     return true;
-  },
+  /*TC*/}.apply(this, arguments), 'boolean']);/*/TC*/},
 
   
-  getUrlBits: function() {
+  getUrlBits: function() /*object*/ {/*TC*/ return __t([function(){/*/TC*/
     return { name: 'send', params: this._attr };
-  },
+  /*TC*/}.apply(this, arguments), 'object']);/*/TC*/},
 
   
-  _createEdgeCommentWidget: function(message, comment_node) {
+  _createEdgeCommentWidget: function(/*object*/ message,
+      /*DOMElement*/ comment_node) /*object*/ {/*TC*/__t([message,'object','message'],[comment_node,'DOMElement','comment_node']); return __t([function(){/*/TC*/
     var opts = this._getCommonEdgeCommentWidgetOpts(message, comment_node);
     return new SendButtonFormWidget(opts);
-  },
+  /*TC*/}.apply(this, arguments), 'object']);/*/TC*/},
 
   
-  getSize: function() {
+  getSize: function() /*object*/ {/*TC*/ return __t([function(){/*/TC*/
     return {
       width  : 80,
       height : 25
     };
-  }
+  /*TC*/}.apply(this, arguments), 'object']);/*/TC*/}
 });
 
 module.exports = Send;
@@ -10862,7 +11813,7 @@ var IframeWidget = require('sdk.XFBML.IframeWidget');
 
 var SocialContext = IframeWidget.extend({
   
-  setupAndValidate: function() {
+  setupAndValidate: function() /*boolean*/ {/*TC*/ return __t([function(){/*/TC*/
     var size = this.getAttribute('size', 'small');
     this._attr = {
       channel: this.getChannelUrl(),
@@ -10879,10 +11830,10 @@ var SocialContext = IframeWidget.extend({
       'xd.social_context_stats', ES5(this._bubbleSocialContextStats, 'bind', true,this));
 
     return true;
-  },
+  /*TC*/}.apply(this, arguments), 'boolean']);/*/TC*/},
 
   
-  _bubbleSocialContextStats: function(message) {
+  _bubbleSocialContextStats: function(/*object*/ message) {/*TC*/__t([message,'object','message']);/*/TC*/
     var filtered_message = {
       pluginID: this.getAttribute('plugin-id'),
       socialContextPageIDs: ES5('JSON', 'parse', false,message.social_context_page_ids)
@@ -10891,14 +11842,14 @@ var SocialContext = IframeWidget.extend({
   },
 
   
-  getSize: function() {
+  getSize: function() /*object*/ {/*TC*/ return __t([function(){/*/TC*/
     return { width: this._attr.width, height: this._attr.height };
-  },
+  /*TC*/}.apply(this, arguments), 'object']);/*/TC*/},
 
   
-  getUrlBits: function() {
+  getUrlBits: function() /*object*/ {/*TC*/ return __t([function(){/*/TC*/
     return { name: 'social_context', params: this._attr };
-  }
+  /*TC*/}.apply(this, arguments), 'object']);/*/TC*/}
 });
 
 module.exports = SocialContext;
@@ -10931,6 +11882,7 @@ var customTags = {
   social_context: require('sdk.XFBML.SocialContext')
 };
 
+
 ES5(ES5('Object', 'keys', false,PluginTags), 'forEach', true,function(tag) {
   XFBML.registerTag({
     xmlns: 'fb',
@@ -10938,6 +11890,7 @@ ES5(ES5('Object', 'keys', false,PluginTags), 'forEach', true,function(tag) {
     ctor: IframePlugin.withParams(PluginTags[tag])
   });
 });
+
 
 ES5(ES5('Object', 'keys', false,customTags), 'forEach', true,function(tag) {
   XFBML.registerTag({
@@ -10963,7 +11916,8 @@ XFBML.subscribe('render', ES5(Event.fire, 'bind', true,Event, 'xfbml.render'));
 
 Event.subscribe('init:post', function(options) {
   if (options.xfbml) {
-        setTimeout(
+    
+    setTimeout(
       wrapFunction(
         ES5(domReady, 'bind', true,null, XFBML.parse),
         'entry',
@@ -10975,12 +11929,15 @@ Event.subscribe('init:post', function(options) {
 });
 
 
+
+
 try {
   if (document.namespaces && !document.namespaces.item.fb) {
      document.namespaces.add('fb');
   }
 } catch(e) {
-  }
+  
+}
 
 },3);
 
