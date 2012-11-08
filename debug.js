@@ -1,4 +1,4 @@
-/*1352274209,172634162,JIT Construction: v665918,en_US*/
+/*1352378446,171981607,JIT Construction: v666772,en_US*/
 
 /**
  * Copyright Facebook Inc.
@@ -9054,7 +9054,7 @@ function validate(/*object*/ defn, /*DOMElement*/ elem, /*object*/ attr,
     /*object*/ params) {/*TC*/__t([defn,'object','defn'],[elem,'DOMElement','elem'],[attr,'object','attr'],[params,'object','params']);/*/TC*/
   ES5(ES5('Object', 'keys', false,defn), 'forEach', true,function(key) {
     if (defn[key] == 'text' && !attr[key]) {
-      attr[key] = elem.textContent || elem.innerText; 
+      attr[key] = elem.textContent || elem.innerText || ''; 
       elem.setAttribute(key, attr[key]); 
     }
     params[key] = types[defn[key]](getVal(attr, key));
