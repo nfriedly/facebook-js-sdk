@@ -1,4 +1,4 @@
-/*1352537076,172003903,JIT Construction: v668610,en_US*/
+/*1352896815,172020540,JIT Construction: v671607,en_US*/
 
 /**
  * Copyright Facebook Inc.
@@ -2688,13 +2688,11 @@ var Content = {
 module.exports = Content;
 
 });
-__d("wrapFunction",["Assert"],function(global,require,requireDynamic,requireLazy,module,exports) {
-
-var Assert = require('Assert');
+__d("wrapFunction",[],function(global,require,requireDynamic,requireLazy,module,exports) {
 
 var wrappers = {};
-function wrapFunction(fn, type, source) {
-  Assert.isFunction(fn);
+function wrapFunction(/*function*/ fn, /*string?*/ type, /*string?*/ source)
+    /*function*/ {/*TC*/__t([fn,'function','fn'],[type,'string?','type'],[source,'string?','source']); return __t([function(){/*/TC*/
   type = type || 'default';
 
   return function() {
@@ -2704,10 +2702,9 @@ function wrapFunction(fn, type, source) {
 
     return callee.apply(this, arguments);
   };
-}
+/*TC*/}.apply(this, arguments), 'function']);/*/TC*/}
 
-wrapFunction.setWrapper = function(fn, type) {
-  Assert.isFunction(fn);
+wrapFunction.setWrapper = function(/*function*/ fn, /*string?*/ type) {/*TC*/__t([fn,'function','fn'],[type,'string?','type']);/*/TC*/
   type = type || 'default';
   wrappers[type] = fn;
 };
@@ -6750,7 +6747,7 @@ var UIServer = {
   /*TC*/}.apply(this, arguments), 'object']);/*/TC*/},
 
   
-  prepareCall: function(/*object*/ params, /*function*/ cb) /*object*/ {/*TC*/__t([params,'object','params'],[cb,'function','cb']); return __t([function(){/*/TC*/
+  prepareCall: function(/*object*/ params, /*function*/ cb) /*object?*/ {/*TC*/__t([params,'object','params'],[cb,'function','cb']); return __t([function(){/*/TC*/
     var
       name   = params.method.toLowerCase(),
       method = copyProperties({}, UIServer.Methods[name]),
@@ -6828,7 +6825,7 @@ var UIServer = {
     call = UIServer.prepareParams(call);
 
     return call;
-  /*TC*/}.apply(this, arguments), 'object']);/*/TC*/},
+  /*TC*/}.apply(this, arguments), 'object?']);/*/TC*/},
 
   prepareParams: function(/*object*/ call) /*object*/ {/*TC*/__t([call,'object','call']); return __t([function(){/*/TC*/
     var method = call.params.method;
@@ -7298,7 +7295,7 @@ var SDKConfig = requireDynamic('SDKConfig');
 var UIServer = require('sdk.UIServer');
 
 
-function ui(/*object*/ params, /*function?*/ cb) /*object*/ {/*TC*/__t([params,'object','params'],[cb,'function?','cb']); return __t([function(){/*/TC*/
+function ui(/*object*/ params, /*function?*/ cb) /*object?*/ {/*TC*/__t([params,'object','params'],[cb,'function?','cb']); return __t([function(){/*/TC*/
   Assert.isObject(params);
   Assert.maybeFunction(cb);
 
@@ -7356,7 +7353,7 @@ function ui(/*object*/ params, /*function?*/ cb) /*object*/ {/*TC*/__t([params,'
 
   displayFn(call);
   return call.dialog;
-/*TC*/}.apply(this, arguments), 'object']);/*/TC*/}
+/*TC*/}.apply(this, arguments), 'object?']);/*/TC*/}
 
 module.exports = ui;
 
@@ -7448,61 +7445,31 @@ Event.subscribe('init:post', function(options) {
 });
 
 },3);
-__d("sdk.computeContentSize",["DOMWrapper","createArrayFrom"],function(global,require,requireDynamic,requireLazy,module,exports) {
+__d("sdk.Canvas.IframeHandling",["DOMWrapper","Log","sdk.RPC","sdk.Runtime","wrapFunction"],function(global,require,requireDynamic,requireLazy,module,exports) {
 
 var DOMWrapper = require('DOMWrapper');
-var createArrayFrom = require('createArrayFrom');
-
-
-function computeContentSize() /*object*/ {/*TC*/ return __t([function(){/*/TC*/
-  var document = DOMWrapper.getWindow().document;
-  var body = document.body,
-      docElement = document.documentElement,
-      right = 0,
-      bodyTop = Math.max(body.offsetTop, 0),
-      docTop = Math.max(docElement.offsetTop, 0),
-      bodyScroll = body.scrollHeight + bodyTop,
-      bodyOffset = body.offsetHeight + bodyTop,
-      docScroll = docElement.scrollHeight + docTop,
-      docOffset = docElement.offsetHeight + docTop,
-      bottom = Math.max(bodyScroll, bodyOffset, docScroll, docOffset);
-
-  if (body.offsetWidth < body.scrollWidth) {
-    right = body.scrollWidth + body.offsetLeft;
-  } else {
-    ES5(createArrayFrom(body.childNodes), 'forEach', true,function(/*DOMElement*/ child) {/*TC*/__t([child,'DOMElement','child']);/*/TC*/
-      var childRight = child.offsetWidth + child.offsetLeft;
-      if (childRight > right) {
-        right = childRight;
-      }
-    });
-  }
-
-  if (docElement.clientLeft > 0) {
-    right += (docElement.clientLeft * 2);
-  }
-  if (docElement.clientTop > 0) {
-    bottom += (docElement.clientTop * 2);
-  }
-
-  return {
-    height: bottom,
-    width: right
-  };
-/*TC*/}.apply(this, arguments), 'object']);/*/TC*/}
-
-module.exports = computeContentSize;
-
-});
-__d("sdk.Canvas.IframeHandling",["sdk.Runtime","Log","sdk.RPC","sdk.computeContentSize"],function(global,require,requireDynamic,requireLazy,module,exports) {
-
-var Runtime = require('sdk.Runtime');
 var Log = require('Log');
 var RPC = require('sdk.RPC');
-var computeContentSize = require('sdk.computeContentSize');
+var Runtime = require('sdk.Runtime');
+var wrapFunction = require('wrapFunction');
 
 var autoGrowTimer = null;
 var autoGrowLastSize;
+
+function getHeight() {
+  var document = DOMWrapper.getWindow().document;
+  var documentElement = document.documentElement;
+
+  var values = ES5([document.scrollHeight,
+                documentElement.scrollHeight,
+                document.offsetHeight,
+                documentElement.offsetHeight,
+                document.clientHeight,
+                documentElement.clientHeight
+               ], 'filter', true,function(val) {return !!val;});
+
+  return Math.max.apply(Math, values);
+}
 
 function setSize(/*object?*/ params) /*boolean*/ {/*TC*/__t([params,'object?','params']); return __t([function(){/*/TC*/
   if (!Runtime.getInitialized() &&
@@ -7516,7 +7483,7 @@ function setSize(/*object?*/ params) /*boolean*/ {/*TC*/__t([params,'object?','p
   var minShrink = 0,
       minGrow = 0;
   if (!params.height) {
-    params.height = computeContentSize().height;
+    params.height = getHeight();
     
     
     
@@ -7554,7 +7521,11 @@ function setAutoGrow(on, interval) {
 
   if (on || on === undefined) {
     if (autoGrowTimer === null) {
-      autoGrowTimer = setInterval(setSize, interval || 100);
+      
+      
+      autoGrowTimer = setInterval(wrapFunction(function() {
+        setSize();
+      }, 'entry', 'setAutoGrow:setTimeout'), interval || 100);
     }
     setSize();
   } else {
@@ -8350,11 +8321,12 @@ var Frictionless = require('sdk.Frictionless');
 FB.provide('Frictionless', Frictionless);
 
 },3);
-__d("sdk.init",["sdk.Cookie","copyProperties","createArrayFrom","sdk.Event","Log","QueryString","sdk.Runtime","wrapFunction"],function(global,require,requireDynamic,requireLazy,module,exports) {
+__d("sdk.init",["sdk.Cookie","copyProperties","createArrayFrom","sdk.ErrorHandling","sdk.Event","Log","QueryString","sdk.Runtime","wrapFunction"],function(global,require,requireDynamic,requireLazy,module,exports) {
 
 var Cookie = require('sdk.Cookie');
 var copyProperties = require('copyProperties');
 var createArrayFrom = require('createArrayFrom');
+var ErrorHandling = require('sdk.ErrorHandling');
 var Event = require('sdk.Event');
 var Log = require('Log');
 var QueryString = require('QueryString');
@@ -8405,16 +8377,18 @@ function init(/*object?*/ options) {/*TC*/__t([options,'object?','options']);/*/
 setTimeout(wrapFunction(function() {
   
   
-  var pattern = /(connect.facebook.net|facebook.com\/assets.php).*?#(.*)/;
+  var pattern = /(connect\.facebook\.net|\.facebook\.com\/assets.php).*?#(.*)/;
   ES5(createArrayFrom(document.getElementsByTagName('script')), 'forEach', true,function(script) {
     if (script.src) {
       var match = pattern.exec(script.src);
       if (match) {
         var opts = QueryString.decode(match[2]);
         for (var key in opts) {
-          var val = opts[key];
-          if (val == '0') {
-            opts[key] = 0;
+          if (opts.hasOwnProperty(key)) {
+            var val = opts[key];
+            if (val == '0') {
+              opts[key] = 0;
+            }
           }
         }
 
@@ -8426,9 +8400,9 @@ setTimeout(wrapFunction(function() {
   
   if (window.fbAsyncInit && !window.fbAsyncInit.hasRun) {
     window.fbAsyncInit.hasRun = true;
-    window.fbAsyncInit();
+    ErrorHandling.unguard(window.fbAsyncInit)();
   }
-}, 'entry', 'setTimeout'), 0);
+}, 'entry', 'init:helper'), 0);
 
 module.exports = init;
 
@@ -8482,19 +8456,19 @@ var DEF_ERROR_MSG = {
   'error_message': 'An unknown error caused the dialog to be closed'
 };
 
-var callbackWrapper = function(callback) {
-  return function(msg) {
+var callbackWrapper = function(/*function*/ callback) /*function*/ {/*TC*/__t([callback,'function','callback']); return __t([function(){/*/TC*/
+  return function(/*object?*/ msg) {/*TC*/__t([msg,'object?','msg']);/*/TC*/
     callback(msg && msg.response
       ? ES5('JSON', 'parse', false,msg.response)
       : DEF_ERROR_MSG
     );
   };
-};
+/*TC*/}.apply(this, arguments), 'function']);/*/TC*/};
 
 
 copyProperties(UIServer.Methods, {
   'pay.prompt': {
-    transform : function(call) {
+    transform : function(/*object*/ call) {/*TC*/__t([call,'object','call']);/*/TC*/
       var handler = XD.handler(
         callbackWrapper(call.cb),
         'parent.frames[' + (window.name || 'iframe_canvas') + ']');
@@ -8502,13 +8476,12 @@ copyProperties(UIServer.Methods, {
       call.params.channel = handler;
 
       XD.inform('Pay.Prompt', call.params);
-      return false;
     }
   },
   'pay': {
     size      : { width: 555, height: 120 },
     connectDisplay : 'popup',
-    transform : function(call) {
+    transform : function(/*object*/ call) /*object?*/ {/*TC*/__t([call,'object','call']); return __t([function(){/*/TC*/
       call.cb = callbackWrapper(call.cb);
       if (!Runtime.isEnvironment(Runtime.ENVIRONMENTS.CANVAS)) {
         
@@ -8523,8 +8496,7 @@ copyProperties(UIServer.Methods, {
       call.params.uiserver = true;
 
       XD.inform('Pay.Prompt', call.params);
-      return false;
-    }
+    /*TC*/}.apply(this, arguments), 'object?']);/*/TC*/}
   }
 });
 
@@ -8934,11 +8906,9 @@ function insertPipe(/*array<object>*/ plugins) {
 
   var raw = ES5('JSON', 'stringify', false,params);
   var miny = Miny.encode(raw);
-  var use_miny = miny.length < raw.length;
 
   var qs = QueryString.encode({
-    miny: use_miny,
-    plugins: use_miny ? miny : raw
+    plugins: miny.length < raw.length ? miny : raw
   });
 
   ES5(plugins, 'forEach', true,function(/*object*/ plugin) {/*TC*/__t([plugin,'object','plugin']);/*/TC*/
