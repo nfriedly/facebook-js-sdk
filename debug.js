@@ -1,4 +1,4 @@
-/*1354776710,173067865,JIT Construction: v687791,en_US*/
+/*1354868847,171188011,JIT Construction: v688594,en_US*/
 
 /**
  * Copyright Facebook Inc.
@@ -7248,7 +7248,17 @@ var UIServer = {
       try {
         if (frame.close) {
           frame.close();
-          window.focus();
+          
+          
+          
+          if (UserAgent.iphone()) {
+            var version = /Version\/([\d\.]+)/.test(navigator.userAgent)
+              ? parseFloat(RegExp.$1, 10)
+              : null;
+            if (version >= 6) {
+              window.focus();
+            }
+          }
           UIServer._popupCount--;
         }
       } catch (y) {
