@@ -1,4 +1,4 @@
-/*1355295648,172014910,JIT Construction: v692465,en_US*/
+/*1355398973,172658458,JIT Construction: v693801,en_US*/
 
 /**
  * Copyright Facebook Inc.
@@ -6570,37 +6570,6 @@ var Methods = {
   },
 
   
-  'auth.logintofacebook': {
-    size            : { width: 530, height: 287 },
-    url             : 'login.php',
-    transform       : function(/*object*/ call) /*object*/ {/*TC*/__t([call,'object','call']); return __t([function(){/*/TC*/
-      
-      
-      call.params.skip_api_login = 1;
-
-      
-      
-      
-      
-      
-      var relation = UIServer.getXdRelation(call.params);
-      var next = UIServer._xdResult(
-          call.cb,
-          call.id,
-          relation,
-          true 
-        );
-      call.params.next =
-        UrlMap.resolve('www') + '/login.php?' + QueryString.encode({
-            api_key: Runtime.getClientID(),
-            next: next,
-            skip_api_login: 1
-        });
-
-      return call;
-    /*TC*/}.apply(this, arguments), 'object']);/*/TC*/}
-  },
-  
   'apprequests': {
     transform: function(/*object*/ call) /*object*/ {/*TC*/__t([call,'object','call']); return __t([function(){/*/TC*/
       call = MobileIframeable.transform(call);
@@ -6630,6 +6599,7 @@ var Methods = {
     /*TC*/}.apply(this, arguments), 'object']);/*/TC*/},
     getXdRelation: MobileIframeable.getXdRelation
   },
+
   'feed': MobileIframeable,
 
   'permissions.oauth': {
@@ -6757,12 +6727,8 @@ var UIServer = {
       name   = params.method.toLowerCase(),
       method = copyProperties({}, UIServer.Methods[name]),
       id     = guid(),
-      
-      
-      
-      forceHTTPS = (method.noHttps !== true) &&
-                   (Runtime.getSecure() ||
-                    (name !== 'auth.status' && name != 'login.status'));
+      forceHTTPS = Runtime.getSecure()
+                   || (name !== 'auth.status' && name != 'login.status');
 
     
     copyProperties(params, {
@@ -6786,7 +6752,9 @@ var UIServer = {
       cb     : cb,
       id     : id,
       size   : method.size || UIServer.getDefaultSize(),
-      url    : UrlMap.resolve('www', forceHTTPS) + '/' + method.url,
+      url    : UrlMap.resolve(
+                 params.display == 'touch' ? 'm' :'www',
+                 forceHTTPS) + '/' + method.url,
       forceHTTPS: forceHTTPS,
       params : params,
       name   : name,
@@ -8922,20 +8890,27 @@ function insertPipe(/*array<object>*/ plugins) {
   var raw = ES5('JSON', 'stringify', false,params);
   var miny = Miny.encode(raw);
 
-  var qs = QueryString.encode({
-    plugins: miny.length < raw.length ? miny : raw
-  });
-
   ES5(plugins, 'forEach', true,function(/*object*/ plugin) {/*TC*/__t([plugin,'object','plugin']);/*/TC*/
     var frame = document.getElementsByName(plugin.config.name)[0];
     frame.onload = plugin.config.onload;
   });
 
+  var url = UrlMap.resolve('www', Runtime.getSecure()) + '/plugins/pipe.php';
+  var name = guid();
+
   insertIframe({
-    url: UrlMap.resolve('www', Runtime.getSecure()) + '/plugins/pipe/?' + qs,
+    url: 'about:blank',
     root: root,
-    name: guid(),
-    className: 'fb_hidden fb_invisible'
+    name: name,
+    className: 'fb_hidden fb_invisible',
+    onload: function() {
+      Content.submitToTarget({
+        url: url,
+        target: name,
+        params: {
+          plugins: miny.length < raw.length ? miny : raw
+      }});
+    }
   });
 }
 
