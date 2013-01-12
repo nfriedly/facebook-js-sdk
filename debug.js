@@ -1,4 +1,4 @@
-/*1357732367,172639515,JIT Construction: v708694,en_US*/
+/*1357982677,171341106,JIT Construction: v711202,en_US*/
 
 /**
  * Copyright Facebook Inc.
@@ -9044,20 +9044,8 @@ var IframePlugin = Type.extend({
     this.subscribe('xd.resize', resizeBubbler(pluginId));
     this.subscribe('xd.resize.flow', resizeBubbler(pluginId));
 
-    this.subscribe('xd.resize', ES5(function(message) {
+    this.subscribe('xd.resize.flow', ES5(function(/*object*/ message) {/*TC*/__t([message,'object','message']);/*/TC*/
       resize(this._config.root, parse(message.width), parse(message.height));
-      resize(this._iframe, parse(message.width), parse(message.height));
-      this.updateLift();
-      clearTimeout(this._timeoutID);
-    }, 'bind', true,this));
-
-    this.subscribe('xd.resize.flow', ES5(function(message) {
-      resize(this._config.root, parse(message.width), parse(message.height));
-      this.updateLift();
-      clearTimeout(this._timeoutID);
-    }, 'bind', true,this));
-    this.subscribe('xd.resize.iframe', ES5(function(message) {
-      resize(this._iframe, parse(message.width), parse(message.height));
       this.updateLift();
       clearTimeout(this._timeoutID);
     }, 'bind', true,this));
@@ -9106,6 +9094,19 @@ var IframePlugin = Type.extend({
       height: params.height || 1000,
       onload: ES5(function() {
         this._iframe = this._config.root.getElementsByTagName('iframe')[0];
+
+        this.subscribe('xd.resize', ES5(function(/*object*/ message) {/*TC*/__t([message,'object','message']);/*/TC*/
+          resize(this._config.root, parse(message.width), parse(message.height));
+          resize(this._iframe, parse(message.width), parse(message.height));
+          this.updateLift();
+          clearTimeout(this._timeoutID);
+        }, 'bind', true,this));
+        this.subscribe('xd.resize.iframe', ES5(function(/*object*/ message) {/*TC*/__t([message,'object','message']);/*/TC*/
+          resize(this._iframe, parse(message.width), parse(message.height));
+          this.updateLift();
+          clearTimeout(this._timeoutID);
+        }, 'bind', true,this));
+
         this.inform('render');
       }, 'bind', true,this)
     };
