@@ -1,4 +1,4 @@
-/*1357982677,171341106,JIT Construction: v711202,en_US*/
+/*1358240206,172013602,JIT Construction: v712684,en_US*/
 
 /**
  * Copyright Facebook Inc.
@@ -1503,6 +1503,9 @@ function define(/*string*/ type, /*function*/ test) {/*TC*/__t([type,'string','t
 var Assert = {
   isInstanceOf: assertInstanceOf,
   isTrue      : assert,
+  isTruthy    : function(expression, /*string?*/ message) /*boolean*/ {/*TC*/__t([message,'string?','message']); return __t([function(){/*/TC*/
+    return assert(!!expression, message);
+  /*TC*/}.apply(this, arguments), 'boolean']);/*/TC*/},
   type        : assertType,
   define      : function(/*string*/ type, /*function*/ fn) {/*TC*/__t([type,'string','type'],[fn,'function','fn']);/*/TC*/
     type = type.substring(0, 1).toUpperCase() +
@@ -2339,7 +2342,7 @@ module.exports = SignedRequest;
 });
 __d("UrlMap",["UrlMapConfig"],function(global,require,requireDynamic,requireLazy,module,exports) {
 
-var UrlMapConfig = requireDynamic('UrlMapConfig');
+var UrlMapConfig = require('UrlMapConfig');
 
 var UrlMap = {
   
@@ -3189,6 +3192,31 @@ var DOMEventListener = {
 module.exports = DOMEventListener;
 
 });
+__d("emptyFunction",["copyProperties"],function(global,require,requireDynamic,requireLazy,module,exports) {
+
+var copyProperties = require('copyProperties');
+
+function makeEmptyFunction(arg) {
+  return function() {
+    return arg;
+  };
+}
+
+
+function emptyFunction() {}
+
+copyProperties(emptyFunction, {
+  thatReturns: makeEmptyFunction,
+  thatReturnsFalse: makeEmptyFunction(false),
+  thatReturnsTrue: makeEmptyFunction(true),
+  thatReturnsNull: makeEmptyFunction(null),
+  thatReturnsThis: function() { return this; },
+  thatReturnsArgument: function(arg) { return arg; }
+});
+
+module.exports = emptyFunction;
+
+});
 __d("Flash",["DOMWrapper","QueryString","UserAgent","copyProperties","guid"],function(global,require,requireDynamic,requireLazy,module,exports) {
 
 /*globals ActiveXObject */
@@ -3338,43 +3366,18 @@ var Flash = {
 module.exports = Flash;
 
 });
-__d("emptyFunction",["copyProperties"],function(global,require,requireDynamic,requireLazy,module,exports) {
-
-var copyProperties = require('copyProperties');
-
-function makeEmptyFunction(arg) {
-  return function() {
-    return arg;
-  };
-}
-
-
-function emptyFunction() {}
-
-copyProperties(emptyFunction, {
-  thatReturns: makeEmptyFunction,
-  thatReturnsFalse: makeEmptyFunction(false),
-  thatReturnsTrue: makeEmptyFunction(true),
-  thatReturnsNull: makeEmptyFunction(null),
-  thatReturnsThis: function() { return this; },
-  thatReturnsArgument: function(arg) { return arg; }
-});
-
-module.exports = emptyFunction;
-
-});
-__d("XDM",["DOMEventListener","DOMWrapper","Flash","Log","UserAgent","emptyFunction","guid"],function(global,require,requireDynamic,requireLazy,module,exports) {
+__d("XDM",["DOMEventListener","DOMWrapper","emptyFunction","Flash","guid","Log","UserAgent","wrapFunction"],function(global,require,requireDynamic,requireLazy,module,exports) {
 
 /*globals __fbNative */
 
 var DOMEventListener = require('DOMEventListener');
 var DOMWrapper = require('DOMWrapper');
+var emptyFunction = require('emptyFunction');
 var Flash = require('Flash');
+var guid = require('guid');
 var Log = require('Log');
 var UserAgent = require('UserAgent');
-
-var emptyFunction = require('emptyFunction');
-var guid = require('guid');
+var wrapFunction = require('wrapFunction');
 
 var transports = {};
 var configuration = {
@@ -3517,19 +3520,19 @@ XDM.register('flash', (function() {
       var div = config.root.appendChild(window.document.createElement('div'));
       var callback = guid();
 
-      callbacks[callback] = function() {
+      callbacks[callback] = wrapFunction(function() {
         clearTimeout(timer);
         Log.info('xdm.swf called the callback');
         delete callbacks[callback];
         callback = guid();
-        callbacks[callback] = function(msg, origin) {
+        callbacks[callback] = wrapFunction(function(msg, origin) {
           msg = decodeURIComponent(msg);
           Log.debug('received message %s from %s', msg, origin);
           config.onMessage(msg, origin);
-        };
+        }, 'entry', 'xdm.swf:onMessage');
         swf.init(config.channel, 'FB_XDM_CALLBACKS.' + callback);
         config.whenReady(xdm);
-      };
+      }, 'entry', 'xdm.swf:load');
 
       window.FB_XDM_CALLBACKS = callbacks;
       swf = Flash.embed(config.flashUrl, div, null, {
@@ -3588,7 +3591,7 @@ XDM.register('postmessage', (function() {
         return;
       }
 
-      DOMEventListener.add(window, 'message', function(event) {
+      DOMEventListener.add(window, 'message', wrapFunction(function(event) {
         var message = event.data;
         
         
@@ -3605,7 +3608,7 @@ XDM.register('postmessage', (function() {
           message = message.substring(prefix.length);
         }
         config.onMessage(message, origin);
-      });
+      }, 'entry', 'onMessage'));
       config.whenReady(xdm);
       inited = true;
     }
@@ -3868,7 +3871,7 @@ function init(/*string?*/ channelUrl, /*string?*/ xdProxyName) {/*TC*/__t([chann
         tabIndex  : -1
       });
     },
-    onMessage: wrapFunction(onMessage, 'entry', 'XD:message')
+    onMessage: onMessage
   });
 
   if (transport === 'fragment') {
@@ -4013,11 +4016,12 @@ function setAuthResponse(/*object?*/ authResponse, /*string*/ status) {/*TC*/__t
   }
 
   var
-    login = !currentUserID && authResponse,
+    currentStatus = Runtime.getLoginStatus(),
+    login = currentStatus === 'unknown' && authResponse,
     logout = currentUserID && !authResponse,
     both = authResponse && currentUserID && currentUserID != userID,
     authResponseChange = authResponse != currentAuthResponse,
-    statusChange = status != (Runtime.getLoginStatus() || 'unknown');
+    statusChange = status != (currentStatus || 'unknown');
 
   
   
@@ -4302,7 +4306,7 @@ function getBoolAttr(/*DOMElement*/ dom, /*string*/ name) /*boolean?*/ {/*TC*/__
 /*TC*/}.apply(this, arguments), 'boolean?']);/*/TC*/}
 
 function getProp(/*DOMElement*/ dom, /*string*/ name) /*string*/ {/*TC*/__t([dom,'DOMElement','dom'],[name,'string','name']); return __t([function(){/*/TC*/
-  Assert.isTrue(!!dom, 'element not specified');
+  Assert.isTruthy(dom, 'element not specified');
   Assert.isString(name);
 
   try {
@@ -4313,7 +4317,7 @@ function getProp(/*DOMElement*/ dom, /*string*/ name) /*string*/ {/*TC*/__t([dom
 /*TC*/}.apply(this, arguments), 'string']);/*/TC*/}
 
 function html(/*DOMElement*/ dom, /*string*/ content) {/*TC*/__t([dom,'DOMElement','dom'],[content,'string','content']);/*/TC*/
-  Assert.isTrue(!!dom, 'element not specified');
+  Assert.isTruthy(dom, 'element not specified');
   Assert.isString(content);
 
   try {
@@ -4325,7 +4329,7 @@ function html(/*DOMElement*/ dom, /*string*/ content) {/*TC*/__t([dom,'DOMElemen
 
 
 function hasClass(/*DOMElement*/ dom, /*string*/ className) /*boolean*/ {/*TC*/__t([dom,'DOMElement','dom'],[className,'string','className']); return __t([function(){/*/TC*/
-  Assert.isTrue(!!dom, 'element not specified');
+  Assert.isTruthy(dom, 'element not specified');
   Assert.isString(className);
 
   var cssClassWithSpace = ' ' + getProp(dom, 'className') + ' ';
@@ -4334,7 +4338,7 @@ function hasClass(/*DOMElement*/ dom, /*string*/ className) /*boolean*/ {/*TC*/_
 
 
 function addClass(/*DOMElement*/ dom, /*string*/ className) {/*TC*/__t([dom,'DOMElement','dom'],[className,'string','className']);/*/TC*/
-  Assert.isTrue(!!dom, 'element not specified');
+  Assert.isTruthy(dom, 'element not specified');
   Assert.isString(className);
 
   if (!hasClass(dom, className)) {
@@ -4344,7 +4348,7 @@ function addClass(/*DOMElement*/ dom, /*string*/ className) {/*TC*/__t([dom,'DOM
 
 
 function removeClass(/*DOMElement*/ dom, /*string*/ className) {/*TC*/__t([dom,'DOMElement','dom'],[className,'string','className']);/*/TC*/
-  Assert.isTrue(!!dom, 'element not specified');
+  Assert.isTruthy(dom, 'element not specified');
   Assert.isString(className);
 
   var regExp = new RegExp('\\s*' + className, 'g');
@@ -4374,7 +4378,7 @@ function getByClass(/*string*/ className, dom, tagName) /*array<DOMElement>*/ {/
 
 
 function getStyle(/*DOMElement*/ dom, /*string*/ styleProp) /*string*/ {/*TC*/__t([dom,'DOMElement','dom'],[styleProp,'string','styleProp']); return __t([function(){/*/TC*/
-  Assert.isTrue(!!dom, 'element not specified');
+  Assert.isTruthy(dom, 'element not specified');
   Assert.isString(styleProp);
 
   
@@ -4399,7 +4403,7 @@ function getStyle(/*DOMElement*/ dom, /*string*/ styleProp) /*string*/ {/*TC*/__
 
 
 function setStyle(/*DOMElement*/ dom, /*string*/ styleProp, value) {/*TC*/__t([dom,'DOMElement','dom'],[styleProp,'string','styleProp']);/*/TC*/
-  Assert.isTrue(!!dom, 'element not specified');
+  Assert.isTruthy(dom, 'element not specified');
   Assert.isString(styleProp);
 
   
@@ -4462,7 +4466,7 @@ function getViewportInfo() /*object*/ {/*TC*/ return __t([function(){/*/TC*/
 
 
 function getPosition(/*DOMElement*/ node) /*object*/ {/*TC*/__t([node,'DOMElement','node']); return __t([function(){/*/TC*/
-  Assert.isTrue(!!node, 'element not specified');
+  Assert.isTruthy(node, 'element not specified');
 
   var x = 0,
       y = 0;
@@ -7538,11 +7542,10 @@ var Flash = {
 module.exports = Flash;
 
 });
-__d("sdk.Canvas.IframeHandling",["DOMWrapper","sdk.RPC","wrapFunction"],function(global,require,requireDynamic,requireLazy,module,exports) {
+__d("sdk.Canvas.IframeHandling",["DOMWrapper","sdk.RPC"],function(global,require,requireDynamic,requireLazy,module,exports) {
 
 var DOMWrapper = require('DOMWrapper');
 var RPC = require('sdk.RPC');
-var wrapFunction = require('wrapFunction');
 
 var autoGrowTimer = null;
 var autoGrowLastSize;
@@ -8610,6 +8613,23 @@ var Miny = {
 module.exports = Miny;
 
 });
+__d("sdk.feature",["SDKConfig"],function(global,require,requireDynamic,requireLazy,module,exports) {
+
+var SDKConfig = requireDynamic('SDKConfig');
+
+function feature(/*string*/ name, defaultValue) {/*TC*/__t([name,'string','name']);/*/TC*/
+  if (SDKConfig.features && name in SDKConfig.features) {
+    return SDKConfig.features[name];
+  }
+
+  return typeof defaultValue !== 'undefined'
+    ? defaultValue
+    : null;
+}
+
+module.exports = feature;
+
+});
 __d("runOnce",[],function(global,require,requireDynamic,requireLazy,module,exports) {
 
 function runOnce(func) {
@@ -8626,19 +8646,19 @@ function runOnce(func) {
 module.exports = runOnce;
 
 });
-__d("XFBML",["FB","Assert","copyProperties","createArrayFrom","sdk.Impressions","Log","ObservableMixin","runOnce","wrapFunction","SDKConfig"],function(global,require,requireDynamic,requireLazy,module,exports) {
-
-require('FB');
+__d("XFBML",["Assert","copyProperties","createArrayFrom","sdk.DOM","sdk.feature","sdk.Impressions","Log","ObservableMixin","runOnce","UserAgent","SDKConfig"],function(global,require,requireDynamic,requireLazy,module,exports) {
 
 var Assert = require('Assert');
 var copyProperties = require('copyProperties');
 var createArrayFrom = require('createArrayFrom');
+var DOM = require('sdk.DOM');
+var feature = require('sdk.feature');
 var Impressions = require('sdk.Impressions');
 var Log = require('Log');
 var ObservableMixin = require('ObservableMixin');
 var runOnce = require('runOnce');
 var SDKConfig = requireDynamic('SDKConfig');
-var wrapFunction = require('wrapFunction');
+var UserAgent = require('UserAgent');
 
 
 var xfbml = {}; 
@@ -8731,15 +8751,44 @@ function parse(/*DOMElement*/ dom, /*function*/ callback, /*boolean*/ reparse) {
       return;
     }
 
-    var info = xfbmlInfo(element) || html5Info(element);
+    
+    var info = html5Info(element), attrs = attr(element);
     if (!info) {
-      return; 
+      
+      info = xfbmlInfo(element);
+      if (!info) {
+        return;
+      }
+      
+      
+      if (feature('convert_xfbml', /*default*/ true) && UserAgent.ie() < 9) {
+        
+        var oldElement = element;
+        element = document.createElement('div');
+
+        
+        DOM.addCss(element, info.xmlns + '-' + info.localName);
+
+        
+        ES5(createArrayFrom(oldElement.childNodes), 'forEach', true,function(child) {
+          element.appendChild(child);
+        });
+
+        for (var attribute in attrs) {
+          if (attrs.hasOwnProperty(attribute)) {
+            element.setAttribute(attribute, attrs[attribute]);
+          }
+        }
+
+        
+        oldElement.parentNode.replaceChild(element, oldElement);
+      }
     }
 
     count++;
     tags++;
     var renderer =
-      new info.ctor(element, info.xmlns, info.localName, attr(element));
+      new info.ctor(element, info.xmlns, info.localName, attrs);
     
     
     
@@ -9116,7 +9165,8 @@ var IframePlugin = Type.extend({
     this._element.innerHTML = '';
     this._element.appendChild(this._config.root);
     this._timeoutID = setTimeout(ES5(function() {
-      this._iframe && resize(this._iframe, 0, 0);
+      
+      
       Log.warn('%s:%s failed to resize in 45s', this._ns, this._tag);
     }, 'bind', true,this), 45 * 1000);
     
@@ -9186,6 +9236,14 @@ var PluginTags = {
     href:       'url',
     layout:     'string',
     show_faces: 'bool'
+  },
+
+  open_graph: {
+    href:       'url',
+    layout:     'string',
+    show_faces: 'bool',
+    action:     'string',
+    action_properties: 'string'
   },
 
   page_events: {
@@ -10073,10 +10131,7 @@ function escapeHTML(/*string*/ value) /*string*/ {/*TC*/__t([value,'string','val
 module.exports = escapeHTML;
 
 });
-__d("sdk.Helper",["FB","sdk.Runtime","sdk.ErrorHandling","sdk.Event","safeEval","UrlMap"],function(global,require,requireDynamic,requireLazy,module,exports) {
-
-require('FB');
-require('sdk.Runtime');
+__d("sdk.Helper",["sdk.ErrorHandling","sdk.Event","safeEval","UrlMap"],function(global,require,requireDynamic,requireLazy,module,exports) {
 
 var ErrorHandling = require('sdk.ErrorHandling');
 var Event = require('sdk.Event');
@@ -10838,9 +10893,7 @@ var SendButtonFormWidget = EdgeCommentWidget.extend({
 module.exports = SendButtonFormWidget;
 
 });
-__d("sdk.XFBML.Like",["XFBML","sdk.XFBML.EdgeWidget","sdk.XFBML.SendButtonFormWidget"],function(global,require,requireDynamic,requireLazy,module,exports) {
-
-require('XFBML');
+__d("sdk.XFBML.Like",["sdk.XFBML.EdgeWidget","sdk.XFBML.SendButtonFormWidget"],function(global,require,requireDynamic,requireLazy,module,exports) {
 
 var EdgeWidget = require('sdk.XFBML.EdgeWidget');
 var SendButtonFormWidget = require('sdk.XFBML.SendButtonFormWidget');
@@ -10981,9 +11034,7 @@ var LikeBox = EdgeWidget.extend({
 module.exports = LikeBox;
 
 });
-__d("sdk.XFBML.LiveStream",["XFBML","sdk.XFBML.IframeWidget"],function(global,require,requireDynamic,requireLazy,module,exports) {
-
-require('XFBML');
+__d("sdk.XFBML.LiveStream",["sdk.XFBML.IframeWidget"],function(global,require,requireDynamic,requireLazy,module,exports) {
 
 var IframeWidget = require('sdk.XFBML.IframeWidget');
 
@@ -11061,9 +11112,7 @@ var LoginButton = IframePlugin.extend({
 module.exports = LoginButton;
 
 });
-__d("sdk.XFBML.Name",["FB","copyProperties","sdk.Data","escapeHTML","sdk.Event","sdk.XFBML.Element","sdk.Helper","Log","sdk.Runtime"],function(global,require,requireDynamic,requireLazy,module,exports) {
-
-require('FB');
+__d("sdk.XFBML.Name",["copyProperties","sdk.Data","escapeHTML","sdk.Event","sdk.XFBML.Element","sdk.Helper","Log","sdk.Runtime"],function(global,require,requireDynamic,requireLazy,module,exports) {
 
 var copyProperties = require('copyProperties');
 var Data = require('sdk.Data');
@@ -11371,7 +11420,7 @@ var ProfilePic = Element.extend({
 
       if (!imgSrc) {
         
-        imgSrc = UrlMap.resolve('fbcdn') +
+        imgSrc = UrlMap.resolve('fbcdn') + '/' +
           ProfilePicConfig.defPicMap[picFieldName];
       }
       
