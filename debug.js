@@ -1,4 +1,4 @@
-/*1358240206,172013602,JIT Construction: v712684,en_US*/
+/*1358468741,173042255,JIT Construction: v715097,en_US*/
 
 /**
  * Copyright Facebook Inc.
@@ -1673,12 +1673,16 @@ ObservableMixin.prototype = {
     var list = Array.prototype.slice.call(this.getSubscribers(what));
     for (var i = 0; i < list.length; i++) {
       if (list[i] === null) continue;
-      try {
+      if (__DEV__) {
         list[i].apply(this, args);
-      } catch(e) {
-        
-        
-        setTimeout(function() { throw e; }, 0);
+      } else {
+        try {
+          list[i].apply(this, args);
+        } catch(e) {
+          
+          
+          setTimeout(function() { throw e; }, 0);
+        }
       }
     }
     return this;
@@ -1942,47 +1946,178 @@ function guid() {
 module.exports = guid;
 
 });
-__d("sdk.createIframe",["copyProperties","guid"],function(global,require,requireDynamic,requireLazy,module,exports) {
+__d("hasNamePropertyBug",["guid"],function(global,require,requireDynamic,requireLazy,module,exports) {
 
-var copyProperties = require('copyProperties');
 var guid = require('guid');
 
+var hasBug;
 
 
 
-var hasNamePropertyBug = function() /*boolean*/ {/*TC*/ return __t([function(){/*/TC*/
+
+function test() /*boolean*/ {/*TC*/ return __t([function(){/*/TC*/
     var form = document.createElement("form"),
-        input = form.appendChild(document.createElement("input")),
-        hasBug;
+        input = form.appendChild(document.createElement("input"));
     input.name = guid();
     hasBug = input !== form.elements[input.name];
     form = input = null;
-    hasNamePropertyBug = function() { return hasBug; };
     return hasBug;
-/*TC*/}.apply(this, arguments), 'boolean']);/*/TC*/};
+/*TC*/}.apply(this, arguments), 'boolean']);/*/TC*/}
+
+function hasNamePropertyBug() /*boolean*/ {/*TC*/ return __t([function(){/*/TC*/
+  return typeof hasBug === 'undefined'
+    ? test()
+    : hasBug;
+/*TC*/}.apply(this, arguments), 'boolean']);/*/TC*/}
+
+module.exports = hasNamePropertyBug;
+
+});
+__d("wrapFunction",[],function(global,require,requireDynamic,requireLazy,module,exports) {
+
+var wrappers = {};
+function wrapFunction(/*function*/ fn, /*string?*/ type, /*string?*/ source)
+    /*function*/ {/*TC*/__t([fn,'function','fn'],[type,'string?','type'],[source,'string?','source']); return __t([function(){/*/TC*/
+  type = type || 'default';
+
+  return function() {
+    var callee = type in wrappers
+      ? wrappers[type](fn, source)
+      : fn;
+
+    return callee.apply(this, arguments);
+  };
+/*TC*/}.apply(this, arguments), 'function']);/*/TC*/}
+
+wrapFunction.setWrapper = function(/*function*/ fn, /*string?*/ type) {/*TC*/__t([fn,'function','fn'],[type,'string?','type']);/*/TC*/
+  type = type || 'default';
+  wrappers[type] = fn;
+};
+
+module.exports = wrapFunction;
+
+});
+__d("DOMEventListener",["wrapFunction"],function(global,require,requireDynamic,requireLazy,module,exports) {
+
+var wrapFunction = require('wrapFunction');
+
+var add, remove;
+
+if (window.addEventListener) {
+
+  
+  add = function(target, /*string*/ name, /*function*/ listener) {/*TC*/__t([name,'string','name'],[listener,'function','listener']);/*/TC*/
+    listener.wrapper = wrapFunction(listener, 'entry', target + ':' + name);
+    target.addEventListener(name, listener.wrapper, false);
+  };
+  remove = function(target, /*string*/ name, /*function*/ listener) {/*TC*/__t([name,'string','name'],[listener,'function','listener']);/*/TC*/
+    target.removeEventListener(name, listener.wrapper, false);
+  };
+
+} else if (window.attachEvent) {
+
+  
+  add = function(target, /*string*/ name, /*function*/ listener) {/*TC*/__t([name,'string','name'],[listener,'function','listener']);/*/TC*/
+    listener.wrapper = wrapFunction(listener, 'entry', target + ':' + name);
+    target.attachEvent('on' + name, listener.wrapper);
+  };
+  remove = function(target, /*string*/ name, /*function*/ listener) {/*TC*/__t([name,'string','name'],[listener,'function','listener']);/*/TC*/
+    target.detachEvent('on' + name, listener.wrapper);
+  };
+
+}
+
+var DOMEventListener = {
+
+  
+  add: function(target, /*string*/ name, /*function*/ listener) {/*TC*/__t([name,'string','name'],[listener,'function','listener']);/*/TC*/
+    
+    
+    add(target, name, listener);
+    return {
+      
+      
+      
+      remove: function() {
+        remove(target, name, listener);
+        target = null;
+      }
+    };
+  },
+
+  
+  remove: remove
+
+};
+module.exports = DOMEventListener;
+
+});
+__d("sdk.createIframe",["copyProperties","guid","hasNamePropertyBug","DOMEventListener"],function(global,require,requireDynamic,requireLazy,module,exports) {
+
+var copyProperties = require('copyProperties');
+var guid = require('guid');
+var hasNamePropertyBug = require('hasNamePropertyBug');
+var DOMEventListener = require('DOMEventListener');
 
 function createIframe(/*object*/ opts) /*DOMElement*/ {/*TC*/__t([opts,'object','opts']); return __t([function(){/*/TC*/
-  var frame = hasNamePropertyBug()
-    ? document.createElement('<iframe name="' + opts.name + '"/>')
-    : document.createElement("iframe");
+  opts = copyProperties({}, opts);
+  var frame;
+  var name = opts.name || guid();
+  var root = opts.root;
+  var style = opts.style ||  { border: 'none' };
+  var src = opts.url;
+  var onLoad = opts.onload;
 
-  if (opts.style) {
-    copyProperties(frame.style, opts.style);
+  if (hasNamePropertyBug()) {
+    frame = document.createElement('<iframe name="' + name + '"/>');
+  } else {
+    frame = document.createElement("iframe");
+    frame.name = name;
   }
-  frame.name = frame.id = opts.name;
+
+  
+  delete opts.style;
+  delete opts.name;
+  delete opts.url;
+  delete opts.root;
+  delete opts.onload;
+
+  var attributes =  copyProperties({
+    frameBorder: 0,
+    allowtransparency: true,
+    scrolling: 'no'
+  }, opts);
+
+
+  if (attributes.width) {
+    frame.width = attributes.width + 'px';
+  }
+  if (attributes.height) {
+    frame.height = attributes.height + 'px';
+  }
+
+  delete attributes.height;
+  delete attributes.width;
+  copyProperties(frame, attributes);
+  copyProperties(frame.style, style);
+
   
   
   
   
   
   frame.src = "javascript:false";
-  opts.root.appendChild(frame);
-  
-  
-  frame.src = opts.url;
-  if (opts.tabIndex) {
-    frame.tabIndex = opts.tabIndex;
+  root.appendChild(frame);
+  if (onLoad) {
+    var listener = DOMEventListener.add(frame, 'load', function() {
+      listener.remove();
+      onLoad();
+    });
   }
+
+  
+  
+  frame.src = src;
   return frame;
 /*TC*/}.apply(this, arguments), 'DOMElement']);/*/TC*/}
 
@@ -3111,85 +3246,6 @@ var RPC = {
 };
 
 module.exports = RPC;
-
-});
-__d("wrapFunction",[],function(global,require,requireDynamic,requireLazy,module,exports) {
-
-var wrappers = {};
-function wrapFunction(/*function*/ fn, /*string?*/ type, /*string?*/ source)
-    /*function*/ {/*TC*/__t([fn,'function','fn'],[type,'string?','type'],[source,'string?','source']); return __t([function(){/*/TC*/
-  type = type || 'default';
-
-  return function() {
-    var callee = type in wrappers
-      ? wrappers[type](fn, source)
-      : fn;
-
-    return callee.apply(this, arguments);
-  };
-/*TC*/}.apply(this, arguments), 'function']);/*/TC*/}
-
-wrapFunction.setWrapper = function(/*function*/ fn, /*string?*/ type) {/*TC*/__t([fn,'function','fn'],[type,'string?','type']);/*/TC*/
-  type = type || 'default';
-  wrappers[type] = fn;
-};
-
-module.exports = wrapFunction;
-
-});
-__d("DOMEventListener",["wrapFunction"],function(global,require,requireDynamic,requireLazy,module,exports) {
-
-var wrapFunction = require('wrapFunction');
-
-var add, remove;
-
-if (window.addEventListener) {
-
-  
-  add = function(target, /*string*/ name, /*function*/ listener) {/*TC*/__t([name,'string','name'],[listener,'function','listener']);/*/TC*/
-    listener.wrapper = wrapFunction(listener, 'entry', target + ':' + name);
-    target.addEventListener(name, listener.wrapper, false);
-  };
-  remove = function(target, /*string*/ name, /*function*/ listener) {/*TC*/__t([name,'string','name'],[listener,'function','listener']);/*/TC*/
-    target.removeEventListener(name, listener.wrapper, false);
-  };
-
-} else if (window.attachEvent) {
-
-  
-  add = function(target, /*string*/ name, /*function*/ listener) {/*TC*/__t([name,'string','name'],[listener,'function','listener']);/*/TC*/
-    listener.wrapper = wrapFunction(listener, 'entry', target + ':' + name);
-    target.attachEvent('on' + name, listener.wrapper);
-  };
-  remove = function(target, /*string*/ name, /*function*/ listener) {/*TC*/__t([name,'string','name'],[listener,'function','listener']);/*/TC*/
-    target.detachEvent('on' + name, listener.wrapper);
-  };
-
-}
-
-var DOMEventListener = {
-
-  
-  add: function(target, /*string*/ name, /*function*/ listener) {/*TC*/__t([name,'string','name'],[listener,'function','listener']);/*/TC*/
-    
-    
-    add(target, name, listener);
-    return {
-      
-      
-      
-      remove: function() {
-        remove(target, name, listener);
-        target = null;
-      }
-    };
-  },
-
-  
-  remove: remove
-
-};
-module.exports = DOMEventListener;
 
 });
 __d("emptyFunction",["copyProperties"],function(global,require,requireDynamic,requireLazy,module,exports) {
@@ -8987,22 +9043,22 @@ copyProperties(PluginPipe, {
 module.exports = PluginPipe;
 
 });
-__d("IframePlugin",["sdk.Auth","sdk.DOM","sdk.Event","Log","ObservableMixin","PluginPipe","QueryString","sdk.Runtime","Type","UrlMap","sdk.XD","guid","insertIframe","resolveURI"],function(global,require,requireDynamic,requireLazy,module,exports) {
+__d("IframePlugin",["sdk.Auth","sdk.createIframe","sdk.DOM","sdk.Event","guid","Log","ObservableMixin","PluginPipe","QueryString","resolveURI","sdk.Runtime","Type","UrlMap","sdk.XD"],function(global,require,requireDynamic,requireLazy,module,exports) {
 
 var Auth = require('sdk.Auth');
+var createIframe = require('sdk.createIframe');
 var DOM = require('sdk.DOM');
 var Event = require('sdk.Event');
+var guid = require('guid');
 var Log = require('Log');
 var ObservableMixin = require('ObservableMixin');
 var PluginPipe = require('PluginPipe');
 var QueryString = require('QueryString');
+var resolveURI = require('resolveURI');
 var Runtime = require('sdk.Runtime');
 var Type = require('Type');
 var UrlMap = require('UrlMap');
 var XD = require('sdk.XD');
-var guid = require('guid');
-var insertIframe = require('insertIframe');
-var resolveURI = require('resolveURI');
 
 var baseParams = {
   skin: 'string',
@@ -9099,6 +9155,19 @@ var IframePlugin = Type.extend({
       clearTimeout(this._timeoutID);
     }, 'bind', true,this));
 
+    this.subscribe('xd.resize', ES5(function(/*object*/ message) {/*TC*/__t([message,'object','message']);/*/TC*/
+      resize(this._config.root, parse(message.width), parse(message.height));
+      resize(this._iframe, parse(message.width), parse(message.height));
+      this.updateLift();
+      clearTimeout(this._timeoutID);
+    }, 'bind', true,this));
+    this.subscribe('xd.resize.iframe', ES5(function(/*object*/ message) {/*TC*/__t([message,'object','message']);/*/TC*/
+      resize(this._iframe, parse(message.width), parse(message.height));
+      this.updateLift();
+      clearTimeout(this._timeoutID);
+    }, 'bind', true,this));
+
+
     var secure = Runtime.getSecure() || window.location.protocol == 'https:';
     
     var url = UrlMap.resolve('www', secure) + '/plugins/' + tag + '.php?';
@@ -9142,20 +9211,6 @@ var IframePlugin = Type.extend({
       width: params.width || 1000,
       height: params.height || 1000,
       onload: ES5(function() {
-        this._iframe = this._config.root.getElementsByTagName('iframe')[0];
-
-        this.subscribe('xd.resize', ES5(function(/*object*/ message) {/*TC*/__t([message,'object','message']);/*/TC*/
-          resize(this._config.root, parse(message.width), parse(message.height));
-          resize(this._iframe, parse(message.width), parse(message.height));
-          this.updateLift();
-          clearTimeout(this._timeoutID);
-        }, 'bind', true,this));
-        this.subscribe('xd.resize.iframe', ES5(function(/*object*/ message) {/*TC*/__t([message,'object','message']);/*/TC*/
-          resize(this._iframe, parse(message.width), parse(message.height));
-          this.updateLift();
-          clearTimeout(this._timeoutID);
-        }, 'bind', true,this));
-
         this.inform('render');
       }, 'bind', true,this)
     };
@@ -9165,16 +9220,17 @@ var IframePlugin = Type.extend({
     this._element.innerHTML = '';
     this._element.appendChild(this._config.root);
     this._timeoutID = setTimeout(ES5(function() {
-      
-      
+      this._iframe && resize(this._iframe, 0, 0);
       Log.warn('%s:%s failed to resize in 45s', this._ns, this._tag);
     }, 'bind', true,this), 45 * 1000);
     
     
     
 
-    if (!PluginPipe.add(this)) {
-      insertIframe(this._config);
+    
+    
+    
+      this._iframe = createIframe(this._config);
     }
   },
 
