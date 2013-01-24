@@ -1,4 +1,4 @@
-/*1358598881,172701223,JIT Construction: v716081,en_US*/
+/*1358985264,180650079,JIT Construction: v718672,en_US*/
 
 /**
  * Copyright Facebook Inc.
@@ -2098,7 +2098,16 @@ function createIframe(/*object*/ opts) /*DOMElement*/ {/*TC*/__t([opts,'object',
 
   delete attributes.height;
   delete attributes.width;
-  copyProperties(frame, attributes);
+
+  for (var key in attributes) {
+    if (attributes.hasOwnProperty(key)) {
+      frame.setAttribute(
+        key.replace(/([A-Z])/g, '-$1').toLowerCase(),
+        attributes[key]
+      );
+    }
+  }
+
   copyProperties(frame.style, style);
 
   
@@ -3707,6 +3716,7 @@ var channel = guid();
 var origin = location.protocol + '//' + location.host;
 var xdm;
 var inited = false;
+var IFRAME_TITLE = 'Facebook Cross Domain Communication Frame';
 
 var pluginRegistry = {};
 var rpcQueue = new Queue();
@@ -3913,20 +3923,24 @@ function init(/*string?*/ channelUrl, /*string?*/ xdProxyName) {/*TC*/__t([chann
         
         
         httpProxyFrame = createIframe({
-          url       : httpDomain + proxyUrl,
-          name      : 'fb_xdm_frame_http',
-          root      : container,
-          tabIndex  : -1
+          url: httpDomain + proxyUrl,
+          name: 'fb_xdm_frame_http',
+          root: container,
+          ariaHidden:true,
+          title: IFRAME_TITLE,
+          tabIndex: -1
         });
       }
 
       
       
       httpsProxyFrame = createIframe({
-        url       : httpsDomain + proxyUrl,
-        name      : 'fb_xdm_frame_https',
-        root      : container,
-        tabIndex  : -1
+        url: httpsDomain + proxyUrl,
+        name: 'fb_xdm_frame_https',
+        root: container,
+        ariaHidden:true,
+        title: IFRAME_TITLE,
+        tabIndex: -1
       });
     },
     onMessage: onMessage
@@ -9301,10 +9315,16 @@ var PluginTags = {
   },
 
   open_graph: {
-    href:       'url',
-    layout:     'string',
+    href: 'url',
+    layout: 'string',
     show_faces: 'bool',
-    action:     'string',
+    action_type: 'string',
+    action_properties: 'string'
+  },
+
+  open_graph_preview: {
+    href: 'url',
+    action_type: 'string',
     action_properties: 'string'
   },
 
