@@ -1,4 +1,4 @@
-/*1359789404,179329341,JIT Construction: v727171,en_US*/
+/*1360153991,171258425,JIT Construction: v729873,en_US*/
 
 /**
  * Copyright Facebook Inc.
@@ -40,10 +40,13 @@ var __t = (function() {
       // HTMLObjectElements has a typeof function in FF
       if (type === 'object' || type === 'function') {
         // Do not use instanceof Element etc. as eg. MooTools shadow this
-        if (value.nodeType === 1 && typeof value.nodeName === 'string') {
+        if ((value.nodeType === 1 || value.nodeType === 11)
+            && typeof value.nodeName === 'string') {
           // If it's an HTMLElement, extract the subtype
-           type = 'DOMElement';
-           subType = value.nodeName.toUpperCase();
+          type = 'DOMElement';
+          subType = value.nodeType === 11
+            ? 'FRAGMENT'
+            : value.nodeName.toUpperCase();
         } else {
           // else, check if it is actually an array
           type = toString.call(value).slice(8, -1);
@@ -117,7 +120,7 @@ var __t = (function() {
 })();
 /*/TC*/
 
-/* O7JaAPhmpAd */
+/* nLo6n2z200O */
 /**
  * This is a lightweigh implementation of require and __d which is used by the
  * JavaScript SDK.
@@ -6607,7 +6610,7 @@ var insertIframe = require('insertIframe');
 var Log = require('Log');
 var Native = require('sdk.Native');
 var QueryString = require('QueryString');
-var resolveURI = require('resolveURI')
+var resolveURI = require('resolveURI');
 var RPC = require('sdk.RPC');
 var Runtime = require('sdk.Runtime');
 var UrlMap = require('UrlMap');
@@ -6699,7 +6702,7 @@ var Methods = {
   'permissions.oauth': {
     url       : 'dialog/oauth',
     size      : { width: (UserAgent.mobile() ? null : 440),
-                  height: (UserAgent.mobile() ? null : 186) },
+                  height: (UserAgent.mobile() ? null : 183) },
     transform : function(/*object*/ call) /*object?*/ {/*TC*/__t([call,'object','call']); return __t([function(){/*/TC*/
       if (!Runtime.getClientID()) {
         Log.error('FB.login() called before FB.init().');
