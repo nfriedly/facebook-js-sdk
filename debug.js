@@ -1,4 +1,4 @@
-/*1360153991,171258425,JIT Construction: v729873,en_US*/
+/*1360240386,179409953,JIT Construction: v731067,en_US*/
 
 /**
  * Copyright Facebook Inc.
@@ -1816,7 +1816,8 @@ var Runtime = new Model({
   Scope: undefined,
   Secure: undefined,
   UseCookie: false,
-  UserID: ''
+  UserID: '',
+  CookieUserID: ''
 });
 
 copyProperties(Runtime, {
@@ -4089,7 +4090,8 @@ function setAuthResponse(/*object?*/ authResponse, /*string*/ status) {/*TC*/__t
 
   var
     currentStatus = Runtime.getLoginStatus(),
-    login = currentStatus === 'unknown' && authResponse,
+    login = (currentStatus === 'unknown' && authResponse)
+            || (Runtime.getUseCookie() && Runtime.getCookieUserID() !== userID),
     logout = currentUserID && !authResponse,
     both = authResponse && currentUserID && currentUserID != userID,
     authResponseChange = authResponse != currentAuthResponse,
@@ -7467,7 +7469,7 @@ FB.provide('', {
   /*TC*/}.apply(this, arguments), 'string?']);/*/TC*/},
 
   getUserID: function() /*string?*/ {/*TC*/ return __t([function(){/*/TC*/
-    return Runtime.getUserID();
+    return Runtime.getUserID() || Runtime.getCookieUserID();
   /*TC*/}.apply(this, arguments), 'string?']);/*/TC*/},
 
   login: function(/*function?*/ cb, /*object?*/ opts) {/*TC*/__t([cb,'function?','cb'],[opts,'object?','opts']);/*/TC*/
@@ -7511,14 +7513,16 @@ Event.subscribe('init:post', function(/*object*/ options) {/*TC*/__t([options,'o
     } else if (Runtime.getUseCookie()) {
       // we don't have an access token yet, but we might have a user
       
-      var signedRequest = Cookie.loadSignedRequest();
+      var signedRequest = Cookie.loadSignedRequest(), parsedSignedRequest;
       if (signedRequest) {
         try {
-          var parsedSignedRequest = SignedRequest.parse(signedRequest);
-          Runtime.setUserID(parsedSignedRequest.user_id || '');
+          parsedSignedRequest = SignedRequest.parse(signedRequest);
         } catch (e) {
           
           Cookie.clearSignedRequestCookie();
+        }
+        if (parsedSignedRequest && parsedSignedRequest.user_id) {
+          Runtime.setCookieUserID(parsedSignedRequest.user_id);
         }
       }
       Cookie.loadMeta();
