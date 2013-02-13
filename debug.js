@@ -1,4 +1,4 @@
-/*1360240386,179409953,JIT Construction: v731067,en_US*/
+/*1360728996,179369007,JIT Construction: v735892,en_US*/
 
 /**
  * Copyright Facebook Inc.
@@ -120,7 +120,7 @@ var __t = (function() {
 })();
 /*/TC*/
 
-/* nLo6n2z200O */
+/* -VPr__KlqBD */
 /**
  * This is a lightweigh implementation of require and __d which is used by the
  * JavaScript SDK.
@@ -198,7 +198,7 @@ var require, __d;
   };
 })(this);
 
-/* 3K-c5mDztxp */
+/* obIPWZ6UAYq */
 var ES5 = function(){
 __d("ES5ArrayPrototype",[],function(global,require,requireDynamic,requireLazy,module,exports) {/**
  * @providesModule ES5ArrayPrototype
@@ -314,7 +314,7 @@ ES5ArrayPrototype.indexOf = function(val, index) {
 
 module.exports = ES5ArrayPrototype;
 
-/* 8dsJuhKsQ6G */});
+/* qAIzq8pqVtY */});
 __d("ES5FunctionPrototype",[],function(global,require,requireDynamic,requireLazy,module,exports) {/**
  * @providesModule ES5FunctionPrototype
  */
@@ -349,7 +349,7 @@ ES5FunctionPrototype.bind = function(context /*, args... */) {
 
 module.exports = ES5FunctionPrototype;
 
-/* _FHIXsV3eGg */});
+/* NB6IU3xgTq_ */});
 __d("ES5StringPrototype",[],function(global,require,requireDynamic,requireLazy,module,exports) {/**
  * @providesModule ES5StringPrototype
  */
@@ -370,7 +370,7 @@ ES5StringPrototype.trim = function() {
 
 module.exports = ES5StringPrototype;
 
-/* dbYs0tmPht4 */});
+/* PvLdSc6jmNk */});
 __d("ES5Array",[],function(global,require,requireDynamic,requireLazy,module,exports) {/**
  * @providesModule ES5Array
  */
@@ -383,7 +383,7 @@ ES5Array.isArray = function(object) {
 
 module.exports = ES5Array;
 
-/* KWc-LfDWEyQ */});
+/* BwZtv6QQuTc */});
 __d("ES5Object",[],function(global,require,requireDynamic,requireLazy,module,exports) {/**
  * @providesModule ES5Object
  */
@@ -454,7 +454,7 @@ ES5Object.keys = function(object) {
 
 module.exports = ES5Object;
 
-/* rwYcAvu4u7O */});
+/* OxPKYQ8qEcm */});
 __d("ES5Date",[],function(global,require,requireDynamic,requireLazy,module,exports) {/**
  * @providesModule ES5Date
  */
@@ -466,7 +466,7 @@ ES5Date.now = function() {
 
 module.exports = ES5Date;
 
-/* HjJH7ozT9Sd */});
+/* KYAkCRvamTT */});
 __d("JSON3",[],function(global,require,requireDynamic,requireLazy,module,exports) {/**
  * @providesModule JSON3
  * @option preserve-header
@@ -1223,7 +1223,7 @@ __d("JSON3",[],function(global,require,requireDynamic,requireLazy,module,exports
   }
 }).call(this);
 
-/* 5XANJ9LaCZt */});
+/* APW8dGS1gTw */});
 __d("ES5",["ES5ArrayPrototype","ES5FunctionPrototype","ES5StringPrototype","ES5Array","ES5Object","ES5Date","JSON3"],function(global,require,requireDynamic,requireLazy,module,exports) {/**
  * @providesModule ES5
  *
@@ -1306,7 +1306,7 @@ function ES5(lhs, rhs, proto/*, args*/) {
 
 module.exports = ES5;
 
-/* EQa_GDJGIpD */});ES5 = require('ES5');
+/* 1-i3ETO4TwY */});ES5 = require('ES5');
 return ES5.apply(null, arguments);
 };
 
@@ -6271,6 +6271,7 @@ var Dialog = {
   
   hide: function(/*DOMElement*/ dialog) {/*TC*/__t([dialog,'DOMElement','dialog']);/*/TC*/
     var root = Dialog._findRoot(dialog);
+    Dialog._hideLoader();
     if (root == Dialog._active) {
       Dialog._lowerActive();
       Dialog._restoreBodyPosition();
@@ -9817,7 +9818,8 @@ var IframeWidget = Element.extend({
     var left = DOM.getPosition(iframe).x;
     var screen_width = DOM.getViewportInfo().width;
     var comment_width = parseInt(message.width, 10);
-    if (left + comment_width > screen_width) {
+    if (left + comment_width > screen_width &&
+        left > comment_width) {
       iframe.style.left = iframe_width - comment_width + 'px';
       this.arbiterInform('xd/reposition', {type: 'horizontal'});
       this._repositioned = true;
