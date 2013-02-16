@@ -1,4 +1,4 @@
-/*1360728996,179369007,JIT Construction: v735892,en_US*/
+/*1360974543,177656374,JIT Construction: v738444,en_US*/
 
 /**
  * Copyright Facebook Inc.
@@ -9788,7 +9788,7 @@ var IframeWidget = Element.extend({
 
   _resizeIframe: function(/*object*/ message) {/*TC*/__t([message,'object','message']);/*/TC*/
     var iframe = this.getIframeNode();
-    if (message.reposition) {
+    if (message.reposition === "true") {
       this._repositionIframe(message);
     }
     message.height && (iframe.style.height = message.height + 'px');
