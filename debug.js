@@ -1,4 +1,4 @@
-/*1360974543,177656374,JIT Construction: v738444,en_US*/
+/*1361449915,180663073,JIT Construction: v740817,en_US*/
 
 /**
  * Copyright Facebook Inc.
@@ -47,6 +47,8 @@ var __t = (function() {
           subType = value.nodeType === 11
             ? 'FRAGMENT'
             : value.nodeName.toUpperCase();
+        } else if (value.nodeType === 3) {
+          type = 'DOMTextNode';
         } else {
           // else, check if it is actually an array
           type = toString.call(value).slice(8, -1);
@@ -76,12 +78,19 @@ var __t = (function() {
       return true;
     }
 
-    // Normalize in order to match using the longest applicable selector
-    expected = expected.replace(/>*$|\?|$/, '<');
     actual = actual.replace(/>*$|$/, '<');
-    var len = Math.min(expected.length, actual.length);
 
-    return expected.substring(0, len) === actual.substring(0, len);
+    var allowed = expected.split('|'), i = allowed.length;
+    while (i--) {
+      // Normalize in order to match using the longest applicable selector
+      expected = allowed[i].replace(/>*$|\?|$/, '<');
+      var overlap = Math.min(expected.length, actual.length);
+
+      if (expected.substring(0, overlap) === actual.substring(0, overlap)) {
+        return true;
+      }
+    }
+    return false;
   }
 
   function __t(/*args*/) {
@@ -93,8 +102,8 @@ var __t = (function() {
       var name = args[i][2] || 'return value';
 
       if (!matches(expected, actual)) {
-        var error = new TypeError('Type Mismatch for ' + name + ': expected ' +
-          expected + ', actual ' + actual);
+        var error = new TypeError('Type Mismatch for ' + name + ': expected "' +
+          expected + '", actual "' + actual + '"');
         if (handler) {
           try {
             throw error;
@@ -120,7 +129,7 @@ var __t = (function() {
 })();
 /*/TC*/
 
-/* -VPr__KlqBD */
+/* UDE4CdKqBSa */
 /**
  * This is a lightweigh implementation of require and __d which is used by the
  * JavaScript SDK.
