@@ -1,4 +1,4 @@
-/*1361449915,180663073,JIT Construction: v740817,en_US*/
+/*1361582121,168638501,JIT Construction: v742564,en_US*/
 
 /**
  * Copyright Facebook Inc.
@@ -4439,7 +4439,7 @@ function removeClass(/*DOMElement*/ dom, /*string*/ className) {/*TC*/__t([dom,'
 }
 
 
-function getByClass(/*string*/ className, dom, tagName) /*array<DOMElement>*/ {/*TC*/__t([className,'string','className']);/*/TC*/
+function getByClass(/*string*/ className, dom, tagName) /*array<DOMElement>*/ {/*TC*/__t([className,'string','className']); return __t([function(){/*/TC*/
   Assert.isString(className);
 
   dom = dom || document.body;
@@ -4457,7 +4457,7 @@ function getByClass(/*string*/ className, dom, tagName) /*array<DOMElement>*/ {/
     }
   }
   return els;
-}
+/*TC*/}.apply(this, arguments), 'array<DOMElement>']);/*/TC*/}
 
 
 function getStyle(/*DOMElement*/ dom, /*string*/ styleProp) /*string*/ {/*TC*/__t([dom,'DOMElement','dom'],[styleProp,'string','styleProp']); return __t([function(){/*/TC*/
@@ -4497,7 +4497,7 @@ function setStyle(/*DOMElement*/ dom, /*string*/ styleProp, value) {/*TC*/__t([d
 }
 
 
-function addCssRules(/*string*/ styles, /*array<string>*/ names) {/*TC*/__t([styles,'string','styles']);/*/TC*/
+function addCssRules(/*string*/ styles, /*array<string>*/ names) {/*TC*/__t([styles,'string','styles'],[names,'array<string>','names']);/*/TC*/
   
   
   var allIncluded = true;
