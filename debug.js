@@ -1,4 +1,4 @@
-/*1361582121,168638501,JIT Construction: v742564,en_US*/
+/*1361961953,168628503,JIT Construction: v744757,en_US*/
 
 /**
  * Copyright Facebook Inc.
@@ -47,6 +47,8 @@ var __t = (function() {
           subType = value.nodeType === 11
             ? 'FRAGMENT'
             : value.nodeName.toUpperCase();
+        } else if (value.nodeType === 9) {
+          type = 'DOMDocument';
         } else if (value.nodeType === 3) {
           type = 'DOMTextNode';
         } else {
@@ -129,7 +131,7 @@ var __t = (function() {
 })();
 /*/TC*/
 
-/* UDE4CdKqBSa */
+/* tI40fYkmtE8 */
 /**
  * This is a lightweigh implementation of require and __d which is used by the
  * JavaScript SDK.
@@ -181,7 +183,7 @@ var require, __d;
   };
 
   __d = function(/*string*/ id, /*array<string>*/ deps, factory,
-      /*number?*/ _special) {/*TC*/__t([id,'string','id'],[_special,'number?','_special']);/*/TC*/
+      /*number?*/ _special) {/*TC*/__t([id,'string','id'],[deps,'array<string>','deps'],[_special,'number?','_special']);/*/TC*/
 
     switch(typeof factory) {
       case  'function':
@@ -8352,7 +8354,7 @@ var Data = {
   },
 
   
-  _mergeIndexQuery: function(/*object*/ item, /*array<object>*/ mqueries) {/*TC*/__t([item,'object','item']);/*/TC*/
+  _mergeIndexQuery: function(/*object*/ item, /*array<object>*/ mqueries) {/*TC*/__t([item,'object','item'],[mqueries,'array<object>','mqueries']);/*/TC*/
     var key = item.where.key,
     value = item.where.value;
 
@@ -8370,7 +8372,7 @@ var Data = {
     mergeArrays(master.where.value, [value]);
 
     
-    master.wait(function(/*array<object>*/ r) {
+    master.wait(function(/*array<object>*/ r) {/*TC*/__t([r,'array<object>','r']);/*/TC*/
       item.setValue(ES5(r, 'filter', true,function(/*object*/ x) {/*TC*/__t([x,'object','x']);/*/TC*/
         return x[key] == value;
       }));
@@ -9455,7 +9457,7 @@ var Element = Type.extend({
 
   
   _getAttributeFromList: function(/*string*/ name, /*string*/ defaultValue,
-      /*array<string>*/ allowed) /*string*/ {/*TC*/__t([name,'string','name'],[defaultValue,'string','defaultValue']); return __t([function(){/*/TC*/
+      /*array<string>*/ allowed) /*string*/ {/*TC*/__t([name,'string','name'],[defaultValue,'string','defaultValue'],[allowed,'array<string>','allowed']); return __t([function(){/*/TC*/
     return this.getAttribute(name, defaultValue, function(/*string*/ s)
         /*string*/ {/*TC*/__t([s,'string','s']); return __t([function(){/*/TC*/
       s = s.toLowerCase();
@@ -10146,7 +10148,7 @@ var CommentsCount = Element.extend({
     var href = this.getAttribute('href', window.location.href);
 
     Data._selectByIndex(['commentsbox_count'], 'link_stat', 'url', href)
-      .wait(ES5(function(/*array<object>*/ value) {
+      .wait(ES5(function(/*array<object>*/ value) {/*TC*/__t([value,'array<object>','value']);/*/TC*/
         var c = value[0].commentsbox_count;
 
         DOM.html(
@@ -11087,7 +11089,8 @@ var LikeBox = EdgeWidget.extend({
       width       : this._getPxAttribute('width', 300),
       href        : this.getAttribute('href'),
       colorscheme : this.getAttribute('colorscheme', 'light'),
-      border_color: this.getAttribute('border_color')
+      border_color: this.getAttribute('border_color'),
+      show_border : this._getBoolAttribute('show-border', true)
     };
 
     if (this._getBoolAttribute('force_wall', false)) {
@@ -11313,7 +11316,7 @@ var Name = Element.extend({
       } else {
         data = Data._selectByIndex(['name', 'id'], 'profile', 'id', this._uid);
       }
-      data.wait(ES5(function(/*array<object>*/ data) {
+      data.wait(ES5(function(/*array<object>*/ data) {/*TC*/__t([data,'array<object>','data']);/*/TC*/
         if (this._subjectId == this._uid) {
           this._renderPronoun(data[0]);
         } else {
