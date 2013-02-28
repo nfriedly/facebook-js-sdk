@@ -1,4 +1,4 @@
-/*1361961953,168628503,JIT Construction: v744757,en_US*/
+/*1362048551,168583213,JIT Construction: v745758,en_US*/
 
 /**
  * Copyright Facebook Inc.
@@ -8108,9 +8108,9 @@ var Waitable = require('sdk.Waitable');
 
 
 
-function toFields(/*string*/ s) /*array<string>*/ {/*TC*/__t([s,'string','s']);/*/TC*/
+function toFields(/*string*/ s) /*array<string>*/ {/*TC*/__t([s,'string','s']); return __t([function(){/*/TC*/
   return ES5(s.split(','), 'map', true,function(s) {return ES5(s,'trim', true);});
-}
+/*TC*/}.apply(this, arguments), 'array<string>']);/*/TC*/}
 
 
 function parseWhere(/*string*/ s) /*object*/ {/*TC*/__t([s,'string','s']); return __t([function(){/*/TC*/
@@ -9025,7 +9025,7 @@ function insertPlugins() {
 
 XFBML.subscribe('parse', insertPlugins);
 
-function insertPipe(/*array<object>*/ plugins) {
+function insertPipe(/*array<object>*/ plugins) {/*TC*/__t([plugins,'array<object>','plugins']);/*/TC*/
   var root = document.createElement('span');
   Content.appendHidden(root);
 
@@ -11547,7 +11547,7 @@ var ProfilePic = Element.extend({
       style.height = height;
     }
 
-    var renderFn = ES5(function(/*array<object>*/ result) {
+    var renderFn = ES5(function(/*array<object>*/ result) {/*TC*/__t([result,'array<object>','result']);/*/TC*/
       var
         userInfo = result ? result[0] : null,
         imgSrc = userInfo ? userInfo[picFieldName] : null;
