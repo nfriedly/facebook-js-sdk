@@ -1,4 +1,4 @@
-/*1362048551,168583213,JIT Construction: v745758,en_US*/
+/*1362484547,180673059,JIT Construction: v748457,en_US*/
 
 /**
  * Copyright Facebook Inc.
@@ -10230,14 +10230,14 @@ var Anim = {
   },
 
   
-  _parseCSS: function(/*string*/ css) /*array<object>*/ {/*TC*/__t([css,'string','css']);/*/TC*/
+  _parseCSS: function(/*string*/ css) /*array<object>*/ {/*TC*/__t([css,'string','css']); return __t([function(){/*/TC*/
     var ret = [];
     ES5(css.split(' '), 'forEach', true,function(peice) {
       var num = parseInt(peice, 10);
       ret.push({numPart: num, textPart: peice.replace(num,'')});
     });
     return ret;
-  }
+  /*TC*/}.apply(this, arguments), 'array<object>']);/*/TC*/}
 };
 module.exports = Anim;
 
