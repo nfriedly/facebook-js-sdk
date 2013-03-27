@@ -57,7 +57,7 @@ if [[ $JS_CHANGES ]]; then
 
 	# commit with yesterday's date since this is typically run
 	# shortly after midnight
-	/usr/bin/git commit -m "FB js changes from `date --date=yesterday +'%A, %B %-d, %Y'`"
+	/usr/bin/git commit -m "FB js changes from `date --date=today +'%A, %B %-d, %Y'`"
 	/usr/bin/git push -q origin master
 else
 	echo "No changes"
