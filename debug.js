@@ -1,4 +1,4 @@
-/*1366199678,171876652,JIT Construction: v787526,en_US*/
+/*1366286057,171852583,JIT Construction: v788483,en_US*/
 
 /**
  * Copyright Facebook Inc.
@@ -7308,8 +7308,10 @@ var UIServer = {
 
     RPC.remote.showDialog(call.params, (/*TC*/__w(/*/TC*/ function(/*object*/ response) { /*TC*/__t([response,'object','response']);/*/TC*/ 
       var dialog = Dialog.get(call.id);
-      
-      dialog.trackEvents(response.result.e2e);
+      if (response.result) {
+        
+        dialog.trackEvents(response.result.e2e);
+      }
       dialog.trackEvent('close');
       call.cb(response.result);
     } /*TC*/,{"signature":"function(object)"})/*/TC*/));
