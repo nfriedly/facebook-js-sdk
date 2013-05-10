@@ -1,4 +1,4 @@
-/*1368010922,179388189,JIT Construction: v808581,en_US*/
+/*1368181616,179389249,JIT Construction: v810660,en_US*/
 
 /**
  * Copyright Facebook Inc.
@@ -6802,7 +6802,7 @@ var UserAgent = require('UserAgent');
 var XD = require('sdk.XD');
 
 var MobileIframeable = {
-  transform: (/*TC*/__w(/*/TC*/ function(/*object*/ call) /*object*/ { /*TC*/__t([call,'object','call']);return __t([function(){/*/TC*/ 
+  transform: (/*TC*/__w(/*/TC*/ function(/*object*/ call) /*object*/ { /*TC*/__t([call,'object','call']);/*jshint validthis: true*/return __t([function(){/*/TC*/ 
     
     
     
@@ -6825,7 +6825,7 @@ var MobileIframeable = {
       return UIServer.genericTransform(call);
     }
    /*TC*/}.apply(this,arguments), 'object']);/*/TC*/ } /*TC*/,{"signature":"function(object):object"})/*/TC*/),
-  getXdRelation: (/*TC*/__w(/*/TC*/ function(/*object*/ params) /*string*/ { /*TC*/__t([params,'object','params']);return __t([function(){/*/TC*/ 
+  getXdRelation: (/*TC*/__w(/*/TC*/ function(/*object*/ params) /*string*/ { /*TC*/__t([params,'object','params']);/*jshint validthis: true*/return __t([function(){/*/TC*/ 
     var display = params.display;
     if (display === 'touch' && window.postMessage && params.in_iframe) {
       
@@ -6841,7 +6841,7 @@ var Methods = {
   'stream.share': {
     size      : { width: 670, height: 340 },
     url       : 'sharer.php',
-    transform : (/*TC*/__w(/*/TC*/ function(/*object*/ call) /*object*/ { /*TC*/__t([call,'object','call']);return __t([function(){/*/TC*/ 
+    transform : (/*TC*/__w(/*/TC*/ function(/*object*/ call) /*object*/ { /*TC*/__t([call,'object','call']);/*jshint validthis: true*/return __t([function(){/*/TC*/ 
       if (!call.params.u) {
         call.params.u = window.location.toString();
       }
@@ -6852,7 +6852,7 @@ var Methods = {
 
   
   'apprequests': {
-    transform: (/*TC*/__w(/*/TC*/ function(/*object*/ call) /*object*/ { /*TC*/__t([call,'object','call']);return __t([function(){/*/TC*/ 
+    transform: (/*TC*/__w(/*/TC*/ function(/*object*/ call) /*object*/ { /*TC*/__t([call,'object','call']);/*jshint validthis: true*/return __t([function(){/*/TC*/ 
       call = MobileIframeable.transform(call);
 
       call.params.frictionless = Frictionless &&
@@ -6876,6 +6876,9 @@ var Methods = {
           call.hideLoader
         );
       }
+      
+      
+      call.closeIcon = false;
       return call;
      /*TC*/}.apply(this,arguments), 'object']);/*/TC*/ } /*TC*/,{"signature":"function(object):object"})/*/TC*/),
     getXdRelation: MobileIframeable.getXdRelation
@@ -6887,7 +6890,7 @@ var Methods = {
     url       : 'dialog/oauth',
     size      : { width: (UserAgent.mobile() ? null : 440),
                   height: (UserAgent.mobile() ? null : 183) },
-    transform : (/*TC*/__w(/*/TC*/ function(/*object*/ call) /*?object*/ { /*TC*/__t([call,'object','call']);return __t([function(){/*/TC*/ 
+    transform : (/*TC*/__w(/*/TC*/ function(/*object*/ call) /*?object*/ { /*TC*/__t([call,'object','call']);/*jshint validthis: true*/return __t([function(){/*/TC*/ 
       if (!Runtime.getClientID()) {
         Log.error('FB.login() called before FB.init().');
         return;
@@ -6942,7 +6945,7 @@ var Methods = {
 
   'auth.logout': {
     url       : 'logout.php',
-    transform : (/*TC*/__w(/*/TC*/ function(/*object*/ call) /*?object*/ { /*TC*/__t([call,'object','call']);return __t([function(){/*/TC*/ 
+    transform : (/*TC*/__w(/*/TC*/ function(/*object*/ call) /*?object*/ { /*TC*/__t([call,'object','call']);/*jshint validthis: true*/return __t([function(){/*/TC*/ 
       if (!Runtime.getClientID()) {
         Log.error('FB.logout() called before calling FB.init().');
       } else if (!Auth.getAuthResponse()) {
@@ -6960,7 +6963,7 @@ var Methods = {
 
   'login.status': {
     url       : 'dialog/oauth',
-    transform : (/*TC*/__w(/*/TC*/ function(/*object*/ call) /*object*/ { /*TC*/__t([call,'object','call']);return __t([function(){/*/TC*/ 
+    transform : (/*TC*/__w(/*/TC*/ function(/*object*/ call) /*object*/ { /*TC*/__t([call,'object','call']);/*jshint validthis: true*/return __t([function(){/*/TC*/ 
       var
         cb = call.cb,
         id = call.id;
@@ -6991,7 +6994,7 @@ var UIServer = {
   _resultToken   : '"xxRESULTTOKENxx"',
 
   
-  genericTransform: (/*TC*/__w(/*/TC*/ function(/*object*/ call) /*object*/ { /*TC*/__t([call,'object','call']);return __t([function(){/*/TC*/ 
+  genericTransform: (/*TC*/__w(/*/TC*/ function(/*object*/ call) /*object*/ { /*TC*/__t([call,'object','call']);/*jshint validthis: true*/return __t([function(){/*/TC*/ 
     if (call.params.display == 'dialog' || call.params.display == 'iframe') {
       copyProperties(call.params, {
         display: 'iframe',
@@ -7020,7 +7023,7 @@ var UIServer = {
   },
 
   
-  prepareCall: (/*TC*/__w(/*/TC*/ function(/*object*/ params, /*function*/ cb) /*?object*/ { /*TC*/__t([params,'object','params'],[cb,'function','cb']);return __t([function(){/*/TC*/ 
+  prepareCall: (/*TC*/__w(/*/TC*/ function(/*object*/ params, /*function*/ cb) /*?object*/ { /*TC*/__t([params,'object','params'],[cb,'function','cb']);/*jshint validthis: true*/return __t([function(){/*/TC*/ 
     var
       name   = params.method.toLowerCase(),
       method = copyProperties({}, UIServer.Methods[name]),
@@ -7102,7 +7105,7 @@ var UIServer = {
     return call;
    /*TC*/}.apply(this,arguments), '?object']);/*/TC*/ } /*TC*/,{"signature":"function(object,function):?object"})/*/TC*/),
 
-  prepareParams: (/*TC*/__w(/*/TC*/ function(/*object*/ call) /*object*/ { /*TC*/__t([call,'object','call']);return __t([function(){/*/TC*/ 
+  prepareParams: (/*TC*/__w(/*/TC*/ function(/*object*/ call) /*object*/ { /*TC*/__t([call,'object','call']);/*jshint validthis: true*/return __t([function(){/*/TC*/ 
     var method = call.params.method;
     
     
@@ -7129,12 +7132,12 @@ var UIServer = {
     return call;
    /*TC*/}.apply(this,arguments), 'object']);/*/TC*/ } /*TC*/,{"signature":"function(object):object"})/*/TC*/),
 
-  urlTooLongForIE: (/*TC*/__w(/*/TC*/ function(/*string*/ fullURL) /*boolean*/ { /*TC*/__t([fullURL,'string','fullURL']);return __t([function(){/*/TC*/ 
+  urlTooLongForIE: (/*TC*/__w(/*/TC*/ function(/*string*/ fullURL) /*boolean*/ { /*TC*/__t([fullURL,'string','fullURL']);/*jshint validthis: true*/return __t([function(){/*/TC*/ 
     return fullURL.length > 2000;
    /*TC*/}.apply(this,arguments), 'boolean']);/*/TC*/ } /*TC*/,{"signature":"function(string):boolean"})/*/TC*/),
 
   
-  getDisplayMode: (/*TC*/__w(/*/TC*/ function(/*object*/ method, /*object*/ params) /*string*/ { /*TC*/__t([method,'object','method'],[params,'object','params']);return __t([function(){/*/TC*/ 
+  getDisplayMode: (/*TC*/__w(/*/TC*/ function(/*object*/ method, /*object*/ params) /*string*/ { /*TC*/__t([method,'object','method'],[params,'object','params']);/*jshint validthis: true*/return __t([function(){/*/TC*/ 
     if (params.display === 'hidden' ||
         params.display === 'none') {
       return params.display;
@@ -7168,7 +7171,7 @@ var UIServer = {
    /*TC*/}.apply(this,arguments), 'string']);/*/TC*/ } /*TC*/,{"signature":"function(object,object):string"})/*/TC*/),
 
   
-  getXdRelation: (/*TC*/__w(/*/TC*/ function(/*object*/ params) /*string*/ { /*TC*/__t([params,'object','params']);return __t([function(){/*/TC*/ 
+  getXdRelation: (/*TC*/__w(/*/TC*/ function(/*object*/ params) /*string*/ { /*TC*/__t([params,'object','params']);/*jshint validthis: true*/return __t([function(){/*/TC*/ 
     var display = params.display;
     if (display === 'popup' || display === 'touch') {
       return 'opener';
@@ -7290,7 +7293,7 @@ var UIServer = {
     };
     call.root = Dialog.create({
       onClose: onClose,
-      closeIcon: true,
+      closeIcon: call.closeIcon === undefined ? true : call.closeIcon,
       classes: (UserAgent.ipad() ? 'centered' : '')
     });
     if (!call.hideLoader) {
@@ -7352,7 +7355,7 @@ var UIServer = {
     } /*TC*/,{"signature":"function(object)"})/*/TC*/));
   } /*TC*/,{"signature":"function(object)"})/*/TC*/),
 
-  getDefaultSize: (/*TC*/__w(/*/TC*/ function() /*object*/ { /*TC*/return __t([function(){/*/TC*/ 
+  getDefaultSize: (/*TC*/__w(/*/TC*/ function() /*object*/ { /*TC*
     return Dialog.getDefaultSize();
    /*TC*/}.apply(this,arguments), 'object']);/*/TC*/ } /*TC*/,{"signature":"function():object"})/*/TC*/),
 
@@ -7471,7 +7474,7 @@ var UIServer = {
 
   
   _xdChannelHandler: (/*TC*/__w(/*/TC*/ function(/*string*/ frame, /*string*/ relation)
-      /*string*/ { /*TC*/__t([frame,'string','frame'],[relation,'string','relation']);return __t([function(){/*/TC*/ 
+      /*string*/ { /*TC*/__t([frame,'string','frame'],[relation,'string','relation']);/*jshint validthis: true*/return __t([function(){/*/TC*/ 
     return XD.handler((/*TC*/__w(/*/TC*/ function(/*object*/ data) { /*TC*/__t([data,'object','data']);/*/TC*/ 
       var node = UIServer.getLoadedNode(frame);
       if (!node) { 
@@ -7493,7 +7496,7 @@ var UIServer = {
 
   
   _xdNextHandler: (/*TC*/__w(/*/TC*/ function(/*function*/ cb, /*string*/ frame,
-       /*string*/ relation, /*boolean*/ isDefault) /*string*/ { /*TC*/__t([cb,'function','cb'],[frame,'string','frame'],[relation,'string','relation'],[isDefault,'boolean','isDefault']);return __t([function(){/*/TC*/ 
+       /*string*/ relation, /*boolean*/ isDefault) /*string*/ { /*TC*/__t([cb,'function','cb'],[frame,'string','frame'],[relation,'string','relation'],[isDefault,'boolean','isDefault']);/*jshint validthis: true*/return __t([function(){/*/TC*/ 
     if (isDefault) {
       UIServer._defaultCb[frame] = cb;
     }
@@ -7553,7 +7556,7 @@ var UIServer = {
 
   
   _xdResult: (/*TC*/__w(/*/TC*/ function(/*function*/ cb, /*string*/ frame, /*string*/ target,
-      /*boolean*/ isDefault) /*string*/ { /*TC*/__t([cb,'function','cb'],[frame,'string','frame'],[target,'string','target'],[isDefault,'boolean','isDefault']);return __t([function(){/*/TC*/ 
+      /*boolean*/ isDefault) /*string*/ { /*TC*/__t([cb,'function','cb'],[frame,'string','frame'],[target,'string','target'],[isDefault,'boolean','isDefault']);/*jshint validthis: true*/return __t([function(){/*/TC*/ 
     return (
       UIServer._xdNextHandler(function(params) {
         cb && cb(params.result &&
@@ -7565,7 +7568,7 @@ var UIServer = {
    /*TC*/}.apply(this,arguments), 'string']);/*/TC*/ } /*TC*/,{"signature":"function(function,string,string,boolean):string"})/*/TC*/),
 
   xdHandler: (/*TC*/__w(/*/TC*/ function(/*function*/ cb, /*string*/ frame, /*string*/ target,
-      /*?object*/ authResponse, /*string*/ method) /*string*/ { /*TC*/__t([cb,'function','cb'],[frame,'string','frame'],[target,'string','target'],[authResponse,'?object','authResponse'],[method,'string','method']);return __t([function(){/*/TC*/ 
+      /*?object*/ authResponse, /*string*/ method) /*string*/ { /*TC*/__t([cb,'function','cb'],[frame,'string','frame'],[target,'string','target'],[authResponse,'?object','authResponse'],[method,'string','method']);/*jshint validthis: true*/return __t([function(){/*/TC*/ 
     return UIServer._xdNextHandler(
       Auth.xdResponseWrapper(cb, authResponse, method),
       frame,
