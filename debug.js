@@ -1,4 +1,4 @@
-/*1368181616,179389249,JIT Construction: v810660,en_US*/
+/*1368617127,182116137,JIT Construction: v815930,en_US*/
 
 /**
  * Copyright Facebook Inc.
@@ -1413,12 +1413,12 @@ module.exports = ES5;
 return ES5.apply(null, arguments);
 };
 
-__d("sdk.RuntimeConfig",[],{"locale":"en_US","rtl":false});__d("UrlMapConfig",[],{"www":"www.facebook.com","m":"m.facebook.com","connect":"connect.facebook.net","api_https":"api.facebook.com","api_read_https":"api-read.facebook.com","graph_https":"graph.facebook.com","fbcdn_http":"fbstatic-a.akamaihd.net","fbcdn_https":"fbstatic-a.akamaihd.net","cdn_http":"static.ak.facebook.com","cdn_https":"s-static.ak.facebook.com"});__d("XDConfig",[],{"XdUrl":"connect\/xd_arbiter.php?version=24","Flash":{"path":"https:\/\/connect.facebook.net\/rsrc.php\/v1\/yX\/r\/VpkNidONSDC.swf"},"useCdn":true});__d("SDKConfig",[],{"bustCache":true,"tagCountLogRate":0.01,"errorHandling":{"rate":4},"usePluginPipe":true,"features":{"xfbml_profile_pic_server":true,"error_handling":4},"api":{"mode":"warn","whitelist":["Canvas","Canvas.Prefetcher","Canvas.Prefetcher.addStaticResource","Canvas.Prefetcher.setCollectionMode","Canvas.getPageInfo","Canvas.hideFlashElement","Canvas.scrollTo","Canvas.setAutoGrow","Canvas.setDoneLoading","Canvas.setSize","Canvas.setUrlHandler","Canvas.showFlashElement","Canvas.startTimer","Canvas.stopTimer","Data","Data.process","Data.query","Data.query:wait","Data.waitOn","Data.waitOn:wait","Event","Event.subscribe","Event.unsubscribe","Music.flashCallback","Music.init","Music.send","Payment","Payment.cancelFlow","Payment.continueFlow","Payment.init","Payment.parse","Payment.setSize","ThirdPartyProvider","ThirdPartyProvider.init","ThirdPartyProvider.sendData","UA","UA.nativeApp","XFBML","XFBML.RecommendationsBar","XFBML.RecommendationsBar.markRead","XFBML.parse","addFriend","api","getAccessToken","getAuthResponse","getLoginStatus","getUserID","init","login","logout","publish","share","ui","ui:subscribe"]},"initSitevars":{"enableMobileComments":1,"iframePermissions":{"read_stream":false,"manage_mailbox":false,"manage_friendlists":false,"read_mailbox":false,"publish_checkins":true,"status_update":true,"photo_upload":true,"video_upload":true,"sms":false,"create_event":true,"rsvp_event":true,"offline_access":true,"email":true,"xmpp_login":false,"create_note":true,"share_item":true,"export_stream":false,"publish_stream":true,"publish_likes":true,"ads_management":false,"contact_email":true,"access_private_data":false,"read_insights":false,"read_requests":false,"read_friendlists":true,"manage_pages":false,"physical_login":false,"manage_groups":false,"read_deals":false}}});__d("CssConfig",[],{"rules":".fb_hidden{position:absolute;top:-10000px;z-index:10001}\n.fb_invisible{display:none}\n.fb_reset{background:none;border-spacing:0;border:0;color:#000;cursor:auto;direction:ltr;font-family:\"lucida grande\", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}\n.fb_link img{border:none}\n.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}\n.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px}\n.fb_dialog_content{background:#fff;color:#333}\n.fb_dialog_close_icon{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;_background-image:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yL\/r\/s816eWC-2sl.gif);cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px;top:8px\\9;right:7px\\9}\n.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}\n.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}\n.fb_dialog_close_icon:hover{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent;_background-image:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yL\/r\/s816eWC-2sl.gif)}\n.fb_dialog_close_icon:active{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent;_background-image:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yL\/r\/s816eWC-2sl.gif)}\n.fb_dialog_loader{background-color:#f2f2f2;border:1px solid #606060;font-size:24px;padding:20px}\n.fb_dialog_top_left,\n.fb_dialog_top_right,\n.fb_dialog_bottom_left,\n.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}\n\/* \u0040noflip *\/\n.fb_dialog_top_left{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}\n\/* \u0040noflip *\/\n.fb_dialog_top_right{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}\n\/* \u0040noflip *\/\n.fb_dialog_bottom_left{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}\n\/* \u0040noflip *\/\n.fb_dialog_bottom_right{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}\n.fb_dialog_vert_left,\n.fb_dialog_vert_right,\n.fb_dialog_horiz_top,\n.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}\n.fb_dialog_vert_left,\n.fb_dialog_vert_right{width:10px;height:100\u0025}\n.fb_dialog_vert_left{margin-left:-10px}\n.fb_dialog_vert_right{right:0;margin-right:-10px}\n.fb_dialog_horiz_top,\n.fb_dialog_horiz_bottom{width:100\u0025;height:10px}\n.fb_dialog_horiz_top{margin-top:-10px}\n.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}\n.fb_dialog_iframe{line-height:0}\n.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #3b5998;color:#fff;font-size:14px;font-weight:bold;margin:0}\n.fb_dialog_content .dialog_title > span{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yd\/r\/Cou7n-nqK52.gif)\nno-repeat 5px 50\u0025;float:left;padding:5px 0 7px 26px}\nbody.fb_hidden{-webkit-transform:none;height:100\u0025;margin:0;left:-10000px;overflow:visible;position:absolute;top:-10000px;width:100\u0025\n}\n.fb_dialog.fb_dialog_mobile.loading{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ya\/r\/3rhSv5V8j3o.gif)\nwhite no-repeat 50\u0025 50\u0025;min-height:100\u0025;min-width:100\u0025;overflow:hidden;position:absolute;top:0;z-index:10001}\n.fb_dialog.fb_dialog_mobile.loading.centered{max-height:590px;min-height:590px;max-width:500px;min-width:500px}\n#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;left:0;top:0;width:100\u0025;min-height:100\u0025;z-index:10000}\n#fb-root #fb_dialog_ipad_overlay.hidden{display:none}\n.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}\n.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0 0, 0 100\u0025, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}\n.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100\u0025\n}\n.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px\n}\n.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px\n}\n.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0 0, 0 100\u0025, from(#4966A6),\ncolor-stop(0.5, #355492), to(#2A4887));border:1px solid #29447e;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset,\nrgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}\n.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}\n.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}\n.fb_dialog_content .dialog_content{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/y9\/r\/jKEcVPZFk-2.gif) no-repeat 50\u0025 50\u0025;border:1px solid #555;border-bottom:0;border-top:0;height:150px}\n.fb_dialog_content .dialog_footer{background:#f2f2f2;border:1px solid #555;border-top-color:#ccc;height:40px}\n#fb_dialog_loader_close{float:left}\n.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}\n.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}\n.fb_iframe_widget{display:inline-block;position:relative}\n.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}\n.fb_iframe_widget iframe{position:absolute}\n.fb_iframe_widget_lift{z-index:1}\n.fb_hide_iframes iframe{position:relative;left:-10000px}\n.fb_iframe_widget_loader{position:relative;display:inline-block}\n.fb_iframe_widget_fluid{display:inline}\n.fb_iframe_widget_fluid span{width:100\u0025}\n.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}\n.fb_iframe_widget_loader .FB_Loader{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/y9\/r\/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50\u0025;z-index:4}\n.fb_connect_bar_container div,\n.fb_connect_bar_container span,\n.fb_connect_bar_container a,\n.fb_connect_bar_container img,\n.fb_connect_bar_container strong{background:none;border-spacing:0;border:0;direction:ltr;font-style:normal;font-variant:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal;vertical-align:baseline}\n.fb_connect_bar_container{position:fixed;left:0 !important;right:0 !important;height:42px !important;padding:0 25px !important;margin:0 !important;vertical-align:middle !important;border-bottom:1px solid #333 !important;background:#3b5998 !important;z-index:99999999 !important;overflow:hidden !important}\n.fb_connect_bar_container_ie6{position:absolute;top:expression(document.compatMode==\"CSS1Compat\"? document.documentElement.scrollTop+\"px\":body.scrollTop+\"px\")}\n.fb_connect_bar{position:relative;margin:auto;height:100\u0025;width:100\u0025;padding:6px 0 0 0 !important;background:none;color:#fff !important;font-family:\"lucida grande\", tahoma, verdana, arial, sans-serif !important;font-size:13px !important;font-style:normal !important;font-variant:normal !important;font-weight:normal !important;letter-spacing:normal !important;line-height:1 !important;text-decoration:none !important;text-indent:0 !important;text-shadow:none !important;text-transform:none !important;white-space:normal !important;word-spacing:normal !important}\n.fb_connect_bar a:hover{color:#fff}\n.fb_connect_bar .fb_profile img{height:30px;width:30px;vertical-align:middle;margin:0 6px 5px 0}\n.fb_connect_bar div a,\n.fb_connect_bar span,\n.fb_connect_bar span a{color:#bac6da;font-size:11px;text-decoration:none}\n.fb_connect_bar .fb_buttons{float:right;margin-top:7px}\n.fb_edge_widget_with_comment{position:relative;*z-index:1000}\n.fb_edge_widget_with_comment span.fb_edge_comment_widget{position:absolute}\n.fb_edge_widget_with_comment span.fb_send_button_form_widget{z-index:1}\n.fb_edge_widget_with_comment span.fb_send_button_form_widget .FB_Loader{left:0;top:1px;margin-top:6px;margin-left:0;background-position:50\u0025 50\u0025;background-color:#fff;height:150px;width:394px;border:1px #666 solid;border-bottom:2px solid #283e6c;z-index:1}\n.fb_edge_widget_with_comment span.fb_send_button_form_widget.dark .FB_Loader{background-color:#000;border-bottom:2px solid #ccc}\n.fb_edge_widget_with_comment span.fb_send_button_form_widget.siderender\n.FB_Loader{margin-top:0}\n.fbpluginrecommendationsbarleft,\n.fbpluginrecommendationsbarright{position:fixed !important;bottom:0;z-index:999}\n\/* \u0040noflip *\/\n.fbpluginrecommendationsbarleft{left:10px}\n\/* \u0040noflip *\/\n.fbpluginrecommendationsbarright{right:10px}","components":["fb.css.base","fb.css.dialog","fb.css.iframewidget","fb.css.connectbarwidget","fb.css.edgecommentwidget","fb.css.sendbuttonformwidget","fb.css.plugin.recommendationsbar"]});__d("CanvasPrefetcherConfig",[],{"blacklist":[144959615576466],"sampleRate":500});__d("PluginPipeConfig",[],{"threshold":0,"enabledApps":{"209753825810663":1,"187288694643718":1}});__d("ConnectBarConfig",[],{"imgs":{"buttonUrl":"rsrc.php\/v2\/yY\/r\/h_Y6u1wrZPW.png","missingProfileUrl":"rsrc.php\/v2\/yo\/r\/UlIqmHJn-SK.gif"}});__d("ProfilePicConfig",[],{"defPicMap":{"pic":"rsrc.php\/v1\/yh\/r\/C5yt7Cqf3zU.jpg","pic_big":"rsrc.php\/v2\/yL\/r\/HsTZSDw4avx.gif","pic_big_with_logo":"rsrc.php\/v2\/y5\/r\/SRDCaeCL7hM.gif","pic_small":"rsrc.php\/v1\/yi\/r\/odA9sNLrE86.jpg","pic_small_with_logo":"rsrc.php\/v2\/yD\/r\/k1xiRXKnlGd.gif","pic_square":"rsrc.php\/v2\/yo\/r\/UlIqmHJn-SK.gif","pic_square_with_logo":"rsrc.php\/v2\/yX\/r\/9dYJBPDHXwZ.gif","pic_with_logo":"rsrc.php\/v2\/yu\/r\/fPPR9f2FJ3t.gif"}});__d("ApiClientConfig",[],{"FlashRequest":{"swfUrl":"https:\/\/connect.facebook.net\/rsrc.php\/v1\/yB\/r\/YV5wijq5fkW.swf"}});
+__d("sdk.RuntimeConfig",[],{"locale":"en_US","rtl":false});__d("SDKConfig",[],{"bustCache":true,"tagCountLogRate":0.01,"errorHandling":{"rate":4},"usePluginPipe":true,"features":{"xfbml_profile_pic_server":true,"error_handling":4,"oauth_ping":false},"api":{"mode":"warn","whitelist":["Canvas","Canvas.Prefetcher","Canvas.Prefetcher.addStaticResource","Canvas.Prefetcher.setCollectionMode","Canvas.getPageInfo","Canvas.hideFlashElement","Canvas.scrollTo","Canvas.setAutoGrow","Canvas.setDoneLoading","Canvas.setSize","Canvas.setUrlHandler","Canvas.showFlashElement","Canvas.startTimer","Canvas.stopTimer","Data","Data.process","Data.query","Data.query:wait","Data.waitOn","Data.waitOn:wait","Event","Event.subscribe","Event.unsubscribe","Music.flashCallback","Music.init","Music.send","Payment","Payment.cancelFlow","Payment.continueFlow","Payment.init","Payment.parse","Payment.setSize","ThirdPartyProvider","ThirdPartyProvider.init","ThirdPartyProvider.sendData","UA","UA.nativeApp","XFBML","XFBML.RecommendationsBar","XFBML.RecommendationsBar.markRead","XFBML.parse","addFriend","api","getAccessToken","getAuthResponse","getLoginStatus","getUserID","init","login","logout","publish","share","ui","ui:subscribe"]},"initSitevars":{"enableMobileComments":1,"iframePermissions":{"read_stream":false,"manage_mailbox":false,"manage_friendlists":false,"read_mailbox":false,"publish_checkins":true,"status_update":true,"photo_upload":true,"video_upload":true,"sms":false,"create_event":true,"rsvp_event":true,"offline_access":true,"email":true,"xmpp_login":false,"create_note":true,"share_item":true,"export_stream":false,"publish_stream":true,"publish_likes":true,"ads_management":false,"contact_email":true,"access_private_data":false,"read_insights":false,"read_requests":false,"read_friendlists":true,"manage_pages":false,"physical_login":false,"manage_groups":false,"read_deals":false}}});__d("UrlMapConfig",[],{"www":"www.facebook.com","m":"m.facebook.com","connect":"connect.facebook.net","api_https":"api.facebook.com","api_read_https":"api-read.facebook.com","graph_https":"graph.facebook.com","fbcdn_http":"fbstatic-a.akamaihd.net","fbcdn_https":"fbstatic-a.akamaihd.net","cdn_http":"static.ak.facebook.com","cdn_https":"s-static.ak.facebook.com"});__d("XDConfig",[],{"XdUrl":"connect\/xd_arbiter.php?version=24","Flash":{"path":"https:\/\/connect.facebook.net\/rsrc.php\/v1\/yX\/r\/VpkNidONSDC.swf"},"useCdn":true});__d("CssConfig",[],{"rules":".fb_hidden{position:absolute;top:-10000px;z-index:10001}\n.fb_invisible{display:none}\n.fb_reset{background:none;border-spacing:0;border:0;color:#000;cursor:auto;direction:ltr;font-family:\"lucida grande\", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}\n.fb_link img{border:none}\n.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}\n.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px}\n.fb_dialog_content{background:#fff;color:#333}\n.fb_dialog_close_icon{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;_background-image:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yL\/r\/s816eWC-2sl.gif);cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px;top:8px\\9;right:7px\\9}\n.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}\n.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}\n.fb_dialog_close_icon:hover{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent;_background-image:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yL\/r\/s816eWC-2sl.gif)}\n.fb_dialog_close_icon:active{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent;_background-image:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yL\/r\/s816eWC-2sl.gif)}\n.fb_dialog_loader{background-color:#f2f2f2;border:1px solid #606060;font-size:24px;padding:20px}\n.fb_dialog_top_left,\n.fb_dialog_top_right,\n.fb_dialog_bottom_left,\n.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}\n\/* \u0040noflip *\/\n.fb_dialog_top_left{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}\n\/* \u0040noflip *\/\n.fb_dialog_top_right{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}\n\/* \u0040noflip *\/\n.fb_dialog_bottom_left{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}\n\/* \u0040noflip *\/\n.fb_dialog_bottom_right{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}\n.fb_dialog_vert_left,\n.fb_dialog_vert_right,\n.fb_dialog_horiz_top,\n.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}\n.fb_dialog_vert_left,\n.fb_dialog_vert_right{width:10px;height:100\u0025}\n.fb_dialog_vert_left{margin-left:-10px}\n.fb_dialog_vert_right{right:0;margin-right:-10px}\n.fb_dialog_horiz_top,\n.fb_dialog_horiz_bottom{width:100\u0025;height:10px}\n.fb_dialog_horiz_top{margin-top:-10px}\n.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}\n.fb_dialog_iframe{line-height:0}\n.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #3b5998;color:#fff;font-size:14px;font-weight:bold;margin:0}\n.fb_dialog_content .dialog_title > span{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yd\/r\/Cou7n-nqK52.gif)\nno-repeat 5px 50\u0025;float:left;padding:5px 0 7px 26px}\nbody.fb_hidden{-webkit-transform:none;height:100\u0025;margin:0;left:-10000px;overflow:visible;position:absolute;top:-10000px;width:100\u0025\n}\n.fb_dialog.fb_dialog_mobile.loading{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ya\/r\/3rhSv5V8j3o.gif)\nwhite no-repeat 50\u0025 50\u0025;min-height:100\u0025;min-width:100\u0025;overflow:hidden;position:absolute;top:0;z-index:10001}\n.fb_dialog.fb_dialog_mobile.loading.centered{max-height:590px;min-height:590px;max-width:500px;min-width:500px}\n#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;left:0;top:0;width:100\u0025;min-height:100\u0025;z-index:10000}\n#fb-root #fb_dialog_ipad_overlay.hidden{display:none}\n.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}\n.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0 0, 0 100\u0025, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}\n.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100\u0025\n}\n.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px\n}\n.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px\n}\n.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0 0, 0 100\u0025, from(#4966A6),\ncolor-stop(0.5, #355492), to(#2A4887));border:1px solid #29447e;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset,\nrgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}\n.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}\n.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}\n.fb_dialog_content .dialog_content{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/y9\/r\/jKEcVPZFk-2.gif) no-repeat 50\u0025 50\u0025;border:1px solid #555;border-bottom:0;border-top:0;height:150px}\n.fb_dialog_content .dialog_footer{background:#f2f2f2;border:1px solid #555;border-top-color:#ccc;height:40px}\n#fb_dialog_loader_close{float:left}\n.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}\n.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}\n.fb_iframe_widget{display:inline-block;position:relative}\n.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}\n.fb_iframe_widget iframe{position:absolute}\n.fb_iframe_widget_lift{z-index:1}\n.fb_hide_iframes iframe{position:relative;left:-10000px}\n.fb_iframe_widget_loader{position:relative;display:inline-block}\n.fb_iframe_widget_fluid{display:inline}\n.fb_iframe_widget_fluid span{width:100\u0025}\n.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}\n.fb_iframe_widget_loader .FB_Loader{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/y9\/r\/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50\u0025;z-index:4}\n.fb_connect_bar_container div,\n.fb_connect_bar_container span,\n.fb_connect_bar_container a,\n.fb_connect_bar_container img,\n.fb_connect_bar_container strong{background:none;border-spacing:0;border:0;direction:ltr;font-style:normal;font-variant:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal;vertical-align:baseline}\n.fb_connect_bar_container{position:fixed;left:0 !important;right:0 !important;height:42px !important;padding:0 25px !important;margin:0 !important;vertical-align:middle !important;border-bottom:1px solid #333 !important;background:#3b5998 !important;z-index:99999999 !important;overflow:hidden !important}\n.fb_connect_bar_container_ie6{position:absolute;top:expression(document.compatMode==\"CSS1Compat\"? document.documentElement.scrollTop+\"px\":body.scrollTop+\"px\")}\n.fb_connect_bar{position:relative;margin:auto;height:100\u0025;width:100\u0025;padding:6px 0 0 0 !important;background:none;color:#fff !important;font-family:\"lucida grande\", tahoma, verdana, arial, sans-serif !important;font-size:13px !important;font-style:normal !important;font-variant:normal !important;font-weight:normal !important;letter-spacing:normal !important;line-height:1 !important;text-decoration:none !important;text-indent:0 !important;text-shadow:none !important;text-transform:none !important;white-space:normal !important;word-spacing:normal !important}\n.fb_connect_bar a:hover{color:#fff}\n.fb_connect_bar .fb_profile img{height:30px;width:30px;vertical-align:middle;margin:0 6px 5px 0}\n.fb_connect_bar div a,\n.fb_connect_bar span,\n.fb_connect_bar span a{color:#bac6da;font-size:11px;text-decoration:none}\n.fb_connect_bar .fb_buttons{float:right;margin-top:7px}\n.fb_edge_widget_with_comment{position:relative;*z-index:1000}\n.fb_edge_widget_with_comment span.fb_edge_comment_widget{position:absolute}\n.fb_edge_widget_with_comment span.fb_send_button_form_widget{z-index:1}\n.fb_edge_widget_with_comment span.fb_send_button_form_widget .FB_Loader{left:0;top:1px;margin-top:6px;margin-left:0;background-position:50\u0025 50\u0025;background-color:#fff;height:150px;width:394px;border:1px #666 solid;border-bottom:2px solid #283e6c;z-index:1}\n.fb_edge_widget_with_comment span.fb_send_button_form_widget.dark .FB_Loader{background-color:#000;border-bottom:2px solid #ccc}\n.fb_edge_widget_with_comment span.fb_send_button_form_widget.siderender\n.FB_Loader{margin-top:0}\n.fbpluginrecommendationsbarleft,\n.fbpluginrecommendationsbarright{position:fixed !important;bottom:0;z-index:999}\n\/* \u0040noflip *\/\n.fbpluginrecommendationsbarleft{left:10px}\n\/* \u0040noflip *\/\n.fbpluginrecommendationsbarright{right:10px}","components":["fb.css.base","fb.css.dialog","fb.css.iframewidget","fb.css.connectbarwidget","fb.css.edgecommentwidget","fb.css.sendbuttonformwidget","fb.css.plugin.recommendationsbar"]});__d("CanvasPrefetcherConfig",[],{"blacklist":[144959615576466],"sampleRate":500});__d("PluginPipeConfig",[],{"threshold":0,"enabledApps":{"209753825810663":1,"187288694643718":1}});__d("ConnectBarConfig",[],{"imgs":{"buttonUrl":"rsrc.php\/v2\/yY\/r\/h_Y6u1wrZPW.png","missingProfileUrl":"rsrc.php\/v2\/yo\/r\/UlIqmHJn-SK.gif"}});__d("ProfilePicConfig",[],{"defPicMap":{"pic":"rsrc.php\/v1\/yh\/r\/C5yt7Cqf3zU.jpg","pic_big":"rsrc.php\/v2\/yL\/r\/HsTZSDw4avx.gif","pic_big_with_logo":"rsrc.php\/v2\/y5\/r\/SRDCaeCL7hM.gif","pic_small":"rsrc.php\/v1\/yi\/r\/odA9sNLrE86.jpg","pic_small_with_logo":"rsrc.php\/v2\/yD\/r\/k1xiRXKnlGd.gif","pic_square":"rsrc.php\/v2\/yo\/r\/UlIqmHJn-SK.gif","pic_square_with_logo":"rsrc.php\/v2\/yX\/r\/9dYJBPDHXwZ.gif","pic_with_logo":"rsrc.php\/v2\/yu\/r\/fPPR9f2FJ3t.gif"}});__d("ApiClientConfig",[],{"FlashRequest":{"swfUrl":"https:\/\/connect.facebook.net\/rsrc.php\/v1\/yB\/r\/YV5wijq5fkW.swf"}});
 __d("QueryString",[],function(global,require,requireDynamic,requireLazy,module,exports) {
 
 
 
-function encode(/*object*/ bag) /*string*/ { /*TC*/__t([bag,'object','bag']);return __t([function(){/*/TC*/ 
+function encode(/*object*/ bag) /*string*/ {__t([bag,'object','bag']);/*jshint validthis: true*/return __t([function(){
   var pairs = [];
   ES5(ES5('Object', 'keys', false,bag), 'forEach', true,function(key) {
     var value = bag[key];
@@ -1437,10 +1437,10 @@ function encode(/*object*/ bag) /*string*/ { /*TC*/__t([bag,'object','bag']);ret
                encodeURIComponent(value));
   });
   return pairs.join('&');
- /*TC*/}.apply(this,arguments), 'string']);/*/TC*/ } /*TC*/__w(encode,{"signature":"function(object):string"});/*/TC*/ 
+}.apply(this,arguments), 'string']);}__w(encode,{"signature":"function(object):string"});
 
 
-function decode(/*string*/ str, /*boolean?*/ strict) /*object*/ { /*TC*/__t([str,'string','str'],[strict,'?boolean','strict']);return __t([function(){/*/TC*/ 
+function decode(/*string*/ str, /*boolean?*/ strict) /*object*/ {__t([str,'string','str'],[strict,'?boolean','strict']);/*jshint validthis: true*/return __t([function(){
   var data = {};
   if (str === '') {
     return data;
@@ -1458,16 +1458,16 @@ function decode(/*string*/ str, /*boolean?*/ strict) /*object*/ { /*TC*/__t([str
       : null;
   }
   return data;
- /*TC*/}.apply(this,arguments), 'object']);/*/TC*/ } /*TC*/__w(decode,{"signature":"function(string,?boolean):object"});/*/TC*/ 
+}.apply(this,arguments), 'object']);}__w(decode,{"signature":"function(string,?boolean):object"});
 
 
-function appendToUrl(/*string*/ url, params) /*string*/ { /*TC*/__t([url,'string','url']);return __t([function(){/*/TC*/ 
+function appendToUrl(/*string*/ url, params) /*string*/ {__t([url,'string','url']);/*jshint validthis: true*/return __t([function(){
   return url +
     (~ES5(url, 'indexOf', true,'?') ? '&' : '?') +
     (typeof params === 'string'
       ? params
       : QueryString.encode(params));
- /*TC*/}.apply(this,arguments), 'string']);/*/TC*/ } /*TC*/__w(appendToUrl,{"signature":"function(string):string"});/*/TC*/ 
+}.apply(this,arguments), 'string']);}__w(appendToUrl,{"signature":"function(string):string"});
 
 var QueryString = {
   encode: encode,
@@ -1542,13 +1542,13 @@ module.exports = AssertionError;
 __d("sprintf",[],function(global,require,requireDynamic,requireLazy,module,exports) {
 
 
-function sprintf(/*string*/ str, argsdotdot) /*string*/ { /*TC*/__t([str,'string','str']);return __t([function(){/*/TC*/ 
+function sprintf(/*string*/ str, argsdotdot) /*string*/ {__t([str,'string','str']);/*jshint validthis: true*/return __t([function(){
   argsdotdot = Array.prototype.slice.call(arguments, 1);
   var index = 0;
   return str.replace(/%s/g, function(match) {
     return argsdotdot[index++];
   });
- /*TC*/}.apply(this,arguments), 'string']);/*/TC*/ } /*TC*/__w(sprintf,{"signature":"function(string):string"});/*/TC*/ 
+}.apply(this,arguments), 'string']);}__w(sprintf,{"signature":"function(string):string"});
 
 module.exports = sprintf;
 
@@ -1560,15 +1560,15 @@ var AssertionError = require('AssertionError');
 var sprintf = require('sprintf');
 
 
-function assert(/*boolean*/ expression, /*string?*/ message) /*boolean*/ { /*TC*/__t([expression,'boolean','expression'],[message,'?string','message']);return __t([function(){/*/TC*/ 
+function assert(/*boolean*/ expression, /*string?*/ message) /*boolean*/ {__t([expression,'boolean','expression'],[message,'?string','message']);/*jshint validthis: true*/return __t([function(){
   if (!expression) {
     throw new AssertionError(message);
   }
   return expression;
- /*TC*/}.apply(this,arguments), 'boolean']);/*/TC*/ } /*TC*/__w(assert,{"signature":"function(boolean,?string):boolean"});/*/TC*/ 
+}.apply(this,arguments), 'boolean']);}__w(assert,{"signature":"function(boolean,?string):boolean"});
 
 
-function assertType(/*string*/ type, expression, /*string?*/ message) { /*TC*/__t([type,'string','type'],[message,'?string','message']);/*/TC*/ 
+function assertType(/*string*/ type, expression, /*string?*/ message) {__t([type,'string','type'],[message,'?string','message']);
   var actualType;
 
   if (expression === undefined) {
@@ -1585,18 +1585,18 @@ function assertType(/*string*/ type, expression, /*string?*/ message) { /*TC*/__
     message || sprintf('Expression is of type %s, not %s', actualType, type)
   );
   return expression;
-} /*TC*/__w(assertType,{"signature":"function(string,?string)"});/*/TC*/ 
+}__w(assertType,{"signature":"function(string,?string)"});
 
 
-function assertInstanceOf(/*function*/ type, expression, /*string?*/ message) { /*TC*/__t([type,'function','type'],[message,'?string','message']);/*/TC*/ 
+function assertInstanceOf(/*function*/ type, expression, /*string?*/ message) {__t([type,'function','type'],[message,'?string','message']);
   assert(
     expression instanceof type,
     message || 'Expression not instance of type'
   );
   return expression;
-} /*TC*/__w(assertInstanceOf,{"signature":"function(function,?string)"});/*/TC*/ 
+}__w(assertInstanceOf,{"signature":"function(function,?string)"});
 
-function define(/*string*/ type, /*function*/ test) { /*TC*/__t([type,'string','type'],[test,'function','test']);/*/TC*/ 
+function define(/*string*/ type, /*function*/ test) {__t([type,'string','type'],[test,'function','test']);
   Assert['is' + type] = test;
   Assert['maybe' + type] = function(expression, message) {
     
@@ -1604,23 +1604,23 @@ function define(/*string*/ type, /*function*/ test) { /*TC*/__t([type,'string','
       test(expression, message);
     }
   };
-} /*TC*/__w(define,{"signature":"function(string,function)"});/*/TC*/ 
+}__w(define,{"signature":"function(string,function)"});
 
 var Assert = {
   isInstanceOf: assertInstanceOf,
   isTrue      : assert,
-  isTruthy    : (/*TC*/__w(/*/TC*/ function(expression, /*string?*/ message) /*boolean*/ { /*TC*/__t([message,'?string','message']);return __t([function(){/*/TC*/ 
+  isTruthy    : __w(function(expression, /*string?*/ message) /*boolean*/ {__t([message,'?string','message']);/*jshint validthis: true*/return __t([function(){
     return assert(!!expression, message);
-   /*TC*/}.apply(this,arguments), 'boolean']);/*/TC*/ } /*TC*/,{"signature":"function(?string):boolean"})/*/TC*/),
+  }.apply(this,arguments), 'boolean']);},{"signature":"function(?string):boolean"}),
   type        : assertType,
-  define      : (/*TC*/__w(/*/TC*/ function(/*string*/ type, /*function*/ fn) { /*TC*/__t([type,'string','type'],[fn,'function','fn']);/*/TC*/ 
+  define      : __w(function(/*string*/ type, /*function*/ fn) {__t([type,'string','type'],[fn,'function','fn']);
     type = type.substring(0, 1).toUpperCase() +
       type.substring(1).toLowerCase();
 
     define(type, function(expression, message) {
       assert(fn(expression), message);
     });
-  } /*TC*/,{"signature":"function(string,function)"})/*/TC*/)
+  },{"signature":"function(string,function)"})
 };
 
 
@@ -1633,9 +1633,9 @@ ES5(['Array',
  'Object',
  'Regexp',
  'String',
- 'Undefined'], 'forEach', true,(/*TC*/__w(/*/TC*/ function(/*string*/ type) { /*TC*/__t([type,'string','type']);/*/TC*/ 
+ 'Undefined'], 'forEach', true,__w(function(/*string*/ type) {__t([type,'string','type']);
    define(type, ES5(assertType, 'bind', true,null, type.toLowerCase()));
- } /*TC*/,{"signature":"function(string)"})/*/TC*/));
+ },{"signature":"function(string)"}));
 
 module.exports = Assert;
 
@@ -1652,10 +1652,10 @@ function Type() {
       mixins[i].apply(this, arguments);
     }
   }
-} /*TC*/__w(Type,{"type":"Type"});/*/TC*/ 
+}__w(Type,{"type":"Type"});
 
 
-function instanceOf(/*function*/ constructor, which) /*boolean*/ { /*TC*/__t([constructor,'function','constructor']);/*jshint validthis: true*/return __t([function(){/*/TC*/ 
+function instanceOf(/*function*/ constructor, which) /*boolean*/ {__t([constructor,'function','constructor']);/*jshint validthis: true*/return __t([function(){
 
   
   if (which instanceof constructor) {
@@ -1672,10 +1672,10 @@ function instanceOf(/*function*/ constructor, which) /*boolean*/ { /*TC*/__t([co
   }
 
   return false;
- /*TC*/}.apply(this,arguments), 'boolean']);/*/TC*/ } /*TC*/__w(instanceOf,{"signature":"function(function):boolean"});/*/TC*/ 
+}.apply(this,arguments), 'boolean']);}__w(instanceOf,{"signature":"function(function):boolean"});
 
 
-function mixin(/*function*/ to, from) { /*TC*/__t([to,'function','to']);/*/TC*/ 
+function mixin(/*function*/ to, from) {__t([to,'function','to']);
   var prototype = to.prototype;
 
   if (!ES5('Array', 'isArray', false,from)) {
@@ -1694,11 +1694,11 @@ function mixin(/*function*/ to, from) { /*TC*/__t([to,'function','to']);/*/TC*/
       prototype[key] = mixinFrom[key];
     });
   }
-} /*TC*/__w(mixin,{"signature":"function(function)"});/*/TC*/ 
+}__w(mixin,{"signature":"function(function)"});
 
 
 function extend(/*?function*/ from, /*?object*/ prototype, mixins)
-    /*function*/ { /*TC*/__t([from,'?function','from'],[prototype,'?object','prototype']);/*jshint validthis: true*/return __t([function(){/*/TC*/ 
+    /*function*/ {__t([from,'?function','from'],[prototype,'?object','prototype']);/*jshint validthis: true*/return __t([function(){
   var constructor = prototype && prototype.hasOwnProperty('constructor')
     ? prototype.constructor
     : function() {this.parent.apply(this, arguments);};
@@ -1740,29 +1740,29 @@ function extend(/*?function*/ from, /*?object*/ prototype, mixins)
   };
 
   // Allow the new type to call this.parentCall('method'/*, args*/);
-  constructor.prototype.parentCall = (/*TC*/__w(/*/TC*/ function(/*string*/ method) { /*TC*/__t([method,'string','method']);/*/TC*/ 
+  constructor.prototype.parentCall = __w(function(/*string*/ method) {__t([method,'string','method']);
     return from.prototype[method].apply(this,
       Array.prototype.slice.call(arguments, 1));
-  } /*TC*/,{"signature":"function(string)"})/*/TC*/);
+  },{"signature":"function(string)"});
 
-  constructor.extend = (/*TC*/__w(/*/TC*/ function(/*?object*/ prototype, mixins) { /*TC*/__t([prototype,'?object','prototype']);/*/TC*/ 
+  constructor.extend = __w(function(/*?object*/ prototype, mixins) {__t([prototype,'?object','prototype']);
     return extend(this, prototype, mixins);
-  } /*TC*/,{"signature":"function(?object)"})/*/TC*/);
+  },{"signature":"function(?object)"});
   return constructor;
- /*TC*/}.apply(this,arguments), 'function']);/*/TC*/ } /*TC*/__w(extend,{"signature":"function(?function,?object):function"});/*/TC*/ 
+}.apply(this,arguments), 'function']);}__w(extend,{"signature":"function(?function,?object):function"});
 
 copyProperties(Type.prototype, {
-  instanceOf: (/*TC*/__w(/*/TC*/ function(/*function*/ type) /*boolean*/ { /*TC*/__t([type,'function','type']);/*jshint validthis: true*/return __t([function(){/*/TC*/ 
+  instanceOf: __w(function(/*function*/ type) /*boolean*/ {__t([type,'function','type']);/*jshint validthis: true*/return __t([function(){
     return instanceOf(type, this);
-   /*TC*/}.apply(this,arguments), 'boolean']);/*/TC*/ } /*TC*/,{"signature":"function(function):boolean"})/*/TC*/)
+  }.apply(this,arguments), 'boolean']);},{"signature":"function(function):boolean"})
 });
 
 copyProperties(Type, {
-  extend: (/*TC*/__w(/*/TC*/ function(prototype, mixins) /*function*/ { /*TC*
+  extend: __w(function(prototype, mixins) /*function*/ {/*jshint validthis: true*/return __t([function(){
     return typeof prototype === 'function'
       ? extend.apply(null, arguments)
       : extend(null, prototype, mixins);
-   /*TC*/}.apply(this,arguments), 'function']);/*/TC*/ } /*TC*/,{"signature":"function():function"})/*/TC*/),
+  }.apply(this,arguments), 'function']);},{"signature":"function():function"}),
   instanceOf: instanceOf
 });
 
@@ -1773,12 +1773,12 @@ __d("ObservableMixin",[],function(global,require,requireDynamic,requireLazy,modu
 
 function ObservableMixin() {
   this.__observableEvents = {};
-} /*TC*/__w(ObservableMixin,{"type":"ObservableMixin"});/*/TC*/ 
+}__w(ObservableMixin,{"type":"ObservableMixin"});
 
 ObservableMixin.prototype = {
 
   
-  inform: (/*TC*/__w(/*/TC*/ function(/*string*/ what /*, args*/) { /*TC*/__t([what,'string','what']);/*/TC*/ 
+  inform: __w(function(/*string*/ what /*, args*/) {__t([what,'string','what']);
 
     var args = Array.prototype.slice.call(arguments, 1);
     var list = Array.prototype.slice.call(this.getSubscribers(what));
@@ -1797,23 +1797,23 @@ ObservableMixin.prototype = {
       }
     }
     return this;
-  } /*TC*/,{"signature":"function(string)"})/*/TC*/),
+  },{"signature":"function(string)"}),
 
   
-  getSubscribers: (/*TC*/__w(/*/TC*/ function(/*string*/ toWhat) /*array*/ { /*TC*/__t([toWhat,'string','toWhat']);return __t([function(){/*/TC*/ 
+  getSubscribers: __w(function(/*string*/ toWhat) /*array*/ {__t([toWhat,'string','toWhat']);/*jshint validthis: true*/return __t([function(){
 
     return this.__observableEvents[toWhat] ||
       (this.__observableEvents[toWhat] = []);
-   /*TC*/}.apply(this,arguments), 'array']);/*/TC*/ } /*TC*/,{"signature":"function(string):array"})/*/TC*/),
+  }.apply(this,arguments), 'array']);},{"signature":"function(string):array"}),
 
   
-  clearSubscribers: (/*TC*/__w(/*/TC*/ function(/*string*/ toWhat) { /*TC*/__t([toWhat,'string','toWhat']);/*/TC*/ 
+  clearSubscribers: __w(function(/*string*/ toWhat) {__t([toWhat,'string','toWhat']);
 
     if (toWhat) {
       this.__observableEvents[toWhat] = [];
     }
     return this;
-  } /*TC*/,{"signature":"function(string)"})/*/TC*/),
+  },{"signature":"function(string)"}),
 
   
   clearAllSubscribers: function() {
@@ -1822,15 +1822,15 @@ ObservableMixin.prototype = {
   },
 
   
-  subscribe: (/*TC*/__w(/*/TC*/ function(/*string*/ toWhat, /*function*/ withWhat) { /*TC*/__t([toWhat,'string','toWhat'],[withWhat,'function','withWhat']);/*/TC*/ 
+  subscribe: __w(function(/*string*/ toWhat, /*function*/ withWhat) {__t([toWhat,'string','toWhat'],[withWhat,'function','withWhat']);
 
     var list = this.getSubscribers(toWhat);
     list.push(withWhat);
     return this;
-  } /*TC*/,{"signature":"function(string,function)"})/*/TC*/),
+  },{"signature":"function(string,function)"}),
 
   
-  unsubscribe: (/*TC*/__w(/*/TC*/ function(/*string*/ toWhat, /*function*/ withWhat) { /*TC*/__t([toWhat,'string','toWhat'],[withWhat,'function','withWhat']);/*/TC*/ 
+  unsubscribe: __w(function(/*string*/ toWhat, /*function*/ withWhat) {__t([toWhat,'string','toWhat'],[withWhat,'function','withWhat']);
 
     var list = this.getSubscribers(toWhat);
     for (var i = 0; i < list.length; i++) {
@@ -1840,10 +1840,10 @@ ObservableMixin.prototype = {
       }
     }
     return this;
-  } /*TC*/,{"signature":"function(string,function)"})/*/TC*/),
+  },{"signature":"function(string,function)"}),
 
   
-  monitor: (/*TC*/__w(/*/TC*/ function(/*string*/ toWhat, /*function*/ withWhat) { /*TC*/__t([toWhat,'string','toWhat'],[withWhat,'function','withWhat']);/*/TC*/ 
+  monitor: __w(function(/*string*/ toWhat, /*function*/ withWhat) {__t([toWhat,'string','toWhat'],[withWhat,'function','withWhat']);
     if (!withWhat()) {
       var monitor = ES5(function(value) {
         if (withWhat.apply(withWhat, arguments)) {
@@ -1853,7 +1853,7 @@ ObservableMixin.prototype = {
       this.subscribe(toWhat, monitor);
     }
     return this;
-  } /*TC*/,{"signature":"function(string,function)"})/*/TC*/)
+  },{"signature":"function(string,function)"})
 
 };
 
@@ -1867,14 +1867,14 @@ var Type = require('Type');
 var ObservableMixin = require('ObservableMixin');
 
 var Model = Type.extend({
-  constructor: (/*TC*/__w(/*/TC*/ function(/*object*/ properties) { /*TC*/__t([properties,'object','properties']);/*/TC*/ 
+  constructor: __w(function(/*object*/ properties) {__t([properties,'object','properties']);
     this.parent();
 
     
     var propContainer = {};
     var model = this;
 
-    ES5(ES5('Object', 'keys', false,properties), 'forEach', true,(/*TC*/__w(/*/TC*/ function(/*string*/ name) { /*TC*/__t([name,'string','name']);/*/TC*/ 
+    ES5(ES5('Object', 'keys', false,properties), 'forEach', true,__w(function(/*string*/ name) {__t([name,'string','name']);
       
       propContainer[name] = properties[name];
 
@@ -1892,8 +1892,8 @@ var Model = Type.extend({
       model['get' + name] = function() {
         return propContainer[name];
       };
-    } /*TC*/,{"signature":"function(string)"})/*/TC*/));
-  } /*TC*/,{"signature":"function(object)"})/*/TC*/)
+    },{"signature":"function(string)"}));
+  },{"signature":"function(object)"})
 }, ObservableMixin);
 
 module.exports = Model;
@@ -1932,10 +1932,10 @@ copyProperties(Runtime, {
 
   ENVIRONMENTS: ENVIRONMENTS,
 
-  isEnvironment: (/*TC*/__w(/*/TC*/ function(/*number*/ target) /*boolean*/ { /*TC*/__t([target,'number','target']);return __t([function(){/*/TC*/ 
+  isEnvironment: __w(function(/*number*/ target) /*boolean*/ {__t([target,'number','target']);/*jshint validthis: true*/return __t([function(){
     var environment = this.getEnvironment();
     return (target | environment) === environment;
-   /*TC*/}.apply(this,arguments), 'boolean']);/*/TC*/ } /*TC*/,{"signature":"function(number):boolean"})/*/TC*/)
+  }.apply(this,arguments), 'boolean']);},{"signature":"function(number):boolean"})
 });
 
 (function() {
@@ -1965,7 +1965,7 @@ var Runtime = require('sdk.Runtime');
 var domain = null;
 
 
-function setRaw(/*string*/ prefix, /*string*/ val, /*number*/ ts) { /*TC*/__t([prefix,'string','prefix'],[val,'string','val'],[ts,'number','ts']);/*/TC*/ 
+function setRaw(/*string*/ prefix, /*string*/ val, /*number*/ ts) {__t([prefix,'string','prefix'],[val,'string','val'],[ts,'number','ts']);
   prefix = prefix + Runtime.getClientID();
 
   var useDomain = domain && domain !== '.';
@@ -1983,18 +1983,18 @@ function setRaw(/*string*/ prefix, /*string*/ val, /*number*/ ts) { /*TC*/__t([p
     (val && ts === 0 ? '' : '; expires=' + expires) +
     '; path=/' +
     (useDomain ? '; domain=' + domain : '');
-} /*TC*/__w(setRaw,{"signature":"function(string,string,number)"});/*/TC*/ 
+}__w(setRaw,{"signature":"function(string,string,number)"});
 
-function getRaw(/*string*/ prefix) /*string?*/ { /*TC*/__t([prefix,'string','prefix']);return __t([function(){/*/TC*/ 
+function getRaw(/*string*/ prefix) /*string?*/ {__t([prefix,'string','prefix']);/*jshint validthis: true*/return __t([function(){
   prefix = prefix + Runtime.getClientID();
   var regExp = new RegExp('\\b' + prefix + '=([^;]*)\\b');
   return regExp.test(document.cookie)
     ? RegExp.$1
     : null;
- /*TC*/}.apply(this,arguments), '?string']);/*/TC*/ } /*TC*/__w(getRaw,{"signature":"function(string):string?"});/*/TC*/ 
+}.apply(this,arguments), '?string']);}__w(getRaw,{"signature":"function(string):string?"});
 
 var Cookie = {
-  setDomain: (/*TC*/__w(/*/TC*/ function(/*string?*/ val) { /*TC*/__t([val,'?string','val']);/*/TC*/ 
+  setDomain: __w(function(/*string?*/ val) {__t([val,'?string','val']);
     domain = val;
     
     var meta  = QueryString.encode({
@@ -2003,14 +2003,14 @@ var Cookie = {
     var expiration = new Date();
     expiration.setFullYear(expiration.getFullYear() + 1);
     setRaw('fbm_', meta, expiration.getTime());
-  } /*TC*/,{"signature":"function(?string)"})/*/TC*/),
+  },{"signature":"function(?string)"}),
 
-  getDomain: (/*TC*/__w(/*/TC*/ function() /*string?*/ { /*TC*/return __t([function(){/*/TC*/ 
+  getDomain: __w(function() /*string?*/ {/*jshint validthis: true*/return __t([function(){
     return domain;
-   /*TC*/}.apply(this,arguments), '?string']);/*/TC*/ } /*TC*/,{"signature":"function():string?"})/*/TC*/),
+  }.apply(this,arguments), '?string']);},{"signature":"function():string?"}),
 
   
-  loadMeta: (/*TC*/__w(/*/TC*/ function() /*object?*/ { /*TC*/return __t([function(){/*/TC*/ 
+  loadMeta: __w(function() /*object?*/ {/*jshint validthis: true*/return __t([function(){
     var cookie = getRaw('fbm_');
     if (cookie) {
       // url encoded session stored as "sub-cookies"
@@ -2021,22 +2021,22 @@ var Cookie = {
       }
       return meta;
     }
-   /*TC*/}.apply(this,arguments), '?object']);/*/TC*/ } /*TC*/,{"signature":"function():object?"})/*/TC*/),
+  }.apply(this,arguments), '?object']);},{"signature":"function():object?"}),
 
   
-  loadSignedRequest: (/*TC*/__w(/*/TC*/ function() /*string?*/ { /*TC*/return __t([function(){/*/TC*/ 
+  loadSignedRequest: __w(function() /*string?*/ {/*jshint validthis: true*/return __t([function(){
     return getRaw('fbsr_');
-   /*TC*/}.apply(this,arguments), '?string']);/*/TC*/ } /*TC*/,{"signature":"function():string?"})/*/TC*/),
+  }.apply(this,arguments), '?string']);},{"signature":"function():string?"}),
 
   
-  setSignedRequestCookie: (/*TC*/__w(/*/TC*/ function(/*string*/ signedRequest,
-      /*number*/ expiration) { /*TC*/__t([signedRequest,'string','signedRequest'],[expiration,'number','expiration']);/*/TC*/ 
+  setSignedRequestCookie: __w(function(/*string*/ signedRequest,
+      /*number*/ expiration) {__t([signedRequest,'string','signedRequest'],[expiration,'number','expiration']);
     if (!signedRequest) {
       throw new Error('Value passed to Cookie.setSignedRequestCookie ' +
                       'was empty.');
     }
     setRaw('fbsr_', signedRequest, expiration);
-  } /*TC*/,{"signature":"function(string,number)"})/*/TC*/),
+  },{"signature":"function(string,number)"}),
 
   
   clearSignedRequestCookie: function() {
@@ -2067,20 +2067,20 @@ var hasBug;
 
 
 
-function test() /*boolean*/ { /*TC*/return __t([function(){/*/TC*/ 
+function test() /*boolean*/ {/*jshint validthis: true*/return __t([function(){
     var form = document.createElement("form"),
         input = form.appendChild(document.createElement("input"));
     input.name = guid();
     hasBug = input !== form.elements[input.name];
     form = input = null;
     return hasBug;
- /*TC*/}.apply(this,arguments), 'boolean']);/*/TC*/ } /*TC*/__w(test,{"signature":"function():boolean"});/*/TC*/ 
+}.apply(this,arguments), 'boolean']);}__w(test,{"signature":"function():boolean"});
 
-function hasNamePropertyBug() /*boolean*/ { /*TC*/return __t([function(){/*/TC*/ 
+function hasNamePropertyBug() /*boolean*/ {/*jshint validthis: true*/return __t([function(){
   return typeof hasBug === 'undefined'
     ? test()
     : hasBug;
- /*TC*/}.apply(this,arguments), 'boolean']);/*/TC*/ } /*TC*/__w(hasNamePropertyBug,{"signature":"function():boolean"});/*/TC*/ 
+}.apply(this,arguments), 'boolean']);}__w(hasNamePropertyBug,{"signature":"function():boolean"});
 
 module.exports = hasNamePropertyBug;
 
@@ -2089,7 +2089,7 @@ __d("wrapFunction",[],function(global,require,requireDynamic,requireLazy,module,
 
 var wrappers = {};
 function wrapFunction(/*function*/ fn, /*string?*/ type, /*string?*/ source)
-    /*function*/ { /*TC*/__t([fn,'function','fn'],[type,'?string','type'],[source,'?string','source']);return __t([function(){/*/TC*/ 
+    /*function*/ {__t([fn,'function','fn'],[type,'?string','type'],[source,'?string','source']);/*jshint validthis: true*/return __t([function(){
   type = type || 'default';
 
   return function() {
@@ -2099,12 +2099,12 @@ function wrapFunction(/*function*/ fn, /*string?*/ type, /*string?*/ source)
 
     return callee.apply(this, arguments);
   };
- /*TC*/}.apply(this,arguments), 'function']);/*/TC*/ } /*TC*/__w(wrapFunction,{"signature":"function(function,?string,?string):function"});/*/TC*/ 
+}.apply(this,arguments), 'function']);}__w(wrapFunction,{"signature":"function(function,?string,?string):function"});
 
-wrapFunction.setWrapper = (/*TC*/__w(/*/TC*/ function(/*function*/ fn, /*string?*/ type) { /*TC*/__t([fn,'function','fn'],[type,'?string','type']);/*/TC*/ 
+wrapFunction.setWrapper = __w(function(/*function*/ fn, /*string?*/ type) {__t([fn,'function','fn'],[type,'?string','type']);
   type = type || 'default';
   wrappers[type] = fn;
-} /*TC*/,{"signature":"function(function,?string)"})/*/TC*/);
+},{"signature":"function(function,?string)"});
 
 module.exports = wrapFunction;
 
@@ -2118,31 +2118,31 @@ var add, remove;
 if (window.addEventListener) {
 
   
-  add = (/*TC*/__w(/*/TC*/ function(target, /*string*/ name, /*function*/ listener) { /*TC*/__t([name,'string','name'],[listener,'function','listener']);/*/TC*/ 
+  add = __w(function(target, /*string*/ name, /*function*/ listener) {__t([name,'string','name'],[listener,'function','listener']);
     listener.wrapper = wrapFunction(listener, 'entry', target + ':' + name);
     target.addEventListener(name, listener.wrapper, false);
-  } /*TC*/,{"signature":"function(string,function)"})/*/TC*/);
-  remove = (/*TC*/__w(/*/TC*/ function(target, /*string*/ name, /*function*/ listener) { /*TC*/__t([name,'string','name'],[listener,'function','listener']);/*/TC*/ 
+  },{"signature":"function(string,function)"});
+  remove = __w(function(target, /*string*/ name, /*function*/ listener) {__t([name,'string','name'],[listener,'function','listener']);
     target.removeEventListener(name, listener.wrapper, false);
-  } /*TC*/,{"signature":"function(string,function)"})/*/TC*/);
+  },{"signature":"function(string,function)"});
 
 } else if (window.attachEvent) {
 
   
-  add = (/*TC*/__w(/*/TC*/ function(target, /*string*/ name, /*function*/ listener) { /*TC*/__t([name,'string','name'],[listener,'function','listener']);/*/TC*/ 
+  add = __w(function(target, /*string*/ name, /*function*/ listener) {__t([name,'string','name'],[listener,'function','listener']);
     listener.wrapper = wrapFunction(listener, 'entry', target + ':' + name);
     target.attachEvent('on' + name, listener.wrapper);
-  } /*TC*/,{"signature":"function(string,function)"})/*/TC*/);
-  remove = (/*TC*/__w(/*/TC*/ function(target, /*string*/ name, /*function*/ listener) { /*TC*/__t([name,'string','name'],[listener,'function','listener']);/*/TC*/ 
+  },{"signature":"function(string,function)"});
+  remove = __w(function(target, /*string*/ name, /*function*/ listener) {__t([name,'string','name'],[listener,'function','listener']);
     target.detachEvent('on' + name, listener.wrapper);
-  } /*TC*/,{"signature":"function(string,function)"})/*/TC*/);
+  },{"signature":"function(string,function)"});
 
 }
 
 var DOMEventListener = {
 
   
-  add: (/*TC*/__w(/*/TC*/ function(target, /*string*/ name, /*function*/ listener) { /*TC*/__t([name,'string','name'],[listener,'function','listener']);/*/TC*/ 
+  add: __w(function(target, /*string*/ name, /*function*/ listener) {__t([name,'string','name'],[listener,'function','listener']);
     
     
     add(target, name, listener);
@@ -2155,7 +2155,7 @@ var DOMEventListener = {
         target = null;
       }
     };
-  } /*TC*/,{"signature":"function(string,function)"})/*/TC*/),
+  },{"signature":"function(string,function)"}),
 
   
   remove: remove
@@ -2171,7 +2171,7 @@ var guid = require('guid');
 var hasNamePropertyBug = require('hasNamePropertyBug');
 var DOMEventListener = require('DOMEventListener');
 
-function createIframe(/*object*/ opts) /*DOMElement*/ { /*TC*/__t([opts,'object','opts']);return __t([function(){/*/TC*/ 
+function createIframe(/*object*/ opts) /*DOMElement*/ {__t([opts,'object','opts']);/*jshint validthis: true*/return __t([function(){
   opts = copyProperties({}, opts);
   var frame;
   var name = opts.name || guid();
@@ -2237,7 +2237,7 @@ function createIframe(/*object*/ opts) /*DOMElement*/ { /*TC*/__t([opts,'object'
   // "javascript:false" to work around the IE issue mentioned above)
   frame.src = src;
   return frame;
- /*TC*/}.apply(this,arguments), 'DOMElement']);/*/TC*/ } /*TC*/__w(createIframe,{"signature":"function(object):DOMElement"});/*/TC*/ 
+}.apply(this,arguments), 'DOMElement']);}__w(createIframe,{"signature":"function(object):DOMElement"});
 
 module.exports = createIframe;
 
@@ -2250,12 +2250,12 @@ var rootElement,
 
 // `obj || default` pattern to account for 'resetting'.
 var DOMWrapper = {
-  setRoot: (/*TC*/__w(/*/TC*/ function(/*DOMElement?*/ root) { /*TC*/__t([root,'?DOMElement','root']);/*/TC*/ 
+  setRoot: __w(function(/*DOMElement?*/ root) {__t([root,'?DOMElement','root']);
     rootElement = root;
-  } /*TC*/,{"signature":"function(?DOMElement)"})/*/TC*/),
-  getRoot: (/*TC*/__w(/*/TC*/ function() /*DOMElement*/ { /*TC*/return __t([function(){/*/TC*/ 
+  },{"signature":"function(?DOMElement)"}),
+  getRoot: __w(function() /*DOMElement*/ {/*jshint validthis: true*/return __t([function(){
     return rootElement || document.body;
-   /*TC*/}.apply(this,arguments), 'DOMElement']);/*/TC*/ } /*TC*/,{"signature":"function():DOMElement"})/*/TC*/),
+  }.apply(this,arguments), 'DOMElement']);},{"signature":"function():DOMElement"}),
   setWindow: function(win) {
     windowRef = win;
   },
@@ -2265,6 +2265,32 @@ var DOMWrapper = {
 };
 
 module.exports = DOMWrapper;
+
+});
+__d("sdk.feature",["SDKConfig"],function(global,require,requireDynamic,requireLazy,module,exports) {
+
+var SDKConfig = requireDynamic('SDKConfig');
+
+function feature(/*string*/ name, defaultValue) {__t([name,'string','name']);
+  if (SDKConfig.features && name in SDKConfig.features) {
+    var value = SDKConfig.features[name];
+    if (typeof value === 'object' && typeof value.rate === 'number') {
+      if (value.rate && Math.floor(Math.random() * 100) + 1 <= value.rate) {
+        return value.value || true;
+      } else {
+        return value.value ? null : false;
+      }
+    } else {
+      return value;
+    }
+  }
+
+  return typeof defaultValue !== 'undefined'
+    ? defaultValue
+    : null;
+}__w(feature,{"signature":"function(string)"});
+
+module.exports = feature;
 
 });
 __d("UserAgent",[],function(global,require,requireDynamic,requireLazy,module,exports) {
@@ -2446,7 +2472,7 @@ __d("sdk.getContextType",["UserAgent","sdk.Runtime"],function(global,require,req
 var UserAgent = require('UserAgent');
 var Runtime = require('sdk.Runtime');
 
-function getContextType() /*number*/ { /*TC*/return __t([function(){/*/TC*/ 
+function getContextType() /*number*/ {/*jshint validthis: true*/return __t([function(){
   
   
   
@@ -2463,7 +2489,7 @@ function getContextType() /*number*/ { /*TC*/return __t([function(){/*/TC*/
     return 5;
   }
   return 1;
- /*TC*/}.apply(this,arguments), 'number']);/*/TC*/ } /*TC*/__w(getContextType,{"signature":"function():number"});/*/TC*/ 
+}.apply(this,arguments), 'number']);}__w(getContextType,{"signature":"function():number"});
 
 module.exports = getContextType;
 
@@ -2479,14 +2505,14 @@ var Level = {
   ERROR    : 0
 };
 
-function log(/*string*/ name, /*number*/ level/*, args*/ ) { /*TC*/__t([name,'string','name'],[level,'number','level']);/*/TC*/ 
+function log(/*string*/ name, /*number*/ level/*, args*/ ) {__t([name,'string','name'],[level,'number','level']);
   var args = Array.prototype.slice.call(arguments, 2);
   var msg = sprintf.apply(null, args);
   var console = window.console;
   if (console && Log.level >= level) {
     console[name in console ? name : 'log'](msg);
   }
-} /*TC*/__w(log,{"signature":"function(string,number)"});/*/TC*/ 
+}__w(log,{"signature":"function(string,number)"});
 
 var Log = {
   
@@ -2573,7 +2599,7 @@ __d("sdk.SignedRequest",["Base64"],function(global,require,requireDynamic,requir
 
 var Base64 = require('Base64');
 
-function parse(/*string?*/ signed_request) /*object?*/ { /*TC*/__t([signed_request,'?string','signed_request']);return __t([function(){/*/TC*/ 
+function parse(/*string?*/ signed_request) /*object?*/ {__t([signed_request,'?string','signed_request']);/*jshint validthis: true*/return __t([function(){
   if (!signed_request) {
     return null;
   }
@@ -2582,7 +2608,7 @@ function parse(/*string?*/ signed_request) /*object?*/ { /*TC*/__t([signed_reque
   var payload = signed_request.split('.', 2)[1]
     .replace(/\-/g, '+').replace(/\_/g, '/');
   return Base64.decodeObject(payload);
- /*TC*/}.apply(this,arguments), '?object']);/*/TC*/ } /*TC*/__w(parse,{"signature":"function(?string):object?"});/*/TC*/ 
+}.apply(this,arguments), '?object']);}__w(parse,{"signature":"function(?string):object?"});
 
 
 var SignedRequest = {
@@ -2598,7 +2624,7 @@ var UrlMapConfig = require('UrlMapConfig');
 
 var UrlMap = {
   
-  resolve: (/*TC*/__w(/*/TC*/ function(/*string*/ key, /*boolean?*/ https) /*string*/ { /*TC*/__t([key,'string','key'],[https,'?boolean','https']);return __t([function(){/*/TC*/ 
+  resolve: __w(function(/*string*/ key, /*boolean?*/ https) /*string*/ {__t([key,'string','key'],[https,'?boolean','https']);/*jshint validthis: true*/return __t([function(){
     var protocol = typeof https == 'undefined'
       ? location.protocol.replace(':', '')
       : https ? 'https' : 'http';
@@ -2622,7 +2648,7 @@ var UrlMap = {
     if (https !== false && key + '_https' in UrlMapConfig) {
       return 'https://' + UrlMapConfig[key + '_https'];
     }
-   /*TC*/}.apply(this,arguments), 'string']);/*/TC*/ } /*TC*/,{"signature":"function(string,?boolean):string"})/*/TC*/)
+  }.apply(this,arguments), 'string']);},{"signature":"function(string,?boolean):string"})
 };
 
 module.exports = UrlMap;
@@ -2659,7 +2685,7 @@ var domainRe = /^[a-z0-9.][a-z0-9\-\.]+[a-z0-9.]$/;
 var facebookRe = /\.facebook\.com$/;
 
 
-function URL(/*string*/ url) { /*TC*/__t([url,'string','url']);/*/TC*/ 
+function URL(/*string*/ url) {__t([url,'string','url']);
   Assert.isString(url, 'The passed argument was of invalid type.');
 
   if (bannedRe.test(url)) {
@@ -2707,95 +2733,95 @@ function URL(/*string*/ url) { /*TC*/__t([url,'string','url']);/*/TC*/
     Log.error('Invalid characters found in domain name: %s', this._domain);
     throw new URIError('Domain contained invalid characters.');
   }
-} /*TC*/__w(URL,{"type":"URL","signature":"function(string)"});/*/TC*/ 
+}__w(URL,{"type":"URL","signature":"function(string)"});
 
 copyProperties(URL.prototype, {
   constructor : URL,
 
-  getProtocol: (/*TC*/__w(/*/TC*/ function() /*string*/ { /*TC*/return __t([function(){/*/TC*/ 
+  getProtocol: __w(function() /*string*/ {/*jshint validthis: true*/return __t([function(){
     return this._protocol;
-   /*TC*/}.apply(this,arguments), 'string']);/*/TC*/ } /*TC*/,{"signature":"function():string"})/*/TC*/),
-  setProtocol: (/*TC*/__w(/*/TC*/ function(/*string*/ protocol) /*URL*/ { /*TC*/__t([protocol,'string','protocol']);return __t([function(){/*/TC*/ 
+  }.apply(this,arguments), 'string']);},{"signature":"function():string"}),
+  setProtocol: __w(function(/*string*/ protocol) /*URL*/ {__t([protocol,'string','protocol']);/*jshint validthis: true*/return __t([function(){
     this._protocol = protocol;
     return this;
-   /*TC*/}.apply(this,arguments), 'URL']);/*/TC*/ } /*TC*/,{"signature":"function(string):URL"})/*/TC*/),
+  }.apply(this,arguments), 'URL']);},{"signature":"function(string):URL"}),
 
-  getDomain: (/*TC*/__w(/*/TC*/ function() /*string*/ { /*TC*/return __t([function(){/*/TC*/ 
+  getDomain: __w(function() /*string*/ {/*jshint validthis: true*/return __t([function(){
     return this._domain;
-   /*TC*/}.apply(this,arguments), 'string']);/*/TC*/ } /*TC*/,{"signature":"function():string"})/*/TC*/),
-  setDomain: (/*TC*/__w(/*/TC*/ function(/*string*/ domain) /*URL*/ { /*TC*/__t([domain,'string','domain']);return __t([function(){/*/TC*/ 
+  }.apply(this,arguments), 'string']);},{"signature":"function():string"}),
+  setDomain: __w(function(/*string*/ domain) /*URL*/ {__t([domain,'string','domain']);/*jshint validthis: true*/return __t([function(){
     this._domain = domain;
     return this;
-   /*TC*/}.apply(this,arguments), 'URL']);/*/TC*/ } /*TC*/,{"signature":"function(string):URL"})/*/TC*/),
+  }.apply(this,arguments), 'URL']);},{"signature":"function(string):URL"}),
 
-  getPort: (/*TC*/__w(/*/TC*/ function() /*string*/ { /*TC*/return __t([function(){/*/TC*/ 
+  getPort: __w(function() /*string*/ {/*jshint validthis: true*/return __t([function(){
     return this._port;
-   /*TC*/}.apply(this,arguments), 'string']);/*/TC*/ } /*TC*/,{"signature":"function():string"})/*/TC*/),
-  setPort: (/*TC*/__w(/*/TC*/ function(port) /*URL*/ { /*TC*/return __t([function(){/*/TC*/ 
+  }.apply(this,arguments), 'string']);},{"signature":"function():string"}),
+  setPort: __w(function(port) /*URL*/ {/*jshint validthis: true*/return __t([function(){
     this._port = port;
     return this;
-   /*TC*/}.apply(this,arguments), 'URL']);/*/TC*/ } /*TC*/,{"signature":"function():URL"})/*/TC*/),
+  }.apply(this,arguments), 'URL']);},{"signature":"function():URL"}),
 
-  getPath: (/*TC*/__w(/*/TC*/ function() /*string*/ { /*TC*/return __t([function(){/*/TC*/ 
+  getPath: __w(function() /*string*/ {/*jshint validthis: true*/return __t([function(){
     return this._path;
-   /*TC*/}.apply(this,arguments), 'string']);/*/TC*/ } /*TC*/,{"signature":"function():string"})/*/TC*/),
-  setPath: (/*TC*/__w(/*/TC*/ function(path) /*URL*/ { /*TC*/return __t([function(){/*/TC*/ 
+  }.apply(this,arguments), 'string']);},{"signature":"function():string"}),
+  setPath: __w(function(path) /*URL*/ {/*jshint validthis: true*/return __t([function(){
     this._path = path;
     return this;
-   /*TC*/}.apply(this,arguments), 'URL']);/*/TC*/ } /*TC*/,{"signature":"function():URL"})/*/TC*/),
+  }.apply(this,arguments), 'URL']);},{"signature":"function():URL"}),
 
-  getSearch: (/*TC*/__w(/*/TC*/ function() /*string*/ { /*TC*/return __t([function(){/*/TC*/ 
+  getSearch: __w(function() /*string*/ {/*jshint validthis: true*/return __t([function(){
     return this._search;
-   /*TC*/}.apply(this,arguments), 'string']);/*/TC*/ } /*TC*/,{"signature":"function():string"})/*/TC*/),
-  setSearch: (/*TC*/__w(/*/TC*/ function(search) /*URL*/ { /*TC*/return __t([function(){/*/TC*/ 
+  }.apply(this,arguments), 'string']);},{"signature":"function():string"}),
+  setSearch: __w(function(search) /*URL*/ {/*jshint validthis: true*/return __t([function(){
     this._search = search;
     return this;
-   /*TC*/}.apply(this,arguments), 'URL']);/*/TC*/ } /*TC*/,{"signature":"function():URL"})/*/TC*/),
+  }.apply(this,arguments), 'URL']);},{"signature":"function():URL"}),
 
-  getFragment: (/*TC*/__w(/*/TC*/ function() /*string*/ { /*TC*/return __t([function(){/*/TC*/ 
+  getFragment: __w(function() /*string*/ {/*jshint validthis: true*/return __t([function(){
     return this._fragment;
-   /*TC*/}.apply(this,arguments), 'string']);/*/TC*/ } /*TC*/,{"signature":"function():string"})/*/TC*/),
-  setFragment: (/*TC*/__w(/*/TC*/ function(fragment) /*URL*/ { /*TC*/return __t([function(){/*/TC*/ 
+  }.apply(this,arguments), 'string']);},{"signature":"function():string"}),
+  setFragment: __w(function(fragment) /*URL*/ {/*jshint validthis: true*/return __t([function(){
     this._fragment = fragment;
     return this;
-   /*TC*/}.apply(this,arguments), 'URL']);/*/TC*/ } /*TC*/,{"signature":"function():URL"})/*/TC*/),
+  }.apply(this,arguments), 'URL']);},{"signature":"function():URL"}),
 
-  getParsedSearch: (/*TC*/__w(/*/TC*/ function() /*object*/ { /*TC*/return __t([function(){/*/TC*/ 
+  getParsedSearch: __w(function() /*object*/ {/*jshint validthis: true*/return __t([function(){
     return QueryString.decode(this._search);
-   /*TC*/}.apply(this,arguments), 'object']);/*/TC*/ } /*TC*/,{"signature":"function():object"})/*/TC*/),
+  }.apply(this,arguments), 'object']);},{"signature":"function():object"}),
 
-  getParsedFragment: (/*TC*/__w(/*/TC*/ function() /*object*/ { /*TC*/return __t([function(){/*/TC*/ 
+  getParsedFragment: __w(function() /*object*/ {/*jshint validthis: true*/return __t([function(){
     return QueryString.decode(this._fragment);
-   /*TC*/}.apply(this,arguments), 'object']);/*/TC*/ } /*TC*/,{"signature":"function():object"})/*/TC*/),
+  }.apply(this,arguments), 'object']);},{"signature":"function():object"}),
 
-  isFacebookURL: (/*TC*/__w(/*/TC*/ function() /*boolean*/ { /*TC*/return __t([function(){/*/TC*/ 
+  isFacebookURL: __w(function() /*boolean*/ {/*jshint validthis: true*/return __t([function(){
     return facebookRe.test(this._domain);
-   /*TC*/}.apply(this,arguments), 'boolean']);/*/TC*/ } /*TC*/,{"signature":"function():boolean"})/*/TC*/),
+  }.apply(this,arguments), 'boolean']);},{"signature":"function():boolean"}),
 
-  toString: (/*TC*/__w(/*/TC*/ function() /*string*/ { /*TC*/return __t([function(){/*/TC*/ 
+  toString: __w(function() /*string*/ {/*jshint validthis: true*/return __t([function(){
     return (this._protocol ? this._protocol + ':' : '') +
       (this._domain ? '//' + this._domain : '') +
       (this._port ? ':' + this._port : '') +
       this._path +
       (this._search ? '?' + this._search : '') +
       (this._fragment ? '#' + this._fragment : '');
-   /*TC*/}.apply(this,arguments), 'string']);/*/TC*/ } /*TC*/,{"signature":"function():string"})/*/TC*/),
-  valueOf: (/*TC*/__w(/*/TC*/ function() /*string*/ { /*TC*/return __t([function(){/*/TC*/ 
+  }.apply(this,arguments), 'string']);},{"signature":"function():string"}),
+  valueOf: __w(function() /*string*/ {/*jshint validthis: true*/return __t([function(){
     return this.toString();
-   /*TC*/}.apply(this,arguments), 'string']);/*/TC*/ } /*TC*/,{"signature":"function():string"})/*/TC*/)
+  }.apply(this,arguments), 'string']);},{"signature":"function():string"})
 });
 
 copyProperties(URL, {
 
-  getCurrent: (/*TC*/__w(/*/TC*/ function() /*URL*/ { /*TC*/return __t([function(){/*/TC*/ 
+  getCurrent: __w(function() /*URL*/ {/*jshint validthis: true*/return __t([function(){
     return new URL(location.href);
-   /*TC*/}.apply(this,arguments), 'URL']);/*/TC*/ } /*TC*/,{"signature":"function():URL"})/*/TC*/),
+  }.apply(this,arguments), 'URL']);},{"signature":"function():URL"}),
 
-  getReferrer: (/*TC*/__w(/*/TC*/ function() /*URL?*/ { /*TC*/return __t([function(){/*/TC*/ 
+  getReferrer: __w(function() /*URL?*/ {/*jshint validthis: true*/return __t([function(){
     return document.referrer
       ? new URL(document.referrer)
       : null;
-   /*TC*/}.apply(this,arguments), '?URL']);/*/TC*/ } /*TC*/,{"signature":"function():URL?"})/*/TC*/)
+  }.apply(this,arguments), '?URL']);},{"signature":"function():URL?"})
 
 });
 
@@ -2825,14 +2851,14 @@ function flush() {
   queue = null;
 }
 
-function domReady(/*function*/ fn) { /*TC*/__t([fn,'function','fn']);/*/TC*/ 
+function domReady(/*function*/ fn) {__t([fn,'function','fn']);
   if (queue) {
     queue.push(fn);
     return;
   } else {
     fn();
   }
-} /*TC*/__w(domReady,{"signature":"function(function)"});/*/TC*/ 
+}__w(domReady,{"signature":"function(function)"});
 
 if(!domIsReady) {
   queue = [];
@@ -2877,8 +2903,8 @@ var hiddenRoot;
 var Content = {
 
   
-  append: (/*TC*/__w(/*/TC*/ function(/*DOMElement|string*/ content, /*?DOMElement*/ root)
-      /*DOMElement*/ { /*TC*/__t([content,'DOMElement|string','content'],[root,'?DOMElement','root']);return __t([function(){/*/TC*/ 
+  append: __w(function(/*DOMElement|string*/ content, /*?DOMElement*/ root)
+      /*DOMElement*/ {__t([content,'DOMElement|string','content'],[root,'?DOMElement','root']);/*jshint validthis: true*/return __t([function(){
 
     
     if (!root) {
@@ -2916,10 +2942,10 @@ var Content = {
     } else {
       return root.appendChild(content);
     }
-   /*TC*/}.apply(this,arguments), 'DOMElement']);/*/TC*/ } /*TC*/,{"signature":"function(DOMElement|string,?DOMElement):DOMElement"})/*/TC*/),
+  }.apply(this,arguments), 'DOMElement']);},{"signature":"function(DOMElement|string,?DOMElement):DOMElement"}),
 
   
-  appendHidden: (/*TC*/__w(/*/TC*/ function(/*DOMElement|string*/ content) /*DOMElement*/ { /*TC*/__t([content,'DOMElement|string','content']);return __t([function(){/*/TC*/ 
+  appendHidden: __w(function(/*DOMElement|string*/ content) /*DOMElement*/ {__t([content,'DOMElement|string','content']);/*jshint validthis: true*/return __t([function(){
     if (!hiddenRoot) {
       var
         hiddenRoot = document.createElement('div'),
@@ -2931,10 +2957,10 @@ var Content = {
     }
 
     return Content.append(content, hiddenRoot);
-   /*TC*/}.apply(this,arguments), 'DOMElement']);/*/TC*/ } /*TC*/,{"signature":"function(DOMElement|string):DOMElement"})/*/TC*/),
+  }.apply(this,arguments), 'DOMElement']);},{"signature":"function(DOMElement|string):DOMElement"}),
 
   
-  submitToTarget: (/*TC*/__w(/*/TC*/ function(/*object*/ opts, /*?boolean*/ get) { /*TC*/__t([opts,'object','opts'],[get,'?boolean','get']);/*/TC*/ 
+  submitToTarget: __w(function(/*object*/ opts, /*?boolean*/ get) {__t([opts,'object','opts'],[get,'?boolean','get']);
     var form = document.createElement('form');
     form.action = opts.url;
     form.target = opts.target;
@@ -2955,7 +2981,7 @@ var Content = {
 
     form.submit();
     form.parentNode.removeChild(form);
-  } /*TC*/,{"signature":"function(object,?boolean)"})/*/TC*/)
+  },{"signature":"function(object,?boolean)"})
 };
 
 module.exports = Content;
@@ -2965,7 +2991,7 @@ __d("sdk.Event",[],function(global,require,requireDynamic,requireLazy,module,exp
 
 var Event = {
   
-  subscribers: (/*TC*/__w(/*/TC*/ function() /*object*/ { /*TC*/return __t([function(){/*/TC*/ 
+  subscribers: __w(function() /*object*/ {/*jshint validthis: true*/return __t([function(){
     
     
     
@@ -2974,10 +3000,10 @@ var Event = {
       this._subscribersMap = {};
     }
     return this._subscribersMap;
-   /*TC*/}.apply(this,arguments), 'object']);/*/TC*/ } /*TC*/,{"signature":"function():object"})/*/TC*/),
+  }.apply(this,arguments), 'object']);},{"signature":"function():object"}),
 
   
-  subscribe: (/*TC*/__w(/*/TC*/ function(/*string*/ name, /*function*/ cb) { /*TC*/__t([name,'string','name'],[cb,'function','cb']);/*/TC*/ 
+  subscribe: __w(function(/*string*/ name, /*function*/ cb) {__t([name,'string','name'],[cb,'function','cb']);
     var subs = this.subscribers();
 
     if (!subs[name]) {
@@ -2985,10 +3011,10 @@ var Event = {
     } else {
       subs[name].push(cb);
     }
-  } /*TC*/,{"signature":"function(string,function)"})/*/TC*/),
+  },{"signature":"function(string,function)"}),
 
   
-  unsubscribe: (/*TC*/__w(/*/TC*/ function(/*string*/ name, /*function*/ cb) { /*TC*/__t([name,'string','name'],[cb,'function','cb']);/*/TC*/ 
+  unsubscribe: __w(function(/*string*/ name, /*function*/ cb) {__t([name,'string','name'],[cb,'function','cb']);
     var subs = this.subscribers()[name];
     if (subs) {
       ES5(subs, 'forEach', true,function(value, key) {
@@ -2997,10 +3023,10 @@ var Event = {
         }
       });
     }
-  } /*TC*/,{"signature":"function(string,function)"})/*/TC*/),
+  },{"signature":"function(string,function)"}),
 
   
-  monitor: (/*TC*/__w(/*/TC*/ function(/*string*/ name, /*function*/ callback) { /*TC*/__t([name,'string','name'],[callback,'function','callback']);/*/TC*/ 
+  monitor: __w(function(/*string*/ name, /*function*/ callback) {__t([name,'string','name'],[callback,'function','callback']);
     if (!callback()) {
       var
         ctx = this,
@@ -3012,15 +3038,15 @@ var Event = {
 
       this.subscribe(name, fn);
     }
-  } /*TC*/,{"signature":"function(string,function)"})/*/TC*/),
+  },{"signature":"function(string,function)"}),
 
   
-  clear: (/*TC*/__w(/*/TC*/ function(/*string*/ name) { /*TC*/__t([name,'string','name']);/*/TC*/ 
+  clear: __w(function(/*string*/ name) {__t([name,'string','name']);
     delete this.subscribers()[name];
-  } /*TC*/,{"signature":"function(string)"})/*/TC*/),
+  },{"signature":"function(string)"}),
 
   
-  fire: (/*TC*/__w(/*/TC*/ function(/*string*/ name) { /*TC*/__t([name,'string','name']);/*/TC*/ 
+  fire: __w(function(/*string*/ name) {__t([name,'string','name']);
     var
       args = Array.prototype.slice.call(arguments, 1),
       subs = this.subscribers()[name];
@@ -3034,7 +3060,7 @@ var Event = {
         }
       });
     }
-  } /*TC*/,{"signature":"function(string)"})/*/TC*/)
+  },{"signature":"function(string)"})
 };
 
 module.exports = Event;
@@ -3168,7 +3194,7 @@ module.exports = Queue;
 });
 __d("resolveURI",[],function(global,require,requireDynamic,requireLazy,module,exports) {
 
-function resolveURI(/*string?*/ uri) /*string*/ { /*TC*/__t([uri,'?string','uri']);return __t([function(){/*/TC*/ 
+function resolveURI(/*string?*/ uri) /*string*/ {__t([uri,'?string','uri']);/*jshint validthis: true*/return __t([function(){
   if (!uri) { 
     return window.location.href;
   }
@@ -3182,7 +3208,7 @@ function resolveURI(/*string?*/ uri) /*string*/ { /*TC*/__t([uri,'?string','uri'
   div.innerHTML = '<a href="' + uri + '"></a>';
 
   return div.firstChild.href; 
- /*TC*/}.apply(this,arguments), 'string']);/*/TC*/ } /*TC*/__w(resolveURI,{"signature":"function(?string):string"});/*/TC*/ 
+}.apply(this,arguments), 'string']);}__w(resolveURI,{"signature":"function(?string):string"});
 
 module.exports = resolveURI;
 
@@ -3224,7 +3250,7 @@ __d("JSONRPC",["copyProperties","Log"],function(global,require,requireDynamic,re
 var copyProperties = require('copyProperties');
 var Log = require('Log');
 
-function JSONRPC(/*function*/ write) { /*TC*/__t([write,'function','write']);/*/TC*/ 
+function JSONRPC(/*function*/ write) {__t([write,'function','write']);
   this._counter = 0;
   this._callbacks = {};
 
@@ -3236,12 +3262,12 @@ function JSONRPC(/*function*/ write) { /*TC*/__t([write,'function','write']);/*/
   this.local = {};
 
   this._write = write;
-} /*TC*/__w(JSONRPC,{"type":"JSONRPC","signature":"function(function)"});/*/TC*/ 
+}__w(JSONRPC,{"type":"JSONRPC","signature":"function(function)"});
 
 copyProperties(JSONRPC.prototype, {
 
   
-  stub: (/*TC*/__w(/*/TC*/ function(/*string*/ stub) { /*TC*/__t([stub,'string','stub']);/*/TC*/ 
+  stub: __w(function(/*string*/ stub) {__t([stub,'string','stub']);
     this.remote[stub] = ES5(function() {
       var args = Array.prototype.slice.call(arguments),
           message = {
@@ -3258,10 +3284,10 @@ copyProperties(JSONRPC.prototype, {
 
       this._write(ES5('JSON', 'stringify', false,message), this._context || {method: stub });
     }, 'bind', true,this);
-  } /*TC*/,{"signature":"function(string)"})/*/TC*/),
+  },{"signature":"function(string)"}),
 
   
-  read: (/*TC*/__w(/*/TC*/ function(/*string*/ message, context) { /*TC*/__t([message,'string','message']);/*/TC*/ 
+  read: __w(function(/*string*/ message, context) {__t([message,'string','message']);
     var rpc = ES5('JSON', 'parse', false,message), id = rpc.id;
 
     if (!rpc.method) {
@@ -3284,7 +3310,7 @@ copyProperties(JSONRPC.prototype, {
     var instance = this, method = this.local[rpc.method], send;
     if (id) {
       
-      send = (/*TC*/__w(/*/TC*/ function(/*string*/ type, value) { /*TC*/__t([type,'string','type']);/*/TC*/ 
+      send = __w(function(/*string*/ type, value) {__t([type,'string','type']);
         var response = {
           jsonrpc: '2.0',
           id: id
@@ -3296,7 +3322,7 @@ copyProperties(JSONRPC.prototype, {
         setTimeout(function() {
           instance._write(ES5('JSON', 'stringify', false,response), context);
         }, 0);
-      } /*TC*/,{"signature":"function(string)"})/*/TC*/);
+      },{"signature":"function(string)"});
     } else {
       
       send = function() {};
@@ -3334,7 +3360,7 @@ copyProperties(JSONRPC.prototype, {
         data: rpcEx.message
       });
     }
-  } /*TC*/,{"signature":"function(string)"})/*/TC*/)
+  },{"signature":"function(string)"})
 
 });
 
@@ -3348,24 +3374,24 @@ var JSONRPC = require('JSONRPC');
 var Queue = require('Queue');
 
 var outQueue = new Queue();
-var jsonrpc = new JSONRPC((/*TC*/__w(/*/TC*/ function(/*string*/ message) { /*TC*/__t([message,'string','message']);/*/TC*/ 
+var jsonrpc = new JSONRPC(__w(function(/*string*/ message) {__t([message,'string','message']);
   outQueue.enqueue(message);
-} /*TC*/,{"signature":"function(string)"})/*/TC*/));
+},{"signature":"function(string)"}));
 
 var RPC = {
   local: jsonrpc.local,
   remote: jsonrpc.remote,
   stub: ES5(jsonrpc.stub, 'bind', true,jsonrpc),
-  setInQueue: (/*TC*/__w(/*/TC*/ function(/*object*/ queue) { /*TC*/__t([queue,'object','queue']);/*/TC*/ 
+  setInQueue: __w(function(/*object*/ queue) {__t([queue,'object','queue']);
     Assert.isInstanceOf(Queue, queue);
 
-    queue.start((/*TC*/__w(/*/TC*/ function(/*string*/ message) { /*TC*/__t([message,'string','message']);/*/TC*/ 
+    queue.start(__w(function(/*string*/ message) {__t([message,'string','message']);
       jsonrpc.read(message);
-    } /*TC*/,{"signature":"function(string)"})/*/TC*/));
-  } /*TC*/,{"signature":"function(object)"})/*/TC*/),
-  getOutQueue: (/*TC*/__w(/*/TC*/ function() /*object*/ { /*TC*/return __t([function(){/*/TC*/ 
+    },{"signature":"function(string)"}));
+  },{"signature":"function(object)"}),
+  getOutQueue: __w(function() /*object*/ {/*jshint validthis: true*/return __t([function(){
     return outQueue;
-   /*TC*/}.apply(this,arguments), 'object']);/*/TC*/ } /*TC*/,{"signature":"function():object"})/*/TC*/)
+  }.apply(this,arguments), 'object']);},{"signature":"function():object"})
 };
 
 module.exports = RPC;
@@ -3580,12 +3606,12 @@ var callbackPrefix;
 
 var GlobalCallback = {
 
-  setPrefix: (/*TC*/__w(/*/TC*/ function(/*string*/ prefix) { /*TC*/__t([prefix,'string','prefix']);/*/TC*/ 
+  setPrefix: __w(function(/*string*/ prefix) {__t([prefix,'string','prefix']);
     rootObject = dotAccess(DOMWrapper.getWindow(), prefix, true);
     callbackPrefix = prefix;
-  } /*TC*/,{"signature":"function(string)"})/*/TC*/),
+  },{"signature":"function(string)"}),
 
-  create: (/*TC*/__w(/*/TC*/ function(/*function*/ fn, /*string?*/ description) /*string*/ { /*TC*/__t([fn,'function','fn'],[description,'?string','description']);return __t([function(){/*/TC*/ 
+  create: __w(function(/*function*/ fn, /*string?*/ description) /*string*/ {__t([fn,'function','fn'],[description,'?string','description']);/*jshint validthis: true*/return __t([function(){
     if (!rootObject) {
       
       
@@ -3595,12 +3621,12 @@ var GlobalCallback = {
     rootObject[id] = wrapFunction(fn, 'entry', description || 'GlobalCallback');
 
     return callbackPrefix + '.' + id;
-   /*TC*/}.apply(this,arguments), 'string']);/*/TC*/ } /*TC*/,{"signature":"function(function,?string):string"})/*/TC*/),
+  }.apply(this,arguments), 'string']);},{"signature":"function(function,?string):string"}),
 
-  remove: (/*TC*/__w(/*/TC*/ function(/*string*/ name) { /*TC*/__t([name,'string','name']);/*/TC*/ 
+  remove: __w(function(/*string*/ name) {__t([name,'string','name']);
     var id = name.substring(callbackPrefix.length + 1);
     delete rootObject[id];
-  } /*TC*/,{"signature":"function(string)"})/*/TC*/)
+  },{"signature":"function(string)"})
 
 };
 
@@ -3898,15 +3924,15 @@ var pluginRegistry = {};
 var rpcQueue = new Queue();
 RPC.setInQueue(rpcQueue);
 
-function onRegister(/*string*/ registeredAs) { /*TC*/__t([registeredAs,'string','registeredAs']);/*/TC*/ 
+function onRegister(/*string*/ registeredAs) {__t([registeredAs,'string','registeredAs']);
   Log.info('Remote XD can talk to facebook.com (%s)', registeredAs);
   Runtime.setEnvironment(
     registeredAs === 'canvas'
       ? Runtime.ENVIRONMENTS.CANVAS
       : Runtime.ENVIRONMENTS.PAGETAB);
-} /*TC*/__w(onRegister,{"signature":"function(string)"});/*/TC*/ 
+}__w(onRegister,{"signature":"function(string)"});
 
-function handleAction(/*object*/ message, /*string*/ senderOrigin) { /*TC*/__t([message,'object','message'],[senderOrigin,'string','senderOrigin']);/*/TC*/ 
+function handleAction(/*object*/ message, /*string*/ senderOrigin) {__t([message,'object','message'],[senderOrigin,'string','senderOrigin']);
   if (!senderOrigin) {
     Log.error('No senderOrigin');
     throw new Error();
@@ -3935,14 +3961,14 @@ function handleAction(/*object*/ message, /*string*/ senderOrigin) { /*TC*/__t([
       Log.info('Proxy ready, starting queue %s containing %s messages',
         protocol + 'ProxyQueue', proxyQueue.getLength());
 
-      proxyQueue.start((/*TC*/__w(/*/TC*/ function(/*string|object*/ message) { /*TC*/__t([message,'string|object','message']);/*/TC*/ 
+      proxyQueue.start(__w(function(/*string|object*/ message) {__t([message,'string|object','message']);
         xdm.send(
           typeof message === 'string' ? message : QueryString.encode(message),
           senderOrigin,
           targetProxyFrame.contentWindow,
           channel + '_' + protocol
         );
-      } /*TC*/,{"signature":"function(string|object)"})/*/TC*/));
+      },{"signature":"function(string|object)"}));
       break;
 
     case 'plugin_ready':
@@ -3962,12 +3988,12 @@ function handleAction(/*object*/ message, /*string*/ senderOrigin) { /*TC*/__t([
   if (message.data) {
     onMessage(message.data, senderOrigin);
   }
-} /*TC*/__w(handleAction,{"signature":"function(object,string)"});/*/TC*/ 
+}__w(handleAction,{"signature":"function(object,string)"});
 
 
 
 
-function onMessage(/*string|object*/ message, /*?string*/ senderOrigin) { /*TC*/__t([message,'string|object','message'],[senderOrigin,'?string','senderOrigin']);/*/TC*/ 
+function onMessage(/*string|object*/ message, /*?string*/ senderOrigin) {__t([message,'string|object','message'],[senderOrigin,'?string','senderOrigin']);
   if (senderOrigin && senderOrigin !== 'native' &&
       !URL(senderOrigin).isFacebookURL()) {
     return;
@@ -4019,9 +4045,9 @@ function onMessage(/*string|object*/ message, /*?string*/ senderOrigin) { /*TC*/
       cb(message);
     }
   }
-} /*TC*/__w(onMessage,{"signature":"function(string|object,?string)"});/*/TC*/ 
+}__w(onMessage,{"signature":"function(string|object,?string)"});
 
-function sendToFacebook(/*string*/ recipient, /*object|string*/ message) { /*TC*/__t([recipient,'string','recipient'],[message,'object|string','message']);/*/TC*/ 
+function sendToFacebook(/*string*/ recipient, /*object|string*/ message) {__t([recipient,'string','recipient'],[message,'object|string','message']);
   if (recipient == 'facebook') {
     message.relation = 'parent.parent';
     facebookQueue.enqueue(message);
@@ -4039,14 +4065,14 @@ function sendToFacebook(/*string*/ recipient, /*object|string*/ message) { /*TC*
       Queue.get(recipient).enqueue(message);
     }
   }
-} /*TC*/__w(sendToFacebook,{"signature":"function(string,object|string)"});/*/TC*/ 
+}__w(sendToFacebook,{"signature":"function(string,object|string)"});
 
 
-RPC.getOutQueue().start((/*TC*/__w(/*/TC*/ function(/*string*/ message) { /*TC*/__t([message,'string','message']);/*/TC*/ 
+RPC.getOutQueue().start(__w(function(/*string*/ message) {__t([message,'string','message']);
   sendToFacebook('facebook', 'FB_RPC:' + message);
-} /*TC*/,{"signature":"function(string)"})/*/TC*/));
+},{"signature":"function(string)"}));
 
-function init(/*?string*/ channelUrl, /*?string*/ xdProxyName) { /*TC*/__t([channelUrl,'?string','channelUrl'],[xdProxyName,'?string','xdProxyName']);/*/TC*/ 
+function init(/*?string*/ channelUrl, /*?string*/ xdProxyName) {__t([channelUrl,'?string','channelUrl'],[xdProxyName,'?string','xdProxyName']);
   if (inited) {
     return;
   }
@@ -4069,7 +4095,7 @@ function init(/*?string*/ channelUrl, /*?string*/ xdProxyName) { /*TC*/__t([chan
     channel: channel,
     channelPath: '/' + XDConfig.XdUrl + '#',
     flashUrl: XDConfig.Flash.path,
-    whenReady: (/*TC*/__w(/*/TC*/ function(/*object*/ instance) { /*TC*/__t([instance,'object','instance']);/*/TC*/ 
+    whenReady: __w(function(/*object*/ instance) {__t([instance,'object','instance']);
       xdm = instance;
       
       var proxyData = {
@@ -4123,7 +4149,7 @@ function init(/*?string*/ channelUrl, /*?string*/ xdProxyName) { /*TC*/__t([chan
         title: IFRAME_TITLE,
         'tab-index': -1
       });
-    } /*TC*/,{"signature":"function(object)"})/*/TC*/),
+    },{"signature":"function(object)"}),
     onMessage: onMessage
   });
 
@@ -4132,7 +4158,7 @@ function init(/*?string*/ channelUrl, /*?string*/ xdProxyName) { /*TC*/__t([chan
   }
 
   inited = true;
-} /*TC*/__w(init,{"signature":"function(?string,?string)"});/*/TC*/ 
+}__w(init,{"signature":"function(?string,?string)"});
 
 
 var XD = {
@@ -4155,19 +4181,19 @@ var XD = {
   sendToFacebook: sendToFacebook,
 
   
-  inform: (/*TC*/__w(/*/TC*/ function(/*string*/ method, /*?object*/ params, /*?string*/ relation,
-      /*?string*/ behavior) { /*TC*/__t([method,'string','method'],[params,'?object','params'],[relation,'?string','relation'],[behavior,'?string','behavior']);/*/TC*/ 
+  inform: __w(function(/*string*/ method, /*?object*/ params, /*?string*/ relation,
+      /*?string*/ behavior) {__t([method,'string','method'],[params,'?object','params'],[relation,'?string','relation'],[behavior,'?string','behavior']);
     sendToFacebook('facebook', {
       method: method,
       params: ES5('JSON', 'stringify', false,params || {}),
       behavior: behavior || 'p',
       relation: relation
     });
-  } /*TC*/,{"signature":"function(string,?object,?string,?string)"})/*/TC*/),
+  },{"signature":"function(string,?object,?string,?string)"}),
 
   
-  handler: (/*TC*/__w(/*/TC*/ function(/*function*/ cb, /*?string*/ relation, /*?boolean*/ forever,
-      /*?string*/ id) /*string*/ { /*TC*/__t([cb,'function','cb'],[relation,'?string','relation'],[forever,'?boolean','forever'],[id,'?string','id']);return __t([function(){/*/TC*/ 
+  handler: __w(function(/*function*/ cb, /*?string*/ relation, /*?boolean*/ forever,
+      /*?string*/ id) /*string*/ {__t([cb,'function','cb'],[relation,'?string','relation'],[forever,'?boolean','forever'],[id,'?string','id']);/*jshint validthis: true*/return __t([function(){
     var handlerDomain = XDConfig.useCdn
       ? UrlMap.resolve('cdn', location.protocol == 'https:')
       : location.protocol + '//www.facebook.com';
@@ -4181,17 +4207,17 @@ var XD = {
       domain    : location.hostname,
       relation  : relation || 'opener'
     });
-   /*TC*/}.apply(this,arguments), 'string']);/*/TC*/ } /*TC*/,{"signature":"function(function,?string,?boolean,?string):string"})/*/TC*/),
+  }.apply(this,arguments), 'string']);},{"signature":"function(function,?string,?boolean,?string):string"}),
 
-  registerCallback: (/*TC*/__w(/*/TC*/ function(/*function*/ cb, /*?boolean*/ persistent,
-      /*?string*/ id) /*string*/ { /*TC*/__t([cb,'function','cb'],[persistent,'?boolean','persistent'],[id,'?string','id']);return __t([function(){/*/TC*/ 
+  registerCallback: __w(function(/*function*/ cb, /*?boolean*/ persistent,
+      /*?string*/ id) /*string*/ {__t([cb,'function','cb'],[persistent,'?boolean','persistent'],[id,'?string','id']);/*jshint validthis: true*/return __t([function(){
     id = id || guid();
     if (persistent) {
       XD._forever[id] = true;
     }
     XD._callbacks[id] = cb;
     return id;
-   /*TC*/}.apply(this,arguments), 'string']);/*/TC*/ } /*TC*/,{"signature":"function(function,?boolean,?string):string"})/*/TC*/)
+  }.apply(this,arguments), 'string']);},{"signature":"function(function,?boolean,?string):string"})
 };
 
 
@@ -4215,23 +4241,24 @@ var XD = {
   }
 })();
 
-Event.subscribe('init:post', (/*TC*/__w(/*/TC*/ function(/*object*/ options) { /*TC*/__t([options,'object','options']);/*/TC*/ 
+Event.subscribe('init:post', __w(function(/*object*/ options) {__t([options,'object','options']);
   init(
     options.channelUrl ? resolveURI(options.channelUrl) : null,
     options.xdProxyName
   );
-} /*TC*/,{"signature":"function(object)"})/*/TC*/));
+},{"signature":"function(object)"}));
 
 
 module.exports = XD;
 
 });
-__d("sdk.Auth",["sdk.Cookie","copyProperties","sdk.createIframe","DOMWrapper","sdk.getContextType","guid","Log","ObservableMixin","QueryString","sdk.Runtime","sdk.SignedRequest","UrlMap","URL","sdk.XD"],function(global,require,requireDynamic,requireLazy,module,exports) {
+__d("sdk.Auth",["sdk.Cookie","copyProperties","sdk.createIframe","DOMWrapper","sdk.feature","sdk.getContextType","guid","Log","ObservableMixin","QueryString","sdk.Runtime","sdk.SignedRequest","UrlMap","URL","sdk.XD"],function(global,require,requireDynamic,requireLazy,module,exports) {
 
 var Cookie = require('sdk.Cookie');
 var copyProperties = require('copyProperties');
 var createIframe = require('sdk.createIframe');
 var DOMWrapper = require('DOMWrapper');
+var feature = require('sdk.feature');
 var getContextType = require('sdk.getContextType');
 var guid = require('guid');
 var Log = require('Log');
@@ -4249,7 +4276,7 @@ var timer;
 
 var Auth = new ObservableMixin();
 
-function setAuthResponse(/*object?*/ authResponse, /*string*/ status) { /*TC*/__t([authResponse,'?object','authResponse'],[status,'string','status']);/*/TC*/ 
+function setAuthResponse(/*?object*/ authResponse, /*string*/ status) {__t([authResponse,'?object','authResponse'],[status,'string','status']);
   var currentUserID = Runtime.getUserID();
   var userID = '';
   if (authResponse) {
@@ -4303,15 +4330,15 @@ function setAuthResponse(/*object?*/ authResponse, /*string*/ status) { /*TC*/__
     Auth.inform('status.change', response);
   }
   return response;
-} /*TC*/__w(setAuthResponse,{"signature":"function(?object,string)"});/*/TC*/ 
+}__w(setAuthResponse,{"signature":"function(?object,string)"});
 
-function getAuthResponse() /*object?*/ { /*TC*/return __t([function(){/*/TC*/ 
+function getAuthResponse() /*?object*/ {/*jshint validthis: true*/return __t([function(){
   return currentAuthResponse;
- /*TC*/}.apply(this,arguments), '?object']);/*/TC*/ } /*TC*/__w(getAuthResponse,{"signature":"function():object?"});/*/TC*/ 
+}.apply(this,arguments), '?object']);}__w(getAuthResponse,{"signature":"function():?object"});
 
-function xdResponseWrapper(/*function*/ cb, /*object?*/ authResponse,
-    /*string?*/ method) /*function*/ { /*TC*/__t([cb,'function','cb'],[authResponse,'?object','authResponse'],[method,'?string','method']);return __t([function(){/*/TC*/ 
-  return (/*TC*/__w(/*/TC*/ function (/*object?*/ params) /*object?*/ { /*TC*/__t([params,'?object','params']);return __t([function(){/*/TC*/ 
+function xdResponseWrapper(/*function*/ cb, /*?object*/ authResponse,
+    /*?string*/ method) /*function*/ {__t([cb,'function','cb'],[authResponse,'?object','authResponse'],[method,'?string','method']);/*jshint validthis: true*/return __t([function(){
+  return __w(function (/*?object*/ params) /*?object*/ {__t([params,'?object','params']);/*jshint validthis: true*/return __t([function(){
     var status;
 
     if (params && params.access_token) {
@@ -4369,10 +4396,10 @@ function xdResponseWrapper(/*function*/ cb, /*object?*/ authResponse,
       });
     }
     return authResponse;
-   /*TC*/}.apply(this,arguments), '?object']);/*/TC*/ } /*TC*/,{"signature":"function(?object):object?"})/*/TC*/);
- /*TC*/}.apply(this,arguments), 'function']);/*/TC*/ } /*TC*/__w(xdResponseWrapper,{"signature":"function(function,?object,?string):function"});/*/TC*/ 
+  }.apply(this,arguments), '?object']);},{"signature":"function(?object):?object"});
+}.apply(this,arguments), 'function']);}__w(xdResponseWrapper,{"signature":"function(function,?object,?string):function"});
 
-function fetchLoginStatus(/*function*/ fn) { /*TC*/__t([fn,'function','fn']);/*/TC*/ 
+function fetchLoginStatus(/*function*/ fn) {__t([fn,'function','fn']);
   var frame;
 
   if (timer) {
@@ -4383,14 +4410,19 @@ function fetchLoginStatus(/*function*/ fn) { /*TC*/__t([fn,'function','fn']);/*/
   var handleResponse = xdResponseWrapper(fn, currentAuthResponse,
     'login_status');
 
-  var url = URL(UrlMap.resolve('www', true) + '/dialog/oauth')
+
+  var path = feature('oauth_ping', true)
+    ? '/connect/ping'
+    : '/dialog/oauth';
+
+  var url = URL(UrlMap.resolve('www', true) + path)
     .setSearch(QueryString.encode({
       client_id: Runtime.getClientID(),
       response_type: 'token,signed_request,code',
       display: 'none',
       domain: location.hostname,
       origin: getContextType(),
-      redirect_uri: XD.handler((/*TC*/__w(/*/TC*/ function(/*object*/ response) { /*TC*/__t([response,'object','response']);/*/TC*/ 
+      redirect_uri: XD.handler(__w(function(/*object*/ response) {__t([response,'object','response']);
         frame.parentNode.removeChild(frame);
         if (handleResponse(response)) {
           
@@ -4398,7 +4430,7 @@ function fetchLoginStatus(/*function*/ fn) { /*TC*/__t([fn,'function','fn']);/*/
             fetchLoginStatus(function() {});
           }, 1200000); 
         }
-      } /*TC*/,{"signature":"function(object)"})/*/TC*/), 'parent'),
+      },{"signature":"function(object)"}), 'parent'),
       sdk: 'joey'
     }));
 
@@ -4409,10 +4441,10 @@ function fetchLoginStatus(/*function*/ fn) { /*TC*/__t([fn,'function','fn']);/*/
     style: { display: 'none' }
   });
 
-} /*TC*/__w(fetchLoginStatus,{"signature":"function(function)"});/*/TC*/ 
+}__w(fetchLoginStatus,{"signature":"function(function)"});
 
 var loadState;
-function getLoginStatus(/*function?*/ cb, /*boolean?*/ force) { /*TC*/__t([cb,'?function','cb'],[force,'?boolean','force']);/*/TC*/ 
+function getLoginStatus(/*?function*/ cb, /*?boolean*/ force) {__t([cb,'?function','cb'],[force,'?boolean','force']);
   if (!Runtime.getClientID()) {
     Log.warn('FB.getLoginStatus() called before calling FB.init().');
     return;
@@ -4438,17 +4470,17 @@ function getLoginStatus(/*function?*/ cb, /*boolean?*/ force) { /*TC*/__t([cb,'?
   loadState = 'loading';
 
   
-  var lsCb = (/*TC*/__w(/*/TC*/ function(/*object?*/ response) { /*TC*/__t([response,'?object','response']);/*/TC*/ 
+  var lsCb = __w(function(/*?object*/ response) {__t([response,'?object','response']);
     
     loadState = 'loaded';
 
     
     Auth.inform('FB.loginStatus', response);
     Auth.clearSubscribers('FB.loginStatus');
-  } /*TC*/,{"signature":"function(?object)"})/*/TC*/);
+  },{"signature":"function(?object)"});
 
   fetchLoginStatus(lsCb);
-} /*TC*/__w(getLoginStatus,{"signature":"function(?function,?boolean)"});/*/TC*/ 
+}__w(getLoginStatus,{"signature":"function(?function,?boolean)"});
 
 copyProperties(Auth, {
   getLoginStatus: getLoginStatus,
@@ -4520,7 +4552,7 @@ var UserAgent = require('UserAgent');
 
 var cssRules = {};
 
-function getAttr(/*DOMElement*/ dom, /*string*/ name) /*string?*/ { /*TC*/__t([dom,'DOMElement','dom'],[name,'string','name']);return __t([function(){/*/TC*/ 
+function getAttr(/*DOMElement*/ dom, /*string*/ name) /*string?*/ {__t([dom,'DOMElement','dom'],[name,'string','name']);/*jshint validthis: true*/return __t([function(){
   var attribute = (
     dom.getAttribute(name) ||
     dom.getAttribute(name.replace(/_/g, '-')) ||
@@ -4536,16 +4568,16 @@ function getAttr(/*DOMElement*/ dom, /*string*/ name) /*string?*/ { /*TC*/__t([d
   return attribute
     ? String(attribute)
     : null;
- /*TC*/}.apply(this,arguments), '?string']);/*/TC*/ } /*TC*/__w(getAttr,{"signature":"function(DOMElement,string):string?"});/*/TC*/ 
+}.apply(this,arguments), '?string']);}__w(getAttr,{"signature":"function(DOMElement,string):string?"});
 
-function getBoolAttr(/*DOMElement*/ dom, /*string*/ name) /*boolean?*/ { /*TC*/__t([dom,'DOMElement','dom'],[name,'string','name']);return __t([function(){/*/TC*/ 
+function getBoolAttr(/*DOMElement*/ dom, /*string*/ name) /*boolean?*/ {__t([dom,'DOMElement','dom'],[name,'string','name']);/*jshint validthis: true*/return __t([function(){
   var attribute = getAttr(dom, name);
   return attribute
     ? /^(true|1|yes|on)$/.test(attribute)
     : null;
- /*TC*/}.apply(this,arguments), '?boolean']);/*/TC*/ } /*TC*/__w(getBoolAttr,{"signature":"function(DOMElement,string):boolean?"});/*/TC*/ 
+}.apply(this,arguments), '?boolean']);}__w(getBoolAttr,{"signature":"function(DOMElement,string):boolean?"});
 
-function getProp(/*DOMElement*/ dom, /*string*/ name) /*string*/ { /*TC*/__t([dom,'DOMElement','dom'],[name,'string','name']);return __t([function(){/*/TC*/ 
+function getProp(/*DOMElement*/ dom, /*string*/ name) /*string*/ {__t([dom,'DOMElement','dom'],[name,'string','name']);/*jshint validthis: true*/return __t([function(){
   Assert.isTruthy(dom, 'element not specified');
   Assert.isString(name);
 
@@ -4554,9 +4586,9 @@ function getProp(/*DOMElement*/ dom, /*string*/ name) /*string*/ { /*TC*/__t([do
   } catch (e) {
     throw new Error('Could not read property ' + name + ' : ' + e.message);
   }
- /*TC*/}.apply(this,arguments), 'string']);/*/TC*/ } /*TC*/__w(getProp,{"signature":"function(DOMElement,string):string"});/*/TC*/ 
+}.apply(this,arguments), 'string']);}__w(getProp,{"signature":"function(DOMElement,string):string"});
 
-function html(/*DOMElement*/ dom, /*string*/ content) { /*TC*/__t([dom,'DOMElement','dom'],[content,'string','content']);/*/TC*/ 
+function html(/*DOMElement*/ dom, /*string*/ content) {__t([dom,'DOMElement','dom'],[content,'string','content']);
   Assert.isTruthy(dom, 'element not specified');
   Assert.isString(content);
 
@@ -4565,38 +4597,38 @@ function html(/*DOMElement*/ dom, /*string*/ content) { /*TC*/__t([dom,'DOMEleme
   } catch (e) {
     throw new Error('Could not set innerHTML : ' + e.message);
   }
-} /*TC*/__w(html,{"signature":"function(DOMElement,string)"});/*/TC*/ 
+}__w(html,{"signature":"function(DOMElement,string)"});
 
 
-function hasClass(/*DOMElement*/ dom, /*string*/ className) /*boolean*/ { /*TC*/__t([dom,'DOMElement','dom'],[className,'string','className']);return __t([function(){/*/TC*/ 
+function hasClass(/*DOMElement*/ dom, /*string*/ className) /*boolean*/ {__t([dom,'DOMElement','dom'],[className,'string','className']);/*jshint validthis: true*/return __t([function(){
   Assert.isTruthy(dom, 'element not specified');
   Assert.isString(className);
 
   var cssClassWithSpace = ' ' + getProp(dom, 'className') + ' ';
   return ES5(cssClassWithSpace, 'indexOf', true,' ' + className + ' ') >= 0;
- /*TC*/}.apply(this,arguments), 'boolean']);/*/TC*/ } /*TC*/__w(hasClass,{"signature":"function(DOMElement,string):boolean"});/*/TC*/ 
+}.apply(this,arguments), 'boolean']);}__w(hasClass,{"signature":"function(DOMElement,string):boolean"});
 
 
-function addClass(/*DOMElement*/ dom, /*string*/ className) { /*TC*/__t([dom,'DOMElement','dom'],[className,'string','className']);/*/TC*/ 
+function addClass(/*DOMElement*/ dom, /*string*/ className) {__t([dom,'DOMElement','dom'],[className,'string','className']);
   Assert.isTruthy(dom, 'element not specified');
   Assert.isString(className);
 
   if (!hasClass(dom, className)) {
     dom.className = getProp(dom, 'className') + ' ' + className;
   }
-} /*TC*/__w(addClass,{"signature":"function(DOMElement,string)"});/*/TC*/ 
+}__w(addClass,{"signature":"function(DOMElement,string)"});
 
 
-function removeClass(/*DOMElement*/ dom, /*string*/ className) { /*TC*/__t([dom,'DOMElement','dom'],[className,'string','className']);/*/TC*/ 
+function removeClass(/*DOMElement*/ dom, /*string*/ className) {__t([dom,'DOMElement','dom'],[className,'string','className']);
   Assert.isTruthy(dom, 'element not specified');
   Assert.isString(className);
 
   var regExp = new RegExp('\\s*' + className, 'g');
   dom.className = ES5(getProp(dom, 'className').replace(regExp, ''),'trim', true);
-} /*TC*/__w(removeClass,{"signature":"function(DOMElement,string)"});/*/TC*/ 
+}__w(removeClass,{"signature":"function(DOMElement,string)"});
 
 
-function getByClass(/*string*/ className, dom, tagName) /*array<DOMElement>*/ { /*TC*/__t([className,'string','className']);return __t([function(){/*/TC*/ 
+function getByClass(/*string*/ className, dom, tagName) /*array<DOMElement>*/ {__t([className,'string','className']);/*jshint validthis: true*/return __t([function(){
   Assert.isString(className);
 
   dom = dom || document.body;
@@ -4614,10 +4646,10 @@ function getByClass(/*string*/ className, dom, tagName) /*array<DOMElement>*/ { 
     }
   }
   return els;
- /*TC*/}.apply(this,arguments), 'array<DOMElement>']);/*/TC*/ } /*TC*/__w(getByClass,{"signature":"function(string):array<DOMElement>"});/*/TC*/ 
+}.apply(this,arguments), 'array<DOMElement>']);}__w(getByClass,{"signature":"function(string):array<DOMElement>"});
 
 
-function getStyle(/*DOMElement*/ dom, /*string*/ styleProp) /*string*/ { /*TC*/__t([dom,'DOMElement','dom'],[styleProp,'string','styleProp']);return __t([function(){/*/TC*/ 
+function getStyle(/*DOMElement*/ dom, /*string*/ styleProp) /*string*/ {__t([dom,'DOMElement','dom'],[styleProp,'string','styleProp']);/*jshint validthis: true*/return __t([function(){
   Assert.isTruthy(dom, 'element not specified');
   Assert.isString(styleProp);
 
@@ -4639,10 +4671,10 @@ function getStyle(/*DOMElement*/ dom, /*string*/ styleProp) /*string*/ { /*TC*/_
     computedStyle = '0%';
   }
   return computedStyle;
- /*TC*/}.apply(this,arguments), 'string']);/*/TC*/ } /*TC*/__w(getStyle,{"signature":"function(DOMElement,string):string"});/*/TC*/ 
+}.apply(this,arguments), 'string']);}__w(getStyle,{"signature":"function(DOMElement,string):string"});
 
 
-function setStyle(/*DOMElement*/ dom, /*string*/ styleProp, value) { /*TC*/__t([dom,'DOMElement','dom'],[styleProp,'string','styleProp']);/*/TC*/ 
+function setStyle(/*DOMElement*/ dom, /*string*/ styleProp, value) {__t([dom,'DOMElement','dom'],[styleProp,'string','styleProp']);
   Assert.isTruthy(dom, 'element not specified');
   Assert.isString(styleProp);
 
@@ -4651,10 +4683,10 @@ function setStyle(/*DOMElement*/ dom, /*string*/ styleProp, value) { /*TC*/__t([
     return g1.toUpperCase();
   });
   dom.style[styleProp] = value;
-} /*TC*/__w(setStyle,{"signature":"function(DOMElement,string)"});/*/TC*/ 
+}__w(setStyle,{"signature":"function(DOMElement,string)"});
 
 
-function addCssRules(/*string*/ styles, /*array<string>*/ names) { /*TC*/__t([styles,'string','styles'],[names,'array<string>','names']);/*/TC*/ 
+function addCssRules(/*string*/ styles, /*array<string>*/ names) {__t([styles,'string','styles'],[names,'array<string>','names']);
   
   
   var allIncluded = true;
@@ -4686,10 +4718,10 @@ function addCssRules(/*string*/ styles, /*array<string>*/ names) { /*TC*/__t([st
       }
     }
   }
-} /*TC*/__w(addCssRules,{"signature":"function(string,array<string>)"});/*/TC*/ 
+}__w(addCssRules,{"signature":"function(string,array<string>)"});
 
 
-function getViewportInfo() /*object*/ { /*TC*/return __t([function(){/*/TC*/ 
+function getViewportInfo() /*object*/ {/*jshint validthis: true*/return __t([function(){
   
   var root = (document.documentElement && document.compatMode == 'CSS1Compat')
     ? document.documentElement
@@ -4702,10 +4734,10 @@ function getViewportInfo() /*object*/ { /*TC*/return __t([function(){/*/TC*/
     width      : window.innerWidth  ? window.innerWidth  : root.clientWidth,
     height     : window.innerHeight ? window.innerHeight : root.clientHeight
   };
- /*TC*/}.apply(this,arguments), 'object']);/*/TC*/ } /*TC*/__w(getViewportInfo,{"signature":"function():object"});/*/TC*/ 
+}.apply(this,arguments), 'object']);}__w(getViewportInfo,{"signature":"function():object"});
 
 
-function getPosition(/*DOMElement*/ node) /*object*/ { /*TC*/__t([node,'DOMElement','node']);return __t([function(){/*/TC*/ 
+function getPosition(/*DOMElement*/ node) /*object*/ {__t([node,'DOMElement','node']);/*jshint validthis: true*/return __t([function(){
   Assert.isTruthy(node, 'element not specified');
 
   var x = 0,
@@ -4716,7 +4748,7 @@ function getPosition(/*DOMElement*/ node) /*object*/ { /*TC*/__t([node,'DOMEleme
   } while (node = node.offsetParent);
 
   return {x: x, y: y};
- /*TC*/}.apply(this,arguments), 'object']);/*/TC*/ } /*TC*/__w(getPosition,{"signature":"function(DOMElement):object"});/*/TC*/ 
+}.apply(this,arguments), 'object']);}__w(getPosition,{"signature":"function(DOMElement):object"});
 
 
 var DOM = {
@@ -4745,37 +4777,11 @@ var DOM = {
 module.exports = DOM;
 
 });
-__d("sdk.feature",["SDKConfig"],function(global,require,requireDynamic,requireLazy,module,exports) {
-
-var SDKConfig = requireDynamic('SDKConfig');
-
-function feature(/*string*/ name, defaultValue) { /*TC*/__t([name,'string','name']);/*/TC*/ 
-  if (SDKConfig.features && name in SDKConfig.features) {
-    var value = SDKConfig.features[name];
-    if (typeof value === 'object' && typeof value.rate === 'number') {
-      if (value.rate && Math.floor(Math.random() * 100) + 1 <= value.rate) {
-        return value.value || true;
-      } else {
-        return value.value ? null : false;
-      }
-    } else {
-      return value;
-    }
-  }
-
-  return typeof defaultValue !== 'undefined'
-    ? defaultValue
-    : null;
-} /*TC*/__w(feature,{"signature":"function(string)"});/*/TC*/ 
-
-module.exports = feature;
-
-});
 __d("sdk.Scribe",["UrlMap","QueryString"],function(global,require,requireDynamic,requireLazy,module,exports) {
 var UrlMap = require('UrlMap');
 var QueryString = require('QueryString');
 
-function log(/*string*/ category, /*object*/ data) { /*TC*/__t([category,'string','category'],[data,'object','data']);/*/TC*/ 
+function log(/*string*/ category, /*object*/ data) {__t([category,'string','category'],[data,'object','data']);
   (new Image()).src = QueryString.appendToUrl(
     UrlMap.resolve('www', /*force ssl*/true) + '/common/scribe_endpoint.php',
     {
@@ -4783,7 +4789,7 @@ function log(/*string*/ category, /*object*/ data) { /*TC*/__t([category,'string
       m: ES5('JSON', 'stringify', false,data)
     }
   );
-} /*TC*/__w(log,{"signature":"function(string,object)"});/*/TC*/ 
+}__w(log,{"signature":"function(string,object)"});
 
 var Scribe = {
   log: log
@@ -4804,7 +4810,7 @@ var wrapFunction = require('wrapFunction');
 var handleError = feature('error_handling', false);
 var currentEntry = '';
 
-function errorHandler(/*object*/ error) { /*TC*/__t([error,'object','error']);/*/TC*/ 
+function errorHandler(/*object*/ error) {__t([error,'object','error']);
   var originalError = error._originalError;
   delete error._originalError;
   Scribe.log('jssdk_error', {
@@ -4815,10 +4821,10 @@ function errorHandler(/*object*/ error) { /*TC*/__t([error,'object','error']);/*
 
   
   throw originalError;
-} /*TC*/__w(errorHandler,{"signature":"function(object)"});/*/TC*/ 
+}__w(errorHandler,{"signature":"function(object)"});
 
 
-function normalizeError(err) /*object*/ { /*TC*/return __t([function(){/*/TC*/ 
+function normalizeError(err) /*object*/ {/*jshint validthis: true*/return __t([function(){
   var info = {
     line: err.lineNumber || err.line,
     message: err.message,
@@ -4844,9 +4850,9 @@ function normalizeError(err) /*object*/ { /*TC*/return __t([function(){/*/TC*/
     (info[k] == null && delete info[k]);
   }
   return info;
- /*TC*/}.apply(this,arguments), 'object']);/*/TC*/ } /*TC*/__w(normalizeError,{"signature":"function():object"});/*/TC*/ 
+}.apply(this,arguments), 'object']);}__w(normalizeError,{"signature":"function():object"});
 
-function guard(/*function*/ func, /*string?*/ entry) /*function*/ { /*TC*/__t([func,'function','func'],[entry,'?string','entry']);return __t([function(){/*/TC*/ 
+function guard(/*function*/ func, /*string?*/ entry) /*function*/ {__t([func,'function','func'],[entry,'?string','entry']);/*jshint validthis: true*/return __t([function(){
   return function() {
     
     
@@ -4881,9 +4887,9 @@ function guard(/*function*/ func, /*string?*/ entry) /*function*/ { /*TC*/__t([f
       currentEntry = '';
     }
   };
- /*TC*/}.apply(this,arguments), 'function']);/*/TC*/ } /*TC*/__w(guard,{"signature":"function(function,?string):function"});/*/TC*/ 
+}.apply(this,arguments), 'function']);}__w(guard,{"signature":"function(function,?string):function"});
 
-function unguard(/*function*/ func) /*function*/ { /*TC*/__t([func,'function','func']);return __t([function(){/*/TC*/ 
+function unguard(/*function*/ func) /*function*/ {__t([func,'function','func']);/*jshint validthis: true*/return __t([function(){
   if (!func.__wrapper) {
     func.__wrapper = function() {
       try {
@@ -4898,7 +4904,7 @@ function unguard(/*function*/ func) /*function*/ { /*TC*/__t([func,'function','f
     };
   }
   return func.__wrapper;
- /*TC*/}.apply(this,arguments), 'function']);/*/TC*/ } /*TC*/__w(unguard,{"signature":"function(function):function"});/*/TC*/ 
+}.apply(this,arguments), 'function']);}__w(unguard,{"signature":"function(function):function"});
 
 function wrap(real, entry) {
   return function(fn, delay) {
@@ -4935,7 +4941,7 @@ var QueryString = require('QueryString');
 var Runtime = require('sdk.Runtime');
 var UrlMap = require('UrlMap');
 
-function request(/*object*/ params) { /*TC*/__t([params,'object','params']);/*/TC*/ 
+function request(/*object*/ params) {__t([params,'object','params']);
   var clientID = Runtime.getClientID();
 
   if (!params.api_key && clientID) {
@@ -4949,10 +4955,10 @@ function request(/*object*/ params) { /*TC*/__t([params,'object','params']);/*/T
       '/impression.php/' + guid() + '/',
     params
   );
-} /*TC*/__w(request,{"signature":"function(object)"});/*/TC*/ 
+}__w(request,{"signature":"function(object)"});
 
 var Impressions = {
-  log: (/*TC*/__w(/*/TC*/ function(/*number*/ lid, /*object*/ payload) { /*TC*/__t([lid,'number','lid'],[payload,'object','payload']);/*/TC*/ 
+  log: __w(function(/*number*/ lid, /*object*/ payload) {__t([lid,'number','lid'],[payload,'object','payload']);
     if (!payload.source) {
       payload.source = 'jssdk';
     }
@@ -4961,7 +4967,7 @@ var Impressions = {
       lid: lid, 
       payload: ES5('JSON', 'stringify', false,payload)
     });
-  } /*TC*/,{"signature":"function(number,object)"})/*/TC*/),
+  },{"signature":"function(number,object)"}),
 
   impression: request
 };
@@ -4985,7 +4991,7 @@ var Insights = {
   },
 
   
-  log: (/*TC*/__w(/*/TC*/ function(/*string*/ type, /*string*/ category, /*string*/ content) { /*TC*/__t([type,'string','type'],[category,'string','category'],[content,'string','content']);/*/TC*/ 
+  log: __w(function(/*string*/ type, /*string*/ category, /*string*/ content) {__t([type,'string','type'],[category,'string','category'],[content,'string','content']);
     var payload = {
       source: 'jssdk',
       type: type,
@@ -4997,7 +5003,7 @@ var Insights = {
       113, 
       payload
     );
-  } /*TC*/,{"signature":"function(string,string,string)"})/*/TC*/),
+  },{"signature":"function(string,string,string)"}),
   
   impression: Impressions.impression
 };
@@ -5053,25 +5059,25 @@ domReady(function() {
   }
 });
 
-Runtime.subscribe('AccessToken.change', (/*TC*/__w(/*/TC*/ function(/*string?*/ value) { /*TC*/__t([value,'?string','value']);/*/TC*/ 
+Runtime.subscribe('AccessToken.change', __w(function(/*string?*/ value) {__t([value,'?string','value']);
   if (!value && Runtime.getLoginStatus() === 'connected') {
     // The access token was invalidated, but we're still connected
     
     Auth.getLoginStatus(null, true);
   }
-} /*TC*/,{"signature":"function(?string)"})/*/TC*/));
+},{"signature":"function(?string)"}));
 
 
 
 if (dotAccess(SDKConfig, 'api.whitelist.length')) {
   apiWhitelist = {};
-  ES5(SDKConfig.api.whitelist, 'forEach', true,(/*TC*/__w(/*/TC*/ function(/*string*/ key) { /*TC*/__t([key,'string','key']);/*/TC*/ 
+  ES5(SDKConfig.api.whitelist, 'forEach', true,__w(function(/*string*/ key) {__t([key,'string','key']);
     apiWhitelist[key] = 1;
-  } /*TC*/,{"signature":"function(string)"})/*/TC*/));
+  },{"signature":"function(string)"}));
 }
 
 function protect(/*function*/ fn, /*string*/ accessor, /*string*/ key,
-    /*object*/ context) /*function?*/ { /*TC*/__t([fn,'function','fn'],[accessor,'string','accessor'],[key,'string','key'],[context,'object','context']);return __t([function(){/*/TC*/ 
+    /*object*/ context) /*function?*/ {__t([fn,'function','fn'],[accessor,'string','accessor'],[key,'string','key'],[context,'object','context']);/*jshint validthis: true*/return __t([function(){
   var exportMode;
   if (/^_/.test(key)) {
     exportMode = 'hide';
@@ -5164,15 +5170,15 @@ function protect(/*function*/ fn, /*string*/ accessor, /*string*/ key,
           : facade;
       }, accessor);
   }
- /*TC*/}.apply(this,arguments), '?function']);/*/TC*/ } /*TC*/__w(protect,{"signature":"function(function,string,string,object):function?"});/*/TC*/ 
+}.apply(this,arguments), '?function']);}__w(protect,{"signature":"function(function,string,string,object):function?"});
 
 
-function provide(/*string*/ name, /*object*/ source) { /*TC*/__t([name,'string','name'],[source,'object','source']);/*/TC*/ 
+function provide(/*string*/ name, /*object*/ source) {__t([name,'string','name'],[source,'object','source']);
   var externalTarget = name
     ? dotAccess(externalInterface, name, true)
     : externalInterface;
 
-  ES5(ES5('Object', 'keys', false,source), 'forEach', true,(/*TC*/__w(/*/TC*/ function(/*string*/ key) { /*TC*/__t([key,'string','key']);/*/TC*/ 
+  ES5(ES5('Object', 'keys', false,source), 'forEach', true,__w(function(/*string*/ key) {__t([key,'string','key']);
     var value = source[key];
 
     
@@ -5183,12 +5189,12 @@ function provide(/*string*/ name, /*object*/ source) { /*TC*/__t([name,'string',
         externalTarget[key] = exportedProperty;
       }
     }
-  } /*TC*/,{"signature":"function(string)"})/*/TC*/));
-} /*TC*/__w(provide,{"signature":"function(string,object)"});/*/TC*/ 
+  },{"signature":"function(string)"}));
+}__w(provide,{"signature":"function(string,object)"});
 
 
 
-Runtime.setSecure(((/*TC*/__w(/*/TC*/ function() /*boolean?*/ { /*TC*/return __t([function(){/*/TC*/ 
+Runtime.setSecure((__w(function() /*boolean?*/ {/*jshint validthis: true*/return __t([function(){
   // Resolve whether we're in a canvas context or not
   var inCanvas = /iframe_canvas|app_runner/.test(window.name);
   var inDialog = /dialog/.test(window.name);
@@ -5208,7 +5214,7 @@ Runtime.setSecure(((/*TC*/__w(/*/TC*/ function() /*boolean?*/ { /*TC*/return __t
   if (/_fb_https?/.test(window.name)) {
     return ES5(window.name, 'indexOf', true,'_fb_https') != -1;
   }
- /*TC*/}.apply(this,arguments), '?boolean']);/*/TC*/ } /*TC*/,{"signature":"function():boolean?"})/*/TC*/))());
+}.apply(this,arguments), '?boolean']);},{"signature":"function():boolean?"}))());
 
 
 copyProperties(FB, {
@@ -5224,7 +5230,7 @@ module.exports = FB;
 __d("flattenObject",[],function(global,require,requireDynamic,requireLazy,module,exports) {
 
 
-function flattenObject(/*object*/ obj) /*object*/ { /*TC*/__t([obj,'object','obj']);return __t([function(){/*/TC*/ 
+function flattenObject(/*object*/ obj) /*object*/ {__t([obj,'object','obj']);/*jshint validthis: true*/return __t([function(){
   var flat = {};
   for (var key in obj) {
     if (obj.hasOwnProperty(key)) {
@@ -5238,7 +5244,7 @@ function flattenObject(/*object*/ obj) /*object*/ { /*TC*/__t([obj,'object','obj
     }
   }
   return flat;
- /*TC*/}.apply(this,arguments), 'object']);/*/TC*/ } /*TC*/__w(flattenObject,{"signature":"function(object):object"});/*/TC*/ 
+}.apply(this,arguments), 'object']);}__w(flattenObject,{"signature":"function(object):object"});
 
 module.exports = flattenObject;
 
@@ -5248,7 +5254,7 @@ __d("CORSRequest",["wrapFunction","QueryString"],function(global,require,require
 var wrapFunction = require('wrapFunction');
 var QueryString = require('QueryString');
 
-function createCORSRequest(/*string*/ method, /*string*/ url) /*object?*/ { /*TC*/__t([method,'string','method'],[url,'string','url']);return __t([function(){/*/TC*/ 
+function createCORSRequest(/*string*/ method, /*string*/ url) /*object?*/ {__t([method,'string','method'],[url,'string','url']);/*jshint validthis: true*/return __t([function(){
    if (!self.XMLHttpRequest) {
     return null;
    }
@@ -5282,9 +5288,9 @@ function createCORSRequest(/*string*/ method, /*string*/ url) /*object?*/ { /*TC
    }
 
    var wrapper = {
-     send: (/*TC*/__w(/*/TC*/ function(/*string*/ data) { /*TC*/__t([data,'string','data']);/*/TC*/ 
+     send: __w(function(/*string*/ data) {__t([data,'string','data']);
        xhr.send(data);
-     } /*TC*/,{"signature":"function(string)"})/*/TC*/)
+     },{"signature":"function(string)"})
    };
    var onload = wrapFunction(function() {
      onload = noop;
@@ -5323,10 +5329,10 @@ function createCORSRequest(/*string*/ method, /*string*/ url) /*object?*/ { /*TC
    };
 
    return wrapper;
- /*TC*/}.apply(this,arguments), '?object']);/*/TC*/ } /*TC*/__w(createCORSRequest,{"signature":"function(string,string):object?"});/*/TC*/ 
+}.apply(this,arguments), '?object']);}__w(createCORSRequest,{"signature":"function(string,string):object?"});
 
 function execute(/*string*/ url, /*string*/ method, /*object*/ params,
-    /*function*/ cb) /*boolean*/ { /*TC*/__t([url,'string','url'],[method,'string','method'],[params,'object','params'],[cb,'function','cb']);return __t([function(){/*/TC*/ 
+    /*function*/ cb) /*boolean*/ {__t([url,'string','url'],[method,'string','method'],[params,'object','params'],[cb,'function','cb']);/*jshint validthis: true*/return __t([function(){
   params.suppress_http_code = 1;
   var data = QueryString.encode(params);
 
@@ -5358,7 +5364,7 @@ function execute(/*string*/ url, /*string*/ method, /*object*/ params,
   };
   request.send(data);
   return true;
- /*TC*/}.apply(this,arguments), 'boolean']);/*/TC*/ } /*TC*/__w(execute,{"signature":"function(string,string,object,function):boolean"});/*/TC*/ 
+}.apply(this,arguments), 'boolean']);}__w(execute,{"signature":"function(string,string,object,function):boolean"});
 
 var CORSRequest = {
   execute: execute
@@ -5385,7 +5391,7 @@ function initFlash() {
   }
 
   var initCallback = GlobalCallback.create(function() {
-    flashQueue.start((/*TC*/__w(/*/TC*/ function(/*object*/ item) { /*TC*/__t([item,'object','item']);/*/TC*/ 
+    flashQueue.start(__w(function(/*object*/ item) {__t([item,'object','item']);
       var id = swf.execute(
         item.method,
         item.url,
@@ -5395,12 +5401,12 @@ function initFlash() {
         throw new Error('Could create request');
       }
       requestCallbacks[id] = item.callback;
-    } /*TC*/,{"signature":"function(object)"})/*/TC*/));
+    },{"signature":"function(object)"}));
   });
 
   
-  var requestCallback = GlobalCallback.create((/*TC*/__w(/*/TC*/ function(/*number*/ id,
-      /*number*/ status, /*string*/ response) { /*TC*/__t([id,'number','id'],[status,'number','status'],[response,'string','response']);/*/TC*/ 
+  var requestCallback = GlobalCallback.create(__w(function(/*number*/ id,
+      /*number*/ status, /*string*/ response) {__t([id,'number','id'],[status,'number','status'],[response,'string','response']);
     var data;
     try {
       data = ES5('JSON', 'parse', false,decodeURIComponent(response));
@@ -5417,7 +5423,7 @@ function initFlash() {
 
     requestCallbacks[id](data);
     delete requestCallbacks[id];
-  } /*TC*/,{"signature":"function(number,number,string)"})/*/TC*/));
+  },{"signature":"function(number,number,string)"}));
 
   swf = Flash.embed(swfUrl, DOMWrapper.getRoot(), null, {
     log: __DEV__ ? true : false,
@@ -5428,7 +5434,7 @@ function initFlash() {
 
 
 function execute(/*string*/ url, /*string*/ method, /*object*/ params,
-    /*function*/ cb) /*boolean*/ { /*TC*/__t([url,'string','url'],[method,'string','method'],[params,'object','params'],[cb,'function','cb']);return __t([function(){/*/TC*/ 
+    /*function*/ cb) /*boolean*/ {__t([url,'string','url'],[method,'string','method'],[params,'object','params'],[cb,'function','cb']);/*jshint validthis: true*/return __t([function(){
   
   
   params.suppress_http_code = 1;
@@ -5468,12 +5474,12 @@ function execute(/*string*/ url, /*string*/ method, /*object*/ params,
     callback: cb
   });
   return true;
- /*TC*/}.apply(this,arguments), 'boolean']);/*/TC*/ } /*TC*/__w(execute,{"signature":"function(string,string,object,function):boolean"});/*/TC*/ 
+}.apply(this,arguments), 'boolean']);}__w(execute,{"signature":"function(string,string,object,function):boolean"});
 
 var FlashRequest = {
-  setSwfUrl: (/*TC*/__w(/*/TC*/ function(/*string*/ swf_url) { /*TC*/__t([swf_url,'string','swf_url']);/*/TC*/ 
+  setSwfUrl: __w(function(/*string*/ swf_url) {__t([swf_url,'string','swf_url']);
     swfUrl = swf_url;
-  } /*TC*/,{"signature":"function(string)"})/*/TC*/),
+  },{"signature":"function(string)"}),
   execute: execute
 };
 
@@ -5488,7 +5494,7 @@ var QueryString    = require('QueryString');
 
 
 function execute(/*string*/ url, /*string*/ method, /*object*/ params,
-    /*function*/ cb) /*boolean*/ { /*TC*/__t([url,'string','url'],[method,'string','method'],[params,'object','params'],[cb,'function','cb']);return __t([function(){/*/TC*/ 
+    /*function*/ cb) /*boolean*/ {__t([url,'string','url'],[method,'string','method'],[params,'object','params'],[cb,'function','cb']);/*jshint validthis: true*/return __t([function(){
   var script = document.createElement('script');
 
   var callbackWrapper = function(response) {
@@ -5547,7 +5553,7 @@ function execute(/*string*/ url, /*string*/ method, /*object*/ params,
   script.src = url;
   DOMWrapper.getRoot().appendChild(script);
   return true;
- /*TC*/}.apply(this,arguments), 'boolean']);/*/TC*/ } /*TC*/__w(execute,{"signature":"function(string,string,object,function):boolean"});/*/TC*/ 
+}.apply(this,arguments), 'boolean']);}__w(execute,{"signature":"function(string,string,object,function):boolean"});
 
 var JSONPRequest = {
   execute: execute
@@ -5608,7 +5614,7 @@ var READONLYCALLS = {
 
 
 function request(/*string*/ url, /*string*/ method, /*object*/ params,
-    /*function?*/ cb) { /*TC*/__t([url,'string','url'],[method,'string','method'],[params,'object','params'],[cb,'?function','cb']);/*/TC*/ 
+    /*function?*/ cb) {__t([url,'string','url'],[method,'string','method'],[params,'object','params'],[cb,'?function','cb']);
   if (!params.access_token) {
     params.access_token = accessToken;
   }
@@ -5673,10 +5679,10 @@ function request(/*string*/ url, /*string*/ method, /*object*/ params,
       message: 'Could not find a usable transport for request'
     }
   });
-} /*TC*/__w(request,{"signature":"function(string,string,object,?function)"});/*/TC*/ 
+}__w(request,{"signature":"function(string,string,object,?function)"});
 
 
-function requestUsingGraph(/*string*/ path) { /*TC*/__t([path,'string','path']);/*/TC*/ 
+function requestUsingGraph(/*string*/ path) {__t([path,'string','path']);
   Assert.isString(path, 'Invalid path');
   var url;
   var args = {};
@@ -5702,10 +5708,10 @@ function requestUsingGraph(/*string*/ path) { /*TC*/__t([path,'string','path']);
   params.method = method;
   url = UrlMap.resolve('graph') + url.getPath();
   request(url, method == 'get' ? 'get' : 'post', params, callback);
-} /*TC*/__w(requestUsingGraph,{"signature":"function(string)"});/*/TC*/ 
+}__w(requestUsingGraph,{"signature":"function(string)"});
 
 
-function requestUsingRest(/*object*/ params, /*function?*/ cb) { /*TC*/__t([params,'object','params'],[cb,'?function','cb']);/*/TC*/ 
+function requestUsingRest(/*object*/ params, /*function?*/ cb) {__t([params,'object','params'],[cb,'?function','cb']);
   Assert.isObject(params);
   Assert.isString(params.method, 'method missing');
 
@@ -5716,21 +5722,21 @@ function requestUsingRest(/*object*/ params, /*function?*/ cb) { /*TC*/__t([para
   var domain = method in READONLYCALLS ? 'api_read' : 'api';
   var url = UrlMap.resolve(domain) + '/restserver.php';
   request(url, 'get', params, cb);
-} /*TC*/__w(requestUsingRest,{"signature":"function(object,?function)"});/*/TC*/ 
+}__w(requestUsingRest,{"signature":"function(object,?function)"});
 
 var ApiClient = {
-  setAccessToken: (/*TC*/__w(/*/TC*/ function(/*string?*/ access_token) { /*TC*/__t([access_token,'?string','access_token']);/*/TC*/ 
+  setAccessToken: __w(function(/*string?*/ access_token) {__t([access_token,'?string','access_token']);
     accessToken = access_token;
-  } /*TC*/,{"signature":"function(?string)"})/*/TC*/),
-  setInvalidAccessTokenHandler: (/*TC*/__w(/*/TC*/ function(/*function?*/ invalid_token_callback) { /*TC*/__t([invalid_token_callback,'?function','invalid_token_callback']);/*/TC*/ 
+  },{"signature":"function(?string)"}),
+  setInvalidAccessTokenHandler: __w(function(/*function?*/ invalid_token_callback) {__t([invalid_token_callback,'?function','invalid_token_callback']);
     invalidTokenCallback = invalid_token_callback;
-  } /*TC*/,{"signature":"function(?function)"})/*/TC*/),
-  setClientID: (/*TC*/__w(/*/TC*/ function(/*string?*/ client_id) { /*TC*/__t([client_id,'?string','client_id']);/*/TC*/ 
+  },{"signature":"function(?function)"}),
+  setClientID: __w(function(/*string?*/ client_id) {__t([client_id,'?string','client_id']);
     clientID = client_id;
-  } /*TC*/,{"signature":"function(?string)"})/*/TC*/),
-  setDefaultParams: (/*TC*/__w(/*/TC*/ function(/*object?*/ default_params) { /*TC*/__t([default_params,'?object','default_params']);/*/TC*/ 
+  },{"signature":"function(?string)"}),
+  setDefaultParams: __w(function(/*object?*/ default_params) {__t([default_params,'?object','default_params']);
     defaultParams = default_params;
-  } /*TC*/,{"signature":"function(?object)"})/*/TC*/),
+  },{"signature":"function(?object)"}),
   rest: requestUsingRest,
   graph: requestUsingGraph
 };
@@ -5748,14 +5754,14 @@ var Runtime    = require('sdk.Runtime');
 
 var currentAccessToken;
 
-Runtime.subscribe('ClientID.change', (/*TC*/__w(/*/TC*/ function(/*string?*/ value) { /*TC*/__t([value,'?string','value']);/*/TC*/ 
+Runtime.subscribe('ClientID.change', __w(function(/*string?*/ value) {__t([value,'?string','value']);
   ApiClient.setClientID(value);
-} /*TC*/,{"signature":"function(?string)"})/*/TC*/));
+},{"signature":"function(?string)"}));
 
-Runtime.subscribe('AccessToken.change', (/*TC*/__w(/*/TC*/ function(/*string?*/ value) { /*TC*/__t([value,'?string','value']);/*/TC*/ 
+Runtime.subscribe('AccessToken.change', __w(function(/*string?*/ value) {__t([value,'?string','value']);
   currentAccessToken = value;
   ApiClient.setAccessToken(value);
-} /*TC*/,{"signature":"function(?string)"})/*/TC*/));
+},{"signature":"function(?string)"}));
 
 ApiClient.setDefaultParams({
   sdk: 'joey'
@@ -5797,15 +5803,15 @@ __d("sdk.Canvas.Environment",["sdk.RPC"],function(global,require,requireDynamic,
 
 var RPC = require('sdk.RPC');
 
-function getPageInfo(/*function*/ appCallback) { /*TC*/__t([appCallback,'function','appCallback']);/*/TC*/ 
-  RPC.remote.getPageInfo((/*TC*/__w(/*/TC*/ function(/*object*/ response) { /*TC*/__t([response,'object','response']);/*/TC*/ 
+function getPageInfo(/*function*/ appCallback) {__t([appCallback,'function','appCallback']);
+  RPC.remote.getPageInfo(__w(function(/*object*/ response) {__t([response,'object','response']);
     appCallback(response.result);
-  } /*TC*/,{"signature":"function(object)"})/*/TC*/));
-} /*TC*/__w(getPageInfo,{"signature":"function(function)"});/*/TC*/ 
+  },{"signature":"function(object)"}));
+}__w(getPageInfo,{"signature":"function(function)"});
 
-function scrollTo(/*number?*/ x, /*number?*/ y) { /*TC*/__t([x,'?number','x'],[y,'?number','y']);/*/TC*/ 
+function scrollTo(/*number?*/ x, /*number?*/ y) {__t([x,'?number','x'],[y,'?number','y']);
   RPC.remote.scrollTo({ x: x || 0, y: y || 0 });
-} /*TC*/__w(scrollTo,{"signature":"function(?number,?number)"});/*/TC*/ 
+}__w(scrollTo,{"signature":"function(?number,?number)"});
 
 
 RPC.stub('getPageInfo');
@@ -5840,7 +5846,7 @@ var _punctCharClass = (
 );
 
 
-function _endsInPunct(/*string?*/ str) /*boolean*/ { /*TC*/__t([str,'?string','str']);return __t([function(){/*/TC*/ 
+function _endsInPunct(/*string?*/ str) /*boolean*/ {__t([str,'?string','str']);/*jshint validthis: true*/return __t([function(){
   if (typeof str != 'string') {
     return false;
   }
@@ -5881,10 +5887,10 @@ function _endsInPunct(/*string?*/ str) /*boolean*/ { /*TC*/__t([str,'?string','s
       '\\s' +
     ']*$'
   ));
- /*TC*/}.apply(this,arguments), 'boolean']);/*/TC*/ } /*TC*/__w(_endsInPunct,{"signature":"function(?string):boolean"});/*/TC*/ 
+}.apply(this,arguments), 'boolean']);}__w(_endsInPunct,{"signature":"function(?string):boolean"});
 
 
-function _substituteTokens(/*string*/ str, /*object?*/ args) /*string*/ { /*TC*/__t([str,'string','str'],[args,'?object','args']);return __t([function(){/*/TC*/ 
+function _substituteTokens(/*string*/ str, /*object?*/ args) /*string*/ {__t([str,'string','str'],[args,'?object','args']);/*jshint validthis: true*/return __t([function(){
   
   
   if (args !== undefined) {
@@ -5915,7 +5921,7 @@ function _substituteTokens(/*string*/ str, /*object?*/ args) /*string*/ { /*TC*/
     }
   }
   return str;
- /*TC*/}.apply(this,arguments), 'string']);/*/TC*/ } /*TC*/__w(_substituteTokens,{"signature":"function(string,?object):string"});/*/TC*/ 
+}.apply(this,arguments), 'string']);}__w(_substituteTokens,{"signature":"function(string,?object):string"});
 
 
 function tx() {
@@ -5945,7 +5951,7 @@ var UserAgent = require('UserAgent');
 
 
 var SdkDialog = Type.extend({
-  constructor: (/*TC*/__w(/*/TC*/ function SdkDialog(/*string*/ id, /*string*/ display) { /*TC*/__t([id,'string','id'],[display,'string','display']);/*/TC*/ 
+  constructor: __w(function SdkDialog(/*string*/ id, /*string*/ display) {__t([id,'string','id'],[display,'string','display']);
     this.parent();
     this.id = id;
     this.display = display;
@@ -5958,9 +5964,9 @@ var SdkDialog = Type.extend({
     }
     Dialog._dialogs[id] = this;
     this.trackEvent('init');
-  } /*TC*/,{"type":"SdkDialog","signature":"function(string,string)"})/*/TC*/),
+  },{"type":"SdkDialog","signature":"function(string,string)"}),
 
-  trackEvent: (/*TC*/__w(/*/TC*/ function(/*string*/ name, /*?number*/ time) /*SdkDialog*/ { /*TC*/__t([name,'string','name'],[time,'?number','time']);return __t([function(){/*/TC*/ 
+  trackEvent: __w(function(/*string*/ name, /*?number*/ time) /*SdkDialog*/ {__t([name,'string','name'],[time,'?number','time']);/*jshint validthis: true*/return __t([function(){
     if (this._e2e[name]) {
       return this;
     }
@@ -5970,9 +5976,9 @@ var SdkDialog = Type.extend({
       this.inform('e2e:end', this._e2e);
     }
     return this;
-   /*TC*/}.apply(this,arguments), 'SdkDialog']);/*/TC*/ } /*TC*/,{"signature":"function(string,?number):SdkDialog"})/*/TC*/),
+  }.apply(this,arguments), 'SdkDialog']);},{"signature":"function(string,?number):SdkDialog"}),
 
-  trackEvents: (/*TC*/__w(/*/TC*/ function(/*?string|object*/ events) /*SdkDialog*/ { /*TC*/__t([events,'?string|object','events']);return __t([function(){/*/TC*/ 
+  trackEvents: __w(function(/*?string|object*/ events) /*SdkDialog*/ {__t([events,'?string|object','events']);/*jshint validthis: true*/return __t([function(){
     if (!events) {
       return this;
     }
@@ -5985,13 +5991,13 @@ var SdkDialog = Type.extend({
       }
     }
     return this;
-   /*TC*/}.apply(this,arguments), 'SdkDialog']);/*/TC*/ } /*TC*/,{"signature":"function(?string|object):SdkDialog"})/*/TC*/)
+  }.apply(this,arguments), 'SdkDialog']);},{"signature":"function(?string|object):SdkDialog"})
 }, ObservableMixin);
 
 var Dialog = {
-  newInstance: (/*TC*/__w(/*/TC*/ function(/*string*/ id, /*string*/ display) /*SdkDialog*/ { /*TC*/__t([id,'string','id'],[display,'string','display']);return __t([function(){/*/TC*/ 
+  newInstance: __w(function(/*string*/ id, /*string*/ display) /*SdkDialog*/ {__t([id,'string','id'],[display,'string','display']);/*jshint validthis: true*/return __t([function(){
     return new SdkDialog(id, display);
-   /*TC*/}.apply(this,arguments), 'SdkDialog']);/*/TC*/ } /*TC*/,{"signature":"function(string,string):SdkDialog"})/*/TC*/),
+  }.apply(this,arguments), 'SdkDialog']);},{"signature":"function(string,string):SdkDialog"}),
 
   
   _dialogs: null,
@@ -6010,22 +6016,22 @@ var Dialog = {
   _active: null,
 
   
-  get: (/*TC*/__w(/*/TC*/ function(/*string*/ id) /*SdkDialog*/ { /*TC*/__t([id,'string','id']);return __t([function(){/*/TC*/ 
+  get: __w(function(/*string*/ id) /*SdkDialog*/ {__t([id,'string','id']);/*jshint validthis: true*/return __t([function(){
     return Dialog._dialogs[id];
-   /*TC*/}.apply(this,arguments), 'SdkDialog']);/*/TC*/ } /*TC*/,{"signature":"function(string):SdkDialog"})/*/TC*/),
+  }.apply(this,arguments), 'SdkDialog']);},{"signature":"function(string):SdkDialog"}),
 
 
   
-  _findRoot: (/*TC*/__w(/*/TC*/ function(/*DOMElement*/ node) /*DOMElement*/ { /*TC*/__t([node,'DOMElement','node']);return __t([function(){/*/TC*/ 
+  _findRoot: __w(function(/*DOMElement*/ node) /*DOMElement*/ {__t([node,'DOMElement','node']);/*jshint validthis: true*/return __t([function(){
     while (node) {
       if (DOM.containsCss(node, 'fb_dialog')) {
         return node;
       }
       node = node.parentNode;
     }
-   /*TC*/}.apply(this,arguments), 'DOMElement']);/*/TC*/ } /*TC*/,{"signature":"function(DOMElement):DOMElement"})/*/TC*/),
+  }.apply(this,arguments), 'DOMElement']);},{"signature":"function(DOMElement):DOMElement"}),
 
-  _createWWWLoader: (/*TC*/__w(/*/TC*/ function(/*number*/ width) /*DOMElement*/ { /*TC*/__t([width,'number','width']);return __t([function(){/*/TC*/ 
+  _createWWWLoader: __w(function(/*number*/ width) /*DOMElement*/ {__t([width,'number','width']);/*jshint validthis: true*/return __t([function(){
     width = width ? width : 460;
     return Dialog.create({
       content: (
@@ -6040,9 +6046,9 @@ var Dialog = {
       '<div class="dialog_footer"></div>'),
       width: width
     });
-   /*TC*/}.apply(this,arguments), 'DOMElement']);/*/TC*/ } /*TC*/,{"signature":"function(number):DOMElement"})/*/TC*/),
+  }.apply(this,arguments), 'DOMElement']);},{"signature":"function(number):DOMElement"}),
 
-  _createMobileLoader: (/*TC*/__w(/*/TC*/ function() /*DOMElement*/ { /*TC*/return __t([function(){/*/TC*/ 
+  _createMobileLoader: __w(function() /*DOMElement*/ {/*jshint validthis: true*/return __t([function(){
     
     // We're copying the HTML/CSS output of an XHP element here
     
@@ -6076,7 +6082,7 @@ var Dialog = {
           chrome +
         '</div>')
     });
-   /*TC*/}.apply(this,arguments), 'DOMElement']);/*/TC*/ } /*TC*/,{"signature":"function():DOMElement"})/*/TC*/),
+  }.apply(this,arguments), 'DOMElement']);},{"signature":"function():DOMElement"}),
 
   _restoreBodyPosition: function() {
     if (!UserAgent.ipad()) {
@@ -6104,7 +6110,7 @@ var Dialog = {
   },
 
   
-  showLoader: (/*TC*/__w(/*/TC*/ function(/*function?*/ cb, /*number*/ width) { /*TC*/__t([cb,'?function','cb'],[width,'number','width']);/*/TC*/ 
+  showLoader: __w(function(/*function?*/ cb, /*number*/ width) {__t([cb,'?function','cb'],[width,'number','width']);
     Dialog._showIPadOverlay();
 
     if (!Dialog._loaderEl) {
@@ -6134,7 +6140,7 @@ var Dialog = {
     }
 
     Dialog._makeActive(Dialog._loaderEl);
-  } /*TC*/,{"signature":"function(?function,number)"})/*/TC*/),
+  },{"signature":"function(?function,number)"}),
 
   
   _hideLoader: function() {
@@ -6144,7 +6150,7 @@ var Dialog = {
   },
 
   
-  _makeActive: (/*TC*/__w(/*/TC*/ function(/*DOMElement*/ el) { /*TC*/__t([el,'DOMElement','el']);/*/TC*/ 
+  _makeActive: __w(function(/*DOMElement*/ el) {__t([el,'DOMElement','el']);
     Dialog._setDialogSizes();
     Dialog._lowerActive();
     Dialog._active = el;
@@ -6154,7 +6160,7 @@ var Dialog = {
       });
     }
     Dialog._centerActive();
-  } /*TC*/,{"signature":"function(DOMElement)"})/*/TC*/),
+  },{"signature":"function(DOMElement)"}),
 
   
   _lowerActive: function() {
@@ -6166,14 +6172,14 @@ var Dialog = {
   },
 
   
-  _removeStacked: (/*TC*/__w(/*/TC*/ function(/*DOMElement*/ dialog) { /*TC*/__t([dialog,'DOMElement','dialog']);/*/TC*/ 
+  _removeStacked: __w(function(/*DOMElement*/ dialog) {__t([dialog,'DOMElement','dialog']);
     Dialog._stack = ES5(Dialog._stack, 'filter', true,function(node) {
       return node != dialog;
     });
-  } /*TC*/,{"signature":"function(DOMElement)"})/*/TC*/),
+  },{"signature":"function(DOMElement)"}),
 
   
-  _centerActive: (/*TC*/__w(/*/TC*/ function(/*object?*/ pageInfo) { /*TC*/__t([pageInfo,'?object','pageInfo']);/*/TC*/ 
+  _centerActive: __w(function(/*object?*/ pageInfo) {__t([pageInfo,'?object','pageInfo']);
     var dialog = Dialog._active;
     if (!dialog) {
       return;
@@ -6257,7 +6263,7 @@ var Dialog = {
 
     dialog.style.left = (left > 0 ? left : 0) + 'px';
     dialog.style.top = (top > 0 ? top : 0) + 'px';
-  } /*TC*/,{"signature":"function(?object)"})/*/TC*/),
+  },{"signature":"function(?object)"}),
 
   _setDialogSizes: function() {
     if (!UserAgent.mobile() || UserAgent.ipad()) {
@@ -6273,7 +6279,7 @@ var Dialog = {
       }
     }
   },
-  getDefaultSize: (/*TC*/__w(/*/TC*/ function() /*object*/ { /*TC*/return __t([function(){/*/TC*/ 
+  getDefaultSize: __w(function() /*object*/ {/*jshint validthis: true*/return __t([function(){
     if (UserAgent.mobile()) {
       if (UserAgent.ipad()) {
         return {
@@ -6310,7 +6316,7 @@ var Dialog = {
       }
     }
     return {width: 575, height: 240};
-   /*TC*/}.apply(this,arguments), 'object']);/*/TC*/ } /*TC*/,{"signature":"function():object"})/*/TC*/),
+  }.apply(this,arguments), 'object']);},{"signature":"function():object"}),
 
 
   
@@ -6365,7 +6371,7 @@ var Dialog = {
   },
 
   
-  create: (/*TC*/__w(/*/TC*/ function(/*object*/ opts) /*DOMElement*/ { /*TC*/__t([opts,'object','opts']);return __t([function(){/*/TC*/ 
+  create: __w(function(/*object*/ opts) /*DOMElement*/ {__t([opts,'object','opts']);/*jshint validthis: true*/return __t([function(){
     opts = opts || {};
 
     var
@@ -6393,11 +6399,11 @@ var Dialog = {
         'top_left',
         'top_right',
         'bottom_left',
-        'bottom_right'], 'forEach', true,(/*TC*/__w(/*/TC*/ function(/*string*/ name) { /*TC*/__t([name,'string','name']);/*/TC*/ 
+        'bottom_right'], 'forEach', true,__w(function(/*string*/ name) {__t([name,'string','name']);
           var span = document.createElement('span');
           span.className = 'fb_dialog_' + name;
           dialog.appendChild(span);
-        } /*TC*/,{"signature":"function(string)"})/*/TC*/));
+        },{"signature":"function(string)"}));
     } else {
       className += UserAgent.mobile()
         ? ' fb_dialog_mobile'
@@ -6428,10 +6434,10 @@ var Dialog = {
     }
 
     return contentRoot;
-   /*TC*/}.apply(this,arguments), 'DOMElement']);/*/TC*/ } /*TC*/,{"signature":"function(object):DOMElement"})/*/TC*/),
+  }.apply(this,arguments), 'DOMElement']);},{"signature":"function(object):DOMElement"}),
 
   
-  show: (/*TC*/__w(/*/TC*/ function(/*DOMElement*/ dialog) { /*TC*/__t([dialog,'DOMElement','dialog']);/*/TC*/ 
+  show: __w(function(/*DOMElement*/ dialog) {__t([dialog,'DOMElement','dialog']);
     var root = Dialog._findRoot(dialog);
     if (root) {
       Dialog._removeStacked(root);
@@ -6444,10 +6450,10 @@ var Dialog = {
           .trackEvent('show');
       }
     }
-  } /*TC*/,{"signature":"function(DOMElement)"})/*/TC*/),
+  },{"signature":"function(DOMElement)"}),
 
   
-  hide: (/*TC*/__w(/*/TC*/ function(/*DOMElement*/ dialog) { /*TC*/__t([dialog,'DOMElement','dialog']);/*/TC*/ 
+  hide: __w(function(/*DOMElement*/ dialog) {__t([dialog,'DOMElement','dialog']);
     var root = Dialog._findRoot(dialog);
     Dialog._hideLoader();
     if (root == Dialog._active) {
@@ -6460,10 +6466,10 @@ var Dialog = {
           .trackEvent('hide');
       }
     }
-  } /*TC*/,{"signature":"function(DOMElement)"})/*/TC*/),
+  },{"signature":"function(DOMElement)"}),
 
   
-  remove: (/*TC*/__w(/*/TC*/ function(/*DOMElement*/ dialog) { /*TC*/__t([dialog,'DOMElement','dialog']);/*/TC*/ 
+  remove: __w(function(/*DOMElement*/ dialog) {__t([dialog,'DOMElement','dialog']);
     dialog = Dialog._findRoot(dialog);
     if (dialog) {
       var is_active = Dialog._active == dialog;
@@ -6491,13 +6497,13 @@ var Dialog = {
         dialog.parentNode.removeChild(dialog);
       }, 3000);
     }
-  } /*TC*/,{"signature":"function(DOMElement)"})/*/TC*/),
+  },{"signature":"function(DOMElement)"}),
 
   
-  isActive: (/*TC*/__w(/*/TC*/ function(/*DOMElement*/ node) /*boolean*/ { /*TC*/__t([node,'DOMElement','node']);return __t([function(){/*/TC*/ 
+  isActive: __w(function(/*DOMElement*/ node) /*boolean*/ {__t([node,'DOMElement','node']);/*jshint validthis: true*/return __t([function(){
     var root = Dialog._findRoot(node);
     return root && root === Dialog._active;
-   /*TC*/}.apply(this,arguments), 'boolean']);/*/TC*/ } /*TC*/,{"signature":"function(DOMElement):boolean"})/*/TC*/)
+  }.apply(this,arguments), 'boolean']);},{"signature":"function(DOMElement):boolean"})
 
 };
 
@@ -6526,31 +6532,31 @@ var Frictionless = {
       if (!response || response.error) {
         return;
       }
-      ES5(response.data, 'forEach', true,(/*TC*/__w(/*/TC*/ function(/*object*/ recipient) { /*TC*/__t([recipient,'object','recipient']);/*/TC*/ 
+      ES5(response.data, 'forEach', true,__w(function(/*object*/ recipient) {__t([recipient,'object','recipient']);
         Frictionless._allowedRecipients[recipient.recipient_id] = true;
-      } /*TC*/,{"signature":"function(object)"})/*/TC*/));
+      },{"signature":"function(object)"}));
     });
   },
 
   
   init: function() {
     Frictionless._useFrictionless = true;
-    Auth.getLoginStatus((/*TC*/__w(/*/TC*/ function(/*object*/ response) { /*TC*/__t([response,'object','response']);/*/TC*/ 
+    Auth.getLoginStatus(__w(function(/*object*/ response) {__t([response,'object','response']);
       if (response.status == 'connected') {
         Frictionless._updateRecipients();
       }
-    } /*TC*/,{"signature":"function(object)"})/*/TC*/));
-    Event.subscribe('auth.login', (/*TC*/__w(/*/TC*/ function(/*object*/ login) { /*TC*/__t([login,'object','login']);/*/TC*/ 
+    },{"signature":"function(object)"}));
+    Event.subscribe('auth.login', __w(function(/*object*/ login) {__t([login,'object','login']);
       if (login.authResponse) {
         Frictionless._updateRecipients();
       }
-    } /*TC*/,{"signature":"function(object)"})/*/TC*/));
+    },{"signature":"function(object)"}));
   },
 
   
-  _processRequestResponse: (/*TC*/__w(/*/TC*/ function(/*function*/ cb, /*boolean? */hidden)
-      /*function*/ { /*TC*/__t([cb,'function','cb']);return __t([function(){/*/TC*/ 
-    return (/*TC*/__w(/*/TC*/ function(/*object?*/ params) { /*TC*/__t([params,'?object','params']);/*/TC*/ 
+  _processRequestResponse: __w(function(/*function*/ cb, /*boolean? */hidden)
+      /*function*/ {__t([cb,'function','cb']);/*jshint validthis: true*/return __t([function(){
+    return __w(function(/*object?*/ params) {__t([params,'?object','params']);
       var updated = params && params.updated_frictionless;
       if (Frictionless._useFrictionless && updated) {
         
@@ -6569,11 +6575,11 @@ var Frictionless = {
       }
       
       cb && cb(params);
-    } /*TC*/,{"signature":"function(?object)"})/*/TC*/);
-   /*TC*/}.apply(this,arguments), 'function']);/*/TC*/ } /*TC*/,{"signature":"function(function):function"})/*/TC*/),
+    },{"signature":"function(?object)"});
+  }.apply(this,arguments), 'function']);},{"signature":"function(function):function"}),
 
   
-  isAllowed: (/*TC*/__w(/*/TC*/ function(user_ids) /*boolean*/ { /*TC*/return __t([function(){/*/TC*/ 
+  isAllowed: __w(function(user_ids) /*boolean*/ {/*jshint validthis: true*/return __t([function(){
     if (!user_ids) {
       return false;
     }
@@ -6588,19 +6594,19 @@ var Frictionless = {
 
     var allowed = true;
     var has_user_ids = false;
-    ES5(user_ids, 'forEach', true,(/*TC*/__w(/*/TC*/ function(/*string*/ user_id) { /*TC*/__t([user_id,'string','user_id']);/*/TC*/ 
+    ES5(user_ids, 'forEach', true,__w(function(/*string*/ user_id) {__t([user_id,'string','user_id']);
       allowed = allowed && user_id in Frictionless._allowedRecipients;
       has_user_ids = true;
-    } /*TC*/,{"signature":"function(string)"})/*/TC*/));
+    },{"signature":"function(string)"}));
     return allowed && has_user_ids;
-   /*TC*/}.apply(this,arguments), 'boolean']);/*/TC*/ } /*TC*/,{"signature":"function():boolean"})/*/TC*/)
+  }.apply(this,arguments), 'boolean']);},{"signature":"function():boolean"})
 };
 
-Event.subscribe('init:post', (/*TC*/__w(/*/TC*/ function(/*object*/ options) { /*TC*/__t([options,'object','options']);/*/TC*/ 
+Event.subscribe('init:post', __w(function(/*object*/ options) {__t([options,'object','options']);
   if (options.frictionlessRequests) {
     Frictionless.init();
   }
-} /*TC*/,{"signature":"function(object)"})/*/TC*/));
+},{"signature":"function(object)"}));
 
 
 module.exports = Frictionless;
@@ -6611,7 +6617,7 @@ __d("insertIframe",["guid","GlobalCallback"],function(global,require,requireDyna
 var guid = require('guid');
 var GlobalCallback = require('GlobalCallback');
 
-function insertIframe(/*object*/ opts) { /*TC*/__t([opts,'object','opts']);/*/TC*/ 
+function insertIframe(/*object*/ opts) {__t([opts,'object','opts']);
 
   
   
@@ -6726,7 +6732,7 @@ function insertIframe(/*object*/ opts) { /*TC*/__t([opts,'object','opts']);/*/TC
     node.src = opts.url;
     opts.onInsert && opts.onInsert(node);
   }
-} /*TC*/__w(insertIframe,{"signature":"function(object)"});/*/TC*/ 
+}__w(insertIframe,{"signature":"function(object)"});
 
 module.exports = insertIframe;
 
@@ -6742,7 +6748,7 @@ var NATIVE_READY_EVENT = 'fbNativeReady';
 var Native = {
 
   
-  onready: (/*TC*/__w(/*/TC*/ function(/*function*/ func) { /*TC*/__t([func,'function','func']);/*/TC*/ 
+  onready: __w(function(/*function*/ func) {__t([func,'function','func']);
     // Check that we're within a native container
     if (!UserAgent.nativeApp()) {
       Log.error('FB.Native.onready only works when the page is rendered ' +
@@ -6771,7 +6777,7 @@ var Native = {
       };
       window.addEventListener(NATIVE_READY_EVENT, nativeReadyCallback, false);
     }
-  } /*TC*/,{"signature":"function(function)"})/*/TC*/)
+  },{"signature":"function(function)"})
 };
 
 module.exports = Native;
@@ -6802,7 +6808,7 @@ var UserAgent = require('UserAgent');
 var XD = require('sdk.XD');
 
 var MobileIframeable = {
-  transform: (/*TC*/__w(/*/TC*/ function(/*object*/ call) /*object*/ { /*TC*/__t([call,'object','call']);/*jshint validthis: true*/return __t([function(){/*/TC*/ 
+  transform: __w(function(/*object*/ call) /*object*/ {__t([call,'object','call']);/*jshint validthis: true*/return __t([function(){
     
     
     
@@ -6824,8 +6830,8 @@ var MobileIframeable = {
     } else {
       return UIServer.genericTransform(call);
     }
-   /*TC*/}.apply(this,arguments), 'object']);/*/TC*/ } /*TC*/,{"signature":"function(object):object"})/*/TC*/),
-  getXdRelation: (/*TC*/__w(/*/TC*/ function(/*object*/ params) /*string*/ { /*TC*/__t([params,'object','params']);/*jshint validthis: true*/return __t([function(){/*/TC*/ 
+  }.apply(this,arguments), 'object']);},{"signature":"function(object):object"}),
+  getXdRelation: __w(function(/*object*/ params) /*string*/ {__t([params,'object','params']);/*jshint validthis: true*/return __t([function(){
     var display = params.display;
     if (display === 'touch' && window.postMessage && params.in_iframe) {
       
@@ -6834,25 +6840,25 @@ var MobileIframeable = {
       return 'parent';
     }
     return UIServer.getXdRelation(params);
-   /*TC*/}.apply(this,arguments), 'string']);/*/TC*/ } /*TC*/,{"signature":"function(object):string"})/*/TC*/)
+  }.apply(this,arguments), 'string']);},{"signature":"function(object):string"})
 };
 
 var Methods = {
   'stream.share': {
     size      : { width: 670, height: 340 },
     url       : 'sharer.php',
-    transform : (/*TC*/__w(/*/TC*/ function(/*object*/ call) /*object*/ { /*TC*/__t([call,'object','call']);/*jshint validthis: true*/return __t([function(){/*/TC*/ 
+    transform : __w(function(/*object*/ call) /*object*/ {__t([call,'object','call']);/*jshint validthis: true*/return __t([function(){
       if (!call.params.u) {
         call.params.u = window.location.toString();
       }
       call.params.display = 'popup';
       return call;
-     /*TC*/}.apply(this,arguments), 'object']);/*/TC*/ } /*TC*/,{"signature":"function(object):object"})/*/TC*/)
+    }.apply(this,arguments), 'object']);},{"signature":"function(object):object"})
   },
 
   
   'apprequests': {
-    transform: (/*TC*/__w(/*/TC*/ function(/*object*/ call) /*object*/ { /*TC*/__t([call,'object','call']);/*jshint validthis: true*/return __t([function(){/*/TC*/ 
+    transform: __w(function(/*object*/ call) /*object*/ {__t([call,'object','call']);/*jshint validthis: true*/return __t([function(){
       call = MobileIframeable.transform(call);
 
       call.params.frictionless = Frictionless &&
@@ -6880,7 +6886,7 @@ var Methods = {
       
       call.closeIcon = false;
       return call;
-     /*TC*/}.apply(this,arguments), 'object']);/*/TC*/ } /*TC*/,{"signature":"function(object):object"})/*/TC*/),
+    }.apply(this,arguments), 'object']);},{"signature":"function(object):object"}),
     getXdRelation: MobileIframeable.getXdRelation
   },
 
@@ -6890,7 +6896,7 @@ var Methods = {
     url       : 'dialog/oauth',
     size      : { width: (UserAgent.mobile() ? null : 440),
                   height: (UserAgent.mobile() ? null : 183) },
-    transform : (/*TC*/__w(/*/TC*/ function(/*object*/ call) /*?object*/ { /*TC*/__t([call,'object','call']);/*jshint validthis: true*/return __t([function(){/*/TC*/ 
+    transform : __w(function(/*object*/ call) /*?object*/ {__t([call,'object','call']);/*jshint validthis: true*/return __t([function(){
       if (!Runtime.getClientID()) {
         Log.error('FB.login() called before FB.init().');
         return;
@@ -6940,12 +6946,12 @@ var Methods = {
       }
 
       return call;
-     /*TC*/}.apply(this,arguments), '?object']);/*/TC*/ } /*TC*/,{"signature":"function(object):?object"})/*/TC*/)
+    }.apply(this,arguments), '?object']);},{"signature":"function(object):?object"})
   },
 
   'auth.logout': {
     url       : 'logout.php',
-    transform : (/*TC*/__w(/*/TC*/ function(/*object*/ call) /*?object*/ { /*TC*/__t([call,'object','call']);/*jshint validthis: true*/return __t([function(){/*/TC*/ 
+    transform : __w(function(/*object*/ call) /*?object*/ {__t([call,'object','call']);/*jshint validthis: true*/return __t([function(){
       if (!Runtime.getClientID()) {
         Log.error('FB.logout() called before calling FB.init().');
       } else if (!Auth.getAuthResponse()) {
@@ -6958,12 +6964,12 @@ var Methods = {
                                              'logout');
         return call;
       }
-     /*TC*/}.apply(this,arguments), '?object']);/*/TC*/ } /*TC*/,{"signature":"function(object):?object"})/*/TC*/)
+    }.apply(this,arguments), '?object']);},{"signature":"function(object):?object"})
   },
 
   'login.status': {
     url       : 'dialog/oauth',
-    transform : (/*TC*/__w(/*/TC*/ function(/*object*/ call) /*object*/ { /*TC*/__t([call,'object','call']);/*jshint validthis: true*/return __t([function(){/*/TC*/ 
+    transform : __w(function(/*object*/ call) /*object*/ {__t([call,'object','call']);/*jshint validthis: true*/return __t([function(){
       var
         cb = call.cb,
         id = call.id;
@@ -6981,7 +6987,7 @@ var Methods = {
       });
 
       return call;
-     /*TC*/}.apply(this,arguments), 'object']);/*/TC*/ } /*TC*/,{"signature":"function(object):object"})/*/TC*/)
+    }.apply(this,arguments), 'object']);},{"signature":"function(object):object"})
   }
 };
 
@@ -6994,7 +7000,7 @@ var UIServer = {
   _resultToken   : '"xxRESULTTOKENxx"',
 
   
-  genericTransform: (/*TC*/__w(/*/TC*/ function(/*object*/ call) /*object*/ { /*TC*/__t([call,'object','call']);/*jshint validthis: true*/return __t([function(){/*/TC*/ 
+  genericTransform: __w(function(/*object*/ call) /*object*/ {__t([call,'object','call']);/*jshint validthis: true*/return __t([function(){
     if (call.params.display == 'dialog' || call.params.display == 'iframe') {
       copyProperties(call.params, {
         display: 'iframe',
@@ -7003,7 +7009,7 @@ var UIServer = {
     }
 
     return call;
-   /*TC*/}.apply(this,arguments), 'object']);/*/TC*/ } /*TC*/,{"signature":"function(object):object"})/*/TC*/),
+  }.apply(this,arguments), 'object']);},{"signature":"function(object):object"}),
 
   
   checkOauthDisplay: function(params) {
@@ -7023,7 +7029,7 @@ var UIServer = {
   },
 
   
-  prepareCall: (/*TC*/__w(/*/TC*/ function(/*object*/ params, /*function*/ cb) /*?object*/ { /*TC*/__t([params,'object','params'],[cb,'function','cb']);/*jshint validthis: true*/return __t([function(){/*/TC*/ 
+  prepareCall: __w(function(/*object*/ params, /*function*/ cb) /*?object*/ {__t([params,'object','params'],[cb,'function','cb']);/*jshint validthis: true*/return __t([function(){
     var
       name   = params.method.toLowerCase(),
       method = copyProperties({}, UIServer.Methods[name]),
@@ -7103,9 +7109,9 @@ var UIServer = {
     call = UIServer.prepareParams(call);
 
     return call;
-   /*TC*/}.apply(this,arguments), '?object']);/*/TC*/ } /*TC*/,{"signature":"function(object,function):?object"})/*/TC*/),
+  }.apply(this,arguments), '?object']);},{"signature":"function(object,function):?object"}),
 
-  prepareParams: (/*TC*/__w(/*/TC*/ function(/*object*/ call) /*object*/ { /*TC*/__t([call,'object','call']);/*jshint validthis: true*/return __t([function(){/*/TC*/ 
+  prepareParams: __w(function(/*object*/ call) /*object*/ {__t([call,'object','call']);/*jshint validthis: true*/return __t([function(){
     var method = call.params.method;
     
     
@@ -7130,14 +7136,14 @@ var UIServer = {
     }
 
     return call;
-   /*TC*/}.apply(this,arguments), 'object']);/*/TC*/ } /*TC*/,{"signature":"function(object):object"})/*/TC*/),
+  }.apply(this,arguments), 'object']);},{"signature":"function(object):object"}),
 
-  urlTooLongForIE: (/*TC*/__w(/*/TC*/ function(/*string*/ fullURL) /*boolean*/ { /*TC*/__t([fullURL,'string','fullURL']);/*jshint validthis: true*/return __t([function(){/*/TC*/ 
+  urlTooLongForIE: __w(function(/*string*/ fullURL) /*boolean*/ {__t([fullURL,'string','fullURL']);/*jshint validthis: true*/return __t([function(){
     return fullURL.length > 2000;
-   /*TC*/}.apply(this,arguments), 'boolean']);/*/TC*/ } /*TC*/,{"signature":"function(string):boolean"})/*/TC*/),
+  }.apply(this,arguments), 'boolean']);},{"signature":"function(string):boolean"}),
 
   
-  getDisplayMode: (/*TC*/__w(/*/TC*/ function(/*object*/ method, /*object*/ params) /*string*/ { /*TC*/__t([method,'object','method'],[params,'object','params']);/*jshint validthis: true*/return __t([function(){/*/TC*/ 
+  getDisplayMode: __w(function(/*object*/ method, /*object*/ params) /*string*/ {__t([method,'object','method'],[params,'object','params']);/*jshint validthis: true*/return __t([function(){
     if (params.display === 'hidden' ||
         params.display === 'none') {
       return params.display;
@@ -7168,10 +7174,10 @@ var UIServer = {
 
     // TODO change "dialog" to "iframe" once moved to uiserver
     return params.display || (Runtime.getAccessToken() ? 'dialog' : 'popup');
-   /*TC*/}.apply(this,arguments), 'string']);/*/TC*/ } /*TC*/,{"signature":"function(object,object):string"})/*/TC*/),
+  }.apply(this,arguments), 'string']);},{"signature":"function(object,object):string"}),
 
   
-  getXdRelation: (/*TC*/__w(/*/TC*/ function(/*object*/ params) /*string*/ { /*TC*/__t([params,'object','params']);/*jshint validthis: true*/return __t([function(){/*/TC*/ 
+  getXdRelation: __w(function(/*object*/ params) /*string*/ {__t([params,'object','params']);/*jshint validthis: true*/return __t([function(){
     var display = params.display;
     if (display === 'popup' || display === 'touch') {
       return 'opener';
@@ -7183,10 +7189,10 @@ var UIServer = {
     if (display === 'async') {
       return 'parent.frames[' + window.name + ']';
     }
-   /*TC*/}.apply(this,arguments), 'string']);/*/TC*/ } /*TC*/,{"signature":"function(object):string"})/*/TC*/),
+  }.apply(this,arguments), 'string']);},{"signature":"function(object):string"}),
 
   
-  popup: (/*TC*/__w(/*/TC*/ function(/*object*/ call) { /*TC*/__t([call,'object','call']);/*/TC*/ 
+  popup: __w(function(/*object*/ call) {__t([call,'object','call']);
     
     var
       _screenX   = typeof window.screenX      != 'undefined'
@@ -7255,9 +7261,9 @@ var UIServer = {
     if (call.id in UIServer._defaultCb) {
       UIServer._popupMonitor();
     }
-  } /*TC*/,{"signature":"function(object)"})/*/TC*/),
+  },{"signature":"function(object)"}),
 
-  setLoadedNode: (/*TC*/__w(/*/TC*/ function(/*object*/ call, node, /*?string*/ type) { /*TC*/__t([call,'object','call'],[type,'?string','type']);/*/TC*/ 
+  setLoadedNode: __w(function(/*object*/ call, node, /*?string*/ type) {__t([call,'object','call'],[type,'?string','type']);
     if (call.params && call.params.display != 'popup') {
       
       
@@ -7270,7 +7276,7 @@ var UIServer = {
       fbCallID: call.id
     };
     UIServer._loadedNodes[call.id] = node;
-  } /*TC*/,{"signature":"function(object,?string)"})/*/TC*/),
+  },{"signature":"function(object,?string)"}),
 
   getLoadedNode: function(call) {
     var id = typeof call == 'object' ? call.id : call,
@@ -7279,14 +7285,14 @@ var UIServer = {
   },
 
   
-  hidden: (/*TC*/__w(/*/TC*/ function(/*object*/ call) { /*TC*/__t([call,'object','call']);/*/TC*/ 
+  hidden: __w(function(/*object*/ call) {__t([call,'object','call']);
     call.className = 'FB_UI_Hidden';
     call.root = Content.appendHidden('');
     UIServer._insertIframe(call);
-  } /*TC*/,{"signature":"function(object)"})/*/TC*/),
+  },{"signature":"function(object)"}),
 
   
-  iframe: (/*TC*/__w(/*/TC*/ function(/*object*/ call) { /*TC*/__t([call,'object','call']);/*/TC*/ 
+  iframe: __w(function(/*object*/ call) {__t([call,'object','call']);
     call.className = 'FB_UI_Dialog';
     var onClose = function() {
       UIServer._triggerDefault(call.id);
@@ -7301,10 +7307,10 @@ var UIServer = {
     }
     DOM.addCss(call.root, 'fb_dialog_iframe');
     UIServer._insertIframe(call);
-  } /*TC*/,{"signature":"function(object)"})/*/TC*/),
+  },{"signature":"function(object)"}),
 
   
-  touch: (/*TC*/__w(/*/TC*/ function(/*object*/ call) { /*TC*/__t([call,'object','call']);/*/TC*/ 
+  touch: __w(function(/*object*/ call) {__t([call,'object','call']);
     if (call.params && call.params.in_iframe) {
       
       
@@ -7336,15 +7342,15 @@ var UIServer = {
       
       UIServer.popup(call);
     }
-  } /*TC*/,{"signature":"function(object)"})/*/TC*/),
+  },{"signature":"function(object)"}),
 
   
-  async: (/*TC*/__w(/*/TC*/ function(/*object*/ call) { /*TC*/__t([call,'object','call']);/*/TC*/ 
+  async: __w(function(/*object*/ call) {__t([call,'object','call']);
     call.params.redirect_uri = location.protocol + '//' +
       location.host + location.pathname;
     delete call.params.access_token;
 
-    RPC.remote.showDialog(call.params, (/*TC*/__w(/*/TC*/ function(/*object*/ response) { /*TC*/__t([response,'object','response']);/*/TC*/ 
+    RPC.remote.showDialog(call.params, __w(function(/*object*/ response) {__t([response,'object','response']);
       var dialog = Dialog.get(call.id);
       if (response.result) {
         
@@ -7352,24 +7358,24 @@ var UIServer = {
       }
       dialog.trackEvent('close');
       call.cb(response.result);
-    } /*TC*/,{"signature":"function(object)"})/*/TC*/));
-  } /*TC*/,{"signature":"function(object)"})/*/TC*/),
+    },{"signature":"function(object)"}));
+  },{"signature":"function(object)"}),
 
-  getDefaultSize: (/*TC*/__w(/*/TC*/ function() /*object*/ { /*TC*
+  getDefaultSize: __w(function() /*object*/ {/*jshint validthis: true*/return __t([function(){
     return Dialog.getDefaultSize();
-   /*TC*/}.apply(this,arguments), 'object']);/*/TC*/ } /*TC*/,{"signature":"function():object"})/*/TC*/),
+  }.apply(this,arguments), 'object']);},{"signature":"function():object"}),
 
   
-  _insertIframe: (/*TC*/__w(/*/TC*/ function(/*object*/ call) { /*TC*/__t([call,'object','call']);/*/TC*/ 
+  _insertIframe: __w(function(/*object*/ call) {__t([call,'object','call']);
     
     
     // from the _frames nodes, and we won't add the node back in.
     UIServer._loadedNodes[call.id] = false;
-    var activate = (/*TC*/__w(/*/TC*/ function(/*DOMElement*/ node) { /*TC*/__t([node,'DOMElement','node']);/*/TC*/ 
+    var activate = __w(function(/*DOMElement*/ node) {__t([node,'DOMElement','node']);
       if (call.id in UIServer._loadedNodes) {
         UIServer.setLoadedNode(call, node, 'iframe');
       }
-    } /*TC*/,{"signature":"function(DOMElement)"})/*/TC*/);
+    },{"signature":"function(DOMElement)"});
 
     
     if (call.post) {
@@ -7381,13 +7387,13 @@ var UIServer = {
         height    : call.size.height,
         id        : call.id,
         onInsert  : activate,
-        onload    : (/*TC*/__w(/*/TC*/ function(/*DOMElement*/ node) { /*TC*/__t([node,'DOMElement','node']);/*/TC*/ 
+        onload    : __w(function(/*DOMElement*/ node) {__t([node,'DOMElement','node']);
           Content.submitToTarget({
             url    : call.url,
             target : node.name,
             params : call.params
           });
-        } /*TC*/,{"signature":"function(DOMElement)"})/*/TC*/)
+        },{"signature":"function(DOMElement)"})
       });
     } else {
       insertIframe({
@@ -7401,10 +7407,10 @@ var UIServer = {
         onInsert  : activate
       });
     }
-  } /*TC*/,{"signature":"function(object)"})/*/TC*/),
+  },{"signature":"function(object)"}),
 
   
-  _handleResizeMessage: (/*TC*/__w(/*/TC*/ function(/*string*/ frame, /*object*/ data) { /*TC*/__t([frame,'string','frame'],[data,'object','data']);/*/TC*/ 
+  _handleResizeMessage: __w(function(/*string*/ frame, /*object*/ data) {__t([frame,'string','frame'],[data,'object','data']);
     var node = UIServer.getLoadedNode(frame);
     if (!node) {
       return;
@@ -7425,15 +7431,15 @@ var UIServer = {
     if (!Dialog.isActive(node)) {
       Dialog.show(node);
     }
-  } /*TC*/,{"signature":"function(string,object)"})/*/TC*/),
+  },{"signature":"function(string,object)"}),
 
   
-  _triggerDefault: (/*TC*/__w(/*/TC*/ function(/*string*/ id) { /*TC*/__t([id,'string','id']);/*/TC*/ 
+  _triggerDefault: __w(function(/*string*/ id) {__t([id,'string','id']);
     UIServer._xdRecv(
       { frame: id },
       UIServer._defaultCb[id] || function() {}
     );
-  } /*TC*/,{"signature":"function(string)"})/*/TC*/),
+  },{"signature":"function(string)"}),
 
   
   _popupMonitor: function() {
@@ -7473,9 +7479,9 @@ var UIServer = {
   },
 
   
-  _xdChannelHandler: (/*TC*/__w(/*/TC*/ function(/*string*/ frame, /*string*/ relation)
-      /*string*/ { /*TC*/__t([frame,'string','frame'],[relation,'string','relation']);/*jshint validthis: true*/return __t([function(){/*/TC*/ 
-    return XD.handler((/*TC*/__w(/*/TC*/ function(/*object*/ data) { /*TC*/__t([data,'object','data']);/*/TC*/ 
+  _xdChannelHandler: __w(function(/*string*/ frame, /*string*/ relation)
+      /*string*/ {__t([frame,'string','frame'],[relation,'string','relation']);/*jshint validthis: true*/return __t([function(){
+    return XD.handler(__w(function(/*object*/ data) {__t([data,'object','data']);
       var node = UIServer.getLoadedNode(frame);
       if (!node) { 
         return;
@@ -7491,12 +7497,12 @@ var UIServer = {
       } else if (data.type == 'fireevent') {
         Event.fire(data.event);
       }
-    } /*TC*/,{"signature":"function(object)"})/*/TC*/), relation, true, null);
-   /*TC*/}.apply(this,arguments), 'string']);/*/TC*/ } /*TC*/,{"signature":"function(string,string):string"})/*/TC*/),
+    },{"signature":"function(object)"}), relation, true, null);
+  }.apply(this,arguments), 'string']);},{"signature":"function(string,string):string"}),
 
   
-  _xdNextHandler: (/*TC*/__w(/*/TC*/ function(/*function*/ cb, /*string*/ frame,
-       /*string*/ relation, /*boolean*/ isDefault) /*string*/ { /*TC*/__t([cb,'function','cb'],[frame,'string','frame'],[relation,'string','relation'],[isDefault,'boolean','isDefault']);/*jshint validthis: true*/return __t([function(){/*/TC*/ 
+  _xdNextHandler: __w(function(/*function*/ cb, /*string*/ frame,
+       /*string*/ relation, /*boolean*/ isDefault) /*string*/ {__t([cb,'function','cb'],[frame,'string','frame'],[relation,'string','relation'],[isDefault,'boolean','isDefault']);/*jshint validthis: true*/return __t([function(){
     if (isDefault) {
       UIServer._defaultCb[frame] = cb;
     }
@@ -7504,10 +7510,10 @@ var UIServer = {
     return XD.handler(function(data) {
       UIServer._xdRecv(data, cb);
     }, relation) + '&frame=' + frame;
-   /*TC*/}.apply(this,arguments), 'string']);/*/TC*/ } /*TC*/,{"signature":"function(function,string,string,boolean):string"})/*/TC*/),
+  }.apply(this,arguments), 'string']);},{"signature":"function(function,string,string,boolean):string"}),
 
   
-  _xdRecv: (/*TC*/__w(/*/TC*/ function(/*object*/ data, /*function*/ cb) { /*TC*/__t([data,'object','data'],[cb,'function','cb']);/*/TC*/ 
+  _xdRecv: __w(function(/*object*/ data, /*function*/ cb) {__t([data,'object','data'],[cb,'function','cb']);
     var frame = UIServer.getLoadedNode(data.frame);
     if (frame) {
       
@@ -7552,11 +7558,11 @@ var UIServer = {
     dialog.trackEvents(data.e2e);
     dialog.trackEvent('close');
     cb(data);
-  } /*TC*/,{"signature":"function(object,function)"})/*/TC*/),
+  },{"signature":"function(object,function)"}),
 
   
-  _xdResult: (/*TC*/__w(/*/TC*/ function(/*function*/ cb, /*string*/ frame, /*string*/ target,
-      /*boolean*/ isDefault) /*string*/ { /*TC*/__t([cb,'function','cb'],[frame,'string','frame'],[target,'string','target'],[isDefault,'boolean','isDefault']);/*jshint validthis: true*/return __t([function(){/*/TC*/ 
+  _xdResult: __w(function(/*function*/ cb, /*string*/ frame, /*string*/ target,
+      /*boolean*/ isDefault) /*string*/ {__t([cb,'function','cb'],[frame,'string','frame'],[target,'string','target'],[isDefault,'boolean','isDefault']);/*jshint validthis: true*/return __t([function(){
     return (
       UIServer._xdNextHandler(function(params) {
         cb && cb(params.result &&
@@ -7565,16 +7571,16 @@ var UIServer = {
       }, frame, target, isDefault) +
       '&result=' + encodeURIComponent(UIServer._resultToken)
     );
-   /*TC*/}.apply(this,arguments), 'string']);/*/TC*/ } /*TC*/,{"signature":"function(function,string,string,boolean):string"})/*/TC*/),
+  }.apply(this,arguments), 'string']);},{"signature":"function(function,string,string,boolean):string"}),
 
-  xdHandler: (/*TC*/__w(/*/TC*/ function(/*function*/ cb, /*string*/ frame, /*string*/ target,
-      /*?object*/ authResponse, /*string*/ method) /*string*/ { /*TC*/__t([cb,'function','cb'],[frame,'string','frame'],[target,'string','target'],[authResponse,'?object','authResponse'],[method,'string','method']);/*jshint validthis: true*/return __t([function(){/*/TC*/ 
+  xdHandler: __w(function(/*function*/ cb, /*string*/ frame, /*string*/ target,
+      /*?object*/ authResponse, /*string*/ method) /*string*/ {__t([cb,'function','cb'],[frame,'string','frame'],[target,'string','target'],[authResponse,'?object','authResponse'],[method,'string','method']);/*jshint validthis: true*/return __t([function(){
     return UIServer._xdNextHandler(
       Auth.xdResponseWrapper(cb, authResponse, method),
       frame,
       target,
       true);
-   /*TC*/}.apply(this,arguments), 'string']);/*/TC*/ } /*TC*/,{"signature":"function(function,string,string,?object,string):string"})/*/TC*/)
+  }.apply(this,arguments), 'string']);},{"signature":"function(function,string,string,?object,string):string"})
 
 };
 
@@ -7592,7 +7598,7 @@ var Log = require('Log');
 var UIServer = require('sdk.UIServer');
 
 
-function ui(/*object*/ params, /*?function*/ cb) /*?object*/ { /*TC*/__t([params,'object','params'],[cb,'?function','cb']);return __t([function(){/*/TC*/ 
+function ui(/*object*/ params, /*?function*/ cb) /*?object*/ {__t([params,'object','params'],[cb,'?function','cb']);/*jshint validthis: true*/return __t([function(){
   Assert.isObject(params);
   Assert.maybeFunction(cb);
 
@@ -7641,7 +7647,7 @@ function ui(/*object*/ params, /*?function*/ cb) /*?object*/ { /*TC*/__t([params
   }
 
   if (enableE2E) {
-    call.dialog.subscribe('e2e:end', (/*TC*/__w(/*/TC*/ function(/*object*/ events) { /*TC*/__t([events,'object','events']);/*/TC*/ 
+    call.dialog.subscribe('e2e:end', __w(function(/*object*/ events) {__t([events,'object','events']);
       events.method = method;
       events.display = displayName;
       Log.debug('e2e: %s', ES5('JSON', 'stringify', false,events));
@@ -7649,11 +7655,11 @@ function ui(/*object*/ params, /*?function*/ cb) /*?object*/ { /*TC*/__t([params
       Impressions.log(114, {
         payload: events
       });
-    } /*TC*/,{"signature":"function(object)"})/*/TC*/));
+    },{"signature":"function(object)"}));
   }
   displayFn(call);
   return call.dialog;
- /*TC*/}.apply(this,arguments), '?object']);/*/TC*/ } /*TC*/__w(ui,{"signature":"function(object,?function):?object"});/*/TC*/ 
+}.apply(this,arguments), '?object']);}__w(ui,{"signature":"function(object,?function):?object"});
 
 module.exports = ui;
 
@@ -7672,23 +7678,23 @@ var ui = require('sdk.ui');
 
 FB.provide('', {
 
-  getLoginStatus: (/*TC*/__w(/*/TC*/ function() /*object?*/ { /*TC*/return __t([function(){/*/TC*/ 
+  getLoginStatus: __w(function() /*object?*/ {/*jshint validthis: true*/return __t([function(){
     return Auth.getLoginStatus.apply(Auth, arguments);
-   /*TC*/}.apply(this,arguments), '?object']);/*/TC*/ } /*TC*/,{"signature":"function():object?"})/*/TC*/),
+  }.apply(this,arguments), '?object']);},{"signature":"function():object?"}),
 
-  getAuthResponse: (/*TC*/__w(/*/TC*/ function() /*object?*/ { /*TC*/return __t([function(){/*/TC*/ 
+  getAuthResponse: __w(function() /*object?*/ {/*jshint validthis: true*/return __t([function(){
     return Auth.getAuthResponse();
-   /*TC*/}.apply(this,arguments), '?object']);/*/TC*/ } /*TC*/,{"signature":"function():object?"})/*/TC*/),
+  }.apply(this,arguments), '?object']);},{"signature":"function():object?"}),
 
-  getAccessToken: (/*TC*/__w(/*/TC*/ function() /*string?*/ { /*TC*/return __t([function(){/*/TC*/ 
+  getAccessToken: __w(function() /*string?*/ {/*jshint validthis: true*/return __t([function(){
     return Runtime.getAccessToken() || null;
-   /*TC*/}.apply(this,arguments), '?string']);/*/TC*/ } /*TC*/,{"signature":"function():string?"})/*/TC*/),
+  }.apply(this,arguments), '?string']);},{"signature":"function():string?"}),
 
-  getUserID: (/*TC*/__w(/*/TC*/ function() /*string?*/ { /*TC*/return __t([function(){/*/TC*/ 
+  getUserID: __w(function() /*string?*/ {/*jshint validthis: true*/return __t([function(){
     return Runtime.getUserID() || Runtime.getCookieUserID();
-   /*TC*/}.apply(this,arguments), '?string']);/*/TC*/ } /*TC*/,{"signature":"function():string?"})/*/TC*/),
+  }.apply(this,arguments), '?string']);},{"signature":"function():string?"}),
 
-  login: (/*TC*/__w(/*/TC*/ function(/*function?*/ cb, /*object?*/ opts) { /*TC*/__t([cb,'?function','cb'],[opts,'?object','opts']);/*/TC*/ 
+  login: __w(function(/*function?*/ cb, /*object?*/ opts) {__t([cb,'?function','cb'],[opts,'?object','opts']);
     if (opts && opts.perms && !opts.scope) {
       opts.scope = opts.perms;
       delete opts.perms;
@@ -7705,12 +7711,12 @@ FB.provide('', {
         domain: location.hostname
       }, opts || {}),
     cb);
-  } /*TC*/,{"signature":"function(?function,?object)"})/*/TC*/),
+  },{"signature":"function(?function,?object)"}),
 
 
-  logout: (/*TC*/__w(/*/TC*/ function(/*function?*/ cb) { /*TC*/__t([cb,'?function','cb']);/*/TC*/ 
+  logout: __w(function(/*function?*/ cb) {__t([cb,'?function','cb']);
     ui({ method: 'auth.logout', display: 'hidden' }, cb);
-  } /*TC*/,{"signature":"function(?function)"})/*/TC*/)
+  },{"signature":"function(?function)"})
 });
 
 Auth.subscribe('logout', ES5(Event.fire, 'bind', true,Event, 'auth.logout'));
@@ -7719,7 +7725,7 @@ Auth.subscribe('authresponse.change', ES5(Event.fire, 'bind', true,Event,
   'auth.authResponseChange'));
 Auth.subscribe('status.change', ES5(Event.fire, 'bind', true,Event, 'auth.statusChange'));
 
-Event.subscribe('init:post', (/*TC*/__w(/*/TC*/ function(/*object*/ options) { /*TC*/__t([options,'object','options']);/*/TC*/ 
+Event.subscribe('init:post', __w(function(/*object*/ options) {__t([options,'object','options']);
   if (options.status) {
     Auth.getLoginStatus();
   }
@@ -7744,7 +7750,7 @@ Event.subscribe('init:post', (/*TC*/__w(/*/TC*/ function(/*object*/ options) { /
       Cookie.loadMeta();
     }
   }
-} /*TC*/,{"signature":"function(object)"})/*/TC*/));
+},{"signature":"function(object)"}));
 
 },3);
 __d("sdk.Canvas.Flash",["sdk.api","sdk.RPC","Log","sdk.Runtime","createArrayFrom"],function(global,require,requireDynamic,requireLazy,module,exports) {
@@ -7759,21 +7765,21 @@ var flashClassID = 'CLSID:D27CDB6E-AE6D-11CF-96B8-444553540000';
 var devHideFlashCallback = null;
 
 
-function hideFlashElement(/*DOMElement*/ elem) { /*TC*/__t([elem,'DOMElement','elem']);/*/TC*/ 
+function hideFlashElement(/*DOMElement*/ elem) {__t([elem,'DOMElement','elem']);
   elem.style.visibility = 'hidden';
-} /*TC*/__w(hideFlashElement,{"signature":"function(DOMElement)"});/*/TC*/ 
+}__w(hideFlashElement,{"signature":"function(DOMElement)"});
 
 
-function showFlashElement(/*DOMElement*/ elem) { /*TC*/__t([elem,'DOMElement','elem']);/*/TC*/ 
+function showFlashElement(/*DOMElement*/ elem) {__t([elem,'DOMElement','elem']);
   elem.style.visibility = '';
-} /*TC*/__w(showFlashElement,{"signature":"function(DOMElement)"});/*/TC*/ 
+}__w(showFlashElement,{"signature":"function(DOMElement)"});
 
 
-function hideFlashCallback(/*object*/ params) { /*TC*/__t([params,'object','params']);/*/TC*/ 
+function hideFlashCallback(/*object*/ params) {__t([params,'object','params']);
   Log.info('hideFlashCallback called with %s', params.state);
 
   var candidates = window.document.getElementsByTagName('object');
-  ES5(createArrayFrom(candidates), 'forEach', true,(/*TC*/__w(/*/TC*/ function(/*DOMElement*/ elem) { /*TC*/__t([elem,'DOMElement','elem']);/*/TC*/ 
+  ES5(createArrayFrom(candidates), 'forEach', true,__w(function(/*DOMElement*/ elem) {__t([elem,'DOMElement','elem']);
     if (elem.type.toLowerCase() != "application/x-shockwave-flash" &&
         (!elem.classid ||
         elem.classid.toUpperCase() != flashClassID)) {
@@ -7815,8 +7821,8 @@ function hideFlashCallback(/*object*/ params) { /*TC*/__t([params,'object','para
     if (Math.random() <= 1 / 1000) {
       api(Runtime.getClientID() + '/occludespopups', 'post', {});
     }
-  } /*TC*/,{"signature":"function(DOMElement)"})/*/TC*/));
-} /*TC*/__w(hideFlashCallback,{"signature":"function(object)"});/*/TC*/ 
+  },{"signature":"function(DOMElement)"}));
+}__w(hideFlashCallback,{"signature":"function(object)"});
 
 RPC.local.hideFlashObjects = function() {
   hideFlashCallback({state: 'opened'});
@@ -7827,9 +7833,9 @@ RPC.local.showFlashObjects = function() {
 
 var Flash = {
   
-  _setHideFlashCallback: (/*TC*/__w(/*/TC*/ function(/*function?*/ callback) { /*TC*/__t([callback,'?function','callback']);/*/TC*/ 
+  _setHideFlashCallback: __w(function(/*function?*/ callback) {__t([callback,'?function','callback']);
     devHideFlashCallback = callback;
-  } /*TC*/,{"signature":"function(?function)"})/*/TC*/),
+  },{"signature":"function(?function)"}),
 
   hideFlashElement: hideFlashElement,
   showFlashElement: showFlashElement
@@ -7860,7 +7866,7 @@ function getHeight() {
   return Math.max(bodyScroll, bodyOffset, docScroll, docOffset);
 }
 
-function setSize(/*object?*/ params) /*boolean*/ { /*TC*/__t([params,'?object','params']);return __t([function(){/*/TC*/ 
+function setSize(/*object?*/ params) /*boolean*/ {__t([params,'?object','params']);/*jshint validthis: true*/return __t([function(){
   
   if (typeof params != 'object') {
     params = {};
@@ -7892,7 +7898,7 @@ function setSize(/*object?*/ params) /*boolean*/ { /*TC*/__t([params,'?object','
   autoGrowLastSize = params;
   RPC.remote.setSize(params);
   return true;
- /*TC*/}.apply(this,arguments), 'boolean']);/*/TC*/ } /*TC*/__w(setSize,{"signature":"function(?object):boolean"});/*/TC*/ 
+}.apply(this,arguments), 'boolean']);}__w(setSize,{"signature":"function(?object):boolean"});
 
 function setAutoGrow(on, interval) {
   if (interval === undefined && typeof on === 'number') {
@@ -7932,12 +7938,12 @@ __d("sdk.Canvas.Navigation",["sdk.RPC"],function(global,require,requireDynamic,r
 var RPC = require('sdk.RPC');
 
 
-function setUrlHandler(/*function*/ callback) { /*TC*/__t([callback,'function','callback']);/*/TC*/ 
-  RPC.local.navigate = (/*TC*/__w(/*/TC*/ function(/*string*/ path) { /*TC*/__t([path,'string','path']);/*/TC*/ 
+function setUrlHandler(/*function*/ callback) {__t([callback,'function','callback']);
+  RPC.local.navigate = __w(function(/*string*/ path) {__t([path,'string','path']);
     callback({ path: path });
-  } /*TC*/,{"signature":"function(string)"})/*/TC*/);
+  },{"signature":"function(string)"});
   RPC.remote.setNavigationEnabled(true);
-} /*TC*/__w(setUrlHandler,{"signature":"function(function)"});/*/TC*/ 
+}__w(setUrlHandler,{"signature":"function(function)"});
 
 
 RPC.stub('setNavigationEnabled');
@@ -7954,7 +7960,7 @@ __d("sdk.Canvas.Tti",["sdk.RPC","sdk.Runtime"],function(global,require,requireDy
 var RPC = require('sdk.RPC');
 var Runtime = require('sdk.Runtime');
 
-function passAppTtiMessage(/*function?*/ callback, /*string*/ messageName) { /*TC*/__t([callback,'?function','callback'],[messageName,'string','messageName']);/*/TC*/ 
+function passAppTtiMessage(/*function?*/ callback, /*string*/ messageName) {__t([callback,'?function','callback'],[messageName,'string','messageName']);
   var params = {
     appId: Runtime.getClientID(),
     time: ES5('Date', 'now', false),
@@ -7963,27 +7969,27 @@ function passAppTtiMessage(/*function?*/ callback, /*string*/ messageName) { /*T
 
   var args = [params];
   if (callback) {
-    args.push((/*TC*/__w(/*/TC*/ function(/*object*/ response) { /*TC*/__t([response,'object','response']);/*/TC*/ 
+    args.push(__w(function(/*object*/ response) {__t([response,'object','response']);
       callback(response.result);
-    } /*TC*/,{"signature":"function(object)"})/*/TC*/));
+    },{"signature":"function(object)"}));
   }
 
   RPC.remote.logTtiMessage.apply(null, args);
-} /*TC*/__w(passAppTtiMessage,{"signature":"function(?function,string)"});/*/TC*/ 
+}__w(passAppTtiMessage,{"signature":"function(?function,string)"});
 
 
 function startTimer() {
   passAppTtiMessage(null, 'StartIframeAppTtiTimer');
 }
 
-function stopTimer(/*function?*/ callback) { /*TC*/__t([callback,'?function','callback']);/*/TC*/ 
+function stopTimer(/*function?*/ callback) {__t([callback,'?function','callback']);
   passAppTtiMessage(callback, 'StopIframeAppTtiTimer');
-} /*TC*/__w(stopTimer,{"signature":"function(?function)"});/*/TC*/ 
+}__w(stopTimer,{"signature":"function(?function)"});
 
 
-function setDoneLoading(/*function?*/ callback) { /*TC*/__t([callback,'?function','callback']);/*/TC*/ 
+function setDoneLoading(/*function?*/ callback) {__t([callback,'?function','callback']);
   passAppTtiMessage(callback, 'RecordIframeAppTti');
-} /*TC*/__w(setDoneLoading,{"signature":"function(?function)"});/*/TC*/ 
+}__w(setDoneLoading,{"signature":"function(?function)"});
 
 RPC.stub('logTtiMessage');
 
@@ -8099,14 +8105,14 @@ function sample() {
   };
 
   if (collectionMode == COLLECT.AUTOMATIC) {
-    ES5(ES5('Object', 'keys', false,resourceFieldsByTag), 'forEach', true,(/*TC*/__w(/*/TC*/ function(/*string*/ tagName) { /*TC*/__t([tagName,'string','tagName']);/*/TC*/ 
+    ES5(ES5('Object', 'keys', false,resourceFieldsByTag), 'forEach', true,__w(function(/*string*/ tagName) {__t([tagName,'string','tagName']);
       var propertyName = resourceFieldsByTag[tagName];
-      ES5(createArrayFrom(document.getElementsByTagName(tagName)), 'forEach', true,(/*TC*/__w(/*/TC*/ function(/*DOMElement*/ tag) { /*TC*/__t([tag,'DOMElement','tag']);/*/TC*/ 
+      ES5(createArrayFrom(document.getElementsByTagName(tagName)), 'forEach', true,__w(function(/*DOMElement*/ tag) {__t([tag,'DOMElement','tag']);
           if (tag[propertyName]) {
             links.push(tag[propertyName]);
           }
-        } /*TC*/,{"signature":"function(DOMElement)"})/*/TC*/));
-    } /*TC*/,{"signature":"function(string)"})/*/TC*/));
+        },{"signature":"function(DOMElement)"}));
+    },{"signature":"function(string)"}));
   }
 
   if (links.length === 0) {
@@ -8139,14 +8145,14 @@ function maybeSample() {
 }
 
 
-function setCollectionMode(/*number*/ mode) { /*TC*/__t([mode,'number','mode']);/*/TC*/ 
+function setCollectionMode(/*number*/ mode) {__t([mode,'number','mode']);
   collectionMode = mode;
-} /*TC*/__w(setCollectionMode,{"signature":"function(number)"});/*/TC*/ 
+}__w(setCollectionMode,{"signature":"function(number)"});
 
 
-function addStaticResource(/*string*/ url) { /*TC*/__t([url,'string','url']);/*/TC*/ 
+function addStaticResource(/*string*/ url) {__t([url,'string','url']);
   links.push(url);
-} /*TC*/__w(addStaticResource,{"signature":"function(string)"});/*/TC*/ 
+}__w(addStaticResource,{"signature":"function(string)"});
 
 var CanvasPrefetcher = {
   COLLECT_AUTOMATIC : COLLECT.AUTOMATIC,
@@ -8222,20 +8228,20 @@ UIServer.Methods['auth.login'] = UIServer.Methods['permissions.request'];
 },3);
 __d("mergeArrays",[],function(global,require,requireDynamic,requireLazy,module,exports) {
 
-function mergeArrays(/*array*/ target, /*array*/ source) /*array*/ { /*TC*/__t([target,'array','target'],[source,'array','source']);return __t([function(){/*/TC*/ 
+function mergeArrays(/*array*/ target, /*array*/ source) /*array*/ {__t([target,'array','target'],[source,'array','source']);/*jshint validthis: true*/return __t([function(){
   for (var i=0; i < source.length; i++) {
     if (ES5(target, 'indexOf', true,source[i]) < 0) {
       target.push(source[i]);
     }
   }
   return target;
- /*TC*/}.apply(this,arguments), 'array']);/*/TC*/ } /*TC*/__w(mergeArrays,{"signature":"function(array,array):array"});/*/TC*/ 
+}.apply(this,arguments), 'array']);}__w(mergeArrays,{"signature":"function(array,array):array"});
 module.exports = mergeArrays;
 
 });
 __d("format",[],function(global,require,requireDynamic,requireLazy,module,exports) {
 
-function format(/*string*/ str, argsdotdot) /*string*/ { /*TC*/__t([str,'string','str']);return __t([function(){/*/TC*/ 
+function format(/*string*/ str, argsdotdot) /*string*/ {__t([str,'string','str']);/*jshint validthis: true*/return __t([function(){
   argsdotdot = Array.prototype.slice.call(arguments, 1);
   return str.replace(/\{(\d+)\}/g, function(_, index) {
     var value = argsdotdot[Number(index)];
@@ -8243,13 +8249,13 @@ function format(/*string*/ str, argsdotdot) /*string*/ { /*TC*/__t([str,'string'
      ? ''
      : value.toString();
   });
- /*TC*/}.apply(this,arguments), 'string']);/*/TC*/ } /*TC*/__w(format,{"signature":"function(string):string"});/*/TC*/ 
+}.apply(this,arguments), 'string']);}__w(format,{"signature":"function(string):string"});
 module.exports = format;
 
 });
 __d("safeEval",[],function(global,require,requireDynamic,requireLazy,module,exports) {
 
-function safeEval(source, /*?array*/ args) { /*TC*/__t([args,'?array','args']);/*/TC*/ 
+function safeEval(source, /*?array*/ args) {__t([args,'?array','args']);
   if (source === null || typeof source === 'undefined') {
     return;
   }
@@ -8265,7 +8271,7 @@ function safeEval(source, /*?array*/ args) { /*TC*/__t([args,'?array','args']);/
   // We're asked to eval code
   return Function('return eval("' + source.replace(/"/g, '\\"')  + '");')
     .apply(null, args || []);
-} /*TC*/__w(safeEval,{"signature":"function(?array)"});/*/TC*/ 
+}__w(safeEval,{"signature":"function(?array)"});
 
 module.exports = safeEval;
 
@@ -8282,18 +8288,18 @@ var Waitable = Model.extend({
   },
 
   
-  error: (/*TC*/__w(/*/TC*/ function(/*Error*/ ex) { /*TC*/__t([ex,'Error','ex']);/*/TC*/ 
+  error: __w(function(/*Error*/ ex) {__t([ex,'Error','ex']);
     this.inform("error", ex);
-  } /*TC*/,{"signature":"function(Error)"})/*/TC*/),
+  },{"signature":"function(Error)"}),
 
   
-  wait: (/*TC*/__w(/*/TC*/ function(/*function?*/ callback, /*function?*/ errorHandler) { /*TC*/__t([callback,'?function','callback'],[errorHandler,'?function','errorHandler']);/*/TC*/ 
+  wait: __w(function(/*function?*/ callback, /*function?*/ errorHandler) {__t([callback,'?function','callback'],[errorHandler,'?function','errorHandler']);
     
     if (errorHandler) {
       this.subscribe('error', errorHandler);
     }
 
-    this.monitor('Value.change', ES5((/*TC*/__w(/*/TC*/ function() /*boolean?*/ { /*TC*/return __t([function(){/*/TC*/ 
+    this.monitor('Value.change', ES5(__w(function() /*boolean?*/ {/*jshint validthis: true*/return __t([function(){
       var value = this.getValue();
       if (value !== undefined) {
         
@@ -8301,8 +8307,8 @@ var Waitable = Model.extend({
         callback(value);
         return true;
       }
-     /*TC*/}.apply(this,arguments), '?boolean']);/*/TC*/ } /*TC*/,{"signature":"function():boolean?"})/*/TC*/), 'bind', true,this));
-  } /*TC*/,{"signature":"function(?function,?function)"})/*/TC*/)
+    }.apply(this,arguments), '?boolean']);},{"signature":"function():boolean?"}), 'bind', true,this));
+  },{"signature":"function(?function,?function)"})
 });
 
 module.exports = Waitable;
@@ -8319,12 +8325,12 @@ var Waitable = require('sdk.Waitable');
 
 
 
-function toFields(/*string*/ s) /*array<string>*/ { /*TC*/__t([s,'string','s']);return __t([function(){/*/TC*/ 
+function toFields(/*string*/ s) /*array<string>*/ {__t([s,'string','s']);/*jshint validthis: true*/return __t([function(){
   return ES5(s.split(','), 'map', true,function(s) {return ES5(s,'trim', true);});
- /*TC*/}.apply(this,arguments), 'array<string>']);/*/TC*/ } /*TC*/__w(toFields,{"signature":"function(string):array<string>"});/*/TC*/ 
+}.apply(this,arguments), 'array<string>']);}__w(toFields,{"signature":"function(string):array<string>"});
 
 
-function parseWhere(/*string*/ s) /*object*/ { /*TC*/__t([s,'string','s']);return __t([function(){/*/TC*/ 
+function parseWhere(/*string*/ s) /*object*/ {__t([s,'string','s']);/*jshint validthis: true*/return __t([function(){
   
   
   var
@@ -8355,13 +8361,13 @@ function parseWhere(/*string*/ s) /*object*/ { /*TC*/__t([s,'string','s']);retur
     result = { type: 'unknown', value: s };
   }
   return result;
- /*TC*/}.apply(this,arguments), 'object']);/*/TC*/ } /*TC*/__w(parseWhere,{"signature":"function(string):object"});/*/TC*/ 
+}.apply(this,arguments), 'object']);}__w(parseWhere,{"signature":"function(string):object"});
 
-function encode(value) /*string*/ { /*TC*/return __t([function(){/*/TC*/ 
+function encode(value) /*string*/ {/*jshint validthis: true*/return __t([function(){
   return typeof value === 'string'
     ? ES5('JSON', 'stringify', false,value)
     : value;
- /*TC*/}.apply(this,arguments), 'string']);/*/TC*/ } /*TC*/__w(encode,{"signature":"function():string"});/*/TC*/ 
+}.apply(this,arguments), 'string']);}__w(encode,{"signature":"function():string"});
 
 var counter = 1;
 
@@ -8371,15 +8377,15 @@ var Query = Waitable.extend({
     this.name = 'v_' + counter++;
   },
   
-  hasDependency: (/*TC*/__w(/*/TC*/ function(/*boolean?*/ value) /*boolean*/ { /*TC*/__t([value,'?boolean','value']);return __t([function(){/*/TC*/ 
+  hasDependency: __w(function(/*boolean?*/ value) /*boolean*/ {__t([value,'?boolean','value']);/*jshint validthis: true*/return __t([function(){
     if (arguments.length) {
       this._hasDependency = value;
     }
     return !!this._hasDependency;
-   /*TC*/}.apply(this,arguments), 'boolean']);/*/TC*/ } /*TC*/,{"signature":"function(?boolean):boolean"})/*/TC*/),
+  }.apply(this,arguments), 'boolean']);},{"signature":"function(?boolean):boolean"}),
 
   
-  parse: (/*TC*/__w(/*/TC*/ function(/*array*/ args) /*object*/ { /*TC*/__t([args,'array','args']);return __t([function(){/*/TC*/ 
+  parse: __w(function(/*array*/ args) /*object*/ {__t([args,'array','args']);/*jshint validthis: true*/return __t([function(){
     var
       fql = format.apply(null, args),
       re = (/^select (.*?) from (\w+)\s+where (.*)$/i).exec(fql); 
@@ -8396,10 +8402,10 @@ var Query = Waitable.extend({
     }
 
     return this;
-   /*TC*/}.apply(this,arguments), 'object']);/*/TC*/ } /*TC*/,{"signature":"function(array):object"})/*/TC*/),
+  }.apply(this,arguments), 'object']);},{"signature":"function(array):object"}),
 
   
-  toFql: (/*TC*/__w(/*/TC*/ function() /*string*/ { /*TC*/return __t([function(){/*/TC*/ 
+  toFql: __w(function() /*string*/ {/*jshint validthis: true*/return __t([function(){
     var s = 'select ' + this.fields.join(',') + ' from ' +
             this.table + ' where ';
     switch (this.where.type) {
@@ -8419,13 +8425,13 @@ var Query = Waitable.extend({
         break;
     }
     return s;
-   /*TC*/}.apply(this,arguments), 'string']);/*/TC*/ } /*TC*/,{"signature":"function():string"})/*/TC*/),
+  }.apply(this,arguments), 'string']);},{"signature":"function():string"}),
 
 
   
-  toString: (/*TC*/__w(/*/TC*/ function() /*string*/ { /*TC*/return __t([function(){/*/TC*/ 
+  toString: __w(function() /*string*/ {/*jshint validthis: true*/return __t([function(){
     return '#' + this.name;
-   /*TC*/}.apply(this,arguments), 'string']);/*/TC*/ } /*TC*/,{"signature":"function():string"})/*/TC*/)
+  }.apply(this,arguments), 'string']);},{"signature":"function():string"})
 });
 
 module.exports = Query;
@@ -8444,15 +8450,15 @@ var Waitable = require('sdk.Waitable');
 
 var Data = {
   
-  query: (/*TC*/__w(/*/TC*/ function(/*string*/ template, data) /*object*/ { /*TC*/__t([template,'string','template']);return __t([function(){/*/TC*/ 
+  query: __w(function(/*string*/ template, data) /*object*/ {__t([template,'string','template']);/*jshint validthis: true*/return __t([function(){
     var query = new Query().parse(Array.prototype.slice.call(arguments));
     Data.queue.push(query);
     Data._waitToProcess();
     return query;
-   /*TC*/}.apply(this,arguments), 'object']);/*/TC*/ } /*TC*/,{"signature":"function(string):object"})/*/TC*/),
+  }.apply(this,arguments), 'object']);},{"signature":"function(string):object"}),
 
   
-  waitOn: (/*TC*/__w(/*/TC*/ function(/*array*/ dependencies, /*function*/ callback) /*Waitable*/ { /*TC*/__t([dependencies,'array','dependencies'],[callback,'function','callback']);return __t([function(){/*/TC*/ 
+  waitOn: __w(function(/*array*/ dependencies, /*function*/ callback) /*Waitable*/ {__t([dependencies,'array','dependencies'],[callback,'function','callback']);/*jshint validthis: true*/return __t([function(){
     var
       result = new Waitable(),
       count = dependencies.length;
@@ -8464,7 +8470,7 @@ var Data = {
       callback = ErrorHandling.unguard(function() { return safeEval(s); });
     }
 
-    ES5(dependencies, 'forEach', true,(/*TC*/__w(/*/TC*/ function(/*object*/ item) { /*TC*/__t([item,'object','item']);/*/TC*/ 
+    ES5(dependencies, 'forEach', true,__w(function(/*object*/ item) {__t([item,'object','item']);
       item.monitor('Value.change', function() {
         var done = false;
         if (Data._getValue(item) !== undefined) {
@@ -8479,14 +8485,14 @@ var Data = {
         }
         return done;
       });
-    } /*TC*/,{"signature":"function(object)"})/*/TC*/));
+    },{"signature":"function(object)"}));
     return result;
-   /*TC*/}.apply(this,arguments), 'Waitable']);/*/TC*/ } /*TC*/,{"signature":"function(array,function):Waitable"})/*/TC*/),
+  }.apply(this,arguments), 'Waitable']);},{"signature":"function(array,function):Waitable"}),
 
   
-  process: (/*TC*/__w(/*/TC*/ function(/*?string*/ token) { /*TC*/__t([token,'?string','token']);/*/TC*/ 
+  process: __w(function(/*?string*/ token) {__t([token,'?string','token']);
     Data._process(token);
-  } /*TC*/,{"signature":"function(?string)"})/*/TC*/),
+  },{"signature":"function(?string)"}),
 
   
   _getValue: function(item) {
@@ -8496,8 +8502,8 @@ var Data = {
   },
 
   
-  _selectByIndex: (/*TC*/__w(/*/TC*/ function(/*array*/ fields, /*string*/ table, /*string*/ name,
-      /*string*/ value) /*object*/ { /*TC*/__t([fields,'array','fields'],[table,'string','table'],[name,'string','name'],[value,'string','value']);return __t([function(){/*/TC*/ 
+  _selectByIndex: __w(function(/*array*/ fields, /*string*/ table, /*string*/ name,
+      /*string*/ value) /*object*/ {__t([fields,'array','fields'],[table,'string','table'],[name,'string','name'],[value,'string','value']);/*jshint validthis: true*/return __t([function(){
     var query = new Query();
     query.fields = fields;
     query.table = table;
@@ -8505,7 +8511,7 @@ var Data = {
     Data.queue.push(query);
     Data._waitToProcess();
     return query;
-   /*TC*/}.apply(this,arguments), 'object']);/*/TC*/ } /*TC*/,{"signature":"function(array,string,string,string):object"})/*/TC*/),
+  }.apply(this,arguments), 'object']);},{"signature":"function(array,string,string,string):object"}),
 
   
   _waitToProcess: function() {
@@ -8517,7 +8523,7 @@ var Data = {
   },
 
   
-  _process: (/*TC*/__w(/*/TC*/ function(/*?string*/ token) { /*TC*/__t([token,'?string','token']);/*/TC*/ 
+  _process: __w(function(/*?string*/ token) {__t([token,'?string','token']);
     Data.timer = -1;
 
     var
@@ -8551,21 +8557,21 @@ var Data = {
       params.access_token = token;
     }
 
-    api('/fql', 'GET', params, (/*TC*/__w(/*/TC*/ function(/*object*/ result) { /*TC*/__t([result,'object','result']);/*/TC*/ 
+    api('/fql', 'GET', params, __w(function(/*object*/ result) {__t([result,'object','result']);
       if (result.error) {
-        ES5(ES5('Object', 'keys', false,mqueries), 'forEach', true,(/*TC*/__w(/*/TC*/ function(/*string*/ key) { /*TC*/__t([key,'string','key']);/*/TC*/ 
+        ES5(ES5('Object', 'keys', false,mqueries), 'forEach', true,__w(function(/*string*/ key) {__t([key,'string','key']);
           mqueries[key].error(new Error(result.error.message));
-        } /*TC*/,{"signature":"function(string)"})/*/TC*/));
+        },{"signature":"function(string)"}));
       } else {
-        ES5(result.data, 'forEach', true,(/*TC*/__w(/*/TC*/ function(/*object*/ o) { /*TC*/__t([o,'object','o']);/*/TC*/ 
+        ES5(result.data, 'forEach', true,__w(function(/*object*/ o) {__t([o,'object','o']);
           mqueries[o.name].setValue(o.fql_result_set);
-        } /*TC*/,{"signature":"function(object)"})/*/TC*/));
+        },{"signature":"function(object)"}));
       }
-    } /*TC*/,{"signature":"function(object)"})/*/TC*/));
-  } /*TC*/,{"signature":"function(?string)"})/*/TC*/),
+    },{"signature":"function(object)"}));
+  },{"signature":"function(?string)"}),
 
   
-  _mergeIndexQuery: (/*TC*/__w(/*/TC*/ function(/*object*/ item, /*object*/ mqueries) { /*TC*/__t([item,'object','item'],[mqueries,'object','mqueries']);/*/TC*/ 
+  _mergeIndexQuery: __w(function(/*object*/ item, /*object*/ mqueries) {__t([item,'object','item'],[mqueries,'object','mqueries']);
     var key = item.where.key,
     value = item.where.value;
 
@@ -8583,12 +8589,12 @@ var Data = {
     mergeArrays(master.where.value, [value]);
 
     
-    master.wait((/*TC*/__w(/*/TC*/ function(/*array<object>*/ r) { /*TC*/__t([r,'array<object>','r']);/*/TC*/ 
-      item.setValue(ES5(r, 'filter', true,(/*TC*/__w(/*/TC*/ function(/*object*/ x) { /*TC*/__t([x,'object','x']);/*/TC*/ 
+    master.wait(__w(function(/*array<object>*/ r) {__t([r,'array<object>','r']);
+      item.setValue(ES5(r, 'filter', true,__w(function(/*object*/ x) {__t([x,'object','x']);
         return x[key] == value;
-      } /*TC*/,{"signature":"function(object)"})/*/TC*/)));
-    } /*TC*/,{"signature":"function(array<object>)"})/*/TC*/));
-  } /*TC*/,{"signature":"function(object,object)"})/*/TC*/),
+      },{"signature":"function(object)"})));
+    },{"signature":"function(array<object>)"}));
+  },{"signature":"function(object,object)"}),
 
   timer: -1,
   queue: []
@@ -8755,19 +8761,19 @@ var DEF_ERROR_MSG = {
   'error_message': 'An unknown error caused the dialog to be closed'
 };
 
-var callbackWrapper = (/*TC*/__w(/*/TC*/ function(/*function*/ callback) /*function*/ { /*TC*/__t([callback,'function','callback']);return __t([function(){/*/TC*/ 
-  return (/*TC*/__w(/*/TC*/ function(/*object?*/ msg) { /*TC*/__t([msg,'?object','msg']);/*/TC*/ 
+var callbackWrapper = __w(function(/*function*/ callback) /*function*/ {__t([callback,'function','callback']);/*jshint validthis: true*/return __t([function(){
+  return __w(function(/*object?*/ msg) {__t([msg,'?object','msg']);
     callback(msg && msg.response
       ? ES5('JSON', 'parse', false,msg.response)
       : DEF_ERROR_MSG
     );
-  } /*TC*/,{"signature":"function(?object)"})/*/TC*/);
- /*TC*/}.apply(this,arguments), 'function']);/*/TC*/ } /*TC*/,{"signature":"function(function):function"})/*/TC*/);
+  },{"signature":"function(?object)"});
+}.apply(this,arguments), 'function']);},{"signature":"function(function):function"});
 
 
 copyProperties(UIServer.Methods, {
   'pay.prompt': {
-    transform : (/*TC*/__w(/*/TC*/ function(/*object*/ call) { /*TC*/__t([call,'object','call']);/*/TC*/ 
+    transform : __w(function(/*object*/ call) {__t([call,'object','call']);
       var handler = XD.handler(
         callbackWrapper(call.cb),
         'parent.frames[' + (window.name || 'iframe_canvas') + ']');
@@ -8775,12 +8781,12 @@ copyProperties(UIServer.Methods, {
       call.params.channel = handler;
 
       XD.inform('Pay.Prompt', call.params);
-    } /*TC*/,{"signature":"function(object)"})/*/TC*/)
+    },{"signature":"function(object)"})
   },
   'pay': {
     size      : { width: 555, height: 120 },
     connectDisplay : 'popup',
-    transform : (/*TC*/__w(/*/TC*/ function(/*object*/ call) /*object?*/ { /*TC*/__t([call,'object','call']);return __t([function(){/*/TC*/ 
+    transform : __w(function(/*object*/ call) /*object?*/ {__t([call,'object','call']);/*jshint validthis: true*/return __t([function(){
       call.cb = callbackWrapper(call.cb);
       if (!Runtime.isEnvironment(Runtime.ENVIRONMENTS.CANVAS)) {
         
@@ -8795,7 +8801,7 @@ copyProperties(UIServer.Methods, {
       call.params.uiserver = true;
 
       XD.inform('Pay.Prompt', call.params);
-     /*TC*/}.apply(this,arguments), '?object']);/*/TC*/ } /*TC*/,{"signature":"function(object):object?"})/*/TC*/)
+    }.apply(this,arguments), '?object']);},{"signature":"function(object):object?"})
   }
 });
 
@@ -8952,24 +8958,24 @@ var parseCount = 0;
 
 var XFBML = new ObservableMixin();
 
-function propStr(object, /*string*/ property) /*string*/ { /*TC*/__t([property,'string','property']);return __t([function(){/*/TC*/ 
+function propStr(object, /*string*/ property) /*string*/ {__t([property,'string','property']);/*jshint validthis: true*/return __t([function(){
   return object[property] + '';
- /*TC*/}.apply(this,arguments), 'string']);/*/TC*/ } /*TC*/__w(propStr,{"signature":"function(string):string"});/*/TC*/ 
+}.apply(this,arguments), 'string']);}__w(propStr,{"signature":"function(string):string"});
 
-function nodeNameIE(/*DOMElement*/ element) /*string*/ { /*TC*/__t([element,'DOMElement','element']);return __t([function(){/*/TC*/ 
+function nodeNameIE(/*DOMElement*/ element) /*string*/ {__t([element,'DOMElement','element']);/*jshint validthis: true*/return __t([function(){
   // In old IE (< 9), element.nodeName doesn't include the namespace so we use
   
   return element.scopeName
     ? (element.scopeName + ':' + element.nodeName)
     : '';
- /*TC*/}.apply(this,arguments), 'string']);/*/TC*/ } /*TC*/__w(nodeNameIE,{"signature":"function(DOMElement):string"});/*/TC*/ 
+}.apply(this,arguments), 'string']);}__w(nodeNameIE,{"signature":"function(DOMElement):string"});
 
-function xfbmlInfo(/*DOMElement*/ element) /*object?*/ { /*TC*/__t([element,'DOMElement','element']);return __t([function(){/*/TC*/ 
+function xfbmlInfo(/*DOMElement*/ element) /*object?*/ {__t([element,'DOMElement','element']);/*jshint validthis: true*/return __t([function(){
   return xfbml[propStr(element, 'nodeName').toLowerCase()]
     || xfbml[nodeNameIE(element).toLowerCase()];
- /*TC*/}.apply(this,arguments), '?object']);/*/TC*/ } /*TC*/__w(xfbmlInfo,{"signature":"function(DOMElement):object?"});/*/TC*/ 
+}.apply(this,arguments), '?object']);}__w(xfbmlInfo,{"signature":"function(DOMElement):object?"});
 
-function html5Info(/*DOMElement*/ element) /*object?*/ { /*TC*/__t([element,'DOMElement','element']);return __t([function(){/*/TC*/ 
+function html5Info(/*DOMElement*/ element) /*object?*/ {__t([element,'DOMElement','element']);/*jshint validthis: true*/return __t([function(){
   var classNames = ES5(ES5(propStr(element, 'className'),'trim', true).split(/\s+/), 'filter', true,
     function(className) { return html5.hasOwnProperty(className); });
 
@@ -8990,17 +8996,17 @@ function html5Info(/*DOMElement*/ element) /*object?*/ { /*TC*/__t([element,'DOM
       element.getAttribute('fb-xfbml-state')) {
     return html5[classNames[0]];
   }
- /*TC*/}.apply(this,arguments), '?object']);/*/TC*/ } /*TC*/__w(html5Info,{"signature":"function(DOMElement):object?"});/*/TC*/ 
+}.apply(this,arguments), '?object']);}__w(html5Info,{"signature":"function(DOMElement):object?"});
 
-function attr(/*DOMElement*/ element) /*object*/ { /*TC*/__t([element,'DOMElement','element']);return __t([function(){/*/TC*/ 
+function attr(/*DOMElement*/ element) /*object*/ {__t([element,'DOMElement','element']);/*jshint validthis: true*/return __t([function(){
   var attrs = {};
   ES5(createArrayFrom(element.attributes), 'forEach', true,function(at) {
     attrs[propStr(at, 'name')] = propStr(at, 'value');
   });
   return attrs;
- /*TC*/}.apply(this,arguments), 'object']);/*/TC*/ } /*TC*/__w(attr,{"signature":"function(DOMElement):object"});/*/TC*/ 
+}.apply(this,arguments), 'object']);}__w(attr,{"signature":"function(DOMElement):object"});
 
-function parse(/*DOMElement*/ dom, /*function*/ callback, /*boolean*/ reparse) { /*TC*/__t([dom,'DOMElement','dom'],[callback,'function','callback'],[reparse,'boolean','reparse']);/*/TC*/ 
+function parse(/*DOMElement*/ dom, /*function*/ callback, /*boolean*/ reparse) {__t([dom,'DOMElement','dom'],[callback,'function','callback'],[reparse,'boolean','reparse']);
   Assert.isTrue(
     dom && dom.nodeType && dom.nodeType === 1 && !!dom.getElementsByTagName,
     'Invalid DOM node passed to FB.XFBML.parse()');
@@ -9111,7 +9117,7 @@ function parse(/*DOMElement*/ dom, /*function*/ callback, /*boolean*/ reparse) {
   }, timeout);
 
   onrender(); 
-} /*TC*/__w(parse,{"signature":"function(DOMElement,function,boolean)"});/*/TC*/ 
+}__w(parse,{"signature":"function(DOMElement,function,boolean)"});
 
 XFBML.subscribe('render', function() {
   var q = XFBML.getSubscribers('render.queue');
@@ -9123,7 +9129,7 @@ XFBML.subscribe('render', function() {
 
 copyProperties(XFBML, {
 
-  registerTag: (/*TC*/__w(/*/TC*/ function(/*object*/ info) { /*TC*/__t([info,'object','info']);/*/TC*/ 
+  registerTag: __w(function(/*object*/ info) {__t([info,'object','info']);
     var fqn = info.xmlns + ':' + info.localName;
     Assert.isUndefined(xfbml[fqn], fqn + ' already registered');
 
@@ -9132,11 +9138,11 @@ copyProperties(XFBML, {
     
     
     html5[info.xmlns + '-' + info.localName] = info;
-  } /*TC*/,{"signature":"function(object)"})/*/TC*/),
+  },{"signature":"function(object)"}),
 
-  parse: (/*TC*/__w(/*/TC*/ function(/*DOMElement?*/ dom, /*function?*/ cb) { /*TC*/__t([dom,'?DOMElement','dom'],[cb,'?function','cb']);/*/TC*/ 
+  parse: __w(function(/*DOMElement?*/ dom, /*function?*/ cb) {__t([dom,'?DOMElement','dom'],[cb,'?function','cb']);
     parse(dom || document.body, cb || function(){},  true);
-  } /*TC*/,{"signature":"function(?DOMElement,?function)"})/*/TC*/),
+  },{"signature":"function(?DOMElement,?function)"}),
 
   parseNew: function() {
     parse(document.body, function(){},  false);
@@ -9144,12 +9150,12 @@ copyProperties(XFBML, {
 });
 
 if (feature('log_tag_count')) {
-  var logTagCount = (/*TC*/__w(/*/TC*/ function(/*number*/ parseCount, /*number*/ numTags) { /*TC*/__t([parseCount,'number','parseCount'],[numTags,'number','numTags']);/*/TC*/ 
+  var logTagCount = __w(function(/*number*/ parseCount, /*number*/ numTags) {__t([parseCount,'number','parseCount'],[numTags,'number','numTags']);
     XFBML.unsubscribe('parse', logTagCount);
     
     
     setTimeout(ES5(Impressions.log, 'bind', true,null, 102, {tag_count: numTags}), 5000);
-  } /*TC*/,{"signature":"function(number,number)"})/*/TC*/);
+  },{"signature":"function(number,number)"});
   XFBML.subscribe('parse', logTagCount);
 }
 
@@ -9175,21 +9181,21 @@ var PluginPipe = new ObservableMixin();
 var threshold = PluginPipeConfig.threshold;
 var queued = [];
 
-function isEnabled() /*boolean*/ { /*TC*/return __t([function(){/*/TC*/ 
+function isEnabled() /*boolean*/ {/*jshint validthis: true*/return __t([function(){
   return !!(feature('plugin_pipe') &&
          Runtime.getSecure() !== undefined &&
          (UserAgent.chrome() || UserAgent.firefox()) &&
          PluginPipeConfig.enabledApps[Runtime.getClientID()]);
- /*TC*/}.apply(this,arguments), 'boolean']);/*/TC*/ } /*TC*/__w(isEnabled,{"signature":"function():boolean"});/*/TC*/ 
+}.apply(this,arguments), 'boolean']);}__w(isEnabled,{"signature":"function():boolean"});
 
 function insertPlugins() {
   var q = queued;
   queued = [];
 
   if (q.length <= threshold) {
-    ES5(q, 'forEach', true,(/*TC*/__w(/*/TC*/ function(/*object*/ plugin) { /*TC*/__t([plugin,'object','plugin']);/*/TC*/ 
+    ES5(q, 'forEach', true,__w(function(/*object*/ plugin) {__t([plugin,'object','plugin']);
       insertIframe(plugin.config);
-    } /*TC*/,{"signature":"function(object)"})/*/TC*/));
+    },{"signature":"function(object)"}));
     return;
   }
 
@@ -9201,7 +9207,7 @@ function insertPlugins() {
     }
   }
 
-  ES5(q, 'forEach', true,(/*TC*/__w(/*/TC*/ function(/*object*/ plugin) { /*TC*/__t([plugin,'object','plugin']);/*/TC*/ 
+  ES5(q, 'forEach', true,__w(function(/*object*/ plugin) {__t([plugin,'object','plugin']);
     var config = {};
     for (var key in plugin.config) {
       config[key] = plugin.config[key];
@@ -9210,32 +9216,32 @@ function insertPlugins() {
       '/plugins/plugin_pipe_shell.php';
     config.onload = onrender;
     insertIframe(config);
-  } /*TC*/,{"signature":"function(object)"})/*/TC*/));
+  },{"signature":"function(object)"}));
 
   onrender();
 }
 
 XFBML.subscribe('parse', insertPlugins);
 
-function insertPipe(/*array<object>*/ plugins) { /*TC*/__t([plugins,'array<object>','plugins']);/*/TC*/ 
+function insertPipe(/*array<object>*/ plugins) {__t([plugins,'array<object>','plugins']);
   var root = document.createElement('span');
   Content.appendHidden(root);
 
   var params = {};
-  ES5(plugins, 'forEach', true,(/*TC*/__w(/*/TC*/ function(/*object*/ plugin){ /*TC*/__t([plugin,'object','plugin']);/*/TC*/ 
+  ES5(plugins, 'forEach', true,__w(function(/*object*/ plugin){__t([plugin,'object','plugin']);
     params[plugin.config.name] = {
       plugin: plugin.tag,
       params: plugin.params
     };
-  } /*TC*/,{"signature":"function(object)"})/*/TC*/));
+  },{"signature":"function(object)"}));
 
   var raw = ES5('JSON', 'stringify', false,params);
   var miny = Miny.encode(raw);
 
-  ES5(plugins, 'forEach', true,(/*TC*/__w(/*/TC*/ function(/*object*/ plugin) { /*TC*/__t([plugin,'object','plugin']);/*/TC*/ 
+  ES5(plugins, 'forEach', true,__w(function(/*object*/ plugin) {__t([plugin,'object','plugin']);
     var frame = document.getElementsByName(plugin.config.name)[0];
     frame.onload = plugin.config.onload;
-  } /*TC*/,{"signature":"function(object)"})/*/TC*/));
+  },{"signature":"function(object)"}));
 
   var url = UrlMap.resolve('www', Runtime.getSecure()) + '/plugins/pipe.php';
   var name = guid();
@@ -9254,10 +9260,10 @@ function insertPipe(/*array<object>*/ plugins) { /*TC*/__t([plugins,'array<objec
       }});
     }
   });
-} /*TC*/__w(insertPipe,{"signature":"function(array<object>)"});/*/TC*/ 
+}__w(insertPipe,{"signature":"function(array<object>)"});
 
 copyProperties(PluginPipe, {
-  add: (/*TC*/__w(/*/TC*/ function(/*object*/ plugin) /*boolean*/ { /*TC*/__t([plugin,'object','plugin']);return __t([function(){/*/TC*/ 
+  add: __w(function(/*object*/ plugin) /*boolean*/ {__t([plugin,'object','plugin']);/*jshint validthis: true*/return __t([function(){
     var enabled = isEnabled();
     enabled && queued.push({
       config: plugin._config,
@@ -9265,7 +9271,7 @@ copyProperties(PluginPipe, {
       params: plugin._params
     });
     return enabled;
-   /*TC*/}.apply(this,arguments), 'boolean']);/*/TC*/ } /*TC*/,{"signature":"function(object):boolean"})/*/TC*/)
+  }.apply(this,arguments), 'boolean']);},{"signature":"function(object):boolean"})
 });
 
 module.exports = PluginPipe;
@@ -9297,48 +9303,48 @@ var baseParams = {
   color_scheme: 'string' 
 };
 
-function resize(/*DOMElement*/ elem, /*?number*/ width, /*?number*/ height) { /*TC*/__t([elem,'DOMElement','elem'],[width,'?number','width'],[height,'?number','height']);/*/TC*/ 
+function resize(/*DOMElement*/ elem, /*?number*/ width, /*?number*/ height) {__t([elem,'DOMElement','elem'],[width,'?number','width'],[height,'?number','height']);
   if (width || width === 0) {
     elem.style.width = width + 'px';
   }
   if (height || height === 0) {
     elem.style.height = height + 'px';
   }
-} /*TC*/__w(resize,{"signature":"function(DOMElement,?number,?number)"});/*/TC*/ 
+}__w(resize,{"signature":"function(DOMElement,?number,?number)"});
 
-function resizeBubbler(/*?string*/ pluginID) /*function*/ { /*TC*/__t([pluginID,'?string','pluginID']);return __t([function(){/*/TC*/ 
-  return (/*TC*/__w(/*/TC*/ function(/*object*/ msg) { /*TC*/__t([msg,'object','msg']);/*/TC*/ 
+function resizeBubbler(/*?string*/ pluginID) /*function*/ {__t([pluginID,'?string','pluginID']);/*jshint validthis: true*/return __t([function(){
+  return __w(function(/*object*/ msg) {__t([msg,'object','msg']);
     var message = { width: msg.width, height: msg.height, pluginID: pluginID };
     Event.fire('xfbml.resize', message);
-  } /*TC*/,{"signature":"function(object)"})/*/TC*/);
- /*TC*/}.apply(this,arguments), 'function']);/*/TC*/ } /*TC*/__w(resizeBubbler,{"signature":"function(?string):function"});/*/TC*/ 
+  },{"signature":"function(object)"});
+}.apply(this,arguments), 'function']);}__w(resizeBubbler,{"signature":"function(?string):function"});
 
 var types = {
   // TODO: Move the 'bool' and 'px' parsing to the server?
-  string: (/*TC*/__w(/*/TC*/ function(/*?string*/ value) /*?string*/ { /*TC*/__t([value,'?string','value']);return __t([function(){/*/TC*/ 
+  string: __w(function(/*?string*/ value) /*?string*/ {__t([value,'?string','value']);/*jshint validthis: true*/return __t([function(){
     return value;
-   /*TC*/}.apply(this,arguments), '?string']);/*/TC*/ } /*TC*/,{"signature":"function(?string):?string"})/*/TC*/),
-  bool: (/*TC*/__w(/*/TC*/ function(/*?string*/ value) /*?boolean*/ { /*TC*/__t([value,'?string','value']);return __t([function(){/*/TC*/ 
+  }.apply(this,arguments), '?string']);},{"signature":"function(?string):?string"}),
+  bool: __w(function(/*?string*/ value) /*?boolean*/ {__t([value,'?string','value']);/*jshint validthis: true*/return __t([function(){
     return value ? (/^(?:true|1|yes|on)$/i).test(value) : undefined;
-   /*TC*/}.apply(this,arguments), '?boolean']);/*/TC*/ } /*TC*/,{"signature":"function(?string):?boolean"})/*/TC*/),
-  url: (/*TC*/__w(/*/TC*/ function(/*?string*/ value) /*?string*/ { /*TC*/__t([value,'?string','value']);return __t([function(){/*/TC*/ 
+  }.apply(this,arguments), '?boolean']);},{"signature":"function(?string):?boolean"}),
+  url: __w(function(/*?string*/ value) /*?string*/ {__t([value,'?string','value']);/*jshint validthis: true*/return __t([function(){
     return resolveURI(value);
-   /*TC*/}.apply(this,arguments), '?string']);/*/TC*/ } /*TC*/,{"signature":"function(?string):?string"})/*/TC*/),
-  url_maybe: (/*TC*/__w(/*/TC*/ function(/*?string*/ value) /*?string*/ { /*TC*/__t([value,'?string','value']);return __t([function(){/*/TC*/ 
+  }.apply(this,arguments), '?string']);},{"signature":"function(?string):?string"}),
+  url_maybe: __w(function(/*?string*/ value) /*?string*/ {__t([value,'?string','value']);/*jshint validthis: true*/return __t([function(){
     return value ? resolveURI(value) : value;
-   /*TC*/}.apply(this,arguments), '?string']);/*/TC*/ } /*TC*/,{"signature":"function(?string):?string"})/*/TC*/),
-  hostname: (/*TC*/__w(/*/TC*/ function(/*?string*/ value) /*?string*/ { /*TC*/__t([value,'?string','value']);return __t([function(){/*/TC*/ 
+  }.apply(this,arguments), '?string']);},{"signature":"function(?string):?string"}),
+  hostname: __w(function(/*?string*/ value) /*?string*/ {__t([value,'?string','value']);/*jshint validthis: true*/return __t([function(){
     return value || window.location.hostname;
-   /*TC*/}.apply(this,arguments), '?string']);/*/TC*/ } /*TC*/,{"signature":"function(?string):?string"})/*/TC*/),
-  px: (/*TC*/__w(/*/TC*/ function(/*?string*/ value) /*?number*/ { /*TC*/__t([value,'?string','value']);return __t([function(){/*/TC*/ 
+  }.apply(this,arguments), '?string']);},{"signature":"function(?string):?string"}),
+  px: __w(function(/*?string*/ value) /*?number*/ {__t([value,'?string','value']);/*jshint validthis: true*/return __t([function(){
     return (/^(\d+)(?:px)?$/).test(value) ? parseInt(RegExp.$1, 10) : undefined;
-   /*TC*/}.apply(this,arguments), '?number']);/*/TC*/ } /*TC*/,{"signature":"function(?string):?number"})/*/TC*/),
-  text: (/*TC*/__w(/*/TC*/ function(/*?string*/ value) /*?string*/ { /*TC*/__t([value,'?string','value']);return __t([function(){/*/TC*/ 
+  }.apply(this,arguments), '?number']);},{"signature":"function(?string):?number"}),
+  text: __w(function(/*?string*/ value) /*?string*/ {__t([value,'?string','value']);/*jshint validthis: true*/return __t([function(){
     return value;
-   /*TC*/}.apply(this,arguments), '?string']);/*/TC*/ } /*TC*/,{"signature":"function(?string):?string"})/*/TC*/)
+  }.apply(this,arguments), '?string']);},{"signature":"function(?string):?string"})
 };
 
-function getVal(/*object*/ attr, /*string*/ key) { /*TC*/__t([attr,'object','attr'],[key,'string','key']);/*/TC*/ 
+function getVal(/*object*/ attr, /*string*/ key) {__t([attr,'object','attr'],[key,'string','key']);
   var val =
     attr[key] ||
     attr[key.replace(/_/g, '-')] ||
@@ -9348,10 +9354,10 @@ function getVal(/*object*/ attr, /*string*/ key) { /*TC*/__t([attr,'object','att
     attr['data-' + key.replace(/_/g, '')] ||
     undefined;
   return val;
-} /*TC*/__w(getVal,{"signature":"function(object,string)"});/*/TC*/ 
+}__w(getVal,{"signature":"function(object,string)"});
 
 function validate(/*object*/ defn, /*DOMElement*/ elem, /*object*/ attr,
-    /*object*/ params) { /*TC*/__t([defn,'object','defn'],[elem,'DOMElement','elem'],[attr,'object','attr'],[params,'object','params']);/*/TC*/ 
+    /*object*/ params) {__t([defn,'object','defn'],[elem,'DOMElement','elem'],[attr,'object','attr'],[params,'object','params']);
   ES5(ES5('Object', 'keys', false,defn), 'forEach', true,function(key) {
     if (defn[key] == 'text' && !attr[key]) {
       attr[key] = elem.textContent || elem.innerText || ''; 
@@ -9359,7 +9365,7 @@ function validate(/*object*/ defn, /*DOMElement*/ elem, /*object*/ attr,
     }
     params[key] = types[defn[key]](getVal(attr, key));
   });
-} /*TC*/__w(validate,{"signature":"function(object,DOMElement,object,object)"});/*/TC*/ 
+}__w(validate,{"signature":"function(object,DOMElement,object,object)"});
 
 
 
@@ -9368,8 +9374,8 @@ function parse(dim) {
 }
 
 var IframePlugin = Type.extend({
-  constructor: (/*TC*/__w(/*/TC*/ function(/*DOMElement*/ elem, /*string*/ ns, /*string*/ tag,
-      /*object*/ attr) { /*TC*/__t([elem,'DOMElement','elem'],[ns,'string','ns'],[tag,'string','tag'],[attr,'object','attr']);/*/TC*/ 
+  constructor: __w(function(/*DOMElement*/ elem, /*string*/ ns, /*string*/ tag,
+      /*object*/ attr) {__t([elem,'DOMElement','elem'],[ns,'string','ns'],[tag,'string','tag'],[attr,'object','attr']);
     this.parent();
     tag = tag.replace(/-/g, '_');
 
@@ -9377,25 +9383,25 @@ var IframePlugin = Type.extend({
     this.subscribe('xd.resize', resizeBubbler(pluginId));
     this.subscribe('xd.resize.flow', resizeBubbler(pluginId));
 
-    this.subscribe('xd.resize.flow', ES5((/*TC*/__w(/*/TC*/ function(/*object*/ message) { /*TC*/__t([message,'object','message']);/*/TC*/ 
+    this.subscribe('xd.resize.flow', ES5(__w(function(/*object*/ message) {__t([message,'object','message']);
       this._config.root.style.verticalAlign = 'bottom';
       resize(this._config.root, parse(message.width), parse(message.height));
       this.updateLift();
       clearTimeout(this._timeoutID);
-    } /*TC*/,{"signature":"function(object)"})/*/TC*/), 'bind', true,this));
+    },{"signature":"function(object)"}), 'bind', true,this));
 
-    this.subscribe('xd.resize', ES5((/*TC*/__w(/*/TC*/ function(/*object*/ message) { /*TC*/__t([message,'object','message']);/*/TC*/ 
+    this.subscribe('xd.resize', ES5(__w(function(/*object*/ message) {__t([message,'object','message']);
       this._config.root.style.verticalAlign = 'bottom';
       resize(this._config.root, parse(message.width), parse(message.height));
       resize(this._iframe, parse(message.width), parse(message.height));
       this.updateLift();
       clearTimeout(this._timeoutID);
-    } /*TC*/,{"signature":"function(object)"})/*/TC*/), 'bind', true,this));
-    this.subscribe('xd.resize.iframe', ES5((/*TC*/__w(/*/TC*/ function(/*object*/ message) { /*TC*/__t([message,'object','message']);/*/TC*/ 
+    },{"signature":"function(object)"}), 'bind', true,this));
+    this.subscribe('xd.resize.iframe', ES5(__w(function(/*object*/ message) {__t([message,'object','message']);
       resize(this._iframe, parse(message.width), parse(message.height));
       this.updateLift();
       clearTimeout(this._timeoutID);
-    } /*TC*/,{"signature":"function(object)"})/*/TC*/), 'bind', true,this));
+    },{"signature":"function(object)"}), 'bind', true,this));
 
 
     var secure = Runtime.getSecure() || window.location.protocol == 'https:';
@@ -9413,10 +9419,10 @@ var IframePlugin = Type.extend({
     DOM.addCss(elem, 'fb_iframe_widget');
 
     var name = guid();
-    this.subscribe('xd.verify', (/*TC*/__w(/*/TC*/ function(/*object*/ msg) { /*TC*/__t([msg,'object','msg']);/*/TC*/ 
+    this.subscribe('xd.verify', __w(function(/*object*/ msg) {__t([msg,'object','msg']);
       XD.sendToFacebook(
         name, { method: 'xd/verify', params: ES5('JSON', 'stringify', false,msg.token) });
-    } /*TC*/,{"signature":"function(object)"})/*/TC*/));
+    },{"signature":"function(object)"}));
 
     this.subscribe(
       'xd.refreshLoginStatus', ES5(Auth.getLoginStatus, 'bind', true,
@@ -9449,11 +9455,12 @@ var IframePlugin = Type.extend({
       width: params.width || 1000,
       height: params.height || 1000,
       style: { border: 'none', visibility: 'hidden' },
+      title: this._ns + ':' + this._tag + ' Facebook Social Plugin',
       onload: ES5(function() {
         this.inform('render');
       }, 'bind', true,this)
     };
-  } /*TC*/,{"signature":"function(DOMElement,string,string,object)"})/*/TC*/),
+  },{"signature":"function(DOMElement,string,string,object)"}),
 
   process: function() {
     this._element.innerHTML = '';
@@ -9483,9 +9490,9 @@ var IframePlugin = Type.extend({
 
 IframePlugin.getVal = getVal;
 
-IframePlugin.withParams = (/*TC*/__w(/*/TC*/ function(/*object*/ params) /*function*/ { /*TC*/__t([params,'object','params']);return __t([function(){/*/TC*/ 
+IframePlugin.withParams = __w(function(/*object*/ params) /*function*/ {__t([params,'object','params']);/*jshint validthis: true*/return __t([function(){
   return IframePlugin.extend({ getParams: function() { return params; } });
- /*TC*/}.apply(this,arguments), 'function']);/*/TC*/ } /*TC*/,{"signature":"function(object):function"})/*/TC*/);
+}.apply(this,arguments), 'function']);},{"signature":"function(object):function"});
 
 module.exports = IframePlugin;
 
@@ -9624,69 +9631,69 @@ var ObservableMixin = require('ObservableMixin');
 
 var Element = Type.extend({
   
-  constructor: (/*TC*/__w(/*/TC*/ function(/*DOMElement*/ dom) { /*TC*/__t([dom,'DOMElement','dom']);/*/TC*/ 
+  constructor: __w(function(/*DOMElement*/ dom) {__t([dom,'DOMElement','dom']);
     this.parent();
     this.dom = dom;
-  } /*TC*/,{"signature":"function(DOMElement)"})/*/TC*/),
+  },{"signature":"function(DOMElement)"}),
 
   fire: function() {
     this.inform.apply(this, arguments);
   },
 
   
-  getAttribute: (/*TC*/__w(/*/TC*/ function(/*string*/ name, defaultValue,
-      /*function?*/ transform) { /*TC*/__t([name,'string','name'],[transform,'?function','transform']);/*/TC*/ 
+  getAttribute: __w(function(/*string*/ name, defaultValue,
+      /*function?*/ transform) {__t([name,'string','name'],[transform,'?function','transform']);
     var value = DOM.getAttr(this.dom, name);
     return value
       ? transform
         ? transform(value)
         : value
       : defaultValue;
-  } /*TC*/,{"signature":"function(string,?function)"})/*/TC*/),
+  },{"signature":"function(string,?function)"}),
 
   
-  _getBoolAttribute: (/*TC*/__w(/*/TC*/ function(/*string*/ name, /*boolean?*/ defaultValue)
-      /*boolean?*/ { /*TC*/__t([name,'string','name'],[defaultValue,'?boolean','defaultValue']);return __t([function(){/*/TC*/ 
+  _getBoolAttribute: __w(function(/*string*/ name, /*boolean?*/ defaultValue)
+      /*boolean?*/ {__t([name,'string','name'],[defaultValue,'?boolean','defaultValue']);/*jshint validthis: true*/return __t([function(){
     var value = DOM.getBoolAttr(this.dom, name);
     return value === null
       ? defaultValue
       : value;
-   /*TC*/}.apply(this,arguments), '?boolean']);/*/TC*/ } /*TC*/,{"signature":"function(string,?boolean):boolean?"})/*/TC*/),
+  }.apply(this,arguments), '?boolean']);},{"signature":"function(string,?boolean):boolean?"}),
 
   
-  _getPxAttribute: (/*TC*/__w(/*/TC*/ function(/*string*/ name, /*number?*/ defaultValue)
-      /*number?*/ { /*TC*/__t([name,'string','name'],[defaultValue,'?number','defaultValue']);return __t([function(){/*/TC*/ 
-    return this.getAttribute(name, defaultValue, (/*TC*/__w(/*/TC*/ function(/*string*/ s)
-        /*number?*/ { /*TC*/__t([s,'string','s']);return __t([function(){/*/TC*/ 
+  _getPxAttribute: __w(function(/*string*/ name, /*number?*/ defaultValue)
+      /*number?*/ {__t([name,'string','name'],[defaultValue,'?number','defaultValue']);/*jshint validthis: true*/return __t([function(){
+    return this.getAttribute(name, defaultValue, __w(function(/*string*/ s)
+        /*number?*/ {__t([s,'string','s']);/*jshint validthis: true*/return __t([function(){
       var size = parseInt(s.replace('px', ''), 10);
       if (isNaN(size)) {
         return defaultValue;
       } else {
         return size;
       }
-     /*TC*/}.apply(this,arguments), '?number']);/*/TC*/ } /*TC*/,{"signature":"function(string):number?"})/*/TC*/));
-   /*TC*/}.apply(this,arguments), '?number']);/*/TC*/ } /*TC*/,{"signature":"function(string,?number):number?"})/*/TC*/),
+    }.apply(this,arguments), '?number']);},{"signature":"function(string):number?"}));
+  }.apply(this,arguments), '?number']);},{"signature":"function(string,?number):number?"}),
 
   
-  _getAttributeFromList: (/*TC*/__w(/*/TC*/ function(/*string*/ name, /*string*/ defaultValue,
-      /*array<string>*/ allowed) /*string*/ { /*TC*/__t([name,'string','name'],[defaultValue,'string','defaultValue'],[allowed,'array<string>','allowed']);return __t([function(){/*/TC*/ 
-    return this.getAttribute(name, defaultValue, (/*TC*/__w(/*/TC*/ function(/*string*/ s)
-        /*string*/ { /*TC*/__t([s,'string','s']);return __t([function(){/*/TC*/ 
+  _getAttributeFromList: __w(function(/*string*/ name, /*string*/ defaultValue,
+      /*array<string>*/ allowed) /*string*/ {__t([name,'string','name'],[defaultValue,'string','defaultValue'],[allowed,'array<string>','allowed']);/*jshint validthis: true*/return __t([function(){
+    return this.getAttribute(name, defaultValue, __w(function(/*string*/ s)
+        /*string*/ {__t([s,'string','s']);/*jshint validthis: true*/return __t([function(){
       s = s.toLowerCase();
       return (ES5(allowed, 'indexOf', true,s) > -1)
         ? s
         : defaultValue;
-     /*TC*/}.apply(this,arguments), 'string']);/*/TC*/ } /*TC*/,{"signature":"function(string):string"})/*/TC*/));
-   /*TC*/}.apply(this,arguments), 'string']);/*/TC*/ } /*TC*/,{"signature":"function(string,string,array<string>):string"})/*/TC*/),
+    }.apply(this,arguments), 'string']);},{"signature":"function(string):string"}));
+  }.apply(this,arguments), 'string']);},{"signature":"function(string,string,array<string>):string"}),
 
   
-  isValid: (/*TC*/__w(/*/TC*/ function() /*boolean?*/ { /*TC*/return __t([function(){/*/TC*/ 
+  isValid: __w(function() /*boolean?*/ {/*jshint validthis: true*/return __t([function(){
     for (var dom = this.dom; dom; dom = dom.parentNode) {
       if (dom == document.body) {
         return true;
       }
     }
-   /*TC*/}.apply(this,arguments), '?boolean']);/*/TC*/ } /*TC*/,{"signature":"function():boolean?"})/*/TC*/),
+  }.apply(this,arguments), '?boolean']);},{"signature":"function():boolean?"}),
 
   
   clear: function() {
@@ -9750,39 +9757,41 @@ var IframeWidget = Element.extend({
   
 
   
-  getUrlBits: (/*TC*/__w(/*/TC*/ function() /*object*/ { /*TC*/return __t([function(){/*/TC*/ 
+  getUrlBits: __w(function() /*object*/ {/*jshint validthis: true*/return __t([function(){
     throw new Error('Inheriting class needs to implement getUrlBits().');
-   /*TC*/}.apply(this,arguments), 'object']);/*/TC*/ } /*TC*/,{"signature":"function():object"})/*/TC*/),
+  }.apply(this,arguments), 'object']);},{"signature":"function():object"}),
 
   
   
   
 
   
-  setupAndValidate: (/*TC*/__w(/*/TC*/ function() /*boolean*/ { /*TC*/return __t([function(){/*/TC*/ 
+  setupAndValidate: __w(function() /*boolean*/ {/*jshint validthis: true*/return __t([function(){
     return true;
-   /*TC*/}.apply(this,arguments), 'boolean']);/*/TC*/ } /*TC*/,{"signature":"function():boolean"})/*/TC*/),
+  }.apply(this,arguments), 'boolean']);},{"signature":"function():boolean"}),
 
   
   oneTimeSetup: function() {},
 
   
-  getSize: (/*TC*/__w(/*/TC*/ function() /*object*/ { /*TC*/return __t([function(){/*/TC*/  /*TC*/}.apply(this,arguments), 'object']);/*/TC*/ } /*TC*/,{"signature":"function():object"})/*/TC*/),
+  getSize: __w(function() /*object*/ {/*jshint validthis: true*/return __t([function(){}.apply(this,arguments), 'object']);},{"signature":"function():object"}),
 
   
-  getIframeName: (/*TC*/__w(/*/TC*/ function() /*string?*/ { /*TC*/return __t([function(){/*/TC*/ 
+  getIframeName: __w(function() /*?string*/ {/*jshint validthis: true*/return __t([function(){
     return this._iframeName;
-   /*TC*/}.apply(this,arguments), '?string']);/*/TC*/ } /*TC*/,{"signature":"function():string?"})/*/TC*/),
+  }.apply(this,arguments), '?string']);},{"signature":"function():?string"}),
 
   
-  getIframeTitle: (/*TC*/__w(/*/TC*/ function() /*string?*/ { /*TC*/return __t([function(){/*/TC*/  /*TC*/}.apply(this,arguments), '?string']);/*/TC*/ } /*TC*/,{"signature":"function():string?"})/*/TC*/),
+  getIframeTitle: __w(function() /*?string*/ {/*jshint validthis: true*/return __t([function(){
+    return 'Facebook Social Plugin';
+  }.apply(this,arguments), '?string']);},{"signature":"function():?string"}),
 
   
   
   
 
   
-  getChannelUrl: (/*TC*/__w(/*/TC*/ function() /*string*/ { /*TC*/return __t([function(){/*/TC*/ 
+  getChannelUrl: __w(function() /*string*/ {/*jshint validthis: true*/return __t([function(){
     if (!this._channelUrl) {
       
       
@@ -9792,43 +9801,43 @@ var IframeWidget = Element.extend({
       }, 'parent.parent', true);
     }
     return this._channelUrl;
-   /*TC*/}.apply(this,arguments), 'string']);/*/TC*/ } /*TC*/,{"signature":"function():string"})/*/TC*/),
+  }.apply(this,arguments), 'string']);},{"signature":"function():string"}),
 
   
-  getIframeNode: (/*TC*/__w(/*/TC*/ function() /*DOMElement?*/ { /*TC*/return __t([function(){/*/TC*/ 
+  getIframeNode: __w(function() /*?DOMElement*/ {/*jshint validthis: true*/return __t([function(){
     
     
     return this.dom.getElementsByTagName('iframe')[0];
-   /*TC*/}.apply(this,arguments), '?DOMElement']);/*/TC*/ } /*TC*/,{"signature":"function():DOMElement?"})/*/TC*/),
+  }.apply(this,arguments), '?DOMElement']);},{"signature":"function():?DOMElement"}),
 
   
-  arbiterInform: (/*TC*/__w(/*/TC*/ function(/*string*/ event, /*object?*/ message,
-      /*string?*/ behavior) { /*TC*/__t([event,'string','event'],[message,'?object','message'],[behavior,'?string','behavior']);/*/TC*/ 
+  arbiterInform: __w(function(/*string*/ event, /*?object*/ message,
+      /*?string*/ behavior) {__t([event,'string','event'],[message,'?object','message'],[behavior,'?string','behavior']);
     XD.sendToFacebook(
       this.getIframeName(), {
         method: event,
         params: ES5('JSON', 'stringify', false,message || {}),
         behavior: behavior || Arbiter.BEHAVIOR_PERSISTENT
       });
-  } /*TC*/,{"signature":"function(string,?object,?string)"})/*/TC*/),
+  },{"signature":"function(string,?object,?string)"}),
 
-  _arbiterInform: (/*TC*/__w(/*/TC*/ function(/*string*/ event, /*object*/  message,
-      /*string?*/ behavior) { /*TC*/__t([event,'string','event'],[behavior,'?string','behavior']);/*/TC*/ 
+  _arbiterInform: __w(function(/*string*/ event, /*object*/  message,
+      /*?string*/ behavior) {__t([event,'string','event'],[behavior,'?string','behavior']);
     var relation = 'parent.frames["' + this.getIframeNode().name + '"]';
     XD.inform(event, message, relation, behavior);
-  } /*TC*/,{"signature":"function(string,?string)"})/*/TC*/),
+  },{"signature":"function(string,?string)"}),
 
   
-  getDefaultWebDomain: (/*TC*/__w(/*/TC*/ function() /*string*/ { /*TC*/return __t([function(){/*/TC*/ 
+  getDefaultWebDomain: __w(function() /*string*/ {/*jshint validthis: true*/return __t([function(){
     return UrlMap.resolve('www');
-   /*TC*/}.apply(this,arguments), 'string']);/*/TC*/ } /*TC*/,{"signature":"function():string"})/*/TC*/),
+  }.apply(this,arguments), 'string']);},{"signature":"function():string"}),
 
   
   
   
 
   
-  process: (/*TC*/__w(/*/TC*/ function(/*boolean?*/ force) { /*TC*/__t([force,'?boolean','force']);/*/TC*/ 
+  process: __w(function(/*?boolean*/ force) {__t([force,'?boolean','force']);
     
     if (this._done) {
       if (!this._allowReProcess && !force) {
@@ -9886,16 +9895,16 @@ var IframeWidget = Element.extend({
     this.subscribe('iframe.onload', ES5(function() {
       this.loaded = true;
     }, 'bind', true,this));
-  } /*TC*/,{"signature":"function(?boolean)"})/*/TC*/),
+  },{"signature":"function(?boolean)"}),
 
   
-  generateWidgetPipeIframeName: (/*TC*/__w(/*/TC*/ function() /*string*/ { /*TC*/return __t([function(){/*/TC*/ 
+  generateWidgetPipeIframeName: __w(function() /*string*/ {/*jshint validthis: true*/return __t([function(){
     widgetPipeIframeCount++;
     return 'fb_iframe_' + widgetPipeIframeCount;
-   /*TC*/}.apply(this,arguments), 'string']);/*/TC*/ } /*TC*/,{"signature":"function():string"})/*/TC*/),
+  }.apply(this,arguments), 'string']);},{"signature":"function():string"}),
 
   
-  getFullyQualifiedURL: (/*TC*/__w(/*/TC*/ function() /*string*/ { /*TC*/return __t([function(){/*/TC*/ 
+  getFullyQualifiedURL: __w(function() /*string*/ {/*jshint validthis: true*/return __t([function(){
     
     // a <form> POST. we prefer a GET because it prevents the "POST resend"
     
@@ -9913,13 +9922,13 @@ var IframeWidget = Element.extend({
     }
 
     return url;
-   /*TC*/}.apply(this,arguments), 'string']);/*/TC*/ } /*TC*/,{"signature":"function():string"})/*/TC*/),
+  }.apply(this,arguments), 'string']);},{"signature":"function():string"}),
 
    
 
-  _getWidgetPipeShell: (/*TC*/__w(/*/TC*/ function() /*string*/ { /*TC*/return __t([function(){/*/TC*/ 
+  _getWidgetPipeShell: __w(function() /*string*/ {/*jshint validthis: true*/return __t([function(){
     return UrlMap.resolve('www') + '/common/widget_pipe_shell.php';
-   /*TC*/}.apply(this,arguments), 'string']);/*/TC*/ } /*TC*/,{"signature":"function():string"})/*/TC*/),
+  }.apply(this,arguments), 'string']);},{"signature":"function():string"}),
 
   
   _oneTimeSetup: function() {
@@ -9967,9 +9976,9 @@ var IframeWidget = Element.extend({
 
   
   _setupAuthRefresh: function() {
-    Auth.getLoginStatus(ES5((/*TC*/__w(/*/TC*/ function(/*object*/ response) { /*TC*/__t([response,'object','response']);/*/TC*/ 
+    Auth.getLoginStatus(ES5(__w(function(/*object*/ response) {__t([response,'object','response']);
       var lastStatus = response.status;
-      Event.subscribe('auth.statusChange', ES5((/*TC*/__w(/*/TC*/ function(/*object*/ response) { /*TC*/__t([response,'object','response']);/*/TC*/ 
+      Event.subscribe('auth.statusChange', ES5(__w(function(/*object*/ response) {__t([response,'object','response']);
         if (!this.isValid()) {
           return;
         }
@@ -9978,12 +9987,12 @@ var IframeWidget = Element.extend({
           this.process(true);
         }
         lastStatus = response.status;
-      } /*TC*/,{"signature":"function(object)"})/*/TC*/), 'bind', true,this));
-    } /*TC*/,{"signature":"function(object)"})/*/TC*/), 'bind', true,this));
+      },{"signature":"function(object)"}), 'bind', true,this));
+    },{"signature":"function(object)"}), 'bind', true,this));
   },
 
   
-  _handleResizeMsg: (/*TC*/__w(/*/TC*/ function(/*object*/ message) { /*TC*/__t([message,'object','message']);/*/TC*/ 
+  _handleResizeMsg: __w(function(/*object*/ message) {__t([message,'object','message']);
     if (!this.isValid()) {
       return;
     }
@@ -9996,10 +10005,10 @@ var IframeWidget = Element.extend({
     }
 
     this._makeVisible();
-  } /*TC*/,{"signature":"function(object)"})/*/TC*/),
+  },{"signature":"function(object)"}),
 
   
-  _bubbleResizeEvent: (/*TC*/__w(/*/TC*/ function(/*object*/ message) { /*TC*/__t([message,'object','message']);/*/TC*/ 
+  _bubbleResizeEvent: __w(function(/*object*/ message) {__t([message,'object','message']);
     var filtered_message = {
       height: message.height,
       width: message.width,
@@ -10007,9 +10016,9 @@ var IframeWidget = Element.extend({
     };
 
     Event.fire('xfbml.resize', filtered_message);
-  } /*TC*/,{"signature":"function(object)"})/*/TC*/),
+  },{"signature":"function(object)"}),
 
-  _resizeIframe: (/*TC*/__w(/*/TC*/ function(/*object*/ message) { /*TC*/__t([message,'object','message']);/*/TC*/ 
+  _resizeIframe: __w(function(/*object*/ message) {__t([message,'object','message']);
     var iframe = this.getIframeNode();
     if (message.reposition === "true") {
       this._repositionIframe(message);
@@ -10017,14 +10026,14 @@ var IframeWidget = Element.extend({
     message.height && (iframe.style.height = message.height + 'px');
     message.width && (iframe.style.width = message.width + 'px');
     this._updateIframeZIndex();
-  } /*TC*/,{"signature":"function(object)"})/*/TC*/),
+  },{"signature":"function(object)"}),
 
-  _resizeFlow: (/*TC*/__w(/*/TC*/ function(/*object*/ message) { /*TC*/__t([message,'object','message']);/*/TC*/ 
+  _resizeFlow: __w(function(/*object*/ message) {__t([message,'object','message']);
     var span = this.dom.getElementsByTagName('span')[0];
     message.height && (span.style.height = message.height + 'px');
     message.width && (span.style.width = message.width + 'px');
     this._updateIframeZIndex();
-  } /*TC*/,{"signature":"function(object)"})/*/TC*/),
+  },{"signature":"function(object)"}),
 
   _updateIframeZIndex: function() {
     var span = this.dom.getElementsByTagName('span')[0];
@@ -10035,7 +10044,7 @@ var IframeWidget = Element.extend({
     DOM[method](iframe, 'fb_iframe_widget_lift');
   },
 
-  _repositionIframe: (/*TC*/__w(/*/TC*/ function(/*object*/ message) { /*TC*/__t([message,'object','message']);/*/TC*/ 
+  _repositionIframe: __w(function(/*object*/ message) {__t([message,'object','message']);
     var iframe = this.getIframeNode();
     var iframe_width = parseInt(DOM.getStyle(iframe, 'width'), 10);
     var left = DOM.getPosition(iframe).x;
@@ -10051,7 +10060,7 @@ var IframeWidget = Element.extend({
       this.arbiterInform('xd/reposition', {type: 'restore'});
       this._repositioned = false;
     }
-  } /*TC*/,{"signature":"function(object)"})/*/TC*/),
+  },{"signature":"function(object)"}),
 
   
   _addLoader: function() {
@@ -10075,24 +10084,24 @@ var IframeWidget = Element.extend({
   },
 
   
-  _getQS: (/*TC*/__w(/*/TC*/ function() /*object*/ { /*TC*/return __t([function(){/*/TC*/ 
+  _getQS: __w(function() /*object*/ {/*jshint validthis: true*/return __t([function(){
     return copyProperties({
       api_key      : Runtime.getClientID(),
       locale       : Runtime.getLocale(),
       sdk          : 'joey',
       ref          : this.getAttribute('ref')
     }, this.getUrlBits().params);
-   /*TC*/}.apply(this,arguments), 'object']);/*/TC*/ } /*TC*/,{"signature":"function():object"})/*/TC*/),
+  }.apply(this,arguments), 'object']);},{"signature":"function():object"}),
 
   
-  _getURL: (/*TC*/__w(/*/TC*/ function() /*string*/ { /*TC*/return __t([function(){/*/TC*/ 
+  _getURL: __w(function() /*string*/ {/*jshint validthis: true*/return __t([function(){
     var
       domain = this.getDefaultWebDomain(),
       static_path = '';
 
     return domain + '/plugins/' + static_path +
            this.getUrlBits().name + '.php';
-   /*TC*/}.apply(this,arguments), 'string']);/*/TC*/ } /*TC*/,{"signature":"function():string"})/*/TC*/),
+  }.apply(this,arguments), 'string']);},{"signature":"function():string"}),
 
   
   _postRequest: function() {
@@ -10105,10 +10114,9 @@ var IframeWidget = Element.extend({
 });
 
 var widgetPipeIframeCount = 0;
-var masterWidgetPipeIframe = null;
 var allWidgetPipeIframes = {};
 
-function groupWidgetPipeDescriptions() /*object*/ { /*TC*/return __t([function(){/*/TC*/ 
+function groupWidgetPipeDescriptions() /*object*/ {/*jshint validthis: true*/return __t([function(){
   var widgetPipeDescriptions = {};
   for (var key in allWidgetPipeIframes) {
     var controller = allWidgetPipeIframes[key];
@@ -10120,7 +10128,7 @@ function groupWidgetPipeDescriptions() /*object*/ { /*TC*/return __t([function()
   }
 
   return widgetPipeDescriptions;
- /*TC*/}.apply(this,arguments), 'object']);/*/TC*/ } /*TC*/__w(groupWidgetPipeDescriptions,{"signature":"function():object"});/*/TC*/ 
+}.apply(this,arguments), 'object']);}__w(groupWidgetPipeDescriptions,{"signature":"function():object"});
 
 module.exports = IframeWidget;
 
@@ -10142,7 +10150,7 @@ var Comments = IframeWidget.extend({
   _refreshOnAuthChange: true,
 
   
-  setupAndValidate: (/*TC*/__w(/*/TC*/ function() /*boolean*/ { /*TC*/return __t([function(){/*/TC*/ 
+  setupAndValidate: __w(function() /*boolean*/ {/*jshint validthis: true*/return __t([function(){
     
     var attr = {
       channel_url : this.getChannelUrl(),
@@ -10228,7 +10236,7 @@ var Comments = IframeWidget.extend({
 
     this._attr = attr;
     return true;
-   /*TC*/}.apply(this,arguments), 'boolean']);/*/TC*/ } /*TC*/,{"signature":"function():boolean"})/*/TC*/),
+  }.apply(this,arguments), 'boolean']);},{"signature":"function():boolean"}),
 
   
   oneTimeSetup: function() {
@@ -10241,30 +10249,30 @@ var Comments = IframeWidget.extend({
   },
 
   
-  getSize: (/*TC*/__w(/*/TC*/ function() /*object*/ { /*TC*/return __t([function(){/*/TC*/ 
+  getSize: __w(function() /*object*/ {/*jshint validthis: true*/return __t([function(){
     if (this._attr.mobile) {
       return { width: '100%', height: 160 };
     }
     return { width: this._attr.width, height: 160 };
-   /*TC*/}.apply(this,arguments), 'object']);/*/TC*/ } /*TC*/,{"signature":"function():object"})/*/TC*/),
+  }.apply(this,arguments), 'object']);},{"signature":"function():object"}),
 
   
-  getUrlBits: (/*TC*/__w(/*/TC*/ function() /*object*/ { /*TC*/return __t([function(){/*/TC*/ 
+  getUrlBits: __w(function() /*object*/ {/*jshint validthis: true*/return __t([function(){
     return { name: 'comments', params: this._attr };
-   /*TC*/}.apply(this,arguments), 'object']);/*/TC*/ } /*TC*/,{"signature":"function():object"})/*/TC*/),
+  }.apply(this,arguments), 'object']);},{"signature":"function():object"}),
 
   
-  getDefaultWebDomain: (/*TC*/__w(/*/TC*/ function() /*string*/ { /*TC*/return __t([function(){/*/TC*/ 
+  getDefaultWebDomain: __w(function() /*string*/ {/*jshint validthis: true*/return __t([function(){
     return UrlMap.resolve(
       this._attr.mobile
         ? 'm'
         : 'www',
       true
     );
-   /*TC*/}.apply(this,arguments), 'string']);/*/TC*/ } /*TC*/,{"signature":"function():string"})/*/TC*/),
+  }.apply(this,arguments), 'string']);},{"signature":"function():string"}),
 
   
-  _handleCommentMsg: (/*TC*/__w(/*/TC*/ function(/*object*/ message) { /*TC*/__t([message,'object','message']);/*/TC*/ 
+  _handleCommentMsg: __w(function(/*object*/ message) {__t([message,'object','message']);
     
     
     if (!this.isValid()) {
@@ -10275,9 +10283,9 @@ var Comments = IframeWidget.extend({
       user: message.user,
       widget: this
     });
-  } /*TC*/,{"signature":"function(object)"})/*/TC*/),
+  },{"signature":"function(object)"}),
 
-  _handleCommentCreatedMsg: (/*TC*/__w(/*/TC*/ function(/*object*/ message) { /*TC*/__t([message,'object','message']);/*/TC*/ 
+  _handleCommentCreatedMsg: __w(function(/*object*/ message) {__t([message,'object','message']);
     if (!this.isValid()) {
       return;
     }
@@ -10289,9 +10297,9 @@ var Comments = IframeWidget.extend({
     };
 
     Event.fire('comment.create', eventArgs);
-  } /*TC*/,{"signature":"function(object)"})/*/TC*/),
+  },{"signature":"function(object)"}),
 
-  _handleCommentRemovedMsg: (/*TC*/__w(/*/TC*/ function(/*object*/ message) { /*TC*/__t([message,'object','message']);/*/TC*/ 
+  _handleCommentRemovedMsg: __w(function(/*object*/ message) {__t([message,'object','message']);
     if (!this.isValid()) {
       return;
     }
@@ -10302,7 +10310,7 @@ var Comments = IframeWidget.extend({
     };
 
     Event.fire('comment.remove', eventArgs);
-  } /*TC*/,{"signature":"function(object)"})/*/TC*/)
+  },{"signature":"function(object)"})
 });
 module.exports = Comments;
 
@@ -10322,7 +10330,7 @@ var CommentsCount = Element.extend({
     var href = this.getAttribute('href', window.location.href);
 
     Data._selectByIndex(['commentsbox_count'], 'link_stat', 'url', href)
-      .wait(ES5((/*TC*/__w(/*/TC*/ function(/*array<object>*/ value) { /*TC*/__t([value,'array<object>','value']);/*/TC*/ 
+      .wait(ES5(__w(function(/*array<object>*/ value) {__t([value,'array<object>','value']);
         var c = value[0].commentsbox_count;
 
         DOM.html(
@@ -10335,7 +10343,7 @@ var CommentsCount = Element.extend({
         }
 
         this.fire('render');
-      } /*TC*/,{"signature":"function(array<object>)"})/*/TC*/), 'bind', true,this));
+      },{"signature":"function(array<object>)"}), 'bind', true,this));
   }
 
 });
@@ -10348,8 +10356,8 @@ __d("sdk.Anim",["sdk.DOM"],function(global,require,requireDynamic,requireLazy,mo
 var DOM = require('sdk.DOM');
 var Anim = {
   
-  ate: (/*TC*/__w(/*/TC*/ function(/*DOMElement*/ dom, /*object*/ props, /*number?*/ duration,
-      /*function?*/ callback) { /*TC*/__t([dom,'DOMElement','dom'],[props,'object','props'],[duration,'?number','duration'],[callback,'?function','callback']);/*/TC*/ 
+  ate: __w(function(/*DOMElement*/ dom, /*object*/ props, /*number?*/ duration,
+      /*function?*/ callback) {__t([dom,'DOMElement','dom'],[props,'object','props'],[duration,'?number','duration'],[callback,'?function','callback']);
     duration = !isNaN(parseFloat(duration)) && duration >= 0
       ? duration
       : 750;
@@ -10377,7 +10385,7 @@ var Anim = {
             to[prop] = this._parseCSS(value.toString());
           }
           var next = ''; 
-          ES5(from[prop], 'forEach', true,(/*TC*/__w(/*/TC*/ function(/*object*/ pair, /*number*/ i) { /*TC*/__t([pair,'object','pair'],[i,'number','i']);/*/TC*/ 
+          ES5(from[prop], 'forEach', true,__w(function(/*object*/ pair, /*number*/ i) {__t([pair,'object','pair'],[i,'number','i']);
             
             if (isNaN(to[prop][i].numPart) && to[prop][i].textPart == '?') {
               next = pair.numPart + pair.textPart;
@@ -10392,7 +10400,7 @@ var Anim = {
                             Math.sin(Math.PI/2 * pd))) +
                 to[prop][i].textPart + ' '; 
             }
-          } /*TC*/,{"signature":"function(object,number)"})/*/TC*/));
+          },{"signature":"function(object,number)"}));
           
           DOM.setStyle(dom, prop, next);
         }
@@ -10401,17 +10409,17 @@ var Anim = {
           if (callback) { callback(dom); }
         }
       }, 'bind', true,this), frame_speed);
-  } /*TC*/,{"signature":"function(DOMElement,object,?number,?function)"})/*/TC*/),
+  },{"signature":"function(DOMElement,object,?number,?function)"}),
 
   
-  _parseCSS: (/*TC*/__w(/*/TC*/ function(/*string*/ css) /*array<object>*/ { /*TC*/__t([css,'string','css']);return __t([function(){/*/TC*/ 
+  _parseCSS: __w(function(/*string*/ css) /*array<object>*/ {__t([css,'string','css']);/*jshint validthis: true*/return __t([function(){
     var ret = [];
     ES5(css.split(' '), 'forEach', true,function(peice) {
       var num = parseInt(peice, 10);
       ret.push({numPart: num, textPart: peice.replace(num,'')});
     });
     return ret;
-   /*TC*/}.apply(this,arguments), 'array<object>']);/*/TC*/ } /*TC*/,{"signature":"function(string):array<object>"})/*/TC*/)
+  }.apply(this,arguments), 'array<object>']);},{"signature":"function(string):array<object>"})
 };
 module.exports = Anim;
 
@@ -10428,11 +10436,11 @@ var map = {
   '/': '&#x2F;'
 };
 
-function escapeHTML(/*string*/ value) /*string*/ { /*TC*/__t([value,'string','value']);return __t([function(){/*/TC*/ 
+function escapeHTML(/*string*/ value) /*string*/ {__t([value,'string','value']);/*jshint validthis: true*/return __t([function(){
   return value.replace(re, function(m) {
     return map[m];
   });
- /*TC*/}.apply(this,arguments), 'string']);/*/TC*/ } /*TC*/__w(escapeHTML,{"signature":"function(string):string"});/*/TC*/ 
+}.apply(this,arguments), 'string']);}__w(escapeHTML,{"signature":"function(string):string"});
 module.exports = escapeHTML;
 
 });
@@ -10445,37 +10453,37 @@ var UrlMap = require('UrlMap');
 
 var Helper = {
   
-  isUser: (/*TC*/__w(/*/TC*/ function(id) /*boolean*/ { /*TC*/return __t([function(){/*/TC*/ 
+  isUser: __w(function(id) /*boolean*/ {/*jshint validthis: true*/return __t([function(){
     return id < 2200000000 ||
       (id >= 100000000000000 &&  
        id <= 100099999989999) || 
       (id >= 89000000000000 &&   
        id <= 89999999999999);    
-   /*TC*/}.apply(this,arguments), 'boolean']);/*/TC*/ } /*TC*/,{"signature":"function():boolean"})/*/TC*/),
+  }.apply(this,arguments), 'boolean']);},{"signature":"function():boolean"}),
 
   
-  upperCaseFirstChar: (/*TC*/__w(/*/TC*/ function(/*string*/ s) /*string*/ { /*TC*/__t([s,'string','s']);return __t([function(){/*/TC*/ 
+  upperCaseFirstChar: __w(function(/*string*/ s) /*string*/ {__t([s,'string','s']);/*jshint validthis: true*/return __t([function(){
     if (s.length > 0) {
       return s.substr(0, 1).toUpperCase() + s.substr(1);
     }
     else {
       return s;
     }
-   /*TC*/}.apply(this,arguments), 'string']);/*/TC*/ } /*TC*/,{"signature":"function(string):string"})/*/TC*/),
+  }.apply(this,arguments), 'string']);},{"signature":"function(string):string"}),
 
   
-  getProfileLink: (/*TC*/__w(/*/TC*/ function(/*object?*/ userInfo, /*string*/ html,
-      /*string?*/ href) /*string*/ { /*TC*/__t([userInfo,'?object','userInfo'],[html,'string','html'],[href,'?string','href']);return __t([function(){/*/TC*/ 
+  getProfileLink: __w(function(/*object?*/ userInfo, /*string*/ html,
+      /*string?*/ href) /*string*/ {__t([userInfo,'?object','userInfo'],[html,'string','html'],[href,'?string','href']);/*jshint validthis: true*/return __t([function(){
     href = href || (userInfo ? UrlMap.resolve('www') + '/profile.php?id=' +
                     userInfo.uid : null);
     if (href) {
       html = '<a class="fb_link" href="' + href + '">' + html + '</a>';
     }
     return html;
-   /*TC*/}.apply(this,arguments), 'string']);/*/TC*/ } /*TC*/,{"signature":"function(?object,string,?string):string"})/*/TC*/),
+  }.apply(this,arguments), 'string']);},{"signature":"function(?object,string,?string):string"}),
 
   
-  invokeHandler: (/*TC*/__w(/*/TC*/ function(handler, /*object?*/ scope, /*array?*/ args) { /*TC*/__t([scope,'?object','scope'],[args,'?array','args']);/*/TC*/ 
+  invokeHandler: __w(function(handler, /*object?*/ scope, /*array?*/ args) {__t([scope,'?object','scope'],[args,'?array','args']);
     if (handler) {
       if (typeof handler === 'string') {
         ErrorHandling.unguard(safeEval)(handler, args);
@@ -10483,17 +10491,17 @@ var Helper = {
         ErrorHandling.unguard(handler).apply(scope, args || []);
       }
     }
-  } /*TC*/,{"signature":"function(?object,?array)"})/*/TC*/),
+  },{"signature":"function(?object,?array)"}),
 
   
-  fireEvent: (/*TC*/__w(/*/TC*/ function(/*string*/ eventName, /*object*/ eventSource) { /*TC*/__t([eventName,'string','eventName'],[eventSource,'object','eventSource']);/*/TC*/ 
+  fireEvent: __w(function(/*string*/ eventName, /*object*/ eventSource) {__t([eventName,'string','eventName'],[eventSource,'object','eventSource']);
     var href = eventSource._attr.href;
     eventSource.fire(eventName, href); 
     Event.fire(eventName, href, eventSource); 
-  } /*TC*/,{"signature":"function(string,object)"})/*/TC*/),
+  },{"signature":"function(string,object)"}),
 
   
-  executeFunctionByName: (/*TC*/__w(/*/TC*/ function(/*string*/ functionName /*, args */) { /*TC*/__t([functionName,'string','functionName']);/*/TC*/ 
+  executeFunctionByName: __w(function(/*string*/ functionName /*, args */) {__t([functionName,'string','functionName']);
     var args = Array.prototype.slice.call(arguments, 1);
     var namespaces = functionName.split(".");
     var func = namespaces.pop();
@@ -10502,7 +10510,7 @@ var Helper = {
       context = context[namespaces[i]];
     }
     return context[func].apply(this, args);
-  } /*TC*/,{"signature":"function(string)"})/*/TC*/)
+  },{"signature":"function(string)"})
 
 };
 
@@ -10542,8 +10550,8 @@ var ConnectBar = Element.extend({
   
   process: function() {
     
-    Auth.getLoginStatus(ES5((/*TC*/__w(/*/TC*/ function(/*object*/ resp) { /*TC*/__t([resp,'object','resp']);/*/TC*/ 
-      Event.monitor('auth.statusChange', ES5((/*TC*/__w(/*/TC*/ function() /*boolean*/ { /*TC*/return __t([function(){/*/TC*/ 
+    Auth.getLoginStatus(ES5(__w(function(/*object*/ resp) {__t([resp,'object','resp']);
+      Event.monitor('auth.statusChange', ES5(__w(function() /*boolean*/ {/*jshint validthis: true*/return __t([function(){
         
         if (this.isValid() && Runtime.getLoginStatus() == 'connected') {
           this._uid = Runtime.getUserID();
@@ -10561,8 +10569,8 @@ var ConnectBar = Element.extend({
           this._noRender();
         }
         return false; 
-       /*TC*/}.apply(this,arguments), 'boolean']);/*/TC*/ } /*TC*/,{"signature":"function():boolean"})/*/TC*/), 'bind', true,this));
-    } /*TC*/,{"signature":"function(object)"})/*/TC*/), 'bind', true,this));
+      }.apply(this,arguments), 'boolean']);},{"signature":"function():boolean"}), 'bind', true,this));
+    },{"signature":"function(object)"}), 'bind', true,this));
   },
 
   
@@ -10572,7 +10580,7 @@ var ConnectBar = Element.extend({
                                     'user', 'uid', this._uid);
     var q2 = Data._selectByIndex(['display_name'], 'application',
                                     'api_key', Runtime.getClientID());
-    Data.waitOn([q1, q2], ES5((/*TC*/__w(/*/TC*/ function(/*array<array<object>>*/ data) { /*TC*/__t([data,'array<array<object>>','data']);/*/TC*/ 
+    Data.waitOn([q1, q2], ES5(__w(function(/*array<array<object>>*/ data) {__t([data,'array<array<object>>','data']);
       data[0][0].site_name = data[1][0].display_name;
       if (!this._displayed) {
         this._displayed = true;
@@ -10587,7 +10595,7 @@ var ConnectBar = Element.extend({
         Event.fire('connectbar.ondisplay', this);
         Helper.invokeHandler(this.getAttribute('on-display'), this);
       }
-    } /*TC*/,{"signature":"function(array<array<object>>)"})/*/TC*/), 'bind', true,this));
+    },{"signature":"function(array<array<object>>)"}), 'bind', true,this));
   },
 
   
@@ -10606,7 +10614,7 @@ var ConnectBar = Element.extend({
   },
 
   
-  _renderConnectBar: (/*TC*/__w(/*/TC*/ function(/*object*/ info) { /*TC*/__t([info,'object','info']);/*/TC*/ 
+  _renderConnectBar: __w(function(/*object*/ info) {__t([info,'object','info']);
     var bar = document.createElement('div'),
         container = document.createElement('div');
     
@@ -10646,9 +10654,9 @@ var ConnectBar = Element.extend({
       info.profile_url,
       UrlMap.resolve('www') + '/sitetour/connect.php'
     ));
-    ES5(createArrayFrom(bar.getElementsByTagName('a')), 'forEach', true,(/*TC*/__w(/*/TC*/ function(/*DOMElement*/ el) { /*TC*/__t([el,'DOMElement','el']);/*/TC*/ 
+    ES5(createArrayFrom(bar.getElementsByTagName('a')), 'forEach', true,__w(function(/*DOMElement*/ el) {__t([el,'DOMElement','el']);
         el.onclick = ES5(this._clickHandler, 'bind', true,this);
-      } /*TC*/,{"signature":"function(DOMElement)"})/*/TC*/), this);
+      },{"signature":"function(DOMElement)"}), this);
     this._page = document.body;
     var top_margin = 0;
     if (this._page.parentNode) {
@@ -10673,7 +10681,7 @@ var ConnectBar = Element.extend({
       move.backgroundPosition = '? ' + this._initialHeight + 'px'
     }
     Anim.ate(this._page, move, this._animationSpeed);
-  } /*TC*/,{"signature":"function(object)"})/*/TC*/),
+  },{"signature":"function(object)"}),
 
   
   _clickHandler : function(e) {
@@ -10729,9 +10737,9 @@ var ConnectBar = Element.extend({
     Anim.ate(this._page, move, speed);
     Anim.ate(this._container, {
       top: (-1 * this._initialHeight) + 'px'
-    }, speed, (/*TC*/__w(/*/TC*/ function(/*DOMElement*/ el) { /*TC*/__t([el,'DOMElement','el']);/*/TC*/ 
+    }, speed, __w(function(/*DOMElement*/ el) {__t([el,'DOMElement','el']);
       el.parentNode.removeChild(el);
-    } /*TC*/,{"signature":"function(DOMElement)"})/*/TC*/));
+    },{"signature":"function(DOMElement)"}));
     this.fire('connectbar.onclose');
     Event.fire('connectbar.onclose', this);
     Helper.invokeHandler(this.getAttribute('on-close'), this);
@@ -10749,7 +10757,7 @@ var DOM = require('sdk.DOM');
 var nextZIndex = 10000;
 
 var Widget = IframeWidget.extend({
-  constructor: (/*TC*/__w(/*/TC*/ function(/*object*/ opts) { /*TC*/__t([opts,'object','opts']);/*/TC*/ 
+  constructor: __w(function(/*object*/ opts) {__t([opts,'object','opts']);
     this.parent(opts.commentNode);
     this._iframeWidth = opts.width + 1;
     this._iframeHeight = opts.height;
@@ -10762,7 +10770,7 @@ var Widget = IframeWidget.extend({
     this.dom.style.left = opts.relativeWidthOffset + 'px';
     this.dom.style.zIndex = nextZIndex++;
     DOM.addCss(this.dom, 'fb_edge_comment_widget');
-  } /*TC*/,{"signature":"function(object)"})/*/TC*/),
+  },{"signature":"function(object)"}),
 
   
   
@@ -10773,17 +10781,17 @@ var Widget = IframeWidget.extend({
   _showLoader: false,
 
   
-  getSize: (/*TC*/__w(/*/TC*/ function() /*object*/ { /*TC*/return __t([function(){/*/TC*/ 
+  getSize: __w(function() /*object*/ {/*jshint validthis: true*/return __t([function(){
     return {
       width: this._iframeWidth,
       height: this._iframeHeight
     };
-   /*TC*/}.apply(this,arguments), 'object']);/*/TC*/ } /*TC*/,{"signature":"function():object"})/*/TC*/),
+  }.apply(this,arguments), 'object']);},{"signature":"function():object"}),
 
   
-  getUrlBits: (/*TC*/__w(/*/TC*/ function() /*object*/ { /*TC*/return __t([function(){/*/TC*/ 
+  getUrlBits: __w(function() /*object*/ {/*jshint validthis: true*/return __t([function(){
     return { name: 'comment_widget_shell', params: this._attr };
-   /*TC*/}.apply(this,arguments), 'object']);/*/TC*/ } /*TC*/,{"signature":"function():object"})/*/TC*/)
+  }.apply(this,arguments), 'object']);},{"signature":"function():object"})
 });
 
 module.exports = Widget;
@@ -10804,7 +10812,7 @@ var EdgeWidget = IframeWidget.extend({
   _rootPadding: null,
 
   
-  setupAndValidate : (/*TC*/__w(/*/TC*/ function() /*boolean*/ { /*TC*/return __t([function(){/*/TC*/ 
+  setupAndValidate : __w(function() /*boolean*/ {/*jshint validthis: true*/return __t([function(){
     DOM.addCss(this.dom, 'fb_edge_widget_with_comment');
     this._attr = {
       channel_url             : this.getChannelUrl(),
@@ -10832,7 +10840,7 @@ var EdgeWidget = IframeWidget.extend({
     };
 
     return true;
-   /*TC*/}.apply(this,arguments), 'boolean']);/*/TC*/ } /*TC*/,{"signature":"function():boolean"})/*/TC*/),
+  }.apply(this,arguments), 'boolean']);},{"signature":"function():boolean"}),
 
   oneTimeSetup : function() {
     this.subscribe('xd.authPrompted', ES5(this._onAuthPrompt, 'bind', true,this));
@@ -10849,15 +10857,15 @@ var EdgeWidget = IframeWidget.extend({
   },
 
   
-  getSize: (/*TC*/__w(/*/TC*/ function() /*object*/ { /*TC*/return __t([function(){/*/TC*/ 
+  getSize: __w(function() /*object*/ {/*jshint validthis: true*/return __t([function(){
     return {
       width: this._getWidgetWidth(),
       height: this._getWidgetHeight()
     };
-   /*TC*/}.apply(this,arguments), 'object']);/*/TC*/ } /*TC*/,{"signature":"function():object"})/*/TC*/),
+  }.apply(this,arguments), 'object']);},{"signature":"function():object"}),
 
   
-  _getWidgetHeight : (/*TC*/__w(/*/TC*/ function() /*number*/ { /*TC*/return __t([function(){/*/TC*/ 
+  _getWidgetHeight : __w(function() /*number*/ {/*jshint validthis: true*/return __t([function(){
     var layout = this._getLayout();
     var should_show_faces = this._shouldShowFaces() ? 'show' : 'hide';
     var send = this._getBoolAttribute('send');
@@ -10868,10 +10876,10 @@ var EdgeWidget = IframeWidget.extend({
         'button_count' : {'show': 21, 'hide': 21},
         'simple' : {'show': 20, 'hide': 20}};
     return layoutToDefaultHeightMap[layout][should_show_faces];
-   /*TC*/}.apply(this,arguments), 'number']);/*/TC*/ } /*TC*/,{"signature":"function():number"})/*/TC*/),
+  }.apply(this,arguments), 'number']);},{"signature":"function():number"}),
 
   
-  _getWidgetWidth : (/*TC*/__w(/*/TC*/ function() /*number*/ { /*TC*/return __t([function(){/*/TC*/ 
+  _getWidgetWidth : __w(function() /*number*/ {/*jshint validthis: true*/return __t([function(){
     var layout = this._getLayout();
     var send = this._getBoolAttribute('send');
     var should_show_faces = this._shouldShowFaces() ? 'show' : 'hide';
@@ -10912,24 +10920,24 @@ var EdgeWidget = IframeWidget.extend({
     }
 
     return width;
-   /*TC*/}.apply(this,arguments), 'number']);/*/TC*/ } /*TC*/,{"signature":"function():number"})/*/TC*/),
+  }.apply(this,arguments), 'number']);},{"signature":"function():number"}),
 
   
-  _getLayout : (/*TC*/__w(/*/TC*/ function() /*string*/ { /*TC*/return __t([function(){/*/TC*/ 
+  _getLayout : __w(function() /*string*/ {/*jshint validthis: true*/return __t([function(){
     return this._getAttributeFromList(
       'layout',
       'standard',
       ['standard', 'button_count', 'box_count', 'simple']);
-   /*TC*/}.apply(this,arguments), 'string']);/*/TC*/ } /*TC*/,{"signature":"function():string"})/*/TC*/),
+  }.apply(this,arguments), 'string']);},{"signature":"function():string"}),
 
   
-  _shouldShowFaces : (/*TC*/__w(/*/TC*/ function() /*boolean*/ { /*TC*/return __t([function(){/*/TC*/ 
+  _shouldShowFaces : __w(function() /*boolean*/ {/*jshint validthis: true*/return __t([function(){
     return this._getLayout() === 'standard' &&
            this._getBoolAttribute('show-faces', true);
-   /*TC*/}.apply(this,arguments), 'boolean']);/*/TC*/ } /*TC*/,{"signature":"function():boolean"})/*/TC*/),
+  }.apply(this,arguments), 'boolean']);},{"signature":"function():boolean"}),
 
   
-  _handleEdgeCommentDialogPresentation : (/*TC*/__w(/*/TC*/ function(/*object*/ message) { /*TC*/__t([message,'object','message']);/*/TC*/ 
+  _handleEdgeCommentDialogPresentation : __w(function(/*object*/ message) {__t([message,'object','message']);
     if (!this.isValid()) {
       return;
     }
@@ -10938,11 +10946,11 @@ var EdgeWidget = IframeWidget.extend({
     this.dom.appendChild(comment_node);
     this._commentSlave.process();
     this._commentWidgetNode = comment_node;
-  } /*TC*/,{"signature":"function(object)"})/*/TC*/),
+  },{"signature":"function(object)"}),
 
   
-  _createEdgeCommentWidget : (/*TC*/__w(/*/TC*/ function(/*object*/ message,
-      /*DOMElement*/ comment_node) /*object*/ { /*TC*/__t([message,'object','message'],[comment_node,'DOMElement','comment_node']);return __t([function(){/*/TC*/ 
+  _createEdgeCommentWidget : __w(function(/*object*/ message,
+      /*DOMElement*/ comment_node) /*object*/ {__t([message,'object','message'],[comment_node,'DOMElement','comment_node']);/*jshint validthis: true*/return __t([function(){
     var opts = {
       commentNode          : comment_node,
       externalUrl          : message.externalURL,
@@ -10959,18 +10967,18 @@ var EdgeWidget = IframeWidget.extend({
       paddingLeft          : this._rootPadding.left
     };
     return new EdgeCommentWidget(opts);
-   /*TC*/}.apply(this,arguments), 'object']);/*/TC*/ } /*TC*/,{"signature":"function(object,DOMElement):object"})/*/TC*/),
+  }.apply(this,arguments), 'object']);},{"signature":"function(object,DOMElement):object"}),
 
   
 
-  _getHeightOffset : (/*TC*/__w(/*/TC*/ function(/*object*/ message) /*number*/ { /*TC*/__t([message,'object','message']);return __t([function(){/*/TC*/ 
+  _getHeightOffset : __w(function(/*object*/ message) /*number*/ {__t([message,'object','message']);/*jshint validthis: true*/return __t([function(){
     return parseFloat(message['anchorGeometry[y]']) +
            parseFloat(message['anchorPosition[y]']) +
            this._rootPadding.top;
-   /*TC*/}.apply(this,arguments), 'number']);/*/TC*/ } /*TC*/,{"signature":"function(object):number"})/*/TC*/),
+  }.apply(this,arguments), 'number']);},{"signature":"function(object):number"}),
 
   
-  _getWidthOffset : (/*TC*/__w(/*/TC*/ function(/*object*/ message) /*number*/ { /*TC*/__t([message,'object','message']);return __t([function(){/*/TC*/ 
+  _getWidthOffset : __w(function(/*object*/ message) /*number*/ {__t([message,'object','message']);/*jshint validthis: true*/return __t([function(){
     var off = parseFloat(message['anchorPosition[x]']) + this._rootPadding.left;
     var plugin_left = DOM.getPosition(this.dom).x;
     var plugin_width = this.dom.offsetWidth;
@@ -10989,11 +10997,11 @@ var EdgeWidget = IframeWidget.extend({
     }
 
     return off;
-   /*TC*/}.apply(this,arguments), 'number']);/*/TC*/ } /*TC*/,{"signature":"function(object):number"})/*/TC*/),
+  }.apply(this,arguments), 'number']);},{"signature":"function(object):number"}),
 
   
-  _getCommonEdgeCommentWidgetOpts : (/*TC*/__w(/*/TC*/ function(/*object*/ message,
-      /*DOMElement*/ comment_node) /*object*/ { /*TC*/__t([message,'object','message'],[comment_node,'DOMElement','comment_node']);return __t([function(){/*/TC*/ 
+  _getCommonEdgeCommentWidgetOpts : __w(function(/*object*/ message,
+      /*DOMElement*/ comment_node) /*object*/ {__t([message,'object','message'],[comment_node,'DOMElement','comment_node']);/*jshint validthis: true*/return __t([function(){
     return {
       colorscheme             : this._attr.colorscheme,
       commentNode             : comment_node,
@@ -11015,15 +11023,15 @@ var EdgeWidget = IframeWidget.extend({
       anchorTargetY           : parseFloat(message['query[anchorTargetY]']) +
                                 this._rootPadding.top
     };
-   /*TC*/}.apply(this,arguments), 'object']);/*/TC*/ } /*TC*/,{"signature":"function(object,DOMElement):object"})/*/TC*/),
+  }.apply(this,arguments), 'object']);},{"signature":"function(object,DOMElement):object"}),
 
   
-  _handleEdgeCommentDialogDismissal : (/*TC*/__w(/*/TC*/ function(/*object*/ message) { /*TC*/__t([message,'object','message']);/*/TC*/ 
+  _handleEdgeCommentDialogDismissal : __w(function(/*object*/ message) {__t([message,'object','message']);
     if (this._commentWidgetNode) {
       this.dom.removeChild(this._commentWidgetNode);
       delete this._commentWidgetNode;
     }
-  } /*TC*/,{"signature":"function(object)"})/*/TC*/),
+  },{"signature":"function(object)"}),
 
   
   _handleEdgeCommentDialogHide: function() {
@@ -11040,12 +11048,12 @@ var EdgeWidget = IframeWidget.extend({
   },
 
   
-  _fireEventAndInvokeHandler: (/*TC*/__w(/*/TC*/ function(/*string*/ eventName,
-      /*string*/ eventAttribute) { /*TC*/__t([eventName,'string','eventName'],[eventAttribute,'string','eventAttribute']);/*/TC*/ 
+  _fireEventAndInvokeHandler: __w(function(/*string*/ eventName,
+      /*string*/ eventAttribute) {__t([eventName,'string','eventName'],[eventAttribute,'string','eventAttribute']);
     Helper.fireEvent(eventName, this);
     Helper.invokeHandler(
       this.getAttribute(eventAttribute), this, [this._attr.href]); 
-  } /*TC*/,{"signature":"function(string,string)"})/*/TC*/),
+  },{"signature":"function(string,string)"}),
 
   
   _onEdgeCreate: function() {
@@ -11078,7 +11086,7 @@ var LikeBox = EdgeWidget.extend({
   _visibleAfter: 'load',
 
   
-  setupAndValidate: (/*TC*/__w(/*/TC*/ function() /*boolean*/ { /*TC*/return __t([function(){/*/TC*/ 
+  setupAndValidate: __w(function() /*boolean*/ {/*jshint validthis: true*/return __t([function(){
     this._attr = {
       channel     : this.getChannelUrl(),
       api_key     : Runtime.getClientID(),
@@ -11146,17 +11154,17 @@ var LikeBox = EdgeWidget.extend({
     this.subscribe('xd.likeboxUnliked', ES5(this._onUnliked, 'bind', true,this));
 
     return true;
-   /*TC*/}.apply(this,arguments), 'boolean']);/*/TC*/ } /*TC*/,{"signature":"function():boolean"})/*/TC*/),
+  }.apply(this,arguments), 'boolean']);},{"signature":"function():boolean"}),
 
   
-  getSize: (/*TC*/__w(/*/TC*/ function() /*object*/ { /*TC*/return __t([function(){/*/TC*/ 
+  getSize: __w(function() /*object*/ {/*jshint validthis: true*/return __t([function(){
     return { width: this._attr.width, height: this._attr.height };
-   /*TC*/}.apply(this,arguments), 'object']);/*/TC*/ } /*TC*/,{"signature":"function():object"})/*/TC*/),
+  }.apply(this,arguments), 'object']);},{"signature":"function():object"}),
 
   
-  getUrlBits: (/*TC*/__w(/*/TC*/ function() /*object*/ { /*TC*/return __t([function(){/*/TC*/ 
+  getUrlBits: __w(function() /*object*/ {/*jshint validthis: true*/return __t([function(){
     return { name: 'likebox', params: this._attr };
-   /*TC*/}.apply(this,arguments), 'object']);/*/TC*/ } /*TC*/,{"signature":"function():object"})/*/TC*/),
+  }.apply(this,arguments), 'object']);},{"signature":"function():object"}),
 
   
   _onLiked: function() {
@@ -11179,7 +11187,7 @@ var DOM = require('sdk.DOM');
 var Event = require('sdk.Event');
 
 var SendButtonFormWidget = EdgeCommentWidget.extend({
-  constructor: (/*TC*/__w(/*/TC*/ function(/*object*/ opts) { /*TC*/__t([opts,'object','opts']);/*/TC*/ 
+  constructor: __w(function(/*object*/ opts) {__t([opts,'object','opts']);
     this.parent(opts);
 
     DOM.addCss(this.dom, 'fb_send_button_form_widget');
@@ -11218,15 +11226,15 @@ var SendButtonFormWidget = EdgeCommentWidget.extend({
 
     
     this._attr.extended_social_context = opts.extended_social_context;
-  } /*TC*/,{"signature":"function(object)"})/*/TC*/),
+  },{"signature":"function(object)"}),
   
   
   // there will be a very small delay. So in meantime, let's show a loader
   _showLoader: true,
 
-  getUrlBits: (/*TC*/__w(/*/TC*/ function() /*object*/ { /*TC*/return __t([function(){/*/TC*/ 
+  getUrlBits: __w(function() /*object*/ {/*jshint validthis: true*/return __t([function(){
     return { name: 'send_button_form_shell', params: this._attr };
-   /*TC*/}.apply(this,arguments), 'object']);/*/TC*/ } /*TC*/,{"signature":"function():object"})/*/TC*/),
+  }.apply(this,arguments), 'object']);},{"signature":"function():object"}),
 
   oneTimeSetup: function() {
     this.subscribe('xd.messageSent', ES5(this._onMessageSent, 'bind', true,this));
@@ -11248,13 +11256,13 @@ var SendButtonFormWidget = require('sdk.XFBML.SendButtonFormWidget');
 var Like = EdgeWidget.extend({
 
   
-  getUrlBits: (/*TC*/__w(/*/TC*/ function() /*object*/ { /*TC*/return __t([function(){/*/TC*/ 
+  getUrlBits: __w(function() /*object*/ {/*jshint validthis: true*/return __t([function(){
     return { name: 'like', params: this._attr };
-   /*TC*/}.apply(this,arguments), 'object']);/*/TC*/ } /*TC*/,{"signature":"function():object"})/*/TC*/),
+  }.apply(this,arguments), 'object']);},{"signature":"function():object"}),
 
   
-  _createEdgeCommentWidget: (/*TC*/__w(/*/TC*/ function(/*object*/ message,
-      /*DOMElement*/ comment_node) /*object*/ { /*TC*/__t([message,'object','message'],[comment_node,'DOMElement','comment_node']);return __t([function(){/*/TC*/ 
+  _createEdgeCommentWidget: __w(function(/*object*/ message,
+      /*DOMElement*/ comment_node) /*object*/ {__t([message,'object','message'],[comment_node,'DOMElement','comment_node']);/*jshint validthis: true*/return __t([function(){
     
     
     // send="true"></fb:like>)
@@ -11266,12 +11274,12 @@ var Like = EdgeWidget.extend({
     } else {
       return this.parentCall("_createEdgeCommentWidget", message, comment_node);
     }
-   /*TC*/}.apply(this,arguments), 'object']);/*/TC*/ } /*TC*/,{"signature":"function(object,DOMElement):object"})/*/TC*/),
+  }.apply(this,arguments), 'object']);},{"signature":"function(object,DOMElement):object"}),
 
   
-  getIframeTitle: (/*TC*/__w(/*/TC*/ function() /*string*/ { /*TC*/return __t([function(){/*/TC*/ 
+  getIframeTitle: __w(function() /*string*/ {/*jshint validthis: true*/return __t([function(){
     return 'Like this content on Facebook.';
-   /*TC*/}.apply(this,arguments), 'string']);/*/TC*/ } /*TC*/,{"signature":"function():string"})/*/TC*/)
+  }.apply(this,arguments), 'string']);},{"signature":"function():string"})
 });
 
 module.exports = Like;
@@ -11285,7 +11293,7 @@ var LiveStream = IframeWidget.extend({
   _visibleAfter: 'load',
 
   
-  setupAndValidate: (/*TC*/__w(/*/TC*/ function() /*boolean*/ { /*TC*/return __t([function(){/*/TC*/ 
+  setupAndValidate: __w(function() /*boolean*/ {/*jshint validthis: true*/return __t([function(){
     this._attr = {
       app_id : this.getAttribute('event-app-id'),
       href : this.getAttribute('href', window.location.href),
@@ -11299,21 +11307,21 @@ var LiveStream = IframeWidget.extend({
     };
 
     return true;
-   /*TC*/}.apply(this,arguments), 'boolean']);/*/TC*/ } /*TC*/,{"signature":"function():boolean"})/*/TC*/),
+  }.apply(this,arguments), 'boolean']);},{"signature":"function():boolean"}),
 
   
-  getSize: (/*TC*/__w(/*/TC*/ function() /*object*/ { /*TC*/return __t([function(){/*/TC*/ 
+  getSize: __w(function() /*object*/ {/*jshint validthis: true*/return __t([function(){
     return { width: this._attr.width, height: this._attr.height };
-   /*TC*/}.apply(this,arguments), 'object']);/*/TC*/ } /*TC*/,{"signature":"function():object"})/*/TC*/),
+  }.apply(this,arguments), 'object']);},{"signature":"function():object"}),
 
   
-  getUrlBits: (/*TC*/__w(/*/TC*/ function() /*object*/ { /*TC*/return __t([function(){/*/TC*/ 
+  getUrlBits: __w(function() /*object*/ {/*jshint validthis: true*/return __t([function(){
     var name = this._attr.redesigned ? 'live_stream_box' : 'livefeed';
     if (this._getBoolAttribute('modern', false)) {
       name = 'live_stream';
     }
     return { name: name, params: this._attr };
-   /*TC*/}.apply(this,arguments), 'object']);/*/TC*/ } /*TC*/,{"signature":"function():object"})/*/TC*/)
+  }.apply(this,arguments), 'object']);},{"signature":"function():object"})
 });
 
 module.exports = LiveStream;
@@ -11325,18 +11333,18 @@ var Helper = require('sdk.Helper');
 var IframePlugin = require('IframePlugin');
 
 var LoginButton = IframePlugin.extend({
-  constructor: (/*TC*/__w(/*/TC*/ function(/*DOMElement*/ elem, /*string*/ ns, /*string*/ tag,
-      /*object*/ attr) { /*TC*/__t([elem,'DOMElement','elem'],[ns,'string','ns'],[tag,'string','tag'],[attr,'object','attr']);/*/TC*/ 
+  constructor: __w(function(/*DOMElement*/ elem, /*string*/ ns, /*string*/ tag,
+      /*object*/ attr) {__t([elem,'DOMElement','elem'],[ns,'string','ns'],[tag,'string','tag'],[attr,'object','attr']);
     this.parent(elem, ns, tag, attr);
     var onlogin = IframePlugin.getVal(attr, 'on_login');
     if (onlogin) {
-      this.subscribe('login.status', (/*TC*/__w(/*/TC*/ function(/*object*/ response) { /*TC*/__t([response,'object','response']);/*/TC*/ 
+      this.subscribe('login.status', __w(function(/*object*/ response) {__t([response,'object','response']);
         Helper.invokeHandler(onlogin, null, [response]);
-      } /*TC*/,{"signature":"function(object)"})/*/TC*/));
+      },{"signature":"function(object)"}));
     }
-  } /*TC*/,{"signature":"function(DOMElement,string,string,object)"})/*/TC*/),
+  },{"signature":"function(DOMElement,string,string,object)"}),
 
-  getParams: (/*TC*/__w(/*/TC*/ function() /*object*/ { /*TC*/return __t([function(){/*/TC*/ 
+  getParams: __w(function() /*object*/ {/*jshint validthis: true*/return __t([function(){
     return {
       scope: 'string',
       perms: 'string', 
@@ -11349,7 +11357,7 @@ var LoginButton = IframePlugin.extend({
       auto_logout_link: 'bool',
       one_click: 'bool'
     };
-   /*TC*/}.apply(this,arguments), 'object']);/*/TC*/ } /*TC*/,{"signature":"function():object"})/*/TC*/)
+  }.apply(this,arguments), 'object']);},{"signature":"function():object"})
 });
 
 module.exports = LoginButton;
@@ -11425,19 +11433,19 @@ var Name = Element.extend({
       } else {
         data = Data._selectByIndex(['name', 'id'], 'profile', 'id', this._uid);
       }
-      data.wait(ES5((/*TC*/__w(/*/TC*/ function(/*array<object>*/ data) { /*TC*/__t([data,'array<object>','data']);/*/TC*/ 
+      data.wait(ES5(__w(function(/*array<object>*/ data) {__t([data,'array<object>','data']);
         if (this._subjectId == this._uid) {
           this._renderPronoun(data[0]);
         } else {
           this._renderOther(data[0]);
         }
         this.fire('render');
-      } /*TC*/,{"signature":"function(array<object>)"})/*/TC*/), 'bind', true,this));
+      },{"signature":"function(array<object>)"}), 'bind', true,this));
     }, 'bind', true,this));
   },
 
   
-  _renderPronoun: (/*TC*/__w(/*/TC*/ function(/*object*/ userInfo) { /*TC*/__t([userInfo,'object','userInfo']);/*/TC*/ 
+  _renderPronoun: __w(function(/*object*/ userInfo) {__t([userInfo,'object','userInfo']);
     var
       word = '',
       objective = this._objective;
@@ -11533,10 +11541,10 @@ var Name = Element.extend({
       word = Helper.upperCaseFirstChar(word);
     }
     this.dom.innerHTML = word;
-  } /*TC*/,{"signature":"function(object)"})/*/TC*/),
+  },{"signature":"function(object)"}),
 
   
-  _renderOther: (/*TC*/__w(/*/TC*/ function(/*object*/ userInfo) { /*TC*/__t([userInfo,'object','userInfo']);/*/TC*/ 
+  _renderOther: __w(function(/*object*/ userInfo) {__t([userInfo,'object','userInfo']);
     var
       name = '',
       html = '';
@@ -11600,7 +11608,7 @@ var Name = Element.extend({
       }
     }
     this.dom.innerHTML = html;
-  } /*TC*/,{"signature":"function(object)"})/*/TC*/)
+  },{"signature":"function(object)"})
 });
 
 module.exports = Name;
@@ -11617,15 +11625,15 @@ var Runtime = require('sdk.Runtime');
 
 var Bar = IframeWidget.extend({
 
-  getUrlBits: (/*TC*/__w(/*/TC*/ function() /*object*/ { /*TC*/return __t([function(){/*/TC*/ 
+  getUrlBits: __w(function() /*object*/ {/*jshint validthis: true*/return __t([function(){
     return { name: 'recommendations_bar', params: this._attr };
-   /*TC*/}.apply(this,arguments), 'object']);/*/TC*/ } /*TC*/,{"signature":"function():object"})/*/TC*/),
+  }.apply(this,arguments), 'object']);},{"signature":"function():object"}),
 
-  setupAndValidate: (/*TC*/__w(/*/TC*/ function() /*boolean*/ { /*TC*/return __t([function(){/*/TC*/ 
+  setupAndValidate: __w(function() /*boolean*/ {/*jshint validthis: true*/return __t([function(){
 
 
     function interval_queue(/*number*/ interval, /*function*/ func)
-        /*function*/ { /*TC*/__t([interval,'number','interval'],[func,'function','func']);return __t([function(){/*/TC*/ 
+        /*function*/ {__t([interval,'number','interval'],[func,'function','func']);/*jshint validthis: true*/return __t([function(){
       var last_run = 0;
       var queued = null;
 
@@ -11634,7 +11642,7 @@ var Bar = IframeWidget.extend({
         queued = null;
         last_run = ES5('Date', 'now', false);
       }
-      return (/*TC*/__w(/*/TC*/ function() /*boolean*/ { /*TC*/return __t([function(){/*/TC*/ 
+      return __w(function() /*boolean*/ {/*jshint validthis: true*/return __t([function(){
         if (!queued) {
           var now = ES5('Date', 'now', false);
           if (now - last_run < interval) {
@@ -11644,10 +11652,10 @@ var Bar = IframeWidget.extend({
           }
         }
         return true;
-       /*TC*/}.apply(this,arguments), 'boolean']);/*/TC*/ } /*TC*/,{"signature":"function():boolean"})/*/TC*/);
-     /*TC*/}.apply(this,arguments), 'function']);/*/TC*/ } /*TC*/__w(interval_queue,{"signature":"function(number,function):function"});/*/TC*/ 
+      }.apply(this,arguments), 'boolean']);},{"signature":"function():boolean"});
+    }.apply(this,arguments), 'function']);}__w(interval_queue,{"signature":"function(number,function):function"});
 
-    function validate_trigger(/*string?*/ trigger) { /*TC*/__t([trigger,'?string','trigger']);/*/TC*/ 
+    function validate_trigger(/*string?*/ trigger) {__t([trigger,'?string','trigger']);
       if (trigger.match(/^\d+(?:\.\d+)?%$/)) {
         
         var percent = Math.min(Math.max(parseInt(trigger, 10), 0), 100);
@@ -11656,18 +11664,18 @@ var Bar = IframeWidget.extend({
         trigger = 'onvisible';
       }
       return trigger;
-    } /*TC*/__w(validate_trigger,{"signature":"function(?string)"});/*/TC*/ 
+    }__w(validate_trigger,{"signature":"function(?string)"});
 
-    function validate_read_time(/*string?*/ read_time) /*number*/ { /*TC*/__t([read_time,'?string','read_time']);return __t([function(){/*/TC*/ 
+    function validate_read_time(/*string?*/ read_time) /*number*/ {__t([read_time,'?string','read_time']);/*jshint validthis: true*/return __t([function(){
       return Math.max(parseInt(read_time, 10) || 30, 10);
-     /*TC*/}.apply(this,arguments), 'number']);/*/TC*/ } /*TC*/__w(validate_read_time,{"signature":"function(?string):number"});/*/TC*/ 
+    }.apply(this,arguments), 'number']);}__w(validate_read_time,{"signature":"function(?string):number"});
 
-    function validate_side(/*string?*/ side) /*string*/ { /*TC*/__t([side,'?string','side']);return __t([function(){/*/TC*/ 
+    function validate_side(/*string?*/ side) /*string*/ {__t([side,'?string','side']);/*jshint validthis: true*/return __t([function(){
       if (side == 'left' || side == 'right') { 
         return side;
       }
       return Runtime.getRtl() ? 'left' : 'right'; 
-     /*TC*/}.apply(this,arguments), 'string']);/*/TC*/ } /*TC*/__w(validate_side,{"signature":"function(?string):string"});/*/TC*/ 
+    }.apply(this,arguments), 'string']);}__w(validate_side,{"signature":"function(?string):string"});
 
     this._attr = {
       channel      : this.getChannelUrl(),
@@ -11710,7 +11718,7 @@ var Bar = IframeWidget.extend({
     DOMEventListener.add(document.documentElement, 'mousemove', action);
 
     if (this._attr.trigger == "manual") {
-      var manual = ES5((/*TC*/__w(/*/TC*/ function(/*string*/ href) /*boolean*/ { /*TC*/__t([href,'string','href']);return __t([function(){/*/TC*/ 
+      var manual = ES5(__w(function(/*string*/ href) /*boolean*/ {__t([href,'string','href']);/*jshint validthis: true*/return __t([function(){
         if (href == this._attr.href) {
           Event.unsubscribe('xfbml.recommendationsbar.read', manual);
           this.arbiterInform(
@@ -11719,7 +11727,7 @@ var Bar = IframeWidget.extend({
             Arbiter.BEHAVIOR_STATE);
         }
         return true;
-       /*TC*/}.apply(this,arguments), 'boolean']);/*/TC*/ } /*TC*/,{"signature":"function(string):boolean"})/*/TC*/), 'bind', true,this);
+      }.apply(this,arguments), 'boolean']);},{"signature":"function(string):boolean"}), 'bind', true,this);
       Event.subscribe('xfbml.recommendationsbar.read', manual);
     } else {
       var trigger = interval_queue(500, ES5(function() {
@@ -11752,10 +11760,10 @@ var Bar = IframeWidget.extend({
     visible(); 
 
     this.focused = true;
-    var toggleFocused = ES5((/*TC*/__w(/*/TC*/ function() /*boolean*/ { /*TC*/return __t([function(){/*/TC*/ 
+    var toggleFocused = ES5(__w(function() /*boolean*/ {/*jshint validthis: true*/return __t([function(){
       this.focused = !this.focused;
       return true;
-     /*TC*/}.apply(this,arguments), 'boolean']);/*/TC*/ } /*TC*/,{"signature":"function():boolean"})/*/TC*/), 'bind', true,this);
+    }.apply(this,arguments), 'boolean']);},{"signature":"function():boolean"}), 'bind', true,this);
     DOMEventListener.add(window, 'blur', toggleFocused);
     DOMEventListener.add(window, 'focus', toggleFocused);
 
@@ -11766,15 +11774,15 @@ var Bar = IframeWidget.extend({
     }, 'bind', true,this));
 
     return true;
-   /*TC*/}.apply(this,arguments), 'boolean']);/*/TC*/ } /*TC*/,{"signature":"function():boolean"})/*/TC*/),
+  }.apply(this,arguments), 'boolean']);},{"signature":"function():boolean"}),
 
-  getSize: (/*TC*/__w(/*/TC*/ function() /*object*/ { /*TC*/return __t([function(){/*/TC*/ 
+  getSize: __w(function() /*object*/ {/*jshint validthis: true*/return __t([function(){
     
     return {
       height: 25, width: (this._attr.action == 'recommend' ? 140 : 96) };
-   /*TC*/}.apply(this,arguments), 'object']);/*/TC*/ } /*TC*/,{"signature":"function():object"})/*/TC*/),
+  }.apply(this,arguments), 'object']);},{"signature":"function():object"}),
 
-  calculateVisibility: (/*TC*/__w(/*/TC*/ function() /*boolean*/ { /*TC*/return __t([function(){/*/TC*/ 
+  calculateVisibility: __w(function() /*boolean*/ {/*jshint validthis: true*/return __t([function(){
     var fold = document.documentElement.clientHeight; 
 
     
@@ -11802,7 +11810,7 @@ var Bar = IframeWidget.extend({
         var height = document.documentElement.scrollHeight; 
         return (scroll + fold) / height >= this._attr.trigger;
     }
-   /*TC*/}.apply(this,arguments), 'boolean']);/*/TC*/ } /*TC*/,{"signature":"function():boolean"})/*/TC*/)
+  }.apply(this,arguments), 'boolean']);},{"signature":"function():boolean"})
 });
 
 module.exports = Bar;
@@ -11835,7 +11843,7 @@ var Registration = IframeWidget.extend({
   _skinnyFieldHeight: 52,
 
   
-  setupAndValidate: (/*TC*/__w(/*/TC*/ function() /*boolean*/ { /*TC*/return __t([function(){/*/TC*/ 
+  setupAndValidate: __w(function() /*boolean*/ {/*jshint validthis: true*/return __t([function(){
     this._attr = {
       action       : this.getAttribute('action'),
       border_color : this.getAttribute('border-color'),
@@ -11856,7 +11864,7 @@ var Registration = IframeWidget.extend({
     
 
     if (this._attr.onvalidate) {
-      this.subscribe('xd.validate', ES5((/*TC*/__w(/*/TC*/ function(/*object*/ message) { /*TC*/__t([message,'object','message']);/*/TC*/ 
+      this.subscribe('xd.validate', ES5(__w(function(/*object*/ message) {__t([message,'object','message']);
         var value = ES5('JSON', 'parse', false,message.value);
         var callback = ES5(function(errors) {
           this.arbiterInform('Registration.Validation',
@@ -11871,21 +11879,21 @@ var Registration = IframeWidget.extend({
         if (response) {
           callback(response);
         }
-      } /*TC*/,{"signature":"function(object)"})/*/TC*/), 'bind', true,this));
+      },{"signature":"function(object)"}), 'bind', true,this));
     }
 
     this.subscribe('xd.authLogin', ES5(this._onAuthLogin, 'bind', true,this));
     this.subscribe('xd.authLogout', ES5(this._onAuthLogout, 'bind', true,this));
 
     return true;
-   /*TC*/}.apply(this,arguments), 'boolean']);/*/TC*/ } /*TC*/,{"signature":"function():boolean"})/*/TC*/),
+  }.apply(this,arguments), 'boolean']);},{"signature":"function():boolean"}),
 
   
-  getSize: (/*TC*/__w(/*/TC*/ function() /*object*/ { /*TC*/return __t([function(){/*/TC*/ 
+  getSize: __w(function() /*object*/ {/*jshint validthis: true*/return __t([function(){
     return { width: this._attr.width, height: this._getHeight() };
-   /*TC*/}.apply(this,arguments), 'object']);/*/TC*/ } /*TC*/,{"signature":"function():object"})/*/TC*/),
+  }.apply(this,arguments), 'object']);},{"signature":"function():object"}),
 
-  _getHeight: (/*TC*/__w(/*/TC*/ function() /*number*/ { /*TC*/return __t([function(){/*/TC*/ 
+  _getHeight: __w(function() /*number*/ {/*jshint validthis: true*/return __t([function(){
     if (this._attr.height) {
       return this._attr.height;
     }
@@ -11908,17 +11916,17 @@ var Registration = IframeWidget.extend({
     } else {
       return this._baseHeight + fields.length * this._fieldHeight;
     }
-   /*TC*/}.apply(this,arguments), 'number']);/*/TC*/ } /*TC*/,{"signature":"function():number"})/*/TC*/),
+  }.apply(this,arguments), 'number']);},{"signature":"function():number"}),
 
   
-  getUrlBits: (/*TC*/__w(/*/TC*/ function() /*object*/ { /*TC*/return __t([function(){/*/TC*/ 
+  getUrlBits: __w(function() /*object*/ {/*jshint validthis: true*/return __t([function(){
     return { name: 'registration', params: this._attr };
-   /*TC*/}.apply(this,arguments), 'object']);/*/TC*/ } /*TC*/,{"signature":"function():object"})/*/TC*/),
+  }.apply(this,arguments), 'object']);},{"signature":"function():object"}),
 
   
-  getDefaultWebDomain: (/*TC*/__w(/*/TC*/ function() /*string*/ { /*TC*/return __t([function(){/*/TC*/ 
+  getDefaultWebDomain: __w(function() /*string*/ {/*jshint validthis: true*/return __t([function(){
     return UrlMap.resolve('www', true);
-   /*TC*/}.apply(this,arguments), 'string']);/*/TC*/ } /*TC*/,{"signature":"function():string"})/*/TC*/),
+  }.apply(this,arguments), 'string']);},{"signature":"function():string"}),
 
   
   _onAuthLogin: function() {
@@ -11950,7 +11958,7 @@ var SendButtonFormWidget = require('sdk.XFBML.SendButtonFormWidget');
 
 var Send = EdgeWidget.extend({
   
-  setupAndValidate: (/*TC*/__w(/*/TC*/ function() /*boolean*/ { /*TC*/return __t([function(){/*/TC*/ 
+  setupAndValidate: __w(function() /*boolean*/ {/*jshint validthis: true*/return __t([function(){
     DOM.addCss(this.dom, 'fb_edge_widget_with_comment');
     this._attr = {
       channel                 : this.getChannelUrl(),
@@ -11969,27 +11977,27 @@ var Send = EdgeWidget.extend({
     };
 
     return true;
-   /*TC*/}.apply(this,arguments), 'boolean']);/*/TC*/ } /*TC*/,{"signature":"function():boolean"})/*/TC*/),
+  }.apply(this,arguments), 'boolean']);},{"signature":"function():boolean"}),
 
   
-  getUrlBits: (/*TC*/__w(/*/TC*/ function() /*object*/ { /*TC*/return __t([function(){/*/TC*/ 
+  getUrlBits: __w(function() /*object*/ {/*jshint validthis: true*/return __t([function(){
     return { name: 'send', params: this._attr };
-   /*TC*/}.apply(this,arguments), 'object']);/*/TC*/ } /*TC*/,{"signature":"function():object"})/*/TC*/),
+  }.apply(this,arguments), 'object']);},{"signature":"function():object"}),
 
   
-  _createEdgeCommentWidget: (/*TC*/__w(/*/TC*/ function(/*object*/ message,
-      /*DOMElement*/ comment_node) /*object*/ { /*TC*/__t([message,'object','message'],[comment_node,'DOMElement','comment_node']);return __t([function(){/*/TC*/ 
+  _createEdgeCommentWidget: __w(function(/*object*/ message,
+      /*DOMElement*/ comment_node) /*object*/ {__t([message,'object','message'],[comment_node,'DOMElement','comment_node']);/*jshint validthis: true*/return __t([function(){
     var opts = this._getCommonEdgeCommentWidgetOpts(message, comment_node);
     return new SendButtonFormWidget(opts);
-   /*TC*/}.apply(this,arguments), 'object']);/*/TC*/ } /*TC*/,{"signature":"function(object,DOMElement):object"})/*/TC*/),
+  }.apply(this,arguments), 'object']);},{"signature":"function(object,DOMElement):object"}),
 
   
-  getSize: (/*TC*/__w(/*/TC*/ function() /*object*/ { /*TC*/return __t([function(){/*/TC*/ 
+  getSize: __w(function() /*object*/ {/*jshint validthis: true*/return __t([function(){
     return {
       width  : 80,
       height : 25
     };
-   /*TC*/}.apply(this,arguments), 'object']);/*/TC*/ } /*TC*/,{"signature":"function():object"})/*/TC*/)
+  }.apply(this,arguments), 'object']);},{"signature":"function():object"})
 });
 
 module.exports = Send;
@@ -12002,7 +12010,7 @@ var IframeWidget = require('sdk.XFBML.IframeWidget');
 
 var SocialContext = IframeWidget.extend({
   
-  setupAndValidate: (/*TC*/__w(/*/TC*/ function() /*boolean*/ { /*TC*/return __t([function(){/*/TC*/ 
+  setupAndValidate: __w(function() /*boolean*/ {/*jshint validthis: true*/return __t([function(){
     var size = this.getAttribute('size', 'small');
     this._attr = {
       channel: this.getChannelUrl(),
@@ -12019,26 +12027,26 @@ var SocialContext = IframeWidget.extend({
       'xd.social_context_stats', ES5(this._bubbleSocialContextStats, 'bind', true,this));
 
     return true;
-   /*TC*/}.apply(this,arguments), 'boolean']);/*/TC*/ } /*TC*/,{"signature":"function():boolean"})/*/TC*/),
+  }.apply(this,arguments), 'boolean']);},{"signature":"function():boolean"}),
 
   
-  _bubbleSocialContextStats: (/*TC*/__w(/*/TC*/ function(/*object*/ message) { /*TC*/__t([message,'object','message']);/*/TC*/ 
+  _bubbleSocialContextStats: __w(function(/*object*/ message) {__t([message,'object','message']);
     var filtered_message = {
       pluginID: this.getAttribute('plugin-id'),
       socialContextPageIDs: ES5('JSON', 'parse', false,message.social_context_page_ids)
     };
     Event.fire('xfbml.social_context_stats', filtered_message);
-  } /*TC*/,{"signature":"function(object)"})/*/TC*/),
+  },{"signature":"function(object)"}),
 
   
-  getSize: (/*TC*/__w(/*/TC*/ function() /*object*/ { /*TC*/return __t([function(){/*/TC*/ 
+  getSize: __w(function() /*object*/ {/*jshint validthis: true*/return __t([function(){
     return { width: this._attr.width, height: this._attr.height };
-   /*TC*/}.apply(this,arguments), 'object']);/*/TC*/ } /*TC*/,{"signature":"function():object"})/*/TC*/),
+  }.apply(this,arguments), 'object']);},{"signature":"function():object"}),
 
   
-  getUrlBits: (/*TC*/__w(/*/TC*/ function() /*object*/ { /*TC*/return __t([function(){/*/TC*/ 
+  getUrlBits: __w(function() /*object*/ {/*jshint validthis: true*/return __t([function(){
     return { name: 'social_context', params: this._attr };
-   /*TC*/}.apply(this,arguments), 'object']);/*/TC*/ } /*TC*/,{"signature":"function():object"})/*/TC*/)
+  }.apply(this,arguments), 'object']);},{"signature":"function():object"})
 });
 
 module.exports = SocialContext;
@@ -12094,7 +12102,7 @@ var ProfilePic = Element.extend({
       style.height = height;
     }
 
-    var renderFn = ES5((/*TC*/__w(/*/TC*/ function(/*array<object>*/ result) { /*TC*/__t([result,'array<object>','result']);/*/TC*/ 
+    var renderFn = ES5(__w(function(/*array<object>*/ result) {__t([result,'array<object>','result']);
       var
         userInfo = result ? result[0] : null,
         imgSrc = userInfo ? userInfo[picFieldName] : null;
@@ -12129,10 +12137,10 @@ var ProfilePic = Element.extend({
       this.dom.innerHTML = html;
       DOM.addCss(this.dom, 'fb_profile_pic_rendered');
       this.fire('render');
-    } /*TC*/,{"signature":"function(array<object>)"})/*/TC*/), 'bind', true,this);
+    },{"signature":"function(array<object>)"}), 'bind', true,this);
 
     
-    Event.monitor('auth.statusChange', ES5((/*TC*/__w(/*/TC*/ function() /*boolean?*/ { /*TC*/return __t([function(){/*/TC*/ 
+    Event.monitor('auth.statusChange', ES5(__w(function() /*boolean?*/ {/*jshint validthis: true*/return __t([function(){
       
       if (!this.isValid()) {
         this.fire('render');
@@ -12157,7 +12165,7 @@ var ProfilePic = Element.extend({
         
         renderFn();
       }
-     /*TC*/}.apply(this,arguments), '?boolean']);/*/TC*/ } /*TC*/,{"signature":"function():boolean?"})/*/TC*/), 'bind', true,this));
+    }.apply(this,arguments), '?boolean']);},{"signature":"function():boolean?"}), 'bind', true,this));
   }
 });
 
