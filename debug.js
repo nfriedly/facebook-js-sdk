@@ -1,4 +1,4 @@
-/*1369218588,179350595,JIT Construction: v822986,en_US*/
+/*1370431546,179398499,JIT Construction: v835869,en_US*/
 
 /**
  * Copyright Facebook Inc.
@@ -11,7 +11,7 @@ var self = window, document = window.document;
 var setTimeout = window.setTimeout, setInterval = window.setInterval;var __DEV__ = 0;
 function emptyFunction() {};
 /**
- * @generated SignedSource<<872ac42bd1eff864629de7f5adaaecb7>>
+ * @generated SignedSource<<709ed10ca3e597282e758fffeab09427>>
  * 
  * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
  * !! This file is a check-in of a static_upstream project!      !!
@@ -40,6 +40,15 @@ function emptyFunction() {};
   var toString = Object.prototype.toString;
   var handler;
   var currentType;
+
+  /**
+   * Mapping from types to interfaces that they implement.
+   */
+  var typeInterfaces = {
+    'DOMElement': ['DOMEventTarget'],
+    'DOMDocument': ['DOMEventTarget'],
+    'DOMWindow': ['DOMEventTarget']
+  };
 
   /**
    * A recursive descent analyzer which takes a value and a typehint, validating
@@ -83,18 +92,20 @@ function emptyFunction() {};
     } else {
       // HTMLObjectElements has a typeof function in FF
       if (type === 'object' || type === 'function') {
-        if (value.constructor
-            && value.constructor.__TCmeta
-            && value.constructor.__TCmeta.type) {
-          // let custom types also match 'object'
+        var constructor = value.constructor;
+        if (constructor && constructor.__TCmeta) {
+          // The value is a custom type
+          // Let custom types also match 'object'
           if (node === 'object') {
             type = 'object';
           } else {
-            // TODO: support prototypal intheritance
-            // This isn't possible without support from the framework setting up
-            // the inheritance, as we have to be able to traverse and inspect
-            // each object in the prototype chain
-            type = value.constructor.__TCmeta.type;
+            while (constructor && constructor.__TCmeta) {
+              if (constructor.__TCmeta.type == node) {
+                type = node;
+                break;
+              }
+              constructor = constructor.__TCmeta.superClass;
+            }
           }
         } else if ((value.nodeType === 1 || value.nodeType === 11)
                    && typeof value.nodeName === 'string') {
@@ -108,6 +119,8 @@ function emptyFunction() {};
           type = 'DOMDocument';
         } else if (value.nodeType === 3) {
           type = 'DOMTextNode';
+        } else if (value == value.window && value == value.self) {
+          type = 'DOMWindow';
         } else {
           // else, check if it is actually an array
           switch (toStringType) {
@@ -134,6 +147,16 @@ function emptyFunction() {};
 
     if (nullable && /undefined|null/.test(type)) {
       return true;
+    }
+
+    if (type in typeInterfaces) {
+      var interfaces = typeInterfaces[type], i = interfaces.length;
+      while (i--) {
+        if (interfaces[i] === node) {
+          type = node;
+          break;
+        }
+      }
     }
 
     currentType.push(type);
@@ -224,7 +247,7 @@ function emptyFunction() {};
 })();
 /*/TC*/
 
-/* 9MtqNtepW6W */
+/* wdZPCVxbZpy */
 /**
  * This is a lightweigh implementation of require and __d which is used by the
  * JavaScript SDK.
@@ -302,7 +325,7 @@ var require, __d;
   } /*TC*/,{"signature":"function(string,array<string>,?number)"})/*/TC*/);
 })(this);
 
-/* 4UsSO62WGDm */
+/* zB3sVz-p6Ik */
 var ES5 = function(){
 __d("ES5ArrayPrototype",[],function(global,require,requireDynamic,requireLazy,module,exports) {/**
  * @providesModule ES5ArrayPrototype
@@ -418,7 +441,7 @@ ES5ArrayPrototype.indexOf = function(val, index) {
 
 module.exports = ES5ArrayPrototype;
 
-/* Q2hBEaqXBES */});
+/* 9Tr4fw-T9rQ */});
 __d("ES5FunctionPrototype",[],function(global,require,requireDynamic,requireLazy,module,exports) {/**
  * @providesModule ES5FunctionPrototype
  */
@@ -453,7 +476,7 @@ ES5FunctionPrototype.bind = function(context /*, args... */) {
 
 module.exports = ES5FunctionPrototype;
 
-/* XxOJOrM1GjP */});
+/* L8y3KOP3JMA */});
 __d("ES5StringPrototype",[],function(global,require,requireDynamic,requireLazy,module,exports) {/**
  * @providesModule ES5StringPrototype
  */
@@ -474,7 +497,7 @@ ES5StringPrototype.trim = function() {
 
 module.exports = ES5StringPrototype;
 
-/* HEYdCfqjH6C */});
+/* jV553Iwj1NY */});
 __d("ES5Array",[],function(global,require,requireDynamic,requireLazy,module,exports) {/**
  * @providesModule ES5Array
  */
@@ -487,7 +510,7 @@ ES5Array.isArray = function(object) {
 
 module.exports = ES5Array;
 
-/* rlt3LgTHVvq */});
+/* JG3DwFHNHzN */});
 __d("ES5Object",[],function(global,require,requireDynamic,requireLazy,module,exports) {/**
  * @providesModule ES5Object
  */
@@ -558,7 +581,7 @@ ES5Object.keys = function(object) {
 
 module.exports = ES5Object;
 
-/* DEKbqnhFCK1 */});
+/* qj0Zs4T5tCY */});
 __d("ES5Date",[],function(global,require,requireDynamic,requireLazy,module,exports) {/**
  * @providesModule ES5Date
  */
@@ -570,7 +593,7 @@ ES5Date.now = function() {
 
 module.exports = ES5Date;
 
-/* txLlRiHlYEh */});
+/* GgI63e0Iit- */});
 __d("JSON3",[],function(global,require,requireDynamic,requireLazy,module,exports) {/**
  * @providesModule JSON3
  * @option preserve-header
@@ -1327,7 +1350,7 @@ __d("JSON3",[],function(global,require,requireDynamic,requireLazy,module,exports
   }
 }).call(this);
 
-/* Du5mlGQR6qM */});
+/* SOyw7y3B16T */});
 __d("ES5",["ES5ArrayPrototype","ES5FunctionPrototype","ES5StringPrototype","ES5Array","ES5Object","ES5Date","JSON3"],function(global,require,requireDynamic,requireLazy,module,exports) {/**
  * @providesModule ES5
  *
@@ -1410,11 +1433,11 @@ function ES5(lhs, rhs, proto/*, args*/) {
 
 module.exports = ES5;
 
-/* aHlPBZWe2cC */});ES5 = require('ES5');
+/* vT0p_nEGtn3 */});ES5 = require('ES5');
 return ES5.apply(null, arguments);
 };
 
-__d("sdk.RuntimeConfig",[],{"locale":"en_US","rtl":false});__d("UrlMapConfig",[],{"www":"www.facebook.com","m":"m.facebook.com","connect":"connect.facebook.net","api_https":"api.facebook.com","api_read_https":"api-read.facebook.com","graph_https":"graph.facebook.com","fbcdn_http":"fbstatic-a.akamaihd.net","fbcdn_https":"fbstatic-a.akamaihd.net","cdn_http":"static.ak.facebook.com","cdn_https":"s-static.ak.facebook.com"});__d("XDConfig",[],{"XdUrl":"connect\/xd_arbiter.php?version=24","Flash":{"path":"https:\/\/connect.facebook.net\/rsrc.php\/v1\/yX\/r\/VpkNidONSDC.swf"},"useCdn":true});__d("SDKConfig",[],{"bustCache":true,"tagCountLogRate":0.01,"errorHandling":{"rate":4},"usePluginPipe":true,"features":{"xfbml_profile_pic_server":true,"error_handling":4,"oauth_ping":true},"api":{"mode":"warn","whitelist":["Canvas","Canvas.Prefetcher","Canvas.Prefetcher.addStaticResource","Canvas.Prefetcher.setCollectionMode","Canvas.getPageInfo","Canvas.hideFlashElement","Canvas.scrollTo","Canvas.setAutoGrow","Canvas.setDoneLoading","Canvas.setSize","Canvas.setUrlHandler","Canvas.showFlashElement","Canvas.startTimer","Canvas.stopTimer","Data","Data.process","Data.query","Data.query:wait","Data.waitOn","Data.waitOn:wait","Event","Event.subscribe","Event.unsubscribe","Music.flashCallback","Music.init","Music.send","Payment","Payment.cancelFlow","Payment.continueFlow","Payment.init","Payment.parse","Payment.setSize","ThirdPartyProvider","ThirdPartyProvider.init","ThirdPartyProvider.sendData","UA","UA.nativeApp","XFBML","XFBML.RecommendationsBar","XFBML.RecommendationsBar.markRead","XFBML.parse","addFriend","api","getAccessToken","getAuthResponse","getLoginStatus","getUserID","init","login","logout","publish","share","ui","ui:subscribe"]},"initSitevars":{"enableMobileComments":1,"iframePermissions":{"read_stream":false,"manage_mailbox":false,"manage_friendlists":false,"read_mailbox":false,"publish_checkins":true,"status_update":true,"photo_upload":true,"video_upload":true,"sms":false,"create_event":true,"rsvp_event":true,"offline_access":true,"email":true,"xmpp_login":false,"create_note":true,"share_item":true,"export_stream":false,"publish_stream":true,"publish_likes":true,"ads_management":false,"contact_email":true,"access_private_data":false,"read_insights":false,"read_requests":false,"read_friendlists":true,"manage_pages":false,"physical_login":false,"manage_groups":false,"read_deals":false}}});__d("CssConfig",[],{"rules":".fb_hidden{position:absolute;top:-10000px;z-index:10001}\n.fb_invisible{display:none}\n.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:\"lucida grande\", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}\n.fb_reset > div{overflow:hidden}\n.fb_link img{border:none}\n.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}\n.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px}\n.fb_dialog_content{background:#fff;color:#333}\n.fb_dialog_close_icon{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;_background-image:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yL\/r\/s816eWC-2sl.gif);cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px;top:8px\\9;right:7px\\9}\n.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}\n.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}\n.fb_dialog_close_icon:hover{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent;_background-image:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yL\/r\/s816eWC-2sl.gif)}\n.fb_dialog_close_icon:active{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent;_background-image:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yL\/r\/s816eWC-2sl.gif)}\n.fb_dialog_loader{background-color:#f2f2f2;border:1px solid #606060;font-size:24px;padding:20px}\n.fb_dialog_top_left,\n.fb_dialog_top_right,\n.fb_dialog_bottom_left,\n.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}\n\/* \u0040noflip *\/\n.fb_dialog_top_left{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}\n\/* \u0040noflip *\/\n.fb_dialog_top_right{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}\n\/* \u0040noflip *\/\n.fb_dialog_bottom_left{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}\n\/* \u0040noflip *\/\n.fb_dialog_bottom_right{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}\n.fb_dialog_vert_left,\n.fb_dialog_vert_right,\n.fb_dialog_horiz_top,\n.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}\n.fb_dialog_vert_left,\n.fb_dialog_vert_right{width:10px;height:100\u0025}\n.fb_dialog_vert_left{margin-left:-10px}\n.fb_dialog_vert_right{right:0;margin-right:-10px}\n.fb_dialog_horiz_top,\n.fb_dialog_horiz_bottom{width:100\u0025;height:10px}\n.fb_dialog_horiz_top{margin-top:-10px}\n.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}\n.fb_dialog_iframe{line-height:0}\n.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #3b5998;color:#fff;font-size:14px;font-weight:bold;margin:0}\n.fb_dialog_content .dialog_title > span{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yd\/r\/Cou7n-nqK52.gif)\nno-repeat 5px 50\u0025;float:left;padding:5px 0 7px 26px}\nbody.fb_hidden{-webkit-transform:none;height:100\u0025;margin:0;left:-10000px;overflow:visible;position:absolute;top:-10000px;width:100\u0025\n}\n.fb_dialog.fb_dialog_mobile.loading{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ya\/r\/3rhSv5V8j3o.gif)\nwhite no-repeat 50\u0025 50\u0025;min-height:100\u0025;min-width:100\u0025;overflow:hidden;position:absolute;top:0;z-index:10001}\n.fb_dialog.fb_dialog_mobile.loading.centered{max-height:590px;min-height:590px;max-width:500px;min-width:500px}\n#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;left:0;top:0;width:100\u0025;min-height:100\u0025;z-index:10000}\n#fb-root #fb_dialog_ipad_overlay.hidden{display:none}\n.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}\n.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0 0, 0 100\u0025, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}\n.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100\u0025\n}\n.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px\n}\n.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px\n}\n.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0 0, 0 100\u0025, from(#4966A6),\ncolor-stop(0.5, #355492), to(#2A4887));border:1px solid #29447e;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset,\nrgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}\n.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}\n.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}\n.fb_dialog_content .dialog_content{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/y9\/r\/jKEcVPZFk-2.gif) no-repeat 50\u0025 50\u0025;border:1px solid #555;border-bottom:0;border-top:0;height:150px}\n.fb_dialog_content .dialog_footer{background:#f2f2f2;border:1px solid #555;border-top-color:#ccc;height:40px}\n#fb_dialog_loader_close{float:left}\n.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}\n.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}\n.fb_iframe_widget{display:inline-block;position:relative}\n.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}\n.fb_iframe_widget iframe{position:absolute}\n.fb_iframe_widget_lift{z-index:1}\n.fb_hide_iframes iframe{position:relative;left:-10000px}\n.fb_iframe_widget_loader{position:relative;display:inline-block}\n.fb_iframe_widget_fluid{display:inline}\n.fb_iframe_widget_fluid span{width:100\u0025}\n.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}\n.fb_iframe_widget_loader .FB_Loader{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/y9\/r\/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50\u0025;z-index:4}\n.fb_connect_bar_container div,\n.fb_connect_bar_container span,\n.fb_connect_bar_container a,\n.fb_connect_bar_container img,\n.fb_connect_bar_container strong{background:none;border-spacing:0;border:0;direction:ltr;font-style:normal;font-variant:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal;vertical-align:baseline}\n.fb_connect_bar_container{position:fixed;left:0 !important;right:0 !important;height:42px !important;padding:0 25px !important;margin:0 !important;vertical-align:middle !important;border-bottom:1px solid #333 !important;background:#3b5998 !important;z-index:99999999 !important;overflow:hidden !important}\n.fb_connect_bar_container_ie6{position:absolute;top:expression(document.compatMode==\"CSS1Compat\"? document.documentElement.scrollTop+\"px\":body.scrollTop+\"px\")}\n.fb_connect_bar{position:relative;margin:auto;height:100\u0025;width:100\u0025;padding:6px 0 0 0 !important;background:none;color:#fff !important;font-family:\"lucida grande\", tahoma, verdana, arial, sans-serif !important;font-size:13px !important;font-style:normal !important;font-variant:normal !important;font-weight:normal !important;letter-spacing:normal !important;line-height:1 !important;text-decoration:none !important;text-indent:0 !important;text-shadow:none !important;text-transform:none !important;white-space:normal !important;word-spacing:normal !important}\n.fb_connect_bar a:hover{color:#fff}\n.fb_connect_bar .fb_profile img{height:30px;width:30px;vertical-align:middle;margin:0 6px 5px 0}\n.fb_connect_bar div a,\n.fb_connect_bar span,\n.fb_connect_bar span a{color:#bac6da;font-size:11px;text-decoration:none}\n.fb_connect_bar .fb_buttons{float:right;margin-top:7px}\n.fb_edge_widget_with_comment{position:relative;*z-index:1000}\n.fb_edge_widget_with_comment span.fb_edge_comment_widget{position:absolute}\n.fb_edge_widget_with_comment span.fb_send_button_form_widget{z-index:1}\n.fb_edge_widget_with_comment span.fb_send_button_form_widget .FB_Loader{left:0;top:1px;margin-top:6px;margin-left:0;background-position:50\u0025 50\u0025;background-color:#fff;height:150px;width:394px;border:1px #666 solid;border-bottom:2px solid #283e6c;z-index:1}\n.fb_edge_widget_with_comment span.fb_send_button_form_widget.dark .FB_Loader{background-color:#000;border-bottom:2px solid #ccc}\n.fb_edge_widget_with_comment span.fb_send_button_form_widget.siderender\n.FB_Loader{margin-top:0}\n.fbpluginrecommendationsbarleft,\n.fbpluginrecommendationsbarright{position:fixed !important;bottom:0;z-index:999}\n\/* \u0040noflip *\/\n.fbpluginrecommendationsbarleft{left:10px}\n\/* \u0040noflip *\/\n.fbpluginrecommendationsbarright{right:10px}","components":["fb.css.base","fb.css.dialog","fb.css.iframewidget","fb.css.connectbarwidget","fb.css.edgecommentwidget","fb.css.sendbuttonformwidget","fb.css.plugin.recommendationsbar"]});__d("CanvasPrefetcherConfig",[],{"blacklist":[144959615576466],"sampleRate":500});__d("PluginPipeConfig",[],{"threshold":0,"enabledApps":{"209753825810663":1,"187288694643718":1}});__d("ConnectBarConfig",[],{"imgs":{"buttonUrl":"rsrc.php\/v2\/yY\/r\/h_Y6u1wrZPW.png","missingProfileUrl":"rsrc.php\/v2\/yo\/r\/UlIqmHJn-SK.gif"}});__d("ProfilePicConfig",[],{"defPicMap":{"pic":"rsrc.php\/v1\/yh\/r\/C5yt7Cqf3zU.jpg","pic_big":"rsrc.php\/v2\/yL\/r\/HsTZSDw4avx.gif","pic_big_with_logo":"rsrc.php\/v2\/y5\/r\/SRDCaeCL7hM.gif","pic_small":"rsrc.php\/v1\/yi\/r\/odA9sNLrE86.jpg","pic_small_with_logo":"rsrc.php\/v2\/yD\/r\/k1xiRXKnlGd.gif","pic_square":"rsrc.php\/v2\/yo\/r\/UlIqmHJn-SK.gif","pic_square_with_logo":"rsrc.php\/v2\/yX\/r\/9dYJBPDHXwZ.gif","pic_with_logo":"rsrc.php\/v2\/yu\/r\/fPPR9f2FJ3t.gif"}});__d("ApiClientConfig",[],{"FlashRequest":{"swfUrl":"https:\/\/connect.facebook.net\/rsrc.php\/v1\/yB\/r\/YV5wijq5fkW.swf"}});
+__d("sdk.RuntimeConfig",[],{"locale":"en_US","rtl":false});__d("XDConfig",[],{"XdUrl":"connect\/xd_arbiter.php?version=24","Flash":{"path":"https:\/\/connect.facebook.net\/rsrc.php\/v1\/yX\/r\/VpkNidONSDC.swf"},"useCdn":true});__d("UrlMapConfig",[],{"www":"www.facebook.com","m":"m.facebook.com","connect":"connect.facebook.net","api_https":"api.facebook.com","api_read_https":"api-read.facebook.com","graph_https":"graph.facebook.com","fbcdn_http":"fbstatic-a.akamaihd.net","fbcdn_https":"fbstatic-a.akamaihd.net","cdn_http":"static.ak.facebook.com","cdn_https":"s-static.ak.facebook.com"});__d("ProfilePicConfig",[],{"defPicMap":{"pic":"rsrc.php\/v1\/yh\/r\/C5yt7Cqf3zU.jpg","pic_big":"rsrc.php\/v2\/yL\/r\/HsTZSDw4avx.gif","pic_big_with_logo":"rsrc.php\/v2\/y5\/r\/SRDCaeCL7hM.gif","pic_small":"rsrc.php\/v1\/yi\/r\/odA9sNLrE86.jpg","pic_small_with_logo":"rsrc.php\/v2\/yD\/r\/k1xiRXKnlGd.gif","pic_square":"rsrc.php\/v2\/yo\/r\/UlIqmHJn-SK.gif","pic_square_with_logo":"rsrc.php\/v2\/yX\/r\/9dYJBPDHXwZ.gif","pic_with_logo":"rsrc.php\/v2\/yu\/r\/fPPR9f2FJ3t.gif"}});__d("PluginPipeConfig",[],{"threshold":0,"enabledApps":{"209753825810663":1,"187288694643718":1}});__d("CssConfig",[],{"rules":".fb_hidden{position:absolute;top:-10000px;z-index:10001}\n.fb_invisible{display:none}\n.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:\"lucida grande\", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}\n.fb_reset > div{overflow:hidden}\n.fb_link img{border:none}\n.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}\n.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px}\n.fb_dialog_content{background:#fff;color:#333}\n.fb_dialog_close_icon{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;_background-image:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yL\/r\/s816eWC-2sl.gif);cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px;top:8px\\9;right:7px\\9}\n.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}\n.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}\n.fb_dialog_close_icon:hover{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent;_background-image:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yL\/r\/s816eWC-2sl.gif)}\n.fb_dialog_close_icon:active{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent;_background-image:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yL\/r\/s816eWC-2sl.gif)}\n.fb_dialog_loader{background-color:#f2f2f2;border:1px solid #606060;font-size:24px;padding:20px}\n.fb_dialog_top_left,\n.fb_dialog_top_right,\n.fb_dialog_bottom_left,\n.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}\n\/* \u0040noflip *\/\n.fb_dialog_top_left{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}\n\/* \u0040noflip *\/\n.fb_dialog_top_right{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}\n\/* \u0040noflip *\/\n.fb_dialog_bottom_left{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}\n\/* \u0040noflip *\/\n.fb_dialog_bottom_right{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}\n.fb_dialog_vert_left,\n.fb_dialog_vert_right,\n.fb_dialog_horiz_top,\n.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}\n.fb_dialog_vert_left,\n.fb_dialog_vert_right{width:10px;height:100\u0025}\n.fb_dialog_vert_left{margin-left:-10px}\n.fb_dialog_vert_right{right:0;margin-right:-10px}\n.fb_dialog_horiz_top,\n.fb_dialog_horiz_bottom{width:100\u0025;height:10px}\n.fb_dialog_horiz_top{margin-top:-10px}\n.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}\n.fb_dialog_iframe{line-height:0}\n.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #3b5998;color:#fff;font-size:14px;font-weight:bold;margin:0}\n.fb_dialog_content .dialog_title > span{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yd\/r\/Cou7n-nqK52.gif)\nno-repeat 5px 50\u0025;float:left;padding:5px 0 7px 26px}\nbody.fb_hidden{-webkit-transform:none;height:100\u0025;margin:0;left:-10000px;overflow:visible;position:absolute;top:-10000px;width:100\u0025\n}\n.fb_dialog.fb_dialog_mobile.loading{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ya\/r\/3rhSv5V8j3o.gif)\nwhite no-repeat 50\u0025 50\u0025;min-height:100\u0025;min-width:100\u0025;overflow:hidden;position:absolute;top:0;z-index:10001}\n.fb_dialog.fb_dialog_mobile.loading.centered{max-height:590px;min-height:590px;max-width:500px;min-width:500px}\n#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;left:0;top:0;width:100\u0025;min-height:100\u0025;z-index:10000}\n#fb-root #fb_dialog_ipad_overlay.hidden{display:none}\n.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}\n.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0 0, 0 100\u0025, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}\n.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100\u0025\n}\n.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px\n}\n.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px\n}\n.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0 0, 0 100\u0025, from(#4966A6),\ncolor-stop(0.5, #355492), to(#2A4887));border:1px solid #29447e;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset,\nrgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}\n.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}\n.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}\n.fb_dialog_content .dialog_content{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/y9\/r\/jKEcVPZFk-2.gif) no-repeat 50\u0025 50\u0025;border:1px solid #555;border-bottom:0;border-top:0;height:150px}\n.fb_dialog_content .dialog_footer{background:#f2f2f2;border:1px solid #555;border-top-color:#ccc;height:40px}\n#fb_dialog_loader_close{float:left}\n.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}\n.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}\n.fb_iframe_widget{display:inline-block;position:relative}\n.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}\n.fb_iframe_widget iframe{position:absolute}\n.fb_iframe_widget_lift{z-index:1}\n.fb_hide_iframes iframe{position:relative;left:-10000px}\n.fb_iframe_widget_loader{position:relative;display:inline-block}\n.fb_iframe_widget_fluid{display:inline}\n.fb_iframe_widget_fluid span{width:100\u0025}\n.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}\n.fb_iframe_widget_loader .FB_Loader{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/y9\/r\/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50\u0025;z-index:4}\n.fb_connect_bar_container div,\n.fb_connect_bar_container span,\n.fb_connect_bar_container a,\n.fb_connect_bar_container img,\n.fb_connect_bar_container strong{background:none;border-spacing:0;border:0;direction:ltr;font-style:normal;font-variant:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal;vertical-align:baseline}\n.fb_connect_bar_container{position:fixed;left:0 !important;right:0 !important;height:42px !important;padding:0 25px !important;margin:0 !important;vertical-align:middle !important;border-bottom:1px solid #333 !important;background:#3b5998 !important;z-index:99999999 !important;overflow:hidden !important}\n.fb_connect_bar_container_ie6{position:absolute;top:expression(document.compatMode==\"CSS1Compat\"? document.documentElement.scrollTop+\"px\":body.scrollTop+\"px\")}\n.fb_connect_bar{position:relative;margin:auto;height:100\u0025;width:100\u0025;padding:6px 0 0 0 !important;background:none;color:#fff !important;font-family:\"lucida grande\", tahoma, verdana, arial, sans-serif !important;font-size:13px !important;font-style:normal !important;font-variant:normal !important;font-weight:normal !important;letter-spacing:normal !important;line-height:1 !important;text-decoration:none !important;text-indent:0 !important;text-shadow:none !important;text-transform:none !important;white-space:normal !important;word-spacing:normal !important}\n.fb_connect_bar a:hover{color:#fff}\n.fb_connect_bar .fb_profile img{height:30px;width:30px;vertical-align:middle;margin:0 6px 5px 0}\n.fb_connect_bar div a,\n.fb_connect_bar span,\n.fb_connect_bar span a{color:#bac6da;font-size:11px;text-decoration:none}\n.fb_connect_bar .fb_buttons{float:right;margin-top:7px}\n.fb_edge_widget_with_comment{position:relative;*z-index:1000}\n.fb_edge_widget_with_comment span.fb_edge_comment_widget{position:absolute}\n.fb_edge_widget_with_comment span.fb_send_button_form_widget{z-index:1}\n.fb_edge_widget_with_comment span.fb_send_button_form_widget .FB_Loader{left:0;top:1px;margin-top:6px;margin-left:0;background-position:50\u0025 50\u0025;background-color:#fff;height:150px;width:394px;border:1px #666 solid;border-bottom:2px solid #283e6c;z-index:1}\n.fb_edge_widget_with_comment span.fb_send_button_form_widget.dark .FB_Loader{background-color:#000;border-bottom:2px solid #ccc}\n.fb_edge_widget_with_comment span.fb_send_button_form_widget.siderender\n.FB_Loader{margin-top:0}\n.fbpluginrecommendationsbarleft,\n.fbpluginrecommendationsbarright{position:fixed !important;bottom:0;z-index:999}\n\/* \u0040noflip *\/\n.fbpluginrecommendationsbarleft{left:10px}\n\/* \u0040noflip *\/\n.fbpluginrecommendationsbarright{right:10px}","components":["fb.css.base","fb.css.dialog","fb.css.iframewidget","fb.css.connectbarwidget","fb.css.edgecommentwidget","fb.css.sendbuttonformwidget","fb.css.plugin.recommendationsbar"]});__d("CanvasPrefetcherConfig",[],{"blacklist":[144959615576466],"sampleRate":500});__d("ConnectBarConfig",[],{"imgs":{"buttonUrl":"rsrc.php\/v2\/yY\/r\/h_Y6u1wrZPW.png","missingProfileUrl":"rsrc.php\/v2\/yo\/r\/UlIqmHJn-SK.gif"}});__d("SDKConfig",[],{"bustCache":true,"tagCountLogRate":0.01,"errorHandling":{"rate":4},"usePluginPipe":true,"features":{"xfbml_profile_pic_server":true,"error_handling":{"rate":4},"e2e_ping_tracking":{"rate":1.0e-6}},"api":{"mode":"warn","whitelist":["Canvas","Canvas.Prefetcher","Canvas.Prefetcher.addStaticResource","Canvas.Prefetcher.setCollectionMode","Canvas.getPageInfo","Canvas.hideFlashElement","Canvas.scrollTo","Canvas.setAutoGrow","Canvas.setDoneLoading","Canvas.setSize","Canvas.setUrlHandler","Canvas.showFlashElement","Canvas.startTimer","Canvas.stopTimer","Data","Data.process","Data.query","Data.query:wait","Data.waitOn","Data.waitOn:wait","Event","Event.subscribe","Event.unsubscribe","Music.flashCallback","Music.init","Music.send","Payment","Payment.cancelFlow","Payment.continueFlow","Payment.init","Payment.parse","Payment.setSize","ThirdPartyProvider","ThirdPartyProvider.init","ThirdPartyProvider.sendData","UA","UA.nativeApp","XFBML","XFBML.RecommendationsBar","XFBML.RecommendationsBar.markRead","XFBML.parse","addFriend","api","getAccessToken","getAuthResponse","getLoginStatus","getUserID","init","login","logout","publish","share","ui","ui:subscribe"]},"initSitevars":{"enableMobileComments":1,"iframePermissions":{"read_stream":false,"manage_mailbox":false,"manage_friendlists":false,"read_mailbox":false,"publish_checkins":true,"status_update":true,"photo_upload":true,"video_upload":true,"sms":false,"create_event":true,"rsvp_event":true,"offline_access":true,"email":true,"xmpp_login":false,"create_note":true,"share_item":true,"export_stream":false,"publish_stream":true,"publish_likes":true,"ads_management":false,"contact_email":true,"access_private_data":false,"read_insights":false,"read_requests":false,"read_friendlists":true,"manage_pages":false,"physical_login":false,"manage_groups":false,"read_deals":false}}});__d("ApiClientConfig",[],{"FlashRequest":{"swfUrl":"https:\/\/connect.facebook.net\/rsrc.php\/v1\/yB\/r\/YV5wijq5fkW.swf"}});
 __d("QueryString",[],function(global,require,requireDynamic,requireLazy,module,exports) {
 
 
@@ -2268,6 +2291,32 @@ var DOMWrapper = {
 module.exports = DOMWrapper;
 
 });
+__d("sdk.feature",["SDKConfig"],function(global,require,requireDynamic,requireLazy,module,exports) {
+
+var SDKConfig = requireDynamic('SDKConfig');
+
+function feature(/*string*/ name, defaultValue) {__t([name,'string','name']);
+  if (SDKConfig.features && name in SDKConfig.features) {
+    var value = SDKConfig.features[name];
+    if (typeof value === 'object' && typeof value.rate === 'number') {
+      if (value.rate && Math.random() * 100 <= value.rate) {
+        return value.value || true;
+      } else {
+        return value.value ? null : false;
+      }
+    } else {
+      return value;
+    }
+  }
+
+  return typeof defaultValue !== 'undefined'
+    ? defaultValue
+    : null;
+}__w(feature,{"signature":"function(string)"});
+
+module.exports = feature;
+
+});
 __d("UserAgent",[],function(global,require,requireDynamic,requireLazy,module,exports) {
 
 
@@ -2469,6 +2518,83 @@ function getContextType() /*number*/ {/*jshint validthis: true*/return __t([func
 module.exports = getContextType;
 
 });
+__d("UrlMap",["UrlMapConfig"],function(global,require,requireDynamic,requireLazy,module,exports) {
+
+var UrlMapConfig = require('UrlMapConfig');
+
+var UrlMap = {
+  
+  resolve: __w(function(/*string*/ key, /*boolean?*/ https) /*string*/ {__t([key,'string','key'],[https,'?boolean','https']);/*jshint validthis: true*/return __t([function(){
+    var protocol = typeof https == 'undefined'
+      ? location.protocol.replace(':', '')
+      : https ? 'https' : 'http';
+
+    
+    if (key in UrlMapConfig) {
+      return protocol + '://' + UrlMapConfig[key];
+    }
+
+    
+    if (typeof https == 'undefined' && key + '_' + protocol in UrlMapConfig) {
+      return protocol + '://' + UrlMapConfig[key + '_' + protocol];
+    }
+
+    
+    if (https !== true && key + '_http' in UrlMapConfig) {
+      return 'http://' + UrlMapConfig[key + '_http'];
+    }
+
+    
+    if (https !== false && key + '_https' in UrlMapConfig) {
+      return 'https://' + UrlMapConfig[key + '_https'];
+    }
+  }.apply(this,arguments), 'string']);},{"signature":"function(string,?boolean):string"})
+};
+
+module.exports = UrlMap;
+
+});
+__d("sdk.Impressions",["guid","QueryString","sdk.Runtime","UrlMap"],function(global,require,requireDynamic,requireLazy,module,exports) {
+
+var guid = require('guid');
+var QueryString = require('QueryString');
+var Runtime = require('sdk.Runtime');
+var UrlMap = require('UrlMap');
+
+function request(/*object*/ params) {__t([params,'object','params']);
+  var clientID = Runtime.getClientID();
+
+  if (!params.api_key && clientID) {
+    params.api_key = clientID;
+  }
+
+  var image = new Image();
+
+  image.src = QueryString.appendToUrl(
+    UrlMap.resolve('www', /*force ssl*/true) +
+      '/impression.php/' + guid() + '/',
+    params
+  );
+}__w(request,{"signature":"function(object)"});
+
+var Impressions = {
+  log: __w(function(/*number*/ lid, /*object*/ payload) {__t([lid,'number','lid'],[payload,'object','payload']);
+    if (!payload.source) {
+      payload.source = 'jssdk';
+    }
+
+    request({
+      lid: lid, 
+      payload: ES5('JSON', 'stringify', false,payload)
+    });
+  },{"signature":"function(number,object)"}),
+
+  impression: request
+};
+
+module.exports = Impressions;
+
+});
 __d("Log",["sprintf"],function(global,require,requireDynamic,requireLazy,module,exports) {
 
 var sprintf = require('sprintf');
@@ -2591,42 +2717,6 @@ var SignedRequest = {
 };
 
 module.exports = SignedRequest;
-
-});
-__d("UrlMap",["UrlMapConfig"],function(global,require,requireDynamic,requireLazy,module,exports) {
-
-var UrlMapConfig = require('UrlMapConfig');
-
-var UrlMap = {
-  
-  resolve: __w(function(/*string*/ key, /*boolean?*/ https) /*string*/ {__t([key,'string','key'],[https,'?boolean','https']);/*jshint validthis: true*/return __t([function(){
-    var protocol = typeof https == 'undefined'
-      ? location.protocol.replace(':', '')
-      : https ? 'https' : 'http';
-
-    
-    if (key in UrlMapConfig) {
-      return protocol + '://' + UrlMapConfig[key];
-    }
-
-    
-    if (typeof https == 'undefined' && key + '_' + protocol in UrlMapConfig) {
-      return protocol + '://' + UrlMapConfig[key + '_' + protocol];
-    }
-
-    
-    if (https !== true && key + '_http' in UrlMapConfig) {
-      return 'http://' + UrlMapConfig[key + '_http'];
-    }
-
-    
-    if (https !== false && key + '_https' in UrlMapConfig) {
-      return 'https://' + UrlMapConfig[key + '_https'];
-    }
-  }.apply(this,arguments), 'string']);},{"signature":"function(string,?boolean):string"})
-};
-
-module.exports = UrlMap;
 
 });
 __d("URL",["Assert","copyProperties","QueryString","Log"],function(global,require,requireDynamic,requireLazy,module,exports) {
@@ -3391,14 +3481,7 @@ copyProperties(emptyFunction, {
   thatReturnsTrue: makeEmptyFunction(true),
   thatReturnsNull: makeEmptyFunction(null),
   thatReturnsThis: function() { return this; },
-  thatReturnsArgument: function(arg) { return arg; },
-  mustImplement: function(module, property) {
-    return function() {
-      if (__DEV__) {
-        throw new Error(module + '.' + property + ' must be implemented!');
-      }
-    };
-  }
+  thatReturnsArgument: function(arg) { return arg; }
 });
 
 module.exports = emptyFunction;
@@ -4227,14 +4310,16 @@ Event.subscribe('init:post', __w(function(/*object*/ options) {__t([options,'obj
 module.exports = XD;
 
 });
-__d("sdk.Auth",["sdk.Cookie","copyProperties","sdk.createIframe","DOMWrapper","sdk.getContextType","guid","Log","ObservableMixin","QueryString","sdk.Runtime","sdk.SignedRequest","UrlMap","URL","sdk.XD"],function(global,require,requireDynamic,requireLazy,module,exports) {
+__d("sdk.Auth",["sdk.Cookie","copyProperties","sdk.createIframe","DOMWrapper","sdk.feature","sdk.getContextType","guid","sdk.Impressions","Log","ObservableMixin","QueryString","sdk.Runtime","sdk.SignedRequest","UrlMap","URL","sdk.XD"],function(global,require,requireDynamic,requireLazy,module,exports) {
 
 var Cookie = require('sdk.Cookie');
 var copyProperties = require('copyProperties');
 var createIframe = require('sdk.createIframe');
 var DOMWrapper = require('DOMWrapper');
+var feature = require('sdk.feature');
 var getContextType = require('sdk.getContextType');
 var guid = require('guid');
+var Impressions = require('sdk.Impressions');
 var Log = require('Log');
 var ObservableMixin = require('ObservableMixin');
 var QueryString = require('QueryString');
@@ -4374,7 +4459,7 @@ function xdResponseWrapper(/*function*/ cb, /*?object*/ authResponse,
 }.apply(this,arguments), 'function']);}__w(xdResponseWrapper,{"signature":"function(function,?object,?string):function"});
 
 function fetchLoginStatus(/*function*/ fn) {__t([fn,'function','fn']);
-  var frame;
+  var frame, fetchStart = ES5('Date', 'now', false);
 
   if (timer) {
     clearTimeout(timer);
@@ -4391,6 +4476,18 @@ function fetchLoginStatus(/*function*/ fn) {__t([fn,'function','fn']);
       domain: location.hostname,
       origin: getContextType(),
       redirect_uri: XD.handler(__w(function(/*object*/ response) {__t([response,'object','response']);
+        if (feature('e2e_ping_tracking', true)) {
+          var events = {
+            init: fetchStart,
+            close: ES5('Date', 'now', false),
+            method: 'ping'
+          };
+          Log.debug('e2e: %s', ES5('JSON', 'stringify', false,events));
+          
+          Impressions.log(114, {
+            payload: events
+          });
+        }
         frame.parentNode.removeChild(frame);
         if (handleResponse(response)) {
           
@@ -4745,32 +4842,6 @@ var DOM = {
 module.exports = DOM;
 
 });
-__d("sdk.feature",["SDKConfig"],function(global,require,requireDynamic,requireLazy,module,exports) {
-
-var SDKConfig = requireDynamic('SDKConfig');
-
-function feature(/*string*/ name, defaultValue) {__t([name,'string','name']);
-  if (SDKConfig.features && name in SDKConfig.features) {
-    var value = SDKConfig.features[name];
-    if (typeof value === 'object' && typeof value.rate === 'number') {
-      if (value.rate && Math.floor(Math.random() * 100) + 1 <= value.rate) {
-        return value.value || true;
-      } else {
-        return value.value ? null : false;
-      }
-    } else {
-      return value;
-    }
-  }
-
-  return typeof defaultValue !== 'undefined'
-    ? defaultValue
-    : null;
-}__w(feature,{"signature":"function(string)"});
-
-module.exports = feature;
-
-});
 __d("sdk.Scribe",["UrlMap","QueryString"],function(global,require,requireDynamic,requireLazy,module,exports) {
 var UrlMap = require('UrlMap');
 var QueryString = require('QueryString');
@@ -4926,47 +4997,6 @@ var ErrorHandler = {
 };
 
 module.exports = ErrorHandler;
-
-});
-__d("sdk.Impressions",["guid","QueryString","sdk.Runtime","UrlMap"],function(global,require,requireDynamic,requireLazy,module,exports) {
-
-var guid = require('guid');
-var QueryString = require('QueryString');
-var Runtime = require('sdk.Runtime');
-var UrlMap = require('UrlMap');
-
-function request(/*object*/ params) {__t([params,'object','params']);
-  var clientID = Runtime.getClientID();
-
-  if (!params.api_key && clientID) {
-    params.api_key = clientID;
-  }
-
-  var image = new Image();
-
-  image.src = QueryString.appendToUrl(
-    UrlMap.resolve('www', /*force ssl*/true) +
-      '/impression.php/' + guid() + '/',
-    params
-  );
-}__w(request,{"signature":"function(object)"});
-
-var Impressions = {
-  log: __w(function(/*number*/ lid, /*object*/ payload) {__t([lid,'number','lid'],[payload,'object','payload']);
-    if (!payload.source) {
-      payload.source = 'jssdk';
-    }
-
-    request({
-      lid: lid, 
-      payload: ES5('JSON', 'stringify', false,payload)
-    });
-  },{"signature":"function(number,object)"}),
-
-  impression: request
-};
-
-module.exports = Impressions;
 
 });
 __d("sdk.Insights",["sdk.Impressions"],function(global,require,requireDynamic,requireLazy,module,exports) {
@@ -5221,26 +5251,17 @@ copyProperties(FB, {
 module.exports = FB;
 
 });
-__d("flattenObject",[],function(global,require,requireDynamic,requireLazy,module,exports) {
+__d("ArgumentError",["ManagedError"],function(global,require,requireDynamic,requireLazy,module,exports) {
 
+var ManagedError = require('ManagedError');
 
-function flattenObject(/*object*/ obj) /*object*/ {__t([obj,'object','obj']);/*jshint validthis: true*/return __t([function(){
-  var flat = {};
-  for (var key in obj) {
-    if (obj.hasOwnProperty(key)) {
-      var value = obj[key];
-      if (null === value || undefined === value) {
-        continue;
-      } else if (typeof value == 'string') {
-        flat[key] = value;
-      } else {
-        flat[key] = ES5('JSON', 'stringify', false,value); }
-    }
-  }
-  return flat;
-}.apply(this,arguments), 'object']);}__w(flattenObject,{"signature":"function(object):object"});
+function ArgumentError(message, innerError) {
+  ManagedError.prototype.constructor.apply(this, arguments);
+}
+ArgumentError.prototype = new ManagedError();
+ArgumentError.prototype.constructor = ArgumentError;
 
-module.exports = flattenObject;
+module.exports = ArgumentError;
 
 });
 __d("CORSRequest",["wrapFunction","QueryString"],function(global,require,requireDynamic,requireLazy,module,exports) {
@@ -5480,6 +5501,28 @@ var FlashRequest = {
 module.exports = FlashRequest;
 
 });
+__d("flattenObject",[],function(global,require,requireDynamic,requireLazy,module,exports) {
+
+
+function flattenObject(/*object*/ obj) /*object*/ {__t([obj,'object','obj']);/*jshint validthis: true*/return __t([function(){
+  var flat = {};
+  for (var key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      var value = obj[key];
+      if (null === value || undefined === value) {
+        continue;
+      } else if (typeof value == 'string') {
+        flat[key] = value;
+      } else {
+        flat[key] = ES5('JSON', 'stringify', false,value); }
+    }
+  }
+  return flat;
+}.apply(this,arguments), 'object']);}__w(flattenObject,{"signature":"function(object):object"});
+
+module.exports = flattenObject;
+
+});
 __d("JSONPRequest",["DOMWrapper","GlobalCallback","QueryString"],function(global,require,requireDynamic,requireLazy,module,exports) {
 
 var DOMWrapper     = require('DOMWrapper');
@@ -5556,37 +5599,24 @@ var JSONPRequest = {
 module.exports = JSONPRequest;
 
 });
-__d("ArgumentError",["ManagedError"],function(global,require,requireDynamic,requireLazy,module,exports) {
+__d("ApiClient",["ArgumentError","Assert","copyProperties","CORSRequest","FlashRequest","flattenObject","JSONPRequest","Log","ObservableMixin","sprintf","UrlMap","URL","ApiClientConfig"],function(global,require,requireDynamic,requireLazy,module,exports) {
 
-var ManagedError = require('ManagedError');
-
-function ArgumentError(message, innerError) {
-  ManagedError.prototype.constructor.apply(this, arguments);
-}
-ArgumentError.prototype = new ManagedError();
-ArgumentError.prototype.constructor = ArgumentError;
-
-module.exports = ArgumentError;
-
-});
-__d("ApiClient",["copyProperties","flattenObject","sprintf","CORSRequest","FlashRequest","JSONPRequest","Log","UrlMap","URL","ArgumentError","Assert","ApiClientConfig"],function(global,require,requireDynamic,requireLazy,module,exports) {
-
-var copyProperties = require('copyProperties');
-var flattenObject  = require('flattenObject');
-var sprintf        = require('sprintf');
-var CORSRequest    = require('CORSRequest');
-var FlashRequest   = require('FlashRequest');
-var JSONPRequest   = require('JSONPRequest');
-var Log            = require('Log');
-var UrlMap         = require('UrlMap');
-var URL            = require('URL');
 var ArgumentError  = require('ArgumentError');
 var Assert         = require('Assert');
+var copyProperties = require('copyProperties');
+var CORSRequest    = require('CORSRequest');
+var FlashRequest   = require('FlashRequest');
+var flattenObject  = require('flattenObject');
+var JSONPRequest   = require('JSONPRequest');
+var Log            = require('Log');
+var ObservableMixin = require('ObservableMixin');
+var sprintf        = require('sprintf');
+var UrlMap         = require('UrlMap');
+var URL            = require('URL');
 
 var ApiClientConfig = require('ApiClientConfig');
 
 var accessToken;
-var invalidTokenCallback;
 var clientID;
 var defaultParams;
 
@@ -5608,7 +5638,7 @@ var READONLYCALLS = {
 
 
 function request(/*string*/ url, /*string*/ method, /*object*/ params,
-    /*?function*/ cb) {__t([url,'string','url'],[method,'string','method'],[params,'object','params'],[cb,'?function','cb']);
+    /*function*/ cb) {__t([url,'string','url'],[method,'string','method'],[params,'object','params'],[cb,'function','cb']);
   if (!params.access_token) {
     params.access_token = accessToken;
   }
@@ -5618,11 +5648,6 @@ function request(/*string*/ url, /*string*/ method, /*object*/ params,
   }
 
   params = flattenObject(params);
-  if (!cb) {
-    Log.warn('No callback passed to the ApiClient for %s', url);
-    cb = function() {};
-  }
-
   var availableTransports = {
     jsonp: JSONPRequest,
     cors : CORSRequest,
@@ -5639,30 +5664,10 @@ function request(/*string*/ url, /*string*/ method, /*object*/ params,
     transports = ['jsonp', 'cors', 'flash'];
   }
 
-  var responseInspector = function(data) {
-    var invalidateToken = false;
-    if (invalidTokenCallback && data && typeof data == 'object') {
-      if (data.error) {
-        if (data.error == 'invalid_token' ||
-           (data.error.type == 'OAuthException' && data.error.code == 190)) {
-          invalidateToken = true;
-        }
-      } else if (data.error_code) {
-        if (data.error_code == '190') {
-          invalidateToken = true;
-        }
-      }
-      if (invalidateToken) {
-        invalidTokenCallback();
-      }
-    }
-    cb(data);
-  };
-
   for (var i = 0; i < transports.length; i++) {
     var transport = availableTransports[transports[i]];
     var paramsCopy = copyProperties({}, params);
-    if (transport.execute(url, method, paramsCopy, responseInspector)) {
+    if (transport.execute(url, method, paramsCopy, cb)) {
       return;
     }
   }
@@ -5673,7 +5678,15 @@ function request(/*string*/ url, /*string*/ method, /*object*/ params,
       message: 'Could not find a usable transport for request'
     }
   });
-}__w(request,{"signature":"function(string,string,object,?function)"});
+}__w(request,{"signature":"function(string,string,object,function)"});
+
+function inspect(/*?function*/ callback, /*string*/ endpoint, /*string*/ method,
+    /*object*/ params, response) {__t([callback,'?function','callback'],[endpoint,'string','endpoint'],[method,'string','method'],[params,'object','params']);
+  ApiClient.inform('request.complete', endpoint, method, params, response);
+  if (callback) {
+    callback(response);
+  }
+}__w(inspect,{"signature":"function(?function,string,string,object)"});
 
 
 function requestUsingGraph(/*string*/ path) {__t([path,'string','path']);
@@ -5695,13 +5708,18 @@ function requestUsingGraph(/*string*/ path) {__t([path,'string','path']);
   var method = (args.string || 'get').toLowerCase();
   var params = copyProperties(args.object || {}, url.getParsedSearch());
   var callback = args['function'];
+  if (!callback) {
+    Log.warn('No callback passed to the ApiClient');
+  }
+
+  var inspector = ES5(inspect, 'bind', true,null, callback, url.getPath(), method, params);
 
   Assert.isTrue(method in METHODS,
     sprintf('Invalid method passed to ApiClient: %s', method));
 
   params.method = method;
   url = UrlMap.resolve('graph') + url.getPath();
-  request(url, method == 'get' ? 'get' : 'post', params, callback);
+  request(url, method == 'get' ? 'get' : 'post', params, inspector);
 }__w(requestUsingGraph,{"signature":"function(string)"});
 
 
@@ -5709,22 +5727,23 @@ function requestUsingRest(/*object*/ params, /*?function*/ cb) {__t([params,'obj
   Assert.isObject(params);
   Assert.isString(params.method, 'method missing');
 
+  if (!cb) {
+    Log.warn('No callback passed to the ApiClient');
+  }
   var method = params.method.toLowerCase().replace('.', '_');
   params.format = 'json-strings';
   params.api_key = clientID;
 
   var domain = method in READONLYCALLS ? 'api_read' : 'api';
   var url = UrlMap.resolve(domain) + '/restserver.php';
-  request(url, 'get', params, cb);
+  var inspector = ES5(inspect, 'bind', true,null, cb, '/restserver.php', 'get', params);
+  request(url, 'get', params, inspector);
 }__w(requestUsingRest,{"signature":"function(object,?function)"});
 
-var ApiClient = {
+var ApiClient = copyProperties(new ObservableMixin(), {
   setAccessToken: __w(function(/*?string*/ access_token) {__t([access_token,'?string','access_token']);
     accessToken = access_token;
   },{"signature":"function(?string)"}),
-  setInvalidAccessTokenHandler: __w(function(/*?function*/ invalid_token_callback) {__t([invalid_token_callback,'?function','invalid_token_callback']);
-    invalidTokenCallback = invalid_token_callback;
-  },{"signature":"function(?function)"}),
   setClientID: __w(function(/*?string*/ client_id) {__t([client_id,'?string','client_id']);
     clientID = client_id;
   },{"signature":"function(?string)"}),
@@ -5733,7 +5752,7 @@ var ApiClient = {
   },{"signature":"function(?object)"}),
   rest: requestUsingRest,
   graph: requestUsingGraph
-};
+});
 
 
 FlashRequest.setSwfUrl(ApiClientConfig.FlashRequest.swfUrl);
@@ -5748,11 +5767,11 @@ var Runtime    = require('sdk.Runtime');
 
 var currentAccessToken;
 
-Runtime.subscribe('ClientID.change', __w(function(/*string?*/ value) {__t([value,'?string','value']);
+Runtime.subscribe('ClientID.change', __w(function(/*?string*/ value) {__t([value,'?string','value']);
   ApiClient.setClientID(value);
 },{"signature":"function(?string)"}));
 
-Runtime.subscribe('AccessToken.change', __w(function(/*string?*/ value) {__t([value,'?string','value']);
+Runtime.subscribe('AccessToken.change', __w(function(/*?string*/ value) {__t([value,'?string','value']);
   currentAccessToken = value;
   ApiClient.setAccessToken(value);
 },{"signature":"function(?string)"}));
@@ -5761,13 +5780,41 @@ ApiClient.setDefaultParams({
   sdk: 'joey'
 });
 
-ApiClient.setInvalidAccessTokenHandler(function() {
-  
-  if (currentAccessToken === Runtime.getAccessToken()) {
+
+ApiClient.subscribe('request.complete', __w(function(/*string*/ endpoint,
+    /*string*/ method, /*object*/ params, /*?object|boolean*/ response) {__t([endpoint,'string','endpoint'],[method,'string','method'],[params,'object','params'],[response,'?object|boolean','response']);
+    var invalidateToken = false;
+    if (response && typeof response == 'object') {
+      if (response.error) {
+        if (response.error == 'invalid_token'
+            || (response.error.type == 'OAuthException'
+                && response.error.code == 190)) {
+          invalidateToken = true;
+        }
+      } else if (response.error_code) {
+        if (response.error_code == '190') {
+          invalidateToken = true;
+        }
+      }
+    }
+  if (invalidateToken
+      && currentAccessToken === Runtime.getAccessToken()) {
     
     Runtime.setAccessToken(null);
   }
-});
+},{"signature":"function(string,string,object,?object|boolean)"}));
+
+// Inspector for calls that untos'es the app
+ApiClient.subscribe('request.complete', __w(function(/*string*/ endpoint,
+    /*string*/ method, /*object*/ params, /*?object|boolean*/ response) {__t([endpoint,'string','endpoint'],[method,'string','method'],[params,'object','params'],[response,'?object|boolean','response']);
+  if (((endpoint == '/me/permissions'
+        && method === 'delete')
+       || (endpoint == '/restserver.php'
+            && params.method == 'Auth.revokeAuthorization'))
+      && response === true) {
+    Runtime.setAccessToken(null);
+  }
+},{"signature":"function(string,string,object,?object|boolean)"}));
 
 
 function api() {
