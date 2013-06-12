@@ -1,4 +1,4 @@
-/*1370431546,179398499,JIT Construction: v835869,en_US*/
+/*1371033567,180826147,JIT Construction: v843326,en_US*/
 
 /**
  * Copyright Facebook Inc.
@@ -1437,7 +1437,7 @@ module.exports = ES5;
 return ES5.apply(null, arguments);
 };
 
-__d("sdk.RuntimeConfig",[],{"locale":"en_US","rtl":false});__d("XDConfig",[],{"XdUrl":"connect\/xd_arbiter.php?version=24","Flash":{"path":"https:\/\/connect.facebook.net\/rsrc.php\/v1\/yX\/r\/VpkNidONSDC.swf"},"useCdn":true});__d("UrlMapConfig",[],{"www":"www.facebook.com","m":"m.facebook.com","connect":"connect.facebook.net","api_https":"api.facebook.com","api_read_https":"api-read.facebook.com","graph_https":"graph.facebook.com","fbcdn_http":"fbstatic-a.akamaihd.net","fbcdn_https":"fbstatic-a.akamaihd.net","cdn_http":"static.ak.facebook.com","cdn_https":"s-static.ak.facebook.com"});__d("ProfilePicConfig",[],{"defPicMap":{"pic":"rsrc.php\/v1\/yh\/r\/C5yt7Cqf3zU.jpg","pic_big":"rsrc.php\/v2\/yL\/r\/HsTZSDw4avx.gif","pic_big_with_logo":"rsrc.php\/v2\/y5\/r\/SRDCaeCL7hM.gif","pic_small":"rsrc.php\/v1\/yi\/r\/odA9sNLrE86.jpg","pic_small_with_logo":"rsrc.php\/v2\/yD\/r\/k1xiRXKnlGd.gif","pic_square":"rsrc.php\/v2\/yo\/r\/UlIqmHJn-SK.gif","pic_square_with_logo":"rsrc.php\/v2\/yX\/r\/9dYJBPDHXwZ.gif","pic_with_logo":"rsrc.php\/v2\/yu\/r\/fPPR9f2FJ3t.gif"}});__d("PluginPipeConfig",[],{"threshold":0,"enabledApps":{"209753825810663":1,"187288694643718":1}});__d("CssConfig",[],{"rules":".fb_hidden{position:absolute;top:-10000px;z-index:10001}\n.fb_invisible{display:none}\n.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:\"lucida grande\", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}\n.fb_reset > div{overflow:hidden}\n.fb_link img{border:none}\n.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}\n.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px}\n.fb_dialog_content{background:#fff;color:#333}\n.fb_dialog_close_icon{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;_background-image:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yL\/r\/s816eWC-2sl.gif);cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px;top:8px\\9;right:7px\\9}\n.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}\n.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}\n.fb_dialog_close_icon:hover{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent;_background-image:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yL\/r\/s816eWC-2sl.gif)}\n.fb_dialog_close_icon:active{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent;_background-image:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yL\/r\/s816eWC-2sl.gif)}\n.fb_dialog_loader{background-color:#f2f2f2;border:1px solid #606060;font-size:24px;padding:20px}\n.fb_dialog_top_left,\n.fb_dialog_top_right,\n.fb_dialog_bottom_left,\n.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}\n\/* \u0040noflip *\/\n.fb_dialog_top_left{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}\n\/* \u0040noflip *\/\n.fb_dialog_top_right{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}\n\/* \u0040noflip *\/\n.fb_dialog_bottom_left{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}\n\/* \u0040noflip *\/\n.fb_dialog_bottom_right{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}\n.fb_dialog_vert_left,\n.fb_dialog_vert_right,\n.fb_dialog_horiz_top,\n.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}\n.fb_dialog_vert_left,\n.fb_dialog_vert_right{width:10px;height:100\u0025}\n.fb_dialog_vert_left{margin-left:-10px}\n.fb_dialog_vert_right{right:0;margin-right:-10px}\n.fb_dialog_horiz_top,\n.fb_dialog_horiz_bottom{width:100\u0025;height:10px}\n.fb_dialog_horiz_top{margin-top:-10px}\n.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}\n.fb_dialog_iframe{line-height:0}\n.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #3b5998;color:#fff;font-size:14px;font-weight:bold;margin:0}\n.fb_dialog_content .dialog_title > span{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yd\/r\/Cou7n-nqK52.gif)\nno-repeat 5px 50\u0025;float:left;padding:5px 0 7px 26px}\nbody.fb_hidden{-webkit-transform:none;height:100\u0025;margin:0;left:-10000px;overflow:visible;position:absolute;top:-10000px;width:100\u0025\n}\n.fb_dialog.fb_dialog_mobile.loading{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ya\/r\/3rhSv5V8j3o.gif)\nwhite no-repeat 50\u0025 50\u0025;min-height:100\u0025;min-width:100\u0025;overflow:hidden;position:absolute;top:0;z-index:10001}\n.fb_dialog.fb_dialog_mobile.loading.centered{max-height:590px;min-height:590px;max-width:500px;min-width:500px}\n#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;left:0;top:0;width:100\u0025;min-height:100\u0025;z-index:10000}\n#fb-root #fb_dialog_ipad_overlay.hidden{display:none}\n.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}\n.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0 0, 0 100\u0025, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}\n.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100\u0025\n}\n.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px\n}\n.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px\n}\n.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0 0, 0 100\u0025, from(#4966A6),\ncolor-stop(0.5, #355492), to(#2A4887));border:1px solid #29447e;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset,\nrgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}\n.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}\n.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}\n.fb_dialog_content .dialog_content{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/y9\/r\/jKEcVPZFk-2.gif) no-repeat 50\u0025 50\u0025;border:1px solid #555;border-bottom:0;border-top:0;height:150px}\n.fb_dialog_content .dialog_footer{background:#f2f2f2;border:1px solid #555;border-top-color:#ccc;height:40px}\n#fb_dialog_loader_close{float:left}\n.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}\n.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}\n.fb_iframe_widget{display:inline-block;position:relative}\n.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}\n.fb_iframe_widget iframe{position:absolute}\n.fb_iframe_widget_lift{z-index:1}\n.fb_hide_iframes iframe{position:relative;left:-10000px}\n.fb_iframe_widget_loader{position:relative;display:inline-block}\n.fb_iframe_widget_fluid{display:inline}\n.fb_iframe_widget_fluid span{width:100\u0025}\n.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}\n.fb_iframe_widget_loader .FB_Loader{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/y9\/r\/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50\u0025;z-index:4}\n.fb_connect_bar_container div,\n.fb_connect_bar_container span,\n.fb_connect_bar_container a,\n.fb_connect_bar_container img,\n.fb_connect_bar_container strong{background:none;border-spacing:0;border:0;direction:ltr;font-style:normal;font-variant:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal;vertical-align:baseline}\n.fb_connect_bar_container{position:fixed;left:0 !important;right:0 !important;height:42px !important;padding:0 25px !important;margin:0 !important;vertical-align:middle !important;border-bottom:1px solid #333 !important;background:#3b5998 !important;z-index:99999999 !important;overflow:hidden !important}\n.fb_connect_bar_container_ie6{position:absolute;top:expression(document.compatMode==\"CSS1Compat\"? document.documentElement.scrollTop+\"px\":body.scrollTop+\"px\")}\n.fb_connect_bar{position:relative;margin:auto;height:100\u0025;width:100\u0025;padding:6px 0 0 0 !important;background:none;color:#fff !important;font-family:\"lucida grande\", tahoma, verdana, arial, sans-serif !important;font-size:13px !important;font-style:normal !important;font-variant:normal !important;font-weight:normal !important;letter-spacing:normal !important;line-height:1 !important;text-decoration:none !important;text-indent:0 !important;text-shadow:none !important;text-transform:none !important;white-space:normal !important;word-spacing:normal !important}\n.fb_connect_bar a:hover{color:#fff}\n.fb_connect_bar .fb_profile img{height:30px;width:30px;vertical-align:middle;margin:0 6px 5px 0}\n.fb_connect_bar div a,\n.fb_connect_bar span,\n.fb_connect_bar span a{color:#bac6da;font-size:11px;text-decoration:none}\n.fb_connect_bar .fb_buttons{float:right;margin-top:7px}\n.fb_edge_widget_with_comment{position:relative;*z-index:1000}\n.fb_edge_widget_with_comment span.fb_edge_comment_widget{position:absolute}\n.fb_edge_widget_with_comment span.fb_send_button_form_widget{z-index:1}\n.fb_edge_widget_with_comment span.fb_send_button_form_widget .FB_Loader{left:0;top:1px;margin-top:6px;margin-left:0;background-position:50\u0025 50\u0025;background-color:#fff;height:150px;width:394px;border:1px #666 solid;border-bottom:2px solid #283e6c;z-index:1}\n.fb_edge_widget_with_comment span.fb_send_button_form_widget.dark .FB_Loader{background-color:#000;border-bottom:2px solid #ccc}\n.fb_edge_widget_with_comment span.fb_send_button_form_widget.siderender\n.FB_Loader{margin-top:0}\n.fbpluginrecommendationsbarleft,\n.fbpluginrecommendationsbarright{position:fixed !important;bottom:0;z-index:999}\n\/* \u0040noflip *\/\n.fbpluginrecommendationsbarleft{left:10px}\n\/* \u0040noflip *\/\n.fbpluginrecommendationsbarright{right:10px}","components":["fb.css.base","fb.css.dialog","fb.css.iframewidget","fb.css.connectbarwidget","fb.css.edgecommentwidget","fb.css.sendbuttonformwidget","fb.css.plugin.recommendationsbar"]});__d("CanvasPrefetcherConfig",[],{"blacklist":[144959615576466],"sampleRate":500});__d("ConnectBarConfig",[],{"imgs":{"buttonUrl":"rsrc.php\/v2\/yY\/r\/h_Y6u1wrZPW.png","missingProfileUrl":"rsrc.php\/v2\/yo\/r\/UlIqmHJn-SK.gif"}});__d("SDKConfig",[],{"bustCache":true,"tagCountLogRate":0.01,"errorHandling":{"rate":4},"usePluginPipe":true,"features":{"xfbml_profile_pic_server":true,"error_handling":{"rate":4},"e2e_ping_tracking":{"rate":1.0e-6}},"api":{"mode":"warn","whitelist":["Canvas","Canvas.Prefetcher","Canvas.Prefetcher.addStaticResource","Canvas.Prefetcher.setCollectionMode","Canvas.getPageInfo","Canvas.hideFlashElement","Canvas.scrollTo","Canvas.setAutoGrow","Canvas.setDoneLoading","Canvas.setSize","Canvas.setUrlHandler","Canvas.showFlashElement","Canvas.startTimer","Canvas.stopTimer","Data","Data.process","Data.query","Data.query:wait","Data.waitOn","Data.waitOn:wait","Event","Event.subscribe","Event.unsubscribe","Music.flashCallback","Music.init","Music.send","Payment","Payment.cancelFlow","Payment.continueFlow","Payment.init","Payment.parse","Payment.setSize","ThirdPartyProvider","ThirdPartyProvider.init","ThirdPartyProvider.sendData","UA","UA.nativeApp","XFBML","XFBML.RecommendationsBar","XFBML.RecommendationsBar.markRead","XFBML.parse","addFriend","api","getAccessToken","getAuthResponse","getLoginStatus","getUserID","init","login","logout","publish","share","ui","ui:subscribe"]},"initSitevars":{"enableMobileComments":1,"iframePermissions":{"read_stream":false,"manage_mailbox":false,"manage_friendlists":false,"read_mailbox":false,"publish_checkins":true,"status_update":true,"photo_upload":true,"video_upload":true,"sms":false,"create_event":true,"rsvp_event":true,"offline_access":true,"email":true,"xmpp_login":false,"create_note":true,"share_item":true,"export_stream":false,"publish_stream":true,"publish_likes":true,"ads_management":false,"contact_email":true,"access_private_data":false,"read_insights":false,"read_requests":false,"read_friendlists":true,"manage_pages":false,"physical_login":false,"manage_groups":false,"read_deals":false}}});__d("ApiClientConfig",[],{"FlashRequest":{"swfUrl":"https:\/\/connect.facebook.net\/rsrc.php\/v1\/yB\/r\/YV5wijq5fkW.swf"}});
+__d("sdk.RuntimeConfig",[],{"locale":"en_US","rtl":false});__d("XDConfig",[],{"XdUrl":"connect\/xd_arbiter.php?version=24","Flash":{"path":"https:\/\/connect.facebook.net\/rsrc.php\/v1\/yY\/r\/tkKkN2MZL-q.swf"},"useCdn":true});__d("UrlMapConfig",[],{"www":"www.facebook.com","m":"m.facebook.com","connect":"connect.facebook.net","api_https":"api.facebook.com","api_read_https":"api-read.facebook.com","graph_https":"graph.facebook.com","fbcdn_http":"fbstatic-a.akamaihd.net","fbcdn_https":"fbstatic-a.akamaihd.net","cdn_http":"static.ak.facebook.com","cdn_https":"s-static.ak.facebook.com"});__d("PluginPipeConfig",[],{"threshold":0,"enabledApps":{"209753825810663":1,"187288694643718":1}});__d("CssConfig",[],{"rules":".fb_hidden{position:absolute;top:-10000px;z-index:10001}\n.fb_invisible{display:none}\n.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:\"lucida grande\", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}\n.fb_reset > div{overflow:hidden}\n.fb_link img{border:none}\n.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}\n.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px}\n.fb_dialog_content{background:#fff;color:#333}\n.fb_dialog_close_icon{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;_background-image:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yL\/r\/s816eWC-2sl.gif);cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px;top:8px\\9;right:7px\\9}\n.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}\n.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}\n.fb_dialog_close_icon:hover{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent;_background-image:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yL\/r\/s816eWC-2sl.gif)}\n.fb_dialog_close_icon:active{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent;_background-image:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yL\/r\/s816eWC-2sl.gif)}\n.fb_dialog_loader{background-color:#f2f2f2;border:1px solid #606060;font-size:24px;padding:20px}\n.fb_dialog_top_left,\n.fb_dialog_top_right,\n.fb_dialog_bottom_left,\n.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}\n\/* \u0040noflip *\/\n.fb_dialog_top_left{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}\n\/* \u0040noflip *\/\n.fb_dialog_top_right{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}\n\/* \u0040noflip *\/\n.fb_dialog_bottom_left{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}\n\/* \u0040noflip *\/\n.fb_dialog_bottom_right{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}\n.fb_dialog_vert_left,\n.fb_dialog_vert_right,\n.fb_dialog_horiz_top,\n.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}\n.fb_dialog_vert_left,\n.fb_dialog_vert_right{width:10px;height:100\u0025}\n.fb_dialog_vert_left{margin-left:-10px}\n.fb_dialog_vert_right{right:0;margin-right:-10px}\n.fb_dialog_horiz_top,\n.fb_dialog_horiz_bottom{width:100\u0025;height:10px}\n.fb_dialog_horiz_top{margin-top:-10px}\n.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}\n.fb_dialog_iframe{line-height:0}\n.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #3b5998;color:#fff;font-size:14px;font-weight:bold;margin:0}\n.fb_dialog_content .dialog_title > span{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yd\/r\/Cou7n-nqK52.gif)\nno-repeat 5px 50\u0025;float:left;padding:5px 0 7px 26px}\nbody.fb_hidden{-webkit-transform:none;height:100\u0025;margin:0;left:-10000px;overflow:visible;position:absolute;top:-10000px;width:100\u0025\n}\n.fb_dialog.fb_dialog_mobile.loading{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ya\/r\/3rhSv5V8j3o.gif)\nwhite no-repeat 50\u0025 50\u0025;min-height:100\u0025;min-width:100\u0025;overflow:hidden;position:absolute;top:0;z-index:10001}\n.fb_dialog.fb_dialog_mobile.loading.centered{max-height:590px;min-height:590px;max-width:500px;min-width:500px}\n#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;left:0;top:0;width:100\u0025;min-height:100\u0025;z-index:10000}\n#fb-root #fb_dialog_ipad_overlay.hidden{display:none}\n.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}\n.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0 0, 0 100\u0025, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}\n.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100\u0025\n}\n.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px\n}\n.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px\n}\n.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0 0, 0 100\u0025, from(#4966A6),\ncolor-stop(0.5, #355492), to(#2A4887));border:1px solid #29447e;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset,\nrgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}\n.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}\n.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}\n.fb_dialog_content .dialog_content{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/y9\/r\/jKEcVPZFk-2.gif) no-repeat 50\u0025 50\u0025;border:1px solid #555;border-bottom:0;border-top:0;height:150px}\n.fb_dialog_content .dialog_footer{background:#f2f2f2;border:1px solid #555;border-top-color:#ccc;height:40px}\n#fb_dialog_loader_close{float:left}\n.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}\n.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}\n.fb_iframe_widget{display:inline-block;position:relative}\n.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}\n.fb_iframe_widget iframe{position:absolute}\n.fb_iframe_widget_lift{z-index:1}\n.fb_hide_iframes iframe{position:relative;left:-10000px}\n.fb_iframe_widget_loader{position:relative;display:inline-block}\n.fb_iframe_widget_fluid{display:inline}\n.fb_iframe_widget_fluid span{width:100\u0025}\n.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}\n.fb_iframe_widget_loader .FB_Loader{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/y9\/r\/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50\u0025;z-index:4}\n.fb_connect_bar_container div,\n.fb_connect_bar_container span,\n.fb_connect_bar_container a,\n.fb_connect_bar_container img,\n.fb_connect_bar_container strong{background:none;border-spacing:0;border:0;direction:ltr;font-style:normal;font-variant:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal;vertical-align:baseline}\n.fb_connect_bar_container{position:fixed;left:0 !important;right:0 !important;height:42px !important;padding:0 25px !important;margin:0 !important;vertical-align:middle !important;border-bottom:1px solid #333 !important;background:#3b5998 !important;z-index:99999999 !important;overflow:hidden !important}\n.fb_connect_bar_container_ie6{position:absolute;top:expression(document.compatMode==\"CSS1Compat\"? document.documentElement.scrollTop+\"px\":body.scrollTop+\"px\")}\n.fb_connect_bar{position:relative;margin:auto;height:100\u0025;width:100\u0025;padding:6px 0 0 0 !important;background:none;color:#fff !important;font-family:\"lucida grande\", tahoma, verdana, arial, sans-serif !important;font-size:13px !important;font-style:normal !important;font-variant:normal !important;font-weight:normal !important;letter-spacing:normal !important;line-height:1 !important;text-decoration:none !important;text-indent:0 !important;text-shadow:none !important;text-transform:none !important;white-space:normal !important;word-spacing:normal !important}\n.fb_connect_bar a:hover{color:#fff}\n.fb_connect_bar .fb_profile img{height:30px;width:30px;vertical-align:middle;margin:0 6px 5px 0}\n.fb_connect_bar div a,\n.fb_connect_bar span,\n.fb_connect_bar span a{color:#bac6da;font-size:11px;text-decoration:none}\n.fb_connect_bar .fb_buttons{float:right;margin-top:7px}\n.fb_edge_widget_with_comment{position:relative;*z-index:1000}\n.fb_edge_widget_with_comment span.fb_edge_comment_widget{position:absolute}\n.fb_edge_widget_with_comment span.fb_send_button_form_widget{z-index:1}\n.fb_edge_widget_with_comment span.fb_send_button_form_widget .FB_Loader{left:0;top:1px;margin-top:6px;margin-left:0;background-position:50\u0025 50\u0025;background-color:#fff;height:150px;width:394px;border:1px #666 solid;border-bottom:2px solid #283e6c;z-index:1}\n.fb_edge_widget_with_comment span.fb_send_button_form_widget.dark .FB_Loader{background-color:#000;border-bottom:2px solid #ccc}\n.fb_edge_widget_with_comment span.fb_send_button_form_widget.siderender\n.FB_Loader{margin-top:0}\n.fbpluginrecommendationsbarleft,\n.fbpluginrecommendationsbarright{position:fixed !important;bottom:0;z-index:999}\n\/* \u0040noflip *\/\n.fbpluginrecommendationsbarleft{left:10px}\n\/* \u0040noflip *\/\n.fbpluginrecommendationsbarright{right:10px}","components":["fb.css.base","fb.css.dialog","fb.css.iframewidget","fb.css.connectbarwidget","fb.css.edgecommentwidget","fb.css.sendbuttonformwidget","fb.css.plugin.recommendationsbar"]});__d("CanvasPrefetcherConfig",[],{"blacklist":[144959615576466],"sampleRate":500});__d("ConnectBarConfig",[],{"imgs":{"buttonUrl":"rsrc.php\/v2\/yY\/r\/h_Y6u1wrZPW.png","missingProfileUrl":"rsrc.php\/v2\/yo\/r\/UlIqmHJn-SK.gif"}});__d("SDKConfig",[],{"bustCache":true,"tagCountLogRate":0.01,"errorHandling":{"rate":4},"usePluginPipe":true,"features":{"xfbml_profile_pic_server":true,"error_handling":{"rate":4},"e2e_ping_tracking":{"rate":1.0e-6}},"api":{"mode":"warn","whitelist":["Canvas","Canvas.Prefetcher","Canvas.Prefetcher.addStaticResource","Canvas.Prefetcher.setCollectionMode","Canvas.getPageInfo","Canvas.hideFlashElement","Canvas.scrollTo","Canvas.setAutoGrow","Canvas.setDoneLoading","Canvas.setSize","Canvas.setUrlHandler","Canvas.showFlashElement","Canvas.startTimer","Canvas.stopTimer","Data","Data.process","Data.query","Data.query:wait","Data.waitOn","Data.waitOn:wait","Event","Event.subscribe","Event.unsubscribe","Music.flashCallback","Music.init","Music.send","Payment","Payment.cancelFlow","Payment.continueFlow","Payment.init","Payment.parse","Payment.setSize","ThirdPartyProvider","ThirdPartyProvider.init","ThirdPartyProvider.sendData","UA","UA.nativeApp","XFBML","XFBML.RecommendationsBar","XFBML.RecommendationsBar.markRead","XFBML.parse","addFriend","api","getAccessToken","getAuthResponse","getLoginStatus","getUserID","init","login","logout","publish","share","ui","ui:subscribe"]},"initSitevars":{"enableMobileComments":1,"iframePermissions":{"read_stream":false,"manage_mailbox":false,"manage_friendlists":false,"read_mailbox":false,"publish_checkins":true,"status_update":true,"photo_upload":true,"video_upload":true,"sms":false,"create_event":true,"rsvp_event":true,"offline_access":true,"email":true,"xmpp_login":false,"create_note":true,"share_item":true,"export_stream":false,"publish_stream":true,"publish_likes":true,"ads_management":false,"contact_email":true,"access_private_data":false,"read_insights":false,"read_requests":false,"read_friendlists":true,"manage_pages":false,"physical_login":false,"manage_groups":false,"read_deals":false}}});__d("ApiClientConfig",[],{"FlashRequest":{"swfUrl":"https:\/\/connect.facebook.net\/rsrc.php\/v1\/yB\/r\/YV5wijq5fkW.swf"}});
 __d("QueryString",[],function(global,require,requireDynamic,requireLazy,module,exports) {
 
 
@@ -1942,6 +1942,7 @@ var Runtime = new Model({
   ClientID: '',
   Environment: ENVIRONMENTS.UNKNOWN,
   Initialized: false,
+  KidDirectedSite: undefined,
   Locale: RuntimeConfig.locale,
   LoginStatus: undefined,
   Rtl: RuntimeConfig.rtl,
@@ -2567,6 +2568,8 @@ function request(/*object*/ params) {__t([params,'object','params']);
   if (!params.api_key && clientID) {
     params.api_key = clientID;
   }
+
+  params.kid_directed_site = Runtime.getKidDirectedSite();
 
   var image = new Image();
 
@@ -3693,8 +3696,6 @@ module.exports = GlobalCallback;
 });
 __d("XDM",["DOMEventListener","DOMWrapper","emptyFunction","Flash","GlobalCallback","guid","Log","UserAgent","wrapFunction"],function(global,require,requireDynamic,requireLazy,module,exports) {
 
-/*globals __fbNative */
-
 var DOMEventListener = require('DOMEventListener');
 var DOMWrapper = require('DOMWrapper');
 var emptyFunction = require('emptyFunction');
@@ -3806,12 +3807,16 @@ XDM.register('fragment', (function() {
         }
       };
       if (inited) {
-        config.whenReady(xdm);
+        setTimeout(function() {
+          config.whenReady(xdm);
+        }, 0);
         return;
       }
       root = config.root;
       inited = true;
-      config.whenReady(xdm);
+      setTimeout(function() {
+        config.whenReady(xdm);
+      }, 0);
     }
   };
 })());
@@ -4496,7 +4501,8 @@ function fetchLoginStatus(/*function*/ fn) {__t([fn,'function','fn']);
           }, 1200000); 
         }
       },{"signature":"function(object)"}), 'parent'),
-      sdk: 'joey'
+      sdk: 'joey',
+      kid_directed_site: Runtime.getKidDirectedSite()
     }));
 
   frame = createIframe({
@@ -5782,7 +5788,7 @@ ApiClient.setDefaultParams({
 
 
 ApiClient.subscribe('request.complete', __w(function(/*string*/ endpoint,
-    /*string*/ method, /*object*/ params, /*?object|boolean*/ response) {__t([endpoint,'string','endpoint'],[method,'string','method'],[params,'object','params'],[response,'?object|boolean','response']);
+    /*string*/ method, /*object*/ params, response) {__t([endpoint,'string','endpoint'],[method,'string','method'],[params,'object','params']);
     var invalidateToken = false;
     if (response && typeof response == 'object') {
       if (response.error) {
@@ -5802,11 +5808,11 @@ ApiClient.subscribe('request.complete', __w(function(/*string*/ endpoint,
     
     Runtime.setAccessToken(null);
   }
-},{"signature":"function(string,string,object,?object|boolean)"}));
+},{"signature":"function(string,string,object)"}));
 
 // Inspector for calls that untos'es the app
 ApiClient.subscribe('request.complete', __w(function(/*string*/ endpoint,
-    /*string*/ method, /*object*/ params, /*?object|boolean*/ response) {__t([endpoint,'string','endpoint'],[method,'string','method'],[params,'object','params'],[response,'?object|boolean','response']);
+    /*string*/ method, /*object*/ params, response) {__t([endpoint,'string','endpoint'],[method,'string','method'],[params,'object','params']);
   if (((endpoint == '/me/permissions'
         && method === 'delete')
        || (endpoint == '/restserver.php'
@@ -5814,7 +5820,7 @@ ApiClient.subscribe('request.complete', __w(function(/*string*/ endpoint,
       && response === true) {
     Runtime.setAccessToken(null);
   }
-},{"signature":"function(string,string,object,?object|boolean)"}));
+},{"signature":"function(string,string,object)"}));
 
 
 function api() {
@@ -8712,6 +8718,10 @@ function init(options) {
     }
   }
 
+  if (options.kidDirectedSite) {
+    Runtime.setKidDirectedSite(true);
+  }
+
   Runtime.setInitialized(true);
   Event.fire('init:post', options);
 }
@@ -9454,6 +9464,7 @@ var IframePlugin = Type.extend({
     params.app_id = Runtime.getClientID();
     params.locale = Runtime.getLocale();
     params.sdk = 'joey';
+    params.kid_directed_site = Runtime.getKidDirectedSite();
     var xd = ES5(function(msg) { this.inform('xd.' + msg.type, msg); }, 'bind', true,this);
     params.channel = XD.handler(xd, 'parent.parent', /*forever=*/ true);
 
@@ -9542,7 +9553,6 @@ __d("PluginTags",[],function(global,require,requireDynamic,requireLazy,module,ex
 
 var PluginTags = {
   activity: {
-    border_color: 'string',
     filter: 'string',
     action: 'string',
     max_age: 'string',
@@ -9568,17 +9578,24 @@ var PluginTags = {
     show_count: 'bool'
   },
 
-  friendpile: {
-    href: 'string',
-    action: 'string',
-    size: 'string',
-    max_rows: 'string'
-  },
-
   follow: {
     href:       'url',
     layout:     'string',
     show_faces: 'bool'
+  },
+
+  like_box: {
+    href: 'string',
+    show_faces: 'bool',
+    header: 'bool',
+    stream: 'bool',
+    force_wall: 'bool',
+    show_border: 'bool',
+    
+    id: 'string',
+    connections: 'string',
+    profile_id: 'string',
+    name: 'string'
   },
 
   open_graph: {
@@ -9606,8 +9623,15 @@ var PluginTags = {
   privacy_selector: {
   },
 
+  profile_pic: {
+    uid: 'string',
+    linked: 'bool',
+    href: 'string',
+    size: 'string',
+    facebook_logo: 'bool'
+  },
+
   recommendations: {
-    border_color: 'string',
     filter: 'string',
     action: 'string',
     max_age: 'string',
@@ -9625,6 +9649,10 @@ var PluginTags = {
     header: 'bool'
   },
 
+  send: {
+    href: 'url'
+  },
+
   send_to_mobile: {
     max_rows:   'string',
     show_faces: 'bool',
@@ -9636,12 +9664,6 @@ var PluginTags = {
     show_border: 'bool'
   },
 
-  subscribe: { 
-    href:       'url',
-    layout:     'string',
-    show_faces: 'bool'
-  },
-
   want: {
     href:       'url',
     layout:     'string',
@@ -9649,6 +9671,17 @@ var PluginTags = {
   }
 
 };
+
+var aliases = {
+  subscribe: 'follow',
+  fan: 'like_box',
+  likebox: 'like_box',
+  friendpile: 'facepile'
+};
+
+ES5(ES5('Object', 'keys', false,aliases), 'forEach', true,function(key) {
+  PluginTags[key] = PluginTags[aliases[key]];
+});
 
 module.exports = PluginTags;
 
@@ -10130,6 +10163,7 @@ var IframeWidget = Element.extend({
       api_key      : Runtime.getClientID(),
       locale       : Runtime.getLocale(),
       sdk          : 'joey',
+      kid_directed_site: Runtime.getKidDirectedSite(),
       ref          : this.getAttribute('ref')
     }, this.getUrlBits().params);
   }.apply(this,arguments), 'object']);},{"signature":"function():object"}),
@@ -11116,111 +11150,6 @@ var EdgeWidget = IframeWidget.extend({
 module.exports = EdgeWidget;
 
 });
-__d("sdk.XFBML.LikeBox",["sdk.XFBML.EdgeWidget","sdk.Helper","Log","sdk.Runtime"],function(global,require,requireDynamic,requireLazy,module,exports) {
-
-var EdgeWidget = require('sdk.XFBML.EdgeWidget');
-var Helper = require('sdk.Helper');
-var Log = require('Log');
-var Runtime = require('sdk.Runtime');
-
-var LikeBox = EdgeWidget.extend({
-  _visibleAfter: 'load',
-
-  
-  setupAndValidate: __w(function() /*boolean*/ {/*jshint validthis: true*/return __t([function(){
-    this._attr = {
-      channel     : this.getChannelUrl(),
-      api_key     : Runtime.getClientID(),
-      connections : this.getAttribute('connections'),
-      css         : this.getAttribute('css'),
-      height      : this.getAttribute('height'),
-      id          : this.getAttribute('profile-id'),
-      header      : this._getBoolAttribute('header', true),
-      name        : this.getAttribute('name'),
-      show_faces  : this._getBoolAttribute('show-faces', true),
-      stream      : this._getBoolAttribute('stream', true),
-      width       : this._getPxAttribute('width', 300),
-      href        : this.getAttribute('href'),
-      colorscheme : this.getAttribute('colorscheme', 'light'),
-      border_color: this.getAttribute('border_color'),
-      show_border : this._getBoolAttribute('show-border', true)
-    };
-
-    if (this._getBoolAttribute('force_wall', false)) {
-      this._attr.force_wall = true;
-    }
-
-    
-    
-    if (this._attr.connections === '0') {
-      this._attr.show_faces = false;
-    } else if (this._attr.connections) {
-      this._attr.show_faces = true;
-    }
-
-    // "id" or "name" or "href" (for Open Graph) is required
-    if (!this._attr.id && !this._attr.name && !this._attr.href) {
-      Log.error('<fb:like-box> requires one of the "id" or "name" attributes.');
-      return false;
-    }
-
-    var height = this._attr.height;
-    if (!height) {
-      if (!this._attr.show_faces &&
-          !this._attr.stream) {
-        height = 62;
-      } else {
-        height = 95;
-
-        if (this._attr.show_faces) {
-          height += 163;
-        }
-
-        if (this._attr.stream) {
-          height += 300;
-        }
-
-        
-        if (this._attr.header &&
-            this._attr.header !== '0') {
-         height += 32;
-        }
-      }
-    }
-
-    this._attr.height = height;
-
-    // listen for the XD 'likeboxLiked' and 'likeboxUnliked' events
-    this.subscribe('xd.likeboxLiked', ES5(this._onLiked, 'bind', true,this));
-    this.subscribe('xd.likeboxUnliked', ES5(this._onUnliked, 'bind', true,this));
-
-    return true;
-  }.apply(this,arguments), 'boolean']);},{"signature":"function():boolean"}),
-
-  
-  getSize: __w(function() /*object*/ {/*jshint validthis: true*/return __t([function(){
-    return { width: this._attr.width, height: this._attr.height };
-  }.apply(this,arguments), 'object']);},{"signature":"function():object"}),
-
-  
-  getUrlBits: __w(function() /*object*/ {/*jshint validthis: true*/return __t([function(){
-    return { name: 'likebox', params: this._attr };
-  }.apply(this,arguments), 'object']);},{"signature":"function():object"}),
-
-  
-  _onLiked: function() {
-    Helper.fireEvent('edge.create', this);
-  },
-
-  
-  _onUnliked: function() {
-    Helper.fireEvent('edge.remove', this);
-  }
-});
-
-module.exports = LikeBox;
-
-});
 __d("sdk.XFBML.SendButtonFormWidget",["sdk.XFBML.EdgeCommentWidget","sdk.DOM","sdk.Event"],function(global,require,requireDynamic,requireLazy,module,exports) {
 
 var EdgeCommentWidget = require('sdk.XFBML.EdgeCommentWidget');
@@ -11990,60 +11919,6 @@ var Registration = IframeWidget.extend({
 module.exports = Registration;
 
 });
-__d("sdk.XFBML.Send",["sdk.DOM","sdk.XFBML.EdgeWidget","sdk.Runtime","sdk.XFBML.SendButtonFormWidget"],function(global,require,requireDynamic,requireLazy,module,exports) {
-
-var DOM = require('sdk.DOM');
-var EdgeWidget = require('sdk.XFBML.EdgeWidget');
-var Runtime = require('sdk.Runtime');
-var SendButtonFormWidget = require('sdk.XFBML.SendButtonFormWidget');
-
-var Send = EdgeWidget.extend({
-  
-  setupAndValidate: __w(function() /*boolean*/ {/*jshint validthis: true*/return __t([function(){
-    DOM.addCss(this.dom, 'fb_edge_widget_with_comment');
-    this._attr = {
-      channel                 : this.getChannelUrl(),
-      api_key                 : Runtime.getClientID(),
-      font                    : this.getAttribute('font'),
-      colorscheme             : this.getAttribute('colorscheme', 'light'),
-      href                    : this.getAttribute('href', window.location.href),
-      ref                     : this.getAttribute('ref'),
-      extended_social_context :
-        this.getAttribute('extended_social_context', false)
-    };
-
-    this._rootPadding = {
-      left: parseFloat(DOM.getStyle(this.dom, 'paddingLeft')),
-      top:  parseFloat(DOM.getStyle(this.dom, 'paddingTop'))
-    };
-
-    return true;
-  }.apply(this,arguments), 'boolean']);},{"signature":"function():boolean"}),
-
-  
-  getUrlBits: __w(function() /*object*/ {/*jshint validthis: true*/return __t([function(){
-    return { name: 'send', params: this._attr };
-  }.apply(this,arguments), 'object']);},{"signature":"function():object"}),
-
-  
-  _createEdgeCommentWidget: __w(function(/*object*/ message,
-      /*DOMElement*/ comment_node) /*object*/ {__t([message,'object','message'],[comment_node,'DOMElement','comment_node']);/*jshint validthis: true*/return __t([function(){
-    var opts = this._getCommonEdgeCommentWidgetOpts(message, comment_node);
-    return new SendButtonFormWidget(opts);
-  }.apply(this,arguments), 'object']);},{"signature":"function(object,DOMElement):object"}),
-
-  
-  getSize: __w(function() /*object*/ {/*jshint validthis: true*/return __t([function(){
-    return {
-      width  : 80,
-      height : 25
-    };
-  }.apply(this,arguments), 'object']);},{"signature":"function():object"})
-});
-
-module.exports = Send;
-
-});
 __d("sdk.XFBML.SocialContext",["sdk.Event","sdk.XFBML.IframeWidget"],function(global,require,requireDynamic,requireLazy,module,exports) {
 
 var Event = require('sdk.Event');
@@ -12093,132 +11968,11 @@ var SocialContext = IframeWidget.extend({
 module.exports = SocialContext;
 
 });
-__d("sdk.XFBML.ProfilePic",["sdk.Data","sdk.DOM","escapeHTML","sdk.XFBML.Element","sdk.Event","format","sdk.Helper","sdk.Runtime","UrlMap","ProfilePicConfig"],function(global,require,requireDynamic,requireLazy,module,exports) {
-
-var Data = require('sdk.Data');
-var DOM = require('sdk.DOM');
-var escapeHTML = require('escapeHTML');
-var ProfilePicConfig = requireDynamic('ProfilePicConfig');
-var Element = require('sdk.XFBML.Element');
-var Event = require('sdk.Event');
-var format = require('format');
-var Helper = require('sdk.Helper');
-var Runtime = require('sdk.Runtime');
-var UrlMap = require('UrlMap');
-
-
-var sizeToPicFieldMap = {
-  n      : 'pic_big',
-  normal : 'pic_big',
-  q      : 'pic_square',
-  s      : 'pic',
-  small  : 'pic',
-  square : 'pic_square',
-  t      : 'pic_small',
-  thumb  : 'pic_small'
-};
-
-var ProfilePic = Element.extend({
-  
-  process: function() {
-    var
-      size = this.getAttribute('size', 'thumb'),
-      picFieldName = sizeToPicFieldMap[size],
-      width = this._getPxAttribute('width'),
-      height = this._getPxAttribute('height'),
-      style = this.dom.style,
-      uid = this.getAttribute('uid');
-
-    
-    if (this._getBoolAttribute('facebook-logo')) {
-      picFieldName += '_with_logo';
-    }
-
-    if (width) {
-      width = width + 'px';
-      style.width = width;
-    }
-    if (height) {
-      height = height + 'px';
-      style.height = height;
-    }
-
-    var renderFn = ES5(__w(function(/*array<object>*/ result) {__t([result,'array<object>','result']);
-      var
-        userInfo = result ? result[0] : null,
-        imgSrc = userInfo ? userInfo[picFieldName] : null;
-
-      if (!imgSrc) {
-        
-        imgSrc = UrlMap.resolve('fbcdn') + '/' +
-          ProfilePicConfig.defPicMap[picFieldName];
-      }
-      
-      
-      var
-        styleValue = (
-          (width ? 'width:' + width + ';' : '') +
-          (height ? 'height:' + width + ';' : '')
-        ),
-        html = format(
-          '<img src="{0}" alt="{1}" title="{1}" style="{2}" class="{3}" />',
-          imgSrc,
-          userInfo ? escapeHTML(userInfo.name) : '',
-          styleValue,
-          this.dom.className
-        );
-
-      if (this._getBoolAttribute('linked', true)) {
-        html = Helper.getProfileLink(
-          userInfo,
-          html,
-          this.getAttribute('href', null)
-        );
-      }
-      this.dom.innerHTML = html;
-      DOM.addCss(this.dom, 'fb_profile_pic_rendered');
-      this.fire('render');
-    },{"signature":"function(array<object>)"}), 'bind', true,this);
-
-    
-    Event.monitor('auth.statusChange', ES5(__w(function() /*boolean?*/ {/*jshint validthis: true*/return __t([function(){
-      
-      if (!this.isValid()) {
-        this.fire('render');
-        return true; 
-      }
-
-      if (this.getAttribute('uid', null) == 'loggedinuser') {
-        uid = Runtime.getUserID();
-      }
-
-      
-      if (Runtime.getLoginStatus() !== 'unknown' && uid) {
-        
-        
-        Data._selectByIndex(
-          ['name', picFieldName],
-          Helper.isUser(uid) ? 'user' : 'profile',
-          Helper.isUser(uid) ? 'uid' : 'id',
-          uid
-        ).wait(renderFn);
-      } else {
-        
-        renderFn();
-      }
-    }.apply(this,arguments), '?boolean']);},{"signature":"function():boolean?"}), 'bind', true,this));
-  }
-});
-
-module.exports = ProfilePic;
-
-});
-__d("legacy:fb.xfbml",["Assert","sdk.domReady","sdk.Event","sdk.feature","FB","IframePlugin","PluginTags","wrapFunction","XFBML","sdk.XFBML.Comments","sdk.XFBML.CommentsCount","sdk.XFBML.ConnectBar","sdk.XFBML.LikeBox","sdk.XFBML.Like","sdk.XFBML.LiveStream","sdk.XFBML.LoginButton","sdk.XFBML.Name","sdk.XFBML.RecommendationsBar","sdk.XFBML.Registration","sdk.XFBML.Send","sdk.XFBML.SocialContext","sdk.XFBML.ProfilePic"],function(global,require,requireDynamic,requireLazy) {
+__d("legacy:fb.xfbml",["Assert","sdk.domReady","sdk.Event","FB","IframePlugin","PluginTags","wrapFunction","XFBML","sdk.XFBML.Comments","sdk.XFBML.CommentsCount","sdk.XFBML.ConnectBar","sdk.XFBML.Like","sdk.XFBML.LiveStream","sdk.XFBML.LoginButton","sdk.XFBML.Name","sdk.XFBML.RecommendationsBar","sdk.XFBML.Registration","sdk.XFBML.SocialContext"],function(global,require,requireDynamic,requireLazy) {
 
 var Assert = require('Assert');
 var domReady = require('sdk.domReady');
 var Event = require('sdk.Event');
-var feature = require('sdk.feature');
 var FB = require('FB');
 var IframePlugin = require('IframePlugin');
 var PluginTags = require('PluginTags');
@@ -12229,29 +11983,14 @@ var customTags = {
   comments: require('sdk.XFBML.Comments'),
   comments_count: require('sdk.XFBML.CommentsCount'),
   connect_bar: require('sdk.XFBML.ConnectBar'),
-  fan: require('sdk.XFBML.LikeBox'),
   like: require('sdk.XFBML.Like'),
-  like_box: require('sdk.XFBML.LikeBox'),
   live_stream: require('sdk.XFBML.LiveStream'),
   login_button: require('sdk.XFBML.LoginButton'),
   name: require('sdk.XFBML.Name'),
   recommendations_bar: require('sdk.XFBML.RecommendationsBar'),
   registration: require('sdk.XFBML.Registration'),
-  send: require('sdk.XFBML.Send'),
   social_context: require('sdk.XFBML.SocialContext')
 };
-
-if (feature('xfbml_profile_pic_server', false)) {
-  PluginTags.profile_pic = {
-    uid: 'string',
-    linked: 'bool',
-    href: 'string',
-    size: 'string',
-    facebook_logo: 'bool'
-  };
-} else {
-  customTags.profile_pic = require('sdk.XFBML.ProfilePic');
-}
 
 
 ES5(ES5('Object', 'keys', false,PluginTags), 'forEach', true,function(tag) {
