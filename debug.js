@@ -1,4 +1,4 @@
-/*1371113246,179408433,JIT Construction: v844524,en_US*/
+/*1371295960,179396659,JIT Construction: v847175,en_US*/
 
 /**
  * Copyright Facebook Inc.
@@ -7809,6 +7809,7 @@ var Runtime = require('sdk.Runtime');
 var createArrayFrom = require('createArrayFrom');
 
 var flashClassID = 'CLSID:D27CDB6E-AE6D-11CF-96B8-444553540000';
+var unityClassID = 'CLSID:444785F1-DE89-4295-863A-D46C3A781394';
 var devHidePluginCallback = null;
 
 
@@ -7865,7 +7866,9 @@ function isHideableFlashElement(/*DOMElement*/ elem) {__t([elem,'DOMElement','el
 }__w(isHideableFlashElement,{"signature":"function(DOMElement)"});
 
 function isHideableUnityElement(/*DOMElement*/ elem) {__t([elem,'DOMElement','elem']);
-  return elem.type.toLowerCase() === 'application/vnd.unity';
+  return elem.type.toLowerCase() === 'application/vnd.unity'
+    || (elem.classid && elem.classid.toUpperCase() == unityClassID);
+
 }__w(isHideableUnityElement,{"signature":"function(DOMElement)"});
 
 
