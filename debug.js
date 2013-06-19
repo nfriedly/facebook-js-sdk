@@ -1,4 +1,4 @@
-/*1371295960,179396659,JIT Construction: v847175,en_US*/
+/*1371635586,182119705,JIT Construction: v851198,en_US*/
 
 /**
  * Copyright Facebook Inc.
@@ -9633,6 +9633,11 @@ var PluginTags = {
     site: 'hostname'
   },
 
+  composer: {
+    action_type: 'string',
+    action_properties: 'string'
+  },
+
   create_event_button: {
   },
 
@@ -9673,11 +9678,6 @@ var PluginTags = {
     href: 'url',
     layout: 'string',
     show_faces: 'bool',
-    action_type: 'string',
-    action_properties: 'string'
-  },
-
-  open_graph_composer: {
     action_type: 'string',
     action_properties: 'string'
   },
