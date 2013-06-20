@@ -1,4 +1,4 @@
-/*1371635586,182119705,JIT Construction: v851198,en_US*/
+/*1371716151,179400763,JIT Construction: v852200,en_US*/
 
 /**
  * Copyright Facebook Inc.
@@ -7851,18 +7851,25 @@ function isHideableFlashElement(/*DOMElement*/ elem) {__t([elem,'DOMElement','el
   var isHideable = elem.type.toLowerCase() === 'application/x-shockwave-flash'
         || (elem.classid && elem.classid.toUpperCase() == flashClassID);
 
+  if (!isHideable) {
+    return false;
+  }
+
   // for flash elements we don't need to hide if it is in wmode
   
-  if (isHideable) {
-    for (var j = 0; j < elem.childNodes.length; j++) {
-      var node = elem.childNodes[j];
-      if (/param/i.test(node.nodeName) && /wmode/i.test(node.name) &&
-        /opaque|transparent/i.test(node.value)) {
-        return false;
-      }
+  var keepvisibleRegex = /opaque|transparent/i;
+  if (keepvisibleRegex.test(elem.getAttribute('wmode'))) {
+    return false;
+  }
+
+  for (var j = 0; j < elem.childNodes.length; j++) {
+    var node = elem.childNodes[j];
+    if (/param/i.test(node.nodeName) && /wmode/i.test(node.name) &&
+      keepvisibleRegex.test(node.value)) {
+      return false;
     }
   }
-  return isHideable;
+  return true;
 }__w(isHideableFlashElement,{"signature":"function(DOMElement)"});
 
 function isHideableUnityElement(/*DOMElement*/ elem) {__t([elem,'DOMElement','elem']);
