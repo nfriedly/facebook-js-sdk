@@ -1,4 +1,4 @@
-/*1371716151,179400763,JIT Construction: v852200,en_US*/
+/*1372243178,181954605,JIT Construction: v858021,en_US*/
 
 /**
  * Copyright Facebook Inc.
@@ -11,7 +11,7 @@ var self = window, document = window.document;
 var setTimeout = window.setTimeout, setInterval = window.setInterval;var __DEV__ = 0;
 function emptyFunction() {};
 /**
- * @generated SignedSource<<709ed10ca3e597282e758fffeab09427>>
+ * @generated SignedSource<<8c19830120d9029efdb9781917e9a746>>
  * 
  * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
  * !! This file is a check-in of a static_upstream project!      !!
@@ -37,9 +37,9 @@ function emptyFunction() {};
 
 /*TC*/
 (function() {
-  var toString = Object.prototype.toString;
   var handler;
   var currentType;
+  var toString = Object.prototype.toString;
 
   /**
    * Mapping from types to interfaces that they implement.
@@ -121,6 +121,10 @@ function emptyFunction() {};
           type = 'DOMTextNode';
         } else if (value == value.window && value == value.self) {
           type = 'DOMWindow';
+        } else if (toStringType == 'XMLHttpRequest'
+                   || 'setRequestHeader' in value) {
+          // XMLHttpRequest stringType is "Object" on IE7/8 so we duck-type it
+          type = 'XMLHttpRequest';
         } else {
           // else, check if it is actually an array
           switch (toStringType) {
@@ -204,8 +208,10 @@ function emptyFunction() {};
         while (currentType.length) {
           actual += '<' + currentType.shift() + '>';
         }
-        var error = new TypeError('Type Mismatch for ' + name + ': expected "' +
-          expected + '", actual "' + actual + '"');
+        var error = new TypeError('Type Mismatch for ' + name +
+                                  ': expected `' + expected +
+                                  '`, actual `' + actual +
+                                  '` (' + toString.call(value) + ')');
         if (handler) {
           try {
             throw error;
@@ -247,7 +253,7 @@ function emptyFunction() {};
 })();
 /*/TC*/
 
-/* wdZPCVxbZpy */
+/* adqTKF-FDPu */
 /**
  * This is a lightweigh implementation of require and __d which is used by the
  * JavaScript SDK.
