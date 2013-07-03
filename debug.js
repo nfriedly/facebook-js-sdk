@@ -1,4 +1,4 @@
-/*1372243178,181954605,JIT Construction: v858021,en_US*/
+/*1372847659,182140763,JIT Construction: v865082,en_US*/
 
 /**
  * Copyright Facebook Inc.
@@ -11,7 +11,7 @@ var self = window, document = window.document;
 var setTimeout = window.setTimeout, setInterval = window.setInterval;var __DEV__ = 0;
 function emptyFunction() {};
 /**
- * @generated SignedSource<<8c19830120d9029efdb9781917e9a746>>
+ * @generated SignedSource<<9ae702b1a73a593eba76f40e4b4332f9>>
  * 
  * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
  * !! This file is a check-in of a static_upstream project!      !!
@@ -212,17 +212,17 @@ function emptyFunction() {};
                                   ': expected `' + expected +
                                   '`, actual `' + actual +
                                   '` (' + toString.call(value) + ')');
-        if (handler) {
-          try {
-            throw error;
-          } catch (e) {
-            // Pop to the frame calling the checked function, or to the
-            // checked function
-            e.framesToPop = args[i][2] ? 2 : 1;
-            handler(e);
-          }
-        } else {
+        try {
           throw error;
+        } catch (e) {
+          // Pop to the frame calling the checked function, or to the
+          // checked function
+          e.framesToPop = args[i][2] ? 2 : 1;
+          if (handler) {
+            handler(e);
+          } else {
+            console.error(error.message);
+          }
         }
       }
     }
@@ -253,7 +253,7 @@ function emptyFunction() {};
 })();
 /*/TC*/
 
-/* adqTKF-FDPu */
+/* sTYR6dN-L72 */
 /**
  * This is a lightweigh implementation of require and __d which is used by the
  * JavaScript SDK.
@@ -331,7 +331,7 @@ var require, __d;
   } /*TC*/,{"signature":"function(string,array<string>,?number)"})/*/TC*/);
 })(this);
 
-/* zB3sVz-p6Ik */
+/* Yl_VpDl1-6f */
 var ES5 = function(){
 __d("ES5ArrayPrototype",[],function(global,require,requireDynamic,requireLazy,module,exports) {/**
  * @providesModule ES5ArrayPrototype
@@ -447,7 +447,7 @@ ES5ArrayPrototype.indexOf = function(val, index) {
 
 module.exports = ES5ArrayPrototype;
 
-/* 9Tr4fw-T9rQ */});
+/* HqRTEmgTY2t */});
 __d("ES5FunctionPrototype",[],function(global,require,requireDynamic,requireLazy,module,exports) {/**
  * @providesModule ES5FunctionPrototype
  */
@@ -482,7 +482,7 @@ ES5FunctionPrototype.bind = function(context /*, args... */) {
 
 module.exports = ES5FunctionPrototype;
 
-/* L8y3KOP3JMA */});
+/* nvtrxsjljMN */});
 __d("ES5StringPrototype",[],function(global,require,requireDynamic,requireLazy,module,exports) {/**
  * @providesModule ES5StringPrototype
  */
@@ -503,7 +503,7 @@ ES5StringPrototype.trim = function() {
 
 module.exports = ES5StringPrototype;
 
-/* jV553Iwj1NY */});
+/* 539ccTItLte */});
 __d("ES5Array",[],function(global,require,requireDynamic,requireLazy,module,exports) {/**
  * @providesModule ES5Array
  */
@@ -516,7 +516,7 @@ ES5Array.isArray = function(object) {
 
 module.exports = ES5Array;
 
-/* JG3DwFHNHzN */});
+/* B8ccUwaUFZB */});
 __d("ES5Object",[],function(global,require,requireDynamic,requireLazy,module,exports) {/**
  * @providesModule ES5Object
  */
@@ -587,7 +587,7 @@ ES5Object.keys = function(object) {
 
 module.exports = ES5Object;
 
-/* qj0Zs4T5tCY */});
+/* PrziJKpK-BD */});
 __d("ES5Date",[],function(global,require,requireDynamic,requireLazy,module,exports) {/**
  * @providesModule ES5Date
  */
@@ -599,7 +599,7 @@ ES5Date.now = function() {
 
 module.exports = ES5Date;
 
-/* GgI63e0Iit- */});
+/* vMGoqyoMvm4 */});
 __d("JSON3",[],function(global,require,requireDynamic,requireLazy,module,exports) {/**
  * @providesModule JSON3
  * @option preserve-header
@@ -1356,7 +1356,7 @@ __d("JSON3",[],function(global,require,requireDynamic,requireLazy,module,exports
   }
 }).call(this);
 
-/* SOyw7y3B16T */});
+/* X4Qs1_naZ0d */});
 __d("ES5",["ES5ArrayPrototype","ES5FunctionPrototype","ES5StringPrototype","ES5Array","ES5Object","ES5Date","JSON3"],function(global,require,requireDynamic,requireLazy,module,exports) {/**
  * @providesModule ES5
  *
@@ -1439,7 +1439,7 @@ function ES5(lhs, rhs, proto/*, args*/) {
 
 module.exports = ES5;
 
-/* vT0p_nEGtn3 */});ES5 = require('ES5');
+/* KMJC0xAEknR */});ES5 = require('ES5');
 return ES5.apply(null, arguments);
 };
 
@@ -6947,7 +6947,7 @@ var Methods = {
 
   'permissions.oauth': {
     url       : 'dialog/oauth',
-    size      : { width: (UserAgent.mobile() ? null : 440),
+    size      : { width: (UserAgent.mobile() ? null : 475),
                   height: (UserAgent.mobile() ? null : 183) },
     transform : __w(function(/*object*/ call) /*?object*/ {__t([call,'object','call']);/*jshint validthis: true*/return __t([function(){
       if (!Runtime.getClientID()) {
@@ -9655,8 +9655,7 @@ var PluginTags = {
   },
 
   degrees: {
-    href: 'url',
-    limit_profile_visibility: 'bool'
+    href: 'url'
   },
 
   facepile: {
