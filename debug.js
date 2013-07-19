@@ -1,4 +1,4 @@
-/*1374061202,180822611,JIT Construction: v877896,en_US*/
+/*1374228617,180786493,JIT Construction: v880776,en_US*/
 
 /**
  * Copyright Facebook Inc.
@@ -505,7 +505,7 @@ ES5StringPrototype.trim = function() {
 
 module.exports = ES5StringPrototype;
 
-/* 539ccTItLte */});
+/* RMbdS-q0KlH */});
 __d("ES5Array",[],function(global,require,requireDynamic,requireLazy,module,exports) {/**
  * @providesModule ES5Array
  */
@@ -9531,6 +9531,12 @@ var IframePlugin = Type.extend({
       clearTimeout(this._timeoutID);
     },{"signature":"function(object)"}), 'bind', true,this));
 
+    this.subscribe('xd.sdk_event', __w(function(/*object*/ message) {__t([message,'object','message']);
+      var data = ES5('JSON', 'parse', false,message.data);
+      data.pluginID = pluginId;
+      Event.fire(message.event, data);
+    },{"signature":"function(object)"}));
+
 
     var secure = Runtime.getSecure() || window.location.protocol == 'https:';
     
@@ -10953,8 +10959,9 @@ var Widget = IframeWidget.extend({
 module.exports = Widget;
 
 });
-__d("sdk.XFBML.EdgeWidget",["sdk.XFBML.IframeWidget","sdk.XFBML.EdgeCommentWidget","sdk.DOM","sdk.Helper","sdk.Runtime"],function(global,require,requireDynamic,requireLazy,module,exports) {
+__d("sdk.XFBML.EdgeWidget",["sdk.Event","sdk.XFBML.IframeWidget","sdk.XFBML.EdgeCommentWidget","sdk.DOM","sdk.Helper","sdk.Runtime"],function(global,require,requireDynamic,requireLazy,module,exports) {
 
+var Event = require('sdk.Event');
 var IframeWidget = require('sdk.XFBML.IframeWidget');
 var EdgeCommentWidget = require('sdk.XFBML.EdgeCommentWidget');
 var DOM = require('sdk.DOM');
@@ -10999,9 +11006,16 @@ var EdgeWidget = IframeWidget.extend({
   }.apply(this,arguments), 'boolean']);},{"signature":"function():boolean"}),
 
   oneTimeSetup : function() {
-    this.subscribe('xd.authPrompted', ES5(this._onAuthPrompt, 'bind', true,this));
-    this.subscribe('xd.edgeCreated', ES5(this._onEdgeCreate, 'bind', true,this));
-    this.subscribe('xd.edgeRemoved', ES5(this._onEdgeRemove, 'bind', true,this));
+    this.subscribe('xd.sdk_event', ES5(__w(function(/*object*/ message) {__t([message,'object','message']);
+      Event.fire(message.event, ES5('JSON', 'parse', false,message.data));
+      if (message.event == 'edge.create') {
+        Helper.invokeHandler(
+          this.getAttribute('on-create'), this, [this._attr.href]);
+      } else if (message.event == 'edge.remove') {
+        Helper.invokeHandler(
+          this.getAttribute('on-remove'), this, [this._attr.href]);
+      }
+    },{"signature":"function(object)"}), 'bind', true,this));
     this.subscribe('xd.presentEdgeCommentDialog',
       ES5(this._handleEdgeCommentDialogPresentation, 'bind', true,this));
     this.subscribe('xd.dismissEdgeCommentDialog',
@@ -11201,29 +11215,6 @@ var EdgeWidget = IframeWidget.extend({
     if (this._commentWidgetNode) {
       this._commentWidgetNode.style.display="block";
     }
-  },
-
-  
-  _fireEventAndInvokeHandler: __w(function(/*string*/ eventName,
-      /*string*/ eventAttribute) {__t([eventName,'string','eventName'],[eventAttribute,'string','eventAttribute']);
-    Helper.fireEvent(eventName, this);
-    Helper.invokeHandler(
-      this.getAttribute(eventAttribute), this, [this._attr.href]); 
-  },{"signature":"function(string,string)"}),
-
-  
-  _onEdgeCreate: function() {
-    this._fireEventAndInvokeHandler('edge.create', 'on-create');
-  },
-
-  
-  _onEdgeRemove: function() {
-    this._fireEventAndInvokeHandler('edge.remove', 'on-remove');
-  },
-
-  
-  _onAuthPrompt: function() {
-    this._fireEventAndInvokeHandler('auth.prompt', 'on-prompt');
   }
 
 });
