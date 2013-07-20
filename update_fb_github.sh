@@ -20,7 +20,7 @@ getChanges(){
 	mv debug.js debug_old.js
 
 	# download the latest facebook all.js/css
-	/usr/bin/wget -q  -O debug.js https://connect.facebook.net/en_US/all/debug.js
+	curl --silent -O https://connect.facebook.net/en_US/all/debug.js
 
 	# compare the latest with the backup to see if anything besides the
 	# timestamp comment at the top changed
@@ -42,7 +42,7 @@ getChanges(){
 }
 
 # change  to the directory where this script is located
-cd `dirname $0`
+#cd `dirname $0`
 
 # check for js/css changes
 JS_CHANGES=$(getChanges)
