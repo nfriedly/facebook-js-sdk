@@ -1,1 +1,1 @@
-worker: ./setup.sh
+web: python -m SimpleHTTPServer
