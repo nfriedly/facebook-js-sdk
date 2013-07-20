@@ -42,6 +42,7 @@ getChanges(){
 }
 
 # change  to the directory where this script is located
+# disabled for heroku, uncomment if necessary for your setup.
 #cd `dirname $0`
 
 # check for js/css changes
@@ -57,7 +58,7 @@ if [[ $JS_CHANGES ]]; then
 
 	# commit with yesterday's date since this is typically run
 	# shortly after midnight
-	/usr/bin/git commit -m "FB js changes from `date --date=today +'%A, %B %-d, %Y'`"
+	/usr/bin/git commit -m "FB js changes from `date --date=today +'%A, %B %-d, %Y'` - `git diff --shortstat`"
 	/usr/bin/git push -q origin master
 else
 	echo "No changes"
