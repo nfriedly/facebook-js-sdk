@@ -1,4 +1,4 @@
-Track changes to the de-minified Facebook JS SDK
+Facebook JS SDK, tracked and de-minified
 ===================================================
 
 This project aims to provide a useful resource to developers who are working with 
@@ -8,8 +8,8 @@ My server runs a cronjob every 10 minutes that downloads the latest
 http://connect.facebook.net/en_US/all/debug.js, commits any changes, and then pushes to 
 github. 
 
-(all/debug.js is the non-minified version of http://connect.facebook.net/en_US/all.js that 
-you're probably using in production)
+(debug.js is the non-minified version of http://connect.facebook.net/en_US/all.js that 
+you're probably using in production.)
 
 The script does not commit if only the timestamp at the top has changed.
 
