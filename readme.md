@@ -1,12 +1,15 @@
-Facebook's JS SDK, de-minified.
-===============================
+Track changes to the de-minified Facebook JS SDK
+===================================================
 
-https://github.com/facebook/connect-js hasn't recieved a meaningfull update in months, meanwhile Facebook has pushed 
-new JS/CSS to production nearly every week. This project aims to provide a useful resource to developers who are 
-working with Facebook's JS SDK and would like to see what has changed recently. 
+This project aims to provide a useful resource to developers who are working with 
+Facebook's JS SDK and would like to see what has changed recently. 
 
-My server runs a nightly cronjob that downloads the latest http://connect.facebook.net/en_US/all/debug.js and pushes
-the changes to github.
+My server runs a cronjob every 10 minutes that downloads the latest 
+http://connect.facebook.net/en_US/all/debug.js, commits any changes, and then pushes to 
+github. 
+
+(all/debug.js is the non-minified version of http://connect.facebook.net/en_US/all.js that 
+you're probably using in production)
 
 The script does not commit if only the timestamp at the top has changed.
 
@@ -16,13 +19,24 @@ Setup
 -----
 
 To run your own copy (which I recommend), you'll need to fork the github project, test the shell script, and then 
-set up an appropriate crontab. Mine looks like this:
+set up cronjob like so:
 
-    MAILTO="nathan@[my_site].com"
+    MAILTO="you@[your_site].com"
     # m h dom mon dow command
-    0 5 * * * /home/nfriedly/facebook/connect-js/./update_fb_github.sh > /dev/null
+    0 5 * * * /home/nfriedly/facebook/connect-js/update_fb_github.sh > /dev/null
 
-This setup sends me an email if there were errors, but not if everything worked successfully.
+This setup sends an email if there were errors, but not if everything worked successfully.
+
+Setup on Heroku
+---------------
+
+Alternatively, I have been testing running this script on a free heroku instance, and it seems to be working now.
+To use heroku, put your github username and password in environmental variables like so:
+
+    heroku config:add GH_USER=<username>
+    heroku config:add GH_PASS=<password>
+    
+Then add the [Heroku Scheduler](https://addons.heroku.com/scheduler) addon and create a task that runs `./heroku.sh` as often as you'd like.
 
 ---
 
@@ -51,19 +65,24 @@ Official FB links
 
 ---
 
+To Do
+-----
+
+* Track individual components (init.js, json.js, xfbml.js, etc)
+* Keep a copy of the minified file in addition to debug.js
+* Track the xdm.swf file
+* Track the beta js
+* Figure out how to get error notifications if the heroku process fails
+
+---
+
 Credits
 -------
 
 Credit for the idea goes to Roger Hu - http://hustoknow.blogspot.com/
 
-The shell script is copyright Nathan Friedly http://nfriedly.com and released under an MIT License.
+The shell scripts are copyright Nathan Friedly http://nfriedly.com and released under an MIT License.
 
 The JS is copyright Facebook, Inc. and, to the best of my knowledge, released under an Apache 2.0 License
 
 This is obviously not endorsed or supported by Facebook - if it was, they'd probably update their own github account.
-
----
-Related
--------
-
-https://github.com/tomwaddington/facebook-js-sdk is a similar project that gets updated 3 times per day.

@@ -4,7 +4,7 @@
 # so, we check if our file is already there, and if not, clone the repo to ./tmp
 if [ ! -f tmp/debug.js ]; then
   # you must set the $GH_USER & $GH_PASS variables with `heroku config:add GH_USER=username`
-  git clone https://$GH_USER:$GH_PASS@github.com/nfriedly/facebook-js-sdk tmp
+  git clone https://$GH_USER:$GH_PASS@github.com/$GH_USER/facebook-js-sdk tmp
 fi
 
 # lastly, run our script
