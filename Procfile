@@ -1,1 +1,1 @@
-web: node web.js
+worker: bash heroku.sh
