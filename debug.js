@@ -1,4 +1,4 @@
-/*1376436327,171360542,JIT Construction: v907582,en_US*/
+/*1377022677,168594767,JIT Construction: v914149,en_US*/
 
 /**
  * Copyright Facebook Inc.
@@ -1469,7 +1469,7 @@ __d("QueryString",[],function(global,require,requireDynamic,requireLazy,module,e
 
 function encode(/*object*/ bag) /*string*/ {__t([bag, 'object', 'bag']);return __t([function() {
   var pairs = [];
-  ES5(ES5('Object', 'keys', false,bag), 'forEach', true,function(key) {
+  ES5(ES5('Object', 'keys', false,bag).sort(), 'forEach', true,function(key) {
     var value = bag[key];
     
     if (typeof value === 'undefined') {
@@ -1489,7 +1489,7 @@ function encode(/*object*/ bag) /*string*/ {__t([bag, 'object', 'bag']);return _
 }.apply(this, arguments), 'string']);}__w(encode, {"signature":"function(object):string"}); 
 
 
-function decode(/*string*/ str, /*boolean?*/ strict) /*object*/ {__t([str, 'string', 'str'], [strict, '?boolean', 'strict']);return __t([function() {
+function decode(/*string*/ str, /*?boolean*/ strict) /*object*/ {__t([str, 'string', 'str'], [strict, '?boolean', 'strict']);return __t([function() {
   var data = {};
   if (str === '') {
     return data;
@@ -7576,8 +7576,23 @@ var UIServer = {
   _xdRecv: __w(function(/*object*/ data, /*function*/ cb) {__t([data, 'object', 'data'], [cb, 'function', 'cb']);
     var frame = UIServer.getLoadedNode(data.frame);
     if (frame) {
-      
-      try {
+      if (frame.close) {
+        
+        try {
+          frame.close();
+          
+          
+          
+          if (/iPhone.*Version\/(5|6)/.test(navigator.userAgent)
+              && RegExp.$1 !== '5') {
+            window.focus();
+          }
+          UIServer._popupCount--;
+        } catch (y) {
+          
+        }
+      } else {
+        
         if (DOM.containsCss(frame, 'FB_UI_Hidden')) {
           
           // async flash crap. seriously, don't ever ask me about it.
@@ -7588,27 +7603,7 @@ var UIServer = {
         } else if (DOM.containsCss(frame, 'FB_UI_Dialog')) {
           Dialog.remove(frame);
         }
-      } catch (x) {
-        
       }
-
-      
-      try {
-        if (frame.close) {
-          frame.close();
-          
-          
-          
-          if (/iPhone.*Version\/(5|6)/.test(navigator.userAgent)
-              && RegExp.$1 !== '5') {
-            window.focus();
-          }
-          UIServer._popupCount--;
-        }
-      } catch (y) {
-        
-      }
-
     }
     
     delete UIServer._loadedNodes[data.frame];
@@ -9421,10 +9416,11 @@ copyProperties(PluginPipe, {
 module.exports = PluginPipe;
 
 });
-__d("IframePlugin",["sdk.Auth","sdk.createIframe","sdk.DOM","sdk.Event","guid","Log","ObservableMixin","PluginPipe","QueryString","resolveURI","sdk.Runtime","Type","UrlMap","sdk.XD"],function(global,require,requireDynamic,requireLazy,module,exports) {
+__d("IframePlugin",["sdk.Auth","sdk.createIframe","copyProperties","sdk.DOM","sdk.Event","guid","Log","ObservableMixin","PluginPipe","QueryString","resolveURI","sdk.Runtime","Type","UrlMap","sdk.XD"],function(global,require,requireDynamic,requireLazy,module,exports) {
 
 var Auth = require('sdk.Auth');
 var createIframe = require('sdk.createIframe');
+var copyProperties = require('copyProperties');
 var DOM = require('sdk.DOM');
 var Event = require('sdk.Event');
 var guid = require('guid');
@@ -9587,10 +9583,6 @@ var IframePlugin = Type.extend({
     flow.style.width = '0px';
     flow.style.height = '0px';
 
-    this.subscribe('render', function() {
-      this._iframe.style.visibility = 'visible';
-    });
-
     this._element = elem;
     this._ns = ns;
     this._tag = tag;
@@ -9614,7 +9606,24 @@ var IframePlugin = Type.extend({
   }, {"signature":"function(DOMElement,string,string,object)"}),
 
   process: function() {
-    this._element.innerHTML = '';
+    // This implements an optimization to skip rendering if we've already
+    
+    var params = copyProperties({}, this._params);
+    delete params.channel; // Unique per-plugin, doesn't change rendering
+    var query = QueryString.encode(params);
+    if (this._element.getAttribute('fb-iframe-plugin-query') == query) {
+      Log.info('Skipping render: %s:%s %s', this._ns, this._tag, query);
+      this.inform('render');
+      return;
+    }
+    this._element.setAttribute('fb-iframe-plugin-query', query);
+
+    this.subscribe('render', function() {
+      this._iframe.style.visibility = 'visible';
+    });
+    while (this._element.firstChild) {
+      this._element.removeChild(this._element.firstChild);
+    }
     this._element.appendChild(this._config.root);
     this._timeoutID = setTimeout(ES5(function() {
       this._iframe && resize(this._iframe, 0, 0);
