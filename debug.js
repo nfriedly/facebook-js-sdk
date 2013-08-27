@@ -1,4 +1,4 @@
-/*1377053115,168602911,JIT Construction: v914966,en_US*/
+/*1377641424,180804437,JIT Construction: v920968,en_US*/
 
 /**
  * Copyright Facebook Inc.
@@ -9416,7 +9416,7 @@ copyProperties(PluginPipe, {
 module.exports = PluginPipe;
 
 });
-__d("IframePlugin",["sdk.Auth","sdk.createIframe","copyProperties","sdk.DOM","sdk.Event","guid","Log","ObservableMixin","PluginPipe","QueryString","resolveURI","sdk.Runtime","Type","UrlMap","sdk.XD"],function(global,require,requireDynamic,requireLazy,module,exports) {
+__d("IframePlugin",["sdk.Auth","sdk.createIframe","copyProperties","sdk.DOM","sdk.Event","guid","Log","ObservableMixin","PluginPipe","QueryString","resolveURI","sdk.Runtime","Type","UrlMap","UserAgent","sdk.XD"],function(global,require,requireDynamic,requireLazy,module,exports) {
 
 var Auth = require('sdk.Auth');
 var createIframe = require('sdk.createIframe');
@@ -9432,6 +9432,7 @@ var resolveURI = require('resolveURI');
 var Runtime = require('sdk.Runtime');
 var Type = require('Type');
 var UrlMap = require('UrlMap');
+var UserAgent = require('UserAgent');
 var XD = require('sdk.XD');
 
 var baseParams = {
@@ -9625,10 +9626,16 @@ var IframePlugin = Type.extend({
       this._element.removeChild(this._element.firstChild);
     }
     this._element.appendChild(this._config.root);
+    var timeout = UserAgent.mobile() ? 120 : 45;
     this._timeoutID = setTimeout(ES5(function() {
       this._iframe && resize(this._iframe, 0, 0);
-      Log.warn('%s:%s failed to resize in 45s', this._ns, this._tag);
-    }, 'bind', true,this), 45 * 1000);
+      Log.warn(
+        '%s:%s failed to resize in %ss',
+        this._ns,
+        this._tag,
+        timeout
+      );
+    }, 'bind', true,this), timeout * 1000);
     
     
     
