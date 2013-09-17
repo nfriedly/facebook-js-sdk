@@ -1,4 +1,4 @@
-/*1379446750,180636985,JIT Construction: v939518,en_US*/
+/*1379448657,168582445,JIT Construction: v938779,en_US*/
 
 /**
  * Copyright Facebook Inc.
@@ -274,7 +274,7 @@ var __w, __t;
 })();
 /*/TC*/
 
-/* jXDAXYIWYm2 */
+/* yMX7odJ9siu */
 /**
  * This is a lightweigh implementation of require and __d which is used by the
  * JavaScript SDK.
@@ -1593,10 +1593,13 @@ module.exports = AssertionError;
 __d("sprintf",[],function(global,require,requireDynamic,requireLazy,module,exports) {
 
 
-function sprintf(format ) {__t([format, 'string', 'format']);var args=Array.prototype.slice.call(arguments,1);
+function sprintf(/*string*/ str, argsdotdot) /*string*/ {__t([str, 'string', 'str']);return __t([function() {
+  argsdotdot = Array.prototype.slice.call(arguments, 1);
   var index = 0;
-  return format.replace(/%s/g, function(match)  {return args[index++];});
-}__w(sprintf, {"signature":"function(string)"}); 
+  return str.replace(/%s/g, function(match) {
+    return argsdotdot[index++];
+  });
+}.apply(this, arguments), 'string']);}__w(sprintf, {"signature":"function(string):string"}); 
 
 module.exports = sprintf;
 
