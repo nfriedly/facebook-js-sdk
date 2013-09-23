@@ -21,7 +21,15 @@ getChanges(){
 
 	# download the latest facebook all.js/css
 	curl --silent -O https://connect.facebook.net/en_US/all/debug.js
-
+	
+	# grab the timestamps from the old and new js files
+	local new_timestamp=$(getTimestamp debug.js)
+	local old_timestamp=$(getTimestamp debug_old.js)
+	
+	# only continue if the new file has a newer timestamp
+	# this prevents accidental "reverse commits" that would result from hitting a stale cache
+	if [[ new_timestamp -gt old_timestamp ]]; then
+		
 	# compare the latest with the backup to see if anything besides the
 	# timestamp comment at the top changed
 	local changes=$(/usr/bin/diff --brief --ignore-matching-lines=\/\*.*\*\/  debug.js debug_old.js)
@@ -39,13 +47,21 @@ getChanges(){
 
 	# this is the "return" value - some text if there were changes or "" otherwise
 	echo $changes
+	
+	fi
+}
+
+getTimestamp() {
+	# The first number on the first line is the timestamp. Example:
+	# /*1379959149,182005047,JIT Construction: v945041,en_US*/
+	head -1 $1 | sed 's/\/\*\([0-9]*\),.*/\1/'
 }
 
 # change  to the directory where this script is located
 # disabled for heroku, uncomment if necessary for your setup.
 #cd `dirname $0`
 
-# check for js/css changes
+# check for js changes
 JS_CHANGES=$(getChanges)
 
 
@@ -56,8 +72,7 @@ if [[ $JS_CHANGES ]]; then
 
 	echo "Sending changes to github"
 
-	# commit with yesterday's date since this is typically run
-	# shortly after midnight
+	# commit with the date and a short summary
 	/usr/bin/git commit -m "FB js changes from `date --date=today +'%A, %B %-d, %Y'` - `git diff  --cached --shortstat`"
 	/usr/bin/git push -q origin master
 else
