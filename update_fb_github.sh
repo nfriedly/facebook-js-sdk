@@ -30,23 +30,23 @@ getChanges(){
 	# this prevents accidental "reverse commits" that would result from hitting a stale cache
 	if [[ new_timestamp -gt old_timestamp ]]; then
 		
-	# compare the latest with the backup to see if anything besides the
-	# timestamp comment at the top changed
-	local changes=$(/usr/bin/diff --brief --ignore-matching-lines=\/\*.*\*\/  debug.js debug_old.js)
+		# compare the latest with the backup to see if anything besides the
+		# timestamp comment at the top changed
+		local changes=$(/usr/bin/diff --brief --ignore-matching-lines=\/\*.*\*\/  debug.js debug_old.js)
 
-	# an empty string is falsy, a string with text is truthy
-	if [[ $changes ]]; then
-		# something else has changed
-		# get rid of the old file
-		rm debug_old.js
-	else
-		# no changes, or only the timestamp changed
-		# put back the old file
-		mv debug_old.js debug.js
-	fi
+		# an empty string is falsy, a string with text is truthy
+		if [[ $changes ]]; then
+			# something else has changed
+			# get rid of the old file
+			rm debug_old.js
+		else
+			# no changes, or only the timestamp changed
+			# put back the old file
+			mv debug_old.js debug.js
+		fi
 
-	# this is the "return" value - some text if there were changes or "" otherwise
-	echo $changes
+		# this is the "return" value - some text if there were changes or "" otherwise
+		echo $changes
 	
 	fi
 }
