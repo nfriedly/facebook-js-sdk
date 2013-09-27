@@ -22,16 +22,15 @@ getChanges(){
 	# download the latest facebook all.js/css
 	curl --silent -O https://connect.facebook.net/en_US/all/debug.js
 	
-	# grab the timestamps from the old and new js files
-	local new_timestamp=$(getTimestamp debug.js)
-	local old_timestamp=$(getTimestamp debug_old.js)
+	# grab the versions from the old and new js files
+	local new_version=$(getVersion debug.js)
+	local old_version=$(getVersion debug_old.js)
 	
-	# only continue if the new file has a newer timestamp
+	# only continue if the new file has a newer version
 	# this prevents accidental "reverse commits" that would result from hitting a stale cache
-	if [[ new_timestamp -gt old_timestamp ]]; then
+	if [[ new_version -gt old_version ]]; then
 		
-		# compare the latest with the backup to see if anything besides the
-		# timestamp comment at the top changed
+		# compare the latest with the backup to see if anything changed
 		local changes=$(/usr/bin/diff --brief --ignore-matching-lines=\/\*.*\*\/  debug.js debug_old.js)
 
 		# an empty string is falsy, a string with text is truthy
@@ -51,10 +50,10 @@ getChanges(){
 	fi
 }
 
-getTimestamp() {
-	# The first number on the first line is the timestamp. Example:
+getVersion() {
+	# The v###### number on the first line. Example:
 	# /*1379959149,182005047,JIT Construction: v945041,en_US*/
-	head -1 $1 | sed 's/\/\*\([0-9]*\),.*/\1/'
+	head -1 $1 | sed 's/.*: v\([0-9]*\),.*/\1/'
 }
 
 # change  to the directory where this script is located
