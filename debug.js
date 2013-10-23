@@ -1,4 +1,4 @@
-/*1381942111,168622937,JIT Construction: v969348,en_US*/
+/*1382537366,182133545,JIT Construction: v977889,en_US*/
 
 /**
  * Copyright Facebook Inc.
@@ -9626,7 +9626,7 @@ var IframePlugin = Type.extend({
       
       
       
-      width: params.width || (UserAgent.mobile() ? undefined : 1000),
+      width: (UserAgent.mobile() ? undefined : (params.width || 1000)),
       height: params.height || 1000,
       style: { border: 'none', visibility: 'hidden' },
       title: this._ns + ':' + this._tag + ' Facebook Social Plugin',
@@ -9677,22 +9677,15 @@ var IframePlugin = Type.extend({
     }
     if (UserAgent.mobile()) {
       DOM.addCss(this._element, 'fb_iframe_widget_fluid');
-      if (!this._config.width) {
-        this._element.style.display = 'block';
-        this._element.style.width = '100%';
-        this._element.style.height = 'auto';
-        this._config.root.style.width = '100%';
-        this._config.root.style.height = 'auto';
-        this._iframe.style.width = '100%';
-        this._iframe.style.height = 'auto';
-        this._iframe.style.position = 'static';
-      } else {
-        // don't wait for resize message from server (loads faster)
-        this._iframe.style.width = this._config.width + 'px';
-        this._config.root.style.width = this._config.width + 'px';
-      }
+      this._element.style.display = 'block';
+      this._element.style.width = '100%';
+      this._element.style.height = 'auto';
+      this._config.root.style.width = '100%';
+      this._config.root.style.height = 'auto';
+      this._iframe.style.width = '100%';
+      this._iframe.style.height = 'auto';
+      this._iframe.style.position = 'static';
     }
-
   },
 
   updateLift: function() { 
@@ -10402,6 +10395,7 @@ var Comments = IframeWidget.extend({
     var attr = {
       channel_url : this.getChannelUrl(),
       colorscheme : this.getAttribute('colorscheme'),
+      skin        : this.getAttribute('skin'),
       numposts    : this.getAttribute('num-posts', 10),
       width       : this._getPxAttribute('width', 550),
       href        : this.getAttribute('href'),
@@ -10416,6 +10410,9 @@ var Comments = IframeWidget.extend({
         attr.mobile !== false) {
       attr.mobile = true;
       delete attr.width;
+    }
+    if (!attr.skin) {
+      attr.skin = attr.colorscheme;
     }
 
     
