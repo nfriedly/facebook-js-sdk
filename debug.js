@@ -1,4 +1,4 @@
-/*1383072774,173022791,JIT Construction: v985946,en_US*/
+/*1383260272,171996462,JIT Construction: v989830,en_US*/
 
 /**
  * Copyright Facebook Inc.
@@ -12,7 +12,7 @@ var setTimeout = window.setTimeout, setInterval = window.setInterval;var __DEV__
 function emptyFunction() {};
 var __w, __t;
 /**
- * @generated SignedSource<<f8438bf56b75cb9b8652bab00ad9ec26>>
+ * @generated SignedSource<<a5d303602705547ac70ff4fe4128a43c>>
  *
  * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
  * !! This file is a check-in of a static_upstream project!      !!
@@ -64,7 +64,10 @@ var __w, __t;
    *   > equals(['string'], 'array') // true
    */
   function equals(value, node) {
-    var nullable = node[0] === '?';
+    // http://jsperf.com/charat-vs-substr-vs-substring-vs-regex-vs-indexing-for-
+    // shows that using indexing is slightly faster, but unfortunately indexing
+    // is not supported by IE6/7
+    var nullable = node.charAt(0) === '?';
 
     // Short circuit `null` and `undefined` if we allow them.
     if (nullable && value == null) {
@@ -293,7 +296,7 @@ var __w, __t;
 })();
 /*/TC*/
 
-/* WtshLHD9RSQ */
+/* 55CuR44quha */
 /**
  * This is a lightweigh implementation of require and __d which is used by the
  * JavaScript SDK.
