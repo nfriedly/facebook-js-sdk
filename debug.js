@@ -1,4 +1,4 @@
-/*1384299378,178533465,JIT Construction: v1005730,en_US*/
+/*1384883431,182134601,JIT Construction: v1013958,en_US*/
 
 /**
  * Copyright Facebook Inc.
@@ -3370,59 +3370,6 @@ var registry = {};
 module.exports = Queue;
 
 });
-__d("resolveURI",[],function(global,require,requireDynamic,requireLazy,module,exports) {
-
-function resolveURI(/*string?*/ uri) /*string*/ {__t([uri, '?string', 'uri']);return __t([function() {
-  if (!uri) { 
-    return window.location.href;
-  }
-
-  uri = uri.replace(/&/g, '&amp;') 
-           .replace(/"/g, '&quot;'); 
-
-  var div = document.createElement('div');
-  // This uses `innerHTML` because anything else doesn't resolve properly or
-  
-  div.innerHTML = '<a href="' + uri + '"></a>';
-
-  return div.firstChild.href; 
-}.apply(this, arguments), 'string']);}__w(resolveURI, {"signature":"function(?string):string"}); 
-
-module.exports = resolveURI;
-
-});
-__d("resolveWindow",[],function(global,require,requireDynamic,requireLazy,module,exports) {
-
-
-
-function resolveWindow(path) {
-  var node = window; 
-  var parts = path.split('.');
-
-  try {
-    for (var i = 0; i < parts.length; i++) {
-      var part = parts[i];
-      // the regex has the `feature' of fixing some badly quote strings
-      var matches = /^frames\[['"]?([a-zA-Z0-9\-_]+)['"]?\]$/.exec(part);
-
-      if (matches) {
-        node = node.frames[matches[1]];
-      } else if (part === 'opener' || part === 'parent' || part === 'top') {
-        node = node[part];
-      } else {
-        return null;
-      }
-    }
-  } catch (securityOrReferenceException) {
-    return null;
-  }
-
-  return node;
-}
-
-module.exports = resolveWindow;
-
-});
 __d("JSONRPC",["copyProperties","Log"],function(global,require,requireDynamic,requireLazy,module,exports) {
 
 var copyProperties = require('copyProperties');
@@ -3879,59 +3826,6 @@ var XDM = {
 };
 
 
-XDM.register('fragment', (function() {
-  var inited = false;
-  var root;
-  var senderOrigin = location.protocol + '//' + location.host;
-
-  function insertIframe(url) {
-    var iframe = document.createElement('iframe');
-    iframe.src = 'javascript:false';
-    var ev = DOMEventListener.add(iframe, 'load', function() {
-      ev.remove();
-      setTimeout(function() {
-        iframe.parentNode.removeChild(iframe);
-      }, 5000);
-    });
-    root.appendChild(iframe);
-    iframe.src = url;
-  }
-
-  return {
-    isAvailable: function() {
-      return true;
-    },
-    init: function(config) {
-      Log.debug('init fragment');
-      var xdm = {
-        send: function(message, origin, windowRef, channel) {
-          Log.debug('sending to: %s (%s)',
-            origin + config.channelPath, channel);
-          
-          
-          
-          
-          insertIframe(origin + config.channelPath + message +
-            '&xd_rel=parent.parent&relation=parent.parent&xd_origin=' +
-            encodeURIComponent(senderOrigin));
-        }
-      };
-      if (inited) {
-        setTimeout(function() {
-          config.whenReady(xdm);
-        }, 0);
-        return;
-      }
-      root = config.root;
-      inited = true;
-      setTimeout(function() {
-        config.whenReady(xdm);
-      }, 0);
-    }
-  };
-})());
-
-
 XDM.register('flash', (function() {
   var inited = false;
   var swf;
@@ -4060,7 +3954,7 @@ XDM.register('postmessage', (function() {
 module.exports = XDM;
 
 });
-__d("sdk.XD",["sdk.Content","sdk.createIframe","sdk.Event","guid","Log","QueryString","Queue","resolveURI","resolveWindow","sdk.RPC","sdk.Runtime","UrlMap","URL","wrapFunction","XDM","XDConfig"],function(global,require,requireDynamic,requireLazy,module,exports) {
+__d("sdk.XD",["sdk.Content","sdk.createIframe","sdk.Event","guid","Log","QueryString","Queue","sdk.RPC","sdk.Runtime","UrlMap","URL","XDM","XDConfig"],function(global,require,requireDynamic,requireLazy,module,exports) {
 
 var Content = require('sdk.Content');
 var createIframe = require('sdk.createIframe');
@@ -4069,13 +3963,10 @@ var guid = require('guid');
 var Log = require('Log');
 var QueryString = require('QueryString');
 var Queue = require('Queue');
-var resolveURI = require('resolveURI');
-var resolveWindow = require('resolveWindow');
 var RPC = require('sdk.RPC');
 var Runtime = require('sdk.Runtime');
 var UrlMap = require('UrlMap');
 var URL = require('URL');
-var wrapFunction = require('wrapFunction');
 var XDConfig = requireDynamic('XDConfig');
 var XDM = require('XDM');
 
@@ -4245,19 +4136,10 @@ RPC.getOutQueue().start(__w(function(/*string*/ message) {__t([message, 'string'
   sendToFacebook('facebook', 'FB_RPC:' + message);
 }, {"signature":"function(string)"}));
 
-function init(/*?string*/ channelUrl, /*?string*/ xdProxyName) {__t([channelUrl, '?string', 'channelUrl'], [xdProxyName, '?string', 'xdProxyName']);
+function init(/*?string*/ xdProxyName) {__t([xdProxyName, '?string', 'xdProxyName']);
   if (inited) {
     return;
   }
-
-  
-  
-  var channelPath = channelUrl
-    ? /\/\/.*?(\/[^#]*)/.exec(channelUrl)[1]
-    : location.pathname + location.search;
-
-  channelPath += (~ES5(channelPath, 'indexOf', true,'?') ? '&' : '?') +
-    'fb_xd_fragment#xd_sig=' + proxySecret + '&';
 
   
   var container = Content.appendHidden(document.createElement('div'));
@@ -4266,7 +4148,6 @@ function init(/*?string*/ channelUrl, /*?string*/ xdProxyName) {__t([channelUrl,
   var transport = XDM.create({
     root: container,
     channel: channel,
-    channelPath: '/' + XDConfig.XdUrl + '#',
     flashUrl: XDConfig.Flash.path,
     whenReady: __w(function(/*object*/ instance) {__t([instance, 'object', 'instance']);
       xdm = instance;
@@ -4274,7 +4155,6 @@ function init(/*?string*/ channelUrl, /*?string*/ xdProxyName) {__t([channelUrl,
       var proxyData = {
         channel: channel, 
         origin: location.protocol + '//' + location.host, 
-        channel_path: channelPath, 
         transport: transport, 
         xd_name: xdProxyName 
       };
@@ -4326,12 +4206,8 @@ function init(/*?string*/ channelUrl, /*?string*/ xdProxyName) {__t([channelUrl,
     onMessage: onMessage
   });
 
-  if (transport === 'fragment') {
-    window.FB_XD_onMessage = wrapFunction(onMessage, 'entry', 'XD:fragment')
-  }
-
   inited = true;
-}__w(init, {"signature":"function(?string,?string)"}); 
+}__w(init, {"signature":"function(?string)"}); 
 
 
 var XD = {
@@ -4395,30 +4271,8 @@ var XD = {
 
 
 
-
-(function() {
-  var match = location.href.match(/[?&]fb_xd_fragment#(.*)$/);
-
-  if (match) {
-    
-    document.documentElement.style.display = 'none';
-
-    var message = QueryString.decode(match[1]);
-    var targetWindow = resolveWindow(message.xd_rel);
-    Log.debug('Passing fragment based message: %s', match[1]);
-    targetWindow.FB_XD_onMessage(message);
-
-    
-    document.open();
-    document.close();
-  }
-})();
-
 Event.subscribe('init:post', __w(function(/*object*/ options) {__t([options, 'object', 'options']);
-  init(
-    options.channelUrl ? resolveURI(options.channelUrl) : null,
-    options.xdProxyName
-  );
+  init(options.xdProxyName);
 }, {"signature":"function(object)"}));
 
 
@@ -4524,6 +4378,10 @@ function xdResponseWrapper(/*function*/ cb, /*?object*/ authResponse,
         expiresIn: parseInt(params.expires_in, 10),
         signedRequest: params.signed_request
       };
+
+      if (params.granted_scopes) {
+        authResponse.grantedScopes = params.granted_scopes;
+      }
 
       if (Runtime.getUseCookie()) {
         var expirationTime = authResponse.expiresIn === 0
@@ -6932,6 +6790,27 @@ var Native = {
 };
 
 module.exports = Native;
+
+});
+__d("resolveURI",[],function(global,require,requireDynamic,requireLazy,module,exports) {
+
+function resolveURI(/*string?*/ uri) /*string*/ {__t([uri, '?string', 'uri']);return __t([function() {
+  if (!uri) { 
+    return window.location.href;
+  }
+
+  uri = uri.replace(/&/g, '&amp;') 
+           .replace(/"/g, '&quot;'); 
+
+  var div = document.createElement('div');
+  // This uses `innerHTML` because anything else doesn't resolve properly or
+  
+  div.innerHTML = '<a href="' + uri + '"></a>';
+
+  return div.firstChild.href; 
+}.apply(this, arguments), 'string']);}__w(resolveURI, {"signature":"function(?string):string"}); 
+
+module.exports = resolveURI;
 
 });
 __d("sdk.UIServer",["sdk.Auth","sdk.Content","copyProperties","sdk.Dialog","sdk.DOM","sdk.Event","flattenObject","sdk.Frictionless","sdk.getContextType","guid","insertIframe","Log","sdk.Native","QueryString","resolveURI","sdk.RPC","sdk.Runtime","UrlMap","UserAgent","sdk.XD","SDKConfig"],function(global,require,requireDynamic,requireLazy,module,exports) {
