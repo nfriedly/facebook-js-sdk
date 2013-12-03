@@ -1,4 +1,4 @@
-/*1385515729,182094915,JIT Construction: v1024226,en_US*/
+/*1386098877,168613667,JIT Construction: v1031083,en_US*/
 
 /**
  * Copyright Facebook Inc.
@@ -4718,7 +4718,95 @@ copyProperties(Auth, {
 module.exports = Auth;
 
 });
-__d("createArrayFrom",[],function(global,require,requireDynamic,requireLazy,module,exports) {
+__d("invariant",[],function(global,require,requireDynamic,requireLazy,module,exports) {
+
+
+
+function invariant(condition) {
+  if (!condition) {
+    var error = new Error('Invariant Violation');
+    error.framesToPop = 1;
+    throw error;
+  }
+}
+
+module.exports = invariant;
+
+if (__DEV__) {
+  var invariantDev = function(condition, format, a, b, c, d, e, f) {
+    if (format === undefined) {
+      throw new Error('invariant requires an error message argument');
+    }
+
+    if (!condition) {
+      var args = [a, b, c, d, e, f];
+      var argIndex = 0;
+      var error = new Error(
+        'Invariant Violation: ' +
+        format.replace(/%s/g, function() { return args[argIndex++]; })
+      );
+      error.framesToPop = 1; // we don't care about invariant's own frame
+      throw error;
+    }
+  };
+
+  module.exports = invariantDev;
+}
+
+});
+__d("toArray",["invariant"],function(global,require,requireDynamic,requireLazy,module,exports) {
+
+var invariant = require('invariant');
+
+
+function toArray(obj) {__t([obj, 'object|function', 'obj']);return __t([function() {
+  var length = obj.length;
+
+  // Some browse builtin objects can report typeof 'function' (e.g. NodeList in
+  
+  invariant(
+    !ES5('Array', 'isArray', false,obj) &&
+    (typeof obj === 'object' || typeof obj === 'function'),
+    'toArray: Array-like object expected'
+  );
+
+  invariant(
+    typeof length === 'number',
+    'toArray: Object needs a length property'
+  );
+
+  invariant(
+    length === 0 ||
+    (length - 1) in obj,
+    'toArray: Object should have keys for indices'
+  );
+
+  // Old IE doesn't give collections access to hasOwnProperty. Assume inputs
+  
+  
+  if (obj.hasOwnProperty) {
+    try {
+      return Array.prototype.slice.call(obj);
+    } catch (e) {
+      
+    }
+  }
+
+  
+  
+  var ret = Array(length);
+  for (var ii = 0; ii < length; ii++) {
+    ret[ii] = obj[ii];
+  }
+  return ret;
+}.apply(this, arguments), 'array']);}__w(toArray, {"signature":"function(object|function):array"}); 
+
+module.exports = toArray;
+
+});
+__d("createArrayFrom",["toArray"],function(global,require,requireDynamic,requireLazy,module,exports) {
+
+var toArray = require('toArray');
 
 
 function hasArrayNature(obj) {return __t([function() {
@@ -4749,14 +4837,11 @@ function hasArrayNature(obj) {return __t([function() {
 function createArrayFrom(obj) {return __t([function() {
   if (!hasArrayNature(obj)) {
     return [obj];
+  } else if (ES5('Array', 'isArray', false,obj)) {
+    return obj.slice();
+  } else {
+    return toArray(obj);
   }
-  if (obj.item) {
-    
-    var l = obj.length, ret = new Array(l);
-    while (l--) { ret[l] = obj[l]; }
-    return ret;
-  }
-  return Array.prototype.slice.call(obj);
 }.apply(this, arguments), 'array']);}__w(createArrayFrom, {"signature":"function():array"}); 
 
 module.exports = createArrayFrom;
@@ -11606,7 +11691,8 @@ var LoginButton = IframePlugin.extend({
       show_login_face: 'bool',
       registration_url: 'url_maybe',
       auto_logout_link: 'bool',
-      one_click: 'bool'
+      one_click: 'bool',
+      show_banner: 'bool'
     };
   }.apply(this, arguments), 'object']);}, {"signature":"function():object"})
 });
