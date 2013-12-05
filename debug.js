@@ -1,4 +1,4 @@
-/*1386098877,168613667,JIT Construction: v1031083,en_US*/
+/*1386203422,182109535,JIT Construction: v1033590,en_US*/
 
 /**
  * Copyright Facebook Inc.
@@ -3628,7 +3628,39 @@ copyProperties(emptyFunction, {
 module.exports = emptyFunction;
 
 });
-__d("Flash",["DOMWrapper","QueryString","UserAgent","copyProperties","guid"],function(global,require,requireDynamic,requireLazy,module,exports) {
+__d("htmlSpecialChars",[],function(global,require,requireDynamic,requireLazy,module,exports) {
+
+
+var r_amp = /&/g;
+var r_lt = /</g;
+var r_gt = />/g;
+var r_quot = /"/g;
+var r_squo = /'/g;
+
+function htmlSpecialChars(text) {
+  if (typeof text == 'undefined' || text === null || !text.toString) {
+    return '';
+  }
+
+  if (text === false) {
+    return '0';
+  } else if (text === true) {
+    return '1';
+  }
+
+  return text
+    .toString()
+    .replace(r_amp, '&amp;')
+    .replace(r_quot, '&quot;')
+    .replace(r_squo, '&#039;')
+    .replace(r_lt, '&lt;')
+    .replace(r_gt, '&gt;');
+}
+
+module.exports = htmlSpecialChars;
+
+});
+__d("Flash",["DOMWrapper","QueryString","UserAgent","copyProperties","guid","htmlSpecialChars"],function(global,require,requireDynamic,requireLazy,module,exports) {
 
 /*globals ActiveXObject */
 
@@ -3638,6 +3670,7 @@ var UserAgent = require('UserAgent');
 
 var copyProperties = require('copyProperties');
 var guid = require('guid');
+var htmlSpecialChars = require('htmlSpecialChars');
 
 var registry = {};
 var unloadHandlerAttached;
@@ -3687,7 +3720,9 @@ var Flash = {
     // Always give SWFs unique id's in order to kill instance caching.
     var id = guid();
     
-    src = encodeURI(src);
+    // This is still safe because there isn't an & sequence that can
+    
+    src = htmlSpecialChars(src).replace(/&amp;/g, '&');
 
     
     params = copyProperties({
@@ -3706,9 +3741,8 @@ var Flash = {
     var pElements = [];
     for (var key in params) {
       if (params.hasOwnProperty(key) && params[key]) {
-        
-        pElements.push('<param name="' + encodeURI(key) + '" value="' +
-          encodeURI(params[key]) + '">');
+        pElements.push('<param name="' + htmlSpecialChars(key) + '" value="' +
+          htmlSpecialChars(params[key]) + '">');
       }
     }
 
