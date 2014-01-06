@@ -1,4 +1,4 @@
-/*1386203422,182109535,JIT Construction: v1033590,en_US*/
+/*1389046463,173044035,JIT Construction: v1068196,en_US*/
 
 /**
  * Copyright Facebook Inc.
@@ -12,7 +12,7 @@ var setTimeout = window.setTimeout, setInterval = window.setInterval;var __DEV__
 function emptyFunction() {};
 var __w, __t;
 /**
- * @generated SignedSource<<6622e619dc29b0e579c05e5c79c10f28>>
+ * @generated SignedSource<<ad899d9345eaf8c9f3bb9e77d702ca97>>
  *
  * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
  * !! This file is a check-in of a static_upstream project!      !!
@@ -109,6 +109,7 @@ var __w, __t;
         if (node === 'object') {
           type = 'object';
         } else {
+          type = constructor.__TCmeta.type;
           while (constructor && constructor.__TCmeta) {
             if (constructor.__TCmeta.type == node) {
               type = node;
@@ -191,12 +192,11 @@ var __w, __t;
     var nullable = node.charAt(0) === '?';
 
     // Short circuit `null` and `undefined` if we allow them.
-    if (nullable) {
-      if (value == null) {
-        return true;
-      } else {
-        node = node.substring(1);
-      }
+    if (value == null) {
+      currentType.push(typeof value === 'undefined' ? 'undefined' : 'null');
+      return nullable;
+    } else if (nullable) {
+      node = node.substring(1);
     }
 
     var type = typeof value;
@@ -205,7 +205,6 @@ var __w, __t;
       case 'boolean':
       case 'number':
       case 'string':
-      case 'undefined':
         // Primitive types will never have subtypes, etc. so we don't need to
         // to do any extra checks.
         currentType.push(type);
@@ -244,12 +243,10 @@ var __w, __t;
     // Strip subtype from end of signature.
     var indexOfFirstAngle = node.indexOf('<');
     var nextNode;
-    if (indexOfFirstAngle !== -1) {
-      // Do not treat function expressions as generics
-      if (node.indexOf('function') === -1) {
-        nextNode = node.substring(indexOfFirstAngle + 1, node.lastIndexOf('>'));
-        node = node.substring(0, indexOfFirstAngle);
-      }
+    // Do not treat function expressions as generics
+    if (indexOfFirstAngle !== -1 && node.indexOf('function') !== 0) {
+      nextNode = node.substring(indexOfFirstAngle + 1, node.lastIndexOf('>'));
+      node = node.substring(0, indexOfFirstAngle);
     }
 
     // Get actual type data.
@@ -337,7 +334,7 @@ var __w, __t;
             new TypeError('Type Mismatch for ' + name +
                           ': expected `' + expected +
                           '`, actual `' + actual +
-                          '` (' + toString.call(value) + ')'),
+                          '` (' + toStringFunc.call(value) + ')'),
             args[ii][2] ? 2 : 1
           );
           paused = true;
@@ -379,15 +376,30 @@ var __w, __t;
 })();
 /*/TC*/
 
-/* b2XdfxbK-F6 */
+/* 01cSQ8hOlAz */
 /**
+ * @generated SignedSource<<2d1ea45168ef6dcdf743e55ecc9e7073>>
+ *
+ * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+ * !! This file is a check-in of a static_upstream project!      !!
+ * !!                                                            !!
+ * !! You should not modify this file directly. Instead:         !!
+ * !! 1) Use `fjs use-upstream` to temporarily replace this with !!
+ * !!    the latest version from upstream.                       !!
+ * !! 2) Make your changes, test them, etc.                      !!
+ * !! 3) Use `fjs push-upstream` to copy your changes back to    !!
+ * !!    static_upstream.                                        !!
+ * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+ *
  * This is a lightweigh implementation of require and __d which is used by the
  * JavaScript SDK.
  * This implementation requires that all modules are defined in order by how
  * they depend on each other, so that it is guaranteed that no module will
  * require a module that has not got all of its dependencies satisfied.
+ * This means that it is generally only usable in cases where all resources are
+ * resolved and packaged together.
  *
- * @provides sdk.commonjs-require
+ * @providesInline commonjs-require-lite
  * @typechecks
  */
 
@@ -432,9 +444,7 @@ var require, __d;
 
   __d = __w(function(/*string*/ id, /*array<string>*/ deps, factory,
       /*number?*/ _special) {__t([id, 'string', 'id'], [deps, 'array<string>', 'deps'], [_special, '?number', '_special']);
-
-    switch(typeof factory) {
-      case  'function':
+    if (typeof factory == 'function') {
         map[id] = {
           factory: factory,
           deps: defaultDeps.concat(deps),
@@ -445,19 +455,13 @@ var require, __d;
         if (_special === 3) {
           require.call(null, id);
         }
-        break;
-
-      case 'object':
-        resolved[id] = factory;
-        break;
-
-      default:
-        throw new TypeError('Wrong type for factory object');
+    } else {
+      resolved[id] = factory;
     }
   }, {"signature":"function(string,array<string>,?number)"});
 })(this);
 
-/* sdmroKwTDva */
+/* 438O8mJz7yd */
 var ES5 = function(){
 __d("ES5ArrayPrototype",[],function(global,require,requireDynamic,requireLazy,module,exports) {/**
  * @providesModule ES5ArrayPrototype
@@ -3660,10 +3664,11 @@ function htmlSpecialChars(text) {
 module.exports = htmlSpecialChars;
 
 });
-__d("Flash",["DOMWrapper","QueryString","UserAgent","copyProperties","guid","htmlSpecialChars"],function(global,require,requireDynamic,requireLazy,module,exports) {
+__d("Flash",["DOMEventListener","DOMWrapper","QueryString","UserAgent","copyProperties","guid","htmlSpecialChars"],function(global,require,requireDynamic,requireLazy,module,exports) {
 
 /*globals ActiveXObject */
 
+var DOMEventListener = require('DOMEventListener');
 var DOMWrapper = require('DOMWrapper');
 var QueryString = require('QueryString');
 var UserAgent = require('UserAgent');
@@ -3705,7 +3710,7 @@ function register(id) {
     
     
     if (UserAgent.ie() >= 9) {
-      window.attachEvent('onunload', unloadRegisteredSWFs);
+      DOMEventListener.add(window, 'unload', unloadRegisteredSWFs);
     }
     unloadHandlerAttached = true;
   }
@@ -4085,7 +4090,9 @@ XDM.register('postmessage', (function() {
           
           
           
-          // If we're in compatibility mode, we also do this because of
+          
+          
+          
           
           if (UserAgent.ie() == 8 || UserAgent.ieCompatibilityMode()) {
             setTimeout(send, 0);
@@ -5872,7 +5879,156 @@ var JSONPRequest = {
 module.exports = JSONPRequest;
 
 });
-__d("ApiClient",["ArgumentError","Assert","copyProperties","CORSRequest","FlashRequest","flattenObject","JSONPRequest","Log","ObservableMixin","sprintf","UrlMap","URL","ApiClientConfig"],function(global,require,requireDynamic,requireLazy,module,exports) {
+__d("keyMirror",["invariant"],function(global,require,requireDynamic,requireLazy,module,exports) {
+
+"use strict";
+
+var invariant = require('invariant');
+
+
+var keyMirror = function(obj) {
+  var ret = {};
+  var key;
+  invariant(
+    obj instanceof Object && !ES5('Array', 'isArray', false,obj),
+    'keyMirror(...): Argument must be an object.'
+  );
+  for (key in obj) {
+    if (!obj.hasOwnProperty(key)) {
+      continue;
+    }
+    ret[key] = key;
+  }
+  return ret;
+};
+
+module.exports = keyMirror;
+
+});
+__d("mergeHelpers",["invariant","keyMirror"],function(global,require,requireDynamic,requireLazy,module,exports) {
+
+"use strict";
+
+var invariant = require('invariant');
+var keyMirror = require('keyMirror');
+
+
+var MAX_MERGE_DEPTH = 36;
+
+
+var isTerminal = function(o) {
+  return typeof o !== 'object' || o === null;
+};
+
+var mergeHelpers = {
+
+  MAX_MERGE_DEPTH: MAX_MERGE_DEPTH,
+
+  isTerminal: isTerminal,
+
+  
+  normalizeMergeArg: function(arg) {
+    return arg === undefined || arg === null ? {} : arg;
+  },
+
+  
+  checkMergeArrayArgs: function(one, two) {
+    invariant(
+      ES5('Array', 'isArray', false,one) && ES5('Array', 'isArray', false,two),
+      'Critical assumptions about the merge functions have been violated. ' +
+      'This is the fault of the merge functions themselves, not necessarily ' +
+      'the callers.'
+    );
+  },
+
+  
+  checkMergeObjectArgs: function(one, two) {
+    mergeHelpers.checkMergeObjectArg(one);
+    mergeHelpers.checkMergeObjectArg(two);
+  },
+
+  
+  checkMergeObjectArg: function(arg) {
+    invariant(
+      !isTerminal(arg) && !ES5('Array', 'isArray', false,arg),
+      'Critical assumptions about the merge functions have been violated. ' +
+      'This is the fault of the merge functions themselves, not necessarily ' +
+      'the callers.'
+    );
+  },
+
+  
+  checkMergeLevel: function(level) {
+    invariant(
+      level < MAX_MERGE_DEPTH,
+      'Maximum deep merge depth exceeded. You may be attempting to merge ' +
+      'circular structures in an unsupported way.'
+    );
+  },
+
+  
+  checkArrayStrategy: function(strategy) {
+    invariant(
+      strategy === undefined || strategy in mergeHelpers.ArrayStrategies,
+      'You must provide an array strategy to deep merge functions to ' +
+      'instruct the deep merge how to resolve merging two arrays.'
+    );
+  },
+
+  
+  ArrayStrategies: keyMirror({
+    Clobber: true,
+    IndexByIndex: true
+  })
+
+};
+
+module.exports = mergeHelpers;
+
+});
+__d("mergeInto",["mergeHelpers"],function(global,require,requireDynamic,requireLazy,module,exports) {
+
+"use strict";
+
+var mergeHelpers = require('mergeHelpers');
+
+var checkMergeObjectArg = mergeHelpers.checkMergeObjectArg;
+
+
+function mergeInto(one, two) {
+  checkMergeObjectArg(one);
+  if (two != null) {
+    checkMergeObjectArg(two);
+    for (var key in two) {
+      if (!two.hasOwnProperty(key)) {
+        continue;
+      }
+      one[key] = two[key];
+    }
+  }
+}
+
+module.exports = mergeInto;
+
+});
+__d("merge",["mergeInto"],function(global,require,requireDynamic,requireLazy,module,exports) {
+
+"use strict";
+
+var mergeInto = require('mergeInto');
+
+
+var merge = function(one, two) {
+  var result = {};
+  mergeInto(result, one);
+  mergeInto(result, two);
+  return result;
+};
+
+module.exports = merge;
+
+});
+__d("ApiClient",["ArgumentError","Assert","copyProperties","CORSRequest","FlashRequest","flattenObject","JSONPRequest","Log","merge","ObservableMixin","sprintf","URL","UrlMap","ApiClientConfig"],function(global,require,requireDynamic,requireLazy,module,exports) {
 
 var ArgumentError  = require('ArgumentError');
 var Assert         = require('Assert');
@@ -5882,10 +6038,11 @@ var FlashRequest   = require('FlashRequest');
 var flattenObject  = require('flattenObject');
 var JSONPRequest   = require('JSONPRequest');
 var Log            = require('Log');
+var merge          = require('merge');
 var ObservableMixin = require('ObservableMixin');
 var sprintf        = require('sprintf');
-var UrlMap         = require('UrlMap');
 var URL            = require('URL');
+var UrlMap         = require('UrlMap');
 
 var ApiClientConfig = require('ApiClientConfig');
 
@@ -5978,7 +6135,7 @@ function requestUsingGraph(/*string*/ path) {__t([path, 'string', 'path']);
   });
 
   var method = (args.string || 'get').toLowerCase();
-  var params = copyProperties(args.object || {}, url.getParsedSearch());
+  var params = merge(args.object || {}, url.getParsedSearch());
   var callback = args['function'];
   if (!callback) {
     Log.warn('No callback passed to the ApiClient');
