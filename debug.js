@@ -1,4 +1,4 @@
-/*1389140206,172042018,JIT Construction: v1072427,en_US*/
+/*1389715552,172016161,JIT Construction: v1080552,en_US*/
 
 /**
  * Copyright Facebook Inc.
@@ -6448,10 +6448,7 @@ var SdkDialog = Type.extend({
     return this;
   }.apply(this, arguments), 'SdkDialog']);}, {"signature":"function(string,?number):SdkDialog"}),
 
-  trackEvents: __w(function(/*?string|object*/ events) /*SdkDialog*/ {__t([events, '?string|object', 'events']);return __t([function() {
-    if (!events) {
-      return this;
-    }
+  trackEvents: __w(function(/*string|object*/ events) /*SdkDialog*/ {__t([events, 'string|object', 'events']);return __t([function() {
     if (typeof events === 'string') {
       events = ES5('JSON', 'parse', false,events);
     }
@@ -6461,7 +6458,7 @@ var SdkDialog = Type.extend({
       }
     }
     return this;
-  }.apply(this, arguments), 'SdkDialog']);}, {"signature":"function(?string|object):SdkDialog"})
+  }.apply(this, arguments), 'SdkDialog']);}, {"signature":"function(string|object):SdkDialog"})
 }, ObservableMixin);
 
 var Dialog = {
@@ -7822,13 +7819,15 @@ var UIServer = {
     delete call.params.access_token;
 
     RPC.remote.showDialog(call.params, __w(function(/*object*/ response) {__t([response, 'object', 'response']);
-      var dialog = Dialog.get(call.id);
-      if (response.result) {
-        
-        dialog.trackEvents(response.result.e2e);
+      var result = response.result;
+      
+      if (result && result.e2e) {
+        var dialog = Dialog.get(call.id);
+        dialog.trackEvents(result.e2e);
+        dialog.trackEvent('close');
+        delete result.e2e;
       }
-      dialog.trackEvent('close');
-      call.cb(response.result);
+      call.cb(result);
     }, {"signature":"function(object)"}));
   }, {"signature":"function(object)"}),
 
@@ -8019,10 +8018,13 @@ var UIServer = {
     
     delete UIServer._loadedNodes[data.frame];
     delete UIServer._defaultCb[data.frame];
-    var dialog = Dialog.get(data.frame);
     
-    dialog.trackEvents(data.e2e);
-    dialog.trackEvent('close');
+    if (data.e2e) {
+      var dialog = Dialog.get(data.frame);
+      dialog.trackEvents(data.e2e);
+      dialog.trackEvent('close');
+      delete data.e2e;
+    }
     cb(data);
   }, {"signature":"function(object,function)"}),
 
@@ -8274,7 +8276,8 @@ function showFlashElement(/*DOMElement*/ elem) {__t([elem, 'DOMElement', 'elem']
 }__w(showFlashElement, {"signature":"function(DOMElement)"}); 
 
 function isHideableFlashElement(/*DOMElement*/ elem) {__t([elem, 'DOMElement', 'elem']);
-  var isHideable = elem.type.toLowerCase() === 'application/x-shockwave-flash'
+  var type = elem.type ? elem.type.toLowerCase() : null;
+  var isHideable = type === 'application/x-shockwave-flash'
         || (elem.classid && elem.classid.toUpperCase() == flashClassID);
 
   if (!isHideable) {
@@ -8299,7 +8302,8 @@ function isHideableFlashElement(/*DOMElement*/ elem) {__t([elem, 'DOMElement', '
 }__w(isHideableFlashElement, {"signature":"function(DOMElement)"}); 
 
 function isHideableUnityElement(/*DOMElement*/ elem) {__t([elem, 'DOMElement', 'elem']);
-  return elem.type.toLowerCase() === 'application/vnd.unity'
+  var type = elem.type ? elem.type.toLowerCase() : null;
+  return type === 'application/vnd.unity'
     || (elem.classid && elem.classid.toUpperCase() == unityClassID);
 }__w(isHideableUnityElement, {"signature":"function(DOMElement)"}); 
 
@@ -11094,12 +11098,14 @@ function escapeHTML(/*string*/ value) /*string*/ {__t([value, 'string', 'value']
 module.exports = escapeHTML;
 
 });
-__d("sdk.Helper",["sdk.ErrorHandling","sdk.Event","safeEval","UrlMap"],function(global,require,requireDynamic,requireLazy,module,exports) {
+__d("sdk.Helper",["sdk.ErrorHandling","sdk.Event","UrlMap","safeEval","sprintf"],function(global,require,requireDynamic,requireLazy,module,exports) {
 
 var ErrorHandling = require('sdk.ErrorHandling');
 var Event = require('sdk.Event');
-var safeEval = require('safeEval');
 var UrlMap = require('UrlMap');
+
+var safeEval = require('safeEval');
+var sprintf = require('sprintf');
 
 var Helper = {
   
@@ -11122,18 +11128,26 @@ var Helper = {
   }.apply(this, arguments), 'string']);}, {"signature":"function(string):string"}),
 
   
-  getProfileLink: __w(function(/*object?*/ userInfo, /*string*/ html,
-      /*string?*/ href) /*string*/ {__t([userInfo, '?object', 'userInfo'], [html, 'string', 'html'], [href, '?string', 'href']);return __t([function() {
-    href = href || (userInfo ? UrlMap.resolve('www') + '/profile.php?id=' +
-                    userInfo.uid : null);
+  getProfileLink: __w(function(
+    /*?object*/ userInfo,
+    /*string*/ html,
+    /*?string*/ href
+  ) /*string*/ {__t([userInfo, '?object', 'userInfo'], [html, 'string', 'html'], [href, '?string', 'href']);return __t([function() {
+    if (!href && userInfo) {
+      href = sprintf(
+        '%s/profile.php?id=%s',
+        UrlMap.resolve('www'),
+        userInfo.uid || userInfo.id
+      );
+    }
     if (href) {
-      html = '<a class="fb_link" href="' + href + '">' + html + '</a>';
+      html = sprintf('<a class="fb_link" href="%s">%s</a>', href, html);
     }
     return html;
   }.apply(this, arguments), 'string']);}, {"signature":"function(?object,string,?string):string"}),
 
   
-  invokeHandler: __w(function(handler, /*object?*/ scope, /*array?*/ args) {__t([scope, '?object', 'scope'], [args, '?array', 'args']);
+  invokeHandler: __w(function(handler, /*?object*/ scope, /*?array*/ args) {__t([scope, '?object', 'scope'], [args, '?array', 'args']);
     if (handler) {
       if (typeof handler === 'string') {
         ErrorHandling.unguard(safeEval)(handler, args);
