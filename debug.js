@@ -1,4 +1,4 @@
-/*1389715552,172016161,JIT Construction: v1080552,en_US*/
+/*1390429224,182602053,JIT Construction: v1091326,en_US*/
 
 /**
  * Copyright Facebook Inc.
@@ -4765,7 +4765,10 @@ __d("invariant",[],function(global,require,requireDynamic,requireLazy,module,exp
 
 function invariant(condition) {
   if (!condition) {
-    var error = new Error('Invariant Violation');
+    var error = new Error(
+      'Minified exception occured, use the non-minified dev environment for ' +
+      'the full error message and additional helpful warnings.'
+    );
     error.framesToPop = 1;
     throw error;
   }
@@ -5935,9 +5938,9 @@ var mergeHelpers = {
   checkMergeArrayArgs: function(one, two) {
     invariant(
       ES5('Array', 'isArray', false,one) && ES5('Array', 'isArray', false,two),
-      'Critical assumptions about the merge functions have been violated. ' +
-      'This is the fault of the merge functions themselves, not necessarily ' +
-      'the callers.'
+      'Tried to merge arrays, instead got %s and %s.',
+      one,
+      two
     );
   },
 
@@ -5951,9 +5954,8 @@ var mergeHelpers = {
   checkMergeObjectArg: function(arg) {
     invariant(
       !isTerminal(arg) && !ES5('Array', 'isArray', false,arg),
-      'Critical assumptions about the merge functions have been violated. ' +
-      'This is the fault of the merge functions themselves, not necessarily ' +
-      'the callers.'
+      'Tried to merge an object, instead got %s.',
+      arg
     );
   },
 
