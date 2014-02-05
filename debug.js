@@ -1,4 +1,4 @@
-/*1390927246,168567103,JIT Construction: v1098718,en_US*/
+/*1391643535,172690227,JIT Construction: v1110830,en_US*/
 
 /**
  * Copyright Facebook Inc.
@@ -1573,7 +1573,7 @@ module.exports = ES5;
 return ES5.apply(null, arguments);
 };
 
-__d("sdk.RuntimeConfig",[],{"locale":"en_US","rtl":false});__d("SDKConfig",[],{"bustCache":true,"tagCountLogRate":0.01,"errorHandling":{"rate":4},"usePluginPipe":true,"features":{"kill_fragment":true,"xfbml_profile_pic_server":true,"error_handling":{"rate":4},"e2e_ping_tracking":{"rate":1.0e-6}},"api":{"mode":"warn","whitelist":["Canvas","Canvas.Prefetcher","Canvas.Prefetcher.addStaticResource","Canvas.Prefetcher.setCollectionMode","Canvas.getPageInfo","Canvas.hideFlashElement","Canvas.scrollTo","Canvas.setAutoGrow","Canvas.setDoneLoading","Canvas.setSize","Canvas.setUrlHandler","Canvas.showFlashElement","Canvas.startTimer","Canvas.stopTimer","Data","Data.process","Data.query","Data.query:wait","Data.waitOn","Data.waitOn:wait","Event","Event.subscribe","Event.unsubscribe","Music.flashCallback","Music.init","Music.send","Payment","Payment.cancelFlow","Payment.continueFlow","Payment.init","Payment.lockForProcessing","Payment.unlockForProcessing","Payment.parse","Payment.setSize","ThirdPartyProvider","ThirdPartyProvider.init","ThirdPartyProvider.sendData","UA","UA.nativeApp","XFBML","XFBML.RecommendationsBar","XFBML.RecommendationsBar.markRead","XFBML.parse","addFriend","api","getAccessToken","getAuthResponse","getLoginStatus","getUserID","init","login","logout","publish","share","ui","ui:subscribe"]},"initSitevars":{"enableMobileComments":1,"iframePermissions":{"read_stream":false,"manage_mailbox":false,"manage_friendlists":false,"read_mailbox":false,"publish_checkins":true,"status_update":true,"photo_upload":true,"video_upload":true,"sms":false,"create_event":true,"rsvp_event":true,"offline_access":true,"email":true,"xmpp_login":false,"create_note":true,"share_item":true,"export_stream":false,"publish_stream":true,"publish_likes":true,"ads_management":false,"contact_email":true,"access_private_data":false,"read_insights":false,"read_requests":false,"read_friendlists":true,"manage_pages":false,"physical_login":false,"manage_groups":false,"read_deals":false}}});__d("UrlMapConfig",[],{"www":"www.facebook.com","m":"m.facebook.com","connect":"connect.facebook.net","business":"business.facebook.com","api_https":"api.facebook.com","api_read_https":"api-read.facebook.com","graph_https":"graph.facebook.com","fbcdn_http":"fbstatic-a.akamaihd.net","fbcdn_https":"fbstatic-a.akamaihd.net","cdn_http":"static.ak.facebook.com","cdn_https":"s-static.ak.facebook.com"});__d("XDConfig",[],{"XdUrl":"connect\/xd_arbiter.php?version=28","Flash":{"path":"https:\/\/connect.facebook.net\/rsrc.php\/v1\/yS\/r\/NoZWYE2GRkt.swf"},"useCdn":true});__d("CssConfig",[],{"rules":".fb_hidden{position:absolute;top:-10000px;z-index:10001}\n.fb_invisible{display:none}\n.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:\"lucida grande\", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}\n.fb_reset > div{overflow:hidden}\n.fb_link img{border:none}\n.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}\n.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px}\n.fb_dialog_content{background:#fff;color:#333}\n.fb_dialog_close_icon{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;_background-image:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yL\/r\/s816eWC-2sl.gif);cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px;top:8px\\9;right:7px\\9}\n.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}\n.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}\n.fb_dialog_close_icon:hover{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent;_background-image:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yL\/r\/s816eWC-2sl.gif)}\n.fb_dialog_close_icon:active{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent;_background-image:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yL\/r\/s816eWC-2sl.gif)}\n.fb_dialog_loader{background-color:#f2f2f2;border:1px solid #606060;font-size:24px;padding:20px}\n.fb_dialog_top_left,\n.fb_dialog_top_right,\n.fb_dialog_bottom_left,\n.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}\n.fb_dialog_top_left{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}\n.fb_dialog_top_right{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}\n.fb_dialog_bottom_left{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}\n.fb_dialog_bottom_right{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}\n.fb_dialog_vert_left,\n.fb_dialog_vert_right,\n.fb_dialog_horiz_top,\n.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}\n.fb_dialog_vert_left,\n.fb_dialog_vert_right{width:10px;height:100\u0025}\n.fb_dialog_vert_left{margin-left:-10px}\n.fb_dialog_vert_right{right:0;margin-right:-10px}\n.fb_dialog_horiz_top,\n.fb_dialog_horiz_bottom{width:100\u0025;height:10px}\n.fb_dialog_horiz_top{margin-top:-10px}\n.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}\n.fb_dialog_iframe{line-height:0}\n.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #3b5998;color:#fff;font-size:14px;font-weight:bold;margin:0}\n.fb_dialog_content .dialog_title > span{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yd\/r\/Cou7n-nqK52.gif)\nno-repeat 5px 50\u0025;float:left;padding:5px 0 7px 26px}\nbody.fb_hidden{-webkit-transform:none;height:100\u0025;margin:0;overflow:visible;position:absolute;top:-10000px;left:0;width:100\u0025}\n.fb_dialog.fb_dialog_mobile.loading{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ya\/r\/3rhSv5V8j3o.gif)\nwhite no-repeat 50\u0025 50\u0025;min-height:100\u0025;min-width:100\u0025;overflow:hidden;position:absolute;top:0;z-index:10001}\n.fb_dialog.fb_dialog_mobile.loading.centered{max-height:590px;min-height:590px;max-width:500px;min-width:500px}\n#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;left:0;top:0;width:100\u0025;min-height:100\u0025;z-index:10000}\n#fb-root #fb_dialog_ipad_overlay.hidden{display:none}\n.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}\n.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0\u0025 0\u0025, 0\u0025 100\u0025, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}\n.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100\u0025\n}\n.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px\n}\n.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px\n}\n.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0\u0025 0\u0025, 0\u0025 100\u0025, from(#4966A6),\ncolor-stop(0.5, #355492), to(#2A4887));border:1px solid #29447e;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset,\nrgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}\n.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}\n.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}\n.fb_dialog_content .dialog_content{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/y9\/r\/jKEcVPZFk-2.gif) no-repeat 50\u0025 50\u0025;border:1px solid #555;border-bottom:0;border-top:0;height:150px}\n.fb_dialog_content .dialog_footer{background:#f2f2f2;border:1px solid #555;border-top-color:#ccc;height:40px}\n#fb_dialog_loader_close{float:left}\n.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}\n.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}\n.fb_iframe_widget{display:inline-block;position:relative}\n.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}\n.fb_iframe_widget iframe{position:absolute}\n.fb_iframe_widget_lift{z-index:1}\n.fb_hide_iframes iframe{position:relative;left:-10000px}\n.fb_iframe_widget_loader{position:relative;display:inline-block}\n.fb_iframe_widget_fluid{display:inline}\n.fb_iframe_widget_fluid span{width:100\u0025}\n.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}\n.fb_iframe_widget_loader .FB_Loader{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/y9\/r\/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50\u0025;z-index:4}\n.fb_connect_bar_container div,\n.fb_connect_bar_container span,\n.fb_connect_bar_container a,\n.fb_connect_bar_container img,\n.fb_connect_bar_container strong{background:none;border-spacing:0;border:0;direction:ltr;font-style:normal;font-variant:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal;vertical-align:baseline}\n.fb_connect_bar_container{position:fixed;left:0 !important;right:0 !important;height:42px !important;padding:0 25px !important;margin:0 !important;vertical-align:middle !important;border-bottom:1px solid #333 !important;background:#3b5998 !important;z-index:99999999 !important;overflow:hidden !important}\n.fb_connect_bar_container_ie6{position:absolute;top:expression(document.compatMode==\"CSS1Compat\"? document.documentElement.scrollTop+\"px\":body.scrollTop+\"px\")}\n.fb_connect_bar{position:relative;margin:auto;height:100\u0025;width:100\u0025;padding:6px 0 0 0 !important;background:none;color:#fff !important;font-family:\"lucida grande\", tahoma, verdana, arial, sans-serif !important;font-size:13px !important;font-style:normal !important;font-variant:normal !important;font-weight:normal !important;letter-spacing:normal !important;line-height:1 !important;text-decoration:none !important;text-indent:0 !important;text-shadow:none !important;text-transform:none !important;white-space:normal !important;word-spacing:normal !important}\n.fb_connect_bar a:hover{color:#fff}\n.fb_connect_bar .fb_profile img{height:30px;width:30px;vertical-align:middle;margin:0 6px 5px 0}\n.fb_connect_bar div a,\n.fb_connect_bar span,\n.fb_connect_bar span a{color:#bac6da;font-size:11px;text-decoration:none}\n.fb_connect_bar .fb_buttons{float:right;margin-top:7px}\n.fb_edge_widget_with_comment{position:relative;*z-index:1000}\n.fb_edge_widget_with_comment span.fb_edge_comment_widget{position:absolute}\n.fb_edge_widget_with_comment span.fb_send_button_form_widget{z-index:1}\n.fb_edge_widget_with_comment span.fb_send_button_form_widget .FB_Loader{left:0;top:1px;margin-top:6px;margin-left:0;background-position:50\u0025 50\u0025;background-color:#fff;height:150px;width:394px;border:1px #666 solid;border-bottom:2px solid #283e6c;z-index:1}\n.fb_edge_widget_with_comment span.fb_send_button_form_widget.dark .FB_Loader{background-color:#000;border-bottom:2px solid #ccc}\n.fb_edge_widget_with_comment span.fb_send_button_form_widget.siderender\n.FB_Loader{margin-top:0}\n.fbpluginrecommendationsbarleft,\n.fbpluginrecommendationsbarright{position:fixed !important;bottom:0;z-index:999}\n.fbpluginrecommendationsbarleft{left:10px}\n.fbpluginrecommendationsbarright{right:10px}","components":["css:fb.css.base","css:fb.css.dialog","css:fb.css.iframewidget","css:fb.css.connectbarwidget","css:fb.css.edgecommentwidget","css:fb.css.sendbuttonformwidget","css:fb.css.plugin.recommendationsbar"]});__d("CanvasPrefetcherConfig",[],{"blacklist":[144959615576466],"sampleRate":500});__d("PluginPipeConfig",[],{"threshold":0,"enabledApps":{"209753825810663":1,"187288694643718":1}});__d("ConnectBarConfig",[],{"imgs":{"buttonUrl":"rsrc.php\/v2\/yY\/r\/h_Y6u1wrZPW.png","missingProfileUrl":"rsrc.php\/v2\/yo\/r\/UlIqmHJn-SK.gif"}});__d("ApiClientConfig",[],{"FlashRequest":{"swfUrl":"https:\/\/connect.facebook.net\/rsrc.php\/v1\/yB\/r\/YV5wijq5fkW.swf"}});
+__d("sdk.RuntimeConfig",[],{"locale":"en_US","rtl":false});__d("SDKConfig",[],{"bustCache":true,"tagCountLogRate":0.01,"errorHandling":{"rate":4},"usePluginPipe":true,"features":{"kill_fragment":true,"xfbml_profile_pic_server":true,"error_handling":{"rate":4},"e2e_ping_tracking":{"rate":1.0e-6}},"api":{"mode":"warn","whitelist":["Canvas","Canvas.Prefetcher","Canvas.Prefetcher.addStaticResource","Canvas.Prefetcher.setCollectionMode","Canvas.getPageInfo","Canvas.hideFlashElement","Canvas.scrollTo","Canvas.setAutoGrow","Canvas.setDoneLoading","Canvas.setSize","Canvas.setUrlHandler","Canvas.showFlashElement","Canvas.startTimer","Canvas.stopTimer","Data","Data.process","Data.query","Data.query:wait","Data.waitOn","Data.waitOn:wait","Event","Event.subscribe","Event.unsubscribe","Music.flashCallback","Music.init","Music.send","Payment","Payment.cancelFlow","Payment.continueFlow","Payment.init","Payment.lockForProcessing","Payment.unlockForProcessing","Payment.parse","Payment.setSize","ThirdPartyProvider","ThirdPartyProvider.init","ThirdPartyProvider.sendData","UA","UA.nativeApp","XFBML","XFBML.RecommendationsBar","XFBML.RecommendationsBar.markRead","XFBML.parse","addFriend","api","getAccessToken","getAuthResponse","getLoginStatus","getUserID","init","login","logout","publish","share","ui","ui:subscribe"]},"initSitevars":{"enableMobileComments":1,"iframePermissions":{"read_stream":false,"manage_mailbox":false,"manage_friendlists":false,"read_mailbox":false,"publish_checkins":true,"status_update":true,"photo_upload":true,"video_upload":true,"sms":false,"create_event":true,"rsvp_event":true,"offline_access":true,"email":true,"xmpp_login":false,"create_note":true,"share_item":true,"export_stream":false,"publish_stream":true,"publish_likes":true,"ads_management":false,"contact_email":true,"access_private_data":false,"read_insights":false,"read_requests":false,"read_friendlists":true,"manage_pages":false,"physical_login":false,"manage_groups":false,"read_deals":false}}});__d("UrlMapConfig",[],{"www":"www.facebook.com","m":"m.facebook.com","connect":"connect.facebook.net","business":"business.facebook.com","api_https":"api.facebook.com","api_read_https":"api-read.facebook.com","graph_https":"graph.facebook.com","fbcdn_http":"fbstatic-a.akamaihd.net","fbcdn_https":"fbstatic-a.akamaihd.net","cdn_http":"static.ak.facebook.com","cdn_https":"s-static.ak.facebook.com"});__d("XDConfig",[],{"XdUrl":"connect\/xd_arbiter.php?version=29","Flash":{"path":"https:\/\/connect.facebook.net\/rsrc.php\/v1\/yS\/r\/NoZWYE2GRkt.swf"},"useCdn":true});__d("CssConfig",[],{"rules":".fb_hidden{position:absolute;top:-10000px;z-index:10001}\n.fb_invisible{display:none}\n.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:\"lucida grande\", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}\n.fb_reset > div{overflow:hidden}\n.fb_link img{border:none}\n.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}\n.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px}\n.fb_dialog_content{background:#fff;color:#333}\n.fb_dialog_close_icon{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;_background-image:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yL\/r\/s816eWC-2sl.gif);cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px;top:8px\\9;right:7px\\9}\n.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}\n.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}\n.fb_dialog_close_icon:hover{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent;_background-image:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yL\/r\/s816eWC-2sl.gif)}\n.fb_dialog_close_icon:active{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent;_background-image:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yL\/r\/s816eWC-2sl.gif)}\n.fb_dialog_loader{background-color:#f2f2f2;border:1px solid #606060;font-size:24px;padding:20px}\n.fb_dialog_top_left,\n.fb_dialog_top_right,\n.fb_dialog_bottom_left,\n.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}\n.fb_dialog_top_left{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}\n.fb_dialog_top_right{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}\n.fb_dialog_bottom_left{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}\n.fb_dialog_bottom_right{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}\n.fb_dialog_vert_left,\n.fb_dialog_vert_right,\n.fb_dialog_horiz_top,\n.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}\n.fb_dialog_vert_left,\n.fb_dialog_vert_right{width:10px;height:100\u0025}\n.fb_dialog_vert_left{margin-left:-10px}\n.fb_dialog_vert_right{right:0;margin-right:-10px}\n.fb_dialog_horiz_top,\n.fb_dialog_horiz_bottom{width:100\u0025;height:10px}\n.fb_dialog_horiz_top{margin-top:-10px}\n.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}\n.fb_dialog_iframe{line-height:0}\n.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #3b5998;color:#fff;font-size:14px;font-weight:bold;margin:0}\n.fb_dialog_content .dialog_title > span{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yd\/r\/Cou7n-nqK52.gif)\nno-repeat 5px 50\u0025;float:left;padding:5px 0 7px 26px}\nbody.fb_hidden{-webkit-transform:none;height:100\u0025;margin:0;overflow:visible;position:absolute;top:-10000px;left:0;width:100\u0025}\n.fb_dialog.fb_dialog_mobile.loading{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ya\/r\/3rhSv5V8j3o.gif)\nwhite no-repeat 50\u0025 50\u0025;min-height:100\u0025;min-width:100\u0025;overflow:hidden;position:absolute;top:0;z-index:10001}\n.fb_dialog.fb_dialog_mobile.loading.centered{max-height:590px;min-height:590px;max-width:500px;min-width:500px}\n#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;left:0;top:0;width:100\u0025;min-height:100\u0025;z-index:10000}\n#fb-root #fb_dialog_ipad_overlay.hidden{display:none}\n.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}\n.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0\u0025 0\u0025, 0\u0025 100\u0025, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}\n.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100\u0025\n}\n.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px\n}\n.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px\n}\n.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0\u0025 0\u0025, 0\u0025 100\u0025, from(#4966A6),\ncolor-stop(0.5, #355492), to(#2A4887));border:1px solid #29447e;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset,\nrgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}\n.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}\n.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}\n.fb_dialog_content .dialog_content{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/y9\/r\/jKEcVPZFk-2.gif) no-repeat 50\u0025 50\u0025;border:1px solid #555;border-bottom:0;border-top:0;height:150px}\n.fb_dialog_content .dialog_footer{background:#f2f2f2;border:1px solid #555;border-top-color:#ccc;height:40px}\n#fb_dialog_loader_close{float:left}\n.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}\n.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}\n.fb_iframe_widget{display:inline-block;position:relative}\n.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}\n.fb_iframe_widget iframe{position:absolute}\n.fb_iframe_widget_lift{z-index:1}\n.fb_hide_iframes iframe{position:relative;left:-10000px}\n.fb_iframe_widget_loader{position:relative;display:inline-block}\n.fb_iframe_widget_fluid{display:inline}\n.fb_iframe_widget_fluid span{width:100\u0025}\n.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}\n.fb_iframe_widget_loader .FB_Loader{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/y9\/r\/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50\u0025;z-index:4}\n.fb_connect_bar_container div,\n.fb_connect_bar_container span,\n.fb_connect_bar_container a,\n.fb_connect_bar_container img,\n.fb_connect_bar_container strong{background:none;border-spacing:0;border:0;direction:ltr;font-style:normal;font-variant:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal;vertical-align:baseline}\n.fb_connect_bar_container{position:fixed;left:0 !important;right:0 !important;height:42px !important;padding:0 25px !important;margin:0 !important;vertical-align:middle !important;border-bottom:1px solid #333 !important;background:#3b5998 !important;z-index:99999999 !important;overflow:hidden !important}\n.fb_connect_bar_container_ie6{position:absolute;top:expression(document.compatMode==\"CSS1Compat\"? document.documentElement.scrollTop+\"px\":body.scrollTop+\"px\")}\n.fb_connect_bar{position:relative;margin:auto;height:100\u0025;width:100\u0025;padding:6px 0 0 0 !important;background:none;color:#fff !important;font-family:\"lucida grande\", tahoma, verdana, arial, sans-serif !important;font-size:13px !important;font-style:normal !important;font-variant:normal !important;font-weight:normal !important;letter-spacing:normal !important;line-height:1 !important;text-decoration:none !important;text-indent:0 !important;text-shadow:none !important;text-transform:none !important;white-space:normal !important;word-spacing:normal !important}\n.fb_connect_bar a:hover{color:#fff}\n.fb_connect_bar .fb_profile img{height:30px;width:30px;vertical-align:middle;margin:0 6px 5px 0}\n.fb_connect_bar div a,\n.fb_connect_bar span,\n.fb_connect_bar span a{color:#bac6da;font-size:11px;text-decoration:none}\n.fb_connect_bar .fb_buttons{float:right;margin-top:7px}\n.fbpluginrecommendationsbarleft,\n.fbpluginrecommendationsbarright{position:fixed !important;bottom:0;z-index:999}\n.fbpluginrecommendationsbarleft{left:10px}\n.fbpluginrecommendationsbarright{right:10px}","components":["css:fb.css.base","css:fb.css.dialog","css:fb.css.iframewidget","css:fb.css.connectbarwidget","css:fb.css.plugin.recommendationsbar"]});__d("CanvasPrefetcherConfig",[],{"blacklist":[144959615576466],"sampleRate":500});__d("PluginPipeConfig",[],{"threshold":0,"enabledApps":{"209753825810663":1,"187288694643718":1}});__d("ConnectBarConfig",[],{"imgs":{"buttonUrl":"rsrc.php\/v2\/yY\/r\/h_Y6u1wrZPW.png","missingProfileUrl":"rsrc.php\/v2\/yo\/r\/UlIqmHJn-SK.gif"}});__d("ApiClientConfig",[],{"FlashRequest":{"swfUrl":"https:\/\/connect.facebook.net\/rsrc.php\/v1\/yB\/r\/YV5wijq5fkW.swf"}});
 __d("QueryString",[],function(global,require,requireDynamic,requireLazy,module,exports) {
 
 
@@ -3402,59 +3402,6 @@ var registry = {};
 module.exports = Queue;
 
 });
-__d("resolveURI",[],function(global,require,requireDynamic,requireLazy,module,exports) {
-
-function resolveURI(/*string?*/ uri) /*string*/ {__t([uri, '?string', 'uri']);return __t([function() {
-  if (!uri) { 
-    return window.location.href;
-  }
-
-  uri = uri.replace(/&/g, '&amp;') 
-           .replace(/"/g, '&quot;'); 
-
-  var div = document.createElement('div');
-  // This uses `innerHTML` because anything else doesn't resolve properly or
-  
-  div.innerHTML = '<a href="' + uri + '"></a>';
-
-  return div.firstChild.href; 
-}.apply(this, arguments), 'string']);}__w(resolveURI, {"signature":"function(?string):string"}); 
-
-module.exports = resolveURI;
-
-});
-__d("resolveWindow",[],function(global,require,requireDynamic,requireLazy,module,exports) {
-
-
-
-function resolveWindow(path) {
-  var node = window; 
-  var parts = path.split('.');
-
-  try {
-    for (var i = 0; i < parts.length; i++) {
-      var part = parts[i];
-      // the regex has the `feature' of fixing some badly quote strings
-      var matches = /^frames\[['"]?([a-zA-Z0-9\-_]+)['"]?\]$/.exec(part);
-
-      if (matches) {
-        node = node.frames[matches[1]];
-      } else if (part === 'opener' || part === 'parent' || part === 'top') {
-        node = node[part];
-      } else {
-        return null;
-      }
-    }
-  } catch (securityOrReferenceException) {
-    return null;
-  }
-
-  return node;
-}
-
-module.exports = resolveWindow;
-
-});
 __d("JSONRPC",["copyProperties","Log"],function(global,require,requireDynamic,requireLazy,module,exports) {
 
 var copyProperties = require('copyProperties');
@@ -3948,59 +3895,6 @@ var XDM = {
 };
 
 
-XDM.register('fragment', (function() {
-  var inited = false;
-  var root;
-  var senderOrigin = location.protocol + '//' + location.host;
-
-  function insertIframe(url) {
-    var iframe = document.createElement('iframe');
-    iframe.src = 'javascript:false';
-    var ev = DOMEventListener.add(iframe, 'load', function() {
-      ev.remove();
-      setTimeout(function() {
-        iframe.parentNode.removeChild(iframe);
-      }, 5000);
-    });
-    root.appendChild(iframe);
-    iframe.src = url;
-  }
-
-  return {
-    isAvailable: function() {
-      return true;
-    },
-    init: function(config) {
-      Log.debug('init fragment');
-      var xdm = {
-        send: function(message, origin, windowRef, channel) {
-          Log.debug('sending to: %s (%s)',
-            origin + config.channelPath, channel);
-          
-          
-          
-          
-          insertIframe(origin + config.channelPath + message +
-            '&xd_rel=parent.parent&relation=parent.parent&xd_origin=' +
-            encodeURIComponent(senderOrigin));
-        }
-      };
-      if (inited) {
-        setTimeout(function() {
-          config.whenReady(xdm);
-        }, 0);
-        return;
-      }
-      root = config.root;
-      inited = true;
-      setTimeout(function() {
-        config.whenReady(xdm);
-      }, 0);
-    }
-  };
-})());
-
-
 XDM.register('flash', (function() {
   var inited = false;
   var swf;
@@ -4133,23 +4027,19 @@ XDM.register('postmessage', (function() {
 module.exports = XDM;
 
 });
-__d("sdk.XD",["sdk.Content","sdk.createIframe","sdk.feature","sdk.Event","guid","Log","QueryString","Queue","resolveURI","resolveWindow","sdk.RPC","sdk.Runtime","UrlMap","URL","wrapFunction","XDM","XDConfig"],function(global,require,requireDynamic,requireLazy,module,exports) {
+__d("sdk.XD",["sdk.Content","sdk.createIframe","sdk.Event","guid","Log","QueryString","Queue","sdk.RPC","sdk.Runtime","UrlMap","URL","XDM","XDConfig"],function(global,require,requireDynamic,requireLazy,module,exports) {
 
 var Content = require('sdk.Content');
 var createIframe = require('sdk.createIframe');
-var feature = require('sdk.feature');
 var Event = require('sdk.Event');
 var guid = require('guid');
 var Log = require('Log');
 var QueryString = require('QueryString');
 var Queue = require('Queue');
-var resolveURI = require('resolveURI');
-var resolveWindow = require('resolveWindow');
 var RPC = require('sdk.RPC');
 var Runtime = require('sdk.Runtime');
 var UrlMap = require('UrlMap');
 var URL = require('URL');
-var wrapFunction = require('wrapFunction');
 var XDConfig = requireDynamic('XDConfig');
 var XDM = require('XDM');
 
@@ -4319,33 +4209,19 @@ RPC.getOutQueue().start(__w(function(/*string*/ message) {__t([message, 'string'
   sendToFacebook('facebook', 'FB_RPC:' + message);
 }, {"signature":"function(string)"}));
 
-function init(/*?string*/ channelUrl, /*?string*/ xdProxyName) {__t([channelUrl, '?string', 'channelUrl'], [xdProxyName, '?string', 'xdProxyName']);
+function init(/*?string*/ xdProxyName) {__t([xdProxyName, '?string', 'xdProxyName']);
   if (inited) {
     return;
   }
 
   
-  
-  var channelPath = channelUrl
-    ? /\/\/.*?(\/[^#]*)/.exec(channelUrl)[1]
-    : location.pathname + location.search;
-
-  channelPath += (~ES5(channelPath, 'indexOf', true,'?') ? '&' : '?') +
-    'fb_xd_fragment#xd_sig=' + proxySecret + '&';
-
-  
   var container = Content.appendHidden(document.createElement('div'));
-
-  var transportBlacklist = feature('kill_fragment')
-    ? ['fragment']
-    : null;
 
   
   var transport = XDM.create({
-    blacklist: transportBlacklist,
+    blacklist: null,
     root: container,
     channel: channel,
-    channelPath: '/' + XDConfig.XdUrl + '#',
     flashUrl: XDConfig.Flash.path,
     whenReady: __w(function(/*object*/ instance) {__t([instance, 'object', 'instance']);
       xdm = instance;
@@ -4353,7 +4229,6 @@ function init(/*?string*/ channelUrl, /*?string*/ xdProxyName) {__t([channelUrl,
       var proxyData = {
         channel: channel, 
         origin: location.protocol + '//' + location.host, 
-        channel_path: channelPath, 
         transport: transport, 
         xd_name: xdProxyName 
       };
@@ -4405,12 +4280,8 @@ function init(/*?string*/ channelUrl, /*?string*/ xdProxyName) {__t([channelUrl,
     onMessage: onMessage
   });
 
-  if (transport === 'fragment') {
-    window.FB_XD_onMessage = wrapFunction(onMessage, 'entry', 'XD:fragment')
-  }
-
   inited = true;
-}__w(init, {"signature":"function(?string,?string)"}); 
+}__w(init, {"signature":"function(?string)"}); 
 
 
 var XD = {
@@ -4475,29 +4346,9 @@ var XD = {
 
 
 
-(function() {
-  var match = location.href.match(/[?&]fb_xd_fragment#(.*)$/);
-
-  if (match) {
-    
-    document.documentElement.style.display = 'none';
-
-    var message = QueryString.decode(match[1]);
-    var targetWindow = resolveWindow(message.xd_rel);
-    Log.debug('Passing fragment based message: %s', match[1]);
-    targetWindow.FB_XD_onMessage(message);
-
-    
-    document.open();
-    document.close();
-  }
-})();
 
 Event.subscribe('init:post', __w(function(/*object*/ options) {__t([options, 'object', 'options']);
-  init(
-    options.channelUrl ? resolveURI(options.channelUrl) : null,
-    options.xdProxyName
-  );
+  init(options.xdProxyName);
 }, {"signature":"function(object)"}));
 
 
@@ -6408,7 +6259,7 @@ module.exports = {
   tx: tx};
 
 });
-__d("sdk.Dialog",["sdk.Canvas.Environment","sdk.Content","sdk.DOM","DOMEventListener","sdk.Intl","ObservableMixin","sdk.Runtime","Type","UserAgent"],function(global,require,requireDynamic,requireLazy,module,exports) {
+__d("sdk.Dialog",["sdk.Canvas.Environment","sdk.Content","sdk.DOM","DOMEventListener","sdk.Intl","ObservableMixin","sdk.Runtime","Type","UserAgent","sdk.feature"],function(global,require,requireDynamic,requireLazy,module,exports) {
 
 var CanvasEnvironment = require('sdk.Canvas.Environment');
 var Content = require('sdk.Content');
@@ -6419,7 +6270,40 @@ var ObservableMixin = require('ObservableMixin');
 var Runtime = require('sdk.Runtime');
 var Type = require('Type');
 var UserAgent = require('UserAgent');
+var feature = require('sdk.feature');
 
+var MAX_HEIGHT_MOBILE = 590;
+var MAX_WIDTH_MOBILE = 500;
+var MAX_HEIGHT_DESKTOP = 240;
+var MAX_WIDTH_DESKTOP = 575;
+
+
+var isTablet = __w(function() /*boolean*/ {return __t([function() {
+  var result;
+  if (feature('dialog_resize_refactor')) {
+      var size = getMobileSize();
+      result = size
+        && (size.height >= MAX_HEIGHT_MOBILE || size.width >= MAX_WIDTH_MOBILE);
+    } else {
+      result = UserAgent.ipad();
+    }
+    isTablet = __w(function() /*boolean*/ {return __t([function() { return result; }.apply(this, arguments), 'boolean']);}, {"signature":"function():boolean"});
+    return result;
+}.apply(this, arguments), 'boolean']);}, {"signature":"function():boolean"});
+
+function getMobileSize() /*?object*/ {return __t([function() {
+  
+  if (feature('dialog_resize_refactor')) {
+    var info = DOM.getViewportInfo();
+    if (info.height && info.width) {
+      return {
+        width: Math.min(info.width, MAX_HEIGHT_MOBILE),
+        height: Math.min(info.height, MAX_WIDTH_MOBILE)
+      };
+    }
+  }
+  return null;
+}.apply(this, arguments), '?object']);}__w(getMobileSize, {"signature":"function():?object"}); 
 
 
 var SdkDialog = Type.extend({
@@ -6545,7 +6429,7 @@ var Dialog = {
         '</table>');
 
     return Dialog.create({
-      classes: 'loading' + (UserAgent.ipad() ? ' centered' : ''),
+      classes: 'loading' + (isTablet() ? ' centered' : ''),
       content: (
         '<div class="dialog_header">' +
           chrome +
@@ -6554,14 +6438,14 @@ var Dialog = {
   }.apply(this, arguments), 'DOMElement']);}, {"signature":"function():DOMElement"}),
 
   _restoreBodyPosition: function() {
-    if (!UserAgent.ipad()) {
+    if (!isTablet()) {
       var body = document.getElementsByTagName('body')[0];
       DOM.removeCss(body, 'fb_hidden');
     }
   },
 
-  _showIPadOverlay: function() {
-    if (!UserAgent.ipad()) {
+  _showTabletOverlay: function() {
+    if (!isTablet()) {
       return;
     }
     if (!Dialog._overlayEl) {
@@ -6572,15 +6456,15 @@ var Dialog = {
     Dialog._overlayEl.className = '';
   },
 
-  _hideIPadOverlay: function() {
-    if (UserAgent.ipad()) {
+  _hideTabletOverlay: function() {
+    if (isTablet()) {
       Dialog._overlayEl.className = 'hidden';
     }
   },
 
   
   showLoader: __w(function(/*?function*/ cb, /*number*/ width) {__t([cb, '?function', 'cb'], [width, 'number', 'width']);
-    Dialog._showIPadOverlay();
+    Dialog._showTabletOverlay();
 
     if (!Dialog._loaderEl) {
       Dialog._loaderEl = Dialog._findRoot(UserAgent.mobile()
@@ -6600,12 +6484,12 @@ var Dialog = {
     loaderClose.onclick = function() {
       Dialog._hideLoader();
       Dialog._restoreBodyPosition();
-      Dialog._hideIPadOverlay();
+      Dialog._hideTabletOverlay();
       cb();
     };
-    var iPadOverlay = document.getElementById('fb_dialog_ipad_overlay');
-    if (iPadOverlay) {
-      iPadOverlay.ontouchstart = loaderClose.onclick;
+    var tabletOverlay = document.getElementById('fb_dialog_ipad_overlay');
+    if (tabletOverlay) {
+      tabletOverlay.ontouchstart = loaderClose.onclick;
     }
 
     Dialog._makeActive(Dialog._loaderEl);
@@ -6715,11 +6599,14 @@ var Dialog = {
 
       
       
-      if (UserAgent.ipad()) {
+      if (isTablet()) {
         paddingHeight += (view.height - height) / 2;
       } else {
         var body = document.getElementsByTagName('body')[0];
         DOM.addCss(body, 'fb_hidden');
+        if (feature('dialog_resize_refactor')) {
+          body.style.width = 'auto';
+        }
         top = 10000;
       }
 
@@ -6734,7 +6621,7 @@ var Dialog = {
   }, {"signature":"function(?object)"}),
 
   _setDialogSizes: function() {
-    if (!UserAgent.mobile() || UserAgent.ipad()) {
+    if (!UserAgent.mobile() || isTablet()) {
       return;
     }
     for (var id in Dialog._dialogs) {
@@ -6749,12 +6636,22 @@ var Dialog = {
   },
   getDefaultSize: __w(function() /*object*/ {return __t([function() {
     if (UserAgent.mobile()) {
+      var size = getMobileSize();
+
+      if (size) {
+        return size;
+      }
+
+      
+      // Keep this old ipad logic: it's pretty straightforward.
       if (UserAgent.ipad()) {
         return {
-          width: 500,
-          height: 590
+          width: MAX_WIDTH_MOBILE,
+          height: MAX_HEIGHT_MOBILE
         };
-      } else if (UserAgent.android()) {
+      }
+
+      if (UserAgent.android()) {
         
         // window.innerWidth/Height doesn't return correct values
         return {
@@ -6783,12 +6680,17 @@ var Dialog = {
         };
       }
     }
-    return {width: 575, height: 240};
+    return {width: MAX_WIDTH_DESKTOP, height: MAX_HEIGHT_DESKTOP};
   }.apply(this, arguments), 'object']);}, {"signature":"function():object"}),
 
 
   
   _handleOrientationChange: function(e) {
+
+    var screenWidth = feature('dialog_resize_refactor', false)
+      ? DOM.getViewportInfo().width
+      : screen.availWidth;
+
     
     
     
@@ -6799,14 +6701,14 @@ var Dialog = {
     
     
     if (UserAgent.android() &&
-        screen.availWidth == Dialog._availScreenWidth) {
+        screenWidth == Dialog._availScreenWidth) {
       setTimeout(Dialog._handleOrientationChange, 50);
       return;
     }
 
-    Dialog._availScreenWidth = screen.availWidth;
+    Dialog._availScreenWidth = screenWidth;
 
-    if (UserAgent.ipad()) {
+    if (isTablet()) {
       Dialog._centerActive();
     } else {
       var width = Dialog.getDefaultSize().width;
@@ -6834,7 +6736,10 @@ var Dialog = {
       ? 'orientationchange'
       : 'resize';
 
-    Dialog._availScreenWidth = screen.availWidth;
+    Dialog._availScreenWidth = feature('dialog_resize_refactor', false)
+      ? DOM.getViewportInfo().width
+      : screen.availWidth;
+
     DOMEventListener.add(window, event_name, Dialog._handleOrientationChange);
   },
 
@@ -6900,7 +6805,6 @@ var Dialog = {
     if (opts.visible) {
       Dialog.show(dialog);
     }
-
     return contentRoot;
   }.apply(this, arguments), 'DOMElement']);}, {"signature":"function(object):DOMElement"}),
 
@@ -6927,7 +6831,7 @@ var Dialog = {
     if (root == Dialog._active) {
       Dialog._lowerActive();
       Dialog._restoreBodyPosition();
-      Dialog._hideIPadOverlay();
+      Dialog._hideTabletOverlay();
       if ('fbCallID' in dialog) {
         Dialog.get(dialog.fbCallID)
           .inform('iframe_hide')
@@ -6949,7 +6853,7 @@ var Dialog = {
         } else {
           Dialog._lowerActive();
           Dialog._restoreBodyPosition();
-          Dialog._hideIPadOverlay();
+          Dialog._hideTabletOverlay();
         }
       } else if (Dialog._active === null && Dialog._stack.length > 0) {
         Dialog.show(Dialog._stack.pop());
@@ -7249,6 +7153,27 @@ var Native = {
 };
 
 module.exports = Native;
+
+});
+__d("resolveURI",[],function(global,require,requireDynamic,requireLazy,module,exports) {
+
+function resolveURI(/*string?*/ uri) /*string*/ {__t([uri, '?string', 'uri']);return __t([function() {
+  if (!uri) { 
+    return window.location.href;
+  }
+
+  uri = uri.replace(/&/g, '&amp;') 
+           .replace(/"/g, '&quot;'); 
+
+  var div = document.createElement('div');
+  // This uses `innerHTML` because anything else doesn't resolve properly or
+  
+  div.innerHTML = '<a href="' + uri + '"></a>';
+
+  return div.firstChild.href; 
+}.apply(this, arguments), 'string']);}__w(resolveURI, {"signature":"function(?string):string"}); 
+
+module.exports = resolveURI;
 
 });
 __d("sdk.UIServer",["sdk.Auth","sdk.Content","copyProperties","sdk.Dialog","sdk.DOM","sdk.Event","flattenObject","sdk.Frictionless","sdk.getContextType","guid","insertIframe","Log","sdk.Native","QueryString","resolveURI","sdk.RPC","sdk.Runtime","UrlMap","UserAgent","sdk.XD","SDKConfig"],function(global,require,requireDynamic,requireLazy,module,exports) {
@@ -8317,12 +8242,18 @@ function hidePluginCallback(/*object*/ params) {__t([params, 'object', 'params']
   candidates = candidates.concat(
     createArrayFrom(window.document.getElementsByTagName('embed'))
   );
+
+  var flashPresent = false;
+  var unityPresent = false;
   ES5(candidates, 'forEach', true,__w(function(/*DOMElement*/ elem) {__t([elem, 'DOMElement', 'elem']);
     var isFlashElement = isHideableFlashElement(elem);
     var isUnityElement = unityNeedsToBeHidden && isHideableUnityElement(elem);
     if (!isFlashElement && !isUnityElement) {
       return;
     }
+
+    flashPresent = flashPresent || isFlashElement;
+    unityPresent = unityPresent || isUnityElement;
 
     var visibilityToggleCb = function() {
       if (params.state === 'opened') {
@@ -8351,11 +8282,15 @@ function hidePluginCallback(/*object*/ params) {__t([params, 'object', 'params']
     } else {
       visibilityToggleCb();
     }
-
-    if (Math.random() <= 1 / 1000) {
-      api(Runtime.getClientID() + '/occludespopups', 'post', {});
-    }
   }, {"signature":"function(DOMElement)"}));
+
+  if (Math.random() <= 1 / 1000) {
+    var opts = {
+      'unity': unityPresent,
+      'flash': flashPresent
+    };
+    api(Runtime.getClientID() + '/occludespopups', 'post', opts);
+  }
 }__w(hidePluginCallback, {"signature":"function(object)"}); 
 
 RPC.local.hidePluginObjects = function() {
@@ -10156,6 +10091,16 @@ var PluginTags = {
     show_faces: 'bool'
   },
 
+  like: {
+    href: 'url',
+    layout: 'string',
+    show_faces: 'bool',
+    share: 'bool',
+    action: 'string',
+    
+    send: 'bool'
+  },
+
   like_box: {
     href: 'string',
     show_faces: 'bool',
@@ -11415,467 +11360,6 @@ var ConnectBar = Element.extend({
 module.exports = ConnectBar;
 
 });
-__d("sdk.XFBML.EdgeCommentWidget",["sdk.XFBML.IframeWidget","sdk.DOM"],function(global,require,requireDynamic,requireLazy,module,exports) {
-
-var IframeWidget = require('sdk.XFBML.IframeWidget');
-var DOM = require('sdk.DOM');
-
-var nextZIndex = 10000;
-
-var Widget = IframeWidget.extend({
-  constructor: __w(function(/*object*/ opts) {__t([opts, 'object', 'opts']);
-    this.parent(opts.commentNode);
-    this._iframeWidth = opts.width + 1;
-    this._iframeHeight = opts.height;
-    this._attr = {
-      master_frame_name: opts.masterFrameName,
-      offsetX: opts.relativeWidthOffset - opts.paddingLeft
-    };
-    this.dom = opts.commentNode;
-    this.dom.style.top = opts.relativeHeightOffset + 'px';
-    this.dom.style.left = opts.relativeWidthOffset + 'px';
-    this.dom.style.zIndex = nextZIndex++;
-    DOM.addCss(this.dom, 'fb_edge_comment_widget');
-  }, {"signature":"function(object)"}),
-
-  
-  
-  
-
-  
-  _visibleAfter: 'load',
-  _showLoader: false,
-
-  
-  getSize: __w(function() /*object*/ {return __t([function() {
-    return {
-      width: this._iframeWidth,
-      height: this._iframeHeight
-    };
-  }.apply(this, arguments), 'object']);}, {"signature":"function():object"}),
-
-  
-  getUrlBits: __w(function() /*object*/ {return __t([function() {
-    return { name: 'comment_widget_shell', params: this._attr };
-  }.apply(this, arguments), 'object']);}, {"signature":"function():object"})
-});
-
-module.exports = Widget;
-
-});
-__d("sdk.XFBML.EdgeWidget",["sdk.Event","sdk.XFBML.IframeWidget","sdk.XFBML.EdgeCommentWidget","sdk.DOM","sdk.Helper","sdk.Runtime"],function(global,require,requireDynamic,requireLazy,module,exports) {
-
-var Event = require('sdk.Event');
-var IframeWidget = require('sdk.XFBML.IframeWidget');
-var EdgeCommentWidget = require('sdk.XFBML.EdgeCommentWidget');
-var DOM = require('sdk.DOM');
-var Helper = require('sdk.Helper');
-var Runtime = require('sdk.Runtime');
-
-var EdgeWidget = IframeWidget.extend({
-  
-  _visibleAfter: 'immediate',
-  _showLoader: false,
-  _rootPadding: null,
-
-  
-  setupAndValidate : __w(function() /*boolean*/ {return __t([function() {
-    DOM.addCss(this.dom, 'fb_edge_widget_with_comment');
-    this._attr = {
-      channel_url             : this.getChannelUrl(),
-      debug                   : this._getBoolAttribute('debug'),
-      href                    : this.getAttribute('href', window.location.href),
-      is_permalink            : this._getBoolAttribute('is-permalink'),
-      node_type               : this.getAttribute('node-type', 'link'),
-      width                   : this._getWidgetWidth(),
-      font                    : this.getAttribute('font'),
-      layout                  : this._getLayout(),
-      colorscheme             : this.getAttribute('color-scheme', 'light'),
-      action                  : this.getAttribute('action'),
-      ref                     : this.getAttribute('ref'),
-      show_faces              : this._shouldShowFaces(),
-      no_resize               : this._getBoolAttribute('no_resize'),
-      send                    : this._getBoolAttribute('send'),
-      share                   : this._getBoolAttribute('share'),
-      url_map                 : this.getAttribute('url_map'),
-      extended_social_context :
-        this._getBoolAttribute('extended_social_context', false)
-    };
-
-    this._rootPadding = {
-      left: parseFloat(DOM.getStyle(this.dom, 'paddingLeft')),
-      top:  parseFloat(DOM.getStyle(this.dom, 'paddingTop'))
-    };
-
-    return true;
-  }.apply(this, arguments), 'boolean']);}, {"signature":"function():boolean"}),
-
-  oneTimeSetup : function() {
-    this.subscribe('xd.sdk_event', ES5(__w(function(/*object*/ message) {__t([message, 'object', 'message']);
-      Event.fire(message.event, ES5('JSON', 'parse', false,message.data), this.dom);
-      if (message.event == 'edge.create') {
-        Helper.invokeHandler(
-          this.getAttribute('on-create'), this, [this._attr.href]);
-      } else if (message.event == 'edge.remove') {
-        Helper.invokeHandler(
-          this.getAttribute('on-remove'), this, [this._attr.href]);
-      }
-    }, {"signature":"function(object)"}), 'bind', true,this));
-    this.subscribe('xd.presentEdgeCommentDialog',
-      ES5(this._handleEdgeCommentDialogPresentation, 'bind', true,this));
-    this.subscribe('xd.dismissEdgeCommentDialog',
-      ES5(this._handleEdgeCommentDialogDismissal, 'bind', true,this));
-    this.subscribe('xd.hideEdgeCommentDialog',
-      ES5(this._handleEdgeCommentDialogHide, 'bind', true,this));
-    this.subscribe('xd.showEdgeCommentDialog',
-      ES5(this._handleEdgeCommentDialogShow, 'bind', true,this));
-  },
-
-  
-  getSize: __w(function() /*object*/ {return __t([function() {
-    return {
-      width: this._getWidgetWidth(),
-      height: this._getWidgetHeight()
-    };
-  }.apply(this, arguments), 'object']);}, {"signature":"function():object"}),
-
-  
-  _getWidgetHeight : __w(function() /*number*/ {return __t([function() {
-    var layout = this._getLayout();
-    var should_show_faces = this._shouldShowFaces() ? 'show' : 'hide';
-    var share = this._getBoolAttribute('send') ||
-          this._getBoolAttribute('share');
-    var box_count = 65 + (share ? 25 : 0);
-    var layoutToDefaultHeightMap =
-      { 'standard' : {'show': 80, 'hide': 35},
-        'box_count' : {'show': box_count, 'hide': box_count},
-        'button_count' : {'show': 21, 'hide': 21},
-        'button' : {'show': 20, 'hide': 20}};
-    return layoutToDefaultHeightMap[layout][should_show_faces];
-  }.apply(this, arguments), 'number']);}, {"signature":"function():number"}),
-
-  
-  _getWidgetWidth : __w(function() /*number*/ {return __t([function() {
-    var layout = this._getLayout();
-    var share = this._getBoolAttribute('send') ||
-          this._getBoolAttribute('share');
-    var should_show_faces = this._shouldShowFaces() ? 'show' : 'hide';
-
-    var recommend = (this.getAttribute('action') === 'recommend');
-    var standard_min_width =
-      (recommend ? 265 : 225) + (share ? 60 : 0);
-    var button_count_default_width =
-      (recommend ? 130 : 90) + (share ? 60 : 0);
-    var box_count_default_width =
-      this.getAttribute('action') === 'recommend' ? 100 : 55;
-    var button_default_width =
-      this.getAttribute('action') === 'recommend' ? 90 : 50;
-    var layoutToDefaultWidthMap =
-      { 'standard': {'show': 450,
-                     'hide': 450},
-        'box_count': {'show': box_count_default_width,
-                      'hide': box_count_default_width},
-        'button_count': {'show': button_count_default_width,
-                         'hide': button_count_default_width},
-        'button': {'show': button_default_width,
-                   'hide': button_default_width}};
-    var defaultWidth = layoutToDefaultWidthMap[layout][should_show_faces];
-    var width = this._getPxAttribute('width', defaultWidth);
-
-    var allowedWidths =
-      { 'standard' : {'min' : standard_min_width, 'max' : 900},
-        'box_count' : {'min' : box_count_default_width,
-                       'max' : 900},
-        'button_count' : {'min' : button_count_default_width,
-                          'max' : 900},
-        'button' : {'min' : button_default_width,
-                    'max' : 900}};
-    if (width < allowedWidths[layout].min) {
-      width = allowedWidths[layout].min;
-    } else if (width > allowedWidths[layout].max) {
-      width = allowedWidths[layout].max;
-    }
-
-    return width;
-  }.apply(this, arguments), 'number']);}, {"signature":"function():number"}),
-
-  
-  _getLayout : __w(function() /*string*/ {return __t([function() {
-    return this._getAttributeFromList(
-      'layout',
-      'standard',
-      ['standard', 'button_count', 'box_count', 'button']);
-  }.apply(this, arguments), 'string']);}, {"signature":"function():string"}),
-
-  
-  _shouldShowFaces : __w(function() /*boolean*/ {return __t([function() {
-    return this._getLayout() === 'standard' &&
-           this._getBoolAttribute('show-faces', true);
-  }.apply(this, arguments), 'boolean']);}, {"signature":"function():boolean"}),
-
-  
-  _handleEdgeCommentDialogPresentation : __w(function(/*object*/ message) {__t([message, 'object', 'message']);
-    if (!this.isValid()) {
-      return;
-    }
-    var comment_node = document.createElement('span');
-    this._commentSlave = this._createEdgeCommentWidget(message, comment_node);
-    this.dom.appendChild(comment_node);
-    this._commentSlave.process();
-    this._commentWidgetNode = comment_node;
-  }, {"signature":"function(object)"}),
-
-  
-  _createEdgeCommentWidget : __w(function(/*object*/ message,
-      /*DOMElement*/ comment_node) /*object*/ {__t([message, 'object', 'message'], [comment_node, 'DOMElement', 'comment_node']);return __t([function() {
-    var opts = {
-      commentNode          : comment_node,
-      externalUrl          : message.externalURL,
-      masterFrameName      : message.masterFrameName,
-      layout               : this._getLayout(),
-      relativeHeightOffset : this._getHeightOffset(message),
-      relativeWidthOffset  : this._getWidthOffset(message),
-      anchorTargetX        : parseFloat(message['query[anchorTargetX]']) +
-                             this._rootPadding.left,
-      anchorTargetY        : parseFloat(message['query[anchorTargetY]']) +
-                             this._rootPadding.top,
-      width                : parseFloat(message.width),
-      height               : parseFloat(message.height),
-      paddingLeft          : this._rootPadding.left
-    };
-    return new EdgeCommentWidget(opts);
-  }.apply(this, arguments), 'object']);}, {"signature":"function(object,DOMElement):object"}),
-
-  
-
-  _getHeightOffset : __w(function(/*object*/ message) /*number*/ {__t([message, 'object', 'message']);return __t([function() {
-    return parseFloat(message['anchorGeometry[y]']) +
-           parseFloat(message['anchorPosition[y]']) +
-           this._rootPadding.top;
-  }.apply(this, arguments), 'number']);}, {"signature":"function(object):number"}),
-
-  
-  _getWidthOffset : __w(function(/*object*/ message) /*number*/ {__t([message, 'object', 'message']);return __t([function() {
-    var off = parseFloat(message['anchorPosition[x]']) + this._rootPadding.left;
-    var plugin_left = DOM.getPosition(this.dom).x;
-    var plugin_width = this.dom.offsetWidth;
-    var screen_width = DOM.getViewportInfo().width;
-    var comment_width = parseFloat(message.width);
-    var flipit = false;
-
-    if (Runtime.getRtl()) {
-        flipit = comment_width < plugin_left;
-    } else if ((plugin_left + comment_width) > screen_width) {
-      flipit = true;
-    }
-
-    if (flipit) {
-      off += parseFloat(message['anchorGeometry[x]']) - comment_width;
-    }
-
-    return off;
-  }.apply(this, arguments), 'number']);}, {"signature":"function(object):number"}),
-
-  
-  _getCommonEdgeCommentWidgetOpts : __w(function(/*object*/ message,
-      /*DOMElement*/ comment_node) /*object*/ {__t([message, 'object', 'message'], [comment_node, 'DOMElement', 'comment_node']);return __t([function() {
-    return {
-      colorscheme             : this._attr.colorscheme,
-      commentNode             : comment_node,
-      controllerID            : message.controllerID,
-      nodeImageURL            : message.nodeImageURL,
-      nodeRef                 : this._attr.ref,
-      nodeTitle               : message.nodeTitle,
-      nodeURL                 : message.nodeURL,
-      nodeSummary             : message.nodeSummary,
-      width                   : parseFloat(message.width),
-      height                  : parseFloat(message.height),
-      relativeHeightOffset    : this._getHeightOffset(message),
-      relativeWidthOffset     : this._getWidthOffset(message),
-      error                   : message.error,
-      siderender              : message.siderender,
-      extended_social_context : message.extended_social_context,
-      anchorTargetX           : parseFloat(message['query[anchorTargetX]']) +
-                                this._rootPadding.left,
-      anchorTargetY           : parseFloat(message['query[anchorTargetY]']) +
-                                this._rootPadding.top
-    };
-  }.apply(this, arguments), 'object']);}, {"signature":"function(object,DOMElement):object"}),
-
-  
-  _handleEdgeCommentDialogDismissal : __w(function(/*object*/ message) {__t([message, 'object', 'message']);
-    if (this._commentWidgetNode) {
-      this.dom.removeChild(this._commentWidgetNode);
-      delete this._commentWidgetNode;
-    }
-  }, {"signature":"function(object)"}),
-
-  
-  _handleEdgeCommentDialogHide: function() {
-    if (this._commentWidgetNode) {
-      this._commentWidgetNode.style.display="none";
-    }
-  },
-
-  
-  _handleEdgeCommentDialogShow: function() {
-    if (this._commentWidgetNode) {
-      this._commentWidgetNode.style.display="block";
-    }
-  }
-
-});
-
-module.exports = EdgeWidget;
-
-});
-__d("sdk.XFBML.SendButtonFormWidget",["sdk.XFBML.EdgeCommentWidget","sdk.DOM","sdk.Event"],function(global,require,requireDynamic,requireLazy,module,exports) {
-
-var EdgeCommentWidget = require('sdk.XFBML.EdgeCommentWidget');
-var DOM = require('sdk.DOM');
-var Event = require('sdk.Event');
-
-var SendButtonFormWidget = EdgeCommentWidget.extend({
-  constructor: __w(function(/*object*/ opts) {__t([opts, 'object', 'opts']);
-    this.parent(opts);
-
-    DOM.addCss(this.dom, 'fb_send_button_form_widget');
-    DOM.addCss(this.dom, opts.colorscheme);
-    DOM.addCss(this.dom,
-      (typeof opts.siderender != 'undefined' && opts.siderender) ?
-        'siderender' : '');
-
-    
-    this._attr.nodeImageURL = opts.nodeImageURL;
-    this._attr.nodeRef      = opts.nodeRef;
-    this._attr.nodeTitle    = opts.nodeTitle;
-    this._attr.nodeURL      = opts.nodeURL;
-    this._attr.nodeSummary  = opts.nodeSummary;
-    this._attr.offsetX      = opts.relativeWidthOffset;
-    this._attr.offsetY      = opts.relativeHeightOffset;
-    this._attr.anchorTargetX = opts.anchorTargetX;
-    this._attr.anchorTargetY = opts.anchorTargetY;
-
-    
-    this._attr.channel      = this.getChannelUrl();
-
-    
-    
-    
-    this._attr.controllerID = opts.controllerID;
-
-    
-    this._attr.colorscheme  = opts.colorscheme;
-
-    
-    this._attr.error        = opts.error;
-
-    
-    this._attr.siderender   = opts.siderender;
-
-    
-    this._attr.extended_social_context = opts.extended_social_context;
-  }, {"signature":"function(object)"}),
-  
-  
-  // there will be a very small delay. So in meantime, let's show a loader
-  _showLoader: true,
-
-  getUrlBits: __w(function() /*object*/ {return __t([function() {
-    return { name: 'send_button_form_shell', params: this._attr };
-  }.apply(this, arguments), 'object']);}, {"signature":"function():object"}),
-
-  oneTimeSetup: function() {
-    this.subscribe('xd.messageSent', ES5(this._onMessageSent, 'bind', true,this));
-  },
-
-  _onMessageSent: function() {
-    Event.fire('message.send', this._attr.nodeURL, this);
-  }
-});
-
-module.exports = SendButtonFormWidget;
-
-});
-__d("sdk.XFBML.Like",["sdk.XFBML.EdgeWidget","sdk.XFBML.SendButtonFormWidget"],function(global,require,requireDynamic,requireLazy,module,exports) {
-
-var EdgeWidget = require('sdk.XFBML.EdgeWidget');
-var SendButtonFormWidget = require('sdk.XFBML.SendButtonFormWidget');
-
-var Like = EdgeWidget.extend({
-
-  
-  getUrlBits: __w(function() /*object*/ {return __t([function() {
-    return { name: 'like', params: this._attr };
-  }.apply(this, arguments), 'object']);}, {"signature":"function():object"}),
-
-  
-  _createEdgeCommentWidget: __w(function(/*object*/ message,
-      /*DOMElement*/ comment_node) /*object*/ {__t([message, 'object', 'message'], [comment_node, 'DOMElement', 'comment_node']);return __t([function() {
-    
-    
-    // send="true"></fb:like>)
-    if ('send' in this._attr &&
-        'widget_type' in message &&
-        message.widget_type == 'send') {
-      var opts = this._getCommonEdgeCommentWidgetOpts(message, comment_node);
-      return new SendButtonFormWidget(opts);
-    } else {
-      return this.parentCall("_createEdgeCommentWidget", message, comment_node);
-    }
-  }.apply(this, arguments), 'object']);}, {"signature":"function(object,DOMElement):object"}),
-
-  
-  getIframeTitle: __w(function() /*string*/ {return __t([function() {
-    return 'Like this content on Facebook.';
-  }.apply(this, arguments), 'string']);}, {"signature":"function():string"})
-});
-
-module.exports = Like;
-
-});
-__d("sdk.XFBML.LiveStream",["sdk.XFBML.IframeWidget"],function(global,require,requireDynamic,requireLazy,module,exports) {
-
-var IframeWidget = require('sdk.XFBML.IframeWidget');
-
-var LiveStream = IframeWidget.extend({
-  _visibleAfter: 'load',
-
-  
-  setupAndValidate: __w(function() /*boolean*/ {return __t([function() {
-    this._attr = {
-      app_id : this.getAttribute('event-app-id'),
-      href : this.getAttribute('href', window.location.href),
-      height : this._getPxAttribute('height', 500),
-      hideFriendsTab : this.getAttribute('hide-friends-tab'),
-      redesigned : this._getBoolAttribute('redesigned-stream'),
-      width : this._getPxAttribute('width', 400),
-      xid : this.getAttribute('xid', 'default'),
-      always_post_to_friends : this._getBoolAttribute('always-post-to-friends'),
-      via_url : this.getAttribute('via_url')
-    };
-
-    return true;
-  }.apply(this, arguments), 'boolean']);}, {"signature":"function():boolean"}),
-
-  
-  getSize: __w(function() /*object*/ {return __t([function() {
-    return { width: this._attr.width, height: this._attr.height };
-  }.apply(this, arguments), 'object']);}, {"signature":"function():object"}),
-
-  
-  getUrlBits: __w(function() /*object*/ {return __t([function() {
-    var name = this._attr.redesigned ? 'live_stream_box' : 'livefeed';
-    if (this._getBoolAttribute('modern', false)) {
-      name = 'live_stream';
-    }
-    return { name: name, params: this._attr };
-  }.apply(this, arguments), 'object']);}, {"signature":"function():object"})
-});
-
-module.exports = LiveStream;
-
-});
 __d("sdk.XFBML.LoginButton",["sdk.Helper","IframePlugin"],function(global,require,requireDynamic,requireLazy,module,exports) {
 
 var Helper = require('sdk.Helper');
@@ -12548,7 +12032,7 @@ var SocialContext = IframeWidget.extend({
 module.exports = SocialContext;
 
 });
-__d("legacy:fb.xfbml",["Assert","sdk.domReady","sdk.Event","FB","IframePlugin","PluginTags","wrapFunction","XFBML","sdk.XFBML.Comments","sdk.XFBML.CommentsCount","sdk.XFBML.ConnectBar","sdk.XFBML.Like","sdk.XFBML.LiveStream","sdk.XFBML.LoginButton","sdk.XFBML.Name","sdk.XFBML.RecommendationsBar","sdk.XFBML.Registration","sdk.XFBML.SocialContext"],function(global,require,requireDynamic,requireLazy) {
+__d("legacy:fb.xfbml",["Assert","sdk.domReady","sdk.Event","FB","IframePlugin","PluginTags","wrapFunction","XFBML","sdk.XFBML.Comments","sdk.XFBML.CommentsCount","sdk.XFBML.ConnectBar","sdk.XFBML.LoginButton","sdk.XFBML.Name","sdk.XFBML.RecommendationsBar","sdk.XFBML.Registration","sdk.XFBML.SocialContext"],function(global,require,requireDynamic,requireLazy) {
 
 var Assert = require('Assert');
 var domReady = require('sdk.domReady');
@@ -12563,8 +12047,6 @@ var customTags = {
   comments: require('sdk.XFBML.Comments'),
   comments_count: require('sdk.XFBML.CommentsCount'),
   connect_bar: require('sdk.XFBML.ConnectBar'),
-  like: require('sdk.XFBML.Like'),
-  live_stream: require('sdk.XFBML.LiveStream'),
   login_button: require('sdk.XFBML.LoginButton'),
   name: require('sdk.XFBML.Name'),
   recommendations_bar: require('sdk.XFBML.RecommendationsBar'),
