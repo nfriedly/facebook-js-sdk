@@ -1,4 +1,4 @@
-/*1403126356,,JIT Construction: v1296186,en_US*/
+/*1403629940,,JIT Construction: v1303799,en_US*/
 
 /**
  * Copyright Facebook Inc.
@@ -399,7 +399,7 @@ var __w, __t;
 /* zO8VfEYxDnr */
 /** Path: html/js/downstream/require/require-lite.js */
 /**
- * @generated SignedSource<<2d1ea45168ef6dcdf743e55ecc9e7073>>
+ * @generated SignedSource<<7baa71c000d6a6e43ef1e4570fbb3fdb>>
  *
  * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
  * !! This file is a check-in of a static_upstream project!      !!
@@ -430,7 +430,7 @@ var require, __d;
   var defaultDeps =
     ['global', 'require', 'requireDynamic', 'requireLazy', 'module', 'exports'];
 
-  require = __w(function(/*string*/ id, /*boolean?*/ soft) {__t([id, 'string', 'id'], [soft, '?boolean', 'soft']);
+  require = __w(function(/*string*/ id, /*?boolean*/ soft) {__t([id, 'string', 'id'], [soft, '?boolean', 'soft']);
     if (resolved.hasOwnProperty(id)) {
       return resolved[id];
     }
@@ -464,7 +464,7 @@ var require, __d;
   }, {"signature":"function(string,?boolean)"});
 
   __d = __w(function(/*string*/ id, /*array<string>*/ deps, factory,
-      /*number?*/ _special) {__t([id, 'string', 'id'], [deps, 'array<string>', 'deps'], [_special, '?number', '_special']);
+      /*?number*/ _special) {__t([id, 'string', 'id'], [deps, 'array<string>', 'deps'], [_special, '?number', '_special']);
     if (typeof factory == 'function') {
         map[id] = {
           factory: factory,
@@ -1685,7 +1685,7 @@ module.exports = ES5;
 /* Kkmck8z5uoR */
 },null);
 var ES5 = require('ES5');
-__d("JSSDKRuntimeConfig",[],{"locale":"en_US","rtl":false,"revision":"1296186"});__d("JSSDKConfig",[],{"bustCache":true,"tagCountLogRate":0.01,"errorHandling":{"rate":4},"usePluginPipe":true,"features":{"kill_fragment":true,"xfbml_profile_pic_server":true,"error_handling":{"rate":4},"e2e_ping_tracking":{"rate":1.0e-6},"xd_timeout":{"rate":4,"value":30000},"use_bundle":true},"api":{"mode":"warn","whitelist":["Canvas","Canvas.Prefetcher","Canvas.Prefetcher.addStaticResource","Canvas.Prefetcher.setCollectionMode","Canvas.getPageInfo","Canvas.hideFlashElement","Canvas.scrollTo","Canvas.setAutoGrow","Canvas.setDoneLoading","Canvas.setSize","Canvas.setUrlHandler","Canvas.showFlashElement","Canvas.startTimer","Canvas.stopTimer","Data","Data.process","Data.query","Data.query:wait","Data.waitOn","Data.waitOn:wait","Event","Event.subscribe","Event.unsubscribe","Music.flashCallback","Music.init","Music.send","Payment","Payment.cancelFlow","Payment.continueFlow","Payment.init","Payment.lockForProcessing","Payment.unlockForProcessing","Payment.parse","Payment.setSize","ThirdPartyProvider","ThirdPartyProvider.init","ThirdPartyProvider.sendData","UA","UA.nativeApp","XFBML","XFBML.RecommendationsBar","XFBML.RecommendationsBar.markRead","XFBML.parse","addFriend","api","getAccessToken","getAuthResponse","getLoginStatus","getUserID","init","login","logout","publish","share","ui","ui:subscribe"]},"initSitevars":{"enableMobileComments":1,"iframePermissions":{"read_stream":false,"manage_mailbox":false,"manage_friendlists":false,"read_mailbox":false,"publish_checkins":true,"status_update":true,"photo_upload":true,"video_upload":true,"sms":false,"create_event":true,"rsvp_event":true,"offline_access":true,"email":true,"xmpp_login":false,"create_note":true,"share_item":true,"export_stream":false,"publish_stream":true,"publish_likes":true,"ads_management":false,"contact_email":true,"access_private_data":false,"read_insights":false,"read_requests":false,"read_friendlists":true,"manage_pages":false,"physical_login":false,"manage_groups":false,"read_deals":false}}});__d("UrlMapConfig",[],{"www":"www.facebook.com","m":"m.facebook.com","connect":"connect.facebook.net","business":"business.facebook.com","api_https":"api.facebook.com","api_read_https":"api-read.facebook.com","graph_https":"graph.facebook.com","fbcdn_http":"fbstatic-a.akamaihd.net","fbcdn_https":"fbstatic-a.akamaihd.net","cdn_http":"static.ak.facebook.com","cdn_https":"s-static.ak.facebook.com"});__d("JSSDKXDConfig",[],{"XdUrl":"\/connect\/xd_arbiter.php?version=41","XdBundleUrl":"\/connect\/xd_arbiter\/UJWHV5KU1ti.js?version=41","Flash":{"path":"https:\/\/connect.facebook.net\/rsrc.php\/v1\/yR\/r\/ks_9ZXiQ0GL.swf"},"useCdn":true});__d("JSSDKCssConfig",[],{"rules":".fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:\"lucida grande\", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}.fb_link img{border:none}\n.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_reset .fb_dialog_legacy{overflow:visible}.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px}.fb_dialog_content{background:#fff;color:#333}.fb_dialog_close_icon{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;_background-image:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yL\/r\/s816eWC-2sl.gif);cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent;_background-image:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yL\/r\/s816eWC-2sl.gif)}.fb_dialog_close_icon:active{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent;_background-image:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yL\/r\/s816eWC-2sl.gif)}.fb_dialog_loader{background-color:#f2f2f2;border:1px solid #606060;font-size:24px;padding:20px}.fb_dialog_top_left,.fb_dialog_top_right,.fb_dialog_bottom_left,.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}.fb_dialog_top_left{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}.fb_dialog_top_right{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}.fb_dialog_bottom_left{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}.fb_dialog_bottom_right{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}.fb_dialog_vert_left,.fb_dialog_vert_right,.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}.fb_dialog_vert_left,.fb_dialog_vert_right{width:10px;height:100\u0025}.fb_dialog_vert_left{margin-left:-10px}.fb_dialog_vert_right{right:0;margin-right:-10px}.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{width:100\u0025;height:10px}.fb_dialog_horiz_top{margin-top:-10px}.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #3b5998;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yd\/r\/Cou7n-nqK52.gif) no-repeat 5px 50\u0025;float:left;padding:5px 0 7px 26px}body.fb_hidden{-webkit-transform:none;height:100\u0025;margin:0;overflow:visible;position:absolute;top:-10000px;left:0;width:100\u0025}.fb_dialog.fb_dialog_mobile.loading{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ya\/r\/3rhSv5V8j3o.gif) white no-repeat 50\u0025 50\u0025;min-height:100\u0025;min-width:100\u0025;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{max-height:590px;min-height:590px;max-width:500px;min-width:500px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;left:0;top:0;width:100\u0025;min-height:100\u0025;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0\u0025 0\u0025, 0\u0025 100\u0025, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100\u0025}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0\u0025 0\u0025, 0\u0025 100\u0025, from(#4966A6), color-stop(.5, #355492), to(#2A4887));border:1px solid #29447e;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset, rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/y9\/r\/jKEcVPZFk-2.gif) no-repeat 50\u0025 50\u0025;border:1px solid #555;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f2f2f2;border:1px solid #555;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}\n.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_lift{z-index:1}.fb_hide_iframes iframe{position:relative;left:-10000px}.fb_iframe_widget_loader{position:relative;display:inline-block}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100\u0025}.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}.fb_iframe_widget_loader .FB_Loader{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/y9\/r\/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50\u0025;z-index:4}\n.fb_connect_bar_container div,.fb_connect_bar_container span,.fb_connect_bar_container a,.fb_connect_bar_container img,.fb_connect_bar_container strong{background:none;border-spacing:0;border:0;direction:ltr;font-style:normal;font-variant:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal;vertical-align:baseline}.fb_connect_bar_container{position:fixed;left:0 !important;right:0 !important;height:42px !important;padding:0 25px !important;margin:0 !important;vertical-align:middle !important;border-bottom:1px solid #333 !important;background:#3b5998 !important;z-index:99999999 !important;overflow:hidden !important}.fb_connect_bar_container_ie6{position:absolute;top:expression(document.compatMode==\"CSS1Compat\"? document.documentElement.scrollTop+\"px\":body.scrollTop+\"px\")}.fb_connect_bar{position:relative;margin:auto;height:100\u0025;width:100\u0025;padding:6px 0 0 0 !important;background:none;color:#fff !important;font-family:\"lucida grande\", tahoma, verdana, arial, sans-serif !important;font-size:13px !important;font-style:normal !important;font-variant:normal !important;font-weight:normal !important;letter-spacing:normal !important;line-height:1 !important;text-decoration:none !important;text-indent:0 !important;text-shadow:none !important;text-transform:none !important;white-space:normal !important;word-spacing:normal !important}.fb_connect_bar a:hover{color:#fff}.fb_connect_bar .fb_profile img{height:30px;width:30px;vertical-align:middle;margin:0 6px 5px 0}.fb_connect_bar div a,.fb_connect_bar span,.fb_connect_bar span a{color:#bac6da;font-size:11px;text-decoration:none}.fb_connect_bar .fb_buttons{float:right;margin-top:7px}\n.fbpluginrecommendationsbarleft,.fbpluginrecommendationsbarright{position:fixed !important;bottom:0;z-index:999}.fbpluginrecommendationsbarleft{left:10px}.fbpluginrecommendationsbarright{right:10px}","components":["css:fb.css.base","css:fb.css.dialog","css:fb.css.iframewidget","css:fb.css.connectbarwidget","css:fb.css.plugin.recommendationsbar"]});__d("ApiClientConfig",[],{"FlashRequest":{"swfUrl":"https:\/\/connect.facebook.net\/rsrc.php\/v1\/yW\/r\/PvklbuW2Ycn.swf"}});__d("JSSDKCanvasPrefetcherConfig",[],{"blacklist":[144959615576466],"sampleRate":500});__d("JSSDKPluginPipeConfig",[],{"threshold":0,"enabledApps":{"209753825810663":1,"187288694643718":1}});__d("JSSDKConnectBarConfig",[],{"imgs":{"buttonUrl":"rsrc.php\/v2\/yY\/r\/h_Y6u1wrZPW.png","missingProfileUrl":"rsrc.php\/v2\/yo\/r\/UlIqmHJn-SK.gif"}});
+__d("JSSDKRuntimeConfig",[],{"locale":"en_US","rtl":false,"revision":"1303799"});__d("JSSDKConfig",[],{"bustCache":true,"tagCountLogRate":0.01,"errorHandling":{"rate":4},"usePluginPipe":true,"features":{"kill_fragment":true,"xfbml_profile_pic_server":true,"error_handling":{"rate":4},"e2e_ping_tracking":{"rate":1.0e-6},"xd_timeout":{"rate":4,"value":30000},"use_bundle":true},"api":{"mode":"warn","whitelist":["Canvas","Canvas.Prefetcher","Canvas.Prefetcher.addStaticResource","Canvas.Prefetcher.setCollectionMode","Canvas.getPageInfo","Canvas.hideFlashElement","Canvas.scrollTo","Canvas.setAutoGrow","Canvas.setDoneLoading","Canvas.setSize","Canvas.setUrlHandler","Canvas.showFlashElement","Canvas.startTimer","Canvas.stopTimer","Data","Data.process","Data.query","Data.query:wait","Data.waitOn","Data.waitOn:wait","Event","Event.subscribe","Event.unsubscribe","Music.flashCallback","Music.init","Music.send","Payment","Payment.cancelFlow","Payment.continueFlow","Payment.init","Payment.lockForProcessing","Payment.unlockForProcessing","Payment.parse","Payment.setSize","ThirdPartyProvider","ThirdPartyProvider.init","ThirdPartyProvider.sendData","UA","UA.nativeApp","XFBML","XFBML.RecommendationsBar","XFBML.RecommendationsBar.markRead","XFBML.parse","addFriend","api","getAccessToken","getAuthResponse","getLoginStatus","getUserID","init","login","logout","publish","share","ui","ui:subscribe"]},"initSitevars":{"enableMobileComments":1,"iframePermissions":{"read_stream":false,"manage_mailbox":false,"manage_friendlists":false,"read_mailbox":false,"publish_checkins":true,"status_update":true,"photo_upload":true,"video_upload":true,"sms":false,"create_event":true,"rsvp_event":true,"offline_access":true,"email":true,"xmpp_login":false,"create_note":true,"share_item":true,"export_stream":false,"publish_stream":true,"publish_likes":true,"ads_management":false,"contact_email":true,"access_private_data":false,"read_insights":false,"read_requests":false,"read_friendlists":true,"manage_pages":false,"physical_login":false,"manage_groups":false,"read_deals":false}}});__d("UrlMapConfig",[],{"www":"www.facebook.com","m":"m.facebook.com","connect":"connect.facebook.net","business":"business.facebook.com","api_https":"api.facebook.com","api_read_https":"api-read.facebook.com","graph_https":"graph.facebook.com","fbcdn_http":"fbstatic-a.akamaihd.net","fbcdn_https":"fbstatic-a.akamaihd.net","cdn_http":"static.ak.facebook.com","cdn_https":"s-static.ak.facebook.com"});__d("JSSDKXDConfig",[],{"XdUrl":"\/connect\/xd_arbiter.php?version=41","XdBundleUrl":"\/connect\/xd_arbiter\/2vB-h6CMIvK.js?version=41","Flash":{"path":"https:\/\/connect.facebook.net\/rsrc.php\/v1\/yR\/r\/ks_9ZXiQ0GL.swf"},"useCdn":true});__d("JSSDKCssConfig",[],{"rules":".fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:\"lucida grande\", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}.fb_link img{border:none}\n.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_reset .fb_dialog_legacy{overflow:visible}.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px}.fb_dialog_content{background:#fff;color:#333}.fb_dialog_close_icon{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v2\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;_background-image:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v2\/yL\/r\/s816eWC-2sl.gif);cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v2\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent;_background-image:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v2\/yL\/r\/s816eWC-2sl.gif)}.fb_dialog_close_icon:active{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v2\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent;_background-image:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v2\/yL\/r\/s816eWC-2sl.gif)}.fb_dialog_loader{background-color:#f2f2f2;border:1px solid #606060;font-size:24px;padding:20px}.fb_dialog_top_left,.fb_dialog_top_right,.fb_dialog_bottom_left,.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}.fb_dialog_top_left{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}.fb_dialog_top_right{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}.fb_dialog_bottom_left{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}.fb_dialog_bottom_right{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}.fb_dialog_vert_left,.fb_dialog_vert_right,.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}.fb_dialog_vert_left,.fb_dialog_vert_right{width:10px;height:100\u0025}.fb_dialog_vert_left{margin-left:-10px}.fb_dialog_vert_right{right:0;margin-right:-10px}.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{width:100\u0025;height:10px}.fb_dialog_horiz_top{margin-top:-10px}.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #3b5998;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v2\/yd\/r\/Cou7n-nqK52.gif) no-repeat 5px 50\u0025;float:left;padding:5px 0 7px 26px}body.fb_hidden{-webkit-transform:none;height:100\u0025;margin:0;overflow:visible;position:absolute;top:-10000px;left:0;width:100\u0025}.fb_dialog.fb_dialog_mobile.loading{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v2\/ya\/r\/3rhSv5V8j3o.gif) white no-repeat 50\u0025 50\u0025;min-height:100\u0025;min-width:100\u0025;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{max-height:590px;min-height:590px;max-width:500px;min-width:500px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;left:0;top:0;width:100\u0025;min-height:100\u0025;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0\u0025 0\u0025, 0\u0025 100\u0025, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100\u0025}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0\u0025 0\u0025, 0\u0025 100\u0025, from(#4966A6), color-stop(.5, #355492), to(#2A4887));border:1px solid #29447e;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset, rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v2\/y9\/r\/jKEcVPZFk-2.gif) no-repeat 50\u0025 50\u0025;border:1px solid #555;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f2f2f2;border:1px solid #555;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}\n.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_lift{z-index:1}.fb_hide_iframes iframe{position:relative;left:-10000px}.fb_iframe_widget_loader{position:relative;display:inline-block}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100\u0025}.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}.fb_iframe_widget_loader .FB_Loader{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v2\/y9\/r\/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50\u0025;z-index:4}\n.fb_connect_bar_container div,.fb_connect_bar_container span,.fb_connect_bar_container a,.fb_connect_bar_container img,.fb_connect_bar_container strong{background:none;border-spacing:0;border:0;direction:ltr;font-style:normal;font-variant:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal;vertical-align:baseline}.fb_connect_bar_container{position:fixed;left:0 !important;right:0 !important;height:42px !important;padding:0 25px !important;margin:0 !important;vertical-align:middle !important;border-bottom:1px solid #333 !important;background:#3b5998 !important;z-index:99999999 !important;overflow:hidden !important}.fb_connect_bar_container_ie6{position:absolute;top:expression(document.compatMode==\"CSS1Compat\"? document.documentElement.scrollTop+\"px\":body.scrollTop+\"px\")}.fb_connect_bar{position:relative;margin:auto;height:100\u0025;width:100\u0025;padding:6px 0 0 0 !important;background:none;color:#fff !important;font-family:\"lucida grande\", tahoma, verdana, arial, sans-serif !important;font-size:13px !important;font-style:normal !important;font-variant:normal !important;font-weight:normal !important;letter-spacing:normal !important;line-height:1 !important;text-decoration:none !important;text-indent:0 !important;text-shadow:none !important;text-transform:none !important;white-space:normal !important;word-spacing:normal !important}.fb_connect_bar a:hover{color:#fff}.fb_connect_bar .fb_profile img{height:30px;width:30px;vertical-align:middle;margin:0 6px 5px 0}.fb_connect_bar div a,.fb_connect_bar span,.fb_connect_bar span a{color:#bac6da;font-size:11px;text-decoration:none}.fb_connect_bar .fb_buttons{float:right;margin-top:7px}\n.fbpluginrecommendationsbarleft,.fbpluginrecommendationsbarright{position:fixed !important;bottom:0;z-index:999}.fbpluginrecommendationsbarleft{left:10px}.fbpluginrecommendationsbarright{right:10px}","components":["css:fb.css.base","css:fb.css.dialog","css:fb.css.iframewidget","css:fb.css.connectbarwidget","css:fb.css.plugin.recommendationsbar"]});__d("ApiClientConfig",[],{"FlashRequest":{"swfUrl":"https:\/\/connect.facebook.net\/rsrc.php\/v1\/yW\/r\/PvklbuW2Ycn.swf"}});__d("JSSDKCanvasPrefetcherConfig",[],{"blacklist":[144959615576466],"sampleRate":500});__d("JSSDKPluginPipeConfig",[],{"threshold":0,"enabledApps":{"209753825810663":1,"187288694643718":1}});__d("JSSDKConnectBarConfig",[],{"imgs":{"buttonUrl":"rsrc.php\/v2\/yY\/r\/h_Y6u1wrZPW.png","missingProfileUrl":"rsrc.php\/v2\/yo\/r\/UlIqmHJn-SK.gif"}});
 
 
 __d("QueryString",[],function(global,require,requireDynamic,requireLazy,module,exports) {
@@ -2279,16 +2279,16 @@ function setRaw(/*string*/ prefix, /*string*/ val, /*number*/ ts) {__t([prefix, 
     (useDomain ? '; domain=' + domain : '');
 }__w(setRaw, {"signature":"function(string,string,number)"}); 
 
-function getRaw(/*string*/ prefix) /*string?*/ {__t([prefix, 'string', 'prefix']);return __t([function() {
+function getRaw(/*string*/ prefix) /*?string*/ {__t([prefix, 'string', 'prefix']);return __t([function() {
   prefix = prefix + Runtime.getClientID();
   var regExp = new RegExp('\\b' + prefix + '=([^;]*)\\b');
   return regExp.test(document.cookie)
     ? RegExp.$1
     : null;
-}.apply(this, arguments), '?string']);}__w(getRaw, {"signature":"function(string):string?"}); 
+}.apply(this, arguments), '?string']);}__w(getRaw, {"signature":"function(string):?string"}); 
 
 var Cookie = {
-  setDomain: __w(function(/*string?*/ val) {__t([val, '?string', 'val']);
+  setDomain: __w(function(/*?string*/ val) {__t([val, '?string', 'val']);
     domain = val;
     
     var meta  = QueryString.encode({
@@ -2299,12 +2299,12 @@ var Cookie = {
     setRaw('fbm_', meta, expiration.getTime());
   }, {"signature":"function(?string)"}),
 
-  getDomain: __w(function() /*string?*/ {return __t([function() {
+  getDomain: __w(function() /*?string*/ {return __t([function() {
     return domain;
-  }.apply(this, arguments), '?string']);}, {"signature":"function():string?"}),
+  }.apply(this, arguments), '?string']);}, {"signature":"function():?string"}),
 
   
-  loadMeta: __w(function() /*object?*/ {return __t([function() {
+  loadMeta: __w(function() /*?object*/ {return __t([function() {
     var cookie = getRaw('fbm_');
     if (cookie) {
       // url encoded session stored as "sub-cookies"
@@ -2315,12 +2315,12 @@ var Cookie = {
       }
       return meta;
     }
-  }.apply(this, arguments), '?object']);}, {"signature":"function():object?"}),
+  }.apply(this, arguments), '?object']);}, {"signature":"function():?object"}),
 
   
-  loadSignedRequest: __w(function() /*string?*/ {return __t([function() {
+  loadSignedRequest: __w(function() /*?string*/ {return __t([function() {
     return getRaw('fbsr_');
-  }.apply(this, arguments), '?string']);}, {"signature":"function():string?"}),
+  }.apply(this, arguments), '?string']);}, {"signature":"function():?string"}),
 
   
   setSignedRequestCookie: __w(function(/*string*/ signedRequest,
@@ -2750,7 +2750,7 @@ var rootElement,
 
 // `obj || default` pattern to account for 'resetting'.
 var DOMWrapper = {
-  setRoot: __w(function(/*DOMElement?*/ root) {__t([root, '?DOMElement', 'root']);
+  setRoot: __w(function(/*?DOMElement*/ root) {__t([root, '?DOMElement', 'root']);
     rootElement = root;
   }, {"signature":"function(?DOMElement)"}),
   getRoot: __w(function() /*DOMElement*/ {return __t([function() {
@@ -2832,7 +2832,7 @@ __d("UrlMap",["UrlMapConfig"],function(global,require,requireDynamic,requireLazy
 
 var UrlMap = {
   
-  resolve: __w(function(/*string*/ key, /*boolean?*/ https) /*string*/ {__t([key, 'string', 'key'], [https, '?boolean', 'https']);return __t([function() {
+  resolve: __w(function(/*string*/ key, /*?boolean*/ https) /*string*/ {__t([key, 'string', 'key'], [https, '?boolean', 'https']);return __t([function() {
     var protocol = typeof https == 'undefined'
       ? location.protocol.replace(':', '')
       : https ? 'https' : 'http';
@@ -3018,7 +3018,7 @@ module.exports = Base64;
 __d("sdk.SignedRequest",["Base64"],function(global,require,requireDynamic,requireLazy,module,exports,Base64) {
    
 
-function parse(/*string?*/ signed_request) /*object?*/ {__t([signed_request, '?string', 'signed_request']);return __t([function() {
+function parse(/*?string*/ signed_request) /*?object*/ {__t([signed_request, '?string', 'signed_request']);return __t([function() {
   if (!signed_request) {
     return null;
   }
@@ -3027,7 +3027,7 @@ function parse(/*string?*/ signed_request) /*object?*/ {__t([signed_request, '?s
   var payload = signed_request.split('.', 2)[1]
     .replace(/\-/g, '+').replace(/\_/g, '/');
   return Base64.decodeObject(payload);
-}.apply(this, arguments), '?object']);}__w(parse, {"signature":"function(?string):object?"}); 
+}.apply(this, arguments), '?object']);}__w(parse, {"signature":"function(?string):?object"}); 
 
 
 var SignedRequest = {
@@ -4425,7 +4425,7 @@ var GlobalCallback = {
     callbackPrefix = prefix;
   }, {"signature":"function(string)"}),
 
-  create: __w(function(/*function*/ fn, /*string?*/ description) /*string*/ {__t([fn, 'function', 'fn'], [description, '?string', 'description']);return __t([function() {
+  create: __w(function(/*function*/ fn, /*?string*/ description) /*string*/ {__t([fn, 'function', 'fn'], [description, '?string', 'description']);return __t([function() {
     if (!rootObject) {
       
       
@@ -5410,7 +5410,7 @@ __d("sdk.DOM",["Assert","createArrayFrom","sdk.domReady","UserAgent"],function(g
 
 var cssRules = {};
 
-function getAttr(/*DOMElement*/ dom, /*string*/ name) /*string?*/ {__t([dom, 'DOMElement', 'dom'], [name, 'string', 'name']);return __t([function() {
+function getAttr(/*DOMElement*/ dom, /*string*/ name) /*?string*/ {__t([dom, 'DOMElement', 'dom'], [name, 'string', 'name']);return __t([function() {
   var attribute = (
     dom.getAttribute(name) ||
     dom.getAttribute(name.replace(/_/g, '-')) ||
@@ -5426,14 +5426,14 @@ function getAttr(/*DOMElement*/ dom, /*string*/ name) /*string?*/ {__t([dom, 'DO
   return attribute
     ? String(attribute)
     : null;
-}.apply(this, arguments), '?string']);}__w(getAttr, {"signature":"function(DOMElement,string):string?"}); 
+}.apply(this, arguments), '?string']);}__w(getAttr, {"signature":"function(DOMElement,string):?string"}); 
 
-function getBoolAttr(/*DOMElement*/ dom, /*string*/ name) /*boolean?*/ {__t([dom, 'DOMElement', 'dom'], [name, 'string', 'name']);return __t([function() {
+function getBoolAttr(/*DOMElement*/ dom, /*string*/ name) /*?boolean*/ {__t([dom, 'DOMElement', 'dom'], [name, 'string', 'name']);return __t([function() {
   var attribute = getAttr(dom, name);
   return attribute
     ? /^(true|1|yes|on)$/.test(attribute)
     : null;
-}.apply(this, arguments), '?boolean']);}__w(getBoolAttr, {"signature":"function(DOMElement,string):boolean?"}); 
+}.apply(this, arguments), '?boolean']);}__w(getBoolAttr, {"signature":"function(DOMElement,string):?boolean"}); 
 
 function getProp(/*DOMElement*/ dom, /*string*/ name) /*string*/ {__t([dom, 'DOMElement', 'dom'], [name, 'string', 'name']);return __t([function() {
   Assert.isTruthy(dom, 'element not specified');
@@ -5691,7 +5691,7 @@ function normalizeError(err) /*object*/ {return __t([function() {
   return info;
 }.apply(this, arguments), 'object']);}__w(normalizeError, {"signature":"function():object"}); 
 
-function guard(/*function*/ func, /*string?*/ entry) /*function*/ {__t([func, 'function', 'func'], [entry, '?string', 'entry']);return __t([function() {
+function guard(/*function*/ func, /*?string*/ entry) /*function*/ {__t([func, 'function', 'func'], [entry, '?string', 'entry']);return __t([function() {
   return function() {
     
     
@@ -6710,7 +6710,7 @@ function getPageInfo(/*function*/ appCallback) {__t([appCallback, 'function', 'a
   }, {"signature":"function(object)"}));
 }__w(getPageInfo, {"signature":"function(function)"}); 
 
-function scrollTo(/*number?*/ x, /*number?*/ y) {__t([x, '?number', 'x'], [y, '?number', 'y']);
+function scrollTo(/*?number*/ x, /*?number*/ y) {__t([x, '?number', 'x'], [y, '?number', 'y']);
   RPC.remote.scrollTo({ x: x || 0, y: y || 0 });
 }__w(scrollTo, {"signature":"function(?number,?number)"}); 
 
@@ -6749,7 +6749,7 @@ var _punctCharClass = (
 );
 
 
-function _endsInPunct(/*string?*/ str) /*boolean*/ {__t([str, '?string', 'str']);return __t([function() {
+function _endsInPunct(/*?string*/ str) /*boolean*/ {__t([str, '?string', 'str']);return __t([function() {
   if (typeof str != 'string') {
     return false;
   }
@@ -6793,7 +6793,7 @@ function _endsInPunct(/*string?*/ str) /*boolean*/ {__t([str, '?string', 'str'])
 }.apply(this, arguments), 'boolean']);}__w(_endsInPunct, {"signature":"function(?string):boolean"}); 
 
 
-function _substituteTokens(/*string*/ str, /*object?*/ args) /*string*/ {__t([str, 'string', 'str'], [args, '?object', 'args']);return __t([function() {
+function _substituteTokens(/*string*/ str, /*?object*/ args) /*string*/ {__t([str, 'string', 'str'], [args, '?object', 'args']);return __t([function() {
   
   
   if (args !== undefined) {
@@ -7510,9 +7510,9 @@ var Frictionless = {
   },
 
   
-  _processRequestResponse: __w(function(/*function*/ cb, /*boolean? */hidden)
+  _processRequestResponse: __w(function(/*function*/ cb, /*?boolean */hidden)
       /*function*/ {__t([cb, 'function', 'cb']);return __t([function() {
-    return __w(function(/*object?*/ params) {__t([params, '?object', 'params']);
+    return __w(function(/*?object*/ params) {__t([params, '?object', 'params']);
       var updated = params && params.updated_frictionless;
       if (Frictionless._useFrictionless && updated) {
         
@@ -7747,7 +7747,7 @@ module.exports = Native;
 
 
 __d("resolveURI",[],function(global,require,requireDynamic,requireLazy,module,exports) {
-function resolveURI(/*string?*/ uri) /*string*/ {__t([uri, '?string', 'uri']);return __t([function() {
+function resolveURI(/*?string*/ uri) /*string*/ {__t([uri, '?string', 'uri']);return __t([function() {
   if (!uri) { 
     return window.location.href;
   }
@@ -8695,23 +8695,23 @@ __d("legacy:fb.auth",["sdk.Auth","sdk.Cookie","copyProperties","sdk.Event","FB",
 
 FB.provide('', {
 
-  getLoginStatus: __w(function() /*object?*/ {return __t([function() {
+  getLoginStatus: __w(function() /*?object*/ {return __t([function() {
     return Auth.getLoginStatus.apply(Auth, arguments);
-  }.apply(this, arguments), '?object']);}, {"signature":"function():object?"}),
+  }.apply(this, arguments), '?object']);}, {"signature":"function():?object"}),
 
-  getAuthResponse: __w(function() /*object?*/ {return __t([function() {
+  getAuthResponse: __w(function() /*?object*/ {return __t([function() {
     return Auth.getAuthResponse();
-  }.apply(this, arguments), '?object']);}, {"signature":"function():object?"}),
+  }.apply(this, arguments), '?object']);}, {"signature":"function():?object"}),
 
-  getAccessToken: __w(function() /*string?*/ {return __t([function() {
+  getAccessToken: __w(function() /*?string*/ {return __t([function() {
     return Runtime.getAccessToken() || null;
-  }.apply(this, arguments), '?string']);}, {"signature":"function():string?"}),
+  }.apply(this, arguments), '?string']);}, {"signature":"function():?string"}),
 
-  getUserID: __w(function() /*string?*/ {return __t([function() {
+  getUserID: __w(function() /*?string*/ {return __t([function() {
     return Runtime.getUserID() || Runtime.getCookieUserID();
-  }.apply(this, arguments), '?string']);}, {"signature":"function():string?"}),
+  }.apply(this, arguments), '?string']);}, {"signature":"function():?string"}),
 
-  login: __w(function(/*function?*/ cb, /*object?*/ opts) {__t([cb, '?function', 'cb'], [opts, '?object', 'opts']);
+  login: __w(function(/*?function*/ cb, /*?object*/ opts) {__t([cb, '?function', 'cb'], [opts, '?object', 'opts']);
     if (opts && opts.perms && !opts.scope) {
       opts.scope = opts.perms;
       delete opts.perms;
@@ -8731,7 +8731,7 @@ FB.provide('', {
   }, {"signature":"function(?function,?object)"}),
 
 
-  logout: __w(function(/*function?*/ cb) {__t([cb, '?function', 'cb']);
+  logout: __w(function(/*?function*/ cb) {__t([cb, '?function', 'cb']);
     ui({ method: 'auth.logout', display: 'hidden' }, cb);
   }, {"signature":"function(?function)"})
 });
@@ -8794,7 +8794,7 @@ function getHeight() {
   return Math.max(bodyScroll, bodyOffset, docScroll, docOffset);
 }
 
-function setSize(/*object?*/ params) /*boolean*/ {__t([params, '?object', 'params']);return __t([function() {
+function setSize(/*?object*/ params) /*boolean*/ {__t([params, '?object', 'params']);return __t([function() {
   
   if (typeof params != 'object') {
     params = {};
@@ -9074,7 +9074,7 @@ __d("sdk.Canvas.Tti",["sdk.RPC","sdk.Runtime"],function(global,require,requireDy
    
    
 
-function passAppTtiMessage(/*function?*/ callback, /*string*/ messageName) {__t([callback, '?function', 'callback'], [messageName, 'string', 'messageName']);
+function passAppTtiMessage(/*?function*/ callback, /*string*/ messageName) {__t([callback, '?function', 'callback'], [messageName, 'string', 'messageName']);
   var params = {
     appId: Runtime.getClientID(),
     time: ES5('Date', 'now', false),
@@ -9096,12 +9096,12 @@ function startTimer() {
   passAppTtiMessage(null, 'StartIframeAppTtiTimer');
 }
 
-function stopTimer(/*function?*/ callback) {__t([callback, '?function', 'callback']);
+function stopTimer(/*?function*/ callback) {__t([callback, '?function', 'callback']);
   passAppTtiMessage(callback, 'StopIframeAppTtiTimer');
 }__w(stopTimer, {"signature":"function(?function)"}); 
 
 
-function setDoneLoading(/*function?*/ callback) {__t([callback, '?function', 'callback']);
+function setDoneLoading(/*?function*/ callback) {__t([callback, '?function', 'callback']);
   passAppTtiMessage(callback, 'RecordIframeAppTti');
 }__w(setDoneLoading, {"signature":"function(?function)"}); 
 
@@ -9443,13 +9443,13 @@ var Waitable = Model.extend({
   }, {"signature":"function(Error)"}),
 
   
-  wait: __w(function(/*function?*/ callback, /*function?*/ errorHandler) {__t([callback, '?function', 'callback'], [errorHandler, '?function', 'errorHandler']);
+  wait: __w(function(/*?function*/ callback, /*?function*/ errorHandler) {__t([callback, '?function', 'callback'], [errorHandler, '?function', 'errorHandler']);
     
     if (errorHandler) {
       this.subscribe('error', errorHandler);
     }
 
-    this.monitor('Value.change', ES5(__w(function() /*boolean?*/ {return __t([function() {
+    this.monitor('Value.change', ES5(__w(function() /*?boolean*/ {return __t([function() {
       var value = this.getValue();
       if (value !== undefined) {
         
@@ -9457,7 +9457,7 @@ var Waitable = Model.extend({
         callback(value);
         return true;
       }
-    }.apply(this, arguments), '?boolean']);}, {"signature":"function():boolean?"}), 'bind', true,this));
+    }.apply(this, arguments), '?boolean']);}, {"signature":"function():?boolean"}), 'bind', true,this));
   }, {"signature":"function(?function,?function)"})
 });
 
@@ -9529,7 +9529,7 @@ var Query = Waitable.extend({
     this.name = 'v_' + counter++;
   },
   
-  hasDependency: __w(function(/*boolean?*/ value) /*boolean*/ {__t([value, '?boolean', 'value']);return __t([function() {
+  hasDependency: __w(function(/*?boolean*/ value) /*boolean*/ {__t([value, '?boolean', 'value']);return __t([function() {
     if (arguments.length) {
       this._hasDependency = value;
     }
@@ -9992,7 +9992,7 @@ var DEF_ERROR_MSG = {
 };
 
 var callbackWrapper = __w(function(/*function*/ callback) /*function*/ {__t([callback, 'function', 'callback']);return __t([function() {
-  return __w(function(/*object?*/ msg) {__t([msg, '?object', 'msg']);
+  return __w(function(/*?object*/ msg) {__t([msg, '?object', 'msg']);
     callback(msg && msg.response
       ? ES5('JSON', 'parse', false,msg.response)
       : DEF_ERROR_MSG
@@ -10016,7 +10016,7 @@ copyProperties(UIServer.Methods, {
   'pay': {
     size      : { width: 555, height: 120 },
     connectDisplay : 'popup',
-    transform : __w(function(/*object*/ call) /*object?*/ {__t([call, 'object', 'call']);return __t([function() {
+    transform : __w(function(/*object*/ call) /*?object*/ {__t([call, 'object', 'call']);return __t([function() {
       call.cb = callbackWrapper(call.cb);
       if (!Runtime.isEnvironment(Runtime.ENVIRONMENTS.CANVAS)) {
         
@@ -10031,7 +10031,7 @@ copyProperties(UIServer.Methods, {
       call.params.uiserver = true;
 
       XD.inform('Pay.Prompt', call.params);
-    }.apply(this, arguments), '?object']);}, {"signature":"function(object):object?"})
+    }.apply(this, arguments), '?object']);}, {"signature":"function(object):?object"})
   }
 });
 
@@ -11721,8 +11721,8 @@ __d("sdk.Anim",["sdk.DOM"],function(global,require,requireDynamic,requireLazy,mo
    
 var Anim = {
   
-  ate: __w(function(/*DOMElement*/ dom, /*object*/ props, /*number?*/ duration,
-      /*function?*/ callback) {__t([dom, 'DOMElement', 'dom'], [props, 'object', 'props'], [duration, '?number', 'duration'], [callback, '?function', 'callback']);
+  ate: __w(function(/*DOMElement*/ dom, /*object*/ props, /*?number*/ duration,
+      /*?function*/ callback) {__t([dom, 'DOMElement', 'dom'], [props, 'object', 'props'], [duration, '?number', 'duration'], [callback, '?function', 'callback']);
     duration = !isNaN(parseFloat(duration)) && duration >= 0
       ? duration
       : 750;
@@ -12162,7 +12162,8 @@ var LoginButton = IframePlugin.extend({
       auto_logout_link: 'bool',
       one_click: 'bool',
       show_banner: 'bool',
-      auth_type: 'string'
+      auth_type: 'string',
+      default_audience: 'string'
     };
   }.apply(this, arguments), 'object']);}, {"signature":"function():object"})
 });
@@ -12466,7 +12467,7 @@ var Bar = IframeWidget.extend({
       }.apply(this, arguments), 'boolean']);}, {"signature":"function():boolean"});
     }.apply(this, arguments), 'function']);}__w(interval_queue, {"signature":"function(number,function):function"}); 
 
-    function validate_trigger(/*string?*/ trigger) {__t([trigger, '?string', 'trigger']);
+    function validate_trigger(/*?string*/ trigger) {__t([trigger, '?string', 'trigger']);
       if (trigger.match(/^\d+(?:\.\d+)?%$/)) {
         
         var percent = Math.min(Math.max(parseInt(trigger, 10), 0), 100);
@@ -12477,11 +12478,11 @@ var Bar = IframeWidget.extend({
       return trigger;
     }__w(validate_trigger, {"signature":"function(?string)"}); 
 
-    function validate_read_time(/*string?*/ read_time) /*number*/ {__t([read_time, '?string', 'read_time']);return __t([function() {
+    function validate_read_time(/*?string*/ read_time) /*number*/ {__t([read_time, '?string', 'read_time']);return __t([function() {
       return Math.max(parseInt(read_time, 10) || 30, 10);
     }.apply(this, arguments), 'number']);}__w(validate_read_time, {"signature":"function(?string):number"}); 
 
-    function validate_side(/*string?*/ side) /*string*/ {__t([side, '?string', 'side']);return __t([function() {
+    function validate_side(/*?string*/ side) /*string*/ {__t([side, '?string', 'side']);return __t([function() {
       if (side == 'left' || side == 'right') { 
         return side;
       }
@@ -12922,4 +12923,4 @@ FB.provide('XFBML.RecommendationsBar', {
 
 
 }).call({}, window.inDapIF ? parent.window : window);
-} catch (e) {new Image().src="https:\/\/www.facebook.com\/" + 'common/scribe_endpoint.php?c=jssdk_error&m='+encodeURIComponent('{"error":"LOAD", "extra": {"name":"'+e.name+'","line":"'+(e.lineNumber||e.line)+'","script":"'+(e.fileName||e.sourceURL||e.script)+'","stack":"'+(e.stackTrace||e.stack)+'","revision":"1296186","message":"'+e.message+'"}}');}
+} catch (e) {new Image().src="https:\/\/www.facebook.com\/" + 'common/scribe_endpoint.php?c=jssdk_error&m='+encodeURIComponent('{"error":"LOAD", "extra": {"name":"'+e.name+'","line":"'+(e.lineNumber||e.line)+'","script":"'+(e.fileName||e.sourceURL||e.script)+'","stack":"'+(e.stackTrace||e.stack)+'","revision":"1303799","message":"'+e.message+'"}}');}
