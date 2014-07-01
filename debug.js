@@ -1,4 +1,4 @@
-/*1403629940,,JIT Construction: v1303799,en_US*/
+/*1404224948,,JIT Construction: v1312803,en_US*/
 
 /**
  * Copyright Facebook Inc.
@@ -753,12 +753,60 @@ module.exports = ES5Array;
 
 /* MSYhZmKvHdG */
 },null);
+/** Path: html/js/ie8DontEnum.js */
+/**
+ * @providesModule ie8DontEnum
+ */
+__d("ie8DontEnum",[],function(global,require,requireDynamic,requireLazy,module,exports) {
+// JScript in IE8 and below mistakenly skips over built-in properties.
+// https://developer.mozilla.org/en/ECMAScript_DontEnum_attribute
+var dontEnumProperties = [
+  'toString',
+  'toLocaleString',
+  'valueOf',
+  'hasOwnProperty',
+  'isPrototypeOf',
+  'prototypeIsEnumerable',
+  'constructor'
+];
+
+var hasOwnProperty = ({}).hasOwnProperty;
+
+/**
+ * This function is NOP by default, and only in IE8
+ * does actual fixing of {DontEnum} props.
+ */
+var ie8DontEnum = function() {};
+
+if (({toString: true}).propertyIsEnumerable('toString')) {
+  ie8DontEnum = function(object, onProp) {
+    for (var i = 0; i < dontEnumProperties.length; i++) {
+      var property = dontEnumProperties[i];
+      if (hasOwnProperty.call(object, property)) {
+        onProp(property);
+      }
+    }
+  };
+}
+
+module.exports = ie8DontEnum;
+
+/* GU28Zd-Jzdb */
+},null);
 /** Path: html/js/sdk/ES5Object.js */
 /**
  * @providesModule ES5Object
  */
-__d("ES5Object",[],function(global,require,requireDynamic,requireLazy,module,exports) {
+__d("ES5Object",["ie8DontEnum"],function(global,require,requireDynamic,requireLazy,module,exports,ie8DontEnum) {
+   
+var hasOwnProperty = ({}).hasOwnProperty;
+
 var ES5Object = {};
+
+// Temporary constructor used in ES5Object.create
+// to set needed prototype.
+function F() {}
+
 /**
  * Creates a new object with the specified prototype object.
  *
@@ -775,7 +823,6 @@ ES5Object.create = function(proto) {
   if (type != 'object' && type != 'function') {
     throw new TypeError('Object prototype may only be a Object or null');
   }
-  var F = new Function();
   F.prototype = proto;
   return new F();
 };
@@ -793,38 +840,20 @@ ES5Object.keys = function(object) {
 
   var keys = [];
   for (var key in object) {
-    if (Object.prototype.hasOwnProperty.call(object, key)) {
+    if (hasOwnProperty.call(object, key)) {
       keys.push(key);
     }
   }
 
-  // JScript in IE8 and below mistakenly skips over built-in properties.
-  // https://developer.mozilla.org/en/ECMAScript_DontEnum_attribute
-  var hasDontEnumBug = !({toString: true}).propertyIsEnumerable('toString');
-  var dontEnumProperties = [
-    'toString',
-    'toLocaleString',
-    'valueOf',
-    'hasOwnProperty',
-    'isPrototypeOf',
-    'prototypeIsEnumerable',
-    'constructor'
-  ];
-  if (hasDontEnumBug) {
-    for (var ii = 0; ii < dontEnumProperties.length; ii++) {
-      var property = dontEnumProperties[ii];
-      if (Object.prototype.hasOwnProperty.call(object, property)) {
-        keys.push(property);
-      }
-    }
-  }
+  // Fix {DontEnum} IE8 bug.
+  ie8DontEnum(object, function(prop)  {return keys.push(prop);});
 
   return keys;
 };
 
 module.exports = ES5Object;
 
-/* yHiOk9LP9ld */
+/* DFdG4QOyOcq */
 },null);
 /** Path: html/js/sdk/ES5Date.js */
 /**
@@ -1599,14 +1628,62 @@ module.exports = ES5Date;
 
 /* 2KL294koxM_ */
 },null);
-/** Path: html/js/sdk/ES5.js */
+/** Path: html/js/sdk/ES6Object.js */
 /**
- * @providesModule ES5
+ * @providesModule ES6Object
+ */
+__d("ES6Object",["ie8DontEnum"],function(global,require,requireDynamic,requireLazy,module,exports,ie8DontEnum) {
+   
+var hasOwnProperty = ({}).hasOwnProperty;
+
+var ES6Object = {
+  /**
+   * Merges several objects in one, returns the agumented target.
+   *
+   * http://people.mozilla.org/~jorendorff/es6-draft.html#sec-object.assign
+   */
+  assign:function(target ) {var sources=Array.prototype.slice.call(arguments,1);
+    if (target == null) {
+      throw new TypeError('Object.assign target cannot be null or undefined');
+    }
+
+    target = Object(target);
+
+    for (var i = 0; i < sources.length; i++) {
+      var source = sources[i];
+
+      if (source == null) {
+        throw new TypeError('Object.assign source cannot be null or undefined');
+      }
+
+      source = Object(source);
+
+      for (var prop in source) {
+        if (hasOwnProperty.call(source, prop)) {
+          target[prop] = source[prop];
+        }
+      }
+
+      // Fix {DontEnum} IE8 bug.
+      ie8DontEnum(source, function(prop)  {return target[prop] = source[prop];});
+    }
+
+    return target;
+  }
+};
+
+module.exports = ES6Object;
+
+/* 76DsDGXX9vb */
+},null);
+/** Path: html/js/sdk/ES.js */
+/**
+ * @providesModule ES
  *
- * scripts/jssdk/default.spatch converts ES5 code into using this module in
+ * scripts/jssdk/default.spatch converts ES5/ES6 code into using this module in
  * ES3 style.
  */
-__d("ES5",["ES5ArrayPrototype","ES5FunctionPrototype","ES5StringPrototype","ES5Array","ES5Object","ES5Date","JSON3"],function(global,require,requireDynamic,requireLazy,module,exports,ES5ArrayPrototype,ES5FunctionPrototype,ES5StringPrototype,ES5Array,ES5Object,ES5Date,JSON3) {
+__d("ES",["ES5ArrayPrototype","ES5FunctionPrototype","ES5StringPrototype","ES5Array","ES5Object","ES5Date","JSON3","ES6Object"],function(global,require,requireDynamic,requireLazy,module,exports,ES5ArrayPrototype,ES5FunctionPrototype,ES5StringPrototype,ES5Array,ES5Object,ES5Date,JSON3,ES6Object) {
    
    
    
@@ -1614,9 +1691,9 @@ __d("ES5",["ES5ArrayPrototype","ES5FunctionPrototype","ES5StringPrototype","ES5A
    
    
    
+   
 
-var slice = Array.prototype.slice;
-var toString = Object.prototype.toString;
+var toString = ({}).toString;
 
 var methodCache = {
   // Always use the polyfill for JSON to work around Prototype 1.6.x issues.
@@ -1625,47 +1702,55 @@ var methodCache = {
   'JSON.parse': JSON3.parse
 };
 
-var polyfills = {
-  'array'   : ES5ArrayPrototype,
-  'function': ES5FunctionPrototype,
-  'string'  : ES5StringPrototype,
-  'Object'  : ES5Object,
-  'Array'   : ES5Array,
-  'Date'    : ES5Date
+var es5Polyfills = {
+  'Array.prototype': ES5ArrayPrototype,
+  'Function.prototype': ES5FunctionPrototype,
+  'String.prototype': ES5StringPrototype,
+  'Object': ES5Object,
+  'Array': ES5Array,
+  'Date': ES5Date
 };
 
-// Iterate over the polyfills, and add either a valid native implementation or
-// a polyfill to the methodCache
-for (var pName in polyfills) {
-  if (!polyfills.hasOwnProperty(pName)) { continue; }
-  var polyfillObject =  polyfills[pName];
+var es6Polyfills = {
+  'Object': ES6Object
+};
 
-  // Resolve which native object holds the function we are looking for
-  var nativeObject = pName === pName.toLowerCase()
-    ? window[pName.replace(/^\w/, function(m) { return m.toUpperCase(); })]
-        .prototype
-    : window[pName];
+function setupMethodsCache(polyfills) {
+  // Iterate over the polyfills, and add either a valid native implementation or
+  // a polyfill to the methodCache
+  for (var pName in polyfills) {
+    if (!polyfills.hasOwnProperty(pName)) { continue; }
+    var polyfillObject =  polyfills[pName];
 
-  // Iterate over the shimmed methods, testing the native implementation
-  for (var fName in polyfillObject) {
-    if (!polyfillObject.hasOwnProperty(fName)) { continue; }
+    // Resolve which native object holds the function we are looking for
+    var accessor = pName.split('.');
+    var nativeObject = accessor.length == 2
+      ? window[accessor[0]][accessor[1]]
+      : window[pName];
 
-    var nativeFunction = nativeObject[fName];
-    // If the native function exist, and tests as a native function, then
-    // we save it for later
-    methodCache[pName + '.' + fName] =
-      nativeFunction && /\{\s+\[native code\]\s\}/.test(nativeFunction)
-        ? nativeFunction
-        : polyfillObject[fName];
+    // Iterate over the shimmed methods, testing the native implementation
+    for (var fName in polyfillObject) {
+      if (!polyfillObject.hasOwnProperty(fName)) { continue; }
+
+      var nativeFunction = nativeObject[fName];
+      // If the native function exist, and tests as a native function, then
+      // we save it for later
+      methodCache[pName + '.' + fName] =
+        nativeFunction && /\{\s+\[native code\]\s\}/.test(nativeFunction)
+          ? nativeFunction
+          : polyfillObject[fName];
+    }
   }
 }
 
-function ES5(lhs, rhs, proto/*, args*/) {
-  var args = slice.call(arguments, 3);
+// Setup ES5, and ES6 polyfills
+setupMethodsCache(es5Polyfills);
+setupMethodsCache(es6Polyfills);
 
+function ES(lhs, rhs, proto ) {var args=Array.prototype.slice.call(arguments,3);
   // Normalize the type information
   var type = proto
-    ? /\s(.*)\]/.exec(toString.call(lhs).toLowerCase())[1]
+    ? toString.call(lhs).slice(8, -1) + '.prototype'
     : lhs;
 
   // Locate the method to use
@@ -1675,17 +1760,18 @@ function ES5(lhs, rhs, proto/*, args*/) {
   if (typeof method === 'function') {
     return method.apply(lhs, args);
   }
+
   if (__DEV__) {
     throw new Error('Polyfill ' + type + ' does not have a method ' + rhs);
   }
 }
 
-module.exports = ES5;
+module.exports = ES;
 
-/* Kkmck8z5uoR */
+/* HddqKc1MRYB */
 },null);
-var ES5 = require('ES5');
-__d("JSSDKRuntimeConfig",[],{"locale":"en_US","rtl":false,"revision":"1303799"});__d("JSSDKConfig",[],{"bustCache":true,"tagCountLogRate":0.01,"errorHandling":{"rate":4},"usePluginPipe":true,"features":{"kill_fragment":true,"xfbml_profile_pic_server":true,"error_handling":{"rate":4},"e2e_ping_tracking":{"rate":1.0e-6},"xd_timeout":{"rate":4,"value":30000},"use_bundle":true},"api":{"mode":"warn","whitelist":["Canvas","Canvas.Prefetcher","Canvas.Prefetcher.addStaticResource","Canvas.Prefetcher.setCollectionMode","Canvas.getPageInfo","Canvas.hideFlashElement","Canvas.scrollTo","Canvas.setAutoGrow","Canvas.setDoneLoading","Canvas.setSize","Canvas.setUrlHandler","Canvas.showFlashElement","Canvas.startTimer","Canvas.stopTimer","Data","Data.process","Data.query","Data.query:wait","Data.waitOn","Data.waitOn:wait","Event","Event.subscribe","Event.unsubscribe","Music.flashCallback","Music.init","Music.send","Payment","Payment.cancelFlow","Payment.continueFlow","Payment.init","Payment.lockForProcessing","Payment.unlockForProcessing","Payment.parse","Payment.setSize","ThirdPartyProvider","ThirdPartyProvider.init","ThirdPartyProvider.sendData","UA","UA.nativeApp","XFBML","XFBML.RecommendationsBar","XFBML.RecommendationsBar.markRead","XFBML.parse","addFriend","api","getAccessToken","getAuthResponse","getLoginStatus","getUserID","init","login","logout","publish","share","ui","ui:subscribe"]},"initSitevars":{"enableMobileComments":1,"iframePermissions":{"read_stream":false,"manage_mailbox":false,"manage_friendlists":false,"read_mailbox":false,"publish_checkins":true,"status_update":true,"photo_upload":true,"video_upload":true,"sms":false,"create_event":true,"rsvp_event":true,"offline_access":true,"email":true,"xmpp_login":false,"create_note":true,"share_item":true,"export_stream":false,"publish_stream":true,"publish_likes":true,"ads_management":false,"contact_email":true,"access_private_data":false,"read_insights":false,"read_requests":false,"read_friendlists":true,"manage_pages":false,"physical_login":false,"manage_groups":false,"read_deals":false}}});__d("UrlMapConfig",[],{"www":"www.facebook.com","m":"m.facebook.com","connect":"connect.facebook.net","business":"business.facebook.com","api_https":"api.facebook.com","api_read_https":"api-read.facebook.com","graph_https":"graph.facebook.com","fbcdn_http":"fbstatic-a.akamaihd.net","fbcdn_https":"fbstatic-a.akamaihd.net","cdn_http":"static.ak.facebook.com","cdn_https":"s-static.ak.facebook.com"});__d("JSSDKXDConfig",[],{"XdUrl":"\/connect\/xd_arbiter.php?version=41","XdBundleUrl":"\/connect\/xd_arbiter\/2vB-h6CMIvK.js?version=41","Flash":{"path":"https:\/\/connect.facebook.net\/rsrc.php\/v1\/yR\/r\/ks_9ZXiQ0GL.swf"},"useCdn":true});__d("JSSDKCssConfig",[],{"rules":".fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:\"lucida grande\", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}.fb_link img{border:none}\n.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_reset .fb_dialog_legacy{overflow:visible}.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px}.fb_dialog_content{background:#fff;color:#333}.fb_dialog_close_icon{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v2\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;_background-image:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v2\/yL\/r\/s816eWC-2sl.gif);cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v2\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent;_background-image:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v2\/yL\/r\/s816eWC-2sl.gif)}.fb_dialog_close_icon:active{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v2\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent;_background-image:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v2\/yL\/r\/s816eWC-2sl.gif)}.fb_dialog_loader{background-color:#f2f2f2;border:1px solid #606060;font-size:24px;padding:20px}.fb_dialog_top_left,.fb_dialog_top_right,.fb_dialog_bottom_left,.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}.fb_dialog_top_left{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}.fb_dialog_top_right{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}.fb_dialog_bottom_left{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}.fb_dialog_bottom_right{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}.fb_dialog_vert_left,.fb_dialog_vert_right,.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}.fb_dialog_vert_left,.fb_dialog_vert_right{width:10px;height:100\u0025}.fb_dialog_vert_left{margin-left:-10px}.fb_dialog_vert_right{right:0;margin-right:-10px}.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{width:100\u0025;height:10px}.fb_dialog_horiz_top{margin-top:-10px}.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #3b5998;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v2\/yd\/r\/Cou7n-nqK52.gif) no-repeat 5px 50\u0025;float:left;padding:5px 0 7px 26px}body.fb_hidden{-webkit-transform:none;height:100\u0025;margin:0;overflow:visible;position:absolute;top:-10000px;left:0;width:100\u0025}.fb_dialog.fb_dialog_mobile.loading{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v2\/ya\/r\/3rhSv5V8j3o.gif) white no-repeat 50\u0025 50\u0025;min-height:100\u0025;min-width:100\u0025;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{max-height:590px;min-height:590px;max-width:500px;min-width:500px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;left:0;top:0;width:100\u0025;min-height:100\u0025;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0\u0025 0\u0025, 0\u0025 100\u0025, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100\u0025}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0\u0025 0\u0025, 0\u0025 100\u0025, from(#4966A6), color-stop(.5, #355492), to(#2A4887));border:1px solid #29447e;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset, rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v2\/y9\/r\/jKEcVPZFk-2.gif) no-repeat 50\u0025 50\u0025;border:1px solid #555;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f2f2f2;border:1px solid #555;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}\n.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_lift{z-index:1}.fb_hide_iframes iframe{position:relative;left:-10000px}.fb_iframe_widget_loader{position:relative;display:inline-block}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100\u0025}.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}.fb_iframe_widget_loader .FB_Loader{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v2\/y9\/r\/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50\u0025;z-index:4}\n.fb_connect_bar_container div,.fb_connect_bar_container span,.fb_connect_bar_container a,.fb_connect_bar_container img,.fb_connect_bar_container strong{background:none;border-spacing:0;border:0;direction:ltr;font-style:normal;font-variant:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal;vertical-align:baseline}.fb_connect_bar_container{position:fixed;left:0 !important;right:0 !important;height:42px !important;padding:0 25px !important;margin:0 !important;vertical-align:middle !important;border-bottom:1px solid #333 !important;background:#3b5998 !important;z-index:99999999 !important;overflow:hidden !important}.fb_connect_bar_container_ie6{position:absolute;top:expression(document.compatMode==\"CSS1Compat\"? document.documentElement.scrollTop+\"px\":body.scrollTop+\"px\")}.fb_connect_bar{position:relative;margin:auto;height:100\u0025;width:100\u0025;padding:6px 0 0 0 !important;background:none;color:#fff !important;font-family:\"lucida grande\", tahoma, verdana, arial, sans-serif !important;font-size:13px !important;font-style:normal !important;font-variant:normal !important;font-weight:normal !important;letter-spacing:normal !important;line-height:1 !important;text-decoration:none !important;text-indent:0 !important;text-shadow:none !important;text-transform:none !important;white-space:normal !important;word-spacing:normal !important}.fb_connect_bar a:hover{color:#fff}.fb_connect_bar .fb_profile img{height:30px;width:30px;vertical-align:middle;margin:0 6px 5px 0}.fb_connect_bar div a,.fb_connect_bar span,.fb_connect_bar span a{color:#bac6da;font-size:11px;text-decoration:none}.fb_connect_bar .fb_buttons{float:right;margin-top:7px}\n.fbpluginrecommendationsbarleft,.fbpluginrecommendationsbarright{position:fixed !important;bottom:0;z-index:999}.fbpluginrecommendationsbarleft{left:10px}.fbpluginrecommendationsbarright{right:10px}","components":["css:fb.css.base","css:fb.css.dialog","css:fb.css.iframewidget","css:fb.css.connectbarwidget","css:fb.css.plugin.recommendationsbar"]});__d("ApiClientConfig",[],{"FlashRequest":{"swfUrl":"https:\/\/connect.facebook.net\/rsrc.php\/v1\/yW\/r\/PvklbuW2Ycn.swf"}});__d("JSSDKCanvasPrefetcherConfig",[],{"blacklist":[144959615576466],"sampleRate":500});__d("JSSDKPluginPipeConfig",[],{"threshold":0,"enabledApps":{"209753825810663":1,"187288694643718":1}});__d("JSSDKConnectBarConfig",[],{"imgs":{"buttonUrl":"rsrc.php\/v2\/yY\/r\/h_Y6u1wrZPW.png","missingProfileUrl":"rsrc.php\/v2\/yo\/r\/UlIqmHJn-SK.gif"}});
+var ES = require('ES');
+__d("JSSDKRuntimeConfig",[],{"locale":"en_US","rtl":false,"revision":"1312803"});__d("JSSDKConfig",[],{"bustCache":true,"tagCountLogRate":0.01,"errorHandling":{"rate":4},"usePluginPipe":true,"features":{"kill_fragment":true,"xfbml_profile_pic_server":true,"error_handling":{"rate":4},"e2e_ping_tracking":{"rate":1.0e-6},"xd_timeout":{"rate":4,"value":30000},"use_bundle":true},"api":{"mode":"warn","whitelist":["Canvas","Canvas.Prefetcher","Canvas.Prefetcher.addStaticResource","Canvas.Prefetcher.setCollectionMode","Canvas.getPageInfo","Canvas.hideFlashElement","Canvas.scrollTo","Canvas.setAutoGrow","Canvas.setDoneLoading","Canvas.setSize","Canvas.setUrlHandler","Canvas.showFlashElement","Canvas.startTimer","Canvas.stopTimer","Data","Data.process","Data.query","Data.query:wait","Data.waitOn","Data.waitOn:wait","Event","Event.subscribe","Event.unsubscribe","Music.flashCallback","Music.init","Music.send","Payment","Payment.cancelFlow","Payment.continueFlow","Payment.init","Payment.lockForProcessing","Payment.unlockForProcessing","Payment.parse","Payment.setSize","ThirdPartyProvider","ThirdPartyProvider.init","ThirdPartyProvider.sendData","UA","UA.nativeApp","XFBML","XFBML.RecommendationsBar","XFBML.RecommendationsBar.markRead","XFBML.parse","addFriend","api","getAccessToken","getAuthResponse","getLoginStatus","getUserID","init","login","logout","publish","share","ui","ui:subscribe"]},"initSitevars":{"enableMobileComments":1,"iframePermissions":{"read_stream":false,"manage_mailbox":false,"manage_friendlists":false,"read_mailbox":false,"publish_checkins":true,"status_update":true,"photo_upload":true,"video_upload":true,"sms":false,"create_event":true,"rsvp_event":true,"offline_access":true,"email":true,"xmpp_login":false,"create_note":true,"share_item":true,"export_stream":false,"publish_stream":true,"publish_likes":true,"ads_management":false,"contact_email":true,"access_private_data":false,"read_insights":false,"read_requests":false,"read_friendlists":true,"manage_pages":false,"physical_login":false,"manage_groups":false,"read_deals":false}}});__d("UrlMapConfig",[],{"www":"www.facebook.com","m":"m.facebook.com","connect":"connect.facebook.net","business":"business.facebook.com","api_https":"api.facebook.com","api_read_https":"api-read.facebook.com","graph_https":"graph.facebook.com","fbcdn_http":"fbstatic-a.akamaihd.net","fbcdn_https":"fbstatic-a.akamaihd.net","cdn_http":"static.ak.facebook.com","cdn_https":"s-static.ak.facebook.com"});__d("JSSDKXDConfig",[],{"XdUrl":"\/connect\/xd_arbiter.php?version=41","XdBundleUrl":"\/connect\/xd_arbiter\/2vB-h6CMIvK.js?version=41","Flash":{"path":"https:\/\/connect.facebook.net\/rsrc.php\/v1\/yR\/r\/ks_9ZXiQ0GL.swf"},"useCdn":true});__d("JSSDKCssConfig",[],{"rules":".fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:\"lucida grande\", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}.fb_link img{border:none}\n.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_reset .fb_dialog_legacy{overflow:visible}.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px}.fb_dialog_content{background:#fff;color:#333}.fb_dialog_close_icon{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;_background-image:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yL\/r\/s816eWC-2sl.gif);cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent;_background-image:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yL\/r\/s816eWC-2sl.gif)}.fb_dialog_close_icon:active{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent;_background-image:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yL\/r\/s816eWC-2sl.gif)}.fb_dialog_loader{background-color:#f2f2f2;border:1px solid #606060;font-size:24px;padding:20px}.fb_dialog_top_left,.fb_dialog_top_right,.fb_dialog_bottom_left,.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}.fb_dialog_top_left{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}.fb_dialog_top_right{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}.fb_dialog_bottom_left{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}.fb_dialog_bottom_right{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}.fb_dialog_vert_left,.fb_dialog_vert_right,.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}.fb_dialog_vert_left,.fb_dialog_vert_right{width:10px;height:100\u0025}.fb_dialog_vert_left{margin-left:-10px}.fb_dialog_vert_right{right:0;margin-right:-10px}.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{width:100\u0025;height:10px}.fb_dialog_horiz_top{margin-top:-10px}.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #3b5998;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yd\/r\/Cou7n-nqK52.gif) no-repeat 5px 50\u0025;float:left;padding:5px 0 7px 26px}body.fb_hidden{-webkit-transform:none;height:100\u0025;margin:0;overflow:visible;position:absolute;top:-10000px;left:0;width:100\u0025}.fb_dialog.fb_dialog_mobile.loading{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ya\/r\/3rhSv5V8j3o.gif) white no-repeat 50\u0025 50\u0025;min-height:100\u0025;min-width:100\u0025;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{max-height:590px;min-height:590px;max-width:500px;min-width:500px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;left:0;top:0;width:100\u0025;min-height:100\u0025;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0\u0025 0\u0025, 0\u0025 100\u0025, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100\u0025}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0\u0025 0\u0025, 0\u0025 100\u0025, from(#4966A6), color-stop(.5, #355492), to(#2A4887));border:1px solid #29447e;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset, rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/y9\/r\/jKEcVPZFk-2.gif) no-repeat 50\u0025 50\u0025;border:1px solid #555;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f2f2f2;border:1px solid #555;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}\n.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_lift{z-index:1}.fb_hide_iframes iframe{position:relative;left:-10000px}.fb_iframe_widget_loader{position:relative;display:inline-block}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100\u0025}.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}.fb_iframe_widget_loader .FB_Loader{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/y9\/r\/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50\u0025;z-index:4}\n.fb_connect_bar_container div,.fb_connect_bar_container span,.fb_connect_bar_container a,.fb_connect_bar_container img,.fb_connect_bar_container strong{background:none;border-spacing:0;border:0;direction:ltr;font-style:normal;font-variant:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal;vertical-align:baseline}.fb_connect_bar_container{position:fixed;left:0 !important;right:0 !important;height:42px !important;padding:0 25px !important;margin:0 !important;vertical-align:middle !important;border-bottom:1px solid #333 !important;background:#3b5998 !important;z-index:99999999 !important;overflow:hidden !important}.fb_connect_bar_container_ie6{position:absolute;top:expression(document.compatMode==\"CSS1Compat\"? document.documentElement.scrollTop+\"px\":body.scrollTop+\"px\")}.fb_connect_bar{position:relative;margin:auto;height:100\u0025;width:100\u0025;padding:6px 0 0 0 !important;background:none;color:#fff !important;font-family:\"lucida grande\", tahoma, verdana, arial, sans-serif !important;font-size:13px !important;font-style:normal !important;font-variant:normal !important;font-weight:normal !important;letter-spacing:normal !important;line-height:1 !important;text-decoration:none !important;text-indent:0 !important;text-shadow:none !important;text-transform:none !important;white-space:normal !important;word-spacing:normal !important}.fb_connect_bar a:hover{color:#fff}.fb_connect_bar .fb_profile img{height:30px;width:30px;vertical-align:middle;margin:0 6px 5px 0}.fb_connect_bar div a,.fb_connect_bar span,.fb_connect_bar span a{color:#bac6da;font-size:11px;text-decoration:none}.fb_connect_bar .fb_buttons{float:right;margin-top:7px}\n.fbpluginrecommendationsbarleft,.fbpluginrecommendationsbarright{position:fixed !important;bottom:0;z-index:999}.fbpluginrecommendationsbarleft{left:10px}.fbpluginrecommendationsbarright{right:10px}","components":["css:fb.css.base","css:fb.css.dialog","css:fb.css.iframewidget","css:fb.css.connectbarwidget","css:fb.css.plugin.recommendationsbar"]});__d("ApiClientConfig",[],{"FlashRequest":{"swfUrl":"https:\/\/connect.facebook.net\/rsrc.php\/v1\/yW\/r\/PvklbuW2Ycn.swf"}});__d("JSSDKCanvasPrefetcherConfig",[],{"blacklist":[144959615576466],"sampleRate":500});__d("JSSDKPluginPipeConfig",[],{"threshold":0,"enabledApps":{"209753825810663":1,"187288694643718":1}});__d("JSSDKConnectBarConfig",[],{"imgs":{"buttonUrl":"rsrc.php\/v2\/yY\/r\/h_Y6u1wrZPW.png","missingProfileUrl":"rsrc.php\/v2\/yo\/r\/UlIqmHJn-SK.gif"}});
 
 
 __d("QueryString",[],function(global,require,requireDynamic,requireLazy,module,exports) {
@@ -1693,7 +1779,7 @@ __d("QueryString",[],function(global,require,requireDynamic,requireLazy,module,e
 
 function encode(/*object*/ bag) /*string*/ {__t([bag, 'object', 'bag']);return __t([function() {
   var pairs = [];
-  ES5(ES5('Object', 'keys', false,bag).sort(), 'forEach', true,function(key) {
+  ES(ES('Object', 'keys', false,bag).sort(), 'forEach', true,function(key) {
     var value = bag[key];
     
     if (typeof value === 'undefined') {
@@ -1736,7 +1822,7 @@ function decode(/*string*/ str, /*?boolean*/ strict) /*object*/ {__t([str, 'stri
 
 function appendToUrl(/*string*/ url, params) /*string*/ {__t([url, 'string', 'url']);return __t([function() {
   return url +
-    (~ES5(url, 'indexOf', true,'?') ? '&' : '?') +
+    (~ES(url, 'indexOf', true,'?') ? '&' : '?') +
     (typeof params === 'string'
       ? params
       : QueryString.encode(params));
@@ -1749,42 +1835,6 @@ var QueryString = {
 };
 
 module.exports = QueryString;
-
-
-},null);
-
-
-__d("copyProperties",[],function(global,require,requireDynamic,requireLazy,module,exports) {
-
-function copyProperties(obj, a, b, c, d, e, f) {
-  obj = obj || {};
-
-  if (__DEV__) {
-    if (f) {
-      throw new Error('Too many arguments passed to copyProperties');
-    }
-  }
-
-  var args = [a, b, c, d, e];
-  var ii = 0, v;
-  while (args[ii]) {
-    v = args[ii++];
-    for (var k in v) {
-      obj[k] = v[k];
-    }
-
-    
-    
-    if (v.hasOwnProperty && v.hasOwnProperty('toString') &&
-        (typeof v.toString != 'undefined') && (obj.toString !== v.toString)) {
-      obj.toString = v.toString;
-    }
-  }
-
-  return obj;
-}
-
-module.exports = copyProperties;
 
 
 },null);
@@ -1861,7 +1911,7 @@ function assertType(/*string*/ type, expression, /*?string*/ message) {__t([type
   }
 
   assert(
-    ES5(type, 'indexOf', true,actualType) !== -1,
+    ES(type, 'indexOf', true,actualType) !== -1,
     message || sprintf('Expression is of type %s, not %s', actualType, type)
   );
   return expression;
@@ -1904,7 +1954,7 @@ var Assert = {
 };
 
 
-ES5(['Array',
+ES(['Array',
  'Boolean',
  'Date',
  'Function',
@@ -1914,7 +1964,7 @@ ES5(['Array',
  'Regexp',
  'String',
  'Undefined'], 'forEach', true,__w(function(/*string*/ type) {__t([type, 'string', 'type']);
-   define(type, ES5(assertType, 'bind', true,null, type.toLowerCase()));
+   define(type, ES(assertType, 'bind', true,null, type.toLowerCase()));
  }, {"signature":"function(string)"}));
 
 module.exports = Assert;
@@ -1922,8 +1972,7 @@ module.exports = Assert;
 
 },null);
 
-__d("Type",["copyProperties","Assert"],function(global,require,requireDynamic,requireLazy,module,exports,copyProperties,Assert) {
-   
+__d("Type",["Assert"],function(global,require,requireDynamic,requireLazy,module,exports,Assert) {
    
 
 
@@ -1960,7 +2009,7 @@ function instanceOf(/*function*/ constructor, which) /*boolean*/ {__t([construct
 function mixin(/*function*/ to, from) {__t([to, 'function', 'to']);
   var prototype = to.prototype;
 
-  if (!ES5('Array', 'isArray', false,from)) {
+  if (!ES('Array', 'isArray', false,from)) {
     from = [from];
   }
 
@@ -1972,7 +2021,7 @@ function mixin(/*function*/ to, from) {__t([to, 'function', 'to']);
       mixinFrom = mixinFrom.prototype;
     }
     
-    ES5(ES5('Object', 'keys', false,mixinFrom), 'forEach', true,function(key) {
+    ES(ES('Object', 'keys', false,mixinFrom), 'forEach', true,function(key) {
       prototype[key] = mixinFrom[key];
     });
   }
@@ -1997,7 +2046,10 @@ function extend(/*?function*/ from, /*?object*/ prototype, mixins)
   var F = new Function();
   F.prototype = from.prototype;
   constructor.prototype = new F();
-  copyProperties(constructor.prototype, prototype);
+
+  if (prototype) {
+    ES('Object', 'assign', false,constructor.prototype, prototype);
+  }
 
   
   constructor.prototype.constructor = constructor;
@@ -2033,13 +2085,13 @@ function extend(/*?function*/ from, /*?object*/ prototype, mixins)
   return constructor;
 }.apply(this, arguments), 'function']);}__w(extend, {"signature":"function(?function,?object):function"}); 
 
-copyProperties(Type.prototype, {
+ES('Object', 'assign', false,Type.prototype, {
   instanceOf: __w(function(/*function*/ type) /*boolean*/ {__t([type, 'function', 'type']);return __t([function() {
     return instanceOf(type, this);
   }.apply(this, arguments), 'boolean']);}, {"signature":"function(function):boolean"})
 });
 
-copyProperties(Type, {
+ES('Object', 'assign', false,Type, {
   extend: __w(function(prototype, mixins) /*function*/ {return __t([function() {
     return typeof prototype === 'function'
       ? extend.apply(null, arguments)
@@ -2129,7 +2181,7 @@ ObservableMixin.prototype = {
   
   monitor: __w(function(/*string*/ toWhat, /*function*/ withWhat) {__t([toWhat, 'string', 'toWhat'], [withWhat, 'function', 'withWhat']);
     if (!withWhat()) {
-      var monitor = ES5(function(value) {
+      var monitor = ES(function(value) {
         if (withWhat.apply(withWhat, arguments)) {
           this.unsubscribe(toWhat, monitor);
         }
@@ -2160,7 +2212,7 @@ var Model = Type.extend({
     var propContainer = {};
     var model = this;
 
-    ES5(ES5('Object', 'keys', false,properties), 'forEach', true,__w(function(/*string*/ name) {__t([name, 'string', 'name']);
+    ES(ES('Object', 'keys', false,properties), 'forEach', true,__w(function(/*string*/ name) {__t([name, 'string', 'name']);
       
       propContainer[name] = properties[name];
 
@@ -2188,11 +2240,10 @@ module.exports = Model;
 },null);
 
 
-__d("sdk.Runtime",["sdk.Model","JSSDKRuntimeConfig","copyProperties"],function(global,require,requireDynamic,requireLazy,module,exports,Model,RuntimeConfig,copyProperties) {
+__d("sdk.Runtime",["sdk.Model","JSSDKRuntimeConfig"],function(global,require,requireDynamic,requireLazy,module,exports,Model,RuntimeConfig) {
    
    
 
-   
 
 var ENVIRONMENTS = {
   UNKNOWN: 0,
@@ -2220,7 +2271,7 @@ var Runtime = new Model({
   Version: undefined
 });
 
-copyProperties(Runtime, {
+ES('Object', 'assign', false,Runtime, {
 
   ENVIRONMENTS: ENVIRONMENTS,
 
@@ -2663,14 +2714,13 @@ module.exports = DOMEventListener;
 },null);
 
 
-__d("sdk.createIframe",["copyProperties","guid","hasNamePropertyBug","DOMEventListener"],function(global,require,requireDynamic,requireLazy,module,exports,copyProperties,guid,hasNamePropertyBug,DOMEventListener) {
-   
+__d("sdk.createIframe",["guid","hasNamePropertyBug","DOMEventListener"],function(global,require,requireDynamic,requireLazy,module,exports,guid,hasNamePropertyBug,DOMEventListener) {
    
    
    
 
 function createIframe(/*object*/ opts) /*DOMElement*/ {__t([opts, 'object', 'opts']);return __t([function() {
-  opts = copyProperties({}, opts);
+  opts = ES('Object', 'assign', false,{}, opts);
   var frame;
   var name = opts.name || guid();
   var root = opts.root;
@@ -2692,7 +2742,7 @@ function createIframe(/*object*/ opts) /*DOMElement*/ {__t([opts, 'object', 'opt
   delete opts.root;
   delete opts.onload;
 
-  var attributes =  copyProperties({
+  var attributes =  ES('Object', 'assign', false,{
     frameBorder: 0,
     allowTransparency: true,
     scrolling: 'no'
@@ -2715,7 +2765,7 @@ function createIframe(/*object*/ opts) /*DOMElement*/ {__t([opts, 'object', 'opt
     }
   }
 
-  copyProperties(frame.style, style);
+  ES('Object', 'assign', false,frame.style, style);
 
   
   //       into the container, so we set it to "javascript:false" as a
@@ -2897,7 +2947,7 @@ var Impressions = {
 
     request({
       lid: lid, 
-      payload: ES5('JSON', 'stringify', false,payload)
+      payload: ES('JSON', 'stringify', false,payload)
     });
   }, {"signature":"function(number,object)"}),
 
@@ -2937,10 +2987,10 @@ var Log = {
   Level: Level,
 
   
-  debug : ES5(log, 'bind', true,null, 'debug', Level.DEBUG),
-  info  : ES5(log, 'bind', true,null, 'info',  Level.INFO),
-  warn  : ES5(log, 'bind', true,null, 'warn',  Level.WARNING),
-  error : ES5(log, 'bind', true,null, 'error', Level.ERROR)
+  debug : ES(log, 'bind', true,null, 'debug', Level.DEBUG),
+  info  : ES(log, 'bind', true,null, 'info',  Level.INFO),
+  warn  : ES(log, 'bind', true,null, 'warn',  Level.WARNING),
+  error : ES(log, 'bind', true,null, 'error', Level.ERROR)
 };
 module.exports = Log;
 
@@ -2996,14 +3046,14 @@ var Base64 = {
     catch (_) { throw new Error('Not valid UTF-8'); }
   },
   encodeObject: function(obj) {
-    return Base64.encode(ES5('JSON', 'stringify', false,obj));
+    return Base64.encode(ES('JSON', 'stringify', false,obj));
   },
   decodeObject: function(b64) {
-    return ES5('JSON', 'parse', false,Base64.decode(b64));
+    return ES('JSON', 'parse', false,Base64.decode(b64));
   },
   
   encodeNums: function(l) {
-    return String.fromCharCode.apply(String, ES5(l, 'map', true,function(val) {
+    return String.fromCharCode.apply(String, ES(l, 'map', true,function(val) {
       return en.charCodeAt((val | -(val > 63)) & -(val > 0) & 63);
     }));
   }
@@ -3062,7 +3112,7 @@ var URIRFC3986 = {
 
   
   parse: __w(function(uriString) {__t([uriString, 'string', 'uriString']);return __t([function() {
-    if (ES5(uriString,'trim', true) === '') {
+    if (ES(uriString,'trim', true) === '') {
       return null;
     }
     var captures = uriString.match(PARSE_PATTERN);
@@ -3101,13 +3151,13 @@ __d("createObjectFrom",[],function(global,require,requireDynamic,requireLazy,mod
 
 function createObjectFrom(keys, values ) {
   if (__DEV__) {
-    if (!ES5('Array', 'isArray', false,keys)) {
+    if (!ES('Array', 'isArray', false,keys)) {
       throw new TypeError('Must pass an array of keys.');
     }
   }
 
   var object = {};
-  var isArray = ES5('Array', 'isArray', false,values);
+  var isArray = ES('Array', 'isArray', false,values);
   if (typeof values == 'undefined') {
     values = true;
   }
@@ -3166,18 +3216,54 @@ module.exports = URISchemes;
 },null);
 
 
+__d("copyProperties",[],function(global,require,requireDynamic,requireLazy,module,exports) {
+
+function copyProperties(obj, a, b, c, d, e, f) {
+  obj = obj || {};
+
+  if (__DEV__) {
+    if (f) {
+      throw new Error('Too many arguments passed to copyProperties');
+    }
+  }
+
+  var args = [a, b, c, d, e];
+  var ii = 0, v;
+  while (args[ii]) {
+    v = args[ii++];
+    for (var k in v) {
+      obj[k] = v[k];
+    }
+
+    
+    
+    if (v.hasOwnProperty && v.hasOwnProperty('toString') &&
+        (typeof v.toString != 'undefined') && (obj.toString !== v.toString)) {
+      obj.toString = v.toString;
+    }
+  }
+
+  return obj;
+}
+
+module.exports = copyProperties;
+
+
+},null);
+
+
 __d("eprintf",[],function(global,require,requireDynamic,requireLazy,module,exports) {
 
 
 var eprintf = function(errorMessage/*, arg1, arg2, ...*/) {
-  var args = ES5(Array.prototype.slice.call(arguments), 'map', true,function(arg) {
+  var args = ES(Array.prototype.slice.call(arguments), 'map', true,function(arg) {
     return String(arg);
   });
   var expectedLength = errorMessage.split('%s').length - 1;
 
   if (expectedLength !== args.length - 1) {
     
-    return eprintf('eprintf args number mismatch: %s', ES5('JSON', 'stringify', false,args));
+    return eprintf('eprintf args number mismatch: %s', ES('JSON', 'stringify', false,args));
   }
 
   var index = 1;
@@ -3198,16 +3284,16 @@ __d("ex",["eprintf"],function(global,require,requireDynamic,requireLazy,module,e
 
 
 var ex = function() {var args=Array.prototype.slice.call(arguments,0);
-  args = ES5(args, 'map', true,function(arg)  {return String(arg);});
+  args = ES(args, 'map', true,function(arg)  {return String(arg);});
   if (args[0].split('%s').length !== args.length) {
     
-    return ex('ex args number mismatch: %s', ES5('JSON', 'stringify', false,args));
+    return ex('ex args number mismatch: %s', ES('JSON', 'stringify', false,args));
   }
 
   if (__DEV__) {
     return eprintf.apply(null, args);
   } else {
-    return ex._prefix + ES5('JSON', 'stringify', false,args) + ex._suffix;
+    return ex._prefix + ES('JSON', 'stringify', false,args) + ex._suffix;
   }
 };
 
@@ -3305,7 +3391,7 @@ function parse(uri, uriToParse, shouldThrow, serializer) {
     return true;
   }
 
-  uriToParse = ES5(uriToParse.toString(),'trim', true);
+  uriToParse = ES(uriToParse.toString(),'trim', true);
   var components = URIRFC3986.parse(uriToParse) || {};
   if (!shouldThrow && !URISchemes.isAllowed(components.scheme)) {
     return false;
@@ -3341,7 +3427,7 @@ function parse(uri, uriToParse, shouldThrow, serializer) {
 
   
   
-  if (!uri.getDomain() && ES5(uri.getPath(), 'indexOf', true,'\\') !== -1) {
+  if (!uri.getDomain() && ES(uri.getPath(), 'indexOf', true,'\\') !== -1) {
     if (shouldThrow) {
       throw new Error(ex(
         'URI.parse: invalid URI (no domain but multiple back-slashes): %s',
@@ -3482,7 +3568,7 @@ function parse(uri, uriToParse, shouldThrow, serializer) {
 
   
   URIBase.prototype.removeQueryData=function(keys) {"use strict";
-    if (!ES5('Array', 'isArray', false,keys)) {
+    if (!ES('Array', 'isArray', false,keys)) {
       keys = [keys];
     }
     for (var i = 0, length = keys.length; i < length; ++i) {
@@ -3509,7 +3595,7 @@ function parse(uri, uriToParse, shouldThrow, serializer) {
       this.getProtocol() ||
       this.getDomain() ||
       this.getPort() ||
-      ES5('Object', 'keys', false,this.getQueryData()).length > 0 ||
+      ES('Object', 'keys', false,this.getQueryData()).length > 0 ||
       this.getFragment()
     );
   };
@@ -3585,7 +3671,7 @@ var serializer = {
   }
 };
 
-for(var URIBase____Key in URIBase){if(URIBase.hasOwnProperty(URIBase____Key)){URI[URIBase____Key]=URIBase[URIBase____Key];}}var ____SuperProtoOfURIBase=URIBase===null?null:URIBase.prototype;URI.prototype=ES5('Object', 'create', false,____SuperProtoOfURIBase);URI.prototype.constructor=URI;URI.__superConstructor__=URIBase;
+for(var URIBase____Key in URIBase){if(URIBase.hasOwnProperty(URIBase____Key)){URI[URIBase____Key]=URIBase[URIBase____Key];}}var ____SuperProtoOfURIBase=URIBase===null?null:URIBase.prototype;URI.prototype=ES('Object', 'create', false,____SuperProtoOfURIBase);URI.prototype.constructor=URI;URI.__superConstructor__=URIBase;
   function URI(uri) {"use strict";
     Assert.isString(uri, 'The passed argument was of invalid type.');
 
@@ -3799,7 +3885,7 @@ var Event = {
     if (!subs[name]) {
       subs[name] = [cb];
     } else {
-      if (ES5(subs[name], 'indexOf', true,cb) == -1){
+      if (ES(subs[name], 'indexOf', true,cb) == -1){
         subs[name].push(cb);
       }
     }
@@ -3812,7 +3898,7 @@ var Event = {
   unsubscribe: __w(function(/*string*/ name, /*function*/ cb) {__t([name, 'string', 'name'], [cb, 'function', 'cb']);
     var subs = this.subscribers()[name];
     if (subs) {
-      ES5(subs, 'forEach', true,function(value, key) {
+      ES(subs, 'forEach', true,function(value, key) {
         if (value == cb) {
           subs.splice(key, 1);
         }
@@ -3850,7 +3936,7 @@ var Event = {
       subs = this.subscribers()[name];
 
     if (subs) {
-      ES5(subs, 'forEach', true,function(sub) {
+      ES(subs, 'forEach', true,function(sub) {
         
         
         if (sub) {
@@ -3900,7 +3986,7 @@ var registry = {};
     if (this._opts.interval) {
       this._opts.processor.call(this, this._queue.shift());
       this._timeout = setTimeout(
-        ES5(this._dispatch, 'bind', true,this),
+        ES(this._dispatch, 'bind', true,this),
         this._opts.interval
       );
     } else {
@@ -3991,58 +4077,56 @@ module.exports = Queue;
 },null);
 
 
-__d("JSONRPC",["copyProperties","Log"],function(global,require,requireDynamic,requireLazy,module,exports,copyProperties,Log) {
+__d("JSONRPC",["Log"],function(global,require,requireDynamic,requireLazy,module,exports,Log) {
    
-   
 
-function JSONRPC(/*function*/ write) {__t([write, 'function', 'write']);
-  this._counter = 0;
-  this._callbacks = {};
 
-  this.remote = ES5(function(context) {
-    this._context = context;
-    return this.remote;
-  }, 'bind', true,this);
 
-  this.local = {};
+  function JSONRPC(/*function*/ write) {__t([write, 'function', 'write']);"use strict";
+    this.$JSONRPC_counter = 0;
+    this.$JSONRPC_callbacks = {};
 
-  this._write = write;
-}__w(JSONRPC, {"type":"JSONRPC","signature":"function(function)"}); 
+    this.remote = ES(function(context)  {
+      this.$JSONRPC_context = context;
+      return this.remote;
+    }, 'bind', true,this);
 
-copyProperties(JSONRPC.prototype, {
+    this.local = {};
+
+    this.$JSONRPC_write = write;
+  }__w(JSONRPC, {"type":"JSONRPC","signature":"function(function)"}); 
 
   
-  stub: __w(function(/*string*/ stub) {__t([stub, 'string', 'stub']);
-    this.remote[stub] = ES5(function() {
-      var args = Array.prototype.slice.call(arguments),
-          message = {
-            jsonrpc: '2.0',
-            method: stub
-          };
+  JSONRPC.prototype.stub=__w(function(/*string*/ stub) {__t([stub, 'string', 'stub']);"use strict";
+    this.remote[stub] = ES(function()  {var args=Array.prototype.slice.call(arguments,0);
+      var message = {
+        jsonrpc: '2.0',
+        method: stub
+      };
 
       if (typeof args[args.length - 1] == 'function') {
-        message.id = ++this._counter;
-        this._callbacks[message.id] = args.pop();
+        message.id = ++this.$JSONRPC_counter;
+        this.$JSONRPC_callbacks[message.id] = args.pop();
       }
 
       message.params = args;
 
-      this._write(ES5('JSON', 'stringify', false,message), this._context || {method: stub });
+      this.$JSONRPC_write(ES('JSON', 'stringify', false,message), this.$JSONRPC_context || {method: stub });
     }, 'bind', true,this);
-  }, {"signature":"function(string)"}),
+  }, {"signature":"function(string)"});
 
   
-  read: __w(function(/*string*/ message, context) {__t([message, 'string', 'message']);
-    var rpc = ES5('JSON', 'parse', false,message), id = rpc.id;
+  JSONRPC.prototype.read=__w(function(/*string*/ message, context) {__t([message, 'string', 'message']);"use strict";
+    var rpc = ES('JSON', 'parse', false,message), id = rpc.id;
 
     if (!rpc.method) {
       
-      if (!this._callbacks[id]) {
+      if (!this.$JSONRPC_callbacks[id]) {
         Log.warn('Could not find callback %s', id);
         return;
       }
-      var callback = this._callbacks[id];
-      delete this._callbacks[id];
+      var callback = this.$JSONRPC_callbacks[id];
+      delete this.$JSONRPC_callbacks[id];
 
       delete rpc.id;
       delete rpc.jsonrpc;
@@ -4065,7 +4149,7 @@ copyProperties(JSONRPC.prototype, {
         
         
         setTimeout(function() {
-          instance._write(ES5('JSON', 'stringify', false,response), context);
+          instance.$JSONRPC_write(ES('JSON', 'stringify', false,response), context);
         }, 0);
       }, {"signature":"function(string)"});
     } else {
@@ -4085,8 +4169,8 @@ copyProperties(JSONRPC.prototype, {
     }
 
     
-    rpc.params.push(ES5(send, 'bind', true,null, 'result'));
-    rpc.params.push(ES5(send, 'bind', true,null, 'error'));
+    rpc.params.push(ES(send, 'bind', true,null, 'result'));
+    rpc.params.push(ES(send, 'bind', true,null, 'error'));
 
     
     try {
@@ -4105,9 +4189,8 @@ copyProperties(JSONRPC.prototype, {
         data: rpcEx.message
       });
     }
-  }, {"signature":"function(string)"})
+  }, {"signature":"function(string)"});
 
-});
 
 module.exports = JSONRPC;
 
@@ -4128,7 +4211,7 @@ var jsonrpc = new JSONRPC(__w(function(/*string*/ message) {__t([message, 'strin
 var RPC = {
   local: jsonrpc.local,
   remote: jsonrpc.remote,
-  stub: ES5(jsonrpc.stub, 'bind', true,jsonrpc),
+  stub: ES(jsonrpc.stub, 'bind', true,jsonrpc),
   setInQueue: __w(function(/*object*/ queue) {__t([queue, 'object', 'queue']);
     Assert.isInstanceOf(Queue, queue);
 
@@ -4159,7 +4242,7 @@ function log(/*string*/ category, /*object*/ data) {__t([category, 'string', 'ca
     UrlMap.resolve('www', /*force ssl*/true) + '/common/scribe_endpoint.php',
     {
       c: category,
-      m: ES5('JSON', 'stringify', false,data)
+      m: ES('JSON', 'stringify', false,data)
     }
   );
 }__w(log, {"signature":"function(string,object)"}); 
@@ -4684,7 +4767,7 @@ function isFacebookURI(uri) {__t([uri, 'URI', 'uri']);return __t([function() {
     return true;
   }
 
-  return (ES5(FB_PROTOCOLS, 'indexOf', true,uri.getProtocol()) !== -1 &&
+  return (ES(FB_PROTOCOLS, 'indexOf', true,uri.getProtocol()) !== -1 &&
           facebookURIRegex.test(uri.getDomain()));
 }.apply(this, arguments), 'boolean']);}__w(isFacebookURI, {"signature":"function(URI):boolean"}); 
 
@@ -4821,7 +4904,7 @@ function onMessage(/*string|object*/ message, /*?string*/ senderOrigin) {__t([me
     
     if (message.substring(0, 1) == '{') {
       try {
-        message = ES5('JSON', 'parse', false,message);
+        message = ES('JSON', 'parse', false,message);
       } catch (decodeException) {
         Log.warn('Failed to decode %s as JSON', message);
         return;
@@ -4983,7 +5066,7 @@ var XD = {
       /*?string*/ behavior) {__t([method, 'string', 'method'], [params, '?object', 'params'], [relation, '?string', 'relation'], [behavior, '?string', 'behavior']);
     sendToFacebook('facebook', {
       method: method,
-      params: ES5('JSON', 'stringify', false,params || {}),
+      params: ES('JSON', 'stringify', false,params || {}),
       behavior: behavior || 'p',
       relation: relation
     });
@@ -5049,8 +5132,7 @@ module.exports = XD;
 },null);
 
 
-__d("sdk.Auth",["sdk.Cookie","copyProperties","sdk.createIframe","DOMWrapper","sdk.feature","sdk.getContextType","guid","sdk.Impressions","Log","ObservableMixin","sdk.Runtime","sdk.SignedRequest","UrlMap","sdk.URI","sdk.XD"],function(global,require,requireDynamic,requireLazy,module,exports,Cookie,copyProperties,createIframe,DOMWrapper,feature,getContextType,guid,Impressions,Log,ObservableMixin,Runtime,SignedRequest,UrlMap,URI,XD) {
-   
+__d("sdk.Auth",["sdk.Cookie","sdk.createIframe","DOMWrapper","sdk.feature","sdk.getContextType","guid","sdk.Impressions","Log","ObservableMixin","sdk.Runtime","sdk.SignedRequest","UrlMap","sdk.URI","sdk.XD"],function(global,require,requireDynamic,requireLazy,module,exports,Cookie,createIframe,DOMWrapper,feature,getContextType,guid,Impressions,Log,ObservableMixin,Runtime,SignedRequest,UrlMap,URI,XD) {
    
    
    
@@ -5154,7 +5236,7 @@ function xdResponseWrapper(/*function*/ cb, /*?object*/ authResponse,
       if (Runtime.getUseCookie()) {
         var expirationTime = authResponse.expiresIn === 0
           ? 0 // make this a session cookie if it's for offline access
-          : ES5('Date', 'now', false) + authResponse.expiresIn * 1000;
+          : ES('Date', 'now', false) + authResponse.expiresIn * 1000;
         var baseDomain = Cookie.getDomain();
         if (!baseDomain && params.base_domain) {
           
@@ -5200,7 +5282,7 @@ function xdResponseWrapper(/*function*/ cb, /*?object*/ authResponse,
 }.apply(this, arguments), 'function']);}__w(xdResponseWrapper, {"signature":"function(function,?object,?string):function"}); 
 
 function fetchLoginStatus(/*function*/ fn) {__t([fn, 'function', 'fn']);
-  var frame, fetchStart = ES5('Date', 'now', false);
+  var frame, fetchStart = ES('Date', 'now', false);
 
   if (timer) {
     clearTimeout(timer);
@@ -5220,10 +5302,10 @@ function fetchLoginStatus(/*function*/ fn) {__t([fn, 'function', 'fn']);
         if (feature('e2e_ping_tracking', true)) {
           var events = {
             init: fetchStart,
-            close: ES5('Date', 'now', false),
+            close: ES('Date', 'now', false),
             method: 'ping'
           };
-          Log.debug('e2e: %s', ES5('JSON', 'stringify', false,events));
+          Log.debug('e2e: %s', ES('JSON', 'stringify', false,events));
           
           Impressions.log(114, {
             payload: events
@@ -5289,7 +5371,7 @@ function getLoginStatus(/*?function*/ cb, /*?boolean*/ force) {__t([cb, '?functi
   fetchLoginStatus(lsCb);
 }__w(getLoginStatus, {"signature":"function(?function,?boolean)"}); 
 
-copyProperties(Auth, {
+ES('Object', 'assign', false,Auth, {
   getLoginStatus: getLoginStatus,
   fetchLoginStatus: fetchLoginStatus,
   setAuthResponse: setAuthResponse,
@@ -5315,7 +5397,7 @@ function toArray(obj) {__t([obj, 'object|function|filelist', 'obj']);return __t(
   // Some browse builtin objects can report typeof 'function' (e.g. NodeList in
   
   invariant(
-    !ES5('Array', 'isArray', false,obj) &&
+    !ES('Array', 'isArray', false,obj) &&
     (typeof obj === 'object' || typeof obj === 'function'),
     'toArray: Array-like object expected'
   );
@@ -5376,7 +5458,7 @@ function hasArrayNature(obj) {return __t([function() {
     (typeof obj.nodeType != 'number') &&
     (
       
-      ES5('Array', 'isArray', false,obj) ||
+      ES('Array', 'isArray', false,obj) ||
       
       ('callee' in obj) ||
       
@@ -5389,7 +5471,7 @@ function hasArrayNature(obj) {return __t([function() {
 function createArrayFrom(obj) {return __t([function() {
   if (!hasArrayNature(obj)) {
     return [obj];
-  } else if (ES5('Array', 'isArray', false,obj)) {
+  } else if (ES('Array', 'isArray', false,obj)) {
     return obj.slice();
   } else {
     return toArray(obj);
@@ -5463,7 +5545,7 @@ function hasClass(/*DOMElement*/ dom, /*string*/ className) /*boolean*/ {__t([do
   Assert.isString(className);
 
   var cssClassWithSpace = ' ' + getProp(dom, 'className') + ' ';
-  return ES5(cssClassWithSpace, 'indexOf', true,' ' + className + ' ') >= 0;
+  return ES(cssClassWithSpace, 'indexOf', true,' ' + className + ' ') >= 0;
 }.apply(this, arguments), 'boolean']);}__w(hasClass, {"signature":"function(DOMElement,string):boolean"}); 
 
 
@@ -5482,7 +5564,7 @@ function removeClass(/*DOMElement*/ dom, /*string*/ className) {__t([dom, 'DOMEl
   Assert.isString(className);
 
   var regExp = new RegExp('\\s*' + className, 'g');
-  dom.className = ES5(getProp(dom, 'className').replace(regExp, ''),'trim', true);
+  dom.className = ES(getProp(dom, 'className').replace(regExp, ''),'trim', true);
 }__w(removeClass, {"signature":"function(DOMElement,string)"}); 
 
 
@@ -5713,14 +5795,14 @@ function guard(/*function*/ func, /*?string*/ entry) /*function*/ {__t([func, 'f
       data.entry = entry;
 
       
-      var sanitizedArgs = ES5(Array.prototype.slice.call(arguments), 'map', true,function(arg) {
+      var sanitizedArgs = ES(Array.prototype.slice.call(arguments), 'map', true,function(arg) {
         var type = Object.prototype.toString.call(arg);
         return (/^\[object (String|Number|Boolean|Object|Date)\]$/).test(type)
           ? arg
           : arg.toString();
       });
 
-      data.args = ES5('JSON', 'stringify', false,sanitizedArgs).substring(0, 200);
+      data.args = ES('JSON', 'stringify', false,sanitizedArgs).substring(0, 200);
       errorHandler(data);
     } finally {
       currentEntry = '';
@@ -5814,8 +5896,7 @@ module.exports = Insights;
 },null);
 
 
-__d("FB",["sdk.Auth","copyProperties","JSSDKCssConfig","dotAccess","sdk.domReady","sdk.DOM","sdk.ErrorHandling","sdk.Content","DOMWrapper","GlobalCallback","sdk.Insights","Log","sdk.Runtime","sdk.Scribe","JSSDKConfig"],function(global,require,requireDynamic,requireLazy,module,exports,Auth,copyProperties,CssConfig,dotAccess,domReady,DOM,ErrorHandling,Content,DOMWrapper,GlobalCallback,Insights,Log,Runtime,Scribe,SDKConfig) {
-   
+__d("FB",["sdk.Auth","JSSDKCssConfig","dotAccess","sdk.domReady","sdk.DOM","sdk.ErrorHandling","sdk.Content","DOMWrapper","GlobalCallback","sdk.Insights","Log","sdk.Runtime","sdk.Scribe","JSSDKConfig"],function(global,require,requireDynamic,requireLazy,module,exports,Auth,CssConfig,dotAccess,domReady,DOM,ErrorHandling,Content,DOMWrapper,GlobalCallback,Insights,Log,Runtime,Scribe,SDKConfig) {
    
    
    
@@ -5873,7 +5954,7 @@ Runtime.subscribe('AccessToken.change', __w(function(/*?string*/ value) {__t([va
 
 if (dotAccess(SDKConfig, 'api.whitelist.length')) {
   apiWhitelist = {};
-  ES5(SDKConfig.api.whitelist, 'forEach', true,__w(function(/*string*/ key) {__t([key, 'string', 'key']);
+  ES(SDKConfig.api.whitelist, 'forEach', true,__w(function(/*string*/ key) {__t([key, 'string', 'key']);
     apiWhitelist[key] = 1;
   }, {"signature":"function(string)"}));
 }
@@ -5920,8 +6001,8 @@ function protect(/*function*/ fn, /*string*/ accessor, /*string*/ key,
         }
 
         function unwrap(val) {
-          if (ES5('Array', 'isArray', false,val)) {
-            return ES5(val, 'map', true,unwrap);
+          if (ES('Array', 'isArray', false,val)) {
+            return ES(val, 'map', true,unwrap);
           }
           if (val && typeof val === 'object' && val.__wrapped) {
             
@@ -5937,7 +6018,7 @@ function protect(/*function*/ fn, /*string*/ accessor, /*string*/ key,
             : val;
         }
 
-        var args = ES5(Array.prototype.slice.call(arguments), 'map', true,unwrap);
+        var args = ES(Array.prototype.slice.call(arguments), 'map', true,unwrap);
 
         var result = fn.apply(context, args);
         var facade;
@@ -5980,7 +6061,7 @@ function provide(/*string*/ name, /*object*/ source) {__t([name, 'string', 'name
     ? dotAccess(externalInterface, name, true)
     : externalInterface;
 
-  ES5(ES5('Object', 'keys', false,source), 'forEach', true,__w(function(/*string*/ key) {__t([key, 'string', 'key']);
+  ES(ES('Object', 'keys', false,source), 'forEach', true,__w(function(/*string*/ key) {__t([key, 'string', 'key']);
     var value = source[key];
 
     
@@ -6014,12 +6095,12 @@ Runtime.setSecure((__w(function() /*?boolean*/ {return __t([function() {
   
   
   if (/_fb_https?/.test(window.name)) {
-    return ES5(window.name, 'indexOf', true,'_fb_https') != -1;
+    return ES(window.name, 'indexOf', true,'_fb_https') != -1;
   }
 }.apply(this, arguments), '?boolean']);}, {"signature":"function():?boolean"}))());
 
 
-copyProperties(FB, {
+ES('Object', 'assign', false,FB, {
 
   
   provide: provide
@@ -6144,11 +6225,11 @@ function execute(/*string*/ url, /*string*/ method, /*object*/ params,
   }
 
   request.onload = function(xhr) {
-    cb(ES5('JSON', 'parse', false,xhr.responseText));
+    cb(ES('JSON', 'parse', false,xhr.responseText));
   };
   request.onerror = function(xhr) {
     if (xhr.responseText) {
-      cb(ES5('JSON', 'parse', false,xhr.responseText));
+      cb(ES('JSON', 'parse', false,xhr.responseText));
     } else {
       cb({
         error: {
@@ -6208,7 +6289,7 @@ function initFlash() {
       /*number*/ status, /*string*/ response) {__t([id, 'number', 'id'], [status, 'number', 'status'], [response, 'string', 'response']);
     var data;
     try {
-      data = ES5('JSON', 'parse', false,decodeURIComponent(response));
+      data = ES('JSON', 'parse', false,decodeURIComponent(response));
     } catch (parseError) {
       data = {
         error: {
@@ -6300,7 +6381,7 @@ function flattenObject(/*object*/ obj) /*object*/ {__t([obj, 'object', 'obj']);r
       } else if (typeof value == 'string') {
         flat[key] = value;
       } else {
-        flat[key] = ES5('JSON', 'stringify', false,value); }
+        flat[key] = ES('JSON', 'stringify', false,value); }
     }
   }
   return flat;
@@ -6390,10 +6471,9 @@ module.exports = JSONPRequest;
 },null);
 
 
-__d("ApiClient",["ArgumentError","Assert","copyProperties","CORSRequest","FlashRequest","flattenObject","JSONPRequest","Log","ObservableMixin","sprintf","sdk.URI","UrlMap","ApiClientConfig"],function(global,require,requireDynamic,requireLazy,module,exports,ArgumentError,Assert,copyProperties,CORSRequest,FlashRequest,flattenObject,JSONPRequest,Log,ObservableMixin,sprintf,URI,UrlMap,ApiClientConfig) {
+__d("ApiClient",["ArgumentError","Assert","CORSRequest","FlashRequest","flattenObject","JSONPRequest","Log","ObservableMixin","sprintf","sdk.URI","UrlMap","ApiClientConfig"],function(global,require,requireDynamic,requireLazy,module,exports,ArgumentError,Assert,CORSRequest,FlashRequest,flattenObject,JSONPRequest,Log,ObservableMixin,sprintf,URI,UrlMap,ApiClientConfig) {
     
            
-   
       
      
     
@@ -6430,7 +6510,7 @@ var READONLYCALLS = {
 function request(/*string*/ url, /*string*/ method, /*object*/ params,
     /*function*/ cb) {__t([url, 'string', 'url'], [method, 'string', 'method'], [params, 'object', 'params'], [cb, 'function', 'cb']);
   if (defaultParams) {
-    params = copyProperties({}, defaultParams, params);
+    params = ES('Object', 'assign', false,{}, defaultParams, params);
   }
 
   params.access_token = params.access_token || accessToken;
@@ -6455,7 +6535,7 @@ function request(/*string*/ url, /*string*/ method, /*object*/ params,
 
   for (var i = 0; i < transports.length; i++) {
     var transport = availableTransports[transports[i]];
-    var paramsCopy = copyProperties({}, params);
+    var paramsCopy = ES('Object', 'assign', false,{}, params);
     if (transport.execute(url, method, paramsCopy, cb)) {
       return;
     }
@@ -6494,7 +6574,7 @@ function requestUsingGraph(/*string*/ path) {__t([path, 'string', 'path']);
   }
 
   
-  ES5(Array.prototype.slice.call(arguments, 1), 'forEach', true,function(argument) {
+  ES(Array.prototype.slice.call(arguments, 1), 'forEach', true,function(argument) {
     args[typeof argument] = argument;
   });
 
@@ -6515,7 +6595,7 @@ function requestUsingGraph(/*string*/ path) {__t([path, 'string', 'path']);
   }
   var params = uri.getQueryData();
 
-  var inspector = ES5(inspect, 'bind', true,null, callback, uri.getPath(), method, params);
+  var inspector = ES(inspect, 'bind', true,null, callback, uri.getPath(), method, params);
 
   var url = uri.getProtocol() && uri.getDomain()
     ? uri.setQueryData({}).toString()
@@ -6539,11 +6619,11 @@ function requestUsingRest(/*object*/ params, /*?function*/ cb) {__t([params, 'ob
 
   var domain = method in READONLYCALLS ? 'api_read' : 'api';
   var url = UrlMap.resolve(domain) + '/restserver.php';
-  var inspector = ES5(inspect, 'bind', true,null, cb, '/restserver.php', 'get', params);
+  var inspector = ES(inspect, 'bind', true,null, cb, '/restserver.php', 'get', params);
   request(url, 'get', params, inspector);
 }__w(requestUsingRest, {"signature":"function(object,?function)"}); 
 
-var ApiClient = copyProperties(new ObservableMixin(), {
+var ApiClient = ES('Object', 'assign', false,new ObservableMixin(), {
   setAccessToken: __w(function(/*?string*/ access_token) {__t([access_token, '?string', 'access_token']);
     accessToken = access_token;
   }, {"signature":"function(?string)"}),
@@ -6669,7 +6749,7 @@ function api(path) {
 
       
       if (!PlatformVersioning.REGEX
-            .test(path.substring(1, ES5(path, 'indexOf', true,'/', 1)))) {
+            .test(path.substring(1, ES(path, 'indexOf', true,'/', 1)))) {
         path = '/' + Runtime.getVersion() + path;
       }
 
@@ -6908,7 +6988,7 @@ var SdkDialog = Type.extend({
     if (this._e2e[name]) {
       return this;
     }
-    this._e2e[name] = time || ES5('Date', 'now', false);
+    this._e2e[name] = time || ES('Date', 'now', false);
     if (name == 'close') {
       
       this.inform('e2e:end', this._e2e);
@@ -6918,7 +6998,7 @@ var SdkDialog = Type.extend({
 
   trackEvents: __w(function(/*string|object*/ events) /*SdkDialog*/ {__t([events, 'string|object', 'events']);return __t([function() {
     if (typeof events === 'string') {
-      events = ES5('JSON', 'parse', false,events);
+      events = ES('JSON', 'parse', false,events);
     }
     for (var key in events) {
       if (events.hasOwnProperty(key)) {
@@ -7108,7 +7188,7 @@ var Dialog = {
 
   
   _removeStacked: __w(function(/*DOMElement*/ dialog) {__t([dialog, 'DOMElement', 'dialog']);
-    Dialog._stack = ES5(Dialog._stack, 'filter', true,function(node) {
+    Dialog._stack = ES(Dialog._stack, 'filter', true,function(node) {
       return node != dialog;
     });
   }, {"signature":"function(DOMElement)"}),
@@ -7347,7 +7427,7 @@ var Dialog = {
     
     if (UserAgent.ie()) {
       className += ' fb_dialog_legacy';
-      ES5([ 'vert_left',
+      ES([ 'vert_left',
         'vert_right',
         'horiz_top',
         'horiz_bottom',
@@ -7488,7 +7568,7 @@ var Frictionless = {
       if (!response || response.error) {
         return;
       }
-      ES5(response.data, 'forEach', true,__w(function(/*object*/ recipient) {__t([recipient, 'object', 'recipient']);
+      ES(response.data, 'forEach', true,__w(function(/*object*/ recipient) {__t([recipient, 'object', 'recipient']);
         Frictionless._allowedRecipients[recipient.recipient_id] = true;
       }, {"signature":"function(object)"}));
     });
@@ -7546,11 +7626,11 @@ var Frictionless = {
     if (typeof user_ids === 'string') {
       user_ids = user_ids.split(',');
     }
-    user_ids = ES5(user_ids, 'map', true,function(s) {return ES5(String(s),'trim', true);});
+    user_ids = ES(user_ids, 'map', true,function(s) {return ES(String(s),'trim', true);});
 
     var allowed = true;
     var has_user_ids = false;
-    ES5(user_ids, 'forEach', true,__w(function(/*string*/ user_id) {__t([user_id, 'string', 'user_id']);
+    ES(user_ids, 'forEach', true,__w(function(/*string*/ user_id) {__t([user_id, 'string', 'user_id']);
       allowed = allowed && user_id in Frictionless._allowedRecipients;
       has_user_ids = true;
     }, {"signature":"function(string)"}));
@@ -7698,8 +7778,7 @@ module.exports = insertIframe;
 },null);
 
 
-__d("sdk.Native",["copyProperties","Log","UserAgent"],function(global,require,requireDynamic,requireLazy,module,exports,copyProperties,Log,UserAgent) {
-   
+__d("sdk.Native",["Log","UserAgent"],function(global,require,requireDynamic,requireLazy,module,exports,Log,UserAgent) {
    
    
 
@@ -7722,7 +7801,7 @@ var Native = {
     
     
     if (window.__fbNative && !this.nativeReady) {
-      copyProperties(this, window.__fbNative);
+      ES('Object', 'assign', false,this, window.__fbNative);
     }
 
     
@@ -7769,8 +7848,7 @@ module.exports = resolveURI;
 },null);
 
 
-__d("sdk.UIServer",["sdk.Auth","sdk.Content","createObjectFrom","copyProperties","sdk.Dialog","sdk.DOM","sdk.Event","flattenObject","sdk.Frictionless","sdk.getContextType","guid","insertIframe","Log","sdk.Native","QueryString","resolveURI","sdk.RPC","sdk.Runtime","JSSDKConfig","UrlMap","UserAgent","sdk.XD"],function(global,require,requireDynamic,requireLazy,module,exports,Auth,Content,createObjectFrom,copyProperties,Dialog,DOM,Event,flattenObject,Frictionless,getContextType,guid,insertIframe,Log,Native,QueryString,resolveURI,RPC,Runtime,SDKConfig,UrlMap,UserAgent,XD) {
-   
+__d("sdk.UIServer",["sdk.Auth","sdk.Content","createObjectFrom","sdk.Dialog","sdk.DOM","sdk.Event","flattenObject","sdk.Frictionless","sdk.getContextType","guid","insertIframe","Log","sdk.Native","QueryString","resolveURI","sdk.RPC","sdk.Runtime","JSSDKConfig","UrlMap","UserAgent","sdk.XD"],function(global,require,requireDynamic,requireLazy,module,exports,Auth,Content,createObjectFrom,Dialog,DOM,Event,flattenObject,Frictionless,getContextType,guid,insertIframe,Log,Native,QueryString,resolveURI,RPC,Runtime,SDKConfig,UrlMap,UserAgent,XD) {
    
    
    
@@ -7905,7 +7983,7 @@ var Methods = {
         id = call.id;
       delete call.cb;
 
-      var responseTypes = ES5('Object', 'keys', false,copyProperties(
+      var responseTypes = ES('Object', 'keys', false,ES('Object', 'assign', false,
         call.params.response_type
           ? createObjectFrom(call.params.response_type.split(','))
           : {},
@@ -7913,7 +7991,7 @@ var Methods = {
       )).join(',');
 
       if (call.params.display === 'async') {
-        copyProperties(
+        ES('Object', 'assign', false,
           call.params, {
             client_id : Runtime.getClientID(),
             origin : getContextType(),
@@ -7924,7 +8002,7 @@ var Methods = {
         call.cb = Auth.xdResponseWrapper(
           cb, Auth.getAuthResponse(), 'permissions.oauth');
       } else {
-        copyProperties(
+        ES('Object', 'assign', false,
           call.params, {
             client_id : Runtime.getClientID(),
             redirect_uri : resolveURI(
@@ -7969,7 +8047,7 @@ var Methods = {
         cb = call.cb,
         id = call.id;
       delete call.cb;
-      copyProperties(call.params, {
+      ES('Object', 'assign', false,call.params, {
         client_id : Runtime.getClientID(),
         redirect_uri : UIServer.xdHandler(cb,
                                          id,
@@ -7997,7 +8075,7 @@ var UIServer = {
   
   genericTransform: __w(function(/*object*/ call) /*object*/ {__t([call, 'object', 'call']);return __t([function() {
     if (call.params.display == 'dialog' || call.params.display == 'iframe') {
-      copyProperties(call.params, {
+      ES('Object', 'assign', false,call.params, {
         display: 'iframe',
         channel: UIServer._xdChannelHandler(call.id, 'parent.parent')
       }, true);
@@ -8015,7 +8093,7 @@ var UIServer = {
 
     var scopes = scope.split(/\s|,/g);
     for (var ii = 0; ii< scopes.length; ii++) {
-      if (!SDKConfig.initSitevars.iframePermissions[ES5(scopes[ii],'trim', true)]) {
+      if (!SDKConfig.initSitevars.iframePermissions[ES(scopes[ii],'trim', true)]) {
         return 'popup';
       }
     }
@@ -8027,13 +8105,15 @@ var UIServer = {
   prepareCall: __w(function(/*object*/ params, /*function*/ cb) /*?object*/ {__t([params, 'object', 'params'], [cb, 'function', 'cb']);return __t([function() {
     var
       name   = params.method.toLowerCase(),
-      method = copyProperties({}, UIServer.Methods[name]),
+      method = UIServer.Methods.hasOwnProperty(name)
+        ? ES('Object', 'assign', false,{}, UIServer.Methods[name])
+        : {},
       id     = guid(),
       useSSL = Runtime.getSecure()
         || (name !== 'auth.status' && name != 'login.status');
 
     
-    copyProperties(params, {
+    ES('Object', 'assign', false,params, {
       app_id       : Runtime.getClientID(),
       locale       : Runtime.getLocale(),
       sdk          : 'joey',
@@ -8099,7 +8179,7 @@ var UIServer = {
       );
     }
     if (relation === 'parent') {
-      copyProperties(call.params, {
+      ES('Object', 'assign', false,call.params, {
         channel_url: UIServer._xdChannelHandler(id, 'parent.parent')
       }, true);
     }
@@ -8568,7 +8648,7 @@ var UIServer = {
       UIServer._xdNextHandler(function(params) {
         cb && cb(params.result &&
                  params.result != UIServer._resultToken &&
-                 ES5('JSON', 'parse', false,params.result));
+                 ES('JSON', 'parse', false,params.result));
       }, frame, target, isDefault) +
       '&result=' + encodeURIComponent(UIServer._resultToken)
     );
@@ -8592,7 +8672,7 @@ module.exports = UIServer;
 },null);
 
 
-__d("sdk.ui",["Assert","sdk.Impressions","Log","sdk.PlatformVersioning","sdk.Runtime","sdk.UIServer","copyProperties","sdk.feature"],function(global,require,requireDynamic,requireLazy,module,exports,Assert,Impressions,Log,PlatformVersioning,Runtime,UIServer,copyProperties,feature) {
+__d("sdk.ui",["Assert","sdk.Impressions","Log","sdk.PlatformVersioning","sdk.Runtime","sdk.UIServer","sdk.feature"],function(global,require,requireDynamic,requireLazy,module,exports,Assert,Impressions,Log,PlatformVersioning,Runtime,UIServer,feature) {
    
    
    
@@ -8600,7 +8680,6 @@ __d("sdk.ui",["Assert","sdk.Impressions","Log","sdk.PlatformVersioning","sdk.Run
    
    
 
-   
    
 
 
@@ -8617,7 +8696,7 @@ function ui(/*object*/ params, /*?function*/ cb) /*?object*/ {__t([params, 'obje
     }
   }
 
-  params = copyProperties({}, params);
+  params = ES('Object', 'assign', false,{}, params);
   if (!params.method) {
     Log.error('"method" is a required parameter for FB.ui().');
     return null;
@@ -8665,7 +8744,7 @@ function ui(/*object*/ params, /*?function*/ cb) /*?object*/ {__t([params, 'obje
     call.dialog.subscribe('e2e:end', __w(function(/*object*/ events) {__t([events, 'object', 'events']);
       events.method = method;
       events.display = displayName;
-      Log.debug('e2e: %s', ES5('JSON', 'stringify', false,events));
+      Log.debug('e2e: %s', ES('JSON', 'stringify', false,events));
       
       Impressions.log(114, {
         payload: events
@@ -8736,11 +8815,11 @@ FB.provide('', {
   }, {"signature":"function(?function)"})
 });
 
-Auth.subscribe('logout', ES5(Event.fire, 'bind', true,Event, 'auth.logout'));
-Auth.subscribe('login', ES5(Event.fire, 'bind', true,Event, 'auth.login'));
-Auth.subscribe('authresponse.change', ES5(Event.fire, 'bind', true,Event,
+Auth.subscribe('logout', ES(Event.fire, 'bind', true,Event, 'auth.logout'));
+Auth.subscribe('login', ES(Event.fire, 'bind', true,Event, 'auth.login'));
+Auth.subscribe('authresponse.change', ES(Event.fire, 'bind', true,Event,
   'auth.authResponseChange'));
-Auth.subscribe('status.change', ES5(Event.fire, 'bind', true,Event, 'auth.statusChange'));
+Auth.subscribe('status.change', ES(Event.fire, 'bind', true,Event, 'auth.statusChange'));
 
 Event.subscribe('init:post', __w(function(/*object*/ options) {__t([options, 'object', 'options']);
   if (options.status) {
@@ -8984,7 +9063,7 @@ function hidePluginCallback(/*object*/ params) {__t([params, 'object', 'params']
 
   var flashPresent = false;
   var unityPresent = false;
-  ES5(candidates, 'forEach', true,__w(function(/*DOMElement*/ elem) {__t([elem, 'DOMElement', 'elem']);
+  ES(candidates, 'forEach', true,__w(function(/*DOMElement*/ elem) {__t([elem, 'DOMElement', 'elem']);
     var isFlashElement = isHideableFlashElement(elem);
     var isUnityElement = unityNeedsToBeHidden && isHideableUnityElement(elem);
     if (!isFlashElement && !isUnityElement) {
@@ -9077,7 +9156,7 @@ __d("sdk.Canvas.Tti",["sdk.RPC","sdk.Runtime"],function(global,require,requireDy
 function passAppTtiMessage(/*?function*/ callback, /*string*/ messageName) {__t([callback, '?function', 'callback'], [messageName, 'string', 'messageName']);
   var params = {
     appId: Runtime.getClientID(),
-    time: ES5('Date', 'now', false),
+    time: ES('Date', 'now', false),
     name: messageName
   };
 
@@ -9181,7 +9260,7 @@ FB.provide('Canvas', {
 
 });
 
-RPC.local.fireEvent = ES5(Event.fire, 'bind', true,Event);
+RPC.local.fireEvent = ES(Event.fire, 'bind', true,Event);
 
 Event.subscribe('init:post', function(options) {
   if (Runtime.isEnvironment(Runtime.ENVIRONMENTS.CANVAS)) {
@@ -9243,9 +9322,9 @@ function sample() {
   };
 
   if (collectionMode == COLLECT.AUTOMATIC) {
-    ES5(ES5('Object', 'keys', false,resourceFieldsByTag), 'forEach', true,__w(function(/*string*/ tagName) {__t([tagName, 'string', 'tagName']);
+    ES(ES('Object', 'keys', false,resourceFieldsByTag), 'forEach', true,__w(function(/*string*/ tagName) {__t([tagName, 'string', 'tagName']);
       var propertyName = resourceFieldsByTag[tagName];
-      ES5(createArrayFrom(document.getElementsByTagName(tagName)), 'forEach', true,__w(function(/*DOMElement*/ tag) {__t([tag, 'DOMElement', 'tag']);
+      ES(createArrayFrom(document.getElementsByTagName(tagName)), 'forEach', true,__w(function(/*DOMElement*/ tag) {__t([tag, 'DOMElement', 'tag']);
           if (tag[propertyName]) {
             links.push(tag[propertyName]);
           }
@@ -9259,7 +9338,7 @@ function sample() {
 
   
   api(Runtime.getClientID() + '/staticresources', 'post', {
-    urls: ES5('JSON', 'stringify', false,links),
+    urls: ES('JSON', 'stringify', false,links),
     is_https: location.protocol === 'https:'
   });
 
@@ -9274,7 +9353,7 @@ function maybeSample() {
   }
 
   if (Math.random() > 1 / sampleRate ||
-      blacklist == '*' || ~ES5(blacklist, 'indexOf', true,Runtime.getClientID())) {
+      blacklist == '*' || ~ES(blacklist, 'indexOf', true,Runtime.getClientID())) {
     return;
   }
 
@@ -9374,7 +9453,7 @@ UIServer.Methods['auth.login'] = UIServer.Methods['permissions.request'];
 __d("mergeArrays",[],function(global,require,requireDynamic,requireLazy,module,exports) {
 function mergeArrays(/*array*/ target, /*array*/ source) /*array*/ {__t([target, 'array', 'target'], [source, 'array', 'source']);return __t([function() {
   for (var i=0; i < source.length; i++) {
-    if (ES5(target, 'indexOf', true,source[i]) < 0) {
+    if (ES(target, 'indexOf', true,source[i]) < 0) {
       target.push(source[i]);
     }
   }
@@ -9449,7 +9528,7 @@ var Waitable = Model.extend({
       this.subscribe('error', errorHandler);
     }
 
-    this.monitor('Value.change', ES5(__w(function() /*?boolean*/ {return __t([function() {
+    this.monitor('Value.change', ES(__w(function() /*?boolean*/ {return __t([function() {
       var value = this.getValue();
       if (value !== undefined) {
         
@@ -9478,7 +9557,7 @@ __d("sdk.Query",["format","safeEval","Type","sdk.Waitable"],function(global,requ
 
 
 function toFields(/*string*/ s) /*array<string>*/ {__t([s, 'string', 's']);return __t([function() {
-  return ES5(s.split(','), 'map', true,function(s) {return ES5(s,'trim', true);});
+  return ES(s.split(','), 'map', true,function(s) {return ES(s,'trim', true);});
 }.apply(this, arguments), 'array<string>']);}__w(toFields, {"signature":"function(string):array<string>"}); 
 
 
@@ -9517,7 +9596,7 @@ function parseWhere(/*string*/ s) /*object*/ {__t([s, 'string', 's']);return __t
 
 function encode(value) /*string*/ {return __t([function() {
   return typeof value === 'string'
-    ? ES5('JSON', 'stringify', false,value)
+    ? ES('JSON', 'stringify', false,value)
     : value;
 }.apply(this, arguments), 'string']);}__w(encode, {"signature":"function():string"}); 
 
@@ -9572,7 +9651,7 @@ var Query = Waitable.extend({
           s += this.where.key + '=' +  encode(this.where.value[0]);
         } else {
           s += this.where.key + ' in (' +
-            ES5(this.where.value, 'map', true,encode).join(',') + ')';
+            ES(this.where.value, 'map', true,encode).join(',') + ')';
         }
         break;
     }
@@ -9624,7 +9703,7 @@ var Data = {
       callback = ErrorHandling.unguard(function() { return safeEval(s); });
     }
 
-    ES5(dependencies, 'forEach', true,__w(function(/*object*/ item) {__t([item, 'object', 'item']);
+    ES(dependencies, 'forEach', true,__w(function(/*object*/ item) {__t([item, 'object', 'item']);
       item.monitor('Value.change', function() {
         var done = false;
         if (Data._getValue(item) !== undefined) {
@@ -9634,7 +9713,7 @@ var Data = {
           done = true;
         }
         if (count === 0) {
-          var value = callback(ES5(dependencies, 'map', true,Data._getValue));
+          var value = callback(ES(dependencies, 'map', true,Data._getValue));
           result.setValue(value !== undefined ? value : true);
         }
         return done;
@@ -9713,11 +9792,11 @@ var Data = {
 
     api('/fql', 'GET', params, __w(function(/*object*/ result) {__t([result, 'object', 'result']);
       if (result.error) {
-        ES5(ES5('Object', 'keys', false,mqueries), 'forEach', true,__w(function(/*string*/ key) {__t([key, 'string', 'key']);
+        ES(ES('Object', 'keys', false,mqueries), 'forEach', true,__w(function(/*string*/ key) {__t([key, 'string', 'key']);
           mqueries[key].error(new Error(result.error.message));
         }, {"signature":"function(string)"}));
       } else {
-        ES5(result.data, 'forEach', true,__w(function(/*object*/ o) {__t([o, 'object', 'o']);
+        ES(result.data, 'forEach', true,__w(function(/*object*/ o) {__t([o, 'object', 'o']);
           mqueries[o.name].setValue(o.fql_result_set);
         }, {"signature":"function(object)"}));
       }
@@ -9744,7 +9823,7 @@ var Data = {
 
     
     master.wait(__w(function(/*array<object>*/ r) {__t([r, 'array<object>', 'r']);
-      item.setValue(ES5(r, 'filter', true,__w(function(/*object*/ x) {__t([x, 'object', 'x']);
+      item.setValue(ES(r, 'filter', true,__w(function(/*object*/ x) {__t([x, 'object', 'x']);
         return x[key] == value;
       }, {"signature":"function(object)"})));
     }, {"signature":"function(array<object>)"}));
@@ -9774,8 +9853,8 @@ __d("legacy:fb.event",["FB","sdk.Event"],function(global,require,requireDynamic,
    
 
 FB.provide('Event', {
-  subscribe: ES5(Event.subscribe, 'bind', true,Event),
-  unsubscribe: ES5(Event.unsubscribe, 'bind', true,Event)
+  subscribe: ES(Event.subscribe, 'bind', true,Event),
+  unsubscribe: ES(Event.unsubscribe, 'bind', true,Event)
 });
 
 
@@ -9787,9 +9866,9 @@ __d("legacy:fb.event-legacy",["FB","sdk.Event"],function(global,require,requireD
    
 
 FB.provide('Event', {
-  clear: ES5(Event.clear, 'bind', true,Event),
-  fire: ES5(Event.fire, 'bind', true,Event),
-  monitor: ES5(Event.monitor, 'bind', true,Event)
+  clear: ES(Event.clear, 'bind', true,Event),
+  fire: ES(Event.fire, 'bind', true,Event),
+  monitor: ES(Event.monitor, 'bind', true,Event)
 });
 
 FB.provide('EventProvider', Event);
@@ -9807,7 +9886,7 @@ FB.provide('Frictionless', Frictionless);
 },3);
 
 
-__d("sdk.init",["sdk.Cookie","sdk.ErrorHandling","sdk.Event","Log","ManagedError","sdk.PlatformVersioning","QueryString","sdk.Runtime","sdk.URI","copyProperties","createArrayFrom"],function(global,require,requireDynamic,requireLazy,module,exports,Cookie,ErrorHandling,Event,Log,ManagedError,PlatformVersioning,QueryString,Runtime,URI,copyProperties,createArrayFrom) {
+__d("sdk.init",["sdk.Cookie","sdk.ErrorHandling","sdk.Event","Log","ManagedError","sdk.PlatformVersioning","QueryString","sdk.Runtime","sdk.URI","createArrayFrom"],function(global,require,requireDynamic,requireLazy,module,exports,Cookie,ErrorHandling,Event,Log,ManagedError,PlatformVersioning,QueryString,Runtime,URI,createArrayFrom) {
    
    
    
@@ -9818,7 +9897,6 @@ __d("sdk.init",["sdk.Cookie","sdk.ErrorHandling","sdk.Event","Log","ManagedError
    
    
 
-   
    
 
 
@@ -9869,7 +9947,7 @@ function init(/*object|number|string*/ options) {__t([options, 'object|number|st
       options = {apiKey: options};
     }
 
-    options = copyProperties({
+    options = ES('Object', 'assign', false,{
       status: true
     }, options || {});
 
@@ -9906,7 +9984,7 @@ setTimeout(function() {
   
   
   var pattern = /(connect\.facebook\.net|\.facebook\.com\/assets.php).*?#(.*)/;
-  ES5(createArrayFrom(document.getElementsByTagName('script')), 'forEach', true,function(script) {
+  ES(createArrayFrom(document.getElementsByTagName('script')), 'forEach', true,function(script) {
     if (script.src) {
       var match = pattern.exec(script.src);
       if (match) {
@@ -9960,14 +10038,14 @@ __d("legacy:fb.json",["FB","ManagedError"],function(global,require,requireDynami
 FB.provide('JSON', {
   stringify: function(obj) {
     try {
-      return ES5('JSON', 'stringify', false,obj);
+      return ES('JSON', 'stringify', false,obj);
     } catch(e) {
       throw new ManagedError(e.message, e);
     }
   },
   parse: function(str) {
     try {
-      return ES5('JSON', 'parse', false,str);
+      return ES('JSON', 'parse', false,str);
     } catch(e) {
       throw new ManagedError(e.message, e);
     }
@@ -9994,7 +10072,7 @@ var DEF_ERROR_MSG = {
 var callbackWrapper = __w(function(/*function*/ callback) /*function*/ {__t([callback, 'function', 'callback']);return __t([function() {
   return __w(function(/*?object*/ msg) {__t([msg, '?object', 'msg']);
     callback(msg && msg.response
-      ? ES5('JSON', 'parse', false,msg.response)
+      ? ES('JSON', 'parse', false,msg.response)
       : DEF_ERROR_MSG
     );
   }, {"signature":"function(?object)"});
@@ -10020,7 +10098,7 @@ copyProperties(UIServer.Methods, {
       call.cb = callbackWrapper(call.cb);
       if (!Runtime.isEnvironment(Runtime.ENVIRONMENTS.CANVAS)) {
         
-        call.params.order_info = ES5('JSON', 'stringify', false,call.params.order_info);
+        call.params.order_info = ES('JSON', 'stringify', false,call.params.order_info);
         return call;
       }
       var handler = XD.handler(
@@ -10100,7 +10178,7 @@ function encode(s) {
 
   // Create array of part strings we'll use to decode, sort by frequency so
   
-  var byCount = ES5('Object', 'keys', false,dict);
+  var byCount = ES('Object', 'keys', false,dict);
   byCount.sort(function(a,b) {
     return dict[a] < dict[b] ? 1 : (dict[b] < dict[a] ? -1 : 0);
   });
@@ -10175,8 +10253,7 @@ module.exports = runOnce;
 },null);
 
 
-__d("XFBML",["Assert","copyProperties","createArrayFrom","sdk.DOM","sdk.feature","sdk.Impressions","Log","ObservableMixin","runOnce","UserAgent"],function(global,require,requireDynamic,requireLazy,module,exports,Assert,copyProperties,createArrayFrom,DOM,feature,Impressions,Log,ObservableMixin,runOnce,UserAgent) {
-   
+__d("XFBML",["Assert","createArrayFrom","sdk.DOM","sdk.feature","sdk.Impressions","Log","ObservableMixin","runOnce","UserAgent"],function(global,require,requireDynamic,requireLazy,module,exports,Assert,createArrayFrom,DOM,feature,Impressions,Log,ObservableMixin,runOnce,UserAgent) {
    
    
    
@@ -10213,7 +10290,7 @@ function xfbmlInfo(/*DOMElement*/ element) /*?object*/ {__t([element, 'DOMElemen
 }.apply(this, arguments), '?object']);}__w(xfbmlInfo, {"signature":"function(DOMElement):?object"}); 
 
 function html5Info(/*DOMElement*/ element) /*?object*/ {__t([element, 'DOMElement', 'element']);return __t([function() {
-  var classNames = ES5(ES5(propStr(element, 'className'),'trim', true).split(/\s+/), 'filter', true,
+  var classNames = ES(ES(propStr(element, 'className'),'trim', true).split(/\s+/), 'filter', true,
     function(className) { return html5.hasOwnProperty(className); });
 
   if (classNames.length === 0) {
@@ -10248,7 +10325,7 @@ function html5Info(/*DOMElement*/ element) /*?object*/ {__t([element, 'DOMElemen
 
 function attr(/*DOMElement*/ element) /*object*/ {__t([element, 'DOMElement', 'element']);return __t([function() {
   var attrs = {};
-  ES5(createArrayFrom(element.attributes), 'forEach', true,function(at) {
+  ES(createArrayFrom(element.attributes), 'forEach', true,function(at) {
     attrs[propStr(at, 'name')] = propStr(at, 'value');
   });
   return attrs;
@@ -10258,10 +10335,10 @@ function convertSyntax(
   /*DOMElement*/ element, /*string*/ ns, /*string*/ ln) /*DOMElement*/ {__t([element, 'DOMElement', 'element'], [ns, 'string', 'ns'], [ln, 'string', 'ln']);return __t([function() {
   var replacement = document.createElement('div');
   DOM.addCss(element, ns + '-' + ln);
-  ES5(createArrayFrom(element.childNodes), 'forEach', true,function(child) {
+  ES(createArrayFrom(element.childNodes), 'forEach', true,function(child) {
     replacement.appendChild(child);
   });
-  ES5(createArrayFrom(element.attributes), 'forEach', true,function(attribute) {
+  ES(createArrayFrom(element.attributes), 'forEach', true,function(attribute) {
     replacement.setAttribute(attribute.name, attribute.value);
   });
   element.parentNode.replaceChild(replacement, element);
@@ -10293,7 +10370,7 @@ function parse(/*DOMElement*/ dom, /*function*/ callback, /*boolean*/ reparse) {
     Assert.isTrue(count >= 0, 'onrender() has been called too many times');
   };
 
-  ES5(createArrayFrom(dom.getElementsByTagName('*')), 'forEach', true,function(element) {
+  ES(createArrayFrom(dom.getElementsByTagName('*')), 'forEach', true,function(element) {
     if (!reparse && element.getAttribute('fb-xfbml-state')) {
       
       return;
@@ -10361,12 +10438,12 @@ function parse(/*DOMElement*/ dom, /*function*/ callback, /*boolean*/ reparse) {
 XFBML.subscribe('render', function() {
   var q = XFBML.getSubscribers('render.queue');
   XFBML.clearSubscribers('render.queue');
-  ES5(q, 'forEach', true,function(r) { r(); });
+  ES(q, 'forEach', true,function(r) { r(); });
   
   
 });
 
-copyProperties(XFBML, {
+ES('Object', 'assign', false,XFBML, {
 
   registerTag: __w(function(/*object*/ info) {__t([info, 'object', 'info']);
     var fqn = info.xmlns + ':' + info.localName;
@@ -10393,7 +10470,7 @@ if (feature('log_tag_count')) {
     XFBML.unsubscribe('parse', logTagCount);
     
     
-    setTimeout(ES5(Impressions.log, 'bind', true,null, 102, {tag_count: numTags}), 5000);
+    setTimeout(ES(Impressions.log, 'bind', true,null, 102, {tag_count: numTags}), 5000);
   }, {"signature":"function(number,number)"});
   XFBML.subscribe('parse', logTagCount);
 }
@@ -10403,8 +10480,7 @@ module.exports = XFBML;
 
 },null);
 
-__d("PluginPipe",["sdk.Content","copyProperties","sdk.feature","guid","insertIframe","Miny","ObservableMixin","JSSDKPluginPipeConfig","sdk.Runtime","UrlMap","UserAgent","XFBML"],function(global,require,requireDynamic,requireLazy,module,exports,Content,copyProperties,feature,guid,insertIframe,Miny,ObservableMixin,PluginPipeConfig,Runtime,UrlMap,UserAgent,XFBML) {
-   
+__d("PluginPipe",["sdk.Content","sdk.feature","guid","insertIframe","Miny","ObservableMixin","JSSDKPluginPipeConfig","sdk.Runtime","UrlMap","UserAgent","XFBML"],function(global,require,requireDynamic,requireLazy,module,exports,Content,feature,guid,insertIframe,Miny,ObservableMixin,PluginPipeConfig,Runtime,UrlMap,UserAgent,XFBML) {
    
    
    
@@ -10434,7 +10510,7 @@ function insertPlugins() {
   queued = [];
 
   if (q.length <= threshold) {
-    ES5(q, 'forEach', true,__w(function(/*object*/ plugin) {__t([plugin, 'object', 'plugin']);
+    ES(q, 'forEach', true,__w(function(/*object*/ plugin) {__t([plugin, 'object', 'plugin']);
       insertIframe(plugin.config);
     }, {"signature":"function(object)"}));
     return;
@@ -10448,7 +10524,7 @@ function insertPlugins() {
     }
   }
 
-  ES5(q, 'forEach', true,__w(function(/*object*/ plugin) {__t([plugin, 'object', 'plugin']);
+  ES(q, 'forEach', true,__w(function(/*object*/ plugin) {__t([plugin, 'object', 'plugin']);
     var config = {};
     for (var key in plugin.config) {
       config[key] = plugin.config[key];
@@ -10469,17 +10545,17 @@ function insertPipe(/*array<object>*/ plugins) {__t([plugins, 'array<object>', '
   Content.appendHidden(root);
 
   var params = {};
-  ES5(plugins, 'forEach', true,__w(function(/*object*/ plugin){__t([plugin, 'object', 'plugin']);
+  ES(plugins, 'forEach', true,__w(function(/*object*/ plugin){__t([plugin, 'object', 'plugin']);
     params[plugin.config.name] = {
       plugin: plugin.tag,
       params: plugin.params
     };
   }, {"signature":"function(object)"}));
 
-  var raw = ES5('JSON', 'stringify', false,params);
+  var raw = ES('JSON', 'stringify', false,params);
   var miny = Miny.encode(raw);
 
-  ES5(plugins, 'forEach', true,__w(function(/*object*/ plugin) {__t([plugin, 'object', 'plugin']);
+  ES(plugins, 'forEach', true,__w(function(/*object*/ plugin) {__t([plugin, 'object', 'plugin']);
     var frame = document.getElementsByName(plugin.config.name)[0];
     frame.onload = plugin.config.onload;
   }, {"signature":"function(object)"}));
@@ -10503,7 +10579,7 @@ function insertPipe(/*array<object>*/ plugins) {__t([plugins, 'array<object>', '
   });
 }__w(insertPipe, {"signature":"function(array<object>)"}); 
 
-copyProperties(PluginPipe, {
+ES('Object', 'assign', false,PluginPipe, {
   add: __w(function(/*object*/ plugin) /*boolean*/ {__t([plugin, 'object', 'plugin']);return __t([function() {
     var enabled = isEnabled();
     enabled && queued.push({
@@ -10521,7 +10597,7 @@ module.exports = PluginPipe;
 },null);
 
 
-__d("IframePlugin",["sdk.Auth","sdk.DOM","sdk.Event","Log","ObservableMixin","sdk.PlatformVersioning","PluginPipe","QueryString","sdk.Runtime","Type","sdk.URI","UrlMap","UserAgent","sdk.XD","copyProperties","sdk.createIframe","guid","resolveURI"],function(global,require,requireDynamic,requireLazy,module,exports,Auth,DOM,Event,Log,ObservableMixin,PlatformVersioning,PluginPipe,QueryString,Runtime,Type,URI,UrlMap,UserAgent,XD,copyProperties,createIframe,guid,resolveURI) {
+__d("IframePlugin",["sdk.Auth","sdk.DOM","sdk.Event","Log","ObservableMixin","sdk.PlatformVersioning","PluginPipe","QueryString","sdk.Runtime","Type","sdk.URI","UrlMap","UserAgent","sdk.XD","sdk.createIframe","guid","resolveURI"],function(global,require,requireDynamic,requireLazy,module,exports,Auth,DOM,Event,Log,ObservableMixin,PlatformVersioning,PluginPipe,QueryString,Runtime,Type,URI,UrlMap,UserAgent,XD,createIframe,guid,resolveURI) {
    
    
    
@@ -10537,7 +10613,6 @@ __d("IframePlugin",["sdk.Auth","sdk.DOM","sdk.Event","Log","ObservableMixin","sd
    
    
 
-   
    
    
    
@@ -10607,7 +10682,7 @@ function getVal(/*object*/ attr, /*string*/ key) {__t([attr, 'object', 'attr'], 
 
 function validate(/*object*/ defn, /*DOMElement*/ elem, /*object*/ attr,
     /*object*/ params) {__t([defn, 'object', 'defn'], [elem, 'DOMElement', 'elem'], [attr, 'object', 'attr'], [params, 'object', 'params']);
-  ES5(ES5('Object', 'keys', false,defn), 'forEach', true,function(key) {
+  ES(ES('Object', 'keys', false,defn), 'forEach', true,function(key) {
     if (defn[key] == 'text' && !attr[key]) {
       attr[key] = elem.textContent || elem.innerText || ''; 
       elem.setAttribute(key, attr[key]); 
@@ -10632,28 +10707,28 @@ var IframePlugin = Type.extend({
     this.subscribe('xd.resize', resizeBubbler(pluginId));
     this.subscribe('xd.resize.flow', resizeBubbler(pluginId));
 
-    this.subscribe('xd.resize.flow', ES5(__w(function(/*object*/ message) {__t([message, 'object', 'message']);
+    this.subscribe('xd.resize.flow', ES(__w(function(/*object*/ message) {__t([message, 'object', 'message']);
       this._config.root.style.verticalAlign = 'bottom';
       resize(this._config.root, parse(message.width), parse(message.height));
       this.updateLift();
       clearTimeout(this._timeoutID);
     }, {"signature":"function(object)"}), 'bind', true,this));
 
-    this.subscribe('xd.resize', ES5(__w(function(/*object*/ message) {__t([message, 'object', 'message']);
+    this.subscribe('xd.resize', ES(__w(function(/*object*/ message) {__t([message, 'object', 'message']);
       this._config.root.style.verticalAlign = 'bottom';
       resize(this._config.root, parse(message.width), parse(message.height));
       resize(this._iframe, parse(message.width), parse(message.height));
       this.updateLift();
       clearTimeout(this._timeoutID);
     }, {"signature":"function(object)"}), 'bind', true,this));
-    this.subscribe('xd.resize.iframe', ES5(__w(function(/*object*/ message) {__t([message, 'object', 'message']);
+    this.subscribe('xd.resize.iframe', ES(__w(function(/*object*/ message) {__t([message, 'object', 'message']);
       resize(this._iframe, parse(message.width), parse(message.height));
       this.updateLift();
       clearTimeout(this._timeoutID);
     }, {"signature":"function(object)"}), 'bind', true,this));
 
     this.subscribe('xd.sdk_event', __w(function(/*object*/ message) {__t([message, 'object', 'message']);
-      var data = ES5('JSON', 'parse', false,message.data);
+      var data = ES('JSON', 'parse', false,message.data);
       data.pluginID = pluginId;
       Event.fire(message.event, data, elem);
     }, {"signature":"function(object)"}));
@@ -10669,7 +10744,7 @@ var IframePlugin = Type.extend({
     params.locale = Runtime.getLocale();
     params.sdk = 'joey';
     params.kid_directed_site = Runtime.getKidDirectedSite();
-    var xd = ES5(function(msg) { this.inform('xd.' + msg.type, msg); }, 'bind', true,this);
+    var xd = ES(function(msg) { this.inform('xd.' + msg.type, msg); }, 'bind', true,this);
     params.channel = XD.handler(xd, 'parent.parent', /*forever=*/ true);
 
     DOM.addCss(elem, 'fb_iframe_widget');
@@ -10677,12 +10752,12 @@ var IframePlugin = Type.extend({
     var name = guid();
     this.subscribe('xd.verify', __w(function(/*object*/ msg) {__t([msg, 'object', 'msg']);
       XD.sendToFacebook(
-        name, { method: 'xd/verify', params: ES5('JSON', 'stringify', false,msg.token) });
+        name, { method: 'xd/verify', params: ES('JSON', 'stringify', false,msg.token) });
     }, {"signature":"function(object)"}));
 
     this.subscribe(
-      'xd.refreshLoginStatus', ES5(Auth.getLoginStatus, 'bind', true,
-        Auth, ES5(this.inform, 'bind', true,this, 'login.status'), /*force*/true));
+      'xd.refreshLoginStatus', ES(Auth.getLoginStatus, 'bind', true,
+        Auth, ES(this.inform, 'bind', true,this, 'login.status'), /*force*/true));
 
     var flow = document.createElement('span');
     // We want to use 'vertical-align: bottom' to match the default browser
@@ -10709,7 +10784,7 @@ var IframePlugin = Type.extend({
       height: params.height || 1000,
       style: { border: 'none', visibility: 'hidden' },
       title: this._ns + ':' + this._tag + ' Facebook Social Plugin',
-      onload: ES5(function() {
+      onload: ES(function() {
         this.inform('render');
       }, 'bind', true,this)
     };
@@ -10724,7 +10799,7 @@ var IframePlugin = Type.extend({
     }
     // This implements an optimization to skip rendering if we've already
     
-    var params = copyProperties({}, this._params);
+    var params = ES('Object', 'assign', false,{}, this._params);
     delete params.channel; // Unique per-plugin, doesn't change rendering
     var query = QueryString.encode(params);
     if (this._element.getAttribute('fb-iframe-plugin-query') == query) {
@@ -10742,7 +10817,7 @@ var IframePlugin = Type.extend({
     }
     this._element.appendChild(this._config.root);
     var timeout = UserAgent.mobile() ? 120 : 45;
-    this._timeoutID = setTimeout(ES5(function() {
+    this._timeoutID = setTimeout(ES(function() {
       this._iframe && resize(this._iframe, 0, 0);
       Log.warn(
         '%s:%s failed to resize in %ss',
@@ -10941,7 +11016,7 @@ var aliases = {
   friendpile: 'facepile'
 };
 
-ES5(ES5('Object', 'keys', false,aliases), 'forEach', true,function(key) {
+ES(ES('Object', 'keys', false,aliases), 'forEach', true,function(key) {
   PluginTags[key] = PluginTags[aliases[key]];
 });
 
@@ -11026,7 +11101,7 @@ var Element = Type.extend({
     return this.getAttribute(name, defaultValue, __w(function(/*string*/ s)
         /*string*/ {__t([s, 'string', 's']);return __t([function() {
       s = s.toLowerCase();
-      return (ES5(allowed, 'indexOf', true,s) > -1)
+      return (ES(allowed, 'indexOf', true,s) > -1)
         ? s
         : defaultValue;
     }.apply(this, arguments), 'string']);}, {"signature":"function(string):string"}));
@@ -11054,8 +11129,7 @@ module.exports = Element;
 },null);
 
 
-__d("sdk.XFBML.IframeWidget",["sdk.Arbiter","sdk.Auth","sdk.Content","copyProperties","sdk.DOM","sdk.Event","sdk.XFBML.Element","guid","insertIframe","QueryString","sdk.Runtime","sdk.ui","UrlMap","sdk.XD"],function(global,require,requireDynamic,requireLazy,module,exports,Arbiter,Auth,Content,copyProperties,DOM,Event,Element,guid,insertIframe,QueryString,Runtime,ui,UrlMap,XD) {
-   
+__d("sdk.XFBML.IframeWidget",["sdk.Arbiter","sdk.Auth","sdk.Content","sdk.DOM","sdk.Event","sdk.XFBML.Element","guid","insertIframe","QueryString","sdk.Runtime","sdk.ui","UrlMap","sdk.XD"],function(global,require,requireDynamic,requireLazy,module,exports,Arbiter,Auth,Content,DOM,Event,Element,guid,insertIframe,QueryString,Runtime,ui,UrlMap,XD) {
    
    
    
@@ -11164,7 +11238,7 @@ var IframeWidget = Element.extend({
     XD.sendToFacebook(
       this.getIframeName(), {
         method: event,
-        params: ES5('JSON', 'stringify', false,message || {}),
+        params: ES('JSON', 'stringify', false,message || {}),
         behavior: behavior || Arbiter.BEHAVIOR_PERSISTENT
       });
   }, {"signature":"function(string,?object,?string)"}),
@@ -11214,7 +11288,7 @@ var IframeWidget = Element.extend({
     if (this._visibleAfter != 'immediate') {
       DOM.addCss(this.dom, 'fb_hide_iframes');
     } else {
-      this.subscribe('iframe.onload', ES5(this.fire, 'bind', true,this, 'render'));
+      this.subscribe('iframe.onload', ES(this.fire, 'bind', true,this, 'render'));
     }
 
     
@@ -11234,13 +11308,13 @@ var IframeWidget = Element.extend({
       className : Runtime.getRtl() ? 'fb_rtl' : 'fb_ltr',
       height    : size.height,
       width     : size.width,
-      onload    : ES5(this.fire, 'bind', true,this, 'iframe.onload')
+      onload    : ES(this.fire, 'bind', true,this, 'iframe.onload')
     });
 
     this._resizeFlow(size);
 
     this.loaded = false;
-    this.subscribe('iframe.onload', ES5(function() {
+    this.subscribe('iframe.onload', ES(function() {
       this.loaded = true;
     }, 'bind', true,this));
   }, {"signature":"function(?boolean)"}),
@@ -11262,7 +11336,7 @@ var IframeWidget = Element.extend({
     if (url.length > 2000) {
       
       url = 'about:blank';
-      var onload = ES5(function() {
+      var onload = ES(function() {
         this._postRequest();
         this.unsubscribe('iframe.onload', onload);
       }, 'bind', true,this);
@@ -11282,12 +11356,12 @@ var IframeWidget = Element.extend({
   _oneTimeSetup: function() {
     
     
-    this.subscribe('xd.resize', ES5(this._handleResizeMsg, 'bind', true,this));
-    this.subscribe('xd.resize', ES5(this._bubbleResizeEvent, 'bind', true,this));
+    this.subscribe('xd.resize', ES(this._handleResizeMsg, 'bind', true,this));
+    this.subscribe('xd.resize', ES(this._bubbleResizeEvent, 'bind', true,this));
 
-    this.subscribe('xd.resize.iframe', ES5(this._resizeIframe, 'bind', true,this));
-    this.subscribe('xd.resize.flow', ES5(this._resizeFlow, 'bind', true,this));
-    this.subscribe('xd.resize.flow', ES5(this._bubbleResizeEvent, 'bind', true,this));
+    this.subscribe('xd.resize.iframe', ES(this._resizeIframe, 'bind', true,this));
+    this.subscribe('xd.resize.flow', ES(this._resizeFlow, 'bind', true,this));
+    this.subscribe('xd.resize.flow', ES(this._bubbleResizeEvent, 'bind', true,this));
 
     this.subscribe('xd.refreshLoginStatus', function() {
       Auth.getLoginStatus(function(){}, true);
@@ -11303,11 +11377,11 @@ var IframeWidget = Element.extend({
 
     
     if (this._visibleAfter == 'load') {
-      this.subscribe('iframe.onload', ES5(this._makeVisible, 'bind', true,this));
+      this.subscribe('iframe.onload', ES(this._makeVisible, 'bind', true,this));
     }
 
     this.subscribe(
-      'xd.verify', ES5(function(message) {
+      'xd.verify', ES(function(message) {
           this.arbiterInform('xd/verify', message.token);
         }, 'bind', true,this));
 
@@ -11324,9 +11398,9 @@ var IframeWidget = Element.extend({
 
   
   _setupAuthRefresh: function() {
-    Auth.getLoginStatus(ES5(__w(function(/*object*/ response) {__t([response, 'object', 'response']);
+    Auth.getLoginStatus(ES(__w(function(/*object*/ response) {__t([response, 'object', 'response']);
       var lastStatus = response.status;
-      Event.subscribe('auth.statusChange', ES5(__w(function(/*object*/ response) {__t([response, 'object', 'response']);
+      Event.subscribe('auth.statusChange', ES(__w(function(/*object*/ response) {__t([response, 'object', 'response']);
         if (!this.isValid()) {
           return;
         }
@@ -11433,7 +11507,7 @@ var IframeWidget = Element.extend({
 
   
   _getQS: __w(function() /*object*/ {return __t([function() {
-    return copyProperties({
+    return ES('Object', 'assign', false,{
       api_key      : Runtime.getClientID(),
       locale       : Runtime.getLocale(),
       sdk          : 'joey',
@@ -11547,7 +11621,7 @@ var Comments = IframeWidget.extend({
         // We always want the URL minus the hash "#" also note the encoding here
         
         
-        var index = ES5(document.URL, 'indexOf', true,'#');
+        var index = ES(document.URL, 'indexOf', true,'#');
         if (index > 0) {
           attr.xid = encodeURIComponent(document.URL.substring(0, index));
         }
@@ -11570,19 +11644,19 @@ var Comments = IframeWidget.extend({
         fb_comment_id =
           QueryString.decode(
             document.URL.substring(
-              ES5(document.URL, 'indexOf', true,'?') + 1)).fb_comment_id;
-        if (fb_comment_id && ES5(fb_comment_id, 'indexOf', true,'#') > 0) {
+              ES(document.URL, 'indexOf', true,'?') + 1)).fb_comment_id;
+        if (fb_comment_id && ES(fb_comment_id, 'indexOf', true,'#') > 0) {
           
           fb_comment_id =
             fb_comment_id.substring(0,
-                                    ES5(fb_comment_id, 'indexOf', true,'#'));
+                                    ES(fb_comment_id, 'indexOf', true,'#'));
         }
       }
 
       if (fb_comment_id) {
         attr.fb_comment_id = fb_comment_id;
         this.subscribe('render',
-                       ES5(function() {
+                       ES(function() {
                            // don't nuke the hash if it currently
                            
                            
@@ -11600,11 +11674,11 @@ var Comments = IframeWidget.extend({
   
   oneTimeSetup: function() {
     this.subscribe('xd.addComment',
-                   ES5(this._handleCommentMsg, 'bind', true,this));
+                   ES(this._handleCommentMsg, 'bind', true,this));
     this.subscribe('xd.commentCreated',
-                   ES5(this._handleCommentCreatedMsg, 'bind', true,this));
+                   ES(this._handleCommentCreatedMsg, 'bind', true,this));
     this.subscribe('xd.commentRemoved',
-                   ES5(this._handleCommentRemovedMsg, 'bind', true,this));
+                   ES(this._handleCommentRemovedMsg, 'bind', true,this));
   },
 
   
@@ -11693,7 +11767,7 @@ var CommentsCount = Element.extend({
     var href = this.getAttribute('href', window.location.href);
 
     Data._selectByIndex(['commentsbox_count'], 'link_stat', 'url', href)
-      .wait(ES5(__w(function(/*array<object>*/ value) {__t([value, 'array<object>', 'value']);
+      .wait(ES(__w(function(/*array<object>*/ value) {__t([value, 'array<object>', 'value']);
         var c = value[0].commentsbox_count;
 
         DOM.html(
@@ -11731,12 +11805,12 @@ var Anim = {
       from        = {},
       to          = {},
       begin       = null,
-      timer       = setInterval(ES5(function() {
-        if (!begin) { begin = ES5('Date', 'now', false); }
+      timer       = setInterval(ES(function() {
+        if (!begin) { begin = ES('Date', 'now', false); }
         
         var pd = 1;
         if (duration != 0) {
-          pd = Math.min((ES5('Date', 'now', false) - begin) / duration, 1);
+          pd = Math.min((ES('Date', 'now', false) - begin) / duration, 1);
         }
         for (var prop in props) if (props.hasOwnProperty(prop)) {
           var value = props[prop];
@@ -11750,7 +11824,7 @@ var Anim = {
             to[prop] = this._parseCSS(value.toString());
           }
           var next = ''; 
-          ES5(from[prop], 'forEach', true,__w(function(/*object*/ pair, /*number*/ i) {__t([pair, 'object', 'pair'], [i, 'number', 'i']);
+          ES(from[prop], 'forEach', true,__w(function(/*object*/ pair, /*number*/ i) {__t([pair, 'object', 'pair'], [i, 'number', 'i']);
             
             if (isNaN(to[prop][i].numPart) && to[prop][i].textPart == '?') {
               next = pair.numPart + pair.textPart;
@@ -11779,7 +11853,7 @@ var Anim = {
   
   _parseCSS: __w(function(/*string*/ css) /*array<object>*/ {__t([css, 'string', 'css']);return __t([function() {
     var ret = [];
-    ES5(css.split(' '), 'forEach', true,function(peice) {
+    ES(css.split(' '), 'forEach', true,function(peice) {
       var num = parseInt(peice, 10);
       ret.push({numPart: num, textPart: peice.replace(num,'')});
     });
@@ -11931,14 +12005,14 @@ var ConnectBar = Element.extend({
   
   process: function() {
     
-    Auth.getLoginStatus(ES5(__w(function(/*object*/ resp) {__t([resp, 'object', 'resp']);
-      Event.monitor('auth.statusChange', ES5(__w(function() /*boolean*/ {return __t([function() {
+    Auth.getLoginStatus(ES(__w(function(/*object*/ resp) {__t([resp, 'object', 'resp']);
+      Event.monitor('auth.statusChange', ES(__w(function() /*boolean*/ {return __t([function() {
         
         if (this.isValid() && Runtime.getLoginStatus() == 'connected') {
           this._uid = Runtime.getUserID();
           api({ 
             method: 'Connect.shouldShowConnectBar'
-          }, ES5(function(showBar) {
+          }, ES(function(showBar) {
             if (showBar != 2) {
               this._animationSpeed = (showBar == 0) ? 750 : 0;
               this._showBar();
@@ -11961,7 +12035,7 @@ var ConnectBar = Element.extend({
                                     'user', 'uid', this._uid);
     var q2 = Data._selectByIndex(['display_name'], 'application',
                                     'api_key', Runtime.getClientID());
-    Data.waitOn([q1, q2], ES5(__w(function(/*array<array<object>>*/ data) {__t([data, 'array<array<object>>', 'data']);
+    Data.waitOn([q1, q2], ES(__w(function(/*array<array<object>>*/ data) {__t([data, 'array<array<object>>', 'data']);
       data[0][0].site_name = data[1][0].display_name;
       if (!this._displayed) {
         this._displayed = true;
@@ -12035,8 +12109,8 @@ var ConnectBar = Element.extend({
       info.profile_url,
       UrlMap.resolve('www') + '/sitetour/connect.php'
     ));
-    ES5(createArrayFrom(bar.getElementsByTagName('a')), 'forEach', true,__w(function(/*DOMElement*/ el) {__t([el, 'DOMElement', 'el']);
-        el.onclick = ES5(this._clickHandler, 'bind', true,this);
+    ES(createArrayFrom(bar.getElementsByTagName('a')), 'forEach', true,__w(function(/*DOMElement*/ el) {__t([el, 'DOMElement', 'el']);
+        el.onclick = ES(this._clickHandler, 'bind', true,this);
       }, {"signature":"function(DOMElement)"}), this);
     this._page = document.body;
     var top_margin = 0;
@@ -12093,7 +12167,7 @@ var ConnectBar = Element.extend({
           lid: 104,
           name: 'widget_user_no_thanks'
         });
-        api({ method: 'auth.revokeAuthorization', block: true }, ES5(function() {
+        api({ method: 'auth.revokeAuthorization', block: true }, ES(function() {
           this.fire('connectbar.ondeauth');
           Event.fire('connectbar.ondeauth', this);
           Helper.invokeHandler(this.getAttribute('on-deauth'), this);
@@ -12174,8 +12248,7 @@ module.exports = LoginButton;
 },null);
 
 
-__d("sdk.XFBML.Name",["copyProperties","sdk.Data","escapeHTML","sdk.Event","sdk.XFBML.Element","sdk.Helper","Log","sdk.Runtime"],function(global,require,requireDynamic,requireLazy,module,exports,copyProperties,Data,escapeHTML,Event,Element,Helper,Log,Runtime) {
-   
+__d("sdk.XFBML.Name",["sdk.Data","escapeHTML","sdk.Event","sdk.XFBML.Element","sdk.Helper","Log","sdk.Runtime"],function(global,require,requireDynamic,requireLazy,module,exports,Data,escapeHTML,Event,Element,Helper,Log,Runtime) {
    
    
    
@@ -12187,7 +12260,7 @@ __d("sdk.XFBML.Name",["copyProperties","sdk.Data","escapeHTML","sdk.Event","sdk.
 var Name = Element.extend({
   
   process: function() {
-    copyProperties(this, {
+    ES('Object', 'assign', false,this, {
       _uid           : this.getAttribute('uid'),
       _firstnameonly : this._getBoolAttribute('first-name-only'),
       _lastnameonly  : this._getBoolAttribute('last-name-only'),
@@ -12223,7 +12296,7 @@ var Name = Element.extend({
 
     var data;
     
-    Event.monitor('auth.statusChange', ES5(function() {
+    Event.monitor('auth.statusChange', ES(function() {
       
       if (!this.isValid()) {
         this.fire('render');
@@ -12243,7 +12316,7 @@ var Name = Element.extend({
       } else {
         data = Data._selectByIndex(['name', 'id'], 'profile', 'id', this._uid);
       }
-      data.wait(ES5(__w(function(/*array<object>*/ data) {__t([data, 'array<object>', 'data']);
+      data.wait(ES(__w(function(/*array<object>*/ data) {__t([data, 'array<object>', 'data']);
         if (this._subjectId == this._uid) {
           this._renderPronoun(data[0]);
         } else {
@@ -12452,11 +12525,11 @@ var Bar = IframeWidget.extend({
       function run() {
         func();
         queued = null;
-        last_run = ES5('Date', 'now', false);
+        last_run = ES('Date', 'now', false);
       }
       return __w(function() /*boolean*/ {return __t([function() {
         if (!queued) {
-          var now = ES5('Date', 'now', false);
+          var now = ES('Date', 'now', false);
           if (now - last_run < interval) {
             queued = setTimeout(run, interval - (now - last_run));
           } else {
@@ -12508,16 +12581,16 @@ var Bar = IframeWidget.extend({
 
     this._showLoader = false;
 
-    this.subscribe('iframe.onload', ES5(function() {
+    this.subscribe('iframe.onload', ES(function() {
       var span = this.dom.children[0];
       span.className = 'fbpluginrecommendationsbar' + this._attr.side;
     }, 'bind', true,this));
 
-    var action = ES5(function() {
+    var action = ES(function() {
       DOMEventListener.remove(window, 'scroll', action);
       DOMEventListener.remove(document.documentElement, 'click', action);
       DOMEventListener.remove(document.documentElement, 'mousemove', action);
-      setTimeout(ES5(this.arbiterInform, 'bind', true,
+      setTimeout(ES(this.arbiterInform, 'bind', true,
           this,
           'platform/plugins/recommendations_bar/action',
           null,
@@ -12530,7 +12603,7 @@ var Bar = IframeWidget.extend({
     DOMEventListener.add(document.documentElement, 'mousemove', action);
 
     if (this._attr.trigger == "manual") {
-      var manual = ES5(__w(function(/*string*/ href) /*boolean*/ {__t([href, 'string', 'href']);return __t([function() {
+      var manual = ES(__w(function(/*string*/ href) /*boolean*/ {__t([href, 'string', 'href']);return __t([function() {
         if (href == this._attr.href) {
           Event.unsubscribe('xfbml.recommendationsbar.read', manual);
           this.arbiterInform(
@@ -12542,7 +12615,7 @@ var Bar = IframeWidget.extend({
       }.apply(this, arguments), 'boolean']);}, {"signature":"function(string):boolean"}), 'bind', true,this);
       Event.subscribe('xfbml.recommendationsbar.read', manual);
     } else {
-      var trigger = interval_queue(500, ES5(function() {
+      var trigger = interval_queue(500, ES(function() {
         if (this.calculateVisibility()) {
           DOMEventListener.remove(window, 'scroll', trigger);
           DOMEventListener.remove(window, 'resize', trigger);
@@ -12557,7 +12630,7 @@ var Bar = IframeWidget.extend({
     }
 
     this.visible = false;
-    var visible = interval_queue(500, ES5(function() {
+    var visible = interval_queue(500, ES(function() {
       if (!this.visible && this.calculateVisibility()) {
         this.visible = true;
         this.arbiterInform('platform/plugins/recommendations_bar/visible');
@@ -12572,7 +12645,7 @@ var Bar = IframeWidget.extend({
     visible(); 
 
     this.focused = true;
-    var toggleFocused = ES5(__w(function() /*boolean*/ {return __t([function() {
+    var toggleFocused = ES(__w(function() /*boolean*/ {return __t([function() {
       this.focused = !this.focused;
       return true;
     }.apply(this, arguments), 'boolean']);}, {"signature":"function():boolean"}), 'bind', true,this);
@@ -12581,7 +12654,7 @@ var Bar = IframeWidget.extend({
 
     this.resize_running = false;
     this.animate = false;
-    this.subscribe('xd.signal_animation', ES5(function() {
+    this.subscribe('xd.signal_animation', ES(function() {
       this.animate = true;
     }, 'bind', true,this));
 
@@ -12678,9 +12751,9 @@ var Registration = IframeWidget.extend({
     
 
     if (this._attr.onvalidate) {
-      this.subscribe('xd.validate', ES5(__w(function(/*object*/ message) {__t([message, 'object', 'message']);
-        var value = ES5('JSON', 'parse', false,message.value);
-        var callback = ES5(function(errors) {
+      this.subscribe('xd.validate', ES(__w(function(/*object*/ message) {__t([message, 'object', 'message']);
+        var value = ES('JSON', 'parse', false,message.value);
+        var callback = ES(function(errors) {
           this.arbiterInform('Registration.Validation',
                              { errors: errors, id: message.id });
         }, 'bind', true,this);
@@ -12696,8 +12769,8 @@ var Registration = IframeWidget.extend({
       }, {"signature":"function(object)"}), 'bind', true,this));
     }
 
-    this.subscribe('xd.authLogin', ES5(this._onAuthLogin, 'bind', true,this));
-    this.subscribe('xd.authLogout', ES5(this._onAuthLogout, 'bind', true,this));
+    this.subscribe('xd.authLogin', ES(this._onAuthLogin, 'bind', true,this));
+    this.subscribe('xd.authLogout', ES(this._onAuthLogout, 'bind', true,this));
 
     return true;
   }.apply(this, arguments), 'boolean']);}, {"signature":"function():boolean"}),
@@ -12718,7 +12791,7 @@ var Registration = IframeWidget.extend({
     } else {
       try {
         
-        fields = ES5('JSON', 'parse', false,this._attr.fields);
+        fields = ES('JSON', 'parse', false,this._attr.fields);
       } catch (e) {
         
         fields = this._attr.fields.split(/,/);
@@ -12786,7 +12859,7 @@ var SocialContext = IframeWidget.extend({
     };
 
     this.subscribe(
-      'xd.social_context_stats', ES5(this._bubbleSocialContextStats, 'bind', true,this));
+      'xd.social_context_stats', ES(this._bubbleSocialContextStats, 'bind', true,this));
 
     return true;
   }.apply(this, arguments), 'boolean']);}, {"signature":"function():boolean"}),
@@ -12795,7 +12868,7 @@ var SocialContext = IframeWidget.extend({
   _bubbleSocialContextStats: __w(function(/*object*/ message) {__t([message, 'object', 'message']);
     var filtered_message = {
       pluginID: this.getAttribute('plugin-id'),
-      socialContextPageIDs: ES5('JSON', 'parse', false,message.social_context_page_ids)
+      socialContextPageIDs: ES('JSON', 'parse', false,message.social_context_page_ids)
     };
     Event.fire('xfbml.social_context_stats', filtered_message);
   }, {"signature":"function(object)"}),
@@ -12839,7 +12912,7 @@ var customTags = {
 };
 
 
-ES5(ES5('Object', 'keys', false,PluginTags), 'forEach', true,function(tag) {
+ES(ES('Object', 'keys', false,PluginTags), 'forEach', true,function(tag) {
   XFBML.registerTag({
     xmlns: 'fb',
     localName: tag.replace(/_/g, '-'),
@@ -12848,7 +12921,7 @@ ES5(ES5('Object', 'keys', false,PluginTags), 'forEach', true,function(tag) {
 });
 
 
-ES5(ES5('Object', 'keys', false,customTags), 'forEach', true,function(tag) {
+ES(ES('Object', 'keys', false,customTags), 'forEach', true,function(tag) {
   XFBML.registerTag({
     xmlns: 'fb',
     localName: tag.replace(/_/g, '-'),
@@ -12868,15 +12941,15 @@ FB.provide('XFBML', {
   }
 });
 
-XFBML.subscribe('parse', ES5(Event.fire, 'bind', true,Event, 'xfbml.parse'));
-XFBML.subscribe('render', ES5(Event.fire, 'bind', true,Event, 'xfbml.render'));
+XFBML.subscribe('parse', ES(Event.fire, 'bind', true,Event, 'xfbml.parse'));
+XFBML.subscribe('render', ES(Event.fire, 'bind', true,Event, 'xfbml.render'));
 
 Event.subscribe('init:post', function(options) {
   if (options.xfbml) {
     
     setTimeout(
       wrapFunction(
-        ES5(domReady, 'bind', true,null, XFBML.parse),
+        ES(domReady, 'bind', true,null, XFBML.parse),
         'entry',
         'init:post:xfbml.parse'
       ),
@@ -12923,4 +12996,4 @@ FB.provide('XFBML.RecommendationsBar', {
 
 
 }).call({}, window.inDapIF ? parent.window : window);
-} catch (e) {new Image().src="https:\/\/www.facebook.com\/" + 'common/scribe_endpoint.php?c=jssdk_error&m='+encodeURIComponent('{"error":"LOAD", "extra": {"name":"'+e.name+'","line":"'+(e.lineNumber||e.line)+'","script":"'+(e.fileName||e.sourceURL||e.script)+'","stack":"'+(e.stackTrace||e.stack)+'","revision":"1303799","message":"'+e.message+'"}}');}
+} catch (e) {new Image().src="https:\/\/www.facebook.com\/" + 'common/scribe_endpoint.php?c=jssdk_error&m='+encodeURIComponent('{"error":"LOAD", "extra": {"name":"'+e.name+'","line":"'+(e.lineNumber||e.line)+'","script":"'+(e.fileName||e.sourceURL||e.script)+'","stack":"'+(e.stackTrace||e.stack)+'","revision":"1312803","message":"'+e.message+'"}}');}
