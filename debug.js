@@ -1,4 +1,4 @@
-/*1415743355,,JIT Construction: v1490511,en_US*/
+/*1416360345,,JIT Construction: v1500170,en_US*/
 
 /**
  * Copyright Facebook Inc.
@@ -1925,7 +1925,7 @@ module.exports = ES;
 /* 8t3naSxRM6- */
 },null);
 var ES = require('ES');
-__d("JSSDKRuntimeConfig",[],{"locale":"en_US","rtl":false,"revision":"1490511"});__d("JSSDKConfig",[],{"bustCache":true,"tagCountLogRate":0.01,"errorHandling":{"rate":4},"usePluginPipe":true,"features":{"allow_non_canvas_app_events":false,"event_subscriptions_log":{"rate":0.01,"value":10000},"kill_fragment":true,"xfbml_profile_pic_server":true,"error_handling":{"rate":4},"e2e_ping_tracking":{"rate":1.0e-6},"xd_timeout":{"rate":4,"value":30000},"use_bundle":true,"launch_payment_dialog_via_pac":{"rate":100},"plugin_tags_blacklist":["recommendations_bar"]},"api":{"mode":"warn","whitelist":["AppEvents","AppEvents.EventNames","AppEvents.ParameterNames","AppEvents.activateApp","AppEvents.logEvent","AppEvents.logPurchase","Canvas","Canvas.Prefetcher","Canvas.Prefetcher.addStaticResource","Canvas.Prefetcher.setCollectionMode","Canvas.getPageInfo","Canvas.hideFlashElement","Canvas.scrollTo","Canvas.setAutoGrow","Canvas.setDoneLoading","Canvas.setSize","Canvas.setUrlHandler","Canvas.showFlashElement","Canvas.startTimer","Canvas.stopTimer","Event","Event.subscribe","Event.unsubscribe","Music.flashCallback","Music.init","Music.send","Payment","Payment.cancelFlow","Payment.continueFlow","Payment.init","Payment.lockForProcessing","Payment.parse","Payment.setSize","Payment.unlockForProcessing","ThirdPartyProvider","ThirdPartyProvider.init","ThirdPartyProvider.sendData","UA","UA.nativeApp","XFBML","XFBML.RecommendationsBar","XFBML.RecommendationsBar.markRead","XFBML.parse","addFriend","api","getAccessToken","getAuthResponse","getLoginStatus","getUserID","init","login","logout","publish","share","ui"]},"initSitevars":{"enableMobileComments":1,"iframePermissions":{"read_stream":false,"manage_mailbox":false,"manage_friendlists":false,"read_mailbox":false,"publish_checkins":true,"status_update":true,"photo_upload":true,"video_upload":true,"sms":false,"create_event":true,"rsvp_event":true,"offline_access":true,"email":true,"xmpp_login":false,"create_note":true,"share_item":true,"export_stream":false,"publish_stream":true,"publish_likes":true,"ads_management":false,"contact_email":true,"access_private_data":false,"read_insights":false,"read_requests":false,"read_friendlists":true,"manage_pages":false,"physical_login":false,"manage_groups":false,"read_deals":false}}});__d("UrlMapConfig",[],{"www":"www.facebook.com","m":"m.facebook.com","connect":"connect.facebook.net","business":"business.facebook.com","api_https":"api.facebook.com","api_read_https":"api-read.facebook.com","graph_https":"graph.facebook.com","fbcdn_http":"fbstatic-a.akamaihd.net","fbcdn_https":"fbstatic-a.akamaihd.net","cdn_http":"static.ak.facebook.com","cdn_https":"s-static.ak.facebook.com"});__d("JSSDKXDConfig",[],{"XdUrl":"\/connect\/xd_arbiter.php?version=41","XdBundleUrl":"\/connect\/xd_arbiter\/inP_iYjVh9g.js?version=41","Flash":{"path":"https:\/\/connect.facebook.net\/rsrc.php\/v1\/yR\/r\/ks_9ZXiQ0GL.swf"},"useCdn":true});__d("JSSDKCssConfig",[],{"rules":".fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:\"lucida grande\", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}.fb_link img{border:none}\n.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_reset .fb_dialog_legacy{overflow:visible}.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px}.fb_dialog_content{background:#fff;color:#333}.fb_dialog_close_icon{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;_background-image:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yL\/r\/s816eWC-2sl.gif);cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent;_background-image:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yL\/r\/s816eWC-2sl.gif)}.fb_dialog_close_icon:active{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent;_background-image:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yL\/r\/s816eWC-2sl.gif)}.fb_dialog_loader{background-color:#f2f2f2;border:1px solid #606060;font-size:24px;padding:20px}.fb_dialog_top_left,.fb_dialog_top_right,.fb_dialog_bottom_left,.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}.fb_dialog_top_left{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}.fb_dialog_top_right{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}.fb_dialog_bottom_left{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}.fb_dialog_bottom_right{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}.fb_dialog_vert_left,.fb_dialog_vert_right,.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}.fb_dialog_vert_left,.fb_dialog_vert_right{width:10px;height:100\u0025}.fb_dialog_vert_left{margin-left:-10px}.fb_dialog_vert_right{right:0;margin-right:-10px}.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{width:100\u0025;height:10px}.fb_dialog_horiz_top{margin-top:-10px}.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #3b5998;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yd\/r\/Cou7n-nqK52.gif) no-repeat 5px 50\u0025;float:left;padding:5px 0 7px 26px}body.fb_hidden{-webkit-transform:none;height:100\u0025;margin:0;overflow:visible;position:absolute;top:-10000px;left:0;width:100\u0025}.fb_dialog.fb_dialog_mobile.loading{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ya\/r\/3rhSv5V8j3o.gif) white no-repeat 50\u0025 50\u0025;min-height:100\u0025;min-width:100\u0025;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{max-height:590px;min-height:590px;max-width:500px;min-width:500px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;left:0;top:0;width:100\u0025;min-height:100\u0025;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0\u0025 0\u0025, 0\u0025 100\u0025, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100\u0025}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0\u0025 0\u0025, 0\u0025 100\u0025, from(#4966A6), color-stop(.5, #355492), to(#2A4887));border:1px solid #29447e;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset, rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/y9\/r\/jKEcVPZFk-2.gif) no-repeat 50\u0025 50\u0025;border:1px solid #555;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f2f2f2;border:1px solid #555;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}\n.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_lift{z-index:1}.fb_hide_iframes iframe{position:relative;left:-10000px}.fb_iframe_widget_loader{position:relative;display:inline-block}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100\u0025}.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}.fb_iframe_widget_loader .FB_Loader{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/y9\/r\/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50\u0025;z-index:4}","components":["css:fb.css.base","css:fb.css.dialog","css:fb.css.iframewidget"]});__d("ApiClientConfig",[],{"FlashRequest":{"swfUrl":"https:\/\/connect.facebook.net\/rsrc.php\/v1\/yW\/r\/PvklbuW2Ycn.swf"}});__d("JSSDKCanvasPrefetcherConfig",[],{"blacklist":[144959615576466],"sampleRate":500});__d("JSSDKPluginPipeConfig",[],{"threshold":0,"enabledApps":{"209753825810663":1,"187288694643718":1}});
+__d("JSSDKRuntimeConfig",[],{"locale":"en_US","rtl":false,"revision":"1500170"});__d("JSSDKConfig",[],{"bustCache":true,"tagCountLogRate":0.01,"errorHandling":{"rate":4},"usePluginPipe":true,"features":{"allow_non_canvas_app_events":false,"event_subscriptions_log":{"rate":0.01,"value":10000},"kill_fragment":true,"xfbml_profile_pic_server":true,"error_handling":{"rate":4},"e2e_ping_tracking":{"rate":1.0e-6},"xd_timeout":{"rate":4,"value":30000},"use_bundle":true,"launch_payment_dialog_via_pac":{"rate":100},"plugin_tags_blacklist":["recommendations_bar"]},"api":{"mode":"warn","whitelist":["AppEvents","AppEvents.EventNames","AppEvents.ParameterNames","AppEvents.activateApp","AppEvents.logEvent","AppEvents.logPurchase","Canvas","Canvas.Prefetcher","Canvas.Prefetcher.addStaticResource","Canvas.Prefetcher.setCollectionMode","Canvas.getPageInfo","Canvas.hideFlashElement","Canvas.scrollTo","Canvas.setAutoGrow","Canvas.setDoneLoading","Canvas.setSize","Canvas.setUrlHandler","Canvas.showFlashElement","Canvas.startTimer","Canvas.stopTimer","Event","Event.subscribe","Event.unsubscribe","Music.flashCallback","Music.init","Music.send","Payment","Payment.cancelFlow","Payment.continueFlow","Payment.init","Payment.lockForProcessing","Payment.parse","Payment.setSize","Payment.unlockForProcessing","ThirdPartyProvider","ThirdPartyProvider.init","ThirdPartyProvider.sendData","UA","UA.nativeApp","XFBML","XFBML.RecommendationsBar","XFBML.RecommendationsBar.markRead","XFBML.parse","addFriend","api","getAccessToken","getAuthResponse","getLoginStatus","getUserID","init","login","logout","publish","share","ui"]},"initSitevars":{"enableMobileComments":1,"iframePermissions":{"read_stream":false,"manage_mailbox":false,"manage_friendlists":false,"read_mailbox":false,"publish_checkins":true,"status_update":true,"photo_upload":true,"video_upload":true,"sms":false,"create_event":true,"rsvp_event":true,"offline_access":true,"email":true,"xmpp_login":false,"create_note":true,"share_item":true,"export_stream":false,"publish_stream":true,"publish_likes":true,"ads_management":false,"contact_email":true,"access_private_data":false,"read_insights":false,"read_requests":false,"read_friendlists":true,"manage_pages":false,"physical_login":false,"manage_groups":false,"read_deals":false}}});__d("UrlMapConfig",[],{"www":"www.facebook.com","m":"m.facebook.com","connect":"connect.facebook.net","business":"business.facebook.com","api_https":"api.facebook.com","api_read_https":"api-read.facebook.com","graph_https":"graph.facebook.com","fbcdn_http":"fbstatic-a.akamaihd.net","fbcdn_https":"fbstatic-a.akamaihd.net","cdn_http":"static.ak.facebook.com","cdn_https":"s-static.ak.facebook.com"});__d("JSSDKXDConfig",[],{"XdUrl":"\/connect\/xd_arbiter.php?version=41","XdBundleUrl":"\/connect\/xd_arbiter\/q22pC-5KY56.js?version=41","Flash":{"path":"https:\/\/connect.facebook.net\/rsrc.php\/v1\/yR\/r\/ks_9ZXiQ0GL.swf"},"useCdn":true});__d("JSSDKCssConfig",[],{"rules":".fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:\"lucida grande\", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}.fb_link img{border:none}\n.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_reset .fb_dialog_legacy{overflow:visible}.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px}.fb_dialog_content{background:#fff;color:#333}.fb_dialog_close_icon{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;_background-image:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yL\/r\/s816eWC-2sl.gif);cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent;_background-image:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yL\/r\/s816eWC-2sl.gif)}.fb_dialog_close_icon:active{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent;_background-image:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yL\/r\/s816eWC-2sl.gif)}.fb_dialog_loader{background-color:#f2f2f2;border:1px solid #606060;font-size:24px;padding:20px}.fb_dialog_top_left,.fb_dialog_top_right,.fb_dialog_bottom_left,.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}.fb_dialog_top_left{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}.fb_dialog_top_right{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}.fb_dialog_bottom_left{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}.fb_dialog_bottom_right{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}.fb_dialog_vert_left,.fb_dialog_vert_right,.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}.fb_dialog_vert_left,.fb_dialog_vert_right{width:10px;height:100\u0025}.fb_dialog_vert_left{margin-left:-10px}.fb_dialog_vert_right{right:0;margin-right:-10px}.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{width:100\u0025;height:10px}.fb_dialog_horiz_top{margin-top:-10px}.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #3b5998;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yd\/r\/Cou7n-nqK52.gif) no-repeat 5px 50\u0025;float:left;padding:5px 0 7px 26px}body.fb_hidden{-webkit-transform:none;height:100\u0025;margin:0;overflow:visible;position:absolute;top:-10000px;left:0;width:100\u0025}.fb_dialog.fb_dialog_mobile.loading{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ya\/r\/3rhSv5V8j3o.gif) white no-repeat 50\u0025 50\u0025;min-height:100\u0025;min-width:100\u0025;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{max-height:590px;min-height:590px;max-width:500px;min-width:500px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;left:0;top:0;width:100\u0025;min-height:100\u0025;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0\u0025 0\u0025, 0\u0025 100\u0025, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100\u0025}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0\u0025 0\u0025, 0\u0025 100\u0025, from(#4966A6), color-stop(.5, #355492), to(#2A4887));border:1px solid #29447e;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset, rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/y9\/r\/jKEcVPZFk-2.gif) no-repeat 50\u0025 50\u0025;border:1px solid #555;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f2f2f2;border:1px solid #555;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}\n.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_lift{z-index:1}.fb_hide_iframes iframe{position:relative;left:-10000px}.fb_iframe_widget_loader{position:relative;display:inline-block}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100\u0025}.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}.fb_iframe_widget_loader .FB_Loader{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/y9\/r\/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50\u0025;z-index:4}","components":["css:fb.css.base","css:fb.css.dialog","css:fb.css.iframewidget"]});__d("ApiClientConfig",[],{"FlashRequest":{"swfUrl":"https:\/\/connect.facebook.net\/rsrc.php\/v1\/yW\/r\/PvklbuW2Ycn.swf"}});__d("JSSDKCanvasPrefetcherConfig",[],{"blacklist":[144959615576466],"sampleRate":500});__d("JSSDKPluginPipeConfig",[],{"threshold":0,"enabledApps":{"209753825810663":1,"187288694643718":1}});
 
 
 __d("QueryString",[],function(global,require,requireDynamic,requireLazy,module,exports) {
@@ -2055,7 +2055,7 @@ function assert(/*boolean*/ expression, /*?string*/ message) /*boolean*/ {__t([e
 function assertType(/*string*/ type, expression, /*?string*/ message) {__t([type, 'string', 'type'], [message, '?string', 'message']);
   var actualType;
 
-  if (expression === undefined) {
+  if (expression === (void 0)) {
     actualType = 'undefined';
   } else if (expression === null) {
     actualType = 'null';
@@ -2413,16 +2413,16 @@ var Runtime = new Model({
   Environment: ENVIRONMENTS.UNKNOWN,
   Initialized: false,
   IsVersioned: false,
-  KidDirectedSite: undefined,
+  KidDirectedSite: (void 0),
   Locale: RuntimeConfig.locale,
-  LoginStatus: undefined,
+  LoginStatus: (void 0),
   Revision: RuntimeConfig.revision,
   Rtl: RuntimeConfig.rtl,
-  Scope: undefined,
-  Secure: undefined,
+  Scope: (void 0),
+  Secure: (void 0),
   UseCookie: false,
   UserID: '',
-  Version: undefined
+  Version: (void 0)
 });
 
 ES('Object', 'assign', false,Runtime, {
@@ -2551,6 +2551,181 @@ var Cookie = {
 };
 
 module.exports = Cookie;
+
+
+},null);
+
+
+__d("wrapFunction",[],function(global,require,requireDynamic,requireLazy,module,exports) {
+var wrappers = {};
+function wrapFunction(/*function*/ fn, /*?string*/ type, /*?string*/ source)
+    /*function*/ {__t([fn, 'function', 'fn'], [type, '?string', 'type'], [source, '?string', 'source']);return __t([function() {
+  type = type || 'default';
+
+  return function() {
+    var callee = type in wrappers
+      ? wrappers[type](fn, source)
+      : fn;
+
+    return callee.apply(this, arguments);
+  };
+}.apply(this, arguments), 'function']);}__w(wrapFunction, {"signature":"function(function,?string,?string):function"}); 
+
+wrapFunction.setWrapper = __w(function(/*function*/ fn, /*?string*/ type) {__t([fn, 'function', 'fn'], [type, '?string', 'type']);
+  type = type || 'default';
+  wrappers[type] = fn;
+}, {"signature":"function(function,?string)"});
+
+module.exports = wrapFunction;
+
+
+},null);
+
+
+__d("DOMEventListener",["wrapFunction"],function(global,require,requireDynamic,requireLazy,module,exports,wrapFunction) {
+   
+
+var add, remove;
+
+if (window.addEventListener) {
+
+  
+  add = __w(function(target, /*string*/ name, /*function*/ listener) {__t([name, 'string', 'name'], [listener, 'function', 'listener']);
+    listener.wrapper =
+      wrapFunction(listener, 'entry', 'DOMEventListener.add ' + name);
+    target.addEventListener(name, listener.wrapper, false);
+  }, {"signature":"function(string,function)"});
+  remove = __w(function(target, /*string*/ name, /*function*/ listener) {__t([name, 'string', 'name'], [listener, 'function', 'listener']);
+    target.removeEventListener(name, listener.wrapper, false);
+  }, {"signature":"function(string,function)"});
+
+} else if (window.attachEvent) {
+
+  
+  add = __w(function(target, /*string*/ name, /*function*/ listener) {__t([name, 'string', 'name'], [listener, 'function', 'listener']);
+    listener.wrapper =
+      wrapFunction(listener, 'entry', 'DOMEventListener.add ' + name);
+    target.attachEvent('on' + name, listener.wrapper);
+  }, {"signature":"function(string,function)"});
+  remove = __w(function(target, /*string*/ name, /*function*/ listener) {__t([name, 'string', 'name'], [listener, 'function', 'listener']);
+    target.detachEvent('on' + name, listener.wrapper);
+  }, {"signature":"function(string,function)"});
+
+} else {
+  remove = add = function()  {};
+}
+
+var DOMEventListener = {
+
+  
+  add: __w(function(target, /*string*/ name, /*function*/ listener) {__t([name, 'string', 'name'], [listener, 'function', 'listener']);
+    
+    
+    add(target, name, listener);
+    return {
+      
+      
+      // someone is hanging on to this 'event' object.
+      remove: function() {
+        remove(target, name, listener);
+        target = null;
+      }
+    };
+  }, {"signature":"function(string,function)"}),
+
+  
+  remove: remove
+
+};
+module.exports = DOMEventListener;
+
+
+},null);
+
+
+__d("sdk.UA",[],function(global,require,requireDynamic,requireLazy,module,exports) {
+var uas = navigator.userAgent;
+
+
+var devices = {
+  iphone: /\b(iPhone|iP[ao]d)/.test(uas),
+  ipad: /\b(iP[ao]d)/.test(uas),
+  android: /Android/i.test(uas),
+  nativeApp: /FBAN\/\w+;/i.test(uas)
+};
+var mobile = /Mobile/i.test(uas);
+
+
+var versions = {
+  ie: '',
+  firefox: '',
+  chrome: '',
+  webkit: '',
+  osx: ''
+};
+var agent =
+  /(?:MSIE.(\d+\.\d+))|(?:(?:Firefox|GranParadiso|Iceweasel).(\d+\.\d+))|(?:AppleWebKit.(\d+(?:\.\d+)?))|(?:Trident\/\d+\.\d+.*rv:(\d+\.\d+))/
+    .exec(uas);
+if (agent) {
+  versions.ie = agent[1]
+    ? parseFloat(agent[1])
+    : agent[4]
+      ? parseFloat(agent[4])
+      : '';
+
+  versions.firefox = agent[2] || '';
+  versions.webkit  = agent[3] || '';
+  if (agent[3]) {
+    
+    // match 'safari' only since 'AppleWebKit' appears before 'Chrome' in
+    
+    var chromeAgent = /(?:Chrome\/(\d+\.\d+))/.exec(uas);
+    versions.chrome = chromeAgent ? chromeAgent[1] : '';
+  }
+}
+
+
+var mac = /(?:Mac OS X (\d+(?:[._]\d+)?))/.exec(uas);
+if (mac) {
+  versions.osx = mac[1];
+}
+
+function getVersionParts(/*string*/ version) /*array*/ {__t([version, 'string', 'version']);return __t([function() {
+  return ES(version.split('.'), 'map', true,function(v)  {return parseFloat(v);});
+}.apply(this, arguments), 'array']);}__w(getVersionParts, {"signature":"function(string):array"}); 
+
+var UA = {};
+
+ES(ES('Object', 'keys', false,versions), 'map', true,function(key)  {
+  
+  UA[key] = __w(function()  {return __t([function() {return parseFloat(versions[key]);}.apply(this, arguments), 'number']);}, {"signature":"function():number"});
+  
+  UA[key].getVersionParts = __w(function()  {return __t([function() {return getVersionParts(versions[key]);}.apply(this, arguments), 'array']);}, {"signature":"function():array"});
+});
+
+ES(ES('Object', 'keys', false,devices), 'map', true,function(key)  {
+  
+  UA[key] = __w(function()  {return __t([function() {return devices[key];}.apply(this, arguments), 'boolean']);}, {"signature":"function():boolean"});
+});
+
+
+UA.mobile = __w(function()  {return __t([function() {return devices.iphone || devices.ipad || devices.android || mobile;}.apply(this, arguments), 'boolean']);}, {"signature":"function():boolean"});
+
+
+module.exports = UA;
+
+
+},null);
+
+
+__d("getBlankIframeSrc",["sdk.UA"],function(global,require,requireDynamic,requireLazy,module,exports,UA) {
+   
+
+function getBlankIframeSrc() /*string*/ {return __t([function() {
+  return UA.ie() < 10 ? 'javascript:false' : 'about:blank';
+}.apply(this, arguments), 'string']);}__w(getBlankIframeSrc, {"signature":"function():string"}); 
+
+module.exports = getBlankIframeSrc;
 
 
 },null);
@@ -2762,7 +2937,7 @@ __d("hasNamePropertyBug",["guid","UserAgent_DEPRECATED"],function(global,require
    
    
 
-var hasBug = UserAgent_DEPRECATED.ie() ? undefined : false;
+var hasBug = UserAgent_DEPRECATED.ie() ? (void 0) : false;
 
 
 
@@ -2788,94 +2963,9 @@ module.exports = hasNamePropertyBug;
 },null);
 
 
-__d("wrapFunction",[],function(global,require,requireDynamic,requireLazy,module,exports) {
-var wrappers = {};
-function wrapFunction(/*function*/ fn, /*?string*/ type, /*?string*/ source)
-    /*function*/ {__t([fn, 'function', 'fn'], [type, '?string', 'type'], [source, '?string', 'source']);return __t([function() {
-  type = type || 'default';
-
-  return function() {
-    var callee = type in wrappers
-      ? wrappers[type](fn, source)
-      : fn;
-
-    return callee.apply(this, arguments);
-  };
-}.apply(this, arguments), 'function']);}__w(wrapFunction, {"signature":"function(function,?string,?string):function"}); 
-
-wrapFunction.setWrapper = __w(function(/*function*/ fn, /*?string*/ type) {__t([fn, 'function', 'fn'], [type, '?string', 'type']);
-  type = type || 'default';
-  wrappers[type] = fn;
-}, {"signature":"function(function,?string)"});
-
-module.exports = wrapFunction;
-
-
-},null);
-
-
-__d("DOMEventListener",["wrapFunction"],function(global,require,requireDynamic,requireLazy,module,exports,wrapFunction) {
+__d("sdk.createIframe",["DOMEventListener","getBlankIframeSrc","guid","hasNamePropertyBug"],function(global,require,requireDynamic,requireLazy,module,exports,DOMEventListener,getBlankIframeSrc,guid,hasNamePropertyBug) {
    
 
-var add, remove;
-
-if (window.addEventListener) {
-
-  
-  add = __w(function(target, /*string*/ name, /*function*/ listener) {__t([name, 'string', 'name'], [listener, 'function', 'listener']);
-    listener.wrapper =
-      wrapFunction(listener, 'entry', 'DOMEventListener.add ' + name);
-    target.addEventListener(name, listener.wrapper, false);
-  }, {"signature":"function(string,function)"});
-  remove = __w(function(target, /*string*/ name, /*function*/ listener) {__t([name, 'string', 'name'], [listener, 'function', 'listener']);
-    target.removeEventListener(name, listener.wrapper, false);
-  }, {"signature":"function(string,function)"});
-
-} else if (window.attachEvent) {
-
-  
-  add = __w(function(target, /*string*/ name, /*function*/ listener) {__t([name, 'string', 'name'], [listener, 'function', 'listener']);
-    listener.wrapper =
-      wrapFunction(listener, 'entry', 'DOMEventListener.add ' + name);
-    target.attachEvent('on' + name, listener.wrapper);
-  }, {"signature":"function(string,function)"});
-  remove = __w(function(target, /*string*/ name, /*function*/ listener) {__t([name, 'string', 'name'], [listener, 'function', 'listener']);
-    target.detachEvent('on' + name, listener.wrapper);
-  }, {"signature":"function(string,function)"});
-
-} else {
-  remove = add = function()  {};
-}
-
-var DOMEventListener = {
-
-  
-  add: __w(function(target, /*string*/ name, /*function*/ listener) {__t([name, 'string', 'name'], [listener, 'function', 'listener']);
-    
-    
-    add(target, name, listener);
-    return {
-      
-      
-      // someone is hanging on to this 'event' object.
-      remove: function() {
-        remove(target, name, listener);
-        target = null;
-      }
-    };
-  }, {"signature":"function(string,function)"}),
-
-  
-  remove: remove
-
-};
-module.exports = DOMEventListener;
-
-
-},null);
-
-
-__d("sdk.createIframe",["guid","hasNamePropertyBug","DOMEventListener"],function(global,require,requireDynamic,requireLazy,module,exports,guid,hasNamePropertyBug,DOMEventListener) {
    
    
    
@@ -2931,11 +3021,8 @@ function createIframe(/*object*/ opts) /*DOMElement*/ {__t([opts, 'object', 'opt
   ES('Object', 'assign', false,frame.style, style);
 
   
-  //       into the container, so we set it to "javascript:false" as a
   
-  //       instead default to "about:blank", which causes SSL mixed-content
-  
-  frame.src = "javascript:false";
+  frame.src = getBlankIframeSrc();
   root.appendChild(frame);
   if (onLoad) {
     var onLoadListener = DOMEventListener.add(frame, 'load', function()  {
@@ -2990,32 +3077,95 @@ module.exports = DOMWrapper;
 },null);
 
 
-__d("invariant",[],function(global,require,requireDynamic,requireLazy,module,exports) {
+__d("eprintf",[],function(global,require,requireDynamic,requireLazy,module,exports) {
+
+
+var eprintf = function(errorMessage/*, arg1, arg2, ...*/) {
+  var args = ES(Array.prototype.slice.call(arguments), 'map', true,function(arg) {
+    return String(arg);
+  });
+  var expectedLength = errorMessage.split('%s').length - 1;
+
+  if (expectedLength !== args.length - 1) {
+    
+    return eprintf('eprintf args number mismatch: %s', ES('JSON', 'stringify', false,args));
+  }
+
+  var index = 1;
+  return errorMessage.replace(/%s/g, function(whole) {
+    return String(args[index++]);
+  });
+};
+
+module.exports = eprintf;
+
+
+},null);
+
+
+__d("ex",["eprintf"],function(global,require,requireDynamic,requireLazy,module,exports,eprintf) {
+   
+
+
+
+var ex = function() {for (var args=[],$__0=0,$__1=arguments.length;$__0<$__1;$__0++) args.push(arguments[$__0]);
+  args = ES(args, 'map', true,function(arg)  {return String(arg);});
+  if (args[0].split('%s').length !== args.length) {
+    
+    return ex('ex args number mismatch: %s', ES('JSON', 'stringify', false,args));
+  }
+
+  if (__DEV__) {
+    return eprintf.apply(null, args);
+  } else {
+    return ex._prefix + ES('JSON', 'stringify', false,args) + ex._suffix;
+  }
+};
+
+
+ex._prefix = '<![EX[';
+ex._suffix = ']]>';
+
+module.exports = ex;
+
+
+},null);
+
+
+__d("invariant",["ex","sprintf"],function(global,require,requireDynamic,requireLazy,module,exports,ex,sprintf) {
 "use strict";
 
+   
+   
+
+var printingFunction = ex;
+if (__DEV__) {
+  printingFunction = sprintf; 
+}
 
 
-var invariant = function(condition, format, a, b, c, d, e, f) {
+
+var invariant = function(condition, format) {
   if (__DEV__) {
-    if (format === undefined) {
+    if (format === (void 0)) {
       throw new Error('invariant requires an error message argument');
     }
   }
 
   if (!condition) {
     var error;
-    if (format === undefined) {
+    if (format === (void 0)) {
       error = new Error(
         'Minified exception occurred; use the non-minified dev environment ' +
         'for the full error message and additional helpful warnings.'
       );
     } else {
-      var args = [a, b, c, d, e, f];
-      var argIndex = 0;
-      error = new Error(
-        'Invariant Violation: ' +
-        format.replace(/%s/g, function() { return args[argIndex++]; })
-      );
+      var messageWithParams = ['Invariant Violation: ' + format];
+      for (var i = 2, l = arguments.length; i < l; i++) {
+        messageWithParams.push(arguments[i]);
+      }
+      error = new Error(printingFunction.apply(null, messageWithParams));
+      error.messageWithParams = messageWithParams;
     }
 
     error.framesToPop = 1; // we don't care about invariant's own frame
@@ -3056,81 +3206,6 @@ function feature(/*string*/ name, defaultValue){__t([name, 'string', 'name']);
 }__w(feature, {"signature":"function(string)"}); 
 
 module.exports = feature;
-
-
-},null);
-
-
-__d("sdk.UA",[],function(global,require,requireDynamic,requireLazy,module,exports) {
-var uas = navigator.userAgent;
-
-
-var devices = {
-  iphone: /\b(iPhone|iP[ao]d)/.test(uas),
-  ipad: /\b(iP[ao]d)/.test(uas),
-  android: /Android/i.test(uas),
-  nativeApp: /FBAN\/\w+;/i.test(uas)
-};
-var mobile = /Mobile/i.test(uas);
-
-
-var versions = {
-  ie: '',
-  firefox: '',
-  chrome: '',
-  webkit: '',
-  osx: ''
-};
-var agent =
-  /(?:MSIE.(\d+\.\d+))|(?:(?:Firefox|GranParadiso|Iceweasel).(\d+\.\d+))|(?:AppleWebKit.(\d+(?:\.\d+)?))|(?:Trident\/\d+\.\d+.*rv:(\d+\.\d+))/
-    .exec(uas);
-if (agent) {
-  versions.ie = agent[1]
-    ? parseFloat(agent[1])
-    : agent[4]
-      ? parseFloat(agent[4])
-      : '';
-
-  versions.firefox = agent[2] || '';
-  versions.webkit  = agent[3] || '';
-  if (agent[3]) {
-    
-    // match 'safari' only since 'AppleWebKit' appears before 'Chrome' in
-    
-    var chromeAgent = /(?:Chrome\/(\d+\.\d+))/.exec(uas);
-    versions.chrome = chromeAgent ? chromeAgent[1] : '';
-  }
-}
-
-
-var mac = /(?:Mac OS X (\d+(?:[._]\d+)?))/.exec(uas);
-if (mac) {
-  versions.osx = mac[1];
-}
-
-function getVersionParts(/*string*/ version) /*array*/ {__t([version, 'string', 'version']);return __t([function() {
-  return ES(version.split('.'), 'map', true,function(v)  {return parseFloat(v);});
-}.apply(this, arguments), 'array']);}__w(getVersionParts, {"signature":"function(string):array"}); 
-
-var UA = {};
-
-ES(ES('Object', 'keys', false,versions), 'map', true,function(key)  {
-  
-  UA[key] = __w(function()  {return __t([function() {return parseFloat(versions[key]);}.apply(this, arguments), 'number']);}, {"signature":"function():number"});
-  
-  UA[key].getVersionParts = __w(function()  {return __t([function() {return getVersionParts(versions[key]);}.apply(this, arguments), 'array']);}, {"signature":"function():array"});
-});
-
-ES(ES('Object', 'keys', false,devices), 'map', true,function(key)  {
-  
-  UA[key] = __w(function()  {return __t([function() {return devices[key];}.apply(this, arguments), 'boolean']);}, {"signature":"function():boolean"});
-});
-
-
-UA.mobile = __w(function()  {return __t([function() {return devices.iphone || devices.ipad || devices.android || mobile;}.apply(this, arguments), 'boolean']);}, {"signature":"function():boolean"});
-
-
-module.exports = UA;
 
 
 },null);
@@ -3348,7 +3423,7 @@ var Content = {
     for (var key in opts.params) {
       if (opts.params.hasOwnProperty(key)) {
         var val = opts.params[key];
-        if (val !== null && val !== undefined) {
+        if (val !== null && val !== (void 0)) {
           var input = document.createElement('input');
           input.name = key;
           input.value = val;
@@ -3363,192 +3438,6 @@ var Content = {
 };
 
 module.exports = Content;
-
-
-},null);
-
-
-__d("dotAccess",[],function(global,require,requireDynamic,requireLazy,module,exports) {
-function dotAccess(head, path, create) {
-  var stack = path.split('.');
-  do {
-    var key = stack.shift();
-    head = head[key] || create && (head[key] = {});
-  } while(stack.length && head);
-  return head;
-}
-
-module.exports = dotAccess;
-
-
-},null);
-
-
-__d("GlobalCallback",["DOMWrapper","dotAccess","guid","wrapFunction"],function(global,require,requireDynamic,requireLazy,module,exports,DOMWrapper,dotAccess,guid,wrapFunction) {
-   
-   
-   
-   
-
-// window is the same as the 'global' object in the browser, but the variable
-// 'global' might be shadowed.
-var rootObject;
-var callbackPrefix;
-
-var GlobalCallback = {
-
-  setPrefix: __w(function(/*string*/ prefix) {__t([prefix, 'string', 'prefix']);
-    rootObject = dotAccess(DOMWrapper.getWindow(), prefix, true);
-    callbackPrefix = prefix;
-  }, {"signature":"function(string)"}),
-
-  create: __w(function(/*function*/ fn, /*?string*/ description) /*string*/ {__t([fn, 'function', 'fn'], [description, '?string', 'description']);return __t([function() {
-    if (!rootObject) {
-      
-      
-      this.setPrefix('__globalCallbacks');
-    }
-    var id = guid();
-    rootObject[id] = wrapFunction(fn, 'entry', description || 'GlobalCallback');
-
-    return callbackPrefix + '.' + id;
-  }.apply(this, arguments), 'string']);}, {"signature":"function(function,?string):string"}),
-
-  remove: __w(function(/*string*/ name) {__t([name, 'string', 'name']);
-    var id = name.substring(callbackPrefix.length + 1);
-    delete rootObject[id];
-  }, {"signature":"function(string)"})
-
-};
-
-module.exports = GlobalCallback;
-
-
-},null);
-
-
-__d("insertIframe",["guid","GlobalCallback"],function(global,require,requireDynamic,requireLazy,module,exports,guid,GlobalCallback) {
-   
-   
-
-function insertIframe(/*object*/ opts) {__t([opts, 'object', 'opts']);
-
-  
-  
-  
-
-
-  opts.id = opts.id || guid();
-  opts.name = opts.name || guid();
-
-  
-  // browsers (e.g. Webkit) appear to try to do the "right thing" and will fire
-  
-  
-  
-  var srcSet = false;
-  var onloadDone = false;
-  var callback = function() {
-    if (srcSet && !onloadDone) {
-      onloadDone = true;
-      opts.onload && opts.onload(opts.root.firstChild);
-    }
-  };
-  var globalCallback = GlobalCallback.create(callback);
-
-
-  
-  
-  // Dear Webkit, you're okay. Works either way.
-
-  if (document.attachEvent) {
-    
-    
-    var html = (
-      '<iframe' +
-        ' id="' + opts.id + '"' +
-        ' name="' + opts.name + '"' +
-        (opts.title ? ' title="' + opts.title + '"' : '') +
-        (opts.className ? ' class="' + opts.className + '"' : '') +
-        ' style="border:none;' +
-        (opts.width ? 'width:' + opts.width + 'px;' : '') +
-        (opts.height ? 'height:' + opts.height + 'px;' : '') +
-        '"' +
-        ' src="javascript:false;"' +
-        ' frameborder="0"' +
-        ' scrolling="no"' +
-        ' allowtransparency="true"' +
-        ' onload="' + globalCallback + '()"' +
-        '></iframe>'
-    );
-
-    
-    
-    // actually sets the content to the HTML we created above, and because it's
-    
-    
-    
-    // the string 'false', we set the iframe height to 1px so that it gets
-    
-    opts.root.innerHTML = (
-      '<iframe src="javascript:false"' +
-        ' frameborder="0"' +
-        ' scrolling="no"' +
-        ' style="height:1px"></iframe>'
-    );
-
-    // Now we'll be setting the real src.
-    srcSet = true;
-
-    
-    
-    
-    
-    
-    setTimeout(function() {
-      opts.root.innerHTML = html;
-      opts.root.firstChild.src = opts.url;
-      opts.onInsert && opts.onInsert(opts.root.firstChild);
-    }, 0);
-
-  } else {
-    // This block works for all non-IE browsers, but it's specifically designed
-    
-    
-    var node = document.createElement('iframe');
-    node.id = opts.id;
-    node.name = opts.name;
-    node.onload = callback;
-    node.scrolling = 'no';
-    node.style.border = 'none';
-    node.style.overflow = 'hidden';
-    if (opts.title) {
-      node.title = opts.title;
-    }
-    if (opts.className) {
-      node.className = opts.className;
-    }
-    if (opts.height !== undefined) {
-      node.style.height = opts.height + 'px';
-    }
-    if (opts.width !== undefined) {
-      if (opts.width == '100%') {
-        node.style.width = opts.width;
-      } else {
-        node.style.width = opts.width + 'px';
-      }
-    }
-    opts.root.appendChild(node);
-
-    // Now we'll be setting the real src.
-    srcSet = true;
-
-    node.src = opts.url;
-    opts.onInsert && opts.onInsert(node);
-  }
-}__w(insertIframe, {"signature":"function(object)"}); 
-
-module.exports = insertIframe;
 
 
 },null);
@@ -3685,11 +3574,201 @@ module.exports = UrlMap;
 },null);
 
 
-__d("sdk.Impressions",["sdk.Content","guid","insertIframe","Miny","QueryString","sdk.Runtime","UrlMap"],function(global,require,requireDynamic,requireLazy,module,exports,Content,guid,insertIframe,Miny,QueryString,Runtime,UrlMap) {
+__d("dotAccess",[],function(global,require,requireDynamic,requireLazy,module,exports) {
+function dotAccess(head, path, create) {
+  var stack = path.split('.');
+  do {
+    var key = stack.shift();
+    head = head[key] || create && (head[key] = {});
+  } while(stack.length && head);
+  return head;
+}
+
+module.exports = dotAccess;
+
+
+},null);
+
+
+__d("GlobalCallback",["DOMWrapper","dotAccess","guid","wrapFunction"],function(global,require,requireDynamic,requireLazy,module,exports,DOMWrapper,dotAccess,guid,wrapFunction) {
    
    
    
    
+
+// window is the same as the 'global' object in the browser, but the variable
+// 'global' might be shadowed.
+var rootObject;
+var callbackPrefix;
+
+var GlobalCallback = {
+
+  setPrefix: __w(function(/*string*/ prefix) {__t([prefix, 'string', 'prefix']);
+    rootObject = dotAccess(DOMWrapper.getWindow(), prefix, true);
+    callbackPrefix = prefix;
+  }, {"signature":"function(string)"}),
+
+  create: __w(function(/*function*/ fn, /*?string*/ description) /*string*/ {__t([fn, 'function', 'fn'], [description, '?string', 'description']);return __t([function() {
+    if (!rootObject) {
+      
+      
+      this.setPrefix('__globalCallbacks');
+    }
+    var id = guid();
+    rootObject[id] = wrapFunction(fn, 'entry', description || 'GlobalCallback');
+
+    return callbackPrefix + '.' + id;
+  }.apply(this, arguments), 'string']);}, {"signature":"function(function,?string):string"}),
+
+  remove: __w(function(/*string*/ name) {__t([name, 'string', 'name']);
+    var id = name.substring(callbackPrefix.length + 1);
+    delete rootObject[id];
+  }, {"signature":"function(string)"})
+
+};
+
+module.exports = GlobalCallback;
+
+
+},null);
+
+
+__d("insertIframe",["GlobalCallback","getBlankIframeSrc","guid"],function(global,require,requireDynamic,requireLazy,module,exports,GlobalCallback,getBlankIframeSrc,guid) {
+   
+
+   
+   
+
+function insertIframe(/*object*/ opts) {__t([opts, 'object', 'opts']);
+
+  
+  
+  
+
+
+  opts.id = opts.id || guid();
+  opts.name = opts.name || guid();
+
+  
+  // browsers (e.g. Webkit) appear to try to do the "right thing" and will fire
+  
+  
+  
+  var srcSet = false;
+  var onloadDone = false;
+  var callback = function() {
+    if (srcSet && !onloadDone) {
+      onloadDone = true;
+      opts.onload && opts.onload(opts.root.firstChild);
+    }
+  };
+  var globalCallback = GlobalCallback.create(callback);
+
+
+  
+  
+  // Dear Webkit, you're okay. Works either way.
+
+  if (document.attachEvent) {
+    
+    
+    var html = (
+      '<iframe' +
+        ' id="' + opts.id + '"' +
+        ' name="' + opts.name + '"' +
+        (opts.title ? ' title="' + opts.title + '"' : '') +
+        (opts.className ? ' class="' + opts.className + '"' : '') +
+        ' style="border:none;' +
+        (opts.width ? 'width:' + opts.width + 'px;' : '') +
+        (opts.height ? 'height:' + opts.height + 'px;' : '') +
+        '"' +
+        ' src="' + getBlankIframeSrc() + '"' +
+        ' frameborder="0"' +
+        ' scrolling="no"' +
+        ' allowtransparency="true"' +
+        ' onload="' + globalCallback + '()"' +
+        '></iframe>'
+    );
+
+    
+    
+    // actually sets the content to the HTML we created above, and because it's
+    
+    
+    
+    // the string 'false', we set the iframe height to 1px so that it gets
+    
+    opts.root.innerHTML = (
+      '<iframe src="' + getBlankIframeSrc() + '"' +
+        ' frameborder="0"' +
+        ' scrolling="no"' +
+        ' style="height:1px"></iframe>'
+    );
+
+    // Now we'll be setting the real src.
+    srcSet = true;
+
+    
+    
+    
+    
+    
+    setTimeout(function() {
+      opts.root.innerHTML = html;
+      opts.root.firstChild.src = opts.url;
+      opts.onInsert && opts.onInsert(opts.root.firstChild);
+    }, 0);
+
+  } else {
+    // This block works for all non-IE browsers, but it's specifically designed
+    
+    
+    var node = document.createElement('iframe');
+    node.id = opts.id;
+    node.name = opts.name;
+    node.onload = callback;
+    node.scrolling = 'no';
+    node.style.border = 'none';
+    node.style.overflow = 'hidden';
+    if (opts.title) {
+      node.title = opts.title;
+    }
+    if (opts.className) {
+      node.className = opts.className;
+    }
+    if (opts.height !== (void 0)) {
+      node.style.height = opts.height + 'px';
+    }
+    if (opts.width !== (void 0)) {
+      if (opts.width == '100%') {
+        node.style.width = opts.width;
+      } else {
+        node.style.width = opts.width + 'px';
+      }
+    }
+    opts.root.appendChild(node);
+
+    // Now we'll be setting the real src.
+    srcSet = true;
+
+    node.src = opts.url;
+    opts.onInsert && opts.onInsert(node);
+  }
+}__w(insertIframe, {"signature":"function(object)"}); 
+
+module.exports = insertIframe;
+
+
+},null);
+
+
+__d("sdk.Impressions",["sdk.Content","Miny","QueryString","sdk.Runtime","UrlMap","getBlankIframeSrc","guid","insertIframe"],function(global,require,requireDynamic,requireLazy,module,exports,Content,Miny,QueryString,Runtime,UrlMap,getBlankIframeSrc,guid,insertIframe) {
+   
+   
+   
+   
+   
+
    
    
    
@@ -3726,7 +3805,7 @@ function request(/*object*/ params) {__t([params, 'object', 'params']);
     var name = guid();
     var root = Content.appendHidden('');
     insertIframe({
-      url: 'javascript:false',
+      url: getBlankIframeSrc(),
       root: root,
       name: name,
       className: 'fb_hidden fb_invisible',
@@ -4013,61 +4092,6 @@ function copyProperties(obj, a, b, c, d, e, f) {
 }
 
 module.exports = copyProperties;
-
-
-},null);
-
-
-__d("eprintf",[],function(global,require,requireDynamic,requireLazy,module,exports) {
-
-
-var eprintf = function(errorMessage/*, arg1, arg2, ...*/) {
-  var args = ES(Array.prototype.slice.call(arguments), 'map', true,function(arg) {
-    return String(arg);
-  });
-  var expectedLength = errorMessage.split('%s').length - 1;
-
-  if (expectedLength !== args.length - 1) {
-    
-    return eprintf('eprintf args number mismatch: %s', ES('JSON', 'stringify', false,args));
-  }
-
-  var index = 1;
-  return errorMessage.replace(/%s/g, function(whole) {
-    return String(args[index++]);
-  });
-};
-
-module.exports = eprintf;
-
-
-},null);
-
-
-__d("ex",["eprintf"],function(global,require,requireDynamic,requireLazy,module,exports,eprintf) {
-   
-
-
-
-var ex = function() {for (var args=[],$__0=0,$__1=arguments.length;$__0<$__1;$__0++) args.push(arguments[$__0]);
-  args = ES(args, 'map', true,function(arg)  {return String(arg);});
-  if (args[0].split('%s').length !== args.length) {
-    
-    return ex('ex args number mismatch: %s', ES('JSON', 'stringify', false,args));
-  }
-
-  if (__DEV__) {
-    return eprintf.apply(null, args);
-  } else {
-    return ex._prefix + ES('JSON', 'stringify', false,args) + ex._suffix;
-  }
-};
-
-
-ex._prefix = '<![EX[';
-ex._suffix = ']]>';
-
-module.exports = ex;
 
 
 },null);
@@ -5990,7 +6014,7 @@ module.exports = toArray;
 },null);
 
 
-__d("createArrayFrom",["toArray"],function(global,require,requireDynamic,requireLazy,module,exports,toArray) {
+__d("createArrayFromMixed",["toArray"],function(global,require,requireDynamic,requireLazy,module,exports,toArray) {
    
 
 
@@ -6019,7 +6043,7 @@ function hasArrayNature(obj) {return __t([function() {
 }.apply(this, arguments), 'boolean']);}__w(hasArrayNature, {"signature":"function():boolean"}); 
 
 
-function createArrayFrom(obj) {return __t([function() {
+function createArrayFromMixed(obj) {return __t([function() {
   if (!hasArrayNature(obj)) {
     return [obj];
   } else if (ES('Array', 'isArray', false,obj)) {
@@ -6027,15 +6051,15 @@ function createArrayFrom(obj) {return __t([function() {
   } else {
     return toArray(obj);
   }
-}.apply(this, arguments), 'array']);}__w(createArrayFrom, {"signature":"function():array"}); 
+}.apply(this, arguments), 'array']);}__w(createArrayFromMixed, {"signature":"function():array"}); 
 
-module.exports = createArrayFrom;
+module.exports = createArrayFromMixed;
 
 
 },null);
 
 
-__d("sdk.DOM",["Assert","sdk.UA","createArrayFrom","sdk.domReady"],function(global,require,requireDynamic,requireLazy,module,exports,Assert,UA,createArrayFrom,domReady) {
+__d("sdk.DOM",["Assert","sdk.UA","createArrayFromMixed","sdk.domReady"],function(global,require,requireDynamic,requireLazy,module,exports,Assert,UA,createArrayFromMixed,domReady) {
    
    
 
@@ -6126,7 +6150,7 @@ function getByClass(/*string*/ className, dom, tagName) /*array<DOMElement>*/ {_
   dom = dom || document.body;
   tagName = tagName || '*';
   if (dom.querySelectorAll) {
-    return createArrayFrom(
+    return createArrayFromMixed(
       dom.querySelectorAll(tagName + '.' + className)
     );
   }
@@ -6935,7 +6959,7 @@ function flattenObject(/*object*/ obj) /*object*/ {__t([obj, 'object', 'obj']);r
   for (var key in obj) {
     if (obj.hasOwnProperty(key)) {
       var value = obj[key];
-      if (null === value || undefined === value) {
+      if (null === value || (void 0) === value) {
         continue;
       } else if (typeof value == 'string') {
         flat[key] = value;
@@ -7030,7 +7054,7 @@ module.exports = JSONPRequest;
 },null);
 
 
-__d("ApiClient",["ArgumentError","Assert","CORSRequest","FlashRequest","flattenObject","JSONPRequest","Log","ObservableMixin","sprintf","sdk.URI","UrlMap","ApiClientConfig","invariant"],function(global,require,requireDynamic,requireLazy,module,exports,ArgumentError,Assert,CORSRequest,FlashRequest,flattenObject,JSONPRequest,Log,ObservableMixin,sprintf,URI,UrlMap,ApiClientConfig,invariant) {
+__d("ApiClient",["ArgumentError","Assert","CORSRequest","FlashRequest","flattenObject","JSONPRequest","Log","ObservableMixin","QueryString","sprintf","sdk.URI","UrlMap","ApiClientConfig","invariant"],function(global,require,requireDynamic,requireLazy,module,exports,ArgumentError,Assert,CORSRequest,FlashRequest,flattenObject,JSONPRequest,Log,ObservableMixin,QueryString,sprintf,URI,UrlMap,ApiClientConfig,invariant) {
     
            
       
@@ -7039,6 +7063,7 @@ __d("ApiClient",["ArgumentError","Assert","CORSRequest","FlashRequest","flattenO
      
               
    
+      
           
               
            
@@ -7212,7 +7237,7 @@ function scheduleBatchCall() {for (var args=[],$__0=0,$__1=arguments.length;$__0
   };
 
   if (method.toLowerCase() == 'post') {
-    batchCall.body = uri.getQueryData();
+    batchCall.body = QueryString.encode(flattenObject(uri.getQueryData()));
     batchCall.relative_url = uri
       .setQueryData({})
       .toString();
@@ -7237,6 +7262,10 @@ function dispatchBatchCalls() {
     batchCalls.length > 0,
     'ApiClient: batchCalls is empty at dispatch.'
   );
+  invariant(
+    batchCalls.length === batchCallbacks.length,
+    'ApiClient: Every batch call should have a callback'
+  );
 
   
   
@@ -7247,11 +7276,28 @@ function dispatchBatchCalls() {
   batchCallbacks = [];
   scheduleId = null;
 
+  // If there's only one request, just send it directly
+  if (copiedBatchCalls.length === 1) {
+    var call = copiedBatchCalls[0];
+    var callback = copiedBatchCallbacks[0];
+    
+    
+    var body = call.body ? QueryString.decode(call.body) : null;
+
+    requestUsingGraph(
+      call.relative_url,
+      call.method,
+      body,
+      callback
+    );
+    return;
+  }
+
   requestUsingGraph(
     '/',
     'POST',
     {
-      batch: ES('JSON', 'stringify', false,copiedBatchCalls),
+      batch: copiedBatchCalls,
       include_headers: false,
       batch_app_id: clientID || DEFAULT_BATCH_APP_ID
     },
@@ -8573,7 +8619,7 @@ var UIServer = {
       app_id       : Runtime.getClientID(),
       locale       : Runtime.getLocale(),
       sdk          : 'joey',
-      access_token : useSSL && Runtime.getAccessToken() || undefined
+      access_token : useSSL && Runtime.getAccessToken() || (void 0)
     });
 
     
@@ -8847,7 +8893,7 @@ var UIServer = {
     };
     call.root = Dialog.create({
       onClose: onClose,
-      closeIcon: call.closeIcon === undefined ? true : call.closeIcon,
+      closeIcon: call.closeIcon === (void 0) ? true : call.closeIcon,
       classes: (UA.ipad() ? 'centered' : '')
     });
     if (!call.hideLoader) {
@@ -9381,12 +9427,12 @@ function setSize(/*?object*/ params) /*boolean*/ {__t([params, '?object', 'param
 }.apply(this, arguments), 'boolean']);}__w(setSize, {"signature":"function(?object):boolean"}); 
 
 function setAutoGrow(on, interval) {
-  if (interval === undefined && typeof on === 'number') {
+  if (interval === (void 0) && typeof on === 'number') {
     interval = on;
     on = true;
   }
 
-  if (on || on === undefined) {
+  if (on || on === (void 0)) {
     if (autoGrowTimer === null) {
       // Wrap the call in a function to avoid having FF pass in the 'Lateness'
       
@@ -9440,7 +9486,7 @@ module.exports = Navigation;
 },null);
 
 
-__d("sdk.Canvas.Plugin",["Log","sdk.RPC","sdk.Runtime","sdk.UA","sdk.api","createArrayFrom"],function(global,require,requireDynamic,requireLazy,module,exports,Log,RPC,Runtime,UA,api,createArrayFrom) {
+__d("sdk.Canvas.Plugin",["Log","sdk.RPC","sdk.Runtime","sdk.UA","sdk.api","createArrayFromMixed"],function(global,require,requireDynamic,requireLazy,module,exports,Log,RPC,Runtime,UA,api,createArrayFromMixed) {
    
    
    
@@ -9529,11 +9575,11 @@ function isHideableUnityElement(/*DOMElement*/ elem) {__t([elem, 'DOMElement', '
 
 
 function hidePluginCallback(/*object*/ params) {__t([params, 'object', 'params']);
-  var candidates = createArrayFrom(
+  var candidates = createArrayFromMixed(
     window.document.getElementsByTagName('object')
   );
   candidates = candidates.concat(
-    createArrayFrom(window.document.getElementsByTagName('embed'))
+    createArrayFromMixed(window.document.getElementsByTagName('embed'))
   );
 
   var flashPresent = false;
@@ -9772,7 +9818,7 @@ FB.provide('CanvasInsights', {
 },3);
 
 
-__d("sdk.Canvas.Prefetcher",["sdk.api","createArrayFrom","JSSDKCanvasPrefetcherConfig","sdk.Runtime"],function(global,require,requireDynamic,requireLazy,module,exports,api,createArrayFrom,CanvasPrefetcherConfig,Runtime) {
+__d("sdk.Canvas.Prefetcher",["sdk.api","createArrayFromMixed","JSSDKCanvasPrefetcherConfig","sdk.Runtime"],function(global,require,requireDynamic,requireLazy,module,exports,api,createArrayFromMixed,CanvasPrefetcherConfig,Runtime) {
    
    
    
@@ -9799,7 +9845,7 @@ function sample() {
   if (collectionMode == COLLECT.AUTOMATIC) {
     ES(ES('Object', 'keys', false,resourceFieldsByTag), 'forEach', true,__w(function(/*string*/ tagName) {__t([tagName, 'string', 'tagName']);
       var propertyName = resourceFieldsByTag[tagName];
-      ES(createArrayFrom(document.getElementsByTagName(tagName)), 'forEach', true,__w(function(/*DOMElement*/ tag) {__t([tag, 'DOMElement', 'tag']);
+      ES(createArrayFromMixed(document.getElementsByTagName(tagName)), 'forEach', true,__w(function(/*DOMElement*/ tag) {__t([tag, 'DOMElement', 'tag']);
           if (tag[propertyName]) {
             links.push(tag[propertyName]);
           }
@@ -9945,7 +9991,7 @@ function format(/*string*/ str, argsdotdot) /*string*/ {__t([str, 'string', 'str
   argsdotdot = Array.prototype.slice.call(arguments, 1);
   return str.replace(/\{(\d+)\}/g, function(_, index) {
     var value = argsdotdot[Number(index)];
-    return (value === null || value === undefined)
+    return (value === null || value === (void 0))
      ? ''
      : value.toString();
   });
@@ -9988,7 +10034,7 @@ __d("sdk.Waitable",["sdk.Model"],function(global,require,requireDynamic,requireL
 var Waitable = Model.extend({
   
   constructor: function() {
-    this.parent({Value: undefined});
+    this.parent({Value: (void 0)});
   },
 
   
@@ -10005,7 +10051,7 @@ var Waitable = Model.extend({
 
     this.monitor('Value.change', ES(__w(function() /*?boolean*/ {return __t([function() {
       var value = this.getValue();
-      if (value !== undefined) {
+      if (value !== (void 0)) {
         
         this.value = value;
         callback(value);
@@ -10181,7 +10227,7 @@ var Data = {
     ES(dependencies, 'forEach', true,__w(function(/*object*/ item) {__t([item, 'object', 'item']);
       item.monitor('Value.change', function() {
         var done = false;
-        if (Data._getValue(item) !== undefined) {
+        if (Data._getValue(item) !== (void 0)) {
           
           item.value = item.getValue();
           count--;
@@ -10189,7 +10235,7 @@ var Data = {
         }
         if (count === 0) {
           var value = callback(ES(dependencies, 'map', true,Data._getValue));
-          result.setValue(value !== undefined ? value : true);
+          result.setValue(value !== (void 0) ? value : true);
         }
         return done;
       });
@@ -10398,7 +10444,7 @@ FB.provide('Frictionless', Frictionless);
 },3);
 
 
-__d("sdk.init",["sdk.Cookie","sdk.ErrorHandling","sdk.Event","Log","ManagedError","sdk.PlatformVersioning","QueryString","sdk.Runtime","sdk.URI","createArrayFrom"],function(global,require,requireDynamic,requireLazy,module,exports,Cookie,ErrorHandling,Event,Log,ManagedError,PlatformVersioning,QueryString,Runtime,URI,createArrayFrom) {
+__d("sdk.init",["sdk.Cookie","sdk.ErrorHandling","sdk.Event","Log","ManagedError","sdk.PlatformVersioning","QueryString","sdk.Runtime","sdk.URI","createArrayFromMixed"],function(global,require,requireDynamic,requireLazy,module,exports,Cookie,ErrorHandling,Event,Log,ManagedError,PlatformVersioning,QueryString,Runtime,URI,createArrayFromMixed) {
    
    
    
@@ -10496,7 +10542,7 @@ setTimeout(function() {
   
   
   var pattern = /(connect\.facebook\.net|\.facebook\.com\/assets.php).*?#(.*)/;
-  ES(createArrayFrom(document.getElementsByTagName('script')), 'forEach', true,function(script) {
+  ES(createArrayFromMixed(document.getElementsByTagName('script')), 'forEach', true,function(script) {
     if (script.src) {
       var match = pattern.exec(script.src);
       if (match) {
@@ -10610,7 +10656,7 @@ module.exports = runOnce;
 },null);
 
 
-__d("XFBML",["Assert","sdk.DOM","Log","ObservableMixin","sdk.UA","createArrayFrom","runOnce"],function(global,require,requireDynamic,requireLazy,module,exports,Assert,DOM,Log,ObservableMixin,UA,createArrayFrom,runOnce) {
+__d("XFBML",["Assert","sdk.DOM","Log","ObservableMixin","sdk.UA","createArrayFromMixed","runOnce"],function(global,require,requireDynamic,requireLazy,module,exports,Assert,DOM,Log,ObservableMixin,UA,createArrayFromMixed,runOnce) {
    
    
    
@@ -10650,7 +10696,7 @@ function html5Info(/*DOMElement*/ element) /*?object*/ {__t([element, 'DOMElemen
     function(className) { return html5.hasOwnProperty(className); });
 
   if (classNames.length === 0) {
-    return undefined;
+    return (void 0);
   }
 
   
@@ -10681,7 +10727,7 @@ function html5Info(/*DOMElement*/ element) /*?object*/ {__t([element, 'DOMElemen
 
 function attr(/*DOMElement*/ element) /*object*/ {__t([element, 'DOMElement', 'element']);return __t([function() {
   var attrs = {};
-  ES(createArrayFrom(element.attributes), 'forEach', true,function(at) {
+  ES(createArrayFromMixed(element.attributes), 'forEach', true,function(at) {
     attrs[propStr(at, 'name')] = propStr(at, 'value');
   });
   return attrs;
@@ -10691,10 +10737,10 @@ function convertSyntax(
   /*DOMElement*/ element, /*string*/ ns, /*string*/ ln) /*DOMElement*/ {__t([element, 'DOMElement', 'element'], [ns, 'string', 'ns'], [ln, 'string', 'ln']);return __t([function() {
   var replacement = document.createElement('div');
   DOM.addCss(element, ns + '-' + ln);
-  ES(createArrayFrom(element.childNodes), 'forEach', true,function(child) {
+  ES(createArrayFromMixed(element.childNodes), 'forEach', true,function(child) {
     replacement.appendChild(child);
   });
-  ES(createArrayFrom(element.attributes), 'forEach', true,function(attribute) {
+  ES(createArrayFromMixed(element.attributes), 'forEach', true,function(attribute) {
     replacement.setAttribute(attribute.name, attribute.value);
   });
   element.parentNode.replaceChild(replacement, element);
@@ -10726,7 +10772,7 @@ function parse(/*DOMElement*/ dom, /*function*/ callback, /*boolean*/ reparse) {
     Assert.isTrue(count >= 0, 'onrender() has been called too many times');
   };
 
-  ES(createArrayFrom(dom.getElementsByTagName('*')), 'forEach', true,function(element) {
+  ES(createArrayFromMixed(dom.getElementsByTagName('*')), 'forEach', true,function(element) {
     if (!reparse && element.getAttribute('fb-xfbml-state')) {
       
       return;
@@ -10846,7 +10892,7 @@ var queued = [];
 
 function isEnabled() /*boolean*/ {return __t([function() {
   return !!(feature('plugin_pipe', false) &&
-         Runtime.getSecure() !== undefined &&
+         Runtime.getSecure() !== (void 0) &&
          (UA.chrome() || UA.firefox()) &&
          PluginPipeConfig.enabledApps[Runtime.getClientID()]);
 }.apply(this, arguments), 'boolean']);}__w(isEnabled, {"signature":"function():boolean"}); 
@@ -10995,7 +11041,7 @@ var types = {
     return value;
   }.apply(this, arguments), '?string']);}, {"signature":"function(?string):?string"}),
   bool: __w(function(/*?string*/ value) /*?boolean*/ {__t([value, '?string', 'value']);return __t([function() {
-    return value ? (/^(?:true|1|yes|on)$/i).test(value) : undefined;
+    return value ? (/^(?:true|1|yes|on)$/i).test(value) : (void 0);
   }.apply(this, arguments), '?boolean']);}, {"signature":"function(?string):?boolean"}),
   url: __w(function(/*?string*/ value) /*?string*/ {__t([value, '?string', 'value']);return __t([function() {
     return resolveURI(value);
@@ -11007,7 +11053,7 @@ var types = {
     return value || window.location.hostname;
   }.apply(this, arguments), '?string']);}, {"signature":"function(?string):?string"}),
   px: __w(function(/*?string*/ value) /*?number*/ {__t([value, '?string', 'value']);return __t([function() {
-    return (/^(\d+)(?:px)?$/).test(value) ? parseInt(RegExp.$1, 10) : undefined;
+    return (/^(\d+)(?:px)?$/).test(value) ? parseInt(RegExp.$1, 10) : (void 0);
   }.apply(this, arguments), '?number']);}, {"signature":"function(?string):?number"}),
   text: __w(function(/*?string*/ value) /*?string*/ {__t([value, '?string', 'value']);return __t([function() {
     return value;
@@ -11022,7 +11068,7 @@ function getVal(/*object*/ attr, /*string*/ key) {__t([attr, 'object', 'attr'], 
     attr['data-' + key] ||
     attr['data-' + key.replace(/_/g, '-')] ||
     attr['data-' + key.replace(/_/g, '')] ||
-    undefined;
+    (void 0);
   return val;
 }__w(getVal, {"signature":"function(object,string)"}); 
 
@@ -11040,7 +11086,7 @@ function validate(/*object*/ defn, /*DOMElement*/ elem, /*object*/ attr,
 
 
 function parse(dim) {
-  return dim || dim === '0' || dim === 0 ? parseInt(dim, 10) : undefined;
+  return dim || dim === '0' || dim === 0 ? parseInt(dim, 10) : (void 0);
 }
 
 function collapseIframe(iframe) {
@@ -12590,9 +12636,9 @@ var Name = Element.extend({
       
       
       
-      if (this._firstnameonly && userInfo.first_name !== undefined) {
+      if (this._firstnameonly && userInfo.first_name !== (void 0)) {
         name = escapeHTML(userInfo.first_name);
-      } else if (this._lastnameonly && userInfo.last_name !== undefined) {
+      } else if (this._lastnameonly && userInfo.last_name !== (void 0)) {
         name = escapeHTML(userInfo.last_name);
       }
 
@@ -12864,4 +12910,4 @@ try {
 
 
 }).call({}, window.inDapIF ? parent.window : window);
-} catch (e) {new Image().src="https:\/\/www.facebook.com\/" + 'common/scribe_endpoint.php?c=jssdk_error&m='+encodeURIComponent('{"error":"LOAD", "extra": {"name":"'+e.name+'","line":"'+(e.lineNumber||e.line)+'","script":"'+(e.fileName||e.sourceURL||e.script)+'","stack":"'+(e.stackTrace||e.stack)+'","revision":"1490511","message":"'+e.message+'"}}');}
+} catch (e) {new Image().src="https:\/\/www.facebook.com\/" + 'common/scribe_endpoint.php?c=jssdk_error&m='+encodeURIComponent('{"error":"LOAD", "extra": {"name":"'+e.name+'","line":"'+(e.lineNumber||e.line)+'","script":"'+(e.fileName||e.sourceURL||e.script)+'","stack":"'+(e.stackTrace||e.stack)+'","revision":"1500170","message":"'+e.message+'"}}');}
