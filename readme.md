@@ -58,7 +58,6 @@ Official FB links
 
 **Upcomming & Long-term Changes:** 
 
-* Code that will be released within a day or two -- be sure to label any bugs as BETA: https://developers.facebook.com/support/beta-tier/
 * Developer Blog: https://developers.facebook.com/blog/
 * Platform Roadmap: https://developers.facebook.com/roadmap/
 
