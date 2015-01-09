@@ -30,8 +30,7 @@ This setup sends an email if there were errors, but not if everything worked suc
 Setup on Heroku
 ---------------
 
-Alternatively, I have been testing running this script on a free heroku instance, and it seems to be working now.
-To use heroku, put your github username and password in environmental variables like so:
+This script works well on a free Heroku instance. Put your github username and password in environmental variables like so:
 
     heroku config:add GH_USER=<username>
     heroku config:add GH_PASS=<password>
@@ -53,7 +52,7 @@ Official FB links
 
 **Recent Changes & Current Status:**
 
-* Change Log: https://developers.facebook.com/docs/changelog/
+* Change Log: https://developers.facebook.com/docs/apps/changelog?locale=en_US
 * Platform Live Status: https://developers.facebook.com/live_status
 * JSON feed of current push status and most recent Platform Live Status issue: https://www.facebook.com/feeds/api_status.php
 
@@ -83,6 +82,4 @@ Credit for the idea goes to Roger Hu - http://hustoknow.blogspot.com/
 
 The shell scripts are copyright Nathan Friedly http://nfriedly.com and released under an MIT License.
 
-The JS is copyright Facebook, Inc. and, to the best of my knowledge, released under an Apache 2.0 License
-
-This is obviously not endorsed or supported by Facebook - if it was, they'd probably update their own github account.
+The JS is copyright Facebook, Inc. and released under an Apache 2.0 License
