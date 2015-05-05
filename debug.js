@@ -1,4 +1,4 @@
-/*1429641764,,JIT Construction: v1699891,en_US*/
+/*1430848514,,JIT Construction: v1721290,en_US*/
 
 /**
  * Copyright Facebook Inc.
@@ -16,7 +16,7 @@ var __annotator, __bodyWrapper;
 var __w, __t;
 /** Path: html/js/downstream/polyfill/GenericFunctionVisitor.js */
 /**
- * @generated SignedSource<<54f61a8ae0dc5043a9ec173c072501d4>>
+ * @generated SignedSource<<149b1ece75c914ca4b7de66c6800b6f3>>
  *
  * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
  * !! This file is a check-in of a static_upstream project!      !!
@@ -43,6 +43,7 @@ var __w, __t;
 
 /*globals __annotator:true, __bodyWrapper:true*/
 (function () {
+  var funcCalls = {};
   // These are functions used by the type check to create a function signature.
   var createMeta = function(type, signature) {
     if (!type && !signature) {
@@ -61,7 +62,6 @@ var __w, __t;
     return meta;
   };
 
-
   var getMeta = function(name, params) {
     return createMeta(
       name && /^[A-Z]/.test(name) ? name : (void 0),
@@ -78,11 +78,11 @@ var __w, __t;
     );
   };
 
-  var annotator = function(fn, funcMeta, params) {
-    if (typeof __transform_includes === 'undefined') {
-      return fn;
-    }
+  var noopAnnotator = function(fn, funcMeta, params) {
+    return fn;
+  };
 
+  var genericAnnotator = function(fn, funcMeta, params) {
     if ('sourcemeta' in __transform_includes) {
       fn.__SMmeta = funcMeta;
     }
@@ -96,31 +96,55 @@ var __w, __t;
     return fn;
   };
 
-  var bodyWrapper = function(scope, args, fn, params) {
-    if (typeof __transform_includes === 'undefined') {
-      return fn.apply(scope, args);
-    }
+  var noopBodyWrapper = function(scope, args, fn) {
+    return fn.apply(scope, args);
+  };
 
-    var typecheck = 'typechecks' in __transform_includes;
-    if (typecheck && params && params.params) {
+  var typecheckBodyWrapper = function(scope, args, fn, params) {
+    if (params && params.params) {
       __t.apply(scope, params.params);
     }
 
     var result = fn.apply(scope, args);
 
-    if (typecheck && params && params.returns) {
+    if (params && params.returns) {
       __t([result, params.returns]);
     }
 
     return result;
   };
 
+  var codeUsageBodyWrapper = function(scope, args, fn, params, funcMeta) {
+    if (funcMeta) {
+      if (!funcMeta.callId) {
+        funcMeta.callId = funcMeta.module+':'+funcMeta.line+':'+funcMeta.column;
+      }
+      var key = funcMeta.callId;
+      funcCalls[key] = (funcCalls[key] || 0) + 1;
+    }
+    return fn.apply(scope, args);
+  };
+
   // Export to global.
-  __annotator = annotator;
-  __bodyWrapper = bodyWrapper;
+  if (typeof __transform_includes === 'undefined') {
+    __annotator = noopAnnotator;
+    __bodyWrapper = noopBodyWrapper;
+  } else {
+    __annotator = genericAnnotator;
+    // CodeUsage is mutually exclusive with anything else
+    if ('codeusage' in __transform_includes) {
+      __annotator = noopAnnotator;
+      __bodyWrapper = codeUsageBodyWrapper;
+      __bodyWrapper.__calls = funcCalls;
+    } else if ('typechecks' in __transform_includes) {
+      __bodyWrapper = typecheckBodyWrapper;
+    } else {
+      __bodyWrapper = noopBodyWrapper;
+    }
+  }
 })();
 
-/* YVhm2thwejM */
+/* YcDfSADi1uJ */
 /** Path: html/js/downstream/polyfill/TypeChecker.js */
 /**
  * @generated SignedSource<<7c9e21cf60f869a2b06f00a97ed74157>>
@@ -2058,7 +2082,7 @@ module.exports = ES;
 /* 8t3naSxRM6- */
 }, {"module":"ES","line":9,"column":179}),null);
 var ES = require('ES');
-__d("JSSDKRuntimeConfig",[],{"locale":"en_US","rtl":false,"revision":"1699891"});__d("JSSDKConfig",[],{"bustCache":true,"tagCountLogRate":0.01,"errorHandling":{"rate":4},"usePluginPipe":true,"features":{"allow_non_canvas_app_events":false,"event_subscriptions_log":{"rate":0.01,"value":10000},"should_force_single_dialog_instance":true,"kill_fragment":true,"xfbml_profile_pic_server":true,"error_handling":{"rate":4},"e2e_ping_tracking":{"rate":1.0e-6},"xd_timeout":{"rate":4,"value":30000},"use_bundle":true,"launch_payment_dialog_via_pac":{"rate":100},"plugin_tags_blacklist":["recommendations_bar"],"should_log_response_error":true},"api":{"mode":"warn","whitelist":["AppEvents","AppEvents.EventNames","AppEvents.ParameterNames","AppEvents.activateApp","AppEvents.logEvent","AppEvents.logPurchase","Canvas","Canvas.Prefetcher","Canvas.Prefetcher.addStaticResource","Canvas.Prefetcher.setCollectionMode","Canvas.getPageInfo","Canvas.hideFlashElement","Canvas.scrollTo","Canvas.setAutoGrow","Canvas.setDoneLoading","Canvas.setSize","Canvas.setUrlHandler","Canvas.showFlashElement","Canvas.startTimer","Canvas.stopTimer","Event","Event.subscribe","Event.unsubscribe","Music.flashCallback","Music.init","Music.send","Payment","Payment.cancelFlow","Payment.continueFlow","Payment.init","Payment.lockForProcessing","Payment.parse","Payment.setSize","Payment.unlockForProcessing","ThirdPartyProvider","ThirdPartyProvider.init","ThirdPartyProvider.sendData","UA","UA.nativeApp","XFBML","XFBML.RecommendationsBar","XFBML.RecommendationsBar.markRead","XFBML.parse","addFriend","api","getAccessToken","getAuthResponse","getLoginStatus","getUserID","init","login","logout","publish","share","ui"]},"initSitevars":{"enableMobileComments":1,"iframePermissions":{"read_stream":false,"manage_mailbox":false,"manage_friendlists":false,"read_mailbox":false,"publish_checkins":true,"status_update":true,"photo_upload":true,"video_upload":true,"sms":false,"create_event":true,"rsvp_event":true,"offline_access":true,"email":true,"xmpp_login":false,"create_note":true,"share_item":true,"export_stream":false,"publish_stream":true,"publish_likes":true,"ads_management":false,"contact_email":true,"access_private_data":false,"read_insights":false,"read_requests":false,"read_friendlists":true,"manage_pages":false,"physical_login":false,"manage_groups":false,"read_deals":false}}});__d("UrlMapConfig",[],{"www":"www.facebook.com","m":"m.facebook.com","connect":"connect.facebook.net","business":"business.facebook.com","api_https":"api.facebook.com","api_read_https":"api-read.facebook.com","graph_https":"graph.facebook.com","fbcdn_http":"fbstatic-a.akamaihd.net","fbcdn_https":"fbstatic-a.akamaihd.net","cdn_http":"static.ak.facebook.com","cdn_https":"s-static.ak.facebook.com"});__d("JSSDKXDConfig",[],{"XdUrl":"\/connect\/xd_arbiter.php?version=41","XdBundleUrl":"\/connect\/xd_arbiter\/6PxzU3Y1B4h.js?version=41","Flash":{"path":"https:\/\/connect.facebook.net\/rsrc.php\/v1\/yW\/r\/yOZN1vHw3Z_.swf"},"useCdn":true});__d("JSSDKCssConfig",[],{"rules":".fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:\"lucida grande\", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}.fb_link img{border:none}\n.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_reset .fb_dialog_legacy{overflow:visible}.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px}.fb_dialog_content{background:#fff;color:#333}.fb_dialog_close_icon{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;_background-image:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yL\/r\/s816eWC-2sl.gif);cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent;_background-image:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yL\/r\/s816eWC-2sl.gif)}.fb_dialog_close_icon:active{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent;_background-image:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yL\/r\/s816eWC-2sl.gif)}.fb_dialog_loader{background-color:#f6f7f8;border:1px solid #606060;font-size:24px;padding:20px}.fb_dialog_top_left,.fb_dialog_top_right,.fb_dialog_bottom_left,.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}.fb_dialog_top_left{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}.fb_dialog_top_right{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}.fb_dialog_bottom_left{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}.fb_dialog_bottom_right{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}.fb_dialog_vert_left,.fb_dialog_vert_right,.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}.fb_dialog_vert_left,.fb_dialog_vert_right{width:10px;height:100\u0025}.fb_dialog_vert_left{margin-left:-10px}.fb_dialog_vert_right{right:0;margin-right:-10px}.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{width:100\u0025;height:10px}.fb_dialog_horiz_top{margin-top:-10px}.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #3a5795;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yd\/r\/Cou7n-nqK52.gif) no-repeat 5px 50\u0025;float:left;padding:5px 0 7px 26px}body.fb_hidden{-webkit-transform:none;height:100\u0025;margin:0;overflow:visible;position:absolute;top:-10000px;left:0;width:100\u0025}.fb_dialog.fb_dialog_mobile.loading{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ya\/r\/3rhSv5V8j3o.gif) white no-repeat 50\u0025 50\u0025;min-height:100\u0025;min-width:100\u0025;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{max-height:590px;min-height:590px;max-width:500px;min-width:500px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;left:0;top:0;width:100\u0025;min-height:100\u0025;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0\u0025 0\u0025, 0\u0025 100\u0025, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100\u0025}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0\u0025 0\u0025, 0\u0025 100\u0025, from(#4966A6), color-stop(.5, #355492), to(#2A4887));border:1px solid #2f477a;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset, rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/y9\/r\/jKEcVPZFk-2.gif) no-repeat 50\u0025 50\u0025;border:1px solid #555;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f6f7f8;border:1px solid #555;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}\n.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100\u0025}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_hide_iframes iframe{position:relative;left:-10000px}.fb_iframe_widget_loader{position:relative;display:inline-block}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100\u0025}.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}.fb_iframe_widget_loader .FB_Loader{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/y9\/r\/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50\u0025;z-index:4}","components":["css:fb.css.base","css:fb.css.dialog","css:fb.css.iframewidget"]});__d("ApiClientConfig",[],{"FlashRequest":{"swfUrl":"https:\/\/connect.facebook.net\/rsrc.php\/v1\/yd\/r\/mxzow1Sdmxr.swf"}});__d("JSSDKCanvasPrefetcherConfig",[],{"blacklist":[144959615576466],"sampleRate":500});__d("JSSDKPluginPipeConfig",[],{"threshold":0,"enabledApps":{"209753825810663":1,"187288694643718":1}});
+__d("JSSDKRuntimeConfig",[],{"locale":"en_US","rtl":false,"revision":"1721290"});__d("JSSDKConfig",[],{"bustCache":true,"tagCountLogRate":0.01,"errorHandling":{"rate":4},"usePluginPipe":true,"features":{"allow_non_canvas_app_events":false,"event_subscriptions_log":{"rate":0.01,"value":10000},"should_force_single_dialog_instance":true,"kill_fragment":true,"xfbml_profile_pic_server":true,"error_handling":{"rate":4},"e2e_ping_tracking":{"rate":1.0e-6},"xd_timeout":{"rate":4,"value":30000},"use_bundle":true,"launch_payment_dialog_via_pac":{"rate":100},"plugin_tags_blacklist":["recommendations_bar"],"should_log_response_error":true},"api":{"mode":"warn","whitelist":["AppEvents","AppEvents.EventNames","AppEvents.ParameterNames","AppEvents.activateApp","AppEvents.logEvent","AppEvents.logPurchase","Canvas","Canvas.Prefetcher","Canvas.Prefetcher.addStaticResource","Canvas.Prefetcher.setCollectionMode","Canvas.getPageInfo","Canvas.hideFlashElement","Canvas.scrollTo","Canvas.setAutoGrow","Canvas.setDoneLoading","Canvas.setSize","Canvas.setUrlHandler","Canvas.showFlashElement","Canvas.startTimer","Canvas.stopTimer","Event","Event.subscribe","Event.unsubscribe","Music.flashCallback","Music.init","Music.send","Payment","Payment.cancelFlow","Payment.continueFlow","Payment.init","Payment.lockForProcessing","Payment.parse","Payment.setSize","Payment.unlockForProcessing","ThirdPartyProvider","ThirdPartyProvider.init","ThirdPartyProvider.sendData","UA","UA.nativeApp","XFBML","XFBML.RecommendationsBar","XFBML.RecommendationsBar.markRead","XFBML.parse","addFriend","api","getAccessToken","getAuthResponse","getLoginStatus","getUserID","init","login","logout","publish","share","ui"]},"initSitevars":{"enableMobileComments":1,"iframePermissions":{"read_stream":false,"manage_mailbox":false,"manage_friendlists":false,"read_mailbox":false,"publish_checkins":true,"status_update":true,"photo_upload":true,"video_upload":true,"sms":false,"create_event":true,"rsvp_event":true,"offline_access":true,"email":true,"xmpp_login":false,"create_note":true,"share_item":true,"export_stream":false,"publish_stream":true,"publish_likes":true,"ads_management":false,"contact_email":true,"access_private_data":false,"read_insights":false,"read_requests":false,"read_friendlists":true,"manage_pages":false,"physical_login":false,"manage_groups":false,"read_deals":false}}});__d("UrlMapConfig",[],{"www":"www.facebook.com","m":"m.facebook.com","connect":"connect.facebook.net","business":"business.facebook.com","api_https":"api.facebook.com","api_read_https":"api-read.facebook.com","graph_https":"graph.facebook.com","fbcdn_http":"fbstatic-a.akamaihd.net","fbcdn_https":"fbstatic-a.akamaihd.net","cdn_http":"static.ak.facebook.com","cdn_https":"s-static.ak.facebook.com"});__d("JSSDKXDConfig",[],{"XdUrl":"\/connect\/xd_arbiter.php?version=41","XdBundleUrl":"\/connect\/xd_arbiter\/JSgC8E2pjtd.js?version=41","Flash":{"path":"https:\/\/connect.facebook.net\/rsrc.php\/v1\/yW\/r\/yOZN1vHw3Z_.swf"},"useCdn":true});__d("JSSDKCssConfig",[],{"rules":".fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:\"lucida grande\", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}.fb_link img{border:none}\n.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_reset .fb_dialog_legacy{overflow:visible}.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px}.fb_dialog_content{background:#fff;color:#333}.fb_dialog_close_icon{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;_background-image:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yL\/r\/s816eWC-2sl.gif);cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent;_background-image:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yL\/r\/s816eWC-2sl.gif)}.fb_dialog_close_icon:active{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent;_background-image:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yL\/r\/s816eWC-2sl.gif)}.fb_dialog_loader{background-color:#f6f7f8;border:1px solid #606060;font-size:24px;padding:20px}.fb_dialog_top_left,.fb_dialog_top_right,.fb_dialog_bottom_left,.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}.fb_dialog_top_left{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}.fb_dialog_top_right{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}.fb_dialog_bottom_left{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}.fb_dialog_bottom_right{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}.fb_dialog_vert_left,.fb_dialog_vert_right,.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}.fb_dialog_vert_left,.fb_dialog_vert_right{width:10px;height:100\u0025}.fb_dialog_vert_left{margin-left:-10px}.fb_dialog_vert_right{right:0;margin-right:-10px}.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{width:100\u0025;height:10px}.fb_dialog_horiz_top{margin-top:-10px}.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #3a5795;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yd\/r\/Cou7n-nqK52.gif) no-repeat 5px 50\u0025;float:left;padding:5px 0 7px 26px}body.fb_hidden{-webkit-transform:none;height:100\u0025;margin:0;overflow:visible;position:absolute;top:-10000px;left:0;width:100\u0025}.fb_dialog.fb_dialog_mobile.loading{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ya\/r\/3rhSv5V8j3o.gif) white no-repeat 50\u0025 50\u0025;min-height:100\u0025;min-width:100\u0025;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{max-height:590px;min-height:590px;max-width:500px;min-width:500px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;left:0;top:0;width:100\u0025;min-height:100\u0025;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0\u0025 0\u0025, 0\u0025 100\u0025, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100\u0025}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0\u0025 0\u0025, 0\u0025 100\u0025, from(#4966A6), color-stop(.5, #355492), to(#2A4887));border:1px solid #2f477a;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset, rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/y9\/r\/jKEcVPZFk-2.gif) no-repeat 50\u0025 50\u0025;border:1px solid #555;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f6f7f8;border:1px solid #555;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}\n.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100\u0025}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_hide_iframes iframe{position:relative;left:-10000px}.fb_iframe_widget_loader{position:relative;display:inline-block}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100\u0025}.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}.fb_iframe_widget_loader .FB_Loader{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/y9\/r\/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50\u0025;z-index:4}","components":["css:fb.css.base","css:fb.css.dialog","css:fb.css.iframewidget"]});__d("ApiClientConfig",[],{"FlashRequest":{"swfUrl":"https:\/\/connect.facebook.net\/rsrc.php\/v1\/yd\/r\/mxzow1Sdmxr.swf"}});__d("JSSDKCanvasPrefetcherConfig",[],{"blacklist":[144959615576466],"sampleRate":500});__d("JSSDKPluginPipeConfig",[],{"threshold":0,"enabledApps":{"209753825810663":1,"187288694643718":1}});
 
 
 __d("QueryString",[],__annotator(function(global,require,requireDynamic,requireLazy,module,exports) {require.__markCompiled && require.__markCompiled();
@@ -7235,6 +7259,10 @@ var batchCalls = [];
 var batchCallbacks = [];
 var scheduleId = null;
 
+var currentlyExecutingRequests = 0;
+var requestQueue = [];
+var maxConcurrentRequests = 0;
+
 
 
 var REQUESTS_PER_BATCH = 50;
@@ -7247,6 +7275,27 @@ var DEFAULT_BATCH_APP_ID = 105440539523;
 
 function request(/*string*/ url, /*string*/ method, /*object*/ params,
     /*function*/ cb) {return __bodyWrapper(this, arguments, function() {
+
+  // Determine if we've reached the maximum number of concurrent request
+  var shouldQueueRequest =
+    maxConcurrentRequests !== 0 &&
+    currentlyExecutingRequests >= maxConcurrentRequests;
+
+  if (shouldQueueRequest) {
+    
+    
+    requestQueue.push(__annotator(function()  {return request(url, method, params, cb);}, {"module":"ApiClient","line":83,"column":22}));
+    ApiClient.inform(
+      'request.queued',
+      url,
+      method,
+      params
+    );
+    return;
+  }
+
+  currentlyExecutingRequests++;
+
   if (defaultParams) {
     params = ES('Object', 'assign', false,{}, defaultParams, params);
   }
@@ -7285,7 +7334,7 @@ function request(/*string*/ url, /*string*/ method, /*object*/ params,
       message: 'Could not find a usable transport for request'
     }
   });
-}, {"params":[[url, 'string', 'url'], [method, 'string', 'method'], [params, 'object', 'params'], [cb, 'function', 'cb']]});}__annotator(request, {"module":"ApiClient","line":68,"column":0,"name":"request"}, {"params":["string","string","object","function"]});
+}, {"params":[[url, 'string', 'url'], [method, 'string', 'method'], [params, 'object', 'params'], [cb, 'function', 'cb']]});}__annotator(request, {"module":"ApiClient","line":72,"column":0,"name":"request"}, {"params":["string","string","object","function"]});
 
 function inspect(/*?function*/ callback, /*string*/ endpoint, /*string*/ method,
     /*object*/ params, /*number*/ startTime, response) {return __bodyWrapper(this, arguments, function() {
@@ -7309,10 +7358,22 @@ function inspect(/*?function*/ callback, /*string*/ endpoint, /*string*/ method,
     /*duration*/ ES('Date', 'now', false) - startTime
   );
 
+
+  currentlyExecutingRequests--;
   if (callback) {
     callback(response);
   }
-}, {"params":[[callback, '?function', 'callback'], [endpoint, 'string', 'endpoint'], [method, 'string', 'method'], [params, 'object', 'params'], [startTime, 'number', 'startTime']]});}__annotator(inspect, {"module":"ApiClient","line":110,"column":0,"name":"inspect"}, {"params":["?function","string","string","object","number"]});
+
+  
+  
+  var shouldExecuteQueuedRequest =
+    requestQueue.length > 0 &&
+    currentlyExecutingRequests < maxConcurrentRequests;
+  if (shouldExecuteQueuedRequest) {
+    var nextRequest = requestQueue.shift();
+    nextRequest();
+  }
+}, {"params":[[callback, '?function', 'callback'], [endpoint, 'string', 'endpoint'], [method, 'string', 'method'], [params, 'object', 'params'], [startTime, 'number', 'startTime']]});}__annotator(inspect, {"module":"ApiClient","line":135,"column":0,"name":"inspect"}, {"params":["?function","string","string","object","number"]});
 
 
 function parseCallDataFromArgs(/*array*/ args) {return __bodyWrapper(this, arguments, function() {
@@ -7332,7 +7393,7 @@ function parseCallDataFromArgs(/*array*/ args) {return __bodyWrapper(this, argum
   }
 
   
-  ES(args, 'forEach', true,__annotator(function(arg)  {return argsMap[typeof arg] = arg;}, {"module":"ApiClient","line":158,"column":15}));
+  ES(args, 'forEach', true,__annotator(function(arg)  {return argsMap[typeof arg] = arg;}, {"module":"ApiClient","line":195,"column":15}));
 
   var method = (argsMap.string || 'get').toLowerCase();
 
@@ -7354,7 +7415,7 @@ function parseCallDataFromArgs(/*array*/ args) {return __bodyWrapper(this, argum
   params.method = method;
 
   return {uri:uri, callback:callback, params:params};
-}, {"params":[[args, 'array', 'args']]});}__annotator(parseCallDataFromArgs, {"module":"ApiClient","line":141,"column":0,"name":"parseCallDataFromArgs"}, {"params":["array"]});
+}, {"params":[[args, 'array', 'args']]});}__annotator(parseCallDataFromArgs, {"module":"ApiClient","line":178,"column":0,"name":"parseCallDataFromArgs"}, {"params":["array"]});
 
 
 function requestUsingGraph() {for (var args=[],$__0=0,$__1=arguments.length;$__0<$__1;$__0++) args.push(arguments[$__0]);
@@ -7377,7 +7438,7 @@ function requestUsingGraph() {for (var args=[],$__0=0,$__1=arguments.length;$__0
     params,
     ES(inspect, 'bind', true,null, callback, uri.getPath(), method, params, ES('Date', 'now', false))
   );
-}__annotator(requestUsingGraph, {"module":"ApiClient","line":205,"column":0,"name":"requestUsingGraph"});
+}__annotator(requestUsingGraph, {"module":"ApiClient","line":242,"column":0,"name":"requestUsingGraph"});
 
 
 function scheduleBatchCall() {for (var args=[],$__0=0,$__1=arguments.length;$__0<$__1;$__0++) args.push(arguments[$__0]);
@@ -7411,7 +7472,7 @@ function scheduleBatchCall() {for (var args=[],$__0=0,$__1=arguments.length;$__0
     
     scheduleId = setTimeout(dispatchBatchCalls, 0);
   }
-}__annotator(scheduleBatchCall, {"module":"ApiClient","line":230,"column":0,"name":"scheduleBatchCall"});
+}__annotator(scheduleBatchCall, {"module":"ApiClient","line":267,"column":0,"name":"scheduleBatchCall"});
 
 
 function dispatchBatchCalls() {
@@ -7462,15 +7523,15 @@ function dispatchBatchCalls() {
       if (ES('Array', 'isArray', false,response)) {
         ES(response, 'forEach', true,__annotator(function(data, idx)  {
           copiedBatchCallbacks[idx](ES('JSON', 'parse', false,data.body));
-        }, {"module":"ApiClient","line":313,"column":25}));
+        }, {"module":"ApiClient","line":350,"column":25}));
       } else {
         ES(copiedBatchCallbacks, 'forEach', true,__annotator(function(callback) 
-          {return callback({error: {message: 'Fatal: batch call failed.'}});}, {"module":"ApiClient","line":317,"column":37})
+          {return callback({error: {message: 'Fatal: batch call failed.'}});}, {"module":"ApiClient","line":354,"column":37})
         );
       }
-    }, {"module":"ApiClient","line":311,"column":4})
+    }, {"module":"ApiClient","line":348,"column":4})
   );
-}__annotator(dispatchBatchCalls, {"module":"ApiClient","line":267,"column":0,"name":"dispatchBatchCalls"});
+}__annotator(dispatchBatchCalls, {"module":"ApiClient","line":304,"column":0,"name":"dispatchBatchCalls"});
 
 
 function requestUsingRest(/*object*/ params, /*?function*/ cb) {return __bodyWrapper(this, arguments, function() {
@@ -7489,18 +7550,37 @@ function requestUsingRest(/*object*/ params, /*?function*/ cb) {return __bodyWra
   var inspector =
     ES(inspect, 'bind', true,null, cb, '/restserver.php', 'get', params, ES('Date', 'now', false));
   request(url, 'get', params, inspector);
-}, {"params":[[params, 'object', 'params'], [cb, '?function', 'cb']]});}__annotator(requestUsingRest, {"module":"ApiClient","line":336,"column":0,"name":"requestUsingRest"}, {"params":["object","?function"]});
+}, {"params":[[params, 'object', 'params'], [cb, '?function', 'cb']]});}__annotator(requestUsingRest, {"module":"ApiClient","line":373,"column":0,"name":"requestUsingRest"}, {"params":["object","?function"]});
 
 var ApiClient = ES('Object', 'assign', false,new ObservableMixin(), {
   setAccessToken:__annotator(function(/*?string*/ access_token) {return __bodyWrapper(this, arguments, function() {
+    if (__DEV__) {
+      if (accessToken && accessToken !== access_token) {
+        console.error(
+          'You are overriding current access token, that means some other ' +
+          'app is expecting different access token and you will probably ' +
+          'break things. Please consider passing access_token directly to ' +
+          'API parameters instead of overriding the global settings.'
+        );
+      }
+    }
     accessToken = access_token;
-  }, {"params":[[access_token, '?string', 'access_token']]});}, {"module":"ApiClient","line":355,"column":17}, {"params":["?string"]}),
+  }, {"params":[[access_token, '?string', 'access_token']]});}, {"module":"ApiClient","line":392,"column":17}, {"params":["?string"]}),
   setClientID:__annotator(function(/*?string*/ client_id) {return __bodyWrapper(this, arguments, function() {
     clientID = client_id;
-  }, {"params":[[client_id, '?string', 'client_id']]});}, {"module":"ApiClient","line":358,"column":14}, {"params":["?string"]}),
+  }, {"params":[[client_id, '?string', 'client_id']]});}, {"module":"ApiClient","line":405,"column":14}, {"params":["?string"]}),
   setDefaultParams:__annotator(function(/*?object*/ default_params) {return __bodyWrapper(this, arguments, function() {
     defaultParams = default_params;
-  }, {"params":[[default_params, '?object', 'default_params']]});}, {"module":"ApiClient","line":361,"column":19}, {"params":["?object"]}),
+  }, {"params":[[default_params, '?object', 'default_params']]});}, {"module":"ApiClient","line":408,"column":19}, {"params":["?object"]}),
+  setMaxConcurrentRequests:__annotator(function(/*number*/ value        ) {return __bodyWrapper(this, arguments, function() {
+    maxConcurrentRequests = value;
+  }, {"params":[[value, 'number', 'value']]});}, {"module":"ApiClient","line":411,"column":27}, {"params":["number"]}),
+  getCurrentlyExecutingRequestCount:__annotator(function()   /*number*/       {
+    return currentlyExecutingRequests;
+  }, {"module":"ApiClient","line":414,"column":36}),
+  getQueuedRequestCount:__annotator(function()   /*number*/       {
+    return requestQueue.length;
+  }, {"module":"ApiClient","line":417,"column":24}),
   rest: requestUsingRest,
   graph: requestUsingGraph,
   scheduleBatchCall: scheduleBatchCall
@@ -7508,7 +7588,7 @@ var ApiClient = ES('Object', 'assign', false,new ObservableMixin(), {
 
 function requestIsTooLargeForGet(/*URI*/ uri, /*?string*/ method) /*boolean*/ {return __bodyWrapper(this, arguments, function() {
   return (uri.toString().length > MAX_QUERYSTRING_LENGTH && method === 'get');
-}, {"params":[[uri, 'URI', 'uri'], [method, '?string', 'method']],"returns":'boolean'});}__annotator(requestIsTooLargeForGet, {"module":"ApiClient","line":369,"column":0,"name":"requestIsTooLargeForGet"}, {"params":["URI","?string"],"returns":"boolean"});
+}, {"params":[[uri, 'URI', 'uri'], [method, '?string', 'method']],"returns":'boolean'});}__annotator(requestIsTooLargeForGet, {"module":"ApiClient","line":425,"column":0,"name":"requestIsTooLargeForGet"}, {"params":["URI","?string"],"returns":"boolean"});
 
 
 FlashRequest.setSwfUrl(ApiClientConfig.FlashRequest.swfUrl);
@@ -7680,7 +7760,7 @@ FB.provide('', {
 });
 
 
-}, {"module":"fb.api","line":4,"column":37}),3);
+}, {"module":"legacy:fb.api","line":4,"column":37}),3);
 
 
 __d("sdk.Canvas.Environment",["sdk.RPC"],__annotator(function(global,require,requireDynamic,requireLazy,module,exports,RPC) {require.__markCompiled && require.__markCompiled();
@@ -9538,19 +9618,19 @@ FB.provide('', {
 
   getLoginStatus: __annotator(function() /*?object*/ {return __bodyWrapper(this, arguments, function() {
     return Auth.getLoginStatus.apply(Auth, arguments);
-  }, {"returns":'?object'});}, {"module":"fb.auth","line":18,"column":18}, {"returns":"?object"}),
+  }, {"returns":'?object'});}, {"module":"legacy:fb.auth","line":18,"column":18}, {"returns":"?object"}),
 
   getAuthResponse: __annotator(function() /*?object*/ {return __bodyWrapper(this, arguments, function() {
     return Auth.getAuthResponse();
-  }, {"returns":'?object'});}, {"module":"fb.auth","line":22,"column":19}, {"returns":"?object"}),
+  }, {"returns":'?object'});}, {"module":"legacy:fb.auth","line":22,"column":19}, {"returns":"?object"}),
 
   getAccessToken: __annotator(function() /*?string*/ {return __bodyWrapper(this, arguments, function() {
     return Runtime.getAccessToken() || null;
-  }, {"returns":'?string'});}, {"module":"fb.auth","line":26,"column":18}, {"returns":"?string"}),
+  }, {"returns":'?string'});}, {"module":"legacy:fb.auth","line":26,"column":18}, {"returns":"?string"}),
 
   getUserID: __annotator(function() /*?string*/ {return __bodyWrapper(this, arguments, function() {
     return Runtime.getUserID() || Runtime.getCookieUserID();
-  }, {"returns":'?string'});}, {"module":"fb.auth","line":30,"column":13}, {"returns":"?string"}),
+  }, {"returns":'?string'});}, {"module":"legacy:fb.auth","line":30,"column":13}, {"returns":"?string"}),
 
   login: __annotator(function(/*?function*/ cb, /*?object*/ opts) {return __bodyWrapper(this, arguments, function() {
     if (opts && opts.perms && !opts.scope) {
@@ -9569,12 +9649,12 @@ FB.provide('', {
         domain: location.hostname
       }, opts || {}),
     cb);
-  }, {"params":[[cb, '?function', 'cb'], [opts, '?object', 'opts']]});}, {"module":"fb.auth","line":34,"column":9}, {"params":["?function","?object"]}),
+  }, {"params":[[cb, '?function', 'cb'], [opts, '?object', 'opts']]});}, {"module":"legacy:fb.auth","line":34,"column":9}, {"params":["?function","?object"]}),
 
 
   logout: __annotator(function(/*?function*/ cb) {return __bodyWrapper(this, arguments, function() {
     ui({ method: 'auth.logout', display: 'hidden' }, cb);
-  }, {"params":[[cb, '?function', 'cb']]});}, {"module":"fb.auth","line":54,"column":10}, {"params":["?function"]})
+  }, {"params":[[cb, '?function', 'cb']]});}, {"module":"legacy:fb.auth","line":54,"column":10}, {"params":["?function"]})
 });
 
 Auth.subscribe('logout', ES(Event.fire, 'bind', true,Event, 'auth.logout'));
@@ -9608,10 +9688,10 @@ Event.subscribe('init:post', __annotator(function(/*object*/ options) {return __
       Cookie.loadMeta();
     }
   }
-}, {"params":[[options, 'object', 'options']]});}, {"module":"fb.auth","line":65,"column":29}, {"params":["object"]}));
+}, {"params":[[options, 'object', 'options']]});}, {"module":"legacy:fb.auth","line":65,"column":29}, {"params":["object"]}));
 
 
-}, {"module":"fb.auth","line":5,"column":130}),3);
+}, {"module":"legacy:fb.auth","line":5,"column":130}),3);
 
 
 __d("sdk.Canvas.IframeHandling",["DOMWrapper","sdk.RPC"],__annotator(function(global,require,requireDynamic,requireLazy,module,exports,DOMWrapper,RPC) {require.__markCompiled && require.__markCompiled();
@@ -9979,48 +10059,48 @@ FB.provide('Canvas', {
   setSize: __annotator(function(params) {
     Assert.maybeObject(params, 'Invalid argument');
     return IframeHandling.setSize.apply(null, arguments);
-  }, {"module":"fb.canvas","line":18,"column":11}),
+  }, {"module":"legacy:fb.canvas","line":18,"column":11}),
   setAutoGrow: __annotator(function() {
     return IframeHandling.setAutoGrow.apply(null, arguments);
-  }, {"module":"fb.canvas","line":22,"column":15}),
+  }, {"module":"legacy:fb.canvas","line":22,"column":15}),
 
   
   getPageInfo: __annotator(function(callback) {
     Assert.isFunction(callback, 'Invalid argument');
     return Environment.getPageInfo.apply(null, arguments);
-  }, {"module":"fb.canvas","line":27,"column":15}),
+  }, {"module":"legacy:fb.canvas","line":27,"column":15}),
   scrollTo: __annotator(function(x, y) {
     Assert.maybeNumber(x, 'Invalid argument');
     Assert.maybeNumber(y, 'Invalid argument');
     return Environment.scrollTo.apply(null, arguments);
-  }, {"module":"fb.canvas","line":31,"column":12}),
+  }, {"module":"legacy:fb.canvas","line":31,"column":12}),
 
   
   setDoneLoading: __annotator(function(callback) {
     Assert.maybeFunction(callback, 'Invalid argument');
     return Tti.setDoneLoading.apply(null, arguments);
-  }, {"module":"fb.canvas","line":38,"column":18}),
+  }, {"module":"legacy:fb.canvas","line":38,"column":18}),
   startTimer: __annotator(function() {
     return Tti.startTimer.apply(null, arguments);
-  }, {"module":"fb.canvas","line":42,"column":14}),
+  }, {"module":"legacy:fb.canvas","line":42,"column":14}),
   stopTimer: __annotator(function(callback) {
     Assert.maybeFunction(callback, 'Invalid argument');
     return Tti.stopTimer.apply(null, arguments);
-  }, {"module":"fb.canvas","line":45,"column":13}),
+  }, {"module":"legacy:fb.canvas","line":45,"column":13}),
 
   
   getHash: __annotator(function(callback) {
     Assert.isFunction(callback, 'Invalid argument');
     return Navigation.getHash.apply(null, arguments);
-  }, {"module":"fb.canvas","line":51,"column":11}),
+  }, {"module":"legacy:fb.canvas","line":51,"column":11}),
   setHash: __annotator(function(hash) {
     Assert.isString(hash, 'Invalid argument');
     return Navigation.setHash.apply(null, arguments);
-  }, {"module":"fb.canvas","line":55,"column":11}),
+  }, {"module":"legacy:fb.canvas","line":55,"column":11}),
   setUrlHandler: __annotator(function(callback) {
     Assert.isFunction(callback, 'Invalid argument');
     return Navigation.setUrlHandler.apply(null, arguments);
-  }, {"module":"fb.canvas","line":59,"column":17})
+  }, {"module":"legacy:fb.canvas","line":59,"column":17})
 
 });
 
@@ -10037,10 +10117,10 @@ Event.subscribe('init:post', __annotator(function(options) {
         options.hideFlashCallback 
     );
   }
-}, {"module":"fb.canvas","line":68,"column":29}));
+}, {"module":"legacy:fb.canvas","line":68,"column":29}));
 
 
-}, {"module":"fb.canvas","line":4,"column":189}),3);
+}, {"module":"legacy:fb.canvas","line":4,"column":189}),3);
 
 
 __d("legacy:fb.canvas-legacy",["Assert","FB","Log","sdk.Canvas.Tti"],__annotator(function(global,require,requireDynamic,requireLazy,__DO_NOT_USE__module,__DO_NOT_USE__exports,Assert,FB,Log,Tti) {require.__markCompiled && require.__markCompiled();
@@ -10054,11 +10134,11 @@ FB.provide('CanvasInsights', {
     Log.warn('Deprecated: use FB.Canvas.setDoneLoading');
     Assert.maybeFunction(callback, 'Invalid argument');
     return Tti.setDoneLoading.apply(null, arguments);
-  }, {"module":"fb.canvas-legacy","line":11,"column":18})
+  }, {"module":"legacy:fb.canvas-legacy","line":11,"column":18})
 });
 
 
-}, {"module":"fb.canvas-legacy","line":4,"column":69}),3);
+}, {"module":"legacy:fb.canvas-legacy","line":4,"column":69}),3);
 
 
 __d("sdk.Canvas.Prefetcher",["sdk.api","createArrayFromMixed","JSSDKCanvasPrefetcherConfig","sdk.Runtime"],__annotator(function(global,require,requireDynamic,requireLazy,module,exports,api,createArrayFromMixed,CanvasPrefetcherConfig,Runtime) {require.__markCompiled && require.__markCompiled();
@@ -10164,10 +10244,10 @@ Event.subscribe('init:post', __annotator(function(options) {
   if (Runtime.isEnvironment(Runtime.ENVIRONMENTS.CANVAS)) {
     CanvasPrefetcher._maybeSample();
   }
-}, {"module":"fb.canvas.prefetcher","line":12,"column":29}));
+}, {"module":"legacy:fb.canvas.prefetcher","line":12,"column":29}));
 
 
-}, {"module":"fb.canvas.prefetcher","line":4,"column":91}),3);
+}, {"module":"legacy:fb.canvas.prefetcher","line":4,"column":91}),3);
 
 
 __d("legacy:fb.compat.ui",["copyProperties","FB","Log","sdk.ui","sdk.UIServer"],__annotator(function(global,require,requireDynamic,requireLazy,__DO_NOT_USE__module,__DO_NOT_USE__exports,copyProperties,FB,Log,ui,UIServer) {require.__markCompiled && require.__markCompiled();
@@ -10185,7 +10265,7 @@ FB.provide('', {
       method  : 'stream.share',
       u       : u
     });
-  }, {"module":"fb.compat.ui","line":12,"column":9}),
+  }, {"module":"legacy:fb.compat.ui","line":12,"column":9}),
 
   publish: __annotator(function(post, cb) {
     Log.error('publish() has been deprecated. Please use FB.ui() instead.');
@@ -10195,7 +10275,7 @@ FB.provide('', {
       method  : 'stream.publish',
       preview : 1
     }, post || {}), cb);
-  }, {"module":"fb.compat.ui","line":21,"column":11}),
+  }, {"module":"legacy:fb.compat.ui","line":21,"column":11}),
 
   addFriend: __annotator(function(id, cb) {
     Log.error('addFriend() has been deprecated. Please use FB.ui() instead.');
@@ -10204,14 +10284,14 @@ FB.provide('', {
       id      : id,
       method  : 'friend.add'
     }, cb);
-  }, {"module":"fb.compat.ui","line":31,"column":13})
+  }, {"module":"legacy:fb.compat.ui","line":31,"column":13})
 });
 
 // the "fake" UIServer method was called auth.login
 UIServer.Methods['auth.login'] = UIServer.Methods['permissions.request'];
 
 
-}, {"module":"fb.compat.ui","line":4,"column":80}),3);
+}, {"module":"legacy:fb.compat.ui","line":4,"column":80}),3);
 
 
 __d("mergeArrays",[],__annotator(function(global,require,requireDynamic,requireLazy,module,exports) {require.__markCompiled && require.__markCompiled();
@@ -10609,7 +10689,7 @@ __d("legacy:fb.data",["FB","sdk.Data"],__annotator(function(global,require,requi
 FB.provide('Data', Data);
 
 
-}, {"module":"fb.data","line":4,"column":39}),3);
+}, {"module":"legacy:fb.data","line":4,"column":39}),3);
 
 
 __d("legacy:fb.event",["FB","sdk.Event","sdk.Runtime","sdk.Scribe","sdk.feature"],__annotator(function(global,require,requireDynamic,requireLazy,__DO_NOT_USE__module,__DO_NOT_USE__exports,FB,Event,Runtime,Scribe,feature) {require.__markCompiled && require.__markCompiled();
@@ -10649,17 +10729,17 @@ FB.provide('Event', {
           eventsToLog.length = 0;
           logScheduleId = null;
 
-        }, {"module":"fb.event","line":24,"column":35}), logTimeout);
+        }, {"module":"legacy:fb.event","line":24,"column":35}), logTimeout);
       }
     }
     return Event.subscribe(name, cb);
-  }, {"module":"fb.event","line":17,"column":12}),
+  }, {"module":"legacy:fb.event","line":17,"column":12}),
 
   unsubscribe: ES(Event.unsubscribe, 'bind', true,Event)
 });
 
 
-}, {"module":"fb.event","line":4,"column":82}),3);
+}, {"module":"legacy:fb.event","line":4,"column":82}),3);
 
 
 __d("legacy:fb.event-legacy",["FB","sdk.Event"],__annotator(function(global,require,requireDynamic,requireLazy,__DO_NOT_USE__module,__DO_NOT_USE__exports,FB,Event) {require.__markCompiled && require.__markCompiled();
@@ -10675,7 +10755,7 @@ FB.provide('Event', {
 FB.provide('EventProvider', Event);
 
 
-}, {"module":"fb.event-legacy","line":4,"column":48}),3);
+}, {"module":"legacy:fb.event-legacy","line":4,"column":48}),3);
 
 
 __d("legacy:fb.frictionless",["FB","sdk.Frictionless"],__annotator(function(global,require,requireDynamic,requireLazy,__DO_NOT_USE__module,__DO_NOT_USE__exports,FB,Frictionless) {require.__markCompiled && require.__markCompiled();
@@ -10684,7 +10764,7 @@ __d("legacy:fb.frictionless",["FB","sdk.Frictionless"],__annotator(function(glob
 FB.provide('Frictionless', Frictionless);
 
 
-}, {"module":"fb.frictionless","line":4,"column":55}),3);
+}, {"module":"legacy:fb.frictionless","line":4,"column":55}),3);
 
 
 __d("sdk.init",["sdk.Cookie","sdk.ErrorHandling","sdk.Event","Log","ManagedError","sdk.PlatformVersioning","QueryString","sdk.Runtime","sdk.URI","createArrayFromMixed"],__annotator(function(global,require,requireDynamic,requireLazy,module,exports,Cookie,ErrorHandling,Event,Log,ManagedError,PlatformVersioning,QueryString,Runtime,URI,createArrayFromMixed) {require.__markCompiled && require.__markCompiled();
@@ -10826,7 +10906,7 @@ FB.provide('', {
 });
 
 
-}, {"module":"fb.init","line":4,"column":39}),3);
+}, {"module":"legacy:fb.init","line":4,"column":39}),3);
 
 
 __d("legacy:fb.json",["FB","ManagedError"],__annotator(function(global,require,requireDynamic,requireLazy,__DO_NOT_USE__module,__DO_NOT_USE__exports,FB,ManagedError) {require.__markCompiled && require.__markCompiled();
@@ -10843,18 +10923,18 @@ FB.provide('JSON', {
     } catch(e) {
       throw new ManagedError(e.message, e);
     }
-  }, {"module":"fb.json","line":12,"column":13}),
+  }, {"module":"legacy:fb.json","line":12,"column":13}),
   parse: __annotator(function(str) {
     try {
       return ES('JSON', 'parse', false,str);
     } catch(e) {
       throw new ManagedError(e.message, e);
     }
-  }, {"module":"fb.json","line":19,"column":9})
+  }, {"module":"legacy:fb.json","line":19,"column":9})
 });
 
 
-}, {"module":"fb.json","line":4,"column":43}),3);
+}, {"module":"legacy:fb.json","line":4,"column":43}),3);
 
 
 __d("legacy:fb.ua",["FB","sdk.UA"],__annotator(function(global,require,requireDynamic,requireLazy,__DO_NOT_USE__module,__DO_NOT_USE__exports,FB,UA) {require.__markCompiled && require.__markCompiled();
@@ -10865,7 +10945,7 @@ FB.provide('UA', {
 });
 
 
-}, {"module":"fb.ua","line":4,"column":35}),3);
+}, {"module":"legacy:fb.ua","line":4,"column":35}),3);
 
 
 __d("legacy:fb.ui",["FB","sdk.ui"],__annotator(function(global,require,requireDynamic,requireLazy,__DO_NOT_USE__module,__DO_NOT_USE__exports,FB,ui) {require.__markCompiled && require.__markCompiled();
@@ -10878,7 +10958,7 @@ FB.provide('', {
 
 
 
-}, {"module":"fb.ui","line":4,"column":35}),3);
+}, {"module":"legacy:fb.ui","line":4,"column":35}),3);
 
 
 __d("runOnce",[],__annotator(function(global,require,requireDynamic,requireLazy,module,exports) {require.__markCompiled && require.__markCompiled();
@@ -13224,7 +13304,7 @@ ES(ES('Object', 'keys', false,PluginTags), 'forEach', true,__annotator(function(
     localName: tag.replace(/_/g, '-'),
     ctor: IframePlugin.withParams(PluginTags[tag], PluginConfig[tag])
   });
-}, {"module":"fb.xfbml","line":30,"column":32}));
+}, {"module":"legacy:fb.xfbml","line":30,"column":32}));
 
 
 ES(ES('Object', 'keys', false,customTags), 'forEach', true,__annotator(function(tag) {
@@ -13236,7 +13316,7 @@ ES(ES('Object', 'keys', false,customTags), 'forEach', true,__annotator(function(
     localName: tag.replace(/_/g, '-'),
     ctor: customTags[tag]
   });
-}, {"module":"fb.xfbml","line":42,"column":32}));
+}, {"module":"legacy:fb.xfbml","line":42,"column":32}));
 
 FB.provide('XFBML', {
   parse: __annotator(function(dom) {
@@ -13247,7 +13327,7 @@ FB.provide('XFBML', {
       dom = dom.body;
     }
     return XFBML.parse.apply(null, arguments);
-  }, {"module":"fb.xfbml","line":54,"column":9})
+  }, {"module":"legacy:fb.xfbml","line":54,"column":9})
 });
 
 XFBML.subscribe('parse', ES(Event.fire, 'bind', true,Event, 'xfbml.parse'));
@@ -13265,12 +13345,12 @@ Event.subscribe('init:post', __annotator(function(options) {
       0
     );
   }
-}, {"module":"fb.xfbml","line":68,"column":29}));
+}, {"module":"legacy:fb.xfbml","line":68,"column":29}));
 
 Assert.define('Xfbml', __annotator(function(element) {
   return (element.nodeType === 1 || element.nodeType === 9) &&
          typeof element.nodeName === 'string';
-}, {"module":"fb.xfbml","line":82,"column":23}));
+}, {"module":"legacy:fb.xfbml","line":82,"column":23}));
 
 
 
@@ -13284,10 +13364,10 @@ try {
 }
 
 
-}, {"module":"fb.xfbml","line":6,"column":258}),3);
+}, {"module":"legacy:fb.xfbml","line":6,"column":258}),3);
 
 
 
 
 }).call({}, window.inDapIF ? parent.window : window);
-} catch (e) {new Image().src="https:\/\/www.facebook.com\/" + 'common/scribe_endpoint.php?c=jssdk_error&m='+encodeURIComponent('{"error":"LOAD", "extra": {"name":"'+e.name+'","line":"'+(e.lineNumber||e.line)+'","script":"'+(e.fileName||e.sourceURL||e.script)+'","stack":"'+(e.stackTrace||e.stack)+'","revision":"1699891","message":"'+e.message+'"}}');}
+} catch (e) {new Image().src="https:\/\/www.facebook.com\/" + 'common/scribe_endpoint.php?c=jssdk_error&m='+encodeURIComponent('{"error":"LOAD", "extra": {"name":"'+e.name+'","line":"'+(e.lineNumber||e.line)+'","script":"'+(e.fileName||e.sourceURL||e.script)+'","stack":"'+(e.stackTrace||e.stack)+'","revision":"1721290","message":"'+e.message+'"}}');}
