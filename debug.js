@@ -1,4 +1,4 @@
-/*1438098785,,JIT Construction: v1856999,en_US*/
+/*1438704315,,JIT Construction: v1867173,en_US*/
 
 /**
  * Copyright Facebook Inc.
@@ -2122,10 +2122,11 @@ module.exports = ES;
 /* 8t3naSxRM6- */
 }, {"module":"ES","line":9,"column":179,"name":"$module_ES"}),null);
 var ES = require('ES');
-__d("JSSDKRuntimeConfig",[],{"locale":"en_US","rtl":false,"revision":"1856999"});__d("JSSDKConfig",[],{"bustCache":true,"tagCountLogRate":0.01,"errorHandling":{"rate":4},"usePluginPipe":true,"features":{"allow_non_canvas_app_events":false,"event_subscriptions_log":{"rate":0.01,"value":10000},"should_force_single_dialog_instance":true,"kill_fragment":true,"xfbml_profile_pic_server":true,"error_handling":{"rate":4},"e2e_ping_tracking":{"rate":1.0e-6},"xd_timeout":{"rate":4,"value":30000},"use_bundle":true,"launch_payment_dialog_via_pac":{"rate":100},"plugin_tags_blacklist":["recommendations_bar","registration","activity","recommendations","facepile"],"should_log_response_error":true},"api":{"mode":"warn","whitelist":["AppEvents","AppEvents.EventNames","AppEvents.ParameterNames","AppEvents.activateApp","AppEvents.logEvent","AppEvents.logPurchase","Canvas","Canvas.Prefetcher","Canvas.Prefetcher.addStaticResource","Canvas.Prefetcher.setCollectionMode","Canvas.getPageInfo","Canvas.hideFlashElement","Canvas.scrollTo","Canvas.setAutoGrow","Canvas.setDoneLoading","Canvas.setSize","Canvas.setUrlHandler","Canvas.showFlashElement","Canvas.startTimer","Canvas.stopTimer","Event","Event.subscribe","Event.unsubscribe","Music.flashCallback","Music.init","Music.send","Payment","Payment.cancelFlow","Payment.continueFlow","Payment.init","Payment.lockForProcessing","Payment.parse","Payment.setSize","Payment.unlockForProcessing","ThirdPartyProvider","ThirdPartyProvider.init","ThirdPartyProvider.sendData","UA","UA.nativeApp","XFBML","XFBML.RecommendationsBar","XFBML.RecommendationsBar.markRead","XFBML.parse","addFriend","api","getAccessToken","getAuthResponse","getLoginStatus","getUserID","init","login","logout","publish","share","ui"]},"initSitevars":{"enableMobileComments":1,"iframePermissions":{"read_stream":false,"manage_mailbox":false,"manage_friendlists":false,"read_mailbox":false,"publish_checkins":true,"status_update":true,"photo_upload":true,"video_upload":true,"sms":false,"create_event":true,"rsvp_event":true,"offline_access":true,"email":true,"xmpp_login":false,"create_note":true,"share_item":true,"export_stream":false,"publish_stream":true,"publish_likes":true,"ads_management":false,"contact_email":true,"access_private_data":false,"read_insights":false,"read_requests":false,"read_friendlists":true,"manage_pages":false,"physical_login":false,"manage_groups":false,"read_deals":false}}});__d("UrlMapConfig",[],{"www":"www.facebook.com","m":"m.facebook.com","connect":"connect.facebook.net","business":"business.facebook.com","api_https":"api.facebook.com","api_read_https":"api-read.facebook.com","graph_https":"graph.facebook.com","fbcdn_http":"fbstatic-a.akamaihd.net","fbcdn_https":"fbstatic-a.akamaihd.net","cdn_http":"static.ak.facebook.com","cdn_https":"s-static.ak.facebook.com"});__d("JSSDKXDConfig",[],{"XdUrl":"\/connect\/xd_arbiter.php?version=41","XdBundleUrl":"\/connect\/xd_arbiter\/JA3PfGc13h-.js?version=41","Flash":{"path":"https:\/\/connect.facebook.net\/rsrc.php\/v1\/yW\/r\/yOZN1vHw3Z_.swf"},"useCdn":true});__d("JSSDKCssConfig",[],{"rules":".fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:\"lucida grande\", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}.fb_link img{border:none}\n.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_reset .fb_dialog_legacy{overflow:visible}.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px}.fb_dialog_content{background:#fff;color:#333}.fb_dialog_close_icon{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;_background-image:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yL\/r\/s816eWC-2sl.gif);cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent;_background-image:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yL\/r\/s816eWC-2sl.gif)}.fb_dialog_close_icon:active{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent;_background-image:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yL\/r\/s816eWC-2sl.gif)}.fb_dialog_loader{background-color:#f6f7f8;border:1px solid #606060;font-size:24px;padding:20px}.fb_dialog_top_left,.fb_dialog_top_right,.fb_dialog_bottom_left,.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}.fb_dialog_top_left{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}.fb_dialog_top_right{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}.fb_dialog_bottom_left{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}.fb_dialog_bottom_right{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}.fb_dialog_vert_left,.fb_dialog_vert_right,.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}.fb_dialog_vert_left,.fb_dialog_vert_right{width:10px;height:100\u0025}.fb_dialog_vert_left{margin-left:-10px}.fb_dialog_vert_right{right:0;margin-right:-10px}.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{width:100\u0025;height:10px}.fb_dialog_horiz_top{margin-top:-10px}.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #3a5795;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yd\/r\/Cou7n-nqK52.gif) no-repeat 5px 50\u0025;float:left;padding:5px 0 7px 26px}body.fb_hidden{-webkit-transform:none;height:100\u0025;margin:0;overflow:visible;position:absolute;top:-10000px;left:0;width:100\u0025}.fb_dialog.fb_dialog_mobile.loading{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ya\/r\/3rhSv5V8j3o.gif) white no-repeat 50\u0025 50\u0025;min-height:100\u0025;min-width:100\u0025;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{max-height:590px;min-height:590px;max-width:500px;min-width:500px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;left:0;top:0;width:100\u0025;min-height:100\u0025;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0\u0025 0\u0025, 0\u0025 100\u0025, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100\u0025}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0\u0025 0\u0025, 0\u0025 100\u0025, from(#4966A6), color-stop(.5, #355492), to(#2A4887));border:1px solid #2f477a;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset, rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/y9\/r\/jKEcVPZFk-2.gif) no-repeat 50\u0025 50\u0025;border:1px solid #555;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f6f7f8;border:1px solid #555;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}\n.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100\u0025}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_hide_iframes iframe{position:relative;left:-10000px}.fb_iframe_widget_loader{position:relative;display:inline-block}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100\u0025}.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}.fb_iframe_widget_loader .FB_Loader{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/y9\/r\/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50\u0025;z-index:4}","components":["css:fb.css.base","css:fb.css.dialog","css:fb.css.iframewidget"]});__d("ApiClientConfig",[],{"FlashRequest":{"swfUrl":"https:\/\/connect.facebook.net\/rsrc.php\/v1\/yd\/r\/mxzow1Sdmxr.swf"}});__d("JSSDKCanvasPrefetcherConfig",[],{"blacklist":[144959615576466],"sampleRate":500});__d("JSSDKPluginPipeConfig",[],{"threshold":0,"enabledApps":{"209753825810663":1,"187288694643718":1}});
+__d("JSSDKRuntimeConfig",[],{"locale":"en_US","rtl":false,"revision":"1867173"});__d("JSSDKConfig",[],{"bustCache":true,"tagCountLogRate":0.01,"errorHandling":{"rate":4},"usePluginPipe":true,"features":{"allow_non_canvas_app_events":false,"event_subscriptions_log":{"rate":0.01,"value":10000},"should_force_single_dialog_instance":true,"kill_fragment":true,"xfbml_profile_pic_server":true,"error_handling":{"rate":4},"e2e_ping_tracking":{"rate":1.0e-6},"xd_timeout":{"rate":4,"value":30000},"use_bundle":true,"launch_payment_dialog_via_pac":{"rate":100},"plugin_tags_blacklist":["recommendations_bar","registration","activity","recommendations","facepile"],"should_log_response_error":true},"api":{"mode":"warn","whitelist":["AppEvents","AppEvents.EventNames","AppEvents.ParameterNames","AppEvents.activateApp","AppEvents.logEvent","AppEvents.logPurchase","Canvas","Canvas.Prefetcher","Canvas.Prefetcher.addStaticResource","Canvas.Prefetcher.setCollectionMode","Canvas.getPageInfo","Canvas.hideFlashElement","Canvas.scrollTo","Canvas.setAutoGrow","Canvas.setDoneLoading","Canvas.setSize","Canvas.setUrlHandler","Canvas.showFlashElement","Canvas.startTimer","Canvas.stopTimer","Event","Event.subscribe","Event.unsubscribe","Music.flashCallback","Music.init","Music.send","Payment","Payment.cancelFlow","Payment.continueFlow","Payment.init","Payment.lockForProcessing","Payment.parse","Payment.setSize","Payment.unlockForProcessing","ThirdPartyProvider","ThirdPartyProvider.init","ThirdPartyProvider.sendData","UA","UA.nativeApp","XFBML","XFBML.RecommendationsBar","XFBML.RecommendationsBar.markRead","XFBML.parse","addFriend","api","getAccessToken","getAuthResponse","getLoginStatus","getUserID","init","login","logout","publish","share","ui"]},"initSitevars":{"enableMobileComments":1,"iframePermissions":{"read_stream":false,"manage_mailbox":false,"manage_friendlists":false,"read_mailbox":false,"publish_checkins":true,"status_update":true,"photo_upload":true,"video_upload":true,"sms":false,"create_event":true,"rsvp_event":true,"offline_access":true,"email":true,"xmpp_login":false,"create_note":true,"share_item":true,"export_stream":false,"publish_stream":true,"publish_likes":true,"ads_management":false,"contact_email":true,"access_private_data":false,"read_insights":false,"read_requests":false,"read_friendlists":true,"manage_pages":false,"physical_login":false,"manage_groups":false,"read_deals":false}}});__d("UrlMapConfig",[],{"www":"www.facebook.com","m":"m.facebook.com","connect":"connect.facebook.net","business":"business.facebook.com","api_https":"api.facebook.com","api_read_https":"api-read.facebook.com","graph_https":"graph.facebook.com","fbcdn_http":"fbstatic-a.akamaihd.net","fbcdn_https":"fbstatic-a.akamaihd.net","cdn_http":"static.ak.facebook.com","cdn_https":"s-static.ak.facebook.com"});__d("JSSDKXDConfig",[],{"XdUrl":"\/connect\/xd_arbiter.php?version=41","XdBundleUrl":"\/connect\/xd_arbiter\/JGp7xdN77vo.js?version=41","Flash":{"path":"https:\/\/connect.facebook.net\/rsrc.php\/v1\/yW\/r\/yOZN1vHw3Z_.swf"},"useCdn":true});__d("JSSDKCssConfig",[],{"rules":".fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:\"lucida grande\", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}.fb_link img{border:none}\n.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_reset .fb_dialog_legacy{overflow:visible}.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px}.fb_dialog_content{background:#fff;color:#333}.fb_dialog_close_icon{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;_background-image:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yL\/r\/s816eWC-2sl.gif);cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent;_background-image:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yL\/r\/s816eWC-2sl.gif)}.fb_dialog_close_icon:active{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent;_background-image:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yL\/r\/s816eWC-2sl.gif)}.fb_dialog_loader{background-color:#f6f7f8;border:1px solid #606060;font-size:24px;padding:20px}.fb_dialog_top_left,.fb_dialog_top_right,.fb_dialog_bottom_left,.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}.fb_dialog_top_left{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}.fb_dialog_top_right{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}.fb_dialog_bottom_left{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}.fb_dialog_bottom_right{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}.fb_dialog_vert_left,.fb_dialog_vert_right,.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}.fb_dialog_vert_left,.fb_dialog_vert_right{width:10px;height:100\u0025}.fb_dialog_vert_left{margin-left:-10px}.fb_dialog_vert_right{right:0;margin-right:-10px}.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{width:100\u0025;height:10px}.fb_dialog_horiz_top{margin-top:-10px}.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #3a5795;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yd\/r\/Cou7n-nqK52.gif) no-repeat 5px 50\u0025;float:left;padding:5px 0 7px 26px}body.fb_hidden{-webkit-transform:none;height:100\u0025;margin:0;overflow:visible;position:absolute;top:-10000px;left:0;width:100\u0025}.fb_dialog.fb_dialog_mobile.loading{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ya\/r\/3rhSv5V8j3o.gif) white no-repeat 50\u0025 50\u0025;min-height:100\u0025;min-width:100\u0025;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{max-height:590px;min-height:590px;max-width:500px;min-width:500px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;left:0;top:0;width:100\u0025;min-height:100\u0025;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0\u0025 0\u0025, 0\u0025 100\u0025, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100\u0025}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0\u0025 0\u0025, 0\u0025 100\u0025, from(#4966A6), color-stop(.5, #355492), to(#2A4887));border:1px solid #2f477a;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset, rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/y9\/r\/jKEcVPZFk-2.gif) no-repeat 50\u0025 50\u0025;border:1px solid #555;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f6f7f8;border:1px solid #555;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}\n.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100\u0025}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_hide_iframes iframe{position:relative;left:-10000px}.fb_iframe_widget_loader{position:relative;display:inline-block}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100\u0025}.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}.fb_iframe_widget_loader .FB_Loader{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/y9\/r\/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50\u0025;z-index:4}","components":["css:fb.css.base","css:fb.css.dialog","css:fb.css.iframewidget"]});__d("ApiClientConfig",[],{"FlashRequest":{"swfUrl":"https:\/\/connect.facebook.net\/rsrc.php\/v1\/yd\/r\/mxzow1Sdmxr.swf"}});__d("JSSDKCanvasPrefetcherConfig",[],{"blacklist":[144959615576466],"sampleRate":500});__d("JSSDKPluginPipeConfig",[],{"threshold":0,"enabledApps":{"209753825810663":1,"187288694643718":1}});
 
 
 __d("QueryString",[],__annotator(function $module_QueryString(global,require,requireDynamic,requireLazy,module,exports) {require.__markCompiled && require.__markCompiled();
+/*eslint-disable fb-www/error-args */
 
 
 function encode(/*object*/ bag) /*string*/ {return __bodyWrapper(this, arguments, function() {
@@ -2145,9 +2146,9 @@ function encode(/*object*/ bag) /*string*/ {return __bodyWrapper(this, arguments
     pairs.push(encodeURIComponent(key) +
                '=' +
                encodeURIComponent(value));
-  }, {"module":"QueryString","line":30,"column":34}));
+  }, {"module":"QueryString","line":31,"column":34}));
   return pairs.join('&');
-}, {"params":[[bag, 'object', 'bag']],"returns":'string'});}__annotator(encode, {"module":"QueryString","line":28,"column":0,"name":"encode"}, {"params":["object"],"returns":"string"});
+}, {"params":[[bag, 'object', 'bag']],"returns":'string'});}__annotator(encode, {"module":"QueryString","line":29,"column":0,"name":"encode"}, {"params":["object"],"returns":"string"});
 
 
 function decode(/*string*/ str, /*?boolean*/ strict) /*object*/ {return __bodyWrapper(this, arguments, function() {
@@ -2168,16 +2169,16 @@ function decode(/*string*/ str, /*?boolean*/ strict) /*object*/ {return __bodyWr
       : null;
   }
   return data;
-}, {"params":[[str, 'string', 'str'], [strict, '?boolean', 'strict']],"returns":'object'});}__annotator(decode, {"module":"QueryString","line":52,"column":0,"name":"decode"}, {"params":["string","?boolean"],"returns":"object"});
+}, {"params":[[str, 'string', 'str'], [strict, '?boolean', 'strict']],"returns":'object'});}__annotator(decode, {"module":"QueryString","line":53,"column":0,"name":"decode"}, {"params":["string","?boolean"],"returns":"object"});
 
 
 function appendToUrl(/*string*/ url, params) /*string*/ {return __bodyWrapper(this, arguments, function() {
   return url +
-    (~ES(url, 'indexOf', true,'?') ? '&' : '?') +
+    (ES(url, 'indexOf', true,'?') !== -1 ? '&' : '?') +
     (typeof params === 'string'
       ? params
       : QueryString.encode(params));
-}, {"params":[[url, 'string', 'url']],"returns":'string'});}__annotator(appendToUrl, {"module":"QueryString","line":77,"column":0,"name":"appendToUrl"}, {"params":["string"],"returns":"string"});
+}, {"params":[[url, 'string', 'url']],"returns":'string'});}__annotator(appendToUrl, {"module":"QueryString","line":78,"column":0,"name":"appendToUrl"}, {"params":["string"],"returns":"string"});
 
 var QueryString = {
   encode: encode,
@@ -2929,7 +2930,7 @@ module.exports = getBlankIframeSrc;
 
 
 __d("guid",[],__annotator(function $module_guid(global,require,requireDynamic,requireLazy,module,exports) {require.__markCompiled && require.__markCompiled();
-/*jshint bitwise: false*/
+/*eslint-disable no-bitwise */
 
 function guid() {
   return 'f' + (Math.random() * (1 << 30)).toString(16).replace('.', '');
@@ -3331,6 +3332,8 @@ module.exports = ex;
 
 
 __d("invariant",["ex","sprintf"],__annotator(function $module_invariant(global,require,requireDynamic,requireLazy,module,exports,ex,sprintf) {require.__markCompiled && require.__markCompiled();
+/*eslint-disable fb-www/error-args */
+
 'use strict';
 
    
@@ -3369,7 +3372,7 @@ var invariant = __annotator(function(condition, format) {
     error.framesToPop = 1; // we don't care about invariant's own frame
     throw error;
   }
-}, {"module":"invariant","line":53,"column":16});
+}, {"module":"invariant","line":55,"column":16});
 
 module.exports = invariant;
 
@@ -3778,7 +3781,7 @@ function dotAccess(head, path, create) {
   do {
     var key = stack.shift();
     head = head[key] || create && (head[key] = {});
-  } while(stack.length && head);
+  } while (stack.length && head);
   return head;
 }__annotator(dotAccess, {"module":"dotAccess","line":33,"column":0,"name":"dotAccess"});
 
@@ -4204,7 +4207,7 @@ function createObjectFrom(keys, values ) {
     values = true;
   }
 
-  for (var ii = keys.length; ii--;) {
+  for (var ii = keys.length - 1; ii >= 0; ii--) {
     object[keys[ii]] = isArray ? values[ii] : values;
   }
   return object;
@@ -4338,10 +4341,10 @@ function parse(uri, uriToParse, shouldThrow, serializer) {
 
   if (components.userinfo !== null) {
     if (shouldThrow) {
-        throw new Error(ex(
-          'URI.parse: invalid URI (userinfo is not allowed in a URI): %s',
-          uri.toString()
-        ));
+      throw new Error(ex(
+        'URI.parse: invalid URI (userinfo is not allowed in a URI): %s',
+        uri.toString()
+      ));
     } else {
       return false;
     }
@@ -5072,7 +5075,10 @@ module.exports = emptyFunction;
 
 }, {"module":"emptyFunction","line":19,"column":23,"name":"$module_emptyFunction"}),null);
 
+
 __d("htmlSpecialChars",[],__annotator(function $module_htmlSpecialChars(global,require,requireDynamic,requireLazy,module,exports) {require.__markCompiled && require.__markCompiled();
+/*eslint-disable camelcase */
+
 
 
 var r_amp = /&/g;
@@ -5099,12 +5105,12 @@ function htmlSpecialChars(text) {
     .replace(r_squo, '&#039;')
     .replace(r_lt, '&lt;')
     .replace(r_gt, '&gt;');
-}__annotator(htmlSpecialChars, {"module":"htmlSpecialChars","line":33,"column":0,"name":"htmlSpecialChars"});
+}__annotator(htmlSpecialChars, {"module":"htmlSpecialChars","line":36,"column":0,"name":"htmlSpecialChars"});
 
 module.exports = htmlSpecialChars;
 
 
-}, {"module":"htmlSpecialChars","line":18,"column":29,"name":"$module_htmlSpecialChars"}),null);
+}, {"module":"htmlSpecialChars","line":19,"column":26,"name":"$module_htmlSpecialChars"}),null);
 
 
 __d("Flash",["DOMEventListener","DOMWrapper","QueryString","UserAgent_DEPRECATED","guid","htmlSpecialChars"],__annotator(function $module_Flash(global,require,requireDynamic,requireLazy,module,exports,DOMEventListener,DOMWrapper,QueryString,UserAgent_DEPRECATED,guid,htmlSpecialChars) {require.__markCompiled && require.__markCompiled();
@@ -8935,6 +8941,13 @@ var UIServer = {
     });
 
     
+    if (name === 'share' || name === 'share_open_graph') {
+      if (params.iframe_test) {
+        method = ES('Object', 'assign', false,{}, MobileIframeable);
+      }
+    }
+
+    
     params.display = UIServer.getDisplayMode(method, params);
 
     // set the default dialog URL if one doesn't exist
@@ -9059,11 +9072,11 @@ var UIServer = {
     }
 
     return call;
-  }, {"params":[[call, 'object', 'call']],"returns":'object'});}, {"module":"sdk.UIServer","line":445,"column":16}, {"params":["object"],"returns":"object"}),
+  }, {"params":[[call, 'object', 'call']],"returns":'object'});}, {"module":"sdk.UIServer","line":452,"column":16}, {"params":["object"],"returns":"object"}),
 
   urlTooLongForIE:__annotator(function(/*string*/ fullURL) /*boolean*/ {return __bodyWrapper(this, arguments, function() {
     return fullURL.length > 2000;
-  }, {"params":[[fullURL, 'string', 'fullURL']],"returns":'boolean'});}, {"module":"sdk.UIServer","line":471,"column":18}, {"params":["string"],"returns":"boolean"}),
+  }, {"params":[[fullURL, 'string', 'fullURL']],"returns":'boolean'});}, {"module":"sdk.UIServer","line":478,"column":18}, {"params":["string"],"returns":"boolean"}),
 
   
   getDisplayMode:__annotator(function(/*object*/ method, /*object*/ params) /*string*/ {return __bodyWrapper(this, arguments, function() {
@@ -9099,7 +9112,7 @@ var UIServer = {
 
     // TODO change "dialog" to "iframe" once moved to uiserver
     return params.display || (Runtime.getAccessToken() ? 'dialog' : 'popup');
-  }, {"params":[[method, 'object', 'method'], [params, 'object', 'params']],"returns":'string'});}, {"module":"sdk.UIServer","line":482,"column":17}, {"params":["object","object"],"returns":"string"}),
+  }, {"params":[[method, 'object', 'method'], [params, 'object', 'params']],"returns":'string'});}, {"module":"sdk.UIServer","line":489,"column":17}, {"params":["object","object"],"returns":"string"}),
 
   
   getXdRelation:__annotator(function(/*object*/ params) /*string*/ {return __bodyWrapper(this, arguments, function() {
@@ -9114,7 +9127,7 @@ var UIServer = {
     if (display === 'async') {
       return 'parent.frames[' + window.name + ']';
     }
-  }, {"params":[[params, 'object', 'params']],"returns":'string'});}, {"module":"sdk.UIServer","line":523,"column":16}, {"params":["object"],"returns":"string"}),
+  }, {"params":[[params, 'object', 'params']],"returns":'string'});}, {"module":"sdk.UIServer","line":530,"column":16}, {"params":["object"],"returns":"string"}),
 
   
   popup:__annotator(function(/*object*/ call) {return __bodyWrapper(this, arguments, function() {
@@ -9186,13 +9199,10 @@ var UIServer = {
     if (call.id in UIServer._defaultCb) {
       UIServer._popupMonitor();
     }
-  }, {"params":[[call, 'object', 'call']]});}, {"module":"sdk.UIServer","line":543,"column":8}, {"params":["object"]}),
+  }, {"params":[[call, 'object', 'call']]});}, {"module":"sdk.UIServer","line":550,"column":8}, {"params":["object"]}),
 
   setLoadedNode:__annotator(function(/*object*/ call, node, /*?string*/ type) {return __bodyWrapper(this, arguments, function() {
-    if (call.params && call.params.display != 'popup') {
-      
-      
-      // you can't set a property on an https popup window in IE.
+    if (type === 'iframe') {
       node.fbCallID = call.id;
     }
     node = {
@@ -9201,27 +9211,27 @@ var UIServer = {
       fbCallID: call.id
     };
     UIServer._loadedNodes[call.id] = node;
-  }, {"params":[[call, 'object', 'call'], [type, '?string', 'type']]});}, {"module":"sdk.UIServer","line":614,"column":16}, {"params":["object","?string"]}),
+  }, {"params":[[call, 'object', 'call'], [type, '?string', 'type']]});}, {"module":"sdk.UIServer","line":621,"column":16}, {"params":["object","?string"]}),
 
   getLoadedNode:__annotator(function(call) {
     var id = typeof call == 'object' ? call.id : call,
         node = UIServer._loadedNodes[id];
     return node ? node.node : null;
-  }, {"module":"sdk.UIServer","line":629,"column":16}),
+  }, {"module":"sdk.UIServer","line":633,"column":16}),
 
   
   hidden:__annotator(function(/*object*/ call) {return __bodyWrapper(this, arguments, function() {
     call.className = 'FB_UI_Hidden';
     call.root = Content.appendHidden('');
     UIServer._insertIframe(call);
-  }, {"params":[[call, 'object', 'call']]});}, {"module":"sdk.UIServer","line":640,"column":9}, {"params":["object"]}),
+  }, {"params":[[call, 'object', 'call']]});}, {"module":"sdk.UIServer","line":644,"column":9}, {"params":["object"]}),
 
   
   iframe:__annotator(function(/*object*/ call) {return __bodyWrapper(this, arguments, function() {
     call.className = 'FB_UI_Dialog';
     var onClose = __annotator(function() {
       UIServer._triggerDefault(call.id);
-    }, {"module":"sdk.UIServer","line":653,"column":18});
+    }, {"module":"sdk.UIServer","line":657,"column":18});
     call.root = Dialog.create({
       onClose: onClose,
       closeIcon: call.closeIcon === (void 0) ? true : call.closeIcon,
@@ -9232,7 +9242,7 @@ var UIServer = {
     }
     DOM.addCss(call.root, 'fb_dialog_iframe');
     UIServer._insertIframe(call);
-  }, {"params":[[call, 'object', 'call']]});}, {"module":"sdk.UIServer","line":651,"column":9}, {"params":["object"]}),
+  }, {"params":[[call, 'object', 'call']]});}, {"module":"sdk.UIServer","line":655,"column":9}, {"params":["object"]}),
 
   
   touch:__annotator(function(/*object*/ call) {return __bodyWrapper(this, arguments, function() {
@@ -9242,7 +9252,7 @@ var UIServer = {
       if (call.ui_created) {
         Dialog.showLoader(__annotator(function() {
           UIServer._triggerDefault(call.id);
-        }, {"module":"sdk.UIServer","line":679,"column":26}), 0);
+        }, {"module":"sdk.UIServer","line":683,"column":26}), 0);
       } else {
         UIServer.iframe(call);
       }
@@ -9261,13 +9271,13 @@ var UIServer = {
           call,
           Native.open(call.url + '#cb=' + call.frameName),
           'native');
-      }, {"module":"sdk.UIServer","line":689,"column":21}));
+      }, {"module":"sdk.UIServer","line":693,"column":21}));
       UIServer._popupMonitor();
     } else if (!call.ui_created) {
       
       UIServer.popup(call);
     }
-  }, {"params":[[call, 'object', 'call']]});}, {"module":"sdk.UIServer","line":674,"column":8}, {"params":["object"]}),
+  }, {"params":[[call, 'object', 'call']]});}, {"module":"sdk.UIServer","line":678,"column":8}, {"params":["object"]}),
 
   
   async:__annotator(function(/*object*/ call) {return __bodyWrapper(this, arguments, function() {
@@ -9288,13 +9298,13 @@ var UIServer = {
           delete result.e2e;
         }
         call.cb(result);
-      }, {"params":[[response, 'object', 'response']]});}, {"module":"sdk.UIServer","line":723,"column":6}, {"params":["object"]})
+      }, {"params":[[response, 'object', 'response']]});}, {"module":"sdk.UIServer","line":727,"column":6}, {"params":["object"]})
     );
-  }, {"params":[[call, 'object', 'call']]});}, {"module":"sdk.UIServer","line":715,"column":8}, {"params":["object"]}),
+  }, {"params":[[call, 'object', 'call']]});}, {"module":"sdk.UIServer","line":719,"column":8}, {"params":["object"]}),
 
   getDefaultSize:__annotator(function() /*object*/ {return __bodyWrapper(this, arguments, function() {
     return Dialog.getDefaultSize();
-  }, {"returns":'object'});}, {"module":"sdk.UIServer","line":737,"column":17}, {"returns":"object"}),
+  }, {"returns":'object'});}, {"module":"sdk.UIServer","line":741,"column":17}, {"returns":"object"}),
 
   
   _insertIframe:__annotator(function(/*object*/ call) {return __bodyWrapper(this, arguments, function() {
@@ -9306,7 +9316,7 @@ var UIServer = {
       if (call.id in UIServer._loadedNodes) {
         UIServer.setLoadedNode(call, node, 'iframe');
       }
-    }, {"params":[[node, 'HTMLElement', 'node']]});}, {"module":"sdk.UIServer","line":751,"column":19}, {"params":["DOMElement"]});
+    }, {"params":[[node, 'HTMLElement', 'node']]});}, {"module":"sdk.UIServer","line":755,"column":19}, {"params":["DOMElement"]});
 
     
     if (call.post) {
@@ -9324,7 +9334,7 @@ var UIServer = {
             target : node.name,
             params : call.params
           });
-        }, {"params":[[node, 'HTMLElement', 'node']]});}, {"module":"sdk.UIServer","line":767,"column":20}, {"params":["DOMElement"]})
+        }, {"params":[[node, 'HTMLElement', 'node']]});}, {"module":"sdk.UIServer","line":771,"column":20}, {"params":["DOMElement"]})
       });
     } else {
       insertIframe({
@@ -9338,7 +9348,7 @@ var UIServer = {
         onInsert  : activate
       });
     }
-  }, {"params":[[call, 'object', 'call']]});}, {"module":"sdk.UIServer","line":746,"column":16}, {"params":["object"]}),
+  }, {"params":[[call, 'object', 'call']]});}, {"module":"sdk.UIServer","line":750,"column":16}, {"params":["object"]}),
 
   
   _handleResizeMessage:__annotator(function(/*string*/ frame, /*object*/ data) {return __bodyWrapper(this, arguments, function() {
@@ -9362,15 +9372,15 @@ var UIServer = {
     if (!Dialog.isActive(node)) {
       Dialog.show(node);
     }
-  }, {"params":[[frame, 'string', 'frame'], [data, 'object', 'data']]});}, {"module":"sdk.UIServer","line":794,"column":23}, {"params":["string","object"]}),
+  }, {"params":[[frame, 'string', 'frame'], [data, 'object', 'data']]});}, {"module":"sdk.UIServer","line":798,"column":23}, {"params":["string","object"]}),
 
   
   _triggerDefault:__annotator(function(/*string*/ id) {return __bodyWrapper(this, arguments, function() {
     UIServer._xdRecv(
       { frame: id },
-      UIServer._defaultCb[id] || __annotator(function() {}, {"module":"sdk.UIServer","line":825,"column":33})
+      UIServer._defaultCb[id] || __annotator(function() {}, {"module":"sdk.UIServer","line":829,"column":33})
     );
-  }, {"params":[[id, 'string', 'id']]});}, {"module":"sdk.UIServer","line":822,"column":18}, {"params":["string"]}),
+  }, {"params":[[id, 'string', 'id']]});}, {"module":"sdk.UIServer","line":826,"column":18}, {"params":["string"]}),
 
   
   _popupMonitor:__annotator(function() {
@@ -9407,7 +9417,7 @@ var UIServer = {
       clearInterval(UIServer._popupInterval);
       UIServer._popupInterval = null;
     }
-  }, {"module":"sdk.UIServer","line":835,"column":16}),
+  }, {"module":"sdk.UIServer","line":839,"column":16}),
 
   
   _xdChannelHandler:__annotator(function(/*string*/ frame, /*string*/ relation)
@@ -9428,8 +9438,8 @@ var UIServer = {
       } else if (data.type == 'fireevent') {
         Event.fire(data.event);
       }
-    }, {"params":[[data, 'object', 'data']]});}, {"module":"sdk.UIServer","line":881,"column":22}, {"params":["object"]}), relation, true, null);
-  }, {"params":[[frame, 'string', 'frame'], [relation, 'string', 'relation']],"returns":'string'});}, {"module":"sdk.UIServer","line":879,"column":20}, {"params":["string","string"],"returns":"string"}),
+    }, {"params":[[data, 'object', 'data']]});}, {"module":"sdk.UIServer","line":885,"column":22}, {"params":["object"]}), relation, true, null);
+  }, {"params":[[frame, 'string', 'frame'], [relation, 'string', 'relation']],"returns":'string'});}, {"module":"sdk.UIServer","line":883,"column":20}, {"params":["string","string"],"returns":"string"}),
 
   
   _xdNextHandler:__annotator(function(/*function*/ cb, /*string*/ frame,
@@ -9440,8 +9450,8 @@ var UIServer = {
 
     return XD.handler(__annotator(function(data) {
       UIServer._xdRecv(data, cb);
-    }, {"module":"sdk.UIServer","line":917,"column":22}), relation) + '&frame=' + frame;
-  }, {"params":[[cb, 'function', 'cb'], [frame, 'string', 'frame'], [relation, 'string', 'relation'], [isDefault, 'boolean', 'isDefault']],"returns":'string'});}, {"module":"sdk.UIServer","line":911,"column":17}, {"params":["function","string","string","boolean"],"returns":"string"}),
+    }, {"module":"sdk.UIServer","line":921,"column":22}), relation) + '&frame=' + frame;
+  }, {"params":[[cb, 'function', 'cb'], [frame, 'string', 'frame'], [relation, 'string', 'relation'], [isDefault, 'boolean', 'isDefault']],"returns":'string'});}, {"module":"sdk.UIServer","line":915,"column":17}, {"params":["function","string","string","boolean"],"returns":"string"}),
 
   
   _xdRecv:__annotator(function(/*object*/ data, /*function*/ cb) {return __bodyWrapper(this, arguments, function() {
@@ -9470,7 +9480,7 @@ var UIServer = {
           setTimeout(__annotator(function() {
             
             frame.parentNode.parentNode.removeChild(frame.parentNode);
-          }, {"module":"sdk.UIServer","line":953,"column":21}), 3000);
+          }, {"module":"sdk.UIServer","line":957,"column":21}), 3000);
         } else if (DOM.containsCss(frame, 'FB_UI_Dialog')) {
           Dialog.remove(frame);
         }
@@ -9487,7 +9497,7 @@ var UIServer = {
       delete data.e2e;
     }
     cb(data);
-  }, {"params":[[data, 'object', 'data'], [cb, 'function', 'cb']]});}, {"module":"sdk.UIServer","line":930,"column":10}, {"params":["object","function"]}),
+  }, {"params":[[data, 'object', 'data'], [cb, 'function', 'cb']]});}, {"module":"sdk.UIServer","line":934,"column":10}, {"params":["object","function"]}),
 
   
   _xdResult:__annotator(function(/*function*/ cb, /*string*/ frame, /*string*/ target,
@@ -9497,11 +9507,11 @@ var UIServer = {
         cb && cb(params.result &&
                  params.result != UIServer._resultToken &&
                  ES('JSON', 'parse', false,params.result));
-      }, {"module":"sdk.UIServer","line":989,"column":30}), frame, target, isDefault) +
+      }, {"module":"sdk.UIServer","line":993,"column":30}), frame, target, isDefault) +
       
       '&result=' + encodeURIComponent(UIServer._resultToken)
     );
-  }, {"params":[[cb, 'function', 'cb'], [frame, 'string', 'frame'], [target, 'string', 'target'], [isDefault, 'boolean', 'isDefault']],"returns":'string'});}, {"module":"sdk.UIServer","line":986,"column":12}, {"params":["function","string","string","boolean"],"returns":"string"}),
+  }, {"params":[[cb, 'function', 'cb'], [frame, 'string', 'frame'], [target, 'string', 'target'], [isDefault, 'boolean', 'isDefault']],"returns":'string'});}, {"module":"sdk.UIServer","line":990,"column":12}, {"params":["function","string","string","boolean"],"returns":"string"}),
 
   xdHandler:__annotator(function(/*function*/ cb, /*string*/ frame, /*string*/ target,
       /*?object*/ authResponse, /*string*/ method) /*string*/ {return __bodyWrapper(this, arguments, function() {
@@ -9510,7 +9520,7 @@ var UIServer = {
       frame,
       target,
       true);
-  }, {"params":[[cb, 'function', 'cb'], [frame, 'string', 'frame'], [target, 'string', 'target'], [authResponse, '?object', 'authResponse'], [method, 'string', 'method']],"returns":'string'});}, {"module":"sdk.UIServer","line":999,"column":12}, {"params":["function","string","string","?object","string"],"returns":"string"})
+  }, {"params":[[cb, 'function', 'cb'], [frame, 'string', 'frame'], [target, 'string', 'target'], [authResponse, '?object', 'authResponse'], [method, 'string', 'method']],"returns":'string'});}, {"module":"sdk.UIServer","line":1003,"column":12}, {"params":["function","string","string","?object","string"],"returns":"string"})
 
 };
 
@@ -11863,9 +11873,7 @@ var PluginTags = {
     adapt_container_width: 'bool',
     show_facepile: 'bool',
     show_posts: 'bool',
-    show_messages_tab: 'bool',
-    show_events_tab: 'bool',
-    default_tab: 'string'
+    tabs: 'string'
   },
 
   open_graph: {
@@ -11977,7 +11985,7 @@ var aliases = {
 
 ES(ES('Object', 'keys', false,aliases), 'forEach', true,__annotator(function(key) {
   PluginTags[key] = PluginTags[aliases[key]];
-}, {"module":"PluginTags","line":213,"column":29}));
+}, {"module":"PluginTags","line":211,"column":29}));
 
 module.exports = PluginTags;
 
@@ -13621,4 +13629,4 @@ try {
 
 
 }).call({}, window.inDapIF ? parent.window : window);
-} catch (e) {new Image().src="https:\/\/www.facebook.com\/" + 'common/scribe_endpoint.php?c=jssdk_error&m='+encodeURIComponent('{"error":"LOAD", "extra": {"name":"'+e.name+'","line":"'+(e.lineNumber||e.line)+'","script":"'+(e.fileName||e.sourceURL||e.script)+'","stack":"'+(e.stackTrace||e.stack)+'","revision":"1856999","message":"'+e.message+'"}}');}
+} catch (e) {new Image().src="https:\/\/www.facebook.com\/" + 'common/scribe_endpoint.php?c=jssdk_error&m='+encodeURIComponent('{"error":"LOAD", "extra": {"name":"'+e.name+'","line":"'+(e.lineNumber||e.line)+'","script":"'+(e.fileName||e.sourceURL||e.script)+'","stack":"'+(e.stackTrace||e.stack)+'","revision":"1867173","message":"'+e.message+'"}}');}
