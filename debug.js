@@ -1,4 +1,4 @@
-/*1444768463,,JIT Construction: v1986749,en_US*/
+/*1445383523,,JIT Construction: v2000027,en_US*/
 
 /**
  * Copyright Facebook Inc.
@@ -6,15 +6,7 @@
  * Licensed under the Apache License, Version 2.0
  * http://www.apache.org/licenses/LICENSE-2.0
  */
-try {window.FB || (function(window) {
-var self = window, document = window.document;
-var undefined = void 0;
-var setTimeout = window.setTimeout, setInterval = window.setInterval,clearTimeout = window.clearTimeout,clearInterval = window.clearInterval;var __DEV__ = 1;
-function emptyFunction() {};
-var __transform_includes = {"typechecks":true};
-var __annotator, __bodyWrapper;
-var __w, __t;
-/** Path: html/js/downstream/polyfill/GenericFunctionVisitor.js */
+try {window.FB || (function(window) {  function bindContext(fn, thisArg) {    return function _sdkBound() {      return fn.apply(thisArg, arguments);    };  }  var global = {__type: 'JS_SDK_SANDBOX'};  var sandboxWhitelist = [    'setTimeout',    'setInterval',    'clearTimeout',    'clearInterval'  ];  for (var i = 0; i < sandboxWhitelist.length; i++) {    global[sandboxWhitelist[i]] = bindContext(      window[sandboxWhitelist[i]],      window    );  }  (function() {    var self = window;    var __DEV__ = 1;    function emptyFunction() {};    var __transform_includes = {"typechecks":true};    var __annotator, __bodyWrapper;    var __w, __t;    var undefined;    with (this) {      /** Path: html/js/downstream/polyfill/GenericFunctionVisitor.js */
 /**
  * @generated SignedSource<<c08ae7cb38fd761137a759ab955d052d>>
  *
@@ -2235,11 +2227,7 @@ return strings;},{'module':'sdk.babelHelpers','line':53,'column':42});
 
 babelHelpers.bind = ES5FunctionPrototype.bind;
 
-module.exports = babelHelpers;},{'module':'sdk.babelHelpers','line':0,'column':0,'name':'$module_sdk_babelHelpers'}),null);
-var ES = require('ES');
-var babelHelpers = require('sdk.babelHelpers');
-__d("JSSDKRuntimeConfig",[],{"locale":"en_US","rtl":false,"revision":"1986749"});__d("JSSDKConfig",[],{"bustCache":true,"tagCountLogRate":0.01,"errorHandling":{"rate":4},"usePluginPipe":true,"features":{"dialog_resize_refactor":true,"allow_non_canvas_app_events":false,"event_subscriptions_log":{"rate":0.01,"value":10000},"should_force_single_dialog_instance":true,"js_sdk_force_status_on_load":{"rate":0.1},"kill_fragment":true,"xfbml_profile_pic_server":true,"error_handling":{"rate":4},"e2e_ping_tracking":{"rate":1.0e-6},"xd_timeout":{"rate":4,"value":30000},"use_bundle":true,"launch_payment_dialog_via_pac":{"rate":100},"plugin_tags_blacklist":["recommendations_bar","registration","activity","recommendations","facepile"],"should_log_response_error":true},"api":{"mode":"warn","whitelist":["AppEvents","AppEvents.EventNames","AppEvents.ParameterNames","AppEvents.activateApp","AppEvents.logEvent","AppEvents.logPurchase","Canvas","Canvas.Prefetcher","Canvas.Prefetcher.addStaticResource","Canvas.Prefetcher.setCollectionMode","Canvas.getPageInfo","Canvas.hideFlashElement","Canvas.scrollTo","Canvas.setAutoGrow","Canvas.setDoneLoading","Canvas.setSize","Canvas.setUrlHandler","Canvas.showFlashElement","Canvas.startTimer","Canvas.stopTimer","Event","Event.subscribe","Event.unsubscribe","Music.flashCallback","Music.init","Music.send","Payment","Payment.cancelFlow","Payment.continueFlow","Payment.init","Payment.lockForProcessing","Payment.parse","Payment.setSize","Payment.unlockForProcessing","ThirdPartyProvider","ThirdPartyProvider.init","ThirdPartyProvider.sendData","UA","UA.nativeApp","XFBML","XFBML.RecommendationsBar","XFBML.RecommendationsBar.markRead","XFBML.parse","addFriend","api","getAccessToken","getAuthResponse","getLoginStatus","getUserID","init","login","logout","publish","share","ui"]},"initSitevars":{"enableMobileComments":1,"iframePermissions":{"read_stream":false,"manage_mailbox":false,"manage_friendlists":false,"read_mailbox":false,"publish_checkins":true,"status_update":true,"photo_upload":true,"video_upload":true,"sms":false,"create_event":true,"rsvp_event":true,"offline_access":true,"email":true,"xmpp_login":false,"create_note":true,"share_item":true,"export_stream":false,"publish_stream":true,"publish_likes":true,"ads_management":false,"contact_email":true,"access_private_data":false,"read_insights":false,"read_requests":false,"read_friendlists":true,"manage_pages":false,"physical_login":false,"manage_groups":false,"read_deals":false}}});__d("UrlMapConfig",[],{"www":"www.facebook.com","m":"m.facebook.com","connect":"connect.facebook.net","business":"business.facebook.com","api_https":"api.facebook.com","api_read_https":"api-read.facebook.com","graph_https":"graph.facebook.com","fbcdn_http":"fbstatic-a.akamaihd.net","fbcdn_https":"fbstatic-a.akamaihd.net","cdn_http":"static.ak.facebook.com","cdn_https":"s-static.ak.facebook.com"});__d("JSSDKXDConfig",[],{"XdUrl":"\/connect\/xd_arbiter.php?version=41","XdBundleUrl":"\/connect\/xd_arbiter\/HKgsxvBV7Ee.js?version=41","Flash":{"path":"https:\/\/connect.facebook.net\/rsrc.php\/v1\/yW\/r\/yOZN1vHw3Z_.swf"},"useCdn":true});__d("JSSDKCssConfig",[],{"rules":".fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow-x:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:\"lucida grande\", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}.fb_link img{border:none}\n.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_reset .fb_dialog_legacy{overflow:visible}.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px}.fb_dialog_content{background:#fff;color:#333}.fb_dialog_close_icon{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v2\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;_background-image:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v2\/yL\/r\/s816eWC-2sl.gif);cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v2\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent;_background-image:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v2\/yL\/r\/s816eWC-2sl.gif)}.fb_dialog_close_icon:active{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v2\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent;_background-image:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v2\/yL\/r\/s816eWC-2sl.gif)}.fb_dialog_loader{background-color:#f6f7f8;border:1px solid #606060;font-size:24px;padding:20px}.fb_dialog_top_left,.fb_dialog_top_right,.fb_dialog_bottom_left,.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}.fb_dialog_top_left{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}.fb_dialog_top_right{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}.fb_dialog_bottom_left{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}.fb_dialog_bottom_right{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}.fb_dialog_vert_left,.fb_dialog_vert_right,.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}.fb_dialog_vert_left,.fb_dialog_vert_right{width:10px;height:100\u0025}.fb_dialog_vert_left{margin-left:-10px}.fb_dialog_vert_right{right:0;margin-right:-10px}.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{width:100\u0025;height:10px}.fb_dialog_horiz_top{margin-top:-10px}.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #3a5795;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v2\/yd\/r\/Cou7n-nqK52.gif) no-repeat 5px 50\u0025;float:left;padding:5px 0 7px 26px}body.fb_hidden{-webkit-transform:none;height:100\u0025;margin:0;overflow:visible;position:absolute;top:-10000px;left:0;width:100\u0025}.fb_dialog.fb_dialog_mobile.loading{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v2\/ya\/r\/3rhSv5V8j3o.gif) white no-repeat 50\u0025 50\u0025;min-height:100\u0025;min-width:100\u0025;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{width:auto;height:auto;min-height:initial;min-width:initial;background:none}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100\u0025}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{color:#fff;display:block;padding-top:20px;clear:both;font-size:18px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;left:0;top:0;width:100\u0025;min-height:100\u0025;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0\u0025 0\u0025, 0\u0025 100\u0025, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100\u0025}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0\u0025 0\u0025, 0\u0025 100\u0025, from(#4966A6), color-stop(.5, #355492), to(#2A4887));border:1px solid #2f477a;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset, rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v2\/y9\/r\/jKEcVPZFk-2.gif) no-repeat 50\u0025 50\u0025;border:1px solid #555;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f6f7f8;border:1px solid #555;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v2\/yD\/r\/t-wz8gw1xG1.png);background-repeat:no-repeat;background-position:50\u0025 50\u0025;height:24px;width:24px}\u0040keyframes rotateSpinner{0\u0025{transform:rotate(0deg)}100\u0025{transform:rotate(360deg)}}\n.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100\u0025}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_hide_iframes iframe{position:relative;left:-10000px}.fb_iframe_widget_loader{position:relative;display:inline-block}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100\u0025}.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}.fb_iframe_widget_loader .FB_Loader{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v2\/y9\/r\/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50\u0025;z-index:4}","components":["css:fb.css.base","css:fb.css.dialog","css:fb.css.iframewidget"]});__d("ApiClientConfig",[],{"FlashRequest":{"swfUrl":"https:\/\/connect.facebook.net\/rsrc.php\/v1\/yd\/r\/mxzow1Sdmxr.swf"}});__d("JSSDKCanvasPrefetcherConfig",[],{"blacklist":[144959615576466],"sampleRate":500});__d("JSSDKPluginPipeConfig",[],{"threshold":0,"enabledApps":{"209753825810663":1,"187288694643718":1}});
-
+module.exports = babelHelpers;},{'module':'sdk.babelHelpers','line':0,'column':0,'name':'$module_sdk_babelHelpers'}),null);      var ES = require('ES');      var babelHelpers = require('sdk.babelHelpers');      __d("JSSDKRuntimeConfig",[],{"locale":"en_US","rtl":false,"revision":"2000027"});__d("JSSDKConfig",[],{"bustCache":true,"tagCountLogRate":0.01,"errorHandling":{"rate":4},"usePluginPipe":true,"features":{"dialog_resize_refactor":true,"allow_non_canvas_app_events":false,"event_subscriptions_log":{"rate":0.01,"value":10000},"should_force_single_dialog_instance":true,"js_sdk_force_status_on_load":{"rate":0.1},"kill_fragment":true,"xfbml_profile_pic_server":true,"error_handling":{"rate":4},"e2e_ping_tracking":{"rate":1.0e-6},"xd_timeout":{"rate":4,"value":30000},"use_bundle":true,"launch_payment_dialog_via_pac":{"rate":100},"plugin_tags_blacklist":["recommendations_bar","registration","activity","recommendations","facepile"],"should_log_response_error":true},"api":{"mode":"warn","whitelist":["AppEvents","AppEvents.EventNames","AppEvents.ParameterNames","AppEvents.activateApp","AppEvents.logEvent","AppEvents.logPurchase","Canvas","Canvas.Prefetcher","Canvas.Prefetcher.addStaticResource","Canvas.Prefetcher.setCollectionMode","Canvas.getPageInfo","Canvas.hideFlashElement","Canvas.scrollTo","Canvas.setAutoGrow","Canvas.setDoneLoading","Canvas.setSize","Canvas.setUrlHandler","Canvas.showFlashElement","Canvas.startTimer","Canvas.stopTimer","Event","Event.subscribe","Event.unsubscribe","Music.flashCallback","Music.init","Music.send","Payment","Payment.cancelFlow","Payment.continueFlow","Payment.init","Payment.lockForProcessing","Payment.parse","Payment.setSize","Payment.unlockForProcessing","ThirdPartyProvider","ThirdPartyProvider.init","ThirdPartyProvider.sendData","UA","UA.nativeApp","XFBML","XFBML.RecommendationsBar","XFBML.RecommendationsBar.markRead","XFBML.parse","addFriend","api","getAccessToken","getAuthResponse","getLoginStatus","getUserID","init","login","logout","publish","share","ui"]},"initSitevars":{"enableMobileComments":1,"iframePermissions":{"read_stream":false,"manage_mailbox":false,"manage_friendlists":false,"read_mailbox":false,"publish_checkins":true,"status_update":true,"photo_upload":true,"video_upload":true,"sms":false,"create_event":true,"rsvp_event":true,"offline_access":true,"email":true,"xmpp_login":false,"create_note":true,"share_item":true,"export_stream":false,"publish_stream":true,"publish_likes":true,"ads_management":false,"contact_email":true,"access_private_data":false,"read_insights":false,"read_requests":false,"read_friendlists":true,"manage_pages":false,"physical_login":false,"manage_groups":false,"read_deals":false}}});__d("UrlMapConfig",[],{"www":"www.facebook.com","m":"m.facebook.com","connect":"connect.facebook.net","business":"business.facebook.com","api_https":"api.facebook.com","api_read_https":"api-read.facebook.com","graph_https":"graph.facebook.com","fbcdn_http":"fbstatic-a.akamaihd.net","fbcdn_https":"fbstatic-a.akamaihd.net","cdn_http":"static.ak.facebook.com","cdn_https":"s-static.ak.facebook.com"});__d("JSSDKXDConfig",[],{"XdUrl":"\/connect\/xd_arbiter.php?version=41","XdBundleUrl":"\/connect\/xd_arbiter\/HKgsxvBV7Ee.js?version=41","Flash":{"path":"https:\/\/connect.facebook.net\/rsrc.php\/v1\/yW\/r\/yOZN1vHw3Z_.swf"},"useCdn":true});__d("JSSDKCssConfig",[],{"rules":".fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow-x:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:\"lucida grande\", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}.fb_link img{border:none}\n.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_reset .fb_dialog_legacy{overflow:visible}.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px}.fb_dialog_content{background:#fff;color:#333}.fb_dialog_close_icon{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;_background-image:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yL\/r\/s816eWC-2sl.gif);cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent;_background-image:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yL\/r\/s816eWC-2sl.gif)}.fb_dialog_close_icon:active{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent;_background-image:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yL\/r\/s816eWC-2sl.gif)}.fb_dialog_loader{background-color:#f6f7f8;border:1px solid #606060;font-size:24px;padding:20px}.fb_dialog_top_left,.fb_dialog_top_right,.fb_dialog_bottom_left,.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}.fb_dialog_top_left{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}.fb_dialog_top_right{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}.fb_dialog_bottom_left{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}.fb_dialog_bottom_right{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}.fb_dialog_vert_left,.fb_dialog_vert_right,.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}.fb_dialog_vert_left,.fb_dialog_vert_right{width:10px;height:100\u0025}.fb_dialog_vert_left{margin-left:-10px}.fb_dialog_vert_right{right:0;margin-right:-10px}.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{width:100\u0025;height:10px}.fb_dialog_horiz_top{margin-top:-10px}.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #3a5795;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yd\/r\/Cou7n-nqK52.gif) no-repeat 5px 50\u0025;float:left;padding:5px 0 7px 26px}body.fb_hidden{-webkit-transform:none;height:100\u0025;margin:0;overflow:visible;position:absolute;top:-10000px;left:0;width:100\u0025}.fb_dialog.fb_dialog_mobile.loading{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/ya\/r\/3rhSv5V8j3o.gif) white no-repeat 50\u0025 50\u0025;min-height:100\u0025;min-width:100\u0025;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{width:auto;height:auto;min-height:initial;min-width:initial;background:none}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100\u0025}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{color:#fff;display:block;padding-top:20px;clear:both;font-size:18px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;left:0;top:0;width:100\u0025;min-height:100\u0025;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0\u0025 0\u0025, 0\u0025 100\u0025, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100\u0025}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0\u0025 0\u0025, 0\u0025 100\u0025, from(#4966A6), color-stop(.5, #355492), to(#2A4887));border:1px solid #2f477a;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset, rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/y9\/r\/jKEcVPZFk-2.gif) no-repeat 50\u0025 50\u0025;border:1px solid #555;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f6f7f8;border:1px solid #555;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/yD\/r\/t-wz8gw1xG1.png);background-repeat:no-repeat;background-position:50\u0025 50\u0025;height:24px;width:24px}\u0040keyframes rotateSpinner{0\u0025{transform:rotate(0deg)}100\u0025{transform:rotate(360deg)}}\n.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100\u0025}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_hide_iframes iframe{position:relative;left:-10000px}.fb_iframe_widget_loader{position:relative;display:inline-block}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100\u0025}.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}.fb_iframe_widget_loader .FB_Loader{background:url(https:\/\/fbstatic-a.akamaihd.net\/rsrc.php\/v2\/y9\/r\/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50\u0025;z-index:4}","components":["css:fb.css.base","css:fb.css.dialog","css:fb.css.iframewidget"]});__d("ApiClientConfig",[],{"FlashRequest":{"swfUrl":"https:\/\/connect.facebook.net\/rsrc.php\/v1\/yd\/r\/mxzow1Sdmxr.swf"}});__d("JSSDKCanvasPrefetcherConfig",[],{"blacklist":[144959615576466],"sampleRate":500});__d("JSSDKPluginPipeConfig",[],{"threshold":0,"enabledApps":{"209753825810663":1,"187288694643718":1}});      
 __d('QueryString',[],__annotator(function $module_QueryString(global,require,requireDynamic,requireLazy,module,exports){if(require.__markCompiled)require.__markCompiled();
 
 
@@ -2249,7 +2237,7 @@ __d('QueryString',[],__annotator(function $module_QueryString(global,require,req
 
 function encode(bag){return __bodyWrapper(this,arguments,function(){
 var pairs=[];
-ES(ES('Object', 'keys', false,bag).sort(), 'forEach', true,__annotator(function(key){
+ES(ES('Object','keys',false,bag).sort(),'forEach',true,__annotator(function(key){
 var value=bag[key];
 
 if(typeof value === 'undefined'){
@@ -2298,7 +2286,7 @@ return data;},{params:[[str,'string','str'],[strict,'?boolean','strict']],return
 
 function appendToUrl(url,params){return __bodyWrapper(this,arguments,function(){
 return url + (
-ES(url, 'indexOf', true,'?') !== -1?'&':'?') + (
+ES(url,'indexOf',true,'?') !== -1?'&':'?') + (
 typeof params === 'string'?
 params:
 QueryString.encode(params));},{params:[[url,'string','url']],returns:'string'});}__annotator(appendToUrl,{'module':'QueryString','line':78,'column':0,'name':'appendToUrl'},{params:['string'],returns:'string'});
@@ -2397,7 +2385,7 @@ actualType = /\s(\w*)/.exec(className)[1].toLowerCase();}
 
 
 assert(
-ES(type, 'indexOf', true,actualType) !== -1,
+ES(type,'indexOf',true,actualType) !== -1,
 message || sprintf('Expression is of type %s, not %s',actualType,type));
 
 return expression;},{params:[[type,'string','type'],[message,'?string','message']]});}__annotator(assertType,{'module':'Assert','line':39,'column':0,'name':'assertType'},{params:['string','?string']});
@@ -2457,8 +2445,8 @@ ES(['Array',
 'Object',
 'Regexp',
 'String',
-'Undefined'], 'forEach', true,__annotator(function(type){return __bodyWrapper(this,arguments,function(){
-define(type,ES(assertType, 'bind', true,null,type.toLowerCase()));},{params:[[type,'string','type']]});},{'module':'Assert','line':112,'column':22},{params:['string']}));
+'Undefined'],'forEach',true,__annotator(function(type){return __bodyWrapper(this,arguments,function(){
+define(type,ES(assertType,'bind',true,null,type.toLowerCase()));},{params:[[type,'string','type']]});},{'module':'Assert','line':112,'column':22},{params:['string']}));
 
 
 module.exports = Assert;},{'module':'Assert','line':0,'column':0,'name':'$module_Assert'}),null);
@@ -2519,7 +2507,7 @@ return false;},{params:[[constructor,'function','constructor']],returns:'boolean
 function mixin(to,from){return __bodyWrapper(this,arguments,function(){
 var prototype=to.prototype;
 
-if(!ES('Array', 'isArray', false,from)){
+if(!ES('Array','isArray',false,from)){
 from = [from];}
 
 
@@ -2531,7 +2519,7 @@ prototype.__mixins.push(mixinFrom);
 mixinFrom = mixinFrom.prototype;}
 
 
-ES(ES('Object', 'keys', false,mixinFrom), 'forEach', true,__annotator(function(key){
+ES(ES('Object','keys',false,mixinFrom),'forEach',true,__annotator(function(key){
 prototype[key] = mixinFrom[key];},{'module':'Type','line':136,'column':35}));}},{params:[[to,'function','to']]});}__annotator(mixin,{'module':'Type','line':121,'column':0,'name':'mixin'},{params:['function']});
 
 
@@ -2571,7 +2559,7 @@ F.prototype = from.prototype;
 constructor.prototype = new F();
 
 if(prototype){
-ES('Object', 'assign', false,constructor.prototype,prototype);}
+ES('Object','assign',false,constructor.prototype,prototype);}
 
 
 
@@ -2608,13 +2596,13 @@ return extend(this,prototype,mixins);},{params:[[prototype,'?object','prototype'
 return constructor;},{params:[[from,'?function','from'],[prototype,'?object','prototype']],returns:'function'});}__annotator(extend,{'module':'Type','line':156,'column':0,'name':'extend'},{params:['?function','?object'],returns:'function'});
 
 
-ES('Object', 'assign', false,Type.prototype,{
+ES('Object','assign',false,Type.prototype,{
 instanceOf:__annotator(function(type){return __bodyWrapper(this,arguments,function(){
 return instanceOf(type,this);},{params:[[type,'function','type']],returns:'boolean'});},{'module':'Type','line':214,'column':14},{params:['function'],returns:'boolean'})});
 
 
 
-ES('Object', 'assign', false,Type,{
+ES('Object','assign',false,Type,{
 extend:__annotator(function(prototype,mixins){return __bodyWrapper(this,arguments,function(){
 return typeof prototype === 'function'?
 extend.apply(null,arguments):
@@ -2742,7 +2730,9 @@ monitor:__annotator(function(toWhat,withWhat){return __bodyWrapper(this,argument
 if(!withWhat()){
 var monitor=ES(__annotator(function(value){
 if(withWhat.apply(withWhat,arguments)){
-this.unsubscribe(toWhat,monitor);}},{"module":"ObservableMixin","line":135,"column":20}), 'bind', true,this);
+this.unsubscribe(toWhat,monitor);}},{"module":"ObservableMixin","line":135,"column":20}),"bind",true,
+
+this);
 this.subscribe(toWhat,monitor);}
 
 return this;},{params:[[toWhat,"string","toWhat"],[withWhat,"function","withWhat"]]});},{"module":"ObservableMixin","line":133,"column":11},{params:["string","function"]})};
@@ -2766,7 +2756,7 @@ this.parent();
 var propContainer={};
 var model=this;
 
-ES(ES('Object', 'keys', false,properties), 'forEach', true,__annotator(function(name){return __bodyWrapper(this,arguments,function(){
+ES(ES('Object','keys',false,properties),'forEach',true,__annotator(function(name){return __bodyWrapper(this,arguments,function(){
 
 propContainer[name] = properties[name];
 
@@ -2822,7 +2812,7 @@ UserID:'',
 Version:undefined});
 
 
-ES('Object', 'assign', false,Runtime,{
+ES('Object','assign',false,Runtime,{
 
 ENVIRONMENTS:ENVIRONMENTS,
 
@@ -3116,12 +3106,12 @@ versions.osx = mac[1];}
 
 
 function getVersionParts(version){return __bodyWrapper(this,arguments,function(){
-return ES(version.split('.'), 'map', true,__annotator(function(v){return parseFloat(v);},{'module':'sdk.UA','line':92,'column':32}));},{params:[[version,'string','version']],returns:'array'});}__annotator(getVersionParts,{'module':'sdk.UA','line':91,'column':0,'name':'getVersionParts'},{params:['string'],returns:'array'});
+return ES(version.split('.'),'map',true,__annotator(function(v){return parseFloat(v);},{'module':'sdk.UA','line':92,'column':32}));},{params:[[version,'string','version']],returns:'array'});}__annotator(getVersionParts,{'module':'sdk.UA','line':91,'column':0,'name':'getVersionParts'},{params:['string'],returns:'array'});
 
 
 var UA={};
 
-ES(ES('Object', 'keys', false,versions), 'map', true,__annotator(function(key){
+ES(ES('Object','keys',false,versions),'map',true,__annotator(function(key){
 
 
 
@@ -3132,7 +3122,7 @@ UA[key] = __annotator(function(){return parseFloat(versions[key]);},{'module':'s
 UA[key].getVersionParts = __annotator(function(){return getVersionParts(versions[key]);},{'module':'sdk.UA','line':105,'column':28});},{'module':'sdk.UA','line':97,'column':26}));
 
 
-ES(ES('Object', 'keys', false,devices), 'map', true,__annotator(function(key){
+ES(ES('Object','keys',false,devices),'map',true,__annotator(function(key){
 
 
 
@@ -3482,7 +3472,7 @@ __d('sdk.createIframe',['DOMEventListener','getBlankIframeSrc','guid','hasNamePr
 
 
 function createIframe(opts){return __bodyWrapper(this,arguments,function(){
-opts = ES('Object', 'assign', false,{},opts);
+opts = ES('Object','assign',false,{},opts);
 var frame;
 var name=opts.name || guid();
 var root=opts.root;
@@ -3506,7 +3496,7 @@ delete opts.root;
 delete opts.onload;
 delete opts.onerror;
 
-var attributes=ES('Object', 'assign', false,{
+var attributes=ES('Object','assign',false,{
 frameBorder:0,
 allowTransparency:true,
 allowFullscreen:true,
@@ -3530,7 +3520,7 @@ frame.setAttribute(key,attributes[key]);}}
 
 
 
-ES('Object', 'assign', false,frame.style,style);
+ES('Object','assign',false,frame.style,style);
 
 
 
@@ -3595,14 +3585,14 @@ __d('eprintf',[],__annotator(function $module_eprintf(global,require,requireDyna
 
 
 var eprintf=__annotator(function(errorMessage){return __bodyWrapper(this,arguments,function(){
-var args=ES(Array.prototype.slice.call(arguments), 'map', true,__annotator(function(arg){
+var args=ES(Array.prototype.slice.call(arguments),'map',true,__annotator(function(arg){
 return String(arg);},{'module':'eprintf','line':33,'column':55}));
 
 var expectedLength=errorMessage.split('%s').length - 1;
 
 if(expectedLength !== args.length - 1){
 
-return eprintf('eprintf args number mismatch: %s',ES('JSON', 'stringify', false,args));}
+return eprintf('eprintf args number mismatch: %s',ES('JSON','stringify',false,args));}
 
 
 var index=1;
@@ -3632,16 +3622,16 @@ __d('ex',['eprintf'],__annotator(function $module_ex(global,require,requireDynam
 
 
 var ex=__annotator(function(){for(var _len=arguments.length,args=Array(_len),_key=0;_key < _len;_key++) {args[_key] = arguments[_key];}
-args = ES(args, 'map', true,__annotator(function(arg){return String(arg);},{'module':'ex','line':39,'column':18}));
+args = ES(args,'map',true,__annotator(function(arg){return String(arg);},{'module':'ex','line':39,'column':18}));
 if(args[0].split('%s').length !== args.length){
 
-return ex('ex args number mismatch: %s',ES('JSON', 'stringify', false,args));}
+return ex('ex args number mismatch: %s',ES('JSON','stringify',false,args));}
 
 
 if(__DEV__){
 return eprintf.apply(null,args);}else 
 {
-return ex._prefix + ES('JSON', 'stringify', false,args) + ex._suffix;}},{'module':'ex','line':38,'column':9});
+return ex._prefix + ES('JSON','stringify',false,args) + ex._suffix;}},{'module':'ex','line':38,'column':9});
 
 
 
@@ -3675,8 +3665,7 @@ printingFunction = sprintf;}
 
 
 
-
-var invariant=__annotator(function(condition,format){
+function invariant(condition,format){
 if(__DEV__){
 if(format === undefined){
 throw new Error('invariant requires an error message argument');}}
@@ -3691,16 +3680,17 @@ error = new Error(
 'for the full error message and additional helpful warnings.');}else 
 
 {
-var messageWithParams=['Invariant Violation: ' + format];
+var messageWithParams=[format];
 for(var i=2,l=arguments.length;i < l;i++) {
 messageWithParams.push(arguments[i]);}
 
 error = new Error(printingFunction.apply(null,messageWithParams));
+error.name = 'Invariant Violation';
 error.messageWithParams = messageWithParams;}
 
 
 error.framesToPop = 1;
-throw error;}},{'module':'invariant','line':55,'column':16});
+throw error;}}__annotator(invariant,{'module':'invariant','line':54,'column':0,'name':'invariant'});
 
 
 
@@ -3807,10 +3797,10 @@ Level:Level,
 
 
 
-debug:ES(log, 'bind', true,null,'debug',Level.DEBUG),
-info:ES(log, 'bind', true,null,'info',Level.INFO),
-warn:ES(log, 'bind', true,null,'warn',Level.WARNING),
-error:ES(log, 'bind', true,null,'error',Level.ERROR)};
+debug:ES(log,'bind',true,null,'debug',Level.DEBUG),
+info:ES(log,'bind',true,null,'info',Level.INFO),
+warn:ES(log,'bind',true,null,'warn',Level.WARNING),
+error:ES(log,'bind',true,null,'error',Level.ERROR)};
 
 module.exports = Log;},{'module':'Log','line':0,'column':0,'name':'$module_Log'}),null);
 
@@ -4012,14 +4002,14 @@ var parts=s.match(/\w+|\W+/g);
 var i;
 
 
-var dict=ES('Object', 'create', false,null);
+var dict=ES('Object','create',false,null);
 for(i = 0;i < parts.length;i++) {
 dict[parts[i]] = (dict[parts[i]] || 0) + 1;}
 
 
 
 
-var keys=ES('Object', 'keys', false,dict);
+var keys=ES('Object','keys',false,dict);
 keys.sort(__annotator(function(a,b){return dict[b] - dict[a];},{'module':'Miny','line':35,'column':14}));
 
 
@@ -4332,7 +4322,7 @@ payload.source = 'jssdk';}
 
 request({
 lid:lid,
-payload:ES('JSON', 'stringify', false,payload)});},{params:[[lid,'number','lid'],[payload,'object','payload']]});},{'module':'sdk.Impressions','line':68,'column':7},{params:['number','object']}),
+payload:ES('JSON','stringify',false,payload)});},{params:[[lid,'number','lid'],[payload,'object','payload']]});},{'module':'sdk.Impressions','line':68,'column':7},{params:['number','object']}),
 
 
 
@@ -4398,14 +4388,14 @@ try{return decodeURIComponent(escape(s));}
 catch(_) {throw new Error('Not valid UTF-8');}},{'module':'Base64','line':64,'column':10}),
 
 encodeObject:__annotator(function(obj){
-return Base64.encode(ES('JSON', 'stringify', false,obj));},{'module':'Base64','line':74,'column':16}),
+return Base64.encode(ES('JSON','stringify',false,obj));},{'module':'Base64','line':74,'column':16}),
 
 decodeObject:__annotator(function(b64){
-return ES('JSON', 'parse', false,Base64.decode(b64));},{'module':'Base64','line':77,'column':16}),
+return ES('JSON','parse',false,Base64.decode(b64));},{'module':'Base64','line':77,'column':16}),
 
 
 encodeNums:__annotator(function(l){
-return String.fromCharCode.apply(String,ES(l, 'map', true,__annotator(function(val){
+return String.fromCharCode.apply(String,ES(l,'map',true,__annotator(function(val){
 return en.charCodeAt((val | -(val > 63)) & -(val > 0) & 63);},{'module':'Base64','line':82,'column':51})));},{'module':'Base64','line':81,'column':14})};
 
 
@@ -4469,7 +4459,7 @@ var URIRFC3986={
 
 
 parse:__annotator(function(uriString){return __bodyWrapper(this,arguments,function(){
-if(ES(uriString,'trim', true) === ''){
+if(ES(uriString,'trim',true) === ''){
 return null;}
 
 var captures=uriString.match(PARSE_PATTERN);
@@ -4530,13 +4520,13 @@ keys,
 values)
 {
 if(__DEV__){
-if(!ES('Array', 'isArray', false,keys)){
+if(!ES('Array','isArray',false,keys)){
 throw new TypeError('Must pass an array of keys.');}}
 
 
 
 var object={};
-var isArray=ES('Array', 'isArray', false,values);
+var isArray=ES('Array','isArray',false,values);
 if(values === undefined){
 values = true;}
 
@@ -4654,7 +4644,7 @@ uri.setForceFragmentSeparator(uriToParse.getForceFragmentSeparator());
 return true;}
 
 
-uriToParse = ES(uriToParse.toString(),'trim', true);
+uriToParse = ES(uriToParse.toString(),'trim',true);
 var components=URIRFC3986.parse(uriToParse) || {};
 if(!shouldThrow && !URISchemes.isAllowed(components.scheme)){
 return false;}
@@ -4695,7 +4685,7 @@ return false;}}
 
 
 
-if(!uri.getDomain() && ES(uri.getPath(), 'indexOf', true,'\\') !== -1){
+if(!uri.getDomain() && ES(uri.getPath(),'indexOf',true,'\\') !== -1){
 if(shouldThrow){
 throw new Error(ex(
 'URI.parse: invalid URI (no domain but multiple back-slashes): %s',
@@ -4903,7 +4893,7 @@ return this.$URIBase_path;},{'module':'URIBase','line':311,'column':9});URIBase.
 addQueryData = __annotator(function(mapOrKey,value){'use strict';
 
 if(Object.prototype.toString.call(mapOrKey) === '[object Object]'){
-ES('Object', 'assign', false,this.$URIBase_queryData,mapOrKey);}else 
+ES('Object','assign',false,this.$URIBase_queryData,mapOrKey);}else 
 {
 this.$URIBase_queryData[mapOrKey] = value;}
 
@@ -4938,7 +4928,7 @@ return this.$URIBase_queryData;},{'module':'URIBase','line':349,'column':14});UR
 
 
 removeQueryData = __annotator(function(keys){'use strict';
-if(!ES('Array', 'isArray', false,keys)){
+if(!ES('Array','isArray',false,keys)){
 keys = [keys];}
 
 for(var i=0,length=keys.length;i < length;++i) {
@@ -5010,7 +5000,7 @@ this.getPath() ||
 this.getProtocol() || 
 this.getDomain() || 
 this.getPort() || 
-ES('Object', 'keys', false,this.getQueryData()).length > 0 || 
+ES('Object','keys',false,this.getQueryData()).length > 0 || 
 this.getFragment());},{'module':'URIBase','line':426,'column':9});URIBase.prototype.
 
 
@@ -5213,7 +5203,7 @@ var subs=this.subscribers();
 if(!subs[name]){
 subs[name] = [cb];}else 
 {
-if(ES(subs[name], 'indexOf', true,cb) == -1){
+if(ES(subs[name],'indexOf',true,cb) == -1){
 subs[name].push(cb);}}
 
 
@@ -5244,7 +5234,7 @@ this.fire(this.SUBSCRIBE,name,subs[name]);}},{params:[[name,'string','name'],[cb
 unsubscribe:__annotator(function(name,cb){return __bodyWrapper(this,arguments,function(){
 var subs=this.subscribers()[name];
 if(subs){
-ES(subs, 'forEach', true,__annotator(function(value,key){
+ES(subs,'forEach',true,__annotator(function(value,key){
 if(value == cb){
 subs.splice(key,1);}},{'module':'sdk.Event','line':101,'column':19}));}
 
@@ -5304,7 +5294,7 @@ args=Array.prototype.slice.call(arguments,1),
 subs=this.subscribers()[name];
 
 if(subs){
-ES(subs, 'forEach', true,__annotator(function(sub){
+ES(subs,'forEach',true,__annotator(function(sub){
 
 
 if(sub){
@@ -5362,7 +5352,7 @@ throw new Error('No processor available');}
 if(this._opts.interval){
 this._opts.processor.call(this,this._queue.shift());
 this._timeout = setTimeout(
-ES(this._dispatch, 'bind', true,this),
+ES(this._dispatch,'bind',true,this),
 this._opts.interval);}else 
 
 {
@@ -5509,7 +5499,7 @@ this.$JSONRPC_callbacks = {};
 
 this.remote = ES(__annotator(function(context){
 this.$JSONRPC_context = context;
-return this.remote;},{'module':'JSONRPC','line':86,'column':18}), 'bind', true,this);
+return this.remote;},{'module':'JSONRPC','line':86,'column':18}),'bind',true,this);
 
 
 this.local = {};
@@ -5540,7 +5530,7 @@ this.$JSONRPC_callbacks[message.id] = args.pop();}
 
 message.params = args;
 
-this.$JSONRPC_write(ES('JSON', 'stringify', false,message),this.$JSONRPC_context || {method:stub});},{'module':'JSONRPC','line':106,'column':24}), 'bind', true,this);},{params:[[stub,'string','stub']]});},{'module':'JSONRPC','line':105,'column':6},{params:['string']});JSONRPC.prototype.
+this.$JSONRPC_write(ES('JSON','stringify',false,message),this.$JSONRPC_context || {method:stub});},{'module':'JSONRPC','line':106,'column':24}),'bind',true,this);},{params:[[stub,'string','stub']]});},{'module':'JSONRPC','line':105,'column':6},{params:['string']});JSONRPC.prototype.
 
 
 
@@ -5555,7 +5545,7 @@ this.$JSONRPC_write(ES('JSON', 'stringify', false,message),this.$JSONRPC_context
 
 
 read = __annotator(function(message,context){return __bodyWrapper(this,arguments,function(){'use strict';
-var rpc=ES('JSON', 'parse', false,message),id=rpc.id;
+var rpc=ES('JSON','parse',false,message),id=rpc.id;
 
 if(!rpc.method){
 
@@ -5587,7 +5577,7 @@ response[type] = value;
 
 
 setTimeout(__annotator(function(){
-instance.$JSONRPC_write(ES('JSON', 'stringify', false,response),context);},{'module':'JSONRPC','line':165,'column':19}),
+instance.$JSONRPC_write(ES('JSON','stringify',false,response),context);},{'module':'JSONRPC','line':165,'column':19}),
 0);},{params:[[type,'string','type']]});},{'module':'JSONRPC','line':156,'column':13},{params:['string']});}else 
 
 {
@@ -5607,8 +5597,8 @@ return;}
 
 
 
-rpc.params.push(ES(send, 'bind', true,null,'result'));
-rpc.params.push(ES(send, 'bind', true,null,'error'));
+rpc.params.push(ES(send,'bind',true,null,'result'));
+rpc.params.push(ES(send,'bind',true,null,'error'));
 
 
 try{
@@ -5646,7 +5636,7 @@ outQueue.enqueue(message);},{params:[[message,'string','message']]});},{'module'
 var RPC={
 local:jsonrpc.local,
 remote:jsonrpc.remote,
-stub:ES(jsonrpc.stub, 'bind', true,jsonrpc),
+stub:ES(jsonrpc.stub,'bind',true,jsonrpc),
 setInQueue:__annotator(function(queue){return __bodyWrapper(this,arguments,function(){
 Assert.isInstanceOf(Queue,queue);
 
@@ -5674,7 +5664,7 @@ new Image().src = QueryString.appendToUrl(
 UrlMap.resolve('www',true) + '/common/scribe_endpoint.php',
 {
 c:category,
-m:ES('JSON', 'stringify', false,data)});},{params:[[category,'string','category'],[data,'object','data']]});}__annotator(log,{'module':'sdk.Scribe','line':11,'column':0,'name':'log'},{params:['string','object']});
+m:ES('JSON','stringify',false,data)});},{params:[[category,'string','category'],[data,'object','data']]});}__annotator(log,{'module':'sdk.Scribe','line':11,'column':0,'name':'log'},{params:['string','object']});
 
 
 
@@ -6225,7 +6215,7 @@ if(!uri.getDomain() && !uri.getProtocol()){
 return true;}
 
 
-return ES(FB_PROTOCOLS, 'indexOf', true,uri.getProtocol()) !== -1 && 
+return ES(FB_PROTOCOLS,'indexOf',true,uri.getProtocol()) !== -1 && 
 facebookURIRegex.test(uri.getDomain());},{params:[[uri,'URI','uri']],returns:'boolean'});}__annotator(isFacebookURI,{'module':'isFacebookURI','line':32,'column':0,'name':'isFacebookURI'},{params:['URI'],returns:'boolean'});
 
 
@@ -6363,7 +6353,7 @@ return;}
 
 if(message.substring(0,1) == '{'){
 try{
-message = ES('JSON', 'parse', false,message);}
+message = ES('JSON','parse',false,message);}
 catch(decodeException) {
 Log.warn('Failed to decode %s as JSON',message);
 return;}}else 
@@ -6545,7 +6535,7 @@ inform:__annotator(function(method,params,relation,
 behavior){return __bodyWrapper(this,arguments,function(){
 sendToFacebook('facebook',{
 method:method,
-params:ES('JSON', 'stringify', false,params || {}),
+params:ES('JSON','stringify',false,params || {}),
 behavior:behavior || 'p',
 relation:relation});},{params:[[method,'string','method'],[params,'?object','params'],[relation,'?string','relation'],[behavior,'?string','behavior']]});},{'module':'sdk.XD','line':312,'column':10},{params:['string','?object','?string','?string']}),
 
@@ -6725,7 +6715,7 @@ authResponse.grantedScopes = params.granted_scopes;}
 if(Runtime.getUseCookie()){
 var expirationTime=authResponse.expiresIn === 0?
 0:
-ES('Date', 'now', false) + authResponse.expiresIn * 1000;
+ES('Date','now',false) + authResponse.expiresIn * 1000;
 var baseDomain=Cookie.getDomain();
 if(!baseDomain && params.base_domain){
 
@@ -6771,7 +6761,7 @@ return authResponse;},{returns:'?object'});},{'module':'sdk.Auth','line':91,'col
 
 
 function fetchLoginStatus(fn){return __bodyWrapper(this,arguments,function(){
-var frame,fetchStart=ES('Date', 'now', false);
+var frame,fetchStart=ES('Date','now',false);
 
 if(timer){
 clearTimeout(timer);
@@ -6791,10 +6781,10 @@ redirect_uri:XD.handler(__annotator(function(response){return __bodyWrapper(this
 if(feature('e2e_ping_tracking',true)){
 var events={
 init:fetchStart,
-close:ES('Date', 'now', false),
+close:ES('Date','now',false),
 method:'ping'};
 
-Log.debug('e2e: %s',ES('JSON', 'stringify', false,events));
+Log.debug('e2e: %s',ES('JSON','stringify',false,events));
 
 Impressions.log(114,{
 payload:events});}
@@ -6860,7 +6850,7 @@ Auth.clearSubscribers('FB.loginStatus');},{params:[[response,'?object','response
 fetchLoginStatus(lsCb);},{params:[[cb,'?function','cb'],[force,'?boolean','force']]});}__annotator(getLoginStatus,{'module':'sdk.Auth','line':208,'column':0,'name':'getLoginStatus'},{params:['?function','?boolean']});
 
 
-ES('Object', 'assign', false,Auth,{
+ES('Object','assign',false,Auth,{
 getLoginStatus:getLoginStatus,
 fetchLoginStatus:fetchLoginStatus,
 setAuthResponse:setAuthResponse,
@@ -6891,7 +6881,7 @@ var length=obj.length;
 
 
 !(
-!ES('Array', 'isArray', false,obj) && (
+!ES('Array','isArray',false,obj) && (
 typeof obj === 'object' || typeof obj === 'function'))?invariant(0,
 'toArray: Array-like object expected'):undefined;
 
@@ -6963,7 +6953,7 @@ typeof obj == 'object' || typeof obj == 'function') &&
 typeof obj.nodeType != 'number' && (
 
 
-ES('Array', 'isArray', false,obj) || 
+ES('Array','isArray',false,obj) || 
 
 'callee' in obj || 
 
@@ -6996,7 +6986,7 @@ ES('Array', 'isArray', false,obj) ||
 function createArrayFromMixed(obj){return __bodyWrapper(this,arguments,function(){
 if(!hasArrayNature(obj)){
 return [obj];}else 
-if(ES('Array', 'isArray', false,obj)){
+if(ES('Array','isArray',false,obj)){
 return obj.slice();}else 
 {
 return toArray(obj);}},{returns:'array'});}__annotator(createArrayFromMixed,{'module':'createArrayFromMixed','line':83,'column':0,'name':'createArrayFromMixed'},{returns:'array'});
@@ -7070,7 +7060,7 @@ Assert.isTruthy(dom,'element not specified');
 Assert.isString(className);
 
 var cssClassWithSpace=' ' + getProp(dom,'className') + ' ';
-return ES(cssClassWithSpace, 'indexOf', true,' ' + className + ' ') >= 0;},{params:[[dom,'HTMLElement','dom'],[className,'string','className']],returns:'boolean'});}__annotator(hasClass,{'module':'sdk.DOM','line':66,'column':0,'name':'hasClass'},{params:['HTMLElement','string'],returns:'boolean'});
+return ES(cssClassWithSpace,'indexOf',true,' ' + className + ' ') >= 0;},{params:[[dom,'HTMLElement','dom'],[className,'string','className']],returns:'boolean'});}__annotator(hasClass,{'module':'sdk.DOM','line':66,'column':0,'name':'hasClass'},{params:['HTMLElement','string'],returns:'boolean'});
 
 
 
@@ -7093,7 +7083,7 @@ Assert.isTruthy(dom,'element not specified');
 Assert.isString(className);
 
 var regExp=new RegExp('\\s*' + className,'g');
-dom.className = ES(getProp(dom,'className').replace(regExp,''),'trim', true);},{params:[[dom,'HTMLElement','dom'],[className,'string','className']]});}__annotator(removeClass,{'module':'sdk.DOM','line':89,'column':0,'name':'removeClass'},{params:['HTMLElement','string']});
+dom.className = ES(getProp(dom,'className').replace(regExp,''),'trim',true);},{params:[[dom,'HTMLElement','dom'],[className,'string','className']]});}__annotator(removeClass,{'module':'sdk.DOM','line':89,'column':0,'name':'removeClass'},{params:['HTMLElement','string']});
 
 
 
@@ -7353,14 +7343,15 @@ var data=normalizeError(error);
 data.entry = entry;
 
 
-var sanitizedArgs=ES(Array.prototype.slice.call(arguments), 'map', true,__annotator(function(arg){
+var sanitizedArgs=ES(Array.prototype.slice.call(arguments),'map',true,
+__annotator(function(arg){
 var type=Object.prototype.toString.call(arg);
 return (/^\[object (String|Number|Boolean|Object|Date)\]$/.test(type)?
 arg:
 arg.toString());},{'module':'sdk.ErrorHandling','line':90,'column':13}));
 
 
-data.args = ES('JSON', 'stringify', false,sanitizedArgs).substring(0,200);
+data.args = ES('JSON','stringify',false,sanitizedArgs).substring(0,200);
 errorHandler(data);}finally 
 {
 currentEntry = '';}},{'module':'sdk.ErrorHandling','line':68,'column':9});},{params:[[func,'function','func'],[entry,'?string','entry']],returns:'function'});}__annotator(guard,{'module':'sdk.ErrorHandling','line':67,'column':0,'name':'guard'},{params:['function','?string'],returns:'function'});
@@ -7506,7 +7497,7 @@ Auth.getLoginStatus(null,true);}},{params:[[value,'?string','value']]});},{'modu
 
 if(dotAccess(SDKConfig,'api.whitelist.length')){
 apiWhitelist = {};
-ES(SDKConfig.api.whitelist, 'forEach', true,__annotator(function(key){return __bodyWrapper(this,arguments,function(){
+ES(SDKConfig.api.whitelist,'forEach',true,__annotator(function(key){return __bodyWrapper(this,arguments,function(){
 apiWhitelist[key] = 1;},{params:[[key,'string','key']]});},{'module':'FB','line':72,'column':34},{params:['string']}));}
 
 
@@ -7552,8 +7543,8 @@ logged[accessor] = true;}}
 
 
 function unwrap(val){
-if(ES('Array', 'isArray', false,val)){
-return ES(val, 'map', true,unwrap);}
+if(ES('Array','isArray',false,val)){
+return ES(val,'map',true,unwrap);}
 
 if(val && typeof val === 'object' && val.__wrapped){
 
@@ -7569,7 +7560,7 @@ ErrorHandling.unguard(val):
 val;}__annotator(unwrap,{'module':'FB','line':117,'column':8,'name':'unwrap'});
 
 
-var args=ES(Array.prototype.slice.call(arguments), 'map', true,unwrap);
+var args=ES(Array.prototype.slice.call(arguments),'map',true,unwrap);
 
 var result=fn.apply(context,args);
 var facade;
@@ -7579,7 +7570,7 @@ if(result && typeof result === 'object'){
 
 
 
-facade = ES('Object', 'create', false,result);
+facade = ES('Object','create',false,result);
 facade.__wrapped = result;
 
 
@@ -7622,7 +7613,7 @@ var externalTarget=name?
 dotAccess(externalInterface,name,true):
 externalInterface;
 
-ES(ES('Object', 'keys', false,source), 'forEach', true,__annotator(function(key){return __bodyWrapper(this,arguments,function(){
+ES(ES('Object','keys',false,source),'forEach',true,__annotator(function(key){return __bodyWrapper(this,arguments,function(){
 var value=source[key];
 
 
@@ -7662,12 +7653,12 @@ return true;}
 
 
 if(/_fb_https?/.test(window.name)){
-return ES(window.name, 'indexOf', true,'_fb_https') != -1;}},{returns:'?boolean'});},{'module':'FB','line':210,'column':19},{returns:'?boolean'})());
+return ES(window.name,'indexOf',true,'_fb_https') != -1;}},{returns:'?boolean'});},{'module':'FB','line':210,'column':19},{returns:'?boolean'})());
 
 
 
 
-ES('Object', 'assign', false,FB,{
+ES('Object','assign',false,FB,{
 
 
 
@@ -7796,11 +7787,11 @@ return false;}
 
 
 request.onload = __annotator(function(xhr){
-cb(ES('JSON', 'parse', false,xhr.responseText));},{'module':'CORSRequest','line':117,'column':19});
+cb(ES('JSON','parse',false,xhr.responseText));},{'module':'CORSRequest','line':117,'column':19});
 
 request.onerror = __annotator(function(xhr){
 if(xhr.responseText){
-cb(ES('JSON', 'parse', false,xhr.responseText));}else 
+cb(ES('JSON','parse',false,xhr.responseText));}else 
 {
 cb({
 error:{
@@ -7857,7 +7848,7 @@ var requestCallback=GlobalCallback.create(__annotator(function(id,
 status,response){return __bodyWrapper(this,arguments,function(){
 var data;
 try{
-data = ES('JSON', 'parse', false,decodeURIComponent(response));}
+data = ES('JSON','parse',false,decodeURIComponent(response));}
 catch(parseError) {
 data = {
 error:{
@@ -7961,7 +7952,7 @@ continue;}else
 if(typeof value == 'string'){
 flat[key] = value;}else 
 {
-flat[key] = ES('JSON', 'stringify', false,value);}}}
+flat[key] = ES('JSON','stringify',false,value);}}}
 
 
 return flat;},{params:[[obj,'object','obj']],returns:'object'});}__annotator(flattenObject,{'module':'flattenObject','line':17,'column':0,'name':'flattenObject'},{params:['object'],returns:'object'});
@@ -8146,7 +8137,7 @@ return;}
 currentlyExecutingRequests++;
 
 if(defaultParams){
-params = ES('Object', 'assign', false,{},defaultParams,params);}
+params = ES('Object','assign',false,{},defaultParams,params);}
 
 
 params.access_token = params.access_token || accessToken;
@@ -8171,7 +8162,7 @@ transports = defaultTransports;}
 
 for(var i=0;i < transports.length;i++) {
 var transport=availableTransports[transports[i]];
-var paramsCopy=ES('Object', 'assign', false,{},params);
+var paramsCopy=ES('Object','assign',false,{},params);
 if(transport.execute(url,method,paramsCopy,cb)){
 return;}}
 
@@ -8194,7 +8185,7 @@ endpoint,
 method,
 params,
 response,
-ES('Date', 'now', false) - startTime);}
+ES('Date','now',false) - startTime);}
 
 
 
@@ -8204,7 +8195,7 @@ endpoint,
 method,
 params,
 response,
-ES('Date', 'now', false) - startTime);
+ES('Date','now',false) - startTime);
 
 
 
@@ -8245,7 +8236,7 @@ throw new ArgumentError(e.message,e);}
 
 
 
-ES(args, 'forEach', true,__annotator(function(arg){return argsMap[typeof arg] = arg;},{'module':'ApiClient','line':197,'column':15}));
+ES(args,'forEach',true,__annotator(function(arg){return argsMap[typeof arg] = arg;},{'module':'ApiClient','line':197,'column':15}));
 
 var method=(argsMap.string || 'get').toLowerCase();
 
@@ -8310,7 +8301,7 @@ request(
 url,
 method == 'get'?'get':'post',
 params,
-ES(inspect, 'bind', true,null,callback,uri.getPath(),method,params,ES('Date', 'now', false)));}__annotator(requestUsingGraph,{'module':'ApiClient','line':244,'column':0,'name':'requestUsingGraph'});
+ES(inspect,'bind',true,null,callback,uri.getPath(),method,params,ES('Date','now',false)));}__annotator(requestUsingGraph,{'module':'ApiClient','line':244,'column':0,'name':'requestUsingGraph'});
 
 
 
@@ -8399,12 +8390,12 @@ include_headers:false,
 batch_app_id:clientID || DEFAULT_BATCH_APP_ID},__annotator(
 
 function(response){
-if(ES('Array', 'isArray', false,response)){
-ES(response, 'forEach', true,__annotator(function(data,idx){
-copiedBatchCallbacks[idx](ES('JSON', 'parse', false,data.body));},{'module':'ApiClient','line':352,'column':25}));}else 
+if(ES('Array','isArray',false,response)){
+ES(response,'forEach',true,__annotator(function(data,idx){
+copiedBatchCallbacks[idx](ES('JSON','parse',false,data.body));},{'module':'ApiClient','line':352,'column':25}));}else 
 
 {
-ES(copiedBatchCallbacks, 'forEach', true,__annotator(function(callback){return (
+ES(copiedBatchCallbacks,'forEach',true,__annotator(function(callback){return (
 callback({error:{message:'Fatal: batch call failed.'}}));},{'module':'ApiClient','line':356,'column':37}));}},{'module':'ApiClient','line':350,'column':4}));}__annotator(dispatchBatchCalls,{'module':'ApiClient','line':306,'column':0,'name':'dispatchBatchCalls'});
 
 
@@ -8437,11 +8428,11 @@ params.api_key = clientID;
 var domain=method in READONLYCALLS?'api_read':'api';
 var url=UrlMap.resolve(domain) + '/restserver.php';
 var inspector=
-ES(inspect, 'bind', true,null,cb,'/restserver.php','get',params,ES('Date', 'now', false));
+ES(inspect,'bind',true,null,cb,'/restserver.php','get',params,ES('Date','now',false));
 request(url,'get',params,inspector);},{params:[[params,'object','params'],[cb,'?function','cb']]});}__annotator(requestUsingRest,{'module':'ApiClient','line':375,'column':0,'name':'requestUsingRest'},{params:['object','?function']});
 
 
-var ApiClient=ES('Object', 'assign', false,new ObservableMixin(),{
+var ApiClient=ES('Object','assign',false,new ObservableMixin(),{
 setAccessToken:__annotator(function(access_token){return __bodyWrapper(this,arguments,function(){
 if(__DEV__){
 if(accessToken && accessToken !== access_token){
@@ -8607,7 +8598,7 @@ error:'transport',
 extra:{
 name:'transport',
 
-message:ES('JSON', 'stringify', false,response.error)}});}},{params:[[endpoint,'string','endpoint'],[method,'string','method'],[params,'object','params']]});},{'module':'sdk.api','line':78,'column':2},{params:['string','string','object']}));
+message:ES('JSON','stringify',false,response.error)}});}},{params:[[endpoint,'string','endpoint'],[method,'string','method'],[params,'object','params']]});},{'module':'sdk.api','line':78,'column':2},{params:['string','string','object']}));
 
 
 
@@ -8635,7 +8626,7 @@ path = new URI(path).setDomain(null).setProtocol(null).toString();
 
 
 if(!PlatformVersioning.REGEX.
-test(path.substring(1,ES(path, 'indexOf', true,'/',1)))){
+test(path.substring(1,ES(path,'indexOf',true,'/',1)))){
 path = '/' + Runtime.getVersion() + path;}
 
 
@@ -8769,7 +8760,7 @@ trackEvent:__annotator(function(name,time){return __bodyWrapper(this,arguments,f
 if(this._e2e[name]){
 return this;}
 
-this._e2e[name] = time || ES('Date', 'now', false);
+this._e2e[name] = time || ES('Date','now',false);
 if(name == 'close'){
 
 this.inform('e2e:end',this._e2e);}
@@ -8779,7 +8770,7 @@ return this;},{params:[[name,'string','name'],[time,'?number','time']],returns:'
 
 trackEvents:__annotator(function(events){return __bodyWrapper(this,arguments,function(){
 if(typeof events === 'string'){
-events = ES('JSON', 'parse', false,events);}
+events = ES('JSON','parse',false,events);}
 
 for(var key in events) {
 if(events.hasOwnProperty(key)){
@@ -9039,7 +9030,7 @@ Dialog._active = null;},{'module':'sdk.Dialog','line':331,'column':16}),
 
 
 _removeStacked:__annotator(function(dialog){return __bodyWrapper(this,arguments,function(){
-Dialog._stack = ES(Dialog._stack, 'filter', true,__annotator(function(node){
+Dialog._stack = ES(Dialog._stack,'filter',true,__annotator(function(node){
 return node != dialog;},{'module':'sdk.Dialog','line':345,'column':41}));},{params:[[dialog,'HTMLElement','dialog']]});},{'module':'sdk.Dialog','line':344,'column':18},{params:['HTMLElement']}),
 
 
@@ -9316,7 +9307,7 @@ ES(['vert_left',
 'top_left',
 'top_right',
 'bottom_left',
-'bottom_right'], 'forEach', true,__annotator(function(name){return __bodyWrapper(this,arguments,function(){
+'bottom_right'],'forEach',true,__annotator(function(name){return __bodyWrapper(this,arguments,function(){
 var span=document.createElement('span');
 span.className = 'fb_dialog_' + name;
 dialog.appendChild(span);},{params:[[name,'string','name']]});},{'module':'sdk.Dialog','line':622,'column':32},{params:['string']}));}else 
@@ -9490,7 +9481,7 @@ api('/me/apprequestformerrecipients',__annotator(function(response){
 if(!response || response.error){
 return;}
 
-ES(response.data, 'forEach', true,__annotator(function(recipient){return __bodyWrapper(this,arguments,function(){
+ES(response.data,'forEach',true,__annotator(function(recipient){return __bodyWrapper(this,arguments,function(){
 Frictionless._allowedRecipients[recipient.recipient_id] = true;},{params:[[recipient,'object','recipient']]});},{'module':'sdk.Frictionless','line':30,'column':28},{params:['object']}));},{'module':'sdk.Frictionless','line':26,'column':42}));},{'module':'sdk.Frictionless','line':24,'column':21}),
 
 
@@ -9562,11 +9553,11 @@ return user_ids in Frictionless._allowedRecipients;}
 if(typeof user_ids === 'string'){
 user_ids = user_ids.split(',');}
 
-user_ids = ES(user_ids, 'map', true,__annotator(function(s){return ES(String(s),'trim', true);},{'module':'sdk.Frictionless','line':102,'column':28}));
+user_ids = ES(user_ids,'map',true,__annotator(function(s){return ES(String(s),'trim',true);},{'module':'sdk.Frictionless','line':102,'column':28}));
 
 var allowed=true;
 var has_user_ids=false;
-ES(user_ids, 'forEach', true,__annotator(function(user_id){return __bodyWrapper(this,arguments,function(){
+ES(user_ids,'forEach',true,__annotator(function(user_id){return __bodyWrapper(this,arguments,function(){
 allowed = allowed && user_id in Frictionless._allowedRecipients;
 has_user_ids = true;},{params:[[user_id,'string','user_id']]});},{'module':'sdk.Frictionless','line':106,'column':21},{params:['string']}));
 
@@ -9612,7 +9603,7 @@ return;}
 
 
 if(window.__fbNative && !this.nativeReady){
-ES('Object', 'assign', false,this,window.__fbNative);}
+ES('Object','assign',false,this,window.__fbNative);}
 
 
 
@@ -9790,7 +9781,7 @@ cb=call.cb,
 id=call.id;
 delete call.cb;
 
-var responseTypes=ES('Object', 'keys', false,ES('Object', 'assign', false,
+var responseTypes=ES('Object','keys',false,ES('Object','assign',false,
 call.params.response_type?
 createObjectFrom(call.params.response_type.split(',')):
 {},
@@ -9798,7 +9789,7 @@ createObjectFrom(call.params.response_type.split(',')):
 join(',');
 
 if(call.params.display === 'async'){
-ES('Object', 'assign', false,
+ES('Object','assign',false,
 call.params,{
 client_id:Runtime.getClientID(),
 origin:getContextType(),
@@ -9809,7 +9800,7 @@ domain:location.hostname});
 call.cb = Auth.xdResponseWrapper(
 cb,Auth.getAuthResponse(),'permissions.oauth');}else 
 {
-ES('Object', 'assign', false,
+ES('Object','assign',false,
 call.params,{
 client_id:Runtime.getClientID(),
 redirect_uri:resolveURI(
@@ -9854,7 +9845,7 @@ var
 cb=call.cb,
 id=call.id;
 delete call.cb;
-ES('Object', 'assign', false,call.params,{
+ES('Object','assign',false,call.params,{
 client_id:Runtime.getClientID(),
 redirect_uri:UIServer.xdHandler(cb,
 id,
@@ -9932,7 +9923,7 @@ _resultToken:'"xxRESULTTOKENxx"',
 
 genericTransform:__annotator(function(call){return __bodyWrapper(this,arguments,function(){
 if(call.params.display == 'dialog' || call.params.display == 'iframe'){
-ES('Object', 'assign', false,call.params,{
+ES('Object','assign',false,call.params,{
 display:'iframe',
 channel:UIServer._xdChannelHandler(call.id,'parent.parent')},
 true);}
@@ -9953,7 +9944,7 @@ return params.display;}
 
 var scopes=scope.split(/\s|,/g);
 for(var ii=0;ii < scopes.length;ii++) {
-if(!SDKConfig.initSitevars.iframePermissions[ES(scopes[ii],'trim', true)]){
+if(!SDKConfig.initSitevars.iframePermissions[ES(scopes[ii],'trim',true)]){
 return 'popup';}}
 
 
@@ -9973,14 +9964,14 @@ prepareCall:__annotator(function(params,cb){return __bodyWrapper(this,arguments,
 var 
 name=params.method.toLowerCase(),
 method=UIServer.Methods.hasOwnProperty(name)?
-ES('Object', 'assign', false,{},UIServer.Methods[name]):
+ES('Object','assign',false,{},UIServer.Methods[name]):
 {},
 id=guid(),
 useSSL=Runtime.getSecure() || 
 name !== 'auth.status' && name != 'login.status';
 
 
-ES('Object', 'assign', false,params,{
+ES('Object','assign',false,params,{
 app_id:Runtime.getClientID(),
 locale:Runtime.getLocale(),
 sdk:'joey',
@@ -9990,7 +9981,7 @@ access_token:useSSL && Runtime.getAccessToken() || undefined});
 
 if(name === 'share' || name === 'share_open_graph'){
 if(params.iframe_test){
-method = ES('Object', 'assign', false,{},MobileIframeable);}}
+method = ES('Object','assign',false,{},MobileIframeable);}}
 
 
 
@@ -10084,7 +10075,7 @@ true);}
 
 
 if(relation === 'parent'){
-ES('Object', 'assign', false,call.params,{
+ES('Object','assign',false,call.params,{
 channel_url:UIServer._xdChannelHandler(id,'parent.parent')},
 true);}
 
@@ -10657,7 +10648,7 @@ return (
 UIServer._xdNextHandler(__annotator(function(params){
 cb && cb(params.result && 
 params.result != UIServer._resultToken && 
-ES('JSON', 'parse', false,params.result));},{'module':'sdk.UIServer','line':1011,'column':30}),
+ES('JSON','parse',false,params.result));},{'module':'sdk.UIServer','line':1011,'column':30}),
 frame,target,isDefault) + 
 
 '&result=' + encodeURIComponent(UIServer._resultToken));},{params:[[cb,'function','cb'],[frame,'string','frame'],[target,'string','target'],[isDefault,'boolean','isDefault']],returns:'string'});},{'module':'sdk.UIServer','line':1008,'column':11},{params:['function','string','string','boolean'],returns:'string'}),
@@ -10756,7 +10747,7 @@ params.version = Runtime.getVersion();}}
 
 
 
-params = ES('Object', 'assign', false,{},params);
+params = ES('Object','assign',false,{},params);
 if(!params.method){
 Log.error('"method" is a required parameter for FB.ui().');
 return null;}
@@ -10809,7 +10800,7 @@ if(enableE2E){
 call.dialog.subscribe('e2e:end',__annotator(function(events){return __bodyWrapper(this,arguments,function(){
 events.method = method;
 events.display = displayName;
-Log.debug('e2e: %s',ES('JSON', 'stringify', false,events));
+Log.debug('e2e: %s',ES('JSON','stringify',false,events));
 
 Impressions.log(114,{
 payload:events});},{params:[[events,'object','events']]});},{'module':'sdk.ui','line':134,'column':37},{params:['object']}));}
@@ -10879,11 +10870,11 @@ ui({method:'auth.logout',display:'hidden'},cb);},{params:[[cb,'?function','cb']]
 
 
 
-Auth.subscribe('logout',ES(Event.fire, 'bind', true,Event,'auth.logout'));
-Auth.subscribe('login',ES(Event.fire, 'bind', true,Event,'auth.login'));
-Auth.subscribe('authresponse.change',ES(Event.fire, 'bind', true,Event,
+Auth.subscribe('logout',ES(Event.fire,'bind',true,Event,'auth.logout'));
+Auth.subscribe('login',ES(Event.fire,'bind',true,Event,'auth.login'));
+Auth.subscribe('authresponse.change',ES(Event.fire,'bind',true,Event,
 'auth.authResponseChange'));
-Auth.subscribe('status.change',ES(Event.fire, 'bind', true,Event,'auth.statusChange'));
+Auth.subscribe('status.change',ES(Event.fire,'bind',true,Event,'auth.statusChange'));
 
 Event.subscribe('init:post',__annotator(function(options){return __bodyWrapper(this,arguments,function(){
 if(options.status){
@@ -11178,7 +11169,7 @@ createArrayFromMixed(window.document.getElementsByTagName('embed')));
 
 var flashPresent=false;
 var unityPresent=false;
-ES(candidates, 'forEach', true,__annotator(function(elem){return __bodyWrapper(this,arguments,function(){
+ES(candidates,'forEach',true,__annotator(function(elem){return __bodyWrapper(this,arguments,function(){
 var isFlashElement=isHideableFlashElement(elem);
 var isUnityElement=unityNeedsToBeHidden && isHideableUnityElement(elem);
 if(!isFlashElement && !isUnityElement){
@@ -11268,7 +11259,7 @@ __d('sdk.Canvas.Tti',['sdk.RPC','sdk.Runtime'],__annotator(function $module_sdk_
 function passAppTtiMessage(callback,messageName){return __bodyWrapper(this,arguments,function(){
 var params={
 appId:Runtime.getClientID(),
-time:ES('Date', 'now', false),
+time:ES('Date','now',false),
 name:messageName};
 
 
@@ -11389,7 +11380,7 @@ return Navigation.setUrlHandler.apply(null,arguments);},{'module':'legacy:fb.can
 
 
 
-RPC.local.fireEvent = ES(Event.fire, 'bind', true,Event);
+RPC.local.fireEvent = ES(Event.fire,'bind',true,Event);
 
 Event.subscribe('init:post',__annotator(function(options){
 if(Runtime.isEnvironment(Runtime.ENVIRONMENTS.CANVAS)){
@@ -11440,9 +11431,10 @@ script:'src'};
 
 
 if(collectionMode == COLLECT.AUTOMATIC){
-ES(ES('Object', 'keys', false,resourceFieldsByTag), 'forEach', true,__annotator(function(tagName){return __bodyWrapper(this,arguments,function(){
+ES(ES('Object','keys',false,resourceFieldsByTag),'forEach',true,__annotator(function(tagName){return __bodyWrapper(this,arguments,function(){
 var propertyName=resourceFieldsByTag[tagName];
-ES(createArrayFromMixed(document.getElementsByTagName(tagName)), 'forEach', true,__annotator(function(tag){return __bodyWrapper(this,arguments,function(){
+ES(createArrayFromMixed(document.getElementsByTagName(tagName)),'forEach',true,
+__annotator(function(tag){return __bodyWrapper(this,arguments,function(){
 if(tag[propertyName]){
 links.push(tag[propertyName]);}},{params:[[tag,'HTMLElement','tag']]});},{'module':'sdk.Canvas.Prefetcher','line':35,'column':17},{params:['HTMLElement']}));},{params:[[tagName,'string','tagName']]});},{'module':'sdk.Canvas.Prefetcher','line':32,'column':45},{params:['string']}));}
 
@@ -11456,7 +11448,7 @@ return;}
 
 
 api(Runtime.getClientID() + '/staticresources','post',{
-urls:ES('JSON', 'stringify', false,links),
+urls:ES('JSON','stringify',false,links),
 is_https:location.protocol === 'https:'});
 
 
@@ -11471,7 +11463,7 @@ return;}
 
 
 if(Math.random() > 1 / sampleRate || 
-blacklist == '*' || ~ES(blacklist, 'indexOf', true,Runtime.getClientID())){
+blacklist == '*' || ~ES(blacklist,'indexOf',true,Runtime.getClientID())){
 return;}
 
 
@@ -11575,7 +11567,7 @@ __d("mergeArrays",[],__annotator(function $module_mergeArrays(global,require,req
 
 function mergeArrays(target,source){return __bodyWrapper(this,arguments,function(){
 for(var i=0;i < source.length;i++) {
-if(ES(target, 'indexOf', true,source[i]) < 0){
+if(ES(target,"indexOf",true,source[i]) < 0){
 target.push(source[i]);}}
 
 
@@ -11683,7 +11675,9 @@ if(value !== undefined){
 
 this.value = value;
 callback(value);
-return true;}},{returns:'?boolean'});},{'module':'sdk.Waitable','line':65,'column':33},{returns:'?boolean'}), 'bind', true,this));},{params:[[callback,'?function','callback'],[errorHandler,'?function','errorHandler']]});},{'module':'sdk.Waitable','line':59,'column':8},{params:['?function','?function']})});
+return true;}},{returns:'?boolean'});},{'module':'sdk.Waitable','line':65,'column':33},{returns:'?boolean'}),'bind',true,
+
+this));},{params:[[callback,'?function','callback'],[errorHandler,'?function','errorHandler']]});},{'module':'sdk.Waitable','line':59,'column':8},{params:['?function','?function']})});
 
 
 
@@ -11746,7 +11740,7 @@ __d('sdk.Query',['format','safeEval','Type','sdk.Waitable'],__annotator(function
 
 
 function toFields(s){return __bodyWrapper(this,arguments,function(){
-return ES(s.split(','), 'map', true,__annotator(function(s){return ES(s,'trim', true);},{'module':'sdk.Query','line':63,'column':26}));},{params:[[s,'string','s']],returns:'array<string>'});}__annotator(toFields,{'module':'sdk.Query','line':62,'column':0,'name':'toFields'},{params:['string'],returns:'array<string>'});
+return ES(s.split(','),'map',true,__annotator(function(s){return ES(s,'trim',true);},{'module':'sdk.Query','line':63,'column':26}));},{params:[[s,'string','s']],returns:'array<string>'});}__annotator(toFields,{'module':'sdk.Query','line':62,'column':0,'name':'toFields'},{params:['string'],returns:'array<string>'});
 
 
 
@@ -11795,7 +11789,7 @@ return result;},{params:[[s,'string','s']],returns:'object'});}__annotator(parse
 
 function encode(value){return __bodyWrapper(this,arguments,function(){
 return typeof value === 'string'?
-ES('JSON', 'stringify', false,value):
+ES('JSON','stringify',false,value):
 value;},{returns:'string'});}__annotator(encode,{'module':'sdk.Query','line':110,'column':0,'name':'encode'},{returns:'string'});
 
 
@@ -11859,7 +11853,7 @@ if(this.where.value.length == 1){
 s += this.where.key + '=' + encode(this.where.value[0]);}else 
 {
 s += this.where.key + ' in (' + 
-ES(this.where.value, 'map', true,encode).join(',') + ')';}
+ES(this.where.value,'map',true,encode).join(',') + ')';}
 
 break;}
 
@@ -12068,7 +12062,7 @@ var s=callback;
 callback = ErrorHandling.unguard(__annotator(function(){return safeEval(s);},{'module':'sdk.Data','line':190,'column':39}));}
 
 
-ES(dependencies, 'forEach', true,__annotator(function(item){return __bodyWrapper(this,arguments,function(){
+ES(dependencies,'forEach',true,__annotator(function(item){return __bodyWrapper(this,arguments,function(){
 item.monitor('Value.change',__annotator(function(){
 var done=false;
 if(Data._getValue(item) !== undefined){
@@ -12078,7 +12072,7 @@ count--;
 done = true;}
 
 if(count === 0){
-var value=callback(ES(dependencies, 'map', true,Data._getValue));
+var value=callback(ES(dependencies,'map',true,Data._getValue));
 result.setValue(value !== undefined?value:true);}
 
 return done;},{'module':'sdk.Data','line':194,'column':35}));},{params:[[item,'object','item']]});},{'module':'sdk.Data','line':193,'column':25},{params:['object']}));
@@ -12182,11 +12176,11 @@ params.access_token = token;}
 
 api('/fql','GET',params,__annotator(function(result){return __bodyWrapper(this,arguments,function(){
 if(result.error){
-ES(ES('Object', 'keys', false,mqueries), 'forEach', true,__annotator(function(key){return __bodyWrapper(this,arguments,function(){
+ES(ES('Object','keys',false,mqueries),'forEach',true,__annotator(function(key){return __bodyWrapper(this,arguments,function(){
 mqueries[key].error(new Error(result.error.message));},{params:[[key,'string','key']]});},{'module':'sdk.Data','line':307,'column':38},{params:['string']}));}else 
 
 {
-ES(result.data, 'forEach', true,__annotator(function(o){return __bodyWrapper(this,arguments,function(){
+ES(result.data,'forEach',true,__annotator(function(o){return __bodyWrapper(this,arguments,function(){
 mqueries[o.name].setValue(o.fql_result_set);},{params:[[o,'object','o']]});},{'module':'sdk.Data','line':311,'column':28},{params:['object']}));}},{params:[[result,'object','result']]});},{'module':'sdk.Data','line':305,'column':31},{params:['object']}));},{params:[[token,'?string','token']]});},{'module':'sdk.Data','line':271,'column':12},{params:['?string']}),
 
 
@@ -12216,7 +12210,7 @@ mergeArrays(master.where.value,[value]);
 
 
 master.wait(__annotator(function(r){return __bodyWrapper(this,arguments,function(){
-item.setValue(ES(r, 'filter', true,__annotator(function(x){return __bodyWrapper(this,arguments,function(){
+item.setValue(ES(r,'filter',true,__annotator(function(x){return __bodyWrapper(this,arguments,function(){
 return x[key] == value;},{params:[[x,'object','x']]});},{'module':'sdk.Data','line':341,'column':29},{params:['object']})));},{params:[[r,'array<object>','r']]});},{'module':'sdk.Data','line':340,'column':16},{params:['array<object>']}));},{params:[[item,'object','item'],[mqueries,'object','mqueries']]});},{'module':'sdk.Data','line':322,'column':20},{params:['object','object']}),
 
 
@@ -12278,7 +12272,7 @@ logTimeout);}}
 return Event.subscribe(name,cb);},{'module':'legacy:fb.event','line':17,'column':11}),
 
 
-unsubscribe:ES(Event.unsubscribe, 'bind', true,Event)});},{'module':'legacy:fb.event','line':0,'column':0,'name':'$module_legacy_fb_event'}),3);
+unsubscribe:ES(Event.unsubscribe,'bind',true,Event)});},{'module':'legacy:fb.event','line':0,'column':0,'name':'$module_legacy_fb_event'}),3);
 
 __d('legacy:fb.event-legacy',['FB','sdk.Event'],__annotator(function $module_legacy_fb_event_legacy(global,require,requireDynamic,requireLazy,__DO_NOT_USE__module,__DO_NOT_USE__exports,FB,Event){if(require.__markCompiled)require.__markCompiled();
 
@@ -12286,9 +12280,9 @@ __d('legacy:fb.event-legacy',['FB','sdk.Event'],__annotator(function $module_leg
 
 
 FB.provide('Event',{
-clear:ES(Event.clear, 'bind', true,Event),
-fire:ES(Event.fire, 'bind', true,Event),
-monitor:ES(Event.monitor, 'bind', true,Event)});
+clear:ES(Event.clear,'bind',true,Event),
+fire:ES(Event.fire,'bind',true,Event),
+monitor:ES(Event.monitor,'bind',true,Event)});
 
 
 FB.provide('EventProvider',Event);},{'module':'legacy:fb.event-legacy','line':0,'column':0,'name':'$module_legacy_fb_event_legacy'}),3);
@@ -12299,7 +12293,8 @@ __d('legacy:fb.frictionless',['FB','sdk.Frictionless'],__annotator(function $mod
 
 FB.provide('Frictionless',Frictionless);},{'module':'legacy:fb.frictionless','line':0,'column':0,'name':'$module_legacy_fb_frictionless'}),3);
 
-__d('sdk.init',['sdk.Cookie','sdk.ErrorHandling','sdk.Event','Log','ManagedError','sdk.PlatformVersioning','QueryString','sdk.Runtime','sdk.URI','createArrayFromMixed'],__annotator(function $module_sdk_init(global,require,requireDynamic,requireLazy,module,exports,Cookie,ErrorHandling,Event,Log,ManagedError,PlatformVersioning,QueryString,Runtime,URI,createArrayFromMixed){if(require.__markCompiled)require.__markCompiled();
+__d('sdk.init',['sdk.Cookie','sdk.ErrorHandling','sdk.Event','Log','ManagedError','sdk.PlatformVersioning','QueryString','sdk.Runtime','sdk.URI','createArrayFromMixed','sdk.feature'],__annotator(function $module_sdk_init(global,require,requireDynamic,requireLazy,module,exports,Cookie,ErrorHandling,Event,Log,ManagedError,PlatformVersioning,QueryString,Runtime,URI,createArrayFromMixed,feature){if(require.__markCompiled)require.__markCompiled();
+
 
 
 
@@ -12326,7 +12321,7 @@ return appId.toString();}
 
 Log.warn('Invalid App Id: Must be a number or numeric string representing ' + 
 'the application id.');
-return null;},{params:[[appId,'string|number','appId']],returns:'?string'});}__annotator(parseAppId,{'module':'sdk.init','line':24,'column':0,'name':'parseAppId'},{params:['string|number'],returns:'?string'});
+return null;},{params:[[appId,'string|number','appId']],returns:'?string'});}__annotator(parseAppId,{'module':'sdk.init','line':25,'column':0,'name':'parseAppId'},{params:['string|number'],returns:'?string'});
 
 
 
@@ -12376,7 +12371,7 @@ Log.warn('FB.init called with invalid parameters');
 options = {apiKey:options};}
 
 
-options = ES('Object', 'assign', false,{
+options = ES('Object','assign',false,{
 status:true},
 options || {});}
 
@@ -12403,7 +12398,13 @@ Runtime.setKidDirectedSite(true);}
 
 
 Runtime.setInitialized(true);
-Event.fire('init:post',options);},{params:[[options,'object|number|string','options']]});}__annotator(init,{'module':'sdk.init','line':52,'column':0,'name':'init'},{params:['object|number|string']});
+
+
+if(feature('js_sdk_force_status_on_load',false)){
+options.status = true;}
+
+
+Event.fire('init:post',options);},{params:[[options,'object|number|string','options']]});}__annotator(init,{'module':'sdk.init','line':53,'column':0,'name':'init'},{params:['object|number|string']});
 
 
 
@@ -12413,7 +12414,8 @@ setTimeout(__annotator(function(){
 
 
 var pattern=/(connect\.facebook\.net|\.facebook\.com\/assets.php).*?#(.*)/;
-ES(createArrayFromMixed(document.getElementsByTagName('script')), 'forEach', true,__annotator(function(script){
+ES(createArrayFromMixed(document.getElementsByTagName('script')),'forEach',true,
+__annotator(function(script){
 if(script.src){
 var match=pattern.exec(script.src);
 if(match){
@@ -12427,7 +12429,7 @@ opts[key] = 0;}}}
 
 
 
-init(opts);}}},{'module':'sdk.init','line':121,'column':15}));
+init(opts);}}},{'module':'sdk.init','line':128,'column':15}));
 
 
 
@@ -12435,7 +12437,7 @@ init(opts);}}},{'module':'sdk.init','line':121,'column':15}));
 
 if(window.fbAsyncInit && !window.fbAsyncInit.hasRun){
 window.fbAsyncInit.hasRun = true;
-ErrorHandling.unguard(window.fbAsyncInit)();}},{'module':'sdk.init','line':116,'column':11}),
+ErrorHandling.unguard(window.fbAsyncInit)();}},{'module':'sdk.init','line':123,'column':11}),
 
 0);
 
@@ -12460,14 +12462,14 @@ __d('legacy:fb.json',['FB','ManagedError'],__annotator(function $module_legacy_f
 FB.provide('JSON',{
 stringify:__annotator(function(obj){
 try{
-return ES('JSON', 'stringify', false,obj);}
+return ES('JSON','stringify',false,obj);}
 catch(e) {
 throw new ManagedError(e.message,e);}},{'module':'legacy:fb.json','line':12,'column':13}),
 
 
 parse:__annotator(function(str){
 try{
-return ES('JSON', 'parse', false,str);}
+return ES('JSON','parse',false,str);}
 catch(e) {
 throw new ManagedError(e.message,e);}},{'module':'legacy:fb.json','line':19,'column':9})});},{'module':'legacy:fb.json','line':0,'column':0,'name':'$module_legacy_fb_json'}),3);
 
@@ -12521,7 +12523,7 @@ var parseCount=0;
 var XFBML=new ObservableMixin();
 
 function propStr(object,property){return __bodyWrapper(this,arguments,function(){
-return ES((object[property] + ''),'trim', true);},{params:[[property,'string','property']],returns:'string'});}__annotator(propStr,{'module':'XFBML','line':30,'column':0,'name':'propStr'},{params:['string'],returns:'string'});
+return ES(object[property] + '','trim',true);},{params:[[property,'string','property']],returns:'string'});}__annotator(propStr,{'module':'XFBML','line':30,'column':0,'name':'propStr'},{params:['string'],returns:'string'});
 
 
 function nodeNameIE(element){return __bodyWrapper(this,arguments,function(){
@@ -12538,7 +12540,7 @@ xfbml[nodeNameIE(element).toLowerCase()];},{params:[[element,'HTMLElement','elem
 
 
 function html5Info(element){return __bodyWrapper(this,arguments,function(){
-var classNames=ES(propStr(element,'className').split(/\s+/), 'filter', true,__annotator(
+var classNames=ES(propStr(element,'className').split(/\s+/),'filter',true,__annotator(
 function(className){return html5.hasOwnProperty(className);},{'module':'XFBML','line':49,'column':4}));
 
 if(classNames.length === 0){
@@ -12573,7 +12575,7 @@ return html5[classNames[0]];}},{params:[[element,'HTMLElement','element']],retur
 
 function attr(element){return __bodyWrapper(this,arguments,function(){
 var attrs={};
-ES(createArrayFromMixed(element.attributes), 'forEach', true,__annotator(function(at){
+ES(createArrayFromMixed(element.attributes),'forEach',true,__annotator(function(at){
 attrs[propStr(at,'name')] = propStr(at,'value');},{'module':'XFBML','line':83,'column':51}));
 
 return attrs;},{params:[[element,'HTMLElement','element']],returns:'object'});}__annotator(attr,{'module':'XFBML','line':81,'column':0,'name':'attr'},{params:['HTMLElement'],returns:'object'});
@@ -12583,10 +12585,10 @@ function convertSyntax(
 element,ns,ln){return __bodyWrapper(this,arguments,function(){
 var replacement=document.createElement('div');
 DOM.addCss(element,ns + '-' + ln);
-ES(createArrayFromMixed(element.childNodes), 'forEach', true,__annotator(function(child){
+ES(createArrayFromMixed(element.childNodes),'forEach',true,__annotator(function(child){
 replacement.appendChild(child);},{'module':'XFBML','line':93,'column':51}));
 
-ES(createArrayFromMixed(element.attributes), 'forEach', true,__annotator(function(attribute){
+ES(createArrayFromMixed(element.attributes),'forEach',true,__annotator(function(attribute){
 replacement.setAttribute(attribute.name,attribute.value);},{'module':'XFBML','line':96,'column':51}));
 
 element.parentNode.replaceChild(replacement,element);
@@ -12618,7 +12620,8 @@ XFBML.inform('render',pc,tags);}
 Assert.isTrue(count >= 0,'onrender() has been called too many times');},{'module':'XFBML','line':118,'column':17});
 
 
-ES(createArrayFromMixed(dom.getElementsByTagName('*')), 'forEach', true,__annotator(function(element){
+ES(createArrayFromMixed(dom.getElementsByTagName('*')),'forEach',true,
+__annotator(function(element){
 if(!reparse && element.getAttribute('fb-xfbml-state')){
 
 return;}
@@ -12686,12 +12689,12 @@ onrender();},{params:[[dom,'HTMLElement','dom'],[callback,'function','callback']
 XFBML.subscribe('render',__annotator(function(){
 var q=XFBML.getSubscribers('render.queue');
 XFBML.clearSubscribers('render.queue');
-ES(q, 'forEach', true,__annotator(function(r){r();},{'module':'XFBML','line':197,'column':12}));},{'module':'XFBML','line':194,'column':26}));
+ES(q,'forEach',true,__annotator(function(r){r();},{'module':'XFBML','line':197,'column':12}));},{'module':'XFBML','line':194,'column':26}));
 
 
 
 
-ES('Object', 'assign', false,XFBML,{
+ES('Object','assign',false,XFBML,{
 
 registerTag:__annotator(function(info){return __bodyWrapper(this,arguments,function(){
 var fqn=info.xmlns + ':' + info.localName;
@@ -12745,7 +12748,7 @@ var q=queued;
 queued = [];
 
 if(q.length <= threshold){
-ES(q, 'forEach', true,__annotator(function(plugin){return __bodyWrapper(this,arguments,function(){
+ES(q,'forEach',true,__annotator(function(plugin){return __bodyWrapper(this,arguments,function(){
 insertIframe(plugin.config);},{params:[[plugin,'object','plugin']]});},{'module':'PluginPipe','line':37,'column':14},{params:['object']}));
 
 return;}
@@ -12759,7 +12762,7 @@ insertPipe(q);}}__annotator(onrender,{'module':'PluginPipe','line':44,'column':2
 
 
 
-ES(q, 'forEach', true,__annotator(function(plugin){return __bodyWrapper(this,arguments,function(){
+ES(q,'forEach',true,__annotator(function(plugin){return __bodyWrapper(this,arguments,function(){
 var config={};
 for(var key in plugin.config) {
 config[key] = plugin.config[key];}
@@ -12780,17 +12783,17 @@ var root=document.createElement('span');
 Content.appendHidden(root);
 
 var params={};
-ES(plugins, 'forEach', true,__annotator(function(plugin){return __bodyWrapper(this,arguments,function(){
+ES(plugins,'forEach',true,__annotator(function(plugin){return __bodyWrapper(this,arguments,function(){
 params[plugin.config.name] = {
 plugin:plugin.tag,
 params:plugin.params};},{params:[[plugin,'object','plugin']]});},{'module':'PluginPipe','line':72,'column':18},{params:['object']}));
 
 
 
-var raw=ES('JSON', 'stringify', false,params);
+var raw=ES('JSON','stringify',false,params);
 var miny=Miny.encode(raw);
 
-ES(plugins, 'forEach', true,__annotator(function(plugin){return __bodyWrapper(this,arguments,function(){
+ES(plugins,'forEach',true,__annotator(function(plugin){return __bodyWrapper(this,arguments,function(){
 var frame=document.getElementsByName(plugin.config.name)[0];
 frame.onload = plugin.config.onload;},{params:[[plugin,'object','plugin']]});},{'module':'PluginPipe','line':82,'column':18},{params:['object']}));
 
@@ -12814,7 +12817,7 @@ plugins:miny.length < raw.length?miny:raw}});},{'module':'PluginPipe','line':95,
 
 
 
-ES('Object', 'assign', false,PluginPipe,{
+ES('Object','assign',false,PluginPipe,{
 add:__annotator(function(plugin){return __bodyWrapper(this,arguments,function(){
 var enabled=isEnabled();
 enabled && queued.push({
@@ -12919,7 +12922,7 @@ return val;},{params:[[attr,'object','attr'],[key,'string','key']]});}__annotato
 
 function validate(defn,elem,attr,
 params){return __bodyWrapper(this,arguments,function(){
-ES(ES('Object', 'keys', false,defn), 'forEach', true,__annotator(function(key){
+ES(ES('Object','keys',false,defn),'forEach',true,__annotator(function(key){
 if(defn[key] == 'text' && !attr[key]){
 attr[key] = elem.textContent || elem.innerText || '';
 elem.setAttribute(key,attr[key]);}
@@ -12960,7 +12963,7 @@ this.subscribe('xd.resize',resizeBubbler(pluginId));
 this.subscribe('xd.resize.flow',resizeBubbler(pluginId));
 
 this.subscribe('xd.resize.flow',ES(__annotator(function(message){
-ES('Object', 'assign', false,this._iframeOptions.root.style,{
+ES('Object','assign',false,this._iframeOptions.root.style,{
 verticalAlign:'bottom',
 overflow:''});
 
@@ -12970,11 +12973,11 @@ parse(message.width),
 parse(message.height));
 
 this.updateLift();
-clearTimeout(this._timeoutID);},{'module':'IframePlugin','line':143,'column':37}), 'bind', true,this));
+clearTimeout(this._timeoutID);},{'module':'IframePlugin','line':143,'column':37}),'bind',true,this));
 
 
 this.subscribe('xd.resize',ES(__annotator(function(message){
-ES('Object', 'assign', false,this._iframeOptions.root.style,{
+ES('Object','assign',false,this._iframeOptions.root.style,{
 verticalAlign:'bottom',
 overflow:''});
 
@@ -12986,7 +12989,7 @@ parse(message.height));
 resize(this._iframe,parse(message.width),parse(message.height));
 this._isIframeResized = true;
 this.updateLift();
-clearTimeout(this._timeoutID);},{'module':'IframePlugin','line':157,'column':32}), 'bind', true,this));
+clearTimeout(this._timeoutID);},{'module':'IframePlugin','line':157,'column':32}),'bind',true,this));
 
 
 this.subscribe('xd.resize.iframe',ES(__annotator(function(message){
@@ -13000,11 +13003,11 @@ this.reposition(parse(message.width));}
 resize(this._iframe,parse(message.width),parse(message.height));
 this._isIframeResized = true;
 this.updateLift();
-clearTimeout(this._timeoutID);},{'module':'IframePlugin','line':173,'column':39}), 'bind', true,this));
+clearTimeout(this._timeoutID);},{'module':'IframePlugin','line':173,'column':39}),'bind',true,this));
 
 
 this.subscribe('xd.sdk_event',__annotator(function(message){return __bodyWrapper(this,arguments,function(){
-var data=ES('JSON', 'parse', false,message.data);
+var data=ES('JSON','parse',false,message.data);
 data.pluginID = pluginId;
 Event.fire(message.event,data,elem);},{params:[[message,'object','message']]});},{'module':'IframePlugin','line':187,'column':35},{params:['object']}));
 
@@ -13016,13 +13019,13 @@ var params={};
 validate(this.getParams(),elem,attr,params);
 validate(baseParams,elem,attr,params);
 
-ES('Object', 'assign', false,params,{
+ES('Object','assign',false,params,{
 app_id:Runtime.getClientID(),
 locale:Runtime.getLocale(),
 sdk:'joey',
 kid_directed_site:Runtime.getKidDirectedSite(),
 channel:XD.handler(ES(__annotator(
-function(msg){return this.inform('xd.' + msg.type,msg);},{'module':'IframePlugin','line':206,'column':8}), 'bind', true,this),
+function(msg){return this.inform('xd.' + msg.type,msg);},{'module':'IframePlugin','line':206,'column':8}),'bind',true,this),
 'parent.parent',
 true)});
 
@@ -13034,18 +13037,18 @@ DOM.addCss(elem,'fb_iframe_widget');
 var name=guid();
 this.subscribe('xd.verify',__annotator(function(msg){return __bodyWrapper(this,arguments,function(){
 XD.sendToFacebook(
-name,{method:'xd/verify',params:ES('JSON', 'stringify', false,msg.token)});},{params:[[msg,'object','msg']]});},{'module':'IframePlugin','line':216,'column':32},{params:['object']}));
+name,{method:'xd/verify',params:ES('JSON','stringify',false,msg.token)});},{params:[[msg,'object','msg']]});},{'module':'IframePlugin','line':216,'column':32},{params:['object']}));
 
 
 this.subscribe(
-'xd.refreshLoginStatus',ES(Auth.getLoginStatus, 'bind', true,
-Auth,ES(this.inform, 'bind', true,this,'login.status'),true));
+'xd.refreshLoginStatus',ES(Auth.getLoginStatus,'bind',true,
+Auth,ES(this.inform,'bind',true,this,'login.status'),true));
 
 var flow=document.createElement('span');
 
 
 
-ES('Object', 'assign', false,flow.style,{
+ES('Object','assign',false,flow.style,{
 verticalAlign:'top',
 width:'0px',
 height:'0px',
@@ -13075,8 +13078,8 @@ border:'none',
 visibility:'hidden'},
 
 title:this._ns + ':' + this._tag + ' Facebook Social Plugin',
-onload:ES(__annotator(function(){return this.inform('render');},{'module':'IframePlugin','line':259,'column':14}), 'bind', true,this),
-onerror:ES(__annotator(function(){return collapseIframe(this._iframe);},{'module':'IframePlugin','line':260,'column':15}), 'bind', true,this)};
+onload:ES(__annotator(function(){return this.inform('render');},{'module':'IframePlugin','line':259,'column':14}),'bind',true,this),
+onerror:ES(__annotator(function(){return collapseIframe(this._iframe);},{'module':'IframePlugin','line':260,'column':15}),'bind',true,this)};
 
 
 if(this.isFluid()){
@@ -13101,7 +13104,7 @@ uri.setPath('/' + Runtime.getVersion() + uri.getPath()).toString();}
 
 
 
-var params=ES('Object', 'assign', false,{},this._params);
+var params=ES('Object','assign',false,{},this._params);
 delete params.channel;
 var query=QueryString.encode(params);
 if(this._element.getAttribute('fb-iframe-plugin-query') == query){
@@ -13118,7 +13121,7 @@ this._iframe.style.visibility = 'visible';
 
 
 if(!this._isIframeResized){
-collapseIframe(this._iframe);}},{'module':'IframePlugin','line':295,'column':29}), 'bind', true,this));
+collapseIframe(this._iframe);}},{'module':'IframePlugin','line':295,'column':29}),'bind',true,this));
 
 
 
@@ -13133,7 +13136,7 @@ Log.warn(
 '%s:%s failed to resize in %ss',
 this._ns,
 this._tag,
-timeout);},{'module':'IframePlugin','line':311,'column':33}), 'bind', true,this),
+timeout);},{'module':'IframePlugin','line':311,'column':33}),'bind',true,this),
 
 timeout * 1000);
 
@@ -13149,13 +13152,13 @@ if(UA.mobile()){
 DOM.addCss(this._element,'fb_iframe_widget_fluid');
 
 if(!this._iframeOptions.width){
-ES('Object', 'assign', false,this._element.style,{
+ES('Object','assign',false,this._element.style,{
 display:'block',
 width:'100%',
 height:'auto'});
 
 
-ES('Object', 'assign', false,this._iframeOptions.root.style,{
+ES('Object','assign',false,this._iframeOptions.root.style,{
 width:'100%',
 height:'auto'});
 
@@ -13179,13 +13182,13 @@ if(UA.iphone() || UA.ipad()){
 
 
 
-ES('Object', 'assign', false,iframeStyle,{
+ES('Object','assign',false,iframeStyle,{
 width:'220px',
 'min-width':'100%'});}
 
 
 
-ES('Object', 'assign', false,this._iframe.style,iframeStyle);}}},{'module':'IframePlugin','line':276,'column':9}),
+ES('Object','assign',false,this._iframe.style,iframeStyle);}}},{'module':'IframePlugin','line':276,'column':9}),
 
 
 
@@ -13234,7 +13237,7 @@ XD.sendToFacebook(
 this._iframe.name,
 {
 method:'xd/reposition',
-params:ES('JSON', 'stringify', false,params)});},{'module':'IframePlugin','line':386,'column':12}),
+params:ES('JSON','stringify',false,params)});},{'module':'IframePlugin','line':386,'column':12}),
 
 
 
@@ -13419,7 +13422,7 @@ fan:'like_box',
 likebox:'like_box'};
 
 
-ES(ES('Object', 'keys', false,aliases), 'forEach', true,__annotator(function(key){
+ES(ES('Object','keys',false,aliases),'forEach',true,__annotator(function(key){
 PluginTags[key] = PluginTags[aliases[key]];},{'module':'PluginTags','line':155,'column':29}));
 
 
@@ -13539,7 +13542,7 @@ allowed){return __bodyWrapper(this,arguments,function(){
 return this.getAttribute(name,defaultValue,__annotator(function(s){return __bodyWrapper(this,arguments,function()
 {
 s = s.toLowerCase();
-return ES(allowed, 'indexOf', true,s) > -1?
+return ES(allowed,'indexOf',true,s) > -1?
 s:
 defaultValue;},{params:[[s,'string','s']],returns:'string'});},{'module':'sdk.XFBML.Element','line':108,'column':49},{params:['string'],returns:'string'}));},{params:[[name,'string','name'],[defaultValue,'string','defaultValue'],[allowed,'array<string>','allowed']],returns:'string'});},{'module':'sdk.XFBML.Element','line':106,'column':25},{params:['string','string','array<string>'],returns:'string'}),
 
@@ -13771,7 +13774,7 @@ behavior){return __bodyWrapper(this,arguments,function(){
 XD.sendToFacebook(
 this.getIframeName(),{
 method:event,
-params:ES('JSON', 'stringify', false,message || {}),
+params:ES('JSON','stringify',false,message || {}),
 behavior:behavior || Arbiter.BEHAVIOR_PERSISTENT});},{params:[[event,'string','event'],[message,'?object','message'],[behavior,'?string','behavior']]});},{'module':'sdk.XFBML.IframeWidget','line':203,'column':17},{params:['string','?object','?string']}),
 
 
@@ -13829,7 +13832,7 @@ DOM.addCss(this.dom,'fb_iframe_widget');
 if(this._visibleAfter != 'immediate'){
 DOM.addCss(this.dom,'fb_hide_iframes');}else 
 {
-this.subscribe('iframe.onload',ES(this.fire, 'bind', true,this,'render'));}
+this.subscribe('iframe.onload',ES(this.fire,'bind',true,this,'render'));}
 
 
 
@@ -13849,7 +13852,7 @@ title:this.getIframeTitle(),
 className:Runtime.getRtl()?'fb_rtl':'fb_ltr',
 height:size.height,
 width:size.width,
-onload:ES(this.fire, 'bind', true,this,'iframe.onload')});
+onload:ES(this.fire,'bind',true,this,'iframe.onload')});
 
 
 this._resizeFlow(size);
@@ -13860,7 +13863,7 @@ this.loaded = true;
 
 
 if(!this._isResizeHandled){
-DOM.addCss(this.dom,'fb_hide_iframes');}},{'module':'sdk.XFBML.IframeWidget','line':292,'column':36}), 'bind', true,this));},{params:[[force,'?boolean','force']]});},{'module':'sdk.XFBML.IframeWidget','line':237,'column':11},{params:['?boolean']}),
+DOM.addCss(this.dom,'fb_hide_iframes');}},{'module':'sdk.XFBML.IframeWidget','line':292,'column':36}),'bind',true,this));},{params:[[force,'?boolean','force']]});},{'module':'sdk.XFBML.IframeWidget','line':237,'column':11},{params:['?boolean']}),
 
 
 
@@ -13900,7 +13903,8 @@ if(url.length > 2000){
 url = 'about:blank';
 var onload=ES(__annotator(function(){
 this._postRequest();
-this.unsubscribe('iframe.onload',onload);},{'module':'sdk.XFBML.IframeWidget','line':335,'column':19}), 'bind', true,this);
+this.unsubscribe('iframe.onload',onload);},{'module':'sdk.XFBML.IframeWidget','line':335,'column':19}),'bind',true,
+this);
 this.subscribe('iframe.onload',onload);}
 
 
@@ -13928,12 +13932,12 @@ return UrlMap.resolve('www') + '/common/widget_pipe_shell.php';},{returns:'strin
 _oneTimeSetup:__annotator(function(){
 
 
-this.subscribe('xd.resize',ES(this._handleResizeMsg, 'bind', true,this));
-this.subscribe('xd.resize',ES(this._bubbleResizeEvent, 'bind', true,this));
+this.subscribe('xd.resize',ES(this._handleResizeMsg,'bind',true,this));
+this.subscribe('xd.resize',ES(this._bubbleResizeEvent,'bind',true,this));
 
-this.subscribe('xd.resize.iframe',ES(this._resizeIframe, 'bind', true,this));
-this.subscribe('xd.resize.flow',ES(this._resizeFlow, 'bind', true,this));
-this.subscribe('xd.resize.flow',ES(this._bubbleResizeEvent, 'bind', true,this));
+this.subscribe('xd.resize.iframe',ES(this._resizeIframe,'bind',true,this));
+this.subscribe('xd.resize.flow',ES(this._resizeFlow,'bind',true,this));
+this.subscribe('xd.resize.flow',ES(this._bubbleResizeEvent,'bind',true,this));
 
 this.subscribe('xd.refreshLoginStatus',__annotator(function(){
 Auth.getLoginStatus(__annotator(function(){},{'module':'sdk.XFBML.IframeWidget','line':374,'column':26}),true);},{'module':'sdk.XFBML.IframeWidget','line':373,'column':44}));
@@ -13949,12 +13953,13 @@ this._setupAuthRefresh();}
 
 
 if(this._visibleAfter == 'load'){
-this.subscribe('iframe.onload',ES(this._makeVisible, 'bind', true,this));}
+this.subscribe('iframe.onload',ES(this._makeVisible,'bind',true,this));}
 
 
 this.subscribe(
 'xd.verify',ES(__annotator(function(message){
-this.arbiterInform('xd/verify',message.token);},{'module':'sdk.XFBML.IframeWidget','line':391,'column':19}), 'bind', true,this));
+this.arbiterInform('xd/verify',message.token);},{'module':'sdk.XFBML.IframeWidget','line':391,'column':19}),'bind',true,
+this));
 
 
 this.oneTimeSetup();},{'module':'sdk.XFBML.IframeWidget','line':363,'column':17}),
@@ -13989,7 +13994,9 @@ return;}
 if(lastStatus == 'unknown' || response.status == 'unknown'){
 this.process(true);}
 
-lastStatus = response.status;},{params:[[response,'object','response']]});},{'module':'sdk.XFBML.IframeWidget','line':420,'column':43},{params:['object']}), 'bind', true,this));},{params:[[response,'object','response']]});},{'module':'sdk.XFBML.IframeWidget','line':418,'column':24},{params:['object']}), 'bind', true,this));},{'module':'sdk.XFBML.IframeWidget','line':417,'column':21}),
+lastStatus = response.status;},{params:[[response,'object','response']]});},{'module':'sdk.XFBML.IframeWidget','line':420,'column':43},{params:['object']}),'bind',true,
+this));},{params:[[response,'object','response']]});},{'module':'sdk.XFBML.IframeWidget','line':418,'column':24},{params:['object']}),'bind',true,
+this));},{'module':'sdk.XFBML.IframeWidget','line':417,'column':21}),
 
 
 
@@ -14100,7 +14107,7 @@ this._loaderDiv = null;}},{'module':'sdk.XFBML.IframeWidget','line':524,'column'
 
 
 _getQS:__annotator(function(){return __bodyWrapper(this,arguments,function(){
-return ES('Object', 'assign', false,{
+return ES('Object','assign',false,{
 api_key:Runtime.getClientID(),
 locale:Runtime.getLocale(),
 sdk:'joey',
@@ -14264,7 +14271,7 @@ if(!attr.xid){
 
 
 
-var index=ES(document.URL, 'indexOf', true,'#');
+var index=ES(document.URL,'indexOf',true,'#');
 if(index > 0){
 attr.xid = encodeURIComponent(document.URL.substring(0,index));}else 
 
@@ -14287,12 +14294,12 @@ if(!fb_comment_id){
 fb_comment_id = 
 QueryString.decode(
 document.URL.substring(
-ES(document.URL, 'indexOf', true,'?') + 1)).fb_comment_id;
-if(fb_comment_id && ES(fb_comment_id, 'indexOf', true,'#') > 0){
+ES(document.URL,'indexOf',true,'?') + 1)).fb_comment_id;
+if(fb_comment_id && ES(fb_comment_id,'indexOf',true,'#') > 0){
 
 fb_comment_id = 
 fb_comment_id.substring(0,
-ES(fb_comment_id, 'indexOf', true,'#'));}}
+ES(fb_comment_id,'indexOf',true,'#'));}}
 
 
 
@@ -14304,7 +14311,9 @@ ES(__annotator(function(){
 
 
 if(!window.location.hash){
-window.location.hash = this.getIframeNode().id;}},{'module':'sdk.XFBML.Comments','line':113,'column':23}), 'bind', true,this));}}
+window.location.hash = this.getIframeNode().id;}},{'module':'sdk.XFBML.Comments','line':113,'column':23}),'bind',true,
+
+this));}}
 
 
 
@@ -14321,9 +14330,9 @@ return true;},{returns:'boolean'});},{'module':'sdk.XFBML.Comments','line':31,'c
 
 oneTimeSetup:__annotator(function(){
 this.subscribe('xd.commentCreated',
-ES(this._handleCommentCreatedMsg, 'bind', true,this));
+ES(this._handleCommentCreatedMsg,'bind',true,this));
 this.subscribe('xd.commentRemoved',
-ES(this._handleCommentRemovedMsg, 'bind', true,this));},{'module':'sdk.XFBML.Comments','line':135,'column':16}),
+ES(this._handleCommentRemovedMsg,'bind',true,this));},{'module':'sdk.XFBML.Comments','line':135,'column':16}),
 
 
 
@@ -14427,7 +14436,7 @@ if(c > 0){
 DOM.removeCss(this.dom,'fb_comments_count_zero');}
 
 
-this.fire('render');},{'module':'sdk.XFBML.CommentsCount','line':23,'column':6}), 'bind', true,this));},{'module':'sdk.XFBML.CommentsCount','line':15,'column':9})});
+this.fire('render');},{'module':'sdk.XFBML.CommentsCount','line':23,'column':6}),'bind',true,this));},{'module':'sdk.XFBML.CommentsCount','line':15,'column':9})});
 
 
 
@@ -14575,7 +14584,7 @@ Helper.invokeHandler(onlogin,null,[response]);},{params:[[response,'object','res
 
 
 this.subscribe('xd.login_button_native_open',__annotator(function(msg){
-ui(ES('JSON', 'parse', false,msg.params));},{'module':'sdk.XFBML.LoginButton','line':22,'column':50}));},{params:[[elem,'HTMLElement','elem'],[ns,'string','ns'],[tag,'string','tag'],[attr,'object','attr']]});},{'module':'sdk.XFBML.LoginButton','line':13,'column':15},{params:['HTMLElement','string','string','object']}),
+ui(ES('JSON','parse',false,msg.params));},{'module':'sdk.XFBML.LoginButton','line':22,'column':50}));},{params:[[elem,'HTMLElement','elem'],[ns,'string','ns'],[tag,'string','tag'],[attr,'object','attr']]});},{'module':'sdk.XFBML.LoginButton','line':13,'column':15},{params:['HTMLElement','string','string','object']}),
 
 
 
@@ -14636,7 +14645,7 @@ var Name=Element.extend({
 
 
 process:__annotator(function(){
-ES('Object', 'assign', false,this,{
+ES('Object','assign',false,this,{
 _uid:this.getAttribute('uid'),
 _firstnameonly:this._getBoolAttribute('first-name-only'),
 _lastnameonly:this._getBoolAttribute('last-name-only'),
@@ -14702,7 +14711,7 @@ this._renderPronoun(data);}else
 {
 this._renderOther(data);}
 
-this.fire('render');},{'module':'sdk.XFBML.Name','line':79,'column':8}), 'bind', true,this));},{'module':'sdk.XFBML.Name','line':58,'column':39}), 'bind', true,this));},{'module':'sdk.XFBML.Name','line':22,'column':11}),
+this.fire('render');},{'module':'sdk.XFBML.Name','line':79,'column':8}),'bind',true,this));},{'module':'sdk.XFBML.Name','line':58,'column':39}),'bind',true,this));},{'module':'sdk.XFBML.Name','line':22,'column':11}),
 
 
 
@@ -14898,7 +14907,7 @@ attr){return __bodyWrapper(this,arguments,function()
 {
 this.parent(elem,ns,tag,attr);
 this.subscribe('xd.shareTriggerIframe',__annotator(function(message){
-var data=ES('JSON', 'parse', false,message.data);
+var data=ES('JSON','parse',false,message.data);
 
 UI({
 method:'share',
@@ -15009,14 +15018,14 @@ this.$VideoController_cache = cache;},{params:[[iframeName,'string','iframeName'
 play = __annotator(function(){'use strict';
 XD.sendToFacebook(this.$VideoController_iframeName,{
 method:'play',
-params:ES('JSON', 'stringify', false,{})});},{'module':'sdk.XFBML.Video','line':95,'column':6});VideoController.prototype.
+params:ES('JSON','stringify',false,{})});},{'module':'sdk.XFBML.Video','line':95,'column':6});VideoController.prototype.
 
 
 
 pause = __annotator(function(){'use strict';
 XD.sendToFacebook(this.$VideoController_iframeName,{
 method:'pause',
-params:ES('JSON', 'stringify', false,{})});},{'module':'sdk.XFBML.Video','line':102,'column':7});VideoController.prototype.
+params:ES('JSON','stringify',false,{})});},{'module':'sdk.XFBML.Video','line':102,'column':7});VideoController.prototype.
 
 
 
@@ -15025,7 +15034,7 @@ seek = __annotator(function(target){return __bodyWrapper(this,arguments,function
 Assert.isNumber(target,'Invalid argument');
 XD.sendToFacebook(this.$VideoController_iframeName,{
 method:'seek',
-params:ES('JSON', 'stringify', false,{
+params:ES('JSON','stringify',false,{
 target:target})});},{params:[[target,'number','target']]});},{'module':'sdk.XFBML.Video','line':110,'column':6},{params:['number']});VideoController.prototype.
 
 
@@ -15034,14 +15043,14 @@ target:target})});},{params:[[target,'number','target']]});},{'module':'sdk.XFBM
 mute = __annotator(function(){'use strict';
 XD.sendToFacebook(this.$VideoController_iframeName,{
 method:'mute',
-params:ES('JSON', 'stringify', false,{})});},{'module':'sdk.XFBML.Video','line':120,'column':6});VideoController.prototype.
+params:ES('JSON','stringify',false,{})});},{'module':'sdk.XFBML.Video','line':120,'column':6});VideoController.prototype.
 
 
 
 unmute = __annotator(function(){'use strict';
 XD.sendToFacebook(this.$VideoController_iframeName,{
 method:'unmute',
-params:ES('JSON', 'stringify', false,{})});},{'module':'sdk.XFBML.Video','line':127,'column':8});VideoController.prototype.
+params:ES('JSON','stringify',false,{})});},{'module':'sdk.XFBML.Video','line':127,'column':8});VideoController.prototype.
 
 
 
@@ -15050,7 +15059,7 @@ setVolume = __annotator(function(volume){return __bodyWrapper(this,arguments,fun
 Assert.isNumber(volume,'Invalid argument');
 XD.sendToFacebook(this.$VideoController_iframeName,{
 method:'setVolume',
-params:ES('JSON', 'stringify', false,{
+params:ES('JSON','stringify',false,{
 volume:volume})});},{params:[[volume,'number','volume']]});},{'module':'sdk.XFBML.Video','line':135,'column':11},{params:['number']});VideoController.prototype.
 
 
@@ -15078,7 +15087,7 @@ Assert.isFunction(callback,'Invalid argument');
 this.$VideoController_sharedObservable.subscribe(event,callback);
 return {
 release:ES(__annotator(function(){
-this.$VideoController_sharedObservable.unsubscribe(event,callback);},{'module':'sdk.XFBML.Video','line':166,'column':15}), 'bind', true,this)};},{params:[[event,'string','event'],[callback,'function','callback']]});},{'module':'sdk.XFBML.Video','line':161,'column':11},{params:['string','function']});
+this.$VideoController_sharedObservable.unsubscribe(event,callback);},{'module':'sdk.XFBML.Video','line':166,'column':15}),'bind',true,this)};},{params:[[event,'string','event'],[callback,'function','callback']]});},{'module':'sdk.XFBML.Video','line':161,'column':11},{params:['string','function']});
 
 
 
@@ -15097,7 +15106,7 @@ this._sharedObservable = null;
 this._sharedVideoCache = null;
 this.subscribe('xd.onVideoAPIReady',__annotator(function(msg){
 this._sharedObservable = new ObservableMixin();
-this._sharedVideoCache = new VideoCache(ES('JSON', 'parse', false,msg.data));
+this._sharedVideoCache = new VideoCache(ES('JSON','parse',false,msg.data));
 this._videoController = new VideoController(
 this._iframeOptions.name,
 this._sharedObservable,
@@ -15113,7 +15122,7 @@ this.subscribe('xd.stateChange',__annotator(function(msg){
 this._sharedObservable.inform(msg.state);},{'module':'sdk.XFBML.Video','line':198,'column':37}));
 
 this.subscribe('xd.cachedStateUpdateRequest',__annotator(function(msg){
-this._sharedVideoCache.update(ES('JSON', 'parse', false,msg.data));},{'module':'sdk.XFBML.Video','line':201,'column':50}));},{params:[[ns,'string','ns'],[tag,'string','tag'],[attr,'object','attr']]});},{'module':'sdk.XFBML.Video','line':174,'column':14},{params:['string','string','object']}),
+this._sharedVideoCache.update(ES('JSON','parse',false,msg.data));},{'module':'sdk.XFBML.Video','line':201,'column':50}));},{params:[[ns,'string','ns'],[tag,'string','tag'],[attr,'object','attr']]});},{'module':'sdk.XFBML.Video','line':174,'column':14},{params:['string','string','object']}),
 
 
 
@@ -15162,8 +15171,8 @@ video:require('sdk.XFBML.Video')};
 var blacklist=feature('plugin_tags_blacklist',[]);
 
 
-ES(ES('Object', 'keys', false,PluginTags), 'forEach', true,__annotator(function(tag){
-if(ES(blacklist, 'indexOf', true,tag) !== -1){
+ES(ES('Object','keys',false,PluginTags),'forEach',true,__annotator(function(tag){
+if(ES(blacklist,'indexOf',true,tag) !== -1){
 return;}
 
 XFBML.registerTag({
@@ -15174,8 +15183,8 @@ ctor:IframePlugin.withParams(PluginTags[tag],PluginConfig[tag])});},{'module':'l
 
 
 
-ES(ES('Object', 'keys', false,customTags), 'forEach', true,__annotator(function(tag){
-if(ES(blacklist, 'indexOf', true,tag) !== -1){
+ES(ES('Object','keys',false,customTags),'forEach',true,__annotator(function(tag){
+if(ES(blacklist,'indexOf',true,tag) !== -1){
 return;}
 
 XFBML.registerTag({
@@ -15197,15 +15206,15 @@ return XFBML.parse.apply(null,arguments);},{'module':'legacy:fb.xfbml','line':55
 
 
 
-XFBML.subscribe('parse',ES(Event.fire, 'bind', true,Event,'xfbml.parse'));
-XFBML.subscribe('render',ES(Event.fire, 'bind', true,Event,'xfbml.render'));
+XFBML.subscribe('parse',ES(Event.fire,'bind',true,Event,'xfbml.parse'));
+XFBML.subscribe('render',ES(Event.fire,'bind',true,Event,'xfbml.render'));
 
 Event.subscribe('init:post',__annotator(function(options){
 if(options.xfbml){
 
 setTimeout(
 wrapFunction(
-ES(domReady, 'bind', true,null,XFBML.parse),
+ES(domReady,'bind',true,null,XFBML.parse),
 'entry',
 'init:post:xfbml.parse'),
 
@@ -15231,6 +15240,4 @@ document.namespaces.add('fb');}}
 
 catch(e) {}},{'module':'legacy:fb.xfbml','line':0,'column':0,'name':'$module_legacy_fb_xfbml'}),3);
 
-
-}).call({}, window.inDapIF ? parent.window : window);
-} catch (e) {new Image().src="https:\/\/www.facebook.com\/" + 'common/scribe_endpoint.php?c=jssdk_error&m='+encodeURIComponent('{"error":"LOAD", "extra": {"name":"'+e.name+'","line":"'+(e.lineNumber||e.line)+'","script":"'+(e.fileName||e.sourceURL||e.script)+'","stack":"'+(e.stackTrace||e.stack)+'","revision":"1986749","message":"'+e.message+'"}}');}
+    }  }).call(global);})(window.inDapIF ? parent.window : window);} catch (e) {new Image().src="https:\/\/www.facebook.com\/" + 'common/scribe_endpoint.php?c=jssdk_error&m='+encodeURIComponent('{"error":"LOAD", "extra": {"name":"'+e.name+'","line":"'+(e.lineNumber||e.line)+'","script":"'+(e.fileName||e.sourceURL||e.script)+'","stack":"'+(e.stackTrace||e.stack)+'","revision":"2000027","message":"'+e.message+'"}}');}
