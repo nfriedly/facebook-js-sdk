@@ -1,4 +1,4 @@
-/*1517971190,,JIT Construction: v3629792,en_US*/
+/*1518043775,,JIT Construction: v3632349,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -215,6 +215,7 @@ resolved[id]=factory;
 /**
  * Copyright 2004-present Facebook. All Rights Reserved.
  *
+ * @format
  * @providesModule ES5Array
  */__d('ES5Array',[],(function $module_ES5Array(global,require,requireDynamic,requireLazy,module,exports){
 
@@ -228,6 +229,7 @@ module.exports=ES5Array;}),null);
 /**
  * Copyright 2004-present Facebook. All Rights Reserved.
  *
+ * @format
  * @providesModule ES5ArrayPrototype
  */__d('ES5ArrayPrototype',[],(function $module_ES5ArrayPrototype(global,require,requireDynamic,requireLazy,module,exports){
 
@@ -350,6 +352,7 @@ module.exports=ES5ArrayPrototype;}),null);
 /**
  * Copyright 2004-present Facebook. All Rights Reserved.
  *
+ * @format
  * @providesModule ES5Date
  */__d("ES5Date",[],(function $module_ES5Date(global,require,requireDynamic,requireLazy,module,exports){
 
@@ -362,6 +365,7 @@ module.exports=ES5Date;}),null);
 /**
  * Copyright 2004-present Facebook. All Rights Reserved.
  *
+ * @format
  * @providesModule ES5FunctionPrototype
  */__d('ES5FunctionPrototype',[],(function $module_ES5FunctionPrototype(global,require,requireDynamic,requireLazy,module,exports){
 
@@ -385,6 +389,7 @@ function bound(){
 return target.apply(
 context,
 appliedArguments.concat(Array.prototype.slice.call(arguments)));
+
 }
 bound.displayName='bound:'+(target.displayName||target.name||'(?)');
 bound.toString=function toString(){
@@ -435,6 +440,7 @@ module.exports=ie8DontEnum;}),null);
 /**
  * Copyright 2004-present Facebook. All Rights Reserved.
  *
+ * @format
  * @providesModule ES5Object
  */__d('ES5Object',['ie8DontEnum'],(function $module_ES5Object(global,require,requireDynamic,requireLazy,module,exports,ie8DontEnum){
 
@@ -457,6 +463,7 @@ if(__DEV__){
 if(arguments.length>1){
 throw new Error(
 'Object.create implementation supports only the first parameter');
+
 }
 }
 var type=typeof proto;
@@ -496,9 +503,9 @@ module.exports=ES5Object;}),null);
 /**
  * Copyright 2004-present Facebook. All Rights Reserved.
  *
+ * @format
  * @providesModule ES5StringPrototype
  */__d('ES5StringPrototype',[],(function $module_ES5StringPrototype(global,require,requireDynamic,requireLazy,module,exports){
-
 
 
 
@@ -521,6 +528,7 @@ var string=String(this);
 if(this==null){
 throw new TypeError(
 'String.prototype.startsWith called on null or undefined');
+
 }
 var pos=arguments.length>1?Number(arguments[1]):0;
 if(isNaN(pos)){
@@ -535,6 +543,7 @@ var string=String(this);
 if(this==null){
 throw new TypeError(
 'String.prototype.endsWith called on null or undefined');
+
 }
 var stringLength=string.length;
 var searchString=String(search);
@@ -554,6 +563,7 @@ ES5StringPrototype.includes=function(search){
 if(this==null){
 throw new TypeError(
 'String.prototype.contains called on null or undefined');
+
 }
 var string=String(this);
 var pos=arguments.length>1?Number(arguments[1]):0;
@@ -567,8 +577,7 @@ ES5StringPrototype.contains=ES5StringPrototype.includes;
 
 ES5StringPrototype.repeat=function(count){
 if(this==null){
-throw new TypeError(
-'String.prototype.repeat called on null or undefined');
+throw new TypeError('String.prototype.repeat called on null or undefined');
 }
 var string=String(this);
 var n=count?Number(count):0;
@@ -600,13 +609,13 @@ module.exports=ES5StringPrototype;}),null);
 /**
  * Copyright 2004-present Facebook. All Rights Reserved.
  *
+ * @format
  * @providesModule ES6Array
  */__d('ES6Array',[],(function $module_ES6Array(global,require,requireDynamic,requireLazy,module,exports){
 
 'use strict';
 
 var ES6Array={
-
 from:function from(arrayLike){
 if(arrayLike==null){
 throw new TypeError('Object is null or undefined');
@@ -618,9 +627,8 @@ var thisArg=arguments[2];
 
 var C=this;
 var items=Object(arrayLike);
-var symbolIterator=typeof Symbol==='function'?typeof Symbol==='function'?
-Symbol.iterator:'@@iterator':
-'@@iterator';
+var symbolIterator=
+typeof Symbol==='function'?typeof Symbol==='function'?Symbol.iterator:'@@iterator':'@@iterator';
 var mapping=typeof mapFn==='function';
 var usingIterator=typeof items[symbolIterator]==='function';
 var key=0;
@@ -628,9 +636,7 @@ var ret=void 0;
 var value=void 0;
 
 if(usingIterator){
-ret=typeof C==='function'?
-new C():
-[];
+ret=typeof C==='function'?new C():[];
 var it=items[symbolIterator]();
 var next=void 0;
 
@@ -654,9 +660,7 @@ if(isNaN(len)||len<0){
 len=0;
 }
 
-ret=typeof C==='function'?
-new C(len):
-new Array(len);
+ret=typeof C==='function'?new C(len):new Array(len);
 
 while(key<len){
 value=items[key];
@@ -675,11 +679,11 @@ return ret;
 }};
 
 
-
 module.exports=ES6Array;}),null);
 /**
  * Copyright 2004-present Facebook. All Rights Reserved.
  *
+ * @format
  * @providesModule ES6ArrayPrototype
  */__d('ES6ArrayPrototype',[],(function $module_ES6ArrayPrototype(global,require,requireDynamic,requireLazy,module,exports){
 
@@ -737,14 +741,14 @@ var O=Object(this);
 var len=O.length>>>0;
 var start=arguments[1];
 var relativeStart=start>>0;
-var k=relativeStart<0?
+var k=
+relativeStart<0?
 Math.max(len+relativeStart,0):
 Math.min(relativeStart,len);
 var end=arguments[2];
-var relativeEnd=end===undefined?
-len:
-end>>0;
-var final=relativeEnd<0?
+var relativeEnd=end===undefined?len:end>>0;
+var final=
+relativeEnd<0?
 Math.max(len+relativeEnd,0):
 Math.min(relativeEnd,len);
 while(k<final){
@@ -759,6 +763,7 @@ module.exports=ES6ArrayPrototype;}),null);
 /**
  * Copyright 2004-present Facebook. All Rights Reserved.
  *
+ * @format
  * @providesModule ES6DatePrototype
  */__d('ES6DatePrototype',[],(function $module_ES6DatePrototype(global,require,requireDynamic,requireLazy,module,exports){
 
@@ -775,16 +780,25 @@ if(!isFinite(this)){
 throw new Error('Invalid time value');
 }
 var year=this.getUTCFullYear();
-year=(year<0?'-':year>9999?'+':'')+
+year=
+(year<0?'-':year>9999?'+':'')+
 ('00000'+Math.abs(year)).slice(0<=year&&year<=9999?-4:-6);
-return year+
-'-'+pad(this.getUTCMonth()+1)+
-'-'+pad(this.getUTCDate())+
-'T'+pad(this.getUTCHours())+
-':'+pad(this.getUTCMinutes())+
-':'+pad(this.getUTCSeconds())+
-'.'+(this.getUTCMilliseconds()/1000).toFixed(3).slice(2,5)+
-'Z';
+return(
+year+
+'-'+
+pad(this.getUTCMonth()+1)+
+'-'+
+pad(this.getUTCDate())+
+'T'+
+pad(this.getUTCHours())+
+':'+
+pad(this.getUTCMinutes())+
+':'+
+pad(this.getUTCSeconds())+
+'.'+
+(this.getUTCMilliseconds()/1000).toFixed(3).slice(2,5)+
+'Z');
+
 }};
 
 
@@ -792,6 +806,7 @@ module.exports=ES6DatePrototype;}),null);
 /**
  * Copyright 2004-present Facebook. All Rights Reserved.
  *
+ * @format
  * @providesModule ES6Number
  */__d('ES6Number',[],(function $module_ES6Number(global,require,requireDynamic,requireLazy,module,exports){
 
@@ -809,15 +824,16 @@ return typeof value=='number'&&isNaN(value);
 }),
 
 isInteger:function isInteger(value){
-return this.isFinite(value)&&
-Math.floor(value)===value;
+return this.isFinite(value)&&Math.floor(value)===value;
 },
 
 isSafeInteger:function isSafeInteger(value){
-return this.isFinite(value)&&
+return(
+this.isFinite(value)&&
 value>=this.MIN_SAFE_INTEGER&&
 value<=this.MAX_SAFE_INTEGER&&
-Math.floor(value)===value;
+Math.floor(value)===value);
+
 },
 
 EPSILON:EPSILON,
@@ -829,6 +845,7 @@ module.exports=ES6Number;}),null);
 /**
  * Copyright 2004-present Facebook. All Rights Reserved.
  *
+ * @format
  * @providesModule ES6Object
  */__d('ES6Object',['ie8DontEnum'],(function $module_ES6Object(global,require,requireDynamic,requireLazy,module,exports,ie8DontEnum){
 
@@ -878,6 +895,7 @@ return target;
 is:function is(x,y){
 if(x===y){
 
+
 return x!==0||1/x===1/y;
 }else{
 
@@ -890,6 +908,7 @@ module.exports=ES6Object;}),null);
 /**
  * Copyright 2004-present Facebook. All Rights Reserved.
  *
+ * @format
  * @providesModule ES7ArrayPrototype
  * 
  */__d('ES7ArrayPrototype',['ES5ArrayPrototype','ES5Array'],(function $module_ES7ArrayPrototype(global,require,requireDynamic,requireLazy,module,exports,_require,_require2){var
@@ -905,19 +924,14 @@ return Math.min(Math.max(toInteger(number),0),Number.MAX_SAFE_INTEGER);
 
 function toInteger(number){
 var n=Number(number);
-return isFinite(n)&&n!==0?
-sign(n)*Math.floor(Math.abs(n)):
-n;
+return isFinite(n)&&n!==0?sign(n)*Math.floor(Math.abs(n)):n;
 }
 
 function sign(number){
-return number>=0?
-1:
--1;
+return number>=0?1:-1;
 }
 
 var ES7ArrayPrototype={
-
 includes:function includes(needle){
 'use strict';
 
@@ -932,28 +946,24 @@ return indexOf.apply(this,arguments)!==-1;
 
 
 var o=Object(this);
-var len=o.length?
-toLength(o.length):
-0;
+var len=o.length?toLength(o.length):0;
 
 if(len===0){
 return false;
 }
 
-var fromIndex=arguments.length>1?
-toInteger(arguments[1]):
-0;
+var fromIndex=arguments.length>1?toInteger(arguments[1]):0;
 
-var i=fromIndex<0?
-Math.max(len+fromIndex,0):
-fromIndex;
+var i=fromIndex<0?Math.max(len+fromIndex,0):fromIndex;
 
 var NaNLookup=isNaN(needle)&&typeof needle==='number';
 
 while(i<len){
 var value=o[i];
-if(value===needle||
-typeof value==='number'&&NaNLookup&&isNaN(value)){
+if(
+value===needle||
+typeof value==='number'&&NaNLookup&&isNaN(value))
+{
 return true;
 }
 i++;
@@ -962,11 +972,11 @@ return false;
 }};
 
 
-
 module.exports=ES7ArrayPrototype;}),null);
 /**
  * Copyright 2004-present Facebook. All Rights Reserved.
  *
+ * @format
  * @providesModule ES7Object
  */__d('ES7Object',['ie8DontEnum'],(function $module_ES7Object(global,require,requireDynamic,requireLazy,module,exports,ie8DontEnum){
 
@@ -1027,6 +1037,7 @@ module.exports=ES7Object;}),null);
 /**
  * Copyright 2004-present Facebook. All Rights Reserved.
  *
+ * @format
  * @providesModule ES7StringPrototype
  */__d('ES7StringPrototype',[],(function $module_ES7StringPrototype(global,require,requireDynamic,requireLazy,module,exports){
 
@@ -2011,10 +2022,12 @@ module.exports = require("json3-3.3.2")();
 /**
  * Copyright 2004-present Facebook. All Rights Reserved.
  *
- * @providesModule ES
  *
  * scripts/static_resources/js/fb-transforms/babel-6/babel-plugin-jssdk
  * converts ES5/ES6 code into using this module in ES3 style.
+ *
+ * @format
+ * @providesModule ES
  */__d('ES',['json3','ES5ArrayPrototype','ES5FunctionPrototype','ES5StringPrototype','ES5Array','ES5Object','ES5Date','ES6Array','ES6Object','ES6ArrayPrototype','ES6DatePrototype','ES6Number','ES7StringPrototype','ES7Object','ES7ArrayPrototype'],(function $module_ES(global,require,requireDynamic,requireLazy,module,exports,JSON3,ES5ArrayPrototype,ES5FunctionPrototype,ES5StringPrototype,ES5Array,ES5Object,ES5Date,ES6Array,ES6Object,ES6ArrayPrototype,ES6DatePrototype,ES6Number,ES7StringPrototype,ES7Object,ES7ArrayPrototype){
 
 
@@ -2047,21 +2060,21 @@ var es5Polyfills={
 'Array.prototype':ES5ArrayPrototype,
 'Function.prototype':ES5FunctionPrototype,
 'String.prototype':ES5StringPrototype,
-'Object':ES5Object,
-'Array':ES5Array,
-'Date':ES5Date};
+Object:ES5Object,
+Array:ES5Array,
+Date:ES5Date};
 
 
 var es6Polyfills={
-'Object':ES6Object,
+Object:ES6Object,
 'Array.prototype':ES6ArrayPrototype,
 'Date.prototype':ES6DatePrototype,
-'Number':ES6Number,
-'Array':ES6Array};
+Number:ES6Number,
+Array:ES6Array};
 
 
 var es7Polyfills={
-'Object':ES7Object,
+Object:ES7Object,
 'String.prototype':ES7StringPrototype,
 'Array.prototype':ES7ArrayPrototype};
 
@@ -2070,7 +2083,9 @@ function setupMethodsCache(polyfills){
 
 
 for(var pName in polyfills){
-if(!Object.prototype.hasOwnProperty.call(polyfills,pName)){continue;}
+if(!Object.prototype.hasOwnProperty.call(polyfills,pName)){
+continue;
+}
 var polyfillObject=polyfills[pName];
 
 
@@ -2079,9 +2094,8 @@ if(accessor.length===2){var
 obj=accessor[0];var prop=accessor[1];
 if(!obj||!prop||!window[obj]||!window[obj][prop]){
 var windowObj=obj?window[obj]:'-';
-var windowObjProp=obj&&window[obj]&&prop?
-window[obj][prop]:
-'-';
+var windowObjProp=
+obj&&window[obj]&&prop?window[obj][prop]:'-';
 throw new Error(
 'Unexpected state (t11975770): '+(
 obj+', '+prop+', '+windowObj+', '+windowObjProp+', '+pName));
@@ -2089,13 +2103,14 @@ obj+', '+prop+', '+windowObj+', '+windowObjProp+', '+pName));
 }
 }
 
-var nativeObject=accessor.length===2?
-window[accessor[0]][accessor[1]]:
-window[pName];
+var nativeObject=
+accessor.length===2?window[accessor[0]][accessor[1]]:window[pName];
 
 
 for(var _prop in polyfillObject){
-if(!Object.prototype.hasOwnProperty.call(polyfillObject,_prop)){continue;}
+if(!Object.prototype.hasOwnProperty.call(polyfillObject,_prop)){
+continue;
+}
 
 
 if(typeof polyfillObject[_prop]!=='function'){
@@ -2121,9 +2136,7 @@ setupMethodsCache(es7Polyfills);
 
 function ES(lhs,rhs,proto){
 
-var type=proto?
-toString.call(lhs).slice(8,-1)+'.prototype':
-lhs;
+var type=proto?toString.call(lhs).slice(8,-1)+'.prototype':lhs;
 
 
 var propValue=methodCache[type+'.'+rhs]||lhs[rhs];
@@ -2143,6 +2156,7 @@ module.exports=ES;}),null);
 /**
  * Copyright 2004-present Facebook. All Rights Reserved.
  *
+ * @format
  * @providesModule ES5FunctionPrototype
  */__d('ES5FunctionPrototype',[],(function $module_ES5FunctionPrototype(global,require,requireDynamic,requireLazy,module,exports){
 
@@ -2166,6 +2180,7 @@ function bound(){
 return target.apply(
 context,
 appliedArguments.concat(Array.prototype.slice.call(arguments)));
+
 }
 bound.displayName='bound:'+(target.displayName||target.name||'(?)');
 bound.toString=function toString(){
@@ -2216,6 +2231,7 @@ module.exports=ie8DontEnum;}),null);
 /**
  * Copyright 2004-present Facebook. All Rights Reserved.
  *
+ * @format
  * @providesModule ES5Object
  */__d('ES5Object',['ie8DontEnum'],(function $module_ES5Object(global,require,requireDynamic,requireLazy,module,exports,ie8DontEnum){
 
@@ -2238,6 +2254,7 @@ if(__DEV__){
 if(arguments.length>1){
 throw new Error(
 'Object.create implementation supports only the first parameter');
+
 }
 }
 var type=typeof proto;
@@ -2277,6 +2294,7 @@ module.exports=ES5Object;}),null);
 /**
  * Copyright 2004-present Facebook. All Rights Reserved.
  *
+ * @format
  * @providesModule ES6Object
  */__d('ES6Object',['ie8DontEnum'],(function $module_ES6Object(global,require,requireDynamic,requireLazy,module,exports,ie8DontEnum){
 
@@ -2326,6 +2344,7 @@ return target;
 is:function is(x,y){
 if(x===y){
 
+
 return x!==0||1/x===1/y;
 }else{
 
@@ -2338,6 +2357,7 @@ module.exports=ES6Object;}),null);
 /**
  * Copyright 2004-present Facebook. All Rights Reserved.
  *
+ * @format
  * @providesModule sdk.babelHelpers
  */__d('sdk.babelHelpers',['ES5FunctionPrototype','ES5Object','ES6Object'],(function $module_sdk_babelHelpers(global,require,requireDynamic,requireLazy,module,exports,ES5FunctionPrototype,ES5Object,ES6Object){
 
@@ -3552,10 +3572,10 @@ return __annotator(Set,{name:'Set'});
 
 global.Map=Map;
 global.Set=Set;
-})(typeof global==='undefined'?this:global);      __d("UrlMapConfig",[],{"www":"www.facebook.com","m":"m.facebook.com","connect":"connect.facebook.net","business":"business.facebook.com","api_https":"api.facebook.com","api_read_https":"api-read.facebook.com","graph_https":"graph.facebook.com","an_https":"an.facebook.com","fbcdn_http":"static.xx.fbcdn.net","fbcdn_https":"static.xx.fbcdn.net","cdn_http":"staticxx.facebook.com","cdn_https":"staticxx.facebook.com"});__d("JSSDKRuntimeConfig",[],{"locale":"en_US","rtl":false,"revision":"3629792"});__d("JSSDKConfig",[],{"bustCache":true,"tagCountLogRate":0.01,"errorHandling":{"rate":4},"usePluginPipe":true,"features":{"dialog_resize_refactor":true,"one_comment_controller":true,"allow_non_canvas_app_events":false,"event_subscriptions_log":{"rate":0.01,"value":10000},"should_force_single_dialog_instance":true,"js_sdk_force_status_on_load":true,"js_sdk_mbasic_share_plugin_init":true,"kill_fragment":true,"xfbml_profile_pic_server":true,"error_handling":{"rate":4},"e2e_ping_tracking":{"rate":1.0e-6},"getloginstatus_tracking":{"rate":0.001},"xd_timeout":{"rate":4,"value":30000},"use_bundle":true,"launch_payment_dialog_via_pac":{"rate":100},"plugin_tags_blacklist":["recommendations_bar","registration","activity","recommendations","facepile"],"should_log_response_error":true},"api":{"mode":"warn","whitelist":["AppEvents","AppEvents.EventNames","AppEvents.ParameterNames","AppEvents.activateApp","AppEvents.logEvent","AppEvents.logPageView","AppEvents.logPurchase","AppEvents.setUserID","AppEvents.getUserID","AppEvents.clearUserID","AppEvents.updateUserProperties","Canvas","Canvas.Prefetcher","Canvas.Prefetcher.addStaticResource","Canvas.Prefetcher.setCollectionMode","Canvas.getPageInfo","Canvas.hideFlashElement","Canvas.scrollTo","Canvas.setAutoGrow","Canvas.setDoneLoading","Canvas.setSize","Canvas.setUrlHandler","Canvas.showFlashElement","Canvas.startTimer","Canvas.stopTimer","Event","Event.subscribe","Event.unsubscribe","Music.flashCallback","Music.init","Music.send","Payment","Payment.cancelFlow","Payment.continueFlow","Payment.init","Payment.lockForProcessing","Payment.parse","Payment.setSize","Payment.unlockForProcessing","ThirdPartyProvider","ThirdPartyProvider.init","ThirdPartyProvider.sendData","UA","UA.nativeApp","XFBML","XFBML.RecommendationsBar","XFBML.RecommendationsBar.markRead","XFBML.parse","addFriend","api","getAccessToken","getAuthResponse","getLoginStatus","getUserID","init","login","logout","publish","share","ui","AppEvents.setAppVersion","AppEvents.getAppVersion","AppEvents.clearAppVersion","RankingService.hidePlugin","RankingService.showPlugin"]},"initSitevars":{"enableMobileComments":1,"iframePermissions":{"read_stream":false,"manage_mailbox":false,"manage_friendlists":false,"read_mailbox":false,"publish_checkins":true,"status_update":true,"photo_upload":true,"video_upload":true,"sms":false,"create_event":true,"rsvp_event":true,"offline_access":true,"email":true,"xmpp_login":false,"create_note":true,"share_item":true,"export_stream":false,"publish_stream":true,"publish_likes":true,"ads_management":false,"contact_email":true,"access_private_data":false,"read_insights":false,"read_requests":false,"read_friendlists":true,"manage_pages":false,"physical_login":false,"manage_groups":false,"read_deals":false}}});__d("JSSDKXDConfig",[],{"XdUrl":"\/connect\/xd_arbiter.php?version=42","XdBundleUrl":"\/connect\/xd_arbiter\/r\/aTEv4Cfbkrb.js?version=42","Flash":{"path":"https:\/\/connect.facebook.net\/rsrc.php\/v2\/yW\/r\/yOZN1vHw3Z_.swf"},"useCdn":true});__d("JSSDKCssConfig",[],{"rules":".fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:\"lucida grande\", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}.fb_link img{border:none}\u0040keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}\n.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_reset .fb_dialog_legacy{overflow:visible}.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px}.fb_dialog_content{background:#fff;color:#333}.fb_dialog_close_icon{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_loader{background-color:#f6f7f9;border:1px solid #606060;font-size:24px;padding:20px}.fb_dialog_top_left,.fb_dialog_top_right,.fb_dialog_bottom_left,.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}.fb_dialog_top_left{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}.fb_dialog_top_right{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}.fb_dialog_bottom_left{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}.fb_dialog_bottom_right{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}.fb_dialog_vert_left,.fb_dialog_vert_right,.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}.fb_dialog_vert_left,.fb_dialog_vert_right{width:10px;height:100\u0025}.fb_dialog_vert_left{margin-left:-10px}.fb_dialog_vert_right{right:0;margin-right:-10px}.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{width:100\u0025;height:10px}.fb_dialog_horiz_top{margin-top:-10px}.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/yd\/r\/Cou7n-nqK52.gif) no-repeat 5px 50\u0025;float:left;padding:5px 0 7px 26px}body.fb_hidden{-webkit-transform:none;height:100\u0025;margin:0;overflow:visible;position:absolute;top:-10000px;left:0;width:100\u0025}.fb_dialog.fb_dialog_mobile.loading{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/ya\/r\/3rhSv5V8j3o.gif) white no-repeat 50\u0025 50\u0025;min-height:100\u0025;min-width:100\u0025;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{width:auto;height:auto;min-height:initial;min-width:initial;background:none}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100\u0025}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{color:#fff;display:block;padding-top:20px;clear:both;font-size:18px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;bottom:0;left:0;right:0;top:0;width:100\u0025;min-height:100\u0025;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0\u0025 0\u0025, 0\u0025 100\u0025, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100\u0025}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0\u0025 0\u0025, 0\u0025 100\u0025, from(#4966A6), color-stop(.5, #355492), to(#2A4887));border:1px solid #29487d;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset, rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/y9\/r\/jKEcVPZFk-2.gif) no-repeat 50\u0025 50\u0025;border:1px solid #555;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f6f7f9;border:1px solid #555;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/yD\/r\/t-wz8gw1xG1.png);background-repeat:no-repeat;background-position:50\u0025 50\u0025;height:24px;width:24px}\u0040keyframes rotateSpinner{0\u0025{transform:rotate(0deg)}100\u0025{transform:rotate(360deg)}}\n.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100\u0025}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_hide_iframes iframe{position:relative;left:-10000px}.fb_iframe_widget_loader{position:relative;display:inline-block}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100\u0025}.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}.fb_iframe_widget_loader .FB_Loader{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/y9\/r\/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50\u0025;z-index:4}\n.fb_customer_chat_bounce_in{animation-duration:250ms;animation-name:fb_bounce_in}.fb_customer_chat_bounce_out{animation-duration:250ms;animation-name:fb_fade_out}.fb_invisible_flow{display:inherit;height:0;overflow-x:hidden;width:0}.fb_mobile_overlay_active{height:100\u0025;overflow:hidden;position:fixed;width:100\u0025}.fb_shrink_active{opacity:1;transform:scale(1, 1);transition-duration:200ms;transition-timing-function:ease-out}.fb_shrink_active:active{opacity:.5;transform:scale(.75, .75)}\u0040keyframes fb_fade_out{from{opacity:1}to{opacity:0}}\u0040keyframes fb_bounce_in{0\u0025{opacity:0;transform:scale(.8, .8);transform-origin:100\u0025 100\u0025}10\u0025{opacity:.1}20\u0025{opacity:.2}30\u0025{opacity:.3}40\u0025{opacity:.4}50\u0025{opacity:.5}60\u0025{opacity:.6}70\u0025{opacity:.7}80\u0025{opacity:.8;transform:scale(1.03, 1.03)}90{opacity:.9}100\u0025{opacity:1;transform:scale(1, 1)}}","components":["css:fb.css.base","css:fb.css.dialog","css:fb.css.iframewidget","css:fb.css.customer_chat_plugin_iframe"]});__d("ApiClientConfig",[],{"FlashRequest":{"swfUrl":"https:\/\/connect.facebook.net\/rsrc.php\/v2\/yd\/r\/mxzow1Sdmxr.swf"}});__d("JSSDKCanvasPrefetcherConfig",[],{"blacklist":[144959615576466,768691303149786,320528941393723],"sampleRate":500});      __d("DOMWrapper",[],function $module_DOMWrapper(global,require,requireDynamic,requireLazy,module,exports){
+})(typeof global==='undefined'?this:global);      __d("UrlMapConfig",[],{"www":"www.facebook.com","m":"m.facebook.com","connect":"connect.facebook.net","business":"business.facebook.com","api_https":"api.facebook.com","api_read_https":"api-read.facebook.com","graph_https":"graph.facebook.com","an_https":"an.facebook.com","fbcdn_http":"static.xx.fbcdn.net","fbcdn_https":"static.xx.fbcdn.net","cdn_http":"staticxx.facebook.com","cdn_https":"staticxx.facebook.com"});__d("JSSDKRuntimeConfig",[],{"locale":"en_US","rtl":false,"revision":"3632349"});__d("JSSDKConfig",[],{"bustCache":true,"tagCountLogRate":0.01,"errorHandling":{"rate":4},"usePluginPipe":true,"features":{"dialog_resize_refactor":true,"one_comment_controller":true,"allow_non_canvas_app_events":false,"event_subscriptions_log":{"rate":0.01,"value":10000},"should_force_single_dialog_instance":true,"js_sdk_force_status_on_load":true,"js_sdk_mbasic_share_plugin_init":true,"kill_fragment":true,"xfbml_profile_pic_server":true,"error_handling":{"rate":4},"e2e_ping_tracking":{"rate":1.0e-6},"getloginstatus_tracking":{"rate":0.001},"xd_timeout":{"rate":4,"value":30000},"use_bundle":true,"launch_payment_dialog_via_pac":{"rate":100},"plugin_tags_blacklist":["recommendations_bar","registration","activity","recommendations","facepile"],"should_log_response_error":true},"api":{"mode":"warn","whitelist":["AppEvents","AppEvents.EventNames","AppEvents.ParameterNames","AppEvents.activateApp","AppEvents.logEvent","AppEvents.logPageView","AppEvents.logPurchase","AppEvents.setUserID","AppEvents.getUserID","AppEvents.clearUserID","AppEvents.updateUserProperties","Canvas","Canvas.Prefetcher","Canvas.Prefetcher.addStaticResource","Canvas.Prefetcher.setCollectionMode","Canvas.getPageInfo","Canvas.hideFlashElement","Canvas.scrollTo","Canvas.setAutoGrow","Canvas.setDoneLoading","Canvas.setSize","Canvas.setUrlHandler","Canvas.showFlashElement","Canvas.startTimer","Canvas.stopTimer","Event","Event.subscribe","Event.unsubscribe","Music.flashCallback","Music.init","Music.send","Payment","Payment.cancelFlow","Payment.continueFlow","Payment.init","Payment.lockForProcessing","Payment.parse","Payment.setSize","Payment.unlockForProcessing","ThirdPartyProvider","ThirdPartyProvider.init","ThirdPartyProvider.sendData","UA","UA.nativeApp","XFBML","XFBML.RecommendationsBar","XFBML.RecommendationsBar.markRead","XFBML.parse","addFriend","api","getAccessToken","getAuthResponse","getLoginStatus","getUserID","init","login","logout","publish","share","ui","AppEvents.setAppVersion","AppEvents.getAppVersion","AppEvents.clearAppVersion","RankingService.hidePlugin","RankingService.showPlugin"]},"initSitevars":{"enableMobileComments":1,"iframePermissions":{"read_stream":false,"manage_mailbox":false,"manage_friendlists":false,"read_mailbox":false,"publish_checkins":true,"status_update":true,"photo_upload":true,"video_upload":true,"sms":false,"create_event":true,"rsvp_event":true,"offline_access":true,"email":true,"xmpp_login":false,"create_note":true,"share_item":true,"export_stream":false,"publish_stream":true,"publish_likes":true,"ads_management":false,"contact_email":true,"access_private_data":false,"read_insights":false,"read_requests":false,"read_friendlists":true,"manage_pages":false,"physical_login":false,"manage_groups":false,"read_deals":false}}});__d("JSSDKXDConfig",[],{"XdUrl":"\/connect\/xd_arbiter.php?version=42","XdBundleUrl":"\/connect\/xd_arbiter\/r\/LOzQ-eQE57x.js?version=42","Flash":{"path":"https:\/\/connect.facebook.net\/rsrc.php\/v2\/yW\/r\/yOZN1vHw3Z_.swf"},"useCdn":true});__d("JSSDKCssConfig",[],{"rules":".fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:\"lucida grande\", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}.fb_link img{border:none}\u0040keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}\n.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_reset .fb_dialog_legacy{overflow:visible}.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px}.fb_dialog_content{background:#fff;color:#333}.fb_dialog_close_icon{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_loader{background-color:#f6f7f9;border:1px solid #606060;font-size:24px;padding:20px}.fb_dialog_top_left,.fb_dialog_top_right,.fb_dialog_bottom_left,.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}.fb_dialog_top_left{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}.fb_dialog_top_right{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}.fb_dialog_bottom_left{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}.fb_dialog_bottom_right{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}.fb_dialog_vert_left,.fb_dialog_vert_right,.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}.fb_dialog_vert_left,.fb_dialog_vert_right{width:10px;height:100\u0025}.fb_dialog_vert_left{margin-left:-10px}.fb_dialog_vert_right{right:0;margin-right:-10px}.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{width:100\u0025;height:10px}.fb_dialog_horiz_top{margin-top:-10px}.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/yd\/r\/Cou7n-nqK52.gif) no-repeat 5px 50\u0025;float:left;padding:5px 0 7px 26px}body.fb_hidden{-webkit-transform:none;height:100\u0025;margin:0;overflow:visible;position:absolute;top:-10000px;left:0;width:100\u0025}.fb_dialog.fb_dialog_mobile.loading{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/ya\/r\/3rhSv5V8j3o.gif) white no-repeat 50\u0025 50\u0025;min-height:100\u0025;min-width:100\u0025;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{width:auto;height:auto;min-height:initial;min-width:initial;background:none}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100\u0025}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{color:#fff;display:block;padding-top:20px;clear:both;font-size:18px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;bottom:0;left:0;right:0;top:0;width:100\u0025;min-height:100\u0025;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0\u0025 0\u0025, 0\u0025 100\u0025, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100\u0025}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0\u0025 0\u0025, 0\u0025 100\u0025, from(#4966A6), color-stop(.5, #355492), to(#2A4887));border:1px solid #29487d;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset, rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/y9\/r\/jKEcVPZFk-2.gif) no-repeat 50\u0025 50\u0025;border:1px solid #555;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f6f7f9;border:1px solid #555;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/yD\/r\/t-wz8gw1xG1.png);background-repeat:no-repeat;background-position:50\u0025 50\u0025;height:24px;width:24px}\u0040keyframes rotateSpinner{0\u0025{transform:rotate(0deg)}100\u0025{transform:rotate(360deg)}}\n.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100\u0025}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_hide_iframes iframe{position:relative;left:-10000px}.fb_iframe_widget_loader{position:relative;display:inline-block}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100\u0025}.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}.fb_iframe_widget_loader .FB_Loader{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/y9\/r\/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50\u0025;z-index:4}\n.fb_customer_chat_bounce_in{animation-duration:250ms;animation-name:fb_bounce_in}.fb_customer_chat_bounce_out{animation-duration:250ms;animation-name:fb_fade_out}.fb_invisible_flow{display:inherit;height:0;overflow-x:hidden;width:0}.fb_mobile_overlay_active{height:100\u0025;overflow:hidden;position:fixed;width:100\u0025}.fb_shrink_active{opacity:1;transform:scale(1, 1);transition-duration:200ms;transition-timing-function:ease-out}.fb_shrink_active:active{opacity:.5;transform:scale(.75, .75)}\u0040keyframes fb_fade_out{from{opacity:1}to{opacity:0}}\u0040keyframes fb_bounce_in{0\u0025{opacity:0;transform:scale(.8, .8);transform-origin:100\u0025 100\u0025}10\u0025{opacity:.1}20\u0025{opacity:.2}30\u0025{opacity:.3}40\u0025{opacity:.4}50\u0025{opacity:.5}60\u0025{opacity:.6}70\u0025{opacity:.7}80\u0025{opacity:.8;transform:scale(1.03, 1.03)}90{opacity:.9}100\u0025{opacity:1;transform:scale(1, 1)}}","components":["css:fb.css.base","css:fb.css.dialog","css:fb.css.iframewidget","css:fb.css.customer_chat_plugin_iframe"]});__d("ApiClientConfig",[],{"FlashRequest":{"swfUrl":"https:\/\/connect.facebook.net\/rsrc.php\/v2\/yd\/r\/mxzow1Sdmxr.swf"}});__d("JSSDKCanvasPrefetcherConfig",[],{"blacklist":[144959615576466,768691303149786,320528941393723],"sampleRate":500});      __d("DOMWrapper",[],function $module_DOMWrapper(global,require,requireDynamic,requireLazy,module,exports){
 
-var rootElement,
-windowRef;
+
+var rootElement,windowRef;
 
 
 
@@ -3643,7 +3663,6 @@ var rootObject;
 var callbackPrefix;
 
 var GlobalCallback={
-
 setPrefix:function setPrefix(prefix){
 rootObject=dotAccess(DOMWrapper.getWindow(),prefix,true);
 callbackPrefix=prefix;
@@ -3665,7 +3684,6 @@ remove:function remove(name){
 var id=name.substring(callbackPrefix.length+1);
 delete rootObject[id];
 }};
-
 
 
 module.exports=GlobalCallback;},null);
@@ -3748,9 +3766,7 @@ ObservableMixin.prototype={
 
 
 
-
 inform:function inform(what){
-
 var args=Array.prototype.slice.call(arguments,1);
 var list=Array.prototype.slice.call(this.getSubscribers(what));
 for(var i=0;i<list.length;i++){
@@ -3763,7 +3779,9 @@ list[i].apply(this,args);
 }catch(e){
 
 
-setTimeout(function(){throw e;},0);
+setTimeout(function(){
+throw e;
+},0);
 }
 }
 }
@@ -3777,9 +3795,9 @@ return this;
 
 
 getSubscribers:function getSubscribers(toWhat){
+return(
+this.__observableEvents[toWhat]||(this.__observableEvents[toWhat]=[]));
 
-return this.__observableEvents[toWhat]||(
-this.__observableEvents[toWhat]=[]);
 },
 
 
@@ -3788,7 +3806,6 @@ this.__observableEvents[toWhat]=[]);
 
 
 clearSubscribers:function clearSubscribers(toWhat){
-
 if(toWhat){
 this.__observableEvents[toWhat]=[];
 }
@@ -3812,7 +3829,6 @@ return this;
 
 
 subscribe:function subscribe(toWhat,withWhat){
-
 var list=this.getSubscribers(toWhat);
 list.push(withWhat);
 return this;
@@ -3826,7 +3842,6 @@ return this;
 
 
 unsubscribe:function unsubscribe(toWhat,withWhat){
-
 var list=this.getSubscribers(toWhat);
 for(var i=0;i<list.length;i++){
 if(list[i]===withWhat){
@@ -3858,8 +3873,6 @@ return this;
 }};
 
 
-
-
 module.exports=ObservableMixin;},null);
 __d('UrlMap',['UrlMapConfig'],function $module_UrlMap(global,require,requireDynamic,requireLazy,module,exports,UrlMapConfig){
 
@@ -3875,7 +3888,8 @@ var UrlMap={
 
 
 resolve:function resolve(key,https){
-var protocol=typeof https=='undefined'?
+var protocol=
+typeof https=='undefined'?
 location.protocol.replace(':',''):
 https?'https':'http';
 
@@ -4079,8 +4093,7 @@ return assert(!!expression,message);
 },
 type:assertType,
 define:function define(type,fn){
-type=type.substring(0,1).toUpperCase()+
-type.substring(1).toLowerCase();
+type=type.substring(0,1).toUpperCase()+type.substring(1).toLowerCase();
 
 _define(type,function(expression,message){
 assert(fn(expression),message);
@@ -4089,7 +4102,8 @@ assert(fn(expression),message);
 
 
 
-ES(['Array',
+ES([
+'Array',
 'Boolean',
 'Date',
 'Function',
@@ -4098,12 +4112,14 @@ ES(['Array',
 'Object',
 'Regexp',
 'String',
-'Undefined'],'forEach',true,function(type){
+'Undefined'],'forEach',true,
+function(type){
 _define(type,ES(assertType,'bind',true,null,type.toLowerCase()));
 });
 
 module.exports=Assert;},null);
 __d('Type',['Assert'],function $module_Type(global,require,requireDynamic,requireLazy,module,exports,Assert){
+
 
 
 
@@ -4130,7 +4146,6 @@ mixins[i].apply(this,arguments);
 
 
 function _instanceOf(constructor,which){
-
 
 if(which instanceof constructor){
 return true;
@@ -4191,11 +4206,17 @@ prototype[key]=mixinFrom[key];
 
 
 
-function _extend(from,prototype,mixins)
+function _extend(
+from,
+prototype,
+mixins)
 {
-var constructor=prototype&&Object.prototype.hasOwnProperty.call(prototype,'constructor')?
+var constructor=
+prototype&&Object.prototype.hasOwnProperty.call(prototype,'constructor')?
 prototype.constructor:
-function(){this.parent.apply(this,arguments);};
+function(){
+this.parent.apply(this,arguments);
+};
 
 Assert.isFunction(constructor);
 
@@ -4238,8 +4259,10 @@ from.apply(this,arguments);
 
 
 constructor.prototype.parentCall=function(method){
-return from.prototype[method].apply(this,
+return from.prototype[method].apply(
+this,
 Array.prototype.slice.call(arguments,1));
+
 };
 
 constructor.extend=function(prototype,mixins){
@@ -4269,7 +4292,8 @@ __d('sdk.Model',['Type','ObservableMixin'],function $module_sdk_Model(global,req
 
 
 
-var Model=Type.extend({
+var Model=Type.extend(
+{
 constructor:function constructor(properties){
 this.parent();
 
@@ -4297,7 +4321,9 @@ return propContainer[name];
 };
 });
 }},
+
 ObservableMixin);
+
 
 module.exports=Model;},null);
 __d('sdk.Runtime',['sdk.Model','JSSDKRuntimeConfig'],function $module_sdk_Runtime(global,require,requireDynamic,requireLazy,module,exports,Model,RuntimeConfig){
@@ -4336,7 +4362,6 @@ Version:undefined});
 
 
 ES('Object','assign',false,Runtime,{
-
 ENVIRONMENTS:ENVIRONMENTS,
 
 isEnvironment:function isEnvironment(target){
@@ -4345,8 +4370,10 @@ return(target|environment)===environment;
 },
 
 isCanvasEnvironment:function isCanvasEnvironment(){
-return this.isEnvironment(ENVIRONMENTS.CANVAS)||
-this.isEnvironment(ENVIRONMENTS.PAGETAB);
+return(
+this.isEnvironment(ENVIRONMENTS.CANVAS)||
+this.isEnvironment(ENVIRONMENTS.PAGETAB));
+
 }});
 
 
@@ -4371,7 +4398,6 @@ __d('sdk.Cookie',['QueryString','sdk.Runtime'],function $module_sdk_Cookie(globa
 
 
 
-
 var domain=null;
 
 
@@ -4390,12 +4416,19 @@ if(useDomain){
 
 document.cookie=prefix+'=; expires=Wed, 04 Feb 2004 08:00:00 GMT;';
 
-document.cookie=prefix+'=; expires=Wed, 04 Feb 2004 08:00:00 GMT;'+
-'domain='+location.hostname+';';
+document.cookie=
+prefix+
+'=; expires=Wed, 04 Feb 2004 08:00:00 GMT;'+
+'domain='+
+location.hostname+
+';';
 }
 
 var expires=new Date(ts).toGMTString();
-document.cookie=prefix+'='+val+(
+document.cookie=
+prefix+
+'='+
+val+(
 val&&ts===0?'':'; expires='+expires)+
 '; path=/'+(
 useDomain?'; domain='+domain:'');
@@ -4404,9 +4437,7 @@ useDomain?'; domain='+domain:'');
 function getRaw(prefix){
 prefix=prefix+Runtime.getClientID();
 var regExp=new RegExp('\\b'+prefix+'=([^;]*)\\b');
-return regExp.test(document.cookie)?
-RegExp.$1:
-null;
+return regExp.test(document.cookie)?RegExp.$1:null;
 }
 
 var Cookie={
@@ -4461,11 +4492,14 @@ return getRaw('fbsr_');
 
 
 
-setSignedRequestCookie:function setSignedRequestCookie(signedRequest,
-expiration){
+setSignedRequestCookie:function setSignedRequestCookie(
+signedRequest,
+expiration)
+{
 if(!signedRequest){
-throw new Error('Value passed to Cookie.setSignedRequestCookie '+
-'was empty.');
+throw new Error(
+'Value passed to Cookie.setSignedRequestCookie '+'was empty.');
+
 }
 setRaw('fbsr_',signedRequest,expiration);
 },
@@ -4557,15 +4591,13 @@ edge:'',
 operaMini:'',
 ucWeb:''};
 
-var agent=
-/(?:MSIE.(\d+\.\d+))|(?:(?:Firefox|GranParadiso|Iceweasel).(\d+\.\d+))|(?:AppleWebKit.(\d+(?:\.\d+)?))|(?:Trident\/\d+\.\d+.*rv:(\d+\.\d+))/.
-exec(uas);
+var agent=/(?:MSIE.(\d+\.\d+))|(?:(?:Firefox|GranParadiso|Iceweasel).(\d+\.\d+))|(?:AppleWebKit.(\d+(?:\.\d+)?))|(?:Trident\/\d+\.\d+.*rv:(\d+\.\d+))/.exec(
+uas);
+
 if(agent){
 versions.ie=agent[1]?
 parseFloat(agent[1]):
-agent[4]?
-parseFloat(agent[4]):
-'';
+agent[4]?parseFloat(agent[4]):'';
 
 versions.firefox=agent[2]||'';
 versions.webkit=agent[3]||'';
@@ -4628,9 +4660,8 @@ UA[key]=function(){return devices[key];};
 UA.mobile=function(){return devices.iphone||devices.ipad||devices.android||mobile;};
 
 UA.mTouch=function(){return devices.android||devices.iphone||devices.ipad;};
-UA.inAppBrowser=function(){return devices.nativeApp||
-devices.nativeAndroidApp||
-devices.nativeInstagramApp;};
+UA.inAppBrowser=function(){return(
+devices.nativeApp||devices.nativeAndroidApp||devices.nativeInstagramApp);};
 UA.mBasic=function(){return!!(versions.ucWeb||versions.operaMini);};
 
 module.exports=UA;},null);
@@ -4651,8 +4682,6 @@ __d('insertIframe',['GlobalCallback','getBlankIframeSrc','guid'],function $modul
 
 
 function insertIframe(opts){
-
-
 
 
 
@@ -4679,25 +4708,32 @@ var globalCallback=GlobalCallback.create(callback);
 
 
 
-
 if(document.attachEvent){
 
 
 var html=
 '<iframe'+
-' id="'+opts.id+'"'+
-' name="'+opts.name+'"'+(
+' id="'+
+opts.id+
+'"'+
+' name="'+
+opts.name+
+'"'+(
 opts.title?' title="'+opts.title+'"':'')+(
 opts.className?' class="'+opts.className+'"':'')+
 ' style="border:none;'+(
 opts.width?'width:'+opts.width+'px;':'')+(
 opts.height?'height:'+opts.height+'px;':'')+
 '"'+
-' src="'+getBlankIframeSrc()+'"'+
+' src="'+
+getBlankIframeSrc()+
+'"'+
 ' frameborder="0"'+
 ' scrolling="no"'+
 ' allowtransparency="true"'+
-' onload="'+globalCallback+'()"'+
+' onload="'+
+globalCallback+
+'()"'+
 '></iframe>';
 
 
@@ -4708,13 +4744,13 @@ opts.height?'height:'+opts.height+'px;':'')+
 
 
 
-
 opts.root.innerHTML=
-'<iframe src="'+getBlankIframeSrc()+'"'+
+'<iframe src="'+
+getBlankIframeSrc()+
+'"'+
 ' frameborder="0"'+
 ' scrolling="no"'+
 ' style="height:1px"></iframe>';
-
 
 
 srcSet=true;
@@ -4729,7 +4765,6 @@ opts.root.innerHTML=html;
 opts.root.firstChild.src=opts.url;
 opts.onInsert&&opts.onInsert(opts.root.firstChild);
 },0);
-
 }else{
 
 
@@ -4773,7 +4808,8 @@ __d('sdk.domReady',['sdk.Runtime'],function $module_sdk_domReady(global,require,
 
 
 var queue;
-var domIsReady='readyState'in document?
+var domIsReady=
+'readyState'in document?
 /loaded|complete/.test(document.readyState):
 
 
@@ -4852,10 +4888,10 @@ var Content={
 
 
 
-
-append:function append(content,root)
+append:function append(
+content,
+root)
 {
-
 
 if(!root){
 if(!visibleRoot){
@@ -4902,8 +4938,7 @@ return root.appendChild(content);
 
 appendHidden:function appendHidden(content){
 if(!hiddenRoot){
-var
-hiddenRoot=document.createElement('div'),
+var hiddenRoot=document.createElement('div'),
 style=hiddenRoot.style;
 style.position='absolute';
 style.top='-10000px';
@@ -4972,8 +5007,11 @@ params.api_key=clientID;
 
 params.kid_directed_site=Runtime.getKidDirectedSite();
 
-var url=UrlMap.resolve('www',true)+
-'/impression.php/'+guid()+'/';
+var url=
+UrlMap.resolve('www',true)+
+'/impression.php/'+
+guid()+
+'/';
 var fullUrlPath=QueryString.appendToUrl(url,params);
 if(fullUrlPath.length>2000){
 
@@ -5029,6 +5067,7 @@ impression:request};
 
 module.exports=Impressions;},null);
 __d('sdk.Scribe',['QueryString','sdk.Runtime','UrlMap'],function $module_sdk_Scribe(global,require,requireDynamic,requireLazy,module,exports,QueryString,Runtime,UrlMap){
+
 
 
 
@@ -5132,11 +5171,12 @@ return null;
 }
 
 
-var payload=signed_request.split('.',2)[1].
-replace(/\-/g,'+').replace(/\_/g,'/');
+var payload=signed_request.
+split('.',2)[1].
+replace(/\-/g,'+').
+replace(/\_/g,'/');
 return Base64.decodeObject(payload);
 }
-
 
 var SignedRequest={
 parse:parse};
@@ -6073,14 +6113,10 @@ var facebookRe=/\.facebook\.com$/;
 
 var serializer={
 serialize:function serialize(map){
-return map?
-QueryString.encode(map):
-'';
+return map?QueryString.encode(map):'';
 },
 deserialize:function deserialize(text){
-return text?
-QueryString.decode(text):
-{};
+return text?QueryString.decode(text):{};
 }};_URIBase=babelHelpers.inherits(
 
 
@@ -6229,8 +6265,7 @@ return this;
 
 
 merge=function(queue,prepend){'use strict';
-this._queue[prepend?'unshift':'push'].
-apply(this._queue,queue._queue);
+this._queue[prepend?'unshift':'push'].apply(this._queue,queue._queue);
 queue._queue=[];
 this._dispatch();
 return this;
@@ -7275,7 +7310,6 @@ module.exports=isFacebookURI;},null);
 __d('sdk.Event',[],function $module_sdk_Event(global,require,requireDynamic,requireLazy,module,exports){
 
 var Event={
-
 SUBSCRIBE:'event.subscribe',
 UNSUBSCRIBE:'event.unsubscribe',
 
@@ -7392,8 +7426,7 @@ this.fire(this.UNSUBSCRIBE,name,subs);
 
 monitor:function monitor(name,callback){
 if(!callback()){
-var
-ctx=this,
+var ctx=this,
 fn=function fn(){
 if(callback.apply(callback,arguments)){
 ctx.unsubscribe(name,fn);
@@ -7424,8 +7457,7 @@ delete this.subscribers()[name];
 
 
 fire:function fire(name){
-var
-args=Array.prototype.slice.call(arguments,1),
+var args=Array.prototype.slice.call(arguments,1),
 subs=this.subscribers()[name];
 
 if(subs){
@@ -7442,7 +7474,6 @@ sub.apply(this,args);
 
 module.exports=Event;},null);
 __d('JSONRPC',['Log'],function $module_JSONRPC(global,require,requireDynamic,requireLazy,module,exports,Log){
-
 
 
 
@@ -7499,7 +7530,8 @@ this.$JSONRPC_write(ES('JSON','stringify',false,message),this.$JSONRPC_context||
 
 
 read=function(message,context){'use strict';
-var rpc=ES('JSON','parse',false,message),id=rpc.id;
+var rpc=ES('JSON','parse',false,message),
+id=rpc.id;
 
 if(!rpc.method){
 
@@ -7518,7 +7550,9 @@ return;
 }
 
 
-var instance=this,method=this.local[rpc.method],send;
+var instance=this,
+method=this.local[rpc.method],
+send;
 if(id){
 
 send=function send(type,value){
@@ -7562,8 +7596,11 @@ if(typeof returnValue!=='undefined'){
 send('result',returnValue);
 }
 }catch(rpcEx){
-Log.error('Invokation of RPC method %s resulted in the error: %s',
-rpc.method,rpcEx.message);
+Log.error(
+'Invokation of RPC method %s resulted in the error: %s',
+rpc.method,
+rpcEx.message);
+
 
 send('error',{
 code:-32603,
@@ -7674,11 +7711,13 @@ delete opts.root;
 delete opts.onload;
 delete opts.onerror;
 
-var attributes=ES('Object','assign',false,{
+var attributes=ES('Object','assign',false,
+{
 frameBorder:0,
 allowTransparency:true,
 allowFullscreen:true,
 scrolling:'no'},
+
 opts);
 
 
@@ -7736,11 +7775,7 @@ __d('sdk.FeatureFunctor',['invariant'],function $module_sdk_FeatureFunctor(globa
 
 
 
-function feature(
-config,
-name,
-defaultValue)
-{
+function feature(config,name,defaultValue){
 if(config.features&&name in config.features){
 var value=config.features[name];
 if(typeof value==='object'&&typeof value.rate==='number'){
@@ -7758,10 +7793,7 @@ return defaultValue;
 
 function createFeatureFunction(config){
 return function(name,defaultValue){
-
-arguments.length>=2||invariant(0,
-'Default value is required');
-
+arguments.length>=2||invariant(0,'Default value is required');
 return feature(config,name,defaultValue);
 };
 }
@@ -7827,8 +7859,7 @@ var parentOrigin=parent.location.origin;
 if(parentOrigin&&parentOrigin!=='null'){
 return parentOrigin;
 }
-}catch(e){
-}
+}catch(e){}
 }
 }
 
@@ -7851,6 +7882,7 @@ Runtime.setEnvironment(
 registeredAs==='canvas'?
 Runtime.ENVIRONMENTS.CANVAS:
 Runtime.ENVIRONMENTS.PAGETAB);
+
 }
 
 function handleAction(message,senderOrigin){
@@ -7880,8 +7912,11 @@ onRegister(message.registered);
 facebookQueue=proxyQueue.merge(facebookQueue);
 }
 
-Log.info('Proxy ready, starting queue %s containing %s messages',
-protocol+'ProxyQueue',proxyQueue.getLength());
+Log.info(
+'Proxy ready, starting queue %s containing %s messages',
+protocol+'ProxyQueue',
+proxyQueue.getLength());
+
 
 proxyQueue.start(function(message){
 xdm.send(
@@ -7898,8 +7933,12 @@ Log.info('Plugin %s ready, protocol: %s',message.name,protocol);
 pluginRegistry[message.name]={protocol:protocol};
 if(Queue.exists(message.name)){
 var queue=Queue.get(message.name);
-Log.debug('Enqueuing %s messages for %s in %s',queue.getLength(),
-message.name,protocol+'ProxyQueue');
+Log.debug(
+'Enqueuing %s messages for %s in %s',
+queue.getLength(),
+message.name,
+protocol+'ProxyQueue');
+
 
 (protocol=='https'?httpsProxyQueue:httpProxyQueue).merge(queue);
 }
@@ -7916,8 +7955,11 @@ onMessage(message.data,senderOrigin);
 
 
 function onMessage(message,senderOrigin){
-if(senderOrigin&&senderOrigin!=='native'&&
-!isFacebookURI(new URI(senderOrigin))){
+if(
+senderOrigin&&
+senderOrigin!=='native'&&
+!isFacebookURI(new URI(senderOrigin)))
+{
 return;
 }
 if(typeof message=='string'){
@@ -7977,18 +8019,21 @@ facebookQueue.enqueue(message);
 message.relation='parent.frames["'+recipient+'"]';
 var regInfo=pluginRegistry[recipient];
 if(regInfo){
-Log.debug('Enqueuing message for plugin %s in %s',
-recipient,regInfo.protocol+'ProxyQueue');
+Log.debug(
+'Enqueuing message for plugin %s in %s',
+recipient,
+regInfo.protocol+'ProxyQueue');
 
-(regInfo.protocol=='https'?httpsProxyQueue:httpProxyQueue).
-enqueue(message);
+
+(regInfo.protocol=='https'?httpsProxyQueue:httpProxyQueue).enqueue(
+message);
+
 }else{
 Log.debug('Buffering message for plugin %s',recipient);
 Queue.get(recipient).enqueue(message);
 }
 }
 }
-
 
 RPC.getOutQueue().start(function(message){
 sendToFacebook('facebook','FB_RPC:'+message);
@@ -8106,8 +8151,12 @@ sendToFacebook:sendToFacebook,
 
 
 
-inform:function inform(method,params,relation,
-behavior){
+inform:function inform(
+method,
+params,
+relation,
+behavior)
+{
 sendToFacebook('facebook',{
 method:method,
 params:ES('JSON','stringify',false,params||{}),
@@ -8130,22 +8179,31 @@ relation:relation});
 
 
 
-handler:function handler(cb,relation,forever,
-id){
-var xdArbiterFragment='#'+QueryString.encode({
+handler:function handler(
+cb,
+relation,
+forever,
+id)
+{
+var xdArbiterFragment=
+'#'+
+QueryString.encode({
 cb:this.registerCallback(cb,forever,id),
 origin:origin+'/'+channel,
 domain:location.hostname,
 relation:relation||'opener'});
 
-return(location.protocol=='https:'?
-xdArbiterHttpsUrl:
-xdArbiterHttpUrl)+
-xdArbiterFragment;
+return(
+(location.protocol=='https:'?xdArbiterHttpsUrl:xdArbiterHttpUrl)+
+xdArbiterFragment);
+
 },
 
-registerCallback:function registerCallback(cb,persistent,
-id){
+registerCallback:function registerCallback(
+cb,
+persistent,
+id)
+{
 id=id||guid();
 if(persistent){
 XD._forever[id]=true;
@@ -8157,10 +8215,6 @@ return id;
 getXDArbiterURL:function getXDArbiterURL(secure){
 return secure?xdArbiterHttpsUrl:xdArbiterHttpUrl;
 }};
-
-
-
-
 
 
 Event.subscribe('init:post',function(options){
@@ -8185,7 +8239,6 @@ message:'Failed to initialize in '+timeout+'ms'}});
 },timeout);
 }
 });
-
 
 module.exports=XD;},null);
 __d('sdk.getContextType',['sdk.Runtime','sdk.UA'],function $module_sdk_getContextType(global,require,requireDynamic,requireLazy,module,exports,Runtime,UA){
@@ -8251,17 +8304,16 @@ if(authResponse){
 if(authResponse.userID){
 userID=authResponse.userID;
 }else if(authResponse.signedRequest){
-var parsedSignedRequest=
-SignedRequest.parse(authResponse.signedRequest);
+var parsedSignedRequest=SignedRequest.parse(authResponse.signedRequest);
 if(parsedSignedRequest&&parsedSignedRequest.user_id){
 userID=parsedSignedRequest.user_id;
 }
 }
 }
 
-var
-currentStatus=Runtime.getLoginStatus(),
-login=currentStatus==='unknown'&&authResponse||
+var currentStatus=Runtime.getLoginStatus(),
+login=
+currentStatus==='unknown'&&authResponse||
 Runtime.getUseCookie()&&Runtime.getCookieUserID()!==userID,
 logout=currentUserID&&!authResponse,
 both=authResponse&&currentUserID&&currentUserID!=userID,
@@ -8300,8 +8352,11 @@ function getAuthResponse(){
 return currentAuthResponse;
 }
 
-function xdResponseWrapper(cb,authResponse,
-method){
+function xdResponseWrapper(
+cb,
+authResponse,
+method)
+{
 return function(params){
 var status;
 if(params&&params.access_token){
@@ -8319,7 +8374,8 @@ authResponse.grantedScopes=params.granted_scopes;
 }
 
 if(Runtime.getUseCookie()){
-var expirationTime=authResponse.expiresIn===0?
+var expirationTime=
+authResponse.expiresIn===0?
 0:
 ES('Date','now',false)+authResponse.expiresIn*1000;
 var baseDomain=Cookie.getDomain();
@@ -8330,8 +8386,7 @@ if(!baseDomain&&params.base_domain){
 
 Cookie.setDomain('.'+params.base_domain);
 }
-Cookie.setSignedRequestCookie(params.signed_request,
-expirationTime);
+Cookie.setSignedRequestCookie(params.signed_request,expirationTime);
 removeLogoutState();
 }
 status='connected';
@@ -8381,14 +8436,12 @@ Cookie.setRaw(LOGOUT_COOKIE_PREFIX,'',0);
 }
 
 function setLogoutState(){
-Cookie.setRaw(
-LOGOUT_COOKIE_PREFIX,
-'y',
-ES('Date','now',false)+YEAR_MS);
+Cookie.setRaw(LOGOUT_COOKIE_PREFIX,'y',ES('Date','now',false)+YEAR_MS);
 }
 
 function fetchLoginStatus(fn){
-var frame,fetchStart=ES('Date','now',false);
+var frame,
+fetchStart=ES('Date','now',false);
 
 if(timer){
 clearTimeout(timer);
@@ -8421,11 +8474,14 @@ status:unk_status});
 return;
 }
 
-var handleResponse=xdResponseWrapper(fn,currentAuthResponse,
+var handleResponse=xdResponseWrapper(
+fn,
+currentAuthResponse,
 'login_status');
 
-var url=new URI(UrlMap.resolve('www',true)+'/connect/ping').
-setQueryData({
+
+var url=new URI(UrlMap.resolve('www',true)+'/connect/ping').setQueryData(
+{
 client_id:Runtime.getClientID(),
 response_type:'token,signed_request,code',
 domain:location.hostname,
@@ -8455,12 +8511,12 @@ sdk:'joey',
 kid_directed_site:Runtime.getKidDirectedSite()});
 
 
+
 frame=createIframe({
 root:DOMWrapper.getRoot(),
 name:guid(),
 url:url.toString(),
 style:{display:'none'}});
-
 
 }
 
@@ -8475,8 +8531,10 @@ return;
 
 if(cb){
 if(!force&&loadState=='loaded'){
-cb({status:Runtime.getLoginStatus(),
+cb({
+status:Runtime.getLoginStatus(),
 authResponse:getAuthResponse()});
+
 return;
 }else{
 Auth.subscribe('FB.loginStatus',cb);
@@ -8536,17 +8594,12 @@ dom.getAttribute('data-'+name.replace(/_/g,'-'))||
 dom.getAttribute('data-'+name.replace(/-/g,'_'))||
 dom.getAttribute('data-'+name.replace(/-/g,''))||
 dom.getAttribute('data-'+name.replace(/_/g,''));
-
-return attribute?
-String(attribute):
-null;
+return attribute?String(attribute):null;
 }
 
 function getBoolAttr(dom,name){
 var attribute=getAttr(dom,name);
-return attribute?
-/^(true|1|yes|on)$/.test(attribute):
-null;
+return attribute?/^(true|1|yes|on)$/.test(attribute):null;
 }
 
 function getProp(dom,name){
@@ -8602,7 +8655,9 @@ Assert.isTruthy(dom,'element not specified');
 Assert.isString(className);
 
 var regExp=new RegExp('\\s*'+className,'g');
-dom.className=ES(getProp(dom,'className').replace(regExp,''),'trim',true);
+dom.className=ES(getProp(dom,'className').
+replace(regExp,''),'trim',true);
+
 }
 
 
@@ -8617,9 +8672,7 @@ Assert.isString(className);
 dom=dom||document.body;
 tagName=tagName||'*';
 if(dom.querySelectorAll){
-return ES('Array','from',false,
-dom.querySelectorAll(tagName+'.'+className));
-
+return ES('Array','from',false,dom.querySelectorAll(tagName+'.'+className));
 }
 var all=dom.getElementsByTagName(tagName),
 els=[];
@@ -8648,16 +8701,15 @@ styleProp=styleProp.replace(/-(\w)/g,function(m,g1){
 return g1.toUpperCase();
 });
 
-var currentStyle=dom.currentStyle||
-document.defaultView.getComputedStyle(dom,null);
+var currentStyle=
+dom.currentStyle||document.defaultView.getComputedStyle(dom,null);
 
 var computedStyle=currentStyle[styleProp];
 
 
 
 
-if(/backgroundPosition?/.test(styleProp)&&
-/top|left/.test(computedStyle)){
+if(/backgroundPosition?/.test(styleProp)&&/top|left/.test(computedStyle)){
 computedStyle='0%';
 }
 return computedStyle;
@@ -8726,7 +8778,8 @@ document.getElementsByTagName('head')[0].appendChild(style);
 
 function getViewportInfo(){
 
-var root=document.documentElement&&document.compatMode=='CSS1Compat'?
+var root=
+document.documentElement&&document.compatMode=='CSS1Compat'?
 document.documentElement:
 document.body;
 
@@ -8782,6 +8835,7 @@ ready:domReady};
 
 module.exports=DOM;},null);
 __d('normalizeError',['sdk.UA'],function $module_normalizeError(global,require,requireDynamic,requireLazy,module,exports,UA){
+
 
 
 function normalizeError(err){
@@ -9044,8 +9098,6 @@ Auth.getLoginStatus(null,true);
 }
 });
 
-
-
 if(dotAccess(SDKConfig,'api.whitelist.length')){
 apiWhitelist={};
 ES(SDKConfig.api.whitelist,'forEach',true,function(key){
@@ -9053,8 +9105,12 @@ apiWhitelist[key]=1;
 });
 }
 
-function protect(fn,accessor,key,
-context){
+function protect(
+fn,
+accessor,
+key,
+context)
+{
 var exportMode;
 if(/^_/.test(key)){
 exportMode='hide';
@@ -9067,14 +9123,19 @@ case'hide':
 return;
 case'stub':
 return function(){
-Log.warn('The method FB.%s has been removed from the JS SDK.',
+Log.warn(
+'The method FB.%s has been removed from the JS SDK.',
 accessor);
+
 };
 default:
 return ErrorHandling.guard(function(){
 if(exportMode==='warn'){
-Log.warn('The method FB.%s is not officially supported by '+
-'Facebook and access to it will soon be removed.',accessor);
+Log.warn(
+'The method FB.%s is not officially supported by '+
+'Facebook and access to it will soon be removed.',
+accessor);
+
 if(!Object.prototype.hasOwnProperty.call(logged,accessor)){
 Insights.log(
 Insights.TYPE.WARNING,
@@ -9139,9 +9200,7 @@ facade[key]=protect(property,accessor+':'+key,key,result);
 if(!isPlainObject){
 return facade;
 }
-return isPlainObject?
-result:
-facade;
+return isPlainObject?result:facade;
 },accessor);}
 
 }
@@ -9186,15 +9245,18 @@ externalTarget[key]=value;
 
 
 
-Runtime.setSecure(function(){
+Runtime.setSecure(
+function(){
 
 var inCanvas=/iframe_canvas|app_runner/.test(window.name);
 var inDialog=/dialog/.test(window.name);
 
 
 
-if(location.protocol=='https:'&&(
-window==top||!(inCanvas||inDialog))){
+if(
+location.protocol=='https:'&&(
+window==top||!(inCanvas||inDialog)))
+{
 
 
 
@@ -9209,6 +9271,7 @@ return ES(window.name,'indexOf',true,'_fb_https')!=-1;
 }());
 
 
+
 ES('Object','assign',false,FB,{
 
 
@@ -9221,9 +9284,7 @@ ES('Object','assign',false,FB,{
 
 
 
-
 provide:provide});
-
 
 
 module.exports=FB;},null);
@@ -9556,6 +9617,7 @@ __d('CORSRequest',['wrapFunction','QueryString','RequestConstants','sdk.safelyPa
 
 
 
+
 function createCORSRequest(method,url){
 if(!self.XMLHttpRequest){
 return null;
@@ -9564,8 +9626,7 @@ var xhr=new XMLHttpRequest();
 var noop=function noop(){};
 if('withCredentials'in xhr){
 xhr.open(method,url,true);
-xhr.setRequestHeader(
-'Content-type','application/x-www-form-urlencoded');
+xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
 }else if(self.XDomainRequest){
 xhr=new XDomainRequest();
 try{
@@ -9594,18 +9655,26 @@ send:function send(data){
 xhr.send(data);
 }};
 
-var onload=wrapFunction(function(){
+var onload=wrapFunction(
+function(){
 onload=noop;
 if('onload'in wrapper){
 wrapper.onload(xhr);
 }
-},'entry','XMLHttpRequest:load');
-var onerror=wrapFunction(function(){
+},
+'entry',
+'XMLHttpRequest:load');
+
+var onerror=wrapFunction(
+function(){
 onerror=noop;
 if('onerror'in wrapper){
 wrapper.onerror(xhr);
 }
-},'entry','XMLHttpRequest:error');
+},
+'entry',
+'XMLHttpRequest:error');
+
 
 
 
@@ -9633,8 +9702,12 @@ onerror();
 return wrapper;
 }
 
-function execute(url,method,params,
-cb){
+function execute(
+url,
+method,
+params,
+cb)
+{
 params.suppress_http_code=1;
 var data=QueryString.encode(params);
 
@@ -9869,10 +9942,7 @@ throw new Error('swfUrl has not been set');
 
 var initCallback=GlobalCallback.create(function(){
 flashQueue.start(function(item){
-var id=swf.execute(
-item.method,
-item.url,
-item.body);
+var id=swf.execute(item.method,item.url,item.body);
 
 if(!id){
 throw new Error('Could create request');
@@ -9882,8 +9952,11 @@ requestCallbacks[id]=item.callback;
 });
 
 
-var requestCallback=GlobalCallback.create(function(id,
-status,response){
+var requestCallback=GlobalCallback.create(function(
+id,
+status,
+response)
+{
 var data;
 try{
 data=ES('JSON','parse',false,decodeURIComponent(response));
@@ -9917,8 +9990,12 @@ requestCallback:requestCallback});
 
 
 
-function execute(url,method,params,
-cb){
+function execute(
+url,
+method,
+params,
+cb)
+{
 
 
 params.suppress_http_code=1;
@@ -9929,7 +10006,6 @@ params.suppress_http_code=1;
 if(!params.method){
 params.method=method;
 }
-
 
 var body=QueryString.encode(params);
 if(method==='get'&&url.length+body.length<2000){
@@ -9987,8 +10063,12 @@ var _ignoreMaxQuerystringLength=false;
 
 
 
-function execute(url,method,params,
-cb){
+function execute(
+url,
+method,
+params,
+cb)
+{
 var script=document.createElement('script');
 
 var _callbackWrapper=function callbackWrapper(response){
@@ -10006,10 +10086,7 @@ params.method=method;
 }
 
 url=QueryString.appendToUrl(url,params);
-if(
-!_ignoreMaxQuerystringLength&&
-url.length>MAX_QUERYSTRING_LENGTH)
-{
+if(!_ignoreMaxQuerystringLength&&url.length>MAX_QUERYSTRING_LENGTH){
 GlobalCallback.remove(params.callback);
 return false;
 }
@@ -10112,9 +10189,12 @@ var apiBatcher;
 
 
 
-function request(url,method,params,
-cb){
-
+function request(
+url,
+method,
+params,
+cb)
+{
 
 var shouldQueueRequest=
 maxConcurrentRequests!==0&&
@@ -10124,12 +10204,7 @@ if(shouldQueueRequest){
 
 
 requestQueue.push(function(){return request(url,method,params,cb);});
-ApiClient.inform(
-'request.queued',
-url,
-method,
-params);
-
+ApiClient.inform('request.queued',url,method,params);
 return;
 }
 
@@ -10191,10 +10266,16 @@ message:'Could not find a usable transport for request'}});
 
 }
 
-function inspect(callback,endpoint,method,
-params,startTime,requestIndex,
-response,done){
-
+function inspect(
+callback,
+endpoint,
+method,
+params,
+startTime,
+requestIndex,
+response,
+done)
+{
 if(params.transport&&params.transport==='chunked'&&done===false){
 callback(response,false);
 return;
@@ -10220,7 +10301,6 @@ params,
 response,
 ES('Date','now',false)-startTime,
 requestIndex);
-
 
 
 currentlyExecutingRequests--;
@@ -10270,7 +10350,8 @@ if(requestIsTooLargeForGet(uri,method)){
 method='post';
 }
 
-var url=uri.getProtocol()&&uri.getDomain()?
+var url=
+uri.getProtocol()&&uri.getDomain()?
 uri.setQueryData({}).toString():
 UrlMap.resolve('graph')+uri.getPath();
 
@@ -10281,7 +10362,8 @@ request(
 url,
 method=='get'?'get':'post',
 params,ES(
-inspect,'bind',true,null,
+inspect,'bind',true,
+null,
 callback,
 uri.getPath(),
 method,
@@ -10295,14 +10377,12 @@ requestIndex));
 
 
 
-
 function scheduleBatchCall(){var _apiBatcher;
 if(!apiBatcher){
 apiBatcher=new ApiBatcher(requestUsingGraph,clientID);
 }
 (_apiBatcher=apiBatcher).scheduleBatchCall.apply(_apiBatcher,arguments);
 }
-
 
 
 
@@ -10329,8 +10409,8 @@ params.api_key=clientID;
 var domain=method in READONLYCALLS?'api_read':'api';
 var url=UrlMap.resolve(domain)+'/restserver.php';
 var requestIndex=requestCounter++;
-var inspector=ES(
-inspect,'bind',true,null,
+var inspector=ES(inspect,'bind',true,
+null,
 cb,
 '/restserver.php',
 'get',
@@ -10408,7 +10488,6 @@ __d('sdk.PlatformVersioning',['sdk.Runtime','ManagedError'],(function $module_sd
 var REGEX=/^v\d+\.\d\d?$/;
 
 var PlatformVersioning={
-
 REGEX:REGEX,
 
 assertVersionIsSet:function assertVersionIsSet(){
@@ -10422,7 +10501,6 @@ if(!REGEX.test(version)){
 throw new ManagedError('invalid version specified');
 }
 }};
-
 
 
 module.exports=PlatformVersioning;}),null);
@@ -10439,33 +10517,33 @@ var shouldLogResponseError=feature('should_log_response_error',false);
 
 var currentAccessToken;
 
-Runtime.subscribe(
-'ClientID.change',
-function(value){return ApiClient.setClientID(value);});
+Runtime.subscribe('ClientID.change',function(value){return(
+ApiClient.setClientID(value));});
 
 
-Runtime.subscribe(
-'AccessToken.change',
-function(value){
+Runtime.subscribe('AccessToken.change',function(value){
 currentAccessToken=value;
 ApiClient.setAccessToken(value);
 });
-
 
 ApiClient.setDefaultParams({
 sdk:'joey'});
 
 
 
-ApiClient.subscribe(
-'request.complete',
-function(endpoint,method,params,response){
+ApiClient.subscribe('request.complete',function(
+endpoint,
+method,
+params,
+response)
+{
 var invalidateToken=false;
 if(response&&typeof response=='object'){
 if(response.error){
-if(response.error=='invalid_token'||
-response.error.type=='OAuthException'&&
-response.error.code==190){
+if(
+response.error=='invalid_token'||
+response.error.type=='OAuthException'&&response.error.code==190)
+{
 invalidateToken=true;
 }
 }else if(response.error_code){
@@ -10474,31 +10552,36 @@ invalidateToken=true;
 }
 }
 }
-if(invalidateToken&&
-currentAccessToken===Runtime.getAccessToken()){
+if(invalidateToken&&currentAccessToken===Runtime.getAccessToken()){
 
 Runtime.setAccessToken(null);
 }
 });
 
 
-ApiClient.subscribe(
-'request.complete',
-function(endpoint,method,params,response){
-if((endpoint=='/me/permissions'&&
-method==='delete'||
+ApiClient.subscribe('request.complete',function(
+endpoint,
+method,
+params,
+response)
+{
+if(
+(endpoint=='/me/permissions'&&method==='delete'||
 endpoint=='/restserver.php'&&
 params.method=='Auth.revokeAuthorization')&&
-response===true){
+response===true)
+{
 Runtime.setAccessToken(null);
 }
 });
 
 
-
-ApiClient.subscribe(
-'request.error',
-function(endpoint,method,params,response){
+ApiClient.subscribe('request.error',function(
+endpoint,
+method,
+params,
+response)
+{
 if(shouldLogResponseError&&response.error.type==='http'){
 Scribe.log('jssdk_error',{
 appId:Runtime.getClientID(),
@@ -10518,9 +10601,7 @@ message:ES('JSON','stringify',false,response.error)}});
 
 
 
-
 function api(path){
-
 
 if(typeof path==='string'){
 if(Runtime.getIsVersioned()){
@@ -10530,11 +10611,15 @@ PlatformVersioning.assertVersionIsSet();
 if(!/https?/.test(path)&&path.charAt(0)!=='/'){
 path='/'+path;
 }
-path=new URI(path).setDomain(null).setProtocol(null).toString();
+path=new URI(path).
+setDomain(null).
+setProtocol(null).
+toString();
 
 
-if(!PlatformVersioning.REGEX.
-test(path.substring(1,ES(path,'indexOf',true,'/',1)))){
+if(
+!PlatformVersioning.REGEX.test(path.substring(1,ES(path,'indexOf',true,'/',1))))
+{
 path='/'+Runtime.getVersion()+path;
 }
 
@@ -10560,10 +10645,12 @@ __d('resolveURI',[],function $module_resolveURI(global,require,requireDynamic,re
 
 function resolveURI(uri){
 if(!uri){
+
 return window.location.href;
 }
 
-uri=uri.replace(/&/g,'&amp;').
+uri=uri.
+replace(/&/g,'&amp;').
 replace(/\"/g,'&quot;');
 
 var div=document.createElement('div');
@@ -10588,7 +10675,6 @@ appCallback(response.result);
 function scrollTo(x,y){
 RPC.remote.scrollTo({x:x||0,y:y||0});
 }
-
 
 RPC.stub('getPageInfo');
 RPC.stub('scrollTo');
@@ -10621,21 +10707,16 @@ actionCallback,
 delayBetweenClicks)
 {
 var clickTimer=null;
-return DOMEventListener.add(
-element,
-'click',
-function(){
+return DOMEventListener.add(element,'click',function(){
 if(clickTimer!==null){
 clearTimeout(clickTimer);
 clickTimer=null;
 actionCallback();
 }
-clickTimer=setTimeout(
-function(){clickTimer=null;},
-delayBetweenClicks);
-
+clickTimer=setTimeout(function(){
+clickTimer=null;
+},delayBetweenClicks);
 });
-
 },
 
 addIdleDesktopAction:function addIdleDesktopAction(
@@ -10650,10 +10731,7 @@ timer=setTimeout(actionCallback,delayToIdle);
 };
 
 startTimer();
-return DOMEventListener.add(
-element,
-'mouseenter',
-function(){
+return DOMEventListener.add(element,'mouseenter',function(){
 
 clearTimeout(timer);
 if(!event){
@@ -10662,7 +10740,6 @@ startTimer();
 });
 }
 });
-
 },
 
 addMobileOrientationChangeAction:function addMobileOrientationChangeAction(actionCallback){
@@ -10674,9 +10751,8 @@ return null;
 
 
 
-var event='onorientationchange'in window?
-'orientationchange':
-'resize';
+var event=
+'onorientationchange'in window?'orientationchange':'resize';
 
 var callback=function callback(e){return setTimeout(function(e){return actionCallback(e);},50);};
 
@@ -10690,12 +10766,9 @@ return;
 var view=DOM.getViewportInfo();
 
 
-element.style.minHeight=view.height||view.width?
-view.height+'px':
-'';
-element.style.top=view.scrollTop?
-view.scrollTop+'px':
-'';
+element.style.minHeight=
+view.height||view.width?view.height+'px':'';
+element.style.top=view.scrollTop?view.scrollTop+'px':'';
 },
 
 setDialogPositionToCenter:function setDialogPositionToCenter(
@@ -10723,7 +10796,9 @@ var maxTop=view.height-height-minTop;
 
 var top=(view.height-height)/2;
 if(pageInfo){
-top=pageInfo.scrollTop-pageInfo.offsetTop+
+top=
+pageInfo.scrollTop-
+pageInfo.offsetTop+
 (pageInfo.clientHeight-height)/2;
 }
 
@@ -10829,9 +10904,7 @@ return overlay;
 
 
 
-setupNewDialog:function setupNewDialog(
-options)
-
+setupNewDialog:function setupNewDialog(options)
 
 
 
@@ -10859,22 +10932,22 @@ className+=' '+(options.classes||'');
 
 if(UA.ie()){
 className+=' fb_dialog_legacy';
-ES(['vert_left',
+ES([
+'vert_left',
 'vert_right',
 'horiz_top',
 'horiz_bottom',
 'top_left',
 'top_right',
 'bottom_left',
-'bottom_right'],'forEach',true,function(name){
+'bottom_right'],'forEach',true,
+function(name){
 var span=document.createElement('span');
 span.className='fb_dialog_'+name;
 dialog.appendChild(span);
 });
 }else{
-className+=UA.mobile()?
-' fb_dialog_mobile':
-' fb_dialog_advanced';
+className+=UA.mobile()?' fb_dialog_mobile':' fb_dialog_advanced';
 }
 dialog.className=className;
 
@@ -10914,7 +10987,6 @@ DOM.removeCss(body,'fb_reposition');
 DOM.removeCss(body,'fb_hidden');
 }
 }};
-
 
 
 module.exports=DialogUtils;},null);
@@ -10983,7 +11055,8 @@ return null;
 
 
 
-var SdkDialog=Type.extend({
+var SdkDialog=Type.extend(
+{
 constructor:function SdkDialog(id,display){
 this.parent();
 this.id=id;
@@ -11022,7 +11095,9 @@ this.trackEvent(key,events[key]);
 }
 return this;
 }},
+
 ObservableMixin);
+
 
 var Dialog={
 newInstance:function newInstance(id,display){
@@ -11099,7 +11174,6 @@ return Dialog._dialogs[id];
 
 
 
-
 _findRoot:function _findRoot(node){
 while(node){
 if(DOM.containsCss(node,'fb_dialog')){
@@ -11144,7 +11218,8 @@ content=
 '</a>'+
 '</div>';
 }else{
-content='<div class="dialog_header">'+
+content=
+'<div class="dialog_header">'+
 '<table>'+
 '  <tbody>'+
 '    <tr>'+
@@ -11233,20 +11308,18 @@ cb();
 Dialog._showTabletOverlay(onClick);
 
 if(!Dialog._loaderEl){
-Dialog._loaderEl=Dialog._findRoot(UA.mobile()?
+Dialog._loaderEl=Dialog._findRoot(
+UA.mobile()?
 Dialog._createMobileLoader():
 Dialog._createWWWLoader(width));
+
 }
 
 var loaderClose=document.getElementById('fb_dialog_loader_close');
 
 if(loaderClose){
 DOM.removeCss(loaderClose,'fb_hidden');
-var listener=DOMEventListener.add(
-loaderClose,
-'click',
-onClick);
-
+var listener=DOMEventListener.add(loaderClose,'click',onClick);
 Dialog._overlayListeners.push(listener);
 }
 
@@ -11321,8 +11394,10 @@ if(!dialog){
 return;
 }
 
-if(Dialog._positionDialogAtTopWhenPortrait&&
-DialogUtils.isOrientationPotrait()){
+if(
+Dialog._positionDialogAtTopWhenPortrait&&
+DialogUtils.isOrientationPotrait())
+{
 DialogUtils.setDialogPositionToTop(
 dialog,
 Dialog.isTabletStyle(),
@@ -11400,8 +11475,7 @@ var isLandscape=width/height>1.2;
 
 return{
 width:width,
-height:Math.max(height,
-isLandscape?screen.width:screen.height)};
+height:Math.max(height,isLandscape?screen.width:screen.height)};
 
 }
 }
@@ -11411,9 +11485,7 @@ return{width:MAX_WIDTH_DESKTOP,height:MAX_HEIGHT_DESKTOP};
 
 
 
-
 _handleOrientationChange:function _handleOrientationChange(){
-
 var screenWidth=feature('dialog_resize_refactor',false)?
 DOM.getViewportInfo().width:
 screen.availWidth;
@@ -11587,7 +11659,8 @@ return true;
 }
 if(feature('dialog_resize_refactor',false)){
 var size=getMobileSize();
-result=size&&(
+result=
+size&&(
 size.height>=MAX_HEIGHT_MOBILE||size.width>=MAX_WIDTH_MOBILE);
 }else{
 result=!!UA.ipad();
@@ -11671,7 +11744,6 @@ __d('sdk.Frictionless',['sdk.Auth','sdk.api','sdk.Event','sdk.Dialog'],function 
 var Frictionless={
 
 
-
 _allowedRecipients:{},
 
 _useFrictionless:false,
@@ -11715,7 +11787,9 @@ Frictionless._updateRecipients();
 
 
 
-_processRequestResponse:function _processRequestResponse(cb,hidden)
+_processRequestResponse:function _processRequestResponse(
+cb,
+hidden)
 {
 return function(params){
 var updated=params&&params.updated_frictionless;
@@ -11757,7 +11831,9 @@ return user_ids in Frictionless._allowedRecipients;
 if(typeof user_ids==='string'){
 user_ids=user_ids.split(',');
 }
-user_ids=ES(user_ids,'map',true,function(s){return ES(String(s),'trim',true);});
+user_ids=ES(user_ids,'map',true,function(s){
+return ES(String(s),'trim',true);
+});
 
 var allowed=true;
 var has_user_ids=false;
@@ -11775,7 +11851,6 @@ Frictionless.init();
 }
 });
 
-
 module.exports=Frictionless;},null);
 __d('sdk.Native',['Log','sdk.UA'],function $module_sdk_Native(global,require,requireDynamic,requireLazy,module,exports,Log,UA){
 
@@ -11791,13 +11866,14 @@ var Native={
 
 
 
-
 onready:function onready(func){
 
 if(!UA.nativeApp()){
-Log.error('FB.Native.onready only works when the page is rendered '+
+Log.error(
+'FB.Native.onready only works when the page is rendered '+
 'in a WebView of the native Facebook app. Test if this is the '+
 'case calling FB.UA.nativeApp()');
+
 return;
 }
 
@@ -11848,7 +11924,9 @@ uri=
 'intent://share/#Intent;'+
 'package=com.facebook.orca;'+
 'scheme=fb-messenger;'+
-'S.android.intent.extra.TEXT='+encodeURIComponent(link)+';'+
+'S.android.intent.extra.TEXT='+
+encodeURIComponent(link)+
+';'+
 'S.trigger=send_plugin;';
 if(app_id){
 uri+='S.platform_app_id='+encodeURIComponent(app_id)+';';
@@ -11863,12 +11941,9 @@ uri+='&app_id='+encodeURIComponent(app_id);
 fallbackURL=FALLBACK_IOS_URL;
 }
 
-setTimeout(
-function(){
+setTimeout(function(){
 window.location.href=fallbackURL;
-},
-FALLBACK_TIMEOUT);
-
+},FALLBACK_TIMEOUT);
 window.location.href=uri;
 }
 
@@ -11907,16 +11982,14 @@ transform:function transform(call){
 
 
 
-if(call.params.display==='touch'&&
+if(
+call.params.display==='touch'&&
 UIServer.canIframe(call.params)&&
 window.postMessage)
 {
 
 
-call.params.channel=UIServer._xdChannelHandler(
-call.id,
-'parent');
-
+call.params.channel=UIServer._xdChannelHandler(call.id,'parent');
 
 if(!UA.nativeApp()){
 call.params.in_iframe=1;
@@ -11939,9 +12012,11 @@ return UIServer.getXdRelation(params);
 
 
 function isOauth(params){
-return params.method=='permissions.oauth'||
+return(
+params.method=='permissions.oauth'||
 params.method=='permissions.request'||
-params.method=='oauth';
+params.method=='oauth');
+
 }
 
 var Methods={
@@ -11958,14 +12033,12 @@ return call;
 
 
 
-'apprequests':{
+apprequests:{
 transform:function transform(call){
 call=MobileIframeable.transform(call);
 
-call.params.frictionless=Frictionless&&
-Frictionless._useFrictionless;
+call.params.frictionless=Frictionless&&Frictionless._useFrictionless;
 if(call.params.frictionless){
-
 if(Frictionless.isAllowed(call.params.to)){
 
 
@@ -11993,8 +12066,10 @@ getXdRelation:MobileIframeable.getXdRelation},
 
 'permissions.oauth':{
 url:'dialog/oauth',
-size:{width:UA.mobile()?null:475,
+size:{
+width:UA.mobile()?null:475,
 height:UA.mobile()?null:183},
+
 transform:function transform(call){
 if(!Runtime.getClientID()){
 Log.error('FB.login() called before FB.init().');
@@ -12004,31 +12079,36 @@ return;
 
 
 
-if(Auth.getAuthResponse()&&
+if(
+Auth.getAuthResponse()&&
 !call.params.scope&&
-!call.params.auth_type){
+!call.params.auth_type)
+{
 Log.error('FB.login() called when user is already connected.');
-call.cb&&call.cb({status:Runtime.getLoginStatus(),
+call.cb&&
+call.cb({
+status:Runtime.getLoginStatus(),
 authResponse:Auth.getAuthResponse()});
+
 return;
 }
 
-var
-cb=call.cb,
+var cb=call.cb,
 id=call.id;
 delete call.cb;
 
 var isReauthenticate=call.params.auth_type==='reauthenticate';
 var responseTypes=ES('Object','keys',false,ES('Object','assign',false,
+
 call.params.response_type?
 createObjectFrom(call.params.response_type.split(',')):
 {},
 {token:true,signed_request:true})).
+
 join(',');
 
 if(call.params.display==='async'){
-ES('Object','assign',false,
-call.params,{
+ES('Object','assign',false,call.params,{
 client_id:Runtime.getClientID(),
 origin:getContextType(),
 response_type:responseTypes,
@@ -12036,7 +12116,10 @@ domain:location.hostname});
 
 
 call.cb=Auth.xdResponseWrapper(
-cb,Auth.getAuthResponse(),'permissions.oauth');
+cb,
+Auth.getAuthResponse(),
+'permissions.oauth');
+
 }else{
 if(isReauthenticate){
 UIServer._xdNextHandler(
@@ -12051,8 +12134,7 @@ id,
 true);
 
 }
-ES('Object','assign',false,
-call.params,{
+ES('Object','assign',false,call.params,{
 client_id:Runtime.getClientID(),
 redirect_uri:resolveURI(
 UIServer.xdHandler(
@@ -12098,8 +12180,7 @@ return call;
 'login.status':{
 url:'dialog/oauth',
 transform:function transform(call){
-var
-cb=call.cb,
+var cb=call.cb,
 id=call.id;
 delete call.cb;
 ES('Object','assign',false,call.params,{
@@ -12121,12 +12202,12 @@ return call;
 }},
 
 
-'pay':{
+pay:{
 size:{width:555,height:120},
 connectDisplay:'popup'},
 
 
-'live_broadcast':{
+live_broadcast:{
 transform:function transform(call){
 if(call.params.phase==='create'){
 call.size={width:480,height:280};
@@ -12138,7 +12219,7 @@ return call;
 },
 require_access_token:true},
 
-'boost':{
+boost:{
 transform:function transform(call){
 call.size={width:960,height:760};
 call.params.display='popup';
@@ -12203,10 +12284,14 @@ _resultToken:'"xxRESULTTOKENxx"',
 
 genericTransform:function genericTransform(call){
 if(call.params.display=='dialog'||call.params.display=='iframe'){
-ES('Object','assign',false,call.params,{
+ES('Object','assign',false,
+call.params,
+{
 display:'iframe',
 channel:UIServer._xdChannelHandler(call.id,'parent.parent')},
+
 true);
+
 }
 
 return call;
@@ -12241,13 +12326,13 @@ return params.display;
 
 
 prepareCall:function prepareCall(params,cb){
-var
-name=params.method.toLowerCase(),
+var name=params.method.toLowerCase(),
 method=Object.prototype.hasOwnProperty.call(UIServer.Methods,name)?ES('Object','assign',false,
 {},UIServer.Methods[name]):
 {},
 id=guid(),
-useSSL=Runtime.getSecure()||
+useSSL=
+Runtime.getSecure()||
 name!=='auth.status'&&name!='login.status';
 
 
@@ -12262,8 +12347,8 @@ access_token:useSSL&&Runtime.getAccessToken()||undefined});
 if(name==='share'||name==='share_open_graph'){
 
 
-params.mobile_iframe=UA.mobile()&&(
-params.mobile_iframe||params.iframe_test);
+params.mobile_iframe=
+UA.mobile()&&(params.mobile_iframe||params.iframe_test);
 if(params.mobile_iframe){
 method=ES('Object','assign',false,{},MobileIframeable);
 }
@@ -12277,10 +12362,12 @@ if(!method.url){
 method.url='dialog/'+name;
 }
 
-if((method.url=='dialog/oauth'||
+if(
+(method.url=='dialog/oauth'||
 method.url=='dialog/permissions.request')&&(
 params.display=='iframe'||
-params.display=='touch'&&params.in_iframe)){
+params.display=='touch'&&params.in_iframe))
+{
 params.display=UIServer.checkOauthDisplay(params);
 }
 
@@ -12297,8 +12384,8 @@ method.url=params.version+'/'+method.url;
 if(shouldEnforceSingleDialogInstance(params)){
 
 if(_dialogStates[name]){
-var errorMessage='Dialog "'+name+
-'" is trying to run more than once.';
+var errorMessage=
+'Dialog "'+name+'" is trying to run more than once.';
 Log.warn(errorMessage);
 cb({error_code:-100,error_message:errorMessage});
 return;
@@ -12312,8 +12399,10 @@ var call={
 cb:cb,
 id:id,
 size:method.size||UIServer.getDefaultSize(),
-url:UrlMap.resolve(params.display=='touch'?'m':'www',useSSL)+
-'/'+method.url,
+url:
+UrlMap.resolve(params.display=='touch'?'m':'www',useSSL)+
+'/'+
+method.url,
 params:params,
 name:name,
 dialog:Dialog.newInstance(id,params.display)};
@@ -12348,9 +12437,11 @@ call.params.parent_height=window.innerHeight;
 
 var getXdRelationFn=method.getXdRelation||UIServer.getXdRelation;
 var relation=getXdRelationFn(call.params);
-if(!(call.id in UIServer._defaultCb)&&
+if(
+!(call.id in UIServer._defaultCb)&&
 !('next'in call.params)&&
-!('redirect_uri'in call.params)){
+!('redirect_uri'in call.params))
+{
 call.params.next=UIServer._xdResult(
 call.cb,
 call.id,
@@ -12360,12 +12451,16 @@ true);
 }
 
 if(relation==='parent'||relation==='opener'){
-ES('Object','assign',false,call.params,{
+ES('Object','assign',false,
+call.params,
+{
 channel_url:UIServer._xdChannelHandler(
 id,
 relation==='parent'?'parent.parent':'opener')},
 
+
 true);
+
 }
 
 
@@ -12394,8 +12489,10 @@ var encodedQS=QueryString.encode(call.params);
 
 
 
-if(!UA.nativeApp()&&
-UIServer.urlTooLongForIE(call.url+'?'+encodedQS)){
+if(
+!UA.nativeApp()&&
+UIServer.urlTooLongForIE(call.url+'?'+encodedQS))
+{
 call.post=true;
 }else if(encodedQS){
 call.url+='?'+encodedQS;
@@ -12416,13 +12513,16 @@ return UA.ie()&&UA.ie()<=8&&fullURL.length>2048;
 
 
 getDisplayMode:function getDisplayMode(method,params){
-if(params.display==='hidden'||
+if(
+params.display==='hidden'||
 params.display==='none'||
-params.display==='native'){
+params.display==='native')
+{
 return params.display;
 }
 
-var canvas=Runtime.isEnvironment(Runtime.ENVIRONMENTS.CANVAS)||
+var canvas=
+Runtime.isEnvironment(Runtime.ENVIRONMENTS.CANVAS)||
 Runtime.isEnvironment(Runtime.ENVIRONMENTS.PAGETAB);
 if(canvas&&!params.display){
 return'async';
@@ -12476,8 +12576,12 @@ var display=params.display;
 if(display==='popup'||display==='touch'){
 return'opener';
 }
-if(display==='dialog'||display==='iframe'||
-display==='hidden'||display==='none'){
+if(
+display==='dialog'||
+display==='iframe'||
+display==='hidden'||
+display==='none')
+{
 return'parent';
 }
 if(display==='async'){
@@ -12493,20 +12597,22 @@ return'parent.frames['+window.name+']';
 
 popup:function popup(call){
 
-var
-_screenX=typeof window.screenX!='undefined'?
+var _screenX=
+typeof window.screenX!='undefined'?
 window.screenX:
 window.screenLeft,
-screenY=typeof window.screenY!='undefined'?
+screenY=
+typeof window.screenY!='undefined'?
 window.screenY:
 window.screenTop,
-outerWidth=typeof window.outerWidth!='undefined'?
+outerWidth=
+typeof window.outerWidth!='undefined'?
 window.outerWidth:
 document.documentElement.clientWidth,
-outerHeight=typeof window.outerHeight!='undefined'?
+outerHeight=
+typeof window.outerHeight!='undefined'?
 window.outerHeight:
 document.documentElement.clientHeight-22,
-
 
 
 width=UA.mobile()?null:call.size.width,
@@ -12525,8 +12631,10 @@ features.push('height='+height);
 features.push('left='+left);
 features.push('top='+top);
 features.push('scrollbars=1');
-if(call.name=='permissions.request'||
-call.name=='permissions.oauth'){
+if(
+call.name=='permissions.request'||
+call.name=='permissions.oauth')
+{
 features.push('toolbar=0');
 
 
@@ -12670,6 +12778,7 @@ UIServer.setLoadedNode(
 call,
 Native.open(call.url+'#cb='+call.frameName),
 'native');
+
 });
 UIServer._popupMonitor();
 }else if(!call.ui_created){
@@ -12686,8 +12795,8 @@ UIServer.popup(call);
 
 
 async:function async(call){
-call.params.redirect_uri=location.protocol+'//'+
-location.host+location.pathname;
+call.params.redirect_uri=
+location.protocol+'//'+location.host+location.pathname;
 delete call.params.access_token;
 
 var handler=function handler(response){
@@ -12785,10 +12894,7 @@ if(data.width){
 node.style.width=data.width+'px';
 }
 
-XD.inform(
-'resize.ack',
-data||{},
-'parent.frames['+node.name+']');
+XD.inform('resize.ack',data||{},'parent.frames['+node.name+']');
 
 if(!Dialog.isActive(node)){
 Dialog.show(node);
@@ -12808,10 +12914,7 @@ var data={frame:id};
 if(result){
 data.result=result;
 }
-UIServer._xdRecv(
-data,
-UIServer._defaultCb[id]||function(){});
-
+UIServer._xdRecv(data,UIServer._defaultCb[id]||function(){});
 },
 
 
@@ -12825,8 +12928,10 @@ _popupMonitor:function _popupMonitor(){
 var found;
 for(var id in UIServer._loadedNodes){
 
-if(Object.prototype.hasOwnProperty.call(UIServer._loadedNodes,id)&&
-id in UIServer._defaultCb){
+if(
+Object.prototype.hasOwnProperty.call(UIServer._loadedNodes,id)&&
+id in UIServer._defaultCb)
+{
 var node=UIServer._loadedNodes[id];
 if(node.type!='popup'&&node.type!='native'){
 continue;
@@ -12864,11 +12969,12 @@ UIServer._popupInterval=null;
 
 
 
-_xdChannelHandler:function _xdChannelHandler(frame,relation)
-{
-return XD.handler(function(data){
+_xdChannelHandler:function _xdChannelHandler(frame,relation){
+return XD.handler(
+function(data){
 var node=UIServer.getLoadedNode(frame);
 if(!node){
+
 return;
 }
 
@@ -12882,7 +12988,11 @@ Dialog.show(root);
 }else if(data.type=='fireevent'){
 Event.fire(data.event,data);
 }
-},relation,true,null);
+},
+relation,
+true,
+null);
+
 },
 
 
@@ -12896,15 +13006,23 @@ Event.fire(data.event,data);
 
 
 
-_xdNextHandler:function _xdNextHandler(cb,frame,
-relation,isDefault){
+_xdNextHandler:function _xdNextHandler(
+cb,
+frame,
+relation,
+isDefault)
+{
 if(isDefault){
 UIServer._defaultCb[frame]=cb;
 }
 
-return XD.handler(function(data){
+return(
+XD.handler(function(data){
 UIServer._xdRecv(data,cb);
-},relation)+'&frame='+frame;
+},relation)+
+'&frame='+
+frame);
+
 },
 
 
@@ -12925,8 +13043,10 @@ frame.close();
 
 
 
-if(/iPhone.*Version\/(5|6)/.test(navigator.userAgent)&&
-RegExp.$1!=='5'){
+if(
+/iPhone.*Version\/(5|6)/.test(navigator.userAgent)&&
+RegExp.$1!=='5')
+{
 window.focus();
 }
 UIServer._popupCount--;
@@ -12971,16 +13091,29 @@ cb(data);
 
 
 
-_xdResult:function _xdResult(cb,frame,target,
-isDefault){
+_xdResult:function _xdResult(
+cb,
+frame,
+target,
+isDefault)
+{
 return(
-UIServer._xdNextHandler(function(params){
-cb&&cb(params.result&&
+UIServer._xdNextHandler(
+function(params){
+cb&&
+cb(
+params.result&&
 params.result!=UIServer._resultToken&&ES('JSON','parse',false,
 params.result));
-},frame,target,isDefault)+
 
-'&result='+encodeURIComponent(UIServer._resultToken));
+},
+frame,
+target,
+isDefault)+
+
+
+'&result='+
+encodeURIComponent(UIServer._resultToken));
 
 },
 
@@ -12997,8 +13130,8 @@ Auth.xdResponseWrapper(cb,authResponse,method),
 frame,
 target,
 isDefault);
-}};
 
+}};
 
 
 Extensions.stub('showDialog');
@@ -13100,8 +13233,10 @@ delete params.redirect_uri;
 }
 
 
-if((method=='permissions.request'||method=='permissions.oauth')&&(
-params.display=='iframe'||params.display=='dialog')){
+if(
+(method=='permissions.request'||method=='permissions.oauth')&&(
+params.display=='iframe'||params.display=='dialog'))
+{
 params.display=UIServer.checkOauthDisplay(params);
 }
 
@@ -13117,12 +13252,14 @@ params.e2e={};
 }
 var call=UIServer.prepareCall(params,cb||function(){});
 if(!call){
+
 return null;
 }
 
 
 var displayName=call.params.display;
 if(displayName==='dialog'){
+
 
 displayName='iframe';
 }else if(displayName==='none'){
@@ -13131,8 +13268,10 @@ displayName='hidden';
 
 var displayFn=UIServer[displayName];
 if(!displayFn){
-Log.error('"display" must be one of "popup", '+
+Log.error(
+'"display" must be one of "popup", '+
 '"dialog", "iframe", "touch", "async", "hidden", or "none"');
+
 return null;
 }
 
@@ -13164,7 +13303,6 @@ __d('legacy:fb.auth',['sdk.Auth','sdk.Cookie','sdk.Event','FB','Log','sdk.Runtim
 
 
 FB.provide('',{
-
 getLoginStatus:function getLoginStatus(){
 return Auth.getLoginStatus.apply(Auth,arguments);
 },
@@ -13185,24 +13323,26 @@ login:function login(cb,opts){
 if(opts&&opts.perms&&!opts.scope){
 opts.scope=opts.perms;
 delete opts.perms;
-Log.warn('OAuth2 specification states that \'perms\' '+
-'should now be called \'scope\'.  Please update.');
+Log.warn(
+"OAuth2 specification states that 'perms' "+
+"should now be called 'scope'.  Please update.");
+
 }
-var canvas=Runtime.isEnvironment(Runtime.ENVIRONMENTS.CANVAS)||
+var canvas=
+Runtime.isEnvironment(Runtime.ENVIRONMENTS.CANVAS)||
 Runtime.isEnvironment(Runtime.ENVIRONMENTS.PAGETAB);
 ui(babelHelpers['extends']({
+
 method:'permissions.oauth',
 
-display:canvas?
-'async':
-'popup',
+display:canvas?'async':'popup',
 
 domain:location.hostname},
 opts||{}),
 
 cb);
-},
 
+},
 
 logout:function logout(cb){
 ui({method:'auth.logout',display:'hidden'},cb);
@@ -13211,8 +13351,10 @@ ui({method:'auth.logout',display:'hidden'},cb);
 
 Auth.subscribe('logout',ES(Event.fire,'bind',true,Event,'auth.logout'));
 Auth.subscribe('login',ES(Event.fire,'bind',true,Event,'auth.login'));
-Auth.subscribe('authresponse.change',ES(Event.fire,'bind',true,Event,
-'auth.authResponseChange'));
+Auth.subscribe(
+'authresponse.change',ES(
+Event.fire,'bind',true,Event,'auth.authResponseChange'));
+
 Auth.subscribe('status.change',ES(Event.fire,'bind',true,Event,'auth.statusChange'));
 
 Event.subscribe('init:post',function(options){
@@ -13225,7 +13367,8 @@ Auth.setAuthResponse(options.authResponse,'connected');
 }else if(Runtime.getUseCookie()){
 
 
-var signedRequest=Cookie.loadSignedRequest(),parsedSignedRequest;
+var signedRequest=Cookie.loadSignedRequest(),
+parsedSignedRequest;
 if(signedRequest){
 try{
 parsedSignedRequest=SignedRequest.parse(signedRequest);
@@ -13396,10 +13539,12 @@ var devHidePluginCallback=null;
 
 
 var osx=UA.osx()&&UA.osx.getVersionParts();
-var unityNeedsToBeHidden=!(osx&&osx[0]>10&&osx[1]>10&&(
-UA.chrome()>=31||
-UA.webkit()>=537.71||
-UA.firefox()>=25));
+var unityNeedsToBeHidden=!(
+osx&&
+osx[0]>10&&
+osx[1]>10&&(
+UA.chrome()>=31||UA.webkit()>=537.71||UA.firefox()>=25));
+
 
 
 
@@ -13462,7 +13607,8 @@ delete elem._old_visibility;
 
 function isHideableFlashElement(elem){
 var type=elem.type?elem.type.toLowerCase():null;
-var isHideable=type==='application/x-shockwave-flash'||
+var isHideable=
+type==='application/x-shockwave-flash'||
 elem.classid&&elem.classid.toUpperCase()==flashClassID;
 
 if(!isHideable){
@@ -13478,8 +13624,11 @@ return false;
 
 for(var j=0;j<elem.childNodes.length;j++){
 var node=elem.childNodes[j];
-if(/param/i.test(node.nodeName)&&/wmode/i.test(node.name)&&
-keepvisibleRegex.test(node.value)){
+if(
+/param/i.test(node.nodeName)&&
+/wmode/i.test(node.name)&&
+keepvisibleRegex.test(node.value))
+{
 return false;
 }
 }
@@ -13488,8 +13637,10 @@ return true;
 
 function isHideableUnityElement(elem){
 var type=elem.type?elem.type.toLowerCase():null;
-return type==='application/vnd.unity'||
-elem.classid&&elem.classid.toUpperCase()==unityClassID;
+return(
+type==='application/vnd.unity'||
+elem.classid&&elem.classid.toUpperCase()==unityClassID);
+
 }
 
 
@@ -13498,9 +13649,7 @@ elem.classid&&elem.classid.toUpperCase()==unityClassID;
 
 
 function hidePluginCallback(params){
-var candidates=ES('Array','from',false,
-window.document.getElementsByTagName('object'));
-
+var candidates=ES('Array','from',false,window.document.getElementsByTagName('object'));
 candidates=candidates.concat(ES('Array','from',false,
 window.document.getElementsByTagName('embed')));
 
@@ -13548,8 +13697,8 @@ visibilityToggleCb();
 
 if(Math.random()<=1/1000){
 var opts={
-'unity':unityPresent,
-'flash':flashPresent};
+unity:unityPresent,
+flash:flashPresent};
 
 api(Runtime.getClientID()+'/occludespopups','post',opts);
 }
@@ -13715,7 +13864,6 @@ return Navigation.setUrlHandler.apply(null,arguments);
 }});
 
 
-
 RPC.local.fireEvent=ES(Event.fire,'bind',true,Event);
 
 Event.subscribe('init:post',function(options){
@@ -13725,8 +13873,7 @@ Assert.isTrue(
 'cannot specify deprecated hideFlashCallback and new hidePluginCallback');
 
 Plugin._setHidePluginCallback(
-options.hidePluginCallback||
-options.hideFlashCallback);
+options.hidePluginCallback||options.hideFlashCallback);
 
 }
 });},3);
@@ -13777,8 +13924,9 @@ script:'src'};
 if(collectionMode==COLLECT.AUTOMATIC){
 ES(ES('Object','keys',false,resourceFieldsByTag),'forEach',true,function(tagName){
 var propertyName=resourceFieldsByTag[tagName];
-ES(ES('Array','from',false,document.getElementsByTagName(tagName)),'forEach',true,
-function(tag){
+ES(ES('Array','from',false,document.getElementsByTagName(tagName)),'forEach',true,function(
+tag)
+{
 if(tag[propertyName]){
 links.push(tag[propertyName]);
 }
@@ -13800,14 +13948,19 @@ links=[];
 }
 
 function maybeSample(){
-if(!Runtime.isEnvironment(Runtime.ENVIRONMENTS.CANVAS)||
+if(
+!Runtime.isEnvironment(Runtime.ENVIRONMENTS.CANVAS)||
 !Runtime.getClientID()||
-!sampleRate){
+!sampleRate)
+{
 return;
 }
 
-if(Math.random()>1/sampleRate||
-blacklist=='*'||~ES(blacklist,'indexOf',true,Runtime.getClientID())){
+if(
+Math.random()>1/sampleRate||
+blacklist=='*'||
+~ES(blacklist,'indexOf',true,Runtime.getClientID()))
+{
 return;
 }
 
@@ -13887,20 +14040,26 @@ publish:function publish(post,cb){
 Log.error('publish() has been deprecated. Please use FB.ui() instead.');
 post=post||{};
 ui(babelHelpers['extends']({
+
 display:'popup',
 method:'stream.publish',
 preview:1},
 post||{}),
+
 cb);
+
 },
 
 addFriend:function addFriend(id,cb){
 Log.error('addFriend() has been deprecated. Please use FB.ui() instead.');
-ui({
+ui(
+{
 display:'popup',
 id:id,
 method:'friend.add'},
+
 cb);
+
 }});
 
 
@@ -13933,8 +14092,10 @@ return window[source].apply(null,args||[]);
 }
 
 
-return Function('return eval("'+source.replace(/\"/g,'\\"')+'");').
-apply(null,args||[]);
+return Function('return eval("'+source.replace(/\"/g,'\\"')+'");').apply(
+null,
+args||[]);
+
 }
 
 module.exports=safeEval;},null);
@@ -13975,7 +14136,7 @@ this.parent({Value:undefined});
 
 
 error:function error(ex){
-this.inform("error",ex);
+this.inform('error',ex);
 },
 
 
@@ -14009,7 +14170,9 @@ if(errorHandler){
 this.subscribe('error',errorHandler);
 }
 
-this.monitor('Value.change',ES(function(){
+this.monitor(
+'Value.change',ES(
+function(){
 var value=this.getValue();
 if(value!==undefined){
 
@@ -14018,6 +14181,7 @@ callback(value);
 return true;
 }
 },'bind',true,this));
+
 }});
 
 
@@ -14077,9 +14241,10 @@ __d('sdk.Query',['format','safeEval','Type','sdk.Waitable'],function $module_sdk
 
 
 
-
 function toFields(s){
-return ES(s.split(','),'map',true,function(s){return ES(s,'trim',true);});
+return ES(s.split(','),'map',true,function(s){
+return ES(s,'trim',true);
+});
 }
 
 
@@ -14091,8 +14256,7 @@ return ES(s.split(','),'map',true,function(s){return ES(s,'trim',true);});
 function parseWhere(s){
 
 
-var
-re=/^\s*(\w+)\s*=\s*(.*)\s*$/i.exec(s),
+var re=/^\s*(\w+)\s*=\s*(.*)\s*$/i.exec(s),
 result,
 value,
 type='unknown';
@@ -14127,9 +14291,7 @@ return result;
 
 
 function encode(value){
-return typeof value==='string'?ES('JSON','stringify',false,
-value):
-value;
+return typeof value==='string'?ES('JSON','stringify',false,value):value;
 }
 
 var counter=1;
@@ -14154,8 +14316,7 @@ return!!this._hasDependency;
 
 
 parse:function parse(args){
-var
-fql=format.apply(null,args),
+var fql=format.apply(null,args),
 re=/^select (.*?) from (\w+)\s+where (.*)$/i.exec(fql);
 this.fields=toFields(re[1]);
 this.table=re[2];
@@ -14178,8 +14339,8 @@ return this;
 
 
 toFql:function toFql(){
-var s='select '+this.fields.join(',')+' from '+
-this.table+' where ';
+var s=
+'select '+this.fields.join(',')+' from '+this.table+' where ';
 switch(this.where.type){
 case'unknown':
 s+=this.where.value;
@@ -14191,14 +14352,16 @@ case'in':
 if(this.where.value.length==1){
 s+=this.where.key+'='+encode(this.where.value[0]);
 }else{
-s+=this.where.key+' in ('+
-ES(this.where.value,'map',true,encode).join(',')+')';
+s+=
+this.where.key+
+' in ('+
+ES(this.where.value,'map',true,encode).join(',')+
+')';
 }
 break;}
 
 return s;
 },
-
 
 
 
@@ -14389,15 +14552,16 @@ return query;
 
 
 waitOn:function waitOn(dependencies,callback){
-var
-result=new Waitable(),
+var result=new Waitable(),
 count=dependencies.length;
 
 
 
 if(typeof callback=='string'){
 var s=callback;
-callback=ErrorHandling.unguard(function(){return safeEval(s);});
+callback=ErrorHandling.unguard(function(){
+return safeEval(s);
+});
 }
 
 ES(dependencies,'forEach',true,function(item){
@@ -14435,9 +14599,7 @@ Data._process(token);
 
 
 _getValue:function _getValue(item){
-return item instanceof Waitable?
-item.getValue():
-item;
+return item instanceof Waitable?item.getValue():item;
 },
 
 
@@ -14450,8 +14612,12 @@ item;
 
 
 
-_selectByIndex:function _selectByIndex(fields,table,name,
-value){
+_selectByIndex:function _selectByIndex(
+fields,
+table,
+name,
+value)
+{
 var query=new Query();
 query.fields=fields;
 query.table=table;
@@ -14481,8 +14647,7 @@ Data._process();
 _process:function _process(token){
 Data.timer=-1;
 
-var
-mqueries={},
+var mqueries={},
 q=Data.queue;
 
 if(!q.length){
@@ -14548,9 +14713,11 @@ mergeArrays(master.where.value,[value]);
 
 
 master.wait(function(r){
-item.setValue(ES(r,'filter',true,function(x){
+item.setValue(ES(
+r,'filter',true,function(x){
 return x[key]==value;
 }));
+
 });
 },
 
@@ -14586,7 +14753,6 @@ eventsToLog.push(name);
 
 if(!logScheduleId){
 logScheduleId=setTimeout(function(){
-
 Scribe.log('jssdk_error',{
 appId:Runtime.getClientID(),
 error:'EVENT_SUBSCRIPTIONS_LOG',
@@ -14601,7 +14767,6 @@ message:eventsToLog.sort().join(',')}});
 
 eventsToLog.length=0;
 logScheduleId=null;
-
 },logTimeout);
 }
 }
@@ -14658,6 +14823,8 @@ var link=document.createElement('a');
 link.style='display:inline-block; zoom:1;';
 link.textContent=fbt._("Share to Facebook");
 
+
+
 link.setAttribute('href',dialog.toString());
 link.setAttribute('target','_blank');
 share_button_container.insertBefore(link,share_button);
@@ -14667,8 +14834,8 @@ share_button_container.removeChild(share_button);
 if(!feature('js_sdk_mbasic_share_plugin_init',false)){
 return;
 }
-ES(ES('Array','from',false,document.getElementsByTagName('fb:share-button')),'forEach',true,
-function(button){return replaceWithLink(button);});
+ES(ES('Array','from',false,document.getElementsByTagName('fb:share-button')),'forEach',true,function(button){return(
+replaceWithLink(button));});
 
 ES(ES('Array','from',false,document.getElementsByClassName('fb-share-button')),'forEach',true,
 function(button){return replaceWithLink(button);});
@@ -14714,8 +14881,10 @@ typeof appId==='string'&&/^[0-9a-f]{21,}$|^[0-9]{1,21}$/.test(appId);
 if(looksValid){
 return appId.toString();
 }
-Log.warn('Invalid App Id: Must be a number or numeric string representing '+
+Log.warn(
+'Invalid App Id: Must be a number or numeric string representing '+
 'the application id.');
+
 return null;
 }
 
@@ -14738,8 +14907,7 @@ return null;
 
 function init(options){
 if(Runtime.getInitialized()){
-Log.warn(
-'FB.init has already been called - this could indicate a problem');
+Log.warn('FB.init has already been called - this could indicate a problem');
 }
 
 
@@ -14767,8 +14935,10 @@ Log.warn('FB.init called with invalid parameters');
 options={apiKey:options};
 }
 
-options=ES('Object','assign',false,{
+options=ES('Object','assign',false,
+{
 status:true},
+
 options||{});
 
 }
@@ -14933,19 +15103,22 @@ return ES(object[property]+'','trim',true);
 function nodeNameIE(element){
 
 
-return element.scopeName?
-element.scopeName+':'+element.nodeName:
-'';
+return element.scopeName?element.scopeName+':'+element.nodeName:'';
 }
 
 function xfbmlInfo(element){
-return xfbml[propStr(element,'nodeName').toLowerCase()]||
-xfbml[nodeNameIE(element).toLowerCase()];
+return(
+xfbml[propStr(element,'nodeName').toLowerCase()]||
+xfbml[nodeNameIE(element).toLowerCase()]);
+
 }
 
 function html5Info(element){
-var classNames=ES(propStr(element,'className').split(/\s+/),'filter',true,
-function(className){return Object.prototype.hasOwnProperty.call(html5,className);});
+var classNames=ES(propStr(element,'className').
+split(/\s+/),'filter',true,
+function(className){
+return Object.prototype.hasOwnProperty.call(html5,className);
+});
 
 if(classNames.length===0){
 return undefined;
@@ -14986,7 +15159,10 @@ return attrs;
 }
 
 function convertSyntax(
-element,ns,ln){
+element,
+ns,
+ln)
+{
 var replacement=document.createElement('div');
 DOM.addCss(element,ns+'-'+ln);
 ES(ES('Array','from',false,element.childNodes),'forEach',true,function(child){
@@ -15003,6 +15179,7 @@ function _parse(dom,callback,reparse){
 Assert.isTrue(
 dom&&dom.nodeType&&dom.nodeType===1&&!!dom.getElementsByTagName,
 'Invalid DOM node passed to FB.XFBML.parse()');
+
 Assert.isFunction(callback,'Invalid callback passed to FB.XFBML.parse()');
 
 var pc=++parseCount;
@@ -15047,12 +15224,18 @@ element=convertSyntax(element,info.xmlns,info.localName);
 
 count++;
 tags++;
-var renderer=
-new info.ctor(element,info.xmlns,info.localName,attr(element));
+var renderer=new info.ctor(
+element,
+info.xmlns,
+info.localName,
+attr(element));
 
 
 
-renderer.subscribe('render',runOnce(function(){
+
+renderer.subscribe(
+'render',
+runOnce(function(){
 
 
 
@@ -15060,6 +15243,7 @@ renderer.subscribe('render',runOnce(function(){
 element.setAttribute('fb-xfbml-state','rendered');
 onrender();
 }));
+
 
 var render=function render(){
 
@@ -15092,13 +15276,14 @@ onrender();
 XFBML.subscribe('render',function(){
 var q=XFBML.getSubscribers('render.queue');
 XFBML.clearSubscribers('render.queue');
-ES(q,'forEach',true,function(r){r();});
+ES(q,'forEach',true,function(r){
+r();
+});
 
 
 });
 
 ES('Object','assign',false,XFBML,{
-
 registerTag:function registerTag(info){
 var fqn=info.xmlns+':'+info.localName;
 Assert.isUndefined(xfbml[fqn],fqn+' already registered');
@@ -15161,8 +15346,10 @@ domReady,'bind',true,null,XFBML.parse),
 });
 
 Assert.define('Xfbml',function(element){
-return(element.nodeType===1||element.nodeType===9)&&
-typeof element.nodeName==='string';
+return(
+(element.nodeType===1||element.nodeType===9)&&
+typeof element.nodeName==='string');
+
 });
 
 
@@ -15268,8 +15455,12 @@ undefined;
 return val;
 }
 
-function validate(defn,elem,attr,
-params){
+function validate(
+defn,
+elem,
+attr,
+params)
+{
 ES(ES('Object','keys',false,defn),'forEach',true,function(key){
 if(defn[key]=='text'&&!attr[key]){
 attr[key]=elem.textContent||elem.innerText||'';
@@ -15296,7 +15487,8 @@ resize(iframe,0,0);
 }
 
 
-var IframePlugin=Type.extend({
+var IframePlugin=Type.extend(
+{
 constructor:function constructor(
 elem,
 ns,
@@ -15387,18 +15579,19 @@ params.container_width=elem.offsetWidth;
 DOM.addCss(elem,'fb_iframe_widget');
 var name=guid();
 this.subscribe('xd.verify',function(msg){
-XD.sendToFacebook(
-name,{method:'xd/verify',params:ES('JSON','stringify',false,msg.token)});
+XD.sendToFacebook(name,{
+method:'xd/verify',
+params:ES('JSON','stringify',false,msg.token)});
+
 });
 
-this.subscribe(
-'xd.refreshLoginStatus',ES(function(){
+this.subscribe('xd.refreshLoginStatus',ES(function(){
 Auth.removeLogoutState();
 Auth.getLoginStatus(ES(
 this.inform,'bind',true,this,'login.status'),
 true);
-},'bind',true,this));
 
+},'bind',true,this));
 
 var flow=document.createElement('span');
 
@@ -15425,7 +15618,8 @@ name:name,
 
 
 
-width:this._config.mobile_fullsize&&UA.mobile()?
+width:
+this._config.mobile_fullsize&&UA.mobile()?
 void 0:
 params.width||1000,
 height:params.height||1000,
@@ -15448,7 +15642,6 @@ this._params.container_width=this._element.offsetWidth;
 this._iframeOptions.url=url+QueryString.encode(this._params);
 }
 }
-
 },
 
 shouldIgnoreWidth:function shouldIgnoreWidth(){
@@ -15464,8 +15657,9 @@ process:function process(){
 if(Runtime.getIsVersioned()){
 PlatformVersioning.assertVersionIsSet();
 var uri=new URI(this._iframeOptions.url);
-this._iframeOptions.url=
-uri.setPath('/'+Runtime.getVersion()+uri.getPath()).toString();
+this._iframeOptions.url=uri.
+setPath('/'+Runtime.getVersion()+uri.getPath()).
+toString();
 }
 
 
@@ -15497,19 +15691,13 @@ this._element.appendChild(this._iframeOptions.root);
 var timeout=UA.mobile()?120:45;
 this._timeoutID=setTimeout(ES(function(){
 collapseIframe(this._iframe);
-Log.warn(
-'%s:%s failed to resize in %ss',
-this._ns,
-this._tag,
-timeout);
-
+Log.warn('%s:%s failed to resize in %ss',this._ns,this._tag,timeout);
 },'bind',true,this),timeout*1000);
 
 
 
 
 this._iframe=createIframe(this._iframeOptions);
-
 
 if(UA.mobile()||params.width==='auto'){
 if(this.useInlineHeightForMobile()){
@@ -15577,43 +15765,38 @@ var screenWidth=DOM.getViewportInfo().width;
 var oldWidth=parseInt(DOM.getStyle(this._iframe,'width'),10);
 
 var params={};
-if(
-leftPosition+newWidth>screenWidth&&
-leftPosition>newWidth)
-{
+if(leftPosition+newWidth>screenWidth&&leftPosition>newWidth){
 this._iframe.style.left=
 parseInt(DOM.getStyle(this._iframe,'width'),10)-newWidth+'px';
 
 this._isRepositioned=true;
 params.type='reposition';
-
 }else if(this._isRepositioned&&oldWidth-newWidth!==0){
 
 this._iframe.style.left='0px';
 this._isRepositioned=false;
 params.type='restore';
-
 }else{
 
 return;
 }
 
-XD.sendToFacebook(
-this._iframe.name,
-{
+XD.sendToFacebook(this._iframe.name,{
 method:'xd/reposition',
 params:ES('JSON','stringify',false,params)});
-
 
 },
 
 updateLift:function updateLift(){
+
 var same=
 this._iframe.style.width===this._iframeOptions.root.style.width&&
 this._iframe.style.height===this._iframeOptions.root.style.height;
 DOM[same?'removeCss':'addCss'](this._iframe,'fb_iframe_widget_lift');
 }},
+
 ObservableMixin);
+
 
 IframePlugin.getVal=getVal;
 
@@ -15680,7 +15863,6 @@ action_properties:'string'},
 
 
 create_event_button:{},
-
 
 follow:{
 href:'url',
@@ -15808,7 +15990,6 @@ size:'string'}};
 
 
 
-
 var aliases={
 subscribe:'follow',
 fan:'like_box',
@@ -15838,7 +16019,8 @@ __d('sdk.XFBML.Element',['sdk.DOM','Type','ObservableMixin'],function $module_sd
 
 
 
-var Element=Type.extend({
+var Element=Type.extend(
+{
 
 
 
@@ -15865,14 +16047,13 @@ this.inform.apply(this,arguments);
 
 
 
-getAttribute:function getAttribute(name,defaultValue,
-transform){
+getAttribute:function getAttribute(
+name,
+defaultValue,
+transform)
+{
 var value=DOM.getAttr(this.dom,name);
-return value?
-transform?
-transform(value):
-value:
-defaultValue;
+return value?transform?transform(value):value:defaultValue;
 },
 
 
@@ -15881,12 +16062,12 @@ defaultValue;
 
 
 
-_getBoolAttribute:function _getBoolAttribute(name,defaultValue)
+_getBoolAttribute:function _getBoolAttribute(
+name,
+defaultValue)
 {
 var value=DOM.getBoolAttr(this.dom,name);
-return value===null?
-defaultValue:
-value;
+return value===null?defaultValue:value;
 },
 
 
@@ -15895,7 +16076,9 @@ value;
 
 
 
-_getPxAttribute:function _getPxAttribute(name,defaultValue)
+_getPxAttribute:function _getPxAttribute(
+name,
+defaultValue)
 {
 return this.getAttribute(name,defaultValue,function(s){
 var value=parseInt(s,10);
@@ -15928,14 +16111,16 @@ return isNaN(value)?defaultValue:value;
 
 
 
-_getAttributeFromList:function _getAttributeFromList(name,defaultValue,
-allowed){
-return this.getAttribute(name,defaultValue,function(s)
+_getAttributeFromList:function _getAttributeFromList(
+name,
+defaultValue,
+allowed)
+{
+return this.getAttribute(name,defaultValue,function(
+s)
 {
 s=s.toLowerCase();
-return ES(allowed,'indexOf',true,s)>-1?
-s:
-defaultValue;
+return ES(allowed,'indexOf',true,s)>-1?s:defaultValue;
 });
 },
 
@@ -15961,6 +16146,7 @@ DOM.html(this.dom,'');
 }},
 
 ObservableMixin);
+
 
 module.exports=Element;},null);
 __d('sdk.XFBML.IframeWidget',['sdk.Arbiter','sdk.Auth','sdk.Content','sdk.DOM','sdk.Event','sdk.XFBML.Element','guid','insertIframe','QueryString','sdk.Runtime','sdk.ui','UrlMap','sdk.XD'],function $module_sdk_XFBML_IframeWidget(global,require,requireDynamic,requireLazy,module,exports,Arbiter,Auth,Content,DOM,Event,Element,guid,insertIframe,QueryString,Runtime,ui,UrlMap,XD){
@@ -16062,7 +16248,6 @@ _repositioned:false,
 
 
 
-
 getUrlBits:function getUrlBits(){
 throw new Error('Inheriting class needs to implement getUrlBits().');
 },
@@ -16099,7 +16284,8 @@ oneTimeSetup:function oneTimeSetup(){},
 
 
 
-getSize:function getSize(){},
+getSize:function getSize(){
+},
 
 
 
@@ -16138,9 +16324,13 @@ if(!this._channelUrl){
 
 
 var self=this;
-this._channelUrl=XD.handler(function(message){
+this._channelUrl=XD.handler(
+function(message){
 self.fire('xd.'+message.type,message);
-},'parent.parent',true);
+},
+'parent.parent',
+true);
+
 }
 return this._channelUrl;
 },
@@ -16159,18 +16349,23 @@ return this.dom.getElementsByTagName('iframe')[0];
 
 
 
-arbiterInform:function arbiterInform(event,message,
-behavior){
-XD.sendToFacebook(
-this.getIframeName(),{
+arbiterInform:function arbiterInform(
+event,
+message,
+behavior)
+{
+XD.sendToFacebook(this.getIframeName(),{
 method:event,
 params:ES('JSON','stringify',false,message||{}),
 behavior:behavior||Arbiter.BEHAVIOR_PERSISTENT});
 
 },
 
-_arbiterInform:function _arbiterInform(event,message,
-behavior){
+_arbiterInform:function _arbiterInform(
+event,
+message,
+behavior)
+{
 var relation='parent.frames["'+this.getIframeNode().name+'"]';
 XD.inform(event,message,relation,behavior);
 },
@@ -16347,7 +16542,8 @@ this.subscribe('iframe.onload',ES(this._makeVisible,'bind',true,this));
 }
 
 this.subscribe(
-'xd.verify',ES(function(message){
+'xd.verify',ES(
+function(message){
 this.arbiterInform('xd/verify',message.token);
 },'bind',true,this));
 
@@ -16375,9 +16571,12 @@ this.fire('render');
 
 
 _setupAuthRefresh:function _setupAuthRefresh(){
-Auth.getLoginStatus(ES(function(response){
+Auth.getLoginStatus(ES(
+function(response){
 var lastStatus=response.status;
-Event.subscribe('auth.statusChange',ES(function(response){
+Event.subscribe(
+'auth.statusChange',ES(
+function(response){
 if(!this.isValid()){
 return;
 }
@@ -16387,7 +16586,9 @@ this.process(true);
 }
 lastStatus=response.status;
 },'bind',true,this));
+
 },'bind',true,this));
+
 },
 
 
@@ -16443,8 +16644,7 @@ var iframe_width=parseInt(DOM.getStyle(iframe,'width'),10);
 var left=DOM.getPosition(iframe).x;
 var screen_width=DOM.getViewportInfo().width;
 var comment_width=parseInt(message.width,10);
-if(left+comment_width>screen_width&&
-left>comment_width){
+if(left+comment_width>screen_width&&left>comment_width){
 iframe.style.left=iframe_width-comment_width+'px';
 this.arbiterInform('xd/reposition',{type:'horizontal'});
 this._repositioned=true;
@@ -16487,13 +16687,16 @@ this._loaderDiv=null;
 
 
 _getQS:function _getQS(){
-return ES('Object','assign',false,{
+return ES('Object','assign',false,
+{
 api_key:Runtime.getClientID(),
 locale:Runtime.getLocale(),
 sdk:'joey',
 kid_directed_site:Runtime.getKidDirectedSite(),
 ref:this.getAttribute('ref')},
+
 this.getUrlBits().params);
+
 },
 
 
@@ -16505,8 +16708,7 @@ _getURL:function _getURL(){
 var domain=this.getDefaultWebDomain();
 var static_path='';
 
-return domain+'/plugins/'+static_path+
-this.getUrlBits().name+'.php';
+return domain+'/plugins/'+static_path+this.getUrlBits().name+'.php';
 },
 
 
@@ -16624,9 +16826,11 @@ if(!attr.width&&!attr.permalink){
 attr.width=550;
 }
 
-if(SDKConfig.initSitevars.enableMobileComments&&
+if(
+SDKConfig.initSitevars.enableMobileComments&&
 UA.mobile()&&
-attr.mobile!==false){
+attr.mobile!==false)
+{
 attr.mobile=true;
 }
 if(!attr.skin){
@@ -16660,30 +16864,35 @@ attr.xid=encodeURIComponent(document.URL);
 
 if(attr.migrated){
 attr.href=
-UrlMap.resolve('www')+'/plugins/comments_v1.php?'+
-'app_id='+Runtime.getClientID()+
-'&xid='+encodeURIComponent(attr.xid)+
-'&url='+encodeURIComponent(attr.url);
+UrlMap.resolve('www')+
+'/plugins/comments_v1.php?'+
+'app_id='+
+Runtime.getClientID()+
+'&xid='+
+encodeURIComponent(attr.xid)+
+'&url='+
+encodeURIComponent(attr.url);
 }
 }else{
 
 var fb_comment_id=this.getAttribute('fb_comment_id');
 if(!fb_comment_id){
-fb_comment_id=
-QueryString.decode(
-document.URL.substring(
-ES(document.URL,'indexOf',true,'?')+1)).fb_comment_id;
+fb_comment_id=QueryString.decode(
+document.URL.substring(ES(document.URL,'indexOf',true,'?')+1)).
+fb_comment_id;
 if(fb_comment_id&&ES(fb_comment_id,'indexOf',true,'#')>0){
 
-fb_comment_id=
-fb_comment_id.substring(0,ES(
+fb_comment_id=fb_comment_id.substring(
+0,ES(
 fb_comment_id,'indexOf',true,'#'));
+
 }
 }
 
 if(fb_comment_id){
 attr.fb_comment_id=fb_comment_id;
-this.subscribe('render',ES(
+this.subscribe(
+'render',ES(
 function(){
 
 
@@ -16692,6 +16901,7 @@ if(!window.location.hash){
 window.location.hash=this.getIframeNode().id;
 }
 },'bind',true,this));
+
 }
 }
 
@@ -16710,7 +16920,6 @@ oneTimeSetup:function oneTimeSetup(){
 this.subscribe('xd.sdk_event',function(message){
 Event.fire(message.event,ES('JSON','parse',false,message.data));
 });
-
 },
 
 
@@ -16721,7 +16930,8 @@ Event.fire(message.event,ES('JSON','parse',false,message.data));
 getSize:function getSize(){
 if(!this._attr.permalink){
 return{
-width:this._attr.mobile||
+width:
+this._attr.mobile||
 this._attr.width==='auto'||
 this._attr.width==='100%'?
 '100%':
@@ -16754,7 +16964,6 @@ getDefaultWebDomain:function getDefaultWebDomain(){
 return UrlMap.resolve('www',true);
 }});
 
-
 module.exports=Comments;},null);
 __d('sdk.XFBML.CommentsCount',['ApiClient','sdk.DOM','sdk.XFBML.Element','sprintf'],function $module_sdk_XFBML_CommentsCount(global,require,requireDynamic,requireLazy,module,exports,ApiClient,DOM,Element,sprintf){
 
@@ -16764,7 +16973,6 @@ __d('sdk.XFBML.CommentsCount',['ApiClient','sdk.DOM','sdk.XFBML.Element','sprint
 
 
 var CommentsCount=Element.extend({
-
 process:function process(){
 DOM.addCss(this.dom,'fb_comments_count_zero');
 
@@ -16788,7 +16996,6 @@ this.fire('render');
 },'bind',true,this));
 
 }});
-
 
 
 module.exports=CommentsCount;},null);
@@ -16841,14 +17048,13 @@ ES('Object','assign',false,this._iframe.style,{
 borderRadius:'9pt',
 bottom:'72pt',
 boxShadow:'0 3pt 12pt rgba(0, 0, 0, 0.15)',
-display:'inline',
+display:ES('JSON','parse',false,message.dialogHidden)?'none':'inline',
 padding:'0',
 position:'fixed',
 right:'18pt',
 top:'auto',
 width:'270pt',
-zIndex:'2147483647',
-opacity:ES('JSON','parse',false,message.dialogHidden)?'0':'100'});
+zIndex:'2147483647'});
 
 if(ES('JSON','parse',false,message.chatStarted)){
 ES('Object','assign',false,this._iframe.style,{
@@ -16863,8 +17069,7 @@ this.subscribe('xd.liveChatPluginPrepareMobileAnchorIframe',ES(function(message)
 if(this._iframe){
 this._iframe.setAttribute('data-testid','dialog_iframe');
 ES('Object','assign',false,this._iframe.style,{
-display:'inline',
-opacity:ES('JSON','parse',false,message.dialogHidden)?'0':'100',
+display:ES('JSON','parse',false,message.dialogHidden)?'none':'inline',
 padding:'0',
 position:'fixed',
 zIndex:'2147483647'});
@@ -16913,38 +17118,30 @@ this._setParentDocumentPositionFixed();
 
 this.subscribe('xd.liveChatPluginShowDialogIframe',ES(function(message){
 var dialogIframe=this._iframe;
-var chatStarted=ES('JSON','parse',false,message.chatStarted);
+
 if(!dialogIframe){
 return;
 }
 
-if(ES('JSON','parse',false,message.isMobile)&&chatStarted){
-this._setParentDocumentPositionFixed();
-}
+DOM.setStyle(dialogIframe,'display','inline');
 
-DOM.setStyle(dialogIframe,'opacity','100');
-if(!chatStarted){
-DOM.removeCss(dialogIframe,'fb_customer_chat_bounce_out');
-DOM.addCss(dialogIframe,'fb_customer_chat_bounce_in');
+if(ES('JSON','parse',false,message.isMobile)&&ES('JSON','parse',false,message.chatStarted)){
+this._setParentDocumentPositionFixed();
 }
 },'bind',true,this));
 
 this.subscribe('xd.liveChatPluginHideDialogIframe',ES(function(message){
 var dialogIframe=this._iframe;
-var chatStarted=ES('JSON','parse',false,message.chatStarted);
+
 if(!dialogIframe){
 return;
 }
 
-if(ES('JSON','parse',false,message.isMobile)&&chatStarted){
+if(ES('JSON','parse',false,message.isMobile)&&ES('JSON','parse',false,message.chatStarted)){
 this._resetParentDocumentPosition();
 }
 
-DOM.setStyle(dialogIframe,'opacity','0');
-if(!chatStarted){
-DOM.removeCss(dialogIframe,'fb_customer_chat_bounce_in');
-DOM.addCss(dialogIframe,'fb_customer_chat_bounce_out');
-}
+DOM.setStyle(dialogIframe,'display','none');
 },'bind',true,this));
 
 Event.subscribe('livechatplugin:loaded',ES(function(){
@@ -17044,13 +17241,15 @@ var Helper={
 
 
 isUser:function isUser(id){
-return id<2200000000||
+return(
+id<2200000000||
 id>=100000000000000&&
 id<=100099999989999||
 id>=89000000000000&&
 id<=89999999999999||
 id>=60000010000000&&
-id<=60000019999999;
+id<=60000019999999);
+
 },
 
 
@@ -17062,8 +17261,7 @@ id<=60000019999999;
 upperCaseFirstChar:function upperCaseFirstChar(s){
 if(s.length>0){
 return s.substr(0,1).toUpperCase()+s.substr(1);
-}else
-{
+}else{
 return s;
 }
 },
@@ -17133,7 +17331,7 @@ Event.fire(eventName,href,eventSource);
 
 executeFunctionByName:function executeFunctionByName(functionName){
 var args=Array.prototype.slice.call(arguments,1);
-var namespaces=functionName.split(".");
+var namespaces=functionName.split('.');
 var func=namespaces.pop();
 var context=window;
 for(var i=0;i<namespaces.length;i++){
@@ -17141,7 +17339,6 @@ context=context[namespaces[i]];
 }
 return context[func].apply(this,args);
 }};
-
 
 
 module.exports=Helper;},null);
@@ -17154,8 +17351,12 @@ __d('sdk.XFBML.LoginButton',['sdk.Helper','IframePlugin','Log','sdk.ui','sdk.XD'
 
 
 var LoginButton=IframePlugin.extend({
-constructor:function constructor(elem,ns,tag,
-attr){
+constructor:function constructor(
+elem,
+ns,
+tag,
+attr)
+{
 this.parent(elem,ns,tag,attr);
 var onlogin=IframePlugin.getVal(attr,'on_login');
 var cb=null;
@@ -17328,8 +17529,7 @@ this.fire('render');
 
 
 _renderPronoun:function _renderPronoun(userInfo){
-var
-word='',
+var word='',
 objective=this._objective;
 if(this._subjectId){
 objective=true;
@@ -17337,8 +17537,10 @@ if(this._subjectId===this._uid){
 this._reflexive=true;
 }
 }
-if(this._uid==Runtime.getUserID()&&
-this._getBoolAttribute('use-you',true)){
+if(
+this._uid==Runtime.getUserID()&&
+this._getBoolAttribute('use-you',true))
+{
 if(this._possessive){
 if(this._reflexive){
 word='your own';
@@ -17352,8 +17554,7 @@ word='yourself';
 word='you';
 }
 }
-}else
-{
+}else{
 switch(userInfo.gender){
 case'male':
 if(this._possessive){
@@ -17398,8 +17599,7 @@ word='them';
 word='they';
 }
 }
-}else
-{
+}else{
 if(this._possessive){
 if(this._reflexive){
 word='his/her own';
@@ -17430,11 +17630,12 @@ this.dom.innerHTML=word;
 
 
 _renderOther:function _renderOther(userInfo){
-var
-name='',
+var name='',
 html='';
-if(this._uid==Runtime.getUserID()&&
-this._getBoolAttribute('use-you',true)){
+if(
+this._uid==Runtime.getUserID()&&
+this._getBoolAttribute('use-you',true))
+{
 if(this._reflexive){
 if(this._possessive){
 name='your own';
@@ -17449,8 +17650,7 @@ name='your';
 name='you';
 }
 }
-}else
-if(userInfo){
+}else if(userInfo){
 
 if(null===userInfo.first_name){
 userInfo.first_name='';
@@ -17473,21 +17673,23 @@ name=escapeHTML(userInfo.name);
 }
 
 if(name!==''&&this._possessive){
-name+='\'s';
+name+="'s";
 }
 }
 
 if(!name){
-name=escapeHTML(
-this.getAttribute('if-cant-see','Facebook User'));
+name=escapeHTML(this.getAttribute('if-cant-see','Facebook User'));
 }
 if(name){
 if(this._getBoolAttribute('capitalize',false)){
 name=Helper.upperCaseFirstChar(name);
 }
 if(userInfo&&this._linked){
-html=Helper.getProfileLink(userInfo,name,
+html=Helper.getProfileLink(
+userInfo,
+name,
 this.getAttribute('href',null));
+
 }else{
 html=name;
 }
@@ -17516,10 +17718,10 @@ __d('UnicodeUtils',['invariant'],function $module_UnicodeUtils(global,require,re
 
 
 
-var SURROGATE_HIGH_START=0xD800;
-var SURROGATE_HIGH_END=0xDBFF;
-var SURROGATE_LOW_START=0xDC00;
-var SURROGATE_LOW_END=0xDFFF;
+var SURROGATE_HIGH_START=0xd800;
+var SURROGATE_HIGH_END=0xdbff;
+var SURROGATE_LOW_START=0xdc00;
+var SURROGATE_LOW_END=0xdfff;
 var SURROGATE_UNITS_REGEX=/[\uD800-\uDFFF]/;
 
 
@@ -17552,8 +17754,10 @@ return false;
 var first=str.charCodeAt(index);
 var second=str.charCodeAt(index+1);
 return(
-SURROGATE_HIGH_START<=first&&first<=SURROGATE_HIGH_END&&
-SURROGATE_LOW_START<=second&&second<=SURROGATE_LOW_END);
+SURROGATE_HIGH_START<=first&&
+first<=SURROGATE_HIGH_END&&
+SURROGATE_LOW_START<=second&&
+second<=SURROGATE_LOW_END);
 
 }
 
@@ -17879,11 +18083,9 @@ var tmpEndRange=document.createRange();
 tmpEndRange.setStart(range.endContainer,range.endOffset);
 tmpEndRange.insertNode(measuringEndSpan);
 var y=measuringStartSpan.offsetTop-pluginHeight;
-var x=measuringStartSpan.offsetLeft+
-(
-measuringEndSpan.offsetLeft-
-measuringStartSpan.offsetLeft)/
-2-
+var x=
+measuringStartSpan.offsetLeft+
+(measuringEndSpan.offsetLeft-measuringStartSpan.offsetLeft)/2-
 pluginWidth/2;
 measuringStartSpan.parentNode.removeChild(measuringStartSpan);
 measuringEndSpan.parentNode.removeChild(measuringEndSpan);
@@ -17898,12 +18100,7 @@ xfbmlElement.style.left='-9999px';
 }
 
 var Quote=IframePlugin.extend({
-constructor:function constructor(
-elem,
-ns,
-tag,
-attr)
-{
+constructor:function constructor(elem,ns,tag,attr){
 if(singleton){
 return singleton;
 }
@@ -17926,9 +18123,7 @@ clearSelection();
 },'bind',true,this));
 
 
-quotableAreas=ES(ES('Array','from',false,
-
-document.getElementsByTagName('*')),'filter',true,
+quotableAreas=ES(ES('Array','from',false,document.getElementsByTagName('*')),'filter',true,
 function(element){return(
 element.nodeName.toLowerCase()==='article'||
 DOM.containsCss(element,QUOTABLE_CLASS_NAME));});
@@ -17966,12 +18161,7 @@ __d('sdk.XFBML.Save',['sdk.Content','sdk.DialogUtils','sdk.DOM','sdk.Event','Ifr
 var positionIntervalID=void 0;
 
 var Save=IframePlugin.extend({
-constructor:function constructor(
-elem,
-ns,
-tag,
-attr)
-{
+constructor:function constructor(elem,ns,tag,attr){
 this.parent(elem,ns,tag,attr);
 var isMobile=UA.mobile();
 
@@ -18035,8 +18225,7 @@ this.subscribe('xd.savePluginHideIframe',function(){return hideDialog();});
 Event.subscribe('savePlugin:hideDialog',function(){return hideDialog();});
 
 
-var searchIframeTimer=setInterval(
-function(){
+var searchIframeTimer=setInterval(function(){
 var searchIframe=document.getElementsByName(message.fromIframe);
 if(searchIframe.length===0){
 clearInterval(searchIframeTimer);
@@ -18046,9 +18235,7 @@ ES(allNodes,'forEach',true,function(elem){
 elem&&elem.parentNode.removeChild(elem);
 });
 }
-},
-500);
-
+},500);
 },'bind',true,this));
 },
 
@@ -18128,12 +18315,7 @@ __d('sdk.XFBML.ShareButton',['IframePlugin','sdk.UA','sdk.ui'],function $module_
 
 
 var ShareButton=IframePlugin.extend({
-constructor:function constructor(
-elem,
-ns,
-tag,
-attr)
-{
+constructor:function constructor(elem,ns,tag,attr){
 this.parent(elem,ns,tag,attr);
 this.subscribe('xd.shareTriggerMobileIframe',function(message){
 var data=ES('JSON','parse',false,message.data);
@@ -18159,7 +18341,6 @@ size:'string'};
 
 module.exports=ShareButton;},null);
 __d('sdk.XFBML.Video',['Assert','sdk.Event','IframePlugin','ObservableMixin','sdk.XD'],function $module_sdk_XFBML_Video(global,require,requireDynamic,requireLazy,module,exports,Assert,Event,IframePlugin,ObservableMixin,XD){
-
 
 
 
@@ -18226,8 +18407,6 @@ return this.$VideoCache_timePosition;
 getDuration=function(){'use strict';
 return this.$VideoCache_duration;
 };
-
-
 
 
 
@@ -18324,12 +18503,7 @@ this.$VideoController_sharedObservable.unsubscribe(event,callback);
 
 
 var Video=IframePlugin.extend({
-constructor:function constructor(
-elem,
-ns,
-tag,
-attr)
-{
+constructor:function constructor(elem,ns,tag,attr){
 this.parent(elem,ns,tag,attr);
 this._videoController=null;
 this._sharedObservable=null;
@@ -18422,4 +18596,4 @@ localName:tag.replace(/_/g,'-'),
 ctor:customTags[tag]});
 
 });},3);
-    }  }).call(global);})(window.inDapIF ? parent.window : window, window);} catch (e) {new Image().src="https:\/\/www.facebook.com\/" + 'common/scribe_endpoint.php?c=jssdk_error&m='+encodeURIComponent('{"error":"LOAD", "extra": {"name":"'+e.name+'","line":"'+(e.lineNumber||e.line)+'","script":"'+(e.fileName||e.sourceURL||e.script)+'","stack":"'+(e.stackTrace||e.stack)+'","revision":"3629792","namespace":"FB","message":"'+e.message+'"}}');}
+    }  }).call(global);})(window.inDapIF ? parent.window : window, window);} catch (e) {new Image().src="https:\/\/www.facebook.com\/" + 'common/scribe_endpoint.php?c=jssdk_error&m='+encodeURIComponent('{"error":"LOAD", "extra": {"name":"'+e.name+'","line":"'+(e.lineNumber||e.line)+'","script":"'+(e.fileName||e.sourceURL||e.script)+'","stack":"'+(e.stackTrace||e.stack)+'","revision":"3632349","namespace":"FB","message":"'+e.message+'"}}');}
