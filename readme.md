@@ -30,7 +30,7 @@ This setup sends an email if there were errors, but not if everything worked suc
 Setup on Heroku
 ---------------
 
-This script works well on a free Heroku instance. Put your github username and password in environmental variables like so:
+This script works well on a free Heroku instance. Put your github username and password (or [token](https://github.com/settings/tokens)) in environmental variables like so:
 
     heroku config:add GH_USER=<username>
     heroku config:add GH_PASS=<password>
@@ -44,22 +44,21 @@ Official FB links
 
 **Documentation for the JavaScript SDK:** 
 
-* http://developers.facebook.com/docs/reference/javascript/
+* https://developers.facebook.com/docs/javascript
 
 **Bug Tracker:** 
 
-* https://developers.facebook.com/bugs 
+* https://developers.facebook.com/support/bugs/
 
 **Recent Changes & Current Status:**
 
-* Change Log: https://developers.facebook.com/docs/apps/changelog?locale=en_US
-* Platform Live Status: https://developers.facebook.com/live_status
+* Change Log: https://developers.facebook.com/docs/graph-api/changelog
+* Platform Live Status: https://developers.facebook.com/status/dashboard/
 * JSON feed of current push status and most recent Platform Live Status issue: https://www.facebook.com/feeds/api_status.php
 
 **Upcomming & Long-term Changes:** 
 
 * Developer Blog: https://developers.facebook.com/blog/
-* Platform Roadmap: https://developers.facebook.com/roadmap/
 
 ---
 
