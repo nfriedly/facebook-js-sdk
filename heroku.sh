@@ -3,7 +3,8 @@
 # ./tmp is the only writeable directory on heroku instances, and it is regularly wiped.
 # so, we check if our file is already there, and if not, clone the repo to ./tmp
 if [ ! -f tmp/debug.js ]; then
-  # you must set the $GH_USER & $GH_PASS variables with `heroku config:add GH_USER=username`
+  # you must set the $GH_USER & $GH_PASS variables with `heroku config:add GH_USER=username` or in Heroky's UI
+  # See https://github.com/settings/tokens to create a token instead of using your password
   git clone https://$GH_USER:$GH_PASS@github.com/$GH_USER/facebook-js-sdk tmp
 fi
 
