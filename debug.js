@@ -1,4 +1,4 @@
-/*1535059166,,JIT Construction: v4241680,en_US*/
+/*1535065166,,JIT Construction: v4242832,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3366,7 +3366,7 @@ return __annotator(Set,{name:'Set'});
 
 global.Map=Map;
 global.Set=Set;
-})(typeof global==='undefined'?this:global);      __d("UrlMapConfig",[],{"www":"www.facebook.com","m":"m.facebook.com","connect":"connect.facebook.net","business":"business.facebook.com","api":"api.facebook.com","api_read":"api-read.facebook.com","graph":"graph.facebook.com","an":"an.facebook.com","fbcdn":"static.xx.fbcdn.net","cdn":"staticxx.facebook.com"});__d("JSSDKRuntimeConfig",[],{"locale":"en_US","revision":"4241680","rtl":false,"sdkab":null,"sdkns":"FB","sdkurl":"https:\/\/connect.facebook.net\/en_US\/all\/debug.js"});__d("JSSDKConfig",[],{"bustCache":true,"tagCountLogRate":0.01,"errorHandling":{"rate":4},"usePluginPipe":true,"features":{"dialog_resize_refactor":true,"one_comment_controller":true,"allow_non_canvas_app_events":false,"prefer_cors_as_transport":{"rate":100},"should_force_single_dialog_instance":true,"js_sdk_force_status_on_load":true,"js_sdk_mbasic_share_plugin_init":true,"kill_fragment":true,"xfbml_profile_pic_server":true,"error_handling":{"rate":4},"e2e_ping_tracking":{"rate":1.0e-6},"getloginstatus_tracking":{"rate":0.001},"xd_timeout":{"rate":1,"value":60000},"use_bundle":true,"launch_payment_dialog_via_pac":{"rate":100},"should_log_response_error":true,"popup_blocker_scribe_logging":{"rate":10},"https_only_enforce_starting":1538809200000,"https_only_learn_more":"https:\/\/developers.facebook.com\/blog\/post\/2018\/06\/08\/enforce-https-facebook-login\/","https_only_scribe_logging":{"rate":1}},"log_perf":{"rate":10},"api":{"mode":"warn","https_only":["api","getAccessToken","getAuthResponse","getLoginStatus","getUserID","login"],"whitelist":["AppEvents","AppEvents.EventNames","AppEvents.ParameterNames","AppEvents.activateApp","AppEvents.logEvent","AppEvents.logPageView","AppEvents.logPurchase","AppEvents.setUserID","AppEvents.getUserID","AppEvents.clearUserID","AppEvents.updateUserProperties","Canvas","Canvas.Prefetcher","Canvas.Prefetcher.addStaticResource","Canvas.Prefetcher.setCollectionMode","Canvas.getPageInfo","Canvas.hideFlashElement","Canvas.scrollTo","Canvas.setAutoGrow","Canvas.setDoneLoading","Canvas.setSize","Canvas.setUrlHandler","Canvas.showFlashElement","Canvas.startTimer","Canvas.stopTimer","Event","Event.subscribe","Event.unsubscribe","Music.flashCallback","Music.init","Music.send","Payment","Payment.cancelFlow","Payment.continueFlow","Payment.init","Payment.lockForProcessing","Payment.parse","Payment.setSize","Payment.unlockForProcessing","ThirdPartyProvider","ThirdPartyProvider.init","ThirdPartyProvider.sendData","UA","UA.nativeApp","XFBML","XFBML.RecommendationsBar","XFBML.RecommendationsBar.markRead","XFBML.parse","addFriend","api","getAccessToken","getAuthResponse","getLoginStatus","getUserID","init","login","logout","publish","share","ui","AppEvents.setAppVersion","AppEvents.getAppVersion","AppEvents.clearAppVersion","RankingService.hidePlugin","RankingService.showPlugin","CustomerChat.hideDialog","CustomerChat.showDialog","CustomerChat.hide","CustomerChat.show","CustomerChat.update"]}});__d("JSSDKXDConfig",[],{"XdUrl":"\/connect\/xd_arbiter.php?version=42","XdBundleUrl":"\/connect\/xd_arbiter\/r\/0iJm_ierzBc.js?version=42","Flash":{"path":"https:\/\/connect.facebook.net\/rsrc.php\/v2\/yW\/r\/yOZN1vHw3Z_.swf"},"useCdn":true});__d("JSSDKCssConfig",[],{"rules":".fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:\"lucida grande\", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}.fb_link img{border:none}\u0040keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}\n.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_reset .fb_dialog_legacy{overflow:visible}.fb_dialog_advanced{padding:10px;border-radius:8px}.fb_dialog_content{background:#fff;color:#333}.fb_dialog_close_icon{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_loader{background-color:#f5f6f7;border:1px solid #606060;font-size:24px;padding:20px}.fb_dialog_top_left,.fb_dialog_top_right,.fb_dialog_bottom_left,.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}.fb_dialog_top_left{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}.fb_dialog_top_right{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}.fb_dialog_bottom_left{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}.fb_dialog_bottom_right{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}.fb_dialog_vert_left,.fb_dialog_vert_right,.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}.fb_dialog_vert_left,.fb_dialog_vert_right{width:10px;height:100\u0025}.fb_dialog_vert_left{margin-left:-10px}.fb_dialog_vert_right{right:0;margin-right:-10px}.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{width:100\u0025;height:10px}.fb_dialog_horiz_top{margin-top:-10px}.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/yd\/r\/Cou7n-nqK52.gif) no-repeat 5px 50\u0025;float:left;padding:5px 0 7px 26px}body.fb_hidden{-webkit-transform:none;height:100\u0025;margin:0;overflow:visible;position:absolute;top:-10000px;left:0;width:100\u0025}.fb_dialog.fb_dialog_mobile.loading{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/ya\/r\/3rhSv5V8j3o.gif) white no-repeat 50\u0025 50\u0025;min-height:100\u0025;min-width:100\u0025;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{width:auto;height:auto;min-height:initial;min-width:initial;background:none}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100\u0025}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{color:#fff;display:block;padding-top:20px;clear:both;font-size:18px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;bottom:0;left:0;right:0;top:0;width:100\u0025;min-height:100\u0025;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_mobile .fb_dialog_iframe{position:-webkit-sticky;top:0}.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0\u0025 0\u0025, 0\u0025 100\u0025, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100\u0025}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0\u0025 0\u0025, 0\u0025 100\u0025, from(#4966A6), color-stop(.5, #355492), to(#2A4887));border:1px solid #29487d;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset, rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/y9\/r\/jKEcVPZFk-2.gif) no-repeat 50\u0025 50\u0025;border:1px solid #555;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f5f6f7;border:1px solid #555;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/yD\/r\/t-wz8gw1xG1.png);background-repeat:no-repeat;background-position:50\u0025 50\u0025;height:24px;width:24px}\u0040keyframes rotateSpinner{0\u0025{transform:rotate(0deg)}100\u0025{transform:rotate(360deg)}}\n.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100\u0025}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_hide_iframes iframe{position:relative;left:-10000px}.fb_iframe_widget_loader{position:relative;display:inline-block}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100\u0025}.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}.fb_iframe_widget_loader .FB_Loader{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/y9\/r\/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50\u0025;z-index:4}\n.fb_customer_chat_bounce_in_v2{animation-duration:300ms;animation-name:fb_bounce_in_v2;transition-timing-function:ease-in}.fb_customer_chat_bounce_out_v2{animation-duration:300ms;animation-name:fb_bounce_out_v2;transition-timing-function:ease-in}.fb_customer_chat_bounce_in_v2_mobile_chat_started{animation-duration:300ms;animation-name:fb_bounce_in_v2_mobile_chat_started;transition-timing-function:ease-in}.fb_customer_chat_bounce_out_v2_mobile_chat_started{animation-duration:300ms;animation-name:fb_bounce_out_v2_mobile_chat_started;transition-timing-function:ease-in}.fb_customer_chat_bubble_pop_in{animation-duration:250ms;animation-name:fb_customer_chat_bubble_bounce_in_animation}.fb_customer_chat_bubble_animated_no_badge{box-shadow:0 3px 12px rgba(0, 0, 0, .15);transition:box-shadow 150ms linear}.fb_customer_chat_bubble_animated_no_badge:hover{box-shadow:0 5px 24px rgba(0, 0, 0, .3)}.fb_customer_chat_bubble_animated_with_badge{box-shadow:-5px 4px 14px rgba(0, 0, 0, .15);transition:box-shadow 150ms linear}.fb_customer_chat_bubble_animated_with_badge:hover{box-shadow:-5px 8px 24px rgba(0, 0, 0, .2)}.fb_invisible_flow{display:inherit;height:0;overflow-x:hidden;width:0}.fb_mobile_overlay_active{background-color:#fff;height:100\u0025;overflow:hidden;position:fixed;visibility:hidden;width:100\u0025}\u0040keyframes fb_bounce_in_v2{0\u0025{opacity:0;transform:scale(0, 0);transform-origin:bottom right}50\u0025{transform:scale(1.03, 1.03);transform-origin:bottom right}100\u0025{opacity:1;transform:scale(1, 1);transform-origin:bottom right}}\u0040keyframes fb_bounce_in_v2_mobile_chat_started{0\u0025{opacity:0;top:20px}100\u0025{opacity:1;top:0}}\u0040keyframes fb_bounce_out_v2{0\u0025{opacity:1;transform:scale(1, 1);transform-origin:bottom right}100\u0025{opacity:0;transform:scale(0, 0);transform-origin:bottom right}}\u0040keyframes fb_bounce_out_v2_mobile_chat_started{0\u0025{opacity:1;top:0}100\u0025{opacity:0;top:20px}}\u0040keyframes fb_customer_chat_bubble_bounce_in_animation{0\u0025{bottom:6pt;opacity:0;transform:scale(0, 0);transform-origin:center}70\u0025{bottom:18pt;opacity:1;transform:scale(1.2, 1.2)}100\u0025{transform:scale(1, 1)}}","components":["css:fb.css.base","css:fb.css.dialog","css:fb.css.iframewidget","css:fb.css.customer_chat_plugin_iframe"]});__d("ApiClientConfig",[],{"FlashRequest":{"swfUrl":"https:\/\/connect.facebook.net\/rsrc.php\/v2\/yd\/r\/mxzow1Sdmxr.swf"}});__d("JSSDKCanvasPrefetcherConfig",[],{"blacklist":[144959615576466,768691303149786,320528941393723],"sampleRate":500});      __d("DOMWrapper",[],function $module_DOMWrapper(global,require,requireDynamic,requireLazy,module,exports){
+})(typeof global==='undefined'?this:global);      __d("UrlMapConfig",[],{"www":"www.facebook.com","m":"m.facebook.com","connect":"connect.facebook.net","business":"business.facebook.com","api":"api.facebook.com","api_read":"api-read.facebook.com","graph":"graph.facebook.com","an":"an.facebook.com","fbcdn":"static.xx.fbcdn.net","cdn":"staticxx.facebook.com"});__d("JSSDKRuntimeConfig",[],{"locale":"en_US","revision":"4242832","rtl":false,"sdkab":null,"sdkns":"FB","sdkurl":"https:\/\/connect.facebook.net\/en_US\/all\/debug.js"});__d("JSSDKConfig",[],{"bustCache":true,"tagCountLogRate":0.01,"errorHandling":{"rate":4},"usePluginPipe":true,"features":{"dialog_resize_refactor":true,"one_comment_controller":true,"allow_non_canvas_app_events":false,"prefer_cors_as_transport":{"rate":100},"should_force_single_dialog_instance":true,"js_sdk_force_status_on_load":true,"js_sdk_mbasic_share_plugin_init":true,"kill_fragment":true,"xfbml_profile_pic_server":true,"error_handling":{"rate":4},"e2e_ping_tracking":{"rate":1.0e-6},"getloginstatus_tracking":{"rate":0.001},"xd_timeout":{"rate":1,"value":60000},"use_bundle":true,"launch_payment_dialog_via_pac":{"rate":100},"should_log_response_error":true,"popup_blocker_scribe_logging":{"rate":100},"https_only_enforce_starting":1538809200000,"https_only_learn_more":"https:\/\/developers.facebook.com\/blog\/post\/2018\/06\/08\/enforce-https-facebook-login\/","https_only_scribe_logging":{"rate":1}},"log_perf":{"rate":10},"api":{"mode":"warn","https_only":["api","getAccessToken","getAuthResponse","getLoginStatus","getUserID","login"],"whitelist":["AppEvents","AppEvents.EventNames","AppEvents.ParameterNames","AppEvents.activateApp","AppEvents.logEvent","AppEvents.logPageView","AppEvents.logPurchase","AppEvents.setUserID","AppEvents.getUserID","AppEvents.clearUserID","AppEvents.updateUserProperties","Canvas","Canvas.Prefetcher","Canvas.Prefetcher.addStaticResource","Canvas.Prefetcher.setCollectionMode","Canvas.getPageInfo","Canvas.hideFlashElement","Canvas.scrollTo","Canvas.setAutoGrow","Canvas.setDoneLoading","Canvas.setSize","Canvas.setUrlHandler","Canvas.showFlashElement","Canvas.startTimer","Canvas.stopTimer","Event","Event.subscribe","Event.unsubscribe","Music.flashCallback","Music.init","Music.send","Payment","Payment.cancelFlow","Payment.continueFlow","Payment.init","Payment.lockForProcessing","Payment.parse","Payment.setSize","Payment.unlockForProcessing","ThirdPartyProvider","ThirdPartyProvider.init","ThirdPartyProvider.sendData","UA","UA.nativeApp","XFBML","XFBML.RecommendationsBar","XFBML.RecommendationsBar.markRead","XFBML.parse","addFriend","api","getAccessToken","getAuthResponse","getLoginStatus","getUserID","init","login","logout","publish","share","ui","AppEvents.setAppVersion","AppEvents.getAppVersion","AppEvents.clearAppVersion","RankingService.hidePlugin","RankingService.showPlugin","CustomerChat.hideDialog","CustomerChat.showDialog","CustomerChat.hide","CustomerChat.show","CustomerChat.update"]}});__d("JSSDKXDConfig",[],{"XdUrl":"\/connect\/xd_arbiter.php?version=42","XdBundleUrl":"\/connect\/xd_arbiter\/r\/0iJm_ierzBc.js?version=42","Flash":{"path":"https:\/\/connect.facebook.net\/rsrc.php\/v2\/yW\/r\/yOZN1vHw3Z_.swf"},"useCdn":true});__d("JSSDKCssConfig",[],{"rules":".fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:\"lucida grande\", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}.fb_link img{border:none}\u0040keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}\n.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_reset .fb_dialog_legacy{overflow:visible}.fb_dialog_advanced{padding:10px;border-radius:8px}.fb_dialog_content{background:#fff;color:#333}.fb_dialog_close_icon{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_loader{background-color:#f5f6f7;border:1px solid #606060;font-size:24px;padding:20px}.fb_dialog_top_left,.fb_dialog_top_right,.fb_dialog_bottom_left,.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}.fb_dialog_top_left{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}.fb_dialog_top_right{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}.fb_dialog_bottom_left{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}.fb_dialog_bottom_right{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/ye\/r\/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}.fb_dialog_vert_left,.fb_dialog_vert_right,.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}.fb_dialog_vert_left,.fb_dialog_vert_right{width:10px;height:100\u0025}.fb_dialog_vert_left{margin-left:-10px}.fb_dialog_vert_right{right:0;margin-right:-10px}.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{width:100\u0025;height:10px}.fb_dialog_horiz_top{margin-top:-10px}.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/yd\/r\/Cou7n-nqK52.gif) no-repeat 5px 50\u0025;float:left;padding:5px 0 7px 26px}body.fb_hidden{-webkit-transform:none;height:100\u0025;margin:0;overflow:visible;position:absolute;top:-10000px;left:0;width:100\u0025}.fb_dialog.fb_dialog_mobile.loading{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/ya\/r\/3rhSv5V8j3o.gif) white no-repeat 50\u0025 50\u0025;min-height:100\u0025;min-width:100\u0025;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{width:auto;height:auto;min-height:initial;min-width:initial;background:none}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100\u0025}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{color:#fff;display:block;padding-top:20px;clear:both;font-size:18px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;bottom:0;left:0;right:0;top:0;width:100\u0025;min-height:100\u0025;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_mobile .fb_dialog_iframe{position:-webkit-sticky;top:0}.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0\u0025 0\u0025, 0\u0025 100\u0025, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100\u0025}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0\u0025 0\u0025, 0\u0025 100\u0025, from(#4966A6), color-stop(.5, #355492), to(#2A4887));border:1px solid #29487d;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset, rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/y9\/r\/jKEcVPZFk-2.gif) no-repeat 50\u0025 50\u0025;border:1px solid #555;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f5f6f7;border:1px solid #555;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/yD\/r\/t-wz8gw1xG1.png);background-repeat:no-repeat;background-position:50\u0025 50\u0025;height:24px;width:24px}\u0040keyframes rotateSpinner{0\u0025{transform:rotate(0deg)}100\u0025{transform:rotate(360deg)}}\n.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100\u0025}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_hide_iframes iframe{position:relative;left:-10000px}.fb_iframe_widget_loader{position:relative;display:inline-block}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100\u0025}.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}.fb_iframe_widget_loader .FB_Loader{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/y9\/r\/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50\u0025;z-index:4}\n.fb_customer_chat_bounce_in_v2{animation-duration:300ms;animation-name:fb_bounce_in_v2;transition-timing-function:ease-in}.fb_customer_chat_bounce_out_v2{animation-duration:300ms;animation-name:fb_bounce_out_v2;transition-timing-function:ease-in}.fb_customer_chat_bounce_in_v2_mobile_chat_started{animation-duration:300ms;animation-name:fb_bounce_in_v2_mobile_chat_started;transition-timing-function:ease-in}.fb_customer_chat_bounce_out_v2_mobile_chat_started{animation-duration:300ms;animation-name:fb_bounce_out_v2_mobile_chat_started;transition-timing-function:ease-in}.fb_customer_chat_bubble_pop_in{animation-duration:250ms;animation-name:fb_customer_chat_bubble_bounce_in_animation}.fb_customer_chat_bubble_animated_no_badge{box-shadow:0 3px 12px rgba(0, 0, 0, .15);transition:box-shadow 150ms linear}.fb_customer_chat_bubble_animated_no_badge:hover{box-shadow:0 5px 24px rgba(0, 0, 0, .3)}.fb_customer_chat_bubble_animated_with_badge{box-shadow:-5px 4px 14px rgba(0, 0, 0, .15);transition:box-shadow 150ms linear}.fb_customer_chat_bubble_animated_with_badge:hover{box-shadow:-5px 8px 24px rgba(0, 0, 0, .2)}.fb_invisible_flow{display:inherit;height:0;overflow-x:hidden;width:0}.fb_mobile_overlay_active{background-color:#fff;height:100\u0025;overflow:hidden;position:fixed;visibility:hidden;width:100\u0025}\u0040keyframes fb_bounce_in_v2{0\u0025{opacity:0;transform:scale(0, 0);transform-origin:bottom right}50\u0025{transform:scale(1.03, 1.03);transform-origin:bottom right}100\u0025{opacity:1;transform:scale(1, 1);transform-origin:bottom right}}\u0040keyframes fb_bounce_in_v2_mobile_chat_started{0\u0025{opacity:0;top:20px}100\u0025{opacity:1;top:0}}\u0040keyframes fb_bounce_out_v2{0\u0025{opacity:1;transform:scale(1, 1);transform-origin:bottom right}100\u0025{opacity:0;transform:scale(0, 0);transform-origin:bottom right}}\u0040keyframes fb_bounce_out_v2_mobile_chat_started{0\u0025{opacity:1;top:0}100\u0025{opacity:0;top:20px}}\u0040keyframes fb_customer_chat_bubble_bounce_in_animation{0\u0025{bottom:6pt;opacity:0;transform:scale(0, 0);transform-origin:center}70\u0025{bottom:18pt;opacity:1;transform:scale(1.2, 1.2)}100\u0025{transform:scale(1, 1)}}","components":["css:fb.css.base","css:fb.css.dialog","css:fb.css.iframewidget","css:fb.css.customer_chat_plugin_iframe"]});__d("ApiClientConfig",[],{"FlashRequest":{"swfUrl":"https:\/\/connect.facebook.net\/rsrc.php\/v2\/yd\/r\/mxzow1Sdmxr.swf"}});__d("JSSDKCanvasPrefetcherConfig",[],{"blacklist":[144959615576466,768691303149786,320528941393723],"sampleRate":500});                                                                                                                                                                                                                                                                                                                                                                                                            __d("DOMWrapper",[],function $module_DOMWrapper(global,require,requireDynamic,requireLazy,module,exports){
 
 
 var rootElement,windowRef;
@@ -3389,7 +3389,7 @@ return windowRef||self;
 
 
 module.exports=DOMWrapper;},null);
-__d("dotAccess",[],function $module_dotAccess(global,require,requireDynamic,requireLazy,module,exports){
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               __d("dotAccess",[],function $module_dotAccess(global,require,requireDynamic,requireLazy,module,exports){
 
 function dotAccess(head,path,create){
 var stack=path.split('.');
@@ -3401,7 +3401,7 @@ return head;
 }
 
 module.exports=dotAccess;},null);
-__d("guid",[],(function $module_guid(global,require,requireDynamic,requireLazy,module,exports){
+                                                                                                                                                                                                                                                                                              __d("guid",[],(function $module_guid(global,require,requireDynamic,requireLazy,module,exports){
 
 
 
@@ -3410,7 +3410,7 @@ return'f'+(Math.random()*(1<<30)).toString(16).replace('.','');
 }
 
 module.exports=guid;}),null);
-__d("wrapFunction",[],function $module_wrapFunction(global,require,requireDynamic,requireLazy,module,exports){
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        __d("wrapFunction",[],function $module_wrapFunction(global,require,requireDynamic,requireLazy,module,exports){
 
 
 
@@ -3441,7 +3441,7 @@ wrappers[type]=fn;
 };
 
 module.exports=wrapFunction;},null);
-__d("GlobalCallback",["DOMWrapper","dotAccess","guid","wrapFunction"],function $module_GlobalCallback(global,require,requireDynamic,requireLazy,module,exports,DOMWrapper,dotAccess,guid,wrapFunction){
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        __d("GlobalCallback",["DOMWrapper","dotAccess","guid","wrapFunction"],function $module_GlobalCallback(global,require,requireDynamic,requireLazy,module,exports,DOMWrapper,dotAccess,guid,wrapFunction){
 
 
 
@@ -3479,7 +3479,7 @@ delete rootObject[id];
 
 
 module.exports=GlobalCallback;},null);
-__d("sprintf",[],(function $module_sprintf(global,require,requireDynamic,requireLazy,module,exports){
+                                                                                         __d("sprintf",[],(function $module_sprintf(global,require,requireDynamic,requireLazy,module,exports){
 
 
 
@@ -3496,7 +3496,7 @@ return format.replace(/%s/g,function(){return String(args[index++]);});
 }
 
 module.exports=sprintf;}),null);
-__d("Log",["sprintf"],function $module_Log(global,require,requireDynamic,requireLazy,module,exports,sprintf){
+                                                                                                                                                                                                                                                                                                                                                                                          __d("Log",["sprintf"],function $module_Log(global,require,requireDynamic,requireLazy,module,exports,sprintf){
 
 
 
@@ -3544,7 +3544,7 @@ error:ES(log,"bind",true,null,'error',Level.ERROR),
 log:log};
 
 module.exports=Log;},null);
-__d("ObservableMixin",[],function $module_ObservableMixin(global,require,requireDynamic,requireLazy,module,exports){
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           __d("ObservableMixin",[],function $module_ObservableMixin(global,require,requireDynamic,requireLazy,module,exports){
 
 function ObservableMixin(){
 this.__observableEvents={};
@@ -3668,7 +3668,7 @@ return this;
 
 
 module.exports=ObservableMixin;},null);
-__d("javascript_shared_TAAL_OpCode",[],function $module_javascript_shared_TAAL_OpCode(global,require,requireDynamic,requireLazy,module,exports){
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  __d("javascript_shared_TAAL_OpCode",[],function $module_javascript_shared_TAAL_OpCode(global,require,requireDynamic,requireLazy,module,exports){
 
 
 
@@ -3676,7 +3676,7 @@ module.exports=ES("Object","freeze",false,{
 PREVIOUS_FILE:1,
 PREVIOUS_FRAME:2,
 PREVIOUS_DIR:3});},null);
-__d("TAALOpcodes",["javascript_shared_TAAL_OpCode"],(function $module_TAALOpcodes(global,require,requireDynamic,requireLazy,module,exports,javascript_TAAL_OpCode){
+                                                                                         __d("TAALOpcodes",["javascript_shared_TAAL_OpCode"],(function $module_TAALOpcodes(global,require,requireDynamic,requireLazy,module,exports,javascript_TAAL_OpCode){
 
 'use strict';
 
@@ -3700,7 +3700,7 @@ return opcodes&&opcodes.length?" TAAL["+opcodes.join(';')+"]":'';
 
 
 module.exports=TAALOpcodes;}),null);
-__d("TAAL",["TAALOpcodes"],function $module_TAAL(global,require,requireDynamic,requireLazy,module,exports,TAALOpcodes){
+                                                                                         __d("TAAL",["TAALOpcodes"],function $module_TAAL(global,require,requireDynamic,requireLazy,module,exports,TAALOpcodes){
 
 'use strict';
 
@@ -3740,7 +3740,7 @@ return message+TAALOpcodes.getString(opcodes);
 
 
 module.exports=TAAL;},null);
-__d("eprintf",[],function $module_eprintf(global,require,requireDynamic,requireLazy,module,exports){
+                                                                                                          __d("eprintf",[],function $module_eprintf(global,require,requireDynamic,requireLazy,module,exports){
 
 'use strict';
 
@@ -3768,7 +3768,7 @@ return errorMessage.replace(/%s/g,function(){return String(args[index++]);});
 }
 
 module.exports=eprintf;},null);
-__d("ex",["eprintf"],function $module_ex(global,require,requireDynamic,requireLazy,module,exports,eprintf){
+                                                                                                          __d("ex",["eprintf"],function $module_ex(global,require,requireDynamic,requireLazy,module,exports,eprintf){
 
 
 
@@ -3805,7 +3805,7 @@ ex._prefix='<![EX[';
 ex._suffix=']]>';
 
 module.exports=ex;},null);
-__d("invariant",["TAAL","ex","sprintf"],(function $module_invariant(global,require,requireDynamic,requireLazy,module,exports,TAAL,ex,sprintf){
+                                                                                         __d("invariant",["TAAL","ex","sprintf"],(function $module_invariant(global,require,requireDynamic,requireLazy,module,exports,TAAL,ex,sprintf){
 
 
 
@@ -3863,7 +3863,7 @@ throw error;
 }
 
 module.exports=invariant;}),null);
-__d("UrlMap",["UrlMapConfig","invariant"],function $module_UrlMap(global,require,requireDynamic,requireLazy,module,exports,UrlMapConfig,invariant){
+                                                                                                                                                                                                                                                                                                                                                                                                                                                  __d("UrlMap",["UrlMapConfig","invariant"],function $module_UrlMap(global,require,requireDynamic,requireLazy,module,exports,UrlMapConfig,invariant){
 
 
 
@@ -3889,7 +3889,7 @@ return'';
 
 
 module.exports=UrlMap;},null);
-__d("QueryString",[],function $module_QueryString(global,require,requireDynamic,requireLazy,module,exports){
+                                                                                                                                               __d("QueryString",[],function $module_QueryString(global,require,requireDynamic,requireLazy,module,exports){
 
 
 
@@ -3958,7 +3958,7 @@ appendToUrl:appendToUrl};
 
 
 module.exports=QueryString;},null);
-__d("ManagedError",[],function $module_ManagedError(global,require,requireDynamic,requireLazy,module,exports){
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                   __d("ManagedError",[],function $module_ManagedError(global,require,requireDynamic,requireLazy,module,exports){
 
 function ManagedError(message,innerError){
 Error.prototype.constructor.call(this,message);
@@ -3969,7 +3969,7 @@ ManagedError.prototype=new Error();
 ManagedError.prototype.constructor=ManagedError;
 
 module.exports=ManagedError;},null);
-__d("AssertionError",["ManagedError"],function $module_AssertionError(global,require,requireDynamic,requireLazy,module,exports,ManagedError){
+                                                                                                                                                                                   __d("AssertionError",["ManagedError"],function $module_AssertionError(global,require,requireDynamic,requireLazy,module,exports,ManagedError){
 
 
 
@@ -3980,7 +3980,7 @@ AssertionError.prototype=new ManagedError();
 AssertionError.prototype.constructor=AssertionError;
 
 module.exports=AssertionError;},null);
-__d("Assert",["AssertionError","sprintf"],function $module_Assert(global,require,requireDynamic,requireLazy,module,exports,AssertionError,sprintf){
+                                                                                                                                                                                                       __d("Assert",["AssertionError","sprintf"],function $module_Assert(global,require,requireDynamic,requireLazy,module,exports,AssertionError,sprintf){
 
 
 
@@ -4089,7 +4089,7 @@ _define(type,ES(assertType,"bind",true,null,type.toLowerCase()));
 });
 
 module.exports=Assert;},null);
-__d("Type",["Assert"],function $module_Type(global,require,requireDynamic,requireLazy,module,exports,Assert){
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                __d("Type",["Assert"],function $module_Type(global,require,requireDynamic,requireLazy,module,exports,Assert){
 
 
 
@@ -4258,7 +4258,7 @@ instanceOf:_instanceOf});
 
 
 module.exports=Type;},null);
-__d("sdk.Model",["ObservableMixin","Type"],function $module_sdk_Model(global,require,requireDynamic,requireLazy,module,exports,ObservableMixin,Type){
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                __d("sdk.Model",["ObservableMixin","Type"],function $module_sdk_Model(global,require,requireDynamic,requireLazy,module,exports,ObservableMixin,Type){
 
 'use strict';
 
@@ -4299,7 +4299,7 @@ ObservableMixin);
 
 
 module.exports=Model;},null);
-__d("sdk.Runtime",["JSSDKRuntimeConfig","sdk.Model"],function $module_sdk_Runtime(global,require,requireDynamic,requireLazy,module,exports,RuntimeConfig,Model){
+                                                                                                                                                                                                                               __d("sdk.Runtime",["JSSDKRuntimeConfig","sdk.Model"],function $module_sdk_Runtime(global,require,requireDynamic,requireLazy,module,exports,RuntimeConfig,Model){
 
 
 
@@ -4368,7 +4368,7 @@ Runtime.setEnvironment(environment);
 })();
 
 module.exports=Runtime;},null);
-__d("sdk.Cookie",["QueryString","sdk.Runtime"],function $module_sdk_Cookie(global,require,requireDynamic,requireLazy,module,exports,QueryString,Runtime){
+                                                                                                                                                                                                                                                                                                                                                                                                  __d("sdk.Cookie",["QueryString","sdk.Runtime"],function $module_sdk_Cookie(global,require,requireDynamic,requireLazy,module,exports,QueryString,Runtime){
 
 
 
@@ -4509,7 +4509,7 @@ getRaw:getRaw};
 
 
 module.exports=Cookie;},null);
-__d("Miny",[],function $module_Miny(global,require,requireDynamic,requireLazy,module,exports){
+                                                                                                                                                                                                                                                                                   __d("Miny",[],function $module_Miny(global,require,requireDynamic,requireLazy,module,exports){
 
 var MAGIC='Miny1';
 var LO='wxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-_'.split('');
@@ -4556,7 +4556,7 @@ return keys.join('~');
 
 
 module.exports=Miny;},null);
-__d("sdk.UA",[],function $module_sdk_UA(global,require,requireDynamic,requireLazy,module,exports){
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        __d("sdk.UA",[],function $module_sdk_UA(global,require,requireDynamic,requireLazy,module,exports){
 
 var uas=navigator.userAgent;
 
@@ -4660,7 +4660,7 @@ devices.nativeApp||devices.nativeAndroidApp||devices.nativeInstagramApp);};
 UA.mBasic=function(){return!!(versions.ucWeb||versions.operaMini);};
 
 module.exports=UA;},null);
-__d("getBlankIframeSrc",["sdk.UA"],function $module_getBlankIframeSrc(global,require,requireDynamic,requireLazy,module,exports,UA){
+                                                                                                                                                                                                                                                                                                                                                                                    __d("getBlankIframeSrc",["sdk.UA"],function $module_getBlankIframeSrc(global,require,requireDynamic,requireLazy,module,exports,UA){
 
 
 
@@ -4669,7 +4669,7 @@ return UA.ie()<10?'javascript:false':'about:blank';
 }
 
 module.exports=getBlankIframeSrc;},null);
-__d("insertIframe",["GlobalCallback","getBlankIframeSrc","guid"],function $module_insertIframe(global,require,requireDynamic,requireLazy,module,exports,GlobalCallback,getBlankIframeSrc,guid){
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         __d("insertIframe",["GlobalCallback","getBlankIframeSrc","guid"],function $module_insertIframe(global,require,requireDynamic,requireLazy,module,exports,GlobalCallback,getBlankIframeSrc,guid){
 
 
 
@@ -4798,7 +4798,7 @@ opts.onInsert&&opts.onInsert(node);
 }
 
 module.exports=insertIframe;},null);
-__d("sdk.domReady",[],function $module_sdk_domReady(global,require,requireDynamic,requireLazy,module,exports){
+                                                                                                              __d("sdk.domReady",[],function $module_sdk_domReady(global,require,requireDynamic,requireLazy,module,exports){
 
 
 
@@ -4870,7 +4870,7 @@ test();
 }
 
 module.exports=domReady;},3);
-__d("sdk.Content",["Log","sdk.domReady","sdk.UA"],function $module_sdk_Content(global,require,requireDynamic,requireLazy,module,exports,Log,domReady,UA){
+                                                                                             __d("sdk.Content",["Log","sdk.domReady","sdk.UA"],function $module_sdk_Content(global,require,requireDynamic,requireLazy,module,exports,Log,domReady,UA){
 
 
 
@@ -4986,7 +4986,7 @@ form.parentNode.removeChild(form);
 
 
 module.exports=Content;},null);
-__d("sdk.Impressions",["Miny","QueryString","UrlMap","getBlankIframeSrc","guid","insertIframe","sdk.Content","sdk.Runtime"],function $module_sdk_Impressions(global,require,requireDynamic,requireLazy,module,exports,Miny,QueryString,UrlMap,getBlankIframeSrc,guid,insertIframe,Content,Runtime){
+                                                                                             __d("sdk.Impressions",["Miny","QueryString","UrlMap","getBlankIframeSrc","guid","insertIframe","sdk.Content","sdk.Runtime"],function $module_sdk_Impressions(global,require,requireDynamic,requireLazy,module,exports,Miny,QueryString,UrlMap,getBlankIframeSrc,guid,insertIframe,Content,Runtime){
 
 
 
@@ -5066,7 +5066,7 @@ impression:request};
 
 
 module.exports=Impressions;},null);
-__d("sdk.Scribe",["QueryString","UrlMap","sdk.Runtime"],function $module_sdk_Scribe(global,require,requireDynamic,requireLazy,module,exports,QueryString,UrlMap,Runtime){
+                                                                                             __d("sdk.Scribe",["QueryString","UrlMap","sdk.Runtime"],function $module_sdk_Scribe(global,require,requireDynamic,requireLazy,module,exports,QueryString,UrlMap,Runtime){
 
 
 
@@ -5091,7 +5091,7 @@ log:log};
 
 
 module.exports=Scribe;},null);
-__d("Base64",[],function $module_Base64(global,require,requireDynamic,requireLazy,module,exports){
+                                                                              __d("Base64",[],function $module_Base64(global,require,requireDynamic,requireLazy,module,exports){
 
 
 
@@ -5171,7 +5171,7 @@ return en.charCodeAt((val|-(val>63))&-(val>0)&63);
 
 
 module.exports=Base64;},null);
-__d("sdk.SignedRequest",["Base64"],function $module_sdk_SignedRequest(global,require,requireDynamic,requireLazy,module,exports,Base64){
+                                                                                                                                                                                                                                                                                                                                                                           __d("sdk.SignedRequest",["Base64"],function $module_sdk_SignedRequest(global,require,requireDynamic,requireLazy,module,exports,Base64){
 
 
 
@@ -5193,7 +5193,7 @@ parse:parse};
 
 
 module.exports=SignedRequest;},null);
-__d("Env",[],function $module_Env(global,require,requireDynamic,requireLazy,module,exports){
+                                                                                         __d("Env",[],function $module_Env(global,require,requireDynamic,requireLazy,module,exports){
 
 var Env=
 
@@ -5228,7 +5228,7 @@ ES("Object","assign",false,Env,global.Env);
 global.Env=Env;
 
 module.exports=Env;},null);
-__d("LogviewForcedKeyError",["ManagedError"],function $module_LogviewForcedKeyError(global,require,requireDynamic,requireLazy,module,exports,ManagedError){var _ManagedError,_superProto;_ManagedError=babelHelpers.inherits(
+                                                                       __d("LogviewForcedKeyError",["ManagedError"],function $module_LogviewForcedKeyError(global,require,requireDynamic,requireLazy,module,exports,ManagedError){var _ManagedError,_superProto;_ManagedError=babelHelpers.inherits(
 
 
 
@@ -5257,7 +5257,7 @@ return this.message;
 
 
 module.exports=LogviewForcedKeyError;},null);
-__d("erx",["ex"],function $module_erx(global,require,requireDynamic,requireLazy,module,exports,ex){
+                                                                                                          __d("erx",["ex"],function $module_erx(global,require,requireDynamic,requireLazy,module,exports,ex){
 'use strict';
 
 
@@ -5306,7 +5306,7 @@ return['erx parse failure: %s because %s',message,err.message];
 }
 
 module.exports=erx;},null);
-__d("removeFromArray",[],function $module_removeFromArray(global,require,requireDynamic,requireLazy,module,exports){
+                                                                                                        __d("removeFromArray",[],function $module_removeFromArray(global,require,requireDynamic,requireLazy,module,exports){
 
 
 
@@ -5319,7 +5319,7 @@ array.splice(index,1);
 }
 
 module.exports=removeFromArray;},null);
-__d("ErrorUtils",["Env","LogviewForcedKeyError","eprintf","erx","removeFromArray","sprintf"],function $module_ErrorUtils(global,require,requireDynamic,requireLazy,module,exports,Env,LogviewForcedKeyError,eprintf,erx,removeFromArray,sprintf){
+                                                                                                                                                         __d("ErrorUtils",["Env","LogviewForcedKeyError","eprintf","erx","removeFromArray","sprintf"],function $module_ErrorUtils(global,require,requireDynamic,requireLazy,module,exports,Env,LogviewForcedKeyError,eprintf,erx,removeFromArray,sprintf){
 
 
 
@@ -5339,7 +5339,7 @@ typeof window==='undefined'?
 '<window.onerror>';
 var GLOBAL_REACT_ERROR_HANDLER_TAG='<global.react>';
 
-var HTTP_OR_HTTPS_URI_PATTERN=/^https?:\/\
+var HTTP_OR_HTTPS_URI_PATTERN=/^https?:\/\//i;
 var TYPECHECKER_ERROR_PATTERN=/^Type Mismatch for/;
 
 var IE_AND_OTHER_FRAME_PATTERN=/(.*)[@\s][^\s]+$/;
@@ -6093,7 +6093,7 @@ module.exports=global.ErrorUtils=ErrorUtils;
 if(typeof __t==='function'&&__t.setHandler){
 __t.setHandler(ErrorUtils.reportError);
 }},3);
-__d("FBLoggerMetadata",[],function $module_FBLoggerMetadata(global,require,requireDynamic,requireLazy,module,exports){
+                                                                                                                                                                    __d("FBLoggerMetadata",[],function $module_FBLoggerMetadata(global,require,requireDynamic,requireLazy,module,exports){
 
 'use strict';
 
@@ -6195,7 +6195,7 @@ globalMetadata.push([product,name,value]);
 
 
 module.exports=FBLoggerMetadata;},null);
-__d("FBLogMessage",["ErrorUtils","FBLoggerMetadata","TAAL","TAALOpcodes","erx","ex","sprintf"],function $module_FBLogMessage(global,require,requireDynamic,requireLazy,module,exports,ErrorUtils,FBLoggerMetadata,TAAL,TAALOpcodes,erx,ex,sprintf){
+                                                                                                    __d("FBLogMessage",["ErrorUtils","FBLoggerMetadata","TAAL","TAALOpcodes","erx","ex","sprintf"],function $module_FBLogMessage(global,require,requireDynamic,requireLazy,module,exports,ErrorUtils,FBLoggerMetadata,TAAL,TAALOpcodes,erx,ex,sprintf){
 
 'use strict';
 
@@ -6419,7 +6419,7 @@ return this;
 
 
 module.exports=FBLogMessage;},null);
-__d("FBLogger",["FBLoggerMetadata","FBLogMessage"],(function $module_FBLogger(global,require,requireDynamic,requireLazy,module,exports,FBLoggerMetadata,FBLogMessage){
+                                                                                         __d("FBLogger",["FBLoggerMetadata","FBLogMessage"],(function $module_FBLogger(global,require,requireDynamic,requireLazy,module,exports,FBLoggerMetadata,FBLogMessage){
 
 'use strict';
 
@@ -6450,7 +6450,7 @@ FBLoggerMetadata.addGlobalMetadata(product,name,value);
 };
 
 module.exports=FBLogger;}),null);
-__d("URIRFC3986",[],function $module_URIRFC3986(global,require,requireDynamic,requireLazy,module,exports){
+                                                                                                        __d("URIRFC3986",[],function $module_URIRFC3986(global,require,requireDynamic,requireLazy,module,exports){
 
 var PARSE_PATTERN=new RegExp(
 '^'+
@@ -6528,7 +6528,7 @@ return uri;
 
 
 module.exports=URIRFC3986;},null);
-__d("createObjectFrom",[],function $module_createObjectFrom(global,require,requireDynamic,requireLazy,module,exports){
+                                                                                         __d("createObjectFrom",[],function $module_createObjectFrom(global,require,requireDynamic,requireLazy,module,exports){
 
 
 
@@ -6578,7 +6578,7 @@ return object;
 }
 
 module.exports=createObjectFrom;},null);
-__d("URISchemes",["createObjectFrom"],function $module_URISchemes(global,require,requireDynamic,requireLazy,module,exports,createObjectFrom){
+                                                                                                 __d("URISchemes",["createObjectFrom"],function $module_URISchemes(global,require,requireDynamic,requireLazy,module,exports,createObjectFrom){
 
 
 
@@ -6658,7 +6658,7 @@ return Object.prototype.hasOwnProperty.call(defaultSchemes,schema.toLowerCase())
 
 
 module.exports=URISchemes;},null);
-__d("setHostSubdomain",[],(function $module_setHostSubdomain(global,require,requireDynamic,requireLazy,module,exports){
+                                                                                         __d("setHostSubdomain",[],(function $module_setHostSubdomain(global,require,requireDynamic,requireLazy,module,exports){
 
 function setHostSubdomain(domain,subdomain){
 var pieces=domain.split('.');
@@ -6671,7 +6671,7 @@ return pieces.join('.');
 }
 
 module.exports=setHostSubdomain;}),null);
-__d("URIBase",["FBLogger","URIRFC3986","URISchemes","ex","invariant","setHostSubdomain"],function $module_URIBase(global,require,requireDynamic,requireLazy,module,exports,FBLogger,URIRFC3986,URISchemes,ex,invariant,setHostSubdomain){
+                                                                                  __d("URIBase",["FBLogger","URIRFC3986","URISchemes","ex","invariant","setHostSubdomain"],function $module_URIBase(global,require,requireDynamic,requireLazy,module,exports,FBLogger,URIRFC3986,URISchemes,ex,invariant,setHostSubdomain){
 
 
 
@@ -7281,7 +7281,7 @@ return domains[0];
 
 
 module.exports=URIBase;},null);
-__d("sdk.URI",["Assert","QueryString","URIBase"],function $module_sdk_URI(global,require,requireDynamic,requireLazy,module,exports,Assert,QueryString,URIBase){var _URIBase,_superProto;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         __d("sdk.URI",["Assert","QueryString","URIBase"],function $module_sdk_URI(global,require,requireDynamic,requireLazy,module,exports,Assert,QueryString,URIBase){var _URIBase,_superProto;
 
 
 
@@ -7318,7 +7318,7 @@ return URIBase.isValid(uri,serializer);
 
 
 module.exports=URI;},null);
-__d("Queue",[],function $module_Queue(global,require,requireDynamic,requireLazy,module,exports){
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             __d("Queue",[],function $module_Queue(global,require,requireDynamic,requireLazy,module,exports){
 
 
 
@@ -7496,7 +7496,7 @@ return delete registry[name];
 
 
 module.exports=Queue;},null);
-__d("UserAgent_DEPRECATED",[],function $module_UserAgent_DEPRECATED(global,require,requireDynamic,requireLazy,module,exports){
+                                                                                         __d("UserAgent_DEPRECATED",[],function $module_UserAgent_DEPRECATED(global,require,requireDynamic,requireLazy,module,exports){
 
 
 
@@ -7773,7 +7773,7 @@ return _populate()||_ipad;
 
 
 module.exports=UserAgent_DEPRECATED;},null);
-__d("htmlSpecialChars",[],(function $module_htmlSpecialChars(global,require,requireDynamic,requireLazy,module,exports){
+                                                                   __d("htmlSpecialChars",[],(function $module_htmlSpecialChars(global,require,requireDynamic,requireLazy,module,exports){
 
 
 
@@ -7812,7 +7812,7 @@ replace(r_gt,'&gt;');
 }
 
 module.exports=htmlSpecialChars;}),null);
-__d("emptyFunction",[],function $module_emptyFunction(global,require,requireDynamic,requireLazy,module,exports){
+                                                                                                                              __d("emptyFunction",[],function $module_emptyFunction(global,require,requireDynamic,requireLazy,module,exports){
 
 function makeEmptyFunction(
 arg)
@@ -7841,7 +7841,7 @@ return arg;
 };
 
 module.exports=emptyFunction;},null);
-__d("sdk.DOMEventListener",["emptyFunction","invariant","wrapFunction"],function $module_sdk_DOMEventListener(global,require,requireDynamic,requireLazy,module,exports,emptyFunction,invariant,wrapFunction){
+                                                                                                 __d("sdk.DOMEventListener",["emptyFunction","invariant","wrapFunction"],function $module_sdk_DOMEventListener(global,require,requireDynamic,requireLazy,module,exports,emptyFunction,invariant,wrapFunction){
 
 
 
@@ -7971,7 +7971,7 @@ remove:_remove};
 
 
 module.exports=DOMEventListener;},null);
-__d("Flash",["DOMWrapper","QueryString","UserAgent_DEPRECATED","guid","htmlSpecialChars","sdk.DOMEventListener"],function $module_Flash(global,require,requireDynamic,requireLazy,module,exports,DOMWrapper,QueryString,UserAgent_DEPRECATED,guid,htmlSpecialChars,DOMEventListener){
+                                                                                                                                                                                                                                                                                                                                                                                                    __d("Flash",["DOMWrapper","QueryString","UserAgent_DEPRECATED","guid","htmlSpecialChars","sdk.DOMEventListener"],function $module_Flash(global,require,requireDynamic,requireLazy,module,exports,DOMWrapper,QueryString,UserAgent_DEPRECATED,guid,htmlSpecialChars,DOMEventListener){
 
 
 
@@ -8170,7 +8170,7 @@ return!!Flash.getVersion();
 
 
 module.exports=Flash;},null);
-__d("XDM",["DOMWrapper","Flash","GlobalCallback","Log","UserAgent_DEPRECATED","emptyFunction","guid","sdk.DOMEventListener","wrapFunction"],function $module_XDM(global,require,requireDynamic,requireLazy,module,exports,DOMWrapper,Flash,GlobalCallback,Log,UserAgent_DEPRECATED,emptyFunction,guid,DOMEventListener,wrapFunction){
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   __d("XDM",["DOMWrapper","Flash","GlobalCallback","Log","UserAgent_DEPRECATED","emptyFunction","guid","sdk.DOMEventListener","wrapFunction"],function $module_XDM(global,require,requireDynamic,requireLazy,module,exports,DOMWrapper,Flash,GlobalCallback,Log,UserAgent_DEPRECATED,emptyFunction,guid,DOMEventListener,wrapFunction){
 
 
 
@@ -8458,7 +8458,7 @@ inited=true;
 
 
 module.exports=XDM;},null);
-__d("isFacebookURI",[],function $module_isFacebookURI(global,require,requireDynamic,requireLazy,module,exports){
+                                                                                                              __d("isFacebookURI",[],function $module_isFacebookURI(global,require,requireDynamic,requireLazy,module,exports){
 
 
 
@@ -8494,7 +8494,7 @@ facebookURIRegex=regex;
 };
 
 module.exports=isFacebookURI;},null);
-__d("sdk.Event",[],function $module_sdk_Event(global,require,requireDynamic,requireLazy,module,exports){
+                                                                                                 __d("sdk.Event",[],function $module_sdk_Event(global,require,requireDynamic,requireLazy,module,exports){
 
 'use strict';
 
@@ -8661,7 +8661,7 @@ sub.apply(this,args);
 
 
 module.exports=Event;},null);
-__d("JSONRPC",["Log"],function $module_JSONRPC(global,require,requireDynamic,requireLazy,module,exports,Log){
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             __d("JSONRPC",["Log"],function $module_JSONRPC(global,require,requireDynamic,requireLazy,module,exports,Log){
 
 
 
@@ -8800,7 +8800,7 @@ data:rpcEx.message});
 
 
 module.exports=JSONRPC;},null);
-__d("sdk.RPC",["Assert","JSONRPC","Queue"],function $module_sdk_RPC(global,require,requireDynamic,requireLazy,module,exports,Assert,JSONRPC,Queue){
+                                                                                             __d("sdk.RPC",["Assert","JSONRPC","Queue"],function $module_sdk_RPC(global,require,requireDynamic,requireLazy,module,exports,Assert,JSONRPC,Queue){
 
 
 
@@ -8828,7 +8828,7 @@ return outQueue;
 
 
 module.exports=RPC;},null);
-__d("hasNamePropertyBug",["UserAgent_DEPRECATED","guid"],function $module_hasNamePropertyBug(global,require,requireDynamic,requireLazy,module,exports,UserAgent_DEPRECATED,guid){
+                                                                                             __d("hasNamePropertyBug",["UserAgent_DEPRECATED","guid"],function $module_hasNamePropertyBug(global,require,requireDynamic,requireLazy,module,exports,UserAgent_DEPRECATED,guid){
 
 
 
@@ -8853,7 +8853,7 @@ return typeof hasBug==='undefined'?test():hasBug;
 }
 
 module.exports=hasNamePropertyBug;},null);
-__d("isNumberLike",[],function $module_isNumberLike(global,require,requireDynamic,requireLazy,module,exports){
+                                                                                         __d("isNumberLike",[],function $module_isNumberLike(global,require,requireDynamic,requireLazy,module,exports){
 
 
 
@@ -8864,7 +8864,7 @@ return!isNaN(parseFloat(n))&&isFinite(n);
 }
 
 module.exports=isNumberLike;},null);
-__d("sdk.createIframe",["getBlankIframeSrc","guid","hasNamePropertyBug","isNumberLike","sdk.DOMEventListener"],function $module_sdk_createIframe(global,require,requireDynamic,requireLazy,module,exports,getBlankIframeSrc,guid,hasNamePropertyBug,isNumberLike,DOMEventListener){
+                                                                                                                           __d("sdk.createIframe",["getBlankIframeSrc","guid","hasNamePropertyBug","isNumberLike","sdk.DOMEventListener"],function $module_sdk_createIframe(global,require,requireDynamic,requireLazy,module,exports,getBlankIframeSrc,guid,hasNamePropertyBug,isNumberLike,DOMEventListener){
 
 
 
@@ -8951,7 +8951,7 @@ return frame;
 }
 
 module.exports=createIframe;},null);
-__d("sdk.FeatureFunctor",["invariant"],function $module_sdk_FeatureFunctor(global,require,requireDynamic,requireLazy,module,exports,invariant){
+                                                                                                 __d("sdk.FeatureFunctor",["invariant"],function $module_sdk_FeatureFunctor(global,require,requireDynamic,requireLazy,module,exports,invariant){
 
 
 
@@ -8988,7 +8988,7 @@ return feature(config,name,defaultValue);
 
 module.exports={
 create:createFeatureFunction};},null);
-__d("sdk.feature",["JSSDKConfig","sdk.FeatureFunctor"],function $module_sdk_feature(global,require,requireDynamic,requireLazy,module,exports,SDKConfig,FeatureFunctor){
+                                                                                                 __d("sdk.feature",["JSSDKConfig","sdk.FeatureFunctor"],function $module_sdk_feature(global,require,requireDynamic,requireLazy,module,exports,SDKConfig,FeatureFunctor){
 
 
 
@@ -9002,7 +9002,7 @@ __d("sdk.feature",["JSSDKConfig","sdk.FeatureFunctor"],function $module_sdk_feat
 
 
 module.exports=FeatureFunctor.create(SDKConfig);},null);
-__d("sdk.XD",["JSSDKXDConfig","Log","QueryString","Queue","UrlMap","XDM","guid","isFacebookURI","sdk.Content","sdk.createIframe","sdk.Event","sdk.feature","sdk.RPC","sdk.Runtime","sdk.Scribe","sdk.URI"],function $module_sdk_XD(global,require,requireDynamic,requireLazy,module,exports,XDConfig,Log,QueryString,Queue,UrlMap,XDM,guid,isFacebookURI,Content,createIframe,Event,feature,RPC,Runtime,Scribe,URI){
+                                                                                             __d("sdk.XD",["JSSDKXDConfig","Log","QueryString","Queue","UrlMap","XDM","guid","isFacebookURI","sdk.Content","sdk.createIframe","sdk.Event","sdk.feature","sdk.RPC","sdk.Runtime","sdk.Scribe","sdk.URI"],function $module_sdk_XD(global,require,requireDynamic,requireLazy,module,exports,XDConfig,Log,QueryString,Queue,UrlMap,XDM,guid,isFacebookURI,Content,createIframe,Event,feature,RPC,Runtime,Scribe,URI){
 
 
 
@@ -9388,7 +9388,7 @@ message:'Failed to initialize in '+timeout+'ms'}});
 });
 
 module.exports=XD;},null);
-__d("sdk.getContextType",["sdk.Runtime","sdk.UA"],function $module_sdk_getContextType(global,require,requireDynamic,requireLazy,module,exports,Runtime,UA){
+                                                                                             __d("sdk.getContextType",["sdk.Runtime","sdk.UA"],function $module_sdk_getContextType(global,require,requireDynamic,requireLazy,module,exports,Runtime,UA){
 
 
 
@@ -9413,7 +9413,7 @@ return 1;
 }
 
 module.exports=getContextType;},null);
-__d("sdk.Auth",["DOMWrapper","Log","ObservableMixin","UrlMap","guid","sdk.Cookie","sdk.createIframe","sdk.feature","sdk.getContextType","sdk.Impressions","sdk.Runtime","sdk.Scribe","sdk.SignedRequest","sdk.URI","sdk.XD"],function $module_sdk_Auth(global,require,requireDynamic,requireLazy,module,exports,DOMWrapper,Log,ObservableMixin,UrlMap,guid,Cookie,createIframe,feature,getContextType,Impressions,Runtime,Scribe,SignedRequest,URI,XD){
+                                                                                                 __d("sdk.Auth",["DOMWrapper","Log","ObservableMixin","UrlMap","guid","sdk.Cookie","sdk.createIframe","sdk.feature","sdk.getContextType","sdk.Impressions","sdk.Runtime","sdk.Scribe","sdk.SignedRequest","sdk.URI","sdk.XD"],function $module_sdk_Auth(global,require,requireDynamic,requireLazy,module,exports,DOMWrapper,Log,ObservableMixin,UrlMap,guid,Cookie,createIframe,feature,getContextType,Impressions,Runtime,Scribe,SignedRequest,URI,XD){
 
 
 
@@ -9746,7 +9746,7 @@ xdResponseWrapper:xdResponseWrapper});
 
 
 module.exports=Auth;},null);
-__d("sdk.DOM",["Assert","sdk.domReady","sdk.UA"],function $module_sdk_DOM(global,require,requireDynamic,requireLazy,module,exports,Assert,domReady,UA){
+                                                                                             __d("sdk.DOM",["Assert","sdk.domReady","sdk.UA"],function $module_sdk_DOM(global,require,requireDynamic,requireLazy,module,exports,Assert,domReady,UA){
 
 
 
@@ -10020,7 +10020,7 @@ remove:remove};
 
 
 module.exports=DOM;},null);
-__d("normalizeError",["sdk.UA"],function $module_normalizeError(global,require,requireDynamic,requireLazy,module,exports,UA){
+                                                                                                                                                                                                                                                                                                                                                                                               __d("normalizeError",["sdk.UA"],function $module_normalizeError(global,require,requireDynamic,requireLazy,module,exports,UA){
 
 
 
@@ -10063,7 +10063,7 @@ return info;
 }
 
 module.exports=normalizeError;},null);
-__d("sdk.ErrorHandler",["ManagedError","normalizeError","wrapFunction"],function $module_sdk_ErrorHandler(global,require,requireDynamic,requireLazy,module,exports,ManagedError,normalizeError,wrapFunction){
+                                                                                                 __d("sdk.ErrorHandler",["ManagedError","normalizeError","wrapFunction"],function $module_sdk_ErrorHandler(global,require,requireDynamic,requireLazy,module,exports,ManagedError,normalizeError,wrapFunction){
 
 
 
@@ -10177,7 +10177,7 @@ unguard:unguard};
 
 module.exports={
 create:create};},null);
-__d("sdk.ErrorHandling",["sdk.ErrorHandler","sdk.feature","sdk.Runtime","sdk.Scribe"],function $module_sdk_ErrorHandling(global,require,requireDynamic,requireLazy,module,exports,ErrorHandler,feature,Runtime,Scribe){
+                                                                                                 __d("sdk.ErrorHandling",["sdk.ErrorHandler","sdk.feature","sdk.Runtime","sdk.Scribe"],function $module_sdk_ErrorHandling(global,require,requireDynamic,requireLazy,module,exports,ErrorHandler,feature,Runtime,Scribe){
 
 
 
@@ -10193,7 +10193,7 @@ error:error.name||error.message,
 extra:error});
 
 });},null);
-__d("sdk.Insights",["sdk.Impressions"],(function $module_sdk_Insights(global,require,requireDynamic,requireLazy,module,exports,Impressions){
+                                                                                             __d("sdk.Insights",["sdk.Impressions"],(function $module_sdk_Insights(global,require,requireDynamic,requireLazy,module,exports,Impressions){
 
 
 
@@ -10228,7 +10228,7 @@ impression:Impressions.impression};
 
 
 module.exports=Insights;}),null);
-__d("FB",["DOMWrapper","GlobalCallback","JSSDKConfig","JSSDKCssConfig","Log","dotAccess","sdk.Auth","sdk.Content","sdk.DOM","sdk.domReady","sdk.ErrorHandling","sdk.feature","sdk.Insights","sdk.Runtime","sdk.Scribe"],function $module_FB(global,require,requireDynamic,requireLazy,module,exports,DOMWrapper,GlobalCallback,SDKConfig,CssConfig,Log,dotAccess,Auth,Content,DOM,domReady,ErrorHandling,feature,Insights,Runtime,Scribe){
+                                                                                                                                                                                                                                                                                                                                                                                                                                        __d("FB",["DOMWrapper","GlobalCallback","JSSDKConfig","JSSDKCssConfig","Log","dotAccess","sdk.Auth","sdk.Content","sdk.DOM","sdk.domReady","sdk.ErrorHandling","sdk.feature","sdk.Insights","sdk.Runtime","sdk.Scribe"],function $module_FB(global,require,requireDynamic,requireLazy,module,exports,DOMWrapper,GlobalCallback,SDKConfig,CssConfig,Log,dotAccess,Auth,Content,DOM,domReady,ErrorHandling,feature,Insights,Runtime,Scribe){
 
 
 
@@ -10526,7 +10526,7 @@ provide:provide});
 
 
 module.exports=FB;},null);
-__d("ArgumentError",["ManagedError"],function $module_ArgumentError(global,require,requireDynamic,requireLazy,module,exports,ManagedError){var _ManagedError,_superProto;_ManagedError=babelHelpers.inherits(
+                                                                                                                                                                                                             __d("ArgumentError",["ManagedError"],function $module_ArgumentError(global,require,requireDynamic,requireLazy,module,exports,ManagedError){var _ManagedError,_superProto;_ManagedError=babelHelpers.inherits(
 
 
 
@@ -10538,7 +10538,7 @@ _superProto.constructor.call(this,message,innerError);
 
 
 module.exports=ArgumentError;},null);
-__d("flattenObject",[],function $module_flattenObject(global,require,requireDynamic,requireLazy,module,exports){
+                                                                                                        __d("flattenObject",[],function $module_flattenObject(global,require,requireDynamic,requireLazy,module,exports){
 
 'use strict';
 
@@ -10571,7 +10571,7 @@ return flat;
 };
 
 module.exports=flattenObject;},null);
-__d("ApiClientUtils",["ArgumentError","Assert","Log","flattenObject","sdk.URI","sprintf"],function $module_ApiClientUtils(global,require,requireDynamic,requireLazy,module,exports,ArgumentError,Assert,Log,flattenObject,URI,sprintf){
+                                                                                  __d("ApiClientUtils",["ArgumentError","Assert","Log","flattenObject","sdk.URI","sprintf"],function $module_ApiClientUtils(global,require,requireDynamic,requireLazy,module,exports,ArgumentError,Assert,Log,flattenObject,URI,sprintf){
 
 
 
@@ -10636,7 +10636,7 @@ return{uri:uri,callback:callback,params:params};
 }
 
 module.exports={parseCallDataFromArgs:parseCallDataFromArgs};},null);
-__d("errorCode",[],function $module_errorCode(global,require,requireDynamic,requireLazy,module,exports){
+                                                                              __d("errorCode",[],function $module_errorCode(global,require,requireDynamic,requireLazy,module,exports){
 
 'use strict';
 
@@ -10650,7 +10650,7 @@ throw new Error(
 }
 
 module.exports=errorCode;},null);
-__d("nullthrows",[],(function $module_nullthrows(global,require,requireDynamic,requireLazy,module,exports){
+                                                                                         __d("nullthrows",[],(function $module_nullthrows(global,require,requireDynamic,requireLazy,module,exports){
 
 var nullthrows=function nullthrows(
 x,
@@ -10666,7 +10666,7 @@ throw error;
 };
 
 module.exports=nullthrows;}),null);
-__d("sdk.safelyParseResponse",["errorCode","nullthrows"],function $module_sdk_safelyParseResponse(global,require,requireDynamic,requireLazy,module,exports,errorCode,nullthrows){
+                                                                                                 __d("sdk.safelyParseResponse",["errorCode","nullthrows"],function $module_sdk_safelyParseResponse(global,require,requireDynamic,requireLazy,module,exports,errorCode,nullthrows){
 
 'use strict';
 
@@ -10708,7 +10708,7 @@ errorHandler=newHandler;
 };
 
 module.exports=safelyParseResponse;},null);
-__d("ApiBatcher",["ApiClientUtils","QueryString","invariant","sdk.safelyParseResponse"],function $module_ApiBatcher(global,require,requireDynamic,requireLazy,module,exports,ApiClientUtils,QueryString,invariant,safelyParseResponse){
+                                                                                  __d("ApiBatcher",["ApiClientUtils","QueryString","invariant","sdk.safelyParseResponse"],function $module_ApiBatcher(global,require,requireDynamic,requireLazy,module,exports,ApiClientUtils,QueryString,invariant,safelyParseResponse){
 
 'use strict';
 
@@ -10864,7 +10864,7 @@ callback({error:{message:'Fatal: batch call failed.'}}));});
 
 
 module.exports=ApiBatcher;},null);
-__d("RequestConstants",["errorCode"],function $module_RequestConstants(global,require,requireDynamic,requireLazy,module,exports,errorCode){
+                                                                                         __d("RequestConstants",["errorCode"],function $module_RequestConstants(global,require,requireDynamic,requireLazy,module,exports,errorCode){
 
 
 var PARSE_ERROR_TEMPLATE={
@@ -10877,7 +10877,7 @@ status:0};
 
 module.exports={
 PARSE_ERROR_TEMPLATE:PARSE_ERROR_TEMPLATE};},null);
-__d("CORSRequest",["QueryString","RequestConstants","sdk.safelyParseResponse","wrapFunction"],function $module_CORSRequest(global,require,requireDynamic,requireLazy,module,exports,QueryString,RequestConstants,safelyParseResponse,wrapFunction){
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              __d("CORSRequest",["QueryString","RequestConstants","sdk.safelyParseResponse","wrapFunction"],function $module_CORSRequest(global,require,requireDynamic,requireLazy,module,exports,QueryString,RequestConstants,safelyParseResponse,wrapFunction){
 
 
 
@@ -11013,12 +11013,12 @@ var CORSRequest={
 execute:execute};
 
 module.exports=CORSRequest;},null);
-__d("GraphBatchConstants",[],function $module_GraphBatchConstants(global,require,requireDynamic,requireLazy,module,exports){
+                                                                                                                                                                                                                                                                                                               __d("GraphBatchConstants",[],function $module_GraphBatchConstants(global,require,requireDynamic,requireLazy,module,exports){
 
 
 
 module.exports=ES("Object","freeze",false,{"FLUSH_DELIMITER":"\r\n"});},null);
-__d("ChunkedRequest",["GraphBatchConstants","QueryString","RequestConstants","sdk.safelyParseResponse","wrapFunction"],function $module_ChunkedRequest(global,require,requireDynamic,requireLazy,module,exports,GraphBatchConstants,QueryString,RequestConstants,safelyParseResponse,wrapFunction){
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               __d("ChunkedRequest",["GraphBatchConstants","QueryString","RequestConstants","sdk.safelyParseResponse","wrapFunction"],function $module_ChunkedRequest(global,require,requireDynamic,requireLazy,module,exports,GraphBatchConstants,QueryString,RequestConstants,safelyParseResponse,wrapFunction){
 
 
 
@@ -11196,7 +11196,7 @@ var ChunkedRequest={
 execute:execute};
 
 module.exports=ChunkedRequest;},null);
-__d("FlashRequest",["DOMWrapper","Flash","GlobalCallback","QueryString","Queue"],function $module_FlashRequest(global,require,requireDynamic,requireLazy,module,exports,DOMWrapper,Flash,GlobalCallback,QueryString,Queue){
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    __d("FlashRequest",["DOMWrapper","Flash","GlobalCallback","QueryString","Queue"],function $module_FlashRequest(global,require,requireDynamic,requireLazy,module,exports,DOMWrapper,Flash,GlobalCallback,QueryString,Queue){
 
 
 
@@ -11318,7 +11318,7 @@ execute:execute};
 
 
 module.exports=FlashRequest;},null);
-__d("JSONPRequest",["DOMWrapper","GlobalCallback","QueryString"],function $module_JSONPRequest(global,require,requireDynamic,requireLazy,module,exports,DOMWrapper,GlobalCallback,QueryString){
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                __d("JSONPRequest",["DOMWrapper","GlobalCallback","QueryString"],function $module_JSONPRequest(global,require,requireDynamic,requireLazy,module,exports,DOMWrapper,GlobalCallback,QueryString){
 
 
 
@@ -11414,7 +11414,7 @@ MAX_QUERYSTRING_LENGTH:MAX_QUERYSTRING_LENGTH};
 
 
 module.exports=JSONPRequest;},null);
-__d("ApiClient",["ApiBatcher","ApiClientConfig","ApiClientUtils","Assert","ChunkedRequest","CORSRequest","FlashRequest","JSONPRequest","Log","ObservableMixin","QueryString","UrlMap","flattenObject"],function $module_ApiClient(global,require,requireDynamic,requireLazy,module,exports,ApiBatcher,ApiClientConfig,ApiClientUtils,Assert,ChunkedRequest,CORSRequest,FlashRequest,JSONPRequest,Log,ObservableMixin,QueryString,UrlMap,flattenObject){
+                                                                                             __d("ApiClient",["ApiBatcher","ApiClientConfig","ApiClientUtils","Assert","ChunkedRequest","CORSRequest","FlashRequest","JSONPRequest","Log","ObservableMixin","QueryString","UrlMap","flattenObject"],function $module_ApiClient(global,require,requireDynamic,requireLazy,module,exports,ApiBatcher,ApiClientConfig,ApiClientUtils,Assert,ChunkedRequest,CORSRequest,FlashRequest,JSONPRequest,Log,ObservableMixin,QueryString,UrlMap,flattenObject){
 
 
 
@@ -11754,7 +11754,7 @@ return uri.toString().length>MAX_QUERYSTRING_LENGTH&&method==='get';
 FlashRequest.setSwfUrl(ApiClientConfig.FlashRequest.swfUrl);
 
 module.exports=ApiClient;},null);
-__d("sdk.PlatformVersioning",["ManagedError","sdk.Runtime"],(function $module_sdk_PlatformVersioning(global,require,requireDynamic,requireLazy,module,exports,ManagedError,Runtime){
+                                                                                             __d("sdk.PlatformVersioning",["ManagedError","sdk.Runtime"],(function $module_sdk_PlatformVersioning(global,require,requireDynamic,requireLazy,module,exports,ManagedError,Runtime){
 
 
 
@@ -11779,7 +11779,7 @@ throw new ManagedError('invalid version specified');
 
 
 module.exports=PlatformVersioning;}),null);
-__d("sdk.api",["ApiClient","sdk.feature","sdk.PlatformVersioning","sdk.Runtime","sdk.Scribe","sdk.URI"],function $module_sdk_api(global,require,requireDynamic,requireLazy,module,exports,ApiClient,feature,PlatformVersioning,Runtime,Scribe,URI){
+                                                                                             __d("sdk.api",["ApiClient","sdk.feature","sdk.PlatformVersioning","sdk.Runtime","sdk.Scribe","sdk.URI"],function $module_sdk_api(global,require,requireDynamic,requireLazy,module,exports,ApiClient,feature,PlatformVersioning,Runtime,Scribe,URI){
 
 
 
@@ -11909,13 +11909,13 @@ ApiClient.rest.apply(ApiClient,arguments);
 }
 
 module.exports=api;},null);
-__d("legacy:fb.api",["FB","sdk.api"],(function $module_legacy_fb_api(global,require,requireDynamic,requireLazy,__DO_NOT_USE__module,__DO_NOT_USE__exports,FB,api){
+                                                                                                            __d("legacy:fb.api",["FB","sdk.api"],(function $module_legacy_fb_api(global,require,requireDynamic,requireLazy,__DO_NOT_USE__module,__DO_NOT_USE__exports,FB,api){
 
 
 
 
 FB.provide('',{api:api});}),3);
-__d("flattenPHPQueryData",["invariant"],(function $module_flattenPHPQueryData(global,require,requireDynamic,requireLazy,module,exports,invariant){
+                                                                                  __d("flattenPHPQueryData",["invariant"],(function $module_flattenPHPQueryData(global,require,requireDynamic,requireLazy,module,exports,invariant){
 
 
 
@@ -12004,7 +12004,7 @@ return componentsObject;
 }
 
 module.exports=flattenPHPQueryData;}),null);
-__d("PHPQuerySerializer",["flattenPHPQueryData","invariant"],(function $module_PHPQuerySerializer(global,require,requireDynamic,requireLazy,module,exports,flattenPHPQueryData,invariant){
+                                                                                  __d("PHPQuerySerializer",["flattenPHPQueryData","invariant"],(function $module_PHPQuerySerializer(global,require,requireDynamic,requireLazy,module,exports,flattenPHPQueryData,invariant){
 
 
 
@@ -12171,7 +12171,7 @@ decodeComponent:decodeComponent};
 
 
 module.exports=PHPQuerySerializer;}),null);
-__d("ReloadPage",[],function $module_ReloadPage(global,require,requireDynamic,requireLazy,module,exports){
+                                                                                         __d("ReloadPage",[],function $module_ReloadPage(global,require,requireDynamic,requireLazy,module,exports){
 
 
 
@@ -12188,7 +12188,7 @@ global.setTimeout(ES(this.now,"bind",true,this),timeout);
 
 
 module.exports=ReloadPage;},null);
-__d("areSameOrigin",[],function $module_areSameOrigin(global,require,requireDynamic,requireLazy,module,exports){
+                                                                                                              __d("areSameOrigin",[],function $module_areSameOrigin(global,require,requireDynamic,requireLazy,module,exports){
 
 
 
@@ -12224,7 +12224,7 @@ return true;
 }
 
 module.exports=areSameOrigin;},null);
-__d("ifRequired",[],(function $module_ifRequired(global,require,requireDynamic,requireLazy,module,exports){
+                                                                                         __d("ifRequired",[],(function $module_ifRequired(global,require,requireDynamic,requireLazy,module,exports){
 
 
 
@@ -12273,7 +12273,7 @@ return cbNo();
 }
 
 module.exports=ifRequired;}),null);
-__d("memoize",["invariant"],(function $module_memoize(global,require,requireDynamic,requireLazy,module,exports,invariant){
+                                                                                                        __d("memoize",["invariant"],(function $module_memoize(global,require,requireDynamic,requireLazy,module,exports,invariant){
 
 
 
@@ -12300,7 +12300,7 @@ return result;
 }
 
 module.exports=memoize;}),null);
-__d("unqualifyURI",[],(function $module_unqualifyURI(global,require,requireDynamic,requireLazy,module,exports){
+                                                                                                              __d("unqualifyURI",[],(function $module_unqualifyURI(global,require,requireDynamic,requireLazy,module,exports){
 
 
 
@@ -12316,7 +12316,7 @@ setPort(null);
 }
 
 module.exports=unqualifyURI;}),null);
-__d("URI",["PHPQuerySerializer","ReloadPage","URIBase","areSameOrigin","ifRequired","isFacebookURI","memoize","unqualifyURI"],function $module_URI(global,require,requireDynamic,requireLazy,module,exports,PHPQuerySerializer,ReloadPage,URIBase,areSameOrigin,ifRequired,isFacebookURI,memoize,unqualifyURI){var _URIBase,_superProto;
+                                                                                                 __d("URI",["PHPQuerySerializer","ReloadPage","URIBase","areSameOrigin","ifRequired","isFacebookURI","memoize","unqualifyURI"],function $module_URI(global,require,requireDynamic,requireLazy,module,exports,PHPQuerySerializer,ReloadPage,URIBase,areSameOrigin,ifRequired,isFacebookURI,memoize,unqualifyURI){var _URIBase,_superProto;
 
 
 
@@ -12803,7 +12803,7 @@ this[privateProp]=newValue;
 }
 }
 module.exports=URI;},null);
-__d("resolveURI",[],function $module_resolveURI(global,require,requireDynamic,requireLazy,module,exports){
+                                                                                                                                                                                                                                                __d("resolveURI",[],function $module_resolveURI(global,require,requireDynamic,requireLazy,module,exports){
 
 function resolveURI(uri){
 if(!uri){
@@ -12824,7 +12824,7 @@ return div.firstChild.href;
 }
 
 module.exports=resolveURI;},null);
-__d("sdk.Canvas.Environment",["sdk.RPC"],(function $module_sdk_Canvas_Environment(global,require,requireDynamic,requireLazy,module,exports,RPC){
+                                                                                             __d("sdk.Canvas.Environment",["sdk.RPC"],(function $module_sdk_Canvas_Environment(global,require,requireDynamic,requireLazy,module,exports,RPC){
 
 
 
@@ -12847,7 +12847,7 @@ scrollTo:scrollTo};
 
 
 module.exports=Environment;}),null);
-__d("sdk.DialogUtils",["sdk.Content","sdk.DOM","sdk.DOMEventListener","sdk.UA"],function $module_sdk_DialogUtils(global,require,requireDynamic,requireLazy,module,exports,Content,DOM,DOMEventListener,UA){
+                                                                                                 __d("sdk.DialogUtils",["sdk.Content","sdk.DOM","sdk.DOMEventListener","sdk.UA"],function $module_sdk_DialogUtils(global,require,requireDynamic,requireLazy,module,exports,Content,DOM,DOMEventListener,UA){
 
 'use strict';
 
@@ -13131,7 +13131,7 @@ DOM.removeCss(body,'fb_hidden');
 
 
 module.exports=DialogUtils;},null);
-__d("sdk.fbt",[],(function $module_sdk_fbt(global,require,requireDynamic,requireLazy,module,exports){
+                                                                              __d("sdk.fbt",[],(function $module_sdk_fbt(global,require,requireDynamic,requireLazy,module,exports){
 
 
 
@@ -13147,7 +13147,7 @@ return typeof table==='string'?table:table[0];
 }};
 
 module.exports=fbt;}),null);
-__d("sdk.Dialog",["ObservableMixin","Type","sdk.Canvas.Environment","sdk.Content","sdk.DialogUtils","sdk.DOM","sdk.DOMEventListener","sdk.fbt","sdk.Runtime","sdk.UA"],function $module_sdk_Dialog(global,require,requireDynamic,requireLazy,module,exports,ObservableMixin,Type,CanvasEnvironment,Content,DialogUtils,DOM,DOMEventListener,fbt,Runtime,UA){
+                                                                                                                   __d("sdk.Dialog",["ObservableMixin","Type","sdk.Canvas.Environment","sdk.Content","sdk.DialogUtils","sdk.DOM","sdk.DOMEventListener","sdk.fbt","sdk.Runtime","sdk.UA"],function $module_sdk_Dialog(global,require,requireDynamic,requireLazy,module,exports,ObservableMixin,Type,CanvasEnvironment,Content,DialogUtils,DOM,DOMEventListener,fbt,Runtime,UA){
 
 
 
@@ -13797,7 +13797,7 @@ size.height>=MAX_HEIGHT_MOBILE||size.width>=MAX_WIDTH_MOBILE));
 
 
 module.exports=Dialog;},null);
-__d("sdk.NativeExtensions",["Log","sdk.DOMEventListener","sdk.UA"],function $module_sdk_NativeExtensions(global,require,requireDynamic,requireLazy,module,exports,Log,DOMEventListener,UA){
+                                                                                                 __d("sdk.NativeExtensions",["Log","sdk.DOMEventListener","sdk.UA"],function $module_sdk_NativeExtensions(global,require,requireDynamic,requireLazy,module,exports,Log,DOMEventListener,UA){
 
 
 
@@ -13876,7 +13876,7 @@ nativeExtensionsReadyCallback);
 
 
 module.exports=NativeExtensions;},null);
-__d("sdk.Extensions",["JSONRPC","Queue","sdk.NativeExtensions","sdk.UA"],function $module_sdk_Extensions(global,require,requireDynamic,requireLazy,module,exports,JSONRPC,Queue,NativeExtensions,UA){
+                                                                                                 __d("sdk.Extensions",["JSONRPC","Queue","sdk.NativeExtensions","sdk.UA"],function $module_sdk_Extensions(global,require,requireDynamic,requireLazy,module,exports,JSONRPC,Queue,NativeExtensions,UA){
 
 'use strict';
 
@@ -13926,7 +13926,7 @@ stub:ES(jsonrpc.stub,"bind",true,jsonrpc),
 supportsDialog:function supportsDialog(method){
 return!!extensionAPIBridge&&extensionAPIBridge.supportsDialog(method);
 }};},null);
-__d("sdk.Frictionless",["sdk.api","sdk.Auth","sdk.Dialog","sdk.Event"],function $module_sdk_Frictionless(global,require,requireDynamic,requireLazy,module,exports,api,Auth,Dialog,Event){
+                                                                                             __d("sdk.Frictionless",["sdk.api","sdk.Auth","sdk.Dialog","sdk.Event"],function $module_sdk_Frictionless(global,require,requireDynamic,requireLazy,module,exports,api,Auth,Dialog,Event){
 
 
 
@@ -14044,7 +14044,7 @@ Frictionless.init();
 });
 
 module.exports=Frictionless;},null);
-__d("sdk.Native",["Log","sdk.UA"],function $module_sdk_Native(global,require,requireDynamic,requireLazy,module,exports,Log,UA){
+                                                                                             __d("sdk.Native",["Log","sdk.UA"],function $module_sdk_Native(global,require,requireDynamic,requireLazy,module,exports,Log,UA){
 
 
 
@@ -14094,7 +14094,7 @@ window.addEventListener(NATIVE_READY_EVENT,nativeReadyCallback,false);
 
 
 module.exports=Native;},null);
-__d("sdk.openMessenger",["sdk.UA"],(function $module_sdk_openMessenger(global,require,requireDynamic,requireLazy,module,exports,UA){
+                                                                                                 __d("sdk.openMessenger",["sdk.UA"],(function $module_sdk_openMessenger(global,require,requireDynamic,requireLazy,module,exports,UA){
 
 'use strict';
 
@@ -14141,7 +14141,7 @@ window.location.href=uri;
 }
 
 module.exports=openMessenger;}),null);
-__d("sdk.UIServer",["JSSDKConfig","Log","QueryString","UrlMap","createObjectFrom","flattenObject","guid","insertIframe","resolveURI","sdk.Auth","sdk.Content","sdk.Dialog","sdk.DOM","sdk.Event","sdk.Extensions","sdk.fbt","sdk.feature","sdk.Frictionless","sdk.getContextType","sdk.Native","sdk.openMessenger","sdk.RPC","sdk.Runtime","sdk.Scribe","sdk.UA","sdk.XD"],function $module_sdk_UIServer(global,require,requireDynamic,requireLazy,module,exports,SDKConfig,Log,QueryString,UrlMap,createObjectFrom,flattenObject,guid,insertIframe,resolveURI,Auth,Content,Dialog,DOM,Event,Extensions,fbt,feature,Frictionless,getContextType,Native,openMessenger,RPC,Runtime,Scribe,UA,XD){
+                                                                                                                                                                                                                                                 __d("sdk.UIServer",["JSSDKConfig","Log","QueryString","UrlMap","createObjectFrom","flattenObject","guid","insertIframe","resolveURI","sdk.Auth","sdk.Content","sdk.Dialog","sdk.DOM","sdk.Event","sdk.Extensions","sdk.fbt","sdk.feature","sdk.Frictionless","sdk.getContextType","sdk.Native","sdk.openMessenger","sdk.RPC","sdk.Runtime","sdk.Scribe","sdk.UA","sdk.XD"],function $module_sdk_UIServer(global,require,requireDynamic,requireLazy,module,exports,SDKConfig,Log,QueryString,UrlMap,createObjectFrom,flattenObject,guid,insertIframe,resolveURI,Auth,Content,Dialog,DOM,Event,Extensions,fbt,feature,Frictionless,getContextType,Native,openMessenger,RPC,Runtime,Scribe,UA,XD){
 
 
 
@@ -15341,7 +15341,7 @@ isDefault);
 Extensions.stub('showDialog');
 RPC.stub('showDialog');
 module.exports=UIServer;},null);
-__d("sdk.ui",["Assert","Log","URI","sdk.feature","sdk.Impressions","sdk.PlatformVersioning","sdk.Runtime","sdk.UIServer"],function $module_sdk_ui(global,require,requireDynamic,requireLazy,module,exports,Assert,Log,URI,feature,Impressions,PlatformVersioning,Runtime,UIServer){
+                                                                                             __d("sdk.ui",["Assert","Log","URI","sdk.feature","sdk.Impressions","sdk.PlatformVersioning","sdk.Runtime","sdk.UIServer"],function $module_sdk_ui(global,require,requireDynamic,requireLazy,module,exports,Assert,Log,URI,feature,Impressions,PlatformVersioning,Runtime,UIServer){
 
 
 
@@ -15501,7 +15501,7 @@ return call.dialog;
 }
 
 module.exports=ui;},null);
-__d("legacy:fb.auth",["FB","Log","sdk.Auth","sdk.Cookie","sdk.Event","sdk.Runtime","sdk.SignedRequest","sdk.ui"],function $module_legacy_fb_auth(global,require,requireDynamic,requireLazy,__DO_NOT_USE__module,__DO_NOT_USE__exports,FB,Log,Auth,Cookie,Event,Runtime,SignedRequest,ui){
+                                                                                                                            __d("legacy:fb.auth",["FB","Log","sdk.Auth","sdk.Cookie","sdk.Event","sdk.Runtime","sdk.SignedRequest","sdk.ui"],function $module_legacy_fb_auth(global,require,requireDynamic,requireLazy,__DO_NOT_USE__module,__DO_NOT_USE__exports,FB,Log,Auth,Cookie,Event,Runtime,SignedRequest,ui){
 
 
 
@@ -15592,7 +15592,7 @@ Runtime.setCookieUserID(parsedSignedRequest.user_id);
 }
 }
 });},3);
-__d("sdk.Canvas.IframeHandling",["DOMWrapper","sdk.RPC"],(function $module_sdk_Canvas_IframeHandling(global,require,requireDynamic,requireLazy,module,exports,DOMWrapper,RPC){
+                                                                                             __d("sdk.Canvas.IframeHandling",["DOMWrapper","sdk.RPC"],(function $module_sdk_Canvas_IframeHandling(global,require,requireDynamic,requireLazy,module,exports,DOMWrapper,RPC){
 
 
 
@@ -15680,7 +15680,7 @@ setAutoGrow:setAutoGrow};
 
 
 module.exports=IframeHandling;}),null);
-__d("sdk.Canvas.Navigation",["sdk.RPC"],(function $module_sdk_Canvas_Navigation(global,require,requireDynamic,requireLazy,module,exports,RPC){
+                                                                                             __d("sdk.Canvas.Navigation",["sdk.RPC"],(function $module_sdk_Canvas_Navigation(global,require,requireDynamic,requireLazy,module,exports,RPC){
 
 
 
@@ -15726,7 +15726,7 @@ setUrlHandler:setUrlHandler};
 
 
 module.exports=Navigation;}),null);
-__d("sdk.Canvas.Plugin",["Log","sdk.api","sdk.RPC","sdk.Runtime","sdk.UA"],function $module_sdk_Canvas_Plugin(global,require,requireDynamic,requireLazy,module,exports,Log,api,RPC,Runtime,UA){
+                                                                                             __d("sdk.Canvas.Plugin",["Log","sdk.api","sdk.RPC","sdk.Runtime","sdk.UA"],function $module_sdk_Canvas_Plugin(global,require,requireDynamic,requireLazy,module,exports,Log,api,RPC,Runtime,UA){
 
 
 
@@ -15946,7 +15946,7 @@ showPluginElement:showPluginElement};
 
 
 module.exports=Plugin;},null);
-__d("sdk.Canvas.Tti",["sdk.RPC","sdk.Runtime"],function $module_sdk_Canvas_Tti(global,require,requireDynamic,requireLazy,module,exports,RPC,Runtime){
+                                                                                             __d("sdk.Canvas.Tti",["sdk.RPC","sdk.Runtime"],function $module_sdk_Canvas_Tti(global,require,requireDynamic,requireLazy,module,exports,RPC,Runtime){
 
 
 
@@ -16011,7 +16011,7 @@ stopTimer:stopTimer};
 
 
 module.exports=Tti;},null);
-__d("legacy:fb.canvas",["Assert","sdk.Canvas.Environment","sdk.Event","FB","sdk.Canvas.IframeHandling","sdk.Canvas.Navigation","sdk.Canvas.Plugin","sdk.RPC","sdk.Runtime","sdk.Canvas.Tti"],function $module_legacy_fb_canvas(global,require,requireDynamic,requireLazy,__DO_NOT_USE__module,__DO_NOT_USE__exports,Assert,Environment,Event,FB,IframeHandling,Navigation,Plugin,RPC,Runtime,Tti){
+                                                                                                               __d("legacy:fb.canvas",["Assert","sdk.Canvas.Environment","sdk.Event","FB","sdk.Canvas.IframeHandling","sdk.Canvas.Navigation","sdk.Canvas.Plugin","sdk.RPC","sdk.Runtime","sdk.Canvas.Tti"],function $module_legacy_fb_canvas(global,require,requireDynamic,requireLazy,__DO_NOT_USE__module,__DO_NOT_USE__exports,Assert,Environment,Event,FB,IframeHandling,Navigation,Plugin,RPC,Runtime,Tti){
 
 
 
@@ -16092,7 +16092,7 @@ options.hidePluginCallback||options.hideFlashCallback);
 
 }
 });},3);
-__d("legacy:fb.canvas-legacy",["Assert","FB","Log","sdk.Canvas.Tti"],(function $module_legacy_fb_canvas_legacy(global,require,requireDynamic,requireLazy,__DO_NOT_USE__module,__DO_NOT_USE__exports,Assert,FB,Log,Tti){
+                                                                                                                      __d("legacy:fb.canvas-legacy",["Assert","FB","Log","sdk.Canvas.Tti"],(function $module_legacy_fb_canvas_legacy(global,require,requireDynamic,requireLazy,__DO_NOT_USE__module,__DO_NOT_USE__exports,Assert,FB,Log,Tti){
 
 
 
@@ -16105,13 +16105,13 @@ Log.warn('Deprecated: use FB.Canvas.setDoneLoading');
 Assert.maybeFunction(callback,'Invalid argument');
 return Tti.setDoneLoading.apply(null,arguments);
 }});}),3);
-__d("legacy:fb.canvas.plugin",["FB","sdk.Canvas.Plugin"],(function $module_legacy_fb_canvas_plugin(global,require,requireDynamic,requireLazy,__DO_NOT_USE__module,__DO_NOT_USE__exports,FB,CanvasPlugin){
+                                                                                                                      __d("legacy:fb.canvas.plugin",["FB","sdk.Canvas.Plugin"],(function $module_legacy_fb_canvas_plugin(global,require,requireDynamic,requireLazy,__DO_NOT_USE__module,__DO_NOT_USE__exports,FB,CanvasPlugin){
 
 
 
 
 FB.provide('Canvas.Plugin',CanvasPlugin);}),3);
-__d("sdk.Canvas.Prefetcher",["JSSDKCanvasPrefetcherConfig","sdk.api","sdk.Runtime"],function $module_sdk_Canvas_Prefetcher(global,require,requireDynamic,requireLazy,module,exports,CanvasPrefetcherConfig,api,Runtime){
+                                                                                             __d("sdk.Canvas.Prefetcher",["JSSDKCanvasPrefetcherConfig","sdk.api","sdk.Runtime"],function $module_sdk_Canvas_Prefetcher(global,require,requireDynamic,requireLazy,module,exports,CanvasPrefetcherConfig,api,Runtime){
 
 
 
@@ -16220,7 +16220,7 @@ _maybeSample:maybeSample};
 
 
 module.exports=CanvasPrefetcher;},null);
-__d("legacy:fb.canvas.prefetcher",["FB","sdk.Canvas.Prefetcher","sdk.Event","sdk.Runtime"],function $module_legacy_fb_canvas_prefetcher(global,require,requireDynamic,requireLazy,__DO_NOT_USE__module,__DO_NOT_USE__exports,FB,CanvasPrefetcher,Event,Runtime){
+                                                                                                                          __d("legacy:fb.canvas.prefetcher",["FB","sdk.Canvas.Prefetcher","sdk.Event","sdk.Runtime"],function $module_legacy_fb_canvas_prefetcher(global,require,requireDynamic,requireLazy,__DO_NOT_USE__module,__DO_NOT_USE__exports,FB,CanvasPrefetcher,Event,Runtime){
 
 
 
@@ -16234,7 +16234,7 @@ if(Runtime.isEnvironment(Runtime.ENVIRONMENTS.CANVAS)){
 CanvasPrefetcher._maybeSample();
 }
 });},3);
-__d("legacy:fb.compat.ui",["FB","Log","sdk.ui","sdk.UIServer"],function $module_legacy_fb_compat_ui(global,require,requireDynamic,requireLazy,__DO_NOT_USE__module,__DO_NOT_USE__exports,FB,Log,ui,UIServer){
+                                                                                                                  __d("legacy:fb.compat.ui",["FB","Log","sdk.ui","sdk.UIServer"],function $module_legacy_fb_compat_ui(global,require,requireDynamic,requireLazy,__DO_NOT_USE__module,__DO_NOT_USE__exports,FB,Log,ui,UIServer){
 
 
 
@@ -16264,7 +16264,7 @@ ui({display:'popup',id:id,method:'friend.add'},cb);
 
 
 UIServer.Methods['auth.login']=UIServer.Methods['permissions.request'];},3);
-__d("sdk.Data",["Log"],(function $module_sdk_Data(global,require,requireDynamic,requireLazy,module,exports,Log){
+                                                                                                 __d("sdk.Data",["Log"],(function $module_sdk_Data(global,require,requireDynamic,requireLazy,module,exports,Log){
 
 
 
@@ -16299,12 +16299,12 @@ process:logError};
 
 
 module.exports=Data;}),null);
-__d("legacy:fb.data",["FB","sdk.Data"],(function $module_legacy_fb_data(global,require,requireDynamic,requireLazy,__DO_NOT_USE__module,__DO_NOT_USE__exports,FB,Data){
+                                                                                                             __d("legacy:fb.data",["FB","sdk.Data"],(function $module_legacy_fb_data(global,require,requireDynamic,requireLazy,__DO_NOT_USE__module,__DO_NOT_USE__exports,FB,Data){
 
 
 
 FB.provide('Data',Data);}),3);
-__d("legacy:fb.event",["FB","sdk.Event","Log"],function $module_legacy_fb_event(global,require,requireDynamic,requireLazy,__DO_NOT_USE__module,__DO_NOT_USE__exports,FB,Event,Log){
+                                                                                                              __d("legacy:fb.event",["FB","sdk.Event","Log"],function $module_legacy_fb_event(global,require,requireDynamic,requireLazy,__DO_NOT_USE__module,__DO_NOT_USE__exports,FB,Event,Log){
 
 
 
@@ -16320,12 +16320,12 @@ return Event.subscribe(name,cb);
 unsubscribe:ES(Event.unsubscribe,"bind",true,Event),
 clear:ES(warn,"bind",true,null,'clear'),
 fire:ES(warn,"bind",true,null,'fire')});},3);
-__d("legacy:fb.frictionless",["FB","sdk.Frictionless"],(function $module_legacy_fb_frictionless(global,require,requireDynamic,requireLazy,__DO_NOT_USE__module,__DO_NOT_USE__exports,FB,Frictionless){
+                                                                                                                     __d("legacy:fb.frictionless",["FB","sdk.Frictionless"],(function $module_legacy_fb_frictionless(global,require,requireDynamic,requireLazy,__DO_NOT_USE__module,__DO_NOT_USE__exports,FB,Frictionless){
 
 
 
 FB.provide('Frictionless',Frictionless);}),3);
-__d("sdk.MBasicInitializer",["UrlMap","sdk.DOM","sdk.fbt","sdk.feature","sdk.Runtime","sdk.UA","sdk.URI"],function $module_sdk_MBasicInitializer(global,require,requireDynamic,requireLazy,module,exports,UrlMap,DOM,fbt,feature,Runtime,UA,URI){
+                                                                                                                                                                                                             __d("sdk.MBasicInitializer",["UrlMap","sdk.DOM","sdk.fbt","sdk.feature","sdk.Runtime","sdk.UA","sdk.URI"],function $module_sdk_MBasicInitializer(global,require,requireDynamic,requireLazy,module,exports,UrlMap,DOM,fbt,feature,Runtime,UA,URI){
 
 
 
@@ -16385,7 +16385,7 @@ sharePluginInitialize();
 
 module.exports={
 init:init};},null);
-__d("sdk.init",["Log","ManagedError","QueryString","sdk.Cookie","sdk.ErrorHandling","sdk.Event","sdk.MBasicInitializer","sdk.PlatformVersioning","sdk.Runtime","sdk.UA","sdk.URI"],function $module_sdk_init(global,require,requireDynamic,requireLazy,module,exports,Log,ManagedError,QueryString,Cookie,ErrorHandling,Event,MBasicInitializer,PlatformVersioning,Runtime,UA,URI){
+                                                                                             __d("sdk.init",["Log","ManagedError","QueryString","sdk.Cookie","sdk.ErrorHandling","sdk.Event","sdk.MBasicInitializer","sdk.PlatformVersioning","sdk.Runtime","sdk.UA","sdk.URI"],function $module_sdk_init(global,require,requireDynamic,requireLazy,module,exports,Log,ManagedError,QueryString,Cookie,ErrorHandling,Event,MBasicInitializer,PlatformVersioning,Runtime,UA,URI){
 
 
 
@@ -16548,13 +16548,13 @@ ErrorHandling.unguard(window.fbAsyncInit)();
 },0);
 
 module.exports=init;},null);
-__d("legacy:fb.init",["FB","sdk.init"],(function $module_legacy_fb_init(global,require,requireDynamic,requireLazy,__DO_NOT_USE__module,__DO_NOT_USE__exports,FB,init){
+                                                                                                             __d("legacy:fb.init",["FB","sdk.init"],(function $module_legacy_fb_init(global,require,requireDynamic,requireLazy,__DO_NOT_USE__module,__DO_NOT_USE__exports,FB,init){
 
 
 
 
 FB.provide('',{init:init});}),3);
-__d("legacy:fb.json",["FB","ManagedError"],function $module_legacy_fb_json(global,require,requireDynamic,requireLazy,__DO_NOT_USE__module,__DO_NOT_USE__exports,FB,ManagedError){
+                                                                                                             __d("legacy:fb.json",["FB","ManagedError"],function $module_legacy_fb_json(global,require,requireDynamic,requireLazy,__DO_NOT_USE__module,__DO_NOT_USE__exports,FB,ManagedError){
 
 
 
@@ -16578,7 +16578,7 @@ return ES("JSON","parse",false,str);
 throw new ManagedError(e.message,e);
 }
 }});},3);
-__d("runOnce",[],(function $module_runOnce(global,require,requireDynamic,requireLazy,module,exports){
+                                                                              __d("runOnce",[],(function $module_runOnce(global,require,requireDynamic,requireLazy,module,exports){
 
 function runOnce(func){
 var run,ret;
@@ -16592,7 +16592,7 @@ return ret;
 }
 
 module.exports=runOnce;}),null);
-__d("sdk.Time",["Log","sdk.feature","sdk.Impressions","sdk.Runtime"],function $module_sdk_Time(global,require,requireDynamic,requireLazy,module,exports,Log,feature,Impressions,Runtime){
+                                                                                                                                                                                                                                                                                                                                                                                   __d("sdk.Time",["Log","sdk.feature","sdk.Impressions","sdk.Runtime"],function $module_sdk_Time(global,require,requireDynamic,requireLazy,module,exports,Log,feature,Impressions,Runtime){
 
 'use strict';
 
@@ -16660,7 +16660,7 @@ Log.debug('sdkperf: %s logged after %s ms',key,data[key]);
 
 
 module.exports=Time;},null);
-__d("legacy:fb.time",["sdk.Event","sdk.Time","runOnce"],function $module_legacy_fb_time(global,require,requireDynamic,requireLazy,__DO_NOT_USE__module,__DO_NOT_USE__exports,Event,Time,runOnce){
+                                                                                                             __d("legacy:fb.time",["sdk.Event","sdk.Time","runOnce"],function $module_legacy_fb_time(global,require,requireDynamic,requireLazy,__DO_NOT_USE__module,__DO_NOT_USE__exports,Event,Time,runOnce){
 
 'use strict';
 
@@ -16681,18 +16681,18 @@ Event.subscribe('iframeplugin:create',runOnce(function(){return Time.log('plugin
 
 
 Event.subscribe('iframeplugin:onload',runOnce(function(){return Time.log('ttfp');}));},3);
-__d("legacy:fb.ua",["FB","sdk.UA"],(function $module_legacy_fb_ua(global,require,requireDynamic,requireLazy,__DO_NOT_USE__module,__DO_NOT_USE__exports,FB,UA){
+                                                                                                           __d("legacy:fb.ua",["FB","sdk.UA"],(function $module_legacy_fb_ua(global,require,requireDynamic,requireLazy,__DO_NOT_USE__module,__DO_NOT_USE__exports,FB,UA){
 
 
 
 FB.provide('UA',{nativeApp:UA.nativeApp});}),3);
-__d("legacy:fb.ui",["FB","sdk.ui"],(function $module_legacy_fb_ui(global,require,requireDynamic,requireLazy,__DO_NOT_USE__module,__DO_NOT_USE__exports,FB,ui){
+                                                                                                           __d("legacy:fb.ui",["FB","sdk.ui"],(function $module_legacy_fb_ui(global,require,requireDynamic,requireLazy,__DO_NOT_USE__module,__DO_NOT_USE__exports,FB,ui){
 
 
 
 
 FB.provide('',{ui:ui});}),3);
-__d("XFBML",["Assert","Log","ObservableMixin","runOnce","sdk.DOM","sdk.UA"],function $module_XFBML(global,require,requireDynamic,requireLazy,module,exports,Assert,Log,ObservableMixin,runOnce,DOM,UA){
+                                                                                                                                                                                                                                                                                                                                                                                                                            __d("XFBML",["Assert","Log","ObservableMixin","runOnce","sdk.DOM","sdk.UA"],function $module_XFBML(global,require,requireDynamic,requireLazy,module,exports,Assert,Log,ObservableMixin,runOnce,DOM,UA){
 
 
 
@@ -16919,7 +16919,7 @@ _parse(document.body,function(){},false);
 
 
 module.exports=XFBML;},null);
-__d("legacy:fb.xfbml",["Assert","sdk.Event","FB","XFBML","sdk.domReady","wrapFunction"],function $module_legacy_fb_xfbml(global,require,requireDynamic,requireLazy,__DO_NOT_USE__module,__DO_NOT_USE__exports,Assert,Event,FB,XFBML,domReady,wrapFunction){
+                                                                                                              __d("legacy:fb.xfbml",["Assert","sdk.Event","FB","XFBML","sdk.domReady","wrapFunction"],function $module_legacy_fb_xfbml(global,require,requireDynamic,requireLazy,__DO_NOT_USE__module,__DO_NOT_USE__exports,Assert,Event,FB,XFBML,domReady,wrapFunction){
 
 
 
@@ -16980,7 +16980,7 @@ document.namespaces.add('fb');
 }catch(e){
 
 }},3);
-__d("IframePlugin",["Log","ObservableMixin","QueryString","Type","UrlMap","guid","resolveURI","sdk.Auth","sdk.createIframe","sdk.DOM","sdk.Event","sdk.PlatformVersioning","sdk.Runtime","sdk.UA","sdk.URI","sdk.XD"],function $module_IframePlugin(global,require,requireDynamic,requireLazy,module,exports,Log,ObservableMixin,QueryString,Type,UrlMap,guid,resolveURI,Auth,createIframe,DOM,Event,PlatformVersioning,Runtime,UA,URI,XD){
+                                                                                                                                                                                                                                                                                                                                                                                                                                           __d("IframePlugin",["Log","ObservableMixin","QueryString","Type","UrlMap","guid","resolveURI","sdk.Auth","sdk.createIframe","sdk.DOM","sdk.Event","sdk.PlatformVersioning","sdk.Runtime","sdk.UA","sdk.URI","sdk.XD"],function $module_IframePlugin(global,require,requireDynamic,requireLazy,module,exports,Log,ObservableMixin,QueryString,Type,UrlMap,guid,resolveURI,Auth,createIframe,DOM,Event,PlatformVersioning,Runtime,UA,URI,XD){
 
 
 
@@ -17395,7 +17395,7 @@ return config?config:{};
 };
 
 module.exports=IframePlugin;},null);
-__d("PluginConfig",["sdk.feature"],(function $module_PluginConfig(global,require,requireDynamic,requireLazy,module,exports,feature){
+                                                                                                                                                                                                                                                                  __d("PluginConfig",["sdk.feature"],(function $module_PluginConfig(global,require,requireDynamic,requireLazy,module,exports,feature){
 
 
 
@@ -17428,7 +17428,7 @@ mobile_fullsize:true}};
 
 
 module.exports=PluginConfig;}),null);
-__d("PluginAttrTypes",[],(function $module_PluginAttrTypes(global,require,requireDynamic,requireLazy,module,exports){
+                                                                                                                               __d("PluginAttrTypes",[],(function $module_PluginAttrTypes(global,require,requireDynamic,requireLazy,module,exports){
 
 'use strict';
 
@@ -17439,7 +17439,7 @@ url:'url'};
 
 
 module.exports=PluginAttrTypes;}),null);
-__d("PluginTags",["PluginAttrTypes"],function $module_PluginTags(global,require,requireDynamic,requireLazy,module,exports,PluginAttrTypes){
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                __d("PluginTags",["PluginAttrTypes"],function $module_PluginTags(global,require,requireDynamic,requireLazy,module,exports,PluginAttrTypes){
 
 
 
@@ -17588,7 +17588,7 @@ PluginTags[key]=PluginTags[aliases[key]];
 });
 
 module.exports=PluginTags;},null);
-__d("sdk.Arbiter",[],(function $module_sdk_Arbiter(global,require,requireDynamic,requireLazy,module,exports){
+                                                                              __d("sdk.Arbiter",[],(function $module_sdk_Arbiter(global,require,requireDynamic,requireLazy,module,exports){
 
 var Arbiter={
 BEHAVIOR_EVENT:'e',
@@ -17596,7 +17596,7 @@ BEHAVIOR_PERSISTENT:'p',
 BEHAVIOR_STATE:'s'};
 
 module.exports=Arbiter;}),null);
-__d("sdk.XFBML.Element",["ObservableMixin","Type","sdk.DOM"],function $module_sdk_XFBML_Element(global,require,requireDynamic,requireLazy,module,exports,ObservableMixin,Type,DOM){
+                                                                                             __d("sdk.XFBML.Element",["ObservableMixin","Type","sdk.DOM"],function $module_sdk_XFBML_Element(global,require,requireDynamic,requireLazy,module,exports,ObservableMixin,Type,DOM){
 
 
 
@@ -17737,7 +17737,7 @@ ObservableMixin);
 
 
 module.exports=Element;},null);
-__d("sdk.XFBML.IframeWidget",["QueryString","UrlMap","guid","insertIframe","sdk.Arbiter","sdk.Auth","sdk.Content","sdk.DOM","sdk.Event","sdk.Runtime","sdk.ui","sdk.XD","sdk.XFBML.Element"],function $module_sdk_XFBML_IframeWidget(global,require,requireDynamic,requireLazy,module,exports,QueryString,UrlMap,guid,insertIframe,Arbiter,Auth,Content,DOM,Event,Runtime,ui,XD,Element){
+                                                                                                                         __d("sdk.XFBML.IframeWidget",["QueryString","UrlMap","guid","insertIframe","sdk.Arbiter","sdk.Auth","sdk.Content","sdk.DOM","sdk.Event","sdk.Runtime","sdk.ui","sdk.XD","sdk.XFBML.Element"],function $module_sdk_XFBML_IframeWidget(global,require,requireDynamic,requireLazy,module,exports,QueryString,UrlMap,guid,insertIframe,Arbiter,Auth,Content,DOM,Event,Runtime,ui,XD,Element){
 
 
 
@@ -18344,7 +18344,7 @@ var widgetPipeIframeCount=0;
 
 
 module.exports=IframeWidget;},null);
-__d("sdk.XFBML.Comments",["QueryString","UrlMap","sdk.Event","sdk.Runtime","sdk.UA","sdk.XFBML.IframeWidget"],function $module_sdk_XFBML_Comments(global,require,requireDynamic,requireLazy,module,exports,QueryString,UrlMap,Event,Runtime,UA,IframeWidget){
+                                                                                                                                       __d("sdk.XFBML.Comments",["QueryString","UrlMap","sdk.Event","sdk.Runtime","sdk.UA","sdk.XFBML.IframeWidget"],function $module_sdk_XFBML_Comments(global,require,requireDynamic,requireLazy,module,exports,QueryString,UrlMap,Event,Runtime,UA,IframeWidget){
 
 
 
@@ -18522,7 +18522,7 @@ return UrlMap.resolve('www');
 }});
 
 module.exports=Comments;},null);
-__d("sdk.XFBML.CommentsCount",["ApiClient","Log","sdk.DOM","sdk.XFBML.Element","sprintf"],function $module_sdk_XFBML_CommentsCount(global,require,requireDynamic,requireLazy,module,exports,ApiClient,Log,DOM,Element,sprintf){
+                                                                                             __d("sdk.XFBML.CommentsCount",["ApiClient","Log","sdk.DOM","sdk.XFBML.Element","sprintf"],function $module_sdk_XFBML_CommentsCount(global,require,requireDynamic,requireLazy,module,exports,ApiClient,Log,DOM,Element,sprintf){
 
 
 
@@ -18566,7 +18566,7 @@ this.fire('render');
 
 
 module.exports=CommentsCount;},null);
-__d("getDocumentScrollElement",[],function $module_getDocumentScrollElement(global,require,requireDynamic,requireLazy,module,exports){
+                                                                                             __d("getDocumentScrollElement",[],function $module_getDocumentScrollElement(global,require,requireDynamic,requireLazy,module,exports){
 
 'use strict';
 
@@ -18594,7 +18594,7 @@ doc.body;
 }
 
 module.exports=getDocumentScrollElement;},null);
-__d("sdk.DocumentTitle",[],(function $module_sdk_DocumentTitle(global,require,requireDynamic,requireLazy,module,exports){
+                                                                                                 __d("sdk.DocumentTitle",[],(function $module_sdk_DocumentTitle(global,require,requireDynamic,requireLazy,module,exports){
 
 
 
@@ -18679,7 +18679,7 @@ temporaryTitle=null;
 
 
 module.exports=DocumentTitle;}),null);
-__d("sdk.XFBML.CustomerChat",["IframePlugin","QueryString","getDocumentScrollElement","sdk.Content","sdk.createIframe","sdk.DialogUtils","sdk.DocumentTitle","sdk.DOM","sdk.DOMEventListener","sdk.Event","sdk.UA","sdk.XD"],function $module_sdk_XFBML_CustomerChat(global,require,requireDynamic,requireLazy,module,exports,IframePlugin,QueryString,getDocumentScrollElement,Content,createIframe,DialogUtils,DocumentTitle,DOM,DOMEventListener,Event,UA,XD){
+                                                                                                                                            __d("sdk.XFBML.CustomerChat",["IframePlugin","QueryString","getDocumentScrollElement","sdk.Content","sdk.createIframe","sdk.DialogUtils","sdk.DocumentTitle","sdk.DOM","sdk.DOMEventListener","sdk.Event","sdk.UA","sdk.XD"],function $module_sdk_XFBML_CustomerChat(global,require,requireDynamic,requireLazy,module,exports,IframePlugin,QueryString,getDocumentScrollElement,Content,createIframe,DialogUtils,DocumentTitle,DOM,DOMEventListener,Event,UA,XD){
 
 'use strict';
 
@@ -19338,7 +19338,7 @@ params:ES("JSON","stringify",false,data||{})});
 };
 
 module.exports=CustomerChat;},null);
-__d("safeEval",[],function $module_safeEval(global,require,requireDynamic,requireLazy,module,exports){
+                                                                                                                                                                                                                                            __d("safeEval",[],function $module_safeEval(global,require,requireDynamic,requireLazy,module,exports){
 
 function safeEval(source,args){
 if(source===null||typeof source==='undefined'){
@@ -19361,7 +19361,7 @@ args||[]);
 }
 
 module.exports=safeEval;},null);
-__d("sdk.Helper",["UrlMap","safeEval","sdk.ErrorHandling","sdk.Event","sprintf"],function $module_sdk_Helper(global,require,requireDynamic,requireLazy,module,exports,UrlMap,safeEval,ErrorHandling,Event,sprintf){
+                                                                                             __d("sdk.Helper",["UrlMap","safeEval","sdk.ErrorHandling","sdk.Event","sprintf"],function $module_sdk_Helper(global,require,requireDynamic,requireLazy,module,exports,UrlMap,safeEval,ErrorHandling,Event,sprintf){
 
 
 
@@ -19482,7 +19482,7 @@ return context[func].apply(this,args);
 
 
 module.exports=Helper;},null);
-__d("sdk.XFBML.LoginButton",["IframePlugin","Log","sdk.feature","sdk.Helper","sdk.Runtime","sdk.Scribe","sdk.ui","sdk.XD"],function $module_sdk_XFBML_LoginButton(global,require,requireDynamic,requireLazy,module,exports,IframePlugin,Log,feature,Helper,Runtime,Scribe,ui,XD){
+                                                                                             __d("sdk.XFBML.LoginButton",["IframePlugin","Log","sdk.feature","sdk.Helper","sdk.Runtime","sdk.Scribe","sdk.ui","sdk.XD"],function $module_sdk_XFBML_LoginButton(global,require,requireDynamic,requireLazy,module,exports,IframePlugin,Log,feature,Helper,Runtime,Scribe,ui,XD){
 
 
 
@@ -19607,7 +19607,7 @@ height:'px'};
 
 
 module.exports=LoginButton;},null);
-__d("escapeHTML",[],function $module_escapeHTML(global,require,requireDynamic,requireLazy,module,exports){
+                                                                                                                                                                                         __d("escapeHTML",[],function $module_escapeHTML(global,require,requireDynamic,requireLazy,module,exports){
 
 var re=/[&<>\"\'\/]/g;
 var map={
@@ -19625,7 +19625,7 @@ return map[m];
 });
 }
 module.exports=escapeHTML;},null);
-__d("sdk.XFBML.Name",["ApiClient","Log","escapeHTML","sdk.Event","sdk.Helper","sdk.Runtime","sdk.Scribe","sdk.XFBML.Element"],function $module_sdk_XFBML_Name(global,require,requireDynamic,requireLazy,module,exports,ApiClient,Log,escapeHTML,Event,Helper,Runtime,Scribe,Element){
+                                                                                             __d("sdk.XFBML.Name",["ApiClient","Log","escapeHTML","sdk.Event","sdk.Helper","sdk.Runtime","sdk.Scribe","sdk.XFBML.Element"],function $module_sdk_XFBML_Name(global,require,requireDynamic,requireLazy,module,exports,ApiClient,Log,escapeHTML,Event,Helper,Runtime,Scribe,Element){
 
 
 
@@ -19901,7 +19901,7 @@ this.dom.innerHTML=html;
 
 
 module.exports=Name;},null);
-__d("UnicodeUtils",["invariant"],function $module_UnicodeUtils(global,require,requireDynamic,requireLazy,module,exports,invariant){
+                                                                                                 __d("UnicodeUtils",["invariant"],function $module_UnicodeUtils(global,require,requireDynamic,requireLazy,module,exports,invariant){
 
 
 
@@ -20116,7 +20116,7 @@ substr:substr};
 
 
 module.exports=UnicodeUtils;},null);
-__d("isNode",[],function $module_isNode(global,require,requireDynamic,requireLazy,module,exports){
+                                                                                                 __d("isNode",[],function $module_isNode(global,require,requireDynamic,requireLazy,module,exports){
 
 
 
@@ -20136,7 +20136,7 @@ typeof object.nodeName==='string'));
 }
 
 module.exports=isNode;},null);
-__d("isTextNode",["isNode"],function $module_isTextNode(global,require,requireDynamic,requireLazy,module,exports,isNode){
+                                                                                             __d("isTextNode",["isNode"],function $module_isTextNode(global,require,requireDynamic,requireLazy,module,exports,isNode){
 
 
 
@@ -20149,7 +20149,7 @@ return isNode(object)&&object.nodeType==3;
 }
 
 module.exports=isTextNode;},null);
-__d("containsNode",["isTextNode"],function $module_containsNode(global,require,requireDynamic,requireLazy,module,exports,isTextNode){
+                                                                                  __d("containsNode",["isTextNode"],function $module_containsNode(global,require,requireDynamic,requireLazy,module,exports,isTextNode){
 
 
 
@@ -20177,7 +20177,7 @@ return false;
 }
 
 module.exports=containsNode;},null);
-__d("sdk.XFBML.Quote",["IframePlugin","UnicodeUtils","containsNode","sdk.DOM","sdk.DOMEventListener","sdk.feature","sdk.UA","sdk.XD"],function $module_sdk_XFBML_Quote(global,require,requireDynamic,requireLazy,module,exports,IframePlugin,UnicodeUtils,containsNode,DOM,DOMEventListener,feature,UA,XD){
+                                                                                             __d("sdk.XFBML.Quote",["IframePlugin","UnicodeUtils","containsNode","sdk.DOM","sdk.DOMEventListener","sdk.feature","sdk.UA","sdk.XD"],function $module_sdk_XFBML_Quote(global,require,requireDynamic,requireLazy,module,exports,IframePlugin,UnicodeUtils,containsNode,DOM,DOMEventListener,feature,UA,XD){
 
 'use strict';
 
@@ -20348,7 +20348,7 @@ layout:'string'};
 
 
 module.exports=Quote;},null);
-__d("sdk.XFBML.Save",["IframePlugin","QueryString","sdk.Content","sdk.createIframe","sdk.DialogUtils","sdk.DOM","sdk.Event","sdk.UA","sdk.XD"],function $module_sdk_XFBML_Save(global,require,requireDynamic,requireLazy,module,exports,IframePlugin,QueryString,Content,createIframe,DialogUtils,DOM,Event,UA,XD){
+                                                                                                 __d("sdk.XFBML.Save",["IframePlugin","QueryString","sdk.Content","sdk.createIframe","sdk.DialogUtils","sdk.DOM","sdk.Event","sdk.UA","sdk.XD"],function $module_sdk_XFBML_Save(global,require,requireDynamic,requireLazy,module,exports,IframePlugin,QueryString,Content,createIframe,DialogUtils,DOM,Event,UA,XD){
 
 'use strict';
 
@@ -20505,7 +20505,7 @@ size:'string'};
 
 
 module.exports=Save;},null);
-__d("sdk.XFBML.ShareButton",["IframePlugin","sdk.UA","sdk.ui"],function $module_sdk_XFBML_ShareButton(global,require,requireDynamic,requireLazy,module,exports,IframePlugin,UA,UI){
+                                                                                                 __d("sdk.XFBML.ShareButton",["IframePlugin","sdk.UA","sdk.ui"],function $module_sdk_XFBML_ShareButton(global,require,requireDynamic,requireLazy,module,exports,IframePlugin,UA,UI){
 
 'use strict';
 
@@ -20540,7 +20540,7 @@ size:'string'};
 
 
 module.exports=ShareButton;},null);
-__d("sdk.XFBML.Video",["Assert","IframePlugin","ObservableMixin","sdk.Event","sdk.XD"],function $module_sdk_XFBML_Video(global,require,requireDynamic,requireLazy,module,exports,Assert,IframePlugin,ObservableMixin,Event,XD){
+                                                                                                 __d("sdk.XFBML.Video",["Assert","IframePlugin","ObservableMixin","sdk.Event","sdk.XD"],function $module_sdk_XFBML_Video(global,require,requireDynamic,requireLazy,module,exports,Assert,IframePlugin,ObservableMixin,Event,XD){
 
 
 
@@ -20751,7 +20751,7 @@ full_width:true};
 
 
 module.exports=Video;},null);
-__d("legacy:fb.xfbml.plugins",["IframePlugin","PluginConfig","PluginTags","XFBML","sdk.feature","sdk.XFBML.CustomerChat","sdk.XFBML.Comments","sdk.XFBML.CommentsCount","sdk.XFBML.LoginButton","sdk.XFBML.Name","sdk.XFBML.Quote","sdk.XFBML.Save","sdk.XFBML.ShareButton","sdk.XFBML.Video"],function $module_legacy_fb_xfbml_plugins(global,require,requireDynamic,requireLazy,__DO_NOT_USE__module,__DO_NOT_USE__exports,IframePlugin,PluginConfig,PluginTags,XFBML,feature){
+                                                                                                                      __d("legacy:fb.xfbml.plugins",["IframePlugin","PluginConfig","PluginTags","XFBML","sdk.feature","sdk.XFBML.CustomerChat","sdk.XFBML.Comments","sdk.XFBML.CommentsCount","sdk.XFBML.LoginButton","sdk.XFBML.Name","sdk.XFBML.Quote","sdk.XFBML.Save","sdk.XFBML.ShareButton","sdk.XFBML.Video"],function $module_legacy_fb_xfbml_plugins(global,require,requireDynamic,requireLazy,__DO_NOT_USE__module,__DO_NOT_USE__exports,IframePlugin,PluginConfig,PluginTags,XFBML,feature){
 
 
 
@@ -20797,4 +20797,4 @@ localName:tag.replace(/_/g,'-'),
 ctor:customTags[tag]});
 
 });},3);
-    }  }).call(global);})(window.inDapIF ? parent.window : window, window);} catch (e) {new Image().src="https:\/\/www.facebook.com\/" + 'common/scribe_endpoint.php?c=jssdk_error&m='+encodeURIComponent('{"error":"LOAD", "extra": {"name":"'+e.name+'","line":"'+(e.lineNumber||e.line)+'","script":"'+(e.fileName||e.sourceURL||e.script)+'","stack":"'+(e.stackTrace||e.stack)+'","revision":"4241680","namespace":"FB","message":"'+e.message+'"}}');}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         }  }).call(global);})(window.inDapIF ? parent.window : window, window);} catch (e) {new Image().src="https:\/\/www.facebook.com\/" + 'common/scribe_endpoint.php?c=jssdk_error&m='+encodeURIComponent('{"error":"LOAD", "extra": {"name":"'+e.name+'","line":"'+(e.lineNumber||e.line)+'","script":"'+(e.fileName||e.sourceURL||e.script)+'","stack":"'+(e.stackTrace||e.stack)+'","revision":"4242832","namespace":"FB","message":"'+e.message+'"}}');}
