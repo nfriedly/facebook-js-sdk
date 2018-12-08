@@ -1,4 +1,4 @@
-/*1544232551,,JIT Construction: v4614675,en_US*/
+/*1544266152,,JIT Construction: v4616859,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3400,7 +3400,7 @@ return __annotator(Set,{name:'Set'});
 
 global.Map=Map;
 global.Set=Set;
-})(typeof global==='undefined'?this:global);      __d("UrlMapConfig",[],{"www":"www.facebook.com","m":"m.facebook.com","connect":"connect.facebook.net","business":"business.facebook.com","api":"api.facebook.com","api_read":"api-read.facebook.com","graph":"graph.facebook.com","an":"an.facebook.com","fbcdn":"static.xx.fbcdn.net","cdn":"staticxx.facebook.com"});__d("JSSDKRuntimeConfig",[],{"locale":"en_US","revision":"4614675","rtl":false,"sdkab":null,"sdkns":"FB","sdkurl":"https:\/\/connect.facebook.net\/en_US\/all\/debug.js"});__d("JSSDKConfig",[],{"features":{"allow_non_canvas_app_events":false,"error_handling":{"rate":4},"e2e_ping_tracking":{"rate":1.0e-6},"xd_timeout":{"rate":1,"value":60000},"use_bundle":true,"should_log_response_error":true,"popup_blocker_scribe_logging":{"rate":100},"https_only_enforce_starting":2538809200000,"https_only_learn_more":"https:\/\/developers.facebook.com\/blog\/post\/2018\/06\/08\/enforce-https-facebook-login\/","https_only_scribe_logging":{"rate":1},"log_perf":{"rate":0.001}}});__d("JSSDKXDConfig",[],{"XdUrl":"\/connect\/xd_arbiter.php?version=43","XdBundleUrl":"\/connect\/xd_arbiter\/r\/mJ6iUFcXW_B.js?version=43","useCdn":true});__d("JSSDKCssConfig",[],{"rules":".fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:\"lucida grande\", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}\u0040keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}\n.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_dialog_advanced{border-radius:8px;padding:10px}.fb_dialog_content{background:#fff;color:#373737}.fb_dialog_close_icon{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{left:5px;right:auto;top:5px}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/yd\/r\/Cou7n-nqK52.gif) no-repeat 5px 50\u0025;float:left;padding:5px 0 7px 26px}body.fb_hidden{height:100\u0025;left:0;margin:0;overflow:visible;position:absolute;top:-10000px;transform:none;width:100\u0025}.fb_dialog.fb_dialog_mobile.loading{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/ya\/r\/3rhSv5V8j3o.gif) white no-repeat 50\u0025 50\u0025;min-height:100\u0025;min-width:100\u0025;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{background:none;height:auto;min-height:initial;min-width:initial;width:auto}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100\u0025}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{clear:both;color:#fff;display:block;font-size:18px;padding-top:20px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .4);bottom:0;left:0;min-height:100\u0025;position:absolute;right:0;top:0;width:100\u0025;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_mobile .fb_dialog_iframe{position:sticky;top:0}.fb_dialog_content .dialog_header{background:linear-gradient(from(#738aba), to(#2c4987));border-bottom:1px solid;border-color:#1d3c78;box-shadow:white 0 1px 1px -1px inset;color:#fff;font:bold 14px Helvetica, sans-serif;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{height:43px;width:100\u0025}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:linear-gradient(from(#4267B2), to(#2a4887));background-clip:padding-box;border:1px solid #29487d;border-radius:3px;display:inline-block;line-height:18px;margin-top:3px;max-width:85px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{background:none;border:none;color:#fff;font:bold 12px Helvetica, sans-serif;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/y9\/r\/jKEcVPZFk-2.gif) no-repeat 50\u0025 50\u0025;border:1px solid #4a4a4a;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f5f6f7;border:1px solid #4a4a4a;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/yD\/r\/t-wz8gw1xG1.png);background-position:50\u0025 50\u0025;background-repeat:no-repeat;height:24px;width:24px}\u0040keyframes rotateSpinner{0\u0025{transform:rotate(0deg)}100\u0025{transform:rotate(360deg)}}\n.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100\u0025}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100\u0025}\n.fb_customer_chat_bounce_in_v2{animation-duration:300ms;animation-name:fb_bounce_in_v2;transition-timing-function:ease-in}.fb_customer_chat_bounce_out_v2{animation-duration:300ms;animation-name:fb_bounce_out_v2;transition-timing-function:ease-in}.fb_customer_chat_bounce_in_v2_mobile_chat_started{animation-duration:300ms;animation-name:fb_bounce_in_v2_mobile_chat_started;transition-timing-function:ease-in}.fb_customer_chat_bounce_out_v2_mobile_chat_started{animation-duration:300ms;animation-name:fb_bounce_out_v2_mobile_chat_started;transition-timing-function:ease-in}.fb_customer_chat_bubble_pop_in{animation-duration:250ms;animation-name:fb_customer_chat_bubble_bounce_in_animation}.fb_customer_chat_bubble_animated_no_badge{box-shadow:0 3px 12px rgba(0, 0, 0, .15);transition:box-shadow 150ms linear}.fb_customer_chat_bubble_animated_no_badge:hover{box-shadow:0 5px 24px rgba(0, 0, 0, .3)}.fb_customer_chat_bubble_animated_with_badge{box-shadow:-5px 4px 14px rgba(0, 0, 0, .15);transition:box-shadow 150ms linear}.fb_customer_chat_bubble_animated_with_badge:hover{box-shadow:-5px 8px 24px rgba(0, 0, 0, .2)}.fb_invisible_flow{display:inherit;height:0;overflow-x:hidden;width:0}.fb_mobile_overlay_active{background-color:#fff;height:100\u0025;overflow:hidden;position:fixed;visibility:hidden;width:100\u0025}\u0040keyframes fb_bounce_in_v2{0\u0025{opacity:0;transform:scale(0, 0);transform-origin:bottom right}50\u0025{transform:scale(1.03, 1.03);transform-origin:bottom right}100\u0025{opacity:1;transform:scale(1, 1);transform-origin:bottom right}}\u0040keyframes fb_bounce_in_v2_mobile_chat_started{0\u0025{opacity:0;top:20px}100\u0025{opacity:1;top:0}}\u0040keyframes fb_bounce_out_v2{0\u0025{opacity:1;transform:scale(1, 1);transform-origin:bottom right}100\u0025{opacity:0;transform:scale(0, 0);transform-origin:bottom right}}\u0040keyframes fb_bounce_out_v2_mobile_chat_started{0\u0025{opacity:1;top:0}100\u0025{opacity:0;top:20px}}\u0040keyframes fb_customer_chat_bubble_bounce_in_animation{0\u0025{bottom:6pt;opacity:0;transform:scale(0, 0);transform-origin:center}70\u0025{bottom:18pt;opacity:1;transform:scale(1.2, 1.2)}100\u0025{transform:scale(1, 1)}}","components":["css:fb.css.base","css:fb.css.dialog","css:fb.css.iframewidget","css:fb.css.customer_chat_plugin_iframe"]});__d("JSSDKCanvasPrefetcherConfig",[],{"blacklist":[144959615576466,768691303149786,320528941393723],"sampleRate":500});                                                                                                                                                                                                                                                                                                                                                                                                            __d("DOMWrapper",[],function $module_DOMWrapper(global,require,requireDynamic,requireLazy,module,exports){
+})(typeof global==='undefined'?this:global);      __d("UrlMapConfig",[],{"www":"www.facebook.com","m":"m.facebook.com","connect":"connect.facebook.net","business":"business.facebook.com","api":"api.facebook.com","api_read":"api-read.facebook.com","graph":"graph.facebook.com","an":"an.facebook.com","fbcdn":"static.xx.fbcdn.net","cdn":"staticxx.facebook.com"});__d("JSSDKRuntimeConfig",[],{"locale":"en_US","revision":"4616859","rtl":false,"sdkab":null,"sdkns":"FB","sdkurl":"https:\/\/connect.facebook.net\/en_US\/all\/debug.js"});__d("JSSDKConfig",[],{"features":{"allow_non_canvas_app_events":false,"error_handling":{"rate":4},"e2e_ping_tracking":{"rate":1.0e-6},"xd_timeout":{"rate":1,"value":60000},"use_bundle":true,"should_log_response_error":true,"popup_blocker_scribe_logging":{"rate":100},"https_only_enforce_starting":2538809200000,"https_only_learn_more":"https:\/\/developers.facebook.com\/blog\/post\/2018\/06\/08\/enforce-https-facebook-login\/","https_only_scribe_logging":{"rate":1},"log_perf":{"rate":0.001}}});__d("JSSDKXDConfig",[],{"XdUrl":"\/connect\/xd_arbiter.php?version=43","XdBundleUrl":"\/connect\/xd_arbiter\/r\/zu7ed0TTB9D.js?version=43","useCdn":true});__d("JSSDKCssConfig",[],{"rules":".fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:\"lucida grande\", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}\u0040keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}\n.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_dialog_advanced{border-radius:8px;padding:10px}.fb_dialog_content{background:#fff;color:#373737}.fb_dialog_close_icon{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{left:5px;right:auto;top:5px}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/yd\/r\/Cou7n-nqK52.gif) no-repeat 5px 50\u0025;float:left;padding:5px 0 7px 26px}body.fb_hidden{height:100\u0025;left:0;margin:0;overflow:visible;position:absolute;top:-10000px;transform:none;width:100\u0025}.fb_dialog.fb_dialog_mobile.loading{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/ya\/r\/3rhSv5V8j3o.gif) white no-repeat 50\u0025 50\u0025;min-height:100\u0025;min-width:100\u0025;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{background:none;height:auto;min-height:initial;min-width:initial;width:auto}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100\u0025}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{clear:both;color:#fff;display:block;font-size:18px;padding-top:20px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .4);bottom:0;left:0;min-height:100\u0025;position:absolute;right:0;top:0;width:100\u0025;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_mobile .fb_dialog_iframe{position:sticky;top:0}.fb_dialog_content .dialog_header{background:linear-gradient(from(#738aba), to(#2c4987));border-bottom:1px solid;border-color:#1d3c78;box-shadow:white 0 1px 1px -1px inset;color:#fff;font:bold 14px Helvetica, sans-serif;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{height:43px;width:100\u0025}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:linear-gradient(from(#4267B2), to(#2a4887));background-clip:padding-box;border:1px solid #29487d;border-radius:3px;display:inline-block;line-height:18px;margin-top:3px;max-width:85px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{background:none;border:none;color:#fff;font:bold 12px Helvetica, sans-serif;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/y9\/r\/jKEcVPZFk-2.gif) no-repeat 50\u0025 50\u0025;border:1px solid #4a4a4a;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f5f6f7;border:1px solid #4a4a4a;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/yD\/r\/t-wz8gw1xG1.png);background-position:50\u0025 50\u0025;background-repeat:no-repeat;height:24px;width:24px}\u0040keyframes rotateSpinner{0\u0025{transform:rotate(0deg)}100\u0025{transform:rotate(360deg)}}\n.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100\u0025}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100\u0025}\n.fb_customer_chat_bounce_in_v2{animation-duration:300ms;animation-name:fb_bounce_in_v2;transition-timing-function:ease-in}.fb_customer_chat_bounce_out_v2{animation-duration:300ms;animation-name:fb_bounce_out_v2;transition-timing-function:ease-in}.fb_customer_chat_bounce_in_v2_mobile_chat_started{animation-duration:300ms;animation-name:fb_bounce_in_v2_mobile_chat_started;transition-timing-function:ease-in}.fb_customer_chat_bounce_out_v2_mobile_chat_started{animation-duration:300ms;animation-name:fb_bounce_out_v2_mobile_chat_started;transition-timing-function:ease-in}.fb_customer_chat_bubble_pop_in{animation-duration:250ms;animation-name:fb_customer_chat_bubble_bounce_in_animation}.fb_customer_chat_bubble_animated_no_badge{box-shadow:0 3px 12px rgba(0, 0, 0, .15);transition:box-shadow 150ms linear}.fb_customer_chat_bubble_animated_no_badge:hover{box-shadow:0 5px 24px rgba(0, 0, 0, .3)}.fb_customer_chat_bubble_animated_with_badge{box-shadow:-5px 4px 14px rgba(0, 0, 0, .15);transition:box-shadow 150ms linear}.fb_customer_chat_bubble_animated_with_badge:hover{box-shadow:-5px 8px 24px rgba(0, 0, 0, .2)}.fb_invisible_flow{display:inherit;height:0;overflow-x:hidden;width:0}.fb_mobile_overlay_active{background-color:#fff;height:100\u0025;overflow:hidden;position:fixed;visibility:hidden;width:100\u0025}\u0040keyframes fb_bounce_in_v2{0\u0025{opacity:0;transform:scale(0, 0);transform-origin:bottom right}50\u0025{transform:scale(1.03, 1.03);transform-origin:bottom right}100\u0025{opacity:1;transform:scale(1, 1);transform-origin:bottom right}}\u0040keyframes fb_bounce_in_v2_mobile_chat_started{0\u0025{opacity:0;top:20px}100\u0025{opacity:1;top:0}}\u0040keyframes fb_bounce_out_v2{0\u0025{opacity:1;transform:scale(1, 1);transform-origin:bottom right}100\u0025{opacity:0;transform:scale(0, 0);transform-origin:bottom right}}\u0040keyframes fb_bounce_out_v2_mobile_chat_started{0\u0025{opacity:1;top:0}100\u0025{opacity:0;top:20px}}\u0040keyframes fb_customer_chat_bubble_bounce_in_animation{0\u0025{bottom:6pt;opacity:0;transform:scale(0, 0);transform-origin:center}70\u0025{bottom:18pt;opacity:1;transform:scale(1.2, 1.2)}100\u0025{transform:scale(1, 1)}}","components":["css:fb.css.base","css:fb.css.dialog","css:fb.css.iframewidget","css:fb.css.customer_chat_plugin_iframe"]});__d("JSSDKCanvasPrefetcherConfig",[],{"blacklist":[144959615576466,768691303149786,320528941393723],"sampleRate":500});                                                                                                                                                                                                                                                                                                                                                                                                            __d("DOMWrapper",[],function $module_DOMWrapper(global,require,requireDynamic,requireLazy,module,exports){
 
 
 var rootElement,windowRef;
@@ -6452,6 +6452,283 @@ return delete registry[name];
 
 
 module.exports=Queue;},null);
+                                                                                         __d("UserAgent_DEPRECATED",[],function $module_UserAgent_DEPRECATED(global,require,requireDynamic,requireLazy,module,exports){
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var _populated=false;
+
+
+var _ie,_firefox,_opera,_webkit,_chrome;
+
+
+var _ie_real_version;
+
+
+var _osx,_windows,_linux,_android;
+
+
+var _win64;
+
+
+var _iphone,_ipad,_native;
+
+var _mobile;
+
+function _populate(){
+if(_populated){
+return;
+}
+
+_populated=true;
+
+
+
+
+
+
+var uas=navigator.userAgent;
+var agent=/(?:MSIE.(\d+\.\d+))|(?:(?:Firefox|GranParadiso|Iceweasel).(\d+\.\d+))|(?:Opera(?:.+Version.|.)(\d+\.\d+))|(?:AppleWebKit.(\d+(?:\.\d+)?))|(?:Trident\/\d+\.\d+.*rv:(\d+\.\d+))/.exec(
+uas);
+
+var os=/(Mac OS X)|(Windows)|(Linux)/.exec(uas);
+
+_iphone=/\b(iPhone|iP[ao]d)/.exec(uas);
+_ipad=/\b(iP[ao]d)/.exec(uas);
+_android=/Android/i.exec(uas);
+_native=/FBAN\/\w+;/i.exec(uas);
+_mobile=/Mobile/i.exec(uas);
+
+
+
+
+
+
+_win64=!!/Win64/.exec(uas);
+
+if(agent){
+_ie=agent[1]?
+parseFloat(agent[1]):
+agent[5]?
+parseFloat(agent[5]):
+NaN;
+
+if(_ie&&document&&document.documentMode){
+_ie=document.documentMode;
+}
+
+var trident=/(?:Trident\/(\d+.\d+))/.exec(uas);
+_ie_real_version=trident?parseFloat(trident[1])+4:_ie;
+
+_firefox=agent[2]?parseFloat(agent[2]):NaN;
+_opera=agent[3]?parseFloat(agent[3]):NaN;
+_webkit=agent[4]?parseFloat(agent[4]):NaN;
+if(_webkit){
+
+
+
+agent=/(?:Chrome\/(\d+\.\d+))/.exec(uas);
+_chrome=agent&&agent[1]?parseFloat(agent[1]):NaN;
+}else{
+_chrome=NaN;
+}
+}else{
+_ie=_firefox=_opera=_chrome=_webkit=NaN;
+}
+
+if(os){
+if(os[1]){
+
+
+
+
+
+var ver=/(?:Mac OS X (\d+(?:[._]\d+)?))/.exec(uas);
+
+_osx=ver?parseFloat(ver[1].replace('_','.')):true;
+}else{
+_osx=false;
+}
+_windows=!!os[2];
+_linux=!!os[3];
+}else{
+_osx=_windows=_linux=false;
+}
+}
+
+var UserAgent_DEPRECATED={
+
+
+
+
+
+
+ie:function ie(){
+return _populate()||_ie;
+},
+
+
+
+
+
+
+
+ieCompatibilityMode:function ieCompatibilityMode(){
+return _populate()||_ie_real_version>_ie;
+},
+
+
+
+
+
+
+ie64:function ie64(){
+return UserAgent_DEPRECATED.ie()&&_win64;
+},
+
+
+
+
+
+
+
+firefox:function firefox(){
+return _populate()||_firefox;
+},
+
+
+
+
+
+
+
+opera:function opera(){
+return _populate()||_opera;
+},
+
+
+
+
+
+
+
+webkit:function webkit(){
+return _populate()||_webkit;
+},
+
+
+
+
+
+safari:function safari(){
+return UserAgent_DEPRECATED.webkit();
+},
+
+
+
+
+
+
+
+chrome:function chrome(){
+return _populate()||_chrome;
+},
+
+
+
+
+
+
+windows:function windows(){
+return _populate()||_windows;
+},
+
+
+
+
+
+
+
+osx:function osx(){
+return _populate()||_osx;
+},
+
+
+
+
+
+
+linux:function linux(){
+return _populate()||_linux;
+},
+
+
+
+
+
+
+
+iphone:function iphone(){
+return _populate()||_iphone;
+},
+
+mobile:function mobile(){
+return _populate()||_iphone||_ipad||_android||_mobile;
+},
+
+nativeApp:function nativeApp(){
+
+return _populate()||_native;
+},
+
+android:function android(){
+return _populate()||_android;
+},
+
+ipad:function ipad(){
+return _populate()||_ipad;
+}};
+
+
+module.exports=UserAgent_DEPRECATED;},null);
                                                                                                                               __d("emptyFunction",[],function $module_emptyFunction(global,require,requireDynamic,requireLazy,module,exports){
 
 function makeEmptyFunction(
@@ -6611,7 +6888,7 @@ remove:_remove};
 
 
 module.exports=DOMEventListener;},null);
-                                                                                                                                                                                                                                                                                                                                                                                                                    __d("XDM",["DOMWrapper","Log","guid","sdk.DOMEventListener","wrapFunction"],function $module_XDM(global,require,requireDynamic,requireLazy,module,exports,DOMWrapper,Log,guid,DOMEventListener,wrapFunction){
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      __d("XDM",["DOMWrapper","Log","UserAgent_DEPRECATED","emptyFunction","guid","sdk.DOMEventListener","wrapFunction"],function $module_XDM(global,require,requireDynamic,requireLazy,module,exports,DOMWrapper,Log,UserAgent_DEPRECATED,emptyFunction,guid,DOMEventListener,wrapFunction){
 
 
 
@@ -6621,24 +6898,151 @@ module.exports=DOMEventListener;},null);
 
 
 
+
+var transports={};
+var configuration={
+transports:[]};
 
 var window=DOMWrapper.getWindow();
-var facebookRe=/\.facebook\.com(\/|$)/;
+
+function findTransport(blacklist){
+var blacklistMap={};
+var i=blacklist.length;
+var list=configuration.transports;
+
+while(i--){
+blacklistMap[blacklist[i]]=1;
+}
+
+i=list.length;
+while(i--){
+var name=list[i];
+var transport=transports[name];
+if(!blacklistMap[name]&&transport.isAvailable()){
+return name;
+}
+}
+return null;
+}
 
 var XDM={
 
 
 
 
+register:function register(name,provider){
+Log.debug('Registering %s as XDM provider',name);
+configuration.transports.push(name);
+transports[name]=provider;
+},
 
-registerEventListener:function registerEventListener(config)
 
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+create:function create(config){
+if(!config.whenReady&&!config.onMessage){
+var msg='An instance without whenReady or onMessage makes no sense';
+Log.error(msg);
+throw new Error(msg);
+}
+if(!config.channel){
+Log.warn('Missing channel name, selecting at random');
+config.channel=guid();
+}
+
+if(!config.whenReady){
+config.whenReady=emptyFunction;
+}
+if(!config.onMessage){
+config.onMessage=emptyFunction;
+}
+
+var name=config.transport||findTransport(config.blacklist||[]);
+var transport=transports[name];
+if(transport&&transport.isAvailable()){
+Log.debug('%s is available',name);
+transport.init(config);
+return name;
+}
+return null;
+}};
+
+
+var facebookRe=/\.facebook\.com(\/|$)/;
+
+
+
+
+
+
+
+
+
+
+XDM.register(
+'postmessage',
+function(){
+var inited=false;
+
+return{
+isAvailable:function isAvailable(){
+return!!window.postMessage;
+},
+init:function init(config){
+Log.debug('init postMessage: '+config.channel);
+var prefix='_FB_'+config.channel;
+var xdm={
+send:function send(message,origin,windowRef,channel){
+if(window===windowRef){
+Log.error('Invalid windowref, equal to window (self)');
+throw new Error();
+}
+Log.debug('sending to: %s (%s)',origin,channel);
+var send=function send(){
+
+windowRef.postMessage('_FB_'+channel+message,origin);
+};
+
+
+
+
+
+
+
+
+if(
+UserAgent_DEPRECATED.ie()==8||
+UserAgent_DEPRECATED.ieCompatibilityMode())
 {
-Log.debug('registering postMessage XDM event listener');
+setTimeout(send,0);
+}else{
+send();
+}
+}};
+
+if(inited){
+config.whenReady(xdm);
+return;
+}
 
 DOMEventListener.add(
 window,
@@ -6650,7 +7054,10 @@ var message=event.data;
 
 var origin=event.origin||'native';
 if(!/^(https?:\/\/|native$)/.test(origin)){
-Log.debug('Received message from invalid origin type: %s',origin);
+Log.debug(
+'Received message from invalid origin type: %s',
+origin);
+
 return;
 }
 
@@ -6658,7 +7065,7 @@ if(
 origin!=='native'&&
 !(
 facebookRe.test(location.hostname)||
-event.origin!=null&&facebookRe.test(event.origin)))
+facebookRe.test(event.origin)))
 
 {
 
@@ -6675,15 +7082,21 @@ return;
 }
 
 Log.debug('received message %s from %s',message,origin);
+
+if(message.substring(0,prefix.length)==prefix){
+message=message.substring(prefix.length);
+}
 config.onMessage(message,origin);
 },
 'entry',
 'onMessage'));
 
 
-Log.debug('XDM postMessage event listener registered');
-config.whenReady();
+config.whenReady(xdm);
+inited=true;
 }};
+
+}());
 
 
 module.exports=XDM;},null);
@@ -7057,283 +7470,6 @@ return outQueue;
 
 
 module.exports=RPC;},null);
-                                                                                         __d("UserAgent_DEPRECATED",[],function $module_UserAgent_DEPRECATED(global,require,requireDynamic,requireLazy,module,exports){
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-var _populated=false;
-
-
-var _ie,_firefox,_opera,_webkit,_chrome;
-
-
-var _ie_real_version;
-
-
-var _osx,_windows,_linux,_android;
-
-
-var _win64;
-
-
-var _iphone,_ipad,_native;
-
-var _mobile;
-
-function _populate(){
-if(_populated){
-return;
-}
-
-_populated=true;
-
-
-
-
-
-
-var uas=navigator.userAgent;
-var agent=/(?:MSIE.(\d+\.\d+))|(?:(?:Firefox|GranParadiso|Iceweasel).(\d+\.\d+))|(?:Opera(?:.+Version.|.)(\d+\.\d+))|(?:AppleWebKit.(\d+(?:\.\d+)?))|(?:Trident\/\d+\.\d+.*rv:(\d+\.\d+))/.exec(
-uas);
-
-var os=/(Mac OS X)|(Windows)|(Linux)/.exec(uas);
-
-_iphone=/\b(iPhone|iP[ao]d)/.exec(uas);
-_ipad=/\b(iP[ao]d)/.exec(uas);
-_android=/Android/i.exec(uas);
-_native=/FBAN\/\w+;/i.exec(uas);
-_mobile=/Mobile/i.exec(uas);
-
-
-
-
-
-
-_win64=!!/Win64/.exec(uas);
-
-if(agent){
-_ie=agent[1]?
-parseFloat(agent[1]):
-agent[5]?
-parseFloat(agent[5]):
-NaN;
-
-if(_ie&&document&&document.documentMode){
-_ie=document.documentMode;
-}
-
-var trident=/(?:Trident\/(\d+.\d+))/.exec(uas);
-_ie_real_version=trident?parseFloat(trident[1])+4:_ie;
-
-_firefox=agent[2]?parseFloat(agent[2]):NaN;
-_opera=agent[3]?parseFloat(agent[3]):NaN;
-_webkit=agent[4]?parseFloat(agent[4]):NaN;
-if(_webkit){
-
-
-
-agent=/(?:Chrome\/(\d+\.\d+))/.exec(uas);
-_chrome=agent&&agent[1]?parseFloat(agent[1]):NaN;
-}else{
-_chrome=NaN;
-}
-}else{
-_ie=_firefox=_opera=_chrome=_webkit=NaN;
-}
-
-if(os){
-if(os[1]){
-
-
-
-
-
-var ver=/(?:Mac OS X (\d+(?:[._]\d+)?))/.exec(uas);
-
-_osx=ver?parseFloat(ver[1].replace('_','.')):true;
-}else{
-_osx=false;
-}
-_windows=!!os[2];
-_linux=!!os[3];
-}else{
-_osx=_windows=_linux=false;
-}
-}
-
-var UserAgent_DEPRECATED={
-
-
-
-
-
-
-ie:function ie(){
-return _populate()||_ie;
-},
-
-
-
-
-
-
-
-ieCompatibilityMode:function ieCompatibilityMode(){
-return _populate()||_ie_real_version>_ie;
-},
-
-
-
-
-
-
-ie64:function ie64(){
-return UserAgent_DEPRECATED.ie()&&_win64;
-},
-
-
-
-
-
-
-
-firefox:function firefox(){
-return _populate()||_firefox;
-},
-
-
-
-
-
-
-
-opera:function opera(){
-return _populate()||_opera;
-},
-
-
-
-
-
-
-
-webkit:function webkit(){
-return _populate()||_webkit;
-},
-
-
-
-
-
-safari:function safari(){
-return UserAgent_DEPRECATED.webkit();
-},
-
-
-
-
-
-
-
-chrome:function chrome(){
-return _populate()||_chrome;
-},
-
-
-
-
-
-
-windows:function windows(){
-return _populate()||_windows;
-},
-
-
-
-
-
-
-
-osx:function osx(){
-return _populate()||_osx;
-},
-
-
-
-
-
-
-linux:function linux(){
-return _populate()||_linux;
-},
-
-
-
-
-
-
-
-iphone:function iphone(){
-return _populate()||_iphone;
-},
-
-mobile:function mobile(){
-return _populate()||_iphone||_ipad||_android||_mobile;
-},
-
-nativeApp:function nativeApp(){
-
-return _populate()||_native;
-},
-
-android:function android(){
-return _populate()||_android;
-},
-
-ipad:function ipad(){
-return _populate()||_ipad;
-}};
-
-
-module.exports=UserAgent_DEPRECATED;},null);
                                                                                              __d("hasNamePropertyBug",["UserAgent_DEPRECATED","guid"],function $module_hasNamePropertyBug(global,require,requireDynamic,requireLazy,module,exports,UserAgent_DEPRECATED,guid){
 
 
@@ -7508,9 +7644,7 @@ create:createFeatureFunction};},null);
 
 
 module.exports=FeatureFunctor.create(SDKConfig);},null);
-                                                                                  __d("sdk.XD",["JSSDKXDConfig","Log","QueryString","Queue","UrlMap","XDM","guid","isFacebookURI","sdk.Content","sdk.createIframe","sdk.Event","sdk.feature","sdk.RPC","sdk.Runtime","sdk.Scribe","sdk.URI"],function $module_sdk_XD(global,require,requireDynamic,requireLazy,module,exports,XDConfig,Log,QueryString,Queue,UrlMap,XDM,guid,isFacebookURI,Content,createIframe,Event,feature,RPC,Runtime,Scribe,URI){
-
-
+                                                                                             __d("sdk.XD",["JSSDKXDConfig","Log","QueryString","Queue","UrlMap","XDM","guid","isFacebookURI","sdk.Content","sdk.createIframe","sdk.Event","sdk.feature","sdk.RPC","sdk.Runtime","sdk.Scribe","sdk.URI"],function $module_sdk_XD(global,require,requireDynamic,requireLazy,module,exports,XDConfig,Log,QueryString,Queue,UrlMap,XDM,guid,isFacebookURI,Content,createIframe,Event,feature,RPC,Runtime,Scribe,URI){
 
 
 
@@ -7535,25 +7669,21 @@ var httpsProxyQueue=new Queue();
 var proxySecret=guid();
 var protocol='https';
 
-
 var xdArbiterTier=XDConfig.useCdn?'cdn':'www';
-
 var xdArbiterPathAndQuery=feature('use_bundle',false)?
-
 XDConfig.XdBundleUrl:
-
 XDConfig.XdUrl;
 
 var xdArbiterHttpsUrl=UrlMap.resolve(xdArbiterTier)+xdArbiterPathAndQuery;
 
 var getOrigin=function getOrigin(){
 if('origin'in location){
-if(location.origin&&location.origin!='null'){
+if(location.origin&&location.origin!=='null'){
 return location.origin;
 }else if(window!==window.parent){
 try{
 var parentOrigin=parent.location.origin;
-if(parentOrigin&&parentOrigin!='null'){
+if(parentOrigin&&parentOrigin!=='null'){
 return parentOrigin;
 }
 }catch(_unused){}
@@ -7565,6 +7695,7 @@ return location.protocol+'//'+location.host;
 
 var channel=guid();
 var origin=getOrigin();
+var xdm;
 var httpsProxyFrame;
 var inited=false;
 var IFRAME_TITLE='Facebook Cross Domain Communication Frame';
@@ -7608,30 +7739,27 @@ proxyQueue.getLength());
 
 
 proxyQueue.start(function(message){
-targetProxyFrame.contentWindow.postMessage(
+xdm.send(
 typeof message==='string'?message:QueryString.encode(message),
-senderOrigin);
+senderOrigin,
+targetProxyFrame.contentWindow,
+channel+'_'+protocol);
 
 });
 break;
 
 case'plugin_ready':
-if(typeof message.name==='string'){
-var pluginName=message.name;
-Log.info('Plugin %s ready, protocol: %s',pluginName,protocol);
-pluginRegistry[pluginName]={protocol:protocol};
-if(Queue.exists(pluginName)){
-var queue=Queue.get(pluginName);
+Log.info('Plugin %s ready, protocol: %s',message.name,protocol);
+pluginRegistry[message.name]={protocol:protocol};
+if(Queue.exists(message.name)){
+var queue=Queue.get(message.name);
 Log.debug(
 'Enqueuing %s messages for %s in %s',
 queue.getLength(),
-pluginName,
+message.name,
 protocol+'ProxyQueue');
 
 httpsProxyQueue.merge(queue);
-}
-}else{
-Log.error('plugin_ready message received without a name');
 }
 break;}
 
@@ -7647,7 +7775,7 @@ onMessage(message.data,senderOrigin);
 
 function onMessage(message,senderOrigin){
 if(
-senderOrigin!=null&&
+senderOrigin&&
 senderOrigin!=='native'&&
 !isFacebookURI(new URI(senderOrigin)))
 {
@@ -7671,45 +7799,37 @@ message=QueryString.decode(message);
 }
 }
 
-var messageObj=message;
 
-if(senderOrigin==null){
+if(!senderOrigin){
 
-if(messageObj.xd_sig===proxySecret){
-senderOrigin=messageObj.xd_origin;
+if(message.xd_sig==proxySecret){
+senderOrigin=message.xd_origin;
 }
 }
 
-if(messageObj.xd_action){
-handleAction(messageObj,senderOrigin);
+if(message.xd_action){
+handleAction(message,senderOrigin);
 return;
 }
 
 
-if(messageObj.cb){
-var cb=XD._callbacks[messageObj.cb];
-if(!XD._forever[messageObj.cb]){
-delete XD._callbacks[messageObj.cb];
+if(message.cb){
+var cb=XD._callbacks[message.cb];
+if(!XD._forever[message.cb]){
+delete XD._callbacks[message.cb];
 }
 if(cb){
-cb(messageObj);
+cb(message);
 }
 }
 }
 
-function sendToFacebook(
-recipient,
-message)
-{
+function sendToFacebook(recipient,message){
 if(recipient=='facebook'){
-if(typeof message==='object'){
 message.relation='parent.parent';
-}
 facebookQueue.enqueue(message);
 }else{
-if(typeof message==='object'){
 message.relation='parent.frames["'+recipient+'"]';
-}
 var regInfo=pluginRegistry[recipient];
 if(regInfo){
 Log.debug(
@@ -7738,11 +7858,17 @@ return;
 var container=Content.appendHidden(document.createElement('div'));
 
 
-XDM.registerEventListener({
-whenReady:function whenReady(){
+var transport=XDM.create({
+blacklist:null,
+root:container,
+channel:channel,
+whenReady:function whenReady(instance){
+xdm=instance;
 
 var proxyData={
+channel:channel,
 origin:origin,
+transport:transport,
 xd_name:xdProxyName};
 
 
@@ -7765,6 +7891,15 @@ tabindex:-1});
 },
 onMessage:onMessage});
 
+if(!transport){
+Scribe.log('jssdk_error',{
+appId:Runtime.getClientID(),
+error:'XD_TRANSPORT',
+extra:{
+message:'Failed to create a valid transport'}});
+
+
+}
 inited=true;
 }
 
@@ -7781,6 +7916,7 @@ rpc:RPC,
 
 _callbacks:{},
 _forever:{},
+_channel:channel,
 _origin:origin,
 
 onMessage:onMessage,
@@ -7846,7 +7982,7 @@ var xdArbiterFragment=
 '#'+
 QueryString.encode({
 cb:this.registerCallback(cb,forever,id),
-origin:origin,
+origin:origin+'/'+channel,
 domain:location.hostname,
 relation:relation||'opener'});
 
@@ -7875,7 +8011,7 @@ Event.subscribe('init:post',function(options){
 init(options.xdProxyName);
 var timeout=feature('xd_timeout',false);
 if(timeout){
-window.setTimeout(function(){
+setTimeout(function(){
 var initialized=
 httpsProxyFrame&&!!httpsProxyFrame==httpsProxyQueue.isStarted();
 
@@ -17055,4 +17191,4 @@ localName:tag.replace(/_/g,'-'),
 ctor:customTags[tag]});
 
 });},3);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         }  }).call(global);})(window.inDapIF ? parent.window : window, window);} catch (e) {new Image().src="https:\/\/www.facebook.com\/" + 'common/scribe_endpoint.php?c=jssdk_error&m='+encodeURIComponent('{"error":"LOAD", "extra": {"name":"'+e.name+'","line":"'+(e.lineNumber||e.line)+'","script":"'+(e.fileName||e.sourceURL||e.script)+'","stack":"'+(e.stackTrace||e.stack)+'","revision":"4614675","namespace":"FB","message":"'+e.message+'"}}');}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         }  }).call(global);})(window.inDapIF ? parent.window : window, window);} catch (e) {new Image().src="https:\/\/www.facebook.com\/" + 'common/scribe_endpoint.php?c=jssdk_error&m='+encodeURIComponent('{"error":"LOAD", "extra": {"name":"'+e.name+'","line":"'+(e.lineNumber||e.line)+'","script":"'+(e.fileName||e.sourceURL||e.script)+'","stack":"'+(e.stackTrace||e.stack)+'","revision":"4616859","namespace":"FB","message":"'+e.message+'"}}');}
