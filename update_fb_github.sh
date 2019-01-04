@@ -66,6 +66,10 @@ JS_CHANGES=$(getChanges)
 
 # if anything has changed besides the timestamp in the JS
 if [[ $JS_CHANGES ]]; then
+
+    # de-minify with prettier (https://prettier.io)
+    npx prettier debug.js > debug-pretty.js
+
 	# add it to the staging area
 	/usr/bin/git add *.js
 
