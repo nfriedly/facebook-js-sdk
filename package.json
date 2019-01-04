@@ -3,20 +3,18 @@
   "version": "0.0.1",
   "author": "Nathan Friedly - http://nfriedly.com",
   "description": "This project watches the FB JS SDK for changes and pushes any changes to github",
-  "main": "web.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/nfriedly/connect-js.git"
+    "url": "git://github.com/nfriedly/facebook-js-sdk.git"
   },
   "license": "BSD",
   "bugs": {
-    "url": "https://github.com/nfriedly/connect-js/issues"
+    "url": "https://github.com/nfriedly/facebook-js-sdk/issues"
   },
   "engines": {
-    "node": "0.10.x",
-    "npm": "1.2.x"
+    "node": "10"
   }
 }
