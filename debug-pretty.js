@@ -1,4 +1,4 @@
-/*1547432363,,JIT Construction: v4681709,en_US*/
+/*1547468374,,JIT Construction: v4681869,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -681,7 +681,7 @@ try {
             ) {
               "use strict";
               var ES6Array = {
-                from: function from(arrayLike) {
+                from: function(arrayLike) {
                   if (arrayLike == null) {
                     throw new TypeError("Object is null or undefined");
                   }
@@ -737,7 +737,7 @@ try {
             },
             null
           );
-          /* @flow-compiler-artifact-source 3a9fce9916c9e33549363ac487e33324 */
+          /* @flow-compiler-artifact-source 9540dc10efd7171be9dae5a845892c49 */
           __d(
             "ES6ArrayPrototype",
             [],
@@ -750,7 +750,7 @@ try {
               exports
             ) {
               var ES6ArrayPrototype = {
-                find: function find(predicate, thisArg) {
+                find: function(predicate, thisArg) {
                   if (this == null) {
                     throw new TypeError(
                       "Array.prototype.find called on null or undefined"
@@ -766,7 +766,7 @@ try {
                   );
                   return index === -1 ? void 0 : this[index];
                 },
-                findIndex: function findIndex(predicate, thisArg) {
+                findIndex: function(predicate, thisArg) {
                   if (this == null) {
                     throw new TypeError(
                       "Array.prototype.findIndex called on null or undefined"
@@ -784,7 +784,7 @@ try {
                   }
                   return -1;
                 },
-                fill: function fill(value) {
+                fill: function(value) {
                   if (this == null) {
                     throw new TypeError(
                       "Array.prototype.fill called on null or undefined"
@@ -815,7 +815,7 @@ try {
             },
             null
           );
-          /* @flow-compiler-artifact-source 3ab1a4e53243bf1b3c65ffc13678943e */
+          /* @flow-compiler-artifact-source 672910d2204f6d94b9ea5092463fa087 */
 
           __d(
             "ES6DatePrototype",
@@ -832,7 +832,7 @@ try {
                 return (number < 10 ? "0" : "") + number;
               }
               var ES6DatePrototype = {
-                toISOString: function toISOString() {
+                toISOString: function() {
                   if (!isFinite(this)) {
                     throw new Error("Invalid time value");
                   }
@@ -864,7 +864,7 @@ try {
             },
             null
           );
-          /* @flow-compiler-artifact-source a0ffa41c241f2f0d5b00e0c8c00c7149 */
+          /* @flow-compiler-artifact-source 28d520ebb61c039b47223973a7eb71c7 */
 
           __d(
             "ES6Number",
@@ -881,32 +881,16 @@ try {
               var MAX_SAFE_INTEGER = Math.pow(2, 53) - 1;
               var MIN_SAFE_INTEGER = -1 * MAX_SAFE_INTEGER;
               var ES6Number = {
-                isFinite: (function(_isFinite) {
-                  function isFinite(_x) {
-                    return _isFinite.apply(this, arguments);
-                  }
-                  isFinite.toString = function() {
-                    return _isFinite.toString();
-                  };
-                  return isFinite;
-                })(function(value) {
+                isFinite: function(value) {
                   return typeof value === "number" && isFinite(value);
-                }),
-                isNaN: (function(_isNaN) {
-                  function isNaN(_x2) {
-                    return _isNaN.apply(this, arguments);
-                  }
-                  isNaN.toString = function() {
-                    return _isNaN.toString();
-                  };
-                  return isNaN;
-                })(function(value) {
+                },
+                isNaN: function(value) {
                   return typeof value === "number" && isNaN(value);
-                }),
-                isInteger: function isInteger(value) {
+                },
+                isInteger: function(value) {
                   return this.isFinite(value) && Math.floor(value) === value;
                 },
-                isSafeInteger: function isSafeInteger(value) {
+                isSafeInteger: function(value) {
                   return (
                     this.isFinite(value) &&
                     value >= this.MIN_SAFE_INTEGER &&
@@ -922,7 +906,7 @@ try {
             },
             null
           );
-          /* @flow-compiler-artifact-source fe2eb55251c7a743ea5716faf59af459 */
+          /* @flow-compiler-artifact-source a7bb384fb816628b47613a671aa4776c */
 
           __d(
             "ES6Object",
@@ -938,7 +922,7 @@ try {
             ) {
               var hasOwnProperty = {}.hasOwnProperty;
               var ES6Object = {
-                assign: function assign(target) {
+                assign: function(target) {
                   if (target == null) {
                     throw new TypeError(
                       "Object.assign target cannot be null or undefined"
@@ -969,7 +953,7 @@ try {
                   }
                   return target;
                 },
-                is: function is(x, y) {
+                is: function(x, y) {
                   if (x === y) {
                     return x !== 0 || 1 / x === 1 / y;
                   } else {
@@ -981,7 +965,7 @@ try {
             },
             null
           );
-          /* @flow-compiler-artifact-source 196ef06d3736f5ac9499033abebe75de */
+          /* @flow-compiler-artifact-source c2c16e64d1347e5293bac4d43a846b9d */
 
           __d(
             "ES7ArrayPrototype",
@@ -1014,7 +998,7 @@ try {
                 return number >= 0 ? 1 : -1;
               }
               var ES7ArrayPrototype = {
-                includes: function includes(needle) {
+                includes: function(needle) {
                   "use strict";
                   if (
                     needle !== undefined &&
@@ -1050,7 +1034,7 @@ try {
             },
             null
           );
-          /* @flow-compiler-artifact-source 5479ac6b916d5552b47b76a5ad76cf75 */
+          /* @flow-compiler-artifact-source f8a4ab71a72bb2ea26b2b931d5c8e384 */
 
           __d(
             "ES7Object",
@@ -2629,7 +2613,7 @@ try {
             },
             null
           );
-          /* @flow-compiler-artifact-source 876148d5048f02732c9f3a053bfa3488 */
+          /* @flow-compiler-artifact-source 81457da56e42cd9dea7ecb0b537abab0 */
 
           __d(
             "sdk.babelHelpers",
@@ -2813,7 +2797,7 @@ try {
                 })();
               }
               return {
-                keys: function keys() {
+                keys: function() {
                   throw TypeError(
                     "Strings default iterator doesn't implement keys."
                   );
@@ -2829,7 +2813,7 @@ try {
                   : function(string) {
                       return new StringIterator(string);
                     },
-                entries: function entries() {
+                entries: function() {
                   throw TypeError(
                     "Strings default iterator doesn't implement entries."
                   );
@@ -2885,13 +2869,13 @@ try {
               return this;
             };
             var GenericIterators = {
-              keys: function keys(object) {
+              keys: function(object) {
                 return new ObjectIterator(object, KIND_KEYS);
               },
-              values: function values(object) {
+              values: function(object) {
                 return new ObjectIterator(object, KIND_VALUES);
               },
-              entries: function entries(object) {
+              entries: function(object) {
                 return new ObjectIterator(object, KIND_ENTRIES);
               }
             };
@@ -2916,13 +2900,13 @@ try {
               KIND_KEYS: KIND_KEYS,
               KIND_VALUES: KIND_VALUES,
               KIND_ENTRIES: KIND_ENTRIES,
-              keys: function keys(object) {
+              keys: function(object) {
                 return enumerate(object, KIND_KEYS);
               },
-              values: function values(object) {
+              values: function(object) {
                 return enumerate(object, KIND_VALUES);
               },
-              entries: function entries(object) {
+              entries: function(object) {
                 return enumerate(object, KIND_ENTRIES);
               },
               generic: GenericIterators.entries
@@ -3412,7 +3396,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "4681709",
+            revision: "4681869",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -3436,7 +3420,7 @@ try {
           });
           __d("JSSDKXDConfig", [], {
             XdUrl: "/connect/xd_arbiter.php?version=43",
-            XdBundleUrl: "/connect/xd_arbiter/r/VZJwN3KABlo.js?version=43",
+            XdBundleUrl: "/connect/xd_arbiter/r/pCnscBu4GoY.js?version=43",
             useCdn: true
           });
           __d("JSSDKCssConfig", [], {
@@ -3914,16 +3898,16 @@ try {
             ) {
               "use strict";
               var TAALOpcodes = {
-                previousFile: function previousFile() {
+                previousFile: function() {
                   return javascript_TAAL_OpCode.PREVIOUS_FILE;
                 },
-                previousFrame: function previousFrame() {
+                previousFrame: function() {
                   return javascript_TAAL_OpCode.PREVIOUS_FRAME;
                 },
-                previousDirectory: function previousDirectory() {
+                previousDirectory: function() {
                   return javascript_TAAL_OpCode.PREVIOUS_DIR;
                 },
-                getString: function getString(opcodes) {
+                getString: function(opcodes) {
                   return opcodes && opcodes.length
                     ? " TAAL[" + opcodes.join(";") + "]"
                     : "";
@@ -3948,24 +3932,22 @@ try {
             ) {
               "use strict";
               var TAAL = {
-                blameToPreviousFile: function blameToPreviousFile(message) {
+                blameToPreviousFile: function(message) {
                   return this.applyOpcodes(message, [
                     TAALOpcodes.previousFile()
                   ]);
                 },
-                blameToPreviousFrame: function blameToPreviousFrame(message) {
+                blameToPreviousFrame: function(message) {
                   return this.applyOpcodes(message, [
                     TAALOpcodes.previousFrame()
                   ]);
                 },
-                blameToPreviousDirectory: function blameToPreviousDirectory(
-                  message
-                ) {
+                blameToPreviousDirectory: function(message) {
                   return this.applyOpcodes(message, [
                     TAALOpcodes.previousDirectory()
                   ]);
                 },
-                applyOpcodes: function applyOpcodes(message, opcodes) {
+                applyOpcodes: function(message, opcodes) {
                   return message + TAALOpcodes.getString(opcodes);
                 }
               };
@@ -4516,7 +4498,7 @@ try {
               "use strict";
               var Model = Type.extend(
                 {
-                  constructor: function constructor(properties) {
+                  constructor: function(properties) {
                     this.parent();
                     var propContainer = {};
                     var model = this;
@@ -4592,11 +4574,11 @@ try {
               });
               ES("Object", "assign", false, Runtime, {
                 ENVIRONMENTS: ENVIRONMENTS,
-                isEnvironment: function isEnvironment(target) {
+                isEnvironment: function(target) {
                   var environment = this.getEnvironment();
                   return (target | environment) === environment;
                 },
-                isCanvasEnvironment: function isCanvasEnvironment() {
+                isCanvasEnvironment: function() {
                   return (
                     this.isEnvironment(ENVIRONMENTS.CANVAS) ||
                     this.isEnvironment(ENVIRONMENTS.PAGETAB)
@@ -4739,7 +4721,7 @@ try {
               var MAGIC = "Miny1";
               var LO = "wxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-_".split("");
               var Miny = {
-                encode: function encode(s) {
+                encode: function(s) {
                   if (/^$|[~\\]|__proto__/.test(s)) {
                     return s;
                   }
@@ -5096,7 +5078,7 @@ try {
               var visibleRoot;
               var hiddenRoot;
               var Content = {
-                append: function append(content, root) {
+                append: function(content, root) {
                   if (!root) {
                     if (!visibleRoot) {
                       visibleRoot = root = document.getElementById("fb-root");
@@ -5129,7 +5111,7 @@ try {
                     return root.appendChild(content);
                   }
                 },
-                appendHidden: function appendHidden(content) {
+                appendHidden: function(content) {
                   if (!hiddenRoot) {
                     hiddenRoot = document.createElement("div");
                     var style = hiddenRoot.style;
@@ -5141,7 +5123,7 @@ try {
                   }
                   return Content.append(content, hiddenRoot);
                 },
-                submitToTarget: function submitToTarget(opts, get) {
+                submitToTarget: function(opts, get) {
                   var form = document.createElement("form");
                   form.action = opts.url;
                   form.target = opts.target;
@@ -6119,7 +6101,7 @@ try {
             ) {
               "use strict";
               var WebStorage = {
-                getLocalStorage: function getLocalStorage() {
+                getLocalStorage: function() {
                   try {
                     return window.localStorage;
                   } catch (_unused) {
@@ -6127,7 +6109,7 @@ try {
                   }
                   return null;
                 },
-                getLocalStorageForRead: function getLocalStorageForRead() {
+                getLocalStorageForRead: function() {
                   try {
                     var storage = window.localStorage;
                     if (storage) {
@@ -6460,9 +6442,9 @@ try {
                 });
                 window.addEventListener("test", null, opts);
               } catch (_unused) {}
-              var _add, _remove;
+              var add, remove;
               if (window.addEventListener) {
-                _add = function add(target, name, listener, options) {
+                add = function add(target, name, listener, options) {
                   if (options === void 0) {
                     options = false;
                   }
@@ -6477,7 +6459,7 @@ try {
                     supportsPassive ? options : false
                   );
                 };
-                _remove = function remove(target, name, listener, options) {
+                remove = function remove(target, name, listener, options) {
                   if (options === void 0) {
                     options = false;
                   }
@@ -6488,7 +6470,7 @@ try {
                   );
                 };
               } else if (window.attachEvent) {
-                _add = function add(target, name, listener) {
+                add = function add(target, name, listener) {
                   listener.wrapper = wrapFunction(
                     listener,
                     "entry",
@@ -6498,27 +6480,27 @@ try {
                     invariant(0, "`target` has no `attachEvent` method.");
                   target.attachEvent("on" + name, listener.wrapper);
                 };
-                _remove = function remove(target, name, listener) {
+                remove = function remove(target, name, listener) {
                   target.detachEvent ||
                     invariant(0, "`target` has no `detachEvent` method.");
                   target.detachEvent("on" + name, listener.wrapper);
                 };
               } else {
-                _remove = _add = emptyFunction;
+                remove = add = emptyFunction;
               }
               var DOMEventListener = {
-                add: function add(target, name, listener, options) {
+                add: function(target, name, listener, options) {
                   if (options === void 0) {
                     options = false;
                   }
-                  _add(target, name, listener, options);
+                  add(target, name, listener, options);
                   return {
-                    remove: function remove() {
-                      _remove(target, name, listener, options);
+                    remove: function() {
+                      remove(target, name, listener, options);
                     }
                   };
                 },
-                remove: _remove
+                remove: remove
               };
               module.exports = DOMEventListener;
             },
@@ -6761,13 +6743,13 @@ try {
               var Event = {
                 SUBSCRIBE: "event.subscribe",
                 UNSUBSCRIBE: "event.unsubscribe",
-                subscribers: function subscribers() {
+                subscribers: function() {
                   if (!this._subscribersMap) {
                     this._subscribersMap = {};
                   }
                   return this._subscribersMap;
                 },
-                subscribe: function subscribe(name, cb) {
+                subscribe: function(name, cb) {
                   var subs = this.subscribers();
                   if (!subs[name]) {
                     subs[name] = [cb];
@@ -6780,7 +6762,7 @@ try {
                     this.fire(this.SUBSCRIBE, name, subs[name]);
                   }
                 },
-                unsubscribe: function unsubscribe(name, cb) {
+                unsubscribe: function(name, cb) {
                   var subs = this.subscribers()[name];
                   if (subs) {
                     ES(subs, "forEach", true, function(value, key) {
@@ -6793,7 +6775,7 @@ try {
                     this.fire(this.UNSUBSCRIBE, name, subs);
                   }
                 },
-                monitor: function monitor(name, callback) {
+                monitor: function(name, callback) {
                   if (!callback()) {
                     var ctx = this;
                     var fn = function fn() {
@@ -6804,10 +6786,10 @@ try {
                     this.subscribe(name, fn);
                   }
                 },
-                clear: function clear(name) {
+                clear: function(name) {
                   delete this.subscribers()[name];
                 },
-                fire: function fire(name) {
+                fire: function(name) {
                   for (
                     var _len = arguments.length,
                       args = new Array(_len > 1 ? _len - 1 : 0),
@@ -9497,7 +9479,7 @@ try {
                 false,
                 new ObservableMixin(),
                 {
-                  setAccessToken: function setAccessToken(access_token) {
+                  setAccessToken: function(access_token) {
                     if (__DEV__) {
                       if (accessToken && accessToken !== access_token) {
                         console.error(
@@ -9510,10 +9492,7 @@ try {
                     }
                     accessToken = access_token;
                   },
-                  setAccessTokenForClientID: function setAccessTokenForClientID(
-                    access_token,
-                    client_id
-                  ) {
+                  setAccessTokenForClientID: function(access_token, client_id) {
                     if (accessToken && clientID && clientID !== client_id) {
                       console.error(
                         "Not overriding access token since it was not " +
@@ -9523,29 +9502,25 @@ try {
                       accessToken = access_token;
                     }
                   },
-                  getAccessToken: function getAccessToken() {
+                  getAccessToken: function() {
                     return accessToken;
                   },
-                  setClientID: function setClientID(client_id) {
+                  setClientID: function(client_id) {
                     clientID = client_id;
                   },
-                  setDefaultParams: function setDefaultParams(default_params) {
+                  setDefaultParams: function(default_params) {
                     defaultParams = default_params;
                   },
-                  setDefaultTransports: function setDefaultTransports(
-                    newDefaultTransports
-                  ) {
+                  setDefaultTransports: function(newDefaultTransports) {
                     defaultTransports = newDefaultTransports;
                   },
-                  setMaxConcurrentRequests: function setMaxConcurrentRequests(
-                    value
-                  ) {
+                  setMaxConcurrentRequests: function(value) {
                     maxConcurrentRequests = value;
                   },
-                  getCurrentlyExecutingRequestCount: function getCurrentlyExecutingRequestCount() {
+                  getCurrentlyExecutingRequestCount: function() {
                     return currentlyExecutingRequests;
                   },
-                  getQueuedRequestCount: function getQueuedRequestCount() {
+                  getQueuedRequestCount: function() {
                     return requestQueue.length;
                   },
                   rest: requestUsingRest,
@@ -9581,14 +9556,14 @@ try {
               var REGEX = /^v\d+\.\d\d?$/;
               var PlatformVersioning = {
                 REGEX: REGEX,
-                assertVersionIsSet: function assertVersionIsSet() {
+                assertVersionIsSet: function() {
                   if (!Runtime.getVersion()) {
                     throw new ManagedError(
                       "init not called with valid version"
                     );
                   }
                 },
-                assertValidVersion: function assertValidVersion(version) {
+                assertValidVersion: function(version) {
                   if (!REGEX.test(version)) {
                     throw new ManagedError("invalid version specified");
                   }
@@ -9896,10 +9871,10 @@ try {
             ) {
               "use strict";
               var DialogUtils = {
-                isOrientationPotrait: function isOrientationPotrait() {
+                isOrientationPotrait: function() {
                   return window.innerWidth < window.innerHeight;
                 },
-                addDoubleClickAction: function addDoubleClickAction(
+                addDoubleClickAction: function(
                   element,
                   actionCallback,
                   delayBetweenClicks
@@ -9916,7 +9891,7 @@ try {
                     }, delayBetweenClicks);
                   });
                 },
-                addIdleDesktopAction: function addIdleDesktopAction(
+                addIdleDesktopAction: function(
                   element,
                   actionCallback,
                   delayToIdle
@@ -9944,9 +9919,7 @@ try {
                     }
                   );
                 },
-                addMobileOrientationChangeAction: function addMobileOrientationChangeAction(
-                  actionCallback
-                ) {
+                addMobileOrientationChangeAction: function(actionCallback) {
                   if (!UA.mobile()) {
                     return null;
                   }
@@ -9961,7 +9934,7 @@ try {
                   };
                   return DOMEventListener.add(window, event, callback);
                 },
-                applyScreenDimensions: function applyScreenDimensions(element) {
+                applyScreenDimensions: function(element) {
                   if (element == null) {
                     return;
                   }
@@ -9972,7 +9945,7 @@ try {
                     ? view.scrollTop + "px"
                     : "";
                 },
-                setDialogPositionToCenter: function setDialogPositionToCenter(
+                setDialogPositionToCenter: function(
                   dialog,
                   isTablet,
                   pageInfo
@@ -10023,24 +9996,20 @@ try {
                   dialog.style.left = (left > 0 ? left : 0) + "px";
                   dialog.style.top = (top > 0 ? top : 0) + "px";
                 },
-                setDialogPositionToTop: function setDialogPositionToTop(
-                  dialog,
-                  isTablet,
-                  pageInfo
-                ) {
+                setDialogPositionToTop: function(dialog, isTablet, pageInfo) {
                   this.setDialogPositionToCenter(dialog, isTablet, pageInfo);
                   var view = DOM.getViewportInfo();
                   var top =
                     view.scrollTop + (view.height - dialog.offsetHeight) * 0.05;
                   DOM.setStyle(dialog, "top", top + "px");
                 },
-                setupNewDarkOverlay: function setupNewDarkOverlay() {
+                setupNewDarkOverlay: function() {
                   var overlay = document.createElement("div");
                   overlay.setAttribute("id", "fb_dialog_ipad_overlay");
                   this.applyScreenDimensions(overlay);
                   return overlay;
                 },
-                setupNewDialog: function setupNewDialog(options) {
+                setupNewDialog: function(options) {
                   options = options || {};
                   var dialog = document.createElement("div");
                   var _options = options,
@@ -10076,7 +10045,7 @@ try {
                   }
                   return { dialogElement: dialog, contentRoot: contentRoot };
                 },
-                onDialogHideCleanup: function onDialogHideCleanup(isTablet) {
+                onDialogHideCleanup: function(isTablet) {
                   var body = document.body;
                   if (isTablet) {
                     DOM.removeCss(body, "fb_reposition");
@@ -10102,7 +10071,7 @@ try {
               exports
             ) {
               var fbt = {
-                _: function _(table) {
+                _: function(table) {
                   if (__DEV__) {
                     if (arguments.length > 1) {
                       throw new Error("You are not using a simple string");
@@ -10719,7 +10688,7 @@ try {
                 local: jsonrpc.local,
                 remote: jsonrpc.remote,
                 stub: ES(jsonrpc.stub, "bind", true, jsonrpc),
-                supportsDialog: function supportsDialog(method) {
+                supportsDialog: function(method) {
                   return (
                     !!extensionAPIBridge &&
                     extensionAPIBridge.supportsDialog(method)
@@ -10998,7 +10967,7 @@ try {
               XD
             ) {
               var MobileIframeable = {
-                transform: function transform(call) {
+                transform: function(call) {
                   if (
                     call.params.display === "touch" &&
                     UIServer.canIframe(call.params) &&
@@ -11016,7 +10985,7 @@ try {
                     return UIServer.genericTransform(call);
                   }
                 },
-                getXdRelation: function getXdRelation(params) {
+                getXdRelation: function(params) {
                   var display = params.display;
                   if (
                     display === "touch" &&
@@ -11050,7 +11019,7 @@ try {
                 "stream.share": {
                   size: { width: 670, height: 340 },
                   url: "sharer.php",
-                  transform: function transform(call) {
+                  transform: function(call) {
                     if (!call.params.u) {
                       call.params.u = window.location.toString();
                     }
@@ -11059,7 +11028,7 @@ try {
                   }
                 },
                 apprequests: {
-                  transform: function transform(call) {
+                  transform: function(call) {
                     call = MobileIframeable.transform(call);
                     call.params.frictionless =
                       Frictionless && Frictionless._useFrictionless;
@@ -11085,7 +11054,7 @@ try {
                     width: UA.mobile() ? null : 600,
                     height: UA.mobile() ? null : 679
                   },
-                  transform: function transform(call) {
+                  transform: function(call) {
                     if (!Runtime.getClientID()) {
                       Log.error("FB.login() called before FB.init().");
                       return;
@@ -11174,7 +11143,7 @@ try {
                 },
                 "auth.logout": {
                   url: "logout.php",
-                  transform: function transform(call) {
+                  transform: function(call) {
                     if (!Runtime.getClientID()) {
                       Log.error("FB.logout() called before calling FB.init().");
                     } else if (!Auth.getAuthResponse()) {
@@ -11194,7 +11163,7 @@ try {
                 },
                 "login.status": {
                   url: "dialog/oauth",
-                  transform: function transform(call) {
+                  transform: function(call) {
                     var cb = call.cb;
                     var id = call.id;
                     delete call.cb;
@@ -11220,7 +11189,7 @@ try {
                   connectDisplay: "popup"
                 },
                 live_broadcast: {
-                  transform: function transform(call) {
+                  transform: function(call) {
                     if (call.params.phase === "create") {
                       call.size = { width: 480, height: 280 };
                     }
@@ -11232,7 +11201,7 @@ try {
                   require_access_token: true
                 },
                 boost: {
-                  transform: function transform(call) {
+                  transform: function(call) {
                     call.size = { width: 960, height: 760 };
                     call.params.display = "popup";
                     return call;
@@ -11259,7 +11228,7 @@ try {
                 _loadedNodes: {},
                 _defaultCb: {},
                 _resultToken: '"xxRESULTTOKENxx"',
-                genericTransform: function genericTransform(call) {
+                genericTransform: function(call) {
                   if (
                     call.params.display == "dialog" ||
                     call.params.display == "iframe"
@@ -11281,7 +11250,7 @@ try {
                   }
                   return call;
                 },
-                checkOauthDisplay: function checkOauthDisplay(params) {
+                checkOauthDisplay: function(params) {
                   var scope =
                     params.scope || params.perms || Runtime.getScope();
                   if (!scope) {
@@ -11289,7 +11258,7 @@ try {
                   }
                   return "popup";
                 },
-                prepareCall: function prepareCall(params, cb) {
+                prepareCall: function(params, cb) {
                   var name = params.method.toLowerCase();
                   var method = Object.prototype.hasOwnProperty.call(
                     UIServer.Methods,
@@ -11413,7 +11382,7 @@ try {
                   call = UIServer.prepareParams(call);
                   return call;
                 },
-                prepareParams: function prepareParams(call) {
+                prepareParams: function(call) {
                   if (call.params.display !== "async") {
                     delete call.params.method;
                   }
@@ -11432,10 +11401,10 @@ try {
                   }
                   return call;
                 },
-                urlTooLongForIE: function urlTooLongForIE(fullURL) {
+                urlTooLongForIE: function(fullURL) {
                   return UA.ie() && UA.ie() <= 8 && fullURL.length > 2048;
                 },
-                getDisplayMode: function getDisplayMode(method, params) {
+                getDisplayMode: function(method, params) {
                   if (
                     params.display === "hidden" ||
                     params.display === "none" ||
@@ -11477,7 +11446,7 @@ try {
                     (UIServer.canIframe(params) ? "dialog" : "popup")
                   );
                 },
-                canIframe: function canIframe(params) {
+                canIframe: function(params) {
                   if (Runtime.getAccessToken()) {
                     return true;
                   }
@@ -11486,7 +11455,7 @@ try {
                   }
                   return false;
                 },
-                getXdRelation: function getXdRelation(params) {
+                getXdRelation: function(params) {
                   var display = params.display;
                   if (display === "popup" || display === "touch") {
                     return "opener";
@@ -11504,7 +11473,7 @@ try {
                   }
                   return "";
                 },
-                popup: function popup(call) {
+                popup: function(call) {
                   var _screenX = window.screenX;
                   var screenY = window.screenY;
                   var outerWidth = window.outerWidth;
@@ -11566,24 +11535,24 @@ try {
                     UIServer._popupMonitor();
                   }
                 },
-                setLoadedNode: function setLoadedNode(call, node, type) {
+                setLoadedNode: function(call, node, type) {
                   if (type === "iframe") {
                     node.fbCallID = call.id;
                   }
                   node = { node: node, type: type, fbCallID: call.id };
                   UIServer._loadedNodes[call.id] = node;
                 },
-                getLoadedNode: function getLoadedNode(call) {
+                getLoadedNode: function(call) {
                   var id = typeof call === "object" ? call.id : call;
                   var node = UIServer._loadedNodes[id];
                   return node ? node.node : null;
                 },
-                hidden: function hidden(call) {
+                hidden: function(call) {
                   call.className = "FB_UI_Hidden";
                   call.root = Content.appendHidden("");
                   UIServer._insertIframe(call);
                 },
-                iframe: function iframe(call) {
+                iframe: function(call) {
                   call.className = "FB_UI_Dialog";
                   if (call.params.mobile_iframe) {
                     Dialog.setForceTabletStyle(true);
@@ -11613,7 +11582,7 @@ try {
                   DOM.addCss(call.root, "fb_dialog_iframe");
                   UIServer._insertIframe(call);
                 },
-                touch: function touch(call) {
+                touch: function(call) {
                   if (call.params && call.params.in_iframe) {
                     if (call.ui_created) {
                       Dialog.showLoader(function() {
@@ -11636,7 +11605,7 @@ try {
                     UIServer.popup(call);
                   }
                 },
-                async: function async(call) {
+                async: function(call) {
                   call.params.redirect_uri =
                     location.protocol +
                     "//" +
@@ -11664,13 +11633,13 @@ try {
                     RPC.remote.showDialog(call.params, handler);
                   }
                 },
-                native: function native(call) {
+                native: function(call) {
                   openMessenger(call.params);
                 },
-                getDefaultSize: function getDefaultSize() {
+                getDefaultSize: function() {
                   return Dialog.getDefaultSize();
                 },
-                _insertIframe: function _insertIframe(call) {
+                _insertIframe: function(call) {
                   UIServer._loadedNodes[call.id] = false;
                   var activate = function activate(node) {
                     if (call.id in UIServer._loadedNodes) {
@@ -11707,10 +11676,7 @@ try {
                     });
                   }
                 },
-                _handleResizeMessage: function _handleResizeMessage(
-                  frame,
-                  data
-                ) {
+                _handleResizeMessage: function(frame, data) {
                   var node = UIServer.getLoadedNode(frame);
                   if (!node) {
                     return;
@@ -11732,7 +11698,7 @@ try {
                     Dialog._centerActive();
                   }
                 },
-                _triggerDefault: function _triggerDefault(id, result) {
+                _triggerDefault: function(id, result) {
                   var data = { frame: id };
                   if (result) {
                     data.result = result;
@@ -11742,7 +11708,7 @@ try {
                     UIServer._defaultCb[id] || function() {}
                   );
                 },
-                _popupMonitor: function _popupMonitor() {
+                _popupMonitor: function() {
                   var found;
                   for (var id in UIServer._loadedNodes) {
                     if (
@@ -11776,7 +11742,7 @@ try {
                     UIServer._popupInterval = null;
                   }
                 },
-                _xdChannelHandler: function _xdChannelHandler(frame, relation) {
+                _xdChannelHandler: function(frame, relation) {
                   return XD.handler(
                     function(data) {
                       var node = UIServer.getLoadedNode(frame);
@@ -11799,12 +11765,7 @@ try {
                     null
                   );
                 },
-                _xdNextHandler: function _xdNextHandler(
-                  cb,
-                  frame,
-                  relation,
-                  isDefault
-                ) {
+                _xdNextHandler: function(cb, frame, relation, isDefault) {
                   if (isDefault) {
                     UIServer._defaultCb[frame] = cb;
                   }
@@ -11816,7 +11777,7 @@ try {
                     frame
                   );
                 },
-                _xdRecv: function _xdRecv(data, cb) {
+                _xdRecv: function(data, cb) {
                   var frame = UIServer.getLoadedNode(data.frame);
                   if (frame) {
                     if (frame.close) {
@@ -11852,7 +11813,7 @@ try {
                   }
                   cb(data);
                 },
-                _xdResult: function _xdResult(cb, frame, target, isDefault) {
+                _xdResult: function(cb, frame, target, isDefault) {
                   return (
                     UIServer._xdNextHandler(
                       function(params) {
@@ -11871,7 +11832,7 @@ try {
                     encodeURIComponent(UIServer._resultToken)
                   );
                 },
-                xdHandler: function xdHandler(
+                xdHandler: function(
                   cb,
                   frame,
                   target,
@@ -12833,7 +12794,7 @@ try {
                 return Log.error("FB.Event." + name + "() has been deprecated");
               };
               FB.provide("Event", {
-                subscribe: function subscribe(name, cb) {
+                subscribe: function(name, cb) {
                   return Event.subscribe(name, cb);
                 },
                 unsubscribe: ES(Event.unsubscribe, "bind", true, Event),
@@ -13292,7 +13253,7 @@ try {
                 }
               }
               var Time = {
-                log: function log(key) {
+                log: function(key) {
                   if (!couldLog || !startTime) {
                     return;
                   }
@@ -13767,7 +13728,7 @@ try {
               }
               var IframePlugin = Type.extend(
                 {
-                  constructor: function constructor(elem, ns, tag, attr) {
+                  constructor: function(elem, ns, tag, attr) {
                     this.parent();
                     tag = tag.replace(/-/g, "_");
                     var pluginId = getVal(attr, "plugin_id");
@@ -13956,13 +13917,13 @@ try {
                       }
                     }
                   },
-                  shouldIgnoreWidth: function shouldIgnoreWidth() {
+                  shouldIgnoreWidth: function() {
                     return UA.mobile() && this.getConfig().mobile_fullsize;
                   },
-                  useInlineHeightForMobile: function useInlineHeightForMobile() {
+                  useInlineHeightForMobile: function() {
                     return true;
                   },
-                  process: function process() {
+                  process: function() {
                     if (Runtime.getIsVersioned()) {
                       PlatformVersioning.assertVersionIsSet();
                       var uri = new URI(this._iframeOptions.url);
@@ -14070,14 +14031,14 @@ try {
                       }
                     }
                   },
-                  getConfig: function getConfig() {
+                  getConfig: function() {
                     return {};
                   },
-                  isFluid: function isFluid() {
+                  isFluid: function() {
                     var config = this.getConfig();
                     return config.fluid;
                   },
-                  updateLift: function updateLift() {
+                  updateLift: function() {
                     var same =
                       this._iframe.style.width ===
                         this._iframeOptions.root.style.width &&
@@ -14097,10 +14058,10 @@ try {
               };
               IframePlugin.withParams = function(params, config) {
                 return IframePlugin.extend({
-                  getParams: function getParams() {
+                  getParams: function() {
                     return params;
                   },
-                  getConfig: function getConfig() {
+                  getConfig: function() {
                     return config ? config : {};
                   }
                 });
@@ -14434,7 +14395,7 @@ try {
                 return attr;
               }
               var Comments = IframePlugin.extend({
-                constructor: function constructor(elem, ns, tag, attr) {
+                constructor: function(elem, ns, tag, attr) {
                   attr = setupAttributes(elem, attr);
                   this.parent(elem, ns, tag, attr);
                   this.subscribe("xd.sdk_event", function(message) {
@@ -14444,10 +14405,10 @@ try {
                     );
                   });
                 },
-                getConfig: function getConfig() {
+                getConfig: function() {
                   return { fluid: true, full_width: true };
                 },
-                getParams: function getParams() {
+                getParams: function() {
                   return params;
                 }
               });
@@ -14471,7 +14432,7 @@ try {
               sprintf
             ) {
               var CommentsCount = Comments.extend({
-                constructor: function constructor(elem, ns, tag, attr) {
+                constructor: function(elem, ns, tag, attr) {
                   DOM.addCss(elem, "fb_comments_count_zero");
                   attr.count = 1;
                   this.parent(elem, ns, "comments", attr);
@@ -14653,7 +14614,7 @@ try {
                     });
                   });
                 },
-                shouldIgnoreWidth: function shouldIgnoreWidth() {
+                shouldIgnoreWidth: function() {
                   return false;
                 },
                 getParams: function getParams() {
@@ -15043,7 +15004,7 @@ try {
                 }
               }
               var Quote = IframePlugin.extend({
-                constructor: function constructor(elem, ns, tag, attr) {
+                constructor: function(elem, ns, tag, attr) {
                   if (singleton) {
                     return singleton;
                   }
@@ -15091,7 +15052,7 @@ try {
                   singleton = this;
                   return singleton;
                 },
-                getParams: function getParams() {
+                getParams: function() {
                   return { href: "url", layout: "string" };
                 }
               });
@@ -15133,7 +15094,7 @@ try {
               "use strict";
               var positionIntervalID;
               var Save = IframePlugin.extend({
-                constructor: function constructor(elem, ns, tag, attr) {
+                constructor: function(elem, ns, tag, attr) {
                   this.parent(elem, ns, tag, attr);
                   var isMobile = UA.mobile();
                   this.subscribe(
@@ -15221,10 +15182,7 @@ try {
                     )
                   );
                 },
-                positionOnScreen: function positionOnScreen(
-                  dialog,
-                  darkOverlay
-                ) {
+                positionOnScreen: function(dialog, darkOverlay) {
                   var isMobile = UA.mobile();
                   if (isMobile) {
                     var centerMobile = function centerMobile(
@@ -15252,10 +15210,7 @@ try {
                     DOM.setStyle(dialog, "right", "20px");
                   }
                 },
-                setupNewIframeDialog: function setupNewIframeDialog(
-                  data,
-                  fromIframe
-                ) {
+                setupNewIframeDialog: function(data, fromIframe) {
                   var xdArbiterFragment =
                     "#" + QueryString.encode({ forIframe: fromIframe });
                   var created = DialogUtils.setupNewDialog();
@@ -15289,7 +15244,7 @@ try {
                   DOM.removeCss(created.dialogElement, "fb_dialog_advanced");
                   return created.dialogElement;
                 },
-                getParams: function getParams() {
+                getParams: function() {
                   return { uri: "url", url_category: "string", size: "string" };
                 }
               });
@@ -15314,7 +15269,7 @@ try {
             ) {
               "use strict";
               var ShareButton = IframePlugin.extend({
-                constructor: function constructor(elem, ns, tag, attr) {
+                constructor: function(elem, ns, tag, attr) {
                   this.parent(elem, ns, tag, attr);
                   this.subscribe("xd.shareTriggerMobileIframe", function(
                     message
@@ -15327,7 +15282,7 @@ try {
                     });
                   });
                 },
-                getParams: function getParams() {
+                getParams: function() {
                   return {
                     href: "url",
                     layout: "string",
@@ -15491,7 +15446,7 @@ try {
                 };
               };
               var Video = IframePlugin.extend({
-                constructor: function constructor(elem, ns, tag, attr) {
+                constructor: function(elem, ns, tag, attr) {
                   this.parent(elem, ns, tag, attr);
                   this._videoController = null;
                   this._sharedObservable = null;
@@ -15521,7 +15476,7 @@ try {
                     );
                   });
                 },
-                getParams: function getParams() {
+                getParams: function() {
                   return {
                     allowfullscreen: "bool",
                     autoplay: "bool",
@@ -15531,7 +15486,7 @@ try {
                     show_text: "bool"
                   };
                 },
-                getConfig: function getConfig() {
+                getConfig: function() {
                   return { fluid: true, full_width: true };
                 }
               });
@@ -15642,7 +15597,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"4681709","namespace":"FB","message":"' +
+        '","revision":"4681869","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
