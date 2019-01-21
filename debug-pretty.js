@@ -1,4 +1,4 @@
-/*1547468374,,JIT Construction: v4681869,en_US*/
+/*1548084577,,JIT Construction: v4699659,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3396,7 +3396,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "4681869",
+            revision: "4699659",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -4254,11 +4254,16 @@ try {
               exports,
               ManagedError
             ) {
+              var _ManagedError, _superProto;
+              _ManagedError = babelHelpers.inherits(
+                AssertionError,
+                ManagedError
+              );
+              _superProto = _ManagedError && _ManagedError.prototype;
               function AssertionError(message) {
-                ManagedError.prototype.constructor.apply(this, arguments);
+                "use strict";
+                _superProto.constructor.call(this, message);
               }
-              AssertionError.prototype = new ManagedError();
-              AssertionError.prototype.constructor = AssertionError;
               module.exports = AssertionError;
             },
             null
@@ -15597,7 +15602,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"4681869","namespace":"FB","message":"' +
+        '","revision":"4699659","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
