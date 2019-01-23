@@ -1,4 +1,4 @@
-/*1548215357,,JIT Construction: v4703149,en_US*/
+/*1548283175,,JIT Construction: v4705546,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3396,7 +3396,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "4703149",
+            revision: "4705546",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -3420,7 +3420,7 @@ try {
           });
           __d("JSSDKXDConfig", [], {
             XdUrl: "/connect/xd_arbiter.php?version=43",
-            XdBundleUrl: "/connect/xd_arbiter/r/C5xxnheHp3I.js?version=43",
+            XdBundleUrl: "/connect/xd_arbiter/r/5kUkYwMloUj.js?version=43",
             useCdn: true
           });
           __d("JSSDKCssConfig", [], {
@@ -6551,6 +6551,76 @@ try {
           );
 
           __d(
+            "sdk.FeatureFunctor",
+            ["invariant"],
+            function $module_sdk_FeatureFunctor(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports,
+              invariant
+            ) {
+              function feature(config, name, defaultValue) {
+                if (config.features && name in config.features) {
+                  var value = config.features[name];
+                  if (
+                    typeof value === "object" &&
+                    typeof value.rate === "number"
+                  ) {
+                    if (value.rate && Math.random() * 100 <= value.rate) {
+                      return value.value || true;
+                    } else {
+                      return value.value ? null : false;
+                    }
+                  } else {
+                    return value;
+                  }
+                }
+                return defaultValue;
+              }
+              function createFeatureFunction(config) {
+                return function() {
+                  for (
+                    var _len = arguments.length,
+                      args = new Array(_len),
+                      _key = 0;
+                    _key < _len;
+                    _key++
+                  ) {
+                    args[_key] = arguments[_key];
+                  }
+                  args.length >= 2 || invariant(0, "Default value is required");
+                  var name = args[0],
+                    defaultValue = args[1];
+                  return feature(config, name, defaultValue);
+                };
+              }
+              module.exports = { create: createFeatureFunction };
+            },
+            null
+          );
+
+          __d(
+            "sdk.feature",
+            ["JSSDKConfig", "sdk.FeatureFunctor"],
+            function $module_sdk_feature(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports,
+              SDKConfig,
+              FeatureFunctor
+            ) {
+              module.exports = FeatureFunctor.create(SDKConfig);
+            },
+            null
+          );
+
+          __d(
             "XDM",
             [
               "DOMEventListener",
@@ -6559,6 +6629,8 @@ try {
               "UserAgent_DEPRECATED",
               "emptyFunction",
               "guid",
+              "sdk.feature",
+              "sdk.Scribe",
               "wrapFunction"
             ],
             function $module_XDM(
@@ -6574,6 +6646,8 @@ try {
               UserAgent_DEPRECATED,
               emptyFunction,
               guid,
+              feature,
+              Scribe,
               wrapFunction
             ) {
               var transports = {};
@@ -6660,10 +6734,23 @@ try {
                           }
                           Log.debug("sending to: %s (%s)", origin, channel);
                           var send = function send() {
-                            windowRef.postMessage(
-                              "_FB_" + channel + message,
-                              origin
-                            );
+                            try {
+                              windowRef.postMessage(
+                                "_FB_" + channel + message,
+                                origin
+                              );
+                            } catch (e) {
+                              if (feature("xdm_scribe_logging", false)) {
+                                Scribe.log("jssdk_error", {
+                                  error: "POST_MESSAGE",
+                                  extra: {
+                                    message:
+                                      e.message + ", html/js/modules/XDM.js:222"
+                                  }
+                                });
+                              }
+                              throw e;
+                            }
                           };
                           if (
                             UserAgent_DEPRECATED.ie() == 8 ||
@@ -7165,76 +7252,6 @@ try {
                 return frame;
               }
               module.exports = createIframe;
-            },
-            null
-          );
-
-          __d(
-            "sdk.FeatureFunctor",
-            ["invariant"],
-            function $module_sdk_FeatureFunctor(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports,
-              invariant
-            ) {
-              function feature(config, name, defaultValue) {
-                if (config.features && name in config.features) {
-                  var value = config.features[name];
-                  if (
-                    typeof value === "object" &&
-                    typeof value.rate === "number"
-                  ) {
-                    if (value.rate && Math.random() * 100 <= value.rate) {
-                      return value.value || true;
-                    } else {
-                      return value.value ? null : false;
-                    }
-                  } else {
-                    return value;
-                  }
-                }
-                return defaultValue;
-              }
-              function createFeatureFunction(config) {
-                return function() {
-                  for (
-                    var _len = arguments.length,
-                      args = new Array(_len),
-                      _key = 0;
-                    _key < _len;
-                    _key++
-                  ) {
-                    args[_key] = arguments[_key];
-                  }
-                  args.length >= 2 || invariant(0, "Default value is required");
-                  var name = args[0],
-                    defaultValue = args[1];
-                  return feature(config, name, defaultValue);
-                };
-              }
-              module.exports = { create: createFeatureFunction };
-            },
-            null
-          );
-
-          __d(
-            "sdk.feature",
-            ["JSSDKConfig", "sdk.FeatureFunctor"],
-            function $module_sdk_feature(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports,
-              SDKConfig,
-              FeatureFunctor
-            ) {
-              module.exports = FeatureFunctor.create(SDKConfig);
             },
             null
           );
@@ -7997,7 +8014,7 @@ try {
 
           __d(
             "sdk.DOM",
-            ["Assert", "sdk.domReady", "sdk.UA"],
+            ["Assert", "sdk.domReady"],
             function $module_sdk_DOM(
               global,
               require,
@@ -8006,8 +8023,7 @@ try {
               module,
               exports,
               Assert,
-              domReady,
-              UA
+              domReady
             ) {
               var cssRules = {};
               function getAttr(dom, name) {
@@ -8022,22 +8038,13 @@ try {
                   dom.getAttribute("data-" + name.replace(/-/g, "_")) ||
                   dom.getAttribute("data-" + name.replace(/-/g, "")) ||
                   dom.getAttribute("data-" + name.replace(/_/g, ""));
-                return attribute ? String(attribute) : null;
+                return attribute != null ? String(attribute) : null;
               }
               function getBoolAttr(dom, name) {
                 var attribute = getAttr(dom, name);
-                return attribute ? /^(true|1|yes|on)$/.test(attribute) : null;
-              }
-              function getProp(dom, name) {
-                Assert.isTruthy(dom, "element not specified");
-                Assert.isString(name);
-                try {
-                  return String(dom[name]);
-                } catch (e) {
-                  throw new Error(
-                    "Could not read property " + name + " : " + e.message
-                  );
-                }
+                return attribute != null
+                  ? /^(true|1|yes|on)$/.test(attribute)
+                  : null;
               }
               function html(dom, content) {
                 Assert.isTruthy(dom, "element not specified");
@@ -8048,10 +8055,10 @@ try {
                   throw new Error("Could not set innerHTML : " + e.message);
                 }
               }
-              function hasClass(dom, className) {
+              function containsCss(dom, className) {
                 Assert.isTruthy(dom, "element not specified");
                 Assert.isString(className);
-                var cssClassWithSpace = " " + getProp(dom, "className") + " ";
+                var cssClassWithSpace = " " + dom.className + " ";
                 return (
                   ES(
                     cssClassWithSpace,
@@ -8061,56 +8068,55 @@ try {
                   ) >= 0
                 );
               }
-              function addClass(dom, className) {
+              function addCss(dom, className) {
                 Assert.isTruthy(dom, "element not specified");
+                if (dom == null) {
+                  return;
+                }
                 Assert.isString(className);
-                if (!hasClass(dom, className)) {
-                  dom.className = getProp(dom, "className") + " " + className;
+                if (!containsCss(dom, className)) {
+                  dom.className = dom.className + " " + className;
                 }
               }
-              function removeClass(dom, className) {
+              function removeCss(dom, className) {
                 Assert.isTruthy(dom, "element not specified");
+                if (dom == null) {
+                  return;
+                }
                 Assert.isString(className);
                 var regExp = new RegExp("\\s*" + className, "g");
                 dom.className = ES(
-                  getProp(dom, "className").replace(regExp, ""),
+                  dom.className.replace(regExp, ""),
                   "trim",
                   true
                 );
               }
               function getByClass(className, dom, tagName) {
                 Assert.isString(className);
-                dom = dom || document.body;
-                tagName = tagName || "*";
-                if (dom.querySelectorAll) {
-                  return ES(
-                    "Array",
-                    "from",
-                    false,
-                    dom.querySelectorAll(tagName + "." + className)
-                  );
+                var _dom = dom || document.body;
+                if (_dom == null) {
+                  return [];
                 }
-                var all = dom.getElementsByTagName(tagName),
-                  els = [];
-                for (var i = 0, len = all.length; i < len; i++) {
-                  if (hasClass(all[i], className)) {
-                    els[els.length] = all[i];
-                  }
-                }
-                return els;
+                var _tagName = tagName || "*";
+                return ES(
+                  "Array",
+                  "from",
+                  false,
+                  _dom.querySelectorAll(_tagName + "." + className)
+                );
               }
               function getStyle(dom, styleProp) {
                 Assert.isTruthy(dom, "element not specified");
                 Assert.isString(styleProp);
-                styleProp = styleProp.replace(/-(\w)/g, function(m, g1) {
+                var _styleProp = styleProp.replace(/-(\w)/g, function(m, g1) {
                   return g1.toUpperCase();
                 });
                 var currentStyle =
                   dom.currentStyle ||
                   document.defaultView.getComputedStyle(dom, null);
-                var computedStyle = currentStyle[styleProp];
+                var computedStyle = currentStyle[_styleProp];
                 if (
-                  /backgroundPosition?/.test(styleProp) &&
+                  /backgroundPosition?/.test(_styleProp) &&
                   /top|left/.test(computedStyle)
                 ) {
                   computedStyle = "0%";
@@ -8119,11 +8125,14 @@ try {
               }
               function setStyle(dom, styleProp, value) {
                 Assert.isTruthy(dom, "element not specified");
+                if (dom == null) {
+                  return;
+                }
                 Assert.isString(styleProp);
-                styleProp = styleProp.replace(/-(\w)/g, function(m, g1) {
+                var _styleProp = styleProp.replace(/-(\w)/g, function(m, g1) {
                   return g1.toUpperCase();
                 });
-                dom.style[styleProp] = value;
+                dom.style.setProperty(_styleProp, value);
               }
               function addCssRules(styles, names) {
                 var allIncluded = true;
@@ -8136,20 +8145,10 @@ try {
                 if (allIncluded) {
                   return;
                 }
-                if (UA.ie() < 11) {
-                  try {
-                    document.createStyleSheet().cssText = styles;
-                  } catch (_unused) {
-                    if (document.styleSheets[0]) {
-                      document.styleSheets[0].cssText += styles;
-                    }
-                  }
-                } else {
-                  var style = document.createElement("style");
-                  style.type = "text/css";
-                  style.textContent = styles;
-                  document.getElementsByTagName("head")[0].appendChild(style);
-                }
+                var style = document.createElement("style");
+                style.type = "text/css";
+                style.textContent = styles;
+                document.getElementsByTagName("head")[0].appendChild(style);
               }
               function remove(elem) {
                 if (!elem || !elem.parentNode) {
@@ -8159,48 +8158,49 @@ try {
                 }
               }
               function getViewportInfo() {
+                var _document$body, _document$body2;
                 var root =
                   document.documentElement &&
                   document.compatMode == "CSS1Compat"
                     ? document.documentElement
                     : document.body;
                 return {
-                  scrollTop: root.scrollTop || document.body.scrollTop,
-                  scrollLeft: root.scrollLeft || document.body.scrollLeft,
+                  scrollTop:
+                    (root == null ? void 0 : root.scrollTop) ||
+                    ((_document$body = document.body) == null
+                      ? void 0
+                      : _document$body.scrollTop),
+                  scrollLeft:
+                    (root == null ? void 0 : root.scrollLeft) ||
+                    ((_document$body2 = document.body) == null
+                      ? void 0
+                      : _document$body2.scrollLeft),
                   width: window.innerWidth
                     ? window.innerWidth
+                    : root == null
+                    ? void 0
                     : root.clientWidth,
                   height: window.innerHeight
                     ? window.innerHeight
+                    : root == null
+                    ? void 0
                     : root.clientHeight
                 };
               }
-              function getPosition(node) {
-                Assert.isTruthy(node, "element not specified");
-                var x = 0,
-                  y = 0;
-                do {
-                  x += node.offsetLeft;
-                  y += node.offsetTop;
-                } while ((node = node.offsetParent));
-                return { x: x, y: y };
-              }
               var DOM = {
-                containsCss: hasClass,
-                addCss: addClass,
-                removeCss: removeClass,
-                getByClass: getByClass,
-                getStyle: getStyle,
-                setStyle: setStyle,
+                addCss: addCss,
+                addCssRules: addCssRules,
+                containsCss: containsCss,
                 getAttr: getAttr,
                 getBoolAttr: getBoolAttr,
-                getProp: getProp,
-                html: html,
-                addCssRules: addCssRules,
+                getByClass: getByClass,
+                getStyle: getStyle,
                 getViewportInfo: getViewportInfo,
-                getPosition: getPosition,
+                html: html,
                 ready: domReady,
-                remove: remove
+                remove: remove,
+                removeCss: removeCss,
+                setStyle: setStyle
               };
               module.exports = DOM;
             },
@@ -15640,7 +15640,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"4703149","namespace":"FB","message":"' +
+        '","revision":"4705546","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
