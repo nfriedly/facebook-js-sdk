@@ -1,4 +1,4 @@
-/*1548196761,,JIT Construction: v4701632,en_US*/
+/*1548208173,,JIT Construction: v4702274,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3396,7 +3396,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "4701632",
+            revision: "4702274",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -3420,7 +3420,7 @@ try {
           });
           __d("JSSDKXDConfig", [], {
             XdUrl: "/connect/xd_arbiter.php?version=43",
-            XdBundleUrl: "/connect/xd_arbiter/r/pCnscBu4GoY.js?version=43",
+            XdBundleUrl: "/connect/xd_arbiter/r/EZG3FNnB93t.js?version=43",
             useCdn: true
           });
           __d("JSSDKCssConfig", [], {
@@ -6272,6 +6272,159 @@ try {
           );
 
           __d(
+            "dedupString",
+            [],
+            function $module_dedupString(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              "use strict";
+              function dedupString(str) {
+                var _$tempvar_1;
+                return ES(
+                  "Object",
+                  "keys",
+                  false,
+                  ((_$tempvar_1 = {}), (_$tempvar_1[str] = 0), _$tempvar_1)
+                )[0];
+              }
+              module.exports = dedupString;
+            },
+            null
+          );
+
+          __d(
+            "emptyFunction",
+            [],
+            function $module_emptyFunction(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              function makeEmptyFunction(arg) {
+                return function() {
+                  return arg;
+                };
+              }
+              var emptyFunction = function emptyFunction() {};
+              emptyFunction.thatReturns = makeEmptyFunction;
+              emptyFunction.thatReturnsFalse = makeEmptyFunction(false);
+              emptyFunction.thatReturnsTrue = makeEmptyFunction(true);
+              emptyFunction.thatReturnsNull = makeEmptyFunction(null);
+              emptyFunction.thatReturnsThis = function() {
+                return this;
+              };
+              emptyFunction.thatReturnsArgument = function(arg) {
+                return arg;
+              };
+              module.exports = emptyFunction;
+            },
+            null
+          );
+
+          __d(
+            "DOMEventListener",
+            ["dedupString", "emptyFunction", "invariant", "wrapFunction"],
+            function $module_DOMEventListener(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports,
+              dedupString,
+              emptyFunction,
+              invariant,
+              wrapFunction
+            ) {
+              var supportsPassive = false;
+              try {
+                var opts = Object.defineProperty({}, "passive", {
+                  get: function get() {
+                    supportsPassive = true;
+                  }
+                });
+                window.addEventListener("test", null, opts);
+              } catch (_unused) {}
+              var add, remove;
+              if (window.addEventListener) {
+                add = function add(target, name, listener, options) {
+                  if (options === void 0) {
+                    options = false;
+                  }
+                  listener.wrapper = wrapFunction(
+                    listener,
+                    "entry",
+                    dedupString("DOMEventListener.add " + name)
+                  );
+                  target.addEventListener(
+                    name,
+                    listener.wrapper,
+                    supportsPassive ? options : false
+                  );
+                };
+                remove = function remove(target, name, listener, options) {
+                  if (options === void 0) {
+                    options = false;
+                  }
+                  target.removeEventListener(
+                    name,
+                    listener.wrapper,
+                    supportsPassive ? options : false
+                  );
+                };
+              } else if (window.attachEvent) {
+                add = function add(target, name, listener, _options) {
+                  if (_options === void 0) {
+                    _options = false;
+                  }
+                  listener.wrapper = wrapFunction(
+                    listener,
+                    "entry",
+                    "DOMEventListener.add " + name
+                  );
+                  target.attachEvent ||
+                    invariant(0, "`target` has no `attachEvent` method.");
+                  target.attachEvent("on" + name, listener.wrapper);
+                };
+                remove = function remove(target, name, listener, _options) {
+                  if (_options === void 0) {
+                    _options = false;
+                  }
+                  target.detachEvent ||
+                    invariant(0, "`target` has no `detachEvent` method.");
+                  target.detachEvent("on" + name, listener.wrapper);
+                };
+              } else {
+                remove = add = emptyFunction;
+              }
+              var DOMEventListener = {
+                add: function(target, name, listener, options) {
+                  if (options === void 0) {
+                    options = false;
+                  }
+                  add(target, name, listener, options);
+                  return {
+                    remove: function() {
+                      remove(target, name, listener, options);
+                    }
+                  };
+                },
+                remove: remove
+              };
+              module.exports = DOMEventListener;
+            },
+            null
+          );
+
+          __d(
             "UserAgent_DEPRECATED",
             [],
             function $module_UserAgent_DEPRECATED(
@@ -6397,134 +6550,14 @@ try {
           );
 
           __d(
-            "emptyFunction",
-            [],
-            function $module_emptyFunction(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              function makeEmptyFunction(arg) {
-                return function() {
-                  return arg;
-                };
-              }
-              var emptyFunction = function emptyFunction() {};
-              emptyFunction.thatReturns = makeEmptyFunction;
-              emptyFunction.thatReturnsFalse = makeEmptyFunction(false);
-              emptyFunction.thatReturnsTrue = makeEmptyFunction(true);
-              emptyFunction.thatReturnsNull = makeEmptyFunction(null);
-              emptyFunction.thatReturnsThis = function() {
-                return this;
-              };
-              emptyFunction.thatReturnsArgument = function(arg) {
-                return arg;
-              };
-              module.exports = emptyFunction;
-            },
-            null
-          );
-
-          __d(
-            "sdk.DOMEventListener",
-            ["emptyFunction", "invariant", "wrapFunction"],
-            function $module_sdk_DOMEventListener(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports,
-              emptyFunction,
-              invariant,
-              wrapFunction
-            ) {
-              var supportsPassive = false;
-              try {
-                var opts = Object.defineProperty({}, "passive", {
-                  get: function get() {
-                    supportsPassive = true;
-                  }
-                });
-                window.addEventListener("test", null, opts);
-              } catch (_unused) {}
-              var add, remove;
-              if (window.addEventListener) {
-                add = function add(target, name, listener, options) {
-                  if (options === void 0) {
-                    options = false;
-                  }
-                  listener.wrapper = wrapFunction(
-                    listener,
-                    "entry",
-                    "DOMEventListener.add " + name
-                  );
-                  target.addEventListener(
-                    name,
-                    listener.wrapper,
-                    supportsPassive ? options : false
-                  );
-                };
-                remove = function remove(target, name, listener, options) {
-                  if (options === void 0) {
-                    options = false;
-                  }
-                  target.removeEventListener(
-                    name,
-                    listener.wrapper,
-                    supportsPassive ? options : false
-                  );
-                };
-              } else if (window.attachEvent) {
-                add = function add(target, name, listener) {
-                  listener.wrapper = wrapFunction(
-                    listener,
-                    "entry",
-                    "DOMEventListener.add " + name
-                  );
-                  target.attachEvent ||
-                    invariant(0, "`target` has no `attachEvent` method.");
-                  target.attachEvent("on" + name, listener.wrapper);
-                };
-                remove = function remove(target, name, listener) {
-                  target.detachEvent ||
-                    invariant(0, "`target` has no `detachEvent` method.");
-                  target.detachEvent("on" + name, listener.wrapper);
-                };
-              } else {
-                remove = add = emptyFunction;
-              }
-              var DOMEventListener = {
-                add: function(target, name, listener, options) {
-                  if (options === void 0) {
-                    options = false;
-                  }
-                  add(target, name, listener, options);
-                  return {
-                    remove: function() {
-                      remove(target, name, listener, options);
-                    }
-                  };
-                },
-                remove: remove
-              };
-              module.exports = DOMEventListener;
-            },
-            null
-          );
-
-          __d(
             "XDM",
             [
+              "DOMEventListener",
               "DOMWrapper",
               "Log",
               "UserAgent_DEPRECATED",
               "emptyFunction",
               "guid",
-              "sdk.DOMEventListener",
               "wrapFunction"
             ],
             function $module_XDM(
@@ -6534,12 +6567,12 @@ try {
               requireLazy,
               module,
               exports,
+              DOMEventListener,
               DOMWrapper,
               Log,
               UserAgent_DEPRECATED,
               emptyFunction,
               guid,
-              DOMEventListener,
               wrapFunction
             ) {
               var transports = {};
@@ -7036,11 +7069,11 @@ try {
           __d(
             "sdk.createIframe",
             [
+              "DOMEventListener",
               "getBlankIframeSrc",
               "guid",
               "hasNamePropertyBug",
-              "isNumberLike",
-              "sdk.DOMEventListener"
+              "isNumberLike"
             ],
             function $module_sdk_createIframe(
               global,
@@ -7049,11 +7082,11 @@ try {
               requireLazy,
               module,
               exports,
+              DOMEventListener,
               getBlankIframeSrc,
               guid,
               hasNamePropertyBug,
-              isNumberLike,
-              DOMEventListener
+              isNumberLike
             ) {
               function createIframe(opts) {
                 opts = ES("Object", "assign", false, {}, opts);
@@ -9865,7 +9898,7 @@ try {
 
           __d(
             "sdk.DialogUtils",
-            ["sdk.Content", "sdk.DOM", "sdk.DOMEventListener", "sdk.UA"],
+            ["DOMEventListener", "sdk.Content", "sdk.DOM", "sdk.UA"],
             function $module_sdk_DialogUtils(
               global,
               require,
@@ -9873,9 +9906,9 @@ try {
               requireLazy,
               module,
               exports,
+              DOMEventListener,
               Content,
               DOM,
-              DOMEventListener,
               UA
             ) {
               "use strict";
@@ -10097,13 +10130,13 @@ try {
           __d(
             "sdk.Dialog",
             [
+              "DOMEventListener",
               "ObservableMixin",
               "Type",
               "sdk.Canvas.Environment",
               "sdk.Content",
               "sdk.DialogUtils",
               "sdk.DOM",
-              "sdk.DOMEventListener",
               "sdk.fbt",
               "sdk.Runtime",
               "sdk.UA"
@@ -10115,13 +10148,13 @@ try {
               requireLazy,
               module,
               exports,
+              DOMEventListener,
               ObservableMixin,
               Type,
               CanvasEnvironment,
               Content,
               DialogUtils,
               DOM,
-              DOMEventListener,
               fbt,
               Runtime,
               UA
@@ -10588,7 +10621,7 @@ try {
 
           __d(
             "sdk.NativeExtensions",
-            ["Log", "sdk.DOMEventListener", "sdk.UA"],
+            ["DOMEventListener", "Log", "sdk.UA"],
             function $module_sdk_NativeExtensions(
               global,
               require,
@@ -10596,8 +10629,8 @@ try {
               requireLazy,
               module,
               exports,
-              Log,
               DOMEventListener,
+              Log,
               UA
             ) {
               var NATIVE_EXTENSIONS_READY_EVENT = "fbNativeExtensionsReady";
@@ -14886,11 +14919,11 @@ try {
           __d(
             "sdk.XFBML.Quote",
             [
+              "DOMEventListener",
               "IframePlugin",
               "UnicodeUtils",
               "containsNode",
               "sdk.DOM",
-              "sdk.DOMEventListener",
               "sdk.feature",
               "sdk.UA",
               "sdk.XD"
@@ -14902,11 +14935,11 @@ try {
               requireLazy,
               module,
               exports,
+              DOMEventListener,
               IframePlugin,
               UnicodeUtils,
               containsNode,
               DOM,
-              DOMEventListener,
               feature,
               UA,
               XD
@@ -15606,7 +15639,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"4701632","namespace":"FB","message":"' +
+        '","revision":"4702274","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
