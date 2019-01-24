@@ -1,4 +1,4 @@
-/*1548283175,,JIT Construction: v4705546,en_US*/
+/*1548306572,,JIT Construction: v4707558,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3396,7 +3396,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "4705546",
+            revision: "4707558",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -3408,7 +3408,7 @@ try {
               error_handling: { rate: 4 },
               e2e_ping_tracking: { rate: 1.0e-6 },
               xd_timeout: { rate: 1, value: 60000 },
-              use_bundle: true,
+              use_bundle: false,
               should_log_response_error: true,
               popup_blocker_scribe_logging: { rate: 100 },
               https_only_enforce_starting: 2538809200000,
@@ -3420,7 +3420,7 @@ try {
           });
           __d("JSSDKXDConfig", [], {
             XdUrl: "/connect/xd_arbiter.php?version=43",
-            XdBundleUrl: "/connect/xd_arbiter/r/5kUkYwMloUj.js?version=43",
+            XdBundleUrl: "/connect/xd_arbiter/r/C5xxnheHp3I.js?version=43",
             useCdn: true
           });
           __d("JSSDKCssConfig", [], {
@@ -6551,76 +6551,6 @@ try {
           );
 
           __d(
-            "sdk.FeatureFunctor",
-            ["invariant"],
-            function $module_sdk_FeatureFunctor(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports,
-              invariant
-            ) {
-              function feature(config, name, defaultValue) {
-                if (config.features && name in config.features) {
-                  var value = config.features[name];
-                  if (
-                    typeof value === "object" &&
-                    typeof value.rate === "number"
-                  ) {
-                    if (value.rate && Math.random() * 100 <= value.rate) {
-                      return value.value || true;
-                    } else {
-                      return value.value ? null : false;
-                    }
-                  } else {
-                    return value;
-                  }
-                }
-                return defaultValue;
-              }
-              function createFeatureFunction(config) {
-                return function() {
-                  for (
-                    var _len = arguments.length,
-                      args = new Array(_len),
-                      _key = 0;
-                    _key < _len;
-                    _key++
-                  ) {
-                    args[_key] = arguments[_key];
-                  }
-                  args.length >= 2 || invariant(0, "Default value is required");
-                  var name = args[0],
-                    defaultValue = args[1];
-                  return feature(config, name, defaultValue);
-                };
-              }
-              module.exports = { create: createFeatureFunction };
-            },
-            null
-          );
-
-          __d(
-            "sdk.feature",
-            ["JSSDKConfig", "sdk.FeatureFunctor"],
-            function $module_sdk_feature(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports,
-              SDKConfig,
-              FeatureFunctor
-            ) {
-              module.exports = FeatureFunctor.create(SDKConfig);
-            },
-            null
-          );
-
-          __d(
             "XDM",
             [
               "DOMEventListener",
@@ -6629,8 +6559,6 @@ try {
               "UserAgent_DEPRECATED",
               "emptyFunction",
               "guid",
-              "sdk.feature",
-              "sdk.Scribe",
               "wrapFunction"
             ],
             function $module_XDM(
@@ -6646,8 +6574,6 @@ try {
               UserAgent_DEPRECATED,
               emptyFunction,
               guid,
-              feature,
-              Scribe,
               wrapFunction
             ) {
               var transports = {};
@@ -6734,23 +6660,10 @@ try {
                           }
                           Log.debug("sending to: %s (%s)", origin, channel);
                           var send = function send() {
-                            try {
-                              windowRef.postMessage(
-                                "_FB_" + channel + message,
-                                origin
-                              );
-                            } catch (e) {
-                              if (feature("xdm_scribe_logging", false)) {
-                                Scribe.log("jssdk_error", {
-                                  error: "POST_MESSAGE",
-                                  extra: {
-                                    message:
-                                      e.message + ", html/js/modules/XDM.js:222"
-                                  }
-                                });
-                              }
-                              throw e;
-                            }
+                            windowRef.postMessage(
+                              "_FB_" + channel + message,
+                              origin
+                            );
                           };
                           if (
                             UserAgent_DEPRECATED.ie() == 8 ||
@@ -7252,6 +7165,76 @@ try {
                 return frame;
               }
               module.exports = createIframe;
+            },
+            null
+          );
+
+          __d(
+            "sdk.FeatureFunctor",
+            ["invariant"],
+            function $module_sdk_FeatureFunctor(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports,
+              invariant
+            ) {
+              function feature(config, name, defaultValue) {
+                if (config.features && name in config.features) {
+                  var value = config.features[name];
+                  if (
+                    typeof value === "object" &&
+                    typeof value.rate === "number"
+                  ) {
+                    if (value.rate && Math.random() * 100 <= value.rate) {
+                      return value.value || true;
+                    } else {
+                      return value.value ? null : false;
+                    }
+                  } else {
+                    return value;
+                  }
+                }
+                return defaultValue;
+              }
+              function createFeatureFunction(config) {
+                return function() {
+                  for (
+                    var _len = arguments.length,
+                      args = new Array(_len),
+                      _key = 0;
+                    _key < _len;
+                    _key++
+                  ) {
+                    args[_key] = arguments[_key];
+                  }
+                  args.length >= 2 || invariant(0, "Default value is required");
+                  var name = args[0],
+                    defaultValue = args[1];
+                  return feature(config, name, defaultValue);
+                };
+              }
+              module.exports = { create: createFeatureFunction };
+            },
+            null
+          );
+
+          __d(
+            "sdk.feature",
+            ["JSSDKConfig", "sdk.FeatureFunctor"],
+            function $module_sdk_feature(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports,
+              SDKConfig,
+              FeatureFunctor
+            ) {
+              module.exports = FeatureFunctor.create(SDKConfig);
             },
             null
           );
@@ -15640,7 +15623,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"4705546","namespace":"FB","message":"' +
+        '","revision":"4707558","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
