@@ -1,4 +1,4 @@
-/*1548306572,,JIT Construction: v4707558,en_US*/
+/*1548386949,,JIT Construction: v4710319,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3396,7 +3396,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "4707558",
+            revision: "4710319",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -3420,7 +3420,7 @@ try {
           });
           __d("JSSDKXDConfig", [], {
             XdUrl: "/connect/xd_arbiter.php?version=43",
-            XdBundleUrl: "/connect/xd_arbiter/r/C5xxnheHp3I.js?version=43",
+            XdBundleUrl: "/connect/xd_arbiter/r/MqyV2Orbpna.js?version=43",
             useCdn: true
           });
           __d("JSSDKCssConfig", [], {
@@ -6273,294 +6273,8 @@ try {
           );
 
           __d(
-            "dedupString",
-            [],
-            function $module_dedupString(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              "use strict";
-              function dedupString(str) {
-                var _$tempvar_1;
-                return ES(
-                  "Object",
-                  "keys",
-                  false,
-                  ((_$tempvar_1 = {}), (_$tempvar_1[str] = 0), _$tempvar_1)
-                )[0];
-              }
-              module.exports = dedupString;
-            },
-            null
-          );
-
-          __d(
-            "emptyFunction",
-            [],
-            function $module_emptyFunction(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              function makeEmptyFunction(arg) {
-                return function() {
-                  return arg;
-                };
-              }
-              var emptyFunction = function emptyFunction() {};
-              emptyFunction.thatReturns = makeEmptyFunction;
-              emptyFunction.thatReturnsFalse = makeEmptyFunction(false);
-              emptyFunction.thatReturnsTrue = makeEmptyFunction(true);
-              emptyFunction.thatReturnsNull = makeEmptyFunction(null);
-              emptyFunction.thatReturnsThis = function() {
-                return this;
-              };
-              emptyFunction.thatReturnsArgument = function(arg) {
-                return arg;
-              };
-              module.exports = emptyFunction;
-            },
-            null
-          );
-
-          __d(
-            "DOMEventListener",
-            ["dedupString", "emptyFunction", "invariant", "wrapFunction"],
-            function $module_DOMEventListener(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports,
-              dedupString,
-              emptyFunction,
-              invariant,
-              wrapFunction
-            ) {
-              var supportsPassive = false;
-              try {
-                var opts = Object.defineProperty({}, "passive", {
-                  get: function get() {
-                    supportsPassive = true;
-                  }
-                });
-                window.addEventListener("test", null, opts);
-              } catch (_unused) {}
-              var add, remove;
-              if (window.addEventListener) {
-                add = function add(target, name, listener, options) {
-                  if (options === void 0) {
-                    options = false;
-                  }
-                  listener.wrapper = wrapFunction(
-                    listener,
-                    "entry",
-                    dedupString("DOMEventListener.add " + name)
-                  );
-                  target.addEventListener(
-                    name,
-                    listener.wrapper,
-                    supportsPassive ? options : false
-                  );
-                };
-                remove = function remove(target, name, listener, options) {
-                  if (options === void 0) {
-                    options = false;
-                  }
-                  target.removeEventListener(
-                    name,
-                    listener.wrapper,
-                    supportsPassive ? options : false
-                  );
-                };
-              } else if (window.attachEvent) {
-                add = function add(target, name, listener, _options) {
-                  if (_options === void 0) {
-                    _options = false;
-                  }
-                  listener.wrapper = wrapFunction(
-                    listener,
-                    "entry",
-                    "DOMEventListener.add " + name
-                  );
-                  target.attachEvent ||
-                    invariant(0, "`target` has no `attachEvent` method.");
-                  target.attachEvent("on" + name, listener.wrapper);
-                };
-                remove = function remove(target, name, listener, _options) {
-                  if (_options === void 0) {
-                    _options = false;
-                  }
-                  target.detachEvent ||
-                    invariant(0, "`target` has no `detachEvent` method.");
-                  target.detachEvent("on" + name, listener.wrapper);
-                };
-              } else {
-                remove = add = emptyFunction;
-              }
-              var DOMEventListener = {
-                add: function(target, name, listener, options) {
-                  if (options === void 0) {
-                    options = false;
-                  }
-                  add(target, name, listener, options);
-                  return {
-                    remove: function() {
-                      remove(target, name, listener, options);
-                    }
-                  };
-                },
-                remove: remove
-              };
-              module.exports = DOMEventListener;
-            },
-            null
-          );
-
-          __d(
-            "UserAgent_DEPRECATED",
-            [],
-            function $module_UserAgent_DEPRECATED(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              var _populated = false;
-              var _ie, _firefox, _opera, _webkit, _chrome;
-              var _ie_real_version;
-              var _osx, _windows, _linux, _android;
-              var _win64;
-              var _iphone, _ipad, _native;
-              var _mobile;
-              function _populate() {
-                if (_populated) {
-                  return;
-                }
-                _populated = true;
-                var uas = navigator.userAgent;
-                var agent = /(?:MSIE.(\d+\.\d+))|(?:(?:Firefox|GranParadiso|Iceweasel).(\d+\.\d+))|(?:Opera(?:.+Version.|.)(\d+\.\d+))|(?:AppleWebKit.(\d+(?:\.\d+)?))|(?:Trident\/\d+\.\d+.*rv:(\d+\.\d+))/.exec(
-                  uas
-                );
-                var os = /(Mac OS X)|(Windows)|(Linux)/.exec(uas);
-                _iphone = /\b(iPhone|iP[ao]d)/.exec(uas);
-                _ipad = /\b(iP[ao]d)/.exec(uas);
-                _android = /Android/i.exec(uas);
-                _native = /FBAN\/\w+;/i.exec(uas);
-                _mobile = /Mobile/i.exec(uas);
-                _win64 = !!/Win64/.exec(uas);
-                if (agent) {
-                  _ie = agent[1]
-                    ? parseFloat(agent[1])
-                    : agent[5]
-                    ? parseFloat(agent[5])
-                    : NaN;
-                  if (_ie && document && document.documentMode) {
-                    _ie = document.documentMode;
-                  }
-                  var trident = /(?:Trident\/(\d+.\d+))/.exec(uas);
-                  _ie_real_version = trident ? parseFloat(trident[1]) + 4 : _ie;
-                  _firefox = agent[2] ? parseFloat(agent[2]) : NaN;
-                  _opera = agent[3] ? parseFloat(agent[3]) : NaN;
-                  _webkit = agent[4] ? parseFloat(agent[4]) : NaN;
-                  if (_webkit) {
-                    agent = /(?:Chrome\/(\d+\.\d+))/.exec(uas);
-                    _chrome = agent && agent[1] ? parseFloat(agent[1]) : NaN;
-                  } else {
-                    _chrome = NaN;
-                  }
-                } else {
-                  _ie = _firefox = _opera = _chrome = _webkit = NaN;
-                }
-                if (os) {
-                  if (os[1]) {
-                    var ver = /(?:Mac OS X (\d+(?:[._]\d+)?))/.exec(uas);
-                    _osx = ver ? parseFloat(ver[1].replace("_", ".")) : true;
-                  } else {
-                    _osx = false;
-                  }
-                  _windows = !!os[2];
-                  _linux = !!os[3];
-                } else {
-                  _osx = _windows = _linux = false;
-                }
-              }
-              var UserAgent_DEPRECATED = {
-                ie: function ie() {
-                  return _populate() || _ie;
-                },
-                ieCompatibilityMode: function ieCompatibilityMode() {
-                  return _populate() || _ie_real_version > _ie;
-                },
-                ie64: function ie64() {
-                  return UserAgent_DEPRECATED.ie() && _win64;
-                },
-                firefox: function firefox() {
-                  return _populate() || _firefox;
-                },
-                opera: function opera() {
-                  return _populate() || _opera;
-                },
-                webkit: function webkit() {
-                  return _populate() || _webkit;
-                },
-                safari: function safari() {
-                  return UserAgent_DEPRECATED.webkit();
-                },
-                chrome: function chrome() {
-                  return _populate() || _chrome;
-                },
-                windows: function windows() {
-                  return _populate() || _windows;
-                },
-                osx: function osx() {
-                  return _populate() || _osx;
-                },
-                linux: function linux() {
-                  return _populate() || _linux;
-                },
-                iphone: function iphone() {
-                  return _populate() || _iphone;
-                },
-                mobile: function mobile() {
-                  return _populate() || _iphone || _ipad || _android || _mobile;
-                },
-                nativeApp: function nativeApp() {
-                  return _populate() || _native;
-                },
-                android: function android() {
-                  return _populate() || _android;
-                },
-                ipad: function ipad() {
-                  return _populate() || _ipad;
-                }
-              };
-              module.exports = UserAgent_DEPRECATED;
-            },
-            null
-          );
-
-          __d(
             "XDM",
-            [
-              "DOMEventListener",
-              "DOMWrapper",
-              "Log",
-              "UserAgent_DEPRECATED",
-              "emptyFunction",
-              "guid",
-              "wrapFunction"
-            ],
+            ["Log", "wrapFunction"],
             function $module_XDM(
               global,
               require,
@@ -6568,17 +6282,11 @@ try {
               requireLazy,
               module,
               exports,
-              DOMEventListener,
-              DOMWrapper,
               Log,
-              UserAgent_DEPRECATED,
-              emptyFunction,
-              guid,
               wrapFunction
             ) {
               var transports = {};
               var configuration = { transports: [] };
-              var window = DOMWrapper.getWindow();
               function findTransport(blacklist) {
                 var blacklistMap = {};
                 var i = blacklist.length;
@@ -6612,13 +6320,15 @@ try {
                   }
                   if (!config.channel) {
                     Log.warn("Missing channel name, selecting at random");
-                    config.channel = guid();
+                    config.channel =
+                      "f" +
+                      (Math.random() * (1 << 30)).toString(16).replace(".", "");
                   }
                   if (!config.whenReady) {
-                    config.whenReady = emptyFunction;
+                    config.whenReady = function() {};
                   }
                   if (!config.onMessage) {
-                    config.onMessage = emptyFunction;
+                    config.onMessage = function() {};
                   }
                   var name =
                     (_config$transport = config.transport) != null
@@ -6665,22 +6375,14 @@ try {
                               origin
                             );
                           };
-                          if (
-                            UserAgent_DEPRECATED.ie() == 8 ||
-                            UserAgent_DEPRECATED.ieCompatibilityMode()
-                          ) {
-                            window.setTimeout(send, 0);
-                          } else {
-                            send();
-                          }
+                          send();
                         }
                       };
                       if (inited) {
                         config.whenReady(xdm);
                         return;
                       }
-                      DOMEventListener.add(
-                        window,
+                      window.addEventListener(
                         "message",
                         wrapFunction(
                           function(event) {
@@ -7014,6 +6716,284 @@ try {
                 }
               };
               module.exports = RPC;
+            },
+            null
+          );
+
+          __d(
+            "dedupString",
+            [],
+            function $module_dedupString(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              "use strict";
+              function dedupString(str) {
+                var _$tempvar_1;
+                return ES(
+                  "Object",
+                  "keys",
+                  false,
+                  ((_$tempvar_1 = {}), (_$tempvar_1[str] = 0), _$tempvar_1)
+                )[0];
+              }
+              module.exports = dedupString;
+            },
+            null
+          );
+
+          __d(
+            "emptyFunction",
+            [],
+            function $module_emptyFunction(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              function makeEmptyFunction(arg) {
+                return function() {
+                  return arg;
+                };
+              }
+              var emptyFunction = function emptyFunction() {};
+              emptyFunction.thatReturns = makeEmptyFunction;
+              emptyFunction.thatReturnsFalse = makeEmptyFunction(false);
+              emptyFunction.thatReturnsTrue = makeEmptyFunction(true);
+              emptyFunction.thatReturnsNull = makeEmptyFunction(null);
+              emptyFunction.thatReturnsThis = function() {
+                return this;
+              };
+              emptyFunction.thatReturnsArgument = function(arg) {
+                return arg;
+              };
+              module.exports = emptyFunction;
+            },
+            null
+          );
+
+          __d(
+            "DOMEventListener",
+            ["dedupString", "emptyFunction", "invariant", "wrapFunction"],
+            function $module_DOMEventListener(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports,
+              dedupString,
+              emptyFunction,
+              invariant,
+              wrapFunction
+            ) {
+              var supportsPassive = false;
+              try {
+                var opts = Object.defineProperty({}, "passive", {
+                  get: function get() {
+                    supportsPassive = true;
+                  }
+                });
+                window.addEventListener("test", null, opts);
+              } catch (_unused) {}
+              var add, remove;
+              if (window.addEventListener) {
+                add = function add(target, name, listener, options) {
+                  if (options === void 0) {
+                    options = false;
+                  }
+                  listener.wrapper = wrapFunction(
+                    listener,
+                    "entry",
+                    dedupString("DOMEventListener.add " + name)
+                  );
+                  target.addEventListener(
+                    name,
+                    listener.wrapper,
+                    supportsPassive ? options : false
+                  );
+                };
+                remove = function remove(target, name, listener, options) {
+                  if (options === void 0) {
+                    options = false;
+                  }
+                  target.removeEventListener(
+                    name,
+                    listener.wrapper,
+                    supportsPassive ? options : false
+                  );
+                };
+              } else if (window.attachEvent) {
+                add = function add(target, name, listener, _options) {
+                  if (_options === void 0) {
+                    _options = false;
+                  }
+                  listener.wrapper = wrapFunction(
+                    listener,
+                    "entry",
+                    "DOMEventListener.add " + name
+                  );
+                  target.attachEvent ||
+                    invariant(0, "`target` has no `attachEvent` method.");
+                  target.attachEvent("on" + name, listener.wrapper);
+                };
+                remove = function remove(target, name, listener, _options) {
+                  if (_options === void 0) {
+                    _options = false;
+                  }
+                  target.detachEvent ||
+                    invariant(0, "`target` has no `detachEvent` method.");
+                  target.detachEvent("on" + name, listener.wrapper);
+                };
+              } else {
+                remove = add = emptyFunction;
+              }
+              var DOMEventListener = {
+                add: function(target, name, listener, options) {
+                  if (options === void 0) {
+                    options = false;
+                  }
+                  add(target, name, listener, options);
+                  return {
+                    remove: function() {
+                      remove(target, name, listener, options);
+                    }
+                  };
+                },
+                remove: remove
+              };
+              module.exports = DOMEventListener;
+            },
+            null
+          );
+
+          __d(
+            "UserAgent_DEPRECATED",
+            [],
+            function $module_UserAgent_DEPRECATED(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              var _populated = false;
+              var _ie, _firefox, _opera, _webkit, _chrome;
+              var _ie_real_version;
+              var _osx, _windows, _linux, _android;
+              var _win64;
+              var _iphone, _ipad, _native;
+              var _mobile;
+              function _populate() {
+                if (_populated) {
+                  return;
+                }
+                _populated = true;
+                var uas = navigator.userAgent;
+                var agent = /(?:MSIE.(\d+\.\d+))|(?:(?:Firefox|GranParadiso|Iceweasel).(\d+\.\d+))|(?:Opera(?:.+Version.|.)(\d+\.\d+))|(?:AppleWebKit.(\d+(?:\.\d+)?))|(?:Trident\/\d+\.\d+.*rv:(\d+\.\d+))/.exec(
+                  uas
+                );
+                var os = /(Mac OS X)|(Windows)|(Linux)/.exec(uas);
+                _iphone = /\b(iPhone|iP[ao]d)/.exec(uas);
+                _ipad = /\b(iP[ao]d)/.exec(uas);
+                _android = /Android/i.exec(uas);
+                _native = /FBAN\/\w+;/i.exec(uas);
+                _mobile = /Mobile/i.exec(uas);
+                _win64 = !!/Win64/.exec(uas);
+                if (agent) {
+                  _ie = agent[1]
+                    ? parseFloat(agent[1])
+                    : agent[5]
+                    ? parseFloat(agent[5])
+                    : NaN;
+                  if (_ie && document && document.documentMode) {
+                    _ie = document.documentMode;
+                  }
+                  var trident = /(?:Trident\/(\d+.\d+))/.exec(uas);
+                  _ie_real_version = trident ? parseFloat(trident[1]) + 4 : _ie;
+                  _firefox = agent[2] ? parseFloat(agent[2]) : NaN;
+                  _opera = agent[3] ? parseFloat(agent[3]) : NaN;
+                  _webkit = agent[4] ? parseFloat(agent[4]) : NaN;
+                  if (_webkit) {
+                    agent = /(?:Chrome\/(\d+\.\d+))/.exec(uas);
+                    _chrome = agent && agent[1] ? parseFloat(agent[1]) : NaN;
+                  } else {
+                    _chrome = NaN;
+                  }
+                } else {
+                  _ie = _firefox = _opera = _chrome = _webkit = NaN;
+                }
+                if (os) {
+                  if (os[1]) {
+                    var ver = /(?:Mac OS X (\d+(?:[._]\d+)?))/.exec(uas);
+                    _osx = ver ? parseFloat(ver[1].replace("_", ".")) : true;
+                  } else {
+                    _osx = false;
+                  }
+                  _windows = !!os[2];
+                  _linux = !!os[3];
+                } else {
+                  _osx = _windows = _linux = false;
+                }
+              }
+              var UserAgent_DEPRECATED = {
+                ie: function ie() {
+                  return _populate() || _ie;
+                },
+                ieCompatibilityMode: function ieCompatibilityMode() {
+                  return _populate() || _ie_real_version > _ie;
+                },
+                ie64: function ie64() {
+                  return UserAgent_DEPRECATED.ie() && _win64;
+                },
+                firefox: function firefox() {
+                  return _populate() || _firefox;
+                },
+                opera: function opera() {
+                  return _populate() || _opera;
+                },
+                webkit: function webkit() {
+                  return _populate() || _webkit;
+                },
+                safari: function safari() {
+                  return UserAgent_DEPRECATED.webkit();
+                },
+                chrome: function chrome() {
+                  return _populate() || _chrome;
+                },
+                windows: function windows() {
+                  return _populate() || _windows;
+                },
+                osx: function osx() {
+                  return _populate() || _osx;
+                },
+                linux: function linux() {
+                  return _populate() || _linux;
+                },
+                iphone: function iphone() {
+                  return _populate() || _iphone;
+                },
+                mobile: function mobile() {
+                  return _populate() || _iphone || _ipad || _android || _mobile;
+                },
+                nativeApp: function nativeApp() {
+                  return _populate() || _native;
+                },
+                android: function android() {
+                  return _populate() || _android;
+                },
+                ipad: function ipad() {
+                  return _populate() || _ipad;
+                }
+              };
+              module.exports = UserAgent_DEPRECATED;
             },
             null
           );
@@ -8108,14 +8088,11 @@ try {
               }
               function setStyle(dom, styleProp, value) {
                 Assert.isTruthy(dom, "element not specified");
-                if (dom == null) {
-                  return;
-                }
                 Assert.isString(styleProp);
-                var _styleProp = styleProp.replace(/-(\w)/g, function(m, g1) {
+                styleProp = styleProp.replace(/-(\w)/g, function(m, g1) {
                   return g1.toUpperCase();
                 });
-                dom.style.setProperty(_styleProp, value);
+                dom.style[styleProp] = value;
               }
               function addCssRules(styles, names) {
                 var allIncluded = true;
@@ -15623,7 +15600,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"4707558","namespace":"FB","message":"' +
+        '","revision":"4710319","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
