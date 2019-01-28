@@ -1,4 +1,4 @@
-/*1548386949,,JIT Construction: v4710319,en_US*/
+/*1548713973,,JIT Construction: v4717064,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3396,7 +3396,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "4710319",
+            revision: "4717064",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -3420,7 +3420,7 @@ try {
           });
           __d("JSSDKXDConfig", [], {
             XdUrl: "/connect/xd_arbiter.php?version=43",
-            XdBundleUrl: "/connect/xd_arbiter/r/MqyV2Orbpna.js?version=43",
+            XdBundleUrl: "/connect/xd_arbiter/r/u8VqaQqOLM9.js?version=43",
             useCdn: true
           });
           __d("JSSDKCssConfig", [], {
@@ -6273,8 +6273,79 @@ try {
           );
 
           __d(
+            "sdk.FeatureFunctor",
+            [],
+            function $module_sdk_FeatureFunctor(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              function feature(config, name, defaultValue) {
+                if (config.features && name in config.features) {
+                  var value = config.features[name];
+                  if (
+                    typeof value === "object" &&
+                    typeof value.rate === "number"
+                  ) {
+                    if (value.rate && Math.random() * 100 <= value.rate) {
+                      return value.value || true;
+                    } else {
+                      return value.value ? null : false;
+                    }
+                  } else {
+                    return value;
+                  }
+                }
+                return defaultValue;
+              }
+              function createFeatureFunction(config) {
+                return function() {
+                  for (
+                    var _len = arguments.length,
+                      args = new Array(_len),
+                      _key = 0;
+                    _key < _len;
+                    _key++
+                  ) {
+                    args[_key] = arguments[_key];
+                  }
+                  if (args.length < 2) {
+                    throw new Error("Default value is required");
+                  }
+                  var name = args[0],
+                    defaultValue = args[1];
+                  return feature(config, name, defaultValue);
+                };
+              }
+              module.exports = { create: createFeatureFunction };
+            },
+            null
+          );
+
+          __d(
+            "sdk.feature",
+            ["JSSDKConfig", "sdk.FeatureFunctor"],
+            function $module_sdk_feature(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports,
+              SDKConfig,
+              FeatureFunctor
+            ) {
+              module.exports = FeatureFunctor.create(SDKConfig);
+            },
+            null
+          );
+
+          __d(
             "XDM",
-            ["Log", "wrapFunction"],
+            ["Log", "sdk.feature", "wrapFunction"],
             function $module_XDM(
               global,
               require,
@@ -6283,6 +6354,7 @@ try {
               module,
               exports,
               Log,
+              feature,
               wrapFunction
             ) {
               var transports = {};
@@ -6344,6 +6416,19 @@ try {
                 }
               };
               var facebookRe = /\.facebook\.com(\/|$)/;
+              function log(category, data) {
+                var captures = window.location.hostname.match(
+                  /\.(facebook\.sg|facebookcorewwwi\.onion)$/
+                );
+                var base = captures ? captures[1] : "facebook.com";
+                new Image().src =
+                  "https://www." +
+                  base +
+                  "/common/scribe_endpoint.php?c=" +
+                  encodeURIComponent(category) +
+                  "&m=" +
+                  encodeURIComponent(ES("JSON", "stringify", false, data));
+              }
               XDM.register(
                 "postmessage",
                 (function() {
@@ -6370,10 +6455,23 @@ try {
                           }
                           Log.debug("sending to: %s (%s)", origin, channel);
                           var send = function send() {
-                            windowRef.postMessage(
-                              "_FB_" + channel + message,
-                              origin
-                            );
+                            try {
+                              windowRef.postMessage(
+                                "_FB_" + channel + message,
+                                origin
+                              );
+                            } catch (e) {
+                              if (feature("xdm_scribe_logging", false)) {
+                                log("jssdk_error", {
+                                  error: "POST_MESSAGE",
+                                  extra: {
+                                    message:
+                                      e.message + ", html/js/modules/XDM.js:231"
+                                  }
+                                });
+                              }
+                              throw e;
+                            }
                           };
                           send();
                         }
@@ -7145,76 +7243,6 @@ try {
                 return frame;
               }
               module.exports = createIframe;
-            },
-            null
-          );
-
-          __d(
-            "sdk.FeatureFunctor",
-            ["invariant"],
-            function $module_sdk_FeatureFunctor(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports,
-              invariant
-            ) {
-              function feature(config, name, defaultValue) {
-                if (config.features && name in config.features) {
-                  var value = config.features[name];
-                  if (
-                    typeof value === "object" &&
-                    typeof value.rate === "number"
-                  ) {
-                    if (value.rate && Math.random() * 100 <= value.rate) {
-                      return value.value || true;
-                    } else {
-                      return value.value ? null : false;
-                    }
-                  } else {
-                    return value;
-                  }
-                }
-                return defaultValue;
-              }
-              function createFeatureFunction(config) {
-                return function() {
-                  for (
-                    var _len = arguments.length,
-                      args = new Array(_len),
-                      _key = 0;
-                    _key < _len;
-                    _key++
-                  ) {
-                    args[_key] = arguments[_key];
-                  }
-                  args.length >= 2 || invariant(0, "Default value is required");
-                  var name = args[0],
-                    defaultValue = args[1];
-                  return feature(config, name, defaultValue);
-                };
-              }
-              module.exports = { create: createFeatureFunction };
-            },
-            null
-          );
-
-          __d(
-            "sdk.feature",
-            ["JSSDKConfig", "sdk.FeatureFunctor"],
-            function $module_sdk_feature(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports,
-              SDKConfig,
-              FeatureFunctor
-            ) {
-              module.exports = FeatureFunctor.create(SDKConfig);
             },
             null
           );
@@ -15600,7 +15628,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"4710319","namespace":"FB","message":"' +
+        '","revision":"4717064","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
