@@ -1,4 +1,4 @@
-/*1548811177,,JIT Construction: v4721861,en_US*/
+/*1548886776,,JIT Construction: v4724122,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3396,7 +3396,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "4721861",
+            revision: "4724122",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -3419,8 +3419,8 @@ try {
             }
           });
           __d("JSSDKXDConfig", [], {
-            XdUrl: "/connect/xd_arbiter.php?version=43",
-            XdBundleUrl: "/connect/xd_arbiter/r/1i70-Ht8sc5.js?version=43",
+            XdUrl: "/connect/xd_arbiter.php?version=44",
+            XdBundleUrl: "/connect/xd_arbiter/r/1i70-Ht8sc5.js?version=44",
             useCdn: true
           });
           __d("JSSDKCssConfig", [], {
@@ -3666,6 +3666,7 @@ try {
                 E2E: "e2e",
                 EXPLICIT_TOKEN: "explicit_token",
                 EXTRAS: "extras",
+                FALLBACK_REDIRECT_URI: "fallback_redirect_uri",
                 FORCE_CONFIRMATION: "force_confirmation",
                 LOGGING_TOKEN: "logging_token",
                 MBASIC_NAVIGATION: "mbasic_navigation",
@@ -3688,6 +3689,10 @@ try {
                 SSO_KEY: "sso_key",
                 USER_CODE: "user_code",
                 WINDOWS_STORE_ID: "windows_store_id",
+                ACT: "act",
+                RET: "ret",
+                FBAPP_PRES: "fbapp_pres",
+                LOCAL_CLIENT_ID: "local_client_id",
                 AUTH_TOKEN: "auth_token",
                 RETURN_SESSION: "return_session",
                 SESSION_VERSION: "session_version",
@@ -15629,7 +15634,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"4721861","namespace":"FB","message":"' +
+        '","revision":"4724122","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
