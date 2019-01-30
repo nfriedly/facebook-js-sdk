@@ -1,4 +1,4 @@
-/*1548713973,,JIT Construction: v4717064,en_US*/
+/*1548811177,,JIT Construction: v4721861,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3396,7 +3396,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "4717064",
+            revision: "4721861",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -3408,7 +3408,7 @@ try {
               error_handling: { rate: 4 },
               e2e_ping_tracking: { rate: 1.0e-6 },
               xd_timeout: { rate: 1, value: 60000 },
-              use_bundle: false,
+              use_bundle: true,
               should_log_response_error: true,
               popup_blocker_scribe_logging: { rate: 100 },
               https_only_enforce_starting: 2538809200000,
@@ -3420,7 +3420,7 @@ try {
           });
           __d("JSSDKXDConfig", [], {
             XdUrl: "/connect/xd_arbiter.php?version=43",
-            XdBundleUrl: "/connect/xd_arbiter/r/u8VqaQqOLM9.js?version=43",
+            XdBundleUrl: "/connect/xd_arbiter/r/1i70-Ht8sc5.js?version=43",
             useCdn: true
           });
           __d("JSSDKCssConfig", [], {
@@ -3655,6 +3655,7 @@ try {
                 ANDROID_KEY: "android_key",
                 API_KEY: "api_key",
                 APP_ID: "app_id",
+                AUTH_METHOD: "auth_method",
                 AUTH_NONCE: "auth_nonce",
                 AUTH_TYPE: "auth_type",
                 CLIENT_ID: "client_id",
@@ -15628,7 +15629,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"4717064","namespace":"FB","message":"' +
+        '","revision":"4721861","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
