@@ -1,4 +1,4 @@
-/*1548886776,,JIT Construction: v4724122,en_US*/
+/*1548907174,,JIT Construction: v4726415,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3396,7 +3396,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "4724122",
+            revision: "4726415",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -3668,6 +3668,7 @@ try {
                 EXTRAS: "extras",
                 FALLBACK_REDIRECT_URI: "fallback_redirect_uri",
                 FORCE_CONFIRMATION: "force_confirmation",
+                LOGGER_ID: "logger_id",
                 LOGGING_TOKEN: "logging_token",
                 MBASIC_NAVIGATION: "mbasic_navigation",
                 NEXT: "next",
@@ -3678,6 +3679,7 @@ try {
                 REDIRECT_URI: "redirect_uri",
                 REF: "ref",
                 RESPONSE_TYPE: "response_type",
+                RETURN_FORMAT: "return_format",
                 RETURN_SCOPES: "return_scopes",
                 SCOPE: "scope",
                 SDK: "sdk",
@@ -11721,7 +11723,7 @@ try {
                   if (data.height) {
                     node.style.height = data.height + "px";
                   }
-                  if (data.width) {
+                  if (data.width && data.width != 0) {
                     node.style.width = data.width + "px";
                   }
                   XD.inform(
@@ -15634,7 +15636,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"4724122","namespace":"FB","message":"' +
+        '","revision":"4726415","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
