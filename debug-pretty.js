@@ -1,4 +1,4 @@
-/*1548977373,,JIT Construction: v4728845,en_US*/
+/*1548986979,,JIT Construction: v4729153,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3396,7 +3396,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "4728845",
+            revision: "4729153",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -12116,9 +12116,7 @@ try {
                   Auth.getLoginStatus();
                 }
                 if (Runtime.getClientID()) {
-                  if (options.authResponse) {
-                    Auth.setAuthResponse(options.authResponse, "connected");
-                  } else if (Runtime.getUseCookie()) {
+                  if (Runtime.getUseCookie()) {
                     var signedRequest = Cookie.loadSignedRequest();
                     var parsedSignedRequest;
                     if (signedRequest) {
@@ -13014,7 +13012,9 @@ try {
                     throw new ManagedError("Invalid argument");
                   }
                   if (options.authResponse) {
-                    Log.warn("Setting authResponse is not supported");
+                    throw new ManagedError(
+                      "Setting authResponse is not supported"
+                    );
                   }
                   if (!options.version) {
                     options.version = new URI(
@@ -15640,7 +15640,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"4728845","namespace":"FB","message":"' +
+        '","revision":"4729153","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
