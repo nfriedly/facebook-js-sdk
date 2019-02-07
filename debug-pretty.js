@@ -1,4 +1,4 @@
-/*1549301949,,JIT Construction: v4735423,en_US*/
+/*1549577974,,JIT Construction: v4747275,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -2834,7 +2834,7 @@ try {
               var babelHelpers = {};
               var hasOwn = Object.prototype.hasOwnProperty;
 
-              babelHelpers.inherits = function(subClass, superClass) {
+              babelHelpers.inheritsLoose = function(subClass, superClass) {
                 ES6Object.assign(subClass, superClass);
                 subClass.prototype = ES5Object.create(
                   superClass && superClass.prototype
@@ -2844,9 +2844,54 @@ try {
                 return superClass;
               };
 
+              babelHelpers.inherits = babelHelpers.inheritsLoose;
+
+              babelHelpers.wrapNativeSuper = function(Class) {
+                var _cache = typeof Map === "function" ? new Map() : undefined;
+
+                babelHelpers.wrapNativeSuper = function(Class) {
+                  if (Class === null) {
+                    return null;
+                  }
+                  if (typeof Class !== "function") {
+                    throw new TypeError(
+                      "Super expression must either be null or a function"
+                    );
+                  }
+                  if (_cache !== undefined) {
+                    if (_cache.has(Class)) {
+                      return _cache.get(Class);
+                    }
+                    _cache.set(Class, Wrapper);
+                  }
+                  babelHelpers.inheritsLoose(Wrapper, Class);
+                  function Wrapper() {
+                    Class.apply(this, arguments);
+                  }
+                  return Wrapper;
+                };
+
+                return babelHelpers.wrapNativeSuper(Class);
+              };
+
+              babelHelpers.assertThisInitialized = function(self) {
+                if (self === void 0) {
+                  throw new ReferenceError(
+                    "this hasn't been initialised - super() hasn't been called"
+                  );
+                }
+                return self;
+              };
+
               babelHelpers._extends = ES6Object.assign;
 
               babelHelpers["extends"] = babelHelpers._extends;
+
+              babelHelpers.construct = function(klass, arr) {
+                var a = [null];
+                a.push.apply(a, arr);
+                return new (Function.prototype.bind.apply(klass, a))();
+              };
 
               babelHelpers.objectWithoutPropertiesLoose = function(obj, keys) {
                 var target = {};
@@ -2863,6 +2908,9 @@ try {
                 babelHelpers.objectWithoutPropertiesLoose;
 
               babelHelpers.taggedTemplateLiteralLoose = function(strings, raw) {
+                if (!raw) {
+                  raw = strings.slice(0);
+                }
                 strings.raw = raw;
                 return strings;
               };
@@ -2898,14 +2946,15 @@ try {
 
               if (!hasNative) {
                 ArrayIterator = (function() {
+                  "use strict";
+
                   function ArrayIterator(array, kind) {
-                    "use strict";
                     this.$ArrayIterator_iteratedObject = array;
                     this.$ArrayIterator_kind = kind;
                     this.$ArrayIterator_nextIndex = 0;
                   }
-                  ArrayIterator.prototype.next = function() {
-                    "use strict";
+                  var _proto = ArrayIterator.prototype;
+                  _proto.next = function next() {
                     if (this.$ArrayIterator_iteratedObject == null) {
                       return { value: undefined, done: true };
                     }
@@ -2930,12 +2979,11 @@ try {
                       return { value: [index, array[index]], done: false };
                     }
                   };
-                  ArrayIterator.prototype[
+                  _proto[
                     typeof Symbol === "function"
                       ? Symbol.iterator
                       : "@@iterator"
                   ] = function() {
-                    "use strict";
                     return this;
                   };
                   return ArrayIterator;
@@ -2975,13 +3023,14 @@ try {
 
               if (!hasNative) {
                 StringIterator = (function() {
+                  "use strict";
+
                   function StringIterator(string) {
-                    "use strict";
                     this.$StringIterator_iteratedString = string;
                     this.$StringIterator_nextIndex = 0;
                   }
-                  StringIterator.prototype.next = function() {
-                    "use strict";
+                  var _proto2 = StringIterator.prototype;
+                  _proto2.next = function next() {
                     if (this.$StringIterator_iteratedString == null) {
                       return { value: undefined, done: true };
                     }
@@ -3013,12 +3062,11 @@ try {
 
                     return { value: ret, done: false };
                   };
-                  StringIterator.prototype[
+                  _proto2[
                     typeof Symbol === "function"
                       ? Symbol.iterator
                       : "@@iterator"
                   ] = function() {
-                    "use strict";
                     return this;
                   };
                   return StringIterator;
@@ -3062,48 +3110,49 @@ try {
                 typeof classObject.prototype.entries === "function"
               );
             }
-
-            function ObjectIterator(object, kind) {
+            var ObjectIterator = (function() {
               "use strict";
-              this.$ObjectIterator_iteratedObject = object;
-              this.$ObjectIterator_kind = kind;
-              this.$ObjectIterator_keys = ES("Object", "keys", false, object);
-              this.$ObjectIterator_nextIndex = 0;
-            }
-            ObjectIterator.prototype.next = function() {
-              "use strict";
-              var len = this.$ObjectIterator_keys.length;
-              var index = this.$ObjectIterator_nextIndex;
-              var kind = this.$ObjectIterator_kind;
-              var key = this.$ObjectIterator_keys[index];
-
-              if (index >= len) {
-                this.$ObjectIterator_iteratedObject = undefined;
-                return { value: undefined, done: true };
+              function ObjectIterator(object, kind) {
+                this.$ObjectIterator_iteratedObject = object;
+                this.$ObjectIterator_kind = kind;
+                this.$ObjectIterator_keys = ES("Object", "keys", false, object);
+                this.$ObjectIterator_nextIndex = 0;
               }
+              var _proto3 = ObjectIterator.prototype;
+              _proto3.next = function next() {
+                var len = this.$ObjectIterator_keys.length;
+                var index = this.$ObjectIterator_nextIndex;
+                var kind = this.$ObjectIterator_kind;
+                var key = this.$ObjectIterator_keys[index];
 
-              this.$ObjectIterator_nextIndex = index + 1;
+                if (index >= len) {
+                  this.$ObjectIterator_iteratedObject = undefined;
+                  return { value: undefined, done: true };
+                }
 
-              if (kind === KIND_KEYS) {
-                return { value: key, done: false };
-              } else if (kind === KIND_VALUES) {
-                return {
-                  value: this.$ObjectIterator_iteratedObject[key],
-                  done: false
-                };
-              } else if (kind === KIND_ENTRIES) {
-                return {
-                  value: [key, this.$ObjectIterator_iteratedObject[key]],
-                  done: false
-                };
-              }
-            };
-            ObjectIterator.prototype[
-              typeof Symbol === "function" ? Symbol.iterator : "@@iterator"
-            ] = function() {
-              "use strict";
-              return this;
-            };
+                this.$ObjectIterator_nextIndex = index + 1;
+
+                if (kind === KIND_KEYS) {
+                  return { value: key, done: false };
+                } else if (kind === KIND_VALUES) {
+                  return {
+                    value: this.$ObjectIterator_iteratedObject[key],
+                    done: false
+                  };
+                } else if (kind === KIND_ENTRIES) {
+                  return {
+                    value: [key, this.$ObjectIterator_iteratedObject[key]],
+                    done: false
+                  };
+                }
+              };
+              _proto3[
+                typeof Symbol === "function" ? Symbol.iterator : "@@iterator"
+              ] = function() {
+                return this;
+              };
+              return ObjectIterator;
+            })();
 
             var GenericIterators = {
               keys: function keys(object) {
@@ -3231,186 +3280,182 @@ try {
               }
 
               var OLD_IE_HASH_PREFIX = "IE_HASH_";
-
-              function Map(iterable) {
+              var Map = (function() {
                 "use strict";
-                if (!isObject(this)) {
-                  throw new TypeError("Wrong map object type.");
-                }
 
-                initMap(this);
+                function Map(iterable) {
+                  if (!isObject(this)) {
+                    throw new TypeError("Wrong map object type.");
+                  }
 
-                if (iterable != null) {
-                  var it = enumerate(iterable);
-                  var next;
-                  while (!(next = it.next()).done) {
-                    if (!isObject(next.value)) {
-                      throw new TypeError(
-                        "Expected iterable items to be pair objects."
-                      );
+                  initMap(this);
+
+                  if (iterable != null) {
+                    var it = enumerate(iterable);
+                    var next;
+                    while (!(next = it.next()).done) {
+                      if (!isObject(next.value)) {
+                        throw new TypeError(
+                          "Expected iterable items to be pair objects."
+                        );
+                      }
+                      this.set(next.value[0], next.value[1]);
                     }
-                    this.set(next.value[0], next.value[1]);
                   }
                 }
-              }
-              Map.prototype.clear = function() {
-                "use strict";
-                initMap(this);
-              };
-              Map.prototype.has = function(key) {
-                "use strict";
-                var index = getIndex(this, key);
-                return !!(index != null && this._mapData[index]);
-              };
-              Map.prototype.set = function(key, value) {
-                "use strict";
-                var index = getIndex(this, key);
+                var _proto = Map.prototype;
+                _proto.clear = function clear() {
+                  initMap(this);
+                };
+                _proto.has = function has(key) {
+                  var index = getIndex(this, key);
+                  return !!(index != null && this._mapData[index]);
+                };
+                _proto.set = function set(key, value) {
+                  var index = getIndex(this, key);
 
-                if (index != null && this._mapData[index]) {
-                  this._mapData[index][1] = value;
-                } else {
-                  index = this._mapData.push([key, value]) - 1;
-                  setIndex(this, key, index);
-                  if (__DEV__) {
-                    this[SECRET_SIZE_PROP] += 1;
+                  if (index != null && this._mapData[index]) {
+                    this._mapData[index][1] = value;
                   } else {
-                    this.size += 1;
+                    index = this._mapData.push([key, value]) - 1;
+                    setIndex(this, key, index);
+                    if (__DEV__) {
+                      this[SECRET_SIZE_PROP] += 1;
+                    } else {
+                      this.size += 1;
+                    }
                   }
-                }
 
-                return this;
-              };
-              Map.prototype.get = function(key) {
-                "use strict";
-                var index = getIndex(this, key);
-                if (index == null) {
-                  return undefined;
-                } else {
-                  return this._mapData[index][1];
-                }
-              };
-              Map.prototype["delete"] = function(key) {
-                "use strict";
-                var index = getIndex(this, key);
-                if (index != null && this._mapData[index]) {
-                  setIndex(this, key, undefined);
-                  this._mapData[index] = undefined;
-                  if (__DEV__) {
-                    this[SECRET_SIZE_PROP] -= 1;
+                  return this;
+                };
+                _proto.get = function get(key) {
+                  var index = getIndex(this, key);
+                  if (index == null) {
+                    return undefined;
                   } else {
-                    this.size -= 1;
+                    return this._mapData[index][1];
                   }
-                  return true;
-                } else {
-                  return false;
-                }
-              };
-              Map.prototype.entries = function() {
-                "use strict";
-                return new MapIterator(this, KIND_KEY_VALUE);
-              };
-              Map.prototype.keys = function() {
-                "use strict";
-                return new MapIterator(this, KIND_KEY);
-              };
-              Map.prototype.values = function() {
-                "use strict";
-                return new MapIterator(this, KIND_VALUE);
-              };
-              Map.prototype.forEach = function(callback, thisArg) {
-                "use strict";
-                if (typeof callback !== "function") {
-                  throw new TypeError("Callback must be callable.");
-                }
-
-                var boundCallback = ES(
-                  callback,
-                  "bind",
-                  true,
-                  thisArg || undefined
-                );
-                var mapData = this._mapData;
-
-                for (var i = 0; i < mapData.length; i++) {
-                  var entry = mapData[i];
-                  if (entry != null) {
-                    boundCallback(entry[1], entry[0], this);
+                };
+                _proto["delete"] = function _delete(key) {
+                  var index = getIndex(this, key);
+                  if (index != null && this._mapData[index]) {
+                    setIndex(this, key, undefined);
+                    this._mapData[index] = undefined;
+                    if (__DEV__) {
+                      this[SECRET_SIZE_PROP] -= 1;
+                    } else {
+                      this.size -= 1;
+                    }
+                    return true;
+                  } else {
+                    return false;
                   }
-                }
-              };
-              Map.prototype[
-                typeof Symbol === "function" ? Symbol.iterator : "@@iterator"
-              ] = function() {
-                "use strict";
-                return this.entries();
-              };
+                };
+                _proto.entries = function entries() {
+                  return new MapIterator(this, KIND_KEY_VALUE);
+                };
+                _proto.keys = function keys() {
+                  return new MapIterator(this, KIND_KEY);
+                };
+                _proto.values = function values() {
+                  return new MapIterator(this, KIND_VALUE);
+                };
+                _proto.forEach = function forEach(callback, thisArg) {
+                  if (typeof callback !== "function") {
+                    throw new TypeError("Callback must be callable.");
+                  }
 
-              function MapIterator(map, kind) {
-                "use strict";
-                if (!(isObject(map) && map._mapData)) {
-                  throw new TypeError("Object is not a map.");
-                }
-
-                if (
-                  ES(
-                    [KIND_KEY, KIND_KEY_VALUE, KIND_VALUE],
-                    "indexOf",
+                  var boundCallback = ES(
+                    callback,
+                    "bind",
                     true,
-                    kind
-                  ) === -1
-                ) {
-                  throw new Error("Invalid iteration kind.");
-                }
-
-                this._map = map;
-                this._nextIndex = 0;
-                this._kind = kind;
-              }
-              MapIterator.prototype.next = function() {
-                "use strict";
-                if (!this instanceof Map) {
-                  throw new TypeError(
-                    "Expected to be called on a MapIterator."
+                    thisArg || undefined
                   );
-                }
+                  var mapData = this._mapData;
 
-                var map = this._map;
-                var index = this._nextIndex;
-                var kind = this._kind;
-
-                if (map == null) {
-                  return createIterResultObject(undefined, true);
-                }
-
-                var entries = map._mapData;
-
-                while (index < entries.length) {
-                  var record = entries[index];
-
-                  index += 1;
-                  this._nextIndex = index;
-
-                  if (record) {
-                    if (kind === KIND_KEY) {
-                      return createIterResultObject(record[0], false);
-                    } else if (kind === KIND_VALUE) {
-                      return createIterResultObject(record[1], false);
-                    } else if (kind) {
-                      return createIterResultObject(record, false);
+                  for (var i = 0; i < mapData.length; i++) {
+                    var entry = mapData[i];
+                    if (entry != null) {
+                      boundCallback(entry[1], entry[0], this);
                     }
                   }
-                }
-
-                this._map = undefined;
-
-                return createIterResultObject(undefined, true);
-              };
-              MapIterator.prototype[
-                typeof Symbol === "function" ? Symbol.iterator : "@@iterator"
-              ] = function() {
+                };
+                _proto[
+                  typeof Symbol === "function" ? Symbol.iterator : "@@iterator"
+                ] = function() {
+                  return this.entries();
+                };
+                return Map;
+              })();
+              var MapIterator = (function() {
                 "use strict";
-                return this;
-              };
+
+                function MapIterator(map, kind) {
+                  if (!(isObject(map) && map._mapData)) {
+                    throw new TypeError("Object is not a map.");
+                  }
+
+                  if (
+                    ES(
+                      [KIND_KEY, KIND_KEY_VALUE, KIND_VALUE],
+                      "indexOf",
+                      true,
+                      kind
+                    ) === -1
+                  ) {
+                    throw new Error("Invalid iteration kind.");
+                  }
+
+                  this._map = map;
+                  this._nextIndex = 0;
+                  this._kind = kind;
+                }
+                var _proto2 = MapIterator.prototype;
+                _proto2.next = function next() {
+                  if (!this instanceof Map) {
+                    throw new TypeError(
+                      "Expected to be called on a MapIterator."
+                    );
+                  }
+
+                  var map = this._map;
+                  var index = this._nextIndex;
+                  var kind = this._kind;
+
+                  if (map == null) {
+                    return createIterResultObject(undefined, true);
+                  }
+
+                  var entries = map._mapData;
+
+                  while (index < entries.length) {
+                    var record = entries[index];
+
+                    index += 1;
+                    this._nextIndex = index;
+
+                    if (record) {
+                      if (kind === KIND_KEY) {
+                        return createIterResultObject(record[0], false);
+                      } else if (kind === KIND_VALUE) {
+                        return createIterResultObject(record[1], false);
+                      } else if (kind) {
+                        return createIterResultObject(record, false);
+                      }
+                    }
+                  }
+
+                  this._map = undefined;
+
+                  return createIterResultObject(undefined, true);
+                };
+                _proto2[
+                  typeof Symbol === "function" ? Symbol.iterator : "@@iterator"
+                ] = function() {
+                  return this;
+                };
+                return MapIterator;
+              })();
 
               function getIndex(map, key) {
                 if (isObject(key)) {
@@ -3611,73 +3656,68 @@ try {
               if (!shouldPolyfillES6Collection("Set")) {
                 return windowObj.Set;
               }
-
-              function Set(iterable) {
+              var Set = (function() {
                 "use strict";
-                if (
-                  this == null ||
-                  (typeof this !== "object" && typeof this !== "function")
-                ) {
-                  throw new TypeError("Wrong set object type.");
-                }
 
-                initSet(this);
+                function Set(iterable) {
+                  if (
+                    this == null ||
+                    (typeof this !== "object" && typeof this !== "function")
+                  ) {
+                    throw new TypeError("Wrong set object type.");
+                  }
 
-                if (iterable != null) {
-                  var it = enumerate(iterable);
-                  var next;
-                  while (!(next = it.next()).done) {
-                    this.add(next.value);
+                  initSet(this);
+
+                  if (iterable != null) {
+                    var it = enumerate(iterable);
+                    var next;
+                    while (!(next = it.next()).done) {
+                      this.add(next.value);
+                    }
                   }
                 }
-              }
-              Set.prototype.add = function(value) {
-                "use strict";
-                this._map.set(value, value);
-                this.size = this._map.size;
-                return this;
-              };
-              Set.prototype.clear = function() {
-                "use strict";
-                initSet(this);
-              };
-              Set.prototype["delete"] = function(value) {
-                "use strict";
-                var ret = this._map["delete"](value);
-                this.size = this._map.size;
-                return ret;
-              };
-              Set.prototype.entries = function() {
-                "use strict";
-                return this._map.entries();
-              };
-              Set.prototype.forEach = function(callback) {
-                "use strict";
-                var thisArg = arguments[1];
-                var it = this._map.keys();
-                var next;
-                while (!(next = it.next()).done) {
-                  callback.call(thisArg, next.value, next.value, this);
-                }
-              };
-              Set.prototype.has = function(value) {
-                "use strict";
-                return this._map.has(value);
-              };
-              Set.prototype.values = function() {
-                "use strict";
-                return this._map.values();
-              };
-              Set.prototype.keys = function() {
-                "use strict";
-                return this.values();
-              };
-              Set.prototype[
-                typeof Symbol === "function" ? Symbol.iterator : "@@iterator"
-              ] = function() {
-                "use strict";
-                return this.values();
-              };
+                var _proto3 = Set.prototype;
+                _proto3.add = function add(value) {
+                  this._map.set(value, value);
+                  this.size = this._map.size;
+                  return this;
+                };
+                _proto3.clear = function clear() {
+                  initSet(this);
+                };
+                _proto3["delete"] = function _delete(value) {
+                  var ret = this._map["delete"](value);
+                  this.size = this._map.size;
+                  return ret;
+                };
+                _proto3.entries = function entries() {
+                  return this._map.entries();
+                };
+                _proto3.forEach = function forEach(callback) {
+                  var thisArg = arguments[1];
+                  var it = this._map.keys();
+                  var next;
+                  while (!(next = it.next()).done) {
+                    callback.call(thisArg, next.value, next.value, this);
+                  }
+                };
+                _proto3.has = function has(value) {
+                  return this._map.has(value);
+                };
+                _proto3.values = function values() {
+                  return this._map.values();
+                };
+                _proto3.keys = function keys() {
+                  return this.values();
+                };
+                _proto3[
+                  typeof Symbol === "function" ? Symbol.iterator : "@@iterator"
+                ] = function() {
+                  return this.values();
+                };
+                return Set;
+              })();
 
               function initSet(set) {
                 set._map = new Map();
@@ -3703,7 +3743,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "4735423",
+            revision: "4747275",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -3727,7 +3767,7 @@ try {
           });
           __d("JSSDKXDConfig", [], {
             XdUrl: "/connect/xd_arbiter.php?version=44",
-            XdBundleUrl: "/connect/xd_arbiter/r/hDqHrhg_68w.js?version=44",
+            XdBundleUrl: "/connect/xd_arbiter/r/H4FQM8nbIVm.js?version=44",
             useCdn: true
           });
           __d("JSSDKCssConfig", [], {
@@ -4600,23 +4640,27 @@ try {
               module,
               exports
             ) {
-              var _Error, _superProto;
-              _Error = babelHelpers.inherits(ManagedError, Error);
-              _superProto = _Error && _Error.prototype;
-
-              function ManagedError(message, innerError) {
+              var ManagedError = (function(_Error) {
                 "use strict";
-                _superProto.constructor.call(
-                  this,
-                  message !== null && message !== undefined ? message : ""
-                );
-                if (message !== null && message !== undefined) {
-                  this.message = message;
-                } else {
-                  this.message = "";
+                babelHelpers.inheritsLoose(ManagedError, _Error);
+
+                function ManagedError(message, innerError) {
+                  var _this;
+                  _this =
+                    _Error.call(
+                      this,
+                      message !== null && message !== undefined ? message : ""
+                    ) || this;
+                  if (message !== null && message !== undefined) {
+                    _this.message = message;
+                  } else {
+                    _this.message = "";
+                  }
+                  _this.innerError = innerError;
+                  return _this;
                 }
-                this.innerError = innerError;
-              }
+                return ManagedError;
+              })(babelHelpers.wrapNativeSuper(Error));
 
               module.exports = ManagedError;
             },
@@ -4634,16 +4678,14 @@ try {
               exports,
               ManagedError
             ) {
-              var _ManagedError, _superProto;
-              _ManagedError = babelHelpers.inherits(
-                AssertionError,
-                ManagedError
-              );
-              _superProto = _ManagedError && _ManagedError.prototype;
-              function AssertionError(message) {
+              var AssertionError = (function(_ManagedError) {
                 "use strict";
-                _superProto.constructor.call(this, message);
-              }
+                babelHelpers.inheritsLoose(AssertionError, _ManagedError);
+                function AssertionError(message) {
+                  return _ManagedError.call(this, message) || this;
+                }
+                return AssertionError;
+              })(ManagedError);
 
               module.exports = AssertionError;
             },
@@ -6265,314 +6307,287 @@ try {
               }
 
               var uriFilters = [];
-              URIBase.tryParse = function(uri, serializer) {
+              var URIBase = (function() {
                 "use strict";
-                var result = new URIBase(null, serializer);
-                return parse(result, uri, false, serializer) ? result : null;
-              };
-              URIBase.isValid = function(uri, serializer) {
-                "use strict";
-                return !!URIBase.tryParse(uri, serializer);
-              };
+                URIBase.tryParse = function tryParse(uri, serializer) {
+                  var result = new URIBase(null, serializer);
+                  return parse(result, uri, false, serializer) ? result : null;
+                };
+                URIBase.isValid = function isValid(uri, serializer) {
+                  return !!URIBase.tryParse(uri, serializer);
+                };
 
-              function URIBase(uri, serializer) {
-                "use strict";
-                serializer || invariant(0, "no serializer set");
-                this.$URIBase_serializer = serializer;
+                function URIBase(uri, serializer) {
+                  serializer || invariant(0, "no serializer set");
+                  this.$URIBase_serializer = serializer;
 
-                this.$URIBase_protocol = "";
-                this.$URIBase_domain = "";
-                this.$URIBase_port = "";
-                this.$URIBase_path = "";
-                this.$URIBase_fragment = "";
-                this.$URIBase_isGeneric = false;
-                this.$URIBase_queryData = {};
-                this.$URIBase_forceFragmentSeparator = false;
-                parse(this, uri, true, serializer);
-              }
-              URIBase.prototype.setProtocol = function(protocol) {
-                "use strict";
-                if (!URISchemes.isAllowed(protocol)) {
-                  false ||
-                    invariant(
-                      0,
-                      '"%s" is not a valid protocol for a URI.',
-                      protocol
-                    );
+                  this.$URIBase_protocol = "";
+                  this.$URIBase_domain = "";
+                  this.$URIBase_port = "";
+                  this.$URIBase_path = "";
+                  this.$URIBase_fragment = "";
+                  this.$URIBase_isGeneric = false;
+                  this.$URIBase_queryData = {};
+                  this.$URIBase_forceFragmentSeparator = false;
+                  parse(this, uri, true, serializer);
                 }
-                this.$URIBase_protocol = protocol;
-                return this;
-              };
-              URIBase.prototype.getProtocol = function() {
-                "use strict";
-                return (this.$URIBase_protocol || "").toLowerCase();
-              };
-              URIBase.prototype.setSecure = function(secure) {
-                "use strict";
-                return this.setProtocol(secure ? "https" : "http");
-              };
-              URIBase.prototype.isSecure = function() {
-                "use strict";
-                return this.getProtocol() === "https";
-              };
-              URIBase.prototype.setDomain = function(domain) {
-                "use strict";
-
-                if (UNSAFE_DOMAIN_PATTERN.test(domain)) {
-                  throw new Error(
-                    ex(
-                      "URI.setDomain: unsafe domain specified: %s for url %s",
-                      domain,
-                      this.toString()
-                    )
-                  );
-                }
-
-                this.$URIBase_domain = domain;
-                return this;
-              };
-              URIBase.prototype.getDomain = function() {
-                "use strict";
-                return this.$URIBase_domain;
-              };
-              URIBase.prototype.setPort = function(port) {
-                "use strict";
-                this.$URIBase_port = port;
-                return this;
-              };
-              URIBase.prototype.getPort = function() {
-                "use strict";
-                return this.$URIBase_port;
-              };
-              URIBase.prototype.setPath = function(path) {
-                "use strict";
-                if (__DEV__) {
-                  if (path && path.charAt(0) !== "/") {
-                    console.warn(
-                      'Path does not begin with a "/" which means this URI ' +
-                        "will likely be malformed. Ensure any string passed to .setPath() " +
-                        'leads with "/"'
+                var _proto = URIBase.prototype;
+                _proto.setProtocol = function setProtocol(protocol) {
+                  if (!URISchemes.isAllowed(protocol)) {
+                    false ||
+                      invariant(
+                        0,
+                        '"%s" is not a valid protocol for a URI.',
+                        protocol
+                      );
+                  }
+                  this.$URIBase_protocol = protocol;
+                  return this;
+                };
+                _proto.getProtocol = function getProtocol() {
+                  return (this.$URIBase_protocol || "").toLowerCase();
+                };
+                _proto.setSecure = function setSecure(secure) {
+                  return this.setProtocol(secure ? "https" : "http");
+                };
+                _proto.isSecure = function isSecure() {
+                  return this.getProtocol() === "https";
+                };
+                _proto.setDomain = function setDomain(domain) {
+                  if (UNSAFE_DOMAIN_PATTERN.test(domain)) {
+                    throw new Error(
+                      ex(
+                        "URI.setDomain: unsafe domain specified: %s for url %s",
+                        domain,
+                        this.toString()
+                      )
                     );
                   }
-                }
-                this.$URIBase_path = path;
-                return this;
-              };
-              URIBase.prototype.getPath = function() {
-                "use strict";
-                return this.$URIBase_path;
-              };
-              URIBase.prototype.addQueryData = function(mapOrKey, value) {
-                "use strict";
 
-                if (
-                  Object.prototype.toString.call(mapOrKey) === "[object Object]"
-                ) {
-                  ES(
-                    "Object",
-                    "assign",
-                    false,
-                    this.$URIBase_queryData,
-                    mapOrKey
+                  this.$URIBase_domain = domain;
+                  return this;
+                };
+                _proto.getDomain = function getDomain() {
+                  return this.$URIBase_domain;
+                };
+                _proto.setPort = function setPort(port) {
+                  this.$URIBase_port = port;
+                  return this;
+                };
+                _proto.getPort = function getPort() {
+                  return this.$URIBase_port;
+                };
+                _proto.setPath = function setPath(path) {
+                  if (__DEV__) {
+                    if (path && path.charAt(0) !== "/") {
+                      console.warn(
+                        'Path does not begin with a "/" which means this URI ' +
+                          "will likely be malformed. Ensure any string passed to .setPath() " +
+                          'leads with "/"'
+                      );
+                    }
+                  }
+                  this.$URIBase_path = path;
+                  return this;
+                };
+                _proto.getPath = function getPath() {
+                  return this.$URIBase_path;
+                };
+                _proto.addQueryData = function addQueryData(mapOrKey, value) {
+                  if (
+                    Object.prototype.toString.call(mapOrKey) ===
+                    "[object Object]"
+                  ) {
+                    ES(
+                      "Object",
+                      "assign",
+                      false,
+                      this.$URIBase_queryData,
+                      mapOrKey
+                    );
+                  } else {
+                    this.$URIBase_queryData[mapOrKey] = value;
+                  }
+                  return this;
+                };
+                _proto.setQueryData = function setQueryData(map) {
+                  this.$URIBase_queryData = map;
+                  return this;
+                };
+                _proto.getQueryData = function getQueryData() {
+                  return this.$URIBase_queryData;
+                };
+                _proto.setQueryString = function setQueryString(queryString) {
+                  return this.setQueryData(
+                    this.$URIBase_serializer.deserialize(queryString)
                   );
-                } else {
-                  this.$URIBase_queryData[mapOrKey] = value;
-                }
-                return this;
-              };
-              URIBase.prototype.setQueryData = function(map) {
-                "use strict";
-                this.$URIBase_queryData = map;
-                return this;
-              };
-              URIBase.prototype.getQueryData = function() {
-                "use strict";
-                return this.$URIBase_queryData;
-              };
-              URIBase.prototype.setQueryString = function(queryString) {
-                "use strict";
-                return this.setQueryData(
-                  this.$URIBase_serializer.deserialize(queryString)
-                );
-              };
-              URIBase.prototype.getQueryString = function() {
-                "use strict";
-                return this.$URIBase_serializer.serialize(this.getQueryData());
-              };
-              URIBase.prototype.removeQueryData = function(keys) {
-                "use strict";
-                if (!ES("Array", "isArray", false, keys)) {
-                  keys = [keys];
-                }
-                for (var i = 0, length = keys.length; i < length; ++i) {
-                  delete this.$URIBase_queryData[keys[i]];
-                }
-                return this;
-              };
-              URIBase.prototype.setFragment = function(fragment) {
-                "use strict";
-                this.$URIBase_fragment = fragment;
+                };
+                _proto.getQueryString = function getQueryString() {
+                  return this.$URIBase_serializer.serialize(
+                    this.getQueryData()
+                  );
+                };
+                _proto.removeQueryData = function removeQueryData(keys) {
+                  if (!ES("Array", "isArray", false, keys)) {
+                    keys = [keys];
+                  }
+                  for (var i = 0, length = keys.length; i < length; ++i) {
+                    delete this.$URIBase_queryData[keys[i]];
+                  }
+                  return this;
+                };
+                _proto.setFragment = function setFragment(fragment) {
+                  this.$URIBase_fragment = fragment;
 
-                this.setForceFragmentSeparator(false);
-                return this;
-              };
-              URIBase.prototype.getFragment = function() {
-                "use strict";
-                return this.$URIBase_fragment;
-              };
-              URIBase.prototype.setForceFragmentSeparator = function(
-                shouldForce
-              ) {
-                "use strict";
-                this.$URIBase_forceFragmentSeparator = shouldForce;
-                return this;
-              };
-              URIBase.prototype.getForceFragmentSeparator = function() {
-                "use strict";
-                return this.$URIBase_forceFragmentSeparator;
-              };
-              URIBase.prototype.setIsGeneric = function(isGeneric) {
-                "use strict";
-                this.$URIBase_isGeneric = isGeneric;
-                return this;
-              };
-              URIBase.prototype.getIsGeneric = function() {
-                "use strict";
-                return this.$URIBase_isGeneric;
-              };
-              URIBase.prototype.isEmpty = function() {
-                "use strict";
-                return !(
-                  this.getPath() ||
-                  this.getProtocol() ||
-                  this.getDomain() ||
-                  this.getPort() ||
-                  ES("Object", "keys", false, this.getQueryData()).length > 0 ||
-                  this.getFragment()
-                );
-              };
-              URIBase.prototype.toString = function() {
-                "use strict";
-                var uri = this;
-                for (var i = 0; i < uriFilters.length; i++) {
-                  uri = uriFilters[i](uri);
-                }
-                return uri.$URIBase_toStringImpl();
-              };
-              URIBase.prototype.$URIBase_toStringImpl = function() {
-                "use strict";
-                var str = "";
-                var protocol = this.getProtocol();
-                if (protocol) {
-                  str += protocol + ":" + (this.getIsGeneric() ? "" : "//");
-                }
-                var domain = this.getDomain();
-                if (domain) {
-                  str += domain;
-                }
-                var port = this.getPort();
-                if (port) {
-                  str += ":" + port;
-                }
+                  this.setForceFragmentSeparator(false);
+                  return this;
+                };
+                _proto.getFragment = function getFragment() {
+                  return this.$URIBase_fragment;
+                };
+                _proto.setForceFragmentSeparator = function setForceFragmentSeparator(
+                  shouldForce
+                ) {
+                  this.$URIBase_forceFragmentSeparator = shouldForce;
+                  return this;
+                };
+                _proto.getForceFragmentSeparator = function getForceFragmentSeparator() {
+                  return this.$URIBase_forceFragmentSeparator;
+                };
+                _proto.setIsGeneric = function setIsGeneric(isGeneric) {
+                  this.$URIBase_isGeneric = isGeneric;
+                  return this;
+                };
+                _proto.getIsGeneric = function getIsGeneric() {
+                  return this.$URIBase_isGeneric;
+                };
+                _proto.isEmpty = function isEmpty() {
+                  return !(
+                    this.getPath() ||
+                    this.getProtocol() ||
+                    this.getDomain() ||
+                    this.getPort() ||
+                    ES("Object", "keys", false, this.getQueryData()).length >
+                      0 ||
+                    this.getFragment()
+                  );
+                };
+                _proto.toString = function toString() {
+                  var uri = this;
+                  for (var i = 0; i < uriFilters.length; i++) {
+                    uri = uriFilters[i](uri);
+                  }
+                  return uri.$URIBase_toStringImpl();
+                };
+                _proto.$URIBase_toStringImpl = function $URIBase_toStringImpl() {
+                  var str = "";
+                  var protocol = this.getProtocol();
+                  if (protocol) {
+                    str += protocol + ":" + (this.getIsGeneric() ? "" : "//");
+                  }
+                  var domain = this.getDomain();
+                  if (domain) {
+                    str += domain;
+                  }
+                  var port = this.getPort();
+                  if (port) {
+                    str += ":" + port;
+                  }
 
-                var path = this.getPath();
-                if (path) {
-                  str += path;
-                } else if (str) {
-                  str += "/";
-                }
-                var queryStr = this.getQueryString();
-                if (queryStr) {
-                  str += "?" + queryStr;
-                }
-                var fragment = this.getFragment();
-                if (fragment) {
-                  str += "#" + fragment;
-                } else if (this.getForceFragmentSeparator()) {
-                  str += "#";
-                }
-                return str;
-              };
-              URIBase.registerFilter = function(filter) {
-                "use strict";
-                uriFilters.push(filter);
-              };
-              URIBase.prototype.getOrigin = function() {
-                "use strict";
-                var port = this.getPort();
-                return (
-                  this.getProtocol() +
-                  "://" +
-                  this.getDomain() +
-                  (port ? ":" + port : "")
-                );
-              };
-              URIBase.prototype.getQualifiedURIBase = function() {
-                "use strict";
-                return new URIBase(this, this.$URIBase_serializer).qualify();
-              };
-              URIBase.prototype.qualify = function() {
-                "use strict";
-                if (!this.getDomain()) {
-                  var current = new URIBase(
-                    window.location.href,
+                  var path = this.getPath();
+                  if (path) {
+                    str += path;
+                  } else if (str) {
+                    str += "/";
+                  }
+                  var queryStr = this.getQueryString();
+                  if (queryStr) {
+                    str += "?" + queryStr;
+                  }
+                  var fragment = this.getFragment();
+                  if (fragment) {
+                    str += "#" + fragment;
+                  } else if (this.getForceFragmentSeparator()) {
+                    str += "#";
+                  }
+                  return str;
+                };
+                URIBase.registerFilter = function registerFilter(filter) {
+                  uriFilters.push(filter);
+                };
+                _proto.getOrigin = function getOrigin() {
+                  var port = this.getPort();
+                  return (
+                    this.getProtocol() +
+                    "://" +
+                    this.getDomain() +
+                    (port ? ":" + port : "")
+                  );
+                };
+                _proto.getQualifiedURIBase = function getQualifiedURIBase() {
+                  return new URIBase(this, this.$URIBase_serializer).qualify();
+                };
+                _proto.qualify = function qualify() {
+                  if (!this.getDomain()) {
+                    var current = new URIBase(
+                      window.location.href,
+                      this.$URIBase_serializer
+                    );
+                    this.setProtocol(current.getProtocol())
+                      .setDomain(current.getDomain())
+                      .setPort(current.getPort());
+                  }
+                  return this;
+                };
+                _proto.setSubdomain = function setSubdomain(subdomain) {
+                  var domain = this.qualify().getDomain();
+                  return this.setDomain(setHostSubdomain(domain, subdomain));
+                };
+                _proto.getSubdomain = function getSubdomain() {
+                  if (!this.getDomain()) {
+                    return "";
+                  }
+
+                  var domains = this.getDomain().split(".");
+                  if (domains.length <= 2) {
+                    return "";
+                  } else {
+                    return domains[0];
+                  }
+                };
+                _proto.isSubdomainOfDomain = function isSubdomainOfDomain(
+                  superdomain
+                ) {
+                  var domain = this.getDomain();
+                  return URIBase.isDomainSubdomainOfDomain(
+                    domain,
+                    superdomain,
                     this.$URIBase_serializer
                   );
-                  this.setProtocol(current.getProtocol())
-                    .setDomain(current.getDomain())
-                    .setPort(current.getPort());
-                }
-                return this;
-              };
-              URIBase.prototype.setSubdomain = function(subdomain) {
-                "use strict";
-                var domain = this.qualify().getDomain();
-                return this.setDomain(setHostSubdomain(domain, subdomain));
-              };
-              URIBase.prototype.getSubdomain = function() {
-                "use strict";
-                if (!this.getDomain()) {
-                  return "";
-                }
-
-                var domains = this.getDomain().split(".");
-                if (domains.length <= 2) {
-                  return "";
-                } else {
-                  return domains[0];
-                }
-              };
-              URIBase.prototype.isSubdomainOfDomain = function(superdomain) {
-                "use strict";
-                var domain = this.getDomain();
-                return URIBase.isDomainSubdomainOfDomain(
+                };
+                URIBase.isDomainSubdomainOfDomain = function isDomainSubdomainOfDomain(
                   domain,
                   superdomain,
-                  this.$URIBase_serializer
-                );
-              };
-              URIBase.isDomainSubdomainOfDomain = function(
-                domain,
-                superdomain,
-                serializer
-              ) {
-                "use strict";
-                if (superdomain === "" || domain === "") {
-                  return false;
-                }
-
-                if (ES(domain, "endsWith", true, superdomain)) {
-                  var domainLen = domain.length;
-                  var superdomainLen = superdomain.length;
-                  var pos = domainLen - superdomainLen - 1;
-
-                  if (domainLen === superdomainLen || domain[pos] === ".") {
-                    return URIBase.isValid(superdomain, serializer);
+                  serializer
+                ) {
+                  if (superdomain === "" || domain === "") {
+                    return false;
                   }
-                }
 
-                return false;
-              };
+                  if (ES(domain, "endsWith", true, superdomain)) {
+                    var domainLen = domain.length;
+                    var superdomainLen = superdomain.length;
+                    var pos = domainLen - superdomainLen - 1;
+
+                    if (domainLen === superdomainLen || domain[pos] === ".") {
+                      return URIBase.isValid(superdomain, serializer);
+                    }
+                  }
+
+                  return false;
+                };
+                return URIBase;
+              })();
 
               module.exports = URIBase;
             },
@@ -6592,8 +6607,6 @@ try {
               QueryString,
               URIBase
             ) {
-              var _URIBase, _superProto;
-
               var facebookRe = /\.facebook\.com$/;
 
               var serializer = {
@@ -6604,28 +6617,28 @@ try {
                   return text ? QueryString.decode(text) : {};
                 }
               };
-              _URIBase = babelHelpers.inherits(URI, URIBase);
-              _superProto = _URIBase && _URIBase.prototype;
-              function URI(uri) {
+              var URI = (function(_URIBase) {
                 "use strict";
-                Assert.isString(
-                  uri,
-                  "The passed argument was of invalid type."
-                );
-                _superProto.constructor.call(this, uri, serializer);
-              }
-              URI.prototype.isFacebookURI = function() {
-                "use strict";
-                return facebookRe.test(this.getDomain());
-              };
-              URI.prototype.valueOf = function() {
-                "use strict";
-                return this.toString();
-              };
-              URI.isValidURI = function(uri) {
-                "use strict";
-                return URIBase.isValid(uri, serializer);
-              };
+                babelHelpers.inheritsLoose(URI, _URIBase);
+                function URI(uri) {
+                  Assert.isString(
+                    uri,
+                    "The passed argument was of invalid type."
+                  );
+                  return _URIBase.call(this, uri, serializer) || this;
+                }
+                var _proto = URI.prototype;
+                _proto.isFacebookURI = function isFacebookURI() {
+                  return facebookRe.test(this.getDomain());
+                };
+                _proto.valueOf = function valueOf() {
+                  return this.toString();
+                };
+                URI.isValidURI = function isValidURI(uri) {
+                  return URIBase.isValid(uri, serializer);
+                };
+                return URI;
+              })(URIBase);
 
               module.exports = URI;
             },
@@ -6688,127 +6701,113 @@ try {
               exports
             ) {
               var registry = {};
-
-              function Queue(opts) {
+              var Queue = (function() {
                 "use strict";
-                this._timeout = null;
 
-                this._interval = (opts == null ? void 0 : opts.interval) || 0;
-                this._processor = opts == null ? void 0 : opts.processor;
+                function Queue(opts) {
+                  this._timeout = null;
 
-                this._queue = [];
-                this._stopped = true;
-              }
-              Queue.prototype._dispatch = function(force) {
-                if (force === void 0) {
-                  force = false;
-                }
-                ("use strict");
-                if (this._stopped || this._queue.length === 0) {
-                  return;
-                }
+                  this._interval = (opts == null ? void 0 : opts.interval) || 0;
+                  this._processor = opts == null ? void 0 : opts.processor;
 
-                var processor = this._processor;
-                if (processor == null) {
+                  this._queue = [];
                   this._stopped = true;
-                  throw new Error("No processor available");
                 }
-
-                var interval = this._interval;
-                if (interval != null) {
-                  processor.call(this, this._queue.shift());
-                  this._timeout = setTimeout(
-                    ES(
-                      function() {
-                        return this._dispatch();
-                      },
-                      "bind",
-                      true,
-                      this
-                    ),
-                    interval
-                  );
-                } else {
-                  while (this._queue.length) {
-                    processor.call(this, this._queue.shift());
+                var _proto = Queue.prototype;
+                _proto._dispatch = function _dispatch(force) {
+                  var _this = this;
+                  if (force === void 0) {
+                    force = false;
                   }
-                }
-              };
-              Queue.prototype.enqueue = function(message) {
-                "use strict";
-                if (this._processor && !this._stopped) {
-                  this._processor(message);
-                } else {
-                  this._queue.push(message);
-                }
-                return this;
-              };
-              Queue.prototype.start = function(processor) {
-                "use strict";
-                if (processor) {
-                  this._processor = processor;
-                }
-                this._stopped = false;
-                this._dispatch();
-                return this;
-              };
-              Queue.prototype.isStarted = function() {
-                "use strict";
-                return !this._stopped;
-              };
-              Queue.prototype.dispatch = function() {
-                "use strict";
-                this._dispatch(true);
-              };
-              Queue.prototype.stop = function(scheduled) {
-                "use strict";
-                this._stopped = true;
-                if (scheduled && this._timeout != null) {
-                  clearTimeout(this._timeout);
-                }
-                return this;
-              };
-              Queue.prototype.merge = function(queue, prepend) {
-                "use strict";
-                if (prepend) {
-                  var _this$_queue;
-                  (_this$_queue = this._queue).unshift.apply(
-                    _this$_queue,
-                    queue._queue
-                  );
-                } else {
-                  var _this$_queue2;
-                  (_this$_queue2 = this._queue).push.apply(
-                    _this$_queue2,
-                    queue._queue
-                  );
-                }
-                queue._queue = [];
-                this._dispatch();
-                return this;
-              };
-              Queue.prototype.getLength = function() {
-                "use strict";
-                return this._queue.length;
-              };
-              Queue.get = function(name, opts) {
-                "use strict";
-                var queue;
-                if (name in registry) {
-                  queue = registry[name];
-                } else {
-                  queue = registry[name] = new Queue(opts);
-                }
-                return queue;
-              };
-              Queue.exists = function(name) {
-                "use strict";
-                return name in registry;
-              };
-              Queue.remove = function(name) {
-                "use strict";
-                return delete registry[name];
-              };
+                  if (this._stopped || this._queue.length === 0) {
+                    return;
+                  }
+
+                  var processor = this._processor;
+                  if (processor == null) {
+                    this._stopped = true;
+                    throw new Error("No processor available");
+                  }
+
+                  var interval = this._interval;
+                  if (interval != null) {
+                    processor.call(this, this._queue.shift());
+                    this._timeout = setTimeout(function() {
+                      return _this._dispatch();
+                    }, interval);
+                  } else {
+                    while (this._queue.length) {
+                      processor.call(this, this._queue.shift());
+                    }
+                  }
+                };
+                _proto.enqueue = function enqueue(message) {
+                  if (this._processor && !this._stopped) {
+                    this._processor(message);
+                  } else {
+                    this._queue.push(message);
+                  }
+                  return this;
+                };
+                _proto.start = function start(processor) {
+                  if (processor) {
+                    this._processor = processor;
+                  }
+                  this._stopped = false;
+                  this._dispatch();
+                  return this;
+                };
+                _proto.isStarted = function isStarted() {
+                  return !this._stopped;
+                };
+                _proto.dispatch = function dispatch() {
+                  this._dispatch(true);
+                };
+                _proto.stop = function stop(scheduled) {
+                  this._stopped = true;
+                  if (scheduled && this._timeout != null) {
+                    clearTimeout(this._timeout);
+                  }
+                  return this;
+                };
+                _proto.merge = function merge(queue, prepend) {
+                  if (prepend) {
+                    var _this$_queue;
+                    (_this$_queue = this._queue).unshift.apply(
+                      _this$_queue,
+                      queue._queue
+                    );
+                  } else {
+                    var _this$_queue2;
+                    (_this$_queue2 = this._queue).push.apply(
+                      _this$_queue2,
+                      queue._queue
+                    );
+                  }
+                  queue._queue = [];
+                  this._dispatch();
+                  return this;
+                };
+                _proto.getLength = function getLength() {
+                  return this._queue.length;
+                };
+                Queue.get = function get(name, opts) {
+                  var queue;
+                  if (name in registry) {
+                    queue = registry[name];
+                  } else {
+                    queue = registry[name] = new Queue(opts);
+                  }
+                  return queue;
+                };
+                Queue.exists = function exists(name) {
+                  return name in registry;
+                };
+                Queue.remove = function remove(name) {
+                  return delete registry[name];
+                };
+                return Queue;
+              })();
 
               module.exports = Queue;
             },
@@ -7253,32 +7252,29 @@ try {
               exports,
               Log
             ) {
-              function JSONRPC(write) {
+              var JSONRPC = (function() {
                 "use strict";
-                this.$JSONRPC_counter = 0;
-                this.$JSONRPC_callbacks = {};
+                function JSONRPC(write) {
+                  var _this = this;
+                  this.$JSONRPC_counter = 0;
+                  this.$JSONRPC_callbacks = {};
 
-                this.remote = ES(
-                  function(context) {
-                    this.$JSONRPC_context = context;
-                    return this.remote;
-                  },
-                  "bind",
-                  true,
-                  this
-                );
+                  this.remote = function(context) {
+                    _this.$JSONRPC_context = context;
+                    return _this.remote;
+                  };
 
-                this.local = {};
+                  this.local = {};
 
-                this.$JSONRPC_write = write;
-              }
-              JSONRPC.prototype.stub = function(stub) {
-                "use strict";
-                this.remote[stub] = ES(
-                  function() {
+                  this.$JSONRPC_write = write;
+                }
+                var _proto = JSONRPC.prototype;
+                _proto.stub = function stub(_stub) {
+                  var _this2 = this;
+                  this.remote[_stub] = function() {
                     var message = {
                       jsonrpc: "2.0",
-                      method: stub
+                      method: _stub
                     };
                     for (
                       var _len = arguments.length,
@@ -7291,100 +7287,97 @@ try {
                     }
 
                     if (typeof args[args.length - 1] === "function") {
-                      message.id = ++this.$JSONRPC_counter;
-                      this.$JSONRPC_callbacks[message.id] = args.pop();
+                      message.id = ++_this2.$JSONRPC_counter;
+                      _this2.$JSONRPC_callbacks[message.id] = args.pop();
                     }
 
                     message.params = args;
 
-                    this.$JSONRPC_write(
+                    _this2.$JSONRPC_write(
                       ES("JSON", "stringify", false, message),
-                      this.$JSONRPC_context || { method: stub }
+                      _this2.$JSONRPC_context || { method: _stub }
                     );
-                  },
-                  "bind",
-                  true,
-                  this
-                );
-              };
-              JSONRPC.prototype.read = function(message, context) {
-                "use strict";
-                var rpc = ES("JSON", "parse", false, message),
-                  id = rpc.id;
+                  };
+                };
+                _proto.read = function read(message, context) {
+                  var rpc = ES("JSON", "parse", false, message),
+                    id = rpc.id;
 
-                if (!rpc.method) {
-                  if (!this.$JSONRPC_callbacks[id]) {
-                    Log.warn("Could not find callback %s", id);
+                  if (!rpc.method) {
+                    if (!this.$JSONRPC_callbacks[id]) {
+                      Log.warn("Could not find callback %s", id);
+                      return;
+                    }
+                    var callback = this.$JSONRPC_callbacks[id];
+                    delete this.$JSONRPC_callbacks[id];
+
+                    delete rpc.id;
+                    delete rpc.jsonrpc;
+
+                    callback(rpc);
                     return;
                   }
-                  var callback = this.$JSONRPC_callbacks[id];
-                  delete this.$JSONRPC_callbacks[id];
 
-                  delete rpc.id;
-                  delete rpc.jsonrpc;
+                  var instance = this,
+                    method = this.local[rpc.method],
+                    send;
+                  if (id) {
+                    send = function send(type, value) {
+                      var response = {
+                        jsonrpc: "2.0",
+                        id: id
+                      };
 
-                  callback(rpc);
-                  return;
-                }
+                      response[type] = value;
 
-                var instance = this,
-                  method = this.local[rpc.method],
-                  send;
-                if (id) {
-                  send = function send(type, value) {
-                    var response = {
-                      jsonrpc: "2.0",
-                      id: id
+                      setTimeout(function() {
+                        instance.$JSONRPC_write(
+                          ES("JSON", "stringify", false, response),
+                          context
+                        );
+                      }, 0);
                     };
-
-                    response[type] = value;
-
-                    setTimeout(function() {
-                      instance.$JSONRPC_write(
-                        ES("JSON", "stringify", false, response),
-                        context
-                      );
-                    }, 0);
-                  };
-                } else {
-                  send = function send() {};
-                }
-
-                if (!method) {
-                  Log.error('Method "%s" has not been defined', rpc.method);
-
-                  send("error", {
-                    code: -32601,
-                    message: "Method not found",
-                    data: rpc.method
-                  });
-
-                  return;
-                }
-
-                rpc.params.push(ES(send, "bind", true, null, "result"));
-                rpc.params.push(ES(send, "bind", true, null, "error"));
-
-                try {
-                  var returnValue = method.apply(context || null, rpc.params);
-
-                  if (typeof returnValue !== "undefined") {
-                    send("result", returnValue);
+                  } else {
+                    send = function send() {};
                   }
-                } catch (rpcEx) {
-                  Log.error(
-                    "Invokation of RPC method %s resulted in the error: %s",
-                    rpc.method,
-                    rpcEx.message
-                  );
 
-                  send("error", {
-                    code: -32603,
-                    message: "Internal error",
-                    data: rpcEx.message
-                  });
-                }
-              };
+                  if (!method) {
+                    Log.error('Method "%s" has not been defined', rpc.method);
+
+                    send("error", {
+                      code: -32601,
+                      message: "Method not found",
+                      data: rpc.method
+                    });
+
+                    return;
+                  }
+
+                  rpc.params.push(ES(send, "bind", true, null, "result"));
+                  rpc.params.push(ES(send, "bind", true, null, "error"));
+
+                  try {
+                    var returnValue = method.apply(context || null, rpc.params);
+
+                    if (typeof returnValue !== "undefined") {
+                      send("result", returnValue);
+                    }
+                  } catch (rpcEx) {
+                    Log.error(
+                      "Invokation of RPC method %s resulted in the error: %s",
+                      rpc.method,
+                      rpcEx.message
+                    );
+
+                    send("error", {
+                      code: -32603,
+                      message: "Internal error",
+                      data: rpcEx.message
+                    });
+                  }
+                };
+                return JSONRPC;
+              })();
 
               module.exports = JSONRPC;
             },
@@ -9369,16 +9362,14 @@ try {
               exports,
               ManagedError
             ) {
-              var _ManagedError, _superProto;
-              _ManagedError = babelHelpers.inherits(
-                ArgumentError,
-                ManagedError
-              );
-              _superProto = _ManagedError && _ManagedError.prototype;
-              function ArgumentError(message, innerError) {
+              var ArgumentError = (function(_ManagedError) {
                 "use strict";
-                _superProto.constructor.call(this, message, innerError);
-              }
+                babelHelpers.inheritsLoose(ArgumentError, _ManagedError);
+                function ArgumentError(message, innerError) {
+                  return _ManagedError.call(this, message, innerError) || this;
+                }
+                return ArgumentError;
+              })(ManagedError);
 
               module.exports = ArgumentError;
             },
@@ -9624,142 +9615,149 @@ try {
               var REQUESTS_PER_BATCH = 50;
 
               var DEFAULT_BATCH_APP_ID = 105440539523;
-
-              function ApiBatcher(executeRequest, clientID) {
-                this.$ApiBatcher_batchCalls = [];
-                this.$ApiBatcher_batchCallbacks = [];
-                this.$ApiBatcher_scheduleID = null;
-                this.executeRequest = executeRequest;
-                this.$ApiBatcher_clientID = clientID;
-              }
-              ApiBatcher.prototype.scheduleBatchCall = function() {
-                for (
-                  var _len = arguments.length, args = new Array(_len), _key = 0;
-                  _key < _len;
-                  _key++
-                ) {
-                  args[_key] = arguments[_key];
+              var ApiBatcher = (function() {
+                function ApiBatcher(executeRequest, clientID) {
+                  this.$ApiBatcher_batchCalls = [];
+                  this.$ApiBatcher_batchCallbacks = [];
+                  this.$ApiBatcher_scheduleID = null;
+                  this.executeRequest = executeRequest;
+                  this.$ApiBatcher_clientID = clientID;
                 }
-                var _ApiBatcher$prepareBa = ApiBatcher.prepareBatchParams(args),
-                  body = _ApiBatcher$prepareBa.body,
-                  callback = _ApiBatcher$prepareBa.callback,
-                  method = _ApiBatcher$prepareBa.method,
-                  relative_url = _ApiBatcher$prepareBa.relative_url;
-
-                var batchCall = {
-                  method: method,
-                  relative_url: relative_url
-                };
-
-                if (body) {
-                  batchCall.body = body;
-                }
-
-                this.$ApiBatcher_batchCalls.push(batchCall);
-                this.$ApiBatcher_batchCallbacks.push(callback);
-
-                if (this.$ApiBatcher_batchCalls.length == REQUESTS_PER_BATCH) {
-                  if (this.$ApiBatcher_scheduleID) {
-                    clearTimeout(this.$ApiBatcher_scheduleID);
+                var _proto = ApiBatcher.prototype;
+                _proto.scheduleBatchCall = function scheduleBatchCall() {
+                  var _this = this;
+                  for (
+                    var _len = arguments.length,
+                      args = new Array(_len),
+                      _key = 0;
+                    _key < _len;
+                    _key++
+                  ) {
+                    args[_key] = arguments[_key];
                   }
-                  this.$ApiBatcher_dispatchBatchCalls();
-                } else if (!this.$ApiBatcher_scheduleID) {
-                  this.$ApiBatcher_scheduleID = setTimeout(
-                    ES(
-                      function() {
-                        this.$ApiBatcher_dispatchBatchCalls();
-                      },
-                      "bind",
-                      true,
-                      this
+                  var _ApiBatcher$prepareBa = ApiBatcher.prepareBatchParams(
+                      args
                     ),
-                    0
-                  );
-                }
-              };
-              ApiBatcher.prepareBatchParams = function(args) {
-                var _ApiClientUtils$parse = ApiClientUtils.parseCallDataFromArgs(
-                    args
-                  ),
-                  uri = _ApiClientUtils$parse.uri,
-                  callback = _ApiClientUtils$parse.callback,
-                  method = _ApiClientUtils$parse.params.method;
+                    body = _ApiBatcher$prepareBa.body,
+                    callback = _ApiBatcher$prepareBa.callback,
+                    method = _ApiBatcher$prepareBa.method,
+                    relative_url = _ApiBatcher$prepareBa.relative_url;
 
-                var body;
-                var relative_url = uri.removeQueryData("method").toString();
-                if (method.toLowerCase() == "post") {
-                  body = QueryString.encode(uri.getQueryData());
-                  relative_url = uri.setQueryData({}).toString();
-                }
+                  var batchCall = {
+                    method: method,
+                    relative_url: relative_url
+                  };
 
-                return {
-                  body: body,
-                  callback: callback,
-                  method: method,
-                  relative_url: relative_url
+                  if (body) {
+                    batchCall.body = body;
+                  }
+
+                  this.$ApiBatcher_batchCalls.push(batchCall);
+                  this.$ApiBatcher_batchCallbacks.push(callback);
+
+                  if (
+                    this.$ApiBatcher_batchCalls.length == REQUESTS_PER_BATCH
+                  ) {
+                    if (this.$ApiBatcher_scheduleID) {
+                      clearTimeout(this.$ApiBatcher_scheduleID);
+                    }
+                    this.$ApiBatcher_dispatchBatchCalls();
+                  } else if (!this.$ApiBatcher_scheduleID) {
+                    this.$ApiBatcher_scheduleID = setTimeout(function() {
+                      _this.$ApiBatcher_dispatchBatchCalls();
+                    }, 0);
+                  }
                 };
-              };
-              ApiBatcher.prototype.$ApiBatcher_dispatchBatchCalls = function() {
-                this.$ApiBatcher_batchCalls.length > 0 ||
-                  invariant(0, "ApiClient: _batchCalls is empty at dispatch.");
+                ApiBatcher.prepareBatchParams = function prepareBatchParams(
+                  args
+                ) {
+                  var _ApiClientUtils$parse = ApiClientUtils.parseCallDataFromArgs(
+                      args
+                    ),
+                    uri = _ApiClientUtils$parse.uri,
+                    callback = _ApiClientUtils$parse.callback,
+                    method = _ApiClientUtils$parse.params.method;
 
-                this.$ApiBatcher_batchCalls.length ===
-                  this.$ApiBatcher_batchCallbacks.length ||
-                  invariant(
-                    0,
-                    "ApiClient: Every batch call should have a callback"
-                  );
+                  var body;
+                  var relative_url = uri.removeQueryData("method").toString();
+                  if (method.toLowerCase() == "post") {
+                    body = QueryString.encode(uri.getQueryData());
+                    relative_url = uri.setQueryData({}).toString();
+                  }
 
-                var copiedBatchCalls = this.$ApiBatcher_batchCalls;
-                var copiedBatchCallbacks = this.$ApiBatcher_batchCallbacks;
-                this.$ApiBatcher_batchCalls = [];
-                this.$ApiBatcher_batchCallbacks = [];
-                this.$ApiBatcher_scheduleID = null;
+                  return {
+                    body: body,
+                    callback: callback,
+                    method: method,
+                    relative_url: relative_url
+                  };
+                };
+                _proto.$ApiBatcher_dispatchBatchCalls = function $ApiBatcher_dispatchBatchCalls() {
+                  this.$ApiBatcher_batchCalls.length > 0 ||
+                    invariant(
+                      0,
+                      "ApiClient: _batchCalls is empty at dispatch."
+                    );
 
-                if (copiedBatchCalls.length === 1) {
-                  var call = copiedBatchCalls[0];
-                  var callback = copiedBatchCallbacks[0];
+                  this.$ApiBatcher_batchCalls.length ===
+                    this.$ApiBatcher_batchCallbacks.length ||
+                    invariant(
+                      0,
+                      "ApiClient: Every batch call should have a callback"
+                    );
 
-                  var body = call.body ? QueryString.decode(call.body) : null;
+                  var copiedBatchCalls = this.$ApiBatcher_batchCalls;
+                  var copiedBatchCallbacks = this.$ApiBatcher_batchCallbacks;
+                  this.$ApiBatcher_batchCalls = [];
+                  this.$ApiBatcher_batchCallbacks = [];
+                  this.$ApiBatcher_scheduleID = null;
+
+                  if (copiedBatchCalls.length === 1) {
+                    var call = copiedBatchCalls[0];
+                    var callback = copiedBatchCallbacks[0];
+
+                    var body = call.body ? QueryString.decode(call.body) : null;
+
+                    this.executeRequest(
+                      call.relative_url,
+                      call.method,
+                      body,
+                      callback
+                    );
+                    return;
+                  }
 
                   this.executeRequest(
-                    call.relative_url,
-                    call.method,
-                    body,
-                    callback
-                  );
-                  return;
-                }
+                    "/",
+                    "POST",
+                    {
+                      batch: copiedBatchCalls,
+                      include_headers: false,
+                      batch_app_id:
+                        this.$ApiBatcher_clientID || DEFAULT_BATCH_APP_ID
+                    },
 
-                this.executeRequest(
-                  "/",
-                  "POST",
-                  {
-                    batch: copiedBatchCalls,
-                    include_headers: false,
-                    batch_app_id:
-                      this.$ApiBatcher_clientID || DEFAULT_BATCH_APP_ID
-                  },
-
-                  function(response) {
-                    if (ES("Array", "isArray", false, response)) {
-                      ES(response, "forEach", true, function(data, idx) {
-                        copiedBatchCallbacks[idx](
-                          safelyParseResponse(data && data.body)
-                        );
-                      });
-                    } else {
-                      ES(copiedBatchCallbacks, "forEach", true, function(
-                        callback
-                      ) {
-                        return callback({
-                          error: { message: "Fatal: batch call failed." }
+                    function(response) {
+                      if (ES("Array", "isArray", false, response)) {
+                        ES(response, "forEach", true, function(data, idx) {
+                          copiedBatchCallbacks[idx](
+                            safelyParseResponse(data && data.body)
+                          );
                         });
-                      });
+                      } else {
+                        ES(copiedBatchCallbacks, "forEach", true, function(
+                          callback
+                        ) {
+                          return callback({
+                            error: { message: "Fatal: batch call failed." }
+                          });
+                        });
+                      }
                     }
-                  }
-                );
-              };
+                  );
+                };
+                return ApiBatcher;
+              })();
 
               module.exports = ApiBatcher;
             },
@@ -9970,49 +9968,58 @@ try {
               wrapFunction
             ) {
               var EMPTY_CHUNK_TEXT = "{}";
+              var ChunkParser = (function() {
+                "use strict";
 
-              function ChunkParser(delimiter) {
-                if (delimiter === void 0) {
-                  delimiter = GraphBatchConstants.FLUSH_DELIMITER;
-                }
-                ("use strict");
-                this.offset = 0;
-                this.delimiter = GraphBatchConstants.FLUSH_DELIMITER;
-                this.delimiter = delimiter;
-              }
-              ChunkParser.prototype.parse = function(text, final) {
-                if (final === void 0) {
-                  final = false;
-                }
-                ("use strict");
-                var subChunks = [];
-                var chunk = text.substring(this.offset);
-                var start = 0;
-                var finish = ES(chunk, "indexOf", true, this.delimiter, start);
-
-                if (finish === 0) {
-                  start = this.delimiter.length;
-
-                  finish = ES(chunk, "indexOf", true, this.delimiter, start);
-                }
-
-                while (finish > -1) {
-                  var subChunk = chunk.substring(start, finish);
-                  if (subChunk) {
-                    subChunks.push(subChunk);
+                function ChunkParser(delimiter) {
+                  if (delimiter === void 0) {
+                    delimiter = GraphBatchConstants.FLUSH_DELIMITER;
                   }
-                  start = finish + this.delimiter.length;
-                  finish = ES(chunk, "indexOf", true, this.delimiter, start);
+                  this.offset = 0;
+                  this.delimiter = GraphBatchConstants.FLUSH_DELIMITER;
+                  this.delimiter = delimiter;
                 }
-                this.offset += start;
+                var _proto = ChunkParser.prototype;
+                _proto.parse = function parse(text, final) {
+                  if (final === void 0) {
+                    final = false;
+                  }
+                  var subChunks = [];
+                  var chunk = text.substring(this.offset);
+                  var start = 0;
+                  var finish = ES(
+                    chunk,
+                    "indexOf",
+                    true,
+                    this.delimiter,
+                    start
+                  );
 
-                if (final && chunk && finish === -1) {
-                  var remaining = text.substring(this.offset);
-                  subChunks.push(remaining);
-                }
+                  if (finish === 0) {
+                    start = this.delimiter.length;
 
-                return subChunks;
-              };
+                    finish = ES(chunk, "indexOf", true, this.delimiter, start);
+                  }
+
+                  while (finish > -1) {
+                    var subChunk = chunk.substring(start, finish);
+                    if (subChunk) {
+                      subChunks.push(subChunk);
+                    }
+                    start = finish + this.delimiter.length;
+                    finish = ES(chunk, "indexOf", true, this.delimiter, start);
+                  }
+                  this.offset += start;
+
+                  if (final && chunk && finish === -1) {
+                    var remaining = text.substring(this.offset);
+                    subChunks.push(remaining);
+                  }
+
+                  return subChunks;
+                };
+                return ChunkParser;
+              })();
 
               function createChunkedRequest(method, url) {
                 if (!self.XMLHttpRequest) {
@@ -15235,6 +15242,7 @@ try {
               var IframePlugin = Type.extend(
                 {
                   constructor: function constructor(elem, ns, tag, attr) {
+                    var _this = this;
                     this.parent();
                     tag = tag.replace(/-/g, "_");
 
@@ -15242,90 +15250,66 @@ try {
                     this.subscribe("xd.resize", resizeBubbler(pluginId));
                     this.subscribe("xd.resize.flow", resizeBubbler(pluginId));
 
-                    this.subscribe(
-                      "xd.resize.flow",
+                    this.subscribe("xd.resize.flow", function(message) {
                       ES(
-                        function(message) {
-                          ES(
-                            "Object",
-                            "assign",
-                            false,
-                            this._iframeOptions.root.style,
-                            {
-                              verticalAlign: "bottom",
-                              overflow: ""
-                            }
-                          );
+                        "Object",
+                        "assign",
+                        false,
+                        _this._iframeOptions.root.style,
+                        {
+                          verticalAlign: "bottom",
+                          overflow: ""
+                        }
+                      );
 
-                          resize(
-                            this._iframeOptions.root,
-                            parse(message.width),
-                            parse(message.height)
-                          );
+                      resize(
+                        _this._iframeOptions.root,
+                        parse(message.width),
+                        parse(message.height)
+                      );
 
-                          this.updateLift();
-                          clearTimeout(this._timeoutID);
-                        },
-                        "bind",
-                        true,
-                        this
-                      )
-                    );
+                      _this.updateLift();
+                      clearTimeout(_this._timeoutID);
+                    });
 
-                    this.subscribe(
-                      "xd.resize",
+                    this.subscribe("xd.resize", function(message) {
                       ES(
-                        function(message) {
-                          ES(
-                            "Object",
-                            "assign",
-                            false,
-                            this._iframeOptions.root.style,
-                            {
-                              verticalAlign: "bottom",
-                              overflow: ""
-                            }
-                          );
+                        "Object",
+                        "assign",
+                        false,
+                        _this._iframeOptions.root.style,
+                        {
+                          verticalAlign: "bottom",
+                          overflow: ""
+                        }
+                      );
 
-                          resize(
-                            this._iframeOptions.root,
-                            parse(message.width),
-                            parse(message.height)
-                          );
+                      resize(
+                        _this._iframeOptions.root,
+                        parse(message.width),
+                        parse(message.height)
+                      );
 
-                          resize(
-                            this._iframe,
-                            parse(message.width),
-                            parse(message.height)
-                          );
-                          this._isIframeResized = true;
-                          this.updateLift();
-                          clearTimeout(this._timeoutID);
-                        },
-                        "bind",
-                        true,
-                        this
-                      )
-                    );
+                      resize(
+                        _this._iframe,
+                        parse(message.width),
+                        parse(message.height)
+                      );
+                      _this._isIframeResized = true;
+                      _this.updateLift();
+                      clearTimeout(_this._timeoutID);
+                    });
 
-                    this.subscribe(
-                      "xd.resize.iframe",
-                      ES(
-                        function(message) {
-                          resize(
-                            this._iframe,
-                            parse(message.width),
-                            parse(message.height)
-                          );
-                          this._isIframeResized = true;
-                          this.updateLift();
-                          clearTimeout(this._timeoutID);
-                        },
-                        "bind",
-                        true,
-                        this
-                      )
-                    );
+                    this.subscribe("xd.resize.iframe", function(message) {
+                      resize(
+                        _this._iframe,
+                        parse(message.width),
+                        parse(message.height)
+                      );
+                      _this._isIframeResized = true;
+                      _this.updateLift();
+                      clearTimeout(_this._timeoutID);
+                    });
 
                     this.subscribe("xd.sdk_event", function(message) {
                       var data = ES("JSON", "parse", false, message.data);
@@ -15345,14 +15329,9 @@ try {
                       sdk: "joey",
                       kid_directed_site: Runtime.getKidDirectedSite(),
                       channel: XD.handler(
-                        ES(
-                          function(msg) {
-                            return this.inform("xd." + msg.type, msg);
-                          },
-                          "bind",
-                          true,
-                          this
-                        ),
+                        function(msg) {
+                          return _this.inform("xd." + msg.type, msg);
+                        },
                         "parent.parent",
                         true
                       )
@@ -15373,21 +15352,13 @@ try {
                       });
                     });
 
-                    this.subscribe(
-                      "xd.refreshLoginStatus",
-                      ES(
-                        function() {
-                          Auth.removeLogoutState();
-                          Auth.getLoginStatus(
-                            ES(this.inform, "bind", true, this, "login.status"),
-                            true
-                          );
-                        },
-                        "bind",
-                        true,
-                        this
-                      )
-                    );
+                    this.subscribe("xd.refreshLoginStatus", function() {
+                      Auth.removeLogoutState();
+                      Auth.getLoginStatus(
+                        ES(_this.inform, "bind", true, _this, "login.status"),
+                        true
+                      );
+                    });
 
                     var flow = document.createElement("span");
 
@@ -15420,22 +15391,12 @@ try {
 
                       title:
                         this._ns + ":" + this._tag + " Facebook Social Plugin",
-                      onload: ES(
-                        function() {
-                          return this.inform("render");
-                        },
-                        "bind",
-                        true,
-                        this
-                      ),
-                      onerror: ES(
-                        function() {
-                          return collapseIframe(this._iframe);
-                        },
-                        "bind",
-                        true,
-                        this
-                      )
+                      onload: function onload() {
+                        return _this.inform("render");
+                      },
+                      onerror: function onerror() {
+                        return collapseIframe(_this._iframe);
+                      }
                     };
 
                     if (this.isFluid() && params.width !== "auto") {
@@ -15463,6 +15424,7 @@ try {
                   },
 
                   process: function process() {
+                    var _this2 = this;
                     if (Runtime.getIsVersioned()) {
                       PlatformVersioning.assertVersionIsSet();
                       var uri = new URI(this._iframeOptions.url);
@@ -15495,45 +15457,29 @@ try {
                     }
                     this._element.setAttribute("fb-iframe-plugin-query", query);
 
-                    this.subscribe(
-                      "render",
-                      ES(
-                        function() {
-                          Event.fire("iframeplugin:onload");
-                          this._iframe.style.visibility = "visible";
+                    this.subscribe("render", function() {
+                      Event.fire("iframeplugin:onload");
+                      _this2._iframe.style.visibility = "visible";
 
-                          if (!this._isIframeResized) {
-                            collapseIframe(this._iframe);
-                          }
-                        },
-                        "bind",
-                        true,
-                        this
-                      )
-                    );
+                      if (!_this2._isIframeResized) {
+                        collapseIframe(_this2._iframe);
+                      }
+                    });
 
                     while (this._element.firstChild) {
                       this._element.removeChild(this._element.firstChild);
                     }
                     this._element.appendChild(this._iframeOptions.root);
                     var timeout = UA.mobile() ? 120 : 45;
-                    this._timeoutID = setTimeout(
-                      ES(
-                        function() {
-                          collapseIframe(this._iframe);
-                          Log.warn(
-                            "%s:%s failed to resize in %ss",
-                            this._ns,
-                            this._tag,
-                            timeout
-                          );
-                        },
-                        "bind",
-                        true,
-                        this
-                      ),
-                      timeout * 1000
-                    );
+                    this._timeoutID = setTimeout(function() {
+                      collapseIframe(_this2._iframe);
+                      Log.warn(
+                        "%s:%s failed to resize in %ss",
+                        _this2._ns,
+                        _this2._tag,
+                        timeout
+                      );
+                    }, timeout * 1000);
 
                     this._iframe = createIframe(this._iframeOptions);
                     Event.fire("iframeplugin:create");
@@ -16094,8 +16040,12 @@ try {
               Log
             ) {
               "use strict";
-
-              function CustomerChatWarning(elem, ns, tag, attr) {
+              var CustomerChatWarning = function CustomerChatWarning(
+                elem,
+                ns,
+                tag,
+                attr
+              ) {
                 Log.error(
                   "##########################\n" +
                     "#  The CustomerChat plugin is no longer part of the main Facebook SDK.\n" +
@@ -16109,7 +16059,7 @@ try {
                   subscribe: function subscribe() {},
                   process: function process() {}
                 };
-              }
+              };
 
               module.exports = CustomerChatWarning;
             },
@@ -16679,6 +16629,7 @@ try {
 
               var Quote = IframePlugin.extend({
                 constructor: function constructor(elem, ns, tag, attr) {
+                  var _this = this;
                   if (singleton) {
                     return singleton;
                   }
@@ -16692,24 +16643,16 @@ try {
                   DOMEventListener.add(document, "keyup", handleSelection);
                   DOMEventListener.add(document, "mouseup", handleSelection);
 
-                  this.subscribe(
-                    "xd.getTextSelection",
-                    ES(
-                      function() {
-                        XD.sendToFacebook(this._iframeOptions.name, {
-                          method: "setTextSelection",
-                          params: ES("JSON", "stringify", false, {
-                            text: selection
-                          })
-                        });
+                  this.subscribe("xd.getTextSelection", function() {
+                    XD.sendToFacebook(_this._iframeOptions.name, {
+                      method: "setTextSelection",
+                      params: ES("JSON", "stringify", false, {
+                        text: selection
+                      })
+                    });
 
-                        clearSelection();
-                      },
-                      "bind",
-                      true,
-                      this
-                    )
-                  );
+                    clearSelection();
+                  });
 
                   quotableAreas = ES(
                     ES(
@@ -16782,101 +16725,88 @@ try {
 
               var Save = IframePlugin.extend({
                 constructor: function constructor(elem, ns, tag, attr) {
+                  var _this = this;
                   this.parent(elem, ns, tag, attr);
                   var isMobile = UA.mobile();
 
-                  this.subscribe(
-                    "xd.savePluginGetBlankIframe",
-                    ES(
-                      function(message) {
-                        var darkOverlay, dialog, allNodes;
-                        var show = function show(e) {
-                          if (e) {
-                            DOM.removeCss(e, "fb_invisible");
-                          }
-                        };
-                        var hide = function hide(e) {
-                          if (e) {
-                            DOM.addCss(e, "fb_invisible");
-                          }
-                        };
+                  this.subscribe("xd.savePluginGetBlankIframe", function(
+                    message
+                  ) {
+                    var darkOverlay, dialog, allNodes;
+                    var show = function show(e) {
+                      if (e) {
+                        DOM.removeCss(e, "fb_invisible");
+                      }
+                    };
+                    var hide = function hide(e) {
+                      if (e) {
+                        DOM.addCss(e, "fb_invisible");
+                      }
+                    };
 
-                        if (isMobile) {
-                          darkOverlay = DialogUtils.setupNewDarkOverlay();
-                          hide(darkOverlay);
-                          Content.append(darkOverlay);
-                          DialogUtils.addDoubleClickAction(
-                            darkOverlay,
-                            function() {
-                              return ES(allNodes, "forEach", true, hide);
-                            },
-                            5000
-                          );
-                        }
+                    if (isMobile) {
+                      darkOverlay = DialogUtils.setupNewDarkOverlay();
+                      hide(darkOverlay);
+                      Content.append(darkOverlay);
+                      DialogUtils.addDoubleClickAction(
+                        darkOverlay,
+                        function() {
+                          return ES(allNodes, "forEach", true, hide);
+                        },
+                        5000
+                      );
+                    }
 
-                        dialog = this.setupNewIframeDialog(
-                          ES("JSON", "parse", false, message.data),
-                          message.fromIframe
+                    dialog = _this.setupNewIframeDialog(
+                      ES("JSON", "parse", false, message.data),
+                      message.fromIframe
+                    );
+
+                    hide(dialog);
+                    Content.append(dialog);
+
+                    allNodes = [dialog, darkOverlay];
+
+                    var hideDialog = function hideDialog() {
+                      ES(allNodes, "forEach", true, hide);
+                      DialogUtils.onDialogHideCleanup(isMobile);
+                      clearInterval(positionIntervalID);
+                    };
+
+                    var idleEvent;
+                    _this.subscribe("xd.savePluginShowIframe", function() {
+                      Event.fire("savePlugin:hideDialog");
+                      ES(allNodes, "forEach", true, show);
+                      _this.positionOnScreen(dialog, darkOverlay);
+
+                      if (!isMobile && !idleEvent) {
+                        idleEvent = DialogUtils.addIdleDesktopAction(
+                          dialog,
+                          hideDialog,
+                          7000
                         );
+                      }
+                    });
+                    _this.subscribe("xd.savePluginHideIframe", function() {
+                      return hideDialog();
+                    });
+                    Event.subscribe("savePlugin:hideDialog", function() {
+                      return hideDialog();
+                    });
 
-                        hide(dialog);
-                        Content.append(dialog);
-
-                        allNodes = [dialog, darkOverlay];
-
-                        var hideDialog = function hideDialog() {
-                          ES(allNodes, "forEach", true, hide);
-                          DialogUtils.onDialogHideCleanup(isMobile);
-                          clearInterval(positionIntervalID);
-                        };
-
-                        var idleEvent;
-                        this.subscribe(
-                          "xd.savePluginShowIframe",
-                          ES(
-                            function() {
-                              Event.fire("savePlugin:hideDialog");
-                              ES(allNodes, "forEach", true, show);
-                              this.positionOnScreen(dialog, darkOverlay);
-
-                              if (!isMobile && !idleEvent) {
-                                idleEvent = DialogUtils.addIdleDesktopAction(
-                                  dialog,
-                                  hideDialog,
-                                  7000
-                                );
-                              }
-                            },
-                            "bind",
-                            true,
-                            this
-                          )
-                        );
-                        this.subscribe("xd.savePluginHideIframe", function() {
-                          return hideDialog();
+                    var searchIframeTimer = setInterval(function() {
+                      var searchIframe = document.getElementsByName(
+                        message.fromIframe
+                      );
+                      if (searchIframe.length === 0) {
+                        clearInterval(searchIframeTimer);
+                        hideDialog();
+                        ES(allNodes, "forEach", true, function(elem) {
+                          elem && elem.parentNode.removeChild(elem);
                         });
-                        Event.subscribe("savePlugin:hideDialog", function() {
-                          return hideDialog();
-                        });
-
-                        var searchIframeTimer = setInterval(function() {
-                          var searchIframe = document.getElementsByName(
-                            message.fromIframe
-                          );
-                          if (searchIframe.length === 0) {
-                            clearInterval(searchIframeTimer);
-                            hideDialog();
-                            ES(allNodes, "forEach", true, function(elem) {
-                              elem && elem.parentNode.removeChild(elem);
-                            });
-                          }
-                        }, 500);
-                      },
-                      "bind",
-                      true,
-                      this
-                    )
-                  );
+                      }
+                    }, 500);
+                  });
                 },
 
                 positionOnScreen: function positionOnScreen(
@@ -17037,137 +16967,126 @@ try {
               Event,
               XD
             ) {
-              function VideoCache(initData) {
+              var VideoCache = (function() {
                 "use strict";
-                this.$VideoCache_isMuted = initData.isMuted;
-                this.$VideoCache_volume = initData.volume;
-                this.$VideoCache_timePosition = initData.timePosition;
-                this.$VideoCache_duration = initData.duration;
-              }
-              VideoCache.prototype.update = function(data) {
-                "use strict";
-                if (data.isMuted !== undefined) {
-                  this.$VideoCache_isMuted = data.isMuted;
-                }
-                if (data.volume !== undefined) {
-                  this.$VideoCache_volume = data.volume;
-                }
-                if (data.timePosition !== undefined) {
-                  this.$VideoCache_timePosition = data.timePosition;
-                }
-                if (data.duration !== undefined) {
-                  this.$VideoCache_duration = data.duration;
-                }
-              };
-              VideoCache.prototype.isMuted = function() {
-                "use strict";
-                return this.$VideoCache_isMuted;
-              };
-              VideoCache.prototype.getVolume = function() {
-                "use strict";
-                return this.$VideoCache_isMuted ? 0 : this.$VideoCache_volume;
-              };
-              VideoCache.prototype.getCurrentPosition = function() {
-                "use strict";
-                return this.$VideoCache_timePosition;
-              };
-              VideoCache.prototype.getDuration = function() {
-                "use strict";
-                return this.$VideoCache_duration;
-              };
 
-              function VideoController(iframeName, observableMixin, cache) {
+                function VideoCache(initData) {
+                  this.$VideoCache_isMuted = initData.isMuted;
+                  this.$VideoCache_volume = initData.volume;
+                  this.$VideoCache_timePosition = initData.timePosition;
+                  this.$VideoCache_duration = initData.duration;
+                }
+                var _proto = VideoCache.prototype;
+                _proto.update = function update(data) {
+                  if (data.isMuted !== undefined) {
+                    this.$VideoCache_isMuted = data.isMuted;
+                  }
+                  if (data.volume !== undefined) {
+                    this.$VideoCache_volume = data.volume;
+                  }
+                  if (data.timePosition !== undefined) {
+                    this.$VideoCache_timePosition = data.timePosition;
+                  }
+                  if (data.duration !== undefined) {
+                    this.$VideoCache_duration = data.duration;
+                  }
+                };
+                _proto.isMuted = function isMuted() {
+                  return this.$VideoCache_isMuted;
+                };
+                _proto.getVolume = function getVolume() {
+                  return this.$VideoCache_isMuted ? 0 : this.$VideoCache_volume;
+                };
+                _proto.getCurrentPosition = function getCurrentPosition() {
+                  return this.$VideoCache_timePosition;
+                };
+                _proto.getDuration = function getDuration() {
+                  return this.$VideoCache_duration;
+                };
+                return VideoCache;
+              })();
+              var VideoController = (function() {
                 "use strict";
-                this.$VideoController_iframeName = iframeName;
-                this.$VideoController_sharedObservable = observableMixin;
-                this.$VideoController_cache = cache;
-              }
-              VideoController.prototype.play = function() {
-                "use strict";
-                XD.sendToFacebook(this.$VideoController_iframeName, {
-                  method: "play",
-                  params: ES("JSON", "stringify", false, {})
-                });
-              };
-              VideoController.prototype.pause = function() {
-                "use strict";
-                XD.sendToFacebook(this.$VideoController_iframeName, {
-                  method: "pause",
-                  params: ES("JSON", "stringify", false, {})
-                });
-              };
-              VideoController.prototype.seek = function(target) {
-                "use strict";
-                Assert.isNumber(target, "Invalid argument");
-                XD.sendToFacebook(this.$VideoController_iframeName, {
-                  method: "seek",
-                  params: ES("JSON", "stringify", false, {
-                    target: target
-                  })
-                });
-              };
-              VideoController.prototype.mute = function() {
-                "use strict";
-                XD.sendToFacebook(this.$VideoController_iframeName, {
-                  method: "mute",
-                  params: ES("JSON", "stringify", false, {})
-                });
-              };
-              VideoController.prototype.unmute = function() {
-                "use strict";
-                XD.sendToFacebook(this.$VideoController_iframeName, {
-                  method: "unmute",
-                  params: ES("JSON", "stringify", false, {})
-                });
-              };
-              VideoController.prototype.setVolume = function(volume) {
-                "use strict";
-                Assert.isNumber(volume, "Invalid argument");
-                XD.sendToFacebook(this.$VideoController_iframeName, {
-                  method: "setVolume",
-                  params: ES("JSON", "stringify", false, {
-                    volume: volume
-                  })
-                });
-              };
-              VideoController.prototype.isMuted = function() {
-                "use strict";
-                return this.$VideoController_cache.isMuted();
-              };
-              VideoController.prototype.getVolume = function() {
-                "use strict";
-                return this.$VideoController_cache.getVolume();
-              };
-              VideoController.prototype.getCurrentPosition = function() {
-                "use strict";
-                return this.$VideoController_cache.getCurrentPosition();
-              };
-              VideoController.prototype.getDuration = function() {
-                "use strict";
-                return this.$VideoController_cache.getDuration();
-              };
-              VideoController.prototype.subscribe = function(event, callback) {
-                "use strict";
-                Assert.isString(event, "Invalid argument");
-                Assert.isFunction(callback, "Invalid argument");
-                this.$VideoController_sharedObservable.subscribe(
-                  event,
-                  callback
-                );
-                return {
-                  release: ES(
-                    function() {
-                      this.$VideoController_sharedObservable.unsubscribe(
+
+                function VideoController(iframeName, observableMixin, cache) {
+                  this.$VideoController_iframeName = iframeName;
+                  this.$VideoController_sharedObservable = observableMixin;
+                  this.$VideoController_cache = cache;
+                }
+                var _proto2 = VideoController.prototype;
+                _proto2.play = function play() {
+                  XD.sendToFacebook(this.$VideoController_iframeName, {
+                    method: "play",
+                    params: ES("JSON", "stringify", false, {})
+                  });
+                };
+                _proto2.pause = function pause() {
+                  XD.sendToFacebook(this.$VideoController_iframeName, {
+                    method: "pause",
+                    params: ES("JSON", "stringify", false, {})
+                  });
+                };
+                _proto2.seek = function seek(target) {
+                  Assert.isNumber(target, "Invalid argument");
+                  XD.sendToFacebook(this.$VideoController_iframeName, {
+                    method: "seek",
+                    params: ES("JSON", "stringify", false, {
+                      target: target
+                    })
+                  });
+                };
+                _proto2.mute = function mute() {
+                  XD.sendToFacebook(this.$VideoController_iframeName, {
+                    method: "mute",
+                    params: ES("JSON", "stringify", false, {})
+                  });
+                };
+                _proto2.unmute = function unmute() {
+                  XD.sendToFacebook(this.$VideoController_iframeName, {
+                    method: "unmute",
+                    params: ES("JSON", "stringify", false, {})
+                  });
+                };
+                _proto2.setVolume = function setVolume(volume) {
+                  Assert.isNumber(volume, "Invalid argument");
+                  XD.sendToFacebook(this.$VideoController_iframeName, {
+                    method: "setVolume",
+                    params: ES("JSON", "stringify", false, {
+                      volume: volume
+                    })
+                  });
+                };
+                _proto2.isMuted = function isMuted() {
+                  return this.$VideoController_cache.isMuted();
+                };
+                _proto2.getVolume = function getVolume() {
+                  return this.$VideoController_cache.getVolume();
+                };
+                _proto2.getCurrentPosition = function getCurrentPosition() {
+                  return this.$VideoController_cache.getCurrentPosition();
+                };
+                _proto2.getDuration = function getDuration() {
+                  return this.$VideoController_cache.getDuration();
+                };
+                _proto2.subscribe = function subscribe(event, callback) {
+                  var _this = this;
+                  Assert.isString(event, "Invalid argument");
+                  Assert.isFunction(callback, "Invalid argument");
+                  this.$VideoController_sharedObservable.subscribe(
+                    event,
+                    callback
+                  );
+                  return {
+                    release: function release() {
+                      _this.$VideoController_sharedObservable.unsubscribe(
                         event,
                         callback
                       );
-                    },
-                    "bind",
-                    true,
-                    this
-                  )
+                    }
+                  };
                 };
-              };
+                return VideoController;
+              })();
 
               var Video = IframePlugin.extend({
                 constructor: function constructor(elem, ns, tag, attr) {
@@ -17331,7 +17250,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"4735423","namespace":"FB","message":"' +
+        '","revision":"4747275","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
