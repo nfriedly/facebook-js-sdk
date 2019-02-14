@@ -1,4 +1,4 @@
-/*1550105954,,JIT Construction: v4763002,en_US*/
+/*1550113149,,JIT Construction: v4763454,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3743,7 +3743,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "4763002",
+            revision: "4763454",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -5028,6 +5028,7 @@ try {
                 AutoLogAppEvents: false,
                 ClientID: "",
                 CookieUserID: "",
+                EnforceHttps: false,
                 Environment: ENVIRONMENTS.UNKNOWN,
                 Initialized: false,
                 IsVersioned: false,
@@ -5177,15 +5178,19 @@ try {
 
                 setSignedRequestCookie: function setSignedRequestCookie(
                   signedRequest,
-                  expiration,
-                  secure
+                  expiration
                 ) {
                   if (signedRequest === "") {
                     throw new Error(
                       "Value passed to Cookie.setSignedRequestCookie was empty."
                     );
                   }
-                  setRaw("fbsr_", signedRequest, expiration, secure);
+                  setRaw(
+                    "fbsr_",
+                    signedRequest,
+                    expiration,
+                    Runtime.getEnforceHttps()
+                  );
                 },
 
                 clearSignedRequestCookie: function clearSignedRequestCookie() {
@@ -8398,6 +8403,25 @@ try {
                       userID = parsedSignedRequest.user_id;
                     }
                   }
+
+                  if (Runtime.getUseCookie()) {
+                    var expirationTime =
+                      authResponse.expiresIn === 0
+                        ? 0
+                        : ES("Date", "now", false) +
+                          authResponse.expiresIn * 1000;
+                    Cookie.setSignedRequestCookie(
+                      authResponse.signedRequest,
+                      expirationTime
+                    );
+                  }
+                } else {
+                  if (Runtime.getUseCookie()) {
+                    Cookie.clearSignedRequestCookie();
+                  }
+                  if (Runtime.getUseLocalStorage()) {
+                    removeLocalStorageToken();
+                  }
                 }
 
                 var currentStatus = Runtime.getLoginStatus();
@@ -8446,7 +8470,6 @@ try {
               function xdResponseWrapper(cb, authResponse, method) {
                 return function(params) {
                   var status;
-                  var enforceHttps = false;
                   if (params && params.access_token) {
                     var parsedSignedRequest = SignedRequest.parse(
                       params.signed_request
@@ -8481,8 +8504,13 @@ try {
                       });
                     }
 
+                    var baseDomain = Cookie.getDomain();
+                    if (!baseDomain && params.base_domain) {
+                      Cookie.setDomain("." + params.base_domain);
+                    }
+
                     if (params.enforce_https) {
-                      enforceHttps = true;
+                      Runtime.setEnforceHttps(true);
                     }
 
                     if (
@@ -8498,23 +8526,6 @@ try {
                         );
                       }
                     }
-
-                    if (Runtime.getUseCookie()) {
-                      var expirationTime =
-                        authResponse.expiresIn === 0
-                          ? 0
-                          : ES("Date", "now", false) +
-                            authResponse.expiresIn * 1000;
-                      var baseDomain = Cookie.getDomain();
-                      if (!baseDomain && params.base_domain) {
-                        Cookie.setDomain("." + params.base_domain);
-                      }
-                      Cookie.setSignedRequestCookie(
-                        params.signed_request,
-                        expirationTime,
-                        enforceHttps
-                      );
-                    }
                     removeLogoutState();
                     status = "connected";
                     setAuthResponse(authResponse, status);
@@ -8526,12 +8537,7 @@ try {
                       status = "unknown";
                       setAuthResponse(null, status);
                     }
-                    if (Runtime.getUseCookie()) {
-                      Cookie.clearSignedRequestCookie();
-                    }
-                    if (Runtime.getUseLocalStorage()) {
-                      removeLocalStorageToken();
-                    }
+
                     if (method === "logout") {
                       setLogoutState();
 
@@ -8775,7 +8781,6 @@ try {
                 setAuthResponse: setAuthResponse,
                 getAuthResponse: getAuthResponse,
                 parseSignedRequest: SignedRequest.parse,
-
                 xdResponseWrapper: xdResponseWrapper
               });
 
@@ -17258,7 +17263,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"4763002","namespace":"FB","message":"' +
+        '","revision":"4763454","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
