@@ -1,4 +1,4 @@
-/*1550113149,,JIT Construction: v4763454,en_US*/
+/*1550267953,,JIT Construction: v4770473,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3743,7 +3743,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "4763454",
+            revision: "4770473",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -4019,7 +4019,7 @@ try {
               exports
             ) {
               module.exports = ES("Object", "freeze", false, {
-                ALLOW_REENTRY: "allow_reentry",
+                IGNORE_REENTRY: "ignore_reentry",
                 ANCESTOR_ORIGINS: "ancestor_origins",
                 ANDROID_KEY: "android_key",
                 API_KEY: "api_key",
@@ -17263,7 +17263,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"4763454","namespace":"FB","message":"' +
+        '","revision":"4770473","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
