@@ -1,4 +1,4 @@
-/*1550614167,,JIT Construction: v4776029,en_US*/
+/*1550795981,,JIT Construction: v4785025,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3743,7 +3743,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "4776029",
+            revision: "4785025",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -8298,7 +8298,7 @@ try {
 
               module.exports = XD;
             },
-            null
+            3
           );
           __d(
             "sdk.getContextType",
@@ -8602,19 +8602,25 @@ try {
                 var redirCancelled = false;
 
                 if (
-                  document.referrer === "" ||
-                  /^https?:\/\/([\w\.]+)?facebook.com\//.test(document.referrer)
+                  Runtime.getLoginStatus() !== "connected" &&
+                  (document.referrer === "" ||
+                    /^https?:\/\/([\w\.]+)?facebook.com\//.test(
+                      document.referrer
+                    ))
                 ) {
                   var fragment = location.hash.substr(1);
                   if (fragment !== "") {
                     var fragmentParams = QueryString.decode(fragment, true);
-
-                    if (window == top) {
-                      location.hash = "";
-                    }
                     redirAccessToken = fragmentParams.access_token;
                     if (redirAccessToken != null) {
                       removeLogoutState();
+                    }
+
+                    if (window == top && redirAccessToken != null) {
+                      delete fragmentParams.access_token;
+                      delete fragmentParams.code;
+                      delete fragmentParams.signed_request;
+                      location.hash = QueryString.encode(fragmentParams);
                     }
                   }
 
@@ -17264,7 +17270,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"4776029","namespace":"FB","message":"' +
+        '","revision":"4785025","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
