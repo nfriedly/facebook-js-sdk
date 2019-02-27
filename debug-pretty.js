@@ -1,4 +1,4 @@
-/*1551293970,,JIT Construction: v4801725,en_US*/
+/*1551310750,,JIT Construction: v4803601,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3720,7 +3720,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "4801725",
+            revision: "4803601",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -4010,10 +4010,10 @@ try {
                 DISPLAY: "display",
                 DOMAIN: "domain",
                 E2E: "e2e",
-                EXPLICIT_TOKEN: "explicit_token",
                 EXTRAS: "extras",
                 FALLBACK_REDIRECT_URI: "fallback_redirect_uri",
                 FORCE_CONFIRMATION: "force_confirmation",
+                INPUT_TOKEN: "input_token",
                 LOGGER_ID: "logger_id",
                 LOGGING_TOKEN: "logging_token",
                 MBASIC_NAVIGATION: "mbasic_navigation",
@@ -4051,6 +4051,7 @@ try {
                 FBAPP_PRES: "fbapp_pres",
                 LOCAL_CLIENT_ID: "local_client_id",
                 FB_SOURCE: "fbs",
+                WANTS_COOKIE_DATA: "wants_cookie_data",
                 AUTH_TOKEN: "auth_token",
                 RETURN_SESSION: "return_session",
                 SESSION_VERSION: "session_version",
@@ -8688,7 +8689,7 @@ try {
 
                     if (savedToken) {
                       url.addQueryData(
-                        require("OAuthControllerParameterName").EXPLICIT_TOKEN,
+                        require("OAuthControllerParameterName").INPUT_TOKEN,
                         savedToken
                       );
                     }
@@ -8697,7 +8698,7 @@ try {
 
                 if (redirAccessToken != null) {
                   url.addQueryData(
-                    require("OAuthControllerParameterName").EXPLICIT_TOKEN,
+                    require("OAuthControllerParameterName").INPUT_TOKEN,
                     redirAccessToken
                   );
                 }
@@ -17381,7 +17382,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"4801725","namespace":"FB","message":"' +
+        '","revision":"4803601","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
