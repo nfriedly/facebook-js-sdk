@@ -1,4 +1,4 @@
-/*1551310750,,JIT Construction: v4803601,en_US*/
+/*1551757156,,JIT Construction: v4818733,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3720,7 +3720,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "4803601",
+            revision: "4818733",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -4607,6 +4607,43 @@ try {
               };
 
               module.exports = UrlMap;
+            },
+            null
+          );
+          __d(
+            "WebOAuthStatus",
+            [],
+            function $module_WebOAuthStatus(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              module.exports = ES("Object", "freeze", false, {
+                CONNECTED: "connected",
+                NOT_AUTHORIZED: "not_authorized",
+                UNKNOWN: "unknown"
+              });
+            },
+            null
+          );
+          __d(
+            "WebOAuthStatusCORSHeaders",
+            [],
+            function $module_WebOAuthStatusCORSHeaders(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              module.exports = ES("Object", "freeze", false, {
+                AUTH_RESPONSE: "fb-ar",
+                STATUS: "fb-s"
+              });
             },
             null
           );
@@ -8305,6 +8342,8 @@ try {
               "ObservableMixin",
               "QueryString",
               "UrlMap",
+              "WebOAuthStatus",
+              "WebOAuthStatusCORSHeaders",
               "guid",
               "sdk.Cookie",
               "sdk.createIframe",
@@ -8425,7 +8464,7 @@ try {
                     authResponse = {
                       accessToken: params.access_token,
                       userID: parsedSignedRequest.user_id,
-                      expiresIn: parseInt(params.expires_in, 10),
+                      expiresIn: Number(params.expires_in),
                       signedRequest: params.signed_request
                     };
 
@@ -8437,9 +8476,8 @@ try {
 
                     if (params.reauthorize_required_in) {
                       authResponse = babelHelpers["extends"]({}, authResponse, {
-                        reauthorize_required_in: parseInt(
-                          params.reauthorize_required_in,
-                          10
+                        reauthorize_required_in: Number(
+                          params.reauthorize_required_in
                         )
                       });
                     }
@@ -8605,6 +8643,23 @@ try {
                   return;
                 }
 
+                if (require("sdk.feature")("use_cors_oauth_status", false)) {
+                  if (require("sdk.Runtime").getUseLocalStorage()) {
+                    var localStorage = require("sdk.WebStorage").getLocalStorageForRead();
+                    if (localStorage) {
+                      var savedToken = localStorage.getItem(
+                        LOCAL_STORAGE_TOKEN_PREFIX +
+                          require("sdk.Runtime").getClientID()
+                      );
+
+                      if (savedToken) {
+                        getLoginStatusCORS(fn, savedToken, currentAuthResponse);
+                        return;
+                      }
+                    }
+                  }
+                }
+
                 var handleResponse = xdResponseWrapper(
                   fn,
                   currentAuthResponse,
@@ -8680,17 +8735,17 @@ try {
                 }
 
                 if (require("sdk.Runtime").getUseLocalStorage()) {
-                  var localStorage = require("sdk.WebStorage").getLocalStorageForRead();
-                  if (localStorage) {
-                    var savedToken = localStorage.getItem(
+                  var _localStorage = require("sdk.WebStorage").getLocalStorageForRead();
+                  if (_localStorage) {
+                    var _savedToken = _localStorage.getItem(
                       LOCAL_STORAGE_TOKEN_PREFIX +
                         require("sdk.Runtime").getClientID()
                     );
 
-                    if (savedToken) {
+                    if (_savedToken) {
                       url.addQueryData(
                         require("OAuthControllerParameterName").INPUT_TOKEN,
-                        savedToken
+                        _savedToken
                       );
                     }
                   }
@@ -8709,6 +8764,148 @@ try {
                   url: url.toString(),
                   style: { display: "none" }
                 });
+              }
+
+              function getLoginStatusCORS(cb, token, currentAuthResponse) {
+                var xhr = new XMLHttpRequest();
+                var url = new (require("sdk.URI"))(
+                  require("UrlMap").resolve("www") + "/x/oauth/status"
+                )
+                  .addQueryData(
+                    require("OAuthControllerParameterName").CLIENT_ID,
+                    require("sdk.Runtime").getClientID()
+                  )
+                  .addQueryData(
+                    require("OAuthControllerParameterName").INPUT_TOKEN,
+                    token
+                  )
+                  .addQueryData(
+                    require("OAuthControllerParameterName").REDIRECT_URI,
+                    window.location.href
+                  )
+                  .addQueryData(
+                    require("OAuthControllerParameterName").ORIGIN,
+                    require("sdk.getContextType")()
+                  )
+                  .addQueryData(
+                    require("OAuthControllerParameterName").SDK,
+                    "joey"
+                  )
+                  .addQueryData(
+                    require("OAuthControllerParameterName").WANTS_COOKIE_DATA,
+                    require("sdk.Runtime").getUseCookie()
+                  );
+
+                function corsFetch() {
+                  if (xhr) {
+                    xhr.open("GET", url, true);
+                    xhr.withCredentials = true;
+                    xhr.onreadystatechange = function() {
+                      var authResponse = currentAuthResponse;
+                      if (xhr.readyState === 4) {
+                        if (xhr.status === 200) {
+                          var xhrStatus = xhr.getResponseHeader(
+                            require("WebOAuthStatusCORSHeaders").STATUS
+                          );
+
+                          switch (xhrStatus) {
+                            case require("WebOAuthStatus").CONNECTED:
+                              var xhrAuthResponse = ES(
+                                "JSON",
+                                "parse",
+                                false,
+                                xhr.getResponseHeader(
+                                  require("WebOAuthStatusCORSHeaders")
+                                    .AUTH_RESPONSE
+                                )
+                              );
+
+                              authResponse = {
+                                accessToken: xhrAuthResponse.access_token,
+                                userID: xhrAuthResponse.user_id,
+                                expiresIn: Number(xhrAuthResponse.expires_in),
+                                signedRequest: xhrAuthResponse.signed_request,
+                                enforceHttps: xhrAuthResponse.enforce_https
+                              };
+
+                              if (
+                                xhrAuthResponse.reauthorize_required_in != null
+                              ) {
+                                authResponse = babelHelpers["extends"](
+                                  {},
+                                  authResponse,
+                                  {
+                                    reauthorize_required_in: Number(
+                                      xhrAuthResponse.reauthorize_required_in
+                                    )
+                                  }
+                                );
+                              }
+
+                              if (
+                                xhrAuthResponse.data_access_expiration_time !=
+                                null
+                              ) {
+                                authResponse = babelHelpers["extends"](
+                                  {},
+                                  authResponse,
+                                  {
+                                    data_access_expiration_time: Number(
+                                      xhrAuthResponse.data_access_expiration_time
+                                    )
+                                  }
+                                );
+                              }
+
+                              if (xhrAuthResponse.base_domain != null) {
+                                authResponse = babelHelpers["extends"](
+                                  {},
+                                  authResponse,
+                                  {
+                                    base_domain: xhrAuthResponse.base_domain
+                                  }
+                                );
+                              }
+                              removeLogoutState();
+                              setAuthResponse(authResponse, xhrStatus);
+                              timer = window.setTimeout(function() {
+                                fetchLoginStatus(function() {});
+                              }, 5400000);
+                              break;
+                            case require("WebOAuthStatus").NOT_AUTHORIZED:
+                              setAuthResponse(null, xhrStatus);
+                              break;
+                            case require("WebOAuthStatus").UNKNOWN:
+                              setAuthResponse(null, xhrStatus);
+                              break;
+                            default:
+                          }
+                        } else {
+                          require("sdk.Scribe").log("jssdk_error", {
+                            appId: require("sdk.Runtime").getClientID(),
+                            error: "CORS_STATUS_FETCH",
+                            extra: { message: "HTTP Status Code " + xhr.status }
+                          });
+
+                          require("Log").error(
+                            "Error retrieving login status, HTTP status code: " +
+                              xhr.status
+                          );
+                        }
+                        if (cb) {
+                          var response = {
+                            authResponse: authResponse,
+                            status: require("sdk.Runtime").getLoginStatus()
+                          };
+
+                          cb(response);
+                        }
+                      }
+                    };
+                    xhr.send();
+                  }
+                }
+                corsFetch();
               }
 
               var loadState;
@@ -8753,6 +8950,7 @@ try {
               ES("Object", "assign", false, Auth, {
                 removeLogoutState: removeLogoutState,
                 getLoginStatus: getLoginStatus,
+                getLoginStatusCORS: getLoginStatusCORS,
                 fetchLoginStatus: fetchLoginStatus,
                 setAuthResponse: setAuthResponse,
                 getAuthResponse: getAuthResponse,
@@ -17382,7 +17580,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"4803601","namespace":"FB","message":"' +
+        '","revision":"4818733","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
