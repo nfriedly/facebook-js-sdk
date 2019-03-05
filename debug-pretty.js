@@ -1,4 +1,4 @@
-/*1551757156,,JIT Construction: v4818733,en_US*/
+/*1551796748,,JIT Construction: v4820568,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -564,7 +564,8 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              ie8DontEnum
             ) {
               var hasOwnProperty = {}.hasOwnProperty;
 
@@ -607,7 +608,7 @@ try {
                   }
                 }
 
-                require("ie8DontEnum")(object, function(prop) {
+                ie8DontEnum(object, function(prop) {
                   return keys.push(prop);
                 });
 
@@ -1051,7 +1052,8 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              ie8DontEnum
             ) {
               var hasOwnProperty = {}.hasOwnProperty;
 
@@ -1087,7 +1089,7 @@ try {
                       }
                     }
 
-                    require("ie8DontEnum")(source, function(prop) {
+                    ie8DontEnum(source, function(prop) {
                       return (target[prop] = source[prop]);
                     });
                   }
@@ -1122,10 +1124,12 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              _require,
+              _require2
             ) {
-              var isArray = require("ES5Array").isArray;
-              var indexOf = require("ES5ArrayPrototype").indexOf;
+              var isArray = _require.isArray;
+              var indexOf = _require2.indexOf;
 
               function toLength(number) {
                 return Math.min(
@@ -1203,7 +1207,8 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              ie8DontEnum
             ) {
               var hasOwnProperty = {}.hasOwnProperty;
 
@@ -1221,7 +1226,7 @@ try {
                   }
                 }
 
-                require("ie8DontEnum")(object, function(prop) {
+                ie8DontEnum(object, function(prop) {
                   return entries.push([prop, object[prop]]);
                 });
 
@@ -1240,7 +1245,7 @@ try {
                   }
                 }
 
-                require("ie8DontEnum")(object, function(prop) {
+                ie8DontEnum(object, function(prop) {
                   return values.push(object[prop]);
                 });
 
@@ -2665,36 +2670,51 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              ES5Array,
+              ES5ArrayPrototype,
+              ES5Date,
+              ES5FunctionPrototype,
+              ES5Object,
+              ES5StringPrototype,
+              ES6Array,
+              ES6ArrayPrototype,
+              ES6DatePrototype,
+              ES6Number,
+              ES6Object,
+              ES7ArrayPrototype,
+              ES7Object,
+              ES7StringPrototype,
+              JSON3
             ) {
               var toString = {}.toString;
 
               var methodCache = {
-                "JSON.stringify": require("json3").stringify,
-                "JSON.parse": require("json3").parse
+                "JSON.stringify": JSON3.stringify,
+                "JSON.parse": JSON3.parse
               };
 
               var es5Polyfills = {
-                "Array.prototype": require("ES5ArrayPrototype"),
-                "Function.prototype": require("ES5FunctionPrototype"),
-                "String.prototype": require("ES5StringPrototype"),
-                Object: require("ES5Object"),
-                Array: require("ES5Array"),
-                Date: require("ES5Date")
+                "Array.prototype": ES5ArrayPrototype,
+                "Function.prototype": ES5FunctionPrototype,
+                "String.prototype": ES5StringPrototype,
+                Object: ES5Object,
+                Array: ES5Array,
+                Date: ES5Date
               };
 
               var es6Polyfills = {
-                Object: require("ES6Object"),
-                "Array.prototype": require("ES6ArrayPrototype"),
-                "Date.prototype": require("ES6DatePrototype"),
-                Number: require("ES6Number"),
-                Array: require("ES6Array")
+                Object: ES6Object,
+                "Array.prototype": ES6ArrayPrototype,
+                "Date.prototype": ES6DatePrototype,
+                Number: ES6Number,
+                Array: ES6Array
               };
 
               var es7Polyfills = {
-                Object: require("ES7Object"),
-                "String.prototype": require("ES7StringPrototype"),
-                "Array.prototype": require("ES7ArrayPrototype")
+                Object: ES7Object,
+                "String.prototype": ES7StringPrototype,
+                "Array.prototype": ES7ArrayPrototype
               };
 
               function setupMethodsCache(polyfills) {
@@ -2806,14 +2826,17 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              ES5FunctionPrototype,
+              ES5Object,
+              ES6Object
             ) {
               var babelHelpers = {};
               var hasOwn = Object.prototype.hasOwnProperty;
 
               babelHelpers.inheritsLoose = function(subClass, superClass) {
-                require("ES6Object").assign(subClass, superClass);
-                subClass.prototype = require("ES5Object").create(
+                ES6Object.assign(subClass, superClass);
+                subClass.prototype = ES5Object.create(
                   superClass && superClass.prototype
                 );
                 subClass.prototype.constructor = subClass;
@@ -2860,7 +2883,7 @@ try {
                 return self;
               };
 
-              babelHelpers._extends = require("ES6Object").assign;
+              babelHelpers._extends = ES6Object.assign;
 
               babelHelpers["extends"] = babelHelpers._extends;
 
@@ -2892,7 +2915,7 @@ try {
                 return strings;
               };
 
-              babelHelpers.bind = require("ES5FunctionPrototype").bind;
+              babelHelpers.bind = ES5FunctionPrototype.bind;
 
               module.exports = babelHelpers;
             },
@@ -3720,7 +3743,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "4818733",
+            revision: "4820568",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -3744,7 +3767,7 @@ try {
           });
           __d("JSSDKXDConfig", [], {
             XdUrl: "/connect/xd_arbiter.php?version=44",
-            XdBundleUrl: "/connect/xd_arbiter/r/MSkJFLgI8UX.js?version=44",
+            XdBundleUrl: "/connect/xd_arbiter/r/H4FQM8nbIVm.js?version=44",
             useCdn: true
           });
           __d("JSSDKCssConfig", [], {
@@ -3885,18 +3908,18 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              DOMWrapper,
+              dotAccess,
+              guid,
+              wrapFunction
             ) {
               var rootObject;
               var callbackPrefix;
 
               var GlobalCallback = {
                 setPrefix: function setPrefix(prefix) {
-                  rootObject = require("dotAccess")(
-                    require("DOMWrapper").getWindow(),
-                    prefix,
-                    true
-                  );
+                  rootObject = dotAccess(DOMWrapper.getWindow(), prefix, true);
                   callbackPrefix = prefix;
                 },
 
@@ -3904,8 +3927,8 @@ try {
                   if (!rootObject) {
                     this.setPrefix("__globalCallbacks");
                   }
-                  var id = require("guid")();
-                  rootObject[id] = require("wrapFunction")(
+                  var id = guid();
+                  rootObject[id] = wrapFunction(
                     fn,
                     "entry",
                     description || "GlobalCallback"
@@ -4275,20 +4298,20 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              javascript_TAAL_OpCode
             ) {
               "use strict";
 
               var TAALOpcodes = {
                 previousFile: function previousFile() {
-                  return require("javascript_shared_TAAL_OpCode").PREVIOUS_FILE;
+                  return javascript_TAAL_OpCode.PREVIOUS_FILE;
                 },
                 previousFrame: function previousFrame() {
-                  return require("javascript_shared_TAAL_OpCode")
-                    .PREVIOUS_FRAME;
+                  return javascript_TAAL_OpCode.PREVIOUS_FRAME;
                 },
                 previousDirectory: function previousDirectory() {
-                  return require("javascript_shared_TAAL_OpCode").PREVIOUS_DIR;
+                  return javascript_TAAL_OpCode.PREVIOUS_DIR;
                 },
                 getString: function getString(opcodes) {
                   return opcodes && opcodes.length
@@ -4310,30 +4333,31 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              TAALOpcodes
             ) {
               "use strict";
 
               var TAAL = {
                 blameToPreviousFile: function blameToPreviousFile(message) {
                   return this.applyOpcodes(message, [
-                    require("TAALOpcodes").previousFile()
+                    TAALOpcodes.previousFile()
                   ]);
                 },
                 blameToPreviousFrame: function blameToPreviousFrame(message) {
                   return this.applyOpcodes(message, [
-                    require("TAALOpcodes").previousFrame()
+                    TAALOpcodes.previousFrame()
                   ]);
                 },
                 blameToPreviousDirectory: function blameToPreviousDirectory(
                   message
                 ) {
                   return this.applyOpcodes(message, [
-                    require("TAALOpcodes").previousDirectory()
+                    TAALOpcodes.previousDirectory()
                   ]);
                 },
                 applyOpcodes: function applyOpcodes(message, opcodes) {
-                  return message + require("TAALOpcodes").getString(opcodes);
+                  return message + TAALOpcodes.getString(opcodes);
                 }
               };
 
@@ -4395,7 +4419,8 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              eprintf
             ) {
               function ex(format) {
                 for (
@@ -4419,8 +4444,8 @@ try {
                 }
 
                 if (__DEV__) {
-                  return require("eprintf").call.apply(
-                    require("eprintf"),
+                  return eprintf.call.apply(
+                    eprintf,
                     [null, format].concat(args)
                   );
                 } else {
@@ -4479,13 +4504,17 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              Env,
+              TAAL,
+              ex,
+              sprintf
             ) {
               "use strict";
 
-              var printingFunction = require("ex");
+              var printingFunction = ex;
               if (__DEV__) {
-                printingFunction = require("sprintf");
+                printingFunction = sprintf;
               }
 
               function invariant(condition, format) {
@@ -4515,9 +4544,7 @@ try {
                       formatString += "%s,";
                     }
                   }
-                  formatString = require("TAAL").blameToPreviousFrame(
-                    formatString
-                  );
+                  formatString = TAAL.blameToPreviousFrame(formatString);
                   var error = new Error(
                     printingFunction.apply(
                       undefined,
@@ -4542,7 +4569,7 @@ try {
                 }
 
                 var decoderLink =
-                  require("Env").show_invariant_decoder === true
+                  Env.show_invariant_decoder === true
                     ? "visit " +
                       buildDecoderLink(number, params) +
                       " to see the full message."
@@ -4583,7 +4610,7 @@ try {
           );
           __d(
             "UrlMap",
-            ["invariant", "UrlMapConfig"],
+            ["UrlMapConfig", "invariant"],
             function $module_UrlMap(
               global,
               require,
@@ -4591,16 +4618,17 @@ try {
               requireLazy,
               module,
               exports,
+              UrlMapConfig,
               invariant
             ) {
               var UrlMap = {
                 resolve: function resolve(key) {
                   var protocol = "https";
 
-                  if (key in require("UrlMapConfig")) {
-                    return protocol + "://" + require("UrlMapConfig")[key];
+                  if (key in UrlMapConfig) {
+                    return protocol + "://" + UrlMapConfig[key];
                   }
-                  key in require("UrlMapConfig") ||
+                  key in UrlMapConfig ||
                     invariant(0, "Unknown key in UrlMapConfig: %s", key);
                   return "";
                 }
@@ -4693,7 +4721,8 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              ManagedError
             ) {
               var AssertionError = (function(_ManagedError) {
                 "use strict";
@@ -4702,7 +4731,7 @@ try {
                   return _ManagedError.call(this, message) || this;
                 }
                 return AssertionError;
-              })(require("ManagedError"));
+              })(ManagedError);
 
               module.exports = AssertionError;
             },
@@ -4717,11 +4746,13 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              AssertionError,
+              sprintf
             ) {
               function assert(expression, message) {
                 if (typeof expression !== "boolean" || !expression) {
-                  throw new (require("AssertionError"))(message);
+                  throw new AssertionError(message);
                 }
                 return expression;
               }
@@ -4741,7 +4772,7 @@ try {
                 assert(
                   ES(type, "indexOf", true, actualType) !== -1,
                   message ||
-                    require("sprintf")(
+                    sprintf(
                       "Expression is of type %s, not %s",
                       actualType,
                       type
@@ -4823,7 +4854,8 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              Assert
             ) {
               function Type() {
                 var mixins = this.__mixins;
@@ -4885,7 +4917,7 @@ try {
                         this.parent.apply(this, arguments);
                       };
 
-                require("Assert").isFunction(constructor);
+                Assert.isFunction(constructor);
 
                 if (from && from.prototype instanceof Type === false) {
                   throw new Error("parent type does not inherit from Type");
@@ -4964,11 +4996,13 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              ObservableMixin,
+              Type
             ) {
               "use strict";
 
-              var Model = require("Type").extend(
+              var Model = Type.extend(
                 {
                   constructor: function constructor(properties) {
                     this.parent();
@@ -4999,7 +5033,8 @@ try {
                     );
                   }
                 },
-                require("ObservableMixin")
+
+                ObservableMixin
               );
 
               module.exports = Model;
@@ -5015,7 +5050,9 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              RuntimeConfig,
+              Model
             ) {
               var ENVIRONMENTS = {
                 UNKNOWN: 0,
@@ -5024,7 +5061,7 @@ try {
                 PLATFORM: 4
               };
 
-              var Runtime = new (require("sdk.Model"))({
+              var Runtime = new Model({
                 AccessToken: "",
                 AutoLogAppEvents: false,
                 ClientID: "",
@@ -5034,15 +5071,15 @@ try {
                 Initialized: false,
                 IsVersioned: false,
                 KidDirectedSite: undefined,
-                Locale: require("JSSDKRuntimeConfig").locale,
+                Locale: RuntimeConfig.locale,
                 LoggedIntoFacebook: undefined,
                 LoginStatus: undefined,
-                Revision: require("JSSDKRuntimeConfig").revision,
-                Rtl: require("JSSDKRuntimeConfig").rtl,
+                Revision: RuntimeConfig.revision,
+                Rtl: RuntimeConfig.rtl,
                 Scope: undefined,
-                SDKAB: require("JSSDKRuntimeConfig").sdkab,
-                SDKUrl: require("JSSDKRuntimeConfig").sdkurl,
-                SDKNS: require("JSSDKRuntimeConfig").sdkns,
+                SDKAB: RuntimeConfig.sdkab,
+                SDKUrl: RuntimeConfig.sdkurl,
+                SDKNS: RuntimeConfig.sdkns,
                 UseCookie: false,
                 UseLocalStorage: true,
                 UserID: "",
@@ -5091,14 +5128,15 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              QueryString,
+              Runtime
             ) {
               var domain = null;
 
               function setRaw(startingPrefix, val, ts, secure) {
                 var _domain;
-                var prefix =
-                  startingPrefix + require("sdk.Runtime").getClientID();
+                var prefix = startingPrefix + Runtime.getClientID();
                 var secureFlag = secure ? ";Secure" : "";
                 var useDomain = domain !== null && domain !== ".";
 
@@ -5130,8 +5168,7 @@ try {
               }
 
               function getRaw(startingPrefix) {
-                var prefix =
-                  startingPrefix + require("sdk.Runtime").getClientID();
+                var prefix = startingPrefix + Runtime.getClientID();
                 var regExp = new RegExp("\\b" + prefix + "=([^;]*)\\b");
                 var matches = document.cookie.match(regExp);
                 if (matches === null || matches === undefined) {
@@ -5145,7 +5182,7 @@ try {
                 setDomain: function setDomain(val) {
                   domain = val;
 
-                  var meta = require("QueryString").encode({
+                  var meta = QueryString.encode({
                     base_domain: domain !== null && domain !== "." ? domain : ""
                   });
 
@@ -5165,7 +5202,7 @@ try {
                     cookie !== undefined &&
                     domain === null
                   ) {
-                    var meta = require("QueryString").decode(cookie);
+                    var meta = QueryString.decode(cookie);
 
                     domain = meta.base_domain;
                     return meta;
@@ -5190,7 +5227,7 @@ try {
                     "fbsr_",
                     signedRequest,
                     expiration,
-                    require("sdk.Runtime").getEnforceHttps()
+                    Runtime.getEnforceHttps()
                   );
                 },
 
@@ -5411,12 +5448,11 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              UA
             ) {
               function getBlankIframeSrc() {
-                return require("sdk.UA").ie() < 10
-                  ? "javascript:false"
-                  : "about:blank";
+                return UA.ie() < 10 ? "javascript:false" : "about:blank";
               }
 
               module.exports = getBlankIframeSrc;
@@ -5432,11 +5468,14 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              GlobalCallback,
+              getBlankIframeSrc,
+              guid
             ) {
               function insertIframe(opts) {
-                opts.id = opts.id || require("guid")();
-                opts.name = opts.name || require("guid")();
+                opts.id = opts.id || guid();
+                opts.name = opts.name || guid();
 
                 var srcSet = false;
                 var onloadDone = false;
@@ -5446,7 +5485,7 @@ try {
                     opts.onload && opts.onload(opts.root.firstChild);
                   }
                 };
-                var globalCallback = require("GlobalCallback").create(callback);
+                var globalCallback = GlobalCallback.create(callback);
 
                 if (document.attachEvent) {
                   var html =
@@ -5464,7 +5503,7 @@ try {
                     (opts.height ? "height:" + opts.height + "px;" : "") +
                     '"' +
                     ' src="' +
-                    require("getBlankIframeSrc")() +
+                    getBlankIframeSrc() +
                     '"' +
                     ' frameborder="0"' +
                     ' scrolling="no"' +
@@ -5476,7 +5515,7 @@ try {
 
                   opts.root.innerHTML =
                     '<iframe src="' +
-                    require("getBlankIframeSrc")() +
+                    getBlankIframeSrc() +
                     '"' +
                     ' frameborder="0"' +
                     ' scrolling="no"' +
@@ -5604,7 +5643,10 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              Log,
+              domReady,
+              UA
             ) {
               "use strict";
 
@@ -5617,15 +5659,15 @@ try {
                     if (!visibleRoot) {
                       visibleRoot = root = document.getElementById("fb-root");
                       if (!root) {
-                        require("Log").warn(
+                        Log.warn(
                           'The "fb-root" div has not been created, auto-creating'
                         );
 
                         visibleRoot = root = document.createElement("div");
                         root.id = "fb-root";
 
-                        if (require("sdk.UA").ie() || !document.body) {
-                          require("sdk.domReady")(function() {
+                        if (UA.ie() || !document.body) {
+                          domReady(function() {
                             if (root && document.body) {
                               document.body.appendChild(root);
                             }
@@ -5713,38 +5755,40 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              Miny,
+              QueryString,
+              UrlMap,
+              getBlankIframeSrc,
+              guid,
+              insertIframe,
+              Content,
+              Runtime
             ) {
               function request(params) {
-                var clientID = require("sdk.Runtime").getClientID();
+                var clientID = Runtime.getClientID();
 
                 if (!params.api_key && clientID) {
                   params.api_key = clientID;
                 }
 
-                params.kid_directed_site = require("sdk.Runtime").getKidDirectedSite();
+                params.kid_directed_site = Runtime.getKidDirectedSite();
 
                 var url =
-                  require("UrlMap").resolve("www", true) +
+                  UrlMap.resolve("www", true) +
                   "/impression.php/" +
-                  require("guid")() +
+                  guid() +
                   "/";
-                var fullUrlPath = require("QueryString").appendToUrl(
-                  url,
-                  params
-                );
+                var fullUrlPath = QueryString.appendToUrl(url, params);
                 if (fullUrlPath.length > 2000) {
                   if (params.payload && typeof params.payload === "string") {
-                    var minyPayload = require("Miny").encode(params.payload);
+                    var minyPayload = Miny.encode(params.payload);
                     if (
                       minyPayload &&
                       minyPayload.length < params.payload.length
                     ) {
                       params.payload = minyPayload;
-                      fullUrlPath = require("QueryString").appendToUrl(
-                        url,
-                        params
-                      );
+                      fullUrlPath = QueryString.appendToUrl(url, params);
                     }
                   }
                 }
@@ -5753,10 +5797,10 @@ try {
                   var image = new Image();
                   image.src = fullUrlPath;
                 } else {
-                  var name = require("guid")();
-                  var root = require("sdk.Content").appendHidden("");
-                  require("insertIframe")({
-                    url: require("getBlankIframeSrc")(),
+                  var name = guid();
+                  var root = Content.appendHidden("");
+                  insertIframe({
+                    url: getBlankIframeSrc(),
                     root: root,
                     name: name,
                     className: "fb_hidden fb_invisible",
@@ -5765,7 +5809,7 @@ try {
                     }
                   });
 
-                  require("sdk.Content").submitToTarget({
+                  Content.submitToTarget({
                     url: url,
                     target: name,
                     params: params
@@ -5801,15 +5845,17 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              QueryString,
+              UrlMap,
+              Runtime
             ) {
               function log(category, data) {
                 if (typeof data.extra === "object") {
-                  data.extra.revision = require("sdk.Runtime").getRevision();
+                  data.extra.revision = Runtime.getRevision();
                 }
-                new Image().src = require("QueryString").appendToUrl(
-                  require("UrlMap").resolve("www") +
-                    "/common/scribe_endpoint.php",
+                new Image().src = QueryString.appendToUrl(
+                  UrlMap.resolve("www") + "/common/scribe_endpoint.php",
                   {
                     c: category,
                     m: ES("JSON", "stringify", false, data)
@@ -5919,7 +5965,8 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              Base64
             ) {
               function parse(signed_request) {
                 if (!signed_request) {
@@ -5930,7 +5977,7 @@ try {
                   .split(".", 2)[1]
                   .replace(/\-/g, "+")
                   .replace(/\_/g, "/");
-                return require("Base64").decodeObject(payload);
+                return Base64.decodeObject(payload);
               }
 
               var SignedRequest = {
@@ -6053,9 +6100,10 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              createObjectFrom
             ) {
-              var defaultSchemes = require("createObjectFrom")([
+              var defaultSchemes = createObjectFrom([
                 "blob",
                 "cmms",
                 "fb",
@@ -6160,7 +6208,7 @@ try {
           );
           __d(
             "URIBase",
-            ["invariant", "URIRFC3986", "URISchemes", "ex", "setHostSubdomain"],
+            ["URIRFC3986", "URISchemes", "ex", "invariant", "setHostSubdomain"],
             function $module_URIBase(
               global,
               require,
@@ -6168,7 +6216,11 @@ try {
               requireLazy,
               module,
               exports,
-              invariant
+              URIRFC3986,
+              URISchemes,
+              ex,
+              invariant,
+              setHostSubdomain
             ) {
               var UNSAFE_DOMAIN_PATTERN = new RegExp(
                 "[\\x00-\\x2c\\x2f\\x3b-\\x40\\x5c\\x5e\\x60\\x7b-\\x7f" +
@@ -6205,15 +6257,12 @@ try {
                 }
 
                 uriToParse = ES(uriToParse.toString(), "trim", true);
-                var components = require("URIRFC3986").parse(uriToParse) || {
+                var components = URIRFC3986.parse(uriToParse) || {
                   fragment: null,
                   scheme: null
                 };
 
-                if (
-                  !shouldThrow &&
-                  !require("URISchemes").isAllowed(components.scheme)
-                ) {
+                if (!shouldThrow && !URISchemes.isAllowed(components.scheme)) {
                   return false;
                 }
                 uri.setProtocol(components.scheme || "");
@@ -6249,7 +6298,7 @@ try {
                 if (components.userinfo !== null) {
                   if (shouldThrow) {
                     throw new Error(
-                      require("ex")(
+                      ex(
                         "URI.parse: invalid URI (userinfo is not allowed in a URI): %s",
                         uri.toString()
                       )
@@ -6265,7 +6314,7 @@ try {
                 ) {
                   if (shouldThrow) {
                     throw new Error(
-                      require("ex")(
+                      ex(
                         "URI.parse: invalid URI (no domain but multiple back-slashes): %s",
                         uri.toString()
                       )
@@ -6278,7 +6327,7 @@ try {
                 if (!uri.getProtocol() && SECURITY_PATTERN.test(uriToParse)) {
                   if (shouldThrow) {
                     throw new Error(
-                      require("ex")(
+                      ex(
                         "URI.parse: invalid URI (unsafe protocol-relative URLs): %s",
                         uri.toString()
                       )
@@ -6295,7 +6344,7 @@ try {
                 ) {
                   if (shouldThrow) {
                     throw new Error(
-                      require("ex")(
+                      ex(
                         "URI.parse: invalid URI (domain and path where path lacks leading slash): %s",
                         uri.toString()
                       )
@@ -6335,7 +6384,7 @@ try {
                 }
                 var _proto = URIBase.prototype;
                 _proto.setProtocol = function setProtocol(protocol) {
-                  if (!require("URISchemes").isAllowed(protocol)) {
+                  if (!URISchemes.isAllowed(protocol)) {
                     false ||
                       invariant(
                         0,
@@ -6358,7 +6407,7 @@ try {
                 _proto.setDomain = function setDomain(domain) {
                   if (UNSAFE_DOMAIN_PATTERN.test(domain)) {
                     throw new Error(
-                      require("ex")(
+                      ex(
                         "URI.setDomain: unsafe domain specified: %s for url %s",
                         domain,
                         this.toString()
@@ -6543,9 +6592,7 @@ try {
                 };
                 _proto.setSubdomain = function setSubdomain(subdomain) {
                   var domain = this.qualify().getDomain();
-                  return this.setDomain(
-                    require("setHostSubdomain")(domain, subdomain)
-                  );
+                  return this.setDomain(setHostSubdomain(domain, subdomain));
                 };
                 _proto.getSubdomain = function getSubdomain() {
                   if (!this.getDomain()) {
@@ -6606,23 +6653,26 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              Assert,
+              QueryString,
+              URIBase
             ) {
               var facebookRe = /\.facebook\.com$/;
 
               var serializer = {
                 serialize: function serialize(map) {
-                  return map ? require("QueryString").encode(map) : "";
+                  return map ? QueryString.encode(map) : "";
                 },
                 deserialize: function deserialize(text) {
-                  return text ? require("QueryString").decode(text) : {};
+                  return text ? QueryString.decode(text) : {};
                 }
               };
               var URI = (function(_URIBase) {
                 "use strict";
                 babelHelpers.inheritsLoose(URI, _URIBase);
                 function URI(uri) {
-                  require("Assert").isString(
+                  Assert.isString(
                     uri,
                     "The passed argument was of invalid type."
                   );
@@ -6636,10 +6686,10 @@ try {
                   return this.toString();
                 };
                 URI.isValidURI = function isValidURI(uri) {
-                  return require("URIBase").isValid(uri, serializer);
+                  return URIBase.isValid(uri, serializer);
                 };
                 return URI;
-              })(require("URIBase"));
+              })(URIBase);
 
               module.exports = URI;
             },
@@ -6654,7 +6704,8 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              Log
             ) {
               "use strict";
 
@@ -6663,7 +6714,7 @@ try {
                   try {
                     return window.localStorage;
                   } catch (_unused) {
-                    require("Log").warn("Failed to get local storage");
+                    Log.warn("Failed to get local storage");
                   }
                   return null;
                 },
@@ -6679,7 +6730,7 @@ try {
                     }
                     return storage;
                   } catch (_unused2) {
-                    require("Log").warn("Failed to get local storage");
+                    Log.warn("Failed to get local storage");
                   }
                   return null;
                 }
@@ -6878,11 +6929,11 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              SDKConfig,
+              FeatureFunctor
             ) {
-              module.exports = require("sdk.FeatureFunctor").create(
-                require("JSSDKConfig")
-              );
+              module.exports = FeatureFunctor.create(SDKConfig);
             },
             null
           );
@@ -6895,7 +6946,10 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              Log,
+              feature,
+              wrapFunction
             ) {
               var transports = {};
               var configuration = {
@@ -6924,7 +6978,7 @@ try {
 
               var XDM = {
                 register: function register(name, provider) {
-                  require("Log").debug("Registering %s as XDM provider", name);
+                  Log.debug("Registering %s as XDM provider", name);
                   configuration.transports.push(name);
                   transports[name] = provider;
                 },
@@ -6934,13 +6988,11 @@ try {
                   if (!config.whenReady && !config.onMessage) {
                     var msg =
                       "An instance without whenReady or onMessage makes no sense";
-                    require("Log").error(msg);
+                    Log.error(msg);
                     throw new Error(msg);
                   }
                   if (!config.channel) {
-                    require("Log").warn(
-                      "Missing channel name, selecting at random"
-                    );
+                    Log.warn("Missing channel name, selecting at random");
                     config.channel =
                       "f" +
                       (Math.random() * (1 << 30)).toString(16).replace(".", "");
@@ -6959,7 +7011,7 @@ try {
                       : findTransport(config.blacklist || []);
                   var transport = name != null ? transports[name] : null;
                   if (transport != null && transport.isAvailable()) {
-                    require("Log").debug("%s is available", name);
+                    Log.debug("%s is available", name);
                     transport.init(config);
                     return name;
                   }
@@ -6994,9 +7046,7 @@ try {
                       return !!window.postMessage;
                     },
                     init: function init(config) {
-                      require("Log").debug(
-                        "init postMessage: " + config.channel
-                      );
+                      Log.debug("init postMessage: " + config.channel);
                       var prefix = "_FB_" + config.channel;
                       var xdm = {
                         send: function send(
@@ -7006,16 +7056,12 @@ try {
                           channel
                         ) {
                           if (window === windowRef) {
-                            require("Log").error(
+                            Log.error(
                               "Invalid windowref, equal to window (self)"
                             );
                             throw new Error();
                           }
-                          require("Log").debug(
-                            "sending to: %s (%s)",
-                            origin,
-                            channel
-                          );
+                          Log.debug("sending to: %s (%s)", origin, channel);
                           var send = function send() {
                             try {
                               windowRef.postMessage(
@@ -7023,12 +7069,7 @@ try {
                                 origin
                               );
                             } catch (e) {
-                              if (
-                                require("sdk.feature")(
-                                  "xdm_scribe_logging",
-                                  false
-                                )
-                              ) {
+                              if (feature("xdm_scribe_logging", false)) {
                                 log("jssdk_error", {
                                   error: "POST_MESSAGE",
                                   extra: {
@@ -7051,13 +7092,13 @@ try {
 
                       window.addEventListener(
                         "message",
-                        require("wrapFunction")(
+                        wrapFunction(
                           function(event) {
                             var message = event.data;
 
                             var origin = event.origin || "native";
                             if (!/^(https?:\/\/|native$)/.test(origin)) {
-                              require("Log").debug(
+                              Log.debug(
                                 "Received message from invalid origin type: %s",
                                 origin
                               );
@@ -7076,7 +7117,7 @@ try {
                             }
 
                             if (typeof message !== "string") {
-                              require("Log").warn(
+                              Log.warn(
                                 "Received message of type %s from %s, expected a string",
                                 typeof message,
                                 origin
@@ -7085,7 +7126,7 @@ try {
                               return;
                             }
 
-                            require("Log").debug(
+                            Log.debug(
                               "received message %s from %s",
                               message,
                               origin
@@ -7259,7 +7300,8 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              Log
             ) {
               var JSONRPC = (function() {
                 "use strict";
@@ -7314,7 +7356,7 @@ try {
 
                   if (!rpc.method) {
                     if (!this.$JSONRPC_callbacks[id]) {
-                      require("Log").warn("Could not find callback %s", id);
+                      Log.warn("Could not find callback %s", id);
                       return;
                     }
                     var callback = this.$JSONRPC_callbacks[id];
@@ -7351,10 +7393,7 @@ try {
                   }
 
                   if (!method) {
-                    require("Log").error(
-                      'Method "%s" has not been defined',
-                      rpc.method
-                    );
+                    Log.error('Method "%s" has not been defined', rpc.method);
 
                     send("error", {
                       code: -32601,
@@ -7375,7 +7414,7 @@ try {
                       send("result", returnValue);
                     }
                   } catch (rpcEx) {
-                    require("Log").error(
+                    Log.error(
                       "Invokation of RPC method %s resulted in the error: %s",
                       rpc.method,
                       rpcEx.message
@@ -7404,10 +7443,13 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              Assert,
+              JSONRPC,
+              Queue
             ) {
-              var outQueue = new (require("Queue"))();
-              var jsonrpc = new (require("JSONRPC"))(function(message) {
+              var outQueue = new Queue();
+              var jsonrpc = new JSONRPC(function(message) {
                 outQueue.enqueue(message);
               });
 
@@ -7416,7 +7458,7 @@ try {
                 remote: jsonrpc.remote,
                 stub: ES(jsonrpc.stub, "bind", true, jsonrpc),
                 setInQueue: function setInQueue(queue) {
-                  require("Assert").isInstanceOf(require("Queue"), queue);
+                  Assert.isInstanceOf(Queue, queue);
 
                   queue.start(function(message) {
                     jsonrpc.read(message);
@@ -7495,7 +7537,7 @@ try {
           );
           __d(
             "DOMEventListener",
-            ["invariant", "dedupString", "emptyFunction", "wrapFunction"],
+            ["dedupString", "emptyFunction", "invariant", "wrapFunction"],
             function $module_DOMEventListener(
               global,
               require,
@@ -7503,7 +7545,10 @@ try {
               requireLazy,
               module,
               exports,
-              invariant
+              dedupString,
+              emptyFunction,
+              invariant,
+              wrapFunction
             ) {
               var supportsPassive = false;
               try {
@@ -7523,10 +7568,10 @@ try {
                   if (options === void 0) {
                     options = false;
                   }
-                  listener.wrapper = require("wrapFunction")(
+                  listener.wrapper = wrapFunction(
                     listener,
                     "entry",
-                    require("dedupString")("DOMEventListener.add " + name)
+                    dedupString("DOMEventListener.add " + name)
                   );
 
                   target.addEventListener(
@@ -7550,7 +7595,7 @@ try {
                   if (_options === void 0) {
                     _options = false;
                   }
-                  listener.wrapper = require("wrapFunction")(
+                  listener.wrapper = wrapFunction(
                     listener,
                     "entry",
                     "DOMEventListener.add " + name
@@ -7569,7 +7614,7 @@ try {
                   target.detachEvent("on" + name, listener.wrapper);
                 };
               } else {
-                _remove = _add = require("emptyFunction");
+                _remove = _add = emptyFunction;
               }
 
               var DOMEventListener = {
@@ -7760,16 +7805,16 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              UserAgent_DEPRECATED,
+              guid
             ) {
-              var hasBug = require("UserAgent_DEPRECATED").ie()
-                ? undefined
-                : false;
+              var hasBug = UserAgent_DEPRECATED.ie() ? undefined : false;
 
               function test() {
                 var form = document.createElement("form"),
                   input = form.appendChild(document.createElement("input"));
-                input.name = require("guid")();
+                input.name = guid();
                 hasBug = input !== form.elements[input.name];
                 form = input = null;
                 return hasBug;
@@ -7817,19 +7862,24 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              DOMEventListener,
+              getBlankIframeSrc,
+              guid,
+              hasNamePropertyBug,
+              isNumberLike
             ) {
               function createIframe(opts) {
                 opts = ES("Object", "assign", false, {}, opts);
                 var frame;
-                var name = opts.name || require("guid")();
+                var name = opts.name || guid();
                 var root = opts.root;
                 var style = opts.style || { border: "none" };
                 var src = opts.url;
                 var onLoad = opts.onload;
                 var onError = opts.onerror;
 
-                if (require("hasNamePropertyBug")()) {
+                if (hasNamePropertyBug()) {
                   frame = document.createElement(
                     '<iframe name="' + name + '"/>'
                   );
@@ -7860,16 +7910,10 @@ try {
                   opts
                 );
 
-                if (
-                  attributes.width &&
-                  require("isNumberLike")(attributes.width)
-                ) {
+                if (attributes.width && isNumberLike(attributes.width)) {
                   frame.width = attributes.width + "px";
                 }
-                if (
-                  attributes.height &&
-                  require("isNumberLike")(attributes.height)
-                ) {
+                if (attributes.height && isNumberLike(attributes.height)) {
                   frame.height = attributes.height + "px";
                 }
 
@@ -7884,10 +7928,10 @@ try {
 
                 ES("Object", "assign", false, frame.style, style);
 
-                frame.src = require("getBlankIframeSrc")();
+                frame.src = getBlankIframeSrc();
                 root.appendChild(frame);
                 if (onLoad) {
-                  var onLoadListener = require("DOMEventListener").add(
+                  var onLoadListener = DOMEventListener.add(
                     frame,
                     "load",
                     function() {
@@ -7898,7 +7942,7 @@ try {
                 }
 
                 if (onError) {
-                  var onErrorListener = require("DOMEventListener").add(
+                  var onErrorListener = DOMEventListener.add(
                     frame,
                     "error",
                     function() {
@@ -7942,27 +7986,37 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              XDConfig,
+              Log,
+              QueryString,
+              Queue,
+              UrlMap,
+              XDM,
+              guid,
+              isFacebookURI,
+              Content,
+              createIframe,
+              Event,
+              feature,
+              RPC,
+              Runtime,
+              Scribe,
+              URI
             ) {
-              var facebookQueue = new (require("Queue"))();
-              var httpsProxyQueue = new (require("Queue"))();
-              var proxySecret = require("guid")();
+              var facebookQueue = new Queue();
+              var httpsProxyQueue = new Queue();
+              var proxySecret = guid();
               var protocol = "https";
 
-              var xdArbiterTier = require("JSSDKXDConfig").useCdn
-                ? "cdn"
-                : "www";
+              var xdArbiterTier = XDConfig.useCdn ? "cdn" : "www";
 
-              var xdArbiterPathAndQuery = require("sdk.feature")(
-                "use_bundle",
-                false
-              )
-                ? require("JSSDKXDConfig").XdBundleUrl
-                : require("JSSDKXDConfig").XdUrl;
+              var xdArbiterPathAndQuery = feature("use_bundle", false)
+                ? XDConfig.XdBundleUrl
+                : XDConfig.XdUrl;
 
               var xdArbiterHttpsUrl =
-                require("UrlMap").resolve(xdArbiterTier) +
-                xdArbiterPathAndQuery;
+                UrlMap.resolve(xdArbiterTier) + xdArbiterPathAndQuery;
 
               var getOrigin = function getOrigin() {
                 if ("origin" in location) {
@@ -7981,7 +8035,7 @@ try {
                 return location.protocol + "//" + location.host;
               };
 
-              var channel = require("guid")();
+              var channel = guid();
               var origin = getOrigin();
               var xdm;
               var httpsProxyFrame;
@@ -7989,24 +8043,24 @@ try {
               var IFRAME_TITLE = "Facebook Cross Domain Communication Frame";
 
               var pluginRegistry = {};
-              var rpcQueue = new (require("Queue"))();
-              require("sdk.RPC").setInQueue(rpcQueue);
+              var rpcQueue = new Queue();
+              RPC.setInQueue(rpcQueue);
 
               function onRegister(registeredAs) {
-                require("Log").info(
+                Log.info(
                   "Remote XD can talk to facebook.com (%s)",
                   registeredAs
                 );
-                require("sdk.Runtime").setEnvironment(
+                Runtime.setEnvironment(
                   registeredAs === "canvas"
-                    ? require("sdk.Runtime").ENVIRONMENTS.CANVAS
-                    : require("sdk.Runtime").ENVIRONMENTS.PAGETAB
+                    ? Runtime.ENVIRONMENTS.CANVAS
+                    : Runtime.ENVIRONMENTS.PAGETAB
                 );
               }
 
               function handleAction(message, senderOrigin) {
                 if (!senderOrigin) {
-                  require("Log").error("No senderOrigin");
+                  Log.error("No senderOrigin");
                   throw new Error();
                 }
 
@@ -8017,23 +8071,21 @@ try {
 
                     proxyQueue = httpsProxyQueue;
                     targetProxyFrame = httpsProxyFrame;
-                    require("sdk.Runtime").setLoggedIntoFacebook(
-                      message.logged_in === "true"
-                    );
+                    Runtime.setLoggedIntoFacebook(message.logged_in === "true");
 
                     if (message.registered) {
                       onRegister(message.registered);
                       facebookQueue = proxyQueue.merge(facebookQueue, false);
                     }
 
-                    require("Log").info(
+                    Log.info(
                       "Proxy ready, starting queue containing %s messages",
                       proxyQueue.getLength()
                     );
 
                     proxyQueue.start(function(message) {
                       if (message != null && typeof message === "object") {
-                        message = require("QueryString").encode(message);
+                        message = QueryString.encode(message);
                       }
                       xdm.send(
                         message,
@@ -8047,15 +8099,15 @@ try {
                   case "plugin_ready":
                     if (typeof message.name === "string") {
                       var pluginName = message.name;
-                      require("Log").info(
+                      Log.info(
                         "Plugin %s ready, protocol: %s",
                         pluginName,
                         protocol
                       );
                       pluginRegistry[pluginName] = { protocol: protocol };
-                      if (require("Queue").exists(pluginName)) {
-                        var queue = require("Queue").get(pluginName, {});
-                        require("Log").debug(
+                      if (Queue.exists(pluginName)) {
+                        var queue = Queue.get(pluginName, {});
+                        Log.debug(
                           "Enqueuing %s messages for %s in %s",
                           queue.getLength(),
                           pluginName,
@@ -8065,9 +8117,7 @@ try {
                         httpsProxyQueue.merge(queue, false);
                       }
                     } else {
-                      require("Log").error(
-                        "plugin_ready message received without a name"
-                      );
+                      Log.error("plugin_ready message received without a name");
                     }
                     break;
                 }
@@ -8081,9 +8131,7 @@ try {
                 if (
                   senderOrigin != null &&
                   senderOrigin !== "native" &&
-                  !require("isFacebookURI")(
-                    new (require("sdk.URI"))(senderOrigin)
-                  )
+                  !isFacebookURI(new URI(senderOrigin))
                 ) {
                   return;
                 }
@@ -8097,14 +8145,11 @@ try {
                     try {
                       message = ES("JSON", "parse", false, message);
                     } catch (_unused2) {
-                      require("Log").warn(
-                        "Failed to decode %s as JSON",
-                        message
-                      );
+                      Log.warn("Failed to decode %s as JSON", message);
                       return;
                     }
                   } else {
-                    message = require("QueryString").decode(message);
+                    message = QueryString.decode(message);
                   }
                 }
 
@@ -8144,7 +8189,7 @@ try {
                   }
                   var regInfo = pluginRegistry[recipient];
                   if (regInfo) {
-                    require("Log").debug(
+                    Log.debug(
                       "Enqueuing message for plugin %s in %s",
                       recipient,
                       regInfo.protocol + "ProxyQueue"
@@ -8152,33 +8197,26 @@ try {
 
                     httpsProxyQueue.enqueue(message);
                   } else {
-                    require("Log").debug(
-                      "Buffering message for plugin %s",
-                      recipient
-                    );
-                    require("Queue")
-                      .get(recipient, {})
-                      .enqueue(message);
+                    Log.debug("Buffering message for plugin %s", recipient);
+                    Queue.get(recipient, {}).enqueue(message);
                   }
                 }
               }
 
-              require("sdk.RPC")
-                .getOutQueue()
-                .start(function(message) {
-                  sendToFacebook("facebook", "FB_RPC:" + message);
-                });
+              RPC.getOutQueue().start(function(message) {
+                sendToFacebook("facebook", "FB_RPC:" + message);
+              });
 
               function init(xdProxyName) {
                 if (inited) {
                   return;
                 }
 
-                var container = require("sdk.Content").appendHidden(
+                var container = Content.appendHidden(
                   document.createElement("div")
                 );
 
-                var transport = require("XDM").create({
+                var transport = XDM.create({
                   blacklist: null,
                   root: container,
                   channel: channel,
@@ -8192,10 +8230,9 @@ try {
                       xd_name: xdProxyName
                     };
 
-                    var xdArbiterFragment =
-                      "#" + require("QueryString").encode(proxyData);
+                    var xdArbiterFragment = "#" + QueryString.encode(proxyData);
 
-                    httpsProxyFrame = require("sdk.createIframe")({
+                    httpsProxyFrame = createIframe({
                       url: xdArbiterHttpsUrl + xdArbiterFragment,
                       name: "fb_xdm_frame_https",
                       id: "fb_xdm_frame_https",
@@ -8209,8 +8246,8 @@ try {
                 });
 
                 if (!transport) {
-                  require("sdk.Scribe").log("jssdk_error", {
-                    appId: require("sdk.Runtime").getClientID(),
+                  Scribe.log("jssdk_error", {
+                    appId: Runtime.getClientID(),
                     error: "XD_TRANSPORT",
                     extra: {
                       message: "Failed to create a valid transport"
@@ -8221,7 +8258,7 @@ try {
               }
 
               var XD = {
-                rpc: require("sdk.RPC"),
+                rpc: RPC,
 
                 _callbacks: {},
                 _forever: {},
@@ -8247,7 +8284,7 @@ try {
                 handler: function handler(cb, relation, forever, id) {
                   var xdArbiterFragment =
                     "#" +
-                    require("QueryString").encode({
+                    QueryString.encode({
                       cb: this.registerCallback(cb, forever, id),
                       origin: origin + "/" + channel,
                       domain: location.hostname,
@@ -8262,7 +8299,7 @@ try {
                   persistent,
                   id
                 ) {
-                  id = id || require("guid")();
+                  id = id || guid();
                   if (persistent) {
                     XD._forever[id] = true;
                   }
@@ -8275,9 +8312,9 @@ try {
                 }
               };
 
-              require("sdk.Event").subscribe("init:post", function(options) {
+              Event.subscribe("init:post", function(options) {
                 init(options.xdProxyName);
-                var timeout = require("sdk.feature")("xd_timeout", false);
+                var timeout = feature("xd_timeout", false);
                 if (timeout) {
                   window.setTimeout(function() {
                     var initialized =
@@ -8285,8 +8322,8 @@ try {
                       !!httpsProxyFrame == httpsProxyQueue.isStarted();
 
                     if (!initialized) {
-                      require("sdk.Scribe").log("jssdk_error", {
-                        appId: require("sdk.Runtime").getClientID(),
+                      Scribe.log("jssdk_error", {
+                        appId: Runtime.getClientID(),
                         error: "XD_INITIALIZATION",
                         extra: {
                           message: "Failed to initialize in " + timeout + "ms"
@@ -8310,20 +8347,18 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              Runtime,
+              UA
             ) {
               function getContextType() {
-                if (require("sdk.UA").nativeApp()) {
+                if (UA.nativeApp()) {
                   return 3;
                 }
-                if (require("sdk.UA").mobile()) {
+                if (UA.mobile()) {
                   return 2;
                 }
-                if (
-                  require("sdk.Runtime").isEnvironment(
-                    require("sdk.Runtime").ENVIRONMENTS.CANVAS
-                  )
-                ) {
+                if (Runtime.isEnvironment(Runtime.ENVIRONMENTS.CANVAS)) {
                   return 5;
                 }
                 return 1;
@@ -8363,7 +8398,27 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              DOMWrapper,
+              Log,
+              OAuthControllerParameterName,
+              ObservableMixin,
+              QueryString,
+              UrlMap,
+              WebOAuthStatus,
+              WebOAuthStatusCORSHeaders,
+              guid,
+              Cookie,
+              createIframe,
+              feature,
+              getContextType,
+              Impressions,
+              Runtime,
+              Scribe,
+              SignedRequest,
+              URI,
+              WebStorage,
+              XD
             ) {
               var LOCAL_STORAGE_TOKEN_PREFIX = "fblst_";
               var LOGOUT_COOKIE_PREFIX = "fblo_";
@@ -8373,16 +8428,16 @@ try {
 
               var timer;
 
-              var Auth = new (require("ObservableMixin"))();
+              var Auth = new ObservableMixin();
 
               function setAuthResponse(authResponse, status) {
-                var currentUserID = require("sdk.Runtime").getUserID();
+                var currentUserID = Runtime.getUserID();
                 var userID = "";
                 if (authResponse) {
                   if (authResponse.userID) {
                     userID = authResponse.userID;
                   } else if (authResponse.signedRequest) {
-                    var parsedSignedRequest = require("sdk.SignedRequest").parse(
+                    var parsedSignedRequest = SignedRequest.parse(
                       authResponse.signedRequest
                     );
 
@@ -8391,42 +8446,42 @@ try {
                     }
                   }
 
-                  if (require("sdk.Runtime").getUseCookie()) {
+                  if (Runtime.getUseCookie()) {
                     var expirationTime =
                       authResponse.expiresIn === 0
                         ? 0
                         : ES("Date", "now", false) +
                           authResponse.expiresIn * 1000;
-                    require("sdk.Cookie").setSignedRequestCookie(
+                    Cookie.setSignedRequestCookie(
                       authResponse.signedRequest,
                       expirationTime
                     );
                   }
                 } else {
-                  if (require("sdk.Runtime").getUseCookie()) {
-                    require("sdk.Cookie").clearSignedRequestCookie();
+                  if (Runtime.getUseCookie()) {
+                    Cookie.clearSignedRequestCookie();
                   }
-                  if (require("sdk.Runtime").getUseLocalStorage()) {
+                  if (Runtime.getUseLocalStorage()) {
                     removeLocalStorageToken();
                   }
                 }
 
-                var currentStatus = require("sdk.Runtime").getLoginStatus();
+                var currentStatus = Runtime.getLoginStatus();
                 var login =
                   (currentStatus === "unknown" && authResponse) ||
-                  (require("sdk.Runtime").getUseCookie() &&
-                    require("sdk.Runtime").getCookieUserID() !== userID);
+                  (Runtime.getUseCookie() &&
+                    Runtime.getCookieUserID() !== userID);
                 var logout = currentUserID && !authResponse;
                 var both =
                   authResponse && currentUserID && currentUserID != userID;
                 var authResponseChange = authResponse != currentAuthResponse;
                 var statusChange = status != (currentStatus || "unknown");
 
-                require("sdk.Runtime").setLoginStatus(status);
-                require("sdk.Runtime").setAccessToken(
+                Runtime.setLoginStatus(status);
+                Runtime.setAccessToken(
                   (authResponse && authResponse.accessToken) || null
                 );
-                require("sdk.Runtime").setUserID(userID);
+                Runtime.setUserID(userID);
 
                 currentAuthResponse = authResponse;
 
@@ -8458,7 +8513,7 @@ try {
                 return function(params) {
                   var status;
                   if (params && params.access_token) {
-                    var parsedSignedRequest = require("sdk.SignedRequest").parse(
+                    var parsedSignedRequest = SignedRequest.parse(
                       params.signed_request
                     );
                     authResponse = {
@@ -8490,25 +8545,24 @@ try {
                       });
                     }
 
-                    var baseDomain = require("sdk.Cookie").getDomain();
+                    var baseDomain = Cookie.getDomain();
                     if (!baseDomain && params.base_domain) {
-                      require("sdk.Cookie").setDomain("." + params.base_domain);
+                      Cookie.setDomain("." + params.base_domain);
                     }
 
                     if (params.enforce_https) {
-                      require("sdk.Runtime").setEnforceHttps(true);
+                      Runtime.setEnforceHttps(true);
                     }
 
                     if (
-                      require("sdk.Runtime").getUseLocalStorage() &&
+                      Runtime.getUseLocalStorage() &&
                       location.protocol === "https:" &&
                       params.long_lived_token
                     ) {
-                      var localStorage = require("sdk.WebStorage").getLocalStorage();
+                      var localStorage = WebStorage.getLocalStorage();
                       if (localStorage) {
                         localStorage.setItem(
-                          LOCAL_STORAGE_TOKEN_PREFIX +
-                            require("sdk.Runtime").getClientID(),
+                          LOCAL_STORAGE_TOKEN_PREFIX + Runtime.getClientID(),
                           params.long_lived_token
                         );
                       }
@@ -8528,8 +8582,8 @@ try {
                     if (method === "logout") {
                       setLogoutState();
 
-                      require("sdk.Scribe").log("jssdk_error", {
-                        appId: require("sdk.Runtime").getClientID(),
+                      Scribe.log("jssdk_error", {
+                        appId: Runtime.getClientID(),
                         error: "PLATFORM_AUTH_LOGOUT",
                         extra: { args: { fblo: true } }
                       });
@@ -8543,7 +8597,7 @@ try {
                   if (cb) {
                     var response = {
                       authResponse: authResponse,
-                      status: require("sdk.Runtime").getLoginStatus()
+                      status: Runtime.getLoginStatus()
                     };
 
                     cb(response);
@@ -8553,26 +8607,20 @@ try {
               }
 
               function removeLocalStorageToken() {
-                var localStorage = require("sdk.WebStorage").getLocalStorage();
+                var localStorage = WebStorage.getLocalStorage();
                 if (localStorage) {
                   localStorage.removeItem(
-                    LOCAL_STORAGE_TOKEN_PREFIX +
-                      require("sdk.Runtime").getClientID()
+                    LOCAL_STORAGE_TOKEN_PREFIX + Runtime.getClientID()
                   );
                 }
               }
 
               function removeLogoutState() {
-                require("sdk.Cookie").setRaw(
-                  LOGOUT_COOKIE_PREFIX,
-                  "",
-                  0,
-                  false
-                );
+                Cookie.setRaw(LOGOUT_COOKIE_PREFIX, "", 0, false);
               }
 
               function setLogoutState() {
-                require("sdk.Cookie").setRaw(
+                Cookie.setRaw(
                   LOGOUT_COOKIE_PREFIX,
                   "y",
                   ES("Date", "now", false) + YEAR_MS,
@@ -8589,14 +8637,13 @@ try {
                   timer = null;
                 }
 
-                var fb_logged_out =
-                  require("sdk.Cookie").getRaw(LOGOUT_COOKIE_PREFIX) === "y";
+                var fb_logged_out = Cookie.getRaw(LOGOUT_COOKIE_PREFIX) === "y";
 
                 var redirAccessToken = null;
                 var redirCancelled = false;
 
                 if (
-                  require("sdk.Runtime").getLoginStatus() !== "connected" &&
+                  Runtime.getLoginStatus() !== "connected" &&
                   (document.referrer === "" ||
                     /^https?:\/\/([\w\.]+)?facebook.com\//.test(
                       document.referrer
@@ -8604,10 +8651,7 @@ try {
                 ) {
                   var fragment = location.hash.substr(1);
                   if (fragment !== "") {
-                    var fragmentParams = require("QueryString").decode(
-                      fragment,
-                      true
-                    );
+                    var fragmentParams = QueryString.decode(fragment, true);
                     redirAccessToken = fragmentParams.access_token;
                     if (redirAccessToken != null) {
                       removeLogoutState();
@@ -8617,15 +8661,11 @@ try {
                       delete fragmentParams.access_token;
                       delete fragmentParams.code;
                       delete fragmentParams.signed_request;
-                      location.hash = require("QueryString").encode(
-                        fragmentParams
-                      );
+                      location.hash = QueryString.encode(fragmentParams);
                     }
                   }
 
-                  var queryParams = require("QueryString").decode(
-                    location.search
-                  );
+                  var queryParams = QueryString.decode(location.search);
                   if (queryParams.error === "access_denied") {
                     redirCancelled = true;
                   }
@@ -8643,13 +8683,12 @@ try {
                   return;
                 }
 
-                if (require("sdk.feature")("use_cors_oauth_status", false)) {
-                  if (require("sdk.Runtime").getUseLocalStorage()) {
-                    var localStorage = require("sdk.WebStorage").getLocalStorageForRead();
+                if (feature("use_cors_oauth_status", false)) {
+                  if (Runtime.getUseLocalStorage()) {
+                    var localStorage = WebStorage.getLocalStorageForRead();
                     if (localStorage) {
                       var savedToken = localStorage.getItem(
-                        LOCAL_STORAGE_TOKEN_PREFIX +
-                          require("sdk.Runtime").getClientID()
+                        LOCAL_STORAGE_TOKEN_PREFIX + Runtime.getClientID()
                       );
 
                       if (savedToken) {
@@ -8666,41 +8705,39 @@ try {
                   "login_status"
                 );
 
-                var url = new (require("sdk.URI"))(
-                  require("UrlMap").resolve("www") + "/connect/ping"
-                )
+                var url = new URI(UrlMap.resolve("www") + "/connect/ping")
                   .addQueryData(
-                    require("OAuthControllerParameterName").CLIENT_ID,
-                    require("sdk.Runtime").getClientID()
+                    OAuthControllerParameterName.CLIENT_ID,
+                    Runtime.getClientID()
                   )
                   .addQueryData(
-                    require("OAuthControllerParameterName").RESPONSE_TYPE,
+                    OAuthControllerParameterName.RESPONSE_TYPE,
                     "token,signed_request"
                   )
                   .addQueryData(
-                    require("OAuthControllerParameterName").DOMAIN,
+                    OAuthControllerParameterName.DOMAIN,
                     location.hostname
                   )
                   .addQueryData(
-                    require("OAuthControllerParameterName").ORIGIN,
-                    require("sdk.getContextType")()
+                    OAuthControllerParameterName.ORIGIN,
+                    getContextType()
                   )
                   .addQueryData(
-                    require("OAuthControllerParameterName").REDIRECT_URI,
-                    require("sdk.XD").handler(function(response) {
-                      if (require("sdk.feature")("e2e_ping_tracking", true)) {
+                    OAuthControllerParameterName.REDIRECT_URI,
+                    XD.handler(function(response) {
+                      if (feature("e2e_ping_tracking", true)) {
                         var events = {
                           init: fetchStart,
                           close: ES("Date", "now", false),
                           method: "ping"
                         };
 
-                        require("Log").debug(
+                        Log.debug(
                           "e2e: %s",
                           ES("JSON", "stringify", false, events)
                         );
 
-                        require("sdk.Impressions").log(114, {
+                        Impressions.log(114, {
                           payload: events
                         });
                       }
@@ -8712,10 +8749,7 @@ try {
                       }
                     }, "parent")
                   )
-                  .addQueryData(
-                    require("OAuthControllerParameterName").SDK,
-                    "joey"
-                  );
+                  .addQueryData(OAuthControllerParameterName.SDK, "joey");
 
                 if (!!window.location.ancestorOrigins) {
                   var ancestorOrigins = window.location.ancestorOrigins;
@@ -8728,23 +8762,22 @@ try {
                     }
 
                     url.addQueryData(
-                      require("OAuthControllerParameterName").ANCESTOR_ORIGINS,
+                      OAuthControllerParameterName.ANCESTOR_ORIGINS,
                       ancestorOriginString.slice(0, -1)
                     );
                   }
                 }
 
-                if (require("sdk.Runtime").getUseLocalStorage()) {
-                  var _localStorage = require("sdk.WebStorage").getLocalStorageForRead();
+                if (Runtime.getUseLocalStorage()) {
+                  var _localStorage = WebStorage.getLocalStorageForRead();
                   if (_localStorage) {
                     var _savedToken = _localStorage.getItem(
-                      LOCAL_STORAGE_TOKEN_PREFIX +
-                        require("sdk.Runtime").getClientID()
+                      LOCAL_STORAGE_TOKEN_PREFIX + Runtime.getClientID()
                     );
 
                     if (_savedToken) {
                       url.addQueryData(
-                        require("OAuthControllerParameterName").INPUT_TOKEN,
+                        OAuthControllerParameterName.INPUT_TOKEN,
                         _savedToken
                       );
                     }
@@ -8753,14 +8786,14 @@ try {
 
                 if (redirAccessToken != null) {
                   url.addQueryData(
-                    require("OAuthControllerParameterName").INPUT_TOKEN,
+                    OAuthControllerParameterName.INPUT_TOKEN,
                     redirAccessToken
                   );
                 }
 
-                frame = require("sdk.createIframe")({
-                  root: require("DOMWrapper").getRoot(),
-                  name: require("guid")(),
+                frame = createIframe({
+                  root: DOMWrapper.getRoot(),
+                  name: guid(),
                   url: url.toString(),
                   style: { display: "none" }
                 });
@@ -8768,32 +8801,24 @@ try {
 
               function getLoginStatusCORS(cb, token, currentAuthResponse) {
                 var xhr = new XMLHttpRequest();
-                var url = new (require("sdk.URI"))(
-                  require("UrlMap").resolve("www") + "/x/oauth/status"
-                )
+                var url = new URI(UrlMap.resolve("www") + "/x/oauth/status")
                   .addQueryData(
-                    require("OAuthControllerParameterName").CLIENT_ID,
-                    require("sdk.Runtime").getClientID()
+                    OAuthControllerParameterName.CLIENT_ID,
+                    Runtime.getClientID()
                   )
+                  .addQueryData(OAuthControllerParameterName.INPUT_TOKEN, token)
                   .addQueryData(
-                    require("OAuthControllerParameterName").INPUT_TOKEN,
-                    token
-                  )
-                  .addQueryData(
-                    require("OAuthControllerParameterName").REDIRECT_URI,
+                    OAuthControllerParameterName.REDIRECT_URI,
                     window.location.href
                   )
                   .addQueryData(
-                    require("OAuthControllerParameterName").ORIGIN,
-                    require("sdk.getContextType")()
+                    OAuthControllerParameterName.ORIGIN,
+                    getContextType()
                   )
+                  .addQueryData(OAuthControllerParameterName.SDK, "joey")
                   .addQueryData(
-                    require("OAuthControllerParameterName").SDK,
-                    "joey"
-                  )
-                  .addQueryData(
-                    require("OAuthControllerParameterName").WANTS_COOKIE_DATA,
-                    require("sdk.Runtime").getUseCookie()
+                    OAuthControllerParameterName.WANTS_COOKIE_DATA,
+                    Runtime.getUseCookie()
                   );
 
                 function corsFetch() {
@@ -8805,18 +8830,17 @@ try {
                       if (xhr.readyState === 4) {
                         if (xhr.status === 200) {
                           var xhrStatus = xhr.getResponseHeader(
-                            require("WebOAuthStatusCORSHeaders").STATUS
+                            WebOAuthStatusCORSHeaders.STATUS
                           );
 
                           switch (xhrStatus) {
-                            case require("WebOAuthStatus").CONNECTED:
+                            case WebOAuthStatus.CONNECTED:
                               var xhrAuthResponse = ES(
                                 "JSON",
                                 "parse",
                                 false,
                                 xhr.getResponseHeader(
-                                  require("WebOAuthStatusCORSHeaders")
-                                    .AUTH_RESPONSE
+                                  WebOAuthStatusCORSHeaders.AUTH_RESPONSE
                                 )
                               );
 
@@ -8872,22 +8896,22 @@ try {
                                 fetchLoginStatus(function() {});
                               }, 5400000);
                               break;
-                            case require("WebOAuthStatus").NOT_AUTHORIZED:
+                            case WebOAuthStatus.NOT_AUTHORIZED:
                               setAuthResponse(null, xhrStatus);
                               break;
-                            case require("WebOAuthStatus").UNKNOWN:
+                            case WebOAuthStatus.UNKNOWN:
                               setAuthResponse(null, xhrStatus);
                               break;
                             default:
                           }
                         } else {
-                          require("sdk.Scribe").log("jssdk_error", {
-                            appId: require("sdk.Runtime").getClientID(),
+                          Scribe.log("jssdk_error", {
+                            appId: Runtime.getClientID(),
                             error: "CORS_STATUS_FETCH",
                             extra: { message: "HTTP Status Code " + xhr.status }
                           });
 
-                          require("Log").error(
+                          Log.error(
                             "Error retrieving login status, HTTP status code: " +
                               xhr.status
                           );
@@ -8895,7 +8919,7 @@ try {
                         if (cb) {
                           var response = {
                             authResponse: authResponse,
-                            status: require("sdk.Runtime").getLoginStatus()
+                            status: Runtime.getLoginStatus()
                           };
 
                           cb(response);
@@ -8910,8 +8934,8 @@ try {
 
               var loadState;
               function getLoginStatus(cb, force) {
-                if (!require("sdk.Runtime").getClientID()) {
-                  require("Log").warn(
+                if (!Runtime.getClientID()) {
+                  Log.warn(
                     "FB.getLoginStatus() called before calling FB.init()."
                   );
                   return;
@@ -8921,7 +8945,7 @@ try {
                   if (!force && loadState === "loaded") {
                     var response = {
                       authResponse: getAuthResponse(),
-                      status: require("sdk.Runtime").getLoginStatus()
+                      status: Runtime.getLoginStatus()
                     };
 
                     cb(response);
@@ -8954,7 +8978,7 @@ try {
                 fetchLoginStatus: fetchLoginStatus,
                 setAuthResponse: setAuthResponse,
                 getAuthResponse: getAuthResponse,
-                parseSignedRequest: require("sdk.SignedRequest").parse,
+                parseSignedRequest: SignedRequest.parse,
                 xdResponseWrapper: xdResponseWrapper
               });
 
@@ -8971,7 +8995,9 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              Assert,
+              domReady
             ) {
               var cssRules = {};
 
@@ -8998,8 +9024,8 @@ try {
               }
 
               function html(dom, content) {
-                require("Assert").isTruthy(dom, "element not specified");
-                require("Assert").isString(content);
+                Assert.isTruthy(dom, "element not specified");
+                Assert.isString(content);
 
                 try {
                   dom.innerHTML = content;
@@ -9009,8 +9035,8 @@ try {
               }
 
               function containsCss(dom, className) {
-                require("Assert").isTruthy(dom, "element not specified");
-                require("Assert").isString(className);
+                Assert.isTruthy(dom, "element not specified");
+                Assert.isString(className);
 
                 var cssClassWithSpace = " " + dom.className + " ";
                 return (
@@ -9024,11 +9050,11 @@ try {
               }
 
               function addCss(dom, className) {
-                require("Assert").isTruthy(dom, "element not specified");
+                Assert.isTruthy(dom, "element not specified");
                 if (dom == null) {
                   return;
                 }
-                require("Assert").isString(className);
+                Assert.isString(className);
 
                 if (!containsCss(dom, className)) {
                   dom.className = dom.className + " " + className;
@@ -9036,11 +9062,11 @@ try {
               }
 
               function removeCss(dom, className) {
-                require("Assert").isTruthy(dom, "element not specified");
+                Assert.isTruthy(dom, "element not specified");
                 if (dom == null) {
                   return;
                 }
-                require("Assert").isString(className);
+                Assert.isString(className);
 
                 var regExp = new RegExp("\\s*" + className, "g");
                 dom.className = ES(
@@ -9051,7 +9077,7 @@ try {
               }
 
               function getByClass(className, dom, tagName) {
-                require("Assert").isString(className);
+                Assert.isString(className);
 
                 var _dom = dom || document.body;
                 if (_dom == null) {
@@ -9067,8 +9093,8 @@ try {
               }
 
               function getStyle(dom, styleProp) {
-                require("Assert").isTruthy(dom, "element not specified");
-                require("Assert").isString(styleProp);
+                Assert.isTruthy(dom, "element not specified");
+                Assert.isString(styleProp);
 
                 var _styleProp = styleProp.replace(/-(\w)/g, function(m, g1) {
                   return g1.toUpperCase();
@@ -9090,8 +9116,8 @@ try {
               }
 
               function setStyle(dom, styleProp, value) {
-                require("Assert").isTruthy(dom, "element not specified");
-                require("Assert").isString(styleProp);
+                Assert.isTruthy(dom, "element not specified");
+                Assert.isString(styleProp);
 
                 styleProp = styleProp.replace(/-(\w)/g, function(m, g1) {
                   return g1.toUpperCase();
@@ -9169,7 +9195,7 @@ try {
                 getStyle: getStyle,
                 getViewportInfo: getViewportInfo,
                 html: html,
-                ready: require("sdk.domReady"),
+                ready: domReady,
                 remove: remove,
                 removeCss: removeCss,
                 setStyle: setStyle
@@ -9188,7 +9214,8 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              UA
             ) {
               "use strict";
 
@@ -9204,7 +9231,7 @@ try {
                 info._originalError = err;
 
                 var matches = /([\w:\.\/]+\.js):(\d+)/.exec(err.stack);
-                if (require("sdk.UA").chrome() && matches) {
+                if (UA.chrome() && matches) {
                   info.script = matches[1];
                   info.line = parseInt(matches[2], 10);
                 }
@@ -9228,7 +9255,10 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              ManagedError,
+              normalizeError,
+              wrapFunction
             ) {
               function create(handleError, onError) {
                 var currentEntry = "";
@@ -9251,11 +9281,11 @@ try {
                       currentEntry = entry;
                       return func.apply(this, arguments);
                     } catch (error) {
-                      if (error instanceof require("ManagedError")) {
+                      if (error instanceof ManagedError) {
                         throw error;
                       }
 
-                      var data = require("normalizeError")(error);
+                      var data = normalizeError(error);
                       data.entry = entry;
 
                       var sanitizedArgs = ES(
@@ -9319,17 +9349,14 @@ try {
                       (currentEntry || "[global]") +
                       ":" +
                       (fn.name || "[anonymous]" + getCalleeName(arguments));
-                    return real(
-                      require("wrapFunction")(fn, "entry", name),
-                      delay
-                    );
+                    return real(wrapFunction(fn, "entry", name), delay);
                   };
                 }
 
                 if (handleError) {
                   setTimeout = wrap(setTimeout, "setTimeout");
                   setInterval = wrap(setInterval, "setInterval");
-                  require("wrapFunction").setWrapper(guard, "entry");
+                  wrapFunction.setWrapper(guard, "entry");
                 }
 
                 return {
@@ -9353,20 +9380,23 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              ErrorHandler,
+              feature,
+              Runtime,
+              Scribe
             ) {
-              var handleError = require("sdk.feature")("error_handling", false);
+              var handleError = feature("error_handling", false);
 
-              module.exports = require("sdk.ErrorHandler").create(
-                handleError,
-                function(error) {
-                  require("sdk.Scribe").log("jssdk_error", {
-                    appId: require("sdk.Runtime").getClientID(),
-                    error: error.name || error.message,
-                    extra: error
-                  });
-                }
-              );
+              module.exports = ErrorHandler.create(handleError, function(
+                error
+              ) {
+                Scribe.log("jssdk_error", {
+                  appId: Runtime.getClientID(),
+                  error: error.name || error.message,
+                  extra: error
+                });
+              });
             },
             null
           );
@@ -9391,7 +9421,18 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              DOMWrapper,
+              GlobalCallback,
+              CssConfig,
+              Log,
+              dotAccess,
+              Auth,
+              Content,
+              DOM,
+              domReady,
+              ErrorHandling,
+              Runtime
             ) {
               var externalInterface = (window.FB = {});
 
@@ -9402,37 +9443,29 @@ try {
                 window._FB = FB;
               }
 
-              require("Log").level = __DEV__ ? 3 : 0;
+              Log.level = __DEV__ ? 3 : 0;
 
-              require("GlobalCallback").setPrefix("FB.__globalCallbacks");
+              GlobalCallback.setPrefix("FB.__globalCallbacks");
 
               var fbRoot = document.createElement("div");
-              require("DOMWrapper").setRoot(fbRoot);
+              DOMWrapper.setRoot(fbRoot);
 
-              require("sdk.domReady")(function() {
-                require("Log").info("domReady");
-                require("sdk.Content").appendHidden(fbRoot);
-                if (require("JSSDKCssConfig").rules) {
-                  require("sdk.DOM").addCssRules(
-                    require("JSSDKCssConfig").rules,
-                    require("JSSDKCssConfig").components
-                  );
+              domReady(function() {
+                Log.info("domReady");
+                Content.appendHidden(fbRoot);
+                if (CssConfig.rules) {
+                  DOM.addCssRules(CssConfig.rules, CssConfig.components);
                 }
               });
 
-              require("sdk.Runtime").subscribe("AccessToken.change", function(
-                value
-              ) {
-                if (
-                  !value &&
-                  require("sdk.Runtime").getLoginStatus() === "connected"
-                ) {
-                  require("sdk.Auth").getLoginStatus(null, true);
+              Runtime.subscribe("AccessToken.change", function(value) {
+                if (!value && Runtime.getLoginStatus() === "connected") {
+                  Auth.getLoginStatus(null, true);
                 }
               });
 
               function protect(fn, accessor, key, context) {
-                return require("sdk.ErrorHandling").guard(function() {
+                return ErrorHandling.guard(function() {
                   function unwrap(val) {
                     if (ES("Array", "isArray", false, val)) {
                       return ES(val, "map", true, unwrap);
@@ -9443,7 +9476,7 @@ try {
 
                     return typeof val === "function" &&
                       /^function/.test(val.toString())
-                      ? require("sdk.ErrorHandling").unguard(val)
+                      ? ErrorHandling.unguard(val)
                       : val;
                   }
 
@@ -9489,7 +9522,7 @@ try {
 
               function provide(name, source) {
                 var externalTarget = name
-                  ? require("dotAccess")(externalInterface, name, true)
+                  ? dotAccess(externalInterface, name, true)
                   : externalInterface;
 
                 ES(
@@ -9537,7 +9570,8 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              ManagedError
             ) {
               var ArgumentError = (function(_ManagedError) {
                 "use strict";
@@ -9546,7 +9580,7 @@ try {
                   return _ManagedError.call(this, message, innerError) || this;
                 }
                 return ArgumentError;
-              })(require("ManagedError"));
+              })(ManagedError);
 
               module.exports = ArgumentError;
             },
@@ -9602,7 +9636,13 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              ArgumentError,
+              Assert,
+              Log,
+              flattenObject,
+              URI,
+              sprintf
             ) {
               var METHODS = {
                 get: true,
@@ -9613,7 +9653,7 @@ try {
 
               function parseCallDataFromArgs(args) {
                 var path = args.shift();
-                require("Assert").isString(path, "Invalid path");
+                Assert.isString(path, "Invalid path");
                 if (!/^https?/.test(path) && path.charAt(0) !== "/") {
                   path = "/" + path;
                 }
@@ -9622,9 +9662,9 @@ try {
                 var argsMap = {};
 
                 try {
-                  uri = new (require("sdk.URI"))(path);
+                  uri = new URI(path);
                 } catch (e) {
-                  throw new (require("ArgumentError"))(e.message, e);
+                  throw new ArgumentError(e.message, e);
                 }
 
                 ES(args, "forEach", true, function(arg) {
@@ -9633,21 +9673,18 @@ try {
 
                 var method = (argsMap.string || "get").toLowerCase();
 
-                require("Assert").isTrue(
+                Assert.isTrue(
                   Object.prototype.hasOwnProperty.call(METHODS, method),
-                  require("sprintf")(
-                    "Invalid method passed to ApiClient: %s",
-                    method
-                  )
+                  sprintf("Invalid method passed to ApiClient: %s", method)
                 );
 
                 var callback = argsMap["function"];
                 if (!callback) {
-                  require("Log").warn("No callback passed to the ApiClient");
+                  Log.warn("No callback passed to the ApiClient");
                 }
 
                 if (argsMap.object) {
-                  uri.addQueryData(require("flattenObject")(argsMap.object));
+                  uri.addQueryData(flattenObject(argsMap.object));
                 }
 
                 var params = uri.getQueryData();
@@ -9724,7 +9761,8 @@ try {
               requireLazy,
               module,
               exports,
-              errorCode
+              errorCode,
+              nullthrows
             ) {
               "use strict";
 
@@ -9739,12 +9777,7 @@ try {
                 try {
                   return rawResponse === null
                     ? ERROR
-                    : ES(
-                        "JSON",
-                        "parse",
-                        false,
-                        require("nullthrows")(rawResponse)
-                      );
+                    : ES("JSON", "parse", false, nullthrows(rawResponse));
                 } catch (ex) {
                   return errorHandler(ex, rawResponse, url);
                 }
@@ -9771,9 +9804,9 @@ try {
           __d(
             "ApiBatcher",
             [
-              "invariant",
               "ApiClientUtils",
               "QueryString",
+              "invariant",
               "sdk.safelyParseResponse"
             ],
             function $module_ApiBatcher(
@@ -9783,7 +9816,10 @@ try {
               requireLazy,
               module,
               exports,
-              invariant
+              ApiClientUtils,
+              QueryString,
+              invariant,
+              safelyParseResponse
             ) {
               "use strict";
 
@@ -9846,7 +9882,7 @@ try {
                 ApiBatcher.prepareBatchParams = function prepareBatchParams(
                   args
                 ) {
-                  var _ApiClientUtils$parse = require("ApiClientUtils").parseCallDataFromArgs(
+                  var _ApiClientUtils$parse = ApiClientUtils.parseCallDataFromArgs(
                       args
                     ),
                     uri = _ApiClientUtils$parse.uri,
@@ -9856,7 +9892,7 @@ try {
                   var body;
                   var relative_url = uri.removeQueryData("method").toString();
                   if (method.toLowerCase() == "post") {
-                    body = require("QueryString").encode(uri.getQueryData());
+                    body = QueryString.encode(uri.getQueryData());
                     relative_url = uri.setQueryData({}).toString();
                   }
 
@@ -9891,9 +9927,7 @@ try {
                     var call = copiedBatchCalls[0];
                     var callback = copiedBatchCallbacks[0];
 
-                    var body = call.body
-                      ? require("QueryString").decode(call.body)
-                      : null;
+                    var body = call.body ? QueryString.decode(call.body) : null;
 
                     this.executeRequest(
                       call.relative_url,
@@ -9918,9 +9952,7 @@ try {
                       if (ES("Array", "isArray", false, response)) {
                         ES(response, "forEach", true, function(data, idx) {
                           copiedBatchCallbacks[idx](
-                            require("sdk.safelyParseResponse")(
-                              data && data.body
-                            )
+                            safelyParseResponse(data && data.body)
                           );
                         });
                       } else {
@@ -9982,7 +10014,11 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              QueryString,
+              RequestConstants,
+              safelyParseResponse,
+              wrapFunction
             ) {
               function createCORSRequest(method, url) {
                 if (!self.XMLHttpRequest) {
@@ -10015,7 +10051,7 @@ try {
                   }
                 };
 
-                var onload = require("wrapFunction")(
+                var onload = wrapFunction(
                   function() {
                     onload = noop;
                     if ("onload" in wrapper) {
@@ -10026,7 +10062,7 @@ try {
                   "XMLHttpRequest:load"
                 );
 
-                var onerror = require("wrapFunction")(
+                var onerror = wrapFunction(
                   function() {
                     onerror = noop;
                     if ("onerror" in wrapper) {
@@ -10060,10 +10096,10 @@ try {
 
               function execute(url, method, params, cb) {
                 params.suppress_http_code = 1;
-                var data = require("QueryString").encode(params);
+                var data = QueryString.encode(params);
 
                 if (method != "post") {
-                  url = require("QueryString").appendToUrl(url, data);
+                  url = QueryString.appendToUrl(url, data);
                   data = "";
                 }
 
@@ -10073,19 +10109,17 @@ try {
                 }
 
                 request.onload = function(xhr) {
-                  cb(require("sdk.safelyParseResponse")(xhr.responseText, url));
+                  cb(safelyParseResponse(xhr.responseText, url));
                 };
 
                 request.onerror = function(xhr) {
                   if (xhr.responseText) {
-                    cb(
-                      require("sdk.safelyParseResponse")(xhr.responseText, url)
-                    );
+                    cb(safelyParseResponse(xhr.responseText, url));
                   } else {
                     cb({
                       error: babelHelpers["extends"](
                         {},
-                        require("RequestConstants").PARSE_ERROR_TEMPLATE,
+                        RequestConstants.PARSE_ERROR_TEMPLATE,
                         {
                           status: xhr.status
                         }
@@ -10137,7 +10171,12 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              GraphBatchConstants,
+              QueryString,
+              RequestConstants,
+              safelyParseResponse,
+              wrapFunction
             ) {
               var EMPTY_CHUNK_TEXT = "{}";
               var ChunkParser = (function() {
@@ -10145,10 +10184,10 @@ try {
 
                 function ChunkParser(delimiter) {
                   if (delimiter === void 0) {
-                    delimiter = require("GraphBatchConstants").FLUSH_DELIMITER;
+                    delimiter = GraphBatchConstants.FLUSH_DELIMITER;
                   }
                   this.offset = 0;
-                  this.delimiter = require("GraphBatchConstants").FLUSH_DELIMITER;
+                  this.delimiter = GraphBatchConstants.FLUSH_DELIMITER;
                   this.delimiter = delimiter;
                 }
                 var _proto = ChunkParser.prototype;
@@ -10215,7 +10254,7 @@ try {
                   }
                 };
 
-                var onchunk = require("wrapFunction")(
+                var onchunk = wrapFunction(
                   function(chunkText, done) {
                     if (wrapper.onchunk) {
                       var subChunks = chunkParser.parse(chunkText);
@@ -10231,7 +10270,7 @@ try {
                   "XMLHttpRequest:onchunk"
                 );
 
-                var onerror = require("wrapFunction")(
+                var onerror = wrapFunction(
                   function() {
                     if (wrapper.onerror) {
                       wrapper.onerror(xhr);
@@ -10260,10 +10299,10 @@ try {
 
               function execute(url, method, params, cb) {
                 params.suppress_http_code = 1;
-                var data = require("QueryString").encode(params);
+                var data = QueryString.encode(params);
 
                 if (method != "post") {
-                  url = require("QueryString").appendToUrl(url, data);
+                  url = QueryString.appendToUrl(url, data);
                   data = "";
                 }
 
@@ -10273,17 +10312,17 @@ try {
                 }
 
                 request.onchunk = function(chunkText, done) {
-                  cb(require("sdk.safelyParseResponse")(chunkText), done);
+                  cb(safelyParseResponse(chunkText), done);
                 };
 
                 request.onerror = function(xhr) {
                   if (xhr.responseText) {
-                    cb(require("sdk.safelyParseResponse")(xhr.responseText));
+                    cb(safelyParseResponse(xhr.responseText));
                   } else {
                     cb({
                       error: babelHelpers["extends"](
                         {},
-                        require("RequestConstants").PARSE_ERROR_TEMPLATE,
+                        RequestConstants.PARSE_ERROR_TEMPLATE,
                         {
                           status: xhr.status
                         }
@@ -10312,7 +10351,10 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              DOMWrapper,
+              GlobalCallback,
+              QueryString
             ) {
               var MAX_QUERYSTRING_LENGTH = 2000;
 
@@ -10323,25 +10365,23 @@ try {
 
                 var _callbackWrapper = function callbackWrapper(response) {
                   _callbackWrapper = function callbackWrapper() {};
-                  require("GlobalCallback").remove(params.callback);
+                  GlobalCallback.remove(params.callback);
                   cb(response);
                   script.parentNode.removeChild(script);
                 };
 
-                params.callback = require("GlobalCallback").create(
-                  _callbackWrapper
-                );
+                params.callback = GlobalCallback.create(_callbackWrapper);
 
                 if (!params.method) {
                   params.method = method;
                 }
 
-                url = require("QueryString").appendToUrl(url, params);
+                url = QueryString.appendToUrl(url, params);
                 if (
                   !_ignoreMaxQuerystringLength &&
                   url.length > MAX_QUERYSTRING_LENGTH
                 ) {
-                  require("GlobalCallback").remove(params.callback);
+                  GlobalCallback.remove(params.callback);
                   return false;
                 }
 
@@ -10375,9 +10415,7 @@ try {
                 }
 
                 script.src = url;
-                require("DOMWrapper")
-                  .getRoot()
-                  .appendChild(script);
+                DOMWrapper.getRoot().appendChild(script);
                 return true;
               }
 
@@ -10416,14 +10454,24 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              ApiBatcher,
+              ApiClientUtils,
+              Assert,
+              ChunkedRequest,
+              CORSRequest,
+              JSONPRequest,
+              Log,
+              ObservableMixin,
+              QueryString,
+              UrlMap,
+              flattenObject
             ) {
               var accessToken;
               var clientID;
               var defaultParams;
 
-              var MAX_QUERYSTRING_LENGTH = require("JSONPRequest")
-                .MAX_QUERYSTRING_LENGTH;
+              var MAX_QUERYSTRING_LENGTH = JSONPRequest.MAX_QUERYSTRING_LENGTH;
 
               var READONLYCALLS = {
                 fql_query: true,
@@ -10466,11 +10514,11 @@ try {
 
                 params.pretty = params.pretty || 0;
 
-                params = require("flattenObject")(params);
+                params = flattenObject(params);
                 var availableTransports = {
-                  jsonp: require("JSONPRequest"),
-                  cors: require("CORSRequest"),
-                  chunked: require("ChunkedRequest")
+                  jsonp: JSONPRequest,
+                  cors: CORSRequest,
+                  chunked: ChunkedRequest
                 };
 
                 var getParams = {};
@@ -10482,7 +10530,7 @@ try {
 
                 var getParamNames = ES("Object", "keys", false, getParams);
                 if (getParamNames.length > 0) {
-                  url = require("QueryString").appendToUrl(url, getParams);
+                  url = QueryString.appendToUrl(url, getParams);
 
                   ES(getParamNames, "forEach", true, function(name) {
                     return delete params[name];
@@ -10576,7 +10624,7 @@ try {
                 ) {
                   args[_key] = arguments[_key];
                 }
-                var _ApiClientUtils$parse = require("ApiClientUtils").parseCallDataFromArgs(
+                var _ApiClientUtils$parse = ApiClientUtils.parseCallDataFromArgs(
                     args
                   ),
                   uri = _ApiClientUtils$parse.uri,
@@ -10591,7 +10639,7 @@ try {
                 var url =
                   uri.getProtocol() && uri.getDomain()
                     ? uri.setQueryData({}).toString()
-                    : require("UrlMap").resolve("graph") + uri.getPath();
+                    : UrlMap.resolve("graph") + uri.getPath();
 
                 var requestIndex = requestCounter++;
                 ApiClient.inform("request.prepare", url, params, requestIndex);
@@ -10619,10 +10667,7 @@ try {
               function scheduleBatchCall() {
                 var _apiBatcher;
                 if (!apiBatcher) {
-                  apiBatcher = new (require("ApiBatcher"))(
-                    requestUsingGraph,
-                    clientID
-                  );
+                  apiBatcher = new ApiBatcher(requestUsingGraph, clientID);
                 }
                 (_apiBatcher = apiBatcher).scheduleBatchCall.apply(
                   _apiBatcher,
@@ -10631,18 +10676,18 @@ try {
               }
 
               function requestUsingRest(params, cb) {
-                require("Assert").isObject(params);
-                require("Assert").isString(params.method, "method missing");
+                Assert.isObject(params);
+                Assert.isString(params.method, "method missing");
 
                 if (!cb) {
-                  require("Log").warn("No callback passed to the ApiClient");
+                  Log.warn("No callback passed to the ApiClient");
                 }
                 var method = params.method.toLowerCase().replace(".", "_");
                 params.format = "json-strings";
                 params.api_key = clientID;
 
                 var domain = method in READONLYCALLS ? "api_read" : "api";
-                var url = require("UrlMap").resolve(domain) + "/restserver.php";
+                var url = UrlMap.resolve(domain) + "/restserver.php";
                 var requestIndex = requestCounter++;
                 var inspector = ES(
                   inspect,
@@ -10665,7 +10710,7 @@ try {
                 "Object",
                 "assign",
                 false,
-                new (require("ObservableMixin"))(),
+                new ObservableMixin(),
                 {
                   setAccessToken: function setAccessToken(access_token) {
                     if (__DEV__) {
@@ -10721,7 +10766,7 @@ try {
                   rest: requestUsingRest,
                   graph: requestUsingGraph,
                   scheduleBatchCall: scheduleBatchCall,
-                  prepareBatchParams: require("ApiBatcher").prepareBatchParams
+                  prepareBatchParams: ApiBatcher.prepareBatchParams
                 }
               );
 
@@ -10745,7 +10790,9 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              ManagedError,
+              Runtime
             ) {
               var REGEX = /^v\d+\.\d\d?$/;
 
@@ -10753,8 +10800,8 @@ try {
                 REGEX: REGEX,
 
                 assertVersionIsSet: function assertVersionIsSet() {
-                  if (!require("sdk.Runtime").getVersion()) {
-                    throw new (require("ManagedError"))(
+                  if (!Runtime.getVersion()) {
+                    throw new ManagedError(
                       "init not called with valid version"
                     );
                   }
@@ -10762,9 +10809,7 @@ try {
 
                 assertValidVersion: function assertValidVersion(version) {
                   if (!REGEX.test(version)) {
-                    throw new (require("ManagedError"))(
-                      "invalid version specified"
-                    );
+                    throw new ManagedError("invalid version specified");
                   }
                 }
               };
@@ -10782,18 +10827,19 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              Log,
+              feature,
+              Runtime,
+              Scribe
             ) {
               "use strict";
 
-              var httpsOnlyEnforceStarting = require("sdk.feature")(
+              var httpsOnlyEnforceStarting = feature(
                 "https_only_enforce_starting",
                 false
               );
-              var httpsOnlyLearnMore = require("sdk.feature")(
-                "https_only_learn_more",
-                ""
-              );
+              var httpsOnlyLearnMore = feature("https_only_learn_more", "");
               var logged = {};
 
               function unsecureDisallowed(methodName) {
@@ -10802,7 +10848,7 @@ try {
                   httpsOnlyEnforceStarting &&
                   httpsOnlyEnforceStarting - ES("Date", "now", false) <= 0
                 ) {
-                  require("Log").log(
+                  Log.log(
                     "error",
                     -1,
                     "The method FB.%s can no longer be called from http pages. %s",
@@ -10817,7 +10863,7 @@ try {
                   window.location.protocol !== "https:" &&
                   httpsOnlyEnforceStarting
                 ) {
-                  require("Log").log(
+                  Log.log(
                     "error",
                     -1,
                     "The method FB.%s will soon stop working when called from http pages. " +
@@ -10828,11 +10874,11 @@ try {
                   );
 
                   if (
-                    require("sdk.feature")("https_only_scribe_logging", true) &&
+                    feature("https_only_scribe_logging", true) &&
                     !Object.prototype.hasOwnProperty.call(logged, methodName)
                   ) {
-                    require("sdk.Scribe").log("jssdk_error", {
-                      appId: require("sdk.Runtime").getClientID(),
+                    Scribe.log("jssdk_error", {
+                      appId: Runtime.getClientID(),
                       error: "HttpsOnly",
                       extra: {
                         message: methodName
@@ -10866,33 +10912,36 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              ApiClient,
+              feature,
+              PlatformVersioning,
+              Runtime,
+              Scribe,
+              URI,
+              unsecureDisallowed
             ) {
-              var shouldLogResponseError = require("sdk.feature")(
+              var shouldLogResponseError = feature(
                 "should_log_response_error",
                 false
               );
 
               var currentAccessToken;
 
-              require("sdk.Runtime").subscribe("ClientID.change", function(
-                value
-              ) {
-                return require("ApiClient").setClientID(value);
+              Runtime.subscribe("ClientID.change", function(value) {
+                return ApiClient.setClientID(value);
               });
 
-              require("sdk.Runtime").subscribe("AccessToken.change", function(
-                value
-              ) {
+              Runtime.subscribe("AccessToken.change", function(value) {
                 currentAccessToken = value;
-                require("ApiClient").setAccessToken(value);
+                ApiClient.setAccessToken(value);
               });
 
-              require("ApiClient").setDefaultParams({
+              ApiClient.setDefaultParams({
                 sdk: "joey"
               });
 
-              require("ApiClient").subscribe("request.complete", function(
+              ApiClient.subscribe("request.complete", function(
                 endpoint,
                 method,
                 params,
@@ -10916,13 +10965,13 @@ try {
                 }
                 if (
                   invalidateToken &&
-                  currentAccessToken === require("sdk.Runtime").getAccessToken()
+                  currentAccessToken === Runtime.getAccessToken()
                 ) {
-                  require("sdk.Runtime").setAccessToken(null);
+                  Runtime.setAccessToken(null);
                 }
               });
 
-              require("ApiClient").subscribe("request.complete", function(
+              ApiClient.subscribe("request.complete", function(
                 endpoint,
                 method,
                 params,
@@ -10934,19 +10983,19 @@ try {
                       params.method == "Auth.revokeAuthorization")) &&
                   response === true
                 ) {
-                  require("sdk.Runtime").setAccessToken(null);
+                  Runtime.setAccessToken(null);
                 }
               });
 
-              require("ApiClient").subscribe("request.error", function(
+              ApiClient.subscribe("request.error", function(
                 endpoint,
                 method,
                 params,
                 response
               ) {
                 if (shouldLogResponseError && response.error.type === "http") {
-                  require("sdk.Scribe").log("jssdk_error", {
-                    appId: require("sdk.Runtime").getClientID(),
+                  Scribe.log("jssdk_error", {
+                    appId: Runtime.getClientID(),
                     error: "transport",
                     extra: {
                       name: "transport",
@@ -10958,48 +11007,39 @@ try {
               });
 
               function api(path) {
-                if (require("sdk.unsecureDisallowed")("api")) {
+                if (unsecureDisallowed("api")) {
                   return;
                 }
 
                 if (typeof path === "string") {
-                  if (require("sdk.Runtime").getIsVersioned()) {
-                    require("sdk.PlatformVersioning").assertVersionIsSet();
+                  if (Runtime.getIsVersioned()) {
+                    PlatformVersioning.assertVersionIsSet();
 
                     if (!/https?/.test(path) && path.charAt(0) !== "/") {
                       path = "/" + path;
                     }
-                    path = new (require("sdk.URI"))(path)
+                    path = new URI(path)
                       .setDomain(null)
                       .setProtocol(null)
                       .toString();
 
                     if (
-                      !require("sdk.PlatformVersioning").REGEX.test(
+                      !PlatformVersioning.REGEX.test(
                         path.substring(1, ES(path, "indexOf", true, "/", 1))
                       )
                     ) {
-                      path = "/" + require("sdk.Runtime").getVersion() + path;
+                      path = "/" + Runtime.getVersion() + path;
                     }
 
                     var args = [path].concat(
                       Array.prototype.slice.call(arguments, 1)
                     );
-                    require("ApiClient").graph.apply(
-                      require("ApiClient"),
-                      args
-                    );
+                    ApiClient.graph.apply(ApiClient, args);
                   } else {
-                    require("ApiClient").graph.apply(
-                      require("ApiClient"),
-                      arguments
-                    );
+                    ApiClient.graph.apply(ApiClient, arguments);
                   }
                 } else {
-                  require("ApiClient").rest.apply(
-                    require("ApiClient"),
-                    arguments
-                  );
+                  ApiClient.rest.apply(ApiClient, arguments);
                 }
               }
 
@@ -11016,9 +11056,11 @@ try {
               requireDynamic,
               requireLazy,
               __DO_NOT_USE__module,
-              __DO_NOT_USE__exports
+              __DO_NOT_USE__exports,
+              FB,
+              api
             ) {
-              require("FB").provide("", { api: require("sdk.api") });
+              FB.provide("", { api: api });
             },
             3
           );
@@ -11060,20 +11102,21 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              RPC
             ) {
               function getPageInfo(appCallback) {
-                require("sdk.RPC").remote.getPageInfo(function(response) {
+                RPC.remote.getPageInfo(function(response) {
                   appCallback(response.result);
                 });
               }
 
               function scrollTo(x, y) {
-                require("sdk.RPC").remote.scrollTo({ x: x || 0, y: y || 0 });
+                RPC.remote.scrollTo({ x: x || 0, y: y || 0 });
               }
 
-              require("sdk.RPC").stub("getPageInfo");
-              require("sdk.RPC").stub("scrollTo");
+              RPC.stub("getPageInfo");
+              RPC.stub("scrollTo");
 
               var Environment = {
                 getPageInfo: getPageInfo,
@@ -11093,7 +11136,11 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              DOMEventListener,
+              Content,
+              DOM,
+              UA
             ) {
               "use strict";
 
@@ -11108,20 +11155,16 @@ try {
                   delayBetweenClicks
                 ) {
                   var clickTimer = null;
-                  return require("DOMEventListener").add(
-                    element,
-                    "click",
-                    function() {
-                      if (clickTimer !== null) {
-                        clearTimeout(clickTimer);
-                        clickTimer = null;
-                        actionCallback();
-                      }
-                      clickTimer = setTimeout(function() {
-                        clickTimer = null;
-                      }, delayBetweenClicks);
+                  return DOMEventListener.add(element, "click", function() {
+                    if (clickTimer !== null) {
+                      clearTimeout(clickTimer);
+                      clickTimer = null;
+                      actionCallback();
                     }
-                  );
+                    clickTimer = setTimeout(function() {
+                      clickTimer = null;
+                    }, delayBetweenClicks);
+                  });
                 },
 
                 addIdleDesktopAction: function addIdleDesktopAction(
@@ -11136,13 +11179,13 @@ try {
                   };
 
                   startTimer();
-                  return require("DOMEventListener").add(
+                  return DOMEventListener.add(
                     element,
                     "mouseenter",
                     function() {
                       clearTimeout(timer);
                       if (!event) {
-                        event = require("DOMEventListener").add(
+                        event = DOMEventListener.add(
                           element,
                           "mouseleave",
                           function() {
@@ -11157,7 +11200,7 @@ try {
                 addMobileOrientationChangeAction: function addMobileOrientationChangeAction(
                   actionCallback
                 ) {
-                  if (!require("sdk.UA").mobile()) {
+                  if (!UA.mobile()) {
                     return null;
                   }
 
@@ -11172,18 +11215,14 @@ try {
                     }, 50);
                   };
 
-                  return require("DOMEventListener").add(
-                    window,
-                    event,
-                    callback
-                  );
+                  return DOMEventListener.add(window, event, callback);
                 },
 
                 applyScreenDimensions: function applyScreenDimensions(element) {
                   if (element == null) {
                     return;
                   }
-                  var view = require("sdk.DOM").getViewportInfo();
+                  var view = DOM.getViewportInfo();
 
                   element.style.minHeight =
                     view.height || view.width ? view.height + "px" : "";
@@ -11200,7 +11239,7 @@ try {
                   var parseNumber = function parseNumber(n) {
                     return typeof n === "number" ? n : parseInt(n, 10);
                   };
-                  var view = require("sdk.DOM").getViewportInfo();
+                  var view = DOM.getViewportInfo();
                   var width = parseNumber(dialog.offsetWidth);
                   var height = parseNumber(dialog.offsetHeight);
                   var left = view.scrollLeft + (view.width - width) / 2;
@@ -11227,21 +11266,21 @@ try {
 
                   top += view.scrollTop;
 
-                  if (require("sdk.UA").mobile()) {
+                  if (UA.mobile()) {
                     var paddingHeight = 100;
 
                     if (isTablet) {
                       paddingHeight += (view.height - height) / 2;
-                      require("sdk.DOM").addCss(document.body, "fb_reposition");
+                      DOM.addCss(document.body, "fb_reposition");
                     } else {
-                      require("sdk.DOM").addCss(document.body, "fb_hidden");
+                      DOM.addCss(document.body, "fb_hidden");
 
                       document.body.style.width = "auto";
 
                       top = 10000;
                     }
 
-                    var paddingDivs = require("sdk.DOM").getByClass(
+                    var paddingDivs = DOM.getByClass(
                       "fb_dialog_padding",
                       dialog
                     );
@@ -11261,10 +11300,10 @@ try {
                 ) {
                   this.setDialogPositionToCenter(dialog, isTablet, pageInfo);
 
-                  var view = require("sdk.DOM").getViewportInfo();
+                  var view = DOM.getViewportInfo();
                   var top =
                     view.scrollTop + (view.height - dialog.offsetHeight) * 0.05;
-                  require("sdk.DOM").setStyle(dialog, "top", top + "px");
+                  DOM.setStyle(dialog, "top", top + "px");
                 },
 
                 setupNewDarkOverlay: function setupNewDarkOverlay() {
@@ -11284,17 +11323,13 @@ try {
                   if (options.closeIcon && onClose) {
                     var closeIcon = document.createElement("a");
                     closeIcon.className = "fb_dialog_close_icon";
-                    require("DOMEventListener").add(
-                      closeIcon,
-                      "click",
-                      onClose
-                    );
+                    DOMEventListener.add(closeIcon, "click", onClose);
                     dialog.appendChild(closeIcon);
                   }
 
                   var className = "fb_dialog";
                   className += " " + (options.classes || "");
-                  className += require("sdk.UA").mobile()
+                  className += UA.mobile()
                     ? " fb_dialog_mobile"
                     : " fb_dialog_advanced";
                   dialog.className = className;
@@ -11309,12 +11344,12 @@ try {
                   var contentRoot = document.createElement("div");
 
                   if (options.content) {
-                    require("sdk.Content").append(options.content, contentRoot);
+                    Content.append(options.content, contentRoot);
                   }
                   contentRoot.className = "fb_dialog_content";
                   dialog.appendChild(contentRoot);
 
-                  if (require("sdk.UA").mobile()) {
+                  if (UA.mobile()) {
                     var padding = document.createElement("div");
                     padding.className = "fb_dialog_padding";
                     dialog.appendChild(padding);
@@ -11329,9 +11364,9 @@ try {
                 onDialogHideCleanup: function onDialogHideCleanup(isTablet) {
                   var body = document.body;
                   if (isTablet) {
-                    require("sdk.DOM").removeCss(body, "fb_reposition");
+                    DOM.removeCss(body, "fb_reposition");
                   } else {
-                    require("sdk.DOM").removeCss(body, "fb_hidden");
+                    DOM.removeCss(body, "fb_hidden");
                   }
                 }
               };
@@ -11386,7 +11421,17 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              DOMEventListener,
+              ObservableMixin,
+              Type,
+              CanvasEnvironment,
+              Content,
+              DialogUtils,
+              DOM,
+              fbt,
+              Runtime,
+              UA
             ) {
               var MARGIN_SURROUNDING = 30;
 
@@ -11396,7 +11441,7 @@ try {
               var MAX_WIDTH_DESKTOP = 575;
 
               function getMobileSize() {
-                var info = require("sdk.DOM").getViewportInfo();
+                var info = DOM.getViewportInfo();
                 if (info.height && info.width) {
                   return {
                     width: Math.min(info.width, MAX_WIDTH_MOBILE),
@@ -11406,7 +11451,7 @@ try {
                 return null;
               }
 
-              var SdkDialog = require("Type").extend(
+              var SdkDialog = Type.extend(
                 {
                   constructor: function SdkDialog(id, display) {
                     this.parent();
@@ -11446,7 +11491,8 @@ try {
                     return this;
                   }
                 },
-                require("ObservableMixin")
+
+                ObservableMixin
               );
 
               var Dialog = {
@@ -11478,7 +11524,7 @@ try {
 
                 _findRoot: function _findRoot(node) {
                   while (node) {
-                    if (require("sdk.DOM").containsCss(node, "fb_dialog")) {
+                    if (DOM.containsCss(node, "fb_dialog")) {
                       return node;
                     }
                     node = node.parentNode;
@@ -11504,14 +11550,14 @@ try {
 
                 _createMobileLoader: function _createMobileLoader() {
                   var content;
-                  if (require("sdk.UA").nativeApp()) {
+                  if (UA.nativeApp()) {
                     content = '<div class="dialog_header"></div>';
                   } else if (Dialog.isTabletStyle()) {
                     content =
                       '<div class="overlayLoader">' +
                       '<div id="fb_dialog_loader_spinner"></div>' +
                       '<a id="fb_dialog_loader_close" href="#">' +
-                      require("sdk.fbt")._("Cancel") +
+                      fbt._("Cancel") +
                       "</a>" +
                       "</div>";
                   } else {
@@ -11523,7 +11569,7 @@ try {
                       '      <td class="header_left">' +
                       '        <label class="touchable_button">' +
                       '          <input type="submit" value="' +
-                      require("sdk.fbt")._("Cancel") +
+                      fbt._("Cancel") +
                       '"' +
                       '            id="fb_dialog_loader_close"/>' +
                       "        </label>" +
@@ -11531,7 +11577,7 @@ try {
                       '      <td class="header_center">' +
                       "        <div>" +
                       "         " +
-                      require("sdk.fbt")._("Loading...") +
+                      fbt._("Loading...") +
                       "        </div>" +
                       "      </td>" +
                       '      <td class="header_right">' +
@@ -11549,9 +11595,7 @@ try {
                 },
 
                 _setDialogOverlayStyle: function _setDialogOverlayStyle() {
-                  require("sdk.DialogUtils").applyScreenDimensions(
-                    Dialog._overlayEl
-                  );
+                  DialogUtils.applyScreenDimensions(Dialog._overlayEl);
                 },
 
                 _showTabletOverlay: function _showTabletOverlay(
@@ -11561,12 +11605,12 @@ try {
                     return;
                   }
                   if (!Dialog._overlayEl) {
-                    Dialog._overlayEl = require("sdk.DialogUtils").setupNewDarkOverlay();
-                    require("sdk.Content").append(Dialog._overlayEl, null);
+                    Dialog._overlayEl = DialogUtils.setupNewDarkOverlay();
+                    Content.append(Dialog._overlayEl, null);
                   }
 
                   if (Dialog._closeOnOverlayTap) {
-                    var listener = require("sdk.DialogUtils").addDoubleClickAction(
+                    var listener = DialogUtils.addDoubleClickAction(
                       Dialog._overlayEl,
                       ES(onClickForClose, "bind", true, this),
                       5000
@@ -11596,9 +11640,7 @@ try {
 
                   var onClick = function onClick() {
                     Dialog._hideLoader();
-                    require("sdk.DialogUtils").onDialogHideCleanup(
-                      Dialog.isTabletStyle()
-                    );
+                    DialogUtils.onDialogHideCleanup(Dialog.isTabletStyle());
                     Dialog._hideTabletOverlay();
                     cb();
                   };
@@ -11607,7 +11649,7 @@ try {
 
                   if (!Dialog._loaderEl) {
                     Dialog._loaderEl = Dialog._findRoot(
-                      require("sdk.UA").mobile()
+                      UA.mobile()
                         ? Dialog._createMobileLoader()
                         : Dialog._createWWWLoader(width)
                     );
@@ -11618,8 +11660,8 @@ try {
                   );
 
                   if (loaderClose) {
-                    require("sdk.DOM").removeCss(loaderClose, "fb_hidden");
-                    var listener = require("DOMEventListener").add(
+                    DOM.removeCss(loaderClose, "fb_hidden");
+                    var listener = DOMEventListener.add(
                       loaderClose,
                       "click",
                       onClick
@@ -11650,14 +11692,8 @@ try {
                   Dialog._setDialogSizes();
                   Dialog._lowerActive();
                   Dialog._active = el;
-                  if (
-                    require("sdk.Runtime").isEnvironment(
-                      require("sdk.Runtime").ENVIRONMENTS.CANVAS
-                    )
-                  ) {
-                    require("sdk.Canvas.Environment").getPageInfo(function(
-                      pageInfo
-                    ) {
+                  if (Runtime.isEnvironment(Runtime.ENVIRONMENTS.CANVAS)) {
+                    CanvasEnvironment.getPageInfo(function(pageInfo) {
                       Dialog._centerActive(pageInfo);
                     });
                   }
@@ -11688,15 +11724,15 @@ try {
 
                   if (
                     Dialog._positionDialogAtTopWhenPortrait &&
-                    require("sdk.DialogUtils").isOrientationPotrait()
+                    DialogUtils.isOrientationPotrait()
                   ) {
-                    require("sdk.DialogUtils").setDialogPositionToTop(
+                    DialogUtils.setDialogPositionToTop(
                       dialog,
                       Dialog.isTabletStyle(),
                       pageInfo
                     );
                   } else {
-                    require("sdk.DialogUtils").setDialogPositionToCenter(
+                    DialogUtils.setDialogPositionToCenter(
                       dialog,
                       Dialog.isTabletStyle(),
                       pageInfo
@@ -11708,7 +11744,7 @@ try {
                   if (skipHeight === void 0) {
                     skipHeight = false;
                   }
-                  if (!require("sdk.UA").mobile()) {
+                  if (!UA.mobile()) {
                     return;
                   }
                   for (var id in Dialog._dialogs) {
@@ -11729,35 +11765,28 @@ try {
                 },
 
                 getDefaultSize: function getDefaultSize() {
-                  if (require("sdk.UA").mobile()) {
+                  if (UA.mobile()) {
                     var size = getMobileSize();
                     if (size) {
-                      if (
-                        require("sdk.DOM").getViewportInfo().width <= size.width
-                      ) {
+                      if (DOM.getViewportInfo().width <= size.width) {
                         size.width =
-                          require("sdk.DOM").getViewportInfo().width -
-                          MARGIN_SURROUNDING;
+                          DOM.getViewportInfo().width - MARGIN_SURROUNDING;
                       }
-                      if (
-                        require("sdk.DOM").getViewportInfo().height <=
-                        size.height
-                      ) {
+                      if (DOM.getViewportInfo().height <= size.height) {
                         size.height =
-                          require("sdk.DOM").getViewportInfo().height -
-                          MARGIN_SURROUNDING;
+                          DOM.getViewportInfo().height - MARGIN_SURROUNDING;
                       }
                       return size;
                     }
 
-                    if (require("sdk.UA").ipad()) {
+                    if (UA.ipad()) {
                       return {
                         width: MAX_WIDTH_MOBILE,
                         height: MAX_HEIGHT_MOBILE
                       };
                     }
 
-                    if (require("sdk.UA").android()) {
+                    if (UA.android()) {
                       return {
                         width: screen.availWidth,
                         height: screen.availHeight
@@ -11783,7 +11812,7 @@ try {
                 },
 
                 _handleOrientationChange: function _handleOrientationChange() {
-                  Dialog._availScreenWidth = require("sdk.DOM").getViewportInfo().width;
+                  Dialog._availScreenWidth = DOM.getViewportInfo().width;
 
                   if (Dialog.isTabletStyle()) {
                     Dialog._setDialogSizes(true);
@@ -11808,18 +11837,18 @@ try {
                 },
 
                 _addOrientationHandler: function _addOrientationHandler() {
-                  if (!require("sdk.UA").mobile()) {
+                  if (!UA.mobile()) {
                     return null;
                   }
-                  Dialog._availScreenWidth = require("sdk.DOM").getViewportInfo().width;
-                  require("sdk.DialogUtils").addMobileOrientationChangeAction(
+                  Dialog._availScreenWidth = DOM.getViewportInfo().width;
+                  DialogUtils.addMobileOrientationChangeAction(
                     Dialog._handleOrientationChange
                   );
                 },
 
                 create: function create(opts) {
-                  var created = require("sdk.DialogUtils").setupNewDialog(opts);
-                  require("sdk.Content").append(created.dialogElement);
+                  var created = DialogUtils.setupNewDialog(opts);
+                  Content.append(created.dialogElement);
                   if (opts.visible) {
                     Dialog.show(created.dialogElement);
                   }
@@ -11855,9 +11884,7 @@ try {
                   Dialog._hideLoader();
                   if (root == Dialog._active) {
                     Dialog._lowerActive();
-                    require("sdk.DialogUtils").onDialogHideCleanup(
-                      Dialog.isTabletStyle()
-                    );
+                    DialogUtils.onDialogHideCleanup(Dialog.isTabletStyle());
                     Dialog._hideTabletOverlay();
                     if ("fbCallID" in dialog) {
                       Dialog.get(dialog.fbCallID)
@@ -11878,9 +11905,7 @@ try {
                         Dialog.show(Dialog._stack.pop());
                       } else {
                         Dialog._lowerActive();
-                        require("sdk.DialogUtils").onDialogHideCleanup(
-                          Dialog.isTabletStyle()
-                        );
+                        DialogUtils.onDialogHideCleanup(Dialog.isTabletStyle());
                         Dialog._hideTabletOverlay();
                       }
                     } else if (
@@ -11906,7 +11931,7 @@ try {
                 },
 
                 isTabletStyle: function isTabletStyle() {
-                  if (!require("sdk.UA").mobile()) {
+                  if (!UA.mobile()) {
                     return false;
                   }
                   if (Dialog._forceTabletStyle) {
@@ -11934,7 +11959,10 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              DOMEventListener,
+              Log,
+              UA
             ) {
               var NATIVE_EXTENSIONS_READY_EVENT = "fbNativeExtensionsReady";
 
@@ -11952,8 +11980,8 @@ try {
 
               var NativeExtensions = {
                 onReady: function onReady(func) {
-                  if (!require("sdk.UA").facebookInAppBrowser()) {
-                    require("Log").error(
+                  if (!UA.facebookInAppBrowser()) {
+                    Log.error(
                       "FB.NativeExtensions.onReady only works when the page is rendered " +
                         "in a WebView of the native Facebook app."
                     );
@@ -11975,14 +12003,14 @@ try {
                     }
                     bridgeCalled = true;
                     func(bridge);
-                    require("DOMEventListener").remove(
+                    DOMEventListener.remove(
                       window,
                       NATIVE_EXTENSIONS_READY_EVENT,
                       nativeExtensionsReadyCallback
                     );
                   };
 
-                  require("DOMEventListener").add(
+                  DOMEventListener.add(
                     window,
                     NATIVE_EXTENSIONS_READY_EVENT,
                     nativeExtensionsReadyCallback
@@ -12003,24 +12031,28 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              JSONRPC,
+              Queue,
+              NativeExtensions,
+              UA
             ) {
               "use strict";
 
-              var outQueue = new (require("Queue"))();
-              var jsonrpc = new (require("JSONRPC"))(function(message) {
+              var outQueue = new Queue();
+              var jsonrpc = new JSONRPC(function(message) {
                 outQueue.enqueue(message);
               });
 
-              var rpcQueue = new (require("Queue"))();
+              var rpcQueue = new Queue();
               rpcQueue.start(function(message) {
                 jsonrpc.read(message);
               });
 
               var extensionAPIBridge = null;
 
-              if (require("sdk.UA").facebookInAppBrowser()) {
-                require("sdk.NativeExtensions").onReady(function(bridge) {
+              if (UA.facebookInAppBrowser()) {
+                NativeExtensions.onReady(function(bridge) {
                   extensionAPIBridge = bridge;
 
                   window._FBBrowserCallbackHandler = function(message) {
@@ -12062,7 +12094,11 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              api,
+              Auth,
+              Dialog,
+              Event
             ) {
               var Frictionless = {
                 _allowedRecipients: {},
@@ -12071,9 +12107,7 @@ try {
 
                 _updateRecipients: function _updateRecipients() {
                   Frictionless._allowedRecipients = {};
-                  require("sdk.api")("/me/apprequestformerrecipients", function(
-                    response
-                  ) {
+                  api("/me/apprequestformerrecipients", function(response) {
                     if (!response || response.error) {
                       return;
                     }
@@ -12087,12 +12121,12 @@ try {
 
                 init: function init() {
                   Frictionless._useFrictionless = true;
-                  require("sdk.Auth").getLoginStatus(function(response) {
+                  Auth.getLoginStatus(function(response) {
                     if (response.status == "connected") {
                       Frictionless._updateRecipients();
                     }
                   });
-                  require("sdk.Event").subscribe("auth.login", function(login) {
+                  Event.subscribe("auth.login", function(login) {
                     if (login.authResponse) {
                       Frictionless._updateRecipients();
                     }
@@ -12111,9 +12145,9 @@ try {
 
                     if (params) {
                       if (!hidden && params.frictionless) {
-                        require("sdk.Dialog")._hideLoader();
-                        require("sdk.Dialog")._restoreBodyPosition();
-                        require("sdk.Dialog")._hideIPadOverlay();
+                        Dialog._hideLoader();
+                        Dialog._restoreBodyPosition();
+                        Dialog._hideIPadOverlay();
                       }
                       delete params.frictionless;
                       delete params.updated_frictionless;
@@ -12149,7 +12183,7 @@ try {
                 }
               };
 
-              require("sdk.Event").subscribe("init:post", function(options) {
+              Event.subscribe("init:post", function(options) {
                 if (options.frictionlessRequests) {
                   Frictionless.init();
                 }
@@ -12168,14 +12202,16 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              Log,
+              UA
             ) {
               var NATIVE_READY_EVENT = "fbNativeReady";
 
               var Native = {
                 onready: function onready(func) {
-                  if (!require("sdk.UA").nativeApp()) {
-                    require("Log").error(
+                  if (!UA.nativeApp()) {
+                    Log.error(
                       "FB.Native.onready only works when the page is rendered " +
                         "in a WebView of the native Facebook app. Test if this is the " +
                         "case calling FB.UA.nativeApp()"
@@ -12222,7 +12258,8 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              UA
             ) {
               "use strict";
 
@@ -12238,7 +12275,7 @@ try {
 
                 var link = params.link;
                 var app_id = params.app_id;
-                if (require("sdk.UA").android()) {
+                if (UA.android()) {
                   uri =
                     "intent://share/#Intent;" +
                     "package=com.facebook.orca;" +
@@ -12306,7 +12343,32 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              Log,
+              QueryString,
+              UrlMap,
+              createObjectFrom,
+              flattenObject,
+              guid,
+              insertIframe,
+              resolveURI,
+              Auth,
+              Content,
+              Dialog,
+              DOM,
+              Event,
+              Extensions,
+              fbt,
+              feature,
+              Frictionless,
+              getContextType,
+              Native,
+              openMessenger,
+              RPC,
+              Runtime,
+              Scribe,
+              UA,
+              XD
             ) {
               var MobileIframeable = {
                 transform: function transform(call) {
@@ -12320,7 +12382,7 @@ try {
                       "parent"
                     );
 
-                    if (!require("sdk.UA").nativeApp()) {
+                    if (!UA.nativeApp()) {
                       call.params.in_iframe = 1;
                     }
                     return call;
@@ -12350,10 +12412,7 @@ try {
               }
 
               function isSupportedOauth(params) {
-                return (
-                  isOauth(params) &&
-                  require("sdk.Extensions").supportsDialog("oauth")
-                );
+                return isOauth(params) && Extensions.supportsDialog("oauth");
               }
 
               function isSupportedAccountLink(params) {
@@ -12361,7 +12420,7 @@ try {
                   isOauth(params) &&
                   (params.is_account_link === true ||
                     params.is_account_link === "true") &&
-                  require("sdk.Extensions").supportsDialog("accountLink")
+                  Extensions.supportsDialog("accountLink")
                 );
               }
 
@@ -12383,19 +12442,16 @@ try {
                     call = MobileIframeable.transform(call);
 
                     call.params.frictionless =
-                      require("sdk.Frictionless") &&
-                      require("sdk.Frictionless")._useFrictionless;
+                      Frictionless && Frictionless._useFrictionless;
                     if (call.params.frictionless) {
-                      if (
-                        require("sdk.Frictionless").isAllowed(call.params.to)
-                      ) {
+                      if (Frictionless.isAllowed(call.params.to)) {
                         call.params.display = "iframe";
                         call.params.in_iframe = true;
 
                         call.hideLoader = true;
                       }
 
-                      call.cb = require("sdk.Frictionless")._processRequestResponse(
+                      call.cb = Frictionless._processRequestResponse(
                         call.cb,
                         call.hideLoader
                       );
@@ -12410,30 +12466,28 @@ try {
                 "permissions.oauth": {
                   url: "dialog/oauth",
                   size: {
-                    width: require("sdk.UA").mobile() ? null : 600,
-                    height: require("sdk.UA").mobile() ? null : 679
+                    width: UA.mobile() ? null : 600,
+                    height: UA.mobile() ? null : 679
                   },
 
                   transform: function transform(call) {
-                    if (!require("sdk.Runtime").getClientID()) {
-                      require("Log").error(
-                        "FB.login() called before FB.init()."
-                      );
+                    if (!Runtime.getClientID()) {
+                      Log.error("FB.login() called before FB.init().");
                       return;
                     }
 
                     if (
-                      require("sdk.Auth").getAuthResponse() &&
+                      Auth.getAuthResponse() &&
                       !call.params.scope &&
                       !call.params.auth_type
                     ) {
-                      require("Log").error(
+                      Log.error(
                         "FB.login() called when user is already connected."
                       );
                       call.cb &&
                         call.cb({
-                          status: require("sdk.Runtime").getLoginStatus(),
-                          authResponse: require("sdk.Auth").getAuthResponse()
+                          status: Runtime.getLoginStatus(),
+                          authResponse: Auth.getAuthResponse()
                         });
 
                       return;
@@ -12455,7 +12509,7 @@ try {
                         false,
 
                         call.params.response_type
-                          ? require("createObjectFrom")(
+                          ? createObjectFrom(
                               call.params.response_type.split(",")
                             )
                           : {},
@@ -12465,15 +12519,15 @@ try {
 
                     if (call.params.display === "async") {
                       ES("Object", "assign", false, call.params, {
-                        client_id: require("sdk.Runtime").getClientID(),
-                        origin: require("sdk.getContextType")(),
+                        client_id: Runtime.getClientID(),
+                        origin: getContextType(),
                         response_type: responseTypes,
                         domain: location.hostname
                       });
 
-                      call.cb = require("sdk.Auth").xdResponseWrapper(
+                      call.cb = Auth.xdResponseWrapper(
                         cb,
-                        require("sdk.Auth").getAuthResponse(),
+                        Auth.getAuthResponse(),
                         "permissions.oauth"
                       );
                     } else {
@@ -12491,19 +12545,19 @@ try {
                         );
                       }
                       ES("Object", "assign", false, call.params, {
-                        client_id: require("sdk.Runtime").getClientID(),
-                        redirect_uri: require("resolveURI")(
+                        client_id: Runtime.getClientID(),
+                        redirect_uri: resolveURI(
                           UIServer.xdHandler(
                             cb,
                             id,
                             "opener",
-                            require("sdk.Auth").getAuthResponse(),
+                            Auth.getAuthResponse(),
                             "permissions.oauth",
                             !isReauthenticate
                           )
                         ),
 
-                        origin: require("sdk.getContextType")(),
+                        origin: getContextType(),
                         response_type: responseTypes,
                         domain: location.hostname
                       });
@@ -12516,20 +12570,16 @@ try {
                 "auth.logout": {
                   url: "logout.php",
                   transform: function transform(call) {
-                    if (!require("sdk.Runtime").getClientID()) {
-                      require("Log").error(
-                        "FB.logout() called before calling FB.init()."
-                      );
-                    } else if (!require("sdk.Auth").getAuthResponse()) {
-                      require("Log").error(
-                        "FB.logout() called without an access token."
-                      );
+                    if (!Runtime.getClientID()) {
+                      Log.error("FB.logout() called before calling FB.init().");
+                    } else if (!Auth.getAuthResponse()) {
+                      Log.error("FB.logout() called without an access token.");
                     } else {
                       call.params.next = UIServer.xdHandler(
                         call.cb,
                         call.id,
                         "parent",
-                        require("sdk.Auth").getAuthResponse(),
+                        Auth.getAuthResponse(),
                         "logout",
                         true
                       );
@@ -12546,17 +12596,17 @@ try {
                     var id = call.id;
                     delete call.cb;
                     ES("Object", "assign", false, call.params, {
-                      client_id: require("sdk.Runtime").getClientID(),
+                      client_id: Runtime.getClientID(),
                       redirect_uri: UIServer.xdHandler(
                         cb,
                         id,
                         "parent",
-                        require("sdk.Auth").getAuthResponse(),
+                        Auth.getAuthResponse(),
                         "login_status",
                         true
                       ),
 
-                      origin: require("sdk.getContextType")(),
+                      origin: getContextType(),
                       response_type: "token,signed_request",
                       domain: location.hostname
                     });
@@ -12646,9 +12696,7 @@ try {
 
                 checkOauthDisplay: function checkOauthDisplay(params) {
                   var scope =
-                    params.scope ||
-                    params.perms ||
-                    require("sdk.Runtime").getScope();
+                    params.scope || params.perms || Runtime.getScope();
                   if (!scope) {
                     return params.display;
                   }
@@ -12663,21 +12711,20 @@ try {
                   )
                     ? ES("Object", "assign", false, {}, UIServer.Methods[name])
                     : {};
-                  var id = require("guid")();
+                  var id = guid();
                   var useSSL = true;
 
                   ES("Object", "assign", false, params, {
-                    app_id: require("sdk.Runtime").getClientID(),
-                    locale: require("sdk.Runtime").getLocale(),
+                    app_id: Runtime.getClientID(),
+                    locale: Runtime.getLocale(),
                     sdk: "joey",
                     access_token:
-                      (useSSL && require("sdk.Runtime").getAccessToken()) ||
-                      undefined
+                      (useSSL && Runtime.getAccessToken()) || undefined
                   });
 
                   if (name === "share" || name === "share_open_graph") {
                     params.mobile_iframe =
-                      require("sdk.UA").mobile() &&
+                      UA.mobile() &&
                       (params.mobile_iframe || params.iframe_test);
                     if (params.mobile_iframe) {
                       method = ES(
@@ -12713,7 +12760,7 @@ try {
                   }
 
                   if (
-                    require("sdk.Runtime").getIsVersioned() &&
+                    Runtime.getIsVersioned() &&
                     method.url.substring(0, 7) === "dialog/"
                   ) {
                     method.url = params.version + "/" + method.url;
@@ -12725,7 +12772,7 @@ try {
                         'Dialog "' +
                         name +
                         '" is trying to run more than once.';
-                      require("Log").warn(errorMessage);
+                      Log.warn(errorMessage);
                       cb({ error_code: -100, error_message: errorMessage });
                       return;
                     }
@@ -12738,17 +12785,12 @@ try {
                     id: id,
                     size: method.size || UIServer.getDefaultSize(),
                     url:
-                      require("UrlMap").resolve(
-                        params.display == "touch" ? "m" : "www"
-                      ) +
+                      UrlMap.resolve(params.display == "touch" ? "m" : "www") +
                       "/" +
                       method.url,
                     params: params,
                     name: name,
-                    dialog: require("sdk.Dialog").newInstance(
-                      id,
-                      params.display
-                    )
+                    dialog: Dialog.newInstance(id, params.display)
                   };
 
                   var transform = method.transform
@@ -12810,14 +12852,14 @@ try {
                   }
 
                   call.params.kid_directed_site =
-                    require("sdk.Runtime").getKidDirectedSite() ||
+                    Runtime.getKidDirectedSite() ||
                     call.params.kid_directed_site;
 
-                  call.params = require("flattenObject")(call.params);
-                  var encodedQS = require("QueryString").encode(call.params);
+                  call.params = flattenObject(call.params);
+                  var encodedQS = QueryString.encode(call.params);
 
                   if (
-                    !require("sdk.UA").nativeApp() &&
+                    !UA.nativeApp() &&
                     UIServer.urlTooLongForIE(call.url + "?" + encodedQS)
                   ) {
                     call.post = true;
@@ -12829,11 +12871,7 @@ try {
                 },
 
                 urlTooLongForIE: function urlTooLongForIE(fullURL) {
-                  return (
-                    require("sdk.UA").ie() &&
-                    require("sdk.UA").ie() <= 8 &&
-                    fullURL.length > 2048
-                  );
+                  return UA.ie() && UA.ie() <= 8 && fullURL.length > 2048;
                 },
 
                 getDisplayMode: function getDisplayMode(method, params) {
@@ -12846,12 +12884,8 @@ try {
                   }
 
                   var canvas =
-                    require("sdk.Runtime").isEnvironment(
-                      require("sdk.Runtime").ENVIRONMENTS.CANVAS
-                    ) ||
-                    require("sdk.Runtime").isEnvironment(
-                      require("sdk.Runtime").ENVIRONMENTS.PAGETAB
-                    );
+                    Runtime.isEnvironment(Runtime.ENVIRONMENTS.CANVAS) ||
+                    Runtime.isEnvironment(Runtime.ENVIRONMENTS.PAGETAB);
                   if (canvas && !params.display) {
                     return "async";
                   }
@@ -12863,10 +12897,7 @@ try {
                     return "async";
                   }
 
-                  if (
-                    require("sdk.UA").mobile() ||
-                    params.display === "touch"
-                  ) {
+                  if (UA.mobile() || params.display === "touch") {
                     return "touch";
                   }
 
@@ -12875,7 +12906,7 @@ try {
                     params.display == "dialog"
                   ) {
                     if (!UIServer.canIframe(params)) {
-                      require("Log").error(
+                      Log.error(
                         '"dialog" mode can only be used when the user is connected.'
                       );
                       return "popup";
@@ -12893,14 +12924,11 @@ try {
                 },
 
                 canIframe: function canIframe(params) {
-                  if (require("sdk.Runtime").getAccessToken()) {
+                  if (Runtime.getAccessToken()) {
                     return true;
                   }
 
-                  if (
-                    require("sdk.UA").mobile() &&
-                    require("sdk.Runtime").getLoggedIntoFacebook()
-                  ) {
+                  if (UA.mobile() && Runtime.getLoggedIntoFacebook()) {
                     return !!params.mobile_iframe;
                   }
                   return false;
@@ -12931,12 +12959,8 @@ try {
                   var outerWidth = window.outerWidth;
                   var outerHeight = window.outerHeight;
 
-                  var width = require("sdk.UA").mobile()
-                    ? null
-                    : call.size.width;
-                  var height = require("sdk.UA").mobile()
-                    ? null
-                    : call.size.height;
+                  var width = UA.mobile() ? null : call.size.width;
+                  var height = UA.mobile() ? null : call.size.height;
                   var screenX =
                     _screenX < 0 ? window.screen.width + _screenX : _screenX;
                   var left = screenX + (outerWidth - width) / 2;
@@ -12958,10 +12982,7 @@ try {
                   ) {
                     features.push("toolbar=0");
 
-                    if (
-                      !require("sdk.UA").chrome() ||
-                      require("sdk.UA").chrome() < 59
-                    ) {
+                    if (!UA.chrome() || UA.chrome() < 59) {
                       features.push("location=1");
                     }
                   }
@@ -12972,7 +12993,7 @@ try {
                     popup = window.open("about:blank", call.id, featuresString);
                     if (popup) {
                       UIServer.setLoadedNode(call, popup, "popup");
-                      require("sdk.Content").submitToTarget({
+                      Content.submitToTarget({
                         url: call.url,
                         target: call.id,
                         params: call.params
@@ -12986,14 +13007,9 @@ try {
                   }
 
                   if (!popup) {
-                    if (
-                      require("sdk.feature")(
-                        "popup_blocker_scribe_logging",
-                        true
-                      )
-                    ) {
-                      require("sdk.Scribe").log("jssdk_error", {
-                        appId: require("sdk.Runtime").getClientID(),
+                    if (feature("popup_blocker_scribe_logging", true)) {
+                      Scribe.log("jssdk_error", {
+                        appId: Runtime.getClientID(),
                         error: "POPUP_MAYBE_BLOCKED",
                         extra: {
                           call: call.name
@@ -13029,25 +13045,21 @@ try {
 
                 hidden: function hidden(call) {
                   call.className = "FB_UI_Hidden";
-                  call.root = require("sdk.Content").appendHidden("");
+                  call.root = Content.appendHidden("");
                   UIServer._insertIframe(call);
                 },
 
                 iframe: function iframe(call) {
                   call.className = "FB_UI_Dialog";
                   if (call.params.mobile_iframe) {
-                    require("sdk.Dialog").setForceTabletStyle(true);
-                    require("sdk.Dialog").setCloseOnOverlayTap(true);
-                    require("sdk.Dialog").setPositionDialogAtTopWhenPortrait(
-                      true
-                    );
+                    Dialog.setForceTabletStyle(true);
+                    Dialog.setCloseOnOverlayTap(true);
+                    Dialog.setPositionDialogAtTopWhenPortrait(true);
                   }
                   var onClose = function onClose() {
                     var errorResult = ES("JSON", "stringify", false, {
                       error_code: 4201,
-                      error_message: require("sdk.fbt")._(
-                        "User canceled the Dialog flow"
-                      )
+                      error_message: fbt._("User canceled the Dialog flow")
                     });
 
                     UIServer._triggerDefault(call.id, errorResult);
@@ -13057,43 +13069,36 @@ try {
                     onClose: onClose,
                     closeIcon:
                       call.closeIcon === undefined ? true : call.closeIcon,
-                    classes: require("sdk.Dialog").isTabletStyle()
-                      ? "centered"
-                      : ""
+                    classes: Dialog.isTabletStyle() ? "centered" : ""
                   };
 
                   if (call.params.mobile_iframe) {
                     dialogOptions.styles = { "border-radius": "8px" };
                   }
 
-                  call.root = require("sdk.Dialog").create(dialogOptions);
+                  call.root = Dialog.create(dialogOptions);
                   if (!call.hideLoader) {
-                    require("sdk.Dialog").showLoader(onClose, call.size.width);
+                    Dialog.showLoader(onClose, call.size.width);
                   }
-                  require("sdk.DOM").addCss(call.root, "fb_dialog_iframe");
+                  DOM.addCss(call.root, "fb_dialog_iframe");
                   UIServer._insertIframe(call);
                 },
 
                 touch: function touch(call) {
                   if (call.params && call.params.in_iframe) {
                     if (call.ui_created) {
-                      require("sdk.Dialog").showLoader(function() {
+                      Dialog.showLoader(function() {
                         UIServer._triggerDefault(call.id, null);
                       }, 0);
                     } else {
                       UIServer.iframe(call);
                     }
-                  } else if (
-                    require("sdk.UA").nativeApp() &&
-                    !call.ui_created
-                  ) {
+                  } else if (UA.nativeApp() && !call.ui_created) {
                     call.frame = call.id;
-                    require("sdk.Native").onready(function() {
+                    Native.onready(function() {
                       UIServer.setLoadedNode(
                         call,
-                        require("sdk.Native").open(
-                          call.url + "#cb=" + call.frameName
-                        ),
+                        Native.open(call.url + "#cb=" + call.frameName),
                         "native"
                       );
                     });
@@ -13115,7 +13120,7 @@ try {
                     var result = response.result;
 
                     if (result && result.e2e) {
-                      var dialog = require("sdk.Dialog").get(call.id);
+                      var dialog = Dialog.get(call.id);
                       dialog.trackEvents(result.e2e);
                       dialog.trackEvent("close");
                       delete result.e2e;
@@ -13129,20 +13134,17 @@ try {
                   ) {
                     call.params.method = "oauth";
                     call.params.redirect_uri = call.params.next;
-                    require("sdk.Extensions").remote.showDialog(
-                      call.params,
-                      handler
-                    );
+                    Extensions.remote.showDialog(call.params, handler);
                   } else {
-                    require("sdk.RPC").remote.showDialog(call.params, handler);
+                    RPC.remote.showDialog(call.params, handler);
                   }
                 },
                 native: function native(call) {
-                  require("sdk.openMessenger")(call.params);
+                  openMessenger(call.params);
                 },
 
                 getDefaultSize: function getDefaultSize() {
-                  return require("sdk.Dialog").getDefaultSize();
+                  return Dialog.getDefaultSize();
                 },
 
                 _insertIframe: function _insertIframe(call) {
@@ -13154,7 +13156,7 @@ try {
                   };
 
                   if (call.post) {
-                    require("insertIframe")({
+                    insertIframe({
                       url: "about:blank",
                       root: call.root,
                       className: call.className,
@@ -13163,7 +13165,7 @@ try {
                       id: call.id,
                       onInsert: activate,
                       onload: function onload(node) {
-                        require("sdk.Content").submitToTarget({
+                        Content.submitToTarget({
                           url: call.url,
                           target: node.name,
                           params: call.params
@@ -13171,7 +13173,7 @@ try {
                       }
                     });
                   } else {
-                    require("insertIframe")({
+                    insertIframe({
                       url: call.url,
                       root: call.root,
                       className: call.className,
@@ -13200,16 +13202,16 @@ try {
                     node.style.width = data.width + "px";
                   }
 
-                  require("sdk.XD").inform(
+                  XD.inform(
                     "resize.ack",
                     data || {},
                     "parent.frames[" + node.name + "]"
                   );
 
-                  if (!require("sdk.Dialog").isActive(node)) {
-                    require("sdk.Dialog").show(node);
+                  if (!Dialog.isActive(node)) {
+                    Dialog.show(node);
                   } else {
-                    require("sdk.Dialog")._centerActive();
+                    Dialog._centerActive();
                   }
                 },
 
@@ -13262,7 +13264,7 @@ try {
                 },
 
                 _xdChannelHandler: function _xdChannelHandler(frame, relation) {
-                  return require("sdk.XD").handler(
+                  return XD.handler(
                     function(data) {
                       var node = UIServer.getLoadedNode(frame);
                       if (!node) {
@@ -13272,12 +13274,12 @@ try {
                       if (data.type == "resize") {
                         UIServer._handleResizeMessage(frame, data);
                       } else if (data.type == "hide") {
-                        require("sdk.Dialog").hide(node);
+                        Dialog.hide(node);
                       } else if (data.type == "rendered") {
-                        var root = require("sdk.Dialog")._findRoot(node);
-                        require("sdk.Dialog").show(root);
+                        var root = Dialog._findRoot(node);
+                        Dialog.show(root);
                       } else if (data.type == "fireevent") {
-                        require("sdk.Event").fire(data.event, data);
+                        Event.fire(data.event, data);
                       }
                     },
                     relation,
@@ -13297,7 +13299,7 @@ try {
                   }
 
                   return (
-                    require("sdk.XD").handler(function(data) {
+                    XD.handler(function(data) {
                       UIServer._xdRecv(data, cb);
                     }, relation) +
                     "&frame=" +
@@ -13321,18 +13323,14 @@ try {
                         UIServer._popupCount--;
                       } catch (_unused2) {}
                     } else {
-                      if (
-                        require("sdk.DOM").containsCss(frame, "FB_UI_Hidden")
-                      ) {
+                      if (DOM.containsCss(frame, "FB_UI_Hidden")) {
                         setTimeout(function() {
                           frame.parentNode.parentNode.removeChild(
                             frame.parentNode
                           );
                         }, 3000);
-                      } else if (
-                        require("sdk.DOM").containsCss(frame, "FB_UI_Dialog")
-                      ) {
-                        require("sdk.Dialog").remove(frame);
+                      } else if (DOM.containsCss(frame, "FB_UI_Dialog")) {
+                        Dialog.remove(frame);
                       }
                     }
                   }
@@ -13341,7 +13339,7 @@ try {
                   delete UIServer._defaultCb[data.frame];
 
                   if (data.e2e) {
-                    var dialog = require("sdk.Dialog").get(data.frame);
+                    var dialog = Dialog.get(data.frame);
                     dialog.trackEvents(data.e2e);
                     dialog.trackEvent("close");
                     delete data.e2e;
@@ -13378,11 +13376,7 @@ try {
                   isDefault
                 ) {
                   return UIServer._xdNextHandler(
-                    require("sdk.Auth").xdResponseWrapper(
-                      cb,
-                      authResponse,
-                      method
-                    ),
+                    Auth.xdResponseWrapper(cb, authResponse, method),
                     frame,
                     target,
                     isDefault
@@ -13390,8 +13384,8 @@ try {
                 }
               };
 
-              require("sdk.Extensions").stub("showDialog");
-              require("sdk.RPC").stub("showDialog");
+              Extensions.stub("showDialog");
+              RPC.stub("showDialog");
               module.exports = UIServer;
             },
             null
@@ -13414,28 +13408,32 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              Assert,
+              Log,
+              feature,
+              Impressions,
+              PlatformVersioning,
+              Runtime,
+              UIServer,
+              URI
             ) {
               function ui(params, cb) {
-                require("Assert").isObject(params);
-                require("Assert").maybeFunction(cb);
+                Assert.isObject(params);
+                Assert.maybeFunction(cb);
 
-                if (require("sdk.Runtime").getIsVersioned()) {
-                  require("sdk.PlatformVersioning").assertVersionIsSet();
+                if (Runtime.getIsVersioned()) {
+                  PlatformVersioning.assertVersionIsSet();
                   if (params.version) {
-                    require("sdk.PlatformVersioning").assertValidVersion(
-                      params.version
-                    );
+                    PlatformVersioning.assertValidVersion(params.version);
                   } else {
-                    params.version = require("sdk.Runtime").getVersion();
+                    params.version = Runtime.getVersion();
                   }
                 }
 
                 params = ES("Object", "assign", false, {}, params);
                 if (!params.method) {
-                  require("Log").error(
-                    '"method" is a required parameter for FB.ui().'
-                  );
+                  Log.error('"method" is a required parameter for FB.ui().');
                   return null;
                 }
 
@@ -13446,16 +13444,14 @@ try {
                 var method = params.method;
 
                 if (params.redirect_uri) {
-                  require("Log").warn(
+                  Log.warn(
                     "When using FB.ui, you should not specify a redirect_uri."
                   );
                   delete params.redirect_uri;
                 }
 
                 if (!params.fallback_redirect_uri) {
-                  var computedFallbackURI = new (require("sdk.URI"))(
-                    document.location.href
-                  );
+                  var computedFallbackURI = new URI(document.location.href);
                   computedFallbackURI.setQueryData({}).setFragment();
                   params.fallback_redirect_uri = computedFallbackURI.toString();
                 }
@@ -13465,24 +13461,19 @@ try {
                     method == "permissions.oauth") &&
                   (params.display == "iframe" || params.display == "dialog")
                 ) {
-                  params.display = require("sdk.UIServer").checkOauthDisplay(
-                    params
-                  );
+                  params.display = UIServer.checkOauthDisplay(params);
                 }
 
                 if (params.display === "native" && method !== "send") {
-                  require("Log").error('display type "native" not supported');
+                  Log.error('display type "native" not supported');
                   return null;
                 }
 
-                var enableE2E = require("sdk.feature")("e2e_tracking", true);
+                var enableE2E = feature("e2e_tracking", true);
                 if (enableE2E) {
                   params.e2e = {};
                 }
-                var call = require("sdk.UIServer").prepareCall(
-                  params,
-                  cb || function() {}
-                );
+                var call = UIServer.prepareCall(params, cb || function() {});
                 if (!call) {
                   return null;
                 }
@@ -13494,9 +13485,9 @@ try {
                   displayName = "hidden";
                 }
 
-                var displayFn = require("sdk.UIServer")[displayName];
+                var displayFn = UIServer[displayName];
                 if (!displayFn) {
-                  require("Log").error(
+                  Log.error(
                     '"display" must be one of "popup", ' +
                       '"dialog", "iframe", "touch", "async", "hidden", or "none"'
                   );
@@ -13508,12 +13499,12 @@ try {
                   call.dialog.subscribe("e2e:end", function(events) {
                     events.method = method;
                     events.display = displayName;
-                    require("Log").debug(
+                    Log.debug(
                       "e2e: %s",
                       ES("JSON", "stringify", false, events)
                     );
 
-                    require("sdk.Impressions").log(114, {
+                    Impressions.log(114, {
                       payload: events
                     });
                   });
@@ -13545,63 +13536,62 @@ try {
               requireDynamic,
               requireLazy,
               __DO_NOT_USE__module,
-              __DO_NOT_USE__exports
+              __DO_NOT_USE__exports,
+              FB,
+              Log,
+              Auth,
+              Cookie,
+              Event,
+              Runtime,
+              SignedRequest,
+              ui,
+              unsecureDisallowed
             ) {
-              require("FB").provide("", {
+              FB.provide("", {
                 getLoginStatus: function getLoginStatus() {
-                  if (require("sdk.unsecureDisallowed")("getLoginStatus")) {
+                  if (unsecureDisallowed("getLoginStatus")) {
                     return null;
                   }
-                  return require("sdk.Auth").getLoginStatus.apply(
-                    require("sdk.Auth"),
-                    arguments
-                  );
+                  return Auth.getLoginStatus.apply(Auth, arguments);
                 },
 
                 getAuthResponse: function getAuthResponse() {
-                  if (require("sdk.unsecureDisallowed")("getAuthResponse")) {
+                  if (unsecureDisallowed("getAuthResponse")) {
                     return null;
                   }
-                  return require("sdk.Auth").getAuthResponse();
+                  return Auth.getAuthResponse();
                 },
 
                 getAccessToken: function getAccessToken() {
-                  if (require("sdk.unsecureDisallowed")("getAccessToken")) {
+                  if (unsecureDisallowed("getAccessToken")) {
                     return null;
                   }
-                  return require("sdk.Runtime").getAccessToken() || null;
+                  return Runtime.getAccessToken() || null;
                 },
 
                 getUserID: function getUserID() {
-                  if (require("sdk.unsecureDisallowed")("getUserID")) {
+                  if (unsecureDisallowed("getUserID")) {
                     return null;
                   }
-                  return (
-                    require("sdk.Runtime").getUserID() ||
-                    require("sdk.Runtime").getCookieUserID()
-                  );
+                  return Runtime.getUserID() || Runtime.getCookieUserID();
                 },
 
                 login: function login(cb, opts) {
-                  if (require("sdk.unsecureDisallowed")("login")) {
+                  if (unsecureDisallowed("login")) {
                     return;
                   }
                   if (opts && opts.perms && !opts.scope) {
                     opts.scope = opts.perms;
                     delete opts.perms;
-                    require("Log").warn(
+                    Log.warn(
                       "OAuth2 specification states that 'perms' " +
                         "should now be called 'scope'.  Please update."
                     );
                   }
                   var canvas =
-                    require("sdk.Runtime").isEnvironment(
-                      require("sdk.Runtime").ENVIRONMENTS.CANVAS
-                    ) ||
-                    require("sdk.Runtime").isEnvironment(
-                      require("sdk.Runtime").ENVIRONMENTS.PAGETAB
-                    );
-                  require("sdk.ui")(
+                    Runtime.isEnvironment(Runtime.ENVIRONMENTS.CANVAS) ||
+                    Runtime.isEnvironment(Runtime.ENVIRONMENTS.PAGETAB);
+                  ui(
                     babelHelpers["extends"](
                       {
                         method: "permissions.oauth",
@@ -13616,75 +13606,46 @@ try {
                 },
 
                 logout: function logout(cb) {
-                  require("sdk.ui")(
-                    { method: "auth.logout", display: "hidden" },
-                    cb
-                  );
+                  ui({ method: "auth.logout", display: "hidden" }, cb);
                 }
               });
 
-              require("sdk.Auth").subscribe(
+              Auth.subscribe(
                 "logout",
-                ES(
-                  require("sdk.Event").fire,
-                  "bind",
-                  true,
-                  require("sdk.Event"),
-                  "auth.logout"
-                )
+                ES(Event.fire, "bind", true, Event, "auth.logout")
               );
-              require("sdk.Auth").subscribe(
+              Auth.subscribe(
                 "login",
-                ES(
-                  require("sdk.Event").fire,
-                  "bind",
-                  true,
-                  require("sdk.Event"),
-                  "auth.login"
-                )
+                ES(Event.fire, "bind", true, Event, "auth.login")
               );
-              require("sdk.Auth").subscribe(
+              Auth.subscribe(
                 "authresponse.change",
-                ES(
-                  require("sdk.Event").fire,
-                  "bind",
-                  true,
-                  require("sdk.Event"),
-                  "auth.authResponseChange"
-                )
+                ES(Event.fire, "bind", true, Event, "auth.authResponseChange")
               );
 
-              require("sdk.Auth").subscribe(
+              Auth.subscribe(
                 "status.change",
-                ES(
-                  require("sdk.Event").fire,
-                  "bind",
-                  true,
-                  require("sdk.Event"),
-                  "auth.statusChange"
-                )
+                ES(Event.fire, "bind", true, Event, "auth.statusChange")
               );
 
-              require("sdk.Event").subscribe("init:post", function(options) {
+              Event.subscribe("init:post", function(options) {
                 if (options.status) {
-                  require("sdk.Auth").getLoginStatus();
+                  Auth.getLoginStatus();
                 }
-                if (require("sdk.Runtime").getClientID()) {
-                  if (require("sdk.Runtime").getUseCookie()) {
-                    var signedRequest = require("sdk.Cookie").loadSignedRequest();
+                if (Runtime.getClientID()) {
+                  if (Runtime.getUseCookie()) {
+                    var signedRequest = Cookie.loadSignedRequest();
                     var parsedSignedRequest;
                     if (signedRequest) {
                       try {
-                        parsedSignedRequest = require("sdk.SignedRequest").parse(
+                        parsedSignedRequest = SignedRequest.parse(
                           signedRequest
                         );
                       } catch (_unused) {
-                        require("sdk.Cookie").clearSignedRequestCookie();
+                        Cookie.clearSignedRequestCookie();
                       }
                       if (parsedSignedRequest && parsedSignedRequest.user_id) {
-                        require("sdk.Runtime").setCookieUserID(
-                          parsedSignedRequest.user_id
-                        );
+                        Runtime.setCookieUserID(parsedSignedRequest.user_id);
                       }
                     }
                   }
@@ -13702,13 +13663,15 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              DOMWrapper,
+              RPC
             ) {
               var autoGrowTimer = null;
               var autoGrowLastSize;
 
               function getHeight() {
-                var document = require("DOMWrapper").getWindow().document;
+                var document = DOMWrapper.getWindow().document;
                 var body = document.body,
                   docElement = document.documentElement,
                   bodyTop = Math.max(body.offsetTop, 0),
@@ -13746,7 +13709,7 @@ try {
                   }
                 }
                 autoGrowLastSize = params;
-                require("sdk.RPC").remote.setSize(params);
+                RPC.remote.setSize(params);
                 return true;
               }
 
@@ -13771,7 +13734,7 @@ try {
                 }
               }
 
-              require("sdk.RPC").stub("setSize");
+              RPC.stub("setSize");
 
               var IframeHandling = {
                 setSize: setSize,
@@ -13791,16 +13754,17 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              RPC
             ) {
               function setUrlHandler(callback) {
-                require("sdk.RPC").local.navigate = function(path) {
+                RPC.local.navigate = function(path) {
                   callback({ path: path });
                 };
-                require("sdk.RPC").remote.setNavigationEnabled(true);
+                RPC.remote.setNavigationEnabled(true);
               }
 
-              require("sdk.RPC").stub("setNavigationEnabled");
+              RPC.stub("setNavigationEnabled");
 
               var Navigation = {
                 setUrlHandler: setUrlHandler
@@ -13819,22 +13783,25 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              Log,
+              api,
+              RPC,
+              Runtime,
+              UA
             ) {
               var flashClassID = "CLSID:D27CDB6E-AE6D-11CF-96B8-444553540000";
               var unityClassID = "CLSID:444785F1-DE89-4295-863A-D46C3A781394";
               var devHidePluginCallback = null;
 
-              var osx =
-                require("sdk.UA").osx() &&
-                require("sdk.UA").osx.getVersionParts();
+              var osx = UA.osx() && UA.osx.getVersionParts();
               var unityNeedsToBeHidden = !(
                 osx &&
                 osx[0] > 10 &&
                 osx[1] > 10 &&
-                (require("sdk.UA").chrome() >= 31 ||
-                  require("sdk.UA").webkit() >= 537.71 ||
-                  require("sdk.UA").firefox() >= 25)
+                (UA.chrome() >= 31 ||
+                  UA.webkit() >= 537.71 ||
+                  UA.firefox() >= 25)
               );
 
               function hideUnityElement(elem) {
@@ -13950,7 +13917,7 @@ try {
                   };
 
                   if (devHidePluginCallback) {
-                    require("Log").info("Calling developer specified callback");
+                    Log.info("Calling developer specified callback");
 
                     var devArgs = { state: params.state, elem: elem };
                     devHidePluginCallback(devArgs);
@@ -13966,25 +13933,21 @@ try {
                     flash: flashPresent
                   };
 
-                  require("sdk.api")(
-                    require("sdk.Runtime").getClientID() + "/occludespopups",
-                    "post",
-                    opts
-                  );
+                  api(Runtime.getClientID() + "/occludespopups", "post", opts);
                 }
               }
 
-              require("sdk.RPC").local.hidePluginObjects = function() {
-                require("Log").info("hidePluginObjects called");
+              RPC.local.hidePluginObjects = function() {
+                Log.info("hidePluginObjects called");
                 hidePluginCallback({ state: "opened" });
               };
-              require("sdk.RPC").local.showPluginObjects = function() {
-                require("Log").info("showPluginObjects called");
+              RPC.local.showPluginObjects = function() {
+                Log.info("showPluginObjects called");
                 hidePluginCallback({ state: "closed" });
               };
 
-              require("sdk.RPC").local.showFlashObjects = require("sdk.RPC").local.showPluginObjects;
-              require("sdk.RPC").local.hideFlashObjects = require("sdk.RPC").local.hidePluginObjects;
+              RPC.local.showFlashObjects = RPC.local.showPluginObjects;
+              RPC.local.hideFlashObjects = RPC.local.hidePluginObjects;
 
               function hidePluginElement() {
                 hideFlashElement();
@@ -14019,11 +13982,13 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              RPC,
+              Runtime
             ) {
               function passAppTtiMessage(callback, messageName) {
                 var params = {
-                  appId: require("sdk.Runtime").getClientID(),
+                  appId: Runtime.getClientID(),
                   time: ES("Date", "now", false),
                   name: messageName
                 };
@@ -14035,7 +14000,7 @@ try {
                   });
                 }
 
-                require("sdk.RPC").remote.logTtiMessage.apply(null, args);
+                RPC.remote.logTtiMessage.apply(null, args);
               }
 
               function startTimer() {
@@ -14050,7 +14015,7 @@ try {
                 passAppTtiMessage(callback, "RecordIframeAppTti");
               }
 
-              require("sdk.RPC").stub("logTtiMessage");
+              RPC.stub("logTtiMessage");
 
               var Tti = {
                 setDoneLoading: setDoneLoading,
@@ -14082,108 +14047,79 @@ try {
               requireDynamic,
               requireLazy,
               __DO_NOT_USE__module,
-              __DO_NOT_USE__exports
+              __DO_NOT_USE__exports,
+              Assert,
+              Environment,
+              Event,
+              FB,
+              IframeHandling,
+              Navigation,
+              Plugin,
+              RPC,
+              Runtime,
+              Tti
             ) {
-              require("FB").provide("Canvas", {
+              FB.provide("Canvas", {
                 setSize: function setSize(params) {
-                  require("Assert").maybeObject(params, "Invalid argument");
-                  return require("sdk.Canvas.IframeHandling").setSize.apply(
-                    null,
-                    arguments
-                  );
+                  Assert.maybeObject(params, "Invalid argument");
+                  return IframeHandling.setSize.apply(null, arguments);
                 },
 
                 setAutoGrow: function setAutoGrow() {
-                  return require("sdk.Canvas.IframeHandling").setAutoGrow.apply(
-                    null,
-                    arguments
-                  );
+                  return IframeHandling.setAutoGrow.apply(null, arguments);
                 },
 
                 getPageInfo: function getPageInfo(callback) {
-                  require("Assert").isFunction(callback, "Invalid argument");
-                  return require("sdk.Canvas.Environment").getPageInfo.apply(
-                    null,
-                    arguments
-                  );
+                  Assert.isFunction(callback, "Invalid argument");
+                  return Environment.getPageInfo.apply(null, arguments);
                 },
 
                 scrollTo: function scrollTo(x, y) {
-                  require("Assert").maybeNumber(x, "Invalid argument");
-                  require("Assert").maybeNumber(y, "Invalid argument");
-                  return require("sdk.Canvas.Environment").scrollTo.apply(
-                    null,
-                    arguments
-                  );
+                  Assert.maybeNumber(x, "Invalid argument");
+                  Assert.maybeNumber(y, "Invalid argument");
+                  return Environment.scrollTo.apply(null, arguments);
                 },
 
                 setDoneLoading: function setDoneLoading(callback) {
-                  require("Assert").maybeFunction(callback, "Invalid argument");
-                  return require("sdk.Canvas.Tti").setDoneLoading.apply(
-                    null,
-                    arguments
-                  );
+                  Assert.maybeFunction(callback, "Invalid argument");
+                  return Tti.setDoneLoading.apply(null, arguments);
                 },
 
                 startTimer: function startTimer() {
-                  return require("sdk.Canvas.Tti").startTimer.apply(
-                    null,
-                    arguments
-                  );
+                  return Tti.startTimer.apply(null, arguments);
                 },
 
                 stopTimer: function stopTimer(callback) {
-                  require("Assert").maybeFunction(callback, "Invalid argument");
-                  return require("sdk.Canvas.Tti").stopTimer.apply(
-                    null,
-                    arguments
-                  );
+                  Assert.maybeFunction(callback, "Invalid argument");
+                  return Tti.stopTimer.apply(null, arguments);
                 },
 
                 getHash: function getHash(callback) {
-                  require("Assert").isFunction(callback, "Invalid argument");
-                  return require("sdk.Canvas.Navigation").getHash.apply(
-                    null,
-                    arguments
-                  );
+                  Assert.isFunction(callback, "Invalid argument");
+                  return Navigation.getHash.apply(null, arguments);
                 },
 
                 setHash: function setHash(hash) {
-                  require("Assert").isString(hash, "Invalid argument");
-                  return require("sdk.Canvas.Navigation").setHash.apply(
-                    null,
-                    arguments
-                  );
+                  Assert.isString(hash, "Invalid argument");
+                  return Navigation.setHash.apply(null, arguments);
                 },
 
                 setUrlHandler: function setUrlHandler(callback) {
-                  require("Assert").isFunction(callback, "Invalid argument");
-                  return require("sdk.Canvas.Navigation").setUrlHandler.apply(
-                    null,
-                    arguments
-                  );
+                  Assert.isFunction(callback, "Invalid argument");
+                  return Navigation.setUrlHandler.apply(null, arguments);
                 }
               });
 
-              require("sdk.RPC").local.fireEvent = ES(
-                require("sdk.Event").fire,
-                "bind",
-                true,
-                require("sdk.Event")
-              );
+              RPC.local.fireEvent = ES(Event.fire, "bind", true, Event);
 
-              require("sdk.Event").subscribe("init:post", function(options) {
-                if (
-                  require("sdk.Runtime").isEnvironment(
-                    require("sdk.Runtime").ENVIRONMENTS.CANVAS
-                  )
-                ) {
-                  require("Assert").isTrue(
+              Event.subscribe("init:post", function(options) {
+                if (Runtime.isEnvironment(Runtime.ENVIRONMENTS.CANVAS)) {
+                  Assert.isTrue(
                     !options.hideFlashCallback || !options.hidePluginCallback,
                     "cannot specify deprecated hideFlashCallback and new hidePluginCallback"
                   );
 
-                  require("sdk.Canvas.Plugin")._setHidePluginCallback(
+                  Plugin._setHidePluginCallback(
                     options.hidePluginCallback || options.hideFlashCallback
                   );
                 }
@@ -14200,18 +14136,17 @@ try {
               requireDynamic,
               requireLazy,
               __DO_NOT_USE__module,
-              __DO_NOT_USE__exports
+              __DO_NOT_USE__exports,
+              Assert,
+              FB,
+              Log,
+              Tti
             ) {
-              require("FB").provide("CanvasInsights", {
+              FB.provide("CanvasInsights", {
                 setDoneLoading: function setDoneLoading(callback) {
-                  require("Log").warn(
-                    "Deprecated: use FB.Canvas.setDoneLoading"
-                  );
-                  require("Assert").maybeFunction(callback, "Invalid argument");
-                  return require("sdk.Canvas.Tti").setDoneLoading.apply(
-                    null,
-                    arguments
-                  );
+                  Log.warn("Deprecated: use FB.Canvas.setDoneLoading");
+                  Assert.maybeFunction(callback, "Invalid argument");
+                  return Tti.setDoneLoading.apply(null, arguments);
                 }
               });
             },
@@ -14226,12 +14161,11 @@ try {
               requireDynamic,
               requireLazy,
               __DO_NOT_USE__module,
-              __DO_NOT_USE__exports
+              __DO_NOT_USE__exports,
+              FB,
+              CanvasPlugin
             ) {
-              require("FB").provide(
-                "Canvas.Plugin",
-                require("sdk.Canvas.Plugin")
-              );
+              FB.provide("Canvas.Plugin", CanvasPlugin);
             },
             3
           );
@@ -14244,16 +14178,18 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              CanvasPrefetcherConfig,
+              api,
+              Runtime
             ) {
               var COLLECT = {
                 AUTOMATIC: 0,
                 MANUAL: 1
               };
 
-              var sampleRate = require("JSSDKCanvasPrefetcherConfig")
-                .sampleRate;
-              var blacklist = require("JSSDKCanvasPrefetcherConfig").blacklist;
+              var sampleRate = CanvasPrefetcherConfig.sampleRate;
+              var blacklist = CanvasPrefetcherConfig.blacklist;
               var collectionMode = COLLECT.AUTOMATIC;
               var links = [];
 
@@ -14294,24 +14230,18 @@ try {
                   return;
                 }
 
-                require("sdk.api")(
-                  require("sdk.Runtime").getClientID() + "/staticresources",
-                  "post",
-                  {
-                    urls: ES("JSON", "stringify", false, links),
-                    is_https: location.protocol === "https:"
-                  }
-                );
+                api(Runtime.getClientID() + "/staticresources", "post", {
+                  urls: ES("JSON", "stringify", false, links),
+                  is_https: location.protocol === "https:"
+                });
 
                 links = [];
               }
 
               function maybeSample() {
                 if (
-                  !require("sdk.Runtime").isEnvironment(
-                    require("sdk.Runtime").ENVIRONMENTS.CANVAS
-                  ) ||
-                  !require("sdk.Runtime").getClientID() ||
+                  !Runtime.isEnvironment(Runtime.ENVIRONMENTS.CANVAS) ||
+                  !Runtime.getClientID() ||
                   !sampleRate
                 ) {
                   return;
@@ -14320,12 +14250,7 @@ try {
                 if (
                   Math.random() > 1 / sampleRate ||
                   blacklist == "*" ||
-                  ~ES(
-                    blacklist,
-                    "indexOf",
-                    true,
-                    require("sdk.Runtime").getClientID()
-                  )
+                  ~ES(blacklist, "indexOf", true, Runtime.getClientID())
                 ) {
                   return;
                 }
@@ -14364,20 +14289,17 @@ try {
               requireDynamic,
               requireLazy,
               __DO_NOT_USE__module,
-              __DO_NOT_USE__exports
+              __DO_NOT_USE__exports,
+              FB,
+              CanvasPrefetcher,
+              Event,
+              Runtime
             ) {
-              require("FB").provide(
-                "Canvas.Prefetcher",
-                require("sdk.Canvas.Prefetcher")
-              );
+              FB.provide("Canvas.Prefetcher", CanvasPrefetcher);
 
-              require("sdk.Event").subscribe("init:post", function(options) {
-                if (
-                  require("sdk.Runtime").isEnvironment(
-                    require("sdk.Runtime").ENVIRONMENTS.CANVAS
-                  )
-                ) {
-                  require("sdk.Canvas.Prefetcher")._maybeSample();
+              Event.subscribe("init:post", function(options) {
+                if (Runtime.isEnvironment(Runtime.ENVIRONMENTS.CANVAS)) {
+                  CanvasPrefetcher._maybeSample();
                 }
               });
             },
@@ -14392,26 +14314,26 @@ try {
               requireDynamic,
               requireLazy,
               __DO_NOT_USE__module,
-              __DO_NOT_USE__exports
+              __DO_NOT_USE__exports,
+              FB,
+              Log,
+              ui,
+              UIServer
             ) {
-              require("FB").provide("", {
+              FB.provide("", {
                 share: function share(u) {
-                  require("Log").error(
+                  Log.error(
                     "share() has been deprecated. Please use FB.ui() instead."
                   );
-                  require("sdk.ui")({
-                    display: "popup",
-                    method: "stream.share",
-                    u: u
-                  });
+                  ui({ display: "popup", method: "stream.share", u: u });
                 },
 
                 publish: function publish(post, cb) {
-                  require("Log").error(
+                  Log.error(
                     "publish() has been deprecated. Please use FB.ui() instead."
                   );
                   post = post || {};
-                  require("sdk.ui")(
+                  ui(
                     babelHelpers["extends"](
                       {
                         display: "popup",
@@ -14425,19 +14347,15 @@ try {
                 },
 
                 addFriend: function addFriend(id, cb) {
-                  require("Log").error(
+                  Log.error(
                     "addFriend() has been deprecated. Please use FB.ui() instead."
                   );
-                  require("sdk.ui")(
-                    { display: "popup", id: id, method: "friend.add" },
-                    cb
-                  );
+                  ui({ display: "popup", id: id, method: "friend.add" }, cb);
                 }
               });
 
-              require("sdk.UIServer").Methods[
-                "auth.login"
-              ] = require("sdk.UIServer").Methods["permissions.request"];
+              UIServer.Methods["auth.login"] =
+                UIServer.Methods["permissions.request"];
             },
             3
           );
@@ -14450,10 +14368,11 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              Log
             ) {
               var logError = function logError() {
-                require("Log").error(
+                Log.error(
                   "##########################\n" +
                     "#  FB.Data has been deprecated.\n" +
                     "#  Please use FB.api().\n" +
@@ -14483,9 +14402,11 @@ try {
               requireDynamic,
               requireLazy,
               __DO_NOT_USE__module,
-              __DO_NOT_USE__exports
+              __DO_NOT_USE__exports,
+              FB,
+              Data
             ) {
-              require("FB").provide("Data", require("sdk.Data"));
+              FB.provide("Data", Data);
             },
             3
           );
@@ -14498,25 +14419,21 @@ try {
               requireDynamic,
               requireLazy,
               __DO_NOT_USE__module,
-              __DO_NOT_USE__exports
+              __DO_NOT_USE__exports,
+              FB,
+              Event,
+              Log
             ) {
               var warn = function warn(name) {
-                return require("Log").error(
-                  "FB.Event." + name + "() has been deprecated"
-                );
+                return Log.error("FB.Event." + name + "() has been deprecated");
               };
 
-              require("FB").provide("Event", {
+              FB.provide("Event", {
                 subscribe: function subscribe(name, cb) {
-                  return require("sdk.Event").subscribe(name, cb);
+                  return Event.subscribe(name, cb);
                 },
 
-                unsubscribe: ES(
-                  require("sdk.Event").unsubscribe,
-                  "bind",
-                  true,
-                  require("sdk.Event")
-                ),
+                unsubscribe: ES(Event.unsubscribe, "bind", true, Event),
                 clear: ES(warn, "bind", true, null, "clear"),
                 fire: ES(warn, "bind", true, null, "fire")
               });
@@ -14532,12 +14449,11 @@ try {
               requireDynamic,
               requireLazy,
               __DO_NOT_USE__module,
-              __DO_NOT_USE__exports
+              __DO_NOT_USE__exports,
+              FB,
+              Frictionless
             ) {
-              require("FB").provide(
-                "Frictionless",
-                require("sdk.Frictionless")
-              );
+              FB.provide("Frictionless", Frictionless);
             },
             3
           );
@@ -14557,7 +14473,13 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              UrlMap,
+              DOM,
+              fbt,
+              Runtime,
+              UA,
+              URI
             ) {
               var sharePluginInitialize = function sharePluginInitialize() {
                 function replaceWithLink(share_button) {
@@ -14569,22 +14491,16 @@ try {
                     return;
                   }
                   var href =
-                    require("sdk.DOM").getAttr(share_button, "href") ||
-                    window.location.href;
-                  var dialog = new (require("sdk.URI"))(
-                    require("UrlMap").resolve("m")
-                  );
+                    DOM.getAttr(share_button, "href") || window.location.href;
+                  var dialog = new URI(UrlMap.resolve("m"));
                   dialog.setPath("/dialog/share");
                   dialog.addQueryData("href", encodeURI(href));
-                  dialog.addQueryData(
-                    "app_id",
-                    require("sdk.Runtime").getClientID()
-                  );
+                  dialog.addQueryData("app_id", Runtime.getClientID());
                   dialog.addQueryData("mbasic_link", 1);
                   var link = document.createElement("a");
 
                   link.style = "display:inline-block; zoom:1;";
-                  link.textContent = require("sdk.fbt")._("Share to Facebook");
+                  link.textContent = fbt._("Share to Facebook");
 
                   link.setAttribute("href", dialog.toString());
                   link.setAttribute("target", "_blank");
@@ -14622,7 +14538,7 @@ try {
               };
 
               function init() {
-                if (!require("sdk.UA").mBasic()) {
+                if (!UA.mBasic()) {
                   return;
                 }
                 sharePluginInitialize();
@@ -14655,7 +14571,18 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              Log,
+              ManagedError,
+              QueryString,
+              Cookie,
+              ErrorHandling,
+              Event,
+              MBasicInitializer,
+              PlatformVersioning,
+              Runtime,
+              UA,
+              URI
             ) {
               function parseAppId(appId) {
                 var looksValid =
@@ -14665,7 +14592,7 @@ try {
                 if (looksValid) {
                   return appId.toString();
                 }
-                require("Log").warn(
+                Log.warn(
                   "Invalid App Id: Must be a number or numeric string representing " +
                     "the application id."
                 );
@@ -14674,41 +14601,37 @@ try {
               }
 
               function init(options) {
-                if (require("sdk.Runtime").getInitialized()) {
-                  require("Log").warn(
+                if (Runtime.getInitialized()) {
+                  Log.warn(
                     "FB.init has already been called - this could indicate a problem"
                   );
                 }
 
-                if (require("sdk.Runtime").getIsVersioned()) {
+                if (Runtime.getIsVersioned()) {
                   if (
                     Object.prototype.toString.call(options) !==
                     "[object Object]"
                   ) {
-                    throw new (require("ManagedError"))("Invalid argument");
+                    throw new ManagedError("Invalid argument");
                   }
 
                   if (options.authResponse) {
-                    throw new (require("ManagedError"))(
+                    throw new ManagedError(
                       "Setting authResponse is not supported"
                     );
                   }
 
                   if (!options.version) {
-                    options.version = new (require("sdk.URI"))(
+                    options.version = new URI(
                       location.href
                     ).getQueryData().sdk_version;
                   }
 
-                  require("sdk.PlatformVersioning").assertValidVersion(
-                    options.version
-                  );
-                  require("sdk.Runtime").setVersion(options.version);
+                  PlatformVersioning.assertValidVersion(options.version);
+                  Runtime.setVersion(options.version);
                 } else {
                   if (/number|string/.test(typeof options)) {
-                    require("Log").warn(
-                      "FB.init called with invalid parameters"
-                    );
+                    Log.warn("FB.init called with invalid parameters");
                     options = { apiKey: options };
                   }
 
@@ -14726,17 +14649,17 @@ try {
 
                 var appId = parseAppId(options.appId || options.apiKey);
                 if (appId !== null) {
-                  require("sdk.Runtime").setClientID(appId);
+                  Runtime.setClientID(appId);
                 }
 
                 if ("scope" in options) {
-                  require("sdk.Runtime").setScope(options.scope);
+                  Runtime.setScope(options.scope);
                 }
 
                 if (options.cookie) {
-                  require("sdk.Runtime").setUseCookie(true);
+                  Runtime.setUseCookie(true);
                   if (typeof options.cookie === "string") {
-                    require("sdk.Cookie").setDomain(options.cookie);
+                    Cookie.setDomain(options.cookie);
                   }
                 }
 
@@ -14744,11 +14667,11 @@ try {
                   options.localStorage === false ||
                   options.localStorage === "false"
                 ) {
-                  require("sdk.Runtime").setUseLocalStorage(false);
+                  Runtime.setUseLocalStorage(false);
                 }
 
                 if (options.kidDirectedSite) {
-                  require("sdk.Runtime").setKidDirectedSite(true);
+                  Runtime.setKidDirectedSite(true);
                 }
 
                 if (
@@ -14759,16 +14682,16 @@ try {
                 }
 
                 if (options.ab) {
-                  require("sdk.Runtime").setSDKAB(options.ab);
+                  Runtime.setSDKAB(options.ab);
                 }
 
-                require("sdk.Runtime").setInitialized(true);
+                Runtime.setInitialized(true);
 
-                if (require("sdk.UA").mBasic()) {
-                  require("sdk.MBasicInitializer").init();
+                if (UA.mBasic()) {
+                  MBasicInitializer.init();
                 }
 
-                require("sdk.Event").fire("init:post", options);
+                Event.fire("init:post", options);
               }
 
               window.setTimeout(function() {
@@ -14786,7 +14709,7 @@ try {
                     if (script.src) {
                       var match = pattern.exec(script.src);
                       if (match) {
-                        var opts = require("QueryString").decode(match[2]);
+                        var opts = QueryString.decode(match[2]);
                         for (var key in opts) {
                           if (Object.prototype.hasOwnProperty.call(opts, key)) {
                             var val = opts[key];
@@ -14803,9 +14726,9 @@ try {
                 );
 
                 if (window.fbAsyncInit && !window.fbAsyncInit.hasRun) {
-                  require("sdk.Event").fire("init:asyncstart");
+                  Event.fire("init:asyncstart");
                   window.fbAsyncInit.hasRun = true;
-                  require("sdk.ErrorHandling").unguard(window.fbAsyncInit)();
+                  ErrorHandling.unguard(window.fbAsyncInit)();
                 }
               }, 0);
 
@@ -14822,13 +14745,16 @@ try {
               requireDynamic,
               requireLazy,
               __DO_NOT_USE__module,
-              __DO_NOT_USE__exports
+              __DO_NOT_USE__exports,
+              FB,
+              Event,
+              init
             ) {
               "use strict";
 
-              require("FB").provide("", { init: require("sdk.init") });
+              FB.provide("", { init: init });
 
-              require("sdk.Event").subscribe("init:post", function() {
+              Event.subscribe("init:post", function() {
                 if (__buffer) {
                   __buffer.replay();
                 }
@@ -14836,7 +14762,7 @@ try {
 
               window.setTimeout(function() {
                 if (__buffer && __buffer.opts) {
-                  require("sdk.init")(__buffer.opts);
+                  init(__buffer.opts);
                 }
               }, 0);
             },
@@ -14851,14 +14777,16 @@ try {
               requireDynamic,
               requireLazy,
               __DO_NOT_USE__module,
-              __DO_NOT_USE__exports
+              __DO_NOT_USE__exports,
+              FB,
+              ManagedError
             ) {
-              require("FB").provide("JSON", {
+              FB.provide("JSON", {
                 stringify: function stringify(obj) {
                   try {
                     return ES("JSON", "stringify", false, obj);
                   } catch (e) {
-                    throw new (require("ManagedError"))(e.message, e);
+                    throw new ManagedError(e.message, e);
                   }
                 },
 
@@ -14866,7 +14794,7 @@ try {
                   try {
                     return ES("JSON", "parse", false, str);
                   } catch (e) {
-                    throw new (require("ManagedError"))(e.message, e);
+                    throw new ManagedError(e.message, e);
                   }
                 }
               });
@@ -14908,7 +14836,11 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              Log,
+              feature,
+              Impressions,
+              Runtime
             ) {
               "use strict";
 
@@ -14921,7 +14853,7 @@ try {
               var data = {};
 
               if (couldLog) {
-                var sdkurl = require("sdk.Runtime").getSDKUrl();
+                var sdkurl = Runtime.getSDKUrl();
                 var bootloadedTiming = null;
                 var timing = ES(
                   perf.getEntriesByType("resource"),
@@ -14973,7 +14905,7 @@ try {
                       data.transferSize += bootloadedTiming.transferSize;
                     }
                   }
-                  require("Log").debug(
+                  Log.debug(
                     "sdkperf: it took %s ms and %s bytes to load %s",
                     data.fetchTime,
                     data.transferSize,
@@ -14982,18 +14914,18 @@ try {
 
                   startTime = timing.startTime;
 
-                  data.ns = require("sdk.Runtime").getSDKNS();
+                  data.ns = Runtime.getSDKNS();
 
                   if (startTime) {
                     window.setTimeout(function() {
-                      var shouldLog = require("sdk.feature")("log_perf", false);
-                      var testId = require("sdk.Runtime").getSDKAB();
+                      var shouldLog = feature("log_perf", false);
+                      var testId = Runtime.getSDKAB();
                       if (testId) {
                         data.ab = testId;
                         shouldLog = true;
                       }
                       if (shouldLog) {
-                        require("sdk.Impressions").log(116, data);
+                        Impressions.log(116, data);
                       }
                     }, 10000);
                   }
@@ -15006,11 +14938,7 @@ try {
                     return;
                   }
                   data[key] = Math.round(perf.now() - startTime);
-                  require("Log").debug(
-                    "sdkperf: %s logged after %s ms",
-                    key,
-                    data[key]
-                  );
+                  Log.debug("sdkperf: %s logged after %s ms", key, data[key]);
                 }
               };
 
@@ -15027,29 +14955,32 @@ try {
               requireDynamic,
               requireLazy,
               __DO_NOT_USE__module,
-              __DO_NOT_USE__exports
+              __DO_NOT_USE__exports,
+              Event,
+              Time,
+              runOnce
             ) {
               "use strict";
 
-              require("sdk.Event").subscribe("init:post", function() {
-                require("sdk.Time").log("init");
+              Event.subscribe("init:post", function() {
+                Time.log("init");
               });
 
-              require("sdk.Event").subscribe("init:asyncstart", function() {
-                require("sdk.Time").log("asyncstart");
+              Event.subscribe("init:asyncstart", function() {
+                Time.log("asyncstart");
               });
 
-              require("sdk.Event").subscribe(
+              Event.subscribe(
                 "iframeplugin:create",
-                require("runOnce")(function() {
-                  return require("sdk.Time").log("pluginframe");
+                runOnce(function() {
+                  return Time.log("pluginframe");
                 })
               );
 
-              require("sdk.Event").subscribe(
+              Event.subscribe(
                 "iframeplugin:onload",
-                require("runOnce")(function() {
-                  return require("sdk.Time").log("ttfp");
+                runOnce(function() {
+                  return Time.log("ttfp");
                 })
               );
             },
@@ -15064,11 +14995,11 @@ try {
               requireDynamic,
               requireLazy,
               __DO_NOT_USE__module,
-              __DO_NOT_USE__exports
+              __DO_NOT_USE__exports,
+              FB,
+              UA
             ) {
-              require("FB").provide("UA", {
-                nativeApp: require("sdk.UA").nativeApp
-              });
+              FB.provide("UA", { nativeApp: UA.nativeApp });
             },
             3
           );
@@ -15081,9 +15012,11 @@ try {
               requireDynamic,
               requireLazy,
               __DO_NOT_USE__module,
-              __DO_NOT_USE__exports
+              __DO_NOT_USE__exports,
+              FB,
+              ui
             ) {
-              require("FB").provide("", { ui: require("sdk.ui") });
+              FB.provide("", { ui: ui });
             },
             3
           );
@@ -15096,14 +15029,18 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              Assert,
+              Log,
+              ObservableMixin,
+              runOnce
             ) {
               var xfbml = {};
               var html5 = {};
 
               var parseCount = 0;
 
-              var XFBML = new (require("ObservableMixin"))();
+              var XFBML = new ObservableMixin();
 
               function propStr(object, property) {
                 return ES(object[property] + "", "trim", true);
@@ -15167,7 +15104,7 @@ try {
               }
 
               function _parse(dom, callback, reparse) {
-                require("Assert").isTrue(
+                Assert.isTrue(
                   dom &&
                     dom.nodeType &&
                     dom.nodeType === 1 &&
@@ -15175,20 +15112,20 @@ try {
                   "Invalid DOM node passed to FB.XFBML.parse()"
                 );
 
-                require("Assert").isFunction(
+                Assert.isFunction(
                   callback,
                   "Invalid callback passed to FB.XFBML.parse()"
                 );
 
                 var pc = ++parseCount;
-                require("Log").info("XFBML Parsing Start %s", pc);
+                Log.info("XFBML Parsing Start %s", pc);
 
                 var count = 1;
                 var tags = 0;
                 var onrender = function onrender() {
                   count--;
                   if (count === 0) {
-                    require("Log").info(
+                    Log.info(
                       "XFBML Parsing Finish %s, %s tags found",
                       pc,
                       tags
@@ -15196,7 +15133,7 @@ try {
                     callback();
                     XFBML.inform("render", pc, tags);
                   }
-                  require("Assert").isTrue(
+                  Assert.isTrue(
                     count >= 0,
                     "onrender() has been called too many times"
                   );
@@ -15230,7 +15167,7 @@ try {
 
                     renderer.subscribe(
                       "render",
-                      require("runOnce")(function() {
+                      runOnce(function() {
                         element.setAttribute("fb-xfbml-state", "rendered");
                         onrender();
                       })
@@ -15254,7 +15191,7 @@ try {
                 var timeout = 30000;
                 setTimeout(function() {
                   if (count > 0) {
-                    require("Log").warn(
+                    Log.warn(
                       "%s tags failed to render in %s ms",
                       count,
                       timeout
@@ -15276,10 +15213,7 @@ try {
               ES("Object", "assign", false, XFBML, {
                 registerTag: function registerTag(info) {
                   var fqn = info.xmlns + ":" + info.localName;
-                  require("Assert").isUndefined(
-                    xfbml[fqn],
-                    fqn + " already registered"
-                  );
+                  Assert.isUndefined(xfbml[fqn], fqn + " already registered");
 
                   xfbml[fqn] = info;
 
@@ -15315,51 +15249,39 @@ try {
               requireDynamic,
               requireLazy,
               __DO_NOT_USE__module,
-              __DO_NOT_USE__exports
+              __DO_NOT_USE__exports,
+              Assert,
+              Event,
+              FB,
+              XFBML,
+              domReady,
+              wrapFunction
             ) {
-              require("FB").provide("XFBML", {
+              FB.provide("XFBML", {
                 parse: function parse(dom) {
-                  require("Assert").maybeXfbml(dom, "Invalid argument");
+                  Assert.maybeXfbml(dom, "Invalid argument");
 
                   if (dom && dom.nodeType === 9) {
                     dom = dom.body;
                   }
-                  return require("XFBML").parse.apply(null, arguments);
+                  return XFBML.parse.apply(null, arguments);
                 }
               });
 
-              require("XFBML").subscribe(
+              XFBML.subscribe(
                 "parse",
-                ES(
-                  require("sdk.Event").fire,
-                  "bind",
-                  true,
-                  require("sdk.Event"),
-                  "xfbml.parse"
-                )
+                ES(Event.fire, "bind", true, Event, "xfbml.parse")
               );
-              require("XFBML").subscribe(
+              XFBML.subscribe(
                 "render",
-                ES(
-                  require("sdk.Event").fire,
-                  "bind",
-                  true,
-                  require("sdk.Event"),
-                  "xfbml.render"
-                )
+                ES(Event.fire, "bind", true, Event, "xfbml.render")
               );
 
-              require("sdk.Event").subscribe("init:post", function(options) {
+              Event.subscribe("init:post", function(options) {
                 if (options.xfbml) {
                   setTimeout(
-                    require("wrapFunction")(
-                      ES(
-                        require("sdk.domReady"),
-                        "bind",
-                        true,
-                        null,
-                        require("XFBML").parse
-                      ),
+                    wrapFunction(
+                      ES(domReady, "bind", true, null, XFBML.parse),
                       "entry",
                       "init:post:xfbml.parse"
                     ),
@@ -15369,7 +15291,7 @@ try {
                 }
               });
 
-              require("Assert").define("Xfbml", function(element) {
+              Assert.define("Xfbml", function(element) {
                 return (
                   (element.nodeType === 1 || element.nodeType === 9) &&
                   typeof element.nodeName === "string"
@@ -15410,7 +15332,23 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              Log,
+              ObservableMixin,
+              QueryString,
+              Type,
+              UrlMap,
+              guid,
+              resolveURI,
+              Auth,
+              createIframe,
+              DOM,
+              Event,
+              PlatformVersioning,
+              Runtime,
+              UA,
+              URI,
+              XD
             ) {
               var baseParams = {
                 skin: "string",
@@ -15442,7 +15380,7 @@ try {
                     height: msg.height,
                     pluginID: pluginID
                   };
-                  require("sdk.Event").fire("xfbml.resize", message);
+                  Event.fire("xfbml.resize", message);
                 };
               }
 
@@ -15454,10 +15392,10 @@ try {
                   return value ? /^(?:true|1|yes|on)$/i.test(value) : undefined;
                 },
                 url: function url(value) {
-                  return require("resolveURI")(value);
+                  return resolveURI(value);
                 },
                 url_maybe: function url_maybe(value) {
-                  return value ? require("resolveURI")(value) : value;
+                  return value ? resolveURI(value) : value;
                 },
                 hostname: function hostname(value) {
                   return value || window.location.hostname;
@@ -15512,7 +15450,7 @@ try {
                 }
               }
 
-              var IframePlugin = require("Type").extend(
+              var IframePlugin = Type.extend(
                 {
                   constructor: function constructor(elem, ns, tag, attr) {
                     var _this = this;
@@ -15587,24 +15525,21 @@ try {
                     this.subscribe("xd.sdk_event", function(message) {
                       var data = ES("JSON", "parse", false, message.data);
                       data.pluginID = pluginId;
-                      require("sdk.Event").fire(message.event, data, elem);
+                      Event.fire(message.event, data, elem);
                     });
 
                     var url =
-                      require("UrlMap").resolve("www") +
-                      "/plugins/" +
-                      tag +
-                      ".php?";
+                      UrlMap.resolve("www") + "/plugins/" + tag + ".php?";
                     var params = {};
                     validate(this.getParams(), elem, attr, params);
                     validate(baseParams, elem, attr, params);
 
                     ES("Object", "assign", false, params, {
-                      app_id: require("sdk.Runtime").getClientID(),
-                      locale: require("sdk.Runtime").getLocale(),
+                      app_id: Runtime.getClientID(),
+                      locale: Runtime.getLocale(),
                       sdk: "joey",
-                      kid_directed_site: require("sdk.Runtime").getKidDirectedSite(),
-                      channel: require("sdk.XD").handler(
+                      kid_directed_site: Runtime.getKidDirectedSite(),
+                      channel: XD.handler(
                         function(msg) {
                           return _this.inform("xd." + msg.type, msg);
                         },
@@ -15619,18 +15554,18 @@ try {
 
                     params.container_width = elem.offsetWidth;
 
-                    require("sdk.DOM").addCss(elem, "fb_iframe_widget");
-                    var name = require("guid")();
+                    DOM.addCss(elem, "fb_iframe_widget");
+                    var name = guid();
                     this.subscribe("xd.verify", function(msg) {
-                      require("sdk.XD").sendToFacebook(name, {
+                      XD.sendToFacebook(name, {
                         method: "xd/verify",
                         params: ES("JSON", "stringify", false, msg.token)
                       });
                     });
 
                     this.subscribe("xd.refreshLoginStatus", function() {
-                      require("sdk.Auth").removeLogoutState();
-                      require("sdk.Auth").getLoginStatus(
+                      Auth.removeLogoutState();
+                      Auth.getLoginStatus(
                         ES(_this.inform, "bind", true, _this, "login.status"),
                         true
                       );
@@ -15652,12 +15587,11 @@ try {
                     this._config = this.getConfig();
                     this._iframeOptions = {
                       root: flow,
-                      url: url + require("QueryString").encode(params),
+                      url: url + QueryString.encode(params),
                       name: name,
 
                       width:
-                        this._config.mobile_fullsize &&
-                        require("sdk.UA").mobile()
+                        this._config.mobile_fullsize && UA.mobile()
                           ? void 0
                           : params.width || 1000,
                       height: params.height || 1000,
@@ -15677,7 +15611,7 @@ try {
                     };
 
                     if (this.isFluid() && params.width !== "auto") {
-                      require("sdk.DOM").addCss(
+                      DOM.addCss(
                         this._element,
                         "fb_iframe_widget_fluid_desktop"
                       );
@@ -15687,16 +15621,13 @@ try {
                         this._iframeOptions.style.width = "100%";
                         this._params.container_width = this._element.offsetWidth;
                         this._iframeOptions.url =
-                          url + require("QueryString").encode(this._params);
+                          url + QueryString.encode(this._params);
                       }
                     }
                   },
 
                   shouldIgnoreWidth: function shouldIgnoreWidth() {
-                    return (
-                      require("sdk.UA").mobile() &&
-                      this.getConfig().mobile_fullsize
-                    );
+                    return UA.mobile() && this.getConfig().mobile_fullsize;
                   },
 
                   useInlineHeightForMobile: function useInlineHeightForMobile() {
@@ -15705,17 +15636,11 @@ try {
 
                   process: function process() {
                     var _this2 = this;
-                    if (require("sdk.Runtime").getIsVersioned()) {
-                      require("sdk.PlatformVersioning").assertVersionIsSet();
-                      var uri = new (require("sdk.URI"))(
-                        this._iframeOptions.url
-                      );
+                    if (Runtime.getIsVersioned()) {
+                      PlatformVersioning.assertVersionIsSet();
+                      var uri = new URI(this._iframeOptions.url);
                       this._iframeOptions.url = uri
-                        .setPath(
-                          "/" +
-                            require("sdk.Runtime").getVersion() +
-                            uri.getPath()
-                        )
+                        .setPath("/" + Runtime.getVersion() + uri.getPath())
                         .toString();
                     }
 
@@ -15727,12 +15652,12 @@ try {
                       this._params
                     );
                     delete params.channel;
-                    var query = require("QueryString").encode(params);
+                    var query = QueryString.encode(params);
                     if (
                       this._element.getAttribute("fb-iframe-plugin-query") ==
                       query
                     ) {
-                      require("Log").info(
+                      Log.info(
                         "Skipping render: %s:%s %s",
                         this._ns,
                         this._tag,
@@ -15744,7 +15669,7 @@ try {
                     this._element.setAttribute("fb-iframe-plugin-query", query);
 
                     this.subscribe("render", function() {
-                      require("sdk.Event").fire("iframeplugin:onload");
+                      Event.fire("iframeplugin:onload");
                       _this2._iframe.style.visibility = "visible";
 
                       if (!_this2._isIframeResized) {
@@ -15756,10 +15681,10 @@ try {
                       this._element.removeChild(this._element.firstChild);
                     }
                     this._element.appendChild(this._iframeOptions.root);
-                    var timeout = require("sdk.UA").mobile() ? 120 : 45;
+                    var timeout = UA.mobile() ? 120 : 45;
                     this._timeoutID = setTimeout(function() {
                       collapseIframe(_this2._iframe);
-                      require("Log").warn(
+                      Log.warn(
                         "%s:%s failed to resize in %ss",
                         _this2._ns,
                         _this2._tag,
@@ -15767,17 +15692,12 @@ try {
                       );
                     }, timeout * 1000);
 
-                    this._iframe = require("sdk.createIframe")(
-                      this._iframeOptions
-                    );
-                    require("sdk.Event").fire("iframeplugin:create");
+                    this._iframe = createIframe(this._iframeOptions);
+                    Event.fire("iframeplugin:create");
 
-                    if (require("sdk.UA").mobile() || params.width === "auto") {
+                    if (UA.mobile() || params.width === "auto") {
                       if (this.useInlineHeightForMobile()) {
-                        require("sdk.DOM").addCss(
-                          this._element,
-                          "fb_iframe_widget_fluid"
-                        );
+                        DOM.addCss(this._element, "fb_iframe_widget_fluid");
                       }
 
                       if (!this._iframeOptions.width) {
@@ -15804,10 +15724,7 @@ try {
                           width: "100%"
                         };
 
-                        if (
-                          require("sdk.UA").iphone() ||
-                          require("sdk.UA").ipad()
-                        ) {
+                        if (UA.iphone() || UA.ipad()) {
                           ES("Object", "assign", false, iframeStyle, {
                             width: "220px",
                             "min-width": "100%"
@@ -15840,13 +15757,14 @@ try {
                         this._iframeOptions.root.style.width &&
                       this._iframe.style.height ===
                         this._iframeOptions.root.style.height;
-                    require("sdk.DOM")[same ? "removeCss" : "addCss"](
+                    DOM[same ? "removeCss" : "addCss"](
                       this._iframe,
                       "fb_iframe_widget_lift"
                     );
                   }
                 },
-                require("ObservableMixin")
+
+                ObservableMixin
               );
 
               IframePlugin.getVal = getVal;
@@ -15880,7 +15798,8 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              feature
             ) {
               var PluginConfig = {
                 comment_embed: {
@@ -15908,7 +15827,7 @@ try {
                 },
 
                 post: {
-                  fluid: require("sdk.feature")("fluid_embed", false),
+                  fluid: feature("fluid_embed", false),
                   mobile_fullsize: true
                 },
 
@@ -15953,116 +15872,117 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              PluginAttrTypes
             ) {
               var PluginTags = {
                 comment_embed: {
-                  href: require("PluginAttrTypes").url,
-                  include_parent: require("PluginAttrTypes").bool
+                  href: PluginAttrTypes.url,
+                  include_parent: PluginAttrTypes.bool
                 },
 
                 composer: {
-                  action_type: require("PluginAttrTypes").string,
-                  action_properties: require("PluginAttrTypes").string
+                  action_type: PluginAttrTypes.string,
+                  action_properties: PluginAttrTypes.string
                 },
 
                 create_event_button: {},
 
                 group: {
-                  href: require("PluginAttrTypes").url,
-                  show_social_context: require("PluginAttrTypes").bool,
-                  show_group_info: require("PluginAttrTypes").bool,
-                  show_metadata: require("PluginAttrTypes").bool
+                  href: PluginAttrTypes.url,
+                  show_social_context: PluginAttrTypes.bool,
+                  show_group_info: PluginAttrTypes.bool,
+                  show_metadata: PluginAttrTypes.bool
                 },
 
                 like: {
-                  href: require("PluginAttrTypes").url,
-                  layout: require("PluginAttrTypes").string,
-                  show_faces: require("PluginAttrTypes").bool,
-                  share: require("PluginAttrTypes").bool,
-                  action: require("PluginAttrTypes").string,
+                  href: PluginAttrTypes.url,
+                  layout: PluginAttrTypes.string,
+                  show_faces: PluginAttrTypes.bool,
+                  share: PluginAttrTypes.bool,
+                  action: PluginAttrTypes.string,
 
-                  send: require("PluginAttrTypes").bool,
-                  size: require("PluginAttrTypes").string
+                  send: PluginAttrTypes.bool,
+                  size: PluginAttrTypes.string
                 },
 
                 like_box: {
-                  href: require("PluginAttrTypes").string,
-                  show_faces: require("PluginAttrTypes").bool,
-                  header: require("PluginAttrTypes").bool,
-                  stream: require("PluginAttrTypes").bool,
-                  force_wall: require("PluginAttrTypes").bool,
-                  show_border: require("PluginAttrTypes").bool,
+                  href: PluginAttrTypes.string,
+                  show_faces: PluginAttrTypes.bool,
+                  header: PluginAttrTypes.bool,
+                  stream: PluginAttrTypes.bool,
+                  force_wall: PluginAttrTypes.bool,
+                  show_border: PluginAttrTypes.bool,
 
-                  id: require("PluginAttrTypes").string,
-                  connections: require("PluginAttrTypes").string,
-                  profile_id: require("PluginAttrTypes").string,
-                  name: require("PluginAttrTypes").string
+                  id: PluginAttrTypes.string,
+                  connections: PluginAttrTypes.string,
+                  profile_id: PluginAttrTypes.string,
+                  name: PluginAttrTypes.string
                 },
 
                 page: {
-                  href: require("PluginAttrTypes").string,
-                  hide_cta: require("PluginAttrTypes").bool,
-                  hide_cover: require("PluginAttrTypes").bool,
-                  small_header: require("PluginAttrTypes").bool,
-                  adapt_container_width: require("PluginAttrTypes").bool,
-                  show_facepile: require("PluginAttrTypes").bool,
-                  show_posts: require("PluginAttrTypes").bool,
-                  tabs: require("PluginAttrTypes").string
+                  href: PluginAttrTypes.string,
+                  hide_cta: PluginAttrTypes.bool,
+                  hide_cover: PluginAttrTypes.bool,
+                  small_header: PluginAttrTypes.bool,
+                  adapt_container_width: PluginAttrTypes.bool,
+                  show_facepile: PluginAttrTypes.bool,
+                  show_posts: PluginAttrTypes.bool,
+                  tabs: PluginAttrTypes.string
                 },
 
                 messenger_checkbox: {
-                  messenger_app_id: require("PluginAttrTypes").string,
-                  page_id: require("PluginAttrTypes").string,
-                  pixel_id: require("PluginAttrTypes").string,
-                  prechecked: require("PluginAttrTypes").bool,
-                  allow_login: require("PluginAttrTypes").bool,
-                  size: require("PluginAttrTypes").string,
-                  origin: require("PluginAttrTypes").string,
-                  user_ref: require("PluginAttrTypes").string,
-                  identity_match: require("PluginAttrTypes").string,
-                  center_align: require("PluginAttrTypes").bool
+                  messenger_app_id: PluginAttrTypes.string,
+                  page_id: PluginAttrTypes.string,
+                  pixel_id: PluginAttrTypes.string,
+                  prechecked: PluginAttrTypes.bool,
+                  allow_login: PluginAttrTypes.bool,
+                  size: PluginAttrTypes.string,
+                  origin: PluginAttrTypes.string,
+                  user_ref: PluginAttrTypes.string,
+                  identity_match: PluginAttrTypes.string,
+                  center_align: PluginAttrTypes.bool
                 },
 
                 messengermessageus: {
-                  messenger_app_id: require("PluginAttrTypes").string,
-                  page_id: require("PluginAttrTypes").string,
-                  color: require("PluginAttrTypes").string,
-                  size: require("PluginAttrTypes").string
+                  messenger_app_id: PluginAttrTypes.string,
+                  page_id: PluginAttrTypes.string,
+                  color: PluginAttrTypes.string,
+                  size: PluginAttrTypes.string
                 },
 
                 send_to_messenger: {
-                  messenger_app_id: require("PluginAttrTypes").string,
-                  page_id: require("PluginAttrTypes").string,
-                  color: require("PluginAttrTypes").string,
-                  size: require("PluginAttrTypes").string,
-                  enforce_login: require("PluginAttrTypes").bool,
-                  identity_match: require("PluginAttrTypes").string,
-                  origin: require("PluginAttrTypes").string,
-                  cta_text: require("PluginAttrTypes").string
+                  messenger_app_id: PluginAttrTypes.string,
+                  page_id: PluginAttrTypes.string,
+                  color: PluginAttrTypes.string,
+                  size: PluginAttrTypes.string,
+                  enforce_login: PluginAttrTypes.bool,
+                  identity_match: PluginAttrTypes.string,
+                  origin: PluginAttrTypes.string,
+                  cta_text: PluginAttrTypes.string
                 },
 
                 page_events: {
-                  href: require("PluginAttrTypes").url
+                  href: PluginAttrTypes.url
                 },
 
                 post: {
-                  href: require("PluginAttrTypes").url,
-                  show_text: require("PluginAttrTypes").bool
+                  href: PluginAttrTypes.url,
+                  show_text: PluginAttrTypes.bool
                 },
 
                 profile_pic: {
-                  uid: require("PluginAttrTypes").string,
-                  linked: require("PluginAttrTypes").bool,
-                  href: require("PluginAttrTypes").string,
-                  size: require("PluginAttrTypes").string,
-                  facebook_logo: require("PluginAttrTypes").bool
+                  uid: PluginAttrTypes.string,
+                  linked: PluginAttrTypes.bool,
+                  href: PluginAttrTypes.string,
+                  size: PluginAttrTypes.string,
+                  facebook_logo: PluginAttrTypes.bool
                 },
 
                 send_to_mobile: {
-                  max_rows: require("PluginAttrTypes").string,
-                  show_faces: require("PluginAttrTypes").bool,
-                  size: require("PluginAttrTypes").string
+                  max_rows: PluginAttrTypes.string,
+                  show_faces: PluginAttrTypes.bool,
+                  size: PluginAttrTypes.string
                 }
               };
 
@@ -16102,7 +16022,15 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              IframePlugin,
+              QueryString,
+              UrlMap,
+              DOM,
+              Event,
+              Runtime,
+              UA,
+              URI
             ) {
               var MIN_WIDTH = 320;
 
@@ -16136,7 +16064,7 @@ try {
                   count: "bool"
                 },
 
-                require("IframePlugin").getBaseParams()
+                IframePlugin.getBaseParams()
               );
 
               function setupAttributes(elem, attr) {
@@ -16145,7 +16073,7 @@ try {
                   "forEach",
                   true,
                   function(key) {
-                    var val = require("sdk.DOM").getAttr(elem, key);
+                    var val = DOM.getAttr(elem, key);
                     if (val !== null) {
                       attr[key] = val;
                     }
@@ -16159,7 +16087,7 @@ try {
                   }
                 });
 
-                if (require("sdk.UA").mobile() && attr.mobile !== false) {
+                if (UA.mobile() && attr.mobile !== false) {
                   attr.mobile = true;
                 }
                 if (!attr.skin) {
@@ -16183,10 +16111,10 @@ try {
 
                   if (attr.migrated) {
                     attr.href =
-                      require("UrlMap").resolve("www") +
+                      UrlMap.resolve("www") +
                       "/plugins/comments_v1.php?" +
                       "app_id=" +
-                      require("sdk.Runtime").getClientID() +
+                      Runtime.getClientID() +
                       "&xid=" +
                       encodeURIComponent(attr.xid) +
                       "&url=" +
@@ -16195,7 +16123,7 @@ try {
                 } else {
                   var fb_comment_id = attr.fb_comment_id;
                   if (!fb_comment_id) {
-                    fb_comment_id = require("QueryString").decode(
+                    fb_comment_id = QueryString.decode(
                       document.URL.substring(
                         ES(document.URL, "indexOf", true, "?") + 1
                       )
@@ -16217,7 +16145,7 @@ try {
                 }
 
                 if (!attr.version) {
-                  attr.version = require("sdk.Runtime").getVersion();
+                  attr.version = Runtime.getVersion();
                 }
 
                 if (!attr.permalink) {
@@ -16234,7 +16162,7 @@ try {
                 }
 
                 if (attr.href != null) {
-                  var href = new (require("sdk.URI"))(attr.href);
+                  var href = new URI(attr.href);
                   if (!href.getProtocol()) {
                     attr.href = href.setProtocol("http").toString();
                   }
@@ -16243,12 +16171,12 @@ try {
                 return attr;
               }
 
-              var Comments = require("IframePlugin").extend({
+              var Comments = IframePlugin.extend({
                 constructor: function constructor(elem, ns, tag, attr) {
                   attr = setupAttributes(elem, attr);
                   this.parent(elem, ns, tag, attr);
                   this.subscribe("xd.sdk_event", function(message) {
-                    require("sdk.Event").fire(
+                    Event.fire(
                       message.event,
                       ES("JSON", "parse", false, message.data)
                     );
@@ -16278,30 +16206,30 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              DOM,
+              Comments,
+              sprintf
             ) {
-              var CommentsCount = require("sdk.XFBML.Comments").extend({
+              var CommentsCount = Comments.extend({
                 constructor: function constructor(elem, ns, tag, attr) {
-                  require("sdk.DOM").addCss(elem, "fb_comments_count_zero");
+                  DOM.addCss(elem, "fb_comments_count_zero");
                   attr.count = 1;
                   this.parent(elem, ns, "comments", attr);
                   this.subscribe("xd.comment_count", function(message) {
                     var data = ES("JSON", "parse", false, message.data);
-                    require("sdk.DOM").html(
+                    DOM.html(
                       elem,
-                      require("sprintf")(
+                      sprintf(
                         '<span class="fb_comments_count">%s</span>',
                         data.count
                       )
                     );
 
                     if (data.count > 0) {
-                      require("sdk.DOM").removeCss(
-                        elem,
-                        "fb_comments_count_zero"
-                      );
+                      DOM.removeCss(elem, "fb_comments_count_zero");
                     }
-                    require("sdk.DOM").removeCss(elem, "fb_iframe_widget");
+                    DOM.removeCss(elem, "fb_iframe_widget");
                   });
                 }
               });
@@ -16319,7 +16247,8 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              Log
             ) {
               "use strict";
               var CustomerChatWarning = function CustomerChatWarning(
@@ -16328,7 +16257,7 @@ try {
                 tag,
                 attr
               ) {
-                require("Log").error(
+                Log.error(
                   "##########################\n" +
                     "#  The CustomerChat plugin is no longer part of the main Facebook SDK.\n" +
                     "#  To continue using it please use the correct SDK URL,\n" +
@@ -16401,33 +16330,34 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              IframePlugin,
+              Log,
+              safeEval,
+              ErrorHandling,
+              feature,
+              Runtime,
+              Scribe,
+              ui,
+              XD
             ) {
-              var httpsOnlyEnforceStarting = require("sdk.feature")(
+              var httpsOnlyEnforceStarting = feature(
                 "https_only_enforce_starting",
                 false
               );
-              var httpsOnlyLearnMore = require("sdk.feature")(
-                "https_only_learn_more",
-                ""
-              );
+              var httpsOnlyLearnMore = feature("https_only_learn_more", "");
 
               function invokeHandler(handler, scope, args) {
                 if (handler) {
                   if (typeof handler === "string") {
-                    require("sdk.ErrorHandling").unguard(require("safeEval"))(
-                      handler,
-                      args
-                    );
+                    ErrorHandling.unguard(safeEval)(handler, args);
                   } else if (handler.apply) {
-                    require("sdk.ErrorHandling")
-                      .unguard(handler)
-                      .apply(scope, args || []);
+                    ErrorHandling.unguard(handler).apply(scope, args || []);
                   }
                 }
               }
 
-              var LoginButton = require("IframePlugin").extend({
+              var LoginButton = IframePlugin.extend({
                 constructor: function constructor(elem, ns, tag, attr) {
                   if (
                     location.protocol !== "https:" &&
@@ -16437,18 +16367,11 @@ try {
                       "The Login Button plugin will soon stop working on http pages. " +
                       "Please update your site to use https for Facebook Login. %s";
 
-                    require("Log").log(
-                      "error",
-                      -1,
-                      httpsWarning,
-                      httpsOnlyLearnMore
-                    );
+                    Log.log("error", -1, httpsWarning, httpsOnlyLearnMore);
 
-                    if (
-                      require("sdk.feature")("https_only_scribe_logging", true)
-                    ) {
-                      require("sdk.Scribe").log("jssdk_error", {
-                        appId: require("sdk.Runtime").getClientID(),
+                    if (feature("https_only_scribe_logging", true)) {
+                      Scribe.log("jssdk_error", {
+                        appId: Runtime.getClientID(),
                         error: "HttpsOnly",
                         extra: {
                           message: "LoginButton"
@@ -16458,16 +16381,13 @@ try {
                   }
 
                   this.parent(elem, ns, tag, attr);
-                  var onlogin = require("IframePlugin").getVal(
-                    attr,
-                    "on_login"
-                  );
+                  var onlogin = IframePlugin.getVal(attr, "on_login");
                   var cb = null;
                   var iframeName = this._iframeOptions.name;
                   if (onlogin) {
                     cb = function cb(response) {
                       if (response.error_code) {
-                        require("Log").debug(
+                        Log.debug(
                           "Plugin Return Error (%s): %s",
                           response.error_code,
                           response.error_message || response.error_description
@@ -16483,16 +16403,15 @@ try {
                   }
 
                   this.subscribe("xd.login_button_dialog_open", function(msg) {
-                    require("sdk.ui")(
-                      ES("JSON", "parse", false, msg.params),
-                      function(response) {
-                        invokeHandler(cb, null, [response]);
-                        require("sdk.XD").sendToFacebook(iframeName, {
-                          method: "loginReload",
-                          params: ES("JSON", "stringify", false, response)
-                        });
-                      }
-                    );
+                    ui(ES("JSON", "parse", false, msg.params), function(
+                      response
+                    ) {
+                      invokeHandler(cb, null, [response]);
+                      XD.sendToFacebook(iframeName, {
+                        method: "loginReload",
+                        params: ES("JSON", "stringify", false, response)
+                      });
+                    });
                   });
                 },
 
@@ -16731,10 +16650,11 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              isNode
             ) {
               function isTextNode(object) {
-                return require("isNode")(object) && object.nodeType == 3;
+                return isNode(object) && object.nodeType == 3;
               }
 
               module.exports = isTextNode;
@@ -16750,16 +16670,17 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              isTextNode
             ) {
               function containsNode(outerNode, innerNode) {
                 if (!outerNode || !innerNode) {
                   return false;
                 } else if (outerNode === innerNode) {
                   return true;
-                } else if (require("isTextNode")(outerNode)) {
+                } else if (isTextNode(outerNode)) {
                   return false;
-                } else if (require("isTextNode")(innerNode)) {
+                } else if (isTextNode(innerNode)) {
                   return containsNode(outerNode, innerNode.parentNode);
                 } else if ("contains" in outerNode) {
                   return ES(outerNode, "contains", true, innerNode);
@@ -16792,7 +16713,15 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              DOMEventListener,
+              IframePlugin,
+              UnicodeUtils,
+              containsNode,
+              DOM,
+              feature,
+              UA,
+              XD
             ) {
               "use strict";
 
@@ -16805,7 +16734,7 @@ try {
               var quotableAreas = [];
               var forceShow = false;
               var xfbmlElement = null;
-              var isMobile = require("sdk.UA").mobile();
+              var isMobile = UA.mobile();
 
               function getSelectionParent(selectionObject) {
                 var range = selectionObject.getRangeAt(0);
@@ -16832,10 +16761,7 @@ try {
                   var areaMatch = false;
                   for (var i = 0; i < areasLength; i++) {
                     if (
-                      require("containsNode")(
-                        quotableAreas[i],
-                        selectionObject.focusNode
-                      )
+                      containsNode(quotableAreas[i], selectionObject.focusNode)
                     ) {
                       areaMatch = true;
                       break;
@@ -16858,24 +16784,13 @@ try {
                   true
                 );
 
-                var selectionLimit = Number(
-                  require("sdk.feature")("sharequotelimit", 500)
-                );
-                if (
-                  require("UnicodeUtils").strlen(selection) > selectionLimit
-                ) {
+                var selectionLimit = Number(feature("sharequotelimit", 500));
+                if (UnicodeUtils.strlen(selection) > selectionLimit) {
                   selection =
-                    require("UnicodeUtils").substr(
-                      selection,
-                      0,
-                      selectionLimit - 3
-                    ) + "...";
+                    UnicodeUtils.substr(selection, 0, selectionLimit - 3) +
+                    "...";
                 } else {
-                  selection = require("UnicodeUtils").substr(
-                    selection,
-                    0,
-                    selectionLimit
-                  );
+                  selection = UnicodeUtils.substr(selection, 0, selectionLimit);
                 }
 
                 if (!forceShow && xfbmlElement) {
@@ -16923,41 +16838,29 @@ try {
                 }
               }
 
-              var Quote = require("IframePlugin").extend({
+              var Quote = IframePlugin.extend({
                 constructor: function constructor(elem, ns, tag, attr) {
                   var _this = this;
                   if (singleton) {
                     return singleton;
                   }
                   this.parent(elem, ns, tag, attr);
-                  forceShow =
-                    require("sdk.DOM").getAttr(elem, "layout") === "button";
+                  forceShow = DOM.getAttr(elem, "layout") === "button";
                   xfbmlElement = elem;
 
                   xfbmlElement.style.position = "absolute";
                   xfbmlElement.style.display = "";
 
-                  require("DOMEventListener").add(
-                    document,
-                    "keyup",
-                    handleSelection
-                  );
-                  require("DOMEventListener").add(
-                    document,
-                    "mouseup",
-                    handleSelection
-                  );
+                  DOMEventListener.add(document, "keyup", handleSelection);
+                  DOMEventListener.add(document, "mouseup", handleSelection);
 
                   this.subscribe("xd.getTextSelection", function() {
-                    require("sdk.XD").sendToFacebook(
-                      _this._iframeOptions.name,
-                      {
-                        method: "setTextSelection",
-                        params: ES("JSON", "stringify", false, {
-                          text: selection
-                        })
-                      }
-                    );
+                    XD.sendToFacebook(_this._iframeOptions.name, {
+                      method: "setTextSelection",
+                      params: ES("JSON", "stringify", false, {
+                        text: selection
+                      })
+                    });
 
                     clearSelection();
                   });
@@ -16974,10 +16877,7 @@ try {
                     function(element) {
                       return (
                         element.nodeName.toLowerCase() === "article" ||
-                        require("sdk.DOM").containsCss(
-                          element,
-                          QUOTABLE_CLASS_NAME
-                        )
+                        DOM.containsCss(element, QUOTABLE_CLASS_NAME)
                       );
                     }
                   );
@@ -17019,17 +16919,26 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              IframePlugin,
+              QueryString,
+              Content,
+              createIframe,
+              DialogUtils,
+              DOM,
+              Event,
+              UA,
+              XD
             ) {
               "use strict";
 
               var positionIntervalID;
 
-              var Save = require("IframePlugin").extend({
+              var Save = IframePlugin.extend({
                 constructor: function constructor(elem, ns, tag, attr) {
                   var _this = this;
                   this.parent(elem, ns, tag, attr);
-                  var isMobile = require("sdk.UA").mobile();
+                  var isMobile = UA.mobile();
 
                   this.subscribe("xd.savePluginGetBlankIframe", function(
                     message
@@ -17037,20 +16946,20 @@ try {
                     var darkOverlay, dialog, allNodes;
                     var show = function show(e) {
                       if (e) {
-                        require("sdk.DOM").removeCss(e, "fb_invisible");
+                        DOM.removeCss(e, "fb_invisible");
                       }
                     };
                     var hide = function hide(e) {
                       if (e) {
-                        require("sdk.DOM").addCss(e, "fb_invisible");
+                        DOM.addCss(e, "fb_invisible");
                       }
                     };
 
                     if (isMobile) {
-                      darkOverlay = require("sdk.DialogUtils").setupNewDarkOverlay();
+                      darkOverlay = DialogUtils.setupNewDarkOverlay();
                       hide(darkOverlay);
-                      require("sdk.Content").append(darkOverlay);
-                      require("sdk.DialogUtils").addDoubleClickAction(
+                      Content.append(darkOverlay);
+                      DialogUtils.addDoubleClickAction(
                         darkOverlay,
                         function() {
                           return ES(allNodes, "forEach", true, hide);
@@ -17065,24 +16974,24 @@ try {
                     );
 
                     hide(dialog);
-                    require("sdk.Content").append(dialog);
+                    Content.append(dialog);
 
                     allNodes = [dialog, darkOverlay];
 
                     var hideDialog = function hideDialog() {
                       ES(allNodes, "forEach", true, hide);
-                      require("sdk.DialogUtils").onDialogHideCleanup(isMobile);
+                      DialogUtils.onDialogHideCleanup(isMobile);
                       clearInterval(positionIntervalID);
                     };
 
                     var idleEvent;
                     _this.subscribe("xd.savePluginShowIframe", function() {
-                      require("sdk.Event").fire("savePlugin:hideDialog");
+                      Event.fire("savePlugin:hideDialog");
                       ES(allNodes, "forEach", true, show);
                       _this.positionOnScreen(dialog, darkOverlay);
 
                       if (!isMobile && !idleEvent) {
-                        idleEvent = require("sdk.DialogUtils").addIdleDesktopAction(
+                        idleEvent = DialogUtils.addIdleDesktopAction(
                           dialog,
                           hideDialog,
                           7000
@@ -17092,12 +17001,9 @@ try {
                     _this.subscribe("xd.savePluginHideIframe", function() {
                       return hideDialog();
                     });
-                    require("sdk.Event").subscribe(
-                      "savePlugin:hideDialog",
-                      function() {
-                        return hideDialog();
-                      }
-                    );
+                    Event.subscribe("savePlugin:hideDialog", function() {
+                      return hideDialog();
+                    });
 
                     var searchIframeTimer = setInterval(function() {
                       var searchIframe = document.getElementsByName(
@@ -17118,38 +17024,33 @@ try {
                   dialog,
                   darkOverlay
                 ) {
-                  var isMobile = require("sdk.UA").mobile();
+                  var isMobile = UA.mobile();
                   if (isMobile) {
                     var centerMobile = function centerMobile(
                       dialog,
                       darkOverlay
                     ) {
                       if (darkOverlay != null) {
-                        require("sdk.DialogUtils").setDialogPositionToCenter(
+                        DialogUtils.setDialogPositionToCenter(
                           darkOverlay,
                           isMobile
                         );
                       }
-                      require("sdk.DialogUtils").setDialogPositionToCenter(
-                        dialog,
-                        isMobile
-                      );
+                      DialogUtils.setDialogPositionToCenter(dialog, isMobile);
                     };
 
                     centerMobile(dialog, darkOverlay);
-                    require("sdk.DialogUtils").addMobileOrientationChangeAction(
-                      function(e) {
-                        centerMobile(dialog, darkOverlay);
-                      }
-                    );
+                    DialogUtils.addMobileOrientationChangeAction(function(e) {
+                      centerMobile(dialog, darkOverlay);
+                    });
 
                     positionIntervalID = setInterval(function() {
                       return centerMobile(dialog, darkOverlay);
                     }, 100);
                   } else {
-                    require("sdk.DOM").setStyle(dialog, "position", "fixed");
-                    require("sdk.DOM").setStyle(dialog, "top", "20px");
-                    require("sdk.DOM").setStyle(dialog, "right", "20px");
+                    DOM.setStyle(dialog, "position", "fixed");
+                    DOM.setStyle(dialog, "top", "20px");
+                    DOM.setStyle(dialog, "right", "20px");
                   }
                 },
 
@@ -17158,22 +17059,17 @@ try {
                   fromIframe
                 ) {
                   var xdArbiterFragment =
-                    "#" +
-                    require("QueryString").encode({ forIframe: fromIframe });
-                  var created = require("sdk.DialogUtils").setupNewDialog();
+                    "#" + QueryString.encode({ forIframe: fromIframe });
+                  var created = DialogUtils.setupNewDialog();
 
-                  require("sdk.createIframe")({
-                    url:
-                      require("sdk.XD").getXDArbiterURL() + xdArbiterFragment,
+                  createIframe({
+                    url: XD.getXDArbiterURL() + xdArbiterFragment,
                     name: "blank_" + this._iframeOptions.name,
                     root: created.contentRoot,
                     tabindex: -1
                   });
 
-                  require("sdk.DOM").addCss(
-                    created.contentRoot,
-                    "fb_dialog_iframe"
-                  );
+                  DOM.addCss(created.contentRoot, "fb_dialog_iframe");
 
                   ES(
                     "Object",
@@ -17182,24 +17078,21 @@ try {
                     created.dialogElement.style,
                     data.style || {}
                   );
-                  require("sdk.DOM").setStyle(
+                  DOM.setStyle(
                     created.dialogElement,
                     "width",
                     data.width + "px"
                   );
-                  require("sdk.DOM").setStyle(
+                  DOM.setStyle(
                     created.dialogElement,
                     "height",
                     data.height + "px"
                   );
                   ES(data.classList, "forEach", true, function(cl) {
-                    return require("sdk.DOM").addCss(created.dialogElement, cl);
+                    return DOM.addCss(created.dialogElement, cl);
                   });
 
-                  require("sdk.DOM").removeCss(
-                    created.dialogElement,
-                    "fb_dialog_advanced"
-                  );
+                  DOM.removeCss(created.dialogElement, "fb_dialog_advanced");
                   return created.dialogElement;
                 },
 
@@ -17225,11 +17118,14 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              IframePlugin,
+              UA,
+              UI
             ) {
               "use strict";
 
-              var ShareButton = require("IframePlugin").extend({
+              var ShareButton = IframePlugin.extend({
                 constructor: function constructor(elem, ns, tag, attr) {
                   this.parent(elem, ns, tag, attr);
                   this.subscribe("xd.shareTriggerMobileIframe", function(
@@ -17237,10 +17133,10 @@ try {
                   ) {
                     var data = ES("JSON", "parse", false, message.data);
 
-                    require("sdk.ui")({
+                    UI({
                       method: "share",
                       href: data.href,
-                      mobile_iframe: require("sdk.UA").mobile()
+                      mobile_iframe: UA.mobile()
                     });
                   });
                 },
@@ -17275,7 +17171,12 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              Assert,
+              IframePlugin,
+              ObservableMixin,
+              Event,
+              XD
             ) {
               var VideoCache = (function() {
                 "use strict";
@@ -17325,64 +17226,46 @@ try {
                 }
                 var _proto2 = VideoController.prototype;
                 _proto2.play = function play() {
-                  require("sdk.XD").sendToFacebook(
-                    this.$VideoController_iframeName,
-                    {
-                      method: "play",
-                      params: ES("JSON", "stringify", false, {})
-                    }
-                  );
+                  XD.sendToFacebook(this.$VideoController_iframeName, {
+                    method: "play",
+                    params: ES("JSON", "stringify", false, {})
+                  });
                 };
                 _proto2.pause = function pause() {
-                  require("sdk.XD").sendToFacebook(
-                    this.$VideoController_iframeName,
-                    {
-                      method: "pause",
-                      params: ES("JSON", "stringify", false, {})
-                    }
-                  );
+                  XD.sendToFacebook(this.$VideoController_iframeName, {
+                    method: "pause",
+                    params: ES("JSON", "stringify", false, {})
+                  });
                 };
                 _proto2.seek = function seek(target) {
-                  require("Assert").isNumber(target, "Invalid argument");
-                  require("sdk.XD").sendToFacebook(
-                    this.$VideoController_iframeName,
-                    {
-                      method: "seek",
-                      params: ES("JSON", "stringify", false, {
-                        target: target
-                      })
-                    }
-                  );
+                  Assert.isNumber(target, "Invalid argument");
+                  XD.sendToFacebook(this.$VideoController_iframeName, {
+                    method: "seek",
+                    params: ES("JSON", "stringify", false, {
+                      target: target
+                    })
+                  });
                 };
                 _proto2.mute = function mute() {
-                  require("sdk.XD").sendToFacebook(
-                    this.$VideoController_iframeName,
-                    {
-                      method: "mute",
-                      params: ES("JSON", "stringify", false, {})
-                    }
-                  );
+                  XD.sendToFacebook(this.$VideoController_iframeName, {
+                    method: "mute",
+                    params: ES("JSON", "stringify", false, {})
+                  });
                 };
                 _proto2.unmute = function unmute() {
-                  require("sdk.XD").sendToFacebook(
-                    this.$VideoController_iframeName,
-                    {
-                      method: "unmute",
-                      params: ES("JSON", "stringify", false, {})
-                    }
-                  );
+                  XD.sendToFacebook(this.$VideoController_iframeName, {
+                    method: "unmute",
+                    params: ES("JSON", "stringify", false, {})
+                  });
                 };
                 _proto2.setVolume = function setVolume(volume) {
-                  require("Assert").isNumber(volume, "Invalid argument");
-                  require("sdk.XD").sendToFacebook(
-                    this.$VideoController_iframeName,
-                    {
-                      method: "setVolume",
-                      params: ES("JSON", "stringify", false, {
-                        volume: volume
-                      })
-                    }
-                  );
+                  Assert.isNumber(volume, "Invalid argument");
+                  XD.sendToFacebook(this.$VideoController_iframeName, {
+                    method: "setVolume",
+                    params: ES("JSON", "stringify", false, {
+                      volume: volume
+                    })
+                  });
                 };
                 _proto2.isMuted = function isMuted() {
                   return this.$VideoController_cache.isMuted();
@@ -17398,8 +17281,8 @@ try {
                 };
                 _proto2.subscribe = function subscribe(event, callback) {
                   var _this = this;
-                  require("Assert").isString(event, "Invalid argument");
-                  require("Assert").isFunction(callback, "Invalid argument");
+                  Assert.isString(event, "Invalid argument");
+                  Assert.isFunction(callback, "Invalid argument");
                   this.$VideoController_sharedObservable.subscribe(
                     event,
                     callback
@@ -17416,14 +17299,14 @@ try {
                 return VideoController;
               })();
 
-              var Video = require("IframePlugin").extend({
+              var Video = IframePlugin.extend({
                 constructor: function constructor(elem, ns, tag, attr) {
                   this.parent(elem, ns, tag, attr);
                   this._videoController = null;
                   this._sharedObservable = null;
                   this._sharedVideoCache = null;
                   this.subscribe("xd.onVideoAPIReady", function(msg) {
-                    this._sharedObservable = new (require("ObservableMixin"))();
+                    this._sharedObservable = new ObservableMixin();
                     this._sharedVideoCache = new VideoCache(
                       ES("JSON", "parse", false, msg.data)
                     );
@@ -17433,7 +17316,7 @@ try {
                       this._sharedVideoCache
                     );
 
-                    require("sdk.Event").fire("xfbml.ready", {
+                    Event.fire("xfbml.ready", {
                       type: "video",
                       id: attr.id,
                       instance: this._videoController
@@ -17496,7 +17379,13 @@ try {
               requireDynamic,
               requireLazy,
               __DO_NOT_USE__module,
-              __DO_NOT_USE__exports
+              __DO_NOT_USE__exports,
+              IframePlugin,
+              PluginConfig,
+              PluginTags,
+              XFBML,
+              feature,
+              Runtime
             ) {
               var customTags = {
                 customerchat: {},
@@ -17510,37 +17399,29 @@ try {
               };
 
               if (
-                ES(
-                  require("sdk.Runtime").getSDKUrl(),
-                  "indexOf",
-                  true,
-                  "customerchat"
-                ) !== -1
+                ES(Runtime.getSDKUrl(), "indexOf", true, "customerchat") !== -1
               ) {
                 delete customTags.customerchat;
               } else {
                 customTags.customerchat = require("sdk.XFBML.CustomerChatWarning");
               }
 
-              var blacklist = require("sdk.feature")(
-                "plugin_tags_blacklist",
-                []
-              );
+              var blacklist = feature("plugin_tags_blacklist", []);
 
               ES(
-                ES("Object", "keys", false, require("PluginTags")),
+                ES("Object", "keys", false, PluginTags),
                 "forEach",
                 true,
                 function(tag) {
                   if (ES(blacklist, "indexOf", true, tag) !== -1) {
                     return;
                   }
-                  require("XFBML").registerTag({
+                  XFBML.registerTag({
                     xmlns: "fb",
                     localName: tag.replace(/_/g, "-"),
-                    ctor: require("IframePlugin").withParams(
-                      require("PluginTags")[tag],
-                      require("PluginConfig")[tag]
+                    ctor: IframePlugin.withParams(
+                      PluginTags[tag],
+                      PluginConfig[tag]
                     )
                   });
                 }
@@ -17554,7 +17435,7 @@ try {
                   if (ES(blacklist, "indexOf", true, tag) !== -1) {
                     return;
                   }
-                  require("XFBML").registerTag({
+                  XFBML.registerTag({
                     xmlns: "fb",
                     localName: tag.replace(/_/g, "-"),
                     ctor: customTags[tag]
@@ -17580,7 +17461,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"4818733","namespace":"FB","message":"' +
+        '","revision":"4820568","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
