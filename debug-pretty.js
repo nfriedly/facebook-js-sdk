@@ -1,4 +1,4 @@
-/*1551796748,,JIT Construction: v4820568,en_US*/
+/*1551934765,,JIT Construction: v4828725,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3743,7 +3743,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "4820568",
+            revision: "4828725",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -4027,6 +4027,7 @@ try {
                 AUTH_METHOD: "auth_method",
                 AUTH_NONCE: "auth_nonce",
                 AUTH_TYPE: "auth_type",
+                ASSET_SCOPE: "asset_scope",
                 CLIENT_ID: "client_id",
                 CONTEXT: "context",
                 DEFAULT_AUDIENCE: "default_audience",
@@ -6162,7 +6163,8 @@ try {
                 "workchat",
                 "fb236786383180508",
                 "fb1775440806014337",
-                "data"
+                "data",
+                "fb-mk"
               ]);
 
               var URISchemes = {
@@ -12722,21 +12724,6 @@ try {
                       (useSSL && Runtime.getAccessToken()) || undefined
                   });
 
-                  if (name === "share" || name === "share_open_graph") {
-                    params.mobile_iframe =
-                      UA.mobile() &&
-                      (params.mobile_iframe || params.iframe_test);
-                    if (params.mobile_iframe) {
-                      method = ES(
-                        "Object",
-                        "assign",
-                        false,
-                        {},
-                        MobileIframeable
-                      );
-                    }
-                  }
-
                   params.display = UIServer.getDisplayMode(method, params);
 
                   if (!method.url) {
@@ -12924,14 +12911,7 @@ try {
                 },
 
                 canIframe: function canIframe(params) {
-                  if (Runtime.getAccessToken()) {
-                    return true;
-                  }
-
-                  if (UA.mobile() && Runtime.getLoggedIntoFacebook()) {
-                    return !!params.mobile_iframe;
-                  }
-                  return false;
+                  return Runtime.getAccessToken();
                 },
 
                 getXdRelation: function getXdRelation(params) {
@@ -13051,11 +13031,7 @@ try {
 
                 iframe: function iframe(call) {
                   call.className = "FB_UI_Dialog";
-                  if (call.params.mobile_iframe) {
-                    Dialog.setForceTabletStyle(true);
-                    Dialog.setCloseOnOverlayTap(true);
-                    Dialog.setPositionDialogAtTopWhenPortrait(true);
-                  }
+
                   var onClose = function onClose() {
                     var errorResult = ES("JSON", "stringify", false, {
                       error_code: 4201,
@@ -13071,10 +13047,6 @@ try {
                       call.closeIcon === undefined ? true : call.closeIcon,
                     classes: Dialog.isTabletStyle() ? "centered" : ""
                   };
-
-                  if (call.params.mobile_iframe) {
-                    dialogOptions.styles = { "border-radius": "8px" };
-                  }
 
                   call.root = Dialog.create(dialogOptions);
                   if (!call.hideLoader) {
@@ -13253,12 +13225,12 @@ try {
                   }
 
                   if (found && !UIServer._popupInterval) {
-                    UIServer._popupInterval = setInterval(
+                    UIServer._popupInterval = window.setInterval(
                       UIServer._popupMonitor,
                       100
                     );
                   } else if (!found && UIServer._popupInterval) {
-                    clearInterval(UIServer._popupInterval);
+                    window.clearInterval(UIServer._popupInterval);
                     UIServer._popupInterval = null;
                   }
                 },
@@ -13324,7 +13296,7 @@ try {
                       } catch (_unused2) {}
                     } else {
                       if (DOM.containsCss(frame, "FB_UI_Hidden")) {
-                        setTimeout(function() {
+                        window.setTimeout(function() {
                           frame.parentNode.parentNode.removeChild(
                             frame.parentNode
                           );
@@ -17461,7 +17433,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"4820568","namespace":"FB","message":"' +
+        '","revision":"4828725","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
