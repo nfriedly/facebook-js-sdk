@@ -1,4 +1,4 @@
-/*1552007951,,JIT Construction: v4833099,en_US*/
+/*1552435156,,JIT Construction: v4846235,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3743,7 +3743,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "4833099",
+            revision: "4846235",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -4272,9 +4272,9 @@ try {
             null
           );
           __d(
-            "javascript_shared_TAAL_OpCode",
+            "TAALOpcodes",
             [],
-            function $module_javascript_shared_TAAL_OpCode(
+            function $module_TAALOpcodes(
               global,
               require,
               requireDynamic,
@@ -4282,39 +4282,13 @@ try {
               module,
               exports
             ) {
-              module.exports = ES("Object", "freeze", false, {
-                PREVIOUS_FILE: 1,
-                PREVIOUS_FRAME: 2,
-                PREVIOUS_DIR: 3,
-                FORCED_KEY: 4
-              });
-            },
-            null
-          );
-          __d(
-            "TAALOpcodes",
-            ["javascript_shared_TAAL_OpCode"],
-            function $module_TAALOpcodes(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports,
-              javascript_TAAL_OpCode
-            ) {
               "use strict";
 
               var TAALOpcodes = {
-                previousFile: function previousFile() {
-                  return javascript_TAAL_OpCode.PREVIOUS_FILE;
-                },
-                previousFrame: function previousFrame() {
-                  return javascript_TAAL_OpCode.PREVIOUS_FRAME;
-                },
-                previousDirectory: function previousDirectory() {
-                  return javascript_TAAL_OpCode.PREVIOUS_DIR;
-                },
+                PREVIOUS_FILE: 1,
+                PREVIOUS_FRAME: 2,
+                PREVIOUS_DIR: 3,
+                FORCED_KEY: 4,
                 getString: function getString(opcodes) {
                   return opcodes && opcodes.length
                     ? " TAAL[" + opcodes.join(";") + "]"
@@ -4343,20 +4317,18 @@ try {
               var TAAL = {
                 blameToPreviousFile: function blameToPreviousFile(message) {
                   return this.applyOpcodes(message, [
-                    TAALOpcodes.previousFile()
+                    TAALOpcodes.PREVIOUS_FILE
                   ]);
                 },
                 blameToPreviousFrame: function blameToPreviousFrame(message) {
                   return this.applyOpcodes(message, [
-                    TAALOpcodes.previousFrame()
+                    TAALOpcodes.PREVIOUS_FRAME
                   ]);
                 },
                 blameToPreviousDirectory: function blameToPreviousDirectory(
                   message
                 ) {
-                  return this.applyOpcodes(message, [
-                    TAALOpcodes.previousDirectory()
-                  ]);
+                  return this.applyOpcodes(message, [TAALOpcodes.PREVIOUS_DIR]);
                 },
                 applyOpcodes: function applyOpcodes(message, opcodes) {
                   return message + TAALOpcodes.getString(opcodes);
@@ -17434,7 +17406,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"4833099","namespace":"FB","message":"' +
+        '","revision":"4846235","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
