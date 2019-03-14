@@ -1,4 +1,4 @@
-/*1552435156,,JIT Construction: v4846235,en_US*/
+/*1552544371,,JIT Construction: v4850155,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3743,7 +3743,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "4846235",
+            revision: "4850155",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -3767,7 +3767,7 @@ try {
           });
           __d("JSSDKXDConfig", [], {
             XdUrl: "/connect/xd_arbiter.php?version=44",
-            XdBundleUrl: "/connect/xd_arbiter/r/H4FQM8nbIVm.js?version=44",
+            XdBundleUrl: "/connect/xd_arbiter/r/dSPNxCOM9q9.js?version=44",
             useCdn: true
           });
           __d("JSSDKCssConfig", [], {
@@ -11487,12 +11487,6 @@ try {
 
                 _active: null,
 
-                _forceTabletStyle: null,
-
-                _closeOnOverlayTap: null,
-
-                _positionDialogAtTopWhenPortrait: null,
-
                 get: function get(id) {
                   return Dialog._dialogs[id];
                 },
@@ -11584,15 +11578,6 @@ try {
                     Content.append(Dialog._overlayEl, null);
                   }
 
-                  if (Dialog._closeOnOverlayTap) {
-                    var listener = DialogUtils.addDoubleClickAction(
-                      Dialog._overlayEl,
-                      ES(onClickForClose, "bind", true, this),
-                      5000
-                    );
-
-                    Dialog._overlayListeners.push(listener);
-                  }
                   Dialog._overlayEl.className = "";
                 },
 
@@ -11647,16 +11632,6 @@ try {
                   Dialog._makeActive(Dialog._loaderEl);
                 },
 
-                setCloseOnOverlayTap: function setCloseOnOverlayTap(val) {
-                  Dialog._closeOnOverlayTap = !!val;
-                },
-
-                setPositionDialogAtTopWhenPortrait: function setPositionDialogAtTopWhenPortrait(
-                  val
-                ) {
-                  Dialog._positionDialogAtTopWhenPortrait = !!val;
-                },
-
                 _hideLoader: function _hideLoader() {
                   if (Dialog._loaderEl && Dialog._loaderEl == Dialog._active) {
                     Dialog._loaderEl.style.top = "-10000px";
@@ -11697,22 +11672,11 @@ try {
                     return;
                   }
 
-                  if (
-                    Dialog._positionDialogAtTopWhenPortrait &&
-                    DialogUtils.isOrientationPotrait()
-                  ) {
-                    DialogUtils.setDialogPositionToTop(
-                      dialog,
-                      Dialog.isTabletStyle(),
-                      pageInfo
-                    );
-                  } else {
-                    DialogUtils.setDialogPositionToCenter(
-                      dialog,
-                      Dialog.isTabletStyle(),
-                      pageInfo
-                    );
-                  }
+                  DialogUtils.setDialogPositionToCenter(
+                    dialog,
+                    Dialog.isTabletStyle(),
+                    pageInfo
+                  );
                 },
 
                 _setDialogSizes: function _setDialogSizes(skipHeight) {
@@ -11890,7 +11854,7 @@ try {
                       Dialog.show(Dialog._stack.pop());
                     }
 
-                    setTimeout(function() {
+                    window.setTimeout(function() {
                       dialog.parentNode.removeChild(dialog);
                     }, 3000);
                   }
@@ -11901,16 +11865,9 @@ try {
                   return root && root === Dialog._active;
                 },
 
-                setForceTabletStyle: function setForceTabletStyle(val) {
-                  Dialog._forceTabletStyle = !!val;
-                },
-
                 isTabletStyle: function isTabletStyle() {
                   if (!UA.mobile()) {
                     return false;
-                  }
-                  if (Dialog._forceTabletStyle) {
-                    return true;
                   }
                   var size = getMobileSize();
                   return (
@@ -17056,7 +17013,7 @@ try {
           );
           __d(
             "sdk.XFBML.ShareButton",
-            ["IframePlugin", "sdk.UA", "sdk.ui"],
+            ["IframePlugin"],
             function $module_sdk_XFBML_ShareButton(
               global,
               require,
@@ -17064,26 +17021,13 @@ try {
               requireLazy,
               module,
               exports,
-              IframePlugin,
-              UA,
-              UI
+              IframePlugin
             ) {
               "use strict";
 
               var ShareButton = IframePlugin.extend({
                 constructor: function constructor(elem, ns, tag, attr) {
                   this.parent(elem, ns, tag, attr);
-                  this.subscribe("xd.shareTriggerMobileIframe", function(
-                    message
-                  ) {
-                    var data = ES("JSON", "parse", false, message.data);
-
-                    UI({
-                      method: "share",
-                      href: data.href,
-                      mobile_iframe: UA.mobile()
-                    });
-                  });
                 },
 
                 getParams: function getParams() {
@@ -17406,7 +17350,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"4846235","namespace":"FB","message":"' +
+        '","revision":"4850155","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
