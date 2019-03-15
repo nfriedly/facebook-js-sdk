@@ -1,4 +1,4 @@
-/*1552618158,,JIT Construction: v4853689,en_US*/
+/*1552686580,,JIT Construction: v4856779,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3720,7 +3720,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "4853689",
+            revision: "4856779",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -6660,6 +6660,31 @@ try {
                     require("Log").warn("Failed to get local storage");
                   }
                   return null;
+                },
+
+                getSessionStorage: function getSessionStorage() {
+                  try {
+                    return window.sessionStorage;
+                  } catch (_unused3) {
+                    require("Log").warn("Failed to get session storage");
+                  }
+                  return null;
+                },
+
+                getSessionStorageForRead: function getSessionStorageForRead() {
+                  try {
+                    var storage = window.sessionStorage;
+
+                    if (storage) {
+                      var key = "__test__" + ES("Date", "now", false);
+                      storage.setItem(key, "");
+                      storage.removeItem(key);
+                    }
+                    return storage;
+                  } catch (_unused4) {
+                    require("Log").warn("Failed to get session storage");
+                  }
+                  return null;
                 }
               };
 
@@ -8344,8 +8369,10 @@ try {
               exports
             ) {
               var LOCAL_STORAGE_TOKEN_PREFIX = "fblst_";
+              var SESSION_STORAGE_LOGIN_STATUS_PREFIX = "fbssls_";
               var LOGOUT_COOKIE_PREFIX = "fblo_";
               var YEAR_MS = 365 * 24 * 60 * 60 * 1000;
+              var DEFAULT_REVALIDATE_PERIOD = 5400000;
 
               var currentAuthResponse;
 
@@ -8353,7 +8380,10 @@ try {
 
               var Auth = new (require("ObservableMixin"))();
 
-              function setAuthResponse(authResponse, status) {
+              function setAuthResponse(authResponse, status, fromCache) {
+                if (fromCache === void 0) {
+                  fromCache = false;
+                }
                 var currentUserID = require("sdk.Runtime").getUserID();
                 var userID = "";
                 if (authResponse) {
@@ -8425,6 +8455,36 @@ try {
                 if (statusChange) {
                   Auth.inform("status.change", response);
                 }
+
+                if (
+                  !fromCache &&
+                  require("sdk.feature")("cache_auth_response", false) &&
+                  require("sdk.Runtime").getUseLocalStorage()
+                ) {
+                  var sessionStorage = require("sdk.WebStorage").getSessionStorage();
+                  if (sessionStorage) {
+                    sessionStorage.setItem(
+                      SESSION_STORAGE_LOGIN_STATUS_PREFIX +
+                        require("sdk.Runtime").getClientID(),
+                      ES("JSON", "stringify", false, {
+                        authResponse: authResponse,
+                        status: status,
+                        expiresAt:
+                          authResponse != null &&
+                          authResponse.expiresIn &&
+                          authResponse.expiresIn !== 0
+                            ? ES("Date", "now", false) +
+                              Math.min(
+                                authResponse.expiresIn * 0.75 * 1000,
+                                DEFAULT_REVALIDATE_PERIOD
+                              )
+                            : ES("Date", "now", false) +
+                              DEFAULT_REVALIDATE_PERIOD
+                      })
+                    );
+                  }
+                }
+
                 return response;
               }
 
@@ -8894,23 +8954,74 @@ try {
                   );
                   return;
                 }
+                if (
+                  !force &&
+                  require("sdk.feature")("cache_auth_response", false) &&
+                  require("sdk.Runtime").getUseLocalStorage() &&
+                  location.protocol === "https:"
+                ) {
+                  var sessionStorage = require("sdk.WebStorage").getSessionStorageForRead();
+                  if (sessionStorage) {
+                    var rawCachedResponse = sessionStorage.getItem(
+                      SESSION_STORAGE_LOGIN_STATUS_PREFIX +
+                        require("sdk.Runtime").getClientID()
+                    );
 
-                if (cb) {
-                  if (!force && loadState === "loaded") {
-                    var response = {
-                      authResponse: getAuthResponse(),
-                      status: require("sdk.Runtime").getLoginStatus()
-                    };
+                    if (rawCachedResponse != null) {
+                      try {
+                        var cachedResponse = ES(
+                          "JSON",
+                          "parse",
+                          false,
+                          rawCachedResponse
+                        );
 
-                    cb(response);
-                    return;
-                  } else {
-                    Auth.subscribe("FB.loginStatus", cb);
+                        if (
+                          cachedResponse != null &&
+                          cachedResponse.expiresAt != null &&
+                          cachedResponse.expiresAt > ES("Date", "now", false)
+                        ) {
+                          var _cachedResponse$statu;
+                          loadState = "loaded";
+                          setAuthResponse(
+                            cachedResponse.authResponse,
+                            (_cachedResponse$statu = cachedResponse.status) !=
+                              null
+                              ? _cachedResponse$statu
+                              : "unknown",
+                            true
+                          );
+
+                          timer = window.setTimeout(function() {
+                            fetchLoginStatus(function() {});
+                          }, DEFAULT_REVALIDATE_PERIOD);
+                        }
+                      } catch (_unused) {}
+                    }
                   }
                 }
 
-                if (!force && loadState === "loading") {
-                  return;
+                if (!force) {
+                  if (loadState === "loaded") {
+                    if (cb) {
+                      var response = {
+                        authResponse: getAuthResponse(),
+                        status: require("sdk.Runtime").getLoginStatus()
+                      };
+
+                      cb(response);
+                    }
+                    return;
+                  } else if (loadState === "loading") {
+                    if (cb) {
+                      Auth.subscribe("FB.loginStatus", cb);
+                    }
+                    return;
+                  }
+                }
+
+                if (cb) {
+                  Auth.subscribe("FB.loginStatus", cb);
                 }
 
                 loadState = "loading";
@@ -17469,7 +17580,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"4853689","namespace":"FB","message":"' +
+        '","revision":"4856779","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
