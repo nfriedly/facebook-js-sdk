@@ -1,4 +1,4 @@
-/*1552954154,,JIT Construction: v4862948,en_US*/
+/*1553045372,,JIT Construction: v4869329,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3720,7 +3720,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "4862948",
+            revision: "4869329",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -4233,6 +4233,7 @@ try {
             ) {
               var Env = {
                 ajaxpipe_token: null,
+                iframeKey: "",
                 isCQuick: false,
                 start: ES("Date", "now", false),
                 nocatch: false
@@ -4265,12 +4266,7 @@ try {
                 PREVIOUS_FILE: 1,
                 PREVIOUS_FRAME: 2,
                 PREVIOUS_DIR: 3,
-                FORCED_KEY: 4,
-                getString: function getString(opcodes) {
-                  return opcodes && opcodes.length
-                    ? " TAAL[" + opcodes.join(";") + "]"
-                    : "";
-                }
+                FORCED_KEY: 4
               };
 
               module.exports = TAALOpcodes;
@@ -4309,7 +4305,10 @@ try {
                   ]);
                 },
                 applyOpcodes: function applyOpcodes(message, opcodes) {
-                  return message + require("TAALOpcodes").getString(opcodes);
+                  if (opcodes && opcodes.length) {
+                    return message + " TAAL[" + opcodes.join(";") + "]";
+                  }
+                  return message;
                 }
               };
 
@@ -17581,7 +17580,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"4862948","namespace":"FB","message":"' +
+        '","revision":"4869329","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
