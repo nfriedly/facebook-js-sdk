@@ -1,4 +1,4 @@
-/*1553573370,,JIT Construction: v4890384,en_US*/
+/*1553749167,,JIT Construction: v4899877,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3720,7 +3720,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "4890384",
+            revision: "4899877",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -9861,12 +9861,41 @@ try {
             null
           );
           __d(
+            "whitelistObjectKeys",
+            [],
+            function $module_whitelistObjectKeys(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              function whitelistObjectKeys(source, whitelist) {
+                var result = {};
+                var keys = ES("Array", "isArray", false, whitelist)
+                  ? whitelist
+                  : ES("Object", "keys", false, whitelist);
+                for (var ii = 0; ii < keys.length; ii++) {
+                  if (typeof source[keys[ii]] !== "undefined") {
+                    result[keys[ii]] = source[keys[ii]];
+                  }
+                }
+                return result;
+              }
+
+              module.exports = whitelistObjectKeys;
+            },
+            null
+          );
+          __d(
             "ApiBatcher",
             [
               "invariant",
               "ApiClientUtils",
               "QueryString",
-              "sdk.safelyParseResponse"
+              "sdk.safelyParseResponse",
+              "whitelistObjectKeys"
             ],
             function $module_ApiBatcher(
               global,
@@ -9936,8 +9965,12 @@ try {
                   }
                 };
                 ApiBatcher.prepareBatchParams = function prepareBatchParams(
-                  args
+                  args,
+                  keptQueryParams
                 ) {
+                  if (keptQueryParams === void 0) {
+                    keptQueryParams = [];
+                  }
                   var _ApiClientUtils$parse = require("ApiClientUtils").parseCallDataFromArgs(
                       args
                     ),
@@ -9948,8 +9981,15 @@ try {
                   var body;
                   var relative_url = uri.removeQueryData("method").toString();
                   if (method.toLowerCase() == "post") {
-                    body = require("QueryString").encode(uri.getQueryData());
-                    relative_url = uri.setQueryData({}).toString();
+                    var queryData = uri.getQueryData();
+                    body = require("QueryString").encode(queryData);
+                    var filteredQueryData = require("whitelistObjectKeys")(
+                      queryData,
+                      keptQueryParams
+                    );
+                    relative_url = uri
+                      .setQueryData(filteredQueryData)
+                      .toString();
                   }
 
                   return {
@@ -10513,6 +10553,7 @@ try {
               var accessToken;
               var clientID;
               var defaultParams;
+              var keptQueryParams = [];
 
               var MAX_QUERYSTRING_LENGTH = require("JSONPRequest")
                 .MAX_QUERYSTRING_LENGTH;
@@ -10571,14 +10612,15 @@ try {
                 if (accessTokenForRequest) {
                   getParams.access_token = accessTokenForRequest;
                 }
+                ES(keptQueryParams, "forEach", true, function(keptQueryParam) {
+                  getParams[keptQueryParam] = params[keptQueryParam];
+                });
 
                 var getParamNames = ES("Object", "keys", false, getParams);
                 if (getParamNames.length > 0) {
                   url = require("QueryString").appendToUrl(url, getParams);
 
-                  ES(getParamNames, "forEach", true, function(name) {
-                    return delete params[name];
-                  });
+                  delete params.access_token;
                 }
 
                 var transports = defaultTransports;
@@ -10747,6 +10789,13 @@ try {
                 request(url, "get", params, inspector);
               }
 
+              function prepareBatchParams(args) {
+                return require("ApiBatcher").prepareBatchParams(
+                  args,
+                  keptQueryParams
+                );
+              }
+
               var ApiClient = ES(
                 "Object",
                 "assign",
@@ -10798,6 +10847,9 @@ try {
                   ) {
                     maxConcurrentRequests = value;
                   },
+                  setKeptQueryParams: function setKeptQueryParams(params) {
+                    keptQueryParams = params;
+                  },
                   getCurrentlyExecutingRequestCount: function getCurrentlyExecutingRequestCount() {
                     return currentlyExecutingRequests;
                   },
@@ -10807,7 +10859,7 @@ try {
                   rest: requestUsingRest,
                   graph: requestUsingGraph,
                   scheduleBatchCall: scheduleBatchCall,
-                  prepareBatchParams: require("ApiBatcher").prepareBatchParams
+                  prepareBatchParams: prepareBatchParams
                 }
               );
 
@@ -17577,7 +17629,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"4890384","namespace":"FB","message":"' +
+        '","revision":"4899877","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
