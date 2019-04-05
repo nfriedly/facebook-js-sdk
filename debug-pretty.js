@@ -1,4 +1,4 @@
-/*1554480555,,JIT Construction: v1000572450,en_US*/
+/*1554507566,,JIT Construction: v1000574873,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3720,7 +3720,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1000572450",
+            revision: "1000574873",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -3903,6 +3903,7 @@ try {
                 },
 
                 create: function create(fn, description) {
+                  var _description;
                   if (!rootObject) {
                     this.setPrefix("__globalCallbacks");
                   }
@@ -3910,7 +3911,9 @@ try {
                   rootObject[id] = require("wrapFunction")(
                     fn,
                     "entry",
-                    description || "GlobalCallback"
+                    (_description = description) != null
+                      ? _description
+                      : "GlobalCallback"
                   );
 
                   return callbackPrefix + "." + id;
@@ -4032,6 +4035,7 @@ try {
                 REDIRECT_URI: "redirect_uri",
                 REF: "ref",
                 RESPONSE_TYPE: "response_type",
+                RETURN_EXTENDED_STATUS: "return_extended_status",
                 RETURN_FORMAT: "return_format",
                 RETURN_SCOPES: "return_scopes",
                 SCOPE: "scope",
@@ -4602,6 +4606,7 @@ try {
             ) {
               module.exports = ES("Object", "freeze", false, {
                 CONNECTED: "connected",
+                NEW_BROWSER: "new_browser",
                 NOT_AUTHORIZED: "not_authorized",
                 UNKNOWN: "unknown"
               });
@@ -8496,6 +8501,12 @@ try {
                 return currentAuthResponse;
               }
 
+              function setBaseDomain(baseDomain) {
+                if (require("sdk.Cookie").getDomain() == null) {
+                  require("sdk.Cookie").setDomain("." + baseDomain);
+                }
+              }
+
               function xdResponseWrapper(cb, authResponse, method) {
                 return function(params) {
                   var status;
@@ -8532,9 +8543,8 @@ try {
                       });
                     }
 
-                    var baseDomain = require("sdk.Cookie").getDomain();
-                    if (!baseDomain && params.base_domain) {
-                      require("sdk.Cookie").setDomain("." + params.base_domain);
+                    if (params.base_domain != null) {
+                      setBaseDomain(params.base_domain);
                     }
 
                     if (params.enforce_https) {
@@ -8623,6 +8633,19 @@ try {
                 );
               }
 
+              function unknownStatus(cb) {
+                var unk_status = "unknown";
+                setAuthResponse(null, unk_status);
+                var response = {
+                  authResponse: null,
+                  status: unk_status
+                };
+
+                if (cb) {
+                  cb(response);
+                }
+              }
+
               function fetchLoginStatus(fn) {
                 var frame;
                 var fetchStart = ES("Date", "now", false);
@@ -8675,14 +8698,7 @@ try {
                 }
 
                 if (fb_logged_out || redirCancelled) {
-                  var unk_status = "unknown";
-                  setAuthResponse(null, unk_status);
-                  if (fn) {
-                    fn({
-                      authResponse: null,
-                      status: unk_status
-                    });
-                  }
+                  unknownStatus(fn);
                   return;
                 }
 
@@ -17633,7 +17649,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1000572450","namespace":"FB","message":"' +
+        '","revision":"1000574873","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
