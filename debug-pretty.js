@@ -1,4 +1,4 @@
-/*1554769762,,JIT Construction: v1000580333,en_US*/
+/*1554929958,,JIT Construction: v1000588711,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -2639,6 +2639,7 @@ try {
            * scripts/static_resources/js/fb-transforms/babel-7/babel-plugin-jssdk
            * converts ES5/ES6 code into using this module in ES3 style.
            *
+           * @ServerCallableModule
            * @format
            */ __d(
             "ES",
@@ -2796,6 +2797,7 @@ try {
           /**
            * Copyright 2004-present Facebook. All Rights Reserved.
            *
+           * @ServerCallableModule
            * @format
            */ __d(
             "sdk.babelHelpers",
@@ -3720,7 +3722,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1000580333",
+            revision: "1000588711",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -17650,7 +17652,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1000580333","namespace":"FB","message":"' +
+        '","revision":"1000588711","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
