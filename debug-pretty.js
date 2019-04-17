@@ -1,4 +1,4 @@
-/*1555346970,,JIT Construction: v1000602851,en_US*/
+/*1555492147,,JIT Construction: v1000612798,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3722,7 +3722,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1000602851",
+            revision: "1000612798",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -3734,7 +3734,7 @@ try {
               error_handling: { rate: 4 },
               e2e_ping_tracking: { rate: 1.0e-6 },
               xd_timeout: { rate: 1, value: 60000 },
-              use_bundle: true,
+              use_bundle: false,
               should_log_response_error: true,
               popup_blocker_scribe_logging: { rate: 100 },
               https_only_enforce_starting: 2538809200000,
@@ -10636,9 +10636,13 @@ try {
                 if (accessTokenForRequest) {
                   getParams.access_token = accessTokenForRequest;
                 }
-                ES(keptQueryParams, "forEach", true, function(keptQueryParam) {
-                  getParams[keptQueryParam] = params[keptQueryParam];
-                });
+                if (method !== "get") {
+                  ES(keptQueryParams, "forEach", true, function(
+                    keptQueryParam
+                  ) {
+                    getParams[keptQueryParam] = params[keptQueryParam];
+                  });
+                }
 
                 var getParamNames = ES("Object", "keys", false, getParams);
                 if (getParamNames.length > 0) {
@@ -17655,7 +17659,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1000602851","namespace":"FB","message":"' +
+        '","revision":"1000612798","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
