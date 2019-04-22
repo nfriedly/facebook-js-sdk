@@ -1,4 +1,4 @@
-/*1555713550,,JIT Construction: v1000624521,en_US*/
+/*1555964976,,JIT Construction: v1000628593,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3722,7 +3722,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1000624521",
+            revision: "1000628593",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -8386,7 +8386,8 @@ try {
               var SESSION_STORAGE_LOGIN_STATUS_PREFIX = "fbssls_";
               var LOGOUT_COOKIE_PREFIX = "fblo_";
               var YEAR_MS = 365 * 24 * 60 * 60 * 1000;
-              var DEFAULT_REVALIDATE_PERIOD = 5400000;
+              var CONNECTED_REVALIDATE_PERIOD = 60 * 90 * 1000;
+              var DEFAULT_REVALIDATE_PERIOD = 60 * 60 * 24 * 1000;
 
               var currentAuthResponse;
 
@@ -8490,7 +8491,7 @@ try {
                             ? ES("Date", "now", false) +
                               Math.min(
                                 authResponse.expiresIn * 0.75 * 1000,
-                                DEFAULT_REVALIDATE_PERIOD
+                                CONNECTED_REVALIDATE_PERIOD
                               )
                             : ES("Date", "now", false) +
                               DEFAULT_REVALIDATE_PERIOD
@@ -8952,7 +8953,7 @@ try {
                               setAuthResponse(authResponse, xhrStatus);
                               timer = window.setTimeout(function() {
                                 fetchLoginStatus(function() {});
-                              }, 5400000);
+                              }, CONNECTED_REVALIDATE_PERIOD);
                               break;
                             case require("WebOAuthStatus").NOT_AUTHORIZED:
                             case require("WebOAuthStatus").UNKNOWN:
@@ -9034,9 +9035,15 @@ try {
                             true
                           );
 
-                          timer = window.setTimeout(function() {
-                            fetchLoginStatus(function() {});
-                          }, DEFAULT_REVALIDATE_PERIOD);
+                          timer = window.setTimeout(
+                            function() {
+                              fetchLoginStatus(function() {});
+                            },
+                            cachedResponse.status ===
+                              require("WebOAuthStatus").CONNECTED
+                              ? CONNECTED_REVALIDATE_PERIOD
+                              : DEFAULT_REVALIDATE_PERIOD
+                          );
                         }
                       } catch (_unused) {}
                     }
@@ -17675,7 +17682,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1000624521","namespace":"FB","message":"' +
+        '","revision":"1000628593","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
