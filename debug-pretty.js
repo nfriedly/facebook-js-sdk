@@ -1,4 +1,4 @@
-/*1555964976,,JIT Construction: v1000628593,en_US*/
+/*1556222971,,JIT Construction: v1000642906,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3722,7 +3722,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1000628593",
+            revision: "1000642906",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -8652,8 +8652,11 @@ try {
                 }
               }
 
-              function fetchLoginStatus(fn) {
+              function fetchLoginStatus(fn, forceCORS) {
                 var _redirAccessToken;
+                if (forceCORS === void 0) {
+                  forceCORS = false;
+                }
                 if (timer) {
                   window.clearTimeout(timer);
                   timer = null;
@@ -8721,7 +8724,10 @@ try {
                     ? _redirAccessToken
                     : localStorageToken;
 
-                if (require("sdk.feature")("use_cors_oauth_status", false)) {
+                if (
+                  require("sdk.feature")("use_cors_oauth_status", false) ||
+                  forceCORS
+                ) {
                   if (
                     token === null &&
                     typeof document.requestStorageAccess === "function"
@@ -8990,7 +8996,10 @@ try {
               }
 
               var loadState;
-              function getLoginStatus(cb, force) {
+              function getLoginStatus(cb, force, forceCORS) {
+                if (forceCORS === void 0) {
+                  forceCORS = false;
+                }
                 if (!require("sdk.Runtime").getClientID()) {
                   require("Log").warn(
                     "FB.getLoginStatus() called before calling FB.init()."
@@ -9037,7 +9046,7 @@ try {
 
                           timer = window.setTimeout(
                             function() {
-                              fetchLoginStatus(function() {});
+                              fetchLoginStatus(function() {}, forceCORS);
                             },
                             cachedResponse.status ===
                               require("WebOAuthStatus").CONNECTED
@@ -9082,7 +9091,7 @@ try {
                   Auth.clearSubscribers("FB.loginStatus");
                 };
 
-                fetchLoginStatus(lsCb);
+                fetchLoginStatus(lsCb, forceCORS);
               }
 
               ES("Object", "assign", false, Auth, {
@@ -17682,7 +17691,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1000628593","namespace":"FB","message":"' +
+        '","revision":"1000642906","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
