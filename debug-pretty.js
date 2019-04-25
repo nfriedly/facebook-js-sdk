@@ -1,4 +1,4 @@
-/*1556222971,,JIT Construction: v1000642906,en_US*/
+/*1556229566,,JIT Construction: v1000643772,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3722,7 +3722,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1000642906",
+            revision: "1000643772",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -6375,7 +6375,9 @@ try {
                       console.warn(
                         'Path does not begin with a "/" which means this URI ' +
                           "will likely be malformed. Ensure any string passed to .setPath() " +
-                          'leads with "/"'
+                          'leads with "/": path "%s" for uri "%s".',
+                        path,
+                        this.toString()
                       );
                     }
                   }
@@ -17691,7 +17693,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1000642906","namespace":"FB","message":"' +
+        '","revision":"1000643772","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
