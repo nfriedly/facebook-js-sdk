@@ -1,4 +1,4 @@
-/*1556867369,,JIT Construction: v1000670098,en_US*/
+/*1556924965,,JIT Construction: v1000672864,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3722,7 +3722,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1000670098",
+            revision: "1000672864",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -4028,6 +4028,7 @@ try {
                 LOGGER_ID: "logger_id",
                 LOGGING_TOKEN: "logging_token",
                 MBASIC_NAVIGATION: "mbasic_navigation",
+                NATIVE_LOGIN_BUTTON: "native_login_button",
                 NEXT: "next",
                 NONCE: "nonce",
                 ORIGIN: "origin",
@@ -8528,50 +8529,34 @@ try {
                       signedRequest: params.signed_request
                     };
 
-                    if (params.granted_scopes) {
+                    if (params.asset_scopes) {
                       authResponse = babelHelpers["extends"]({}, authResponse, {
-                        grantedScopes: params.granted_scopes
-                      });
-                    }
-
-                    if (params.reauthorize_required_in) {
-                      authResponse = babelHelpers["extends"]({}, authResponse, {
-                        reauthorize_required_in: Number(
-                          params.reauthorize_required_in
+                        asset_scopes: ES(
+                          "JSON",
+                          "parse",
+                          false,
+                          params.asset_scopes
                         )
                       });
                     }
 
-                    if (params.data_access_expiration_time) {
-                      authResponse = babelHelpers["extends"]({}, authResponse, {
-                        data_access_expiration_time: Number(
-                          params.data_access_expiration_time
-                        )
-                      });
-                    }
+                    authResponse = populateAuthResponse(authResponse, params);
 
-                    if (params.base_domain != null) {
-                      setBaseDomain(params.base_domain);
-                    }
+                    removeLogoutState();
+                    status = "connected";
+                    setAuthResponse(authResponse, status);
+                  } else if (params && params.asset_scopes) {
+                    authResponse = {
+                      asset_scopes: ES(
+                        "JSON",
+                        "parse",
+                        false,
+                        params.asset_scopes
+                      )
+                    };
 
-                    if (params.enforce_https) {
-                      require("sdk.Runtime").setEnforceHttps(true);
-                    }
+                    authResponse = populateAuthResponse(authResponse, params);
 
-                    if (
-                      require("sdk.Runtime").getUseLocalStorage() &&
-                      location.protocol === "https:" &&
-                      params.long_lived_token
-                    ) {
-                      var localStorage = require("sdk.WebStorage").getLocalStorage();
-                      if (localStorage) {
-                        localStorage.setItem(
-                          LOCAL_STORAGE_TOKEN_PREFIX +
-                            require("sdk.Runtime").getClientID(),
-                          params.long_lived_token
-                        );
-                      }
-                    }
                     removeLogoutState();
                     status = "connected";
                     setAuthResponse(authResponse, status);
@@ -8609,6 +8594,55 @@ try {
                   }
                   return authResponse;
                 };
+              }
+
+              function populateAuthResponse(authResponse, params) {
+                if (params.granted_scopes) {
+                  authResponse = babelHelpers["extends"]({}, authResponse, {
+                    grantedScopes: params.granted_scopes
+                  });
+                }
+
+                if (params.reauthorize_required_in) {
+                  authResponse = babelHelpers["extends"]({}, authResponse, {
+                    reauthorize_required_in: Number(
+                      params.reauthorize_required_in
+                    )
+                  });
+                }
+
+                if (params.data_access_expiration_time) {
+                  authResponse = babelHelpers["extends"]({}, authResponse, {
+                    data_access_expiration_time: Number(
+                      params.data_access_expiration_time
+                    )
+                  });
+                }
+
+                if (params.base_domain != null) {
+                  setBaseDomain(params.base_domain);
+                }
+
+                if (params.enforce_https) {
+                  require("sdk.Runtime").setEnforceHttps(true);
+                }
+
+                if (
+                  require("sdk.Runtime").getUseLocalStorage() &&
+                  location.protocol === "https:" &&
+                  params.long_lived_token
+                ) {
+                  var localStorage = require("sdk.WebStorage").getLocalStorage();
+                  if (localStorage) {
+                    localStorage.setItem(
+                      LOCAL_STORAGE_TOKEN_PREFIX +
+                        require("sdk.Runtime").getClientID(),
+                      params.long_lived_token
+                    );
+                  }
+                }
+
+                return authResponse;
               }
 
               function removeLocalStorageToken() {
@@ -12597,6 +12631,7 @@ try {
                     if (
                       require("sdk.Auth").getAuthResponse() &&
                       !call.params.scope &&
+                      !call.params.asset_scope &&
                       !call.params.auth_type
                     ) {
                       require("Log").error(
@@ -16642,6 +16677,7 @@ try {
                 getParams: function getParams() {
                   return {
                     scope: "string",
+                    asset_scope: "string",
                     perms: "string",
                     size: "string",
                     login_text: "text",
@@ -17708,7 +17744,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1000670098","namespace":"FB","message":"' +
+        '","revision":"1000672864","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
