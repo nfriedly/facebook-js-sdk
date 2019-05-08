@@ -1,4 +1,4 @@
-/*1556924965,,JIT Construction: v1000672864,en_US*/
+/*1557277766,,JIT Construction: v1000683595,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3722,7 +3722,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1000672864",
+            revision: "1000683595",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -4013,6 +4013,7 @@ try {
                 AUTH_TYPE: "auth_type",
                 ASSET_SCOPE: "asset_scope",
                 CLIENT_ID: "client_id",
+                COMPARE_STATUS: "compare_status",
                 CONTEXT: "context",
                 DEFAULT_AUDIENCE: "default_audience",
                 DISPLAY: "display",
@@ -8844,6 +8845,15 @@ try {
                       }
                       frame.parentNode.removeChild(frame);
                       if (handleResponse(response)) {
+                        if (
+                          require("sdk.feature")("cors_verify_status", false)
+                        ) {
+                          verifyLoginStatusCORS(
+                            token,
+                            require("sdk.Runtime").getLoginStatus()
+                          );
+                        }
+
                         timer = window.setTimeout(function() {
                           fetchLoginStatus(function() {});
                         }, 1200000);
@@ -8885,6 +8895,44 @@ try {
                   url: url.toString(),
                   style: { display: "none" }
                 });
+              }
+
+              function verifyLoginStatusCORS(token, status) {
+                var xhr = new XMLHttpRequest();
+                var url = new (require("sdk.URI"))(
+                  require("UrlMap").resolve("www") + "/x/oauth/status"
+                )
+                  .addQueryData(
+                    require("OAuthControllerParameterName").CLIENT_ID,
+                    require("sdk.Runtime").getClientID()
+                  )
+                  .addQueryData(
+                    require("OAuthControllerParameterName").INPUT_TOKEN,
+                    token
+                  )
+                  .addQueryData(
+                    require("OAuthControllerParameterName").REDIRECT_URI,
+                    window.location.href
+                  )
+                  .addQueryData(
+                    require("OAuthControllerParameterName").ORIGIN,
+                    require("sdk.getContextType")()
+                  )
+                  .addQueryData(
+                    require("OAuthControllerParameterName").SDK,
+                    "joey"
+                  )
+                  .addQueryData(
+                    require("OAuthControllerParameterName").WANTS_COOKIE_DATA,
+                    require("sdk.Runtime").getUseCookie()
+                  )
+                  .addQueryData(
+                    require("OAuthControllerParameterName").COMPARE_STATUS,
+                    status
+                  );
+                xhr.open("GET", url, true);
+                xhr.withCredentials = true;
+                xhr.send();
               }
 
               function getLoginStatusCORS(cb, token, currentAuthResponse) {
@@ -17744,7 +17792,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1000672864","namespace":"FB","message":"' +
+        '","revision":"1000683595","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
