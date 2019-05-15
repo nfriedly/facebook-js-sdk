@@ -1,4 +1,4 @@
-/*1557877770,,JIT Construction: v1000711398,en_US*/
+/*1557883749,,JIT Construction: v1000712384,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3722,7 +3722,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1000711398",
+            revision: "1000712384",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -10988,10 +10988,21 @@ try {
                       accessToken = access_token;
                     }
                   },
+                  getClientID: function getClientID() {
+                    return clientID;
+                  },
                   getAccessToken: function getAccessToken() {
                     return accessToken;
                   },
                   setClientID: function setClientID(client_id) {
+                    if (__DEV__) {
+                      if (clientID && clientID !== client_id) {
+                        console.warn(
+                          "Warning: Two different applications have attempted to set the " +
+                            "client ID. Overriding the previously set client ID."
+                        );
+                      }
+                    }
                     clientID = client_id;
                   },
                   setDefaultParams: function setDefaultParams(default_params) {
@@ -17793,7 +17804,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1000711398","namespace":"FB","message":"' +
+        '","revision":"1000712384","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
