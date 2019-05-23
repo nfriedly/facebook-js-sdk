@@ -1,4 +1,4 @@
-/*1558476560,,JIT Construction: v1000737986,en_US*/
+/*1558655350,,JIT Construction: v1000749494,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3722,7 +3722,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1000737986",
+            revision: "1000749494",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -3734,7 +3734,7 @@ try {
               error_handling: { rate: 4 },
               e2e_ping_tracking: { rate: 1.0e-6 },
               xd_timeout: { rate: 1, value: 60000 },
-              use_bundle: true,
+              use_bundle: false,
               should_log_response_error: true,
               popup_blocker_scribe_logging: { rate: 100 },
               https_only_enforce_starting: 2538809200000,
@@ -3742,12 +3742,14 @@ try {
                 "https://developers.facebook.com/blog/post/2018/06/08/enforce-https-facebook-login/",
               https_only_scribe_logging: { rate: 1 },
               log_perf: { rate: 0.001 },
-              cors_verify_status: { rate: 1 }
+              cors_verify_status: { rate: 1 },
+              xd_arbiter_register_new: { rate: 100 },
+              xd_arbiter_handle_message_new: { rate: 100 }
             }
           });
           __d("JSSDKXDConfig", [], {
             XdUrl: "/connect/xd_arbiter.php?version=44",
-            XdBundleUrl: "/connect/xd_arbiter/r/k4kEBIucsR8.js?version=44",
+            XdBundleUrl: "/connect/xd_arbiter/r/sgEtEesore-.js?version=44",
             useCdn: true
           });
           __d("JSSDKCssConfig", [], {
@@ -13847,7 +13849,9 @@ try {
                     cb
                   );
 
-                  if (ES(navigator.userAgent, "indexOf", true, "Trident/")) {
+                  if (
+                    ES(navigator.userAgent, "indexOf", true, "Trident/") !== -1
+                  ) {
                     window.addEventListener("focus", function(e) {
                       if (
                         require("sdk.Runtime").getLoginStatus() !== "connected"
@@ -17815,7 +17819,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1000737986","namespace":"FB","message":"' +
+        '","revision":"1000749494","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
