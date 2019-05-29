@@ -1,4 +1,4 @@
-/*1559074162,,JIT Construction: v1000758176,en_US*/
+/*1559089751,,JIT Construction: v1000760446,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3722,7 +3722,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1000758176",
+            revision: "1000760446",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -10695,6 +10695,7 @@ try {
               "ChunkedRequest",
               "CORSRequest",
               "JSONPRequest",
+              "Log",
               "ObservableMixin",
               "QueryString",
               "UrlMap",
@@ -10733,12 +10734,7 @@ try {
               var requestCounter = 0;
 
               var apiBatcher;
-              var logger = {
-                warn: console.warn,
-                debug: console.debug,
-                info: console.info,
-                error: console.error
-              };
+              var logger = require("Log");
 
               function request(url, method, paramsRaw, cb) {
                 var shouldQueueRequest =
@@ -10971,15 +10967,13 @@ try {
                 new (require("ObservableMixin"))(),
                 {
                   setAccessToken: function setAccessToken(access_token) {
-                    if (__DEV__) {
-                      if (accessToken && accessToken !== access_token) {
-                        logger.error(
-                          "You are overriding current access token, that means some other " +
-                            "app is expecting different access token and you will probably " +
-                            "break things. Please consider passing access_token directly to " +
-                            "API parameters instead of overriding the global settings."
-                        );
-                      }
+                    if (accessToken && accessToken !== access_token) {
+                      logger.error(
+                        "You are overriding current access token, that means some other " +
+                          "app is expecting different access token and you will probably " +
+                          "break things. Please consider passing access_token directly to " +
+                          "API parameters instead of overriding the global settings."
+                      );
                     }
                     accessToken = access_token;
                   },
@@ -11003,13 +10997,11 @@ try {
                     return accessToken;
                   },
                   setClientID: function setClientID(client_id) {
-                    if (__DEV__) {
-                      if (clientID && clientID !== client_id) {
-                        logger.warn(
-                          "Warning: Two different applications have attempted to set the " +
-                            "client ID. Overriding the previously set client ID."
-                        );
-                      }
+                    if (clientID && clientID !== client_id) {
+                      logger.warn(
+                        "Warning: Two different applications have attempted to set the " +
+                          "client ID. Overriding the previously set client ID."
+                      );
                     }
                     clientID = client_id;
                   },
@@ -17827,7 +17819,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1000758176","namespace":"FB","message":"' +
+        '","revision":"1000760446","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
