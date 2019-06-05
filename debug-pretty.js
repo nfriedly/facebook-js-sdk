@@ -1,4 +1,4 @@
-/*1559164170,,JIT Construction: v1000764313,en_US*/
+/*1559764756,,JIT Construction: v1000791574,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3722,7 +3722,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1000764313",
+            revision: "1000791574",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -3743,8 +3743,8 @@ try {
               https_only_scribe_logging: { rate: 1 },
               log_perf: { rate: 0.001 },
               cors_verify_status: { rate: 1 },
-              xd_arbiter_register_new: { rate: 100 },
-              xd_arbiter_handle_message_new: { rate: 100 }
+              xd_arbiter_register_new: { rate: 0 },
+              xd_arbiter_handle_message_new: { rate: 0 }
             }
           });
           __d("JSSDKXDConfig", [], {
@@ -8401,6 +8401,7 @@ try {
               var YEAR_MS = 365 * 24 * 60 * 60 * 1000;
               var CONNECTED_REVALIDATE_PERIOD = 60 * 90 * 1000;
               var DEFAULT_REVALIDATE_PERIOD = 60 * 60 * 24 * 1000;
+              var PLATFORM_E2E_TRACKING_LOG_ID = 114;
 
               var currentAuthResponse;
 
@@ -8848,10 +8849,12 @@ try {
                           "e2e: %s",
                           ES("JSON", "stringify", false, events)
                         );
-
-                        require("sdk.Impressions").log(114, {
-                          payload: events
-                        });
+                        require("sdk.Impressions").log(
+                          PLATFORM_E2E_TRACKING_LOG_ID,
+                          {
+                            payload: events
+                          }
+                        );
                       }
                       frame.parentNode.removeChild(frame);
                       if (handleResponse(response)) {
@@ -8946,6 +8949,7 @@ try {
               }
 
               function getLoginStatusCORS(cb, token, currentAuthResponse) {
+                var fetchStart = ES("Date", "now", false);
                 var xhr = new XMLHttpRequest();
                 var url = new (require("sdk.URI"))(
                   require("UrlMap").resolve("www") + "/x/oauth/status"
@@ -8982,6 +8986,25 @@ try {
                     xhr.onreadystatechange = function() {
                       var authResponse = currentAuthResponse;
                       if (xhr.readyState === 4) {
+                        if (require("sdk.feature")("e2e_ping_tracking", true)) {
+                          var events = {
+                            init: fetchStart,
+                            close: ES("Date", "now", false),
+                            method: "cors"
+                          };
+
+                          require("Log").debug(
+                            "e2e: %s",
+                            ES("JSON", "stringify", false, events)
+                          );
+                          require("sdk.Impressions").log(
+                            PLATFORM_E2E_TRACKING_LOG_ID,
+                            {
+                              payload: events
+                            }
+                          );
+                        }
+
                         if (xhr.status === 200) {
                           var xhrStatus = xhr.getResponseHeader(
                             require("WebOAuthStatusCORSHeaders").STATUS
@@ -17825,7 +17848,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1000764313","namespace":"FB","message":"' +
+        '","revision":"1000791574","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
