@@ -1,4 +1,4 @@
-/*1559764756,,JIT Construction: v1000791574,en_US*/
+/*1559881155,,JIT Construction: v1000800525,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3722,7 +3722,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1000791574",
+            revision: "1000800525",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -8911,6 +8911,7 @@ try {
               }
 
               function verifyLoginStatusCORS(token, status) {
+                var fetchStart = ES("Date", "now", false);
                 var xhr = new XMLHttpRequest();
                 var url = new (require("sdk.URI"))(
                   require("UrlMap").resolve("www") + "/x/oauth/status"
@@ -8945,6 +8946,28 @@ try {
                   );
                 xhr.open("GET", url, true);
                 xhr.withCredentials = true;
+                xhr.onreadystatechange = function() {
+                  if (xhr.readyState === 4) {
+                    if (require("sdk.feature")("e2e_ping_tracking", true)) {
+                      var events = {
+                        init: fetchStart,
+                        close: ES("Date", "now", false),
+                        method: "cors"
+                      };
+
+                      require("Log").debug(
+                        "e2e: %s",
+                        ES("JSON", "stringify", false, events)
+                      );
+                      require("sdk.Impressions").log(
+                        PLATFORM_E2E_TRACKING_LOG_ID,
+                        {
+                          payload: events
+                        }
+                      );
+                    }
+                  }
+                };
                 xhr.send();
               }
 
@@ -17848,7 +17871,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1000791574","namespace":"FB","message":"' +
+        '","revision":"1000800525","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
