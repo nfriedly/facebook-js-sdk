@@ -1,4 +1,4 @@
-/*1559881155,,JIT Construction: v1000800525,en_US*/
+/*1560191360,,JIT Construction: v1000807766,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3722,7 +3722,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1000800525",
+            revision: "1000807766",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -9122,6 +9122,22 @@ try {
                               authResponse = null;
                               setAuthResponse(authResponse, xhrStatus);
                           }
+                        } else if (xhr.status === 0) {
+                          if (
+                            require("sdk.feature")(
+                              "cors_status_fetch_cancel_tracking",
+                              false
+                            )
+                          ) {
+                            require("sdk.Scribe").log("jssdk_error", {
+                              appId: require("sdk.Runtime").getClientID(),
+                              error: "CORS_STATUS_FETCH_CANCELLED",
+                              extra: { message: "Status 0 returned." }
+                            });
+                          }
+                          require("Log").error(
+                            "Error retrieving login status, fetch cancelled."
+                          );
                         } else {
                           require("sdk.Scribe").log("jssdk_error", {
                             appId: require("sdk.Runtime").getClientID(),
@@ -17871,7 +17887,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1000800525","namespace":"FB","message":"' +
+        '","revision":"1000807766","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
