@@ -1,4 +1,4 @@
-/*1560308969,,JIT Construction: v1000818135,en_US*/
+/*1560360571,,JIT Construction: v1000819634,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3722,7 +3722,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1000818135",
+            revision: "1000819634",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -3732,7 +3732,7 @@ try {
             features: {
               allow_non_canvas_app_events: false,
               error_handling: { rate: 4 },
-              e2e_ping_tracking: { rate: 1.0e-6 },
+              e2e_ping_tracking: { rate: 0.001 },
               xd_timeout: { rate: 1, value: 60000 },
               use_bundle: false,
               should_log_response_error: true,
@@ -3742,14 +3742,14 @@ try {
                 "https://developers.facebook.com/blog/post/2018/06/08/enforce-https-facebook-login/",
               https_only_scribe_logging: { rate: 1 },
               log_perf: { rate: 0.001 },
-              cors_verify_status: { rate: 1 },
+              use_cors_oauth_status: { rate: 1 },
               xd_arbiter_register_new: { rate: 0 },
               xd_arbiter_handle_message_new: { rate: 0 }
             }
           });
           __d("JSSDKXDConfig", [], {
             XdUrl: "/connect/xd_arbiter.php?version=44",
-            XdBundleUrl: "/connect/xd_arbiter/r/sgEtEesore-.js?version=44",
+            XdBundleUrl: "/connect/xd_arbiter/r/-YRyjAdrhzD.js?version=44",
             useCdn: true
           });
           __d("JSSDKCssConfig", [], {
@@ -5274,7 +5274,7 @@ try {
                 iphone: /\b(iPhone|iP[ao]d)/.test(uas),
                 ipad: /\b(iP[ao]d)/.test(uas),
                 android: /Android/i.test(uas),
-                nativeApp: /FBAN\/\w+;/i.test(uas),
+                nativeApp: /FBAN\/\w+;/i.test(uas) && !/FBAN\/mLite;/.test(uas),
                 nativeAndroidApp: /FB_IAB\/\w+;/i.test(uas),
                 nativeInstagramApp: /Instagram/i.test(uas),
                 nativeMessengeriOSApp: /MessengerForiOS/i.test(uas),
@@ -7643,7 +7643,7 @@ try {
 
               var _win64;
 
-              var _iphone, _ipad, _native;
+              var _iphone, _ipad, _native, _mLite;
 
               var _mobile;
 
@@ -7665,6 +7665,7 @@ try {
                 _ipad = /\b(iP[ao]d)/.exec(uas);
                 _android = /Android/i.exec(uas);
                 _native = /FBAN\/\w+;/i.exec(uas);
+                _mLite = /FBAN\/mLite;/i.exec(uas);
                 _mobile = /Mobile/i.exec(uas);
 
                 _win64 = !!/Win64/.exec(uas);
@@ -7765,7 +7766,7 @@ try {
                 },
 
                 nativeApp: function nativeApp() {
-                  return _populate() || _native;
+                  return _populate() || _mLite != null ? null : _native;
                 },
 
                 android: function android() {
@@ -17904,7 +17905,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1000818135","namespace":"FB","message":"' +
+        '","revision":"1000819634","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
