@@ -1,4 +1,4 @@
-/*1560360571,,JIT Construction: v1000819634,en_US*/
+/*1560376157,,JIT Construction: v1000821578,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3722,7 +3722,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1000819634",
+            revision: "1000821578",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -3732,7 +3732,7 @@ try {
             features: {
               allow_non_canvas_app_events: false,
               error_handling: { rate: 4 },
-              e2e_ping_tracking: { rate: 0.001 },
+              e2e_ping_tracking: { rate: 0.1 },
               xd_timeout: { rate: 1, value: 60000 },
               use_bundle: false,
               should_log_response_error: true,
@@ -3742,7 +3742,7 @@ try {
                 "https://developers.facebook.com/blog/post/2018/06/08/enforce-https-facebook-login/",
               https_only_scribe_logging: { rate: 1 },
               log_perf: { rate: 0.001 },
-              use_cors_oauth_status: { rate: 1 },
+              use_cors_oauth_status: { rate: 10 },
               xd_arbiter_register_new: { rate: 0 },
               xd_arbiter_handle_message_new: { rate: 0 }
             }
@@ -8786,6 +8786,21 @@ try {
                       .then(function(hasAccess) {
                         if (!hasAccess) {
                           unknownStatus(fn);
+                          if (
+                            require("sdk.feature")("e2e_ping_tracking", true)
+                          ) {
+                            var ts = ES("Date", "now", false);
+                            require("sdk.Impressions").log(
+                              PLATFORM_E2E_TRACKING_LOG_ID,
+                              {
+                                payload: {
+                                  init: ts,
+                                  close: ts,
+                                  method: "cors"
+                                }
+                              }
+                            );
+                          }
                         } else {
                           Auth.getLoginStatusCORS(
                             fn,
@@ -8796,6 +8811,19 @@ try {
                       })
                       ["catch"](function(e) {
                         unknownStatus(fn);
+                        if (require("sdk.feature")("e2e_ping_tracking", true)) {
+                          var ts = ES("Date", "now", false);
+                          require("sdk.Impressions").log(
+                            PLATFORM_E2E_TRACKING_LOG_ID,
+                            {
+                              payload: {
+                                init: ts,
+                                close: ts,
+                                method: "cors"
+                              }
+                            }
+                          );
+                        }
                       });
                   } else if (window.location.protocol !== "https:") {
                     unknownStatus(fn);
@@ -17905,7 +17933,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1000819634","namespace":"FB","message":"' +
+        '","revision":"1000821578","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
