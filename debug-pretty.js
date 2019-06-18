@@ -1,4 +1,4 @@
-/*1560814155,,JIT Construction: v1000840495,en_US*/
+/*1560889167,,JIT Construction: v1000845378,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3722,7 +3722,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1000840495",
+            revision: "1000845378",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -9217,12 +9217,27 @@ try {
                 if (forceCORS === void 0) {
                   forceCORS = false;
                 }
-                if (!require("sdk.Runtime").getClientID()) {
+                var appID = require("sdk.Runtime").getClientID();
+                if (appID == null) {
                   require("Log").warn(
                     "FB.getLoginStatus() called before calling FB.init()."
                   );
-                  return;
+                  unknownStatus(cb);
                 }
+
+                if (
+                  !(typeof appID === "number" || typeof appID === "string") ||
+                  appID === 0 ||
+                  (typeof appID === "string" && !/^\d+$/.test(appID))
+                ) {
+                  require("Log").warn(
+                    "FB.getLoginStatus() not checked for an invalid client ID " +
+                      appID
+                  );
+
+                  unknownStatus(cb);
+                }
+
                 if (
                   !force &&
                   require("sdk.feature")("cache_auth_response", false) &&
@@ -17933,7 +17948,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1000840495","namespace":"FB","message":"' +
+        '","revision":"1000845378","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
