@@ -1,4 +1,4 @@
-/*1560889167,,JIT Construction: v1000845378,en_US*/
+/*1560983961,,JIT Construction: v1000853522,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3722,7 +3722,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1000845378",
+            revision: "1000853522",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -5713,14 +5713,17 @@ try {
               function request(params) {
                 var clientID = require("sdk.Runtime").getClientID();
 
-                if (!params.api_key && clientID) {
+                if (
+                  clientID &&
+                  (typeof params.api_key !== "string" || params.api_key === "")
+                ) {
                   params.api_key = clientID;
                 }
 
                 params.kid_directed_site = require("sdk.Runtime").getKidDirectedSite();
 
                 var url =
-                  require("UrlMap").resolve("www", true) +
+                  require("UrlMap").resolve("www") +
                   "/impression.php/" +
                   require("guid")() +
                   "/";
@@ -5730,11 +5733,9 @@ try {
                 );
                 if (fullUrlPath.length > 2000) {
                   if (params.payload && typeof params.payload === "string") {
-                    var minyPayload = require("Miny").encode(params.payload);
-                    if (
-                      minyPayload &&
-                      minyPayload.length < params.payload.length
-                    ) {
+                    var payload = params.payload;
+                    var minyPayload = require("Miny").encode(payload);
+                    if (minyPayload && minyPayload.length < payload.length) {
                       params.payload = minyPayload;
                       fullUrlPath = require("QueryString").appendToUrl(
                         url,
@@ -5756,7 +5757,9 @@ try {
                     name: name,
                     className: "fb_hidden fb_invisible",
                     onload: function onload() {
-                      root.parentNode.removeChild(root);
+                      if (root.parentNode != null) {
+                        root.parentNode.removeChild(root);
+                      }
                     }
                   });
 
@@ -5770,7 +5773,10 @@ try {
 
               var Impressions = {
                 log: function log(lid, payload) {
-                  if (!payload.source) {
+                  if (
+                    typeof payload.source !== "string" ||
+                    payload.source === ""
+                  ) {
                     payload.source = "jssdk";
                   }
 
@@ -5799,8 +5805,9 @@ try {
               exports
             ) {
               function log(category, data) {
-                if (typeof data.extra === "object") {
-                  data.extra.revision = require("sdk.Runtime").getRevision();
+                if (data.extra != null && typeof data.extra === "object") {
+                  var extra = data.extra;
+                  extra.revision = require("sdk.Runtime").getRevision();
                 }
                 new Image().src = require("QueryString").appendToUrl(
                   require("UrlMap").resolve("www") +
@@ -5917,7 +5924,7 @@ try {
               exports
             ) {
               function parse(signed_request) {
-                if (!signed_request) {
+                if (signed_request == null || signed_request === "") {
                   return null;
                 }
 
@@ -6600,7 +6607,7 @@ try {
           );
           __d(
             "sdk.URI",
-            ["Assert", "QueryString", "URIBase"],
+            ["QueryString", "URIBase"],
             function $module_sdk_URI(
               global,
               require,
@@ -6623,10 +6630,6 @@ try {
                 "use strict";
                 babelHelpers.inheritsLoose(URI, _URIBase);
                 function URI(uri) {
-                  require("Assert").isString(
-                    uri,
-                    "The passed argument was of invalid type."
-                  );
                   return _URIBase.call(this, uri, serializer) || this;
                 }
                 var _proto = URI.prototype;
@@ -7798,16 +7801,15 @@ try {
                 : false;
 
               function test() {
-                var form = document.createElement("form"),
-                  input = form.appendChild(document.createElement("input"));
+                var form = document.createElement("form");
+                var input = form.appendChild(document.createElement("input"));
                 input.name = require("guid")();
                 hasBug = input !== form.elements[input.name];
-                form = input = null;
                 return hasBug;
               }
 
               function hasNamePropertyBug() {
-                return typeof hasBug === "undefined" ? test() : hasBug;
+                return hasBug === undefined ? test() : hasBug;
               }
 
               module.exports = hasNamePropertyBug;
@@ -7850,8 +7852,8 @@ try {
               module,
               exports
             ) {
-              function createIframe(opts) {
-                opts = ES("Object", "assign", false, {}, opts);
+              function createIframe(opts_arg) {
+                var opts = ES("Object", "assign", false, {}, opts_arg);
                 var frame;
                 var name = opts.name || require("guid")();
                 var root = opts.root;
@@ -7875,48 +7877,54 @@ try {
                 delete opts.root;
                 delete opts.onload;
                 delete opts.onerror;
+                delete opts.height;
+                delete opts.width;
 
-                var attributes = ES(
-                  "Object",
-                  "assign",
-                  false,
-                  {
-                    frameBorder: 0,
-                    allowTransparency: true,
-                    allowFullscreen: true,
-                    scrolling: "no",
-                    allow: "encrypted-media"
-                  },
-
-                  opts
-                );
-
-                if (
-                  attributes.width &&
-                  require("isNumberLike")(attributes.width)
-                ) {
-                  frame.width = attributes.width + "px";
-                }
-                if (
-                  attributes.height &&
-                  require("isNumberLike")(attributes.height)
-                ) {
-                  frame.height = attributes.height + "px";
+                if (opts.frameBorder === undefined) {
+                  opts.frameBorder = 0;
                 }
 
-                delete attributes.height;
-                delete attributes.width;
+                if (opts.allowTransparency === undefined) {
+                  opts.allowTransparency = true;
+                }
 
-                for (var key in attributes) {
-                  if (Object.prototype.hasOwnProperty.call(attributes, key)) {
-                    frame.setAttribute(key, attributes[key]);
+                if (opts.allowFullscreen === undefined) {
+                  opts.allowFullscreen = true;
+                }
+
+                if (opts.scrolling === undefined) {
+                  opts.scrolling = "no";
+                }
+
+                if (opts.allow === undefined) {
+                  opts.allow = "encrypted-media";
+                }
+
+                if (
+                  opts_arg.width != null &&
+                  require("isNumberLike")(opts_arg.width)
+                ) {
+                  frame.width = opts_arg.width + "px";
+                }
+                if (
+                  opts_arg.height != null &&
+                  require("isNumberLike")(opts_arg.height)
+                ) {
+                  frame.height = opts_arg.height + "px";
+                }
+
+                for (var key in opts) {
+                  if (Object.prototype.hasOwnProperty.call(opts, key)) {
+                    frame.setAttribute(key, opts[key]);
                   }
                 }
 
                 ES("Object", "assign", false, frame.style, style);
 
                 frame.src = require("getBlankIframeSrc")();
-                root.appendChild(frame);
+                if (root != null) {
+                  root.appendChild(frame);
+                }
                 if (onLoad) {
                   var onLoadListener = require("DOMEventListener").add(
                     frame,
@@ -8415,16 +8423,29 @@ try {
                   fromCache = false;
                 }
                 var currentUserID = require("sdk.Runtime").getUserID();
+                var currentStatus = require("sdk.Runtime").getLoginStatus();
+
                 var userID = "";
-                if (authResponse) {
-                  if (authResponse.userID) {
+                if (authResponse != null) {
+                  if (
+                    authResponse.userID != null &&
+                    authResponse.userID !== ""
+                  ) {
                     userID = authResponse.userID;
-                  } else if (authResponse.signedRequest) {
+                  } else if (
+                    authResponse.signedRequest != null &&
+                    authResponse.signedRequest !== ""
+                  ) {
                     var parsedSignedRequest = require("sdk.SignedRequest").parse(
                       authResponse.signedRequest
                     );
 
-                    if (parsedSignedRequest && parsedSignedRequest.user_id) {
+                    if (
+                      parsedSignedRequest != null &&
+                      parsedSignedRequest !== "" &&
+                      parsedSignedRequest.user_id != null &&
+                      parsedSignedRequest.user_id !== ""
+                    ) {
                       userID = parsedSignedRequest.user_id;
                     }
                   }
@@ -8449,14 +8470,21 @@ try {
                   }
                 }
 
-                var currentStatus = require("sdk.Runtime").getLoginStatus();
                 var login =
-                  (currentStatus === "unknown" && authResponse) ||
+                  (currentStatus === "unknown" && authResponse != null) ||
                   (require("sdk.Runtime").getUseCookie() &&
                     require("sdk.Runtime").getCookieUserID() !== userID);
-                var logout = currentUserID && !authResponse;
+                var logout =
+                  currentUserID != null &&
+                  currentUserID !== "" &&
+                  authResponse == null;
+
                 var both =
-                  authResponse && currentUserID && currentUserID != userID;
+                  authResponse != null &&
+                  currentUserID != null &&
+                  currentUserID !== "" &&
+                  currentUserID != userID;
+
                 var authResponseChange = authResponse != currentAuthResponse;
                 var statusChange = status != (currentStatus || "unknown");
 
@@ -8535,9 +8563,15 @@ try {
                     var parsedSignedRequest = require("sdk.SignedRequest").parse(
                       params.signed_request
                     );
+                    var user_id =
+                      parsedSignedRequest != null
+                        ? parsedSignedRequest.user_id != null
+                          ? parsedSignedRequest.user_id
+                          : null
+                        : null;
                     authResponse = {
                       accessToken: params.access_token,
-                      userID: parsedSignedRequest.user_id,
+                      userID: user_id,
                       expiresIn: Number(params.expires_in),
                       signedRequest: params.signed_request
                     };
@@ -8598,12 +8632,12 @@ try {
                   }
 
                   if (cb) {
-                    var response = {
+                    var _response = {
                       authResponse: authResponse,
                       status: require("sdk.Runtime").getLoginStatus()
                     };
 
-                    cb(response);
+                    cb(_response);
                   }
                   return authResponse;
                 };
@@ -8885,7 +8919,9 @@ try {
                           }
                         );
                       }
-                      frame.parentNode.removeChild(frame);
+                      if (frame.parentNode != null) {
+                        frame.parentNode.removeChild(frame);
+                      }
                       if (handleResponse(response)) {
                         if (
                           require("sdk.feature")("cors_verify_status", false)
@@ -8973,7 +9009,7 @@ try {
                     require("OAuthControllerParameterName").COMPARE_STATUS,
                     status
                   );
-                xhr.open("GET", url, true);
+                xhr.open("GET", url.toString(), true);
                 xhr.withCredentials = true;
                 xhr.onreadystatechange = function() {
                   if (xhr.readyState === 4) {
@@ -9050,7 +9086,7 @@ try {
 
                 function corsFetch() {
                   if (xhr) {
-                    xhr.open("GET", url, true);
+                    xhr.open("GET", url.toString(), true);
                     xhr.withCredentials = true;
                     xhr.onreadystatechange = function() {
                       var authResponse = currentAuthResponse;
@@ -9197,12 +9233,12 @@ try {
                           );
                         }
                         if (cb) {
-                          var response = {
+                          var _response2 = {
                             authResponse: authResponse,
                             status: require("sdk.Runtime").getLoginStatus()
                           };
 
-                          cb(response);
+                          cb(_response2);
                         }
                       }
                     };
@@ -9214,6 +9250,9 @@ try {
 
               var loadState;
               function getLoginStatus(cb, force, forceCORS) {
+                if (force === void 0) {
+                  force = false;
+                }
                 if (forceCORS === void 0) {
                   forceCORS = false;
                 }
@@ -9228,7 +9267,8 @@ try {
                 if (
                   !(typeof appID === "number" || typeof appID === "string") ||
                   appID === 0 ||
-                  (typeof appID === "string" && !/^\d+$/.test(appID))
+                  (typeof appID === "string" &&
+                    (appID === "0" || !/^\d+$/.test(appID)))
                 ) {
                   require("Log").warn(
                     "FB.getLoginStatus() not checked for an invalid client ID " +
@@ -9294,12 +9334,12 @@ try {
                 if (!force) {
                   if (loadState === "loaded") {
                     if (cb) {
-                      var response = {
+                      var _response3 = {
                         authResponse: getAuthResponse(),
                         status: require("sdk.Runtime").getLoginStatus()
                       };
 
-                      cb(response);
+                      cb(_response3);
                     }
                     return;
                   } else if (loadState === "loading") {
@@ -14057,7 +14097,10 @@ try {
                       } catch (_unused) {
                         require("sdk.Cookie").clearSignedRequestCookie();
                       }
-                      if (parsedSignedRequest && parsedSignedRequest.user_id) {
+                      if (
+                        parsedSignedRequest != null &&
+                        parsedSignedRequest.user_id != null
+                      ) {
                         require("sdk.Runtime").setCookieUserID(
                           parsedSignedRequest.user_id
                         );
@@ -17948,7 +17991,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1000845378","namespace":"FB","message":"' +
+        '","revision":"1000853522","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
