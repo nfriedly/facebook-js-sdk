@@ -1,4 +1,4 @@
-/*1561411758,,JIT Construction: v1000873614,en_US*/
+/*1561417170,,JIT Construction: v1000874151,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -2626,7 +2626,8 @@ try {
               // @flow
               // @nolint
 
-              module.exports = (require("json3-3.3.2")() /*: any*/);
+              // $FlowExpectedError this module should be typed via `json3.js.flow`, otherwise it's `any`
+              module.exports = require("json3-3.3.2")();
 
               /*  */
             },
@@ -3722,7 +3723,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1000873614",
+            revision: "1000874151",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -18001,7 +18002,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1000873614","namespace":"FB","message":"' +
+        '","revision":"1000874151","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
