@@ -1,4 +1,4 @@
-/*1561148355,,JIT Construction: v1000865031,en_US*/
+/*1561411758,,JIT Construction: v1000873614,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3722,7 +3722,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1000865031",
+            revision: "1000873614",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -3742,7 +3742,7 @@ try {
                 "https://developers.facebook.com/blog/post/2018/06/08/enforce-https-facebook-login/",
               https_only_scribe_logging: { rate: 1 },
               log_perf: { rate: 0.001 },
-              use_cors_oauth_status: { rate: 10 },
+              use_cors_oauth_status: { rate: 50 },
               xd_arbiter_register_new: { rate: 0 },
               xd_arbiter_handle_message_new: { rate: 0 }
             }
@@ -5144,7 +5144,7 @@ try {
 
                   var expiration = new Date();
                   expiration.setFullYear(expiration.getFullYear() + 1);
-                  setRaw("fbm_", meta, expiration.getTime(), false);
+                  setRaw("fbm_", meta, expiration.getTime(), true);
                 },
 
                 getDomain: function getDomain() {
@@ -5179,17 +5179,12 @@ try {
                       "Value passed to Cookie.setSignedRequestCookie was empty."
                     );
                   }
-                  setRaw(
-                    "fbsr_",
-                    signedRequest,
-                    expiration,
-                    require("sdk.Runtime").getEnforceHttps()
-                  );
+                  setRaw("fbsr_", signedRequest, expiration, true);
                 },
 
                 clearSignedRequestCookie: function clearSignedRequestCookie() {
                   this.loadMeta();
-                  setRaw("fbsr_", "", 0, false);
+                  setRaw("fbsr_", "", 0, true);
                 },
 
                 setRaw: setRaw,
@@ -8806,6 +8801,10 @@ try {
                     ? _redirAccessToken
                     : localStorageToken;
 
+                if (window.location.protocol !== "https:") {
+                  unknownStatus(fn);
+                }
+
                 if (
                   require("sdk.feature")("use_cors_oauth_status", false) ||
                   forceCORS
@@ -8859,8 +8858,6 @@ try {
                           );
                         }
                       });
-                  } else if (window.location.protocol !== "https:") {
-                    unknownStatus(fn);
                   } else {
                     Auth.getLoginStatusCORS(fn, token, currentAuthResponse);
                   }
@@ -11305,9 +11302,9 @@ try {
             null
           );
           __d(
-            "sdk.unsecureDisallowed",
+            "sdk.warnInsecure",
             ["Log", "sdk.feature", "sdk.Runtime", "sdk.Scribe"],
-            function $module_sdk_unsecureDisallowed(
+            function $module_sdk_warnInsecure(
               global,
               require,
               requireDynamic,
@@ -11317,43 +11314,18 @@ try {
             ) {
               "use strict";
 
-              var httpsOnlyEnforceStarting = require("sdk.feature")(
-                "https_only_enforce_starting",
-                false
-              );
               var httpsOnlyLearnMore = require("sdk.feature")(
                 "https_only_learn_more",
                 ""
               );
               var logged = {};
 
-              function unsecureDisallowed(methodName) {
-                if (
-                  window.location.protocol !== "https:" &&
-                  httpsOnlyEnforceStarting &&
-                  httpsOnlyEnforceStarting - ES("Date", "now", false) <= 0
-                ) {
+              function warnInsecure(methodName) {
+                if (window.location.protocol !== "https:") {
                   require("Log").log(
                     "error",
                     -1,
                     "The method FB.%s can no longer be called from http pages. %s",
-                    methodName,
-                    httpsOnlyLearnMore
-                  );
-
-                  return true;
-                }
-
-                if (
-                  window.location.protocol !== "https:" &&
-                  httpsOnlyEnforceStarting
-                ) {
-                  require("Log").log(
-                    "error",
-                    -1,
-                    "The method FB.%s will soon stop working when called from http pages. " +
-                      "Please update your site to use https for " +
-                      "Facebook Login. %s",
                     methodName,
                     httpsOnlyLearnMore
                   );
@@ -11373,10 +11345,10 @@ try {
                     logged[methodName] = true;
                   }
                 }
-                return false;
+                return true;
               }
 
-              module.exports = unsecureDisallowed;
+              module.exports = warnInsecure;
             },
             null
           );
@@ -11389,7 +11361,7 @@ try {
               "sdk.Runtime",
               "sdk.Scribe",
               "sdk.URI",
-              "sdk.unsecureDisallowed"
+              "sdk.warnInsecure"
             ],
             function $module_sdk_api(
               global,
@@ -11489,9 +11461,7 @@ try {
               });
 
               function api(path) {
-                if (require("sdk.unsecureDisallowed")("api")) {
-                  return;
-                }
+                require("sdk.warnInsecure")("api");
 
                 if (typeof path === "string") {
                   if (require("sdk.Runtime").getIsVersioned()) {
@@ -13991,7 +13961,7 @@ try {
               "sdk.Runtime",
               "sdk.SignedRequest",
               "sdk.ui",
-              "sdk.unsecureDisallowed"
+              "sdk.warnInsecure"
             ],
             function $module_legacy_fb_auth(
               global,
@@ -14003,9 +13973,7 @@ try {
             ) {
               require("FB").provide("", {
                 getLoginStatus: function getLoginStatus() {
-                  if (require("sdk.unsecureDisallowed")("getLoginStatus")) {
-                    return null;
-                  }
+                  require("sdk.warnInsecure")("getLoginStatus");
                   return require("sdk.Auth").getLoginStatus.apply(
                     require("sdk.Auth"),
                     arguments
@@ -14013,23 +13981,17 @@ try {
                 },
 
                 getAuthResponse: function getAuthResponse() {
-                  if (require("sdk.unsecureDisallowed")("getAuthResponse")) {
-                    return null;
-                  }
+                  require("sdk.warnInsecure")("getAuthResponse");
                   return require("sdk.Auth").getAuthResponse();
                 },
 
                 getAccessToken: function getAccessToken() {
-                  if (require("sdk.unsecureDisallowed")("getAccessToken")) {
-                    return null;
-                  }
+                  require("sdk.warnInsecure")("getAccessToken");
                   return require("sdk.Runtime").getAccessToken() || null;
                 },
 
                 getUserID: function getUserID() {
-                  if (require("sdk.unsecureDisallowed")("getUserID")) {
-                    return null;
-                  }
+                  require("sdk.warnInsecure")("getUserID");
                   return (
                     require("sdk.Runtime").getUserID() ||
                     require("sdk.Runtime").getCookieUserID()
@@ -14037,9 +13999,7 @@ try {
                 },
 
                 login: function login(cb, opts) {
-                  if (require("sdk.unsecureDisallowed")("login")) {
-                    return;
-                  }
+                  require("sdk.warnInsecure")("login");
                   if (opts && opts.perms && !opts.scope) {
                     opts.scope = opts.perms;
                     delete opts.perms;
@@ -18041,7 +18001,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1000865031","namespace":"FB","message":"' +
+        '","revision":"1000873614","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
