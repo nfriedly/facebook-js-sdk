@@ -1,4 +1,4 @@
-/*1561417170,,JIT Construction: v1000874151,en_US*/
+/*1561495163,,JIT Construction: v1000879191,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3723,7 +3723,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1000874151",
+            revision: "1000879191",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -3743,7 +3743,7 @@ try {
                 "https://developers.facebook.com/blog/post/2018/06/08/enforce-https-facebook-login/",
               https_only_scribe_logging: { rate: 1 },
               log_perf: { rate: 0.001 },
-              use_cors_oauth_status: { rate: 50 },
+              use_cors_oauth_status: { rate: 0 },
               xd_arbiter_register_new: { rate: 0 },
               xd_arbiter_handle_message_new: { rate: 0 }
             }
@@ -8482,7 +8482,7 @@ try {
                   currentUserID != userID;
 
                 var authResponseChange = authResponse != currentAuthResponse;
-                var statusChange = status != (currentStatus || "unknown");
+                var statusChange = status != currentStatus;
 
                 require("sdk.Runtime").setLoginStatus(status);
                 require("sdk.Runtime").setAccessToken(
@@ -18002,7 +18002,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1000874151","namespace":"FB","message":"' +
+        '","revision":"1000879191","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
