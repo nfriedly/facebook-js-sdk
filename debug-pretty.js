@@ -1,4 +1,4 @@
-/*1562020753,,JIT Construction: v1000902971,en_US*/
+/*1562126351,,JIT Construction: v1000909538,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3723,7 +3723,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1000902971",
+            revision: "1000909538",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -14026,17 +14026,28 @@ try {
                       opts || {}
                     ),
 
-                    cb
+                    ES(navigator.userAgent, "indexOf", true, "Trident/") !== -1
+                      ? null
+                      : cb
                   );
 
                   if (
+                    typeof cb === "function" &&
                     ES(navigator.userAgent, "indexOf", true, "Trident/") !== -1
                   ) {
+                    require("sdk.Auth").removeLogoutState();
+                    var sub = require("sdk.Auth").subscribe(
+                      "status.change",
+                      function(response) {
+                        require("sdk.Auth").unsubscribe("status.change", sub);
+                        cb(response);
+                      }
+                    );
                     window.addEventListener("focus", function(e) {
                       if (
                         require("sdk.Runtime").getLoginStatus() !== "connected"
                       ) {
-                        require("sdk.Auth").getLoginStatus(cb, true);
+                        require("sdk.Auth").getLoginStatus(null, true);
                       }
                     });
                   }
@@ -18002,7 +18013,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1000902971","namespace":"FB","message":"' +
+        '","revision":"1000909538","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
