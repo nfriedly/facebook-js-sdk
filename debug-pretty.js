@@ -1,4 +1,4 @@
-/*1562628551,,JIT Construction: v1000917516,en_US*/
+/*1562820573,,JIT Construction: v1000927950,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3723,7 +3723,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1000917516",
+            revision: "1000927950",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -3743,14 +3743,14 @@ try {
                 "https://developers.facebook.com/blog/post/2018/06/08/enforce-https-facebook-login/",
               https_only_scribe_logging: { rate: 1 },
               log_perf: { rate: 0.001 },
-              use_cors_oauth_status: { rate: 50 },
+              use_cors_oauth_status: { rate: 10 },
               xd_arbiter_register_new: { rate: 0 },
               xd_arbiter_handle_message_new: { rate: 0 }
             }
           });
           __d("JSSDKXDConfig", [], {
             XdUrl: "/connect/xd_arbiter.php?version=44",
-            XdBundleUrl: "/connect/xd_arbiter/r/-YRyjAdrhzD.js?version=44",
+            XdBundleUrl: "/connect/xd_arbiter/r/U6udqFHMq6g.js?version=44",
             useCdn: true
           });
           __d("JSSDKCssConfig", [], {
@@ -7101,10 +7101,39 @@ try {
                             }
 
                             if (typeof message !== "string") {
+                              if (
+                                event.data.xdArbiterSyn ||
+                                event.data.xdArbiterHandleMessage ||
+                                event.data.xdArbiterRegister
+                              ) {
+                                require("Log").error(
+                                  "XDM at " +
+                                    (window.name != null && window.name !== ""
+                                      ? window.name
+                                      : window == top
+                                      ? "_top"
+                                      : "[no name]") +
+                                    " ignoring " +
+                                    (event.data.xdArbiterHandleMessage
+                                      ? "handleMessage"
+                                      : "register") +
+                                    " data intended for XdArbiter. " +
+                                    ES("JSON", "stringify", false, message)
+                                );
+
+                                return;
+                              }
+
+                              if (event.data.xdArbiterAck) {
+                                require("Log").debug("ignoring xdArbiterAck");
+                                return;
+                              }
+
                               require("Log").warn(
-                                "Received message of type %s from %s, expected a string",
+                                "Received message of type %s from %s, expected a string. %s",
                                 typeof message,
-                                origin
+                                origin,
+                                ES("JSON", "stringify", false, message)
                               );
 
                               return;
@@ -18015,7 +18044,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1000917516","namespace":"FB","message":"' +
+        '","revision":"1000927950","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
