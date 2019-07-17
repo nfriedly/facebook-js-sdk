@@ -1,4 +1,4 @@
-/*1563334174,,JIT Construction: v1000948161,en_US*/
+/*1563406154,,JIT Construction: v1000951494,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3723,7 +3723,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1000948161",
+            revision: "1000951494",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -9007,7 +9007,9 @@ try {
                 var fetchStart = ES("Date", "now", false);
                 var xhr = new XMLHttpRequest();
                 var url = new (require("sdk.URI"))(
-                  "https://www.facebook.com/x/oauth/status"
+                  require("UrlMap")
+                    .resolve("www")
+                    .replace("web.", "www.") + "/x/oauth/status"
                 )
                   .addQueryData(
                     require("OAuthControllerParameterName").CLIENT_ID,
@@ -9066,7 +9068,9 @@ try {
 
               function getCORSTarget(token) {
                 var url = new (require("sdk.URI"))(
-                  "https://www.facebook.com/x/oauth/status"
+                  require("UrlMap")
+                    .resolve("www")
+                    .replace("web.", "www.") + "/x/oauth/status"
                 )
                   .addQueryData(
                     require("OAuthControllerParameterName").CLIENT_ID,
@@ -18045,7 +18049,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1000948161","namespace":"FB","message":"' +
+        '","revision":"1000951494","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
