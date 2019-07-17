@@ -1,4 +1,4 @@
-/*1563226750,,JIT Construction: v1000940901,en_US*/
+/*1563334174,,JIT Construction: v1000948161,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3723,7 +3723,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1000940901",
+            revision: "1000948161",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -3743,7 +3743,7 @@ try {
                 "https://developers.facebook.com/blog/post/2018/06/08/enforce-https-facebook-login/",
               https_only_scribe_logging: { rate: 1 },
               log_perf: { rate: 0.001 },
-              use_cors_oauth_status: { rate: 10 },
+              use_cors_oauth_status: { rate: 0 },
               xd_arbiter_register_new: { rate: 0 },
               xd_arbiter_handle_message_new: { rate: 100 }
             }
@@ -9007,7 +9007,7 @@ try {
                 var fetchStart = ES("Date", "now", false);
                 var xhr = new XMLHttpRequest();
                 var url = new (require("sdk.URI"))(
-                  require("UrlMap").resolve("www") + "/x/oauth/status"
+                  "https://www.facebook.com/x/oauth/status"
                 )
                   .addQueryData(
                     require("OAuthControllerParameterName").CLIENT_ID,
@@ -9066,7 +9066,7 @@ try {
 
               function getCORSTarget(token) {
                 var url = new (require("sdk.URI"))(
-                  require("UrlMap").resolve("www") + "/x/oauth/status"
+                  "https://www.facebook.com/x/oauth/status"
                 )
                   .addQueryData(
                     require("OAuthControllerParameterName").CLIENT_ID,
@@ -18045,7 +18045,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1000940901","namespace":"FB","message":"' +
+        '","revision":"1000948161","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
