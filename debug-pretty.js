@@ -1,4 +1,4 @@
-/*1563406154,,JIT Construction: v1000951494,en_US*/
+/*1563503368,,JIT Construction: v1000956584,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3723,7 +3723,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1000951494",
+            revision: "1000956584",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -3745,7 +3745,7 @@ try {
               log_perf: { rate: 0.001 },
               use_cors_oauth_status: { rate: 0 },
               xd_arbiter_register_new: { rate: 0 },
-              xd_arbiter_handle_message_new: { rate: 100 }
+              xd_arbiter_handle_message_new: { rate: 0 }
             }
           });
           __d("JSSDKXDConfig", [], {
@@ -8399,6 +8399,47 @@ try {
             null
           );
           __d(
+            "sdk.modFeatureCheck",
+            ["JSSDKConfig"],
+            function $module_sdk_modFeatureCheck(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              function forIDs(name, ids, defaultValue) {
+                if (defaultValue === void 0) {
+                  defaultValue = false;
+                }
+                if (
+                  require("JSSDKConfig").features &&
+                  name in require("JSSDKConfig").features
+                ) {
+                  var values = require("JSSDKConfig").features[name];
+                  if (
+                    typeof values === "object" &&
+                    ES("Array", "isArray", false, values)
+                  ) {
+                    return ES(ids, "some", true, function(x) {
+                      return ES(values, "some", true, function(y) {
+                        return x % y === 0;
+                      });
+                    });
+                  }
+                }
+
+                return defaultValue;
+              }
+
+              module.exports = {
+                forIDs: forIDs
+              };
+            },
+            null
+          );
+          __d(
             "sdk.Auth",
             [
               "DOMWrapper",
@@ -8415,6 +8456,7 @@ try {
               "sdk.feature",
               "sdk.getContextType",
               "sdk.Impressions",
+              "sdk.modFeatureCheck",
               "sdk.Runtime",
               "sdk.Scribe",
               "sdk.SignedRequest",
@@ -8952,7 +8994,12 @@ try {
                       }
                       if (handleResponse(response)) {
                         if (
-                          require("sdk.feature")("cors_verify_status", false)
+                          require("sdk.feature")("cors_verify_status", false) ||
+                          require("sdk.modFeatureCheck").forIDs(
+                            "cors_verify_status_for_app_ids",
+                            [Number(require("sdk.Runtime").getClientID())],
+                            false
+                          )
                         ) {
                           verifyLoginStatusCORS(
                             token,
@@ -18049,7 +18096,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1000951494","namespace":"FB","message":"' +
+        '","revision":"1000956584","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
