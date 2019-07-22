@@ -1,4 +1,4 @@
-/*1563503368,,JIT Construction: v1000956584,en_US*/
+/*1563812972,,JIT Construction: v1000965581,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3723,7 +3723,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1000956584",
+            revision: "1000965581",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -13533,7 +13533,8 @@ try {
                   node = {
                     node: node,
                     type: type,
-                    fbCallID: call.id
+                    fbCallID: call.id,
+                    method: call.name
                   };
 
                   UIServer._loadedNodes[call.id] = node;
@@ -13750,7 +13751,16 @@ try {
 
                       try {
                         if (win.closed) {
-                          UIServer._triggerDefault(id, null);
+                          if (node.method === "permissions.oauth") {
+                            require("sdk.Auth").getLoginStatus(function(
+                              response
+                            ) {
+                              return UIServer._triggerDefault(id, response);
+                            },
+                            true);
+                          } else {
+                            UIServer._triggerDefault(id, null);
+                          }
                         } else {
                           found = true;
                         }
@@ -14109,31 +14119,8 @@ try {
                       opts || {}
                     ),
 
-                    ES(navigator.userAgent, "indexOf", true, "Trident/") !== -1
-                      ? null
-                      : cb
+                    cb
                   );
-
-                  if (
-                    typeof cb === "function" &&
-                    ES(navigator.userAgent, "indexOf", true, "Trident/") !== -1
-                  ) {
-                    require("sdk.Auth").removeLogoutState();
-                    var sub = require("sdk.Auth").subscribe(
-                      "status.change",
-                      function(response) {
-                        require("sdk.Auth").unsubscribe("status.change", sub);
-                        cb(response);
-                      }
-                    );
-                    window.addEventListener("focus", function(e) {
-                      if (
-                        require("sdk.Runtime").getLoginStatus() !== "connected"
-                      ) {
-                        require("sdk.Auth").getLoginStatus(null, true);
-                      }
-                    });
-                  }
                 },
 
                 logout: function logout(cb) {
@@ -18096,7 +18083,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1000956584","namespace":"FB","message":"' +
+        '","revision":"1000965581","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
