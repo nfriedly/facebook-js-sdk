@@ -1,4 +1,4 @@
-/*1563812972,,JIT Construction: v1000965581,en_US*/
+/*1564018173,,JIT Construction: v1000979733,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3723,7 +3723,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1000965581",
+            revision: "1000979733",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -11267,7 +11267,11 @@ try {
                 new (require("ObservableMixin"))(),
                 {
                   setAccessToken: function setAccessToken(access_token) {
-                    if (accessToken && accessToken !== access_token) {
+                    if (
+                      accessToken &&
+                      access_token &&
+                      accessToken !== access_token
+                    ) {
                       logger.error(
                         "You are overriding current access token, that means some other " +
                           "app is expecting different access token and you will probably " +
@@ -18083,7 +18087,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1000965581","namespace":"FB","message":"' +
+        '","revision":"1000979733","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
