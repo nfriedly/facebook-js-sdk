@@ -1,4 +1,4 @@
-/*1564018173,,JIT Construction: v1000979733,en_US*/
+/*1564450765,,JIT Construction: v1000997007,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3723,7 +3723,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1000979733",
+            revision: "1000997007",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -3750,7 +3750,7 @@ try {
           });
           __d("JSSDKXDConfig", [], {
             XdUrl: "/connect/xd_arbiter.php?version=44",
-            XdBundleUrl: "/connect/xd_arbiter/r/U6udqFHMq6g.js?version=44",
+            XdBundleUrl: "/connect/xd_arbiter/r/1ATxI-S0RYN.js?version=44",
             useCdn: true
           });
           __d("JSSDKCssConfig", [], {
@@ -7101,32 +7101,30 @@ try {
                               return;
                             }
 
-                            if (typeof message !== "string") {
+                            if (typeof message === "object") {
                               if (
-                                event.data.xdArbiterSyn ||
-                                event.data.xdArbiterHandleMessage ||
-                                event.data.xdArbiterRegister
+                                event.data.xdArbiterSyn != null ||
+                                event.data.xdArbiterHandleMessage != null ||
+                                event.data.xdArbiterRegister != null
                               ) {
                                 require("Log").error(
                                   "XDM at " +
                                     (window.name != null && window.name !== ""
                                       ? window.name
                                       : window == top
-                                      ? "_top"
+                                      ? "top"
                                       : "[no name]") +
-                                    " ignoring " +
-                                    (event.data.xdArbiterHandleMessage
-                                      ? "handleMessage"
-                                      : "register") +
-                                    " data intended for XdArbiter. " +
+                                    " ignoring message intended for XdArbiter. " +
                                     ES("JSON", "stringify", false, message)
                                 );
 
                                 return;
                               }
 
-                              if (event.data.xdArbiterAck) {
-                                require("Log").debug("ignoring xdArbiterAck");
+                              if (event.data.xdArbiterAck != null) {
+                                require("Log").debug(
+                                  "ignoring xdArbiterAck intende for initXdArbiter"
+                                );
                                 return;
                               }
 
@@ -7146,7 +7144,10 @@ try {
                               origin
                             );
 
-                            if (message.substring(0, prefix.length) == prefix) {
+                            if (
+                              typeof message === "string" &&
+                              message.substring(0, prefix.length) == prefix
+                            ) {
                               message = message.substring(prefix.length);
                             }
                             config.onMessage(message, origin);
@@ -8086,7 +8087,10 @@ try {
                       message.logged_in === "true"
                     );
 
-                    if (message.registered) {
+                    if (
+                      typeof message.registered === "string" &&
+                      message.registered != ""
+                    ) {
                       onRegister(message.registered);
                       facebookQueue = proxyQueue.merge(facebookQueue, false);
                     }
@@ -8097,11 +8101,19 @@ try {
                     );
 
                     proxyQueue.start(function(message) {
-                      if (message != null && typeof message === "object") {
-                        message = require("QueryString").encode(message);
+                      if (message == null) {
+                        require("Log").warn(
+                          "Discarding null message from %s to %s",
+                          senderOrigin,
+                          channel + "_" + protocol
+                        );
+
+                        return;
                       }
                       xdm.send(
-                        message,
+                        typeof message === "object"
+                          ? require("QueryString").encode(message)
+                          : message,
                         senderOrigin,
                         targetProxyFrame.contentWindow,
                         channel + "_" + protocol
@@ -8137,7 +8149,11 @@ try {
                     break;
                 }
 
-                if (message.data) {
+                if (
+                  message.data != null &&
+                  (typeof message.data === "object" ||
+                    typeof message.data === "string")
+                ) {
                   onMessage(message.data, senderOrigin);
                 }
               }
@@ -8177,7 +8193,10 @@ try {
 
                 if (senderOrigin == null) {
                   if (messageObj.xd_sig === proxySecret) {
-                    senderOrigin = messageObj.xd_origin;
+                    senderOrigin =
+                      typeof messageObj.xd_origin === "string"
+                        ? messageObj.xd_origin
+                        : "";
                   }
                 }
 
@@ -8186,7 +8205,7 @@ try {
                   return;
                 }
 
-                if (messageObj.cb) {
+                if (typeof messageObj.cb === "string") {
                   var cb = XD._callbacks[messageObj.cb];
                   if (!XD._forever[messageObj.cb]) {
                     delete XD._callbacks[messageObj.cb];
@@ -18087,7 +18106,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1000979733","namespace":"FB","message":"' +
+        '","revision":"1000997007","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
