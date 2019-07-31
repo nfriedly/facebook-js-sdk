@@ -1,4 +1,4 @@
-/*1564610948,,JIT Construction: v1001005751,en_US*/
+/*1564617559,,JIT Construction: v1001006261,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3738,7 +3738,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001005751",
+            revision: "1001006261",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -3946,8 +3946,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1001005751,
-            client_revision: 1001005751,
+            server_revision: 1001006261,
+            client_revision: 1001006261,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3958,10 +3958,10 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6719952853098868162-0",
-            vip: "31.13.66.19"
+            hsi: "6719981247211311346-0",
+            vip: "31.13.71.7"
           });
-          __d("ServerNonce", [], { ServerNonce: "tV8HJ8Gkxpfk93srwY_Gfb" });
+          __d("ServerNonce", [], { ServerNonce: "g3MR1iDVT6Oykskahp-b6t" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true
@@ -22594,7 +22594,7 @@ try {
           );
           __d(
             "JSONPRequest",
-            ["DOMWrapper", "GlobalCallback", "QueryString"],
+            ["requireDeferred", "DOMWrapper", "GlobalCallback", "QueryString"],
             function $module_JSONPRequest(
               global,
               require,
@@ -22603,11 +22603,27 @@ try {
               module,
               exports
             ) {
+              var AsyncRequestPathTraversalTypedLoggerDeferred = require("requireDeferred")(
+                "AsyncRequestPathTraversalTypedLogger"
+              );
+
               var MAX_QUERYSTRING_LENGTH = 2000;
 
               var _ignoreMaxQuerystringLength = false;
 
               function execute(url, method, params, cb) {
+                if (
+                  ES(url, "includes", true, "/../") ||
+                  ES(url, "includes", true, "/..\\") ||
+                  ES(url, "includes", true, "\\../") ||
+                  ES(url, "includes", true, "\\..\\")
+                ) {
+                  AsyncRequestPathTraversalTypedLoggerDeferred.onReady(function(
+                    logger
+                  ) {
+                    new logger().setOffendingURI(url.toString()).log();
+                  });
+                }
                 var script = document.createElement("script");
 
                 var _callbackWrapper = function callbackWrapper(response) {
@@ -29785,7 +29801,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001005751","namespace":"FB","message":"' +
+        '","revision":"1001006261","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
