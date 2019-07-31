@@ -1,4 +1,4 @@
-/*1564606168,,JIT Construction: v1001005327,en_US*/
+/*1564610948,,JIT Construction: v1001005751,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3738,7 +3738,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001005327",
+            revision: "1001005751",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -3946,8 +3946,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1001005327,
-            client_revision: 1001005327,
+            server_revision: 1001005751,
+            client_revision: 1001005751,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3958,10 +3958,10 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6719932324022632899-0",
-            vip: "31.13.65.7"
+            hsi: "6719952853098868162-0",
+            vip: "31.13.66.19"
           });
-          __d("ServerNonce", [], { ServerNonce: "qVehbhYGFOQhBtQ98kDiC1" });
+          __d("ServerNonce", [], { ServerNonce: "tV8HJ8Gkxpfk93srwY_Gfb" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true
@@ -13697,160 +13697,6 @@ try {
             null
           );
           __d(
-            "CORSRequest",
-            [
-              "QueryString",
-              "RequestConstants",
-              "sdk.safelyParseResponse",
-              "wrapFunction"
-            ],
-            function $module_CORSRequest(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              function createCORSRequest(method, url) {
-                if (!self.XMLHttpRequest) {
-                  return null;
-                }
-                var xhr = new XMLHttpRequest();
-                var noop = function noop() {};
-                if ("withCredentials" in xhr) {
-                  xhr.open(method, url, true);
-                  xhr.setRequestHeader(
-                    "Content-type",
-                    "application/x-www-form-urlencoded"
-                  );
-                } else if (self.XDomainRequest) {
-                  xhr = new XDomainRequest();
-                  try {
-                    xhr.open(method, url);
-
-                    xhr.onprogress = xhr.ontimeout = noop;
-                  } catch (_unused) {
-                    return null;
-                  }
-                } else {
-                  return null;
-                }
-
-                var wrapper = {
-                  send: function send(data) {
-                    xhr.send(data);
-                  }
-                };
-
-                var onload = require("wrapFunction")(
-                  function() {
-                    onload = noop;
-                    if ("onload" in wrapper) {
-                      wrapper.onload(xhr);
-                    }
-                  },
-                  "entry",
-                  "XMLHttpRequest:load"
-                );
-
-                var onerror = require("wrapFunction")(
-                  function() {
-                    onerror = noop;
-                    if ("onerror" in wrapper) {
-                      wrapper.onerror(xhr);
-                    }
-                  },
-                  "entry",
-                  "XMLHttpRequest:error"
-                );
-
-                xhr.onload = function() {
-                  onload();
-                };
-
-                xhr.onerror = function() {
-                  onerror();
-                };
-
-                xhr.onreadystatechange = function() {
-                  if (xhr.readyState == 4) {
-                    if (xhr.status == 200) {
-                      onload();
-                    } else {
-                      onerror();
-                    }
-                  }
-                };
-
-                return wrapper;
-              }
-
-              function execute(url, method, params, cb) {
-                params.suppress_http_code = 1;
-                var data = require("QueryString").encode(params);
-
-                if (method != "post") {
-                  url = require("QueryString").appendToUrl(url, data);
-                  data = "";
-                }
-
-                var request = createCORSRequest(method, url);
-                if (!request) {
-                  return false;
-                }
-
-                request.onload = function(xhr) {
-                  cb(require("sdk.safelyParseResponse")(xhr.responseText, url));
-                };
-
-                request.onerror = function(xhr) {
-                  if (xhr.responseText) {
-                    cb(
-                      require("sdk.safelyParseResponse")(xhr.responseText, url)
-                    );
-                  } else {
-                    cb({
-                      error: babelHelpers["extends"](
-                        {},
-                        require("RequestConstants").PARSE_ERROR_TEMPLATE,
-                        {
-                          status: xhr.status
-                        }
-                      )
-                    });
-                  }
-                };
-                request.send(data);
-                return true;
-              }
-
-              var CORSRequest = {
-                execute: execute
-              };
-
-              module.exports = CORSRequest;
-            },
-            null
-          );
-          __d(
-            "GraphBatchConstants",
-            [],
-            function $module_GraphBatchConstants(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              module.exports = ES("Object", "freeze", false, {
-                FLUSH_DELIMITER: "\r\n"
-              });
-            },
-            null
-          );
-          __d(
             "ArbiterToken",
             ["invariant"],
             function $module_ArbiterToken(
@@ -22378,6 +22224,177 @@ try {
             null
           );
           __d(
+            "CORSRequest",
+            [
+              "requireDeferred",
+              "QueryString",
+              "RequestConstants",
+              "sdk.safelyParseResponse",
+              "wrapFunction"
+            ],
+            function $module_CORSRequest(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              var AsyncRequestPathTraversalTypedLoggerDeferred = require("requireDeferred")(
+                "AsyncRequestPathTraversalTypedLogger"
+              );
+
+              function createCORSRequest(method, url) {
+                if (!self.XMLHttpRequest) {
+                  return null;
+                }
+                var xhr = new XMLHttpRequest();
+                var noop = function noop() {};
+                if ("withCredentials" in xhr) {
+                  xhr.open(method, url, true);
+                  xhr.setRequestHeader(
+                    "Content-type",
+                    "application/x-www-form-urlencoded"
+                  );
+                } else if (self.XDomainRequest) {
+                  xhr = new XDomainRequest();
+                  try {
+                    xhr.open(method, url);
+
+                    xhr.onprogress = xhr.ontimeout = noop;
+                  } catch (_unused) {
+                    return null;
+                  }
+                } else {
+                  return null;
+                }
+
+                var wrapper = {
+                  send: function send(data) {
+                    xhr.send(data);
+                  }
+                };
+
+                var onload = require("wrapFunction")(
+                  function() {
+                    onload = noop;
+                    if ("onload" in wrapper) {
+                      wrapper.onload(xhr);
+                    }
+                  },
+                  "entry",
+                  "XMLHttpRequest:load"
+                );
+
+                var onerror = require("wrapFunction")(
+                  function() {
+                    onerror = noop;
+                    if ("onerror" in wrapper) {
+                      wrapper.onerror(xhr);
+                    }
+                  },
+                  "entry",
+                  "XMLHttpRequest:error"
+                );
+
+                xhr.onload = function() {
+                  onload();
+                };
+
+                xhr.onerror = function() {
+                  onerror();
+                };
+
+                xhr.onreadystatechange = function() {
+                  if (xhr.readyState == 4) {
+                    if (xhr.status == 200) {
+                      onload();
+                    } else {
+                      onerror();
+                    }
+                  }
+                };
+
+                return wrapper;
+              }
+
+              function execute(url, method, params, cb) {
+                if (
+                  ES(url, "includes", true, "/../") ||
+                  ES(url, "includes", true, "/..\\") ||
+                  ES(url, "includes", true, "\\../") ||
+                  ES(url, "includes", true, "\\..\\")
+                ) {
+                  AsyncRequestPathTraversalTypedLoggerDeferred.onReady(function(
+                    logger
+                  ) {
+                    new logger().setOffendingURI(url.toString()).log();
+                  });
+                }
+                params.suppress_http_code = 1;
+                var data = require("QueryString").encode(params);
+
+                if (method != "post") {
+                  url = require("QueryString").appendToUrl(url, data);
+                  data = "";
+                }
+
+                var request = createCORSRequest(method, url);
+                if (!request) {
+                  return false;
+                }
+
+                request.onload = function(xhr) {
+                  cb(require("sdk.safelyParseResponse")(xhr.responseText, url));
+                };
+
+                request.onerror = function(xhr) {
+                  if (xhr.responseText) {
+                    cb(
+                      require("sdk.safelyParseResponse")(xhr.responseText, url)
+                    );
+                  } else {
+                    cb({
+                      error: babelHelpers["extends"](
+                        {},
+                        require("RequestConstants").PARSE_ERROR_TEMPLATE,
+                        {
+                          status: xhr.status
+                        }
+                      )
+                    });
+                  }
+                };
+                request.send(data);
+                return true;
+              }
+
+              var CORSRequest = {
+                execute: execute
+              };
+
+              module.exports = CORSRequest;
+            },
+            null
+          );
+          __d(
+            "GraphBatchConstants",
+            [],
+            function $module_GraphBatchConstants(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              module.exports = ES("Object", "freeze", false, {
+                FLUSH_DELIMITER: "\r\n"
+              });
+            },
+            null
+          );
+          __d(
             "ChunkedRequest",
             [
               "requireDeferred",
@@ -29768,7 +29785,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001005327","namespace":"FB","message":"' +
+        '","revision":"1001005751","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
