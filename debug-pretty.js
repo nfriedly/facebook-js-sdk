@@ -1,4 +1,4 @@
-/*1564450765,,JIT Construction: v1000997007,en_US*/
+/*1564534751,,JIT Construction: v1001001846,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3723,7 +3723,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1000997007",
+            revision: "1001001846",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -8716,6 +8716,9 @@ try {
                     setLogoutState();
                     status = "unknown";
                     setAuthResponse(null, status);
+                  } else if (params && params.result) {
+                    removeLogoutState();
+                    authResponse = params.result.authResponse;
                   }
 
                   if (cb) {
@@ -13778,7 +13781,7 @@ try {
                             require("sdk.Auth").getLoginStatus(function(
                               response
                             ) {
-                              return UIServer._triggerDefault(id, response);
+                              UIServer._triggerDefault(id, response);
                             },
                             true);
                           } else {
@@ -18106,7 +18109,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1000997007","namespace":"FB","message":"' +
+        '","revision":"1001001846","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
