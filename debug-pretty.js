@@ -1,4 +1,4 @@
-/*1565658557,,JIT Construction: v1001048766,en_US*/
+/*1565726366,,JIT Construction: v1001052240,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3723,7 +3723,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001048766",
+            revision: "1001052240",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -3750,7 +3750,7 @@ try {
           });
           __d("JSSDKXDConfig", [], {
             XdUrl: "/connect/xd_arbiter.php?version=44",
-            XdBundleUrl: "/connect/xd_arbiter/r/TIAoVRVrhQL.js?version=44",
+            XdBundleUrl: "/connect/xd_arbiter/r/wcdaALpdyq1.js?version=44",
             useCdn: true
           });
           __d("JSSDKCssConfig", [], {
@@ -7124,8 +7124,16 @@ try {
 
                               if (event.data.xdArbiterAck != null) {
                                 require("Log").debug(
-                                  "ignoring xdArbiterAck intende for initXdArbiter"
+                                  "ignoring xdArbiterAck intended for initXdArbiter"
                                 );
+                                return;
+                              }
+
+                              if (event.data.xdArbiterRegisterAck != null) {
+                                require("Log").debug(
+                                  "ignoring xdArbiterRegisterAck intended for initXdArbiter"
+                                );
+
                                 return;
                               }
 
@@ -18097,7 +18105,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001048766","namespace":"FB","message":"' +
+        '","revision":"1001052240","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
