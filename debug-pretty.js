@@ -1,4 +1,4 @@
-/*1565060967,,JIT Construction: v1001023063,en_US*/
+/*1565658557,,JIT Construction: v1001048766,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3723,7 +3723,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001023063",
+            revision: "1001048766",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -16891,43 +16891,6 @@ try {
             null
           );
           __d(
-            "sdk.XFBML.CustomerChatWarning",
-            ["Log"],
-            function $module_sdk_XFBML_CustomerChatWarning(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              "use strict";
-              var CustomerChatWarning = function CustomerChatWarning(
-                elem,
-                ns,
-                tag,
-                attr
-              ) {
-                require("Log").error(
-                  "##########################\n" +
-                    "#  The CustomerChat plugin is no longer part of the main Facebook SDK.\n" +
-                    "#  To continue using it please use the correct SDK URL,\n" +
-                    "#  meaning replace sdk.js with sdk/xfbml.customerchat.js.\n" +
-                    "#  For more details see https://developers.facebook.com/docs/messenger-platform/discovery/customer-chat-plugin/sdk\n" +
-                    "##########################"
-                );
-
-                return {
-                  subscribe: function subscribe() {},
-                  process: function process() {}
-                };
-              };
-
-              module.exports = CustomerChatWarning;
-            },
-            null
-          );
-          __d(
             "safeEval",
             [],
             function $module_safeEval(
@@ -18050,15 +18013,13 @@ try {
               "PluginTags",
               "XFBML",
               "sdk.feature",
-              "sdk.Runtime",
               "sdk.XFBML.Comments",
               "sdk.XFBML.CommentsCount",
               "sdk.XFBML.LoginButton",
               "sdk.XFBML.Quote",
               "sdk.XFBML.Save",
               "sdk.XFBML.ShareButton",
-              "sdk.XFBML.Video",
-              "sdk.XFBML.CustomerChatWarning"
+              "sdk.XFBML.Video"
             ],
             function $module_legacy_fb_xfbml_plugins(
               global,
@@ -18069,7 +18030,6 @@ try {
               __DO_NOT_USE__exports
             ) {
               var customTags = {
-                customerchat: {},
                 comments: require("sdk.XFBML.Comments"),
                 comments_count: require("sdk.XFBML.CommentsCount"),
                 login_button: require("sdk.XFBML.LoginButton"),
@@ -18078,19 +18038,6 @@ try {
                 share_button: require("sdk.XFBML.ShareButton"),
                 video: require("sdk.XFBML.Video")
               };
-
-              if (
-                ES(
-                  require("sdk.Runtime").getSDKUrl(),
-                  "indexOf",
-                  true,
-                  "customerchat"
-                ) !== -1
-              ) {
-                delete customTags.customerchat;
-              } else {
-                customTags.customerchat = require("sdk.XFBML.CustomerChatWarning");
-              }
 
               var blacklist = require("sdk.feature")(
                 "plugin_tags_blacklist",
@@ -18150,7 +18097,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001023063","namespace":"FB","message":"' +
+        '","revision":"1001048766","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
