@@ -1,4 +1,4 @@
-/*1565726366,,JIT Construction: v1001052240,en_US*/
+/*1565906956,,JIT Construction: v1001064357,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3723,7 +3723,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001052240",
+            revision: "1001064357",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -8749,14 +8749,6 @@ try {
                   });
                 }
 
-                if (params.reauthorize_required_in) {
-                  authResponse = babelHelpers["extends"]({}, authResponse, {
-                    reauthorize_required_in: Number(
-                      params.reauthorize_required_in
-                    )
-                  });
-                }
-
                 if (params.data_access_expiration_time) {
                   authResponse = babelHelpers["extends"]({}, authResponse, {
                     data_access_expiration_time: Number(
@@ -9219,12 +9211,6 @@ try {
 
                     if (xhrAuthResponse.enforce_https != null) {
                       require("sdk.Runtime").setEnforceHttps(true);
-                    }
-
-                    if (xhrAuthResponse.reauthorize_required_in != null) {
-                      authResponse.reauthorize_required_in = Number(
-                        xhrAuthResponse.reauthorize_required_in
-                      );
                     }
 
                     if (xhrAuthResponse.data_access_expiration_time != null) {
@@ -18105,7 +18091,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001052240","namespace":"FB","message":"' +
+        '","revision":"1001064357","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
