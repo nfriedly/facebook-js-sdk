@@ -1,4 +1,4 @@
-/*1565906956,,JIT Construction: v1001064357,en_US*/
+/*1565916551,,JIT Construction: v1001065659,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3723,7 +3723,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001064357",
+            revision: "1001065659",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -4336,9 +4336,9 @@ try {
             null
           );
           __d(
-            "eprintf",
+            "ErrorSerializer",
             [],
-            function $module_eprintf(
+            function $module_ErrorSerializer(
               global,
               require,
               requireDynamic,
@@ -4348,41 +4348,193 @@ try {
             ) {
               "use strict";
 
-              function eprintf(errorMessage) {
-                for (
-                  var _len = arguments.length,
-                    rawArgs = new Array(_len > 1 ? _len - 1 : 0),
-                    _key = 1;
-                  _key < _len;
-                  _key++
-                ) {
-                  rawArgs[_key - 1] = arguments[_key];
-                }
-                var args = ES(rawArgs, "map", true, function(arg) {
-                  return String(arg);
-                });
-                var expectedLength = errorMessage.split("%s").length - 1;
-
-                if (expectedLength !== args.length) {
-                  return eprintf(
-                    "eprintf args number mismatch: %s",
-                    ES("JSON", "stringify", false, [errorMessage].concat(args))
-                  );
-                }
-
-                var index = 0;
-                return errorMessage.replace(/%s/g, function() {
-                  return String(args[index++]);
-                });
+              function stringify(serializableError) {
+                return (
+                  "<![EX[" +
+                  ES(
+                    "JSON",
+                    "stringify",
+                    false,
+                    toMessageWithParams(serializableError)
+                  ) +
+                  "]]>"
+                );
               }
 
-              module.exports = eprintf;
+              function parse(s) {
+                try {
+                  var matches = safeMatches(
+                    s,
+                    /^([\s\S]*)<\!\[EX\[(\[.*\])\]\]>([\s\S]*)$/
+                  );
+
+                  if (!matches) {
+                    return parseMessageWithTAAL(s);
+                  }
+                  var left = matches[0],
+                    serialized = matches[1],
+                    right = matches[2];
+                  var _JSON$parse = ES("JSON", "parse", false, serialized),
+                    messageWithTAAL = _JSON$parse[0],
+                    params = _JSON$parse.slice(1);
+
+                  var serializableError = parseMessageWithTAAL(messageWithTAAL);
+
+                  serializableError.message =
+                    left + serializableError.message + right;
+                  if (params && params.length > 0) {
+                    serializableError.params = params;
+                  }
+                  return serializableError;
+                } catch (e) {
+                  return {
+                    message: "Unable to parse error message %s because %s",
+                    params: [s, e.message]
+                  };
+                }
+              }
+
+              function toFormattedMessageNoTAAL(serializableError) {
+                var message = serializableError.message || "";
+                var params = serializableError.params || [];
+                var index = 0;
+
+                var formattedMessage = message.replace(/%s/g, function() {
+                  return index < params.length
+                    ? String(params[index++])
+                    : "NOPARAM";
+                });
+
+                if (index < params.length) {
+                  formattedMessage +=
+                    " PARAMS" +
+                    ES("JSON", "stringify", false, params.slice(index));
+                }
+                return formattedMessage;
+              }
+
+              function toFormattedMessage(serializableError) {
+                return (
+                  toFormattedMessageNoTAAL(serializableError) +
+                  toTAALSuffix(serializableError)
+                );
+              }
+
+              function toMessageWithParams(serializableError) {
+                return [
+                  serializableError.message + toTAALSuffix(serializableError)
+                ].concat(toStringParams(serializableError));
+              }
+
+              function toTAALSuffix(serializableError) {
+                var taalOpcodes = serializableError.taalOpcodes,
+                  forcedKey = serializableError.forcedKey;
+                var allOpcodes = [];
+                if (taalOpcodes) {
+                  allOpcodes.push.apply(allOpcodes, taalOpcodes);
+                }
+
+                if (forcedKey) {
+                  allOpcodes.push("4" + forcedKey.replace(/[^\d\w]/g, "_"));
+                }
+                return allOpcodes.length > 0
+                  ? " TAAL[" + allOpcodes.join(";") + "]"
+                  : "";
+              }
+
+              function toStringParams(serializableError) {
+                var _serializableError$pa;
+                return ES(
+                  (_serializableError$pa = serializableError.params) != null
+                    ? _serializableError$pa
+                    : [],
+                  "map",
+                  true,
+                  function(param) {
+                    return String(param);
+                  }
+                );
+              }
+
+              function parseMessageWithTAAL(messageWithTAAL) {
+                var _matches;
+
+                var matches = safeMatches(
+                  messageWithTAAL,
+                  /^([\s\S]*) TAAL\[(.*)\]$/
+                );
+                var _ref =
+                    (_matches = matches) != null
+                      ? _matches
+                      : [messageWithTAAL, null],
+                  message = _ref[0],
+                  taalOpcodesString = _ref[1];
+                var serializableError = { message: message };
+
+                if (taalOpcodesString) {
+                  var taalOpcodes = [];
+
+                  for (
+                    var _iterator = taalOpcodesString.split(";"),
+                      _isArray = ES("Array", "isArray", false, _iterator),
+                      _i = 0,
+                      _iterator = _isArray
+                        ? _iterator
+                        : _iterator[
+                            typeof Symbol === "function"
+                              ? Symbol.iterator
+                              : "@@iterator"
+                          ]();
+                    ;
+
+                  ) {
+                    var _ref2;
+                    if (_isArray) {
+                      if (_i >= _iterator.length) break;
+                      _ref2 = _iterator[_i++];
+                    } else {
+                      _i = _iterator.next();
+                      if (_i.done) break;
+                      _ref2 = _i.value;
+                    }
+                    var opcode = _ref2;
+                    if (opcode === "1" || opcode === "2" || opcode === "3") {
+                      taalOpcodes.push(parseInt(opcode, 10));
+                    } else if (opcode[0] === "4" && opcode.length > 1) {
+                      serializableError.forcedKey = opcode.substring(1);
+                    } else {
+                      return { message: messageWithTAAL };
+                    }
+                  }
+                  if (taalOpcodes.length > 0) {
+                    serializableError.taalOpcodes = taalOpcodes;
+                  }
+                }
+                return serializableError;
+              }
+
+              function safeMatches(s, re) {
+                if (typeof s === "string") {
+                  var matches = s.match(re);
+                  if (matches && matches.length > 0) {
+                    return matches.slice(1);
+                  }
+                }
+              }
+
+              module.exports = global.ErrorSerializer = {
+                parse: parse,
+                stringify: stringify,
+                toFormattedMessage: toFormattedMessage,
+                toFormattedMessageNoTAAL: toFormattedMessageNoTAAL,
+                toMessageWithParams: toMessageWithParams
+              };
             },
-            null
+            3
           );
           __d(
             "ex",
-            ["eprintf"],
+            ["ErrorSerializer"],
             function $module_ex(
               global,
               require,
@@ -4391,7 +4543,7 @@ try {
               module,
               exports
             ) {
-              function ex(format) {
+              function ex(message) {
                 for (
                   var _len = arguments.length,
                     rawArgs = new Array(_len > 1 ? _len - 1 : 0),
@@ -4401,33 +4553,14 @@ try {
                 ) {
                   rawArgs[_key - 1] = arguments[_key];
                 }
-                var args = ES(rawArgs, "map", true, function(arg) {
-                  return String(arg);
+                var params = ES(rawArgs, "map", true, function(p) {
+                  return String(p);
                 });
-                var expectedLength = format.split("%s").length - 1;
-                if (expectedLength !== args.length) {
-                  return ex(
-                    "ex args number mismatch: %s",
-                    ES("JSON", "stringify", false, [format].concat(args))
-                  );
-                }
-
-                if (__DEV__) {
-                  return require("eprintf").call.apply(
-                    require("eprintf"),
-                    [null, format].concat(args)
-                  );
-                } else {
-                  return (
-                    ex._prefix +
-                    ES("JSON", "stringify", false, [format].concat(args)) +
-                    ex._suffix
-                  );
-                }
+                return require("ErrorSerializer").stringify({
+                  message: message,
+                  params: params
+                });
               }
-
-              ex._prefix = "<![EX[";
-              ex._suffix = "]]>";
 
               module.exports = ex;
             },
@@ -18091,7 +18224,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001064357","namespace":"FB","message":"' +
+        '","revision":"1001065659","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
