@@ -1,4 +1,4 @@
-/*1567744772,,JIT Construction: v1001143660,en_US*/
+/*1568133564,,JIT Construction: v1001155613,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -299,6 +299,13 @@ try {
                 resolved[id] = factory;
               }
             };
+
+            global.$RefreshReg$ = function() {};
+            global.$RefreshSig$ = function() {
+              return function(type) {
+                return type;
+              };
+            };
           })(this);
           /**
            * Copyright 2004-present Facebook. All Rights Reserved.
@@ -571,6 +578,7 @@ try {
               var ES5Object = {};
 
               function F() {}
+              _c = F;
 
               ES5Object.create = function(proto) {
                 if (__DEV__) {
@@ -627,6 +635,8 @@ try {
               };
 
               module.exports = ES5Object;
+              var _c;
+              $RefreshReg$(_c, "F");
             },
             null
           );
@@ -2791,8 +2801,11 @@ try {
                   "Polyfill " + type + " does not have implementation of " + rhs
                 );
               }
+              _c = ES;
 
               module.exports = ES;
+              var _c;
+              $RefreshReg$(_c, "ES");
             },
             null
           );
@@ -3724,7 +3737,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001143660",
+            revision: "1001155613",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -3751,7 +3764,7 @@ try {
           });
           __d("JSSDKXDConfig", [], {
             XdUrl: "/connect/xd_arbiter.php?version=44",
-            XdBundleUrl: "/connect/xd_arbiter/r/2NqJnyxmcf8.js?version=44",
+            XdBundleUrl: "/connect/xd_arbiter/r/GFJq4DeY-nH.js?version=44",
             useCdn: true
           });
           __d("JSSDKCssConfig", [], {
@@ -4094,6 +4107,7 @@ try {
               function ObservableMixin() {
                 this.__observableEvents = {};
               }
+              _c = ObservableMixin;
 
               ObservableMixin.prototype = {
                 inform: function inform(what) {
@@ -4153,6 +4167,8 @@ try {
               };
 
               module.exports = ObservableMixin;
+              var _c;
+              $RefreshReg$(_c, "ObservableMixin");
             },
             null
           );
@@ -4962,6 +4978,7 @@ try {
                   }
                 }
               }
+              _c = Type;
 
               function _instanceOf(constructor, which) {
                 if (which instanceof constructor) {
@@ -5081,6 +5098,8 @@ try {
               });
 
               module.exports = Type;
+              var _c;
+              $RefreshReg$(_c, "Type");
             },
             null
           );
@@ -18227,7 +18246,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001143660","namespace":"FB","message":"' +
+        '","revision":"1001155613","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
