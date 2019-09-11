@@ -1,4 +1,4 @@
-/*1568230171,,JIT Construction: v1001161511,en_US*/
+/*1568245163,,JIT Construction: v1001162967,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3737,7 +3737,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001161511",
+            revision: "1001162967",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -4006,90 +4006,6 @@ try {
               };
 
               module.exports = Log;
-            },
-            null
-          );
-          __d(
-            "OAuthControllerParameterName",
-            [],
-            function $module_OAuthControllerParameterName(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              module.exports = ES("Object", "freeze", false, {
-                IGNORE_REENTRY: "ignore_reentry",
-                ANCESTOR_ORIGINS: "ancestor_origins",
-                ANDROID_KEY: "android_key",
-                API_KEY: "api_key",
-                APP_ID: "app_id",
-                AUTH_METHOD: "auth_method",
-                AUTH_NONCE: "auth_nonce",
-                AUTH_TYPE: "auth_type",
-                ASSET_SCOPE: "asset_scope",
-                CLIENT_ID: "client_id",
-                COMPARE_STATUS: "compare_status",
-                CONTEXT: "context",
-                DEFAULT_AUDIENCE: "default_audience",
-                DISPLAY: "display",
-                DOMAIN: "domain",
-                E2E: "e2e",
-                EXTRAS: "extras",
-                FALLBACK_REDIRECT_URI: "fallback_redirect_uri",
-                FORCE_CONFIRMATION: "force_confirmation",
-                NOTIF_NONCE: "n_nonce",
-                INPUT_TOKEN: "input_token",
-                INSTALL_NONCE: "install_nonce",
-                KID_DIRECTED_SITE: "kid_directed_site",
-                LEGACY_OVERRIDE: "legacy_override",
-                LOGGER_ID: "logger_id",
-                LOGGING_TOKEN: "logging_token",
-                MBASIC_NAVIGATION: "mbasic_navigation",
-                NATIVE_LOGIN_BUTTON: "native_login_button",
-                NEXT: "next",
-                NONCE: "nonce",
-                ORIGIN: "origin",
-                ORIGINAL_REDIRECT_URI: "original_redirect_uri",
-                PERMS: "perms",
-                PRIVACYX: "privacyx",
-                REDIRECT_URI: "redirect_uri",
-                REF: "ref",
-                RESPONSE_TYPE: "response_type",
-                RETURN_FORMAT: "return_format",
-                RETURN_SCOPES: "return_scopes",
-                SCOPE: "scope",
-                SDK: "sdk",
-                SDK_VERSION: "sdk_version",
-                SEEN_SCOPES: "seen_scopes",
-                SHEET_NAME: "sheet_name",
-                SSO_DEVICE: "sso_device",
-                SSO: "sso",
-                SSO_KEY: "sso_key",
-                USER_CODE: "user_code",
-                USER_MOBILE_PHONE: "user_mobile_phone",
-                WINDOWS_STORE_ID: "windows_store_id",
-                SCOPE_OBJECTS: "scope_objects",
-                SCOPE_OBJECTS_COUNT: "scope_objects_count",
-                TOTAL_SCOPE_OBJECTS: "total_scope_objects",
-                CANCEL: "__CANCEL__",
-                SKIP: "__SKIP__",
-                ACT: "act",
-                RET: "ret",
-                ENCODED_STATE: "encoded_state",
-                STATE: "state",
-                APP_SWITCH: "app_switch",
-                FBAPP_PRES: "fbapp_pres",
-                LOCAL_CLIENT_ID: "local_client_id",
-                FB_SOURCE: "fbs",
-                WANTS_COOKIE_DATA: "wants_cookie_data",
-                AUTH_TOKEN: "auth_token",
-                RETURN_SESSION: "return_session",
-                SESSION_VERSION: "session_version",
-                TYPE: "type"
-              });
             },
             null
           );
@@ -4752,43 +4668,6 @@ try {
               };
 
               module.exports = UrlMap;
-            },
-            null
-          );
-          __d(
-            "WebOAuthStatus",
-            [],
-            function $module_WebOAuthStatus(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              module.exports = ES("Object", "freeze", false, {
-                CONNECTED: "connected",
-                NOT_AUTHORIZED: "not_authorized",
-                UNKNOWN: "unknown"
-              });
-            },
-            null
-          );
-          __d(
-            "WebOAuthStatusCORSHeaders",
-            [],
-            function $module_WebOAuthStatusCORSHeaders(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              module.exports = ES("Object", "freeze", false, {
-                AUTH_RESPONSE: "fb-ar",
-                STATUS: "fb-s"
-              });
             },
             null
           );
@@ -8627,12 +8506,9 @@ try {
             [
               "DOMWrapper",
               "Log",
-              "OAuthControllerParameterName",
               "ObservableMixin",
               "QueryString",
               "UrlMap",
-              "WebOAuthStatus",
-              "WebOAuthStatusCORSHeaders",
               "guid",
               "sdk.Cookie",
               "sdk.createIframe",
@@ -9080,23 +8956,14 @@ try {
                   require("UrlMap").resolve("www") + "/connect/ping"
                 )
                   .addQueryData(
-                    require("OAuthControllerParameterName").CLIENT_ID,
+                    "client_id",
                     require("sdk.Runtime").getClientID()
                   )
+                  .addQueryData("response_type", "token,signed_request")
+                  .addQueryData("domain", location.hostname)
+                  .addQueryData("origin", require("sdk.getContextType")())
                   .addQueryData(
-                    require("OAuthControllerParameterName").RESPONSE_TYPE,
-                    "token,signed_request"
-                  )
-                  .addQueryData(
-                    require("OAuthControllerParameterName").DOMAIN,
-                    location.hostname
-                  )
-                  .addQueryData(
-                    require("OAuthControllerParameterName").ORIGIN,
-                    require("sdk.getContextType")()
-                  )
-                  .addQueryData(
-                    require("OAuthControllerParameterName").REDIRECT_URI,
+                    "redirect_uri",
                     require("sdk.XD").handler(function(response) {
                       if (require("sdk.feature")("e2e_ping_tracking", true)) {
                         var events = {
@@ -9140,10 +9007,7 @@ try {
                       }
                     }, "parent")
                   )
-                  .addQueryData(
-                    require("OAuthControllerParameterName").SDK,
-                    "joey"
-                  );
+                  .addQueryData("sdk", "joey");
 
                 if (!!window.location.ancestorOrigins) {
                   var ancestorOrigins = window.location.ancestorOrigins;
@@ -9156,17 +9020,14 @@ try {
                     }
 
                     url.addQueryData(
-                      require("OAuthControllerParameterName").ANCESTOR_ORIGINS,
+                      "ancestor_origins",
                       ancestorOriginString.slice(0, -1)
                     );
                   }
                 }
 
                 if (token != null) {
-                  url.addQueryData(
-                    require("OAuthControllerParameterName").INPUT_TOKEN,
-                    token
-                  );
+                  url.addQueryData("input_token", token);
                 }
 
                 frame = require("sdk.createIframe")({
@@ -9186,33 +9047,18 @@ try {
                     .replace("web.", "www.") + "/x/oauth/status"
                 )
                   .addQueryData(
-                    require("OAuthControllerParameterName").CLIENT_ID,
+                    "client_id",
                     require("sdk.Runtime").getClientID()
                   )
+                  .addQueryData("input_token", token)
+                  .addQueryData("redirect_uri", window.location.href)
+                  .addQueryData("origin", require("sdk.getContextType")())
+                  .addQueryData("sdk", "joey")
                   .addQueryData(
-                    require("OAuthControllerParameterName").INPUT_TOKEN,
-                    token
-                  )
-                  .addQueryData(
-                    require("OAuthControllerParameterName").REDIRECT_URI,
-                    window.location.href
-                  )
-                  .addQueryData(
-                    require("OAuthControllerParameterName").ORIGIN,
-                    require("sdk.getContextType")()
-                  )
-                  .addQueryData(
-                    require("OAuthControllerParameterName").SDK,
-                    "joey"
-                  )
-                  .addQueryData(
-                    require("OAuthControllerParameterName").WANTS_COOKIE_DATA,
+                    "wants_cookie_data",
                     require("sdk.Runtime").getUseCookie()
                   )
-                  .addQueryData(
-                    require("OAuthControllerParameterName").COMPARE_STATUS,
-                    status
-                  );
+                  .addQueryData("compare_status", status);
                 xhr.open("GET", url.toString(), true);
                 xhr.withCredentials = true;
                 xhr.onreadystatechange = function() {
@@ -9247,27 +9093,15 @@ try {
                     .replace("web.", "www.") + "/x/oauth/status"
                 )
                   .addQueryData(
-                    require("OAuthControllerParameterName").CLIENT_ID,
+                    "client_id",
                     require("sdk.Runtime").getClientID()
                   )
+                  .addQueryData("input_token", token)
+                  .addQueryData("redirect_uri", window.location.href)
+                  .addQueryData("origin", require("sdk.getContextType")())
+                  .addQueryData("sdk", "joey")
                   .addQueryData(
-                    require("OAuthControllerParameterName").INPUT_TOKEN,
-                    token
-                  )
-                  .addQueryData(
-                    require("OAuthControllerParameterName").REDIRECT_URI,
-                    window.location.href
-                  )
-                  .addQueryData(
-                    require("OAuthControllerParameterName").ORIGIN,
-                    require("sdk.getContextType")()
-                  )
-                  .addQueryData(
-                    require("OAuthControllerParameterName").SDK,
-                    "joey"
-                  )
-                  .addQueryData(
-                    require("OAuthControllerParameterName").WANTS_COOKIE_DATA,
+                    "wants_cookie_data",
                     require("sdk.Runtime").getUseCookie()
                   );
 
@@ -9282,7 +9116,7 @@ try {
                     }
 
                     url.addQueryData(
-                      require("OAuthControllerParameterName").ANCESTOR_ORIGINS,
+                      "ancestor_origins",
                       ancestorOriginString.slice(0, -1)
                     );
                   }
@@ -9298,7 +9132,7 @@ try {
                 authResponseHeader
               ) {
                 switch (loginStatus) {
-                  case require("WebOAuthStatus").CONNECTED:
+                  case "connected":
                     var xhrAuthResponse = ES(
                       "JSON",
                       "parse",
@@ -9348,8 +9182,8 @@ try {
                       fetchLoginStatus(function() {});
                     }, CONNECTED_REVALIDATE_PERIOD);
                     break;
-                  case require("WebOAuthStatus").NOT_AUTHORIZED:
-                  case require("WebOAuthStatus").UNKNOWN:
+                  case "not_authorized":
+                  case "unknown":
                   default:
                     setAuthResponse(null, loginStatus);
                 }
@@ -9439,12 +9273,12 @@ try {
                             cb,
                             xhr.status,
                             (_xhr$getResponseHeade = xhr.getResponseHeader(
-                              require("WebOAuthStatusCORSHeaders").STATUS
+                              "fb-s"
                             )) != null
                               ? _xhr$getResponseHeade
-                              : require("WebOAuthStatus").UNKNOWN,
+                              : "unknown",
                             (_xhr$getResponseHeade2 = xhr.getResponseHeader(
-                              require("WebOAuthStatusCORSHeaders").AUTH_RESPONSE
+                              "fb-ar"
                             )) != null
                               ? _xhr$getResponseHeade2
                               : "{}"
@@ -9472,12 +9306,12 @@ try {
                           cb,
                           response.status,
                           (_response$headers$get = response.headers.get(
-                            require("WebOAuthStatusCORSHeaders").STATUS
+                            "fb-s"
                           )) != null
                             ? _response$headers$get
-                            : require("WebOAuthStatus").UNKNOWN,
+                            : "unknown",
                           (_response$headers$get2 = response.headers.get(
-                            require("WebOAuthStatusCORSHeaders").AUTH_RESPONSE
+                            "fb-ar"
                           )) != null
                             ? _response$headers$get2
                             : "{}"
@@ -9572,8 +9406,7 @@ try {
                             function() {
                               fetchLoginStatus(function() {}, forceCORS);
                             },
-                            cachedResponse.status ===
-                              require("WebOAuthStatus").CONNECTED
+                            cachedResponse.status === "connected"
                               ? CONNECTED_REVALIDATE_PERIOD
                               : DEFAULT_REVALIDATE_PERIOD
                           );
@@ -10830,26 +10663,8 @@ try {
             null
           );
           __d(
-            "GraphBatchConstants",
-            [],
-            function $module_GraphBatchConstants(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              module.exports = ES("Object", "freeze", false, {
-                FLUSH_DELIMITER: "\r\n"
-              });
-            },
-            null
-          );
-          __d(
             "ChunkedRequest",
             [
-              "GraphBatchConstants",
               "Log",
               "QueryString",
               "RequestConstants",
@@ -10870,10 +10685,10 @@ try {
 
                 function ChunkParser(delimiter) {
                   if (delimiter === void 0) {
-                    delimiter = require("GraphBatchConstants").FLUSH_DELIMITER;
+                    delimiter = "\r\n";
                   }
                   this.offset = 0;
-                  this.delimiter = require("GraphBatchConstants").FLUSH_DELIMITER;
+                  this.delimiter = "\r\n";
                   this.delimiter = delimiter;
                 }
                 var _proto = ChunkParser.prototype;
@@ -18195,7 +18010,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001161511","namespace":"FB","message":"' +
+        '","revision":"1001162967","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
