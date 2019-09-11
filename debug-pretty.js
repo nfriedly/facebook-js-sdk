@@ -1,4 +1,4 @@
-/*1568225386,,JIT Construction: v1001161151,en_US*/
+/*1568230171,,JIT Construction: v1001161511,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3737,7 +3737,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001161151",
+            revision: "1001161511",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -9461,7 +9461,7 @@ try {
                 function corsFetch() {
                   window
                     .fetch(url, {
-                      referrerPolicy: "origin",
+                      referrer: "/",
                       mode: "cors",
                       credentials: "include"
                     })
@@ -18195,7 +18195,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001161151","namespace":"FB","message":"' +
+        '","revision":"1001161511","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
