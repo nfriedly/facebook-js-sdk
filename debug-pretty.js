@@ -1,4 +1,4 @@
-/*1568153968,,JIT Construction: v1001157438,en_US*/
+/*1568225386,,JIT Construction: v1001161151,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3737,7 +3737,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001157438",
+            revision: "1001161151",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -9060,58 +9060,7 @@ try {
                   require("sdk.feature")("use_cors_oauth_status", false) ||
                   forceCORS
                 ) {
-                  if (
-                    token === null &&
-                    typeof document.requestStorageAccess === "function" &&
-                    typeof document.hasStorageAccess === "function"
-                  ) {
-                    document
-                      .hasStorageAccess()
-                      .then(function(hasAccess) {
-                        if (!hasAccess) {
-                          unknownStatus(fn);
-                          if (
-                            require("sdk.feature")("e2e_ping_tracking", true)
-                          ) {
-                            var ts = ES("Date", "now", false);
-                            require("sdk.Impressions").log(
-                              PLATFORM_E2E_TRACKING_LOG_ID,
-                              {
-                                payload: {
-                                  init: ts,
-                                  close: ts,
-                                  method: "cors"
-                                }
-                              }
-                            );
-                          }
-                        } else {
-                          Auth.getLoginStatusCORS(
-                            fn,
-                            token,
-                            currentAuthResponse
-                          );
-                        }
-                      })
-                      ["catch"](function(e) {
-                        unknownStatus(fn);
-                        if (require("sdk.feature")("e2e_ping_tracking", true)) {
-                          var ts = ES("Date", "now", false);
-                          require("sdk.Impressions").log(
-                            PLATFORM_E2E_TRACKING_LOG_ID,
-                            {
-                              payload: {
-                                init: ts,
-                                close: ts,
-                                method: "cors"
-                              }
-                            }
-                          );
-                        }
-                      });
-                  } else {
-                    Auth.getLoginStatusCORS(fn, token, currentAuthResponse);
-                  }
+                  Auth.getLoginStatusCORS(fn, token, currentAuthResponse);
                 } else {
                   Auth.getLoginStatusLegacy(fn, token, currentAuthResponse);
                 }
@@ -18246,7 +18195,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001157438","namespace":"FB","message":"' +
+        '","revision":"1001161151","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
