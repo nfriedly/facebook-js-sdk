@@ -1,4 +1,4 @@
-/*1568328572,,JIT Construction: v1001168380,en_US*/
+/*1568402960,,JIT Construction: v1001172339,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3737,7 +3737,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001168380",
+            revision: "1001172339",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -8987,20 +8987,6 @@ try {
                         frame.parentNode.removeChild(frame);
                       }
                       if (handleResponse(response)) {
-                        if (
-                          require("sdk.feature")("cors_verify_status", false) ||
-                          require("sdk.modFeatureCheck").forIDs(
-                            "cors_verify_status_for_app_ids",
-                            [Number(require("sdk.Runtime").getClientID())],
-                            false
-                          )
-                        ) {
-                          verifyLoginStatusCORS(
-                            token,
-                            require("sdk.Runtime").getLoginStatus()
-                          );
-                        }
-
                         timer = window.setTimeout(function() {
                           fetchLoginStatus(function() {});
                         }, 1200000);
@@ -9036,54 +9022,6 @@ try {
                   url: url.toString(),
                   style: { display: "none" }
                 });
-              }
-
-              function verifyLoginStatusCORS(token, status) {
-                var fetchStart = ES("Date", "now", false);
-                var xhr = new XMLHttpRequest();
-                var url = new (require("sdk.URI"))(
-                  require("UrlMap")
-                    .resolve("www")
-                    .replace("web.", "www.") + "/x/oauth/status"
-                )
-                  .addQueryData(
-                    "client_id",
-                    require("sdk.Runtime").getClientID()
-                  )
-                  .addQueryData("input_token", token)
-                  .addQueryData("redirect_uri", window.location.href)
-                  .addQueryData("origin", require("sdk.getContextType")())
-                  .addQueryData("sdk", "joey")
-                  .addQueryData(
-                    "wants_cookie_data",
-                    require("sdk.Runtime").getUseCookie()
-                  )
-                  .addQueryData("compare_status", status);
-                xhr.open("GET", url.toString(), true);
-                xhr.withCredentials = true;
-                xhr.onreadystatechange = function() {
-                  if (xhr.readyState === 4) {
-                    if (require("sdk.feature")("e2e_ping_tracking", true)) {
-                      var events = {
-                        init: fetchStart,
-                        close: ES("Date", "now", false),
-                        method: "cors"
-                      };
-
-                      require("Log").debug(
-                        "e2e: %s",
-                        ES("JSON", "stringify", false, events)
-                      );
-                      require("sdk.Impressions").log(
-                        PLATFORM_E2E_TRACKING_LOG_ID,
-                        {
-                          payload: events
-                        }
-                      );
-                    }
-                  }
-                };
-                xhr.send();
               }
 
               function getCORSTarget(token) {
@@ -18010,7 +17948,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001168380","namespace":"FB","message":"' +
+        '","revision":"1001172339","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
