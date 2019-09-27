@@ -1,4 +1,4 @@
-/*1568961552,,JIT Construction: v1001199165,en_US*/
+/*1569622152,,JIT Construction: v1001229688,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3737,7 +3737,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001199165",
+            revision: "1001229688",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -8462,47 +8462,6 @@ try {
             null
           );
           __d(
-            "sdk.modFeatureCheck",
-            ["JSSDKConfig"],
-            function $module_sdk_modFeatureCheck(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              function forIDs(name, ids, defaultValue) {
-                if (defaultValue === void 0) {
-                  defaultValue = false;
-                }
-                if (
-                  require("JSSDKConfig").features &&
-                  name in require("JSSDKConfig").features
-                ) {
-                  var values = require("JSSDKConfig").features[name];
-                  if (
-                    typeof values === "object" &&
-                    ES("Array", "isArray", false, values)
-                  ) {
-                    return ES(ids, "some", true, function(x) {
-                      return ES(values, "some", true, function(y) {
-                        return x % y === 0;
-                      });
-                    });
-                  }
-                }
-
-                return defaultValue;
-              }
-
-              module.exports = {
-                forIDs: forIDs
-              };
-            },
-            null
-          );
-          __d(
             "sdk.Auth",
             [
               "DOMWrapper",
@@ -8516,7 +8475,6 @@ try {
               "sdk.feature",
               "sdk.getContextType",
               "sdk.Impressions",
-              "sdk.modFeatureCheck",
               "sdk.Runtime",
               "sdk.Scribe",
               "sdk.SignedRequest",
@@ -17949,7 +17907,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001199165","namespace":"FB","message":"' +
+        '","revision":"1001229688","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
