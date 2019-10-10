@@ -1,4 +1,4 @@
-/*1570171753,,JIT Construction: v1001255285,en_US*/
+/*1570697952,,JIT Construction: v1001277952,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3737,7 +3737,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001255285",
+            revision: "1001277952",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -3773,7 +3773,7 @@ try {
           });
           __d("JSSDKXDConfig", [], {
             XdUrl: "/connect/xd_arbiter.php?version=44",
-            XdBundleUrl: "/connect/xd_arbiter/r/ITzjTmdhyFg.js?version=44",
+            XdBundleUrl: "/connect/xd_arbiter/r/XXrCOr8SKl6.js?version=44",
             useCdn: true
           });
           __d("JSSDKCanvasPrefetcherConfig", [], {
@@ -16965,10 +16965,19 @@ try {
               exports
             ) {
               function isNode(object) {
-                var doc = object ? object.ownerDocument || object : document;
-                var defaultView = doc.defaultView || window;
+                var _object$ownerDocument, _doc$defaultView;
+                var doc =
+                  object != null
+                    ? (_object$ownerDocument = object.ownerDocument) != null
+                      ? _object$ownerDocument
+                      : object
+                    : document;
+                var defaultView =
+                  (_doc$defaultView = doc.defaultView) != null
+                    ? _doc$defaultView
+                    : window;
                 return !!(
-                  object &&
+                  object != null &&
                   (typeof defaultView.Node === "function"
                     ? object instanceof defaultView.Node
                     : typeof object === "object" &&
@@ -17832,7 +17841,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001255285","namespace":"FB","message":"' +
+        '","revision":"1001277952","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
