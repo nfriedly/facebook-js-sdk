@@ -1,4 +1,4 @@
-/*1571981352,,JIT Construction: v1001341628,en_US*/
+/*1572324562,,JIT Construction: v1001354405,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3737,7 +3737,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001341628",
+            revision: "1001354405",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -4543,6 +4543,7 @@ try {
               exports
             ) {
               "use strict";
+              var c_Env;
 
               var printingFunction = require("ex");
               if (__DEV__) {
@@ -4603,7 +4604,8 @@ try {
                 }
 
                 var decoderLink =
-                  require("Env").show_invariant_decoder === true
+                  (c_Env || (c_Env = require("Env"))).show_invariant_decoder ===
+                  true
                     ? "visit " +
                       buildDecoderLink(number, params) +
                       " to see the full message."
@@ -5044,6 +5046,8 @@ try {
               module,
               exports
             ) {
+              var JSSDKRuntimeConfig;
+
               var ENVIRONMENTS = {
                 UNKNOWN: 0,
                 PAGETAB: 1,
@@ -5061,15 +5065,16 @@ try {
                 Initialized: false,
                 IsVersioned: false,
                 KidDirectedSite: undefined,
-                Locale: require("JSSDKRuntimeConfig").locale,
+                Locale: (JSSDKRuntimeConfig = require("JSSDKRuntimeConfig"))
+                  .locale,
                 LoggedIntoFacebook: undefined,
                 LoginStatus: undefined,
-                Revision: require("JSSDKRuntimeConfig").revision,
-                Rtl: require("JSSDKRuntimeConfig").rtl,
+                Revision: JSSDKRuntimeConfig.revision,
+                Rtl: JSSDKRuntimeConfig.rtl,
                 Scope: undefined,
-                SDKAB: require("JSSDKRuntimeConfig").sdkab,
-                SDKUrl: require("JSSDKRuntimeConfig").sdkurl,
-                SDKNS: require("JSSDKRuntimeConfig").sdkns,
+                SDKAB: JSSDKRuntimeConfig.sdkab,
+                SDKUrl: JSSDKRuntimeConfig.sdkurl,
+                SDKNS: JSSDKRuntimeConfig.sdkns,
                 UseCookie: false,
                 UseLocalStorage: true,
                 UserID: "",
@@ -6208,6 +6213,9 @@ try {
               exports,
               invariant
             ) {
+              var c_URIRFC3986;
+              var c_URISchemes;
+
               var UNSAFE_DOMAIN_PATTERN = new RegExp(
                 "[\\x00-\\x2c\\x2f\\x3b-\\x40\\x5c\\x5e\\x60\\x7b-\\x7f" +
                   "\\uFDD0-\\uFDEF\\uFFF0-\\uFFFF" +
@@ -6243,14 +6251,18 @@ try {
                 }
 
                 uriToParse = ES(uriToParse.toString(), "trim", true);
-                var components = require("URIRFC3986").parse(uriToParse) || {
+                var components = (
+                  c_URIRFC3986 || (c_URIRFC3986 = require("URIRFC3986"))
+                ).parse(uriToParse) || {
                   fragment: null,
                   scheme: null
                 };
 
                 if (
                   !shouldThrow &&
-                  !require("URISchemes").isAllowed(components.scheme)
+                  !(
+                    c_URISchemes || (c_URISchemes = require("URISchemes"))
+                  ).isAllowed(components.scheme)
                 ) {
                   return false;
                 }
@@ -6373,7 +6385,11 @@ try {
                 }
                 var _proto = URIBase.prototype;
                 _proto.setProtocol = function setProtocol(protocol) {
-                  if (!require("URISchemes").isAllowed(protocol)) {
+                  if (
+                    !(
+                      c_URISchemes || (c_URISchemes = require("URISchemes"))
+                    ).isAllowed(protocol)
+                  ) {
                     false ||
                       invariant(
                         0,
@@ -6650,6 +6666,8 @@ try {
               module,
               exports
             ) {
+              var c_URIBase;
+
               var facebookRe = /\.facebook\.com$/;
 
               var serializer = {
@@ -6674,10 +6692,12 @@ try {
                   return this.toString();
                 };
                 URI.isValidURI = function isValidURI(uri) {
-                  return require("URIBase").isValid(uri, serializer);
+                  return (
+                    c_URIBase || (c_URIBase = require("URIBase"))
+                  ).isValid(uri, serializer);
                 };
                 return URI;
-              })(require("URIBase"));
+              })(c_URIBase || (c_URIBase = require("URIBase")));
 
               module.exports = URI;
             },
@@ -9627,6 +9647,8 @@ try {
               module,
               exports
             ) {
+              var ApiClient;
+
               var shouldLogResponseError = require("sdk.feature")(
                 "should_log_response_error",
                 false
@@ -9647,11 +9669,11 @@ try {
                 require("ApiClient").setAccessToken(value);
               });
 
-              require("ApiClient").setDefaultParams({
+              (ApiClient = require("ApiClient")).setDefaultParams({
                 sdk: "joey"
               });
 
-              require("ApiClient").subscribe("request.complete", function(
+              ApiClient.subscribe("request.complete", function(
                 endpoint,
                 method,
                 params,
@@ -9681,7 +9703,7 @@ try {
                 }
               });
 
-              require("ApiClient").subscribe("request.complete", function(
+              ApiClient.subscribe("request.complete", function(
                 endpoint,
                 method,
                 params,
@@ -9697,7 +9719,7 @@ try {
                 }
               });
 
-              require("ApiClient").subscribe("request.error", function(
+              ApiClient.subscribe("request.error", function(
                 endpoint,
                 method,
                 params,
@@ -13847,6 +13869,9 @@ try {
               __DO_NOT_USE__module,
               __DO_NOT_USE__exports
             ) {
+              var sdkAuth;
+              var sdkEvent;
+
               require("FB").provide("", {
                 getLoginStatus: function getLoginStatus() {
                   require("sdk.warnInsecure")("getLoginStatus");
@@ -13913,49 +13938,37 @@ try {
                 }
               });
 
-              require("sdk.Auth").subscribe(
+              (sdkAuth = require("sdk.Auth")).subscribe(
                 "logout",
                 ES(
-                  require("sdk.Event").fire,
+                  (sdkEvent = require("sdk.Event")).fire,
                   "bind",
                   true,
-                  require("sdk.Event"),
+                  sdkEvent,
                   "auth.logout"
                 )
               );
-              require("sdk.Auth").subscribe(
+              sdkAuth.subscribe(
                 "login",
-                ES(
-                  require("sdk.Event").fire,
-                  "bind",
-                  true,
-                  require("sdk.Event"),
-                  "auth.login"
-                )
+                ES(sdkEvent.fire, "bind", true, sdkEvent, "auth.login")
               );
-              require("sdk.Auth").subscribe(
+              sdkAuth.subscribe(
                 "authresponse.change",
                 ES(
-                  require("sdk.Event").fire,
+                  sdkEvent.fire,
                   "bind",
                   true,
-                  require("sdk.Event"),
+                  sdkEvent,
                   "auth.authResponseChange"
                 )
               );
 
-              require("sdk.Auth").subscribe(
+              sdkAuth.subscribe(
                 "status.change",
-                ES(
-                  require("sdk.Event").fire,
-                  "bind",
-                  true,
-                  require("sdk.Event"),
-                  "auth.statusChange"
-                )
+                ES(sdkEvent.fire, "bind", true, sdkEvent, "auth.statusChange")
               );
 
-              require("sdk.Event").subscribe("init:post", function(options) {
+              sdkEvent.subscribe("init:post", function(options) {
                 if (options.status) {
                   require("sdk.Auth").getLoginStatus();
                 }
@@ -15325,23 +15338,27 @@ try {
               __DO_NOT_USE__exports
             ) {
               "use strict";
+              var sdkEvent;
 
-              require("sdk.Event").subscribe("init:post", function() {
-                require("sdk.Time").log("init");
-              });
+              (sdkEvent = require("sdk.Event")).subscribe(
+                "init:post",
+                function() {
+                  require("sdk.Time").log("init");
+                }
+              );
 
-              require("sdk.Event").subscribe("init:asyncstart", function() {
+              sdkEvent.subscribe("init:asyncstart", function() {
                 require("sdk.Time").log("asyncstart");
               });
 
-              require("sdk.Event").subscribe(
+              sdkEvent.subscribe(
                 "iframeplugin:create",
                 require("runOnce")(function() {
                   return require("sdk.Time").log("pluginframe");
                 })
               );
 
-              require("sdk.Event").subscribe(
+              sdkEvent.subscribe(
                 "iframeplugin:onload",
                 require("runOnce")(function() {
                   return require("sdk.Time").log("ttfp");
@@ -15612,6 +15629,8 @@ try {
               __DO_NOT_USE__module,
               __DO_NOT_USE__exports
             ) {
+              var sdkEvent;
+
               require("FB").provide("XFBML", {
                 parse: function parse(dom) {
                   require("Assert").maybeXfbml(dom, "Invalid argument");
@@ -15626,25 +15645,19 @@ try {
               require("XFBML").subscribe(
                 "parse",
                 ES(
-                  require("sdk.Event").fire,
+                  (sdkEvent = require("sdk.Event")).fire,
                   "bind",
                   true,
-                  require("sdk.Event"),
+                  sdkEvent,
                   "xfbml.parse"
                 )
               );
               require("XFBML").subscribe(
                 "render",
-                ES(
-                  require("sdk.Event").fire,
-                  "bind",
-                  true,
-                  require("sdk.Event"),
-                  "xfbml.render"
-                )
+                ES(sdkEvent.fire, "bind", true, sdkEvent, "xfbml.render")
               );
 
-              require("sdk.Event").subscribe("init:post", function(options) {
+              sdkEvent.subscribe("init:post", function(options) {
                 if (options.xfbml) {
                   setTimeout(
                     require("wrapFunction")(
@@ -16250,114 +16263,116 @@ try {
               module,
               exports
             ) {
+              var PluginAttrTypes;
+
               var PluginTags = {
                 comment_embed: {
-                  href: require("PluginAttrTypes").url,
-                  include_parent: require("PluginAttrTypes").bool
+                  href: (PluginAttrTypes = require("PluginAttrTypes")).url,
+                  include_parent: PluginAttrTypes.bool
                 },
 
                 composer: {
-                  action_type: require("PluginAttrTypes").string,
-                  action_properties: require("PluginAttrTypes").string
+                  action_type: PluginAttrTypes.string,
+                  action_properties: PluginAttrTypes.string
                 },
 
                 create_event_button: {},
 
                 group: {
-                  href: require("PluginAttrTypes").url,
-                  show_social_context: require("PluginAttrTypes").bool,
-                  show_group_info: require("PluginAttrTypes").bool,
-                  show_metadata: require("PluginAttrTypes").bool
+                  href: PluginAttrTypes.url,
+                  show_social_context: PluginAttrTypes.bool,
+                  show_group_info: PluginAttrTypes.bool,
+                  show_metadata: PluginAttrTypes.bool
                 },
 
                 like: {
-                  href: require("PluginAttrTypes").url,
-                  layout: require("PluginAttrTypes").string,
-                  show_faces: require("PluginAttrTypes").bool,
-                  share: require("PluginAttrTypes").bool,
-                  action: require("PluginAttrTypes").string,
+                  href: PluginAttrTypes.url,
+                  layout: PluginAttrTypes.string,
+                  show_faces: PluginAttrTypes.bool,
+                  share: PluginAttrTypes.bool,
+                  action: PluginAttrTypes.string,
 
-                  send: require("PluginAttrTypes").bool,
-                  size: require("PluginAttrTypes").string
+                  send: PluginAttrTypes.bool,
+                  size: PluginAttrTypes.string
                 },
 
                 like_box: {
-                  href: require("PluginAttrTypes").string,
-                  show_faces: require("PluginAttrTypes").bool,
-                  header: require("PluginAttrTypes").bool,
-                  stream: require("PluginAttrTypes").bool,
-                  force_wall: require("PluginAttrTypes").bool,
-                  show_border: require("PluginAttrTypes").bool,
+                  href: PluginAttrTypes.string,
+                  show_faces: PluginAttrTypes.bool,
+                  header: PluginAttrTypes.bool,
+                  stream: PluginAttrTypes.bool,
+                  force_wall: PluginAttrTypes.bool,
+                  show_border: PluginAttrTypes.bool,
 
-                  id: require("PluginAttrTypes").string,
-                  connections: require("PluginAttrTypes").string,
-                  profile_id: require("PluginAttrTypes").string,
-                  name: require("PluginAttrTypes").string
+                  id: PluginAttrTypes.string,
+                  connections: PluginAttrTypes.string,
+                  profile_id: PluginAttrTypes.string,
+                  name: PluginAttrTypes.string
                 },
 
                 page: {
-                  href: require("PluginAttrTypes").string,
-                  hide_cta: require("PluginAttrTypes").bool,
-                  hide_cover: require("PluginAttrTypes").bool,
-                  small_header: require("PluginAttrTypes").bool,
-                  adapt_container_width: require("PluginAttrTypes").bool,
-                  show_facepile: require("PluginAttrTypes").bool,
-                  show_posts: require("PluginAttrTypes").bool,
-                  tabs: require("PluginAttrTypes").string
+                  href: PluginAttrTypes.string,
+                  hide_cta: PluginAttrTypes.bool,
+                  hide_cover: PluginAttrTypes.bool,
+                  small_header: PluginAttrTypes.bool,
+                  adapt_container_width: PluginAttrTypes.bool,
+                  show_facepile: PluginAttrTypes.bool,
+                  show_posts: PluginAttrTypes.bool,
+                  tabs: PluginAttrTypes.string
                 },
 
                 messenger_checkbox: {
-                  messenger_app_id: require("PluginAttrTypes").string,
-                  page_id: require("PluginAttrTypes").string,
-                  pixel_id: require("PluginAttrTypes").string,
-                  prechecked: require("PluginAttrTypes").bool,
-                  allow_login: require("PluginAttrTypes").bool,
-                  size: require("PluginAttrTypes").string,
-                  origin: require("PluginAttrTypes").string,
-                  user_ref: require("PluginAttrTypes").string,
-                  identity_match: require("PluginAttrTypes").string,
-                  center_align: require("PluginAttrTypes").bool
+                  messenger_app_id: PluginAttrTypes.string,
+                  page_id: PluginAttrTypes.string,
+                  pixel_id: PluginAttrTypes.string,
+                  prechecked: PluginAttrTypes.bool,
+                  allow_login: PluginAttrTypes.bool,
+                  size: PluginAttrTypes.string,
+                  origin: PluginAttrTypes.string,
+                  user_ref: PluginAttrTypes.string,
+                  identity_match: PluginAttrTypes.string,
+                  center_align: PluginAttrTypes.bool
                 },
 
                 messengermessageus: {
-                  messenger_app_id: require("PluginAttrTypes").string,
-                  page_id: require("PluginAttrTypes").string,
-                  color: require("PluginAttrTypes").string,
-                  size: require("PluginAttrTypes").string
+                  messenger_app_id: PluginAttrTypes.string,
+                  page_id: PluginAttrTypes.string,
+                  color: PluginAttrTypes.string,
+                  size: PluginAttrTypes.string
                 },
 
                 send_to_messenger: {
-                  messenger_app_id: require("PluginAttrTypes").string,
-                  page_id: require("PluginAttrTypes").string,
-                  color: require("PluginAttrTypes").string,
-                  size: require("PluginAttrTypes").string,
-                  enforce_login: require("PluginAttrTypes").bool,
-                  identity_match: require("PluginAttrTypes").string,
-                  origin: require("PluginAttrTypes").string,
-                  cta_text: require("PluginAttrTypes").string
+                  messenger_app_id: PluginAttrTypes.string,
+                  page_id: PluginAttrTypes.string,
+                  color: PluginAttrTypes.string,
+                  size: PluginAttrTypes.string,
+                  enforce_login: PluginAttrTypes.bool,
+                  identity_match: PluginAttrTypes.string,
+                  origin: PluginAttrTypes.string,
+                  cta_text: PluginAttrTypes.string
                 },
 
                 page_events: {
-                  href: require("PluginAttrTypes").url
+                  href: PluginAttrTypes.url
                 },
 
                 post: {
-                  href: require("PluginAttrTypes").url,
-                  show_text: require("PluginAttrTypes").bool
+                  href: PluginAttrTypes.url,
+                  show_text: PluginAttrTypes.bool
                 },
 
                 profile_pic: {
-                  uid: require("PluginAttrTypes").string,
-                  linked: require("PluginAttrTypes").bool,
-                  href: require("PluginAttrTypes").string,
-                  size: require("PluginAttrTypes").string,
-                  facebook_logo: require("PluginAttrTypes").bool
+                  uid: PluginAttrTypes.string,
+                  linked: PluginAttrTypes.bool,
+                  href: PluginAttrTypes.string,
+                  size: PluginAttrTypes.string,
+                  facebook_logo: PluginAttrTypes.bool
                 },
 
                 send_to_mobile: {
-                  max_rows: require("PluginAttrTypes").string,
-                  show_faces: require("PluginAttrTypes").bool,
-                  size: require("PluginAttrTypes").string
+                  max_rows: PluginAttrTypes.string,
+                  show_faces: PluginAttrTypes.bool,
+                  size: PluginAttrTypes.string
                 }
               };
 
@@ -17063,6 +17078,7 @@ try {
               exports
             ) {
               "use strict";
+              var c_UnicodeUtils;
 
               var QUOTABLE_CLASS_NAME = "fb-quotable";
               var PLUGIN_WIDTH = 155;
@@ -17130,20 +17146,19 @@ try {
                   require("sdk.feature")("sharequotelimit", 500)
                 );
                 if (
-                  require("UnicodeUtils").strlen(selection) > selectionLimit
+                  (
+                    c_UnicodeUtils || (c_UnicodeUtils = require("UnicodeUtils"))
+                  ).strlen(selection) > selectionLimit
                 ) {
                   selection =
-                    require("UnicodeUtils").substr(
-                      selection,
-                      0,
-                      selectionLimit - 3
-                    ) + "...";
+                    (
+                      c_UnicodeUtils ||
+                      (c_UnicodeUtils = require("UnicodeUtils"))
+                    ).substr(selection, 0, selectionLimit - 3) + "...";
                 } else {
-                  selection = require("UnicodeUtils").substr(
-                    selection,
-                    0,
-                    selectionLimit
-                  );
+                  selection = (
+                    c_UnicodeUtils || (c_UnicodeUtils = require("UnicodeUtils"))
+                  ).substr(selection, 0, selectionLimit);
                 }
 
                 if (!forceShow && xfbmlElement) {
@@ -17841,7 +17856,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001341628","namespace":"FB","message":"' +
+        '","revision":"1001354405","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
