@@ -1,4 +1,4 @@
-/*1572914975,,JIT Construction: v1001381835,en_US*/
+/*1573256961,,JIT Construction: v1001406612,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3737,7 +3737,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001381835",
+            revision: "1001406612",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -12774,15 +12774,16 @@ try {
                       !call.params.asset_scope &&
                       !call.params.auth_type
                     ) {
-                      require("Log").error(
-                        "FB.login() called when user is already connected."
-                      );
-                      call.cb &&
-                        call.cb({
-                          status: require("sdk.Runtime").getLoginStatus(),
-                          authResponse: require("sdk.Auth").getAuthResponse()
-                        });
-
+                      if (!call.params.plugin_prepare) {
+                        require("Log").error(
+                          "FB.login() called when user is already connected."
+                        );
+                        call.cb &&
+                          call.cb({
+                            status: require("sdk.Runtime").getLoginStatus(),
+                            authResponse: require("sdk.Auth").getAuthResponse()
+                          });
+                      }
                       return;
                     }
 
@@ -12833,7 +12834,9 @@ try {
                             });
                           },
                           id,
-                          "opener",
+                          call.params.plugin_prepare
+                            ? "opener.parent"
+                            : "opener",
                           true
                         );
                       }
@@ -12843,7 +12846,9 @@ try {
                           UIServer.xdHandler(
                             cb,
                             id,
-                            "opener",
+                            call.params.plugin_prepare
+                              ? "opener.parent"
+                              : "opener",
                             require("sdk.Auth").getAuthResponse(),
                             "permissions.oauth",
                             !isReauthenticate
@@ -13010,7 +13015,7 @@ try {
                   )
                     ? ES("Object", "assign", false, {}, UIServer.Methods[name])
                     : {};
-                  var id = require("guid")();
+                  var id = params.id || require("guid")();
                   var useSSL = true;
 
                   ES("Object", "assign", false, params, {
@@ -16660,12 +16665,18 @@ try {
             [
               "IframePlugin",
               "Log",
+              "guid",
               "safeEval",
+              "sdk.Auth",
+              "sdk.Dialog",
               "sdk.ErrorHandling",
               "sdk.feature",
+              "sdk.getContextType",
+              "sdk.Impressions",
               "sdk.Runtime",
               "sdk.Scribe",
               "sdk.ui",
+              "sdk.UIServer",
               "sdk.XD"
             ],
             function $module_sdk_XFBML_LoginButton(
@@ -16676,10 +16687,6 @@ try {
               module,
               exports
             ) {
-              var httpsOnlyEnforceStarting = require("sdk.feature")(
-                "https_only_enforce_starting",
-                false
-              );
               var httpsOnlyLearnMore = require("sdk.feature")(
                 "https_only_learn_more",
                 ""
@@ -16702,12 +16709,9 @@ try {
 
               var LoginButton = require("IframePlugin").extend({
                 constructor: function constructor(elem, ns, tag, attr) {
-                  if (
-                    location.protocol !== "https:" &&
-                    httpsOnlyEnforceStarting
-                  ) {
+                  if (location.protocol !== "https:") {
                     var httpsWarning =
-                      "The Login Button plugin will soon stop working on http pages. " +
+                      "The Login Button plugin no longer works on http pages. " +
                       "Please update your site to use https for Facebook Login. %s";
 
                     require("Log").log(
@@ -16755,17 +16759,119 @@ try {
                     this.subscribe("login.status", cb);
                   }
 
+                  var dialog_open_cb = function dialog_open_cb(response) {
+                    invokeHandler(cb, null, [response]);
+                    require("sdk.XD").sendToFacebook(iframeName, {
+                      method: "loginReload",
+                      params: ES("JSON", "stringify", false, response)
+                    });
+                  };
+
                   this.subscribe("xd.login_button_dialog_open", function(msg) {
                     require("sdk.ui")(
                       ES("JSON", "parse", false, msg.params),
-                      function(response) {
-                        invokeHandler(cb, null, [response]);
+                      dialog_open_cb
+                    );
+                  });
+
+                  this.subscribe("xd.login_button_prepare_call", function(msg) {
+                    var params = ES("JSON", "parse", false, msg.params);
+                    params.id = require("guid")();
+                    params.plugin_prepare = true;
+                    params.origin = require("sdk.getContextType")();
+                    params.domain = location.hostname;
+                    params.fallback_redirect_uri = document.location.href;
+
+                    var enableE2E = require("sdk.feature")(
+                      "e2e_tracking",
+                      true
+                    );
+                    if (enableE2E) {
+                      params.e2e = {};
+                    }
+
+                    var popup_cb = function popup_cb(response) {
+                      if (call != null) {
                         require("sdk.XD").sendToFacebook(iframeName, {
-                          method: "loginReload",
-                          params: ES("JSON", "stringify", false, response)
+                          method: "loginComplete",
+                          params: ES("JSON", "stringify", false, {
+                            frame_name: call.id,
+                            status: require("sdk.Runtime").getLoginStatus()
+                          })
                         });
                       }
+
+                      dialog_open_cb(response);
+                    };
+
+                    var call = require("sdk.UIServer").prepareCall(
+                      params,
+                      popup_cb
                     );
+                    if (call != null) {
+                      call.dims = {};
+                      call.dims.screenX = window.screenX;
+                      call.dims.screenY = window.screenY;
+                      call.dims.outerWidth = window.outerWidth;
+                      call.dims.outerHeight = window.outerHeight;
+                      call.dims.screenWidth = window.screen.width;
+                    }
+
+                    require("sdk.XD").sendToFacebook(iframeName, {
+                      method: "loginButtonStateInit",
+                      params: ES("JSON", "stringify", false, { call: call })
+                    });
+                  });
+
+                  this.subscribe("xd.login_button_click", function(msg) {
+                    var params = ES("JSON", "parse", false, msg.params);
+                    if (params.popup) {
+                      if (require("sdk.feature")("e2e_tracking", true)) {
+                        var dialog = require("sdk.Dialog").get(params.call.id);
+                        dialog.subscribe("e2e:end", function(events) {
+                          events.method = params.call.params.method;
+                          events.display = params.call.params.display;
+                          require("Log").debug(
+                            "e2e: %s",
+                            ES("JSON", "stringify", false, events)
+                          );
+
+                          require("sdk.Impressions").log(114, {
+                            payload: events
+                          });
+                        });
+                      }
+                    } else {
+                      if (
+                        require("sdk.feature")(
+                          "popup_blocker_scribe_logging",
+                          true
+                        )
+                      ) {
+                        require("sdk.Scribe").log("jssdk_error", {
+                          appId: require("sdk.Runtime").getClientID(),
+                          error: "POPUP_MAYBE_BLOCKED_NEW",
+                          extra: {
+                            call: params.call.name
+                          }
+                        });
+                      }
+                    }
+                  });
+
+                  var refreshCb = function refreshCb() {
+                    invokeHandler(cb, null, [
+                      {
+                        status: require("sdk.Runtime").getLoginStatus(),
+                        authResponse: require("sdk.Auth").getAuthResponse()
+                      }
+                    ]);
+                  };
+
+                  this.subscribe("xd.login_button_connected", refreshCb);
+
+                  this.subscribe("xd.login_button_popup_closed", function() {
+                    require("sdk.Runtime").getLoginStatus(refreshCb, true);
                   });
                 },
 
@@ -17856,7 +17962,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001381835","namespace":"FB","message":"' +
+        '","revision":"1001406612","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
