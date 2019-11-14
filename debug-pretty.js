@@ -1,4 +1,4 @@
-/*1573618754,,JIT Construction: v1001422526,en_US*/
+/*1573693753,,JIT Construction: v1001428131,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3737,7 +3737,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001422526",
+            revision: "1001428131",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -16766,7 +16766,14 @@ try {
                   this.subscribe("xd.login_button_dialog_open", function(msg) {
                     require("sdk.ui")(
                       ES("JSON", "parse", false, msg.params),
-                      dialog_open_cb
+                      function(response) {
+                        require("sdk.XD").sendToFacebook(iframeName, {
+                          method: "loginComplete",
+                          params: "{}"
+                        });
+
+                        dialog_open_cb(response);
+                      }
                     );
                   });
 
@@ -17958,7 +17965,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001422526","namespace":"FB","message":"' +
+        '","revision":"1001428131","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
