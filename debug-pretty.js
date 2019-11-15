@@ -1,4 +1,4 @@
-/*1573693753,,JIT Construction: v1001428131,en_US*/
+/*1573858161,,JIT Construction: v1001440449,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3737,7 +3737,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001428131",
+            revision: "1001440449",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -12186,8 +12186,6 @@ try {
             ) {
               var facebookQueue = new (require("Queue"))();
               var httpsProxyQueue = new (require("Queue"))();
-              var proxySecret = require("guid")();
-              var protocol = "https";
 
               var xdArbiterTier = require("JSSDKXDConfig").useCdn
                 ? "cdn"
@@ -12228,7 +12226,6 @@ try {
               var inited = false;
               var IFRAME_TITLE = "Facebook Cross Domain Communication Frame";
 
-              var pluginRegistry = {};
               var rpcQueue = new (require("Queue"))();
               require("sdk.RPC").setInQueue(rpcQueue);
 
@@ -12279,7 +12276,7 @@ try {
                         require("Log").warn(
                           "Discarding null message from %s to %s",
                           senderOrigin,
-                          channel + "_" + protocol
+                          channel + "_https"
                         );
 
                         return;
@@ -12290,7 +12287,7 @@ try {
                           : message,
                         senderOrigin,
                         targetProxyFrame.contentWindow,
-                        channel + "_" + protocol
+                        channel + "_https"
                       );
                     });
                     break;
@@ -12299,21 +12296,43 @@ try {
                     if (typeof message.name === "string") {
                       var pluginName = message.name;
                       require("Log").info(
-                        "Plugin %s ready, protocol: %s",
+                        "Plugin %s ready from %s",
                         pluginName,
-                        protocol
+                        senderOrigin
                       );
-                      pluginRegistry[pluginName] = { protocol: protocol };
-                      if (require("Queue").exists(pluginName)) {
+                      if (
+                        /\.facebook\.com$/.test(senderOrigin) &&
+                        /^https:/.test(senderOrigin)
+                      ) {
                         var queue = require("Queue").get(pluginName, {});
-                        require("Log").debug(
-                          "Enqueuing %s messages for %s in %s",
-                          queue.getLength(),
-                          pluginName,
-                          protocol + "ProxyQueue"
+                        queue.start(function(message) {
+                          if (message == null) {
+                            require("Log").warn(
+                              "Discarding null message from %s to %s on %s",
+                              senderOrigin,
+                              pluginName,
+                              origin
+                            );
+
+                            return;
+                          }
+                          window.frames[pluginName].postMessage(
+                            {
+                              xdArbiterHandleMessage: true,
+                              message: message,
+                              origin: origin
+                            },
+
+                            senderOrigin
+                          );
+                        });
+                      } else {
+                        require("Log").error(
+                          "Plugin attempted to register from non-Facebook domain %s",
+                          senderOrigin
                         );
 
-                        httpsProxyQueue.merge(queue, false);
+                        return;
                       }
                     } else {
                       require("Log").error(
@@ -12364,16 +12383,6 @@ try {
                 }
 
                 var messageObj = message;
-
-                if (senderOrigin == null) {
-                  if (messageObj.xd_sig === proxySecret) {
-                    senderOrigin =
-                      typeof messageObj.xd_origin === "string"
-                        ? messageObj.xd_origin
-                        : "";
-                  }
-                }
-
                 if (messageObj.xd_action) {
                   handleAction(messageObj, senderOrigin);
                   return;
@@ -12392,39 +12401,19 @@ try {
 
               function sendToFacebook(recipient, message) {
                 if (recipient == "facebook") {
-                  if (typeof message === "object") {
-                    message.relation = "parent.parent";
-                  }
+                  message.relation = "parent.parent";
                   facebookQueue.enqueue(message);
                 } else {
-                  if (typeof message === "object") {
-                    message.relation = 'parent.frames["' + recipient + '"]';
-                  }
-                  var regInfo = pluginRegistry[recipient];
-                  if (regInfo) {
-                    require("Log").debug(
-                      "Enqueuing message for plugin %s in %s",
-                      recipient,
-                      regInfo.protocol + "ProxyQueue"
-                    );
-
-                    httpsProxyQueue.enqueue(message);
-                  } else {
-                    require("Log").debug(
-                      "Buffering message for plugin %s",
-                      recipient
-                    );
-                    require("Queue")
-                      .get(recipient, {})
-                      .enqueue(message);
-                  }
+                  require("Queue")
+                    .get(recipient, {})
+                    .enqueue(message);
                 }
               }
 
               require("sdk.RPC")
                 .getOutQueue()
                 .start(function(message) {
-                  sendToFacebook("facebook", "FB_RPC:" + message);
+                  facebookQueue.enqueue("FB_RPC:" + message);
                 });
 
               function init(xdProxyName) {
@@ -17965,7 +17954,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001428131","namespace":"FB","message":"' +
+        '","revision":"1001440449","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
