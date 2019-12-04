@@ -1,4 +1,4 @@
-/*1574248171,,JIT Construction: v1001454413,en_US*/
+/*1575419365,,JIT Construction: v1001489394,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3737,7 +3737,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001454413",
+            revision: "1001489394",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -16692,6 +16692,51 @@ try {
                 }
               }
 
+              function prepareCall(params, iframe_name, cb) {
+                params.id = require("guid")();
+                params.plugin_prepare = true;
+                params.origin = require("sdk.getContextType")();
+                params.domain = location.hostname;
+                params.fallback_redirect_uri = document.location.href;
+
+                var enableE2E = require("sdk.feature")("e2e_tracking", true);
+                if (enableE2E) {
+                  params.e2e = {};
+                }
+
+                var popup_cb = function popup_cb(response) {
+                  if (call != null) {
+                    require("sdk.XD").sendToFacebook(iframe_name, {
+                      method: "loginComplete",
+                      params: ES("JSON", "stringify", false, {
+                        frame_name: call.id,
+                        status: require("sdk.Runtime").getLoginStatus()
+                      })
+                    });
+                  }
+
+                  cb(response);
+                };
+
+                var call = require("sdk.UIServer").prepareCall(
+                  params,
+                  popup_cb
+                );
+                if (call != null) {
+                  call.dims = {};
+                  call.dims.screenX = window.screenX;
+                  call.dims.screenY = window.screenY;
+                  call.dims.outerWidth = window.outerWidth;
+                  call.dims.outerHeight = window.outerHeight;
+                  call.dims.screenWidth = window.screen.width;
+                }
+
+                require("sdk.XD").sendToFacebook(iframe_name, {
+                  method: "loginButtonStateInit",
+                  params: ES("JSON", "stringify", false, { call: call })
+                });
+              }
+
               var LoginButton = require("IframePlugin").extend({
                 constructor: function constructor(elem, ns, tag, attr) {
                   if (location.protocol !== "https:") {
@@ -16768,50 +16813,13 @@ try {
 
                   this.subscribe("xd.login_button_prepare_call", function(msg) {
                     var params = ES("JSON", "parse", false, msg.params);
-                    params.id = require("guid")();
-                    params.plugin_prepare = true;
-                    params.origin = require("sdk.getContextType")();
-                    params.domain = location.hostname;
-                    params.fallback_redirect_uri = document.location.href;
-
-                    var enableE2E = require("sdk.feature")(
-                      "e2e_tracking",
-                      true
-                    );
-                    if (enableE2E) {
-                      params.e2e = {};
-                    }
-
-                    var popup_cb = function popup_cb(response) {
-                      if (call != null) {
-                        require("sdk.XD").sendToFacebook(iframeName, {
-                          method: "loginComplete",
-                          params: ES("JSON", "stringify", false, {
-                            frame_name: call.id,
-                            status: require("sdk.Runtime").getLoginStatus()
-                          })
-                        });
+                    prepareCall(params, iframeName, dialog_open_cb);
+                    require("sdk.Auth").subscribe("status.change", function(
+                      response
+                    ) {
+                      if (response.status !== "connected") {
+                        prepareCall(params, iframeName, dialog_open_cb);
                       }
-
-                      dialog_open_cb(response);
-                    };
-
-                    var call = require("sdk.UIServer").prepareCall(
-                      params,
-                      popup_cb
-                    );
-                    if (call != null) {
-                      call.dims = {};
-                      call.dims.screenX = window.screenX;
-                      call.dims.screenY = window.screenY;
-                      call.dims.outerWidth = window.outerWidth;
-                      call.dims.outerHeight = window.outerHeight;
-                      call.dims.screenWidth = window.screen.width;
-                    }
-
-                    require("sdk.XD").sendToFacebook(iframeName, {
-                      method: "loginButtonStateInit",
-                      params: ES("JSON", "stringify", false, { call: call })
                     });
                   });
 
@@ -17954,7 +17962,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001454413","namespace":"FB","message":"' +
+        '","revision":"1001489394","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
