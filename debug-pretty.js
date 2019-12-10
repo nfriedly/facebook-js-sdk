@@ -1,4 +1,4 @@
-/*1575924554,,JIT Construction: v1001515155,en_US*/
+/*1576018153,,JIT Construction: v1001522807,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3737,7 +3737,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001515155",
+            revision: "1001522807",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -12316,15 +12316,22 @@ try {
 
                             return;
                           }
-                          window.frames[pluginName].postMessage(
-                            {
-                              xdArbiterHandleMessage: true,
-                              message: message,
-                              origin: origin
-                            },
+                          if (window.frames[pluginName] != null) {
+                            window.frames[pluginName].postMessage(
+                              {
+                                xdArbiterHandleMessage: true,
+                                message: message,
+                                origin: origin
+                              },
 
-                            senderOrigin
-                          );
+                              senderOrigin
+                            );
+                          } else {
+                            require("Log").info(
+                              "Message discarded for plugin at window.frames[%s] which may have been removed by a new XFBML.parse() call.",
+                              pluginName
+                            );
+                          }
                         });
                       } else {
                         require("Log").error(
@@ -17969,7 +17976,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001515155","namespace":"FB","message":"' +
+        '","revision":"1001522807","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
