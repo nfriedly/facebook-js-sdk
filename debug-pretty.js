@@ -1,4 +1,4 @@
-/*1576122560,,JIT Construction: v1001531443,en_US*/
+/*1576181960,,JIT Construction: v1001534424,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3737,7 +3737,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001531443",
+            revision: "1001534424",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -11827,6 +11827,56 @@ try {
             null
           );
           __d(
+            "resolveWindow",
+            [],
+            function $module_resolveWindow(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              function resolveWindow(path) {
+                if (path == null) {
+                  return null;
+                }
+
+                var node = window;
+                var parts = path.split(".");
+
+                try {
+                  for (var i = 0; i < parts.length; i++) {
+                    var part = parts[i];
+
+                    var matches = /^frames\[[\'\"]?([a-zA-Z0-9\-_]+)[\'\"]?\]$/.exec(
+                      part
+                    );
+
+                    if (matches) {
+                      node = node.frames[matches[1]];
+                    } else if (
+                      part === "opener" ||
+                      part === "parent" ||
+                      part === "top"
+                    ) {
+                      node = node[part];
+                    } else {
+                      return null;
+                    }
+                  }
+                } catch (_unused) {
+                  return null;
+                }
+
+                return node;
+              }
+
+              module.exports = resolveWindow;
+            },
+            null
+          );
+          __d(
             "UserAgent_DEPRECATED",
             [],
             function $module_UserAgent_DEPRECATED(
@@ -12167,6 +12217,7 @@ try {
               "XDM",
               "guid",
               "isFacebookURI",
+              "resolveWindow",
               "sdk.Content",
               "sdk.createIframe",
               "sdk.Event",
@@ -12185,7 +12236,11 @@ try {
               exports
             ) {
               var facebookQueue = new (require("Queue"))();
-              var httpsProxyQueue = new (require("Queue"))();
+
+              var messageToFacebookRelation = "parent.parent";
+              var xdProxyName = null;
+
+              var facebookRe = /^https:\/\/.*facebook\.com$/;
 
               var xdArbiterTier = require("JSSDKXDConfig").useCdn
                 ? "cdn"
@@ -12249,29 +12304,22 @@ try {
 
                 switch (message.xd_action) {
                   case "proxy_ready":
-                    var proxyQueue;
-                    var targetProxyFrame;
-
-                    proxyQueue = httpsProxyQueue;
-                    targetProxyFrame = httpsProxyFrame;
                     require("sdk.Runtime").setLoggedIntoFacebook(
                       message.logged_in === "true"
                     );
-
                     if (
                       typeof message.registered === "string" &&
                       message.registered != ""
                     ) {
                       onRegister(message.registered);
-                      facebookQueue = proxyQueue.merge(facebookQueue, false);
                     }
 
                     require("Log").info(
                       "Proxy ready, starting queue containing %s messages",
-                      proxyQueue.getLength()
+                      facebookQueue.getLength()
                     );
 
-                    proxyQueue.start(function(message) {
+                    facebookQueue.start(function(message) {
                       if (message == null) {
                         require("Log").warn(
                           "Discarding null message from %s to %s",
@@ -12286,7 +12334,7 @@ try {
                           ? require("QueryString").encode(message)
                           : message,
                         senderOrigin,
-                        targetProxyFrame.contentWindow,
+                        httpsProxyFrame.contentWindow,
                         channel + "_https"
                       );
                     });
@@ -12300,10 +12348,7 @@ try {
                         pluginName,
                         senderOrigin
                       );
-                      if (
-                        /\.facebook\.com$/.test(senderOrigin) &&
-                        /^https:/.test(senderOrigin)
-                      ) {
+                      if (facebookRe.test(senderOrigin)) {
                         var queue = require("Queue").get(pluginName, {});
                         queue.start(function(message) {
                           if (message == null) {
@@ -12408,8 +12453,14 @@ try {
 
               function sendToFacebook(recipient, message) {
                 if (recipient == "facebook") {
-                  message.relation = "parent.parent";
+                  message.relation = messageToFacebookRelation;
                   facebookQueue.enqueue(message);
+                  if (
+                    !require("sdk.Runtime").isCanvasEnvironment() &&
+                    !facebookQueue.isStarted()
+                  ) {
+                    tryRegister(xdProxyName);
+                  }
                 } else {
                   require("Queue")
                     .get(recipient, {})
@@ -12423,7 +12474,145 @@ try {
                   facebookQueue.enqueue("FB_RPC:" + message);
                 });
 
-              function init(xdProxyName) {
+              function initNew(xdProxyName) {
+                if (inited) {
+                  return;
+                }
+                messageToFacebookRelation = "parent";
+
+                window.addEventListener("message", function(event) {
+                  var message = event.data;
+
+                  var senderOrigin = event.origin || "native";
+                  if (!/^(https?:\/\/|native$)/.test(senderOrigin)) {
+                    require("Log").debug(
+                      "Received message from invalid origin type: %s",
+                      senderOrigin
+                    );
+                    return;
+                  }
+                  if (!facebookRe.test(senderOrigin)) {
+                    return;
+                  }
+
+                  if (typeof message === "string") {
+                    onMessage(message, senderOrigin);
+                  } else {
+                    if (
+                      event.source == parent &&
+                      event.data.xdArbiterRegisterAck &&
+                      facebookRe.test(senderOrigin)
+                    ) {
+                      if (
+                        typeof event.data.xdArbiterRegisterAck === "string" &&
+                        event.data.xdArbiterRegisterAck !== ""
+                      ) {
+                        onRegister(event.data.xdArbiterRegisterAck);
+                      }
+                      facebookQueue.start(function(message) {
+                        var _windowRef;
+                        if (message == null) {
+                          require("Log").warn(
+                            "Discarding null message from %s to %s",
+                            origin,
+                            senderOrigin
+                          );
+
+                          return;
+                        }
+
+                        var windowRef = parent;
+                        if (
+                          typeof message === "object" &&
+                          typeof message.relation === "string"
+                        ) {
+                          windowRef = require("resolveWindow")(
+                            message.relation
+                          );
+                        }
+
+                        ((_windowRef = windowRef) != null
+                          ? _windowRef
+                          : parent
+                        ).postMessage(
+                          {
+                            xdArbiterHandleMessage: true,
+                            message: message,
+                            origin: origin
+                          },
+
+                          senderOrigin
+                        );
+                      });
+                      return;
+                    }
+                    require("Log").warn(
+                      "Received message of type %s from %s, expected a string. %s",
+                      typeof message,
+                      origin,
+                      ES("JSON", "stringify", false, message)
+                    );
+
+                    return;
+                  }
+                });
+
+                if (require("sdk.Runtime").isCanvasEnvironment()) {
+                  tryRegister(xdProxyName);
+                }
+              }
+
+              function tryRegister(xdProxyName) {
+                if (window.parent != top) {
+                  require("Log").warn(
+                    "cannot deliver messages to facebook unless window.parent is top and facebook.com."
+                  );
+
+                  return;
+                }
+
+                var timeout = require("sdk.feature")("xd_timeout", 60000);
+                var retryInterval = 200;
+                var intervalId = 0;
+                var retries = timeout / retryInterval;
+
+                var registerFunc = function registerFunc() {
+                  return parent.postMessage(
+                    {
+                      xdArbiterRegister: true,
+                      xdProxyName: xdProxyName,
+                      origin: origin
+                    },
+                    "*"
+                  );
+                };
+
+                intervalId = window.setInterval(function() {
+                  if (!facebookQueue.isStarted() && retries > 0) {
+                    retries--;
+                    require("Log").debug("resending xdArbiterRegister");
+                    registerFunc();
+                  } else {
+                    window.clearInterval(intervalId);
+                    if (retries === 0) {
+                      require("sdk.Scribe").log("jssdk_error", {
+                        appId: require("sdk.Runtime").getClientID(),
+                        error: "XD_FB_QUEUE_INITIALIZATION",
+                        extra: {
+                          message: "Failed to initialize in " + timeout + "ms"
+                        }
+                      });
+
+                      require("Log").error("xdAbiterRegisterAck not received");
+                      return;
+                    }
+                  }
+                }, retryInterval);
+
+                inited = true;
+              }
+
+              function initLegacy(xdProxyName) {
                 if (inited) {
                   return;
                 }
@@ -12484,7 +12673,9 @@ try {
 
                 onMessage: onMessage,
 
-                init: init,
+                initLegacy: initLegacy,
+
+                initNew: initNew,
 
                 sendToFacebook: sendToFacebook,
 
@@ -12529,24 +12720,33 @@ try {
               };
 
               require("sdk.Event").subscribe("init:post", function(options) {
-                init(options.xdProxyName);
-                var timeout = require("sdk.feature")("xd_timeout", false);
-                if (timeout) {
-                  window.setTimeout(function() {
-                    var initialized =
-                      httpsProxyFrame &&
-                      !!httpsProxyFrame == httpsProxyQueue.isStarted();
+                var useLegacyInit = require("sdk.feature")(
+                  "legacy_xd_init",
+                  true
+                );
+                if (useLegacyInit) {
+                  initLegacy(options.xdProxyName);
+                  var timeout = require("sdk.feature")("xd_timeout", false);
+                  if (timeout) {
+                    window.setTimeout(function() {
+                      var initialized =
+                        httpsProxyFrame &&
+                        !!httpsProxyFrame == facebookQueue.isStarted();
 
-                    if (!initialized) {
-                      require("sdk.Scribe").log("jssdk_error", {
-                        appId: require("sdk.Runtime").getClientID(),
-                        error: "XD_INITIALIZATION",
-                        extra: {
-                          message: "Failed to initialize in " + timeout + "ms"
-                        }
-                      });
-                    }
-                  }, timeout);
+                      if (!initialized) {
+                        require("sdk.Scribe").log("jssdk_error", {
+                          appId: require("sdk.Runtime").getClientID(),
+                          error: "XD_INITIALIZATION",
+                          extra: {
+                            message: "Failed to initialize in " + timeout + "ms"
+                          }
+                        });
+                      }
+                    }, timeout);
+                  }
+                } else {
+                  xdProxyName = options.xdProxyName;
+                  initNew(options.xdProxyName);
                 }
               });
 
@@ -13057,7 +13257,15 @@ try {
                     require("sdk.Runtime").getIsVersioned() &&
                     method.url.substring(0, 7) === "dialog/"
                   ) {
-                    method.url = params.version + "/" + method.url;
+                    var version =
+                      params.version || require("sdk.Runtime").getVersion();
+                    if (
+                      version != null &&
+                      version !== "" &&
+                      version !== "null"
+                    ) {
+                      method.url = version + "/" + method.url;
+                    }
                   }
 
                   if (shouldEnforceSingleDialogInstance(params)) {
@@ -18018,7 +18226,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001531443","namespace":"FB","message":"' +
+        '","revision":"1001534424","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
