@@ -1,4 +1,4 @@
-/*1576018153,,JIT Construction: v1001522807,en_US*/
+/*1576122560,,JIT Construction: v1001531443,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3737,7 +3737,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001522807",
+            revision: "1001531443",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -12623,6 +12623,7 @@ try {
               "guid",
               "insertIframe",
               "resolveURI",
+              "sdk.api",
               "sdk.Auth",
               "sdk.Content",
               "sdk.Dialog",
@@ -13346,7 +13347,8 @@ try {
                     node: node,
                     type: type,
                     fbCallID: call.id,
-                    method: call.name
+                    method: call.name,
+                    params: call.params
                   };
 
                   UIServer._loadedNodes[call.id] = node;
@@ -13555,28 +13557,68 @@ try {
                       ) &&
                       id in UIServer._defaultCb
                     ) {
-                      var node = UIServer._loadedNodes[id];
-                      if (node.type != "popup" && node.type != "native") {
-                        continue;
-                      }
-                      var win = node.node;
-
-                      try {
-                        if (win.closed) {
-                          if (node.method === "permissions.oauth") {
-                            require("sdk.Auth").getLoginStatus(function(
-                              response
-                            ) {
-                              UIServer._triggerDefault(id, response);
-                            },
-                            true);
-                          } else {
-                            UIServer._triggerDefault(id, null);
-                          }
-                        } else {
-                          found = true;
+                      var _ret = (function() {
+                        var node = UIServer._loadedNodes[id];
+                        if (node.type != "popup" && node.type != "native") {
+                          return "continue";
                         }
-                      } catch (_unused) {}
+                        var win = node.node;
+
+                        try {
+                          if (win.closed) {
+                            if (node.method === "permissions.oauth") {
+                              require("sdk.Auth").getLoginStatus(function(
+                                response
+                              ) {
+                                if (
+                                  response.status === "connected" &&
+                                  node.params != null &&
+                                  node.params.return_scopes
+                                ) {
+                                  require("sdk.api")(
+                                    "/me/permissions",
+                                    function(scopesResponse) {
+                                      if (
+                                        !scopesResponse ||
+                                        scopesResponse.error
+                                      ) {
+                                        UIServer._triggerDefault(id, response);
+                                      }
+                                      var grantedScopesString = "";
+                                      for (
+                                        var i = 0;
+                                        i < scopesResponse.data.length;
+                                        i++
+                                      ) {
+                                        if (
+                                          scopesResponse.data[i].status ===
+                                          "granted"
+                                        ) {
+                                          if (grantedScopesString !== "") {
+                                            grantedScopesString += ",";
+                                          }
+                                          grantedScopesString +=
+                                            scopesResponse.data[i].permission;
+                                        }
+                                      }
+                                      response.authResponse.grantedScopes = grantedScopesString;
+                                      UIServer._triggerDefault(id, response);
+                                    }
+                                  );
+                                } else {
+                                  UIServer._triggerDefault(id, response);
+                                }
+                              },
+                              true);
+                            } else {
+                              UIServer._triggerDefault(id, null);
+                            }
+                          } else {
+                            found = true;
+                          }
+                        } catch (_unused) {}
+                      })();
+                      if (_ret === "continue") continue;
                     }
                   }
 
@@ -17976,7 +18018,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001522807","namespace":"FB","message":"' +
+        '","revision":"1001531443","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
