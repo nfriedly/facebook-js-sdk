@@ -1,4 +1,4 @@
-/*1576181960,,JIT Construction: v1001534424,en_US*/
+/*1576220361,,JIT Construction: v1001539565,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3737,7 +3737,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001534424",
+            revision: "1001539565",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -12151,6 +12151,11 @@ try {
                   opts.allow = "encrypted-media";
                 }
 
+                if (opts.lazy) {
+                  opts.loading = "lazy";
+                }
+                delete opts.lazy;
+
                 if (
                   opts_arg.width != null &&
                   require("isNumberLike")(opts_arg.width)
@@ -13531,9 +13536,12 @@ try {
                         true
                       )
                     ) {
+                      var error = isOauth({ method: call.name })
+                        ? "POPUP_MAYBE_BLOCKED_OAUTH"
+                        : "POPUP_MAYBE_BLOCKED";
                       require("sdk.Scribe").log("jssdk_error", {
                         appId: require("sdk.Runtime").getClientID(),
-                        error: "POPUP_MAYBE_BLOCKED",
+                        error: error,
                         extra: {
                           call: call.name
                         }
@@ -15980,6 +15988,7 @@ try {
                 width: "string",
                 height: "px",
                 ref: "string",
+                lazy: "bool",
                 color_scheme: "string"
               };
 
@@ -16235,7 +16244,8 @@ try {
                       },
                       onerror: function onerror() {
                         return collapseIframe(_this._iframe);
-                      }
+                      },
+                      lazy: params.lazy
                     };
 
                     if (this.isFluid() && params.width !== "auto") {
@@ -18226,7 +18236,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001534424","namespace":"FB","message":"' +
+        '","revision":"1001539565","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
