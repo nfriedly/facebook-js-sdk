@@ -1,4 +1,4 @@
-/*1576301353,,JIT Construction: v1001545585,en_US*/
+/*1576619951,,JIT Construction: v1001552705,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3737,7 +3737,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001545585",
+            revision: "1001552705",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -12519,41 +12519,44 @@ try {
                       ) {
                         onRegister(event.data.xdArbiterRegisterAck);
                       }
-                      facebookQueue.start(function(message) {
-                        var _windowRef;
-                        if (message == null) {
-                          require("Log").warn(
-                            "Discarding null message from %s to %s",
-                            origin,
+                      if (!facebookQueue.isStarted()) {
+                        facebookQueue.start(function(message) {
+                          var _windowRef;
+                          if (message == null) {
+                            require("Log").warn(
+                              "Discarding null message from %s to %s",
+                              origin,
+                              senderOrigin
+                            );
+
+                            return;
+                          }
+
+                          var windowRef = parent;
+                          if (
+                            typeof message === "object" &&
+                            typeof message.relation === "string"
+                          ) {
+                            windowRef = require("resolveWindow")(
+                              message.relation
+                            );
+                          }
+
+                          ((_windowRef = windowRef) != null
+                            ? _windowRef
+                            : parent
+                          ).postMessage(
+                            {
+                              xdArbiterHandleMessage: true,
+                              message: message,
+                              origin: origin
+                            },
+
                             senderOrigin
                           );
+                        });
+                      }
 
-                          return;
-                        }
-
-                        var windowRef = parent;
-                        if (
-                          typeof message === "object" &&
-                          typeof message.relation === "string"
-                        ) {
-                          windowRef = require("resolveWindow")(
-                            message.relation
-                          );
-                        }
-
-                        ((_windowRef = windowRef) != null
-                          ? _windowRef
-                          : parent
-                        ).postMessage(
-                          {
-                            xdArbiterHandleMessage: true,
-                            message: message,
-                            origin: origin
-                          },
-
-                          senderOrigin
-                        );
-                      });
                       return;
                     }
                     require("Log").warn(
@@ -12573,6 +12576,7 @@ try {
               }
 
               function tryRegister(xdProxyName) {
+                var _feature;
                 if (window.parent != top) {
                   require("Log").warn(
                     "cannot deliver messages to facebook unless window.parent is top and facebook.com."
@@ -12581,7 +12585,11 @@ try {
                   return;
                 }
 
-                var timeout = require("sdk.feature")("xd_timeout", 60000);
+                var timeout =
+                  (_feature = require("sdk.feature")("xd_timeout", 60000)) !=
+                  null
+                    ? _feature
+                    : 60000;
                 var retryInterval = 200;
                 var intervalId = 0;
                 var retries = timeout / retryInterval;
@@ -18241,7 +18249,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001545585","namespace":"FB","message":"' +
+        '","revision":"1001552705","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
