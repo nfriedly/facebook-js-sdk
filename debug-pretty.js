@@ -1,4 +1,4 @@
-/*1578097164,,JIT Construction: v1001577581,en_US*/
+/*1578349165,,JIT Construction: v1001580564,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3737,7 +3737,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001577581",
+            revision: "1001580564",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -12490,6 +12490,8 @@ try {
                 if (inited) {
                   return;
                 }
+                inited = true;
+
                 messageToFacebookRelation = "parent";
 
                 window.addEventListener("message", function(event) {
@@ -12579,6 +12581,10 @@ try {
 
               function tryRegister(xdProxyName) {
                 var _feature;
+                if (!inited) {
+                  initNew();
+                }
+
                 if (window.parent != top) {
                   require("Log").warn(
                     "cannot deliver messages to facebook unless window.parent is top and facebook.com."
@@ -12628,8 +12634,6 @@ try {
                     }
                   }
                 }, retryInterval);
-
-                inited = true;
               }
 
               function initLegacy(xdProxyName) {
@@ -18251,7 +18255,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001577581","namespace":"FB","message":"' +
+        '","revision":"1001580564","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
