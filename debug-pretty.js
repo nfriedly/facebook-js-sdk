@@ -1,4 +1,4 @@
-/*1578662962,,JIT Construction: v1001592749,en_US*/
+/*1578968959,,JIT Construction: v1001600981,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3737,7 +3737,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001592749",
+            revision: "1001600981",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -3773,7 +3773,7 @@ try {
           });
           __d("JSSDKXDConfig", [], {
             XdUrl: "/connect/xd_arbiter.php?version=45",
-            XdBundleUrl: "/connect/xd_arbiter/r/ZfjH-FVPbjZ.js?version=45",
+            XdBundleUrl: "/connect/xd_arbiter/r/oSGLvsTJ3yx.js?version=45",
             useCdn: true
           });
           __d("JSSDKCanvasPrefetcherConfig", [], {
@@ -18255,7 +18255,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001592749","namespace":"FB","message":"' +
+        '","revision":"1001600981","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
