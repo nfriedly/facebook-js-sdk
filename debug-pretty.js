@@ -1,4 +1,4 @@
-/*1579550952,,JIT Construction: v1001622599,en_US*/
+/*1579651754,,JIT Construction: v1001625950,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3724,6 +3724,14 @@ try {
             global.Map = Map;
             global.Set = Set;
           })(typeof global === "undefined" ? this : global);
+          __d("JSSDKRuntimeConfig", [], {
+            locale: "en_US",
+            revision: "1001625950",
+            rtl: false,
+            sdkab: null,
+            sdkns: "FB",
+            sdkurl: "https://connect.facebook.net/en_US/all/debug.js"
+          });
           __d("UrlMapConfig", [], {
             www: "www.facebook.com",
             m: "m.facebook.com",
@@ -3733,15 +3741,9 @@ try {
             graph: "graph.facebook.com",
             an: "an.facebook.com",
             fbcdn: "static.xx.fbcdn.net",
-            cdn: "staticxx.facebook.com"
-          });
-          __d("JSSDKRuntimeConfig", [], {
-            locale: "en_US",
-            revision: "1001622599",
-            rtl: false,
-            sdkab: null,
-            sdkns: "FB",
-            sdkurl: "https://connect.facebook.net/en_US/all/debug.js"
+            cdn: "staticxx.facebook.com",
+            graph_facebook: "graph.facebook.com",
+            graph_gaming: "graph.fb.gg"
           });
           __d("JSSDKConfig", [], {
             features: {
@@ -3759,7 +3761,8 @@ try {
               log_perf: { rate: 0.001 },
               use_cors_oauth_status: { rate: 100 },
               xd_arbiter_register_new: { rate: 100 },
-              xd_arbiter_handle_message_new: { rate: 100 }
+              xd_arbiter_handle_message_new: { rate: 100 },
+              legacy_xd_init: { rate: 50 }
             }
           });
           __d("JSSDKCssConfig", [], {
@@ -4645,35 +4648,6 @@ try {
             null
           );
           __d(
-            "UrlMap",
-            ["invariant", "UrlMapConfig"],
-            function $module_UrlMap(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports,
-              invariant
-            ) {
-              var UrlMap = {
-                resolve: function resolve(key) {
-                  var protocol = "https";
-
-                  if (key in require("UrlMapConfig")) {
-                    return protocol + "://" + require("UrlMapConfig")[key];
-                  }
-                  key in require("UrlMapConfig") ||
-                    invariant(0, "Unknown key in UrlMapConfig: %s", key);
-                  return "";
-                }
-              };
-
-              module.exports = UrlMap;
-            },
-            null
-          );
-          __d(
             "ManagedError",
             [],
             function $module_ManagedError(
@@ -5062,6 +5036,7 @@ try {
                 CookieUserID: "",
                 EnforceHttps: false,
                 Environment: ENVIRONMENTS.UNKNOWN,
+                GraphDomain: "",
                 Initialized: false,
                 IsVersioned: false,
                 KidDirectedSite: undefined,
@@ -5111,6 +5086,44 @@ try {
               })();
 
               module.exports = Runtime;
+            },
+            null
+          );
+          __d(
+            "UrlMap",
+            ["invariant", "UrlMapConfig", "sdk.Runtime"],
+            function $module_UrlMap(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports,
+              invariant
+            ) {
+              var UrlMap = {
+                resolve: function resolve(key) {
+                  var protocol = "https";
+
+                  if (key === "graph_domain") {
+                    var graphDomain = require("sdk.Runtime").getGraphDomain();
+                    if (!!graphDomain) {
+                      key = "graph_".concat(graphDomain);
+                    } else {
+                      key = "graph";
+                    }
+                  }
+
+                  if (key in require("UrlMapConfig")) {
+                    return protocol + "://" + require("UrlMapConfig")[key];
+                  }
+                  key in require("UrlMapConfig") ||
+                    invariant(0, "Unknown key in UrlMapConfig: %s", key);
+                  return "";
+                }
+              };
+
+              module.exports = UrlMap;
             },
             null
           );
@@ -7056,6 +7069,14 @@ try {
                 }
               }
 
+              function setGraphDomain(graphDomain) {
+                if (!!graphDomain) {
+                  require("sdk.Runtime").setGraphDomain(graphDomain);
+                } else {
+                  require("sdk.Runtime").setGraphDomain("");
+                }
+              }
+
               function xdResponseWrapper(cb, authResponse, method) {
                 return function(params) {
                   var status;
@@ -7073,7 +7094,8 @@ try {
                       accessToken: params.access_token,
                       userID: user_id,
                       expiresIn: Number(params.expires_in),
-                      signedRequest: params.signed_request
+                      signedRequest: params.signed_request,
+                      graphDomain: params.graph_domain
                     };
 
                     if (params.asset_scopes) {
@@ -7164,6 +7186,8 @@ try {
                 if (params.base_domain != null) {
                   setBaseDomain(params.base_domain);
                 }
+
+                setGraphDomain(params.graph_domain);
 
                 if (params.enforce_https) {
                   require("sdk.Runtime").setEnforceHttps(true);
@@ -7371,7 +7395,8 @@ try {
                       accessToken: xhrAuthResponse.access_token,
                       userID: xhrAuthResponse.user_id,
                       expiresIn: Number(xhrAuthResponse.expires_in),
-                      signedRequest: xhrAuthResponse.signed_request
+                      signedRequest: xhrAuthResponse.signed_request,
+                      graphDomain: xhrAuthResponse.graph_domain
                     };
 
                     if (xhrAuthResponse.enforce_https != null) {
@@ -7387,6 +7412,8 @@ try {
                     if (xhrAuthResponse.base_domain != null) {
                       setBaseDomain(xhrAuthResponse.base_domain);
                     }
+
+                    setGraphDomain(xhrAuthResponse.graph_domain);
 
                     if (
                       require("sdk.Runtime").getUseLocalStorage() &&
@@ -9379,7 +9406,7 @@ try {
                 var url =
                   uri.getProtocol() && uri.getDomain()
                     ? uri.setQueryData({}).toString()
-                    : require("UrlMap").resolve("graph") + uri.getPath();
+                    : require("UrlMap").resolve("graph_domain") + uri.getPath();
 
                 var requestIndex = requestCounter++;
                 ApiClient.inform("request.prepare", url, params, requestIndex);
@@ -13033,7 +13060,11 @@ try {
                               call.params.response_type.split(",")
                             )
                           : {},
-                        { token: true, signed_request: true }
+                        {
+                          token: true,
+                          signed_request: true,
+                          graph_domain: true
+                        }
                       )
                     ).join(",");
 
@@ -13143,7 +13174,7 @@ try {
                       ),
 
                       origin: require("sdk.getContextType")(),
-                      response_type: "token,signed_request",
+                      response_type: "token,signed_request,graph_domain",
                       domain: location.hostname
                     });
 
@@ -18261,7 +18292,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001622599","namespace":"FB","message":"' +
+        '","revision":"1001625950","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
