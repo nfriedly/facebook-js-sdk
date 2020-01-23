@@ -1,4 +1,4 @@
-/*1579765155,,JIT Construction: v1001632639,en_US*/
+/*1579820366,,JIT Construction: v1001634876,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3726,7 +3726,7 @@ try {
           })(typeof global === "undefined" ? this : global);
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001632639",
+            revision: "1001634876",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -3762,7 +3762,7 @@ try {
               use_cors_oauth_status: { rate: 100 },
               xd_arbiter_register_new: { rate: 100 },
               xd_arbiter_handle_message_new: { rate: 100 },
-              legacy_xd_init: { rate: 0 }
+              legacy_xd_init: { rate: 100 }
             }
           });
           __d("JSSDKCssConfig", [], {
@@ -4331,6 +4331,36 @@ try {
                 }
               }
 
+              function aggregateError(error, serializableError) {
+                var _firstKey, _serializableError$pa, _caughtError$taalOpco;
+                var caughtError = parse(error.message);
+
+                var firstKey = serializableError.forcedKey;
+                var secondKey = caughtError.forcedKey;
+                var forcedKey =
+                  firstKey != null && secondKey != null
+                    ? firstKey + "_" + secondKey
+                    : (_firstKey = firstKey) != null
+                    ? _firstKey
+                    : secondKey;
+
+                return stringify({
+                  forcedKey: forcedKey,
+                  message: serializableError.message + " from %s: %s",
+                  params: [].concat(
+                    (_serializableError$pa = serializableError.params) != null
+                      ? _serializableError$pa
+                      : [],
+                    [error.name, toFormattedMessageNoTAAL(caughtError)]
+                  ),
+
+                  taalOpcodes:
+                    (_caughtError$taalOpco = caughtError.taalOpcodes) != null
+                      ? _caughtError$taalOpco
+                      : []
+                });
+              }
+
               function toFormattedMessageNoTAAL(serializableError) {
                 var message = serializableError.message || "";
                 var params = serializableError.params || [];
@@ -4380,10 +4410,10 @@ try {
               }
 
               function toStringParams(serializableError) {
-                var _serializableError$pa;
+                var _serializableError$pa2;
                 return ES(
-                  (_serializableError$pa = serializableError.params) != null
-                    ? _serializableError$pa
+                  (_serializableError$pa2 = serializableError.params) != null
+                    ? _serializableError$pa2
                     : [],
                   "map",
                   true,
@@ -4460,6 +4490,7 @@ try {
               }
 
               module.exports = global.ErrorSerializer = {
+                aggregateError: aggregateError,
                 parse: parse,
                 stringify: stringify,
                 toFormattedMessage: toFormattedMessage,
@@ -18304,7 +18335,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001632639","namespace":"FB","message":"' +
+        '","revision":"1001634876","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
