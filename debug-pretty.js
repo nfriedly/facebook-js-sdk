@@ -1,4 +1,4 @@
-/*1579820366,,JIT Construction: v1001634876,en_US*/
+/*1579830552,,JIT Construction: v1001636255,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3726,7 +3726,7 @@ try {
           })(typeof global === "undefined" ? this : global);
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001634876",
+            revision: "1001636255",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -4333,6 +4333,10 @@ try {
 
               function aggregateError(error, serializableError) {
                 var _firstKey, _serializableError$pa, _caughtError$taalOpco;
+                if (error == null) {
+                  return stringify(serializableError);
+                }
+
                 var caughtError = parse(error.message);
 
                 var firstKey = serializableError.forcedKey;
@@ -6221,6 +6225,30 @@ try {
             null
           );
           __d(
+            "isInternalFBURI",
+            [],
+            function $module_isInternalFBURI(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              var internalFBURIRegex = new RegExp(
+                "(^|\\.)internalfb\\.com$",
+                "i"
+              );
+
+              function isInternalFBURI(uri) {
+                return internalFBURIRegex.test(uri.getDomain());
+              }
+
+              module.exports = isInternalFBURI;
+            },
+            null
+          );
+          __d(
             "setHostSubdomain",
             [],
             function $module_setHostSubdomain(
@@ -6247,7 +6275,14 @@ try {
           );
           __d(
             "URIBase",
-            ["invariant", "URIRFC3986", "URISchemes", "ex", "setHostSubdomain"],
+            [
+              "invariant",
+              "URIRFC3986",
+              "URISchemes",
+              "ex",
+              "isInternalFBURI",
+              "setHostSubdomain"
+            ],
             function $module_URIBase(
               global,
               require,
@@ -6642,7 +6677,15 @@ try {
                   return this;
                 };
                 _proto.setSubdomain = function setSubdomain(subdomain) {
-                  var domain = this.qualify().getDomain();
+                  var qualified = this.qualify();
+                  var domain = qualified.getDomain();
+
+                  if (
+                    require("isInternalFBURI")(qualified) &&
+                    subdomain === "our"
+                  ) {
+                    subdomain = "www";
+                  }
                   return this.setDomain(
                     require("setHostSubdomain")(domain, subdomain)
                   );
@@ -18335,7 +18378,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001634876","namespace":"FB","message":"' +
+        '","revision":"1001636255","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
