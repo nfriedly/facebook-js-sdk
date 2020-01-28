@@ -1,4 +1,4 @@
-/*1579916365,,JIT Construction: v1001640416,en_US*/
+/*1580180356,,JIT Construction: v1001646397,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3726,7 +3726,7 @@ try {
           })(typeof global === "undefined" ? this : global);
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001640416",
+            revision: "1001646397",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -3762,7 +3762,7 @@ try {
               use_cors_oauth_status: { rate: 100 },
               xd_arbiter_register_new: { rate: 100 },
               xd_arbiter_handle_message_new: { rate: 100 },
-              legacy_xd_init: { rate: 100 }
+              legacy_xd_init: { rate: 0 }
             }
           });
           __d("JSSDKCssConfig", [], {
@@ -13243,28 +13243,8 @@ try {
                 },
 
                 "login.status": {
-                  url: "dialog/oauth",
                   transform: function transform(call) {
-                    var cb = call.cb;
-                    var id = call.id;
-                    delete call.cb;
-                    ES("Object", "assign", false, call.params, {
-                      client_id: require("sdk.Runtime").getClientID(),
-                      redirect_uri: UIServer.xdHandler(
-                        cb,
-                        id,
-                        "parent",
-                        require("sdk.Auth").getAuthResponse(),
-                        "login_status",
-                        true
-                      ),
-
-                      origin: require("sdk.getContextType")(),
-                      response_type: "token,signed_request,graph_domain",
-                      domain: location.hostname
-                    });
-
-                    return call;
+                    require("sdk.Auth").getLoginStatus(call.cb);
                   }
                 },
 
@@ -18378,7 +18358,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001640416","namespace":"FB","message":"' +
+        '","revision":"1001646397","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
