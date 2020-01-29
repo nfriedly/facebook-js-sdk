@@ -1,4 +1,4 @@
-/*1580253570,,JIT Construction: v1001650062,en_US*/
+/*1580334552,,JIT Construction: v1001654061,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3726,7 +3726,7 @@ try {
           })(typeof global === "undefined" ? this : global);
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001650062",
+            revision: "1001654061",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -7345,11 +7345,8 @@ try {
                 }
               }
 
-              function fetchLoginStatus(fn, forceCORS) {
+              function fetchLoginStatus(fn) {
                 var _redirAccessToken;
-                if (forceCORS === void 0) {
-                  forceCORS = false;
-                }
                 if (timer) {
                   window.clearTimeout(timer);
                   timer = null;
@@ -7462,12 +7459,7 @@ try {
                 return url;
               }
 
-              function onCORSSuccess(
-                cb,
-                httpStatus,
-                loginStatus,
-                authResponseHeader
-              ) {
+              function onCORSSuccess(cb, loginStatus, authResponseHeader) {
                 switch (loginStatus) {
                   case "connected":
                     var xhrAuthResponse = ES(
@@ -7611,7 +7603,6 @@ try {
                           var _xhr$getResponseHeade, _xhr$getResponseHeade2;
                           onCORSSuccess(
                             cb,
-                            xhr.status,
                             (_xhr$getResponseHeade = xhr.getResponseHeader(
                               "fb-s"
                             )) != null
@@ -7644,7 +7635,6 @@ try {
                         var _response$headers$get, _response$headers$get2;
                         onCORSSuccess(
                           cb,
-                          response.status,
                           (_response$headers$get = response.headers.get(
                             "fb-s"
                           )) != null
@@ -7660,7 +7650,7 @@ try {
                         onCORSFailure(cb, response.status, currentAuthResponse);
                       }
                     })
-                    ["catch"](function(error) {
+                    ["catch"](function(_e) {
                       return onCORSFailure(cb, 0, currentAuthResponse);
                     });
                 }
@@ -7673,12 +7663,9 @@ try {
               }
 
               var loadState;
-              function getLoginStatus(cb, force, forceCORS) {
+              function getLoginStatus(cb, force) {
                 if (force === void 0) {
                   force = false;
-                }
-                if (forceCORS === void 0) {
-                  forceCORS = false;
                 }
                 var appID = require("sdk.Runtime").getClientID();
                 if (appID == null || appID === "") {
@@ -7744,7 +7731,7 @@ try {
 
                           timer = window.setTimeout(
                             function() {
-                              fetchLoginStatus(function() {}, forceCORS);
+                              fetchLoginStatus(function() {});
                             },
                             cachedResponse.status === "connected"
                               ? CONNECTED_REVALIDATE_PERIOD
@@ -7788,7 +7775,7 @@ try {
                   Auth.clearSubscribers("FB.loginStatus");
                 };
 
-                fetchLoginStatus(lsCb, forceCORS);
+                fetchLoginStatus(lsCb);
               }
 
               ES("Object", "assign", false, Auth, {
@@ -18358,7 +18345,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001650062","namespace":"FB","message":"' +
+        '","revision":"1001654061","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
