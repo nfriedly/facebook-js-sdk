@@ -1,4 +1,4 @@
-/*1580334552,,JIT Construction: v1001654061,en_US*/
+/*1580414966,,JIT Construction: v1001658695,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3726,7 +3726,7 @@ try {
           })(typeof global === "undefined" ? this : global);
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001654061",
+            revision: "1001658695",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -7151,7 +7151,49 @@ try {
                 }
               }
 
-              function xdResponseWrapper(cb, authResponse, method) {
+              function logout(cb) {
+                var currentAuthResponse = getAuthResponse();
+                setAuthResponse(null, "unknown");
+                setLogoutState();
+
+                if (
+                  currentAuthResponse != null &&
+                  currentAuthResponse.accessToken != null
+                ) {
+                  var url = new (require("sdk.URI"))(
+                    require("UrlMap")
+                      .resolve("www")
+                      .replace("web.", "www.") + "/x/oauth/logout"
+                  ).addQueryData(
+                    "access_token",
+                    currentAuthResponse.accessToken
+                  );
+
+                  var xhr = new XMLHttpRequest();
+                  if (xhr) {
+                    xhr.open("GET", url.toString(), true);
+                    xhr.withCredentials = true;
+                    if (cb) {
+                      xhr.onreadystatechange = function() {
+                        if (xhr.readyState >= 2) {
+                          cb({
+                            authResponse: getAuthResponse(),
+                            status: require("sdk.Runtime").getLoginStatus()
+                          });
+                        }
+                      };
+                    }
+                    xhr.send();
+                  }
+                }
+                require("sdk.Scribe").log("jssdk_error", {
+                  appId: require("sdk.Runtime").getClientID(),
+                  error: "PLATFORM_AUTH_LOGOUT",
+                  extra: { args: { fblo: true } }
+                });
+              }
+
+              function xdResponseWrapper(cb, authResponse, _method) {
                 return function(params) {
                   var status;
                   if (params && params.access_token) {
@@ -7203,24 +7245,6 @@ try {
                     removeLogoutState();
                     status = "connected";
                     setAuthResponse(authResponse, status);
-                  } else if (method === "logout" || method === "login_status") {
-                    if (params && params.error === "not_authorized") {
-                      status = "not_authorized";
-                      setAuthResponse(null, status);
-                    } else {
-                      status = "unknown";
-                      setAuthResponse(null, status);
-                    }
-
-                    if (method === "logout") {
-                      setLogoutState();
-
-                      require("sdk.Scribe").log("jssdk_error", {
-                        appId: require("sdk.Runtime").getClientID(),
-                        error: "PLATFORM_AUTH_LOGOUT",
-                        extra: { args: { fblo: true } }
-                      });
-                    }
                   } else if (params && params.error === "access_denied") {
                     setLogoutState();
                     status = "unknown";
@@ -7783,6 +7807,7 @@ try {
                 getLoginStatus: getLoginStatus,
                 getLoginStatusCORS: getLoginStatusCORS,
                 fetchLoginStatus: fetchLoginStatus,
+                logout: logout,
                 setAuthResponse: setAuthResponse,
                 getAuthResponse: getAuthResponse,
                 parseSignedRequest: require("sdk.SignedRequest").parse,
@@ -13204,7 +13229,6 @@ try {
                 },
 
                 "auth.logout": {
-                  url: "logout.php",
                   transform: function transform(call) {
                     if (!require("sdk.Runtime").getClientID()) {
                       require("Log").error(
@@ -13215,16 +13239,7 @@ try {
                         "FB.logout() called without an access token."
                       );
                     } else {
-                      call.params.next = UIServer.xdHandler(
-                        call.cb,
-                        call.id,
-                        "parent",
-                        require("sdk.Auth").getAuthResponse(),
-                        "logout",
-                        true
-                      );
-
-                      return call;
+                      require("sdk.Auth").logout(call.cb);
                     }
                   }
                 },
@@ -18345,7 +18360,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001654061","namespace":"FB","message":"' +
+        '","revision":"1001658695","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
