@@ -1,4 +1,4 @@
-/*1580781565,,JIT Construction: v1001670945,en_US*/
+/*1580864959,,JIT Construction: v1001675360,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3726,7 +3726,7 @@ try {
           })(typeof global === "undefined" ? this : global);
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001670945",
+            revision: "1001675360",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -4285,6 +4285,14 @@ try {
             ) {
               "use strict";
 
+              var LEVEL_PRI = {
+                debug: 1,
+                info: 2,
+                warn: 3,
+                error: 4,
+                fatal: 5
+              };
+
               function _parse(s) {
                 try {
                   var matches = _safeMatches(
@@ -4349,9 +4357,7 @@ try {
                 if (error.messageParams) {
                   serializable.params = [].concat(error.messageParams);
                 }
-                if (error.forcedKey != null) {
-                  serializable.forcedKey = error.forcedKey;
-                }
+                serializable.forcedKey = error.forcedKey;
                 if (error.taalOpcodes) {
                   serializable.taalOpcodes = error.taalOpcodes;
                 }
@@ -4365,29 +4371,43 @@ try {
                   return;
                 }
 
-                error.messageFormat = context.message + " from %s: %s";
-                error.messageParams = toStringParams(context.params);
-                error.messageParams.push(
-                  error.name,
-                  toReadableMessage(
-                    caughtError.message,
-                    toStringParams(caughtError.params)
-                  )
-                );
+                if (context.type) {
+                  if (
+                    !error.type ||
+                    LEVEL_PRI[error.type] > LEVEL_PRI[context.type]
+                  ) {
+                    error.type = context.type;
+                  }
+                }
+
+                if (context.messageFormat != null) {
+                  var _context$messageForma, _context$messageParam;
+                  error.messageFormat =
+                    ((_context$messageForma = context.messageFormat) != null
+                      ? _context$messageForma
+                      : "") + " from %s: %s";
+                  error.messageParams =
+                    (_context$messageParam = context.messageParams) != null
+                      ? _context$messageParam
+                      : [];
+                  error.messageParams.push(
+                    error.name,
+                    toReadableMessage(
+                      caughtError.message,
+                      toStringParams(caughtError.params)
+                    )
+                  );
+                }
 
                 var firstKey = context.forcedKey;
                 var secondKey = caughtError.forcedKey;
-
                 var forcedKey =
                   firstKey != null && secondKey != null
                     ? firstKey + "_" + secondKey
                     : (_firstKey = firstKey) != null
                     ? _firstKey
                     : secondKey;
-
-                if (forcedKey != null) {
-                  error.forcedKey = forcedKey;
-                }
+                error.forcedKey = forcedKey;
 
                 if (caughtError.taalOpcodes != null) {
                   error.taalOpcodes = caughtError.taalOpcodes;
@@ -18401,7 +18421,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001670945","namespace":"FB","message":"' +
+        '","revision":"1001675360","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
