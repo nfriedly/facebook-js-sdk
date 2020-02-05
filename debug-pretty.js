@@ -1,4 +1,4 @@
-/*1580864959,,JIT Construction: v1001675360,en_US*/
+/*1580942351,,JIT Construction: v1001678619,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3726,7 +3726,7 @@ try {
           })(typeof global === "undefined" ? this : global);
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001675360",
+            revision: "1001678619",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -11715,270 +11715,6 @@ try {
             null
           );
           __d(
-            "XDM",
-            ["Log", "sdk.feature", "wrapFunction"],
-            function $module_XDM(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              var transports = {};
-              var configuration = {
-                transports: []
-              };
-
-              function findTransport(blacklist) {
-                var blacklistMap = {};
-                var i = blacklist.length;
-                var list = configuration.transports;
-
-                while (i--) {
-                  blacklistMap[blacklist[i]] = 1;
-                }
-
-                i = list.length;
-                while (i--) {
-                  var name = list[i];
-                  var transport = transports[name];
-                  if (!blacklistMap[name] && transport.isAvailable()) {
-                    return name;
-                  }
-                }
-                return null;
-              }
-
-              var XDM = {
-                register: function register(name, provider) {
-                  require("Log").debug("Registering %s as XDM provider", name);
-                  configuration.transports.push(name);
-                  transports[name] = provider;
-                },
-
-                create: function create(config) {
-                  var _config$transport;
-                  if (!config.whenReady && !config.onMessage) {
-                    var msg =
-                      "An instance without whenReady or onMessage makes no sense";
-                    require("Log").error(msg);
-                    throw new Error(msg);
-                  }
-                  if (!config.channel) {
-                    require("Log").warn(
-                      "Missing channel name, selecting at random"
-                    );
-                    config.channel =
-                      "f" +
-                      (Math.random() * (1 << 30)).toString(16).replace(".", "");
-                  }
-
-                  if (!config.whenReady) {
-                    config.whenReady = function() {};
-                  }
-                  if (!config.onMessage) {
-                    config.onMessage = function() {};
-                  }
-
-                  var name =
-                    (_config$transport = config.transport) != null
-                      ? _config$transport
-                      : findTransport(config.blacklist || []);
-                  var transport = name != null ? transports[name] : null;
-                  if (transport != null && transport.isAvailable()) {
-                    require("Log").debug("%s is available", name);
-                    transport.init(config);
-                    return name;
-                  }
-                  return null;
-                }
-              };
-
-              var facebookRe = /\.facebook\.com(\/|$)/;
-
-              function log(category, data) {
-                var captures = window.location.hostname.match(
-                  /\.(facebook\.sg|facebookcorewwwi\.onion)$/
-                );
-
-                var base = captures ? captures[1] : "facebook.com";
-                new Image().src =
-                  "https://www." +
-                  base +
-                  "/common/scribe_endpoint.php?c=" +
-                  encodeURIComponent(category) +
-                  "&m=" +
-                  encodeURIComponent(ES("JSON", "stringify", false, data));
-              }
-
-              XDM.register(
-                "postmessage",
-                (function() {
-                  var inited = false;
-
-                  return {
-                    isAvailable: function isAvailable() {
-                      return !!window.postMessage;
-                    },
-                    init: function init(config) {
-                      require("Log").debug(
-                        "init postMessage: " + config.channel
-                      );
-                      var prefix = "_FB_" + config.channel;
-                      var xdm = {
-                        send: function send(
-                          message,
-                          origin,
-                          windowRef,
-                          channel
-                        ) {
-                          if (window === windowRef) {
-                            require("Log").error(
-                              "Invalid windowref, equal to window (self)"
-                            );
-                            throw new Error();
-                          }
-                          require("Log").debug(
-                            "sending to: %s (%s)",
-                            origin,
-                            channel
-                          );
-                          var send = function send() {
-                            try {
-                              windowRef.postMessage(
-                                "_FB_" + channel + message,
-                                origin
-                              );
-                            } catch (e) {
-                              if (
-                                require("sdk.feature")(
-                                  "xdm_scribe_logging",
-                                  false
-                                )
-                              ) {
-                                log("jssdk_error", {
-                                  error: "POST_MESSAGE",
-                                  extra: {
-                                    message:
-                                      e.message + ", html/js/modules/XDM.js:231"
-                                  }
-                                });
-                              }
-                              throw e;
-                            }
-                          };
-                          send();
-                        }
-                      };
-
-                      if (inited) {
-                        config.whenReady(xdm);
-                        return;
-                      }
-
-                      window.addEventListener(
-                        "message",
-                        require("wrapFunction")(
-                          function(event) {
-                            var message = event.data;
-
-                            var origin = event.origin || "native";
-                            if (!/^(https?:\/\/|native$)/.test(origin)) {
-                              require("Log").debug(
-                                "Received message from invalid origin type: %s",
-                                origin
-                              );
-
-                              return;
-                            }
-
-                            if (
-                              origin !== "native" &&
-                              !(
-                                facebookRe.test(location.hostname) ||
-                                facebookRe.test(event.origin)
-                              )
-                            ) {
-                              return;
-                            }
-
-                            if (typeof message === "object") {
-                              if (
-                                event.data.xdArbiterSyn != null ||
-                                event.data.xdArbiterHandleMessage != null ||
-                                event.data.xdArbiterRegister != null
-                              ) {
-                                require("Log").error(
-                                  "XDM at " +
-                                    (window.name != null && window.name !== ""
-                                      ? window.name
-                                      : window == top
-                                      ? "top"
-                                      : "[no name]") +
-                                    " ignoring message intended for XdArbiter. " +
-                                    ES("JSON", "stringify", false, message)
-                                );
-
-                                return;
-                              }
-
-                              if (event.data.xdArbiterAck != null) {
-                                require("Log").debug(
-                                  "ignoring xdArbiterAck intended for initXdArbiter"
-                                );
-                                return;
-                              }
-
-                              if (event.data.xdArbiterRegisterAck != null) {
-                                require("Log").debug(
-                                  "ignoring xdArbiterRegisterAck intended for initXdArbiter"
-                                );
-
-                                return;
-                              }
-
-                              require("Log").warn(
-                                "Received message of type %s from %s, expected a string. %s",
-                                typeof message,
-                                origin,
-                                ES("JSON", "stringify", false, message)
-                              );
-
-                              return;
-                            }
-
-                            require("Log").debug(
-                              "received message %s from %s",
-                              message,
-                              origin
-                            );
-
-                            if (
-                              typeof message === "string" &&
-                              message.substring(0, prefix.length) == prefix
-                            ) {
-                              message = message.substring(prefix.length);
-                            }
-                            config.onMessage(message, origin);
-                          },
-                          "entry",
-                          "onMessage"
-                        )
-                      );
-
-                      config.whenReady(xdm);
-                      inited = true;
-                    }
-                  };
-                })()
-              );
-
-              module.exports = XDM;
-            },
-            null
-          );
-          __d(
             "isFacebookURI",
             [],
             function $module_isFacebookURI(
@@ -12071,341 +11807,6 @@ try {
             null
           );
           __d(
-            "UserAgent_DEPRECATED",
-            [],
-            function $module_UserAgent_DEPRECATED(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              var _populated = false;
-
-              var _ie, _firefox, _opera, _webkit, _chrome;
-
-              var _ie_real_version;
-
-              var _osx, _windows, _linux, _android;
-
-              var _win64;
-
-              var _iphone, _ipad, _native, _mLite;
-
-              var _mobile;
-
-              function _populate() {
-                if (_populated) {
-                  return;
-                }
-
-                _populated = true;
-
-                var uas = navigator.userAgent;
-                var agent = /(?:MSIE.(\d+\.\d+))|(?:(?:Firefox|GranParadiso|Iceweasel).(\d+\.\d+))|(?:Opera(?:.+Version.|.)(\d+\.\d+))|(?:AppleWebKit.(\d+(?:\.\d+)?))|(?:Trident\/\d+\.\d+.*rv:(\d+\.\d+))/.exec(
-                  uas
-                );
-
-                var os = /(Mac OS X)|(Windows)|(Linux)/.exec(uas);
-
-                _iphone = /\b(iPhone|iP[ao]d)/.exec(uas);
-                _ipad = /\b(iP[ao]d)/.exec(uas);
-                _android = /Android/i.exec(uas);
-                _native = /FBAN\/\w+;/i.exec(uas);
-                _mLite = /FBAN\/mLite;/i.exec(uas);
-                _mobile = /Mobile/i.exec(uas);
-
-                _win64 = !!/Win64/.exec(uas);
-
-                if (agent) {
-                  _ie = agent[1]
-                    ? parseFloat(agent[1])
-                    : agent[5]
-                    ? parseFloat(agent[5])
-                    : NaN;
-
-                  if (_ie && document && document.documentMode) {
-                    _ie = document.documentMode;
-                  }
-
-                  var trident = /(?:Trident\/(\d+.\d+))/.exec(uas);
-                  _ie_real_version = trident ? parseFloat(trident[1]) + 4 : _ie;
-
-                  _firefox = agent[2] ? parseFloat(agent[2]) : NaN;
-                  _opera = agent[3] ? parseFloat(agent[3]) : NaN;
-                  _webkit = agent[4] ? parseFloat(agent[4]) : NaN;
-                  if (_webkit) {
-                    agent = /(?:Chrome\/(\d+\.\d+))/.exec(uas);
-                    _chrome = agent && agent[1] ? parseFloat(agent[1]) : NaN;
-                  } else {
-                    _chrome = NaN;
-                  }
-                } else {
-                  _ie = _firefox = _opera = _chrome = _webkit = NaN;
-                }
-
-                if (os) {
-                  if (os[1]) {
-                    var ver = /(?:Mac OS X (\d+(?:[._]\d+)?))/.exec(uas);
-
-                    _osx = ver ? parseFloat(ver[1].replace("_", ".")) : true;
-                  } else {
-                    _osx = false;
-                  }
-                  _windows = !!os[2];
-                  _linux = !!os[3];
-                } else {
-                  _osx = _windows = _linux = false;
-                }
-              }
-
-              var UserAgent_DEPRECATED = {
-                ie: function ie() {
-                  return _populate() || _ie;
-                },
-
-                ieCompatibilityMode: function ieCompatibilityMode() {
-                  return _populate() || _ie_real_version > _ie;
-                },
-
-                ie64: function ie64() {
-                  return UserAgent_DEPRECATED.ie() && _win64;
-                },
-
-                firefox: function firefox() {
-                  return _populate() || _firefox;
-                },
-
-                opera: function opera() {
-                  return _populate() || _opera;
-                },
-
-                webkit: function webkit() {
-                  return _populate() || _webkit;
-                },
-
-                safari: function safari() {
-                  return UserAgent_DEPRECATED.webkit();
-                },
-
-                chrome: function chrome() {
-                  return _populate() || _chrome;
-                },
-
-                windows: function windows() {
-                  return _populate() || _windows;
-                },
-
-                osx: function osx() {
-                  return _populate() || _osx;
-                },
-
-                linux: function linux() {
-                  return _populate() || _linux;
-                },
-
-                iphone: function iphone() {
-                  return _populate() || _iphone;
-                },
-
-                mobile: function mobile() {
-                  return _populate() || _iphone || _ipad || _android || _mobile;
-                },
-
-                nativeApp: function nativeApp() {
-                  return _populate() || _mLite != null ? null : _native;
-                },
-
-                android: function android() {
-                  return _populate() || _android;
-                },
-
-                ipad: function ipad() {
-                  return _populate() || _ipad;
-                }
-              };
-
-              module.exports = UserAgent_DEPRECATED;
-            },
-            null
-          );
-          __d(
-            "hasNamePropertyBug",
-            ["UserAgent_DEPRECATED", "guid"],
-            function $module_hasNamePropertyBug(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              var hasBug = require("UserAgent_DEPRECATED").ie()
-                ? undefined
-                : false;
-
-              function test() {
-                var form = document.createElement("form");
-                var input = form.appendChild(document.createElement("input"));
-                input.name = require("guid")();
-                hasBug = input !== form.elements[input.name];
-                return hasBug;
-              }
-
-              function hasNamePropertyBug() {
-                return hasBug === undefined ? test() : hasBug;
-              }
-
-              module.exports = hasNamePropertyBug;
-            },
-            null
-          );
-          __d(
-            "isNumberLike",
-            [],
-            function $module_isNumberLike(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              function isNumberLike(n) {
-                return !isNaN(parseFloat(n)) && isFinite(n);
-              }
-
-              module.exports = isNumberLike;
-            },
-            null
-          );
-          __d(
-            "sdk.createIframe",
-            [
-              "DOMEventListener",
-              "getBlankIframeSrc",
-              "guid",
-              "hasNamePropertyBug",
-              "isNumberLike"
-            ],
-            function $module_sdk_createIframe(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              function createIframe(opts_arg) {
-                var opts = ES("Object", "assign", false, {}, opts_arg);
-                var frame;
-                var name = opts.name || require("guid")();
-                var root = opts.root;
-                var style = opts.style || { border: "none" };
-                var src = opts.url;
-                var onLoad = opts.onload;
-                var onError = opts.onerror;
-
-                if (require("hasNamePropertyBug")()) {
-                  frame = document.createElement(
-                    '<iframe name="' + name + '"/>'
-                  );
-                } else {
-                  frame = document.createElement("iframe");
-                  frame.name = name;
-                }
-
-                delete opts.style;
-                delete opts.name;
-                delete opts.url;
-                delete opts.root;
-                delete opts.onload;
-                delete opts.onerror;
-                delete opts.height;
-                delete opts.width;
-
-                if (opts.frameBorder === undefined) {
-                  opts.frameBorder = 0;
-                }
-
-                if (opts.allowTransparency === undefined) {
-                  opts.allowTransparency = true;
-                }
-
-                if (opts.allowFullscreen === undefined) {
-                  opts.allowFullscreen = true;
-                }
-
-                if (opts.scrolling === undefined) {
-                  opts.scrolling = "no";
-                }
-
-                if (opts.allow === undefined) {
-                  opts.allow = "encrypted-media";
-                }
-
-                if (opts.lazy) {
-                  opts.loading = "lazy";
-                }
-                delete opts.lazy;
-
-                if (
-                  opts_arg.width != null &&
-                  require("isNumberLike")(opts_arg.width)
-                ) {
-                  frame.width = opts_arg.width + "px";
-                }
-                if (
-                  opts_arg.height != null &&
-                  require("isNumberLike")(opts_arg.height)
-                ) {
-                  frame.height = opts_arg.height + "px";
-                }
-
-                for (var key in opts) {
-                  if (Object.prototype.hasOwnProperty.call(opts, key)) {
-                    frame.setAttribute(key, opts[key]);
-                  }
-                }
-
-                ES("Object", "assign", false, frame.style, style);
-
-                frame.src = require("getBlankIframeSrc")();
-                if (root != null) {
-                  root.appendChild(frame);
-                }
-                if (onLoad) {
-                  var onLoadListener = require("DOMEventListener").add(
-                    frame,
-                    "load",
-                    function() {
-                      onLoadListener.remove();
-                      onLoad();
-                    }
-                  );
-                }
-
-                if (onError) {
-                  var onErrorListener = require("DOMEventListener").add(
-                    frame,
-                    "error",
-                    function() {
-                      onErrorListener.remove();
-                      onError();
-                    }
-                  );
-                }
-
-                frame.src = src;
-                return frame;
-              }
-
-              module.exports = createIframe;
-            },
-            null
-          );
-          __d(
             "sdk.XD",
             [
               "JSSDKXDConfig",
@@ -12413,12 +11814,9 @@ try {
               "QueryString",
               "Queue",
               "UrlMap",
-              "XDM",
               "guid",
               "isFacebookURI",
               "resolveWindow",
-              "sdk.Content",
-              "sdk.createIframe",
               "sdk.Event",
               "sdk.feature",
               "sdk.RPC",
@@ -12436,7 +11834,7 @@ try {
             ) {
               var facebookQueue = new (require("Queue"))();
 
-              var messageToFacebookRelation = "parent.parent";
+              var messageToFacebookRelation = "parent";
               var xdProxyName = null;
 
               var facebookRe = /^https:\/\/.*facebook\.com$/;
@@ -12445,12 +11843,7 @@ try {
                 ? "cdn"
                 : "www";
 
-              var xdArbiterPathAndQuery = require("sdk.feature")(
-                "use_bundle",
-                false
-              )
-                ? require("JSSDKXDConfig").XdBundleUrl
-                : require("JSSDKXDConfig").XdUrl;
+              var xdArbiterPathAndQuery = require("JSSDKXDConfig").XdUrl;
 
               var xdArbiterHttpsUrl =
                 require("UrlMap").resolve(xdArbiterTier) +
@@ -12475,10 +11868,7 @@ try {
 
               var channel = require("guid")();
               var origin = getOrigin();
-              var xdm;
-              var httpsProxyFrame;
               var inited = false;
-              var IFRAME_TITLE = "Facebook Cross Domain Communication Frame";
 
               var rpcQueue = new (require("Queue"))();
               require("sdk.RPC").setInQueue(rpcQueue);
@@ -12502,43 +11892,6 @@ try {
                 }
 
                 switch (message.xd_action) {
-                  case "proxy_ready":
-                    require("sdk.Runtime").setLoggedIntoFacebook(
-                      message.logged_in === "true"
-                    );
-                    if (
-                      typeof message.registered === "string" &&
-                      message.registered != ""
-                    ) {
-                      onRegister(message.registered);
-                    }
-
-                    require("Log").info(
-                      "Proxy ready, starting queue containing %s messages",
-                      facebookQueue.getLength()
-                    );
-
-                    facebookQueue.start(function(message) {
-                      if (message == null) {
-                        require("Log").warn(
-                          "Discarding null message from %s to %s",
-                          senderOrigin,
-                          channel + "_https"
-                        );
-
-                        return;
-                      }
-                      xdm.send(
-                        typeof message === "object"
-                          ? require("QueryString").encode(message)
-                          : message,
-                        senderOrigin,
-                        httpsProxyFrame.contentWindow,
-                        channel + "_https"
-                      );
-                    });
-                    break;
-
                   case "plugin_ready":
                     if (typeof message.name === "string") {
                       var pluginName = message.name;
@@ -12678,13 +12031,11 @@ try {
                   facebookQueue.enqueue("FB_RPC:" + message);
                 });
 
-              function initNew(xdProxyName) {
+              function init(xdProxyName) {
                 if (inited) {
                   return;
                 }
                 inited = true;
-
-                messageToFacebookRelation = "parent";
 
                 window.addEventListener("message", function(event) {
                   var message = event.data;
@@ -12774,7 +12125,7 @@ try {
               function tryRegister(xdProxyName) {
                 var _feature;
                 if (!inited) {
-                  initNew();
+                  init();
                 }
 
                 if (window.parent != top) {
@@ -12828,57 +12179,6 @@ try {
                 }, retryInterval);
               }
 
-              function initLegacy(xdProxyName) {
-                if (inited) {
-                  return;
-                }
-
-                var container = require("sdk.Content").appendHidden(
-                  document.createElement("div")
-                );
-
-                var transport = require("XDM").create({
-                  blacklist: null,
-                  root: container,
-                  channel: channel,
-                  whenReady: function whenReady(instance) {
-                    xdm = instance;
-
-                    var proxyData = {
-                      channel: channel,
-                      origin: origin,
-                      transport: transport,
-                      xd_name: xdProxyName
-                    };
-
-                    var xdArbiterFragment =
-                      "#" + require("QueryString").encode(proxyData);
-
-                    httpsProxyFrame = require("sdk.createIframe")({
-                      url: xdArbiterHttpsUrl + xdArbiterFragment,
-                      name: "fb_xdm_frame_https",
-                      id: "fb_xdm_frame_https",
-                      root: container,
-                      "aria-hidden": true,
-                      title: IFRAME_TITLE,
-                      tabindex: -1
-                    });
-                  },
-                  onMessage: onMessage
-                });
-
-                if (!transport) {
-                  require("sdk.Scribe").log("jssdk_error", {
-                    appId: require("sdk.Runtime").getClientID(),
-                    error: "XD_TRANSPORT",
-                    extra: {
-                      message: "Failed to create a valid transport"
-                    }
-                  });
-                }
-                inited = true;
-              }
-
               var XD = {
                 rpc: require("sdk.RPC"),
 
@@ -12889,9 +12189,7 @@ try {
 
                 onMessage: onMessage,
 
-                initLegacy: initLegacy,
-
-                initNew: initNew,
+                init: init,
 
                 sendToFacebook: sendToFacebook,
 
@@ -12928,42 +12226,12 @@ try {
                   }
                   XD._callbacks[id] = cb;
                   return id;
-                },
-
-                getXDArbiterURL: function getXDArbiterURL() {
-                  return xdArbiterHttpsUrl;
                 }
               };
 
               require("sdk.Event").subscribe("init:post", function(options) {
-                var useLegacyInit = require("sdk.feature")(
-                  "legacy_xd_init",
-                  true
-                );
-                if (useLegacyInit) {
-                  initLegacy(options.xdProxyName);
-                  var timeout = require("sdk.feature")("xd_timeout", false);
-                  if (timeout) {
-                    window.setTimeout(function() {
-                      var initialized =
-                        httpsProxyFrame &&
-                        !!httpsProxyFrame == facebookQueue.isStarted();
-
-                      if (!initialized) {
-                        require("sdk.Scribe").log("jssdk_error", {
-                          appId: require("sdk.Runtime").getClientID(),
-                          error: "XD_INITIALIZATION",
-                          extra: {
-                            message: "Failed to initialize in " + timeout + "ms"
-                          }
-                        });
-                      }
-                    }, timeout);
-                  }
-                } else {
-                  xdProxyName = options.xdProxyName;
-                  initNew(options.xdProxyName);
-                }
+                xdProxyName = options.xdProxyName;
+                init(options.xdProxyName);
               });
 
               module.exports = XD;
@@ -16140,6 +15408,341 @@ try {
             3
           );
           __d(
+            "UserAgent_DEPRECATED",
+            [],
+            function $module_UserAgent_DEPRECATED(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              var _populated = false;
+
+              var _ie, _firefox, _opera, _webkit, _chrome;
+
+              var _ie_real_version;
+
+              var _osx, _windows, _linux, _android;
+
+              var _win64;
+
+              var _iphone, _ipad, _native, _mLite;
+
+              var _mobile;
+
+              function _populate() {
+                if (_populated) {
+                  return;
+                }
+
+                _populated = true;
+
+                var uas = navigator.userAgent;
+                var agent = /(?:MSIE.(\d+\.\d+))|(?:(?:Firefox|GranParadiso|Iceweasel).(\d+\.\d+))|(?:Opera(?:.+Version.|.)(\d+\.\d+))|(?:AppleWebKit.(\d+(?:\.\d+)?))|(?:Trident\/\d+\.\d+.*rv:(\d+\.\d+))/.exec(
+                  uas
+                );
+
+                var os = /(Mac OS X)|(Windows)|(Linux)/.exec(uas);
+
+                _iphone = /\b(iPhone|iP[ao]d)/.exec(uas);
+                _ipad = /\b(iP[ao]d)/.exec(uas);
+                _android = /Android/i.exec(uas);
+                _native = /FBAN\/\w+;/i.exec(uas);
+                _mLite = /FBAN\/mLite;/i.exec(uas);
+                _mobile = /Mobile/i.exec(uas);
+
+                _win64 = !!/Win64/.exec(uas);
+
+                if (agent) {
+                  _ie = agent[1]
+                    ? parseFloat(agent[1])
+                    : agent[5]
+                    ? parseFloat(agent[5])
+                    : NaN;
+
+                  if (_ie && document && document.documentMode) {
+                    _ie = document.documentMode;
+                  }
+
+                  var trident = /(?:Trident\/(\d+.\d+))/.exec(uas);
+                  _ie_real_version = trident ? parseFloat(trident[1]) + 4 : _ie;
+
+                  _firefox = agent[2] ? parseFloat(agent[2]) : NaN;
+                  _opera = agent[3] ? parseFloat(agent[3]) : NaN;
+                  _webkit = agent[4] ? parseFloat(agent[4]) : NaN;
+                  if (_webkit) {
+                    agent = /(?:Chrome\/(\d+\.\d+))/.exec(uas);
+                    _chrome = agent && agent[1] ? parseFloat(agent[1]) : NaN;
+                  } else {
+                    _chrome = NaN;
+                  }
+                } else {
+                  _ie = _firefox = _opera = _chrome = _webkit = NaN;
+                }
+
+                if (os) {
+                  if (os[1]) {
+                    var ver = /(?:Mac OS X (\d+(?:[._]\d+)?))/.exec(uas);
+
+                    _osx = ver ? parseFloat(ver[1].replace("_", ".")) : true;
+                  } else {
+                    _osx = false;
+                  }
+                  _windows = !!os[2];
+                  _linux = !!os[3];
+                } else {
+                  _osx = _windows = _linux = false;
+                }
+              }
+
+              var UserAgent_DEPRECATED = {
+                ie: function ie() {
+                  return _populate() || _ie;
+                },
+
+                ieCompatibilityMode: function ieCompatibilityMode() {
+                  return _populate() || _ie_real_version > _ie;
+                },
+
+                ie64: function ie64() {
+                  return UserAgent_DEPRECATED.ie() && _win64;
+                },
+
+                firefox: function firefox() {
+                  return _populate() || _firefox;
+                },
+
+                opera: function opera() {
+                  return _populate() || _opera;
+                },
+
+                webkit: function webkit() {
+                  return _populate() || _webkit;
+                },
+
+                safari: function safari() {
+                  return UserAgent_DEPRECATED.webkit();
+                },
+
+                chrome: function chrome() {
+                  return _populate() || _chrome;
+                },
+
+                windows: function windows() {
+                  return _populate() || _windows;
+                },
+
+                osx: function osx() {
+                  return _populate() || _osx;
+                },
+
+                linux: function linux() {
+                  return _populate() || _linux;
+                },
+
+                iphone: function iphone() {
+                  return _populate() || _iphone;
+                },
+
+                mobile: function mobile() {
+                  return _populate() || _iphone || _ipad || _android || _mobile;
+                },
+
+                nativeApp: function nativeApp() {
+                  return _populate() || _mLite != null ? null : _native;
+                },
+
+                android: function android() {
+                  return _populate() || _android;
+                },
+
+                ipad: function ipad() {
+                  return _populate() || _ipad;
+                }
+              };
+
+              module.exports = UserAgent_DEPRECATED;
+            },
+            null
+          );
+          __d(
+            "hasNamePropertyBug",
+            ["UserAgent_DEPRECATED", "guid"],
+            function $module_hasNamePropertyBug(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              var hasBug = require("UserAgent_DEPRECATED").ie()
+                ? undefined
+                : false;
+
+              function test() {
+                var form = document.createElement("form");
+                var input = form.appendChild(document.createElement("input"));
+                input.name = require("guid")();
+                hasBug = input !== form.elements[input.name];
+                return hasBug;
+              }
+
+              function hasNamePropertyBug() {
+                return hasBug === undefined ? test() : hasBug;
+              }
+
+              module.exports = hasNamePropertyBug;
+            },
+            null
+          );
+          __d(
+            "isNumberLike",
+            [],
+            function $module_isNumberLike(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              function isNumberLike(n) {
+                return !isNaN(parseFloat(n)) && isFinite(n);
+              }
+
+              module.exports = isNumberLike;
+            },
+            null
+          );
+          __d(
+            "sdk.createIframe",
+            [
+              "DOMEventListener",
+              "getBlankIframeSrc",
+              "guid",
+              "hasNamePropertyBug",
+              "isNumberLike"
+            ],
+            function $module_sdk_createIframe(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              function createIframe(opts_arg) {
+                var opts = ES("Object", "assign", false, {}, opts_arg);
+                var frame;
+                var name = opts.name || require("guid")();
+                var root = opts.root;
+                var style = opts.style || { border: "none" };
+                var src = opts.url;
+                var onLoad = opts.onload;
+                var onError = opts.onerror;
+
+                if (require("hasNamePropertyBug")()) {
+                  frame = document.createElement(
+                    '<iframe name="' + name + '"/>'
+                  );
+                } else {
+                  frame = document.createElement("iframe");
+                  frame.name = name;
+                }
+
+                delete opts.style;
+                delete opts.name;
+                delete opts.url;
+                delete opts.root;
+                delete opts.onload;
+                delete opts.onerror;
+                delete opts.height;
+                delete opts.width;
+
+                if (opts.frameBorder === undefined) {
+                  opts.frameBorder = 0;
+                }
+
+                if (opts.allowTransparency === undefined) {
+                  opts.allowTransparency = true;
+                }
+
+                if (opts.allowFullscreen === undefined) {
+                  opts.allowFullscreen = true;
+                }
+
+                if (opts.scrolling === undefined) {
+                  opts.scrolling = "no";
+                }
+
+                if (opts.allow === undefined) {
+                  opts.allow = "encrypted-media";
+                }
+
+                if (opts.lazy) {
+                  opts.loading = "lazy";
+                }
+                delete opts.lazy;
+
+                if (
+                  opts_arg.width != null &&
+                  require("isNumberLike")(opts_arg.width)
+                ) {
+                  frame.width = opts_arg.width + "px";
+                }
+                if (
+                  opts_arg.height != null &&
+                  require("isNumberLike")(opts_arg.height)
+                ) {
+                  frame.height = opts_arg.height + "px";
+                }
+
+                for (var key in opts) {
+                  if (Object.prototype.hasOwnProperty.call(opts, key)) {
+                    frame.setAttribute(key, opts[key]);
+                  }
+                }
+
+                ES("Object", "assign", false, frame.style, style);
+
+                frame.src = require("getBlankIframeSrc")();
+                if (root != null) {
+                  root.appendChild(frame);
+                }
+                if (onLoad) {
+                  var onLoadListener = require("DOMEventListener").add(
+                    frame,
+                    "load",
+                    function() {
+                      onLoadListener.remove();
+                      onLoad();
+                    }
+                  );
+                }
+
+                if (onError) {
+                  var onErrorListener = require("DOMEventListener").add(
+                    frame,
+                    "error",
+                    function() {
+                      onErrorListener.remove();
+                      onError();
+                    }
+                  );
+                }
+
+                frame.src = src;
+                return frame;
+              }
+
+              module.exports = createIframe;
+            },
+            null
+          );
+          __d(
             "IframePlugin",
             [
               "Log",
@@ -18421,7 +18024,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001675360","namespace":"FB","message":"' +
+        '","revision":"1001678619","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
