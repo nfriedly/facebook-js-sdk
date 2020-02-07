@@ -1,4 +1,4 @@
-/*1581041958,,JIT Construction: v1001686018,en_US*/
+/*1581070154,,JIT Construction: v1001687689,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3726,7 +3726,7 @@ try {
           })(typeof global === "undefined" ? this : global);
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001686018",
+            revision: "1001687689",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -4384,24 +4384,21 @@ try {
                   error.project = context.project;
                 }
 
+                var messageFormat = caughtError.message;
+                var messageParams = toStringParams(caughtError.params);
                 if (context.messageFormat != null) {
-                  var _context$messageForma, _context$messageParam;
-                  error.messageFormat =
-                    ((_context$messageForma = context.messageFormat) != null
-                      ? _context$messageForma
-                      : "") + " from %s: %s";
-                  error.messageParams =
+                  var _context$messageParam;
+                  messageFormat +=
+                    ". [Caught in: " + context.messageFormat + "]";
+                  messageParams.push.apply(
+                    messageParams,
                     (_context$messageParam = context.messageParams) != null
                       ? _context$messageParam
-                      : [];
-                  error.messageParams.push(
-                    error.name,
-                    toReadableMessage(
-                      caughtError.message,
-                      toStringParams(caughtError.params)
-                    )
+                      : []
                   );
                 }
+                error.messageFormat = messageFormat;
+                error.messageParams = messageParams;
 
                 var firstKey = context.forcedKey;
                 var secondKey = caughtError.forcedKey;
@@ -18028,7 +18025,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001686018","namespace":"FB","message":"' +
+        '","revision":"1001687689","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
