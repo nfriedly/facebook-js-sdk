@@ -1,4 +1,4 @@
-/*1581551351,,JIT Construction: v1001706815,en_US*/
+/*1582332550,,JIT Construction: v1001746009,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3726,7 +3726,7 @@ try {
           })(typeof global === "undefined" ? this : global);
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001706815",
+            revision: "1001746009",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -7259,7 +7259,12 @@ try {
                 });
               }
 
-              function xdResponseWrapper(cb, authResponse, _method) {
+              function xdResponseWrapper(
+                cb,
+                authResponse,
+                _method,
+                requestParams
+              ) {
                 return function(params) {
                   var status;
                   if (params && params.access_token) {
@@ -7296,6 +7301,7 @@ try {
                     removeLogoutState();
                     status = "connected";
                     setAuthResponse(authResponse, status);
+                    logSuccessfulAuth(requestParams);
                   } else if (params && params.asset_scopes) {
                     authResponse = {
                       asset_scopes: ES(
@@ -7311,6 +7317,7 @@ try {
                     removeLogoutState();
                     status = "connected";
                     setAuthResponse(authResponse, status);
+                    logSuccessfulAuth(requestParams);
                   } else if (params && params.error === "access_denied") {
                     setLogoutState();
                     status = "unknown";
@@ -7330,6 +7337,24 @@ try {
                   }
                   return authResponse;
                 };
+              }
+
+              function logSuccessfulAuth(requestParams) {
+                var loggerID =
+                  requestParams && requestParams.logger_id
+                    ? requestParams.logger_id
+                    : null;
+                var cbt =
+                  requestParams && requestParams.cbt ? requestParams.cbt : 0;
+                var payload = {
+                  action: "client_login_end",
+                  logger_id: loggerID,
+                  cbt_delta: ES("Date", "now", false) - cbt
+                };
+
+                require("sdk.Impressions").log(117, {
+                  payload: payload
+                });
               }
 
               function populateAuthResponse(authResponse, params) {
@@ -12332,6 +12357,7 @@ try {
               "sdk.feature",
               "sdk.Frictionless",
               "sdk.getContextType",
+              "sdk.Impressions",
               "sdk.Native",
               "sdk.openMessenger",
               "sdk.RPC",
@@ -12485,6 +12511,14 @@ try {
                     var id = call.id;
                     delete call.cb;
 
+                    if (call && call.params && !call.params.logger_id) {
+                      call.params.logger_id = require("guid")();
+                    }
+
+                    if (call && call.params && !call.params.cbt) {
+                      call.params.cbt = ES("Date", "now", false);
+                    }
+
                     var isReauthenticate =
                       call.params.auth_type === "reauthenticate";
                     var responseTypes = ES(
@@ -12520,7 +12554,8 @@ try {
                       call.cb = require("sdk.Auth").xdResponseWrapper(
                         cb,
                         require("sdk.Auth").getAuthResponse(),
-                        "permissions.oauth"
+                        "permissions.oauth",
+                        call.params
                       );
                     } else {
                       if (isReauthenticate) {
@@ -12549,7 +12584,8 @@ try {
                               : "opener",
                             require("sdk.Auth").getAuthResponse(),
                             "permissions.oauth",
-                            !isReauthenticate
+                            !isReauthenticate,
+                            call.params
                           )
                         ),
 
@@ -12559,13 +12595,15 @@ try {
                       });
                     }
 
-                    if (call && call.params && !call.params.logger_id) {
-                      call.params.logger_id = require("guid")();
-                    }
+                    var payload = {
+                      action: "client_login_start",
+                      logger_id: call.params.logger_id,
+                      cbt_delta: 0
+                    };
 
-                    if (call && call.params && !call.params.cbt) {
-                      call.params.cbt = ES("Date", "now", false);
-                    }
+                    require("sdk.Impressions").log(117, {
+                      payload: payload
+                    });
 
                     return call;
                   }
@@ -13430,13 +13468,15 @@ try {
                   target,
                   authResponse,
                   method,
-                  isDefault
+                  isDefault,
+                  requestParams
                 ) {
                   return UIServer._xdNextHandler(
                     require("sdk.Auth").xdResponseWrapper(
                       cb,
                       authResponse,
-                      method
+                      method,
+                      requestParams
                     ),
                     frame,
                     target,
@@ -18038,7 +18078,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001706815","namespace":"FB","message":"' +
+        '","revision":"1001746009","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
