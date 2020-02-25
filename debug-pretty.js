@@ -1,4 +1,4 @@
-/*1582603163,,JIT Construction: v1001752876,en_US*/
+/*1582606755,,JIT Construction: v1001753366,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3873,8 +3873,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1001752876,
-            client_revision: 1001752876,
+            server_revision: 1001753366,
+            client_revision: 1001753366,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3884,14 +3884,14 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6797228828248517523-0",
+            hsi: "6797244255780429248-0",
             spin: 0,
-            __spin_r: 1001752876,
+            __spin_r: 1001753366,
             __spin_b: "trunk",
-            __spin_t: 1582603162,
-            vip: "31.13.65.7"
+            __spin_t: 1582606755,
+            vip: "31.13.66.19"
           });
-          __d("ServerNonce", [], { ServerNonce: "jXWKibi3hkMVgL7bvDnYpc" });
+          __d("ServerNonce", [], { ServerNonce: "vLQpuXjobP2KMvitpjes_m" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4055,7 +4055,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001752876",
+            revision: "1001753366",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -11473,6 +11473,7 @@ try {
             "URIBase",
             [
               "invariant",
+              "PHPQuerySerializerNoEncoding",
               "URIRFC3986",
               "URISchemes",
               "ex",
@@ -11756,9 +11757,18 @@ try {
                   );
                 };
                 _proto.getQueryString = function getQueryString() {
-                  return this.$URIBase_serializer.serialize(
-                    this.getQueryData()
-                  );
+                  return this.$URIBase_renderQuery(false);
+                };
+                _proto.$URIBase_renderQuery = function $URIBase_renderQuery(
+                  rawQuery
+                ) {
+                  if (rawQuery === void 0) {
+                    rawQuery = false;
+                  }
+                  return (rawQuery
+                    ? require("PHPQuerySerializerNoEncoding")
+                    : this.$URIBase_serializer
+                  ).serialize(this.getQueryData());
                 };
                 _proto.removeQueryData = function removeQueryData(keys) {
                   if (!ES("Array", "isArray", false, keys)) {
@@ -11806,13 +11816,29 @@ try {
                   );
                 };
                 _proto.toString = function toString() {
+                  return this.$URIBase_toStringWithFilters(false);
+                };
+                _proto.toStringRawQuery = function toStringRawQuery() {
+                  return this.$URIBase_toStringWithFilters(true);
+                };
+                _proto.$URIBase_toStringWithFilters = function $URIBase_toStringWithFilters(
+                  rawQuery
+                ) {
+                  if (rawQuery === void 0) {
+                    rawQuery = false;
+                  }
                   var uri = this;
                   for (var i = 0; i < uriFilters.length; i++) {
                     uri = uriFilters[i](uri);
                   }
-                  return uri.$URIBase_toStringImpl();
+                  return uri.$URIBase_toStringImpl(rawQuery);
                 };
-                _proto.$URIBase_toStringImpl = function $URIBase_toStringImpl() {
+                _proto.$URIBase_toStringImpl = function $URIBase_toStringImpl(
+                  rawQuery
+                ) {
+                  if (rawQuery === void 0) {
+                    rawQuery = false;
+                  }
                   var str = "";
                   var protocol = this.getProtocol();
                   if (protocol) {
@@ -11833,7 +11859,7 @@ try {
                   } else if (str) {
                     str += "/";
                   }
-                  var queryStr = this.getQueryString();
+                  var queryStr = this.$URIBase_renderQuery(rawQuery);
                   if (queryStr) {
                     str += "?" + queryStr;
                   }
@@ -38670,7 +38696,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001752876","namespace":"FB","message":"' +
+        '","revision":"1001753366","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
