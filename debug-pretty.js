@@ -1,4 +1,4 @@
-/*1582606755,,JIT Construction: v1001753366,en_US*/
+/*1582616354,,JIT Construction: v1001753732,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3873,8 +3873,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1001753366,
-            client_revision: 1001753366,
+            server_revision: 1001753732,
+            client_revision: 1001753732,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3884,14 +3884,14 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6797244255780429248-0",
+            hsi: "6797285484050259107-0",
             spin: 0,
-            __spin_r: 1001753366,
+            __spin_r: 1001753732,
             __spin_b: "trunk",
-            __spin_t: 1582606755,
+            __spin_t: 1582616354,
             vip: "31.13.66.19"
           });
-          __d("ServerNonce", [], { ServerNonce: "vLQpuXjobP2KMvitpjes_m" });
+          __d("ServerNonce", [], { ServerNonce: "sV7gqmNdSa0CLnLJ3lFXC6" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4055,7 +4055,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001753366",
+            revision: "1001753732",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -15040,7 +15040,7 @@ try {
                   _expirationTime = Date.now() + CSS_POLL_TIMEOUT;
                 }
 
-                return _activeCSSPolls.size !== 0;
+                return _activeCSSPolls.size === 0;
               }
 
               function _startCSSPoll(name, hardpoint, onLoad, onError) {
@@ -38696,7 +38696,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001753366","namespace":"FB","message":"' +
+        '","revision":"1001753732","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
