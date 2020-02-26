@@ -1,4 +1,4 @@
-/*1582616354,,JIT Construction: v1001753732,en_US*/
+/*1582700366,,JIT Construction: v1001759884,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3873,8 +3873,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1001753732,
-            client_revision: 1001753732,
+            server_revision: 1001759884,
+            client_revision: 1001759884,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3884,14 +3884,14 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6797285484050259107-0",
+            hsi: "6797646312207867723-0",
             spin: 0,
-            __spin_r: 1001753732,
+            __spin_r: 1001759884,
             __spin_b: "trunk",
-            __spin_t: 1582616354,
+            __spin_t: 1582700366,
             vip: "31.13.66.19"
           });
-          __d("ServerNonce", [], { ServerNonce: "sV7gqmNdSa0CLnLJ3lFXC6" });
+          __d("ServerNonce", [], { ServerNonce: "w8AEiUxk0mODytte0xa7ja" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4055,7 +4055,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001753732",
+            revision: "1001759884",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -4105,7 +4105,7 @@ try {
           });
           __d("JSSDKXDConfig", [], {
             XdUrl: "/connect/xd_arbiter.php?version=45",
-            XdBundleUrl: "/connect/xd_arbiter/r/cEU4zufXJWZ.js?version=45",
+            XdBundleUrl: "/connect/xd_arbiter/r/5VXbgRLLxVY.js?version=45",
             useCdn: true
           });
           __d("JSSDKCanvasPrefetcherConfig", [], {
@@ -17433,6 +17433,7 @@ try {
                 if (el.getAttribute("data-nonblocking")) {
                   entry.nonblocking = 1;
                 }
+
                 entry.p = el.getAttribute("data-p");
 
                 if (
@@ -38696,7 +38697,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001753732","namespace":"FB","message":"' +
+        '","revision":"1001759884","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
