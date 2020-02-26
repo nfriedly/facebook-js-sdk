@@ -1,4 +1,4 @@
-/*1582700366,,JIT Construction: v1001759884,en_US*/
+/*1582754366,,JIT Construction: v1001761820,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3873,8 +3873,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1001759884,
-            client_revision: 1001759884,
+            server_revision: 1001761820,
+            client_revision: 1001761820,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3884,14 +3884,14 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6797646312207867723-0",
+            hsi: "6797878241583495095-0",
             spin: 0,
-            __spin_r: 1001759884,
+            __spin_r: 1001761820,
             __spin_b: "trunk",
-            __spin_t: 1582700366,
+            __spin_t: 1582754366,
             vip: "31.13.66.19"
           });
-          __d("ServerNonce", [], { ServerNonce: "w8AEiUxk0mODytte0xa7ja" });
+          __d("ServerNonce", [], { ServerNonce: "fn1lOll6FSjVwQbIpCMaTB" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4055,7 +4055,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001759884",
+            revision: "1001761820",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -4105,7 +4105,7 @@ try {
           });
           __d("JSSDKXDConfig", [], {
             XdUrl: "/connect/xd_arbiter.php?version=45",
-            XdBundleUrl: "/connect/xd_arbiter/r/5VXbgRLLxVY.js?version=45",
+            XdBundleUrl: "/connect/xd_arbiter/r/xlks6v_YZ0j.js?version=45",
             useCdn: true
           });
           __d("JSSDKCanvasPrefetcherConfig", [], {
@@ -33210,13 +33210,12 @@ try {
                       });
                     }
 
-                    var payload = {
+                    var payload = babelHelpers["extends"]({}, call.params, {
                       action: "client_login_start",
-                      logger_id: call.params.logger_id,
                       client_funnel_version: require("PlatformOAuthDialogLoginFunnelLogger")
                         .CLIENT_FUNNEL_VERSION,
                       cbt_delta: 0
-                    };
+                    });
 
                     if (!call.params.plugin_prepare) {
                       require("sdk.Impressions").log(117, {
@@ -38697,7 +38696,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001759884","namespace":"FB","message":"' +
+        '","revision":"1001761820","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
