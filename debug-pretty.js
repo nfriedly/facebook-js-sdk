@@ -1,4 +1,4 @@
-/*1582859968,,JIT Construction: v1001769750,en_US*/
+/*1582920548,,JIT Construction: v1001772193,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3800,7 +3800,8 @@ try {
                 "BUSINESS_GRAPH_SETTING_BU_ASSIGNED_USERS_NEW_API",
                 "BUSINESS_GRAPH_SETTING_SESG_ASSIGNED_USERS_NEW_API",
                 "RECRUITING_REQUISITION_VALIDATE_COMPANY_GROUPING_ON_LINK",
-                "SOURCING_MIGRATION"
+                "SOURCING_MIGRATION",
+                "BAM_EXCLUDE_MEGAZORDED_ALERTS"
               ]
             },
             ko: {
@@ -3821,7 +3822,8 @@ try {
                 "4NSq3ZC4ScE",
                 "1onzIv0jH6H",
                 "5LSlJUj3BnT",
-                "atO9WPX9eKY"
+                "atO9WPX9eKY",
+                "2urFjIQigPj"
               ]
             }
           });
@@ -3875,8 +3877,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1001769750,
-            client_revision: 1001769750,
+            server_revision: 1001772193,
+            client_revision: 1001772193,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3886,14 +3888,14 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6798331797261518783-0",
+            hsi: "6798591987916795830-0",
             spin: 0,
-            __spin_r: 1001769750,
+            __spin_r: 1001772193,
             __spin_b: "trunk",
-            __spin_t: 1582859968,
-            vip: "31.13.65.7"
+            __spin_t: 1582920548,
+            vip: "31.13.66.19"
           });
-          __d("ServerNonce", [], { ServerNonce: "95qD2YMrk7ehzcnYrB78uI" });
+          __d("ServerNonce", [], { ServerNonce: "hKggSb-_RnxbhjyV9p4vWN" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4046,7 +4048,6 @@ try {
               boosted_component: true,
               boosted_pagelikes: true,
               jslogger: true,
-              kbshortcuts_feed: true,
               mercury_send_error_logging: true,
               platform_oauth_client_events: true,
               xtrackable_clientview_batch: true,
@@ -4058,7 +4059,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001769750",
+            revision: "1001772193",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -38699,7 +38700,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001769750","namespace":"FB","message":"' +
+        '","revision":"1001772193","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
