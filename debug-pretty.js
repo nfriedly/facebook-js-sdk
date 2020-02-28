@@ -1,4 +1,4 @@
-/*1582754366,,JIT Construction: v1001761820,en_US*/
+/*1582859968,,JIT Construction: v1001769750,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3799,7 +3799,8 @@ try {
                 "BUSINESS_MANAGER_SHOW_UI_HIDDEN_TASK_FOR_ASSET",
                 "BUSINESS_GRAPH_SETTING_BU_ASSIGNED_USERS_NEW_API",
                 "BUSINESS_GRAPH_SETTING_SESG_ASSIGNED_USERS_NEW_API",
-                "RECRUITING_REQUISITION_VALIDATE_COMPANY_GROUPING_ON_LINK"
+                "RECRUITING_REQUISITION_VALIDATE_COMPANY_GROUPING_ON_LINK",
+                "SOURCING_MIGRATION"
               ]
             },
             ko: {
@@ -3819,7 +3820,8 @@ try {
                 "4NbCsulUUI3",
                 "4NSq3ZC4ScE",
                 "1onzIv0jH6H",
-                "5LSlJUj3BnT"
+                "5LSlJUj3BnT",
+                "atO9WPX9eKY"
               ]
             }
           });
@@ -3873,8 +3875,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1001761820,
-            client_revision: 1001761820,
+            server_revision: 1001769750,
+            client_revision: 1001769750,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3884,14 +3886,14 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6797878241583495095-0",
+            hsi: "6798331797261518783-0",
             spin: 0,
-            __spin_r: 1001761820,
+            __spin_r: 1001769750,
             __spin_b: "trunk",
-            __spin_t: 1582754366,
-            vip: "31.13.66.19"
+            __spin_t: 1582859968,
+            vip: "31.13.65.7"
           });
-          __d("ServerNonce", [], { ServerNonce: "fn1lOll6FSjVwQbIpCMaTB" });
+          __d("ServerNonce", [], { ServerNonce: "95qD2YMrk7ehzcnYrB78uI" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4044,6 +4046,7 @@ try {
               boosted_component: true,
               boosted_pagelikes: true,
               jslogger: true,
+              kbshortcuts_feed: true,
               mercury_send_error_logging: true,
               platform_oauth_client_events: true,
               xtrackable_clientview_batch: true,
@@ -4055,7 +4058,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001761820",
+            revision: "1001769750",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -4105,7 +4108,7 @@ try {
           });
           __d("JSSDKXDConfig", [], {
             XdUrl: "/connect/xd_arbiter.php?version=45",
-            XdBundleUrl: "/connect/xd_arbiter/r/xlks6v_YZ0j.js?version=45",
+            XdBundleUrl: "/connect/xd_arbiter/r/Sv0_0hSXP1T.js?version=45",
             useCdn: true
           });
           __d("JSSDKCanvasPrefetcherConfig", [], {
@@ -23206,7 +23209,7 @@ try {
                   preferred_compression_method
                 ) {
                   if (wad.needs_compression !== true) {
-                    wad.needs_compression = false;
+                    delete wad.needs_compression;
                     return;
                   }
 
@@ -23250,7 +23253,7 @@ try {
                   } else {
                     wad.compression = "";
                   }
-                  wad.needs_compression = false;
+                  delete wad.needs_compression;
                 },
 
                 outOfBandsPosts: function outOfBandsPosts(payload) {
@@ -24047,7 +24050,7 @@ try {
                         user: Banzai._getUserId(),
                         webSessionId: Banzai._getWebSessionId(),
                         app_id: Banzai._getAppId(),
-                        needs_compression: false,
+
                         posts: [post],
                         trigger: route
                       }
@@ -31788,7 +31791,7 @@ try {
                 },
 
                 _showTabletOverlay: function _showTabletOverlay(
-                  onClickForClose
+                  _onClickForClose
                 ) {
                   if (!Dialog.isTabletStyle()) {
                     return;
@@ -38696,7 +38699,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001761820","namespace":"FB","message":"' +
+        '","revision":"1001769750","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
