@@ -1,4 +1,4 @@
-/*1583179751,,JIT Construction: v1001778097,en_US*/
+/*1583191756,,JIT Construction: v1001779838,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3875,8 +3875,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1001778097,
-            client_revision: 1001778097,
+            server_revision: 1001779838,
+            client_revision: 1001779838,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3886,14 +3886,14 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6799705256150903825-0",
+            hsi: "6799756815947753659-0",
             spin: 0,
-            __spin_r: 1001778097,
+            __spin_r: 1001779838,
             __spin_b: "trunk",
-            __spin_t: 1583179751,
+            __spin_t: 1583191756,
             vip: "31.13.66.19"
           });
-          __d("ServerNonce", [], { ServerNonce: "88A-Jh0p1ybdELpluXuDfc" });
+          __d("ServerNonce", [], { ServerNonce: "mrK_p8rSNQKGiZL1B0GUkZ" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4057,7 +4057,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001778097",
+            revision: "1001779838",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -22737,6 +22737,20 @@ try {
                   compressed = Buffer.alloc(maxLength);
                   length = compressor.compressToBuffer(compressed);
                 }
+
+                if (!compressed.slice) {
+                  var compressedArray = new Uint8Array(
+                    Array.prototype.slice.call(compressed, 0, length)
+                  );
+                  if (uint8Mode) {
+                    return compressedArray;
+                  } else if (arrayBufferMode) {
+                    return compressedArray.buffer;
+                  } else {
+                    throw new Error("not implemented");
+                  }
+                }
+
                 return compressed.slice(0, length);
               }
 
@@ -38673,7 +38687,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001778097","namespace":"FB","message":"' +
+        '","revision":"1001779838","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
