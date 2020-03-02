@@ -1,4 +1,4 @@
-/*1582920548,,JIT Construction: v1001772193,en_US*/
+/*1583179751,,JIT Construction: v1001778097,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3800,7 +3800,6 @@ try {
                 "BUSINESS_GRAPH_SETTING_BU_ASSIGNED_USERS_NEW_API",
                 "BUSINESS_GRAPH_SETTING_SESG_ASSIGNED_USERS_NEW_API",
                 "RECRUITING_REQUISITION_VALIDATE_COMPANY_GROUPING_ON_LINK",
-                "SOURCING_MIGRATION",
                 "BAM_EXCLUDE_MEGAZORDED_ALERTS"
               ]
             },
@@ -3822,7 +3821,6 @@ try {
                 "4NSq3ZC4ScE",
                 "1onzIv0jH6H",
                 "5LSlJUj3BnT",
-                "atO9WPX9eKY",
                 "2urFjIQigPj"
               ]
             }
@@ -3877,8 +3875,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1001772193,
-            client_revision: 1001772193,
+            server_revision: 1001778097,
+            client_revision: 1001778097,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3888,14 +3886,14 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6798591987916795830-0",
+            hsi: "6799705256150903825-0",
             spin: 0,
-            __spin_r: 1001772193,
+            __spin_r: 1001778097,
             __spin_b: "trunk",
-            __spin_t: 1582920548,
+            __spin_t: 1583179751,
             vip: "31.13.66.19"
           });
-          __d("ServerNonce", [], { ServerNonce: "hKggSb-_RnxbhjyV9p4vWN" });
+          __d("ServerNonce", [], { ServerNonce: "88A-Jh0p1ybdELpluXuDfc" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4059,7 +4057,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001772193",
+            revision: "1001778097",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -4846,23 +4844,90 @@ try {
                 return null;
               }
 
-              function normalizeErrorStack(error) {
-                var stack = error.stackTrace || error.stack;
+              function getStackWithoutMessage(error) {
+                var stack = error.stack;
                 if (stack == null) {
-                  return [];
+                  return null;
                 }
                 var message = error.message;
                 var stackWithoutErrorType = stack.replace(
                   /^[\w \.\<\>:]+:\s/,
                   ""
                 );
-                var stackWithoutMessage =
-                  message != null &&
+                return message != null &&
                   ES(stackWithoutErrorType, "startsWith", true, message)
-                    ? stackWithoutErrorType.substr(message.length + 1)
-                    : stackWithoutErrorType !== stack
-                    ? stackWithoutErrorType.replace(/^.*?\n/, "")
-                    : stack;
+                  ? stackWithoutErrorType.substr(message.length + 1)
+                  : stackWithoutErrorType !== stack
+                  ? stackWithoutErrorType.replace(/^.*?\n/, "")
+                  : stack;
+              }
+
+              function normalizeStackFrame(frameRaw) {
+                var frame = ES(frameRaw, "trim", true);
+
+                var evalMatch = frame.match(EVAL_FRAME_PATTERN_CHROME);
+                if (evalMatch) {
+                  frame = evalMatch[1];
+                }
+
+                var line;
+                var column;
+                var locationMatch = frame.match(/:(\d+)(?::(\d+))?$/);
+                if (locationMatch) {
+                  line = locationMatch[1];
+                  column = locationMatch[2];
+                  frame = frame.slice(0, -locationMatch[0].length);
+                }
+
+                var identifier;
+                var stackMatch =
+                  getIEFrame(frame) || frame.match(IE_AND_OTHER_FRAME_PATTERN);
+                if (stackMatch) {
+                  frame = frame.substring(stackMatch[1].length + 1);
+                  var identifierMatch = stackMatch[1].match(
+                    /(?:at)?\s*(.*)(?:[^\s]+|$)/
+                  );
+                  identifier = identifierMatch ? identifierMatch[1] : "";
+                }
+
+                if (ES(frame, "includes", true, "charset=utf-8;base64,")) {
+                  frame = "<inlined-file>";
+                }
+
+                var stackFrame = {
+                  column: column,
+                  identifier: identifier,
+                  line: line,
+                  script: frame
+                };
+
+                var sfIdentifier =
+                  identifier != null && identifier !== ""
+                    ? " " + identifier + " ("
+                    : " ";
+                var sfIdentifier1 = sfIdentifier.length > 1 ? ")" : "";
+                var sfLine = line != null && line !== "" ? ":" + line : "";
+                var sfColumn =
+                  column != null && column !== "" ? ":" + column : "";
+
+                var text =
+                  "    at" +
+                  sfIdentifier +
+                  frame +
+                  sfLine +
+                  sfColumn +
+                  sfIdentifier1;
+
+                return babelHelpers["extends"]({}, stackFrame, {
+                  text: text
+                });
+              }
+
+              function normalizeErrorStack(error) {
+                var stackWithoutMessage = getStackWithoutMessage(error);
+                if (stackWithoutMessage == null) {
+                  return [];
+                }
                 return ES(
                   stackWithoutMessage
                     .split(/\n\n/)[0]
@@ -4870,68 +4935,7 @@ try {
                     .split("\n"),
                   "map",
                   true,
-                  function(frameRaw) {
-                    var frame = ES(frameRaw, "trim", true);
-
-                    var evalMatch = frame.match(EVAL_FRAME_PATTERN_CHROME);
-                    if (evalMatch) {
-                      frame = evalMatch[1];
-                    }
-
-                    var line;
-                    var column;
-                    var locationMatch = frame.match(/:(\d+)(?::(\d+))?$/);
-                    if (locationMatch) {
-                      line = locationMatch[1];
-                      column = locationMatch[2];
-                      frame = frame.slice(0, -locationMatch[0].length);
-                    }
-
-                    var identifier;
-                    var stackMatch =
-                      getIEFrame(frame) ||
-                      frame.match(IE_AND_OTHER_FRAME_PATTERN);
-                    if (stackMatch) {
-                      frame = frame.substring(stackMatch[1].length + 1);
-                      var identifierMatch = stackMatch[1].match(
-                        /(?:at)?\s*(.*)(?:[^\s]+|$)/
-                      );
-
-                      identifier = identifierMatch ? identifierMatch[1] : "";
-                    }
-
-                    if (ES(frame, "includes", true, "charset=utf-8;base64,")) {
-                      frame = "<inlined-file>";
-                    }
-
-                    var stackFrame = {
-                      column: column,
-                      identifier: identifier,
-                      line: line,
-                      script: frame
-                    };
-
-                    var sfIdentifier =
-                      identifier != null && identifier !== ""
-                        ? " " + identifier + " ("
-                        : " ";
-                    var sfIdentifier1 = sfIdentifier.length > 1 ? ")" : "";
-                    var sfLine = line != null && line !== "" ? ":" + line : "";
-                    var sfColumn =
-                      column != null && column !== "" ? ":" + column : "";
-
-                    var text =
-                      "    at" +
-                      sfIdentifier +
-                      frame +
-                      sfLine +
-                      sfColumn +
-                      sfIdentifier1;
-
-                    return babelHelpers["extends"]({}, stackFrame, {
-                      text: text
-                    });
-                  }
+                  normalizeStackFrame
                 );
               }
 
@@ -23348,8 +23352,6 @@ try {
 
               var triggerRoute = null;
 
-              var beaconCallbacks = [];
-
               var postReceivedCounter = 0;
 
               var signalSentCounter = 0;
@@ -23564,23 +23566,6 @@ try {
 
                 _processCallbacksAndSendViaBeacon: function _processCallbacksAndSendViaBeacon() {
                   var posts = [];
-                  beaconCallbacks.forEach(function(info) {
-                    var datas = info.cb();
-                    datas.forEach(function(data) {
-                      var route = info.route;
-                      if (route) {
-                        var wrapped = Banzai._wrapData(
-                          route,
-                          data,
-                          Banzai._getEventTime()
-                        );
-                        wrapped.__meta.onSuccess = info.onSuccess;
-                        wrapped.__meta.onFailure = info.onFailure;
-                        posts.push(wrapped);
-                      }
-                    });
-                  });
-                  beaconCallbacks = [];
                   var inflightWads = [];
                   var inflightPosts = [];
                   Banzai._gatherWadsAndPostsFromBuffer(
@@ -23599,22 +23584,10 @@ try {
                       payload
                     );
 
-                    if (success) {
-                      inflightPosts.forEach(function(post) {
-                        return (
-                          post.__meta &&
-                          post.__meta.onSuccess &&
-                          post.__meta.onSuccess()
-                        );
-                      });
-                    } else {
-                      inflightPosts.forEach(function(post) {
-                        return (
-                          post.__meta &&
-                          post.__meta.onFailure &&
-                          post.__meta.onFailure()
-                        );
-                      });
+                    if (!success) {
+                      require("FBLogger")("banzai").warn(
+                        "Error sending beacon"
+                      );
                     }
                   }
                 },
@@ -38700,7 +38673,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001772193","namespace":"FB","message":"' +
+        '","revision":"1001778097","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
