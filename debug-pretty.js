@@ -1,4 +1,4 @@
-/*1583215157,,JIT Construction: v1001782021,en_US*/
+/*1583273356,,JIT Construction: v1001784991,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3869,8 +3869,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1001782021,
-            client_revision: 1001782021,
+            server_revision: 1001784991,
+            client_revision: 1001784991,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3880,14 +3880,14 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6799857327726151550-0",
+            hsi: "6800107285085572750-0",
             spin: 0,
-            __spin_r: 1001782021,
+            __spin_r: 1001784991,
             __spin_b: "trunk",
-            __spin_t: 1583215157,
-            vip: "31.13.65.7"
+            __spin_t: 1583273356,
+            vip: "31.13.66.19"
           });
-          __d("ServerNonce", [], { ServerNonce: "krpcIvdNHnGtTBFZavOEYL" });
+          __d("ServerNonce", [], { ServerNonce: "vNqqOEpg8X24vHg7D3ChcU" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4051,7 +4051,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001782021",
+            revision: "1001784991",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -4101,7 +4101,7 @@ try {
           });
           __d("JSSDKXDConfig", [], {
             XdUrl: "/connect/xd_arbiter.php?version=45",
-            XdBundleUrl: "/connect/xd_arbiter/r/Sv0_0hSXP1T.js?version=45",
+            XdBundleUrl: "/connect/xd_arbiter/r/IKY8WzMqQrj.js?version=45",
             useCdn: true
           });
           __d("JSSDKCanvasPrefetcherConfig", [], {
@@ -38679,7 +38679,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001782021","namespace":"FB","message":"' +
+        '","revision":"1001784991","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
