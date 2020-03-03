@@ -1,4 +1,4 @@
-/*1583197165,,JIT Construction: v1001780181,en_US*/
+/*1583215157,,JIT Construction: v1001782021,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3839,23 +3839,15 @@ try {
             reportOnly: true
           });
           __d("BootloaderConfig", [], {
-            jsRetries: null,
+            jsRetries: [200, 500],
             jsRetryAbortNum: 2,
             jsRetryAbortTime: 5,
             payloadEndpointURI:
               "https://connect.facebook.net/ajax/bootloader-endpoint/",
             preloadBE: false,
-            assumeNotNonblocking: false,
-            trackUnpredictedBEResources: true,
             shouldCoalesceModuleRequestsMadeInSameTick: true,
-            staggerJsDownloads: { thing: false },
-            preloader_num_preloads: { thing: 0 },
-            preloader_preload_after_dd: { thing: false },
-            preloader_num_loads: { thing: 1 },
-            preloader_enabled: { thing: false },
             retryQueuedBootloads: false,
-            silentDups: false,
-            asyncPreloadBoost: { thing: true }
+            silentDups: false
           });
           __d("CurrentCommunityInitialData", [], {});
           __d("CurrentUserInitialData", [], {
@@ -3877,8 +3869,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1001780181,
-            client_revision: 1001780181,
+            server_revision: 1001782021,
+            client_revision: 1001782021,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3888,14 +3880,14 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6799780048672764999-0",
+            hsi: "6799857327726151550-0",
             spin: 0,
-            __spin_r: 1001780181,
+            __spin_r: 1001782021,
             __spin_b: "trunk",
-            __spin_t: 1583197165,
+            __spin_t: 1583215157,
             vip: "31.13.65.7"
           });
-          __d("ServerNonce", [], { ServerNonce: "SJYmWgFig0Tb2IBhZuCbYR" });
+          __d("ServerNonce", [], { ServerNonce: "krpcIvdNHnGtTBFZavOEYL" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4059,7 +4051,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001780181",
+            revision: "1001782021",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -16654,12 +16646,10 @@ try {
               }
 
               function _blEndpointDone(name, src, data) {
-                if (require("BootloaderConfig").trackUnpredictedBEResources) {
-                  _unpredictedBEResourcesMap.set(
-                    name,
-                    _countUnpredictedBEResources(data)
-                  );
-                }
+                _unpredictedBEResourcesMap.set(
+                  name,
+                  _countUnpredictedBEResources(data)
+                );
                 Bootloader.done(name, src);
               }
 
@@ -17057,10 +17047,7 @@ try {
                   var entry = _ref15[1];
                   var type = entry.type;
 
-                  if (
-                    entry.nonblocking &&
-                    !require("BootloaderConfig").assumeNotNonblocking
-                  ) {
+                  if (entry.nonblocking) {
                     nonblocking.add(hash);
                   } else {
                     (type === "async" ? blockingAsync : blockingNonAsync).push(
@@ -17149,17 +17136,19 @@ try {
                       blocking_resources_count: blockingCount,
                       all_resources_downloaded: willRequestHashes.length,
                       all_resources_count: blockingCount + nonblocking.size,
-                      unpredicted_be_resources: require("BootloaderConfig")
-                        .trackUnpredictedBEResources
-                        ? blockingAsync.reduce(function(acc, h) {
-                            return (
-                              acc +
-                              require("nullthrows")(
-                                _unpredictedBEResourcesMap.get(h)
-                              )
-                            );
-                          }, 0)
-                        : null,
+                      unpredicted_be_resources: blockingAsync.reduce(function(
+                        acc,
+                        h
+                      ) {
+                        return (
+                          acc +
+                          require("nullthrows")(
+                            _unpredictedBEResourcesMap.get(h)
+                          )
+                        );
+                      },
+                      0),
+
                       err_count: Array.from(willRequest.values()).filter(
                         function(_ref12) {
                           var src = _ref12.src;
@@ -38690,7 +38679,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001780181","namespace":"FB","message":"' +
+        '","revision":"1001782021","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
