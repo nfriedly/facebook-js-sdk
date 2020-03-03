@@ -1,4 +1,4 @@
-/*1583191756,,JIT Construction: v1001779838,en_US*/
+/*1583197165,,JIT Construction: v1001780181,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3800,7 +3800,8 @@ try {
                 "BUSINESS_GRAPH_SETTING_BU_ASSIGNED_USERS_NEW_API",
                 "BUSINESS_GRAPH_SETTING_SESG_ASSIGNED_USERS_NEW_API",
                 "RECRUITING_REQUISITION_VALIDATE_COMPANY_GROUPING_ON_LINK",
-                "BAM_EXCLUDE_MEGAZORDED_ALERTS"
+                "BAM_EXCLUDE_MEGAZORDED_ALERTS",
+                "CALENDAR_WEEKVIEW_NEW_BADGE"
               ]
             },
             ko: {
@@ -3821,7 +3822,8 @@ try {
                 "4NSq3ZC4ScE",
                 "1onzIv0jH6H",
                 "5LSlJUj3BnT",
-                "2urFjIQigPj"
+                "2urFjIQigPj",
+                "7EZACZMulOj"
               ]
             }
           });
@@ -3875,8 +3877,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1001779838,
-            client_revision: 1001779838,
+            server_revision: 1001780181,
+            client_revision: 1001780181,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3886,14 +3888,14 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6799756815947753659-0",
+            hsi: "6799780048672764999-0",
             spin: 0,
-            __spin_r: 1001779838,
+            __spin_r: 1001780181,
             __spin_b: "trunk",
-            __spin_t: 1583191756,
-            vip: "31.13.66.19"
+            __spin_t: 1583197165,
+            vip: "31.13.65.7"
           });
-          __d("ServerNonce", [], { ServerNonce: "mrK_p8rSNQKGiZL1B0GUkZ" });
+          __d("ServerNonce", [], { ServerNonce: "SJYmWgFig0Tb2IBhZuCbYR" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4057,7 +4059,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001779838",
+            revision: "1001780181",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -14215,7 +14217,8 @@ try {
                 setStatusAndNotify(OFFLINE);
               };
               function notifySubscribers() {
-                subscribers.forEach(function(callback) {
+                var subscribersList = subscribers.slice();
+                subscribersList.forEach(function(callback) {
                   callback({ online: _isOnline });
                 });
               }
@@ -38687,7 +38690,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001779838","namespace":"FB","message":"' +
+        '","revision":"1001780181","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
