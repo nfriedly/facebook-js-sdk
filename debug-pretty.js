@@ -1,4 +1,4 @@
-/*1583273356,,JIT Construction: v1001784991,en_US*/
+/*1583354347,,JIT Construction: v1001790621,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3869,10 +3869,10 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1001784991,
-            client_revision: 1001784991,
+            server_revision: 1001790621,
+            client_revision: 1001790621,
             tier: "",
-            push_phase: "C3",
+            push_phase: "C3e",
             pkg_cohort: "PHASED:DEFAULT",
             pr: 1,
             haste_site: "www",
@@ -3880,14 +3880,14 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6800107285085572750-0",
+            hsi: "6800455139362051995-0",
             spin: 0,
-            __spin_r: 1001784991,
+            __spin_r: 1001790621,
             __spin_b: "trunk",
-            __spin_t: 1583273356,
+            __spin_t: 1583354347,
             vip: "31.13.66.19"
           });
-          __d("ServerNonce", [], { ServerNonce: "vNqqOEpg8X24vHg7D3ChcU" });
+          __d("ServerNonce", [], { ServerNonce: "okgKBROJahNpvHIvxbCm9O" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4040,6 +4040,7 @@ try {
               boosted_component: true,
               boosted_pagelikes: true,
               jslogger: true,
+              kbshortcuts_feed: true,
               mercury_send_error_logging: true,
               platform_oauth_client_events: true,
               xtrackable_clientview_batch: true,
@@ -4051,7 +4052,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001784991",
+            revision: "1001790621",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -4100,8 +4101,8 @@ try {
             ]
           });
           __d("JSSDKXDConfig", [], {
-            XdUrl: "/connect/xd_arbiter.php?version=45",
-            XdBundleUrl: "/connect/xd_arbiter/r/IKY8WzMqQrj.js?version=45",
+            XdUrl: "/connect/xd_arbiter.php?version=46",
+            XdBundleUrl: "/connect/xd_arbiter/r/IKY8WzMqQrj.js?version=46",
             useCdn: true
           });
           __d("JSSDKCanvasPrefetcherConfig", [], {
@@ -11476,6 +11477,7 @@ try {
             [
               "invariant",
               "PHPQuerySerializerNoEncoding",
+              "UriNeedRawQuerySVChecker",
               "URIRFC3986",
               "URISchemes",
               "ex",
@@ -11525,6 +11527,8 @@ try {
                   uri.setForceFragmentSeparator(
                     uriToParse.getForceFragmentSeparator()
                   );
+                  uri.setOriginalRawQuery(uriToParse.getOriginalRawQuery());
+                  uri.setQueryParamModified(false);
                   return true;
                 }
 
@@ -11533,7 +11537,8 @@ try {
                   c_URIRFC3986 || (c_URIRFC3986 = require("URIRFC3986"))
                 ).parse(uriToParse) || {
                   fragment: null,
-                  scheme: null
+                  scheme: null,
+                  query: null
                 };
 
                 if (
@@ -11573,7 +11578,8 @@ try {
                   uri.setForceFragmentSeparator(true);
                 }
                 uri.setIsGeneric(components.isGenericURI || false);
-
+                uri.setOriginalRawQuery(components.query);
+                uri.setQueryParamModified(false);
                 if (components.userinfo !== null) {
                   if (shouldThrow) {
                     throw new Error(
@@ -11660,6 +11666,7 @@ try {
                   this.$URIBase_queryData = {};
                   this.$URIBase_forceFragmentSeparator = false;
                   parse(this, uri, true, serializer);
+                  this.$URIBase_isQueryParamModified = false;
                 }
                 var _proto = URIBase.prototype;
                 _proto.setProtocol = function setProtocol(protocol) {
@@ -11744,10 +11751,12 @@ try {
                   } else {
                     this.$URIBase_queryData[mapOrKey] = value;
                   }
+                  this.$URIBase_isQueryParamModified = true;
                   return this;
                 };
                 _proto.setQueryData = function setQueryData(map) {
                   this.$URIBase_queryData = map;
+                  this.$URIBase_isQueryParamModified = true;
                   return this;
                 };
                 _proto.getQueryData = function getQueryData() {
@@ -11758,14 +11767,34 @@ try {
                     this.$URIBase_serializer.deserialize(queryString)
                   );
                 };
-                _proto.getQueryString = function getQueryString() {
-                  return this.$URIBase_renderQuery(false);
+                _proto.getQueryString = function getQueryString(preserveQuery) {
+                  if (preserveQuery === void 0) {
+                    preserveQuery = false;
+                  }
+                  return this.$URIBase_renderQuery(false, preserveQuery);
                 };
                 _proto.$URIBase_renderQuery = function $URIBase_renderQuery(
-                  rawQuery
+                  rawQuery,
+                  preserveQuery
                 ) {
                   if (rawQuery === void 0) {
                     rawQuery = false;
+                  }
+                  if (preserveQuery === void 0) {
+                    preserveQuery = false;
+                  }
+                  if (
+                    !this.$URIBase_isQueryParamModified &&
+                    (preserveQuery ||
+                      require("UriNeedRawQuerySVChecker").isDomainNeedRawQuery(
+                        this.getDomain()
+                      ))
+                  ) {
+                    var _this$$URIBase_origin;
+                    return (_this$$URIBase_origin = this
+                      .$URIBase_originalRawQuery) != null
+                      ? _this$$URIBase_origin
+                      : "";
                   }
                   return (rawQuery
                     ? require("PHPQuerySerializerNoEncoding")
@@ -11779,6 +11808,7 @@ try {
                   for (var i = 0, length = keys.length; i < length; ++i) {
                     delete this.$URIBase_queryData[keys[i]];
                   }
+                  this.$URIBase_isQueryParamModified = true;
                   return this;
                 };
                 _proto.setFragment = function setFragment(fragment) {
@@ -11806,6 +11836,21 @@ try {
                 _proto.getIsGeneric = function getIsGeneric() {
                   return this.$URIBase_isGeneric;
                 };
+                _proto.getOriginalRawQuery = function getOriginalRawQuery() {
+                  return this.$URIBase_originalRawQuery;
+                };
+                _proto.setOriginalRawQuery = function setOriginalRawQuery(
+                  originalRawQuery
+                ) {
+                  this.$URIBase_originalRawQuery = originalRawQuery;
+                  return this;
+                };
+                _proto.setQueryParamModified = function setQueryParamModified(
+                  isQueryParamModified
+                ) {
+                  this.$URIBase_isQueryParamModified = isQueryParamModified;
+                  return this;
+                };
                 _proto.isEmpty = function isEmpty() {
                   return !(
                     this.getPath() ||
@@ -11818,28 +11863,39 @@ try {
                   );
                 };
                 _proto.toString = function toString() {
-                  return this.$URIBase_toStringWithFilters(false);
+                  return this.$URIBase_toStringWithFilters(false, false);
                 };
                 _proto.toStringRawQuery = function toStringRawQuery() {
-                  return this.$URIBase_toStringWithFilters(true);
+                  return this.$URIBase_toStringWithFilters(true, false);
+                };
+                _proto.toStringPreserveQuery = function toStringPreserveQuery() {
+                  return this.$URIBase_toStringWithFilters(false, true);
                 };
                 _proto.$URIBase_toStringWithFilters = function $URIBase_toStringWithFilters(
-                  rawQuery
+                  rawQuery,
+                  preserveQuery
                 ) {
                   if (rawQuery === void 0) {
                     rawQuery = false;
+                  }
+                  if (preserveQuery === void 0) {
+                    preserveQuery = false;
                   }
                   var uri = this;
                   for (var i = 0; i < uriFilters.length; i++) {
                     uri = uriFilters[i](uri);
                   }
-                  return uri.$URIBase_toStringImpl(rawQuery);
+                  return uri.$URIBase_toStringImpl(rawQuery, preserveQuery);
                 };
                 _proto.$URIBase_toStringImpl = function $URIBase_toStringImpl(
-                  rawQuery
+                  rawQuery,
+                  preserveQuery
                 ) {
                   if (rawQuery === void 0) {
                     rawQuery = false;
+                  }
+                  if (preserveQuery === void 0) {
+                    preserveQuery = false;
                   }
                   var str = "";
                   var protocol = this.getProtocol();
@@ -11861,7 +11917,10 @@ try {
                   } else if (str) {
                     str += "/";
                   }
-                  var queryStr = this.$URIBase_renderQuery(rawQuery);
+                  var queryStr = this.$URIBase_renderQuery(
+                    rawQuery,
+                    preserveQuery
+                  );
                   if (queryStr) {
                     str += "?" + queryStr;
                   }
@@ -11967,6 +12026,76 @@ try {
             null
           );
           __d(
+            "UriNeedRawQuerySVChecker",
+            ["PHPQuerySerializer", "URIBase", "UriNeedRawQuerySVConfig"],
+            function $module_UriNeedRawQuerySVChecker(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              "use strict";
+              var c_URIBase;
+              var c_PHPQuerySerializer;
+
+              var PROTOCOLS = ["http", "https"];
+
+              function isUriNeedRawQuery(uri) {
+                if (uri == null) {
+                  return false;
+                }
+                var uriBase =
+                  uri instanceof (c_URIBase || (c_URIBase = require("URIBase")))
+                    ? uri
+                    : (c_URIBase || (c_URIBase = require("URIBase"))).tryParse(
+                        uri,
+                        c_PHPQuerySerializer ||
+                          (c_PHPQuerySerializer = require("PHPQuerySerializer"))
+                      );
+                if (uriBase == null) {
+                  return false;
+                }
+
+                var protocol = uriBase.getProtocol();
+
+                if (!ES(PROTOCOLS, "includes", true, protocol)) {
+                  return false;
+                }
+
+                return isDomainNeedRawQuery(uriBase.getDomain());
+              }
+
+              function isDomainNeedRawQuery(domain) {
+                return (
+                  domain != null &&
+                  ES(
+                    require("UriNeedRawQuerySVConfig").uris,
+                    "some",
+                    true,
+                    function(uriNeedRawQueryDomain) {
+                      return (
+                        c_URIBase || (c_URIBase = require("URIBase"))
+                      ).isDomainSubdomainOfDomain(
+                        domain,
+                        uriNeedRawQueryDomain,
+                        c_PHPQuerySerializer ||
+                          (c_PHPQuerySerializer = require("PHPQuerySerializer"))
+                      );
+                    }
+                  )
+                );
+              }
+
+              module.exports = {
+                isUriNeedRawQuery: isUriNeedRawQuery,
+                isDomainNeedRawQuery: isDomainNeedRawQuery
+              };
+            },
+            null
+          );
+          __d(
             "areSameOrigin",
             [],
             function $module_areSameOrigin(
@@ -12049,67 +12178,6 @@ try {
               };
 
               module.exports = isFacebookURI;
-            },
-            null
-          );
-          __d(
-            "isUriNeedRawQuerySVURI",
-            ["PHPQuerySerializer", "URIBase", "UriNeedRawQuerySVConfig"],
-            function $module_isUriNeedRawQuerySVURI(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              "use strict";
-              var c_URIBase;
-              var c_PHPQuerySerializer;
-
-              var PROTOCOLS = ["http", "https"];
-
-              function isUriNeedRawQuerySVURI(uri) {
-                if (uri == null) {
-                  return false;
-                }
-
-                var uriBase =
-                  uri instanceof (c_URIBase || (c_URIBase = require("URIBase")))
-                    ? uri
-                    : (c_URIBase || (c_URIBase = require("URIBase"))).tryParse(
-                        uri,
-                        c_PHPQuerySerializer ||
-                          (c_PHPQuerySerializer = require("PHPQuerySerializer"))
-                      );
-                if (uriBase == null) {
-                  return false;
-                }
-
-                if (!ES(PROTOCOLS, "includes", true, uriBase.getProtocol())) {
-                  return false;
-                }
-
-                var domain = uriBase.getDomain();
-
-                return ES(
-                  require("UriNeedRawQuerySVConfig").uris,
-                  "some",
-                  true,
-                  function(uriNeedRawQueryDomain) {
-                    return (
-                      c_URIBase || (c_URIBase = require("URIBase"))
-                    ).isDomainSubdomainOfDomain(
-                      domain,
-                      uriNeedRawQueryDomain,
-                      c_PHPQuerySerializer ||
-                        (c_PHPQuerySerializer = require("PHPQuerySerializer"))
-                    );
-                  }
-                );
-              }
-
-              module.exports = isUriNeedRawQuerySVURI;
             },
             null
           );
@@ -12204,10 +12272,10 @@ try {
               "PHPQuerySerializerNoEncoding",
               "ReloadPage",
               "URIBase",
+              "UriNeedRawQuerySVChecker",
               "areSameOrigin",
               "ifRequired",
               "isFacebookURI",
-              "isUriNeedRawQuerySVURI",
               "memoize",
               "memoizeStringOnly",
               "unqualifyURI",
@@ -12221,7 +12289,6 @@ try {
               module,
               exports
             ) {
-              var c_isUriNeedRawQuerySVURI;
               var c_PHPQuerySerializer;
               var c_Env;
               var c_URIBase;
@@ -12246,10 +12313,7 @@ try {
                 function URI(uri) {
                   var _this;
                   if (
-                    (c_isUriNeedRawQuerySVURI ||
-                      (c_isUriNeedRawQuerySVURI = require("isUriNeedRawQuerySVURI")))(
-                      uri
-                    )
+                    require("UriNeedRawQuerySVChecker").isUriNeedRawQuery(uri)
                   ) {
                     _this =
                       _URIBase.call(
@@ -38679,7 +38743,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001784991","namespace":"FB","message":"' +
+        '","revision":"1001790621","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
