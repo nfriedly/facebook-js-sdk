@@ -1,4 +1,4 @@
-/*1583354347,,JIT Construction: v1001790621,en_US*/
+/*1583359158,,JIT Construction: v1001791272,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3869,8 +3869,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1001790621,
-            client_revision: 1001790621,
+            server_revision: 1001791272,
+            client_revision: 1001791272,
             tier: "",
             push_phase: "C3e",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3880,14 +3880,14 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6800455139362051995-0",
+            hsi: "6800475803306745139-0",
             spin: 0,
-            __spin_r: 1001790621,
+            __spin_r: 1001791272,
             __spin_b: "trunk",
-            __spin_t: 1583354347,
+            __spin_t: 1583359158,
             vip: "31.13.66.19"
           });
-          __d("ServerNonce", [], { ServerNonce: "okgKBROJahNpvHIvxbCm9O" });
+          __d("ServerNonce", [], { ServerNonce: "7w_T7rC297mA2b4srzj36J" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4040,7 +4040,6 @@ try {
               boosted_component: true,
               boosted_pagelikes: true,
               jslogger: true,
-              kbshortcuts_feed: true,
               mercury_send_error_logging: true,
               platform_oauth_client_events: true,
               xtrackable_clientview_batch: true,
@@ -4052,7 +4051,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001790621",
+            revision: "1001791272",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -14234,7 +14233,12 @@ try {
                 }
               }
 
+              function isHeartbeatPending() {
+                return heartbeatRequest != null;
+              }
+
               var NetworkHeartbeat = {
+                isHeartbeatPending: isHeartbeatPending,
                 maybeStartHeartbeat: maybeStartHeartbeat
               };
 
@@ -14287,7 +14291,10 @@ try {
               }
 
               function setStatusAndNotify(status) {
-                if (_isOnline !== status) {
+                if (
+                  _isOnline !== status &&
+                  !require("NetworkHeartbeat").isHeartbeatPending()
+                ) {
                   _isOnline = status;
                   require("FBLogger")("NetworkStatus").warn(
                     "Network switched to " + (status ? "online" : "offline")
@@ -27371,29 +27378,60 @@ try {
                   }
                 }
 
-                if (fullUrlPath.length <= 2000) {
-                  var image = new Image();
-                  image.src = fullUrlPath;
-                } else {
-                  var name = require("guid")();
-                  var root = require("sdk.Content").appendHidden("");
-                  require("insertIframe")({
-                    url: require("getBlankIframeSrc")(),
-                    root: root,
-                    name: name,
-                    className: "fb_hidden fb_invisible",
-                    onload: function onload() {
-                      if (root.parentNode != null) {
-                        root.parentNode.removeChild(root);
+                if (window.fetch) {
+                  var standardFetchOptions = {
+                    mode: "no-cors"
+                  };
+
+                  if (fullUrlPath.length <= 2000) {
+                    window.fetch(fullUrlPath, standardFetchOptions);
+                  } else {
+                    var searchParams = new URLSearchParams();
+
+                    for (var key in params) {
+                      if (Object.prototype.hasOwnProperty.call(params, key)) {
+                        var val = params[key];
+                        if (val !== null && val !== undefined) {
+                          searchParams.set(key, val);
+                        }
                       }
                     }
-                  });
 
-                  require("sdk.Content").submitToTarget({
-                    url: url,
-                    target: name,
-                    params: params
-                  });
+                    var fetchOptions = babelHelpers["extends"](
+                      {
+                        method: "POST",
+                        body: searchParams
+                      },
+                      standardFetchOptions
+                    );
+
+                    window.fetch(url, fetchOptions);
+                  }
+                } else {
+                  if (fullUrlPath.length <= 2000) {
+                    var image = new Image();
+                    image.src = fullUrlPath;
+                  } else {
+                    var name = require("guid")();
+                    var root = require("sdk.Content").appendHidden("");
+                    require("insertIframe")({
+                      url: require("getBlankIframeSrc")(),
+                      root: root,
+                      name: name,
+                      className: "fb_hidden fb_invisible",
+                      onload: function onload() {
+                        if (root.parentNode != null) {
+                          root.parentNode.removeChild(root);
+                        }
+                      }
+                    });
+
+                    require("sdk.Content").submitToTarget({
+                      url: url,
+                      target: name,
+                      params: params
+                    });
+                  }
                 }
               }
 
@@ -38743,7 +38781,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001790621","namespace":"FB","message":"' +
+        '","revision":"1001791272","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
