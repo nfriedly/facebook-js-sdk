@@ -1,4 +1,4 @@
-/*1583394550,,JIT Construction: v1001794558,en_US*/
+/*1583446766,,JIT Construction: v1001798053,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3869,8 +3869,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1001794558,
-            client_revision: 1001794558,
+            server_revision: 1001798053,
+            client_revision: 1001798053,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3880,14 +3880,14 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6800627809644159641-0",
+            hsi: "6800852075883472338-0",
             spin: 0,
-            __spin_r: 1001794558,
+            __spin_r: 1001798053,
             __spin_b: "trunk",
-            __spin_t: 1583394550,
+            __spin_t: 1583446766,
             vip: "31.13.66.19"
           });
-          __d("ServerNonce", [], { ServerNonce: "SFXQZiNZZEon9jeL5RN4Ap" });
+          __d("ServerNonce", [], { ServerNonce: "8RXqFOwNYdN0UDPmyI7BEB" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4040,7 +4040,6 @@ try {
               boosted_component: true,
               boosted_pagelikes: true,
               jslogger: true,
-              kbshortcuts_feed: true,
               mercury_send_error_logging: true,
               platform_oauth_client_events: true,
               xtrackable_clientview_batch: true,
@@ -4052,7 +4051,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001794558",
+            revision: "1001798053",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -19481,7 +19480,7 @@ try {
           );
           __d(
             "promiseDone",
-            ["TAAL", "setTimeoutAcrossTransitions"],
+            ["FBLogger", "TAAL", "setTimeoutAcrossTransitions"],
             function $module_promiseDone(
               global,
               require,
@@ -19502,6 +19501,21 @@ try {
                     if (err instanceof Error) {
                       throw err;
                     } else {
+                      if (typeof err === "object") {
+                        try {
+                          require("FBLogger")("notifications").warn(
+                            "T62879140: PromiseDone error stringified: %s",
+                            ES("JSON", "stringify", false, err)
+                          );
+                        } catch (e) {
+                          require("FBLogger")("notifications")
+                            .catching(e)
+                            .warn(
+                              "T62879140: PromiseDone stringification error: %s",
+                              e
+                            );
+                        }
+                      }
                       errorLocation.message = require("TAAL").blameToPreviousFile(
                         err
                       );
@@ -37717,6 +37731,7 @@ try {
                     auth_type: "string",
                     default_audience: "string",
                     use_continue_as: "bool",
+                    layout: "string",
                     button_type: "string",
                     width: "px",
                     height: "px"
@@ -38782,7 +38797,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001794558","namespace":"FB","message":"' +
+        '","revision":"1001798053","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
