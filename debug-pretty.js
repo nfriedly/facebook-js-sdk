@@ -1,4 +1,4 @@
-/*1583368158,,JIT Construction: v1001792123,en_US*/
+/*1583394550,,JIT Construction: v1001794558,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3869,8 +3869,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1001792123,
-            client_revision: 1001792123,
+            server_revision: 1001794558,
+            client_revision: 1001794558,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3880,14 +3880,14 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6800514456537239938-0",
+            hsi: "6800627809644159641-0",
             spin: 0,
-            __spin_r: 1001792123,
+            __spin_r: 1001794558,
             __spin_b: "trunk",
-            __spin_t: 1583368158,
+            __spin_t: 1583394550,
             vip: "31.13.66.19"
           });
-          __d("ServerNonce", [], { ServerNonce: "I6-oylorqn5ZKNxaFXHFJV" });
+          __d("ServerNonce", [], { ServerNonce: "SFXQZiNZZEon9jeL5RN4Ap" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4040,6 +4040,7 @@ try {
               boosted_component: true,
               boosted_pagelikes: true,
               jslogger: true,
+              kbshortcuts_feed: true,
               mercury_send_error_logging: true,
               platform_oauth_client_events: true,
               xtrackable_clientview_batch: true,
@@ -4051,7 +4052,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001792123",
+            revision: "1001794558",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -38781,7 +38782,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001792123","namespace":"FB","message":"' +
+        '","revision":"1001794558","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
