@@ -1,4 +1,4 @@
-/*1583473161,,JIT Construction: v1001801671,en_US*/
+/*1583533152,,JIT Construction: v1001804596,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3869,10 +3869,10 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1001801671,
-            client_revision: 1001801671,
+            server_revision: 1001804596,
+            client_revision: 1001804596,
             tier: "",
-            push_phase: "C3e",
+            push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
             pr: 1,
             haste_site: "www",
@@ -3880,14 +3880,14 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6800965442000997536-0",
+            hsi: "6801223101840421772-0",
             spin: 0,
-            __spin_r: 1001801671,
+            __spin_r: 1001804596,
             __spin_b: "trunk",
-            __spin_t: 1583473161,
-            vip: "31.13.65.7"
+            __spin_t: 1583533152,
+            vip: "31.13.66.19"
           });
-          __d("ServerNonce", [], { ServerNonce: "UzvFsskTb5H37XEcRXtCiy" });
+          __d("ServerNonce", [], { ServerNonce: "_3qOvfJFzvz60G5TEmvTy6" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4051,7 +4051,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001801671",
+            revision: "1001804596",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -4839,21 +4839,25 @@ try {
               }
 
               function getStackWithoutMessage(error) {
-                var stack = error.stack;
+                var name = error.name,
+                  message = error.message,
+                  stack = error.stack;
                 if (stack == null) {
                   return null;
                 }
-                var message = error.message;
-                var stackWithoutErrorType = stack.replace(
-                  /^[\w \.\<\>:]+:\s/,
-                  ""
-                );
-                return message != null &&
-                  ES(stackWithoutErrorType, "startsWith", true, message)
-                  ? stackWithoutErrorType.substr(message.length + 1)
-                  : stackWithoutErrorType !== stack
-                  ? stackWithoutErrorType.replace(/^.*?\n/, "")
-                  : stack;
+                if (name != null && message != null && message != "") {
+                  var prefix = name + ": " + message + "\n";
+                  if (ES(stack, "startsWith", true, prefix)) {
+                    return stack.substr(prefix.length);
+                  }
+                }
+                if (name != null) {
+                  var _prefix = name + "\n";
+                  if (ES(stack, "startsWith", true, _prefix)) {
+                    return stack.substr(_prefix.length);
+                  }
+                }
+                return stack;
               }
 
               function normalizeStackFrame(frameRaw) {
@@ -38792,7 +38796,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001801671","namespace":"FB","message":"' +
+        '","revision":"1001804596","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
