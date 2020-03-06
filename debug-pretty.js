@@ -1,4 +1,4 @@
-/*1583533152,,JIT Construction: v1001804596,en_US*/
+/*1583537356,,JIT Construction: v1001805168,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3869,8 +3869,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1001804596,
-            client_revision: 1001804596,
+            server_revision: 1001805168,
+            client_revision: 1001805168,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3880,14 +3880,14 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6801223101840421772-0",
+            hsi: "6801241157888889939-0",
             spin: 0,
-            __spin_r: 1001804596,
+            __spin_r: 1001805168,
             __spin_b: "trunk",
-            __spin_t: 1583533152,
-            vip: "31.13.66.19"
+            __spin_t: 1583537356,
+            vip: "31.13.65.7"
           });
-          __d("ServerNonce", [], { ServerNonce: "_3qOvfJFzvz60G5TEmvTy6" });
+          __d("ServerNonce", [], { ServerNonce: "42VVesEDie-YvsdJ7dmy_G" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4051,7 +4051,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001804596",
+            revision: "1001805168",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -26063,7 +26063,7 @@ try {
               var PlatformOAuthDialogLoginFunnelLogger = {
                 CLIENT_FUNNEL_VERSION: 1,
 
-                log: function log(action, cbt, loggerId, mustHaveCBT) {
+                log: function log(action, cbt, loggerId, mustHaveCBT, gdpType) {
                   if (mustHaveCBT === void 0) {
                     mustHaveCBT = true;
                   }
@@ -26104,7 +26104,8 @@ try {
                       "client_funnel_version",
                       PlatformOAuthDialogLoginFunnelLogger.CLIENT_FUNNEL_VERSION
                     )
-                    .addFunnelPayload("cbt", cbtNumber);
+                    .addFunnelPayload("cbt", cbtNumber)
+                    .addFunnelPayload("gdp_type", gdpType);
                   if (action === "client_logged_out_init_impression") {
                     var loginURI = getLoginURI();
                     logger.addFunnelPayload("login_uri", loginURI);
@@ -38796,7 +38797,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001804596","namespace":"FB","message":"' +
+        '","revision":"1001805168","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
