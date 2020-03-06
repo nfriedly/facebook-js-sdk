@@ -1,4 +1,4 @@
-/*1583446766,,JIT Construction: v1001798053,en_US*/
+/*1583473161,,JIT Construction: v1001801671,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3869,10 +3869,10 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1001798053,
-            client_revision: 1001798053,
+            server_revision: 1001801671,
+            client_revision: 1001801671,
             tier: "",
-            push_phase: "C3",
+            push_phase: "C3e",
             pkg_cohort: "PHASED:DEFAULT",
             pr: 1,
             haste_site: "www",
@@ -3880,14 +3880,14 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6800852075883472338-0",
+            hsi: "6800965442000997536-0",
             spin: 0,
-            __spin_r: 1001798053,
+            __spin_r: 1001801671,
             __spin_b: "trunk",
-            __spin_t: 1583446766,
-            vip: "31.13.66.19"
+            __spin_t: 1583473161,
+            vip: "31.13.65.7"
           });
-          __d("ServerNonce", [], { ServerNonce: "8RXqFOwNYdN0UDPmyI7BEB" });
+          __d("ServerNonce", [], { ServerNonce: "UzvFsskTb5H37XEcRXtCiy" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4051,7 +4051,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001798053",
+            revision: "1001801671",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -7306,7 +7306,7 @@ try {
 
               module.exports = TimeSlice;
             },
-            3
+            6
           );
           __d(
             "requireCond",
@@ -7340,7 +7340,7 @@ try {
             ) {
               module.exports = require("cr:717822");
             },
-            3
+            null
           );
           __d(
             "TimerStorage",
@@ -17271,11 +17271,6 @@ try {
                   var actualCallback = realCallback;
                   realCallback = function realCallback() {
                     callback_scheduler(actualCallback);
-                  };
-                } else if (global.ScheduleJSWork && realCallback) {
-                  var _actualCallback = realCallback;
-                  realCallback = function realCallback() {
-                    global.ScheduleJSWork(_actualCallback)();
                   };
                 }
 
@@ -38797,7 +38792,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001798053","namespace":"FB","message":"' +
+        '","revision":"1001801671","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
