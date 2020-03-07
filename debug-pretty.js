@@ -1,4 +1,4 @@
-/*1583537356,,JIT Construction: v1001805168,en_US*/
+/*1583544565,,JIT Construction: v1001805782,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3869,8 +3869,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1001805168,
-            client_revision: 1001805168,
+            server_revision: 1001805782,
+            client_revision: 1001805782,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3880,14 +3880,14 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6801241157888889939-0",
+            hsi: "6801272118637835253-0",
             spin: 0,
-            __spin_r: 1001805168,
+            __spin_r: 1001805782,
             __spin_b: "trunk",
-            __spin_t: 1583537356,
-            vip: "31.13.65.7"
+            __spin_t: 1583544565,
+            vip: "31.13.66.19"
           });
-          __d("ServerNonce", [], { ServerNonce: "42VVesEDie-YvsdJ7dmy_G" });
+          __d("ServerNonce", [], { ServerNonce: "Advk6IZ50fgZ6hztIjX9Xs" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4051,7 +4051,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001805168",
+            revision: "1001805782",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -28199,30 +28199,6 @@ try {
                   require("sdk.Runtime").setEnforceHttps(true);
                 }
 
-                if (params.user_signal) {
-                  authResponse = babelHelpers["extends"]({}, authResponse, {
-                    userSignal: params.user_signal
-                  });
-                }
-
-                if (params.account_age_status) {
-                  authResponse = babelHelpers["extends"]({}, authResponse, {
-                    accountAgeStatus: params.account_age_status
-                  });
-                }
-
-                if (params.verification_status) {
-                  authResponse = babelHelpers["extends"]({}, authResponse, {
-                    verificationStatus: params.verification_status
-                  });
-                }
-
-                if (params.verification_history) {
-                  authResponse = babelHelpers["extends"]({}, authResponse, {
-                    verificationHistory: params.verification_history
-                  });
-                }
-
                 if (
                   require("sdk.Runtime").getUseLocalStorage() &&
                   location.protocol === "https:" &&
@@ -38797,7 +38773,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001805168","namespace":"FB","message":"' +
+        '","revision":"1001805782","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
