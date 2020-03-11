@@ -1,4 +1,4 @@
-/*1583884751,,JIT Construction: v1001819418,en_US*/
+/*1583911765,,JIT Construction: v1001821418,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3874,8 +3874,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1001819418,
-            client_revision: 1001819418,
+            server_revision: 1001821418,
+            client_revision: 1001821418,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3885,14 +3885,14 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6802733207129690301-0",
+            hsi: "6802849230824348158-0",
             spin: 0,
-            __spin_r: 1001819418,
+            __spin_r: 1001821418,
             __spin_b: "trunk",
-            __spin_t: 1583884751,
-            vip: "31.13.71.7"
+            __spin_t: 1583911765,
+            vip: "31.13.66.19"
           });
-          __d("ServerNonce", [], { ServerNonce: "EbqZ28i616x7-TswwNhD60" });
+          __d("ServerNonce", [], { ServerNonce: "4ArflN9ZZ5upwYsYwG6dB5" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4056,7 +4056,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001819418",
+            revision: "1001821418",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -4106,7 +4106,7 @@ try {
           });
           __d("JSSDKXDConfig", [], {
             XdUrl: "/connect/xd_arbiter.php?version=46",
-            XdBundleUrl: "/connect/xd_arbiter/r/h4w_DHmJnB0.js?version=46",
+            XdBundleUrl: "/connect/xd_arbiter/r/bw681DTp62x.js?version=46",
             useCdn: true
           });
           __d("JSSDKCanvasPrefetcherConfig", [], {
@@ -16361,10 +16361,15 @@ try {
               "use strict";
 
               var _asyncRequestCounter = 0;
+              var _externalJSCounter = 0;
 
               var ResourceHasher = {
                 createAsyncHash: function createAsyncHash() {
                   return "async:" + _asyncRequestCounter++;
+                },
+
+                createExternalJSHash: function createExternalJSHash() {
+                  return "ejs:" + _externalJSCounter++;
                 },
 
                 getValidResourceHash: function getValidResourceHash(hash) {
@@ -16576,7 +16581,9 @@ try {
               var _queuedLoadModules = [];
 
               var _requested = new Set();
+
               var _preloadRequested = new Set();
+
               var _componentMap = new Map();
 
               var _componentToBEHash = new Map();
@@ -16771,14 +16778,14 @@ try {
               function _preloadStaticResource(
                 source,
                 type,
-                name,
+                hash,
                 containerNode,
                 onload
               ) {
-                if (_preloadRequested.has(name)) {
+                if (_preloadRequested.has(hash)) {
                   return;
                 }
-                _preloadRequested.add(name);
+                _preloadRequested.add(hash);
 
                 var link = document.createElement("link");
                 link.href = source;
@@ -16788,23 +16795,23 @@ try {
                   link.onload = onload;
                 }
 
-                if (name != null && !_getExistingResource(name).nc) {
+                if (!_getExistingResource(hash).nc) {
                   link.crossOrigin = "anonymous";
                 }
                 containerNode.appendChild(link);
               }
 
-              function _loadJS(source, name, callback, containerNode) {
+              function _loadJS(source, hash, callback, containerNode) {
                 var script = document.createElement("script");
                 script.src = require("createTrustedScriptURLFromFacebookURI")(
                   source
                 );
                 script.async = true;
-                if (name != null && !_getExistingResource(name).nc) {
+                if (!_getExistingResource(hash).nc) {
                   script.crossOrigin = "anonymous";
                 }
 
-                _setupScriptEventListeners(script, name, callback);
+                _setupScriptEventListeners(script, hash, callback);
                 containerNode.appendChild(script);
 
                 return script;
@@ -16866,12 +16873,12 @@ try {
                 return key;
               }
 
-              function _blEndpointDone(name, src, data) {
+              function _blEndpointDone(hash, src, data) {
                 _unpredictedBEResourcesMap.set(
-                  name,
+                  hash,
                   _countUnpredictedBEResources(data)
                 );
-                Bootloader.done(name, src);
+                Bootloader.done(hash, src);
               }
 
               function _countUnpredictedBEResources(data) {
@@ -16980,7 +16987,7 @@ try {
                 return unpredicted;
               }
 
-              function _setupScriptEventListeners(script, name, callback) {
+              function _setupScriptEventListeners(script, hash, callback) {
                 var source = script.src;
                 var startTime = (c_performanceAbsoluteNow ||
                   (c_performanceAbsoluteNow = require("performanceAbsoluteNow")))();
@@ -17011,7 +17018,7 @@ try {
 
                 require("ResourceTimingsStore")
                   .annotate("js", requestUID)
-                  .addStringAnnotation("name", name != null ? name : "")
+                  .addStringAnnotation("name", hash)
                   .addStringAnnotation("source", source);
 
                 require("ifRequired")(
@@ -17019,7 +17026,7 @@ try {
                   function ifRequired_$1(TimeSliceInteraction) {
                     TimeSliceInteraction.informGlobally("bootloader._loadJS")
                       .addStringAnnotation("source", source)
-                      .addStringAnnotation("name", name != null ? name : "");
+                      .addStringAnnotation("name", hash);
                   }
                 );
                 require("ResourceTimingsStore").measureRequestSent(
@@ -17033,7 +17040,7 @@ try {
                     if (retry) {
                       require("FBLogger")("bootloader").info(
                         "JS retry success [%s] at %s | time: %s | retries: %s",
-                        name,
+                        hash,
                         source,
                         (c_performanceAbsoluteNow ||
                           (c_performanceAbsoluteNow = require("performanceAbsoluteNow")))() -
@@ -17083,10 +17090,10 @@ try {
                         }
 
                         var currentContainer = script.parentNode;
-
-                        currentContainer.removeChild(script);
-
-                        _loadJS(source, name, callback, currentContainer);
+                        if (currentContainer) {
+                          currentContainer.removeChild(script);
+                          _loadJS(source, hash, callback, currentContainer);
+                        }
                       }, JS_RETRIES[retry]);
 
                       _retries.set(source, retry + 1);
@@ -17095,7 +17102,7 @@ try {
                       require("FBLogger")("bootloader").warn(
                         "JS loading error [%s] at %s | time: %s | retries: %s" +
                           " | concurrency: %s",
-                        name,
+                        hash,
                         source,
                         (c_performanceAbsoluteNow ||
                           (c_performanceAbsoluteNow = require("performanceAbsoluteNow")))() -
@@ -17112,11 +17119,11 @@ try {
                 );
               }
 
-              function _onCSSError(name, source, cb) {
+              function _onCSSError(hash, source, cb) {
                 return function() {
                   require("FBLogger")("bootloader").warn(
                     "CSS timeout [%s] at %s | concurrency: %s",
-                    name,
+                    hash,
                     source,
                     _loading.size
                   );
@@ -17127,10 +17134,10 @@ try {
                 };
               }
 
-              function _requestAsyncResource(source, name) {
+              function _requestAsyncResource(source, hash) {
                 var _pendingAsyncBatchReq3;
                 if (
-                  name ===
+                  hash ===
                   ((_pendingAsyncBatchReq3 = _pendingAsyncBatchRequest) == null
                     ? void 0
                     : _pendingAsyncBatchReq3.key)
@@ -17156,14 +17163,14 @@ try {
                                 "record of a batch having been prepared."
                             );
 
-                          var src = _getExistingResource(name).src;
+                          var src = _getExistingResource(hash).src;
 
                           src != null ||
                             invariant(
                               0,
                               "A batch was scheduled to bootload modules but we could not find " +
                                 "a `src` to load for the batch with key `%s`.",
-                              name
+                              hash
                             );
 
                           _pendingAsyncBatchRequest = null;
@@ -17176,7 +17183,7 @@ try {
                             Bootloader,
                             src,
                             function BootloaderEndpoint_load_$2(data) {
-                              return _blEndpointDone(name, src, data);
+                              return _blEndpointDone(hash, src, data);
                             }
                           );
                         }
@@ -17193,7 +17200,7 @@ try {
                     Bootloader,
                     source,
                     function BootloaderEndpoint_load_$2(data) {
-                      return _blEndpointDone(name, source, data);
+                      return _blEndpointDone(hash, source, data);
                     }
                   );
                 }
@@ -17202,35 +17209,34 @@ try {
               function _requestResourceIntoContainer(
                 type,
                 source,
-                name,
+                hash,
                 containerNode
               ) {
                 var callback = function callback() {
-                  return Bootloader.done(name, source);
+                  return Bootloader.done(hash, source);
                 };
                 _loading.set(
                   source,
                   (c_performanceAbsoluteNow ||
                     (c_performanceAbsoluteNow = require("performanceAbsoluteNow")))()
                 );
-                if (type === "js") {
-                  _loadJS(source, name, callback, containerNode);
-                } else if (type === "css") {
-                  if (name == null) {
-                    require("FBLogger")("bootloader").mustfix(
-                      "name must be defined when loading CSS resource"
+                switch (type) {
+                  case "js":
+                    _loadJS(source, hash, callback, containerNode);
+                    break;
+                  case "css":
+                    require("CSSLoader").loadStyleSheet(
+                      hash,
+                      source,
+                      containerNode,
+                      !_getExistingResource(hash).nc,
+                      callback,
+                      _onCSSError(hash, source, callback)
                     );
 
-                    return;
-                  }
-                  require("CSSLoader").loadStyleSheet(
-                    name,
-                    source,
-                    containerNode,
-                    !_getExistingResource(name).nc,
-                    callback,
-                    _onCSSError(name, source, callback)
-                  );
+                    break;
+                  default:
+                    type;
                 }
               }
 
@@ -17663,7 +17669,6 @@ try {
                 if (el.getAttribute("data-nonblocking")) {
                   entry.nonblocking = 1;
                 }
-
                 entry.p = el.getAttribute("data-p");
 
                 if (
@@ -17775,6 +17780,8 @@ try {
                     _requested.add(hash);
                     _requestAsyncResource(entry.src, hash);
                   } else {
+                    entry.type !== "csr" ||
+                      invariant(0, "CSRs are already resolved");
                     _preloadStaticResource(
                       entry.src,
                       entry.type,
@@ -18111,15 +18118,17 @@ try {
                 requestJSResource_UNSAFE_NEEDS_REVIEW_BY_SECURITY_AND_XFN: function requestJSResource_UNSAFE_NEEDS_REVIEW_BY_SECURITY_AND_XFN(
                   source
                 ) {
+                  var hash = require("ResourceHasher").createExternalJSHash();
+                  _addResource(hash, { src: source, type: "js", nc: 1 }, false);
                   _requestResourceIntoContainer(
                     "js",
                     source,
-                    null,
+                    hash,
                     _getContainerNode()
                   );
                 },
 
-                done: function done(name, url) {
+                done: function done(hash, url) {
                   if (url != null) {
                     var _loading$get;
 
@@ -18136,15 +18145,10 @@ try {
                     _loading["delete"](url);
                   }
 
-                  if (name != null) {
-                    window.CavalryLogger &&
-                      window.CavalryLogger.done_js([name]);
-                    var hash = require("ResourceHasher").getValidResourceHash(
-                      name
-                    );
-                    _requested.add(hash);
-                    _callbackManager.satisfyPersistentDependency(hash);
-                  }
+                  window.CavalryLogger && window.CavalryLogger.done_js([hash]);
+                  _requested.add(hash);
+
+                  _callbackManager.satisfyPersistentDependency(hash);
                 },
 
                 pickupResourcesByIDs: function pickupResourcesByIDs(ids) {
@@ -18234,10 +18238,8 @@ try {
                   resources,
                   sotUpgrades
                 ) {
-                  for (var name in resources) {
-                    var hash = require("ResourceHasher").getValidResourceHash(
-                      name
-                    );
+                  for (var hash in resources) {
+                    hash = require("ResourceHasher").getValidResourceHash(hash);
                     if (!_resources.has(hash)) {
                       _addResource(hash, resources[hash], false);
                     }
@@ -39293,7 +39295,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001819418","namespace":"FB","message":"' +
+        '","revision":"1001821418","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
