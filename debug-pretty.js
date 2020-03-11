@@ -1,4 +1,4 @@
-/*1583935157,,JIT Construction: v1001822029,en_US*/
+/*1583963353,,JIT Construction: v1001824500,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3874,8 +3874,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1001822029,
-            client_revision: 1001822029,
+            server_revision: 1001824500,
+            client_revision: 1001824500,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3885,14 +3885,14 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6802949699876515634-0",
+            hsi: "6803070800567137764-0",
             spin: 0,
-            __spin_r: 1001822029,
+            __spin_r: 1001824500,
             __spin_b: "trunk",
-            __spin_t: 1583935157,
-            vip: "31.13.66.19"
+            __spin_t: 1583963353,
+            vip: "31.13.71.7"
           });
-          __d("ServerNonce", [], { ServerNonce: "G_sovDuB-atZgeOchPqhYK" });
+          __d("ServerNonce", [], { ServerNonce: "JFzov-Ajl23d-cpXKKaZmN" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4056,7 +4056,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001822029",
+            revision: "1001824500",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -14341,7 +14341,7 @@ try {
               ) {
                 if (errorReportCallback === void 0) {
                   errorReportCallback = function errorReportCallback() {
-                    return false;
+                    return true;
                   };
                 }
                 if (isRetry === void 0) {
@@ -14429,8 +14429,7 @@ try {
                   if (!_isOnline) {
                     require("NetworkHeartbeat").maybeStartHeartbeat(
                       onHeartbeatSuccess,
-                      onHeartbeatFailure,
-                      exceededErrorReports
+                      onHeartbeatFailure
                     );
                   }
 
@@ -39295,7 +39294,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001822029","namespace":"FB","message":"' +
+        '","revision":"1001824500","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
