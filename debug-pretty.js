@@ -1,4 +1,4 @@
-/*1583974157,,JIT Construction: v1001826574,en_US*/
+/*1583992765,,JIT Construction: v1001828871,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3874,8 +3874,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1001826574,
-            client_revision: 1001826574,
+            server_revision: 1001828871,
+            client_revision: 1001828871,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3885,14 +3885,14 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6803117204066603738-0",
+            hsi: "6803197127489949426-0",
             spin: 0,
-            __spin_r: 1001826574,
+            __spin_r: 1001828871,
             __spin_b: "trunk",
-            __spin_t: 1583974157,
+            __spin_t: 1583992765,
             vip: "31.13.66.19"
           });
-          __d("ServerNonce", [], { ServerNonce: "TZbCqTVYquBsb7d_1NKfan" });
+          __d("ServerNonce", [], { ServerNonce: "q1KM0IvXWmcSdx1tQP0lqF" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4056,7 +4056,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001826574",
+            revision: "1001828871",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -18718,6 +18718,7 @@ try {
 
               var REQUIRE_WHEN_READY = 0x1;
               var USED_AS_TRANSPORT = 0x2;
+              var NON_JS_DEPS_READY = 0x10;
 
               var _counter = 0;
               var ServerJS = (function() {
@@ -19021,6 +19022,7 @@ try {
                   }
 
                   var result = define(id, modules, tempFactory, REQUIRE_WHEN_READY |
+                    NON_JS_DEPS_READY |
                     USED_AS_TRANSPORT, this, 1, this.$ServerJS_meta);
 
                   return result;
@@ -19104,7 +19106,8 @@ try {
                     }
                   }
 
-                  define(moduleName, deps, constructor, USED_AS_TRANSPORT, null, refCount);
+                  define(moduleName, deps, constructor, USED_AS_TRANSPORT |
+                    NON_JS_DEPS_READY, null, refCount);
                 };
                 _proto.$ServerJS_handleMarkup = function $ServerJS_handleMarkup(
                   moduleName,
@@ -19137,7 +19140,7 @@ try {
                     } catch (markupException) {
                       throw _addServerHash(markupException, serverHash);
                     }
-                  }, 0, null, refCount);
+                  }, NON_JS_DEPS_READY, null, refCount);
                 };
                 _proto.$ServerJS_handleElement = function $ServerJS_handleElement(
                   moduleName,
@@ -19165,17 +19168,18 @@ try {
                     serverHash = _moduleNameWithHash$s4[1];
 
                   if (elementID === null && refCountInitial != null) {
-                    define(moduleName, null, null, 0, null, refCountInitial);
+                    define(moduleName, null, null, NON_JS_DEPS_READY, null, refCountInitial);
                     return;
                   }
 
                   var deps = [];
-                  var special = 0;
+                  var special = NON_JS_DEPS_READY;
 
                   var refCount = refCountInitial || 0;
                   if (markupDependency != null) {
                     deps.push(markupDependency);
-                    special = REQUIRE_WHEN_READY;
+
+                    special |= REQUIRE_WHEN_READY;
                     refCount++;
                   }
 
@@ -39294,7 +39298,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001826574","namespace":"FB","message":"' +
+        '","revision":"1001828871","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
