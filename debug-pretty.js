@@ -1,4 +1,4 @@
-/*1583992765,,JIT Construction: v1001828871,en_US*/
+/*1584015567,,JIT Construction: v1001829586,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3874,8 +3874,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1001828871,
-            client_revision: 1001828871,
+            server_revision: 1001829586,
+            client_revision: 1001829586,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3885,14 +3885,14 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6803197127489949426-0",
+            hsi: "6803295057382160319-0",
             spin: 0,
-            __spin_r: 1001828871,
+            __spin_r: 1001829586,
             __spin_b: "trunk",
-            __spin_t: 1583992765,
+            __spin_t: 1584015567,
             vip: "31.13.66.19"
           });
-          __d("ServerNonce", [], { ServerNonce: "q1KM0IvXWmcSdx1tQP0lqF" });
+          __d("ServerNonce", [], { ServerNonce: "tWl8Lm4j3-_u6AUnd5UU88" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4056,7 +4056,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001828871",
+            revision: "1001829586",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -23913,6 +23913,10 @@ try {
 
                 _initialize: function _initialize() {},
 
+                _sendBeacon: function _sendBeacon(endpoint, payload) {
+                  return global.navigator.sendBeacon(endpoint, payload);
+                },
+
                 _prepForTransit: function _prepForTransit(
                   payload,
                   use_with_beacon
@@ -23974,7 +23978,7 @@ try {
                     inflightWads[0].send_method = "beacon";
                     inflightWads.map(Banzai._prepWadForTransit);
                     var payload = Banzai._prepForTransit(inflightWads, true);
-                    var success = global.navigator.sendBeacon(
+                    var success = Banzai._sendBeacon(
                       Banzai.adapter.endpoint,
                       payload
                     );
@@ -24151,7 +24155,7 @@ try {
                   inflightWads.map(Banzai._prepWadForTransit);
 
                   var payload = Banzai._prepForTransit(inflightWads, true);
-                  var success = global.navigator.sendBeacon(
+                  var success = Banzai._sendBeacon(
                     Banzai.adapter.endpoint,
                     payload
                   );
@@ -39298,7 +39302,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001828871","namespace":"FB","message":"' +
+        '","revision":"1001829586","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
