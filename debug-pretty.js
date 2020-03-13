@@ -1,4 +1,4 @@
-/*1584085164,,JIT Construction: v1001835660,en_US*/
+/*1584131361,,JIT Construction: v1001837715,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3874,8 +3874,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1001835660,
-            client_revision: 1001835660,
+            server_revision: 1001837715,
+            client_revision: 1001837715,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3885,14 +3885,14 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6803593975084195233-0",
+            hsi: "6803792389757704150-0",
             spin: 0,
-            __spin_r: 1001835660,
+            __spin_r: 1001837715,
             __spin_b: "trunk",
-            __spin_t: 1584085164,
-            vip: "31.13.66.19"
+            __spin_t: 1584131361,
+            vip: "31.13.65.7"
           });
-          __d("ServerNonce", [], { ServerNonce: "9ZkfeIzU1QraQP0DvPGXbd" });
+          __d("ServerNonce", [], { ServerNonce: "SxaP1IjiGstu85ZNrRDebP" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4056,7 +4056,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001835660",
+            revision: "1001837715",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -6958,10 +6958,6 @@ try {
                   var deferredSource = undefined;
 
                   if (
-                    (c_Env || (c_Env = require("Env")))
-                      .timeslice_heartbeat_config &&
-                    (c_Env || (c_Env = require("Env")))
-                      .timeslice_heartbeat_config.isArtilleryOn &&
                     metaArgs &&
                     metaArgs.registerCallStack &&
                     require("coinflip")(
@@ -33651,8 +33647,10 @@ try {
                       call.params.cbt = ES("Date", "now", false);
                     }
 
+                    var auth_type = call.params.auth_type;
                     var isReauthenticate =
-                      call.params.auth_type === "reauthenticate";
+                      auth_type &&
+                      ES(auth_type, "includes", true, "reauthenticate");
                     var responseTypes = ES(
                       "Object",
                       "keys",
@@ -39325,7 +39323,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001835660","namespace":"FB","message":"' +
+        '","revision":"1001837715","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
