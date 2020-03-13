@@ -1,4 +1,4 @@
-/*1584026964,,JIT Construction: v1001829919,en_US*/
+/*1584059947,,JIT Construction: v1001833802,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3874,10 +3874,10 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1001829919,
-            client_revision: 1001829919,
+            server_revision: 1001833802,
+            client_revision: 1001833802,
             tier: "",
-            push_phase: "C3",
+            push_phase: "C3e",
             pkg_cohort: "PHASED:DEFAULT",
             pr: 1,
             haste_site: "www",
@@ -3885,14 +3885,14 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6803344008194192223-0",
+            hsi: "6803485668333591486-0",
             spin: 0,
-            __spin_r: 1001829919,
+            __spin_r: 1001833802,
             __spin_b: "trunk",
-            __spin_t: 1584026964,
+            __spin_t: 1584059946,
             vip: "31.13.66.19"
           });
-          __d("ServerNonce", [], { ServerNonce: "MOJ8zMhyTtF6uYMrmtXCTY" });
+          __d("ServerNonce", [], { ServerNonce: "aaW_AJem3I-Ms3GPuiUhdK" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4056,7 +4056,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001829919",
+            revision: "1001833802",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -16632,16 +16632,9 @@ try {
               (
                 c_ErrorPubSub || (c_ErrorPubSub = require("ErrorPubSub"))
               ).unshiftListener(function ErrorPubSub_unshiftListener_$0(err) {
-                err.loadingUrls = Array.from(_loading.keys());
-              });
-
-              function canBootloadComponentsYet(components) {
-                if (!require("BootloaderConfig").retryQueuedBootloads) {
-                  return _bootloadEnabled;
-                }
-
+                var loading = [];
                 for (
-                  var _iterator = components,
+                  var _iterator = _loading,
                     _isArray = Array.isArray(_iterator),
                     _i = 0,
                     _iterator = _isArray
@@ -16654,17 +16647,52 @@ try {
                   ;
 
                 ) {
-                  var _entry$rdfds, _entry$rds;
-                  var _ref;
+                  var _ref2;
                   if (_isArray) {
                     if (_i >= _iterator.length) break;
-                    _ref = _iterator[_i++];
+                    _ref2 = _iterator[_i++];
                   } else {
                     _i = _iterator.next();
                     if (_i.done) break;
-                    _ref = _i.value;
+                    _ref2 = _i.value;
                   }
-                  var comp = _ref;
+                  var _ref3 = _ref2;
+                  var hash = _ref3[0];
+                  loading.push(_getExistingResource(hash).src);
+                }
+                err.loadingUrls = loading;
+              });
+
+              function canBootloadComponentsYet(components) {
+                if (!require("BootloaderConfig").retryQueuedBootloads) {
+                  return _bootloadEnabled;
+                }
+
+                for (
+                  var _iterator2 = components,
+                    _isArray2 = Array.isArray(_iterator2),
+                    _i2 = 0,
+                    _iterator2 = _isArray2
+                      ? _iterator2
+                      : _iterator2[
+                          typeof Symbol === "function"
+                            ? Symbol.iterator
+                            : "@@iterator"
+                        ]();
+                  ;
+
+                ) {
+                  var _entry$rdfds, _entry$rds;
+                  var _ref4;
+                  if (_isArray2) {
+                    if (_i2 >= _iterator2.length) break;
+                    _ref4 = _iterator2[_i2++];
+                  } else {
+                    _i2 = _iterator2.next();
+                    if (_i2.done) break;
+                    _ref4 = _i2.value;
+                  }
+                  var comp = _ref4;
                   var entry = _componentMap.get(comp);
                   if (!entry) {
                     return false;
@@ -16678,15 +16706,15 @@ try {
                       ? void 0
                       : _entry$rds.r) || []
                   ];
-                  for (var _i2 = 0; _i2 < _arr.length; _i2++) {
-                    var hashes = _arr[_i2];
+                  for (var _i3 = 0; _i3 < _arr.length; _i3++) {
+                    var hashes = _arr[_i3];
                     for (
-                      var _iterator2 = hashes,
-                        _isArray2 = Array.isArray(_iterator2),
-                        _i3 = 0,
-                        _iterator2 = _isArray2
-                          ? _iterator2
-                          : _iterator2[
+                      var _iterator3 = hashes,
+                        _isArray3 = Array.isArray(_iterator3),
+                        _i4 = 0,
+                        _iterator3 = _isArray3
+                          ? _iterator3
+                          : _iterator3[
                               typeof Symbol === "function"
                                 ? Symbol.iterator
                                 : "@@iterator"
@@ -16694,16 +16722,16 @@ try {
                       ;
 
                     ) {
-                      var _ref2;
-                      if (_isArray2) {
-                        if (_i3 >= _iterator2.length) break;
-                        _ref2 = _iterator2[_i3++];
+                      var _ref5;
+                      if (_isArray3) {
+                        if (_i4 >= _iterator3.length) break;
+                        _ref5 = _iterator3[_i4++];
                       } else {
-                        _i3 = _iterator2.next();
-                        if (_i3.done) break;
-                        _ref2 = _i3.value;
+                        _i4 = _iterator3.next();
+                        if (_i4.done) break;
+                        _ref5 = _i4.value;
                       }
-                      var hash = _ref2;
+                      var hash = _ref5;
                       if (!_resources.has(hash)) {
                         return false;
                       }
@@ -16775,9 +16803,9 @@ try {
               }
 
               function _preloadStaticResource(
-                source,
                 type,
                 hash,
+                entry,
                 containerNode,
                 onload
               ) {
@@ -16787,30 +16815,30 @@ try {
                 _preloadRequested.add(hash);
 
                 var link = document.createElement("link");
-                link.href = source;
+                link.href = entry.src;
                 link.rel = "preload";
                 link.as = type === "js" ? "script" : "style";
                 if (onload) {
                   link.onload = onload;
                 }
 
-                if (!_getExistingResource(hash).nc) {
+                if (!entry.nc) {
                   link.crossOrigin = "anonymous";
                 }
                 containerNode.appendChild(link);
               }
 
-              function _loadJS(source, hash, callback, containerNode) {
+              function _loadJS(hash, entry, callback, containerNode) {
                 var script = document.createElement("script");
                 script.src = require("createTrustedScriptURLFromFacebookURI")(
-                  source
+                  entry.src
                 );
                 script.async = true;
-                if (!_getExistingResource(hash).nc) {
+                if (!entry.nc) {
                   script.crossOrigin = "anonymous";
                 }
 
-                _setupScriptEventListeners(script, hash, callback);
+                _setupScriptEventListeners(script, hash, entry, callback);
                 containerNode.appendChild(script);
 
                 return script;
@@ -16864,20 +16892,20 @@ try {
                   );
                 }
                 var _arr2 = [].concat(blockingComps, nonblockingComps);
-                for (var _i4 = 0; _i4 < _arr2.length; _i4++) {
-                  var comp = _arr2[_i4];
+                for (var _i5 = 0; _i5 < _arr2.length; _i5++) {
+                  var comp = _arr2[_i5];
                   _componentToBEHash.set(comp, key);
                 }
 
                 return key;
               }
 
-              function _blEndpointDone(hash, src, data) {
+              function _blEndpointDone(hash, data) {
                 _unpredictedBEResourcesMap.set(
                   hash,
                   _countUnpredictedBEResources(data)
                 );
-                Bootloader.done(hash, src);
+                Bootloader.done(hash);
               }
 
               function _countUnpredictedBEResources(data) {
@@ -16886,75 +16914,7 @@ try {
 
                 var knownRsrcs = new Set();
                 for (
-                  var _iterator3 = modules,
-                    _isArray3 = Array.isArray(_iterator3),
-                    _i5 = 0,
-                    _iterator3 = _isArray3
-                      ? _iterator3
-                      : _iterator3[
-                          typeof Symbol === "function"
-                            ? Symbol.iterator
-                            : "@@iterator"
-                        ]();
-                  ;
-
-                ) {
-                  var _comp$rds, _comp$rdfds;
-                  var _ref3;
-                  if (_isArray3) {
-                    if (_i5 >= _iterator3.length) break;
-                    _ref3 = _iterator3[_i5++];
-                  } else {
-                    _i5 = _iterator3.next();
-                    if (_i5.done) break;
-                    _ref3 = _i5.value;
-                  }
-                  var _module = _ref3;
-                  var comp = _getExistingComponent(_module);
-                  var _arr3 = [
-                    comp.r,
-                    ((_comp$rds = comp.rds) == null ? void 0 : _comp$rds.r) ||
-                      [],
-                    ((_comp$rdfds = comp.rdfds) == null
-                      ? void 0
-                      : _comp$rdfds.r) || []
-                  ];
-                  for (var _i7 = 0; _i7 < _arr3.length; _i7++) {
-                    var hashes = _arr3[_i7];
-                    for (
-                      var _iterator5 = _resolveCSRs(hashes),
-                        _isArray5 = Array.isArray(_iterator5),
-                        _i8 = 0,
-                        _iterator5 = _isArray5
-                          ? _iterator5
-                          : _iterator5[
-                              typeof Symbol === "function"
-                                ? Symbol.iterator
-                                : "@@iterator"
-                            ]();
-                      ;
-
-                    ) {
-                      var _ref7;
-                      if (_isArray5) {
-                        if (_i8 >= _iterator5.length) break;
-                        _ref7 = _iterator5[_i8++];
-                      } else {
-                        _i8 = _iterator5.next();
-                        if (_i8.done) break;
-                        _ref7 = _i8.value;
-                      }
-                      var _ref8 = _ref7;
-                      var hash = _ref8[0];
-                      var _ = _ref8[1];
-                      knownRsrcs.add(hash);
-                    }
-                  }
-                }
-
-                var unpredicted = 0;
-                for (
-                  var _iterator4 = _resolveCSRs(allResources),
+                  var _iterator4 = modules,
                     _isArray4 = Array.isArray(_iterator4),
                     _i6 = 0,
                     _iterator4 = _isArray4
@@ -16967,18 +16927,86 @@ try {
                   ;
 
                 ) {
-                  var _ref5;
+                  var _comp$rds, _comp$rdfds;
+                  var _ref6;
                   if (_isArray4) {
                     if (_i6 >= _iterator4.length) break;
-                    _ref5 = _iterator4[_i6++];
+                    _ref6 = _iterator4[_i6++];
                   } else {
                     _i6 = _iterator4.next();
                     if (_i6.done) break;
-                    _ref5 = _i6.value;
+                    _ref6 = _i6.value;
                   }
-                  var _ref9 = _ref5;
-                  var _hash = _ref9[0];
-                  var _2 = _ref9[1];
+                  var _module = _ref6;
+                  var comp = _getExistingComponent(_module);
+                  var _arr3 = [
+                    comp.r,
+                    ((_comp$rds = comp.rds) == null ? void 0 : _comp$rds.r) ||
+                      [],
+                    ((_comp$rdfds = comp.rdfds) == null
+                      ? void 0
+                      : _comp$rdfds.r) || []
+                  ];
+                  for (var _i8 = 0; _i8 < _arr3.length; _i8++) {
+                    var hashes = _arr3[_i8];
+                    for (
+                      var _iterator6 = _resolveCSRs(hashes),
+                        _isArray6 = Array.isArray(_iterator6),
+                        _i9 = 0,
+                        _iterator6 = _isArray6
+                          ? _iterator6
+                          : _iterator6[
+                              typeof Symbol === "function"
+                                ? Symbol.iterator
+                                : "@@iterator"
+                            ]();
+                      ;
+
+                    ) {
+                      var _ref10;
+                      if (_isArray6) {
+                        if (_i9 >= _iterator6.length) break;
+                        _ref10 = _iterator6[_i9++];
+                      } else {
+                        _i9 = _iterator6.next();
+                        if (_i9.done) break;
+                        _ref10 = _i9.value;
+                      }
+                      var _ref11 = _ref10;
+                      var hash = _ref11[0];
+                      var _ = _ref11[1];
+                      knownRsrcs.add(hash);
+                    }
+                  }
+                }
+
+                var unpredicted = 0;
+                for (
+                  var _iterator5 = _resolveCSRs(allResources),
+                    _isArray5 = Array.isArray(_iterator5),
+                    _i7 = 0,
+                    _iterator5 = _isArray5
+                      ? _iterator5
+                      : _iterator5[
+                          typeof Symbol === "function"
+                            ? Symbol.iterator
+                            : "@@iterator"
+                        ]();
+                  ;
+
+                ) {
+                  var _ref8;
+                  if (_isArray5) {
+                    if (_i7 >= _iterator5.length) break;
+                    _ref8 = _iterator5[_i7++];
+                  } else {
+                    _i7 = _iterator5.next();
+                    if (_i7.done) break;
+                    _ref8 = _i7.value;
+                  }
+                  var _ref12 = _ref8;
+                  var _hash = _ref12[0];
+                  var _2 = _ref12[1];
                   if (!knownRsrcs.has(_hash)) {
                     unpredicted++;
                   }
@@ -16986,7 +17014,12 @@ try {
                 return unpredicted;
               }
 
-              function _setupScriptEventListeners(script, hash, callback) {
+              function _setupScriptEventListeners(
+                script,
+                hash,
+                entry,
+                callback
+              ) {
                 var source = script.src;
                 var startTime = (c_performanceAbsoluteNow ||
                   (c_performanceAbsoluteNow = require("performanceAbsoluteNow")))();
@@ -17091,7 +17124,7 @@ try {
                         var currentContainer = script.parentNode;
                         if (currentContainer) {
                           currentContainer.removeChild(script);
-                          _loadJS(source, hash, callback, currentContainer);
+                          _loadJS(hash, entry, callback, currentContainer);
                         }
                       }, JS_RETRIES[retry]);
 
@@ -17118,22 +17151,22 @@ try {
                 );
               }
 
-              function _onCSSError(hash, source, cb) {
+              function _onCSSError(hash, entry, cb) {
                 return function() {
                   require("FBLogger")("bootloader").warn(
                     "CSS timeout [%s] at %s | concurrency: %s",
                     hash,
-                    source,
+                    entry.src,
                     _loading.size
                   );
 
-                  _errors.add(source);
+                  _errors.add(entry.src);
                   require("NetworkStatus").reportError();
                   cb();
                 };
               }
 
-              function _requestAsyncResource(source, hash) {
+              function _requestAsyncResource(hash, entry) {
                 var _pendingAsyncBatchReq3;
                 if (
                   hash ===
@@ -17163,18 +17196,9 @@ try {
                             );
 
                           var src = _getExistingResource(hash).src;
-
-                          src != null ||
-                            invariant(
-                              0,
-                              "A batch was scheduled to bootload modules but we could not find " +
-                                "a `src` to load for the batch with key `%s`.",
-                              hash
-                            );
-
                           _pendingAsyncBatchRequest = null;
                           _loading.set(
-                            src,
+                            hash,
                             (c_performanceAbsoluteNow ||
                               (c_performanceAbsoluteNow = require("performanceAbsoluteNow")))()
                           );
@@ -17182,7 +17206,7 @@ try {
                             Bootloader,
                             src,
                             function BootloaderEndpoint_load_$2(data) {
-                              return _blEndpointDone(hash, src, data);
+                              return _blEndpointDone(hash, data);
                             }
                           );
                         }
@@ -17191,15 +17215,15 @@ try {
                   );
                 } else {
                   _loading.set(
-                    source,
+                    hash,
                     (c_performanceAbsoluteNow ||
                       (c_performanceAbsoluteNow = require("performanceAbsoluteNow")))()
                   );
                   require("BootloaderEndpoint").load(
                     Bootloader,
-                    source,
+                    entry.src,
                     function BootloaderEndpoint_load_$2(data) {
-                      return _blEndpointDone(hash, source, data);
+                      return _blEndpointDone(hash, data);
                     }
                   );
                 }
@@ -17207,30 +17231,30 @@ try {
 
               function _requestResourceIntoContainer(
                 type,
-                source,
                 hash,
+                entry,
                 containerNode
               ) {
                 var callback = function callback() {
-                  return Bootloader.done(hash, source);
+                  return Bootloader.done(hash);
                 };
                 _loading.set(
-                  source,
+                  hash,
                   (c_performanceAbsoluteNow ||
                     (c_performanceAbsoluteNow = require("performanceAbsoluteNow")))()
                 );
                 switch (type) {
                   case "js":
-                    _loadJS(source, hash, callback, containerNode);
+                    _loadJS(hash, entry, callback, containerNode);
                     break;
                   case "css":
                     require("CSSLoader").loadStyleSheet(
                       hash,
-                      source,
+                      entry.src,
                       containerNode,
-                      !_getExistingResource(hash).nc,
+                      !entry.nc,
                       callback,
-                      _onCSSError(hash, source, callback)
+                      _onCSSError(hash, entry, callback)
                     );
 
                     break;
@@ -17255,12 +17279,12 @@ try {
                   window.CavalryLogger && window.CavalryLogger.getInstance();
 
                 for (
-                  var _iterator6 = _resolveCSRs(resourceHashes),
-                    _isArray6 = Array.isArray(_iterator6),
-                    _i9 = 0,
-                    _iterator6 = _isArray6
-                      ? _iterator6
-                      : _iterator6[
+                  var _iterator7 = _resolveCSRs(resourceHashes),
+                    _isArray7 = Array.isArray(_iterator7),
+                    _i10 = 0,
+                    _iterator7 = _isArray7
+                      ? _iterator7
+                      : _iterator7[
                           typeof Symbol === "function"
                             ? Symbol.iterator
                             : "@@iterator"
@@ -17268,18 +17292,18 @@ try {
                   ;
 
                 ) {
-                  var _ref11;
-                  if (_isArray6) {
-                    if (_i9 >= _iterator6.length) break;
-                    _ref11 = _iterator6[_i9++];
+                  var _ref14;
+                  if (_isArray7) {
+                    if (_i10 >= _iterator7.length) break;
+                    _ref14 = _iterator7[_i10++];
                   } else {
-                    _i9 = _iterator6.next();
-                    if (_i9.done) break;
-                    _ref11 = _i9.value;
+                    _i10 = _iterator7.next();
+                    if (_i10.done) break;
+                    _ref14 = _i10.value;
                   }
-                  var _ref15 = _ref11;
-                  var hash = _ref15[0];
-                  var entry = _ref15[1];
+                  var _ref18 = _ref14;
+                  var hash = _ref18[0];
+                  var entry = _ref18[1];
                   var type = entry.type;
 
                   if (entry.nonblocking) {
@@ -17390,8 +17414,8 @@ try {
                       ),
 
                       err_count: Array.from(willRequest.values()).filter(
-                        function filter_$0(_ref12) {
-                          var src = _ref12.src;
+                        function filter_$0(_ref15) {
+                          var src = _ref15.src;
                           return _errors.has(src);
                         }
                       ).length
@@ -17455,12 +17479,12 @@ try {
 
                 var batchingContainerNode = document.createDocumentFragment();
                 for (
-                  var _iterator7 = willRequest,
-                    _isArray7 = Array.isArray(_iterator7),
-                    _i10 = 0,
-                    _iterator7 = _isArray7
-                      ? _iterator7
-                      : _iterator7[
+                  var _iterator8 = willRequest,
+                    _isArray8 = Array.isArray(_iterator8),
+                    _i11 = 0,
+                    _iterator8 = _isArray8
+                      ? _iterator8
+                      : _iterator8[
                           typeof Symbol === "function"
                             ? Symbol.iterator
                             : "@@iterator"
@@ -17468,35 +17492,35 @@ try {
                   ;
 
                 ) {
-                  var _ref14;
-                  if (_isArray7) {
-                    if (_i10 >= _iterator7.length) break;
-                    _ref14 = _iterator7[_i10++];
+                  var _ref17;
+                  if (_isArray8) {
+                    if (_i11 >= _iterator8.length) break;
+                    _ref17 = _iterator8[_i11++];
                   } else {
-                    _i10 = _iterator7.next();
-                    if (_i10.done) break;
-                    _ref14 = _i10.value;
+                    _i11 = _iterator8.next();
+                    if (_i11.done) break;
+                    _ref17 = _i11.value;
                   }
-                  var _ref16 = _ref14;
-                  var _hash2 = _ref16[0];
-                  var _ref13$ = _ref16[1];
-                  var type = _ref13$.type;
-                  var src = _ref13$.src;
+                  var _ref19 = _ref17;
+                  var _hash2 = _ref19[0];
+                  var _entry = _ref19[1];
+                  var type = _entry.type,
+                    src = _entry.src;
                   type !== "csr" ||
                     invariant(0, "Found csr for %s when unexpected", src);
                   if (type === "async") {
-                    _requestAsyncResource(src, _hash2);
+                    _requestAsyncResource(_hash2, _entry);
                   } else {
                     _preloadStaticResource(
-                      src,
                       type,
                       _hash2,
+                      _entry,
                       batchingContainerNode
                     );
                     _requestResourceIntoContainer(
                       type,
-                      src,
                       _hash2,
+                      _entry,
                       batchingContainerNode
                     );
                   }
@@ -17523,12 +17547,12 @@ try {
                     invariant(0, "CSRs cannot provide anything");
 
                   for (
-                    var _iterator8 = _parseProvidesStr(provides),
-                      _isArray8 = Array.isArray(_iterator8),
-                      _i11 = 0,
-                      _iterator8 = _isArray8
-                        ? _iterator8
-                        : _iterator8[
+                    var _iterator9 = _parseProvidesStr(provides),
+                      _isArray9 = Array.isArray(_iterator9),
+                      _i12 = 0,
+                      _iterator9 = _isArray9
+                        ? _iterator9
+                        : _iterator9[
                             typeof Symbol === "function"
                               ? Symbol.iterator
                               : "@@iterator"
@@ -17536,16 +17560,16 @@ try {
                     ;
 
                   ) {
-                    var _ref17;
-                    if (_isArray8) {
-                      if (_i11 >= _iterator8.length) break;
-                      _ref17 = _iterator8[_i11++];
+                    var _ref20;
+                    if (_isArray9) {
+                      if (_i12 >= _iterator9.length) break;
+                      _ref20 = _iterator9[_i12++];
                     } else {
-                      _i11 = _iterator8.next();
-                      if (_i11.done) break;
-                      _ref17 = _i11.value;
+                      _i12 = _iterator9.next();
+                      if (_i12.done) break;
+                      _ref20 = _i12.value;
                     }
-                    var rsrcIndex = _ref17;
+                    var rsrcIndex = _ref20;
                     if (!_rsrcIndexMap.has(rsrcIndex) || forceSot) {
                       _rsrcIndexMap.set(rsrcIndex, hash);
                       require("CSRBitMap").add(rsrcIndex);
@@ -17557,12 +17581,12 @@ try {
               function _resolveCSRs(hashes) {
                 var ret = new Map();
                 for (
-                  var _iterator9 = hashes,
-                    _isArray9 = Array.isArray(_iterator9),
-                    _i12 = 0,
-                    _iterator9 = _isArray9
-                      ? _iterator9
-                      : _iterator9[
+                  var _iterator10 = hashes,
+                    _isArray10 = Array.isArray(_iterator10),
+                    _i13 = 0,
+                    _iterator10 = _isArray10
+                      ? _iterator10
+                      : _iterator10[
                           typeof Symbol === "function"
                             ? Symbol.iterator
                             : "@@iterator"
@@ -17570,16 +17594,16 @@ try {
                   ;
 
                 ) {
-                  var _ref18;
-                  if (_isArray9) {
-                    if (_i12 >= _iterator9.length) break;
-                    _ref18 = _iterator9[_i12++];
+                  var _ref21;
+                  if (_isArray10) {
+                    if (_i13 >= _iterator10.length) break;
+                    _ref21 = _iterator10[_i13++];
                   } else {
-                    _i12 = _iterator9.next();
-                    if (_i12.done) break;
-                    _ref18 = _i12.value;
+                    _i13 = _iterator10.next();
+                    if (_i13.done) break;
+                    _ref21 = _i13.value;
                   }
-                  var hash = _ref18;
+                  var hash = _ref21;
 
                   var entry = _resources.get(hash);
                   if (!entry) {
@@ -17601,12 +17625,12 @@ try {
                   }
 
                   for (
-                    var _iterator10 = provides,
-                      _isArray10 = Array.isArray(_iterator10),
-                      _i13 = 0,
-                      _iterator10 = _isArray10
-                        ? _iterator10
-                        : _iterator10[
+                    var _iterator11 = provides,
+                      _isArray11 = Array.isArray(_iterator11),
+                      _i14 = 0,
+                      _iterator11 = _isArray11
+                        ? _iterator11
+                        : _iterator11[
                             typeof Symbol === "function"
                               ? Symbol.iterator
                               : "@@iterator"
@@ -17614,16 +17638,16 @@ try {
                     ;
 
                   ) {
-                    var _ref19;
-                    if (_isArray10) {
-                      if (_i13 >= _iterator10.length) break;
-                      _ref19 = _iterator10[_i13++];
+                    var _ref22;
+                    if (_isArray11) {
+                      if (_i14 >= _iterator11.length) break;
+                      _ref22 = _iterator11[_i14++];
                     } else {
-                      _i13 = _iterator10.next();
-                      if (_i13.done) break;
-                      _ref19 = _i13.value;
+                      _i14 = _iterator11.next();
+                      if (_i14.done) break;
+                      _ref22 = _i14.value;
                     }
-                    var p = _ref19;
+                    var p = _ref22;
 
                     var sotHash = require("nullthrows")(
                       _rsrcIndexMap.get(p),
@@ -17696,14 +17720,14 @@ try {
                 } else {
                   _requested.add(hash);
                   if (isJS) {
-                    _setupScriptEventListeners(el, hash, onload);
+                    _setupScriptEventListeners(el, hash, entry, onload);
                   } else {
                     require("CSSLoader").setupEventListeners(
                       hash,
                       entry.src,
                       _getContainerNode(),
                       onload,
-                      _onCSSError(hash, entry.src, onload),
+                      _onCSSError(hash, entry, onload),
 
                       el
                     );
@@ -17747,12 +17771,12 @@ try {
 
               function _preloadResourceHashes(hashes, containerNode) {
                 for (
-                  var _iterator11 = _resolveCSRs(hashes),
-                    _isArray11 = Array.isArray(_iterator11),
-                    _i14 = 0,
-                    _iterator11 = _isArray11
-                      ? _iterator11
-                      : _iterator11[
+                  var _iterator12 = _resolveCSRs(hashes),
+                    _isArray12 = Array.isArray(_iterator12),
+                    _i15 = 0,
+                    _iterator12 = _isArray12
+                      ? _iterator12
+                      : _iterator12[
                           typeof Symbol === "function"
                             ? Symbol.iterator
                             : "@@iterator"
@@ -17760,31 +17784,31 @@ try {
                   ;
 
                 ) {
-                  var _ref21;
-                  if (_isArray11) {
-                    if (_i14 >= _iterator11.length) break;
-                    _ref21 = _iterator11[_i14++];
+                  var _ref24;
+                  if (_isArray12) {
+                    if (_i15 >= _iterator12.length) break;
+                    _ref24 = _iterator12[_i15++];
                   } else {
-                    _i14 = _iterator11.next();
-                    if (_i14.done) break;
-                    _ref21 = _i14.value;
+                    _i15 = _iterator12.next();
+                    if (_i15.done) break;
+                    _ref24 = _i15.value;
                   }
-                  var _ref22 = _ref21;
-                  var hash = _ref22[0];
-                  var entry = _ref22[1];
+                  var _ref25 = _ref24;
+                  var hash = _ref25[0];
+                  var entry = _ref25[1];
                   if (_requested.has(hash)) {
                     continue;
                   }
                   if (entry.type === "async") {
                     _requested.add(hash);
-                    _requestAsyncResource(entry.src, hash);
+                    _requestAsyncResource(hash, entry);
                   } else {
                     entry.type !== "csr" ||
                       invariant(0, "CSRs are already resolved");
                     _preloadStaticResource(
-                      entry.src,
                       entry.type,
                       hash,
+                      entry,
                       containerNode
                     );
                   }
@@ -17805,12 +17829,12 @@ try {
                   var newCompsWithBE = [];
                   var newCompsWithoutBE = [];
                   for (
-                    var _iterator12 = components,
-                      _isArray12 = Array.isArray(_iterator12),
-                      _i15 = 0,
-                      _iterator12 = _isArray12
-                        ? _iterator12
-                        : _iterator12[
+                    var _iterator13 = components,
+                      _isArray13 = Array.isArray(_iterator13),
+                      _i16 = 0,
+                      _iterator13 = _isArray13
+                        ? _iterator13
+                        : _iterator13[
                             typeof Symbol === "function"
                               ? Symbol.iterator
                               : "@@iterator"
@@ -17818,16 +17842,16 @@ try {
                     ;
 
                   ) {
-                    var _ref23;
-                    if (_isArray12) {
-                      if (_i15 >= _iterator12.length) break;
-                      _ref23 = _iterator12[_i15++];
+                    var _ref26;
+                    if (_isArray13) {
+                      if (_i16 >= _iterator13.length) break;
+                      _ref26 = _iterator13[_i16++];
                     } else {
-                      _i15 = _iterator12.next();
-                      if (_i15.done) break;
-                      _ref23 = _i15.value;
+                      _i16 = _iterator13.next();
+                      if (_i16.done) break;
+                      _ref26 = _i16.value;
                     }
-                    var component = _ref23;
+                    var component = _ref26;
                     var _getExistingComponent2 = _getExistingComponent(
                         component
                       ),
@@ -17852,8 +17876,8 @@ try {
                       (be ? newCompsWithBE : newCompsWithoutBE).push(component);
                     }
                     var _arr4 = [r, (rdfds == null ? void 0 : rdfds.r) || []];
-                    for (var _i16 = 0; _i16 < _arr4.length; _i16++) {
-                      var hashes = _arr4[_i16];
+                    for (var _i17 = 0; _i17 < _arr4.length; _i17++) {
+                      var hashes = _arr4[_i17];
                       _preloadResourceHashes(hashes, batchingContainerNode);
                     }
                   }
@@ -18018,8 +18042,8 @@ try {
                   }
 
                   var resourcesEvent = "rsrcs:" + requestKey;
-                  for (var _i17 = 0; _i17 < resources.length; _i17++) {
-                    var hash = resources[_i17];
+                  for (var _i18 = 0; _i18 < resources.length; _i18++) {
+                    var hash = resources[_i18];
                     if (!_resources.has(hash)) {
                       require("FBLogger")("bootloader").mustfix(
                         "Missing rsrc %s when bootloading %s",
@@ -18084,12 +18108,12 @@ try {
 
                   var validHashes = [];
                   for (
-                    var _iterator13 = resourceHashes,
-                      _isArray13 = Array.isArray(_iterator13),
-                      _i18 = 0,
-                      _iterator13 = _isArray13
-                        ? _iterator13
-                        : _iterator13[
+                    var _iterator14 = resourceHashes,
+                      _isArray14 = Array.isArray(_iterator14),
+                      _i19 = 0,
+                      _iterator14 = _isArray14
+                        ? _iterator14
+                        : _iterator14[
                             typeof Symbol === "function"
                               ? Symbol.iterator
                               : "@@iterator"
@@ -18097,16 +18121,16 @@ try {
                     ;
 
                   ) {
-                    var _ref24;
-                    if (_isArray13) {
-                      if (_i18 >= _iterator13.length) break;
-                      _ref24 = _iterator13[_i18++];
+                    var _ref27;
+                    if (_isArray14) {
+                      if (_i19 >= _iterator14.length) break;
+                      _ref27 = _iterator14[_i19++];
                     } else {
-                      _i18 = _iterator13.next();
-                      if (_i18.done) break;
-                      _ref24 = _i18.value;
+                      _i19 = _iterator14.next();
+                      if (_i19.done) break;
+                      _ref27 = _i19.value;
                     }
-                    var hash = _ref24;
+                    var hash = _ref27;
                     validHashes.push(
                       require("ResourceHasher").getValidResourceHash(hash)
                     );
@@ -18115,34 +18139,33 @@ try {
                 },
 
                 requestJSResource_UNSAFE_NEEDS_REVIEW_BY_SECURITY_AND_XFN: function requestJSResource_UNSAFE_NEEDS_REVIEW_BY_SECURITY_AND_XFN(
-                  source
+                  src
                 ) {
                   var hash = require("ResourceHasher").createExternalJSHash();
-                  _addResource(hash, { src: source, type: "js", nc: 1 }, false);
+                  var entry = { src: src, type: "js", nc: 1 };
+                  _addResource(hash, entry, false);
                   _requestResourceIntoContainer(
                     "js",
-                    source,
                     hash,
+                    entry,
                     _getContainerNode()
                   );
                 },
 
-                done: function done(hash, url) {
-                  if (url != null) {
-                    var _loading$get;
+                done: function done(hash) {
+                  var _loading$get;
 
-                    var loadingStart =
-                      (_loading$get = _loading.get(url)) != null
-                        ? _loading$get
-                        : NaN;
-                    _loaded.set(
-                      url,
-                      (c_performanceAbsoluteNow ||
-                        (c_performanceAbsoluteNow = require("performanceAbsoluteNow")))() -
-                        loadingStart
-                    );
-                    _loading["delete"](url);
-                  }
+                  var loadingStart =
+                    (_loading$get = _loading.get(hash)) != null
+                      ? _loading$get
+                      : NaN;
+                  _loaded.set(
+                    hash,
+                    (c_performanceAbsoluteNow ||
+                      (c_performanceAbsoluteNow = require("performanceAbsoluteNow")))() -
+                      loadingStart
+                  );
+                  _loading["delete"](hash);
 
                   window.CavalryLogger && window.CavalryLogger.done_js([hash]);
                   _requested.add(hash);
@@ -18171,11 +18194,11 @@ try {
                   var queuedLoadModules = _queuedLoadModules;
                   _queuedLoadModules = [];
                   queuedLoadModules.forEach(
-                    function queuedLoadModules_forEach_$0(_ref25) {
-                      var components = _ref25[0],
-                        callback = _ref25[1],
-                        ref = _ref25[2],
-                        continuation = _ref25[3];
+                    function queuedLoadModules_forEach_$0(_ref28) {
+                      var components = _ref28[0],
+                        callback = _ref28[1],
+                        ref = _ref28[2],
+                        continuation = _ref28[3];
 
                       continuation(function continuation_$0() {
                         Bootloader.loadModules.apply(Bootloader, [
@@ -18189,10 +18212,10 @@ try {
                   var queuedPreloads = _queuedPreloads;
                   _queuedPreloads = [];
                   queuedPreloads.forEach(function queuedPreloads_forEach_$0(
-                    _ref26
+                    _ref29
                   ) {
-                    var components = _ref26[0],
-                      continuation = _ref26[1];
+                    var components = _ref29[0],
+                      continuation = _ref29[1];
                     continuation(function continuation_$0() {
                       Bootloader.preloadModules.apply(Bootloader, [components]);
                     });
@@ -18203,12 +18226,12 @@ try {
                   comps
                 ) {
                   for (
-                    var _iterator14 = comps,
-                      _isArray14 = Array.isArray(_iterator14),
-                      _i19 = 0,
-                      _iterator14 = _isArray14
-                        ? _iterator14
-                        : _iterator14[
+                    var _iterator15 = comps,
+                      _isArray15 = Array.isArray(_iterator15),
+                      _i20 = 0,
+                      _iterator15 = _isArray15
+                        ? _iterator15
+                        : _iterator15[
                             typeof Symbol === "function"
                               ? Symbol.iterator
                               : "@@iterator"
@@ -18216,16 +18239,16 @@ try {
                     ;
 
                   ) {
-                    var _ref27;
-                    if (_isArray14) {
-                      if (_i19 >= _iterator14.length) break;
-                      _ref27 = _iterator14[_i19++];
+                    var _ref30;
+                    if (_isArray15) {
+                      if (_i20 >= _iterator15.length) break;
+                      _ref30 = _iterator15[_i20++];
                     } else {
-                      _i19 = _iterator14.next();
-                      if (_i19.done) break;
-                      _ref27 = _i19.value;
+                      _i20 = _iterator15.next();
+                      if (_i20.done) break;
+                      _ref30 = _i20.value;
                     }
-                    var comp = _ref27;
+                    var comp = _ref30;
                     var entry = _componentMap.get(comp);
                     if (entry && entry.be) {
                       delete entry.be;
@@ -18246,12 +18269,12 @@ try {
 
                   if (sotUpgrades) {
                     for (
-                      var _iterator15 = sotUpgrades,
-                        _isArray15 = Array.isArray(_iterator15),
-                        _i20 = 0,
-                        _iterator15 = _isArray15
-                          ? _iterator15
-                          : _iterator15[
+                      var _iterator16 = sotUpgrades,
+                        _isArray16 = Array.isArray(_iterator16),
+                        _i21 = 0,
+                        _iterator16 = _isArray16
+                          ? _iterator16
+                          : _iterator16[
                               typeof Symbol === "function"
                                 ? Symbol.iterator
                                 : "@@iterator"
@@ -18259,16 +18282,16 @@ try {
                       ;
 
                     ) {
-                      var _ref28;
-                      if (_isArray15) {
-                        if (_i20 >= _iterator15.length) break;
-                        _ref28 = _iterator15[_i20++];
+                      var _ref31;
+                      if (_isArray16) {
+                        if (_i21 >= _iterator16.length) break;
+                        _ref31 = _iterator16[_i21++];
                       } else {
-                        _i20 = _iterator15.next();
-                        if (_i20.done) break;
-                        _ref28 = _i20.value;
+                        _i21 = _iterator16.next();
+                        if (_i21.done) break;
+                        _ref31 = _i21.value;
                       }
-                      var _hash3 = _ref28;
+                      var _hash3 = _ref31;
                       var entry = _resources.get(_hash3);
                       if (entry) {
                         _addResource(_hash3, entry, true);
@@ -18280,53 +18303,7 @@ try {
                 getURLToHashMap: function getURLToHashMap() {
                   var resources = new Map();
                   for (
-                    var _iterator16 = _resources,
-                      _isArray16 = Array.isArray(_iterator16),
-                      _i21 = 0,
-                      _iterator16 = _isArray16
-                        ? _iterator16
-                        : _iterator16[
-                            typeof Symbol === "function"
-                              ? Symbol.iterator
-                              : "@@iterator"
-                          ]();
-                    ;
-
-                  ) {
-                    var _ref30;
-                    if (_isArray16) {
-                      if (_i21 >= _iterator16.length) break;
-                      _ref30 = _iterator16[_i21++];
-                    } else {
-                      _i21 = _iterator16.next();
-                      if (_i21.done) break;
-                      _ref30 = _i21.value;
-                    }
-                    var _ref31 = _ref30;
-                    var hash = _ref31[0];
-                    var entry = _ref31[1];
-                    resources.set(entry.src, hash);
-                  }
-                  return resources;
-                },
-
-                getArbiter: function getArbiter() {
-                  return _arbiter;
-                },
-
-                loadPredictedResourceMap: function loadPredictedResourceMap(
-                  resourceMap,
-                  callback
-                ) {
-                  Bootloader.setResourceMap(resourceMap);
-
-                  _loadResources(Object.keys(resourceMap), callback);
-                },
-
-                getCSSResources: function getCSSResources(resources) {
-                  var css = [];
-                  for (
-                    var _iterator17 = _resolveCSRs(resources),
+                    var _iterator17 = _resources,
                       _isArray17 = Array.isArray(_iterator17),
                       _i22 = 0,
                       _iterator17 = _isArray17
@@ -18351,6 +18328,52 @@ try {
                     var _ref34 = _ref33;
                     var hash = _ref34[0];
                     var entry = _ref34[1];
+                    resources.set(entry.src, hash);
+                  }
+                  return resources;
+                },
+
+                getArbiter: function getArbiter() {
+                  return _arbiter;
+                },
+
+                loadPredictedResourceMap: function loadPredictedResourceMap(
+                  resourceMap,
+                  callback
+                ) {
+                  Bootloader.setResourceMap(resourceMap);
+
+                  _loadResources(Object.keys(resourceMap), callback);
+                },
+
+                getCSSResources: function getCSSResources(resources) {
+                  var css = [];
+                  for (
+                    var _iterator18 = _resolveCSRs(resources),
+                      _isArray18 = Array.isArray(_iterator18),
+                      _i23 = 0,
+                      _iterator18 = _isArray18
+                        ? _iterator18
+                        : _iterator18[
+                            typeof Symbol === "function"
+                              ? Symbol.iterator
+                              : "@@iterator"
+                          ]();
+                    ;
+
+                  ) {
+                    var _ref36;
+                    if (_isArray18) {
+                      if (_i23 >= _iterator18.length) break;
+                      _ref36 = _iterator18[_i23++];
+                    } else {
+                      _i23 = _iterator18.next();
+                      if (_i23.done) break;
+                      _ref36 = _i23.value;
+                    }
+                    var _ref37 = _ref36;
+                    var hash = _ref37[0];
+                    var entry = _ref37[1];
                     if (entry.type === "css") {
                       css.push(hash);
                     }
@@ -18363,7 +18386,7 @@ try {
                   return _bootloaded;
                 },
 
-                getLoadedUrlTimes: function getLoadedUrlTimes() {
+                getLoadedResourceTimes: function getLoadedResourceTimes() {
                   return _loaded;
                 },
 
@@ -39302,7 +39325,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001829919","namespace":"FB","message":"' +
+        '","revision":"1001833802","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
