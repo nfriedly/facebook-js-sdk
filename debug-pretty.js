@@ -1,4 +1,4 @@
-/*1584131361,,JIT Construction: v1001837715,en_US*/
+/*1584136752,,JIT Construction: v1001838546,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3874,8 +3874,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1001837715,
-            client_revision: 1001837715,
+            server_revision: 1001838546,
+            client_revision: 1001838546,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3885,14 +3885,14 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6803792389757704150-0",
+            hsi: "6803815542715470178-0",
             spin: 0,
-            __spin_r: 1001837715,
+            __spin_r: 1001838546,
             __spin_b: "trunk",
-            __spin_t: 1584131361,
-            vip: "31.13.65.7"
+            __spin_t: 1584136752,
+            vip: "31.13.66.19"
           });
-          __d("ServerNonce", [], { ServerNonce: "SxaP1IjiGstu85ZNrRDebP" });
+          __d("ServerNonce", [], { ServerNonce: "MpqDa8NGB4PHMYoVqWtEBW" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4056,7 +4056,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001837715",
+            revision: "1001838546",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -16056,11 +16056,9 @@ try {
               Promise.all = function(arr) {
                 if (!ES("Array", "isArray", false, arr)) {
                   arr = [
-                    new Promise(function() {
-                      throw new TypeError(
-                        "Promise.all must be passed an iterable."
-                      );
-                    })
+                    Promise.reject(
+                      new TypeError("Promise.all must be passed an array.")
+                    )
                   ];
                 }
 
@@ -16113,6 +16111,43 @@ try {
                     res(i, args[i]);
                   }
                 });
+              };
+
+              Promise.allSettled = function(arr) {
+                if (!ES("Array", "isArray", false, arr)) {
+                  return Promise.reject(
+                    new TypeError("Promise.allSettled must be passed an array.")
+                  );
+                }
+
+                var promises = Array(arr.length);
+                var _loop = function _loop(i, len) {
+                  var value = arr[i];
+
+                  var isThenable =
+                    typeof value === "object" &&
+                    value !== null &&
+                    typeof value.then === "function";
+                  promises[i] = isThenable
+                    ? new Promise(function(resolve, _reject) {
+                        value.then(
+                          function onFulfilled(value) {
+                            resolve({ status: "fulfilled", value: value });
+                          },
+                          function onRejected(reason) {
+                            resolve({ status: "rejected", reason: reason });
+                          }
+                        );
+                      })
+                    : Promise.resolve({
+                        status: "fulfilled",
+                        value: value
+                      });
+                };
+                for (var i = 0, len = arr.length; i < len; ++i) {
+                  _loop(i, len);
+                }
+                return Promise.all(promises);
               };
 
               Promise.reject = function(value) {
@@ -39323,7 +39358,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001837715","namespace":"FB","message":"' +
+        '","revision":"1001838546","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
