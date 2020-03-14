@@ -1,4 +1,4 @@
-/*1584136752,,JIT Construction: v1001838546,en_US*/
+/*1584185363,,JIT Construction: v1001841142,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3874,8 +3874,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1001838546,
-            client_revision: 1001838546,
+            server_revision: 1001841142,
+            client_revision: 1001841142,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3885,14 +3885,14 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6803815542715470178-0",
+            hsi: "6804024326353236367-0",
             spin: 0,
-            __spin_r: 1001838546,
+            __spin_r: 1001841142,
             __spin_b: "trunk",
-            __spin_t: 1584136752,
-            vip: "31.13.66.19"
+            __spin_t: 1584185363,
+            vip: "31.13.65.7"
           });
-          __d("ServerNonce", [], { ServerNonce: "MpqDa8NGB4PHMYoVqWtEBW" });
+          __d("ServerNonce", [], { ServerNonce: "uuWHcwl3ISJBL-jOWbwIQ0" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4056,7 +4056,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001838546",
+            revision: "1001841142",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -10524,6 +10524,33 @@ try {
             null
           );
           __d(
+            "CSRIndexUtil",
+            ["invariant"],
+            function $module_CSRIndexUtil(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports,
+              invariant
+            ) {
+              module.exports = {
+                parseCSRIndexes: function parseCSRIndexes(str) {
+                  str.substr(0, 1) === ":" ||
+                    invariant(0, "Invalid csrindex format %s", str);
+                  return str
+                    .substr(1)
+                    .split(",")
+                    .map(function map_$0(idx) {
+                      return parseInt(idx, 10);
+                    });
+                }
+              };
+            },
+            null
+          );
+          __d(
             "BlueCompatBroker",
             ["Env", "URI"],
             function $module_BlueCompatBroker(
@@ -16568,13 +16595,13 @@ try {
             "Bootloader",
             [
               "invariant",
-              "nullthrows",
               "requireCond",
               "Arbiter",
               "BootloaderConfig",
               "BootloaderEndpoint",
               "CallbackDependencyManager",
               "CSRBitMap",
+              "CSRIndexUtil",
               "CSSLoader",
               "ErrorPubSub",
               "FBLogger",
@@ -16588,6 +16615,7 @@ try {
               "createTrustedScriptURLFromFacebookURI",
               "ex",
               "ifRequired",
+              "nullthrows",
               "performanceAbsoluteNow",
               "setImmediateAcrossTransitions"
             ],
@@ -16689,7 +16717,11 @@ try {
                   }
                   var _ref3 = _ref2;
                   var hash = _ref3[0];
-                  loading.push(_getExistingResource(hash).src);
+                  var entry = _getExistingResource(hash);
+                  if (entry.type === "csr") {
+                    continue;
+                  }
+                  loading.push(entry.src);
                 }
                 err.loadingUrls = loading;
               });
@@ -16833,22 +16865,32 @@ try {
                 return _useRetries;
               }
 
-              function _preloadStaticResource(
-                type,
-                hash,
-                entry,
-                containerNode,
-                onload
-              ) {
-                if (_preloadRequested.has(hash)) {
+              function _preloadResource(hash, entry, containerNode, onload) {
+                if (_requested.has(hash) || _preloadRequested.has(hash)) {
                   return;
                 }
                 _preloadRequested.add(hash);
 
+                var target = undefined;
+                switch (entry.type) {
+                  case "async":
+                    _loadResource(hash, entry, containerNode, null);
+                    return;
+                  case "css":
+                    target = "style";
+                    break;
+                  case "js":
+                    target = "script";
+                    break;
+                  default:
+                    target = entry.type;
+                    false || invariant(0, "unreachable");
+                }
+
                 var link = document.createElement("link");
                 link.href = entry.src;
                 link.rel = "preload";
-                link.as = type === "js" ? "script" : "style";
+                link.as = target;
                 if (onload) {
                   link.onload = onload;
                 }
@@ -17226,7 +17268,9 @@ try {
                                 "record of a batch having been prepared."
                             );
 
-                          var src = _getExistingResource(hash).src;
+                          var entry = _getExistingResource(hash);
+                          entry.type === "async" ||
+                            invariant(0, "Wrong entry type %s", entry.type);
                           _pendingAsyncBatchRequest = null;
                           _loading.set(
                             hash,
@@ -17235,7 +17279,7 @@ try {
                           );
                           require("BootloaderEndpoint").load(
                             Bootloader,
-                            src,
+                            entry.src,
                             function BootloaderEndpoint_load_$2(data) {
                               return _blEndpointDone(hash, data);
                             }
@@ -17260,25 +17304,47 @@ try {
                 }
               }
 
-              function _requestResourceIntoContainer(
-                type,
-                hash,
-                entry,
-                containerNode
-              ) {
-                var callback = function callback() {
-                  return Bootloader.done(hash);
-                };
-                _loading.set(
-                  hash,
-                  (c_performanceAbsoluteNow ||
-                    (c_performanceAbsoluteNow = require("performanceAbsoluteNow")))()
-                );
-                switch (type) {
+              function _loadResource(hash, entry, containerNode, tag) {
+                if (_requested.has(hash)) {
+                  return;
+                }
+                _requested.add(hash);
+
+                window.CavalryLogger &&
+                  window.CavalryLogger.getInstance().measureResources(
+                    {
+                      name: hash,
+                      type: entry.type
+                    },
+
+                    tag
+                  );
+
+                switch (entry.type) {
                   case "js":
-                    _loadJS(hash, entry, callback, containerNode);
+                    _loading.set(
+                      hash,
+                      (c_performanceAbsoluteNow ||
+                        (c_performanceAbsoluteNow = require("performanceAbsoluteNow")))()
+                    );
+                    _loadJS(
+                      hash,
+                      entry,
+                      function _loadJS_$2() {
+                        return Bootloader.done(hash);
+                      },
+                      containerNode
+                    );
                     break;
                   case "css":
+                    _loading.set(
+                      hash,
+                      (c_performanceAbsoluteNow ||
+                        (c_performanceAbsoluteNow = require("performanceAbsoluteNow")))()
+                    );
+                    var callback = function callback() {
+                      return Bootloader.done(hash);
+                    };
                     require("CSSLoader").loadStyleSheet(
                       hash,
                       entry.src,
@@ -17289,8 +17355,12 @@ try {
                     );
 
                     break;
+                  case "async":
+                    _requestAsyncResource(hash, entry);
+                    break;
                   default:
-                    type;
+                    entry.type;
+                    false || invariant(0, "unreachable");
                 }
               }
 
@@ -17305,9 +17375,6 @@ try {
                 var nonblocking = new Set();
                 var blockingAsync = [];
                 var blockingNonAsync = [];
-
-                var cav =
-                  window.CavalryLogger && window.CavalryLogger.getInstance();
 
                 for (
                   var _iterator7 = _resolveCSRs(resourceHashes),
@@ -17335,21 +17402,30 @@ try {
                   var _ref18 = _ref14;
                   var hash = _ref18[0];
                   var entry = _ref18[1];
-                  var type = entry.type;
-
-                  if (entry.nonblocking) {
-                    nonblocking.add(hash);
-                  } else {
-                    (type === "async" ? blockingAsync : blockingNonAsync).push(
-                      hash
-                    );
-                    blocking.add(hash);
+                  switch (entry.type) {
+                    case "css":
+                      if (entry.nonblocking) {
+                        nonblocking.add(hash);
+                      } else {
+                        blockingNonAsync.push(hash);
+                        blocking.add(hash);
+                      }
+                      break;
+                    case "js":
+                      blockingNonAsync.push(hash);
+                      blocking.add(hash);
+                      break;
+                    case "async":
+                      blockingAsync.push(hash);
+                      blocking.add(hash);
+                      break;
+                    default:
+                      entry.type;
+                      false || invariant(0, "unreachable");
                   }
+
                   if (!_requested.has(hash)) {
-                    _requested.add(hash);
                     willRequest.set(hash, entry);
-                    cav &&
-                      cav.measureResources({ name: hash, type: type }, tag);
                   }
                 }
 
@@ -17535,50 +17611,24 @@ try {
                   var _ref19 = _ref17;
                   var _hash2 = _ref19[0];
                   var _entry = _ref19[1];
-                  var type = _entry.type,
-                    src = _entry.src;
-                  type !== "csr" ||
-                    invariant(0, "Found csr for %s when unexpected", src);
-                  if (type === "async") {
-                    _requestAsyncResource(_hash2, _entry);
-                  } else {
-                    _preloadStaticResource(
-                      type,
-                      _hash2,
-                      _entry,
-                      batchingContainerNode
-                    );
-                    _requestResourceIntoContainer(
-                      type,
-                      _hash2,
-                      _entry,
-                      batchingContainerNode
-                    );
-                  }
+
+                  _preloadResource(_hash2, _entry, batchingContainerNode);
+                  _loadResource(_hash2, _entry, batchingContainerNode);
                 }
                 _getContainerNode().appendChild(batchingContainerNode);
               }
 
-              function _parseProvidesStr(provides) {
-                provides.substr(0, 1) === ":" ||
-                  invariant(0, 'Invalid "p" format %s', provides);
-                return provides
-                  .substr(1)
-                  .split(",")
-                  .map(function map_$0(p) {
-                    return parseInt(p, 10);
-                  });
-              }
-
               function _addResource(hash, entry, forceSot) {
                 _resources.set(hash, entry);
+                if (entry.type === "async" || entry.type === "csr") {
+                  return;
+                }
                 var provides = entry.p;
                 if (provides) {
-                  entry.type !== "csr" ||
-                    invariant(0, "CSRs cannot provide anything");
-
                   for (
-                    var _iterator9 = _parseProvidesStr(provides),
+                    var _iterator9 = require("CSRIndexUtil").parseCSRIndexes(
+                        provides
+                      ),
                       _isArray9 = Array.isArray(_iterator9),
                       _i12 = 0,
                       _iterator9 = _isArray9
@@ -17647,9 +17697,11 @@ try {
 
                   var provides = undefined;
                   if (entry.type === "csr") {
-                    provides = _parseProvidesStr(entry.src);
+                    provides = require("CSRIndexUtil").parseCSRIndexes(
+                      entry.src
+                    );
                   } else if (entry.p) {
-                    provides = _parseProvidesStr(entry.p);
+                    provides = require("CSRIndexUtil").parseCSRIndexes(entry.p);
                   } else {
                     ret.set(hash, entry);
                     continue;
@@ -17712,11 +17764,11 @@ try {
                   _processedTagIDs.add(el.id);
                 }
 
-                var isJS = el.tagName == "SCRIPT";
+                var entry =
+                  el.tagName == "SCRIPT"
+                    ? { src: el.src, type: "js" }
+                    : { src: el.href, type: "css" };
 
-                var entry = isJS
-                  ? { src: el.src, type: "js" }
-                  : { src: el.href, type: "css" };
                 if (!el.crossOrigin) {
                   entry.nc = 1;
                 }
@@ -17735,22 +17787,24 @@ try {
                     entry.src
                   );
                 }
+
                 _addResource(hash, entry, true);
+                _requested.add(hash);
 
                 var onload = function onload() {
                   return Bootloader.done(hash);
                 };
 
-                var markAsLoaded = isJS
-                  ? !el.getAttribute("async")
-                  : ((_el$parentNode = el.parentNode) == null
-                      ? void 0
-                      : _el$parentNode.tagName) === "HEAD";
+                var markAsLoaded =
+                  entry.type === "js"
+                    ? !el.getAttribute("async")
+                    : ((_el$parentNode = el.parentNode) == null
+                        ? void 0
+                        : _el$parentNode.tagName) === "HEAD";
                 if (markAsLoaded || (window._btldr && window._btldr[hash])) {
                   onload();
                 } else {
-                  _requested.add(hash);
-                  if (isJS) {
+                  if (entry.type === "js") {
                     _setupScriptEventListeners(el, hash, entry, onload);
                   } else {
                     require("CSSLoader").setupEventListeners(
@@ -17800,7 +17854,7 @@ try {
                 });
               }
 
-              function _preloadResourceHashes(hashes, containerNode) {
+              function _preloadResources(hashes, containerNode) {
                 for (
                   var _iterator12 = _resolveCSRs(hashes),
                     _isArray12 = Array.isArray(_iterator12),
@@ -17827,22 +17881,7 @@ try {
                   var _ref25 = _ref24;
                   var hash = _ref25[0];
                   var entry = _ref25[1];
-                  if (_requested.has(hash)) {
-                    continue;
-                  }
-                  if (entry.type === "async") {
-                    _requested.add(hash);
-                    _requestAsyncResource(hash, entry);
-                  } else {
-                    entry.type !== "csr" ||
-                      invariant(0, "CSRs are already resolved");
-                    _preloadStaticResource(
-                      entry.type,
-                      hash,
-                      entry,
-                      containerNode
-                    );
-                  }
+                  _preloadResource(hash, entry, containerNode);
                 }
               }
 
@@ -17909,7 +17948,7 @@ try {
                     var _arr4 = [r, (rdfds == null ? void 0 : rdfds.r) || []];
                     for (var _i17 = 0; _i17 < _arr4.length; _i17++) {
                       var hashes = _arr4[_i17];
-                      _preloadResourceHashes(hashes, batchingContainerNode);
+                      _preloadResources(hashes, batchingContainerNode);
                     }
                   }
                   if (newCompsWithBE.length || newCompsWithoutBE.length) {
@@ -17918,7 +17957,7 @@ try {
                       newCompsWithoutBE
                     );
 
-                    _preloadResourceHashes([hash], batchingContainerNode);
+                    _preloadResources([hash], batchingContainerNode);
                   }
                   _getContainerNode().appendChild(batchingContainerNode);
                 },
@@ -18173,14 +18212,9 @@ try {
                   src
                 ) {
                   var hash = require("ResourceHasher").createExternalJSHash();
-                  var entry = { src: src, type: "js", nc: 1 };
+                  var entry = { type: "js", src: src, nc: 1 };
                   _addResource(hash, entry, false);
-                  _requestResourceIntoContainer(
-                    "js",
-                    hash,
-                    entry,
-                    _getContainerNode()
-                  );
+                  _loadResource(hash, entry, _getContainerNode(), null);
                 },
 
                 done: function done(hash) {
@@ -18199,7 +18233,6 @@ try {
                   _loading["delete"](hash);
 
                   window.CavalryLogger && window.CavalryLogger.done_js([hash]);
-                  _requested.add(hash);
 
                   _callbackManager.satisfyPersistentDependency(hash);
                 },
@@ -18359,6 +18392,9 @@ try {
                     var _ref34 = _ref33;
                     var hash = _ref34[0];
                     var entry = _ref34[1];
+                    if (entry.type === "async" || entry.type === "csr") {
+                      continue;
+                    }
                     resources.set(entry.src, hash);
                   }
                   return resources;
@@ -39358,7 +39394,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001838546","namespace":"FB","message":"' +
+        '","revision":"1001841142","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
