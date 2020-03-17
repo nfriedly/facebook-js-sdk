@@ -1,4 +1,4 @@
-/*1584415166,,JIT Construction: v1001848403,en_US*/
+/*1584419962,,JIT Construction: v1001848772,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3878,8 +3878,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1001848403,
-            client_revision: 1001848403,
+            server_revision: 1001848772,
+            client_revision: 1001848772,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3889,14 +3889,14 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6805011323100556173-0",
+            hsi: "6805031924582328904-0",
             spin: 0,
-            __spin_r: 1001848403,
+            __spin_r: 1001848772,
             __spin_b: "trunk",
-            __spin_t: 1584415166,
+            __spin_t: 1584419962,
             vip: "31.13.66.19"
           });
-          __d("ServerNonce", [], { ServerNonce: "ik3cWdaS1J-NqdOLboX68a" });
+          __d("ServerNonce", [], { ServerNonce: "E5CGpnzv38DwTjGIUsvwgl" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4049,7 +4049,6 @@ try {
               boosted_component: true,
               boosted_pagelikes: true,
               jslogger: true,
-              kbshortcuts_feed: true,
               mercury_send_error_logging: true,
               platform_oauth_client_events: true,
               xtrackable_clientview_batch: true,
@@ -4061,7 +4060,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001848403",
+            revision: "1001848772",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -17773,6 +17772,7 @@ try {
                 if (el.getAttribute("data-nonblocking")) {
                   entry.nonblocking = 1;
                 }
+
                 entry.p = el.getAttribute("data-p");
 
                 if (
@@ -39392,7 +39392,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001848403","namespace":"FB","message":"' +
+        '","revision":"1001848772","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
