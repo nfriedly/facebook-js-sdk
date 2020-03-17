@@ -1,4 +1,4 @@
-/*1584185363,,JIT Construction: v1001841142,en_US*/
+/*1584415166,,JIT Construction: v1001848403,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3806,7 +3806,9 @@ try {
                 "BUSINESS_GRAPH_SETTING_SESG_ASSIGNED_USERS_NEW_API",
                 "RECRUITING_REQUISITION_VALIDATE_COMPANY_GROUPING_ON_LINK",
                 "BAM_EXCLUDE_MEGAZORDED_ALERTS",
-                "CALENDAR_WEEKVIEW_NEW_BADGE"
+                "CALENDAR_WEEKVIEW_NEW_BADGE",
+                "POST_INSIGHTS_CAPITALIZE_BREAKDOWNS_FOR_ACTION_TYPE",
+                "WORKPLACE_PLATFORM_SECURE_APPS_MAILBOXES"
               ]
             },
             ko: {
@@ -3828,7 +3830,9 @@ try {
                 "1onzIv0jH6H",
                 "5LSlJUj3BnT",
                 "2urFjIQigPj",
-                "7EZACZMulOj"
+                "7EZACZMulOj",
+                "6ra3sC1PDFj",
+                "5XCz1h9Iaw3"
               ]
             }
           });
@@ -3874,8 +3878,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1001841142,
-            client_revision: 1001841142,
+            server_revision: 1001848403,
+            client_revision: 1001848403,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3885,14 +3889,14 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6804024326353236367-0",
+            hsi: "6805011323100556173-0",
             spin: 0,
-            __spin_r: 1001841142,
+            __spin_r: 1001848403,
             __spin_b: "trunk",
-            __spin_t: 1584185363,
-            vip: "31.13.65.7"
+            __spin_t: 1584415166,
+            vip: "31.13.66.19"
           });
-          __d("ServerNonce", [], { ServerNonce: "uuWHcwl3ISJBL-jOWbwIQ0" });
+          __d("ServerNonce", [], { ServerNonce: "ik3cWdaS1J-NqdOLboX68a" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4045,6 +4049,7 @@ try {
               boosted_component: true,
               boosted_pagelikes: true,
               jslogger: true,
+              kbshortcuts_feed: true,
               mercury_send_error_logging: true,
               platform_oauth_client_events: true,
               xtrackable_clientview_batch: true,
@@ -4056,7 +4061,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001841142",
+            revision: "1001848403",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -13260,7 +13265,6 @@ try {
                 };
                 _proto.getLookasideURI = function getLookasideURI() {
                   var domain = "origincache.facebook.com";
-                  var useNewGKs = require("gkx")("996939");
                   if (
                     require("isInternalFBURI")(
                       (c_URI || (c_URI = require("URI"))).getRequestURI()
@@ -13268,14 +13272,8 @@ try {
                   ) {
                     domain = "lookaside.internalfb.com";
                   } else {
-                    if (useNewGKs) {
-                      if (require("gkx")("996940")) {
-                        domain = "lookaside.internmc.facebook.com";
-                      }
-                    } else {
-                      if (require("gkx")("676940")) {
-                        domain = "lookaside.internmc.facebook.com";
-                      }
+                    if (require("gkx")("996940")) {
+                      domain = "lookaside.internmc.facebook.com";
                     }
                   }
                   return this.getURI()
@@ -39394,7 +39392,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001841142","namespace":"FB","message":"' +
+        '","revision":"1001848403","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
