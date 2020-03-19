@@ -1,4 +1,4 @@
-/*1584419962,,JIT Construction: v1001848772,en_US*/
+/*1584581948,,JIT Construction: v1001860341,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3878,8 +3878,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1001848772,
-            client_revision: 1001848772,
+            server_revision: 1001860341,
+            client_revision: 1001860341,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3889,14 +3889,14 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6805031924582328904-0",
+            hsi: "6805727645066628097-0",
             spin: 0,
-            __spin_r: 1001848772,
+            __spin_r: 1001860341,
             __spin_b: "trunk",
-            __spin_t: 1584419962,
+            __spin_t: 1584581948,
             vip: "31.13.66.19"
           });
-          __d("ServerNonce", [], { ServerNonce: "E5CGpnzv38DwTjGIUsvwgl" });
+          __d("ServerNonce", [], { ServerNonce: "RbXduUP7Q6520ym7tqlzS-" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4060,7 +4060,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001848772",
+            revision: "1001860341",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -5501,27 +5501,17 @@ try {
                         .warn("Blame helpers do not work with catching");
                     }
 
-                    try {
-                      require("ErrorSerializer").aggregateError(error, {
-                        messageFormat: format,
-                        messageParams: require("ErrorSerializer").toStringParams(
-                          params
-                        ),
-                        errorName: error.name,
-                        forcedKey: forcedKey,
-                        project: project,
-                        type: type
-                      });
-                    } catch (e) {
-                      new FBLogMessage("aggregate_error")
-                        .blameToPreviousFrame()
-                        .blameToPreviousFrame()
-                        .warn(
-                          "Aggregating error:%s in FBLogMessage failed",
-                          error.name,
-                          e.message
-                        );
-                    }
+                    require("ErrorSerializer").aggregateError(error, {
+                      messageFormat: format,
+                      messageParams: require("ErrorSerializer").toStringParams(
+                        params
+                      ),
+                      errorName: error.name,
+                      forcedKey: forcedKey,
+                      project: project,
+                      type: type
+                    });
+
                     normalizedError = require("ErrorNormalizeUtils").normalizeError(
                       error
                     );
@@ -5733,19 +5723,9 @@ try {
                 if (error) {
                   errorToThrow = error;
                   logger = logger.catching(error);
-                  try {
-                    require("ErrorSerializer").aggregateError(error, {
-                      messageFormat: errorMessage
-                    });
-                  } catch (e) {
-                    new (require("FBLogger"))("aggregate_error")
-                      .blameToPreviousFrame()
-                      .warn(
-                        "Aggregating error:%s in unrecoverableViolation failed: %s",
-                        error.name,
-                        e.message
-                      );
-                  }
+                  require("ErrorSerializer").aggregateError(error, {
+                    messageFormat: errorMessage
+                  });
                 } else {
                   errorToThrow = new Error(errorMessage);
                   errorToThrow.taalOpcodes = [
@@ -39392,7 +39372,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001848772","namespace":"FB","message":"' +
+        '","revision":"1001860341","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
