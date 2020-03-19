@@ -1,4 +1,4 @@
-/*1584581948,,JIT Construction: v1001860341,en_US*/
+/*1584656956,,JIT Construction: v1001865292,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3878,8 +3878,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1001860341,
-            client_revision: 1001860341,
+            server_revision: 1001865292,
+            client_revision: 1001865292,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3889,14 +3889,14 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6805727645066628097-0",
+            hsi: "6806049803359028210-0",
             spin: 0,
-            __spin_r: 1001860341,
+            __spin_r: 1001865292,
             __spin_b: "trunk",
-            __spin_t: 1584581948,
+            __spin_t: 1584656956,
             vip: "31.13.66.19"
           });
-          __d("ServerNonce", [], { ServerNonce: "RbXduUP7Q6520ym7tqlzS-" });
+          __d("ServerNonce", [], { ServerNonce: "HZwPjGi2_Tu3oqAd94IwrJ" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4060,7 +4060,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001860341",
+            revision: "1001865292",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -19760,21 +19760,6 @@ try {
                       if (err instanceof Error) {
                         throw err;
                       } else {
-                        if (typeof err === "object") {
-                          try {
-                            require("FBLogger")("notifications").warn(
-                              "T62879140: PromiseDone error stringified: %s",
-                              ES("JSON", "stringify", false, err)
-                            );
-                          } catch (e) {
-                            require("FBLogger")("notifications")
-                              .catching(e)
-                              .warn(
-                                "T62879140: PromiseDone stringification error: %s",
-                                e
-                              );
-                          }
-                        }
                         errorLocation.message = require("TAAL").blameToPreviousFile(
                           err
                         );
@@ -39372,7 +39357,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001860341","namespace":"FB","message":"' +
+        '","revision":"1001865292","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
