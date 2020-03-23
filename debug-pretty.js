@@ -1,4 +1,4 @@
-/*1584724760,,JIT Construction: v1001870448,en_US*/
+/*1585002546,,JIT Construction: v1001884969,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3808,7 +3808,9 @@ try {
                 "BAM_EXCLUDE_MEGAZORDED_ALERTS",
                 "CALENDAR_WEEKVIEW_NEW_BADGE",
                 "POST_INSIGHTS_CAPITALIZE_BREAKDOWNS_FOR_ACTION_TYPE",
-                "WORKPLACE_PLATFORM_SECURE_APPS_MAILBOXES"
+                "WORKPLACE_PLATFORM_SECURE_APPS_MAILBOXES",
+                "BUY_AT_COVID_MESSAGE_MODAL",
+                "BUY_AT_COVID_MESSAGE_BANNER"
               ]
             },
             ko: {
@@ -3832,7 +3834,9 @@ try {
                 "2urFjIQigPj",
                 "7EZACZMulOj",
                 "6ra3sC1PDFj",
-                "5XCz1h9Iaw3"
+                "5XCz1h9Iaw3",
+                "7B50eHY3WKY",
+                "8YYcKWOrbjr"
               ]
             }
           });
@@ -3878,8 +3882,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1001870448,
-            client_revision: 1001870448,
+            server_revision: 1001884969,
+            client_revision: 1001884969,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3889,14 +3893,14 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6806341018857376698-0",
+            hsi: "6807534100736361783-0",
             spin: 0,
-            __spin_r: 1001870448,
+            __spin_r: 1001884969,
             __spin_b: "trunk",
-            __spin_t: 1584724760,
-            vip: "31.13.66.19"
+            __spin_t: 1585002546,
+            vip: "31.13.65.7"
           });
-          __d("ServerNonce", [], { ServerNonce: "EdHvtK6F9HITauirLVpJxV" });
+          __d("ServerNonce", [], { ServerNonce: "lNJu5fsDPZ6s-bichhQu4G" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4060,7 +4064,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001870448",
+            revision: "1001884969",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -5200,6 +5204,56 @@ try {
             null
           );
           __d(
+            "ErrorGuardState",
+            [],
+            function $module_ErrorGuardState(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              "use strict";
+
+              var guardList = [];
+
+              var ErrorGuardState = {
+                pushGuard: function pushGuard(entry) {
+                  guardList.unshift(entry);
+                },
+
+                popGuard: function popGuard() {
+                  guardList.shift();
+                },
+
+                inGuard: function inGuard() {
+                  return guardList.length !== 0;
+                },
+
+                cloneGuardList: function cloneGuardList() {
+                  return ES(guardList, "map", true, function guardList_map_$0(
+                    e
+                  ) {
+                    return e.name;
+                  });
+                },
+
+                findDeferredSource: function findDeferredSource() {
+                  for (var _i = 0; _i < guardList.length; _i++) {
+                    var e = guardList[_i];
+                    if (e.deferredSource !== null) {
+                      return e.deferredSource;
+                    }
+                  }
+                }
+              };
+
+              module.exports = ErrorGuardState;
+            },
+            null
+          );
+          __d(
             "removeFromArray",
             [],
             function $module_removeFromArray(
@@ -5223,7 +5277,12 @@ try {
           );
           __d(
             "ErrorPubSub",
-            ["ErrorBrowserConsole", "ErrorNormalizeUtils", "removeFromArray"],
+            [
+              "ErrorBrowserConsole",
+              "ErrorGuardState",
+              "ErrorNormalizeUtils",
+              "removeFromArray"
+            ],
             function $module_ErrorPubSub(
               global,
               require,
@@ -5245,13 +5304,10 @@ try {
               var history = [];
               var MAX_HISTORY = 50;
 
-              var guardList = [];
-
               var isReporting = false;
 
               var ErrorPubSub = {
                 history: history,
-                guardList: guardList,
 
                 addListener: function addListener(listener, noPlayback) {
                   if (noPlayback === void 0) {
@@ -5311,14 +5367,6 @@ try {
                   ErrorPubSub.reportError(error);
                 },
 
-                pushGuard: function pushGuard(name) {
-                  guardList.unshift(name);
-                },
-
-                popGuard: function popGuard() {
-                  guardList.shift();
-                },
-
                 reportError: function reportError(error) {
                   var normalizedError = require("ErrorNormalizeUtils").normalizeError(
                     error
@@ -5346,18 +5394,24 @@ try {
                     return false;
                   }
 
+                  var guardList = require("ErrorGuardState").cloneGuardList();
                   if (normalizedError.reactComponentStack) {
-                    ErrorPubSub.pushGuard(GLOBAL_REACT_ERROR_HANDLER_TAG);
+                    guardList.unshift(GLOBAL_REACT_ERROR_HANDLER_TAG);
                   }
 
                   if (guardList.length > 0) {
                     normalizedError.guard =
                       normalizedError.guard || guardList[0];
-                    normalizedError.guardList = guardList.slice();
+                    normalizedError.guardList = guardList;
                   }
 
-                  if (normalizedError.reactComponentStack) {
-                    ErrorPubSub.popGuard();
+                  if (normalizedError.deferredSource == null) {
+                    var deferredSource = require("ErrorGuardState").findDeferredSource();
+                    if (deferredSource != null) {
+                      normalizedError.deferredSource = require("ErrorNormalizeUtils").normalizeError(
+                        deferredSource
+                      );
+                    }
                   }
 
                   if (history.length > MAX_HISTORY) {
@@ -5875,7 +5929,13 @@ try {
           );
           __d(
             "ErrorGuard",
-            ["Env", "ErrorNormalizeUtils", "ErrorPubSub", "ErrorSerializer"],
+            [
+              "Env",
+              "ErrorGuardState",
+              "ErrorNormalizeUtils",
+              "ErrorPubSub",
+              "ErrorSerializer"
+            ],
             function $module_ErrorGuard(
               global,
               require,
@@ -5892,6 +5952,7 @@ try {
 
               var nocatch = /\bnocatch\b/.test(location.search);
 
+              require("ErrorGuardState");
               require("ErrorNormalizeUtils");
               c_ErrorPubSub || (c_ErrorPubSub = require("ErrorPubSub"));
 
@@ -5902,13 +5963,14 @@ try {
                   args,
                   metaArgs
                 ) {
-                  (
-                    c_ErrorPubSub || (c_ErrorPubSub = require("ErrorPubSub"))
-                  ).pushGuard(
-                    (metaArgs == null ? void 0 : metaArgs.name) ||
+                  require("ErrorGuardState").pushGuard({
+                    name:
+                      (metaArgs == null ? void 0 : metaArgs.name) ||
                       (func.name ? "func_name:" + func.name : null) ||
-                      ANONYMOUS_GUARD_TAG
-                  );
+                      ANONYMOUS_GUARD_TAG,
+                    deferredSource:
+                      metaArgs == null ? void 0 : metaArgs.deferredSource
+                  });
 
                   if ((c_Env || (c_Env = require("Env"))).nocatch) {
                     nocatch = true;
@@ -5919,10 +5981,7 @@ try {
                     try {
                       returnValue = func.apply(context, args);
                     } finally {
-                      (
-                        c_ErrorPubSub ||
-                        (c_ErrorPubSub = require("ErrorPubSub"))
-                      ).popGuard();
+                      require("ErrorGuardState").popGuard();
                     }
                     return returnValue;
                   }
@@ -5975,10 +6034,9 @@ try {
                       } catch (e) {}
                     }
 
-                    normalizedError.guard = (
-                      c_ErrorPubSub || (c_ErrorPubSub = require("ErrorPubSub"))
-                    ).guardList[0];
-                    normalizedError.guardList = c_ErrorPubSub.guardList.slice();
+                    var guardList = require("ErrorGuardState").cloneGuardList();
+                    normalizedError.guard = guardList[0];
+                    normalizedError.guardList = guardList;
 
                     if (__DEV__) {
                       if (!nocatch && !ErrorGuard.applyWithGuard.warned) {
@@ -6001,11 +6059,11 @@ try {
                       onNormalizedError(normalizedError);
                     }
 
-                    c_ErrorPubSub.reportNormalizedError(normalizedError);
-                  } finally {
                     (
                       c_ErrorPubSub || (c_ErrorPubSub = require("ErrorPubSub"))
-                    ).popGuard();
+                    ).reportNormalizedError(normalizedError);
+                  } finally {
+                    require("ErrorGuardState").popGuard();
                   }
                 },
 
@@ -6040,10 +6098,7 @@ try {
                 },
 
                 inGuard: function inGuard() {
-                  return (
-                    (c_ErrorPubSub || (c_ErrorPubSub = require("ErrorPubSub")))
-                      .guardList.length !== 0
-                  );
+                  return require("ErrorGuardState").inGuard();
                 }
               };
 
@@ -39357,7 +39412,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001870448","namespace":"FB","message":"' +
+        '","revision":"1001884969","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
