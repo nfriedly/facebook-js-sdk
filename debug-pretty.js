@@ -1,4 +1,4 @@
-/*1585026567,,JIT Construction: v1001887824,en_US*/
+/*1585088956,,JIT Construction: v1001891064,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3808,9 +3808,7 @@ try {
                 "BAM_EXCLUDE_MEGAZORDED_ALERTS",
                 "CALENDAR_WEEKVIEW_NEW_BADGE",
                 "POST_INSIGHTS_CAPITALIZE_BREAKDOWNS_FOR_ACTION_TYPE",
-                "WORKPLACE_PLATFORM_SECURE_APPS_MAILBOXES",
-                "BUY_AT_COVID_MESSAGE_MODAL",
-                "BUY_AT_COVID_MESSAGE_BANNER"
+                "WORKPLACE_PLATFORM_SECURE_APPS_MAILBOXES"
               ]
             },
             ko: {
@@ -3834,9 +3832,7 @@ try {
                 "2urFjIQigPj",
                 "7EZACZMulOj",
                 "6ra3sC1PDFj",
-                "5XCz1h9Iaw3",
-                "7B50eHY3WKY",
-                "8YYcKWOrbjr"
+                "5XCz1h9Iaw3"
               ]
             }
           });
@@ -3882,8 +3878,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1001887824,
-            client_revision: 1001887824,
+            server_revision: 1001891064,
+            client_revision: 1001891064,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3893,14 +3889,14 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6807637269125923883-0",
+            hsi: "6807905227419919579-0",
             spin: 0,
-            __spin_r: 1001887824,
+            __spin_r: 1001891064,
             __spin_b: "trunk",
-            __spin_t: 1585026567,
+            __spin_t: 1585088956,
             vip: "31.13.66.19"
           });
-          __d("ServerNonce", [], { ServerNonce: "PQtq9zFdUczxk-NLTQjf3L" });
+          __d("ServerNonce", [], { ServerNonce: "Gq8_HysLMMjfdAqrdZ0yR3" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4064,7 +4060,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001887824",
+            revision: "1001891064",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -7397,7 +7393,12 @@ try {
                 );
               }
 
-              require("wrapFunction").setWrapper(TimeSlice.guard, "entry");
+              require("wrapFunction").setWrapper(
+                function wrapFunction_setWrapper_$0(fn, name) {
+                  return TimeSlice.guard(fn, name, { registerCallStack: true });
+                },
+                "entry"
+              );
 
               if (__DEV__) {
                 TimeSlice.__getGuard = function(fn) {
@@ -39412,7 +39413,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001887824","namespace":"FB","message":"' +
+        '","revision":"1001891064","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
