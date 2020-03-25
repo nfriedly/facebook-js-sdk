@@ -1,4 +1,4 @@
-/*1585088956,,JIT Construction: v1001891064,en_US*/
+/*1585142361,,JIT Construction: v1001894876,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3878,8 +3878,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1001891064,
-            client_revision: 1001891064,
+            server_revision: 1001894876,
+            client_revision: 1001894876,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3889,14 +3889,14 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6807905227419919579-0",
+            hsi: "6808134600146281212-0",
             spin: 0,
-            __spin_r: 1001891064,
+            __spin_r: 1001894876,
             __spin_b: "trunk",
-            __spin_t: 1585088956,
+            __spin_t: 1585142361,
             vip: "31.13.66.19"
           });
-          __d("ServerNonce", [], { ServerNonce: "Gq8_HysLMMjfdAqrdZ0yR3" });
+          __d("ServerNonce", [], { ServerNonce: "JBZbgDHIic5oyOPR2RAydH" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4060,7 +4060,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001891064",
+            revision: "1001894876",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -38215,12 +38215,26 @@ try {
                     "xd.login_button_prepare_call",
                     function subscribe_$1(msg) {
                       var params = ES("JSON", "parse", false, msg.params);
+                      var paramsCopyForClosure = msg.params;
+
                       prepareCall(params, iframeName, dialog_open_cb);
+
                       require("sdk.Auth").subscribe(
                         "status.change",
                         function Auth_subscribe_$1(response) {
+                          var closureParams = ES(
+                            "JSON",
+                            "parse",
+                            false,
+                            paramsCopyForClosure
+                          );
+                          closureParams.logger_id = require("guid")();
                           if (response.status !== "connected") {
-                            prepareCall(params, iframeName, dialog_open_cb);
+                            prepareCall(
+                              closureParams,
+                              iframeName,
+                              dialog_open_cb
+                            );
                           }
                         }
                       );
@@ -39413,7 +39427,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001891064","namespace":"FB","message":"' +
+        '","revision":"1001894876","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
