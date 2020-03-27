@@ -1,4 +1,4 @@
-/*1585142361,,JIT Construction: v1001894876,en_US*/
+/*1585285152,,JIT Construction: v1001907159,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3808,7 +3808,8 @@ try {
                 "BAM_EXCLUDE_MEGAZORDED_ALERTS",
                 "CALENDAR_WEEKVIEW_NEW_BADGE",
                 "POST_INSIGHTS_CAPITALIZE_BREAKDOWNS_FOR_ACTION_TYPE",
-                "WORKPLACE_PLATFORM_SECURE_APPS_MAILBOXES"
+                "WORKPLACE_PLATFORM_SECURE_APPS_MAILBOXES",
+                "BUY_AT_COVID_PUNCHOUT_CHECKOUT_MODAL"
               ]
             },
             ko: {
@@ -3832,7 +3833,8 @@ try {
                 "2urFjIQigPj",
                 "7EZACZMulOj",
                 "6ra3sC1PDFj",
-                "5XCz1h9Iaw3"
+                "5XCz1h9Iaw3",
+                "7cwY7xv5s7H"
               ]
             }
           });
@@ -3878,8 +3880,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1001894876,
-            client_revision: 1001894876,
+            server_revision: 1001907159,
+            client_revision: 1001907159,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3889,14 +3891,14 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6808134600146281212-0",
+            hsi: "6808747882764292735-0",
             spin: 0,
-            __spin_r: 1001894876,
+            __spin_r: 1001907159,
             __spin_b: "trunk",
-            __spin_t: 1585142361,
+            __spin_t: 1585285152,
             vip: "31.13.66.19"
           });
-          __d("ServerNonce", [], { ServerNonce: "JBZbgDHIic5oyOPR2RAydH" });
+          __d("ServerNonce", [], { ServerNonce: "5rA7C7fVf6MihVOMtjpLFR" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -3975,6 +3977,7 @@ try {
               "/xti.php": 1,
               "/zero/fblite/config/": 1,
               "/hr/zsh/wc/": 1,
+              "/ajax/bootloader-endpoint/": 1,
               "/4oh4.php": 1,
               "/autologin.php": 1,
               "/birthday_help.php": 1,
@@ -4060,7 +4063,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001894876",
+            revision: "1001907159",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -37016,6 +37019,11 @@ try {
                   frame.height = opts_arg.height + "px";
                 }
 
+                if (opts.testid) {
+                  frame.dataset.testid = opts.testid;
+                  delete opts.testid;
+                }
+
                 for (var key in opts) {
                   if (Object.prototype.hasOwnProperty.call(opts, key)) {
                     frame.setAttribute(key, opts[key]);
@@ -37354,6 +37362,8 @@ try {
                       },
 
                       title:
+                        this._ns + ":" + this._tag + " Facebook Social Plugin",
+                      testid:
                         this._ns + ":" + this._tag + " Facebook Social Plugin",
                       onload: function onload() {
                         return _this.inform("render");
@@ -39427,7 +39437,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001894876","namespace":"FB","message":"' +
+        '","revision":"1001907159","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
