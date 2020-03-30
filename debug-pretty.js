@@ -1,4 +1,4 @@
-/*1585343961,,JIT Construction: v1001910607,en_US*/
+/*1585571966,,JIT Construction: v1001916307,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3789,9 +3789,11 @@ try {
           __d("KSConfig", [], {
             killed: {
               __set: [
+                "STO_AD_CREATION_BLOCK",
                 "POCKET_MONSTERS_CREATE",
                 "POCKET_MONSTERS_DELETE",
                 "VIDEO_DIMENSIONS_FROM_PLAYER_IN_UPLOAD_DIALOG",
+                "STO_AD_DELIVERY_PAUSE",
                 "POCKET_MONSTERS_UPDATE_NAME",
                 "ADS_PLACEMENT_FIX_PUBLISHER_PLATFORMS_MUTATION",
                 "MOBILITY_KILL_OLD_VISIBILITY_POSITION_SETTING",
@@ -3814,9 +3816,11 @@ try {
             },
             ko: {
               __set: [
+                "a29SeZD6S7D",
                 "acrJTh9WGdp",
                 "1oOE64fL4wO",
                 "2dhqRnqXGLQ",
+                "3GaiM9xYkM2",
                 "7r6mSP7ofr2",
                 "1ntjZ2zgf03",
                 "3oh5Mw86USj",
@@ -3880,8 +3884,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1001910607,
-            client_revision: 1001910607,
+            server_revision: 1001916307,
+            client_revision: 1001916307,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3891,14 +3895,14 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6809000466992024681-0",
+            hsi: "6809979740536835013-0",
             spin: 0,
-            __spin_r: 1001910607,
+            __spin_r: 1001916307,
             __spin_b: "trunk",
-            __spin_t: 1585343961,
+            __spin_t: 1585571966,
             vip: "31.13.66.19"
           });
-          __d("ServerNonce", [], { ServerNonce: "6jW4NBGPSTyoXSr4k3L3J2" });
+          __d("ServerNonce", [], { ServerNonce: "Kpiat6xEnPKnjys96Dbqo2" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4063,7 +4067,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001910607",
+            revision: "1001916307",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -11756,7 +11760,7 @@ try {
                     throw new Error(
                       require("ex")(
                         "URI.parse: invalid URI (userinfo is not allowed in a URI): %s",
-                        uri.toString()
+                        uriToParse
                       )
                     );
                   } else {
@@ -11772,7 +11776,7 @@ try {
                     throw new Error(
                       require("ex")(
                         "URI.parse: invalid URI (no domain but multiple back-slashes): %s",
-                        uri.toString()
+                        uriToParse
                       )
                     );
                   } else {
@@ -11785,7 +11789,7 @@ try {
                     throw new Error(
                       require("ex")(
                         "URI.parse: invalid URI (unsafe protocol-relative URLs): %s",
-                        uri.toString()
+                        uriToParse
                       )
                     );
                   } else {
@@ -11802,7 +11806,7 @@ try {
                     throw new Error(
                       require("ex")(
                         "URI.parse: invalid URI (domain and path where path lacks leading slash): %s",
-                        uri.toString()
+                        uriToParse
                       )
                     );
                   } else {
@@ -39437,7 +39441,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001910607","namespace":"FB","message":"' +
+        '","revision":"1001916307","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
