@@ -1,4 +1,4 @@
-/*1585571966,,JIT Construction: v1001916307,en_US*/
+/*1585611563,,JIT Construction: v1001919765,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3884,8 +3884,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1001916307,
-            client_revision: 1001916307,
+            server_revision: 1001919765,
+            client_revision: 1001919765,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3895,14 +3895,14 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6809979740536835013-0",
+            hsi: "6810149808592945904-0",
             spin: 0,
-            __spin_r: 1001916307,
+            __spin_r: 1001919765,
             __spin_b: "trunk",
-            __spin_t: 1585571966,
+            __spin_t: 1585611563,
             vip: "31.13.66.19"
           });
-          __d("ServerNonce", [], { ServerNonce: "Kpiat6xEnPKnjys96Dbqo2" });
+          __d("ServerNonce", [], { ServerNonce: "OtOSBI9G_2BHUv_0hiconi" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4067,7 +4067,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001916307",
+            revision: "1001919765",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -16290,8 +16290,27 @@ try {
             null
           );
           __d(
+            "ifRequireable",
+            ["ifRequired"],
+            function $module_ifRequireable(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              function ifRequireable(id, cbYes, cbNo) {
+                return require("ifRequired").call(null, id, cbYes, cbNo);
+              }
+
+              module.exports = ifRequireable;
+            },
+            null
+          );
+          __d(
             "JSResourceReference",
-            ["Promise", "PromiseAnnotate", "ifRequired"],
+            ["Promise", "PromiseAnnotate", "ifRequireable", "ifRequired"],
             function $module_JSResourceReference(
               global,
               require,
@@ -16373,6 +16392,13 @@ try {
                     this === moduleLoader ||
                     this.$JSResourceReference_moduleId ==
                       moduleLoader.$JSResourceReference_moduleId
+                  );
+                };
+                _proto.getModuleIfRequireable = function getModuleIfRequireable() {
+                  return require("ifRequireable").call(
+                    null,
+                    this.$JSResourceReference_moduleId,
+                    getModule
                   );
                 };
                 _proto.getModuleIfRequired = function getModuleIfRequired() {
@@ -16654,7 +16680,7 @@ try {
               "TimeSlice",
               "createTrustedScriptURLFromFacebookURI",
               "ex",
-              "ifRequired",
+              "ifRequireable",
               "nullthrows",
               "performanceAbsoluteNow",
               "setImmediateAcrossTransitions"
@@ -17145,9 +17171,9 @@ try {
                   "js",
                   source
                 );
-                require("ifRequired")(
+                require("ifRequireable")(
                   "TimeSliceAutoclosedInteraction",
-                  function ifRequired_$1(TimeSliceAutoclosedInteraction) {
+                  function ifRequireable_$1(TimeSliceAutoclosedInteraction) {
                     return TimeSliceAutoclosedInteraction.getInteractionsActiveRightNow().forEach(
                       function forEach_$0(interaction) {
                         return interaction
@@ -17166,9 +17192,9 @@ try {
                   .addStringAnnotation("name", hash)
                   .addStringAnnotation("source", source);
 
-                require("ifRequired")(
+                require("ifRequireable")(
                   "TimeSliceInteraction",
-                  function ifRequired_$1(TimeSliceInteraction) {
+                  function ifRequireable_$1(TimeSliceInteraction) {
                     TimeSliceInteraction.informGlobally("bootloader._loadJS")
                       .addStringAnnotation("source", source)
                       .addStringAnnotation("name", hash);
@@ -17518,9 +17544,9 @@ try {
                     );
                   }
 
-                  var CometInteractionTracingMetrics = require("ifRequired")(
+                  var CometInteractionTracingMetrics = require("ifRequireable")(
                     "CometInteractionTracingMetrics",
-                    function ifRequired_$1(x) {
+                    function ifRequireable_$1(x) {
                       return x;
                     }
                   );
@@ -17972,13 +17998,13 @@ try {
 
                     if (
                       require("BootloaderConfig").preloadBE &&
-                      !require("ifRequired").call(
+                      !require("ifRequireable").call(
                         null,
                         component,
-                        function ifRequired_call_$2() {
+                        function ifRequireable_call_$2() {
                           return true;
                         },
-                        function ifRequired_call_$3() {
+                        function ifRequireable_call_$3() {
                           return false;
                         }
                       ) &&
@@ -18063,13 +18089,13 @@ try {
                     be && asyncResourcesCount++;
 
                     if (
-                      !require("ifRequired").call(
+                      !require("ifRequireable").call(
                         null,
                         component,
-                        function ifRequired_call_$2() {
+                        function ifRequireable_call_$2() {
                           return true;
                         },
-                        function ifRequired_call_$3() {
+                        function ifRequireable_call_$3() {
                           return false;
                         }
                       )
@@ -18120,9 +18146,9 @@ try {
                     ).push(_key);
                   }
 
-                  require("ifRequired")(
+                  require("ifRequireable")(
                     "TimeSliceInteraction",
-                    function ifRequired_$1(TimeSliceInteraction) {
+                    function ifRequireable_$1(TimeSliceInteraction) {
                       TimeSliceInteraction.informGlobally(
                         "Bootloader.loadResources"
                       )
@@ -19846,6 +19872,7 @@ try {
               "Bootloader",
               "cr:696703",
               "emptyFunction",
+              "ifRequireable",
               "ifRequired",
               "performanceNow",
               "promiseDone",
@@ -19885,11 +19912,18 @@ try {
                     getModule
                   );
                 };
+                _proto.getModuleIfRequireable = function getModuleIfRequireable() {
+                  return require("ifRequireable").call(
+                    null,
+                    this.$RequireDeferredReference_moduleId,
+                    getModule
+                  );
+                };
                 _proto.load = function load() {
                   var _this = this;
-                  var onEnd = require("ifRequired")(
-                    "CometInteractionTracingMetrics",
-                    function ifRequired_$1(CometInteractionTracingMetrics) {
+                  var onEnd = require("ifRequireable")(
+                    "m#CometInteractionTracingMetrics",
+                    function ifRequireable_$1(CometInteractionTracingMetrics) {
                       return CometInteractionTracingMetrics.currentInteractionLogger().addRequireDeferred(
                         _this.getModuleId(),
                         (c_performanceNow ||
@@ -19961,9 +19995,9 @@ try {
 
                   var now = (c_performanceNow ||
                     (c_performanceNow = require("performanceNow")))();
-                  var onEnd = require("ifRequired")(
-                    "CometInteractionTracingMetrics",
-                    function ifRequired_$1(CometInteractionTracingMetrics) {
+                  var onEnd = require("ifRequireable")(
+                    "m#CometInteractionTracingMetrics",
+                    function ifRequireable_$1(CometInteractionTracingMetrics) {
                       return CometInteractionTracingMetrics.currentInteractionLogger().addRequireDeferred(
                         _this2.getModuleId(),
                         now
@@ -19971,13 +20005,13 @@ try {
                     }
                   );
 
-                  var moduleIfRequired = this.getModuleIfRequired();
-                  if (moduleIfRequired != null) {
+                  var moduleIfRequireable = this.getModuleIfRequireable();
+                  if (moduleIfRequireable != null) {
                     if (onEnd) {
                       var alreadyRequired = true;
                       onEnd(now, alreadyRequired);
                     }
-                    callback(moduleIfRequired);
+                    callback(moduleIfRequireable);
                   } else {
                     var _alreadyRequired = false;
                     if (require("cr:696703")) {
@@ -20030,18 +20064,20 @@ try {
                   var _this3 = this;
                   var canceled = false;
 
-                  var moduleIfRequired = this.getModuleIfRequired();
+                  var moduleIfRequireable = this.getModuleIfRequireable();
                   var loadPromise =
-                    moduleIfRequired != null
-                      ? require("Promise").resolve(moduleIfRequired)
+                    moduleIfRequireable != null
+                      ? require("Promise").resolve(moduleIfRequireable)
                       : this.load();
 
-                  if (moduleIfRequired != null) {
+                  if (moduleIfRequireable != null) {
                     var now = (c_performanceNow ||
                       (c_performanceNow = require("performanceNow")))();
-                    var onEnd = require("ifRequired")(
-                      "CometInteractionTracingMetrics",
-                      function ifRequired_$1(CometInteractionTracingMetrics) {
+                    var onEnd = require("ifRequireable")(
+                      "m#CometInteractionTracingMetrics",
+                      function ifRequireable_$1(
+                        CometInteractionTracingMetrics
+                      ) {
                         return CometInteractionTracingMetrics.currentInteractionLogger().addRequireDeferred(
                           _this3.getModuleId(),
                           now
@@ -39441,7 +39477,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001916307","namespace":"FB","message":"' +
+        '","revision":"1001919765","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
