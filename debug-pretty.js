@@ -1,4 +1,4 @@
-/*1585681154,,JIT Construction: v1001923908,en_US*/
+/*1585704550,,JIT Construction: v1001925788,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3884,8 +3884,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1001923908,
-            client_revision: 1001923908,
+            server_revision: 1001925788,
+            client_revision: 1001925788,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3895,14 +3895,14 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6810448699111673580-0",
+            hsi: "6810549185012878422-0",
             spin: 0,
-            __spin_r: 1001923908,
+            __spin_r: 1001925788,
             __spin_b: "trunk",
-            __spin_t: 1585681154,
-            vip: "31.13.66.19"
+            __spin_t: 1585704550,
+            vip: "31.13.65.7"
           });
-          __d("ServerNonce", [], { ServerNonce: "E16sSQbIdO_eZPG64wjTPc" });
+          __d("ServerNonce", [], { ServerNonce: "xTTWhC03JTMVjI3jlyAgz3" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4056,6 +4056,7 @@ try {
               boosted_component: true,
               boosted_pagelikes: true,
               jslogger: true,
+              kbshortcuts_feed: true,
               mercury_send_error_logging: true,
               platform_oauth_client_events: true,
               xtrackable_clientview_batch: true,
@@ -4067,7 +4068,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001923908",
+            revision: "1001925788",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -5953,8 +5954,6 @@ try {
 
               var ANONYMOUS_GUARD_TAG = "<anonymous guard>";
 
-              var nocatch = /\bnocatch\b/.test(location.search);
-
               require("ErrorGuardState");
               require("ErrorNormalizeUtils");
               c_ErrorPubSub || (c_ErrorPubSub = require("ErrorPubSub"));
@@ -5976,17 +5975,11 @@ try {
                   });
 
                   if ((c_Env || (c_Env = require("Env"))).nocatch) {
-                    nocatch = true;
-                  }
-
-                  if (nocatch) {
-                    var returnValue;
                     try {
-                      returnValue = func.apply(context, args);
+                      return func.apply(context, args);
                     } finally {
                       require("ErrorGuardState").popGuard();
                     }
-                    return returnValue;
                   }
 
                   try {
@@ -6040,19 +6033,6 @@ try {
                     var guardList = require("ErrorGuardState").cloneGuardList();
                     normalizedError.guard = guardList[0];
                     normalizedError.guardList = guardList;
-
-                    if (__DEV__) {
-                      if (!nocatch && !ErrorGuard.applyWithGuard.warned) {
-                        console.warn(
-                          "Note: Error catching is enabled, which may lead to " +
-                            "misleading stack traces in the JS debugger.  To disable, " +
-                            'whitelist yourself in the "js_nocatch" gatekeeper.  See ' +
-                            "ErrorGuard.js for more info."
-                        );
-
-                        ErrorGuard.applyWithGuard.warned = true;
-                      }
-                    }
 
                     if (onError) {
                       onError(error);
@@ -39477,7 +39457,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001923908","namespace":"FB","message":"' +
+        '","revision":"1001925788","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
