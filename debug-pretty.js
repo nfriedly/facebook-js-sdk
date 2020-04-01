@@ -1,4 +1,4 @@
-/*1585704550,,JIT Construction: v1001925788,en_US*/
+/*1585709965,,JIT Construction: v1001926794,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3884,8 +3884,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1001925788,
-            client_revision: 1001925788,
+            server_revision: 1001926794,
+            client_revision: 1001926794,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3895,14 +3895,14 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6810549185012878422-0",
+            hsi: "6810572442465202534-0",
             spin: 0,
-            __spin_r: 1001925788,
+            __spin_r: 1001926794,
             __spin_b: "trunk",
-            __spin_t: 1585704550,
-            vip: "31.13.65.7"
+            __spin_t: 1585709965,
+            vip: "31.13.66.19"
           });
-          __d("ServerNonce", [], { ServerNonce: "xTTWhC03JTMVjI3jlyAgz3" });
+          __d("ServerNonce", [], { ServerNonce: "zpoQci4ikTa622Pn-Xtsao" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4056,7 +4056,6 @@ try {
               boosted_component: true,
               boosted_pagelikes: true,
               jslogger: true,
-              kbshortcuts_feed: true,
               mercury_send_error_logging: true,
               platform_oauth_client_events: true,
               xtrackable_clientview_batch: true,
@@ -4068,7 +4067,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001925788",
+            revision: "1001926794",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -5505,6 +5504,7 @@ try {
               var FBLogMessage = (function() {
                 function FBLogMessage(project) {
                   this.project = project;
+                  this.events = [];
                   this.metadata = new (require("FBLoggerMetadata"))();
                   this.taalOpcodes = [];
                 }
@@ -5523,6 +5523,7 @@ try {
                     params[_key - 2] = arguments[_key];
                   }
                   var error = this.error,
+                    events = this.events,
                     project = this.project,
                     metadata = this.metadata,
                     forcedKey = this.forcedKey;
@@ -5597,6 +5598,18 @@ try {
                   normalizedError.loggingSource = "FBLOGGER";
                   if (!metadata.isEmpty()) {
                     normalizedError.fbloggerMetadata = metadata.formatMetadata();
+                  }
+                  if (events.length > 0) {
+                    if (normalizedError.events != null) {
+                      var _normalizedError$even;
+                      (_normalizedError$even =
+                        normalizedError.events).push.apply(
+                        _normalizedError$even,
+                        events
+                      );
+                    } else {
+                      normalizedError.events = events;
+                    }
                   }
 
                   (
@@ -5696,6 +5709,10 @@ try {
                   this.normalizedError = normalizedError;
                   return this;
                 };
+                _proto.event = function event(_event) {
+                  this.events.push(_event);
+                  return this;
+                };
                 _proto.blameToPreviousFile = function blameToPreviousFile() {
                   this.taalOpcodes.push(require("TAALOpcodes").PREVIOUS_FILE);
                   return this;
@@ -5740,8 +5757,12 @@ try {
             ) {
               "use strict";
 
-              var FBLogger = function FBLogger(project) {
-                return new (require("FBLogMessage"))(project);
+              var FBLogger = function FBLogger(project, event) {
+                var logger = new (require("FBLogMessage"))(project);
+                if (event != null) {
+                  return logger.event(project + "." + event);
+                }
+                return logger;
               };
 
               FBLogger.addGlobalMetadata = function(product, name, value) {
@@ -39457,7 +39478,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001925788","namespace":"FB","message":"' +
+        '","revision":"1001926794","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
