@@ -1,4 +1,4 @@
-/*1585709965,,JIT Construction: v1001926794,en_US*/
+/*1585859357,,JIT Construction: v1001936850,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3811,7 +3811,8 @@ try {
                 "CALENDAR_WEEKVIEW_NEW_BADGE",
                 "POST_INSIGHTS_CAPITALIZE_BREAKDOWNS_FOR_ACTION_TYPE",
                 "WORKPLACE_PLATFORM_SECURE_APPS_MAILBOXES",
-                "BUY_AT_COVID_PUNCHOUT_CHECKOUT_MODAL"
+                "BUY_AT_COVID_PUNCHOUT_CHECKOUT_MODAL",
+                "DISABLE_HEARTBEAT_POLLING"
               ]
             },
             ko: {
@@ -3838,7 +3839,8 @@ try {
                 "7EZACZMulOj",
                 "6ra3sC1PDFj",
                 "5XCz1h9Iaw3",
-                "7cwY7xv5s7H"
+                "7cwY7xv5s7H",
+                "1GgWO1oFyLN"
               ]
             }
           });
@@ -3884,8 +3886,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1001926794,
-            client_revision: 1001926794,
+            server_revision: 1001936850,
+            client_revision: 1001936850,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3895,14 +3897,14 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6810572442465202534-0",
+            hsi: "6811214076274804865-0",
             spin: 0,
-            __spin_r: 1001926794,
+            __spin_r: 1001936850,
             __spin_b: "trunk",
-            __spin_t: 1585709965,
+            __spin_t: 1585859357,
             vip: "31.13.66.19"
           });
-          __d("ServerNonce", [], { ServerNonce: "zpoQci4ikTa622Pn-Xtsao" });
+          __d("ServerNonce", [], { ServerNonce: "WGv2WOyxoeWHrcczPzf5pq" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4067,7 +4069,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001926794",
+            revision: "1001936850",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -4141,9 +4143,8 @@ try {
                 REFERENCE_COUNTING: 2,
                 HEARTBEAT: 3,
                 CALL_STACK: 4,
-                ASYNC_PROFILER: 5,
-                TIMESLICE_EXECUTION_LOGGER: 6,
-                FLUX_PERF_TOOL: 7
+                TIMESLICE_EXECUTION_LOGGER: 5,
+                FLUX_PERF_TOOL: 6
               };
 
               var afterIDs = {
@@ -4152,9 +4153,8 @@ try {
                 PROFILING_COUNTERS: 2,
                 HEARTBEAT: 3,
                 CALL_STACK: 4,
-                ASYNC_PROFILER: 5,
-                TIMESLICE_EXECUTION_LOGGER: 6,
-                FLUX_PERF_TOOL: 7
+                TIMESLICE_EXECUTION_LOGGER: 5,
+                FLUX_PERF_TOOL: 6
               };
 
               var ExecutionContextObservers = {
@@ -39478,7 +39478,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001926794","namespace":"FB","message":"' +
+        '","revision":"1001936850","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
