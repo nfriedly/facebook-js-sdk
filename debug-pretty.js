@@ -1,4 +1,4 @@
-/*1585859357,,JIT Construction: v1001936850,en_US*/
+/*1585871956,,JIT Construction: v1001938595,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3886,8 +3886,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1001936850,
-            client_revision: 1001936850,
+            server_revision: 1001938595,
+            client_revision: 1001938595,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3897,14 +3897,14 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6811214076274804865-0",
+            hsi: "6811268187430640199-0",
             spin: 0,
-            __spin_r: 1001936850,
+            __spin_r: 1001938595,
             __spin_b: "trunk",
-            __spin_t: 1585859357,
+            __spin_t: 1585871956,
             vip: "31.13.66.19"
           });
-          __d("ServerNonce", [], { ServerNonce: "WGv2WOyxoeWHrcczPzf5pq" });
+          __d("ServerNonce", [], { ServerNonce: "O7aVQEM-73GOL3tgQDpPPF" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4069,7 +4069,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001936850",
+            revision: "1001938595",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -6327,29 +6327,6 @@ try {
             null
           );
           __d(
-            "coinflip",
-            [],
-            function $module_coinflip(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              function coinflip(rate) {
-                return (
-                  rate != null &&
-                  rate >= 1 &&
-                  (rate === 1 || Math.random() * rate < 1)
-                );
-              }
-
-              module.exports = coinflip;
-            },
-            null
-          );
-          __d(
             "getReusableTimeSliceContinuation",
             [],
             function $module_getReusableTimeSliceContinuation(
@@ -6777,7 +6754,6 @@ try {
               "FBLogger",
               "IntervalTrackingBoundedBuffer",
               "WorkerUtils",
-              "coinflip",
               "getReusableTimeSliceContinuation",
               "nullthrows",
               "performanceAbsoluteNow",
@@ -6978,6 +6954,7 @@ try {
                 },
 
                 guard: function guard(fn, name, metaArgs) {
+                  var _Env$deferred_stack_t;
                   typeof fn === "function" ||
                     invariant(0, "Function fn is required");
                   typeof name === "string" ||
@@ -7000,13 +6977,16 @@ try {
                   var executionNumber = 0;
                   var deferredSource = undefined;
 
+                  var deferredSourceSamplingRate =
+                    (_Env$deferred_stack_t = (c_Env || (c_Env = require("Env")))
+                      .deferred_stack_trace_rate) != null
+                      ? _Env$deferred_stack_t
+                      : 0;
                   if (
                     metaArgs &&
                     metaArgs.registerCallStack &&
-                    require("coinflip")(
-                      (c_Env || (c_Env = require("Env")))
-                        .deferred_stack_trace_rate
-                    )
+                    deferredSourceSamplingRate > 0 &&
+                    Math.random() < 1 / deferredSourceSamplingRate
                   ) {
                     deferredSource = new Error("deferred execution source");
                   }
@@ -20785,25 +20765,48 @@ try {
 
               var ServerNonce = require("ServerNonce").ServerNonce;
 
-              var rng = require("Alea")(ServerNonce);
+              var fallbackRng;
+              function getFallbackRng() {
+                if (fallbackRng == null) {
+                  fallbackRng = require("Alea")(ServerNonce);
+                }
+                return fallbackRng;
+              }
 
               var Random = {
-                random: function random() {
-                  var _global = global,
-                    Uint32Array = _global.Uint32Array;
-                  var crypto = global.crypto || global.msCrypto;
-                  try {
-                    if (
-                      Uint32Array != null &&
-                      (crypto == null ? void 0 : crypto.getRandomValues) != null
-                    ) {
-                      var buffer = new Uint32Array(1);
-                      crypto.getRandomValues(buffer);
-                      return buffer[0] / NORM;
-                    }
-                  } catch (_unused) {}
-                  return rng();
-                },
+                random: (function() {
+                  var buffer =
+                    typeof Uint32Array === "function"
+                      ? new Uint32Array(1)
+                      : null;
+                  var cryptoImpl = global.crypto || global.msCrypto;
+                  if (buffer != null) {
+                    try {
+                      var getRandomValuesImpl =
+                        cryptoImpl == null
+                          ? void 0
+                          : cryptoImpl.getRandomValues;
+                      if (typeof getRandomValuesImpl === "function") {
+                        var getRandomValues = ES(
+                          getRandomValuesImpl,
+                          "bind",
+                          true,
+                          cryptoImpl
+                        );
+                        return function() {
+                          try {
+                            getRandomValues(buffer);
+                          } catch (_unused) {
+                            return getFallbackRng()();
+                          }
+                          return buffer[0] / NORM;
+                        };
+                      }
+                    } catch (_unused2) {}
+                  }
+
+                  return getFallbackRng();
+                })(),
 
                 uint32: function uint32() {
                   return Math.floor(this.random() * NORM);
@@ -39478,7 +39481,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001936850","namespace":"FB","message":"' +
+        '","revision":"1001938595","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
