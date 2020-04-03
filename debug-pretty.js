@@ -1,4 +1,4 @@
-/*1585871956,,JIT Construction: v1001938595,en_US*/
+/*1585891167,,JIT Construction: v1001940828,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3886,8 +3886,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1001938595,
-            client_revision: 1001938595,
+            server_revision: 1001940828,
+            client_revision: 1001940828,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3897,14 +3897,14 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6811268187430640199-0",
+            hsi: "6811350697716826594-0",
             spin: 0,
-            __spin_r: 1001938595,
+            __spin_r: 1001940828,
             __spin_b: "trunk",
-            __spin_t: 1585871956,
+            __spin_t: 1585891167,
             vip: "31.13.66.19"
           });
-          __d("ServerNonce", [], { ServerNonce: "O7aVQEM-73GOL3tgQDpPPF" });
+          __d("ServerNonce", [], { ServerNonce: "RQx_rdv1r_W1v0Bw4bNuwS" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4058,6 +4058,7 @@ try {
               boosted_component: true,
               boosted_pagelikes: true,
               jslogger: true,
+              kbshortcuts_feed: true,
               mercury_send_error_logging: true,
               platform_oauth_client_events: true,
               xtrackable_clientview_batch: true,
@@ -4069,7 +4070,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001938595",
+            revision: "1001940828",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -33709,6 +33710,38 @@ try {
                   }
                 },
 
+                gaming_friendfinder: {
+                  url: "gaming/me/friendfinder/",
+                  transform: function transform(call) {
+                    if (!require("sdk.Runtime").getClientID()) {
+                      require("Log").error(
+                        "FriendFinder called before FB.init()."
+                      );
+                      return;
+                    }
+                    call.url += require("sdk.Runtime").getClientID();
+                    call.size = {
+                      width: 400,
+                      height: 800
+                    };
+
+                    return call;
+                  }
+                },
+
+                gaming_media_library: {
+                  url: "gaming/me/media_asset/",
+                  transform: function transform(call) {
+                    call.url += call.params.media_id;
+                    call.size = {
+                      width: 400,
+                      height: 800
+                    };
+
+                    return call;
+                  }
+                },
+
                 apprequests: {
                   transform: function transform(call) {
                     call = MobileIframeable.transform(call);
@@ -35902,6 +35935,94 @@ try {
                 "Frictionless",
                 require("sdk.Frictionless")
               );
+            },
+            3
+          );
+          __d(
+            "sdk.GamingServices",
+            ["sdk.api", "sdk.ui"],
+            function $module_sdk_GamingServices(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              var GamingServices = {
+                friendFinder: function friendFinder(cb) {
+                  require("sdk.ui")(
+                    {
+                      display: "touch",
+                      method: "gaming_friendfinder"
+                    },
+
+                    cb
+                  );
+                },
+
+                uploadImageToMediaLibrary: function uploadImageToMediaLibrary(
+                  imageUri,
+                  caption,
+                  shouldOpenMediaDialog,
+                  cb
+                ) {
+                  require("sdk.api")(
+                    "me/photos",
+                    "POST",
+                    {
+                      caption: caption,
+                      url: imageUri
+                    },
+
+                    function api_$3(apiResponse) {
+                      if (
+                        shouldOpenMediaDialog === false ||
+                        !apiResponse ||
+                        apiResponse.error
+                      ) {
+                        if (cb !== null) {
+                          cb(apiResponse);
+                        }
+                      } else {
+                        var upload_id = apiResponse.id;
+                        require("sdk.ui")(
+                          {
+                            display: "touch",
+                            method: "gaming_media_library",
+                            media_id: upload_id
+                          },
+
+                          function ui_$1(_response) {
+                            if (cb !== null) {
+                              cb(apiResponse);
+                            }
+                          }
+                        );
+                      }
+                    }
+                  );
+                }
+              };
+
+              module.exports = GamingServices;
+            },
+            null
+          );
+          __d(
+            "legacy:fb.gamingservices",
+            ["FB", "sdk.GamingServices"],
+            function $module_legacy_fb_gamingservices(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              __DO_NOT_USE__module,
+              __DO_NOT_USE__exports
+            ) {
+              require("FB").provide("", {
+                gamingservices: require("sdk.GamingServices")
+              });
             },
             3
           );
@@ -39481,7 +39602,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001938595","namespace":"FB","message":"' +
+        '","revision":"1001940828","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
