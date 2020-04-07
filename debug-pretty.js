@@ -1,4 +1,4 @@
-/*1586234961,,JIT Construction: v1001954108,en_US*/
+/*1586258359,,JIT Construction: v1001955044,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3888,8 +3888,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1001954108,
-            client_revision: 1001954108,
+            server_revision: 1001955044,
+            client_revision: 1001955044,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3899,14 +3899,14 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6812827281329310509-0",
+            hsi: "6812927776436388070-0",
             spin: 0,
-            __spin_r: 1001954108,
+            __spin_r: 1001955044,
             __spin_b: "trunk",
-            __spin_t: 1586234961,
+            __spin_t: 1586258359,
             vip: "31.13.66.19"
           });
-          __d("ServerNonce", [], { ServerNonce: "skl2PEiqxSuRQ8EffN2xpj" });
+          __d("ServerNonce", [], { ServerNonce: "jmtV39C5iVndNMITmnh2cL" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4071,7 +4071,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001954108",
+            revision: "1001955044",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -11534,6 +11534,7 @@ try {
                 "intent",
                 "itms",
                 "itms-apps",
+                "lasso",
                 "market",
                 "svn+ssh",
                 "fbstaging",
@@ -39615,7 +39616,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001954108","namespace":"FB","message":"' +
+        '","revision":"1001955044","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
