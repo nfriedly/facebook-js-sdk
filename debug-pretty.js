@@ -1,4 +1,4 @@
-/*1586204953,,JIT Construction: v1001950294,en_US*/
+/*1586234961,,JIT Construction: v1001954108,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3888,8 +3888,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1001950294,
-            client_revision: 1001950294,
+            server_revision: 1001954108,
+            client_revision: 1001954108,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3899,14 +3899,14 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6812698403775372441-0",
+            hsi: "6812827281329310509-0",
             spin: 0,
-            __spin_r: 1001950294,
+            __spin_r: 1001954108,
             __spin_b: "trunk",
-            __spin_t: 1586204953,
+            __spin_t: 1586234961,
             vip: "31.13.66.19"
           });
-          __d("ServerNonce", [], { ServerNonce: "EDtWExzxss1XlK6rmzHvzi" });
+          __d("ServerNonce", [], { ServerNonce: "skl2PEiqxSuRQ8EffN2xpj" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4071,7 +4071,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001950294",
+            revision: "1001954108",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -4890,7 +4890,7 @@ try {
                 if (stack == null) {
                   return null;
                 }
-                if (name != null && message != null && message != "") {
+                if (name != null && message != null && message !== "") {
                   var prefix = name + ": " + message + "\n";
                   if (ES(stack, "startsWith", true, prefix)) {
                     return stack.substr(prefix.length);
@@ -4900,6 +4900,14 @@ try {
                   var _prefix = name + "\n";
                   if (ES(stack, "startsWith", true, _prefix)) {
                     return stack.substr(_prefix.length);
+                  }
+                }
+                if (message != null && message !== "") {
+                  var _prefix2 = ": " + message + "\n";
+                  var index = ES(stack, "indexOf", true, _prefix2);
+                  var maybeName = stack.substring(0, index);
+                  if (/^\w+$/.test(maybeName)) {
+                    return stack.substring(index + _prefix2.length);
                   }
                 }
                 return stack;
@@ -12868,15 +12876,19 @@ try {
                     "GK Override is not allowed in production."
                   );
                 };
+              }
 
-                gkx.getGKs = function() {
+              gkx.getGKs = function() {
+                if (__DEV__) {
                   var result = {};
+
                   Object.keys(_map).forEach(function forEach_$0(key) {
                     result[key.split(":")[1]] = _map[key];
                   });
                   return result;
-                };
-              }
+                }
+                return null;
+              };
 
               gkx.setPass = noOp;
               gkx.setFail = noOp;
@@ -39603,7 +39615,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001950294","namespace":"FB","message":"' +
+        '","revision":"1001954108","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
