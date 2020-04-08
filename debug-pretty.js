@@ -1,4 +1,4 @@
-/*1586258359,,JIT Construction: v1001955044,en_US*/
+/*1586332159,,JIT Construction: v1001959380,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3861,12 +3861,17 @@ try {
             jsRetries: [200, 500],
             jsRetryAbortNum: 2,
             jsRetryAbortTime: 5,
-            payloadEndpointURI:
-              "https://connect.facebook.net/ajax/bootloader-endpoint/",
-            preloadBE: false,
-            shouldCoalesceModuleRequestsMadeInSameTick: true,
+            payloadEndpointURI: {
+              thing: "https://connect.facebook.net/ajax/bootloader-endpoint/"
+            },
+            preloadBE: { thing: true },
+            shouldCoalesceModuleRequestsMadeInSameTick: { thing: true },
             retryQueuedBootloads: false,
             silentDups: false
+          });
+          __d("BootloaderEndpointConfig", [], {
+            endpointURI:
+              "https://connect.facebook.net/ajax/bootloader-endpoint/"
           });
           __d("CurrentCommunityInitialData", [], {});
           __d("CurrentUserInitialData", [], {
@@ -3888,8 +3893,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1001955044,
-            client_revision: 1001955044,
+            server_revision: 1001959380,
+            client_revision: 1001959380,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3899,14 +3904,14 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6812927776436388070-0",
+            hsi: "6813244743868498618-0",
             spin: 0,
-            __spin_r: 1001955044,
+            __spin_r: 1001959380,
             __spin_b: "trunk",
-            __spin_t: 1586258359,
+            __spin_t: 1586332158,
             vip: "31.13.66.19"
           });
-          __d("ServerNonce", [], { ServerNonce: "jmtV39C5iVndNMITmnh2cL" });
+          __d("ServerNonce", [], { ServerNonce: "9bnGMco-m1XvsR9sBpmV34" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4071,7 +4076,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001955044",
+            revision: "1001959380",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -11571,7 +11576,8 @@ try {
                 "kirigami",
                 "origami-file",
                 "fb-nimble-vrsrecorder",
-                "fb-nimble-monohandtrackingvis"
+                "fb-nimble-monohandtrackingvis",
+                "together"
               ]);
 
               var URISchemes = {
@@ -16984,46 +16990,35 @@ try {
                 nonblockingComps
               ) {
                 var key = require("ResourceHasher").createAsyncHash();
-                if (
-                  require("BootloaderConfig")
-                    .shouldCoalesceModuleRequestsMadeInSameTick
-                ) {
-                  if (_pendingAsyncBatchRequest == null) {
-                    _pendingAsyncBatchRequest = {
-                      key: key,
-                      blockingComps: [].concat(blockingComps),
-                      nonblockingComps: [].concat(nonblockingComps)
-                    };
+                if (_pendingAsyncBatchRequest == null) {
+                  _pendingAsyncBatchRequest = {
+                    key: key,
+                    blockingComps: [].concat(blockingComps),
+                    nonblockingComps: [].concat(nonblockingComps)
+                  };
 
-                    _createAsyncBootloaderResource(
-                      key,
-                      blockingComps,
-                      nonblockingComps
-                    );
-                  } else {
-                    var _pendingAsyncBatchReq, _pendingAsyncBatchReq2;
-                    key = _pendingAsyncBatchRequest.key;
-                    (_pendingAsyncBatchReq =
-                      _pendingAsyncBatchRequest.blockingComps).push.apply(
-                      _pendingAsyncBatchReq,
-                      blockingComps
-                    );
-                    (_pendingAsyncBatchReq2 =
-                      _pendingAsyncBatchRequest.nonblockingComps).push.apply(
-                      _pendingAsyncBatchReq2,
-                      nonblockingComps
-                    );
-                    _createAsyncBootloaderResource(
-                      key,
-                      _pendingAsyncBatchRequest.blockingComps,
-                      _pendingAsyncBatchRequest.nonblockingComps
-                    );
-                  }
-                } else {
                   _createAsyncBootloaderResource(
                     key,
                     blockingComps,
                     nonblockingComps
+                  );
+                } else {
+                  var _pendingAsyncBatchReq, _pendingAsyncBatchReq2;
+                  key = _pendingAsyncBatchRequest.key;
+                  (_pendingAsyncBatchReq =
+                    _pendingAsyncBatchRequest.blockingComps).push.apply(
+                    _pendingAsyncBatchReq,
+                    blockingComps
+                  );
+                  (_pendingAsyncBatchReq2 =
+                    _pendingAsyncBatchRequest.nonblockingComps).push.apply(
+                    _pendingAsyncBatchReq2,
+                    nonblockingComps
+                  );
+                  _createAsyncBootloaderResource(
+                    key,
+                    _pendingAsyncBatchRequest.blockingComps,
+                    _pendingAsyncBatchRequest.nonblockingComps
                   );
                 }
                 var _arr2 = [].concat(blockingComps, nonblockingComps);
@@ -17909,10 +17904,8 @@ try {
                 _resources.set(key, {
                   src: require("BootloaderEndpoint").getURL(
                     blockingComps,
-                    nonblockingComps,
-                    require("BootloaderConfig").payloadEndpointURI
+                    nonblockingComps
                   ),
-
                   type: "async"
                 });
               }
@@ -17993,7 +17986,6 @@ try {
                       be = _getExistingComponent2.be;
 
                     if (
-                      require("BootloaderConfig").preloadBE &&
                       !require("ifRequireable").call(
                         null,
                         component,
@@ -19654,6 +19646,7 @@ try {
             "BootloaderEndpoint",
             [
               "ix",
+              "BootloaderEndpointConfig",
               "CSRFGuard",
               "FBLogger",
               "ServerJS",
@@ -19733,11 +19726,7 @@ try {
               }
 
               var BootloaderEndpoint = {
-                getURL: function getURL(
-                  blockingComps,
-                  nonblockingComps,
-                  baseURI
-                ) {
+                getURL: function getURL(blockingComps, nonblockingComps) {
                   var params = {
                     modules: blockingComps,
                     nb_modules: nonblockingComps
@@ -19755,6 +19744,7 @@ try {
                     })
                     .join("&");
 
+                  var baseURI = require("BootloaderEndpointConfig").endpointURI;
                   return (
                     "" +
                     baseURI +
@@ -20515,7 +20505,8 @@ try {
                 ctarget: true,
                 cquick_token: true,
                 wdplevel: true,
-                prod_graphql: true
+                prod_graphql: true,
+                sri: true
               };
 
               function getAsyncParams(method) {
@@ -35726,7 +35717,7 @@ try {
                 }
 
                 if (
-                  Math.random() > 1 / sampleRate ||
+                  Math.random() >= 1 / sampleRate ||
                   blacklist == "*" ||
                   ~ES(
                     blacklist,
@@ -39616,7 +39607,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001955044","namespace":"FB","message":"' +
+        '","revision":"1001959380","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
