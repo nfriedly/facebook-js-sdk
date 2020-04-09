@@ -1,4 +1,4 @@
-/*1586398150,,JIT Construction: v1001962857,en_US*/
+/*1586420356,,JIT Construction: v1001965271,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3893,8 +3893,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1001962857,
-            client_revision: 1001962857,
+            server_revision: 1001965271,
+            client_revision: 1001965271,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3904,14 +3904,14 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6813528174659738056-0",
+            hsi: "6813623551634988259-0",
             spin: 0,
-            __spin_r: 1001962857,
+            __spin_r: 1001965271,
             __spin_b: "trunk",
-            __spin_t: 1586398150,
+            __spin_t: 1586420356,
             vip: "31.13.66.19"
           });
-          __d("ServerNonce", [], { ServerNonce: "fuQYgbDUcqRd6ebPlRtyK1" });
+          __d("ServerNonce", [], { ServerNonce: "5Tl-VJKn5_u0CmGBBx8Xik" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4076,7 +4076,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001962857",
+            revision: "1001965271",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -27893,60 +27893,64 @@ try {
                   }
                 }
 
-                if (window.fetch) {
-                  var standardFetchOptions = {
-                    mode: "no-cors"
-                  };
+                _makeRequest_DEPRECATED(url, fullUrlPath, params);
+              }
 
-                  if (fullUrlPath.length <= 2000) {
-                    window.fetch(fullUrlPath, standardFetchOptions);
-                  } else {
-                    var searchParams = new URLSearchParams();
+              function _makeRequest(url, fullUrlPath, params) {
+                var standardFetchOptions = {
+                  mode: "no-cors"
+                };
 
-                    for (var key in params) {
-                      if (Object.prototype.hasOwnProperty.call(params, key)) {
-                        var val = params[key];
-                        if (val !== null && val !== undefined) {
-                          searchParams.set(key, val);
-                        }
+                if (fullUrlPath.length <= 2000) {
+                  window.fetch(fullUrlPath, standardFetchOptions);
+                } else {
+                  var searchParams = new URLSearchParams();
+
+                  for (var key in params) {
+                    if (Object.prototype.hasOwnProperty.call(params, key)) {
+                      var val = params[key];
+                      if (val !== null && val !== undefined) {
+                        searchParams.set(key, val);
                       }
                     }
-
-                    var fetchOptions = babelHelpers["extends"](
-                      {
-                        method: "POST",
-                        body: searchParams
-                      },
-                      standardFetchOptions
-                    );
-
-                    window.fetch(url, fetchOptions);
                   }
+
+                  var fetchOptions = babelHelpers["extends"](
+                    {
+                      method: "POST",
+                      body: searchParams
+                    },
+                    standardFetchOptions
+                  );
+
+                  window.fetch(url, fetchOptions);
+                }
+              }
+
+              function _makeRequest_DEPRECATED(url, fullUrlPath, params) {
+                if (fullUrlPath.length <= 2000) {
+                  var image = new Image();
+                  image.src = fullUrlPath;
                 } else {
-                  if (fullUrlPath.length <= 2000) {
-                    var image = new Image();
-                    image.src = fullUrlPath;
-                  } else {
-                    var name = require("guid")();
-                    var root = require("sdk.Content").appendHidden("");
-                    require("insertIframe")({
-                      url: require("getBlankIframeSrc")(),
-                      root: root,
-                      name: name,
-                      className: "fb_hidden fb_invisible",
-                      onload: function onload() {
-                        if (root.parentNode != null) {
-                          root.parentNode.removeChild(root);
-                        }
+                  var name = require("guid")();
+                  var root = require("sdk.Content").appendHidden("");
+                  require("insertIframe")({
+                    url: require("getBlankIframeSrc")(),
+                    root: root,
+                    name: name,
+                    className: "fb_hidden fb_invisible",
+                    onload: function onload() {
+                      if (root.parentNode != null) {
+                        root.parentNode.removeChild(root);
                       }
-                    });
+                    }
+                  });
 
-                    require("sdk.Content").submitToTarget({
-                      url: url,
-                      target: name,
-                      params: params
-                    });
-                  }
+                  require("sdk.Content").submitToTarget({
+                    url: url,
+                    target: name,
+                    params: params
+                  });
                 }
               }
 
@@ -39617,7 +39621,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001962857","namespace":"FB","message":"' +
+        '","revision":"1001965271","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
