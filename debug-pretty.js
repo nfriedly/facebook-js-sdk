@@ -1,4 +1,4 @@
-/*1586332159,,JIT Construction: v1001959380,en_US*/
+/*1586398150,,JIT Construction: v1001962857,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3789,7 +3789,6 @@ try {
           __d("KSConfig", [], {
             killed: {
               __set: [
-                "STO_AD_CREATION_BLOCK",
                 "POCKET_MONSTERS_CREATE",
                 "POCKET_MONSTERS_DELETE",
                 "VIDEO_DIMENSIONS_FROM_PLAYER_IN_UPLOAD_DIALOG",
@@ -3813,12 +3812,12 @@ try {
                 "WORKPLACE_PLATFORM_SECURE_APPS_MAILBOXES",
                 "BUY_AT_COVID_PUNCHOUT_CHECKOUT_MODAL",
                 "DISABLE_HEARTBEAT_POLLING",
-                "LAB_NET_NEW_UI_RELEASE"
+                "LAB_NET_NEW_UI_RELEASE",
+                "WIT_DEPRECATE_GITHUB"
               ]
             },
             ko: {
               __set: [
-                "a29SeZD6S7D",
                 "acrJTh9WGdp",
                 "1oOE64fL4wO",
                 "2dhqRnqXGLQ",
@@ -3842,7 +3841,8 @@ try {
                 "5XCz1h9Iaw3",
                 "7cwY7xv5s7H",
                 "1GgWO1oFyLN",
-                "DDZhogI19W"
+                "DDZhogI19W",
+                "9k7Y5kmDD1A"
               ]
             }
           });
@@ -3893,8 +3893,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1001959380,
-            client_revision: 1001959380,
+            server_revision: 1001962857,
+            client_revision: 1001962857,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3904,14 +3904,14 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6813244743868498618-0",
+            hsi: "6813528174659738056-0",
             spin: 0,
-            __spin_r: 1001959380,
+            __spin_r: 1001962857,
             __spin_b: "trunk",
-            __spin_t: 1586332158,
+            __spin_t: 1586398150,
             vip: "31.13.66.19"
           });
-          __d("ServerNonce", [], { ServerNonce: "9bnGMco-m1XvsR9sBpmV34" });
+          __d("ServerNonce", [], { ServerNonce: "fuQYgbDUcqRd6ebPlRtyK1" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4076,7 +4076,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001959380",
+            revision: "1001962857",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -4820,8 +4820,83 @@ try {
             null
           );
           __d(
+            "performance",
+            [],
+            function $module_performance(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              "use strict";
+
+              var performance =
+                global.performance ||
+                global.msPerformance ||
+                global.webkitPerformance ||
+                {};
+
+              module.exports = performance;
+            },
+            null
+          );
+          __d(
+            "performanceNow",
+            ["performance"],
+            function $module_performanceNow(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              var c_performance;
+
+              var performanceNow;
+
+              if (
+                (c_performance || (c_performance = require("performance"))).now
+              ) {
+                performanceNow = function performanceNow() {
+                  return (
+                    c_performance || (c_performance = require("performance"))
+                  ).now();
+                };
+              } else {
+                var cstart = global._cstart;
+                var initialDate = ES("Date", "now", false);
+                var epoch =
+                  typeof cstart === "number" && cstart < initialDate
+                    ? cstart
+                    : initialDate;
+                var last = 0;
+                performanceNow = function performanceNow() {
+                  var dateNow = ES("Date", "now", false);
+                  var now = dateNow - epoch;
+                  if (now < last) {
+                    epoch -= last - now;
+                    now = dateNow - epoch;
+                  }
+                  last = now;
+                  return now;
+                };
+              }
+
+              module.exports = performanceNow;
+            },
+            null
+          );
+          __d(
             "ErrorNormalizeUtils",
-            ["ErrorSerializer", "FBLoggerMetadata", "getSimpleHash"],
+            [
+              "ErrorSerializer",
+              "FBLoggerMetadata",
+              "getSimpleHash",
+              "performanceNow"
+            ],
             function $module_ErrorNormalizeUtils(
               global,
               require,
@@ -4831,6 +4906,7 @@ try {
               exports
             ) {
               "use strict";
+              var c_performanceNow;
 
               var HTTP_OR_HTTPS_URI_PATTERN = /^https?:\/\//i;
               var TYPECHECKER_ERROR_PATTERN = /^Type Mismatch for/;
@@ -5122,6 +5198,10 @@ try {
                     }
                   ),
                   name: name,
+                  page_time: Math.floor(
+                    (c_performanceNow ||
+                      (c_performanceNow = require("performanceNow")))()
+                  ),
                   project: err.project,
                   reactComponentStack: reactComponentStack,
                   script: stackPopped
@@ -6651,29 +6731,6 @@ try {
               };
 
               module.exports = nullthrows;
-            },
-            null
-          );
-          __d(
-            "performance",
-            [],
-            function $module_performance(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              "use strict";
-
-              var performance =
-                global.performance ||
-                global.msPerformance ||
-                global.webkitPerformance ||
-                {};
-
-              module.exports = performance;
             },
             null
           );
@@ -10108,53 +10165,6 @@ try {
               };
 
               module.exports = Run;
-            },
-            null
-          );
-          __d(
-            "performanceNow",
-            ["performance"],
-            function $module_performanceNow(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              var c_performance;
-
-              var performanceNow;
-
-              if (
-                (c_performance || (c_performance = require("performance"))).now
-              ) {
-                performanceNow = function performanceNow() {
-                  return (
-                    c_performance || (c_performance = require("performance"))
-                  ).now();
-                };
-              } else {
-                var cstart = global._cstart;
-                var initialDate = Date.now();
-                var epoch =
-                  typeof cstart === "number" && cstart < initialDate
-                    ? cstart
-                    : initialDate;
-                var last = 0;
-                performanceNow = function performanceNow() {
-                  var dateNow = Date.now();
-                  var now = dateNow - epoch;
-                  if (now < last) {
-                    epoch -= last - now;
-                    now = dateNow - epoch;
-                  }
-                  last = now;
-                  return now;
-                };
-              }
-
-              module.exports = performanceNow;
             },
             null
           );
@@ -39607,7 +39617,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001959380","namespace":"FB","message":"' +
+        '","revision":"1001962857","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
