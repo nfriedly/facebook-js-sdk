@@ -1,4 +1,4 @@
-/*1586420356,,JIT Construction: v1001965271,en_US*/
+/*1586428747,,JIT Construction: v1001965861,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3786,6 +3786,15 @@ try {
               "booking.com"
             ]
           });
+          __d("CometAltpayJsSdkIframeAllowedDomains", [], {
+            allowed_domains: [
+              "https://live.adyen.com",
+              "https://integration-facebook.payu.in",
+              "https://facebook.payulatam.com",
+              "https://facebook.dlocal.com",
+              "https://altpay-pe-test.herokuapp.com"
+            ]
+          });
           __d("KSConfig", [], {
             killed: {
               __set: [
@@ -3871,7 +3880,8 @@ try {
           });
           __d("BootloaderEndpointConfig", [], {
             endpointURI:
-              "https://connect.facebook.net/ajax/bootloader-endpoint/"
+              "https://connect.facebook.net/ajax/bootloader-endpoint/",
+            debugNoBatching: false
           });
           __d("CurrentCommunityInitialData", [], {});
           __d("CurrentUserInitialData", [], {
@@ -3893,8 +3903,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1001965271,
-            client_revision: 1001965271,
+            server_revision: 1001965861,
+            client_revision: 1001965861,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3904,14 +3914,14 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6813623551634988259-0",
+            hsi: "6813659587843210493-0",
             spin: 0,
-            __spin_r: 1001965271,
+            __spin_r: 1001965861,
             __spin_b: "trunk",
-            __spin_t: 1586420356,
+            __spin_t: 1586428747,
             vip: "31.13.66.19"
           });
-          __d("ServerNonce", [], { ServerNonce: "5Tl-VJKn5_u0CmGBBx8Xik" });
+          __d("ServerNonce", [], { ServerNonce: "HhHaeEQaaeRaxwhUri-Z5V" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4076,7 +4086,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001965271",
+            revision: "1001965861",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -10459,6 +10469,94 @@ try {
             null
           );
           __d(
+            "BootloaderEvents",
+            ["Arbiter"],
+            function $module_BootloaderEvents(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              var BOOTLOAD = "bootloader/bootload";
+              var _arbiter = new (require("Arbiter"))();
+
+              module.exports = {
+                notifyBootload: function notifyBootload(logData) {
+                  _arbiter.inform(BOOTLOAD, logData, "persistent");
+                },
+
+                onBootload: function onBootload(handler) {
+                  return _arbiter.subscribe(
+                    BOOTLOAD,
+                    function _arbiter_subscribe_$1(_, data) {
+                      return handler(data);
+                    }
+                  );
+                }
+              };
+            },
+            null
+          );
+          __d(
+            "BootloaderEventsManager",
+            ["CallbackDependencyManager"],
+            function $module_BootloaderEventsManager(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              var BootloaderEventsManager = (function() {
+                "use strict";
+
+                function BootloaderEventsManager() {
+                  this.$BootloaderEventsManager_callbackManager = new (require("CallbackDependencyManager"))();
+                }
+                var _proto = BootloaderEventsManager.prototype;
+                _proto.rsrcDone = function rsrcDone(hash) {
+                  return hash;
+                };
+                _proto.bootload = function bootload(components) {
+                  return "bl:" + components.join(",");
+                };
+                _proto.tierOne = function tierOne(comp) {
+                  return "t1:" + comp;
+                };
+                _proto.tierTwo = function tierTwo(comp) {
+                  return "t2:" + comp;
+                };
+                _proto.tierThree = function tierThree(comp) {
+                  return "t3:" + comp;
+                };
+                _proto.beDone = function beDone(comp) {
+                  return "beDone:" + comp;
+                };
+                _proto.notify = function notify(event) {
+                  this.$BootloaderEventsManager_callbackManager.satisfyPersistentDependency(
+                    event
+                  );
+                };
+                _proto.registerCallback = function registerCallback(
+                  callback,
+                  events
+                ) {
+                  this.$BootloaderEventsManager_callbackManager.registerCallback(
+                    callback,
+                    events
+                  );
+                };
+                return BootloaderEventsManager;
+              })();
+
+              module.exports = BootloaderEventsManager;
+            },
+            null
+          );
+          __d(
             "BitMap",
             [],
             function $module_BitMap(
@@ -10605,7 +10703,7 @@ try {
           );
           __d(
             "BlueCompatBroker",
-            ["Env", "URI"],
+            ["Env", "URI", "isCometAltpayJsSdkIframeAllowedDomain"],
             function $module_BlueCompatBroker(
               global,
               require,
@@ -10665,19 +10763,13 @@ try {
                     if (document.body) {
                       document.body.style.overflow = "auto";
                     }
+                    var targetUrl = require("isCometAltpayJsSdkIframeAllowedDomain")()
+                      ? "https://www.facebook.com/"
+                      : document.referrer;
 
-                    var firstSlash = ES(
-                      document.referrer,
-                      "indexOf",
-                      true,
-                      "/",
-                      8
-                    );
+                    var firstSlash = ES(targetUrl, "indexOf", true, "/", 8);
 
-                    var parentWindow = document.referrer.substring(
-                      0,
-                      firstSlash
-                    );
+                    var parentWindow = targetUrl.substring(0, firstSlash);
                     if (validateReferrer(parentWindow)) {
                       var messageChannel = new MessageChannel();
                       var iframeKey =
@@ -12761,6 +12853,64 @@ try {
               }
 
               module.exports = URI;
+            },
+            null
+          );
+          __d(
+            "isCometAltpayJsSdkIframeAllowedDomain",
+            ["CometAltpayJsSdkIframeAllowedDomains", "URI"],
+            function $module_isCometAltpayJsSdkIframeAllowedDomain(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              "use strict";
+              var c_URI;
+
+              var CometAltpayJsSdkIframeAllowedDomains = ES(
+                "Object",
+                "freeze",
+                false,
+                require("CometAltpayJsSdkIframeAllowedDomains")
+              );
+
+              var allowedDomains = ES(
+                "Object",
+                "freeze",
+                false,
+                CometAltpayJsSdkIframeAllowedDomains.allowed_domains
+              );
+
+              var isCometAltpayJsSdkIframeAllowedDomain = function isCometAltpayJsSdkIframeAllowedDomain() {
+                var originURI = new (c_URI || (c_URI = require("URI")))(
+                  window.location.href
+                );
+                if (allowedDomains == null || allowedDomains.length <= 0) {
+                  return false;
+                }
+                var isSameOriginAsAllowedDomain = ES(
+                  allowedDomains,
+                  "some",
+                  true,
+                  function allowedDomains_some_$0(allowedDomain) {
+                    var allowedDomainURI = new (c_URI ||
+                      (c_URI = require("URI")))(allowedDomain);
+                    if (allowedDomainURI == null) {
+                      return false;
+                    }
+                    return originURI.isSameOrigin(allowedDomainURI);
+                  }
+                );
+                if (isSameOriginAsAllowedDomain) {
+                  return true;
+                }
+                return false;
+              };
+
+              module.exports = isCometAltpayJsSdkIframeAllowedDomain;
             },
             null
           );
@@ -16495,12 +16645,11 @@ try {
             ) {
               "use strict";
 
-              var _asyncRequestCounter = 0;
               var _externalJSCounter = 0;
 
               var ResourceHasher = {
-                createAsyncHash: function createAsyncHash() {
-                  return "async:" + _asyncRequestCounter++;
+                getAsyncHash: function getAsyncHash(module) {
+                  return "async:" + module;
                 },
 
                 createExternalJSHash: function createExternalJSHash() {
@@ -16674,10 +16823,10 @@ try {
             [
               "invariant",
               "requireCond",
-              "Arbiter",
               "BootloaderConfig",
               "BootloaderEndpoint",
-              "CallbackDependencyManager",
+              "BootloaderEvents",
+              "BootloaderEventsManager",
               "CSRBitMap",
               "CSRIndexUtil",
               "CSSLoader",
@@ -16694,8 +16843,7 @@ try {
               "ex",
               "ifRequireable",
               "nullthrows",
-              "performanceAbsoluteNow",
-              "setImmediateAcrossTransitions"
+              "performanceAbsoluteNow"
             ],
             function $module_Bootloader(
               global,
@@ -16713,18 +16861,17 @@ try {
               var emptyFunction = function emptyFunction() {};
 
               var _queuedPreloads = [];
-
               var _queuedLoadModules = [];
 
-              var _requested = new Set();
+              var _requested = new Map();
+
+              var _loaded = new Map();
+
+              var _errors = new Map();
 
               var _preloadRequested = new Set();
 
               var _componentMap = new Map();
-
-              var _componentToBEHash = new Map();
-
-              var _unpredictedBEResourcesMap = new Map();
 
               var _containerNode = null;
 
@@ -16732,29 +16879,18 @@ try {
 
               var _rsrcIndexMap = new Map();
 
-              var _loading = new Map();
-
-              var _loaded = new Map();
-
-              var _errors = new Set();
-
               var _retries = new Map();
               var _retryTimes = [];
 
               var _bootloaded = new Map();
 
-              var _uniqueRequests = new Map();
+              var _uniqueBootloadRequests = new Set();
 
               var _pageScanned = false;
               var _processedTagIDs = new Set();
               var _bootloadEnabled = false;
 
-              var _callbackManager = new (require("CallbackDependencyManager"))();
-
-              var _arbiter = new (require("Arbiter"))();
-
-              var _pendingAsyncBatchRequestImmediateID = null;
-              var _pendingAsyncBatchRequest = null;
+              var events = new (require("BootloaderEventsManager"))();
 
               var JS_RETRIES = require("BootloaderConfig").jsRetries || [];
               var RETRY_ABORT_NUM = require("BootloaderConfig").jsRetryAbortNum;
@@ -16762,16 +16898,12 @@ try {
                 .jsRetryAbortTime;
               var _useRetries = JS_RETRIES.length > 0;
 
-              var Events = Object.freeze({
-                BOOTLOAD: "bootloader/bootload"
-              });
-
               (
                 c_ErrorPubSub || (c_ErrorPubSub = require("ErrorPubSub"))
               ).unshiftListener(function ErrorPubSub_unshiftListener_$0(err) {
                 var loading = [];
                 for (
-                  var _iterator = _loading,
+                  var _iterator = _requested,
                     _isArray = Array.isArray(_iterator),
                     _i = 0,
                     _iterator = _isArray
@@ -16795,8 +16927,12 @@ try {
                   }
                   var _ref3 = _ref2;
                   var hash = _ref3[0];
+                  var _ = _ref3[1];
+                  if (_loaded.has(hash)) {
+                    continue;
+                  }
                   var entry = _getExistingResource(hash);
-                  if (entry.type === "csr") {
+                  if (entry.type === "csr" || entry.type === "async") {
                     continue;
                   }
                   loading.push(entry.src);
@@ -16912,6 +17048,26 @@ try {
                 return resource;
               }
 
+              function _registerAsyncResource(component, be) {
+                var hash = require("ResourceHasher").getAsyncHash(component);
+
+                if (!_resources.has(hash)) {
+                  _resources.set(hash, {
+                    type: "async",
+                    module: component,
+                    blocking: !!be
+                  });
+                } else {
+                  var entry = _getExistingResource(hash);
+                  entry.type === "async" || invariant(0, "Hash is not async");
+
+                  if (entry.blocking && !be) {
+                    entry.blocking = false;
+                  }
+                }
+                return hash;
+              }
+
               function _getContainerNode() {
                 if (!_containerNode) {
                   _containerNode =
@@ -16920,6 +17076,12 @@ try {
                     document.body;
                 }
                 return _containerNode;
+              }
+
+              function _batchDOMInsert(callback) {
+                var batchNode = document.createDocumentFragment();
+                callback(batchNode);
+                _getContainerNode().appendChild(batchNode);
               }
 
               function _shouldUseRetries() {
@@ -16943,7 +17105,7 @@ try {
                 return _useRetries;
               }
 
-              function _preloadResource(hash, entry, containerNode, onload) {
+              function _preloadResource(hash, entry, batchNode) {
                 if (_requested.has(hash) || _preloadRequested.has(hash)) {
                   return;
                 }
@@ -16952,7 +17114,7 @@ try {
                 var target = undefined;
                 switch (entry.type) {
                   case "async":
-                    _loadResource(hash, entry, containerNode, null);
+                    _loadResource(hash, entry, batchNode, null);
                     return;
                   case "css":
                     target = "style";
@@ -16969,17 +17131,14 @@ try {
                 link.href = entry.src;
                 link.rel = "preload";
                 link.as = target;
-                if (onload) {
-                  link.onload = onload;
-                }
 
                 if (!entry.nc) {
                   link.crossOrigin = "anonymous";
                 }
-                containerNode.appendChild(link);
+                batchNode.appendChild(link);
               }
 
-              function _loadJS(hash, entry, callback, containerNode) {
+              function _loadJS(hash, entry, callback, batchNode) {
                 var script = document.createElement("script");
                 script.src = require("createTrustedScriptURLFromFacebookURI")(
                   entry.src
@@ -16990,168 +17149,9 @@ try {
                 }
 
                 _setupScriptEventListeners(script, hash, entry, callback);
-                containerNode.appendChild(script);
+                batchNode.appendChild(script);
 
                 return script;
-              }
-
-              function _createBootloaderEndpointResource(
-                blockingComps,
-                nonblockingComps
-              ) {
-                var key = require("ResourceHasher").createAsyncHash();
-                if (_pendingAsyncBatchRequest == null) {
-                  _pendingAsyncBatchRequest = {
-                    key: key,
-                    blockingComps: [].concat(blockingComps),
-                    nonblockingComps: [].concat(nonblockingComps)
-                  };
-
-                  _createAsyncBootloaderResource(
-                    key,
-                    blockingComps,
-                    nonblockingComps
-                  );
-                } else {
-                  var _pendingAsyncBatchReq, _pendingAsyncBatchReq2;
-                  key = _pendingAsyncBatchRequest.key;
-                  (_pendingAsyncBatchReq =
-                    _pendingAsyncBatchRequest.blockingComps).push.apply(
-                    _pendingAsyncBatchReq,
-                    blockingComps
-                  );
-                  (_pendingAsyncBatchReq2 =
-                    _pendingAsyncBatchRequest.nonblockingComps).push.apply(
-                    _pendingAsyncBatchReq2,
-                    nonblockingComps
-                  );
-                  _createAsyncBootloaderResource(
-                    key,
-                    _pendingAsyncBatchRequest.blockingComps,
-                    _pendingAsyncBatchRequest.nonblockingComps
-                  );
-                }
-                var _arr2 = [].concat(blockingComps, nonblockingComps);
-                for (var _i5 = 0; _i5 < _arr2.length; _i5++) {
-                  var comp = _arr2[_i5];
-                  _componentToBEHash.set(comp, key);
-                }
-
-                return key;
-              }
-
-              function _blEndpointDone(hash, data) {
-                _unpredictedBEResourcesMap.set(
-                  hash,
-                  _countUnpredictedBEResources(data)
-                );
-                Bootloader.done(hash);
-              }
-
-              function _countUnpredictedBEResources(data) {
-                var modules = data.modules,
-                  allResources = data.allResources;
-
-                var knownRsrcs = new Set();
-                for (
-                  var _iterator4 = modules,
-                    _isArray4 = Array.isArray(_iterator4),
-                    _i6 = 0,
-                    _iterator4 = _isArray4
-                      ? _iterator4
-                      : _iterator4[
-                          typeof Symbol === "function"
-                            ? Symbol.iterator
-                            : "@@iterator"
-                        ]();
-                  ;
-
-                ) {
-                  var _comp$rds, _comp$rdfds;
-                  var _ref6;
-                  if (_isArray4) {
-                    if (_i6 >= _iterator4.length) break;
-                    _ref6 = _iterator4[_i6++];
-                  } else {
-                    _i6 = _iterator4.next();
-                    if (_i6.done) break;
-                    _ref6 = _i6.value;
-                  }
-                  var _module = _ref6;
-                  var comp = _getExistingComponent(_module);
-                  var _arr3 = [
-                    comp.r,
-                    ((_comp$rds = comp.rds) == null ? void 0 : _comp$rds.r) ||
-                      [],
-                    ((_comp$rdfds = comp.rdfds) == null
-                      ? void 0
-                      : _comp$rdfds.r) || []
-                  ];
-                  for (var _i8 = 0; _i8 < _arr3.length; _i8++) {
-                    var hashes = _arr3[_i8];
-                    for (
-                      var _iterator6 = _resolveCSRs(hashes),
-                        _isArray6 = Array.isArray(_iterator6),
-                        _i9 = 0,
-                        _iterator6 = _isArray6
-                          ? _iterator6
-                          : _iterator6[
-                              typeof Symbol === "function"
-                                ? Symbol.iterator
-                                : "@@iterator"
-                            ]();
-                      ;
-
-                    ) {
-                      var _ref10;
-                      if (_isArray6) {
-                        if (_i9 >= _iterator6.length) break;
-                        _ref10 = _iterator6[_i9++];
-                      } else {
-                        _i9 = _iterator6.next();
-                        if (_i9.done) break;
-                        _ref10 = _i9.value;
-                      }
-                      var _ref11 = _ref10;
-                      var hash = _ref11[0];
-                      var _ = _ref11[1];
-                      knownRsrcs.add(hash);
-                    }
-                  }
-                }
-
-                var unpredicted = 0;
-                for (
-                  var _iterator5 = _resolveCSRs(allResources),
-                    _isArray5 = Array.isArray(_iterator5),
-                    _i7 = 0,
-                    _iterator5 = _isArray5
-                      ? _iterator5
-                      : _iterator5[
-                          typeof Symbol === "function"
-                            ? Symbol.iterator
-                            : "@@iterator"
-                        ]();
-                  ;
-
-                ) {
-                  var _ref8;
-                  if (_isArray5) {
-                    if (_i7 >= _iterator5.length) break;
-                    _ref8 = _iterator5[_i7++];
-                  } else {
-                    _i7 = _iterator5.next();
-                    if (_i7.done) break;
-                    _ref8 = _i7.value;
-                  }
-                  var _ref12 = _ref8;
-                  var _hash = _ref12[0];
-                  var _2 = _ref12[1];
-                  if (!knownRsrcs.has(_hash)) {
-                    unpredicted++;
-                  }
-                }
-                return unpredicted;
               }
 
               function _setupScriptEventListeners(
@@ -17208,7 +17208,12 @@ try {
                 script.onload = timeSlice.bind(
                   undefined,
                   function timeSlice_bind_$1() {
-                    var retry = _retries.get(source);
+                    var _retries$get;
+
+                    var retry =
+                      (_retries$get = _retries.get(source)) != null
+                        ? _retries$get
+                        : 0;
                     if (retry) {
                       require("FBLogger")("bootloader").info(
                         "JS retry success [%s] at %s | time: %s | retries: %s",
@@ -17241,20 +17246,19 @@ try {
                 script.onerror = timeSlice.bind(
                   undefined,
                   function timeSlice_bind_$1() {
-                    var _retries$get;
+                    var _retries$get2;
                     require("ResourceTimingsStore").measureResponseReceived(
                       "js",
                       requestUID
                     );
                     var retry =
-                      (_retries$get = _retries.get(source)) != null
-                        ? _retries$get
+                      (_retries$get2 = _retries.get(source)) != null
+                        ? _retries$get2
                         : 0;
+                    var now = (c_performanceAbsoluteNow ||
+                      (c_performanceAbsoluteNow = require("performanceAbsoluteNow")))();
                     if (_shouldUseRetries() && retry < JS_RETRIES.length) {
-                      _retryTimes.push(
-                        (c_performanceAbsoluteNow ||
-                          (c_performanceAbsoluteNow = require("performanceAbsoluteNow")))()
-                      );
+                      _retryTimes.push(now);
 
                       setTimeout(function setTimeout_$0() {
                         if (!_shouldUseRetries()) {
@@ -17270,17 +17274,15 @@ try {
 
                       _retries.set(source, retry + 1);
                     } else {
-                      _errors.add(source);
+                      _errors.set(hash, now);
                       require("FBLogger")("bootloader").warn(
                         "JS loading error [%s] at %s | time: %s | retries: %s" +
                           " | concurrency: %s",
                         hash,
                         source,
-                        (c_performanceAbsoluteNow ||
-                          (c_performanceAbsoluteNow = require("performanceAbsoluteNow")))() -
-                          startTime,
+                        now - startTime,
                         retry,
-                        _loading.size
+                        _requested.size - _loaded.size
                       );
 
                       require("NetworkStatus").reportError();
@@ -17297,85 +17299,28 @@ try {
                     "CSS timeout [%s] at %s | concurrency: %s",
                     hash,
                     entry.src,
-                    _loading.size
+                    _requested.size - _loaded.size
                   );
 
-                  _errors.add(entry.src);
+                  _errors.set(
+                    hash,
+                    (c_performanceAbsoluteNow ||
+                      (c_performanceAbsoluteNow = require("performanceAbsoluteNow")))()
+                  );
                   require("NetworkStatus").reportError();
                   cb();
                 };
               }
 
-              function _requestAsyncResource(hash, entry) {
-                var _pendingAsyncBatchReq3;
-                if (
-                  hash ===
-                  ((_pendingAsyncBatchReq3 = _pendingAsyncBatchRequest) == null
-                    ? void 0
-                    : _pendingAsyncBatchReq3.key)
-                ) {
-                  if (_pendingAsyncBatchRequestImmediateID != null) {
-                    return;
-                  }
-                  var requestBatchContinuation = require("TimeSlice").getGuardedContinuation(
-                    "Schedule async batch request: Bootloader._loadResources"
-                  );
-
-                  _pendingAsyncBatchRequestImmediateID = require("setImmediateAcrossTransitions")(
-                    function setImmediateAcrossTransitions_$0() {
-                      return requestBatchContinuation(
-                        function requestBatchContinuation_$0() {
-                          _pendingAsyncBatchRequestImmediateID = null;
-                          var asyncBatchRequest = _pendingAsyncBatchRequest;
-
-                          asyncBatchRequest != null ||
-                            invariant(
-                              0,
-                              "A batch was scheduled to bootload modules but there is no " +
-                                "record of a batch having been prepared."
-                            );
-
-                          var entry = _getExistingResource(hash);
-                          entry.type === "async" ||
-                            invariant(0, "Wrong entry type %s", entry.type);
-                          _pendingAsyncBatchRequest = null;
-                          _loading.set(
-                            hash,
-                            (c_performanceAbsoluteNow ||
-                              (c_performanceAbsoluteNow = require("performanceAbsoluteNow")))()
-                          );
-                          require("BootloaderEndpoint").load(
-                            Bootloader,
-                            entry.src,
-                            function BootloaderEndpoint_load_$2(data) {
-                              return _blEndpointDone(hash, data);
-                            }
-                          );
-                        }
-                      );
-                    }
-                  );
-                } else {
-                  _loading.set(
-                    hash,
-                    (c_performanceAbsoluteNow ||
-                      (c_performanceAbsoluteNow = require("performanceAbsoluteNow")))()
-                  );
-                  require("BootloaderEndpoint").load(
-                    Bootloader,
-                    entry.src,
-                    function BootloaderEndpoint_load_$2(data) {
-                      return _blEndpointDone(hash, data);
-                    }
-                  );
-                }
-              }
-
-              function _loadResource(hash, entry, containerNode, tag) {
+              function _loadResource(hash, entry, batchNode, tag) {
                 if (_requested.has(hash)) {
                   return;
                 }
-                _requested.add(hash);
+                _requested.set(
+                  hash,
+                  (c_performanceAbsoluteNow ||
+                    (c_performanceAbsoluteNow = require("performanceAbsoluteNow")))()
+                );
 
                 window.CavalryLogger &&
                   window.CavalryLogger.getInstance().measureResources(
@@ -17389,33 +17334,23 @@ try {
 
                 switch (entry.type) {
                   case "js":
-                    _loading.set(
-                      hash,
-                      (c_performanceAbsoluteNow ||
-                        (c_performanceAbsoluteNow = require("performanceAbsoluteNow")))()
-                    );
                     _loadJS(
                       hash,
                       entry,
                       function _loadJS_$2() {
                         return Bootloader.done(hash);
                       },
-                      containerNode
+                      batchNode
                     );
                     break;
                   case "css":
-                    _loading.set(
-                      hash,
-                      (c_performanceAbsoluteNow ||
-                        (c_performanceAbsoluteNow = require("performanceAbsoluteNow")))()
-                    );
                     var callback = function callback() {
                       return Bootloader.done(hash);
                     };
                     require("CSSLoader").loadStyleSheet(
                       hash,
                       entry.src,
-                      containerNode,
+                      batchNode,
                       !entry.nc,
                       callback,
                       _onCSSError(hash, entry, callback)
@@ -17423,7 +17358,11 @@ try {
 
                     break;
                   case "async":
-                    _requestAsyncResource(hash, entry);
+                    require("BootloaderEndpoint").load(
+                      entry.module,
+                      entry.blocking,
+                      hash
+                    );
                     break;
                   default:
                     entry.type;
@@ -17434,22 +17373,20 @@ try {
               function _loadResources(
                 resourceHashes,
                 callback,
-                tag,
-                loggingData
+                batchNode,
+                rsrcLog,
+                tag
               ) {
                 var willRequest = new Map();
-                var blocking = new Set();
-                var nonblocking = new Set();
-                var blockingAsync = [];
-                var blockingNonAsync = [];
+                var blockingEvents = [];
 
                 for (
-                  var _iterator7 = _resolveCSRs(resourceHashes),
-                    _isArray7 = Array.isArray(_iterator7),
-                    _i10 = 0,
-                    _iterator7 = _isArray7
-                      ? _iterator7
-                      : _iterator7[
+                  var _iterator4 = _resolveCSRs(resourceHashes),
+                    _isArray4 = Array.isArray(_iterator4),
+                    _i5 = 0,
+                    _iterator4 = _isArray4
+                      ? _iterator4
+                      : _iterator4[
                           typeof Symbol === "function"
                             ? Symbol.iterator
                             : "@@iterator"
@@ -17457,34 +17394,31 @@ try {
                   ;
 
                 ) {
-                  var _ref14;
-                  if (_isArray7) {
-                    if (_i10 >= _iterator7.length) break;
-                    _ref14 = _iterator7[_i10++];
+                  var _ref7;
+                  if (_isArray4) {
+                    if (_i5 >= _iterator4.length) break;
+                    _ref7 = _iterator4[_i5++];
                   } else {
-                    _i10 = _iterator7.next();
-                    if (_i10.done) break;
-                    _ref14 = _i10.value;
+                    _i5 = _iterator4.next();
+                    if (_i5.done) break;
+                    _ref7 = _i5.value;
                   }
-                  var _ref18 = _ref14;
-                  var hash = _ref18[0];
-                  var entry = _ref18[1];
+                  var _ref10 = _ref7;
+                  var hash = _ref10[0];
+                  var entry = _ref10[1];
                   switch (entry.type) {
                     case "css":
-                      if (entry.nonblocking) {
-                        nonblocking.add(hash);
-                      } else {
-                        blockingNonAsync.push(hash);
-                        blocking.add(hash);
+                      if (!entry.nonblocking) {
+                        blockingEvents.push(events.rsrcDone(hash));
                       }
                       break;
                     case "js":
-                      blockingNonAsync.push(hash);
-                      blocking.add(hash);
+                      blockingEvents.push(events.rsrcDone(hash));
                       break;
                     case "async":
-                      blockingAsync.push(hash);
-                      blocking.add(hash);
+                      if (entry.blocking) {
+                        blockingEvents.push(events.rsrcDone(hash));
+                      }
                       break;
                     default:
                       entry.type;
@@ -17494,171 +17428,30 @@ try {
                   if (!_requested.has(hash)) {
                     willRequest.set(hash, entry);
                   }
+                  rsrcLog == null ? void 0 : rsrcLog.set(hash, entry);
                 }
 
-                var doLogging = null;
-                var timingEvents = [];
-                if (loggingData) {
-                  var startTime = (c_performanceAbsoluteNow ||
-                    (c_performanceAbsoluteNow = require("performanceAbsoluteNow")))();
-                  var timings = {
-                    async_resource_duration: null,
-                    static_resource_download_duration: null
-                  };
-
-                  if (blockingAsync.length !== 0) {
-                    var asyncTimingEvent =
-                      "asyncTime:" + loggingData.request_key;
-                    timingEvents.push(asyncTimingEvent);
-                    _callbackManager.registerCallback(
-                      function _callbackManager_registerCallback_$0() {
-                        timings.async_resource_duration = Math.round(
-                          (c_performanceAbsoluteNow ||
-                            (c_performanceAbsoluteNow = require("performanceAbsoluteNow")))() -
-                            startTime
-                        );
-
-                        _callbackManager.satisfyPersistentDependency(
-                          asyncTimingEvent
-                        );
-                      },
-                      blockingAsync
-                    );
-                  }
-                  if (blockingNonAsync.length !== 0) {
-                    var nonAsyncTimingEvent =
-                      "nonAsyncTime:" + loggingData.request_key;
-                    timingEvents.push(nonAsyncTimingEvent);
-                    _callbackManager.registerCallback(
-                      function _callbackManager_registerCallback_$0() {
-                        timings.static_resource_download_duration = Math.round(
-                          (c_performanceAbsoluteNow ||
-                            (c_performanceAbsoluteNow = require("performanceAbsoluteNow")))() -
-                            startTime
-                        );
-
-                        _callbackManager.satisfyPersistentDependency(
-                          nonAsyncTimingEvent
-                        );
-                      },
-                      blockingNonAsync
-                    );
-                  }
-
-                  var CometInteractionTracingMetrics = require("ifRequireable")(
-                    "CometInteractionTracingMetrics",
-                    function ifRequireable_$1(x) {
-                      return x;
-                    }
-                  );
-
-                  var interactionLogger;
-
-                  if (CometInteractionTracingMetrics) {
-                    interactionLogger = CometInteractionTracingMetrics.currentInteractionLogger();
-                  }
-                  doLogging = function doLogging() {
-                    var duration = Math.round(
-                      (c_performanceAbsoluteNow ||
-                        (c_performanceAbsoluteNow = require("performanceAbsoluteNow")))() -
-                        startTime
-                    );
-                    var blockingCount = blocking.size;
-                    var willRequestHashes = Array.from(willRequest.keys());
-
-                    var resourceCounts = {
-                      blocking_resources_downloaded: willRequestHashes.filter(
-                        function willRequestHashes_filter_$0(hash) {
-                          return blocking.has(hash);
-                        }
-                      ).length,
-                      blocking_resources_count: blockingCount,
-                      all_resources_downloaded: willRequestHashes.length,
-                      all_resources_count: blockingCount + nonblocking.size,
-                      unpredicted_be_resources: blockingAsync.reduce(
-                        function blockingAsync_reduce_$0(acc, h) {
-                          return (
-                            acc +
-                            require("nullthrows")(
-                              _unpredictedBEResourcesMap.get(h)
-                            )
-                          );
-                        },
-                        0
-                      ),
-
-                      err_count: Array.from(willRequest.values()).filter(
-                        function filter_$0(_ref15) {
-                          var src = _ref15.src;
-                          return _errors.has(src);
-                        }
-                      ).length
-                    };
-
-                    var tsContext = require("TimeSlice").getContext();
-                    var fields = babelHelpers["extends"](
-                      {},
-                      loggingData,
-                      resourceCounts,
-                      timings,
-                      {
-                        timeslice_context: tsContext && tsContext.name,
-                        start_time: startTime,
-                        duration: duration
-                      }
-                    );
-
-                    if (
-                      interactionLogger &&
-                      loggingData != null &&
-                      loggingData.components != null
-                    ) {
-                      var components = loggingData.components;
-                      interactionLogger.addBootload(
-                        components,
-                        startTime,
-                        duration,
-                        resourceCounts.all_resources_downloaded
-                      );
-                    }
-
-                    delete fields.request_key;
-                    _arbiter.inform(Events.BOOTLOAD, fields, "persistent");
-                  };
-                }
-
-                var realCallback = callback
-                  ? function() {
-                      return callback(doLogging);
-                    }
-                  : doLogging;
-
-                if (require("cr:696703") && realCallback) {
-                  var callback_scheduler = require("cr:696703").getCallbackScheduler();
-                  var actualCallback = realCallback;
-                  realCallback = function realCallback() {
-                    callback_scheduler(actualCallback);
-                  };
-                }
-
-                if (realCallback) {
-                  var blockingEvents = Array.from(blocking).concat(
-                    timingEvents
-                  );
-                  _callbackManager.registerCallback(
-                    realCallback,
+                if (callback) {
+                  var runner = require("cr:696703")
+                    ? require("cr:696703").getCallbackScheduler()
+                    : function(cb) {
+                        return cb();
+                      };
+                  events.registerCallback(
+                    function events_registerCallback_$0() {
+                      runner(callback);
+                    },
                     blockingEvents
                   );
                 }
 
-                var batchingContainerNode = document.createDocumentFragment();
                 for (
-                  var _iterator8 = willRequest,
-                    _isArray8 = Array.isArray(_iterator8),
-                    _i11 = 0,
-                    _iterator8 = _isArray8
-                      ? _iterator8
-                      : _iterator8[
+                  var _iterator5 = willRequest,
+                    _isArray5 = Array.isArray(_iterator5),
+                    _i6 = 0,
+                    _iterator5 = _isArray5
+                      ? _iterator5
+                      : _iterator5[
                           typeof Symbol === "function"
                             ? Symbol.iterator
                             : "@@iterator"
@@ -17666,23 +17459,22 @@ try {
                   ;
 
                 ) {
-                  var _ref17;
-                  if (_isArray8) {
-                    if (_i11 >= _iterator8.length) break;
-                    _ref17 = _iterator8[_i11++];
+                  var _ref9;
+                  if (_isArray5) {
+                    if (_i6 >= _iterator5.length) break;
+                    _ref9 = _iterator5[_i6++];
                   } else {
-                    _i11 = _iterator8.next();
-                    if (_i11.done) break;
-                    _ref17 = _i11.value;
+                    _i6 = _iterator5.next();
+                    if (_i6.done) break;
+                    _ref9 = _i6.value;
                   }
-                  var _ref19 = _ref17;
-                  var _hash2 = _ref19[0];
-                  var _entry = _ref19[1];
+                  var _ref11 = _ref9;
+                  var _hash = _ref11[0];
+                  var _entry = _ref11[1];
 
-                  _preloadResource(_hash2, _entry, batchingContainerNode);
-                  _loadResource(_hash2, _entry, batchingContainerNode);
+                  _preloadResource(_hash, _entry, batchNode);
+                  _loadResource(_hash, _entry, batchNode, tag);
                 }
-                _getContainerNode().appendChild(batchingContainerNode);
               }
 
               function _addResource(hash, entry, forceSot) {
@@ -17693,14 +17485,14 @@ try {
                 var provides = entry.p;
                 if (provides) {
                   for (
-                    var _iterator9 = require("CSRIndexUtil").parseCSRIndexes(
+                    var _iterator6 = require("CSRIndexUtil").parseCSRIndexes(
                         provides
                       ),
-                      _isArray9 = Array.isArray(_iterator9),
-                      _i12 = 0,
-                      _iterator9 = _isArray9
-                        ? _iterator9
-                        : _iterator9[
+                      _isArray6 = Array.isArray(_iterator6),
+                      _i7 = 0,
+                      _iterator6 = _isArray6
+                        ? _iterator6
+                        : _iterator6[
                             typeof Symbol === "function"
                               ? Symbol.iterator
                               : "@@iterator"
@@ -17708,16 +17500,16 @@ try {
                     ;
 
                   ) {
-                    var _ref20;
-                    if (_isArray9) {
-                      if (_i12 >= _iterator9.length) break;
-                      _ref20 = _iterator9[_i12++];
+                    var _ref12;
+                    if (_isArray6) {
+                      if (_i7 >= _iterator6.length) break;
+                      _ref12 = _iterator6[_i7++];
                     } else {
-                      _i12 = _iterator9.next();
-                      if (_i12.done) break;
-                      _ref20 = _i12.value;
+                      _i7 = _iterator6.next();
+                      if (_i7.done) break;
+                      _ref12 = _i7.value;
                     }
-                    var rsrcIndex = _ref20;
+                    var rsrcIndex = _ref12;
                     if (!_rsrcIndexMap.has(rsrcIndex) || forceSot) {
                       _rsrcIndexMap.set(rsrcIndex, hash);
                       require("CSRBitMap").add(rsrcIndex);
@@ -17726,15 +17518,33 @@ try {
                 }
               }
 
-              function _resolveCSRs(hashes) {
-                var ret = new Map();
+              function _initBootloadRequest(ref, components) {
+                var bootloadEvent = events.bootload(components);
+                if (_uniqueBootloadRequests.has(bootloadEvent)) {
+                  return [bootloadEvent, null];
+                }
+                _uniqueBootloadRequests.add(bootloadEvent);
+
+                var logData = {
+                  ref: ref,
+                  components: components,
+                  timesliceContext: require("TimeSlice").getContext(),
+                  startTime: (c_performanceAbsoluteNow ||
+                    (c_performanceAbsoluteNow = require("performanceAbsoluteNow")))(),
+                  tierOne: new Map(),
+                  tierTwo: new Map(),
+                  tierThree: new Map(),
+                  beRequests: new Map()
+                };
+
+                var logEvents = [];
                 for (
-                  var _iterator10 = hashes,
-                    _isArray10 = Array.isArray(_iterator10),
-                    _i13 = 0,
-                    _iterator10 = _isArray10
-                      ? _iterator10
-                      : _iterator10[
+                  var _iterator7 = components,
+                    _isArray7 = Array.isArray(_iterator7),
+                    _i8 = 0,
+                    _iterator7 = _isArray7
+                      ? _iterator7
+                      : _iterator7[
                           typeof Symbol === "function"
                             ? Symbol.iterator
                             : "@@iterator"
@@ -17742,16 +17552,146 @@ try {
                   ;
 
                 ) {
-                  var _ref21;
-                  if (_isArray10) {
-                    if (_i13 >= _iterator10.length) break;
-                    _ref21 = _iterator10[_i13++];
+                  var _ref13;
+                  if (_isArray7) {
+                    if (_i8 >= _iterator7.length) break;
+                    _ref13 = _iterator7[_i8++];
                   } else {
-                    _i13 = _iterator10.next();
-                    if (_i13.done) break;
-                    _ref21 = _i13.value;
+                    _i8 = _iterator7.next();
+                    if (_i8.done) break;
+                    _ref13 = _i8.value;
                   }
-                  var hash = _ref21;
+                  var comp = _ref13;
+                  logEvents.push(events.beDone(comp));
+                  logEvents.push(events.tierThree(comp));
+                }
+                events.registerCallback(function events_registerCallback_$0() {
+                  return require("BootloaderEvents").notifyBootload(logData);
+                }, logEvents);
+
+                return [bootloadEvent, logData];
+              }
+
+              function _isRequired(module) {
+                return require("ifRequireable").call(
+                  null,
+                  module,
+                  function ifRequireable_call_$2() {
+                    return true;
+                  },
+                  function ifRequireable_call_$3() {
+                    return false;
+                  }
+                );
+              }
+
+              function _loadModule(
+                component,
+                bootloadEvent,
+                batchNode,
+                logData
+              ) {
+                if (!_bootloaded.has(component)) {
+                  _bootloaded.set(component, {
+                    firstBootloadStart: (c_performanceAbsoluteNow ||
+                      (c_performanceAbsoluteNow = require("performanceAbsoluteNow")))(),
+                    logData: new Set()
+                  });
+                }
+                if (logData) {
+                  require("nullthrows")(_bootloaded.get(component)).logData.add(
+                    logData
+                  );
+                }
+                var _getExistingComponent2 = _getExistingComponent(component),
+                  r = _getExistingComponent2.r,
+                  rdfds = _getExistingComponent2.rdfds,
+                  rds = _getExistingComponent2.rds,
+                  be = _getExistingComponent2.be;
+                var asyncHash = _isRequired(component)
+                  ? null
+                  : _registerAsyncResource(component, be);
+
+                if (asyncHash == null) {
+                  events.notify(events.beDone(component));
+                }
+
+                _loadResources(
+                  asyncHash != null ? [asyncHash].concat(r) : r,
+                  function _loadResources_$1() {
+                    return events.notify(events.tierOne(component));
+                  },
+                  batchNode,
+                  logData == null ? void 0 : logData.tierOne
+                );
+
+                _loadResources(
+                  (rdfds == null ? void 0 : rdfds.r) || [],
+                  function _loadResources_$1() {
+                    return events.registerCallback(
+                      requireLazy.bind(
+                        null,
+                        (rdfds == null ? void 0 : rdfds.m) || [],
+                        function requireLazy_bind_$2() {
+                          return events.notify(events.tierTwo(component));
+                        }
+                      ),
+
+                      [events.tierOne(component), bootloadEvent]
+                    );
+                  },
+
+                  batchNode,
+                  logData == null ? void 0 : logData.tierTwo
+                );
+
+                _loadResources(
+                  (rds == null ? void 0 : rds.r) || [],
+                  function _loadResources_$1() {
+                    return events.registerCallback(
+                      requireLazy.bind(
+                        null,
+                        (rds == null ? void 0 : rds.m) || [],
+                        function requireLazy_bind_$2() {
+                          return events.notify(events.tierThree(component));
+                        }
+                      ),
+
+                      [events.tierTwo(component)]
+                    );
+                  },
+
+                  batchNode,
+                  logData == null ? void 0 : logData.tierThree
+                );
+              }
+
+              function _resolveCSRs(hashes) {
+                var ret = new Map();
+                for (
+                  var _iterator8 = hashes,
+                    _isArray8 = Array.isArray(_iterator8),
+                    _i9 = 0,
+                    _iterator8 = _isArray8
+                      ? _iterator8
+                      : _iterator8[
+                          typeof Symbol === "function"
+                            ? Symbol.iterator
+                            : "@@iterator"
+                        ]();
+                  ;
+
+                ) {
+                  var _ref14;
+                  if (_isArray8) {
+                    if (_i9 >= _iterator8.length) break;
+                    _ref14 = _iterator8[_i9++];
+                  } else {
+                    _i9 = _iterator8.next();
+                    if (_i9.done) break;
+                    _ref14 = _i9.value;
+                  }
+                  var hash = _ref14;
 
                   var entry = _resources.get(hash);
                   if (!entry) {
@@ -17775,12 +17715,12 @@ try {
                   }
 
                   for (
-                    var _iterator11 = provides,
-                      _isArray11 = Array.isArray(_iterator11),
-                      _i14 = 0,
-                      _iterator11 = _isArray11
-                        ? _iterator11
-                        : _iterator11[
+                    var _iterator9 = provides,
+                      _isArray9 = Array.isArray(_iterator9),
+                      _i10 = 0,
+                      _iterator9 = _isArray9
+                        ? _iterator9
+                        : _iterator9[
                             typeof Symbol === "function"
                               ? Symbol.iterator
                               : "@@iterator"
@@ -17788,16 +17728,16 @@ try {
                     ;
 
                   ) {
-                    var _ref22;
-                    if (_isArray11) {
-                      if (_i14 >= _iterator11.length) break;
-                      _ref22 = _iterator11[_i14++];
+                    var _ref15;
+                    if (_isArray9) {
+                      if (_i10 >= _iterator9.length) break;
+                      _ref15 = _iterator9[_i10++];
                     } else {
-                      _i14 = _iterator11.next();
-                      if (_i14.done) break;
-                      _ref22 = _i14.value;
+                      _i10 = _iterator9.next();
+                      if (_i10.done) break;
+                      _ref15 = _i10.value;
                     }
-                    var p = _ref22;
+                    var p = _ref15;
 
                     var sotHash = require("nullthrows")(
                       _rsrcIndexMap.get(p),
@@ -17818,7 +17758,7 @@ try {
               function _pickupPageResource(el) {
                 var _el$parentNode;
                 var hashAttribute = el.getAttribute("data-bootloader-hash");
-                if (!hashAttribute) {
+                if (hashAttribute == null) {
                   return;
                 }
                 var hash = require("ResourceHasher").getValidResourceHash(
@@ -17836,10 +17776,13 @@ try {
                     ? { src: el.src, type: "js" }
                     : { src: el.href, type: "css" };
 
-                if (!el.crossOrigin) {
+                if (el.crossOrigin == null) {
                   entry.nc = 1;
                 }
-                if (el.getAttribute("data-nonblocking")) {
+                if (
+                  entry.type === "css" &&
+                  el.getAttribute("data-nonblocking")
+                ) {
                   entry.nonblocking = 1;
                 }
 
@@ -17857,7 +17800,11 @@ try {
                 }
 
                 _addResource(hash, entry, true);
-                _requested.add(hash);
+                _requested.set(
+                  hash,
+                  (c_performanceAbsoluteNow ||
+                    (c_performanceAbsoluteNow = require("performanceAbsoluteNow")))()
+                );
 
                 var onload = function onload() {
                   return Bootloader.done(hash);
@@ -17906,51 +17853,6 @@ try {
                 );
               }
 
-              function _createAsyncBootloaderResource(
-                key,
-                blockingComps,
-                nonblockingComps
-              ) {
-                _resources.set(key, {
-                  src: require("BootloaderEndpoint").getURL(
-                    blockingComps,
-                    nonblockingComps
-                  ),
-                  type: "async"
-                });
-              }
-
-              function _preloadResources(hashes, containerNode) {
-                for (
-                  var _iterator12 = _resolveCSRs(hashes),
-                    _isArray12 = Array.isArray(_iterator12),
-                    _i15 = 0,
-                    _iterator12 = _isArray12
-                      ? _iterator12
-                      : _iterator12[
-                          typeof Symbol === "function"
-                            ? Symbol.iterator
-                            : "@@iterator"
-                        ]();
-                  ;
-
-                ) {
-                  var _ref24;
-                  if (_isArray12) {
-                    if (_i15 >= _iterator12.length) break;
-                    _ref24 = _iterator12[_i15++];
-                  } else {
-                    _i15 = _iterator12.next();
-                    if (_i15.done) break;
-                    _ref24 = _i15.value;
-                  }
-                  var _ref25 = _ref24;
-                  var hash = _ref25[0];
-                  var entry = _ref25[1];
-                  _preloadResource(hash, entry, containerNode);
-                }
-              }
-
               var Bootloader = {
                 preloadModules: function preloadModules(components) {
                   if (!canBootloadComponentsYet(components)) {
@@ -17961,16 +17863,15 @@ try {
                     _queuedPreloads.push([components, continuation]);
                     return;
                   }
-                  var batchingContainerNode = document.createDocumentFragment();
-                  var newCompsWithBE = [];
-                  var newCompsWithoutBE = [];
+
+                  var resources = [];
                   for (
-                    var _iterator13 = components,
-                      _isArray13 = Array.isArray(_iterator13),
-                      _i16 = 0,
-                      _iterator13 = _isArray13
-                        ? _iterator13
-                        : _iterator13[
+                    var _iterator10 = components,
+                      _isArray10 = Array.isArray(_iterator10),
+                      _i11 = 0,
+                      _iterator10 = _isArray10
+                        ? _iterator10
+                        : _iterator10[
                             typeof Symbol === "function"
                               ? Symbol.iterator
                               : "@@iterator"
@@ -17978,53 +17879,62 @@ try {
                     ;
 
                   ) {
-                    var _ref26;
-                    if (_isArray13) {
-                      if (_i16 >= _iterator13.length) break;
-                      _ref26 = _iterator13[_i16++];
+                    var _ref16;
+                    if (_isArray10) {
+                      if (_i11 >= _iterator10.length) break;
+                      _ref16 = _iterator10[_i11++];
                     } else {
-                      _i16 = _iterator13.next();
-                      if (_i16.done) break;
-                      _ref26 = _i16.value;
+                      _i11 = _iterator10.next();
+                      if (_i11.done) break;
+                      _ref16 = _i11.value;
                     }
-                    var component = _ref26;
-                    var _getExistingComponent2 = _getExistingComponent(
+                    var component = _ref16;
+                    var _getExistingComponent3 = _getExistingComponent(
                         component
                       ),
-                      r = _getExistingComponent2.r,
-                      rdfds = _getExistingComponent2.rdfds,
-                      be = _getExistingComponent2.be;
-
-                    if (
-                      !require("ifRequireable").call(
-                        null,
-                        component,
-                        function ifRequireable_call_$2() {
-                          return true;
-                        },
-                        function ifRequireable_call_$3() {
-                          return false;
-                        }
-                      ) &&
-                      !_componentToBEHash.get(component)
-                    ) {
-                      (be ? newCompsWithBE : newCompsWithoutBE).push(component);
+                      r = _getExistingComponent3.r,
+                      rdfds = _getExistingComponent3.rdfds,
+                      be = _getExistingComponent3.be;
+                    if (!_isRequired(component)) {
+                      resources.push(_registerAsyncResource(component, be));
                     }
-                    var _arr4 = [r, (rdfds == null ? void 0 : rdfds.r) || []];
-                    for (var _i17 = 0; _i17 < _arr4.length; _i17++) {
-                      var hashes = _arr4[_i17];
-                      _preloadResources(hashes, batchingContainerNode);
-                    }
-                  }
-                  if (newCompsWithBE.length || newCompsWithoutBE.length) {
-                    var hash = _createBootloaderEndpointResource(
-                      newCompsWithBE,
-                      newCompsWithoutBE
+                    resources.push.apply(resources, r);
+                    resources.push.apply(
+                      resources,
+                      (rdfds == null ? void 0 : rdfds.r) || []
                     );
-
-                    _preloadResources([hash], batchingContainerNode);
                   }
-                  _getContainerNode().appendChild(batchingContainerNode);
+
+                  _batchDOMInsert(function _batchDOMInsert_$0(batchNode) {
+                    for (
+                      var _iterator11 = _resolveCSRs(resources),
+                        _isArray11 = Array.isArray(_iterator11),
+                        _i12 = 0,
+                        _iterator11 = _isArray11
+                          ? _iterator11
+                          : _iterator11[
+                              typeof Symbol === "function"
+                                ? Symbol.iterator
+                                : "@@iterator"
+                            ]();
+                      ;
+
+                    ) {
+                      var _ref18;
+                      if (_isArray11) {
+                        if (_i12 >= _iterator11.length) break;
+                        _ref18 = _iterator11[_i12++];
+                      } else {
+                        _i12 = _iterator11.next();
+                        if (_i12.done) break;
+                        _ref18 = _i12.value;
+                      }
+                      var _ref19 = _ref18;
+                      var hash = _ref19[0];
+                      var entry = _ref19[1];
+                      _preloadResource(hash, entry, batchNode);
+                    }
+                  });
                 },
 
                 loadModules: function loadModules(components, callback, ref) {
@@ -18034,14 +17944,14 @@ try {
                   if (ref === void 0) {
                     ref = "loadModules: unknown caller";
                   }
-
+                  var isCancelled = false;
                   var realCallback = function realCallback() {
-                    return callback.apply(undefined, arguments);
+                    !isCancelled && callback.apply(undefined, arguments);
                   };
 
                   var subscription = {
                     remove: function remove() {
-                      callback = emptyFunction;
+                      isCancelled = true;
                     }
                   };
 
@@ -18058,197 +17968,141 @@ try {
                     ]);
                     return subscription;
                   }
+                  var _initBootloadRequest2 = _initBootloadRequest(
+                      ref,
+                      components
+                    ),
+                    bootloadEvent = _initBootloadRequest2[0],
+                    logData = _initBootloadRequest2[1];
 
-                  var resources = [];
-                  var rdfdResources = [];
-                  var rdResources = [];
-                  var rdfdMods = [];
-                  var rdMods = [];
+                  events.registerCallback(
+                    requireLazy.bind(
+                      null,
+                      components,
+                      function requireLazy_bind_$2() {
+                        realCallback.apply(undefined, arguments);
 
-                  var nonBlockingBEResources = [];
-
-                  var newCompsWithBE = [];
-                  var newCompsWithoutBE = [];
-
-                  var hasNewComponent = false;
-                  var asyncResourcesCount = 0;
-
-                  var now = (c_performanceAbsoluteNow ||
-                    (c_performanceAbsoluteNow = require("performanceAbsoluteNow")))();
-                  components.forEach(function components_forEach_$0(component) {
-                    var _getExistingComponent3 = _getExistingComponent(
-                        component
-                      ),
-                      r = _getExistingComponent3.r,
-                      rdfds = _getExistingComponent3.rdfds,
-                      rds = _getExistingComponent3.rds,
-                      be = _getExistingComponent3.be;
-
-                    be && asyncResourcesCount++;
-
-                    if (
-                      !require("ifRequireable").call(
-                        null,
-                        component,
-                        function ifRequireable_call_$2() {
-                          return true;
-                        },
-                        function ifRequireable_call_$3() {
-                          return false;
-                        }
-                      )
-                    ) {
-                      var beHash = _componentToBEHash.get(component);
-                      if (beHash) {
-                        be && resources.push(beHash);
-                      } else {
-                        (be ? newCompsWithBE : newCompsWithoutBE).push(
-                          component
-                        );
+                        events.notify(bootloadEvent);
                       }
-                    }
+                    ),
+                    components.map(function components_map_$0(comp) {
+                      return events.tierOne(comp);
+                    })
+                  );
 
-                    if (!_bootloaded.has(component)) {
-                      hasNewComponent = true;
-                      _bootloaded.set(component, now);
-                    }
+                  _batchDOMInsert(function _batchDOMInsert_$0(batchNode) {
+                    for (
+                      var _iterator12 = components,
+                        _isArray12 = Array.isArray(_iterator12),
+                        _i13 = 0,
+                        _iterator12 = _isArray12
+                          ? _iterator12
+                          : _iterator12[
+                              typeof Symbol === "function"
+                                ? Symbol.iterator
+                                : "@@iterator"
+                            ]();
+                      ;
 
-                    resources.push.apply(resources, r);
-                    rdfdResources.push.apply(
-                      rdfdResources,
-                      (rdfds == null ? void 0 : rdfds.r) || []
-                    );
-                    rdResources.push.apply(
-                      rdResources,
-                      (rds == null ? void 0 : rds.r) || []
-                    );
-                    rdfdMods.push.apply(
-                      rdfdMods,
-                      (rdfds == null ? void 0 : rdfds.m) || []
-                    );
-                    rdMods.push.apply(
-                      rdMods,
-                      (rds == null ? void 0 : rds.m) || []
-                    );
+                    ) {
+                      var _ref20;
+                      if (_isArray12) {
+                        if (_i13 >= _iterator12.length) break;
+                        _ref20 = _iterator12[_i13++];
+                      } else {
+                        _i13 = _iterator12.next();
+                        if (_i13.done) break;
+                        _ref20 = _i13.value;
+                      }
+                      var comp = _ref20;
+                      _loadModule(comp, bootloadEvent, batchNode, logData);
+                    }
                   });
 
-                  if (newCompsWithBE.length || newCompsWithoutBE.length) {
-                    var _key = _createBootloaderEndpointResource(
-                      newCompsWithBE,
-                      newCompsWithoutBE
-                    );
-
-                    (newCompsWithBE.length
-                      ? resources
-                      : nonBlockingBEResources
-                    ).push(_key);
-                  }
-
-                  require("ifRequireable")(
-                    "TimeSliceInteraction",
-                    function ifRequireable_$1(TimeSliceInteraction) {
-                      TimeSliceInteraction.informGlobally(
-                        "Bootloader.loadResources"
-                      )
-                        .addSetAnnotation("requested_hashes", resources)
-                        .addSetAnnotation(
-                          "rdfd_requested_hashes",
-                          rdfdResources
+                  if (logData) {
+                    require("ifRequireable")(
+                      "m#TimeSliceInteraction",
+                      function ifRequireable_$1(TimeSliceInteraction) {
+                        TimeSliceInteraction.informGlobally(
+                          "Bootloader.loadResources"
                         )
-                        .addSetAnnotation("rd_requested_hashes", rdResources)
-                        .addStringAnnotation("bootloader_reference", ref)
-                        .addSetAnnotation("requested_components", components);
-                    }
-                  );
-
-                  var requestKey = JSON.stringify([ref, components]);
-
-                  var logData = null;
-                  if (!_uniqueRequests.has(requestKey)) {
-                    _uniqueRequests.set(requestKey, now);
-                    logData = {
-                      ref: ref,
-                      components: components,
-                      has_new_component: hasNewComponent,
-                      async_resources_count: asyncResourcesCount,
-                      async_resources_downloaded: newCompsWithBE.length,
-                      request_key: requestKey
-                    };
-                  }
-
-                  var resourcesEvent = "rsrcs:" + requestKey;
-                  for (var _i18 = 0; _i18 < resources.length; _i18++) {
-                    var hash = resources[_i18];
-                    if (!_resources.has(hash)) {
-                      require("FBLogger")("bootloader").mustfix(
-                        "Missing rsrc %s when bootloading %s",
-                        hash,
-                        requestKey
-                      );
-                    }
-                  }
-                  _loadResources(
-                    resources,
-                    function _loadResources_$1(onBeforeUserCallback) {
-                      return requireLazy.call(
-                        null,
-                        components,
-                        function requireLazy_call_$2() {
-                          onBeforeUserCallback && onBeforeUserCallback();
-                          realCallback.apply(undefined, arguments);
-                          _callbackManager.satisfyPersistentDependency(
-                            resourcesEvent
-                          );
-                        }
-                      );
-                    },
-                    null,
-                    logData
-                  );
-
-                  var rdfdEvent = "rdfds:" + requestKey;
-                  _loadResources(rdfdResources, function _loadResources_$1() {
-                    _callbackManager.registerCallback(
-                      requireLazy.bind(
-                        null,
-                        rdfdMods,
-                        function requireLazy_bind_$2() {
-                          _callbackManager.satisfyPersistentDependency(
-                            rdfdEvent
-                          );
-                        }
-                      ),
-                      [resourcesEvent]
+                          .addSetAnnotation(
+                            "requested_hashes",
+                            Array.from(logData.tierOne.keys())
+                          )
+                          .addSetAnnotation(
+                            "rdfd_requested_hashes",
+                            Array.from(logData.tierTwo.keys())
+                          )
+                          .addSetAnnotation(
+                            "rd_requested_hashes",
+                            Array.from(logData.tierThree.keys())
+                          )
+                          .addStringAnnotation("bootloader_reference", ref)
+                          .addSetAnnotation("requested_components", components);
+                      }
                     );
-                  });
-
-                  _loadResources(rdResources, function _loadResources_$1() {
-                    _callbackManager.registerCallback(
-                      requireLazy.bind(null, rdMods, emptyFunction),
-                      [rdfdEvent]
-                    );
-                  });
-
-                  _loadResources(nonBlockingBEResources);
+                  }
 
                   return subscription;
                 },
 
                 loadResources: function loadResources(
-                  resourceHashes,
+                  hashes,
                   callback,
-                  tag
+                  tag,
+                  rsrcLog
                 ) {
                   _pickupPageResources();
+                  _batchDOMInsert(function _batchDOMInsert_$0(batchNode) {
+                    return _loadResources(
+                      hashes.map(function hashes_map_$0(hash) {
+                        return require("ResourceHasher").getValidResourceHash(
+                          hash
+                        );
+                      }),
+                      callback,
+                      batchNode,
+                      rsrcLog,
+                      tag
+                    );
+                  });
+                },
 
-                  var validHashes = [];
+                requestJSResource_UNSAFE_NEEDS_REVIEW_BY_SECURITY_AND_XFN: function requestJSResource_UNSAFE_NEEDS_REVIEW_BY_SECURITY_AND_XFN(
+                  src
+                ) {
+                  var hash = require("ResourceHasher").createExternalJSHash();
+                  _addResource(hash, { type: "js", src: src, nc: 1 }, false);
+                  Bootloader.loadResources([hash]);
+                },
+
+                done: function done(hash) {
+                  _loaded.set(
+                    hash,
+                    (c_performanceAbsoluteNow ||
+                      (c_performanceAbsoluteNow = require("performanceAbsoluteNow")))()
+                  );
+
+                  window.CavalryLogger && window.CavalryLogger.done_js([hash]);
+
+                  events.notify(events.rsrcDone(hash));
+                },
+
+                beDone: function beDone(component, beRequestID, beLogData) {
                   for (
-                    var _iterator14 = resourceHashes,
-                      _isArray14 = Array.isArray(_iterator14),
-                      _i19 = 0,
-                      _iterator14 = _isArray14
-                        ? _iterator14
-                        : _iterator14[
+                    var _iterator13 =
+                        (_ref22 =
+                          (_bootloaded$get = _bootloaded.get(component)) == null
+                            ? void 0
+                            : _bootloaded$get.logData) != null
+                          ? _ref22
+                          : [],
+                      _isArray13 = Array.isArray(_iterator13),
+                      _i14 = 0,
+                      _iterator13 = _isArray13
+                        ? _iterator13
+                        : _iterator13[
                             typeof Symbol === "function"
                               ? Symbol.iterator
                               : "@@iterator"
@@ -18256,50 +18110,20 @@ try {
                     ;
 
                   ) {
-                    var _ref27;
-                    if (_isArray14) {
-                      if (_i19 >= _iterator14.length) break;
-                      _ref27 = _iterator14[_i19++];
+                    var _ref22, _bootloaded$get;
+                    var _ref21;
+                    if (_isArray13) {
+                      if (_i14 >= _iterator13.length) break;
+                      _ref21 = _iterator13[_i14++];
                     } else {
-                      _i19 = _iterator14.next();
-                      if (_i19.done) break;
-                      _ref27 = _i19.value;
+                      _i14 = _iterator13.next();
+                      if (_i14.done) break;
+                      _ref21 = _i14.value;
                     }
-                    var hash = _ref27;
-                    validHashes.push(
-                      require("ResourceHasher").getValidResourceHash(hash)
-                    );
+                    var ld = _ref21;
+                    ld.beRequests.set(beRequestID, beLogData);
                   }
-                  _loadResources(validHashes, callback, tag);
-                },
-
-                requestJSResource_UNSAFE_NEEDS_REVIEW_BY_SECURITY_AND_XFN: function requestJSResource_UNSAFE_NEEDS_REVIEW_BY_SECURITY_AND_XFN(
-                  src
-                ) {
-                  var hash = require("ResourceHasher").createExternalJSHash();
-                  var entry = { type: "js", src: src, nc: 1 };
-                  _addResource(hash, entry, false);
-                  _loadResource(hash, entry, _getContainerNode(), null);
-                },
-
-                done: function done(hash) {
-                  var _loading$get;
-
-                  var loadingStart =
-                    (_loading$get = _loading.get(hash)) != null
-                      ? _loading$get
-                      : NaN;
-                  _loaded.set(
-                    hash,
-                    (c_performanceAbsoluteNow ||
-                      (c_performanceAbsoluteNow = require("performanceAbsoluteNow")))() -
-                      loadingStart
-                  );
-                  _loading["delete"](hash);
-
-                  window.CavalryLogger && window.CavalryLogger.done_js([hash]);
-
-                  _callbackManager.satisfyPersistentDependency(hash);
+                  events.notify(events.beDone(component));
                 },
 
                 pickupResourcesByIDs: function pickupResourcesByIDs(ids) {
@@ -18323,12 +18147,11 @@ try {
                   var queuedLoadModules = _queuedLoadModules;
                   _queuedLoadModules = [];
                   queuedLoadModules.forEach(
-                    function queuedLoadModules_forEach_$0(_ref28) {
-                      var components = _ref28[0],
-                        callback = _ref28[1],
-                        ref = _ref28[2],
-                        continuation = _ref28[3];
-
+                    function queuedLoadModules_forEach_$0(_ref23) {
+                      var components = _ref23[0],
+                        callback = _ref23[1],
+                        ref = _ref23[2],
+                        continuation = _ref23[3];
                       continuation(function continuation_$0() {
                         Bootloader.loadModules.apply(Bootloader, [
                           components,
@@ -18341,10 +18164,10 @@ try {
                   var queuedPreloads = _queuedPreloads;
                   _queuedPreloads = [];
                   queuedPreloads.forEach(function queuedPreloads_forEach_$0(
-                    _ref29
+                    _ref24
                   ) {
-                    var components = _ref29[0],
-                      continuation = _ref29[1];
+                    var components = _ref24[0],
+                      continuation = _ref24[1];
                     continuation(function continuation_$0() {
                       Bootloader.preloadModules.apply(Bootloader, [components]);
                     });
@@ -18355,12 +18178,12 @@ try {
                   comps
                 ) {
                   for (
-                    var _iterator15 = comps,
-                      _isArray15 = Array.isArray(_iterator15),
-                      _i20 = 0,
-                      _iterator15 = _isArray15
-                        ? _iterator15
-                        : _iterator15[
+                    var _iterator14 = comps,
+                      _isArray14 = Array.isArray(_iterator14),
+                      _i15 = 0,
+                      _iterator14 = _isArray14
+                        ? _iterator14
+                        : _iterator14[
                             typeof Symbol === "function"
                               ? Symbol.iterator
                               : "@@iterator"
@@ -18368,19 +18191,22 @@ try {
                     ;
 
                   ) {
-                    var _ref30;
-                    if (_isArray15) {
-                      if (_i20 >= _iterator15.length) break;
-                      _ref30 = _iterator15[_i20++];
+                    var _ref25;
+                    if (_isArray14) {
+                      if (_i15 >= _iterator14.length) break;
+                      _ref25 = _iterator14[_i15++];
                     } else {
-                      _i20 = _iterator15.next();
-                      if (_i20.done) break;
-                      _ref30 = _i20.value;
+                      _i15 = _iterator14.next();
+                      if (_i15.done) break;
+                      _ref25 = _i15.value;
                     }
-                    var comp = _ref30;
+                    var comp = _ref25;
                     var entry = _componentMap.get(comp);
                     if (entry && entry.be) {
                       delete entry.be;
+                      Bootloader.done(
+                        require("ResourceHasher").getAsyncHash(comp)
+                      );
                     }
                   }
                 },
@@ -18398,12 +18224,12 @@ try {
 
                   if (sotUpgrades) {
                     for (
-                      var _iterator16 = sotUpgrades,
-                        _isArray16 = Array.isArray(_iterator16),
-                        _i21 = 0,
-                        _iterator16 = _isArray16
-                          ? _iterator16
-                          : _iterator16[
+                      var _iterator15 = sotUpgrades,
+                        _isArray15 = Array.isArray(_iterator15),
+                        _i16 = 0,
+                        _iterator15 = _isArray15
+                          ? _iterator15
+                          : _iterator15[
                               typeof Symbol === "function"
                                 ? Symbol.iterator
                                 : "@@iterator"
@@ -18411,19 +18237,19 @@ try {
                       ;
 
                     ) {
-                      var _ref31;
-                      if (_isArray16) {
-                        if (_i21 >= _iterator16.length) break;
-                        _ref31 = _iterator16[_i21++];
+                      var _ref26;
+                      if (_isArray15) {
+                        if (_i16 >= _iterator15.length) break;
+                        _ref26 = _iterator15[_i16++];
                       } else {
-                        _i21 = _iterator16.next();
-                        if (_i21.done) break;
-                        _ref31 = _i21.value;
+                        _i16 = _iterator15.next();
+                        if (_i16.done) break;
+                        _ref26 = _i16.value;
                       }
-                      var _hash3 = _ref31;
-                      var entry = _resources.get(_hash3);
+                      var _hash2 = _ref26;
+                      var entry = _resources.get(_hash2);
                       if (entry) {
-                        _addResource(_hash3, entry, true);
+                        _addResource(_hash2, entry, true);
                       }
                     }
                   }
@@ -18432,9 +18258,53 @@ try {
                 getURLToHashMap: function getURLToHashMap() {
                   var resources = new Map();
                   for (
-                    var _iterator17 = _resources,
+                    var _iterator16 = _resources,
+                      _isArray16 = Array.isArray(_iterator16),
+                      _i17 = 0,
+                      _iterator16 = _isArray16
+                        ? _iterator16
+                        : _iterator16[
+                            typeof Symbol === "function"
+                              ? Symbol.iterator
+                              : "@@iterator"
+                          ]();
+                    ;
+
+                  ) {
+                    var _ref28;
+                    if (_isArray16) {
+                      if (_i17 >= _iterator16.length) break;
+                      _ref28 = _iterator16[_i17++];
+                    } else {
+                      _i17 = _iterator16.next();
+                      if (_i17.done) break;
+                      _ref28 = _i17.value;
+                    }
+                    var _ref29 = _ref28;
+                    var hash = _ref29[0];
+                    var entry = _ref29[1];
+                    if (entry.type === "async" || entry.type === "csr") {
+                      continue;
+                    }
+                    resources.set(entry.src, hash);
+                  }
+                  return resources;
+                },
+
+                loadPredictedResourceMap: function loadPredictedResourceMap(
+                  resourceMap,
+                  callback
+                ) {
+                  Bootloader.setResourceMap(resourceMap);
+                  Bootloader.loadResources(Object.keys(resourceMap), callback);
+                },
+
+                getCSSResources: function getCSSResources(resources) {
+                  var css = [];
+                  for (
+                    var _iterator17 = _resolveCSRs(resources),
                       _isArray17 = Array.isArray(_iterator17),
-                      _i22 = 0,
+                      _i18 = 0,
                       _iterator17 = _isArray17
                         ? _iterator17
                         : _iterator17[
@@ -18445,45 +18315,32 @@ try {
                     ;
 
                   ) {
-                    var _ref33;
+                    var _ref31;
                     if (_isArray17) {
-                      if (_i22 >= _iterator17.length) break;
-                      _ref33 = _iterator17[_i22++];
+                      if (_i18 >= _iterator17.length) break;
+                      _ref31 = _iterator17[_i18++];
                     } else {
-                      _i22 = _iterator17.next();
-                      if (_i22.done) break;
-                      _ref33 = _i22.value;
+                      _i18 = _iterator17.next();
+                      if (_i18.done) break;
+                      _ref31 = _i18.value;
                     }
-                    var _ref34 = _ref33;
-                    var hash = _ref34[0];
-                    var entry = _ref34[1];
-                    if (entry.type === "async" || entry.type === "csr") {
-                      continue;
+                    var _ref32 = _ref31;
+                    var hash = _ref32[0];
+                    var entry = _ref32[1];
+                    if (entry.type === "css") {
+                      css.push(hash);
                     }
-                    resources.set(entry.src, hash);
                   }
-                  return resources;
+
+                  return css;
                 },
 
-                getArbiter: function getArbiter() {
-                  return _arbiter;
-                },
-
-                loadPredictedResourceMap: function loadPredictedResourceMap(
-                  resourceMap,
-                  callback
-                ) {
-                  Bootloader.setResourceMap(resourceMap);
-
-                  _loadResources(Object.keys(resourceMap), callback);
-                },
-
-                getCSSResources: function getCSSResources(resources) {
-                  var css = [];
+                getBootloadedComponents: function getBootloadedComponents() {
+                  var ret = new Map();
                   for (
-                    var _iterator18 = _resolveCSRs(resources),
+                    var _iterator18 = _bootloaded,
                       _isArray18 = Array.isArray(_iterator18),
-                      _i23 = 0,
+                      _i19 = 0,
                       _iterator18 = _isArray18
                         ? _iterator18
                         : _iterator18[
@@ -18494,52 +18351,49 @@ try {
                     ;
 
                   ) {
-                    var _ref36;
+                    var _ref34;
                     if (_isArray18) {
-                      if (_i23 >= _iterator18.length) break;
-                      _ref36 = _iterator18[_i23++];
+                      if (_i19 >= _iterator18.length) break;
+                      _ref34 = _iterator18[_i19++];
                     } else {
-                      _i23 = _iterator18.next();
-                      if (_i23.done) break;
-                      _ref36 = _i23.value;
+                      _i19 = _iterator18.next();
+                      if (_i19.done) break;
+                      _ref34 = _i19.value;
                     }
-                    var _ref37 = _ref36;
-                    var hash = _ref37[0];
-                    var entry = _ref37[1];
-                    if (entry.type === "css") {
-                      css.push(hash);
-                    }
+                    var _ref35 = _ref34;
+                    var comp = _ref35[0];
+                    var info = _ref35[1];
+                    ret.set(comp, info.firstBootloadStart);
                   }
-
-                  return css;
+                  return ret;
                 },
 
-                getBootloadedComponents: function getBootloadedComponents() {
-                  return _bootloaded;
+                getResourceState: function getResourceState(hash) {
+                  return {
+                    loadStart: _requested.get(hash),
+                    loadEnd: _loaded.get(hash),
+                    loadError: _errors.get(hash)
+                  };
                 },
 
-                getLoadedResourceTimes: function getLoadedResourceTimes() {
-                  return _loaded;
+                getLoadedResourceCount: function getLoadedResourceCount() {
+                  return _loaded.size;
                 },
 
-                getErrorUrls: function getErrorUrls() {
-                  return _errors;
+                getErrorCount: function getErrorCount() {
+                  return _errors.size;
                 },
 
                 __debug: {
-                  unpredictedBEResourcesMap: _unpredictedBEResourcesMap,
-                  callbackManager: _callbackManager,
                   componentMap: _componentMap,
                   requested: _requested,
                   resources: _resources,
                   riMap: _rsrcIndexMap,
                   retries: _retries,
                   errors: _errors,
-                  loading: _loading,
+                  loaded: _loaded,
                   bootloaded: _bootloaded
-                },
-
-                Events: Events
+                }
               };
 
               require("JSResourceReference").setBootloader(Bootloader);
@@ -19656,6 +19510,7 @@ try {
             "BootloaderEndpoint",
             [
               "ix",
+              "Bootloader",
               "BootloaderEndpointConfig",
               "CSRFGuard",
               "FBLogger",
@@ -19666,7 +19521,9 @@ try {
               "getSameOriginTransport",
               "gkx",
               "objectEntries",
-              "qex"
+              "performanceAbsoluteNow",
+              "qex",
+              "setImmediateAcrossTransitions"
             ],
             function $module_BootloaderEndpoint(
               global,
@@ -19678,12 +19535,110 @@ try {
               ix
             ) {
               "use strict";
+              var c_performanceAbsoluteNow;
 
-              function _handleBootloaderResponse(
-                bootloader,
+              var _baseURI = require("BootloaderEndpointConfig").endpointURI;
+
+              var _requestID = 0;
+              var _pendingSetImmediate = null;
+              var _pendingBlocking = new Map();
+              var _pendingNonblocking = new Map();
+
+              function _getURL(blockingMods, nonblockingMods) {
+                var args = {};
+                if (blockingMods.size) {
+                  args.modules = Array.from(blockingMods.keys()).join(",");
+                }
+                if (nonblockingMods.size) {
+                  args.nb_modules = Array.from(nonblockingMods.keys()).join(
+                    ","
+                  );
+                }
+
+                var paramStr = Object.entries(
+                  babelHelpers["extends"](
+                    {},
+                    args,
+                    require("getAsyncParams")("GET")
+                  )
+                )
+                  .map(function map_$0(_ref) {
+                    var k = _ref[0],
+                      v = _ref[1];
+                    return (
+                      encodeURIComponent(k) +
+                      "=" +
+                      encodeURIComponent(String(v))
+                    );
+                  })
+                  .join("&");
+
+                return (
+                  _baseURI + (_baseURI.includes("?") ? "&" : "?") + paramStr
+                );
+              }
+
+              function _sendRequest(blockingMods, nonblockingMods) {
+                var uri = _getURL(blockingMods, nonblockingMods);
+                var xhr = require("getSameOriginTransport")();
+                var requestID = _requestID++;
+                var requestStart = (c_performanceAbsoluteNow ||
+                  (c_performanceAbsoluteNow = require("performanceAbsoluteNow")))();
+
+                xhr.open("GET", uri, true);
+                var continuation = require("TimeSlice").getGuardedContinuation(
+                  "Bootloader _requestHastePayload"
+                );
+
+                xhr.onreadystatechange = function() {
+                  if (xhr.readyState !== 4) {
+                    return;
+                  }
+                  continuation(function continuation_$0() {
+                    var response =
+                      xhr.status === 200
+                        ? JSON.parse(
+                            require("CSRFGuard").clean(xhr.responseText)
+                          )
+                        : null;
+                    if (response == null) {
+                      require("FBLogger")("bootloader").warn(
+                        "Invalid response from %s: %s",
+                        uri,
+                        xhr.responseText.substr(0, 256)
+                      );
+                    } else {
+                      require("TimeSlice").guard(
+                        function TimeSlice_guard_$0() {
+                          return _handleResponse(
+                            uri,
+                            response,
+                            blockingMods,
+                            nonblockingMods,
+                            requestID,
+                            requestStart
+                          );
+                        },
+
+                        "Bootloader receiveEndpointData",
+                        {
+                          propagationType: require("TimeSlice").PropagationType
+                            .CONTINUATION
+                        }
+                      )();
+                    }
+                  });
+                };
+                xhr.send();
+              }
+
+              function _handleResponse(
                 uri,
                 response,
-                callback
+                blockingMods,
+                nonblockingMods,
+                requestID,
+                requestStart
               ) {
                 if (response.__error) {
                   require("FBLogger")("bootloader").warn(
@@ -19693,11 +19648,12 @@ try {
 
                   return;
                 }
+                var responseStart = (c_performanceAbsoluteNow ||
+                  (c_performanceAbsoluteNow = require("performanceAbsoluteNow")))();
                 var ixData = response.ixData,
                   bxData = response.bxData,
                   gkxData = response.gkxData,
-                  qexData = response.qexData,
-                  modules = response.modules;
+                  qexData = response.qexData;
                 if (ixData) {
                   ix.add(ixData);
                 }
@@ -19715,105 +19671,134 @@ try {
                   bootloadable = response.bootloadable,
                   allResources = response.allResources;
                 if (resource_map) {
-                  bootloader.setResourceMap(resource_map);
+                  require("Bootloader").setResourceMap(resource_map);
                 }
                 if (bootloadable) {
-                  bootloader.enableBootload(bootloadable);
+                  require("Bootloader").enableBootload(bootloadable);
                 }
 
-                bootloader.loadResources(
-                  bootloader.getCSSResources(allResources || []),
-                  function bootloader_loadResources_$1() {
+                var blocking = new Map();
+                require("Bootloader").loadResources(
+                  require("Bootloader").getCSSResources(allResources || []),
+                  function Bootloader_loadResources_$1() {
                     new (require("ServerJS"))().handle(jsmods || {});
-                    callback({
-                      allResources: allResources || [],
-                      modules: modules || []
-                    });
-                  }
+                    var _arr = [blockingMods, nonblockingMods];
+                    for (var _i = 0; _i < _arr.length; _i++) {
+                      var modules = _arr[_i];
+                      for (
+                        var _iterator = modules.values(),
+                          _isArray = Array.isArray(_iterator),
+                          _i2 = 0,
+                          _iterator = _isArray
+                            ? _iterator
+                            : _iterator[
+                                typeof Symbol === "function"
+                                  ? Symbol.iterator
+                                  : "@@iterator"
+                              ]();
+                        ;
+
+                      ) {
+                        var _ref2;
+                        if (_isArray) {
+                          if (_i2 >= _iterator.length) break;
+                          _ref2 = _iterator[_i2++];
+                        } else {
+                          _i2 = _iterator.next();
+                          if (_i2.done) break;
+                          _ref2 = _i2.value;
+                        }
+                        var hash = _ref2;
+                        require("Bootloader").done(hash);
+                      }
+                    }
+                  },
+                  null,
+                  blocking
                 );
 
-                bootloader.loadResources(allResources || []);
+                var all = new Map();
+                require("Bootloader").loadResources(
+                  allResources || [],
+                  function Bootloader_loadResources_$1() {
+                    var _arr2 = [blockingMods, nonblockingMods];
+                    for (var _i3 = 0; _i3 < _arr2.length; _i3++) {
+                      var modules = _arr2[_i3];
+                      for (
+                        var _iterator2 = modules.keys(),
+                          _isArray2 = Array.isArray(_iterator2),
+                          _i4 = 0,
+                          _iterator2 = _isArray2
+                            ? _iterator2
+                            : _iterator2[
+                                typeof Symbol === "function"
+                                  ? Symbol.iterator
+                                  : "@@iterator"
+                              ]();
+                        ;
+
+                      ) {
+                        var _ref3;
+                        if (_isArray2) {
+                          if (_i4 >= _iterator2.length) break;
+                          _ref3 = _iterator2[_i4++];
+                        } else {
+                          _i4 = _iterator2.next();
+                          if (_i4.done) break;
+                          _ref3 = _i4.value;
+                        }
+                        var _module = _ref3;
+                        require("Bootloader").beDone(_module, requestID, {
+                          requestStart: requestStart,
+                          responseStart: responseStart,
+                          blocking: blocking,
+                          all: all
+                        });
+                      }
+                    }
+                  },
+                  null,
+                  all
+                );
+              }
+
+              function _processPending() {
+                var blockingMods = _pendingBlocking;
+                var nonblockingMods = _pendingNonblocking;
+
+                _pendingSetImmediate = null;
+                _pendingBlocking = new Map();
+                _pendingNonblocking = new Map();
+
+                _sendRequest(blockingMods, nonblockingMods);
               }
 
               var BootloaderEndpoint = {
-                getURL: function getURL(blockingComps, nonblockingComps) {
-                  var params = {
-                    modules: blockingComps,
-                    nb_modules: nonblockingComps
-                  };
-                  var paramStr = require("objectEntries")(params)
-                    .filter(function filter_$0(_ref) {
-                      var key = _ref[0],
-                        mods = _ref[1];
-                      return mods.length > 0;
-                    })
-                    .map(function map_$0(_ref2) {
-                      var key = _ref2[0],
-                        mods = _ref2[1];
-                      return key + "=" + encodeURIComponent(mods.join(","));
-                    })
-                    .join("&");
-
-                  var baseURI = require("BootloaderEndpointConfig").endpointURI;
-                  return (
-                    "" +
-                    baseURI +
-                    (baseURI.includes("?") ? "&" : "?") +
-                    paramStr
+                load: function load(module, blocking, hash) {
+                  (blocking ? _pendingBlocking : _pendingNonblocking).set(
+                    module,
+                    hash
                   );
-                },
 
-                load: function load(bootloader, uri, callback) {
-                  var queryURI = uri;
-                  var asyncParams = require("getAsyncParams")("GET");
-                  for (var param in asyncParams) {
-                    var _key = encodeURIComponent(param);
-                    var val = encodeURIComponent(String(asyncParams[param]));
-                    queryURI += "&" + _key + "=" + val;
+                  if (require("BootloaderEndpointConfig").debugNoBatching) {
+                    _processPending();
+                    return;
                   }
 
-                  var xhr = require("getSameOriginTransport")();
-                  xhr.open("GET", queryURI, true);
+                  if (_pendingSetImmediate != null) {
+                    return;
+                  }
                   var continuation = require("TimeSlice").getGuardedContinuation(
-                    "Bootloader _requestHastePayload"
+                    "Schedule async batch request: Bootloader._loadResources"
                   );
 
-                  xhr.onreadystatechange = function() {
-                    if (xhr.readyState === 4) {
-                      continuation(function continuation_$0() {
-                        var response =
-                          xhr.status === 200
-                            ? JSON.parse(
-                                require("CSRFGuard").clean(xhr.responseText)
-                              )
-                            : null;
-                        if (response == null) {
-                          require("FBLogger")("bootloader").warn(
-                            "Invalid response from %s: %s",
-                            queryURI,
-                            xhr.responseText.substr(0, 256)
-                          );
-                        } else {
-                          require("TimeSlice").guard(
-                            function TimeSlice_guard_$0() {
-                              return _handleBootloaderResponse(
-                                bootloader,
-                                uri,
-                                response,
-                                callback
-                              );
-                            },
-                            "Bootloader receiveEndpointData",
-                            {
-                              propagationType: require("TimeSlice")
-                                .PropagationType.CONTINUATION
-                            }
-                          )();
-                        }
+                  _pendingSetImmediate = require("setImmediateAcrossTransitions")(
+                    function setImmediateAcrossTransitions_$0() {
+                      return continuation(function continuation_$0() {
+                        return _processPending();
                       });
                     }
-                  };
-                  xhr.send();
+                  );
                 }
               };
 
@@ -39621,7 +39606,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001965271","namespace":"FB","message":"' +
+        '","revision":"1001965861","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
