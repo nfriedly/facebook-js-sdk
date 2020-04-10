@@ -1,4 +1,4 @@
-/*1586468953,,JIT Construction: v1001968261,en_US*/
+/*1586495350,,JIT Construction: v1001972190,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3905,8 +3905,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1001968261,
-            client_revision: 1001968261,
+            server_revision: 1001972190,
+            client_revision: 1001972190,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3916,14 +3916,14 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6813832269995445701-0",
+            hsi: "6813945645651640966-0",
             spin: 0,
-            __spin_r: 1001968261,
+            __spin_r: 1001972190,
             __spin_b: "trunk",
-            __spin_t: 1586468953,
-            vip: "31.13.65.7"
+            __spin_t: 1586495349,
+            vip: "31.13.66.19"
           });
-          __d("ServerNonce", [], { ServerNonce: "BnbSRXk965glzL2IDZ5Nal" });
+          __d("ServerNonce", [], { ServerNonce: "xtLwsTw4yLFusvZUWRqvs7" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4088,7 +4088,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001968261",
+            revision: "1001972190",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -19353,11 +19353,15 @@ try {
                     map[k].loggingID = k;
                     _map[k] = map[k];
                   } else if (__DEV__) {
+                    if (warned) {
+                      continue;
+                    }
+
                     map[k].loggingID = k;
                     var newData = JSON.stringify(map[k]);
                     var curData = JSON.stringify(_map[k]);
 
-                    if (curData === newData || warned) {
+                    if (curData === newData) {
                       continue;
                     }
 
@@ -19415,11 +19419,15 @@ try {
                     map[k].loggingID = k;
                     _map[k] = map[k];
                   } else if (__DEV__) {
+                    if (warned) {
+                      continue;
+                    }
+
                     map[k].loggingID = k;
                     var newData = JSON.stringify(map[k]);
                     var curData = JSON.stringify(_map[k]);
 
-                    if (curData === newData || warned) {
+                    if (curData === newData) {
                       continue;
                     }
 
@@ -39616,7 +39624,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001968261","namespace":"FB","message":"' +
+        '","revision":"1001972190","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
