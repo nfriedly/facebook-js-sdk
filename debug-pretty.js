@@ -1,4 +1,4 @@
-/*1586495350,,JIT Construction: v1001972190,en_US*/
+/*1586527165,,JIT Construction: v1001973156,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3905,8 +3905,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1001972190,
-            client_revision: 1001972190,
+            server_revision: 1001973156,
+            client_revision: 1001973156,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3916,14 +3916,14 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6813945645651640966-0",
+            hsi: "6814082289297437069-0",
             spin: 0,
-            __spin_r: 1001972190,
+            __spin_r: 1001973156,
             __spin_b: "trunk",
-            __spin_t: 1586495349,
-            vip: "31.13.66.19"
+            __spin_t: 1586527165,
+            vip: "31.13.65.7"
           });
-          __d("ServerNonce", [], { ServerNonce: "xtLwsTw4yLFusvZUWRqvs7" });
+          __d("ServerNonce", [], { ServerNonce: "feCZKRGidv__ujdAGZtlPv" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4077,6 +4077,7 @@ try {
               boosted_component: true,
               boosted_pagelikes: true,
               jslogger: true,
+              kbshortcuts_feed: true,
               mercury_send_error_logging: true,
               platform_oauth_client_events: true,
               xtrackable_clientview_batch: true,
@@ -4088,7 +4089,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001972190",
+            revision: "1001973156",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -10712,8 +10713,83 @@ try {
             null
           );
           __d(
+            "isFacebookURI",
+            [],
+            function $module_isFacebookURI(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              var facebookURIRegex = null;
+
+              var FB_PROTOCOLS = ["http", "https"];
+
+              function isFacebookURI(uri) {
+                if (!facebookURIRegex) {
+                  facebookURIRegex = new RegExp("(^|\\.)facebook\\.com$", "i");
+                }
+
+                if (uri.isEmpty() && uri.toString() !== "#") {
+                  return false;
+                }
+
+                if (!uri.getDomain() && !uri.getProtocol()) {
+                  return true;
+                }
+
+                return (
+                  ES(FB_PROTOCOLS, "indexOf", true, uri.getProtocol()) !== -1 &&
+                  facebookURIRegex.test(uri.getDomain())
+                );
+              }
+
+              isFacebookURI.setRegex = function(regex) {
+                facebookURIRegex = regex;
+              };
+
+              module.exports = isFacebookURI;
+            },
+            null
+          );
+          __d(
+            "isWorkplaceDotComURI",
+            [],
+            function $module_isWorkplaceDotComURI(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              var workplaceDotComURIRegex = new RegExp(
+                "(^|\\.)workplace\\.com$",
+                "i"
+              );
+
+              function isWorkplaceDotComURI(uri) {
+                return (
+                  uri.getProtocol() === "https" &&
+                  workplaceDotComURIRegex.test(uri.getDomain())
+                );
+              }
+
+              module.exports = isWorkplaceDotComURI;
+            },
+            null
+          );
+          __d(
             "BlueCompatBroker",
-            ["Env", "URI", "isCometAltpayJsSdkIframeAllowedDomain"],
+            [
+              "Env",
+              "URI",
+              "isCometAltpayJsSdkIframeAllowedDomain",
+              "isFacebookURI",
+              "isWorkplaceDotComURI"
+            ],
             function $module_BlueCompatBroker(
               global,
               require,
@@ -10732,10 +10808,13 @@ try {
               var validateReferrer = function validateReferrer(
                 referrerToCheck
               ) {
-                var domain = new (c_URI || (c_URI = require("URI")))(
+                var uri = new (c_URI || (c_URI = require("URI")))(
                   referrerToCheck
-                ).getRegisteredDomain();
-                return domain === "facebook.com" || domain === "workplace.com";
+                );
+                return (
+                  require("isFacebookURI")(uri) ||
+                  require("isWorkplaceDotComURI")(uri)
+                );
               };
 
               var BlueCompatBroker = {
@@ -12423,48 +12502,6 @@ try {
               }
 
               module.exports = areSameOrigin;
-            },
-            null
-          );
-          __d(
-            "isFacebookURI",
-            [],
-            function $module_isFacebookURI(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              var facebookURIRegex = null;
-
-              var FB_PROTOCOLS = ["http", "https"];
-
-              function isFacebookURI(uri) {
-                if (!facebookURIRegex) {
-                  facebookURIRegex = new RegExp("(^|\\.)facebook\\.com$", "i");
-                }
-
-                if (uri.isEmpty() && uri.toString() !== "#") {
-                  return false;
-                }
-
-                if (!uri.getDomain() && !uri.getProtocol()) {
-                  return true;
-                }
-
-                return (
-                  ES(FB_PROTOCOLS, "indexOf", true, uri.getProtocol()) !== -1 &&
-                  facebookURIRegex.test(uri.getDomain())
-                );
-              }
-
-              isFacebookURI.setRegex = function(regex) {
-                facebookURIRegex = regex;
-              };
-
-              module.exports = isFacebookURI;
             },
             null
           );
@@ -20285,33 +20322,6 @@ try {
               }
 
               module.exports = isOculusDotComURI;
-            },
-            null
-          );
-          __d(
-            "isWorkplaceDotComURI",
-            [],
-            function $module_isWorkplaceDotComURI(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              var workplaceDotComURIRegex = new RegExp(
-                "(^|\\.)workplace\\.com$",
-                "i"
-              );
-
-              function isWorkplaceDotComURI(uri) {
-                return (
-                  uri.getProtocol() === "https" &&
-                  workplaceDotComURIRegex.test(uri.getDomain())
-                );
-              }
-
-              module.exports = isWorkplaceDotComURI;
             },
             null
           );
@@ -39624,7 +39634,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001972190","namespace":"FB","message":"' +
+        '","revision":"1001973156","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
