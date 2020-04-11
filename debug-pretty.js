@@ -1,4 +1,4 @@
-/*1586527165,,JIT Construction: v1001973156,en_US*/
+/*1586576962,,JIT Construction: v1001977962,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3905,8 +3905,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1001973156,
-            client_revision: 1001973156,
+            server_revision: 1001977962,
+            client_revision: 1001977962,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3916,14 +3916,14 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6814082289297437069-0",
+            hsi: "6814296170258722909-0",
             spin: 0,
-            __spin_r: 1001973156,
+            __spin_r: 1001977962,
             __spin_b: "trunk",
-            __spin_t: 1586527165,
-            vip: "31.13.65.7"
+            __spin_t: 1586576962,
+            vip: "31.13.66.19"
           });
-          __d("ServerNonce", [], { ServerNonce: "feCZKRGidv__ujdAGZtlPv" });
+          __d("ServerNonce", [], { ServerNonce: "VCvMvXL1O05u4XpuY7CeVZ" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4077,7 +4077,6 @@ try {
               boosted_component: true,
               boosted_pagelikes: true,
               jslogger: true,
-              kbshortcuts_feed: true,
               mercury_send_error_logging: true,
               platform_oauth_client_events: true,
               xtrackable_clientview_batch: true,
@@ -4089,7 +4088,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001973156",
+            revision: "1001977962",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -10512,7 +10511,7 @@ try {
           );
           __d(
             "BootloaderEventsManager",
-            ["CallbackDependencyManager"],
+            ["CallbackDependencyManager", "performanceAbsoluteNow"],
             function $module_BootloaderEventsManager(
               global,
               require,
@@ -10521,11 +10520,13 @@ try {
               module,
               exports
             ) {
+              var c_performanceAbsoluteNow;
               var BootloaderEventsManager = (function() {
                 "use strict";
 
                 function BootloaderEventsManager() {
                   this.$BootloaderEventsManager_callbackManager = new (require("CallbackDependencyManager"))();
+                  this.$BootloaderEventsManager_timings = new Map();
                 }
                 var _proto = BootloaderEventsManager.prototype;
                 _proto.rsrcDone = function rsrcDone(hash) {
@@ -10537,8 +10538,14 @@ try {
                 _proto.tierOne = function tierOne(comp) {
                   return "t1:" + comp;
                 };
+                _proto.tierTwoStart = function tierTwoStart(comp) {
+                  return "t2s:" + comp;
+                };
                 _proto.tierTwo = function tierTwo(comp) {
                   return "t2:" + comp;
+                };
+                _proto.tierThreeStart = function tierThreeStart(comp) {
+                  return "t3s:" + comp;
                 };
                 _proto.tierThree = function tierThree(comp) {
                   return "t3:" + comp;
@@ -10547,9 +10554,17 @@ try {
                   return "beDone:" + comp;
                 };
                 _proto.notify = function notify(event) {
+                  this.$BootloaderEventsManager_timings.set(
+                    event,
+                    (c_performanceAbsoluteNow ||
+                      (c_performanceAbsoluteNow = require("performanceAbsoluteNow")))()
+                  );
                   this.$BootloaderEventsManager_callbackManager.satisfyPersistentDependency(
                     event
                   );
+                };
+                _proto.getEventTime = function getEventTime(event) {
+                  return this.$BootloaderEventsManager_timings.get(event);
                 };
                 _proto.registerCallback = function registerCallback(
                   callback,
@@ -17578,6 +17593,8 @@ try {
                   timesliceContext: require("TimeSlice").getContext(),
                   startTime: (c_performanceAbsoluteNow ||
                     (c_performanceAbsoluteNow = require("performanceAbsoluteNow")))(),
+                  callbackStart: 0,
+                  callbackEnd: 0,
                   tierOne: new Map(),
                   tierTwo: new Map(),
                   tierThree: new Map(),
@@ -17676,18 +17693,20 @@ try {
                   (rdfds == null ? void 0 : rdfds.r) || [],
                   function _loadResources_$1() {
                     return events.registerCallback(
-                      requireLazy.bind(
-                        null,
-                        (rdfds == null ? void 0 : rdfds.m) || [],
-                        function requireLazy_bind_$2() {
-                          return events.notify(events.tierTwo(component));
-                        }
-                      ),
+                      function events_registerCallback_$0() {
+                        events.notify(events.tierTwoStart(component));
 
+                        requireLazy.call(
+                          null,
+                          (rdfds == null ? void 0 : rdfds.m) || [],
+                          function requireLazy_call_$2() {
+                            return events.notify(events.tierTwo(component));
+                          }
+                        );
+                      },
                       [events.tierOne(component), bootloadEvent]
                     );
                   },
-
                   batchNode,
                   logData == null ? void 0 : logData.tierTwo
                 );
@@ -17696,18 +17715,20 @@ try {
                   (rds == null ? void 0 : rds.r) || [],
                   function _loadResources_$1() {
                     return events.registerCallback(
-                      requireLazy.bind(
-                        null,
-                        (rds == null ? void 0 : rds.m) || [],
-                        function requireLazy_bind_$2() {
-                          return events.notify(events.tierThree(component));
-                        }
-                      ),
+                      function events_registerCallback_$0() {
+                        events.notify(events.tierThreeStart(component));
 
+                        requireLazy.call(
+                          null,
+                          (rds == null ? void 0 : rds.m) || [],
+                          function requireLazy_call_$2() {
+                            return events.notify(events.tierThree(component));
+                          }
+                        );
+                      },
                       [events.tierTwo(component)]
                     );
                   },
-
                   batchNode,
                   logData == null ? void 0 : logData.tierThree
                 );
@@ -18027,7 +18048,13 @@ try {
                       null,
                       components,
                       function requireLazy_bind_$2() {
+                        logData &&
+                          (logData.callbackStart = (c_performanceAbsoluteNow ||
+                            (c_performanceAbsoluteNow = require("performanceAbsoluteNow")))());
                         realCallback.apply(undefined, arguments);
+                        logData &&
+                          (logData.callbackEnd = (c_performanceAbsoluteNow ||
+                            (c_performanceAbsoluteNow = require("performanceAbsoluteNow")))());
 
                         events.notify(bootloadEvent);
                       }
@@ -18420,6 +18447,39 @@ try {
                     loadStart: _requested.get(hash),
                     loadEnd: _loaded.get(hash),
                     loadError: _errors.get(hash)
+                  };
+                },
+
+                getComponentTiming: function getComponentTiming(comp) {
+                  var _events$getEventTime,
+                    _events$getEventTime2,
+                    _events$getEventTime3,
+                    _events$getEventTime4;
+                  return {
+                    tierTwoStart:
+                      (_events$getEventTime = events.getEventTime(
+                        events.tierTwoStart(comp)
+                      )) != null
+                        ? _events$getEventTime
+                        : 0,
+                    tierTwoEnd:
+                      (_events$getEventTime2 = events.getEventTime(
+                        events.tierTwo(comp)
+                      )) != null
+                        ? _events$getEventTime2
+                        : 0,
+                    tierThreeStart:
+                      (_events$getEventTime3 = events.getEventTime(
+                        events.tierThreeStart(comp)
+                      )) != null
+                        ? _events$getEventTime3
+                        : 0,
+                    tierThreeEnd:
+                      (_events$getEventTime4 = events.getEventTime(
+                        events.tierThree(comp)
+                      )) != null
+                        ? _events$getEventTime4
+                        : 0
                   };
                 },
 
@@ -19724,7 +19784,8 @@ try {
                 var jsmods = response.jsmods,
                   resource_map = response.resource_map,
                   bootloadable = response.bootloadable,
-                  allResources = response.allResources;
+                  allResources = response.allResources,
+                  serverGenTime = response.serverGenTime;
                 if (resource_map) {
                   require("Bootloader").setResourceMap(resource_map);
                 }
@@ -19733,10 +19794,15 @@ try {
                 }
 
                 var blocking = new Map();
+                var jsmodsStart = 0;
+                var jsmodsEnd = 0;
                 require("Bootloader").loadResources(
                   require("Bootloader").getCSSResources(allResources || []),
                   function Bootloader_loadResources_$1() {
+                    jsmodsStart = (c_performanceAbsoluteNow ||
+                      (c_performanceAbsoluteNow = require("performanceAbsoluteNow")))();
                     new (require("ServerJS"))().handle(jsmods || {});
+                    jsmodsEnd = c_performanceAbsoluteNow();
                     var _arr = [blockingMods, nonblockingMods];
                     for (var _i = 0; _i < _arr.length; _i++) {
                       var modules = _arr[_i];
@@ -19793,6 +19859,7 @@ try {
                         ;
 
                       ) {
+                        var _serverGenTime;
                         var _ref3;
                         if (_isArray2) {
                           if (_i4 >= _iterator2.length) break;
@@ -19806,6 +19873,12 @@ try {
                         require("Bootloader").beDone(_module, requestID, {
                           requestStart: requestStart,
                           responseStart: responseStart,
+                          serverGenTime:
+                            (_serverGenTime = serverGenTime) != null
+                              ? _serverGenTime
+                              : 0,
+                          jsmodsStart: jsmodsStart,
+                          jsmodsEnd: jsmodsEnd,
                           blocking: blocking,
                           all: all
                         });
@@ -25462,7 +25535,7 @@ try {
           );
           __d(
             "Visibility",
-            ["BaseEventEmitter", "TimeSlice"],
+            ["BaseEventEmitter", "ExecutionEnvironment", "TimeSlice"],
             function $module_Visibility(
               global,
               require,
@@ -25471,19 +25544,23 @@ try {
               module,
               exports
             ) {
+              var canUseDOM = require("ExecutionEnvironment").canUseDOM;
+
               var hiddenKey, hiddenEvent;
-              if (document.hidden !== undefined) {
-                hiddenKey = "hidden";
-                hiddenEvent = "visibilitychange";
-              } else if (document.mozHidden !== undefined) {
-                hiddenKey = "mozHidden";
-                hiddenEvent = "mozvisibilitychange";
-              } else if (document.msHidden !== undefined) {
-                hiddenKey = "msHidden";
-                hiddenEvent = "msvisibilitychange";
-              } else if (document.webkitHidden !== undefined) {
-                hiddenKey = "webkitHidden";
-                hiddenEvent = "webkitvisibilitychange";
+              if (canUseDOM) {
+                if (document.hidden !== undefined) {
+                  hiddenKey = "hidden";
+                  hiddenEvent = "visibilitychange";
+                } else if (document.mozHidden !== undefined) {
+                  hiddenKey = "mozHidden";
+                  hiddenEvent = "mozvisibilitychange";
+                } else if (document.msHidden !== undefined) {
+                  hiddenKey = "msHidden";
+                  hiddenEvent = "msvisibilitychange";
+                } else if (document.webkitHidden !== undefined) {
+                  hiddenKey = "webkitHidden";
+                  hiddenEvent = "webkitvisibilitychange";
+                }
               }
               var VisibilityEmitter = (function(_BaseEventEmitter) {
                 "use strict";
@@ -25520,7 +25597,11 @@ try {
                   return hiddenKey ? document[hiddenKey] : false;
                 };
                 _proto.isSupported = function isSupported() {
-                  return document.addEventListener && hiddenEvent !== undefined;
+                  return (
+                    canUseDOM &&
+                    document.addEventListener &&
+                    hiddenEvent !== undefined
+                  );
                 };
                 return VisibilityEmitter;
               })(require("BaseEventEmitter"));
@@ -39634,7 +39715,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001973156","namespace":"FB","message":"' +
+        '","revision":"1001977962","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
