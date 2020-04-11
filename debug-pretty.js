@@ -1,4 +1,4 @@
-/*1586576962,,JIT Construction: v1001977962,en_US*/
+/*1586586566,,JIT Construction: v1001978128,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3905,8 +3905,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1001977962,
-            client_revision: 1001977962,
+            server_revision: 1001978128,
+            client_revision: 1001978128,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3916,14 +3916,14 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6814296170258722909-0",
+            hsi: "6814337414903765160-0",
             spin: 0,
-            __spin_r: 1001977962,
+            __spin_r: 1001978128,
             __spin_b: "trunk",
-            __spin_t: 1586576962,
-            vip: "31.13.66.19"
+            __spin_t: 1586586566,
+            vip: "31.13.71.7"
           });
-          __d("ServerNonce", [], { ServerNonce: "VCvMvXL1O05u4XpuY7CeVZ" });
+          __d("ServerNonce", [], { ServerNonce: "z8NtgWqmC2jyqtxGsm1-D9" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4088,7 +4088,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001977962",
+            revision: "1001978128",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -16588,11 +16588,14 @@ try {
                   var _this = this;
                   var promise = new (require("Promise"))(function(resolve) {
                     runWithBootloader(function runWithBootloader_$0(bl) {
+                      var _this$$JSResourceRefe;
                       return bl.loadModules(
-                        [_this.$JSResourceReference_moduleId],
+                        [_this.getModuleId()],
                         resolve,
-                        _this.$JSResourceReference_ref ||
-                          "JSResource: unknown caller"
+                        (_this$$JSResourceRefe =
+                          _this.$JSResourceReference_ref) != null
+                          ? _this$$JSResourceRefe
+                          : "JSResource: unknown caller"
                       );
                     });
                   });
@@ -16606,9 +16609,7 @@ try {
                 _proto.preload = function preload() {
                   var _this2 = this;
                   runWithBootloader(function runWithBootloader_$0(bl) {
-                    return bl.preloadModules([
-                      _this2.$JSResourceReference_moduleId
-                    ]);
+                    return bl.preloadModules([_this2.getModuleId()]);
                   });
                 };
                 _proto.equals = function equals(moduleLoader) {
@@ -18660,12 +18661,12 @@ try {
                     parent[index] = new (require.call(
                       null,
                       "JSResourceReference"
-                    ))(obj.__jsr);
+                    ))(obj.__jsr).__setRef("replaceTransportMarkers");
                   } else if (obj.__dr) {
                     parent[index] = new (require.call(
                       null,
                       "RequireDeferredReference"
-                    ))(obj.__dr);
+                    ))(obj.__dr).__setRef("replaceTransportMarkers");
                   } else if (obj.__rc) {
                     if (obj.__rc[0] === null) {
                       parent[index] = null;
@@ -20013,6 +20014,10 @@ try {
                 _proto.getModuleIdAsRef = function getModuleIdAsRef() {
                   return this.$RequireDeferredReference_moduleId;
                 };
+                _proto.__setRef = function __setRef(ref) {
+                  this.$RequireDeferredReference_ref = ref;
+                  return this;
+                };
                 _proto.preload = function preload() {};
                 _proto.getModuleIfRequired = function getModuleIfRequired() {
                   return require("ifRequired").call(
@@ -20060,6 +20065,7 @@ try {
                   });
                 };
                 _proto.loadImmediately = function loadImmediately(callback) {
+                  var _this$$RequireDeferre;
                   var callbackCalled = false;
                   var canceled = false;
 
@@ -20076,7 +20082,10 @@ try {
 
                     [this.getModuleId()],
                     callbackOnce,
-                    "RequireDeferredReference.loadImmediately()"
+                    (_this$$RequireDeferre = this
+                      .$RequireDeferredReference_ref) != null
+                      ? _this$$RequireDeferre
+                      : "RequireDeferredReference.loadImmediately()"
                   );
 
                   require("requireWeak").call(
@@ -39715,7 +39724,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001977962","namespace":"FB","message":"' +
+        '","revision":"1001978128","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
