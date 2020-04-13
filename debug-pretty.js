@@ -1,4 +1,4 @@
-/*1586586566,,JIT Construction: v1001978128,en_US*/
+/*1586817565,,JIT Construction: v1001982393,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3905,8 +3905,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1001978128,
-            client_revision: 1001978128,
+            server_revision: 1001982393,
+            client_revision: 1001982393,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3916,14 +3916,14 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6814337414903765160-0",
+            hsi: "6815329547652735540-0",
             spin: 0,
-            __spin_r: 1001978128,
+            __spin_r: 1001982393,
             __spin_b: "trunk",
-            __spin_t: 1586586566,
-            vip: "31.13.71.7"
+            __spin_t: 1586817565,
+            vip: "31.13.66.19"
           });
-          __d("ServerNonce", [], { ServerNonce: "z8NtgWqmC2jyqtxGsm1-D9" });
+          __d("ServerNonce", [], { ServerNonce: "RUbfWRsfH0JMlESyRCUCNr" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4088,7 +4088,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001978128",
+            revision: "1001982393",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -24017,7 +24017,9 @@ try {
 
               var postSentTotal = 0;
 
-              function retryPost(post, httpStatus) {
+              function retryPost(inp_post, httpStatus) {
+                var post = inp_post;
+
                 post.__meta.status = READY;
                 post[3] = (post[3] || 0) + 1;
 
@@ -24026,7 +24028,7 @@ try {
                   httpStatus >= 400 &&
                   httpStatus < 600
                 ) {
-                  postBuffer.push(post);
+                  postBuffer.push(inp_post);
                 }
               }
 
@@ -24357,9 +24359,10 @@ try {
                       inflightPosts.forEach(function inflightPosts_forEach_$0(
                         post
                       ) {
-                        post.__meta.status = SENT;
-                        if (post.__meta.callback) {
-                          post.__meta.callback();
+                        var post_with_meta = post;
+                        post_with_meta.__meta.status = SENT;
+                        if (post_with_meta.__meta.callback) {
+                          post_with_meta.__meta.callback();
                         }
                       });
                       if (onSuccess) {
@@ -24670,13 +24673,14 @@ try {
                     size
                   );
 
+                  var post_with_meta = post;
                   if (options == null ? void 0 : options.callback) {
-                    post.__meta.callback =
+                    post_with_meta.__meta.callback =
                       options == null ? void 0 : options.callback;
                   }
 
                   if ((options == null ? void 0 : options.compress) != null) {
-                    post.__meta.compress =
+                    post_with_meta.__meta.compress =
                       options == null ? void 0 : options.compress;
                   }
 
@@ -24689,7 +24693,7 @@ try {
                   }
 
                   if (options == null ? void 0 : options.signal) {
-                    post.__meta.status = INFLIGHT;
+                    post_with_meta.__meta.status = INFLIGHT;
 
                     var payload = [
                       {
@@ -24707,9 +24711,9 @@ try {
                       function BanzaiAdapter_send_$1() {
                         postSentTotal++;
                         signalSentCounter++;
-                        post.__meta.status = SENT;
-                        if (post.__meta.callback) {
-                          post.__meta.callback();
+                        post_with_meta.__meta.status = SENT;
+                        if (post_with_meta.__meta.callback) {
+                          post_with_meta.__meta.callback();
                         }
                       },
                       function BanzaiAdapter_send_$2(httpStatus) {
@@ -39724,7 +39728,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001978128","namespace":"FB","message":"' +
+        '","revision":"1001982393","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
