@@ -1,4 +1,4 @@
-/*1586826550,,JIT Construction: v1001984063,en_US*/
+/*1586863156,,JIT Construction: v1001987030,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3905,8 +3905,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1001984063,
-            client_revision: 1001984063,
+            server_revision: 1001987030,
+            client_revision: 1001987030,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3916,14 +3916,14 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6815368137823979057-0",
+            hsi: "6815525360061413967-0",
             spin: 0,
-            __spin_r: 1001984063,
+            __spin_r: 1001987030,
             __spin_b: "trunk",
-            __spin_t: 1586826550,
-            vip: "31.13.65.7"
+            __spin_t: 1586863156,
+            vip: "31.13.66.19"
           });
-          __d("ServerNonce", [], { ServerNonce: "qf31XUCexdBdG_a91nJlwW" });
+          __d("ServerNonce", [], { ServerNonce: "NeiqFPV1Xaw2LNDFczAG6M" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4088,7 +4088,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001984063",
+            revision: "1001987030",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -16957,7 +16957,7 @@ try {
               var _processedTagIDs = new Set();
               var _bootloadEnabled = false;
 
-              var events = new (require("BootloaderEventsManager"))();
+              var _events = new (require("BootloaderEventsManager"))();
 
               var JS_RETRIES = require("BootloaderConfig").jsRetries || [];
               var RETRY_ABORT_NUM = require("BootloaderConfig").jsRetryAbortNum;
@@ -17476,15 +17476,15 @@ try {
                   switch (entry.type) {
                     case "css":
                       if (!entry.nonblocking) {
-                        blockingEvents.push(events.rsrcDone(hash));
+                        blockingEvents.push(_events.rsrcDone(hash));
                       }
                       break;
                     case "js":
-                      blockingEvents.push(events.rsrcDone(hash));
+                      blockingEvents.push(_events.rsrcDone(hash));
                       break;
                     case "async":
                       if (entry.blocking) {
-                        blockingEvents.push(events.rsrcDone(hash));
+                        blockingEvents.push(_events.rsrcDone(hash));
                       }
                       break;
                     default:
@@ -17504,8 +17504,8 @@ try {
                     : function(cb) {
                         return cb();
                       };
-                  events.registerCallback(
-                    function events_registerCallback_$0() {
+                  _events.registerCallback(
+                    function _events_registerCallback_$0() {
                       runner(callback);
                     },
                     blockingEvents
@@ -17586,7 +17586,7 @@ try {
               }
 
               function _initBootloadRequest(ref, components) {
-                var bootloadEvent = events.bootload(components);
+                var bootloadEvent = _events.bootload(components);
                 if (_uniqueBootloadRequests.has(bootloadEvent)) {
                   return [bootloadEvent, null];
                 }
@@ -17631,12 +17631,15 @@ try {
                     _ref13 = _i8.value;
                   }
                   var comp = _ref13;
-                  logEvents.push(events.beDone(comp));
-                  logEvents.push(events.tierThree(comp));
+                  logEvents.push(_events.beDone(comp));
+                  logEvents.push(_events.tierThree(comp));
                 }
-                events.registerCallback(function events_registerCallback_$0() {
-                  return require("BootloaderEvents").notifyBootload(logData);
-                }, logEvents);
+                _events.registerCallback(
+                  function _events_registerCallback_$0() {
+                    return require("BootloaderEvents").notifyBootload(logData);
+                  },
+                  logEvents
+                );
 
                 return [bootloadEvent, logData];
               }
@@ -17682,13 +17685,13 @@ try {
                   : _registerAsyncResource(component, be);
 
                 if (asyncHash == null) {
-                  events.notify(events.beDone(component));
+                  _events.notify(_events.beDone(component));
                 }
 
                 _loadResources(
                   asyncHash != null ? [asyncHash].concat(r) : r,
                   function _loadResources_$1() {
-                    return events.notify(events.tierOne(component));
+                    return _events.notify(_events.tierOne(component));
                   },
                   batchNode,
                   logData == null ? void 0 : logData.tierOne
@@ -17697,19 +17700,19 @@ try {
                 _loadResources(
                   (rdfds == null ? void 0 : rdfds.r) || [],
                   function _loadResources_$1() {
-                    return events.registerCallback(
-                      function events_registerCallback_$0() {
-                        events.notify(events.tierTwoStart(component));
+                    return _events.registerCallback(
+                      function _events_registerCallback_$0() {
+                        _events.notify(_events.tierTwoStart(component));
 
                         requireLazy.call(
                           null,
                           (rdfds == null ? void 0 : rdfds.m) || [],
                           function requireLazy_call_$2() {
-                            return events.notify(events.tierTwo(component));
+                            return _events.notify(_events.tierTwo(component));
                           }
                         );
                       },
-                      [events.tierOne(component), bootloadEvent]
+                      [_events.tierOne(component), bootloadEvent]
                     );
                   },
                   batchNode,
@@ -17719,19 +17722,19 @@ try {
                 _loadResources(
                   (rds == null ? void 0 : rds.r) || [],
                   function _loadResources_$1() {
-                    return events.registerCallback(
-                      function events_registerCallback_$0() {
-                        events.notify(events.tierThreeStart(component));
+                    return _events.registerCallback(
+                      function _events_registerCallback_$0() {
+                        _events.notify(_events.tierThreeStart(component));
 
                         requireLazy.call(
                           null,
                           (rds == null ? void 0 : rds.m) || [],
                           function requireLazy_call_$2() {
-                            return events.notify(events.tierThree(component));
+                            return _events.notify(_events.tierThree(component));
                           }
                         );
                       },
-                      [events.tierTwo(component)]
+                      [_events.tierTwo(component)]
                     );
                   },
                   batchNode,
@@ -17962,15 +17965,16 @@ try {
                       _ref16 = _i11.value;
                     }
                     var component = _ref16;
+                    if (_isRequired(component)) {
+                      continue;
+                    }
                     var _getExistingComponent3 = _getExistingComponent(
                         component
                       ),
                       r = _getExistingComponent3.r,
                       rdfds = _getExistingComponent3.rdfds,
                       be = _getExistingComponent3.be;
-                    if (!_isRequired(component)) {
-                      resources.push(_registerAsyncResource(component, be));
-                    }
+                    resources.push(_registerAsyncResource(component, be));
                     resources.push.apply(resources, r);
                     resources.push.apply(
                       resources,
@@ -18048,7 +18052,7 @@ try {
                     bootloadEvent = _initBootloadRequest2[0],
                     logData = _initBootloadRequest2[1];
 
-                  events.registerCallback(
+                  _events.registerCallback(
                     requireLazy.bind(
                       null,
                       components,
@@ -18061,11 +18065,11 @@ try {
                           (logData.callbackEnd = (c_performanceAbsoluteNow ||
                             (c_performanceAbsoluteNow = require("performanceAbsoluteNow")))());
 
-                        events.notify(bootloadEvent);
+                        _events.notify(bootloadEvent);
                       }
                     ),
                     components.map(function components_map_$0(comp) {
-                      return events.tierOne(comp);
+                      return _events.tierOne(comp);
                     })
                   );
 
@@ -18165,7 +18169,7 @@ try {
 
                   window.CavalryLogger && window.CavalryLogger.done_js([hash]);
 
-                  events.notify(events.rsrcDone(hash));
+                  _events.notify(_events.rsrcDone(hash));
                 },
 
                 beDone: function beDone(component, beRequestID, beLogData) {
@@ -18202,7 +18206,7 @@ try {
                     var ld = _ref21;
                     ld.beRequests.set(beRequestID, beLogData);
                   }
-                  events.notify(events.beDone(component));
+                  _events.notify(_events.beDone(component));
                 },
 
                 pickupResourcesByIDs: function pickupResourcesByIDs(ids) {
@@ -18462,26 +18466,26 @@ try {
                     _events$getEventTime4;
                   return {
                     tierTwoStart:
-                      (_events$getEventTime = events.getEventTime(
-                        events.tierTwoStart(comp)
+                      (_events$getEventTime = _events.getEventTime(
+                        _events.tierTwoStart(comp)
                       )) != null
                         ? _events$getEventTime
                         : 0,
                     tierTwoEnd:
-                      (_events$getEventTime2 = events.getEventTime(
-                        events.tierTwo(comp)
+                      (_events$getEventTime2 = _events.getEventTime(
+                        _events.tierTwo(comp)
                       )) != null
                         ? _events$getEventTime2
                         : 0,
                     tierThreeStart:
-                      (_events$getEventTime3 = events.getEventTime(
-                        events.tierThreeStart(comp)
+                      (_events$getEventTime3 = _events.getEventTime(
+                        _events.tierThreeStart(comp)
                       )) != null
                         ? _events$getEventTime3
                         : 0,
                     tierThreeEnd:
-                      (_events$getEventTime4 = events.getEventTime(
-                        events.tierThree(comp)
+                      (_events$getEventTime4 = _events.getEventTime(
+                        _events.tierThree(comp)
                       )) != null
                         ? _events$getEventTime4
                         : 0
@@ -39718,7 +39722,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001984063","namespace":"FB","message":"' +
+        '","revision":"1001987030","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
