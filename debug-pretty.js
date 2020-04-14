@@ -1,4 +1,4 @@
-/*1586863156,,JIT Construction: v1001987030,en_US*/
+/*1586908752,,JIT Construction: v1001990115,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3905,8 +3905,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1001987030,
-            client_revision: 1001987030,
+            server_revision: 1001990115,
+            client_revision: 1001990115,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3916,14 +3916,14 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6815525360061413967-0",
+            hsi: "6815721192593831622-0",
             spin: 0,
-            __spin_r: 1001987030,
+            __spin_r: 1001990115,
             __spin_b: "trunk",
-            __spin_t: 1586863156,
+            __spin_t: 1586908752,
             vip: "31.13.66.19"
           });
-          __d("ServerNonce", [], { ServerNonce: "NeiqFPV1Xaw2LNDFczAG6M" });
+          __d("ServerNonce", [], { ServerNonce: "gywUnAoI_0kL1L13YbTbWw" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4088,7 +4088,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001987030",
+            revision: "1001990115",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -6815,9 +6815,8 @@ try {
               var wrappers = {};
 
               var wrapFunction = function wrapFunction(fn, type, source) {
+                var callee = type in wrappers ? wrappers[type](fn, source) : fn;
                 return function() {
-                  var callee =
-                    type in wrappers ? wrappers[type](fn, source) : fn;
                   for (
                     var _len = arguments.length,
                       args = new Array(_len),
@@ -39722,7 +39721,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001987030","namespace":"FB","message":"' +
+        '","revision":"1001990115","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
