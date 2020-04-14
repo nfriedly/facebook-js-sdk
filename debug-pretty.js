@@ -1,4 +1,4 @@
-/*1586817565,,JIT Construction: v1001982393,en_US*/
+/*1586826550,,JIT Construction: v1001984063,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3905,8 +3905,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1001982393,
-            client_revision: 1001982393,
+            server_revision: 1001984063,
+            client_revision: 1001984063,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3916,14 +3916,14 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6815329547652735540-0",
+            hsi: "6815368137823979057-0",
             spin: 0,
-            __spin_r: 1001982393,
+            __spin_r: 1001984063,
             __spin_b: "trunk",
-            __spin_t: 1586817565,
-            vip: "31.13.66.19"
+            __spin_t: 1586826550,
+            vip: "31.13.65.7"
           });
-          __d("ServerNonce", [], { ServerNonce: "RUbfWRsfH0JMlESyRCUCNr" });
+          __d("ServerNonce", [], { ServerNonce: "qf31XUCexdBdG_a91nJlwW" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4088,7 +4088,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001982393",
+            revision: "1001984063",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -4537,6 +4537,10 @@ try {
 
                 if (context.errorName != null) {
                   error.errorName = context.errorName;
+                }
+
+                if (context.componentStack != null) {
+                  error.componentStack = context.componentStack;
                 }
 
                 var messageFormat = caughtError.message;
@@ -23970,8 +23974,10 @@ try {
               "BanzaiCompressionUtils",
               "BanzaiConsts",
               "BanzaiLazyQueue",
+              "CurrentUser",
               "ErrorGuard",
-              "FBLogger"
+              "FBLogger",
+              "WebSession"
             ],
             function $module_BanzaiBase(
               global,
@@ -24157,7 +24163,7 @@ try {
                 },
 
                 _getWebSessionId: function _getWebSessionId() {
-                  return "0";
+                  return require("WebSession").getId();
                 },
 
                 _getPostBuffer: function _getPostBuffer() {
@@ -24173,11 +24179,11 @@ try {
                 },
 
                 _getUserId: function _getUserId() {
-                  return "0";
+                  return require("CurrentUser").getID();
                 },
 
                 _getAppId: function _getAppId() {
-                  return null;
+                  return require("CurrentUser").getAppID();
                 },
 
                 _initialize: function _initialize() {},
@@ -25818,7 +25824,6 @@ try {
               "SetIdleTimeoutAcrossTransitions",
               "TimeSlice",
               "Visibility",
-              "WebSession",
               "WebStorage",
               "emptyFunction",
               "isInIframe",
@@ -25843,9 +25848,6 @@ try {
 
               var _super = {
                 _getStorage: (BanzaiBase = require("BanzaiBase"))._getStorage,
-                _getWebSessionId: BanzaiBase._getWebSessionId,
-                _getUserId: BanzaiBase._getUserId,
-                _getAppId: BanzaiBase._getAppId,
                 _initialize: BanzaiBase._initialize,
                 _schedule: BanzaiBase._schedule,
                 flush: BanzaiBase.flush,
@@ -26053,18 +26055,6 @@ try {
                   }
                 }
                 return storage;
-              };
-
-              BanzaiBase._getWebSessionId = function() {
-                return require("WebSession").getId();
-              };
-
-              BanzaiBase._getUserId = function() {
-                return require("CurrentUser").getID();
-              };
-
-              BanzaiBase._getAppId = function() {
-                return require("CurrentUser").getAppID();
               };
 
               BanzaiBase._initialize = function() {
@@ -39728,7 +39718,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001982393","namespace":"FB","message":"' +
+        '","revision":"1001984063","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
