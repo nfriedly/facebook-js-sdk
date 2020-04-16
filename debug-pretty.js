@@ -1,4 +1,4 @@
-/*1587009562,,JIT Construction: v1001998333,en_US*/
+/*1587070765,,JIT Construction: v1002001376,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3903,8 +3903,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1001998333,
-            client_revision: 1001998333,
+            server_revision: 1002001376,
+            client_revision: 1002001376,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3914,14 +3914,14 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6816154169224636799-0",
+            hsi: "6816417033797510614-0",
             spin: 0,
-            __spin_r: 1001998333,
+            __spin_r: 1002001376,
             __spin_b: "trunk",
-            __spin_t: 1587009562,
-            vip: "31.13.65.7"
+            __spin_t: 1587070764,
+            vip: "31.13.66.19"
           });
-          __d("ServerNonce", [], { ServerNonce: "SGsP63gbKBPUZ-_WkqLdGA" });
+          __d("ServerNonce", [], { ServerNonce: "oEIMAw6kpo8GnYaknddgmb" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4087,7 +4087,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001998333",
+            revision: "1002001376",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -5695,6 +5695,11 @@ try {
                     );
                   } else {
                     var _error = new Error(String(format));
+                    if (_error.stack === undefined) {
+                      try {
+                        throw _error;
+                      } catch (_) {}
+                    }
                     _error.messageFormat = format;
                     _error.messageParams = require("ErrorSerializer").toStringParams(
                       params
@@ -9124,6 +9129,11 @@ try {
 
               function err(format) {
                 var err = new Error(format);
+                if (err.stack === undefined) {
+                  try {
+                    throw err;
+                  } catch (_) {}
+                }
                 err.messageFormat = format;
                 for (
                   var _len = arguments.length,
@@ -25652,12 +25662,7 @@ try {
           );
           __d(
             "WebStorageMutex",
-            [
-              "WebStorage",
-              "clearTimeout",
-              "pageID",
-              "setTimeoutAcrossTransitions"
-            ],
+            ["WebStorage", "clearTimeout", "pageID", "setTimeout"],
             function $module_WebStorageMutex(
               global,
               require,
@@ -25666,6 +25671,7 @@ try {
               module,
               exports
             ) {
+              "use strict";
               var c_WebStorage;
 
               var storage = null;
@@ -25682,8 +25688,6 @@ try {
                 return storage;
               }
               var WebStorageMutex = (function() {
-                "use strict";
-
                 function WebStorageMutex(name) {
                   this.name = name;
                 }
@@ -25692,31 +25696,37 @@ try {
                 };
                 var _proto = WebStorageMutex.prototype;
                 _proto.$WebStorageMutex_owner = function $WebStorageMutex_owner() {
-                  if (!_getStorage()) {
+                  var _val;
+                  var store = _getStorage();
+                  if (!store) {
                     return curPageID;
                   }
-                  var val = _getStorage().getItem("mutex_" + this.name);
-                  val = val ? val.split(":") : null;
-                  return val && val[1] >= Date.now() ? val[0] : null;
+                  var val = store.getItem("mutex_" + this.name);
+                  val = ((_val = val) != null ? _val : "").split(":");
+                  return val && parseInt(val[1], 10) >= Date.now()
+                    ? val[0]
+                    : null;
                 };
                 _proto.$WebStorageMutex_writeLock = function $WebStorageMutex_writeLock(
                   expires
                 ) {
-                  if (!_getStorage()) {
+                  var store = _getStorage();
+                  if (!store) {
                     return;
                   }
 
-                  var when = Date.now() + (expires || 10000);
+                  var offset = expires == null ? 1000 : expires;
+                  var when = Date.now() + offset;
                   (
                     c_WebStorage || (c_WebStorage = require("WebStorage"))
                   ).setItemGuarded(
-                    _getStorage(),
+                    store,
                     "mutex_" + this.name,
                     curPageID + ":" + when
                   );
                 };
                 _proto.hasLock = function hasLock() {
-                  return this.$WebStorageMutex_owner() == curPageID;
+                  return this.$WebStorageMutex_owner() === curPageID;
                 };
                 _proto.lock = function lock(onLock, onError, expires) {
                   var _this = this;
@@ -25725,13 +25735,13 @@ try {
                   }
 
                   if (
-                    curPageID == (this.$WebStorageMutex_owner() || curPageID)
+                    curPageID === (this.$WebStorageMutex_owner() || curPageID)
                   ) {
                     this.$WebStorageMutex_writeLock(expires);
                   }
 
-                  this.$WebStorageMutex_locking = require("setTimeoutAcrossTransitions")(
-                    function setTimeoutAcrossTransitions_$0() {
+                  this.$WebStorageMutex_locking = require("setTimeout")(
+                    function setTimeout_$0() {
                       _this.$WebStorageMutex_locking = null;
                       var f = _this.hasLock() ? onLock : onError;
                       if (f) {
@@ -25745,8 +25755,9 @@ try {
                   if (this.$WebStorageMutex_locking) {
                     require("clearTimeout")(this.$WebStorageMutex_locking);
                   }
-                  if (_getStorage() && this.hasLock()) {
-                    _getStorage().removeItem("mutex_" + this.name);
+                  var store = _getStorage();
+                  if (store && this.hasLock()) {
+                    store.removeItem("mutex_" + this.name);
                   }
                 };
                 return WebStorageMutex;
@@ -39722,7 +39733,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001998333","namespace":"FB","message":"' +
+        '","revision":"1002001376","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
