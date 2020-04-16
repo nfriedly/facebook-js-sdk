@@ -1,4 +1,4 @@
-/*1586939966,,JIT Construction: v1001992887,en_US*/
+/*1587009562,,JIT Construction: v1001998333,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3815,7 +3815,6 @@ try {
                 "BUSINESS_GRAPH_SETTING_BU_ASSIGNED_USERS_NEW_API",
                 "BUSINESS_GRAPH_SETTING_SESG_ASSIGNED_USERS_NEW_API",
                 "RECRUITING_REQUISITION_VALIDATE_COMPANY_GROUPING_ON_LINK",
-                "BAM_EXCLUDE_MEGAZORDED_ALERTS",
                 "CALENDAR_WEEKVIEW_NEW_BADGE",
                 "POST_INSIGHTS_CAPITALIZE_BREAKDOWNS_FOR_ACTION_TYPE",
                 "WORKPLACE_PLATFORM_SECURE_APPS_MAILBOXES",
@@ -3845,7 +3844,6 @@ try {
                 "4NSq3ZC4ScE",
                 "1onzIv0jH6H",
                 "5LSlJUj3BnT",
-                "2urFjIQigPj",
                 "7EZACZMulOj",
                 "6ra3sC1PDFj",
                 "5XCz1h9Iaw3",
@@ -3905,8 +3903,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1001992887,
-            client_revision: 1001992887,
+            server_revision: 1001998333,
+            client_revision: 1001998333,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3916,14 +3914,14 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6815855255484825362-0",
+            hsi: "6816154169224636799-0",
             spin: 0,
-            __spin_r: 1001992887,
+            __spin_r: 1001998333,
             __spin_b: "trunk",
-            __spin_t: 1586939966,
+            __spin_t: 1587009562,
             vip: "31.13.65.7"
           });
-          __d("ServerNonce", [], { ServerNonce: "rEz7zAmWLKQiY-teCuvAhP" });
+          __d("ServerNonce", [], { ServerNonce: "SGsP63gbKBPUZ-_WkqLdGA" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4064,7 +4062,8 @@ try {
               "/survey/": 1,
               "/upsell/loyaltytopup/accept/": 1,
               "/settings/": 1,
-              "/lite/": 1
+              "/lite/": 1,
+              "/zero_status_update/": 1
             }
           });
           __d("BanzaiConfig", [], {
@@ -4088,7 +4087,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1001992887",
+            revision: "1001998333",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -4138,7 +4137,7 @@ try {
           });
           __d("JSSDKXDConfig", [], {
             XdUrl: "/connect/xd_arbiter.php?version=46",
-            XdBundleUrl: "/connect/xd_arbiter/r/bw681DTp62x.js?version=46",
+            XdBundleUrl: "/connect/xd_arbiter/r/Kg0I7Y9jrLp.js?version=46",
             useCdn: true
           });
           __d("JSSDKCanvasPrefetcherConfig", [], {
@@ -5181,6 +5180,7 @@ try {
                   column: stackPopped
                     ? getColumnFromStackData(stackData)
                     : getColumn(err) || getColumnFromStackData(stackData),
+                  clientTime: Math.floor(ES("Date", "now", false) / 1000),
                   deferredSource:
                     err.deferredSource != null
                       ? normalizeError(err.deferredSource)
@@ -39722,7 +39722,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1001992887","namespace":"FB","message":"' +
+        '","revision":"1001998333","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
