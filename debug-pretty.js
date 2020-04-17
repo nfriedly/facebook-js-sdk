@@ -1,4 +1,4 @@
-/*1587070765,,JIT Construction: v1002001376,en_US*/
+/*1587104961,,JIT Construction: v1002005402,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3903,8 +3903,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1002001376,
-            client_revision: 1002001376,
+            server_revision: 1002005402,
+            client_revision: 1002005402,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3914,14 +3914,14 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6816417033797510614-0",
+            hsi: "6816563903551195555-0",
             spin: 0,
-            __spin_r: 1002001376,
+            __spin_r: 1002005402,
             __spin_b: "trunk",
-            __spin_t: 1587070764,
-            vip: "31.13.66.19"
+            __spin_t: 1587104961,
+            vip: "31.13.65.7"
           });
-          __d("ServerNonce", [], { ServerNonce: "oEIMAw6kpo8GnYaknddgmb" });
+          __d("ServerNonce", [], { ServerNonce: "ncRXxXGxECBrIp_YruROeY" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4087,7 +4087,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1002001376",
+            revision: "1002005402",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -17615,41 +17615,6 @@ try {
                   beRequests: new Map()
                 };
 
-                var logEvents = [];
-                for (
-                  var _iterator7 = components,
-                    _isArray7 = Array.isArray(_iterator7),
-                    _i8 = 0,
-                    _iterator7 = _isArray7
-                      ? _iterator7
-                      : _iterator7[
-                          typeof Symbol === "function"
-                            ? Symbol.iterator
-                            : "@@iterator"
-                        ]();
-                  ;
-
-                ) {
-                  var _ref13;
-                  if (_isArray7) {
-                    if (_i8 >= _iterator7.length) break;
-                    _ref13 = _iterator7[_i8++];
-                  } else {
-                    _i8 = _iterator7.next();
-                    if (_i8.done) break;
-                    _ref13 = _i8.value;
-                  }
-                  var comp = _ref13;
-                  logEvents.push(_events.beDone(comp));
-                  logEvents.push(_events.tierThree(comp));
-                }
-                _events.registerCallback(
-                  function _events_registerCallback_$0() {
-                    return require("BootloaderEvents").notifyBootload(logData);
-                  },
-                  logEvents
-                );
-
                 return [bootloadEvent, logData];
               }
 
@@ -17754,12 +17719,12 @@ try {
               function _resolveCSRs(hashes) {
                 var ret = new Map();
                 for (
-                  var _iterator8 = hashes,
-                    _isArray8 = Array.isArray(_iterator8),
-                    _i9 = 0,
-                    _iterator8 = _isArray8
-                      ? _iterator8
-                      : _iterator8[
+                  var _iterator7 = hashes,
+                    _isArray7 = Array.isArray(_iterator7),
+                    _i8 = 0,
+                    _iterator7 = _isArray7
+                      ? _iterator7
+                      : _iterator7[
                           typeof Symbol === "function"
                             ? Symbol.iterator
                             : "@@iterator"
@@ -17767,16 +17732,16 @@ try {
                   ;
 
                 ) {
-                  var _ref14;
-                  if (_isArray8) {
-                    if (_i9 >= _iterator8.length) break;
-                    _ref14 = _iterator8[_i9++];
+                  var _ref13;
+                  if (_isArray7) {
+                    if (_i8 >= _iterator7.length) break;
+                    _ref13 = _iterator7[_i8++];
                   } else {
-                    _i9 = _iterator8.next();
-                    if (_i9.done) break;
-                    _ref14 = _i9.value;
+                    _i8 = _iterator7.next();
+                    if (_i8.done) break;
+                    _ref13 = _i8.value;
                   }
-                  var hash = _ref14;
+                  var hash = _ref13;
 
                   var entry = _resources.get(hash);
                   if (!entry) {
@@ -17800,12 +17765,12 @@ try {
                   }
 
                   for (
-                    var _iterator9 = provides,
-                      _isArray9 = Array.isArray(_iterator9),
-                      _i10 = 0,
-                      _iterator9 = _isArray9
-                        ? _iterator9
-                        : _iterator9[
+                    var _iterator8 = provides,
+                      _isArray8 = Array.isArray(_iterator8),
+                      _i9 = 0,
+                      _iterator8 = _isArray8
+                        ? _iterator8
+                        : _iterator8[
                             typeof Symbol === "function"
                               ? Symbol.iterator
                               : "@@iterator"
@@ -17813,16 +17778,16 @@ try {
                     ;
 
                   ) {
-                    var _ref15;
-                    if (_isArray9) {
-                      if (_i10 >= _iterator9.length) break;
-                      _ref15 = _iterator9[_i10++];
+                    var _ref14;
+                    if (_isArray8) {
+                      if (_i9 >= _iterator8.length) break;
+                      _ref14 = _iterator8[_i9++];
                     } else {
-                      _i10 = _iterator9.next();
-                      if (_i10.done) break;
-                      _ref15 = _i10.value;
+                      _i9 = _iterator8.next();
+                      if (_i9.done) break;
+                      _ref14 = _i9.value;
                     }
-                    var p = _ref15;
+                    var p = _ref14;
 
                     var sotHash = require("nullthrows")(
                       _rsrcIndexMap.get(p),
@@ -17951,12 +17916,12 @@ try {
 
                   var resources = [];
                   for (
-                    var _iterator10 = components,
-                      _isArray10 = Array.isArray(_iterator10),
-                      _i11 = 0,
-                      _iterator10 = _isArray10
-                        ? _iterator10
-                        : _iterator10[
+                    var _iterator9 = components,
+                      _isArray9 = Array.isArray(_iterator9),
+                      _i10 = 0,
+                      _iterator9 = _isArray9
+                        ? _iterator9
+                        : _iterator9[
                             typeof Symbol === "function"
                               ? Symbol.iterator
                               : "@@iterator"
@@ -17964,16 +17929,16 @@ try {
                     ;
 
                   ) {
-                    var _ref16;
-                    if (_isArray10) {
-                      if (_i11 >= _iterator10.length) break;
-                      _ref16 = _iterator10[_i11++];
+                    var _ref15;
+                    if (_isArray9) {
+                      if (_i10 >= _iterator9.length) break;
+                      _ref15 = _iterator9[_i10++];
                     } else {
-                      _i11 = _iterator10.next();
-                      if (_i11.done) break;
-                      _ref16 = _i11.value;
+                      _i10 = _iterator9.next();
+                      if (_i10.done) break;
+                      _ref15 = _i10.value;
                     }
-                    var component = _ref16;
+                    var component = _ref15;
                     if (_isRequired(component)) {
                       continue;
                     }
@@ -17993,12 +17958,12 @@ try {
 
                   _batchDOMInsert(function _batchDOMInsert_$0(batchNode) {
                     for (
-                      var _iterator11 = _resolveCSRs(resources),
-                        _isArray11 = Array.isArray(_iterator11),
-                        _i12 = 0,
-                        _iterator11 = _isArray11
-                          ? _iterator11
-                          : _iterator11[
+                      var _iterator10 = _resolveCSRs(resources),
+                        _isArray10 = Array.isArray(_iterator10),
+                        _i11 = 0,
+                        _iterator10 = _isArray10
+                          ? _iterator10
+                          : _iterator10[
                               typeof Symbol === "function"
                                 ? Symbol.iterator
                                 : "@@iterator"
@@ -18006,18 +17971,18 @@ try {
                       ;
 
                     ) {
-                      var _ref18;
-                      if (_isArray11) {
-                        if (_i12 >= _iterator11.length) break;
-                        _ref18 = _iterator11[_i12++];
+                      var _ref17;
+                      if (_isArray10) {
+                        if (_i11 >= _iterator10.length) break;
+                        _ref17 = _iterator10[_i11++];
                       } else {
-                        _i12 = _iterator11.next();
-                        if (_i12.done) break;
-                        _ref18 = _i12.value;
+                        _i11 = _iterator10.next();
+                        if (_i11.done) break;
+                        _ref17 = _i11.value;
                       }
-                      var _ref19 = _ref18;
-                      var hash = _ref19[0];
-                      var entry = _ref19[1];
+                      var _ref18 = _ref17;
+                      var hash = _ref18[0];
+                      var entry = _ref18[1];
                       _preloadResource(hash, entry, batchNode);
                     }
                   });
@@ -18084,6 +18049,36 @@ try {
 
                   _batchDOMInsert(function _batchDOMInsert_$0(batchNode) {
                     for (
+                      var _iterator11 = components,
+                        _isArray11 = Array.isArray(_iterator11),
+                        _i12 = 0,
+                        _iterator11 = _isArray11
+                          ? _iterator11
+                          : _iterator11[
+                              typeof Symbol === "function"
+                                ? Symbol.iterator
+                                : "@@iterator"
+                            ]();
+                      ;
+
+                    ) {
+                      var _ref19;
+                      if (_isArray11) {
+                        if (_i12 >= _iterator11.length) break;
+                        _ref19 = _iterator11[_i12++];
+                      } else {
+                        _i12 = _iterator11.next();
+                        if (_i12.done) break;
+                        _ref19 = _i12.value;
+                      }
+                      var comp = _ref19;
+                      _loadModule(comp, bootloadEvent, batchNode, logData);
+                    }
+                  });
+
+                  if (logData) {
+                    var events = new Set();
+                    for (
                       var _iterator12 = components,
                         _isArray12 = Array.isArray(_iterator12),
                         _i13 = 0,
@@ -18107,11 +18102,52 @@ try {
                         _ref20 = _i13.value;
                       }
                       var comp = _ref20;
-                      _loadModule(comp, bootloadEvent, batchNode, logData);
+                      events.add(_events.beDone(comp));
+                      events.add(_events.tierThree(comp));
                     }
-                  });
+                    var _arr2 = [
+                      logData.tierOne,
+                      logData.tierTwo,
+                      logData.tierThree
+                    ];
+                    for (var _i14 = 0; _i14 < _arr2.length; _i14++) {
+                      var set = _arr2[_i14];
+                      for (
+                        var _iterator13 = set.keys(),
+                          _isArray13 = Array.isArray(_iterator13),
+                          _i15 = 0,
+                          _iterator13 = _isArray13
+                            ? _iterator13
+                            : _iterator13[
+                                typeof Symbol === "function"
+                                  ? Symbol.iterator
+                                  : "@@iterator"
+                              ]();
+                        ;
 
-                  if (logData) {
+                      ) {
+                        var _ref21;
+                        if (_isArray13) {
+                          if (_i15 >= _iterator13.length) break;
+                          _ref21 = _iterator13[_i15++];
+                        } else {
+                          _i15 = _iterator13.next();
+                          if (_i15.done) break;
+                          _ref21 = _i15.value;
+                        }
+                        var hash = _ref21;
+                        events.add(_events.rsrcDone(hash));
+                      }
+                    }
+                    _events.registerCallback(
+                      function _events_registerCallback_$0() {
+                        return require("BootloaderEvents").notifyBootload(
+                          logData
+                        );
+                      },
+                      Array.from(events)
+                    );
+
                     require("ifRequireable")(
                       "m#TimeSliceInteraction",
                       function ifRequireable_$1(TimeSliceInteraction) {
@@ -18182,19 +18218,20 @@ try {
                 },
 
                 beDone: function beDone(component, beRequestID, beLogData) {
+                  var events = new Set();
                   for (
-                    var _iterator13 =
-                        (_ref22 =
+                    var _iterator14 =
+                        (_ref23 =
                           (_bootloaded$get = _bootloaded.get(component)) == null
                             ? void 0
                             : _bootloaded$get.logData) != null
-                          ? _ref22
+                          ? _ref23
                           : [],
-                      _isArray13 = Array.isArray(_iterator13),
-                      _i14 = 0,
-                      _iterator13 = _isArray13
-                        ? _iterator13
-                        : _iterator13[
+                      _isArray14 = Array.isArray(_iterator14),
+                      _i16 = 0,
+                      _iterator14 = _isArray14
+                        ? _iterator14
+                        : _iterator14[
                             typeof Symbol === "function"
                               ? Symbol.iterator
                               : "@@iterator"
@@ -18202,20 +18239,52 @@ try {
                     ;
 
                   ) {
-                    var _ref22, _bootloaded$get;
-                    var _ref21;
-                    if (_isArray13) {
-                      if (_i14 >= _iterator13.length) break;
-                      _ref21 = _iterator13[_i14++];
+                    var _ref23, _bootloaded$get;
+                    var _ref22;
+                    if (_isArray14) {
+                      if (_i16 >= _iterator14.length) break;
+                      _ref22 = _iterator14[_i16++];
                     } else {
-                      _i14 = _iterator13.next();
-                      if (_i14.done) break;
-                      _ref21 = _i14.value;
+                      _i16 = _iterator14.next();
+                      if (_i16.done) break;
+                      _ref22 = _i16.value;
                     }
-                    var ld = _ref21;
+                    var ld = _ref22;
                     ld.beRequests.set(beRequestID, beLogData);
+
+                    for (
+                      var _iterator15 = beLogData.all.keys(),
+                        _isArray15 = Array.isArray(_iterator15),
+                        _i17 = 0,
+                        _iterator15 = _isArray15
+                          ? _iterator15
+                          : _iterator15[
+                              typeof Symbol === "function"
+                                ? Symbol.iterator
+                                : "@@iterator"
+                            ]();
+                      ;
+
+                    ) {
+                      var _ref24;
+                      if (_isArray15) {
+                        if (_i17 >= _iterator15.length) break;
+                        _ref24 = _iterator15[_i17++];
+                      } else {
+                        _i17 = _iterator15.next();
+                        if (_i17.done) break;
+                        _ref24 = _i17.value;
+                      }
+                      var hash = _ref24;
+                      events.add(_events.rsrcDone(hash));
+                    }
                   }
-                  _events.notify(_events.beDone(component));
+                  _events.registerCallback(
+                    function _events_registerCallback_$0() {
+                      return _events.notify(_events.beDone(component));
+                    },
+                    Array.from(events)
+                  );
                 },
 
                 pickupResourcesByIDs: function pickupResourcesByIDs(ids) {
@@ -18239,11 +18308,11 @@ try {
                   var queuedLoadModules = _queuedLoadModules;
                   _queuedLoadModules = [];
                   queuedLoadModules.forEach(
-                    function queuedLoadModules_forEach_$0(_ref23) {
-                      var components = _ref23[0],
-                        callback = _ref23[1],
-                        ref = _ref23[2],
-                        continuation = _ref23[3];
+                    function queuedLoadModules_forEach_$0(_ref25) {
+                      var components = _ref25[0],
+                        callback = _ref25[1],
+                        ref = _ref25[2],
+                        continuation = _ref25[3];
                       continuation(function continuation_$0() {
                         Bootloader.loadModules.apply(Bootloader, [
                           components,
@@ -18256,10 +18325,10 @@ try {
                   var queuedPreloads = _queuedPreloads;
                   _queuedPreloads = [];
                   queuedPreloads.forEach(function queuedPreloads_forEach_$0(
-                    _ref24
+                    _ref26
                   ) {
-                    var components = _ref24[0],
-                      continuation = _ref24[1];
+                    var components = _ref26[0],
+                      continuation = _ref26[1];
                     continuation(function continuation_$0() {
                       Bootloader.preloadModules.apply(Bootloader, [components]);
                     });
@@ -18270,12 +18339,12 @@ try {
                   comps
                 ) {
                   for (
-                    var _iterator14 = comps,
-                      _isArray14 = Array.isArray(_iterator14),
-                      _i15 = 0,
-                      _iterator14 = _isArray14
-                        ? _iterator14
-                        : _iterator14[
+                    var _iterator16 = comps,
+                      _isArray16 = Array.isArray(_iterator16),
+                      _i18 = 0,
+                      _iterator16 = _isArray16
+                        ? _iterator16
+                        : _iterator16[
                             typeof Symbol === "function"
                               ? Symbol.iterator
                               : "@@iterator"
@@ -18283,16 +18352,16 @@ try {
                     ;
 
                   ) {
-                    var _ref25;
-                    if (_isArray14) {
-                      if (_i15 >= _iterator14.length) break;
-                      _ref25 = _iterator14[_i15++];
+                    var _ref27;
+                    if (_isArray16) {
+                      if (_i18 >= _iterator16.length) break;
+                      _ref27 = _iterator16[_i18++];
                     } else {
-                      _i15 = _iterator14.next();
-                      if (_i15.done) break;
-                      _ref25 = _i15.value;
+                      _i18 = _iterator16.next();
+                      if (_i18.done) break;
+                      _ref27 = _i18.value;
                     }
-                    var comp = _ref25;
+                    var comp = _ref27;
                     var entry = _componentMap.get(comp);
                     if (entry && entry.be) {
                       delete entry.be;
@@ -18316,12 +18385,12 @@ try {
 
                   if (sotUpgrades) {
                     for (
-                      var _iterator15 = sotUpgrades,
-                        _isArray15 = Array.isArray(_iterator15),
-                        _i16 = 0,
-                        _iterator15 = _isArray15
-                          ? _iterator15
-                          : _iterator15[
+                      var _iterator17 = sotUpgrades,
+                        _isArray17 = Array.isArray(_iterator17),
+                        _i19 = 0,
+                        _iterator17 = _isArray17
+                          ? _iterator17
+                          : _iterator17[
                               typeof Symbol === "function"
                                 ? Symbol.iterator
                                 : "@@iterator"
@@ -18329,16 +18398,16 @@ try {
                       ;
 
                     ) {
-                      var _ref26;
-                      if (_isArray15) {
-                        if (_i16 >= _iterator15.length) break;
-                        _ref26 = _iterator15[_i16++];
+                      var _ref28;
+                      if (_isArray17) {
+                        if (_i19 >= _iterator17.length) break;
+                        _ref28 = _iterator17[_i19++];
                       } else {
-                        _i16 = _iterator15.next();
-                        if (_i16.done) break;
-                        _ref26 = _i16.value;
+                        _i19 = _iterator17.next();
+                        if (_i19.done) break;
+                        _ref28 = _i19.value;
                       }
-                      var _hash2 = _ref26;
+                      var _hash2 = _ref28;
                       var entry = _resources.get(_hash2);
                       if (entry) {
                         _addResource(_hash2, entry, true);
@@ -18350,12 +18419,12 @@ try {
                 getURLToHashMap: function getURLToHashMap() {
                   var resources = new Map();
                   for (
-                    var _iterator16 = _resources,
-                      _isArray16 = Array.isArray(_iterator16),
-                      _i17 = 0,
-                      _iterator16 = _isArray16
-                        ? _iterator16
-                        : _iterator16[
+                    var _iterator18 = _resources,
+                      _isArray18 = Array.isArray(_iterator18),
+                      _i20 = 0,
+                      _iterator18 = _isArray18
+                        ? _iterator18
+                        : _iterator18[
                             typeof Symbol === "function"
                               ? Symbol.iterator
                               : "@@iterator"
@@ -18363,18 +18432,18 @@ try {
                     ;
 
                   ) {
-                    var _ref28;
-                    if (_isArray16) {
-                      if (_i17 >= _iterator16.length) break;
-                      _ref28 = _iterator16[_i17++];
+                    var _ref30;
+                    if (_isArray18) {
+                      if (_i20 >= _iterator18.length) break;
+                      _ref30 = _iterator18[_i20++];
                     } else {
-                      _i17 = _iterator16.next();
-                      if (_i17.done) break;
-                      _ref28 = _i17.value;
+                      _i20 = _iterator18.next();
+                      if (_i20.done) break;
+                      _ref30 = _i20.value;
                     }
-                    var _ref29 = _ref28;
-                    var hash = _ref29[0];
-                    var entry = _ref29[1];
+                    var _ref31 = _ref30;
+                    var hash = _ref31[0];
+                    var entry = _ref31[1];
                     if (entry.type === "async" || entry.type === "csr") {
                       continue;
                     }
@@ -18394,12 +18463,12 @@ try {
                 getCSSResources: function getCSSResources(resources) {
                   var css = [];
                   for (
-                    var _iterator17 = _resolveCSRs(resources),
-                      _isArray17 = Array.isArray(_iterator17),
-                      _i18 = 0,
-                      _iterator17 = _isArray17
-                        ? _iterator17
-                        : _iterator17[
+                    var _iterator19 = _resolveCSRs(resources),
+                      _isArray19 = Array.isArray(_iterator19),
+                      _i21 = 0,
+                      _iterator19 = _isArray19
+                        ? _iterator19
+                        : _iterator19[
                             typeof Symbol === "function"
                               ? Symbol.iterator
                               : "@@iterator"
@@ -18407,18 +18476,18 @@ try {
                     ;
 
                   ) {
-                    var _ref31;
-                    if (_isArray17) {
-                      if (_i18 >= _iterator17.length) break;
-                      _ref31 = _iterator17[_i18++];
+                    var _ref33;
+                    if (_isArray19) {
+                      if (_i21 >= _iterator19.length) break;
+                      _ref33 = _iterator19[_i21++];
                     } else {
-                      _i18 = _iterator17.next();
-                      if (_i18.done) break;
-                      _ref31 = _i18.value;
+                      _i21 = _iterator19.next();
+                      if (_i21.done) break;
+                      _ref33 = _i21.value;
                     }
-                    var _ref32 = _ref31;
-                    var hash = _ref32[0];
-                    var entry = _ref32[1];
+                    var _ref34 = _ref33;
+                    var hash = _ref34[0];
+                    var entry = _ref34[1];
                     if (entry.type === "css") {
                       css.push(hash);
                     }
@@ -18430,12 +18499,12 @@ try {
                 getBootloadedComponents: function getBootloadedComponents() {
                   var ret = new Map();
                   for (
-                    var _iterator18 = _bootloaded,
-                      _isArray18 = Array.isArray(_iterator18),
-                      _i19 = 0,
-                      _iterator18 = _isArray18
-                        ? _iterator18
-                        : _iterator18[
+                    var _iterator20 = _bootloaded,
+                      _isArray20 = Array.isArray(_iterator20),
+                      _i22 = 0,
+                      _iterator20 = _isArray20
+                        ? _iterator20
+                        : _iterator20[
                             typeof Symbol === "function"
                               ? Symbol.iterator
                               : "@@iterator"
@@ -18443,18 +18512,18 @@ try {
                     ;
 
                   ) {
-                    var _ref34;
-                    if (_isArray18) {
-                      if (_i19 >= _iterator18.length) break;
-                      _ref34 = _iterator18[_i19++];
+                    var _ref36;
+                    if (_isArray20) {
+                      if (_i22 >= _iterator20.length) break;
+                      _ref36 = _iterator20[_i22++];
                     } else {
-                      _i19 = _iterator18.next();
-                      if (_i19.done) break;
-                      _ref34 = _i19.value;
+                      _i22 = _iterator20.next();
+                      if (_i22.done) break;
+                      _ref36 = _i22.value;
                     }
-                    var _ref35 = _ref34;
-                    var comp = _ref35[0];
-                    var info = _ref35[1];
+                    var _ref37 = _ref36;
+                    var comp = _ref37[0];
+                    var info = _ref37[1];
                     ret.set(comp, info.firstBootloadStart);
                   }
                   return ret;
@@ -39733,7 +39802,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1002001376","namespace":"FB","message":"' +
+        '","revision":"1002005402","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
