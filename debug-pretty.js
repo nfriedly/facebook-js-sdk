@@ -1,4 +1,4 @@
-/*1587104961,,JIT Construction: v1002005402,en_US*/
+/*1587156564,,JIT Construction: v1002007515,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3822,7 +3822,8 @@ try {
                 "DISABLE_HEARTBEAT_POLLING",
                 "LAB_NET_NEW_UI_RELEASE",
                 "WIT_DEPRECATE_GITHUB",
-                "WIT_DEPRECATE_OLD_UX"
+                "WIT_DEPRECATE_OLD_UX",
+                "FBE_SHOW_AD_ACCOUNT_SELECTION_SCREEN"
               ]
             },
             ko: {
@@ -3851,7 +3852,8 @@ try {
                 "1GgWO1oFyLN",
                 "DDZhogI19W",
                 "9k7Y5kmDD1A",
-                "4jkC8ia3PYA"
+                "4jkC8ia3PYA",
+                "lVkepcQmsn"
               ]
             }
           });
@@ -3903,8 +3905,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1002005402,
-            client_revision: 1002005402,
+            server_revision: 1002007515,
+            client_revision: 1002007515,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3914,14 +3916,14 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6816563903551195555-0",
+            hsi: "6816785537030863714-0",
             spin: 0,
-            __spin_r: 1002005402,
+            __spin_r: 1002007515,
             __spin_b: "trunk",
-            __spin_t: 1587104961,
+            __spin_t: 1587156564,
             vip: "31.13.65.7"
           });
-          __d("ServerNonce", [], { ServerNonce: "ncRXxXGxECBrIp_YruROeY" });
+          __d("ServerNonce", [], { ServerNonce: "fqN9CfOY0GDrhPoQ8-qDO4" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4087,7 +4089,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1002005402",
+            revision: "1002007515",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -39802,7 +39804,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1002005402","namespace":"FB","message":"' +
+        '","revision":"1002007515","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
