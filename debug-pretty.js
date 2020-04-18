@@ -1,4 +1,4 @@
-/*1587163759,,JIT Construction: v1002008237,en_US*/
+/*1587173350,,JIT Construction: v1002009116,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3905,8 +3905,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1002008237,
-            client_revision: 1002008237,
+            server_revision: 1002009116,
+            client_revision: 1002009116,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3916,14 +3916,17 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6816816439484505775-0",
+            hsi: "6816857631970567721-0",
             spin: 0,
-            __spin_r: 1002008237,
+            __spin_r: 1002009116,
             __spin_b: "trunk",
-            __spin_t: 1587163759,
-            vip: "31.13.66.19"
+            __spin_t: 1587173350,
+            vip: "31.13.65.7"
           });
-          __d("ServerNonce", [], { ServerNonce: "dRhHNF8h3xb3mOWqy8QqhP" });
+          __d("WebConnectionClassServerGuess", [], {
+            connectionClass: "UNKNOWN"
+          });
+          __d("ServerNonce", [], { ServerNonce: "P-627fx7HaB8fJvSV-71qg" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4078,7 +4081,6 @@ try {
               boosted_component: true,
               boosted_pagelikes: true,
               jslogger: true,
-              kbshortcuts_feed: true,
               mercury_send_error_logging: true,
               platform_oauth_client_events: true,
               xtrackable_clientview_batch: true,
@@ -4090,7 +4092,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1002008237",
+            revision: "1002009116",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -5253,8 +5255,7 @@ try {
               }
 
               module.exports = {
-                normalizeError: normalizeError,
-                normalizeReactComponentStack: normalizeReactComponentStack
+                normalizeError: normalizeError
               };
             },
             null
@@ -20591,6 +20592,7 @@ try {
             ) {
               module.exports = {
                 pkg_cohort_key: "__pc",
+                connection_class_server_guess_key: "__ccg",
                 dpr_key: "dpr",
                 be_one_ahead_key: "__beoa",
                 spin_rev_key: "__spin_r",
@@ -20675,6 +20677,7 @@ try {
               "SiteData",
               "SprinkleConfig",
               "StaticSiteData",
+              "WebConnectionClassServerGuess",
               "WebSession",
               "asyncParams",
               "isSocialPlugin"
@@ -20731,6 +20734,9 @@ try {
                   (_babelHelpers$extends[
                     require("StaticSiteData").dpr_key
                   ] = require("SiteData").pr),
+                  (_babelHelpers$extends[
+                    require("StaticSiteData").connection_class_server_guess_key
+                  ] = require("WebConnectionClassServerGuess").connectionClass),
                   (_babelHelpers$extends.__rev = require("SiteData").client_revision),
                   (_babelHelpers$extends.__s = require("WebSession").getId()),
                   (_babelHelpers$extends[
@@ -39805,7 +39811,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1002008237","namespace":"FB","message":"' +
+        '","revision":"1002009116","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
