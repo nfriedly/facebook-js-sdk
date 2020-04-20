@@ -1,4 +1,4 @@
-/*1587413352,,JIT Construction: v1002014908,en_US*/
+/*1587421750,,JIT Construction: v1002016830,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3903,8 +3903,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1002014908,
-            client_revision: 1002014908,
+            server_revision: 1002016830,
+            client_revision: 1002016830,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3914,17 +3914,17 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6817888432756124550-0",
+            hsi: "6817924501801258885-0",
             spin: 0,
-            __spin_r: 1002014908,
+            __spin_r: 1002016830,
             __spin_b: "trunk",
-            __spin_t: 1587413352,
+            __spin_t: 1587421750,
             vip: "31.13.66.19"
           });
           __d("WebConnectionClassServerGuess", [], {
             connectionClass: "UNKNOWN"
           });
-          __d("ServerNonce", [], { ServerNonce: "hfbmwJyRXI7st0A8qHgsrF" });
+          __d("ServerNonce", [], { ServerNonce: "DAedxQFCYuDsPruXs68ep_" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4090,7 +4090,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1002014908",
+            revision: "1002016830",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -5370,6 +5370,211 @@ try {
             null
           );
           __d(
+            "TAALOpcodes",
+            [],
+            function $module_TAALOpcodes(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              "use strict";
+
+              var TAALOpcodes = {
+                PREVIOUS_FILE: 1,
+                PREVIOUS_FRAME: 2,
+                PREVIOUS_DIR: 3,
+                FORCED_KEY: 4
+              };
+
+              module.exports = TAALOpcodes;
+            },
+            null
+          );
+          __d(
+            "err",
+            ["TAALOpcodes"],
+            function $module_err(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              "use strict";
+
+              function err(format) {
+                var err = new Error(format);
+                if (err.stack === undefined) {
+                  try {
+                    throw err;
+                  } catch (_) {}
+                }
+                err.messageFormat = format;
+                for (
+                  var _len = arguments.length,
+                    rawArgs = new Array(_len > 1 ? _len - 1 : 0),
+                    _key = 1;
+                  _key < _len;
+                  _key++
+                ) {
+                  rawArgs[_key - 1] = arguments[_key];
+                }
+                err.messageParams = ES(
+                  rawArgs,
+                  "map",
+                  true,
+                  function rawArgs_map_$0(p) {
+                    return String(p);
+                  }
+                );
+                err.taalOpcodes = [require("TAALOpcodes").PREVIOUS_FRAME];
+                return err;
+              }
+
+              module.exports = err;
+            },
+            null
+          );
+          __d(
+            "getErrorSafe",
+            ["TAALOpcodes", "err"],
+            function $module_getErrorSafe(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              "use strict";
+
+              function getErrorSafe(maybeError) {
+                if (
+                  maybeError != null &&
+                  typeof maybeError === "object" &&
+                  typeof maybeError.message === "string"
+                ) {
+                  if (Object.isExtensible && Object.isExtensible(maybeError)) {
+                    return maybeError;
+                  } else {
+                    var error = require("err")(
+                      "Non-extensible thrown: %s",
+                      String(maybeError.message)
+                    );
+
+                    error.taalOpcodes = error.taalOpcodes || [];
+                    error.taalOpcodes.push(
+                      require("TAALOpcodes").PREVIOUS_FRAME
+                    );
+                    return error;
+                  }
+                } else {
+                  var _error = require("err")(
+                    "Non-object thrown: %s",
+                    String(maybeError)
+                  );
+                  _error.taalOpcodes = _error.taalOpcodes || [];
+                  _error.taalOpcodes.push(
+                    require("TAALOpcodes").PREVIOUS_FRAME
+                  );
+                  return _error;
+                }
+              }
+
+              module.exports = getErrorSafe;
+            },
+            null
+          );
+          __d(
+            "ErrorUnhandledRejectionHandler",
+            ["ErrorNormalizeUtils", "err", "getErrorSafe"],
+            function $module_ErrorUnhandledRejectionHandler(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              "use strict";
+
+              var localErrorPubSub = null;
+              var subscribed = false;
+
+              var ErrorUnhandledRejectionHandler = {
+                onunhandledrejection: function onunhandledrejection(event) {
+                  if (!localErrorPubSub) {
+                    return;
+                  }
+
+                  var reason = event.reason;
+
+                  var normalizedError;
+                  if (
+                    reason != null &&
+                    typeof reason === "object" &&
+                    (reason.name == null ||
+                      reason.name === "" ||
+                      reason.message == null ||
+                      reason.message === "")
+                  ) {
+                    try {
+                      var expandedError = require("err")(
+                        "UnhandledRejection: %s",
+                        ES("JSON", "stringify", false, reason)
+                      );
+
+                      normalizedError = require("ErrorNormalizeUtils").normalizeError(
+                        expandedError
+                      );
+                    } catch (_unused) {
+                      var _expandedError = require("err")(
+                        "UnhandledRejection: (circular) %s",
+                        ES("Object", "keys", false, reason).join(",")
+                      );
+
+                      normalizedError = require("ErrorNormalizeUtils").normalizeError(
+                        _expandedError
+                      );
+                    }
+                  } else {
+                    normalizedError = require("ErrorNormalizeUtils").normalizeError(
+                      require("getErrorSafe")(reason)
+                    );
+                  }
+                  if (!normalizedError.loggingSource) {
+                    normalizedError.loggingSource = "ONUNHANDLEDREJECTION";
+                  }
+
+                  localErrorPubSub.reportNormalizedError(normalizedError);
+
+                  event.preventDefault();
+                },
+
+                setup: function setup(injectedErrorPubSub) {
+                  localErrorPubSub = injectedErrorPubSub;
+                  if (
+                    typeof global.addEventListener === "function" &&
+                    !subscribed
+                  ) {
+                    subscribed = true;
+                    global.addEventListener(
+                      "unhandledrejection",
+                      ErrorUnhandledRejectionHandler.onunhandledrejection
+                    );
+                  }
+                }
+              };
+
+              module.exports = ErrorUnhandledRejectionHandler;
+            },
+            null
+          );
+          __d(
             "removeFromArray",
             [],
             function $module_removeFromArray(
@@ -5397,6 +5602,7 @@ try {
               "ErrorBrowserConsole",
               "ErrorGuardState",
               "ErrorNormalizeUtils",
+              "ErrorUnhandledRejectionHandler",
               "removeFromArray"
             ],
             function $module_ErrorPubSub(
@@ -5567,33 +5773,11 @@ try {
 
               global.onerror = ErrorPubSub.onerror;
 
+              require("ErrorUnhandledRejectionHandler").setup(ErrorPubSub);
+
               module.exports = ErrorPubSub;
             },
             3
-          );
-          __d(
-            "TAALOpcodes",
-            [],
-            function $module_TAALOpcodes(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              "use strict";
-
-              var TAALOpcodes = {
-                PREVIOUS_FILE: 1,
-                PREVIOUS_FRAME: 2,
-                PREVIOUS_DIR: 3,
-                FORCED_KEY: 4
-              };
-
-              module.exports = TAALOpcodes;
-            },
-            null
           );
           __d(
             "FBLogMessage",
@@ -9113,47 +9297,6 @@ try {
               };
 
               module.exports = BigPipeInstance;
-            },
-            null
-          );
-          __d(
-            "err",
-            ["TAALOpcodes"],
-            function $module_err(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              "use strict";
-
-              function err(format) {
-                var err = new Error(format);
-                if (err.stack === undefined) {
-                  try {
-                    throw err;
-                  } catch (_) {}
-                }
-                err.messageFormat = format;
-                for (
-                  var _len = arguments.length,
-                    rawArgs = new Array(_len > 1 ? _len - 1 : 0),
-                    _key = 1;
-                  _key < _len;
-                  _key++
-                ) {
-                  rawArgs[_key - 1] = arguments[_key];
-                }
-                err.messageParams = rawArgs.map(function rawArgs_map_$0(p) {
-                  return String(p);
-                });
-                err.taalOpcodes = [require("TAALOpcodes").PREVIOUS_FRAME];
-                return err;
-              }
-
-              module.exports = err;
             },
             null
           );
@@ -18588,7 +18731,8 @@ try {
                   retries: _retries,
                   errors: _errors,
                   loaded: _loaded,
-                  bootloaded: _bootloaded
+                  bootloaded: _bootloaded,
+                  _resolveCSRs: _resolveCSRs
                 }
               };
 
@@ -39809,7 +39953,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1002014908","namespace":"FB","message":"' +
+        '","revision":"1002016830","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
