@@ -1,4 +1,4 @@
-/*1587173350,,JIT Construction: v1002009116,en_US*/
+/*1587413352,,JIT Construction: v1002014908,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3822,8 +3822,7 @@ try {
                 "DISABLE_HEARTBEAT_POLLING",
                 "LAB_NET_NEW_UI_RELEASE",
                 "WIT_DEPRECATE_GITHUB",
-                "WIT_DEPRECATE_OLD_UX",
-                "FBE_SHOW_AD_ACCOUNT_SELECTION_SCREEN"
+                "WIT_DEPRECATE_OLD_UX"
               ]
             },
             ko: {
@@ -3852,8 +3851,7 @@ try {
                 "1GgWO1oFyLN",
                 "DDZhogI19W",
                 "9k7Y5kmDD1A",
-                "4jkC8ia3PYA",
-                "lVkepcQmsn"
+                "4jkC8ia3PYA"
               ]
             }
           });
@@ -3905,8 +3903,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1002009116,
-            client_revision: 1002009116,
+            server_revision: 1002014908,
+            client_revision: 1002014908,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3916,17 +3914,17 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6816857631970567721-0",
+            hsi: "6817888432756124550-0",
             spin: 0,
-            __spin_r: 1002009116,
+            __spin_r: 1002014908,
             __spin_b: "trunk",
-            __spin_t: 1587173350,
-            vip: "31.13.65.7"
+            __spin_t: 1587413352,
+            vip: "31.13.66.19"
           });
           __d("WebConnectionClassServerGuess", [], {
             connectionClass: "UNKNOWN"
           });
-          __d("ServerNonce", [], { ServerNonce: "P-627fx7HaB8fJvSV-71qg" });
+          __d("ServerNonce", [], { ServerNonce: "hfbmwJyRXI7st0A8qHgsrF" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4092,7 +4090,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1002009116",
+            revision: "1002014908",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -39811,7 +39809,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1002009116","namespace":"FB","message":"' +
+        '","revision":"1002014908","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
