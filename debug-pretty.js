@@ -1,4 +1,4 @@
-/*1587421750,,JIT Construction: v1002016830,en_US*/
+/*1587430146,,JIT Construction: v1002017912,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3903,8 +3903,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1002016830,
-            client_revision: 1002016830,
+            server_revision: 1002017912,
+            client_revision: 1002017912,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3914,17 +3914,17 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6817924501801258885-0",
+            hsi: "6817960563507404103-0",
             spin: 0,
-            __spin_r: 1002016830,
+            __spin_r: 1002017912,
             __spin_b: "trunk",
-            __spin_t: 1587421750,
+            __spin_t: 1587430146,
             vip: "31.13.66.19"
           });
           __d("WebConnectionClassServerGuess", [], {
             connectionClass: "UNKNOWN"
           });
-          __d("ServerNonce", [], { ServerNonce: "DAedxQFCYuDsPruXs68ep_" });
+          __d("ServerNonce", [], { ServerNonce: "iQQschOsBVt8akSdJjkvDl" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4090,7 +4090,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1002016830",
+            revision: "1002017912",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -10620,7 +10620,7 @@ try {
                 BASIC_WAIT_COMET: 2000,
                 VITAL_WAIT: 1000,
 
-                EXPIRY: 30 * 60000,
+                EXPIRY: 86400000,
 
                 LAST_STORAGE_FLUSH: "banzai:last_storage_flush",
                 STORAGE_FLUSH_INTERVAL: 12 * 60 * 60000,
@@ -24276,11 +24276,10 @@ try {
                   return (
                     post[2] >=
                     Banzai._getEventTime() -
-                      (require("BanzaiAdapter").config.EXPIRY ||
-                        (
-                          c_BanzaiConsts ||
-                          (c_BanzaiConsts = require("BanzaiConsts"))
-                        ).EXPIRY)
+                      (
+                        c_BanzaiConsts ||
+                        (c_BanzaiConsts = require("BanzaiConsts"))
+                      ).EXPIRY
                   );
                 },
 
@@ -39953,7 +39952,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1002016830","namespace":"FB","message":"' +
+        '","revision":"1002017912","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
