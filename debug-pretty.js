@@ -1,4 +1,4 @@
-/*1587434963,,JIT Construction: v1002018285,en_US*/
+/*1587448748,,JIT Construction: v1002019486,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3905,8 +3905,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1002018285,
-            client_revision: 1002018285,
+            server_revision: 1002019486,
+            client_revision: 1002019486,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3916,17 +3916,17 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6817981251287045500-0",
+            hsi: "6818040457309920754-0",
             spin: 0,
-            __spin_r: 1002018285,
+            __spin_r: 1002019486,
             __spin_b: "trunk",
-            __spin_t: 1587434963,
-            vip: "31.13.66.19"
+            __spin_t: 1587448748,
+            vip: "31.13.65.7"
           });
           __d("WebConnectionClassServerGuess", [], {
             connectionClass: "UNKNOWN"
           });
-          __d("ServerNonce", [], { ServerNonce: "6kzy_VdbmUxA8uiWHioPnP" });
+          __d("ServerNonce", [], { ServerNonce: "VR17GhgwWod2pd4vXjpOvC" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4081,7 +4081,6 @@ try {
               boosted_component: true,
               boosted_pagelikes: true,
               jslogger: true,
-              kbshortcuts_feed: true,
               mercury_send_error_logging: true,
               platform_oauth_client_events: true,
               xtrackable_clientview_batch: true,
@@ -4093,7 +4092,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1002018285",
+            revision: "1002019486",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -25498,7 +25497,6 @@ try {
                       start: this.start,
                       extras: this.extras
                     },
-
                     this.eventTimings
                   );
 
@@ -39961,7 +39959,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1002018285","namespace":"FB","message":"' +
+        '","revision":"1002019486","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
