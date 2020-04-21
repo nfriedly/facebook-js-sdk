@@ -1,4 +1,4 @@
-/*1587430146,,JIT Construction: v1002017912,en_US*/
+/*1587434963,,JIT Construction: v1002018285,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3822,7 +3822,8 @@ try {
                 "DISABLE_HEARTBEAT_POLLING",
                 "LAB_NET_NEW_UI_RELEASE",
                 "WIT_DEPRECATE_GITHUB",
-                "WIT_DEPRECATE_OLD_UX"
+                "WIT_DEPRECATE_OLD_UX",
+                "EO_SRT_HELPDESK_DASHBOARD_DISABLE_UNUSED_TAB_IN_RIGHT_PANEL"
               ]
             },
             ko: {
@@ -3851,7 +3852,8 @@ try {
                 "1GgWO1oFyLN",
                 "DDZhogI19W",
                 "9k7Y5kmDD1A",
-                "4jkC8ia3PYA"
+                "4jkC8ia3PYA",
+                "6fHw06UmAMW"
               ]
             }
           });
@@ -3903,8 +3905,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1002017912,
-            client_revision: 1002017912,
+            server_revision: 1002018285,
+            client_revision: 1002018285,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3914,17 +3916,17 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6817960563507404103-0",
+            hsi: "6817981251287045500-0",
             spin: 0,
-            __spin_r: 1002017912,
+            __spin_r: 1002018285,
             __spin_b: "trunk",
-            __spin_t: 1587430146,
+            __spin_t: 1587434963,
             vip: "31.13.66.19"
           });
           __d("WebConnectionClassServerGuess", [], {
             connectionClass: "UNKNOWN"
           });
-          __d("ServerNonce", [], { ServerNonce: "iQQschOsBVt8akSdJjkvDl" });
+          __d("ServerNonce", [], { ServerNonce: "6kzy_VdbmUxA8uiWHioPnP" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4079,6 +4081,7 @@ try {
               boosted_component: true,
               boosted_pagelikes: true,
               jslogger: true,
+              kbshortcuts_feed: true,
               mercury_send_error_logging: true,
               platform_oauth_client_events: true,
               xtrackable_clientview_batch: true,
@@ -4090,7 +4093,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1002017912",
+            revision: "1002018285",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -13453,6 +13456,12 @@ try {
                   value
                 ) {
                   return this.__setParam(param, "EnumToBoolMap", value);
+                };
+                _proto.setEnumToEnumMap = function setEnumToEnumMap(
+                  param,
+                  value
+                ) {
+                  return this.__setParam(param, "EnumToEnumMap", value);
                 };
                 _proto.setEnumToIntMap = function setEnumToIntMap(
                   param,
@@ -39952,7 +39961,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1002017912","namespace":"FB","message":"' +
+        '","revision":"1002018285","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
