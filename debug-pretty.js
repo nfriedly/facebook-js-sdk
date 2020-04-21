@@ -1,4 +1,4 @@
-/*1587448748,,JIT Construction: v1002019486,en_US*/
+/*1587511145,,JIT Construction: v1002022948,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3905,8 +3905,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1002019486,
-            client_revision: 1002019486,
+            server_revision: 1002022948,
+            client_revision: 1002022948,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3916,17 +3916,17 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6818040457309920754-0",
+            hsi: "6818308454470488626-0",
             spin: 0,
-            __spin_r: 1002019486,
+            __spin_r: 1002022948,
             __spin_b: "trunk",
-            __spin_t: 1587448748,
-            vip: "31.13.65.7"
+            __spin_t: 1587511145,
+            vip: "31.13.66.19"
           });
           __d("WebConnectionClassServerGuess", [], {
             connectionClass: "UNKNOWN"
           });
-          __d("ServerNonce", [], { ServerNonce: "VR17GhgwWod2pd4vXjpOvC" });
+          __d("ServerNonce", [], { ServerNonce: "1N5_YjKUveHg5Xvgr3RHcd" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4092,7 +4092,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1002019486",
+            revision: "1002022948",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -10621,6 +10621,8 @@ try {
                 BASIC_WAIT: 60000,
                 BASIC_WAIT_COMET: 2000,
                 VITAL_WAIT: 1000,
+
+                BATCH_SIZE_LIMIT: 64000,
 
                 EXPIRY: 86400000,
 
@@ -24239,10 +24241,6 @@ try {
                 "blue_total_messages_received";
               var BANZAI_ODS_TOTAL_MESSAGES_SENT = "blue_total_messages_sent";
 
-              var READY = 0;
-              var INFLIGHT = 1;
-              var SENT = 2;
-
               var ods_message = {
                 received: BANZAI_ODS_MESSAGES_RECEIVED,
                 sent: BANZAI_ODS_MESSAGES_SENT
@@ -24267,7 +24265,9 @@ try {
               function retryPost(inp_post, httpStatus) {
                 var post = inp_post;
 
-                post.__meta.status = READY;
+                post.__meta.status = (
+                  c_BanzaiConsts || (c_BanzaiConsts = require("BanzaiConsts"))
+                ).POST_READY;
                 post[3] = (post[3] || 0) + 1;
 
                 if (
@@ -24300,15 +24300,13 @@ try {
                   inflightPosts,
                   keepRetryable,
                   posts,
-                  maxPosts
+                  sendMinimumOnePost
                 ) {
-                  if (maxPosts === void 0) {
-                    maxPosts = null;
-                  }
                   var wadMap = {};
 
                   var numPosts = posts.length;
                   var batchFull = false;
+                  var currentSize = 0;
                   var filtered_posts = posts.filter(function posts_filter_$0(
                     post,
                     idx
@@ -24317,13 +24315,37 @@ try {
                       return true;
                     }
 
+                    if (
+                      !sendMinimumOnePost &&
+                      post[4] + currentSize >
+                        (
+                          c_BanzaiConsts ||
+                          (c_BanzaiConsts = require("BanzaiConsts"))
+                        ).BATCH_SIZE_LIMIT
+                    ) {
+                      return true;
+                    }
+
                     var m = post.__meta;
 
-                    if (m.status >= SENT || !Banzai._canSend(post)) {
+                    if (
+                      m.status >=
+                        (
+                          c_BanzaiConsts ||
+                          (c_BanzaiConsts = require("BanzaiConsts"))
+                        ).POST_SENT ||
+                      !Banzai._canSend(post)
+                    ) {
                       return false;
                     }
 
-                    if (m.status >= INFLIGHT) {
+                    if (
+                      m.status >=
+                      (
+                        c_BanzaiConsts ||
+                        (c_BanzaiConsts = require("BanzaiConsts"))
+                      ).POST_INFLIGHT
+                    ) {
                       return true;
                     }
 
@@ -24349,22 +24371,31 @@ try {
                       inflightWads.push(wad);
                     }
 
-                    m.status = INFLIGHT;
+                    m.status = (
+                      c_BanzaiConsts ||
+                      (c_BanzaiConsts = require("BanzaiConsts"))
+                    ).POST_INFLIGHT;
                     wad.posts.push(post);
                     inflightPosts.push(post);
 
-                    if (maxPosts != null && maxPosts > 0) {
-                      maxPosts--;
-                      if (maxPosts == 0) {
-                        batchFull = true;
-                        if (idx < numPosts - 1) {
-                          Banzai._schedule(0);
-                        }
-                      }
+                    currentSize += post[4];
+
+                    if (
+                      currentSize >=
+                      (
+                        c_BanzaiConsts ||
+                        (c_BanzaiConsts = require("BanzaiConsts"))
+                      ).BATCH_SIZE_LIMIT
+                    ) {
+                      batchFull = true;
                     }
 
                     return keepRetryable && m.retry;
                   });
+
+                  if (batchFull && filtered_posts.length) {
+                    Banzai._schedule(0);
+                  }
 
                   if (
                     inflightPosts.length +
@@ -24486,7 +24517,8 @@ try {
                     inflightWads,
                     inflightPosts,
                     true,
-                    posts
+                    posts,
+                    false
                   );
 
                   if (inflightWads.length > 0) {
@@ -24507,7 +24539,9 @@ try {
                 },
 
                 _resetPostStatus: function _resetPostStatus(post) {
-                  post.__meta.status = READY;
+                  post.__meta.status = (
+                    c_BanzaiConsts || (c_BanzaiConsts = require("BanzaiConsts"))
+                  ).POST_READY;
                 },
 
                 _restore: function _restore(unstash) {
@@ -24543,8 +24577,7 @@ try {
 
                 _sendWithCallbacks: function _sendWithCallbacks(
                   onSuccess,
-                  onError,
-                  batchSize
+                  onError
                 ) {
                   nextSend = null;
                   Banzai._schedule(Banzai.BASIC.delay);
@@ -24577,7 +24610,7 @@ try {
                     inflightPosts,
                     true,
                     postBuffer,
-                    batchSize
+                    true
                   );
 
                   if (inflightWads.length <= 0) {
@@ -24606,7 +24639,10 @@ try {
                         post
                       ) {
                         var post_with_meta = post;
-                        post_with_meta.__meta.status = SENT;
+                        post_with_meta.__meta.status = (
+                          c_BanzaiConsts ||
+                          (c_BanzaiConsts = require("BanzaiConsts"))
+                        ).POST_SENT;
                         if (post_with_meta.__meta.callback) {
                           post_with_meta.__meta.callback();
                         }
@@ -24660,7 +24696,8 @@ try {
                     inflightWads,
                     inflightPosts,
                     false,
-                    postBuffer
+                    postBuffer,
+                    false
                   );
 
                   if (inflightWads.length <= 0) {
@@ -24774,14 +24811,28 @@ try {
                 },
 
                 _wrapData: function _wrapData(route, data, time, retry, size) {
-                  var post = [route, data, time, 0, size];
+                  var _size;
+                  var post = [
+                    route,
+                    data,
+                    time,
+                    0,
+                    (_size = size) != null
+                      ? _size
+                      : data
+                      ? JSON.stringify(data).length
+                      : 0
+                  ];
 
                   post.__meta = {
                     webSessionId: Banzai._getWebSessionId(),
                     userID: Banzai._getUserId(),
                     appID: Banzai._getAppId(),
                     retry: retry === true,
-                    status: READY
+                    status: (
+                      c_BanzaiConsts ||
+                      (c_BanzaiConsts = require("BanzaiConsts"))
+                    ).POST_READY
                   };
 
                   return post;
@@ -24939,7 +24990,10 @@ try {
                   }
 
                   if (options == null ? void 0 : options.signal) {
-                    post_with_meta.__meta.status = INFLIGHT;
+                    post_with_meta.__meta.status = (
+                      c_BanzaiConsts ||
+                      (c_BanzaiConsts = require("BanzaiConsts"))
+                    ).POST_INFLIGHT;
 
                     var payload = [
                       {
@@ -24957,7 +25011,10 @@ try {
                       function BanzaiAdapter_send_$1() {
                         postSentTotal++;
                         signalSentCounter++;
-                        post_with_meta.__meta.status = SENT;
+                        post_with_meta.__meta.status = (
+                          c_BanzaiConsts ||
+                          (c_BanzaiConsts = require("BanzaiConsts"))
+                        ).POST_SENT;
                         if (post_with_meta.__meta.callback) {
                           post_with_meta.__meta.callback();
                         }
@@ -39959,7 +40016,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1002019486","namespace":"FB","message":"' +
+        '","revision":"1002022948","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
