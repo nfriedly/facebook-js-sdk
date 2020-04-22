@@ -1,4 +1,4 @@
-/*1587511145,,JIT Construction: v1002022948,en_US*/
+/*1587515955,,JIT Construction: v1002023307,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3905,8 +3905,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1002022948,
-            client_revision: 1002022948,
+            server_revision: 1002023307,
+            client_revision: 1002023307,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3916,17 +3916,17 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6818308454470488626-0",
+            hsi: "6818329108884153558-0",
             spin: 0,
-            __spin_r: 1002022948,
+            __spin_r: 1002023307,
             __spin_b: "trunk",
-            __spin_t: 1587511145,
+            __spin_t: 1587515955,
             vip: "31.13.66.19"
           });
           __d("WebConnectionClassServerGuess", [], {
             connectionClass: "UNKNOWN"
           });
-          __d("ServerNonce", [], { ServerNonce: "1N5_YjKUveHg5Xvgr3RHcd" });
+          __d("ServerNonce", [], { ServerNonce: "ObyZZY3sFyLIwYwvs9kqql" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4092,7 +4092,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1002022948",
+            revision: "1002023307",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -22621,6 +22621,88 @@ try {
             null
           );
           __d(
+            "QueryString",
+            [],
+            function $module_QueryString(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              function encode(bag) {
+                var pairs = [];
+                ES(
+                  ES("Object", "keys", false, bag).sort(),
+                  "forEach",
+                  true,
+                  function forEach_$0(key) {
+                    var value = bag[key];
+
+                    if (value === undefined) {
+                      return;
+                    }
+
+                    if (value === null) {
+                      pairs.push(key);
+                      return;
+                    }
+
+                    pairs.push(
+                      encodeURIComponent(key) + "=" + encodeURIComponent(value)
+                    );
+                  }
+                );
+                return pairs.join("&");
+              }
+
+              function decode(str, strict) {
+                if (strict === void 0) {
+                  strict = false;
+                }
+                var data = {};
+                if (str === "") {
+                  return data;
+                }
+
+                var pairs = str.split("&");
+                for (var i = 0; i < pairs.length; i++) {
+                  var pair = pairs[i].split("=", 2);
+                  var key = decodeURIComponent(pair[0]);
+                  if (
+                    strict &&
+                    Object.prototype.hasOwnProperty.call(data, key)
+                  ) {
+                    throw new URIError("Duplicate key: " + key);
+                  }
+                  data[key] =
+                    pair.length === 2 ? decodeURIComponent(pair[1]) : null;
+                }
+                return data;
+              }
+
+              function appendToUrl(url, params) {
+                return (
+                  url +
+                  (ES(url, "indexOf", true, "?") !== -1 ? "&" : "?") +
+                  (typeof params === "string"
+                    ? params
+                    : QueryString.encode(params))
+                );
+              }
+
+              var QueryString = {
+                encode: encode,
+                decode: decode,
+                appendToUrl: appendToUrl
+              };
+
+              module.exports = QueryString;
+            },
+            null
+          );
+          __d(
             "Run",
             ["requireCond", "cr:925100"],
             function $module_Run(
@@ -23262,10 +23344,12 @@ try {
           __d(
             "BanzaiAdapter",
             [
+              "invariant",
               "Arbiter",
               "BanzaiConsts",
               "CurrentUser",
               "ErrorGuard",
+              "QueryString",
               "Run",
               "URI",
               "UserAgent",
@@ -23281,7 +23365,8 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports
+              exports,
+              invariant
             ) {
               var c_ErrorGuard;
               var c_URI;
@@ -23295,11 +23380,17 @@ try {
 
               var adapter = {
                 config: require("BanzaiConfig"),
-                endpoint: ENDPOINT,
                 useBeacon: true,
 
-                getExtraParams: function getExtraParams(_use_with_beacon) {
-                  return require("getAsyncParams")(METHOD);
+                getEndPointUrl: function getEndPointUrl(_use_with_beacon) {
+                  var extra_params = require("getAsyncParams")(METHOD);
+                  var url = require("QueryString").appendToUrl(
+                    ENDPOINT,
+                    extra_params
+                  );
+                  url.length <= 2000 ||
+                    invariant(0, "url is too long: %s", url);
+                  return url;
                 },
 
                 getUserID: function getUserID() {
@@ -23346,9 +23437,11 @@ try {
                 },
 
                 send: function send(payload, onSuccess, onError, signal) {
+                  var url = adapter.getEndPointUrl(false);
                   var uri = require("ZeroRewrites").rewriteURI(
-                    new (c_URI || (c_URI = require("URI")))(ENDPOINT)
+                    new (c_URI || (c_URI = require("URI")))(url)
                   );
+
                   var xhr = require("ZeroRewrites").getTransportBuilderForURI(
                     uri
                   )();
@@ -24463,16 +24556,11 @@ try {
                   return global.navigator.sendBeacon(endpoint, payload);
                 },
 
-                _prepForTransit: function _prepForTransit(
-                  payload,
-                  use_with_beacon
-                ) {
+                _prepForTransit: function _prepForTransit(payload) {
                   var formData = new FormData();
                   formData.append("ts", String(Date.now()));
 
-                  var extra_params = require("BanzaiAdapter").getExtraParams(
-                    use_with_beacon
-                  );
+                  var extra_params = {};
                   Object.keys(extra_params)
                     .sort()
                     .forEach(function forEach_$0(key) {
@@ -24524,11 +24612,9 @@ try {
                   if (inflightWads.length > 0) {
                     inflightWads[0].send_method = "beacon";
                     inflightWads.map(Banzai._prepWadForTransit);
-                    var payload = Banzai._prepForTransit(inflightWads, true);
-                    var success = Banzai._sendBeacon(
-                      Banzai.adapter.endpoint,
-                      payload
-                    );
+                    var payload = Banzai._prepForTransit(inflightWads);
+                    var url = require("BanzaiAdapter").getEndPointUrl(true);
+                    var success = Banzai._sendBeacon(url, payload);
 
                     if (!success) {
                       require("FBLogger")("banzai").warn(
@@ -24633,7 +24719,7 @@ try {
 
                   inflightWads.map(Banzai._prepWadForTransit);
                   require("BanzaiAdapter").send(
-                    Banzai._prepForTransit(inflightWads, false),
+                    Banzai._prepForTransit(inflightWads),
                     function BanzaiAdapter_send_$1() {
                       inflightPosts.forEach(function inflightPosts_forEach_$0(
                         post
@@ -24707,11 +24793,9 @@ try {
                   inflightWads[0].send_method = "beacon";
                   inflightWads.map(Banzai._prepWadForTransit);
 
-                  var payload = Banzai._prepForTransit(inflightWads, true);
-                  var success = Banzai._sendBeacon(
-                    Banzai.adapter.endpoint,
-                    payload
-                  );
+                  var payload = Banzai._prepForTransit(inflightWads);
+                  var url = require("BanzaiAdapter").getEndPointUrl(true);
+                  var success = Banzai._sendBeacon(url, payload);
 
                   if (!success) {
                     var _banzai;
@@ -25007,7 +25091,7 @@ try {
                     ];
 
                     require("BanzaiAdapter").send(
-                      Banzai._prepForTransit(payload, false),
+                      Banzai._prepForTransit(payload),
                       function BanzaiAdapter_send_$1() {
                         postSentTotal++;
                         signalSentCounter++;
@@ -27046,88 +27130,6 @@ try {
               };
 
               module.exports = PlatformOAuthDialogLoginFunnelLogger;
-            },
-            null
-          );
-          __d(
-            "QueryString",
-            [],
-            function $module_QueryString(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              function encode(bag) {
-                var pairs = [];
-                ES(
-                  ES("Object", "keys", false, bag).sort(),
-                  "forEach",
-                  true,
-                  function forEach_$0(key) {
-                    var value = bag[key];
-
-                    if (value === undefined) {
-                      return;
-                    }
-
-                    if (value === null) {
-                      pairs.push(key);
-                      return;
-                    }
-
-                    pairs.push(
-                      encodeURIComponent(key) + "=" + encodeURIComponent(value)
-                    );
-                  }
-                );
-                return pairs.join("&");
-              }
-
-              function decode(str, strict) {
-                if (strict === void 0) {
-                  strict = false;
-                }
-                var data = {};
-                if (str === "") {
-                  return data;
-                }
-
-                var pairs = str.split("&");
-                for (var i = 0; i < pairs.length; i++) {
-                  var pair = pairs[i].split("=", 2);
-                  var key = decodeURIComponent(pair[0]);
-                  if (
-                    strict &&
-                    Object.prototype.hasOwnProperty.call(data, key)
-                  ) {
-                    throw new URIError("Duplicate key: " + key);
-                  }
-                  data[key] =
-                    pair.length === 2 ? decodeURIComponent(pair[1]) : null;
-                }
-                return data;
-              }
-
-              function appendToUrl(url, params) {
-                return (
-                  url +
-                  (ES(url, "indexOf", true, "?") !== -1 ? "&" : "?") +
-                  (typeof params === "string"
-                    ? params
-                    : QueryString.encode(params))
-                );
-              }
-
-              var QueryString = {
-                encode: encode,
-                decode: decode,
-                appendToUrl: appendToUrl
-              };
-
-              module.exports = QueryString;
             },
             null
           );
@@ -40016,7 +40018,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1002022948","namespace":"FB","message":"' +
+        '","revision":"1002023307","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
