@@ -1,4 +1,4 @@
-/*1587524956,,JIT Construction: v1002024040,en_US*/
+/*1587587360,,JIT Construction: v1002027092,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3905,8 +3905,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1002024040,
-            client_revision: 1002024040,
+            server_revision: 1002027092,
+            client_revision: 1002027092,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3916,17 +3916,17 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6818367773768180093-0",
+            hsi: "6818635791887907800-0",
             spin: 0,
-            __spin_r: 1002024040,
+            __spin_r: 1002027092,
             __spin_b: "trunk",
-            __spin_t: 1587524956,
-            vip: "31.13.66.19"
+            __spin_t: 1587587360,
+            vip: "31.13.65.7"
           });
           __d("WebConnectionClassServerGuess", [], {
             connectionClass: "UNKNOWN"
           });
-          __d("ServerNonce", [], { ServerNonce: "5l2nCxDLLknRqfXFLT85hb" });
+          __d("ServerNonce", [], { ServerNonce: "_QKV5-KErzw4chAQV_X5Qu" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4092,7 +4092,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1002024040",
+            revision: "1002027092",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -4812,6 +4812,30 @@ try {
             null
           );
           __d(
+            "TAALOpcodes",
+            [],
+            function $module_TAALOpcodes(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              "use strict";
+
+              var TAALOpcodes = {
+                PREVIOUS_FILE: 1,
+                PREVIOUS_FRAME: 2,
+                PREVIOUS_DIR: 3,
+                FORCED_KEY: 4
+              };
+
+              module.exports = TAALOpcodes;
+            },
+            null
+          );
+          __d(
             "getSimpleHash",
             [],
             function $module_getSimpleHash(
@@ -4914,6 +4938,7 @@ try {
             [
               "ErrorSerializer",
               "FBLoggerMetadata",
+              "TAALOpcodes",
               "getSimpleHash",
               "performanceNow"
             ],
@@ -4928,9 +4953,6 @@ try {
               "use strict";
               var c_performanceNow;
 
-              var HTTP_OR_HTTPS_URI_PATTERN = /^https?:\/\//i;
-              var TYPECHECKER_ERROR_PATTERN = /^Type Mismatch for/;
-
               var EVAL_FRAME_PATTERN_CHROME = /^at .*eval eval (at .*\:\d+\:\d+), .*$/;
               var IE_AND_OTHER_FRAME_PATTERN = /(.*)[@\s][^\s]+$/;
 
@@ -4942,33 +4964,6 @@ try {
 
               if (Error.stackTraceLimit != null && Error.stackTraceLimit < 40) {
                 Error.stackTraceLimit = 40;
-              }
-
-              function getColumn(err) {
-                var column = err.columnNumber || err.column;
-                return column != null ? String(column) : "";
-              }
-
-              function getColumnFromStackData(stackData) {
-                return (stackData[0] && stackData[0].column) || "";
-              }
-
-              function getLine(err) {
-                var line = err.lineNumber || err.line;
-                return line != null ? String(line) : "";
-              }
-
-              function getLineFromStackData(stackData) {
-                return (stackData[0] && stackData[0].line) || "";
-              }
-
-              function getScript(err) {
-                var script = err.fileName || err.sourceURL;
-                return script != null ? String(script) : "";
-              }
-
-              function getScriptFromStackData(stackData) {
-                return (stackData[0] && stackData[0].script) || "";
               }
 
               function getIEFrame(frame) {
@@ -5104,43 +5099,30 @@ try {
 
               function normalizeError(err) {
                 var _err$errorName,
+                  _err$lineNumber,
+                  _err$columnNumber,
                   _err$extra,
                   _err$guard,
                   _err$guardList,
-                  _serializable$params;
+                  _serializable$params,
+                  _err$fileName;
                 var stackData = normalizeErrorStack(err);
-                var stackPopped = false;
-
                 var serializable = require("ErrorSerializer").parseFromError(
                   err
                 );
-                if (err.framesToPop != null) {
-                  var framesToPop = err.framesToPop;
-                  var lastPoppedFrame;
-                  while (framesToPop > 0 && stackData.length > 0) {
-                    lastPoppedFrame = stackData.shift();
-                    framesToPop--;
-                    stackPopped = true;
-                  }
 
-                  if (
-                    TYPECHECKER_ERROR_PATTERN.test(serializable.message) &&
-                    err.framesToPop === 2 &&
-                    lastPoppedFrame != null
-                  ) {
-                    if (
-                      HTTP_OR_HTTPS_URI_PATTERN.test(lastPoppedFrame.script)
-                    ) {
-                      serializable.message +=
-                        " at " +
-                        lastPoppedFrame.script +
-                        (lastPoppedFrame.line
-                          ? ":" + lastPoppedFrame.line
-                          : "") +
-                        (lastPoppedFrame.column
-                          ? ":" + lastPoppedFrame.column
-                          : "");
-                    }
+                var framesToPop = err.framesToPop;
+                if (framesToPop != null) {
+                  var _serializable$taalOpc;
+                  framesToPop = Math.min(framesToPop, stackData.length);
+                  serializable.taalOpcodes =
+                    (_serializable$taalOpc = serializable.taalOpcodes) != null
+                      ? _serializable$taalOpc
+                      : [];
+                  while (framesToPop-- > 0) {
+                    serializable.taalOpcodes.unshift(
+                      require("TAALOpcodes").PREVIOUS_FRAME
+                    );
                   }
                 }
 
@@ -5181,10 +5163,17 @@ try {
                     ? _err$errorName
                     : err.name;
 
+                var line =
+                  (_err$lineNumber = err.lineNumber) != null
+                    ? _err$lineNumber
+                    : err.line;
+                var column =
+                  (_err$columnNumber = err.columnNumber) != null
+                    ? _err$columnNumber
+                    : err.column;
+
                 var info = {
-                  column: stackPopped
-                    ? getColumnFromStackData(stackData)
-                    : getColumn(err) || getColumnFromStackData(stackData),
+                  column: column == null ? null : String(column),
                   clientTime: Math.floor(ES("Date", "now", false) / 1000),
                   deferredSource:
                     err.deferredSource != null
@@ -5200,9 +5189,7 @@ try {
                       : [],
                   hash: require("getSimpleHash")(name + stack),
                   isNormalizedError: true,
-                  line: stackPopped
-                    ? getLineFromStackData(stackData)
-                    : getLine(err) || getLineFromStackData(stackData),
+                  line: line == null ? null : String(line),
                   loggingSource: err.loggingSource,
                   message: require("ErrorSerializer").toFormattedMessage(
                     serializable
@@ -5225,9 +5212,10 @@ try {
                   ),
                   project: err.project,
                   reactComponentStack: reactComponentStack,
-                  script: stackPopped
-                    ? getScriptFromStackData(stackData)
-                    : getScript(err) || getScriptFromStackData(stackData),
+                  script:
+                    (_err$fileName = err.fileName) != null
+                      ? _err$fileName
+                      : err.sourceURL,
                   serverHash: err.serverHash,
                   stack: stack,
                   stackFrames: stackData,
@@ -5368,30 +5356,6 @@ try {
               };
 
               module.exports = ErrorGuardState;
-            },
-            null
-          );
-          __d(
-            "TAALOpcodes",
-            [],
-            function $module_TAALOpcodes(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              "use strict";
-
-              var TAALOpcodes = {
-                PREVIOUS_FILE: 1,
-                PREVIOUS_FRAME: 2,
-                PREVIOUS_DIR: 3,
-                FORCED_KEY: 4
-              };
-
-              module.exports = TAALOpcodes;
             },
             null
           );
@@ -40079,7 +40043,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1002024040","namespace":"FB","message":"' +
+        '","revision":"1002027092","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
