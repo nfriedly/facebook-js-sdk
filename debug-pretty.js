@@ -1,4 +1,4 @@
-/*1587515955,,JIT Construction: v1002023307,en_US*/
+/*1587524956,,JIT Construction: v1002024040,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3905,8 +3905,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1002023307,
-            client_revision: 1002023307,
+            server_revision: 1002024040,
+            client_revision: 1002024040,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3916,17 +3916,17 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6818329108884153558-0",
+            hsi: "6818367773768180093-0",
             spin: 0,
-            __spin_r: 1002023307,
+            __spin_r: 1002024040,
             __spin_b: "trunk",
-            __spin_t: 1587515955,
+            __spin_t: 1587524956,
             vip: "31.13.66.19"
           });
           __d("WebConnectionClassServerGuess", [], {
             connectionClass: "UNKNOWN"
           });
-          __d("ServerNonce", [], { ServerNonce: "ObyZZY3sFyLIwYwvs9kqql" });
+          __d("ServerNonce", [], { ServerNonce: "5l2nCxDLLknRqfXFLT85hb" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4092,7 +4092,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1002023307",
+            revision: "1002024040",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -24304,12 +24304,197 @@ try {
             null
           );
           __d(
+            "BanzaiUtils",
+            [
+              "BanzaiConsts",
+              "CurrentUser",
+              "FBLogger",
+              "WebSession",
+              "performanceAbsoluteNow"
+            ],
+            function $module_BanzaiUtils(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              "use strict";
+              var c_performanceAbsoluteNow;
+              var c_BanzaiConsts;
+
+              var BanzaiUtils = {
+                canSend: function canSend(post) {
+                  return (
+                    post[2] >=
+                    (c_performanceAbsoluteNow ||
+                      (c_performanceAbsoluteNow = require("performanceAbsoluteNow")))() -
+                      (
+                        c_BanzaiConsts ||
+                        (c_BanzaiConsts = require("BanzaiConsts"))
+                      ).EXPIRY
+                  );
+                },
+                filterPost: function filterPost(
+                  post,
+                  inflightWads,
+                  inflightPosts,
+                  filterConfig
+                ) {
+                  if (filterConfig.overlimit) {
+                    return true;
+                  }
+
+                  if (
+                    !filterConfig.sendMinimumOnePost &&
+                    post[4] + filterConfig.currentSize >
+                      (
+                        c_BanzaiConsts ||
+                        (c_BanzaiConsts = require("BanzaiConsts"))
+                      ).BATCH_SIZE_LIMIT
+                  ) {
+                    return true;
+                  }
+
+                  var m = post.__meta;
+
+                  if (
+                    (m.status != null &&
+                      m.status >=
+                        (
+                          c_BanzaiConsts ||
+                          (c_BanzaiConsts = require("BanzaiConsts"))
+                        ).POST_SENT) ||
+                    !BanzaiUtils.canSend(post)
+                  ) {
+                    return false;
+                  }
+
+                  if (
+                    m.status != null &&
+                    m.status >=
+                      (
+                        c_BanzaiConsts ||
+                        (c_BanzaiConsts = require("BanzaiConsts"))
+                      ).POST_INFLIGHT
+                  ) {
+                    return true;
+                  }
+
+                  var needs_compression =
+                    m.compress != null ? m.compress : true;
+
+                  var hash =
+                    (m.webSessionId != null ? m.webSessionId : "null") +
+                    (m.userID != null ? m.userID : "null") +
+                    (m.appID != null ? m.appID : "null") +
+                    (needs_compression ? "compress" : "");
+                  var wad = filterConfig.wadMap.get(hash);
+                  if (!wad) {
+                    wad = {
+                      app_id: m.appID,
+                      needs_compression: needs_compression,
+                      posts: [],
+                      user: m.userID,
+                      webSessionId: m.webSessionId
+                    };
+
+                    filterConfig.wadMap.set(hash, wad);
+                    inflightWads.push(wad);
+                  }
+
+                  m.status = (
+                    c_BanzaiConsts || (c_BanzaiConsts = require("BanzaiConsts"))
+                  ).POST_INFLIGHT;
+                  if (Array.isArray(wad.posts)) {
+                    wad.posts.push(post);
+                  } else {
+                    require("FBLogger")("banzai").mustfix(
+                      "Posts were a string instead of array"
+                    );
+                  }
+                  inflightPosts.push(post);
+
+                  filterConfig.currentSize += post[4];
+                  if (
+                    filterConfig.currentSize >=
+                    (
+                      c_BanzaiConsts ||
+                      (c_BanzaiConsts = require("BanzaiConsts"))
+                    ).BATCH_SIZE_LIMIT
+                  ) {
+                    filterConfig.overlimit = true;
+                  }
+
+                  return filterConfig.keepRetryable && Boolean(m.retry);
+                },
+                resetPostStatus: function resetPostStatus(post) {
+                  post.__meta.status = (
+                    c_BanzaiConsts || (c_BanzaiConsts = require("BanzaiConsts"))
+                  ).POST_READY;
+                },
+                retryPost: function retryPost(
+                  inp_post,
+                  httpStatus,
+                  postBuffer
+                ) {
+                  var post = inp_post;
+
+                  post.__meta.status = (
+                    c_BanzaiConsts || (c_BanzaiConsts = require("BanzaiConsts"))
+                  ).POST_READY;
+                  post[3] = (post[3] || 0) + 1;
+
+                  if (
+                    post.__meta.retry !== true &&
+                    httpStatus >= 400 &&
+                    httpStatus < 600
+                  ) {
+                    postBuffer.push(inp_post);
+                  }
+                },
+                wrapData: function wrapData(route, data, time, retry, size) {
+                  var _size;
+                  var post = [
+                    route,
+                    data,
+                    time,
+                    0,
+                    (_size = size) != null
+                      ? _size
+                      : data
+                      ? JSON.stringify(data).length
+                      : 0
+                  ];
+
+                  post.__meta = {
+                    appID: require("CurrentUser").getAppID(),
+                    retry: retry === true,
+                    status: (
+                      c_BanzaiConsts ||
+                      (c_BanzaiConsts = require("BanzaiConsts"))
+                    ).POST_READY,
+                    userID: require("CurrentUser").getID(),
+                    webSessionId: require("WebSession").getId()
+                  };
+
+                  return post;
+                }
+              };
+
+              module.exports = BanzaiUtils;
+            },
+            null
+          );
+          __d(
             "BanzaiBase",
             [
               "BanzaiAdapter",
               "BanzaiCompressionUtils",
               "BanzaiConsts",
               "BanzaiLazyQueue",
+              "BanzaiUtils",
               "CurrentUser",
               "ErrorGuard",
               "FBLogger",
@@ -24323,8 +24508,8 @@ try {
               module,
               exports
             ) {
-              var c_BanzaiConsts;
               var c_ErrorGuard;
+              var c_BanzaiConsts;
 
               var BANZAI_ODS_ROUTE = "categorized_ods";
               var BANZAI_ODS_BEACON_FAILURE = "blue_send_via_beacon_failure";
@@ -24355,35 +24540,7 @@ try {
 
               var postSentTotal = 0;
 
-              function retryPost(inp_post, httpStatus) {
-                var post = inp_post;
-
-                post.__meta.status = (
-                  c_BanzaiConsts || (c_BanzaiConsts = require("BanzaiConsts"))
-                ).POST_READY;
-                post[3] = (post[3] || 0) + 1;
-
-                if (
-                  !post.__meta.retry &&
-                  httpStatus >= 400 &&
-                  httpStatus < 600
-                ) {
-                  postBuffer.push(inp_post);
-                }
-              }
-
               var Banzai = {
-                _canSend: function _canSend(post) {
-                  return (
-                    post[2] >=
-                    Banzai._getEventTime() -
-                      (
-                        c_BanzaiConsts ||
-                        (c_BanzaiConsts = require("BanzaiConsts"))
-                      ).EXPIRY
-                  );
-                },
-
                 _clearPostBuffer: function _clearPostBuffer() {
                   postBuffer = [];
                 },
@@ -24395,98 +24552,27 @@ try {
                   posts,
                   sendMinimumOnePost
                 ) {
-                  var wadMap = {};
+                  var filterConfig = {
+                    currentSize: 0,
+                    keepRetryable: keepRetryable,
+                    overlimit: false,
+                    sendMinimumOnePost: sendMinimumOnePost,
+                    wadMap: new Map()
+                  };
 
-                  var numPosts = posts.length;
-                  var batchFull = false;
-                  var currentSize = 0;
                   var filtered_posts = posts.filter(function posts_filter_$0(
                     post,
                     idx
                   ) {
-                    if (batchFull) {
-                      return true;
-                    }
-
-                    if (
-                      !sendMinimumOnePost &&
-                      post[4] + currentSize >
-                        (
-                          c_BanzaiConsts ||
-                          (c_BanzaiConsts = require("BanzaiConsts"))
-                        ).BATCH_SIZE_LIMIT
-                    ) {
-                      return true;
-                    }
-
-                    var m = post.__meta;
-
-                    if (
-                      m.status >=
-                        (
-                          c_BanzaiConsts ||
-                          (c_BanzaiConsts = require("BanzaiConsts"))
-                        ).POST_SENT ||
-                      !Banzai._canSend(post)
-                    ) {
-                      return false;
-                    }
-
-                    if (
-                      m.status >=
-                      (
-                        c_BanzaiConsts ||
-                        (c_BanzaiConsts = require("BanzaiConsts"))
-                      ).POST_INFLIGHT
-                    ) {
-                      return true;
-                    }
-
-                    var needs_compression =
-                      m.compress != null ? m.compress : true;
-
-                    var hash =
-                      (m.webSessionId != null ? m.webSessionId : "null") +
-                      (m.userID != null ? m.userID : "null") +
-                      (m.appID != null ? m.appID : "null") +
-                      (needs_compression ? "compress" : "");
-                    var wad = wadMap[hash];
-                    if (!wad) {
-                      wad = {
-                        user: m.userID,
-                        webSessionId: m.webSessionId,
-                        app_id: m.appID,
-                        posts: [],
-                        needs_compression: needs_compression
-                      };
-
-                      wadMap[hash] = wad;
-                      inflightWads.push(wad);
-                    }
-
-                    m.status = (
-                      c_BanzaiConsts ||
-                      (c_BanzaiConsts = require("BanzaiConsts"))
-                    ).POST_INFLIGHT;
-                    wad.posts.push(post);
-                    inflightPosts.push(post);
-
-                    currentSize += post[4];
-
-                    if (
-                      currentSize >=
-                      (
-                        c_BanzaiConsts ||
-                        (c_BanzaiConsts = require("BanzaiConsts"))
-                      ).BATCH_SIZE_LIMIT
-                    ) {
-                      batchFull = true;
-                    }
-
-                    return keepRetryable && m.retry;
+                    return require("BanzaiUtils").filterPost(
+                      post,
+                      inflightWads,
+                      inflightPosts,
+                      filterConfig
+                    );
                   });
 
-                  if (batchFull && filtered_posts.length) {
+                  if (filterConfig.overlimit && filtered_posts.length) {
                     Banzai._schedule(0);
                   }
 
@@ -24624,12 +24710,6 @@ try {
                   }
                 },
 
-                _resetPostStatus: function _resetPostStatus(post) {
-                  post.__meta.status = (
-                    c_BanzaiConsts || (c_BanzaiConsts = require("BanzaiConsts"))
-                  ).POST_READY;
-                },
-
                 _restore: function _restore(unstash) {
                   var storage = Banzai._getStorage();
                   (
@@ -24741,7 +24821,11 @@ try {
                       inflightPosts.forEach(function inflightPosts_forEach_$0(
                         post
                       ) {
-                        retryPost(post, httpStatus);
+                        require("BanzaiUtils").retryPost(
+                          post,
+                          httpStatus,
+                          postBuffer
+                        );
                       });
 
                       if (onError) {
@@ -24807,7 +24891,7 @@ try {
                     });
 
                     postBuffer.push(
-                      Banzai._wrapData(
+                      require("BanzaiUtils").wrapData(
                         BANZAI_ODS_ROUTE,
                         {
                           "2979": {
@@ -24832,7 +24916,7 @@ try {
                   postReceivedTotal += 2;
                   postSentTotal += 2;
 
-                  var messages_received_total_post = Banzai._wrapData(
+                  var messages_received_total_post = require("BanzaiUtils").wrapData(
                     BANZAI_ODS_ROUTE,
                     {
                       "2979": {
@@ -24848,7 +24932,7 @@ try {
                     true
                   );
 
-                  var messages_sent_total_post = Banzai._wrapData(
+                  var messages_sent_total_post = require("BanzaiUtils").wrapData(
                     BANZAI_ODS_ROUTE,
                     {
                       "2979": {
@@ -24892,34 +24976,6 @@ try {
                       Banzai._store(false);
                     }
                   }
-                },
-
-                _wrapData: function _wrapData(route, data, time, retry, size) {
-                  var _size;
-                  var post = [
-                    route,
-                    data,
-                    time,
-                    0,
-                    (_size = size) != null
-                      ? _size
-                      : data
-                      ? JSON.stringify(data).length
-                      : 0
-                  ];
-
-                  post.__meta = {
-                    webSessionId: Banzai._getWebSessionId(),
-                    userID: Banzai._getUserId(),
-                    appID: Banzai._getAppId(),
-                    retry: retry === true,
-                    status: (
-                      c_BanzaiConsts ||
-                      (c_BanzaiConsts = require("BanzaiConsts"))
-                    ).POST_READY
-                  };
-
-                  return post;
                 },
 
                 BASIC: {
@@ -24968,7 +25024,7 @@ try {
                 ) {
                   var _banzai4;
                   var tmp_messages_count = messages_count;
-                  var messages_name = Banzai._wrapData(
+                  var messages_name = require("BanzaiUtils").wrapData(
                     BANZAI_ODS_ROUTE,
                     {
                       "2979": {
@@ -25046,7 +25102,7 @@ try {
                   postReceivedCounter++;
                   postReceivedTotal++;
 
-                  var post = Banzai._wrapData(
+                  var post = require("BanzaiUtils").wrapData(
                     route,
                     data,
                     Banzai._getEventTime(),
@@ -25104,7 +25160,11 @@ try {
                         }
                       },
                       function BanzaiAdapter_send_$2(httpStatus) {
-                        retryPost(post, httpStatus);
+                        require("BanzaiUtils").retryPost(
+                          post,
+                          httpStatus,
+                          postBuffer
+                        );
                       },
                       true
                     );
@@ -26198,6 +26258,7 @@ try {
               "BanzaiBase",
               "BanzaiConsts",
               "BanzaiStreamPayloads",
+              "BanzaiUtils",
               "CurrentUser",
               "ExecutionEnvironment",
               "FBJSON",
@@ -26346,7 +26407,7 @@ try {
 
                               var m = (post.__meta = post.pop());
 
-                              var postable = require("BanzaiBase")._canSend(
+                              var postable = require("BanzaiUtils").canSend(
                                 post
                               );
 
@@ -26359,7 +26420,7 @@ try {
                                 m.userID === currentUserId ||
                                 currentUserId === "0"
                               ) {
-                                require("BanzaiBase")._resetPostStatus(post);
+                                require("BanzaiUtils").resetPostStatus(post);
                                 require("BanzaiBase")
                                   ._getPostBuffer()
                                   .push(post);
@@ -40018,7 +40079,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1002023307","namespace":"FB","message":"' +
+        '","revision":"1002024040","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
