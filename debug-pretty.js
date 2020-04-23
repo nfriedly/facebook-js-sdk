@@ -1,4 +1,4 @@
-/*1587667756,,JIT Construction: v1002033475,en_US*/
+/*1587676754,,JIT Construction: v1002034593,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3905,8 +3905,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1002033475,
-            client_revision: 1002033475,
+            server_revision: 1002034593,
+            client_revision: 1002034593,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3916,17 +3916,17 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6818981089550953830-0",
+            hsi: "6819019739704285748-0",
             spin: 0,
-            __spin_r: 1002033475,
+            __spin_r: 1002034593,
             __spin_b: "trunk",
-            __spin_t: 1587667756,
+            __spin_t: 1587676754,
             vip: "31.13.66.19"
           });
           __d("WebConnectionClassServerGuess", [], {
             connectionClass: "UNKNOWN"
           });
-          __d("ServerNonce", [], { ServerNonce: "18B3UhOnQ84iEaTPkwgS7n" });
+          __d("ServerNonce", [], { ServerNonce: "fiWlI0mc3ivQsuH4W0orn6" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4092,7 +4092,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1002033475",
+            revision: "1002034593",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -4848,15 +4848,35 @@ try {
             ) {
               "use strict";
 
-              function getSimpleHash(toBeHashed) {
-                var hash = 0;
-                for (var i = 0; i < toBeHashed.length; i++) {
-                  var char = toBeHashed.charCodeAt(i);
+              var CHARS = "abcdefghijklmnopqrstuvwxyz012345";
 
-                  hash = (hash << 5) - hash + char;
-                  hash |= 0;
+              function getSimpleHash() {
+                var hash = 0;
+                for (
+                  var _len = arguments.length,
+                    toBeHashed = new Array(_len),
+                    _key = 0;
+                  _key < _len;
+                  _key++
+                ) {
+                  toBeHashed[_key] = arguments[_key];
                 }
-                return String(hash);
+                for (var _i = 0; _i < toBeHashed.length; _i++) {
+                  var s = toBeHashed[_i];
+                  if (s != null) {
+                    var len = s.length;
+                    for (var i = 0; i < len; i++) {
+                      hash = (hash << 5) - hash + s.charCodeAt(i);
+                    }
+                  }
+                }
+
+                var simpleHash = "";
+                for (var j = 0; j < 6; j++) {
+                  simpleHash = CHARS.charAt(hash & 0x1f) + simpleHash;
+                  hash >>= 5;
+                }
+                return simpleHash;
               }
 
               module.exports = getSimpleHash;
@@ -5154,6 +5174,9 @@ try {
                   (_err$errorName = err.errorName) != null
                     ? _err$errorName
                     : err.name;
+                var type = err.type || "error";
+                var loggingSource = err.loggingSource,
+                  project = err.project;
 
                 var line =
                   (_err$lineNumber = err.lineNumber) != null
@@ -5180,10 +5203,16 @@ try {
                     (_err$guardList = err.guardList) != null
                       ? _err$guardList
                       : [],
-                  hash: require("getSimpleHash")(name + stack),
+                  hash: require("getSimpleHash")(
+                    name,
+                    stack,
+                    type,
+                    project,
+                    loggingSource
+                  ),
                   isNormalizedError: true,
                   line: line == null ? null : String(line),
-                  loggingSource: err.loggingSource,
+                  loggingSource: loggingSource,
                   message: require("ErrorSerializer").toFormattedMessage(
                     serializable
                   ),
@@ -5203,7 +5232,7 @@ try {
                     (c_performanceNow ||
                       (c_performanceNow = require("performanceNow")))()
                   ),
-                  project: err.project,
+                  project: project,
                   reactComponentStack: reactComponentStack,
                   script:
                     (_err$fileName = err.fileName) != null
@@ -5212,7 +5241,7 @@ try {
                   serverHash: err.serverHash,
                   stack: stack,
                   stackFrames: stackData,
-                  type: err.type || "error"
+                  type: type
                 };
 
                 if (serializable.forcedKey != null) {
@@ -40037,7 +40066,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1002033475","namespace":"FB","message":"' +
+        '","revision":"1002034593","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
