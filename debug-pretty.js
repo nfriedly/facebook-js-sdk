@@ -1,4 +1,4 @@
-/*1587590966,,JIT Construction: v1002027797,en_US*/
+/*1587667756,,JIT Construction: v1002033475,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3905,8 +3905,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1002027797,
-            client_revision: 1002027797,
+            server_revision: 1002033475,
+            client_revision: 1002033475,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3916,17 +3916,17 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6818651278407499417-0",
+            hsi: "6818981089550953830-0",
             spin: 0,
-            __spin_r: 1002027797,
+            __spin_r: 1002033475,
             __spin_b: "trunk",
-            __spin_t: 1587590966,
+            __spin_t: 1587667756,
             vip: "31.13.66.19"
           });
           __d("WebConnectionClassServerGuess", [], {
             connectionClass: "UNKNOWN"
           });
-          __d("ServerNonce", [], { ServerNonce: "klAK6zM8qEbEpXc4y-0DnV" });
+          __d("ServerNonce", [], { ServerNonce: "18B3UhOnQ84iEaTPkwgS7n" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4092,7 +4092,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1002027797",
+            revision: "1002033475",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -4953,30 +4953,16 @@ try {
               "use strict";
               var c_performanceNow;
 
-              var EVAL_FRAME_PATTERN_CHROME = /^at .*eval eval (at .*\:\d+\:\d+), .*$/;
-              var IE_AND_OTHER_FRAME_PATTERN = /(.*)[@\s][^\s]+$/;
+              var STACK_FRAME_FORMATS = [
+                /\(([^\s\)\()]+):(\d+):(\d+)\)$/,
 
-              var IE_STACK_TRACE_REFERENCES = [
-                "Unknown script code",
-                "Function code",
-                "eval code"
+                /@([^\s\)\()]+):(\d+):(\d+)$/,
+
+                /^at ([^\s\)\()]+):(\d+):(\d+)$/
               ];
 
               if (Error.stackTraceLimit != null && Error.stackTraceLimit < 40) {
                 Error.stackTraceLimit = 40;
-              }
-
-              function getIEFrame(frame) {
-                for (var i = 0; i < IE_STACK_TRACE_REFERENCES.length; i++) {
-                  var ref = " " + IE_STACK_TRACE_REFERENCES[i];
-                  if (ES(frame, "endsWith", true, ref)) {
-                    return [
-                      frame,
-                      frame.substring(0, frame.length - ref.length)
-                    ];
-                  }
-                }
-                return null;
               }
 
               function getStackWithoutMessage(error) {
@@ -5012,78 +4998,80 @@ try {
               function normalizeStackFrame(frameRaw) {
                 var frame = ES(frameRaw, "trim", true);
 
-                var evalMatch = frame.match(EVAL_FRAME_PATTERN_CHROME);
-                if (evalMatch) {
-                  frame = evalMatch[1];
-                }
-
+                var identifier = frame;
+                var script;
                 var line;
                 var column;
-                var locationMatch = frame.match(/:(\d+)(?::(\d+))?$/);
-                if (locationMatch) {
-                  line = locationMatch[1];
-                  column = locationMatch[2];
-                  frame = frame.slice(0, -locationMatch[0].length);
-                }
-
-                var identifier;
-                var stackMatch =
-                  getIEFrame(frame) || frame.match(IE_AND_OTHER_FRAME_PATTERN);
-                if (stackMatch) {
-                  frame = frame.substring(stackMatch[1].length + 1);
-                  var identifierMatch = stackMatch[1].match(
-                    /(?:at)?\s*(.*)(?:[^\s]+|$)/
-                  );
-                  identifier = identifierMatch ? identifierMatch[1] : "";
-                }
 
                 if (ES(frame, "includes", true, "charset=utf-8;base64,")) {
-                  frame = "<inlined-file>";
-                }
+                  identifier = "<inlined-file>";
+                } else {
+                  var matches;
+                  for (var _i = 0; _i < STACK_FRAME_FORMATS.length; _i++) {
+                    var re = STACK_FRAME_FORMATS[_i];
+                    matches = frame.match(re);
+                    if (matches != null) {
+                      break;
+                    }
+                  }
+                  if (matches != null && matches.length === 4) {
+                    script = matches[1];
+                    line = parseInt(matches[2], 10);
+                    column = parseInt(matches[3], 10);
 
+                    identifier = frame.substring(
+                      0,
+                      frame.length - matches[0].length
+                    );
+                  } else {
+                    identifier = frame;
+                  }
+
+                  identifier = ES(identifier.replace(/^at /, ""), "trim", true);
+                }
                 var stackFrame = {
-                  column: column,
                   identifier: identifier,
+                  script: script,
                   line: line,
-                  script: frame
+                  column: column
                 };
 
-                var sfIdentifier =
-                  identifier != null && identifier !== ""
-                    ? " " + identifier + " ("
-                    : " ";
-                var sfIdentifier1 = sfIdentifier.length > 1 ? ")" : "";
-                var sfLine = line != null && line !== "" ? ":" + line : "";
-                var sfColumn =
-                  column != null && column !== "" ? ":" + column : "";
-
-                var text =
-                  "    at" +
-                  sfIdentifier +
-                  frame +
-                  sfLine +
-                  sfColumn +
-                  sfIdentifier1;
-
-                return babelHelpers["extends"]({}, stackFrame, {
-                  text: text
-                });
+                stackFrame.text = formatStackFrame(stackFrame);
+                return stackFrame;
               }
 
-              function normalizeErrorStack(error) {
-                var stackWithoutMessage = getStackWithoutMessage(error);
-                if (stackWithoutMessage == null) {
+              function formatStackFrame(_ref) {
+                var _identifier;
+                var identifier = _ref.identifier,
+                  script = _ref.script,
+                  line = _ref.line,
+                  column = _ref.column;
+                var text =
+                  "    at " +
+                  ((_identifier = identifier) != null
+                    ? _identifier
+                    : "<unknown>");
+                if (script != null && line != null && column != null) {
+                  text += " (" + script + ":" + line + ":" + column + ")";
+                }
+                return text;
+              }
+
+              function normalizeStack(stack) {
+                if (stack == null || stack === "") {
                   return [];
                 }
                 return ES(
-                  stackWithoutMessage
-                    .split(/\n\n/)[0]
-                    .replace(/[\(\)]|\[.*?\]/g, "")
-                    .split("\n"),
+                  stack.split(/\n\n/)[0].split("\n"),
                   "map",
                   true,
                   normalizeStackFrame
                 );
+              }
+
+              function normalizeErrorStack(error) {
+                var stackWithoutMessage = getStackWithoutMessage(error);
+                return normalizeStack(stackWithoutMessage);
               }
 
               function normalizeReactComponentStack(componentStack) {
@@ -5129,6 +5117,10 @@ try {
                 var reactComponentStack = normalizeReactComponentStack(
                   err.componentStack
                 );
+                var componentStackFrames =
+                  reactComponentStack == null
+                    ? null
+                    : ES(reactComponentStack, "map", true, normalizeStackFrame);
 
                 var fbloggerMetadata = err.fbloggerMetadata
                   ? err.fbloggerMetadata
@@ -5175,6 +5167,7 @@ try {
                 var info = {
                   column: column == null ? null : String(column),
                   clientTime: Math.floor(ES("Date", "now", false) / 1000),
+                  componentStackFrames: componentStackFrames,
                   deferredSource:
                     err.deferredSource != null
                       ? normalizeError(err.deferredSource)
@@ -5243,7 +5236,8 @@ try {
               }
 
               module.exports = {
-                normalizeError: normalizeError
+                normalizeError: normalizeError,
+                formatStackFrame: formatStackFrame
               };
             },
             null
@@ -5683,7 +5677,7 @@ try {
                   }
 
                   var guardList = require("ErrorGuardState").cloneGuardList();
-                  if (normalizedError.reactComponentStack) {
+                  if (normalizedError.componentStackFrames) {
                     guardList.unshift(GLOBAL_REACT_ERROR_HANDLER_TAG);
                   }
 
@@ -40043,7 +40037,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1002027797","namespace":"FB","message":"' +
+        '","revision":"1002033475","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
