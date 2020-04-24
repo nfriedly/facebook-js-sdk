@@ -1,4 +1,4 @@
-/*1587753547,,JIT Construction: v1002039440,en_US*/
+/*1587757767,,JIT Construction: v1002039903,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3905,8 +3905,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1002039440,
-            client_revision: 1002039440,
+            server_revision: 1002039903,
+            client_revision: 1002039903,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3916,17 +3916,17 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6819349558920500255-0",
+            hsi: "6819367684776861613-0",
             spin: 0,
-            __spin_r: 1002039440,
+            __spin_r: 1002039903,
             __spin_b: "trunk",
-            __spin_t: 1587753547,
+            __spin_t: 1587757767,
             vip: "31.13.66.19"
           });
           __d("WebConnectionClassServerGuess", [], {
             connectionClass: "UNKNOWN"
           });
-          __d("ServerNonce", [], { ServerNonce: "5aSj2uDencgBxkLa_JM8FV" });
+          __d("ServerNonce", [], { ServerNonce: "lnPvvOasZ5ujHQlaND6jtc" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4092,7 +4092,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1002039440",
+            revision: "1002039903",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -10612,6 +10612,8 @@ try {
                 BATCH_SIZE_LIMIT: 64000,
 
                 EXPIRY: 86400000,
+
+                BATCH_TIMEOUT: 10000,
 
                 LAST_STORAGE_FLUSH: "banzai:last_storage_flush",
                 STORAGE_FLUSH_INTERVAL: 12 * 60 * 60000,
@@ -40066,7 +40068,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1002039440","namespace":"FB","message":"' +
+        '","revision":"1002039903","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
