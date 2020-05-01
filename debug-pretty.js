@@ -1,4 +1,4 @@
-/*1588291767,,JIT Construction: v1002068558,en_US*/
+/*1588312760,,JIT Construction: v1002071528,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3905,8 +3905,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1002068558,
-            client_revision: 1002068558,
+            server_revision: 1002071528,
+            client_revision: 1002071528,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3916,17 +3916,17 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6821661197601085912-0",
+            hsi: "6821751361147493133-0",
             spin: 0,
-            __spin_r: 1002068558,
+            __spin_r: 1002071528,
             __spin_b: "trunk",
-            __spin_t: 1588291767,
-            vip: "31.13.65.7"
+            __spin_t: 1588312760,
+            vip: "31.13.66.19"
           });
           __d("WebConnectionClassServerGuess", [], {
             connectionClass: "UNKNOWN"
           });
-          __d("ServerNonce", [], { ServerNonce: "YSSsHOh3dOhIQO8n4gqokF" });
+          __d("ServerNonce", [], { ServerNonce: "kkcNhAq1uZGXE_GbRpouDT" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4092,7 +4092,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1002068558",
+            revision: "1002071528",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -4497,7 +4497,7 @@ try {
                 }
 
                 var serializable = {
-                  message: error.messageFormat
+                  message: String(error.messageFormat)
                 };
 
                 if (error.messageParams) {
@@ -5801,6 +5801,7 @@ try {
                   type,
                   format
                 ) {
+                  var safeFormat = String(format);
                   var error = this.error,
                     events = this.events,
                     project = this.project,
@@ -5821,7 +5822,7 @@ try {
                       message:
                         this.normalizedError.messageFormat +
                         " [Caught in: " +
-                        format +
+                        safeFormat +
                         "]",
                       params: [].concat(
                         this.normalizedError.messageParams,
@@ -5857,7 +5858,7 @@ try {
                     }
 
                     require("ErrorSerializer").aggregateError(error, {
-                      messageFormat: format,
+                      messageFormat: safeFormat,
                       messageParams: require("ErrorSerializer").toStringParams(
                         params
                       ),
@@ -5871,13 +5872,13 @@ try {
                       error
                     );
                   } else {
-                    var _error = new Error(String(format));
+                    var _error = new Error(safeFormat);
                     if (_error.stack === undefined) {
                       try {
                         throw _error;
                       } catch (_) {}
                     }
-                    _error.messageFormat = format;
+                    _error.messageFormat = safeFormat;
                     _error.messageParams = require("ErrorSerializer").toStringParams(
                       params
                     );
@@ -10096,9 +10097,9 @@ try {
               "use strict";
 
               var canUseDOM = !!(
-                typeof window !== "undefined" &&
-                window.document &&
-                window.document.createElement
+                global !== undefined &&
+                global.document &&
+                global.document.createElement
               );
 
               var ExecutionEnvironment = {
@@ -10108,11 +10109,11 @@ try {
 
                 canUseEventListeners:
                   canUseDOM &&
-                  !!(window.addEventListener || window.attachEvent),
+                  !!(global.addEventListener || global.attachEvent),
 
                 canUseViewport: canUseDOM && !!window.screen,
 
-                isInWorker: !canUseDOM
+                isInWorker: typeof WorkerGlobalScope === "function"
               };
 
               module.exports = ExecutionEnvironment;
@@ -25629,6 +25630,101 @@ try {
             null
           );
           __d(
+            "Visibility",
+            ["BaseEventEmitter", "ExecutionEnvironment", "TimeSlice"],
+            function $module_Visibility(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              var canUseDOM = require("ExecutionEnvironment").canUseDOM;
+
+              var hiddenKey, hiddenEvent;
+              if (canUseDOM) {
+                if (document.hidden !== undefined) {
+                  hiddenKey = "hidden";
+                  hiddenEvent = "visibilitychange";
+                } else if (document.mozHidden !== undefined) {
+                  hiddenKey = "mozHidden";
+                  hiddenEvent = "mozvisibilitychange";
+                } else if (document.msHidden !== undefined) {
+                  hiddenKey = "msHidden";
+                  hiddenEvent = "msvisibilitychange";
+                } else if (document.webkitHidden !== undefined) {
+                  hiddenKey = "webkitHidden";
+                  hiddenEvent = "webkitvisibilitychange";
+                }
+              }
+              var VisibilityEmitter = (function(_BaseEventEmitter) {
+                "use strict";
+                babelHelpers.inheritsLoose(
+                  VisibilityEmitter,
+                  _BaseEventEmitter
+                );
+                function VisibilityEmitter() {
+                  var _temp, _this;
+                  for (
+                    var _len = arguments.length,
+                      args = new Array(_len),
+                      _key = 0;
+                    _key < _len;
+                    _key++
+                  ) {
+                    args[_key] = arguments[_key];
+                  }
+                  return (
+                    ((_temp = _this =
+                      _BaseEventEmitter.call.apply(
+                        _BaseEventEmitter,
+                        [this].concat(args)
+                      ) || this),
+                    (_this.HIDDEN = "hidden"),
+                    (_this.VISIBLE = "visible"),
+                    (_this.hiddenKey = hiddenKey),
+                    (_this.hiddenEvent = hiddenEvent),
+                    _temp) || babelHelpers.assertThisInitialized(_this)
+                  );
+                }
+                var _proto = VisibilityEmitter.prototype;
+                _proto.isHidden = function isHidden() {
+                  return hiddenKey ? document[hiddenKey] : false;
+                };
+                _proto.isSupported = function isSupported() {
+                  return (
+                    canUseDOM &&
+                    document.addEventListener &&
+                    hiddenEvent !== undefined
+                  );
+                };
+                return VisibilityEmitter;
+              })(require("BaseEventEmitter"));
+
+              var Visibility = new VisibilityEmitter();
+
+              if (Visibility.isSupported()) {
+                document.addEventListener(
+                  Visibility.hiddenEvent,
+                  require("TimeSlice").guard(function onVisibilityChange(e) {
+                    Visibility.emit(
+                      Visibility.isHidden()
+                        ? Visibility.HIDDEN
+                        : Visibility.VISIBLE,
+                      {
+                        changeTime: e.timeStamp
+                      }
+                    );
+                  }, "visibility change")
+                );
+              }
+
+              module.exports = Visibility;
+            },
+            null
+          );
+          __d(
             "BanzaiBase",
             [
               "BanzaiAdapter",
@@ -25638,8 +25734,11 @@ try {
               "BanzaiUtils",
               "CurrentUser",
               "ErrorGuard",
+              "ExecutionEnvironment",
               "FBLogger",
+              "NavigationMetrics",
               "SetIdleTimeoutAcrossTransitions",
+              "Visibility",
               "WebSession",
               "performanceAbsoluteNow"
             ],
@@ -25773,7 +25872,54 @@ try {
                   return require("CurrentUser").getAppID();
                 },
 
-                _initialize: function _initialize() {},
+                _initialize: function _initialize() {
+                  if (require("ExecutionEnvironment").canUseDOM) {
+                    if (
+                      Banzai.adapter.useBeacon &&
+                      require("Visibility").isSupported()
+                    ) {
+                      require("Visibility").addListener(
+                        require("Visibility").HIDDEN,
+                        function Visibility_addListener_$1() {
+                          if (Banzai._getPostBuffer().length > 0) {
+                            if (!Banzai._tryToSendViaBeacon()) {
+                              Banzai._store(false);
+                            }
+                          }
+                        }
+                      );
+
+                      if (
+                        Banzai.isEnabled(
+                          "enable_client_logging_clear_on_visible"
+                        )
+                      ) {
+                        require("Visibility").addListener(
+                          require("Visibility").VISIBLE,
+                          function Visibility_addListener_$1() {
+                            if (!Banzai._tryToSendViaBeacon()) {
+                              Banzai._restore(false);
+                            }
+                          }
+                        );
+                      }
+                    } else {
+                      Banzai.adapter.setHooks(Banzai);
+                    }
+                    Banzai.adapter.setUnloadHook(Banzai);
+
+                    require("NavigationMetrics").addListener(
+                      require("NavigationMetrics").Events.NAVIGATION_DONE,
+                      function NavigationMetrics_addListener_$1(_, data) {
+                        if (data.pageType !== "normal") {
+                          return;
+                        }
+                        Banzai._restore(false);
+                        require("NavigationMetrics").removeCurrentListener();
+                      }
+                    );
+                  }
+                },
 
                 _sendBeacon: function _sendBeacon(endpoint, payload) {
                   return global.navigator.sendBeacon(endpoint, payload);
@@ -26334,6 +26480,8 @@ try {
                 subscribe: require("BanzaiAdapter").subscribe
               };
 
+              Banzai._initialize();
+
               module.exports = Banzai;
             },
             null
@@ -26371,101 +26519,6 @@ try {
               };
 
               module.exports = BanzaiStreamPayloads;
-            },
-            null
-          );
-          __d(
-            "Visibility",
-            ["BaseEventEmitter", "ExecutionEnvironment", "TimeSlice"],
-            function $module_Visibility(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              var canUseDOM = require("ExecutionEnvironment").canUseDOM;
-
-              var hiddenKey, hiddenEvent;
-              if (canUseDOM) {
-                if (document.hidden !== undefined) {
-                  hiddenKey = "hidden";
-                  hiddenEvent = "visibilitychange";
-                } else if (document.mozHidden !== undefined) {
-                  hiddenKey = "mozHidden";
-                  hiddenEvent = "mozvisibilitychange";
-                } else if (document.msHidden !== undefined) {
-                  hiddenKey = "msHidden";
-                  hiddenEvent = "msvisibilitychange";
-                } else if (document.webkitHidden !== undefined) {
-                  hiddenKey = "webkitHidden";
-                  hiddenEvent = "webkitvisibilitychange";
-                }
-              }
-              var VisibilityEmitter = (function(_BaseEventEmitter) {
-                "use strict";
-                babelHelpers.inheritsLoose(
-                  VisibilityEmitter,
-                  _BaseEventEmitter
-                );
-                function VisibilityEmitter() {
-                  var _temp, _this;
-                  for (
-                    var _len = arguments.length,
-                      args = new Array(_len),
-                      _key = 0;
-                    _key < _len;
-                    _key++
-                  ) {
-                    args[_key] = arguments[_key];
-                  }
-                  return (
-                    ((_temp = _this =
-                      _BaseEventEmitter.call.apply(
-                        _BaseEventEmitter,
-                        [this].concat(args)
-                      ) || this),
-                    (_this.HIDDEN = "hidden"),
-                    (_this.VISIBLE = "visible"),
-                    (_this.hiddenKey = hiddenKey),
-                    (_this.hiddenEvent = hiddenEvent),
-                    _temp) || babelHelpers.assertThisInitialized(_this)
-                  );
-                }
-                var _proto = VisibilityEmitter.prototype;
-                _proto.isHidden = function isHidden() {
-                  return hiddenKey ? document[hiddenKey] : false;
-                };
-                _proto.isSupported = function isSupported() {
-                  return (
-                    canUseDOM &&
-                    document.addEventListener &&
-                    hiddenEvent !== undefined
-                  );
-                };
-                return VisibilityEmitter;
-              })(require("BaseEventEmitter"));
-
-              var Visibility = new VisibilityEmitter();
-
-              if (Visibility.isSupported()) {
-                document.addEventListener(
-                  Visibility.hiddenEvent,
-                  require("TimeSlice").guard(function onVisibilityChange(e) {
-                    Visibility.emit(
-                      Visibility.isHidden()
-                        ? Visibility.HIDDEN
-                        : Visibility.VISIBLE,
-                      {
-                        changeTime: e.timeStamp
-                      }
-                    );
-                  }, "visibility change")
-                );
-              }
-
-              module.exports = Visibility;
             },
             null
           );
@@ -26510,15 +26563,8 @@ try {
             "BanzaiNew",
             [
               "BanzaiBase",
-              "BanzaiConsts",
               "BanzaiStreamPayloads",
-              "BanzaiUtils",
-              "CurrentUser",
               "ExecutionEnvironment",
-              "FBJSON",
-              "NavigationMetrics",
-              "Visibility",
-              "WebStorage",
               "isInIframe",
               "lowerFacebookDomain"
             ],
@@ -26533,65 +26579,11 @@ try {
               var BanzaiBase;
 
               var _super = {
-                _initialize: (BanzaiBase = require("BanzaiBase"))._initialize,
-                _unload: BanzaiBase._unload,
+                _unload: (BanzaiBase = require("BanzaiBase"))._unload,
                 post: BanzaiBase.post
               };
 
               var inFrame = require("isInIframe")();
-
-              BanzaiBase._initialize = function() {
-                if (require("ExecutionEnvironment").canUseDOM) {
-                  if (
-                    require("BanzaiBase").adapter.useBeacon &&
-                    require("Visibility").isSupported()
-                  ) {
-                    require("Visibility").addListener(
-                      require("Visibility").HIDDEN,
-                      function Visibility_addListener_$1() {
-                        if (require("BanzaiBase")._getPostBuffer().length > 0) {
-                          if (!require("BanzaiBase")._tryToSendViaBeacon()) {
-                            require("BanzaiBase")._store(false);
-                          }
-                        }
-                      }
-                    );
-
-                    if (
-                      require("BanzaiBase").isEnabled(
-                        "enable_client_logging_clear_on_visible"
-                      )
-                    ) {
-                      require("Visibility").addListener(
-                        require("Visibility").VISIBLE,
-                        function Visibility_addListener_$1() {
-                          if (!require("BanzaiBase")._tryToSendViaBeacon()) {
-                            require("BanzaiBase")._restore(false);
-                          }
-                        }
-                      );
-                    }
-                  } else {
-                    require("BanzaiBase").adapter.setHooks(
-                      require("BanzaiBase")
-                    );
-                  }
-                  require("BanzaiBase").adapter.setUnloadHook(
-                    require("BanzaiBase")
-                  );
-
-                  require("NavigationMetrics").addListener(
-                    require("NavigationMetrics").Events.NAVIGATION_DONE,
-                    function NavigationMetrics_addListener_$1(_, data) {
-                      if (data.pageType !== "normal") {
-                        return;
-                      }
-                      require("BanzaiBase")._restore(false);
-                      require("NavigationMetrics").removeCurrentListener();
-                    }
-                  );
-                }
-              };
 
               BanzaiBase._unload = function() {
                 require("BanzaiStreamPayloads").unload(
@@ -26628,8 +26620,6 @@ try {
 
                 _super.post(route, data, options);
               };
-
-              BanzaiBase._initialize();
 
               module.exports = BanzaiBase;
             },
@@ -40089,7 +40079,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1002068558","namespace":"FB","message":"' +
+        '","revision":"1002071528","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
