@@ -1,4 +1,4 @@
-/*1588312760,,JIT Construction: v1002071528,en_US*/
+/*1588321164,,JIT Construction: v1002071896,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3905,8 +3905,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1002071528,
-            client_revision: 1002071528,
+            server_revision: 1002071896,
+            client_revision: 1002071896,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3916,17 +3916,17 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6821751361147493133-0",
+            hsi: "6821787456977708044-0",
             spin: 0,
-            __spin_r: 1002071528,
+            __spin_r: 1002071896,
             __spin_b: "trunk",
-            __spin_t: 1588312760,
+            __spin_t: 1588321164,
             vip: "31.13.66.19"
           });
           __d("WebConnectionClassServerGuess", [], {
             connectionClass: "UNKNOWN"
           });
-          __d("ServerNonce", [], { ServerNonce: "kkcNhAq1uZGXE_GbRpouDT" });
+          __d("ServerNonce", [], { ServerNonce: "5ziEuRXVTficAIdF8_dqOy" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4092,7 +4092,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1002071528",
+            revision: "1002071896",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -4545,6 +4545,10 @@ try {
 
                 if (context.componentStack != null) {
                   error.componentStack = context.componentStack;
+                }
+
+                if (context.deferredSource != null) {
+                  error.deferredSource = context.deferredSource;
                 }
 
                 var messageFormat = caughtError.message;
@@ -6308,7 +6312,7 @@ try {
                   try {
                     return Function.prototype.apply.call(func, context, args);
                   } catch (ex) {
-                    var _metaArgs, _ref2;
+                    var _metaArgs, _ref2, _ref3;
                     var _ref = (_metaArgs = metaArgs) != null ? _metaArgs : {},
                       deferredSource = _ref.deferredSource,
                       onError = _ref.onError,
@@ -6319,16 +6323,18 @@ try {
                         ? ex
                         : new Error("applyWithGuard caught non-object");
 
-                    if (deferredSource) {
-                      error.deferredSource = deferredSource;
-                    }
                     require("ErrorSerializer").aggregateError(error, {
-                      project: "ErrorGuard",
-                      type:
+                      deferredSource: deferredSource,
+                      project:
                         (_ref2 =
+                          metaArgs == null ? void 0 : metaArgs.project) != null
+                          ? _ref2
+                          : "ErrorGuard",
+                      type:
+                        (_ref3 =
                           metaArgs == null ? void 0 : metaArgs.errorType) !=
                         null
-                          ? _ref2
+                          ? _ref3
                           : "fatal"
                     });
 
@@ -19236,7 +19242,8 @@ try {
                     (
                       c_ErrorGuard || (c_ErrorGuard = require("ErrorGuard"))
                     ).applyWithGuard(thrower, this, [id], {
-                      name: "ServerJS:cleanup id: " + id
+                      name: "ServerJS:cleanup id: " + id,
+                      project: "ServerJSCleanup"
                     });
                   }
                 };
@@ -40079,7 +40086,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1002071528","namespace":"FB","message":"' +
+        '","revision":"1002071896","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
