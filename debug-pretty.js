@@ -1,4 +1,4 @@
-/*1588321164,,JIT Construction: v1002071896,en_US*/
+/*1588400964,,JIT Construction: v1002077405,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3905,10 +3905,10 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1002071896,
-            client_revision: 1002071896,
+            server_revision: 1002077405,
+            client_revision: 1002077405,
             tier: "",
-            push_phase: "C3",
+            push_phase: "C3e",
             pkg_cohort: "PHASED:DEFAULT",
             pr: 1,
             haste_site: "www",
@@ -3916,17 +3916,17 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6821787456977708044-0",
+            hsi: "6822130194548128158-0",
             spin: 0,
-            __spin_r: 1002071896,
+            __spin_r: 1002077405,
             __spin_b: "trunk",
-            __spin_t: 1588321164,
+            __spin_t: 1588400964,
             vip: "31.13.66.19"
           });
           __d("WebConnectionClassServerGuess", [], {
             connectionClass: "UNKNOWN"
           });
-          __d("ServerNonce", [], { ServerNonce: "5ziEuRXVTficAIdF8_dqOy" });
+          __d("ServerNonce", [], { ServerNonce: "mnnOTxbSzc-RUm6gU-3QyZ" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4092,7 +4092,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1002071896",
+            revision: "1002077405",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -24602,6 +24602,43 @@ try {
             null
           );
           __d(
+            "lowerFacebookDomain",
+            [],
+            function $module_lowerFacebookDomain(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              var captures = window.location.hostname.match(
+                /\.(facebook\.sg|facebookcorewwwi\.onion|workplace\.com)$/
+              );
+
+              var domain = captures ? captures[1] : "facebook.com";
+
+              lowerFacebookDomain.setDomain = function(inboundDomain) {
+                domain = inboundDomain;
+              };
+
+              lowerFacebookDomain.isValidDocumentDomain = function() {
+                if (document.domain == domain) {
+                  return true;
+                }
+
+                return false;
+              };
+
+              function lowerFacebookDomain() {
+                document.domain = domain;
+              }
+
+              module.exports = lowerFacebookDomain;
+            },
+            null
+          );
+          __d(
             "once",
             [],
             function $module_once(
@@ -24671,6 +24708,8 @@ try {
               "ZeroRewrites",
               "getAsyncParams",
               "gkx",
+              "isInIframe",
+              "lowerFacebookDomain",
               "once",
               "BanzaiConfig"
             ],
@@ -24689,6 +24728,8 @@ try {
 
               var inflight = [];
               var _arbiter = new (require("Arbiter"))();
+
+              var inFrame = require("isInIframe")();
 
               var ENDPOINT = "/ajax/bz";
               var METHOD = "POST";
@@ -24711,6 +24752,16 @@ try {
 
                 getStorage: function getStorage() {
                   return require("BanzaiStorage");
+                },
+
+                getTopLevel: function getTopLevel() {
+                  if (
+                    inFrame &&
+                    require("lowerFacebookDomain").isValidDocumentDomain()
+                  ) {
+                    return window.top;
+                  }
+                  return null;
                 },
 
                 getUserID: function getUserID() {
@@ -26384,6 +26435,29 @@ try {
                     return;
                   }
 
+                  if (
+                    !require("ExecutionEnvironment").canUseDOM &&
+                    !require("ExecutionEnvironment").isInWorker
+                  ) {
+                    return;
+                  }
+
+                  var top = Banzai.adapter.getTopLevel();
+
+                  if (top) {
+                    var bz;
+                    try {
+                      bz = top.require("Banzai");
+                    } catch (_unused) {
+                      bz = null;
+                    }
+
+                    if (bz) {
+                      bz.post.apply(bz, arguments);
+                      return;
+                    }
+                  }
+
                   var bl = require("BanzaiAdapter").config.blacklist;
                   if (bl) {
                     if (bl.indexOf) {
@@ -26530,51 +26604,8 @@ try {
             null
           );
           __d(
-            "lowerFacebookDomain",
-            [],
-            function $module_lowerFacebookDomain(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              var captures = window.location.hostname.match(
-                /\.(facebook\.sg|facebookcorewwwi\.onion|workplace\.com)$/
-              );
-
-              var domain = captures ? captures[1] : "facebook.com";
-
-              lowerFacebookDomain.setDomain = function(inboundDomain) {
-                domain = inboundDomain;
-              };
-
-              lowerFacebookDomain.isValidDocumentDomain = function() {
-                if (document.domain == domain) {
-                  return true;
-                }
-
-                return false;
-              };
-
-              function lowerFacebookDomain() {
-                document.domain = domain;
-              }
-
-              module.exports = lowerFacebookDomain;
-            },
-            null
-          );
-          __d(
             "BanzaiNew",
-            [
-              "BanzaiBase",
-              "BanzaiStreamPayloads",
-              "ExecutionEnvironment",
-              "isInIframe",
-              "lowerFacebookDomain"
-            ],
+            ["BanzaiBase", "BanzaiStreamPayloads"],
             function $module_BanzaiNew(
               global,
               require,
@@ -26583,52 +26614,18 @@ try {
               module,
               exports
             ) {
-              var BanzaiBase;
-
               var _super = {
-                _unload: (BanzaiBase = require("BanzaiBase"))._unload,
-                post: BanzaiBase.post
+                _unload: require("BanzaiBase")._unload
               };
 
-              var inFrame = require("isInIframe")();
-
-              BanzaiBase._unload = function() {
+              require("BanzaiBase")._unload = function() {
                 require("BanzaiStreamPayloads").unload(
                   require("BanzaiBase").post
                 );
                 _super._unload();
               };
 
-              BanzaiBase.post = function(route, data, options) {
-                if (require("BanzaiBase").adapter.config.disabled) {
-                  return;
-                }
-
-                if (!require("ExecutionEnvironment").canUseDOM) {
-                  return;
-                }
-
-                if (
-                  inFrame &&
-                  require("lowerFacebookDomain").isValidDocumentDomain()
-                ) {
-                  var bz;
-                  try {
-                    bz = global.top.require("Banzai");
-                  } catch (_unused) {
-                    bz = null;
-                  }
-
-                  if (bz) {
-                    bz.post.apply(bz, arguments);
-                    return;
-                  }
-                }
-
-                _super.post(route, data, options);
-              };
-
-              module.exports = BanzaiBase;
+              module.exports = require("BanzaiBase");
             },
             null
           );
@@ -40086,7 +40083,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1002071896","namespace":"FB","message":"' +
+        '","revision":"1002077405","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
