@@ -1,4 +1,4 @@
-/*1588400964,,JIT Construction: v1002077405,en_US*/
+/*1588408761,,JIT Construction: v1002077561,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3905,8 +3905,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1002077405,
-            client_revision: 1002077405,
+            server_revision: 1002077561,
+            client_revision: 1002077561,
             tier: "",
             push_phase: "C3e",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3916,17 +3916,17 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6822130194548128158-0",
+            hsi: "6822163682866470619-0",
             spin: 0,
-            __spin_r: 1002077405,
+            __spin_r: 1002077561,
             __spin_b: "trunk",
-            __spin_t: 1588400964,
+            __spin_t: 1588408761,
             vip: "31.13.66.19"
           });
           __d("WebConnectionClassServerGuess", [], {
             connectionClass: "UNKNOWN"
           });
-          __d("ServerNonce", [], { ServerNonce: "mnnOTxbSzc-RUm6gU-3QyZ" });
+          __d("ServerNonce", [], { ServerNonce: "BqvmukA5S23KWI8GSR9_lT" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4092,7 +4092,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1002077405",
+            revision: "1002077561",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -19655,225 +19655,18 @@ try {
             null
           );
           __d(
-            "bx",
-            ["invariant"],
-            function $module_bx(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports,
-              invariant
-            ) {
-              var _map = {};
-
-              function bx(path) {
-                var uri = _map[path];
-                !!uri ||
-                  invariant(
-                    0,
-                    "bx" + "(...): " + 'Unknown file path "%s"',
-                    path
-                  );
-                return uri;
-              }
-
-              bx.add = function(map) {
-                var warned = false;
-                for (var k in map) {
-                  if (!(k in _map)) {
-                    map[k].loggingID = k;
-                    _map[k] = map[k];
-                  } else if (__DEV__) {
-                    if (warned) {
-                      continue;
-                    }
-
-                    map[k].loggingID = k;
-                    var newData = JSON.stringify(map[k]);
-                    var curData = JSON.stringify(_map[k]);
-
-                    if (curData === newData) {
-                      continue;
-                    }
-
-                    console.log(
-                      k +
-                        ": the binary resource data is different " +
-                        ("(" + curData + " vs " + newData + "). ") +
-                        "If your sandbox is stale, try refreshing it, " +
-                        "otherwise please report the issue to Static Resources."
-                    );
-
-                    warned = true;
-                  }
-                }
-              };
-
-              bx.getURL = function(value) {
-                return value.uri;
-              };
-
-              module.exports = bx;
-            },
-            null
-          );
-          __d(
-            "ix",
-            ["invariant"],
-            function $module_ix(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports,
-              invariant
-            ) {
-              var _map = {};
-
-              function ix(path) {
-                var img = _map[path];
-                !!img ||
-                  invariant(
-                    0,
-                    "ix" + "(...): " + 'Unknown image path "%s"',
-                    path
-                  );
-                return img;
-              }
-
-              ix.add = function(map) {
-                var warned = false;
-
-                for (var k in map) {
-                  if (!(k in _map)) {
-                    map[k].loggingID = k;
-                    _map[k] = map[k];
-                  } else if (__DEV__) {
-                    if (warned) {
-                      continue;
-                    }
-
-                    map[k].loggingID = k;
-                    var newData = JSON.stringify(map[k]);
-                    var curData = JSON.stringify(_map[k]);
-
-                    if (curData === newData) {
-                      continue;
-                    }
-
-                    console.log(
-                      k +
-                        ": the sprite data is different " +
-                        ("(" + curData + " vs " + newData + "). ") +
-                        "If your sandbox is stale, try refreshing it, " +
-                        "otherwise please report the issue to Static Resources."
-                    );
-
-                    warned = true;
-                  }
-                }
-              };
-
-              module.exports = ix;
-            },
-            null
-          );
-          __d(
-            "objectEntries",
-            [],
-            function $module_objectEntries(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              function objectEntries(obj) {
-                if (__DEV__) {
-                  if (obj instanceof Map) {
-                    console.error(
-                      "objectEntries doesn't work on Map instances; use instance.entries() instead"
-                    );
-                  }
-                }
-                return Object.entries(obj);
-              }
-
-              module.exports = objectEntries;
-            },
-            null
-          );
-          __d(
-            "qex",
-            ["invariant", "requireWeak"],
-            function $module_qex(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports,
-              invariant
-            ) {
-              "use strict";
-
-              var _map = {};
-
-              var logged = {};
-
-              var qex = {
-                _: function _(identifier) {
-                  var serverDatum = _map[identifier];
-
-                  serverDatum != null ||
-                    invariant(0, 'qex(...): Unknown QE value "%s"', identifier);
-                  var r = serverDatum.r,
-                    l = serverDatum.l;
-                  if (l != null && !logged[identifier]) {
-                    logged[identifier] = true;
-                    require("requireWeak")("Banzai", function requireWeak_$1(
-                      Banzai
-                    ) {
-                      Banzai.post("qex", { l: l });
-                    });
-                  }
-                  return r;
-                },
-
-                add: function add(serverData) {
-                  for (var k in serverData) {
-                    if (!(k in _map)) {
-                      _map[k] = serverData[k];
-                    }
-                  }
-                }
-              };
-
-              module.exports = qex;
-            },
-            null
-          );
-          __d(
             "BootloaderEndpoint",
             [
-              "ix",
               "Bootloader",
               "BootloaderEndpointConfig",
               "CSRFGuard",
               "FBLogger",
+              "HasteResponse",
               "ServerJS",
               "TimeSlice",
-              "bx",
               "getAsyncParams",
               "getSameOriginTransport",
-              "gkx",
-              "objectEntries",
               "performanceAbsoluteNow",
-              "qex",
               "setImmediateAcrossTransitions"
             ],
             function $module_BootloaderEndpoint(
@@ -19882,8 +19675,7 @@ try {
               requireDynamic,
               requireLazy,
               module,
-              exports,
-              ix
+              exports
             ) {
               "use strict";
               var c_performanceAbsoluteNow;
@@ -20001,33 +19793,11 @@ try {
                 }
                 var responseStart = (c_performanceAbsoluteNow ||
                   (c_performanceAbsoluteNow = require("performanceAbsoluteNow")))();
-                var ixData = response.ixData,
-                  bxData = response.bxData,
-                  gkxData = response.gkxData,
-                  qexData = response.qexData;
-                if (ixData) {
-                  ix.add(ixData);
-                }
-                if (bxData) {
-                  require("bx").add(bxData);
-                }
-                if (gkxData) {
-                  require("gkx").add(gkxData);
-                }
-                if (qexData) {
-                  require("qex").add(qexData);
-                }
+
+                require("HasteResponse").handleSRPayload(response);
                 var jsmods = response.jsmods,
-                  resource_map = response.resource_map,
-                  bootloadable = response.bootloadable,
                   allResources = response.allResources,
                   serverGenTime = response.serverGenTime;
-                if (resource_map) {
-                  require("Bootloader").setResourceMap(resource_map);
-                }
-                if (bootloadable) {
-                  require("Bootloader").enableBootload(bootloadable);
-                }
 
                 var blocking = new Map();
                 var jsmodsStart = 0;
@@ -20167,6 +19937,257 @@ try {
               };
 
               module.exports = BootloaderEndpoint;
+            },
+            null
+          );
+          __d(
+            "bx",
+            ["invariant"],
+            function $module_bx(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports,
+              invariant
+            ) {
+              var _map = {};
+
+              function bx(path) {
+                var uri = _map[path];
+                !!uri ||
+                  invariant(
+                    0,
+                    "bx" + "(...): " + 'Unknown file path "%s"',
+                    path
+                  );
+                return uri;
+              }
+
+              bx.add = function(map) {
+                var warned = false;
+                for (var k in map) {
+                  if (!(k in _map)) {
+                    map[k].loggingID = k;
+                    _map[k] = map[k];
+                  } else if (__DEV__) {
+                    if (warned) {
+                      continue;
+                    }
+
+                    map[k].loggingID = k;
+                    var newData = JSON.stringify(map[k]);
+                    var curData = JSON.stringify(_map[k]);
+
+                    if (curData === newData) {
+                      continue;
+                    }
+
+                    console.log(
+                      k +
+                        ": the binary resource data is different " +
+                        ("(" + curData + " vs " + newData + "). ") +
+                        "If your sandbox is stale, try refreshing it, " +
+                        "otherwise please report the issue to Static Resources."
+                    );
+
+                    warned = true;
+                  }
+                }
+              };
+
+              bx.getURL = function(value) {
+                return value.uri;
+              };
+
+              module.exports = bx;
+            },
+            null
+          );
+          __d(
+            "ix",
+            ["invariant"],
+            function $module_ix(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports,
+              invariant
+            ) {
+              var _map = {};
+
+              function ix(path) {
+                var img = _map[path];
+                !!img ||
+                  invariant(
+                    0,
+                    "ix" + "(...): " + 'Unknown image path "%s"',
+                    path
+                  );
+                return img;
+              }
+
+              ix.add = function(map) {
+                var warned = false;
+
+                for (var k in map) {
+                  if (!(k in _map)) {
+                    map[k].loggingID = k;
+                    _map[k] = map[k];
+                  } else if (__DEV__) {
+                    if (warned) {
+                      continue;
+                    }
+
+                    map[k].loggingID = k;
+                    var newData = JSON.stringify(map[k]);
+                    var curData = JSON.stringify(_map[k]);
+
+                    if (curData === newData) {
+                      continue;
+                    }
+
+                    console.log(
+                      k +
+                        ": the sprite data is different " +
+                        ("(" + curData + " vs " + newData + "). ") +
+                        "If your sandbox is stale, try refreshing it, " +
+                        "otherwise please report the issue to Static Resources."
+                    );
+
+                    warned = true;
+                  }
+                }
+              };
+
+              module.exports = ix;
+            },
+            null
+          );
+          __d(
+            "qex",
+            ["invariant", "requireWeak"],
+            function $module_qex(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports,
+              invariant
+            ) {
+              "use strict";
+
+              var _map = {};
+
+              var logged = {};
+
+              var qex = {
+                _: function _(identifier) {
+                  var serverDatum = _map[identifier];
+
+                  serverDatum != null ||
+                    invariant(0, 'qex(...): Unknown QE value "%s"', identifier);
+                  var r = serverDatum.r,
+                    l = serverDatum.l;
+                  if (l != null && !logged[identifier]) {
+                    logged[identifier] = true;
+                    require("requireWeak")("Banzai", function requireWeak_$1(
+                      Banzai
+                    ) {
+                      Banzai.post("qex", { l: l });
+                    });
+                  }
+                  return r;
+                },
+
+                add: function add(serverData) {
+                  for (var k in serverData) {
+                    if (!(k in _map)) {
+                      _map[k] = serverData[k];
+                    }
+                  }
+                }
+              };
+
+              module.exports = qex;
+            },
+            null
+          );
+          __d(
+            "HasteSupportData",
+            ["ix", "bx", "gkx", "qex"],
+            function $module_HasteSupportData(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports,
+              ix
+            ) {
+              "use strict";
+
+              var HasteSupportData = {
+                handle: function handle(_ref) {
+                  var bxData = _ref.bxData,
+                    gkxData = _ref.gkxData,
+                    ixData = _ref.ixData,
+                    qexData = _ref.qexData;
+                  if (bxData != null) {
+                    require("bx").add(bxData);
+                  }
+                  if (gkxData != null) {
+                    require("gkx").add(gkxData);
+                  }
+                  if (ixData != null) {
+                    ix.add(ixData);
+                  }
+                  if (qexData != null) {
+                    require("qex").add(qexData);
+                  }
+                }
+              };
+
+              module.exports = HasteSupportData;
+            },
+            null
+          );
+          __d(
+            "HasteResponse",
+            ["Bootloader", "HasteSupportData"],
+            function $module_HasteResponse(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              "use strict";
+
+              var HasteResponse = {
+                handleSRPayload: function handleSRPayload(payload) {
+                  require("HasteSupportData").handle(payload);
+                  var resource_map = payload.resource_map,
+                    sot_upgrades = payload.sot_upgrades,
+                    bootloadable = payload.bootloadable;
+                  if (resource_map != null) {
+                    require("Bootloader").setResourceMap(
+                      resource_map,
+                      sot_upgrades
+                    );
+                  }
+                  if (bootloadable != null) {
+                    require("Bootloader").enableBootload(bootloadable);
+                  }
+                }
+              };
+
+              module.exports = HasteResponse;
             },
             null
           );
@@ -40083,7 +40104,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1002077405","namespace":"FB","message":"' +
+        '","revision":"1002077561","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
