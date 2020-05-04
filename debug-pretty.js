@@ -1,4 +1,4 @@
-/*1588408761,,JIT Construction: v1002077561,en_US*/
+/*1588619952,,JIT Construction: v1002080479,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3823,7 +3823,8 @@ try {
                 "LAB_NET_NEW_UI_RELEASE",
                 "WIT_DEPRECATE_GITHUB",
                 "WIT_DEPRECATE_OLD_UX",
-                "EO_SRT_HELPDESK_DASHBOARD_DISABLE_UNUSED_TAB_IN_RIGHT_PANEL"
+                "EO_SRT_HELPDESK_DASHBOARD_DISABLE_UNUSED_TAB_IN_RIGHT_PANEL",
+                "HELPDESK_FUNCTIONAL_COMPONENT_WORKFLOW_COMPOSER"
               ]
             },
             ko: {
@@ -3853,7 +3854,8 @@ try {
                 "DDZhogI19W",
                 "9k7Y5kmDD1A",
                 "4jkC8ia3PYA",
-                "6fHw06UmAMW"
+                "6fHw06UmAMW",
+                "1UTfWsN3Bcn"
               ]
             }
           });
@@ -3905,10 +3907,10 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1002077561,
-            client_revision: 1002077561,
+            server_revision: 1002080479,
+            client_revision: 1002080479,
             tier: "",
-            push_phase: "C3e",
+            push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
             pr: 1,
             haste_site: "www",
@@ -3916,17 +3918,17 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6822163682866470619-0",
+            hsi: "6823070740850035673-0",
             spin: 0,
-            __spin_r: 1002077561,
+            __spin_r: 1002080479,
             __spin_b: "trunk",
-            __spin_t: 1588408761,
+            __spin_t: 1588619952,
             vip: "31.13.66.19"
           });
           __d("WebConnectionClassServerGuess", [], {
             connectionClass: "UNKNOWN"
           });
-          __d("ServerNonce", [], { ServerNonce: "BqvmukA5S23KWI8GSR9_lT" });
+          __d("ServerNonce", [], { ServerNonce: "6rZ_zNkzxM75WzqG3zT2IA" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4072,7 +4074,6 @@ try {
             }
           });
           __d("BanzaiConfig", [], {
-            EXPIRY: 86400000,
             MAX_SIZE: 10000,
             MAX_WAIT: 150000,
             RESTORE_WAIT: 150000,
@@ -4092,7 +4093,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1002077561",
+            revision: "1002080479",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -13227,6 +13228,7 @@ try {
                     });
                   });
                 }
+
                 return serverDatum.result;
               }
 
@@ -40104,7 +40106,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1002077561","namespace":"FB","message":"' +
+        '","revision":"1002080479","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
