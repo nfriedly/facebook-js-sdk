@@ -1,4 +1,4 @@
-/*1588619952,,JIT Construction: v1002080479,en_US*/
+/*1588646959,,JIT Construction: v1002083368,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3907,8 +3907,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1002080479,
-            client_revision: 1002080479,
+            server_revision: 1002083368,
+            client_revision: 1002083368,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3918,17 +3918,17 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6823070740850035673-0",
+            hsi: "6823186734203925482-0",
             spin: 0,
-            __spin_r: 1002080479,
+            __spin_r: 1002083368,
             __spin_b: "trunk",
-            __spin_t: 1588619952,
+            __spin_t: 1588646959,
             vip: "31.13.66.19"
           });
           __d("WebConnectionClassServerGuess", [], {
             connectionClass: "UNKNOWN"
           });
-          __d("ServerNonce", [], { ServerNonce: "6rZ_zNkzxM75WzqG3zT2IA" });
+          __d("ServerNonce", [], { ServerNonce: "zskGEwUfmxOQMpfNlXFn5k" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4093,7 +4093,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1002080479",
+            revision: "1002083368",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -4988,8 +4988,8 @@ try {
                 /^at ([^\s\)\()]+):(\d+):(\d+)$/
               ];
 
-              if (Error.stackTraceLimit != null && Error.stackTraceLimit < 40) {
-                Error.stackTraceLimit = 40;
+              if (Error.stackTraceLimit != null && Error.stackTraceLimit < 80) {
+                Error.stackTraceLimit = 80;
               }
 
               function getStackWithoutMessage(error) {
@@ -26591,44 +26591,8 @@ try {
             null
           );
           __d(
-            "BanzaiStreamPayloads",
-            [],
-            function $module_BanzaiStreamPayloads(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              "use strict";
-
-              var unsentPayloads = {};
-
-              var BanzaiStreamPayloads = {
-                addPayload: function addPayload(id, payload) {
-                  unsentPayloads[id] = payload;
-                },
-
-                removePayload: function removePayload(id) {
-                  delete unsentPayloads[id];
-                },
-
-                unload: function unload(callback) {
-                  Object.keys(unsentPayloads).forEach(function forEach_$0(id) {
-                    var data = unsentPayloads[id];
-                    callback(data.route, data.payload);
-                  });
-                }
-              };
-
-              module.exports = BanzaiStreamPayloads;
-            },
-            null
-          );
-          __d(
             "BanzaiNew",
-            ["BanzaiBase", "BanzaiStreamPayloads"],
+            ["BanzaiBase"],
             function $module_BanzaiNew(
               global,
               require,
@@ -26637,17 +26601,6 @@ try {
               module,
               exports
             ) {
-              var _super = {
-                _unload: require("BanzaiBase")._unload
-              };
-
-              require("BanzaiBase")._unload = function() {
-                require("BanzaiStreamPayloads").unload(
-                  require("BanzaiBase").post
-                );
-                _super._unload();
-              };
-
               module.exports = require("BanzaiBase");
             },
             null
@@ -40106,7 +40059,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1002080479","namespace":"FB","message":"' +
+        '","revision":"1002083368","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
