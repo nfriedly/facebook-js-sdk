@@ -1,4 +1,4 @@
-/*1588715348,,JIT Construction: v1002086938,en_US*/
+/*1588723162,,JIT Construction: v1002088041,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3909,8 +3909,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1002086938,
-            client_revision: 1002086938,
+            server_revision: 1002088041,
+            client_revision: 1002088041,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3920,17 +3920,17 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6823480462375449792-0",
+            hsi: "6823514024089756494-0",
             spin: 0,
-            __spin_r: 1002086938,
+            __spin_r: 1002088041,
             __spin_b: "trunk",
-            __spin_t: 1588715348,
+            __spin_t: 1588723162,
             vip: "31.13.66.19"
           });
           __d("WebConnectionClassServerGuess", [], {
             connectionClass: "UNKNOWN"
           });
-          __d("ServerNonce", [], { ServerNonce: "4ekano_qpsmA4AQC4sfC6a" });
+          __d("ServerNonce", [], { ServerNonce: "wRwDtELngYt5QNH9yepWVh" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4084,6 +4084,7 @@ try {
               boosted_component: true,
               boosted_pagelikes: true,
               jslogger: true,
+              kbshortcuts_feed: true,
               mercury_send_error_logging: true,
               platform_oauth_client_events: true,
               xtrackable_clientview_batch: true,
@@ -4095,7 +4096,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1002086938",
+            revision: "1002088041",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -40046,7 +40047,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1002086938","namespace":"FB","message":"' +
+        '","revision":"1002088041","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
