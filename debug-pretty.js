@@ -1,4 +1,4 @@
-/*1588646959,,JIT Construction: v1002083368,en_US*/
+/*1588715348,,JIT Construction: v1002086938,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3755,8 +3755,8 @@ try {
           __d("cr:925100", [], function(g, r, rd, rl, m, e) {
             m.exports = require("RunBlue");
           });
-          __d("cr:1268308", [], function(g, r, rd, rl, m, e) {
-            m.exports = require("BanzaiNew");
+          __d("cr:1454227", [], function(g, r, rd, rl, m, e) {
+            m.exports = require("BanzaiBase");
           });
           __d("CurrentEnvironment", [], {
             facebookdotcom: true,
@@ -3824,7 +3824,8 @@ try {
                 "WIT_DEPRECATE_GITHUB",
                 "WIT_DEPRECATE_OLD_UX",
                 "EO_SRT_HELPDESK_DASHBOARD_DISABLE_UNUSED_TAB_IN_RIGHT_PANEL",
-                "HELPDESK_FUNCTIONAL_COMPONENT_WORKFLOW_COMPOSER"
+                "HELPDESK_FUNCTIONAL_COMPONENT_WORKFLOW_COMPOSER",
+                "BUSINESS_INVITE_FLOW_WITH_SELLER_PROFILE"
               ]
             },
             ko: {
@@ -3855,7 +3856,8 @@ try {
                 "9k7Y5kmDD1A",
                 "4jkC8ia3PYA",
                 "6fHw06UmAMW",
-                "1UTfWsN3Bcn"
+                "1UTfWsN3Bcn",
+                "7FOIzos6XJX"
               ]
             }
           });
@@ -3907,8 +3909,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1002083368,
-            client_revision: 1002083368,
+            server_revision: 1002086938,
+            client_revision: 1002086938,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3918,17 +3920,17 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6823186734203925482-0",
+            hsi: "6823480462375449792-0",
             spin: 0,
-            __spin_r: 1002083368,
+            __spin_r: 1002086938,
             __spin_b: "trunk",
-            __spin_t: 1588646959,
+            __spin_t: 1588715348,
             vip: "31.13.66.19"
           });
           __d("WebConnectionClassServerGuess", [], {
             connectionClass: "UNKNOWN"
           });
-          __d("ServerNonce", [], { ServerNonce: "zskGEwUfmxOQMpfNlXFn5k" });
+          __d("ServerNonce", [], { ServerNonce: "4ekano_qpsmA4AQC4sfC6a" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4093,7 +4095,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1002083368",
+            revision: "1002086938",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -26591,21 +26593,6 @@ try {
             null
           );
           __d(
-            "BanzaiNew",
-            ["BanzaiBase"],
-            function $module_BanzaiNew(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              module.exports = require("BanzaiBase");
-            },
-            null
-          );
-          __d(
             "DOMWrapper",
             [],
             function $module_DOMWrapper(
@@ -26877,7 +26864,7 @@ try {
           );
           __d(
             "Banzai",
-            ["requireCond", "cr:1268308"],
+            ["requireCond", "cr:1454227"],
             function $module_Banzai(
               global,
               require,
@@ -26886,7 +26873,7 @@ try {
               module,
               exports
             ) {
-              module.exports = require("cr:1268308");
+              module.exports = require("cr:1454227");
             },
             null
           );
@@ -40059,7 +40046,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1002083368","namespace":"FB","message":"' +
+        '","revision":"1002086938","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
