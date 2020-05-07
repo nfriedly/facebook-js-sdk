@@ -1,4 +1,4 @@
-/*1588817953,,JIT Construction: v1002095465,en_US*/
+/*1588831757,,JIT Construction: v1002096249,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3909,8 +3909,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1002095465,
-            client_revision: 1002095465,
+            server_revision: 1002096249,
+            client_revision: 1002096249,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3920,17 +3920,17 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6823921148949320621-0",
+            hsi: "6823980435257427751-0",
             spin: 0,
-            __spin_r: 1002095465,
+            __spin_r: 1002096249,
             __spin_b: "trunk",
-            __spin_t: 1588817953,
+            __spin_t: 1588831757,
             vip: "31.13.66.19"
           });
           __d("WebConnectionClassServerGuess", [], {
             connectionClass: "UNKNOWN"
           });
-          __d("ServerNonce", [], { ServerNonce: "Vi4SQzSRnyGc2_i3h2K-c_" });
+          __d("ServerNonce", [], { ServerNonce: "9UmySuHTp2MVsNvKzmFccE" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4084,7 +4084,6 @@ try {
               boosted_component: true,
               boosted_pagelikes: true,
               jslogger: true,
-              kbshortcuts_feed: true,
               mercury_send_error_logging: true,
               platform_oauth_client_events: true,
               xtrackable_clientview_batch: true,
@@ -4096,7 +4095,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1002095465",
+            revision: "1002096249",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -18791,6 +18790,486 @@ try {
             null
           );
           __d(
+            "BootloaderEndpoint",
+            [
+              "Bootloader",
+              "BootloaderEndpointConfig",
+              "CSRFGuard",
+              "FBLogger",
+              "HasteResponse",
+              "TimeSlice",
+              "getAsyncParams",
+              "getSameOriginTransport",
+              "performanceAbsoluteNow",
+              "setImmediateAcrossTransitions"
+            ],
+            function $module_BootloaderEndpoint(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              "use strict";
+              var c_performanceAbsoluteNow;
+
+              var _baseURI = require("BootloaderEndpointConfig").endpointURI;
+
+              var _requestID = 0;
+              var _pendingSetImmediate = null;
+              var _pendingBlocking = new Map();
+              var _pendingNonblocking = new Map();
+
+              function _getURL(blockingMods, nonblockingMods) {
+                var args = {};
+                if (blockingMods.size) {
+                  args.modules = Array.from(blockingMods.keys()).join(",");
+                }
+                if (nonblockingMods.size) {
+                  args.nb_modules = Array.from(nonblockingMods.keys()).join(
+                    ","
+                  );
+                }
+
+                var paramStr = Object.entries(
+                  babelHelpers["extends"](
+                    {},
+                    args,
+                    require("getAsyncParams")("GET")
+                  )
+                )
+                  .map(function map_$0(_ref) {
+                    var k = _ref[0],
+                      v = _ref[1];
+                    return (
+                      encodeURIComponent(k) +
+                      "=" +
+                      encodeURIComponent(String(v))
+                    );
+                  })
+                  .join("&");
+
+                return (
+                  _baseURI + (_baseURI.includes("?") ? "&" : "?") + paramStr
+                );
+              }
+
+              function _sendRequest(blockingMods, nonblockingMods) {
+                var uri = _getURL(blockingMods, nonblockingMods);
+                var xhr = require("getSameOriginTransport")();
+                var requestID = _requestID++;
+                var requestStart = (c_performanceAbsoluteNow ||
+                  (c_performanceAbsoluteNow = require("performanceAbsoluteNow")))();
+
+                xhr.open("GET", uri, true);
+                var continuation = require("TimeSlice").getGuardedContinuation(
+                  "Bootloader _requestHastePayload"
+                );
+
+                xhr.onreadystatechange = function() {
+                  if (xhr.readyState !== 4) {
+                    return;
+                  }
+                  continuation(function continuation_$0() {
+                    var response =
+                      xhr.status === 200
+                        ? JSON.parse(
+                            require("CSRFGuard").clean(xhr.responseText)
+                          )
+                        : null;
+                    if (response == null) {
+                      require("FBLogger")("bootloader").warn(
+                        "Invalid response from %s: %s",
+                        uri,
+                        xhr.responseText.substr(0, 256)
+                      );
+                    } else {
+                      require("TimeSlice").guard(
+                        function TimeSlice_guard_$0() {
+                          return _handleResponse(
+                            uri,
+                            response,
+                            blockingMods,
+                            nonblockingMods,
+                            requestID,
+                            requestStart
+                          );
+                        },
+
+                        "Bootloader receiveEndpointData",
+                        {
+                          propagationType: require("TimeSlice").PropagationType
+                            .CONTINUATION
+                        }
+                      )();
+                    }
+                  });
+                };
+                xhr.send();
+              }
+
+              function _handleResponse(
+                uri,
+                response,
+                blockingMods,
+                nonblockingMods,
+                requestID,
+                requestStart
+              ) {
+                if (response.__error) {
+                  require("FBLogger")("bootloader").warn(
+                    "Fatal error from bootloader endpoint: %s",
+                    uri
+                  );
+
+                  return;
+                }
+                var responseStart = (c_performanceAbsoluteNow ||
+                  (c_performanceAbsoluteNow = require("performanceAbsoluteNow")))();
+                var serverGenTime = response.serverGenTime;
+
+                require("HasteResponse").handle(
+                  response,
+                  function HasteResponse_handle_$1() {
+                    var _arr = [blockingMods, nonblockingMods];
+                    for (var _i = 0; _i < _arr.length; _i++) {
+                      var modules = _arr[_i];
+                      for (
+                        var _iterator = modules.values(),
+                          _isArray = Array.isArray(_iterator),
+                          _i2 = 0,
+                          _iterator = _isArray
+                            ? _iterator
+                            : _iterator[
+                                typeof Symbol === "function"
+                                  ? Symbol.iterator
+                                  : "@@iterator"
+                              ]();
+                        ;
+
+                      ) {
+                        var _ref2;
+                        if (_isArray) {
+                          if (_i2 >= _iterator.length) break;
+                          _ref2 = _iterator[_i2++];
+                        } else {
+                          _i2 = _iterator.next();
+                          if (_i2.done) break;
+                          _ref2 = _i2.value;
+                        }
+                        var hash = _ref2;
+                        require("Bootloader").done(hash);
+                      }
+                    }
+                  },
+                  function HasteResponse_handle_$2(hasteResponseLogData) {
+                    var _arr2 = [blockingMods, nonblockingMods];
+                    for (var _i3 = 0; _i3 < _arr2.length; _i3++) {
+                      var modules = _arr2[_i3];
+                      for (
+                        var _iterator2 = modules.keys(),
+                          _isArray2 = Array.isArray(_iterator2),
+                          _i4 = 0,
+                          _iterator2 = _isArray2
+                            ? _iterator2
+                            : _iterator2[
+                                typeof Symbol === "function"
+                                  ? Symbol.iterator
+                                  : "@@iterator"
+                              ]();
+                        ;
+
+                      ) {
+                        var _ref3;
+                        if (_isArray2) {
+                          if (_i4 >= _iterator2.length) break;
+                          _ref3 = _iterator2[_i4++];
+                        } else {
+                          _i4 = _iterator2.next();
+                          if (_i4.done) break;
+                          _ref3 = _i4.value;
+                        }
+                        var _module = _ref3;
+                        require("Bootloader").beDone(
+                          _module,
+                          requestID,
+                          babelHelpers["extends"](
+                            {
+                              requestStart: requestStart,
+                              responseStart: responseStart,
+                              serverGenTime: serverGenTime
+                            },
+                            hasteResponseLogData
+                          )
+                        );
+                      }
+                    }
+                  }
+                );
+              }
+
+              function _processPending() {
+                var blockingMods = _pendingBlocking;
+                var nonblockingMods = _pendingNonblocking;
+
+                _pendingSetImmediate = null;
+                _pendingBlocking = new Map();
+                _pendingNonblocking = new Map();
+
+                _sendRequest(blockingMods, nonblockingMods);
+              }
+
+              var BootloaderEndpoint = {
+                load: function load(module, blocking, hash) {
+                  (blocking ? _pendingBlocking : _pendingNonblocking).set(
+                    module,
+                    hash
+                  );
+
+                  if (require("BootloaderEndpointConfig").debugNoBatching) {
+                    _processPending();
+                    return;
+                  }
+
+                  if (_pendingSetImmediate != null) {
+                    return;
+                  }
+                  var continuation = require("TimeSlice").getGuardedContinuation(
+                    "Schedule async batch request: Bootloader._loadResources"
+                  );
+
+                  _pendingSetImmediate = require("setImmediateAcrossTransitions")(
+                    function setImmediateAcrossTransitions_$0() {
+                      return continuation(function continuation_$0() {
+                        return _processPending();
+                      });
+                    }
+                  );
+                }
+              };
+
+              module.exports = BootloaderEndpoint;
+            },
+            null
+          );
+          __d(
+            "bx",
+            ["invariant"],
+            function $module_bx(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports,
+              invariant
+            ) {
+              var _map = {};
+
+              function bx(path) {
+                var uri = _map[path];
+                !!uri ||
+                  invariant(
+                    0,
+                    "bx" + "(...): " + 'Unknown file path "%s"',
+                    path
+                  );
+                return uri;
+              }
+
+              bx.add = function(map) {
+                var warned = false;
+                for (var k in map) {
+                  if (!(k in _map)) {
+                    map[k].loggingID = k;
+                    _map[k] = map[k];
+                  } else if (__DEV__) {
+                    if (warned) {
+                      continue;
+                    }
+
+                    map[k].loggingID = k;
+                    var newData = JSON.stringify(map[k]);
+                    var curData = JSON.stringify(_map[k]);
+
+                    if (curData === newData) {
+                      continue;
+                    }
+
+                    console.log(
+                      k +
+                        ": the binary resource data is different " +
+                        ("(" + curData + " vs " + newData + "). ") +
+                        "If your sandbox is stale, try refreshing it, " +
+                        "otherwise please report the issue to Static Resources."
+                    );
+
+                    warned = true;
+                  }
+                }
+              };
+
+              bx.getURL = function(value) {
+                return value.uri;
+              };
+
+              module.exports = bx;
+            },
+            null
+          );
+          __d(
+            "ix",
+            ["invariant"],
+            function $module_ix(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports,
+              invariant
+            ) {
+              var _map = {};
+
+              function ix(path) {
+                var img = _map[path];
+                !!img ||
+                  invariant(
+                    0,
+                    "ix" + "(...): " + 'Unknown image path "%s"',
+                    path
+                  );
+                return img;
+              }
+
+              ix.add = function(map) {
+                var warned = false;
+
+                for (var k in map) {
+                  if (!(k in _map)) {
+                    map[k].loggingID = k;
+                    _map[k] = map[k];
+                  } else if (__DEV__) {
+                    if (warned) {
+                      continue;
+                    }
+
+                    map[k].loggingID = k;
+                    var newData = JSON.stringify(map[k]);
+                    var curData = JSON.stringify(_map[k]);
+
+                    if (curData === newData) {
+                      continue;
+                    }
+
+                    console.log(
+                      k +
+                        ": the sprite data is different " +
+                        ("(" + curData + " vs " + newData + "). ") +
+                        "If your sandbox is stale, try refreshing it, " +
+                        "otherwise please report the issue to Static Resources."
+                    );
+
+                    warned = true;
+                  }
+                }
+              };
+
+              module.exports = ix;
+            },
+            null
+          );
+          __d(
+            "qex",
+            ["invariant", "requireWeak"],
+            function $module_qex(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports,
+              invariant
+            ) {
+              "use strict";
+
+              var _map = {};
+
+              var logged = {};
+
+              var qex = {
+                _: function _(identifier) {
+                  var serverDatum = _map[identifier];
+
+                  serverDatum != null ||
+                    invariant(0, 'qex(...): Unknown QE value "%s"', identifier);
+                  var r = serverDatum.r,
+                    l = serverDatum.l;
+                  if (l != null && !logged[identifier]) {
+                    logged[identifier] = true;
+                    require("requireWeak")("Banzai", function requireWeak_$1(
+                      Banzai
+                    ) {
+                      Banzai.post("qex", { l: l });
+                    });
+                  }
+                  return r;
+                },
+
+                add: function add(serverData) {
+                  for (var k in serverData) {
+                    if (!(k in _map)) {
+                      _map[k] = serverData[k];
+                    }
+                  }
+                }
+              };
+
+              module.exports = qex;
+            },
+            null
+          );
+          __d(
+            "HasteSupportData",
+            ["ix", "bx", "gkx", "qex"],
+            function $module_HasteSupportData(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports,
+              ix
+            ) {
+              "use strict";
+
+              var HasteSupportData = {
+                handle: function handle(_ref) {
+                  var bxData = _ref.bxData,
+                    gkxData = _ref.gkxData,
+                    ixData = _ref.ixData,
+                    qexData = _ref.qexData;
+                  if (bxData != null) {
+                    require("bx").add(bxData);
+                  }
+                  if (gkxData != null) {
+                    require("gkx").add(gkxData);
+                  }
+                  if (ixData != null) {
+                    ix.add(ixData);
+                  }
+                  if (qexData != null) {
+                    require("qex").add(qexData);
+                  }
+                }
+              };
+
+              module.exports = HasteSupportData;
+            },
+            null
+          );
+          __d(
             "BanzaiLazyQueue",
             [],
             function $module_BanzaiLazyQueue(
@@ -19662,510 +20141,13 @@ try {
             null
           );
           __d(
-            "BootloaderEndpoint",
+            "HasteResponse",
             [
               "Bootloader",
-              "BootloaderEndpointConfig",
-              "CSRFGuard",
-              "FBLogger",
-              "HasteResponse",
+              "HasteSupportData",
               "ServerJS",
-              "TimeSlice",
-              "getAsyncParams",
-              "getSameOriginTransport",
-              "performanceAbsoluteNow",
-              "setImmediateAcrossTransitions"
+              "performanceAbsoluteNow"
             ],
-            function $module_BootloaderEndpoint(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              "use strict";
-              var c_performanceAbsoluteNow;
-
-              var _baseURI = require("BootloaderEndpointConfig").endpointURI;
-
-              var _requestID = 0;
-              var _pendingSetImmediate = null;
-              var _pendingBlocking = new Map();
-              var _pendingNonblocking = new Map();
-
-              function _getURL(blockingMods, nonblockingMods) {
-                var args = {};
-                if (blockingMods.size) {
-                  args.modules = Array.from(blockingMods.keys()).join(",");
-                }
-                if (nonblockingMods.size) {
-                  args.nb_modules = Array.from(nonblockingMods.keys()).join(
-                    ","
-                  );
-                }
-
-                var paramStr = Object.entries(
-                  babelHelpers["extends"](
-                    {},
-                    args,
-                    require("getAsyncParams")("GET")
-                  )
-                )
-                  .map(function map_$0(_ref) {
-                    var k = _ref[0],
-                      v = _ref[1];
-                    return (
-                      encodeURIComponent(k) +
-                      "=" +
-                      encodeURIComponent(String(v))
-                    );
-                  })
-                  .join("&");
-
-                return (
-                  _baseURI + (_baseURI.includes("?") ? "&" : "?") + paramStr
-                );
-              }
-
-              function _sendRequest(blockingMods, nonblockingMods) {
-                var uri = _getURL(blockingMods, nonblockingMods);
-                var xhr = require("getSameOriginTransport")();
-                var requestID = _requestID++;
-                var requestStart = (c_performanceAbsoluteNow ||
-                  (c_performanceAbsoluteNow = require("performanceAbsoluteNow")))();
-
-                xhr.open("GET", uri, true);
-                var continuation = require("TimeSlice").getGuardedContinuation(
-                  "Bootloader _requestHastePayload"
-                );
-
-                xhr.onreadystatechange = function() {
-                  if (xhr.readyState !== 4) {
-                    return;
-                  }
-                  continuation(function continuation_$0() {
-                    var response =
-                      xhr.status === 200
-                        ? JSON.parse(
-                            require("CSRFGuard").clean(xhr.responseText)
-                          )
-                        : null;
-                    if (response == null) {
-                      require("FBLogger")("bootloader").warn(
-                        "Invalid response from %s: %s",
-                        uri,
-                        xhr.responseText.substr(0, 256)
-                      );
-                    } else {
-                      require("TimeSlice").guard(
-                        function TimeSlice_guard_$0() {
-                          return _handleResponse(
-                            uri,
-                            response,
-                            blockingMods,
-                            nonblockingMods,
-                            requestID,
-                            requestStart
-                          );
-                        },
-
-                        "Bootloader receiveEndpointData",
-                        {
-                          propagationType: require("TimeSlice").PropagationType
-                            .CONTINUATION
-                        }
-                      )();
-                    }
-                  });
-                };
-                xhr.send();
-              }
-
-              function _handleResponse(
-                uri,
-                response,
-                blockingMods,
-                nonblockingMods,
-                requestID,
-                requestStart
-              ) {
-                if (response.__error) {
-                  require("FBLogger")("bootloader").warn(
-                    "Fatal error from bootloader endpoint: %s",
-                    uri
-                  );
-
-                  return;
-                }
-                var responseStart = (c_performanceAbsoluteNow ||
-                  (c_performanceAbsoluteNow = require("performanceAbsoluteNow")))();
-
-                require("HasteResponse").handleSRPayload(response);
-                var jsmods = response.jsmods,
-                  allResources = response.allResources,
-                  serverGenTime = response.serverGenTime;
-
-                var blocking = new Map();
-                var jsmodsStart = 0;
-                var jsmodsEnd = 0;
-                require("Bootloader").loadResources(
-                  require("Bootloader").getCSSResources(allResources || []),
-                  function Bootloader_loadResources_$1() {
-                    jsmodsStart = (c_performanceAbsoluteNow ||
-                      (c_performanceAbsoluteNow = require("performanceAbsoluteNow")))();
-                    new (require("ServerJS"))().handle(jsmods || {});
-                    jsmodsEnd = c_performanceAbsoluteNow();
-                    var _arr = [blockingMods, nonblockingMods];
-                    for (var _i = 0; _i < _arr.length; _i++) {
-                      var modules = _arr[_i];
-                      for (
-                        var _iterator = modules.values(),
-                          _isArray = Array.isArray(_iterator),
-                          _i2 = 0,
-                          _iterator = _isArray
-                            ? _iterator
-                            : _iterator[
-                                typeof Symbol === "function"
-                                  ? Symbol.iterator
-                                  : "@@iterator"
-                              ]();
-                        ;
-
-                      ) {
-                        var _ref2;
-                        if (_isArray) {
-                          if (_i2 >= _iterator.length) break;
-                          _ref2 = _iterator[_i2++];
-                        } else {
-                          _i2 = _iterator.next();
-                          if (_i2.done) break;
-                          _ref2 = _i2.value;
-                        }
-                        var hash = _ref2;
-                        require("Bootloader").done(hash);
-                      }
-                    }
-                  },
-                  null,
-                  blocking
-                );
-
-                var all = new Map();
-                require("Bootloader").loadResources(
-                  allResources || [],
-                  function Bootloader_loadResources_$1() {
-                    var _arr2 = [blockingMods, nonblockingMods];
-                    for (var _i3 = 0; _i3 < _arr2.length; _i3++) {
-                      var modules = _arr2[_i3];
-                      for (
-                        var _iterator2 = modules.keys(),
-                          _isArray2 = Array.isArray(_iterator2),
-                          _i4 = 0,
-                          _iterator2 = _isArray2
-                            ? _iterator2
-                            : _iterator2[
-                                typeof Symbol === "function"
-                                  ? Symbol.iterator
-                                  : "@@iterator"
-                              ]();
-                        ;
-
-                      ) {
-                        var _serverGenTime;
-                        var _ref3;
-                        if (_isArray2) {
-                          if (_i4 >= _iterator2.length) break;
-                          _ref3 = _iterator2[_i4++];
-                        } else {
-                          _i4 = _iterator2.next();
-                          if (_i4.done) break;
-                          _ref3 = _i4.value;
-                        }
-                        var _module = _ref3;
-                        require("Bootloader").beDone(_module, requestID, {
-                          requestStart: requestStart,
-                          responseStart: responseStart,
-                          serverGenTime:
-                            (_serverGenTime = serverGenTime) != null
-                              ? _serverGenTime
-                              : 0,
-                          jsmodsStart: jsmodsStart,
-                          jsmodsEnd: jsmodsEnd,
-                          blocking: blocking,
-                          all: all
-                        });
-                      }
-                    }
-                  },
-                  null,
-                  all
-                );
-              }
-
-              function _processPending() {
-                var blockingMods = _pendingBlocking;
-                var nonblockingMods = _pendingNonblocking;
-
-                _pendingSetImmediate = null;
-                _pendingBlocking = new Map();
-                _pendingNonblocking = new Map();
-
-                _sendRequest(blockingMods, nonblockingMods);
-              }
-
-              var BootloaderEndpoint = {
-                load: function load(module, blocking, hash) {
-                  (blocking ? _pendingBlocking : _pendingNonblocking).set(
-                    module,
-                    hash
-                  );
-
-                  if (require("BootloaderEndpointConfig").debugNoBatching) {
-                    _processPending();
-                    return;
-                  }
-
-                  if (_pendingSetImmediate != null) {
-                    return;
-                  }
-                  var continuation = require("TimeSlice").getGuardedContinuation(
-                    "Schedule async batch request: Bootloader._loadResources"
-                  );
-
-                  _pendingSetImmediate = require("setImmediateAcrossTransitions")(
-                    function setImmediateAcrossTransitions_$0() {
-                      return continuation(function continuation_$0() {
-                        return _processPending();
-                      });
-                    }
-                  );
-                }
-              };
-
-              module.exports = BootloaderEndpoint;
-            },
-            null
-          );
-          __d(
-            "bx",
-            ["invariant"],
-            function $module_bx(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports,
-              invariant
-            ) {
-              var _map = {};
-
-              function bx(path) {
-                var uri = _map[path];
-                !!uri ||
-                  invariant(
-                    0,
-                    "bx" + "(...): " + 'Unknown file path "%s"',
-                    path
-                  );
-                return uri;
-              }
-
-              bx.add = function(map) {
-                var warned = false;
-                for (var k in map) {
-                  if (!(k in _map)) {
-                    map[k].loggingID = k;
-                    _map[k] = map[k];
-                  } else if (__DEV__) {
-                    if (warned) {
-                      continue;
-                    }
-
-                    map[k].loggingID = k;
-                    var newData = JSON.stringify(map[k]);
-                    var curData = JSON.stringify(_map[k]);
-
-                    if (curData === newData) {
-                      continue;
-                    }
-
-                    console.log(
-                      k +
-                        ": the binary resource data is different " +
-                        ("(" + curData + " vs " + newData + "). ") +
-                        "If your sandbox is stale, try refreshing it, " +
-                        "otherwise please report the issue to Static Resources."
-                    );
-
-                    warned = true;
-                  }
-                }
-              };
-
-              bx.getURL = function(value) {
-                return value.uri;
-              };
-
-              module.exports = bx;
-            },
-            null
-          );
-          __d(
-            "ix",
-            ["invariant"],
-            function $module_ix(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports,
-              invariant
-            ) {
-              var _map = {};
-
-              function ix(path) {
-                var img = _map[path];
-                !!img ||
-                  invariant(
-                    0,
-                    "ix" + "(...): " + 'Unknown image path "%s"',
-                    path
-                  );
-                return img;
-              }
-
-              ix.add = function(map) {
-                var warned = false;
-
-                for (var k in map) {
-                  if (!(k in _map)) {
-                    map[k].loggingID = k;
-                    _map[k] = map[k];
-                  } else if (__DEV__) {
-                    if (warned) {
-                      continue;
-                    }
-
-                    map[k].loggingID = k;
-                    var newData = JSON.stringify(map[k]);
-                    var curData = JSON.stringify(_map[k]);
-
-                    if (curData === newData) {
-                      continue;
-                    }
-
-                    console.log(
-                      k +
-                        ": the sprite data is different " +
-                        ("(" + curData + " vs " + newData + "). ") +
-                        "If your sandbox is stale, try refreshing it, " +
-                        "otherwise please report the issue to Static Resources."
-                    );
-
-                    warned = true;
-                  }
-                }
-              };
-
-              module.exports = ix;
-            },
-            null
-          );
-          __d(
-            "qex",
-            ["invariant", "requireWeak"],
-            function $module_qex(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports,
-              invariant
-            ) {
-              "use strict";
-
-              var _map = {};
-
-              var logged = {};
-
-              var qex = {
-                _: function _(identifier) {
-                  var serverDatum = _map[identifier];
-
-                  serverDatum != null ||
-                    invariant(0, 'qex(...): Unknown QE value "%s"', identifier);
-                  var r = serverDatum.r,
-                    l = serverDatum.l;
-                  if (l != null && !logged[identifier]) {
-                    logged[identifier] = true;
-                    require("requireWeak")("Banzai", function requireWeak_$1(
-                      Banzai
-                    ) {
-                      Banzai.post("qex", { l: l });
-                    });
-                  }
-                  return r;
-                },
-
-                add: function add(serverData) {
-                  for (var k in serverData) {
-                    if (!(k in _map)) {
-                      _map[k] = serverData[k];
-                    }
-                  }
-                }
-              };
-
-              module.exports = qex;
-            },
-            null
-          );
-          __d(
-            "HasteSupportData",
-            ["ix", "bx", "gkx", "qex"],
-            function $module_HasteSupportData(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports,
-              ix
-            ) {
-              "use strict";
-
-              var HasteSupportData = {
-                handle: function handle(_ref) {
-                  var bxData = _ref.bxData,
-                    gkxData = _ref.gkxData,
-                    ixData = _ref.ixData,
-                    qexData = _ref.qexData;
-                  if (bxData != null) {
-                    require("bx").add(bxData);
-                  }
-                  if (gkxData != null) {
-                    require("gkx").add(gkxData);
-                  }
-                  if (ixData != null) {
-                    ix.add(ixData);
-                  }
-                  if (qexData != null) {
-                    require("qex").add(qexData);
-                  }
-                }
-              };
-
-              module.exports = HasteSupportData;
-            },
-            null
-          );
-          __d(
-            "HasteResponse",
-            ["Bootloader", "HasteSupportData"],
             function $module_HasteResponse(
               global,
               require,
@@ -20175,6 +20157,7 @@ try {
               exports
             ) {
               "use strict";
+              var c_performanceAbsoluteNow;
 
               var HasteResponse = {
                 handleSRPayload: function handleSRPayload(payload) {
@@ -20191,6 +20174,46 @@ try {
                   if (bootloadable != null) {
                     require("Bootloader").enableBootload(bootloadable);
                   }
+                },
+
+                handle: function handle(payload, callback, loggingCallback) {
+                  HasteResponse.handleSRPayload(payload);
+                  var jsmods = payload.jsmods,
+                    allResources = payload.allResources;
+
+                  var blocking = new Map();
+                  var all = new Map();
+                  var jsmodsStart = 0;
+                  var jsmodsEnd = 0;
+
+                  require("Bootloader").loadResources(
+                    require("Bootloader").getCSSResources(allResources || []),
+                    function Bootloader_loadResources_$1() {
+                      jsmodsStart = (c_performanceAbsoluteNow ||
+                        (c_performanceAbsoluteNow = require("performanceAbsoluteNow")))();
+                      new (require("ServerJS"))().handle(jsmods || {});
+                      jsmodsEnd = c_performanceAbsoluteNow();
+
+                      callback && callback();
+                    },
+                    null,
+                    blocking
+                  );
+
+                  require("Bootloader").loadResources(
+                    allResources || [],
+                    function Bootloader_loadResources_$1() {
+                      loggingCallback &&
+                        loggingCallback({
+                          jsmodsStart: jsmodsStart,
+                          jsmodsEnd: jsmodsEnd,
+                          blocking: blocking,
+                          all: all
+                        });
+                    },
+                    null,
+                    all
+                  );
                 }
               };
 
@@ -40049,7 +40072,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1002095465","namespace":"FB","message":"' +
+        '","revision":"1002096249","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
