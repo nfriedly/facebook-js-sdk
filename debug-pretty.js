@@ -1,4 +1,4 @@
-/*1588740549,,JIT Construction: v1002090077,en_US*/
+/*1588817953,,JIT Construction: v1002095465,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3909,8 +3909,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1002090077,
-            client_revision: 1002090077,
+            server_revision: 1002095465,
+            client_revision: 1002095465,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3920,17 +3920,17 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6823588700665012555-0",
+            hsi: "6823921148949320621-0",
             spin: 0,
-            __spin_r: 1002090077,
+            __spin_r: 1002095465,
             __spin_b: "trunk",
-            __spin_t: 1588740549,
-            vip: "31.13.65.7"
+            __spin_t: 1588817953,
+            vip: "31.13.66.19"
           });
           __d("WebConnectionClassServerGuess", [], {
             connectionClass: "UNKNOWN"
           });
-          __d("ServerNonce", [], { ServerNonce: "KIfyb8X3PaeoZBw0VF1LMC" });
+          __d("ServerNonce", [], { ServerNonce: "Vi4SQzSRnyGc2_i3h2K-c_" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4084,6 +4084,7 @@ try {
               boosted_component: true,
               boosted_pagelikes: true,
               jslogger: true,
+              kbshortcuts_feed: true,
               mercury_send_error_logging: true,
               platform_oauth_client_events: true,
               xtrackable_clientview_batch: true,
@@ -4095,7 +4096,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1002090077",
+            revision: "1002095465",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -11946,7 +11947,9 @@ try {
                 "origami-file",
                 "fb-nimble-vrsrecorder",
                 "fb-nimble-monohandtrackingvis",
-                "together"
+                "together",
+                "whatsapp-consumer",
+                "whatsapp-smb"
               ]);
 
               var URISchemes = {
@@ -40046,7 +40049,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1002090077","namespace":"FB","message":"' +
+        '","revision":"1002095465","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
