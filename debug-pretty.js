@@ -1,4 +1,4 @@
-/*1588906764,,JIT Construction: v1002100729,en_US*/
+/*1588963758,,JIT Construction: v1002103188,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3909,8 +3909,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1002100729,
-            client_revision: 1002100729,
+            server_revision: 1002103188,
+            client_revision: 1002103188,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3920,17 +3920,17 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6824302587807043797-0",
+            hsi: "6824547380637169296-0",
             spin: 0,
-            __spin_r: 1002100729,
+            __spin_r: 1002103188,
             __spin_b: "trunk",
-            __spin_t: 1588906764,
-            vip: "31.13.66.19"
+            __spin_t: 1588963758,
+            vip: "31.13.65.7"
           });
           __d("WebConnectionClassServerGuess", [], {
             connectionClass: "UNKNOWN"
           });
-          __d("ServerNonce", [], { ServerNonce: "ZGPmjBkqBY2fO7QpxzQ46O" });
+          __d("ServerNonce", [], { ServerNonce: "jaOwEQZgm91vBO0bO6GDe0" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4095,7 +4095,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1002100729",
+            revision: "1002103188",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -28377,37 +28377,6 @@ try {
                 _makeRequest_DEPRECATED(url, fullUrlPath, params);
               }
 
-              function _makeRequest(url, fullUrlPath, params) {
-                var standardFetchOptions = {
-                  mode: "no-cors"
-                };
-
-                if (fullUrlPath.length <= 2000) {
-                  window.fetch(fullUrlPath, standardFetchOptions);
-                } else {
-                  var searchParams = new URLSearchParams();
-
-                  for (var key in params) {
-                    if (Object.prototype.hasOwnProperty.call(params, key)) {
-                      var val = params[key];
-                      if (val !== null && val !== undefined) {
-                        searchParams.set(key, val);
-                      }
-                    }
-                  }
-
-                  var fetchOptions = babelHelpers["extends"](
-                    {
-                      method: "POST",
-                      body: searchParams
-                    },
-                    standardFetchOptions
-                  );
-
-                  window.fetch(url, fetchOptions);
-                }
-              }
-
               function _makeRequest_DEPRECATED(url, fullUrlPath, params) {
                 if (fullUrlPath.length <= 2000) {
                   var image = new Image();
@@ -40111,7 +40080,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1002100729","namespace":"FB","message":"' +
+        '","revision":"1002103188","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
