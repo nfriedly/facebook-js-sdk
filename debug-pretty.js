@@ -1,4 +1,4 @@
-/*1588885754,,JIT Construction: v1002098183,en_US*/
+/*1588906764,,JIT Construction: v1002100729,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3909,8 +3909,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1002098183,
-            client_revision: 1002098183,
+            server_revision: 1002100729,
+            client_revision: 1002100729,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3920,17 +3920,17 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6824212352103598258-0",
+            hsi: "6824302587807043797-0",
             spin: 0,
-            __spin_r: 1002098183,
+            __spin_r: 1002100729,
             __spin_b: "trunk",
-            __spin_t: 1588885754,
-            vip: "31.13.65.7"
+            __spin_t: 1588906764,
+            vip: "31.13.66.19"
           });
           __d("WebConnectionClassServerGuess", [], {
             connectionClass: "UNKNOWN"
           });
-          __d("ServerNonce", [], { ServerNonce: "WatVanZM_i5TU5PjshO9C9" });
+          __d("ServerNonce", [], { ServerNonce: "ZGPmjBkqBY2fO7QpxzQ46O" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4095,7 +4095,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1002098183",
+            revision: "1002100729",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -4731,6 +4731,41 @@ try {
             3
           );
           __d(
+            "ErrorXFBDebug",
+            [],
+            function $module_ErrorXFBDebug(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              "use strict";
+
+              var MAX_LENGTH = 10;
+
+              var headerValues = [];
+
+              var ErrorXFBDebug = {
+                add: function add(value) {
+                  if (headerValues.length > MAX_LENGTH) {
+                    headerValues.splice(MAX_LENGTH / 2, 1);
+                  }
+
+                  headerValues.push(value);
+                },
+
+                getAll: function getAll() {
+                  return headerValues;
+                }
+              };
+
+              module.exports = ErrorXFBDebug;
+            },
+            null
+          );
+          __d(
             "FBLoggerMetadata",
             [],
             function $module_FBLoggerMetadata(
@@ -4964,6 +4999,7 @@ try {
             "ErrorNormalizeUtils",
             [
               "ErrorSerializer",
+              "ErrorXFBDebug",
               "FBLoggerMetadata",
               "TAALOpcodes",
               "getSimpleHash",
@@ -5250,7 +5286,8 @@ try {
                   serverHash: err.serverHash,
                   stack: stack,
                   stackFrames: stackData,
-                  type: type
+                  type: type,
+                  xFBDebug: require("ErrorXFBDebug").getAll()
                 };
 
                 if (serializable.forcedKey != null) {
@@ -40074,7 +40111,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1002098183","namespace":"FB","message":"' +
+        '","revision":"1002100729","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
