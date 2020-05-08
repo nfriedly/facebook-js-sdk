@@ -1,4 +1,4 @@
-/*1588963758,,JIT Construction: v1002103188,en_US*/
+/*1588968565,,JIT Construction: v1002103408,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3909,8 +3909,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1002103188,
-            client_revision: 1002103188,
+            server_revision: 1002103408,
+            client_revision: 1002103408,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3920,17 +3920,17 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6824547380637169296-0",
+            hsi: "6824568022411300049-0",
             spin: 0,
-            __spin_r: 1002103188,
+            __spin_r: 1002103408,
             __spin_b: "trunk",
-            __spin_t: 1588963758,
-            vip: "31.13.65.7"
+            __spin_t: 1588968565,
+            vip: "31.13.66.19"
           });
           __d("WebConnectionClassServerGuess", [], {
             connectionClass: "UNKNOWN"
           });
-          __d("ServerNonce", [], { ServerNonce: "jaOwEQZgm91vBO0bO6GDe0" });
+          __d("ServerNonce", [], { ServerNonce: "lNWCinFyxJTqEeg3mU-WCL" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4095,7 +4095,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1002103188",
+            revision: "1002103408",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -4743,17 +4743,17 @@ try {
             ) {
               "use strict";
 
-              var MAX_LENGTH = 10;
+              var MAX_LENGTH = 5;
 
               var headerValues = [];
 
               var ErrorXFBDebug = {
                 add: function add(value) {
-                  if (headerValues.length > MAX_LENGTH) {
-                    headerValues.splice(MAX_LENGTH / 2, 1);
-                  }
-
                   headerValues.push(value);
+
+                  if (headerValues.length > MAX_LENGTH) {
+                    headerValues.shift();
+                  }
                 },
 
                 getAll: function getAll() {
@@ -40080,7 +40080,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1002103188","namespace":"FB","message":"' +
+        '","revision":"1002103408","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
