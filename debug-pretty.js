@@ -1,4 +1,4 @@
-/*1588968565,,JIT Construction: v1002103408,en_US*/
+/*1588993768,,JIT Construction: v1002105679,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3909,8 +3909,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1002103408,
-            client_revision: 1002103408,
+            server_revision: 1002105679,
+            client_revision: 1002105679,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3920,17 +3920,17 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6824568022411300049-0",
+            hsi: "6824676269239349066-0",
             spin: 0,
-            __spin_r: 1002103408,
+            __spin_r: 1002105679,
             __spin_b: "trunk",
-            __spin_t: 1588968565,
+            __spin_t: 1588993768,
             vip: "31.13.66.19"
           });
           __d("WebConnectionClassServerGuess", [], {
             connectionClass: "UNKNOWN"
           });
-          __d("ServerNonce", [], { ServerNonce: "lNWCinFyxJTqEeg3mU-WCL" });
+          __d("ServerNonce", [], { ServerNonce: "sOft36G4t-GSJEk-i-ebdw" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4084,6 +4084,7 @@ try {
               boosted_component: true,
               boosted_pagelikes: true,
               jslogger: true,
+              kbshortcuts_feed: true,
               mercury_send_error_logging: true,
               platform_oauth_client_events: true,
               xtrackable_clientview_batch: true,
@@ -4095,7 +4096,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1002103408",
+            revision: "1002105679",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -10691,9 +10692,15 @@ try {
             ) {
               var BOOTLOAD = "bootloader/bootload";
               var _arbiter = new (require("Arbiter"))();
+              var _activeBootloads = new Set();
 
               module.exports = {
+                notifyBootloadStart: function notifyBootloadStart(logData) {
+                  _activeBootloads.add(logData);
+                },
+
                 notifyBootload: function notifyBootload(logData) {
+                  _activeBootloads["delete"](logData);
                   _arbiter.inform(BOOTLOAD, logData, "persistent");
                 },
 
@@ -10704,6 +10711,10 @@ try {
                       return handler(data);
                     }
                   );
+                },
+
+                getActiveBootloads: function getActiveBootloads() {
+                  return new Set(_activeBootloads);
                 }
               };
             },
@@ -17811,6 +17822,7 @@ try {
                   beRequests: new Map()
                 };
 
+                require("BootloaderEvents").notifyBootloadStart(logData);
                 return [bootloadEvent, logData];
               }
 
@@ -18832,6 +18844,7 @@ try {
               "Bootloader",
               "BootloaderEndpointConfig",
               "CSRFGuard",
+              "ErrorXFBDebug",
               "FBLogger",
               "HasteResponse",
               "TimeSlice",
@@ -18909,6 +18922,11 @@ try {
                     return;
                   }
                   continuation(function continuation_$0() {
+                    var xfbDebug = xhr.getResponseHeader("X-FB-Debug");
+                    if (xfbDebug) {
+                      require("ErrorXFBDebug").add(xfbDebug);
+                    }
+
                     var response =
                       xhr.status === 200
                         ? JSON.parse(
@@ -40080,7 +40098,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1002103408","namespace":"FB","message":"' +
+        '","revision":"1002105679","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
