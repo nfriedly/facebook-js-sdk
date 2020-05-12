@@ -1,4 +1,4 @@
-/*1589259549,,JIT Construction: v1002112652,en_US*/
+/*1589315369,,JIT Construction: v1002115470,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3909,10 +3909,10 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1002112652,
-            client_revision: 1002112652,
+            server_revision: 1002115470,
+            client_revision: 1002115470,
             tier: "",
-            push_phase: "C3e",
+            push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
             pr: 1,
             haste_site: "www",
@@ -3920,17 +3920,17 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6825817788541256349-0",
+            hsi: "6826057538090441171-0",
             spin: 0,
-            __spin_r: 1002112652,
+            __spin_r: 1002115470,
             __spin_b: "trunk",
-            __spin_t: 1589259549,
+            __spin_t: 1589315369,
             vip: "31.13.66.19"
           });
           __d("WebConnectionClassServerGuess", [], {
             connectionClass: "UNKNOWN"
           });
-          __d("ServerNonce", [], { ServerNonce: "FRTed3JXfOsfZezDT9Vds5" });
+          __d("ServerNonce", [], { ServerNonce: "O-ANAHrYYR330RiKi2IAGi" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4084,6 +4084,7 @@ try {
               boosted_component: true,
               boosted_pagelikes: true,
               jslogger: true,
+              kbshortcuts_feed: true,
               mercury_send_error_logging: true,
               platform_oauth_client_events: true,
               xtrackable_clientview_batch: true,
@@ -4095,7 +4096,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1002112652",
+            revision: "1002115470",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -28086,15 +28087,17 @@ try {
               exports
             ) {
               function insertIframe(opts) {
-                opts.id = opts.id || require("guid")();
-                opts.name = opts.name || require("guid")();
+                var id = opts.id != null ? opts.id : require("guid")();
+                var name = opts.name != null ? opts.name : require("guid")();
 
                 var srcSet = false;
                 var onloadDone = false;
                 var callback = function callback() {
                   if (srcSet && !onloadDone) {
                     onloadDone = true;
-                    opts.onload && opts.onload(opts.root.firstChild);
+                    if (typeof opts.onload === "function") {
+                      opts.onload(opts.root.firstChild);
+                    }
                   }
                 };
                 var globalCallback = require("GlobalCallback").create(callback);
@@ -28103,16 +28106,20 @@ try {
                   var html =
                     "<iframe" +
                     ' id="' +
-                    opts.id +
+                    id +
                     '"' +
                     ' name="' +
-                    opts.name +
+                    name +
                     '"' +
-                    (opts.title ? ' title="' + opts.title + '"' : "") +
-                    (opts.className ? ' class="' + opts.className + '"' : "") +
+                    (opts.title != null ? ' title="' + opts.title + '"' : "") +
+                    (opts.className != null
+                      ? ' class="' + opts.className + '"'
+                      : "") +
                     ' style="border:none;' +
-                    (opts.width ? "width:" + opts.width + "px;" : "") +
-                    (opts.height ? "height:" + opts.height + "px;" : "") +
+                    (opts.width != null ? "width:" + opts.width + "px;" : "") +
+                    (opts.height != null
+                      ? "height:" + opts.height + "px;"
+                      : "") +
                     '"' +
                     ' src="' +
                     require("getBlankIframeSrc")() +
@@ -28135,30 +28142,32 @@ try {
 
                   srcSet = true;
 
-                  setTimeout(function setTimeout_$0() {
+                  window.setTimeout(function window_setTimeout_$0() {
                     opts.root.innerHTML = html;
+
                     opts.root.firstChild.src = opts.url;
-                    opts.onInsert && opts.onInsert(opts.root.firstChild);
+                    typeof opts.onInsert === "function" &&
+                      opts.onInsert(opts.root.firstChild);
                   }, 0);
                 } else {
                   var node = document.createElement("iframe");
-                  node.id = opts.id;
-                  node.name = opts.name;
+                  node.id = id;
+                  node.name = name;
                   node.onload = callback;
                   node.scrolling = "no";
                   node.style.border = "none";
                   node.style.overflow = "hidden";
-                  if (opts.title) {
+                  if (opts.title != null) {
                     node.title = opts.title;
                   }
-                  if (opts.className) {
+                  if (opts.className != null) {
                     node.className = opts.className;
                   }
                   if (opts.height !== undefined) {
                     node.style.height = opts.height + "px";
                   }
                   if (opts.width !== undefined) {
-                    if (opts.width == "100%") {
+                    if (opts.width === "100%") {
                       node.style.width = opts.width;
                     } else {
                       node.style.width = opts.width + "px";
@@ -28291,13 +28300,8 @@ try {
                     }
                   }
 
-                  if (typeof content === "string") {
-                    var div = document.createElement("div");
-                    root.appendChild(div).innerHTML = content;
-                    return div;
-                  } else {
-                    return root.appendChild(content);
-                  }
+                  root.appendChild(content);
+                  return content;
                 },
 
                 appendHidden: function appendHidden(content) {
@@ -28410,7 +28414,9 @@ try {
                   image.src = fullUrlPath;
                 } else {
                   var name = require("guid")();
-                  var root = require("sdk.Content").appendHidden("");
+                  var root = require("sdk.Content").appendHidden(
+                    document.createElement("div")
+                  );
                   require("insertIframe")({
                     url: require("getBlankIframeSrc")(),
                     root: root,
@@ -31951,17 +31957,13 @@ try {
               exports
             ) {
               function resolveURI(uri) {
-                if (!uri) {
+                if (uri == null || uri === "") {
                   return window.location.href;
                 }
 
-                uri = uri.replace(/&/g, "&amp;").replace(/\"/g, "&quot;");
-
-                var div = document.createElement("div");
-
-                div.innerHTML = '<a href="' + uri + '"></a>';
-
-                return div.firstChild.href;
+                var a = document.createElement("a");
+                a.href = uri;
+                return a.href;
               }
 
               module.exports = resolveURI;
@@ -32468,13 +32470,16 @@ try {
                     "click",
                     function DOMEventListener_add_$2() {
                       if (clickTimer !== null) {
-                        clearTimeout(clickTimer);
+                        window.clearTimeout(clickTimer);
                         clickTimer = null;
                         actionCallback();
                       }
-                      clickTimer = setTimeout(function setTimeout_$0() {
-                        clickTimer = null;
-                      }, delayBetweenClicks);
+                      clickTimer = window.setTimeout(
+                        function window_setTimeout_$0() {
+                          clickTimer = null;
+                        },
+                        delayBetweenClicks
+                      );
                     }
                   );
                 },
@@ -32487,7 +32492,7 @@ try {
                   var timer;
                   var event;
                   var startTimer = function startTimer() {
-                    timer = setTimeout(actionCallback, delayToIdle);
+                    timer = window.setTimeout(actionCallback, delayToIdle);
                   };
 
                   startTimer();
@@ -32495,7 +32500,7 @@ try {
                     element,
                     "mouseenter",
                     function DOMEventListener_add_$2() {
-                      clearTimeout(timer);
+                      window.clearTimeout(timer);
                       if (!event) {
                         event = require("DOMEventListener").add(
                           element,
@@ -32522,7 +32527,7 @@ try {
                       : "resize";
 
                   var callback = function callback(e) {
-                    return setTimeout(function setTimeout_$0(e) {
+                    return window.setTimeout(function window_setTimeout_$0(e) {
                       return actionCallback(e);
                     }, 50);
                   };
@@ -32632,7 +32637,7 @@ try {
 
                 setupNewDialog: function setupNewDialog(options) {
                   options = options || {};
-                  var dialog = document.createElement("div");
+                  var dialogElement = document.createElement("div");
                   var _options = options,
                     onClose = _options.onClose;
 
@@ -32644,7 +32649,7 @@ try {
                       "click",
                       onClose
                     );
-                    dialog.appendChild(closeIcon);
+                    dialogElement.appendChild(closeIcon);
                   }
 
                   var className = "fb_dialog";
@@ -32652,12 +32657,12 @@ try {
                   className += require("sdk.UA").mobile()
                     ? " fb_dialog_mobile"
                     : " fb_dialog_advanced";
-                  dialog.className = className;
+                  dialogElement.className = className;
 
                   if (options.width) {
                     var width = parseInt(options.width, 10);
                     if (!isNaN(width)) {
-                      dialog.style.width = width + "px";
+                      dialogElement.style.width = width + "px";
                     }
                   }
 
@@ -32667,16 +32672,16 @@ try {
                     require("sdk.Content").append(options.content, contentRoot);
                   }
                   contentRoot.className = "fb_dialog_content";
-                  dialog.appendChild(contentRoot);
+                  dialogElement.appendChild(contentRoot);
 
                   if (require("sdk.UA").mobile()) {
                     var padding = document.createElement("div");
                     padding.className = "fb_dialog_padding";
-                    dialog.appendChild(padding);
+                    dialogElement.appendChild(padding);
                   }
 
                   return {
-                    dialogElement: dialog,
+                    dialogElement: dialogElement,
                     contentRoot: contentRoot
                   };
                 },
@@ -32761,9 +32766,9 @@ try {
                 return null;
               }
 
-              var SdkDialog = require("Type").extend(
+              var SdkDialogImpl = require("Type").extend(
                 {
-                  constructor: function SdkDialog(id, display) {
+                  constructor: function SdkDialogImpl(id, display) {
                     this.parent();
                     this.id = id;
                     this.display = display;
@@ -32806,11 +32811,12 @@ try {
 
               var Dialog = {
                 newInstance: function newInstance(id, display) {
-                  return new SdkDialog(id, display);
+                  return new SdkDialogImpl(id, display);
                 },
 
                 _dialogs: null,
                 _lastYOffset: 0,
+                _availScreenWidth: null,
                 _overlayListeners: [],
 
                 _loaderEl: null,
@@ -32825,38 +32831,45 @@ try {
                   return Dialog._dialogs[id];
                 },
 
-                _findRoot: function _findRoot(node) {
+                _findRoot: function _findRoot(startNode) {
+                  var node = startNode;
                   while (node) {
                     if (require("sdk.DOM").containsCss(node, "fb_dialog")) {
                       return node;
                     }
-                    node = node.parentNode;
+                    if (node.parentElement instanceof HTMLElement) {
+                      node = node.parentElement;
+                    }
                   }
                 },
 
                 _createWWWLoader: function _createWWWLoader(width) {
-                  width = width ? width : 460;
+                  width = width ? width : "460";
+
+                  var content = document.createElement("div");
+                  content.innerHTML =
+                    '<div class="dialog_title">' +
+                    '  <a id="fb_dialog_loader_close">' +
+                    '    <div class="fb_dialog_close_icon"></div>' +
+                    "  </a>" +
+                    "  <span>Facebook</span>" +
+                    '  <div style="clear:both;"></div>' +
+                    "</div>" +
+                    '<div class="dialog_content"></div>' +
+                    '<div class="dialog_footer"></div>';
+
                   return Dialog.create({
-                    content:
-                      '<div class="dialog_title">' +
-                      '  <a id="fb_dialog_loader_close">' +
-                      '    <div class="fb_dialog_close_icon"></div>' +
-                      "  </a>" +
-                      "  <span>Facebook</span>" +
-                      '  <div style="clear:both;"></div>' +
-                      "</div>" +
-                      '<div class="dialog_content"></div>' +
-                      '<div class="dialog_footer"></div>',
+                    content: content,
                     width: width
                   });
                 },
 
                 _createMobileLoader: function _createMobileLoader() {
-                  var content;
+                  var content = document.createElement("div");
                   if (require("sdk.UA").nativeApp()) {
-                    content = '<div class="dialog_header"></div>';
+                    content.innerHTML = '<div class="dialog_header"></div>';
                   } else if (Dialog.isTabletStyle()) {
-                    content =
+                    content.innerHTML =
                       '<div class="overlayLoader">' +
                       '<div id="fb_dialog_loader_spinner"></div>' +
                       '<a id="fb_dialog_loader_close" href="#">' +
@@ -32864,7 +32877,7 @@ try {
                       "</a>" +
                       "</div>";
                   } else {
-                    content =
+                    content.innerHTML =
                       '<div class="dialog_header">' +
                       "<table>" +
                       "  <tbody>" +
@@ -32898,9 +32911,11 @@ try {
                 },
 
                 _setDialogOverlayStyle: function _setDialogOverlayStyle() {
-                  require("sdk.DialogUtils").applyScreenDimensions(
-                    Dialog._overlayEl
-                  );
+                  if (Dialog._overlayEl != null) {
+                    require("sdk.DialogUtils").applyScreenDimensions(
+                      Dialog._overlayEl
+                    );
+                  }
                 },
 
                 _showTabletOverlay: function _showTabletOverlay(
@@ -32909,17 +32924,21 @@ try {
                   if (!Dialog.isTabletStyle()) {
                     return;
                   }
-                  if (!Dialog._overlayEl) {
-                    Dialog._overlayEl = require("sdk.DialogUtils").setupNewDarkOverlay();
+                  if (Dialog._overlayEl == null) {
+                    var newOverlay = require("sdk.DialogUtils").setupNewDarkOverlay();
+                    newOverlay.className = "";
+                    Dialog._overlayEl = newOverlay;
                     require("sdk.Content").append(Dialog._overlayEl, null);
+                  } else {
+                    Dialog._overlayEl.className = "";
                   }
-
-                  Dialog._overlayEl.className = "";
                 },
 
                 _hideTabletOverlay: function _hideTabletOverlay() {
                   if (Dialog.isTabletStyle()) {
-                    Dialog._overlayEl.className = "hidden";
+                    if (Dialog._overlayEl != null) {
+                      Dialog._overlayEl.className = "hidden";
+                    }
                     ES(
                       Dialog._overlayListeners,
                       "forEach",
@@ -32943,7 +32962,9 @@ try {
                       Dialog.isTabletStyle()
                     );
                     Dialog._hideTabletOverlay();
-                    cb();
+                    if (cb != null) {
+                      cb();
+                    }
                   };
 
                   Dialog._showTabletOverlay(onClick);
@@ -32970,7 +32991,9 @@ try {
                     Dialog._overlayListeners.push(listener);
                   }
 
-                  Dialog._makeActive(Dialog._loaderEl);
+                  if (Dialog._loaderEl != null) {
+                    Dialog._makeActive(Dialog._loaderEl);
+                  }
                 },
 
                 _hideLoader: function _hideLoader() {
@@ -33134,7 +33157,7 @@ try {
 
                 _addOrientationHandler: function _addOrientationHandler() {
                   if (!require("sdk.UA").mobile()) {
-                    return null;
+                    return;
                   }
                   Dialog._availScreenWidth = require("sdk.DOM").getViewportInfo().width;
                   require("sdk.DialogUtils").addMobileOrientationChangeAction(
@@ -33162,7 +33185,7 @@ try {
 
                 show: function show(dialog) {
                   var root = Dialog._findRoot(dialog);
-                  if (root) {
+                  if (root != null) {
                     Dialog._removeStacked(root);
                     Dialog._hideLoader();
                     Dialog._makeActive(root);
@@ -33192,8 +33215,8 @@ try {
                   }
                 },
 
-                remove: function remove(dialog) {
-                  dialog = Dialog._findRoot(dialog);
+                remove: function remove(childElement) {
+                  var dialog = Dialog._findRoot(childElement);
                   if (dialog) {
                     var is_active = Dialog._active == dialog;
                     Dialog._removeStacked(dialog);
@@ -33216,14 +33239,17 @@ try {
                     }
 
                     window.setTimeout(function window_setTimeout_$0() {
-                      dialog.parentNode.removeChild(dialog);
+                      var _dialog$parentNode;
+                      (_dialog$parentNode = dialog.parentNode) == null
+                        ? void 0
+                        : _dialog$parentNode.removeChild(dialog);
                     }, 3000);
                   }
                 },
 
                 isActive: function isActive(node) {
                   var root = Dialog._findRoot(node);
-                  return root && root === Dialog._active;
+                  return root != null && root === Dialog._active;
                 },
 
                 isTabletStyle: function isTabletStyle() {
@@ -33232,7 +33258,7 @@ try {
                   }
                   var size = getMobileSize();
                   return (
-                    size &&
+                    size != null &&
                     (size.height >= MAX_HEIGHT_MOBILE ||
                       size.width >= MAX_WIDTH_MOBILE)
                   );
@@ -34891,7 +34917,9 @@ try {
 
                 hidden: function hidden(call) {
                   call.className = "FB_UI_Hidden";
-                  call.root = require("sdk.Content").appendHidden("");
+                  call.root = require("sdk.Content").appendHidden(
+                    document.createElement("div")
+                  );
                   UIServer._insertIframe(call);
                 },
 
@@ -40107,7 +40135,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1002112652","namespace":"FB","message":"' +
+        '","revision":"1002115470","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
