@@ -1,4 +1,4 @@
-/*1589315369,,JIT Construction: v1002115470,en_US*/
+/*1589431761,,JIT Construction: v1002124339,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3821,8 +3821,6 @@ try {
                 "BUY_AT_COVID_PUNCHOUT_CHECKOUT_MODAL",
                 "DISABLE_HEARTBEAT_POLLING",
                 "LAB_NET_NEW_UI_RELEASE",
-                "WIT_DEPRECATE_GITHUB",
-                "WIT_DEPRECATE_OLD_UX",
                 "EO_SRT_HELPDESK_DASHBOARD_DISABLE_UNUSED_TAB_IN_RIGHT_PANEL",
                 "HELPDESK_FUNCTIONAL_COMPONENT_WORKFLOW_COMPOSER",
                 "BUSINESS_INVITE_FLOW_WITH_SELLER_PROFILE"
@@ -3853,8 +3851,6 @@ try {
                 "7cwY7xv5s7H",
                 "1GgWO1oFyLN",
                 "DDZhogI19W",
-                "9k7Y5kmDD1A",
-                "4jkC8ia3PYA",
                 "6fHw06UmAMW",
                 "1UTfWsN3Bcn",
                 "7FOIzos6XJX"
@@ -3873,6 +3869,7 @@ try {
             reportOnly: true
           });
           __d("BootloaderConfig", [], {
+            deferBootloads: false,
             jsRetries: [200, 500],
             jsRetryAbortNum: 2,
             jsRetryAbortTime: 5,
@@ -3909,8 +3906,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1002115470,
-            client_revision: 1002115470,
+            server_revision: 1002124339,
+            client_revision: 1002124339,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3920,17 +3917,17 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6826057538090441171-0",
+            hsi: "6826557433629676811-0",
             spin: 0,
-            __spin_r: 1002115470,
+            __spin_r: 1002124339,
             __spin_b: "trunk",
-            __spin_t: 1589315369,
+            __spin_t: 1589431761,
             vip: "31.13.66.19"
           });
           __d("WebConnectionClassServerGuess", [], {
             connectionClass: "UNKNOWN"
           });
-          __d("ServerNonce", [], { ServerNonce: "O-ANAHrYYR330RiKi2IAGi" });
+          __d("ServerNonce", [], { ServerNonce: "EUqUOQRTW1Pc2EmEXDVfoc" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4084,7 +4081,6 @@ try {
               boosted_component: true,
               boosted_pagelikes: true,
               jslogger: true,
-              kbshortcuts_feed: true,
               mercury_send_error_logging: true,
               platform_oauth_client_events: true,
               xtrackable_clientview_batch: true,
@@ -4096,7 +4092,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1002115470",
+            revision: "1002124339",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -17156,6 +17152,8 @@ try {
 
               var emptyFunction = function emptyFunction() {};
 
+              var _deferBootloads = !!require("BootloaderConfig")
+                .deferBootloads;
               var _queuedPreloads = [];
               var _queuedLoadModules = [];
 
@@ -17237,8 +17235,12 @@ try {
               });
 
               function canBootloadComponentsYet(components) {
+                if (_deferBootloads || !_bootloadEnabled) {
+                  return false;
+                }
+
                 if (!require("BootloaderConfig").retryQueuedBootloads) {
-                  return _bootloadEnabled;
+                  return true;
                 }
 
                 for (
@@ -18124,6 +18126,39 @@ try {
                 );
               }
 
+              function _enableBootloadsAndProcessQueued() {
+                _bootloadEnabled = true;
+
+                var queuedLoadModules = _queuedLoadModules;
+                _queuedLoadModules = [];
+                queuedLoadModules.forEach(function queuedLoadModules_forEach_$0(
+                  _ref15
+                ) {
+                  var components = _ref15[0],
+                    callback = _ref15[1],
+                    ref = _ref15[2],
+                    continuation = _ref15[3];
+                  continuation(function continuation_$0() {
+                    Bootloader.loadModules.apply(Bootloader, [
+                      components,
+                      callback,
+                      ref
+                    ]);
+                  });
+                });
+                var queuedPreloads = _queuedPreloads;
+                _queuedPreloads = [];
+                queuedPreloads.forEach(function queuedPreloads_forEach_$0(
+                  _ref16
+                ) {
+                  var components = _ref16[0],
+                    continuation = _ref16[1];
+                  continuation(function continuation_$0() {
+                    Bootloader.preloadModules.apply(Bootloader, [components]);
+                  });
+                });
+              }
+
               var Bootloader = {
                 preloadModules: function preloadModules(components) {
                   if (!canBootloadComponentsYet(components)) {
@@ -18150,16 +18185,16 @@ try {
                     ;
 
                   ) {
-                    var _ref15;
+                    var _ref17;
                     if (_isArray9) {
                       if (_i10 >= _iterator9.length) break;
-                      _ref15 = _iterator9[_i10++];
+                      _ref17 = _iterator9[_i10++];
                     } else {
                       _i10 = _iterator9.next();
                       if (_i10.done) break;
-                      _ref15 = _i10.value;
+                      _ref17 = _i10.value;
                     }
-                    var component = _ref15;
+                    var component = _ref17;
                     if (_isRequired(component)) {
                       continue;
                     }
@@ -18192,18 +18227,18 @@ try {
                       ;
 
                     ) {
-                      var _ref17;
+                      var _ref19;
                       if (_isArray10) {
                         if (_i11 >= _iterator10.length) break;
-                        _ref17 = _iterator10[_i11++];
+                        _ref19 = _iterator10[_i11++];
                       } else {
                         _i11 = _iterator10.next();
                         if (_i11.done) break;
-                        _ref17 = _i11.value;
+                        _ref19 = _i11.value;
                       }
-                      var _ref18 = _ref17;
-                      var hash = _ref18[0];
-                      var entry = _ref18[1];
+                      var _ref20 = _ref19;
+                      var hash = _ref20[0];
+                      var entry = _ref20[1];
                       _preloadResource(hash, entry, batchNode);
                     }
                   });
@@ -18283,16 +18318,16 @@ try {
                       ;
 
                     ) {
-                      var _ref19;
+                      var _ref21;
                       if (_isArray11) {
                         if (_i12 >= _iterator11.length) break;
-                        _ref19 = _iterator11[_i12++];
+                        _ref21 = _iterator11[_i12++];
                       } else {
                         _i12 = _iterator11.next();
                         if (_i12.done) break;
-                        _ref19 = _i12.value;
+                        _ref21 = _i12.value;
                       }
-                      var comp = _ref19;
+                      var comp = _ref21;
                       _loadModule(comp, bootloadEvent, batchNode, logData);
                     }
                   });
@@ -18313,16 +18348,16 @@ try {
                       ;
 
                     ) {
-                      var _ref20;
+                      var _ref22;
                       if (_isArray12) {
                         if (_i13 >= _iterator12.length) break;
-                        _ref20 = _iterator12[_i13++];
+                        _ref22 = _iterator12[_i13++];
                       } else {
                         _i13 = _iterator12.next();
                         if (_i13.done) break;
-                        _ref20 = _i13.value;
+                        _ref22 = _i13.value;
                       }
-                      var comp = _ref20;
+                      var comp = _ref22;
                       events.add(_events.beDone(comp));
                       events.add(_events.tierThree(comp));
                     }
@@ -18347,16 +18382,16 @@ try {
                         ;
 
                       ) {
-                        var _ref21;
+                        var _ref23;
                         if (_isArray13) {
                           if (_i15 >= _iterator13.length) break;
-                          _ref21 = _iterator13[_i15++];
+                          _ref23 = _iterator13[_i15++];
                         } else {
                           _i15 = _iterator13.next();
                           if (_i15.done) break;
-                          _ref21 = _i15.value;
+                          _ref23 = _i15.value;
                         }
-                        var hash = _ref21;
+                        var hash = _ref23;
                         events.add(_events.rsrcDone(hash));
                       }
                     }
@@ -18442,11 +18477,11 @@ try {
                   var events = new Set();
                   for (
                     var _iterator14 =
-                        (_ref23 =
+                        (_ref25 =
                           (_bootloaded$get = _bootloaded.get(component)) == null
                             ? void 0
                             : _bootloaded$get.logData) != null
-                          ? _ref23
+                          ? _ref25
                           : [],
                       _isArray14 = Array.isArray(_iterator14),
                       _i16 = 0,
@@ -18460,17 +18495,17 @@ try {
                     ;
 
                   ) {
-                    var _ref23, _bootloaded$get;
-                    var _ref22;
+                    var _ref25, _bootloaded$get;
+                    var _ref24;
                     if (_isArray14) {
                       if (_i16 >= _iterator14.length) break;
-                      _ref22 = _iterator14[_i16++];
+                      _ref24 = _iterator14[_i16++];
                     } else {
                       _i16 = _iterator14.next();
                       if (_i16.done) break;
-                      _ref22 = _i16.value;
+                      _ref24 = _i16.value;
                     }
-                    var ld = _ref22;
+                    var ld = _ref24;
                     ld.beRequests.set(beRequestID, beLogData);
 
                     for (
@@ -18487,16 +18522,16 @@ try {
                       ;
 
                     ) {
-                      var _ref24;
+                      var _ref26;
                       if (_isArray15) {
                         if (_i17 >= _iterator15.length) break;
-                        _ref24 = _iterator15[_i17++];
+                        _ref26 = _iterator15[_i17++];
                       } else {
                         _i17 = _iterator15.next();
                         if (_i17.done) break;
-                        _ref24 = _i17.value;
+                        _ref26 = _i17.value;
                       }
-                      var hash = _ref24;
+                      var hash = _ref26;
                       events.add(_events.rsrcDone(hash));
                     }
                   }
@@ -18520,40 +18555,19 @@ try {
                       _componentMap.set(resource, map[resource]);
                     }
                   }
+                  _pickupPageResources();
 
-                  if (!_bootloadEnabled) {
-                    _pickupPageResources();
-                    _bootloadEnabled = true;
+                  if (!_deferBootloads) {
+                    _enableBootloadsAndProcessQueued();
                   }
+                },
 
-                  var queuedLoadModules = _queuedLoadModules;
-                  _queuedLoadModules = [];
-                  queuedLoadModules.forEach(
-                    function queuedLoadModules_forEach_$0(_ref25) {
-                      var components = _ref25[0],
-                        callback = _ref25[1],
-                        ref = _ref25[2],
-                        continuation = _ref25[3];
-                      continuation(function continuation_$0() {
-                        Bootloader.loadModules.apply(Bootloader, [
-                          components,
-                          callback,
-                          ref
-                        ]);
-                      });
-                    }
-                  );
-                  var queuedPreloads = _queuedPreloads;
-                  _queuedPreloads = [];
-                  queuedPreloads.forEach(function queuedPreloads_forEach_$0(
-                    _ref26
-                  ) {
-                    var components = _ref26[0],
-                      continuation = _ref26[1];
-                    continuation(function continuation_$0() {
-                      Bootloader.preloadModules.apply(Bootloader, [components]);
-                    });
-                  });
+                undeferBootloads: function undeferBootloads() {
+                  _deferBootloads = false;
+
+                  if (_componentMap.size) {
+                    _enableBootloadsAndProcessQueued();
+                  }
                 },
 
                 markComponentsAsImmediate: function markComponentsAsImmediate(
@@ -18808,7 +18822,8 @@ try {
                   errors: _errors,
                   loaded: _loaded,
                   bootloaded: _bootloaded,
-                  _resolveCSRs: _resolveCSRs
+                  _resolveCSRs: _resolveCSRs,
+                  _queuedLoadModules: _queuedLoadModules
                 }
               };
 
@@ -40135,7 +40150,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1002115470","namespace":"FB","message":"' +
+        '","revision":"1002124339","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
