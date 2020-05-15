@@ -1,4 +1,4 @@
-/*1589532557,,JIT Construction: v1002131380,en_US*/
+/*1589573968,,JIT Construction: v1002133013,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3894,6 +3894,7 @@ try {
             SHORT_NAME: null,
             IS_MESSENGER_ONLY_USER: false,
             IS_DEACTIVATED_ALLOWED_ON_MESSENGER: false,
+            IS_MESSENGER_CALL_GUEST_USER: false,
             APP_ID: null
           });
           __d("DTSGInitialData", [], {});
@@ -3906,8 +3907,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1002131380,
-            client_revision: 1002131380,
+            server_revision: 1002133013,
+            client_revision: 1002133013,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3917,17 +3918,17 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6826990348883635575-0",
+            hsi: "6827168209132023604-0",
             spin: 0,
-            __spin_r: 1002131380,
+            __spin_r: 1002133013,
             __spin_b: "trunk",
-            __spin_t: 1589532557,
+            __spin_t: 1589573968,
             vip: "31.13.66.19"
           });
           __d("WebConnectionClassServerGuess", [], {
             connectionClass: "UNKNOWN"
           });
-          __d("ServerNonce", [], { ServerNonce: "swRhpWBFcuwRxNmyLv1ICH" });
+          __d("ServerNonce", [], { ServerNonce: "b18pGal28OPS56DiVdZhZR" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4092,7 +4093,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1002131380",
+            revision: "1002133013",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -22764,6 +22765,13 @@ try {
                   ).IS_DEACTIVATED_ALLOWED_ON_MESSENGER;
                 },
 
+                isMessengerCallGuestUser: function isMessengerCallGuestUser() {
+                  return !!(
+                    c_CurrentUserInitialData ||
+                    (c_CurrentUserInitialData = require("CurrentUserInitialData"))
+                  ).IS_MESSENGER_CALL_GUEST_USER;
+                },
+
                 getAppID: function getAppID() {
                   return (
                     c_CurrentUserInitialData ||
@@ -40182,7 +40190,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1002131380","namespace":"FB","message":"' +
+        '","revision":"1002133013","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
