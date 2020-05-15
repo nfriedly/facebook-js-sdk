@@ -1,4 +1,4 @@
-/*1589431761,,JIT Construction: v1002124339,en_US*/
+/*1589509767,,JIT Construction: v1002129887,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3906,8 +3906,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1002124339,
-            client_revision: 1002124339,
+            server_revision: 1002129887,
+            client_revision: 1002129887,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3917,17 +3917,17 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6826557433629676811-0",
+            hsi: "6826892467471023821-0",
             spin: 0,
-            __spin_r: 1002124339,
+            __spin_r: 1002129887,
             __spin_b: "trunk",
-            __spin_t: 1589431761,
+            __spin_t: 1589509767,
             vip: "31.13.66.19"
           });
           __d("WebConnectionClassServerGuess", [], {
             connectionClass: "UNKNOWN"
           });
-          __d("ServerNonce", [], { ServerNonce: "EUqUOQRTW1Pc2EmEXDVfoc" });
+          __d("ServerNonce", [], { ServerNonce: "dBJKys-B_Y-VukGYL9d3iq" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4092,7 +4092,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1002124339",
+            revision: "1002129887",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -4142,7 +4142,6 @@ try {
           });
           __d("JSSDKXDConfig", [], {
             XdUrl: "/connect/xd_arbiter.php?version=46",
-            XdBundleUrl: "/connect/xd_arbiter/r/Kg0I7Y9jrLp.js?version=46",
             useCdn: true
           });
           __d("JSSDKCanvasPrefetcherConfig", [], {
@@ -40150,7 +40149,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1002124339","namespace":"FB","message":"' +
+        '","revision":"1002129887","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
