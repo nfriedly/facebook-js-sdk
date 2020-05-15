@@ -1,4 +1,4 @@
-/*1589509767,,JIT Construction: v1002129887,en_US*/
+/*1589532557,,JIT Construction: v1002131380,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3906,8 +3906,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1002129887,
-            client_revision: 1002129887,
+            server_revision: 1002131380,
+            client_revision: 1002131380,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3917,17 +3917,17 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6826892467471023821-0",
+            hsi: "6826990348883635575-0",
             spin: 0,
-            __spin_r: 1002129887,
+            __spin_r: 1002131380,
             __spin_b: "trunk",
-            __spin_t: 1589509767,
+            __spin_t: 1589532557,
             vip: "31.13.66.19"
           });
           __d("WebConnectionClassServerGuess", [], {
             connectionClass: "UNKNOWN"
           });
-          __d("ServerNonce", [], { ServerNonce: "dBJKys-B_Y-VukGYL9d3iq" });
+          __d("ServerNonce", [], { ServerNonce: "swRhpWBFcuwRxNmyLv1ICH" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4092,7 +4092,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1002129887",
+            revision: "1002131380",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -17153,6 +17153,8 @@ try {
 
               var _deferBootloads = !!require("BootloaderConfig")
                 .deferBootloads;
+              var _retryQueuedBootloads = require("BootloaderConfig")
+                .retryQueuedBootloads;
               var _queuedPreloads = [];
               var _queuedLoadModules = [];
 
@@ -17238,7 +17240,7 @@ try {
                   return false;
                 }
 
-                if (!require("BootloaderConfig").retryQueuedBootloads) {
+                if (!_retryQueuedBootloads) {
                   return true;
                 }
 
@@ -18822,7 +18824,38 @@ try {
                   loaded: _loaded,
                   bootloaded: _bootloaded,
                   _resolveCSRs: _resolveCSRs,
-                  _queuedLoadModules: _queuedLoadModules
+                  _queuedLoadModules: _queuedLoadModules,
+
+                  _dequeueLoadModules: function _dequeueLoadModules(idx) {
+                    var items = _queuedLoadModules.splice(idx, 1);
+                    if (!items.length) {
+                      return;
+                    }
+                    var _items$ = items[0],
+                      components = _items$[0],
+                      callback = _items$[1],
+                      ref = _items$[2],
+                      continuation = _items$[3];
+                    var prevDeferBootloads = _deferBootloads;
+                    var prevBootloadEnabled = _bootloadEnabled;
+                    var prevRetryQueued = _retryQueuedBootloads;
+
+                    _deferBootloads = false;
+                    _bootloadEnabled = true;
+                    _retryQueuedBootloads = false;
+
+                    continuation(function continuation_$0() {
+                      Bootloader.loadModules.apply(Bootloader, [
+                        components,
+                        callback,
+                        ref
+                      ]);
+                    });
+
+                    _deferBootloads = prevDeferBootloads;
+                    _bootloadEnabled = prevBootloadEnabled;
+                    _retryQueuedBootloads = prevRetryQueued;
+                  }
                 }
               };
 
@@ -40149,7 +40182,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1002129887","namespace":"FB","message":"' +
+        '","revision":"1002131380","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
