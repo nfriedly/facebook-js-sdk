@@ -1,4 +1,4 @@
-/*1589573968,,JIT Construction: v1002133013,en_US*/
+/*1589577556,,JIT Construction: v1002133269,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3907,8 +3907,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1002133013,
-            client_revision: 1002133013,
+            server_revision: 1002133269,
+            client_revision: 1002133269,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3918,17 +3918,17 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6827168209132023604-0",
+            hsi: "6827183618966054408-0",
             spin: 0,
-            __spin_r: 1002133013,
+            __spin_r: 1002133269,
             __spin_b: "trunk",
-            __spin_t: 1589573968,
+            __spin_t: 1589577556,
             vip: "31.13.66.19"
           });
           __d("WebConnectionClassServerGuess", [], {
             connectionClass: "UNKNOWN"
           });
-          __d("ServerNonce", [], { ServerNonce: "b18pGal28OPS56DiVdZhZR" });
+          __d("ServerNonce", [], { ServerNonce: "-6IB3boNrmy8fVLHEtTlwJ" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4093,7 +4093,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1002133013",
+            revision: "1002133269",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -4143,6 +4143,7 @@ try {
           });
           __d("JSSDKXDConfig", [], {
             XdUrl: "/connect/xd_arbiter.php?version=46",
+            XXdUrl: "/x/connect/xd_arbiter/?version=46",
             useCdn: true
           });
           __d("JSSDKCanvasPrefetcherConfig", [], {
@@ -33719,8 +33720,11 @@ try {
                 ? "cdn"
                 : "www";
 
-              var xdArbiterPathAndQuery = require("JSSDKXDConfig").XdUrl;
+              var useXXD = require("sdk.feature")("use_x_xd", false);
 
+              var xdArbiterPathAndQuery = useXXD
+                ? require("JSSDKXDConfig").XXdUrl
+                : require("JSSDKXDConfig").XdUrl;
               var xdArbiterHttpsUrl =
                 require("UrlMap").resolve(xdArbiterTier) +
                 xdArbiterPathAndQuery;
@@ -40190,7 +40194,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1002133013","namespace":"FB","message":"' +
+        '","revision":"1002133269","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
