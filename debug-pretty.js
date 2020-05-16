@@ -1,4 +1,4 @@
-/*1589577556,,JIT Construction: v1002133269,en_US*/
+/*1589608164,,JIT Construction: v1002135415,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3907,10 +3907,10 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1002133269,
-            client_revision: 1002133269,
+            server_revision: 1002135415,
+            client_revision: 1002135415,
             tier: "",
-            push_phase: "C3",
+            push_phase: "C3e",
             pkg_cohort: "PHASED:DEFAULT",
             pr: 1,
             haste_site: "www",
@@ -3918,17 +3918,17 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6827183618966054408-0",
+            hsi: "6827315078995625946-0",
             spin: 0,
-            __spin_r: 1002133269,
+            __spin_r: 1002135415,
             __spin_b: "trunk",
-            __spin_t: 1589577556,
-            vip: "31.13.66.19"
+            __spin_t: 1589608164,
+            vip: "31.13.65.7"
           });
           __d("WebConnectionClassServerGuess", [], {
             connectionClass: "UNKNOWN"
           });
-          __d("ServerNonce", [], { ServerNonce: "-6IB3boNrmy8fVLHEtTlwJ" });
+          __d("ServerNonce", [], { ServerNonce: "E3trVjs71UXnw_vgdJCfpw" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4093,7 +4093,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1002133269",
+            revision: "1002135415",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -18616,8 +18616,18 @@ try {
                 ) {
                   for (var hash in resources) {
                     hash = require("ResourceHasher").getValidResourceHash(hash);
-                    if (!_resources.has(hash)) {
-                      _addResource(hash, resources[hash], false);
+                    var newEntry = resources[hash];
+                    var curEntry = _resources.get(hash);
+                    if (!curEntry) {
+                      _addResource(hash, newEntry, false);
+                    } else if (
+                      (curEntry.type === "js" && newEntry.type === "js") ||
+                      (curEntry.type === "css" && newEntry.type === "css")
+                    ) {
+                      if (newEntry.d && !curEntry.d) {
+                        curEntry.src = newEntry.src;
+                        curEntry.d = 1;
+                      }
                     }
                   }
 
@@ -40194,7 +40204,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1002133269","namespace":"FB","message":"' +
+        '","revision":"1002135415","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
