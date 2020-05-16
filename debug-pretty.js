@@ -1,4 +1,4 @@
-/*1589608164,,JIT Construction: v1002135415,en_US*/
+/*1589618352,,JIT Construction: v1002135650,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3907,10 +3907,10 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1002135415,
-            client_revision: 1002135415,
+            server_revision: 1002135650,
+            client_revision: 1002135650,
             tier: "",
-            push_phase: "C3e",
+            push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
             pr: 1,
             haste_site: "www",
@@ -3918,17 +3918,17 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6827315078995625946-0",
+            hsi: "6827358835581526666-0",
             spin: 0,
-            __spin_r: 1002135415,
+            __spin_r: 1002135650,
             __spin_b: "trunk",
-            __spin_t: 1589608164,
-            vip: "31.13.65.7"
+            __spin_t: 1589618352,
+            vip: "31.13.66.19"
           });
           __d("WebConnectionClassServerGuess", [], {
             connectionClass: "UNKNOWN"
           });
-          __d("ServerNonce", [], { ServerNonce: "E3trVjs71UXnw_vgdJCfpw" });
+          __d("ServerNonce", [], { ServerNonce: "bVm4OQVV42TmaP_1zbMHRf" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4093,7 +4093,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1002135415",
+            revision: "1002135650",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -17136,7 +17136,8 @@ try {
               "ex",
               "ifRequireable",
               "nullthrows",
-              "performanceAbsoluteNow"
+              "performanceAbsoluteNow",
+              "setTimeoutAcrossTransitions"
             ],
             function $module_Bootloader(
               global,
@@ -17155,6 +17156,14 @@ try {
 
               var _deferBootloads = !!require("BootloaderConfig")
                 .deferBootloads;
+              if (_deferBootloads) {
+                require("setTimeoutAcrossTransitions")(
+                  function setTimeoutAcrossTransitions_$0() {
+                    return Bootloader.undeferBootloads();
+                  },
+                  15000
+                );
+              }
               var _retryQueuedBootloads = require("BootloaderConfig")
                 .retryQueuedBootloads;
               var _queuedPreloads = [];
@@ -18566,6 +18575,11 @@ try {
                 },
 
                 undeferBootloads: function undeferBootloads() {
+                  if (
+                    window.location.search.indexOf("&__deferBootloads=") !== -1
+                  ) {
+                    return;
+                  }
                   _deferBootloads = false;
 
                   if (_componentMap.size) {
@@ -40204,7 +40218,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1002135415","namespace":"FB","message":"' +
+        '","revision":"1002135650","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
