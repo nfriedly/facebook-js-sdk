@@ -1,4 +1,4 @@
-/*1589618352,,JIT Construction: v1002135650,en_US*/
+/*1589848155,,JIT Construction: v1002140645,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3907,8 +3907,8 @@ try {
           __d("ISB", [], {});
           __d("LSD", [], {});
           __d("SiteData", [], {
-            server_revision: 1002135650,
-            client_revision: 1002135650,
+            server_revision: 1002140645,
+            client_revision: 1002140645,
             tier: "",
             push_phase: "C3",
             pkg_cohort: "PHASED:DEFAULT",
@@ -3918,17 +3918,17 @@ try {
             ir_on: true,
             is_rtl: false,
             is_comet: false,
-            hsi: "6827358835581526666-0",
+            hsi: "6828345832245921376-0",
             spin: 0,
-            __spin_r: 1002135650,
+            __spin_r: 1002140645,
             __spin_b: "trunk",
-            __spin_t: 1589618352,
+            __spin_t: 1589848155,
             vip: "31.13.66.19"
           });
           __d("WebConnectionClassServerGuess", [], {
             connectionClass: "UNKNOWN"
           });
-          __d("ServerNonce", [], { ServerNonce: "bVm4OQVV42TmaP_1zbMHRf" });
+          __d("ServerNonce", [], { ServerNonce: "bqQlX-VBrGORZ20cchV9nI" });
           __d("InitialCookieConsent", [], {
             deferCookies: false,
             noCookies: true,
@@ -4093,7 +4093,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1002135650",
+            revision: "1002140645",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -4126,10 +4126,8 @@ try {
                 "https://developers.facebook.com/blog/post/2018/06/08/enforce-https-facebook-login/",
               https_only_scribe_logging: { rate: 1 },
               log_perf: { rate: 0.001 },
-              use_cors_oauth_status: { rate: 100 },
-              xd_arbiter_register_new: { rate: 100 },
-              xd_arbiter_handle_message_new: { rate: 100 },
-              legacy_xd_init: { rate: 0 }
+              legacy_xd_init: { rate: 0 },
+              oauth_funnel_logger_version: 1
             }
           });
           __d("JSSDKCssConfig", [], {
@@ -20259,7 +20257,7 @@ try {
               }
 
               function _addModuleNameAndIncPosition2(moduleMap, module) {
-                var moduleName = module[0];
+                var moduleName = module[0].split("@")[0];
                 if (!(moduleName in moduleMap)) {
                   module[2] = (module[2] || 0) + 1;
                 }
@@ -20267,7 +20265,7 @@ try {
               }
 
               function _addModuleNameAndIncPosition3(moduleMap, module) {
-                var moduleName = module[0];
+                var moduleName = module[0].split("@")[0];
                 if (!(moduleName in moduleMap)) {
                   module[3] = (module[3] || 0) + 1;
                 }
@@ -33911,12 +33909,7 @@ try {
                 if (recipient == "facebook") {
                   message.relation = messageToFacebookRelation;
                   facebookQueue.enqueue(message);
-                  var useLegacyInit = require("sdk.feature")(
-                    "legacy_xd_init",
-                    true
-                  );
                   if (
-                    !useLegacyInit &&
                     !require("sdk.Runtime").isCanvasEnvironment() &&
                     !facebookQueue.isStarted()
                   ) {
@@ -40218,7 +40211,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1002135650","namespace":"FB","message":"' +
+        '","revision":"1002140645","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
