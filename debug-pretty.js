@@ -1,4 +1,4 @@
-/*1590649772,,JIT Construction: v1002173962,en_US*/
+/*1590784753,,JIT Construction: v1002182559,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3730,7 +3730,7 @@ try {
           })(typeof global === "undefined" ? this : global);
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1002173962",
+            revision: "1002182559",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -3800,7 +3800,6 @@ try {
             ]
           });
           __d("JSSDKXDConfig", [], {
-            XdUrl: "/connect/xd_arbiter.php?version=46",
             XXdUrl: "/x/connect/xd_arbiter/?version=46",
             useCdn: true
           });
@@ -12448,14 +12447,9 @@ try {
                 ? "cdn"
                 : "www";
 
-              var useXXD = require("sdk.feature")("use_x_xd", false);
-
-              var xdArbiterPathAndQuery = useXXD
-                ? require("JSSDKXDConfig").XXdUrl
-                : require("JSSDKXDConfig").XdUrl;
               var xdArbiterHttpsUrl =
                 require("UrlMap").resolve(xdArbiterTier) +
-                xdArbiterPathAndQuery;
+                require("JSSDKXDConfig").XXdUrl;
 
               var getOrigin = function getOrigin() {
                 if ("origin" in location) {
@@ -18922,7 +18916,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1002173962","namespace":"FB","message":"' +
+        '","revision":"1002182559","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
