@@ -1,4 +1,4 @@
-/*1590784753,,JIT Construction: v1002182559,en_US*/
+/*1591055372,,JIT Construction: v1002190679,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3730,7 +3730,7 @@ try {
           })(typeof global === "undefined" ? this : global);
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1002182559",
+            revision: "1002190679",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -7524,6 +7524,7 @@ try {
               "sdk.Runtime",
               "sdk.Scribe",
               "sdk.SignedRequest",
+              "sdk.UA",
               "sdk.URI",
               "sdk.WebStorage"
             ],
@@ -7934,6 +7935,37 @@ try {
                 }
               }
 
+              function executeIABCallback(cb, iabResponseStr) {
+                var iabResponse = ES("JSON", "parse", false, iabResponseStr);
+                if (iabResponse.status == null) {
+                  iabResponse.status = "unknown";
+                }
+                switch (iabResponse.status) {
+                  case "connected":
+                    setAuthResponse(iabResponse.authResponse, "connected");
+                    break;
+                  case "not_authorized":
+                  case "unknown":
+                  default:
+                    setAuthResponse(null, iabResponse.status);
+                }
+
+                if (cb) {
+                  var _response2 = {
+                    authResponse: getAuthResponse(),
+                    status: require("sdk.Runtime").getLoginStatus()
+                  };
+
+                  cb(_response2);
+                }
+                window.removeEventListener(
+                  "fbNativeLoginResponse",
+                  function window_removeEventListener_$1(ev) {
+                    return executeIABCallback(cb, ev.response);
+                  }
+                );
+              }
+
               function fetchLoginStatus(fn) {
                 var _redirAccessToken;
                 if (timer) {
@@ -8006,7 +8038,26 @@ try {
                 if (window.location.protocol !== "https:") {
                   unknownStatus(fn);
                 }
-                Auth.getLoginStatusCORS(fn, token, currentAuthResponse);
+
+                if (
+                  require("sdk.UA").facebookInAppBrowser() &&
+                  window.FBLogin &&
+                  typeof window.FBLogin.showFBLoginBottomSheetInIAB ===
+                    "function" &&
+                  require("sdk.feature")("iab_login_status", false)
+                ) {
+                  window.addEventListener(
+                    "fbNativeLoginResponse",
+                    function window_addEventListener_$1(ev) {
+                      return executeIABCallback(fn, ev.response);
+                    }
+                  );
+
+                  var clientID = require("sdk.Runtime").getClientID();
+                  window.FBLogin.showFBLoginBottomSheetInIAB(clientID);
+                } else {
+                  Auth.getLoginStatusCORS(fn, token, currentAuthResponse);
+                }
               }
 
               function getCORSTarget(token) {
@@ -8110,12 +8161,12 @@ try {
                 }
 
                 if (cb) {
-                  var _response2 = {
+                  var _response3 = {
                     authResponse: getAuthResponse(),
                     status: require("sdk.Runtime").getLoginStatus()
                   };
 
-                  cb(_response2);
+                  cb(_response3);
                 }
               }
 
@@ -8149,12 +8200,12 @@ try {
                   );
                 }
                 if (cb) {
-                  var _response3 = {
+                  var _response4 = {
                     authResponse: currentAuthResponse,
                     status: require("sdk.Runtime").getLoginStatus()
                   };
 
-                  cb(_response3);
+                  cb(_response4);
                 }
               }
 
@@ -8337,12 +8388,12 @@ try {
                 if (!force) {
                   if (loadState === "loaded") {
                     if (cb) {
-                      var _response4 = {
+                      var _response5 = {
                         authResponse: getAuthResponse(),
                         status: require("sdk.Runtime").getLoginStatus()
                       };
 
-                      cb(_response4);
+                      cb(_response5);
                     }
                     return;
                   } else if (loadState === "loading") {
@@ -18916,7 +18967,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1002182559","namespace":"FB","message":"' +
+        '","revision":"1002190679","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
