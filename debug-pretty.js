@@ -1,4 +1,4 @@
-/*1591148370,,JIT Construction: v1002196139,en_US*/
+/*1591234761,,JIT Construction: v1002201723,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3730,7 +3730,7 @@ try {
           })(typeof global === "undefined" ? this : global);
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1002196139",
+            revision: "1002201723",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -7997,12 +7997,29 @@ try {
                     }
 
                     if (window == top && redirAccessToken != null) {
-                      delete fragmentParams.access_token;
-                      delete fragmentParams.code;
-                      delete fragmentParams.signed_request;
-                      location.hash = require("QueryString").encode(
-                        fragmentParams
-                      );
+                      var ofn = fn;
+                      fn = function fn(response) {
+                        var _response$authRespons;
+                        if (
+                          response != null &&
+                          response.status === "connected" &&
+                          ((_response$authRespons = response.authResponse) ==
+                          null
+                            ? void 0
+                            : _response$authRespons.accessToken) ===
+                            redirAccessToken
+                        ) {
+                          delete fragmentParams.access_token;
+                          delete fragmentParams.code;
+                          delete fragmentParams.signed_request;
+                          location.hash = require("QueryString").encode(
+                            fragmentParams
+                          );
+                        }
+                        if (ofn != null) {
+                          ofn(response);
+                        }
+                      };
                     }
                   }
 
@@ -18967,7 +18984,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1002196139","namespace":"FB","message":"' +
+        '","revision":"1002201723","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
