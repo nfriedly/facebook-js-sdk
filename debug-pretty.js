@@ -1,4 +1,4 @@
-/*1591927776,,JIT Construction: v1002237165,en_US*/
+/*1592362165,,JIT Construction: v1002255110,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3730,7 +3730,7 @@ try {
           })(typeof global === "undefined" ? this : global);
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1002237165",
+            revision: "1002255110",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -7937,17 +7937,18 @@ try {
 
               function executeIABCallback(cb, iabResponseStr) {
                 var iabResponse = ES("JSON", "parse", false, iabResponseStr);
-                if (iabResponse.status == null) {
-                  iabResponse.status = "unknown";
+                if (iabResponse["iab-s"] == null) {
+                  iabResponse["iab-s"] = "unknown";
                 }
-                switch (iabResponse.status) {
+                switch (iabResponse["iab-s"]) {
                   case "connected":
-                    setAuthResponse(iabResponse.authResponse, "connected");
+                    setAuthResponse(iabResponse["iab-ar"], "connected");
+
                     break;
                   case "not_authorized":
                   case "unknown":
                   default:
-                    setAuthResponse(null, iabResponse.status);
+                    setAuthResponse(null, iabResponse["iab-s"]);
                 }
 
                 if (cb) {
@@ -18990,7 +18991,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1002237165","namespace":"FB","message":"' +
+        '","revision":"1002255110","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
