@@ -1,4 +1,4 @@
-/*1593727168,,JIT Construction: v1002325547,en_US*/
+/*1594174757,,JIT Construction: v1002339823,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3729,7 +3729,7 @@ try {
           })(typeof global === "undefined" ? this : global);
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1002325547",
+            revision: "1002339823",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -4252,397 +4252,6 @@ try {
             null
           );
           __d(
-            "TAAL",
-            ["TAALOpcodes"],
-            function $module_TAAL(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              "use strict";
-
-              var TAAL = {
-                blameToPreviousFile: function blameToPreviousFile(message) {
-                  return this.applyOpcodes(message, [
-                    require("TAALOpcodes").PREVIOUS_FILE
-                  ]);
-                },
-                blameToPreviousFrame: function blameToPreviousFrame(message) {
-                  return this.applyOpcodes(message, [
-                    require("TAALOpcodes").PREVIOUS_FRAME
-                  ]);
-                },
-                blameToPreviousDirectory: function blameToPreviousDirectory(
-                  message
-                ) {
-                  return this.applyOpcodes(message, [
-                    require("TAALOpcodes").PREVIOUS_DIR
-                  ]);
-                },
-                applyOpcodes: function applyOpcodes(message, opcodes) {
-                  if (opcodes && opcodes.length) {
-                    return message + " TAAL[" + opcodes.join(";") + "]";
-                  }
-                  return message;
-                }
-              };
-
-              module.exports = TAAL;
-            },
-            null
-          );
-          __d(
-            "ErrorSerializer",
-            [],
-            function $module_ErrorSerializer(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              "use strict";
-
-              var LEVEL_PRI = {
-                debug: 1,
-                info: 2,
-                warn: 3,
-                error: 4,
-                fatal: 5
-              };
-
-              function _parse(s) {
-                try {
-                  var matches = _safeMatches(
-                    s,
-                    /^([\s\S]*)<\!\[EX\[(\[.*\])\]\]>([\s\S]*)$/
-                  );
-
-                  if (!matches) {
-                    return _parseMessageWithTAAL(s);
-                  }
-                  var left = matches[0],
-                    serialized = matches[1],
-                    right = matches[2];
-                  var _JSON$parse = ES("JSON", "parse", false, serialized),
-                    messageWithTAAL = _JSON$parse[0],
-                    params = _JSON$parse.slice(1);
-
-                  var serializableError = _parseMessageWithTAAL(
-                    messageWithTAAL
-                  );
-
-                  serializableError.message =
-                    left + serializableError.message + right;
-                  if (params && params.length > 0) {
-                    serializableError.params = ES(
-                      params,
-                      "map",
-                      true,
-                      function params_map_$0(param) {
-                        return String(param);
-                      }
-                    );
-                  }
-                  return serializableError;
-                } catch (e) {
-                  return {
-                    message: "Unable to parse error message %s because %s",
-                    params: [s, e.message]
-                  };
-                }
-              }
-
-              function stringify(serializableError) {
-                return (
-                  "<![EX[" +
-                  ES(
-                    "JSON",
-                    "stringify",
-                    false,
-                    toMessageWithParams(serializableError)
-                  ) +
-                  "]]>"
-                );
-              }
-
-              function parseFromError(error) {
-                if (error.messageFormat == null) {
-                  return _parse(error.message);
-                }
-
-                var serializable = {
-                  message: String(error.messageFormat)
-                };
-
-                if (error.messageParams) {
-                  serializable.params = [].concat(error.messageParams);
-                }
-                serializable.forcedKey = error.forcedKey;
-                if (error.taalOpcodes) {
-                  serializable.taalOpcodes = error.taalOpcodes;
-                }
-                return serializable;
-              }
-
-              function aggregateError(error, context) {
-                var _firstKey;
-                var caughtError = parseFromError(error);
-                if (ES("Object", "isFrozen", false, error)) {
-                  return;
-                }
-
-                if (context.type) {
-                  if (
-                    !error.type ||
-                    LEVEL_PRI[error.type] > LEVEL_PRI[context.type]
-                  ) {
-                    error.type = context.type;
-                  }
-                }
-
-                if (context.fbloggerMetadata != null) {
-                  var fbloggerMetadata = error.fbloggerMetadata || [];
-                  fbloggerMetadata.push.apply(
-                    fbloggerMetadata,
-                    context.fbloggerMetadata
-                  );
-                  error.fbloggerMetadata = fbloggerMetadata;
-                }
-
-                if (context.project != null) {
-                  error.project = context.project;
-                }
-
-                if (context.errorName != null) {
-                  error.errorName = context.errorName;
-                }
-
-                if (context.componentStack != null) {
-                  error.componentStack = context.componentStack;
-                }
-
-                if (context.deferredSource != null) {
-                  error.deferredSource = context.deferredSource;
-                }
-
-                var messageFormat = caughtError.message;
-                var messageParams = toStringParams(caughtError.params);
-                if (context.messageFormat != null) {
-                  var _context$messageParam;
-                  messageFormat +=
-                    " [Caught in: " + context.messageFormat + "]";
-                  messageParams.push.apply(
-                    messageParams,
-                    (_context$messageParam = context.messageParams) != null
-                      ? _context$messageParam
-                      : []
-                  );
-                }
-                error.messageFormat = messageFormat;
-                error.messageParams = messageParams;
-
-                var firstKey = context.forcedKey;
-                var secondKey = caughtError.forcedKey;
-                var forcedKey =
-                  firstKey != null && secondKey != null
-                    ? firstKey + "_" + secondKey
-                    : (_firstKey = firstKey) != null
-                    ? _firstKey
-                    : secondKey;
-                error.forcedKey = forcedKey;
-
-                if (caughtError.taalOpcodes != null) {
-                  error.taalOpcodes = caughtError.taalOpcodes;
-                }
-              }
-
-              function _toFormattedMessageNoTAAL(serializableError) {
-                var message = serializableError.message || "";
-                var params = toStringParams(serializableError.params);
-                return toReadableMessage(message, params);
-              }
-
-              function toReadableMessage(format, params) {
-                var index = 0;
-
-                var formattedMessage = format.replace(
-                  /%s/g,
-                  function format_replace_$1() {
-                    return index < params.length ? params[index++] : "NOPARAM";
-                  }
-                );
-
-                if (index < params.length) {
-                  formattedMessage +=
-                    " PARAMS" +
-                    ES("JSON", "stringify", false, params.slice(index));
-                }
-                return formattedMessage;
-              }
-
-              function toFormattedMessage(serializableError) {
-                var message = serializableError.message || "";
-                var params = toStringParams(serializableError.params);
-                return (
-                  toReadableMessage(message, params) +
-                  toTAALSuffix(serializableError)
-                );
-              }
-
-              function toMessageWithParams(serializableError) {
-                return [
-                  serializableError.message + toTAALSuffix(serializableError)
-                ].concat(toStringParams(serializableError.params));
-              }
-
-              function toTAALSuffix(serializableError) {
-                var taalOpcodes = serializableError.taalOpcodes,
-                  forcedKey = serializableError.forcedKey;
-                var allOpcodes = [];
-                if (taalOpcodes) {
-                  allOpcodes.push.apply(allOpcodes, taalOpcodes);
-                }
-
-                if (forcedKey) {
-                  allOpcodes.push("4" + forcedKey.replace(/[^\d\w]/g, "_"));
-                }
-                return allOpcodes.length > 0
-                  ? " TAAL[" + allOpcodes.join(";") + "]"
-                  : "";
-              }
-
-              function toStringParams(params) {
-                var _params;
-                return ES(
-                  (_params = params) != null ? _params : [],
-                  "map",
-                  true,
-                  function map_$0(param) {
-                    return String(param);
-                  }
-                );
-              }
-
-              function _parseMessageWithTAAL(messageWithTAAL) {
-                var _matches;
-
-                var matches = _safeMatches(
-                  messageWithTAAL,
-                  /^([\s\S]*) TAAL\[(.*)\]$/
-                );
-                var _ref =
-                    (_matches = matches) != null
-                      ? _matches
-                      : [messageWithTAAL, null],
-                  message = _ref[0],
-                  taalOpcodesString = _ref[1];
-                var serializableError = { message: message };
-
-                if (taalOpcodesString) {
-                  var taalOpcodes = [];
-
-                  for (
-                    var _iterator = taalOpcodesString.split(";"),
-                      _isArray = ES("Array", "isArray", false, _iterator),
-                      _i = 0,
-                      _iterator = _isArray
-                        ? _iterator
-                        : _iterator[
-                            typeof Symbol === "function"
-                              ? Symbol.iterator
-                              : "@@iterator"
-                          ]();
-                    ;
-
-                  ) {
-                    var _ref2;
-                    if (_isArray) {
-                      if (_i >= _iterator.length) break;
-                      _ref2 = _iterator[_i++];
-                    } else {
-                      _i = _iterator.next();
-                      if (_i.done) break;
-                      _ref2 = _i.value;
-                    }
-                    var opcode = _ref2;
-                    if (opcode === "1" || opcode === "2" || opcode === "3") {
-                      taalOpcodes.push(parseInt(opcode, 10));
-                    } else if (opcode[0] === "4" && opcode.length > 1) {
-                      serializableError.forcedKey = opcode.substring(1);
-                    } else {
-                      return { message: messageWithTAAL };
-                    }
-                  }
-                  if (taalOpcodes.length > 0) {
-                    serializableError.taalOpcodes = taalOpcodes;
-                  }
-                }
-                return serializableError;
-              }
-
-              function _safeMatches(s, re) {
-                if (typeof s === "string") {
-                  var matches = s.match(re);
-                  if (matches && matches.length > 0) {
-                    return matches.slice(1);
-                  }
-                }
-              }
-
-              module.exports = global.ErrorSerializer = {
-                aggregateError: aggregateError,
-                parseFromError: parseFromError,
-                stringify: stringify,
-                toFormattedMessage: toFormattedMessage,
-                toReadableMessage: toReadableMessage,
-                toMessageWithParams: toMessageWithParams,
-                toStringParams: toStringParams
-              };
-            },
-            3
-          );
-          __d(
-            "ex",
-            ["ErrorSerializer"],
-            function $module_ex(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              function ex(message) {
-                for (
-                  var _len = arguments.length,
-                    rawArgs = new Array(_len > 1 ? _len - 1 : 0),
-                    _key = 1;
-                  _key < _len;
-                  _key++
-                ) {
-                  rawArgs[_key - 1] = arguments[_key];
-                }
-                var params = ES(rawArgs, "map", true, function rawArgs_map_$0(
-                  p
-                ) {
-                  return String(p);
-                });
-                return require("ErrorSerializer").stringify({
-                  message: message,
-                  params: params
-                });
-              }
-
-              module.exports = ex;
-            },
-            null
-          );
-          __d(
             "sprintf",
             [],
             function $module_sprintf(
@@ -4675,7 +4284,7 @@ try {
           );
           __d(
             "invariant",
-            ["Env", "TAAL", "ex", "sprintf"],
+            ["Env", "TAALOpcodes", "sprintf"],
             function $module_invariant(
               global,
               require,
@@ -4686,11 +4295,6 @@ try {
             ) {
               "use strict";
               var c_Env;
-
-              var printingFunction = require("ex");
-              if (__DEV__) {
-                printingFunction = require("sprintf");
-              }
 
               function invariant(condition, format) {
                 if (!condition) {
@@ -4709,9 +4313,9 @@ try {
                         formatString,
                         params
                       ),
-                      message = _buildProdMessage.message,
+                      _message = _buildProdMessage.message,
                       decoderLink = _buildProdMessage.decoderLink;
-                    formatString = message;
+                    formatString = _message;
                     params.unshift(decoderLink);
                   } else if (formatString === undefined) {
                     formatString = "Invariant: ";
@@ -4719,18 +4323,28 @@ try {
                       formatString += "%s,";
                     }
                   }
-                  formatString = require("TAAL").blameToPreviousFrame(
-                    formatString
-                  );
-                  var error = new Error(
-                    printingFunction.apply(
+
+                  var message = formatString;
+                  if (__DEV__) {
+                    message = require("sprintf").apply(
                       undefined,
                       [formatString].concat(params)
-                    )
-                  );
+                    );
+                  }
+                  var error = new Error(message);
                   error.name = "Invariant Violation";
+                  error.messageFormat = formatString;
+                  error.messageParams = ES(
+                    params,
+                    "map",
+                    true,
+                    function params_map_$0(p) {
+                      return String(p);
+                    }
+                  );
+                  error.taalOpcodes = [require("TAALOpcodes").PREVIOUS_FRAME];
 
-                  error.messageWithParams = [formatString].concat(params);
+                  error.stack;
                   throw error;
                 }
               }
@@ -4758,9 +4372,7 @@ try {
 
               function buildDecoderLink(number, params) {
                 var decodeURI =
-                  "https://our.intern.facebook.com/intern/invariant/" +
-                  number +
-                  "/";
+                  "https://www.internalfb.com/intern/invariant/" + number + "/";
                 if (params.length > 0) {
                   decodeURI +=
                     "?" +
@@ -6624,6 +6236,354 @@ try {
               };
 
               module.exports = URISchemes;
+            },
+            null
+          );
+          __d(
+            "ErrorSerializer",
+            [],
+            function $module_ErrorSerializer(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              "use strict";
+
+              var LEVEL_PRI = {
+                debug: 1,
+                info: 2,
+                warn: 3,
+                error: 4,
+                fatal: 5
+              };
+
+              function _parse(s) {
+                try {
+                  var matches = _safeMatches(
+                    s,
+                    /^([\s\S]*)<\!\[EX\[(\[.*\])\]\]>([\s\S]*)$/
+                  );
+
+                  if (!matches) {
+                    return _parseMessageWithTAAL(s);
+                  }
+                  var left = matches[0],
+                    serialized = matches[1],
+                    right = matches[2];
+                  var _JSON$parse = ES("JSON", "parse", false, serialized),
+                    messageWithTAAL = _JSON$parse[0],
+                    params = _JSON$parse.slice(1);
+
+                  var serializableError = _parseMessageWithTAAL(
+                    messageWithTAAL
+                  );
+
+                  serializableError.message =
+                    left + serializableError.message + right;
+                  if (params && params.length > 0) {
+                    serializableError.params = ES(
+                      params,
+                      "map",
+                      true,
+                      function params_map_$0(param) {
+                        return String(param);
+                      }
+                    );
+                  }
+                  return serializableError;
+                } catch (e) {
+                  return {
+                    message: "Unable to parse error message %s because %s",
+                    params: [s, e.message]
+                  };
+                }
+              }
+
+              function stringify(serializableError) {
+                return (
+                  "<![EX[" +
+                  ES(
+                    "JSON",
+                    "stringify",
+                    false,
+                    toMessageWithParams(serializableError)
+                  ) +
+                  "]]>"
+                );
+              }
+
+              function parseFromError(error) {
+                if (error.messageFormat == null) {
+                  return _parse(error.message);
+                }
+
+                var serializable = {
+                  message: String(error.messageFormat)
+                };
+
+                if (error.messageParams) {
+                  serializable.params = [].concat(error.messageParams);
+                }
+                serializable.forcedKey = error.forcedKey;
+                if (error.taalOpcodes) {
+                  serializable.taalOpcodes = error.taalOpcodes;
+                }
+                return serializable;
+              }
+
+              function aggregateError(error, context) {
+                var _firstKey;
+                var caughtError = parseFromError(error);
+                if (ES("Object", "isFrozen", false, error)) {
+                  return;
+                }
+
+                if (context.type) {
+                  if (
+                    !error.type ||
+                    LEVEL_PRI[error.type] > LEVEL_PRI[context.type]
+                  ) {
+                    error.type = context.type;
+                  }
+                }
+
+                if (context.fbloggerMetadata != null) {
+                  var fbloggerMetadata = error.fbloggerMetadata || [];
+                  fbloggerMetadata.push.apply(
+                    fbloggerMetadata,
+                    context.fbloggerMetadata
+                  );
+                  error.fbloggerMetadata = fbloggerMetadata;
+                }
+
+                if (context.project != null) {
+                  error.project = context.project;
+                }
+
+                if (context.errorName != null) {
+                  error.errorName = context.errorName;
+                }
+
+                if (context.componentStack != null) {
+                  error.componentStack = context.componentStack;
+                }
+
+                if (context.deferredSource != null) {
+                  error.deferredSource = context.deferredSource;
+                }
+
+                var messageFormat = caughtError.message;
+                var messageParams = toStringParams(caughtError.params);
+                if (context.messageFormat != null) {
+                  var _context$messageParam;
+                  messageFormat +=
+                    " [Caught in: " + context.messageFormat + "]";
+                  messageParams.push.apply(
+                    messageParams,
+                    (_context$messageParam = context.messageParams) != null
+                      ? _context$messageParam
+                      : []
+                  );
+                }
+                error.messageFormat = messageFormat;
+                error.messageParams = messageParams;
+
+                var firstKey = context.forcedKey;
+                var secondKey = caughtError.forcedKey;
+                var forcedKey =
+                  firstKey != null && secondKey != null
+                    ? firstKey + "_" + secondKey
+                    : (_firstKey = firstKey) != null
+                    ? _firstKey
+                    : secondKey;
+                error.forcedKey = forcedKey;
+
+                if (caughtError.taalOpcodes != null) {
+                  error.taalOpcodes = caughtError.taalOpcodes;
+                }
+              }
+
+              function _toFormattedMessageNoTAAL(serializableError) {
+                var message = serializableError.message || "";
+                var params = toStringParams(serializableError.params);
+                return toReadableMessage(message, params);
+              }
+
+              function toReadableMessage(format, params) {
+                var index = 0;
+
+                var formattedMessage = format.replace(
+                  /%s/g,
+                  function format_replace_$1() {
+                    return index < params.length ? params[index++] : "NOPARAM";
+                  }
+                );
+
+                if (index < params.length) {
+                  formattedMessage +=
+                    " PARAMS" +
+                    ES("JSON", "stringify", false, params.slice(index));
+                }
+                return formattedMessage;
+              }
+
+              function toFormattedMessage(serializableError) {
+                var message = serializableError.message || "";
+                var params = toStringParams(serializableError.params);
+                return (
+                  toReadableMessage(message, params) +
+                  toTAALSuffix(serializableError)
+                );
+              }
+
+              function toMessageWithParams(serializableError) {
+                return [
+                  serializableError.message + toTAALSuffix(serializableError)
+                ].concat(toStringParams(serializableError.params));
+              }
+
+              function toTAALSuffix(serializableError) {
+                var taalOpcodes = serializableError.taalOpcodes,
+                  forcedKey = serializableError.forcedKey;
+                var allOpcodes = [];
+                if (taalOpcodes) {
+                  allOpcodes.push.apply(allOpcodes, taalOpcodes);
+                }
+
+                if (forcedKey) {
+                  allOpcodes.push("4" + forcedKey.replace(/[^\d\w]/g, "_"));
+                }
+                return allOpcodes.length > 0
+                  ? " TAAL[" + allOpcodes.join(";") + "]"
+                  : "";
+              }
+
+              function toStringParams(params) {
+                var _params;
+                return ES(
+                  (_params = params) != null ? _params : [],
+                  "map",
+                  true,
+                  function map_$0(param) {
+                    return String(param);
+                  }
+                );
+              }
+
+              function _parseMessageWithTAAL(messageWithTAAL) {
+                var _matches;
+
+                var matches = _safeMatches(
+                  messageWithTAAL,
+                  /^([\s\S]*) TAAL\[(.*)\]$/
+                );
+                var _ref =
+                    (_matches = matches) != null
+                      ? _matches
+                      : [messageWithTAAL, null],
+                  message = _ref[0],
+                  taalOpcodesString = _ref[1];
+                var serializableError = { message: message };
+
+                if (taalOpcodesString) {
+                  var taalOpcodes = [];
+
+                  for (
+                    var _iterator = taalOpcodesString.split(";"),
+                      _isArray = ES("Array", "isArray", false, _iterator),
+                      _i = 0,
+                      _iterator = _isArray
+                        ? _iterator
+                        : _iterator[
+                            typeof Symbol === "function"
+                              ? Symbol.iterator
+                              : "@@iterator"
+                          ]();
+                    ;
+
+                  ) {
+                    var _ref2;
+                    if (_isArray) {
+                      if (_i >= _iterator.length) break;
+                      _ref2 = _iterator[_i++];
+                    } else {
+                      _i = _iterator.next();
+                      if (_i.done) break;
+                      _ref2 = _i.value;
+                    }
+                    var opcode = _ref2;
+                    if (opcode === "1" || opcode === "2" || opcode === "3") {
+                      taalOpcodes.push(parseInt(opcode, 10));
+                    } else if (opcode[0] === "4" && opcode.length > 1) {
+                      serializableError.forcedKey = opcode.substring(1);
+                    } else {
+                      return { message: messageWithTAAL };
+                    }
+                  }
+                  if (taalOpcodes.length > 0) {
+                    serializableError.taalOpcodes = taalOpcodes;
+                  }
+                }
+                return serializableError;
+              }
+
+              function _safeMatches(s, re) {
+                if (typeof s === "string") {
+                  var matches = s.match(re);
+                  if (matches && matches.length > 0) {
+                    return matches.slice(1);
+                  }
+                }
+              }
+
+              module.exports = global.ErrorSerializer = {
+                aggregateError: aggregateError,
+                parseFromError: parseFromError,
+                stringify: stringify,
+                toFormattedMessage: toFormattedMessage,
+                toReadableMessage: toReadableMessage,
+                toMessageWithParams: toMessageWithParams,
+                toStringParams: toStringParams
+              };
+            },
+            3
+          );
+          __d(
+            "ex",
+            ["ErrorSerializer"],
+            function $module_ex(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              function ex(message) {
+                for (
+                  var _len = arguments.length,
+                    rawArgs = new Array(_len > 1 ? _len - 1 : 0),
+                    _key = 1;
+                  _key < _len;
+                  _key++
+                ) {
+                  rawArgs[_key - 1] = arguments[_key];
+                }
+                var params = ES(rawArgs, "map", true, function rawArgs_map_$0(
+                  p
+                ) {
+                  return String(p);
+                });
+                return require("ErrorSerializer").stringify({
+                  message: message,
+                  params: params
+                });
+              }
+
+              module.exports = ex;
             },
             null
           );
@@ -19016,7 +18976,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1002325547","namespace":"FB","message":"' +
+        '","revision":"1002339823","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
