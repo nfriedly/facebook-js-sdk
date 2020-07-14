@@ -1,4 +1,4 @@
-/*1594436361,,JIT Construction: v1002358518,en_US*/
+/*1594713566,,JIT Construction: v1002366755,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3729,7 +3729,7 @@ try {
           })(typeof global === "undefined" ? this : global);
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1002358518",
+            revision: "1002366755",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -16537,6 +16537,10 @@ try {
 
                 if (opts.lazy) {
                   opts.loading = "lazy";
+
+                  if (style.visibility) {
+                    delete style.visibility;
+                  }
                 }
                 delete opts.lazy;
 
@@ -16764,7 +16768,7 @@ try {
                       );
 
                       _this.updateLift();
-                      clearTimeout(_this._timeoutID);
+                      window.clearTimeout(_this._timeoutID);
                     });
 
                     this.subscribe("xd.resize", function subscribe_$1(message) {
@@ -16792,7 +16796,7 @@ try {
                       );
                       _this._isIframeResized = true;
                       _this.updateLift();
-                      clearTimeout(_this._timeoutID);
+                      window.clearTimeout(_this._timeoutID);
                     });
 
                     this.subscribe("xd.resize.iframe", function subscribe_$1(
@@ -16805,7 +16809,7 @@ try {
                       );
                       _this._isIframeResized = true;
                       _this.updateLift();
-                      clearTimeout(_this._timeoutID);
+                      window.clearTimeout(_this._timeoutID);
                     });
 
                     this.subscribe("xd.sdk_event", function subscribe_$1(
@@ -16869,8 +16873,8 @@ try {
 
                     ES("Object", "assign", false, flow.style, {
                       verticalAlign: "top",
-                      width: "0px",
-                      height: "0px",
+                      width: params.lazy ? "1px" : "0px",
+                      height: params.lazy ? "1px" : "0px",
                       overflow: "hidden"
                     });
 
@@ -16989,15 +16993,18 @@ try {
                     }
                     this._element.appendChild(this._iframeOptions.root);
                     var timeout = require("sdk.UA").mobile() ? 120 : 45;
-                    this._timeoutID = setTimeout(function setTimeout_$0() {
-                      collapseIframe(_this2._iframe);
-                      require("Log").warn(
-                        "%s:%s failed to resize in %ss",
-                        _this2._ns,
-                        _this2._tag,
-                        timeout
-                      );
-                    }, timeout * 1000);
+                    this._timeoutID = window.setTimeout(
+                      function window_setTimeout_$0() {
+                        collapseIframe(_this2._iframe);
+                        require("Log").warn(
+                          "%s:%s failed to resize in %ss",
+                          _this2._ns,
+                          _this2._tag,
+                          timeout
+                        );
+                      },
+                      timeout * 1000
+                    );
 
                     this._iframe = require("sdk.createIframe")(
                       this._iframeOptions
@@ -18976,7 +18983,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1002358518","namespace":"FB","message":"' +
+        '","revision":"1002366755","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
