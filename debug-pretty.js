@@ -1,4 +1,4 @@
-/*1595293814,,JIT Construction: v1002395956,en_US*/
+/*1595532548,,JIT Construction: v1002409587,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3729,7 +3729,7 @@ try {
           })(typeof global === "undefined" ? this : global);
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1002395956",
+            revision: "1002409587",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -16262,6 +16262,158 @@ try {
             3
           );
           __d(
+            "sdk.PluginUtils",
+            ["resolveURI", "sdk.Event"],
+            function $module_sdk_PluginUtils(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              var types = {
+                string: function string(value) {
+                  return value;
+                },
+                bool: function bool(value) {
+                  return value != null
+                    ? /^(?:true|1|yes|on)$/i.test(value)
+                    : undefined;
+                },
+                url: function url(value) {
+                  return require("resolveURI")(value);
+                },
+                url_maybe: function url_maybe(value) {
+                  return value != null && value !== ""
+                    ? require("resolveURI")(value)
+                    : undefined;
+                },
+                hostname: function hostname(value) {
+                  return value != null && value !== ""
+                    ? value
+                    : "window.location.hostname";
+                },
+                px: function px(value) {
+                  if (typeof value === "string") {
+                    var match = value.match(/^(\d+)(?:px)?$/);
+                    return match != null ? parseInt(match[0], 10) : undefined;
+                  } else if (typeof value === "number") {
+                    return value;
+                  } else {
+                    return undefined;
+                  }
+                },
+                text: function text(value) {
+                  return value;
+                }
+              };
+
+              function getVal(attr, key) {
+                var _ref, _ref2, _ref3, _ref4, _ref5, _attr$key;
+                var val =
+                  (_ref =
+                    (_ref2 =
+                      (_ref3 =
+                        (_ref4 =
+                          (_ref5 =
+                            (_attr$key = attr[key]) != null
+                              ? _attr$key
+                              : attr[key.replace(/_/g, "-")]) != null
+                            ? _ref5
+                            : attr[key.replace(/_/g, "")]) != null
+                          ? _ref4
+                          : attr["data-" + key]) != null
+                        ? _ref3
+                        : attr["data-" + key.replace(/_/g, "-")]) != null
+                      ? _ref2
+                      : attr["data-" + key.replace(/_/g, "")]) != null
+                    ? _ref
+                    : undefined;
+                return val;
+              }
+
+              function validate(defn, elem, attr, params) {
+                ES(
+                  ES("Object", "keys", false, defn),
+                  "forEach",
+                  true,
+                  function forEach_$0(key) {
+                    if (defn[key] === "text" && !attr[key]) {
+                      var _ref6, _elem$textContent;
+                      attr[key] =
+                        (_ref6 =
+                          (_elem$textContent = elem.textContent) != null
+                            ? _elem$textContent
+                            : elem.innerText) != null
+                          ? _ref6
+                          : undefined;
+                      elem.setAttribute(key, attr[key]);
+                    }
+                    params[key] = types[defn[key]](getVal(attr, key));
+                  }
+                );
+              }
+
+              function resize(elem, width, height) {
+                if (width === "100%") {
+                  elem.style.width = "100%";
+                } else if (width != null && width !== "") {
+                  elem.style.width = width + "px";
+                }
+
+                if ((height != null && height !== "") || height === 0) {
+                  elem.style.height = height + "px";
+                }
+              }
+
+              function resizeBubbler(pluginID) {
+                return function(msg) {
+                  var message = {
+                    width: msg.width,
+                    height: msg.height,
+                    pluginID: pluginID
+                  };
+                  require("sdk.Event").fire("xfbml.resize", message);
+                };
+              }
+
+              function parse(dim) {
+                if (dim === "100%") {
+                  return "100%";
+                }
+
+                return dim != null ? parseInt(dim, 10) : undefined;
+              }
+
+              function collapseIframe(iframe) {
+                if (iframe != null) {
+                  resize(iframe, 0, 0);
+                }
+              }
+
+              module.exports = {
+                baseParams: {
+                  skin: "string",
+                  font: "string",
+                  width: "string",
+                  height: "px",
+                  ref: "string",
+                  lazy: "bool",
+                  color_scheme: "string"
+                },
+
+                getVal: getVal,
+                validate: validate,
+                resize: resize,
+                resizeBubbler: resizeBubbler,
+                parse: parse,
+                collapseIframe: collapseIframe
+              };
+            },
+            null
+          );
+          __d(
             "UserAgent_DEPRECATED",
             [],
             function $module_UserAgent_DEPRECATED(
@@ -16614,12 +16766,12 @@ try {
               "Type",
               "UrlMap",
               "guid",
-              "resolveURI",
               "sdk.Auth",
               "sdk.createIframe",
               "sdk.DOM",
               "sdk.Event",
               "sdk.PlatformVersioning",
+              "sdk.PluginUtils",
               "sdk.Runtime",
               "sdk.UA",
               "sdk.URI",
@@ -16633,120 +16785,26 @@ try {
               module,
               exports
             ) {
-              var baseParams = {
-                skin: "string",
-                font: "string",
-                width: "string",
-                height: "px",
-                ref: "string",
-                lazy: "bool",
-                color_scheme: "string"
-              };
-
-              function resize(elem, width, height) {
-                if (width || width === 0) {
-                  if (width === "100%") {
-                    elem.style.width = "100%";
-                  } else {
-                    elem.style.width = width + "px";
-                  }
-                }
-
-                if (height || height === 0) {
-                  elem.style.height = height + "px";
-                }
-              }
-
-              function resizeBubbler(pluginID) {
-                return function(msg) {
-                  var message = {
-                    width: msg.width,
-                    height: msg.height,
-                    pluginID: pluginID
-                  };
-                  require("sdk.Event").fire("xfbml.resize", message);
-                };
-              }
-
-              var types = {
-                string: function string(value) {
-                  return value;
-                },
-                bool: function bool(value) {
-                  return value ? /^(?:true|1|yes|on)$/i.test(value) : undefined;
-                },
-                url: function url(value) {
-                  return require("resolveURI")(value);
-                },
-                url_maybe: function url_maybe(value) {
-                  return value ? require("resolveURI")(value) : value;
-                },
-                hostname: function hostname(value) {
-                  return value || window.location.hostname;
-                },
-                px: function px(value) {
-                  return /^(\d+)(?:px)?$/.test(value)
-                    ? parseInt(RegExp.$1, 10)
-                    : undefined;
-                },
-                text: function text(value) {
-                  return value;
-                }
-              };
-
-              function getVal(attr, key) {
-                var val =
-                  attr[key] ||
-                  attr[key.replace(/_/g, "-")] ||
-                  attr[key.replace(/_/g, "")] ||
-                  attr["data-" + key] ||
-                  attr["data-" + key.replace(/_/g, "-")] ||
-                  attr["data-" + key.replace(/_/g, "")] ||
-                  undefined;
-                return val;
-              }
-
-              function validate(defn, elem, attr, params) {
-                ES(
-                  ES("Object", "keys", false, defn),
-                  "forEach",
-                  true,
-                  function forEach_$0(key) {
-                    if (defn[key] == "text" && !attr[key]) {
-                      attr[key] = elem.textContent || elem.innerText || "";
-                      elem.setAttribute(key, attr[key]);
-                    }
-                    params[key] = types[defn[key]](getVal(attr, key));
-                  }
-                );
-              }
-
-              function parse(dim) {
-                if (dim === "100%") {
-                  return "100%";
-                }
-
-                return dim || dim === "0" || dim === 0
-                  ? parseInt(dim, 10)
-                  : undefined;
-              }
-
-              function collapseIframe(iframe) {
-                if (iframe) {
-                  resize(iframe, 0, 0);
-                }
-              }
-
               var IframePlugin = require("Type").extend(
                 {
                   constructor: function constructor(elem, ns, tag, attr) {
                     var _this = this;
+                    var sdkPluginUtils;
                     this.parent();
                     tag = tag.replace(/-/g, "_");
 
-                    var pluginId = getVal(attr, "plugin_id");
-                    this.subscribe("xd.resize", resizeBubbler(pluginId));
-                    this.subscribe("xd.resize.flow", resizeBubbler(pluginId));
+                    var pluginId = (sdkPluginUtils = require("sdk.PluginUtils")).getVal(
+                      attr,
+                      "plugin_id"
+                    );
+                    this.subscribe(
+                      "xd.resize",
+                      sdkPluginUtils.resizeBubbler(pluginId)
+                    );
+                    this.subscribe(
+                      "xd.resize.flow",
+                      sdkPluginUtils.resizeBubbler(pluginId)
+                    );
 
                     this.subscribe("xd.resize.flow", function subscribe_$1(
                       message
@@ -16762,10 +16820,10 @@ try {
                         }
                       );
 
-                      resize(
+                      require("sdk.PluginUtils").resize(
                         _this._iframeOptions.root,
-                        parse(message.width),
-                        parse(message.height)
+                        require("sdk.PluginUtils").parse(message.width),
+                        require("sdk.PluginUtils").parse(message.height)
                       );
 
                       _this.updateLift();
@@ -16773,6 +16831,7 @@ try {
                     });
 
                     this.subscribe("xd.resize", function subscribe_$1(message) {
+                      var sdkPluginUtils;
                       ES(
                         "Object",
                         "assign",
@@ -16784,17 +16843,18 @@ try {
                         }
                       );
 
-                      resize(
+                      (sdkPluginUtils = require("sdk.PluginUtils")).resize(
                         _this._iframeOptions.root,
-                        parse(message.width),
-                        parse(message.height)
+                        sdkPluginUtils.parse(message.width),
+                        sdkPluginUtils.parse(message.height)
                       );
 
-                      resize(
+                      sdkPluginUtils.resize(
                         _this._iframe,
-                        parse(message.width),
-                        parse(message.height)
+                        sdkPluginUtils.parse(message.width),
+                        sdkPluginUtils.parse(message.height)
                       );
+
                       _this._isIframeResized = true;
                       _this.updateLift();
                       window.clearTimeout(_this._timeoutID);
@@ -16803,11 +16863,12 @@ try {
                     this.subscribe("xd.resize.iframe", function subscribe_$1(
                       message
                     ) {
-                      resize(
+                      require("sdk.PluginUtils").resize(
                         _this._iframe,
-                        parse(message.width),
-                        parse(message.height)
+                        require("sdk.PluginUtils").parse(message.width),
+                        require("sdk.PluginUtils").parse(message.height)
                       );
+
                       _this._isIframeResized = true;
                       _this.updateLift();
                       window.clearTimeout(_this._timeoutID);
@@ -16827,8 +16888,18 @@ try {
                       tag +
                       ".php?";
                     var params = {};
-                    validate(this.getParams(), elem, attr, params);
-                    validate(baseParams, elem, attr, params);
+                    sdkPluginUtils.validate(
+                      this.getParams(),
+                      elem,
+                      attr,
+                      params
+                    );
+                    sdkPluginUtils.validate(
+                      sdkPluginUtils.baseParams,
+                      elem,
+                      attr,
+                      params
+                    );
 
                     ES("Object", "assign", false, params, {
                       app_id: require("sdk.Runtime").getClientID(),
@@ -16837,7 +16908,9 @@ try {
                       kid_directed_site: require("sdk.Runtime").getKidDirectedSite(),
                       channel: require("sdk.XD").handler(
                         function XD_handler_$0(msg) {
-                          return _this.inform("xd." + msg.type, msg);
+                          if (msg != null) {
+                            _this.inform("xd." + msg.type, msg);
+                          }
                         },
                         "parent.parent",
                         true
@@ -16908,7 +16981,9 @@ try {
                         return _this.inform("render");
                       },
                       onerror: function onerror() {
-                        return collapseIframe(_this._iframe);
+                        return require("sdk.PluginUtils").collapseIframe(
+                          _this._iframe
+                        );
                       },
                       lazy: params.lazy
                     };
@@ -16985,7 +17060,9 @@ try {
                       _this2._iframe.style.visibility = "visible";
 
                       if (!_this2._isIframeResized) {
-                        collapseIframe(_this2._iframe);
+                        require("sdk.PluginUtils").collapseIframe(
+                          _this2._iframe
+                        );
                       }
                     });
 
@@ -16996,7 +17073,9 @@ try {
                     var timeout = require("sdk.UA").mobile() ? 120 : 45;
                     this._timeoutID = window.setTimeout(
                       function window_setTimeout_$0() {
-                        collapseIframe(_this2._iframe);
+                        require("sdk.PluginUtils").collapseIframe(
+                          _this2._iframe
+                        );
                         require("Log").warn(
                           "%s:%s failed to resize in %ss",
                           _this2._ns,
@@ -17088,12 +17167,6 @@ try {
                 },
                 require("ObservableMixin")
               );
-
-              IframePlugin.getVal = getVal;
-
-              IframePlugin.getBaseParams = function() {
-                return baseParams;
-              };
 
               IframePlugin.withParams = function(params, config) {
                 return IframePlugin.extend({
@@ -17334,6 +17407,7 @@ try {
               "UrlMap",
               "sdk.DOM",
               "sdk.Event",
+              "sdk.PluginUtils",
               "sdk.Runtime",
               "sdk.UA",
               "sdk.URI"
@@ -17375,10 +17449,17 @@ try {
                   simple: "string",
                   css: "string",
                   notify: "string",
-                  count: "bool"
+                  count: "bool",
+                  skin: "string",
+                  font: "string",
+                  width: "string",
+                  height: "px",
+                  ref: "string",
+                  lazy: "bool",
+                  color_scheme: "string"
                 },
 
-                require("IframePlugin").getBaseParams()
+                require("sdk.PluginUtils").baseParams
               );
 
               function setupAttributes(elem, attr) {
@@ -17607,6 +17688,7 @@ try {
               "sdk.feature",
               "sdk.getContextType",
               "sdk.Impressions",
+              "sdk.PluginUtils",
               "sdk.Runtime",
               "sdk.Scribe",
               "sdk.ui",
@@ -17714,7 +17796,7 @@ try {
                   }
 
                   this.parent(elem, ns, tag, attr);
-                  var onlogin = require("IframePlugin").getVal(
+                  var onlogin = require("sdk.PluginUtils").getVal(
                     attr,
                     "on_login"
                   );
@@ -18984,7 +19066,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1002395956","namespace":"FB","message":"' +
+        '","revision":"1002409587","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
