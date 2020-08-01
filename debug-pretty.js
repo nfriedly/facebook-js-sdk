@@ -1,4 +1,4 @@
-/*1596165005,,JIT Construction: v1002447037,en_US*/
+/*1596245948,,JIT Construction: v1002452636,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3729,7 +3729,7 @@ try {
           })(typeof global === "undefined" ? this : global);
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1002447037",
+            revision: "1002452636",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -4364,206 +4364,8 @@ try {
             null
           );
           __d(
-            "ManagedError",
-            [],
-            function $module_ManagedError(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              var ManagedError = (function(_Error) {
-                "use strict";
-                babelHelpers.inheritsLoose(ManagedError, _Error);
-
-                function ManagedError(message, innerError) {
-                  var _this;
-                  _this =
-                    _Error.call(
-                      this,
-                      message !== null && message !== undefined ? message : ""
-                    ) || this;
-                  if (message !== null && message !== undefined) {
-                    _this.message = message;
-                  } else {
-                    _this.message = "";
-                  }
-                  _this.innerError = innerError;
-                  return _this;
-                }
-                return ManagedError;
-              })(babelHelpers.wrapNativeSuper(Error));
-
-              module.exports = ManagedError;
-            },
-            null
-          );
-          __d(
-            "AssertionError",
-            ["ManagedError"],
-            function $module_AssertionError(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              var AssertionError = (function(_ManagedError) {
-                "use strict";
-                babelHelpers.inheritsLoose(AssertionError, _ManagedError);
-                function AssertionError(message) {
-                  return _ManagedError.call(this, message) || this;
-                }
-                return AssertionError;
-              })(require("ManagedError"));
-
-              module.exports = AssertionError;
-            },
-            null
-          );
-          __d(
-            "sprintf",
-            [],
-            function $module_sprintf(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              function sprintf(format) {
-                for (
-                  var _len = arguments.length,
-                    args = new Array(_len > 1 ? _len - 1 : 0),
-                    _key = 1;
-                  _key < _len;
-                  _key++
-                ) {
-                  args[_key - 1] = arguments[_key];
-                }
-                var index = 0;
-                return format.replace(/%s/g, function format_replace_$1() {
-                  return String(args[index++]);
-                });
-              }
-
-              module.exports = sprintf;
-            },
-            null
-          );
-          __d(
-            "Assert",
-            ["AssertionError", "sprintf"],
-            function $module_Assert(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              function assert(expression, message) {
-                if (typeof expression !== "boolean" || !expression) {
-                  throw new (require("AssertionError"))(message);
-                }
-                return expression;
-              }
-
-              function assertType(type, expression, message) {
-                var actualType;
-
-                if (expression === undefined) {
-                  actualType = "undefined";
-                } else if (expression === null) {
-                  actualType = "null";
-                } else {
-                  var className = Object.prototype.toString.call(expression);
-                  actualType = /\s(\w*)/.exec(className)[1].toLowerCase();
-                }
-
-                assert(
-                  ES(type, "indexOf", true, actualType) !== -1,
-                  message ||
-                    require("sprintf")(
-                      "Expression is of type %s, not %s",
-                      actualType,
-                      type
-                    )
-                );
-
-                return expression;
-              }
-
-              function assertInstanceOf(type, expression, message) {
-                assert(
-                  expression instanceof type,
-                  message || "Expression not instance of type"
-                );
-
-                return expression;
-              }
-
-              function _define(type, test) {
-                Assert["is" + type] = test;
-                Assert["maybe" + type] = function(expression, message) {
-                  if (expression != null) {
-                    test(expression, message);
-                  }
-                };
-              }
-
-              var Assert = {
-                isInstanceOf: assertInstanceOf,
-                isTrue: assert,
-                isTruthy: function isTruthy(expression, message) {
-                  return assert(!!expression, message);
-                },
-                type: assertType,
-                define: function define(type, fn) {
-                  type =
-                    type.substring(0, 1).toUpperCase() +
-                    type.substring(1).toLowerCase();
-
-                  _define(type, function _define_$1(expression, message) {
-                    assert(fn(expression), message);
-                  });
-                }
-              };
-
-              ES(
-                [
-                  "Array",
-                  "Boolean",
-                  "Date",
-                  "Function",
-                  "Null",
-                  "Number",
-                  "Object",
-                  "Regexp",
-                  "String",
-                  "Undefined"
-                ],
-                "forEach",
-                true,
-                function forEach_$0(type) {
-                  _define(
-                    type,
-                    ES(assertType, "bind", true, null, type.toLowerCase())
-                  );
-                }
-              );
-
-              module.exports = Assert;
-            },
-            null
-          );
-          __d(
             "sdk.DOM",
-            ["Assert", "sdk.domReady"],
+            ["sdk.domReady"],
             function $module_sdk_DOM(
               global,
               require,
@@ -4597,9 +4399,6 @@ try {
               }
 
               function html(dom, content) {
-                require("Assert").isTruthy(dom, "element not specified");
-                require("Assert").isString(content);
-
                 try {
                   dom.innerHTML = content;
                 } catch (e) {
@@ -4608,9 +4407,6 @@ try {
               }
 
               function containsCss(dom, className) {
-                require("Assert").isTruthy(dom, "element not specified");
-                require("Assert").isString(className);
-
                 var cssClassWithSpace = " " + dom.className + " ";
                 return (
                   ES(
@@ -4623,24 +4419,18 @@ try {
               }
 
               function addCss(dom, className) {
-                require("Assert").isTruthy(dom, "element not specified");
                 if (dom == null) {
                   return;
                 }
-                require("Assert").isString(className);
-
                 if (!containsCss(dom, className)) {
                   dom.className = dom.className + " " + className;
                 }
               }
 
               function removeCss(dom, className) {
-                require("Assert").isTruthy(dom, "element not specified");
                 if (dom == null) {
                   return;
                 }
-                require("Assert").isString(className);
-
                 var regExp = new RegExp("\\s*" + className, "g");
                 dom.className = ES(
                   dom.className.replace(regExp, ""),
@@ -4650,8 +4440,9 @@ try {
               }
 
               function getByClass(className, dom, tagName) {
-                require("Assert").isString(className);
-
+                if (tagName === void 0) {
+                  tagName = "*";
+                }
                 var _dom = dom || document.body;
                 if (_dom == null) {
                   return [];
@@ -4666,24 +4457,15 @@ try {
               }
 
               function getStyle(dom, styleProp) {
-                require("Assert").isTruthy(dom, "element not specified");
-                require("Assert").isString(styleProp);
+                var _styleProp = camelToDashed(styleProp);
+                var computedStyle = document.defaultView
+                  .getComputedStyle(dom)
+                  .getPropertyValue(_styleProp);
 
-                var _styleProp = styleProp.replace(
-                  /-(\w)/g,
-                  function styleProp_replace_$1(m, g1) {
-                    return g1.toUpperCase();
-                  }
-                );
-
-                var currentStyle =
-                  dom.currentStyle ||
-                  document.defaultView.getComputedStyle(dom, null);
-
-                var computedStyle = currentStyle[_styleProp];
+                computedStyle = dom.style.getPropertyValue(_styleProp);
 
                 if (
-                  /backgroundPosition?/.test(_styleProp) &&
+                  /background-position?/.test(_styleProp) &&
                   /top|left/.test(computedStyle)
                 ) {
                   computedStyle = "0%";
@@ -4692,16 +4474,7 @@ try {
               }
 
               function setStyle(dom, styleProp, value) {
-                require("Assert").isTruthy(dom, "element not specified");
-                require("Assert").isString(styleProp);
-
-                styleProp = styleProp.replace(
-                  /-(\w)/g,
-                  function styleProp_replace_$1(m, g1) {
-                    return g1.toUpperCase();
-                  }
-                );
-                dom.style[styleProp] = value;
+                dom.style.setProperty(camelToDashed(styleProp), value);
               }
 
               function addCssRules(styles, names) {
@@ -4764,6 +4537,24 @@ try {
                 };
               }
 
+              var camel_to_dashed = /[A-Z]/g;
+              var first_segment = /^\([^-]\)-/;
+              var vendor_prefixes = ["o", "moz", "ms", "webkit"];
+
+              function camelToDashed(camelCase) {
+                var dashed = camelCase
+                  .replace(camel_to_dashed, "-$&")
+                  .toLowerCase();
+                var match = dashed.match(first_segment);
+                if (
+                  match &&
+                  ES(vendor_prefixes, "indexOf", true, match[1]) !== -1
+                ) {
+                  dashed = "-" + dashed;
+                }
+                return dashed;
+              }
+
               var DOM = {
                 addCss: addCss,
                 addCssRules: addCssRules,
@@ -4781,6 +4572,43 @@ try {
               };
 
               module.exports = DOM;
+            },
+            null
+          );
+          __d(
+            "ManagedError",
+            [],
+            function $module_ManagedError(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              var ManagedError = (function(_Error) {
+                "use strict";
+                babelHelpers.inheritsLoose(ManagedError, _Error);
+
+                function ManagedError(message, innerError) {
+                  var _this;
+                  _this =
+                    _Error.call(
+                      this,
+                      message !== null && message !== undefined ? message : ""
+                    ) || this;
+                  if (message !== null && message !== undefined) {
+                    _this.message = message;
+                  } else {
+                    _this.message = "";
+                  }
+                  _this.innerError = innerError;
+                  return _this;
+                }
+                return ManagedError;
+              })(babelHelpers.wrapNativeSuper(Error));
+
+              module.exports = ManagedError;
             },
             null
           );
@@ -5025,6 +4853,167 @@ try {
               module.exports = ObservableMixin;
               var _c;
               $RefreshReg$(_c, "ObservableMixin");
+            },
+            null
+          );
+          __d(
+            "AssertionError",
+            ["ManagedError"],
+            function $module_AssertionError(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              var AssertionError = (function(_ManagedError) {
+                "use strict";
+                babelHelpers.inheritsLoose(AssertionError, _ManagedError);
+                function AssertionError(message) {
+                  return _ManagedError.call(this, message) || this;
+                }
+                return AssertionError;
+              })(require("ManagedError"));
+
+              module.exports = AssertionError;
+            },
+            null
+          );
+          __d(
+            "sprintf",
+            [],
+            function $module_sprintf(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              function sprintf(format) {
+                for (
+                  var _len = arguments.length,
+                    args = new Array(_len > 1 ? _len - 1 : 0),
+                    _key = 1;
+                  _key < _len;
+                  _key++
+                ) {
+                  args[_key - 1] = arguments[_key];
+                }
+                var index = 0;
+                return format.replace(/%s/g, function format_replace_$1() {
+                  return String(args[index++]);
+                });
+              }
+
+              module.exports = sprintf;
+            },
+            null
+          );
+          __d(
+            "Assert",
+            ["AssertionError", "sprintf"],
+            function $module_Assert(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              function assert(expression, message) {
+                if (typeof expression !== "boolean" || !expression) {
+                  throw new (require("AssertionError"))(message);
+                }
+                return expression;
+              }
+
+              function assertType(type, expression, message) {
+                var actualType;
+
+                if (expression === undefined) {
+                  actualType = "undefined";
+                } else if (expression === null) {
+                  actualType = "null";
+                } else {
+                  var className = Object.prototype.toString.call(expression);
+                  actualType = /\s(\w*)/.exec(className)[1].toLowerCase();
+                }
+
+                assert(
+                  ES(type, "indexOf", true, actualType) !== -1,
+                  message ||
+                    require("sprintf")(
+                      "Expression is of type %s, not %s",
+                      actualType,
+                      type
+                    )
+                );
+
+                return expression;
+              }
+
+              function assertInstanceOf(type, expression, message) {
+                assert(
+                  expression instanceof type,
+                  message || "Expression not instance of type"
+                );
+
+                return expression;
+              }
+
+              function _define(type, test) {
+                Assert["is" + type] = test;
+                Assert["maybe" + type] = function(expression, message) {
+                  if (expression != null) {
+                    test(expression, message);
+                  }
+                };
+              }
+
+              var Assert = {
+                isInstanceOf: assertInstanceOf,
+                isTrue: assert,
+                isTruthy: function isTruthy(expression, message) {
+                  return assert(!!expression, message);
+                },
+                type: assertType,
+                define: function define(type, fn) {
+                  type =
+                    type.substring(0, 1).toUpperCase() +
+                    type.substring(1).toLowerCase();
+
+                  _define(type, function _define_$1(expression, message) {
+                    assert(fn(expression), message);
+                  });
+                }
+              };
+
+              ES(
+                [
+                  "Array",
+                  "Boolean",
+                  "Date",
+                  "Function",
+                  "Null",
+                  "Number",
+                  "Object",
+                  "Regexp",
+                  "String",
+                  "Undefined"
+                ],
+                "forEach",
+                true,
+                function forEach_$0(type) {
+                  _define(
+                    type,
+                    ES(assertType, "bind", true, null, type.toLowerCase())
+                  );
+                }
+              );
+
+              module.exports = Assert;
             },
             null
           );
@@ -11251,6 +11240,10 @@ try {
             ) {
               "use strict";
 
+              var MAX_HEIGHT_MOBILE = 590;
+              var MAX_HEIGHT_DESKTOP = 240;
+              var MAX_WIDTH_DESKTOP = 575;
+
               var DialogUtils = {
                 isOrientationPotrait: function isOrientationPotrait() {
                   return window.innerWidth < window.innerHeight;
@@ -11342,8 +11335,9 @@ try {
                   }
                   var view = require("sdk.DOM").getViewportInfo();
 
-                  element.style.minHeight =
-                    view.height || view.width ? view.height + "px" : "";
+                  element.style.minHeight = view.height
+                    ? view.height + "px"
+                    : "";
                   element.style.top = view.scrollTop
                     ? view.scrollTop + "px"
                     : "";
@@ -11354,21 +11348,43 @@ try {
                   isTablet,
                   pageInfo
                 ) {
+                  var _view$scrollLeft,
+                    _view$width,
+                    _view$height,
+                    _view$height2,
+                    _view$height3,
+                    _view$scrollTop;
                   var parseNumber = function parseNumber(n) {
                     return typeof n === "number" ? n : parseInt(n, 10);
                   };
                   var view = require("sdk.DOM").getViewportInfo();
                   var width = parseNumber(dialog.offsetWidth);
                   var height = parseNumber(dialog.offsetHeight);
-                  var left = view.scrollLeft + (view.width - width) / 2;
+                  var left =
+                    (_view$scrollLeft = view.scrollLeft) != null
+                      ? _view$scrollLeft
+                      : 0 +
+                        ((_view$width = view.width) != null
+                          ? _view$width
+                          : MAX_WIDTH_DESKTOP - width) /
+                          2;
 
-                  var minTop = (view.height - height) / 2.5;
+                  var minTop =
+                    ((_view$height = view.height) != null
+                      ? _view$height
+                      : MAX_HEIGHT_DESKTOP - height) / 2.5;
                   if (left < minTop) {
                     minTop = left;
                   }
-                  var maxTop = view.height - height - minTop;
+                  var maxTop =
+                    (_view$height2 = view.height) != null
+                      ? _view$height2
+                      : MAX_HEIGHT_DESKTOP - height - minTop;
 
-                  var top = (view.height - height) / 2;
+                  var top =
+                    ((_view$height3 = view.height) != null
+                      ? _view$height3
+                      : MAX_HEIGHT_DESKTOP - height) / 2;
                   if (pageInfo) {
                     top =
                       pageInfo.scrollTop -
@@ -11382,13 +11398,20 @@ try {
                     top = maxTop;
                   }
 
-                  top += view.scrollTop;
+                  top +=
+                    (_view$scrollTop = view.scrollTop) != null
+                      ? _view$scrollTop
+                      : 0;
 
                   if (require("sdk.UA").mobile()) {
                     var paddingHeight = 100;
 
                     if (isTablet) {
-                      paddingHeight += (view.height - height) / 2;
+                      var _view$height4;
+                      paddingHeight +=
+                        ((_view$height4 = view.height) != null
+                          ? _view$height4
+                          : MAX_HEIGHT_MOBILE - height) / 2;
                       require("sdk.DOM").addCss(document.body, "fb_reposition");
                     } else {
                       require("sdk.DOM").addCss(document.body, "fb_hidden");
@@ -11416,11 +11439,19 @@ try {
                   isTablet,
                   pageInfo
                 ) {
+                  var _view$scrollTop2, _view$height5;
+
                   this.setDialogPositionToCenter(dialog, isTablet, pageInfo);
 
                   var view = require("sdk.DOM").getViewportInfo();
                   var top =
-                    view.scrollTop + (view.height - dialog.offsetHeight) * 0.05;
+                    (_view$scrollTop2 = view.scrollTop) != null
+                      ? _view$scrollTop2
+                      : 0 +
+                        ((_view$height5 = view.height) != null
+                          ? _view$height5
+                          : MAX_HEIGHT_MOBILE - dialog.offsetHeight) *
+                          0.05;
                   require("sdk.DOM").setStyle(dialog, "top", top + "px");
                 },
 
@@ -11554,10 +11585,12 @@ try {
 
               function getMobileSize() {
                 var info = require("sdk.DOM").getViewportInfo();
-                if (info.height && info.width) {
+                var height = info.height;
+                var width = info.width;
+                if (height != null && width != null) {
                   return {
-                    width: Math.min(info.width, MAX_WIDTH_MOBILE),
-                    height: Math.min(info.height, MAX_HEIGHT_MOBILE)
+                    width: Math.min(width, MAX_WIDTH_MOBILE),
+                    height: Math.min(height, MAX_HEIGHT_MOBILE)
                   };
                 }
                 return null;
@@ -11877,20 +11910,47 @@ try {
                   if (require("sdk.UA").mobile()) {
                     var size = getMobileSize();
                     if (size) {
+                      var _ref,
+                        _DOM$getViewportInfo,
+                        _ref3,
+                        _DOM$getViewportInfo3;
                       if (
-                        require("sdk.DOM").getViewportInfo().width <= size.width
+                        (_ref =
+                          (_DOM$getViewportInfo = require("sdk.DOM").getViewportInfo()) ==
+                          null
+                            ? void 0
+                            : _DOM$getViewportInfo.width) != null
+                          ? _ref
+                          : MAX_WIDTH_MOBILE <= size.width
                       ) {
+                        var _ref2, _DOM$getViewportInfo2;
                         size.width =
-                          require("sdk.DOM").getViewportInfo().width -
-                          MARGIN_SURROUNDING;
+                          (_ref2 =
+                            (_DOM$getViewportInfo2 = require("sdk.DOM").getViewportInfo()) ==
+                            null
+                              ? void 0
+                              : _DOM$getViewportInfo2.width) != null
+                            ? _ref2
+                            : MAX_WIDTH_MOBILE - MARGIN_SURROUNDING;
                       }
                       if (
-                        require("sdk.DOM").getViewportInfo().height <=
-                        size.height
+                        (_ref3 =
+                          (_DOM$getViewportInfo3 = require("sdk.DOM").getViewportInfo()) ==
+                          null
+                            ? void 0
+                            : _DOM$getViewportInfo3.height) != null
+                          ? _ref3
+                          : MAX_HEIGHT_MOBILE <= size.height
                       ) {
+                        var _ref4, _DOM$getViewportInfo4;
                         size.height =
-                          require("sdk.DOM").getViewportInfo().height -
-                          MARGIN_SURROUNDING;
+                          (_ref4 =
+                            (_DOM$getViewportInfo4 = require("sdk.DOM").getViewportInfo()) ==
+                            null
+                              ? void 0
+                              : _DOM$getViewportInfo4.height) != null
+                            ? _ref4
+                            : MAX_HEIGHT_MOBILE - MARGIN_SURROUNDING;
                       }
                       return size;
                     }
@@ -11928,7 +11988,15 @@ try {
                 },
 
                 _handleOrientationChange: function _handleOrientationChange() {
-                  Dialog._availScreenWidth = require("sdk.DOM").getViewportInfo().width;
+                  var _ref5, _DOM$getViewportInfo5;
+                  Dialog._availScreenWidth =
+                    (_ref5 =
+                      (_DOM$getViewportInfo5 = require("sdk.DOM").getViewportInfo()) ==
+                      null
+                        ? void 0
+                        : _DOM$getViewportInfo5.width) != null
+                      ? _ref5
+                      : MAX_WIDTH_MOBILE;
 
                   if (Dialog.isTabletStyle()) {
                     Dialog._setDialogSizes(true);
@@ -11953,10 +12021,18 @@ try {
                 },
 
                 _addOrientationHandler: function _addOrientationHandler() {
+                  var _ref6, _DOM$getViewportInfo6;
                   if (!require("sdk.UA").mobile()) {
                     return;
                   }
-                  Dialog._availScreenWidth = require("sdk.DOM").getViewportInfo().width;
+                  Dialog._availScreenWidth =
+                    (_ref6 =
+                      (_DOM$getViewportInfo6 = require("sdk.DOM").getViewportInfo()) ==
+                      null
+                        ? void 0
+                        : _DOM$getViewportInfo6.width) != null
+                      ? _ref6
+                      : MAX_WIDTH_MOBILE;
                   require("sdk.DialogUtils").addMobileOrientationChangeAction(
                     Dialog._handleOrientationChange
                   );
@@ -19067,7 +19143,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1002447037","namespace":"FB","message":"' +
+        '","revision":"1002452636","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );

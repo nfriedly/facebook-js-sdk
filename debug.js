@@ -1,4 +1,4 @@
-/*1596165005,,JIT Construction: v1002447037,en_US*/
+/*1596245948,,JIT Construction: v1002452636,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3465,7 +3465,7 @@ return __annotator(Set,{name:'Set'});
 
 global.Map=Map;
 global.Set=Set;
-})(typeof global==='undefined'?this:global);      __d("JSSDKRuntimeConfig",[],{"locale":"en_US","revision":"1002447037","rtl":false,"sdkab":null,"sdkns":"FB","sdkurl":"https:\/\/connect.facebook.net\/en_US\/all\/debug.js"});__d("UrlMapConfig",[],{"www":"www.facebook.com","m":"m.facebook.com","business":"business.facebook.com","api":"api.facebook.com","api_read":"api-read.facebook.com","graph":"graph.facebook.com","an":"an.facebook.com","fbcdn":"static.xx.fbcdn.net","cdn":"staticxx.facebook.com","graph_facebook":"graph.facebook.com","graph_gaming":"graph.fb.gg"});__d("JSSDKConfig",[],{"features":{"allow_non_canvas_app_events":false,"error_handling":{"rate":4},"e2e_ping_tracking":{"rate":0.1},"xd_timeout":{"rate":1,"value":60000},"use_bundle":false,"should_log_response_error":true,"popup_blocker_scribe_logging":{"rate":100},"https_only_enforce_starting":2538809200000,"https_only_learn_more":"https:\/\/developers.facebook.com\/blog\/post\/2018\/06\/08\/enforce-https-facebook-login\/","https_only_scribe_logging":{"rate":1},"log_perf":{"rate":0.001},"use_x_xd":{"rate":100},"oauth_funnel_logger_version":1}});__d("JSSDKCssConfig",[],{"rules":".fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:\"lucida grande\", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}\u0040keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}\n.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_dialog_advanced{border-radius:8px;padding:10px}.fb_dialog_content{background:#fff;color:#373737}.fb_dialog_close_icon{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{left:5px;right:auto;top:5px}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/yd\/r\/Cou7n-nqK52.gif) no-repeat 5px 50\u0025;float:left;padding:5px 0 7px 26px}body.fb_hidden{height:100\u0025;left:0;margin:0;overflow:visible;position:absolute;top:-10000px;transform:none;width:100\u0025}.fb_dialog.fb_dialog_mobile.loading{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/ya\/r\/3rhSv5V8j3o.gif) white no-repeat 50\u0025 50\u0025;min-height:100\u0025;min-width:100\u0025;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{background:none;height:auto;min-height:initial;min-width:initial;width:auto}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100\u0025}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{clear:both;color:#fff;display:block;font-size:18px;padding-top:20px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .4);bottom:0;left:0;min-height:100\u0025;position:absolute;right:0;top:0;width:100\u0025;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_mobile .fb_dialog_iframe{position:sticky;top:0}.fb_dialog_content .dialog_header{background:linear-gradient(from(#738aba), to(#2c4987));border-bottom:1px solid;border-color:#043b87;box-shadow:white 0 1px 1px -1px inset;color:#fff;font:bold 14px Helvetica, sans-serif;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{height:43px;width:100\u0025}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:linear-gradient(from(#4267B2), to(#2a4887));background-clip:padding-box;border:1px solid #29487d;border-radius:3px;display:inline-block;line-height:18px;margin-top:3px;max-width:85px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{background:none;border:none;color:#fff;font:bold 12px Helvetica, sans-serif;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/y9\/r\/jKEcVPZFk-2.gif) no-repeat 50\u0025 50\u0025;border:1px solid #4a4a4a;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f5f6f7;border:1px solid #4a4a4a;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/yD\/r\/t-wz8gw1xG1.png);background-position:50\u0025 50\u0025;background-repeat:no-repeat;height:24px;width:24px}\u0040keyframes rotateSpinner{0\u0025{transform:rotate(0deg)}100\u0025{transform:rotate(360deg)}}\n.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100\u0025}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100\u0025}","components":["css:fb.css.base","css:fb.css.dialog","css:fb.css.iframewidget"]});__d("UriNeedRawQuerySVConfig",[],{"uris":["dms.netmng.com","doubleclick.net","r.msn.com","watchit.sky.com","graphite.instagram.com","www.kfc.co.th","learn.pantheon.io","www.landmarkshops.in","www.ncl.com","s0.wp.com","www.tatacliq.com","bs.serving-sys.com","kohls.com","lazada.co.th","xg4ken.com","technopark.ru","officedepot.com.mx","bestbuy.com.mx","booking.com"]});__d("JSSDKXDConfig",[],{"XXdUrl":"\/x\/connect\/xd_arbiter\/?version=46","useCdn":true});__d("JSSDKCanvasPrefetcherConfig",[],{"blacklist":[144959615576466,768691303149786,320528941393723],"sampleRate":500});                                                                                                                                                                                                                                                                                                                                                                                                                       __d("DOMWrapper",[],function $module_DOMWrapper(global,require,requireDynamic,requireLazy,module,exports){
+})(typeof global==='undefined'?this:global);      __d("JSSDKRuntimeConfig",[],{"locale":"en_US","revision":"1002452636","rtl":false,"sdkab":null,"sdkns":"FB","sdkurl":"https:\/\/connect.facebook.net\/en_US\/all\/debug.js"});__d("UrlMapConfig",[],{"www":"www.facebook.com","m":"m.facebook.com","business":"business.facebook.com","api":"api.facebook.com","api_read":"api-read.facebook.com","graph":"graph.facebook.com","an":"an.facebook.com","fbcdn":"static.xx.fbcdn.net","cdn":"staticxx.facebook.com","graph_facebook":"graph.facebook.com","graph_gaming":"graph.fb.gg"});__d("JSSDKConfig",[],{"features":{"allow_non_canvas_app_events":false,"error_handling":{"rate":4},"e2e_ping_tracking":{"rate":0.1},"xd_timeout":{"rate":1,"value":60000},"use_bundle":false,"should_log_response_error":true,"popup_blocker_scribe_logging":{"rate":100},"https_only_enforce_starting":2538809200000,"https_only_learn_more":"https:\/\/developers.facebook.com\/blog\/post\/2018\/06\/08\/enforce-https-facebook-login\/","https_only_scribe_logging":{"rate":1},"log_perf":{"rate":0.001},"use_x_xd":{"rate":100},"oauth_funnel_logger_version":1}});__d("JSSDKCssConfig",[],{"rules":".fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:\"lucida grande\", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}\u0040keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}\n.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_dialog_advanced{border-radius:8px;padding:10px}.fb_dialog_content{background:#fff;color:#373737}.fb_dialog_close_icon{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{left:5px;right:auto;top:5px}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/yd\/r\/Cou7n-nqK52.gif) no-repeat 5px 50\u0025;float:left;padding:5px 0 7px 26px}body.fb_hidden{height:100\u0025;left:0;margin:0;overflow:visible;position:absolute;top:-10000px;transform:none;width:100\u0025}.fb_dialog.fb_dialog_mobile.loading{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/ya\/r\/3rhSv5V8j3o.gif) white no-repeat 50\u0025 50\u0025;min-height:100\u0025;min-width:100\u0025;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{background:none;height:auto;min-height:initial;min-width:initial;width:auto}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100\u0025}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{clear:both;color:#fff;display:block;font-size:18px;padding-top:20px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .4);bottom:0;left:0;min-height:100\u0025;position:absolute;right:0;top:0;width:100\u0025;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_mobile .fb_dialog_iframe{position:sticky;top:0}.fb_dialog_content .dialog_header{background:linear-gradient(from(#738aba), to(#2c4987));border-bottom:1px solid;border-color:#043b87;box-shadow:white 0 1px 1px -1px inset;color:#fff;font:bold 14px Helvetica, sans-serif;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{height:43px;width:100\u0025}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:linear-gradient(from(#4267B2), to(#2a4887));background-clip:padding-box;border:1px solid #29487d;border-radius:3px;display:inline-block;line-height:18px;margin-top:3px;max-width:85px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{background:none;border:none;color:#fff;font:bold 12px Helvetica, sans-serif;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/y9\/r\/jKEcVPZFk-2.gif) no-repeat 50\u0025 50\u0025;border:1px solid #4a4a4a;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f5f6f7;border:1px solid #4a4a4a;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/yD\/r\/t-wz8gw1xG1.png);background-position:50\u0025 50\u0025;background-repeat:no-repeat;height:24px;width:24px}\u0040keyframes rotateSpinner{0\u0025{transform:rotate(0deg)}100\u0025{transform:rotate(360deg)}}\n.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100\u0025}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100\u0025}","components":["css:fb.css.base","css:fb.css.dialog","css:fb.css.iframewidget"]});__d("UriNeedRawQuerySVConfig",[],{"uris":["dms.netmng.com","doubleclick.net","r.msn.com","watchit.sky.com","graphite.instagram.com","www.kfc.co.th","learn.pantheon.io","www.landmarkshops.in","www.ncl.com","s0.wp.com","www.tatacliq.com","bs.serving-sys.com","kohls.com","lazada.co.th","xg4ken.com","technopark.ru","officedepot.com.mx","bestbuy.com.mx","booking.com"]});__d("JSSDKXDConfig",[],{"XXdUrl":"\/x\/connect\/xd_arbiter\/?version=46","useCdn":true});__d("JSSDKCanvasPrefetcherConfig",[],{"blacklist":[144959615576466,768691303149786,320528941393723],"sampleRate":500});                                                                                                                                                                                                                                                                                                                                                                                                                       __d("DOMWrapper",[],function $module_DOMWrapper(global,require,requireDynamic,requireLazy,module,exports){
 
 'use strict';
 
@@ -4011,163 +4011,7 @@ form.parentNode.removeChild(form);
 
 
 module.exports=Content;},null);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         __d("ManagedError",[],function $module_ManagedError(global,require,requireDynamic,requireLazy,module,exports){var
-
-ManagedError=function(_Error){"use strict";babelHelpers.inheritsLoose(ManagedError,_Error);
-
-
-function ManagedError(message,innerError){var _this;
-_this=_Error.call(this,message!==null&&message!==undefined?message:'')||this;
-if(message!==null&&message!==undefined){
-_this.message=message;
-}else{
-_this.message='';
-}
-_this.innerError=innerError;return _this;
-}return ManagedError;}(babelHelpers.wrapNativeSuper(Error));
-
-
-module.exports=ManagedError;},null);
-                                                                                                                                                                                              __d("AssertionError",["ManagedError"],function $module_AssertionError(global,require,requireDynamic,requireLazy,module,exports){var
-
-
-
-AssertionError=function(_ManagedError){"use strict";babelHelpers.inheritsLoose(AssertionError,_ManagedError);
-function AssertionError(message){return(
-_ManagedError.call(this,message)||this);
-}return AssertionError;}(require("ManagedError"));
-
-
-module.exports=AssertionError;},null);
-                                                                                         __d("sprintf",[],(function $module_sprintf(global,require,requireDynamic,requireLazy,module,exports){
-
-
-
-
-
-
-
-
-
-
-function sprintf(format){for(var _len=arguments.length,args=new Array(_len>1?_len-1:0),_key=1;_key<_len;_key++){args[_key-1]=arguments[_key];}
-var index=0;
-return format.replace(/%s/g,function format_replace_$1(){return String(args[index++]);});
-}
-
-module.exports=sprintf;}),null);
-                                                                                                                                                                                                       __d("Assert",["AssertionError","sprintf"],function $module_Assert(global,require,requireDynamic,requireLazy,module,exports){
-
-
-
-
-
-
-
-
-
-
-
-
-
-function assert(expression,message){
-if(typeof expression!=='boolean'||!expression){
-throw new(require("AssertionError"))(message);
-}
-return expression;
-}
-
-
-
-
-
-
-
-
-
-
-function assertType(type,expression,message){
-var actualType;
-
-if(expression===undefined){
-actualType='undefined';
-}else if(expression===null){
-actualType='null';
-}else{
-var className=Object.prototype.toString.call(expression);
-actualType=/\s(\w*)/.exec(className)[1].toLowerCase();
-}
-
-assert(
-ES(type,"indexOf",true,actualType)!==-1,
-message||require("sprintf")('Expression is of type %s, not %s',actualType,type));
-
-return expression;
-}
-
-
-
-
-
-
-
-
-
-
-function assertInstanceOf(type,expression,message){
-assert(
-expression instanceof type,
-message||'Expression not instance of type');
-
-return expression;
-}
-
-function _define(type,test){
-Assert['is'+type]=test;
-Assert['maybe'+type]=function(expression,message){
-
-if(expression!=null){
-test(expression,message);
-}
-};
-}
-
-var Assert={
-isInstanceOf:assertInstanceOf,
-isTrue:assert,
-isTruthy:function isTruthy(expression,message){
-return assert(!!expression,message);
-},
-type:assertType,
-define:function define(type,fn){
-type=type.substring(0,1).toUpperCase()+type.substring(1).toLowerCase();
-
-_define(type,function _define_$1(expression,message){
-assert(fn(expression),message);
-});
-}};
-
-
-
-ES([
-'Array',
-'Boolean',
-'Date',
-'Function',
-'Null',
-'Number',
-'Object',
-'Regexp',
-'String',
-'Undefined'],"forEach",true,
-function forEach_$0(type){
-_define(type,ES(assertType,"bind",true,null,type.toLowerCase()));
-});
-
-module.exports=Assert;},null);
-                                                                                             __d("sdk.DOM",["Assert","sdk.domReady"],function $module_sdk_DOM(global,require,requireDynamic,requireLazy,module,exports){
-
-
+                                                                                               __d("sdk.DOM",["sdk.domReady"],function $module_sdk_DOM(global,require,requireDynamic,requireLazy,module,exports){
 
 
 
@@ -4194,9 +4038,6 @@ return attribute!=null?/^(true|1|yes|on)$/.test(attribute):null;
 }
 
 function html(dom,content){
-require("Assert").isTruthy(dom,'element not specified');
-require("Assert").isString(content);
-
 try{
 dom.innerHTML=content;
 }catch(e){
@@ -4208,9 +4049,6 @@ throw new Error('Could not set innerHTML : '+e.message);
 
 
 function containsCss(dom,className){
-require("Assert").isTruthy(dom,'element not specified');
-require("Assert").isString(className);
-
 var cssClassWithSpace=' '+dom.className+' ';
 return ES(cssClassWithSpace,"indexOf",true,' '+className+' ')>=0;
 }
@@ -4219,12 +4057,9 @@ return ES(cssClassWithSpace,"indexOf",true,' '+className+' ')>=0;
 
 
 function addCss(dom,className){
-require("Assert").isTruthy(dom,'element not specified');
 if(dom==null){
 return;
 }
-require("Assert").isString(className);
-
 if(!containsCss(dom,className)){
 dom.className=dom.className+' '+className;
 }
@@ -4234,12 +4069,9 @@ dom.className=dom.className+' '+className;
 
 
 function removeCss(dom,className){
-require("Assert").isTruthy(dom,'element not specified');
 if(dom==null){
 return;
 }
-require("Assert").isString(className);
-
 var regExp=new RegExp('\\s*'+className,'g');
 dom.className=ES(dom.className.replace(regExp,''),"trim",true);
 }
@@ -4254,9 +4086,7 @@ function getByClass(
 className,
 dom,
 tagName)
-{
-require("Assert").isString(className);
-
+{if(tagName===void 0){tagName='*';}
 var _dom=dom||document.body;
 if(_dom==null){
 return[];
@@ -4271,28 +4101,19 @@ return ES("Array","from",false,_dom.querySelectorAll(_tagName+'.'+className));
 
 
 
-
-
 function getStyle(dom,styleProp){
-require("Assert").isTruthy(dom,'element not specified');
-require("Assert").isString(styleProp);
+var _styleProp=camelToDashed(styleProp);
+var computedStyle=document.defaultView.
+getComputedStyle(dom).
+getPropertyValue(_styleProp);
 
-
-var _styleProp=styleProp.replace(/-(\w)/g,function styleProp_replace_$1(m,g1){
-return g1.toUpperCase();
-});
-
-var currentStyle=
-
-dom.currentStyle||document.defaultView.getComputedStyle(dom,null);
-
-var computedStyle=currentStyle[_styleProp];
+computedStyle=dom.style.getPropertyValue(_styleProp);
 
 
 
 
 if(
-/backgroundPosition?/.test(_styleProp)&&
+/background-position?/.test(_styleProp)&&
 /top|left/.test(computedStyle))
 {
 computedStyle='0%';
@@ -4307,14 +4128,7 @@ return computedStyle;
 
 
 function setStyle(dom,styleProp,value){
-require("Assert").isTruthy(dom,'element not specified');
-require("Assert").isString(styleProp);
-
-
-styleProp=styleProp.replace(/-(\w)/g,function styleProp_replace_$1(m,g1){
-return g1.toUpperCase();
-});
-dom.style[styleProp]=value;
+dom.style.setProperty(camelToDashed(styleProp),value);
 }
 
 
@@ -4359,7 +4173,12 @@ return elem.parentNode.removeChild(elem);
 
 
 
-function getViewportInfo(){var _document$body,_document$body2;
+function getViewportInfo()
+
+
+
+
+{var _document$body,_document$body2;
 
 var root=
 document.documentElement&&document.compatMode=='CSS1Compat'?
@@ -4373,6 +4192,19 @@ scrollLeft:(root==null?void 0:root.scrollLeft)||((_document$body2=document.body)
 width:window.innerWidth?window.innerWidth:root==null?void 0:root.clientWidth,
 height:window.innerHeight?window.innerHeight:root==null?void 0:root.clientHeight};
 
+}
+
+var camel_to_dashed=/[A-Z]/g;
+var first_segment=/^\([^-]\)-/;
+var vendor_prefixes=['o','moz','ms','webkit'];
+
+function camelToDashed(camelCase){
+var dashed=camelCase.replace(camel_to_dashed,'-$&').toLowerCase();
+var match=dashed.match(first_segment);
+if(match&&ES(vendor_prefixes,"indexOf",true,match[1])!==-1){
+dashed='-'+dashed;
+}
+return dashed;
 }
 
 var DOM={
@@ -4392,6 +4224,23 @@ setStyle:setStyle};
 
 
 module.exports=DOM;},null);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         __d("ManagedError",[],function $module_ManagedError(global,require,requireDynamic,requireLazy,module,exports){var
+
+ManagedError=function(_Error){"use strict";babelHelpers.inheritsLoose(ManagedError,_Error);
+
+
+function ManagedError(message,innerError){var _this;
+_this=_Error.call(this,message!==null&&message!==undefined?message:'')||this;
+if(message!==null&&message!==undefined){
+_this.message=message;
+}else{
+_this.message='';
+}
+_this.innerError=innerError;return _this;
+}return ManagedError;}(babelHelpers.wrapNativeSuper(Error));
+
+
+module.exports=ManagedError;},null);
                                                                                                                                                                                                                                                                                                                                                                                                                                   __d("normalizeError",["sdk.UA"],function $module_normalizeError(global,require,requireDynamic,requireLazy,module,exports){
 
 'use strict';
@@ -4657,6 +4506,143 @@ return this;
 
 
 module.exports=ObservableMixin;var _c;$RefreshReg$(_c,"ObservableMixin");},null);
+                                                                                                                                                                                              __d("AssertionError",["ManagedError"],function $module_AssertionError(global,require,requireDynamic,requireLazy,module,exports){var
+
+
+
+AssertionError=function(_ManagedError){"use strict";babelHelpers.inheritsLoose(AssertionError,_ManagedError);
+function AssertionError(message){return(
+_ManagedError.call(this,message)||this);
+}return AssertionError;}(require("ManagedError"));
+
+
+module.exports=AssertionError;},null);
+                                                                                         __d("sprintf",[],(function $module_sprintf(global,require,requireDynamic,requireLazy,module,exports){
+
+
+
+
+
+
+
+
+
+
+function sprintf(format){for(var _len=arguments.length,args=new Array(_len>1?_len-1:0),_key=1;_key<_len;_key++){args[_key-1]=arguments[_key];}
+var index=0;
+return format.replace(/%s/g,function format_replace_$1(){return String(args[index++]);});
+}
+
+module.exports=sprintf;}),null);
+                                                                                                                                                                                                       __d("Assert",["AssertionError","sprintf"],function $module_Assert(global,require,requireDynamic,requireLazy,module,exports){
+
+
+
+
+
+
+
+
+
+
+
+
+
+function assert(expression,message){
+if(typeof expression!=='boolean'||!expression){
+throw new(require("AssertionError"))(message);
+}
+return expression;
+}
+
+
+
+
+
+
+
+
+
+
+function assertType(type,expression,message){
+var actualType;
+
+if(expression===undefined){
+actualType='undefined';
+}else if(expression===null){
+actualType='null';
+}else{
+var className=Object.prototype.toString.call(expression);
+actualType=/\s(\w*)/.exec(className)[1].toLowerCase();
+}
+
+assert(
+ES(type,"indexOf",true,actualType)!==-1,
+message||require("sprintf")('Expression is of type %s, not %s',actualType,type));
+
+return expression;
+}
+
+
+
+
+
+
+
+
+
+
+function assertInstanceOf(type,expression,message){
+assert(
+expression instanceof type,
+message||'Expression not instance of type');
+
+return expression;
+}
+
+function _define(type,test){
+Assert['is'+type]=test;
+Assert['maybe'+type]=function(expression,message){
+
+if(expression!=null){
+test(expression,message);
+}
+};
+}
+
+var Assert={
+isInstanceOf:assertInstanceOf,
+isTrue:assert,
+isTruthy:function isTruthy(expression,message){
+return assert(!!expression,message);
+},
+type:assertType,
+define:function define(type,fn){
+type=type.substring(0,1).toUpperCase()+type.substring(1).toLowerCase();
+
+_define(type,function _define_$1(expression,message){
+assert(fn(expression),message);
+});
+}};
+
+
+
+ES([
+'Array',
+'Boolean',
+'Date',
+'Function',
+'Null',
+'Number',
+'Object',
+'Regexp',
+'String',
+'Undefined'],"forEach",true,
+function forEach_$0(type){
+_define(type,ES(assertType,"bind",true,null,type.toLowerCase()));
+});
+
+module.exports=Assert;},null);
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 __d("Type",["Assert"],function $module_Type(global,require,requireDynamic,requireLazy,module,exports){
 
 
@@ -10919,6 +10905,10 @@ module.exports=Environment;}),null);
 
 
 
+var MAX_HEIGHT_MOBILE=590;
+var MAX_HEIGHT_DESKTOP=240;
+var MAX_WIDTH_DESKTOP=575;
+
 var DialogUtils={
 isOrientationPotrait:function isOrientationPotrait(){
 return window.innerWidth<window.innerHeight;
@@ -10989,8 +10979,7 @@ return;
 var view=require("sdk.DOM").getViewportInfo();
 
 
-element.style.minHeight=
-view.height||view.width?view.height+'px':'';
+element.style.minHeight=view.height?view.height+'px':'';
 element.style.top=view.scrollTop?view.scrollTop+'px':'';
 },
 
@@ -10998,26 +10987,27 @@ setDialogPositionToCenter:function setDialogPositionToCenter(
 dialog,
 isTablet,
 pageInfo)
-{
+{var _view$scrollLeft,_view$width,_view$height,_view$height2,_view$height3,_view$scrollTop;
 var parseNumber=function parseNumber(n){return typeof n==='number'?n:parseInt(n,10);};
 var view=require("sdk.DOM").getViewportInfo();
 var width=parseNumber(dialog.offsetWidth);
 var height=parseNumber(dialog.offsetHeight);
-var left=view.scrollLeft+(view.width-width)/2;
+var left=(_view$scrollLeft=
+view.scrollLeft)!=null?_view$scrollLeft:0+((_view$width=view.width)!=null?_view$width:MAX_WIDTH_DESKTOP-width)/2;
 
 
 
 
 
 
-var minTop=(view.height-height)/2.5;
+var minTop=((_view$height=view.height)!=null?_view$height:MAX_HEIGHT_DESKTOP-height)/2.5;
 if(left<minTop){
 minTop=left;
 }
-var maxTop=view.height-height-minTop;
+var maxTop=(_view$height2=view.height)!=null?_view$height2:MAX_HEIGHT_DESKTOP-height-minTop;
 
 
-var top=(view.height-height)/2;
+var top=((_view$height3=view.height)!=null?_view$height3:MAX_HEIGHT_DESKTOP-height)/2;
 if(pageInfo){
 top=
 pageInfo.scrollTop-
@@ -11033,7 +11023,7 @@ top=maxTop;
 }
 
 
-top+=view.scrollTop;
+top+=(_view$scrollTop=view.scrollTop)!=null?_view$scrollTop:0;
 
 
 
@@ -11061,8 +11051,8 @@ var paddingHeight=100;
 
 
 
-if(isTablet){
-paddingHeight+=(view.height-height)/2;
+if(isTablet){var _view$height4;
+paddingHeight+=((_view$height4=view.height)!=null?_view$height4:MAX_HEIGHT_MOBILE-height)/2;
 require("sdk.DOM").addCss(document.body,'fb_reposition');
 }else{
 require("sdk.DOM").addCss(document.body,'fb_hidden');
@@ -11089,13 +11079,15 @@ setDialogPositionToTop:function setDialogPositionToTop(
 dialog,
 isTablet,
 pageInfo)
-{
+{var _view$scrollTop2,_view$height5;
 
 this.setDialogPositionToCenter(dialog,isTablet,pageInfo);
 
 
 var view=require("sdk.DOM").getViewportInfo();
-var top=view.scrollTop+(view.height-dialog.offsetHeight)*0.05;
+var top=(_view$scrollTop2=
+view.scrollTop)!=null?_view$scrollTop2:
+0+((_view$height5=view.height)!=null?_view$height5:MAX_HEIGHT_MOBILE-dialog.offsetHeight)*0.05;
 require("sdk.DOM").setStyle(dialog,'top',top+'px');
 },
 
@@ -11250,10 +11242,12 @@ function getMobileSize()
 
 {
 var info=require("sdk.DOM").getViewportInfo();
-if(info.height&&info.width){
+var height=info.height;
+var width=info.width;
+if(height!=null&&width!=null){
 return{
-width:Math.min(info.width,MAX_WIDTH_MOBILE),
-height:Math.min(info.height,MAX_HEIGHT_MOBILE)};
+width:Math.min(width,MAX_WIDTH_MOBILE),
+height:Math.min(height,MAX_HEIGHT_MOBILE)};
 
 }
 return null;
@@ -11658,12 +11652,16 @@ getDefaultSize:function getDefaultSize()
 {
 if(require("sdk.UA").mobile()){
 var size=getMobileSize();
-if(size){
-if(require("sdk.DOM").getViewportInfo().width<=size.width){
-size.width=require("sdk.DOM").getViewportInfo().width-MARGIN_SURROUNDING;
+if(size){var _ref,_DOM$getViewportInfo,_ref3,_DOM$getViewportInfo3;
+if((_ref=(_DOM$getViewportInfo=require("sdk.DOM").getViewportInfo())==null?void 0:_DOM$getViewportInfo.width)!=null?_ref:MAX_WIDTH_MOBILE<=size.width){var _ref2,_DOM$getViewportInfo2;
+size.width=(_ref2=(_DOM$getViewportInfo2=
+require("sdk.DOM").getViewportInfo())==null?void 0:_DOM$getViewportInfo2.width)!=null?_ref2:
+MAX_WIDTH_MOBILE-MARGIN_SURROUNDING;
 }
-if(require("sdk.DOM").getViewportInfo().height<=size.height){
-size.height=require("sdk.DOM").getViewportInfo().height-MARGIN_SURROUNDING;
+if((_ref3=(_DOM$getViewportInfo3=require("sdk.DOM").getViewportInfo())==null?void 0:_DOM$getViewportInfo3.height)!=null?_ref3:MAX_HEIGHT_MOBILE<=size.height){var _ref4,_DOM$getViewportInfo4;
+size.height=(_ref4=(_DOM$getViewportInfo4=
+require("sdk.DOM").getViewportInfo())==null?void 0:_DOM$getViewportInfo4.height)!=null?_ref4:
+MAX_HEIGHT_MOBILE-MARGIN_SURROUNDING;
 }
 return size;
 }
@@ -11711,8 +11709,8 @@ return{width:MAX_WIDTH_DESKTOP,height:MAX_HEIGHT_DESKTOP};
 
 
 
-_handleOrientationChange:function _handleOrientationChange(){
-Dialog._availScreenWidth=require("sdk.DOM").getViewportInfo().width;
+_handleOrientationChange:function _handleOrientationChange(){var _ref5,_DOM$getViewportInfo5;
+Dialog._availScreenWidth=(_ref5=(_DOM$getViewportInfo5=require("sdk.DOM").getViewportInfo())==null?void 0:_DOM$getViewportInfo5.width)!=null?_ref5:MAX_WIDTH_MOBILE;
 
 if(Dialog.isTabletStyle()){
 
@@ -11736,11 +11734,11 @@ iframe.style.width=width+'px';
 
 
 
-_addOrientationHandler:function _addOrientationHandler(){
+_addOrientationHandler:function _addOrientationHandler(){var _ref6,_DOM$getViewportInfo6;
 if(!require("sdk.UA").mobile()){
 return;
 }
-Dialog._availScreenWidth=require("sdk.DOM").getViewportInfo().width;
+Dialog._availScreenWidth=(_ref6=(_DOM$getViewportInfo6=require("sdk.DOM").getViewportInfo())==null?void 0:_DOM$getViewportInfo6.width)!=null?_ref6:MAX_WIDTH_MOBILE;
 require("sdk.DialogUtils").addMobileOrientationChangeAction(
 Dialog._handleOrientationChange);
 
@@ -18230,4 +18228,4 @@ localName:tag.replace(/_/g,'-'),
 ctor:customTags[tag]});
 
 });},3);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               }  }).call(global);})(window.inDapIF ? parent.window : window, window);} catch (e) {new Image().src="https:\/\/www.facebook.com\/" + 'common/scribe_endpoint.php?c=jssdk_error&m='+encodeURIComponent('{"error":"LOAD", "extra": {"name":"'+e.name+'","line":"'+(e.lineNumber||e.line)+'","script":"'+(e.fileName||e.sourceURL||e.script)+'","stack":"'+(e.stackTrace||e.stack)+'","revision":"1002447037","namespace":"FB","message":"'+e.message+'"}}');}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               }  }).call(global);})(window.inDapIF ? parent.window : window, window);} catch (e) {new Image().src="https:\/\/www.facebook.com\/" + 'common/scribe_endpoint.php?c=jssdk_error&m='+encodeURIComponent('{"error":"LOAD", "extra": {"name":"'+e.name+'","line":"'+(e.lineNumber||e.line)+'","script":"'+(e.fileName||e.sourceURL||e.script)+'","stack":"'+(e.stackTrace||e.stack)+'","revision":"1002452636","namespace":"FB","message":"'+e.message+'"}}');}
