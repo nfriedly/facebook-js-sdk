@@ -1,4 +1,4 @@
-/*1596245948,,JIT Construction: v1002452636,en_US*/
+/*1596502170,,JIT Construction: v1002459034,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3729,7 +3729,7 @@ try {
           })(typeof global === "undefined" ? this : global);
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1002452636",
+            revision: "1002459034",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -4365,7 +4365,7 @@ try {
           );
           __d(
             "sdk.DOM",
-            ["sdk.domReady"],
+            ["guid", "sdk.domReady"],
             function $module_sdk_DOM(
               global,
               require,
@@ -4374,7 +4374,8 @@ try {
               module,
               exports
             ) {
-              var cssRules = {};
+              var defaultDocumentCssRules = {};
+              var shadowDOMCssRules = {};
 
               function getAttr(dom, name) {
                 var attribute =
@@ -4477,7 +4478,22 @@ try {
                 dom.style.setProperty(camelToDashed(styleProp), value);
               }
 
-              function addCssRules(styles, names) {
+              function addCssRules(styles, names, dom) {
+                var cssRules;
+                if (dom != null && dom.nodeType === 11) {
+                  if (dom.id != null && shadowDOMCssRules[dom.id] != null) {
+                    cssRules = shadowDOMCssRules[dom.id];
+                  } else {
+                    if (dom.id == null) {
+                      dom.id = require("guid")();
+                    }
+                    cssRules = {};
+                    shadowDOMCssRules[dom.id] = cssRules;
+                  }
+                } else {
+                  cssRules = defaultDocumentCssRules;
+                }
+
                 var allIncluded = true;
                 for (var i = 0, id; (id = names[i++]); ) {
                   if (!(id in cssRules)) {
@@ -4493,7 +4509,11 @@ try {
                 var style = document.createElement("style");
                 style.type = "text/css";
                 style.textContent = styles;
-                document.getElementsByTagName("head")[0].appendChild(style);
+                if (dom == null || dom === document) {
+                  document.getElementsByTagName("head")[0].appendChild(style);
+                } else {
+                  dom.appendChild(style);
+                }
               }
 
               function remove(elem) {
@@ -19143,7 +19163,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1002452636","namespace":"FB","message":"' +
+        '","revision":"1002459034","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
