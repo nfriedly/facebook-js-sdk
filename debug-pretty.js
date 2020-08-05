@@ -1,4 +1,4 @@
-/*1596502170,,JIT Construction: v1002459034,en_US*/
+/*1596662363,,JIT Construction: v1002469754,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3729,7 +3729,7 @@ try {
           })(typeof global === "undefined" ? this : global);
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1002459034",
+            revision: "1002469754",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -6408,8 +6408,103 @@ try {
             null
           );
           __d(
-            "ErrorSerializer",
+            "ErrorMetadata",
             [],
+            function $module_ErrorMetadata(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              "use strict";
+
+              var globalMetadata = [];
+              var ErrorMetadata = (function() {
+                function ErrorMetadata() {
+                  this.metadata = [].concat(globalMetadata);
+                }
+                var _proto = ErrorMetadata.prototype;
+                _proto.addEntries = function addEntries() {
+                  var _this$metadata;
+                  (_this$metadata = this.metadata).push.apply(
+                    _this$metadata,
+                    arguments
+                  );
+                  return this;
+                };
+                _proto.addEntry = function addEntry(product, name, value) {
+                  this.metadata.push([product, name, value]);
+                  return this;
+                };
+                _proto.isEmpty = function isEmpty() {
+                  return this.metadata.length === 0;
+                };
+                _proto.format = function format() {
+                  var formattedMetadata = [];
+                  ES(
+                    this.metadata,
+                    "forEach",
+                    true,
+                    function metadata_forEach_$0(entry) {
+                      if (entry && entry.length) {
+                        var formattedEntry = ES(
+                          entry,
+                          "map",
+                          true,
+                          function entry_map_$0(s) {
+                            return s != null
+                              ? String(s).replace(/:/g, "_")
+                              : "";
+                          }
+                        ).join(":");
+                        formattedMetadata.push(formattedEntry);
+                      }
+                    }
+                  );
+                  return formattedMetadata;
+                };
+                _proto.getAll = function getAll() {
+                  return this.metadata;
+                };
+                ErrorMetadata.addGlobalMetadata = function addGlobalMetadata(
+                  product,
+                  name,
+                  value
+                ) {
+                  globalMetadata.push([product, name, value]);
+                };
+                ErrorMetadata.getGlobalMetadata = function getGlobalMetadata() {
+                  return globalMetadata;
+                };
+                ErrorMetadata.unsetGlobalMetadata = function unsetGlobalMetadata(
+                  product,
+                  name
+                ) {
+                  globalMetadata = ES(
+                    globalMetadata,
+                    "filter",
+                    true,
+                    function globalMetadata_filter_$0(entry) {
+                      return !(
+                        ES("Array", "isArray", false, entry) &&
+                        entry[0] === product &&
+                        entry[1] === name
+                      );
+                    }
+                  );
+                };
+                return ErrorMetadata;
+              })();
+
+              module.exports = ErrorMetadata;
+            },
+            null
+          );
+          __d(
+            "ErrorSerializer",
+            ["ErrorMetadata"],
             function $module_ErrorSerializer(
               global,
               require,
@@ -6518,13 +6613,15 @@ try {
                   }
                 }
 
-                if (context.fbloggerMetadata != null) {
-                  var fbloggerMetadata = error.fbloggerMetadata || [];
-                  fbloggerMetadata.push.apply(
-                    fbloggerMetadata,
-                    context.fbloggerMetadata
-                  );
-                  error.fbloggerMetadata = fbloggerMetadata;
+                var contextMeta = context.metadata;
+                if (contextMeta != null) {
+                  var _error$metadata;
+                  var metadata =
+                    (_error$metadata = error.metadata) != null
+                      ? _error$metadata
+                      : new (require("ErrorMetadata"))();
+                  metadata.addEntries.apply(metadata, contextMeta.getAll());
+                  error.metadata = metadata;
                 }
 
                 if (context.project != null) {
@@ -19163,7 +19260,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1002459034","namespace":"FB","message":"' +
+        '","revision":"1002469754","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
