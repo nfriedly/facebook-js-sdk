@@ -1,4 +1,4 @@
-/*1597141166,,JIT Construction: v1002495205,en_US*/
+/*1597219813,,JIT Construction: v1002502098,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3729,7 +3729,7 @@ try {
           })(typeof global === "undefined" ? this : global);
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1002495205",
+            revision: "1002502098",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -4479,6 +4479,53 @@ try {
                 dom.style.setProperty(camelToDashed(styleProp), value);
               }
 
+              function updateOrAddCssRule(
+                root,
+                sdkCssModule,
+                selectorText,
+                styleProp,
+                value
+              ) {
+                var styleSheetList = root.styleSheets;
+                for (var i = 0; i < styleSheetList.length; i++) {
+                  if (
+                    ES(
+                      styleSheetList[i].ownerNode.title,
+                      "contains",
+                      true,
+                      sdkCssModule
+                    )
+                  ) {
+                    var sheet = styleSheetList[i];
+                    if (sheet instanceof CSSStyleSheet) {
+                      var _value;
+                      for (var j = 0; j < sheet.cssRules.length; j++) {
+                        var rule = sheet.cssRules[j];
+                        if (rule instanceof CSSStyleRule) {
+                          if (rule.selectorText === selectorText) {
+                            rule.style.setProperty(
+                              camelToDashed(styleProp),
+                              value
+                            );
+                            return;
+                          }
+                        }
+                      }
+
+                      sheet.insertRule(
+                        selectorText +
+                          "{" +
+                          camelToDashed(styleProp) +
+                          ":" +
+                          ((_value = value) != null ? _value : "") +
+                          "}",
+                        0
+                      );
+                    }
+                  }
+                }
+              }
+
               function addCssRules(styles, names, dom) {
                 var cssRules;
                 if (dom != null && dom.nodeType === 11) {
@@ -4510,6 +4557,13 @@ try {
                 var style = document.createElement("style");
                 style.type = "text/css";
                 style.textContent = styles;
+                style.title = ES(
+                  names.reduce(function names_reduce_$0(a, cv) {
+                    return a + cv + " ";
+                  }),
+                  "trim",
+                  true
+                );
                 if (dom == null || dom === document) {
                   document.getElementsByTagName("head")[0].appendChild(style);
                 } else {
@@ -4579,6 +4633,7 @@ try {
               var DOM = {
                 addCss: addCss,
                 addCssRules: addCssRules,
+                updateOrAddCssRule: updateOrAddCssRule,
                 containsCss: containsCss,
                 getAttr: getAttr,
                 getBoolAttr: getBoolAttr,
@@ -19261,7 +19316,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1002495205","namespace":"FB","message":"' +
+        '","revision":"1002502098","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
