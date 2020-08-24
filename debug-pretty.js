@@ -1,4 +1,4 @@
-/*1598217570,,JIT Construction: v1002557918,en_US*/
+/*1598309367,,JIT Construction: v1002561175,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3729,7 +3729,7 @@ try {
           })(typeof global === "undefined" ? this : global);
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1002557918",
+            revision: "1002561175",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -3852,6 +3852,8 @@ try {
               module,
               exports
             ) {
+              module.exports = dotAccess;
+
               function dotAccess(head, path, create) {
                 var stack = path.split(".");
                 do {
@@ -3860,8 +3862,6 @@ try {
                 } while (stack.length && head);
                 return head;
               }
-
-              module.exports = dotAccess;
             },
             null
           );
@@ -3876,14 +3876,14 @@ try {
               module,
               exports
             ) {
+              module.exports = guid;
+
               function guid() {
                 return (
                   "f" +
                   (Math.random() * (1 << 30)).toString(16).replace(".", "")
                 );
               }
-
-              module.exports = guid;
             },
             null
           );
@@ -5390,8 +5390,8 @@ try {
                 decode: decode,
                 appendToUrl: appendToUrl
               };
-
-              module.exports = QueryString;
+              var _default = QueryString;
+              module.exports = _default;
             },
             null
           );
@@ -5956,6 +5956,8 @@ try {
               exports,
               invariant
             ) {
+              module.exports = flattenPHPQueryData;
+
               function flattenPHPQueryData(obj) {
                 return _flattenPHPQueryData(obj, "", {});
               }
@@ -5986,8 +5988,6 @@ try {
 
                 return componentsObject;
               }
-
-              module.exports = flattenPHPQueryData;
             },
             null
           );
@@ -6158,6 +6158,8 @@ try {
               module,
               exports
             ) {
+              exports.serialize = serialize;
+              exports.encodeComponent = encodeComponent;
               var c_PHPQuerySerializer;
 
               function serialize(obj) {
@@ -6191,17 +6193,14 @@ try {
                 return raw;
               }
 
-              var PHPQuerySerializerNoEncoding = {
-                serialize: serialize,
-                encodeComponent: encodeComponent,
-                deserialize: (
-                  c_PHPQuerySerializer ||
-                  (c_PHPQuerySerializer = require("PHPQuerySerializer"))
-                ).deserialize,
-                decodeComponent: c_PHPQuerySerializer.decodeComponent
-              };
+              var deserialize = (
+                c_PHPQuerySerializer ||
+                (c_PHPQuerySerializer = require("PHPQuerySerializer"))
+              ).deserialize;
+              exports.deserialize = deserialize;
 
-              module.exports = PHPQuerySerializerNoEncoding;
+              var decodeComponent = c_PHPQuerySerializer.decodeComponent;
+              exports.decodeComponent = decodeComponent;
             },
             null
           );
@@ -6216,6 +6215,8 @@ try {
               module,
               exports
             ) {
+              exports.parse = parse;
+
               var PARSE_PATTERN = new RegExp(
                 "^" +
                   "([^:/?#]+:)?" +
@@ -6232,40 +6233,36 @@ try {
                   "(#.*)?"
               );
 
-              var URIRFC3986 = {
-                parse: function parse(uriString) {
-                  if (ES(uriString, "trim", true) === "") {
-                    return null;
-                  }
-                  var captures = uriString.match(PARSE_PATTERN);
-                  if (captures == null) {
-                    return null;
-                  }
-                  var uri = {};
-
-                  uri.uri = captures[0] ? captures[0] : null;
-                  uri.scheme = captures[1]
-                    ? captures[1].substr(0, captures[1].length - 1)
-                    : null;
-                  uri.authority = captures[2] ? captures[2].substr(2) : null;
-                  uri.userinfo = captures[3]
-                    ? captures[3].substr(0, captures[3].length - 1)
-                    : null;
-                  uri.host = captures[2] ? captures[4] : null;
-                  uri.port = captures[5]
-                    ? captures[5].substr(1)
-                      ? parseInt(captures[5].substr(1), 10)
-                      : null
-                    : null;
-                  uri.path = captures[6] ? captures[6] : null;
-                  uri.query = captures[7] ? captures[7].substr(1) : null;
-                  uri.fragment = captures[8] ? captures[8].substr(1) : null;
-                  uri.isGenericURI = uri.authority === null && !!uri.scheme;
-                  return uri;
+              function parse(uriString) {
+                if (ES(uriString, "trim", true) === "") {
+                  return null;
                 }
-              };
+                var captures = uriString.match(PARSE_PATTERN);
+                if (captures == null) {
+                  return null;
+                }
+                var uri = {};
 
-              module.exports = URIRFC3986;
+                uri.uri = captures[0] ? captures[0] : null;
+                uri.scheme = captures[1]
+                  ? captures[1].substr(0, captures[1].length - 1)
+                  : null;
+                uri.authority = captures[2] ? captures[2].substr(2) : null;
+                uri.userinfo = captures[3]
+                  ? captures[3].substr(0, captures[3].length - 1)
+                  : null;
+                uri.host = captures[2] ? captures[4] : null;
+                uri.port = captures[5]
+                  ? captures[5].substr(1)
+                    ? parseInt(captures[5].substr(1), 10)
+                    : null
+                  : null;
+                uri.path = captures[6] ? captures[6] : null;
+                uri.query = captures[7] ? captures[7].substr(1) : null;
+                uri.fragment = captures[8] ? captures[8].substr(1) : null;
+                uri.isGenericURI = uri.authority === null && !!uri.scheme;
+                return uri;
+              }
             },
             null
           );
@@ -6280,6 +6277,8 @@ try {
               module,
               exports
             ) {
+              module.exports = createObjectFrom;
+
               function createObjectFrom(keys, values) {
                 if (__DEV__) {
                   if (!ES("Array", "isArray", false, keys)) {
@@ -6303,8 +6302,6 @@ try {
 
                 return object;
               }
-
-              module.exports = createObjectFrom;
             },
             null
           );
@@ -6319,6 +6316,8 @@ try {
               module,
               exports
             ) {
+              exports.isAllowed = isAllowed;
+
               var defaultSchemes = require("createObjectFrom")([
                 "blob",
                 "cmms",
@@ -6392,19 +6391,15 @@ try {
                 "whatsapp-smb"
               ]);
 
-              var URISchemes = {
-                isAllowed: function isAllowed(schema) {
-                  if (schema == null || schema === "") {
-                    return true;
-                  }
-                  return Object.prototype.hasOwnProperty.call(
-                    defaultSchemes,
-                    schema.toLowerCase()
-                  );
+              function isAllowed(schema) {
+                if (schema == null || schema === "") {
+                  return true;
                 }
-              };
-
-              module.exports = URISchemes;
+                return Object.prototype.hasOwnProperty.call(
+                  defaultSchemes,
+                  schema.toLowerCase()
+                );
+              }
             },
             null
           );
@@ -6891,6 +6886,8 @@ try {
               module,
               exports
             ) {
+              module.exports = setHostSubdomain;
+
               function setHostSubdomain(domain, subdomain) {
                 var pieces = domain.split(".");
                 if (pieces.length < 3) {
@@ -6900,8 +6897,6 @@ try {
                 }
                 return pieces.join(".");
               }
-
-              module.exports = setHostSubdomain;
             },
             null
           );
@@ -7770,6 +7765,8 @@ try {
               module,
               exports
             ) {
+              module.exports = whitelistObjectKeys;
+
               function whitelistObjectKeys(source, whitelist) {
                 var result = {};
                 var keys = ES("Array", "isArray", false, whitelist)
@@ -7782,8 +7779,6 @@ try {
                 }
                 return result;
               }
-
-              module.exports = whitelistObjectKeys;
             },
             null
           );
@@ -9610,8 +9605,8 @@ try {
                   );
                 }
               };
-
-              module.exports = Base64;
+              var _default = Base64;
+              module.exports = _default;
             },
             null
           );
@@ -18359,6 +18354,8 @@ try {
               module,
               exports
             ) {
+              module.exports = isNode;
+
               function isNode(object) {
                 var _object$ownerDocument, _doc$defaultView;
                 var doc =
@@ -18380,8 +18377,6 @@ try {
                       typeof object.nodeName === "string")
                 );
               }
-
-              module.exports = isNode;
             },
             null
           );
@@ -18396,11 +18391,11 @@ try {
               module,
               exports
             ) {
+              module.exports = isTextNode;
+
               function isTextNode(object) {
                 return require("isNode")(object) && object.nodeType == 3;
               }
-
-              module.exports = isTextNode;
             },
             null
           );
@@ -18415,6 +18410,8 @@ try {
               module,
               exports
             ) {
+              module.exports = containsNode;
+
               function containsNode(outerNode, innerNode) {
                 if (!outerNode || !innerNode) {
                   return false;
@@ -18432,8 +18429,6 @@ try {
                   return false;
                 }
               }
-
-              module.exports = containsNode;
             },
             null
           );
@@ -19274,7 +19269,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1002557918","namespace":"FB","message":"' +
+        '","revision":"1002561175","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
