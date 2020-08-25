@@ -1,4 +1,4 @@
-/*1598309367,,JIT Construction: v1002561175,en_US*/
+/*1598324359,,JIT Construction: v1002562283,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3729,7 +3729,7 @@ try {
           })(typeof global === "undefined" ? this : global);
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1002561175",
+            revision: "1002562283",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -3994,6 +3994,7 @@ try {
                 WARNING: 1,
                 ERROR: 0
               };
+              exports.Level = Level;
 
               var log = function log(name, level, format) {
                 for (
@@ -4010,28 +4011,26 @@ try {
                   return String(args[index++]);
                 });
                 var console = window.console;
-                if (console && Log.level >= level) {
+                if (console && level >= level) {
                   console[name in console ? name : "log"](msg);
                 }
               };
+              exports.log = log;
 
-              var Log = {
-                level: __DEV__ ? 3 : -1,
+              var level = __DEV__ ? 3 : -1;
+              exports.level = level;
 
-                Level: Level,
+              var debug = ES(log, "bind", true, null, "debug", Level.DEBUG);
+              exports.debug = debug;
 
-                debug: ES(log, "bind", true, null, "debug", Level.DEBUG),
+              var info = ES(log, "bind", true, null, "info", Level.INFO);
+              exports.info = info;
 
-                info: ES(log, "bind", true, null, "info", Level.INFO),
+              var warn = ES(log, "bind", true, null, "warn", Level.WARNING);
+              exports.warn = warn;
 
-                warn: ES(log, "bind", true, null, "warn", Level.WARNING),
-
-                error: ES(log, "bind", true, null, "error", Level.ERROR),
-
-                log: log
-              };
-
-              module.exports = Log;
+              var error = ES(log, "bind", true, null, "error", Level.ERROR);
+              exports.error = error;
             },
             null
           );
@@ -6862,6 +6861,8 @@ try {
               module,
               exports
             ) {
+              module.exports = isInternalFBURI;
+
               var internalFBURIRegex = new RegExp(
                 "(^|\\.)internalfb\\.com$",
                 "i"
@@ -6870,8 +6871,6 @@ try {
               function isInternalFBURI(uri) {
                 return internalFBURIRegex.test(uri.getDomain());
               }
-
-              module.exports = isInternalFBURI;
             },
             null
           );
@@ -7684,7 +7683,9 @@ try {
               module,
               exports
             ) {
-              var nullthrows = function nullthrows(x, message) {
+              module.exports = nullthrows;
+
+              function nullthrows(x, message) {
                 if (message === void 0) {
                   message = "Got unexpected null or undefined";
                 }
@@ -7694,9 +7695,7 @@ try {
                 var error = new Error(message);
                 error.framesToPop = 1;
                 throw error;
-              };
-
-              module.exports = nullthrows;
+              }
             },
             null
           );
@@ -11158,8 +11157,6 @@ try {
             ) {
               var registry = {};
               var Queue = (function() {
-                "use strict";
-
                 function Queue(opts) {
                   this._timeout = null;
 
@@ -11264,7 +11261,6 @@ try {
                 };
                 return Queue;
               })();
-
               module.exports = Queue;
             },
             null
@@ -12574,6 +12570,8 @@ try {
               module,
               exports
             ) {
+              module.exports = isFacebookURI;
+
               var facebookURIRegex = null;
 
               var FB_PROTOCOLS = ["http", "https"];
@@ -12600,8 +12598,6 @@ try {
               isFacebookURI.setRegex = function(regex) {
                 facebookURIRegex = regex;
               };
-
-              module.exports = isFacebookURI;
             },
             null
           );
@@ -16613,6 +16609,23 @@ try {
               module,
               exports
             ) {
+              exports.ie = ie;
+              exports.ieCompatibilityMode = ieCompatibilityMode;
+              exports.ie64 = ie64;
+              exports.firefox = firefox;
+              exports.opera = opera;
+              exports.webkit = webkit;
+              exports.safari = safari;
+              exports.chrome = chrome;
+              exports.windows = windows;
+              exports.osx = osx;
+              exports.linux = linux;
+              exports.iphone = iphone;
+              exports.mobile = mobile;
+              exports.nativeApp = nativeApp;
+              exports.android = android;
+              exports.ipad = ipad;
+
               var _populated = false;
 
               var _ie, _firefox, _opera, _webkit, _chrome;
@@ -16692,73 +16705,69 @@ try {
                 }
               }
 
-              var UserAgent_DEPRECATED = {
-                ie: function ie() {
-                  return _populate() || _ie;
-                },
+              function ie() {
+                return _populate() || _ie;
+              }
 
-                ieCompatibilityMode: function ieCompatibilityMode() {
-                  return _populate() || _ie_real_version > _ie;
-                },
+              function ieCompatibilityMode() {
+                return _populate() || _ie_real_version > _ie;
+              }
 
-                ie64: function ie64() {
-                  return UserAgent_DEPRECATED.ie() && _win64;
-                },
+              function ie64() {
+                return ie() && _win64;
+              }
 
-                firefox: function firefox() {
-                  return _populate() || _firefox;
-                },
+              function firefox() {
+                return _populate() || _firefox;
+              }
 
-                opera: function opera() {
-                  return _populate() || _opera;
-                },
+              function opera() {
+                return _populate() || _opera;
+              }
 
-                webkit: function webkit() {
-                  return _populate() || _webkit;
-                },
+              function webkit() {
+                return _populate() || _webkit;
+              }
 
-                safari: function safari() {
-                  return UserAgent_DEPRECATED.webkit();
-                },
+              function safari() {
+                return webkit();
+              }
 
-                chrome: function chrome() {
-                  return _populate() || _chrome;
-                },
+              function chrome() {
+                return _populate() || _chrome;
+              }
 
-                windows: function windows() {
-                  return _populate() || _windows;
-                },
+              function windows() {
+                return _populate() || _windows;
+              }
 
-                osx: function osx() {
-                  return _populate() || _osx;
-                },
+              function osx() {
+                return _populate() || _osx;
+              }
 
-                linux: function linux() {
-                  return _populate() || _linux;
-                },
+              function linux() {
+                return _populate() || _linux;
+              }
 
-                iphone: function iphone() {
-                  return _populate() || _iphone;
-                },
+              function iphone() {
+                return _populate() || _iphone;
+              }
 
-                mobile: function mobile() {
-                  return _populate() || _iphone || _ipad || _android || _mobile;
-                },
+              function mobile() {
+                return _populate() || _iphone || _ipad || _android || _mobile;
+              }
 
-                nativeApp: function nativeApp() {
-                  return _populate() || _mLite != null ? null : _native;
-                },
+              function nativeApp() {
+                return _populate() || _mLite != null ? null : _native;
+              }
 
-                android: function android() {
-                  return _populate() || _android;
-                },
+              function android() {
+                return _populate() || _android;
+              }
 
-                ipad: function ipad() {
-                  return _populate() || _ipad;
-                }
-              };
-
-              module.exports = UserAgent_DEPRECATED;
+              function ipad() {
+                return _populate() || _ipad;
+              }
             },
             null
           );
@@ -19269,7 +19278,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1002561175","namespace":"FB","message":"' +
+        '","revision":"1002562283","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
