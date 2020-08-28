@@ -1,4 +1,4 @@
-/*1598472578,,JIT Construction: v1002574536,en_US*/
+/*1598583555,,JIT Construction: v1002584967,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3729,7 +3729,7 @@ try {
           })(typeof global === "undefined" ? this : global);
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1002574536",
+            revision: "1002584967",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -3819,25 +3819,26 @@ try {
               exports
             ) {
               "use strict";
+              exports.setRoot = setRoot;
+              exports.getRoot = getRoot;
+              exports.setWindow = setWindow;
+              exports.getWindow = getWindow;
 
               var rootElement, windowRef;
 
-              var DOMWrapper = {
-                setRoot: function setRoot(root) {
-                  rootElement = root;
-                },
-                getRoot: function getRoot() {
-                  return rootElement || document.body;
-                },
-                setWindow: function setWindow(win) {
-                  windowRef = win;
-                },
-                getWindow: function getWindow() {
-                  return windowRef || self;
-                }
-              };
+              function setRoot(root) {
+                rootElement = root;
+              }
 
-              module.exports = DOMWrapper;
+              function getRoot() {
+                return rootElement || document.body;
+              }
+              function setWindow(win) {
+                windowRef = win;
+              }
+              function getWindow() {
+                return windowRef || self;
+              }
             },
             null
           );
@@ -4195,7 +4196,8 @@ try {
                 }
                 return false;
               };
-              module.exports = UA;
+              var _default = UA;
+              module.exports = _default;
             },
             null
           );
@@ -4210,6 +4212,8 @@ try {
               module,
               exports
             ) {
+              module.exports = domReady;
+
               var queue;
               var domIsReady =
                 "readyState" in document
@@ -4263,8 +4267,6 @@ try {
                   test();
                 }
               }
-
-              module.exports = domReady;
             },
             3
           );
@@ -4280,86 +4282,83 @@ try {
               exports
             ) {
               "use strict";
+              exports.append = append;
+              exports.appendHidden = appendHidden;
+              exports.submitToTarget = submitToTarget;
 
               var visibleRoot;
               var hiddenRoot;
 
-              var Content = {
-                append: function append(content, root) {
-                  if (!root) {
-                    if (!visibleRoot) {
-                      visibleRoot = root = document.getElementById("fb-root");
-                      if (!root) {
-                        require("Log").warn(
-                          'The "fb-root" div has not been created, auto-creating'
-                        );
+              function append(content, root) {
+                if (!root) {
+                  if (!visibleRoot) {
+                    visibleRoot = root = document.getElementById("fb-root");
+                    if (!root) {
+                      require("Log").warn(
+                        'The "fb-root" div has not been created, auto-creating'
+                      );
 
-                        visibleRoot = root = document.createElement("div");
-                        root.id = "fb-root";
+                      visibleRoot = root = document.createElement("div");
+                      root.id = "fb-root";
 
-                        if (require("sdk.UA").ie() || !document.body) {
-                          require("sdk.domReady")(function domReady_$0() {
-                            if (root && document.body) {
-                              document.body.appendChild(root);
-                            }
-                          });
-                        } else {
-                          document.body.appendChild(root);
-                        }
-                      }
-                      root.className += " fb_reset";
-                    } else {
-                      root = visibleRoot;
-                    }
-                  }
-
-                  root.appendChild(content);
-                  return content;
-                },
-
-                appendHidden: function appendHidden(content) {
-                  if (!hiddenRoot) {
-                    hiddenRoot = document.createElement("div");
-                    var style = hiddenRoot.style;
-                    style.position = "absolute";
-                    style.top = "-10000px";
-                    style.width = "0";
-                    style.height = "0";
-                    hiddenRoot = Content.append(hiddenRoot);
-                  }
-
-                  return Content.append(content, hiddenRoot);
-                },
-
-                submitToTarget: function submitToTarget(opts, get) {
-                  var form = document.createElement("form");
-                  form.action = opts.url;
-                  form.target = opts.target;
-                  form.method = get ? "GET" : "POST";
-                  Content.appendHidden(form);
-
-                  for (var key in opts.params) {
-                    if (
-                      Object.prototype.hasOwnProperty.call(opts.params, key)
-                    ) {
-                      var val = opts.params[key];
-                      if (val !== null && val !== undefined) {
-                        var input = document.createElement("input");
-                        input.name = key;
-                        input.value = val;
-                        form.appendChild(input);
+                      if (require("sdk.UA").ie() || !document.body) {
+                        require("sdk.domReady")(function domReady_$0() {
+                          if (root && document.body) {
+                            document.body.appendChild(root);
+                          }
+                        });
+                      } else {
+                        document.body.appendChild(root);
                       }
                     }
-                  }
-
-                  form.submit();
-                  if (form.parentNode) {
-                    form.parentNode.removeChild(form);
+                    root.className += " fb_reset";
+                  } else {
+                    root = visibleRoot;
                   }
                 }
-              };
 
-              module.exports = Content;
+                root.appendChild(content);
+                return content;
+              }
+
+              function appendHidden(content) {
+                if (!hiddenRoot) {
+                  hiddenRoot = document.createElement("div");
+                  var style = hiddenRoot.style;
+                  style.position = "absolute";
+                  style.top = "-10000px";
+                  style.width = "0";
+                  style.height = "0";
+                  hiddenRoot = append(hiddenRoot);
+                }
+
+                return append(content, hiddenRoot);
+              }
+
+              function submitToTarget(opts, get) {
+                var form = document.createElement("form");
+                form.action = opts.url;
+                form.target = opts.target;
+                form.method = get ? "GET" : "POST";
+                appendHidden(form);
+
+                for (var key in opts.params) {
+                  if (Object.prototype.hasOwnProperty.call(opts.params, key)) {
+                    var val = opts.params[key];
+                    if (val !== null && val !== undefined) {
+                      var input = document.createElement("input");
+                      input.name = key;
+                      input.value = val;
+                      form.appendChild(input);
+                    }
+                  }
+                }
+
+                form.submit();
+                if (form.parentNode) {
+                  form.parentNode.removeChild(form);
+                }
+              }
             },
             null
           );
@@ -4374,6 +4373,20 @@ try {
               module,
               exports
             ) {
+              exports.getAttr = getAttr;
+              exports.getBoolAttr = getBoolAttr;
+              exports.html = html;
+              exports.containsCss = containsCss;
+              exports.addCss = addCss;
+              exports.removeCss = removeCss;
+              exports.getByClass = getByClass;
+              exports.getStyle = getStyle;
+              exports.setStyle = setStyle;
+              exports.updateOrAddCssRule = updateOrAddCssRule;
+              exports.addCssRules = addCssRules;
+              exports.remove = remove;
+              exports.getViewportInfo = getViewportInfo;
+
               var defaultDocumentCssRules = {};
               var shadowDOMCssRules = {};
 
@@ -4638,24 +4651,8 @@ try {
                 return dashed;
               }
 
-              var DOM = {
-                addCss: addCss,
-                addCssRules: addCssRules,
-                updateOrAddCssRule: updateOrAddCssRule,
-                containsCss: containsCss,
-                getAttr: getAttr,
-                getBoolAttr: getBoolAttr,
-                getByClass: getByClass,
-                getStyle: getStyle,
-                getViewportInfo: getViewportInfo,
-                html: html,
-                ready: require("sdk.domReady"),
-                remove: remove,
-                removeCss: removeCss,
-                setStyle: setStyle
-              };
-
-              module.exports = DOM;
+              var ready = require("sdk.domReady");
+              exports.ready = ready;
             },
             null
           );
@@ -4708,8 +4705,9 @@ try {
               exports
             ) {
               "use strict";
+              module.exports = normalizeError;
 
-              var normalizeError = function normalizeError(err) {
+              function normalizeError(err) {
                 var info = {
                   line: err.lineNumber || err.line,
                   message: err.message,
@@ -4730,9 +4728,7 @@ try {
                   info[k] == null && delete info[k];
                 }
                 return info;
-              };
-
-              module.exports = normalizeError;
+              }
             },
             null
           );
@@ -4747,6 +4743,8 @@ try {
               module,
               exports
             ) {
+              exports.create = create;
+
               function create(handleError, onError) {
                 var currentEntry = "";
 
@@ -4854,10 +4852,6 @@ try {
                   unguard: unguard
                 };
               }
-
-              module.exports = {
-                create: create
-              };
             },
             null
           );
@@ -4952,14 +4946,12 @@ try {
               exports
             ) {
               var AssertionError = (function(_ManagedError) {
-                "use strict";
                 babelHelpers.inheritsLoose(AssertionError, _ManagedError);
                 function AssertionError(message) {
                   return _ManagedError.call(this, message) || this;
                 }
                 return AssertionError;
               })(require("ManagedError"));
-
               module.exports = AssertionError;
             },
             null
@@ -5291,8 +5283,8 @@ try {
                 },
                 require("ObservableMixin")
               );
-
-              module.exports = Model;
+              var _default = Model;
+              module.exports = _default;
             },
             null
           );
@@ -5371,8 +5363,8 @@ try {
                 }
                 Runtime.setEnvironment(environment);
               })();
-
-              module.exports = Runtime;
+              var _default = Runtime;
+              module.exports = _default;
             },
             null
           );
@@ -5679,6 +5671,8 @@ try {
               module,
               exports
             ) {
+              exports.log = log;
+
               function log(category, data) {
                 if (data.extra != null && typeof data.extra === "object") {
                   var extra = data.extra;
@@ -5693,12 +5687,6 @@ try {
                   }
                 );
               }
-
-              var Scribe = {
-                log: log
-              };
-
-              module.exports = Scribe;
             },
             null
           );
@@ -5713,6 +5701,8 @@ try {
               module,
               exports
             ) {
+              exports.create = create;
+
               function feature(config, name, defaultValue) {
                 if (config.features && name in config.features) {
                   var value = config.features[name];
@@ -5732,7 +5722,7 @@ try {
                 return defaultValue;
               }
 
-              function createFeatureFunction(config) {
+              function create(config) {
                 return function() {
                   for (
                     var _len = arguments.length,
@@ -5751,10 +5741,6 @@ try {
                   return feature(config, name, defaultValue);
                 };
               }
-
-              module.exports = {
-                create: createFeatureFunction
-              };
             },
             null
           );
@@ -5787,8 +5773,7 @@ try {
               exports
             ) {
               var handleError = require("sdk.feature")("error_handling", false);
-
-              module.exports = require("sdk.ErrorHandler").create(
+              var _default = require("sdk.ErrorHandler").create(
                 handleError,
                 function ErrorHandler_create_$1(error) {
                   require("sdk.Scribe").log("jssdk_error", {
@@ -5798,6 +5783,7 @@ try {
                   });
                 }
               );
+              module.exports = _default;
             },
             null
           );
@@ -5961,14 +5947,12 @@ try {
               exports
             ) {
               var ArgumentError = (function(_ManagedError) {
-                "use strict";
                 babelHelpers.inheritsLoose(ArgumentError, _ManagedError);
                 function ArgumentError(message, innerError) {
                   return _ManagedError.call(this, message, innerError) || this;
                 }
                 return ArgumentError;
               })(require("ManagedError"));
-
               module.exports = ArgumentError;
             },
             null
@@ -5985,8 +5969,9 @@ try {
               exports
             ) {
               "use strict";
+              module.exports = flattenObject;
 
-              var flattenObject = function flattenObject(obj) {
+              function flattenObject(obj) {
                 var flat = {};
                 for (var _key in obj) {
                   if (Object.prototype.hasOwnProperty.call(obj, _key)) {
@@ -6001,9 +5986,7 @@ try {
                   }
                 }
                 return flat;
-              };
-
-              module.exports = flattenObject;
+              }
             },
             null
           );
@@ -7612,7 +7595,6 @@ try {
                 }
               };
               var URI = (function(_URIBase) {
-                "use strict";
                 babelHelpers.inheritsLoose(URI, _URIBase);
                 function URI(uri) {
                   return _URIBase.call(this, uri, serializer) || this;
@@ -7631,7 +7613,6 @@ try {
                 };
                 return URI;
               })(c_URIBase || (c_URIBase = require("URIBase")));
-
               module.exports = URI;
             },
             null
@@ -7812,8 +7793,8 @@ try {
               safelyParseResponse.setErrorHandler = function(newHandler) {
                 errorHandler = newHandler;
               };
-
-              module.exports = safelyParseResponse;
+              var _default = safelyParseResponse;
+              module.exports = _default;
             },
             null
           );
@@ -8037,7 +8018,6 @@ try {
                 };
                 return ApiBatcher;
               })();
-
               module.exports = ApiBatcher;
             },
             null
@@ -8061,10 +8041,7 @@ try {
                 type: "http",
                 status: 0
               };
-
-              module.exports = {
-                PARSE_ERROR_TEMPLATE: PARSE_ERROR_TEMPLATE
-              };
+              exports.PARSE_ERROR_TEMPLATE = PARSE_ERROR_TEMPLATE;
             },
             null
           );
@@ -8234,10 +8211,10 @@ try {
               module,
               exports
             ) {
+              exports.execute = execute;
+
               var EMPTY_CHUNK_TEXT = "{}";
               var ChunkParser = (function() {
-                "use strict";
-
                 function ChunkParser(delimiter) {
                   if (delimiter === void 0) {
                     delimiter = "\r\n";
@@ -8405,12 +8382,6 @@ try {
                 request.send(data);
                 return true;
               }
-
-              var ChunkedRequest = {
-                execute: execute
-              };
-
-              module.exports = ChunkedRequest;
             },
             null
           );
@@ -8900,29 +8871,27 @@ try {
               module,
               exports
             ) {
+              exports.assertVersionIsSet = assertVersionIsSet;
+              exports.assertValidVersion = assertValidVersion;
+
               var REGEX = /^v\d+\.\d\d?$/;
+              exports.REGEX = REGEX;
 
-              var PlatformVersioning = {
-                REGEX: REGEX,
-
-                assertVersionIsSet: function assertVersionIsSet() {
-                  if (!require("sdk.Runtime").getVersion()) {
-                    throw new (require("ManagedError"))(
-                      "init not called with valid version"
-                    );
-                  }
-                },
-
-                assertValidVersion: function assertValidVersion(version) {
-                  if (!REGEX.test(version)) {
-                    throw new (require("ManagedError"))(
-                      "invalid version specified"
-                    );
-                  }
+              function assertVersionIsSet() {
+                if (!require("sdk.Runtime").getVersion()) {
+                  throw new (require("ManagedError"))(
+                    "init not called with valid version"
+                  );
                 }
-              };
+              }
 
-              module.exports = PlatformVersioning;
+              function assertValidVersion(version) {
+                if (!REGEX.test(version)) {
+                  throw new (require("ManagedError"))(
+                    "invalid version specified"
+                  );
+                }
+              }
             },
             null
           );
@@ -8938,6 +8907,7 @@ try {
               exports
             ) {
               "use strict";
+              module.exports = warnInsecure;
 
               var httpsOnlyLearnMore = require("sdk.feature")(
                 "https_only_learn_more",
@@ -8972,8 +8942,6 @@ try {
                 }
                 return true;
               }
-
-              module.exports = warnInsecure;
             },
             null
           );
@@ -9358,13 +9326,13 @@ try {
               module,
               exports
             ) {
+              module.exports = getBlankIframeSrc;
+
               function getBlankIframeSrc() {
                 return require("sdk.UA").ie() < 10
                   ? "javascript:false"
                   : "about:blank";
               }
-
-              module.exports = getBlankIframeSrc;
             },
             null
           );
@@ -9379,6 +9347,8 @@ try {
               module,
               exports
             ) {
+              module.exports = insertIframe;
+
               function insertIframe(opts) {
                 var id = opts.id != null ? opts.id : require("guid")();
                 var name = opts.name != null ? opts.name : require("guid")();
@@ -9474,8 +9444,6 @@ try {
                   opts.onInsert && opts.onInsert(node);
                 }
               }
-
-              module.exports = insertIframe;
             },
             null
           );
@@ -9499,7 +9467,10 @@ try {
               module,
               exports
             ) {
-              function request(params) {
+              exports.impression = impression;
+              exports.log = log;
+
+              function impression(params) {
                 var clientID = require("sdk.Runtime").getClientID();
 
                 if (
@@ -9566,25 +9537,19 @@ try {
                 }
               }
 
-              var Impressions = {
-                log: function log(lid, payload) {
-                  if (
-                    typeof payload.source !== "string" ||
-                    payload.source === ""
-                  ) {
-                    payload.source = "jssdk";
-                  }
+              function log(lid, payload) {
+                if (
+                  typeof payload.source !== "string" ||
+                  payload.source === ""
+                ) {
+                  payload.source = "jssdk";
+                }
 
-                  request({
-                    lid: lid,
-                    payload: ES("JSON", "stringify", false, payload)
-                  });
-                },
-
-                impression: request
-              };
-
-              module.exports = Impressions;
+                impression({
+                  lid: lid,
+                  payload: ES("JSON", "stringify", false, payload)
+                });
+              }
             },
             null
           );
@@ -9684,6 +9649,8 @@ try {
               module,
               exports
             ) {
+              exports.parse = parse;
+
               function parse(signed_request) {
                 if (signed_request == null || signed_request === "") {
                   return null;
@@ -9695,12 +9662,6 @@ try {
                   .replace(/\_/g, "/");
                 return require("Base64").decodeObject(payload);
               }
-
-              var SignedRequest = {
-                parse: parse
-              };
-
-              module.exports = SignedRequest;
             },
             null
           );
@@ -9716,60 +9677,60 @@ try {
               exports
             ) {
               "use strict";
+              exports.getLocalStorage = getLocalStorage;
+              exports.getLocalStorageForRead = getLocalStorageForRead;
+              exports.getSessionStorage = getSessionStorage;
+              exports.getSessionStorageForRead = getSessionStorageForRead;
 
-              var WebStorage = {
-                getLocalStorage: function getLocalStorage() {
-                  try {
-                    return window.localStorage;
-                  } catch (_unused) {
-                    require("Log").warn("Failed to get local storage");
-                  }
-                  return null;
-                },
-
-                getLocalStorageForRead: function getLocalStorageForRead() {
-                  try {
-                    var storage = window.localStorage;
-
-                    if (storage) {
-                      var key = "__test__" + ES("Date", "now", false);
-                      storage.setItem(key, "");
-                      storage.removeItem(key);
-                    }
-                    return storage;
-                  } catch (_unused2) {
-                    require("Log").warn("Failed to get local storage");
-                  }
-                  return null;
-                },
-
-                getSessionStorage: function getSessionStorage() {
-                  try {
-                    return window.sessionStorage;
-                  } catch (_unused3) {
-                    require("Log").warn("Failed to get session storage");
-                  }
-                  return null;
-                },
-
-                getSessionStorageForRead: function getSessionStorageForRead() {
-                  try {
-                    var storage = window.sessionStorage;
-
-                    if (storage) {
-                      var key = "__test__" + ES("Date", "now", false);
-                      storage.setItem(key, "");
-                      storage.removeItem(key);
-                    }
-                    return storage;
-                  } catch (_unused4) {
-                    require("Log").warn("Failed to get session storage");
-                  }
-                  return null;
+              function getLocalStorage() {
+                try {
+                  return window.localStorage;
+                } catch (_unused) {
+                  require("Log").warn("Failed to get local storage");
                 }
-              };
+                return null;
+              }
 
-              module.exports = WebStorage;
+              function getLocalStorageForRead() {
+                try {
+                  var storage = window.localStorage;
+
+                  if (storage) {
+                    var key = "__test__" + ES("Date", "now", false);
+                    storage.setItem(key, "");
+                    storage.removeItem(key);
+                  }
+                  return storage;
+                } catch (_unused2) {
+                  require("Log").warn("Failed to get local storage");
+                }
+                return null;
+              }
+
+              function getSessionStorage() {
+                try {
+                  return window.sessionStorage;
+                } catch (_unused3) {
+                  require("Log").warn("Failed to get session storage");
+                }
+                return null;
+              }
+
+              function getSessionStorageForRead() {
+                try {
+                  var storage = window.sessionStorage;
+
+                  if (storage) {
+                    var key = "__test__" + ES("Date", "now", false);
+                    storage.setItem(key, "");
+                    storage.removeItem(key);
+                  }
+                  return storage;
+                } catch (_unused4) {
+                  require("Log").warn("Failed to get session storage");
+                }
+                return null;
+              }
             },
             null
           );
@@ -9784,6 +9745,8 @@ try {
               module,
               exports
             ) {
+              module.exports = getContextType;
+
               function getContextType() {
                 if (require("sdk.UA").nativeApp()) {
                   return 3;
@@ -9800,8 +9763,6 @@ try {
                 }
                 return 1;
               }
-
-              module.exports = getContextType;
             },
             null
           );
@@ -10769,8 +10730,8 @@ try {
                 parseSignedRequest: require("sdk.SignedRequest").parse,
                 xdResponseWrapper: xdResponseWrapper
               });
-
-              module.exports = Auth;
+              var _default = Auth;
+              module.exports = _default;
             },
             null
           );
@@ -10884,6 +10845,8 @@ try {
               module,
               exports
             ) {
+              module.exports = resolveURI;
+
               function resolveURI(uri) {
                 if (uri == null || uri === "") {
                   return window.location.href;
@@ -10893,8 +10856,6 @@ try {
                 a.href = uri;
                 return a.href;
               }
-
-              module.exports = resolveURI;
             },
             null
           );
@@ -12326,6 +12287,8 @@ try {
               module,
               exports
             ) {
+              exports.onReady = onReady;
+
               var NATIVE_EXTENSIONS_READY_EVENT = "fbNativeExtensionsReady";
 
               function getAPIBridge() {
@@ -12340,47 +12303,43 @@ try {
                 return null;
               }
 
-              var NativeExtensions = {
-                onReady: function onReady(func) {
-                  if (!require("sdk.UA").facebookInAppBrowser()) {
-                    require("Log").error(
-                      "FB.NativeExtensions.onReady only works when the page is rendered " +
-                        "in a WebView of the native Facebook app."
-                    );
+              function onReady(func) {
+                if (!require("sdk.UA").facebookInAppBrowser()) {
+                  require("Log").error(
+                    "FB.NativeExtensions.onReady only works when the page is rendered " +
+                      "in a WebView of the native Facebook app."
+                  );
 
+                  return;
+                }
+
+                var extensionAPIBridge = getAPIBridge();
+                if (extensionAPIBridge) {
+                  func(extensionAPIBridge);
+                  return;
+                }
+
+                var bridgeCalled = false;
+                var nativeExtensionsReadyCallback = function nativeExtensionsReadyCallback() {
+                  var bridge = getAPIBridge();
+                  if (bridgeCalled || !bridge) {
                     return;
                   }
-
-                  var extensionAPIBridge = getAPIBridge();
-                  if (extensionAPIBridge) {
-                    func(extensionAPIBridge);
-                    return;
-                  }
-
-                  var bridgeCalled = false;
-                  var nativeExtensionsReadyCallback = function nativeExtensionsReadyCallback() {
-                    var bridge = getAPIBridge();
-                    if (bridgeCalled || !bridge) {
-                      return;
-                    }
-                    bridgeCalled = true;
-                    func(bridge);
-                    require("DOMEventListener").remove(
-                      window,
-                      NATIVE_EXTENSIONS_READY_EVENT,
-                      nativeExtensionsReadyCallback
-                    );
-                  };
-
-                  require("DOMEventListener").add(
+                  bridgeCalled = true;
+                  func(bridge);
+                  require("DOMEventListener").remove(
                     window,
                     NATIVE_EXTENSIONS_READY_EVENT,
                     nativeExtensionsReadyCallback
                   );
-                }
-              };
+                };
 
-              module.exports = NativeExtensions;
+                require("DOMEventListener").add(
+                  window,
+                  NATIVE_EXTENSIONS_READY_EVENT,
+                  nativeExtensionsReadyCallback
+                );
+              }
             },
             null
           );
@@ -12396,6 +12355,7 @@ try {
               exports
             ) {
               "use strict";
+              exports.supportsDialog = supportsDialog;
 
               var outQueue = new (require("Queue"))();
               var jsonrpc = new (require("JSONRPC"))(function(message) {
@@ -12431,17 +12391,18 @@ try {
                 );
               }
 
-              module.exports = {
-                local: jsonrpc.local,
-                remote: jsonrpc.remote,
-                stub: ES(jsonrpc.stub, "bind", true, jsonrpc),
-                supportsDialog: function supportsDialog(method) {
-                  return (
-                    !!extensionAPIBridge &&
-                    extensionAPIBridge.supportsDialog(method)
-                  );
-                }
-              };
+              var local = jsonrpc.local;
+              exports.local = local;
+              var remote = jsonrpc.remote;
+              exports.remote = remote;
+              var stub = ES(jsonrpc.stub, "bind", true, jsonrpc);
+              exports.stub = stub;
+              function supportsDialog(method) {
+                return (
+                  !!extensionAPIBridge &&
+                  extensionAPIBridge.supportsDialog(method)
+                );
+              }
             },
             null
           );
@@ -12676,6 +12637,8 @@ try {
               module,
               exports
             ) {
+              module.exports = resolveWindow;
+
               function resolveWindow(path) {
                 if (path == null) {
                   return null;
@@ -12710,8 +12673,6 @@ try {
 
                 return node;
               }
-
-              module.exports = resolveWindow;
             },
             null
           );
@@ -13165,6 +13126,7 @@ try {
               exports
             ) {
               "use strict";
+              module.exports = openMessenger;
 
               var FALLBACK_IOS_URL =
                 "https://itunes.apple.com/us/app/messenger/id454638411";
@@ -13206,8 +13168,6 @@ try {
                 }, FALLBACK_TIMEOUT);
                 window.location.href = uri;
               }
-
-              module.exports = openMessenger;
             },
             null
           );
@@ -15568,63 +15528,62 @@ try {
               module,
               exports
             ) {
-              var GamingServices = {
-                friendFinder: function friendFinder(cb) {
-                  require("sdk.ui")(
-                    {
-                      display: "touch",
-                      method: "gaming_friendfinder"
-                    },
+              exports.friendFinder = friendFinder;
+              exports.uploadImageToMediaLibrary = uploadImageToMediaLibrary;
 
-                    cb
-                  );
-                },
+              function friendFinder(cb) {
+                require("sdk.ui")(
+                  {
+                    display: "touch",
+                    method: "gaming_friendfinder"
+                  },
 
-                uploadImageToMediaLibrary: function uploadImageToMediaLibrary(
-                  imageUri,
-                  caption,
-                  shouldOpenMediaDialog,
                   cb
-                ) {
-                  require("sdk.api")(
-                    "me/photos",
-                    "POST",
-                    {
-                      caption: caption,
-                      url: imageUri
-                    },
+                );
+              }
 
-                    function api_$3(apiResponse) {
-                      if (
-                        shouldOpenMediaDialog === false ||
-                        !apiResponse ||
-                        apiResponse.error
-                      ) {
-                        if (cb !== null) {
-                          cb(apiResponse);
-                        }
-                      } else {
-                        var upload_id = apiResponse.id;
-                        require("sdk.ui")(
-                          {
-                            display: "touch",
-                            method: "gaming_media_library",
-                            media_id: upload_id
-                          },
+              function uploadImageToMediaLibrary(
+                imageUri,
+                caption,
+                shouldOpenMediaDialog,
+                cb
+              ) {
+                require("sdk.api")(
+                  "me/photos",
+                  "POST",
+                  {
+                    caption: caption,
+                    url: imageUri
+                  },
 
-                          function ui_$1(_response) {
-                            if (cb !== null) {
-                              cb(apiResponse);
-                            }
-                          }
-                        );
+                  function api_$3(apiResponse) {
+                    if (
+                      shouldOpenMediaDialog === false ||
+                      !apiResponse ||
+                      apiResponse.error
+                    ) {
+                      if (cb !== null) {
+                        cb(apiResponse);
                       }
-                    }
-                  );
-                }
-              };
+                    } else {
+                      var upload_id = apiResponse.id;
+                      require("sdk.ui")(
+                        {
+                          display: "touch",
+                          method: "gaming_media_library",
+                          media_id: upload_id
+                        },
 
-              module.exports = GamingServices;
+                        function ui_$1(_response) {
+                          if (cb !== null) {
+                            cb(apiResponse);
+                          }
+                        }
+                      );
+                    }
+                  }
+                );
+              }
             },
             null
           );
@@ -15991,6 +15950,8 @@ try {
               module,
               exports
             ) {
+              module.exports = runOnce;
+
               function runOnce(func) {
                 var hasRun = false;
                 var result;
@@ -16003,8 +15964,6 @@ try {
                   return result;
                 };
               }
-
-              module.exports = runOnce;
             },
             null
           );
@@ -16020,6 +15979,7 @@ try {
               exports
             ) {
               "use strict";
+              exports.log = log;
 
               var perf = window.performance;
 
@@ -16119,21 +16079,17 @@ try {
                 }
               }
 
-              var Time = {
-                log: function log(key) {
-                  if (!couldLog || !startTime) {
-                    return;
-                  }
-                  data[key] = Math.round(perf.now() - startTime);
-                  require("Log").debug(
-                    "sdkperf: %s logged after %s ms",
-                    key,
-                    data[key]
-                  );
+              function log(key) {
+                if (!couldLog || !startTime) {
+                  return;
                 }
-              };
-
-              module.exports = Time;
+                data[key] = Math.round(perf.now() - startTime);
+                require("Log").debug(
+                  "sdkperf: %s logged after %s ms",
+                  key,
+                  data[key]
+                );
+              }
             },
             null
           );
@@ -16521,6 +16477,13 @@ try {
               module,
               exports
             ) {
+              exports.getVal = getVal;
+              exports.validate = validate;
+              exports.resize = resize;
+              exports.resizeBubbler = resizeBubbler;
+              exports.parse = parse;
+              exports.collapseIframe = collapseIframe;
+
               var types = {
                 string: function string(value) {
                   return value;
@@ -16641,24 +16604,16 @@ try {
                 }
               }
 
-              module.exports = {
-                baseParams: {
-                  skin: "string",
-                  font: "string",
-                  width: "string",
-                  height: "px",
-                  ref: "string",
-                  lazy: "bool",
-                  color_scheme: "string"
-                },
-
-                getVal: getVal,
-                validate: validate,
-                resize: resize,
-                resizeBubbler: resizeBubbler,
-                parse: parse,
-                collapseIframe: collapseIframe
+              var baseParams = {
+                skin: "string",
+                font: "string",
+                width: "string",
+                height: "px",
+                ref: "string",
+                lazy: "bool",
+                color_scheme: "string"
               };
+              exports.baseParams = baseParams;
             },
             null
           );
@@ -16846,6 +16801,8 @@ try {
               module,
               exports
             ) {
+              module.exports = hasNamePropertyBug;
+
               var hasBug = require("UserAgent_DEPRECATED").ie()
                 ? undefined
                 : false;
@@ -16861,8 +16818,6 @@ try {
               function hasNamePropertyBug() {
                 return hasBug === undefined ? test() : hasBug;
               }
-
-              module.exports = hasNamePropertyBug;
             },
             null
           );
@@ -16902,6 +16857,8 @@ try {
               module,
               exports
             ) {
+              module.exports = createIframe;
+
               function createIframe(opts_arg) {
                 var opts = ES("Object", "assign", false, {}, opts_arg);
                 var frame;
@@ -17014,8 +16971,6 @@ try {
                 frame.src = src;
                 return frame;
               }
-
-              module.exports = createIframe;
             },
             null
           );
@@ -17457,42 +17412,46 @@ try {
               module,
               exports
             ) {
-              var PluginConfig = {
-                comment_embed: {
-                  mobile_fullsize: true
-                },
-
-                messengerpreconfirmation: {
-                  mobile_fullsize: true
-                },
-
-                messengeraccountconfirmation: {
-                  mobile_fullsize: true
-                },
-
-                messengerbusinesslink: {
-                  mobile_fullsize: true
-                },
-
-                messengertoggle: {
-                  mobile_fullsize: true
-                },
-
-                messengermessageus: {
-                  mobile_fullsize: true
-                },
-
-                post: {
-                  fluid: require("sdk.feature")("fluid_embed", false),
-                  mobile_fullsize: true
-                },
-
-                send_to_messenger: {
-                  mobile_fullsize: true
-                }
+              var comment_embed = {
+                mobile_fullsize: true
               };
+              exports.comment_embed = comment_embed;
 
-              module.exports = PluginConfig;
+              var messengerpreconfirmation = {
+                mobile_fullsize: true
+              };
+              exports.messengerpreconfirmation = messengerpreconfirmation;
+
+              var messengeraccountconfirmation = {
+                mobile_fullsize: true
+              };
+              exports.messengeraccountconfirmation = messengeraccountconfirmation;
+
+              var messengerbusinesslink = {
+                mobile_fullsize: true
+              };
+              exports.messengerbusinesslink = messengerbusinesslink;
+
+              var messengertoggle = {
+                mobile_fullsize: true
+              };
+              exports.messengertoggle = messengertoggle;
+
+              var messengermessageus = {
+                mobile_fullsize: true
+              };
+              exports.messengermessageus = messengermessageus;
+
+              var post = {
+                fluid: require("sdk.feature")("fluid_embed", false),
+                mobile_fullsize: true
+              };
+              exports.post = post;
+
+              var send_to_messenger = {
+                mobile_fullsize: true
+              };
+              exports.send_to_messenger = send_to_messenger;
             },
             null
           );
@@ -17509,13 +17468,13 @@ try {
             ) {
               "use strict";
 
-              var PluginAttrTypes = {
-                string: "string",
-                bool: "bool",
-                url: "url"
-              };
+              var string = "string";
+              exports.string = string;
 
-              module.exports = PluginAttrTypes;
+              var bool = "bool";
+              exports.bool = bool;
+              var url = "url";
+              exports.url = url;
             },
             null
           );
@@ -17669,8 +17628,8 @@ try {
                   PluginTags[key] = PluginTags[aliases[key]];
                 }
               );
-
-              module.exports = PluginTags;
+              var _default = PluginTags;
+              module.exports = _default;
             },
             null
           );
@@ -17867,8 +17826,8 @@ try {
                   return params;
                 }
               });
-
-              module.exports = Comments;
+              var _default = Comments;
+              module.exports = _default;
             },
             null
           );
@@ -17910,8 +17869,8 @@ try {
                   });
                 }
               });
-
-              module.exports = CommentsCount;
+              var _default = CommentsCount;
+              module.exports = _default;
             },
             null
           );
@@ -18990,8 +18949,8 @@ try {
                   };
                 }
               });
-
-              module.exports = Save;
+              var _default = Save;
+              module.exports = _default;
             },
             null
           );
@@ -19023,8 +18982,8 @@ try {
                   };
                 }
               });
-
-              module.exports = ShareButton;
+              var _default = ShareButton;
+              module.exports = _default;
             },
             null
           );
@@ -19337,7 +19296,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1002574536","namespace":"FB","message":"' +
+        '","revision":"1002584967","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
