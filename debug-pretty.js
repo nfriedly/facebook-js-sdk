@@ -1,4 +1,4 @@
-/*1598583555,,JIT Construction: v1002584967,en_US*/
+/*1598661549,,JIT Construction: v1002590591,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3729,7 +3729,7 @@ try {
           })(typeof global === "undefined" ? this : global);
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1002584967",
+            revision: "1002590591",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -4546,14 +4546,18 @@ try {
               function addCssRules(styles, names, dom) {
                 var cssRules;
                 if (dom != null && dom.nodeType === 11) {
-                  if (dom.id != null && shadowDOMCssRules[dom.id] != null) {
-                    cssRules = shadowDOMCssRules[dom.id];
+                  var shadowDom = dom;
+                  if (
+                    shadowDom.host.id != null &&
+                    shadowDOMCssRules[shadowDom.host.id] != null
+                  ) {
+                    cssRules = shadowDOMCssRules[shadowDom.host.id];
                   } else {
-                    if (dom.id == null) {
-                      dom.id = require("guid")();
+                    if (!shadowDom.host.id) {
+                      shadowDom.host.id = require("guid")();
                     }
                     cssRules = {};
-                    shadowDOMCssRules[dom.id] = cssRules;
+                    shadowDOMCssRules[shadowDom.host.id] = cssRules;
                   }
                 } else {
                   cssRules = defaultDocumentCssRules;
@@ -19296,7 +19300,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1002584967","namespace":"FB","message":"' +
+        '","revision":"1002590591","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
