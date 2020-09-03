@@ -1,4 +1,4 @@
-/*1598997550,,JIT Construction: v1002603640,en_US*/
+/*1599110365,,JIT Construction: v1002612965,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3729,7 +3729,7 @@ try {
           })(typeof global === "undefined" ? this : global);
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1002603640",
+            revision: "1002612965",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -3936,43 +3936,43 @@ try {
               module,
               exports
             ) {
+              exports.setPrefix = setPrefix;
+              exports.create = create;
+              exports.remove = remove;
+
               var rootObject;
               var callbackPrefix;
 
-              var GlobalCallback = {
-                setPrefix: function setPrefix(prefix) {
-                  rootObject = require("dotAccess")(
-                    require("DOMWrapper").getWindow(),
-                    prefix,
-                    true
-                  );
-                  callbackPrefix = prefix;
-                },
+              function setPrefix(prefix) {
+                rootObject = require("dotAccess")(
+                  require("DOMWrapper").getWindow(),
+                  prefix,
+                  true
+                );
+                callbackPrefix = prefix;
+              }
 
-                create: function create(fn, description) {
-                  var _description;
-                  if (!rootObject) {
-                    this.setPrefix("__globalCallbacks");
-                  }
-                  var id = require("guid")();
-                  rootObject[id] = require("wrapFunction")(
-                    fn,
-                    "entry",
-                    (_description = description) != null
-                      ? _description
-                      : "GlobalCallback"
-                  );
-
-                  return callbackPrefix + "." + id;
-                },
-
-                remove: function remove(name) {
-                  var id = name.substring(callbackPrefix.length + 1);
-                  delete rootObject[id];
+              function create(fn, description) {
+                var _description;
+                if (!rootObject) {
+                  this.setPrefix("__globalCallbacks");
                 }
-              };
+                var id = require("guid")();
+                rootObject[id] = require("wrapFunction")(
+                  fn,
+                  "entry",
+                  (_description = description) != null
+                    ? _description
+                    : "GlobalCallback"
+                );
 
-              module.exports = GlobalCallback;
+                return callbackPrefix + "." + id;
+              }
+
+              function remove(name) {
+                var id = name.substring(callbackPrefix.length + 1);
+                delete rootObject[id];
+              }
             },
             null
           );
@@ -5638,29 +5638,28 @@ try {
               exports,
               invariant
             ) {
-              var UrlMap = {
-                resolve: function resolve(key) {
-                  var protocol = "https";
+              exports.resolve = resolve;
 
-                  if (key === "graph_domain") {
-                    var graphDomain = require("sdk.Runtime").getGraphDomain();
-                    if (!!graphDomain) {
-                      key = "graph_".concat(graphDomain);
-                    } else {
-                      key = "graph";
-                    }
-                  }
+              function resolve(key) {
+                var protocol = "https";
 
-                  if (key in require("UrlMapConfig")) {
-                    return protocol + "://" + require("UrlMapConfig")[key];
+                if (key === "graph_domain") {
+                  var graphDomain = require("sdk.Runtime").getGraphDomain();
+                  if (!!graphDomain) {
+                    key = "graph_".concat(graphDomain);
+                  } else {
+                    key = "graph";
                   }
-                  key in require("UrlMapConfig") ||
-                    invariant(0, "Unknown key in UrlMapConfig: %s", key);
-                  return "";
                 }
-              };
 
-              module.exports = UrlMap;
+                if (key in require("UrlMapConfig")) {
+                  return protocol + "://" + require("UrlMapConfig")[key];
+                }
+
+                key in require("UrlMapConfig") ||
+                  invariant(0, "Unknown key in UrlMapConfig: %s", key);
+                return "";
+              }
             },
             null
           );
@@ -5759,9 +5758,10 @@ try {
               module,
               exports
             ) {
-              module.exports = require("sdk.FeatureFunctor").create(
+              var _default = require("sdk.FeatureFunctor").create(
                 require("JSSDKConfig")
               );
+              module.exports = _default;
             },
             null
           );
@@ -9156,6 +9156,15 @@ try {
               module,
               exports
             ) {
+              exports.setRaw = setRaw;
+              exports.getRaw = getRaw;
+              exports.setDomain = setDomain;
+              exports.getDomain = getDomain;
+              exports.loadMeta = loadMeta;
+              exports.loadSignedRequest = loadSignedRequest;
+              exports.setSignedRequestCookie = setSignedRequestCookie;
+              exports.clearSignedRequestCookie = clearSignedRequestCookie;
+
               var domain = null;
 
               function setRaw(startingPrefix, val, ts, secure) {
@@ -9204,65 +9213,54 @@ try {
                 }
               }
 
-              var Cookie = {
-                setDomain: function setDomain(val) {
-                  domain = val;
+              function setDomain(val) {
+                domain = val;
 
-                  var meta = require("QueryString").encode({
-                    base_domain: domain !== null && domain !== "." ? domain : ""
-                  });
+                var meta = require("QueryString").encode({
+                  base_domain: domain !== null && domain !== "." ? domain : ""
+                });
 
-                  var expiration = new Date();
-                  expiration.setFullYear(expiration.getFullYear() + 1);
-                  setRaw("fbm_", meta, expiration.getTime(), true);
-                },
+                var expiration = new Date();
+                expiration.setFullYear(expiration.getFullYear() + 1);
+                setRaw("fbm_", meta, expiration.getTime(), true);
+              }
 
-                getDomain: function getDomain() {
-                  return domain;
-                },
+              function getDomain() {
+                return domain;
+              }
 
-                loadMeta: function loadMeta() {
-                  var cookie = getRaw("fbm_");
-                  if (
-                    cookie !== null &&
-                    cookie !== undefined &&
-                    domain === null
-                  ) {
-                    var meta = require("QueryString").decode(cookie);
-
-                    domain = meta.base_domain;
-                    return meta;
-                  }
-                  return null;
-                },
-
-                loadSignedRequest: function loadSignedRequest() {
-                  return getRaw("fbsr_");
-                },
-
-                setSignedRequestCookie: function setSignedRequestCookie(
-                  signedRequest,
-                  expiration
+              function loadMeta() {
+                var cookie = getRaw("fbm_");
+                if (
+                  cookie !== null &&
+                  cookie !== undefined &&
+                  domain === null
                 ) {
-                  if (signedRequest === "") {
-                    throw new Error(
-                      "Value passed to Cookie.setSignedRequestCookie was empty."
-                    );
-                  }
-                  setRaw("fbsr_", signedRequest, expiration, true);
-                },
+                  var meta = require("QueryString").decode(cookie);
 
-                clearSignedRequestCookie: function clearSignedRequestCookie() {
-                  this.loadMeta();
-                  setRaw("fbsr_", "", 0, true);
-                },
+                  domain = meta.base_domain;
+                  return meta;
+                }
+                return null;
+              }
 
-                setRaw: setRaw,
+              function loadSignedRequest() {
+                return getRaw("fbsr_");
+              }
 
-                getRaw: getRaw
-              };
+              function setSignedRequestCookie(signedRequest, expiration) {
+                if (signedRequest === "") {
+                  throw new Error(
+                    "Value passed to Cookie.setSignedRequestCookie was empty."
+                  );
+                }
+                setRaw("fbsr_", signedRequest, expiration, true);
+              }
 
-              module.exports = Cookie;
+              function clearSignedRequestCookie() {
+                this.loadMeta();
+                setRaw("fbsr_", "", 0, true);
+              }
             },
             null
           );
@@ -10754,90 +10752,99 @@ try {
               exports
             ) {
               "use strict";
+              exports.subscribers = subscribers;
+              exports.subscribe = subscribe;
+              exports.unsubscribe = unsubscribe;
+              exports.monitor = monitor;
+              exports.clear = clear;
+              exports.fire = fire;
 
-              var Event = {
-                SUBSCRIBE: "event.subscribe",
-                UNSUBSCRIBE: "event.unsubscribe",
+              var SUBSCRIBE = "event.subscribe";
+              exports.SUBSCRIBE = SUBSCRIBE;
 
-                subscribers: function subscribers() {
-                  if (!this._subscribersMap) {
-                    this._subscribersMap = {};
-                  }
-                  return this._subscribersMap;
-                },
+              var UNSUBSCRIBE = "event.unsubscribe";
+              exports.UNSUBSCRIBE = UNSUBSCRIBE;
 
-                subscribe: function subscribe(name, cb) {
-                  var subs = this.subscribers();
+              function subscribers() {
+                if (!this._subscribersMap) {
+                  this._subscribersMap = {};
+                }
 
-                  if (!subs[name]) {
-                    subs[name] = [cb];
-                  } else {
-                    if (ES(subs[name], "indexOf", true, cb) == -1) {
-                      subs[name].push(cb);
-                    }
-                  }
-                  if (name != this.SUBSCRIBE && name != this.UNSUBSCRIBE) {
-                    this.fire(this.SUBSCRIBE, name, subs[name]);
-                  }
-                },
+                return this._subscribersMap;
+              }
 
-                unsubscribe: function unsubscribe(name, cb) {
-                  var subs = this.subscribers()[name];
-                  if (subs) {
-                    ES(subs, "forEach", true, function subs_forEach_$0(
-                      value,
-                      key
-                    ) {
-                      if (value === cb) {
-                        subs.splice(key, 1);
-                      }
-                    });
-                  }
-                  if (name != this.SUBSCRIBE && name != this.UNSUBSCRIBE) {
-                    this.fire(this.UNSUBSCRIBE, name, subs);
-                  }
-                },
+              function subscribe(name, cb) {
+                var subs = this.subscribers();
 
-                monitor: function monitor(name, callback) {
-                  if (!callback()) {
-                    var ctx = this;
-                    var fn = function fn() {
-                      if (callback.apply(callback, arguments)) {
-                        ctx.unsubscribe(name, fn);
-                      }
-                    };
-
-                    this.subscribe(name, fn);
-                  }
-                },
-
-                clear: function clear(name) {
-                  delete this.subscribers()[name];
-                },
-
-                fire: function fire(name) {
-                  for (
-                    var _len = arguments.length,
-                      args = new Array(_len > 1 ? _len - 1 : 0),
-                      _key = 1;
-                    _key < _len;
-                    _key++
-                  ) {
-                    args[_key - 1] = arguments[_key];
-                  }
-                  var subs = this.subscribers()[name];
-
-                  if (subs) {
-                    ES(subs, "forEach", true, function subs_forEach_$0(sub) {
-                      if (sub) {
-                        sub.apply(this, args);
-                      }
-                    });
+                if (!subs[name]) {
+                  subs[name] = [cb];
+                } else {
+                  if (ES(subs[name], "indexOf", true, cb) == -1) {
+                    subs[name].push(cb);
                   }
                 }
-              };
 
-              module.exports = Event;
+                if (name != this.SUBSCRIBE && name != this.UNSUBSCRIBE) {
+                  this.fire(this.SUBSCRIBE, name, subs[name]);
+                }
+              }
+
+              function unsubscribe(name, cb) {
+                var subs = this.subscribers()[name];
+                if (subs) {
+                  ES(subs, "forEach", true, function subs_forEach_$0(
+                    value,
+                    key
+                  ) {
+                    if (value === cb) {
+                      subs.splice(key, 1);
+                    }
+                  });
+                }
+
+                if (name != this.SUBSCRIBE && name != this.UNSUBSCRIBE) {
+                  this.fire(this.UNSUBSCRIBE, name, subs);
+                }
+              }
+
+              function monitor(name, callback) {
+                if (!callback()) {
+                  var ctx = this;
+                  var fn = function fn() {
+                    if (callback.apply(callback, arguments)) {
+                      ctx.unsubscribe(name, fn);
+                    }
+                  };
+
+                  this.subscribe(name, fn);
+                }
+              }
+
+              function clear(name) {
+                delete this.subscribers()[name];
+              }
+
+              function fire(name) {
+                for (
+                  var _len = arguments.length,
+                    args = new Array(_len > 1 ? _len - 1 : 0),
+                    _key = 1;
+                  _key < _len;
+                  _key++
+                ) {
+                  args[_key - 1] = arguments[_key];
+                }
+
+                var subs = this.subscribers()[name];
+
+                if (subs) {
+                  ES(subs, "forEach", true, function subs_forEach_$0(sub) {
+                    if (sub) {
+                      sub.apply(this, args);
+                    }
+                  });
+                }
+              }
             },
             null
           );
@@ -11379,292 +11386,277 @@ try {
               exports
             ) {
               "use strict";
+              exports.isOrientationPotrait = isOrientationPotrait;
+              exports.addDoubleClickAction = addDoubleClickAction;
+              exports.addIdleDesktopAction = addIdleDesktopAction;
+              exports.addMobileOrientationChangeAction = addMobileOrientationChangeAction;
+              exports.applyScreenDimensions = applyScreenDimensions;
+              exports.setDialogPositionToCenter = setDialogPositionToCenter;
+              exports.setDialogPositionToTop = setDialogPositionToTop;
+              exports.setupNewDarkOverlay = setupNewDarkOverlay;
+              exports.setupNewDialog = setupNewDialog;
+              exports.onDialogHideCleanup = onDialogHideCleanup;
 
               var MAX_HEIGHT_MOBILE = 590;
               var MAX_HEIGHT_DESKTOP = 240;
               var MAX_WIDTH_DESKTOP = 575;
 
-              var DialogUtils = {
-                isOrientationPotrait: function isOrientationPotrait() {
-                  return window.innerWidth < window.innerHeight;
-                },
+              function isOrientationPotrait() {
+                return window.innerWidth < window.innerHeight;
+              }
 
-                addDoubleClickAction: function addDoubleClickAction(
+              function addDoubleClickAction(
+                element,
+                actionCallback,
+                delayBetweenClicks
+              ) {
+                var clickTimer = null;
+                return require("DOMEventListener").add(
                   element,
-                  actionCallback,
-                  delayBetweenClicks
-                ) {
-                  var clickTimer = null;
-                  return require("DOMEventListener").add(
-                    element,
-                    "click",
-                    function DOMEventListener_add_$2() {
-                      if (clickTimer !== null) {
-                        window.clearTimeout(clickTimer);
+                  "click",
+                  function DOMEventListener_add_$2() {
+                    if (clickTimer !== null) {
+                      window.clearTimeout(clickTimer);
+                      clickTimer = null;
+                      actionCallback();
+                    }
+                    clickTimer = window.setTimeout(
+                      function window_setTimeout_$0() {
                         clickTimer = null;
-                        actionCallback();
-                      }
-                      clickTimer = window.setTimeout(
-                        function window_setTimeout_$0() {
-                          clickTimer = null;
-                        },
-                        delayBetweenClicks
+                      },
+                      delayBetweenClicks
+                    );
+                  }
+                );
+              }
+
+              function addIdleDesktopAction(
+                element,
+                actionCallback,
+                delayToIdle
+              ) {
+                var timer;
+                var event;
+                var startTimer = function startTimer() {
+                  timer = window.setTimeout(actionCallback, delayToIdle);
+                };
+
+                startTimer();
+                return require("DOMEventListener").add(
+                  element,
+                  "mouseenter",
+                  function DOMEventListener_add_$2() {
+                    window.clearTimeout(timer);
+                    if (!event) {
+                      event = require("DOMEventListener").add(
+                        element,
+                        "mouseleave",
+                        function DOMEventListener_add_$2() {
+                          startTimer();
+                        }
                       );
                     }
-                  );
-                },
-
-                addIdleDesktopAction: function addIdleDesktopAction(
-                  element,
-                  actionCallback,
-                  delayToIdle
-                ) {
-                  var timer;
-                  var event;
-                  var startTimer = function startTimer() {
-                    timer = window.setTimeout(actionCallback, delayToIdle);
-                  };
-
-                  startTimer();
-                  return require("DOMEventListener").add(
-                    element,
-                    "mouseenter",
-                    function DOMEventListener_add_$2() {
-                      window.clearTimeout(timer);
-                      if (!event) {
-                        event = require("DOMEventListener").add(
-                          element,
-                          "mouseleave",
-                          function DOMEventListener_add_$2() {
-                            startTimer();
-                          }
-                        );
-                      }
-                    }
-                  );
-                },
-
-                addMobileOrientationChangeAction: function addMobileOrientationChangeAction(
-                  actionCallback
-                ) {
-                  if (!require("sdk.UA").mobile()) {
-                    return null;
                   }
+                );
+              }
 
-                  var event =
-                    "onorientationchange" in window
-                      ? "orientationchange"
-                      : "resize";
+              function addMobileOrientationChangeAction(actionCallback) {
+                if (!require("sdk.UA").mobile()) {
+                  return null;
+                }
 
-                  var callback = function callback(e) {
-                    return window.setTimeout(function window_setTimeout_$0(e) {
-                      return actionCallback(e);
-                    }, 50);
-                  };
+                var event =
+                  "onorientationchange" in window
+                    ? "orientationchange"
+                    : "resize";
 
-                  return require("DOMEventListener").add(
-                    window,
-                    event,
-                    callback
-                  );
-                },
+                var callback = function callback(e) {
+                  return window.setTimeout(function window_setTimeout_$0(e) {
+                    return actionCallback(e);
+                  }, 50);
+                };
 
-                applyScreenDimensions: function applyScreenDimensions(element) {
-                  if (element == null) {
-                    return;
-                  }
-                  var view = require("sdk.DOM").getViewportInfo();
+                return require("DOMEventListener").add(window, event, callback);
+              }
 
-                  element.style.minHeight = view.height
-                    ? view.height + "px"
-                    : "";
-                  element.style.top = view.scrollTop
-                    ? view.scrollTop + "px"
-                    : "";
-                },
+              function applyScreenDimensions(element) {
+                if (element == null) {
+                  return;
+                }
+                var view = require("sdk.DOM").getViewportInfo();
 
-                setDialogPositionToCenter: function setDialogPositionToCenter(
-                  dialog,
-                  isTablet,
-                  pageInfo
-                ) {
-                  var _view$scrollLeft,
-                    _view$width,
-                    _view$height,
-                    _view$height2,
-                    _view$height3,
-                    _view$scrollTop;
-                  var parseNumber = function parseNumber(n) {
-                    return typeof n === "number" ? n : parseInt(n, 10);
-                  };
-                  var view = require("sdk.DOM").getViewportInfo();
-                  var width = parseNumber(dialog.offsetWidth);
-                  var height = parseNumber(dialog.offsetHeight);
-                  var left =
-                    (_view$scrollLeft = view.scrollLeft) != null
-                      ? _view$scrollLeft
-                      : 0 +
-                        ((_view$width = view.width) != null
-                          ? _view$width
-                          : MAX_WIDTH_DESKTOP - width) /
-                          2;
+                element.style.minHeight = view.height ? view.height + "px" : "";
+                element.style.top = view.scrollTop ? view.scrollTop + "px" : "";
+              }
 
-                  var minTop =
-                    ((_view$height = view.height) != null
-                      ? _view$height
-                      : MAX_HEIGHT_DESKTOP - height) / 2.5;
-                  if (left < minTop) {
-                    minTop = left;
-                  }
-                  var maxTop =
-                    (_view$height2 = view.height) != null
-                      ? _view$height2
-                      : MAX_HEIGHT_DESKTOP - height - minTop;
+              function setDialogPositionToCenter(dialog, isTablet, pageInfo) {
+                var _view$scrollLeft,
+                  _view$width,
+                  _view$height,
+                  _view$height2,
+                  _view$height3,
+                  _view$scrollTop;
+                var parseNumber = function parseNumber(n) {
+                  return typeof n === "number" ? n : parseInt(n, 10);
+                };
+                var view = require("sdk.DOM").getViewportInfo();
+                var width = parseNumber(dialog.offsetWidth);
+                var height = parseNumber(dialog.offsetHeight);
+                var left =
+                  (_view$scrollLeft = view.scrollLeft) != null
+                    ? _view$scrollLeft
+                    : 0 +
+                      ((_view$width = view.width) != null
+                        ? _view$width
+                        : MAX_WIDTH_DESKTOP - width) /
+                        2;
 
-                  var top =
-                    ((_view$height3 = view.height) != null
-                      ? _view$height3
-                      : MAX_HEIGHT_DESKTOP - height) / 2;
-                  if (pageInfo) {
-                    top =
-                      pageInfo.scrollTop -
-                      pageInfo.offsetTop +
-                      (pageInfo.clientHeight - height) / 2;
-                  }
+                var minTop =
+                  ((_view$height = view.height) != null
+                    ? _view$height
+                    : MAX_HEIGHT_DESKTOP - height) / 2.5;
+                if (left < minTop) {
+                  minTop = left;
+                }
+                var maxTop =
+                  (_view$height2 = view.height) != null
+                    ? _view$height2
+                    : MAX_HEIGHT_DESKTOP - height - minTop;
 
-                  if (top < minTop) {
-                    top = minTop;
-                  } else if (top > maxTop) {
-                    top = maxTop;
-                  }
+                var top =
+                  ((_view$height3 = view.height) != null
+                    ? _view$height3
+                    : MAX_HEIGHT_DESKTOP - height) / 2;
+                if (pageInfo) {
+                  top =
+                    pageInfo.scrollTop -
+                    pageInfo.offsetTop +
+                    (pageInfo.clientHeight - height) / 2;
+                }
 
-                  top +=
-                    (_view$scrollTop = view.scrollTop) != null
-                      ? _view$scrollTop
-                      : 0;
+                if (top < minTop) {
+                  top = minTop;
+                } else if (top > maxTop) {
+                  top = maxTop;
+                }
 
-                  if (require("sdk.UA").mobile()) {
-                    var paddingHeight = 100;
+                top +=
+                  (_view$scrollTop = view.scrollTop) != null
+                    ? _view$scrollTop
+                    : 0;
 
-                    if (isTablet) {
-                      var _view$height4;
-                      paddingHeight +=
-                        ((_view$height4 = view.height) != null
-                          ? _view$height4
-                          : MAX_HEIGHT_MOBILE - height) / 2;
-                      require("sdk.DOM").addCss(document.body, "fb_reposition");
-                    } else {
-                      require("sdk.DOM").addCss(document.body, "fb_hidden");
+                if (require("sdk.UA").mobile()) {
+                  var paddingHeight = 100;
 
-                      document.body.style.width = "auto";
-
-                      top = 10000;
-                    }
-
-                    var paddingDivs = require("sdk.DOM").getByClass(
-                      "fb_dialog_padding",
-                      dialog
-                    );
-                    if (paddingDivs.length) {
-                      paddingDivs[0].style.height = paddingHeight + "px";
-                    }
-                  }
-
-                  dialog.style.left = (left > 0 ? left : 0) + "px";
-                  dialog.style.top = (top > 0 ? top : 0) + "px";
-                },
-
-                setDialogPositionToTop: function setDialogPositionToTop(
-                  dialog,
-                  isTablet,
-                  pageInfo
-                ) {
-                  var _view$scrollTop2, _view$height5;
-
-                  this.setDialogPositionToCenter(dialog, isTablet, pageInfo);
-
-                  var view = require("sdk.DOM").getViewportInfo();
-                  var top =
-                    (_view$scrollTop2 = view.scrollTop) != null
-                      ? _view$scrollTop2
-                      : 0 +
-                        ((_view$height5 = view.height) != null
-                          ? _view$height5
-                          : MAX_HEIGHT_MOBILE - dialog.offsetHeight) *
-                          0.05;
-                  require("sdk.DOM").setStyle(dialog, "top", top + "px");
-                },
-
-                setupNewDarkOverlay: function setupNewDarkOverlay() {
-                  var overlay = document.createElement("div");
-
-                  overlay.setAttribute("id", "fb_dialog_ipad_overlay");
-                  this.applyScreenDimensions(overlay);
-                  return overlay;
-                },
-
-                setupNewDialog: function setupNewDialog(options) {
-                  options = options || {};
-                  var dialogElement = document.createElement("div");
-                  var _options = options,
-                    onClose = _options.onClose;
-
-                  if (options.closeIcon && onClose) {
-                    var closeIcon = document.createElement("a");
-                    closeIcon.className = "fb_dialog_close_icon";
-                    require("DOMEventListener").add(
-                      closeIcon,
-                      "click",
-                      onClose
-                    );
-                    dialogElement.appendChild(closeIcon);
-                  }
-
-                  var className = "fb_dialog";
-                  className += " " + (options.classes || "");
-                  className += require("sdk.UA").mobile()
-                    ? " fb_dialog_mobile"
-                    : " fb_dialog_advanced";
-                  dialogElement.className = className;
-
-                  if (options.width) {
-                    var width = parseInt(options.width, 10);
-                    if (!isNaN(width)) {
-                      dialogElement.style.width = width + "px";
-                    }
-                  }
-
-                  var contentRoot = document.createElement("div");
-
-                  if (options.content) {
-                    require("sdk.Content").append(options.content, contentRoot);
-                  }
-                  contentRoot.className = "fb_dialog_content";
-                  dialogElement.appendChild(contentRoot);
-
-                  if (require("sdk.UA").mobile()) {
-                    var padding = document.createElement("div");
-                    padding.className = "fb_dialog_padding";
-                    dialogElement.appendChild(padding);
-                  }
-
-                  return {
-                    dialogElement: dialogElement,
-                    contentRoot: contentRoot
-                  };
-                },
-
-                onDialogHideCleanup: function onDialogHideCleanup(isTablet) {
-                  var body = document.body;
                   if (isTablet) {
-                    require("sdk.DOM").removeCss(body, "fb_reposition");
+                    var _view$height4;
+                    paddingHeight +=
+                      ((_view$height4 = view.height) != null
+                        ? _view$height4
+                        : MAX_HEIGHT_MOBILE - height) / 2;
+                    require("sdk.DOM").addCss(document.body, "fb_reposition");
                   } else {
-                    require("sdk.DOM").removeCss(body, "fb_hidden");
+                    require("sdk.DOM").addCss(document.body, "fb_hidden");
+
+                    document.body.style.width = "auto";
+
+                    top = 10000;
+                  }
+
+                  var paddingDivs = require("sdk.DOM").getByClass(
+                    "fb_dialog_padding",
+                    dialog
+                  );
+                  if (paddingDivs.length) {
+                    paddingDivs[0].style.height = paddingHeight + "px";
                   }
                 }
-              };
 
-              module.exports = DialogUtils;
+                dialog.style.left = (left > 0 ? left : 0) + "px";
+                dialog.style.top = (top > 0 ? top : 0) + "px";
+              }
+
+              function setDialogPositionToTop(dialog, isTablet, pageInfo) {
+                var _view$scrollTop2, _view$height5;
+
+                this.setDialogPositionToCenter(dialog, isTablet, pageInfo);
+
+                var view = require("sdk.DOM").getViewportInfo();
+                var top =
+                  (_view$scrollTop2 = view.scrollTop) != null
+                    ? _view$scrollTop2
+                    : 0 +
+                      ((_view$height5 = view.height) != null
+                        ? _view$height5
+                        : MAX_HEIGHT_MOBILE - dialog.offsetHeight) *
+                        0.05;
+                require("sdk.DOM").setStyle(dialog, "top", top + "px");
+              }
+
+              function setupNewDarkOverlay() {
+                var overlay = document.createElement("div");
+
+                overlay.setAttribute("id", "fb_dialog_ipad_overlay");
+
+                this.applyScreenDimensions(overlay);
+                return overlay;
+              }
+
+              function setupNewDialog(options) {
+                options = options || {};
+                var dialogElement = document.createElement("div");
+                var _options = options,
+                  onClose = _options.onClose;
+
+                if (options.closeIcon && onClose) {
+                  var closeIcon = document.createElement("a");
+                  closeIcon.className = "fb_dialog_close_icon";
+                  require("DOMEventListener").add(closeIcon, "click", onClose);
+                  dialogElement.appendChild(closeIcon);
+                }
+
+                var className = "fb_dialog";
+                className += " " + (options.classes || "");
+                className += require("sdk.UA").mobile()
+                  ? " fb_dialog_mobile"
+                  : " fb_dialog_advanced";
+                dialogElement.className = className;
+
+                if (options.width) {
+                  var width = parseInt(options.width, 10);
+                  if (!isNaN(width)) {
+                    dialogElement.style.width = width + "px";
+                  }
+                }
+
+                var contentRoot = document.createElement("div");
+
+                if (options.content) {
+                  require("sdk.Content").append(options.content, contentRoot);
+                }
+                contentRoot.className = "fb_dialog_content";
+                dialogElement.appendChild(contentRoot);
+
+                if (require("sdk.UA").mobile()) {
+                  var padding = document.createElement("div");
+                  padding.className = "fb_dialog_padding";
+                  dialogElement.appendChild(padding);
+                }
+
+                return {
+                  dialogElement: dialogElement,
+                  contentRoot: contentRoot
+                };
+              }
+
+              function onDialogHideCleanup(isTablet) {
+                var body = document.body;
+                if (isTablet) {
+                  require("sdk.DOM").removeCss(body, "fb_reposition");
+                } else {
+                  require("sdk.DOM").removeCss(body, "fb_hidden");
+                }
+              }
             },
             null
           );
@@ -12277,8 +12269,8 @@ try {
                   );
                 }
               };
-
-              module.exports = Dialog;
+              var _default = Dialog;
+              module.exports = _default;
             },
             null
           );
@@ -15628,6 +15620,8 @@ try {
               module,
               exports
             ) {
+              exports.init = init;
+
               var sharePluginInitialize = function sharePluginInitialize() {
                 function replaceWithLink(share_button) {
                   if (!share_button) {
@@ -15653,6 +15647,7 @@ try {
                   var link = document.createElement("a");
 
                   link.style = "display:inline-block; zoom:1;";
+
                   link.textContent = require("sdk.fbt")._("Share to Facebook");
 
                   link.setAttribute("href", dialog.toString());
@@ -15696,10 +15691,6 @@ try {
                 }
                 sharePluginInitialize();
               }
-
-              module.exports = {
-                init: init
-              };
             },
             null
           );
@@ -17382,6 +17373,7 @@ try {
                         this._iframeOptions.root.style.width &&
                       this._iframe.style.height ===
                         this._iframeOptions.root.style.height;
+
                     require("sdk.DOM")[same ? "removeCss" : "addCss"](
                       this._iframe,
                       "fb_iframe_widget_lift"
@@ -17402,8 +17394,8 @@ try {
                   }
                 });
               };
-
-              module.exports = IframePlugin;
+              var _default = IframePlugin;
+              module.exports = _default;
             },
             null
           );
@@ -19302,7 +19294,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1002603640","namespace":"FB","message":"' +
+        '","revision":"1002612965","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
