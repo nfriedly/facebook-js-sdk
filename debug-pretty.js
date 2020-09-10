@@ -1,4 +1,4 @@
-/*1599634770,,JIT Construction: v1002635908,en_US*/
+/*1599721804,,JIT Construction: v1002642914,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3729,7 +3729,7 @@ try {
           })(typeof global === "undefined" ? this : global);
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1002635908",
+            revision: "1002642914",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -3988,6 +3988,9 @@ try {
               exports
             ) {
               "use strict";
+              exports.setLevel = setLevel;
+
+              var level = __DEV__ ? 3 : -1;
 
               var Level = {
                 DEBUG: 3,
@@ -4018,8 +4021,9 @@ try {
               };
               exports.log = log;
 
-              var level = __DEV__ ? 3 : -1;
-              exports.level = level;
+              function setLevel(l) {
+                level = l;
+              }
 
               var debug = ES(log, "bind", true, null, "debug", Level.DEBUG);
               exports.debug = debug;
@@ -5821,7 +5825,7 @@ try {
                 window._FB = FB;
               }
 
-              require("Log").level = __DEV__ ? 3 : 0;
+              require("Log").setLevel(__DEV__ ? 3 : 0);
 
               require("GlobalCallback").setPrefix("FB.__globalCallbacks");
 
@@ -19294,7 +19298,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1002635908","namespace":"FB","message":"' +
+        '","revision":"1002642914","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
