@@ -1,4 +1,4 @@
-/*1600184951,,JIT Construction: v1002666703,en_US*/
+/*1600411169,,JIT Construction: v1002687515,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -54,7 +54,6 @@ try {
         var __buffer = window.FB && window.FB.__buffer;
         var __w, __t;
         var undefined;
-        var __p;
         with (this) {
           /**
            * Copyright 2004-present Facebook. All Rights Reserved.
@@ -3729,7 +3728,7 @@ try {
           })(typeof global === "undefined" ? this : global);
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1002666703",
+            revision: "1002687515",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -7644,6 +7643,8 @@ try {
               module,
               exports
             ) {
+              exports.parseCallDataFromArgs = parseCallDataFromArgs;
+
               var METHODS = {
                 get: true,
                 post: true,
@@ -7695,8 +7696,6 @@ try {
 
                 return { uri: uri, callback: callback, params: params };
               }
-
-              module.exports = { parseCallDataFromArgs: parseCallDataFromArgs };
             },
             null
           );
@@ -8545,6 +8544,7 @@ try {
               var requestCounter = 0;
 
               var apiBatcher;
+
               var logger = require("Log");
 
               function request(url, method, paramsRaw, cb) {
@@ -8573,7 +8573,9 @@ try {
                 params = require("flattenObject")(params);
                 var availableTransports = {
                   jsonp: require("JSONPRequest"),
+
                   cors: require("CORSRequest"),
+
                   chunked: require("ChunkedRequest")
                 };
 
@@ -8867,8 +8869,8 @@ try {
                   method === "get"
                 );
               }
-
-              module.exports = ApiClient;
+              var _default = ApiClient;
+              module.exports = _default;
             },
             null
           );
@@ -18202,8 +18204,8 @@ try {
                   };
                 }
               });
-
-              module.exports = LoginButton;
+              var _default = LoginButton;
+              module.exports = _default;
             },
             null
           );
@@ -19008,8 +19010,6 @@ try {
               exports
             ) {
               var VideoCache = (function() {
-                "use strict";
-
                 function VideoCache(initData) {
                   this.$VideoCache_isMuted = initData.isMuted;
                   this.$VideoCache_volume = initData.volume;
@@ -19046,8 +19046,6 @@ try {
                 return VideoCache;
               })();
               var VideoController = (function() {
-                "use strict";
-
                 function VideoController(iframeName, observableMixin, cache) {
                   this.$VideoController_iframeName = iframeName;
                   this.$VideoController_sharedObservable = observableMixin;
@@ -19202,8 +19200,8 @@ try {
                   };
                 }
               });
-
-              module.exports = Video;
+              var _default = Video;
+              module.exports = _default;
             },
             null
           );
@@ -19299,7 +19297,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1002666703","namespace":"FB","message":"' +
+        '","revision":"1002687515","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
