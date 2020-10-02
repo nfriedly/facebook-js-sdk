@@ -1,4 +1,4 @@
-/*1601569752,,JIT Construction: v1002755055,en_US*/
+/*1601602763,,JIT Construction: v1002759629,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3728,7 +3728,7 @@ try {
           })(typeof global === "undefined" ? this : global);
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1002755055",
+            revision: "1002759629",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -8054,11 +8054,131 @@ try {
             null
           );
           __d(
+            "sdk.Cookie",
+            ["QueryString", "sdk.Runtime"],
+            function $module_sdk_Cookie(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              exports.setRaw = setRaw;
+              exports.getRaw = getRaw;
+              exports.setDomain = setDomain;
+              exports.getDomain = getDomain;
+              exports.loadMeta = loadMeta;
+              exports.loadSignedRequest = loadSignedRequest;
+              exports.setSignedRequestCookie = setSignedRequestCookie;
+              exports.clearSignedRequestCookie = clearSignedRequestCookie;
+
+              var domain = null;
+
+              function setRaw(startingPrefix, val, ts, secure) {
+                var _domain;
+                var prefix =
+                  startingPrefix + require("sdk.Runtime").getClientID();
+                var secureFlag = secure ? ";Secure" : "";
+                var useDomain = domain !== null && domain !== ".";
+
+                if (useDomain) {
+                  document.cookie =
+                    prefix +
+                    "=; expires=Wed, 04 Feb 2004 08:00:00 GMT" +
+                    secureFlag;
+
+                  document.cookie =
+                    prefix +
+                    "=; expires=Wed, 04 Feb 2004 08:00:00 GMT;" +
+                    "domain=" +
+                    location.hostname +
+                    secureFlag;
+                }
+
+                var expires = new Date(ts).toUTCString();
+                document.cookie =
+                  prefix +
+                  "=" +
+                  val +
+                  (val && ts === 0 ? "" : "; expires=" + expires) +
+                  "; path=/" +
+                  (useDomain
+                    ? "; domain=" + ((_domain = domain) != null ? _domain : "")
+                    : "") +
+                  secureFlag;
+              }
+
+              function getRaw(startingPrefix) {
+                var prefix =
+                  startingPrefix + require("sdk.Runtime").getClientID();
+                var regExp = new RegExp("\\b" + prefix + "=([^;]*)\\b");
+                var matches = document.cookie.match(regExp);
+                if (matches === null || matches === undefined) {
+                  return null;
+                } else {
+                  return matches[1];
+                }
+              }
+
+              function setDomain(val) {
+                domain = val;
+
+                var meta = require("QueryString").encode({
+                  base_domain: domain !== null && domain !== "." ? domain : ""
+                });
+
+                var expiration = new Date();
+                expiration.setFullYear(expiration.getFullYear() + 1);
+                setRaw("fbm_", meta, expiration.getTime(), true);
+              }
+
+              function getDomain() {
+                return domain;
+              }
+
+              function loadMeta() {
+                var cookie = getRaw("fbm_");
+                if (
+                  cookie !== null &&
+                  cookie !== undefined &&
+                  domain === null
+                ) {
+                  var meta = require("QueryString").decode(cookie);
+
+                  domain = meta.base_domain;
+                  return meta;
+                }
+                return null;
+              }
+
+              function loadSignedRequest() {
+                return getRaw("fbsr_");
+              }
+
+              function setSignedRequestCookie(signedRequest, expiration) {
+                if (signedRequest === "") {
+                  throw new Error(
+                    "Value passed to Cookie.setSignedRequestCookie was empty."
+                  );
+                }
+                setRaw("fbsr_", signedRequest, expiration, true);
+              }
+
+              function clearSignedRequestCookie() {
+                this.loadMeta();
+                setRaw("fbsr_", "", 0, true);
+              }
+            },
+            null
+          );
+          __d(
             "CORSRequest",
             [
               "Log",
               "QueryString",
               "RequestConstants",
+              "sdk.Cookie",
               "sdk.safelyParseResponse",
               "wrapFunction"
             ],
@@ -8082,6 +8202,11 @@ try {
                     "Content-type",
                     "application/x-www-form-urlencoded"
                   );
+
+                  var cppo = require("sdk.Cookie").getRaw("cppo");
+                  if (cppo) {
+                    xhr.setRequestHeader("x-fb-cppo", cppo);
+                  }
                 } else if (self.XDomainRequest) {
                   xhr = new XDomainRequest();
                   try {
@@ -8197,8 +8322,8 @@ try {
               var CORSRequest = {
                 execute: execute
               };
-
-              module.exports = CORSRequest;
+              var _default = CORSRequest;
+              module.exports = _default;
             },
             null
           );
@@ -9151,125 +9276,6 @@ try {
               require("FB").provide("", { api: require("sdk.api") });
             },
             3
-          );
-          __d(
-            "sdk.Cookie",
-            ["QueryString", "sdk.Runtime"],
-            function $module_sdk_Cookie(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              exports.setRaw = setRaw;
-              exports.getRaw = getRaw;
-              exports.setDomain = setDomain;
-              exports.getDomain = getDomain;
-              exports.loadMeta = loadMeta;
-              exports.loadSignedRequest = loadSignedRequest;
-              exports.setSignedRequestCookie = setSignedRequestCookie;
-              exports.clearSignedRequestCookie = clearSignedRequestCookie;
-
-              var domain = null;
-
-              function setRaw(startingPrefix, val, ts, secure) {
-                var _domain;
-                var prefix =
-                  startingPrefix + require("sdk.Runtime").getClientID();
-                var secureFlag = secure ? ";Secure" : "";
-                var useDomain = domain !== null && domain !== ".";
-
-                if (useDomain) {
-                  document.cookie =
-                    prefix +
-                    "=; expires=Wed, 04 Feb 2004 08:00:00 GMT" +
-                    secureFlag;
-
-                  document.cookie =
-                    prefix +
-                    "=; expires=Wed, 04 Feb 2004 08:00:00 GMT;" +
-                    "domain=" +
-                    location.hostname +
-                    secureFlag;
-                }
-
-                var expires = new Date(ts).toUTCString();
-                document.cookie =
-                  prefix +
-                  "=" +
-                  val +
-                  (val && ts === 0 ? "" : "; expires=" + expires) +
-                  "; path=/" +
-                  (useDomain
-                    ? "; domain=" + ((_domain = domain) != null ? _domain : "")
-                    : "") +
-                  secureFlag;
-              }
-
-              function getRaw(startingPrefix) {
-                var prefix =
-                  startingPrefix + require("sdk.Runtime").getClientID();
-                var regExp = new RegExp("\\b" + prefix + "=([^;]*)\\b");
-                var matches = document.cookie.match(regExp);
-                if (matches === null || matches === undefined) {
-                  return null;
-                } else {
-                  return matches[1];
-                }
-              }
-
-              function setDomain(val) {
-                domain = val;
-
-                var meta = require("QueryString").encode({
-                  base_domain: domain !== null && domain !== "." ? domain : ""
-                });
-
-                var expiration = new Date();
-                expiration.setFullYear(expiration.getFullYear() + 1);
-                setRaw("fbm_", meta, expiration.getTime(), true);
-              }
-
-              function getDomain() {
-                return domain;
-              }
-
-              function loadMeta() {
-                var cookie = getRaw("fbm_");
-                if (
-                  cookie !== null &&
-                  cookie !== undefined &&
-                  domain === null
-                ) {
-                  var meta = require("QueryString").decode(cookie);
-
-                  domain = meta.base_domain;
-                  return meta;
-                }
-                return null;
-              }
-
-              function loadSignedRequest() {
-                return getRaw("fbsr_");
-              }
-
-              function setSignedRequestCookie(signedRequest, expiration) {
-                if (signedRequest === "") {
-                  throw new Error(
-                    "Value passed to Cookie.setSignedRequestCookie was empty."
-                  );
-                }
-                setRaw("fbsr_", signedRequest, expiration, true);
-              }
-
-              function clearSignedRequestCookie() {
-                this.loadMeta();
-                setRaw("fbsr_", "", 0, true);
-              }
-            },
-            null
           );
           __d(
             "Miny",
@@ -19296,7 +19302,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1002755055","namespace":"FB","message":"' +
+        '","revision":"1002759629","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
