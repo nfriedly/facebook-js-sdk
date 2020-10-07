@@ -1,4 +1,4 @@
-/*1601915362,,JIT Construction: v1002769470,en_US*/
+/*1602110349,,JIT Construction: v1002786293,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3728,7 +3728,7 @@ try {
           })(typeof global === "undefined" ? this : global);
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1002769470",
+            revision: "1002786293",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -3898,9 +3898,11 @@ try {
               module,
               exports
             ) {
+              module.exports = wrapFunction;
+
               var wrappers = {};
 
-              var wrapFunction = function wrapFunction(fn, type, source) {
+              function wrapFunction(fn, type, source) {
                 var callee = type in wrappers ? wrappers[type](fn, source) : fn;
                 return function() {
                   for (
@@ -3914,13 +3916,11 @@ try {
                   }
                   return callee.apply(this, args);
                 };
-              };
+              }
 
               wrapFunction.setWrapper = function(fn, type) {
                 wrappers[type] = fn;
               };
-
-              module.exports = wrapFunction;
             },
             null
           );
@@ -4675,7 +4675,6 @@ try {
               exports
             ) {
               var ManagedError = (function(_Error) {
-                "use strict";
                 babelHelpers.inheritsLoose(ManagedError, _Error);
 
                 function ManagedError(message, innerError) {
@@ -4695,7 +4694,6 @@ try {
                 }
                 return ManagedError;
               })(babelHelpers.wrapNativeSuper(Error));
-
               module.exports = ManagedError;
             },
             null
@@ -4974,6 +4972,8 @@ try {
               module,
               exports
             ) {
+              module.exports = sprintf;
+
               function sprintf(format) {
                 for (
                   var _len = arguments.length,
@@ -4989,8 +4989,6 @@ try {
                   return String(args[index++]);
                 });
               }
-
-              module.exports = sprintf;
             },
             null
           );
@@ -5484,8 +5482,8 @@ try {
               }
 
               global.Env = Env;
-
-              module.exports = Env;
+              var _default = Env;
+              module.exports = _default;
             },
             null
           );
@@ -5502,14 +5500,14 @@ try {
             ) {
               "use strict";
 
-              var TAALOpcodes = {
-                PREVIOUS_FILE: 1,
-                PREVIOUS_FRAME: 2,
-                PREVIOUS_DIR: 3,
-                FORCED_KEY: 4
-              };
-
-              module.exports = TAALOpcodes;
+              var PREVIOUS_FILE = 1;
+              exports.PREVIOUS_FILE = PREVIOUS_FILE;
+              var PREVIOUS_FRAME = 2;
+              exports.PREVIOUS_FRAME = PREVIOUS_FRAME;
+              var PREVIOUS_DIR = 3;
+              exports.PREVIOUS_DIR = PREVIOUS_DIR;
+              var FORCED_KEY = 4;
+              exports.FORCED_KEY = FORCED_KEY;
             },
             null
           );
@@ -5525,6 +5523,7 @@ try {
               exports
             ) {
               "use strict";
+              module.exports = invariant;
               var c_Env;
 
               function invariant(condition, format) {
@@ -5624,8 +5623,6 @@ try {
                 }
                 return decodeURI;
               }
-
-              module.exports = invariant;
             },
             null
           );
@@ -6550,7 +6547,6 @@ try {
                 };
                 return ErrorMetadata;
               })();
-
               module.exports = ErrorMetadata;
             },
             null
@@ -6883,6 +6879,8 @@ try {
               module,
               exports
             ) {
+              module.exports = ex;
+
               function ex(message) {
                 for (
                   var _len = arguments.length,
@@ -6903,8 +6901,6 @@ try {
                   params: params
                 });
               }
-
-              module.exports = ex;
             },
             null
           );
@@ -7714,6 +7710,7 @@ try {
               exports
             ) {
               "use strict";
+              module.exports = errorCode;
 
               function errorCode(name) {
                 throw new Error(
@@ -7723,8 +7720,6 @@ try {
                     '"): This should not happen. Oh noes!'
                 );
               }
-
-              module.exports = errorCode;
             },
             null
           );
@@ -10939,8 +10934,8 @@ try {
               emptyFunction.thatReturnsArgument = function(arg) {
                 return arg;
               };
-
-              module.exports = emptyFunction;
+              var _default = emptyFunction;
+              module.exports = _default;
             },
             null
           );
@@ -19299,7 +19294,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1002769470","namespace":"FB","message":"' +
+        '","revision":"1002786293","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
