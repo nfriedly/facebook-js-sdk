@@ -1,4 +1,4 @@
-/*1602120552,,JIT Construction: v1002787953,en_US*/
+/*1602305952,,JIT Construction: v1002804076,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3728,7 +3728,7 @@ try {
           })(typeof global === "undefined" ? this : global);
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1002787953",
+            revision: "1002804076",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -6424,6 +6424,7 @@ try {
                 "oculus",
                 "oculus.store",
                 "oculus.feed",
+                "odh",
                 "skype",
                 "callto",
                 "workchat",
@@ -19300,7 +19301,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1002787953","namespace":"FB","message":"' +
+        '","revision":"1002804076","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
