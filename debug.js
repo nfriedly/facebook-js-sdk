@@ -1,4 +1,4 @@
-/*1602305952,,JIT Construction: v1002804076,en_US*/
+/*1602638369,,JIT Construction: v1002818281,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3465,7 +3465,7 @@ return __annotator(Set,{name:'Set'});
 
 global.Map=Map;
 global.Set=Set;
-})(typeof global==='undefined'?this:global);      __d("JSSDKRuntimeConfig",[],{"locale":"en_US","revision":"1002804076","rtl":false,"sdkab":null,"sdkns":"FB","sdkurl":"https:\/\/connect.facebook.net\/en_US\/all\/debug.js"});__d("UrlMapConfig",[],{"www":"www.facebook.com","m":"m.facebook.com","business":"business.facebook.com","api":"api.facebook.com","api_read":"api-read.facebook.com","graph":"graph.facebook.com","an":"an.facebook.com","fbcdn":"static.xx.fbcdn.net","cdn":"staticxx.facebook.com","graph_facebook":"graph.facebook.com","graph_gaming":"graph.fb.gg","graph_instagram":"graph.instagram.com"});__d("JSSDKConfig",[],{"features":{"allow_non_canvas_app_events":false,"error_handling":{"rate":4},"e2e_ping_tracking":{"rate":0.1},"xd_timeout":{"rate":1,"value":60000},"use_bundle":false,"should_log_response_error":true,"popup_blocker_scribe_logging":{"rate":100},"https_only_enforce_starting":2538809200000,"https_only_learn_more":"https:\/\/developers.facebook.com\/blog\/post\/2018\/06\/08\/enforce-https-facebook-login\/","https_only_scribe_logging":{"rate":1},"log_perf":{"rate":0.001},"use_x_xd":{"rate":100},"oauth_funnel_logger_version":1}});__d("JSSDKCssConfig",[],{"rules":".fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:\"lucida grande\", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}\u0040keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}\n.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_dialog_advanced{border-radius:8px;padding:10px}.fb_dialog_content{background:#fff;color:#373737}.fb_dialog_close_icon{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{left:5px;right:auto;top:5px}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/yd\/r\/Cou7n-nqK52.gif) no-repeat 5px 50\u0025;float:left;padding:5px 0 7px 26px}body.fb_hidden{height:100\u0025;left:0;margin:0;overflow:visible;position:absolute;top:-10000px;transform:none;width:100\u0025}.fb_dialog.fb_dialog_mobile.loading{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/ya\/r\/3rhSv5V8j3o.gif) white no-repeat 50\u0025 50\u0025;min-height:100\u0025;min-width:100\u0025;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{background:none;height:auto;min-height:initial;min-width:initial;width:auto}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100\u0025}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{clear:both;color:#fff;display:block;font-size:18px;padding-top:20px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .4);bottom:0;left:0;min-height:100\u0025;position:absolute;right:0;top:0;width:100\u0025;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_mobile .fb_dialog_iframe{position:sticky;top:0}.fb_dialog_content .dialog_header{background:linear-gradient(from(#738aba), to(#2c4987));border-bottom:1px solid;border-color:#043b87;box-shadow:white 0 1px 1px -1px inset;color:#fff;font:bold 14px Helvetica, sans-serif;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{height:43px;width:100\u0025}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:linear-gradient(from(#4267B2), to(#2a4887));background-clip:padding-box;border:1px solid #29487d;border-radius:3px;display:inline-block;line-height:18px;margin-top:3px;max-width:85px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{background:none;border:none;color:#fff;font:bold 12px Helvetica, sans-serif;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/y9\/r\/jKEcVPZFk-2.gif) no-repeat 50\u0025 50\u0025;border:1px solid #4a4a4a;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f5f6f7;border:1px solid #4a4a4a;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/yD\/r\/t-wz8gw1xG1.png);background-position:50\u0025 50\u0025;background-repeat:no-repeat;height:24px;width:24px}\u0040keyframes rotateSpinner{0\u0025{transform:rotate(0deg)}100\u0025{transform:rotate(360deg)}}\n.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100\u0025}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100\u0025}","components":["css:fb.css.base","css:fb.css.dialog","css:fb.css.iframewidget"]});__d("UriNeedRawQuerySVConfig",[],{"uris":["dms.netmng.com","doubleclick.net","r.msn.com","watchit.sky.com","graphite.instagram.com","www.kfc.co.th","learn.pantheon.io","www.landmarkshops.in","www.ncl.com","s0.wp.com","www.tatacliq.com","bs.serving-sys.com","kohls.com","lazada.co.th","xg4ken.com","technopark.ru","officedepot.com.mx","bestbuy.com.mx","booking.com"]});__d("JSSDKXDConfig",[],{"XXdUrl":"\/x\/connect\/xd_arbiter\/?version=46","useCdn":true});__d("JSSDKCanvasPrefetcherConfig",[],{"blacklist":[144959615576466,768691303149786,320528941393723],"sampleRate":500});                                                                                                                                                                                                                                                                                                                                                                                                                       __d("DOMWrapper",[],function $module_DOMWrapper(global,require,requireDynamic,requireLazy,module,exports){
+})(typeof global==='undefined'?this:global);      __d("JSSDKRuntimeConfig",[],{"locale":"en_US","revision":"1002818281","rtl":false,"sdkab":null,"sdkns":"FB","sdkurl":"https:\/\/connect.facebook.net\/en_US\/all\/debug.js"});__d("UrlMapConfig",[],{"www":"www.facebook.com","m":"m.facebook.com","business":"business.facebook.com","api":"api.facebook.com","api_read":"api-read.facebook.com","graph":"graph.facebook.com","an":"an.facebook.com","fbcdn":"static.xx.fbcdn.net","cdn":"staticxx.facebook.com","graph_facebook":"graph.facebook.com","graph_gaming":"graph.fb.gg","graph_instagram":"graph.instagram.com"});__d("JSSDKConfig",[],{"features":{"allow_non_canvas_app_events":false,"error_handling":{"rate":4},"e2e_ping_tracking":{"rate":0.1},"xd_timeout":{"rate":1,"value":60000},"use_bundle":false,"should_log_response_error":true,"popup_blocker_scribe_logging":{"rate":100},"https_only_enforce_starting":2538809200000,"https_only_learn_more":"https:\/\/developers.facebook.com\/blog\/post\/2018\/06\/08\/enforce-https-facebook-login\/","https_only_scribe_logging":{"rate":1},"log_perf":{"rate":0.001},"use_x_xd":{"rate":100},"oauth_funnel_logger_version":1}});__d("JSSDKCssConfig",[],{"rules":".fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:\"lucida grande\", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}\u0040keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}\n.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_dialog_advanced{border-radius:8px;padding:10px}.fb_dialog_content{background:#fff;color:#373737}.fb_dialog_close_icon{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{left:5px;right:auto;top:5px}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/yd\/r\/Cou7n-nqK52.gif) no-repeat 5px 50\u0025;float:left;padding:5px 0 7px 26px}body.fb_hidden{height:100\u0025;left:0;margin:0;overflow:visible;position:absolute;top:-10000px;transform:none;width:100\u0025}.fb_dialog.fb_dialog_mobile.loading{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/ya\/r\/3rhSv5V8j3o.gif) white no-repeat 50\u0025 50\u0025;min-height:100\u0025;min-width:100\u0025;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{background:none;height:auto;min-height:initial;min-width:initial;width:auto}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100\u0025}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{clear:both;color:#fff;display:block;font-size:18px;padding-top:20px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .4);bottom:0;left:0;min-height:100\u0025;position:absolute;right:0;top:0;width:100\u0025;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_mobile .fb_dialog_iframe{position:sticky;top:0}.fb_dialog_content .dialog_header{background:linear-gradient(from(#738aba), to(#2c4987));border-bottom:1px solid;border-color:#043b87;box-shadow:white 0 1px 1px -1px inset;color:#fff;font:bold 14px Helvetica, sans-serif;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{height:43px;width:100\u0025}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:linear-gradient(from(#4267B2), to(#2a4887));background-clip:padding-box;border:1px solid #29487d;border-radius:3px;display:inline-block;line-height:18px;margin-top:3px;max-width:85px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{background:none;border:none;color:#fff;font:bold 12px Helvetica, sans-serif;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/y9\/r\/jKEcVPZFk-2.gif) no-repeat 50\u0025 50\u0025;border:1px solid #4a4a4a;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f5f6f7;border:1px solid #4a4a4a;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/yD\/r\/t-wz8gw1xG1.png);background-position:50\u0025 50\u0025;background-repeat:no-repeat;height:24px;width:24px}\u0040keyframes rotateSpinner{0\u0025{transform:rotate(0deg)}100\u0025{transform:rotate(360deg)}}\n.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100\u0025}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100\u0025}","components":["css:fb.css.base","css:fb.css.dialog","css:fb.css.iframewidget"]});__d("JSSDKXDConfig",[],{"XXdUrl":"\/x\/connect\/xd_arbiter\/?version=46","useCdn":true});__d("JSSDKCanvasPrefetcherConfig",[],{"blacklist":[144959615576466,768691303149786,320528941393723],"sampleRate":500});                                                                                                                                                                                                                                                                                                                                                                                                                       __d("DOMWrapper",[],function $module_DOMWrapper(global,require,requireDynamic,requireLazy,module,exports){
 
 'use strict';exports.setRoot=setRoot;exports.getRoot=getRoot;exports.setWindow=setWindow;exports.getWindow=getWindow;
 
@@ -5526,316 +5526,6 @@ flat[_key]=ES("JSON","stringify",false,value);
 }
 return flat;
 }},null);
-                                                                                  __d("flattenPHPQueryData",["invariant"],(function $module_flattenPHPQueryData(global,require,requireDynamic,requireLazy,module,exports,invariant){module.exports=flattenPHPQueryData;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function flattenPHPQueryData(
-obj)
-{
-
-
-return _flattenPHPQueryData(obj,'',{});
-}
-
-function _flattenPHPQueryData(
-obj,
-name,
-componentsObject)
-{
-if(obj===null||obj===undefined){
-componentsObject[name]=undefined;
-}else if(typeof obj==='object'){
-
-typeof obj.appendChild!=='function'||invariant(0,
-'Trying to serialize a DOM node. Bad idea.');
-
-
-for(var k in obj){
-
-
-if(
-k!=='$$typeof'&&
-Object.prototype.hasOwnProperty.call(obj,k)&&
-obj[k]!==undefined)
-{
-_flattenPHPQueryData(
-obj[k],
-name?name+'['+k+']':k,
-componentsObject);
-
-}
-}
-}else{
-componentsObject[name]=obj;
-}
-
-return componentsObject;
-}}),null);
-                                                                                  __d("PHPQuerySerializer",["flattenPHPQueryData"],function $module_PHPQuerySerializer(global,require,requireDynamic,requireLazy,module,exports){
-
-
-
-
-
-
-
-
-
-
-
-
-
-function serialize(obj){
-var kv_pairs=[];
-var componentsObject=require("flattenPHPQueryData")(obj);
-
-for(var component in componentsObject){
-if(Object.prototype.hasOwnProperty.call(componentsObject,component)){
-var key=encodeComponent(component);
-if(componentsObject[component]===undefined){
-kv_pairs.push(key);
-}else{
-kv_pairs.push(
-key+'='+encodeComponent(String(componentsObject[component])));
-
-}
-}
-}
-
-return kv_pairs.join('&');
-}
-
-
-
-
-
-
-
-
-
-
-function encodeComponent(raw){
-return encodeURIComponent(raw).
-replace(/%5D/g,']').
-replace(/%5B/g,'[');
-}
-
-
-
-
-var ARRAY_QUERY_PATTERN=/^([-_\w]+)((?:\[[-_\w]*\])+)=?(.*)/;
-
-function replaceBadKeys(key){
-if(key==='hasOwnProperty'||key==='__proto__'){
-
-
-
-
-
-return'\ud83d\udf56';
-}
-return key;
-}
-
-
-
-
-
-
-
-function deserialize(query){
-if(!query){
-return{};
-}
-
-var result={};
-
-
-var queryAsString=query.replace(/%5B/gi,'[').replace(/%5D/gi,']');
-
-var queryAsArray=queryAsString.split('&');
-
-var hasOwnProp=Object.prototype.hasOwnProperty;
-
-for(var ii=0,length=queryAsArray.length;ii<length;ii++){
-var match=queryAsArray[ii].match(ARRAY_QUERY_PATTERN);
-
-if(!match){
-var splitIndex=ES(queryAsArray[ii],"indexOf",true,'=');
-if(splitIndex===-1){
-result[decodeComponent(queryAsArray[ii])]=null;
-}else{
-var key=queryAsArray[ii].substring(0,splitIndex);
-var value=queryAsArray[ii].substring(splitIndex+1);
-result[decodeComponent(key)]=decodeComponent(value);
-}
-}else{
-var indices=match[2].split(/\]\[|\[|\]/).slice(0,-1);
-var name=match[1];
-var _value=decodeComponent(match[3]||'');
-indices[0]=name;
-
-
-
-var resultNode=result;
-for(var i=0;i<indices.length-1;i++){
-var _key=replaceBadKeys(indices[i]);
-if(_key){
-if(!hasOwnProp.call(resultNode,_key)){
-var nv=
-indices[i+1]&&!indices[i+1].match(/^\d{1,3}$/)?{}:[];
-resultNode[_key]=nv;
-if(resultNode[_key]!==nv){
-
-
-
-
-return result;
-}
-}
-
-resultNode=resultNode[_key];
-}else{
-if(indices[i+1]&&!indices[i+1].match(/^\d{1,3}$/)){
-resultNode.push({});
-}else{
-resultNode.push([]);
-}
-resultNode=resultNode[resultNode.length-1];
-}
-}
-
-if(resultNode instanceof Array&&indices[indices.length-1]===''){
-resultNode.push(_value);
-}else{
-resultNode[replaceBadKeys(indices[indices.length-1])]=_value;
-}
-}
-}
-return result;
-}
-
-
-
-
-
-
-
-
-
-
-function decodeComponent(encoded_s){
-try{
-return decodeURIComponent(encoded_s.replace(/\+/g,' '));
-}catch(_unused){
-if(__DEV__){
-console.error('Bad UTF8 in URL: ',encoded_s);
-}
-return encoded_s;
-}
-}
-
-var PHPQuerySerializer={
-serialize:serialize,
-encodeComponent:encodeComponent,
-deserialize:deserialize,
-decodeComponent:decodeComponent};
-
-
-module.exports=PHPQuerySerializer;},null);
-                                                                                               __d("PHPQuerySerializerNoEncoding",["PHPQuerySerializer","flattenPHPQueryData"],(function $module_PHPQuerySerializerNoEncoding(global,require,requireDynamic,requireLazy,module,exports){exports.serialize=serialize;exports.encodeComponent=encodeComponent;var c_PHPQuerySerializer;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function serialize(obj){
-var kv_pairs=[];
-var componentsObject=require("flattenPHPQueryData")(obj);
-
-for(var component in componentsObject){
-if(Object.prototype.hasOwnProperty.call(componentsObject,component)){
-var key=encodeComponent(component);
-if(componentsObject[component]===undefined){
-kv_pairs.push(key);
-}else{
-kv_pairs.push(
-key+'='+encodeComponent(String(componentsObject[component])));
-
-}
-}
-}
-
-return kv_pairs.join('&');
-}
-
-
-
-
-
-
-
-function encodeComponent(raw){
-return raw;
-}
-
-var deserialize=(c_PHPQuerySerializer||(c_PHPQuerySerializer=require("PHPQuerySerializer"))).deserialize;exports.deserialize=deserialize;
-
-var decodeComponent=c_PHPQuerySerializer.decodeComponent;exports.decodeComponent=decodeComponent;}),null);
                                                                                                         __d("URIRFC3986",[],function $module_URIRFC3986(global,require,requireDynamic,requireLazy,module,exports){exports.parse=parse;
 
 
@@ -6046,508 +5736,6 @@ return true;
 }
 return Object.prototype.hasOwnProperty.call(defaultSchemes,schema.toLowerCase());
 }},null);
-                                                                                                                                                                                                      __d("ErrorMetadata",[],function $module_ErrorMetadata(global,require,requireDynamic,requireLazy,module,exports){
-
-'use strict';
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-var globalMetadata=[];var
-
-ErrorMetadata=function(){
-
-
-function ErrorMetadata(){
-this.metadata=[].concat(globalMetadata);
-}var _proto=ErrorMetadata.prototype;_proto.
-
-
-
-
-
-addEntries=function addEntries(){var _this$metadata;
-(_this$metadata=this.metadata).push.apply(_this$metadata,arguments);
-return this;
-};_proto.
-
-
-
-
-
-
-
-addEntry=function addEntry(product,name,value){
-this.metadata.push([product,name,value]);
-return this;
-};_proto.
-
-isEmpty=function isEmpty(){
-return this.metadata.length===0;
-};_proto.
-
-clearEntries=function clearEntries(){
-this.metadata=[];
-};_proto.
-
-format=function format(){
-
-
-
-
-var formattedMetadata=[];
-ES(this.metadata,"forEach",true,function metadata_forEach_$0(entry){
-if(entry&&entry.length){
-var formattedEntry=ES(entry,"map",true,
-function entry_map_$0(s){return s!=null?String(s).replace(/:/g,'_'):'';}).
-join(':');
-formattedMetadata.push(formattedEntry);
-}
-});
-return formattedMetadata;
-};_proto.
-
-getAll=function getAll(){
-return this.metadata;
-};ErrorMetadata.
-
-
-addGlobalMetadata=function addGlobalMetadata(product,name,value){
-globalMetadata.push([product,name,value]);
-};ErrorMetadata.
-
-getGlobalMetadata=function getGlobalMetadata(){
-return globalMetadata;
-};ErrorMetadata.
-
-unsetGlobalMetadata=function unsetGlobalMetadata(product,name){
-globalMetadata=ES(globalMetadata,"filter",true,function globalMetadata_filter_$0(entry){
-return!(
-ES("Array","isArray",false,entry)&&
-entry[0]===product&&
-entry[1]===name);
-
-});
-};return ErrorMetadata;}();module.exports=ErrorMetadata;},null);
-                                                                                                                                                                                                                   __d("ErrorSerializer",["ErrorMetadata"],function $module_ErrorSerializer(global,require,requireDynamic,requireLazy,module,exports){
-
-'use strict';
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-var LEVEL_PRI={
-debug:1,
-info:2,
-warn:3,
-error:4,
-fatal:5};
-
-
-
-
-
-
-
-function _parse(s){
-try{
-
-
-var matches=_safeMatches(
-s,
-/^([\s\S]*)<\!\[EX\[(\[.*\])\]\]>([\s\S]*)$/);
-
-if(!matches){
-
-return _parseMessageWithTAAL(s);
-}var
-
-
-left=matches[0],serialized=matches[1],right=matches[2];var _JSON$parse=ES("JSON","parse",false,
-serialized),messageWithTAAL=_JSON$parse[0],params=_JSON$parse.slice(1);
-
-var serializableError=_parseMessageWithTAAL(messageWithTAAL);
-
-serializableError.message=left+serializableError.message+right;
-if(params&&params.length>0){
-serializableError.params=ES(params,"map",true,function params_map_$0(param){return String(param);});
-}
-return serializableError;
-}catch(e){
-return{
-message:'Unable to parse error message %s because %s',
-params:[s,e.message]};
-
-}
-}
-
-
-
-
-
-function stringify(serializableError){
-return"<![EX["+ES("JSON","stringify",false,toMessageWithParams(serializableError))+"]]>";
-}
-
-function parseFromError(error){
-if(error.messageFormat==null){
-
-return _parse(error.message);
-}
-
-
-var serializable={
-message:String(error.messageFormat)};
-
-if(error.messageParams){
-serializable.params=[].concat(error.messageParams);
-}
-serializable.forcedKey=error.forcedKey;
-if(error.taalOpcodes){
-serializable.taalOpcodes=error.taalOpcodes;
-}
-return serializable;
-}
-
-
-
-
-
-function aggregateError(error,context){var _firstKey;
-var caughtError=parseFromError(error);
-if(ES("Object","isFrozen",false,error)){
-
-return;
-}
-
-
-
-if(context.type){
-if(!error.type||LEVEL_PRI[error.type]>LEVEL_PRI[context.type]){
-error.type=context.type;
-}
-}
-
-var contextMeta=context.metadata;
-if(contextMeta!=null){var _error$metadata;
-var metadata=(_error$metadata=error.metadata)!=null?_error$metadata:new(require("ErrorMetadata"))();
-metadata.addEntries.apply(metadata,contextMeta.getAll());
-error.metadata=metadata;
-}
-
-if(context.project!=null){
-error.project=context.project;
-}
-
-if(context.errorName!=null){
-error.errorName=context.errorName;
-}
-
-if(context.componentStack!=null){
-error.componentStack=context.componentStack;
-}
-
-if(context.deferredSource!=null){
-error.deferredSource=context.deferredSource;
-}
-
-var messageFormat=caughtError.message;
-var messageParams=toStringParams(caughtError.params);
-if(
-messageFormat!==context.messageFormat&&
-context.messageFormat!=null)
-{var _context$messageParam;
-messageFormat+=" [Caught in: "+context.messageFormat+"]";
-messageParams.push.apply(messageParams,(_context$messageParam=context.messageParams)!=null?_context$messageParam:[]);
-}
-error.messageFormat=messageFormat;
-error.messageParams=messageParams;
-
-var firstKey=context.forcedKey;
-var secondKey=caughtError.forcedKey;
-var forcedKey=
-firstKey!=null&&secondKey!=null?
-firstKey+"_"+secondKey:(_firstKey=
-firstKey)!=null?_firstKey:secondKey;
-error.forcedKey=forcedKey;
-
-if(caughtError.taalOpcodes!=null){
-error.taalOpcodes=caughtError.taalOpcodes;
-}
-}
-
-
-
-
-function _toFormattedMessageNoTAAL(
-serializableError)
-{
-var message=serializableError.message||'';
-var params=toStringParams(serializableError.params);
-return toReadableMessage(message,params);
-}
-
-function toReadableMessage(format,params){
-var index=0;
-
-
-var formattedMessage=format.replace(/%s/g,function format_replace_$1(){return(
-index<params.length?params[index++]:'NOPARAM');});
-
-if(index<params.length){
-
-formattedMessage+=" PARAMS"+ES("JSON","stringify",false,params.slice(index));
-}
-return formattedMessage;
-}
-
-
-
-
-function toFormattedMessage(serializableError){
-var message=serializableError.message||'';
-var params=toStringParams(serializableError.params);
-return toReadableMessage(message,params)+toTAALSuffix(serializableError);
-}
-
-
-
-
-function toMessageWithParams(
-serializableError)
-{
-return[
-serializableError.message+toTAALSuffix(serializableError)].concat(
-toStringParams(serializableError.params));
-
-}
-
-function toTAALSuffix(serializableError){var
-taalOpcodes=serializableError.taalOpcodes,forcedKey=serializableError.forcedKey;
-var allOpcodes=[];
-if(taalOpcodes){
-allOpcodes.push.apply(allOpcodes,taalOpcodes);
-}
-
-if(forcedKey){
-
-
-allOpcodes.push('4'+forcedKey.replace(/[^\d\w]/g,'_'));
-}
-return allOpcodes.length>0?" TAAL["+allOpcodes.join(';')+"]":'';
-}
-
-function toStringParams(params){var _params;
-return ES((_params=params)!=null?_params:[],"map",true,function map_$0(param){return String(param);});
-}
-
-function _parseMessageWithTAAL(messageWithTAAL){var _matches;
-
-
-var matches=_safeMatches(messageWithTAAL,/^([\s\S]*) TAAL\[(.*)\]$/);var _ref=(_matches=
-matches)!=null?_matches:[messageWithTAAL,null],message=_ref[0],taalOpcodesString=_ref[1];
-var serializableError={message:message};
-
-if(taalOpcodesString){
-var taalOpcodes=[];
-
-
-for(var _iterator=taalOpcodesString.split(';'),_isArray=ES("Array","isArray",false,_iterator),_i=0,_iterator=_isArray?_iterator:_iterator[typeof Symbol==="function"?Symbol.iterator:"@@iterator"]();;){var _ref2;if(_isArray){if(_i>=_iterator.length)break;_ref2=_iterator[_i++];}else{_i=_iterator.next();if(_i.done)break;_ref2=_i.value;}var opcode=_ref2;
-if(opcode==='1'||opcode==='2'||opcode==='3'){
-
-taalOpcodes.push(parseInt(opcode,10));
-}else if(opcode[0]==='4'&&opcode.length>1){
-serializableError.forcedKey=opcode.substring(1);
-}else{
-
-return{message:messageWithTAAL};
-}
-}
-if(taalOpcodes.length>0){
-serializableError.taalOpcodes=taalOpcodes;
-}
-}
-return serializableError;
-}
-
-function _safeMatches(s,re){
-if(typeof s==='string'){
-var matches=s.match(re);
-if(matches&&matches.length>0){
-return matches.slice(1);
-}
-}
-}
-
-module.exports=global.ErrorSerializer={
-aggregateError:aggregateError,
-parseFromError:parseFromError,
-stringify:stringify,
-toFormattedMessage:toFormattedMessage,
-toReadableMessage:toReadableMessage,
-toMessageWithParams:toMessageWithParams,
-toStringParams:toStringParams};},3);
-                                                                                                          __d("ex",["ErrorSerializer"],function $module_ex(global,require,requireDynamic,requireLazy,module,exports){module.exports=ex;
-
-
-
-
-
-
-
-
-
-function ex(message){for(var _len=arguments.length,rawArgs=new Array(_len>1?_len-1:0),_key=1;_key<_len;_key++){rawArgs[_key-1]=arguments[_key];}
-var params=ES(rawArgs,"map",true,function rawArgs_map_$0(p){return String(p);});
-return require("ErrorSerializer").stringify({message:message,params:params});
-}},null);
-                                                                                                              __d("isInternalFBURI",[],function $module_isInternalFBURI(global,require,requireDynamic,requireLazy,module,exports){module.exports=isInternalFBURI;
-
-
-
-
-var internalFBURIRegex=new RegExp('(^|\\.)internalfb\\.com$','i');
-
-
-
-
-
-function isInternalFBURI(uri){
-return internalFBURIRegex.test(uri.getDomain());
-}},null);
                                                                                          __d("setHostSubdomain",[],(function $module_setHostSubdomain(global,require,requireDynamic,requireLazy,module,exports){module.exports=setHostSubdomain;
 
 function setHostSubdomain(
@@ -6562,11 +5750,7 @@ pieces[0]=subdomain;
 }
 return pieces.join('.');
 }}),null);
-                                                                                  __d("URIBase",["invariant","PHPQuerySerializerNoEncoding","UriNeedRawQuerySVChecker","URIRFC3986","URISchemes","ex","isInternalFBURI","setHostSubdomain"],function $module_URIBase(global,require,requireDynamic,requireLazy,module,exports,invariant){var c_URIRFC3986;var c_URISchemes;
-
-
-
-
+                                                                                  __d("URIAbstractBase",["invariant","URIRFC3986","URISchemes","setHostSubdomain"],function $module_URIAbstractBase(global,require,requireDynamic,requireLazy,module,exports,invariant){var c_URIRFC3986;var c_URISchemes;
 
 
 
@@ -6608,6 +5792,7 @@ var SECURITY_PATTERN=new RegExp(
 
 
 
+var uriFilters=[];var
 
 
 
@@ -6615,7 +5800,58 @@ var SECURITY_PATTERN=new RegExp(
 
 
 
-function parse(
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+URIAbstractBase=function(){"use strict";URIAbstractBase.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+parse=function parse(
 uri,
 uriToParse,
 shouldThrow,
@@ -6626,7 +5862,7 @@ return true;
 }
 
 
-if(uriToParse instanceof URIBase){
+if(uriToParse instanceof URIAbstractBase){
 uri.setProtocol(uriToParse.getProtocol());
 uri.setDomain(uriToParse.getDomain());
 uri.setPort(uriToParse.getPort());
@@ -6678,45 +5914,36 @@ uri.setOriginalRawQuery(components.query);
 uri.setQueryParamModified(false);
 if(components.userinfo!==null){
 if(shouldThrow){
-throw new Error(
-require("ex")(
-'URI.parse: invalid URI (userinfo is not allowed in a URI): %s',
-uriToParse));
+throw new Error("URI.parse: invalid URI (userinfo is not allowed in a URI): "+
+uriToParse);
 
-
-}else{
-return false;
 }
+
+return false;
 }
 
 
 
 if(!uri.getDomain()&&ES(uri.getPath(),"indexOf",true,'\\')!==-1){
 if(shouldThrow){
-throw new Error(
-require("ex")(
-'URI.parse: invalid URI (no domain but multiple back-slashes): %s',
-uriToParse));
+throw new Error("URI.parse: invalid URI (no domain but multiple back-slashes): "+
+uriToParse);
 
-
-}else{
-return false;
 }
+
+return false;
 }
 
 
 
 if(!uri.getProtocol()&&SECURITY_PATTERN.test(uriToParse)){
 if(shouldThrow){
-throw new Error(
-require("ex")(
-'URI.parse: invalid URI (unsafe protocol-relative URLs): %s',
-uriToParse));
+throw new Error("URI.parse: invalid URI (unsafe protocol-relative URLs): "+
+uriToParse+"'");
 
-
-}else{
-return false;
 }
+
+return false;
 }
 
 
@@ -6725,30 +5952,35 @@ return false;
 
 if(uri.getDomain()&&uri.getPath()&&!ES(uri.getPath(),"startsWith",true,'/')){
 if(shouldThrow){
-throw new Error(
-require("ex")(
-'URI.parse: invalid URI (domain and path where path lacks leading slash): %s',
-uriToParse));
+throw new Error("URI.parse: invalid URI (domain and path where path lacks leading slash): "+
+uriToParse);
 
-
-}else{
-return false;
 }
+
+return false;
 }
 
 return true;
-}
+};URIAbstractBase.
 
 
 
 
-var uriFilters=[];var
 
 
 
 
 
 
+tryParse=function tryParse(
+uri,
+serializer)
+{
+var result=new URIAbstractBase(null,serializer);
+return URIAbstractBase.parse(result,uri,false,serializer)?
+result:
+null;
+};URIAbstractBase.
 
 
 
@@ -6760,83 +5992,31 @@ var uriFilters=[];var
 
 
 
-
-
-
-
-
-
-
-
-URIBase=function(){"use strict";URIBase.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-tryParse=function tryParse(uri,serializer){
-var result=new URIBase(null,serializer);
-return parse(result,uri,false,serializer)?result:null;
-};URIBase.
-
-
-
-
-
-
-
-
-
-
-
-isValid=function isValid(uri,serializer){
-return!!URIBase.tryParse(uri,serializer);
+isValid=function isValid(
+uri,
+serializer)
+{
+return!!URIAbstractBase.tryParse(uri,serializer);
 };
 
 
 
 
-function URIBase(uri,serializer){
+function URIAbstractBase(uri,serializer){
 serializer||invariant(0,'no serializer set');
-this.$URIBase_serializer=serializer;
+this.$URIAbstractBase_serializer=serializer;
 
-this.$URIBase_protocol='';
-this.$URIBase_domain='';
-this.$URIBase_port='';
-this.$URIBase_path='';
-this.$URIBase_fragment='';
-this.$URIBase_isGeneric=false;
-this.$URIBase_queryData={};
-this.$URIBase_forceFragmentSeparator=false;
-parse(this,uri,true,serializer);
-this.$URIBase_isQueryParamModified=false;
-}var _proto=URIBase.prototype;_proto.
+this.$URIAbstractBase_protocol='';
+this.$URIAbstractBase_domain='';
+this.$URIAbstractBase_port='';
+this.$URIAbstractBase_path='';
+this.$URIAbstractBase_fragment='';
+this.$URIAbstractBase_isGeneric=false;
+this.$URIAbstractBase_queryData={};
+this.$URIAbstractBase_forceFragmentSeparator=false;
+URIAbstractBase.parse(this,uri,true,serializer);
+this.$URIAbstractBase_isQueryParamModified=false;
+}var _proto=URIAbstractBase.prototype;_proto.
 
 
 
@@ -6845,7 +6025,7 @@ setProtocol=function setProtocol(protocol){
 if(!(c_URISchemes||(c_URISchemes=require("URISchemes"))).isAllowed(protocol)){
 false||invariant(0,'"%s" is not a valid protocol for a URI.',protocol);
 }
-this.$URIBase_protocol=protocol;
+this.$URIAbstractBase_protocol=protocol;
 return this;
 };_proto.
 
@@ -6853,7 +6033,7 @@ return this;
 
 
 getProtocol=function getProtocol(){
-return(this.$URIBase_protocol||'').toLowerCase();
+return(this.$URIAbstractBase_protocol||'').toLowerCase();
 };_proto.
 
 
@@ -6879,16 +6059,12 @@ setDomain=function setDomain(domain){
 
 
 if(UNSAFE_DOMAIN_PATTERN.test(domain)){
-throw new Error(
-require("ex")(
-'URI.setDomain: unsafe domain specified: %s for url %s',
-domain,
-this.toString()));
-
+throw new Error("URI.setDomain: unsafe domain specified: "+
+domain+" for url "+this.toString());
 
 }
 
-this.$URIBase_domain=domain;
+this.$URIAbstractBase_domain=domain;
 return this;
 };_proto.
 
@@ -6896,14 +6072,14 @@ return this;
 
 
 getDomain=function getDomain(){
-return this.$URIBase_domain;
+return this.$URIAbstractBase_domain;
 };_proto.
 
 
 
 
 setPort=function setPort(port){
-this.$URIBase_port=port;
+this.$URIAbstractBase_port=port;
 return this;
 };_proto.
 
@@ -6911,7 +6087,7 @@ return this;
 
 
 getPort=function getPort(){
-return this.$URIBase_port;
+return this.$URIAbstractBase_port;
 };_proto.
 
 
@@ -6929,7 +6105,7 @@ this.toString());
 
 }
 }
-this.$URIBase_path=path;
+this.$URIAbstractBase_path=path;
 return this;
 };_proto.
 
@@ -6937,7 +6113,7 @@ return this;
 
 
 getPath=function getPath(){
-return this.$URIBase_path;
+return this.$URIAbstractBase_path;
 };_proto.
 
 
@@ -6949,11 +6125,11 @@ return this.$URIBase_path;
 addQueryData=function addQueryData(mapOrKey,value){
 
 if(Object.prototype.toString.call(mapOrKey)==='[object Object]'){
-ES("Object","assign",false,this.$URIBase_queryData,mapOrKey);
+ES("Object","assign",false,this.$URIAbstractBase_queryData,mapOrKey);
 }else{
-this.$URIBase_queryData[mapOrKey]=value;
+this.$URIAbstractBase_queryData[mapOrKey]=value;
 }
-this.$URIBase_isQueryParamModified=true;
+this.$URIAbstractBase_isQueryParamModified=true;
 return this;
 };_proto.
 
@@ -6962,8 +6138,8 @@ return this;
 
 
 setQueryData=function setQueryData(map){
-this.$URIBase_queryData=map;
-this.$URIBase_isQueryParamModified=true;
+this.$URIAbstractBase_queryData=map;
+this.$URIAbstractBase_isQueryParamModified=true;
 return this;
 };_proto.
 
@@ -6971,7 +6147,7 @@ return this;
 
 
 getQueryData=function getQueryData(){
-return this.$URIBase_queryData;
+return this.$URIAbstractBase_queryData;
 };_proto.
 
 
@@ -6979,16 +6155,7 @@ return this.$URIBase_queryData;
 
 
 setQueryString=function setQueryString(queryString){
-return this.setQueryData(this.$URIBase_serializer.deserialize(queryString));
-};_proto.
-
-
-
-
-
-
-getQueryString=function getQueryString(preserveQuery){if(preserveQuery===void 0){preserveQuery=false;}
-return this.$URIBase_renderQuery(false,preserveQuery);
+return this.setQueryData(this.$URIAbstractBase_serializer.deserialize(queryString));
 };_proto.
 
 
@@ -6998,21 +6165,44 @@ return this.$URIBase_renderQuery(false,preserveQuery);
 
 
 
+getQueryString=function getQueryString(
+preserveQuery,
+isDomainNeedRawQuery,
+PHPQuerySerializerNoEncoding)
+{if(preserveQuery===void 0){preserveQuery=false;}if(isDomainNeedRawQuery===void 0){isDomainNeedRawQuery=function isDomainNeedRawQuery(){return false;};}if(PHPQuerySerializerNoEncoding===void 0){PHPQuerySerializerNoEncoding=null;}
+return this.$URIAbstractBase_renderQuery(
+false,
+preserveQuery,
+isDomainNeedRawQuery,
+PHPQuerySerializerNoEncoding);
 
-$URIBase_renderQuery=function $URIBase_renderQuery(
+};_proto.
+
+
+
+
+
+
+
+
+
+
+
+$URIAbstractBase_renderQuery=function $URIAbstractBase_renderQuery(
 rawQuery,
-preserveQuery)
-{if(rawQuery===void 0){rawQuery=false;}if(preserveQuery===void 0){preserveQuery=false;}
+preserveQuery,
+isDomainNeedRawQuery,
+PHPQuerySerializerNoEncoding)
+{if(rawQuery===void 0){rawQuery=false;}if(preserveQuery===void 0){preserveQuery=false;}if(isDomainNeedRawQuery===void 0){isDomainNeedRawQuery=function isDomainNeedRawQuery(){return false;};}if(PHPQuerySerializerNoEncoding===void 0){PHPQuerySerializerNoEncoding=null;}
 if(
-!this.$URIBase_isQueryParamModified&&(
-preserveQuery||
-require("UriNeedRawQuerySVChecker").isDomainNeedRawQuery(this.getDomain())))
-{var _this$$URIBase_origin;
-return(_this$$URIBase_origin=this.$URIBase_originalRawQuery)!=null?_this$$URIBase_origin:'';
+!this.$URIAbstractBase_isQueryParamModified&&(
+preserveQuery||isDomainNeedRawQuery(this.getDomain())))
+{var _this$$URIAbstractBas;
+return(_this$$URIAbstractBas=this.$URIAbstractBase_originalRawQuery)!=null?_this$$URIAbstractBas:'';
 }
-return(rawQuery?require("PHPQuerySerializerNoEncoding"):
-
-this.$URIBase_serializer).
+return(rawQuery&&PHPQuerySerializerNoEncoding?
+PHPQuerySerializerNoEncoding:
+this.$URIAbstractBase_serializer).
 serialize(this.getQueryData());
 };_proto.
 
@@ -7024,9 +6214,9 @@ if(!ES("Array","isArray",false,keys)){
 keys=[keys];
 }
 for(var i=0,length=keys.length;i<length;++i){
-delete this.$URIBase_queryData[keys[i]];
+delete this.$URIAbstractBase_queryData[keys[i]];
 }
-this.$URIBase_isQueryParamModified=true;
+this.$URIAbstractBase_isQueryParamModified=true;
 return this;
 };_proto.
 
@@ -7034,7 +6224,7 @@ return this;
 
 
 setFragment=function setFragment(fragment){
-this.$URIBase_fragment=fragment;
+this.$URIAbstractBase_fragment=fragment;
 
 this.setForceFragmentSeparator(false);
 return this;
@@ -7044,7 +6234,7 @@ return this;
 
 
 getFragment=function getFragment(){
-return this.$URIBase_fragment;
+return this.$URIAbstractBase_fragment;
 };_proto.
 
 
@@ -7059,7 +6249,7 @@ return this.$URIBase_fragment;
 
 
 setForceFragmentSeparator=function setForceFragmentSeparator(shouldForce){
-this.$URIBase_forceFragmentSeparator=shouldForce;
+this.$URIAbstractBase_forceFragmentSeparator=shouldForce;
 return this;
 };_proto.
 
@@ -7068,29 +6258,29 @@ return this;
 
 
 getForceFragmentSeparator=function getForceFragmentSeparator(){
-return this.$URIBase_forceFragmentSeparator;
+return this.$URIAbstractBase_forceFragmentSeparator;
 };_proto.
 
 setIsGeneric=function setIsGeneric(isGeneric){
-this.$URIBase_isGeneric=isGeneric;
+this.$URIAbstractBase_isGeneric=isGeneric;
 return this;
 };_proto.
 
 getIsGeneric=function getIsGeneric(){
-return this.$URIBase_isGeneric;
+return this.$URIAbstractBase_isGeneric;
 };_proto.
 
 getOriginalRawQuery=function getOriginalRawQuery(){
-return this.$URIBase_originalRawQuery;
+return this.$URIAbstractBase_originalRawQuery;
 };_proto.
 
 setOriginalRawQuery=function setOriginalRawQuery(originalRawQuery){
-this.$URIBase_originalRawQuery=originalRawQuery;
+this.$URIAbstractBase_originalRawQuery=originalRawQuery;
 return this;
 };_proto.
 
 setQueryParamModified=function setQueryParamModified(isQueryParamModified){
-this.$URIBase_isQueryParamModified=isQueryParamModified;
+this.$URIAbstractBase_isQueryParamModified=isQueryParamModified;
 return this;
 };_proto.
 
@@ -7111,28 +6301,18 @@ this.getFragment());
 
 
 
-toString=function toString(){
-return this.$URIBase_toStringWithFilters(false,false);
-};_proto.
 
 
+toString=function toString(
+isDomainNeedRawQuery,
+PHPQuerySerializerNoEncoding)
+{if(isDomainNeedRawQuery===void 0){isDomainNeedRawQuery=function isDomainNeedRawQuery(){return false;};}if(PHPQuerySerializerNoEncoding===void 0){PHPQuerySerializerNoEncoding=null;}
+return this.$URIAbstractBase_toStringWithFilters(
+false,
+false,
+isDomainNeedRawQuery,
+PHPQuerySerializerNoEncoding);
 
-
-toStringRawQuery=function toStringRawQuery(){
-return this.$URIBase_toStringWithFilters(true,false);
-};_proto.
-
-
-
-
-
-
-
-
-
-
-toStringPreserveQuery=function toStringPreserveQuery(){
-return this.$URIBase_toStringWithFilters(false,true);
 };_proto.
 
 
@@ -7140,18 +6320,67 @@ return this.$URIBase_toStringWithFilters(false,true);
 
 
 
+toStringRawQuery=function toStringRawQuery(
+isDomainNeedRawQuery,
+PHPQuerySerializerNoEncoding)
+{if(isDomainNeedRawQuery===void 0){isDomainNeedRawQuery=function isDomainNeedRawQuery(){return false;};}if(PHPQuerySerializerNoEncoding===void 0){PHPQuerySerializerNoEncoding=null;}
+return this.$URIAbstractBase_toStringWithFilters(
+true,
+false,
+isDomainNeedRawQuery,
+PHPQuerySerializerNoEncoding);
+
+};_proto.
 
 
 
-$URIBase_toStringWithFilters=function $URIBase_toStringWithFilters(
+
+
+
+
+
+
+
+
+
+toStringPreserveQuery=function toStringPreserveQuery(
+isDomainNeedRawQuery,
+PHPQuerySerializerNoEncoding)
+{if(isDomainNeedRawQuery===void 0){isDomainNeedRawQuery=function isDomainNeedRawQuery(){return false;};}if(PHPQuerySerializerNoEncoding===void 0){PHPQuerySerializerNoEncoding=null;}
+return this.$URIAbstractBase_toStringWithFilters(
+false,
+true,
+isDomainNeedRawQuery,
+PHPQuerySerializerNoEncoding);
+
+};_proto.
+
+
+
+
+
+
+
+
+
+
+
+$URIAbstractBase_toStringWithFilters=function $URIAbstractBase_toStringWithFilters(
 rawQuery,
-preserveQuery)
-{if(rawQuery===void 0){rawQuery=false;}if(preserveQuery===void 0){preserveQuery=false;}
+preserveQuery,
+isDomainNeedRawQuery,
+PHPQuerySerializerNoEncoding)
+{if(rawQuery===void 0){rawQuery=false;}if(preserveQuery===void 0){preserveQuery=false;}if(isDomainNeedRawQuery===void 0){isDomainNeedRawQuery=function isDomainNeedRawQuery(){return false;};}if(PHPQuerySerializerNoEncoding===void 0){PHPQuerySerializerNoEncoding=null;}
 var uri=this;
 for(var i=0;i<uriFilters.length;i++){
 uri=uriFilters[i](uri);
 }
-return uri.$URIBase_toStringImpl(rawQuery,preserveQuery);
+return uri.$URIAbstractBase_toStringImpl(
+rawQuery,
+preserveQuery,
+isDomainNeedRawQuery,
+PHPQuerySerializerNoEncoding);
+
 };_proto.
 
 
@@ -7163,7 +6392,14 @@ return uri.$URIBase_toStringImpl(rawQuery,preserveQuery);
 
 
 
-$URIBase_toStringImpl=function $URIBase_toStringImpl(rawQuery,preserveQuery){if(rawQuery===void 0){rawQuery=false;}if(preserveQuery===void 0){preserveQuery=false;}
+
+
+$URIAbstractBase_toStringImpl=function $URIAbstractBase_toStringImpl(
+rawQuery,
+preserveQuery,
+isDomainNeedRawQuery,
+PHPQuerySerializerNoEncoding)
+{if(rawQuery===void 0){rawQuery=false;}if(preserveQuery===void 0){preserveQuery=false;}if(isDomainNeedRawQuery===void 0){isDomainNeedRawQuery=function isDomainNeedRawQuery(){return false;};}if(PHPQuerySerializerNoEncoding===void 0){PHPQuerySerializerNoEncoding=null;}
 var str='';
 var protocol=this.getProtocol();
 if(protocol){
@@ -7187,7 +6423,12 @@ str+=path;
 }else if(str){
 str+='/';
 }
-var queryStr=this.$URIBase_renderQuery(rawQuery,preserveQuery);
+var queryStr=this.$URIAbstractBase_renderQuery(
+rawQuery,
+preserveQuery,
+isDomainNeedRawQuery,
+PHPQuerySerializerNoEncoding);
+
 if(queryStr){
 str+='?'+queryStr;
 }
@@ -7198,7 +6439,7 @@ str+='#'+fragment;
 str+='#';
 }
 return str;
-};URIBase.
+};URIAbstractBase.
 
 
 
@@ -7226,7 +6467,7 @@ this.getProtocol()+'://'+this.getDomain()+(port?':'+port:''));
 
 
 getQualifiedURIBase=function getQualifiedURIBase(){
-return new URIBase(this,this.$URIBase_serializer).qualify();
+return new URIAbstractBase(this,this.$URIAbstractBase_serializer).qualify();
 };_proto.
 
 
@@ -7235,7 +6476,7 @@ return new URIBase(this,this.$URIBase_serializer).qualify();
 
 qualify=function qualify(){
 if(!this.getDomain()){
-var current=new URIBase(window.location.href,this.$URIBase_serializer);
+var current=new URIAbstractBase(window.location.href,this.$URIAbstractBase_serializer);
 this.setProtocol(current.getProtocol()).
 setDomain(current.getDomain()).
 setPort(current.getPort());
@@ -7258,10 +6499,6 @@ return this;
 setSubdomain=function setSubdomain(subdomain){
 var qualified=this.qualify();
 var domain=qualified.getDomain();
-
-if(require("isInternalFBURI")(qualified)&&subdomain==='our'){
-subdomain='www';
-}
 return this.setDomain(require("setHostSubdomain")(domain,subdomain));
 };_proto.
 
@@ -7292,12 +6529,12 @@ return domains[0];
 
 isSubdomainOfDomain=function isSubdomainOfDomain(superdomain){
 var domain=this.getDomain();
-return URIBase.isDomainSubdomainOfDomain(
+return URIAbstractBase.isDomainSubdomainOfDomain(
 domain,
 superdomain,
-this.$URIBase_serializer);
+this.$URIAbstractBase_serializer);
 
-};URIBase.
+};URIAbstractBase.
 
 isDomainSubdomainOfDomain=function isDomainSubdomainOfDomain(
 domain,
@@ -7314,70 +6551,18 @@ var superdomainLen=superdomain.length;
 var pos=domainLen-superdomainLen-1;
 
 if(domainLen===superdomainLen||domain[pos]==='.'){
-var uri=new URIBase(null,serializer);
+var uri=new URIAbstractBase(null,serializer);
 uri.setDomain(superdomain);
-return URIBase.isValid(uri,serializer);
+return URIAbstractBase.isValid(uri,serializer);
 }
 }
 
 return false;
-};return URIBase;}();
+};return URIAbstractBase;}();
 
 
-module.exports=URIBase;},null);
-                                                                                               __d("UriNeedRawQuerySVChecker",["PHPQuerySerializer","URIBase","UriNeedRawQuerySVConfig"],function $module_UriNeedRawQuerySVChecker(global,require,requireDynamic,requireLazy,module,exports){
-
-'use strict';var c_URIBase;var c_PHPQuerySerializer;
-
-
-
-
-
-
-var PROTOCOLS=['http','https'];
-
-
-
-
-function isUriNeedRawQuery(uri){
-if(uri==null){
-return false;
-}
-var uriBase=
-uri instanceof(c_URIBase||(c_URIBase=require("URIBase")))?uri:(c_URIBase||(c_URIBase=require("URIBase"))).tryParse(uri,c_PHPQuerySerializer||(c_PHPQuerySerializer=require("PHPQuerySerializer")));
-if(uriBase==null){
-return false;
-}
-
-var protocol=uriBase.getProtocol();
-
-if(!ES(PROTOCOLS,"includes",true,protocol)){
-return false;
-}
-
-return isDomainNeedRawQuery(uriBase.getDomain());
-}
-
-
-
-
-function isDomainNeedRawQuery(domain){
-return(
-domain!=null&&ES(
-require("UriNeedRawQuerySVConfig").uris,"some",true,function UriNeedRawQuerySVConfig_uris_some_$0(uriNeedRawQueryDomain){return(
-(c_URIBase||(c_URIBase=require("URIBase"))).isDomainSubdomainOfDomain(
-domain,
-uriNeedRawQueryDomain,c_PHPQuerySerializer||(c_PHPQuerySerializer=require("PHPQuerySerializer"))));}));
-
-
-
-
-}
-
-module.exports={
-isUriNeedRawQuery:isUriNeedRawQuery,
-isDomainNeedRawQuery:isDomainNeedRawQuery};},null);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           __d("sdk.URI",["QueryString","URIBase"],function $module_sdk_URI(global,require,requireDynamic,requireLazy,module,exports){var c_URIBase;
+module.exports=URIAbstractBase;},null);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           __d("sdk.URI",["QueryString","URIAbstractBase"],function $module_sdk_URI(global,require,requireDynamic,requireLazy,module,exports){
 
 
 
@@ -7408,8 +6593,8 @@ return this.toString();
 };URI.
 
 isValidURI=function isValidURI(uri){
-return(c_URIBase||(c_URIBase=require("URIBase"))).isValid(uri,serializer);
-};return URI;}(c_URIBase||(c_URIBase=require("URIBase")));module.exports=URI;},null);
+return require("URIAbstractBase").isValid(uri,serializer);
+};return URI;}(require("URIAbstractBase"));module.exports=URI;},null);
                                                                                   __d("ApiClientUtils",["ArgumentError","Assert","Log","flattenObject","sdk.URI","sprintf"],function $module_ApiClientUtils(global,require,requireDynamic,requireLazy,module,exports){exports.parseCallDataFromArgs=parseCallDataFromArgs;
 
 
@@ -18381,4 +17566,4 @@ localName:tag.replace(/_/g,'-'),
 ctor:customTags[tag]});
 
 });},3);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               }  }).call(global);})(window.inDapIF ? parent.window : window, window);} catch (e) {new Image().src="https:\/\/www.facebook.com\/" + 'common/scribe_endpoint.php?c=jssdk_error&m='+encodeURIComponent('{"error":"LOAD", "extra": {"name":"'+e.name+'","line":"'+(e.lineNumber||e.line)+'","script":"'+(e.fileName||e.sourceURL||e.script)+'","stack":"'+(e.stackTrace||e.stack)+'","revision":"1002804076","namespace":"FB","message":"'+e.message+'"}}');}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               }  }).call(global);})(window.inDapIF ? parent.window : window, window);} catch (e) {new Image().src="https:\/\/www.facebook.com\/" + 'common/scribe_endpoint.php?c=jssdk_error&m='+encodeURIComponent('{"error":"LOAD", "extra": {"name":"'+e.name+'","line":"'+(e.lineNumber||e.line)+'","script":"'+(e.fileName||e.sourceURL||e.script)+'","stack":"'+(e.stackTrace||e.stack)+'","revision":"1002818281","namespace":"FB","message":"'+e.message+'"}}');}

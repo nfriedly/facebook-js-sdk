@@ -1,4 +1,4 @@
-/*1602305952,,JIT Construction: v1002804076,en_US*/
+/*1602638369,,JIT Construction: v1002818281,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3728,7 +3728,7 @@ try {
           })(typeof global === "undefined" ? this : global);
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1002804076",
+            revision: "1002818281",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -3773,29 +3773,6 @@ try {
               "css:fb.css.base",
               "css:fb.css.dialog",
               "css:fb.css.iframewidget"
-            ]
-          });
-          __d("UriNeedRawQuerySVConfig", [], {
-            uris: [
-              "dms.netmng.com",
-              "doubleclick.net",
-              "r.msn.com",
-              "watchit.sky.com",
-              "graphite.instagram.com",
-              "www.kfc.co.th",
-              "learn.pantheon.io",
-              "www.landmarkshops.in",
-              "www.ncl.com",
-              "s0.wp.com",
-              "www.tatacliq.com",
-              "bs.serving-sys.com",
-              "kohls.com",
-              "lazada.co.th",
-              "xg4ken.com",
-              "technopark.ru",
-              "officedepot.com.mx",
-              "bestbuy.com.mx",
-              "booking.com"
             ]
           });
           __d("JSSDKXDConfig", [], {
@@ -5995,266 +5972,6 @@ try {
             null
           );
           __d(
-            "flattenPHPQueryData",
-            ["invariant"],
-            function $module_flattenPHPQueryData(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports,
-              invariant
-            ) {
-              module.exports = flattenPHPQueryData;
-
-              function flattenPHPQueryData(obj) {
-                return _flattenPHPQueryData(obj, "", {});
-              }
-
-              function _flattenPHPQueryData(obj, name, componentsObject) {
-                if (obj === null || obj === undefined) {
-                  componentsObject[name] = undefined;
-                } else if (typeof obj === "object") {
-                  typeof obj.appendChild !== "function" ||
-                    invariant(0, "Trying to serialize a DOM node. Bad idea.");
-
-                  for (var k in obj) {
-                    if (
-                      k !== "$$typeof" &&
-                      Object.prototype.hasOwnProperty.call(obj, k) &&
-                      obj[k] !== undefined
-                    ) {
-                      _flattenPHPQueryData(
-                        obj[k],
-                        name ? name + "[" + k + "]" : k,
-                        componentsObject
-                      );
-                    }
-                  }
-                } else {
-                  componentsObject[name] = obj;
-                }
-
-                return componentsObject;
-              }
-            },
-            null
-          );
-          __d(
-            "PHPQuerySerializer",
-            ["flattenPHPQueryData"],
-            function $module_PHPQuerySerializer(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              function serialize(obj) {
-                var kv_pairs = [];
-                var componentsObject = require("flattenPHPQueryData")(obj);
-
-                for (var component in componentsObject) {
-                  if (
-                    Object.prototype.hasOwnProperty.call(
-                      componentsObject,
-                      component
-                    )
-                  ) {
-                    var key = encodeComponent(component);
-                    if (componentsObject[component] === undefined) {
-                      kv_pairs.push(key);
-                    } else {
-                      kv_pairs.push(
-                        key +
-                          "=" +
-                          encodeComponent(String(componentsObject[component]))
-                      );
-                    }
-                  }
-                }
-
-                return kv_pairs.join("&");
-              }
-
-              function encodeComponent(raw) {
-                return encodeURIComponent(raw)
-                  .replace(/%5D/g, "]")
-                  .replace(/%5B/g, "[");
-              }
-
-              var ARRAY_QUERY_PATTERN = /^([-_\w]+)((?:\[[-_\w]*\])+)=?(.*)/;
-
-              function replaceBadKeys(key) {
-                if (key === "hasOwnProperty" || key === "__proto__") {
-                  return "\ud83d\udf56";
-                }
-                return key;
-              }
-
-              function deserialize(query) {
-                if (!query) {
-                  return {};
-                }
-
-                var result = {};
-
-                var queryAsString = query
-                  .replace(/%5B/gi, "[")
-                  .replace(/%5D/gi, "]");
-
-                var queryAsArray = queryAsString.split("&");
-
-                var hasOwnProp = Object.prototype.hasOwnProperty;
-
-                for (
-                  var ii = 0, length = queryAsArray.length;
-                  ii < length;
-                  ii++
-                ) {
-                  var match = queryAsArray[ii].match(ARRAY_QUERY_PATTERN);
-
-                  if (!match) {
-                    var splitIndex = ES(queryAsArray[ii], "indexOf", true, "=");
-                    if (splitIndex === -1) {
-                      result[decodeComponent(queryAsArray[ii])] = null;
-                    } else {
-                      var key = queryAsArray[ii].substring(0, splitIndex);
-                      var value = queryAsArray[ii].substring(splitIndex + 1);
-                      result[decodeComponent(key)] = decodeComponent(value);
-                    }
-                  } else {
-                    var indices = match[2].split(/\]\[|\[|\]/).slice(0, -1);
-                    var name = match[1];
-                    var _value = decodeComponent(match[3] || "");
-                    indices[0] = name;
-
-                    var resultNode = result;
-                    for (var i = 0; i < indices.length - 1; i++) {
-                      var _key = replaceBadKeys(indices[i]);
-                      if (_key) {
-                        if (!hasOwnProp.call(resultNode, _key)) {
-                          var nv =
-                            indices[i + 1] && !indices[i + 1].match(/^\d{1,3}$/)
-                              ? {}
-                              : [];
-                          resultNode[_key] = nv;
-                          if (resultNode[_key] !== nv) {
-                            return result;
-                          }
-                        }
-
-                        resultNode = resultNode[_key];
-                      } else {
-                        if (
-                          indices[i + 1] &&
-                          !indices[i + 1].match(/^\d{1,3}$/)
-                        ) {
-                          resultNode.push({});
-                        } else {
-                          resultNode.push([]);
-                        }
-                        resultNode = resultNode[resultNode.length - 1];
-                      }
-                    }
-
-                    if (
-                      resultNode instanceof Array &&
-                      indices[indices.length - 1] === ""
-                    ) {
-                      resultNode.push(_value);
-                    } else {
-                      resultNode[
-                        replaceBadKeys(indices[indices.length - 1])
-                      ] = _value;
-                    }
-                  }
-                }
-                return result;
-              }
-
-              function decodeComponent(encoded_s) {
-                try {
-                  return decodeURIComponent(encoded_s.replace(/\+/g, " "));
-                } catch (_unused) {
-                  if (__DEV__) {
-                    console.error("Bad UTF8 in URL: ", encoded_s);
-                  }
-                  return encoded_s;
-                }
-              }
-
-              var PHPQuerySerializer = {
-                serialize: serialize,
-                encodeComponent: encodeComponent,
-                deserialize: deserialize,
-                decodeComponent: decodeComponent
-              };
-
-              module.exports = PHPQuerySerializer;
-            },
-            null
-          );
-          __d(
-            "PHPQuerySerializerNoEncoding",
-            ["PHPQuerySerializer", "flattenPHPQueryData"],
-            function $module_PHPQuerySerializerNoEncoding(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              exports.serialize = serialize;
-              exports.encodeComponent = encodeComponent;
-              var c_PHPQuerySerializer;
-
-              function serialize(obj) {
-                var kv_pairs = [];
-                var componentsObject = require("flattenPHPQueryData")(obj);
-
-                for (var component in componentsObject) {
-                  if (
-                    Object.prototype.hasOwnProperty.call(
-                      componentsObject,
-                      component
-                    )
-                  ) {
-                    var key = encodeComponent(component);
-                    if (componentsObject[component] === undefined) {
-                      kv_pairs.push(key);
-                    } else {
-                      kv_pairs.push(
-                        key +
-                          "=" +
-                          encodeComponent(String(componentsObject[component]))
-                      );
-                    }
-                  }
-                }
-
-                return kv_pairs.join("&");
-              }
-
-              function encodeComponent(raw) {
-                return raw;
-              }
-
-              var deserialize = (
-                c_PHPQuerySerializer ||
-                (c_PHPQuerySerializer = require("PHPQuerySerializer"))
-              ).deserialize;
-              exports.deserialize = deserialize;
-
-              var decodeComponent = c_PHPQuerySerializer.decodeComponent;
-              exports.decodeComponent = decodeComponent;
-            },
-            null
-          );
-          __d(
             "URIRFC3986",
             [],
             function $module_URIRFC3986(
@@ -6456,480 +6173,6 @@ try {
             null
           );
           __d(
-            "ErrorMetadata",
-            [],
-            function $module_ErrorMetadata(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              "use strict";
-
-              var globalMetadata = [];
-              var ErrorMetadata = (function() {
-                function ErrorMetadata() {
-                  this.metadata = [].concat(globalMetadata);
-                }
-                var _proto = ErrorMetadata.prototype;
-                _proto.addEntries = function addEntries() {
-                  var _this$metadata;
-                  (_this$metadata = this.metadata).push.apply(
-                    _this$metadata,
-                    arguments
-                  );
-                  return this;
-                };
-                _proto.addEntry = function addEntry(product, name, value) {
-                  this.metadata.push([product, name, value]);
-                  return this;
-                };
-                _proto.isEmpty = function isEmpty() {
-                  return this.metadata.length === 0;
-                };
-                _proto.clearEntries = function clearEntries() {
-                  this.metadata = [];
-                };
-                _proto.format = function format() {
-                  var formattedMetadata = [];
-                  ES(
-                    this.metadata,
-                    "forEach",
-                    true,
-                    function metadata_forEach_$0(entry) {
-                      if (entry && entry.length) {
-                        var formattedEntry = ES(
-                          entry,
-                          "map",
-                          true,
-                          function entry_map_$0(s) {
-                            return s != null
-                              ? String(s).replace(/:/g, "_")
-                              : "";
-                          }
-                        ).join(":");
-                        formattedMetadata.push(formattedEntry);
-                      }
-                    }
-                  );
-                  return formattedMetadata;
-                };
-                _proto.getAll = function getAll() {
-                  return this.metadata;
-                };
-                ErrorMetadata.addGlobalMetadata = function addGlobalMetadata(
-                  product,
-                  name,
-                  value
-                ) {
-                  globalMetadata.push([product, name, value]);
-                };
-                ErrorMetadata.getGlobalMetadata = function getGlobalMetadata() {
-                  return globalMetadata;
-                };
-                ErrorMetadata.unsetGlobalMetadata = function unsetGlobalMetadata(
-                  product,
-                  name
-                ) {
-                  globalMetadata = ES(
-                    globalMetadata,
-                    "filter",
-                    true,
-                    function globalMetadata_filter_$0(entry) {
-                      return !(
-                        ES("Array", "isArray", false, entry) &&
-                        entry[0] === product &&
-                        entry[1] === name
-                      );
-                    }
-                  );
-                };
-                return ErrorMetadata;
-              })();
-              module.exports = ErrorMetadata;
-            },
-            null
-          );
-          __d(
-            "ErrorSerializer",
-            ["ErrorMetadata"],
-            function $module_ErrorSerializer(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              "use strict";
-
-              var LEVEL_PRI = {
-                debug: 1,
-                info: 2,
-                warn: 3,
-                error: 4,
-                fatal: 5
-              };
-
-              function _parse(s) {
-                try {
-                  var matches = _safeMatches(
-                    s,
-                    /^([\s\S]*)<\!\[EX\[(\[.*\])\]\]>([\s\S]*)$/
-                  );
-
-                  if (!matches) {
-                    return _parseMessageWithTAAL(s);
-                  }
-                  var left = matches[0],
-                    serialized = matches[1],
-                    right = matches[2];
-                  var _JSON$parse = ES("JSON", "parse", false, serialized),
-                    messageWithTAAL = _JSON$parse[0],
-                    params = _JSON$parse.slice(1);
-
-                  var serializableError = _parseMessageWithTAAL(
-                    messageWithTAAL
-                  );
-
-                  serializableError.message =
-                    left + serializableError.message + right;
-                  if (params && params.length > 0) {
-                    serializableError.params = ES(
-                      params,
-                      "map",
-                      true,
-                      function params_map_$0(param) {
-                        return String(param);
-                      }
-                    );
-                  }
-                  return serializableError;
-                } catch (e) {
-                  return {
-                    message: "Unable to parse error message %s because %s",
-                    params: [s, e.message]
-                  };
-                }
-              }
-
-              function stringify(serializableError) {
-                return (
-                  "<![EX[" +
-                  ES(
-                    "JSON",
-                    "stringify",
-                    false,
-                    toMessageWithParams(serializableError)
-                  ) +
-                  "]]>"
-                );
-              }
-
-              function parseFromError(error) {
-                if (error.messageFormat == null) {
-                  return _parse(error.message);
-                }
-
-                var serializable = {
-                  message: String(error.messageFormat)
-                };
-
-                if (error.messageParams) {
-                  serializable.params = [].concat(error.messageParams);
-                }
-                serializable.forcedKey = error.forcedKey;
-                if (error.taalOpcodes) {
-                  serializable.taalOpcodes = error.taalOpcodes;
-                }
-                return serializable;
-              }
-
-              function aggregateError(error, context) {
-                var _firstKey;
-                var caughtError = parseFromError(error);
-                if (ES("Object", "isFrozen", false, error)) {
-                  return;
-                }
-
-                if (context.type) {
-                  if (
-                    !error.type ||
-                    LEVEL_PRI[error.type] > LEVEL_PRI[context.type]
-                  ) {
-                    error.type = context.type;
-                  }
-                }
-
-                var contextMeta = context.metadata;
-                if (contextMeta != null) {
-                  var _error$metadata;
-                  var metadata =
-                    (_error$metadata = error.metadata) != null
-                      ? _error$metadata
-                      : new (require("ErrorMetadata"))();
-                  metadata.addEntries.apply(metadata, contextMeta.getAll());
-                  error.metadata = metadata;
-                }
-
-                if (context.project != null) {
-                  error.project = context.project;
-                }
-
-                if (context.errorName != null) {
-                  error.errorName = context.errorName;
-                }
-
-                if (context.componentStack != null) {
-                  error.componentStack = context.componentStack;
-                }
-
-                if (context.deferredSource != null) {
-                  error.deferredSource = context.deferredSource;
-                }
-
-                var messageFormat = caughtError.message;
-                var messageParams = toStringParams(caughtError.params);
-                if (
-                  messageFormat !== context.messageFormat &&
-                  context.messageFormat != null
-                ) {
-                  var _context$messageParam;
-                  messageFormat +=
-                    " [Caught in: " + context.messageFormat + "]";
-                  messageParams.push.apply(
-                    messageParams,
-                    (_context$messageParam = context.messageParams) != null
-                      ? _context$messageParam
-                      : []
-                  );
-                }
-                error.messageFormat = messageFormat;
-                error.messageParams = messageParams;
-
-                var firstKey = context.forcedKey;
-                var secondKey = caughtError.forcedKey;
-                var forcedKey =
-                  firstKey != null && secondKey != null
-                    ? firstKey + "_" + secondKey
-                    : (_firstKey = firstKey) != null
-                    ? _firstKey
-                    : secondKey;
-                error.forcedKey = forcedKey;
-
-                if (caughtError.taalOpcodes != null) {
-                  error.taalOpcodes = caughtError.taalOpcodes;
-                }
-              }
-
-              function _toFormattedMessageNoTAAL(serializableError) {
-                var message = serializableError.message || "";
-                var params = toStringParams(serializableError.params);
-                return toReadableMessage(message, params);
-              }
-
-              function toReadableMessage(format, params) {
-                var index = 0;
-
-                var formattedMessage = format.replace(
-                  /%s/g,
-                  function format_replace_$1() {
-                    return index < params.length ? params[index++] : "NOPARAM";
-                  }
-                );
-
-                if (index < params.length) {
-                  formattedMessage +=
-                    " PARAMS" +
-                    ES("JSON", "stringify", false, params.slice(index));
-                }
-                return formattedMessage;
-              }
-
-              function toFormattedMessage(serializableError) {
-                var message = serializableError.message || "";
-                var params = toStringParams(serializableError.params);
-                return (
-                  toReadableMessage(message, params) +
-                  toTAALSuffix(serializableError)
-                );
-              }
-
-              function toMessageWithParams(serializableError) {
-                return [
-                  serializableError.message + toTAALSuffix(serializableError)
-                ].concat(toStringParams(serializableError.params));
-              }
-
-              function toTAALSuffix(serializableError) {
-                var taalOpcodes = serializableError.taalOpcodes,
-                  forcedKey = serializableError.forcedKey;
-                var allOpcodes = [];
-                if (taalOpcodes) {
-                  allOpcodes.push.apply(allOpcodes, taalOpcodes);
-                }
-
-                if (forcedKey) {
-                  allOpcodes.push("4" + forcedKey.replace(/[^\d\w]/g, "_"));
-                }
-                return allOpcodes.length > 0
-                  ? " TAAL[" + allOpcodes.join(";") + "]"
-                  : "";
-              }
-
-              function toStringParams(params) {
-                var _params;
-                return ES(
-                  (_params = params) != null ? _params : [],
-                  "map",
-                  true,
-                  function map_$0(param) {
-                    return String(param);
-                  }
-                );
-              }
-
-              function _parseMessageWithTAAL(messageWithTAAL) {
-                var _matches;
-
-                var matches = _safeMatches(
-                  messageWithTAAL,
-                  /^([\s\S]*) TAAL\[(.*)\]$/
-                );
-                var _ref =
-                    (_matches = matches) != null
-                      ? _matches
-                      : [messageWithTAAL, null],
-                  message = _ref[0],
-                  taalOpcodesString = _ref[1];
-                var serializableError = { message: message };
-
-                if (taalOpcodesString) {
-                  var taalOpcodes = [];
-
-                  for (
-                    var _iterator = taalOpcodesString.split(";"),
-                      _isArray = ES("Array", "isArray", false, _iterator),
-                      _i = 0,
-                      _iterator = _isArray
-                        ? _iterator
-                        : _iterator[
-                            typeof Symbol === "function"
-                              ? Symbol.iterator
-                              : "@@iterator"
-                          ]();
-                    ;
-
-                  ) {
-                    var _ref2;
-                    if (_isArray) {
-                      if (_i >= _iterator.length) break;
-                      _ref2 = _iterator[_i++];
-                    } else {
-                      _i = _iterator.next();
-                      if (_i.done) break;
-                      _ref2 = _i.value;
-                    }
-                    var opcode = _ref2;
-                    if (opcode === "1" || opcode === "2" || opcode === "3") {
-                      taalOpcodes.push(parseInt(opcode, 10));
-                    } else if (opcode[0] === "4" && opcode.length > 1) {
-                      serializableError.forcedKey = opcode.substring(1);
-                    } else {
-                      return { message: messageWithTAAL };
-                    }
-                  }
-                  if (taalOpcodes.length > 0) {
-                    serializableError.taalOpcodes = taalOpcodes;
-                  }
-                }
-                return serializableError;
-              }
-
-              function _safeMatches(s, re) {
-                if (typeof s === "string") {
-                  var matches = s.match(re);
-                  if (matches && matches.length > 0) {
-                    return matches.slice(1);
-                  }
-                }
-              }
-
-              module.exports = global.ErrorSerializer = {
-                aggregateError: aggregateError,
-                parseFromError: parseFromError,
-                stringify: stringify,
-                toFormattedMessage: toFormattedMessage,
-                toReadableMessage: toReadableMessage,
-                toMessageWithParams: toMessageWithParams,
-                toStringParams: toStringParams
-              };
-            },
-            3
-          );
-          __d(
-            "ex",
-            ["ErrorSerializer"],
-            function $module_ex(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              module.exports = ex;
-
-              function ex(message) {
-                for (
-                  var _len = arguments.length,
-                    rawArgs = new Array(_len > 1 ? _len - 1 : 0),
-                    _key = 1;
-                  _key < _len;
-                  _key++
-                ) {
-                  rawArgs[_key - 1] = arguments[_key];
-                }
-                var params = ES(rawArgs, "map", true, function rawArgs_map_$0(
-                  p
-                ) {
-                  return String(p);
-                });
-                return require("ErrorSerializer").stringify({
-                  message: message,
-                  params: params
-                });
-              }
-            },
-            null
-          );
-          __d(
-            "isInternalFBURI",
-            [],
-            function $module_isInternalFBURI(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              module.exports = isInternalFBURI;
-
-              var internalFBURIRegex = new RegExp(
-                "(^|\\.)internalfb\\.com$",
-                "i"
-              );
-
-              function isInternalFBURI(uri) {
-                return internalFBURIRegex.test(uri.getDomain());
-              }
-            },
-            null
-          );
-          __d(
             "setHostSubdomain",
             [],
             function $module_setHostSubdomain(
@@ -6955,18 +6198,9 @@ try {
             null
           );
           __d(
-            "URIBase",
-            [
-              "invariant",
-              "PHPQuerySerializerNoEncoding",
-              "UriNeedRawQuerySVChecker",
-              "URIRFC3986",
-              "URISchemes",
-              "ex",
-              "isInternalFBURI",
-              "setHostSubdomain"
-            ],
-            function $module_URIBase(
+            "URIAbstractBase",
+            ["invariant", "URIRFC3986", "URISchemes", "setHostSubdomain"],
+            function $module_URIAbstractBase(
               global,
               require,
               requireDynamic,
@@ -6988,169 +6222,168 @@ try {
                 "^(?:[^/]*:|" + "[\\x00-\\x1f]*/[\\x00-\\x1f]*/)"
               );
 
-              function parse(uri, uriToParse, shouldThrow, serializer) {
-                if (!uriToParse) {
-                  return true;
-                }
-
-                if (uriToParse instanceof URIBase) {
-                  uri.setProtocol(uriToParse.getProtocol());
-                  uri.setDomain(uriToParse.getDomain());
-                  uri.setPort(uriToParse.getPort());
-                  uri.setPath(uriToParse.getPath());
-                  uri.setQueryData(
-                    serializer.deserialize(
-                      serializer.serialize(uriToParse.getQueryData())
-                    )
-                  );
-
-                  uri.setFragment(uriToParse.getFragment());
-                  uri.setIsGeneric(uriToParse.getIsGeneric());
-                  uri.setForceFragmentSeparator(
-                    uriToParse.getForceFragmentSeparator()
-                  );
-                  uri.setOriginalRawQuery(uriToParse.getOriginalRawQuery());
-                  uri.setQueryParamModified(false);
-                  return true;
-                }
-
-                uriToParse = ES(uriToParse.toString(), "trim", true);
-                var components = (
-                  c_URIRFC3986 || (c_URIRFC3986 = require("URIRFC3986"))
-                ).parse(uriToParse) || {
-                  fragment: null,
-                  scheme: null,
-                  query: null
-                };
-
-                if (
-                  !shouldThrow &&
-                  !(
-                    c_URISchemes || (c_URISchemes = require("URISchemes"))
-                  ).isAllowed(components.scheme)
+              var uriFilters = [];
+              var URIAbstractBase = (function() {
+                "use strict";
+                URIAbstractBase.parse = function parse(
+                  uri,
+                  uriToParse,
+                  shouldThrow,
+                  serializer
                 ) {
-                  return false;
-                }
-                uri.setProtocol(components.scheme || "");
-                if (
-                  !shouldThrow &&
-                  UNSAFE_DOMAIN_PATTERN.test(components.host || "")
-                ) {
-                  return false;
-                }
-                uri.setDomain(components.host || "");
-                uri.setPort(components.port || "");
-                uri.setPath(components.path || "");
-                if (shouldThrow) {
-                  uri.setQueryData(
-                    serializer.deserialize(components.query || "") || {}
-                  );
-                } else {
-                  try {
+                  if (!uriToParse) {
+                    return true;
+                  }
+
+                  if (uriToParse instanceof URIAbstractBase) {
+                    uri.setProtocol(uriToParse.getProtocol());
+                    uri.setDomain(uriToParse.getDomain());
+                    uri.setPort(uriToParse.getPort());
+                    uri.setPath(uriToParse.getPath());
+                    uri.setQueryData(
+                      serializer.deserialize(
+                        serializer.serialize(uriToParse.getQueryData())
+                      )
+                    );
+
+                    uri.setFragment(uriToParse.getFragment());
+                    uri.setIsGeneric(uriToParse.getIsGeneric());
+                    uri.setForceFragmentSeparator(
+                      uriToParse.getForceFragmentSeparator()
+                    );
+                    uri.setOriginalRawQuery(uriToParse.getOriginalRawQuery());
+                    uri.setQueryParamModified(false);
+                    return true;
+                  }
+
+                  uriToParse = ES(uriToParse.toString(), "trim", true);
+                  var components = (
+                    c_URIRFC3986 || (c_URIRFC3986 = require("URIRFC3986"))
+                  ).parse(uriToParse) || {
+                    fragment: null,
+                    scheme: null,
+                    query: null
+                  };
+
+                  if (
+                    !shouldThrow &&
+                    !(
+                      c_URISchemes || (c_URISchemes = require("URISchemes"))
+                    ).isAllowed(components.scheme)
+                  ) {
+                    return false;
+                  }
+                  uri.setProtocol(components.scheme || "");
+                  if (
+                    !shouldThrow &&
+                    UNSAFE_DOMAIN_PATTERN.test(components.host || "")
+                  ) {
+                    return false;
+                  }
+                  uri.setDomain(components.host || "");
+                  uri.setPort(components.port || "");
+                  uri.setPath(components.path || "");
+                  if (shouldThrow) {
                     uri.setQueryData(
                       serializer.deserialize(components.query || "") || {}
                     );
-                  } catch (_unused) {
-                    return false;
-                  }
-                }
-                uri.setFragment(components.fragment || "");
-
-                if (components.fragment === "") {
-                  uri.setForceFragmentSeparator(true);
-                }
-                uri.setIsGeneric(components.isGenericURI || false);
-                uri.setOriginalRawQuery(components.query);
-                uri.setQueryParamModified(false);
-                if (components.userinfo !== null) {
-                  if (shouldThrow) {
-                    throw new Error(
-                      require("ex")(
-                        "URI.parse: invalid URI (userinfo is not allowed in a URI): %s",
-                        uriToParse
-                      )
-                    );
                   } else {
+                    try {
+                      uri.setQueryData(
+                        serializer.deserialize(components.query || "") || {}
+                      );
+                    } catch (_unused) {
+                      return false;
+                    }
+                  }
+                  uri.setFragment(components.fragment || "");
+
+                  if (components.fragment === "") {
+                    uri.setForceFragmentSeparator(true);
+                  }
+                  uri.setIsGeneric(components.isGenericURI || false);
+                  uri.setOriginalRawQuery(components.query);
+                  uri.setQueryParamModified(false);
+                  if (components.userinfo !== null) {
+                    if (shouldThrow) {
+                      throw new Error(
+                        "URI.parse: invalid URI (userinfo is not allowed in a URI): " +
+                          uriToParse
+                      );
+                    }
+
                     return false;
                   }
-                }
 
-                if (
-                  !uri.getDomain() &&
-                  ES(uri.getPath(), "indexOf", true, "\\") !== -1
-                ) {
-                  if (shouldThrow) {
-                    throw new Error(
-                      require("ex")(
-                        "URI.parse: invalid URI (no domain but multiple back-slashes): %s",
-                        uriToParse
-                      )
-                    );
-                  } else {
+                  if (
+                    !uri.getDomain() &&
+                    ES(uri.getPath(), "indexOf", true, "\\") !== -1
+                  ) {
+                    if (shouldThrow) {
+                      throw new Error(
+                        "URI.parse: invalid URI (no domain but multiple back-slashes): " +
+                          uriToParse
+                      );
+                    }
+
                     return false;
                   }
-                }
 
-                if (!uri.getProtocol() && SECURITY_PATTERN.test(uriToParse)) {
-                  if (shouldThrow) {
-                    throw new Error(
-                      require("ex")(
-                        "URI.parse: invalid URI (unsafe protocol-relative URLs): %s",
-                        uriToParse
-                      )
-                    );
-                  } else {
+                  if (!uri.getProtocol() && SECURITY_PATTERN.test(uriToParse)) {
+                    if (shouldThrow) {
+                      throw new Error(
+                        "URI.parse: invalid URI (unsafe protocol-relative URLs): " +
+                          uriToParse +
+                          "'"
+                      );
+                    }
+
                     return false;
                   }
-                }
 
-                if (
-                  uri.getDomain() &&
-                  uri.getPath() &&
-                  !ES(uri.getPath(), "startsWith", true, "/")
-                ) {
-                  if (shouldThrow) {
-                    throw new Error(
-                      require("ex")(
-                        "URI.parse: invalid URI (domain and path where path lacks leading slash): %s",
-                        uriToParse
-                      )
-                    );
-                  } else {
+                  if (
+                    uri.getDomain() &&
+                    uri.getPath() &&
+                    !ES(uri.getPath(), "startsWith", true, "/")
+                  ) {
+                    if (shouldThrow) {
+                      throw new Error(
+                        "URI.parse: invalid URI (domain and path where path lacks leading slash): " +
+                          uriToParse
+                      );
+                    }
+
                     return false;
                   }
-                }
 
-                return true;
-              }
-
-              var uriFilters = [];
-              var URIBase = (function() {
-                "use strict";
-                URIBase.tryParse = function tryParse(uri, serializer) {
-                  var result = new URIBase(null, serializer);
-                  return parse(result, uri, false, serializer) ? result : null;
+                  return true;
                 };
-                URIBase.isValid = function isValid(uri, serializer) {
-                  return !!URIBase.tryParse(uri, serializer);
+                URIAbstractBase.tryParse = function tryParse(uri, serializer) {
+                  var result = new URIAbstractBase(null, serializer);
+                  return URIAbstractBase.parse(result, uri, false, serializer)
+                    ? result
+                    : null;
+                };
+                URIAbstractBase.isValid = function isValid(uri, serializer) {
+                  return !!URIAbstractBase.tryParse(uri, serializer);
                 };
 
-                function URIBase(uri, serializer) {
+                function URIAbstractBase(uri, serializer) {
                   serializer || invariant(0, "no serializer set");
-                  this.$URIBase_serializer = serializer;
+                  this.$URIAbstractBase_serializer = serializer;
 
-                  this.$URIBase_protocol = "";
-                  this.$URIBase_domain = "";
-                  this.$URIBase_port = "";
-                  this.$URIBase_path = "";
-                  this.$URIBase_fragment = "";
-                  this.$URIBase_isGeneric = false;
-                  this.$URIBase_queryData = {};
-                  this.$URIBase_forceFragmentSeparator = false;
-                  parse(this, uri, true, serializer);
-                  this.$URIBase_isQueryParamModified = false;
+                  this.$URIAbstractBase_protocol = "";
+                  this.$URIAbstractBase_domain = "";
+                  this.$URIAbstractBase_port = "";
+                  this.$URIAbstractBase_path = "";
+                  this.$URIAbstractBase_fragment = "";
+                  this.$URIAbstractBase_isGeneric = false;
+                  this.$URIAbstractBase_queryData = {};
+                  this.$URIAbstractBase_forceFragmentSeparator = false;
+                  URIAbstractBase.parse(this, uri, true, serializer);
+                  this.$URIAbstractBase_isQueryParamModified = false;
                 }
-                var _proto = URIBase.prototype;
+                var _proto = URIAbstractBase.prototype;
                 _proto.setProtocol = function setProtocol(protocol) {
                   if (
                     !(
@@ -7164,11 +6397,11 @@ try {
                         protocol
                       );
                   }
-                  this.$URIBase_protocol = protocol;
+                  this.$URIAbstractBase_protocol = protocol;
                   return this;
                 };
                 _proto.getProtocol = function getProtocol() {
-                  return (this.$URIBase_protocol || "").toLowerCase();
+                  return (this.$URIAbstractBase_protocol || "").toLowerCase();
                 };
                 _proto.setSecure = function setSecure(secure) {
                   return this.setProtocol(secure ? "https" : "http");
@@ -7179,26 +6412,25 @@ try {
                 _proto.setDomain = function setDomain(domain) {
                   if (UNSAFE_DOMAIN_PATTERN.test(domain)) {
                     throw new Error(
-                      require("ex")(
-                        "URI.setDomain: unsafe domain specified: %s for url %s",
-                        domain,
+                      "URI.setDomain: unsafe domain specified: " +
+                        domain +
+                        " for url " +
                         this.toString()
-                      )
                     );
                   }
 
-                  this.$URIBase_domain = domain;
+                  this.$URIAbstractBase_domain = domain;
                   return this;
                 };
                 _proto.getDomain = function getDomain() {
-                  return this.$URIBase_domain;
+                  return this.$URIAbstractBase_domain;
                 };
                 _proto.setPort = function setPort(port) {
-                  this.$URIBase_port = port;
+                  this.$URIAbstractBase_port = port;
                   return this;
                 };
                 _proto.getPort = function getPort() {
-                  return this.$URIBase_port;
+                  return this.$URIAbstractBase_port;
                 };
                 _proto.setPath = function setPath(path) {
                   if (__DEV__) {
@@ -7212,11 +6444,11 @@ try {
                       );
                     }
                   }
-                  this.$URIBase_path = path;
+                  this.$URIAbstractBase_path = path;
                   return this;
                 };
                 _proto.getPath = function getPath() {
-                  return this.$URIBase_path;
+                  return this.$URIAbstractBase_path;
                 };
                 _proto.addQueryData = function addQueryData(mapOrKey, value) {
                   if (
@@ -7227,37 +6459,56 @@ try {
                       "Object",
                       "assign",
                       false,
-                      this.$URIBase_queryData,
+                      this.$URIAbstractBase_queryData,
                       mapOrKey
                     );
                   } else {
-                    this.$URIBase_queryData[mapOrKey] = value;
+                    this.$URIAbstractBase_queryData[mapOrKey] = value;
                   }
-                  this.$URIBase_isQueryParamModified = true;
+                  this.$URIAbstractBase_isQueryParamModified = true;
                   return this;
                 };
                 _proto.setQueryData = function setQueryData(map) {
-                  this.$URIBase_queryData = map;
-                  this.$URIBase_isQueryParamModified = true;
+                  this.$URIAbstractBase_queryData = map;
+                  this.$URIAbstractBase_isQueryParamModified = true;
                   return this;
                 };
                 _proto.getQueryData = function getQueryData() {
-                  return this.$URIBase_queryData;
+                  return this.$URIAbstractBase_queryData;
                 };
                 _proto.setQueryString = function setQueryString(queryString) {
                   return this.setQueryData(
-                    this.$URIBase_serializer.deserialize(queryString)
+                    this.$URIAbstractBase_serializer.deserialize(queryString)
                   );
                 };
-                _proto.getQueryString = function getQueryString(preserveQuery) {
+                _proto.getQueryString = function getQueryString(
+                  preserveQuery,
+                  isDomainNeedRawQuery,
+                  PHPQuerySerializerNoEncoding
+                ) {
                   if (preserveQuery === void 0) {
                     preserveQuery = false;
                   }
-                  return this.$URIBase_renderQuery(false, preserveQuery);
+                  if (isDomainNeedRawQuery === void 0) {
+                    isDomainNeedRawQuery = function isDomainNeedRawQuery() {
+                      return false;
+                    };
+                  }
+                  if (PHPQuerySerializerNoEncoding === void 0) {
+                    PHPQuerySerializerNoEncoding = null;
+                  }
+                  return this.$URIAbstractBase_renderQuery(
+                    false,
+                    preserveQuery,
+                    isDomainNeedRawQuery,
+                    PHPQuerySerializerNoEncoding
+                  );
                 };
-                _proto.$URIBase_renderQuery = function $URIBase_renderQuery(
+                _proto.$URIAbstractBase_renderQuery = function $URIAbstractBase_renderQuery(
                   rawQuery,
-                  preserveQuery
+                  preserveQuery,
+                  isDomainNeedRawQuery,
+                  PHPQuerySerializerNoEncoding
                 ) {
                   if (rawQuery === void 0) {
                     rawQuery = false;
@@ -7265,22 +6516,27 @@ try {
                   if (preserveQuery === void 0) {
                     preserveQuery = false;
                   }
+                  if (isDomainNeedRawQuery === void 0) {
+                    isDomainNeedRawQuery = function isDomainNeedRawQuery() {
+                      return false;
+                    };
+                  }
+                  if (PHPQuerySerializerNoEncoding === void 0) {
+                    PHPQuerySerializerNoEncoding = null;
+                  }
                   if (
-                    !this.$URIBase_isQueryParamModified &&
-                    (preserveQuery ||
-                      require("UriNeedRawQuerySVChecker").isDomainNeedRawQuery(
-                        this.getDomain()
-                      ))
+                    !this.$URIAbstractBase_isQueryParamModified &&
+                    (preserveQuery || isDomainNeedRawQuery(this.getDomain()))
                   ) {
-                    var _this$$URIBase_origin;
-                    return (_this$$URIBase_origin = this
-                      .$URIBase_originalRawQuery) != null
-                      ? _this$$URIBase_origin
+                    var _this$$URIAbstractBas;
+                    return (_this$$URIAbstractBas = this
+                      .$URIAbstractBase_originalRawQuery) != null
+                      ? _this$$URIAbstractBas
                       : "";
                   }
-                  return (rawQuery
-                    ? require("PHPQuerySerializerNoEncoding")
-                    : this.$URIBase_serializer
+                  return (rawQuery && PHPQuerySerializerNoEncoding
+                    ? PHPQuerySerializerNoEncoding
+                    : this.$URIAbstractBase_serializer
                   ).serialize(this.getQueryData());
                 };
                 _proto.removeQueryData = function removeQueryData(keys) {
@@ -7288,49 +6544,49 @@ try {
                     keys = [keys];
                   }
                   for (var i = 0, length = keys.length; i < length; ++i) {
-                    delete this.$URIBase_queryData[keys[i]];
+                    delete this.$URIAbstractBase_queryData[keys[i]];
                   }
-                  this.$URIBase_isQueryParamModified = true;
+                  this.$URIAbstractBase_isQueryParamModified = true;
                   return this;
                 };
                 _proto.setFragment = function setFragment(fragment) {
-                  this.$URIBase_fragment = fragment;
+                  this.$URIAbstractBase_fragment = fragment;
 
                   this.setForceFragmentSeparator(false);
                   return this;
                 };
                 _proto.getFragment = function getFragment() {
-                  return this.$URIBase_fragment;
+                  return this.$URIAbstractBase_fragment;
                 };
                 _proto.setForceFragmentSeparator = function setForceFragmentSeparator(
                   shouldForce
                 ) {
-                  this.$URIBase_forceFragmentSeparator = shouldForce;
+                  this.$URIAbstractBase_forceFragmentSeparator = shouldForce;
                   return this;
                 };
                 _proto.getForceFragmentSeparator = function getForceFragmentSeparator() {
-                  return this.$URIBase_forceFragmentSeparator;
+                  return this.$URIAbstractBase_forceFragmentSeparator;
                 };
                 _proto.setIsGeneric = function setIsGeneric(isGeneric) {
-                  this.$URIBase_isGeneric = isGeneric;
+                  this.$URIAbstractBase_isGeneric = isGeneric;
                   return this;
                 };
                 _proto.getIsGeneric = function getIsGeneric() {
-                  return this.$URIBase_isGeneric;
+                  return this.$URIAbstractBase_isGeneric;
                 };
                 _proto.getOriginalRawQuery = function getOriginalRawQuery() {
-                  return this.$URIBase_originalRawQuery;
+                  return this.$URIAbstractBase_originalRawQuery;
                 };
                 _proto.setOriginalRawQuery = function setOriginalRawQuery(
                   originalRawQuery
                 ) {
-                  this.$URIBase_originalRawQuery = originalRawQuery;
+                  this.$URIAbstractBase_originalRawQuery = originalRawQuery;
                   return this;
                 };
                 _proto.setQueryParamModified = function setQueryParamModified(
                   isQueryParamModified
                 ) {
-                  this.$URIBase_isQueryParamModified = isQueryParamModified;
+                  this.$URIAbstractBase_isQueryParamModified = isQueryParamModified;
                   return this;
                 };
                 _proto.isEmpty = function isEmpty() {
@@ -7344,40 +6600,113 @@ try {
                     this.getFragment()
                   );
                 };
-                _proto.toString = function toString() {
-                  return this.$URIBase_toStringWithFilters(false, false);
+                _proto.toString = function toString(
+                  isDomainNeedRawQuery,
+                  PHPQuerySerializerNoEncoding
+                ) {
+                  if (isDomainNeedRawQuery === void 0) {
+                    isDomainNeedRawQuery = function isDomainNeedRawQuery() {
+                      return false;
+                    };
+                  }
+                  if (PHPQuerySerializerNoEncoding === void 0) {
+                    PHPQuerySerializerNoEncoding = null;
+                  }
+                  return this.$URIAbstractBase_toStringWithFilters(
+                    false,
+                    false,
+                    isDomainNeedRawQuery,
+                    PHPQuerySerializerNoEncoding
+                  );
                 };
-                _proto.toStringRawQuery = function toStringRawQuery() {
-                  return this.$URIBase_toStringWithFilters(true, false);
+                _proto.toStringRawQuery = function toStringRawQuery(
+                  isDomainNeedRawQuery,
+                  PHPQuerySerializerNoEncoding
+                ) {
+                  if (isDomainNeedRawQuery === void 0) {
+                    isDomainNeedRawQuery = function isDomainNeedRawQuery() {
+                      return false;
+                    };
+                  }
+                  if (PHPQuerySerializerNoEncoding === void 0) {
+                    PHPQuerySerializerNoEncoding = null;
+                  }
+                  return this.$URIAbstractBase_toStringWithFilters(
+                    true,
+                    false,
+                    isDomainNeedRawQuery,
+                    PHPQuerySerializerNoEncoding
+                  );
                 };
-                _proto.toStringPreserveQuery = function toStringPreserveQuery() {
-                  return this.$URIBase_toStringWithFilters(false, true);
+                _proto.toStringPreserveQuery = function toStringPreserveQuery(
+                  isDomainNeedRawQuery,
+                  PHPQuerySerializerNoEncoding
+                ) {
+                  if (isDomainNeedRawQuery === void 0) {
+                    isDomainNeedRawQuery = function isDomainNeedRawQuery() {
+                      return false;
+                    };
+                  }
+                  if (PHPQuerySerializerNoEncoding === void 0) {
+                    PHPQuerySerializerNoEncoding = null;
+                  }
+                  return this.$URIAbstractBase_toStringWithFilters(
+                    false,
+                    true,
+                    isDomainNeedRawQuery,
+                    PHPQuerySerializerNoEncoding
+                  );
                 };
-                _proto.$URIBase_toStringWithFilters = function $URIBase_toStringWithFilters(
+                _proto.$URIAbstractBase_toStringWithFilters = function $URIAbstractBase_toStringWithFilters(
                   rawQuery,
-                  preserveQuery
+                  preserveQuery,
+                  isDomainNeedRawQuery,
+                  PHPQuerySerializerNoEncoding
                 ) {
                   if (rawQuery === void 0) {
                     rawQuery = false;
                   }
                   if (preserveQuery === void 0) {
                     preserveQuery = false;
+                  }
+                  if (isDomainNeedRawQuery === void 0) {
+                    isDomainNeedRawQuery = function isDomainNeedRawQuery() {
+                      return false;
+                    };
+                  }
+                  if (PHPQuerySerializerNoEncoding === void 0) {
+                    PHPQuerySerializerNoEncoding = null;
                   }
                   var uri = this;
                   for (var i = 0; i < uriFilters.length; i++) {
                     uri = uriFilters[i](uri);
                   }
-                  return uri.$URIBase_toStringImpl(rawQuery, preserveQuery);
+                  return uri.$URIAbstractBase_toStringImpl(
+                    rawQuery,
+                    preserveQuery,
+                    isDomainNeedRawQuery,
+                    PHPQuerySerializerNoEncoding
+                  );
                 };
-                _proto.$URIBase_toStringImpl = function $URIBase_toStringImpl(
+                _proto.$URIAbstractBase_toStringImpl = function $URIAbstractBase_toStringImpl(
                   rawQuery,
-                  preserveQuery
+                  preserveQuery,
+                  isDomainNeedRawQuery,
+                  PHPQuerySerializerNoEncoding
                 ) {
                   if (rawQuery === void 0) {
                     rawQuery = false;
                   }
                   if (preserveQuery === void 0) {
                     preserveQuery = false;
+                  }
+                  if (isDomainNeedRawQuery === void 0) {
+                    isDomainNeedRawQuery = function isDomainNeedRawQuery() {
+                      return false;
+                    };
+                  }
+                  if (PHPQuerySerializerNoEncoding === void 0) {
+                    PHPQuerySerializerNoEncoding = null;
                   }
                   var str = "";
                   var protocol = this.getProtocol();
@@ -7399,10 +6728,13 @@ try {
                   } else if (str) {
                     str += "/";
                   }
-                  var queryStr = this.$URIBase_renderQuery(
+                  var queryStr = this.$URIAbstractBase_renderQuery(
                     rawQuery,
-                    preserveQuery
+                    preserveQuery,
+                    isDomainNeedRawQuery,
+                    PHPQuerySerializerNoEncoding
                   );
+
                   if (queryStr) {
                     str += "?" + queryStr;
                   }
@@ -7414,7 +6746,9 @@ try {
                   }
                   return str;
                 };
-                URIBase.registerFilter = function registerFilter(filter) {
+                URIAbstractBase.registerFilter = function registerFilter(
+                  filter
+                ) {
                   uriFilters.push(filter);
                 };
                 _proto.getOrigin = function getOrigin() {
@@ -7427,13 +6761,16 @@ try {
                   );
                 };
                 _proto.getQualifiedURIBase = function getQualifiedURIBase() {
-                  return new URIBase(this, this.$URIBase_serializer).qualify();
+                  return new URIAbstractBase(
+                    this,
+                    this.$URIAbstractBase_serializer
+                  ).qualify();
                 };
                 _proto.qualify = function qualify() {
                   if (!this.getDomain()) {
-                    var current = new URIBase(
+                    var current = new URIAbstractBase(
                       window.location.href,
-                      this.$URIBase_serializer
+                      this.$URIAbstractBase_serializer
                     );
                     this.setProtocol(current.getProtocol())
                       .setDomain(current.getDomain())
@@ -7444,13 +6781,6 @@ try {
                 _proto.setSubdomain = function setSubdomain(subdomain) {
                   var qualified = this.qualify();
                   var domain = qualified.getDomain();
-
-                  if (
-                    require("isInternalFBURI")(qualified) &&
-                    subdomain === "our"
-                  ) {
-                    subdomain = "www";
-                  }
                   return this.setDomain(
                     require("setHostSubdomain")(domain, subdomain)
                   );
@@ -7471,13 +6801,13 @@ try {
                   superdomain
                 ) {
                   var domain = this.getDomain();
-                  return URIBase.isDomainSubdomainOfDomain(
+                  return URIAbstractBase.isDomainSubdomainOfDomain(
                     domain,
                     superdomain,
-                    this.$URIBase_serializer
+                    this.$URIAbstractBase_serializer
                   );
                 };
-                URIBase.isDomainSubdomainOfDomain = function isDomainSubdomainOfDomain(
+                URIAbstractBase.isDomainSubdomainOfDomain = function isDomainSubdomainOfDomain(
                   domain,
                   superdomain,
                   serializer
@@ -7492,96 +6822,24 @@ try {
                     var pos = domainLen - superdomainLen - 1;
 
                     if (domainLen === superdomainLen || domain[pos] === ".") {
-                      var uri = new URIBase(null, serializer);
+                      var uri = new URIAbstractBase(null, serializer);
                       uri.setDomain(superdomain);
-                      return URIBase.isValid(uri, serializer);
+                      return URIAbstractBase.isValid(uri, serializer);
                     }
                   }
 
                   return false;
                 };
-                return URIBase;
+                return URIAbstractBase;
               })();
 
-              module.exports = URIBase;
-            },
-            null
-          );
-          __d(
-            "UriNeedRawQuerySVChecker",
-            ["PHPQuerySerializer", "URIBase", "UriNeedRawQuerySVConfig"],
-            function $module_UriNeedRawQuerySVChecker(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              "use strict";
-              var c_URIBase;
-              var c_PHPQuerySerializer;
-
-              var PROTOCOLS = ["http", "https"];
-
-              function isUriNeedRawQuery(uri) {
-                if (uri == null) {
-                  return false;
-                }
-                var uriBase =
-                  uri instanceof (c_URIBase || (c_URIBase = require("URIBase")))
-                    ? uri
-                    : (c_URIBase || (c_URIBase = require("URIBase"))).tryParse(
-                        uri,
-                        c_PHPQuerySerializer ||
-                          (c_PHPQuerySerializer = require("PHPQuerySerializer"))
-                      );
-                if (uriBase == null) {
-                  return false;
-                }
-
-                var protocol = uriBase.getProtocol();
-
-                if (!ES(PROTOCOLS, "includes", true, protocol)) {
-                  return false;
-                }
-
-                return isDomainNeedRawQuery(uriBase.getDomain());
-              }
-
-              function isDomainNeedRawQuery(domain) {
-                return (
-                  domain != null &&
-                  ES(
-                    require("UriNeedRawQuerySVConfig").uris,
-                    "some",
-                    true,
-                    function UriNeedRawQuerySVConfig_uris_some_$0(
-                      uriNeedRawQueryDomain
-                    ) {
-                      return (
-                        c_URIBase || (c_URIBase = require("URIBase"))
-                      ).isDomainSubdomainOfDomain(
-                        domain,
-                        uriNeedRawQueryDomain,
-                        c_PHPQuerySerializer ||
-                          (c_PHPQuerySerializer = require("PHPQuerySerializer"))
-                      );
-                    }
-                  )
-                );
-              }
-
-              module.exports = {
-                isUriNeedRawQuery: isUriNeedRawQuery,
-                isDomainNeedRawQuery: isDomainNeedRawQuery
-              };
+              module.exports = URIAbstractBase;
             },
             null
           );
           __d(
             "sdk.URI",
-            ["QueryString", "URIBase"],
+            ["QueryString", "URIAbstractBase"],
             function $module_sdk_URI(
               global,
               require,
@@ -7590,8 +6848,6 @@ try {
               module,
               exports
             ) {
-              var c_URIBase;
-
               var facebookRe = /\.facebook\.com$/;
 
               var serializer = {
@@ -7615,12 +6871,10 @@ try {
                   return this.toString();
                 };
                 URI.isValidURI = function isValidURI(uri) {
-                  return (
-                    c_URIBase || (c_URIBase = require("URIBase"))
-                  ).isValid(uri, serializer);
+                  return require("URIAbstractBase").isValid(uri, serializer);
                 };
                 return URI;
-              })(c_URIBase || (c_URIBase = require("URIBase")));
+              })(require("URIAbstractBase"));
               module.exports = URI;
             },
             null
@@ -19301,7 +18555,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1002804076","namespace":"FB","message":"' +
+        '","revision":"1002818281","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
