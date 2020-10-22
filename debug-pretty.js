@@ -1,4 +1,4 @@
-/*1603119570,,JIT Construction: v1002843506,en_US*/
+/*1603334952,,JIT Construction: v1002863080,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3728,7 +3728,7 @@ try {
           })(typeof global === "undefined" ? this : global);
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1002843506",
+            revision: "1002863080",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -3763,7 +3763,7 @@ try {
               https_only_scribe_logging: { rate: 1 },
               log_perf: { rate: 0.001 },
               use_x_xd: { rate: 100 },
-              cache_auth_response: { rate: 50 },
+              cache_auth_response: { rate: 100 },
               oauth_funnel_logger_version: 1
             }
           });
@@ -9065,7 +9065,9 @@ try {
               var YEAR_MS = 365 * 24 * 60 * 60 * 1000;
               var CONNECTED_REVALIDATE_PERIOD = 60 * 90 * 1000;
               var DEFAULT_REVALIDATE_PERIOD = 60 * 60 * 24 * 1000;
+              var LOGIN_COMPLETE_HEARTBEAT_TIMEOUT = 5 * 1000;
               var PLATFORM_E2E_TRACKING_LOG_ID = 114;
+              var PLATFORM_JSSDK_FUNNEL_LOG_ID = 117;
 
               var currentAuthResponse;
 
@@ -9374,9 +9376,25 @@ try {
                   cbt_delta: ES("Date", "now", false) - cbt
                 };
 
-                require("sdk.Impressions").log(117, {
+                require("sdk.Impressions").log(PLATFORM_JSSDK_FUNNEL_LOG_ID, {
                   payload: payload
                 });
+
+                window.setTimeout(function window_setTimeout_$0() {
+                  var payload = {
+                    action: "client_login_complete_heartbeat",
+                    logger_id: loggerID,
+                    client_funnel_version: require("sdk.feature")(
+                      "oauth_funnel_logger_version",
+                      1
+                    ),
+                    cbt_delta: ES("Date", "now", false) - cbt
+                  };
+
+                  require("sdk.Impressions").log(PLATFORM_JSSDK_FUNNEL_LOG_ID, {
+                    payload: payload
+                  });
+                }, LOGIN_COMPLETE_HEARTBEAT_TIMEOUT);
               }
 
               function populateAuthResponse(authResponse, params) {
@@ -18563,7 +18581,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1002843506","namespace":"FB","message":"' +
+        '","revision":"1002863080","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
