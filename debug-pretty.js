@@ -1,4 +1,4 @@
-/*1607380767,,JIT Construction: v1003061471,en_US*/
+/*1607575753,,JIT Construction: v1003078713,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3043,11 +3043,11 @@ try {
                     var ret;
                     var first = s.charCodeAt(index);
 
-                    if (first < 0xd800 || first > 0xdbff || index + 1 === len) {
+                    if (first < 55296 || first > 56319 || index + 1 === len) {
                       ret = s[index];
                     } else {
                       var second = s.charCodeAt(index + 1);
-                      if (second < 0xdc00 || second > 0xdfff) {
+                      if (second < 56320 || second > 57343) {
                         ret = s[index];
                       } else {
                         ret = s[index] + s[index + 1];
@@ -3728,7 +3728,7 @@ try {
           })(typeof global === "undefined" ? this : global);
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1003061471",
+            revision: "1003078713",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -8861,8 +8861,8 @@ try {
 
               var de =
                 ">___?456789:;<=_______" +
-                "\x00\x01\x02\x03\x04\x05\x06\x07\b\t\n\x0b\f\r\x0e\x0f\x10\x11\x12\x13\x14\x15\x16\x17\x18\x19" +
-                "______\x1a\x1b\x1c\x1d\x1e\x1f !\"#$%&'()*+,-./0123";
+                "\u0000\u0001\u0002\u0003\u0004\u0005\u0006\u0007\b\t\n\u000B\f\r\u000E\u000F\u0010\u0011\u0012\u0013\u0014\u0015\u0016\u0017\u0018\u0019" +
+                "______\u001A\u001B\u001C\u001D\u001E\u001F !\"#$%&'()*+,-./0123";
               function de4(c) {
                 var num =
                   (de.charCodeAt(c.charCodeAt(0) - 43) << 18) |
@@ -8880,7 +8880,10 @@ try {
                 encode: function encode(input) {
                   var str = unescape(encodeURI(input));
                   var i = (str.length + 2) % 3;
-                  str = (str + "\0\0".slice(i)).replace(/[\s\S]{3}/g, en3);
+                  str = (str + "\u0000\u0000".slice(i)).replace(
+                    /[\s\S]{3}/g,
+                    en3
+                  );
                   return str.slice(0, str.length + i - 2) + "==".slice(i);
                 },
                 decode: function decode(input) {
@@ -17539,10 +17542,10 @@ try {
               exports.substring = substring;
               exports.getCodePoints = getCodePoints;
 
-              var SURROGATE_HIGH_START = 0xd800;
-              var SURROGATE_HIGH_END = 0xdbff;
-              var SURROGATE_LOW_START = 0xdc00;
-              var SURROGATE_LOW_END = 0xdfff;
+              var SURROGATE_HIGH_START = 55296;
+              var SURROGATE_HIGH_END = 56319;
+              var SURROGATE_LOW_START = 56320;
+              var SURROGATE_LOW_END = 57343;
               var SURROGATE_UNITS_REGEX = /[\uD800-\uDFFF]/;
 
               function isCodeUnitInSurrogateRange(codeUnit) {
@@ -18604,7 +18607,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1003061471","namespace":"FB","message":"' +
+        '","revision":"1003078713","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
