@@ -1,4 +1,4 @@
-/*1610778561,,JIT Construction: v1003189855,en_US*/
+/*1610788770,,JIT Construction: v1003190034,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3728,7 +3728,7 @@ try {
           })(typeof global === "undefined" ? this : global);
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1003189855",
+            revision: "1003190034",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -12886,6 +12886,8 @@ try {
 
               var _dialogStates = {};
 
+              var _oauthDialogRequestCount = 0;
+
               function _trackRunState(cb, id) {
                 _dialogStates[id] = true;
                 return function(response) {
@@ -12980,6 +12982,26 @@ try {
                       (params.display == "touch" && params.in_iframe))
                   ) {
                     params.display = UIServer.checkOauthDisplay(params);
+                  }
+
+                  if (method.url == "dialog/oauth") {
+                    var _feature;
+                    if (
+                      _oauthDialogRequestCount >=
+                      ((_feature = require("sdk.feature")(
+                        "max_oauth_dialog_retries",
+                        100
+                      )) != null
+                        ? _feature
+                        : 100)
+                    ) {
+                      require("Log").error(
+                        "Your request to oauth has exceeded the rate limit, please try again later"
+                      );
+
+                      return;
+                    }
+                    _oauthDialogRequestCount++;
                   }
 
                   if (
@@ -18666,7 +18688,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1003189855","namespace":"FB","message":"' +
+        '","revision":"1003190034","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
