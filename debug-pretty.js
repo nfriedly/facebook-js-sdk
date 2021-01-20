@@ -1,4 +1,4 @@
-/*1610788770,,JIT Construction: v1003190034,en_US*/
+/*1611105065,,JIT Construction: v1003195842,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3728,7 +3728,7 @@ try {
           })(typeof global === "undefined" ? this : global);
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1003190034",
+            revision: "1003195842",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -4256,7 +4256,7 @@ try {
           );
           __d(
             "sdk.Content",
-            ["Log", "sdk.domReady", "sdk.UA"],
+            ["Log", "sdk.UA", "sdk.domReady"],
             function $module_sdk_Content(
               global,
               require,
@@ -5748,7 +5748,7 @@ try {
           );
           __d(
             "sdk.ErrorHandling",
-            ["sdk.ErrorHandler", "sdk.feature", "sdk.Runtime", "sdk.Scribe"],
+            ["sdk.ErrorHandler", "sdk.Runtime", "sdk.Scribe", "sdk.feature"],
             function $module_sdk_ErrorHandling(
               global,
               require,
@@ -5782,8 +5782,8 @@ try {
               "dotAccess",
               "sdk.Content",
               "sdk.DOM",
-              "sdk.domReady",
-              "sdk.ErrorHandling"
+              "sdk.ErrorHandling",
+              "sdk.domReady"
             ],
             function $module_FB(
               global,
@@ -7893,8 +7893,8 @@ try {
               "ApiBatcher",
               "ApiClientUtils",
               "Assert",
-              "ChunkedRequest",
               "CORSRequest",
+              "ChunkedRequest",
               "JSONPRequest",
               "Log",
               "ObservableMixin",
@@ -8301,7 +8301,7 @@ try {
           );
           __d(
             "sdk.warnInsecure",
-            ["Log", "sdk.feature", "sdk.Runtime", "sdk.Scribe"],
+            ["Log", "sdk.Runtime", "sdk.Scribe", "sdk.feature"],
             function $module_sdk_warnInsecure(
               global,
               require,
@@ -8353,11 +8353,11 @@ try {
             "sdk.api",
             [
               "ApiClient",
-              "sdk.feature",
               "sdk.PlatformVersioning",
               "sdk.Runtime",
               "sdk.Scribe",
               "sdk.URI",
+              "sdk.feature",
               "sdk.warnInsecure"
             ],
             function $module_sdk_api(
@@ -9060,15 +9060,15 @@ try {
               "QueryString",
               "UrlMap",
               "sdk.Cookie",
-              "sdk.feature",
-              "sdk.getContextType",
               "sdk.Impressions",
               "sdk.Runtime",
               "sdk.Scribe",
               "sdk.SignedRequest",
               "sdk.UA",
               "sdk.URI",
-              "sdk.WebStorage"
+              "sdk.WebStorage",
+              "sdk.feature",
+              "sdk.getContextType"
             ],
             function $module_sdk_Auth(
               global,
@@ -11000,11 +11000,11 @@ try {
               "Type",
               "sdk.Canvas.Environment",
               "sdk.Content",
-              "sdk.DialogUtils",
               "sdk.DOM",
-              "sdk.fbt",
+              "sdk.DialogUtils",
               "sdk.Runtime",
-              "sdk.UA"
+              "sdk.UA",
+              "sdk.fbt"
             ],
             function $module_sdk_Dialog(
               global,
@@ -11712,7 +11712,7 @@ try {
           );
           __d(
             "sdk.Frictionless",
-            ["sdk.api", "sdk.Auth", "sdk.Dialog", "sdk.Event"],
+            ["sdk.Auth", "sdk.Dialog", "sdk.Event", "sdk.api"],
             function $module_sdk_Frictionless(
               global,
               require,
@@ -11992,11 +11992,11 @@ try {
               "isFacebookURI",
               "resolveWindow",
               "sdk.Event",
-              "sdk.feature",
               "sdk.RPC",
               "sdk.Runtime",
               "sdk.Scribe",
-              "sdk.URI"
+              "sdk.URI",
+              "sdk.feature"
             ],
             function $module_sdk_XD(
               global,
@@ -12527,26 +12527,26 @@ try {
               "guid",
               "insertIframe",
               "resolveURI",
-              "sdk.api",
               "sdk.Auth",
               "sdk.Content",
-              "sdk.Dialog",
               "sdk.DOM",
+              "sdk.Dialog",
               "sdk.Event",
               "sdk.Extensions",
-              "sdk.fbt",
-              "sdk.feature",
               "sdk.Frictionless",
-              "sdk.getContextType",
               "sdk.Impressions",
-              "sdk.modFeatureCheck",
               "sdk.Native",
-              "sdk.openMessenger",
               "sdk.RPC",
               "sdk.Runtime",
               "sdk.Scribe",
               "sdk.UA",
-              "sdk.XD"
+              "sdk.XD",
+              "sdk.api",
+              "sdk.fbt",
+              "sdk.feature",
+              "sdk.getContextType",
+              "sdk.modFeatureCheck",
+              "sdk.openMessenger"
             ],
             function $module_sdk_UIServer(
               global,
@@ -13766,12 +13766,12 @@ try {
             [
               "Assert",
               "Log",
-              "sdk.feature",
               "sdk.Impressions",
               "sdk.PlatformVersioning",
               "sdk.Runtime",
               "sdk.UIServer",
-              "sdk.URI"
+              "sdk.URI",
+              "sdk.feature"
             ],
             function $module_sdk_ui(
               global,
@@ -14162,7 +14162,7 @@ try {
           );
           __d(
             "sdk.Canvas.Plugin",
-            ["Log", "sdk.api", "sdk.RPC", "sdk.Runtime", "sdk.UA"],
+            ["Log", "sdk.RPC", "sdk.Runtime", "sdk.UA", "sdk.api"],
             function $module_sdk_Canvas_Plugin(
               global,
               require,
@@ -14418,15 +14418,15 @@ try {
             "legacy:fb.canvas",
             [
               "Assert",
-              "sdk.Canvas.Environment",
-              "sdk.Event",
               "FB",
+              "sdk.Canvas.Environment",
               "sdk.Canvas.IframeHandling",
               "sdk.Canvas.Navigation",
               "sdk.Canvas.Plugin",
+              "sdk.Canvas.Tti",
+              "sdk.Event",
               "sdk.RPC",
-              "sdk.Runtime",
-              "sdk.Canvas.Tti"
+              "sdk.Runtime"
             ],
             function $module_legacy_fb_canvas(
               global,
@@ -14592,7 +14592,7 @@ try {
           );
           __d(
             "sdk.Canvas.Prefetcher",
-            ["JSSDKCanvasPrefetcherConfig", "sdk.api", "sdk.Runtime"],
+            ["JSSDKCanvasPrefetcherConfig", "sdk.Runtime", "sdk.api"],
             function $module_sdk_Canvas_Prefetcher(
               global,
               require,
@@ -14743,7 +14743,7 @@ try {
           );
           __d(
             "legacy:fb.compat.ui",
-            ["FB", "Log", "sdk.ui", "sdk.UIServer"],
+            ["FB", "Log", "sdk.UIServer", "sdk.ui"],
             function $module_legacy_fb_compat_ui(
               global,
               require,
@@ -14849,7 +14849,7 @@ try {
           );
           __d(
             "legacy:fb.event",
-            ["FB", "sdk.Event", "Log"],
+            ["FB", "Log", "sdk.Event"],
             function $module_legacy_fb_event(
               global,
               require,
@@ -14991,10 +14991,10 @@ try {
             [
               "UrlMap",
               "sdk.DOM",
-              "sdk.fbt",
               "sdk.Runtime",
               "sdk.UA",
-              "sdk.URI"
+              "sdk.URI",
+              "sdk.fbt"
             ],
             function $module_sdk_MBasicInitializer(
               global,
@@ -15349,7 +15349,7 @@ try {
           );
           __d(
             "sdk.Time",
-            ["Log", "sdk.feature", "sdk.Impressions", "sdk.Runtime"],
+            ["Log", "sdk.Impressions", "sdk.Runtime", "sdk.feature"],
             function $module_sdk_Time(
               global,
               require,
@@ -15475,7 +15475,7 @@ try {
           );
           __d(
             "legacy:fb.time",
-            ["sdk.Event", "sdk.Time", "runOnce"],
+            ["runOnce", "sdk.Event", "sdk.Time"],
             function $module_legacy_fb_time(
               global,
               require,
@@ -15765,9 +15765,9 @@ try {
             "legacy:fb.xfbml",
             [
               "Assert",
-              "sdk.Event",
               "FB",
               "XFBML",
+              "sdk.Event",
               "sdk.domReady",
               "wrapFunction"
             ],
@@ -16364,7 +16364,6 @@ try {
               "UrlMap",
               "guid",
               "sdk.Auth",
-              "sdk.createIframe",
               "sdk.DOM",
               "sdk.Event",
               "sdk.PlatformVersioning",
@@ -16372,7 +16371,8 @@ try {
               "sdk.Runtime",
               "sdk.UA",
               "sdk.URI",
-              "sdk.XD"
+              "sdk.XD",
+              "sdk.createIframe"
             ],
             function $module_IframePlugin(
               global,
@@ -17315,15 +17315,15 @@ try {
               "sdk.Auth",
               "sdk.Dialog",
               "sdk.ErrorHandling",
-              "sdk.feature",
-              "sdk.getContextType",
               "sdk.Impressions",
               "sdk.PluginUtils",
               "sdk.Runtime",
               "sdk.Scribe",
-              "sdk.ui",
               "sdk.UIServer",
-              "sdk.XD"
+              "sdk.XD",
+              "sdk.feature",
+              "sdk.getContextType",
+              "sdk.ui"
             ],
             function $module_sdk_XFBML_LoginButton(
               global,
@@ -17863,9 +17863,9 @@ try {
               "UnicodeUtils",
               "containsNode",
               "sdk.DOM",
-              "sdk.feature",
               "sdk.UA",
-              "sdk.XD"
+              "sdk.XD",
+              "sdk.feature"
             ],
             function $module_sdk_XFBML_Quote(
               global,
@@ -18090,13 +18090,13 @@ try {
               "IframePlugin",
               "UrlMap",
               "sdk.Content",
-              "sdk.createIframe",
-              "sdk.DialogUtils",
               "sdk.DOM",
+              "sdk.DialogUtils",
               "sdk.Event",
               "sdk.Runtime",
               "sdk.UA",
-              "sdk.XD"
+              "sdk.XD",
+              "sdk.createIframe"
             ],
             function $module_sdk_XFBML_Save(
               global,
@@ -18603,14 +18603,14 @@ try {
               "PluginConfig",
               "PluginTags",
               "XFBML",
-              "sdk.feature",
               "sdk.XFBML.Comments",
               "sdk.XFBML.CommentsCount",
               "sdk.XFBML.LoginButton",
               "sdk.XFBML.Quote",
               "sdk.XFBML.Save",
               "sdk.XFBML.ShareButton",
-              "sdk.XFBML.Video"
+              "sdk.XFBML.Video",
+              "sdk.feature"
             ],
             function $module_legacy_fb_xfbml_plugins(
               global,
@@ -18688,7 +18688,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1003190034","namespace":"FB","message":"' +
+        '","revision":"1003195842","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
