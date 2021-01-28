@@ -1,4 +1,4 @@
-/*1611354551,,JIT Construction: v1003211154,en_US*/
+/*1611867559,,JIT Construction: v1003235744,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3728,7 +3728,7 @@ try {
           })(typeof global === "undefined" ? this : global);
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1003211154",
+            revision: "1003235744",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -9092,6 +9092,8 @@ try {
 
               var timer;
 
+              var facebookRe = /^https?:\/\/([\w\.]+)?\.facebook\.com\/?/;
+
               var Auth = new (require("ObservableMixin"))();
 
               require("sdk.Runtime").subscribe(
@@ -9554,9 +9556,7 @@ try {
                 if (
                   require("sdk.Runtime").getLoginStatus() !== "connected" &&
                   (document.referrer === "" ||
-                    /^https?:\/\/([\w\.]+)?facebook.com\/?/.test(
-                      document.referrer
-                    ))
+                    facebookRe.test(document.referrer))
                 ) {
                   var fragment = location.hash.substr(1);
                   if (fragment !== "") {
@@ -9941,7 +9941,13 @@ try {
                   return;
                 }
 
+                var skipCache =
+                  require("sdk.Runtime").getLoginStatus() !== "connected" &&
+                  facebookRe.test(document.referrer) &&
+                  ES(location.hash, "indexOf", true, "cb=") > -1;
+
                 if (
+                  !skipCache &&
                   !force &&
                   require("sdk.feature")("cache_auth_response", false) &&
                   require("sdk.Runtime").getUseLocalStorage() &&
@@ -18688,7 +18694,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1003211154","namespace":"FB","message":"' +
+        '","revision":"1003235744","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
