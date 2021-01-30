@@ -1,4 +1,4 @@
-/*1611962953,,JIT Construction: v1003242646,en_US*/
+/*1611968956,,JIT Construction: v1003243739,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3728,7 +3728,7 @@ try {
           })(typeof global === "undefined" ? this : global);
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1003242646",
+            revision: "1003243739",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -16935,14 +16935,6 @@ try {
                   name: PluginAttrTypes.string
                 },
 
-                lwi_ads_creation: {
-                  fbe_extras: PluginAttrTypes.string,
-                  fbe_redirect_uri: PluginAttrTypes.string,
-                  fbe_scopes: PluginAttrTypes.string,
-                  fbe_state: PluginAttrTypes.string,
-                  hide_manage_button: PluginAttrTypes.bool
-                },
-
                 lwi_ads_insights: {
                   fbe_extras: PluginAttrTypes.string,
                   fbe_redirect_uri: PluginAttrTypes.string,
@@ -17271,6 +17263,60 @@ try {
                 }
               });
               var _default = CommentsCount;
+              module.exports = _default;
+            },
+            null
+          );
+          __d(
+            "sdk.XFBML.LWIAdsCreation",
+            ["IframePlugin", "sdk.createIframe"],
+            function $module_sdk_XFBML_LWIAdsCreation(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              "use strict";
+
+              var LWIAdsCreation = require("IframePlugin").extend({
+                constructor: function constructor(elem, ns, tag, attr) {
+                  this.parent(elem, ns, tag, attr);
+                  this._setUpSubscriptions();
+                },
+
+                getParams: function getParams() {
+                  return {
+                    fbe_extras: "string",
+                    fbe_redirect_uri: "string",
+                    fbe_scopes: "string",
+                    fbe_state: "string",
+                    hide_manage_button: "bool"
+                  };
+                },
+
+                _setUpSubscriptions: function _setUpSubscriptions() {
+                  var _this = this;
+                  this.subscribe(
+                    "xd.lwiadscreation.load",
+                    function subscribe_$1(message) {
+                      _this._createIframe(message);
+                    }
+                  );
+                },
+
+                _createIframe: function _createIframe(message) {
+                  require("sdk.createIframe")({
+                    url: message.iframeURL,
+                    name: "LWIAdsCreationRootIframe",
+                    root: document.body,
+                    height: 300,
+                    width: 950
+                  });
+                }
+              });
+              var _default = LWIAdsCreation;
               module.exports = _default;
             },
             null
@@ -18610,6 +18656,7 @@ try {
               "XFBML",
               "sdk.XFBML.Comments",
               "sdk.XFBML.CommentsCount",
+              "sdk.XFBML.LWIAdsCreation",
               "sdk.XFBML.LoginButton",
               "sdk.XFBML.Quote",
               "sdk.XFBML.Save",
@@ -18629,6 +18676,8 @@ try {
                 comments: require("sdk.XFBML.Comments"),
                 comments_count: require("sdk.XFBML.CommentsCount"),
                 login_button: require("sdk.XFBML.LoginButton"),
+
+                lwi_ads_creation: require("sdk.XFBML.LWIAdsCreation"),
                 quote: require("sdk.XFBML.Quote"),
                 save: require("sdk.XFBML.Save"),
                 share_button: require("sdk.XFBML.ShareButton"),
@@ -18693,7 +18742,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1003242646","namespace":"FB","message":"' +
+        '","revision":"1003243739","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
