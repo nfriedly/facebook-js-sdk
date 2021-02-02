@@ -1,4 +1,4 @@
-/*1611968956,,JIT Construction: v1003243739,en_US*/
+/*1612234769,,JIT Construction: v1003251314,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3728,7 +3728,7 @@ try {
           })(typeof global === "undefined" ? this : global);
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1003243739",
+            revision: "1003251314",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -16935,13 +16935,6 @@ try {
                   name: PluginAttrTypes.string
                 },
 
-                lwi_ads_insights: {
-                  fbe_extras: PluginAttrTypes.string,
-                  fbe_redirect_uri: PluginAttrTypes.string,
-                  fbe_scopes: PluginAttrTypes.string,
-                  fbe_state: PluginAttrTypes.string
-                },
-
                 page: {
                   href: PluginAttrTypes.string,
                   hide_cta: PluginAttrTypes.bool,
@@ -17317,6 +17310,59 @@ try {
                 }
               });
               var _default = LWIAdsCreation;
+              module.exports = _default;
+            },
+            null
+          );
+          __d(
+            "sdk.XFBML.LWIAdsInsights",
+            ["IframePlugin", "sdk.createIframe"],
+            function $module_sdk_XFBML_LWIAdsInsights(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              "use strict";
+
+              var LWIAdsInsights = require("IframePlugin").extend({
+                constructor: function constructor(elem, ns, tag, attr) {
+                  this.parent(elem, ns, tag, attr);
+                  this._setUpSubscriptions();
+                },
+
+                getParams: function getParams() {
+                  return {
+                    fbe_extras: "string",
+                    fbe_redirect_uri: "string",
+                    fbe_scopes: "string",
+                    fbe_state: "string"
+                  };
+                },
+
+                _setUpSubscriptions: function _setUpSubscriptions() {
+                  var _this = this;
+                  this.subscribe(
+                    "xd.lwiadsinsights.load",
+                    function subscribe_$1(message) {
+                      _this._createIframe(message);
+                    }
+                  );
+                },
+
+                _createIframe: function _createIframe(message) {
+                  require("sdk.createIframe")({
+                    url: message.iframeURL,
+                    name: "LWIAdsInsightsRootIframe",
+                    root: document.body,
+                    height: 800,
+                    width: 1050
+                  });
+                }
+              });
+              var _default = LWIAdsInsights;
               module.exports = _default;
             },
             null
@@ -18657,6 +18703,7 @@ try {
               "sdk.XFBML.Comments",
               "sdk.XFBML.CommentsCount",
               "sdk.XFBML.LWIAdsCreation",
+              "sdk.XFBML.LWIAdsInsights",
               "sdk.XFBML.LoginButton",
               "sdk.XFBML.Quote",
               "sdk.XFBML.Save",
@@ -18678,6 +18725,7 @@ try {
                 login_button: require("sdk.XFBML.LoginButton"),
 
                 lwi_ads_creation: require("sdk.XFBML.LWIAdsCreation"),
+                lwi_ads_insights: require("sdk.XFBML.LWIAdsInsights"),
                 quote: require("sdk.XFBML.Quote"),
                 save: require("sdk.XFBML.Save"),
                 share_button: require("sdk.XFBML.ShareButton"),
@@ -18742,7 +18790,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1003243739","namespace":"FB","message":"' +
+        '","revision":"1003251314","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
