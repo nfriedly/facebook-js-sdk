@@ -1,4 +1,4 @@
-/*1612494629,,JIT Construction: v1003268890,en_US*/
+/*1613113164,,JIT Construction: v1003303214,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3728,7 +3728,7 @@ try {
           })(typeof global === "undefined" ? this : global);
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1003268890",
+            revision: "1003303214",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -7131,13 +7131,21 @@ try {
             ) {
               "use strict";
 
-              var errorHandler = function errorHandler(ex, rawResponse, url) {
+              var errorHandler = function errorHandler(
+                _ex,
+                _rawResponse,
+                _url,
+                _responseCode
+              ) {
                 return ERROR;
               };
 
-              function safelyParseResponse(rawResponse, url) {
+              function safelyParseResponse(rawResponse, url, responseCode) {
                 if (url === void 0) {
                   url = null;
+                }
+                if (responseCode === void 0) {
+                  responseCode = null;
                 }
                 try {
                   return rawResponse === null
@@ -7149,7 +7157,7 @@ try {
                         require("nullthrows")(rawResponse)
                       );
                 } catch (ex) {
-                  return errorHandler(ex, rawResponse, url);
+                  return errorHandler(ex, rawResponse, url, responseCode);
                 }
               }
 
@@ -7668,13 +7676,23 @@ try {
                 }
 
                 request.onload = function(xhr) {
-                  cb(require("sdk.safelyParseResponse")(xhr.responseText, url));
+                  cb(
+                    require("sdk.safelyParseResponse")(
+                      xhr.responseText,
+                      url,
+                      xhr.status
+                    )
+                  );
                 };
 
                 request.onerror = function(xhr) {
                   if (xhr.responseText) {
                     cb(
-                      require("sdk.safelyParseResponse")(xhr.responseText, url)
+                      require("sdk.safelyParseResponse")(
+                        xhr.responseText,
+                        url,
+                        xhr.status
+                      )
                     );
                   } else {
                     cb({
@@ -7872,7 +7890,13 @@ try {
 
                 request.onerror = function(xhr) {
                   if (xhr.responseText) {
-                    cb(require("sdk.safelyParseResponse")(xhr.responseText));
+                    cb(
+                      require("sdk.safelyParseResponse")(
+                        xhr.responseText,
+                        null,
+                        xhr.status
+                      )
+                    );
                   } else {
                     cb({
                       error: babelHelpers["extends"](
@@ -18897,7 +18921,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1003268890","namespace":"FB","message":"' +
+        '","revision":"1003303214","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
