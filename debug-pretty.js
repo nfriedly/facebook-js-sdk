@@ -1,4 +1,4 @@
-/*1613113164,,JIT Construction: v1003303214,en_US*/
+/*1613632241,,JIT Construction: v1003323786,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3728,7 +3728,7 @@ try {
           })(typeof global === "undefined" ? this : global);
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1003303214",
+            revision: "1003323786",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -6547,13 +6547,20 @@ try {
                 _proto.setPath = function setPath(path) {
                   if (__DEV__) {
                     if (path && path.charAt(0) !== "/") {
-                      console.warn(
-                        'Path does not begin with a "/" which means this URI ' +
-                          "will likely be malformed. Ensure any string passed to .setPath() " +
-                          'leads with "/": path "%s" for uri "%s".',
-                        path,
-                        this.toString()
-                      );
+                      var protocol = this.getProtocol();
+                      var safe =
+                        protocol === "mailto" ||
+                        protocol === "tel" ||
+                        protocol === "sms";
+                      if (!safe) {
+                        console.warn(
+                          'Path does not begin with a "/" which means this URI ' +
+                            "will likely be malformed. Ensure any string passed to .setPath() " +
+                            'leads with "/": path "%s" for uri "%s".',
+                          path,
+                          this.toString()
+                        );
+                      }
                     }
                   }
                   this.$URIAbstractBase_path = path;
@@ -18921,7 +18928,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1003303214","namespace":"FB","message":"' +
+        '","revision":"1003323786","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
