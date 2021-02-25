@@ -1,4 +1,4 @@
-/*1613770761,,JIT Construction: v1003333291,en_US*/
+/*1614215441,,JIT Construction: v1003357127,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3728,7 +3728,7 @@ try {
           })(typeof global === "undefined" ? this : global);
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1003333291",
+            revision: "1003357127",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -12566,47 +12566,6 @@ try {
             3
           );
           __d(
-            "sdk.modFeatureCheck",
-            ["JSSDKConfig"],
-            function $module_sdk_modFeatureCheck(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              exports.forIDs = forIDs;
-
-              function forIDs(name, ids, defaultValue) {
-                if (defaultValue === void 0) {
-                  defaultValue = false;
-                }
-                if (
-                  require("JSSDKConfig").features &&
-                  name in require("JSSDKConfig").features
-                ) {
-                  var values = require("JSSDKConfig").features[name];
-                  if (
-                    typeof values === "object" &&
-                    ES("Array", "isArray", false, values)
-                  ) {
-                    return ES(ids, "some", true, function ids_some_$0(x) {
-                      return ES(values, "some", true, function values_some_$0(
-                        y
-                      ) {
-                        return x % y === 0;
-                      });
-                    });
-                  }
-                }
-
-                return defaultValue;
-              }
-            },
-            null
-          );
-          __d(
             "sdk.openMessenger",
             ["sdk.UA"],
             function $module_sdk_openMessenger(
@@ -12692,7 +12651,6 @@ try {
               "sdk.fbt",
               "sdk.feature",
               "sdk.getContextType",
-              "sdk.modFeatureCheck",
               "sdk.openMessenger"
             ],
             function $module_sdk_UIServer(
@@ -13306,20 +13264,7 @@ try {
                     require("sdk.Runtime").isEnvironment(
                       require("sdk.Runtime").ENVIRONMENTS.PAGETAB
                     );
-                  if (canvas) {
-                    if (
-                      require("sdk.modFeatureCheck").forIDs(
-                        "force_popup_to_canvas_apps_with_id",
-                        [require("sdk.Runtime").getClientID()]
-                      ) ||
-                      require("sdk.feature")(
-                        "force_popup_to_all_canvas_app",
-                        false
-                      )
-                    ) {
-                      return "popup";
-                    }
-                  }
+
                   if (canvas && !params.display) {
                     return "async";
                   }
@@ -18931,7 +18876,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1003333291","namespace":"FB","message":"' +
+        '","revision":"1003357127","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
