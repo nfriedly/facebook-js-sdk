@@ -1,4 +1,4 @@
-/*1614215441,,JIT Construction: v1003357127,en_US*/
+/*1614308368,,JIT Construction: v1003365070,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3728,7 +3728,7 @@ try {
           })(typeof global === "undefined" ? this : global);
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1003357127",
+            revision: "1003365070",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -5469,116 +5469,8 @@ try {
             null
           );
           __d(
-            "$InternalEnum",
-            [],
-            function $module__InternalEnum(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              "use strict";
-
-              var hasOwnProperty = Object.prototype.hasOwnProperty;
-
-              var enumValuesMap =
-                typeof WeakMap === "function" ? new WeakMap() : new Map();
-
-              function valuesSet(context) {
-                var enumValues = enumValuesMap.get(context);
-                if (enumValues !== undefined) {
-                  return enumValues;
-                }
-
-                var names = Object.getOwnPropertyNames(context);
-                var newEnumValues = new Set(
-                  ES(names, "map", true, function names_map_$0(name) {
-                    return context[name];
-                  })
-                );
-                enumValuesMap.set(context, newEnumValues);
-                return newEnumValues;
-              }
-
-              var EnumPrototype = Object.preventExtensions(
-                Object.defineProperties(ES("Object", "create", false, null), {
-                  isValid: {
-                    value: function value(x) {
-                      return valuesSet(this).has(x);
-                    }
-                  },
-
-                  cast: {
-                    value: function value(x) {
-                      return this.isValid(x) ? x : undefined;
-                    }
-                  },
-
-                  members: {
-                    value: function value() {
-                      return valuesSet(this).values();
-                    }
-                  }
-                })
-              );
-
-              function Enum(members) {
-                var o = ES("Object", "create", false, EnumPrototype);
-                for (var k in members) {
-                  if (Object.prototype.hasOwnProperty.call(members, k)) {
-                    Object.defineProperty(o, k, { value: members[k] });
-                  }
-                }
-                Object.preventExtensions(o);
-                return o;
-              }
-
-              var EnumMirroredPrototype = Object.preventExtensions(
-                Object.defineProperties(ES("Object", "create", false, null), {
-                  isValid: {
-                    value: function value(x) {
-                      if (typeof x === "string") {
-                        return hasOwnProperty.call(this, x);
-                      }
-                      return false;
-                    }
-                  },
-
-                  cast: {
-                    value: function value(x) {
-                      return this.isValid(x) ? x : undefined;
-                    }
-                  },
-
-                  members: {
-                    value: function value() {
-                      return Object.getOwnPropertyNames(this);
-                    }
-                  }
-                })
-              );
-
-              Enum.Mirrored = function EnumMirrored(members) {
-                var o = ES("Object", "create", false, EnumMirroredPrototype);
-                for (var i = 0, len = members.length; i < len; ++i) {
-                  Object.defineProperty(o, members[i], { value: members[i] });
-                }
-                Object.preventExtensions(o);
-                return o;
-              };
-
-              ES("Object", "freeze", false, Enum);
-              ES("Object", "freeze", false, Enum.Mirrored);
-
-              module.exports = Enum;
-            },
-            null
-          );
-          __d(
             "TAALOpcode",
-            ["$InternalEnum"],
+            [],
             function $module_TAALOpcode(
               global,
               require,
@@ -5588,12 +5480,13 @@ try {
               exports
             ) {
               "use strict";
-              var TAALOpcode = require("$InternalEnum")({
+
+              var TAALOpcode = {
                 PREVIOUS_FILE: 1,
                 PREVIOUS_FRAME: 2,
                 PREVIOUS_DIR: 3,
                 FORCED_KEY: 4
-              });
+              };
               var _default = TAALOpcode;
               module.exports = _default;
             },
@@ -18876,7 +18769,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1003357127","namespace":"FB","message":"' +
+        '","revision":"1003365070","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
