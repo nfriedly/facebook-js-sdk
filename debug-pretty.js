@@ -1,4 +1,4 @@
-/*1614896962,,JIT Construction: v1003400118,en_US*/
+/*1615856359,,JIT Construction: v1003454265,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3728,7 +3728,7 @@ try {
           })(typeof global === "undefined" ? this : global);
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1003400118",
+            revision: "1003454265",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -15844,6 +15844,40 @@ try {
             3
           );
           __d(
+            "MPNLocalState",
+            [],
+            function $module_MPNLocalState(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              "use strict";
+
+              var MPNLocalStatePath = {
+                LANDING_BANNER: 1,
+                WELCOME_PAGE: 2,
+                ITP_CONTINUE: 3,
+                THREAD_VIEW: 4,
+                BUBBLE: 5
+              };
+              exports.MPNLocalStatePath = MPNLocalStatePath;
+
+              var MPNChatState = {
+                CHAT_NOT_STARTED: 1,
+                LOGGED_IN_CHAT_STARTED: 2,
+                GUEST_CHAT_STARTED: 3
+              };
+              exports.MPNChatState = MPNChatState;
+
+              var LOCAL_STATE_KEY = "__fb_chat_plugin";
+              exports.LOCAL_STATE_KEY = LOCAL_STATE_KEY;
+            },
+            null
+          );
+          __d(
             "sdk.PluginUtils",
             ["resolveURI", "sdk.Event"],
             function $module_sdk_PluginUtils(
@@ -16355,6 +16389,7 @@ try {
             "IframePlugin",
             [
               "Log",
+              "MPNLocalState",
               "ObservableMixin",
               "QueryString",
               "Type",
@@ -16368,6 +16403,7 @@ try {
               "sdk.Runtime",
               "sdk.UA",
               "sdk.URI",
+              "sdk.WebStorage",
               "sdk.XD",
               "sdk.createIframe"
             ],
@@ -16510,6 +16546,30 @@ try {
                         true
                       )
                     });
+
+                    if (tag == "customerchat") {
+                      var storage = require("sdk.WebStorage").getLocalStorage();
+                      var localState = null;
+                      if (storage != null) {
+                        try {
+                          localState = storage.getItem(
+                            require("MPNLocalState").LOCAL_STATE_KEY
+                          );
+                        } catch (_unused) {
+                          require("Log").warn("Failed to access localStorage");
+                        }
+                      }
+                      if (localState != null) {
+                        ES("Object", "assign", false, params, {
+                          local_state: localState
+                        });
+                      }
+
+                      var requestTime = ES("Date", "now", false);
+                      ES("Object", "assign", false, params, {
+                        request_time: requestTime
+                      });
+                    }
 
                     if (this.shouldIgnoreWidth()) {
                       params.width = void 0;
@@ -18782,7 +18842,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1003400118","namespace":"FB","message":"' +
+        '","revision":"1003454265","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
