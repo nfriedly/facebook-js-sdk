@@ -1,4 +1,4 @@
-/*1616551846,,JIT Construction: v1003501648,en_US*/
+/*1616572165,,JIT Construction: v1003503349,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -220,16 +220,15 @@ try {
            * This means that it is generally only usable in cases where all resources are
            * resolved and packaged together.
            *
-           * @providesInline commonjs-require-lite
-           * @typechecks
+           * @providesInline fbmodule-runtime-lite
            * @format
+           *  strict
            */
 
-          var require, __d;
           (function(global) {
-            var map = {},
-              resolved = {};
-            var defaultDeps = [
+            var map = {};
+
+            var defaultCJSDeps = [
               "global",
               "require",
               "requireDynamic",
@@ -238,22 +237,45 @@ try {
               "exports"
             ];
 
-            require = function(id, soft) {
-              if (Object.prototype.hasOwnProperty.call(resolved, id)) {
-                return resolved[id];
-              }
-              if (!Object.prototype.hasOwnProperty.call(map, id)) {
+            var defaultESMDeps = [
+              "global",
+              "require",
+              "importDefault",
+              "importNamespace",
+              "requireLazy",
+              "module",
+              "exports"
+            ];
+
+            var REQUIRE_WHEN_READY = 1;
+            var ES_MODULE_IMPORTS = 32;
+            var ES_MODULE_EXPORTS = 64;
+            var EMPTY = {};
+            var hasOwnProperty = Object.prototype.hasOwnProperty;
+
+            function getOrIntializeModule(id, soft) {
+              if (!hasOwnProperty.call(map, id)) {
                 if (soft) {
                   return null;
                 }
                 throw new Error("Module " + id + " has not been defined");
               }
-              var module = map[id],
-                deps = module.deps,
-                length = module.factory.length,
-                dep,
-                args = [];
 
+              var module = map[id];
+              if (module.resolved) {
+                return module;
+              }
+
+              var _special = module.special;
+              var length = module.factory.length;
+
+              var deps =
+                _special & ES_MODULE_IMPORTS
+                  ? defaultESMDeps.concat(module.deps)
+                  : defaultCJSDeps.concat(module.deps);
+
+              var args = [];
+              var dep;
               for (var i = 0; i < length; i++) {
                 switch (deps[i]) {
                   case "module":
@@ -266,7 +288,7 @@ try {
                     dep = global;
                     break;
                   case "require":
-                    dep = require;
+                    dep = requireInterop;
                     break;
                   case "requireDynamic":
                     dep = null;
@@ -274,32 +296,97 @@ try {
                   case "requireLazy":
                     dep = null;
                     break;
+                  case "importDefault":
+                    dep = importDefault;
+                    break;
+                  case "importNamespace":
+                    dep = importNamespace;
+                    break;
                   default:
-                    dep = require.call(null, deps[i]);
+                    if (typeof deps[i] === "string") {
+                      dep = requireInterop.call(null, deps[i]);
+                    }
                 }
 
                 args.push(dep);
               }
-              module.factory.apply(global, args);
-              resolved[id] = module.exports;
-              return module.exports;
-            };
+              var ret = module.factory.apply(global, args);
 
-            __d = function(id, deps, factory, _special) {
+              if (ret) {
+                module.exports = ret;
+              }
+
+              if (_special & ES_MODULE_EXPORTS) {
+                if (
+                  module.exports != null &&
+                  hasOwnProperty.call(module.exports, "default")
+                ) {
+                  module.defaultExport = module.exports["default"];
+                }
+              } else {
+                module.defaultExport = module.exports;
+              }
+
+              module.resolved = true;
+
+              return module;
+            }
+
+            function requireInterop(id, soft) {
+              var module = getOrIntializeModule(id, soft);
+
+              if (module) {
+                return module.defaultExport !== EMPTY
+                  ? module.defaultExport
+                  : module.exports;
+              }
+            }
+
+            function importDefault(id) {
+              var module = getOrIntializeModule(id);
+
+              if (module) {
+                return module.defaultExport !== EMPTY
+                  ? module.defaultExport
+                  : null;
+              }
+            }
+
+            function importNamespace(id) {
+              var module = getOrIntializeModule(id);
+
+              if (module) {
+                return module.exports;
+              }
+            }
+
+            function define(id, deps, factory, _special) {
               if (typeof factory === "function") {
                 map[id] = {
                   factory: factory,
-                  deps: defaultDeps.concat(deps),
-                  exports: {}
+                  deps: deps,
+                  defaultExport: EMPTY,
+                  exports: {},
+                  special: _special || 0,
+                  resolved: false
                 };
 
-                if (_special === 3) {
-                  require.call(null, id);
+                if (_special != null && _special & REQUIRE_WHEN_READY) {
+                  requireInterop.call(null, id);
                 }
               } else {
-                resolved[id] = factory;
+                map[id] = {
+                  defaultExport: factory,
+                  exports: factory,
+                  resolved: true
+                };
               }
-            };
+            }
+
+            global.__d = define;
+            global.require = requireInterop;
+            global.importDefault = importDefault;
+            global.importNamespace = importNamespace;
 
             global.$RefreshReg$ = function() {};
             global.$RefreshSig$ = function() {
@@ -3728,7 +3815,7 @@ try {
           })(typeof global === "undefined" ? this : global);
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1003501648",
+            revision: "1003503349",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -18842,7 +18929,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1003501648","namespace":"FB","message":"' +
+        '","revision":"1003503349","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
