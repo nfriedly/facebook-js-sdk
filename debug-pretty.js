@@ -1,4 +1,4 @@
-/*1616621972,,JIT Construction: v1003505882,en_US*/
+/*1616629156,,JIT Construction: v1003507958,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -220,16 +220,15 @@ try {
            * This means that it is generally only usable in cases where all resources are
            * resolved and packaged together.
            *
-           * @providesInline commonjs-require-lite
-           * @typechecks
+           * @providesInline fbmodule-runtime-lite
            * @format
+           *  strict
            */
 
-          var require, __d;
           (function(global) {
-            var map = {},
-              resolved = {};
-            var defaultDeps = [
+            var map = {};
+
+            var defaultCJSDeps = [
               "global",
               "require",
               "requireDynamic",
@@ -238,22 +237,45 @@ try {
               "exports"
             ];
 
-            require = function(id, soft) {
-              if (Object.prototype.hasOwnProperty.call(resolved, id)) {
-                return resolved[id];
-              }
-              if (!Object.prototype.hasOwnProperty.call(map, id)) {
+            var defaultESMDeps = [
+              "global",
+              "require",
+              "importDefault",
+              "importNamespace",
+              "requireLazy",
+              "module",
+              "exports"
+            ];
+
+            var REQUIRE_WHEN_READY = 1;
+            var ES_MODULE_IMPORTS = 32;
+            var ES_MODULE_EXPORTS = 64;
+            var EMPTY = {};
+            var hasOwnProperty = Object.prototype.hasOwnProperty;
+
+            function getOrIntializeModule(id, soft) {
+              if (!hasOwnProperty.call(map, id)) {
                 if (soft) {
                   return null;
                 }
                 throw new Error("Module " + id + " has not been defined");
               }
-              var module = map[id],
-                deps = module.deps,
-                length = module.factory.length,
-                dep,
-                args = [];
 
+              var module = map[id];
+              if (module.resolved) {
+                return module;
+              }
+
+              var _special = module.special;
+              var length = module.factory.length;
+
+              var deps =
+                _special & ES_MODULE_IMPORTS
+                  ? defaultESMDeps.concat(module.deps)
+                  : defaultCJSDeps.concat(module.deps);
+
+              var args = [];
+              var dep;
               for (var i = 0; i < length; i++) {
                 switch (deps[i]) {
                   case "module":
@@ -266,7 +288,7 @@ try {
                     dep = global;
                     break;
                   case "require":
-                    dep = require;
+                    dep = requireInterop;
                     break;
                   case "requireDynamic":
                     dep = null;
@@ -274,32 +296,97 @@ try {
                   case "requireLazy":
                     dep = null;
                     break;
+                  case "importDefault":
+                    dep = importDefault;
+                    break;
+                  case "importNamespace":
+                    dep = importNamespace;
+                    break;
                   default:
-                    dep = require.call(null, deps[i]);
+                    if (typeof deps[i] === "string") {
+                      dep = requireInterop.call(null, deps[i]);
+                    }
                 }
 
                 args.push(dep);
               }
-              module.factory.apply(global, args);
-              resolved[id] = module.exports;
-              return module.exports;
-            };
+              var ret = module.factory.apply(global, args);
 
-            __d = function(id, deps, factory, _special) {
+              if (ret) {
+                module.exports = ret;
+              }
+
+              if (_special & ES_MODULE_EXPORTS) {
+                if (
+                  module.exports != null &&
+                  hasOwnProperty.call(module.exports, "default")
+                ) {
+                  module.defaultExport = module.exports["default"];
+                }
+              } else {
+                module.defaultExport = module.exports;
+              }
+
+              module.resolved = true;
+
+              return module;
+            }
+
+            function requireInterop(id, soft) {
+              var module = getOrIntializeModule(id, soft);
+
+              if (module) {
+                return module.defaultExport !== EMPTY
+                  ? module.defaultExport
+                  : module.exports;
+              }
+            }
+
+            function importDefault(id) {
+              var module = getOrIntializeModule(id);
+
+              if (module) {
+                return module.defaultExport !== EMPTY
+                  ? module.defaultExport
+                  : null;
+              }
+            }
+
+            function importNamespace(id) {
+              var module = getOrIntializeModule(id);
+
+              if (module) {
+                return module.exports;
+              }
+            }
+
+            function define(id, deps, factory, _special) {
               if (typeof factory === "function") {
                 map[id] = {
                   factory: factory,
-                  deps: defaultDeps.concat(deps),
-                  exports: {}
+                  deps: deps,
+                  defaultExport: EMPTY,
+                  exports: {},
+                  special: _special || 0,
+                  resolved: false
                 };
 
-                if (_special === 3) {
-                  require.call(null, id);
+                if (_special != null && _special & REQUIRE_WHEN_READY) {
+                  requireInterop.call(null, id);
                 }
               } else {
-                resolved[id] = factory;
+                map[id] = {
+                  defaultExport: factory,
+                  exports: factory,
+                  resolved: true
+                };
               }
-            };
+            }
+
+            global.__d = define;
+            global.require = requireInterop;
+            global.importDefault = importDefault;
+            global.importNamespace = importNamespace;
 
             global.$RefreshReg$ = function() {};
             global.$RefreshSig$ = function() {
@@ -3728,7 +3815,7 @@ try {
           })(typeof global === "undefined" ? this : global);
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1003505882",
+            revision: "1003507958",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -3772,11 +3859,12 @@ try {
           });
           __d("JSSDKCssConfig", [], {
             rules:
-              '.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}\u0040keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}\n.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_dialog_advanced{border-radius:8px;padding:10px}.fb_dialog_content{background:#fff;color:#373737}.fb_dialog_close_icon{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{left:5px;right:auto;top:5px}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50\u0025;float:left;padding:5px 0 7px 26px}body.fb_hidden{height:100\u0025;left:0;margin:0;overflow:visible;position:absolute;top:-10000px;transform:none;width:100\u0025}.fb_dialog.fb_dialog_mobile.loading{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ya/r/3rhSv5V8j3o.gif) white no-repeat 50\u0025 50\u0025;min-height:100\u0025;min-width:100\u0025;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{background:none;height:auto;min-height:initial;min-width:initial;width:auto}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100\u0025}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{clear:both;color:#fff;display:block;font-size:18px;padding-top:20px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .4);bottom:0;left:0;min-height:100\u0025;position:absolute;right:0;top:0;width:100\u0025;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_mobile .fb_dialog_iframe{position:sticky;top:0}.fb_dialog_content .dialog_header{background:linear-gradient(from(#738aba), to(#2c4987));border-bottom:1px solid;border-color:#043b87;box-shadow:white 0 1px 1px -1px inset;color:#fff;font:bold 14px Helvetica, sans-serif;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{height:43px;width:100\u0025}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:linear-gradient(from(#4267B2), to(#2a4887));background-clip:padding-box;border:1px solid #29487d;border-radius:3px;display:inline-block;line-height:18px;margin-top:3px;max-width:85px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{background:none;border:none;color:#fff;font:bold 12px Helvetica, sans-serif;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat 50\u0025 50\u0025;border:1px solid #4a4a4a;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f5f6f7;border:1px solid #4a4a4a;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https://static.xx.fbcdn.net/rsrc.php/v3/yD/r/t-wz8gw1xG1.png);background-position:50\u0025 50\u0025;background-repeat:no-repeat;height:24px;width:24px}\u0040keyframes rotateSpinner{0\u0025{transform:rotate(0deg)}100\u0025{transform:rotate(360deg)}}\n.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100\u0025}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100\u0025}',
+              '.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}\u0040keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}\n.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_dialog_advanced{border-radius:8px;padding:10px}.fb_dialog_content{background:#fff;color:#373737}.fb_dialog_close_icon{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{left:5px;right:auto;top:5px}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50\u0025;float:left;padding:5px 0 7px 26px}body.fb_hidden{height:100\u0025;left:0;margin:0;overflow:visible;position:absolute;top:-10000px;transform:none;width:100\u0025}.fb_dialog.fb_dialog_mobile.loading{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ya/r/3rhSv5V8j3o.gif) white no-repeat 50\u0025 50\u0025;min-height:100\u0025;min-width:100\u0025;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{background:none;height:auto;min-height:initial;min-width:initial;width:auto}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100\u0025}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{clear:both;color:#fff;display:block;font-size:18px;padding-top:20px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .4);bottom:0;left:0;min-height:100\u0025;position:absolute;right:0;top:0;width:100\u0025;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_mobile .fb_dialog_iframe{position:sticky;top:0}.fb_dialog_content .dialog_header{background:linear-gradient(from(#738aba), to(#2c4987));border-bottom:1px solid;border-color:#043b87;box-shadow:white 0 1px 1px -1px inset;color:#fff;font:bold 14px Helvetica, sans-serif;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{height:43px;width:100\u0025}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:linear-gradient(from(#4267B2), to(#2a4887));background-clip:padding-box;border:1px solid #29487d;border-radius:3px;display:inline-block;line-height:18px;margin-top:3px;max-width:85px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{background:none;border:none;color:#fff;font:bold 12px Helvetica, sans-serif;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat 50\u0025 50\u0025;border:1px solid #4a4a4a;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f5f6f7;border:1px solid #4a4a4a;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https://static.xx.fbcdn.net/rsrc.php/v3/yD/r/t-wz8gw1xG1.png);background-position:50\u0025 50\u0025;background-repeat:no-repeat;height:24px;width:24px}\u0040keyframes rotateSpinner{0\u0025{transform:rotate(0deg)}100\u0025{transform:rotate(360deg)}}\n.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100\u0025}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100\u0025}\n.fb_mpn_mobile_landing_page_slide_out{animation-duration:200ms;animation-name:fb_mpn_landing_page_slide_out;transition-timing-function:ease-in}.fb_mpn_mobile_landing_page_slide_out_from_left{animation-duration:200ms;animation-name:fb_mpn_landing_page_slide_out_from_left;transition-timing-function:ease-in}.fb_mpn_mobile_landing_page_slide_up{animation-duration:500ms;animation-name:fb_mpn_landing_page_slide_up;transition-timing-function:ease-in}.fb_mpn_mobile_bounce_in{animation-duration:300ms;animation-name:fb_mpn_bounce_in;transition-timing-function:ease-in}.fb_mpn_mobile_bounce_out{animation-duration:300ms;animation-name:fb_mpn_bounce_out;transition-timing-function:ease-in}.fb_mpn_mobile_bounce_out_v2{animation-duration:300ms;animation-name:fb_mpn_fade_out;transition-timing-function:ease-in}.fb_customer_chat_bounce_in_v2{animation-duration:300ms;animation-name:fb_bounce_in_v2;transition-timing-function:ease-in}.fb_customer_chat_bounce_in_from_left{animation-duration:300ms;animation-name:fb_bounce_in_from_left;transition-timing-function:ease-in}.fb_customer_chat_bounce_out_v2{animation-duration:300ms;animation-name:fb_bounce_out_v2;transition-timing-function:ease-in}.fb_customer_chat_bounce_out_from_left{animation-duration:300ms;animation-name:fb_bounce_out_from_left;transition-timing-function:ease-in}.fb_customer_chat_bubble_animated_no_badge{box-shadow:0 3px 12px rgba(0, 0, 0, .15);transition:box-shadow 150ms linear}.fb_customer_chat_bubble_animated_no_badge:hover{box-shadow:0 5px 24px rgba(0, 0, 0, .3)}.fb_customer_chat_bubble_animated_with_badge{box-shadow:-5px 4px 14px rgba(0, 0, 0, .15);transition:box-shadow 150ms linear}.fb_customer_chat_bubble_animated_with_badge:hover{box-shadow:-5px 8px 24px rgba(0, 0, 0, .2)}.fb_invisible_flow{display:inherit;height:0;overflow-x:hidden;width:0}.fb_new_ui_mobile_overlay_active{overflow:hidden}\u0040keyframes fb_mpn_landing_page_slide_in{0\u0025{border-radius:50\u0025;margin:0 24px;width:60px}40\u0025{border-radius:18px}100\u0025{margin:0 12px;width:100\u0025 - 24px}}\u0040keyframes fb_mpn_landing_page_slide_in_from_left{0\u0025{border-radius:50\u0025;left:12px;margin:0 24px;width:60px}40\u0025{border-radius:18px}100\u0025{left:12px;margin:0 12px;width:100\u0025 - 24px}}\u0040keyframes fb_mpn_landing_page_slide_out{0\u0025{margin:0 12px;width:100\u0025 - 24px}60\u0025{border-radius:18px}100\u0025{border-radius:50\u0025;margin:0 24px;width:60px}}\u0040keyframes fb_mpn_landing_page_slide_out_from_left{0\u0025{left:12px;width:100\u0025 - 24px}60\u0025{border-radius:18px}100\u0025{border-radius:50\u0025;left:12px;width:60px}}\u0040keyframes fb_mpn_landing_page_slide_up{0\u0025{bottom:0;opacity:0}100\u0025{bottom:24px;opacity:1}}\u0040keyframes fb_mpn_bounce_in{0\u0025{opacity:.5;top:100\u0025}100\u0025{opacity:1;top:0}}\u0040keyframes fb_mpn_fade_out{0\u0025{bottom:30px;opacity:1}100\u0025{bottom:0;opacity:0}}\u0040keyframes fb_mpn_bounce_out{0\u0025{opacity:1;top:0}100\u0025{opacity:.5;top:100\u0025}}\u0040keyframes fb_bounce_in_v2{0\u0025{opacity:0;transform:scale(0, 0);transform-origin:bottom right}50\u0025{transform:scale(1.03, 1.03);transform-origin:bottom right}100\u0025{opacity:1;transform:scale(1, 1);transform-origin:bottom right}}\u0040keyframes fb_bounce_in_from_left{0\u0025{opacity:0;transform:scale(0, 0);transform-origin:bottom left}50\u0025{transform:scale(1.03, 1.03);transform-origin:bottom left}100\u0025{opacity:1;transform:scale(1, 1);transform-origin:bottom left}}\u0040keyframes fb_bounce_out_v2{0\u0025{opacity:1;transform:scale(1, 1);transform-origin:bottom right}100\u0025{opacity:0;transform:scale(0, 0);transform-origin:bottom right}}\u0040keyframes fb_bounce_out_from_left{0\u0025{opacity:1;transform:scale(1, 1);transform-origin:bottom left}100\u0025{opacity:0;transform:scale(0, 0);transform-origin:bottom left}}\u0040keyframes fb_bounce_out_v2_mobile_chat_started{0\u0025{opacity:1;top:0}100\u0025{opacity:0;top:20px}}\u0040keyframes fb_customer_chat_bubble_bounce_in_animation{0\u0025{bottom:6pt;opacity:0;transform:scale(0, 0);transform-origin:center}70\u0025{bottom:18pt;opacity:1;transform:scale(1.2, 1.2)}100\u0025{transform:scale(1, 1)}}\u0040keyframes slideInFromBottom{0\u0025{opacity:.1;transform:translateY(100\u0025)}100\u0025{opacity:1;transform:translateY(0)}}\u0040keyframes slideInFromBottomDelay{0\u0025{opacity:0;transform:translateY(100\u0025)}97\u0025{opacity:0;transform:translateY(100\u0025)}100\u0025{opacity:1;transform:translateY(0)}}',
             components: [
               "css:fb.css.base",
               "css:fb.css.dialog",
-              "css:fb.css.iframewidget"
+              "css:fb.css.iframewidget",
+              "css:fb.css.customer_chat_plugin_iframe"
             ]
           });
           __d("JSSDKXDConfig", [], {
@@ -9494,6 +9582,7 @@ try {
                 if (
                   require("sdk.Runtime").getUseLocalStorage() &&
                   location.protocol === "https:" &&
+                  require("sdk.feature")("cache_auth_response", false) &&
                   params.long_lived_token
                 ) {
                   var localStorage = require("sdk.WebStorage").getLocalStorage();
@@ -9788,6 +9877,7 @@ try {
                     if (
                       require("sdk.Runtime").getUseLocalStorage() &&
                       location.protocol === "https:" &&
+                      require("sdk.feature")("cache_auth_response", false) &&
                       xhrAuthResponse.long_lived_token
                     ) {
                       var localStorage = require("sdk.WebStorage").getLocalStorage();
@@ -17313,6 +17403,1227 @@ try {
             null
           );
           __d(
+            "getFacebookOriginForTarget",
+            ["Log"],
+            function $module_getFacebookOriginForTarget(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              module.exports = getFacebookOriginForTarget;
+
+              function getFacebookOriginForTarget(cb, target) {
+                if (target === void 0) {
+                  target = top;
+                }
+                var intervalId = 0;
+                var ackReceived = false;
+                var retries = 200;
+
+                window.addEventListener(
+                  "message",
+                  function window_addEventListener_$1(event) {
+                    if (event.source === target && event.data.xdArbiterAck) {
+                      if (
+                        /\.facebook\.com$/.test(event.origin) &&
+                        /^https:/.test(event.origin)
+                      ) {
+                        if (ackReceived === false) {
+                          ackReceived = true;
+                          require("Log").debug(
+                            "initXdArbiter got xdArbiterAck from " +
+                              event.origin
+                          );
+                          cb(event.origin);
+                        }
+                      } else {
+                        require("Log").error(
+                          "xdAbiterAck was not from Facebook: ",
+                          event.origin
+                        );
+                      }
+                    }
+                  },
+                  false
+                );
+
+                target.postMessage({ xdArbiterSyn: true }, "*");
+
+                intervalId = window.setInterval(
+                  function window_setInterval_$0() {
+                    if (!ackReceived && retries > 0) {
+                      retries--;
+                      require("Log").debug("resending xdArbiterSyn");
+                      target.postMessage({ xdArbiterSyn: true }, "*");
+                    } else {
+                      window.clearInterval(intervalId);
+                    }
+                  },
+                  200
+                );
+              }
+            },
+            null
+          );
+          __d(
+            "sdk.DocumentTitle",
+            [],
+            function $module_sdk_DocumentTitle(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              exports.get = get;
+              exports.set = set;
+              exports.blink = blink;
+
+              var trueTitle = document.title;
+              var temporaryTitle = null;
+              var BLINK_SPEED = 1500;
+              var interval = null;
+              var showingBlinkTitle = false;
+
+              function _doBlink() {
+                if (temporaryTitle) {
+                  if (!showingBlinkTitle) {
+                    _setBlinkTitle(temporaryTitle);
+                  } else {
+                    _resetTitle();
+                  }
+                } else {
+                  clearInterval(interval);
+                  interval = null;
+                  _resetTitle();
+                }
+              }
+
+              function _setBlinkTitle(new_title) {
+                document.title = new_title;
+                showingBlinkTitle = true;
+              }
+
+              function _resetTitle() {
+                set(trueTitle);
+                showingBlinkTitle = false;
+              }
+
+              function get() {
+                return trueTitle;
+              }
+
+              function set(newTitle) {
+                document.title = newTitle;
+              }
+
+              function blink(title) {
+                temporaryTitle = title;
+                if (interval === null) {
+                  interval = setInterval(_doBlink, BLINK_SPEED);
+                }
+                return {
+                  stop: function stop() {
+                    temporaryTitle = null;
+                  }
+                };
+              }
+            },
+            null
+          );
+          __d(
+            "sdk.XFBML.CustomerChat",
+            [
+              "DOMEventListener",
+              "IframePlugin",
+              "MPNLocalState",
+              "UrlMap",
+              "getFacebookOriginForTarget",
+              "sdk.Content",
+              "sdk.DOM",
+              "sdk.DialogUtils",
+              "sdk.DocumentTitle",
+              "sdk.Event",
+              "sdk.Runtime",
+              "sdk.UA",
+              "sdk.URI",
+              "sdk.WebStorage",
+              "sdk.XD",
+              "sdk.createIframe"
+            ],
+            function $module_sdk_XFBML_CustomerChat(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              "use strict";
+
+              var ANIMATION_EVENTS = [
+                "animationend",
+                "mozAnimationEnd",
+                "MSAnimationEnd",
+                "oAnimationEnd",
+                "webkitAnimationEnd"
+              ];
+
+              var LEFT_ANCHOR_CLASS = "anchor_left";
+              var RIGHT_ANCHOR_CLASS = "anchor_right";
+
+              var _blinkerToken = null;
+              var _browserSupportsAnimation = !(require("sdk.UA").ie() <= 9);
+              var _unreadCountIFrame = null;
+              var _iconInnerIFrame = null;
+              var _bubbleIFrame = null;
+              var _chatStarted = false;
+              var _bubbleDialog = null;
+              var _dialogIFrame = null;
+              var _dialogIFrameName = "";
+              var _dialogIFrameOrigin = null;
+              var _bubbleIFrameName = "";
+              var _unreadCountIFrameName = "";
+              var _savedScrollXPosition = 0;
+              var _savedScrollYPosition = 0;
+              var _showInterstitialOnPage = false;
+              var _visibilityGuard = null;
+              var LANDING_PAGE = "/";
+              var WELCOME_PAGE = "/welcome";
+              var BUBBLE = "/bubble";
+              var ITP_PAGE = "/itpcontinue";
+              var _mobilePath = LANDING_PAGE;
+              var DIALOG_FRAME_MAX_HEIGHT = "calc(100% - 80px)";
+              var DIALOG_FRAME_MIN_HEIGHT = "360px";
+              var _bubbleIFrameLoaded = false;
+              var _badgeIFrameLoaded = false;
+              var _isHidden = false;
+              var _isIframeHidden = false;
+
+              var CustomerChat = require("IframePlugin").extend({
+                constructor: function constructor(elem, ns, tag, attr) {
+                  require("sdk.DOM").addCss(elem, "fb_invisible_flow");
+
+                  require("sdk.DOM").remove(elem);
+                  require("sdk.Content").append(elem);
+
+                  this.parent(elem, ns, tag, attr);
+
+                  this._iframeOptions.title = "";
+
+                  require("sdk.Event").fire("customerchat.load");
+
+                  this._setUpSubscriptions();
+                },
+
+                _setUpSubscriptions: function _setUpSubscriptions() {
+                  var _this = this;
+
+                  this.subscribe(
+                    "xd.liveChatPluginResizeIframeVariableHeight",
+                    function subscribe_$1(message) {
+                      if (message.setBoxShadow) {
+                        _this._handleSetIframeBoxShadow();
+                      } else {
+                        _this._handleUnsetIframeBoxShadow();
+                      }
+                      _this._handleResizeIframe(message);
+                    }
+                  );
+                  this.subscribe(
+                    "xd.liveChatPluginUpdateShadow",
+                    function subscribe_$1(message) {
+                      _this._handleShadowUpdate(message);
+                    }
+                  );
+                  this.subscribe(
+                    "xd.liveChatPluginUpdatePageTitle",
+                    function subscribe_$1(message) {
+                      _this._handleUpdatePageTitle(message);
+                    }
+                  );
+
+                  if (require("sdk.UA").iphone()) {
+                    this.subscribe(
+                      "xd.liveChatPluginBlurComposer",
+                      function subscribe_$1(_message) {
+                        _this._handleBlurComposer();
+                      }
+                    );
+                  }
+
+                  this.subscribe("xd.mpn.resizeIframe", function subscribe_$1(
+                    message
+                  ) {
+                    _this._handleResizeIframe(message);
+                  });
+                  this.subscribe("xd.mpn.setAppearance", function subscribe_$1(
+                    message
+                  ) {
+                    _this._handleSetAppearance(message);
+                  });
+                  this.subscribe("xd.mpn.prepareIframe", function subscribe_$1(
+                    message
+                  ) {
+                    _this._handlePrepareIframe(message);
+                  });
+                  this.subscribe(
+                    "xd.mpn.prepareIconIframe",
+                    function subscribe_$1(message) {
+                      _this._handlePrepareIconIframe(message);
+                    }
+                  );
+                  this.subscribe("xd.mpn.storeState", function subscribe_$1(
+                    message
+                  ) {
+                    _this._storeStateInfo(message.state);
+                  });
+                  this.subscribe("xd.mpn.getState", function subscribe_$1(_) {
+                    var state = _this._getStateInfo();
+                    var event = {
+                      name: "mpnDidFetchState",
+                      params: ES("JSON", "stringify", false, state || {})
+                    };
+
+                    postMessageToDialogFrame(event);
+                    postMessaegToBubbleFrame(event);
+                  });
+                  this.subscribe("xd.mpn.reload", function subscribe_$1(_) {
+                    var iframeSrc = _this._iframe.src;
+
+                    var storage = require("sdk.WebStorage").getLocalStorage();
+                    var localState = null;
+                    if (storage != null) {
+                      try {
+                        localState = storage.getItem(
+                          require("MPNLocalState").LOCAL_STATE_KEY
+                        );
+                      } catch (_unused) {}
+                    }
+                    var iframeSrcUri = new (require("sdk.URI"))(iframeSrc);
+                    var queryData = iframeSrcUri.getQueryData();
+                    queryData.local_state = localState;
+                    queryData.request_time = ES("Date", "now", false);
+                    iframeSrcUri.setQueryData(queryData);
+                    _this._iframe.src = iframeSrcUri.valueOf();
+                  });
+                },
+
+                _handleSetAppearance: function _handleSetAppearance(message) {
+                  if (message.isReparse == "true") {
+                    _visibilityGuard = null;
+                  }
+                  if (message.shouldSetHidden == "true") {
+                    var alignment = message.alignment,
+                      chatStarted = message.chatStarted,
+                      isMobile = message.isMobile,
+                      hidden = message.hidden,
+                      mobilePath = message.mobilePath;
+                    _mobilePath = mobilePath;
+                    _isHidden = hidden == "true";
+                    if (hidden == "true") {
+                      this._iframe.style.removeProperty("animation");
+                      this._handleHideDialogIframe({
+                        chatStarted: chatStarted,
+                        isMobile: isMobile,
+                        alignment: alignment
+                      });
+                    } else {
+                      this._handleShowDialogIframe({
+                        chatStarted: chatStarted,
+                        isMobile: isMobile,
+                        alignment: alignment
+                      });
+                    }
+                  }
+                  if (message.shadow != null) {
+                    this._handleShadowUpdate({
+                      resetShadow: message.shadow
+                    });
+                  }
+                },
+
+                _handlePrepareIframe: function _handlePrepareIframe(message) {
+                  _visibilityGuard = null;
+                  if (this._iframe) {
+                    this._iframe.setAttribute("data-testid", "dialog_iframe");
+                    this._iframe.style.cssText = message.cssText;
+                  }
+                  _dialogIFrame = this._iframe;
+                  _dialogIFrameName = this._iframe.name;
+                  _mobilePath = message.path;
+
+                  require("sdk.DOM").removeCss(
+                    _dialogIFrame,
+                    LEFT_ANCHOR_CLASS
+                  );
+                  require("sdk.DOM").removeCss(
+                    _dialogIFrame,
+                    RIGHT_ANCHOR_CLASS
+                  );
+                  if (message.alignment != null) {
+                    require("sdk.DOM").addCss(
+                      _dialogIFrame,
+                      message.alignment == "right"
+                        ? RIGHT_ANCHOR_CLASS
+                        : LEFT_ANCHOR_CLASS
+                    );
+                  }
+
+                  if (
+                    _browserSupportsAnimation &&
+                    message.isMobile === "true" &&
+                    !_isHidden &&
+                    _mobilePath == LANDING_PAGE
+                  ) {
+                    var bounceInAnimationName = _getBounceInAnimationName(
+                      message.isMobile === "true",
+
+                      "right"
+                    );
+
+                    bounceInAnimationName != null &&
+                      require("sdk.DOM").addCss(
+                        _dialogIFrame,
+                        bounceInAnimationName
+                      );
+                  }
+
+                  if (
+                    message.isMobile === "true" &&
+                    !_isHidden &&
+                    _mobilePath != LANDING_PAGE
+                  ) {
+                    setParentDocumentPositionFixed();
+                  }
+
+                  if (_isIframeHidden) {
+                    CustomerChat.hide();
+                  }
+                },
+
+                _handlePrepareIconIframe: function _handlePrepareIconIframe(
+                  message
+                ) {
+                  var _this2 = this;
+                  if (_bubbleDialog) {
+                    require("sdk.DOM").remove(_bubbleDialog);
+                  }
+                  var iconDiv = document.createElement("div");
+                  var created = require("sdk.DialogUtils").setupNewDialog();
+                  _dialogIFrameName = this._iframeOptions.name;
+                  _bubbleIFrameName = "blank_" + message.frameName;
+                  var css = ES("JSON", "parse", false, message.cssText);
+                  _iconInnerIFrame = require("sdk.createIframe")({
+                    url: this._getBubbleFrameURL(),
+                    name: _bubbleIFrameName,
+                    root: created.contentRoot,
+                    tabindex: -1,
+                    width: 60,
+                    style: css,
+                    "data-testid": "bubble_iframe",
+                    onload: function onload() {
+                      _bubbleIFrameLoaded = true;
+                      _this2._notifyDialogFrame();
+                      window.setTimeout(function window_setTimeout_$0() {
+                        require("sdk.DOM").remove(iconDiv);
+                      }, 100);
+                    }
+                  });
+
+                  this._bubbleDialog = created.dialogElement;
+                  _bubbleDialog = this._bubbleDialog;
+                  _bubbleIFrame = this._bubbleDialog;
+                  require("sdk.DOM").setStyle(
+                    this._bubbleDialog,
+                    "overflow",
+                    "visible"
+                  );
+                  require("sdk.DOM").setStyle(
+                    this._bubbleDialog,
+                    "z-index",
+                    css.zIndex
+                  );
+                  if (message.uiPolishEnabled === "true") {
+                    require("sdk.DOM").addCss(
+                      _iconInnerIFrame,
+                      "fb_customer_chat_icon"
+                    );
+                  }
+                  require("sdk.Content").append(this._bubbleDialog);
+                  if (message.iconSVG != null) {
+                    require("sdk.DOM").html(iconDiv, message.iconSVG);
+                    ES("Object", "assign", false, iconDiv.style, css);
+                    iconDiv.style.boxShadow = "";
+                    require("sdk.DOM").setStyle(iconDiv, "z-index", "1");
+                    require("sdk.Content").append(iconDiv, created.contentRoot);
+                  }
+
+                  _unreadCountIFrameName = "unread_" + message.frameName;
+                  _unreadCountIFrame = require("sdk.createIframe")({
+                    url: this._getBubbleFrameURL(),
+                    name: _unreadCountIFrameName,
+                    root: created.contentRoot,
+                    tabindex: -1,
+                    style: ES(
+                      "JSON",
+                      "parse",
+                      false,
+                      message.unreadCountCssText
+                    ),
+                    "data-testid": "unread_iframe",
+                    onload: function onload() {
+                      _badgeIFrameLoaded = true;
+                      _this2._notifyDialogFrame();
+                    }
+                  });
+
+                  require("sdk.Content").append(
+                    _unreadCountIFrame,
+                    created.contentRoot
+                  );
+                },
+
+                _handleResizeIframe: function _handleResizeIframe(message) {
+                  if (this._iframe) {
+                    require("sdk.DOM").setStyle(
+                      this._iframe,
+                      "height",
+                      ES("JSON", "parse", false, message.height) + "px"
+                    );
+                  }
+                },
+
+                _handleSetIframeBoxShadow: function _handleSetIframeBoxShadow() {
+                  if (this._iframe) {
+                    require("sdk.DOM").setStyle(
+                      this._iframe,
+                      "boxShadow",
+                      "0 1pt 12pt grey"
+                    );
+                    require("sdk.DOM").setStyle(this._iframe, "margin", "12px");
+                  }
+                },
+
+                _handleUnsetIframeBoxShadow: function _handleUnsetIframeBoxShadow() {
+                  if (this._iframe) {
+                    require("sdk.DOM").setStyle(
+                      this._iframe,
+                      "boxShadow",
+                      "none"
+                    );
+                    require("sdk.DOM").setStyle(
+                      this._iframe,
+                      "margin",
+                      "0px 12px"
+                    );
+                  }
+                },
+
+                _handleShowDialogIframe: function _handleShowDialogIframe(
+                  message
+                ) {
+                  showDialog(
+                    this._iframe,
+                    ES("JSON", "parse", false, message.chatStarted),
+                    ES("JSON", "parse", false, message.isMobile),
+                    true,
+                    message.alignment
+                  );
+                },
+
+                _handleHideDialogIframe: function _handleHideDialogIframe(
+                  message
+                ) {
+                  hideDialog(
+                    this._iframe,
+                    ES("JSON", "parse", false, message.chatStarted),
+                    ES("JSON", "parse", false, message.isMobile),
+                    true,
+                    message.alignment
+                  );
+                },
+
+                _handleShadowUpdate: function _handleShadowUpdate(message) {
+                  if (
+                    ES("JSON", "parse", false, message.resetShadow) &&
+                    this._bubbleDialog
+                  ) {
+                    require("sdk.DOM").setStyle(
+                      this._bubbleDialog,
+                      "borderRadius",
+                      "50%"
+                    );
+
+                    if (_browserSupportsAnimation) {
+                      require("sdk.DOM").addCss(
+                        this._bubbleDialog,
+                        "fb_customer_chat_bubble_animated_no_badge"
+                      );
+                    } else {
+                      require("sdk.DOM").setStyle(
+                        this._bubbleDialog,
+                        "boxShadow",
+                        "0px 3px 12px rgba(0, 0, 0, 0.15)"
+                      );
+                    }
+                  } else if (!ES("JSON", "parse", false, message.resetShadow)) {
+                    this._setBubbleBadgeStyle();
+                  }
+                },
+
+                _handleUpdatePageTitle: function _handleUpdatePageTitle(
+                  message
+                ) {
+                  var _this3 = this;
+                  if (!_blinkerToken && message.titleText) {
+                    _blinkerToken = require("sdk.DocumentTitle").blink(
+                      message.titleText
+                    );
+                    require("DOMEventListener").add(
+                      window,
+                      "focus",
+                      function DOMEventListener_add_$2(e) {
+                        _this3._stopBlinking();
+                      }
+                    );
+                  } else if (_blinkerToken && !message.titleText) {
+                    this._stopBlinking();
+                  }
+                },
+
+                _handleBlurComposer: function _handleBlurComposer() {
+                  require("sdk.DOM").setStyle(
+                    this._iframe,
+                    "maxHeight",
+                    "100%"
+                  );
+                },
+
+                _notifyDialogFrame: function _notifyDialogFrame() {
+                  var _iconInnerIFrame2, _unreadCountIFrame2;
+                  postMessageToDialogFrame({
+                    name: "bubbleFrameLoaded",
+                    frameName: _bubbleIFrameLoaded ? _bubbleIFrameName : null,
+                    unreadCountFrameName: _badgeIFrameLoaded
+                      ? _unreadCountIFrameName
+                      : null,
+                    iconSrc:
+                      (_iconInnerIFrame2 = _iconInnerIFrame) == null
+                        ? void 0
+                        : _iconInnerIFrame2.src,
+                    unreadSrc:
+                      (_unreadCountIFrame2 = _unreadCountIFrame) == null
+                        ? void 0
+                        : _unreadCountIFrame2.src
+                  });
+                },
+
+                _getBubbleFrameURL: function _getBubbleFrameURL() {
+                  return require("sdk.Runtime").getIsVersioned()
+                    ? require("UrlMap").resolve("www") +
+                        "/" +
+                        require("sdk.Runtime").getVersion() +
+                        "/plugins/customer_chat/bubble"
+                    : "";
+                },
+
+                _createBubbleDialogIframe: function _createBubbleDialogIframe(
+                  fromIframe
+                ) {
+                  var _this4 = this;
+                  var created = require("sdk.DialogUtils").setupNewDialog();
+
+                  require("sdk.DOM").setStyle(
+                    created.contentRoot,
+                    "background",
+                    "none"
+                  );
+
+                  _dialogIFrameName = this._iframeOptions.name;
+                  _bubbleIFrameName = "blank_" + _dialogIFrameName;
+
+                  require("sdk.createIframe")({
+                    url: this._getBubbleFrameURL(),
+                    name: _bubbleIFrameName,
+                    root: created.contentRoot,
+                    tabindex: -1,
+                    width: 60,
+                    "data-testid": "bubble_iframe",
+                    onload: function onload() {
+                      _bubbleIFrameLoaded = true;
+                      _this4._notifyDialogFrame();
+                    }
+                  });
+
+                  ES("Object", "assign", false, created.dialogElement.style, {
+                    background: "none",
+                    borderRadius: "50%",
+                    bottom: "18pt",
+                    display: "none",
+                    height: "45pt",
+                    padding: "0",
+                    position: "fixed",
+                    right: "18pt",
+                    top: "auto",
+                    width: "45pt",
+                    zIndex: "2147483646"
+                  });
+
+                  if (_browserSupportsAnimation) {
+                    require("sdk.DOM").removeCss(
+                      created.dialogElement,
+                      "fb_customer_chat_bubble_animated_with_badge"
+                    );
+
+                    require("sdk.DOM").addCss(
+                      created.dialogElement,
+                      "fb_customer_chat_bubble_animated_no_badge"
+                    );
+                  } else {
+                    require("sdk.DOM").setStyle(
+                      created.dialogElement,
+                      "boxShadow",
+                      "0px 3px 12px rgba(0, 0, 0, 0.15)"
+                    );
+                  }
+                  return created.dialogElement;
+                },
+
+                _setBubbleBadgeStyle: function _setBubbleBadgeStyle() {
+                  if (this._bubbleDialog) {
+                    require("sdk.DOM").setStyle(
+                      this._bubbleDialog,
+                      "borderRadius",
+                      "50% 0% 50% 50%"
+                    );
+
+                    if (_browserSupportsAnimation) {
+                      require("sdk.DOM").removeCss(
+                        this._bubbleDialog,
+                        "fb_customer_chat_bubble_animated_no_badge"
+                      );
+
+                      require("sdk.DOM").addCss(
+                        this._bubbleDialog,
+                        "fb_customer_chat_bubble_animated_with_badge"
+                      );
+                    } else {
+                      require("sdk.DOM").setStyle(
+                        this._bubbleDialog,
+                        "boxShadow",
+                        "-5px 4px 14px rgba(0, 0, 0, 0.15)"
+                      );
+                    }
+                  }
+                },
+
+                _stopBlinking: function _stopBlinking() {
+                  if (_blinkerToken) {
+                    _blinkerToken.stop();
+                    _blinkerToken = null;
+                  }
+                },
+
+                _storeStateInfo: function _storeStateInfo(message) {
+                  var storage = require("sdk.WebStorage").getLocalStorageForRead();
+                  if (!storage) {
+                    return;
+                  }
+                  try {
+                    if (message == null) {
+                      storage.removeItem(
+                        require("MPNLocalState").LOCAL_STATE_KEY
+                      );
+                    } else {
+                      var currState = storage.getItem(
+                        require("MPNLocalState").LOCAL_STATE_KEY
+                      );
+                      if (currState == null) {
+                        storage.setItem(
+                          require("MPNLocalState").LOCAL_STATE_KEY,
+                          ES(
+                            "JSON",
+                            "stringify",
+                            false,
+                            ES("JSON", "parse", false, message)
+                          )
+                        );
+                      } else {
+                        var parsedCurrentState = ES(
+                          "JSON",
+                          "parse",
+                          false,
+                          currState
+                        );
+                        var parsedMessage = ES("JSON", "parse", false, message);
+                        storage.setItem(
+                          require("MPNLocalState").LOCAL_STATE_KEY,
+                          ES(
+                            "JSON",
+                            "stringify",
+                            false,
+                            babelHelpers["extends"](
+                              {},
+                              parsedCurrentState,
+                              parsedMessage
+                            )
+                          )
+                        );
+                      }
+                    }
+                  } catch (_unused2) {
+                    return;
+                  }
+                },
+
+                _getStateInfo: function _getStateInfo() {
+                  var storage = require("sdk.WebStorage").getLocalStorageForRead();
+                  if (!storage) {
+                    return;
+                  }
+                  var item = storage.getItem(
+                    require("MPNLocalState").LOCAL_STATE_KEY
+                  );
+                  if (!item) {
+                    return null;
+                  }
+                  return ES("JSON", "parse", false, item);
+                },
+
+                getParams: function getParams() {
+                  return {
+                    allow_guests: "bool",
+                    attribution: "string",
+                    greeting_dialog_display: "string",
+                    greeting_dialog_delay: "string",
+                    logged_in_greeting: "string",
+                    logged_out_greeting: "string",
+                    minimized: "bool",
+                    page_id: "string",
+                    theme_color: "string",
+                    override: "string",
+                    attribution_version: "string"
+                  };
+                }
+              });
+
+              function postMessageToIframe(frameName, message) {
+                var pmf = function pmf(origin) {
+                  var _window$frames$frameN;
+                  (_window$frames$frameN = window.frames[frameName]) == null
+                    ? void 0
+                    : _window$frames$frameN.postMessage(
+                        babelHelpers["extends"](
+                          {},
+
+                          message
+                        ),
+
+                        origin
+                      );
+                };
+                if (_dialogIFrameOrigin === null) {
+                  require("getFacebookOriginForTarget")(
+                    function getFacebookOriginForTarget_$0(origin) {
+                      _dialogIFrameOrigin = origin;
+                      pmf(_dialogIFrameOrigin);
+                    },
+                    window.frames[frameName]
+                  );
+                } else {
+                  pmf(_dialogIFrameOrigin);
+                }
+              }
+
+              function postMessaegToBubbleFrame(message) {
+                postMessageToIframe(_bubbleIFrameName, message);
+              }
+
+              function postMessageToDialogFrame(message) {
+                postMessageToIframe(_dialogIFrameName, message);
+              }
+
+              function handleSDKCall(event) {
+                postMessageToDialogFrame({
+                  name: "CustomerChat.SDK.Called",
+                  event: event
+                });
+              }
+
+              function setParentDocumentPositionFixed() {
+                _savedScrollXPosition =
+                  window.pageXOffset !== undefined
+                    ? window.pageXOffset
+                    : document.documentElement &&
+                      document.documentElement.scrollLeft;
+                _savedScrollYPosition =
+                  window.pageYOffset !== undefined
+                    ? window.pageYOffset
+                    : document.documentElement &&
+                      document.documentElement.scrollTop;
+                var mobile_overlay = "fb_new_ui_mobile_overlay_active";
+                require("sdk.DOM").addCss(document.body, mobile_overlay);
+              }
+
+              function resetParentDocumentPosition() {
+                var mobile_overlay = "fb_new_ui_mobile_overlay_active";
+                require("sdk.DOM").removeCss(document.body, mobile_overlay);
+              }
+
+              function _getBounceInAnimationName(isMobile, alignment) {
+                var bounceInAnimationName;
+                if (isMobile) {
+                  switch (_mobilePath) {
+                    case LANDING_PAGE:
+                      return "fb_mpn_mobile_landing_page_slide_up";
+                    case WELCOME_PAGE:
+                    case BUBBLE:
+                    case ITP_PAGE:
+                      return null;
+                    default:
+                      return "fb_mpn_mobile_bounce_in";
+                  }
+                } else {
+                  switch (alignment) {
+                    case "left":
+                      bounceInAnimationName =
+                        "fb_customer_chat_bounce_in_from_left";
+                      break;
+                    case "right":
+                    default:
+                      bounceInAnimationName = "fb_customer_chat_bounce_in_v2";
+                  }
+                }
+                return bounceInAnimationName;
+              }
+
+              function _getBounceOutAnimationName(isMobile, alignment) {
+                var bounceOutAnimationName;
+                if (isMobile) {
+                  switch (_mobilePath) {
+                    case LANDING_PAGE:
+                      return alignment === "left"
+                        ? "fb_mpn_mobile_landing_page_slide_out_from_left"
+                        : "fb_mpn_mobile_landing_page_slide_out";
+                    case BUBBLE:
+                      return "fb_mpn_mobile_bounce_out_v2";
+                    default:
+                      return "fb_mpn_mobile_bounce_out";
+                  }
+                } else {
+                  switch (alignment) {
+                    case "left":
+                      bounceOutAnimationName =
+                        "fb_customer_chat_bounce_out_from_left";
+                      break;
+                    case "right":
+                    default:
+                      bounceOutAnimationName = "fb_customer_chat_bounce_out_v2";
+                  }
+                }
+                return bounceOutAnimationName;
+              }
+
+              function showDialog(
+                dialogIframe,
+                chatStarted,
+                isMobile,
+                fireEvent,
+                alignment
+              ) {
+                if (fireEvent === void 0) {
+                  fireEvent = true;
+                }
+                if (!dialogIframe) {
+                  return;
+                }
+
+                if (alignment == null) {
+                  if (
+                    require("sdk.DOM").containsCss(
+                      dialogIframe,
+                      LEFT_ANCHOR_CLASS
+                    )
+                  ) {
+                    alignment = "left";
+                  } else {
+                    alignment = "right";
+                  }
+                }
+
+                if (_visibilityGuard === null || _visibilityGuard === false) {
+                  if (
+                    isMobile &&
+                    (chatStarted ||
+                      _showInterstitialOnPage ||
+                      _mobilePath !== LANDING_PAGE)
+                  ) {
+                    setParentDocumentPositionFixed();
+                  }
+
+                  if (_browserSupportsAnimation) {
+                    var bounceInAnimationName = _getBounceInAnimationName(
+                      isMobile,
+                      alignment
+                    );
+
+                    var bounceOutAnimationName = _getBounceOutAnimationName(
+                      isMobile,
+                      alignment
+                    );
+
+                    require("sdk.DOM").removeCss(
+                      dialogIframe,
+                      bounceOutAnimationName
+                    );
+                    bounceInAnimationName != null &&
+                      require("sdk.DOM").addCss(
+                        dialogIframe,
+                        bounceInAnimationName
+                      );
+                  }
+                  if (isMobile) {
+                    require("sdk.DOM").setStyle(
+                      dialogIframe,
+                      "maxHeight",
+                      "100%"
+                    );
+                    require("sdk.DOM").setStyle(dialogIframe, "width", "100%");
+                  } else {
+                    require("sdk.DOM").setStyle(
+                      dialogIframe,
+                      "maxHeight",
+                      DIALOG_FRAME_MAX_HEIGHT
+                    );
+                    require("sdk.DOM").setStyle(
+                      dialogIframe,
+                      "minHeight",
+                      DIALOG_FRAME_MIN_HEIGHT
+                    );
+                  }
+
+                  postMessageToDialogFrame({
+                    name: "CustomerChat.isDialogHidden",
+                    params: { is_dialog_hidden: false }
+                  });
+
+                  postMessaegToBubbleFrame({
+                    name: "CustomerChat.isDialogHidden",
+                    params: { is_dialog_hidden: false }
+                  });
+
+                  _visibilityGuard = true;
+                }
+
+                if (fireEvent) {
+                  require("sdk.Event").fire("customerchat.dialogShow");
+                }
+              }
+
+              function hideDialog(
+                iframe,
+                chatStarted,
+                isMobile,
+                fireEvent,
+                alignment
+              ) {
+                if (fireEvent === void 0) {
+                  fireEvent = true;
+                }
+                var dialogIframe = iframe;
+                if (!dialogIframe) {
+                  return;
+                }
+
+                if (alignment == null) {
+                  if (
+                    require("sdk.DOM").containsCss(
+                      dialogIframe,
+                      LEFT_ANCHOR_CLASS
+                    )
+                  ) {
+                    alignment = "left";
+                  } else {
+                    alignment = "right";
+                  }
+                }
+
+                if (_visibilityGuard === null || _visibilityGuard === true) {
+                  if (
+                    isMobile &&
+                    (chatStarted ||
+                      _showInterstitialOnPage ||
+                      _mobilePath !== LANDING_PAGE)
+                  ) {
+                    resetParentDocumentPosition();
+                  }
+                  if (!_browserSupportsAnimation) {
+                    require("sdk.DOM").setStyle(dialogIframe, "maxHeight", "0");
+                    require("sdk.DOM").setStyle(dialogIframe, "minHeight", "0");
+                    _visibilityGuard = false;
+                  } else {
+                    var _hideDialog = function _hideDialog(e) {
+                      if (_isHidden) {
+                        require("sdk.DOM").setStyle(
+                          dialogIframe,
+                          "maxHeight",
+                          "0"
+                        );
+                        require("sdk.DOM").setStyle(
+                          dialogIframe,
+                          "minHeight",
+                          "0"
+                        );
+                        ES(
+                          ANIMATION_EVENTS,
+                          "forEach",
+                          true,
+                          function ANIMATION_EVENTS_forEach_$0(event) {
+                            require("DOMEventListener").remove(
+                              dialogIframe,
+                              event,
+                              _hideDialog
+                            );
+                          }
+                        );
+                        _visibilityGuard = false;
+                      }
+                    };
+                    var bounceInAnimationName = _getBounceInAnimationName(
+                      isMobile,
+                      alignment
+                    );
+
+                    var bounceOutAnimationName = _getBounceOutAnimationName(
+                      isMobile,
+                      alignment
+                    );
+
+                    bounceInAnimationName != null &&
+                      require("sdk.DOM").removeCss(
+                        dialogIframe,
+                        bounceInAnimationName
+                      );
+                    require("sdk.DOM").addCss(
+                      dialogIframe,
+                      bounceOutAnimationName
+                    );
+                    ES(
+                      ANIMATION_EVENTS,
+                      "forEach",
+                      true,
+                      function ANIMATION_EVENTS_forEach_$0(event) {
+                        require("DOMEventListener").add(
+                          dialogIframe,
+                          event,
+                          _hideDialog
+                        );
+                      }
+                    );
+                  }
+                  postMessageToDialogFrame({
+                    name: "CustomerChat.isDialogHidden",
+                    params: { is_dialog_hidden: true }
+                  });
+
+                  postMessaegToBubbleFrame({
+                    name: "CustomerChat.isDialogHidden",
+                    params: { is_dialog_hidden: true }
+                  });
+                }
+
+                if (fireEvent) {
+                  require("sdk.Event").fire("customerchat.dialogHide");
+                }
+              }
+
+              CustomerChat.show = function(shouldShowDialog) {
+                if (shouldShowDialog === void 0) {
+                  shouldShowDialog = true;
+                }
+                _isIframeHidden = false;
+                if (_bubbleIFrame != null) {
+                  require("sdk.DOM").setStyle(
+                    _bubbleIFrame,
+                    "display",
+                    "inline"
+                  );
+                }
+                if (shouldShowDialog) {
+                  _isHidden = false;
+                  showDialog(
+                    _dialogIFrame,
+                    _chatStarted,
+                    require("sdk.UA").mobile(),
+                    false
+                  );
+                }
+                require("sdk.Event").fire("customerchat.show");
+                handleSDKCall("show");
+              };
+
+              CustomerChat.hide = function() {
+                _isIframeHidden = true;
+                if (_bubbleIFrame != null) {
+                  require("sdk.DOM").setStyle(_bubbleIFrame, "display", "none");
+                }
+                _isHidden = true;
+                hideDialog(
+                  _dialogIFrame,
+                  _chatStarted,
+                  require("sdk.UA").mobile(),
+                  false
+                );
+                require("sdk.Event").fire("customerchat.hide");
+                handleSDKCall("hide");
+              };
+
+              CustomerChat.showDialog = function() {
+                if (_bubbleIFrame != null) {
+                  require("sdk.DOM").setStyle(
+                    _bubbleIFrame,
+                    "display",
+                    "inline"
+                  );
+                }
+                _isHidden = false;
+                showDialog(
+                  _dialogIFrame,
+                  _chatStarted,
+                  require("sdk.UA").mobile()
+                );
+                handleSDKCall("showDialog");
+              };
+
+              CustomerChat.hideDialog = function() {
+                _isHidden = true;
+                hideDialog(
+                  _dialogIFrame,
+                  _chatStarted,
+                  require("sdk.UA").mobile()
+                );
+                handleSDKCall("hideDialog");
+              };
+
+              CustomerChat.update = function(data) {
+                require("sdk.XD").sendToFacebook(_dialogIFrameName, {
+                  method: "updateCustomerChat",
+                  params: ES("JSON", "stringify", false, data || {})
+                });
+
+                handleSDKCall("update");
+              };
+              var _default = CustomerChat;
+              module.exports = _default;
+            },
+            null
+          );
+          __d(
             "sdk.XFBML.LWIAdsCreation",
             ["IframePlugin", "sdk.createIframe"],
             function $module_sdk_XFBML_LWIAdsCreation(
@@ -18754,6 +20065,7 @@ try {
               "XFBML",
               "sdk.XFBML.Comments",
               "sdk.XFBML.CommentsCount",
+              "sdk.XFBML.CustomerChat",
               "sdk.XFBML.LWIAdsCreation",
               "sdk.XFBML.LWIAdsInsights",
               "sdk.XFBML.LoginButton",
@@ -18774,6 +20086,7 @@ try {
               var customTags = {
                 comments: require("sdk.XFBML.Comments"),
                 comments_count: require("sdk.XFBML.CommentsCount"),
+                customerchat: require("sdk.XFBML.CustomerChat"),
                 login_button: require("sdk.XFBML.LoginButton"),
 
                 lwi_ads_creation: require("sdk.XFBML.LWIAdsCreation"),
@@ -18842,7 +20155,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1003505882","namespace":"FB","message":"' +
+        '","revision":"1003507958","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
