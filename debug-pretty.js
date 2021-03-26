@@ -1,4 +1,4 @@
-/*1616795975,,JIT Construction: v1003524918,en_US*/
+/*1616801364,,JIT Construction: v1003526078,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3728,7 +3728,7 @@ try {
           })(typeof global === "undefined" ? this : global);
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1003524918",
+            revision: "1003526078",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -5469,9 +5469,9 @@ try {
             null
           );
           __d(
-            "TAALOpcode",
+            "fb-error-lite",
             [],
-            function $module_TAALOpcode(
+            function $module_fb_error_lite(
               global,
               require,
               requireDynamic,
@@ -5487,14 +5487,47 @@ try {
                 PREVIOUS_DIR: 3,
                 FORCED_KEY: 4
               };
-              var _default = TAALOpcode;
+
+              function err(format) {
+                var err = new Error(format);
+
+                if (err.stack === undefined) {
+                  try {
+                    throw err;
+                  } catch (_) {}
+                }
+                err.messageFormat = format;
+                for (
+                  var _len = arguments.length,
+                    rawArgs = new Array(_len > 1 ? _len - 1 : 0),
+                    _key = 1;
+                  _key < _len;
+                  _key++
+                ) {
+                  rawArgs[_key - 1] = arguments[_key];
+                }
+                err.messageParams = ES(
+                  rawArgs,
+                  "map",
+                  true,
+                  function rawArgs_map_$0(p) {
+                    return String(p);
+                  }
+                );
+                err.taalOpcodes = [TAALOpcode.PREVIOUS_FRAME];
+                return err;
+              }
+              var _default = {
+                err: err,
+                TAALOpcode: TAALOpcode
+              };
               module.exports = _default;
             },
             null
           );
           __d(
             "invariant",
-            ["Env", "TAALOpcode", "sprintf"],
+            ["Env", "fb-error-lite", "sprintf"],
             function $module_invariant(
               global,
               require,
@@ -5506,6 +5539,7 @@ try {
               "use strict";
               module.exports = invariant;
               var c_Env;
+              var TAALOpcode = require("fb-error-lite").TAALOpcode;
 
               function invariant(condition, format) {
                 if (!condition) {
@@ -5553,7 +5587,7 @@ try {
                       return String(p);
                     }
                   );
-                  error.taalOpcodes = [require("TAALOpcode").PREVIOUS_FRAME];
+                  error.taalOpcodes = [TAALOpcode.PREVIOUS_FRAME];
 
                   error.stack;
                   throw error;
@@ -18844,7 +18878,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1003524918","namespace":"FB","message":"' +
+        '","revision":"1003526078","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
