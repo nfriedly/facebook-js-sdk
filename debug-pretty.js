@@ -1,4 +1,4 @@
-/*1617200962,,JIT Construction: v1003545570,en_US*/
+/*1617670164,,JIT Construction: v1003572380,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3815,7 +3815,7 @@ try {
           })(typeof global === "undefined" ? this : global);
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1003545570",
+            revision: "1003572380",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -3833,7 +3833,8 @@ try {
             cdn: "staticxx.facebook.com",
             graph_facebook: "graph.facebook.com",
             graph_gaming: "graph.fb.gg",
-            graph_instagram: "graph.instagram.com"
+            graph_instagram: "graph.instagram.com",
+            www_instagram: "www.instagram.com"
           });
           __d("JSSDKConfig", [], {
             features: {
@@ -12587,7 +12588,7 @@ try {
 
               module.exports = XD;
             },
-            3
+            null
           );
           __d(
             "sdk.modFeatureCheck",
@@ -15265,7 +15266,8 @@ try {
               "sdk.PlatformVersioning",
               "sdk.Runtime",
               "sdk.UA",
-              "sdk.URI"
+              "sdk.URI",
+              "sdk.XD"
             ],
             function $module_sdk_init(
               global,
@@ -15275,6 +15277,8 @@ try {
               module,
               exports
             ) {
+              require("sdk.XD");
+
               function parseAppId(appId) {
                 var looksValid =
                   (typeof appId === "number" && appId > 0) ||
@@ -19020,7 +19024,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1003545570","namespace":"FB","message":"' +
+        '","revision":"1003572380","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
