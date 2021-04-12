@@ -1,4 +1,4 @@
-/*1618235364,,JIT Construction: v1003606374,en_US*/
+/*1618260565,,JIT Construction: v1003608480,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3815,7 +3815,7 @@ try {
           })(typeof global === "undefined" ? this : global);
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1003606374",
+            revision: "1003608480",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -3856,7 +3856,7 @@ try {
               force_popup_to_canvas_apps_with_id: [],
               force_popup_to_all_canvas_app: false,
               max_oauth_dialog_retries: { rate: 100, value: 10 },
-              plugin_tags_blacklist: ["customerchat"]
+              plugin_tags_blacklist: []
             }
           });
           __d("JSSDKCssConfig", [], {
@@ -9218,6 +9218,7 @@ try {
               "QueryString",
               "UrlMap",
               "sdk.Cookie",
+              "sdk.Frictionless",
               "sdk.Impressions",
               "sdk.Runtime",
               "sdk.Scribe",
@@ -9236,6 +9237,8 @@ try {
               module,
               exports
             ) {
+              require("sdk.Frictionless");
+
               var LOCAL_STORAGE_TOKEN_PREFIX = "fblst_";
               var SESSION_STORAGE_LOGIN_STATUS_PREFIX = "fbssls_";
               var LOGOUT_COOKIE_PREFIX = "fblo_";
@@ -10217,139 +10220,6 @@ try {
               });
               var _default = Auth;
               module.exports = _default;
-            },
-            null
-          );
-          __d(
-            "sdk.Event",
-            [],
-            function $module_sdk_Event(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              "use strict";
-              exports.subscribers = subscribers;
-              exports.subscribe = subscribe;
-              exports.unsubscribe = unsubscribe;
-              exports.monitor = monitor;
-              exports.clear = clear;
-              exports.fire = fire;
-
-              var SUBSCRIBE = "event.subscribe";
-              exports.SUBSCRIBE = SUBSCRIBE;
-
-              var UNSUBSCRIBE = "event.unsubscribe";
-              exports.UNSUBSCRIBE = UNSUBSCRIBE;
-
-              function subscribers() {
-                if (!this._subscribersMap) {
-                  this._subscribersMap = {};
-                }
-
-                return this._subscribersMap;
-              }
-
-              function subscribe(name, cb) {
-                var subs = this.subscribers();
-
-                if (!subs[name]) {
-                  subs[name] = [cb];
-                } else {
-                  if (ES(subs[name], "indexOf", true, cb) == -1) {
-                    subs[name].push(cb);
-                  }
-                }
-
-                if (name != this.SUBSCRIBE && name != this.UNSUBSCRIBE) {
-                  this.fire(this.SUBSCRIBE, name, subs[name]);
-                }
-              }
-
-              function unsubscribe(name, cb) {
-                var subs = this.subscribers()[name];
-                if (subs) {
-                  ES(subs, "forEach", true, function subs_forEach_$0(
-                    value,
-                    key
-                  ) {
-                    if (value === cb) {
-                      subs.splice(key, 1);
-                    }
-                  });
-                }
-
-                if (name != this.SUBSCRIBE && name != this.UNSUBSCRIBE) {
-                  this.fire(this.UNSUBSCRIBE, name, subs);
-                }
-              }
-
-              function monitor(name, callback) {
-                if (!callback()) {
-                  var ctx = this;
-                  var fn = function fn() {
-                    if (callback.apply(callback, arguments)) {
-                      ctx.unsubscribe(name, fn);
-                    }
-                  };
-
-                  this.subscribe(name, fn);
-                }
-              }
-
-              function clear(name) {
-                delete this.subscribers()[name];
-              }
-
-              function fire(name) {
-                for (
-                  var _len = arguments.length,
-                    args = new Array(_len > 1 ? _len - 1 : 0),
-                    _key = 1;
-                  _key < _len;
-                  _key++
-                ) {
-                  args[_key - 1] = arguments[_key];
-                }
-
-                var subs = this.subscribers()[name];
-
-                if (subs) {
-                  ES(subs, "forEach", true, function subs_forEach_$0(sub) {
-                    if (sub) {
-                      sub.apply(this, args);
-                    }
-                  });
-                }
-              }
-            },
-            null
-          );
-          __d(
-            "resolveURI",
-            [],
-            function $module_resolveURI(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              module.exports = resolveURI;
-
-              function resolveURI(uri) {
-                if (uri == null || uri === "") {
-                  return window.location.href;
-                }
-
-                var a = document.createElement("a");
-                a.href = uri;
-                return a.href;
-              }
             },
             null
           );
@@ -11755,6 +11625,263 @@ try {
             null
           );
           __d(
+            "sdk.Event",
+            [],
+            function $module_sdk_Event(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              "use strict";
+              exports.subscribers = subscribers;
+              exports.subscribe = subscribe;
+              exports.unsubscribe = unsubscribe;
+              exports.monitor = monitor;
+              exports.clear = clear;
+              exports.fire = fire;
+
+              var SUBSCRIBE = "event.subscribe";
+              exports.SUBSCRIBE = SUBSCRIBE;
+
+              var UNSUBSCRIBE = "event.unsubscribe";
+              exports.UNSUBSCRIBE = UNSUBSCRIBE;
+
+              function subscribers() {
+                if (!this._subscribersMap) {
+                  this._subscribersMap = {};
+                }
+
+                return this._subscribersMap;
+              }
+
+              function subscribe(name, cb) {
+                var subs = this.subscribers();
+
+                if (!subs[name]) {
+                  subs[name] = [cb];
+                } else {
+                  if (ES(subs[name], "indexOf", true, cb) == -1) {
+                    subs[name].push(cb);
+                  }
+                }
+
+                if (name != this.SUBSCRIBE && name != this.UNSUBSCRIBE) {
+                  this.fire(this.SUBSCRIBE, name, subs[name]);
+                }
+              }
+
+              function unsubscribe(name, cb) {
+                var subs = this.subscribers()[name];
+                if (subs) {
+                  ES(subs, "forEach", true, function subs_forEach_$0(
+                    value,
+                    key
+                  ) {
+                    if (value === cb) {
+                      subs.splice(key, 1);
+                    }
+                  });
+                }
+
+                if (name != this.SUBSCRIBE && name != this.UNSUBSCRIBE) {
+                  this.fire(this.UNSUBSCRIBE, name, subs);
+                }
+              }
+
+              function monitor(name, callback) {
+                if (!callback()) {
+                  var ctx = this;
+                  var fn = function fn() {
+                    if (callback.apply(callback, arguments)) {
+                      ctx.unsubscribe(name, fn);
+                    }
+                  };
+
+                  this.subscribe(name, fn);
+                }
+              }
+
+              function clear(name) {
+                delete this.subscribers()[name];
+              }
+
+              function fire(name) {
+                for (
+                  var _len = arguments.length,
+                    args = new Array(_len > 1 ? _len - 1 : 0),
+                    _key = 1;
+                  _key < _len;
+                  _key++
+                ) {
+                  args[_key - 1] = arguments[_key];
+                }
+
+                var subs = this.subscribers()[name];
+
+                if (subs) {
+                  ES(subs, "forEach", true, function subs_forEach_$0(sub) {
+                    if (sub) {
+                      sub.apply(this, args);
+                    }
+                  });
+                }
+              }
+            },
+            null
+          );
+          __d(
+            "sdk.Frictionless",
+            ["sdk.Auth", "sdk.Dialog", "sdk.Event", "sdk.api"],
+            function $module_sdk_Frictionless(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              var Frictionless = {
+                _allowedRecipients: {},
+
+                _useFrictionless: false,
+
+                _updateRecipients: function _updateRecipients() {
+                  Frictionless._allowedRecipients = {};
+                  require("sdk.api")(
+                    "/me/apprequestformerrecipients",
+                    function api_$1(response) {
+                      if (!response || response.error) {
+                        return;
+                      }
+                      ES(
+                        response.data,
+                        "forEach",
+                        true,
+                        function response_data_forEach_$0(recipient) {
+                          Frictionless._allowedRecipients[
+                            recipient.recipient_id
+                          ] = true;
+                        }
+                      );
+                    }
+                  );
+                },
+
+                init: function init() {
+                  Frictionless._useFrictionless = true;
+                  require("sdk.Auth").getLoginStatus(
+                    function Auth_getLoginStatus_$0(response) {
+                      if (response.status == "connected") {
+                        Frictionless._updateRecipients();
+                      }
+                    }
+                  );
+                  require("sdk.Event").subscribe(
+                    "auth.login",
+                    function Event_subscribe_$1(login) {
+                      if (login.authResponse) {
+                        Frictionless._updateRecipients();
+                      }
+                    }
+                  );
+                },
+
+                _processRequestResponse: function _processRequestResponse(
+                  cb,
+                  hidden
+                ) {
+                  return function(params) {
+                    var updated = params && params.updated_frictionless;
+                    if (Frictionless._useFrictionless && updated) {
+                      Frictionless._updateRecipients();
+                    }
+
+                    if (params) {
+                      if (!hidden && params.frictionless) {
+                        require("sdk.Dialog")._hideLoader();
+                        require("sdk.Dialog")._restoreBodyPosition();
+                        require("sdk.Dialog")._hideIPadOverlay();
+                      }
+                      delete params.frictionless;
+                      delete params.updated_frictionless;
+                    }
+
+                    cb && cb(params);
+                  };
+                },
+
+                isAllowed: function isAllowed(user_ids) {
+                  if (!user_ids) {
+                    return false;
+                  }
+
+                  if (typeof user_ids === "number") {
+                    return user_ids in Frictionless._allowedRecipients;
+                  }
+                  if (typeof user_ids === "string") {
+                    user_ids = user_ids.split(",");
+                  }
+                  user_ids = ES(user_ids, "map", true, function user_ids_map_$0(
+                    s
+                  ) {
+                    return ES(String(s), "trim", true);
+                  });
+
+                  var allowed = true;
+                  var has_user_ids = false;
+                  ES(user_ids, "forEach", true, function user_ids_forEach_$0(
+                    user_id
+                  ) {
+                    allowed =
+                      allowed && user_id in Frictionless._allowedRecipients;
+                    has_user_ids = true;
+                  });
+                  return allowed && has_user_ids;
+                }
+              };
+
+              require("sdk.Event").subscribe(
+                "init:post",
+                function Event_subscribe_$1(options) {
+                  if (options.frictionlessRequests) {
+                    Frictionless.init();
+                  }
+                }
+              );
+
+              module.exports = Frictionless;
+            },
+            null
+          );
+          __d(
+            "resolveURI",
+            [],
+            function $module_resolveURI(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              module.exports = resolveURI;
+
+              function resolveURI(uri) {
+                if (uri == null || uri === "") {
+                  return window.location.href;
+                }
+
+                var a = document.createElement("a");
+                a.href = uri;
+                return a.href;
+              }
+            },
+            null
+          );
+          __d(
             "sdk.NativeExtensions",
             ["DOMEventListener", "Log", "sdk.UA"],
             function $module_sdk_NativeExtensions(
@@ -11881,130 +12008,6 @@ try {
                   extensionAPIBridge.supportsDialog(method)
                 );
               }
-            },
-            null
-          );
-          __d(
-            "sdk.Frictionless",
-            ["sdk.Auth", "sdk.Dialog", "sdk.Event", "sdk.api"],
-            function $module_sdk_Frictionless(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              var Frictionless = {
-                _allowedRecipients: {},
-
-                _useFrictionless: false,
-
-                _updateRecipients: function _updateRecipients() {
-                  Frictionless._allowedRecipients = {};
-                  require("sdk.api")(
-                    "/me/apprequestformerrecipients",
-                    function api_$1(response) {
-                      if (!response || response.error) {
-                        return;
-                      }
-                      ES(
-                        response.data,
-                        "forEach",
-                        true,
-                        function response_data_forEach_$0(recipient) {
-                          Frictionless._allowedRecipients[
-                            recipient.recipient_id
-                          ] = true;
-                        }
-                      );
-                    }
-                  );
-                },
-
-                init: function init() {
-                  Frictionless._useFrictionless = true;
-                  require("sdk.Auth").getLoginStatus(
-                    function Auth_getLoginStatus_$0(response) {
-                      if (response.status == "connected") {
-                        Frictionless._updateRecipients();
-                      }
-                    }
-                  );
-                  require("sdk.Event").subscribe(
-                    "auth.login",
-                    function Event_subscribe_$1(login) {
-                      if (login.authResponse) {
-                        Frictionless._updateRecipients();
-                      }
-                    }
-                  );
-                },
-
-                _processRequestResponse: function _processRequestResponse(
-                  cb,
-                  hidden
-                ) {
-                  return function(params) {
-                    var updated = params && params.updated_frictionless;
-                    if (Frictionless._useFrictionless && updated) {
-                      Frictionless._updateRecipients();
-                    }
-
-                    if (params) {
-                      if (!hidden && params.frictionless) {
-                        require("sdk.Dialog")._hideLoader();
-                        require("sdk.Dialog")._restoreBodyPosition();
-                        require("sdk.Dialog")._hideIPadOverlay();
-                      }
-                      delete params.frictionless;
-                      delete params.updated_frictionless;
-                    }
-
-                    cb && cb(params);
-                  };
-                },
-
-                isAllowed: function isAllowed(user_ids) {
-                  if (!user_ids) {
-                    return false;
-                  }
-
-                  if (typeof user_ids === "number") {
-                    return user_ids in Frictionless._allowedRecipients;
-                  }
-                  if (typeof user_ids === "string") {
-                    user_ids = user_ids.split(",");
-                  }
-                  user_ids = ES(user_ids, "map", true, function user_ids_map_$0(
-                    s
-                  ) {
-                    return ES(String(s), "trim", true);
-                  });
-
-                  var allowed = true;
-                  var has_user_ids = false;
-                  ES(user_ids, "forEach", true, function user_ids_forEach_$0(
-                    user_id
-                  ) {
-                    allowed =
-                      allowed && user_id in Frictionless._allowedRecipients;
-                    has_user_ids = true;
-                  });
-                  return allowed && has_user_ids;
-                }
-              };
-
-              require("sdk.Event").subscribe(
-                "init:post",
-                function Event_subscribe_$1(options) {
-                  if (options.frictionlessRequests) {
-                    Frictionless.init();
-                  }
-                }
-              );
-
-              module.exports = Frictionless;
             },
             null
           );
@@ -15164,6 +15167,648 @@ try {
             },
             3
           );
+
+          __d(
+            "AppUserPropertyAPIBuiltinField",
+            [],
+            function $module_AppUserPropertyAPIBuiltinField(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              module.exports = {
+                GENDER: "$gender",
+                CITY: "$city",
+                STATE: "$state",
+                ZIPCODE: "$zipcode",
+                COUNTRY: "$country",
+                LANGUAGE: "$language",
+                CURRENCY: "$currency",
+                INSTALL_SOURCE: "$install_source",
+                USER_TYPE: "$user_type",
+                ACCOUNT_CREATED_TIME: "$account_created_time",
+                APP_ID: "$app_id"
+              };
+            },
+            null
+          );
+          __d(
+            "FBEventsParamList",
+            [],
+            function $module_FBEventsParamList(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              "use strict";
+
+              var APPEND_DEEP = "deep";
+              var APPEND_SHALLOW = "shallow";
+              var ParamList = (function() {
+                function ParamList() {
+                  this.list = [];
+                }
+                var _proto = ParamList.prototype;
+                _proto.append = function append(name, value) {
+                  this.$ParamList_append(
+                    encodeURIComponent(name),
+                    value,
+                    APPEND_DEEP
+                  );
+                };
+                _proto.each = function each(fn) {
+                  var list = this.list;
+                  for (var i = 0, len = list.length; i < len; i++) {
+                    fn(list[i][0], list[i][1]);
+                  }
+                };
+                _proto.toQueryString = function toQueryString() {
+                  var output = [];
+                  this.each(function each_$0(name, value) {
+                    output.push(name + "=" + encodeURIComponent(value));
+                  });
+                  return output.join("&");
+                };
+                _proto.$ParamList_append = function $ParamList_append(
+                  name,
+                  value,
+                  appendType
+                ) {
+                  if (Object(value) !== value) {
+                    this.$ParamList_appendPrimitive(name, value);
+                  } else {
+                    if (appendType === APPEND_DEEP) {
+                      this.$ParamList_appendObject(name, value);
+                    } else {
+                      this.$ParamList_appendPrimitive(name, stringify(value));
+                    }
+                  }
+                };
+                _proto.$ParamList_appendPrimitive = function $ParamList_appendPrimitive(
+                  name,
+                  value
+                ) {
+                  if (value != null) {
+                    this.list.push([name, value]);
+                  }
+                };
+                _proto.$ParamList_appendObject = function $ParamList_appendObject(
+                  name,
+                  object
+                ) {
+                  for (var key in object) {
+                    if (Object.prototype.hasOwnProperty.call(object, key)) {
+                      var childName =
+                        name + "[" + encodeURIComponent(key) + "]";
+
+                      this.$ParamList_append(
+                        childName,
+                        object[key],
+                        APPEND_SHALLOW
+                      );
+                    }
+                  }
+                };
+                return ParamList;
+              })();
+              module.exports = ParamList;
+
+              function stringify(value) {
+                if (
+                  typeof JSON === "undefined" ||
+                  JSON === null ||
+                  !ES("JSON", "stringify", false)
+                ) {
+                  return Object.prototype.toString.call(value);
+                } else {
+                  return ES("JSON", "stringify", false, value);
+                }
+              }
+            },
+            null
+          );
+          __d(
+            "FBEventsUtils",
+            [],
+            function $module_FBEventsUtils(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              "use strict";
+              exports.listenOnce = listenOnce;
+
+              var isLegacy = !("addEventListener" in document);
+
+              function listenOnce(element, eventName, callback) {
+                var compatEventName = isLegacy ? "on" + eventName : eventName;
+                var listener = function listener() {
+                  isLegacy
+                    ? element.detachEvent &&
+                      element.detachEvent(compatEventName, listener)
+                    : element.removeEventListener(
+                        compatEventName,
+                        listener,
+                        false
+                      );
+                  callback();
+                };
+                isLegacy
+                  ? element.attachEvent &&
+                    element.attachEvent(compatEventName, listener)
+                  : element.addEventListener(compatEventName, listener, false);
+              }
+            },
+            null
+          );
+          __d(
+            "FBPixelEndpoint",
+            ["invariant", "FBEventsParamList", "FBEventsUtils"],
+            function $module_FBPixelEndpoint(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports,
+              invariant
+            ) {
+              "use strict";
+              exports.sendEvent = sendEvent;
+
+              var ENDPOINT = "https://www.facebook.com/tr/";
+
+              var currentUrl = location.href;
+              var inFrame = window.top !== window;
+              var referrerUrl = document.referrer;
+
+              function getParamList(id, eventName, customData, customParams) {
+                if (customParams === void 0) {
+                  customParams = {};
+                }
+                var paramList = new (require("FBEventsParamList"))();
+                paramList.append("id", id);
+                paramList.append("ev", eventName);
+                paramList.append("dl", currentUrl);
+                paramList.append("rl", referrerUrl);
+                paramList.append("if", inFrame);
+
+                paramList.append("ts", new Date().valueOf());
+                paramList.append("cd", customData);
+                paramList.append("sw", window.screen.width);
+                paramList.append("sh", window.screen.height);
+
+                for (var param in customParams) {
+                  paramList.append(param, customParams[param]);
+                }
+
+                return paramList;
+              }
+
+              function sendEvent(id, eventName, customData, customParams) {
+                var paramList = getParamList(
+                  id,
+                  eventName,
+                  customData,
+                  customParams
+                );
+                var queryString = paramList.toQueryString();
+                if (2048 > (ENDPOINT + "?" + queryString).length) {
+                  sendGET(ENDPOINT, queryString);
+                } else {
+                  sendPOST(ENDPOINT, paramList);
+                }
+              }
+
+              function sendGET(endpoint, queryString) {
+                var image = new Image();
+                image.src = endpoint + "?" + queryString;
+              }
+
+              function sendPOST(endpoint, paramList) {
+                var _document$body;
+                var name =
+                  "fb" +
+                  Math.random()
+                    .toString()
+                    .replace(".", "");
+                var form = document.createElement("form");
+                form.method = "post";
+                form.action = endpoint;
+                form.target = name;
+                form.acceptCharset = "utf-8";
+                form.style.display = "none";
+
+                var isLegacyIE = !!(
+                  window.attachEvent && !window.addEventListener
+                );
+                var el = isLegacyIE ? '<iframe name="' + name + '">' : "iframe";
+                var iframe = document.createElement(el);
+                iframe instanceof HTMLIFrameElement ||
+                  invariant(0, "element must be an iframe");
+
+                iframe.src = "javascript:false";
+                iframe.id = name;
+                iframe.name = name;
+                form.appendChild(iframe);
+
+                require("FBEventsUtils").listenOnce(
+                  iframe,
+                  "load",
+                  function Utils_listenOnce_$2() {
+                    paramList.each(function paramList_each_$0(name, value) {
+                      var input = document.createElement("input");
+                      input.name = name;
+                      input.value = value;
+                      form.appendChild(input);
+                    });
+
+                    require("FBEventsUtils").listenOnce(
+                      iframe,
+                      "load",
+                      function Utils_listenOnce_$2() {
+                        var _form$parentNode;
+                        (_form$parentNode = form.parentNode) == null
+                          ? void 0
+                          : _form$parentNode.removeChild(form);
+                      }
+                    );
+                    form.submit();
+                  }
+                );
+                (_document$body = document.body) == null
+                  ? void 0
+                  : _document$body.appendChild(form);
+              }
+            },
+            null
+          );
+          __d(
+            "FBAppEvents",
+            ["ApiClient", "FBPixelEndpoint"],
+            function $module_FBAppEvents(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              "use strict";
+              exports.logEvent = logEvent;
+              exports.updateUserProperties = updateUserProperties;
+
+              function logEvent(
+                appID,
+                eventName,
+                params,
+                valueToSum,
+                accessToken
+              ) {
+                var customParams = {};
+                if (valueToSum != null) {
+                  customParams.vts = valueToSum.toString();
+                }
+                if (accessToken != null) {
+                  customParams.at = accessToken;
+                }
+
+                require("FBPixelEndpoint").sendEvent(
+                  appID.toString(),
+                  eventName,
+                  params,
+                  customParams
+                );
+              }
+
+              function updateUserProperties(userID, appID, params, cb) {
+                var url = "/" + appID + "/user_properties";
+                var data = {
+                  data: [{ user_unique_id: userID, custom_data: params }]
+                };
+                require("ApiClient").graph(url, "post", data, cb);
+              }
+            },
+            null
+          );
+          __d(
+            "sdk.AppEvents",
+            [
+              "AppUserPropertyAPIBuiltinField",
+              "Assert",
+              "FBAppEvents",
+              "sdk.Event",
+              "sdk.Impressions",
+              "sdk.Model",
+              "sdk.Runtime"
+            ],
+            function $module_sdk_AppEvents(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              exports.logEvent = logEvent;
+              exports.assertValidEventName = assertValidEventName;
+              exports.logPurchase = logPurchase;
+              exports.activateApp = activateApp;
+              exports.logPageView = logPageView;
+              exports.assertValidUserID = assertValidUserID;
+              exports.setUserID = setUserID;
+              exports.getUserID = getUserID;
+              exports.clearUserID = clearUserID;
+              exports.assertValidAppVersion = assertValidAppVersion;
+              exports.setAppVersion = setAppVersion;
+              exports.getAppVersion = getAppVersion;
+              exports.clearAppVersion = clearAppVersion;
+              exports.assertValidUserProperties = assertValidUserProperties;
+              exports.updateUserProperties = updateUserProperties;
+
+              var EventNames = ES("Object", "freeze", false, {
+                COMPLETED_REGISTRATION: "fb_mobile_complete_registration",
+                VIEWED_CONTENT: "fb_mobile_content_view",
+                SEARCHED: "fb_mobile_search",
+                RATED: "fb_mobile_rate",
+                COMPLETED_TUTORIAL: "fb_mobile_tutorial_completion",
+                ADDED_TO_CART: "fb_mobile_add_to_cart",
+                ADDED_TO_WISHLIST: "fb_mobile_add_to_wishlist",
+                INITIATED_CHECKOUT: "fb_mobile_initiated_checkout",
+                ADDED_PAYMENT_INFO: "fb_mobile_add_payment_info",
+                ACHIEVED_LEVEL: "fb_mobile_level_achieved",
+                UNLOCKED_ACHIEVEMENT: "fb_mobile_achievement_unlocked",
+                PAGE_VIEW: "fb_page_view",
+                SPENT_CREDITS: "fb_mobile_spent_credits"
+              });
+              exports.EventNames = EventNames;
+
+              var HiddenEventNames = ES("Object", "freeze", false, {
+                ACTIVATED_APP: "fb_mobile_activate_app",
+                PURCHASED: "fb_mobile_purchase"
+              });
+
+              var ParameterNames = ES("Object", "freeze", false, {
+                APP_USER_ID: "_app_user_id",
+                APP_VERSION: "_appVersion",
+                CURRENCY: "fb_currency",
+                REGISTRATION_METHOD: "fb_registration_method",
+                CONTENT_TYPE: "fb_content_type",
+                CONTENT_ID: "fb_content_id",
+                SEARCH_STRING: "fb_search_string",
+                SUCCESS: "fb_success",
+                MAX_RATING_VALUE: "fb_max_rating_value",
+                PAYMENT_INFO_AVAILABLE: "fb_payment_info_available",
+                NUM_ITEMS: "fb_num_items",
+                LEVEL: "fb_level",
+                DESCRIPTION: "fb_description"
+              });
+              exports.ParameterNames = ParameterNames;
+
+              var EVENT_NAME_REGEX = /^[0-9a-zA-Z_][0-9a-zA-Z _-]{0,39}$/;
+              var MAX_EVENT_NAME_LENGTH = 40;
+              var USER_PROPERTIES_KEY_REGEX = EVENT_NAME_REGEX;
+              var MAX_USER_PROPERTIES_KEY_LENGTH = MAX_EVENT_NAME_LENGTH;
+              var MAX_USER_ID_LENGTH = 100;
+              var MAX_APP_VERSION_LENGTH = 100;
+              var MAX_USER_PROPERTIES = 100;
+              var MAX_USER_PROPERTIES_VALUE_LENGTH = 100;
+              var PREDEFINED_USER_PROPS = ES(
+                "Object",
+                "values",
+                false,
+                require("AppUserPropertyAPIBuiltinField")
+              );
+              _c = PREDEFINED_USER_PROPS;
+
+              var AppProps = new (require("sdk.Model"))({
+                UserID: "",
+                Version: ""
+              });
+
+              function logCanvasEvent(appID, eventName, valueToSum, params) {
+                var payload = {
+                  ae: 1,
+                  ev: eventName,
+                  vts: valueToSum,
+                  canvas: 1
+                };
+
+                if (params) {
+                  payload.cd = params;
+                }
+                require("sdk.Impressions").impression({
+                  api_key: appID,
+                  payload: ES("JSON", "stringify", false, payload)
+                });
+              }
+
+              function logAppEvent(appID, eventName, valueToSum, params) {
+                var accessToken = require("sdk.Runtime").getAccessToken();
+                require("FBAppEvents").logEvent(
+                  appID,
+                  eventName,
+                  params || {},
+                  valueToSum,
+                  accessToken
+                );
+              }
+
+              function logEvent(appID, eventName, valueToSum, params) {
+                assertValidEventName(eventName);
+
+                var userID = AppProps.getUserID();
+                if (userID !== "") {
+                  params = params || {};
+                  params[ParameterNames.APP_USER_ID] = userID;
+                }
+
+                var appVersion = AppProps.getVersion();
+                if (appVersion !== "") {
+                  params = params || {};
+                  params[ParameterNames.APP_VERSION] = appVersion;
+                }
+
+                if (require("sdk.Runtime").isCanvasEnvironment()) {
+                  logCanvasEvent(appID, eventName, valueToSum, params);
+                } else {
+                  logAppEvent(appID, eventName, valueToSum, params);
+                }
+              }
+
+              function assertValidEventName(eventName) {
+                require("Assert").isTrue(
+                  EVENT_NAME_REGEX.test(eventName),
+                  "Invalid event name: " +
+                    eventName +
+                    ". " +
+                    "It must be between 1 and " +
+                    MAX_EVENT_NAME_LENGTH +
+                    " characters, " +
+                    "and must be contain only alphanumerics, _, - or spaces, " +
+                    "starting with alphanumeric or _."
+                );
+              }
+
+              function logPurchase(appID, purchaseAmount, currency, params) {
+                var extraParams = {};
+                extraParams[ParameterNames.CURRENCY] = currency;
+
+                logEvent(
+                  appID,
+                  HiddenEventNames.PURCHASED,
+                  purchaseAmount,
+                  babelHelpers["extends"]({}, params, extraParams)
+                );
+              }
+
+              function activateApp(appID) {
+                logEvent(appID, HiddenEventNames.ACTIVATED_APP);
+              }
+
+              function logPageView(appID) {
+                logEvent(appID, EventNames.PAGE_VIEW);
+              }
+
+              function assertValidUserID(userID) {
+                require("Assert").isTrue(
+                  userID.length !== 0,
+                  "User ID must be set before updateUserProperties can be called."
+                );
+
+                require("Assert").isTrue(
+                  userID.length <= MAX_USER_ID_LENGTH,
+                  "Invalid user ID: " +
+                    userID +
+                    ". " +
+                    "It must be no longer than " +
+                    MAX_USER_ID_LENGTH +
+                    " characters."
+                );
+              }
+
+              function setUserID(userID) {
+                assertValidUserID(userID);
+                AppProps.setUserID(userID);
+              }
+
+              function getUserID() {
+                return AppProps.getUserID();
+              }
+
+              function clearUserID() {
+                AppProps.setUserID("");
+              }
+
+              function assertValidAppVersion(appVersion) {
+                require("Assert").isTrue(
+                  appVersion.length <= MAX_APP_VERSION_LENGTH,
+                  "Invalid app version: " +
+                    appVersion +
+                    ". " +
+                    "It must be no longer than " +
+                    MAX_APP_VERSION_LENGTH +
+                    " characters."
+                );
+              }
+
+              function setAppVersion(appVersion) {
+                assertValidAppVersion(appVersion);
+                AppProps.setVersion(appVersion);
+              }
+
+              function getAppVersion() {
+                return AppProps.getVersion();
+              }
+
+              function clearAppVersion() {
+                AppProps.setVersion("");
+              }
+
+              function assertValidUserProperties(params) {
+                require("Assert").isTrue(
+                  ES("Object", "keys", false, params).length <=
+                    MAX_USER_PROPERTIES,
+                  "The total number of user properties cannot exceed " +
+                    MAX_USER_PROPERTIES +
+                    "."
+                );
+
+                for (var _key in params) {
+                  require("Assert").isTrue(
+                    USER_PROPERTIES_KEY_REGEX.test(_key) ||
+                      ES(PREDEFINED_USER_PROPS, "includes", true, _key),
+                    "Invalid user properties key name: " +
+                      _key +
+                      ". " +
+                      "It must be between 1 and " +
+                      MAX_USER_PROPERTIES_KEY_LENGTH +
+                      " " +
+                      "characters, and must contain only alphanumerics, _, - or spaces, " +
+                      "starting with alphanumeric or _. " +
+                      "Or, it must be a pre-defined user property"
+                  );
+
+                  require("Assert").isTrue(
+                    params[_key].toString().length <=
+                      MAX_USER_PROPERTIES_VALUE_LENGTH,
+                    "Invalid user properties value: " +
+                      params[_key] +
+                      ". " +
+                      "It must be no longer than " +
+                      MAX_USER_PROPERTIES_VALUE_LENGTH +
+                      " characters."
+                  );
+                }
+              }
+
+              function updateUserProperties(appID, params, cb) {
+                var userID = getUserID();
+                assertValidUserID(userID);
+                assertValidUserProperties(params);
+                require("FBAppEvents").updateUserProperties(
+                  userID,
+                  appID,
+                  params,
+                  cb
+                );
+              }
+
+              require("sdk.Event").subscribe(
+                "init:post",
+                function Event_subscribe_$1(options) {
+                  if (require("sdk.Runtime").getClientID()) {
+                    if (options.autoLogAppEvents !== undefined) {
+                      require("Assert").isBoolean(
+                        options.autoLogAppEvents,
+                        "Type of property autoLogAppEvents must be boolean"
+                      );
+
+                      require("sdk.Runtime").setAutoLogAppEvents(
+                        options.autoLogAppEvents
+                      );
+                    }
+
+                    if (require("sdk.Runtime").getAutoLogAppEvents()) {
+                      logPageView(require("sdk.Runtime").getClientID());
+                    }
+                  }
+                }
+              );
+              var _c;
+              $RefreshReg$(_c, "PREDEFINED_USER_PROPS");
+            },
+            null
+          );
           __d(
             "sdk.MBasicInitializer",
             [
@@ -15261,9 +15906,11 @@ try {
               "Log",
               "ManagedError",
               "QueryString",
+              "sdk.AppEvents",
               "sdk.Cookie",
               "sdk.ErrorHandling",
               "sdk.Event",
+              "sdk.Frictionless",
               "sdk.MBasicInitializer",
               "sdk.PlatformVersioning",
               "sdk.Runtime",
@@ -15280,6 +15927,8 @@ try {
               exports
             ) {
               require("sdk.XD");
+              require("sdk.AppEvents");
+              require("sdk.Frictionless");
 
               function parseAppId(appId) {
                 var looksValid =
@@ -19743,6 +20392,7 @@ try {
                           return hideDialog();
                         }
                       );
+
                       require("sdk.Event").subscribe(
                         "savePlugin:hideDialog",
                         function Event_subscribe_$1() {
@@ -20253,7 +20903,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1003606374","namespace":"FB","message":"' +
+        '","revision":"1003608480","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
