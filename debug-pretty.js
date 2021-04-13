@@ -1,4 +1,4 @@
-/*1618260565,,JIT Construction: v1003608480,en_US*/
+/*1618272744,,JIT Construction: v1003610653,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3815,7 +3815,7 @@ try {
           })(typeof global === "undefined" ? this : global);
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1003608480",
+            revision: "1003610653",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -5769,36 +5769,6 @@ try {
             null
           );
           __d(
-            "sdk.Scribe",
-            ["QueryString", "UrlMap", "sdk.Runtime"],
-            function $module_sdk_Scribe(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              exports.log = log;
-
-              function log(category, data) {
-                if (data.extra != null && typeof data.extra === "object") {
-                  var extra = data.extra;
-                  extra.revision = require("sdk.Runtime").getRevision();
-                }
-                new Image().src = require("QueryString").appendToUrl(
-                  require("UrlMap").resolve("www") +
-                    "/common/scribe_endpoint.php",
-                  {
-                    c: category,
-                    m: ES("JSON", "stringify", false, data)
-                  }
-                );
-              }
-            },
-            null
-          );
-          __d(
             "sdk.FeatureFunctor",
             [],
             function $module_sdk_FeatureFunctor(
@@ -5867,6 +5837,50 @@ try {
                 require("JSSDKConfig")
               );
               module.exports = _default;
+            },
+            null
+          );
+          __d(
+            "sdk.Scribe",
+            ["QueryString", "UrlMap", "sdk.Runtime", "sdk.feature"],
+            function $module_sdk_Scribe(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              exports.log = log;
+
+              function log(category, data, should_include_creds) {
+                if (should_include_creds === void 0) {
+                  should_include_creds = false;
+                }
+                if (data.extra != null && typeof data.extra === "object") {
+                  var extra = data.extra;
+                  extra.revision = require("sdk.Runtime").getRevision();
+                }
+
+                var image = new Image();
+
+                var url =
+                  require("UrlMap").resolve("www") +
+                  "/common/scribe_endpoint.php";
+                if (require("sdk.feature")("epd_endpoint_migration", false)) {
+                  url =
+                    require("UrlMap").resolve("www") +
+                    "/platform/scribe_endpoint.php";
+                  if (!should_include_creds) {
+                    image.crossOrigin = "anonymous";
+                  }
+                }
+
+                image.src = require("QueryString").appendToUrl(url, {
+                  c: category,
+                  m: ES("JSON", "stringify", false, data)
+                });
+              }
             },
             null
           );
@@ -20903,7 +20917,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1003608480","namespace":"FB","message":"' +
+        '","revision":"1003610653","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
