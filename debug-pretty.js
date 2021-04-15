@@ -1,4 +1,4 @@
-/*1618278572,,JIT Construction: v1003611490,en_US*/
+/*1618456756,,JIT Construction: v1003627847,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3815,7 +3815,7 @@ try {
           })(typeof global === "undefined" ? this : global);
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1003611490",
+            revision: "1003627847",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -9283,6 +9283,17 @@ try {
                 }
               );
 
+              function toWebOAuthStatus(status) {
+                switch (status) {
+                  case "connected":
+                    return "connected";
+                  case "not_authorized":
+                    return "not_authorized";
+                  default:
+                    return "unknown";
+                }
+              }
+
               function setAuthResponse(authResponse, status, fromCache) {
                 if (fromCache === void 0) {
                   fromCache = false;
@@ -10035,18 +10046,14 @@ try {
                         }
 
                         if (xhr.status === 200) {
-                          var _xhr$getResponseHeade, _xhr$getResponseHeade2;
+                          var _xhr$getResponseHeade;
                           onCORSSuccess(
                             cb,
+                            toWebOAuthStatus(xhr.getResponseHeader("fb-s")),
                             (_xhr$getResponseHeade = xhr.getResponseHeader(
-                              "fb-s"
-                            )) != null
-                              ? _xhr$getResponseHeade
-                              : "unknown",
-                            (_xhr$getResponseHeade2 = xhr.getResponseHeader(
                               "fb-ar"
                             )) != null
-                              ? _xhr$getResponseHeade2
+                              ? _xhr$getResponseHeade
                               : "{}"
                           );
                         } else {
@@ -20917,7 +20924,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1003611490","namespace":"FB","message":"' +
+        '","revision":"1003627847","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
