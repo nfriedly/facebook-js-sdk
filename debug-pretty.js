@@ -1,4 +1,4 @@
-/*1618474765,,JIT Construction: v1003628883,en_US*/
+/*1618555772,,JIT Construction: v1003636214,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3815,7 +3815,7 @@ try {
           })(typeof global === "undefined" ? this : global);
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1003628883",
+            revision: "1003636214",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -16423,17 +16423,8 @@ try {
                 return ES(object[property] + "", "trim", true);
               }
 
-              function nodeNameIE(element) {
-                return element.scopeName
-                  ? element.scopeName + ":" + element.nodeName
-                  : "";
-              }
-
               function xfbmlInfo(element) {
-                return (
-                  xfbml[propStr(element, "nodeName").toLowerCase()] ||
-                  xfbml[nodeNameIE(element).toLowerCase()]
-                );
+                return xfbml[propStr(element, "nodeName").toLowerCase()];
               }
 
               function html5Info(element) {
@@ -16493,6 +16484,9 @@ try {
                   callback,
                   "Invalid callback passed to FB.XFBML.parse()"
                 );
+                if (dom == null) {
+                  return;
+                }
 
                 var pc = ++parseCount;
                 require("Log").info("XFBML Parsing Start %s", pc);
@@ -16529,7 +16523,7 @@ try {
                     }
 
                     var info = xfbmlInfo(element) || html5Info(element);
-                    if (!info) {
+                    if (info == null) {
                       return;
                     }
 
@@ -16566,7 +16560,7 @@ try {
                 XFBML.inform("parse", pc, tags);
 
                 var timeout = 30000;
-                setTimeout(function setTimeout_$0() {
+                window.setTimeout(function window_setTimeout_$0() {
                   if (count > 0) {
                     require("Log").warn(
                       "%s tags failed to render in %s ms",
@@ -16612,8 +16606,8 @@ try {
                   _parse(document.body, function _parse_$1() {}, false);
                 }
               });
-
-              module.exports = XFBML;
+              var _default = XFBML;
+              module.exports = _default;
             },
             null
           );
@@ -20925,7 +20919,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1003628883","namespace":"FB","message":"' +
+        '","revision":"1003636214","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
