@@ -1,4 +1,4 @@
-/*1618555772,,JIT Construction: v1003636214,en_US*/
+/*1618867763,,JIT Construction: v1003646938,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3815,7 +3815,7 @@ try {
           })(typeof global === "undefined" ? this : global);
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1003636214",
+            revision: "1003646938",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -5075,13 +5075,14 @@ try {
               exports
             ) {
               function assert(expression, message) {
-                if (typeof expression !== "boolean" || !expression) {
+                if (typeof expression !== "boolean" || expression === false) {
                   throw new (require("AssertionError"))(message);
                 }
                 return expression;
               }
 
               function assertType(type, expression, message) {
+                var _message2;
                 var actualType;
 
                 if (expression === undefined) {
@@ -5090,39 +5091,52 @@ try {
                   actualType = "null";
                 } else {
                   var className = Object.prototype.toString.call(expression);
-                  actualType = /\s(\w*)/.exec(className)[1].toLowerCase();
+                  var regexpResult = /\s(\w*)/.exec(className);
+                  actualType =
+                    regexpResult == null
+                      ? typeof regexpResult
+                      : regexpResult[1].toLowerCase();
                 }
 
                 assert(
                   ES(type, "indexOf", true, actualType) !== -1,
-                  message ||
-                    require("sprintf")(
-                      "Expression is of type %s, not %s",
-                      actualType,
-                      type
-                    )
+                  (_message2 = message) != null
+                    ? _message2
+                    : require("sprintf")(
+                        "Expression is of type %s, not %s",
+                        actualType,
+                        type
+                      )
                 );
 
                 return expression;
               }
 
               function assertInstanceOf(type, expression, message) {
+                var _message3;
                 assert(
                   expression instanceof type,
-                  message || "Expression not instance of type"
+                  (_message3 = message) != null
+                    ? _message3
+                    : "Expression not instance of type"
                 );
 
                 return expression;
               }
 
-              function _define(type, test) {
+              function define(type, test) {
                 Assert["is" + type] = test;
                 Assert["maybe" + type] = function(expression, message) {
-                  if (expression != null) {
-                    test(expression, message);
-                  }
+                  var _expression;
+                  return (_expression = expression) != null
+                    ? _expression
+                    : test(expression, message);
                 };
               }
+
+              var placeholder = function placeholder(expression, _message) {
+                return expression;
+              };
 
               var Assert = {
                 isInstanceOf: assertInstanceOf,
@@ -5130,42 +5144,40 @@ try {
                 isTruthy: function isTruthy(expression, message) {
                   return assert(!!expression, message);
                 },
-                type: assertType,
-                define: function define(type, fn) {
-                  type =
-                    type.substring(0, 1).toUpperCase() +
-                    type.substring(1).toLowerCase();
-
-                  _define(type, function _define_$1(expression, message) {
-                    assert(fn(expression), message);
-                  });
-                }
+                isBoolean: placeholder,
+                isFunction: placeholder,
+                isNumber: placeholder,
+                isObject: placeholder,
+                isString: placeholder,
+                isUndefined: placeholder,
+                maybeObject: placeholder,
+                maybeNumber: placeholder,
+                maybeFunction: placeholder
               };
 
               ES(
                 [
-                  "Array",
                   "Boolean",
-                  "Date",
                   "Function",
-                  "Null",
                   "Number",
                   "Object",
-                  "Regexp",
                   "String",
                   "Undefined"
                 ],
                 "forEach",
                 true,
                 function forEach_$0(type) {
-                  _define(
-                    type,
-                    ES(assertType, "bind", true, null, type.toLowerCase())
-                  );
+                  define(type, ES(
+                    assertType,
+                    "bind",
+                    true,
+                    null,
+                    type.toLowerCase()
+                  ));
                 }
               );
-
-              module.exports = Assert;
+              var _default = Assert;
+              module.exports = _default;
             },
             null
           );
@@ -16599,7 +16611,12 @@ try {
                 },
 
                 parse: function parse(dom, cb) {
-                  _parse(dom || document.body, cb || function() {}, true);
+                  var _dom, _cb;
+                  _parse(
+                    (_dom = dom) != null ? _dom : document.body,
+                    (_cb = cb) != null ? _cb : function() {},
+                    true
+                  );
                 },
 
                 parseNew: function parseNew() {
@@ -16614,7 +16631,7 @@ try {
           __d(
             "legacy:fb.xfbml",
             [
-              "Assert",
+              "AssertionError",
               "FB",
               "XFBML",
               "sdk.Event",
@@ -16633,7 +16650,15 @@ try {
 
               require("FB").provide("XFBML", {
                 parse: function parse(dom) {
-                  require("Assert").maybeXfbml(dom, "Invalid argument");
+                  if (
+                    dom != null &&
+                    !(
+                      (dom.nodeType === 1 || dom.nodeType === 9) &&
+                      typeof dom.nodeName === "string"
+                    )
+                  ) {
+                    throw new (require("AssertionError"))("Invalid argument");
+                  }
 
                   if (dom && dom.nodeType === 9) {
                     dom = dom.body;
@@ -16677,15 +16702,6 @@ try {
                     0
                   );
                 }
-              });
-
-              require("Assert").define("Xfbml", function Assert_define_$1(
-                element
-              ) {
-                return (
-                  (element.nodeType === 1 || element.nodeType === 9) &&
-                  typeof element.nodeName === "string"
-                );
               });
 
               try {
@@ -20919,7 +20935,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1003636214","namespace":"FB","message":"' +
+        '","revision":"1003646938","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
