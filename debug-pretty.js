@@ -1,4 +1,4 @@
-/*1618867763,,JIT Construction: v1003646938,en_US*/
+/*1618980563,,JIT Construction: v1003658252,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3815,7 +3815,7 @@ try {
           })(typeof global === "undefined" ? this : global);
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1003646938",
+            revision: "1003658252",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -9021,6 +9021,86 @@ try {
             null
           );
           __d(
+            "sdk.Observable",
+            [],
+            function $module_sdk_Observable(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              var Observable = (function() {
+                function Observable() {
+                  this.$Observable_observableEvents = {};
+                  this.getSubscribers = ES(
+                    this.getSubscribers,
+                    "bind",
+                    true,
+                    this
+                  );
+                  this.clearSubscribers = ES(
+                    this.clearSubscribers,
+                    "bind",
+                    true,
+                    this
+                  );
+                  this.subscribe = ES(this.subscribe, "bind", true, this);
+                  this.unsubscribe = ES(this.unsubscribe, "bind", true, this);
+                  this.inform = ES(this.inform, "bind", true, this);
+                }
+                var _proto = Observable.prototype;
+                _proto.getSubscribers = function getSubscribers(toWhat) {
+                  return (
+                    this.$Observable_observableEvents[toWhat] ||
+                    (this.$Observable_observableEvents[toWhat] = [])
+                  );
+                };
+                _proto.clearSubscribers = function clearSubscribers(toWhat) {
+                  if (toWhat) {
+                    this.$Observable_observableEvents[toWhat] = [];
+                  }
+                };
+                _proto.subscribe = function subscribe(toWhat, withWhat) {
+                  var list = this.getSubscribers(toWhat);
+                  list.push(withWhat);
+                };
+                _proto.unsubscribe = function unsubscribe(toWhat, withWhat) {
+                  var list = this.getSubscribers(toWhat);
+                  for (var i = 0; i < list.length; i++) {
+                    if (list[i] === withWhat) {
+                      list.splice(i, 1);
+                      break;
+                    }
+                  }
+                };
+                _proto.inform = function inform(what, withWhat) {
+                  var list = this.getSubscribers(what);
+                  for (var i = 0; i < list.length; i++) {
+                    if (list[i] === null) {
+                      continue;
+                    }
+                    if (__DEV__) {
+                      list[i].call(this, withWhat);
+                    } else {
+                      try {
+                        list[i].call(this, withWhat);
+                      } catch (e) {
+                        window.setTimeout(function window_setTimeout_$0() {
+                          throw e;
+                        }, 0);
+                      }
+                    }
+                  }
+                };
+                return Observable;
+              })();
+              exports.Observable = Observable;
+            },
+            null
+          );
+          __d(
             "Base64",
             [],
             function $module_Base64(
@@ -9240,12 +9320,12 @@ try {
             "sdk.Auth",
             [
               "Log",
-              "ObservableMixin",
               "QueryString",
               "UrlMap",
               "sdk.Cookie",
               "sdk.Frictionless",
               "sdk.Impressions",
+              "sdk.Observable",
               "sdk.Runtime",
               "sdk.Scribe",
               "sdk.SignedRequest",
@@ -9275,13 +9355,13 @@ try {
               var PLATFORM_E2E_TRACKING_LOG_ID = 114;
               var PLATFORM_JSSDK_FUNNEL_LOG_ID = 117;
 
+              var observable = new (require("sdk.Observable")).Observable();
+
               var currentAuthResponse;
 
               var timer;
 
               var facebookRe = /^https?:\/\/([\w\.]+)?\.facebook\.com\/?/;
-
-              var Auth = new (require("ObservableMixin"))();
 
               require("sdk.Runtime").subscribe(
                 "AccessToken.change",
@@ -9392,16 +9472,16 @@ try {
                 };
 
                 if (logout || both) {
-                  Auth.inform("logout", response);
+                  observable.inform("logout", response);
                 }
                 if (login || both) {
-                  Auth.inform("login", response);
+                  observable.inform("login", response);
                 }
                 if (authResponseChange) {
-                  Auth.inform("authresponse.change", response);
+                  observable.inform("authresponse.change", response);
                 }
                 if (statusChange) {
-                  Auth.inform("status.change", response);
+                  observable.inform("status.change", response);
                 }
 
                 if (
@@ -10233,14 +10313,14 @@ try {
                 var lsCb = function lsCb(response) {
                   loadState = "loaded";
 
-                  Auth.inform("FB.loginStatus", response);
-                  Auth.clearSubscribers("FB.loginStatus");
+                  observable.inform("FB.loginStatus", response);
+                  observable.clearSubscribers("FB.loginStatus");
                 };
 
                 fetchLoginStatus(lsCb);
               }
 
-              ES("Object", "assign", false, Auth, {
+              var Auth = {
                 removeLogoutState: removeLogoutState,
                 getLoginStatus: getLoginStatus,
                 getLoginStatusCORS: getLoginStatusCORS,
@@ -10249,8 +10329,10 @@ try {
                 setAuthResponse: setAuthResponse,
                 getAuthResponse: getAuthResponse,
                 parseSignedRequest: require("sdk.SignedRequest").parse,
-                xdResponseWrapper: xdResponseWrapper
-              });
+                xdResponseWrapper: xdResponseWrapper,
+                subscribe: observable.subscribe,
+                unsubscribe: observable.unsubscribe
+              };
               var _default = Auth;
               module.exports = _default;
             },
@@ -19732,7 +19814,11 @@ try {
                             paramsCopyForClosure
                           );
                           closureParams.logger_id = require("guid")();
-                          if (response.status !== "connected") {
+                          if (
+                            response != null &&
+                            response.status != null &&
+                            response.status !== "connected"
+                          ) {
                             prepareCall(
                               closureParams,
                               iframeName,
@@ -20935,7 +21021,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1003646938","namespace":"FB","message":"' +
+        '","revision":"1003658252","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
