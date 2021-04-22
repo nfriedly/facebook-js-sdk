@@ -1,4 +1,4 @@
-/*1618980563,,JIT Construction: v1003658252,en_US*/
+/*1619056748,,JIT Construction: v1003664176,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3815,7 +3815,7 @@ try {
           })(typeof global === "undefined" ? this : global);
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1003658252",
+            revision: "1003664176",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -5883,7 +5883,10 @@ try {
                   url =
                     require("UrlMap").resolve("www") +
                     "/platform/scribe_endpoint.php";
-                  if (!should_include_creds) {
+                  if (
+                    require("sdk.feature")("epd_omit_cookies", false) &&
+                    !should_include_creds
+                  ) {
                     image.crossOrigin = "anonymous";
                   }
                 }
@@ -8924,7 +8927,8 @@ try {
               "guid",
               "insertIframe",
               "sdk.Content",
-              "sdk.Runtime"
+              "sdk.Runtime",
+              "sdk.feature"
             ],
             function $module_sdk_Impressions(
               global,
@@ -8937,7 +8941,10 @@ try {
               exports.impression = impression;
               exports.log = log;
 
-              function impression(params) {
+              function impression(params, should_include_creds) {
+                if (should_include_creds === void 0) {
+                  should_include_creds = false;
+                }
                 var clientID = require("sdk.Runtime").getClientID();
 
                 if (
@@ -8954,6 +8961,14 @@ try {
                   "/impression.php/" +
                   require("guid")() +
                   "/";
+                if (require("sdk.feature")("epd_endpoint_migration", false)) {
+                  url =
+                    require("UrlMap").resolve("www") +
+                    "/platform/impression.php/" +
+                    require("guid")() +
+                    "/";
+                }
+
                 var fullUrlPath = require("QueryString").appendToUrl(
                   url,
                   params
@@ -8972,14 +8987,100 @@ try {
                   }
                 }
 
-                _makeRequest_DEPRECATED(url, fullUrlPath, params);
+                var isCanvas = require("sdk.Runtime").isEnvironment(
+                  require("sdk.Runtime").ENVIRONMENTS.CANVAS
+                );
+                if (window.fetch) {
+                  makeRequest(
+                    url,
+                    fullUrlPath,
+                    params,
+                    should_include_creds || isCanvas
+                  );
+                } else {
+                  _makeRequest_DEPRECATED(
+                    url,
+                    fullUrlPath,
+                    params,
+                    should_include_creds || isCanvas
+                  );
+                }
               }
 
-              function _makeRequest_DEPRECATED(url, fullUrlPath, params) {
+              function makeRequest(
+                url,
+                fullUrlPath,
+                params,
+                should_include_creds
+              ) {
+                if (should_include_creds === void 0) {
+                  should_include_creds = false;
+                }
+                var standardFetchOptions = {
+                  mode: "no-cors",
+                  credentials: "include"
+                };
+
+                if (
+                  require("sdk.feature")("epd_omit_cookies", false) &&
+                  !should_include_creds
+                ) {
+                  standardFetchOptions.credentials = "omit";
+                }
+
+                if (fullUrlPath.length <= 2000) {
+                  window.fetch(fullUrlPath, standardFetchOptions);
+                } else {
+                  var searchParams = new URLSearchParams();
+
+                  for (var key in params) {
+                    if (Object.prototype.hasOwnProperty.call(params, key)) {
+                      var val = params[key];
+                      if (val !== null && val !== undefined) {
+                        searchParams.set(key, val);
+                      }
+                    }
+                  }
+
+                  var fetchOptions = babelHelpers["extends"](
+                    {
+                      method: "POST",
+                      body: searchParams
+                    },
+                    standardFetchOptions
+                  );
+
+                  window.fetch(url, fetchOptions);
+                }
+              }
+
+              function _makeRequest_DEPRECATED(
+                url,
+                fullUrlPath,
+                params,
+                should_include_creds
+              ) {
+                if (should_include_creds === void 0) {
+                  should_include_creds = false;
+                }
                 if (fullUrlPath.length <= 2000) {
                   var image = new Image();
+                  if (
+                    require("sdk.feature")("epd_omit_cookies", false) &&
+                    !should_include_creds
+                  ) {
+                    image.crossOrigin = "anonymous";
+                  }
+
                   image.src = fullUrlPath;
                 } else {
+                  if (
+                    require("sdk.feature")("epd_omit_cookies", false) &&
+                    !should_include_creds
+                  ) {
+                    return;
+                  }
+
                   var name = require("guid")();
                   var root = require("sdk.Content").appendHidden(
                     document.createElement("div")
@@ -16497,7 +16598,7 @@ try {
           );
           __d(
             "XFBML",
-            ["Assert", "Log", "ObservableMixin", "runOnce"],
+            ["Assert", "Log", "runOnce", "sdk.Observable"],
             function $module_XFBML(
               global,
               require,
@@ -16511,7 +16612,7 @@ try {
 
               var parseCount = 0;
 
-              var XFBML = new (require("ObservableMixin"))();
+              var observable = new (require("sdk.Observable")).Observable();
 
               function propStr(object, property) {
                 return ES(object[property] + "", "trim", true);
@@ -16595,8 +16696,10 @@ try {
                       pc,
                       tags
                     );
-                    callback();
-                    XFBML.inform("render", pc, tags);
+                    if (callback != null) {
+                      callback();
+                    }
+                    observable.inform("render", [pc, tags]);
                   }
                   require("Assert").isTrue(
                     count >= 0,
@@ -16609,7 +16712,10 @@ try {
                   "forEach",
                   true,
                   function forEach_$0(element) {
-                    if (!reparse && element.getAttribute("fb-xfbml-state")) {
+                    if (
+                      reparse !== true &&
+                      element.getAttribute("fb-xfbml-state")
+                    ) {
                       return;
                     }
                     if (element.nodeType !== 1) {
@@ -16640,7 +16746,7 @@ try {
 
                     var render = function render() {
                       if (element.getAttribute("fb-xfbml-state") == "parsed") {
-                        XFBML.subscribe("render.queue", render);
+                        observable.subscribe("render.queue", render);
                       } else {
                         element.setAttribute("fb-xfbml-state", "parsed");
                         renderer.process();
@@ -16651,7 +16757,7 @@ try {
                   }
                 );
 
-                XFBML.inform("parse", pc, tags);
+                observable.inform("parse", [pc, tags]);
 
                 var timeout = 30000;
                 window.setTimeout(function window_setTimeout_$0() {
@@ -16667,15 +16773,18 @@ try {
                 onrender();
               }
 
-              XFBML.subscribe("render", function XFBML_subscribe_$1() {
-                var q = XFBML.getSubscribers("render.queue");
-                XFBML.clearSubscribers("render.queue");
-                ES(q, "forEach", true, function q_forEach_$0(r) {
-                  r();
-                });
-              });
+              observable.subscribe(
+                "render",
+                function observable_subscribe_$1() {
+                  var q = observable.getSubscribers("render.queue");
+                  observable.clearSubscribers("render.queue");
+                  ES(q, "forEach", true, function q_forEach_$0(r) {
+                    r([]);
+                  });
+                }
+              );
 
-              ES("Object", "assign", false, XFBML, {
+              var XFBML = {
                 registerTag: function registerTag(info) {
                   var fqn = info.xmlns + ":" + info.localName;
 
@@ -16703,8 +16812,10 @@ try {
 
                 parseNew: function parseNew() {
                   _parse(document.body, function _parse_$1() {}, false);
-                }
-              });
+                },
+                subscribe: observable.subscribe,
+                unsubscribe: observable.unsubscribe
+              };
               var _default = XFBML;
               module.exports = _default;
             },
@@ -16728,8 +16839,6 @@ try {
               __DO_NOT_USE__module,
               __DO_NOT_USE__exports
             ) {
-              var sdkEvent;
-
               require("FB").provide("XFBML", {
                 parse: function parse(dom) {
                   if (
@@ -16749,42 +16858,48 @@ try {
                 }
               });
 
-              require("XFBML").subscribe(
-                "parse",
-                ES(
-                  (sdkEvent = require("sdk.Event")).fire,
-                  "bind",
-                  true,
-                  sdkEvent,
-                  "xfbml.parse"
-                )
-              );
-              require("XFBML").subscribe(
-                "render",
-                ES(sdkEvent.fire, "bind", true, sdkEvent, "xfbml.render")
-              );
-
-              sdkEvent.subscribe("init:post", function Event_subscribe_$1(
-                options
+              require("XFBML").subscribe("parse", function XFBML_subscribe_$1(
+                counts
               ) {
-                if (options.xfbml) {
-                  setTimeout(
-                    require("wrapFunction")(
-                      ES(
-                        require("sdk.domReady"),
-                        "bind",
-                        true,
-                        null,
-                        require("XFBML").parse
-                      ),
-                      "entry",
-                      "init:post:xfbml.parse"
-                    ),
-
-                    0
-                  );
-                }
+                return require("sdk.Event").fire(
+                  "xfbml.parse",
+                  counts[0],
+                  counts[1]
+                );
               });
+
+              require("XFBML").subscribe("render", function XFBML_subscribe_$1(
+                counts
+              ) {
+                return require("sdk.Event").fire(
+                  "xfbml.render",
+                  counts[0],
+                  counts[1]
+                );
+              });
+
+              require("sdk.Event").subscribe(
+                "init:post",
+                function Event_subscribe_$1(options) {
+                  if (options.xfbml) {
+                    setTimeout(
+                      require("wrapFunction")(
+                        ES(
+                          require("sdk.domReady"),
+                          "bind",
+                          true,
+                          null,
+                          require("XFBML").parse
+                        ),
+                        "entry",
+                        "init:post:xfbml.parse"
+                      ),
+
+                      0
+                    );
+                  }
+                }
+              );
 
               try {
                 if (document.namespaces && !document.namespaces.item.fb) {
@@ -21021,7 +21136,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1003658252","namespace":"FB","message":"' +
+        '","revision":"1003664176","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
