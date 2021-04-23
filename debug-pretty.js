@@ -1,4 +1,4 @@
-/*1619063953,,JIT Construction: v1003664707,en_US*/
+/*1619138972,,JIT Construction: v1003671182,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3815,7 +3815,7 @@ try {
           })(typeof global === "undefined" ? this : global);
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1003664707",
+            revision: "1003671182",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -8745,11 +8745,13 @@ try {
 
               var Miny = {
                 encode: function encode(s) {
+                  var _s$match;
                   if (/^$|[~\\]|__proto__/.test(s)) {
                     return s;
                   }
 
-                  var parts = s.match(/\w+|\W+/g);
+                  var parts =
+                    (_s$match = s.match(/\w+|\W+/g)) != null ? _s$match : [];
 
                   var i;
 
@@ -8760,7 +8762,7 @@ try {
 
                   var keys = ES("Object", "keys", false, dict);
                   keys.sort(function keys_sort_$0(a, b) {
-                    return dict[b] - dict[a];
+                    return parseInt(dict[b], 10) - parseInt(dict[a], 10);
                   });
 
                   for (i = 0; i < keys.length; i++) {
@@ -8780,8 +8782,8 @@ try {
                   return keys.join("~");
                 }
               };
-
-              module.exports = Miny;
+              var _default = Miny;
+              module.exports = _default;
             },
             null
           );
@@ -21136,7 +21138,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1003664707","namespace":"FB","message":"' +
+        '","revision":"1003671182","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
