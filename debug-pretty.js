@@ -1,4 +1,4 @@
-/*1619511066,,JIT Construction: v1003690455,en_US*/
+/*1619558359,,JIT Construction: v1003693311,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3815,7 +3815,7 @@ try {
           })(typeof global === "undefined" ? this : global);
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1003690455",
+            revision: "1003693311",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -3856,7 +3856,8 @@ try {
               force_popup_to_canvas_apps_with_id: [],
               force_popup_to_all_canvas_app: false,
               max_oauth_dialog_retries: { rate: 100, value: 10 },
-              plugin_tags_blacklist: []
+              plugin_tags_blacklist: [],
+              epd_endpoint_migration: { rate: 100 }
             }
           });
           __d("JSSDKCssConfig", [], {
@@ -7777,314 +7778,12 @@ try {
             null
           );
           __d(
-            "ChunkedRequest",
-            [
-              "Log",
-              "QueryString",
-              "RequestConstants",
-              "sdk.safelyParseResponse",
-              "wrapFunction"
-            ],
-            function $module_ChunkedRequest(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              exports.execute = execute;
-
-              var EMPTY_CHUNK_TEXT = "{}";
-              var ChunkParser = (function() {
-                function ChunkParser(delimiter) {
-                  if (delimiter === void 0) {
-                    delimiter = "\r\n";
-                  }
-                  this.offset = 0;
-                  this.delimiter = "\r\n";
-                  this.delimiter = delimiter;
-                }
-                var _proto = ChunkParser.prototype;
-                _proto.parse = function parse(text, final) {
-                  if (final === void 0) {
-                    final = false;
-                  }
-                  var subChunks = [];
-                  var chunk = text.substring(this.offset);
-                  var start = 0;
-                  var finish = ES(
-                    chunk,
-                    "indexOf",
-                    true,
-                    this.delimiter,
-                    start
-                  );
-
-                  if (finish === 0) {
-                    start = this.delimiter.length;
-
-                    finish = ES(chunk, "indexOf", true, this.delimiter, start);
-                  }
-
-                  while (finish > -1) {
-                    var subChunk = chunk.substring(start, finish);
-                    if (subChunk) {
-                      subChunks.push(subChunk);
-                    }
-                    start = finish + this.delimiter.length;
-                    finish = ES(chunk, "indexOf", true, this.delimiter, start);
-                  }
-                  this.offset += start;
-
-                  if (final && chunk && finish === -1) {
-                    var remaining = text.substring(this.offset);
-                    subChunks.push(remaining);
-                  }
-
-                  return subChunks;
-                };
-                return ChunkParser;
-              })();
-
-              function createChunkedRequest(method, url) {
-                if (!self.XMLHttpRequest) {
-                  return null;
-                }
-                var xhr = new XMLHttpRequest();
-                if (!("withCredentials" in xhr)) {
-                  return null;
-                }
-
-                xhr.open(method, url, true);
-                xhr.setRequestHeader(
-                  "Content-type",
-                  "application/x-www-form-urlencoded"
-                );
-
-                var chunkParser = new ChunkParser();
-                var wrapper = {
-                  send: function send(data) {
-                    xhr.send(data);
-                  }
-                };
-
-                var onchunk = require("wrapFunction")(
-                  function wrapFunction_$0(chunkText, done) {
-                    if (wrapper.onchunk) {
-                      var subChunks = chunkParser.parse(chunkText);
-                      ES(
-                        subChunks,
-                        "forEach",
-                        true,
-                        function subChunks_forEach_$0(subChunk) {
-                          return wrapper.onchunk(subChunk, done);
-                        }
-                      );
-                      if (done) {
-                        wrapper.onchunk(EMPTY_CHUNK_TEXT, done);
-                      }
-                    }
-                  },
-                  "entry",
-                  "XMLHttpRequest:onchunk"
-                );
-
-                var onerror = require("wrapFunction")(
-                  function wrapFunction_$0() {
-                    if (wrapper.onerror) {
-                      wrapper.onerror(xhr);
-                    }
-                  },
-                  "entry",
-                  "XMLHttpRequest:error"
-                );
-
-                xhr.onerror = onerror;
-
-                xhr.onreadystatechange = function() {
-                  if (xhr.readyState == 4) {
-                    if (xhr.status === 200) {
-                      onchunk(xhr.responseText, true);
-                    } else {
-                      onerror();
-                    }
-                  } else if (xhr.readyState == 3) {
-                    onchunk(xhr.responseText, false);
-                  }
-                };
-
-                return wrapper;
-              }
-
-              function execute(url, method, params, cb) {
-                if (
-                  ES(url, "includes", true, "/../") ||
-                  ES(url, "includes", true, "/..\\") ||
-                  ES(url, "includes", true, "\\../") ||
-                  ES(url, "includes", true, "\\..\\")
-                ) {
-                  require("Log").error(
-                    "ChunkedRequest.execute(): path traversal is not allowed."
-                  );
-                  return false;
-                }
-                params.suppress_http_code = 1;
-                var data = require("QueryString").encode(params);
-
-                if (method != "post") {
-                  url = require("QueryString").appendToUrl(url, data);
-                  data = "";
-                }
-
-                var request = createChunkedRequest(method, url);
-                if (!request) {
-                  return false;
-                }
-
-                request.onchunk = function(chunkText, done) {
-                  cb(require("sdk.safelyParseResponse")(chunkText), done);
-                };
-
-                request.onerror = function(xhr) {
-                  if (xhr.responseText) {
-                    cb(
-                      require("sdk.safelyParseResponse")(
-                        xhr.responseText,
-                        null,
-                        xhr.status
-                      )
-                    );
-                  } else {
-                    cb({
-                      error: babelHelpers["extends"](
-                        {},
-                        require("RequestConstants").PARSE_ERROR_TEMPLATE,
-                        {
-                          status: xhr.status
-                        }
-                      )
-                    });
-                  }
-                };
-                request.send(data);
-                return true;
-              }
-            },
-            null
-          );
-          __d(
-            "JSONPRequest",
-            ["DOMWrapper", "GlobalCallback", "Log", "QueryString"],
-            function $module_JSONPRequest(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              var MAX_QUERYSTRING_LENGTH = 2000;
-
-              var _ignoreMaxQuerystringLength = false;
-
-              function execute(url, method, params, cb) {
-                if (
-                  ES(url, "includes", true, "/../") ||
-                  ES(url, "includes", true, "/..\\") ||
-                  ES(url, "includes", true, "\\../") ||
-                  ES(url, "includes", true, "\\..\\")
-                ) {
-                  require("Log").error(
-                    "JSONPRequest.execute(): path traversal is not allowed."
-                  );
-                  return false;
-                }
-                var script = document.createElement("script");
-
-                var _callbackWrapper = function callbackWrapper(response) {
-                  _callbackWrapper = function callbackWrapper() {};
-                  require("GlobalCallback").remove(params.callback);
-                  cb(response);
-                  script.parentNode.removeChild(script);
-                };
-
-                params.callback = require("GlobalCallback").create(
-                  _callbackWrapper
-                );
-
-                if (!params.method) {
-                  params.method = method;
-                }
-
-                url = require("QueryString").appendToUrl(url, params);
-                if (
-                  !_ignoreMaxQuerystringLength &&
-                  url.length > MAX_QUERYSTRING_LENGTH
-                ) {
-                  require("GlobalCallback").remove(params.callback);
-                  return false;
-                }
-
-                script.onerror = function() {
-                  _callbackWrapper({
-                    error: {
-                      type: "http",
-                      message: "unknown error"
-                    }
-                  });
-                };
-
-                var ensureCallbackCalled = function ensureCallbackCalled() {
-                  setTimeout(function setTimeout_$0() {
-                    _callbackWrapper({
-                      error: {
-                        type: "http",
-                        message: "unknown error"
-                      }
-                    });
-                  }, 0);
-                };
-                if (script.addEventListener) {
-                  script.addEventListener("load", ensureCallbackCalled, false);
-                } else {
-                  script.onreadystatechange = function() {
-                    if (/loaded|complete/.test(this.readyState)) {
-                      ensureCallbackCalled();
-                    }
-                  };
-                }
-
-                script.src = url;
-                require("DOMWrapper")
-                  .getRoot()
-                  .appendChild(script);
-                return true;
-              }
-
-              function ignoreMaxQuerystringLength() {
-                _ignoreMaxQuerystringLength = true;
-              }
-
-              var JSONPRequest = {
-                execute: execute,
-                ignoreMaxQuerystringLength: ignoreMaxQuerystringLength,
-                MAX_QUERYSTRING_LENGTH: MAX_QUERYSTRING_LENGTH
-              };
-
-              module.exports = JSONPRequest;
-            },
-            null
-          );
-          __d(
             "ApiClient",
             [
               "ApiBatcher",
               "ApiClientUtils",
               "Assert",
               "CORSRequest",
-              "ChunkedRequest",
-              "JSONPRequest",
               "Log",
               "ObservableMixin",
               "QueryString",
@@ -8104,8 +7803,7 @@ try {
               var defaultParams;
               var keptQueryParams = [];
 
-              var MAX_QUERYSTRING_LENGTH = require("JSONPRequest")
-                .MAX_QUERYSTRING_LENGTH;
+              var MAX_QUERYSTRING_LENGTH = 2000;
 
               var READONLYCALLS = {
                 fql_query: true,
@@ -8116,7 +7814,7 @@ try {
                 users_getinfo: true
               };
 
-              var defaultTransports = ["cors", "jsonp"];
+              var defaultTransports = ["cors"];
 
               var currentlyExecutingRequests = 0;
               var requestQueue = [];
@@ -8152,10 +7850,7 @@ try {
 
                 params = require("flattenObject")(params);
                 var availableTransports = {
-                  jsonp: require("JSONPRequest"),
-                  cors: require("CORSRequest"),
-
-                  chunked: require("ChunkedRequest")
+                  cors: require("CORSRequest")
                 };
 
                 var getParams = {};
@@ -17107,210 +16802,6 @@ try {
             null
           );
           __d(
-            "UserAgent_DEPRECATED",
-            [],
-            function $module_UserAgent_DEPRECATED(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              exports.ie = ie;
-              exports.ieCompatibilityMode = ieCompatibilityMode;
-              exports.ie64 = ie64;
-              exports.firefox = firefox;
-              exports.opera = opera;
-              exports.webkit = webkit;
-              exports.safari = safari;
-              exports.chrome = chrome;
-              exports.windows = windows;
-              exports.osx = osx;
-              exports.linux = linux;
-              exports.iphone = iphone;
-              exports.mobile = mobile;
-              exports.nativeApp = nativeApp;
-              exports.android = android;
-              exports.ipad = ipad;
-
-              var _populated = false;
-
-              var _ie, _firefox, _opera, _webkit, _chrome;
-
-              var _ie_real_version;
-
-              var _osx, _windows, _linux, _android;
-
-              var _win64;
-
-              var _iphone, _ipad, _native, _mLite;
-
-              var _mobile;
-
-              function _populate() {
-                if (_populated) {
-                  return;
-                }
-
-                _populated = true;
-
-                var uas = navigator.userAgent;
-                var agent = /(?:MSIE.(\d+\.\d+))|(?:(?:Firefox|GranParadiso|Iceweasel).(\d+\.\d+))|(?:Opera(?:.+Version.|.)(\d+\.\d+))|(?:AppleWebKit.(\d+(?:\.\d+)?))|(?:Trident\/\d+\.\d+.*rv:(\d+\.\d+))/.exec(
-                  uas
-                );
-
-                var os = /(Mac OS X)|(Windows)|(Linux)/.exec(uas);
-
-                _iphone = /\b(iPhone|iP[ao]d)/.exec(uas);
-                _ipad = /\b(iP[ao]d)/.exec(uas);
-                _android = /Android/i.exec(uas);
-                _native = /FBAN\/\w+;/i.exec(uas);
-                _mLite = /FBAN\/mLite;/i.exec(uas);
-                _mobile = /Mobile/i.exec(uas);
-
-                _win64 = !!/Win64/.exec(uas);
-
-                if (agent) {
-                  _ie = agent[1]
-                    ? parseFloat(agent[1])
-                    : agent[5]
-                    ? parseFloat(agent[5])
-                    : NaN;
-
-                  if (_ie && document && document.documentMode) {
-                    _ie = document.documentMode;
-                  }
-
-                  var trident = /(?:Trident\/(\d+.\d+))/.exec(uas);
-                  _ie_real_version = trident ? parseFloat(trident[1]) + 4 : _ie;
-
-                  _firefox = agent[2] ? parseFloat(agent[2]) : NaN;
-                  _opera = agent[3] ? parseFloat(agent[3]) : NaN;
-                  _webkit = agent[4] ? parseFloat(agent[4]) : NaN;
-                  if (_webkit) {
-                    agent = /(?:Chrome\/(\d+\.\d+))/.exec(uas);
-                    _chrome = agent && agent[1] ? parseFloat(agent[1]) : NaN;
-                  } else {
-                    _chrome = NaN;
-                  }
-                } else {
-                  _ie = _firefox = _opera = _chrome = _webkit = NaN;
-                }
-
-                if (os) {
-                  if (os[1]) {
-                    var ver = /(?:Mac OS X (\d+(?:[._]\d+)?))/.exec(uas);
-
-                    _osx = ver ? parseFloat(ver[1].replace("_", ".")) : true;
-                  } else {
-                    _osx = false;
-                  }
-                  _windows = !!os[2];
-                  _linux = !!os[3];
-                } else {
-                  _osx = _windows = _linux = false;
-                }
-              }
-
-              function ie() {
-                return _populate() || _ie;
-              }
-
-              function ieCompatibilityMode() {
-                return _populate() || _ie_real_version > _ie;
-              }
-
-              function ie64() {
-                return ie() && _win64;
-              }
-
-              function firefox() {
-                return _populate() || _firefox;
-              }
-
-              function opera() {
-                return _populate() || _opera;
-              }
-
-              function webkit() {
-                return _populate() || _webkit;
-              }
-
-              function safari() {
-                return webkit();
-              }
-
-              function chrome() {
-                return _populate() || _chrome;
-              }
-
-              function windows() {
-                return _populate() || _windows;
-              }
-
-              function osx() {
-                return _populate() || _osx;
-              }
-
-              function linux() {
-                return _populate() || _linux;
-              }
-
-              function iphone() {
-                return _populate() || _iphone;
-              }
-
-              function mobile() {
-                return _populate() || _iphone || _ipad || _android || _mobile;
-              }
-
-              function nativeApp() {
-                return _populate() || _mLite != null ? null : _native;
-              }
-
-              function android() {
-                return _populate() || _android;
-              }
-
-              function ipad() {
-                return _populate() || _ipad;
-              }
-            },
-            null
-          );
-          __d(
-            "hasNamePropertyBug",
-            ["UserAgent_DEPRECATED", "guid"],
-            function $module_hasNamePropertyBug(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              module.exports = hasNamePropertyBug;
-
-              var hasBug = require("UserAgent_DEPRECATED").ie()
-                ? undefined
-                : false;
-
-              function test() {
-                var form = document.createElement("form");
-                var input = form.appendChild(document.createElement("input"));
-                input.name = require("guid")();
-                hasBug = input !== form.elements[input.name];
-                return hasBug;
-              }
-
-              function hasNamePropertyBug() {
-                return hasBug === undefined ? test() : hasBug;
-              }
-            },
-            null
-          );
-          __d(
             "isNumberLike",
             [],
             function $module_isNumberLike(
@@ -17331,13 +16822,7 @@ try {
           );
           __d(
             "sdk.createIframe",
-            [
-              "DOMEventListener",
-              "getBlankIframeSrc",
-              "guid",
-              "hasNamePropertyBug",
-              "isNumberLike"
-            ],
+            ["DOMEventListener", "getBlankIframeSrc", "guid", "isNumberLike"],
             function $module_sdk_createIframe(
               global,
               require,
@@ -17358,14 +16843,8 @@ try {
                 var onLoad = opts.onload;
                 var onError = opts.onerror;
 
-                if (require("hasNamePropertyBug")()) {
-                  frame = document.createElement(
-                    '<iframe name="' + name + '"/>'
-                  );
-                } else {
-                  frame = document.createElement("iframe");
-                  frame.name = name;
-                }
+                frame = document.createElement("iframe");
+                frame.name = name;
 
                 delete opts.style;
                 delete opts.name;
@@ -20053,172 +19532,6 @@ try {
             null
           );
           __d(
-            "UnicodeUtils",
-            ["invariant"],
-            function $module_UnicodeUtils(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports,
-              invariant
-            ) {
-              "use strict";
-              exports.isCodeUnitInSurrogateRange = isCodeUnitInSurrogateRange;
-              exports.isSurrogatePair = isSurrogatePair;
-              exports.hasSurrogateUnit = hasSurrogateUnit;
-              exports.getUTF16Length = getUTF16Length;
-              exports.strlen = strlen;
-              exports.charAt = charAt;
-              exports.substr = substr;
-              exports.substring = substring;
-              exports.getCodePoints = getCodePoints;
-
-              var SURROGATE_HIGH_START = 55296;
-              var SURROGATE_HIGH_END = 56319;
-              var SURROGATE_LOW_START = 56320;
-              var SURROGATE_LOW_END = 57343;
-              var SURROGATE_UNITS_REGEX = /[\uD800-\uDFFF]/;
-
-              function isCodeUnitInSurrogateRange(codeUnit) {
-                return (
-                  SURROGATE_HIGH_START <= codeUnit &&
-                  codeUnit <= SURROGATE_LOW_END
-                );
-              }
-
-              function isSurrogatePair(str, index) {
-                (0 <= index && index < str.length) ||
-                  invariant(
-                    0,
-                    "isSurrogatePair: Invalid index %s for string length %s.",
-                    index,
-                    str.length
-                  );
-
-                if (index + 1 === str.length) {
-                  return false;
-                }
-                var first = str.charCodeAt(index);
-                var second = str.charCodeAt(index + 1);
-                return (
-                  SURROGATE_HIGH_START <= first &&
-                  first <= SURROGATE_HIGH_END &&
-                  SURROGATE_LOW_START <= second &&
-                  second <= SURROGATE_LOW_END
-                );
-              }
-
-              function hasSurrogateUnit(str) {
-                return SURROGATE_UNITS_REGEX.test(str);
-              }
-
-              function getUTF16Length(str, pos) {
-                return 1 + isCodeUnitInSurrogateRange(str.charCodeAt(pos));
-              }
-
-              function strlen(str) {
-                if (!hasSurrogateUnit(str)) {
-                  return str.length;
-                }
-
-                var len = 0;
-                for (
-                  var pos = 0;
-                  pos < str.length;
-                  pos += getUTF16Length(str, pos)
-                ) {
-                  len++;
-                }
-                return len;
-              }
-
-              function charAt(str, index) {
-                return substring(str, index, index + 1);
-              }
-
-              function substr(str, start, length) {
-                var startInternal = start || 0;
-                var lengthInternal =
-                  length === undefined ? Infinity : length || 0;
-
-                if (!hasSurrogateUnit(str)) {
-                  return str.substr(startInternal, lengthInternal);
-                }
-
-                var size = str.length;
-                if (size <= 0 || startInternal > size || lengthInternal <= 0) {
-                  return "";
-                }
-
-                var posA = 0;
-                if (startInternal > 0) {
-                  for (; startInternal > 0 && posA < size; startInternal--) {
-                    posA += getUTF16Length(str, posA);
-                  }
-                  if (posA >= size) {
-                    return "";
-                  }
-                } else if (start < 0) {
-                  for (
-                    posA = size;
-                    startInternal < 0 && 0 < posA;
-                    startInternal++
-                  ) {
-                    posA -= getUTF16Length(str, posA - 1);
-                  }
-                  if (posA < 0) {
-                    posA = 0;
-                  }
-                }
-
-                var posB = size;
-                if (lengthInternal < size) {
-                  for (
-                    posB = posA;
-                    lengthInternal > 0 && posB < size;
-                    lengthInternal--
-                  ) {
-                    posB += getUTF16Length(str, posB);
-                  }
-                }
-
-                return str.substring(posA, posB);
-              }
-
-              function substring(str, start, end) {
-                var startInternal = start || 0;
-                var endInternal = end === undefined ? Infinity : end || 0;
-
-                if (startInternal < 0) {
-                  startInternal = 0;
-                }
-                if (endInternal < 0) {
-                  endInternal = 0;
-                }
-
-                var length = Math.abs(endInternal - startInternal);
-                startInternal =
-                  startInternal < endInternal ? startInternal : endInternal;
-                return substr(str, startInternal, length);
-              }
-
-              function getCodePoints(str) {
-                var codePoints = [];
-                for (
-                  var pos = 0;
-                  pos < str.length;
-                  pos += getUTF16Length(str, pos)
-                ) {
-                  codePoints.push(str.codePointAt(pos));
-                }
-                return codePoints;
-              }
-            },
-            null
-          );
-          __d(
             "isNode",
             [],
             function $module_isNode(
@@ -20312,7 +19625,6 @@ try {
             [
               "DOMEventListener",
               "IframePlugin",
-              "UnicodeUtils",
               "containsNode",
               "sdk.DOM",
               "sdk.UA",
@@ -20328,7 +19640,6 @@ try {
               exports
             ) {
               "use strict";
-              var c_UnicodeUtils;
 
               var QUOTABLE_CLASS_NAME = "fb-quotable";
               var PLUGIN_WIDTH = 155;
@@ -20395,20 +19706,10 @@ try {
                 var selectionLimit = Number(
                   require("sdk.feature")("sharequotelimit", 500)
                 );
-                if (
-                  (
-                    c_UnicodeUtils || (c_UnicodeUtils = require("UnicodeUtils"))
-                  ).strlen(selection) > selectionLimit
-                ) {
-                  selection =
-                    (
-                      c_UnicodeUtils ||
-                      (c_UnicodeUtils = require("UnicodeUtils"))
-                    ).substr(selection, 0, selectionLimit - 3) + "...";
-                } else {
-                  selection = (
-                    c_UnicodeUtils || (c_UnicodeUtils = require("UnicodeUtils"))
-                  ).substr(selection, 0, selectionLimit);
+                if ([].concat(selection).length > selectionLimit) {
+                  var truncate = [].concat(selection);
+                  truncate.length = selectionLimit - 3;
+                  selection = truncate.join("") + "...";
                 }
 
                 if (!forceShow && xfbmlElement) {
@@ -21148,7 +20449,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1003690455","namespace":"FB","message":"' +
+        '","revision":"1003693311","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
