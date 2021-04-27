@@ -1,4 +1,4 @@
-/*1619222955,,JIT Construction: v1003679203,en_US*/
+/*1619511066,,JIT Construction: v1003690455,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3815,7 +3815,7 @@ try {
           })(typeof global === "undefined" ? this : global);
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1003679203",
+            revision: "1003690455",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -5882,7 +5882,7 @@ try {
                 if (require("sdk.feature")("epd_endpoint_migration", false)) {
                   url =
                     require("UrlMap").resolve("www") +
-                    "/platform/scribe_endpoint.php";
+                    "/platform/scribe_endpoint.php/";
                   if (
                     require("sdk.feature")("epd_omit_cookies", false) &&
                     !should_include_creds
@@ -8950,6 +8950,9 @@ try {
                   should_include_creds = false;
                 }
                 var clientID = require("sdk.Runtime").getClientID();
+                var isCanvas = require("sdk.Runtime").isEnvironment(
+                  require("sdk.Runtime").ENVIRONMENTS.CANVAS
+                );
 
                 if (
                   clientID &&
@@ -8966,11 +8969,19 @@ try {
                   require("guid")() +
                   "/";
                 if (require("sdk.feature")("epd_endpoint_migration", false)) {
-                  url =
-                    require("UrlMap").resolve("www") +
-                    "/platform/impression.php/" +
-                    require("guid")() +
-                    "/";
+                  if (isCanvas) {
+                    url =
+                      require("UrlMap").resolve("www") +
+                      "/platform/canvas_impression.php/" +
+                      require("guid")() +
+                      "/";
+                  } else {
+                    url =
+                      require("UrlMap").resolve("www") +
+                      "/platform/impression.php/" +
+                      require("guid")() +
+                      "/";
+                  }
                 }
 
                 var fullUrlPath = require("QueryString").appendToUrl(
@@ -8991,9 +9002,6 @@ try {
                   }
                 }
 
-                var isCanvas = require("sdk.Runtime").isEnvironment(
-                  require("sdk.Runtime").ENVIRONMENTS.CANVAS
-                );
                 if (window.fetch) {
                   makeRequest(
                     url,
@@ -21140,7 +21148,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1003679203","namespace":"FB","message":"' +
+        '","revision":"1003690455","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
