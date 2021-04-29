@@ -1,4 +1,4 @@
-/*1619636358,,JIT Construction: v1003700506,en_US*/
+/*1619678357,,JIT Construction: v1003705778,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -395,6 +395,49 @@ try {
               };
             };
           })(this);
+          /**
+           * Copyright 2004-present Facebook. All Rights Reserved.
+           *
+           * @format
+           */ __d(
+            "ES5FunctionPrototype",
+            [],
+            function $module_ES5FunctionPrototype(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              var ES5FunctionPrototype = {};
+
+              ES5FunctionPrototype.bind = function(context) {
+                if (typeof this !== "function") {
+                  throw new TypeError("Bind must be called on a function");
+                }
+                var target = this;
+                var appliedArguments = Array.prototype.slice.call(arguments, 1);
+                function bound() {
+                  return target.apply(
+                    context,
+                    appliedArguments.concat(
+                      Array.prototype.slice.call(arguments)
+                    )
+                  );
+                }
+                bound.displayName =
+                  "bound:" + (target.displayName || target.name || "(?)");
+                bound.toString = function toString() {
+                  return "bound: " + target;
+                };
+                return bound;
+              };
+
+              module.exports = ES5FunctionPrototype;
+            },
+            null
+          );
           /**
            * Copyright 2004-present Facebook. All Rights Reserved.
            *
@@ -2544,6 +2587,7 @@ try {
            */ __d(
             "ES",
             [
+              "ES5FunctionPrototype",
               "ES5StringPrototype",
               "ES6Array",
               "ES6ArrayPrototype",
@@ -2572,6 +2616,7 @@ try {
               };
 
               var es5Polyfills = {
+                "Function.prototype": require("ES5FunctionPrototype"),
                 "String.prototype": require("ES5StringPrototype")
               };
 
@@ -2702,49 +2747,6 @@ try {
               _c = ES;
               var _c;
               $RefreshReg$(_c, "ES");
-            },
-            null
-          );
-          /**
-           * Copyright 2004-present Facebook. All Rights Reserved.
-           *
-           * @format
-           */ __d(
-            "ES5FunctionPrototype",
-            [],
-            function $module_ES5FunctionPrototype(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              var ES5FunctionPrototype = {};
-
-              ES5FunctionPrototype.bind = function(context) {
-                if (typeof this !== "function") {
-                  throw new TypeError("Bind must be called on a function");
-                }
-                var target = this;
-                var appliedArguments = Array.prototype.slice.call(arguments, 1);
-                function bound() {
-                  return target.apply(
-                    context,
-                    appliedArguments.concat(
-                      Array.prototype.slice.call(arguments)
-                    )
-                  );
-                }
-                bound.displayName =
-                  "bound:" + (target.displayName || target.name || "(?)");
-                bound.toString = function toString() {
-                  return "bound: " + target;
-                };
-                return bound;
-              };
-
-              module.exports = ES5FunctionPrototype;
             },
             null
           );
@@ -3380,7 +3382,12 @@ try {
                     throw new TypeError("Callback must be callable.");
                   }
 
-                  var boundCallback = callback.bind(thisArg || undefined);
+                  var boundCallback = ES(
+                    callback,
+                    "bind",
+                    true,
+                    thisArg || undefined
+                  );
                   var mapData = this._mapData;
 
                   for (var i = 0; i < mapData.length; i++) {
@@ -3737,7 +3744,7 @@ try {
           })(typeof global === "undefined" ? this : global);
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1003700506",
+            revision: "1003705778",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -4018,16 +4025,16 @@ try {
                 level = l;
               }
 
-              var debug = log.bind(null, "debug", Level.DEBUG);
+              var debug = ES(log, "bind", true, null, "debug", Level.DEBUG);
               exports.debug = debug;
 
-              var info = log.bind(null, "info", Level.INFO);
+              var info = ES(log, "bind", true, null, "info", Level.INFO);
               exports.info = info;
 
-              var warn = log.bind(null, "warn", Level.WARNING);
+              var warn = ES(log, "bind", true, null, "warn", Level.WARNING);
               exports.warn = warn;
 
-              var error = log.bind(null, "error", Level.ERROR);
+              var error = ES(log, "bind", true, null, "error", Level.ERROR);
               exports.error = error;
             },
             null
@@ -5049,7 +5056,13 @@ try {
                 "String",
                 "Undefined"
               ].forEach(function forEach_$0(type) {
-                define(type, assertType.bind(null, type.toLowerCase()));
+                define(type, ES(
+                  assertType,
+                  "bind",
+                  true,
+                  null,
+                  type.toLowerCase()
+                ));
               });
               var _default = Assert;
               module.exports = _default;
@@ -7814,7 +7827,10 @@ try {
                   url,
                   method == "get" ? "get" : "post",
                   params,
-                  inspect.bind(
+                  ES(
+                    inspect,
+                    "bind",
+                    true,
                     null,
                     callback,
                     uri.getPath(),
@@ -7854,7 +7870,10 @@ try {
                 var domain = method in READONLYCALLS ? "api_read" : "api";
                 var url = require("UrlMap").resolve(domain) + "/restserver.php";
                 var requestIndex = requestCounter++;
-                var inspector = inspect.bind(
+                var inspector = ES(
+                  inspect,
+                  "bind",
+                  true,
                   null,
                   cb,
                   "/restserver.php",
@@ -8663,11 +8682,21 @@ try {
               var Observable = (function() {
                 function Observable() {
                   this.$Observable_observableEvents = {};
-                  this.getSubscribers = this.getSubscribers.bind(this);
-                  this.clearSubscribers = this.clearSubscribers.bind(this);
-                  this.subscribe = this.subscribe.bind(this);
-                  this.unsubscribe = this.unsubscribe.bind(this);
-                  this.inform = this.inform.bind(this);
+                  this.getSubscribers = ES(
+                    this.getSubscribers,
+                    "bind",
+                    true,
+                    this
+                  );
+                  this.clearSubscribers = ES(
+                    this.clearSubscribers,
+                    "bind",
+                    true,
+                    this
+                  );
+                  this.subscribe = ES(this.subscribe, "bind", true, this);
+                  this.unsubscribe = ES(this.unsubscribe, "bind", true, this);
+                  this.inform = ES(this.inform, "bind", true, this);
                 }
                 var _proto = Observable.prototype;
                 _proto.getSubscribers = function getSubscribers(toWhat) {
@@ -10231,8 +10260,8 @@ try {
                     return;
                   }
 
-                  rpc.params.push(send.bind(null, "result"));
-                  rpc.params.push(send.bind(null, "error"));
+                  rpc.params.push(ES(send, "bind", true, null, "result"));
+                  rpc.params.push(ES(send, "bind", true, null, "error"));
 
                   try {
                     var returnValue = method.apply(context || null, rpc.params);
@@ -10401,7 +10430,7 @@ try {
               var RPC = {
                 local: jsonrpc.local,
                 remote: jsonrpc.remote,
-                stub: jsonrpc.stub.bind(jsonrpc),
+                stub: ES(jsonrpc.stub, "bind", true, jsonrpc),
                 setInQueue: function setInQueue(queue) {
                   require("Assert").isInstanceOf(require("Queue"), queue);
 
@@ -11713,7 +11742,7 @@ try {
               exports.local = local;
               var remote = jsonrpc.remote;
               exports.remote = remote;
-              var stub = jsonrpc.stub.bind(jsonrpc);
+              var stub = ES(jsonrpc.stub, "bind", true, jsonrpc);
               exports.stub = stub;
               function supportsDialog(method) {
                 return (
@@ -13868,23 +13897,32 @@ try {
 
               (sdkAuth = require("sdk.Auth")).subscribe(
                 "logout",
-                (sdkEvent = require("sdk.Event")).fire.bind(
+                ES(
+                  (sdkEvent = require("sdk.Event")).fire,
+                  "bind",
+                  true,
                   sdkEvent,
                   "auth.logout"
                 )
               );
               sdkAuth.subscribe(
                 "login",
-                sdkEvent.fire.bind(sdkEvent, "auth.login")
+                ES(sdkEvent.fire, "bind", true, sdkEvent, "auth.login")
               );
               sdkAuth.subscribe(
                 "authresponse.change",
-                sdkEvent.fire.bind(sdkEvent, "auth.authResponseChange")
+                ES(
+                  sdkEvent.fire,
+                  "bind",
+                  true,
+                  sdkEvent,
+                  "auth.authResponseChange"
+                )
               );
 
               sdkAuth.subscribe(
                 "status.change",
-                sdkEvent.fire.bind(sdkEvent, "auth.statusChange")
+                ES(sdkEvent.fire, "bind", true, sdkEvent, "auth.statusChange")
               );
 
               sdkEvent.subscribe("init:post", function Event_subscribe_$1(
@@ -14392,7 +14430,10 @@ try {
                 }
               });
 
-              require("sdk.RPC").local.fireEvent = require("sdk.Event").fire.bind(
+              require("sdk.RPC").local.fireEvent = ES(
+                require("sdk.Event").fire,
+                "bind",
+                true,
                 require("sdk.Event")
               );
 
@@ -14728,11 +14769,14 @@ try {
                   return require("sdk.Event").subscribe(name, cb);
                 },
 
-                unsubscribe: require("sdk.Event").unsubscribe.bind(
+                unsubscribe: ES(
+                  require("sdk.Event").unsubscribe,
+                  "bind",
+                  true,
                   require("sdk.Event")
                 ),
-                clear: warn.bind(null, "clear"),
-                fire: warn.bind(null, "fire")
+                clear: ES(warn, "bind", true, null, "clear"),
+                fire: ES(warn, "bind", true, null, "fire")
               });
             },
             3
@@ -16318,7 +16362,10 @@ try {
                   if (options.xfbml) {
                     setTimeout(
                       require("wrapFunction")(
-                        require("sdk.domReady").bind(
+                        ES(
+                          require("sdk.domReady"),
+                          "bind",
+                          true,
                           null,
                           require("XFBML").parse
                         ),
@@ -16867,7 +16914,7 @@ try {
                       function subscribe_$1() {
                         require("sdk.Auth").removeLogoutState();
                         require("sdk.Auth").getLoginStatus(
-                          _this.inform.bind(_this, "login.status"),
+                          ES(_this.inform, "bind", true, _this, "login.status"),
                           true
                         );
                       }
@@ -19731,7 +19778,7 @@ try {
                     name: "overlay_" + this._iframeOptions.name,
                     root: created.contentRoot,
                     tabindex: -1,
-                    onload: onloadFunc.bind(this)
+                    onload: ES(onloadFunc, "bind", true, this)
                   });
 
                   require("sdk.DOM").addCss(
@@ -20119,7 +20166,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1003700506","namespace":"FB","message":"' +
+        '","revision":"1003705778","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
