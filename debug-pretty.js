@@ -1,4 +1,4 @@
-/*1619678357,,JIT Construction: v1003705778,en_US*/
+/*1619750360,,JIT Construction: v1003712097,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3744,7 +3744,7 @@ try {
           })(typeof global === "undefined" ? this : global);
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1003705778",
+            revision: "1003712097",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -10779,15 +10779,37 @@ try {
               module,
               exports
             ) {
-              var fbt = {
-                _: function _(table) {
-                  if (__DEV__) {
-                    if (arguments.length > 1) {
-                      throw new Error("You are not using a simple string");
-                    }
+              var fbt = function fbt() {};
+
+              fbt._ = function(table) {
+                if (__DEV__) {
+                  if (arguments.length > 1) {
+                    var e = new Error("You are not using a simple string");
+                    e.stack;
+                    throw e;
                   }
-                  return typeof table === "string" ? table : table[0];
+                  if (Array.isArray(table)) {
+                    var _e = Error(
+                      "Translation table type [PatternString, PatternHash] not supported: " +
+                        table.toString()
+                    );
+
+                    _e.stack;
+                    throw _e;
+                  }
                 }
+                var result = typeof table === "string" ? table : table[0];
+                if (result == null) {
+                  if (
+                    typeof table === "object" &&
+                    table !== null &&
+                    !Array.isArray(table) &&
+                    "*" in table
+                  ) {
+                    result = table["*"];
+                  }
+                }
+                return result;
               };
               var _default = fbt;
               module.exports = _default;
@@ -20166,7 +20188,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1003705778","namespace":"FB","message":"' +
+        '","revision":"1003712097","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
