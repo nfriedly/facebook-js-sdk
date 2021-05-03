@@ -1,4 +1,4 @@
-/*1619798366,,JIT Construction: v1003715197,en_US*/
+/*1620083968,,JIT Construction: v1003725516,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3744,7 +3744,7 @@ try {
           })(typeof global === "undefined" ? this : global);
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1003715197",
+            revision: "1003725516",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -3786,7 +3786,8 @@ try {
               force_popup_to_all_canvas_app: false,
               max_oauth_dialog_retries: { rate: 100, value: 10 },
               plugin_tags_blacklist: [],
-              epd_endpoint_migration: { rate: 100 }
+              epd_endpoint_migration: { rate: 100 },
+              epd_omit_cookies: { rate: 10 }
             }
           });
           __d("JSSDKCssConfig", [], {
@@ -4553,15 +4554,11 @@ try {
                 var style = document.createElement("style");
                 style.type = "text/css";
                 style.textContent = styles;
-                style.setAttribute(
-                  "data-fbcssmodules",
-                  names
-                    .reduce(function names_reduce_$0(a, cv) {
-                      return a + cv + " ";
-                    })
-                    .trim()
-                );
-
+                var attrVal = "";
+                names.forEach(function names_forEach_$0(v) {
+                  return (attrVal += v + " ");
+                });
+                style.setAttribute("data-fbcssmodules", attrVal.trim());
                 if (dom == null || dom === document) {
                   document.getElementsByTagName("head")[0].appendChild(style);
                 } else {
@@ -5020,9 +5017,8 @@ try {
               function define(type, test) {
                 Assert["is" + type] = test;
                 Assert["maybe" + type] = function(expression, message) {
-                  var _expression;
-                  return (_expression = expression) != null
-                    ? _expression
+                  return expression == null
+                    ? expression
                     : test(expression, message);
                 };
               }
@@ -9110,6 +9106,9 @@ try {
                   (authResponse && authResponse.accessToken) || null
                 );
                 require("sdk.Runtime").setUserID(userID);
+                require("sdk.Runtime").setGraphDomain(
+                  (authResponse && authResponse.graphDomain) || ""
+                );
 
                 currentAuthResponse = authResponse;
 
@@ -20188,7 +20187,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1003715197","namespace":"FB","message":"' +
+        '","revision":"1003725516","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
