@@ -1,4 +1,4 @@
-/*1620104352,,JIT Construction: v1003727468,en_US*/
+/*1620335410,,JIT Construction: v1003748061,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3744,7 +3744,7 @@ try {
           })(typeof global === "undefined" ? this : global);
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1003727468",
+            revision: "1003748061",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -3787,7 +3787,7 @@ try {
               max_oauth_dialog_retries: { rate: 100, value: 10 },
               plugin_tags_blacklist: [],
               epd_endpoint_migration: { rate: 100 },
-              epd_omit_cookies: { rate: 10 }
+              epd_omit_cookies: { rate: 100 }
             }
           });
           __d("JSSDKCssConfig", [], {
@@ -13945,6 +13945,14 @@ try {
                 "status.change",
                 ES(sdkEvent.fire, "bind", true, sdkEvent, "auth.statusChange")
               );
+              sdkAuth.subscribe(
+                "loginDenied",
+                ES(sdkEvent.fire, "bind", true, sdkEvent, "auth.denied")
+              );
+              sdkAuth.subscribe(
+                "loginError",
+                ES(sdkEvent.fire, "bind", true, sdkEvent, "auth.error")
+              );
 
               sdkEvent.subscribe("init:post", function Event_subscribe_$1(
                 options
@@ -20187,7 +20195,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1003727468","namespace":"FB","message":"' +
+        '","revision":"1003748061","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
