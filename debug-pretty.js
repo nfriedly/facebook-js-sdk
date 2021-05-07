@@ -1,4 +1,4 @@
-/*1620335410,,JIT Construction: v1003748061,en_US*/
+/*1620364157,,JIT Construction: v1003751847,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3744,7 +3744,7 @@ try {
           })(typeof global === "undefined" ? this : global);
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1003748061",
+            revision: "1003751847",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -4484,6 +4484,7 @@ try {
                   var _styleSheetList$i$own;
                   if (
                     styleSheetList[i].ownerNode instanceof HTMLElement &&
+                    styleSheetList[i].ownerNode.dataset != null &&
                     ((_styleSheetList$i$own =
                       styleSheetList[i].ownerNode.dataset.fbcssmodules) == null
                       ? void 0
@@ -16692,7 +16693,7 @@ try {
                   frame.height = opts_arg.height + "px";
                 }
 
-                if (opts.testid) {
+                if (opts.testid && frame.dataset != null) {
                   frame.dataset.testid = opts.testid;
                   delete opts.testid;
                 }
@@ -20183,9 +20184,11 @@ try {
       }.call(global));
     })(window.inDapIF ? parent.window : window, window);
 } catch (e) {
-  new Image().src =
-    "https://www.facebook.com/" +
-    "common/scribe_endpoint.php?c=jssdk_error&m=" +
+  var i = new Image();
+  i.crossOrigin = "anonymous";
+  i.dataset.testid = "fbSDKErrorReport";
+  i.src =
+    "https://www.facebook.com/platform/scribe_endpoint.php/?c=jssdk_error&m=" +
     encodeURIComponent(
       '{"error":"LOAD", "extra": {"name":"' +
         e.name +
@@ -20195,8 +20198,9 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1003748061","namespace":"FB","message":"' +
+        '","revision":"1003751847","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
+  document.body.appendChild(i);
 }
