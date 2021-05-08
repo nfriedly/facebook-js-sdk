@@ -1,4 +1,4 @@
-/*1620364157,,JIT Construction: v1003751847,en_US*/
+/*1620434968,,JIT Construction: v1003757376,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3744,7 +3744,7 @@ try {
           })(typeof global === "undefined" ? this : global);
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1003751847",
+            revision: "1003757376",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -11807,9 +11807,7 @@ try {
                   if (this.nativeReady) {
                     func();
                   } else {
-                    var nativeReadyCallback = function nativeReadyCallback(
-                      evt
-                    ) {
+                    var nativeReadyCallback = function nativeReadyCallback() {
                       window.removeEventListener(
                         NATIVE_READY_EVENT,
                         nativeReadyCallback
@@ -11824,8 +11822,8 @@ try {
                   }
                 }
               };
-
-              module.exports = Native;
+              var _default = Native;
+              module.exports = _default;
             },
             null
           );
@@ -16418,6 +16416,172 @@ try {
             3
           );
           __d(
+            "$InternalEnum",
+            [],
+            function $module__InternalEnum(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              "use strict";
+
+              var hasOwnProperty = Object.prototype.hasOwnProperty;
+
+              var reverseMapCache =
+                typeof WeakMap === "function" ? new WeakMap() : new Map();
+
+              function getReverseMap(enumObject) {
+                var reverseMap = reverseMapCache.get(enumObject);
+                if (reverseMap !== undefined) {
+                  return reverseMap;
+                }
+
+                var newReverseMap = new Map();
+                Object.getOwnPropertyNames(enumObject).forEach(
+                  function forEach_$0(name) {
+                    newReverseMap.set(enumObject[name], name);
+                  }
+                );
+                reverseMapCache.set(enumObject, newReverseMap);
+                return newReverseMap;
+              }
+
+              var EnumPrototype = Object.freeze(
+                Object.defineProperties(Object.create(null), {
+                  isValid: {
+                    value: function value(x) {
+                      return getReverseMap(this).has(x);
+                    }
+                  },
+
+                  cast: {
+                    value: function value(x) {
+                      return this.isValid(x) ? x : undefined;
+                    }
+                  },
+
+                  members: {
+                    value: function value() {
+                      return getReverseMap(this).keys();
+                    }
+                  },
+
+                  getName: {
+                    value: function value(_value) {
+                      return getReverseMap(this).get(_value);
+                    }
+                  }
+                })
+              );
+
+              function Enum(members) {
+                var o = Object.create(EnumPrototype);
+                for (var k in members) {
+                  if (hasOwnProperty.call(members, k)) {
+                    Object.defineProperty(o, k, { value: members[k] });
+                  }
+                }
+                return Object.freeze(o);
+              }
+
+              var EnumMirroredPrototype = Object.freeze(
+                Object.defineProperties(Object.create(null), {
+                  isValid: {
+                    value: function value(x) {
+                      if (typeof x === "string") {
+                        return hasOwnProperty.call(this, x);
+                      }
+                      return false;
+                    }
+                  },
+
+                  cast: {
+                    value: EnumPrototype.cast
+                  },
+
+                  members: {
+                    value: function value() {
+                      return Object.getOwnPropertyNames(this);
+                    }
+                  },
+
+                  getName: {
+                    value: function value(_value2) {
+                      return _value2;
+                    }
+                  }
+                })
+              );
+
+              Enum.Mirrored = function EnumMirrored(members) {
+                var o = Object.create(EnumMirroredPrototype);
+                for (var i = 0, len = members.length; i < len; ++i) {
+                  Object.defineProperty(o, members[i], { value: members[i] });
+                }
+                return Object.freeze(o);
+              };
+
+              Object.freeze(Enum.Mirrored);
+
+              module.exports = Object.freeze(Enum);
+            },
+            null
+          );
+          __d(
+            "MPNConstants",
+            ["$InternalEnum"],
+            function $module_MPNConstants(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              "use strict";
+              var InternalEnum;
+              var MPNRedirect = (InternalEnum = require("$InternalEnum"))({
+                NEW_GUEST_SESSION: "new_guest_sess",
+                ITP_CONTINUE_SESSION: "ipt_continue_sess",
+                FB_LOG_IN: "fb_log_in",
+                GUEST_UPGRADE: "guest_upgrade",
+                GUEST_UPGRADE_SWITCH_ACCOUNT: "guest_upgrade_switch_account"
+              });
+              exports.MPNRedirect = MPNRedirect;
+              var MPNUpgradePrompt = InternalEnum({
+                NOT_SHOWN: "not_shown",
+                ATTACHMENT_UPSELL: "attachment_upsell",
+                DONT_WAIT_FOR_REPLY_UPSELL: "dont_wait_for_reply_upsell",
+                CONTINUE_IN_MESSENGER: "continue_in_messenger"
+              });
+              exports.MPNUpgradePrompt = MPNUpgradePrompt;
+              var MPNVisibility = InternalEnum({
+                HIDDEN: "hidden",
+                NOT_HIDDEN: "not-hidden"
+              });
+              exports.MPNVisibility = MPNVisibility;
+              var MPNGreenDotSize = InternalEnum.Mirrored(["LARGE", "MEDIUM"]);
+              exports.MPNGreenDotSize = MPNGreenDotSize;
+              var MPNQuickReplyLayout = InternalEnum.Mirrored([
+                "HORIZONTAL",
+                "VERTICAL"
+              ]);
+              exports.MPNQuickReplyLayout = MPNQuickReplyLayout;
+              var MPNQuickReplyContentType = InternalEnum({
+                TEXT: "text",
+                USER_EMAIL: "user_email",
+                USER_PHONE_NUMBER: "user_phone_number",
+                USER_STATE: "user_state",
+                USER_ZIP_CODE: "user_zip_code"
+              });
+              exports.MPNQuickReplyContentType = MPNQuickReplyContentType;
+            },
+            null
+          );
+          __d(
             "MPNLocalState",
             [],
             function $module_MPNLocalState(
@@ -20198,7 +20362,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1003751847","namespace":"FB","message":"' +
+        '","revision":"1003757376","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
