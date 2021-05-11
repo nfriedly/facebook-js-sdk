@@ -1,4 +1,4 @@
-/*1620712754,,JIT Construction: v1003767359,en_US*/
+/*1620718763,,JIT Construction: v1003767838,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3744,7 +3744,7 @@ try {
           })(typeof global === "undefined" ? this : global);
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1003767359",
+            revision: "1003767838",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -18099,7 +18099,9 @@ try {
                     postMessageToDialogFrame(event);
                     postMessaegToBubbleFrame(event);
                   });
-                  this.subscribe("xd.mpn.reload", function subscribe_$1(_) {
+                  this.subscribe("xd.mpn.reload", function subscribe_$1(
+                    message
+                  ) {
                     var iframeSrc = _this._iframe.src;
 
                     var storage = require("sdk.WebStorage").getLocalStorage();
@@ -18115,6 +18117,9 @@ try {
                     var queryData = iframeSrcUri.getQueryData();
                     queryData.local_state = localState;
                     queryData.request_time = Date.now();
+                    if (message.hasExplicitInteraction) {
+                      queryData.has_explicit_interaction = "1";
+                    }
                     iframeSrcUri.setQueryData(queryData);
                     _this._iframe.src = iframeSrcUri.valueOf();
                   });
@@ -20365,7 +20370,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1003767359","namespace":"FB","message":"' +
+        '","revision":"1003767838","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
