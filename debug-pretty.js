@@ -1,4 +1,4 @@
-/*1620679155,,JIT Construction: v1003763248,en_US*/
+/*1620712754,,JIT Construction: v1003767359,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3744,7 +3744,7 @@ try {
           })(typeof global === "undefined" ? this : global);
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1003763248",
+            revision: "1003767359",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -18203,7 +18203,8 @@ try {
                   if (
                     message.isMobile === "true" &&
                     !_isHidden &&
-                    _mobilePath != LANDING_PAGE
+                    _mobilePath != LANDING_PAGE &&
+                    _mobilePath != BUBBLE
                   ) {
                     setParentDocumentPositionFixed();
                   }
@@ -18768,7 +18769,7 @@ try {
                     isMobile &&
                     (chatStarted ||
                       _showInterstitialOnPage ||
-                      _mobilePath !== LANDING_PAGE)
+                      (_mobilePath !== LANDING_PAGE && _mobilePath !== BUBBLE))
                   ) {
                     setParentDocumentPositionFixed();
                   }
@@ -20364,7 +20365,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1003763248","namespace":"FB","message":"' +
+        '","revision":"1003767359","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
