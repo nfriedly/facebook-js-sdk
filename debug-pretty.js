@@ -1,4 +1,4 @@
-/*1620875968,,JIT Construction: v1003781883,en_US*/
+/*1621034348,,JIT Construction: v1003796390,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3742,28 +3742,9 @@ try {
             global.Map = Map;
             global.Set = Set;
           })(typeof global === "undefined" ? this : global);
-          __d("JSSDKRuntimeConfig", [], {
-            locale: "en_US",
-            revision: "1003781883",
-            rtl: false,
-            sdkab: null,
-            sdkns: "FB",
-            sdkurl: "https://connect.facebook.net/en_US/all/debug.js"
-          });
-          __d("UrlMapConfig", [], {
-            www: "www.facebook.com",
-            m: "m.facebook.com",
-            business: "business.facebook.com",
-            api: "api.facebook.com",
-            api_read: "api-read.facebook.com",
-            graph: "graph.facebook.com",
-            an: "an.facebook.com",
-            fbcdn: "static.xx.fbcdn.net",
-            cdn: "staticxx.facebook.com",
-            graph_facebook: "graph.facebook.com",
-            graph_gaming: "graph.fb.gg",
-            graph_instagram: "graph.instagram.com",
-            www_instagram: "www.instagram.com"
+          __d("JSSDKCanvasPrefetcherConfig", [], {
+            blacklist: [144959615576466, 768691303149786, 320528941393723],
+            sampleRate: 500
           });
           __d("JSSDKConfig", [], {
             features: {
@@ -3800,13 +3781,32 @@ try {
               "css:fb.css.customer_chat_plugin_iframe"
             ]
           });
+          __d("JSSDKRuntimeConfig", [], {
+            locale: "en_US",
+            revision: "1003796390",
+            rtl: false,
+            sdkab: null,
+            sdkns: "FB",
+            sdkurl: "https://connect.facebook.net/en_US/all/debug.js"
+          });
           __d("JSSDKXDConfig", [], {
             XXdUrl: "/x/connect/xd_arbiter/?version=46",
             useCdn: true
           });
-          __d("JSSDKCanvasPrefetcherConfig", [], {
-            blacklist: [144959615576466, 768691303149786, 320528941393723],
-            sampleRate: 500
+          __d("UrlMapConfig", [], {
+            www: "www.facebook.com",
+            m: "m.facebook.com",
+            business: "business.facebook.com",
+            api: "api.facebook.com",
+            api_read: "api-read.facebook.com",
+            graph: "graph.facebook.com",
+            an: "an.facebook.com",
+            fbcdn: "static.xx.fbcdn.net",
+            cdn: "staticxx.facebook.com",
+            graph_facebook: "graph.facebook.com",
+            graph_gaming: "graph.fb.gg",
+            graph_instagram: "graph.instagram.com",
+            www_instagram: "www.instagram.com"
           });
           __d(
             "DOMWrapper",
@@ -15520,6 +15520,10 @@ try {
               function updateUserProperties(appID, params, cb) {
                 var userID = getUserID();
                 assertValidUserID(userID);
+
+                Object.keys(params).forEach(function forEach_$0(k) {
+                  return params[k] == null && delete params[k];
+                });
                 assertValidUserProperties(params);
                 require("FBAppEvents").updateUserProperties(
                   userID,
@@ -20370,7 +20374,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1003781883","namespace":"FB","message":"' +
+        '","revision":"1003796390","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
