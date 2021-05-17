@@ -1,4 +1,4 @@
-/*1621068563,,JIT Construction: v1003799421,en_US*/
+/*1621292354,,JIT Construction: v1003803068,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -441,6 +441,7 @@ try {
           /**
            * Copyright 2004-present Facebook. All Rights Reserved.
            *
+           *  strict
            * @format
            */ __d(
             "ES5StringPrototype",
@@ -453,103 +454,92 @@ try {
               module,
               exports
             ) {
-              var ES5StringPrototype = {};
-
-              ES5StringPrototype.trim = function() {
-                if (this == null) {
-                  throw new TypeError(
-                    "String.prototype.trim called on null or undefined"
-                  );
-                }
-                return String.prototype.replace.call(this, /^\s+|\s+$/g, "");
-              };
-
-              ES5StringPrototype.startsWith = function(search) {
-                var string = String(this);
-                if (this == null) {
-                  throw new TypeError(
-                    "String.prototype.startsWith called on null or undefined"
-                  );
-                }
-                var pos = arguments.length > 1 ? Number(arguments[1]) : 0;
-                if (isNaN(pos)) {
-                  pos = 0;
-                }
-                var start = Math.min(Math.max(pos, 0), string.length);
-                return string.indexOf(String(search), pos) == start;
-              };
-
-              ES5StringPrototype.endsWith = function(search) {
-                var string = String(this);
-                if (this == null) {
-                  throw new TypeError(
-                    "String.prototype.endsWith called on null or undefined"
-                  );
-                }
-                var stringLength = string.length;
-                var searchString = String(search);
-                var pos =
-                  arguments.length > 1 ? Number(arguments[1]) : stringLength;
-                if (isNaN(pos)) {
-                  pos = 0;
-                }
-                var end = Math.min(Math.max(pos, 0), stringLength);
-                var start = end - searchString.length;
-                if (start < 0) {
-                  return false;
-                }
-                return string.lastIndexOf(searchString, start) == start;
-              };
-
-              ES5StringPrototype.includes = function(search) {
-                if (this == null) {
-                  throw new TypeError(
-                    "String.prototype.contains called on null or undefined"
-                  );
-                }
-                var string = String(this);
-                var pos = arguments.length > 1 ? Number(arguments[1]) : 0;
-                if (isNaN(pos)) {
-                  pos = 0;
-                }
-                return string.indexOf(String(search), pos) != -1;
-              };
-
-              ES5StringPrototype.contains = ES5StringPrototype.includes;
-
-              ES5StringPrototype.repeat = function(count) {
-                if (this == null) {
-                  throw new TypeError(
-                    "String.prototype.repeat called on null or undefined"
-                  );
-                }
-                var string = String(this);
-                var n = count ? Number(count) : 0;
-                if (isNaN(n)) {
-                  n = 0;
-                }
-                if (n < 0 || n === Infinity) {
-                  throw RangeError();
-                }
-                if (n === 1) {
-                  return string;
-                }
-                if (n === 0) {
-                  return "";
-                }
-                var result = "";
-                while (n) {
-                  if (n & 1) {
-                    result += string;
+              var ES5StringPrototype = {
+                startsWith: function startsWith(search) {
+                  var string = String(this);
+                  if (this == null) {
+                    throw new TypeError(
+                      "String.prototype.startsWith called on null or undefined"
+                    );
                   }
-                  if ((n >>= 1)) {
-                    string += string;
+                  var pos = arguments.length > 1 ? Number(arguments[1]) : 0;
+                  if (isNaN(pos)) {
+                    pos = 0;
                   }
-                }
-                return result;
-              };
+                  var start = Math.min(Math.max(pos, 0), string.length);
+                  return string.indexOf(String(search), pos) == start;
+                },
 
-              module.exports = ES5StringPrototype;
+                endsWith: function endsWith(search) {
+                  var string = String(this);
+                  if (this == null) {
+                    throw new TypeError(
+                      "String.prototype.endsWith called on null or undefined"
+                    );
+                  }
+                  var stringLength = string.length;
+                  var searchString = String(search);
+                  var pos =
+                    arguments.length > 1 ? Number(arguments[1]) : stringLength;
+                  if (isNaN(pos)) {
+                    pos = 0;
+                  }
+                  var end = Math.min(Math.max(pos, 0), stringLength);
+                  var start = end - searchString.length;
+                  if (start < 0) {
+                    return false;
+                  }
+                  return string.lastIndexOf(searchString, start) == start;
+                },
+
+                includes: function includes(search) {
+                  if (this == null) {
+                    throw new TypeError(
+                      "String.prototype.contains called on null or undefined"
+                    );
+                  }
+                  var string = String(this);
+                  var pos = arguments.length > 1 ? Number(arguments[1]) : 0;
+                  if (isNaN(pos)) {
+                    pos = 0;
+                  }
+                  return string.indexOf(String(search), pos) != -1;
+                },
+
+                repeat: function repeat(count) {
+                  if (this == null) {
+                    throw new TypeError(
+                      "String.prototype.repeat called on null or undefined"
+                    );
+                  }
+                  var string = String(this);
+                  var n = count ? Number(count) : 0;
+                  if (isNaN(n)) {
+                    n = 0;
+                  }
+                  if (n < 0 || n === Infinity) {
+                    throw RangeError();
+                  }
+                  if (n === 1) {
+                    return string;
+                  }
+                  if (n === 0) {
+                    return "";
+                  }
+                  var result = "";
+                  while (n) {
+                    if (n & 1) {
+                      result += string;
+                    }
+                    if ((n >>= 1)) {
+                      string += string;
+                    }
+                  }
+                  return result;
+                }
+              };
+              var _default = ES5StringPrototype;
+              module.exports = _default;
             },
             null
           );
@@ -3783,7 +3773,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1003799421",
+            revision: "1003803068",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -19558,7 +19548,7 @@ try {
                 } else if (require("isTextNode")(innerNode)) {
                   return containsNode(outerNode, innerNode.parentNode);
                 } else if ("contains" in outerNode) {
-                  return ES(outerNode, "contains", true, innerNode);
+                  return outerNode.contains(innerNode);
                 } else if (outerNode.compareDocumentPosition) {
                   return !!(outerNode.compareDocumentPosition(innerNode) & 16);
                 } else {
@@ -20376,7 +20366,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1003799421","namespace":"FB","message":"' +
+        '","revision":"1003803068","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
