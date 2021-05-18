@@ -1,4 +1,4 @@
-/*1621306764,,JIT Construction: v1003805871,en_US*/
+/*1621352371,,JIT Construction: v1003809150,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3773,7 +3773,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1003805871",
+            revision: "1003809150",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -5349,7 +5349,9 @@ try {
                     }
 
                     pairs.push(
-                      encodeURIComponent(key) + "=" + encodeURIComponent(value)
+                      encodeURIComponent(key) +
+                        "=" +
+                        encodeURIComponent(String(value))
                     );
                   });
                 return pairs.join("&");
@@ -5384,18 +5386,14 @@ try {
                 return (
                   url +
                   (url.indexOf("?") !== -1 ? "&" : "?") +
-                  (typeof params === "string"
-                    ? params
-                    : QueryString.encode(params))
+                  (typeof params === "string" ? params : encode(params))
                 );
               }
-
-              var QueryString = {
+              var _default = {
                 encode: encode,
                 decode: decode,
                 appendToUrl: appendToUrl
               };
-              var _default = QueryString;
               module.exports = _default;
             },
             null
@@ -7411,7 +7409,7 @@ try {
                   var meta = require("QueryString").decode(cookie);
 
                   domain = meta.base_domain;
-                  return meta;
+                  return { base_domain: domain };
                 }
                 return null;
               }
@@ -15786,12 +15784,17 @@ try {
                   if (script.src) {
                     var match = pattern.exec(script.src);
                     if (match) {
-                      var opts = require("QueryString").decode(match[2]);
-                      for (var key in opts) {
-                        if (Object.prototype.hasOwnProperty.call(opts, key)) {
-                          var val = opts[key];
-                          if (val == "0") {
+                      var opts = {};
+                      var decoded = require("QueryString").decode(match[2]);
+                      for (var key in decoded) {
+                        if (
+                          Object.prototype.hasOwnProperty.call(decoded, key)
+                        ) {
+                          var val = decoded[key];
+                          if (val === "0") {
                             opts[key] = 0;
+                          } else {
+                            opts[key] = val;
                           }
                         }
                       }
@@ -20367,7 +20370,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1003805871","namespace":"FB","message":"' +
+        '","revision":"1003809150","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
