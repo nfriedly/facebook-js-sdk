@@ -1,4 +1,4 @@
-/*1621352371,,JIT Construction: v1003809150,en_US*/
+/*1621463965,,JIT Construction: v1003820949,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3773,7 +3773,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1003809150",
+            revision: "1003820949",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -8252,6 +8252,268 @@ try {
             3
           );
           __d(
+            "sdk.AuthUtils",
+            [],
+            function $module_sdk_AuthUtils(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              "use strict";
+              exports.isInstagramLogin = isInstagramLogin;
+
+              function isInstagramLogin(authResponse) {
+                if (authResponse != null && authResponse.graphDomain != null) {
+                  return authResponse.graphDomain === "instagram";
+                }
+                return false;
+              }
+
+              var AuthConstants = {
+                LOCAL_STORAGE_TOKEN_PREFIX: "fblst_",
+                IG_LOCAL_STORAGE_TOKEN_PREFIX: "iglst_",
+                SESSION_STORAGE_LOGIN_STATUS_PREFIX: "fbssls_",
+                CONNECTED_REVALIDATE_PERIOD: 60 * 90 * 1000,
+                DEFAULT_REVALIDATE_PERIOD: 60 * 60 * 24 * 1000
+              };
+              exports.AuthConstants = AuthConstants;
+            },
+            null
+          );
+          __d(
+            "sdk.WebStorage",
+            ["Log"],
+            function $module_sdk_WebStorage(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              "use strict";
+              exports.getLocalStorage = getLocalStorage;
+              exports.getLocalStorageForRead = getLocalStorageForRead;
+              exports.getSessionStorage = getSessionStorage;
+              exports.getSessionStorageForRead = getSessionStorageForRead;
+
+              function getLocalStorage() {
+                try {
+                  return window.localStorage;
+                } catch (_unused) {
+                  require("Log").warn("Failed to get local storage");
+                }
+                return null;
+              }
+
+              function getLocalStorageForRead() {
+                try {
+                  var storage = window.localStorage;
+
+                  if (storage) {
+                    var key = "__test__" + Date.now();
+                    storage.setItem(key, "");
+                    storage.removeItem(key);
+                  }
+                  return storage;
+                } catch (_unused2) {
+                  require("Log").warn("Failed to get local storage");
+                }
+                return null;
+              }
+
+              function getSessionStorage() {
+                try {
+                  return window.sessionStorage;
+                } catch (_unused3) {
+                  require("Log").warn("Failed to get session storage");
+                }
+                return null;
+              }
+
+              function getSessionStorageForRead() {
+                try {
+                  var storage = window.sessionStorage;
+
+                  if (storage) {
+                    var key = "__test__" + Date.now();
+                    storage.setItem(key, "");
+                    storage.removeItem(key);
+                  }
+                  return storage;
+                } catch (_unused4) {
+                  require("Log").warn("Failed to get session storage");
+                }
+                return null;
+              }
+            },
+            null
+          );
+          __d(
+            "sdk.AuthStorageUtils",
+            ["sdk.AuthUtils", "sdk.Runtime", "sdk.WebStorage", "sdk.feature"],
+            function $module_sdk_AuthStorageUtils(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              "use strict";
+              exports.setLocalStorageToken = setLocalStorageToken;
+              exports.removeLocalStorageToken = removeLocalStorageToken;
+              exports.setSessionStorage = setSessionStorage;
+              exports.getLocalStorageTokens = getLocalStorageTokens;
+              exports.getCachedResponse = getCachedResponse;
+
+              function setLocalStorageToken(authResponse, longLivedToken) {
+                if (
+                  shouldEnableAuthStorage() &&
+                  longLivedToken != null &&
+                  longLivedToken !== ""
+                ) {
+                  var localStorage = require("sdk.WebStorage").getLocalStorage();
+                  if (localStorage) {
+                    var token_prefix = require("sdk.AuthUtils").isInstagramLogin(
+                      authResponse
+                    )
+                      ? require("sdk.AuthUtils").AuthConstants
+                          .IG_LOCAL_STORAGE_TOKEN_PREFIX
+                      : require("sdk.AuthUtils").AuthConstants
+                          .LOCAL_STORAGE_TOKEN_PREFIX;
+                    localStorage.setItem(
+                      token_prefix + require("sdk.Runtime").getClientID(),
+                      longLivedToken
+                    );
+                  }
+                }
+              }
+
+              function removeLocalStorageToken(loginSource) {
+                var localStorage = require("sdk.WebStorage").getLocalStorage();
+                if (localStorage) {
+                  if (loginSource === "instagram") {
+                    localStorage.removeItem(
+                      require("sdk.AuthUtils").AuthConstants
+                        .IG_LOCAL_STORAGE_TOKEN_PREFIX +
+                        require("sdk.Runtime").getClientID()
+                    );
+                  } else {
+                    localStorage.removeItem(
+                      require("sdk.AuthUtils").AuthConstants
+                        .LOCAL_STORAGE_TOKEN_PREFIX +
+                        require("sdk.Runtime").getClientID()
+                    );
+                  }
+                }
+              }
+
+              function setSessionStorage(authResponse, status) {
+                if (!shouldEnableAuthStorage()) {
+                  return;
+                }
+                var sessionStorage = require("sdk.WebStorage").getSessionStorage();
+                if (sessionStorage) {
+                  sessionStorage.setItem(
+                    require("sdk.AuthUtils").AuthConstants
+                      .SESSION_STORAGE_LOGIN_STATUS_PREFIX +
+                      require("sdk.Runtime").getClientID(),
+                    ES("JSON", "stringify", false, {
+                      authResponse: authResponse,
+                      status: status,
+                      expiresAt:
+                        authResponse != null &&
+                        authResponse.expiresIn &&
+                        authResponse.expiresIn !== 0
+                          ? Date.now() +
+                            Math.min(
+                              authResponse.expiresIn * 0.75 * 1000,
+                              require("sdk.AuthUtils").AuthConstants
+                                .CONNECTED_REVALIDATE_PERIOD
+                            )
+                          : Date.now() +
+                            require("sdk.AuthUtils").AuthConstants
+                              .DEFAULT_REVALIDATE_PERIOD
+                    })
+                  );
+                }
+              }
+
+              function shouldEnableAuthStorage() {
+                return (
+                  require("sdk.feature")("cache_auth_response", false) &&
+                  require("sdk.Runtime").getUseLocalStorage() &&
+                  location.protocol === "https:"
+                );
+              }
+
+              function getLocalStorageTokens() {
+                var fbToken = null;
+                var igToken = null;
+                if (require("sdk.Runtime").getUseLocalStorage()) {
+                  var localStorage = require("sdk.WebStorage").getLocalStorageForRead();
+                  if (localStorage) {
+                    fbToken = localStorage.getItem(
+                      require("sdk.AuthUtils").AuthConstants
+                        .LOCAL_STORAGE_TOKEN_PREFIX +
+                        require("sdk.Runtime").getClientID()
+                    );
+
+                    igToken = localStorage.getItem(
+                      require("sdk.AuthUtils").AuthConstants
+                        .IG_LOCAL_STORAGE_TOKEN_PREFIX +
+                        require("sdk.Runtime").getClientID()
+                    );
+                  }
+                }
+                return {
+                  fbToken: fbToken,
+                  igToken: igToken
+                };
+              }
+
+              function getCachedResponse() {
+                if (!shouldEnableAuthStorage()) {
+                  return null;
+                }
+                var sessionStorage = require("sdk.WebStorage").getSessionStorageForRead();
+                if (sessionStorage) {
+                  var rawCachedResponse = sessionStorage.getItem(
+                    require("sdk.AuthUtils").AuthConstants
+                      .SESSION_STORAGE_LOGIN_STATUS_PREFIX +
+                      require("sdk.Runtime").getClientID()
+                  );
+
+                  if (rawCachedResponse != null) {
+                    try {
+                      var cachedResponse = ES(
+                        "JSON",
+                        "parse",
+                        false,
+                        rawCachedResponse
+                      );
+                      if (
+                        cachedResponse != null &&
+                        cachedResponse.expiresAt != null &&
+                        cachedResponse.expiresAt > Date.now()
+                      ) {
+                        return cachedResponse;
+                      }
+                    } catch (_unused) {
+                      return null;
+                    }
+                  }
+                }
+                return null;
+              }
+            },
+            null
+          );
+          __d(
             "Miny",
             [],
             function $module_Miny(
@@ -8849,75 +9111,6 @@ try {
             null
           );
           __d(
-            "sdk.WebStorage",
-            ["Log"],
-            function $module_sdk_WebStorage(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              "use strict";
-              exports.getLocalStorage = getLocalStorage;
-              exports.getLocalStorageForRead = getLocalStorageForRead;
-              exports.getSessionStorage = getSessionStorage;
-              exports.getSessionStorageForRead = getSessionStorageForRead;
-
-              function getLocalStorage() {
-                try {
-                  return window.localStorage;
-                } catch (_unused) {
-                  require("Log").warn("Failed to get local storage");
-                }
-                return null;
-              }
-
-              function getLocalStorageForRead() {
-                try {
-                  var storage = window.localStorage;
-
-                  if (storage) {
-                    var key = "__test__" + Date.now();
-                    storage.setItem(key, "");
-                    storage.removeItem(key);
-                  }
-                  return storage;
-                } catch (_unused2) {
-                  require("Log").warn("Failed to get local storage");
-                }
-                return null;
-              }
-
-              function getSessionStorage() {
-                try {
-                  return window.sessionStorage;
-                } catch (_unused3) {
-                  require("Log").warn("Failed to get session storage");
-                }
-                return null;
-              }
-
-              function getSessionStorageForRead() {
-                try {
-                  var storage = window.sessionStorage;
-
-                  if (storage) {
-                    var key = "__test__" + Date.now();
-                    storage.setItem(key, "");
-                    storage.removeItem(key);
-                  }
-                  return storage;
-                } catch (_unused4) {
-                  require("Log").warn("Failed to get session storage");
-                }
-                return null;
-              }
-            },
-            null
-          );
-          __d(
             "sdk.getContextType",
             ["sdk.Runtime", "sdk.UA"],
             function $module_sdk_getContextType(
@@ -8955,6 +9148,8 @@ try {
               "Log",
               "QueryString",
               "UrlMap",
+              "sdk.AuthStorageUtils",
+              "sdk.AuthUtils",
               "sdk.Cookie",
               "sdk.Frictionless",
               "sdk.Impressions",
@@ -8978,12 +9173,8 @@ try {
             ) {
               require("sdk.Frictionless");
 
-              var LOCAL_STORAGE_TOKEN_PREFIX = "fblst_";
-              var SESSION_STORAGE_LOGIN_STATUS_PREFIX = "fbssls_";
               var LOGOUT_COOKIE_PREFIX = "fblo_";
               var YEAR_MS = 365 * 24 * 60 * 60 * 1000;
-              var CONNECTED_REVALIDATE_PERIOD = 60 * 90 * 1000;
-              var DEFAULT_REVALIDATE_PERIOD = 60 * 60 * 24 * 1000;
               var LOGIN_COMPLETE_HEARTBEAT_TIMEOUT = 5 * 1000;
               var PLATFORM_E2E_TRACKING_LOG_ID = 114;
               var PLATFORM_JSSDK_FUNNEL_LOG_ID = 117;
@@ -9019,7 +9210,15 @@ try {
                 }
               }
 
-              function setAuthResponse(authResponse, status, fromCache) {
+              function setAuthResponse(
+                authResponse,
+                status,
+                loginSource,
+                fromCache
+              ) {
+                if (loginSource === void 0) {
+                  loginSource = "facebook";
+                }
                 if (fromCache === void 0) {
                   fromCache = false;
                 }
@@ -9068,7 +9267,12 @@ try {
                     require("sdk.Cookie").clearSignedRequestCookie();
                   }
                   if (require("sdk.Runtime").getUseLocalStorage()) {
-                    removeLocalStorageToken();
+                    var _loginSource;
+                    require("sdk.AuthStorageUtils").removeLocalStorageToken(
+                      (_loginSource = loginSource) != null
+                        ? _loginSource
+                        : "facebook"
+                    );
                   }
                 }
 
@@ -9119,32 +9323,11 @@ try {
                   observable.inform("status.change", response);
                 }
 
-                if (
-                  !fromCache &&
-                  require("sdk.feature")("cache_auth_response", false) &&
-                  require("sdk.Runtime").getUseLocalStorage()
-                ) {
-                  var sessionStorage = require("sdk.WebStorage").getSessionStorage();
-                  if (sessionStorage) {
-                    sessionStorage.setItem(
-                      SESSION_STORAGE_LOGIN_STATUS_PREFIX +
-                        require("sdk.Runtime").getClientID(),
-                      ES("JSON", "stringify", false, {
-                        authResponse: authResponse,
-                        status: status,
-                        expiresAt:
-                          authResponse != null &&
-                          authResponse.expiresIn &&
-                          authResponse.expiresIn !== 0
-                            ? Date.now() +
-                              Math.min(
-                                authResponse.expiresIn * 0.75 * 1000,
-                                CONNECTED_REVALIDATE_PERIOD
-                              )
-                            : Date.now() + DEFAULT_REVALIDATE_PERIOD
-                      })
-                    );
-                  }
+                if (!fromCache) {
+                  require("sdk.AuthStorageUtils").setSessionStorage(
+                    authResponse,
+                    status
+                  );
                 }
 
                 return response;
@@ -9368,34 +9551,12 @@ try {
                     referred: params.referred
                   });
                 }
-
-                if (
-                  require("sdk.Runtime").getUseLocalStorage() &&
-                  location.protocol === "https:" &&
-                  require("sdk.feature")("cache_auth_response", false) &&
+                require("sdk.AuthStorageUtils").setLocalStorageToken(
+                  authResponse,
                   params.long_lived_token
-                ) {
-                  var localStorage = require("sdk.WebStorage").getLocalStorage();
-                  if (localStorage) {
-                    localStorage.setItem(
-                      LOCAL_STORAGE_TOKEN_PREFIX +
-                        require("sdk.Runtime").getClientID(),
-                      params.long_lived_token
-                    );
-                  }
-                }
+                );
 
                 return authResponse;
-              }
-
-              function removeLocalStorageToken() {
-                var localStorage = require("sdk.WebStorage").getLocalStorage();
-                if (localStorage) {
-                  localStorage.removeItem(
-                    LOCAL_STORAGE_TOKEN_PREFIX +
-                      require("sdk.Runtime").getClientID()
-                  );
-                }
               }
 
               function removeLogoutState() {
@@ -9542,7 +9703,8 @@ try {
                   var localStorage = require("sdk.WebStorage").getLocalStorageForRead();
                   if (localStorage) {
                     localStorageToken = localStorage.getItem(
-                      LOCAL_STORAGE_TOKEN_PREFIX +
+                      require("sdk.AuthUtils").AuthConstants
+                        .LOCAL_STORAGE_TOKEN_PREFIX +
                         require("sdk.Runtime").getClientID()
                     );
                   }
@@ -9663,28 +9825,16 @@ try {
                     }
 
                     setGraphDomain(xhrAuthResponse.graph_domain);
-
-                    if (
-                      require("sdk.Runtime").getUseLocalStorage() &&
-                      location.protocol === "https:" &&
-                      require("sdk.feature")("cache_auth_response", false) &&
+                    require("sdk.AuthStorageUtils").setLocalStorageToken(
+                      authResponse,
                       xhrAuthResponse.long_lived_token
-                    ) {
-                      var localStorage = require("sdk.WebStorage").getLocalStorage();
-                      if (localStorage) {
-                        localStorage.setItem(
-                          LOCAL_STORAGE_TOKEN_PREFIX +
-                            require("sdk.Runtime").getClientID(),
-                          xhrAuthResponse.long_lived_token
-                        );
-                      }
-                    }
-
+                    );
                     removeLogoutState();
                     setAuthResponse(authResponse, loginStatus);
                     timer = window.setTimeout(function window_setTimeout_$0() {
                       fetchLoginStatus(function fetchLoginStatus_$0() {});
-                    }, CONNECTED_REVALIDATE_PERIOD);
+                    }, require("sdk.AuthUtils")
+                      .AuthConstants.CONNECTED_REVALIDATE_PERIOD);
                     break;
                   case "not_authorized":
                   case "unknown":
@@ -9864,58 +10014,30 @@ try {
                   facebookRe.test(document.referrer) &&
                   location.hash.indexOf("cb=") > -1;
 
-                if (
-                  !skipCache &&
-                  !force &&
-                  require("sdk.feature")("cache_auth_response", false) &&
-                  require("sdk.Runtime").getUseLocalStorage() &&
-                  location.protocol === "https:"
-                ) {
-                  var sessionStorage = require("sdk.WebStorage").getSessionStorageForRead();
-                  if (sessionStorage) {
-                    var rawCachedResponse = sessionStorage.getItem(
-                      SESSION_STORAGE_LOGIN_STATUS_PREFIX +
-                        require("sdk.Runtime").getClientID()
+                if (!skipCache && !force) {
+                  var cachedResponse = require("sdk.AuthStorageUtils").getCachedResponse();
+                  if (cachedResponse != null) {
+                    var _cachedResponse$statu;
+                    loadState = "loaded";
+                    setAuthResponse(
+                      cachedResponse.authResponse,
+                      (_cachedResponse$statu = cachedResponse.status) != null
+                        ? _cachedResponse$statu
+                        : "unknown",
+                      "facebook",
+                      true
                     );
 
-                    if (rawCachedResponse != null) {
-                      try {
-                        var cachedResponse = ES(
-                          "JSON",
-                          "parse",
-                          false,
-                          rawCachedResponse
-                        );
-
-                        if (
-                          cachedResponse != null &&
-                          cachedResponse.expiresAt != null &&
-                          cachedResponse.expiresAt > Date.now()
-                        ) {
-                          var _cachedResponse$statu;
-                          loadState = "loaded";
-                          setAuthResponse(
-                            cachedResponse.authResponse,
-                            (_cachedResponse$statu = cachedResponse.status) !=
-                              null
-                              ? _cachedResponse$statu
-                              : "unknown",
-                            true
-                          );
-
-                          timer = window.setTimeout(
-                            function window_setTimeout_$0() {
-                              fetchLoginStatus(
-                                function fetchLoginStatus_$0() {}
-                              );
-                            },
-                            cachedResponse.status === "connected"
-                              ? CONNECTED_REVALIDATE_PERIOD
-                              : DEFAULT_REVALIDATE_PERIOD
-                          );
-                        }
-                      } catch (_unused) {}
-                    }
+                    timer = window.setTimeout(
+                      function window_setTimeout_$0() {
+                        fetchLoginStatus(function fetchLoginStatus_$0() {});
+                      },
+                      cachedResponse.status === "connected"
+                        ? require("sdk.AuthUtils").AuthConstants
+                            .CONNECTED_REVALIDATE_PERIOD
+                        : require("sdk.AuthUtils").AuthConstants
+                            .DEFAULT_REVALIDATE_PERIOD
+                    );
                   }
                 }
 
@@ -20370,7 +20492,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1003809150","namespace":"FB","message":"' +
+        '","revision":"1003820949","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
