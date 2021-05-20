@@ -1,4 +1,4 @@
-/*1621463965,,JIT Construction: v1003820949,en_US*/
+/*1621552229,,JIT Construction: v1003828957,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3773,7 +3773,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1003820949",
+            revision: "1003828957",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -8252,6 +8252,62 @@ try {
             3
           );
           __d(
+            "sdk.AuthState",
+            [],
+            function $module_sdk_AuthState(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              "use strict";
+
+              var authState = initState();
+
+              function initState() {
+                var initialMixedState = {
+                  igAuthResponse: null,
+                  fbAuthResponse: null,
+                  fbLoginStatus: null,
+                  igLoginStatus: null
+                };
+
+                return {
+                  currentAuthResponse: null,
+                  shouldSecondLoginRequestTimeOut: false,
+                  mixedAuthState: initialMixedState,
+                  loadState: null,
+                  timer: null
+                };
+              }
+
+              function getState() {
+                return ES("Object", "assign", false, initState(), authState);
+              }
+
+              function setState(newState) {
+                authState = ES(
+                  "Object",
+                  "assign",
+                  false,
+                  initState(),
+                  authState,
+                  newState
+                );
+              }
+
+              var State = {
+                getState: getState,
+                setState: setState
+              };
+              var _default = State;
+              module.exports = _default;
+            },
+            null
+          );
+          __d(
             "sdk.AuthUtils",
             [],
             function $module_sdk_AuthUtils(
@@ -9148,6 +9204,7 @@ try {
               "Log",
               "QueryString",
               "UrlMap",
+              "sdk.AuthState",
               "sdk.AuthStorageUtils",
               "sdk.AuthUtils",
               "sdk.Cookie",
@@ -9180,10 +9237,6 @@ try {
               var PLATFORM_JSSDK_FUNNEL_LOG_ID = 117;
 
               var observable = new (require("sdk.Observable")).Observable();
-
-              var currentAuthResponse;
-
-              var timer;
 
               var facebookRe = /^https?:\/\/([\w\.]+)?\.facebook\.com\/?/;
 
@@ -9227,7 +9280,7 @@ try {
 
                 var userID = "";
                 if (authResponse != null) {
-                  loadState = "loaded";
+                  require("sdk.AuthState").setState({ loadState: "loaded" });
 
                   if (
                     authResponse.userID != null &&
@@ -9291,7 +9344,9 @@ try {
                   currentUserID !== "" &&
                   currentUserID != userID;
 
-                var authResponseChange = authResponse != currentAuthResponse;
+                var authResponseChange =
+                  authResponse !=
+                  require("sdk.AuthState").getState().currentAuthResponse;
                 var statusChange = status != currentStatus;
 
                 require("sdk.Runtime").setLoginStatus(status);
@@ -9303,7 +9358,9 @@ try {
                   (authResponse && authResponse.graphDomain) || ""
                 );
 
-                currentAuthResponse = authResponse;
+                require("sdk.AuthState").setState({
+                  currentAuthResponse: authResponse
+                });
 
                 var response = {
                   authResponse: authResponse,
@@ -9334,7 +9391,7 @@ try {
               }
 
               function getAuthResponse() {
-                return currentAuthResponse;
+                return require("sdk.AuthState").getState().currentAuthResponse;
               }
 
               function setBaseDomain(baseDomain) {
@@ -9625,9 +9682,11 @@ try {
 
               function fetchLoginStatus(fn) {
                 var _redirAccessToken;
-                if (timer) {
-                  window.clearTimeout(timer);
-                  timer = null;
+                if (require("sdk.AuthState").getState().timer != null) {
+                  window.clearTimeout(
+                    require("sdk.AuthState").getState().timer
+                  );
+                  require("sdk.AuthState").setState({ timer: null });
                 }
 
                 var fb_logged_out =
@@ -9743,13 +9802,21 @@ try {
                   window.addEventListener(
                     "fbNativeLoginFallbackResponse",
                     function window_addEventListener_$1(_ev) {
-                      Auth.getLoginStatusCORS(fn, token, currentAuthResponse);
+                      Auth.getLoginStatusCORS(
+                        fn,
+                        token,
+                        require("sdk.AuthState").getState().currentAuthResponse
+                      );
                     }
                   );
                   var clientID = require("sdk.Runtime").getClientID();
                   window.FBLogin.showFBLoginBottomSheetInIAB(clientID);
                 } else {
-                  Auth.getLoginStatusCORS(fn, token, currentAuthResponse);
+                  Auth.getLoginStatusCORS(
+                    fn,
+                    token,
+                    require("sdk.AuthState").getState().currentAuthResponse
+                  );
                 }
               }
 
@@ -9792,6 +9859,17 @@ try {
                 return url;
               }
 
+              function setRevalidateTimer(timeout) {
+                if (timeout === void 0) {
+                  timeout = require("sdk.AuthUtils").AuthConstants
+                    .CONNECTED_REVALIDATE_PERIOD;
+                }
+                var timer = window.setTimeout(function window_setTimeout_$0() {
+                  fetchLoginStatus(function fetchLoginStatus_$0() {});
+                }, timeout);
+                require("sdk.AuthState").setState({ timer: timer });
+              }
+
               function onCORSSuccess(cb, loginStatus, authResponseHeader) {
                 switch (loginStatus) {
                   case "connected":
@@ -9831,10 +9909,7 @@ try {
                     );
                     removeLogoutState();
                     setAuthResponse(authResponse, loginStatus);
-                    timer = window.setTimeout(function window_setTimeout_$0() {
-                      fetchLoginStatus(function fetchLoginStatus_$0() {});
-                    }, require("sdk.AuthUtils")
-                      .AuthConstants.CONNECTED_REVALIDATE_PERIOD);
+                    setRevalidateTimer();
                     break;
                   case "not_authorized":
                   case "unknown":
@@ -9980,7 +10055,6 @@ try {
                 }
               }
 
-              var loadState;
               function getLoginStatus(cb, force) {
                 if (force === void 0) {
                   force = false;
@@ -10018,7 +10092,7 @@ try {
                   var cachedResponse = require("sdk.AuthStorageUtils").getCachedResponse();
                   if (cachedResponse != null) {
                     var _cachedResponse$statu;
-                    loadState = "loaded";
+                    require("sdk.AuthState").setState({ loadState: "loaded" });
                     setAuthResponse(
                       cachedResponse.authResponse,
                       (_cachedResponse$statu = cachedResponse.status) != null
@@ -10028,10 +10102,7 @@ try {
                       true
                     );
 
-                    timer = window.setTimeout(
-                      function window_setTimeout_$0() {
-                        fetchLoginStatus(function fetchLoginStatus_$0() {});
-                      },
+                    setRevalidateTimer(
                       cachedResponse.status === "connected"
                         ? require("sdk.AuthUtils").AuthConstants
                             .CONNECTED_REVALIDATE_PERIOD
@@ -10042,7 +10113,9 @@ try {
                 }
 
                 if (!force) {
-                  if (loadState === "loaded") {
+                  if (
+                    require("sdk.AuthState").getState().loadState === "loaded"
+                  ) {
                     if (cb) {
                       var _response5 = {
                         authResponse: getAuthResponse(),
@@ -10052,7 +10125,9 @@ try {
                       cb(_response5);
                     }
                     return;
-                  } else if (loadState === "loading") {
+                  } else if (
+                    require("sdk.AuthState").getState().loadState === "loading"
+                  ) {
                     if (cb) {
                       Auth.subscribe("FB.loginStatus", cb);
                     }
@@ -10064,10 +10139,10 @@ try {
                   Auth.subscribe("FB.loginStatus", cb);
                 }
 
-                loadState = "loading";
+                require("sdk.AuthState").setState({ loadState: "loading" });
 
                 var lsCb = function lsCb(response) {
-                  loadState = "loaded";
+                  require("sdk.AuthState").setState({ loadState: "loaded" });
 
                   observable.inform("FB.loginStatus", response);
                   observable.clearSubscribers("FB.loginStatus");
@@ -20492,7 +20567,7 @@ try {
         (e.fileName || e.sourceURL || e.script) +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1003820949","namespace":"FB","message":"' +
+        '","revision":"1003828957","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
