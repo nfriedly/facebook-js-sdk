@@ -1,4 +1,4 @@
-/*1621552229,,JIT Construction: v1003828957,en_US*/
+/*1621890614,,JIT Construction: v1003843556,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3773,7 +3773,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1003828957",
+            revision: "1003843556",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -4693,126 +4693,6 @@ try {
             null
           );
           __d(
-            "sdk.ErrorHandler",
-            ["ManagedError", "normalizeError", "wrapFunction"],
-            function $module_sdk_ErrorHandler(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              exports.create = create;
-
-              function create(handleError, onError) {
-                var currentEntry = "";
-
-                function errorHandler(error) {
-                  var originalError = error._originalError;
-                  delete error._originalError;
-                  onError(error);
-
-                  throw originalError;
-                }
-
-                function guard(func, entry) {
-                  return function() {
-                    if (!handleError) {
-                      return func.apply(this, arguments);
-                    }
-
-                    try {
-                      currentEntry = entry;
-                      return func.apply(this, arguments);
-                    } catch (error) {
-                      if (error instanceof require("ManagedError")) {
-                        throw error;
-                      }
-
-                      var data = require("normalizeError")(error);
-                      data.entry = entry;
-
-                      var sanitizedArgs = Array.prototype.slice
-                        .call(arguments)
-                        .map(function map_$0(arg) {
-                          var type = Object.prototype.toString.call(arg);
-                          return /^\[object (String|Number|Boolean|Object|Date)\]$/.test(
-                            type
-                          )
-                            ? arg
-                            : arg.toString();
-                        });
-
-                      data.args = ES(
-                        "JSON",
-                        "stringify",
-                        false,
-                        sanitizedArgs
-                      ).substring(0, 200);
-                      errorHandler(data);
-                    } finally {
-                      currentEntry = "";
-                    }
-                  };
-                }
-
-                function unguard(func) {
-                  if (!func.__wrapper) {
-                    func.__wrapper = function() {
-                      try {
-                        return func.apply(this, arguments);
-                      } catch (e) {
-                        window.setTimeout(function window_setTimeout_$0() {
-                          throw e;
-                        }, 0);
-                        return false;
-                      }
-                    };
-                  }
-                  return func.__wrapper;
-                }
-
-                function getCalleeName(arg) {
-                  try {
-                    return arg && arg.callee && arg.callee.caller
-                      ? arg.callee.caller.name
-                      : "";
-                  } catch (_unused) {
-                    return "";
-                  }
-                }
-
-                function wrap(real, entry) {
-                  return function(fn, delay) {
-                    var name =
-                      entry +
-                      ":" +
-                      (currentEntry || "[global]") +
-                      ":" +
-                      (fn.name || "[anonymous]" + getCalleeName(arguments));
-                    return real(
-                      require("wrapFunction")(fn, "entry", name),
-                      delay
-                    );
-                  };
-                }
-
-                if (handleError) {
-                  setTimeout = wrap(setTimeout, "setTimeout");
-                  setInterval = wrap(setInterval, "setInterval");
-                  require("wrapFunction").setWrapper(guard, "entry");
-                }
-
-                return {
-                  guard: guard,
-                  unguard: unguard
-                };
-              }
-            },
-            null
-          );
-          __d(
             "ObservableMixin",
             [],
             function $module_ObservableMixin(
@@ -5318,6 +5198,132 @@ try {
               })();
               var _default = Runtime;
               module.exports = _default;
+            },
+            null
+          );
+          __d(
+            "sdk.ErrorHandler",
+            ["ManagedError", "normalizeError", "sdk.Runtime", "wrapFunction"],
+            function $module_sdk_ErrorHandler(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              exports.create = create;
+
+              function create(handleError, onError) {
+                var currentEntry = "";
+
+                function errorHandler(error) {
+                  var originalError = error._originalError;
+                  delete error._originalError;
+                  onError(error);
+
+                  throw originalError;
+                }
+
+                function guard(func, entry) {
+                  return function() {
+                    if (!handleError) {
+                      return func.apply(this, arguments);
+                    }
+
+                    try {
+                      currentEntry = entry;
+                      return func.apply(this, arguments);
+                    } catch (error) {
+                      if (error instanceof require("ManagedError")) {
+                        throw error;
+                      }
+
+                      var data = require("normalizeError")(error);
+                      if (!data.script) {
+                        var match = /.*\/([^?#]+)/.exec(
+                          require("sdk.Runtime").getSDKUrl()
+                        );
+                        data.script = match !== null ? match[1] : "";
+                      }
+                      data.entry = entry;
+
+                      var sanitizedArgs = Array.prototype.slice
+                        .call(arguments)
+                        .map(function map_$0(arg) {
+                          var type = Object.prototype.toString.call(arg);
+                          return /^\[object (String|Number|Boolean|Object|Date)\]$/.test(
+                            type
+                          )
+                            ? arg
+                            : arg.toString();
+                        });
+
+                      data.args = ES(
+                        "JSON",
+                        "stringify",
+                        false,
+                        sanitizedArgs
+                      ).substring(0, 200);
+                      errorHandler(data);
+                    } finally {
+                      currentEntry = "";
+                    }
+                  };
+                }
+
+                function unguard(func) {
+                  if (!func.__wrapper) {
+                    func.__wrapper = function() {
+                      try {
+                        return func.apply(this, arguments);
+                      } catch (e) {
+                        window.setTimeout(function window_setTimeout_$0() {
+                          throw e;
+                        }, 0);
+                        return false;
+                      }
+                    };
+                  }
+                  return func.__wrapper;
+                }
+
+                function getCalleeName(arg) {
+                  try {
+                    return arg && arg.callee && arg.callee.caller
+                      ? arg.callee.caller.name
+                      : "";
+                  } catch (_unused) {
+                    return "";
+                  }
+                }
+
+                function wrap(real, entry) {
+                  return function(fn, delay) {
+                    var name =
+                      entry +
+                      ":" +
+                      (currentEntry || "[global]") +
+                      ":" +
+                      (fn.name || "[anonymous]" + getCalleeName(arguments));
+                    return real(
+                      require("wrapFunction")(fn, "entry", name),
+                      delay
+                    );
+                  };
+                }
+
+                if (handleError) {
+                  setTimeout = wrap(setTimeout, "setTimeout");
+                  setInterval = wrap(setInterval, "setInterval");
+                  require("wrapFunction").setWrapper(guard, "entry");
+                }
+
+                return {
+                  guard: guard,
+                  unguard: unguard
+                };
+              }
             },
             null
           );
@@ -20564,10 +20570,10 @@ try {
         '","line":"' +
         (e.lineNumber || e.line) +
         '","script":"' +
-        (e.fileName || e.sourceURL || e.script) +
+        (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1003828957","namespace":"FB","message":"' +
+        '","revision":"1003843556","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
