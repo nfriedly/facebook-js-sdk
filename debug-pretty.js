@@ -1,4 +1,4 @@
-/*1621890614,,JIT Construction: v1003843556,en_US*/
+/*1621912759,,JIT Construction: v1003846624,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3773,7 +3773,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1003843556",
+            revision: "1003846624",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -8315,7 +8315,7 @@ try {
           );
           __d(
             "sdk.AuthUtils",
-            [],
+            ["sdk.Cookie", "sdk.Runtime"],
             function $module_sdk_AuthUtils(
               global,
               require,
@@ -8326,6 +8326,12 @@ try {
             ) {
               "use strict";
               exports.isInstagramLogin = isInstagramLogin;
+              exports.setBaseDomain = setBaseDomain;
+              exports.setGraphDomain = setGraphDomain;
+              exports.setLogoutState = setLogoutState;
+              exports.removeLogoutState = removeLogoutState;
+
+              var YEAR_MS = 365 * 24 * 60 * 60 * 1000;
 
               function isInstagramLogin(authResponse) {
                 if (authResponse != null && authResponse.graphDomain != null) {
@@ -8334,12 +8340,57 @@ try {
                 return false;
               }
 
+              function setBaseDomain(baseDomain) {
+                if (require("sdk.Runtime").getUseCookie()) {
+                  if (require("sdk.Cookie").getDomain() == null) {
+                    require("sdk.Cookie").setDomain("." + baseDomain);
+                  }
+                }
+              }
+
+              function setGraphDomain(graphDomain) {
+                if (graphDomain != null) {
+                  require("sdk.Runtime").setGraphDomain(graphDomain);
+
+                  if (graphDomain == "instagram") {
+                    require("sdk.Runtime").setIsVersioned(false);
+                  }
+                } else {
+                  require("sdk.Runtime").setGraphDomain("");
+                }
+              }
+
+              function setLogoutState() {
+                require("sdk.Cookie").setRaw(
+                  AuthConstants.LOGOUT_COOKIE_PREFIX,
+                  "y",
+                  Date.now() + YEAR_MS,
+                  false
+                );
+              }
+
+              function removeLogoutState() {
+                require("sdk.Cookie").setRaw(
+                  AuthConstants.LOGOUT_COOKIE_PREFIX,
+                  "",
+                  0,
+                  false
+                );
+                require("sdk.Cookie").setRaw(
+                  AuthConstants.LOGOUT_COOKIE_PREFIX,
+                  "",
+                  0,
+                  true
+                );
+              }
+
               var AuthConstants = {
                 LOCAL_STORAGE_TOKEN_PREFIX: "fblst_",
                 IG_LOCAL_STORAGE_TOKEN_PREFIX: "iglst_",
                 SESSION_STORAGE_LOGIN_STATUS_PREFIX: "fbssls_",
                 CONNECTED_REVALIDATE_PERIOD: 60 * 90 * 1000,
-                DEFAULT_REVALIDATE_PERIOD: 60 * 60 * 24 * 1000
+                DEFAULT_REVALIDATE_PERIOD: 60 * 60 * 24 * 1000,
+                LOGOUT_COOKIE_PREFIX: "fblo_"
               };
               exports.AuthConstants = AuthConstants;
             },
@@ -9400,26 +9451,10 @@ try {
                 return require("sdk.AuthState").getState().currentAuthResponse;
               }
 
-              function setBaseDomain(baseDomain) {
-                if (require("sdk.Runtime").getUseCookie()) {
-                  if (require("sdk.Cookie").getDomain() == null) {
-                    require("sdk.Cookie").setDomain("." + baseDomain);
-                  }
-                }
-              }
-
-              function setGraphDomain(graphDomain) {
-                if (!!graphDomain) {
-                  require("sdk.Runtime").setGraphDomain(graphDomain);
-                } else {
-                  require("sdk.Runtime").setGraphDomain("");
-                }
-              }
-
               function logout(cb) {
                 var currentAuthResponse = getAuthResponse();
                 setAuthResponse(null, "unknown");
-                setLogoutState();
+                require("sdk.AuthUtils").setLogoutState();
 
                 if (
                   currentAuthResponse != null &&
@@ -9497,7 +9532,7 @@ try {
 
                     authResponse = populateAuthResponse(authResponse, params);
 
-                    removeLogoutState();
+                    require("sdk.AuthUtils").removeLogoutState();
                     status = "connected";
                     setAuthResponse(authResponse, status);
                     logSuccessfulAuth(requestParams);
@@ -9513,16 +9548,16 @@ try {
 
                     authResponse = populateAuthResponse(authResponse, params);
 
-                    removeLogoutState();
+                    require("sdk.AuthUtils").removeLogoutState();
                     status = "connected";
                     setAuthResponse(authResponse, status);
                     logSuccessfulAuth(requestParams);
                   } else if (params && params.error === "access_denied") {
-                    setLogoutState();
+                    require("sdk.AuthUtils").setLogoutState();
                     status = "unknown";
                     setAuthResponse(null, status);
                   } else if (params && params.result) {
-                    removeLogoutState();
+                    require("sdk.AuthUtils").removeLogoutState();
                     authResponse = params.result.authResponse;
                   }
 
@@ -9600,10 +9635,10 @@ try {
                 }
 
                 if (params.base_domain != null) {
-                  setBaseDomain(params.base_domain);
+                  require("sdk.AuthUtils").setBaseDomain(params.base_domain);
                 }
 
-                setGraphDomain(params.graph_domain);
+                require("sdk.AuthUtils").setGraphDomain(params.graph_domain);
 
                 if (params.enforce_https) {
                   require("sdk.Runtime").setEnforceHttps(true);
@@ -9620,25 +9655,6 @@ try {
                 );
 
                 return authResponse;
-              }
-
-              function removeLogoutState() {
-                require("sdk.Cookie").setRaw(
-                  LOGOUT_COOKIE_PREFIX,
-                  "",
-                  0,
-                  false
-                );
-                require("sdk.Cookie").setRaw(LOGOUT_COOKIE_PREFIX, "", 0, true);
-              }
-
-              function setLogoutState() {
-                require("sdk.Cookie").setRaw(
-                  LOGOUT_COOKIE_PREFIX,
-                  "y",
-                  Date.now() + YEAR_MS,
-                  false
-                );
               }
 
               function unknownStatus(cb) {
@@ -9714,7 +9730,7 @@ try {
                     redirAccessToken = fragmentParams.access_token;
                     var redirSignedRequest = fragmentParams.signed_request;
                     if (redirAccessToken != null) {
-                      removeLogoutState();
+                      require("sdk.AuthUtils").removeLogoutState();
                     }
 
                     if (window == top && redirAccessToken != null) {
@@ -9905,15 +9921,19 @@ try {
                     }
 
                     if (xhrAuthResponse.base_domain != null) {
-                      setBaseDomain(xhrAuthResponse.base_domain);
+                      require("sdk.AuthUtils").setBaseDomain(
+                        xhrAuthResponse.base_domain
+                      );
                     }
 
-                    setGraphDomain(xhrAuthResponse.graph_domain);
+                    require("sdk.AuthUtils").setGraphDomain(
+                      xhrAuthResponse.graph_domain
+                    );
                     require("sdk.AuthStorageUtils").setLocalStorageToken(
                       authResponse,
                       xhrAuthResponse.long_lived_token
                     );
-                    removeLogoutState();
+                    require("sdk.AuthUtils").removeLogoutState();
                     setAuthResponse(authResponse, loginStatus);
                     setRevalidateTimer();
                     break;
@@ -10158,7 +10178,6 @@ try {
               }
 
               var Auth = {
-                removeLogoutState: removeLogoutState,
                 getLoginStatus: getLoginStatus,
                 getLoginStatusCORS: getLoginStatusCORS,
                 fetchLoginStatus: fetchLoginStatus,
@@ -17116,6 +17135,7 @@ try {
               "UrlMap",
               "guid",
               "sdk.Auth",
+              "sdk.AuthUtils",
               "sdk.DOM",
               "sdk.Event",
               "sdk.PlatformVersioning",
@@ -17309,7 +17329,7 @@ try {
                     this.subscribe(
                       "xd.refreshLoginStatus",
                       function subscribe_$1() {
-                        require("sdk.Auth").removeLogoutState();
+                        require("sdk.AuthUtils").removeLogoutState();
                         require("sdk.Auth").getLoginStatus(
                           ES(_this.inform, "bind", true, _this, "login.status"),
                           true
@@ -20573,7 +20593,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1003843556","namespace":"FB","message":"' +
+        '","revision":"1003846624","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
