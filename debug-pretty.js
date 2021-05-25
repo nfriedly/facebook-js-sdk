@@ -1,4 +1,4 @@
-/*1621912759,,JIT Construction: v1003846624,en_US*/
+/*1621985347,,JIT Construction: v1003852041,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3773,7 +3773,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1003846624",
+            revision: "1003852041",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -12733,28 +12733,158 @@ try {
                 }
               };
 
-              function isOauth(params) {
-                return (
-                  params.method == "permissions.oauth" ||
-                  params.method == "permissions.request" ||
-                  params.method == "oauth"
-                );
-              }
-
               function isSupportedOauth(params) {
                 return (
-                  isOauth(params) &&
+                  UIServer.isOAuth(params) &&
                   require("sdk.Extensions").supportsDialog("oauth")
                 );
               }
 
               function isSupportedAccountLink(params) {
                 return (
-                  isOauth(params) &&
+                  UIServer.isOAuth(params) &&
                   (params.is_account_link === true ||
                     params.is_account_link === "true") &&
                   require("sdk.Extensions").supportsDialog("accountLink")
                 );
+              }
+
+              function permission_oauth_transform(call) {
+                if (!require("sdk.Runtime").getClientID()) {
+                  require("Log").error("FB.login() called before FB.init().");
+                  return;
+                }
+
+                if (
+                  require("sdk.Auth").getAuthResponse() &&
+                  !call.params.scope &&
+                  !call.params.asset_scope &&
+                  !call.params.auth_type
+                ) {
+                  if (!call.params.plugin_prepare) {
+                    require("Log").error(
+                      "FB.login() called when user is already connected."
+                    );
+                    call.cb &&
+                      call.cb({
+                        status: require("sdk.Runtime").getLoginStatus(),
+                        authResponse: require("sdk.Auth").getAuthResponse()
+                      });
+                  }
+                  return;
+                }
+
+                var cb = call.cb;
+                var id = call.id;
+                delete call.cb;
+
+                if (call && call.params && !call.params.logger_id) {
+                  call.params.logger_id = require("guid")();
+                }
+
+                if (call && call.params && !call.params.cbt) {
+                  call.params.cbt = Date.now();
+                }
+
+                if (call.params.fx_app === "instagram" && !call.params.scope) {
+                  call.params.scope = "public_profile";
+                }
+
+                var auth_type = call.params.auth_type;
+                var isReauthenticate =
+                  auth_type &&
+                  ES(auth_type, "includes", true, "reauthenticate");
+                var defaultResponseType = {
+                  token: true,
+                  signed_request: true,
+                  graph_domain: true
+                };
+
+                var responseTypes = Object.keys(
+                  ES(
+                    "Object",
+                    "assign",
+                    false,
+
+                    call.params.response_type
+                      ? require("createObjectFrom")(
+                          call.params.response_type.split(",")
+                        )
+                      : {},
+                    defaultResponseType
+                  )
+                ).join(",");
+
+                if (call.params.display === "async") {
+                  ES("Object", "assign", false, call.params, {
+                    client_id: require("sdk.Runtime").getClientID(),
+                    origin: require("sdk.getContextType")(),
+                    response_type: responseTypes,
+                    domain: location.hostname
+                  });
+
+                  call.cb = require("sdk.Auth").xdResponseWrapper(
+                    cb,
+                    require("sdk.Auth").getAuthResponse(),
+                    "permissions.oauth",
+                    call.params
+                  );
+                } else {
+                  if (isReauthenticate) {
+                    UIServer._xdNextHandler(
+                      function UIServer__xdNextHandler_$0(_params) {
+                        cb({
+                          authResponse: null,
+                          status: "not_authorized"
+                        });
+                      },
+                      id,
+                      call.params.plugin_prepare ? "opener.parent" : "opener",
+                      true
+                    );
+                  }
+                  ES("Object", "assign", false, call.params, {
+                    client_id: require("sdk.Runtime").getClientID(),
+                    redirect_uri: require("resolveURI")(
+                      UIServer.xdHandler(
+                        cb,
+                        id,
+                        call.params.plugin_prepare ? "opener.parent" : "opener",
+                        require("sdk.Auth").getAuthResponse(),
+                        "permissions.oauth",
+                        !isReauthenticate,
+                        call.params
+                      )
+                    ),
+
+                    origin: require("sdk.getContextType")(),
+                    response_type: responseTypes,
+                    domain: location.hostname
+                  });
+                }
+
+                var payload = {
+                  logger_id: call.params.logger_id,
+                  action: "client_login_start",
+                  client_funnel_version: require("sdk.feature")(
+                    "oauth_funnel_logger_version",
+                    1
+                  ),
+                  cbt_delta: 0
+                };
+
+                var drop_funnel_logging =
+                  call.params &&
+                  call.params.tp &&
+                  call.params.tp !== "unspecified";
+
+                if (!call.params.plugin_prepare && !drop_funnel_logging) {
+                  require("sdk.Impressions").log(117, {
+                    payload: payload
+                  });
+                }
+
+                return call;
               }
 
               var Methods = {
@@ -12839,141 +12969,19 @@ try {
                   },
 
                   transform: function transform(call) {
-                    if (!require("sdk.Runtime").getClientID()) {
-                      require("Log").error(
-                        "FB.login() called before FB.init()."
-                      );
-                      return;
-                    }
+                    return permission_oauth_transform(call);
+                  }
+                },
 
-                    if (
-                      require("sdk.Auth").getAuthResponse() &&
-                      !call.params.scope &&
-                      !call.params.asset_scope &&
-                      !call.params.auth_type
-                    ) {
-                      if (!call.params.plugin_prepare) {
-                        require("Log").error(
-                          "FB.login() called when user is already connected."
-                        );
-                        call.cb &&
-                          call.cb({
-                            status: require("sdk.Runtime").getLoginStatus(),
-                            authResponse: require("sdk.Auth").getAuthResponse()
-                          });
-                      }
-                      return;
-                    }
+                "permissions.ig_oauth": {
+                  url: "oauth/authorize",
+                  size: {
+                    width: require("sdk.UA").mobile() ? null : 600,
+                    height: require("sdk.UA").mobile() ? null : 679
+                  },
 
-                    var cb = call.cb;
-                    var id = call.id;
-                    delete call.cb;
-
-                    if (call && call.params && !call.params.logger_id) {
-                      call.params.logger_id = require("guid")();
-                    }
-
-                    if (call && call.params && !call.params.cbt) {
-                      call.params.cbt = Date.now();
-                    }
-
-                    var auth_type = call.params.auth_type;
-                    var isReauthenticate =
-                      auth_type &&
-                      ES(auth_type, "includes", true, "reauthenticate");
-                    var responseTypes = Object.keys(
-                      ES(
-                        "Object",
-                        "assign",
-                        false,
-
-                        call.params.response_type
-                          ? require("createObjectFrom")(
-                              call.params.response_type.split(",")
-                            )
-                          : {},
-                        {
-                          token: true,
-                          signed_request: true,
-                          graph_domain: true
-                        }
-                      )
-                    ).join(",");
-
-                    if (call.params.display === "async") {
-                      ES("Object", "assign", false, call.params, {
-                        client_id: require("sdk.Runtime").getClientID(),
-                        origin: require("sdk.getContextType")(),
-                        response_type: responseTypes,
-                        domain: location.hostname
-                      });
-
-                      call.cb = require("sdk.Auth").xdResponseWrapper(
-                        cb,
-                        require("sdk.Auth").getAuthResponse(),
-                        "permissions.oauth",
-                        call.params
-                      );
-                    } else {
-                      if (isReauthenticate) {
-                        UIServer._xdNextHandler(
-                          function UIServer__xdNextHandler_$0(params) {
-                            cb({
-                              authResponse: null,
-                              status: "not_authorized"
-                            });
-                          },
-                          id,
-                          call.params.plugin_prepare
-                            ? "opener.parent"
-                            : "opener",
-                          true
-                        );
-                      }
-                      ES("Object", "assign", false, call.params, {
-                        client_id: require("sdk.Runtime").getClientID(),
-                        redirect_uri: require("resolveURI")(
-                          UIServer.xdHandler(
-                            cb,
-                            id,
-                            call.params.plugin_prepare
-                              ? "opener.parent"
-                              : "opener",
-                            require("sdk.Auth").getAuthResponse(),
-                            "permissions.oauth",
-                            !isReauthenticate,
-                            call.params
-                          )
-                        ),
-
-                        origin: require("sdk.getContextType")(),
-                        response_type: responseTypes,
-                        domain: location.hostname
-                      });
-                    }
-
-                    var payload = {
-                      logger_id: call.params.logger_id,
-                      action: "client_login_start",
-                      client_funnel_version: require("sdk.feature")(
-                        "oauth_funnel_logger_version",
-                        1
-                      ),
-                      cbt_delta: 0
-                    };
-
-                    var drop_funnel_logging =
-                      call.params &&
-                      call.params.tp &&
-                      call.params.tp !== "unspecified";
-
-                    if (!call.params.plugin_prepare && !drop_funnel_logging) {
-                      require("sdk.Impressions").log(117, {
-                        payload: payload
-                      });
-                    }
-
-                    return call;
+                  transform: function transform(call) {
+                    return permission_oauth_transform(call);
                   }
                 },
 
@@ -13055,6 +13063,12 @@ try {
               var UIServer = {
                 Methods: Methods,
 
+                _oauthMethodNameSet: new Set([
+                  "permissions.oauth",
+                  "permissions.request",
+                  "permissions.ig_oauth"
+                ]),
+
                 _loadedNodes: {},
                 _defaultCb: {},
                 _resultToken: '"xxRESULTTOKENxx"',
@@ -13082,6 +13096,13 @@ try {
                   }
 
                   return call;
+                },
+
+                isOAuth: function isOAuth(params) {
+                  return (
+                    UIServer._oauthMethodNameSet.has(params.method) ||
+                    params.method == "oauth"
+                  );
                 },
 
                 checkOauthDisplay: function checkOauthDisplay(params) {
@@ -13186,13 +13207,21 @@ try {
                     cb = _trackRunState(cb, name);
                   }
 
+                  if (!params.fx_app) {
+                    params.fx_app = "facebook";
+                  }
+
                   var call = {
                     cb: cb,
                     id: id,
                     size: method.size || UIServer.getDefaultSize(),
                     url:
                       require("UrlMap").resolve(
-                        params.display == "touch" ? "m" : "www"
+                        params.fx_app === "instagram"
+                          ? "www_instagram"
+                          : params.display == "touch"
+                          ? "m"
+                          : "www"
                       ) +
                       "/" +
                       method.url,
@@ -13409,10 +13438,7 @@ try {
                   features.push("left=" + left);
                   features.push("top=" + top);
                   features.push("scrollbars=1");
-                  if (
-                    call.name == "permissions.request" ||
-                    call.name == "permissions.oauth"
-                  ) {
+                  if (UIServer.isOAuth(call.name)) {
                     features.push("toolbar=0");
 
                     if (
@@ -13449,7 +13475,7 @@ try {
                         true
                       )
                     ) {
-                      var error = isOauth({ method: call.name })
+                      var error = UIServer.isOAuth({ method: call.name })
                         ? "POPUP_MAYBE_BLOCKED_OAUTH"
                         : "POPUP_MAYBE_BLOCKED";
                       require("sdk.Scribe").log("jssdk_error", {
@@ -13700,7 +13726,7 @@ try {
 
                         try {
                           if (win.closed) {
-                            if (node.method === "permissions.oauth") {
+                            if (UIServer.isOAuth(node.method)) {
                               require("sdk.Auth").getLoginStatus(
                                 function Auth_getLoginStatus_$0(response) {
                                   if (
@@ -13742,6 +13768,9 @@ try {
                                       }
                                     );
                                   } else {
+                                    if (response.status !== "connected") {
+                                      response.closeWindow = true;
+                                    }
                                     UIServer._triggerDefault(id, response);
                                   }
                                 },
@@ -13967,8 +13996,7 @@ try {
                 }
 
                 if (
-                  (method == "permissions.request" ||
-                    method == "permissions.oauth") &&
+                  require("sdk.UIServer").isOAuth(method) &&
                   (params.display == "iframe" || params.display == "dialog")
                 ) {
                   params.display = require("sdk.UIServer").checkOauthDisplay(
@@ -20593,7 +20621,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1003846624","namespace":"FB","message":"' +
+        '","revision":"1003852041","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
