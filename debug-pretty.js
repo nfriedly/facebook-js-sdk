@@ -1,4 +1,4 @@
-/*1622076559,,JIT Construction: v1003864143,en_US*/
+/*1622081365,,JIT Construction: v1003864778,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3773,7 +3773,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1003864143",
+            revision: "1003864778",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -8315,8 +8315,88 @@ try {
             null
           );
           __d(
+            "sdk.Observable",
+            [],
+            function $module_sdk_Observable(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              var Observable = (function() {
+                function Observable() {
+                  this.$Observable_observableEvents = {};
+                  this.getSubscribers = ES(
+                    this.getSubscribers,
+                    "bind",
+                    true,
+                    this
+                  );
+                  this.clearSubscribers = ES(
+                    this.clearSubscribers,
+                    "bind",
+                    true,
+                    this
+                  );
+                  this.subscribe = ES(this.subscribe, "bind", true, this);
+                  this.unsubscribe = ES(this.unsubscribe, "bind", true, this);
+                  this.inform = ES(this.inform, "bind", true, this);
+                }
+                var _proto = Observable.prototype;
+                _proto.getSubscribers = function getSubscribers(toWhat) {
+                  return (
+                    this.$Observable_observableEvents[toWhat] ||
+                    (this.$Observable_observableEvents[toWhat] = [])
+                  );
+                };
+                _proto.clearSubscribers = function clearSubscribers(toWhat) {
+                  if (toWhat) {
+                    this.$Observable_observableEvents[toWhat] = [];
+                  }
+                };
+                _proto.subscribe = function subscribe(toWhat, withWhat) {
+                  var list = this.getSubscribers(toWhat);
+                  list.push(withWhat);
+                };
+                _proto.unsubscribe = function unsubscribe(toWhat, withWhat) {
+                  var list = this.getSubscribers(toWhat);
+                  for (var i = 0; i < list.length; i++) {
+                    if (list[i] === withWhat) {
+                      list.splice(i, 1);
+                      break;
+                    }
+                  }
+                };
+                _proto.inform = function inform(what, withWhat) {
+                  var list = this.getSubscribers(what);
+                  for (var i = 0; i < list.length; i++) {
+                    if (list[i] === null) {
+                      continue;
+                    }
+                    if (__DEV__) {
+                      list[i].call(this, withWhat);
+                    } else {
+                      try {
+                        list[i].call(this, withWhat);
+                      } catch (e) {
+                        window.setTimeout(function window_setTimeout_$0() {
+                          throw e;
+                        }, 0);
+                      }
+                    }
+                  }
+                };
+                return Observable;
+              })();
+              exports.Observable = Observable;
+            },
+            null
+          );
+          __d(
             "sdk.AuthUtils",
-            ["sdk.Cookie", "sdk.Runtime"],
+            ["sdk.Cookie", "sdk.Observable", "sdk.Runtime"],
             function $module_sdk_AuthUtils(
               global,
               require,
@@ -8384,6 +8464,30 @@ try {
                   true
                 );
               }
+              var observable = new (require("sdk.Observable")).Observable();
+              function inform(key, value) {
+                observable.inform(key, value);
+              }
+
+              function subscribe(key, func) {
+                observable.subscribe(key, func);
+              }
+
+              function clearSubscribers(key) {
+                observable.clearSubscribers(key);
+              }
+
+              function unsubscribe(key, func) {
+                observable.unsubscribe(key, func);
+              }
+
+              var AuthInternalEvent = {
+                inform: inform,
+                subscribe: subscribe,
+                clearSubscribers: clearSubscribers,
+                unsubscribe: unsubscribe
+              };
+              exports.AuthInternalEvent = AuthInternalEvent;
 
               var AuthConstants = {
                 LOCAL_STORAGE_TOKEN_PREFIX: "fblst_",
@@ -9026,86 +9130,6 @@ try {
                   payload: ES("JSON", "stringify", false, payload)
                 });
               }
-            },
-            null
-          );
-          __d(
-            "sdk.Observable",
-            [],
-            function $module_sdk_Observable(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              var Observable = (function() {
-                function Observable() {
-                  this.$Observable_observableEvents = {};
-                  this.getSubscribers = ES(
-                    this.getSubscribers,
-                    "bind",
-                    true,
-                    this
-                  );
-                  this.clearSubscribers = ES(
-                    this.clearSubscribers,
-                    "bind",
-                    true,
-                    this
-                  );
-                  this.subscribe = ES(this.subscribe, "bind", true, this);
-                  this.unsubscribe = ES(this.unsubscribe, "bind", true, this);
-                  this.inform = ES(this.inform, "bind", true, this);
-                }
-                var _proto = Observable.prototype;
-                _proto.getSubscribers = function getSubscribers(toWhat) {
-                  return (
-                    this.$Observable_observableEvents[toWhat] ||
-                    (this.$Observable_observableEvents[toWhat] = [])
-                  );
-                };
-                _proto.clearSubscribers = function clearSubscribers(toWhat) {
-                  if (toWhat) {
-                    this.$Observable_observableEvents[toWhat] = [];
-                  }
-                };
-                _proto.subscribe = function subscribe(toWhat, withWhat) {
-                  var list = this.getSubscribers(toWhat);
-                  list.push(withWhat);
-                };
-                _proto.unsubscribe = function unsubscribe(toWhat, withWhat) {
-                  var list = this.getSubscribers(toWhat);
-                  for (var i = 0; i < list.length; i++) {
-                    if (list[i] === withWhat) {
-                      list.splice(i, 1);
-                      break;
-                    }
-                  }
-                };
-                _proto.inform = function inform(what, withWhat) {
-                  var list = this.getSubscribers(what);
-                  for (var i = 0; i < list.length; i++) {
-                    if (list[i] === null) {
-                      continue;
-                    }
-                    if (__DEV__) {
-                      list[i].call(this, withWhat);
-                    } else {
-                      try {
-                        list[i].call(this, withWhat);
-                      } catch (e) {
-                        window.setTimeout(function window_setTimeout_$0() {
-                          throw e;
-                        }, 0);
-                      }
-                    }
-                  }
-                };
-                return Observable;
-              })();
-              exports.Observable = Observable;
             },
             null
           );
@@ -20667,7 +20691,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1003864143","namespace":"FB","message":"' +
+        '","revision":"1003864778","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
