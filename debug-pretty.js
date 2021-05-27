@@ -1,4 +1,4 @@
-/*1621985347,,JIT Construction: v1003852041,en_US*/
+/*1622076559,,JIT Construction: v1003864143,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3773,7 +3773,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1003852041",
+            revision: "1003864143",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -4225,6 +4225,7 @@ try {
 
               if (!domIsReady) {
                 queue = [];
+
                 if (document.addEventListener) {
                   document.addEventListener("DOMContentLoaded", flush, false);
                   window.addEventListener("load", flush, false);
@@ -9534,6 +9535,7 @@ try {
 
                     require("sdk.AuthUtils").removeLogoutState();
                     status = "connected";
+
                     setAuthResponse(authResponse, status);
                     logSuccessfulAuth(requestParams);
                   } else if (params && params.asset_scopes) {
@@ -9550,6 +9552,7 @@ try {
 
                     require("sdk.AuthUtils").removeLogoutState();
                     status = "connected";
+
                     setAuthResponse(authResponse, status);
                     logSuccessfulAuth(requestParams);
                   } else if (params && params.error === "access_denied") {
@@ -12080,6 +12083,45 @@ try {
             null
           );
           __d(
+            "isInstagramURI",
+            [],
+            function $module_isInstagramURI(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              module.exports = isInstagramURI;
+
+              var instagramURIRegex = null;
+
+              function isInstagramURI(uri) {
+                if (uri.isEmpty() && uri.toString() !== "#") {
+                  return false;
+                }
+
+                if (!uri.getDomain() && !uri.getProtocol()) {
+                  return false;
+                }
+
+                if (uri.getProtocol() !== "https") {
+                  return false;
+                }
+
+                if (!instagramURIRegex) {
+                  instagramURIRegex = new RegExp(
+                    "(^|\\.)instagram\\.com$",
+                    "i"
+                  );
+                }
+                return instagramURIRegex.test(uri.getDomain());
+              }
+            },
+            null
+          );
+          __d(
             "resolveWindow",
             [],
             function $module_resolveWindow(
@@ -12139,6 +12181,7 @@ try {
               "UrlMap",
               "guid",
               "isFacebookURI",
+              "isInstagramURI",
               "resolveWindow",
               "sdk.Event",
               "sdk.RPC",
@@ -12160,7 +12203,7 @@ try {
               var messageToFacebookRelation = "parent";
               var xdProxyName = null;
 
-              var facebookRe = /^https:\/\/.*\.facebook\.com$/;
+              var facebookRe = /^https:\/\/.*\.(facebook|instagram)\.com$/;
 
               var xdArbiterTier = require("JSSDKXDConfig").useCdn
                 ? "cdn"
@@ -12281,6 +12324,9 @@ try {
                   senderOrigin != null &&
                   senderOrigin !== "native" &&
                   !require("isFacebookURI")(
+                    new (require("sdk.URI"))(senderOrigin)
+                  ) &&
+                  !require("isInstagramURI")(
                     new (require("sdk.URI"))(senderOrigin)
                   )
                 ) {
@@ -20621,7 +20667,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1003852041","namespace":"FB","message":"' +
+        '","revision":"1003864143","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
