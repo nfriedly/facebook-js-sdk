@@ -1,4 +1,4 @@
-/*1622142613,,JIT Construction: v1003870325,en_US*/
+/*1622183963,,JIT Construction: v1003876327,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3775,7 +3775,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1003870325",
+            revision: "1003876327",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -8498,7 +8498,9 @@ try {
                 SESSION_STORAGE_LOGIN_STATUS_PREFIX: "fbssls_",
                 CONNECTED_REVALIDATE_PERIOD: 60 * 90 * 1000,
                 DEFAULT_REVALIDATE_PERIOD: 60 * 60 * 24 * 1000,
-                LOGOUT_COOKIE_PREFIX: "fblo_"
+                LOGOUT_COOKIE_PREFIX: "fblo_",
+                CORS_FETCH_COMPLETED_EVENT: "cors_fetch_completed",
+                XFOA_FINAL_RESPONSE_EVENT: "xfoa_final_response"
               };
               exports.AuthConstants = AuthConstants;
             },
@@ -20694,7 +20696,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1003870325","namespace":"FB","message":"' +
+        '","revision":"1003876327","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
