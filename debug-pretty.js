@@ -1,4 +1,4 @@
-/*1622183963,,JIT Construction: v1003876327,en_US*/
+/*1622595549,,JIT Construction: v1003886795,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3775,7 +3775,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1003876327",
+            revision: "1003886795",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -12070,6 +12070,105 @@ try {
             null
           );
           __d(
+            "sdk.Popup",
+            [
+              "sdk.Content",
+              "sdk.Runtime",
+              "sdk.Scribe",
+              "sdk.UA",
+              "sdk.feature"
+            ],
+            function $module_sdk_Popup(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              "use strict";
+              exports.popup = popup;
+
+              function popup(call, isOAuth) {
+                var featuresString = getPopupFeaturesString({
+                  name: call.name,
+                  height: call.size.height,
+                  width: call.size.width,
+                  isOAuth: isOAuth
+                });
+
+                var popup;
+                if (call.post) {
+                  popup = window.open("about:blank", call.id, featuresString);
+                  if (popup) {
+                    require("sdk.Content").submitToTarget({
+                      url: call.url,
+                      target: call.id,
+                      params: call.params
+                    });
+                  }
+                } else {
+                  popup = window.open(call.url, call.id, featuresString);
+                }
+
+                if (!popup) {
+                  if (
+                    require("sdk.feature")("popup_blocker_scribe_logging", true)
+                  ) {
+                    var error = isOAuth
+                      ? "POPUP_MAYBE_BLOCKED_OAUTH"
+                      : "POPUP_MAYBE_BLOCKED";
+                    require("sdk.Scribe").log("jssdk_error", {
+                      appId: require("sdk.Runtime").getClientID(),
+                      error: error,
+                      extra: {
+                        call: call.name
+                      }
+                    });
+                  }
+                }
+                return popup;
+              }
+
+              function getPopupFeaturesString(options) {
+                var _screenX = window.screenX;
+                var screenY = window.screenY;
+                var outerWidth = window.outerWidth;
+                var outerHeight = window.outerHeight;
+
+                var width = require("sdk.UA").mobile() ? 0 : options.width;
+                var height = require("sdk.UA").mobile() ? 0 : options.height;
+                var screenX =
+                  _screenX < 0 ? window.screen.width + _screenX : _screenX;
+                var left = screenX + (outerWidth - width) / 2;
+                var top = screenY + (outerHeight - height) / 2.5;
+                var features = [];
+
+                if (width !== null) {
+                  features.push("width=" + width);
+                }
+                if (height !== null) {
+                  features.push("height=" + height);
+                }
+                features.push("left=" + left);
+                features.push("top=" + top);
+                features.push("scrollbars=1");
+                if (options.isOAuth) {
+                  features.push("toolbar=0");
+
+                  if (
+                    !require("sdk.UA").chrome() ||
+                    require("sdk.UA").chrome() < 59
+                  ) {
+                    features.push("location=1");
+                  }
+                }
+                return features.join(",");
+              }
+            },
+            null
+          );
+          __d(
             "isFacebookURI",
             [],
             function $module_isFacebookURI(
@@ -12755,9 +12854,9 @@ try {
               "sdk.Frictionless",
               "sdk.Impressions",
               "sdk.Native",
+              "sdk.Popup",
               "sdk.RPC",
               "sdk.Runtime",
-              "sdk.Scribe",
               "sdk.UA",
               "sdk.XD",
               "sdk.api",
@@ -13487,85 +13586,16 @@ try {
                 },
 
                 popup: function popup(call) {
-                  var _screenX = window.screenX;
-                  var screenY = window.screenY;
-                  var outerWidth = window.outerWidth;
-                  var outerHeight = window.outerHeight;
+                  var popup = require("sdk.Popup").popup(
+                    call,
+                    UIServer.isOAuth(call.name)
+                  );
+                  if (popup) {
+                    UIServer.setLoadedNode(call, popup, "popup");
 
-                  var width = require("sdk.UA").mobile()
-                    ? null
-                    : call.size.width;
-                  var height = require("sdk.UA").mobile()
-                    ? null
-                    : call.size.height;
-                  var screenX =
-                    _screenX < 0 ? window.screen.width + _screenX : _screenX;
-                  var left = screenX + (outerWidth - width) / 2;
-                  var top = screenY + (outerHeight - height) / 2.5;
-                  var features = [];
-
-                  if (width !== null) {
-                    features.push("width=" + width);
-                  }
-                  if (height !== null) {
-                    features.push("height=" + height);
-                  }
-                  features.push("left=" + left);
-                  features.push("top=" + top);
-                  features.push("scrollbars=1");
-                  if (UIServer.isOAuth(call.name)) {
-                    features.push("toolbar=0");
-
-                    if (
-                      !require("sdk.UA").chrome() ||
-                      require("sdk.UA").chrome() < 59
-                    ) {
-                      features.push("location=1");
+                    if (call.id in UIServer._defaultCb) {
+                      UIServer._popupMonitor();
                     }
-                  }
-                  var featuresString = features.join(",");
-
-                  var popup;
-                  if (call.post) {
-                    popup = window.open("about:blank", call.id, featuresString);
-                    if (popup) {
-                      UIServer.setLoadedNode(call, popup, "popup");
-                      require("sdk.Content").submitToTarget({
-                        url: call.url,
-                        target: call.id,
-                        params: call.params
-                      });
-                    }
-                  } else {
-                    popup = window.open(call.url, call.id, featuresString);
-                    if (popup) {
-                      UIServer.setLoadedNode(call, popup, "popup");
-                    }
-                  }
-
-                  if (!popup) {
-                    if (
-                      require("sdk.feature")(
-                        "popup_blocker_scribe_logging",
-                        true
-                      )
-                    ) {
-                      var error = UIServer.isOAuth({ method: call.name })
-                        ? "POPUP_MAYBE_BLOCKED_OAUTH"
-                        : "POPUP_MAYBE_BLOCKED";
-                      require("sdk.Scribe").log("jssdk_error", {
-                        appId: require("sdk.Runtime").getClientID(),
-                        error: error,
-                        extra: {
-                          call: call.name
-                        }
-                      });
-                    }
-                    return;
-                  }
-
-                  if (call.id in UIServer._defaultCb) {
-                    UIServer._popupMonitor();
                   }
                 },
 
@@ -20696,7 +20726,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1003876327","namespace":"FB","message":"' +
+        '","revision":"1003886795","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
