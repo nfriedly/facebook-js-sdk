@@ -1,4 +1,4 @@
-/*1622595549,,JIT Construction: v1003886795,en_US*/
+/*1622751672,,JIT Construction: v1003902206,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -637,6 +637,7 @@ try {
           /**
            * Copyright 2004-present Facebook. All Rights Reserved.
            *
+           *  strict
            * @format
            */ __d(
             "ES6ArrayPrototype",
@@ -687,7 +688,7 @@ try {
                   return -1;
                 },
 
-                fill: function fill(value) {
+                fill: function fill(value, _start, _end) {
                   if (this == null) {
                     throw new TypeError(
                       "Array.prototype.fill called on null or undefined"
@@ -714,14 +715,15 @@ try {
                   return O;
                 }
               };
-
-              module.exports = ES6ArrayPrototype;
+              var _default = ES6ArrayPrototype;
+              module.exports = _default;
             },
             null
           );
           /**
            * Copyright 2004-present Facebook. All Rights Reserved.
            *
+           *  strict
            * @format
            */ __d(
             "ES6Number",
@@ -780,8 +782,8 @@ try {
                 MAX_SAFE_INTEGER: MAX_SAFE_INTEGER,
                 MIN_SAFE_INTEGER: MIN_SAFE_INTEGER
               };
-
-              module.exports = ES6Number;
+              var _default = ES6Number;
+              module.exports = _default;
             },
             null
           );
@@ -904,6 +906,7 @@ try {
           /**
            * Copyright 2004-present Facebook. All Rights Reserved.
            *
+           *  strict
            * @format
            */ __d(
             "ES5Array",
@@ -916,15 +919,15 @@ try {
               module,
               exports
             ) {
-              var ES5Array = {};
-
-              ES5Array.isArray = function(object) {
-                return (
-                  Object.prototype.toString.call(object) == "[object Array]"
-                );
+              var ES5Array = {
+                isArray: function isArray(object) {
+                  return (
+                    Object.prototype.toString.call(object) == "[object Array]"
+                  );
+                }
               };
-
-              module.exports = ES5Array;
+              var _default = ES5Array;
+              module.exports = _default;
             },
             null
           );
@@ -932,6 +935,7 @@ try {
            * Copyright 2004-present Facebook. All Rights Reserved.
            *
            * @format
+           *  strict
            */ __d(
             "ES5ArrayPrototype",
             [],
@@ -943,101 +947,26 @@ try {
               module,
               exports
             ) {
-              var ES5ArrayPrototype = {};
+              var ES5ArrayPrototype = {
+                indexOf: function indexOf(val, idx) {
+                  var index = idx;
+                  var len = this.length;
+                  index |= 0;
 
-              ES5ArrayPrototype.map = function(func, context) {
-                if (typeof func !== "function") {
-                  throw new TypeError();
-                }
-
-                var ii;
-                var len = this.length;
-                var r = new Array(len);
-                for (ii = 0; ii < len; ++ii) {
-                  if (ii in this) {
-                    r[ii] = func.call(context, this[ii], ii, this);
+                  if (index < 0) {
+                    index += len;
                   }
-                }
 
-                return r;
-              };
-
-              ES5ArrayPrototype.forEach = function(func, context) {
-                ES5ArrayPrototype.map.call(this, func, context);
-              };
-
-              ES5ArrayPrototype.filter = function(func, context) {
-                if (typeof func !== "function") {
-                  throw new TypeError();
-                }
-
-                var ii;
-                var val;
-                var len = this.length;
-                var r = [];
-                for (ii = 0; ii < len; ++ii) {
-                  if (ii in this) {
-                    val = this[ii];
-                    if (func.call(context, val, ii, this)) {
-                      r.push(val);
+                  for (; index < len; index++) {
+                    if (index in this && this[index] === val) {
+                      return index;
                     }
                   }
+                  return -1;
                 }
-
-                return r;
               };
-
-              ES5ArrayPrototype.every = function(func, context) {
-                if (typeof func !== "function") {
-                  throw new TypeError();
-                }
-
-                var t = new Object(this);
-                var len = t.length;
-                for (var ii = 0; ii < len; ii++) {
-                  if (ii in t) {
-                    if (!func.call(context, t[ii], ii, t)) {
-                      return false;
-                    }
-                  }
-                }
-                return true;
-              };
-
-              ES5ArrayPrototype.some = function(func, context) {
-                if (typeof func !== "function") {
-                  throw new TypeError();
-                }
-
-                var t = new Object(this);
-                var len = t.length;
-                for (var ii = 0; ii < len; ii++) {
-                  if (ii in t) {
-                    if (func.call(context, t[ii], ii, t)) {
-                      return true;
-                    }
-                  }
-                }
-                return false;
-              };
-
-              ES5ArrayPrototype.indexOf = function(val, index) {
-                var len = this.length;
-                index |= 0;
-
-                if (index < 0) {
-                  index += len;
-                }
-
-                for (; index < len; index++) {
-                  if (index in this && this[index] === val) {
-                    return index;
-                  }
-                }
-                return -1;
-              };
-
-              module.exports = ES5ArrayPrototype;
+              var _default = ES5ArrayPrototype;
+              module.exports = _default;
             },
             null
           );
@@ -3775,7 +3704,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1003886795",
+            revision: "1003902206",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -9286,6 +9215,452 @@ try {
             null
           );
           __d(
+            "sdk.statusCORS",
+            [
+              "Log",
+              "UrlMap",
+              "sdk.AuthState",
+              "sdk.AuthStorageUtils",
+              "sdk.AuthUtils",
+              "sdk.Impressions",
+              "sdk.Runtime",
+              "sdk.Scribe",
+              "sdk.URI",
+              "sdk.feature",
+              "sdk.getContextType"
+            ],
+            function $module_sdk_statusCORS(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              "use strict";
+
+              var DEFAULT_TIMEOUT = 60000;
+              var PLATFORM_E2E_TRACKING_LOG_ID = 114;
+
+              function getLoginStatusCORS(
+                cb,
+                token,
+                currentAuthResponse,
+                loginSource
+              ) {
+                if (loginSource === void 0) {
+                  loginSource = "facebook";
+                }
+                var url = getCORSTarget(token);
+                var fetchStart = Date.now();
+
+                function corsFetchXHR() {
+                  var xhr = new XMLHttpRequest();
+                  if (xhr) {
+                    xhr.open("GET", url.toString(), true);
+                    xhr.withCredentials = true;
+                    xhr.onreadystatechange = function() {
+                      if (xhr.readyState === 4) {
+                        if (require("sdk.feature")("e2e_ping_tracking", true)) {
+                          var events = {
+                            init: fetchStart,
+                            close: Date.now(),
+                            method: "cors"
+                          };
+
+                          require("Log").debug(
+                            "e2e: %s",
+                            ES("JSON", "stringify", false, events)
+                          );
+                          require("sdk.Impressions").log(
+                            PLATFORM_E2E_TRACKING_LOG_ID,
+                            {
+                              payload: events
+                            }
+                          );
+                        }
+
+                        if (xhr.status === 200) {
+                          var _xhr$getResponseHeade, _xhr$getResponseHeade2;
+                          onCORSSuccess(
+                            cb,
+                            (_xhr$getResponseHeade = xhr.getResponseHeader(
+                              "fb-s"
+                            )) != null
+                              ? _xhr$getResponseHeade
+                              : "unknown",
+                            (_xhr$getResponseHeade2 = xhr.getResponseHeader(
+                              "fb-ar"
+                            )) != null
+                              ? _xhr$getResponseHeade2
+                              : "{}",
+                            loginSource
+                          );
+                        } else {
+                          onCORSFailure(
+                            cb,
+                            xhr.status,
+                            currentAuthResponse,
+                            loginSource
+                          );
+                        }
+                      }
+                    };
+                    xhr.send();
+                  }
+                }
+
+                function timeOutSecondRequestIfNecessary() {
+                  if (!isTheOtherLoginStatusLoaded(loginSource)) {
+                    window.setTimeout(function window_setTimeout_$0() {
+                      defaultLoginSourceToUnknownStatus(
+                        loginSource === "facebook" ? "instagram" : "facebook"
+                      );
+
+                      require("sdk.AuthState").setState({
+                        shouldSecondLoginRequestTimeOut: true
+                      });
+                    }, DEFAULT_TIMEOUT);
+                  }
+                }
+
+                function corsFetch() {
+                  window
+                    .fetch(url.toString(), {
+                      referrer: "/",
+                      mode: "cors",
+                      credentials: "include"
+                    })
+                    .then(function then_$0(response) {
+                      if (
+                        require("sdk.AuthState").getState()
+                          .shouldSecondLoginRequestTimeOut
+                      ) {
+                        require("sdk.AuthState").setState({
+                          shouldSecondLoginRequestTimeOut: false
+                        });
+
+                        return;
+                      }
+                      timeOutSecondRequestIfNecessary();
+                      if (response.status === 200) {
+                        var _response$headers$get, _response$headers$get2;
+                        onCORSSuccess(
+                          cb,
+                          (_response$headers$get = response.headers.get(
+                            "fb-s"
+                          )) != null
+                            ? _response$headers$get
+                            : "unknown",
+                          (_response$headers$get2 = response.headers.get(
+                            "fb-ar"
+                          )) != null
+                            ? _response$headers$get2
+                            : "{}",
+                          loginSource
+                        );
+                      } else {
+                        onCORSFailure(
+                          cb,
+                          response.status,
+                          currentAuthResponse,
+                          loginSource
+                        );
+                      }
+                    })
+                    ["catch"](function $0(_e) {
+                      if (
+                        require("sdk.AuthState").getState()
+                          .shouldSecondLoginRequestTimeOut
+                      ) {
+                        require("sdk.AuthState").setState({
+                          shouldSecondLoginRequestTimeOut: false
+                        });
+
+                        return;
+                      }
+                      timeOutSecondRequestIfNecessary();
+                      onCORSFailure(cb, 0, currentAuthResponse, loginSource);
+                    });
+                }
+
+                if (typeof window.fetch === "function") {
+                  corsFetch();
+                } else {
+                  corsFetchXHR();
+                }
+              }
+
+              function onCORSSuccess(
+                cb,
+                loginStatus,
+                authResponseHeader,
+                loginSource
+              ) {
+                if (loginSource === void 0) {
+                  loginSource = "facebook";
+                }
+                switch (loginStatus) {
+                  case "connected":
+                    var xhrAuthResponse = ES(
+                      "JSON",
+                      "parse",
+                      false,
+                      authResponseHeader
+                    );
+
+                    var authResponse = {
+                      accessToken: xhrAuthResponse.access_token,
+                      userID: xhrAuthResponse.user_id,
+                      expiresIn: Number(xhrAuthResponse.expires_in),
+                      signedRequest: xhrAuthResponse.signed_request,
+                      graphDomain: xhrAuthResponse.graph_domain
+                    };
+
+                    if (xhrAuthResponse.enforce_https != null) {
+                      require("sdk.Runtime").setEnforceHttps(true);
+                    }
+
+                    if (xhrAuthResponse.data_access_expiration_time != null) {
+                      authResponse.data_access_expiration_time = Number(
+                        xhrAuthResponse.data_access_expiration_time
+                      );
+                    }
+
+                    if (xhrAuthResponse.base_domain != null) {
+                      require("sdk.AuthUtils").setBaseDomain(
+                        xhrAuthResponse.base_domain
+                      );
+                    }
+
+                    require("sdk.AuthUtils").setGraphDomain(
+                      xhrAuthResponse.graph_domain
+                    );
+                    require("sdk.AuthStorageUtils").setLocalStorageToken(
+                      authResponse,
+                      xhrAuthResponse.long_lived_token
+                    );
+                    require("sdk.AuthUtils").removeLogoutState();
+                    var response = {
+                      authResponse: authResponse,
+                      status: loginStatus,
+                      loginSource: loginSource,
+                      cb: cb
+                    };
+
+                    require("sdk.AuthUtils").AuthInternalEvent.inform(
+                      require("sdk.AuthUtils").AuthConstants
+                        .CORS_FETCH_COMPLETED_EVENT,
+                      response
+                    );
+
+                    break;
+                  case "not_authorized":
+                  case "unknown":
+                  default:
+                    var defaultResponse = {
+                      authResponse: null,
+                      status: loginStatus,
+                      loginSource: loginSource,
+                      cb: cb
+                    };
+
+                    require("sdk.AuthUtils").AuthInternalEvent.inform(
+                      require("sdk.AuthUtils").AuthConstants
+                        .CORS_FETCH_COMPLETED_EVENT,
+                      defaultResponse
+                    );
+                }
+              }
+
+              function onCORSFailure(
+                cb,
+                httpStatus,
+                currentAuthResponse,
+                loginSource
+              ) {
+                if (loginSource === void 0) {
+                  loginSource = "facebook";
+                }
+                if (httpStatus === 0) {
+                  if (
+                    require("sdk.feature")(
+                      "cors_status_fetch_cancel_tracking",
+                      false
+                    )
+                  ) {
+                    require("sdk.Scribe").log("jssdk_error", {
+                      appId: require("sdk.Runtime").getClientID(),
+                      error: "CORS_STATUS_FETCH_CANCELLED",
+                      extra: { message: "Status 0 returned." }
+                    });
+                  }
+                  require("Log").error(
+                    "Error retrieving login status, fetch cancelled."
+                  );
+                } else {
+                  require("sdk.Scribe").log("jssdk_error", {
+                    appId: require("sdk.Runtime").getClientID(),
+                    error: "CORS_STATUS_FETCH",
+                    extra: { message: "HTTP Status Code " + httpStatus }
+                  });
+
+                  require("Log").error(
+                    "Error retrieving login status, HTTP status code: " +
+                      httpStatus
+                  );
+                }
+
+                var currentAuthSource = getCurrentAuthResponseSource();
+                if (currentAuthSource && currentAuthSource === loginSource) {
+                  var _response = {
+                    authResponse: currentAuthResponse,
+                    status: require("sdk.Runtime").getLoginStatus(),
+                    loginSource: loginSource,
+                    cb: cb,
+                    shouldSetAuthResponse: false
+                  };
+
+                  require("sdk.AuthUtils").AuthInternalEvent.inform(
+                    require("sdk.AuthUtils").AuthConstants
+                      .CORS_FETCH_COMPLETED_EVENT,
+                    _response
+                  );
+                } else {
+                  var _response2 = {
+                    authResponse: null,
+                    status: "unknown",
+                    loginSource: loginSource,
+                    cb: cb,
+                    shouldSetAuthResponse: false
+                  };
+
+                  require("sdk.AuthUtils").AuthInternalEvent.inform(
+                    require("sdk.AuthUtils").AuthConstants
+                      .CORS_FETCH_COMPLETED_EVENT,
+                    _response2
+                  );
+                }
+              }
+
+              function getCurrentAuthResponseSource() {
+                var currentAuthResponse = require("sdk.AuthState").getState()
+                  .currentAuthResponse;
+                if (currentAuthResponse) {
+                  if (
+                    require("sdk.AuthUtils").isInstagramLogin(
+                      currentAuthResponse
+                    )
+                  ) {
+                    return "instagram";
+                  }
+                  return "facebook";
+                }
+                return null;
+              }
+
+              function getCORSTarget(token) {
+                var url = new (require("sdk.URI"))(
+                  require("UrlMap")
+                    .resolve("www")
+                    .replace("web.", "www.") + "/x/oauth/status"
+                )
+                  .addQueryData(
+                    "client_id",
+                    require("sdk.Runtime").getClientID()
+                  )
+                  .addQueryData("input_token", token)
+                  .addQueryData("redirect_uri", window.location.href)
+                  .addQueryData("origin", require("sdk.getContextType")())
+                  .addQueryData("sdk", "joey")
+                  .addQueryData(
+                    "wants_cookie_data",
+                    require("sdk.Runtime").getUseCookie()
+                  );
+
+                if (!!window.location.ancestorOrigins) {
+                  var ancestorOrigins = window.location.ancestorOrigins;
+                  if (ancestorOrigins.length > 0) {
+                    var ancestorOriginString = "";
+
+                    for (var i = 0; i < ancestorOrigins.length; i++) {
+                      ancestorOriginString += ancestorOrigins[i];
+                      ancestorOriginString += ",";
+                    }
+
+                    url.addQueryData(
+                      "ancestor_origins",
+                      ancestorOriginString.slice(0, -1)
+                    );
+                  }
+                }
+
+                return url;
+              }
+
+              function isTheOtherLoginStatusLoaded(loginSource) {
+                var mixedAuthState = require("sdk.AuthState").getState()
+                  .mixedAuthState;
+                switch (loginSource) {
+                  case "facebook":
+                    return (
+                      (mixedAuthState == null
+                        ? void 0
+                        : mixedAuthState.fbLoginStatus) === null &&
+                      (mixedAuthState == null
+                        ? void 0
+                        : mixedAuthState.igLoginStatus) !== null
+                    );
+
+                  case "instagram":
+                    return (
+                      (mixedAuthState == null
+                        ? void 0
+                        : mixedAuthState.igLoginStatus) === null &&
+                      (mixedAuthState == null
+                        ? void 0
+                        : mixedAuthState.fbLoginStatus) !== null
+                    );
+
+                  default:
+                    return false;
+                }
+              }
+
+              function defaultLoginSourceToUnknownStatus(loginSource) {
+                var mixedAuthState = require("sdk.AuthState").getState()
+                  .mixedAuthState;
+                if (
+                  (mixedAuthState == null
+                    ? void 0
+                    : mixedAuthState.fbLoginStatus) != null &&
+                  (mixedAuthState == null
+                    ? void 0
+                    : mixedAuthState.igLoginStatus) != null
+                ) {
+                  return;
+                }
+                var response = {
+                  authResponse: null,
+                  status: "unknown",
+                  loginSource: loginSource
+                };
+
+                require("sdk.AuthUtils").AuthInternalEvent.inform(
+                  "xFoAFetchCompleted",
+                  response
+                );
+              }
+
+              var StatusCORS = {
+                getLoginStatusCORS: getLoginStatusCORS
+              };
+              var _default = StatusCORS;
+              module.exports = _default;
+            },
+            null
+          );
+          __d(
             "sdk.Auth",
             [
               "Log",
@@ -9297,15 +9672,13 @@ try {
               "sdk.Cookie",
               "sdk.Frictionless",
               "sdk.Impressions",
-              "sdk.Observable",
               "sdk.Runtime",
               "sdk.Scribe",
               "sdk.SignedRequest",
               "sdk.UA",
               "sdk.URI",
-              "sdk.WebStorage",
               "sdk.feature",
-              "sdk.getContextType"
+              "sdk.statusCORS"
             ],
             function $module_sdk_Auth(
               global,
@@ -9322,8 +9695,6 @@ try {
               var LOGIN_COMPLETE_HEARTBEAT_TIMEOUT = 5 * 1000;
               var PLATFORM_E2E_TRACKING_LOG_ID = 114;
               var PLATFORM_JSSDK_FUNNEL_LOG_ID = 117;
-
-              var observable = new (require("sdk.Observable")).Observable();
 
               var facebookRe = /^https?:\/\/([\w\.]+)?\.facebook\.com\/?/;
 
@@ -9347,6 +9718,36 @@ try {
                     return "not_authorized";
                   default:
                     return "unknown";
+                }
+              }
+
+              function setFinalResponse(finalResponse) {
+                if (
+                  (finalResponse == null
+                    ? void 0
+                    : finalResponse.shouldSetAuthResponse) !== false
+                ) {
+                  setAuthResponse(
+                    finalResponse == null ? void 0 : finalResponse.authResponse,
+                    toWebOAuthStatus(
+                      finalResponse == null ? void 0 : finalResponse.status
+                    ),
+                    finalResponse == null ? void 0 : finalResponse.loginSource
+                  );
+                }
+                var cb = finalResponse == null ? void 0 : finalResponse.cb;
+                if (cb != null) {
+                  var _response = {
+                    authResponse:
+                      finalResponse == null
+                        ? void 0
+                        : finalResponse.authResponse,
+                    status: toWebOAuthStatus(
+                      finalResponse == null ? void 0 : finalResponse.status
+                    )
+                  };
+
+                  cb(_response);
                 }
               }
 
@@ -9455,16 +9856,28 @@ try {
                 };
 
                 if (logout || both) {
-                  observable.inform("logout", response);
+                  require("sdk.AuthUtils").AuthInternalEvent.inform(
+                    "logout",
+                    response
+                  );
                 }
                 if (login || both) {
-                  observable.inform("login", response);
+                  require("sdk.AuthUtils").AuthInternalEvent.inform(
+                    "login",
+                    response
+                  );
                 }
                 if (authResponseChange) {
-                  observable.inform("authresponse.change", response);
+                  require("sdk.AuthUtils").AuthInternalEvent.inform(
+                    "authresponse.change",
+                    response
+                  );
                 }
                 if (statusChange) {
-                  observable.inform("status.change", response);
+                  require("sdk.AuthUtils").AuthInternalEvent.inform(
+                    "status.change",
+                    response
+                  );
                 }
 
                 if (!fromCache) {
@@ -9594,12 +10007,12 @@ try {
                   }
 
                   if (cb) {
-                    var _response = {
+                    var _response2 = {
                       authResponse: authResponse,
                       status: require("sdk.Runtime").getLoginStatus()
                     };
 
-                    cb(_response);
+                    cb(_response2);
                   }
                   return authResponse;
                 };
@@ -9719,12 +10132,12 @@ try {
                 }
 
                 if (cb) {
-                  var _response2 = {
+                  var _response3 = {
                     authResponse: getAuthResponse(),
                     status: require("sdk.Runtime").getLoginStatus()
                   };
 
-                  cb(_response2);
+                  cb(_response3);
                 }
                 window.removeEventListener(
                   "fbNativeLoginResponse",
@@ -9734,18 +10147,7 @@ try {
                 );
               }
 
-              function fetchLoginStatus(fn) {
-                var _redirAccessToken;
-                if (require("sdk.AuthState").getState().timer != null) {
-                  window.clearTimeout(
-                    require("sdk.AuthState").getState().timer
-                  );
-                  require("sdk.AuthState").setState({ timer: null });
-                }
-
-                var fb_logged_out =
-                  require("sdk.Cookie").getRaw(LOGOUT_COOKIE_PREFIX) === "y";
-
+              function checkFragment(fn) {
                 var redirAccessToken = null;
                 var redirCancelled = false;
                 if (
@@ -9805,34 +10207,14 @@ try {
                     redirCancelled = true;
                   }
                 }
+                return {
+                  access_token: redirAccessToken,
+                  redirect_cancelled: redirCancelled
+                };
+              }
 
-                if (fb_logged_out || redirCancelled) {
-                  unknownStatus(fn);
-                  return;
-                }
-
-                var localStorageToken = null;
-                if (require("sdk.Runtime").getUseLocalStorage()) {
-                  var localStorage = require("sdk.WebStorage").getLocalStorageForRead();
-                  if (localStorage) {
-                    localStorageToken = localStorage.getItem(
-                      require("sdk.AuthUtils").AuthConstants
-                        .LOCAL_STORAGE_TOKEN_PREFIX +
-                        require("sdk.Runtime").getClientID()
-                    );
-                  }
-                }
-
-                var token =
-                  (_redirAccessToken = redirAccessToken) != null
-                    ? _redirAccessToken
-                    : localStorageToken;
-
-                if (window.location.protocol !== "https:") {
-                  unknownStatus(fn);
-                }
-
-                if (
+              function shouldFetchIABLoginStatus() {
+                return (
                   require("sdk.UA").isSupportedIABVersion(
                     parseFloat(
                       require("sdk.feature")(
@@ -9845,72 +10227,79 @@ try {
                   typeof window.FBLogin.showFBLoginBottomSheetInIAB ===
                     "function" &&
                   require("sdk.feature")("iab_login_status", false)
-                ) {
-                  window.addEventListener(
-                    "fbNativeLoginResponse",
-                    function window_addEventListener_$1(ev) {
-                      return executeIABCallback(fn, ev.response);
-                    }
-                  );
+                );
+              }
 
-                  window.addEventListener(
-                    "fbNativeLoginFallbackResponse",
-                    function window_addEventListener_$1(_ev) {
-                      Auth.getLoginStatusCORS(
-                        fn,
-                        token,
-                        require("sdk.AuthState").getState().currentAuthResponse
-                      );
-                    }
-                  );
-                  var clientID = require("sdk.Runtime").getClientID();
-                  window.FBLogin.showFBLoginBottomSheetInIAB(clientID);
+              function setUpIABStatusFetch(fn, fbToken) {
+                var currentAuthResponse = require("sdk.AuthState").getState()
+                  .currentAuthResponse;
+                window.addEventListener(
+                  "fbNativeLoginResponse",
+                  function window_addEventListener_$1(ev) {
+                    return executeIABCallback(fn, ev.response);
+                  }
+                );
+
+                window.addEventListener(
+                  "fbNativeLoginFallbackResponse",
+                  function window_addEventListener_$1(_ev) {
+                    require("sdk.statusCORS").getLoginStatusCORS(
+                      fn,
+                      fbToken,
+                      currentAuthResponse
+                    );
+                  }
+                );
+                var clientID = require("sdk.Runtime").getClientID();
+                window.FBLogin.showFBLoginBottomSheetInIAB(clientID);
+              }
+
+              function fetchLoginStatus(fn) {
+                var _access_token;
+                if (window.location.protocol !== "https:") {
+                  unknownStatus(fn);
+                }
+                var timer = require("sdk.AuthState").getState().timer;
+                if (timer) {
+                  window.clearTimeout(timer);
+                  require("sdk.AuthState").setState({ timer: null });
+                }
+
+                var fb_logged_out =
+                  require("sdk.Cookie").getRaw(
+                    require("sdk.AuthUtils").AuthConstants.LOGOUT_COOKIE_PREFIX
+                  ) === "y";
+                var _checkFragment = checkFragment(fn),
+                  access_token = _checkFragment.access_token,
+                  redirect_cancelled = _checkFragment.redirect_cancelled;
+
+                if (fb_logged_out || redirect_cancelled) {
+                  unknownStatus(fn);
+                  return;
+                }
+                var _getLocalStorageToken = require("sdk.AuthStorageUtils").getLocalStorageTokens(),
+                  fbToken = _getLocalStorageToken.fbToken;
+
+                var token =
+                  (_access_token = access_token) != null
+                    ? _access_token
+                    : fbToken;
+
+                require("sdk.AuthUtils").AuthInternalEvent.subscribe(
+                  require("sdk.AuthUtils").AuthConstants
+                    .CORS_FETCH_COMPLETED_EVENT,
+                  setFinalResponse
+                );
+
+                if (shouldFetchIABLoginStatus()) {
+                  setUpIABStatusFetch(fn, fbToken);
                 } else {
-                  Auth.getLoginStatusCORS(
+                  require("sdk.statusCORS").getLoginStatusCORS(
                     fn,
                     token,
                     require("sdk.AuthState").getState().currentAuthResponse
                   );
                 }
-              }
-
-              function getCORSTarget(token) {
-                var url = new (require("sdk.URI"))(
-                  require("UrlMap")
-                    .resolve("www")
-                    .replace("web.", "www.") + "/x/oauth/status"
-                )
-                  .addQueryData(
-                    "client_id",
-                    require("sdk.Runtime").getClientID()
-                  )
-                  .addQueryData("input_token", token)
-                  .addQueryData("redirect_uri", window.location.href)
-                  .addQueryData("origin", require("sdk.getContextType")())
-                  .addQueryData("sdk", "joey")
-                  .addQueryData(
-                    "wants_cookie_data",
-                    require("sdk.Runtime").getUseCookie()
-                  );
-
-                if (!!window.location.ancestorOrigins) {
-                  var ancestorOrigins = window.location.ancestorOrigins;
-                  if (ancestorOrigins.length > 0) {
-                    var ancestorOriginString = "";
-
-                    for (var i = 0; i < ancestorOrigins.length; i++) {
-                      ancestorOriginString += ancestorOrigins[i];
-                      ancestorOriginString += ",";
-                    }
-
-                    url.addQueryData(
-                      "ancestor_origins",
-                      ancestorOriginString.slice(0, -1)
-                    );
-                  }
-                }
-
-                return url;
               }
 
               function setRevalidateTimer(timeout) {
@@ -9922,195 +10311,6 @@ try {
                   fetchLoginStatus(function fetchLoginStatus_$0() {});
                 }, timeout);
                 require("sdk.AuthState").setState({ timer: timer });
-              }
-
-              function onCORSSuccess(cb, loginStatus, authResponseHeader) {
-                switch (loginStatus) {
-                  case "connected":
-                    var xhrAuthResponse = ES(
-                      "JSON",
-                      "parse",
-                      false,
-                      authResponseHeader
-                    );
-
-                    var authResponse = {
-                      accessToken: xhrAuthResponse.access_token,
-                      userID: xhrAuthResponse.user_id,
-                      expiresIn: Number(xhrAuthResponse.expires_in),
-                      signedRequest: xhrAuthResponse.signed_request,
-                      graphDomain: xhrAuthResponse.graph_domain
-                    };
-
-                    if (xhrAuthResponse.enforce_https != null) {
-                      require("sdk.Runtime").setEnforceHttps(true);
-                    }
-
-                    if (xhrAuthResponse.data_access_expiration_time != null) {
-                      authResponse.data_access_expiration_time = Number(
-                        xhrAuthResponse.data_access_expiration_time
-                      );
-                    }
-
-                    if (xhrAuthResponse.base_domain != null) {
-                      require("sdk.AuthUtils").setBaseDomain(
-                        xhrAuthResponse.base_domain
-                      );
-                    }
-
-                    require("sdk.AuthUtils").setGraphDomain(
-                      xhrAuthResponse.graph_domain
-                    );
-                    require("sdk.AuthStorageUtils").setLocalStorageToken(
-                      authResponse,
-                      xhrAuthResponse.long_lived_token
-                    );
-                    require("sdk.AuthUtils").removeLogoutState();
-                    setAuthResponse(authResponse, loginStatus);
-                    setRevalidateTimer();
-                    break;
-                  case "not_authorized":
-                  case "unknown":
-                  default:
-                    setAuthResponse(null, loginStatus);
-                }
-
-                if (cb) {
-                  var _response3 = {
-                    authResponse: getAuthResponse(),
-                    status: require("sdk.Runtime").getLoginStatus()
-                  };
-
-                  cb(_response3);
-                }
-              }
-
-              function onCORSFailure(cb, httpStatus, currentAuthResponse) {
-                if (httpStatus === 0) {
-                  if (
-                    require("sdk.feature")(
-                      "cors_status_fetch_cancel_tracking",
-                      false
-                    )
-                  ) {
-                    require("sdk.Scribe").log("jssdk_error", {
-                      appId: require("sdk.Runtime").getClientID(),
-                      error: "CORS_STATUS_FETCH_CANCELLED",
-                      extra: { message: "Status 0 returned." }
-                    });
-                  }
-                  require("Log").error(
-                    "Error retrieving login status, fetch cancelled."
-                  );
-                } else {
-                  require("sdk.Scribe").log("jssdk_error", {
-                    appId: require("sdk.Runtime").getClientID(),
-                    error: "CORS_STATUS_FETCH",
-                    extra: { message: "HTTP Status Code " + httpStatus }
-                  });
-
-                  require("Log").error(
-                    "Error retrieving login status, HTTP status code: " +
-                      httpStatus
-                  );
-                }
-                if (cb) {
-                  var _response4 = {
-                    authResponse: currentAuthResponse,
-                    status: require("sdk.Runtime").getLoginStatus()
-                  };
-
-                  cb(_response4);
-                }
-              }
-
-              function getLoginStatusCORS(cb, token, currentAuthResponse) {
-                var fetchStart = Date.now();
-                var url = getCORSTarget(token);
-
-                function corsFetchXHR() {
-                  var xhr = new XMLHttpRequest();
-                  if (xhr) {
-                    xhr.open("GET", url.toString(), true);
-                    xhr.withCredentials = true;
-                    xhr.onreadystatechange = function() {
-                      if (xhr.readyState === 4) {
-                        if (require("sdk.feature")("e2e_ping_tracking", true)) {
-                          var events = {
-                            init: fetchStart,
-                            close: Date.now(),
-                            method: "cors"
-                          };
-
-                          require("Log").debug(
-                            "e2e: %s",
-                            ES("JSON", "stringify", false, events)
-                          );
-                          require("sdk.Impressions").log(
-                            PLATFORM_E2E_TRACKING_LOG_ID,
-                            {
-                              payload: events
-                            }
-                          );
-                        }
-
-                        if (xhr.status === 200) {
-                          var _xhr$getResponseHeade;
-                          onCORSSuccess(
-                            cb,
-                            toWebOAuthStatus(xhr.getResponseHeader("fb-s")),
-                            (_xhr$getResponseHeade = xhr.getResponseHeader(
-                              "fb-ar"
-                            )) != null
-                              ? _xhr$getResponseHeade
-                              : "{}"
-                          );
-                        } else {
-                          onCORSFailure(cb, xhr.status, currentAuthResponse);
-                        }
-                      }
-                    };
-                    xhr.send();
-                  }
-                }
-
-                function corsFetch() {
-                  window
-                    .fetch(url.toString(), {
-                      referrer: "/",
-                      mode: "cors",
-                      credentials: "include"
-                    })
-                    .then(function then_$0(response) {
-                      if (response.status === 200) {
-                        var _response$headers$get, _response$headers$get2;
-                        onCORSSuccess(
-                          cb,
-                          (_response$headers$get = response.headers.get(
-                            "fb-s"
-                          )) != null
-                            ? _response$headers$get
-                            : "unknown",
-                          (_response$headers$get2 = response.headers.get(
-                            "fb-ar"
-                          )) != null
-                            ? _response$headers$get2
-                            : "{}"
-                        );
-                      } else {
-                        onCORSFailure(cb, response.status, currentAuthResponse);
-                      }
-                    })
-                    ["catch"](function $0(_e) {
-                      return onCORSFailure(cb, 0, currentAuthResponse);
-                    });
-                }
-
-                if (typeof window.fetch === "function") {
-                  corsFetch();
-                } else {
-                  corsFetchXHR();
-                }
               }
 
               function getLoginStatus(cb, force) {
@@ -10175,12 +10375,12 @@ try {
                     require("sdk.AuthState").getState().loadState === "loaded"
                   ) {
                     if (cb) {
-                      var _response5 = {
+                      var _response4 = {
                         authResponse: getAuthResponse(),
                         status: require("sdk.Runtime").getLoginStatus()
                       };
 
-                      cb(_response5);
+                      cb(_response4);
                     }
                     return;
                   } else if (
@@ -10202,8 +10402,13 @@ try {
                 var lsCb = function lsCb(response) {
                   require("sdk.AuthState").setState({ loadState: "loaded" });
 
-                  observable.inform("FB.loginStatus", response);
-                  observable.clearSubscribers("FB.loginStatus");
+                  require("sdk.AuthUtils").AuthInternalEvent.inform(
+                    "FB.loginStatus",
+                    response
+                  );
+                  require("sdk.AuthUtils").AuthInternalEvent.clearSubscribers(
+                    "FB.loginStatus"
+                  );
                 };
 
                 fetchLoginStatus(lsCb);
@@ -10211,15 +10416,16 @@ try {
 
               var Auth = {
                 getLoginStatus: getLoginStatus,
-                getLoginStatusCORS: getLoginStatusCORS,
                 fetchLoginStatus: fetchLoginStatus,
+                setFinalResponse: setFinalResponse,
                 logout: logout,
                 setAuthResponse: setAuthResponse,
                 getAuthResponse: getAuthResponse,
                 parseSignedRequest: require("sdk.SignedRequest").parse,
                 xdResponseWrapper: xdResponseWrapper,
-                subscribe: observable.subscribe,
-                unsubscribe: observable.unsubscribe
+                subscribe: require("sdk.AuthUtils").AuthInternalEvent.subscribe,
+                unsubscribe: require("sdk.AuthUtils").AuthInternalEvent
+                  .unsubscribe
               };
               var _default = Auth;
               module.exports = _default;
@@ -20726,7 +20932,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1003886795","namespace":"FB","message":"' +
+        '","revision":"1003902206","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
