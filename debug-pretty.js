@@ -1,4 +1,4 @@
-/*1622751672,,JIT Construction: v1003902206,en_US*/
+/*1622758314,,JIT Construction: v1003903674,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3704,7 +3704,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1003902206",
+            revision: "1003903674",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -14037,7 +14037,7 @@ try {
 
                         try {
                           if (win.closed) {
-                            if (UIServer.isOAuth(node.method)) {
+                            if (UIServer.isOAuth(node)) {
                               require("sdk.Auth").getLoginStatus(
                                 function Auth_getLoginStatus_$0(response) {
                                   if (
@@ -20932,7 +20932,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1003902206","namespace":"FB","message":"' +
+        '","revision":"1003903674","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
