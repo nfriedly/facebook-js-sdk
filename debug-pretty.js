@@ -1,4 +1,4 @@
-/*1622836763,,JIT Construction: v1003909635,en_US*/
+/*1622850549,,JIT Construction: v1003912676,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3640,7 +3640,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1003909635",
+            revision: "1003912676",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -13730,7 +13730,7 @@ try {
                 popup: function popup(call) {
                   var popup = require("sdk.Popup").popup(
                     call,
-                    UIServer.isOAuth(call.name)
+                    UIServer.isOAuth({ method: call.name })
                   );
                   if (popup) {
                     UIServer.setLoadedNode(call, popup, "popup");
@@ -20868,7 +20868,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1003909635","namespace":"FB","message":"' +
+        '","revision":"1003912676","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
