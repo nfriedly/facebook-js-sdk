@@ -1,4 +1,4 @@
-/*1622758314,,JIT Construction: v1003903674,en_US*/
+/*1622836763,,JIT Construction: v1003909635,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -792,52 +792,8 @@ try {
            *
            * @format
            */ __d(
-            "ie8DontEnum",
-            [],
-            function $module_ie8DontEnum(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              var dontEnumProperties = [
-                "toString",
-                "toLocaleString",
-                "valueOf",
-                "hasOwnProperty",
-                "isPrototypeOf",
-                "prototypeIsEnumerable",
-                "constructor"
-              ];
-
-              var hasOwnProperty = {}.hasOwnProperty;
-
-              var ie8DontEnum = function ie8DontEnum() {};
-
-              if ({ toString: true }.propertyIsEnumerable("toString")) {
-                ie8DontEnum = function ie8DontEnum(object, onProp) {
-                  for (var i = 0; i < dontEnumProperties.length; i++) {
-                    var property = dontEnumProperties[i];
-                    if (hasOwnProperty.call(object, property)) {
-                      onProp(property);
-                    }
-                  }
-                };
-              }
-
-              module.exports = ie8DontEnum;
-            },
-            null
-          );
-          /**
-           * Copyright 2004-present Facebook. All Rights Reserved.
-           *
-           * @format
-           */ __d(
             "ES6Object",
-            ["ie8DontEnum"],
+            [],
             function $module_ES6Object(
               global,
               require,
@@ -879,12 +835,6 @@ try {
                         target[prop] = source[prop];
                       }
                     }
-
-                    require("ie8DontEnum")(source, function ie8DontEnum_$1(
-                      prop
-                    ) {
-                      return (target[prop] = source[prop]);
-                    });
                   }
 
                   return target;
@@ -1055,10 +1005,11 @@ try {
           /**
            * Copyright 2004-present Facebook. All Rights Reserved.
            *
+           *  strict
            * @format
            */ __d(
             "ES7Object",
-            ["ie8DontEnum"],
+            [],
             function $module_ES7Object(
               global,
               require,
@@ -1069,53 +1020,44 @@ try {
             ) {
               var hasOwnProperty = {}.hasOwnProperty;
 
-              var ES7Object = {};
-
-              ES7Object.entries = function(object) {
-                if (object == null) {
-                  throw new TypeError("Object.entries called on non-object");
-                }
-
-                var entries = [];
-                for (var key in object) {
-                  if (hasOwnProperty.call(object, key)) {
-                    entries.push([key, object[key]]);
+              var ES7Object = {
+                entries: function entries(object) {
+                  if (object == null) {
+                    throw new TypeError("Object.entries called on non-object");
                   }
-                }
 
-                require("ie8DontEnum")(object, function ie8DontEnum_$1(prop) {
-                  return entries.push([prop, object[prop]]);
-                });
-
-                return entries;
-              };
-
-              ES7Object.values = function(object) {
-                if (object == null) {
-                  throw new TypeError("Object.values called on non-object");
-                }
-
-                var values = [];
-                for (var key in object) {
-                  if (hasOwnProperty.call(object, key)) {
-                    values.push(object[key]);
+                  var entries = [];
+                  for (var key in object) {
+                    if (hasOwnProperty.call(object, key)) {
+                      entries.push([key, object[key]]);
+                    }
                   }
+                  return entries;
+                },
+
+                values: function values(object) {
+                  if (object == null) {
+                    throw new TypeError("Object.values called on non-object");
+                  }
+
+                  var values = [];
+                  for (var key in object) {
+                    if (hasOwnProperty.call(object, key)) {
+                      values.push(object[key]);
+                    }
+                  }
+                  return values;
                 }
-
-                require("ie8DontEnum")(object, function ie8DontEnum_$1(prop) {
-                  return values.push(object[prop]);
-                });
-
-                return values;
               };
-
-              module.exports = ES7Object;
+              var _default = ES7Object;
+              module.exports = _default;
             },
             null
           );
           /**
            * Copyright 2004-present Facebook. All Rights Reserved.
            *
+           *  strict
            * @format
            */ __d(
             "ES7StringPrototype",
@@ -1128,17 +1070,16 @@ try {
               module,
               exports
             ) {
-              var ES7StringPrototype = {};
-
-              ES7StringPrototype.trimLeft = function() {
-                return this.replace(/^\s+/, "");
+              var ES7StringPrototype = {
+                trimLeft: function trimLeft() {
+                  return this.replace(/^\s+/, "");
+                },
+                trimRight: function trimRight() {
+                  return this.replace(/\s+$/, "");
+                }
               };
-
-              ES7StringPrototype.trimRight = function() {
-                return this.replace(/\s+$/, "");
-              };
-
-              module.exports = ES7StringPrototype;
+              var _default = ES7StringPrototype;
+              module.exports = _default;
             },
             null
           );
@@ -2677,7 +2618,7 @@ try {
            * @format
            */ __d(
             "ES5Object",
-            ["ie8DontEnum"],
+            [],
             function $module_ES5Object(
               global,
               require,
@@ -2727,11 +2668,6 @@ try {
                     keys.push(key);
                   }
                 }
-
-                require("ie8DontEnum")(object, function ie8DontEnum_$1(prop) {
-                  return keys.push(prop);
-                });
-
                 return keys;
               };
 
@@ -3704,7 +3640,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1003903674",
+            revision: "1003909635",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -20932,7 +20868,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1003903674","namespace":"FB","message":"' +
+        '","revision":"1003909635","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
