@@ -1,4 +1,4 @@
-/*1622850549,,JIT Construction: v1003912676,en_US*/
+/*1622861953,,JIT Construction: v1003914020,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3640,7 +3640,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1003912676",
+            revision: "1003914020",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -18493,17 +18493,12 @@ try {
               var _dialogIFrameOrigin = null;
               var _bubbleIFrameName = "";
               var _unreadCountIFrameName = "";
-              var _savedScrollXPosition = 0;
-              var _savedScrollYPosition = 0;
-              var _showInterstitialOnPage = false;
               var _visibilityGuard = null;
               var LANDING_PAGE = "/";
               var WELCOME_PAGE = "/welcome";
               var BUBBLE = "/bubble";
               var ITP_PAGE = "/itpcontinue";
               var _mobilePath = LANDING_PAGE;
-              var DIALOG_FRAME_MAX_HEIGHT = "calc(100% - 80px)";
-              var DIALOG_FRAME_MIN_HEIGHT = "360px";
               var _bubbleIFrameLoaded = false;
               var _badgeIFrameLoaded = false;
               var _isHidden = false;
@@ -18943,68 +18938,6 @@ try {
                     : "";
                 },
 
-                _createBubbleDialogIframe: function _createBubbleDialogIframe(
-                  fromIframe
-                ) {
-                  var _this4 = this;
-                  var created = require("sdk.DialogUtils").setupNewDialog();
-
-                  require("sdk.DOM").setStyle(
-                    created.contentRoot,
-                    "background",
-                    "none"
-                  );
-
-                  _dialogIFrameName = this._iframeOptions.name;
-                  _bubbleIFrameName = "blank_" + _dialogIFrameName;
-
-                  require("sdk.createIframe")({
-                    url: this._getBubbleFrameURL(),
-                    name: _bubbleIFrameName,
-                    root: created.contentRoot,
-                    tabindex: -1,
-                    width: 60,
-                    "data-testid": "bubble_iframe",
-                    onload: function onload() {
-                      _bubbleIFrameLoaded = true;
-                      _this4._notifyDialogFrame();
-                    }
-                  });
-
-                  ES("Object", "assign", false, created.dialogElement.style, {
-                    background: "none",
-                    borderRadius: "50%",
-                    bottom: "18pt",
-                    display: "none",
-                    height: "45pt",
-                    padding: "0",
-                    position: "fixed",
-                    right: "18pt",
-                    top: "auto",
-                    width: "45pt",
-                    zIndex: "2147483646"
-                  });
-
-                  if (_browserSupportsAnimation) {
-                    require("sdk.DOM").removeCss(
-                      created.dialogElement,
-                      "fb_customer_chat_bubble_animated_with_badge"
-                    );
-
-                    require("sdk.DOM").addCss(
-                      created.dialogElement,
-                      "fb_customer_chat_bubble_animated_no_badge"
-                    );
-                  } else {
-                    require("sdk.DOM").setStyle(
-                      created.dialogElement,
-                      "boxShadow",
-                      "0px 3px 12px rgba(0, 0, 0, 0.15)"
-                    );
-                  }
-                  return created.dialogElement;
-                },
-
                 _setBubbleBadgeStyle: function _setBubbleBadgeStyle() {
                   if (this._bubbleDialog) {
                     require("sdk.DOM").setStyle(
@@ -19167,16 +19100,6 @@ try {
               }
 
               function setParentDocumentPositionFixed() {
-                _savedScrollXPosition =
-                  window.pageXOffset !== undefined
-                    ? window.pageXOffset
-                    : document.documentElement &&
-                      document.documentElement.scrollLeft;
-                _savedScrollYPosition =
-                  window.pageYOffset !== undefined
-                    ? window.pageYOffset
-                    : document.documentElement &&
-                      document.documentElement.scrollTop;
                 var mobile_overlay = "fb_new_ui_mobile_overlay_active";
                 require("sdk.DOM").addCss(document.body, mobile_overlay);
               }
@@ -19271,7 +19194,6 @@ try {
                   if (
                     isMobile &&
                     (chatStarted ||
-                      _showInterstitialOnPage ||
                       (_mobilePath !== LANDING_PAGE && _mobilePath !== BUBBLE))
                   ) {
                     setParentDocumentPositionFixed();
@@ -19309,12 +19231,12 @@ try {
                     require("sdk.DOM").setStyle(
                       dialogIframe,
                       "maxHeight",
-                      DIALOG_FRAME_MAX_HEIGHT
+                      "calc(100% - 80px)"
                     );
                     require("sdk.DOM").setStyle(
                       dialogIframe,
                       "minHeight",
-                      DIALOG_FRAME_MIN_HEIGHT
+                      "360px"
                     );
                   }
 
@@ -19367,9 +19289,7 @@ try {
                 if (_visibilityGuard === null || _visibilityGuard === true) {
                   if (
                     isMobile &&
-                    (chatStarted ||
-                      _showInterstitialOnPage ||
-                      _mobilePath !== LANDING_PAGE)
+                    (chatStarted || _mobilePath !== LANDING_PAGE)
                   ) {
                     resetParentDocumentPosition();
                   }
@@ -20868,7 +20788,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1003912676","namespace":"FB","message":"' +
+        '","revision":"1003914020","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
