@@ -1,4 +1,4 @@
-/*1623097769,,JIT Construction: v1003917902,en_US*/
+/*1623106750,,JIT Construction: v1003918971,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3640,7 +3640,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1003917902",
+            revision: "1003918971",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -8365,7 +8365,6 @@ try {
                 DEFAULT_REVALIDATE_PERIOD: 60 * 60 * 24 * 1000,
                 LOGOUT_COOKIE_PREFIX: "fblo_",
                 CORS_FETCH_COMPLETED_EVENT: "cors_fetch_completed",
-                CORS_FETCH_CONNECTED_EVENT: "cors_fetch_connected",
                 XFOA_FINAL_RESPONSE_EVENT: "xfoa_final_response"
               };
               exports.AuthConstants = AuthConstants;
@@ -9387,7 +9386,7 @@ try {
 
                     require("sdk.AuthUtils").AuthInternalEvent.inform(
                       require("sdk.AuthUtils").AuthConstants
-                        .CORS_FETCH_CONNECTED_EVENT,
+                        .CORS_FETCH_COMPLETED_EVENT,
                       response
                     );
 
@@ -9664,6 +9663,12 @@ try {
                     ? void 0
                     : finalResponse.shouldSetAuthResponse) !== false
                 ) {
+                  if (
+                    (finalResponse == null ? void 0 : finalResponse.status) ===
+                    "connected"
+                  ) {
+                    setRevalidateTimer();
+                  }
                   setAuthResponse(
                     finalResponse == null ? void 0 : finalResponse.authResponse,
                     toWebOAuthStatus(
@@ -10226,15 +10231,6 @@ try {
                   require("sdk.AuthUtils").AuthConstants
                     .CORS_FETCH_COMPLETED_EVENT,
                   setFinalResponse
-                );
-
-                require("sdk.AuthUtils").AuthInternalEvent.subscribe(
-                  require("sdk.AuthUtils").AuthConstants
-                    .CORS_FETCH_CONNECTED_EVENT,
-                  function _sdk3_AuthInternalEvent_subscribe_$1(response) {
-                    setFinalResponse(response);
-                    setRevalidateTimer();
-                  }
                 );
 
                 if (shouldFetchIABLoginStatus()) {
@@ -20802,7 +20798,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1003917902","namespace":"FB","message":"' +
+        '","revision":"1003918971","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
