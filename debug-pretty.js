@@ -1,4 +1,4 @@
-/*1622861953,,JIT Construction: v1003914020,en_US*/
+/*1623097769,,JIT Construction: v1003917902,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3640,7 +3640,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1003914020",
+            revision: "1003917902",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -8365,6 +8365,7 @@ try {
                 DEFAULT_REVALIDATE_PERIOD: 60 * 60 * 24 * 1000,
                 LOGOUT_COOKIE_PREFIX: "fblo_",
                 CORS_FETCH_COMPLETED_EVENT: "cors_fetch_completed",
+                CORS_FETCH_CONNECTED_EVENT: "cors_fetch_connected",
                 XFOA_FINAL_RESPONSE_EVENT: "xfoa_final_response"
               };
               exports.AuthConstants = AuthConstants;
@@ -9386,7 +9387,7 @@ try {
 
                     require("sdk.AuthUtils").AuthInternalEvent.inform(
                       require("sdk.AuthUtils").AuthConstants
-                        .CORS_FETCH_COMPLETED_EVENT,
+                        .CORS_FETCH_CONNECTED_EVENT,
                       response
                     );
 
@@ -10227,6 +10228,15 @@ try {
                   setFinalResponse
                 );
 
+                require("sdk.AuthUtils").AuthInternalEvent.subscribe(
+                  require("sdk.AuthUtils").AuthConstants
+                    .CORS_FETCH_CONNECTED_EVENT,
+                  function _sdk3_AuthInternalEvent_subscribe_$1(response) {
+                    setFinalResponse(response);
+                    setRevalidateTimer();
+                  }
+                );
+
                 if (shouldFetchIABLoginStatus()) {
                   setUpIABStatusFetch(fn, fbToken);
                 } else {
@@ -10242,6 +10252,10 @@ try {
                 if (timeout === void 0) {
                   timeout = require("sdk.AuthUtils").AuthConstants
                     .CONNECTED_REVALIDATE_PERIOD;
+                }
+                var currentTimer = require("sdk.AuthState").getState().timer;
+                if (currentTimer) {
+                  window.clearTimeout(currentTimer);
                 }
                 var timer = window.setTimeout(function window_setTimeout_$0() {
                   fetchLoginStatus(function fetchLoginStatus_$0() {});
@@ -20788,7 +20802,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1003914020","namespace":"FB","message":"' +
+        '","revision":"1003917902","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
