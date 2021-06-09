@@ -1,4 +1,4 @@
-/*1623106750,,JIT Construction: v1003918971,en_US*/
+/*1623198213,,JIT Construction: v1003929202,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -400,6 +400,7 @@ try {
            * Copyright 2004-present Facebook. All Rights Reserved.
            *
            * @format
+           *
            */ __d(
             "ES5FunctionPrototype",
             [],
@@ -411,31 +412,35 @@ try {
               module,
               exports
             ) {
-              var ES5FunctionPrototype = {};
-
-              ES5FunctionPrototype.bind = function(context) {
-                if (typeof this !== "function") {
-                  throw new TypeError("Bind must be called on a function");
-                }
-                var target = this;
-                var appliedArguments = Array.prototype.slice.call(arguments, 1);
-                function bound() {
-                  return target.apply(
-                    context,
-                    appliedArguments.concat(
-                      Array.prototype.slice.call(arguments)
-                    )
+              var ES5FunctionPrototype = {
+                bind: function bind(context) {
+                  if (typeof this !== "function") {
+                    throw new TypeError("Bind must be called on a function");
+                  }
+                  var target = this;
+                  var appliedArguments = Array.prototype.slice.call(
+                    arguments,
+                    1
                   );
-                }
-                bound.displayName =
-                  "bound:" + (target.displayName || target.name || "(?)");
-                bound.toString = function toString() {
-                  return "bound: " + target;
-                };
-                return bound;
-              };
+                  function bound() {
+                    return target.apply(
+                      context,
+                      appliedArguments.concat(
+                        Array.prototype.slice.call(arguments)
+                      )
+                    );
+                  }
+                  bound.displayName =
+                    "bound:" + (target.displayName || target.name || "(?)");
 
-              module.exports = ES5FunctionPrototype;
+                  bound.toString = function toString() {
+                    return "bound: " + target;
+                  };
+                  return bound;
+                }
+              };
+              var _default = ES5FunctionPrototype;
+              module.exports = _default;
             },
             null
           );
@@ -548,6 +553,7 @@ try {
            * Copyright 2004-present Facebook. All Rights Reserved.
            *
            * @format
+           *
            */ __d(
             "ES6Array",
             [],
@@ -629,8 +635,8 @@ try {
                   return ret;
                 }
               };
-
-              module.exports = ES6Array;
+              var _default = ES6Array;
+              module.exports = _default;
             },
             null
           );
@@ -791,6 +797,7 @@ try {
            * Copyright 2004-present Facebook. All Rights Reserved.
            *
            * @format
+           *
            */ __d(
             "ES6Object",
             [],
@@ -848,8 +855,8 @@ try {
                   }
                 }
               };
-
-              module.exports = ES6Object;
+              var _default = ES6Object;
+              module.exports = _default;
             },
             null
           );
@@ -2616,6 +2623,7 @@ try {
            * Copyright 2004-present Facebook. All Rights Reserved.
            *
            * @format
+           *
            */ __d(
             "ES5Object",
             [],
@@ -2629,61 +2637,61 @@ try {
             ) {
               var hasOwnProperty = {}.hasOwnProperty;
 
-              var ES5Object = {};
+              var ES5Object = {
+                create: function create(proto) {
+                  if (__DEV__) {
+                    if (arguments.length > 1) {
+                      throw new Error(
+                        "Object.create implementation supports only the first parameter"
+                      );
+                    }
+                  }
+                  var type = typeof proto;
+                  if (type != "object" && type != "function") {
+                    throw new TypeError(
+                      "Object prototype may only be a Object or null"
+                    );
+                  }
+
+                  F.prototype = proto;
+                  return new F();
+                },
+
+                keys: function keys(object) {
+                  var type = typeof object;
+                  if (
+                    (type != "object" && type != "function") ||
+                    object === null
+                  ) {
+                    throw new TypeError("Object.keys called on non-object");
+                  }
+
+                  var keys = [];
+                  for (var key in object) {
+                    if (hasOwnProperty.call(object, key)) {
+                      keys.push(key);
+                    }
+                  }
+                  return keys;
+                },
+
+                freeze: function freeze(object) {
+                  return object;
+                },
+
+                isFrozen: function isFrozen() {
+                  return false;
+                },
+
+                seal: function seal(object) {
+                  return object;
+                }
+              };
 
               function F() {}
               _c = F;
-
-              ES5Object.create = function(proto) {
-                if (__DEV__) {
-                  if (arguments.length > 1) {
-                    throw new Error(
-                      "Object.create implementation supports only the first parameter"
-                    );
-                  }
-                }
-                var type = typeof proto;
-                if (type != "object" && type != "function") {
-                  throw new TypeError(
-                    "Object prototype may only be a Object or null"
-                  );
-                }
-
-                F.prototype = proto;
-                return new F();
-              };
-
-              ES5Object.keys = function(object) {
-                var type = typeof object;
-                if (
-                  (type != "object" && type != "function") ||
-                  object === null
-                ) {
-                  throw new TypeError("Object.keys called on non-object");
-                }
-
-                var keys = [];
-                for (var key in object) {
-                  if (hasOwnProperty.call(object, key)) {
-                    keys.push(key);
-                  }
-                }
-                return keys;
-              };
-
-              ES5Object.freeze = function(object) {
-                return object;
-              };
-
-              ES5Object.isFrozen = function() {
-                return false;
-              };
-
-              ES5Object.seal = function(object) {
-                return object;
-              };
-
-              module.exports = ES5Object;
+              var _default = ES5Object;
+              module.exports = _default;
               var _c;
               $RefreshReg$(_c, "F");
             },
@@ -3640,7 +3648,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1003918971",
+            revision: "1003929202",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -5016,6 +5024,7 @@ try {
                 CookieUserID: "",
                 EnforceHttps: false,
                 Environment: ENVIRONMENTS.UNKNOWN,
+                FamilyLoginLoaded: false,
                 GraphDomain: "",
                 Initialized: false,
                 IsVersioned: false,
@@ -5030,6 +5039,7 @@ try {
                 SDKAB: JSSDKRuntimeConfig.sdkab,
                 SDKUrl: JSSDKRuntimeConfig.sdkurl,
                 SDKNS: JSSDKRuntimeConfig.sdkns,
+                ShouldLoadFamilyLogin: false,
                 UseCookie: false,
                 UseLocalStorage: true,
                 UserID: "",
@@ -8264,7 +8274,7 @@ try {
           );
           __d(
             "sdk.AuthUtils",
-            ["sdk.Cookie", "sdk.Observable", "sdk.Runtime"],
+            ["sdk.AuthState", "sdk.Cookie", "sdk.Observable", "sdk.Runtime"],
             function $module_sdk_AuthUtils(
               global,
               require,
@@ -8276,6 +8286,7 @@ try {
               "use strict";
               exports.isInstagramLogin = isInstagramLogin;
               exports.setBaseDomain = setBaseDomain;
+              exports.resetFBAndIGLoginStatus = resetFBAndIGLoginStatus;
               exports.setGraphDomain = setGraphDomain;
               exports.setLogoutState = setLogoutState;
               exports.removeLogoutState = removeLogoutState;
@@ -8295,6 +8306,21 @@ try {
                     require("sdk.Cookie").setDomain("." + baseDomain);
                   }
                 }
+              }
+
+              function resetFBAndIGLoginStatus() {
+                var mixedAuthState = {
+                  fbAuthResponse: null,
+                  fbLoginStatus: null,
+                  igAuthResponse: null,
+                  igLoginStatus: null
+                };
+
+                var shouldSecondLoginRequestTimeOut = false;
+                require("sdk.AuthState").setState({
+                  mixedAuthState: mixedAuthState,
+                  shouldSecondLoginRequestTimeOut: shouldSecondLoginRequestTimeOut
+                });
               }
 
               function setGraphDomain(graphDomain) {
@@ -8349,11 +8375,16 @@ try {
                 observable.unsubscribe(key, func);
               }
 
+              function getSubscribers(key) {
+                return observable.getSubscribers(key);
+              }
+
               var AuthInternalEvent = {
                 inform: inform,
                 subscribe: subscribe,
                 clearSubscribers: clearSubscribers,
-                unsubscribe: unsubscribe
+                unsubscribe: unsubscribe,
+                getSubscribers: getSubscribers
               };
               exports.AuthInternalEvent = AuthInternalEvent;
 
@@ -8365,7 +8396,8 @@ try {
                 DEFAULT_REVALIDATE_PERIOD: 60 * 60 * 24 * 1000,
                 LOGOUT_COOKIE_PREFIX: "fblo_",
                 CORS_FETCH_COMPLETED_EVENT: "cors_fetch_completed",
-                XFOA_FINAL_RESPONSE_EVENT: "xfoa_final_response"
+                XFOA_FINAL_RESPONSE_EVENT: "xfoa_final_response",
+                LOAD_XFOA_SUBSCRIBERS: "load_xfoa_subscribers"
               };
               exports.AuthConstants = AuthConstants;
             },
@@ -9626,10 +9658,7 @@ try {
             ) {
               require("sdk.Frictionless");
 
-              var LOGOUT_COOKIE_PREFIX = "fblo_";
-              var YEAR_MS = 365 * 24 * 60 * 60 * 1000;
               var LOGIN_COMPLETE_HEARTBEAT_TIMEOUT = 5 * 1000;
-              var PLATFORM_E2E_TRACKING_LOG_ID = 114;
               var PLATFORM_JSSDK_FUNNEL_LOG_ID = 117;
 
               var facebookRe = /^https?:\/\/([\w\.]+)?\.facebook\.com\/?/;
@@ -9657,7 +9686,7 @@ try {
                 }
               }
 
-              function setFinalResponse(finalResponse) {
+              function setFinalAuthResponse(finalResponse) {
                 if (
                   (finalResponse == null
                     ? void 0
@@ -9686,11 +9715,21 @@ try {
                         : finalResponse.authResponse,
                     status: toWebOAuthStatus(
                       finalResponse == null ? void 0 : finalResponse.status
-                    )
+                    ),
+                    loginSource:
+                      finalResponse == null ? void 0 : finalResponse.loginSource
                   };
 
                   cb(_response);
                 }
+                require("sdk.AuthUtils").AuthInternalEvent.clearSubscribers(
+                  require("sdk.AuthUtils").AuthConstants
+                    .CORS_FETCH_COMPLETED_EVENT
+                );
+                require("sdk.AuthUtils").AuthInternalEvent.clearSubscribers(
+                  require("sdk.AuthUtils").AuthConstants
+                    .XFOA_FINAL_RESPONSE_EVENT
+                );
               }
 
               function setAuthResponse(
@@ -9794,7 +9833,8 @@ try {
 
                 var response = {
                   authResponse: authResponse,
-                  status: status
+                  status: status,
+                  loginSource: loginSource
                 };
 
                 if (logout || both) {
@@ -9838,7 +9878,12 @@ try {
 
               function logout(cb) {
                 var currentAuthResponse = getAuthResponse();
-                setAuthResponse(null, "unknown");
+                var currentLoginSource = require("sdk.AuthUtils").isInstagramLogin(
+                  currentAuthResponse
+                )
+                  ? "instagram"
+                  : "facebook";
+                setAuthResponse(null, "unknown", currentLoginSource);
                 require("sdk.AuthUtils").setLogoutState();
 
                 if (
@@ -9939,22 +9984,53 @@ try {
 
                     setAuthResponse(authResponse, status);
                     logSuccessfulAuth(requestParams);
-                  } else if (params && params.error === "access_denied") {
+                  } else if (
+                    params &&
+                    (params.error ||
+                      params.error_message ||
+                      params.error_description ||
+                      params.error_code ||
+                      params.error_reason ||
+                      (params.result && params.result.closeWindow))
+                  ) {
                     require("sdk.AuthUtils").setLogoutState();
                     status = "unknown";
                     setAuthResponse(null, status);
+                    var message =
+                      params.error_message || params.error_description;
+                    var _response2 = {
+                      authResponse: getAuthResponse(),
+                      status: status,
+                      message: message
+                    };
+
+                    if (
+                      params.error === "access_denied" ||
+                      (params.result && params.result.closeWindow)
+                    ) {
+                      require("sdk.AuthUtils").AuthInternalEvent.inform(
+                        "loginDenied",
+                        _response2
+                      );
+                    } else {
+                      require("sdk.AuthUtils").AuthInternalEvent.inform(
+                        "loginError",
+                        _response2
+                      );
+                    }
                   } else if (params && params.result) {
                     require("sdk.AuthUtils").removeLogoutState();
                     authResponse = params.result.authResponse;
                   }
 
                   if (cb) {
-                    var _response2 = {
+                    var _response3 = {
                       authResponse: authResponse,
-                      status: require("sdk.Runtime").getLoginStatus()
+                      status: require("sdk.Runtime").getLoginStatus(),
+                      params: requestParams
                     };
 
-                    cb(_response2);
+                    cb(_response3);
                   }
                   return authResponse;
                 };
@@ -10046,10 +10122,11 @@ try {
 
               function unknownStatus(cb) {
                 var unk_status = "unknown";
-                setAuthResponse(null, unk_status);
+                setAuthResponse(null, unk_status, null);
                 var response = {
                   authResponse: null,
-                  status: unk_status
+                  status: unk_status,
+                  loginSource: null
                 };
 
                 if (cb) {
@@ -10074,12 +10151,12 @@ try {
                 }
 
                 if (cb) {
-                  var _response3 = {
+                  var _response4 = {
                     authResponse: getAuthResponse(),
                     status: require("sdk.Runtime").getLoginStatus()
                   };
 
-                  cb(_response3);
+                  cb(_response4);
                 }
                 window.removeEventListener(
                   "fbNativeLoginResponse",
@@ -10172,7 +10249,7 @@ try {
                 );
               }
 
-              function setUpIABStatusFetch(fn, fbToken) {
+              function setUpIABStatusFetch(fn, fbToken, igToken) {
                 var currentAuthResponse = require("sdk.AuthState").getState()
                   .currentAuthResponse;
                 window.addEventListener(
@@ -10185,11 +10262,7 @@ try {
                 window.addEventListener(
                   "fbNativeLoginFallbackResponse",
                   function window_addEventListener_$1(_ev) {
-                    require("sdk.statusCORS").getLoginStatusCORS(
-                      fn,
-                      fbToken,
-                      currentAuthResponse
-                    );
+                    issueXFoACorsFetch(fbToken, igToken, fn);
                   }
                 );
                 var clientID = require("sdk.Runtime").getClientID();
@@ -10197,7 +10270,6 @@ try {
               }
 
               function fetchLoginStatus(fn) {
-                var _access_token;
                 if (window.location.protocol !== "https:") {
                   unknownStatus(fn);
                 }
@@ -10206,6 +10278,7 @@ try {
                   window.clearTimeout(timer);
                   require("sdk.AuthState").setState({ timer: null });
                 }
+                require("sdk.AuthUtils").resetFBAndIGLoginStatus();
 
                 var fb_logged_out =
                   require("sdk.Cookie").getRaw(
@@ -10220,27 +10293,81 @@ try {
                   return;
                 }
                 var _getLocalStorageToken = require("sdk.AuthStorageUtils").getLocalStorageTokens(),
-                  fbToken = _getLocalStorageToken.fbToken;
+                  fbToken = _getLocalStorageToken.fbToken,
+                  igToken = _getLocalStorageToken.igToken;
 
-                var token =
-                  (_access_token = access_token) != null
-                    ? _access_token
-                    : fbToken;
+                if (access_token != null) {
+                  if (ES(access_token, "startsWith", true, "IG")) {
+                    igToken = access_token;
+                  } else {
+                    fbToken = access_token;
+                  }
+                }
 
-                require("sdk.AuthUtils").AuthInternalEvent.subscribe(
-                  require("sdk.AuthUtils").AuthConstants
-                    .CORS_FETCH_COMPLETED_EVENT,
-                  setFinalResponse
-                );
+                if (!require("sdk.Runtime").getShouldLoadFamilyLogin()) {
+                  require("sdk.AuthUtils").AuthInternalEvent.subscribe(
+                    require("sdk.AuthUtils").AuthConstants
+                      .CORS_FETCH_COMPLETED_EVENT,
+                    setFinalAuthResponse
+                  );
+                } else {
+                  if (require("sdk.Runtime").getFamilyLoginLoaded()) {
+                    require("sdk.AuthUtils").AuthInternalEvent.inform(
+                      require("sdk.AuthUtils").AuthConstants
+                        .LOAD_XFOA_SUBSCRIBERS
+                    );
+                  } else {
+                    require("sdk.Runtime").subscribe(
+                      "FamilyLoginLoaded.change",
+                      function Runtime_subscribe_$1(value) {
+                        if (value) {
+                          require("sdk.AuthUtils").AuthInternalEvent.inform(
+                            require("sdk.AuthUtils").AuthConstants
+                              .LOAD_XFOA_SUBSCRIBERS
+                          );
+                        }
+                      }
+                    );
+                  }
+                }
 
                 if (shouldFetchIABLoginStatus()) {
                   setUpIABStatusFetch(fn, fbToken);
                 } else {
-                  require("sdk.statusCORS").getLoginStatusCORS(
-                    fn,
-                    token,
-                    require("sdk.AuthState").getState().currentAuthResponse
-                  );
+                  issueXFoACorsFetch(fbToken, igToken, fn);
+                }
+              }
+
+              function issueXFoACorsFetch(fbToken, igToken, fn) {
+                require("sdk.statusCORS").getLoginStatusCORS(
+                  fn,
+                  fbToken,
+                  require("sdk.AuthState").getState().currentAuthResponse,
+                  "facebook"
+                );
+
+                if (require("sdk.Runtime").getShouldLoadFamilyLogin()) {
+                  if (igToken != null) {
+                    require("sdk.statusCORS").getLoginStatusCORS(
+                      fn,
+                      igToken,
+                      require("sdk.AuthState").getState().currentAuthResponse,
+                      "instagram"
+                    );
+                  } else {
+                    var _response5 = {
+                      authResponse: null,
+                      status: "unknown",
+                      loginSource: "instagram",
+                      cb: fn
+                    };
+
+                    require("sdk.AuthUtils").AuthInternalEvent.inform(
+                      require("sdk.AuthUtils").AuthConstants
+                        .CORS_FETCH_COMPLETED_EVENT,
+                      _response5
+                    );
+                  }
                 }
               }
 
@@ -10321,26 +10448,32 @@ try {
                     require("sdk.AuthState").getState().loadState === "loaded"
                   ) {
                     if (cb) {
-                      var _response4 = {
+                      var _response6 = {
                         authResponse: getAuthResponse(),
                         status: require("sdk.Runtime").getLoginStatus()
                       };
 
-                      cb(_response4);
+                      cb(_response6);
                     }
                     return;
                   } else if (
                     require("sdk.AuthState").getState().loadState === "loading"
                   ) {
                     if (cb) {
-                      Auth.subscribe("FB.loginStatus", cb);
+                      require("sdk.AuthUtils").AuthInternalEvent.subscribe(
+                        "FB.loginStatus",
+                        cb
+                      );
                     }
                     return;
                   }
                 }
 
                 if (cb) {
-                  Auth.subscribe("FB.loginStatus", cb);
+                  require("sdk.AuthUtils").AuthInternalEvent.subscribe(
+                    "FB.loginStatus",
+                    cb
+                  );
                 }
 
                 require("sdk.AuthState").setState({ loadState: "loading" });
@@ -10363,7 +10496,7 @@ try {
               var Auth = {
                 getLoginStatus: getLoginStatus,
                 fetchLoginStatus: fetchLoginStatus,
-                setFinalResponse: setFinalResponse,
+                setFinalAuthResponse: setFinalAuthResponse,
                 logout: logout,
                 setAuthResponse: setAuthResponse,
                 getAuthResponse: getAuthResponse,
@@ -16259,6 +16392,10 @@ try {
                   require("sdk.Runtime").setKidDirectedSite(true);
                 }
 
+                if (options.useFamilyLogin) {
+                  require("sdk.Runtime").setShouldLoadFamilyLogin(true);
+                }
+
                 if (
                   options.autoLogAppEvents === "1" ||
                   options.autoLogAppEvents === "true"
@@ -20798,7 +20935,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1003918971","namespace":"FB","message":"' +
+        '","revision":"1003929202","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
