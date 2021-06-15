@@ -1,4 +1,4 @@
-/*1623707354,,JIT Construction: v1003965105,en_US*/
+/*1623790761,,JIT Construction: v1003972596,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -21,7 +21,7 @@
  */
 try {
   (window.FB && !window.FB.__buffer) ||
-    (function(window, fb_fif_window) {
+    (function() {
       var apply = Function.prototype.apply;
       function bindContext(fn, thisArg) {
         return function _sdkBound() {
@@ -33,15 +33,15 @@ try {
         window: window,
         document: window.document
       };
-      var sandboxWhitelist = [
+      var sandboxSafelist = [
         "setTimeout",
         "setInterval",
         "clearTimeout",
         "clearInterval"
       ];
-      for (var i = 0; i < sandboxWhitelist.length; i++) {
-        global[sandboxWhitelist[i]] = bindContext(
-          window[sandboxWhitelist[i]],
+      for (var i = 0; i < sandboxSafelist.length; i++) {
+        global[sandboxSafelist[i]] = bindContext(
+          window[sandboxSafelist[i]],
           window
         );
       }
@@ -3648,7 +3648,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1003965105",
+            revision: "1003972596",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -19284,7 +19284,7 @@ try {
                   "Array",
                   "from",
                   false,
-                  fb_fif_window.document.getElementsByTagName("script")
+                  window.document.getElementsByTagName("script")
                 ).forEach(function forEach_$0(script) {
                   if (script.src) {
                     var match = pattern.exec(script.src);
@@ -23780,7 +23780,7 @@ try {
           );
         }
       }.call(global));
-    })(window.inDapIF ? parent.window : window, window);
+    })();
 } catch (e) {
   var i = new Image();
   i.crossOrigin = "anonymous";
@@ -23796,7 +23796,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1003965105","namespace":"FB","message":"' +
+        '","revision":"1003972596","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
