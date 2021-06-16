@@ -1,4 +1,4 @@
-/*1623790761,,JIT Construction: v1003972596,en_US*/
+/*1623815954,,JIT Construction: v1003977080,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -418,6 +418,7 @@ try {
                     throw new TypeError("Bind must be called on a function");
                   }
                   var target = this;
+
                   var appliedArguments = Array.prototype.slice.call(
                     arguments,
                     1
@@ -425,6 +426,7 @@ try {
                   function bound() {
                     return target.apply(
                       context,
+
                       appliedArguments.concat(
                         Array.prototype.slice.call(arguments)
                       )
@@ -3648,7 +3650,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1003972596",
+            revision: "1003977080",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -10572,10 +10574,6 @@ try {
               function record(checkers) {
                 var checkerProperties = Object.keys(checkers);
 
-                var hasOwnProp = function hasOwnProp(value, key) {
-                  return Object.prototype.hasOwnProperty.call(value, key);
-                };
-
                 return function(value, path) {
                   if (path === void 0) {
                     path = ROOT_PATH;
@@ -10612,7 +10610,10 @@ try {
                     }
                     var _key3 = _ref7;
                     var check = checkers[_key3];
-                    var element = hasOwnProp(value, _key3)
+                    var element = Object.prototype.hasOwnProperty.call(
+                      value,
+                      _key3
+                    )
                       ? value[_key3]
                       : null;
                     var result = check(element, extendPath(path, _key3));
@@ -12887,8 +12888,7 @@ try {
                   if (cb) {
                     var _response3 = {
                       authResponse: authResponse,
-                      status: require("sdk.Runtime").getLoginStatus(),
-                      params: requestParams
+                      status: require("sdk.Runtime").getLoginStatus()
                     };
 
                     cb(_response3);
@@ -23796,7 +23796,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1003972596","namespace":"FB","message":"' +
+        '","revision":"1003977080","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
