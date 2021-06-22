@@ -1,4 +1,4 @@
-/*1623973749,,JIT Construction: v1003991810,en_US*/
+/*1624326549,,JIT Construction: v1004009314,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3650,7 +3650,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1003991810",
+            revision: "1004009314",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -5573,7 +5573,7 @@ try {
           );
           __d(
             "sdk.Scribe",
-            ["QueryString", "UrlMap", "sdk.Runtime", "sdk.feature"],
+            ["QueryString", "UrlMap", "sdk.Runtime"],
             function $module_sdk_Scribe(
               global,
               require,
@@ -5611,17 +5611,9 @@ try {
 
                 var url =
                   require("UrlMap").resolve("www") +
-                  "/common/scribe_endpoint.php";
-                if (require("sdk.feature")("epd_endpoint_migration", false)) {
-                  url =
-                    require("UrlMap").resolve("www") +
-                    "/platform/scribe_endpoint.php/";
-                  if (
-                    require("sdk.feature")("epd_omit_cookies", false) &&
-                    !should_include_creds
-                  ) {
-                    image.crossOrigin = "anonymous";
-                  }
+                  "/platform/scribe_endpoint.php/";
+                if (!should_include_creds) {
+                  image.crossOrigin = "anonymous";
                 }
 
                 image.src = require("QueryString").appendToUrl(url, {
@@ -11695,8 +11687,7 @@ try {
               "guid",
               "insertIframe",
               "sdk.Content",
-              "sdk.Runtime",
-              "sdk.feature"
+              "sdk.Runtime"
             ],
             function $module_sdk_Impressions(
               global,
@@ -11729,23 +11720,15 @@ try {
 
                 var url =
                   require("UrlMap").resolve("www") +
-                  "/impression.php/" +
+                  "/platform/impression.php/" +
                   require("guid")() +
                   "/";
-                if (require("sdk.feature")("epd_endpoint_migration", false)) {
-                  if (isCanvas) {
-                    url =
-                      require("UrlMap").resolve("www") +
-                      "/platform/canvas_impression.php/" +
-                      require("guid")() +
-                      "/";
-                  } else {
-                    url =
-                      require("UrlMap").resolve("www") +
-                      "/platform/impression.php/" +
-                      require("guid")() +
-                      "/";
-                  }
+                if (isCanvas) {
+                  url =
+                    require("UrlMap").resolve("www") +
+                    "/platform/canvas_impression.php/" +
+                    require("guid")() +
+                    "/";
                 }
 
                 var fullUrlPath = require("QueryString").appendToUrl(
@@ -11797,10 +11780,7 @@ try {
                   credentials: "include"
                 };
 
-                if (
-                  require("sdk.feature")("epd_omit_cookies", false) &&
-                  !should_include_creds
-                ) {
+                if (!should_include_creds) {
                   standardFetchOptions.credentials = "omit";
                 }
 
@@ -11841,19 +11821,13 @@ try {
                 }
                 if (fullUrlPath.length <= 2000) {
                   var image = new Image();
-                  if (
-                    require("sdk.feature")("epd_omit_cookies", false) &&
-                    !should_include_creds
-                  ) {
+                  if (!should_include_creds) {
                     image.crossOrigin = "anonymous";
                   }
 
                   image.src = fullUrlPath;
                 } else {
-                  if (
-                    require("sdk.feature")("epd_omit_cookies", false) &&
-                    !should_include_creds
-                  ) {
+                  if (!should_include_creds) {
                     return;
                   }
 
@@ -23795,7 +23769,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1003991810","namespace":"FB","message":"' +
+        '","revision":"1004009314","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
