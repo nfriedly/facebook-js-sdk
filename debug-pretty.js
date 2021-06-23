@@ -1,4 +1,4 @@
-/*1624326549,,JIT Construction: v1004009314,en_US*/
+/*1624412960,,JIT Construction: v1004018210,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3633,9 +3633,7 @@ try {
               force_popup_to_canvas_apps_with_id: [],
               force_popup_to_all_canvas_app: false,
               max_oauth_dialog_retries: { rate: 100, value: 10 },
-              plugin_tags_blacklist: [],
-              epd_endpoint_migration: { rate: 100 },
-              epd_omit_cookies: { rate: 100 }
+              plugin_tags_blacklist: []
             }
           });
           __d("JSSDKCssConfig", [], {
@@ -3650,7 +3648,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1004009314",
+            revision: "1004018210",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -10120,6 +10118,10 @@ try {
               module.exports = tryParseJSONMixed;
 
               function tryParseJSONMixed(rawJSONString) {
+                if (rawJSONString == null) {
+                  return null;
+                }
+
                 try {
                   var result = ES("JSON", "parse", false, rawJSONString);
                   return result;
@@ -23769,7 +23771,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1004009314","namespace":"FB","message":"' +
+        '","revision":"1004018210","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
