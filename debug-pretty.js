@@ -1,4 +1,4 @@
-/*1624412960,,JIT Construction: v1004018210,en_US*/
+/*1624422630,,JIT Construction: v1004019873,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3648,7 +3648,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1004018210",
+            revision: "1004019873",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -21465,7 +21465,6 @@ try {
               var RIGHT_ANCHOR_CLASS = "anchor_right";
 
               var _blinkerToken = null;
-              var _browserSupportsAnimation = !(require("sdk.UA").ie() <= 9);
               var _unreadCountIFrame = null;
               var _iconInnerIFrame = null;
               var _bubbleIFrame = null;
@@ -21663,7 +21662,6 @@ try {
                   }
 
                   if (
-                    _browserSupportsAnimation &&
                     message.isMobile === "true" &&
                     !_isHidden &&
                     _mobilePath == LANDING_PAGE
@@ -21848,18 +21846,10 @@ try {
                       "50%"
                     );
 
-                    if (_browserSupportsAnimation) {
-                      require("sdk.DOM").addCss(
-                        this._bubbleDialog,
-                        "fb_customer_chat_bubble_animated_no_badge"
-                      );
-                    } else {
-                      require("sdk.DOM").setStyle(
-                        this._bubbleDialog,
-                        "boxShadow",
-                        "0px 3px 12px rgba(0, 0, 0, 0.15)"
-                      );
-                    }
+                    require("sdk.DOM").addCss(
+                      this._bubbleDialog,
+                      "fb_customer_chat_bubble_animated_no_badge"
+                    );
                   } else if (!ES("JSON", "parse", false, message.resetShadow)) {
                     this._setBubbleBadgeStyle();
                   }
@@ -21928,24 +21918,15 @@ try {
                       "borderRadius",
                       "50% 0% 50% 50%"
                     );
+                    require("sdk.DOM").removeCss(
+                      this._bubbleDialog,
+                      "fb_customer_chat_bubble_animated_no_badge"
+                    );
 
-                    if (_browserSupportsAnimation) {
-                      require("sdk.DOM").removeCss(
-                        this._bubbleDialog,
-                        "fb_customer_chat_bubble_animated_no_badge"
-                      );
-
-                      require("sdk.DOM").addCss(
-                        this._bubbleDialog,
-                        "fb_customer_chat_bubble_animated_with_badge"
-                      );
-                    } else {
-                      require("sdk.DOM").setStyle(
-                        this._bubbleDialog,
-                        "boxShadow",
-                        "-5px 4px 14px rgba(0, 0, 0, 0.15)"
-                      );
-                    }
+                    require("sdk.DOM").addCss(
+                      this._bubbleDialog,
+                      "fb_customer_chat_bubble_animated_with_badge"
+                    );
                   }
                 },
 
@@ -22182,27 +22163,26 @@ try {
                     setParentDocumentPositionFixed();
                   }
 
-                  if (_browserSupportsAnimation) {
-                    var bounceInAnimationName = _getBounceInAnimationName(
-                      isMobile,
-                      alignment
-                    );
+                  var bounceInAnimationName = _getBounceInAnimationName(
+                    isMobile,
+                    alignment
+                  );
 
-                    var bounceOutAnimationName = _getBounceOutAnimationName(
-                      isMobile,
-                      alignment
-                    );
+                  var bounceOutAnimationName = _getBounceOutAnimationName(
+                    isMobile,
+                    alignment
+                  );
 
-                    require("sdk.DOM").removeCss(
+                  require("sdk.DOM").removeCss(
+                    dialogIframe,
+                    bounceOutAnimationName
+                  );
+                  bounceInAnimationName != null &&
+                    require("sdk.DOM").addCss(
                       dialogIframe,
-                      bounceOutAnimationName
+                      bounceInAnimationName
                     );
-                    bounceInAnimationName != null &&
-                      require("sdk.DOM").addCss(
-                        dialogIframe,
-                        bounceInAnimationName
-                      );
-                  }
+
                   if (isMobile) {
                     require("sdk.DOM").setStyle(
                       dialogIframe,
@@ -22276,64 +22256,60 @@ try {
                   ) {
                     resetParentDocumentPosition();
                   }
-                  if (!_browserSupportsAnimation) {
-                    require("sdk.DOM").setStyle(dialogIframe, "maxHeight", "0");
-                    require("sdk.DOM").setStyle(dialogIframe, "minHeight", "0");
-                    _visibilityGuard = false;
-                  } else {
-                    var _hideDialog = function _hideDialog(e) {
-                      if (_isHidden) {
-                        require("sdk.DOM").setStyle(
-                          dialogIframe,
-                          "maxHeight",
-                          "0"
-                        );
-                        require("sdk.DOM").setStyle(
-                          dialogIframe,
-                          "minHeight",
-                          "0"
-                        );
-                        ANIMATION_EVENTS.forEach(
-                          function ANIMATION_EVENTS_forEach_$0(event) {
-                            require("DOMEventListener").remove(
-                              dialogIframe,
-                              event,
-                              _hideDialog
-                            );
-                          }
-                        );
-                        _visibilityGuard = false;
-                      }
-                    };
-                    var bounceInAnimationName = _getBounceInAnimationName(
-                      isMobile,
-                      alignment
-                    );
 
-                    var bounceOutAnimationName = _getBounceOutAnimationName(
-                      isMobile,
-                      alignment
-                    );
-
-                    bounceInAnimationName != null &&
-                      require("sdk.DOM").removeCss(
+                  var _hideDialog = function _hideDialog(_) {
+                    if (_isHidden) {
+                      require("sdk.DOM").setStyle(
                         dialogIframe,
-                        bounceInAnimationName
+                        "maxHeight",
+                        "0"
                       );
-                    require("sdk.DOM").addCss(
+                      require("sdk.DOM").setStyle(
+                        dialogIframe,
+                        "minHeight",
+                        "0"
+                      );
+                      ANIMATION_EVENTS.forEach(
+                        function ANIMATION_EVENTS_forEach_$0(event) {
+                          require("DOMEventListener").remove(
+                            dialogIframe,
+                            event,
+                            _hideDialog
+                          );
+                        }
+                      );
+                      _visibilityGuard = false;
+                    }
+                  };
+                  var bounceInAnimationName = _getBounceInAnimationName(
+                    isMobile,
+                    alignment
+                  );
+
+                  var bounceOutAnimationName = _getBounceOutAnimationName(
+                    isMobile,
+                    alignment
+                  );
+
+                  bounceInAnimationName != null &&
+                    require("sdk.DOM").removeCss(
                       dialogIframe,
-                      bounceOutAnimationName
+                      bounceInAnimationName
                     );
-                    ANIMATION_EVENTS.forEach(
-                      function ANIMATION_EVENTS_forEach_$0(event) {
-                        require("DOMEventListener").add(
-                          dialogIframe,
-                          event,
-                          _hideDialog
-                        );
-                      }
+                  require("sdk.DOM").addCss(
+                    dialogIframe,
+                    bounceOutAnimationName
+                  );
+                  ANIMATION_EVENTS.forEach(function ANIMATION_EVENTS_forEach_$0(
+                    event
+                  ) {
+                    require("DOMEventListener").add(
+                      dialogIframe,
+                      event,
+                      _hideDialog
                     );
-                  }
+                  });
+
                   postMessageToDialogFrame({
                     name: "CustomerChat.isDialogHidden",
                     params: { is_dialog_hidden: true }
@@ -23771,7 +23747,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1004018210","namespace":"FB","message":"' +
+        '","revision":"1004019873","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
