@@ -1,4 +1,4 @@
-/*1624677149,,JIT Construction: v1004043323,en_US*/
+/*1624918883,,JIT Construction: v1004048191,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3648,7 +3648,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1004043323",
+            revision: "1004048191",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -10296,21 +10296,23 @@ try {
               }
 
               function mixed() {
-                return function(value) {
-                  return success(value, []);
-                };
+                return MIXED_CHECKER;
               }
+              var MIXED_CHECKER = function MIXED_CHECKER(value) {
+                return success(value, []);
+              };
 
               function boolean() {
-                return function(value, path) {
-                  if (path === void 0) {
-                    path = ROOT_PATH;
-                  }
-                  return typeof value === "boolean"
-                    ? success(value, [])
-                    : failure("value is not a boolean", path);
-                };
+                return BOOLEAN_CHECKER;
               }
+              var BOOLEAN_CHECKER = function BOOLEAN_CHECKER(value, path) {
+                if (path === void 0) {
+                  path = ROOT_PATH;
+                }
+                return typeof value === "boolean"
+                  ? success(value, [])
+                  : failure("value is not a boolean", path);
+              };
 
               function literal(literalValue) {
                 var str = function str(value) {
@@ -10332,15 +10334,16 @@ try {
               }
 
               function string() {
-                return function(value, path) {
-                  if (path === void 0) {
-                    path = ROOT_PATH;
-                  }
-                  return typeof value === "string"
-                    ? success(value, [])
-                    : failure("value is not a string", path);
-                };
+                return STRING_CHECKER;
               }
+              var STRING_CHECKER = function STRING_CHECKER(value, path) {
+                if (path === void 0) {
+                  path = ROOT_PATH;
+                }
+                return typeof value === "string"
+                  ? success(value, [])
+                  : failure("value is not a string", path);
+              };
 
               function template(regex) {
                 return constraint(string(), function constraint_$1(value) {
@@ -10354,26 +10357,28 @@ try {
               }
 
               function number() {
-                return function(value, path) {
-                  if (path === void 0) {
-                    path = ROOT_PATH;
-                  }
-                  return typeof value === "number"
-                    ? success(value, [])
-                    : failure("value is not a number", path);
-                };
+                return NUMBER_CHECKER;
               }
+              var NUMBER_CHECKER = function NUMBER_CHECKER(value, path) {
+                if (path === void 0) {
+                  path = ROOT_PATH;
+                }
+                return typeof value === "number"
+                  ? success(value, [])
+                  : failure("value is not a number", path);
+              };
 
               function date() {
-                return function(value, path) {
-                  if (path === void 0) {
-                    path = ROOT_PATH;
-                  }
-                  return value instanceof Date
-                    ? success(value, [])
-                    : failure("value is not a date", path);
-                };
+                return DATE_CHECKER;
               }
+              var DATE_CHECKER = function DATE_CHECKER(value, path) {
+                if (path === void 0) {
+                  path = ROOT_PATH;
+                }
+                return value instanceof Date
+                  ? success(value, [])
+                  : failure("value is not a date", path);
+              };
 
               function constraint(checker, predicate) {
                 return compose(
@@ -24025,7 +24030,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1004043323","namespace":"FB","message":"' +
+        '","revision":"1004048191","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
