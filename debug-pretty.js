@@ -1,4 +1,4 @@
-/*1625101150,,JIT Construction: v1004064887,en_US*/
+/*1625130737,,JIT Construction: v1004068910,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3657,7 +3657,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1004064887",
+            revision: "1004068910",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -19436,12 +19436,14 @@ try {
                   message
                 ) {
                   var cssText = message.cssText,
-                    mobilePath = message.mobilePath;
+                    mobilePath = message.mobilePath,
+                    isDialogHidden = message.isDialogHidden;
                   if (_bubbleIFrame && mobilePath) {
                     _bubbleIFrame.setAttribute(ARRT_MOBILE_PATH, mobilePath);
                   }
 
                   _visibilityGuard = null;
+                  _isHidden = isDialogHidden === "true";
 
                   if (this._iframe) {
                     this._iframe.setAttribute("data-testid", "dialog_iframe");
@@ -20528,21 +20530,31 @@ try {
                   shouldShowDialog = true;
                 }
                 _isIframeHidden = false;
+                var isSDKRewrite = false;
                 if (_bubbleIFrame != null) {
                   importNamespace("sdk.DOM").setStyle(
                     _bubbleIFrame,
                     "display",
                     "inline"
                   );
+                  isSDKRewrite = importNamespace("sdk.DOM").getAttr(
+                    _bubbleIFrame,
+                    ARRT_IS_SDK_REWRITE
+                  );
                 }
+
                 if (shouldShowDialog) {
                   _isHidden = false;
-                  showDialog(
-                    _dialogIFrame,
-                    _chatStarted,
-                    importDefault("sdk.UA").mobile(),
-                    false
-                  );
+                  if (isSDKRewrite) {
+                    showDialogIframe(_dialogIFrame);
+                  } else {
+                    showDialog(
+                      _dialogIFrame,
+                      _chatStarted,
+                      importDefault("sdk.UA").mobile(),
+                      false
+                    );
+                  }
                 }
                 importNamespace("sdk.Event").fire("customerchat.show");
                 handleSDKCall("show");
@@ -20550,48 +20562,80 @@ try {
 
               CustomerChat.hide = function() {
                 _isIframeHidden = true;
+                var isSDKRewrite = false;
                 if (_bubbleIFrame != null) {
                   importNamespace("sdk.DOM").setStyle(
                     _bubbleIFrame,
                     "display",
                     "none"
                   );
+                  isSDKRewrite = importNamespace("sdk.DOM").getAttr(
+                    _bubbleIFrame,
+                    ARRT_IS_SDK_REWRITE
+                  );
                 }
+
                 _isHidden = true;
-                hideDialog(
-                  _dialogIFrame,
-                  _chatStarted,
-                  importDefault("sdk.UA").mobile(),
-                  false
-                );
+                if (isSDKRewrite) {
+                  hideDialogIframe(_dialogIFrame);
+                } else {
+                  hideDialog(
+                    _dialogIFrame,
+                    _chatStarted,
+                    importDefault("sdk.UA").mobile(),
+                    false
+                  );
+                }
                 importNamespace("sdk.Event").fire("customerchat.hide");
                 handleSDKCall("hide");
               };
 
               CustomerChat.showDialog = function() {
+                var isSDKRewrite = false;
                 if (_bubbleIFrame != null) {
                   importNamespace("sdk.DOM").setStyle(
                     _bubbleIFrame,
                     "display",
                     "inline"
                   );
+                  isSDKRewrite = importNamespace("sdk.DOM").getAttr(
+                    _bubbleIFrame,
+                    ARRT_IS_SDK_REWRITE
+                  );
                 }
+
                 _isHidden = false;
-                showDialog(
-                  _dialogIFrame,
-                  _chatStarted,
-                  importDefault("sdk.UA").mobile()
-                );
+                if (isSDKRewrite) {
+                  showDialogIframe(_dialogIFrame);
+                } else {
+                  showDialog(
+                    _dialogIFrame,
+                    _chatStarted,
+                    importDefault("sdk.UA").mobile()
+                  );
+                }
                 handleSDKCall("showDialog");
               };
 
               CustomerChat.hideDialog = function() {
                 _isHidden = true;
-                hideDialog(
-                  _dialogIFrame,
-                  _chatStarted,
-                  importDefault("sdk.UA").mobile()
-                );
+                var isSDKRewrite = false;
+                if (_bubbleIFrame != null) {
+                  isSDKRewrite = importNamespace("sdk.DOM").getAttr(
+                    _bubbleIFrame,
+                    ARRT_IS_SDK_REWRITE
+                  );
+                }
+
+                if (isSDKRewrite) {
+                  hideDialogIframe(_dialogIFrame);
+                } else {
+                  hideDialog(
+                    _dialogIFrame,
+                    _chatStarted,
+                    importDefault("sdk.UA").mobile()
+                  );
+                }
                 handleSDKCall("hideDialog");
               };
 
@@ -22000,7 +22044,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1004064887","namespace":"FB","message":"' +
+        '","revision":"1004068910","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
