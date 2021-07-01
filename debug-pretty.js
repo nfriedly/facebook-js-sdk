@@ -1,4 +1,4 @@
-/*1625087514,,JIT Construction: v1004063449,en_US*/
+/*1625101150,,JIT Construction: v1004064887,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -417,6 +417,7 @@ try {
                   if (typeof this !== "function") {
                     throw new TypeError("Bind must be called on a function");
                   }
+
                   var target = this;
 
                   var appliedArguments = Array.prototype.slice.call(
@@ -465,6 +466,7 @@ try {
               var ES5StringPrototype = {
                 startsWith: function startsWith(search) {
                   var string = String(this);
+
                   if (this == null) {
                     throw new TypeError(
                       "String.prototype.startsWith called on null or undefined"
@@ -480,6 +482,7 @@ try {
 
                 endsWith: function endsWith(search) {
                   var string = String(this);
+
                   if (this == null) {
                     throw new TypeError(
                       "String.prototype.endsWith called on null or undefined"
@@ -506,6 +509,7 @@ try {
                       "String.prototype.contains called on null or undefined"
                     );
                   }
+
                   var string = String(this);
                   var pos = arguments.length > 1 ? Number(arguments[1]) : 0;
                   if (isNaN(pos)) {
@@ -520,6 +524,7 @@ try {
                       "String.prototype.repeat called on null or undefined"
                     );
                   }
+
                   var string = String(this);
                   var n = count ? Number(count) : 0;
                   if (isNaN(n)) {
@@ -674,6 +679,7 @@ try {
                     predicate,
                     thisArg
                   );
+
                   return index === -1 ? void 0 : this[index];
                 },
 
@@ -686,6 +692,7 @@ try {
                   if (typeof predicate !== "function") {
                     throw new TypeError("predicate must be a function");
                   }
+
                   var list = Object(this);
                   var length = list.length >>> 0;
                   for (var i = 0; i < length; i++) {
@@ -702,6 +709,7 @@ try {
                       "Array.prototype.fill called on null or undefined"
                     );
                   }
+
                   var O = Object(this);
                   var len = O.length >>> 0;
                   var start = arguments[1];
@@ -909,6 +917,7 @@ try {
               var ES5ArrayPrototype = {
                 indexOf: function indexOf(val, idx) {
                   var index = idx;
+
                   var len = this.length;
                   index |= 0;
 
@@ -3648,7 +3657,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1004063449",
+            revision: "1004064887",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -4952,6 +4961,7 @@ try {
                     this.parent();
 
                     var propContainer = {};
+
                     var model = this;
 
                     Object.keys(properties).forEach(function forEach_$0(name) {
@@ -11820,10 +11830,12 @@ try {
                     if (this._e2e[name]) {
                       return this;
                     }
+
                     this._e2e[name] = time || Date.now();
                     if (name == "close") {
                       this.inform("e2e:end", this._e2e);
                     }
+
                     return this;
                   },
 
@@ -11836,6 +11848,7 @@ try {
                         this.trackEvent(key, events[key]);
                       }
                     }
+
                     return this;
                   }
                 },
@@ -18062,6 +18075,7 @@ try {
                 {
                   constructor: function constructor(elem, ns, tag, attr) {
                     var _this = this;
+
                     this.parent();
                     tag = tag.replace(/-/g, "_");
 
@@ -18069,10 +18083,12 @@ try {
                       attr,
                       "plugin_id"
                     );
+
                     this.subscribe(
                       "xd.resize",
                       importNamespace("sdk.PluginUtils").resizeBubbler(pluginId)
                     );
+
                     this.subscribe(
                       "xd.resize.flow",
                       importNamespace("sdk.PluginUtils").resizeBubbler(pluginId)
@@ -18099,6 +18115,7 @@ try {
                       );
 
                       _this.updateLift();
+
                       window.clearTimeout(_this._timeoutID);
                     });
 
@@ -18127,7 +18144,9 @@ try {
                       );
 
                       _this._isIframeResized = true;
+
                       _this.updateLift();
+
                       window.clearTimeout(_this._timeoutID);
                     });
 
@@ -18141,7 +18160,9 @@ try {
                       );
 
                       _this._isIframeResized = true;
+
                       _this.updateLift();
+
                       window.clearTimeout(_this._timeoutID);
                     });
 
@@ -18163,6 +18184,7 @@ try {
                       tag +
                       ".php?";
                     var params = {};
+
                     importNamespace("sdk.PluginUtils").validate(
                       this.getParams(),
                       elem,
@@ -18230,6 +18252,7 @@ try {
 
                     importNamespace("sdk.DOM").addCss(elem, "fb_iframe_widget");
                     var name = importDefault("guid")();
+
                     this.subscribe("xd.verify", function subscribe_$1(msg) {
                       importNamespace("sdk.XD").sendToFacebook(name, {
                         method: "xd/verify",
@@ -18258,10 +18281,15 @@ try {
                     });
 
                     this._element = elem;
+
                     this._ns = ns;
+
                     this._tag = tag;
+
                     this._params = params;
+
                     this._config = this.getConfig();
+
                     this._iframeOptions = {
                       root: flow,
                       url: url + importDefault("QueryString").encode(params),
@@ -18298,11 +18326,16 @@ try {
                         this._element,
                         "fb_iframe_widget_fluid_desktop"
                       );
+
                       if (!params.width && this._config.full_width) {
                         this._element.style.width = "100%";
+
                         this._iframeOptions.root.style.width = "100%";
+
                         this._iframeOptions.style.width = "100%";
+
                         this._params.container_width = this._element.offsetWidth;
+
                         this._iframeOptions.url =
                           url +
                           importDefault("QueryString").encode(this._params);
@@ -18327,9 +18360,11 @@ try {
                       importNamespace(
                         "sdk.PlatformVersioning"
                       ).assertVersionIsSet();
+
                       var uri = new (importDefault("sdk.URI"))(
                         this._iframeOptions.url
                       );
+
                       this._iframeOptions.url = uri
                         .setPath(
                           "/" +
@@ -18348,6 +18383,7 @@ try {
                     );
                     delete params.channel;
                     var query = importDefault("QueryString").encode(params);
+
                     if (
                       this._element.getAttribute("fb-iframe-plugin-query") ==
                       query
@@ -18358,13 +18394,16 @@ try {
                         this._tag,
                         query
                       );
+
                       this.inform("render");
                       return;
                     }
+
                     this._element.setAttribute("fb-iframe-plugin-query", query);
 
                     this.subscribe("render", function subscribe_$1() {
                       importNamespace("sdk.Event").fire("iframeplugin:onload");
+
                       _this2._iframe.style.visibility = "visible";
 
                       if (!_this2._isIframeResized) {
@@ -18377,13 +18416,16 @@ try {
                     while (this._element.firstChild) {
                       this._element.removeChild(this._element.firstChild);
                     }
+
                     this._element.appendChild(this._iframeOptions.root);
                     var timeout = importDefault("sdk.UA").mobile() ? 120 : 45;
+
                     this._timeoutID = window.setTimeout(
                       function window_setTimeout_$0() {
                         importNamespace("sdk.PluginUtils").collapseIframe(
                           _this2._iframe
                         );
+
                         importNamespace("Log").warn(
                           "%s:%s failed to resize in %ss",
                           _this2._ns,
@@ -18882,7 +18924,9 @@ try {
               var Comments = importDefault("IframePlugin").extend({
                 constructor: function constructor(elem, ns, tag, attr) {
                   attr = setupAttributes(elem, attr);
+
                   this.parent(elem, ns, tag, attr);
+
                   this.subscribe("xd.sdk_event", function subscribe_$1(
                     message
                   ) {
@@ -18926,7 +18970,9 @@ try {
                     "fb_comments_count_zero"
                   );
                   attr.count = 1;
+
                   this.parent(elem, ns, "comments", attr);
+
                   this.subscribe("xd.comment_count", function subscribe_$1(
                     message
                   ) {
@@ -19186,15 +19232,18 @@ try {
                       } else {
                         _this._handleUnsetIframeBoxShadow();
                       }
+
                       _this._handleResizeIframe(message);
                     }
                   );
+
                   this.subscribe(
                     "xd.liveChatPluginUpdateShadow",
                     function subscribe_$1(message) {
                       _this._handleShadowUpdate(message);
                     }
                   );
+
                   this.subscribe(
                     "xd.liveChatPluginUpdatePageTitle",
                     function subscribe_$1(message) {
@@ -19216,6 +19265,7 @@ try {
                   ) {
                     _this._handleResizeIframe(message);
                   });
+
                   this.subscribe("xd.mpn.setAppearance", function subscribe_$1(
                     message
                   ) {
@@ -19227,17 +19277,20 @@ try {
                   ) {
                     _this._handlePrepareIframe(message);
                   });
+
                   this.subscribe(
                     "xd.mpn.prepareIconIframe",
                     function subscribe_$1(message) {
                       _this._handlePrepareIconIframe(message);
                     }
                   );
+
                   this.subscribe("xd.mpn.storeState", function subscribe_$1(
                     message
                   ) {
                     _this._storeStateInfo(message.state);
                   });
+
                   this.subscribe("xd.mpn.getState", function subscribe_$1(_) {
                     var state = _this._getStateInfo();
                     var event = {
@@ -19255,24 +19308,28 @@ try {
                       _this._handleSetupIconIframe(message);
                     }
                   );
+
                   this.subscribe(
                     "xd.mpn.setupDialogIframe",
                     function subscribe_$1(message) {
                       _this._handleSetupDialogIframe(message);
                     }
                   );
+
                   this.subscribe(
                     "xd.mpn.toggleDialogVisibility",
                     function subscribe_$1(message) {
                       _this._handleToggleDialogVisibility(message);
                     }
                   );
+
                   this.subscribe(
                     "xd.mpn.updateDialogAppearance",
                     function subscribe_$1(message) {
                       _this._handleUpdateDialogAppearance(message);
                     }
                   );
+
                   this.subscribe("xd.mpn.reload", function subscribe_$1(
                     message
                   ) {
@@ -19306,6 +19363,7 @@ try {
 
                   var bubbleIFrameName = "blank_" + frameName;
                   _bubbleIFrame = newElement.dialogElement;
+
                   _dialogIFrameName = this._iframeOptions.name;
                   _iconInnerIFrame = importDefault("sdk.createIframe")({
                     url: this._getBubbleFrameURL(),
@@ -19384,12 +19442,15 @@ try {
                   }
 
                   _visibilityGuard = null;
+
                   if (this._iframe) {
                     this._iframe.setAttribute("data-testid", "dialog_iframe");
+
                     this._iframe.style.cssText = cssText;
                   }
 
                   _dialogIFrame = this._iframe;
+
                   _dialogIFrameName = this._iframe.name;
 
                   var isMobile = importDefault("sdk.UA").mobile();
@@ -19497,6 +19558,7 @@ try {
                     _isHidden = hidden == "true";
                     if (hidden == "true") {
                       this._iframe.style.removeProperty("animation");
+
                       this._handleHideDialogIframe({
                         chatStarted: chatStarted,
                         isMobile: isMobile,
@@ -19524,11 +19586,15 @@ try {
                   }
 
                   _visibilityGuard = null;
+
                   if (this._iframe) {
                     this._iframe.setAttribute("data-testid", "dialog_iframe");
+
                     this._iframe.style.cssText = message.cssText;
                   }
+
                   _dialogIFrame = this._iframe;
+
                   _dialogIFrameName = this._iframe.name;
                   _mobilePath = message.path;
 
@@ -19592,6 +19658,7 @@ try {
                   var created = importNamespace(
                     "sdk.DialogUtils"
                   ).setupNewDialog();
+
                   _dialogIFrameName = this._iframeOptions.name;
                   _bubbleIFrameName = "blank_" + message.frameName;
                   var css = ES("JSON", "parse", false, message.cssText);
@@ -19613,13 +19680,17 @@ try {
                   });
 
                   this._bubbleDialog = created.dialogElement;
+
                   _bubbleDialog = this._bubbleDialog;
+
                   _bubbleIFrame = this._bubbleDialog;
+
                   importNamespace("sdk.DOM").setStyle(
                     this._bubbleDialog,
                     "overflow",
                     "visible"
                   );
+
                   importNamespace("sdk.DOM").setStyle(
                     this._bubbleDialog,
                     "z-index",
@@ -19632,6 +19703,7 @@ try {
                     );
                   }
                   _bubbleIFrame.setAttribute(ARRT_ALIGNMENT, message.alignment);
+
                   importNamespace("sdk.Content").append(this._bubbleDialog);
                   if (message.iconSVG != null) {
                     importNamespace("sdk.DOM").html(iconDiv, message.iconSVG);
@@ -19690,6 +19762,7 @@ try {
                       "boxShadow",
                       "0 1pt 12pt grey"
                     );
+
                     importNamespace("sdk.DOM").setStyle(
                       this._iframe,
                       "margin",
@@ -19705,6 +19778,7 @@ try {
                       "boxShadow",
                       "none"
                     );
+
                     importNamespace("sdk.DOM").setStyle(
                       this._iframe,
                       "margin",
@@ -20551,6 +20625,7 @@ try {
               var LWIAdsCreation = importDefault("IframePlugin").extend({
                 constructor: function constructor(elem, ns, tag, attr) {
                   this.parent(elem, ns, tag, attr);
+
                   this._setUpSubscriptions();
                 },
 
@@ -20566,6 +20641,7 @@ try {
 
                 _setUpSubscriptions: function _setUpSubscriptions() {
                   var _this = this;
+
                   this.subscribe(
                     "xd.lwiadscreation.load",
                     function subscribe_$1(message) {
@@ -20606,6 +20682,7 @@ try {
               var LWIAdsInsights = importDefault("IframePlugin").extend({
                 constructor: function constructor(elem, ns, tag, attr) {
                   this.parent(elem, ns, tag, attr);
+
                   this._setUpSubscriptions();
                 },
 
@@ -20620,6 +20697,7 @@ try {
 
                 _setUpSubscriptions: function _setUpSubscriptions() {
                   var _this = this;
+
                   this.subscribe(
                     "xd.lwiadsinsights.load",
                     function subscribe_$1(message) {
@@ -20810,6 +20888,7 @@ try {
                     "on_login"
                   );
                   var cb = null;
+
                   var iframeName = this._iframeOptions.name;
                   if (onlogin) {
                     cb = function cb(response) {
@@ -21318,6 +21397,7 @@ try {
               var Save = importDefault("IframePlugin").extend({
                 constructor: function constructor(elem, ns, tag, attr) {
                   var _this = this;
+
                   this.parent(elem, ns, tag, attr);
                   var isMobile = importDefault("sdk.UA").mobile();
 
@@ -21373,6 +21453,7 @@ try {
                       };
 
                       var idleEvent;
+
                       _this.subscribe(
                         "xd.savePluginShowIframe",
                         function _this_subscribe_$1() {
@@ -21380,6 +21461,7 @@ try {
                             "savePlugin:hideDialog"
                           );
                           allNodes.forEach(show);
+
                           _this.positionOnScreen(dialog, darkOverlay);
 
                           if (!isMobile && !idleEvent) {
@@ -21389,6 +21471,7 @@ try {
                           }
                         }
                       );
+
                       _this.subscribe(
                         "xd.savePluginHideIframe",
                         function _this_subscribe_$1() {
@@ -21758,9 +21841,13 @@ try {
               var Video = importDefault("IframePlugin").extend({
                 constructor: function constructor(elem, ns, tag, attr) {
                   this.parent(elem, ns, tag, attr);
+
                   this._videoController = null;
+
                   this._sharedObservable = null;
+
                   this._sharedVideoCache = null;
+
                   this.subscribe("xd.onVideoAPIReady", function subscribe_$1(
                     msg
                   ) {
@@ -21782,9 +21869,11 @@ try {
                       instance: this._videoController
                     });
                   });
+
                   this.subscribe("xd.stateChange", function subscribe_$1(msg) {
                     this._sharedObservable.inform(msg.state);
                   });
+
                   this.subscribe(
                     "xd.cachedStateUpdateRequest",
                     function subscribe_$1(msg) {
@@ -21911,7 +22000,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1004063449","namespace":"FB","message":"' +
+        '","revision":"1004064887","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
