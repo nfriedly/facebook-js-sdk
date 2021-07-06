@@ -1,4 +1,4 @@
-/*1625130737,,JIT Construction: v1004068910,en_US*/
+/*1625609530,,JIT Construction: v1004080921,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3657,7 +3657,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1004068910",
+            revision: "1004080921",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -18308,11 +18308,14 @@ try {
 
                       title:
                         this._ns + ":" + this._tag + " Facebook Social Plugin",
+
                       testid:
                         this._ns + ":" + this._tag + " Facebook Social Plugin",
+
                       onload: function onload() {
                         return _this.inform("render");
                       },
+
                       onerror: function onerror() {
                         return importNamespace(
                           "sdk.PluginUtils"
@@ -19375,6 +19378,7 @@ try {
                     "data-testid": "bubble_iframe",
                     onload: function onload() {
                       _bubbleIFrameName = bubbleIFrameName;
+
                       _this2._notifyDialogIFrame();
                       window.setTimeout(function window_setTimeout_$0() {
                         importNamespace("sdk.DOM").remove(iconDiv);
@@ -19405,6 +19409,7 @@ try {
                     "data-testid": "unread_iframe",
                     onload: function onload() {
                       _unreadCountIFrameName = unreadCountIFrameName;
+
                       _this2._notifyDialogIFrame();
                     }
                   });
@@ -19674,6 +19679,7 @@ try {
                     "data-testid": "bubble_iframe",
                     onload: function onload() {
                       _bubbleIFrameLoaded = true;
+
                       _this3._notifyDialogFrame();
                       window.setTimeout(function window_setTimeout_$0() {
                         importNamespace("sdk.DOM").remove(iconDiv);
@@ -19737,6 +19743,7 @@ try {
                     "data-testid": "unread_iframe",
                     onload: function onload() {
                       _badgeIFrameLoaded = true;
+
                       _this3._notifyDialogFrame();
                     }
                   });
@@ -21635,9 +21642,11 @@ try {
 
                   importDefault("sdk.createIframe")({
                     url: this.getOverlayIFrameURL(),
+
                     name: "overlay_" + this._iframeOptions.name,
                     root: created.contentRoot,
                     tabindex: -1,
+
                     onload: ES(onloadFunc, "bind", true, this)
                   });
 
@@ -22044,7 +22053,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1004068910","namespace":"FB","message":"' +
+        '","revision":"1004080921","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
