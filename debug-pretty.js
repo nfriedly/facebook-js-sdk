@@ -1,4 +1,4 @@
-/*1626302438,,JIT Construction: v1004112519,en_US*/
+/*1626319311,,JIT Construction: v1004113699,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3657,7 +3657,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1004112519",
+            revision: "1004113699",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -17709,14 +17709,16 @@ try {
               var MPNCufeeScoreType = InternalEnum({
                 CSAT: "csat",
                 CES: "ces",
-                NPS: "nps"
+                NPS: "nps",
+                FREE_FORM: "free_form"
               });
               var MPNCufeeScoreOption = InternalEnum({
                 FIVE_STARS: "five_stars",
                 FIVE_EMOJIS: "five_emojis",
                 ONE_TO_FIVE: "one_to_five",
                 ONE_TO_SEVEN: "one_to_seven",
-                ZERO_TO_TEN: "zero_to_ten"
+                ZERO_TO_TEN: "zero_to_ten",
+                NONE: ""
               });
 
               var MPNCufeeWordLimit = 400;
@@ -22068,7 +22070,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1004112519","namespace":"FB","message":"' +
+        '","revision":"1004113699","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
