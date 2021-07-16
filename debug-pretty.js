@@ -1,4 +1,4 @@
-/*1626399586,,JIT Construction: v1004117852,en_US*/
+/*1626466315,,JIT Construction: v1004120111,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3657,7 +3657,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1004117852",
+            revision: "1004120111",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -14927,6 +14927,7 @@ try {
               "sdk.Cookie",
               "sdk.Event",
               "sdk.Runtime",
+              "sdk.Scribe",
               "sdk.SignedRequest",
               "sdk.ui",
               "sdk.warnInsecure"
@@ -15049,7 +15050,18 @@ try {
               sdkEvent.subscribe("init:post", function Event_subscribe_$1(
                 options
               ) {
-                if (options.status) {
+                if (options.legacyStatusInit) {
+                  require("sdk.Auth").getLoginStatus(
+                    function Auth_getLoginStatus_$0(response) {
+                      if (response != null && response.status === "connected") {
+                        require("sdk.Scribe").log("jssdk_error", {
+                          appId: require("sdk.Runtime").getClientID(),
+                          error: "legacy_status_init_success"
+                        });
+                      }
+                    }
+                  );
+                } else if (options.status) {
                   require("sdk.Auth").getLoginStatus();
                 }
                 if (require("sdk.Runtime").getClientID()) {
@@ -16751,7 +16763,6 @@ try {
               "sdk.MBasicInitializer",
               "sdk.PlatformVersioning",
               "sdk.Runtime",
-              "sdk.Scribe",
               "sdk.UA",
               "sdk.URI",
               "sdk.XD"
@@ -16827,10 +16838,7 @@ try {
                   }
 
                   if (options.status == null) {
-                    importNamespace("sdk.Scribe").log("jssdk_error", {
-                      appId: importDefault("sdk.Runtime").getClientID(),
-                      error: "legacy_status_init"
-                    });
+                    options.legacyStatusInit = true;
                   }
 
                   options = ES(
@@ -22071,7 +22079,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1004117852","namespace":"FB","message":"' +
+        '","revision":"1004120111","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
