@@ -1,4 +1,4 @@
-/*1626466315,,JIT Construction: v1004120111,en_US*/
+/*1626469911,,JIT Construction: v1004120961,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3657,7 +3657,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1004120111",
+            revision: "1004120961",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -9989,7 +9989,6 @@ try {
               "sdk.AuthStorageUtils",
               "sdk.AuthUtils",
               "sdk.Cookie",
-              "sdk.Frictionless",
               "sdk.Impressions",
               "sdk.Runtime",
               "sdk.Scribe",
@@ -10008,8 +10007,6 @@ try {
               module,
               exports
             ) {
-              require("sdk.Frictionless");
-
               var LOGIN_COMPLETE_HEARTBEAT_TIMEOUT = 5 * 1000;
               var PLATFORM_JSSDK_FUNNEL_LOG_ID = 117;
 
@@ -10917,6 +10914,135 @@ try {
               exports["default"] = _default;
             },
             98
+          );
+          __d(
+            "sdk.Event",
+            [],
+            function $module_sdk_Event(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              "use strict";
+
+              var SUBSCRIBE = "event.subscribe";
+
+              var UNSUBSCRIBE = "event.unsubscribe";
+
+              function subscribers() {
+                if (!this._subscribersMap) {
+                  this._subscribersMap = {};
+                }
+
+                return this._subscribersMap;
+              }
+
+              function subscribe(name, cb) {
+                var subs = this.subscribers();
+
+                if (!subs[name]) {
+                  subs[name] = [cb];
+                } else {
+                  if (subs[name].indexOf(cb) == -1) {
+                    subs[name].push(cb);
+                  }
+                }
+
+                if (name != this.SUBSCRIBE && name != this.UNSUBSCRIBE) {
+                  this.fire(this.SUBSCRIBE, name, subs[name]);
+                }
+              }
+
+              function unsubscribe(name, cb) {
+                var subs = this.subscribers()[name];
+                if (subs) {
+                  subs.forEach(function subs_forEach_$0(value, key) {
+                    if (value === cb) {
+                      subs.splice(key, 1);
+                    }
+                  });
+                }
+
+                if (name != this.SUBSCRIBE && name != this.UNSUBSCRIBE) {
+                  this.fire(this.UNSUBSCRIBE, name, subs);
+                }
+              }
+
+              function monitor(name, callback) {
+                if (!callback()) {
+                  var ctx = this;
+                  var fn = function fn() {
+                    if (callback.apply(callback, arguments)) {
+                      ctx.unsubscribe(name, fn);
+                    }
+                  };
+
+                  this.subscribe(name, fn);
+                }
+              }
+
+              function clear(name) {
+                delete this.subscribers()[name];
+              }
+
+              function fire(name) {
+                for (
+                  var _len = arguments.length,
+                    args = new Array(_len > 1 ? _len - 1 : 0),
+                    _key = 1;
+                  _key < _len;
+                  _key++
+                ) {
+                  args[_key - 1] = arguments[_key];
+                }
+
+                var subs = this.subscribers()[name];
+
+                if (subs) {
+                  subs.forEach(function subs_forEach_$0(sub) {
+                    if (sub) {
+                      sub.apply(this, args);
+                    }
+                  });
+                }
+              }
+              exports.SUBSCRIBE = SUBSCRIBE;
+              exports.UNSUBSCRIBE = UNSUBSCRIBE;
+              exports.subscribers = subscribers;
+              exports.subscribe = subscribe;
+              exports.unsubscribe = unsubscribe;
+              exports.monitor = monitor;
+              exports.clear = clear;
+              exports.fire = fire;
+            },
+            66
+          );
+          __d(
+            "resolveURI",
+            [],
+            function $module_resolveURI(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              function resolveURI(uri) {
+                if (uri == null || uri === "") {
+                  return window.location.href;
+                }
+
+                var a = document.createElement("a");
+                a.href = uri;
+                return a.href;
+              }
+              exports["default"] = resolveURI;
+            },
+            66
           );
           __d(
             "dedupString",
@@ -12375,252 +12501,6 @@ try {
             98
           );
           __d(
-            "sdk.Event",
-            [],
-            function $module_sdk_Event(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              "use strict";
-
-              var SUBSCRIBE = "event.subscribe";
-
-              var UNSUBSCRIBE = "event.unsubscribe";
-
-              function subscribers() {
-                if (!this._subscribersMap) {
-                  this._subscribersMap = {};
-                }
-
-                return this._subscribersMap;
-              }
-
-              function subscribe(name, cb) {
-                var subs = this.subscribers();
-
-                if (!subs[name]) {
-                  subs[name] = [cb];
-                } else {
-                  if (subs[name].indexOf(cb) == -1) {
-                    subs[name].push(cb);
-                  }
-                }
-
-                if (name != this.SUBSCRIBE && name != this.UNSUBSCRIBE) {
-                  this.fire(this.SUBSCRIBE, name, subs[name]);
-                }
-              }
-
-              function unsubscribe(name, cb) {
-                var subs = this.subscribers()[name];
-                if (subs) {
-                  subs.forEach(function subs_forEach_$0(value, key) {
-                    if (value === cb) {
-                      subs.splice(key, 1);
-                    }
-                  });
-                }
-
-                if (name != this.SUBSCRIBE && name != this.UNSUBSCRIBE) {
-                  this.fire(this.UNSUBSCRIBE, name, subs);
-                }
-              }
-
-              function monitor(name, callback) {
-                if (!callback()) {
-                  var ctx = this;
-                  var fn = function fn() {
-                    if (callback.apply(callback, arguments)) {
-                      ctx.unsubscribe(name, fn);
-                    }
-                  };
-
-                  this.subscribe(name, fn);
-                }
-              }
-
-              function clear(name) {
-                delete this.subscribers()[name];
-              }
-
-              function fire(name) {
-                for (
-                  var _len = arguments.length,
-                    args = new Array(_len > 1 ? _len - 1 : 0),
-                    _key = 1;
-                  _key < _len;
-                  _key++
-                ) {
-                  args[_key - 1] = arguments[_key];
-                }
-
-                var subs = this.subscribers()[name];
-
-                if (subs) {
-                  subs.forEach(function subs_forEach_$0(sub) {
-                    if (sub) {
-                      sub.apply(this, args);
-                    }
-                  });
-                }
-              }
-              exports.SUBSCRIBE = SUBSCRIBE;
-              exports.UNSUBSCRIBE = UNSUBSCRIBE;
-              exports.subscribers = subscribers;
-              exports.subscribe = subscribe;
-              exports.unsubscribe = unsubscribe;
-              exports.monitor = monitor;
-              exports.clear = clear;
-              exports.fire = fire;
-            },
-            66
-          );
-          __d(
-            "sdk.Frictionless",
-            ["sdk.Auth", "sdk.Dialog", "sdk.Event", "sdk.api"],
-            function $module_sdk_Frictionless(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              var Frictionless = {
-                _allowedRecipients: {},
-
-                _useFrictionless: false,
-
-                _updateRecipients: function _updateRecipients() {
-                  Frictionless._allowedRecipients = {};
-                  require("sdk.api")(
-                    "/me/apprequestformerrecipients",
-                    function api_$1(response) {
-                      if (!response || response.error) {
-                        return;
-                      }
-                      response.data.forEach(function response_data_forEach_$0(
-                        recipient
-                      ) {
-                        Frictionless._allowedRecipients[
-                          recipient.recipient_id
-                        ] = true;
-                      });
-                    }
-                  );
-                },
-
-                init: function init() {
-                  Frictionless._useFrictionless = true;
-                  require("sdk.Auth").getLoginStatus(
-                    function Auth_getLoginStatus_$0(response) {
-                      if (response.status == "connected") {
-                        Frictionless._updateRecipients();
-                      }
-                    }
-                  );
-                  require("sdk.Event").subscribe(
-                    "auth.login",
-                    function Event_subscribe_$1(login) {
-                      if (login.authResponse) {
-                        Frictionless._updateRecipients();
-                      }
-                    }
-                  );
-                },
-
-                _processRequestResponse: function _processRequestResponse(
-                  cb,
-                  hidden
-                ) {
-                  return function(params) {
-                    var updated = params && params.updated_frictionless;
-                    if (Frictionless._useFrictionless && updated) {
-                      Frictionless._updateRecipients();
-                    }
-
-                    if (params) {
-                      if (!hidden && params.frictionless) {
-                        require("sdk.Dialog")._hideLoader();
-                        require("sdk.Dialog")._restoreBodyPosition();
-                        require("sdk.Dialog")._hideIPadOverlay();
-                      }
-                      delete params.frictionless;
-                      delete params.updated_frictionless;
-                    }
-
-                    cb && cb(params);
-                  };
-                },
-
-                isAllowed: function isAllowed(user_ids) {
-                  if (!user_ids) {
-                    return false;
-                  }
-
-                  if (typeof user_ids === "number") {
-                    return user_ids in Frictionless._allowedRecipients;
-                  }
-                  if (typeof user_ids === "string") {
-                    user_ids = user_ids.split(",");
-                  }
-                  user_ids = user_ids.map(function user_ids_map_$0(s) {
-                    return String(s).trim();
-                  });
-
-                  var allowed = true;
-                  var has_user_ids = false;
-                  user_ids.forEach(function user_ids_forEach_$0(user_id) {
-                    allowed =
-                      allowed && user_id in Frictionless._allowedRecipients;
-                    has_user_ids = true;
-                  });
-                  return allowed && has_user_ids;
-                }
-              };
-
-              require("sdk.Event").subscribe(
-                "init:post",
-                function Event_subscribe_$1(options) {
-                  if (options.frictionlessRequests) {
-                    Frictionless.init();
-                  }
-                }
-              );
-
-              module.exports = Frictionless;
-            },
-            null
-          );
-          __d(
-            "resolveURI",
-            [],
-            function $module_resolveURI(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              function resolveURI(uri) {
-                if (uri == null || uri === "") {
-                  return window.location.href;
-                }
-
-                var a = document.createElement("a");
-                a.href = uri;
-                return a.href;
-              }
-              exports["default"] = resolveURI;
-            },
-            66
-          );
-          __d(
             "sdk.NativeExtensions",
             ["DOMEventListener", "Log", "sdk.UA"],
             function $module_sdk_NativeExtensions(
@@ -13597,7 +13477,6 @@ try {
               "sdk.Dialog",
               "sdk.Event",
               "sdk.Extensions",
-              "sdk.Frictionless",
               "sdk.Impressions",
               "sdk.Native",
               "sdk.Popup",
@@ -13855,25 +13734,6 @@ try {
                 apprequests: {
                   transform: function transform(call) {
                     call = MobileIframeable.transform(call);
-
-                    call.params.frictionless =
-                      require("sdk.Frictionless") &&
-                      require("sdk.Frictionless")._useFrictionless;
-                    if (call.params.frictionless) {
-                      if (
-                        require("sdk.Frictionless").isAllowed(call.params.to)
-                      ) {
-                        call.params.display = "iframe";
-                        call.params.in_iframe = true;
-
-                        call.hideLoader = true;
-                      }
-
-                      call.cb = require("sdk.Frictionless")._processRequestResponse(
-                        call.cb,
-                        call.hideLoader
-                      );
-                    }
 
                     call.closeIcon = false;
                     return call;
@@ -15915,24 +15775,6 @@ try {
             3
           );
           __d(
-            "legacy:fb.frictionless",
-            ["FB", "sdk.Frictionless"],
-            function $module_legacy_fb_frictionless(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              __DO_NOT_USE__module,
-              __DO_NOT_USE__exports
-            ) {
-              require("FB").provide(
-                "Frictionless",
-                require("sdk.Frictionless")
-              );
-            },
-            3
-          );
-          __d(
             "sdk.GamingServices",
             ["sdk.api", "sdk.ui"],
             function $module_sdk_GamingServices(
@@ -16759,7 +16601,6 @@ try {
               "sdk.Cookie",
               "sdk.ErrorHandling",
               "sdk.Event",
-              "sdk.Frictionless",
               "sdk.MBasicInitializer",
               "sdk.PlatformVersioning",
               "sdk.Runtime",
@@ -16778,7 +16619,6 @@ try {
             ) {
               require("sdk.XD");
               require("sdk.AppEvents");
-              require("sdk.Frictionless");
 
               function parseAppId(appId) {
                 var looksValid =
@@ -22079,7 +21919,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1004120111","namespace":"FB","message":"' +
+        '","revision":"1004120961","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
