@@ -1,4 +1,4 @@
-/*1626477114,,JIT Construction: v1004121569,en_US*/
+/*1626916796,,JIT Construction: v1004140410,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3657,7 +3657,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1004121569",
+            revision: "1004140410",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -6306,6 +6306,8 @@ try {
                 "whatsapp-consumer",
                 "whatsapp-smb",
                 "fb-ide-opener",
+                "fb-vscode",
+                "fb-vscode-insiders",
                 "spark-studio"
               ]);
 
@@ -21923,7 +21925,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1004121569","namespace":"FB","message":"' +
+        '","revision":"1004140410","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
