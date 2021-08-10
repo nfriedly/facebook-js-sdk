@@ -1,4 +1,4 @@
-/*1628125236,,JIT Construction: v1004207384,en_US*/
+/*1628626350,,JIT Construction: v1004231704,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3642,7 +3642,8 @@ try {
               force_popup_to_canvas_apps_with_id: [],
               force_popup_to_all_canvas_app: false,
               max_oauth_dialog_retries: { rate: 100, value: 10 },
-              plugin_tags_blacklist: []
+              plugin_tags_blacklist: [],
+              xfoa_login_enabled: false
             }
           });
           __d("JSSDKCssConfig", [], {
@@ -3657,7 +3658,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1004207384",
+            revision: "1004231704",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -13457,7 +13458,10 @@ try {
                       cb: XD.registerCallback(cb, forever, id),
                       origin: origin + "/" + channel,
                       domain: location.hostname,
-                      relation: relation || "opener"
+                      relation: relation || "opener",
+                      is_canvas: importDefault(
+                        "sdk.Runtime"
+                      ).isCanvasEnvironment()
                     });
 
                   return xdArbiterHttpsUrl + xdArbiterFragment;
@@ -14455,6 +14459,8 @@ try {
                     location.host +
                     location.pathname;
                   delete call.params.access_token;
+
+                  call.params.is_canvas = require("sdk.Runtime").isCanvasEnvironment();
 
                   var handler = function handler(response) {
                     var result = response.result;
@@ -22098,7 +22104,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1004207384","namespace":"FB","message":"' +
+        '","revision":"1004231704","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
