@@ -1,4 +1,4 @@
-/*1628626350,,JIT Construction: v1004231704,en_US*/
+/*1628737957,,JIT Construction: v1004241711,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3658,7 +3658,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1004231704",
+            revision: "1004241711",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -7894,7 +7894,7 @@ try {
 
                 for (var i = 0; i < transports.length; i++) {
                   var transport = availableTransports[transports[i]];
-                  var paramsCopy = ES("Object", "assign", false, {}, params);
+                  var paramsCopy = babelHelpers["extends"]({}, params);
                   if (transport.execute(url, method, paramsCopy, cb)) {
                     return;
                   }
@@ -13920,7 +13920,35 @@ try {
                   },
 
                   transform: function transform(call) {
-                    return permission_oauth_transform(call);
+                    if (!require("sdk.Runtime").getClientID()) {
+                      require("Log").error(
+                        "Photo Picker was called before FB.init()."
+                      );
+                      return;
+                    }
+                    var cb = call.cb;
+                    var id = call.id;
+                    delete call.cb;
+
+                    ES("Object", "assign", false, call.params, {
+                      client_id: require("sdk.Runtime").getClientID(),
+                      redirect_uri: require("resolveURI")(
+                        UIServer.xdHandlerPhotoPicker(
+                          cb,
+                          id,
+                          call.params.plugin_prepare
+                            ? "opener.parent"
+                            : "opener",
+                          "photo_picker",
+                          call.params
+                        )
+                      ),
+
+                      origin: require("sdk.getContextType")(),
+                      domain: location.hostname
+                    });
+
+                    return call;
                   }
                 },
 
@@ -14061,7 +14089,7 @@ try {
                     UIServer.Methods,
                     name
                   )
-                    ? ES("Object", "assign", false, {}, UIServer.Methods[name])
+                    ? babelHelpers["extends"]({}, UIServer.Methods[name])
                     : {};
                   var id = params.id || require("guid")();
                   var useSSL = true;
@@ -14795,6 +14823,38 @@ try {
                     target,
                     isDefault
                   );
+                },
+
+                xdHandlerPhotoPicker: function xdHandlerPhotoPicker(
+                  cb,
+                  frame,
+                  target,
+                  _method,
+                  _requestParams
+                ) {
+                  return UIServer._xdNextHandler(
+                    UIServer.xdResponseWrapperPhotoPicker(cb),
+                    frame,
+                    target,
+                    false
+                  );
+                },
+
+                xdResponseWrapperPhotoPicker: function xdResponseWrapperPhotoPicker(
+                  cb
+                ) {
+                  return function(params) {
+                    var response;
+                    if (params && params.result && params.result.closeWindow) {
+                      response = "Photo picker call was cancelled by the user";
+                    } else {
+                      response = params.photos;
+                    }
+                    if (cb) {
+                      cb(response);
+                    }
+                    return null;
+                  };
                 }
               };
 
@@ -14841,7 +14901,7 @@ try {
                   }
                 }
 
-                params = ES("Object", "assign", false, {}, params);
+                params = babelHelpers["extends"]({}, params);
                 if (!params.method) {
                   importNamespace("Log").error(
                     '"method" is a required parameter for FB.ui().'
@@ -16862,14 +16922,10 @@ try {
                     options.legacyStatusInit = true;
                   }
 
-                  options = ES(
-                    "Object",
-                    "assign",
-                    false,
+                  options = babelHelpers["extends"](
                     {
                       status: true
                     },
-
                     options || {}
                   );
                 }
@@ -18424,13 +18480,7 @@ try {
                         .toString();
                     }
 
-                    var params = ES(
-                      "Object",
-                      "assign",
-                      false,
-                      {},
-                      this._params
-                    );
+                    var params = babelHelpers["extends"]({}, this._params);
                     delete params.channel;
                     var query = importDefault("QueryString").encode(params);
 
@@ -18839,10 +18889,7 @@ try {
             ) {
               var MIN_WIDTH = 320;
 
-              var params = ES(
-                "Object",
-                "assign",
-                false,
+              var params = babelHelpers["extends"](
                 {
                   numposts: "string",
                   href: "url",
@@ -22104,7 +22151,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1004231704","namespace":"FB","message":"' +
+        '","revision":"1004241711","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
