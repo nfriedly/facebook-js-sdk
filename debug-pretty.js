@@ -1,4 +1,4 @@
-/*1628737957,,JIT Construction: v1004241711,en_US*/
+/*1628811631,,JIT Construction: v1004247535,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -59,7 +59,7 @@ try {
            * Copyright 2004-present Facebook. All Rights Reserved.
            *
            * @provides GenericFunctionVisitor
-           * @polyfill
+           * @polyfillUAs
            *
            * This file contains the functions used for the generic JS function
            * transform. Please add your functionality to these functions if you
@@ -2824,7 +2824,7 @@ try {
            *           Object.enumFix
            *           Object
            *           Object.es6
-           * @polyfill
+           * @polyfillUAs
            *
            */
 
@@ -3104,7 +3104,7 @@ try {
           /**
            * Copyright 2013-2014 Facebook, Inc.
            * @provides Collections.es6
-           * @polyfill old webkit modern
+           * @polyfillUAs old webkit modern
            * @preventMunge
            * @requires iterator.enumerate
            * @requires TypeChecker
@@ -3658,7 +3658,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1004241711",
+            revision: "1004247535",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -22151,7 +22151,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1004241711","namespace":"FB","message":"' +
+        '","revision":"1004247535","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
