@@ -1,4 +1,4 @@
-/*1629168598,,JIT Construction: v1004263186,en_US*/
+/*1629313928,,JIT Construction: v1004272161,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -58,14 +58,17 @@ try {
           /**
            * Copyright 2004-present Facebook. All Rights Reserved.
            *
-           * @provides GenericFunctionVisitor
-           * @polyfillUAs
-           *
            * This file contains the functions used for the generic JS function
            * transform. Please add your functionality to these functions if you
            * want to wrap or annotate functions.
            *
            * Please see the DEX https://fburl.com/80903169 for more information.
+           *
+           * @provides GenericFunctionVisitor
+           * @polyfillUAs
+           * @polyfill other<ALL
+           * @noflow
+           * @nolint
            */
 
           (function() {
@@ -2819,13 +2822,18 @@ try {
           /**
            * Copyright 2004-present Facebook. All Rights Reserved.
            *
+           * Provides specific iterators (String/Array) with fallback to a generic object
+           * iterator.
+           *
            * @provides iterator.enumerate
            * @requires Array
            *           Object.enumFix
            *           Object
            *           Object.es6
            * @polyfillUAs
-           *
+           * @polyfill other<ALL
+           * @noflow
+           * @nolint
            */
 
           (function(global, undefined) {
@@ -3103,12 +3111,19 @@ try {
           })(typeof global === "undefined" ? this : global);
           /**
            * Copyright 2013-2014 Facebook, Inc.
+           *
+           * Provides polyfills for:
+           * - ES6 implementations of Map/Set (https://caniuse.com/es6)
+           *
            * @provides Collections.es6
            * @polyfillUAs old webkit modern
+           * @polyfill firefox<54 chrome<51 safari<10 mobile_safari<10 other<ALL
            * @preventMunge
            * @requires iterator.enumerate
            * @requires TypeChecker
            * @requires GenericFunctionVisitor
+           * @noflow
+           * @nolint
            */
 
           (function(global, undefined) {
@@ -3658,7 +3673,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1004263186",
+            revision: "1004272161",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -22156,7 +22171,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1004263186","namespace":"FB","message":"' +
+        '","revision":"1004272161","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
