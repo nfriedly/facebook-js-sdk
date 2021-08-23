@@ -1,4 +1,4 @@
-/*1629313928,,JIT Construction: v1004272161,en_US*/
+/*1629758970,,JIT Construction: v1004294855,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3634,7 +3634,8 @@ try {
             global.Set = Set;
           })(typeof global === "undefined" ? this : global);
           __d("JSSDKCanvasPrefetcherConfig", [], {
-            blacklist: [144959615576466, 768691303149786, 320528941393723],
+            enabled: true,
+            excludedAppIds: [144959615576466, 768691303149786, 320528941393723],
             sampleRate: 500
           });
           __d("JSSDKConfig", [], {
@@ -3673,7 +3674,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1004272161",
+            revision: "1004294855",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -15738,19 +15739,25 @@ try {
             function $module_sdk_Canvas_Prefetcher(
               global,
               require,
-              requireDynamic,
+              importDefault,
+              importNamespace,
               requireLazy,
               module,
               exports
             ) {
+              var _CanvasPrefetcherConf;
+
               var COLLECT = {
                 AUTOMATIC: 0,
                 MANUAL: 1
               };
 
-              var sampleRate = require("JSSDKCanvasPrefetcherConfig")
-                .sampleRate;
-              var blacklist = require("JSSDKCanvasPrefetcherConfig").blacklist;
+              var excludedAppIds =
+                (_CanvasPrefetcherConf = importNamespace(
+                  "JSSDKCanvasPrefetcherConfig"
+                ).excludedAppIds) != null
+                  ? _CanvasPrefetcherConf
+                  : [];
               var collectionMode = COLLECT.AUTOMATIC;
               var links = [];
 
@@ -15783,8 +15790,9 @@ try {
                   return;
                 }
 
-                require("sdk.api")(
-                  require("sdk.Runtime").getClientID() + "/staticresources",
+                importDefault("sdk.api")(
+                  importDefault("sdk.Runtime").getClientID() +
+                    "/staticresources",
                   "post",
                   {
                     urls: ES("JSON", "stringify", false, links),
@@ -15797,19 +15805,27 @@ try {
 
               function maybeSample() {
                 if (
-                  !require("sdk.Runtime").isEnvironment(
-                    require("sdk.Runtime").ENVIRONMENTS.CANVAS
+                  !importDefault("sdk.Runtime").isEnvironment(
+                    importDefault("sdk.Runtime").ENVIRONMENTS.CANVAS
                   ) ||
-                  !require("sdk.Runtime").getClientID() ||
-                  !sampleRate
+                  !importDefault("sdk.Runtime").getClientID() ||
+                  !importNamespace("JSSDKCanvasPrefetcherConfig").sampleRate
                 ) {
                   return;
                 }
 
                 if (
-                  Math.random() >= 1 / sampleRate ||
-                  blacklist == "*" ||
-                  ~blacklist.indexOf(require("sdk.Runtime").getClientID())
+                  Math.random() >=
+                    1 /
+                      importNamespace("JSSDKCanvasPrefetcherConfig")
+                        .sampleRate ||
+                  !importNamespace("JSSDKCanvasPrefetcherConfig").enabled ||
+                  ES(
+                    excludedAppIds,
+                    "includes",
+                    true,
+                    importDefault("sdk.Runtime").getClientID()
+                  )
                 ) {
                   return;
                 }
@@ -15834,10 +15850,10 @@ try {
 
                 _maybeSample: maybeSample
               };
-
-              module.exports = CanvasPrefetcher;
+              var _default = CanvasPrefetcher;
+              exports["default"] = _default;
             },
-            null
+            98
           );
           __d(
             "legacy:fb.canvas.prefetcher",
@@ -22171,7 +22187,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1004272161","namespace":"FB","message":"' +
+        '","revision":"1004294855","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
