@@ -1,4 +1,4 @@
-/*1630127539,,JIT Construction: v1004324881,en_US*/
+/*1630309218,,JIT Construction: v1004325905,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -1155,7 +1155,7 @@ try {
                 (function() {
                   // Detect the `define` function exposed by asynchronous module loaders. The
                   // strict `define` check is necessary for compatibility with `r.js`.
-                  var isLoader = typeof define === "function" && define.amd;
+                  var isLoader = typeof define === "function";
 
                   // A set of types used to distinguish objects from primitives.
                   var objectTypes = {
@@ -2400,13 +2400,6 @@ try {
                       parse: JSON3.parse,
                       stringify: JSON3.stringify
                     };
-                  }
-
-                  // Export for asynchronous module loaders.
-                  if (isLoader) {
-                    define(function() {
-                      return JSON3;
-                    });
                   }
                 }.call(this));
               }
@@ -3674,7 +3667,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1004324881",
+            revision: "1004325905",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -22187,7 +22180,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1004324881","namespace":"FB","message":"' +
+        '","revision":"1004325905","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
