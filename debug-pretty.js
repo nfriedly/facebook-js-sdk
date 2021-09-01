@@ -1,4 +1,4 @@
-/*1630309218,,JIT Construction: v1004325905,en_US*/
+/*1630456947,,JIT Construction: v1004336760,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3667,7 +3667,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1004325905",
+            revision: "1004336760",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -19299,36 +19299,25 @@ try {
                 "webkitAnimationEnd"
               ];
 
-              var LEFT_ANCHOR_CLASS = "anchor_left";
-              var RIGHT_ANCHOR_CLASS = "anchor_right";
-
+              var _blinkerToken = null;
               var _bubbleIFrame = null;
               var _bubbleIFrameName = null;
-              var _iconInnerIFrame = null;
               var _dialogIFrame = null;
               var _dialogIFrameName = "";
+              var _dialogIFrameOrigin = null;
+              var _iconInnerIFrame = null;
+              var _isHidden = false;
+              var _isIframeHidden = false;
               var _unreadCountIFrame = null;
               var _unreadCountIFrameName = null;
+              var _visibilityGuard = null;
 
               var ARRT_ALIGNMENT = "alignment";
               var ARRT_MOBILE_PATH = "mobile_path";
-
-              var ARRT_IS_SDK_REWRITE = "is_sdk_rewrite";
-
-              var _blinkerToken = null;
-              var _chatStarted = false;
-              var _bubbleDialog = null;
-              var _dialogIFrameOrigin = null;
-              var _visibilityGuard = null;
-              var LANDING_PAGE = "/";
-              var WELCOME_PAGE = "/welcome";
               var BUBBLE = "/bubble";
               var ITP_PAGE = "/itpcontinue";
-              var _mobilePath = LANDING_PAGE;
-              var _bubbleIFrameLoaded = false;
-              var _badgeIFrameLoaded = false;
-              var _isHidden = false;
-              var _isIframeHidden = false;
+              var LANDING_PAGE = "/";
+              var WELCOME_PAGE = "/welcome";
 
               var CustomerChat = importDefault("IframePlugin").extend({
                 constructor: function constructor(elem, ns, tag, attr) {
@@ -19348,67 +19337,6 @@ try {
 
                 _setUpSubscriptions: function _setUpSubscriptions() {
                   var _this = this;
-
-                  this.subscribe(
-                    "xd.liveChatPluginResizeIframeVariableHeight",
-                    function subscribe_$1(message) {
-                      if (message.setBoxShadow) {
-                        _this._handleSetIframeBoxShadow();
-                      } else {
-                        _this._handleUnsetIframeBoxShadow();
-                      }
-
-                      _this._handleResizeIframe(message);
-                    }
-                  );
-
-                  this.subscribe(
-                    "xd.liveChatPluginUpdateShadow",
-                    function subscribe_$1(message) {
-                      _this._handleShadowUpdate(message);
-                    }
-                  );
-
-                  this.subscribe(
-                    "xd.liveChatPluginUpdatePageTitle",
-                    function subscribe_$1(message) {
-                      _this._handleUpdatePageTitle(message);
-                    }
-                  );
-
-                  if (importDefault("sdk.UA").iphone()) {
-                    this.subscribe(
-                      "xd.liveChatPluginBlurComposer",
-                      function subscribe_$1(_message) {
-                        _this._handleBlurComposer();
-                      }
-                    );
-                  }
-
-                  this.subscribe("xd.mpn.resizeIframe", function subscribe_$1(
-                    message
-                  ) {
-                    _this._handleResizeIframe(message);
-                  });
-
-                  this.subscribe("xd.mpn.setAppearance", function subscribe_$1(
-                    message
-                  ) {
-                    _this._handleSetAppearance(message);
-                  });
-
-                  this.subscribe("xd.mpn.prepareIframe", function subscribe_$1(
-                    message
-                  ) {
-                    _this._handlePrepareIframe(message);
-                  });
-
-                  this.subscribe(
-                    "xd.mpn.prepareIconIframe",
-                    function subscribe_$1(message) {
-                      _this._handlePrepareIconIframe(message);
-                    }
-                  );
 
                   this.subscribe("xd.mpn.storeState", function subscribe_$1(
                     message
@@ -19460,6 +19388,15 @@ try {
                   ) {
                     _this._handleReload(message);
                   });
+
+                  this.subscribe(
+                    "xd.mpn.updatePageTitle",
+                    function subscribe_$1(message) {
+                      _this._handleUpdatePageTitle({
+                        titleText: message.title
+                      });
+                    }
+                  );
                 },
 
                 _handleSetupIconIframe: function _handleSetupIconIframe(
@@ -19509,11 +19446,6 @@ try {
                   });
 
                   _bubbleIFrame.setAttribute(ARRT_ALIGNMENT, message.alignment);
-                  _bubbleIFrame.setAttribute(
-                    ARRT_IS_SDK_REWRITE,
-                    message.isSDKRewrite.toString()
-                  );
-
                   importNamespace("sdk.Content").append(_bubbleIFrame);
 
                   var unreadCountIFrameName = "unread_" + frameName;
@@ -19584,7 +19516,7 @@ try {
 
                   var isMobile = importDefault("sdk.UA").mobile();
                   if (isMobile && !_isHidden) {
-                    if (_mobilePath == LANDING_PAGE) {
+                    if (mobilePath == LANDING_PAGE) {
                       var bounceInAnimationName = _getBounceInAnimation();
                       bounceInAnimationName != null &&
                         importNamespace("sdk.DOM").addCss(
@@ -19593,7 +19525,7 @@ try {
                         );
                     }
 
-                    if (_mobilePath != LANDING_PAGE && _mobilePath != BUBBLE) {
+                    if (mobilePath != LANDING_PAGE && mobilePath != BUBBLE) {
                       setParentDocumentPositionFixed();
                     }
                   }
@@ -19673,377 +19605,6 @@ try {
                   this._iframe.src = iframeSrcUri.valueOf();
                 },
 
-                _handleSetAppearance: function _handleSetAppearance(message) {
-                  if (message.isReparse == "true") {
-                    _visibilityGuard = null;
-                  }
-                  if (message.shouldSetHidden == "true") {
-                    var alignment = message.alignment,
-                      chatStarted = message.chatStarted,
-                      isMobile = message.isMobile,
-                      hidden = message.hidden,
-                      mobilePath = message.mobilePath;
-                    _mobilePath = mobilePath;
-                    _isHidden = hidden == "true";
-                    if (hidden == "true") {
-                      this._iframe.style.removeProperty("animation");
-
-                      this._handleHideDialogIframe({
-                        chatStarted: chatStarted,
-                        isMobile: isMobile,
-                        alignment: alignment
-                      });
-                    } else {
-                      this._handleShowDialogIframe({
-                        chatStarted: chatStarted,
-                        isMobile: isMobile,
-                        alignment: alignment
-                      });
-                    }
-                  }
-                  if (message.shadow != null) {
-                    this._handleShadowUpdate({
-                      resetShadow: message.shadow
-                    });
-                  }
-                },
-
-                _handlePrepareIframe: function _handlePrepareIframe(message) {
-                  if (_bubbleIFrame) {
-                    _bubbleIFrame.setAttribute(ARRT_MOBILE_PATH, message.path);
-                  } else {
-                  }
-
-                  _visibilityGuard = null;
-
-                  if (this._iframe) {
-                    this._iframe.setAttribute("data-testid", "dialog_iframe");
-
-                    this._iframe.style.cssText = message.cssText;
-                  }
-
-                  _dialogIFrame = this._iframe;
-
-                  _dialogIFrameName = this._iframe.name;
-                  _mobilePath = message.path;
-
-                  importNamespace("sdk.DOM").removeCss(
-                    _dialogIFrame,
-                    LEFT_ANCHOR_CLASS
-                  );
-                  importNamespace("sdk.DOM").removeCss(
-                    _dialogIFrame,
-                    RIGHT_ANCHOR_CLASS
-                  );
-                  if (message.alignment != null) {
-                    importNamespace("sdk.DOM").addCss(
-                      _dialogIFrame,
-                      message.alignment == "right"
-                        ? RIGHT_ANCHOR_CLASS
-                        : LEFT_ANCHOR_CLASS
-                    );
-                  }
-
-                  if (
-                    message.isMobile === "true" &&
-                    !_isHidden &&
-                    _mobilePath == LANDING_PAGE
-                  ) {
-                    var bounceInAnimationName = _getBounceInAnimationName(
-                      message.isMobile === "true",
-
-                      "right"
-                    );
-
-                    bounceInAnimationName != null &&
-                      importNamespace("sdk.DOM").addCss(
-                        _dialogIFrame,
-                        bounceInAnimationName
-                      );
-                  }
-
-                  if (
-                    message.isMobile === "true" &&
-                    !_isHidden &&
-                    _mobilePath != LANDING_PAGE &&
-                    _mobilePath != BUBBLE
-                  ) {
-                    setParentDocumentPositionFixed();
-                  }
-
-                  if (_isIframeHidden) {
-                    CustomerChat.hide();
-                  }
-                },
-
-                _handlePrepareIconIframe: function _handlePrepareIconIframe(
-                  message
-                ) {
-                  var _this3 = this;
-                  if (_bubbleDialog) {
-                    importNamespace("sdk.DOM").remove(_bubbleDialog);
-                  }
-                  var iconDiv = document.createElement("div");
-                  var created = importNamespace(
-                    "sdk.DialogUtils"
-                  ).setupNewDialog();
-
-                  _dialogIFrameName = this._iframeOptions.name;
-                  _bubbleIFrameName = "blank_" + message.frameName;
-                  var css = ES("JSON", "parse", false, message.cssText);
-                  _iconInnerIFrame = importDefault("sdk.createIframe")({
-                    url: this._getBubbleFrameURL(),
-                    name: _bubbleIFrameName,
-                    root: created.contentRoot,
-                    tabindex: -1,
-                    width: 60,
-                    style: css,
-                    "data-testid": "bubble_iframe",
-                    onload: function onload() {
-                      _bubbleIFrameLoaded = true;
-
-                      _this3._notifyDialogFrame();
-                      window.setTimeout(function window_setTimeout_$0() {
-                        importNamespace("sdk.DOM").remove(iconDiv);
-                      }, 100);
-                    }
-                  });
-
-                  this._bubbleDialog = created.dialogElement;
-
-                  _bubbleDialog = this._bubbleDialog;
-
-                  _bubbleIFrame = this._bubbleDialog;
-
-                  importNamespace("sdk.DOM").setStyle(
-                    this._bubbleDialog,
-                    "overflow",
-                    "visible"
-                  );
-
-                  importNamespace("sdk.DOM").setStyle(
-                    this._bubbleDialog,
-                    "z-index",
-                    css.zIndex
-                  );
-                  if (message.uiPolishEnabled === "true") {
-                    importNamespace("sdk.DOM").addCss(
-                      _iconInnerIFrame,
-                      "fb_customer_chat_icon"
-                    );
-                  }
-                  _bubbleIFrame.setAttribute(ARRT_ALIGNMENT, message.alignment);
-
-                  importNamespace("sdk.Content").append(this._bubbleDialog);
-                  if (message.iconSVG != null) {
-                    importNamespace("sdk.DOM").html(iconDiv, message.iconSVG);
-                    ES("Object", "assign", false, iconDiv.style, css);
-                    iconDiv.style.boxShadow = "";
-                    importNamespace("sdk.DOM").setStyle(
-                      iconDiv,
-                      "z-index",
-                      "1"
-                    );
-                    importNamespace("sdk.Content").append(
-                      iconDiv,
-                      created.contentRoot
-                    );
-                  }
-
-                  _unreadCountIFrameName = "unread_" + message.frameName;
-                  _unreadCountIFrame = importDefault("sdk.createIframe")({
-                    url: this._getBubbleFrameURL(),
-                    name: _unreadCountIFrameName,
-                    root: created.contentRoot,
-                    tabindex: -1,
-                    style: ES(
-                      "JSON",
-                      "parse",
-                      false,
-                      message.unreadCountCssText
-                    ),
-                    "data-testid": "unread_iframe",
-                    onload: function onload() {
-                      _badgeIFrameLoaded = true;
-
-                      _this3._notifyDialogFrame();
-                    }
-                  });
-
-                  importNamespace("sdk.Content").append(
-                    _unreadCountIFrame,
-                    created.contentRoot
-                  );
-                },
-
-                _handleResizeIframe: function _handleResizeIframe(message) {
-                  if (this._iframe) {
-                    importNamespace("sdk.DOM").setStyle(
-                      this._iframe,
-                      "height",
-                      ES("JSON", "parse", false, message.height) + "px"
-                    );
-                  }
-                },
-
-                _handleSetIframeBoxShadow: function _handleSetIframeBoxShadow() {
-                  if (this._iframe) {
-                    importNamespace("sdk.DOM").setStyle(
-                      this._iframe,
-                      "boxShadow",
-                      "0 1pt 12pt grey"
-                    );
-
-                    importNamespace("sdk.DOM").setStyle(
-                      this._iframe,
-                      "margin",
-                      "12px"
-                    );
-                  }
-                },
-
-                _handleUnsetIframeBoxShadow: function _handleUnsetIframeBoxShadow() {
-                  if (this._iframe) {
-                    importNamespace("sdk.DOM").setStyle(
-                      this._iframe,
-                      "boxShadow",
-                      "none"
-                    );
-
-                    importNamespace("sdk.DOM").setStyle(
-                      this._iframe,
-                      "margin",
-                      "0px 12px"
-                    );
-                  }
-                },
-
-                _handleShowDialogIframe: function _handleShowDialogIframe(
-                  message
-                ) {
-                  showDialog(
-                    this._iframe,
-                    ES("JSON", "parse", false, message.chatStarted),
-                    ES("JSON", "parse", false, message.isMobile),
-                    true,
-                    message.alignment
-                  );
-                },
-
-                _handleHideDialogIframe: function _handleHideDialogIframe(
-                  message
-                ) {
-                  hideDialog(
-                    this._iframe,
-                    ES("JSON", "parse", false, message.chatStarted),
-                    ES("JSON", "parse", false, message.isMobile),
-                    true,
-                    message.alignment
-                  );
-                },
-
-                _handleShadowUpdate: function _handleShadowUpdate(message) {
-                  if (
-                    ES("JSON", "parse", false, message.resetShadow) &&
-                    this._bubbleDialog
-                  ) {
-                    importNamespace("sdk.DOM").setStyle(
-                      this._bubbleDialog,
-                      "borderRadius",
-                      "50%"
-                    );
-
-                    importNamespace("sdk.DOM").addCss(
-                      this._bubbleDialog,
-                      "fb_customer_chat_bubble_animated_no_badge"
-                    );
-                  } else if (!ES("JSON", "parse", false, message.resetShadow)) {
-                    this._setBubbleBadgeStyle();
-                  }
-                },
-
-                _handleUpdatePageTitle: function _handleUpdatePageTitle(
-                  message
-                ) {
-                  var _this4 = this;
-                  if (!_blinkerToken && message.titleText) {
-                    _blinkerToken = importNamespace("sdk.DocumentTitle").blink(
-                      message.titleText
-                    );
-                    importNamespace("DOMEventListener").add(
-                      window,
-                      "focus",
-                      function DOMEventListener_add_$2(e) {
-                        _this4._stopBlinking();
-                      }
-                    );
-                  } else if (_blinkerToken && !message.titleText) {
-                    this._stopBlinking();
-                  }
-                },
-
-                _handleBlurComposer: function _handleBlurComposer() {
-                  importNamespace("sdk.DOM").setStyle(
-                    this._iframe,
-                    "maxHeight",
-                    "100%"
-                  );
-                },
-
-                _notifyDialogFrame: function _notifyDialogFrame() {
-                  var _iconInnerIFrame3, _unreadCountIFrame3;
-                  postMessageToDialogFrame({
-                    name: "bubbleFrameLoaded",
-                    frameName: _bubbleIFrameLoaded ? _bubbleIFrameName : null,
-                    unreadCountFrameName: _badgeIFrameLoaded
-                      ? _unreadCountIFrameName
-                      : null,
-                    iconSrc:
-                      (_iconInnerIFrame3 = _iconInnerIFrame) == null
-                        ? void 0
-                        : _iconInnerIFrame3.src,
-                    unreadSrc:
-                      (_unreadCountIFrame3 = _unreadCountIFrame) == null
-                        ? void 0
-                        : _unreadCountIFrame3.src
-                  });
-                },
-
-                _getBubbleFrameURL: function _getBubbleFrameURL() {
-                  return importDefault("sdk.Runtime").getIsVersioned()
-                    ? importNamespace("UrlMap").resolve("www") +
-                        "/" +
-                        importDefault("sdk.Runtime").getVersion() +
-                        "/plugins/customer_chat/bubble"
-                    : "";
-                },
-
-                _setBubbleBadgeStyle: function _setBubbleBadgeStyle() {
-                  if (this._bubbleDialog) {
-                    importNamespace("sdk.DOM").setStyle(
-                      this._bubbleDialog,
-                      "borderRadius",
-                      "50% 0% 50% 50%"
-                    );
-                    importNamespace("sdk.DOM").removeCss(
-                      this._bubbleDialog,
-                      "fb_customer_chat_bubble_animated_no_badge"
-                    );
-
-                    importNamespace("sdk.DOM").addCss(
-                      this._bubbleDialog,
-                      "fb_customer_chat_bubble_animated_with_badge"
-                    );
-                  }
-                },
-
-                _stopBlinking: function _stopBlinking() {
-                  if (_blinkerToken) {
-                    _blinkerToken.stop();
-                    _blinkerToken = null;
-                  }
-                },
-
                 _storeStateInfo: function _storeStateInfo(message) {
                   var storage = importNamespace(
                     "sdk.WebStorage"
@@ -20115,6 +19676,26 @@ try {
                   return ES("JSON", "parse", false, item);
                 },
 
+                _handleUpdatePageTitle: function _handleUpdatePageTitle(
+                  message
+                ) {
+                  var _this3 = this;
+                  if (!_blinkerToken && message.titleText) {
+                    _blinkerToken = importNamespace("sdk.DocumentTitle").blink(
+                      message.titleText
+                    );
+                    importNamespace("DOMEventListener").add(
+                      window,
+                      "focus",
+                      function DOMEventListener_add_$2(_e) {
+                        _this3._stopBlinking();
+                      }
+                    );
+                  } else if (_blinkerToken && !message.titleText) {
+                    this._stopBlinking();
+                  }
+                },
+
                 getParams: function getParams() {
                   return {
                     allow_guests: "bool",
@@ -20130,6 +19711,22 @@ try {
                     attribution_version: "string",
                     is_loaded_by_facade: "bool"
                   };
+                },
+
+                _stopBlinking: function _stopBlinking() {
+                  if (_blinkerToken) {
+                    _blinkerToken.stop();
+                    _blinkerToken = null;
+                  }
+                },
+
+                _getBubbleFrameURL: function _getBubbleFrameURL() {
+                  return importDefault("sdk.Runtime").getIsVersioned()
+                    ? importNamespace("UrlMap").resolve("www") +
+                        "/" +
+                        importDefault("sdk.Runtime").getVersion() +
+                        "/plugins/customer_chat/bubble"
+                    : "";
                 }
               });
 
@@ -20188,271 +19785,6 @@ try {
                   document.body,
                   mobile_overlay
                 );
-              }
-
-              function resetParentDocumentPosition() {
-                var mobile_overlay = "fb_new_ui_mobile_overlay_active";
-                importNamespace("sdk.DOM").removeCss(
-                  document.body,
-                  mobile_overlay
-                );
-              }
-
-              function _getBounceInAnimationName(isMobile, alignment) {
-                var bounceInAnimationName;
-                if (isMobile) {
-                  switch (_mobilePath) {
-                    case LANDING_PAGE:
-                      return "fb_mpn_mobile_landing_page_slide_up";
-                    case WELCOME_PAGE:
-                    case BUBBLE:
-                    case ITP_PAGE:
-                      return null;
-                    default:
-                      return "fb_mpn_mobile_bounce_in";
-                  }
-                } else {
-                  switch (alignment) {
-                    case "left":
-                      bounceInAnimationName =
-                        "fb_customer_chat_bounce_in_from_left";
-                      break;
-                    case "right":
-                    default:
-                      bounceInAnimationName = "fb_customer_chat_bounce_in_v2";
-                  }
-                }
-                return bounceInAnimationName;
-              }
-
-              function _getBounceOutAnimationName(isMobile, alignment) {
-                var bounceOutAnimationName;
-                if (isMobile) {
-                  switch (_mobilePath) {
-                    case LANDING_PAGE:
-                      return alignment === "left"
-                        ? "fb_mpn_mobile_landing_page_slide_out_from_left"
-                        : "fb_mpn_mobile_landing_page_slide_out";
-                    case BUBBLE:
-                      return "fb_mpn_mobile_bounce_out_v2";
-                    default:
-                      return "fb_mpn_mobile_bounce_out";
-                  }
-                } else {
-                  switch (alignment) {
-                    case "left":
-                      bounceOutAnimationName =
-                        "fb_customer_chat_bounce_out_from_left";
-                      break;
-                    case "right":
-                    default:
-                      bounceOutAnimationName = "fb_customer_chat_bounce_out_v2";
-                  }
-                }
-                return bounceOutAnimationName;
-              }
-
-              function showDialog(
-                dialogIframe,
-                chatStarted,
-                isMobile,
-                fireEvent,
-                alignment
-              ) {
-                if (fireEvent === void 0) {
-                  fireEvent = true;
-                }
-                if (!dialogIframe) {
-                  return;
-                }
-
-                if (alignment == null) {
-                  if (
-                    importNamespace("sdk.DOM").containsCss(
-                      dialogIframe,
-                      LEFT_ANCHOR_CLASS
-                    )
-                  ) {
-                    alignment = "left";
-                  } else {
-                    alignment = "right";
-                  }
-                }
-
-                if (_visibilityGuard === null || _visibilityGuard === false) {
-                  if (
-                    isMobile &&
-                    (chatStarted ||
-                      (_mobilePath !== LANDING_PAGE && _mobilePath !== BUBBLE))
-                  ) {
-                    setParentDocumentPositionFixed();
-                  }
-
-                  var bounceInAnimationName = _getBounceInAnimationName(
-                    isMobile,
-                    alignment
-                  );
-
-                  var bounceOutAnimationName = _getBounceOutAnimationName(
-                    isMobile,
-                    alignment
-                  );
-
-                  importNamespace("sdk.DOM").removeCss(
-                    dialogIframe,
-                    bounceOutAnimationName
-                  );
-                  bounceInAnimationName != null &&
-                    importNamespace("sdk.DOM").addCss(
-                      dialogIframe,
-                      bounceInAnimationName
-                    );
-
-                  if (isMobile) {
-                    importNamespace("sdk.DOM").setStyle(
-                      dialogIframe,
-                      "maxHeight",
-                      "100%"
-                    );
-                    importNamespace("sdk.DOM").setStyle(
-                      dialogIframe,
-                      "width",
-                      "100%"
-                    );
-                  } else {
-                    importNamespace("sdk.DOM").setStyle(
-                      dialogIframe,
-                      "maxHeight",
-                      "calc(100% - 80px)"
-                    );
-                    importNamespace("sdk.DOM").setStyle(
-                      dialogIframe,
-                      "minHeight",
-                      "360px"
-                    );
-                  }
-
-                  postMessageToDialogFrame({
-                    name: "CustomerChat.isDialogHidden",
-                    params: { is_dialog_hidden: false }
-                  });
-
-                  postMessaegToBubbleFrame({
-                    name: "CustomerChat.isDialogHidden",
-                    params: { is_dialog_hidden: false }
-                  });
-
-                  _visibilityGuard = true;
-                }
-
-                if (fireEvent) {
-                  importNamespace("sdk.Event").fire("customerchat.dialogShow");
-                }
-              }
-
-              function hideDialog(
-                iframe,
-                chatStarted,
-                isMobile,
-                fireEvent,
-                alignment
-              ) {
-                if (fireEvent === void 0) {
-                  fireEvent = true;
-                }
-                var dialogIframe = iframe;
-                if (!dialogIframe) {
-                  return;
-                }
-
-                if (alignment == null) {
-                  if (
-                    importNamespace("sdk.DOM").containsCss(
-                      dialogIframe,
-                      LEFT_ANCHOR_CLASS
-                    )
-                  ) {
-                    alignment = "left";
-                  } else {
-                    alignment = "right";
-                  }
-                }
-
-                if (_visibilityGuard === null || _visibilityGuard === true) {
-                  if (
-                    isMobile &&
-                    (chatStarted || _mobilePath !== LANDING_PAGE)
-                  ) {
-                    resetParentDocumentPosition();
-                  }
-
-                  var _hideDialog = function _hideDialog(_) {
-                    if (_isHidden) {
-                      importNamespace("sdk.DOM").setStyle(
-                        dialogIframe,
-                        "maxHeight",
-                        "0"
-                      );
-                      importNamespace("sdk.DOM").setStyle(
-                        dialogIframe,
-                        "minHeight",
-                        "0"
-                      );
-                      ANIMATION_EVENTS.forEach(
-                        function ANIMATION_EVENTS_forEach_$0(event) {
-                          importNamespace("DOMEventListener").remove(
-                            dialogIframe,
-                            event,
-                            _hideDialog
-                          );
-                        }
-                      );
-                      _visibilityGuard = false;
-                    }
-                  };
-                  var bounceInAnimationName = _getBounceInAnimationName(
-                    isMobile,
-                    alignment
-                  );
-
-                  var bounceOutAnimationName = _getBounceOutAnimationName(
-                    isMobile,
-                    alignment
-                  );
-
-                  bounceInAnimationName != null &&
-                    importNamespace("sdk.DOM").removeCss(
-                      dialogIframe,
-                      bounceInAnimationName
-                    );
-                  importNamespace("sdk.DOM").addCss(
-                    dialogIframe,
-                    bounceOutAnimationName
-                  );
-                  ANIMATION_EVENTS.forEach(function ANIMATION_EVENTS_forEach_$0(
-                    event
-                  ) {
-                    importNamespace("DOMEventListener").add(
-                      dialogIframe,
-                      event,
-                      _hideDialog
-                    );
-                  });
-
-                  postMessageToDialogFrame({
-                    name: "CustomerChat.isDialogHidden",
-                    params: { is_dialog_hidden: true }
-                  });
-
-                  postMessaegToBubbleFrame({
-                    name: "CustomerChat.isDialogHidden",
-                    params: { is_dialog_hidden: true }
-                  });
-                }
-
-                if (fireEvent) {
-                  importNamespace("sdk.Event").fire("customerchat.dialogHide");
-                }
               }
 
               function showDialogIframe(dialogIframe) {
@@ -20524,7 +19856,7 @@ try {
                   var bounceInAnimationName = _getBounceInAnimation();
                   var bounceOutAnimationName = _getBounceOutAnimation();
 
-                  var _hideDialog2 = function _hideDialog2(_) {
+                  var hideDialog = function hideDialog(_) {
                     if (_isHidden) {
                       importNamespace("sdk.DOM").setStyle(
                         dialogIframe,
@@ -20541,7 +19873,7 @@ try {
                           importNamespace("DOMEventListener").remove(
                             dialogIframe,
                             event,
-                            _hideDialog2
+                            hideDialog
                           );
                         }
                       );
@@ -20565,7 +19897,7 @@ try {
                     importNamespace("DOMEventListener").add(
                       dialogIframe,
                       event,
-                      _hideDialog2
+                      hideDialog
                     );
                   });
 
@@ -20664,31 +19996,16 @@ try {
                   shouldShowDialog = true;
                 }
                 _isIframeHidden = false;
-                var isSDKRewrite = false;
                 if (_bubbleIFrame != null) {
                   importNamespace("sdk.DOM").setStyle(
                     _bubbleIFrame,
                     "display",
                     "inline"
                   );
-                  isSDKRewrite = importNamespace("sdk.DOM").getAttr(
-                    _bubbleIFrame,
-                    ARRT_IS_SDK_REWRITE
-                  );
                 }
-
                 if (shouldShowDialog) {
                   _isHidden = false;
-                  if (isSDKRewrite) {
-                    showDialogIframe(_dialogIFrame);
-                  } else {
-                    showDialog(
-                      _dialogIFrame,
-                      _chatStarted,
-                      importDefault("sdk.UA").mobile(),
-                      false
-                    );
-                  }
+                  showDialogIframe(_dialogIFrame);
                 }
                 importNamespace("sdk.Event").fire("customerchat.show");
                 handleSDKCall("show");
@@ -20696,80 +20013,35 @@ try {
 
               CustomerChat.hide = function() {
                 _isIframeHidden = true;
-                var isSDKRewrite = false;
                 if (_bubbleIFrame != null) {
                   importNamespace("sdk.DOM").setStyle(
                     _bubbleIFrame,
                     "display",
                     "none"
                   );
-                  isSDKRewrite = importNamespace("sdk.DOM").getAttr(
-                    _bubbleIFrame,
-                    ARRT_IS_SDK_REWRITE
-                  );
                 }
-
                 _isHidden = true;
-                if (isSDKRewrite) {
-                  hideDialogIframe(_dialogIFrame);
-                } else {
-                  hideDialog(
-                    _dialogIFrame,
-                    _chatStarted,
-                    importDefault("sdk.UA").mobile(),
-                    false
-                  );
-                }
+                hideDialogIframe(_dialogIFrame);
                 importNamespace("sdk.Event").fire("customerchat.hide");
                 handleSDKCall("hide");
               };
 
               CustomerChat.showDialog = function() {
-                var isSDKRewrite = false;
                 if (_bubbleIFrame != null) {
                   importNamespace("sdk.DOM").setStyle(
                     _bubbleIFrame,
                     "display",
                     "inline"
                   );
-                  isSDKRewrite = importNamespace("sdk.DOM").getAttr(
-                    _bubbleIFrame,
-                    ARRT_IS_SDK_REWRITE
-                  );
                 }
-
                 _isHidden = false;
-                if (isSDKRewrite) {
-                  showDialogIframe(_dialogIFrame);
-                } else {
-                  showDialog(
-                    _dialogIFrame,
-                    _chatStarted,
-                    importDefault("sdk.UA").mobile()
-                  );
-                }
+                showDialogIframe(_dialogIFrame);
                 handleSDKCall("showDialog");
               };
 
               CustomerChat.hideDialog = function() {
                 _isHidden = true;
-                var isSDKRewrite = false;
-                if (_bubbleIFrame != null) {
-                  isSDKRewrite = importNamespace("sdk.DOM").getAttr(
-                    _bubbleIFrame,
-                    ARRT_IS_SDK_REWRITE
-                  );
-                }
-
-                if (isSDKRewrite) {
-                  hideDialogIframe(_dialogIFrame);
-                } else {
-                  hideDialog(
-                    _dialogIFrame,
-                    _chatStarted,
-                    importDefault("sdk.UA").mobile()
-                  );
-                }
+                hideDialogIframe(_dialogIFrame);
                 handleSDKCall("hideDialog");
               };
 
@@ -22180,7 +21452,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1004325905","namespace":"FB","message":"' +
+        '","revision":"1004336760","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
