@@ -1,4 +1,4 @@
-/*1631077955,,JIT Construction: v1004361610,en_US*/
+/*1631316130,,JIT Construction: v1004380533,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3669,7 +3669,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1004361610",
+            revision: "1004380533",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -6165,26 +6165,29 @@ try {
                 if (captures == null) {
                   return null;
                 }
-                var uri = {};
-
-                uri.uri = captures[0] ? captures[0] : null;
-                uri.scheme = captures[1]
+                var authority = captures[2] ? captures[2].substr(2) : null;
+                var scheme = captures[1]
                   ? captures[1].substr(0, captures[1].length - 1)
                   : null;
-                uri.authority = captures[2] ? captures[2].substr(2) : null;
-                uri.userinfo = captures[3]
-                  ? captures[3].substr(0, captures[3].length - 1)
-                  : null;
-                uri.host = captures[2] ? captures[4] : null;
-                uri.port = captures[5]
-                  ? captures[5].substr(1)
-                    ? parseInt(captures[5].substr(1), 10)
-                    : null
-                  : null;
-                uri.path = captures[6] ? captures[6] : null;
-                uri.query = captures[7] ? captures[7].substr(1) : null;
-                uri.fragment = captures[8] ? captures[8].substr(1) : null;
-                uri.isGenericURI = uri.authority === null && !!uri.scheme;
+                var uri = {
+                  uri: captures[0] ? captures[0] : null,
+                  scheme: scheme,
+                  authority: authority,
+                  userinfo: captures[3]
+                    ? captures[3].substr(0, captures[3].length - 1)
+                    : null,
+                  host: captures[2] ? captures[4] : null,
+                  port: captures[5]
+                    ? captures[5].substr(1)
+                      ? parseInt(captures[5].substr(1), 10)
+                      : null
+                    : null,
+                  path: captures[6] ? captures[6] : null,
+                  query: captures[7] ? captures[7].substr(1) : null,
+                  fragment: captures[8] ? captures[8].substr(1) : null,
+                  isGenericURI: authority === null && !!scheme
+                };
+
                 return uri;
               }
               exports.parse = parse;
@@ -21457,7 +21460,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1004361610","namespace":"FB","message":"' +
+        '","revision":"1004380533","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
