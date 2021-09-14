@@ -1,4 +1,4 @@
-/*1631316130,,JIT Construction: v1004380533,en_US*/
+/*1631614359,,JIT Construction: v1004390839,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -1155,7 +1155,7 @@ try {
                 (function() {
                   // Detect the `define` function exposed by asynchronous module loaders. The
                   // strict `define` check is necessary for compatibility with `r.js`.
-                  var isLoader = typeof define === "function";
+                  var isLoader = typeof define === "function" && define.amd;
 
                   // A set of types used to distinguish objects from primitives.
                   var objectTypes = {
@@ -2400,6 +2400,13 @@ try {
                       parse: JSON3.parse,
                       stringify: JSON3.stringify
                     };
+                  }
+
+                  // Export for asynchronous module loaders.
+                  if (isLoader) {
+                    define(function() {
+                      return JSON3;
+                    });
                   }
                 }.call(this));
               }
@@ -3669,7 +3676,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1004380533",
+            revision: "1004390839",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -19391,6 +19398,13 @@ try {
                     }
                   );
 
+                  this.subscribe(
+                    "xd.mpn.updateIconAppearance",
+                    function subscribe_$1(message) {
+                      _this._handleUpdateIconAppearance(message);
+                    }
+                  );
+
                   this.subscribe("xd.mpn.reload", function subscribe_$1(
                     message
                   ) {
@@ -19583,6 +19597,22 @@ try {
                       this._iframe,
                       "height",
                       height
+                    );
+                  }
+                },
+
+                _handleUpdateIconAppearance: function _handleUpdateIconAppearance(
+                  message
+                ) {
+                  if (!_iconInnerIFrame) {
+                    return;
+                  }
+                  var width = message.width;
+                  if (width != null) {
+                    importNamespace("sdk.DOM").setStyle(
+                      _iconInnerIFrame,
+                      "width",
+                      width
                     );
                   }
                 },
@@ -21460,7 +21490,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1004380533","namespace":"FB","message":"' +
+        '","revision":"1004390839","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
