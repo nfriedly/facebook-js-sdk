@@ -1,4 +1,4 @@
-/*1631614359,,JIT Construction: v1004390839,en_US*/
+/*1631666560,,JIT Construction: v1004395410,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3659,7 +3659,7 @@ try {
               force_popup_to_all_canvas_app: false,
               max_oauth_dialog_retries: { rate: 100, value: 10 },
               plugin_tags_blacklist: [],
-              idle_callback_wait_time_ms: 2000,
+              idle_callback_wait_time_ms: 3000,
               chat_plugin_facade_timeout_ms: 8000,
               xfoa_login_enabled: false
             }
@@ -3676,7 +3676,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1004390839",
+            revision: "1004395410",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -19329,6 +19329,7 @@ try {
 
               var ARRT_ALIGNMENT = "alignment";
               var ARRT_MOBILE_PATH = "mobile_path";
+              var ARRT_DESKTP_BOTTOM_SPACING = "desktop_bottom_spacing";
               var BUBBLE = "/bubble";
               var ITP_PAGE = "/itpcontinue";
               var LANDING_PAGE = "/";
@@ -19518,9 +19519,16 @@ try {
                 ) {
                   var cssText = message.cssText,
                     mobilePath = message.mobilePath,
-                    isDialogHidden = message.isDialogHidden;
-                  if (_bubbleIFrame && mobilePath) {
-                    _bubbleIFrame.setAttribute(ARRT_MOBILE_PATH, mobilePath);
+                    isDialogHidden = message.isDialogHidden,
+                    desktopBottomSpacing = message.desktopBottomSpacing;
+                  if (_bubbleIFrame) {
+                    mobilePath &&
+                      _bubbleIFrame.setAttribute(ARRT_MOBILE_PATH, mobilePath);
+                    desktopBottomSpacing &&
+                      _bubbleIFrame.setAttribute(
+                        ARRT_DESKTP_BOTTOM_SPACING,
+                        desktopBottomSpacing.toString()
+                      );
                   }
 
                   _visibilityGuard = null;
@@ -19860,15 +19868,26 @@ try {
                       "100%"
                     );
                   } else {
+                    var desktopBottomSpacingString =
+                      _bubbleIFrame &&
+                      importNamespace("sdk.DOM").getAttr(
+                        _bubbleIFrame,
+                        ARRT_DESKTP_BOTTOM_SPACING
+                      );
+                    var desktopBottomSpacingForDialog =
+                      desktopBottomSpacingString == null
+                        ? "80"
+                        : Number(desktopBottomSpacingString) + 60;
                     importNamespace("sdk.DOM").setStyle(
                       dialogIframe,
                       "maxHeight",
-                      "calc(100% - 80px)"
+                      "calc(100% - " + desktopBottomSpacingForDialog + "px)"
                     );
+
                     importNamespace("sdk.DOM").setStyle(
                       dialogIframe,
                       "minHeight",
-                      "360px"
+                      "300px"
                     );
                   }
 
@@ -21490,7 +21509,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1004390839","namespace":"FB","message":"' +
+        '","revision":"1004395410","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
