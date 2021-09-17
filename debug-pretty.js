@@ -1,4 +1,4 @@
-/*1631902246,,JIT Construction: v1004414159,en_US*/
+/*1631920333,,JIT Construction: v1004416843,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3676,7 +3676,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1004414159",
+            revision: "1004416843",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -19910,6 +19910,7 @@ try {
                   });
 
                   _visibilityGuard = true;
+                  importNamespace("sdk.Event").fire("customerchat.dialogShow");
                 }
               }
 
@@ -19976,6 +19977,7 @@ try {
                     params: { is_dialog_hidden: true }
                   });
                 }
+                importNamespace("sdk.Event").fire("customerchat.dialogHide");
               }
 
               function _getBounceInAnimation() {
@@ -21517,7 +21519,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1004414159","namespace":"FB","message":"' +
+        '","revision":"1004416843","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
