@@ -1,4 +1,4 @@
-/*1632359445,,JIT Construction: v1004440458,en_US*/
+/*1632373957,,JIT Construction: v1004442014,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3676,7 +3676,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1004440458",
+            revision: "1004442014",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -19963,7 +19963,7 @@ try {
           );
           __d(
             "LiveChatPluginUtils",
-            ["UserAgent", "gkx"],
+            ["UserAgent"],
             function $module_LiveChatPluginUtils(
               global,
               require,
@@ -20038,10 +20038,10 @@ try {
               }
 
               function getEntryPointIconStyle(
-                useEntryPointCustomization,
+                shouldShowEntryPointCustomization,
                 entryPointLabel
               ) {
-                if (useEntryPointCustomization) {
+                if (shouldShowEntryPointCustomization) {
                   if (entryPointLabel !== "none") {
                     return {
                       borderRadius: "60px",
@@ -20087,7 +20087,7 @@ try {
                 uiPolishEnabled,
                 shouldIconDelay,
                 entryPointLabel,
-                useEntryPointCustomization
+                shouldShowEntryPointCustomization
               ) {
                 var baseStyle = getEntryPointBaseStyle(
                   bottomSpacing,
@@ -20096,7 +20096,7 @@ try {
                 );
 
                 var iconStyle = getEntryPointIconStyle(
-                  useEntryPointCustomization,
+                  shouldShowEntryPointCustomization,
                   entryPointLabel
                 );
 
@@ -20120,7 +20120,8 @@ try {
                 sideSpacing,
                 uiPolishEnabled,
                 shouldIconDelay,
-                label
+                label,
+                shouldShowEntryPointCustomization
               ) {
                 return ES(
                   "JSON",
@@ -20133,7 +20134,7 @@ try {
                     uiPolishEnabled,
                     shouldIconDelay,
                     label,
-                    importDefault("gkx")("3374")
+                    shouldShowEntryPointCustomization
                   )
                 );
               }
@@ -20152,13 +20153,14 @@ try {
                 alignment,
                 bottomSpacing,
                 sideSpacing,
-                entryPointLabel
+                entryPointLabel,
+                shouldShowEntryPointCustomization
               ) {
                 var totalSpacingSpacing =
                   sideSpacing + (alignment == "right" ? -2 : 43);
                 var totalBottomSpacing =
                   bottomSpacing + ICON_ENTRY_POINT_HEIGHT - 16;
-                if (importDefault("gkx")("3374")) {
+                if (shouldShowEntryPointCustomization) {
                   totalBottomSpacing =
                     entryPointLabel === "none"
                       ? bottomSpacing + ICON_ENTRY_POINT_HEIGHT - 16
@@ -20207,12 +20209,13 @@ try {
                 bottomSpacing,
                 sideSpacing,
                 isDialogVisible,
-                entryPointLabel
+                entryPointLabel,
+                shouldShowEntryPointCustomization
               ) {
                 var totalSideSpacing = sideSpacing - ENTRY_POINT_MARGIN;
 
                 var entryPointHeight = ICON_ENTRY_POINT_HEIGHT;
-                if (importDefault("gkx")("3374")) {
+                if (shouldShowEntryPointCustomization) {
                   entryPointHeight =
                     entryPointLabel === "none"
                       ? ICON_ENTRY_POINT_HEIGHT
@@ -20264,12 +20267,13 @@ try {
                 bottomSpacing,
                 sideSpacing,
                 shouldIconDelay,
-                entryPointLabel
+                entryPointLabel,
+                shouldShowEntryPointCustomization
               ) {
                 var totalSideSpacing = sideSpacing - ENTRY_POINT_MARGIN;
                 var entryPointHeight =
                   ICON_ENTRY_POINT_HEIGHT + ENTRY_POINT_MARGIN;
-                if (importDefault("gkx")("3374")) {
+                if (shouldShowEntryPointCustomization) {
                   entryPointHeight =
                     entryPointLabel === "none"
                       ? ICON_ENTRY_POINT_HEIGHT + ENTRY_POINT_MARGIN
@@ -20304,7 +20308,8 @@ try {
                 alignment,
                 shouldIconDelay,
                 bottomSpacing,
-                entryPointLabel
+                entryPointLabel,
+                shouldShowEntryPointCustomization
               ) {
                 var styleText =
                   "position: fixed; z-index: 2147483646; box-shadow: none; border-radius: 18px 0px 18px 18px; bottom: 0px; right: 0px; width: calc(80% - 40px); bottom: 24px;";
@@ -20328,7 +20333,7 @@ try {
                   ? "animation: slideInFromBottomDelay 6s ease-in;"
                   : "animation: slideInFromBottomDelay 3s ease-in;";
 
-                if (importDefault("gkx")("3374")) {
+                if (shouldShowEntryPointCustomization) {
                   if (
                     entryPointLabel !== "none" &&
                     typeof bottomSpacing == "number"
@@ -25038,7 +25043,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1004440458","namespace":"FB","message":"' +
+        '","revision":"1004442014","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
