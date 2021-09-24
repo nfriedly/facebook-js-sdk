@@ -1,4 +1,4 @@
-/*1632408102,,JIT Construction: v1004443089,en_US*/
+/*1632447762,,JIT Construction: v1004448401,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3661,6 +3661,20 @@ try {
               plugin_tags_blacklist: [],
               idle_callback_wait_time_ms: 3000,
               chat_plugin_facade_timeout_ms: 8000,
+              chat_plugin_facade_enabled_pageids: [
+                "102493178867330",
+                "107331571710078",
+                "1032787970130843",
+                "107771111665395",
+                "261907812360345",
+                "101305975654752",
+                "275483104252055",
+                "101664622285042",
+                "112682113428700",
+                "271628573687012",
+                "385757598521443",
+                "100545935690488"
+              ],
               xfoa_login_enabled: false
             }
           });
@@ -3676,7 +3690,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1004443089",
+            revision: "1004448401",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -13752,7 +13766,11 @@ try {
                   call.params.cbt = Date.now();
                 }
 
-                if (call.params.fx_app === "instagram" && !call.params.scope) {
+                if (
+                  (call.params.fx_app === "instagram" ||
+                    call.params.fx_app === "ig_single") &&
+                  !call.params.scope
+                ) {
                   call.params.scope = "public_profile";
                 }
 
@@ -14219,7 +14237,8 @@ try {
                     size: method.size || UIServer.getDefaultSize(),
                     url:
                       require("UrlMap").resolve(
-                        params.fx_app === "instagram"
+                        params.fx_app === "instagram" ||
+                          params.fx_app === "ig_single"
                           ? "www_instagram"
                           : params.display == "touch"
                           ? "m"
@@ -25044,7 +25063,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1004443089","namespace":"FB","message":"' +
+        '","revision":"1004448401","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
