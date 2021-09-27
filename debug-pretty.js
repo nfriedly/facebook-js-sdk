@@ -1,4 +1,4 @@
-/*1632537662,,JIT Construction: v1004456145,en_US*/
+/*1632784418,,JIT Construction: v1004462563,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3690,7 +3690,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1004456145",
+            revision: "1004462563",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -9436,6 +9436,46 @@ try {
             98
           );
           __d(
+            "sdk.LoggingUtils",
+            ["sdk.Impressions", "sdk.feature"],
+            function $module_sdk_LoggingUtils(
+              global,
+              require,
+              importDefault,
+              importNamespace,
+              requireLazy,
+              module,
+              exports
+            ) {
+              "use strict";
+
+              function logEvent(payload) {
+                importNamespace("sdk.Impressions").log(117, {
+                  payload: babelHelpers["extends"]({}, payload, {
+                    client_funnel_version: importDefault("sdk.feature")(
+                      "oauth_funnel_logger_version",
+                      1
+                    )
+                  })
+                });
+              }
+
+              var logEventName = {
+                buttonLoad: "client_login_button_load",
+                buttonClick: "client_login_click",
+                loginSuccess: "client_login_success",
+                loginCancel: "client_login_cancel",
+                popupHide: "client_login_popup_hide_xfoa",
+                popupShow: "client_login_popup_show_xfoa",
+                loginEnd: "client_login_end",
+                loginCompleteHeartbeat: "client_login_complete_heartbeat"
+              };
+              exports.logEvent = logEvent;
+              exports.logEventName = logEventName;
+            },
+            98
+          );
+          __d(
             "Base64",
             [],
             function $module_Base64(
@@ -10049,6 +10089,7 @@ try {
               "sdk.Cookie",
               "sdk.Frictionless",
               "sdk.Impressions",
+              "sdk.LoggingUtils",
               "sdk.Runtime",
               "sdk.Scribe",
               "sdk.SignedRequest",
@@ -10467,7 +10508,8 @@ try {
                 var cbt =
                   requestParams && requestParams.cbt ? requestParams.cbt : 0;
                 var payload = {
-                  action: "client_login_end",
+                  action: importNamespace("sdk.LoggingUtils").logEventName
+                    .loginEnd,
                   logger_id: loggerID,
                   client_funnel_version: importDefault("sdk.feature")(
                     "oauth_funnel_logger_version",
@@ -10493,7 +10535,8 @@ try {
 
                 window.setTimeout(function window_setTimeout_$0() {
                   var payload = {
-                    action: "client_login_complete_heartbeat",
+                    action: importNamespace("sdk.LoggingUtils").logEventName
+                      .loginCompleteHeartbeat,
                     logger_id: loggerID,
                     client_funnel_version: importDefault("sdk.feature")(
                       "oauth_funnel_logger_version",
@@ -20933,10 +20976,9 @@ try {
                     return;
                   }
 
-                  this.$ChatDOMFacade_container.classList.add("spinning");
                   importNamespace("sdk.DOM").html(
                     this.$ChatDOMFacade_container,
-                    '\n        <svg x="0" y="0" width="60" height="60" cursor="pointer">\n          <circle class="path" cx="30" cy="30" r="15" fill="none" stroke-width="4"></circle>\n        </svg>\n      '
+                    '\n        <svg class="spinning" x="0" y="0" width="60" height="60" cursor="pointer">\n          <circle class="path" cx="30" cy="30" r="15" fill="none" stroke-width="4"></circle>\n        </svg>\n      '
                   );
 
                   this.$ChatDOMFacade_spinnerShown = true;
@@ -25067,7 +25109,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1004456145","namespace":"FB","message":"' +
+        '","revision":"1004462563","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
