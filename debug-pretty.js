@@ -1,4 +1,4 @@
-/*1632784418,,JIT Construction: v1004462563,en_US*/
+/*1632951799,,JIT Construction: v1004477302,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3690,7 +3690,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1004462563",
+            revision: "1004477302",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -9468,7 +9468,13 @@ try {
                 popupHide: "client_login_popup_hide_xfoa",
                 popupShow: "client_login_popup_show_xfoa",
                 loginEnd: "client_login_end",
-                loginCompleteHeartbeat: "client_login_complete_heartbeat"
+                loginCompleteHeartbeat: "client_login_complete_heartbeat",
+                loginStatusPopupShowXfoa: "client_login_status_popup_show_xfoa",
+                loginStatusPopupHideXfoa: "client_login_status_popup_hide_xfoa",
+                loginStatusPopupClickXfoa:
+                  "client_login_status_popup_click_xfoa",
+                loginStatusPopupErrorXfoa:
+                  "client_login_status_popup_error_xfoa"
               };
               exports.logEvent = logEvent;
               exports.logEventName = logEventName;
@@ -25109,7 +25115,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1004462563","namespace":"FB","message":"' +
+        '","revision":"1004477302","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
