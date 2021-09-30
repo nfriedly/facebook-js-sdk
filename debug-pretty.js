@@ -1,4 +1,4 @@
-/*1632951799,,JIT Construction: v1004477302,en_US*/
+/*1632968613,,JIT Construction: v1004480197,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3690,7 +3690,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1004477302",
+            revision: "1004480197",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -20941,7 +20941,7 @@ try {
                         bottomSpacing,
                         sideSpacing,
                         false,
-                        false,
+                        true,
                         undefined,
                         false
                       );
@@ -23007,14 +23007,13 @@ try {
                   _this.$CustomerChat_unreadCountIFrameName = null;
                   _this.$CustomerChat_iframesLoaded = false;
                   _this.$CustomerChat_dialogIFrameOrigin = null;
-                  _this.$CustomerChat_visibilityGuard = null;
-                  _this.$CustomerChat_isHidden = false;
-                  _this.$CustomerChat_isIframeHidden = false;
+                  _this.$CustomerChat_isDialogHidden = false;
+                  _this.$CustomerChat_isPluginHidden = false;
                   _this.show = function(shouldShowDialog) {
                     if (shouldShowDialog === void 0) {
                       shouldShowDialog = true;
                     }
-                    _this.$CustomerChat_isIframeHidden = false;
+                    _this.$CustomerChat_isPluginHidden = false;
                     if (_this.$CustomerChat_bubbleIFrame != null) {
                       importNamespace("sdk.DOM").setStyle(
                         _this.$CustomerChat_bubbleIFrame,
@@ -23023,17 +23022,15 @@ try {
                       );
                     }
                     if (shouldShowDialog) {
-                      _this.$CustomerChat_isHidden = false;
                       _this.$CustomerChat_showDialogIframe(
-                        _this.$CustomerChat_dialogIFrame,
-                        true
+                        _this.$CustomerChat_dialogIFrame
                       );
                     }
                     importNamespace("sdk.Event").fire("customerchat.show");
                     _this.$CustomerChat_handleSDKCall("show");
                   };
                   _this.hide = function() {
-                    _this.$CustomerChat_isIframeHidden = true;
+                    _this.$CustomerChat_isPluginHidden = true;
                     if (_this.$CustomerChat_bubbleIFrame != null) {
                       importNamespace("sdk.DOM").setStyle(
                         _this.$CustomerChat_bubbleIFrame,
@@ -23041,10 +23038,8 @@ try {
                         "none"
                       );
                     }
-                    _this.$CustomerChat_isHidden = true;
                     _this.$CustomerChat_hideDialogIframe(
-                      _this.$CustomerChat_dialogIFrame,
-                      true
+                      _this.$CustomerChat_dialogIFrame
                     );
                     importNamespace("sdk.Event").fire("customerchat.hide");
                     _this.$CustomerChat_handleSDKCall("hide");
@@ -23057,18 +23052,14 @@ try {
                         "inline"
                       );
                     }
-                    _this.$CustomerChat_isHidden = false;
                     _this.$CustomerChat_showDialogIframe(
-                      _this.$CustomerChat_dialogIFrame,
-                      true
+                      _this.$CustomerChat_dialogIFrame
                     );
                     _this.$CustomerChat_handleSDKCall("showDialog");
                   };
                   _this.hideDialog = function() {
-                    _this.$CustomerChat_isHidden = true;
                     _this.$CustomerChat_hideDialogIframe(
-                      _this.$CustomerChat_dialogIFrame,
-                      true
+                      _this.$CustomerChat_dialogIFrame
                     );
                     _this.$CustomerChat_handleSDKCall("hideDialog");
                   };
@@ -23321,8 +23312,7 @@ try {
                         desktopBottomSpacing.toString()
                       );
                   }
-                  this.$CustomerChat_visibilityGuard = null;
-                  this.$CustomerChat_isHidden = isDialogHidden === "true";
+                  this.$CustomerChat_isDialogHidden = isDialogHidden === "true";
                   if (this.iframe) {
                     this.iframe.setAttribute("data-testid", "dialog_iframe");
                     this.iframe.style.cssText = cssText;
@@ -23331,7 +23321,7 @@ try {
                   this.$CustomerChat_dialogIFrameName = this.iframe.name;
                   this.$CustomerChat_checkIfIframesLoadedAndNotify();
                   var isMobile = importDefault("sdk.UA").mobile();
-                  if (isMobile && !this.$CustomerChat_isHidden) {
+                  if (isMobile && !this.$CustomerChat_isDialogHidden) {
                     if (
                       mobilePath ==
                       importDefault("sdk.cp.Constants").path.landingPage
@@ -23356,12 +23346,7 @@ try {
                       this.$CustomerChat_setParentDocumentPositionFixed();
                     }
                   }
-                  if (this.$CustomerChat_isHidden) {
-                    this.$CustomerChat_hideDialogIframe(this.iframe, false);
-                  } else {
-                    this.$CustomerChat_showDialogIframe(this.iframe, false);
-                  }
-                  if (this.$CustomerChat_isIframeHidden) {
+                  if (this.$CustomerChat_isPluginHidden) {
                     this.hide();
                   }
                 };
@@ -23369,11 +23354,10 @@ try {
                   message
                 ) {
                   var shouldHide = message.shouldHide;
-                  this.$CustomerChat_isHidden = shouldHide === "true";
-                  if (this.$CustomerChat_isHidden) {
-                    this.$CustomerChat_hideDialogIframe(this.iframe, true);
+                  if (shouldHide === "true") {
+                    this.$CustomerChat_hideDialogIframe(this.iframe);
                   } else {
-                    this.$CustomerChat_showDialogIframe(this.iframe, true);
+                    this.$CustomerChat_showDialogIframe(this.iframe);
                   }
                 };
                 _proto.getParams = function getParams() {
@@ -23458,16 +23442,13 @@ try {
                   );
                 };
                 _proto.$CustomerChat_showDialogIframe = function $CustomerChat_showDialogIframe(
-                  dialogIframe,
-                  shouldNotifyIframes
+                  dialogIframe
                 ) {
                   if (!dialogIframe) {
                     return;
                   }
-                  if (
-                    this.$CustomerChat_visibilityGuard === null ||
-                    this.$CustomerChat_visibilityGuard === false
-                  ) {
+                  if (this.$CustomerChat_isDialogHidden) {
+                    this.$CustomerChat_isDialogHidden = false;
                     var bounceInAnimationName = importNamespace(
                       "sdk.cp.Animation"
                     ).iframeBounceInAnimation(this.$CustomerChat_bubbleIFrame);
@@ -23523,34 +23504,28 @@ try {
                         "300px"
                       );
                     }
-                    if (shouldNotifyIframes) {
-                      this.$CustomerChat_postMessageToDialogFrame({
-                        name: "CustomerChat.isDialogHidden",
-                        params: { is_dialog_hidden: false }
-                      });
-                      this.$CustomerChat_postMessageToBubbleFrame({
-                        name: "CustomerChat.isDialogHidden",
-                        params: { is_dialog_hidden: false }
-                      });
-                    }
-                    this.$CustomerChat_visibilityGuard = true;
+                    this.$CustomerChat_postMessageToDialogFrame({
+                      name: "CustomerChat.isDialogHidden",
+                      params: { is_dialog_hidden: false }
+                    });
+                    this.$CustomerChat_postMessageToBubbleFrame({
+                      name: "CustomerChat.isDialogHidden",
+                      params: { is_dialog_hidden: false }
+                    });
                     importNamespace("sdk.Event").fire(
                       "customerchat.dialogShow"
                     );
                   }
                 };
                 _proto.$CustomerChat_hideDialogIframe = function $CustomerChat_hideDialogIframe(
-                  dialogIframe,
-                  postMessages
+                  dialogIframe
                 ) {
                   var _this4 = this;
                   if (!dialogIframe) {
                     return;
                   }
-                  if (
-                    this.$CustomerChat_visibilityGuard === null ||
-                    this.$CustomerChat_visibilityGuard === true
-                  ) {
+                  if (!this.$CustomerChat_isDialogHidden) {
+                    this.$CustomerChat_isDialogHidden = true;
                     var bounceInAnimationName = importNamespace(
                       "sdk.cp.Animation"
                     ).iframeBounceInAnimation(this.$CustomerChat_bubbleIFrame);
@@ -23558,7 +23533,7 @@ try {
                       "sdk.cp.Animation"
                     ).iframeBounceOutAnimation(this.$CustomerChat_bubbleIFrame);
                     var hideDialog = function hideDialog(_) {
-                      if (_this4.$CustomerChat_isHidden) {
+                      if (_this4.$CustomerChat_isDialogHidden) {
                         importNamespace("sdk.DOM").setStyle(
                           dialogIframe,
                           "maxHeight",
@@ -23582,7 +23557,6 @@ try {
                             );
                           }
                         );
-                        _this4.$CustomerChat_visibilityGuard = false;
                       }
                     };
                     bounceInAnimationName != null &&
@@ -23604,16 +23578,14 @@ try {
                         );
                       }
                     );
-                    if (postMessages) {
-                      this.$CustomerChat_postMessageToDialogFrame({
-                        name: "CustomerChat.isDialogHidden",
-                        params: { is_dialog_hidden: true }
-                      });
-                      this.$CustomerChat_postMessageToBubbleFrame({
-                        name: "CustomerChat.isDialogHidden",
-                        params: { is_dialog_hidden: true }
-                      });
-                    }
+                    this.$CustomerChat_postMessageToDialogFrame({
+                      name: "CustomerChat.isDialogHidden",
+                      params: { is_dialog_hidden: true }
+                    });
+                    this.$CustomerChat_postMessageToBubbleFrame({
+                      name: "CustomerChat.isDialogHidden",
+                      params: { is_dialog_hidden: true }
+                    });
                   }
                   importNamespace("sdk.Event").fire("customerchat.dialogHide");
                 };
@@ -25115,7 +25087,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1004477302","namespace":"FB","message":"' +
+        '","revision":"1004480197","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
