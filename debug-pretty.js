@@ -1,4 +1,4 @@
-/*1632968613,,JIT Construction: v1004480197,en_US*/
+/*1633056084,,JIT Construction: v1004487665,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3690,7 +3690,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1004480197",
+            revision: "1004487665",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -10792,18 +10792,12 @@ try {
                 }
 
                 if (
-                  !importDefault("sdk.Runtime").getShouldLoadFamilyLogin() &&
-                  !importDefault("sdk.feature")(
+                  importDefault("sdk.Runtime").getShouldLoadFamilyLogin() &&
+                  importDefault("sdk.feature")(
                     "should_enable_ig_login_status_fetch",
                     false
                   )
                 ) {
-                  importNamespace("sdk.AuthUtils").AuthInternalEvent.subscribe(
-                    importNamespace("sdk.AuthUtils").AuthConstants
-                      .CORS_FETCH_COMPLETED_EVENT,
-                    setFinalAuthResponse
-                  );
-                } else {
                   if (importDefault("sdk.Runtime").getFamilyLoginLoaded()) {
                     importNamespace("sdk.AuthUtils").AuthInternalEvent.inform(
                       importNamespace("sdk.AuthUtils").AuthConstants
@@ -10824,6 +10818,12 @@ try {
                       }
                     );
                   }
+                } else {
+                  importNamespace("sdk.AuthUtils").AuthInternalEvent.subscribe(
+                    importNamespace("sdk.AuthUtils").AuthConstants
+                      .CORS_FETCH_COMPLETED_EVENT,
+                    setFinalAuthResponse
+                  );
                 }
 
                 if (shouldFetchIABLoginStatus()) {
@@ -25087,7 +25087,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1004480197","namespace":"FB","message":"' +
+        '","revision":"1004487665","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
