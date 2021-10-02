@@ -1,4 +1,4 @@
-/*1633118568,,JIT Construction: v1004491371,en_US*/
+/*1633133692,,JIT Construction: v1004494619,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3690,7 +3690,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1004491371",
+            revision: "1004494619",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -7761,6 +7761,19 @@ try {
                 return wrapper;
               }
 
+              var JSON_HIJACKING_SHIELD = "for (;;);";
+              var JSON_HIJACKING_SHIELD_LEN = JSON_HIJACKING_SHIELD.length;
+
+              function unshieldResponse(text) {
+                if (
+                  text.substring(0, JSON_HIJACKING_SHIELD_LEN) ==
+                  JSON_HIJACKING_SHIELD
+                ) {
+                  text = text.substring(JSON_HIJACKING_SHIELD_LEN);
+                }
+                return text;
+              }
+
               function execute(url, method, params, cb) {
                 if (
                   ES(url, "includes", true, "/../") ||
@@ -7802,7 +7815,7 @@ try {
                 request.onload = function(xhr) {
                   cb(
                     importDefault("sdk.safelyParseResponse")(
-                      xhr.responseText,
+                      unshieldResponse(xhr.responseText),
                       url,
                       xhr.status
                     )
@@ -7813,7 +7826,7 @@ try {
                   if (xhr.responseText) {
                     cb(
                       importDefault("sdk.safelyParseResponse")(
-                        xhr.responseText,
+                        unshieldResponse(xhr.responseText),
                         url,
                         xhr.status
                       )
@@ -23599,10 +23612,11 @@ try {
             "sdk.XFBML.CustomerChatWrapper",
             [
               "$InternalEnum",
+              "CORSRequest",
+              "UrlMap",
               "sdk.Observable",
               "sdk.XFBML.ChatDOM",
-              "sdk.XFBML.CustomerChat",
-              "sdk.feature"
+              "sdk.XFBML.CustomerChat"
             ],
             function $module_sdk_XFBML_CustomerChatWrapper(
               global,
@@ -23650,37 +23664,46 @@ try {
                 _proto.process = function process() {
                   var _this = this;
                   var page_id = this.$CustomerChatWrapper_attr.page_id;
-                  var shouldShowFacade =
-                    importDefault("sdk.feature")(
-                      "chat_plugin_facade_enabled_pageids",
-                      []
-                    ).indexOf(page_id) !== -1;
-                  if (shouldShowFacade) {
-                    this.$CustomerChatWrapper_plugin = new (importDefault(
-                      "sdk.XFBML.ChatDOM"
-                    ))(
-                      this.$CustomerChatWrapper_element,
-                      this.$CustomerChatWrapper_ns,
-                      this.$CustomerChatWrapper_tag,
-                      this.$CustomerChatWrapper_attr
-                    );
-                  } else {
-                    this.$CustomerChatWrapper_plugin = new (importDefault(
-                      "sdk.XFBML.CustomerChat"
-                    ))(
-                      this.$CustomerChatWrapper_element,
-                      this.$CustomerChatWrapper_ns,
-                      this.$CustomerChatWrapper_tag,
-                      this.$CustomerChatWrapper_attr
-                    );
-                  }
-                  this.$CustomerChatWrapper_plugin.subscribe(
-                    "render",
-                    function $CustomerChatWrapper_plugin_subscribe_$1() {
-                      _this.inform("render");
+                  var uri =
+                    importNamespace("UrlMap").resolve("www") +
+                    "/plugins/customer_chat/facade_gating/";
+                  importDefault("CORSRequest").execute(
+                    uri,
+                    "get",
+                    {
+                      page_id: page_id
+                    },
+
+                    function CORSRequest_execute_$3(data) {
+                      var shouldShowFacade = data.should_show_facade;
+                      if (shouldShowFacade) {
+                        _this.$CustomerChatWrapper_plugin = new (importDefault(
+                          "sdk.XFBML.ChatDOM"
+                        ))(
+                          _this.$CustomerChatWrapper_element,
+                          _this.$CustomerChatWrapper_ns,
+                          _this.$CustomerChatWrapper_tag,
+                          _this.$CustomerChatWrapper_attr
+                        );
+                      } else {
+                        _this.$CustomerChatWrapper_plugin = new (importDefault(
+                          "sdk.XFBML.CustomerChat"
+                        ))(
+                          _this.$CustomerChatWrapper_element,
+                          _this.$CustomerChatWrapper_ns,
+                          _this.$CustomerChatWrapper_tag,
+                          _this.$CustomerChatWrapper_attr
+                        );
+                      }
+                      _this.$CustomerChatWrapper_plugin.subscribe(
+                        "render",
+                        function _this_$CustomerChatWrapper_plugin_subscribe_$1() {
+                          _this.inform("render");
+                        }
+                      );
+                      _this.$CustomerChatWrapper_plugin.process();
                     }
                   );
-                  this.$CustomerChatWrapper_plugin.process();
                 };
                 return CustomerChatWrapper;
               })(importNamespace("sdk.Observable").Observable);
@@ -25087,7 +25110,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1004491371","namespace":"FB","message":"' +
+        '","revision":"1004494619","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
