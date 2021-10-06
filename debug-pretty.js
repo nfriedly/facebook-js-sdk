@@ -1,4 +1,4 @@
-/*1633142592,,JIT Construction: v1004495832,en_US*/
+/*1633506212,,JIT Construction: v1004507105,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3675,6 +3675,7 @@ try {
                 "385757598521443",
                 "100545935690488"
               ],
+              should_enable_ig_login_status_fetch: true,
               xfoa_login_enabled: false
             }
           });
@@ -3690,7 +3691,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1004495832",
+            revision: "1004507105",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -18279,6 +18280,31 @@ try {
             98
           );
           __d(
+            "uuid",
+            [],
+            function $module_uuid(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              function uuid() {
+                return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(
+                  /[xy]/g,
+                  function replace_$1(c) {
+                    var r = (Math.random() * 16) | 0;
+                    var v = c == "x" ? r : (r & 3) | 8;
+                    return v.toString(16);
+                  }
+                );
+              }
+              exports["default"] = uuid;
+            },
+            66
+          );
+          __d(
             "IframePlugin",
             [
               "Log",
@@ -18299,7 +18325,8 @@ try {
               "sdk.URI",
               "sdk.WebStorage",
               "sdk.XD",
-              "sdk.createIframe"
+              "sdk.createIframe",
+              "uuid"
             ],
             function $module_IframePlugin(
               global,
@@ -18480,6 +18507,11 @@ try {
                       var requestTime = Date.now();
                       ES("Object", "assign", false, params, {
                         request_time: requestTime
+                      });
+
+                      var logId = importDefault("uuid")();
+                      ES("Object", "assign", false, params, {
+                        log_id: logId
                       });
 
                       var currentUrl = window.location.href;
@@ -20821,6 +20853,54 @@ try {
             98
           );
           __d(
+            "ChatPluginSDKPreLoggingUtils",
+            ["CORSRequest", "UrlMap"],
+            function $module_ChatPluginSDKPreLoggingUtils(
+              global,
+              require,
+              importDefault,
+              importNamespace,
+              requireLazy,
+              module,
+              exports
+            ) {
+              "use strict";
+
+              function preLogging(event_name, params) {
+                var _params$request_time;
+                var request_time = Date.now();
+                var uri =
+                  importNamespace("UrlMap").resolve("www") +
+                  "/plugins/customer_chat/SDK/";
+                var prev_time =
+                  (_params$request_time = params.request_time) != null
+                    ? _params$request_time
+                    : undefined;
+                var loading_time = 0;
+                if (
+                  typeof prev_time === "number" &&
+                  event_name !== "chat_plugin_sdk_dialog_iframe_create"
+                ) {
+                  loading_time = request_time - prev_time;
+                }
+                params.request_time = request_time;
+                importDefault("CORSRequest").execute(
+                  uri,
+                  "get",
+                  babelHelpers["extends"]({}, params, {
+                    event_name: event_name,
+                    loading_time: loading_time
+                  }),
+                  function CORSRequest_execute_$3() {
+                    return null;
+                  }
+                );
+              }
+              exports.preLogging = preLogging;
+            },
+            98
+          );
+          __d(
             "getFacebookOriginForTarget",
             ["Log"],
             function $module_getFacebookOriginForTarget(
@@ -20955,6 +21035,7 @@ try {
           __d(
             "sdk.XFBML.CustomerChat",
             [
+              "ChatPluginSDKPreLoggingUtils",
               "DOMEventListener",
               "IframePlugin",
               "MPNLocalState",
@@ -21004,6 +21085,7 @@ try {
               var _unreadCountIFrame = null;
               var _unreadCountIFrameName = null;
               var _visibilityGuard = null;
+              var _params = {};
 
               var ARRT_ALIGNMENT = "alignment";
               var ARRT_MOBILE_PATH = "mobile_path";
@@ -21027,10 +21109,23 @@ try {
                   importNamespace("sdk.Event").fire("customerchat.load");
 
                   this._setUpSubscriptions();
+
+                  _params = this._params;
+                  importNamespace("ChatPluginSDKPreLoggingUtils").preLogging(
+                    "chat_plugin_sdk_dialog_iframe_create",
+                    _params
+                  );
                 },
 
                 _setUpSubscriptions: function _setUpSubscriptions() {
                   var _this = this;
+
+                  this.subscribe("render", function subscribe_$1() {
+                    importNamespace("ChatPluginSDKPreLoggingUtils").preLogging(
+                      "chat_plugin_sdk_dialog_iframe_load",
+                      _params
+                    );
+                  });
 
                   this.subscribe("xd.mpn.storeState", function subscribe_$1(
                     message
@@ -21178,6 +21273,10 @@ try {
                     style: css,
                     "data-testid": "bubble_iframe",
                     onload: function onload() {
+                      importNamespace(
+                        "ChatPluginSDKPreLoggingUtils"
+                      ).preLogging("chat_plugin_sdk_icon_iframe_load", _params);
+
                       _bubbleIFrameName = bubbleIFrameName;
 
                       _this2._notifyDialogIFrame();
@@ -24850,7 +24949,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1004495832","namespace":"FB","message":"' +
+        '","revision":"1004507105","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
