@@ -1,4 +1,4 @@
-/*1633583635,,JIT Construction: v1004514454,en_US*/
+/*1633587816,,JIT Construction: v1004514913,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3691,7 +3691,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1004514454",
+            revision: "1004514913",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -17768,232 +17768,6 @@ try {
             3
           );
           __d(
-            "$InternalEnum",
-            [],
-            function $module__InternalEnum(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              "use strict";
-
-              var hasOwnProperty = Object.prototype.hasOwnProperty;
-
-              var reverseMapCache =
-                typeof WeakMap === "function" ? new WeakMap() : new Map();
-
-              function getReverseMap(enumObject) {
-                var reverseMap = reverseMapCache.get(enumObject);
-                if (reverseMap !== undefined) {
-                  return reverseMap;
-                }
-
-                var newReverseMap = new Map();
-                Object.getOwnPropertyNames(enumObject).forEach(
-                  function forEach_$0(name) {
-                    newReverseMap.set(enumObject[name], name);
-                  }
-                );
-                try {
-                  reverseMapCache.set(enumObject, newReverseMap);
-                } catch (_) {}
-                return newReverseMap;
-              }
-
-              var EnumPrototype = Object.freeze(
-                Object.defineProperties(Object.create(null), {
-                  isValid: {
-                    value: function value(x) {
-                      return getReverseMap(this).has(x);
-                    }
-                  },
-
-                  cast: {
-                    value: function value(x) {
-                      return this.isValid(x) ? x : undefined;
-                    }
-                  },
-
-                  members: {
-                    value: function value() {
-                      return getReverseMap(this).keys();
-                    }
-                  },
-
-                  getName: {
-                    value: function value(_value) {
-                      return getReverseMap(this).get(_value);
-                    }
-                  }
-                })
-              );
-
-              function Enum(members) {
-                var o = Object.create(EnumPrototype);
-                for (var k in members) {
-                  if (hasOwnProperty.call(members, k)) {
-                    Object.defineProperty(o, k, { value: members[k] });
-                  }
-                }
-                return Object.freeze(o);
-              }
-
-              var EnumMirroredPrototype = Object.freeze(
-                Object.defineProperties(Object.create(null), {
-                  isValid: {
-                    value: function value(x) {
-                      if (typeof x === "string") {
-                        return hasOwnProperty.call(this, x);
-                      }
-                      return false;
-                    }
-                  },
-
-                  cast: {
-                    value: EnumPrototype.cast
-                  },
-
-                  members: {
-                    value: function value() {
-                      return Object.getOwnPropertyNames(this).values();
-                    }
-                  },
-
-                  getName: {
-                    value: function value(_value2) {
-                      return _value2;
-                    }
-                  }
-                })
-              );
-
-              Enum.Mirrored = function EnumMirrored(members) {
-                var o = Object.create(EnumMirroredPrototype);
-                for (var i = 0, len = members.length; i < len; ++i) {
-                  Object.defineProperty(o, members[i], { value: members[i] });
-                }
-                return Object.freeze(o);
-              };
-
-              Object.freeze(Enum.Mirrored);
-
-              module.exports = Object.freeze(Enum);
-            },
-            null
-          );
-          __d(
-            "MPNConstants",
-            ["$InternalEnum"],
-            function $module_MPNConstants(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              "use strict";
-              var InternalEnum;
-              var MPNRedirect = (InternalEnum = require("$InternalEnum"))({
-                NEW_GUEST_SESSION: "new_guest_sess",
-                ITP_CONTINUE_SESSION: "ipt_continue_sess",
-                FB_LOG_IN: "fb_log_in",
-                GUEST_UPGRADE: "guest_upgrade",
-                GUEST_UPGRADE_SWITCH_ACCOUNT: "guest_upgrade_switch_account"
-              });
-              var MPNUpgradePrompt = InternalEnum({
-                NOT_SHOWN: "not_shown",
-                ATTACHMENT_UPSELL: "attachment_upsell",
-                DONT_WAIT_FOR_REPLY_UPSELL: "dont_wait_for_reply_upsell",
-                CONTINUE_IN_MESSENGER: "continue_in_messenger",
-                OPEN_THREAD: "open_thread",
-                BACK_AND_FORTH: "back_and_forth",
-                END_CHAT: "end_chat"
-              });
-              var MPNVisibility = InternalEnum({
-                HIDDEN: "hidden",
-                NOT_HIDDEN: "not-hidden"
-              });
-              var MPNGreenDotSize = InternalEnum.Mirrored(["LARGE", "MEDIUM"]);
-              var MPNQuickReplyLayout = InternalEnum.Mirrored([
-                "HORIZONTAL",
-                "VERTICAL"
-              ]);
-              var MPNQuickReplyContentType = InternalEnum({
-                TEXT: "text",
-                USER_EMAIL: "user_email",
-                USER_PHONE_NUMBER: "user_phone_number",
-                USER_STATE: "user_state",
-                USER_ZIP_CODE: "user_zip_code"
-              });
-              var MPNCufeeScoreType = InternalEnum.Mirrored([
-                "CSAT",
-                "CES",
-                "NPS",
-                "FREE_FORM"
-              ]);
-              var MPNCufeeScoreOption = InternalEnum.Mirrored([
-                "FIVE_STARS",
-                "FIVE_EMOJIS",
-                "ONE_TO_FIVE",
-                "ONE_TO_SEVEN",
-                "ZERO_TO_TEN",
-                "NONE"
-              ]);
-
-              var MPNCufeeWordLimit = 400;
-              exports.MPNRedirect = MPNRedirect;
-              exports.MPNUpgradePrompt = MPNUpgradePrompt;
-              exports.MPNVisibility = MPNVisibility;
-              exports.MPNGreenDotSize = MPNGreenDotSize;
-              exports.MPNQuickReplyLayout = MPNQuickReplyLayout;
-              exports.MPNQuickReplyContentType = MPNQuickReplyContentType;
-              exports.MPNCufeeScoreType = MPNCufeeScoreType;
-              exports.MPNCufeeScoreOption = MPNCufeeScoreOption;
-              exports.MPNCufeeWordLimit = MPNCufeeWordLimit;
-            },
-            66
-          );
-          __d(
-            "MPNLocalState",
-            [],
-            function $module_MPNLocalState(
-              global,
-              require,
-              importDefault,
-              importNamespace,
-              requireLazy,
-              module,
-              exports
-            ) {
-              "use strict";
-
-              var MPNLocalStatePath = {
-                LANDING_BANNER: 1,
-                WELCOME_PAGE: 2,
-                ITP_CONTINUE: 3,
-                THREAD_VIEW: 4,
-                BUBBLE: 5,
-                EMAIL: 6
-              };
-
-              var MPNChatState = {
-                CHAT_NOT_STARTED: 1,
-                LOGGED_IN_CHAT_STARTED: 2,
-                GUEST_CHAT_STARTED: 3
-              };
-
-              var LOCAL_STATE_KEY = "__fb_chat_plugin";
-              exports.MPNLocalStatePath = MPNLocalStatePath;
-              exports.MPNChatState = MPNChatState;
-              exports.LOCAL_STATE_KEY = LOCAL_STATE_KEY;
-            },
-            98
-          );
-          __d(
             "sdk.PluginUtils",
             ["resolveURI", "sdk.Event"],
             function $module_sdk_PluginUtils(
@@ -18280,35 +18054,9 @@ try {
             98
           );
           __d(
-            "uuid",
-            [],
-            function $module_uuid(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              function uuid() {
-                return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(
-                  /[xy]/g,
-                  function replace_$1(c) {
-                    var r = (Math.random() * 16) | 0;
-                    var v = c == "x" ? r : (r & 3) | 8;
-                    return v.toString(16);
-                  }
-                );
-              }
-              exports["default"] = uuid;
-            },
-            66
-          );
-          __d(
             "IframePlugin",
             [
               "Log",
-              "MPNLocalState",
               "ObservableMixin",
               "QueryString",
               "Type",
@@ -18323,10 +18071,8 @@ try {
               "sdk.Runtime",
               "sdk.UA",
               "sdk.URI",
-              "sdk.WebStorage",
               "sdk.XD",
-              "sdk.createIframe",
-              "uuid"
+              "sdk.createIframe"
             ],
             function $module_IframePlugin(
               global,
@@ -18481,44 +18227,6 @@ try {
                         true
                       )
                     });
-
-                    if (tag == "customerchat") {
-                      var storage = importNamespace(
-                        "sdk.WebStorage"
-                      ).getLocalStorage();
-                      var localState = null;
-                      if (storage != null) {
-                        try {
-                          localState = storage.getItem(
-                            importNamespace("MPNLocalState").LOCAL_STATE_KEY
-                          );
-                        } catch (_unused) {
-                          importNamespace("Log").warn(
-                            "Failed to access localStorage"
-                          );
-                        }
-                      }
-                      if (localState != null) {
-                        ES("Object", "assign", false, params, {
-                          local_state: localState
-                        });
-                      }
-
-                      var requestTime = Date.now();
-                      ES("Object", "assign", false, params, {
-                        request_time: requestTime
-                      });
-
-                      var logId = importDefault("uuid")();
-                      ES("Object", "assign", false, params, {
-                        log_id: logId
-                      });
-
-                      var currentUrl = window.location.href;
-                      ES("Object", "assign", false, params, {
-                        current_url: currentUrl
-                      });
-                    }
 
                     if (this.shouldIgnoreWidth()) {
                       params.width = void 0;
@@ -19270,6 +18978,241 @@ try {
               });
               var _default = CommentsCount;
               exports["default"] = _default;
+            },
+            98
+          );
+          __d(
+            "$InternalEnum",
+            [],
+            function $module__InternalEnum(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              "use strict";
+
+              var hasOwnProperty = Object.prototype.hasOwnProperty;
+
+              var reverseMapCache =
+                typeof WeakMap === "function" ? new WeakMap() : new Map();
+
+              function getReverseMap(enumObject) {
+                var reverseMap = reverseMapCache.get(enumObject);
+                if (reverseMap !== undefined) {
+                  return reverseMap;
+                }
+
+                var newReverseMap = new Map();
+                Object.getOwnPropertyNames(enumObject).forEach(
+                  function forEach_$0(name) {
+                    newReverseMap.set(enumObject[name], name);
+                  }
+                );
+                try {
+                  reverseMapCache.set(enumObject, newReverseMap);
+                } catch (_) {}
+                return newReverseMap;
+              }
+
+              var EnumPrototype = Object.freeze(
+                Object.defineProperties(Object.create(null), {
+                  isValid: {
+                    value: function value(x) {
+                      return getReverseMap(this).has(x);
+                    }
+                  },
+
+                  cast: {
+                    value: function value(x) {
+                      return this.isValid(x) ? x : undefined;
+                    }
+                  },
+
+                  members: {
+                    value: function value() {
+                      return getReverseMap(this).keys();
+                    }
+                  },
+
+                  getName: {
+                    value: function value(_value) {
+                      return getReverseMap(this).get(_value);
+                    }
+                  }
+                })
+              );
+
+              function Enum(members) {
+                var o = Object.create(EnumPrototype);
+                for (var k in members) {
+                  if (hasOwnProperty.call(members, k)) {
+                    Object.defineProperty(o, k, { value: members[k] });
+                  }
+                }
+                return Object.freeze(o);
+              }
+
+              var EnumMirroredPrototype = Object.freeze(
+                Object.defineProperties(Object.create(null), {
+                  isValid: {
+                    value: function value(x) {
+                      if (typeof x === "string") {
+                        return hasOwnProperty.call(this, x);
+                      }
+                      return false;
+                    }
+                  },
+
+                  cast: {
+                    value: EnumPrototype.cast
+                  },
+
+                  members: {
+                    value: function value() {
+                      return Object.getOwnPropertyNames(this).values();
+                    }
+                  },
+
+                  getName: {
+                    value: function value(_value2) {
+                      return _value2;
+                    }
+                  }
+                })
+              );
+
+              Enum.Mirrored = function EnumMirrored(members) {
+                var o = Object.create(EnumMirroredPrototype);
+                for (var i = 0, len = members.length; i < len; ++i) {
+                  Object.defineProperty(o, members[i], { value: members[i] });
+                }
+                return Object.freeze(o);
+              };
+
+              Object.freeze(Enum.Mirrored);
+
+              module.exports = Object.freeze(Enum);
+            },
+            null
+          );
+          __d(
+            "performance",
+            [],
+            function $module_performance(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              "use strict";
+
+              var performance =
+                global.performance ||
+                global.msPerformance ||
+                global.webkitPerformance ||
+                {};
+              var _default = performance;
+              exports["default"] = _default;
+            },
+            66
+          );
+          __d(
+            "performanceNow",
+            ["performance"],
+            function $module_performanceNow(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              var c_performance;
+
+              var performanceNow;
+
+              if (
+                (c_performance || (c_performance = require("performance"))).now
+              ) {
+                performanceNow = function performanceNow() {
+                  return (
+                    c_performance || (c_performance = require("performance"))
+                  ).now();
+                };
+              } else {
+                var cstart = global._cstart;
+                var initialDate = Date.now();
+                var epoch =
+                  typeof cstart === "number" && cstart < initialDate
+                    ? cstart
+                    : initialDate;
+                var last = 0;
+                performanceNow = function performanceNow() {
+                  var dateNow = Date.now();
+                  var now = dateNow - epoch;
+                  if (now < last) {
+                    epoch -= last - now;
+                    now = dateNow - epoch;
+                  }
+                  last = now;
+                  return now;
+                };
+              }
+
+              module.exports = performanceNow;
+            },
+            null
+          );
+          __d(
+            "ChatPluginSDKPreLoggingUtils",
+            ["CORSRequest", "UrlMap", "performanceNow"],
+            function $module_ChatPluginSDKPreLoggingUtils(
+              global,
+              require,
+              importDefault,
+              importNamespace,
+              requireLazy,
+              module,
+              exports
+            ) {
+              "use strict";
+
+              function preLogging(event_name, params) {
+                var _params$request_time;
+                var request_time = importDefault("performanceNow")();
+                var uri =
+                  importNamespace("UrlMap").resolve("www") +
+                  "/plugins/customer_chat/SDK/";
+                var prev_time =
+                  (_params$request_time = params.request_time) != null
+                    ? _params$request_time
+                    : undefined;
+                var loading_time = 0;
+                if (
+                  typeof prev_time === "number" &&
+                  event_name !== "chat_plugin_sdk_dialog_iframe_create"
+                ) {
+                  loading_time = request_time - prev_time;
+                }
+                params.request_time = request_time;
+                importDefault("CORSRequest").execute(
+                  uri,
+                  "get",
+                  babelHelpers["extends"]({}, params, {
+                    event_name: event_name,
+                    loading_time: loading_time
+                  }),
+                  function CORSRequest_execute_$3() {
+                    return null;
+                  }
+                );
+              }
+              exports.preLogging = preLogging;
             },
             98
           );
@@ -20240,76 +20183,6 @@ try {
             98
           );
           __d(
-            "performance",
-            [],
-            function $module_performance(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              "use strict";
-
-              var performance =
-                global.performance ||
-                global.msPerformance ||
-                global.webkitPerformance ||
-                {};
-              var _default = performance;
-              exports["default"] = _default;
-            },
-            66
-          );
-          __d(
-            "performanceNow",
-            ["performance"],
-            function $module_performanceNow(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              var c_performance;
-
-              var performanceNow;
-
-              if (
-                (c_performance || (c_performance = require("performance"))).now
-              ) {
-                performanceNow = function performanceNow() {
-                  return (
-                    c_performance || (c_performance = require("performance"))
-                  ).now();
-                };
-              } else {
-                var cstart = global._cstart;
-                var initialDate = Date.now();
-                var epoch =
-                  typeof cstart === "number" && cstart < initialDate
-                    ? cstart
-                    : initialDate;
-                var last = 0;
-                performanceNow = function performanceNow() {
-                  var dateNow = Date.now();
-                  var now = dateNow - epoch;
-                  if (now < last) {
-                    epoch -= last - now;
-                    now = dateNow - epoch;
-                  }
-                  last = now;
-                  return now;
-                };
-              }
-
-              module.exports = performanceNow;
-            },
-            null
-          );
-          __d(
             "nativeRequestAnimationFrame",
             [],
             function $module_nativeRequestAnimationFrame(
@@ -20600,10 +20473,36 @@ try {
             98
           );
           __d(
+            "uuid",
+            [],
+            function $module_uuid(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              function uuid() {
+                return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(
+                  /[xy]/g,
+                  function replace_$1(c) {
+                    var r = (Math.random() * 16) | 0;
+                    var v = c == "x" ? r : (r & 3) | 8;
+                    return v.toString(16);
+                  }
+                );
+              }
+              exports["default"] = uuid;
+            },
+            66
+          );
+          __d(
             "sdk.XFBML.ChatDOM",
             [
               "$InternalEnum",
               "CORSRequest",
+              "ChatPluginSDKPreLoggingUtils",
               "DOMPlugin",
               "LiveChatPluginUtils",
               "Log",
@@ -20613,7 +20512,8 @@ try {
               "sdk.DOM",
               "sdk.IdleCallback",
               "sdk.XFBML.CustomerChatNew",
-              "sdk.feature"
+              "sdk.feature",
+              "uuid"
             ],
             function $module_sdk_XFBML_ChatDOM(
               global,
@@ -20650,6 +20550,22 @@ try {
                       attribution_version: "string",
                       is_loaded_by_facade: "bool"
                     }) || this;
+
+                  var requestTime = importDefault("performanceNow")();
+
+                  var logId = importDefault("uuid")();
+                  var currentUrl = window.location.href;
+                  ES("Object", "assign", false, _this.params, {
+                    current_url: currentUrl,
+                    log_id: logId,
+                    request_time: requestTime,
+                    is_loaded_by_facade: true
+                  });
+
+                  importNamespace("ChatPluginSDKPreLoggingUtils").preLogging(
+                    "chat_plugin_sdk_facade_create",
+                    _this.params
+                  );
 
                   importNamespace("sdk.DOM").remove(element);
                   importNamespace("sdk.Content").append(element);
@@ -20740,6 +20656,10 @@ try {
                         css
                       );
                       _this.$ChatDOMFacade_container.style.backgroundColor = themeColor;
+
+                      importNamespace(
+                        "ChatPluginSDKPreLoggingUtils"
+                      ).preLogging("chat_plugin_sdk_facade_load", _this.params);
                     }
                   );
 
@@ -20819,19 +20739,7 @@ try {
 
                   var renderer = new (importDefault(
                     "sdk.XFBML.CustomerChatNew"
-                  ))(
-                    container,
-                    "fb",
-                    "customerchat",
-                    babelHelpers["extends"](
-                      {},
-
-                      this.params,
-                      {
-                        is_loaded_by_facade: true
-                      }
-                    )
-                  );
+                  ))(container, "fb", "customerchat", this.params);
 
                   this.$ChatDOMFacade_renderer = renderer;
 
@@ -20854,9 +20762,82 @@ try {
             98
           );
           __d(
-            "ChatPluginSDKPreLoggingUtils",
-            ["CORSRequest", "UrlMap"],
-            function $module_ChatPluginSDKPreLoggingUtils(
+            "MPNConstants",
+            ["$InternalEnum"],
+            function $module_MPNConstants(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              "use strict";
+              var InternalEnum;
+              var MPNRedirect = (InternalEnum = require("$InternalEnum"))({
+                NEW_GUEST_SESSION: "new_guest_sess",
+                ITP_CONTINUE_SESSION: "ipt_continue_sess",
+                FB_LOG_IN: "fb_log_in",
+                GUEST_UPGRADE: "guest_upgrade",
+                GUEST_UPGRADE_SWITCH_ACCOUNT: "guest_upgrade_switch_account"
+              });
+              var MPNUpgradePrompt = InternalEnum({
+                NOT_SHOWN: "not_shown",
+                ATTACHMENT_UPSELL: "attachment_upsell",
+                DONT_WAIT_FOR_REPLY_UPSELL: "dont_wait_for_reply_upsell",
+                CONTINUE_IN_MESSENGER: "continue_in_messenger",
+                OPEN_THREAD: "open_thread",
+                BACK_AND_FORTH: "back_and_forth",
+                END_CHAT: "end_chat"
+              });
+              var MPNVisibility = InternalEnum({
+                HIDDEN: "hidden",
+                NOT_HIDDEN: "not-hidden"
+              });
+              var MPNGreenDotSize = InternalEnum.Mirrored(["LARGE", "MEDIUM"]);
+              var MPNQuickReplyLayout = InternalEnum.Mirrored([
+                "HORIZONTAL",
+                "VERTICAL"
+              ]);
+              var MPNQuickReplyContentType = InternalEnum({
+                TEXT: "text",
+                USER_EMAIL: "user_email",
+                USER_PHONE_NUMBER: "user_phone_number",
+                USER_STATE: "user_state",
+                USER_ZIP_CODE: "user_zip_code"
+              });
+              var MPNCufeeScoreType = InternalEnum.Mirrored([
+                "CSAT",
+                "CES",
+                "NPS",
+                "FREE_FORM"
+              ]);
+              var MPNCufeeScoreOption = InternalEnum.Mirrored([
+                "FIVE_STARS",
+                "FIVE_EMOJIS",
+                "ONE_TO_FIVE",
+                "ONE_TO_SEVEN",
+                "ZERO_TO_TEN",
+                "NONE"
+              ]);
+
+              var MPNCufeeWordLimit = 400;
+              exports.MPNRedirect = MPNRedirect;
+              exports.MPNUpgradePrompt = MPNUpgradePrompt;
+              exports.MPNVisibility = MPNVisibility;
+              exports.MPNGreenDotSize = MPNGreenDotSize;
+              exports.MPNQuickReplyLayout = MPNQuickReplyLayout;
+              exports.MPNQuickReplyContentType = MPNQuickReplyContentType;
+              exports.MPNCufeeScoreType = MPNCufeeScoreType;
+              exports.MPNCufeeScoreOption = MPNCufeeScoreOption;
+              exports.MPNCufeeWordLimit = MPNCufeeWordLimit;
+            },
+            66
+          );
+          __d(
+            "MPNLocalState",
+            [],
+            function $module_MPNLocalState(
               global,
               require,
               importDefault,
@@ -20867,37 +20848,25 @@ try {
             ) {
               "use strict";
 
-              function preLogging(event_name, params) {
-                var _params$request_time;
-                var request_time = Date.now();
-                var uri =
-                  importNamespace("UrlMap").resolve("www") +
-                  "/plugins/customer_chat/SDK/";
-                var prev_time =
-                  (_params$request_time = params.request_time) != null
-                    ? _params$request_time
-                    : undefined;
-                var loading_time = 0;
-                if (
-                  typeof prev_time === "number" &&
-                  event_name !== "chat_plugin_sdk_dialog_iframe_create"
-                ) {
-                  loading_time = request_time - prev_time;
-                }
-                params.request_time = request_time;
-                importDefault("CORSRequest").execute(
-                  uri,
-                  "get",
-                  babelHelpers["extends"]({}, params, {
-                    event_name: event_name,
-                    loading_time: loading_time
-                  }),
-                  function CORSRequest_execute_$3() {
-                    return null;
-                  }
-                );
-              }
-              exports.preLogging = preLogging;
+              var MPNLocalStatePath = {
+                LANDING_BANNER: 1,
+                WELCOME_PAGE: 2,
+                ITP_CONTINUE: 3,
+                THREAD_VIEW: 4,
+                BUBBLE: 5,
+                EMAIL: 6
+              };
+
+              var MPNChatState = {
+                CHAT_NOT_STARTED: 1,
+                LOGGED_IN_CHAT_STARTED: 2,
+                GUEST_CHAT_STARTED: 3
+              };
+
+              var LOCAL_STATE_KEY = "__fb_chat_plugin";
+              exports.MPNLocalStatePath = MPNLocalStatePath;
+              exports.MPNChatState = MPNChatState;
+              exports.LOCAL_STATE_KEY = LOCAL_STATE_KEY;
             },
             98
           );
@@ -21039,9 +21008,12 @@ try {
               "ChatPluginSDKPreLoggingUtils",
               "DOMEventListener",
               "IframePlugin",
+              "Log",
               "MPNLocalState",
+              "QueryString",
               "UrlMap",
               "getFacebookOriginForTarget",
+              "performanceNow",
               "sdk.Content",
               "sdk.DOM",
               "sdk.DialogUtils",
@@ -21053,7 +21025,8 @@ try {
               "sdk.WebStorage",
               "sdk.XD",
               "sdk.XFBML.CustomerChatWrapper",
-              "sdk.createIframe"
+              "sdk.createIframe",
+              "uuid"
             ],
             function $module_sdk_XFBML_CustomerChat(
               global,
@@ -21086,7 +21059,6 @@ try {
               var _unreadCountIFrame = null;
               var _unreadCountIFrameName = null;
               var _visibilityGuard = null;
-              var _params = {};
 
               var ARRT_ALIGNMENT = "alignment";
               var ARRT_MOBILE_PATH = "mobile_path";
@@ -21105,17 +21077,62 @@ try {
 
                   this.parent(elem, ns, tag, attr);
 
-                  this._iframeOptions.title = "";
+                  this._updateDialogIframeOptions();
 
                   importNamespace("sdk.Event").fire("customerchat.load");
 
                   this._setUpSubscriptions();
 
-                  _params = this._params;
                   importNamespace("ChatPluginSDKPreLoggingUtils").preLogging(
                     "chat_plugin_sdk_dialog_iframe_create",
-                    _params
+
+                    this._params
                   );
+                },
+
+                _updateDialogIframeOptions: function _updateDialogIframeOptions() {
+                  var storage = importNamespace(
+                    "sdk.WebStorage"
+                  ).getLocalStorage();
+                  var localState = null;
+                  if (storage != null) {
+                    try {
+                      localState = storage.getItem(
+                        importNamespace("MPNLocalState").LOCAL_STATE_KEY
+                      );
+                    } catch (_unused) {
+                      importNamespace("Log").warn(
+                        "Failed to access localStorage"
+                      );
+                    }
+                  }
+                  if (localState != null) {
+                    ES("Object", "assign", false, this._params, {
+                      local_state: localState
+                    });
+                  }
+
+                  var requestTime = importDefault("performanceNow")();
+
+                  var logId = importDefault("uuid")();
+                  var currentUrl = window.location.href;
+
+                  ES("Object", "assign", false, this._params, {
+                    current_url: currentUrl,
+                    log_id: logId,
+                    request_time: requestTime
+                  });
+
+                  var url =
+                    importNamespace("UrlMap").resolve("www") +
+                    "/plugins/" +
+                    this._tag +
+                    ".php?";
+
+                  this._iframeOptions.url =
+                    url + importDefault("QueryString").encode(this._params);
+
+                  this._iframeOptions.title = "";
                 },
 
                 _setUpSubscriptions: function _setUpSubscriptions() {
@@ -21124,7 +21141,8 @@ try {
                   this.subscribe("render", function subscribe_$1() {
                     importNamespace("ChatPluginSDKPreLoggingUtils").preLogging(
                       "chat_plugin_sdk_dialog_iframe_load",
-                      _params
+
+                      _this._params
                     );
                   });
 
@@ -21276,7 +21294,11 @@ try {
                     onload: function onload() {
                       importNamespace(
                         "ChatPluginSDKPreLoggingUtils"
-                      ).preLogging("chat_plugin_sdk_icon_iframe_load", _params);
+                      ).preLogging(
+                        "chat_plugin_sdk_icon_iframe_load",
+
+                        _this2._params
+                      );
 
                       _bubbleIFrameName = bubbleIFrameName;
 
@@ -21330,8 +21352,10 @@ try {
                       (_unreadCountIFrame2 = _unreadCountIFrame) == null
                         ? void 0
                         : _unreadCountIFrame2.src,
-                    request_time: _params.request_time,
-                    log_id: _params.log_id
+
+                    request_time: this._params.request_time,
+
+                    log_id: this._params.log_id
                   });
                 },
 
@@ -21530,7 +21554,7 @@ try {
                         );
                       }
                     }
-                  } catch (_unused) {
+                  } catch (_unused2) {
                     return;
                   }
                 },
@@ -21956,7 +21980,6 @@ try {
             "IframePluginClass",
             [
               "Log",
-              "MPNLocalState",
               "QueryString",
               "UrlMap",
               "guid",
@@ -21970,7 +21993,6 @@ try {
               "sdk.Runtime",
               "sdk.UA",
               "sdk.URI",
-              "sdk.WebStorage",
               "sdk.XD",
               "sdk.createIframe"
             ],
@@ -22131,39 +22153,6 @@ try {
                       true
                     )
                   });
-
-                  if (tag == "customerchat") {
-                    var storage = importNamespace(
-                      "sdk.WebStorage"
-                    ).getLocalStorage();
-                    var localState = null;
-                    if (storage != null) {
-                      try {
-                        localState = storage.getItem(
-                          importNamespace("MPNLocalState").LOCAL_STATE_KEY
-                        );
-                      } catch (_unused) {
-                        importNamespace("Log").warn(
-                          "Failed to access localStorage"
-                        );
-                      }
-                    }
-                    if (localState != null) {
-                      ES("Object", "assign", false, params, {
-                        local_state: localState
-                      });
-                    }
-
-                    var requestTime = Date.now();
-                    ES("Object", "assign", false, params, {
-                      request_time: requestTime
-                    });
-
-                    var currentUrl = window.location.href;
-                    ES("Object", "assign", false, params, {
-                      current_url: currentUrl
-                    });
-                  }
 
                   if (_this.shouldIgnoreWidth()) {
                     params.width = void 0;
@@ -22826,14 +22815,21 @@ try {
           __d(
             "sdk.XFBML.CustomerChatNew",
             [
+              "ChatPluginSDKPreLoggingUtils",
               "DOMEventListener",
               "IframePluginClass",
+              "Log",
+              "MPNLocalState",
+              "QueryString",
+              "UrlMap",
               "getFacebookOriginForTarget",
+              "performanceNow",
               "sdk.Content",
               "sdk.DOM",
               "sdk.DialogUtils",
               "sdk.Event",
               "sdk.UA",
+              "sdk.WebStorage",
               "sdk.XD",
               "sdk.XFBML.CustomerChatWrapper",
               "sdk.cp.Actions",
@@ -22942,14 +22938,58 @@ try {
                   importNamespace("sdk.DOM").addCss(elem, "fb_invisible_flow");
                   importNamespace("sdk.DOM").remove(elem);
                   importNamespace("sdk.Content").append(elem);
-                  _this.iframeOptions.title = "";
+                  _this.$CustomerChat_updateDialogIframeOptions();
                   importNamespace("sdk.Event").fire("customerchat.load");
                   _this.$CustomerChat_setUpSubscriptions();
+                  importNamespace("ChatPluginSDKPreLoggingUtils").preLogging(
+                    "chat_plugin_sdk_dialog_iframe_create",
+                    _this.params
+                  );
                   return _this;
                 }
                 var _proto = CustomerChat.prototype;
+                _proto.$CustomerChat_updateDialogIframeOptions = function $CustomerChat_updateDialogIframeOptions() {
+                  var storage = importNamespace(
+                    "sdk.WebStorage"
+                  ).getLocalStorage();
+                  var localState = null;
+                  if (storage != null) {
+                    try {
+                      localState = storage.getItem(
+                        importNamespace("MPNLocalState").LOCAL_STATE_KEY
+                      );
+                    } catch (_unused) {
+                      importNamespace("Log").warn(
+                        "Failed to access localStorage"
+                      );
+                    }
+                  }
+                  if (localState != null) {
+                    ES("Object", "assign", false, this.params, {
+                      local_state: localState
+                    });
+                  }
+                  var requestTime = importDefault("performanceNow")();
+                  ES("Object", "assign", false, this.params, {
+                    request_time: requestTime
+                  });
+                  var url =
+                    importNamespace("UrlMap").resolve("www") +
+                    "/plugins/" +
+                    this.tag +
+                    ".php?";
+                  this.iframeOptions.url =
+                    url + importDefault("QueryString").encode(this.params);
+                  this.iframeOptions.title = "";
+                };
                 _proto.$CustomerChat_setUpSubscriptions = function $CustomerChat_setUpSubscriptions() {
                   var _this = this;
+                  this.subscribe("render", function subscribe_$1() {
+                    importNamespace("ChatPluginSDKPreLoggingUtils").preLogging(
+                      "chat_plugin_sdk_dialog_iframe_load",
+                      _this.params
+                    );
+                  });
                   this.subscribe("xd.mpn.storeState", function subscribe_$1(
                     message
                   ) {
@@ -23078,6 +23118,12 @@ try {
                     style: css,
                     "data-testid": "bubble_iframe",
                     onload: function onload() {
+                      importNamespace(
+                        "ChatPluginSDKPreLoggingUtils"
+                      ).preLogging(
+                        "chat_plugin_sdk_icon_iframe_load",
+                        _this2.params
+                      );
                       _this2.$CustomerChat_bubbleIFrameName = bubbleIFrameName;
                       _this2.$CustomerChat_notifyDialogIFrame();
                       _this2.$CustomerChat_checkIfIframesLoadedAndNotify();
@@ -23150,7 +23196,9 @@ try {
                       (_this$$CustomerChat_u = this
                         .$CustomerChat_unreadCountIFrame) == null
                         ? void 0
-                        : _this$$CustomerChat_u.src
+                        : _this$$CustomerChat_u.src,
+                    request_time: this.params.request_time,
+                    log_id: this.params.log_id
                   });
                 };
                 _proto.$CustomerChat_handleSetupDialogIframe = function $CustomerChat_handleSetupDialogIframe(
@@ -23234,7 +23282,10 @@ try {
                     theme_color: "string",
                     override: "string",
                     attribution_version: "string",
-                    is_loaded_by_facade: "bool"
+                    is_loaded_by_facade: "bool",
+                    current_url: "string",
+                    log_id: "string",
+                    request_time: "px"
                   };
                 };
                 _proto.$CustomerChat_postMessageToIframe = function $CustomerChat_postMessageToIframe(
@@ -24963,7 +25014,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1004514454","namespace":"FB","message":"' +
+        '","revision":"1004514913","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
