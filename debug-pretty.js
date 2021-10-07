@@ -1,4 +1,4 @@
-/*1633557184,,JIT Construction: v1004511245,en_US*/
+/*1633583635,,JIT Construction: v1004514454,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3691,7 +3691,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1004511245",
+            revision: "1004514454",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -19871,12 +19871,12 @@ try {
 
               function getEntryPointBaseStyle(
                 bottomSpacing,
-                uiPolishEnabled,
+                isLoadedByFacade,
                 shouldIconDelay
               ) {
                 return {
                   animation: _getIconAnimation(
-                    uiPolishEnabled,
+                    isLoadedByFacade,
                     shouldIconDelay
                   ),
                   background: "none",
@@ -19938,14 +19938,14 @@ try {
                 alignment,
                 bottomSpacing,
                 sideSpacing,
-                uiPolishEnabled,
+                isLoadedByFacade,
                 shouldIconDelay,
                 entryPointLabel,
                 shouldShowEntryPointCustomization
               ) {
                 var baseStyle = getEntryPointBaseStyle(
                   bottomSpacing,
-                  uiPolishEnabled,
+                  isLoadedByFacade,
                   shouldIconDelay
                 );
 
@@ -19972,7 +19972,7 @@ try {
                 alignment,
                 bottomSpacing,
                 sideSpacing,
-                uiPolishEnabled,
+                isLoadedByFacade,
                 shouldIconDelay,
                 label,
                 shouldShowEntryPointCustomization
@@ -19985,7 +19985,7 @@ try {
                     alignment,
                     bottomSpacing,
                     sideSpacing,
-                    uiPolishEnabled,
+                    isLoadedByFacade,
                     shouldIconDelay,
                     label,
                     shouldShowEntryPointCustomization
@@ -19993,14 +19993,15 @@ try {
                 );
               }
 
-              function _getIconAnimation(uiPolishEnabled, shouldIconDelay) {
+              function _getIconAnimation(isLoadedByFacade, shouldIconDelay) {
+                if (Boolean(isLoadedByFacade)) {
+                  return null;
+                }
                 if (Boolean(shouldIconDelay)) {
                   return "slideInFromBottomDelay 3s ease-out";
-                }
-                if (Boolean(uiPolishEnabled)) {
+                } else {
                   return "slideInFromBottom 0.3s ease-out";
                 }
-                return null;
               }
 
               function getUnreadCountStyleText(
@@ -21742,31 +21743,6 @@ try {
                   var bounceInAnimationName = _getBounceInAnimation();
                   var bounceOutAnimationName = _getBounceOutAnimation();
 
-                  var hideDialog = function hideDialog(_) {
-                    if (_isHidden) {
-                      importNamespace("sdk.DOM").setStyle(
-                        dialogIframe,
-                        "maxHeight",
-                        "0"
-                      );
-                      importNamespace("sdk.DOM").setStyle(
-                        dialogIframe,
-                        "minHeight",
-                        "0"
-                      );
-                      ANIMATION_EVENTS.forEach(
-                        function ANIMATION_EVENTS_forEach_$0(event) {
-                          importNamespace("DOMEventListener").remove(
-                            dialogIframe,
-                            event,
-                            hideDialog
-                          );
-                        }
-                      );
-                      _visibilityGuard = false;
-                    }
-                  };
-
                   bounceInAnimationName != null &&
                     importNamespace("sdk.DOM").removeCss(
                       dialogIframe,
@@ -21777,9 +21753,40 @@ try {
                       dialogIframe,
                       bounceOutAnimationName
                     );
+
+                  var animationEventListeners = {};
                   ANIMATION_EVENTS.forEach(function ANIMATION_EVENTS_forEach_$0(
                     event
                   ) {
+                    var hideDialog = function hideDialog(_) {
+                      if (_isHidden) {
+                        importNamespace("sdk.DOM").setStyle(
+                          dialogIframe,
+                          "maxHeight",
+                          "0"
+                        );
+                        importNamespace("sdk.DOM").setStyle(
+                          dialogIframe,
+                          "minHeight",
+                          "0"
+                        );
+                        ANIMATION_EVENTS.forEach(
+                          function ANIMATION_EVENTS_forEach_$0(event) {
+                            if (animationEventListeners[event]) {
+                              importNamespace("DOMEventListener").remove(
+                                dialogIframe,
+                                event,
+                                animationEventListeners[event]
+                              );
+
+                              delete animationEventListeners[event];
+                            }
+                          }
+                        );
+                        _visibilityGuard = false;
+                      }
+                    };
+                    animationEventListeners[event] = hideDialog;
                     importNamespace("DOMEventListener").add(
                       dialogIframe,
                       event,
@@ -23386,33 +23393,6 @@ try {
                     var bounceOutAnimationName = importNamespace(
                       "sdk.cp.Animation"
                     ).iframeBounceOutAnimation(this.$CustomerChat_bubbleIFrame);
-                    var hideDialog = function hideDialog(_) {
-                      if (_this4.$CustomerChat_isDialogHidden) {
-                        importNamespace("sdk.DOM").setStyle(
-                          dialogIframe,
-                          "maxHeight",
-                          "0"
-                        );
-                        importNamespace("sdk.DOM").setStyle(
-                          dialogIframe,
-                          "minHeight",
-                          "0"
-                        );
-                        importDefault(
-                          "sdk.cp.Constants"
-                        ).animationEvents.forEach(
-                          function MPNConstants_animationEvents_forEach_$0(
-                            event
-                          ) {
-                            importNamespace("DOMEventListener").remove(
-                              dialogIframe,
-                              event,
-                              hideDialog
-                            );
-                          }
-                        );
-                      }
-                    };
                     bounceInAnimationName != null &&
                       importNamespace("sdk.DOM").removeCss(
                         dialogIframe,
@@ -23423,8 +23403,40 @@ try {
                         dialogIframe,
                         bounceOutAnimationName
                       );
+                    var animationEventListeners = {};
                     importDefault("sdk.cp.Constants").animationEvents.forEach(
                       function MPNConstants_animationEvents_forEach_$0(event) {
+                        var hideDialog = function hideDialog(_) {
+                          if (_this4.$CustomerChat_isDialogHidden) {
+                            importNamespace("sdk.DOM").setStyle(
+                              dialogIframe,
+                              "maxHeight",
+                              "0"
+                            );
+                            importNamespace("sdk.DOM").setStyle(
+                              dialogIframe,
+                              "minHeight",
+                              "0"
+                            );
+                            importDefault(
+                              "sdk.cp.Constants"
+                            ).animationEvents.forEach(
+                              function MPNConstants_animationEvents_forEach_$0(
+                                event
+                              ) {
+                                if (animationEventListeners[event]) {
+                                  importNamespace("DOMEventListener").remove(
+                                    dialogIframe,
+                                    event,
+                                    animationEventListeners[event]
+                                  );
+                                  delete animationEventListeners[event];
+                                }
+                              }
+                            );
+                          }
+                        };
+                        animationEventListeners[event] = hideDialog;
                         importNamespace("DOMEventListener").add(
                           dialogIframe,
                           event,
@@ -24951,7 +24963,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1004511245","namespace":"FB","message":"' +
+        '","revision":"1004514454","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
