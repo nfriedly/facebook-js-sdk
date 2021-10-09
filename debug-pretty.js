@@ -1,4 +1,4 @@
-/*1633668123,,JIT Construction: v1004522533,en_US*/
+/*1633746195,,JIT Construction: v1004528366,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3691,7 +3691,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1004522533",
+            revision: "1004528366",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -9463,17 +9463,6 @@ try {
             ) {
               "use strict";
 
-              function logEvent(payload) {
-                importNamespace("sdk.Impressions").log(117, {
-                  payload: babelHelpers["extends"]({}, payload, {
-                    client_funnel_version: importDefault("sdk.feature")(
-                      "oauth_funnel_logger_version",
-                      1
-                    )
-                  })
-                });
-              }
-
               var logEventName = {
                 buttonLoad: "client_login_button_load",
                 buttonClick: "client_login_click",
@@ -9482,6 +9471,7 @@ try {
                 popupHide: "client_login_popup_hide_xfoa",
                 popupShow: "client_login_popup_show_xfoa",
                 loginEnd: "client_login_end",
+                loginStart: "client_login_start",
                 loginCompleteHeartbeat: "client_login_complete_heartbeat",
                 loginStatusPopupShowXfoa: "client_login_status_popup_show_xfoa",
                 loginStatusPopupHideXfoa: "client_login_status_popup_hide_xfoa",
@@ -9491,7 +9481,7 @@ try {
                   "client_login_status_popup_error_xfoa"
               };
 
-              function logEventV2(loggerID, actionName, extraPayload) {
+              function logEvent(loggerID, actionName, extraPayload) {
                 importNamespace("sdk.Impressions").log(117, {
                   payload: babelHelpers["extends"]({}, extraPayload || {}, {
                     logger_id: loggerID,
@@ -9507,7 +9497,7 @@ try {
               function logLoginEvent(params, actionName) {
                 var cbt =
                   params && params.cbt !== undefined ? Number(params.cbt) : 0;
-                logEventV2(
+                logEvent(
                   params == null ? void 0 : params.logger_id,
                   actionName,
                   {
@@ -9518,13 +9508,22 @@ try {
 
               function logPopupEvent(loggerID, actionName) {
                 if (actionName !== undefined) {
-                  logEventV2(loggerID, actionName);
+                  logEvent(loggerID, actionName);
                 }
               }
-              exports.logEvent = logEvent;
+
+              function logDisambiguationTrayEvent(error, loggerID) {
+                if (error !== undefined) {
+                  logEvent(loggerID, logEventName.loginStatusPopupErrorXfoa, {
+                    message: error
+                  });
+                }
+              }
               exports.logEventName = logEventName;
+              exports.logEvent = logEvent;
               exports.logLoginEvent = logLoginEvent;
               exports.logPopupEvent = logPopupEvent;
+              exports.logDisambiguationTrayEvent = logDisambiguationTrayEvent;
             },
             98
           );
@@ -13721,7 +13720,7 @@ try {
               "sdk.Event",
               "sdk.Extensions",
               "sdk.Frictionless",
-              "sdk.Impressions",
+              "sdk.LoggingUtils",
               "sdk.Native",
               "sdk.Popup",
               "sdk.RPC",
@@ -13910,25 +13909,17 @@ try {
                   });
                 }
 
-                var payload = {
-                  logger_id: call.params.logger_id,
-                  action: "client_login_start",
-                  client_funnel_version: require("sdk.feature")(
-                    "oauth_funnel_logger_version",
-                    1
-                  ),
-                  cbt_delta: 0
-                };
-
                 var drop_funnel_logging =
                   call.params &&
                   call.params.tp &&
                   call.params.tp !== "unspecified";
 
                 if (!call.params.plugin_prepare && !drop_funnel_logging) {
-                  require("sdk.Impressions").log(117, {
-                    payload: payload
-                  });
+                  require("sdk.LoggingUtils").logEvent(
+                    call.params.logger_id,
+                    require("sdk.LoggingUtils").logEventName.loginStart,
+                    { cbt_delta: 0 }
+                  );
                 }
 
                 return call;
@@ -25014,7 +25005,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1004522533","namespace":"FB","message":"' +
+        '","revision":"1004528366","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
