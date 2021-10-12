@@ -1,4 +1,4 @@
-/*1633752692,,JIT Construction: v1004528798,en_US*/
+/*1634021368,,JIT Construction: v1004537494,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3691,7 +3691,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1004528798",
+            revision: "1004537494",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -19113,9 +19113,9 @@ try {
             66
           );
           __d(
-            "performanceNow",
+            "performanceAbsoluteNow",
             ["performance"],
-            function $module_performanceNow(
+            function $module_performanceAbsoluteNow(
               global,
               require,
               requireDynamic,
@@ -19125,43 +19125,39 @@ try {
             ) {
               var c_performance;
 
-              var performanceNow;
+              var performanceAbsoluteNow;
 
               if (
-                (c_performance || (c_performance = require("performance"))).now
+                (c_performance || (c_performance = require("performance")))
+                  .now &&
+                (c_performance || (c_performance = require("performance")))
+                  .timing &&
+                (c_performance || (c_performance = require("performance")))
+                  .timing.navigationStart
               ) {
-                performanceNow = function performanceNow() {
+                var navigationStart = (
+                  c_performance || (c_performance = require("performance"))
+                ).timing.navigationStart;
+                performanceAbsoluteNow = function performanceAbsoluteNow() {
                   return (
-                    c_performance || (c_performance = require("performance"))
-                  ).now();
+                    (
+                      c_performance || (c_performance = require("performance"))
+                    ).now() + navigationStart
+                  );
                 };
               } else {
-                var cstart = global._cstart;
-                var initialDate = Date.now();
-                var epoch =
-                  typeof cstart === "number" && cstart < initialDate
-                    ? cstart
-                    : initialDate;
-                var last = 0;
-                performanceNow = function performanceNow() {
-                  var dateNow = Date.now();
-                  var now = dateNow - epoch;
-                  if (now < last) {
-                    epoch -= last - now;
-                    now = dateNow - epoch;
-                  }
-                  last = now;
-                  return now;
+                performanceAbsoluteNow = function performanceAbsoluteNow() {
+                  return Date.now();
                 };
               }
 
-              module.exports = performanceNow;
+              module.exports = performanceAbsoluteNow;
             },
             null
           );
           __d(
             "ChatPluginSDKPreLoggingUtils",
-            ["CORSRequest", "UrlMap", "performanceNow"],
+            ["CORSRequest", "UrlMap", "performanceAbsoluteNow"],
             function $module_ChatPluginSDKPreLoggingUtils(
               global,
               require,
@@ -19175,7 +19171,7 @@ try {
 
               function preLogging(event_name, params) {
                 var _params$request_time;
-                var request_time = importDefault("performanceNow")();
+                var request_time = importDefault("performanceAbsoluteNow")();
                 var uri =
                   importNamespace("UrlMap").resolve("www") +
                   "/plugins/customer_chat/SDK/";
@@ -20174,6 +20170,53 @@ try {
             98
           );
           __d(
+            "performanceNow",
+            ["performance"],
+            function $module_performanceNow(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              var c_performance;
+
+              var performanceNow;
+
+              if (
+                (c_performance || (c_performance = require("performance"))).now
+              ) {
+                performanceNow = function performanceNow() {
+                  return (
+                    c_performance || (c_performance = require("performance"))
+                  ).now();
+                };
+              } else {
+                var cstart = global._cstart;
+                var initialDate = Date.now();
+                var epoch =
+                  typeof cstart === "number" && cstart < initialDate
+                    ? cstart
+                    : initialDate;
+                var last = 0;
+                performanceNow = function performanceNow() {
+                  var dateNow = Date.now();
+                  var now = dateNow - epoch;
+                  if (now < last) {
+                    epoch -= last - now;
+                    now = dateNow - epoch;
+                  }
+                  last = now;
+                  return now;
+                };
+              }
+
+              module.exports = performanceNow;
+            },
+            null
+          );
+          __d(
             "nativeRequestAnimationFrame",
             [],
             function $module_nativeRequestAnimationFrame(
@@ -21004,7 +21047,7 @@ try {
               "QueryString",
               "UrlMap",
               "getFacebookOriginForTarget",
-              "performanceNow",
+              "performanceAbsoluteNow",
               "sdk.Content",
               "sdk.DOM",
               "sdk.DialogUtils",
@@ -21103,7 +21146,7 @@ try {
                     });
                   }
 
-                  var requestTime = importDefault("performanceNow")();
+                  var requestTime = importDefault("performanceAbsoluteNow")();
 
                   var logId = importDefault("uuid")();
                   var currentUrl = window.location.href;
@@ -22814,7 +22857,7 @@ try {
               "QueryString",
               "UrlMap",
               "getFacebookOriginForTarget",
-              "performanceNow",
+              "performanceAbsoluteNow",
               "sdk.Content",
               "sdk.DOM",
               "sdk.DialogUtils",
@@ -22960,7 +23003,7 @@ try {
                       local_state: localState
                     });
                   }
-                  var requestTime = importDefault("performanceNow")();
+                  var requestTime = importDefault("performanceAbsoluteNow")();
                   ES("Object", "assign", false, this.params, {
                     request_time: requestTime
                   });
@@ -25005,7 +25048,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1004528798","namespace":"FB","message":"' +
+        '","revision":"1004537494","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
