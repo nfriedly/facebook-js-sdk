@@ -1,4 +1,4 @@
-/*1634274778,,JIT Construction: v1004560766,en_US*/
+/*1634346815,,JIT Construction: v1004566606,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3691,7 +3691,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1004560766",
+            revision: "1004566606",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -19090,6 +19090,25 @@ try {
             null
           );
           __d(
+            "ChatPluginEntryPointIconSizeEnum",
+            [],
+            function $module_ChatPluginEntryPointIconSizeEnum(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              var _default = Object.freeze({
+                STANDARD: "standard",
+                COMPACT: "compact"
+              });
+              exports["default"] = _default;
+            },
+            66
+          );
+          __d(
             "performance",
             [],
             function $module_performance(
@@ -19757,8 +19776,10 @@ try {
               module,
               exports
             ) {
-              var LABELED_ENTRY_POINT_HEIGHT = 44;
-              var ICON_ENTRY_POINT_HEIGHT = 60;
+              var LABELED_ENTRY_POINT_STANDARD_HEIGHT = 44;
+              var LABELED_ENTRY_POINT_COMPACT_HEIGHT = 36;
+              var ICON_ENTRY_POINT_STANDARD_HEIGHT = 60;
+              var ICON_ENTRY_POINT_COMPACT_HEIGHT = 44;
               var ENTRY_POINT_MARGIN = 12;
 
               function getIsITPUserAgent() {
@@ -19823,29 +19844,43 @@ try {
 
               function getEntryPointIconStyle(
                 shouldShowEntryPointCustomization,
-                entryPointLabel
+                entryPointLabel,
+                entryPointSize
               ) {
                 if (shouldShowEntryPointCustomization) {
                   if (entryPointLabel !== "none") {
+                    var height =
+                      entryPointSize === "compact"
+                        ? LABELED_ENTRY_POINT_COMPACT_HEIGHT
+                        : LABELED_ENTRY_POINT_STANDARD_HEIGHT;
                     return {
                       borderRadius: "60px",
-                      height: LABELED_ENTRY_POINT_HEIGHT + "px",
+                      height: height + "px",
                       width: "auto"
                     };
                   } else {
+                    var size =
+                      entryPointSize === "compact"
+                        ? ICON_ENTRY_POINT_COMPACT_HEIGHT
+                        : ICON_ENTRY_POINT_STANDARD_HEIGHT;
                     return {
                       borderRadius: "60px",
                       boxShadow: "0 4px 12px 0 rgba(0, 0, 0, 0.15)",
-                      height: ICON_ENTRY_POINT_HEIGHT + "px",
-                      width: "60px"
+                      height: size + "px",
+                      width: size + "px"
                     };
                   }
                 }
+                var iconSize =
+                  entryPointSize === "compact"
+                    ? ICON_ENTRY_POINT_COMPACT_HEIGHT
+                    : ICON_ENTRY_POINT_STANDARD_HEIGHT;
+
                 return {
                   borderRadius: "30px",
                   boxShadow: "0 4px 12px 0 rgba(0, 0, 0, 0.15)",
-                  height: ICON_ENTRY_POINT_HEIGHT + "px",
-                  width: "60px"
+                  height: iconSize + "px",
+                  width: iconSize + "px"
                 };
               }
 
@@ -19871,7 +19906,8 @@ try {
                 isLoadedByFacade,
                 shouldIconDelay,
                 entryPointLabel,
-                shouldShowEntryPointCustomization
+                shouldShowEntryPointCustomization,
+                entryPointSize
               ) {
                 var baseStyle = getEntryPointBaseStyle(
                   bottomSpacing,
@@ -19881,7 +19917,8 @@ try {
 
                 var iconStyle = getEntryPointIconStyle(
                   shouldShowEntryPointCustomization,
-                  entryPointLabel
+                  entryPointLabel,
+                  entryPointSize
                 );
 
                 var alignmentStyle = getEntryPointAlignmentStyle(
@@ -19905,7 +19942,8 @@ try {
                 isLoadedByFacade,
                 shouldIconDelay,
                 label,
-                shouldShowEntryPointCustomization
+                shouldShowEntryPointCustomization,
+                entryPointSize
               ) {
                 return ES(
                   "JSON",
@@ -19918,7 +19956,8 @@ try {
                     isLoadedByFacade,
                     shouldIconDelay,
                     label,
-                    shouldShowEntryPointCustomization
+                    shouldShowEntryPointCustomization,
+                    entryPointSize
                   )
                 );
               }
@@ -19939,17 +19978,31 @@ try {
                 bottomSpacing,
                 sideSpacing,
                 entryPointLabel,
-                shouldShowEntryPointCustomization
+                shouldShowEntryPointCustomization,
+                entryPointSize
               ) {
                 var totalSpacingSpacing =
                   sideSpacing + (alignment == "right" ? -2 : 43);
                 var totalBottomSpacing =
-                  bottomSpacing + ICON_ENTRY_POINT_HEIGHT - 16;
+                  bottomSpacing + ICON_ENTRY_POINT_STANDARD_HEIGHT - 16;
                 if (shouldShowEntryPointCustomization) {
+                  totalBottomSpacing = bottomSpacing - 16;
+                  if (entryPointLabel === "none") {
+                    if (entryPointSize === "compact") {
+                      totalBottomSpacing += ICON_ENTRY_POINT_COMPACT_HEIGHT;
+                    } else {
+                      totalBottomSpacing += ICON_ENTRY_POINT_STANDARD_HEIGHT;
+                    }
+                  } else {
+                    if (entryPointSize === "compact") {
+                      totalBottomSpacing += LABELED_ENTRY_POINT_COMPACT_HEIGHT;
+                    } else {
+                      totalBottomSpacing += LABELED_ENTRY_POINT_STANDARD_HEIGHT;
+                    }
+                  }
+                } else if (entryPointSize === "compact") {
                   totalBottomSpacing =
-                    entryPointLabel === "none"
-                      ? bottomSpacing + ICON_ENTRY_POINT_HEIGHT - 16
-                      : bottomSpacing + LABELED_ENTRY_POINT_HEIGHT - 16;
+                    bottomSpacing + ICON_ENTRY_POINT_COMPACT_HEIGHT - 16;
                 }
                 var styleTextBase = {
                   bottom: totalBottomSpacing.toString() + "px",
@@ -19995,16 +20048,28 @@ try {
                 sideSpacing,
                 isDialogVisible,
                 entryPointLabel,
-                shouldShowEntryPointCustomization
+                shouldShowEntryPointCustomization,
+                entryPointSize
               ) {
                 var totalSideSpacing = sideSpacing - ENTRY_POINT_MARGIN;
 
-                var entryPointHeight = ICON_ENTRY_POINT_HEIGHT;
+                var entryPointHeight = ICON_ENTRY_POINT_STANDARD_HEIGHT;
                 if (shouldShowEntryPointCustomization) {
-                  entryPointHeight =
-                    entryPointLabel === "none"
-                      ? ICON_ENTRY_POINT_HEIGHT
-                      : LABELED_ENTRY_POINT_HEIGHT;
+                  if (entryPointLabel === "none") {
+                    if (entryPointSize === "compact") {
+                      entryPointHeight = ICON_ENTRY_POINT_COMPACT_HEIGHT;
+                    } else {
+                      entryPointHeight = ICON_ENTRY_POINT_STANDARD_HEIGHT;
+                    }
+                  } else {
+                    if (entryPointSize === "compact") {
+                      entryPointHeight = LABELED_ENTRY_POINT_COMPACT_HEIGHT;
+                    } else {
+                      entryPointHeight = LABELED_ENTRY_POINT_STANDARD_HEIGHT;
+                    }
+                  }
+                } else if (entryPointSize === "compact") {
+                  entryPointHeight = ICON_ENTRY_POINT_COMPACT_HEIGHT;
                 }
                 var bottomSpacingForDialog = entryPointHeight + bottomSpacing;
                 var bottomSpacingString =
@@ -20053,16 +20118,30 @@ try {
                 sideSpacing,
                 shouldIconDelay,
                 entryPointLabel,
-                shouldShowEntryPointCustomization
+                shouldShowEntryPointCustomization,
+                entryPointSize
               ) {
                 var totalSideSpacing = sideSpacing - ENTRY_POINT_MARGIN;
                 var entryPointHeight =
-                  ICON_ENTRY_POINT_HEIGHT + ENTRY_POINT_MARGIN;
+                  ICON_ENTRY_POINT_STANDARD_HEIGHT + ENTRY_POINT_MARGIN;
                 if (shouldShowEntryPointCustomization) {
+                  entryPointHeight = ENTRY_POINT_MARGIN;
+                  if (entryPointLabel === "none") {
+                    if (entryPointSize === "compact") {
+                      entryPointHeight += ICON_ENTRY_POINT_COMPACT_HEIGHT;
+                    } else {
+                      entryPointHeight += ICON_ENTRY_POINT_STANDARD_HEIGHT;
+                    }
+                  } else {
+                    if (entryPointSize === "compact") {
+                      entryPointHeight += LABELED_ENTRY_POINT_COMPACT_HEIGHT;
+                    } else {
+                      entryPointHeight += LABELED_ENTRY_POINT_STANDARD_HEIGHT;
+                    }
+                  }
+                } else if (entryPointSize === "compact") {
                   entryPointHeight =
-                    entryPointLabel === "none"
-                      ? ICON_ENTRY_POINT_HEIGHT + ENTRY_POINT_MARGIN
-                      : LABELED_ENTRY_POINT_HEIGHT + ENTRY_POINT_MARGIN;
+                    ICON_ENTRY_POINT_COMPACT_HEIGHT + ENTRY_POINT_MARGIN;
                 }
                 var bottomSpacingValue = entryPointHeight + bottomSpacing;
                 var bottomSpacingString =
@@ -20094,15 +20173,21 @@ try {
                 shouldIconDelay,
                 bottomSpacing,
                 entryPointLabel,
-                shouldShowEntryPointCustomization
+                shouldShowEntryPointCustomization,
+                entryPointSize
               ) {
+                var iconHeight =
+                  entryPointSize === "compact"
+                    ? ICON_ENTRY_POINT_COMPACT_HEIGHT
+                    : ICON_ENTRY_POINT_STANDARD_HEIGHT;
+
                 var styleText =
                   "position: fixed; z-index: 2147483646; box-shadow: none; border-radius: 18px 0px 18px 18px; bottom: 0px; right: 0px; width: calc(80% - 40px); bottom: 24px;";
                 if (height != null && typeof bottomSpacing == "number") {
                   styleText += "height: " + height + "px; ";
 
                   var bottomSpacingValue = bottomSpacing;
-                  if (height < ICON_ENTRY_POINT_HEIGHT) {
+                  if (height < iconHeight) {
                     bottomSpacingValue = bottomSpacing + 12;
                   }
                   styleText += "bottom: " + bottomSpacingValue + "px;";
@@ -20121,10 +20206,14 @@ try {
                 if (shouldShowEntryPointCustomization) {
                   if (
                     entryPointLabel !== "none" &&
-                    typeof bottomSpacing == "number"
+                    typeof bottomSpacing === "number"
                   ) {
+                    var labeledHeight =
+                      entryPointSize === "compact"
+                        ? LABELED_ENTRY_POINT_COMPACT_HEIGHT
+                        : LABELED_ENTRY_POINT_STANDARD_HEIGHT;
                     var _bottomSpacingValue =
-                      bottomSpacing + LABELED_ENTRY_POINT_HEIGHT + 12;
+                      bottomSpacing + labeledHeight + 12;
                     styleText += "bottom: " + _bottomSpacingValue + "px;";
 
                     switch (alignment) {
@@ -20153,6 +20242,10 @@ try {
                   return greetingText;
                 }
               }
+              exports.LABELED_ENTRY_POINT_STANDARD_HEIGHT = LABELED_ENTRY_POINT_STANDARD_HEIGHT;
+              exports.LABELED_ENTRY_POINT_COMPACT_HEIGHT = LABELED_ENTRY_POINT_COMPACT_HEIGHT;
+              exports.ICON_ENTRY_POINT_STANDARD_HEIGHT = ICON_ENTRY_POINT_STANDARD_HEIGHT;
+              exports.ICON_ENTRY_POINT_COMPACT_HEIGHT = ICON_ENTRY_POINT_COMPACT_HEIGHT;
               exports.getIsITPUserAgent = getIsITPUserAgent;
               exports.getIsSafari12OrAbove = getIsSafari12OrAbove;
               exports.getMobileStyleText = getMobileStyleText;
@@ -20168,6 +20261,36 @@ try {
               exports.getSanitizedGreetingText = getSanitizedGreetingText;
             },
             98
+          );
+          __d(
+            "getJSEnumSafe",
+            [],
+            function $module_getJSEnumSafe(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              "use strict";
+
+              function getJSEnumSafe(map, key) {
+                if (key == null) {
+                  return null;
+                }
+
+                if (!Object.prototype.hasOwnProperty.call(map, key)) {
+                  return null;
+                }
+
+                var safeKey = key;
+
+                return map[safeKey];
+              }
+              exports["default"] = getJSEnumSafe;
+            },
+            66
           );
           __d(
             "performanceNow",
@@ -20536,11 +20659,13 @@ try {
             [
               "$InternalEnum",
               "CORSRequest",
+              "ChatPluginEntryPointIconSizeEnum",
               "ChatPluginSDKPreLoggingUtils",
               "DOMPlugin",
               "LiveChatPluginUtils",
               "Log",
               "UrlMap",
+              "getJSEnumSafe",
               "performanceNow",
               "sdk.Content",
               "sdk.DOM",
@@ -20612,6 +20737,8 @@ try {
                   _this.$ChatDOMFacade_spinnerShown = false;
                   _this.$ChatDOMFacade_willShowDialog = false;
 
+                  _this.$ChatDOMFacade_entryPointSize = "standard";
+
                   _this.shadowCss = ["css:fb.shadow.css.chatdom"];
 
                   _this.$ChatDOMFacade_initTime = importDefault(
@@ -20651,6 +20778,7 @@ try {
                     "get",
                     this.params,
                     function CORSRequest_execute_$3(data) {
+                      var _getJSEnumSafe;
                       var endTime = importDefault("performanceNow")();
                       importNamespace("Log").info(
                         "facadeperf: CORS request completed in %sms.",
@@ -20669,6 +20797,16 @@ try {
                       var bottomSpacing = data.bottom_spacing;
                       var sideSpacing = data.side_spacing;
                       var themeColor = data.theme_color;
+                      var entryPointSize =
+                        data.entry_point_size &&
+                        data.entry_point_size.toUpperCase();
+                      _this.$ChatDOMFacade_entryPointSize =
+                        (_getJSEnumSafe = importDefault("getJSEnumSafe")(
+                          importDefault("ChatPluginEntryPointIconSizeEnum"),
+                          entryPointSize
+                        )) != null
+                          ? _getJSEnumSafe
+                          : "standard";
 
                       var css = importNamespace(
                         "LiveChatPluginUtils"
@@ -20679,7 +20817,8 @@ try {
                         false,
                         true,
                         undefined,
-                        false
+                        false,
+                        _this.$ChatDOMFacade_entryPointSize
                       );
 
                       ES(
@@ -20722,9 +20861,20 @@ try {
                     return;
                   }
 
+                  var iconSize =
+                    this.$ChatDOMFacade_entryPointSize === "compact"
+                      ? importNamespace("LiveChatPluginUtils")
+                          .ICON_ENTRY_POINT_COMPACT_HEIGHT
+                      : importNamespace("LiveChatPluginUtils")
+                          .ICON_ENTRY_POINT_STANDARD_HEIGHT;
+
                   importNamespace("sdk.DOM").html(
                     this.$ChatDOMFacade_container,
-                    '\n        <svg class="spinning" x="0" y="0" width="60" height="60" cursor="pointer">\n          <circle class="path" cx="30" cy="30" r="15" fill="none" stroke-width="4"></circle>\n        </svg>\n      '
+                    '\n        <svg class="spinning" x="0" y="0" width="' +
+                      iconSize +
+                      '" height="' +
+                      iconSize +
+                      '" viewbox="0 0 60 60" cursor="pointer">\n          <circle class="path" cx="30" cy="30" r="15" fill="none" stroke-width="4"></circle>\n        </svg>\n      '
                   );
 
                   this.$ChatDOMFacade_spinnerShown = true;
@@ -25047,7 +25197,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1004560766","namespace":"FB","message":"' +
+        '","revision":"1004566606","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
