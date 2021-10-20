@@ -1,4 +1,4 @@
-/*1634676175,,JIT Construction: v1004579740,en_US*/
+/*1634704926,,JIT Construction: v1004583510,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3691,7 +3691,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1004579740",
+            revision: "1004583510",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -19090,9 +19090,9 @@ try {
             null
           );
           __d(
-            "ChatPluginEntryPointIconSizeEnum",
+            "ChatPluginEntryPointSizeEnum",
             [],
-            function $module_ChatPluginEntryPointIconSizeEnum(
+            function $module_ChatPluginEntryPointSizeEnum(
               global,
               require,
               requireDynamic,
@@ -20659,7 +20659,7 @@ try {
             [
               "$InternalEnum",
               "CORSRequest",
-              "ChatPluginEntryPointIconSizeEnum",
+              "ChatPluginEntryPointSizeEnum",
               "ChatPluginSDKPreLoggingUtils",
               "DOMPlugin",
               "LiveChatPluginUtils",
@@ -20802,7 +20802,7 @@ try {
                         data.entry_point_size.toUpperCase();
                       _this.$ChatDOMFacade_entryPointSize =
                         (_getJSEnumSafe = importDefault("getJSEnumSafe")(
-                          importDefault("ChatPluginEntryPointIconSizeEnum"),
+                          importDefault("ChatPluginEntryPointSizeEnum"),
                           entryPointSize
                         )) != null
                           ? _getJSEnumSafe
@@ -25197,7 +25197,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1004579740","namespace":"FB","message":"' +
+        '","revision":"1004583510","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
