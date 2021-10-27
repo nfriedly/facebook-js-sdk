@@ -1,4 +1,4 @@
-/*1634704926,,JIT Construction: v1004583510,en_US*/
+/*1635297247,,JIT Construction: v1004622242,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3691,7 +3691,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1004583510",
+            revision: "1004622242",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -19137,42 +19137,43 @@ try {
             function $module_performanceAbsoluteNow(
               global,
               require,
-              requireDynamic,
+              importDefault,
+              importNamespace,
               requireLazy,
               module,
               exports
             ) {
-              var c_performance;
-
               var performanceAbsoluteNow;
 
+              var fallback = function fallback() {
+                return Date.now();
+              };
+
+              function setFallback(fn) {
+                fallback = fn;
+              }
+
               if (
-                (c_performance || (c_performance = require("performance")))
-                  .now &&
-                (c_performance || (c_performance = require("performance")))
-                  .timing &&
-                (c_performance || (c_performance = require("performance")))
-                  .timing.navigationStart
+                importDefault("performance").now &&
+                importDefault("performance").timing &&
+                importDefault("performance").timing.navigationStart
               ) {
-                var navigationStart = (
-                  c_performance || (c_performance = require("performance"))
-                ).timing.navigationStart;
+                var navigationStart = importDefault("performance").timing
+                  .navigationStart;
                 performanceAbsoluteNow = function performanceAbsoluteNow() {
-                  return (
-                    (
-                      c_performance || (c_performance = require("performance"))
-                    ).now() + navigationStart
-                  );
+                  return importDefault("performance").now() + navigationStart;
                 };
               } else {
                 performanceAbsoluteNow = function performanceAbsoluteNow() {
-                  return Date.now();
+                  return fallback();
                 };
               }
 
-              module.exports = performanceAbsoluteNow;
+              performanceAbsoluteNow.setFallback = setFallback;
+              var _default = performanceAbsoluteNow;
+              exports["default"] = _default;
             },
-            null
+            98
           );
           __d(
             "ChatPluginSDKPreLoggingUtils",
@@ -25197,7 +25198,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1004583510","namespace":"FB","message":"' +
+        '","revision":"1004622242","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
