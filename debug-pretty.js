@@ -1,4 +1,4 @@
-/*1635297247,,JIT Construction: v1004622242,en_US*/
+/*1635391406,,JIT Construction: v1004630656,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3691,7 +3691,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1004622242",
+            revision: "1004630656",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -19189,8 +19189,11 @@ try {
             ) {
               "use strict";
 
-              function preLogging(event_name, params) {
+              function preLogging(event_name, params, calculate_loading_time) {
                 var _params$request_time;
+                if (calculate_loading_time === void 0) {
+                  calculate_loading_time = true;
+                }
                 var request_time = importDefault("performanceAbsoluteNow")();
                 var uri =
                   importNamespace("UrlMap").resolve("www") +
@@ -19200,10 +19203,7 @@ try {
                     ? _params$request_time
                     : undefined;
                 var loading_time = 0;
-                if (
-                  typeof prev_time === "number" &&
-                  event_name !== "chat_plugin_sdk_dialog_iframe_create"
-                ) {
+                if (typeof prev_time === "number" && calculate_loading_time) {
                   loading_time = request_time - prev_time;
                 }
                 params.request_time = request_time;
@@ -20667,7 +20667,7 @@ try {
               "Log",
               "UrlMap",
               "getJSEnumSafe",
-              "performanceNow",
+              "performanceAbsoluteNow",
               "sdk.Content",
               "sdk.DOM",
               "sdk.IdleCallback",
@@ -20711,7 +20711,7 @@ try {
                       is_loaded_by_facade: "bool"
                     }) || this;
 
-                  var requestTime = importDefault("performanceNow")();
+                  var requestTime = importDefault("performanceAbsoluteNow")();
 
                   var logId = importDefault("uuid")();
                   var currentUrl = window.location.href;
@@ -20724,7 +20724,8 @@ try {
 
                   importNamespace("ChatPluginSDKPreLoggingUtils").preLogging(
                     "chat_plugin_sdk_facade_create",
-                    _this.params
+                    _this.params,
+                    false
                   );
 
                   importNamespace("sdk.DOM").remove(element);
@@ -20743,7 +20744,7 @@ try {
                   _this.shadowCss = ["css:fb.shadow.css.chatdom"];
 
                   _this.$ChatDOMFacade_initTime = importDefault(
-                    "performanceNow"
+                    "performanceAbsoluteNow"
                   )();
                   importNamespace("Log").info(
                     "facadeperf: Started browser idle loader."
@@ -20756,7 +20757,7 @@ try {
                       8000
                     ),
                     function() {
-                      var endTime = importDefault("performanceNow")();
+                      var endTime = importDefault("performanceAbsoluteNow")();
                       importNamespace("Log").info(
                         "facadeperf: Idle callback starts full load in %sms.",
                         endTime - _this.$ChatDOMFacade_initTime
@@ -20780,7 +20781,7 @@ try {
                     this.params,
                     function CORSRequest_execute_$3(data) {
                       var _getJSEnumSafe;
-                      var endTime = importDefault("performanceNow")();
+                      var endTime = importDefault("performanceAbsoluteNow")();
                       importNamespace("Log").info(
                         "facadeperf: CORS request completed in %sms.",
                         endTime - _this.$ChatDOMFacade_initTime
@@ -21271,7 +21272,8 @@ try {
                   importNamespace("ChatPluginSDKPreLoggingUtils").preLogging(
                     "chat_plugin_sdk_dialog_iframe_create",
 
-                    this._params
+                    this._params,
+                    false
                   );
                 },
 
@@ -23127,7 +23129,8 @@ try {
                   _this.$CustomerChat_setUpSubscriptions();
                   importNamespace("ChatPluginSDKPreLoggingUtils").preLogging(
                     "chat_plugin_sdk_dialog_iframe_create",
-                    _this.params
+                    _this.params,
+                    false
                   );
                   return _this;
                 }
@@ -25198,7 +25201,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1004622242","namespace":"FB","message":"' +
+        '","revision":"1004630656","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
