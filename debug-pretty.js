@@ -1,4 +1,4 @@
-/*1635882211,,JIT Construction: v1004659638,en_US*/
+/*1635981234,,JIT Construction: v1004668710,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3691,7 +3691,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1004659638",
+            revision: "1004668710",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -12716,62 +12716,6 @@ try {
             null
           );
           __d(
-            "justknobx",
-            ["invariant"],
-            function $module_justknobx(
-              global,
-              require,
-              importDefault,
-              importNamespace,
-              requireLazy,
-              module,
-              exports,
-              invariant
-            ) {
-              "use strict";
-
-              var _map = {};
-
-              var justknobx = {
-                getBool: function getBool(_name) {
-                  false ||
-                    invariant(0, "justknobx(...): Invalid transformation");
-                },
-
-                getInt: function getInt(_name) {
-                  false ||
-                    invariant(0, "justknobx(...): Invalid transformation");
-                },
-
-                _: function _(identifier) {
-                  var serverDatum = _map[identifier];
-
-                  serverDatum != null ||
-                    invariant(
-                      0,
-                      'justknobx(...): Unknown knob "%s"',
-                      identifier
-                    );
-
-                  return serverDatum.r;
-                },
-                add: function add(newMap, stats) {
-                  for (var _key in newMap) {
-                    stats && stats.entry++;
-                    if (!(_key in _map)) {
-                      _map[_key] = newMap[_key];
-                    } else {
-                      stats && stats.dup_entry++;
-                    }
-                  }
-                }
-              };
-              var _default = justknobx;
-              exports["default"] = _default;
-            },
-            98
-          );
-          __d(
             "resolveURI",
             [],
             function $module_resolveURI(
@@ -13768,7 +13712,6 @@ try {
               "flattenObject",
               "guid",
               "insertIframe",
-              "justknobx",
               "resolveURI",
               "sdk.Auth",
               "sdk.Content",
@@ -13794,8 +13737,7 @@ try {
             function $module_sdk_UIServer(
               global,
               require,
-              importDefault,
-              importNamespace,
+              requireDynamic,
               requireLazy,
               module,
               exports
@@ -14039,14 +13981,8 @@ try {
                       if (
                         require("sdk.Frictionless").isAllowed(call.params.to)
                       ) {
-                        var killswitch = importDefault("justknobx")._("221");
-                        if (killswitch === true) {
-                          call.params.display = "popup";
-                          call.params.in_iframe = false;
-                        } else {
-                          call.params.display = "iframe";
-                          call.params.in_iframe = true;
-                        }
+                        call.params.display = "iframe";
+                        call.params.in_iframe = true;
 
                         call.hideLoader = true;
                       }
@@ -15038,7 +14974,7 @@ try {
               require("sdk.RPC").stub("showDialog");
               module.exports = UIServer;
             },
-            34
+            null
           );
           __d(
             "sdk.ui",
@@ -25265,7 +25201,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1004659638","namespace":"FB","message":"' +
+        '","revision":"1004668710","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
