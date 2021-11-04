@@ -1,4 +1,4 @@
-/*1635988455,,JIT Construction: v1004670543,en_US*/
+/*1635999220,,JIT Construction: v1004672442,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3691,7 +3691,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1004670543",
+            revision: "1004672442",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -20050,7 +20050,8 @@ try {
                 isDialogVisible,
                 entryPointLabel,
                 shouldShowEntryPointCustomization,
-                entryPointSize
+                entryPointSize,
+                windowSize
               ) {
                 var totalSideSpacing = sideSpacing - ENTRY_POINT_MARGIN;
 
@@ -20075,10 +20076,17 @@ try {
                 var bottomSpacingForDialog = entryPointHeight + bottomSpacing;
                 var bottomSpacingString =
                   " bottom: " + bottomSpacingForDialog.toString() + "px;";
+
                 var styleTextBase =
-                  "padding: 0; position: fixed; z-index: 2147483646; border-radius: 16px; top: auto; width: 399px; background: none; minHeight: 300px;" +
+                  "padding: 0; position: fixed; z-index: 2147483646; border-radius: 16px; top: auto; background: none; minHeight: 300px;";
+                var styleTextSizeStandard = "width: 399px; ";
+                var styleTextSizeCompact = "width: 319px; ";
+                var styleText =
+                  (windowSize === "compact"
+                    ? styleTextSizeCompact
+                    : styleTextSizeStandard) +
+                  styleTextBase +
                   bottomSpacingString;
-                var styleText = styleTextBase;
                 if (isDialogVisible) {
                   styleText +=
                     "max-height: calc(100% - " +
@@ -25201,7 +25209,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1004670543","namespace":"FB","message":"' +
+        '","revision":"1004672442","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
