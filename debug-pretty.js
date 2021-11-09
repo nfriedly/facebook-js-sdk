@@ -1,4 +1,4 @@
-/*1636425555,,JIT Construction: v1004693828,en_US*/
+/*1636437557,,JIT Construction: v1004695256,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3691,7 +3691,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1004693828",
+            revision: "1004695256",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -20966,6 +20966,31 @@ try {
             98
           );
           __d(
+            "MPNExplicitUserInteractions",
+            [],
+            function $module_MPNExplicitUserInteractions(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              "use strict";
+
+              var USER_INTERACTION_TIMEOUT = 300000;
+
+              function hasUserInteraction(euit) {
+                if (euit == null) {
+                  return false;
+                }
+                return Date.now() <= euit + USER_INTERACTION_TIMEOUT;
+              }
+              exports.hasUserInteraction = hasUserInteraction;
+            },
+            66
+          );
+          __d(
             "MPNConstants",
             ["$InternalEnum"],
             function $module_MPNConstants(
@@ -21207,12 +21232,253 @@ try {
             66
           );
           __d(
+            "MPNSingletonProvider",
+            [],
+            function $module_MPNSingletonProvider(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              "use strict";
+              var MPNSingletonProvider = (function() {
+                function MPNSingletonProvider(createInstanceFn) {
+                  this.$MPNSingletonProvider_instance = null;
+                  this.$MPNSingletonProvider_constructor = createInstanceFn;
+                }
+                var _proto = MPNSingletonProvider.prototype;
+                _proto.get = function get() {
+                  if (this.$MPNSingletonProvider_instance == null) {
+                    this.$MPNSingletonProvider_instance = this.$MPNSingletonProvider_constructor();
+                  }
+                  return this.$MPNSingletonProvider_instance;
+                };
+                _proto.clear = function clear() {
+                  this.$MPNSingletonProvider_instance = null;
+                };
+                return MPNSingletonProvider;
+              })();
+              exports["default"] = MPNSingletonProvider;
+            },
+            66
+          );
+          __d(
+            "sdk.cp.Constants",
+            ["MPNLocalState", "UrlMap", "sdk.Runtime"],
+            function $module_sdk_cp_Constants(
+              global,
+              require,
+              importDefault,
+              importNamespace,
+              requireLazy,
+              module,
+              exports
+            ) {
+              "use strict";
+
+              var blankIFrameURI = importDefault("sdk.Runtime").getIsVersioned()
+                ? importNamespace("UrlMap").resolve("www") +
+                  "/" +
+                  importDefault("sdk.Runtime").getVersion() +
+                  "/plugins/customer_chat/bubble"
+                : importNamespace("UrlMap").resolve("www") +
+                  "/plugins/customer_chat/bubble";
+              var _default = {
+                attribute: {
+                  alignment: "alignment",
+                  mobilePath: "mobile_path",
+                  desktopBottomSpacing: "desktop_bottom_spacing"
+                },
+
+                path: {
+                  landingPage: "/",
+                  welcomePage: "/welcome",
+                  bubble: "/bubble",
+                  itp: "/itpcontinue"
+                },
+
+                localStateKey: importNamespace("MPNLocalState").LOCAL_STATE_KEY,
+                animationEvents: [
+                  "animationend",
+                  "mozAnimationEnd",
+                  "MSAnimationEnd",
+                  "oAnimationEnd",
+                  "webkitAnimationEnd"
+                ],
+
+                blankFrameURL: blankIFrameURI
+              };
+              exports["default"] = _default;
+            },
+            98
+          );
+          __d(
+            "sdk.cp.Actions",
+            [
+              "DOMEventListener",
+              "MPNExplicitUserInteractions",
+              "MPNLocalState",
+              "MPNSingletonProvider",
+              "sdk.DOM",
+              "sdk.DocumentTitle",
+              "sdk.URI",
+              "sdk.WebStorage",
+              "sdk.cp.Constants"
+            ],
+            function $module_sdk_cp_Actions(
+              global,
+              require,
+              importDefault,
+              importNamespace,
+              requireLazy,
+              module,
+              exports
+            ) {
+              "use strict";
+              var MPNSDKActions = (function() {
+                function MPNSDKActions() {}
+                var _proto = MPNSDKActions.prototype;
+                _proto.reloadIframe = function reloadIframe(
+                  iframe,
+                  hasExplicitInteraction
+                ) {
+                  var _WebStorage$getLocalS;
+                  if (iframe == null) {
+                    return;
+                  }
+
+                  var iframeSrcUri = new (importDefault("sdk.URI"))(iframe.src);
+
+                  var queryData = iframeSrcUri.getQueryData();
+                  queryData.local_state =
+                    (_WebStorage$getLocalS = importNamespace(
+                      "sdk.WebStorage"
+                    ).getLocalStorage()) == null
+                      ? void 0
+                      : _WebStorage$getLocalS.getItem(
+                          importDefault("sdk.cp.Constants").localStateKey
+                        );
+
+                  queryData.request_time = Date.now();
+                  if (
+                    hasExplicitInteraction === "true" ||
+                    this.getExplicitUserInteractionFlag()
+                  ) {
+                    queryData.has_explicit_interaction = "1";
+                  }
+                  iframeSrcUri.setQueryData(queryData);
+                  iframe.src = iframeSrcUri.valueOf();
+                };
+                _proto.getExplicitUserInteractionFlag = function getExplicitUserInteractionFlag() {
+                  var storage = importNamespace(
+                    "sdk.WebStorage"
+                  ).getLocalStorage();
+                  var localState = null;
+                  if (storage != null) {
+                    try {
+                      localState = storage.getItem(
+                        importNamespace("MPNLocalState").LOCAL_STATE_KEY
+                      );
+                    } catch (_unused) {
+                      return false;
+                    }
+                  }
+                  if (localState != null) {
+                    try {
+                      var stateObj = ES("JSON", "parse", false, localState);
+                      return importNamespace(
+                        "MPNExplicitUserInteractions"
+                      ).hasUserInteraction(
+                        stateObj == null ? void 0 : stateObj.euit
+                      );
+                    } catch (_unused2) {
+                      return false;
+                    }
+                  }
+                  return false;
+                };
+                _proto.setDialogAppearance = function setDialogAppearance(
+                  iframe,
+                  appearance
+                ) {
+                  if (iframe == null) {
+                    return;
+                  }
+                  var height = appearance.height,
+                    boxShadow = appearance.boxShadow,
+                    margin = appearance.margin;
+                  if (boxShadow != null) {
+                    importNamespace("sdk.DOM").setStyle(
+                      iframe,
+                      "boxShadow",
+                      boxShadow
+                    );
+                  }
+                  if (margin != null) {
+                    importNamespace("sdk.DOM").setStyle(
+                      iframe,
+                      "margin",
+                      margin
+                    );
+                  }
+                  if (height != null) {
+                    importNamespace("sdk.DOM").setStyle(
+                      iframe,
+                      "height",
+                      height
+                    );
+                  }
+                };
+                _proto.blinkPageTitle = function blinkPageTitle(title) {
+                  var _this = this;
+                  if (title != null) {
+                    this.$MPNSDKActions_stopBlinking();
+                    this.$MPNSDKActions_titleBlinkToken = importNamespace(
+                      "sdk.DocumentTitle"
+                    ).blink(title);
+                    importDefault("DOMEventListener").add(
+                      window,
+                      "focus",
+                      function DOMEventListener_add_$2(_e) {
+                        _this.$MPNSDKActions_stopBlinking();
+                      }
+                    );
+                  } else if (
+                    this.$MPNSDKActions_titleBlinkToken &&
+                    title == null
+                  ) {
+                    this.$MPNSDKActions_stopBlinking();
+                  }
+                };
+                _proto.$MPNSDKActions_stopBlinking = function $MPNSDKActions_stopBlinking() {
+                  if (this.$MPNSDKActions_titleBlinkToken != null) {
+                    this.$MPNSDKActions_titleBlinkToken.stop();
+                    this.$MPNSDKActions_titleBlinkToken = null;
+                  }
+                };
+                return MPNSDKActions;
+              })();
+
+              var _provider = new (importDefault("MPNSingletonProvider"))(
+                function() {
+                  return new MPNSDKActions();
+                }
+              );
+              var _default = _provider.get();
+              exports["default"] = _default;
+            },
+            98
+          );
+          __d(
             "sdk.XFBML.CustomerChat",
             [
               "ChatPluginSDKPreLoggingUtils",
               "DOMEventListener",
               "IframePlugin",
               "Log",
+              "MPNExplicitUserInteractions",
               "MPNLocalState",
               "QueryString",
               "UrlMap",
@@ -21229,6 +21495,7 @@ try {
               "sdk.WebStorage",
               "sdk.XD",
               "sdk.XFBML.CustomerChatWrapper",
+              "sdk.cp.Actions",
               "sdk.createIframe",
               "uuid"
             ],
@@ -21315,6 +21582,25 @@ try {
                     ES("Object", "assign", false, this._params, {
                       local_state: localState
                     });
+                  }
+
+                  if (localState != null) {
+                    try {
+                      var stateObj = ES("JSON", "parse", false, localState);
+                      if (
+                        importNamespace(
+                          "MPNExplicitUserInteractions"
+                        ).hasUserInteraction(
+                          stateObj == null ? void 0 : stateObj.euit
+                        )
+                      ) {
+                        ES("Object", "assign", false, this._params, {
+                          has_explicit_interaction: 1
+                        });
+                      }
+                    } catch (_unused2) {
+                      importNamespace("Log").warn("Invalid local state");
+                    }
                   }
 
                   var requestTime = importDefault("performanceAbsoluteNow")();
@@ -21700,7 +21986,12 @@ try {
                           importNamespace("MPNLocalState").LOCAL_STATE_KEY
                         );
                   queryData.request_time = Date.now();
-                  if (message.hasExplicitInteraction) {
+                  if (
+                    message.hasExplicitInteraction ||
+                    importDefault(
+                      "sdk.cp.Actions"
+                    ).getExplicitUserInteractionFlag()
+                  ) {
                     queryData.has_explicit_interaction = "1";
                   }
                   iframeSrcUri.setQueryData(queryData);
@@ -21758,7 +22049,7 @@ try {
                         );
                       }
                     }
-                  } catch (_unused2) {
+                  } catch (_unused3) {
                     return;
                   }
                 },
@@ -22611,213 +22902,6 @@ try {
             98
           );
           __d(
-            "MPNSingletonProvider",
-            [],
-            function $module_MPNSingletonProvider(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              "use strict";
-              var MPNSingletonProvider = (function() {
-                function MPNSingletonProvider(createInstanceFn) {
-                  this.$MPNSingletonProvider_instance = null;
-                  this.$MPNSingletonProvider_constructor = createInstanceFn;
-                }
-                var _proto = MPNSingletonProvider.prototype;
-                _proto.get = function get() {
-                  if (this.$MPNSingletonProvider_instance == null) {
-                    this.$MPNSingletonProvider_instance = this.$MPNSingletonProvider_constructor();
-                  }
-                  return this.$MPNSingletonProvider_instance;
-                };
-                _proto.clear = function clear() {
-                  this.$MPNSingletonProvider_instance = null;
-                };
-                return MPNSingletonProvider;
-              })();
-              exports["default"] = MPNSingletonProvider;
-            },
-            66
-          );
-          __d(
-            "sdk.cp.Constants",
-            ["MPNLocalState", "UrlMap", "sdk.Runtime"],
-            function $module_sdk_cp_Constants(
-              global,
-              require,
-              importDefault,
-              importNamespace,
-              requireLazy,
-              module,
-              exports
-            ) {
-              "use strict";
-
-              var blankIFrameURI = importDefault("sdk.Runtime").getIsVersioned()
-                ? importNamespace("UrlMap").resolve("www") +
-                  "/" +
-                  importDefault("sdk.Runtime").getVersion() +
-                  "/plugins/customer_chat/bubble"
-                : importNamespace("UrlMap").resolve("www") +
-                  "/plugins/customer_chat/bubble";
-              var _default = {
-                attribute: {
-                  alignment: "alignment",
-                  mobilePath: "mobile_path",
-                  desktopBottomSpacing: "desktop_bottom_spacing"
-                },
-
-                path: {
-                  landingPage: "/",
-                  welcomePage: "/welcome",
-                  bubble: "/bubble",
-                  itp: "/itpcontinue"
-                },
-
-                localStateKey: importNamespace("MPNLocalState").LOCAL_STATE_KEY,
-                animationEvents: [
-                  "animationend",
-                  "mozAnimationEnd",
-                  "MSAnimationEnd",
-                  "oAnimationEnd",
-                  "webkitAnimationEnd"
-                ],
-
-                blankFrameURL: blankIFrameURI
-              };
-              exports["default"] = _default;
-            },
-            98
-          );
-          __d(
-            "sdk.cp.Actions",
-            [
-              "DOMEventListener",
-              "MPNSingletonProvider",
-              "sdk.DOM",
-              "sdk.DocumentTitle",
-              "sdk.URI",
-              "sdk.WebStorage",
-              "sdk.cp.Constants"
-            ],
-            function $module_sdk_cp_Actions(
-              global,
-              require,
-              importDefault,
-              importNamespace,
-              requireLazy,
-              module,
-              exports
-            ) {
-              "use strict";
-              var MPNSDKActions = (function() {
-                function MPNSDKActions() {}
-                var _proto = MPNSDKActions.prototype;
-                _proto.reloadIframe = function reloadIframe(
-                  iframe,
-                  hasExplicitInteraction
-                ) {
-                  var _WebStorage$getLocalS;
-                  if (iframe == null) {
-                    return;
-                  }
-
-                  var iframeSrcUri = new (importDefault("sdk.URI"))(iframe.src);
-
-                  var queryData = iframeSrcUri.getQueryData();
-                  queryData.local_state =
-                    (_WebStorage$getLocalS = importNamespace(
-                      "sdk.WebStorage"
-                    ).getLocalStorage()) == null
-                      ? void 0
-                      : _WebStorage$getLocalS.getItem(
-                          importDefault("sdk.cp.Constants").localStateKey
-                        );
-
-                  queryData.request_time = Date.now();
-                  if (hasExplicitInteraction === "true") {
-                    queryData.has_explicit_interaction = "1";
-                  }
-                  iframeSrcUri.setQueryData(queryData);
-                  iframe.src = iframeSrcUri.valueOf();
-                };
-                _proto.setDialogAppearance = function setDialogAppearance(
-                  iframe,
-                  appearance
-                ) {
-                  if (iframe == null) {
-                    return;
-                  }
-                  var height = appearance.height,
-                    boxShadow = appearance.boxShadow,
-                    margin = appearance.margin;
-                  if (boxShadow != null) {
-                    importNamespace("sdk.DOM").setStyle(
-                      iframe,
-                      "boxShadow",
-                      boxShadow
-                    );
-                  }
-                  if (margin != null) {
-                    importNamespace("sdk.DOM").setStyle(
-                      iframe,
-                      "margin",
-                      margin
-                    );
-                  }
-                  if (height != null) {
-                    importNamespace("sdk.DOM").setStyle(
-                      iframe,
-                      "height",
-                      height
-                    );
-                  }
-                };
-                _proto.blinkPageTitle = function blinkPageTitle(title) {
-                  var _this = this;
-                  if (title != null) {
-                    this.$MPNSDKActions_stopBlinking();
-                    this.$MPNSDKActions_titleBlinkToken = importNamespace(
-                      "sdk.DocumentTitle"
-                    ).blink(title);
-                    importDefault("DOMEventListener").add(
-                      window,
-                      "focus",
-                      function DOMEventListener_add_$2(_e) {
-                        _this.$MPNSDKActions_stopBlinking();
-                      }
-                    );
-                  } else if (
-                    this.$MPNSDKActions_titleBlinkToken &&
-                    title == null
-                  ) {
-                    this.$MPNSDKActions_stopBlinking();
-                  }
-                };
-                _proto.$MPNSDKActions_stopBlinking = function $MPNSDKActions_stopBlinking() {
-                  if (this.$MPNSDKActions_titleBlinkToken != null) {
-                    this.$MPNSDKActions_titleBlinkToken.stop();
-                    this.$MPNSDKActions_titleBlinkToken = null;
-                  }
-                };
-                return MPNSDKActions;
-              })();
-
-              var _provider = new (importDefault("MPNSingletonProvider"))(
-                function() {
-                  return new MPNSDKActions();
-                }
-              );
-              var _default = _provider.get();
-              exports["default"] = _default;
-            },
-            98
-          );
-          __d(
             "sdk.cp.Animation",
             ["sdk.DOM", "sdk.UA", "sdk.cp.Constants"],
             function $module_sdk_cp_Animation(
@@ -23023,6 +23107,7 @@ try {
               "DOMEventListener",
               "IframePluginClass",
               "Log",
+              "MPNExplicitUserInteractions",
               "MPNLocalState",
               "QueryString",
               "UrlMap",
@@ -23173,6 +23258,24 @@ try {
                     ES("Object", "assign", false, this.params, {
                       local_state: localState
                     });
+                  }
+                  if (localState != null) {
+                    try {
+                      var stateObj = ES("JSON", "parse", false, localState);
+                      if (
+                        importNamespace(
+                          "MPNExplicitUserInteractions"
+                        ).hasUserInteraction(
+                          stateObj == null ? void 0 : stateObj.euit
+                        )
+                      ) {
+                        ES("Object", "assign", false, this.params, {
+                          has_explicit_interaction: 1
+                        });
+                      }
+                    } catch (_unused2) {
+                      importNamespace("Log").warn("Invalid local state");
+                    }
                   }
                   var requestTime = importDefault("performanceAbsoluteNow")();
                   ES("Object", "assign", false, this.params, {
@@ -25219,7 +25322,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1004693828","namespace":"FB","message":"' +
+        '","revision":"1004695256","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
