@@ -1,4 +1,4 @@
-/*1636660758,,JIT Construction: v1004713684,en_US*/
+/*1636666152,,JIT Construction: v1004715532,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3691,7 +3691,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1004713684",
+            revision: "1004715532",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -7884,56 +7884,9 @@ try {
             98
           );
           __d(
-            "flattenPHPQueryData",
-            ["invariant"],
-            function $module_flattenPHPQueryData(
-              global,
-              require,
-              importDefault,
-              importNamespace,
-              requireLazy,
-              module,
-              exports,
-              invariant
-            ) {
-              function flattenPHPQueryData(obj) {
-                return _flattenPHPQueryData(obj, "", {});
-              }
-
-              function _flattenPHPQueryData(obj, name, componentsObject) {
-                if (obj === null || obj === undefined) {
-                  componentsObject[name] = undefined;
-                } else if (typeof obj === "object") {
-                  typeof obj.appendChild !== "function" ||
-                    invariant(0, "Trying to serialize a DOM node. Bad idea.");
-
-                  for (var k in obj) {
-                    if (
-                      k !== "$$typeof" &&
-                      Object.prototype.hasOwnProperty.call(obj, k) &&
-                      obj[k] !== undefined
-                    ) {
-                      _flattenPHPQueryData(
-                        obj[k],
-                        name ? name + "[" + k + "]" : k,
-                        componentsObject
-                      );
-                    }
-                  }
-                } else {
-                  componentsObject[name] = obj;
-                }
-
-                return componentsObject;
-              }
-              exports["default"] = flattenPHPQueryData;
-            },
-            98
-          );
-          __d(
-            "PHPQuerySerializer",
-            ["flattenPHPQueryData"],
-            function $module_PHPQuerySerializer(
+            "BaseDeserializePHPQueryData",
+            [],
+            function $module_BaseDeserializePHPQueryData(
               global,
               require,
               requireDynamic,
@@ -7941,39 +7894,6 @@ try {
               module,
               exports
             ) {
-              function serialize(obj) {
-                var kv_pairs = [];
-                var componentsObject = require("flattenPHPQueryData")(obj);
-
-                for (var component in componentsObject) {
-                  if (
-                    Object.prototype.hasOwnProperty.call(
-                      componentsObject,
-                      component
-                    )
-                  ) {
-                    var key = encodeComponent(component);
-                    if (componentsObject[component] === undefined) {
-                      kv_pairs.push(key);
-                    } else {
-                      kv_pairs.push(
-                        key +
-                          "=" +
-                          encodeComponent(String(componentsObject[component]))
-                      );
-                    }
-                  }
-                }
-
-                return kv_pairs.join("&");
-              }
-
-              function encodeComponent(raw) {
-                return encodeURIComponent(raw)
-                  .replace(/%5D/g, "]")
-                  .replace(/%5B/g, "[");
-              }
-
               var ARRAY_QUERY_PATTERN = /^([-_\w]+)((?:\[[-_\w]*\])+)=?(.*)/;
 
               function replaceBadKeys(key) {
@@ -7983,8 +7903,8 @@ try {
                 return key;
               }
 
-              function deserialize(query) {
-                if (!query) {
+              function deserialize(query, decodeComponent) {
+                if (query == null || query === "") {
                   return {};
                 }
 
@@ -8063,6 +7983,109 @@ try {
                 }
                 return result;
               }
+              exports.deserialize = deserialize;
+            },
+            66
+          );
+          __d(
+            "flattenPHPQueryData",
+            ["invariant"],
+            function $module_flattenPHPQueryData(
+              global,
+              require,
+              importDefault,
+              importNamespace,
+              requireLazy,
+              module,
+              exports,
+              invariant
+            ) {
+              function flattenPHPQueryData(obj) {
+                return _flattenPHPQueryData(obj, "", {});
+              }
+
+              function _flattenPHPQueryData(obj, name, componentsObject) {
+                if (obj === null || obj === undefined) {
+                  componentsObject[name] = undefined;
+                } else if (typeof obj === "object") {
+                  typeof obj.appendChild !== "function" ||
+                    invariant(0, "Trying to serialize a DOM node. Bad idea.");
+
+                  for (var k in obj) {
+                    if (
+                      k !== "$$typeof" &&
+                      Object.prototype.hasOwnProperty.call(obj, k) &&
+                      obj[k] !== undefined
+                    ) {
+                      _flattenPHPQueryData(
+                        obj[k],
+                        name ? name + "[" + k + "]" : k,
+                        componentsObject
+                      );
+                    }
+                  }
+                } else {
+                  componentsObject[name] = obj;
+                }
+
+                return componentsObject;
+              }
+              exports["default"] = flattenPHPQueryData;
+            },
+            98
+          );
+          __d(
+            "PHPQuerySerializer",
+            ["BaseDeserializePHPQueryData", "flattenPHPQueryData"],
+            function $module_PHPQuerySerializer(
+              global,
+              require,
+              importDefault,
+              importNamespace,
+              requireLazy,
+              module,
+              exports
+            ) {
+              function serialize(obj) {
+                var kv_pairs = [];
+                var componentsObject = importDefault("flattenPHPQueryData")(
+                  obj
+                );
+
+                for (var component in componentsObject) {
+                  if (
+                    Object.prototype.hasOwnProperty.call(
+                      componentsObject,
+                      component
+                    )
+                  ) {
+                    var key = encodeComponent(component);
+                    if (componentsObject[component] === undefined) {
+                      kv_pairs.push(key);
+                    } else {
+                      kv_pairs.push(
+                        key +
+                          "=" +
+                          encodeComponent(String(componentsObject[component]))
+                      );
+                    }
+                  }
+                }
+
+                return kv_pairs.join("&");
+              }
+
+              function encodeComponent(raw) {
+                return encodeURIComponent(raw)
+                  .replace(/%5D/g, "]")
+                  .replace(/%5B/g, "[");
+              }
+
+              function deserialize(query) {
+                return importNamespace(
+                  "BaseDeserializePHPQueryData"
+                ).deserialize(query, decodeComponent);
+              }
 
               function decodeComponent(encoded_s) {
                 try {
@@ -8084,7 +8107,7 @@ try {
 
               module.exports = PHPQuerySerializer;
             },
-            null
+            34
           );
           __d(
             "PHPStrictQuerySerializer",
@@ -27249,7 +27272,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1004713684","namespace":"FB","message":"' +
+        '","revision":"1004715532","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
