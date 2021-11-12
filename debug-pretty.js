@@ -1,4 +1,4 @@
-/*1636666152,,JIT Construction: v1004715532,en_US*/
+/*1636677554,,JIT Construction: v1004716813,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3691,7 +3691,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1004715532",
+            revision: "1004716813",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -22249,14 +22249,6 @@ try {
                   return greetingText;
                 }
               }
-
-              function toggleCompact(node, isCompact) {
-                if (!isCompact) {
-                  node.classList.remove("compact");
-                } else {
-                  node.classList.add("compact");
-                }
-              }
               exports.LABELED_ENTRY_POINT_STANDARD_HEIGHT = LABELED_ENTRY_POINT_STANDARD_HEIGHT;
               exports.LABELED_ENTRY_POINT_COMPACT_HEIGHT = LABELED_ENTRY_POINT_COMPACT_HEIGHT;
               exports.ICON_ENTRY_POINT_STANDARD_HEIGHT = ICON_ENTRY_POINT_STANDARD_HEIGHT;
@@ -22274,7 +22266,6 @@ try {
               exports.getDesktopWelcomeMessageStyleText = getDesktopWelcomeMessageStyleText;
               exports.getMobileWelcomeMessageStyleText = getMobileWelcomeMessageStyleText;
               exports.getSanitizedGreetingText = getSanitizedGreetingText;
-              exports.toggleCompact = toggleCompact;
             },
             98
           );
@@ -27272,7 +27263,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1004715532","namespace":"FB","message":"' +
+        '","revision":"1004716813","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
