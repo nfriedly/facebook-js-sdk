@@ -1,4 +1,4 @@
-/*1638198640,,JIT Construction: v1004773414,en_US*/
+/*1638412755,,JIT Construction: v1004794799,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3691,7 +3691,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1004773414",
+            revision: "1004794799",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -23349,7 +23349,8 @@ try {
                   }
                   var height = appearance.height,
                     boxShadow = appearance.boxShadow,
-                    margin = appearance.margin;
+                    margin = appearance.margin,
+                    width = appearance.width;
                   if (boxShadow != null) {
                     importNamespace("sdk.DOM").setStyle(
                       iframe,
@@ -23370,6 +23371,9 @@ try {
                       "height",
                       height
                     );
+                  }
+                  if (width != null) {
+                    importNamespace("sdk.DOM").setStyle(iframe, "width", width);
                   }
                 };
                 _proto.blinkPageTitle = function blinkPageTitle(title) {
@@ -23862,7 +23866,8 @@ try {
                   }
                   var height = message.height,
                     boxShadow = message.boxShadow,
-                    margin = message.margin;
+                    margin = message.margin,
+                    width = message.width;
                   if (boxShadow != null) {
                     importNamespace("sdk.DOM").setStyle(
                       this._iframe,
@@ -23882,6 +23887,13 @@ try {
                       this._iframe,
                       "height",
                       height
+                    );
+                  }
+                  if (width != null) {
+                    importNamespace("sdk.DOM").setStyle(
+                      this._iframe,
+                      "width",
+                      width
                     );
                   }
                 },
@@ -27263,7 +27275,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1004773414","namespace":"FB","message":"' +
+        '","revision":"1004794799","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
