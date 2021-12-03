@@ -1,4 +1,4 @@
-/*1638464357,,JIT Construction: v1004798127,en_US*/
+/*1638536952,,JIT Construction: v1004805027,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -56,7 +56,7 @@ try {
         var undefined;
         with (this) {
           /**
-           * Copyright 2004-present Facebook. All Rights Reserved.
+           * (c) Meta Platforms, Inc. and affiliates. Confidential and proprietary.
            *
            * This file contains the functions used for the generic JS function
            * transform. Please add your functionality to these functions if you
@@ -213,7 +213,7 @@ try {
             return x;
           };
           /**
-           * Copyright 2004-present Facebook. All Rights Reserved.
+           * (c) Meta Platforms, Inc. and affiliates. Confidential and proprietary.
            *
            * This is a lightweigh implementation of require and __d which is used by the
            * JavaScript SDK.
@@ -400,7 +400,7 @@ try {
             };
           })(this);
           /**
-           * Copyright 2004-present Facebook. All Rights Reserved.
+           * (c) Meta Platforms, Inc. and affiliates. Confidential and proprietary.
            *
            * @format
            *
@@ -451,7 +451,7 @@ try {
             66
           );
           /**
-           * Copyright 2004-present Facebook. All Rights Reserved.
+           * (c) Meta Platforms, Inc. and affiliates. Confidential and proprietary.
            *
            *  strict
            * @format
@@ -560,7 +560,7 @@ try {
             66
           );
           /**
-           * Copyright 2004-present Facebook. All Rights Reserved.
+           * (c) Meta Platforms, Inc. and affiliates. Confidential and proprietary.
            *
            * @format
            *
@@ -651,7 +651,7 @@ try {
             66
           );
           /**
-           * Copyright 2004-present Facebook. All Rights Reserved.
+           * (c) Meta Platforms, Inc. and affiliates. Confidential and proprietary.
            *
            *  strict
            * @format
@@ -740,7 +740,7 @@ try {
             66
           );
           /**
-           * Copyright 2004-present Facebook. All Rights Reserved.
+           * (c) Meta Platforms, Inc. and affiliates. Confidential and proprietary.
            *
            *  strict
            * @format
@@ -807,7 +807,7 @@ try {
             66
           );
           /**
-           * Copyright 2004-present Facebook. All Rights Reserved.
+           * (c) Meta Platforms, Inc. and affiliates. Confidential and proprietary.
            *
            * @format
            *
@@ -874,7 +874,7 @@ try {
             66
           );
           /**
-           * Copyright 2004-present Facebook. All Rights Reserved.
+           * (c) Meta Platforms, Inc. and affiliates. Confidential and proprietary.
            *
            *  strict
            * @format
@@ -902,7 +902,7 @@ try {
             66
           );
           /**
-           * Copyright 2004-present Facebook. All Rights Reserved.
+           * (c) Meta Platforms, Inc. and affiliates. Confidential and proprietary.
            *
            * @format
            *  strict
@@ -942,7 +942,7 @@ try {
             66
           );
           /**
-           * Copyright 2004-present Facebook. All Rights Reserved.
+           * (c) Meta Platforms, Inc. and affiliates. Confidential and proprietary.
            *
            * @format
            *
@@ -1024,7 +1024,7 @@ try {
             null
           );
           /**
-           * Copyright 2004-present Facebook. All Rights Reserved.
+           * (c) Meta Platforms, Inc. and affiliates. Confidential and proprietary.
            *
            *  strict
            * @format
@@ -1076,7 +1076,7 @@ try {
             66
           );
           /**
-           * Copyright 2004-present Facebook. All Rights Reserved.
+           * (c) Meta Platforms, Inc. and affiliates. Confidential and proprietary.
            *
            *  strict
            * @format
@@ -2458,7 +2458,7 @@ try {
             null
           );
           /**
-           * Copyright 2004-present Facebook. All Rights Reserved.
+           * (c) Meta Platforms, Inc. and affiliates. Confidential and proprietary.
            *
            *
            * scripts/static_resources/js/fb-transforms/babel-7/babel-plugin-jssdk
@@ -2634,7 +2634,7 @@ try {
             98
           );
           /**
-           * Copyright 2004-present Facebook. All Rights Reserved.
+           * (c) Meta Platforms, Inc. and affiliates. Confidential and proprietary.
            *
            * @format
            *
@@ -2712,7 +2712,7 @@ try {
             66
           );
           /**
-           * Copyright 2004-present Facebook. All Rights Reserved.
+           * (c) Meta Platforms, Inc. and affiliates. Confidential and proprietary.
            *
            * @ServerCallableModule
            * @format
@@ -2820,7 +2820,7 @@ try {
           var ES = require("ES");
           var babelHelpers = require("sdk.babelHelpers");
           /**
-           * Copyright 2004-present Facebook. All Rights Reserved.
+           * (c) Meta Platforms, Inc. and affiliates. Confidential and proprietary.
            *
            * Provides specific iterators (String/Array) with fallback to a generic object
            * iterator.
@@ -3691,7 +3691,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1004798127",
+            revision: "1004805027",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -27277,7 +27277,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1004798127","namespace":"FB","message":"' +
+        '","revision":"1004805027","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
