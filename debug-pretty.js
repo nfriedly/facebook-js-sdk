@@ -1,4 +1,4 @@
-/*1638536952,,JIT Construction: v1004805027,en_US*/
+/*1638591557,,JIT Construction: v1004811405,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3691,7 +3691,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1004805027",
+            revision: "1004811405",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -3715,20 +3715,6 @@ try {
             graph_gaming: "graph.fb.gg",
             graph_instagram: "graph.instagram.com",
             www_instagram: "www.instagram.com"
-          });
-          __d("UserAgentData", [], {
-            browserArchitecture: "32",
-            browserFullVersion: "7.47.0",
-            browserMinorVersion: 47,
-            browserName: "Curl",
-            browserVersion: 7,
-            deviceName: "Unknown",
-            engineName: "Unknown",
-            engineVersion: null,
-            platformArchitecture: "32",
-            platformName: "Unknown",
-            platformVersion: null,
-            platformFullVersion: null
           });
           __d("JSSDKShadowCssConfig", [], {});
           __d(
@@ -21224,555 +21210,12 @@ try {
             98
           );
           __d(
-            "DOMPlugin",
-            [
-              "JSSDKShadowCssConfig",
-              "Log",
-              "QueryString",
-              "sdk.DOM",
-              "sdk.Observable",
-              "sdk.PluginUtils",
-              "sdk.Runtime",
-              "sdk.XD",
-              "sdk.feature"
-            ],
-            function $module_DOMPlugin(
-              global,
-              require,
-              importDefault,
-              importNamespace,
-              requireLazy,
-              module,
-              exports
-            ) {
-              var DOMPlugin = (function(_Observable) {
-                babelHelpers.inheritsLoose(DOMPlugin, _Observable);
-                var _proto = DOMPlugin.prototype;
-                _proto.render = function render(_root) {};
-
-                function DOMPlugin(element, ns, tag, attr, inParams, config) {
-                  var _config;
-                  var _this;
-                  _this = _Observable.call(this) || this;
-                  _this.shadowCss = [];
-
-                  _this.element = element;
-                  _this.tag = tag.replace(/-/g, "_");
-                  _this.ns = ns;
-                  _this.config = (_config = config) != null ? _config : {};
-                  _this.params = {};
-                  importNamespace("sdk.PluginUtils").validate(
-                    inParams,
-                    element,
-                    attr,
-                    _this.params
-                  );
-                  importNamespace("sdk.PluginUtils").validate(
-                    importNamespace("sdk.PluginUtils").baseParams,
-                    element,
-                    attr,
-                    _this.params
-                  );
-
-                  ES("Object", "assign", false, _this.params, {
-                    app_id: importDefault("sdk.Runtime").getClientID(),
-                    locale: importDefault("sdk.Runtime").getLocale(),
-                    sdk: "joey",
-                    kid_directed_site: importDefault(
-                      "sdk.Runtime"
-                    ).getKidDirectedSite(),
-                    channel: importNamespace("sdk.XD").handler(
-                      function XD_handler_$0(msg) {
-                        if (msg != null) {
-                          _this.inform("xd." + msg.type, msg);
-                        }
-                      },
-                      "parent.parent",
-                      true
-                    )
-                  });
-                  return _this;
-                }
-                _proto.process = function process() {
-                  var params = babelHelpers["extends"]({}, this.params);
-                  delete params.channel;
-                  var query = importDefault("QueryString").encode(params);
-                  if (
-                    this.element.getAttribute("fb-iframe-plugin-query") ===
-                    query
-                  ) {
-                    importNamespace("Log").info(
-                      "Skipping render: %s:%s %s",
-                      this.ns,
-                      this.tag,
-                      query
-                    );
-                    this.inform("render");
-                    return;
-                  }
-                  this.element.setAttribute("fb-iframe-plugin-query", query);
-
-                  maybeCreateShadowRootAndRenderInDOM(
-                    this.element,
-                    ES(this.render, "bind", true, this),
-                    this.shadowCss
-                  );
-
-                  this.inform("render");
-                };
-                return DOMPlugin;
-              })(importNamespace("sdk.Observable").Observable);
-
-              function maybeCreateShadowRootAndRenderInDOM(
-                element,
-                render,
-                shadowCss
-              ) {
-                if (shadowCss === void 0) {
-                  shadowCss = [];
-                }
-                while (element.firstChild) {
-                  element.removeChild(element.firstChild);
-                }
-
-                if (typeof element.attachShadow === "function") {
-                  var shadowRootWrapper = document.createElement("div");
-                  element.appendChild(shadowRootWrapper);
-                  var shadowRoot = shadowRootWrapper.attachShadow({
-                    mode: importDefault("sdk.feature")(
-                      "shadow_dom_plugin_mode",
-                      "closed"
-                    )
-                  });
-
-                  shadowCss.forEach(function shadowCss_forEach_$0(
-                    cssModuleName
-                  ) {
-                    return importNamespace("sdk.DOM").addCssRules(
-                      importDefault("JSSDKShadowCssConfig")[cssModuleName],
-                      [cssModuleName],
-                      shadowRoot
-                    );
-                  });
-
-                  shadowRoot.appendChild(render(shadowRoot));
-                } else {
-                  shadowCss.forEach(function shadowCss_forEach_$0(
-                    cssModuleName
-                  ) {
-                    return importNamespace("sdk.DOM").addCssRules(
-                      importDefault("JSSDKShadowCssConfig")[cssModuleName],
-                      [cssModuleName]
-                    );
-                  });
-
-                  element.appendChild(render(document));
-                }
-              }
-              exports.DOMPlugin = DOMPlugin;
-              exports.maybeCreateShadowRootAndRenderInDOM = maybeCreateShadowRootAndRenderInDOM;
-            },
-            98
-          );
-          __d(
-            "VersionRange",
-            ["invariant"],
-            function $module_VersionRange(
-              global,
-              require,
-              importDefault,
-              importNamespace,
-              requireLazy,
-              module,
-              exports,
-              invariant
-            ) {
-              "use strict";
-
-              var componentRegex = /\./;
-              var orRegex = /\|\|/;
-              var rangeRegex = /\s+\-\s+/;
-              var modifierRegex = /^(<=|<|=|>=|~>|~|>|)?\s*(.+)/;
-              var numericRegex = /^(\d*)(.*)/;
-
-              function checkOrExpression(range, version) {
-                var expressions = range.split(orRegex);
-
-                if (expressions.length > 1) {
-                  return expressions.some(function expressions_some_$0(range) {
-                    return VersionRange.contains(range, version);
-                  });
-                } else {
-                  return checkRangeExpression(expressions[0].trim(), version);
-                }
-              }
-
-              function checkRangeExpression(range, version) {
-                var expressions = range.split(rangeRegex);
-
-                (expressions.length > 0 && expressions.length <= 2) ||
-                  invariant(0, 'the "-" operator expects exactly 2 operands');
-
-                if (expressions.length === 1) {
-                  return checkSimpleExpression(expressions[0], version);
-                } else {
-                  var startVersion = expressions[0],
-                    endVersion = expressions[1];
-
-                  (isSimpleVersion(startVersion) &&
-                    isSimpleVersion(endVersion)) ||
-                    invariant(
-                      0,
-                      'operands to the "-" operator must be simple (no modifiers)'
-                    );
-
-                  return (
-                    checkSimpleExpression(">=" + startVersion, version) &&
-                    checkSimpleExpression("<=" + endVersion, version)
-                  );
-                }
-              }
-
-              function checkSimpleExpression(startRange, version) {
-                var range = startRange.trim();
-                if (range === "") {
-                  return true;
-                }
-
-                var versionComponents = version.split(componentRegex);
-                var _getModifierAndCompon = getModifierAndComponents(range),
-                  modifier = _getModifierAndCompon.modifier,
-                  rangeComponents = _getModifierAndCompon.rangeComponents;
-                switch (modifier) {
-                  case "<":
-                    return checkLessThan(versionComponents, rangeComponents);
-                  case "<=":
-                    return checkLessThanOrEqual(
-                      versionComponents,
-                      rangeComponents
-                    );
-                  case ">=":
-                    return checkGreaterThanOrEqual(
-                      versionComponents,
-                      rangeComponents
-                    );
-                  case ">":
-                    return checkGreaterThan(versionComponents, rangeComponents);
-                  case "~":
-                  case "~>":
-                    return checkApproximateVersion(
-                      versionComponents,
-                      rangeComponents
-                    );
-                  default:
-                    return checkEqual(versionComponents, rangeComponents);
-                }
-              }
-
-              function checkLessThan(a, b) {
-                return compareComponents(a, b) === -1;
-              }
-
-              function checkLessThanOrEqual(a, b) {
-                var result = compareComponents(a, b);
-                return result === -1 || result === 0;
-              }
-
-              function checkEqual(a, b) {
-                return compareComponents(a, b) === 0;
-              }
-
-              function checkGreaterThanOrEqual(a, b) {
-                var result = compareComponents(a, b);
-                return result === 1 || result === 0;
-              }
-
-              function checkGreaterThan(a, b) {
-                return compareComponents(a, b) === 1;
-              }
-
-              function checkApproximateVersion(a, b) {
-                var lowerBound = b.slice();
-                var upperBound = b.slice();
-
-                if (upperBound.length > 1) {
-                  upperBound.pop();
-                }
-                var lastIndex = upperBound.length - 1;
-                var numeric = parseInt(upperBound[lastIndex], 10);
-                if (isNumber(numeric)) {
-                  upperBound[lastIndex] = numeric + 1 + "";
-                }
-
-                return (
-                  checkGreaterThanOrEqual(a, lowerBound) &&
-                  checkLessThan(a, upperBound)
-                );
-              }
-
-              function getModifierAndComponents(range) {
-                var rangeComponents = range.split(componentRegex);
-                var matches = rangeComponents[0].match(modifierRegex);
-                matches ||
-                  invariant(0, "expected regex to match but it did not");
-
-                return {
-                  modifier: matches[1],
-                  rangeComponents: [matches[2]].concat(rangeComponents.slice(1))
-                };
-              }
-
-              function isNumber(number) {
-                return !isNaN(number) && isFinite(number);
-              }
-
-              function isSimpleVersion(range) {
-                return !getModifierAndComponents(range).modifier;
-              }
-
-              function zeroPad(array, length) {
-                for (var i = array.length; i < length; i++) {
-                  array[i] = "0";
-                }
-              }
-
-              function normalizeVersions(initA, initB) {
-                var a = initA.slice();
-                var b = initB.slice();
-
-                zeroPad(a, b.length);
-
-                for (var i = 0; i < b.length; i++) {
-                  var matches = b[i].match(/^[x*]$/i);
-                  if (matches) {
-                    b[i] = a[i] = "0";
-
-                    if (matches[0] === "*" && i === b.length - 1) {
-                      for (var j = i; j < a.length; j++) {
-                        a[j] = "0";
-                      }
-                    }
-                  }
-                }
-
-                zeroPad(b, a.length);
-
-                return [a, b];
-              }
-
-              function compareNumeric(a, b) {
-                var aMatches = a.match(numericRegex);
-                var bMatches = b.match(numericRegex);
-                var aPrefix = aMatches && aMatches[1];
-                var bPrefix = bMatches && bMatches[1];
-                var aNumeric = parseInt(aPrefix, 10);
-                var bNumeric = parseInt(bPrefix, 10);
-
-                if (
-                  isNumber(aNumeric) &&
-                  isNumber(bNumeric) &&
-                  aNumeric !== bNumeric
-                ) {
-                  return compare(aNumeric, bNumeric);
-                } else {
-                  return compare(a, b);
-                }
-              }
-
-              function compare(a, b) {
-                typeof a === typeof b ||
-                  invariant(0, '"a" and "b" must be of the same type');
-
-                if (typeof a === "string" && typeof b === "string") {
-                  if (a > b) {
-                    return 1;
-                  } else if (a < b) {
-                    return -1;
-                  } else {
-                    return 0;
-                  }
-                }
-                if (typeof a === "number" && typeof b === "number") {
-                  if (a > b) {
-                    return 1;
-                  } else if (a < b) {
-                    return -1;
-                  } else {
-                    return 0;
-                  }
-                }
-                typeof a === typeof b ||
-                  invariant(0, '"a" and "b" must be of the same type');
-                return 0;
-              }
-
-              function compareComponents(a, b) {
-                var _normalizeVersions = normalizeVersions(a, b),
-                  aNormalized = _normalizeVersions[0],
-                  bNormalized = _normalizeVersions[1];
-
-                for (var i = 0; i < bNormalized.length; i++) {
-                  var result = compareNumeric(aNormalized[i], bNormalized[i]);
-                  if (result) {
-                    return result;
-                  }
-                }
-
-                return 0;
-              }
-
-              var VersionRange = {
-                contains: function contains(range, version) {
-                  return checkOrExpression(range.trim(), version.trim());
-                }
-              };
-              var _default = VersionRange;
-              exports["default"] = _default;
-            },
-            98
-          );
-          __d(
-            "memoizeStringOnly",
+            "ChatPluginStyleUtils",
             [],
-            function $module_memoizeStringOnly(
+            function $module_ChatPluginStyleUtils(
               global,
               require,
               requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              "use strict";
-
-              function memoizeStringOnly(callback) {
-                var cache = {};
-
-                return function(string) {
-                  if (!Object.prototype.hasOwnProperty.call(cache, string)) {
-                    cache[string] = callback.call(this, string);
-                  }
-                  return cache[string];
-                };
-              }
-              exports["default"] = memoizeStringOnly;
-            },
-            66
-          );
-          __d(
-            "UserAgent",
-            ["UserAgentData", "VersionRange", "memoizeStringOnly"],
-            function $module_UserAgent(
-              global,
-              require,
-              importDefault,
-              importNamespace,
-              requireLazy,
-              module,
-              exports
-            ) {
-              "use strict";
-
-              function compare(name, version, query, normalizer) {
-                if (name === query) {
-                  return true;
-                }
-
-                if (!ES(query, "startsWith", true, name)) {
-                  return false;
-                }
-
-                var range = query.slice(name.length);
-                if (version != null) {
-                  range = normalizer ? normalizer(range) : range;
-                  return importDefault("VersionRange").contains(range, version);
-                }
-
-                return false;
-              }
-
-              function normalizePlatformVersion(version) {
-                if (importDefault("UserAgentData").platformName === "Windows") {
-                  return version.replace(/^\s*NT/, "");
-                }
-
-                return version;
-              }
-
-              var UserAgent = {
-                isBrowser: importDefault("memoizeStringOnly")(
-                  function memoizeStringOnly_$0(query) {
-                    return compare(
-                      importDefault("UserAgentData").browserName,
-                      importDefault("UserAgentData").browserFullVersion,
-                      query
-                    );
-                  }
-                ),
-
-                isBrowserArchitecture: importDefault("memoizeStringOnly")(
-                  function memoizeStringOnly_$0(query) {
-                    return compare(
-                      importDefault("UserAgentData").browserArchitecture,
-                      null,
-                      query
-                    );
-                  }
-                ),
-
-                isDevice: importDefault("memoizeStringOnly")(
-                  function memoizeStringOnly_$0(query) {
-                    return compare(
-                      importDefault("UserAgentData").deviceName,
-                      null,
-                      query
-                    );
-                  }
-                ),
-
-                isEngine: importDefault("memoizeStringOnly")(
-                  function memoizeStringOnly_$0(query) {
-                    return compare(
-                      importDefault("UserAgentData").engineName,
-                      importDefault("UserAgentData").engineVersion,
-                      query
-                    );
-                  }
-                ),
-
-                isPlatform: importDefault("memoizeStringOnly")(
-                  function memoizeStringOnly_$0(query) {
-                    return compare(
-                      importDefault("UserAgentData").platformName,
-                      importDefault("UserAgentData").platformFullVersion,
-                      query,
-                      normalizePlatformVersion
-                    );
-                  }
-                ),
-
-                isPlatformArchitecture: importDefault("memoizeStringOnly")(
-                  function memoizeStringOnly_$0(query) {
-                    return compare(
-                      importDefault("UserAgentData").platformArchitecture,
-                      null,
-                      query
-                    );
-                  }
-                )
-              };
-              var _default = UserAgent;
-              exports["default"] = _default;
-            },
-            98
-          );
-          __d(
-            "LiveChatPluginUtils",
-            ["UserAgent"],
-            function $module_LiveChatPluginUtils(
-              global,
-              require,
-              importDefault,
-              importNamespace,
               requireLazy,
               module,
               exports
@@ -21782,27 +21225,6 @@ try {
               var ICON_ENTRY_POINT_STANDARD_HEIGHT = 60;
               var ICON_ENTRY_POINT_COMPACT_HEIGHT = 44;
               var ENTRY_POINT_MARGIN = 12;
-
-              function getIsITPUserAgent() {
-                return (
-                  (importDefault("UserAgent").isBrowser("Safari >= 12") ||
-                    importDefault("UserAgent").isBrowser(
-                      "Mobile Safari >= 12"
-                    ) ||
-                    importDefault("UserAgent").isBrowser("Firefox >= 62")) &&
-                  typeof document.hasStorageAccess === "function"
-                );
-              }
-
-              function getIsSafari12OrAbove() {
-                return (
-                  (importDefault("UserAgent").isBrowser("Safari >= 12") ||
-                    importDefault("UserAgent").isBrowser(
-                      "Mobile Safari >= 12"
-                    )) &&
-                  typeof document.hasStorageAccess === "function"
-                );
-              }
 
               function getMobileStyleText() {
                 var mobilePromptWidth = screen.width;
@@ -22238,25 +21660,10 @@ try {
 
                 return styleText;
               }
-
-              function getSanitizedGreetingText(greetingText) {
-                if (greetingText == null || greetingText === "") {
-                  return null;
-                } else if (
-                  ES("Array", "from", false, greetingText).length > 80 ||
-                  typeof greetingText !== "string"
-                ) {
-                  return null;
-                } else {
-                  return greetingText;
-                }
-              }
               exports.LABELED_ENTRY_POINT_STANDARD_HEIGHT = LABELED_ENTRY_POINT_STANDARD_HEIGHT;
               exports.LABELED_ENTRY_POINT_COMPACT_HEIGHT = LABELED_ENTRY_POINT_COMPACT_HEIGHT;
               exports.ICON_ENTRY_POINT_STANDARD_HEIGHT = ICON_ENTRY_POINT_STANDARD_HEIGHT;
               exports.ICON_ENTRY_POINT_COMPACT_HEIGHT = ICON_ENTRY_POINT_COMPACT_HEIGHT;
-              exports.getIsITPUserAgent = getIsITPUserAgent;
-              exports.getIsSafari12OrAbove = getIsSafari12OrAbove;
               exports.getMobileStyleText = getMobileStyleText;
               exports.positionElementAtWindowFooter = positionElementAtWindowFooter;
               exports.getEntryPointStyle = getEntryPointStyle;
@@ -22267,7 +21674,157 @@ try {
               exports.getMobileFullScreenStyleText = getMobileFullScreenStyleText;
               exports.getDesktopWelcomeMessageStyleText = getDesktopWelcomeMessageStyleText;
               exports.getMobileWelcomeMessageStyleText = getMobileWelcomeMessageStyleText;
-              exports.getSanitizedGreetingText = getSanitizedGreetingText;
+            },
+            66
+          );
+          __d(
+            "DOMPlugin",
+            [
+              "JSSDKShadowCssConfig",
+              "Log",
+              "QueryString",
+              "sdk.DOM",
+              "sdk.Observable",
+              "sdk.PluginUtils",
+              "sdk.Runtime",
+              "sdk.XD",
+              "sdk.feature"
+            ],
+            function $module_DOMPlugin(
+              global,
+              require,
+              importDefault,
+              importNamespace,
+              requireLazy,
+              module,
+              exports
+            ) {
+              var DOMPlugin = (function(_Observable) {
+                babelHelpers.inheritsLoose(DOMPlugin, _Observable);
+                var _proto = DOMPlugin.prototype;
+                _proto.render = function render(_root) {};
+
+                function DOMPlugin(element, ns, tag, attr, inParams, config) {
+                  var _config;
+                  var _this;
+                  _this = _Observable.call(this) || this;
+                  _this.shadowCss = [];
+
+                  _this.element = element;
+                  _this.tag = tag.replace(/-/g, "_");
+                  _this.ns = ns;
+                  _this.config = (_config = config) != null ? _config : {};
+                  _this.params = {};
+                  importNamespace("sdk.PluginUtils").validate(
+                    inParams,
+                    element,
+                    attr,
+                    _this.params
+                  );
+                  importNamespace("sdk.PluginUtils").validate(
+                    importNamespace("sdk.PluginUtils").baseParams,
+                    element,
+                    attr,
+                    _this.params
+                  );
+
+                  ES("Object", "assign", false, _this.params, {
+                    app_id: importDefault("sdk.Runtime").getClientID(),
+                    locale: importDefault("sdk.Runtime").getLocale(),
+                    sdk: "joey",
+                    kid_directed_site: importDefault(
+                      "sdk.Runtime"
+                    ).getKidDirectedSite(),
+                    channel: importNamespace("sdk.XD").handler(
+                      function XD_handler_$0(msg) {
+                        if (msg != null) {
+                          _this.inform("xd." + msg.type, msg);
+                        }
+                      },
+                      "parent.parent",
+                      true
+                    )
+                  });
+                  return _this;
+                }
+                _proto.process = function process() {
+                  var params = babelHelpers["extends"]({}, this.params);
+                  delete params.channel;
+                  var query = importDefault("QueryString").encode(params);
+                  if (
+                    this.element.getAttribute("fb-iframe-plugin-query") ===
+                    query
+                  ) {
+                    importNamespace("Log").info(
+                      "Skipping render: %s:%s %s",
+                      this.ns,
+                      this.tag,
+                      query
+                    );
+                    this.inform("render");
+                    return;
+                  }
+                  this.element.setAttribute("fb-iframe-plugin-query", query);
+
+                  maybeCreateShadowRootAndRenderInDOM(
+                    this.element,
+                    ES(this.render, "bind", true, this),
+                    this.shadowCss
+                  );
+
+                  this.inform("render");
+                };
+                return DOMPlugin;
+              })(importNamespace("sdk.Observable").Observable);
+
+              function maybeCreateShadowRootAndRenderInDOM(
+                element,
+                render,
+                shadowCss
+              ) {
+                if (shadowCss === void 0) {
+                  shadowCss = [];
+                }
+                while (element.firstChild) {
+                  element.removeChild(element.firstChild);
+                }
+
+                if (typeof element.attachShadow === "function") {
+                  var shadowRootWrapper = document.createElement("div");
+                  element.appendChild(shadowRootWrapper);
+                  var shadowRoot = shadowRootWrapper.attachShadow({
+                    mode: importDefault("sdk.feature")(
+                      "shadow_dom_plugin_mode",
+                      "closed"
+                    )
+                  });
+
+                  shadowCss.forEach(function shadowCss_forEach_$0(
+                    cssModuleName
+                  ) {
+                    return importNamespace("sdk.DOM").addCssRules(
+                      importDefault("JSSDKShadowCssConfig")[cssModuleName],
+                      [cssModuleName],
+                      shadowRoot
+                    );
+                  });
+
+                  shadowRoot.appendChild(render(shadowRoot));
+                } else {
+                  shadowCss.forEach(function shadowCss_forEach_$0(
+                    cssModuleName
+                  ) {
+                    return importNamespace("sdk.DOM").addCssRules(
+                      importDefault("JSSDKShadowCssConfig")[cssModuleName],
+                      [cssModuleName]
+                    );
+                  });
+
+                  element.appendChild(render(document));
+                }
+              }
+              exports.DOMPlugin = DOMPlugin;
+              exports.maybeCreateShadowRootAndRenderInDOM = maybeCreateShadowRootAndRenderInDOM;
             },
             98
           );
@@ -22623,8 +22180,8 @@ try {
               "CORSRequest",
               "ChatPluginEntryPointSizeEnum",
               "ChatPluginSDKPreLoggingUtils",
+              "ChatPluginStyleUtils",
               "DOMPlugin",
-              "LiveChatPluginUtils",
               "Log",
               "UrlMap",
               "getJSEnumSafe",
@@ -22772,7 +22329,7 @@ try {
                           : "standard";
 
                       var css = importNamespace(
-                        "LiveChatPluginUtils"
+                        "ChatPluginStyleUtils"
                       ).getEntryPointStyle(
                         alignment,
                         bottomSpacing,
@@ -22826,9 +22383,9 @@ try {
 
                   var iconSize =
                     this.$ChatDOMFacade_entryPointSize === "compact"
-                      ? importNamespace("LiveChatPluginUtils")
+                      ? importNamespace("ChatPluginStyleUtils")
                           .ICON_ENTRY_POINT_COMPACT_HEIGHT
-                      : importNamespace("LiveChatPluginUtils")
+                      : importNamespace("ChatPluginStyleUtils")
                           .ICON_ENTRY_POINT_STANDARD_HEIGHT;
 
                   importNamespace("sdk.DOM").html(
@@ -22921,7 +22478,7 @@ try {
             ) {
               "use strict";
 
-              var USER_INTERACTION_TIMEOUT = 300000;
+              var USER_INTERACTION_TIMEOUT = 5000;
 
               function hasUserInteraction(euit) {
                 if (euit == null) {
@@ -23025,8 +22582,7 @@ try {
                 WELCOME_PAGE: 2,
                 ITP_CONTINUE: 3,
                 THREAD_VIEW: 4,
-                BUBBLE: 5,
-                EMAIL: 6
+                BUBBLE: 5
               };
 
               var MPNChatState = {
@@ -27277,7 +26833,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1004805027","namespace":"FB","message":"' +
+        '","revision":"1004811405","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );

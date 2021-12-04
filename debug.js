@@ -1,4 +1,4 @@
-/*1638536952,,JIT Construction: v1004805027,en_US*/
+/*1638591557,,JIT Construction: v1004811405,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3513,7 +3513,7 @@ return __annotator(Set,{name:"Set"});
 
 global.Map=Map;
 global.Set=Set;
-})(typeof global==="undefined"?this:global);      __d("JSSDKCanvasPrefetcherConfig",[],{"enabled":true,"excludedAppIds":[144959615576466,768691303149786,320528941393723],"sampleRate":500});__d("JSSDKConfig",[],{"features":{"allow_non_canvas_app_events":false,"error_handling":{"rate":4},"e2e_ping_tracking":{"rate":0.1},"xd_timeout":{"rate":1,"value":60000},"use_bundle":false,"should_log_response_error":true,"popup_blocker_scribe_logging":{"rate":100},"https_only_enforce_starting":2538809200000,"https_only_learn_more":"https:\/\/developers.facebook.com\/blog\/post\/2018\/06\/08\/enforce-https-facebook-login\/","https_only_scribe_logging":{"rate":1},"log_perf":{"rate":0.001},"use_x_xd":{"rate":100},"cache_auth_response":{"rate":100},"oauth_funnel_logger_version":1,"force_popup_to_canvas_apps_with_id":[],"force_popup_to_all_canvas_app":false,"max_oauth_dialog_retries":{"rate":100,"value":10},"plugin_tags_blacklist":[],"idle_callback_wait_time_ms":3000,"chat_plugin_facade_timeout_ms":8000,"chat_plugin_facade_enabled_pageids":["102493178867330","107331571710078","1032787970130843","107771111665395","261907812360345","101305975654752","275483104252055","101664622285042","112682113428700","271628573687012","385757598521443","100545935690488"],"should_enable_ig_login_status_fetch":true,"xfoa_login_enabled":false}});__d("JSSDKCssConfig",[],{"rules":".fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:\"lucida grande\", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}\u0040keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}\n.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_dialog_advanced{border-radius:8px;padding:10px}.fb_dialog_content{background:#fff;color:#373737}.fb_dialog_close_icon{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{left:5px;right:auto;top:5px}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/yd\/r\/Cou7n-nqK52.gif) no-repeat 5px 50\u0025;float:left;padding:5px 0 7px 26px}body.fb_hidden{height:100\u0025;left:0;margin:0;overflow:visible;position:absolute;top:-10000px;transform:none;width:100\u0025}.fb_dialog.fb_dialog_mobile.loading{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/ya\/r\/3rhSv5V8j3o.gif) white no-repeat 50\u0025 50\u0025;min-height:100\u0025;min-width:100\u0025;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{background:none;height:auto;min-height:initial;min-width:initial;width:auto}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100\u0025}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{clear:both;color:#fff;display:block;font-size:18px;padding-top:20px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .4);bottom:0;left:0;min-height:100\u0025;position:absolute;right:0;top:0;width:100\u0025;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_mobile .fb_dialog_iframe{position:sticky;top:0}.fb_dialog_content .dialog_header{background:linear-gradient(from(#738aba), to(#2c4987));border-bottom:1px solid;border-color:#043b87;box-shadow:white 0 1px 1px -1px inset;color:#fff;font:bold 14px Helvetica, sans-serif;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{height:43px;width:100\u0025}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:linear-gradient(from(#4267B2), to(#2a4887));background-clip:padding-box;border:1px solid #29487d;border-radius:3px;display:inline-block;line-height:18px;margin-top:3px;max-width:85px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{background:none;border:none;color:#fff;font:bold 12px Helvetica, sans-serif;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/y9\/r\/jKEcVPZFk-2.gif) no-repeat 50\u0025 50\u0025;border:1px solid #4a4a4a;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f5f6f7;border:1px solid #4a4a4a;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/yD\/r\/t-wz8gw1xG1.png);background-position:50\u0025 50\u0025;background-repeat:no-repeat;height:24px;width:24px}\u0040keyframes rotateSpinner{0\u0025{transform:rotate(0deg)}100\u0025{transform:rotate(360deg)}}\n.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100\u0025}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100\u0025}\n.fb_mpn_mobile_landing_page_slide_out{animation-duration:200ms;animation-name:fb_mpn_landing_page_slide_out;transition-timing-function:ease-in}.fb_mpn_mobile_landing_page_slide_out_from_left{animation-duration:200ms;animation-name:fb_mpn_landing_page_slide_out_from_left;transition-timing-function:ease-in}.fb_mpn_mobile_landing_page_slide_up{animation-duration:500ms;animation-name:fb_mpn_landing_page_slide_up;transition-timing-function:ease-in}.fb_mpn_mobile_bounce_in{animation-duration:300ms;animation-name:fb_mpn_bounce_in;transition-timing-function:ease-in}.fb_mpn_mobile_bounce_out{animation-duration:300ms;animation-name:fb_mpn_bounce_out;transition-timing-function:ease-in}.fb_mpn_mobile_bounce_out_v2{animation-duration:300ms;animation-name:fb_mpn_fade_out;transition-timing-function:ease-in}.fb_customer_chat_bounce_in_v2{animation-duration:300ms;animation-name:fb_bounce_in_v2;transition-timing-function:ease-in}.fb_customer_chat_bounce_in_from_left{animation-duration:300ms;animation-name:fb_bounce_in_from_left;transition-timing-function:ease-in}.fb_customer_chat_bounce_out_v2{animation-duration:300ms;animation-name:fb_bounce_out_v2;transition-timing-function:ease-in}.fb_customer_chat_bounce_out_from_left{animation-duration:300ms;animation-name:fb_bounce_out_from_left;transition-timing-function:ease-in}.fb_invisible_flow{display:inherit;height:0;overflow-x:hidden;width:0}\u0040keyframes fb_mpn_landing_page_slide_out{0\u0025{margin:0 12px;width:100\u0025 - 24px}60\u0025{border-radius:18px}100\u0025{border-radius:50\u0025;margin:0 24px;width:60px}}\u0040keyframes fb_mpn_landing_page_slide_out_from_left{0\u0025{left:12px;width:100\u0025 - 24px}60\u0025{border-radius:18px}100\u0025{border-radius:50\u0025;left:12px;width:60px}}\u0040keyframes fb_mpn_landing_page_slide_up{0\u0025{bottom:0;opacity:0}100\u0025{bottom:24px;opacity:1}}\u0040keyframes fb_mpn_bounce_in{0\u0025{opacity:.5;top:100\u0025}100\u0025{opacity:1;top:0}}\u0040keyframes fb_mpn_fade_out{0\u0025{bottom:30px;opacity:1}100\u0025{bottom:0;opacity:0}}\u0040keyframes fb_mpn_bounce_out{0\u0025{opacity:1;top:0}100\u0025{opacity:.5;top:100\u0025}}\u0040keyframes fb_bounce_in_v2{0\u0025{opacity:0;transform:scale(0, 0);transform-origin:bottom right}50\u0025{transform:scale(1.03, 1.03);transform-origin:bottom right}100\u0025{opacity:1;transform:scale(1, 1);transform-origin:bottom right}}\u0040keyframes fb_bounce_in_from_left{0\u0025{opacity:0;transform:scale(0, 0);transform-origin:bottom left}50\u0025{transform:scale(1.03, 1.03);transform-origin:bottom left}100\u0025{opacity:1;transform:scale(1, 1);transform-origin:bottom left}}\u0040keyframes fb_bounce_out_v2{0\u0025{opacity:1;transform:scale(1, 1);transform-origin:bottom right}100\u0025{opacity:0;transform:scale(0, 0);transform-origin:bottom right}}\u0040keyframes fb_bounce_out_from_left{0\u0025{opacity:1;transform:scale(1, 1);transform-origin:bottom left}100\u0025{opacity:0;transform:scale(0, 0);transform-origin:bottom left}}\u0040keyframes slideInFromBottom{0\u0025{opacity:.1;transform:translateY(100\u0025)}100\u0025{opacity:1;transform:translateY(0)}}\u0040keyframes slideInFromBottomDelay{0\u0025{opacity:0;transform:translateY(100\u0025)}97\u0025{opacity:0;transform:translateY(100\u0025)}100\u0025{opacity:1;transform:translateY(0)}}","components":["css:fb.css.base","css:fb.css.dialog","css:fb.css.iframewidget","css:fb.css.customer_chat_plugin_iframe"]});__d("JSSDKRuntimeConfig",[],{"locale":"en_US","revision":"1004805027","rtl":false,"sdkab":null,"sdkns":"FB","sdkurl":"https:\/\/connect.facebook.net\/en_US\/all\/debug.js"});__d("JSSDKXDConfig",[],{"XXdUrl":"\/x\/connect\/xd_arbiter\/?version=46","useCdn":true});__d("UrlMapConfig",[],{"www":"www.facebook.com","m":"m.facebook.com","business":"business.facebook.com","api":"api.facebook.com","api_read":"api-read.facebook.com","graph":"graph.facebook.com","an":"an.facebook.com","fbcdn":"static.xx.fbcdn.net","cdn":"staticxx.facebook.com","graph_facebook":"graph.facebook.com","graph_gaming":"graph.fb.gg","graph_instagram":"graph.instagram.com","www_instagram":"www.instagram.com"});__d("UserAgentData",[],{"browserArchitecture":"32","browserFullVersion":"7.47.0","browserMinorVersion":47,"browserName":"Curl","browserVersion":7,"deviceName":"Unknown","engineName":"Unknown","engineVersion":null,"platformArchitecture":"32","platformName":"Unknown","platformVersion":null,"platformFullVersion":null});__d("JSSDKShadowCssConfig",[],{});                                                                                                                                                                                                                                                                                                                                                                                                                                        __d("DOMWrapper",[],function $module_DOMWrapper(global,require,requireDynamic,requireLazy,module,exports){
+})(typeof global==="undefined"?this:global);      __d("JSSDKCanvasPrefetcherConfig",[],{"enabled":true,"excludedAppIds":[144959615576466,768691303149786,320528941393723],"sampleRate":500});__d("JSSDKConfig",[],{"features":{"allow_non_canvas_app_events":false,"error_handling":{"rate":4},"e2e_ping_tracking":{"rate":0.1},"xd_timeout":{"rate":1,"value":60000},"use_bundle":false,"should_log_response_error":true,"popup_blocker_scribe_logging":{"rate":100},"https_only_enforce_starting":2538809200000,"https_only_learn_more":"https:\/\/developers.facebook.com\/blog\/post\/2018\/06\/08\/enforce-https-facebook-login\/","https_only_scribe_logging":{"rate":1},"log_perf":{"rate":0.001},"use_x_xd":{"rate":100},"cache_auth_response":{"rate":100},"oauth_funnel_logger_version":1,"force_popup_to_canvas_apps_with_id":[],"force_popup_to_all_canvas_app":false,"max_oauth_dialog_retries":{"rate":100,"value":10},"plugin_tags_blacklist":[],"idle_callback_wait_time_ms":3000,"chat_plugin_facade_timeout_ms":8000,"chat_plugin_facade_enabled_pageids":["102493178867330","107331571710078","1032787970130843","107771111665395","261907812360345","101305975654752","275483104252055","101664622285042","112682113428700","271628573687012","385757598521443","100545935690488"],"should_enable_ig_login_status_fetch":true,"xfoa_login_enabled":false}});__d("JSSDKCssConfig",[],{"rules":".fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:\"lucida grande\", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}\u0040keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}\n.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_dialog_advanced{border-radius:8px;padding:10px}.fb_dialog_content{background:#fff;color:#373737}.fb_dialog_close_icon{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{left:5px;right:auto;top:5px}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/yd\/r\/Cou7n-nqK52.gif) no-repeat 5px 50\u0025;float:left;padding:5px 0 7px 26px}body.fb_hidden{height:100\u0025;left:0;margin:0;overflow:visible;position:absolute;top:-10000px;transform:none;width:100\u0025}.fb_dialog.fb_dialog_mobile.loading{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/ya\/r\/3rhSv5V8j3o.gif) white no-repeat 50\u0025 50\u0025;min-height:100\u0025;min-width:100\u0025;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{background:none;height:auto;min-height:initial;min-width:initial;width:auto}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100\u0025}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{clear:both;color:#fff;display:block;font-size:18px;padding-top:20px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .4);bottom:0;left:0;min-height:100\u0025;position:absolute;right:0;top:0;width:100\u0025;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_mobile .fb_dialog_iframe{position:sticky;top:0}.fb_dialog_content .dialog_header{background:linear-gradient(from(#738aba), to(#2c4987));border-bottom:1px solid;border-color:#043b87;box-shadow:white 0 1px 1px -1px inset;color:#fff;font:bold 14px Helvetica, sans-serif;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{height:43px;width:100\u0025}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:linear-gradient(from(#4267B2), to(#2a4887));background-clip:padding-box;border:1px solid #29487d;border-radius:3px;display:inline-block;line-height:18px;margin-top:3px;max-width:85px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{background:none;border:none;color:#fff;font:bold 12px Helvetica, sans-serif;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/y9\/r\/jKEcVPZFk-2.gif) no-repeat 50\u0025 50\u0025;border:1px solid #4a4a4a;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f5f6f7;border:1px solid #4a4a4a;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https:\/\/static.xx.fbcdn.net\/rsrc.php\/v3\/yD\/r\/t-wz8gw1xG1.png);background-position:50\u0025 50\u0025;background-repeat:no-repeat;height:24px;width:24px}\u0040keyframes rotateSpinner{0\u0025{transform:rotate(0deg)}100\u0025{transform:rotate(360deg)}}\n.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100\u0025}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100\u0025}\n.fb_mpn_mobile_landing_page_slide_out{animation-duration:200ms;animation-name:fb_mpn_landing_page_slide_out;transition-timing-function:ease-in}.fb_mpn_mobile_landing_page_slide_out_from_left{animation-duration:200ms;animation-name:fb_mpn_landing_page_slide_out_from_left;transition-timing-function:ease-in}.fb_mpn_mobile_landing_page_slide_up{animation-duration:500ms;animation-name:fb_mpn_landing_page_slide_up;transition-timing-function:ease-in}.fb_mpn_mobile_bounce_in{animation-duration:300ms;animation-name:fb_mpn_bounce_in;transition-timing-function:ease-in}.fb_mpn_mobile_bounce_out{animation-duration:300ms;animation-name:fb_mpn_bounce_out;transition-timing-function:ease-in}.fb_mpn_mobile_bounce_out_v2{animation-duration:300ms;animation-name:fb_mpn_fade_out;transition-timing-function:ease-in}.fb_customer_chat_bounce_in_v2{animation-duration:300ms;animation-name:fb_bounce_in_v2;transition-timing-function:ease-in}.fb_customer_chat_bounce_in_from_left{animation-duration:300ms;animation-name:fb_bounce_in_from_left;transition-timing-function:ease-in}.fb_customer_chat_bounce_out_v2{animation-duration:300ms;animation-name:fb_bounce_out_v2;transition-timing-function:ease-in}.fb_customer_chat_bounce_out_from_left{animation-duration:300ms;animation-name:fb_bounce_out_from_left;transition-timing-function:ease-in}.fb_invisible_flow{display:inherit;height:0;overflow-x:hidden;width:0}\u0040keyframes fb_mpn_landing_page_slide_out{0\u0025{margin:0 12px;width:100\u0025 - 24px}60\u0025{border-radius:18px}100\u0025{border-radius:50\u0025;margin:0 24px;width:60px}}\u0040keyframes fb_mpn_landing_page_slide_out_from_left{0\u0025{left:12px;width:100\u0025 - 24px}60\u0025{border-radius:18px}100\u0025{border-radius:50\u0025;left:12px;width:60px}}\u0040keyframes fb_mpn_landing_page_slide_up{0\u0025{bottom:0;opacity:0}100\u0025{bottom:24px;opacity:1}}\u0040keyframes fb_mpn_bounce_in{0\u0025{opacity:.5;top:100\u0025}100\u0025{opacity:1;top:0}}\u0040keyframes fb_mpn_fade_out{0\u0025{bottom:30px;opacity:1}100\u0025{bottom:0;opacity:0}}\u0040keyframes fb_mpn_bounce_out{0\u0025{opacity:1;top:0}100\u0025{opacity:.5;top:100\u0025}}\u0040keyframes fb_bounce_in_v2{0\u0025{opacity:0;transform:scale(0, 0);transform-origin:bottom right}50\u0025{transform:scale(1.03, 1.03);transform-origin:bottom right}100\u0025{opacity:1;transform:scale(1, 1);transform-origin:bottom right}}\u0040keyframes fb_bounce_in_from_left{0\u0025{opacity:0;transform:scale(0, 0);transform-origin:bottom left}50\u0025{transform:scale(1.03, 1.03);transform-origin:bottom left}100\u0025{opacity:1;transform:scale(1, 1);transform-origin:bottom left}}\u0040keyframes fb_bounce_out_v2{0\u0025{opacity:1;transform:scale(1, 1);transform-origin:bottom right}100\u0025{opacity:0;transform:scale(0, 0);transform-origin:bottom right}}\u0040keyframes fb_bounce_out_from_left{0\u0025{opacity:1;transform:scale(1, 1);transform-origin:bottom left}100\u0025{opacity:0;transform:scale(0, 0);transform-origin:bottom left}}\u0040keyframes slideInFromBottom{0\u0025{opacity:.1;transform:translateY(100\u0025)}100\u0025{opacity:1;transform:translateY(0)}}\u0040keyframes slideInFromBottomDelay{0\u0025{opacity:0;transform:translateY(100\u0025)}97\u0025{opacity:0;transform:translateY(100\u0025)}100\u0025{opacity:1;transform:translateY(0)}}","components":["css:fb.css.base","css:fb.css.dialog","css:fb.css.iframewidget","css:fb.css.customer_chat_plugin_iframe"]});__d("JSSDKRuntimeConfig",[],{"locale":"en_US","revision":"1004811405","rtl":false,"sdkab":null,"sdkns":"FB","sdkurl":"https:\/\/connect.facebook.net\/en_US\/all\/debug.js"});__d("JSSDKXDConfig",[],{"XXdUrl":"\/x\/connect\/xd_arbiter\/?version=46","useCdn":true});__d("UrlMapConfig",[],{"www":"www.facebook.com","m":"m.facebook.com","business":"business.facebook.com","api":"api.facebook.com","api_read":"api-read.facebook.com","graph":"graph.facebook.com","an":"an.facebook.com","fbcdn":"static.xx.fbcdn.net","cdn":"staticxx.facebook.com","graph_facebook":"graph.facebook.com","graph_gaming":"graph.fb.gg","graph_instagram":"graph.instagram.com","www_instagram":"www.instagram.com"});__d("JSSDKShadowCssConfig",[],{});                                                                                                                                                                                                                                                                                                                                                                                                                                        __d("DOMWrapper",[],function $module_DOMWrapper(global,require,requireDynamic,requireLazy,module,exports){
 
 "use strict";
 
@@ -20258,745 +20258,7 @@ params,{event_name:event_name,loading_time:loading_time}),
 function CORSRequest_execute_$3(){return null;});
 
 }exports.preLogging=preLogging;},98);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                    __d("DOMPlugin",["JSSDKShadowCssConfig","Log","QueryString","sdk.DOM","sdk.Observable","sdk.PluginUtils","sdk.Runtime","sdk.XD","sdk.feature"],function $module_DOMPlugin(global,require,importDefault,importNamespace,requireLazy,module,exports){var
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-DOMPlugin=function(_Observable){babelHelpers.inheritsLoose(DOMPlugin,_Observable);var _proto=DOMPlugin.prototype;_proto.
-
-
-
-
-
-
-
-
-
-render=function render(_root){};
-
-function DOMPlugin(
-element,
-ns,
-tag,
-attr,
-inParams,
-config)
-{var _config;var _this;
-_this=_Observable.call(this)||this;_this.shadowCss=[];
-
-_this.element=element;
-_this.tag=tag.replace(/-/g,"_");
-_this.ns=ns;
-_this.config=(_config=config)!=null?_config:{};
-_this.params={};
-importNamespace("sdk.PluginUtils").validate(inParams,element,attr,_this.params);
-importNamespace("sdk.PluginUtils").validate(importNamespace("sdk.PluginUtils").baseParams,element,attr,_this.params);
-
-ES("Object","assign",false,_this.params,{
-app_id:importDefault("sdk.Runtime").getClientID(),
-locale:importDefault("sdk.Runtime").getLocale(),
-sdk:"joey",
-kid_directed_site:importDefault("sdk.Runtime").getKidDirectedSite(),
-channel:importNamespace("sdk.XD").handler(
-function XD_handler_$0(msg){
-if(msg!=null){
-_this.inform("xd."+msg.type,msg);
-}
-},
-"parent.parent",
-true)});return _this;
-
-
-}_proto.
-
-process=function process(){
-
-
-var params=babelHelpers["extends"]({},this.params);
-delete params.channel;
-var query=importDefault("QueryString").encode(params);
-if(this.element.getAttribute("fb-iframe-plugin-query")===query){
-importNamespace("Log").info("Skipping render: %s:%s %s",this.ns,this.tag,query);
-this.inform("render");
-return;
-}
-this.element.setAttribute("fb-iframe-plugin-query",query);
-
-maybeCreateShadowRootAndRenderInDOM(
-this.element,ES(
-
-this.render,"bind",true,this),
-this.shadowCss);
-
-
-this.inform("render");
-};return DOMPlugin;}(importNamespace("sdk.Observable").Observable);
-
-
-function maybeCreateShadowRootAndRenderInDOM(
-element,
-render,
-
-
-shadowCss)
-{if(shadowCss===void 0){shadowCss=[];}
-while(element.firstChild){
-element.removeChild(element.firstChild);
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-if(typeof element.attachShadow==="function"){
-
-
-
-var shadowRootWrapper=document.createElement("div");
-element.appendChild(shadowRootWrapper);
-var shadowRoot=shadowRootWrapper.attachShadow({
-mode:importDefault("sdk.feature")("shadow_dom_plugin_mode","closed")});
-
-shadowCss.forEach(function shadowCss_forEach_$0(cssModuleName){return(
-importNamespace("sdk.DOM").addCssRules(
-importDefault("JSSDKShadowCssConfig")[cssModuleName],
-[cssModuleName],
-shadowRoot));});
-
-
-shadowRoot.appendChild(render(shadowRoot));
-}else{
-shadowCss.forEach(function shadowCss_forEach_$0(cssModuleName){return(
-importNamespace("sdk.DOM").addCssRules(importDefault("JSSDKShadowCssConfig")[cssModuleName],[cssModuleName]));});
-
-element.appendChild(render(document));
-}
-}exports.DOMPlugin=DOMPlugin;exports.maybeCreateShadowRootAndRenderInDOM=maybeCreateShadowRootAndRenderInDOM;},98);
-                                                                                                          __d("VersionRange",["invariant"],function $module_VersionRange(global,require,importDefault,importNamespace,requireLazy,module,exports,invariant){
-
-"use strict";
-
-
-
-var componentRegex=/\./;
-var orRegex=/\|\|/;
-var rangeRegex=/\s+\-\s+/;
-var modifierRegex=/^(<=|<|=|>=|~>|~|>|)?\s*(.+)/;
-var numericRegex=/^(\d*)(.*)/;
-
-
-
-
-
-function checkOrExpression(range,version){
-var expressions=range.split(orRegex);
-
-if(expressions.length>1){
-return expressions.some(function expressions_some_$0(range){return VersionRange.contains(range,version);});
-}else{
-return checkRangeExpression(expressions[0].trim(),version);
-}
-}
-
-
-
-
-
-function checkRangeExpression(range,version){
-var expressions=range.split(rangeRegex);
-
-
-expressions.length>0&&expressions.length<=2||invariant(0,
-"the \"-\" operator expects exactly 2 operands");
-
-
-if(expressions.length===1){
-return checkSimpleExpression(expressions[0],version);
-}else{var
-startVersion=expressions[0],endVersion=expressions[1];
-
-isSimpleVersion(startVersion)&&isSimpleVersion(endVersion)||invariant(0,
-"operands to the \"-\" operator must be simple (no modifiers)");
-
-
-return(
-checkSimpleExpression(">="+startVersion,version)&&
-checkSimpleExpression("<="+endVersion,version));
-
-}
-}
-
-
-
-
-
-function checkSimpleExpression(startRange,version){
-var range=startRange.trim();
-if(range===""){
-return true;
-}
-
-var versionComponents=version.split(componentRegex);var _getModifierAndCompon=
-getModifierAndComponents(range),modifier=_getModifierAndCompon.modifier,rangeComponents=_getModifierAndCompon.rangeComponents;
-switch(modifier){
-case"<":
-return checkLessThan(versionComponents,rangeComponents);
-case"<=":
-return checkLessThanOrEqual(versionComponents,rangeComponents);
-case">=":
-return checkGreaterThanOrEqual(versionComponents,rangeComponents);
-case">":
-return checkGreaterThan(versionComponents,rangeComponents);
-case"~":
-case"~>":
-return checkApproximateVersion(versionComponents,rangeComponents);
-default:
-return checkEqual(versionComponents,rangeComponents);}
-
-}
-
-
-
-
-function checkLessThan(a,b){
-return compareComponents(a,b)===-1;
-}
-
-
-
-
-function checkLessThanOrEqual(a,b){
-var result=compareComponents(a,b);
-return result===-1||result===0;
-}
-
-
-
-
-function checkEqual(a,b){
-return compareComponents(a,b)===0;
-}
-
-
-
-
-function checkGreaterThanOrEqual(a,b){
-var result=compareComponents(a,b);
-return result===1||result===0;
-}
-
-
-
-
-function checkGreaterThan(a,b){
-return compareComponents(a,b)===1;
-}
-
-
-
-
-
-
-function checkApproximateVersion(a,b){
-var lowerBound=b.slice();
-var upperBound=b.slice();
-
-if(upperBound.length>1){
-upperBound.pop();
-}
-var lastIndex=upperBound.length-1;
-var numeric=parseInt(upperBound[lastIndex],10);
-if(isNumber(numeric)){
-upperBound[lastIndex]=numeric+1+"";
-}
-
-return checkGreaterThanOrEqual(a,lowerBound)&&checkLessThan(a,upperBound);
-}
-
-
-
-
-
-
-
-
-function getModifierAndComponents(range)
-
-
-
-{
-var rangeComponents=range.split(componentRegex);
-var matches=rangeComponents[0].match(modifierRegex);
-matches||invariant(0,"expected regex to match but it did not");
-
-return{
-modifier:matches[1],
-rangeComponents:[matches[2]].concat(rangeComponents.slice(1))};
-
-}
-
-
-
-
-function isNumber(number){
-return!isNaN(number)&&isFinite(number);
-}
-
-
-
-
-
-function isSimpleVersion(range){
-return!getModifierAndComponents(range).modifier;
-}
-
-
-
-
-function zeroPad(array,length){
-for(var i=array.length;i<length;i++){
-array[i]="0";
-}
-}
-
-
-
-
-
-
-
-
-
-
-function normalizeVersions(
-initA,
-initB)
-{
-var a=initA.slice();
-var b=initB.slice();
-
-zeroPad(a,b.length);
-
-
-for(var i=0;i<b.length;i++){
-var matches=b[i].match(/^[x*]$/i);
-if(matches){
-b[i]=a[i]="0";
-
-
-if(matches[0]==="*"&&i===b.length-1){
-for(var j=i;j<a.length;j++){
-a[j]="0";
-}
-}
-}
-}
-
-zeroPad(b,a.length);
-
-return[a,b];
-}
-
-
-
-
-
-
-
-
-
-function compareNumeric(a,b){
-var aMatches=a.match(numericRegex);
-var bMatches=b.match(numericRegex);
-var aPrefix=aMatches&&aMatches[1];
-var bPrefix=bMatches&&bMatches[1];
-var aNumeric=parseInt(aPrefix,10);
-var bNumeric=parseInt(bPrefix,10);
-
-if(isNumber(aNumeric)&&isNumber(bNumeric)&&aNumeric!==bNumeric){
-return compare(aNumeric,bNumeric);
-}else{
-return compare(a,b);
-}
-}
-
-
-
-
-
-
-
-function compare(a,b){
-typeof a===typeof b||invariant(0,"\"a\" and \"b\" must be of the same type");
-
-if(typeof a==="string"&&typeof b==="string"){
-if(a>b){
-return 1;
-}else if(a<b){
-return-1;
-}else{
-return 0;
-}
-}
-if(typeof a==="number"&&typeof b==="number"){
-if(a>b){
-return 1;
-}else if(a<b){
-return-1;
-}else{
-return 0;
-}
-}
-typeof a===typeof b||invariant(0,"\"a\" and \"b\" must be of the same type");
-return 0;
-}
-
-
-
-
-
-
-
-function compareComponents(a,b){var _normalizeVersions=
-normalizeVersions(a,b),aNormalized=_normalizeVersions[0],bNormalized=_normalizeVersions[1];
-
-for(var i=0;i<bNormalized.length;i++){
-var result=compareNumeric(aNormalized[i],bNormalized[i]);
-if(result){
-return result;
-}
-}
-
-return 0;
-}
-
-var VersionRange={
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-contains:function contains(range,version){
-return checkOrExpression(range.trim(),version.trim());
-}};var _default=
-
-
-VersionRange;exports["default"]=_default;},98);
-                                                                                                                                     __d("memoizeStringOnly",[],function $module_memoizeStringOnly(global,require,requireDynamic,requireLazy,module,exports){
-
-"use strict";
-
-
-
-
-function memoizeStringOnly(
-callback)
-{
-var cache={};
-
-return function(string){
-if(!Object.prototype.hasOwnProperty.call(cache,string)){
-cache[string]=callback.call(this,string);
-}
-return cache[string];
-};
-}exports["default"]=memoizeStringOnly;},66);
-                                                                                                          __d("UserAgent",["UserAgentData","VersionRange","memoizeStringOnly"],function $module_UserAgent(global,require,importDefault,importNamespace,requireLazy,module,exports){
-
-"use strict";
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function compare(name,version,query,normalizer){
-
-if(name===query){
-return true;
-}
-
-
-if(!ES(query,"startsWith",true,name)){
-return false;
-}
-
-
-var range=query.slice(name.length);
-if(version!=null){
-range=normalizer?normalizer(range):range;
-return importDefault("VersionRange").contains(range,version);
-}
-
-return false;
-}
-
-
-
-
-
-
-
-
-
-
-function normalizePlatformVersion(version){
-if(importDefault("UserAgentData").platformName==="Windows"){
-return version.replace(/^\s*NT/,"");
-}
-
-return version;
-}
-
-
-
-
-
-var UserAgent={
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-isBrowser:importDefault("memoizeStringOnly")(function memoizeStringOnly_$0(query){return(
-compare(importDefault("UserAgentData").browserName,importDefault("UserAgentData").browserFullVersion,query));}),
-
-
-
-
-
-
-
-
-
-
-isBrowserArchitecture:importDefault("memoizeStringOnly")(function memoizeStringOnly_$0(query){return(
-compare(importDefault("UserAgentData").browserArchitecture,null,query));}),
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-isDevice:importDefault("memoizeStringOnly")(function memoizeStringOnly_$0(query){return(
-compare(importDefault("UserAgentData").deviceName,null,query));}),
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-isEngine:importDefault("memoizeStringOnly")(function memoizeStringOnly_$0(query){return(
-compare(importDefault("UserAgentData").engineName,importDefault("UserAgentData").engineVersion,query));}),
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-isPlatform:importDefault("memoizeStringOnly")(function memoizeStringOnly_$0(query){return(
-compare(
-importDefault("UserAgentData").platformName,
-importDefault("UserAgentData").platformFullVersion,
-query,
-normalizePlatformVersion));}),
-
-
-
-
-
-
-
-
-
-
-
-isPlatformArchitecture:importDefault("memoizeStringOnly")(function memoizeStringOnly_$0(query){return(
-compare(importDefault("UserAgentData").platformArchitecture,null,query));})};var _default=
-
-
-
-UserAgent;exports["default"]=_default;},98);
-                                                                                                          __d("LiveChatPluginUtils",["UserAgent"],function $module_LiveChatPluginUtils(global,require,importDefault,importNamespace,requireLazy,module,exports){
-
+                                                                                                          __d("ChatPluginStyleUtils",[],function $module_ChatPluginStyleUtils(global,require,requireDynamic,requireLazy,module,exports){
 
 
 
@@ -21012,25 +20274,6 @@ var LABELED_ENTRY_POINT_COMPACT_HEIGHT=36;
 var ICON_ENTRY_POINT_STANDARD_HEIGHT=60;
 var ICON_ENTRY_POINT_COMPACT_HEIGHT=44;
 var ENTRY_POINT_MARGIN=12;
-
-function getIsITPUserAgent(){
-return(
-(importDefault("UserAgent").isBrowser("Safari >= 12")||
-importDefault("UserAgent").isBrowser("Mobile Safari >= 12")||
-importDefault("UserAgent").isBrowser("Firefox >= 62"))&&
-
-typeof document.hasStorageAccess==="function");
-
-}
-
-function getIsSafari12OrAbove(){
-return(
-(importDefault("UserAgent").isBrowser("Safari >= 12")||
-importDefault("UserAgent").isBrowser("Mobile Safari >= 12"))&&
-
-typeof document.hasStorageAccess==="function");
-
-}
 
 function getMobileStyleText(){
 
@@ -21462,20 +20705,161 @@ break;}
 }
 
 return styleText;
+}exports.LABELED_ENTRY_POINT_STANDARD_HEIGHT=LABELED_ENTRY_POINT_STANDARD_HEIGHT;exports.LABELED_ENTRY_POINT_COMPACT_HEIGHT=LABELED_ENTRY_POINT_COMPACT_HEIGHT;exports.ICON_ENTRY_POINT_STANDARD_HEIGHT=ICON_ENTRY_POINT_STANDARD_HEIGHT;exports.ICON_ENTRY_POINT_COMPACT_HEIGHT=ICON_ENTRY_POINT_COMPACT_HEIGHT;exports.getMobileStyleText=getMobileStyleText;exports.positionElementAtWindowFooter=positionElementAtWindowFooter;exports.getEntryPointStyle=getEntryPointStyle;exports.getIconStyleText=getIconStyleText;exports.getUnreadCountStyleText=getUnreadCountStyleText;exports.getMobileLandingStyleText=getMobileLandingStyleText;exports.getDesktopStyleText=getDesktopStyleText;exports.getMobileFullScreenStyleText=getMobileFullScreenStyleText;exports.getDesktopWelcomeMessageStyleText=getDesktopWelcomeMessageStyleText;exports.getMobileWelcomeMessageStyleText=getMobileWelcomeMessageStyleText;},66);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                    __d("DOMPlugin",["JSSDKShadowCssConfig","Log","QueryString","sdk.DOM","sdk.Observable","sdk.PluginUtils","sdk.Runtime","sdk.XD","sdk.feature"],function $module_DOMPlugin(global,require,importDefault,importNamespace,requireLazy,module,exports){var
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+DOMPlugin=function(_Observable){babelHelpers.inheritsLoose(DOMPlugin,_Observable);var _proto=DOMPlugin.prototype;_proto.
+
+
+
+
+
+
+
+
+
+render=function render(_root){};
+
+function DOMPlugin(
+element,
+ns,
+tag,
+attr,
+inParams,
+config)
+{var _config;var _this;
+_this=_Observable.call(this)||this;_this.shadowCss=[];
+
+_this.element=element;
+_this.tag=tag.replace(/-/g,"_");
+_this.ns=ns;
+_this.config=(_config=config)!=null?_config:{};
+_this.params={};
+importNamespace("sdk.PluginUtils").validate(inParams,element,attr,_this.params);
+importNamespace("sdk.PluginUtils").validate(importNamespace("sdk.PluginUtils").baseParams,element,attr,_this.params);
+
+ES("Object","assign",false,_this.params,{
+app_id:importDefault("sdk.Runtime").getClientID(),
+locale:importDefault("sdk.Runtime").getLocale(),
+sdk:"joey",
+kid_directed_site:importDefault("sdk.Runtime").getKidDirectedSite(),
+channel:importNamespace("sdk.XD").handler(
+function XD_handler_$0(msg){
+if(msg!=null){
+_this.inform("xd."+msg.type,msg);
+}
+},
+"parent.parent",
+true)});return _this;
+
+
+}_proto.
+
+process=function process(){
+
+
+var params=babelHelpers["extends"]({},this.params);
+delete params.channel;
+var query=importDefault("QueryString").encode(params);
+if(this.element.getAttribute("fb-iframe-plugin-query")===query){
+importNamespace("Log").info("Skipping render: %s:%s %s",this.ns,this.tag,query);
+this.inform("render");
+return;
+}
+this.element.setAttribute("fb-iframe-plugin-query",query);
+
+maybeCreateShadowRootAndRenderInDOM(
+this.element,ES(
+
+this.render,"bind",true,this),
+this.shadowCss);
+
+
+this.inform("render");
+};return DOMPlugin;}(importNamespace("sdk.Observable").Observable);
+
+
+function maybeCreateShadowRootAndRenderInDOM(
+element,
+render,
+
+
+shadowCss)
+{if(shadowCss===void 0){shadowCss=[];}
+while(element.firstChild){
+element.removeChild(element.firstChild);
 }
 
-function getSanitizedGreetingText(greetingText){
-if(greetingText==null||greetingText===""){
-return null;
-}else if(
-ES("Array","from",false,greetingText).length>80||
-typeof greetingText!=="string")
-{
-return null;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+if(typeof element.attachShadow==="function"){
+
+
+
+var shadowRootWrapper=document.createElement("div");
+element.appendChild(shadowRootWrapper);
+var shadowRoot=shadowRootWrapper.attachShadow({
+mode:importDefault("sdk.feature")("shadow_dom_plugin_mode","closed")});
+
+shadowCss.forEach(function shadowCss_forEach_$0(cssModuleName){return(
+importNamespace("sdk.DOM").addCssRules(
+importDefault("JSSDKShadowCssConfig")[cssModuleName],
+[cssModuleName],
+shadowRoot));});
+
+
+shadowRoot.appendChild(render(shadowRoot));
 }else{
-return greetingText;
+shadowCss.forEach(function shadowCss_forEach_$0(cssModuleName){return(
+importNamespace("sdk.DOM").addCssRules(importDefault("JSSDKShadowCssConfig")[cssModuleName],[cssModuleName]));});
+
+element.appendChild(render(document));
 }
-}exports.LABELED_ENTRY_POINT_STANDARD_HEIGHT=LABELED_ENTRY_POINT_STANDARD_HEIGHT;exports.LABELED_ENTRY_POINT_COMPACT_HEIGHT=LABELED_ENTRY_POINT_COMPACT_HEIGHT;exports.ICON_ENTRY_POINT_STANDARD_HEIGHT=ICON_ENTRY_POINT_STANDARD_HEIGHT;exports.ICON_ENTRY_POINT_COMPACT_HEIGHT=ICON_ENTRY_POINT_COMPACT_HEIGHT;exports.getIsITPUserAgent=getIsITPUserAgent;exports.getIsSafari12OrAbove=getIsSafari12OrAbove;exports.getMobileStyleText=getMobileStyleText;exports.positionElementAtWindowFooter=positionElementAtWindowFooter;exports.getEntryPointStyle=getEntryPointStyle;exports.getIconStyleText=getIconStyleText;exports.getUnreadCountStyleText=getUnreadCountStyleText;exports.getMobileLandingStyleText=getMobileLandingStyleText;exports.getDesktopStyleText=getDesktopStyleText;exports.getMobileFullScreenStyleText=getMobileFullScreenStyleText;exports.getDesktopWelcomeMessageStyleText=getDesktopWelcomeMessageStyleText;exports.getMobileWelcomeMessageStyleText=getMobileWelcomeMessageStyleText;exports.getSanitizedGreetingText=getSanitizedGreetingText;},98);
+}exports.DOMPlugin=DOMPlugin;exports.maybeCreateShadowRootAndRenderInDOM=maybeCreateShadowRootAndRenderInDOM;},98);
                                                                                                           __d("getJSEnumSafe",[],(function $module_getJSEnumSafe(global,require,requireDynamic,requireLazy,module,exports){
 
 "use strict";
@@ -21798,7 +21182,7 @@ var v=c=="x"?r:r&3|8;
 return v.toString(16);
 });
 }exports["default"]=uuid;}),66);
-                                                                                                                               __d("sdk.XFBML.ChatDOM",["$InternalEnum","CORSRequest","ChatPluginEntryPointSizeEnum","ChatPluginSDKPreLoggingUtils","DOMPlugin","LiveChatPluginUtils","Log","UrlMap","getJSEnumSafe","performanceAbsoluteNow","sdk.Content","sdk.DOM","sdk.IdleCallback","sdk.XFBML.CustomerChatNew","sdk.feature","uuid"],function $module_sdk_XFBML_ChatDOM(global,require,importDefault,importNamespace,requireLazy,module,exports){
+                                                                                                                               __d("sdk.XFBML.ChatDOM",["$InternalEnum","CORSRequest","ChatPluginEntryPointSizeEnum","ChatPluginSDKPreLoggingUtils","ChatPluginStyleUtils","DOMPlugin","Log","UrlMap","getJSEnumSafe","performanceAbsoluteNow","sdk.Content","sdk.DOM","sdk.IdleCallback","sdk.XFBML.CustomerChatNew","sdk.feature","uuid"],function $module_sdk_XFBML_ChatDOM(global,require,importDefault,importNamespace,requireLazy,module,exports){
 
 "use strict";var
 
@@ -21938,7 +21322,7 @@ _this.$ChatDOMFacade_entryPointSize=(_getJSEnumSafe=
 importDefault("getJSEnumSafe")(importDefault("ChatPluginEntryPointSizeEnum"),entryPointSize))!=null?_getJSEnumSafe:
 "standard";
 
-var css=importNamespace("LiveChatPluginUtils").getEntryPointStyle(
+var css=importNamespace("ChatPluginStyleUtils").getEntryPointStyle(
 alignment,
 bottomSpacing,
 sideSpacing,
@@ -21975,7 +21359,7 @@ return;
 }
 
 var iconSize=
-this.$ChatDOMFacade_entryPointSize==="compact"?importNamespace("LiveChatPluginUtils").ICON_ENTRY_POINT_COMPACT_HEIGHT:importNamespace("LiveChatPluginUtils").ICON_ENTRY_POINT_STANDARD_HEIGHT;
+this.$ChatDOMFacade_entryPointSize==="compact"?importNamespace("ChatPluginStyleUtils").ICON_ENTRY_POINT_COMPACT_HEIGHT:importNamespace("ChatPluginStyleUtils").ICON_ENTRY_POINT_STANDARD_HEIGHT;
 
 
 
@@ -22036,7 +21420,7 @@ renderer.process();
 
 "use strict";
 
-var USER_INTERACTION_TIMEOUT=300000;
+var USER_INTERACTION_TIMEOUT=5000;
 
 function hasUserInteraction(euit){
 if(euit==null){
@@ -22120,8 +21504,7 @@ LANDING_BANNER:1,
 WELCOME_PAGE:2,
 ITP_CONTINUE:3,
 THREAD_VIEW:4,
-BUBBLE:5,
-EMAIL:6};
+BUBBLE:5};
 
 
 
@@ -25464,4 +24847,4 @@ localName:tag.replace(/_/g,"-"),
 ctor:customTags[tag]});
 
 });},3);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }  }).call(global);})();} catch (e) {var i = new Image();i.crossOrigin = 'anonymous';i.dataset.testid = 'fbSDKErrorReport';i.src='https://www.facebook.com/platform/scribe_endpoint.php/?c=jssdk_error&m='+encodeURIComponent('{"error":"LOAD", "extra": {"name":"'+e.name+'","line":"'+(e.lineNumber||e.line)+'","script":"'+(e.fileName||e.sourceURL||e.script||"debug.js")+'","stack":"'+(e.stackTrace||e.stack)+'","revision":"1004805027","namespace":"FB","message":"'+e.message+'"}}');document.body.appendChild(i);}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }  }).call(global);})();} catch (e) {var i = new Image();i.crossOrigin = 'anonymous';i.dataset.testid = 'fbSDKErrorReport';i.src='https://www.facebook.com/platform/scribe_endpoint.php/?c=jssdk_error&m='+encodeURIComponent('{"error":"LOAD", "extra": {"name":"'+e.name+'","line":"'+(e.lineNumber||e.line)+'","script":"'+(e.fileName||e.sourceURL||e.script||"debug.js")+'","stack":"'+(e.stackTrace||e.stack)+'","revision":"1004811405","namespace":"FB","message":"'+e.message+'"}}');document.body.appendChild(i);}
