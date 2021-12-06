@@ -1,4 +1,4 @@
-/*1638820762,,JIT Construction: v1004814605,en_US*/
+/*1638834573,,JIT Construction: v1004817414,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3691,7 +3691,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1004814605",
+            revision: "1004817414",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -26001,7 +26001,8 @@ try {
             function $module_sdk_XFBML_Quote(
               global,
               require,
-              requireDynamic,
+              importDefault,
+              importNamespace,
               requireLazy,
               module,
               exports
@@ -26017,7 +26018,7 @@ try {
               var quotableAreas = [];
               var forceShow = false;
               var xfbmlElement = null;
-              var isMobile = require("sdk.UA").mobile();
+              var isMobile = importDefault("sdk.UA").mobile();
 
               function getSelectionParent(selectionObject) {
                 var range = selectionObject.getRangeAt(0);
@@ -26028,7 +26029,7 @@ try {
                   : container;
               }
 
-              function handleSelection(ev) {
+              function handleSelection() {
                 if (!document.getSelection || isMobile) {
                   return;
                 }
@@ -26044,7 +26045,7 @@ try {
                   var areaMatch = false;
                   for (var i = 0; i < areasLength; i++) {
                     if (
-                      require("containsNode")(
+                      importDefault("containsNode")(
                         quotableAreas[i],
                         selectionObject.focusNode
                       )
@@ -26070,16 +26071,22 @@ try {
                   .trim();
 
                 var selectionLimit = Number(
-                  require("sdk.feature")("sharequotelimit", 500)
+                  importDefault("sdk.feature")("sharequotelimit", 500)
                 );
-                if ([].concat(selection).length > selectionLimit) {
-                  var truncate = [].concat(selection);
+                var selectionArray = selection.split("");
+                if (selectionArray.length > selectionLimit) {
+                  var truncate = selectionArray;
                   truncate.length = selectionLimit - 3;
                   selection = truncate.join("") + "...";
                 }
 
                 if (!forceShow && xfbmlElement) {
-                  getSelectionParent(selectionObject).appendChild(xfbmlElement);
+                  var _getSelectionParent;
+
+                  (_getSelectionParent = getSelectionParent(selectionObject)) ==
+                  null
+                    ? void 0
+                    : _getSelectionParent.appendChild(xfbmlElement);
 
                   var flyoutPosition = getFlyoutPosition(selectionObject);
                   xfbmlElement.style.left = flyoutPosition.x + "px";
@@ -26088,13 +26095,16 @@ try {
               }
 
               function getFlyoutPosition(selectionObject) {
+                var _measuringStartSpan$p, _measuringEndSpan$par;
                 var sizedPlugin = xfbmlElement && xfbmlElement.offsetWidth;
-                var pluginHeight = sizedPlugin
-                  ? xfbmlElement.offsetHeight
-                  : PLUGIN_HEIGHT;
-                var pluginWidth = sizedPlugin
-                  ? xfbmlElement.offsetWidth
-                  : PLUGIN_WIDTH;
+                var pluginHeight =
+                  sizedPlugin !== null && xfbmlElement
+                    ? xfbmlElement.offsetHeight
+                    : PLUGIN_HEIGHT;
+                var pluginWidth =
+                  sizedPlugin !== null && xfbmlElement
+                    ? xfbmlElement.offsetWidth
+                    : PLUGIN_WIDTH;
                 var range = selectionObject.getRangeAt(0);
                 var measuringStartSpan = document.createElement("span");
                 var measuringEndSpan = document.createElement("span");
@@ -26111,8 +26121,12 @@ try {
                     measuringStartSpan.offsetLeft) /
                     2 -
                   pluginWidth / 2;
-                measuringStartSpan.parentNode.removeChild(measuringStartSpan);
-                measuringEndSpan.parentNode.removeChild(measuringEndSpan);
+                (_measuringStartSpan$p = measuringStartSpan.parentNode) == null
+                  ? void 0
+                  : _measuringStartSpan$p.removeChild(measuringStartSpan);
+                (_measuringEndSpan$par = measuringEndSpan.parentNode) == null
+                  ? void 0
+                  : _measuringEndSpan$par.removeChild(measuringEndSpan);
                 return { x: x, y: y };
               }
 
@@ -26123,26 +26137,28 @@ try {
                 }
               }
 
-              var Quote = require("IframePlugin").extend({
+              var Quote = importDefault("IframePlugin").extend({
                 constructor: function constructor(elem, ns, tag, attr) {
                   var _this = this;
                   if (singleton) {
                     return singleton;
                   }
+
                   this.parent(elem, ns, tag, attr);
                   forceShow =
-                    require("sdk.DOM").getAttr(elem, "layout") === "button";
+                    importNamespace("sdk.DOM").getAttr(elem, "layout") ===
+                    "button";
                   xfbmlElement = elem;
 
                   xfbmlElement.style.position = "absolute";
                   xfbmlElement.style.display = "";
 
-                  require("DOMEventListener").add(
+                  importDefault("DOMEventListener").add(
                     document,
                     "keyup",
                     handleSelection
                   );
-                  require("DOMEventListener").add(
+                  importDefault("DOMEventListener").add(
                     document,
                     "mouseup",
                     handleSelection
@@ -26151,7 +26167,7 @@ try {
                   this.subscribe(
                     "xd.getTextSelection",
                     function subscribe_$1() {
-                      require("sdk.XD").sendToFacebook(
+                      importDefault("sdk.XD").sendToFacebook(
                         _this._iframeOptions.name,
                         {
                           method: "setTextSelection",
@@ -26173,7 +26189,7 @@ try {
                   ).filter(function filter_$0(element) {
                     return (
                       element.nodeName.toLowerCase() === "article" ||
-                      require("sdk.DOM").containsCss(
+                      importNamespace("sdk.DOM").containsCss(
                         element,
                         QUOTABLE_CLASS_NAME
                       )
@@ -26193,10 +26209,10 @@ try {
                   };
                 }
               });
-
-              module.exports = Quote;
+              var _default = Quote;
+              exports["default"] = _default;
             },
-            null
+            98
           );
           __d(
             "sdk.XFBML.Save",
@@ -26834,7 +26850,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1004814605","namespace":"FB","message":"' +
+        '","revision":"1004817414","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
