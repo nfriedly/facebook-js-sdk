@@ -1,4 +1,4 @@
-/*1638973157,,JIT Construction: v1004829467,en_US*/
+/*1639003160,,JIT Construction: v1004831987,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3691,7 +3691,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1004829467",
+            revision: "1004831987",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -11053,34 +11053,12 @@ try {
             98
           );
           __d(
-            "orEmptyArray",
-            [],
-            function $module_orEmptyArray(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              "use strict";
-
-              function orEmptyArray(array) {
-                var _array;
-                return (_array = array) != null ? _array : [];
-              }
-              exports["default"] = orEmptyArray;
-            },
-            66
-          );
-          __d(
             "Miny",
-            ["orEmptyArray"],
+            [],
             function $module_Miny(
               global,
               require,
-              importDefault,
-              importNamespace,
+              requireDynamic,
               requireLazy,
               module,
               exports
@@ -11090,13 +11068,13 @@ try {
 
               var Miny = {
                 encode: function encode(s) {
+                  var _s$match;
                   if (/^$|[~\\]|__proto__/.test(s)) {
                     return s;
                   }
 
-                  var parts = importDefault("orEmptyArray")(
-                    s.match(/\w+|\W+/g)
-                  );
+                  var parts =
+                    (_s$match = s.match(/\w+|\W+/g)) != null ? _s$match : [];
 
                   var i;
 
@@ -11130,7 +11108,7 @@ try {
               var _default = Miny;
               exports["default"] = _default;
             },
-            98
+            66
           );
           __d(
             "getBlankIframeSrc",
@@ -26845,7 +26823,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1004829467","namespace":"FB","message":"' +
+        '","revision":"1004831987","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
