@@ -1,4 +1,4 @@
-/*1638877157,,JIT Construction: v1004820904,en_US*/
+/*1638935358,,JIT Construction: v1004826880,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3691,7 +3691,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1004820904",
+            revision: "1004826880",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -12643,22 +12643,7 @@ try {
                 }
               }
 
-              function executeIABCallback(cb, iabResponseStr) {
-                var iabResponse = ES("JSON", "parse", false, iabResponseStr);
-                if (iabResponse["iab-s"] == null) {
-                  iabResponse["iab-s"] = "unknown";
-                }
-                switch (iabResponse["iab-s"]) {
-                  case "connected":
-                    setAuthResponse(iabResponse["iab-ar"], "connected");
-
-                    break;
-                  case "not_authorized":
-                  case "unknown":
-                  default:
-                    setAuthResponse(null, iabResponse["iab-s"]);
-                }
-
+              function executeIABCallback(cb) {
                 if (cb) {
                   var _response4 = {
                     authResponse: getAuthResponse(),
@@ -12669,8 +12654,8 @@ try {
                 }
                 window.removeEventListener(
                   "fbNativeLoginResponse",
-                  function window_removeEventListener_$1(ev) {
-                    return executeIABCallback(cb, ev.response);
+                  function window_removeEventListener_$1(_ev) {
+                    return executeIABCallback(cb);
                   }
                 );
               }
@@ -12760,13 +12745,10 @@ try {
               }
 
               function setUpIABStatusFetch(fn, fbToken, igToken) {
-                var currentAuthResponse = importDefault(
-                  "sdk.AuthState"
-                ).getState().currentAuthResponse;
                 window.addEventListener(
                   "fbNativeLoginResponse",
-                  function window_addEventListener_$1(ev) {
-                    return executeIABCallback(fn, ev.response);
+                  function window_addEventListener_$1(_ev) {
+                    return executeIABCallback(fn);
                   }
                 );
 
@@ -17422,7 +17404,8 @@ try {
             function $module_sdk_Canvas_Plugin(
               global,
               require,
-              requireDynamic,
+              importDefault,
+              importNamespace,
               requireLazy,
               module,
               exports
@@ -17432,15 +17415,15 @@ try {
               var devHidePluginCallback = null;
 
               var osx =
-                require("sdk.UA").osx() &&
-                require("sdk.UA").osx.getVersionParts();
+                importDefault("sdk.UA").osx() &&
+                importDefault("sdk.UA").osx.getVersionParts();
               var unityNeedsToBeHidden = !(
                 osx &&
                 osx[0] > 10 &&
                 osx[1] > 10 &&
-                (require("sdk.UA").chrome() >= 31 ||
-                  require("sdk.UA").webkit() >= 537.71 ||
-                  require("sdk.UA").firefox() >= 25)
+                (importDefault("sdk.UA").chrome() >= 31 ||
+                  importDefault("sdk.UA").webkit() >= 537.71 ||
+                  importDefault("sdk.UA").firefox() >= 25)
               );
 
               function hideUnityElement(elem) {
@@ -17556,11 +17539,13 @@ try {
                   };
 
                   if (devHidePluginCallback) {
-                    require("Log").info("Calling developer specified callback");
+                    importNamespace("Log").info(
+                      "Calling developer specified callback"
+                    );
 
                     var devArgs = { state: params.state, elem: elem };
                     devHidePluginCallback(devArgs);
-                    setTimeout(visibilityToggleCb, 200);
+                    window.setTimeout(visibilityToggleCb, 200);
                   } else {
                     visibilityToggleCb();
                   }
@@ -17572,25 +17557,30 @@ try {
                     flash: flashPresent
                   };
 
-                  require("sdk.api")(
-                    require("sdk.Runtime").getClientID() + "/occludespopups",
+                  importDefault("sdk.api")(
+                    importDefault("sdk.Runtime").getClientID() +
+                      "/occludespopups",
                     "post",
                     opts
                   );
                 }
               }
 
-              require("sdk.RPC").local.hidePluginObjects = function() {
-                require("Log").info("hidePluginObjects called");
+              importDefault("sdk.RPC").local.hidePluginObjects = function() {
+                importNamespace("Log").info("hidePluginObjects called");
                 hidePluginCallback({ state: "opened" });
               };
-              require("sdk.RPC").local.showPluginObjects = function() {
-                require("Log").info("showPluginObjects called");
+              importDefault("sdk.RPC").local.showPluginObjects = function() {
+                importNamespace("Log").info("showPluginObjects called");
                 hidePluginCallback({ state: "closed" });
               };
 
-              require("sdk.RPC").local.showFlashObjects = require("sdk.RPC").local.showPluginObjects;
-              require("sdk.RPC").local.hideFlashObjects = require("sdk.RPC").local.hidePluginObjects;
+              importDefault("sdk.RPC").local.showFlashObjects = importDefault(
+                "sdk.RPC"
+              ).local.showPluginObjects;
+              importDefault("sdk.RPC").local.hideFlashObjects = importDefault(
+                "sdk.RPC"
+              ).local.hidePluginObjects;
 
               function hidePluginElement() {
                 hideFlashElement();
@@ -17611,10 +17601,10 @@ try {
                 hidePluginElement: hidePluginElement,
                 showPluginElement: showPluginElement
               };
-
-              module.exports = Plugin;
+              var _default = Plugin;
+              exports["default"] = _default;
             },
-            null
+            98
           );
           __d(
             "sdk.Canvas.Tti",
@@ -26855,7 +26845,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1004820904","namespace":"FB","message":"' +
+        '","revision":"1004826880","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
