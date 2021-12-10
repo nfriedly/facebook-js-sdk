@@ -1,4 +1,4 @@
-/*1639118363,,JIT Construction: v1004844850,en_US*/
+/*1639123852,,JIT Construction: v1004845060,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3691,7 +3691,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1004844850",
+            revision: "1004845060",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -6305,14 +6305,14 @@ try {
                   error.loggingSource == "ONERROR" &&
                   error.message.indexOf("ResizeObserver loop") >= 0
                 ) {
-                  error.type = "warn";
+                  return "warn";
                 }
 
                 if (
                   error.stack != null &&
                   error.stack.indexOf("chrome-extension://") >= 0
                 ) {
-                  error.type = "warn";
+                  return "warn";
                 }
 
                 return "error";
@@ -26837,7 +26837,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1004844850","namespace":"FB","message":"' +
+        '","revision":"1004845060","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
