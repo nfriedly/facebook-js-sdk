@@ -1,4 +1,4 @@
-/*1639053555,,JIT Construction: v1004837452,en_US*/
+/*1639118363,,JIT Construction: v1004844850,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3691,7 +3691,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1004837452",
+            revision: "1004844850",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -14578,7 +14578,8 @@ try {
             function $module_sdk_Frictionless(
               global,
               require,
-              requireDynamic,
+              importDefault,
+              importNamespace,
               requireLazy,
               module,
               exports
@@ -14590,12 +14591,17 @@ try {
 
                 _updateRecipients: function _updateRecipients() {
                   Frictionless._allowedRecipients = {};
-                  require("sdk.api")(
+
+                  importDefault("sdk.api")(
                     "/me/apprequestformerrecipients",
                     function api_$1(response) {
-                      if (!response || response.error) {
+                      if (
+                        !response ||
+                        (response == null ? void 0 : response.error)
+                      ) {
                         return;
                       }
+
                       response.data.forEach(function response_data_forEach_$0(
                         recipient
                       ) {
@@ -14609,14 +14615,19 @@ try {
 
                 init: function init() {
                   Frictionless._useFrictionless = true;
-                  require("sdk.Auth").getLoginStatus(
+
+                  importDefault("sdk.Auth").getLoginStatus(
                     function Auth_getLoginStatus_$0(response) {
-                      if (response.status == "connected") {
+                      if (
+                        (response == null ? void 0 : response.status) ==
+                        "connected"
+                      ) {
                         Frictionless._updateRecipients();
                       }
                     }
                   );
-                  require("sdk.Event").subscribe(
+
+                  importNamespace("sdk.Event").subscribe(
                     "auth.login",
                     function Event_subscribe_$1(login) {
                       if (login.authResponse) {
@@ -14632,15 +14643,13 @@ try {
                 ) {
                   return function(params) {
                     var updated = params && params.updated_frictionless;
-                    if (Frictionless._useFrictionless && updated) {
+                    if (Frictionless._useFrictionless && updated !== null) {
                       Frictionless._updateRecipients();
                     }
 
                     if (params) {
-                      if (!hidden && params.frictionless) {
-                        require("sdk.Dialog")._hideLoader();
-                        require("sdk.Dialog")._restoreBodyPosition();
-                        require("sdk.Dialog")._hideIPadOverlay();
+                      if (!hidden && params.frictionless !== null) {
+                        importDefault("sdk.Dialog")._hideLoader();
                       }
                       delete params.frictionless;
                       delete params.updated_frictionless;
@@ -14651,23 +14660,28 @@ try {
                 },
 
                 isAllowed: function isAllowed(user_ids) {
-                  if (!user_ids) {
+                  var checkedUserIds = user_ids;
+                  if (!checkedUserIds) {
                     return false;
                   }
 
-                  if (typeof user_ids === "number") {
-                    return user_ids in Frictionless._allowedRecipients;
+                  if (typeof checkedUserIds === "number") {
+                    return checkedUserIds in Frictionless._allowedRecipients;
                   }
-                  if (typeof user_ids === "string") {
-                    user_ids = user_ids.split(",");
+                  if (typeof checkedUserIds === "string") {
+                    checkedUserIds = checkedUserIds.split(",");
                   }
-                  user_ids = user_ids.map(function user_ids_map_$0(s) {
-                    return String(s).trim();
-                  });
+                  checkedUserIds = checkedUserIds.map(
+                    function checkedUserIds_map_$0(s) {
+                      return String(s).trim();
+                    }
+                  );
 
                   var allowed = true;
                   var has_user_ids = false;
-                  user_ids.forEach(function user_ids_forEach_$0(user_id) {
+                  checkedUserIds.forEach(function checkedUserIds_forEach_$0(
+                    user_id
+                  ) {
                     allowed =
                       allowed && user_id in Frictionless._allowedRecipients;
                     has_user_ids = true;
@@ -14676,7 +14690,7 @@ try {
                 }
               };
 
-              require("sdk.Event").subscribe(
+              importNamespace("sdk.Event").subscribe(
                 "init:post",
                 function Event_subscribe_$1(options) {
                   if (options.frictionlessRequests) {
@@ -14684,10 +14698,10 @@ try {
                   }
                 }
               );
-
-              module.exports = Frictionless;
+              var _default = Frictionless;
+              exports["default"] = _default;
             },
-            null
+            98
           );
           __d(
             "resolveURI",
@@ -26823,7 +26837,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1004837452","namespace":"FB","message":"' +
+        '","revision":"1004844850","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
