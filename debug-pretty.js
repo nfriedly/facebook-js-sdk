@@ -1,4 +1,4 @@
-/*1639192239,,JIT Construction: v1004850874,en_US*/
+/*1639199953,,JIT Construction: v1004851796,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3691,7 +3691,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1004850874",
+            revision: "1004851796",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -21231,85 +21231,6 @@ try {
                 }
               }
 
-              function getEntryPointBaseStyle(
-                bottomSpacing,
-                isLoadedByFacade,
-                shouldIconDelay
-              ) {
-                return {
-                  animation: _getIconAnimation(
-                    isLoadedByFacade,
-                    shouldIconDelay
-                  ),
-                  background: "none",
-                  bottom: bottomSpacing.toString() + "px",
-                  display: "block",
-                  margin: "0 12px 0 12px",
-                  overflow: "visible",
-                  padding: "0",
-                  position: "fixed",
-                  top: "auto",
-                  zIndex: 2147483644
-                };
-              }
-
-              function getEntryPointIconStyle(
-                shouldShowEntryPointCustomization,
-                entryPointLabel,
-                entryPointSize
-              ) {
-                if (shouldShowEntryPointCustomization) {
-                  if (entryPointLabel !== "none") {
-                    var height =
-                      entryPointSize === "compact"
-                        ? LABELED_ENTRY_POINT_COMPACT_HEIGHT
-                        : LABELED_ENTRY_POINT_STANDARD_HEIGHT;
-                    return {
-                      borderRadius: "60px",
-                      height: height + "px",
-                      width: "auto"
-                    };
-                  } else {
-                    var size =
-                      entryPointSize === "compact"
-                        ? ICON_ENTRY_POINT_COMPACT_HEIGHT
-                        : ICON_ENTRY_POINT_STANDARD_HEIGHT;
-                    return {
-                      borderRadius: "60px",
-                      boxShadow: "0 4px 12px 0 rgba(0, 0, 0, 0.15)",
-                      height: size + "px",
-                      width: size + "px"
-                    };
-                  }
-                }
-                var iconSize =
-                  entryPointSize === "compact"
-                    ? ICON_ENTRY_POINT_COMPACT_HEIGHT
-                    : ICON_ENTRY_POINT_STANDARD_HEIGHT;
-
-                return {
-                  borderRadius: "30px",
-                  boxShadow: "0 4px 12px 0 rgba(0, 0, 0, 0.15)",
-                  height: iconSize + "px",
-                  width: iconSize + "px"
-                };
-              }
-
-              function getEntryPointAlignmentStyle(alignment, sideSpacing) {
-                var totalSideSpacing = sideSpacing - ENTRY_POINT_MARGIN;
-                switch (alignment) {
-                  case "right":
-                    return {
-                      right: totalSideSpacing + "px"
-                    };
-
-                  case "left":
-                    return {
-                      left: totalSideSpacing + "px"
-                    };
-                }
-              }
-
               function getEntryPointStyle(
                 alignment,
                 bottomSpacing,
@@ -21343,7 +21264,10 @@ try {
                   alignmentStyle
                 );
 
-                return style;
+                var sortedStyle = Object.fromEntries(
+                  ES("Object", "entries", false, style).sort()
+                );
+                return sortedStyle;
               }
 
               function getIconStyleText(
@@ -21356,32 +21280,18 @@ try {
                 shouldShowEntryPointCustomization,
                 entryPointSize
               ) {
-                return ES(
-                  "JSON",
-                  "stringify",
-                  false,
-                  getEntryPointStyle(
-                    alignment,
-                    bottomSpacing,
-                    sideSpacing,
-                    isLoadedByFacade,
-                    shouldIconDelay,
-                    label,
-                    shouldShowEntryPointCustomization,
-                    entryPointSize
-                  )
+                var style = getEntryPointStyle(
+                  alignment,
+                  bottomSpacing,
+                  sideSpacing,
+                  isLoadedByFacade,
+                  shouldIconDelay,
+                  label,
+                  shouldShowEntryPointCustomization,
+                  entryPointSize
                 );
-              }
 
-              function _getIconAnimation(isLoadedByFacade, shouldIconDelay) {
-                if (Boolean(isLoadedByFacade)) {
-                  return null;
-                }
-                if (Boolean(shouldIconDelay)) {
-                  return "slideInFromBottomDelay 3s ease-out";
-                } else {
-                  return "slideInFromBottom 0.3s ease-out";
-                }
+                return ES("JSON", "stringify", false, style);
               }
 
               function getUnreadCountStyleText(
@@ -21425,7 +21335,7 @@ try {
                   background: "none"
                 };
 
-                var styleText;
+                var styleText = {};
                 switch (alignment) {
                   case "right":
                     styleText = babelHelpers["extends"]({}, styleTextBase, {
@@ -21441,7 +21351,10 @@ try {
                     break;
                 }
 
-                return ES("JSON", "stringify", false, styleText);
+                var sortedStyle = Object.fromEntries(
+                  ES("Object", "entries", false, styleText).sort()
+                );
+                return ES("JSON", "stringify", false, sortedStyle);
               }
 
               function getMobileLandingStyleText(isDialogVisible) {
@@ -21489,31 +21402,31 @@ try {
 
                 var styleTextBase =
                   "padding: 0; position: fixed; z-index: 2147483646; border-radius: 16px; top: auto; background: none; minHeight: 300px;";
-                var styleTextSizeStandard = "width: 399px; ";
-                var styleTextSizeCompact = "width: 319px; ";
+                var styleTextSizeStandard = " width: 399px;";
+                var styleTextSizeCompact = " width: 319px;";
                 var styleText =
+                  styleTextBase +
                   (windowSize === "compact"
                     ? styleTextSizeCompact
                     : styleTextSizeStandard) +
-                  styleTextBase +
                   bottomSpacingString;
                 if (isDialogVisible) {
                   styleText +=
-                    "max-height: calc(100% - " +
+                    " max-height: calc(100% - " +
                     bottomSpacingForDialog.toString() +
                     "px);";
                 } else {
-                  styleText += "max-height: 0;";
+                  styleText += " max-height: 0;";
                 }
 
                 switch (alignment) {
                   case "right":
                     styleText +=
-                      "right: 4px; margin-right: " + totalSideSpacing + "px;";
+                      " right: 4px; margin-right: " + totalSideSpacing + "px;";
                     break;
                   case "left":
                     styleText +=
-                      "left: -4px; margin-left: " + totalSideSpacing + "px;";
+                      " left: -4px; margin-left: " + totalSideSpacing + "px;";
                     break;
                 }
 
@@ -21572,25 +21485,25 @@ try {
                 switch (alignment) {
                   case "right":
                     styleText +=
-                      "right: 4px; margin-right: " + totalSideSpacing + "px;";
+                      " right: 4px; margin-right: " + totalSideSpacing + "px;";
                     break;
                   case "left":
                     styleText +=
-                      "left: 4px; margin-left: " + totalSideSpacing + "px;";
+                      " left: 4px; margin-left: " + totalSideSpacing + "px;";
                     break;
                 }
 
                 styleText += Boolean(shouldIconDelay)
-                  ? "animation: slideInFromBottomDelay 6s ease-out;"
-                  : "animation: slideInFromBottomDelay 3s ease-out;";
+                  ? " animation: slideInFromBottomDelay 6s ease-out;"
+                  : " animation: slideInFromBottomDelay 3s ease-out;";
                 return styleText;
               }
 
               function getMobileWelcomeMessageStyleText(
                 height,
                 alignment,
-                shouldIconDelay,
                 bottomSpacing,
+                shouldIconDelay,
                 entryPointLabel,
                 shouldShowEntryPointCustomization,
                 entryPointSize
@@ -21603,24 +21516,24 @@ try {
                 var styleText =
                   "position: fixed; z-index: 2147483646; box-shadow: none; border-radius: 18px 0px 18px 18px; bottom: 0px; right: 0px; width: calc(80% - 40px); bottom: 24px;";
                 if (height != null && typeof bottomSpacing == "number") {
-                  styleText += "height: " + height + "px; ";
+                  styleText += " height: " + height + "px; ";
 
                   var bottomSpacingValue = bottomSpacing;
                   if (height < iconHeight) {
                     bottomSpacingValue = bottomSpacing + 12;
                   }
-                  styleText += "bottom: " + bottomSpacingValue + "px;";
+                  styleText += " bottom: " + bottomSpacingValue + "px;";
                 } else {
-                  styleText += "height: 60px; ";
+                  styleText += " height: 60px; ";
                 }
                 styleText +=
                   alignment === "left"
-                    ? "left: calc(84px + 5%); "
-                    : "left: 5%; ";
+                    ? " left: calc(84px + 5%); "
+                    : " left: 5%; ";
 
                 styleText += Boolean(shouldIconDelay)
-                  ? "animation: slideInFromBottomDelay 6s ease-in;"
-                  : "animation: slideInFromBottomDelay 3s ease-in;";
+                  ? " animation: slideInFromBottomDelay 6s ease-in;"
+                  : " animation: slideInFromBottomDelay 3s ease-in;";
 
                 if (shouldShowEntryPointCustomization) {
                   if (
@@ -21633,20 +21546,111 @@ try {
                         : LABELED_ENTRY_POINT_STANDARD_HEIGHT;
                     var _bottomSpacingValue =
                       bottomSpacing + labeledHeight + 12;
-                    styleText += "bottom: " + _bottomSpacingValue + "px;";
+                    styleText += " bottom: " + _bottomSpacingValue + "px;";
 
                     switch (alignment) {
                       case "right":
-                        styleText += "right: 20px; left: auto";
+                        styleText += " right: 20px; left: auto";
                         break;
                       case "left":
-                        styleText += "left: 20px; right: auto";
+                        styleText += " left: 20px; right: auto";
                         break;
                     }
                   }
                 }
 
                 return styleText;
+              }
+
+              function getEntryPointBaseStyle(
+                bottomSpacing,
+                isLoadedByFacade,
+                shouldIconDelay
+              ) {
+                return {
+                  animation: getIconAnimation(
+                    isLoadedByFacade,
+                    shouldIconDelay
+                  ),
+                  background: "none",
+                  bottom: bottomSpacing.toString() + "px",
+                  display: "block",
+                  margin: "0 12px 0 12px",
+                  overflow: "visible",
+                  padding: "0",
+                  position: "fixed",
+                  top: "auto",
+                  zIndex: 2147483644
+                };
+              }
+
+              function getEntryPointIconStyle(
+                shouldShowEntryPointCustomization,
+                entryPointLabel,
+                entryPointSize
+              ) {
+                if (shouldShowEntryPointCustomization) {
+                  if (entryPointLabel !== "none") {
+                    var height =
+                      entryPointSize === "compact"
+                        ? LABELED_ENTRY_POINT_COMPACT_HEIGHT
+                        : LABELED_ENTRY_POINT_STANDARD_HEIGHT;
+                    return {
+                      borderRadius: "60px",
+                      boxShadow: null,
+                      height: height + "px",
+                      width: "auto"
+                    };
+                  } else {
+                    var size =
+                      entryPointSize === "compact"
+                        ? ICON_ENTRY_POINT_COMPACT_HEIGHT
+                        : ICON_ENTRY_POINT_STANDARD_HEIGHT;
+                    return {
+                      borderRadius: "60px",
+                      boxShadow: "0 4px 12px 0 rgba(0, 0, 0, 0.15)",
+                      height: size + "px",
+                      width: size + "px"
+                    };
+                  }
+                }
+                var iconSize =
+                  entryPointSize === "compact"
+                    ? ICON_ENTRY_POINT_COMPACT_HEIGHT
+                    : ICON_ENTRY_POINT_STANDARD_HEIGHT;
+
+                return {
+                  borderRadius: "30px",
+                  boxShadow: "0 4px 12px 0 rgba(0, 0, 0, 0.15)",
+                  height: iconSize + "px",
+                  width: iconSize + "px"
+                };
+              }
+
+              function getEntryPointAlignmentStyle(alignment, sideSpacing) {
+                var totalSideSpacing = sideSpacing - ENTRY_POINT_MARGIN;
+                switch (alignment) {
+                  case "right":
+                    return {
+                      right: totalSideSpacing + "px"
+                    };
+
+                  case "left":
+                    return {
+                      left: totalSideSpacing + "px"
+                    };
+                }
+              }
+
+              function getIconAnimation(isLoadedByFacade, shouldIconDelay) {
+                if (Boolean(isLoadedByFacade)) {
+                  return null;
+                }
+                if (Boolean(shouldIconDelay)) {
+                  return "slideInFromBottomDelay 3s ease-out";
+                } else {
+                  return "slideInFromBottom 0.3s ease-out";
+                }
               }
               exports.LABELED_ENTRY_POINT_STANDARD_HEIGHT = LABELED_ENTRY_POINT_STANDARD_HEIGHT;
               exports.LABELED_ENTRY_POINT_COMPACT_HEIGHT = LABELED_ENTRY_POINT_COMPACT_HEIGHT;
@@ -26837,7 +26841,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1004850874","namespace":"FB","message":"' +
+        '","revision":"1004851796","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
