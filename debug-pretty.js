@@ -1,4 +1,4 @@
-/*1639199953,,JIT Construction: v1004851796,en_US*/
+/*1639464552,,JIT Construction: v1004861079,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3691,7 +3691,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1004851796",
+            revision: "1004861079",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -21087,6 +21087,50 @@ try {
             null
           );
           __d(
+            "ChatPluginEntryPointIconEnum",
+            ["$InternalEnum"],
+            function $module_ChatPluginEntryPointIconEnum(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              var ChatPluginEntryPointIconEnum = require("$InternalEnum")({
+                MESSENGER_ICON: "messenger_icon",
+                CHAT_ROUND_ICON: "chat_round_icon",
+                CHAT_ANGULAR_ICON: "chat_angular_icon",
+                NONE: "none"
+              });
+              var _default = ChatPluginEntryPointIconEnum;
+              exports["default"] = _default;
+            },
+            66
+          );
+          __d(
+            "ChatPluginEntryPointLabelEnum",
+            ["$InternalEnum"],
+            function $module_ChatPluginEntryPointLabelEnum(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              var ChatPluginEntryPointLabelEnum = require("$InternalEnum")({
+                NONE: "none",
+                CHAT: "chat",
+                HELP: "help",
+                ASK_US: "ask_us"
+              });
+              var _default = ChatPluginEntryPointLabelEnum;
+              exports["default"] = _default;
+            },
+            66
+          );
+          __d(
             "ChatPluginEntryPointSizeEnum",
             [],
             function $module_ChatPluginEntryPointSizeEnum(
@@ -21210,6 +21254,12 @@ try {
             ) {
               var LABELED_ENTRY_POINT_STANDARD_HEIGHT = 44;
               var LABELED_ENTRY_POINT_COMPACT_HEIGHT = 36;
+              var LABELED_ENTRY_POINT_STANDARD_FONT_SIZE = 17;
+              var LABELED_ENTRY_POINT_COMPACT_FONT_SIZE = 15;
+              var LABELED_ENTRY_POINT_STANDARD_LINE_HEIGHT = 22;
+              var LABELED_ENTRY_POINT_COMPACT_LINE_HEIGHT = 20;
+              var LABELED_ENTRY_POINT_STANDARD_ICON_MARGIN_RIGHT = 6;
+              var LABELED_ENTRY_POINT_COMPACT_ICON_MARGIN_RIGHT = 4;
               var ICON_ENTRY_POINT_STANDARD_HEIGHT = 60;
               var ICON_ENTRY_POINT_COMPACT_HEIGHT = 44;
               var ENTRY_POINT_MARGIN = 12;
@@ -21654,6 +21704,12 @@ try {
               }
               exports.LABELED_ENTRY_POINT_STANDARD_HEIGHT = LABELED_ENTRY_POINT_STANDARD_HEIGHT;
               exports.LABELED_ENTRY_POINT_COMPACT_HEIGHT = LABELED_ENTRY_POINT_COMPACT_HEIGHT;
+              exports.LABELED_ENTRY_POINT_STANDARD_FONT_SIZE = LABELED_ENTRY_POINT_STANDARD_FONT_SIZE;
+              exports.LABELED_ENTRY_POINT_COMPACT_FONT_SIZE = LABELED_ENTRY_POINT_COMPACT_FONT_SIZE;
+              exports.LABELED_ENTRY_POINT_STANDARD_LINE_HEIGHT = LABELED_ENTRY_POINT_STANDARD_LINE_HEIGHT;
+              exports.LABELED_ENTRY_POINT_COMPACT_LINE_HEIGHT = LABELED_ENTRY_POINT_COMPACT_LINE_HEIGHT;
+              exports.LABELED_ENTRY_POINT_STANDARD_ICON_MARGIN_RIGHT = LABELED_ENTRY_POINT_STANDARD_ICON_MARGIN_RIGHT;
+              exports.LABELED_ENTRY_POINT_COMPACT_ICON_MARGIN_RIGHT = LABELED_ENTRY_POINT_COMPACT_ICON_MARGIN_RIGHT;
               exports.ICON_ENTRY_POINT_STANDARD_HEIGHT = ICON_ENTRY_POINT_STANDARD_HEIGHT;
               exports.ICON_ENTRY_POINT_COMPACT_HEIGHT = ICON_ENTRY_POINT_COMPACT_HEIGHT;
               exports.getMobileStyleText = getMobileStyleText;
@@ -22170,6 +22226,8 @@ try {
             [
               "$InternalEnum",
               "CORSRequest",
+              "ChatPluginEntryPointIconEnum",
+              "ChatPluginEntryPointLabelEnum",
               "ChatPluginEntryPointSizeEnum",
               "ChatPluginSDKPreLoggingUtils",
               "ChatPluginStyleUtils",
@@ -22182,6 +22240,7 @@ try {
               "sdk.DOM",
               "sdk.IdleCallback",
               "sdk.XFBML.CustomerChatNew",
+              "sdk.fbt",
               "sdk.feature",
               "uuid"
             ],
@@ -22250,6 +22309,8 @@ try {
                   _this.$ChatDOMFacade_willShowDialog = false;
 
                   _this.$ChatDOMFacade_entryPointSize = "standard";
+                  _this.$ChatDOMFacade_entryPointLabel = "none";
+                  _this.$ChatDOMFacade_entryPointIconEnum = "none";
 
                   _this.shadowCss = ["css:fb.shadow.css.chatdom"];
 
@@ -22290,35 +22351,107 @@ try {
                     "get",
                     this.params,
                     function CORSRequest_execute_$3(data) {
-                      var _getJSEnumSafe;
+                      var _getJSEnumSafe,
+                        _data$entry_point_siz,
+                        _ChatPluginEntryPoint,
+                        _ChatPluginEntryPoint2;
                       var endTime = importDefault("performanceAbsoluteNow")();
                       importNamespace("Log").info(
                         "facadeperf: CORS request completed in %sms.",
                         endTime - _this.$ChatDOMFacade_initTime
                       );
 
-                      if (data.error || !data.template) {
+                      if (data.error) {
                         return;
                       }
-                      importNamespace("sdk.DOM").html(
-                        _this.$ChatDOMFacade_container,
-                        data.template
-                      );
 
                       var alignment = data.alignment;
                       var bottomSpacing = data.bottom_spacing;
                       var sideSpacing = data.side_spacing;
                       var themeColor = data.theme_color;
-                      var entryPointSize =
-                        data.entry_point_size &&
-                        data.entry_point_size.toUpperCase();
                       _this.$ChatDOMFacade_entryPointSize =
                         (_getJSEnumSafe = importDefault("getJSEnumSafe")(
                           importDefault("ChatPluginEntryPointSizeEnum"),
-                          entryPointSize
+                          (_data$entry_point_siz = data.entry_point_size) ==
+                            null
+                            ? void 0
+                            : _data$entry_point_siz.toUpperCase()
                         )) != null
                           ? _getJSEnumSafe
                           : "standard";
+                      _this.$ChatDOMFacade_entryPointLabel =
+                        (_ChatPluginEntryPoint = importDefault(
+                          "ChatPluginEntryPointLabelEnum"
+                        ).cast(data.entry_point_label)) != null
+                          ? _ChatPluginEntryPoint
+                          : "none";
+                      _this.$ChatDOMFacade_entryPointIconEnum =
+                        (_ChatPluginEntryPoint2 = importDefault(
+                          "ChatPluginEntryPointIconEnum"
+                        ).cast(data.entry_point_icon_enum)) != null
+                          ? _ChatPluginEntryPoint2
+                          : "none";
+
+                      var containerHeight =
+                        _this.$ChatDOMFacade_entryPointSize === "compact"
+                          ? importNamespace("ChatPluginStyleUtils")
+                              .LABELED_ENTRY_POINT_COMPACT_HEIGHT
+                          : importNamespace("ChatPluginStyleUtils")
+                              .LABELED_ENTRY_POINT_STANDARD_HEIGHT;
+
+                      var fontSize =
+                        _this.$ChatDOMFacade_entryPointSize === "compact"
+                          ? importNamespace("ChatPluginStyleUtils")
+                              .LABELED_ENTRY_POINT_COMPACT_FONT_SIZE
+                          : importNamespace("ChatPluginStyleUtils")
+                              .LABELED_ENTRY_POINT_STANDARD_FONT_SIZE;
+
+                      var lineHeight =
+                        _this.$ChatDOMFacade_entryPointSize === "compact"
+                          ? importNamespace("ChatPluginStyleUtils")
+                              .LABELED_ENTRY_POINT_COMPACT_LINE_HEIGHT
+                          : importNamespace("ChatPluginStyleUtils")
+                              .LABELED_ENTRY_POINT_STANDARD_LINE_HEIGHT;
+
+                      var marginRight =
+                        _this.$ChatDOMFacade_entryPointSize === "compact"
+                          ? importNamespace("ChatPluginStyleUtils")
+                              .LABELED_ENTRY_POINT_COMPACT_ICON_MARGIN_RIGHT
+                          : importNamespace("ChatPluginStyleUtils")
+                              .LABELED_ENTRY_POINT_STANDARD_ICON_MARGIN_RIGHT;
+
+                      if (_this.$ChatDOMFacade_entryPointLabel === "none") {
+                        var _wrapperElement$child, _wrapperElement$child2;
+                        var wrapperElement = document.createElement("div");
+                        importNamespace("sdk.DOM").html(
+                          wrapperElement,
+                          data.entry_point_icon_svg
+                        );
+                        var iconSVG =
+                          (_wrapperElement$child =
+                            wrapperElement.children[0]) == null
+                            ? void 0
+                            : (_wrapperElement$child2 =
+                                _wrapperElement$child.children[1]) == null
+                            ? void 0
+                            : _wrapperElement$child2.outerHTML;
+                        importNamespace("sdk.DOM").html(
+                          _this.$ChatDOMFacade_container,
+                          iconSVG
+                        );
+                      } else {
+                        var _iconSVG = data.entry_point_icon_svg;
+                        importNamespace("sdk.DOM").html(
+                          _this.$ChatDOMFacade_container,
+                          _this.$ChatDOMFacade_getLabelEntryPointHTML(
+                            containerHeight,
+                            marginRight,
+                            fontSize,
+                            lineHeight,
+                            _iconSVG
+                          )
+                        );
+                      }
 
                       var css = importNamespace(
                         "ChatPluginStyleUtils"
@@ -22328,8 +22461,8 @@ try {
                         sideSpacing,
                         false,
                         true,
-                        undefined,
-                        false,
+                        data.entry_point_label,
+                        true,
                         _this.$ChatDOMFacade_entryPointSize
                       );
 
@@ -22359,6 +22492,20 @@ try {
 
                   return this.$ChatDOMFacade_container;
                 };
+                _proto.$ChatDOMFacade_getEntryPointLabelText = function $ChatDOMFacade_getEntryPointLabelText(
+                  label
+                ) {
+                  switch (label) {
+                    case "chat":
+                      return importDefault("sdk.fbt")._("Chat");
+                    case "help":
+                      return importDefault("sdk.fbt")._("Help");
+                    case "ask_us":
+                      return importDefault("sdk.fbt")._("Ask us");
+                    case "none":
+                      return "";
+                  }
+                };
                 _proto.$ChatDOMFacade_hideFacade = function $ChatDOMFacade_hideFacade() {
                   var _this$element$parentN;
                   (_this$element$parentN = this.element.parentNode) == null
@@ -22373,23 +22520,92 @@ try {
                     return;
                   }
 
-                  var iconSize =
-                    this.$ChatDOMFacade_entryPointSize === "compact"
-                      ? importNamespace("ChatPluginStyleUtils")
-                          .ICON_ENTRY_POINT_COMPACT_HEIGHT
-                      : importNamespace("ChatPluginStyleUtils")
-                          .ICON_ENTRY_POINT_STANDARD_HEIGHT;
+                  if (this.$ChatDOMFacade_entryPointLabel === "none") {
+                    var spinnerSVG = this.$ChatDOMFacade_getSpinnerSVG(0.6);
+                    importNamespace("sdk.DOM").html(
+                      this.$ChatDOMFacade_container,
+                      spinnerSVG
+                    );
+                  } else {
+                    var spinnerScale =
+                      this.$ChatDOMFacade_entryPointSize === "compact"
+                        ? 0.8
+                        : 1;
+                    var _spinnerSVG = this.$ChatDOMFacade_getSpinnerSVG(
+                      spinnerScale
+                    );
+                    if (this.$ChatDOMFacade_entryPointIconEnum === "none") {
+                      var marginRight =
+                        this.$ChatDOMFacade_entryPointSize === "compact"
+                          ? importNamespace("ChatPluginStyleUtils")
+                              .LABELED_ENTRY_POINT_COMPACT_ICON_MARGIN_RIGHT
+                          : importNamespace("ChatPluginStyleUtils")
+                              .LABELED_ENTRY_POINT_STANDARD_ICON_MARGIN_RIGHT;
 
-                  importNamespace("sdk.DOM").html(
-                    this.$ChatDOMFacade_container,
-                    '\n        <svg class="spinning" x="0" y="0" width="' +
-                      iconSize +
-                      '" height="' +
-                      iconSize +
-                      '" viewbox="0 0 60 60" cursor="pointer">\n          <circle class="path" cx="30" cy="30" r="15" fill="none" stroke-width="4"></circle>\n        </svg>\n      '
-                  );
-
+                      importNamespace("sdk.DOM").html(
+                        this.$ChatDOMFacade_container.children[0],
+                        this.$ChatDOMFacade_getLabelOnlyEntryPointSpinner(
+                          marginRight,
+                          _spinnerSVG
+                        ) + this.$ChatDOMFacade_container.children[0].innerHTML
+                      );
+                    } else {
+                      importNamespace("sdk.DOM").html(
+                        this.$ChatDOMFacade_container.children[0].children[0],
+                        _spinnerSVG
+                      );
+                    }
+                  }
                   this.$ChatDOMFacade_spinnerShown = true;
+                };
+                _proto.$ChatDOMFacade_getLabelEntryPointHTML = function $ChatDOMFacade_getLabelEntryPointHTML(
+                  containerHeight,
+                  marginRight,
+                  fontSize,
+                  lineHeight,
+                  iconSVG
+                ) {
+                  return (
+                    '\n      <div class="label-container" style="\n        height: ' +
+                    containerHeight +
+                    'px;\n      ">\n        ' +
+                    (iconSVG &&
+                      '\n            <div class="label-container-icon" style="\n              margin-right: ' +
+                        marginRight +
+                        'px;\n            ">\n              ' +
+                        iconSVG +
+                        "\n            </div>\n          ") +
+                    '\n        <div\n          class="label-container-label"\n          style="\n            font-size: ' +
+                    fontSize +
+                    "px;\n            line-height: " +
+                    lineHeight +
+                    'px;\n        ">' +
+                    this.$ChatDOMFacade_getEntryPointLabelText(
+                      this.$ChatDOMFacade_entryPointLabel
+                    ).toString() +
+                    "</div>\n      </div>\n    "
+                  );
+                };
+                _proto.$ChatDOMFacade_getLabelOnlyEntryPointSpinner = function $ChatDOMFacade_getLabelOnlyEntryPointSpinner(
+                  marginRight,
+                  spinnerSVG
+                ) {
+                  return (
+                    '\n      <div class="label-container-icon" style="\n        margin-right: ' +
+                    marginRight +
+                    'px;\n      ">\n        ' +
+                    spinnerSVG +
+                    "\n      </div>\n    "
+                  );
+                };
+                _proto.$ChatDOMFacade_getSpinnerSVG = function $ChatDOMFacade_getSpinnerSVG(
+                  scale
+                ) {
+                  return (
+                    '\n      <svg class="spinning" x="0" y="0" viewbox="0 0 60 60">\n        <circle transform="scale(' +
+                    scale +
+                    ')" class="path" cx="30" cy="30" r="24" fill="none" stroke-width="6"></circle>\n      </svg>\n    '
+                  );
                 };
                 _proto.$ChatDOMFacade_prepareShowDialog = function $ChatDOMFacade_prepareShowDialog(
                   showDialog
@@ -22417,28 +22633,23 @@ try {
                   if (showSpinner) {
                     this.$ChatDOMFacade_showSpinner();
                   }
-
                   this.$ChatDOMFacade_prepareShowDialog(showDialog);
-
                   if (
                     this.$ChatDOMFacade_loadingState !== LoadingState.WAITING
                   ) {
                     return;
                   }
                   this.$ChatDOMFacade_loadingState = LoadingState.LOADING;
-
                   var container = document.createElement("div");
                   importNamespace("sdk.Content").append(
                     container,
                     this.element
                   );
-
                   var renderer = new (importDefault(
                     "sdk.XFBML.CustomerChatNew"
                   ))(container, "fb", "customerchat", this.params);
 
                   this.$ChatDOMFacade_renderer = renderer;
-
                   renderer.subscribe(
                     "xd.mpn.setupIconIframe",
                     function renderer_subscribe_$1(_message) {
@@ -22446,9 +22657,7 @@ try {
                       _this2.$ChatDOMFacade_hideFacade();
                     }
                   );
-
                   this.$ChatDOMFacade_prepareShowDialog(showDialog);
-
                   renderer.process();
                 };
                 return ChatDOMFacade;
@@ -24839,6 +25048,15 @@ try {
                       );
                     }
                   );
+                  this.subscribe(
+                    "xd.mpn.updateIconAppearance",
+                    function subscribe_$1(message) {
+                      importDefault("sdk.cp.Actions").setDialogAppearance(
+                        _this.$CustomerChat_iconInnerIFrame,
+                        message
+                      );
+                    }
+                  );
                   this.subscribe("xd.mpn.reload", function subscribe_$1(
                     message
                   ) {
@@ -26841,7 +27059,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1004851796","namespace":"FB","message":"' +
+        '","revision":"1004861079","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
