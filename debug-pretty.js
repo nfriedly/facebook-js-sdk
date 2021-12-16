@@ -1,4 +1,4 @@
-/*1639464552,,JIT Construction: v1004861079,en_US*/
+/*1639629555,,JIT Construction: v1004877843,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3691,7 +3691,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1004861079",
+            revision: "1004877843",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -21453,7 +21453,7 @@ try {
                 var styleTextBase =
                   "padding: 0; position: fixed; z-index: 2147483646; border-radius: 16px; top: auto; background: none; minHeight: 300px;";
                 var styleTextSizeStandard = " width: 399px;";
-                var styleTextSizeCompact = " width: 319px;";
+                var styleTextSizeCompact = " width: 324px;";
                 var styleText =
                   styleTextBase +
                   (windowSize === "compact"
@@ -27059,7 +27059,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1004861079","namespace":"FB","message":"' +
+        '","revision":"1004877843","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
