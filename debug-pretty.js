@@ -1,4 +1,4 @@
-/*1639629555,,JIT Construction: v1004877843,en_US*/
+/*1639697357,,JIT Construction: v1004882674,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3691,7 +3691,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1004877843",
+            revision: "1004882674",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -13445,22 +13445,27 @@ try {
             function $module_sdk_RPC(
               global,
               require,
-              requireDynamic,
+              importDefault,
+              importNamespace,
               requireLazy,
               module,
               exports
             ) {
-              var outQueue = new (require("Queue"))();
-              var jsonrpc = new (require("JSONRPC"))(function(message) {
+              var outQueue = new (importDefault("Queue"))();
+              var jsonrpc = new (importDefault("JSONRPC"))(function(message) {
                 outQueue.enqueue(message);
               });
 
               var RPC = {
                 local: jsonrpc.local,
                 remote: jsonrpc.remote,
+
                 stub: ES(jsonrpc.stub, "bind", true, jsonrpc),
                 setInQueue: function setInQueue(queue) {
-                  require("Assert").isInstanceOf(require("Queue"), queue);
+                  importDefault("Assert").isInstanceOf(
+                    importDefault("Queue"),
+                    queue
+                  );
 
                   queue.start(function queue_start_$0(message) {
                     jsonrpc.read(message);
@@ -13470,10 +13475,10 @@ try {
                   return outQueue;
                 }
               };
-
-              module.exports = RPC;
+              var _default = RPC;
+              exports["default"] = _default;
             },
-            null
+            98
           );
           __d(
             "sdk.Canvas.Environment",
@@ -17604,14 +17609,15 @@ try {
             function $module_sdk_Canvas_Tti(
               global,
               require,
-              requireDynamic,
+              importDefault,
+              importNamespace,
               requireLazy,
               module,
               exports
             ) {
               function passAppTtiMessage(callback, messageName) {
                 var params = {
-                  appId: require("sdk.Runtime").getClientID(),
+                  appId: importDefault("sdk.Runtime").getClientID(),
                   time: Date.now(),
                   name: messageName
                 };
@@ -17623,7 +17629,7 @@ try {
                   });
                 }
 
-                require("sdk.RPC").remote.logTtiMessage.apply(null, args);
+                importDefault("sdk.RPC").remote.logTtiMessage.apply(null, args);
               }
 
               function startTimer() {
@@ -17638,17 +17644,17 @@ try {
                 passAppTtiMessage(callback, "RecordIframeAppTti");
               }
 
-              require("sdk.RPC").stub("logTtiMessage");
+              importDefault("sdk.RPC").stub("logTtiMessage");
 
               var Tti = {
                 setDoneLoading: setDoneLoading,
                 startTimer: startTimer,
                 stopTimer: stopTimer
               };
-
-              module.exports = Tti;
+              var _default = Tti;
+              exports["default"] = _default;
             },
-            null
+            98
           );
           __d(
             "legacy:fb.canvas",
@@ -27059,7 +27065,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1004877843","namespace":"FB","message":"' +
+        '","revision":"1004882674","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
