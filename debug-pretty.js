@@ -1,4 +1,4 @@
-/*1639697357,,JIT Construction: v1004882674,en_US*/
+/*1639703426,,JIT Construction: v1004883202,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3691,7 +3691,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1004882674",
+            revision: "1004883202",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -15730,7 +15730,8 @@ try {
             function $module_sdk_UIServer(
               global,
               require,
-              requireDynamic,
+              importDefault,
+              importNamespace,
               requireLazy,
               module,
               exports
@@ -15747,7 +15748,7 @@ try {
                       "parent"
                     );
 
-                    if (!require("sdk.UA").nativeApp()) {
+                    if (!importDefault("sdk.UA").nativeApp()) {
                       call.params.in_iframe = 1;
                     }
                     return call;
@@ -15771,7 +15772,7 @@ try {
               function isSupportedOauth(params) {
                 return (
                   UIServer.isOAuth(params) &&
-                  require("sdk.Extensions").supportsDialog("oauth")
+                  importNamespace("sdk.Extensions").supportsDialog("oauth")
                 );
               }
 
@@ -15780,31 +15781,41 @@ try {
                   UIServer.isOAuth(params) &&
                   (params.is_account_link === true ||
                     params.is_account_link === "true") &&
-                  require("sdk.Extensions").supportsDialog("accountLink")
+                  importNamespace("sdk.Extensions").supportsDialog(
+                    "accountLink"
+                  )
                 );
               }
 
               function permission_oauth_transform(call) {
-                if (!require("sdk.Runtime").getClientID()) {
-                  require("Log").error("FB.login() called before FB.init().");
+                if (!importDefault("sdk.Runtime").getClientID()) {
+                  importNamespace("Log").error(
+                    "FB.login() called before FB.init()."
+                  );
                   return;
                 }
 
                 if (
-                  require("sdk.Auth").getAuthResponse() &&
+                  importDefault("sdk.Auth").getAuthResponse() &&
                   !call.params.scope &&
                   !call.params.asset_scope &&
                   !call.params.auth_type
                 ) {
                   if (!call.params.plugin_prepare) {
-                    require("Log").error(
+                    importNamespace("Log").error(
                       "FB.login() called when user is already connected."
                     );
                     call.cb &&
-                      call.cb({
-                        status: require("sdk.Runtime").getLoginStatus(),
-                        authResponse: require("sdk.Auth").getAuthResponse()
-                      });
+                      (call == null
+                        ? void 0
+                        : call.cb({
+                            status: importDefault(
+                              "sdk.Runtime"
+                            ).getLoginStatus(),
+                            authResponse: importDefault(
+                              "sdk.Auth"
+                            ).getAuthResponse()
+                          }));
                   }
                   return;
                 }
@@ -15814,7 +15825,7 @@ try {
                 delete call.cb;
 
                 if (call && call.params && !call.params.logger_id) {
-                  call.params.logger_id = require("guid")();
+                  call.params.logger_id = importDefault("guid")();
                 }
 
                 if (call && call.params && !call.params.cbt) {
@@ -15846,7 +15857,7 @@ try {
                     false,
 
                     call.params.response_type
-                      ? require("createObjectFrom")(
+                      ? importDefault("createObjectFrom")(
                           call.params.response_type.split(",")
                         )
                       : {},
@@ -15856,15 +15867,15 @@ try {
 
                 if (call.params.display === "async") {
                   ES("Object", "assign", false, call.params, {
-                    client_id: require("sdk.Runtime").getClientID(),
-                    origin: require("sdk.getContextType")(),
+                    client_id: importDefault("sdk.Runtime").getClientID(),
+                    origin: importDefault("sdk.getContextType")(),
                     response_type: responseTypes,
                     domain: location.hostname
                   });
 
-                  call.cb = require("sdk.Auth").xdResponseWrapper(
+                  call.cb = importDefault("sdk.Auth").xdResponseWrapper(
                     cb,
-                    require("sdk.Auth").getAuthResponse(),
+                    importDefault("sdk.Auth").getAuthResponse(),
                     "permissions.oauth",
                     call.params
                   );
@@ -15883,20 +15894,20 @@ try {
                     );
                   }
                   ES("Object", "assign", false, call.params, {
-                    client_id: require("sdk.Runtime").getClientID(),
-                    redirect_uri: require("resolveURI")(
+                    client_id: importDefault("sdk.Runtime").getClientID(),
+                    redirect_uri: importDefault("resolveURI")(
                       UIServer.xdHandler(
                         cb,
                         id,
                         call.params.plugin_prepare ? "opener.parent" : "opener",
-                        require("sdk.Auth").getAuthResponse(),
+                        importDefault("sdk.Auth").getAuthResponse(),
                         "permissions.oauth",
                         !isReauthenticate,
                         call.params
                       )
                     ),
 
-                    origin: require("sdk.getContextType")(),
+                    origin: importDefault("sdk.getContextType")(),
                     response_type: responseTypes,
                     domain: location.hostname
                   });
@@ -15908,9 +15919,9 @@ try {
                   call.params.tp !== "unspecified";
 
                 if (!call.params.plugin_prepare && !drop_funnel_logging) {
-                  require("sdk.LoggingUtils").logEvent(
+                  importNamespace("sdk.LoggingUtils").logEvent(
                     call.params.logger_id,
-                    require("sdk.LoggingUtils").logEventName.loginStart,
+                    importNamespace("sdk.LoggingUtils").logEventName.loginStart,
                     { cbt_delta: 0 }
                   );
                 }
@@ -15934,13 +15945,13 @@ try {
                 gaming_friendfinder: {
                   url: "gaming/me/friendfinder/",
                   transform: function transform(call) {
-                    if (!require("sdk.Runtime").getClientID()) {
-                      require("Log").error(
+                    if (!importDefault("sdk.Runtime").getClientID()) {
+                      importNamespace("Log").error(
                         "FriendFinder called before FB.init()."
                       );
                       return;
                     }
-                    call.url += require("sdk.Runtime").getClientID();
+                    call.url += importDefault("sdk.Runtime").getClientID();
                     call.size = {
                       width: 400,
                       height: 800
@@ -15972,19 +15983,20 @@ try {
                     call.params.in_iframe = false;
 
                     call.params.frictionless =
-                      require("sdk.Frictionless") &&
-                      require("sdk.Frictionless")._useFrictionless;
+                      importDefault("sdk.Frictionless") &&
+                      importDefault("sdk.Frictionless")._useFrictionless;
                     if (call.params.frictionless) {
                       if (
-                        require("sdk.Frictionless").isAllowed(call.params.to)
+                        importDefault("sdk.Frictionless").isAllowed(
+                          call.params.to
+                        )
                       ) {
                         call.hideLoader = true;
                       }
 
-                      call.cb = require("sdk.Frictionless")._processRequestResponse(
-                        call.cb,
-                        call.hideLoader
-                      );
+                      call.cb = importDefault(
+                        "sdk.Frictionless"
+                      )._processRequestResponse(call.cb, call.hideLoader);
                     }
 
                     call.closeIcon = false;
@@ -15996,8 +16008,8 @@ try {
                 "permissions.oauth": {
                   url: "dialog/oauth",
                   size: {
-                    width: require("sdk.UA").mobile() ? null : 600,
-                    height: require("sdk.UA").mobile() ? null : 679
+                    width: importDefault("sdk.UA").mobile() ? null : 600,
+                    height: importDefault("sdk.UA").mobile() ? null : 679
                   },
 
                   transform: function transform(call) {
@@ -16008,8 +16020,8 @@ try {
                 "permissions.ig_oauth": {
                   url: "oauth/authorize",
                   size: {
-                    width: require("sdk.UA").mobile() ? null : 600,
-                    height: require("sdk.UA").mobile() ? null : 679
+                    width: importDefault("sdk.UA").mobile() ? null : 600,
+                    height: importDefault("sdk.UA").mobile() ? null : 679
                   },
 
                   transform: function transform(call) {
@@ -16020,13 +16032,13 @@ try {
                 photo_picker: {
                   url: "dialog/photo_picker",
                   size: {
-                    width: require("sdk.UA").mobile() ? null : 600,
-                    height: require("sdk.UA").mobile() ? null : 679
+                    width: importDefault("sdk.UA").mobile() ? null : 600,
+                    height: importDefault("sdk.UA").mobile() ? null : 679
                   },
 
                   transform: function transform(call) {
-                    if (!require("sdk.Runtime").getClientID()) {
-                      require("Log").error(
+                    if (!importDefault("sdk.Runtime").getClientID()) {
+                      importNamespace("Log").error(
                         "Photo Picker was called before FB.init()."
                       );
                       return;
@@ -16036,8 +16048,8 @@ try {
                     delete call.cb;
 
                     ES("Object", "assign", false, call.params, {
-                      client_id: require("sdk.Runtime").getClientID(),
-                      redirect_uri: require("resolveURI")(
+                      client_id: importDefault("sdk.Runtime").getClientID(),
+                      redirect_uri: importDefault("resolveURI")(
                         UIServer.xdHandlerPhotoPicker(
                           cb,
                           id,
@@ -16049,7 +16061,7 @@ try {
                         )
                       ),
 
-                      origin: require("sdk.getContextType")(),
+                      origin: importDefault("sdk.getContextType")(),
                       domain: location.hostname
                     });
 
@@ -16059,23 +16071,23 @@ try {
 
                 "auth.logout": {
                   transform: function transform(call) {
-                    if (!require("sdk.Runtime").getClientID()) {
-                      require("Log").error(
+                    if (!importDefault("sdk.Runtime").getClientID()) {
+                      importNamespace("Log").error(
                         "FB.logout() called before calling FB.init()."
                       );
-                    } else if (!require("sdk.Auth").getAuthResponse()) {
-                      require("Log").error(
+                    } else if (!importDefault("sdk.Auth").getAuthResponse()) {
+                      importNamespace("Log").error(
                         "FB.logout() called without an access token."
                       );
                     } else {
-                      require("sdk.Auth").logout(call.cb);
+                      importDefault("sdk.Auth").logout(call.cb);
                     }
                   }
                 },
 
                 "login.status": {
                   transform: function transform(call) {
-                    require("sdk.Auth").getLoginStatus(call.cb);
+                    importDefault("sdk.Auth").getLoginStatus(call.cb);
                   }
                 },
 
@@ -16144,6 +16156,7 @@ try {
                 _loadedNodes: {},
                 _defaultCb: {},
                 _resultToken: '"xxRESULTTOKENxx"',
+                _popupInterval: {},
 
                 genericTransform: function genericTransform(call) {
                   if (
@@ -16181,7 +16194,7 @@ try {
                   var scope =
                     params.scope ||
                     params.perms ||
-                    require("sdk.Runtime").getScope();
+                    importDefault("sdk.Runtime").getScope();
                   if (!scope) {
                     return params.display;
                   }
@@ -16196,15 +16209,17 @@ try {
                   )
                     ? babelHelpers["extends"]({}, UIServer.Methods[name])
                     : {};
-                  var id = params.id || require("guid")();
+                  var id = params.id || importDefault("guid")();
                   var useSSL = true;
 
                   ES("Object", "assign", false, params, {
-                    app_id: require("sdk.Runtime").getClientID(),
-                    locale: require("sdk.Runtime").getLocale(),
+                    app_id: importDefault("sdk.Runtime").getClientID(),
+                    locale: importDefault("sdk.Runtime").getLocale(),
                     sdk: "joey",
+
                     access_token:
-                      (useSSL && require("sdk.Runtime").getAccessToken()) ||
+                      (useSSL &&
+                        importDefault("sdk.Runtime").getAccessToken()) ||
                       undefined
                   });
 
@@ -16227,14 +16242,14 @@ try {
                     var _feature;
                     if (
                       _oauthDialogRequestCount >=
-                      ((_feature = require("sdk.feature")(
+                      ((_feature = importDefault("sdk.feature")(
                         "max_oauth_dialog_retries",
                         100
                       )) != null
                         ? _feature
                         : 100)
                     ) {
-                      require("Log").error(
+                      importNamespace("Log").error(
                         "Your request to oauth has exceeded the rate limit, please try again later"
                       );
 
@@ -16251,11 +16266,12 @@ try {
                   }
 
                   if (
-                    require("sdk.Runtime").getIsVersioned() &&
+                    importDefault("sdk.Runtime").getIsVersioned() &&
                     method.url.substring(0, 7) === "dialog/"
                   ) {
                     var version =
-                      params.version || require("sdk.Runtime").getVersion();
+                      params.version ||
+                      importDefault("sdk.Runtime").getVersion();
                     if (
                       version != null &&
                       version !== "" &&
@@ -16271,7 +16287,7 @@ try {
                         'Dialog "' +
                         name +
                         '" is trying to run more than once.';
-                      require("Log").warn(errorMessage);
+                      importNamespace("Log").warn(errorMessage);
                       cb({ error_code: -100, error_message: errorMessage });
                       return;
                     }
@@ -16284,7 +16300,7 @@ try {
                     id: id,
                     size: method.size || UIServer.getDefaultSize(),
                     url:
-                      require("UrlMap").resolve(
+                      importNamespace("UrlMap").resolve(
                         params.fx_app === "instagram" ||
                           params.fx_app === "ig_single"
                           ? "www_instagram"
@@ -16296,7 +16312,7 @@ try {
                       method.url,
                     params: params,
                     name: name,
-                    dialog: require("sdk.Dialog").newInstance(
+                    dialog: importDefault("sdk.Dialog").newInstance(
                       id,
                       params.display
                     )
@@ -16361,14 +16377,16 @@ try {
                   }
 
                   call.params.kid_directed_site =
-                    require("sdk.Runtime").getKidDirectedSite() ||
+                    importDefault("sdk.Runtime").getKidDirectedSite() ||
                     call.params.kid_directed_site;
 
-                  call.params = require("flattenObject")(call.params);
-                  var encodedQS = require("QueryString").encode(call.params);
+                  call.params = importDefault("flattenObject")(call.params);
+                  var encodedQS = importDefault("QueryString").encode(
+                    call.params
+                  );
 
                   if (
-                    !require("sdk.UA").nativeApp() &&
+                    !importDefault("sdk.UA").nativeApp() &&
                     UIServer.urlTooLongForIE(call.url + "?" + encodedQS)
                   ) {
                     call.post = true;
@@ -16381,8 +16399,8 @@ try {
 
                 urlTooLongForIE: function urlTooLongForIE(fullURL) {
                   return (
-                    require("sdk.UA").ie() &&
-                    require("sdk.UA").ie() <= 8 &&
+                    importDefault("sdk.UA").ie() != null &&
+                    importDefault("sdk.UA").ie() <= 8 &&
                     fullURL.length > 2048
                   );
                 },
@@ -16397,19 +16415,19 @@ try {
                   }
 
                   var canvas =
-                    require("sdk.Runtime").isEnvironment(
-                      require("sdk.Runtime").ENVIRONMENTS.CANVAS
+                    importDefault("sdk.Runtime").isEnvironment(
+                      importDefault("sdk.Runtime").ENVIRONMENTS.CANVAS
                     ) ||
-                    require("sdk.Runtime").isEnvironment(
-                      require("sdk.Runtime").ENVIRONMENTS.PAGETAB
+                    importDefault("sdk.Runtime").isEnvironment(
+                      importDefault("sdk.Runtime").ENVIRONMENTS.PAGETAB
                     );
                   if (canvas) {
                     if (
-                      require("sdk.modFeatureCheck").forIDs(
+                      importNamespace("sdk.modFeatureCheck").forIDs(
                         "force_popup_to_canvas_apps_with_id",
-                        [require("sdk.Runtime").getClientID()]
+                        [importDefault("sdk.Runtime").getClientID()]
                       ) ||
-                      require("sdk.feature")(
+                      importDefault("sdk.feature")(
                         "force_popup_to_all_canvas_app",
                         false
                       )
@@ -16429,7 +16447,7 @@ try {
                   }
 
                   if (
-                    require("sdk.UA").mobile() ||
+                    importDefault("sdk.UA").mobile() ||
                     params.display === "touch"
                   ) {
                     return "touch";
@@ -16440,7 +16458,7 @@ try {
                     params.display == "dialog"
                   ) {
                     if (!UIServer.canIframe(params)) {
-                      require("Log").error(
+                      importNamespace("Log").error(
                         '"dialog" mode can only be used when the user is connected.'
                       );
                       return "popup";
@@ -16458,7 +16476,7 @@ try {
                 },
 
                 canIframe: function canIframe(params) {
-                  return require("sdk.Runtime").getAccessToken();
+                  return importDefault("sdk.Runtime").getAccessToken();
                 },
 
                 getXdRelation: function getXdRelation(params) {
@@ -16481,7 +16499,7 @@ try {
                 },
 
                 popup: function popup(call) {
-                  var popup = require("sdk.Popup").popup(
+                  var popup = importNamespace("sdk.Popup").popup(
                     call,
                     UIServer.isOAuth({ method: call.name })
                   );
@@ -16517,7 +16535,7 @@ try {
 
                 hidden: function hidden(call) {
                   call.className = "FB_UI_Hidden";
-                  call.root = require("sdk.Content").appendHidden(
+                  call.root = importNamespace("sdk.Content").appendHidden(
                     document.createElement("div")
                   );
                   UIServer._insertIframe(call);
@@ -16529,7 +16547,7 @@ try {
                   var onClose = function onClose() {
                     var errorResult = ES("JSON", "stringify", false, {
                       error_code: 4201,
-                      error_message: require("sdk.fbt")._(
+                      error_message: importDefault("sdk.fbt")._(
                         "User canceled the Dialog flow"
                       )
                     });
@@ -16541,23 +16559,29 @@ try {
                     onClose: onClose,
                     closeIcon:
                       call.closeIcon === undefined ? true : call.closeIcon,
-                    classes: require("sdk.Dialog").isTabletStyle()
+                    classes: importDefault("sdk.Dialog").isTabletStyle()
                       ? "centered"
                       : ""
                   };
 
-                  call.root = require("sdk.Dialog").create(dialogOptions);
+                  call.root = importDefault("sdk.Dialog").create(dialogOptions);
                   if (!call.hideLoader) {
-                    require("sdk.Dialog").showLoader(onClose, call.size.width);
+                    importDefault("sdk.Dialog").showLoader(
+                      onClose,
+                      call.size.width
+                    );
                   }
-                  require("sdk.DOM").addCss(call.root, "fb_dialog_iframe");
+                  importNamespace("sdk.DOM").addCss(
+                    call.root,
+                    "fb_dialog_iframe"
+                  );
                   UIServer._insertIframe(call);
                 },
 
                 touch: function touch(call) {
                   if (call.params && call.params.in_iframe) {
                     if (call.ui_created) {
-                      require("sdk.Dialog").showLoader(
+                      importDefault("sdk.Dialog").showLoader(
                         function Dialog_showLoader_$0() {
                           UIServer._triggerDefault(call.id, null);
                         },
@@ -16567,19 +16591,22 @@ try {
                       UIServer.iframe(call);
                     }
                   } else if (
-                    require("sdk.UA").nativeApp() &&
+                    importDefault("sdk.UA").nativeApp() &&
                     !call.ui_created
                   ) {
                     call.frame = call.id;
-                    require("sdk.Native").onready(function Native_onready_$0() {
-                      UIServer.setLoadedNode(
-                        call,
-                        require("sdk.Native").open(
-                          call.url + "#cb=" + call.frameName
-                        ),
-                        "native"
-                      );
-                    });
+                    importDefault("sdk.Native").onready(
+                      function Native_onready_$0() {
+                        UIServer.setLoadedNode(
+                          call,
+
+                          importDefault("sdk.Native").open(
+                            call.url + "#cb=" + call.frameName
+                          ),
+                          "native"
+                        );
+                      }
+                    );
                     UIServer._popupMonitor();
                   } else if (!call.ui_created) {
                     UIServer.popup(call);
@@ -16594,13 +16621,15 @@ try {
                     location.pathname;
                   delete call.params.access_token;
 
-                  call.params.is_canvas = require("sdk.Runtime").isCanvasEnvironment();
+                  call.params.is_canvas = importDefault(
+                    "sdk.Runtime"
+                  ).isCanvasEnvironment();
 
                   var handler = function handler(response) {
                     var result = response.result;
 
                     if (result && result.e2e) {
-                      var dialog = require("sdk.Dialog").get(call.id);
+                      var dialog = importDefault("sdk.Dialog").get(call.id);
                       dialog.trackEvents(result.e2e);
                       dialog.trackEvent("close");
                       delete result.e2e;
@@ -16614,20 +16643,23 @@ try {
                   ) {
                     call.params.method = "oauth";
                     call.params.redirect_uri = call.params.next;
-                    require("sdk.Extensions").remote.showDialog(
+                    importNamespace("sdk.Extensions").remote.showDialog(
                       call.params,
                       handler
                     );
                   } else {
-                    require("sdk.RPC").remote.showDialog(call.params, handler);
+                    importDefault("sdk.RPC").remote.showDialog(
+                      call.params,
+                      handler
+                    );
                   }
                 },
                 native: function native(call) {
-                  require("sdk.openMessenger")(call.params);
+                  importDefault("sdk.openMessenger")(call.params);
                 },
 
                 getDefaultSize: function getDefaultSize() {
-                  return require("sdk.Dialog").getDefaultSize();
+                  return importDefault("sdk.Dialog").getDefaultSize();
                 },
 
                 _insertIframe: function _insertIframe(call) {
@@ -16639,7 +16671,7 @@ try {
                   };
 
                   if (call.post) {
-                    require("insertIframe")({
+                    importDefault("insertIframe")({
                       url: "about:blank",
                       root: call.root,
                       className: call.className,
@@ -16648,7 +16680,7 @@ try {
                       id: call.id,
                       onInsert: activate,
                       onload: function onload(node) {
-                        require("sdk.Content").submitToTarget({
+                        importNamespace("sdk.Content").submitToTarget({
                           url: call.url,
                           target: node.name,
                           params: call.params
@@ -16656,7 +16688,7 @@ try {
                       }
                     });
                   } else {
-                    require("insertIframe")({
+                    importDefault("insertIframe")({
                       url: call.url,
                       root: call.root,
                       className: call.className,
@@ -16685,21 +16717,21 @@ try {
                     node.style.width = data.width + "px";
                   }
 
-                  require("sdk.XD").inform(
+                  importDefault("sdk.XD").inform(
                     "resize.ack",
                     data || {},
                     "parent.frames[" + node.name + "]"
                   );
 
-                  if (!require("sdk.Dialog").isActive(node)) {
-                    require("sdk.Dialog").show(node);
+                  if (!importDefault("sdk.Dialog").isActive(node)) {
+                    importDefault("sdk.Dialog").show(node);
                   } else {
-                    require("sdk.Dialog")._centerActive();
+                    importDefault("sdk.Dialog")._centerActive();
                   }
                 },
 
                 _triggerDefault: function _triggerDefault(id, result) {
-                  var data = { frame: id };
+                  var data = { frame: id, result: "" };
                   if (result) {
                     data.result = result;
                   }
@@ -16729,14 +16761,16 @@ try {
                         try {
                           if (win.closed) {
                             if (UIServer.isOAuth(node)) {
-                              require("sdk.Auth").getLoginStatus(
+                              importDefault("sdk.Auth").getLoginStatus(
                                 function Auth_getLoginStatus_$0(response) {
                                   if (
-                                    response.status === "connected" &&
+                                    (response == null
+                                      ? void 0
+                                      : response.status) === "connected" &&
                                     node.params != null &&
                                     node.params.return_scopes
                                   ) {
-                                    require("sdk.api")(
+                                    importDefault("sdk.api")(
                                       "/me/permissions",
                                       function api_$1(scopesResponse) {
                                         if (
@@ -16749,28 +16783,42 @@ try {
                                           );
                                         }
                                         var grantedScopesString = "";
+                                        var scopeResponse =
+                                          scopesResponse && scopesResponse.data
+                                            ? scopesResponse.data
+                                            : [];
+
                                         for (
                                           var i = 0;
-                                          i < scopesResponse.data.length;
+                                          i < scopeResponse.length;
                                           i++
                                         ) {
                                           if (
-                                            scopesResponse.data[i].status ===
+                                            scopeResponse[i].status ===
                                             "granted"
                                           ) {
                                             if (grantedScopesString !== "") {
                                               grantedScopesString += ",";
                                             }
                                             grantedScopesString +=
-                                              scopesResponse.data[i].permission;
+                                              scopeResponse[i].permission;
                                           }
                                         }
-                                        response.authResponse.grantedScopes = grantedScopesString;
+                                        if (
+                                          response.authResponse &&
+                                          response.authResponse.grantedScopes
+                                        ) {
+                                          response.authResponse.grantedScopes = grantedScopesString;
+                                        }
                                         UIServer._triggerDefault(id, response);
                                       }
                                     );
                                   } else {
-                                    if (response.status !== "connected") {
+                                    if (
+                                      (response == null
+                                        ? void 0
+                                        : response.status) !== "connected"
+                                    ) {
                                       response.closeWindow = true;
                                     }
                                     UIServer._triggerDefault(id, response);
@@ -16802,7 +16850,7 @@ try {
                 },
 
                 _xdChannelHandler: function _xdChannelHandler(frame, relation) {
-                  return require("sdk.XD").handler(
+                  return importDefault("sdk.XD").handler(
                     function XD_handler_$0(data) {
                       var node = UIServer.getLoadedNode(frame);
                       if (!node) {
@@ -16812,12 +16860,13 @@ try {
                       if (data.type == "resize") {
                         UIServer._handleResizeMessage(frame, data);
                       } else if (data.type == "hide") {
-                        require("sdk.Dialog").hide(node);
+                        importDefault("sdk.Dialog").hide(node);
                       } else if (data.type == "rendered") {
-                        var root = require("sdk.Dialog")._findRoot(node);
-                        require("sdk.Dialog").show(root);
+                        var root = importDefault("sdk.Dialog")._findRoot(node);
+
+                        importDefault("sdk.Dialog").show(root);
                       } else if (data.type == "fireevent") {
-                        require("sdk.Event").fire(data.event, data);
+                        importNamespace("sdk.Event").fire(data.event, data);
                       }
                     },
                     relation,
@@ -16837,9 +16886,12 @@ try {
                   }
 
                   return (
-                    require("sdk.XD").handler(function XD_handler_$0(data) {
+                    importDefault("sdk.XD").handler(function XD_handler_$0(
+                      data
+                    ) {
                       UIServer._xdRecv(data, cb);
-                    }, relation) +
+                    },
+                    relation) +
                     "&frame=" +
                     frame
                   );
@@ -16858,11 +16910,15 @@ try {
                         ) {
                           window.focus();
                         }
+
                         UIServer._popupCount--;
                       } catch (_unused2) {}
                     } else {
                       if (
-                        require("sdk.DOM").containsCss(frame, "FB_UI_Hidden")
+                        importNamespace("sdk.DOM").containsCss(
+                          frame,
+                          "FB_UI_Hidden"
+                        )
                       ) {
                         window.setTimeout(function window_setTimeout_$0() {
                           frame.parentNode.parentNode.removeChild(
@@ -16870,9 +16926,12 @@ try {
                           );
                         }, 3000);
                       } else if (
-                        require("sdk.DOM").containsCss(frame, "FB_UI_Dialog")
+                        importNamespace("sdk.DOM").containsCss(
+                          frame,
+                          "FB_UI_Dialog"
+                        )
                       ) {
-                        require("sdk.Dialog").remove(frame);
+                        importDefault("sdk.Dialog").remove(frame);
                       }
                     }
                   }
@@ -16881,7 +16940,7 @@ try {
                   delete UIServer._defaultCb[data.frame];
 
                   if (data.e2e) {
-                    var dialog = require("sdk.Dialog").get(data.frame);
+                    var dialog = importDefault("sdk.Dialog").get(data.frame);
                     dialog.trackEvents(data.e2e);
                     dialog.trackEvent("close");
                     delete data.e2e;
@@ -16919,7 +16978,7 @@ try {
                   requestParams
                 ) {
                   return UIServer._xdNextHandler(
-                    require("sdk.Auth").xdResponseWrapper(
+                    importDefault("sdk.Auth").xdResponseWrapper(
                       cb,
                       authResponse,
                       method,
@@ -16964,11 +17023,12 @@ try {
                 }
               };
 
-              require("sdk.Extensions").stub("showDialog");
-              require("sdk.RPC").stub("showDialog");
-              module.exports = UIServer;
+              importNamespace("sdk.Extensions").stub("showDialog");
+              importDefault("sdk.RPC").stub("showDialog");
+              var _default = UIServer;
+              exports["default"] = _default;
             },
-            null
+            98
           );
           __d(
             "sdk.ui",
@@ -27065,7 +27125,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1004882674","namespace":"FB","message":"' +
+        '","revision":"1004883202","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
