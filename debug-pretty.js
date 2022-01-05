@@ -1,4 +1,4 @@
-/*1641309046,,JIT Construction: v1004901405,en_US*/
+/*1641361158,,JIT Construction: v1004907988,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3691,7 +3691,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1004901405",
+            revision: "1004907988",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -5328,7 +5328,8 @@ try {
                 isCQuick: false,
                 start: Date.now(),
                 nocatch: false,
-                enableDefaultTrustedTypePolicy: false
+                enableDefaultTrustedTypePolicy: false,
+                ig_server_override: ""
               };
 
               if (global.Env) {
@@ -5715,7 +5716,8 @@ try {
             function $module_FB(
               global,
               require,
-              requireDynamic,
+              importDefault,
+              importNamespace,
               requireLazy,
               module,
               exports
@@ -5729,26 +5731,28 @@ try {
                 window._FB = FB;
               }
 
-              require("Log").setLevel(__DEV__ ? 3 : 0);
+              importNamespace("Log").setLevel(__DEV__ ? 3 : 0);
 
-              require("GlobalCallback").setPrefix("FB.__globalCallbacks");
+              importNamespace("GlobalCallback").setPrefix(
+                "FB.__globalCallbacks"
+              );
 
               var fbRoot = document.createElement("div");
-              require("DOMWrapper").setRoot(fbRoot);
+              importNamespace("DOMWrapper").setRoot(fbRoot);
 
-              require("sdk.domReady")(function domReady_$0() {
-                require("Log").info("domReady");
-                require("sdk.Content").appendHidden(fbRoot);
-                if (require("JSSDKCssConfig").rules) {
-                  require("sdk.DOM").addCssRules(
-                    require("JSSDKCssConfig").rules,
-                    require("JSSDKCssConfig").components
+              importDefault("sdk.domReady")(function domReady_$0() {
+                importNamespace("Log").info("domReady");
+                importNamespace("sdk.Content").appendHidden(fbRoot);
+                if (importDefault("JSSDKCssConfig").rules) {
+                  importNamespace("sdk.DOM").addCssRules(
+                    importDefault("JSSDKCssConfig").rules,
+                    importDefault("JSSDKCssConfig").components
                   );
                 }
               });
 
               function protect(fn, accessor, key, context) {
-                return require("sdk.ErrorHandling").guard(
+                return importDefault("sdk.ErrorHandling").guard(
                   function ErrorHandling_guard_$0() {
                     function unwrap(val) {
                       if (Array.isArray(val)) {
@@ -5760,7 +5764,7 @@ try {
 
                       return typeof val === "function" &&
                         /^function/.test(val.toString())
-                        ? require("sdk.ErrorHandling").unguard(val)
+                        ? importDefault("sdk.ErrorHandling").unguard(val)
                         : val;
                     }
 
@@ -5805,7 +5809,7 @@ try {
 
               function provide(name, source) {
                 var externalTarget = name
-                  ? require("dotAccess")(externalInterface, name, true)
+                  ? importDefault("dotAccess")(externalInterface, name, true)
                   : externalInterface;
 
                 Object.keys(source).forEach(function forEach_$0(key) {
@@ -5834,10 +5838,10 @@ try {
               ES("Object", "assign", false, FB, {
                 provide: provide
               });
-
-              module.exports = FB;
+              var _default = FB;
+              exports["default"] = _default;
             },
-            null
+            98
           );
           __d(
             "ArgumentError",
@@ -27125,7 +27129,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1004901405","namespace":"FB","message":"' +
+        '","revision":"1004907988","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
