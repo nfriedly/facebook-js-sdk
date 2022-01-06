@@ -1,4 +1,4 @@
-/*1641361158,,JIT Construction: v1004907988,en_US*/
+/*1641433759,,JIT Construction: v1004912569,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3691,7 +3691,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1004907988",
+            revision: "1004912569",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -21330,6 +21330,8 @@ try {
               var LABELED_ENTRY_POINT_COMPACT_LINE_HEIGHT = 20;
               var LABELED_ENTRY_POINT_STANDARD_ICON_MARGIN_RIGHT = 6;
               var LABELED_ENTRY_POINT_COMPACT_ICON_MARGIN_RIGHT = 4;
+              var LABELED_ENTRY_POINT_STANDARD_PADDING_HORIZONTAL = 16;
+              var LABELED_ENTRY_POINT_COMPACT_PADDING_HORIZONTAL = 14;
               var ICON_ENTRY_POINT_STANDARD_HEIGHT = 60;
               var ICON_ENTRY_POINT_COMPACT_HEIGHT = 44;
               var ENTRY_POINT_MARGIN = 12;
@@ -21780,6 +21782,8 @@ try {
               exports.LABELED_ENTRY_POINT_COMPACT_LINE_HEIGHT = LABELED_ENTRY_POINT_COMPACT_LINE_HEIGHT;
               exports.LABELED_ENTRY_POINT_STANDARD_ICON_MARGIN_RIGHT = LABELED_ENTRY_POINT_STANDARD_ICON_MARGIN_RIGHT;
               exports.LABELED_ENTRY_POINT_COMPACT_ICON_MARGIN_RIGHT = LABELED_ENTRY_POINT_COMPACT_ICON_MARGIN_RIGHT;
+              exports.LABELED_ENTRY_POINT_STANDARD_PADDING_HORIZONTAL = LABELED_ENTRY_POINT_STANDARD_PADDING_HORIZONTAL;
+              exports.LABELED_ENTRY_POINT_COMPACT_PADDING_HORIZONTAL = LABELED_ENTRY_POINT_COMPACT_PADDING_HORIZONTAL;
               exports.ICON_ENTRY_POINT_STANDARD_HEIGHT = ICON_ENTRY_POINT_STANDARD_HEIGHT;
               exports.ICON_ENTRY_POINT_COMPACT_HEIGHT = ICON_ENTRY_POINT_COMPACT_HEIGHT;
               exports.getMobileStyleText = getMobileStyleText;
@@ -22462,34 +22466,6 @@ try {
                           ? _ChatPluginEntryPoint2
                           : "none";
 
-                      var containerHeight =
-                        _this.$ChatDOMFacade_entryPointSize === "compact"
-                          ? importNamespace("ChatPluginStyleUtils")
-                              .LABELED_ENTRY_POINT_COMPACT_HEIGHT
-                          : importNamespace("ChatPluginStyleUtils")
-                              .LABELED_ENTRY_POINT_STANDARD_HEIGHT;
-
-                      var fontSize =
-                        _this.$ChatDOMFacade_entryPointSize === "compact"
-                          ? importNamespace("ChatPluginStyleUtils")
-                              .LABELED_ENTRY_POINT_COMPACT_FONT_SIZE
-                          : importNamespace("ChatPluginStyleUtils")
-                              .LABELED_ENTRY_POINT_STANDARD_FONT_SIZE;
-
-                      var lineHeight =
-                        _this.$ChatDOMFacade_entryPointSize === "compact"
-                          ? importNamespace("ChatPluginStyleUtils")
-                              .LABELED_ENTRY_POINT_COMPACT_LINE_HEIGHT
-                          : importNamespace("ChatPluginStyleUtils")
-                              .LABELED_ENTRY_POINT_STANDARD_LINE_HEIGHT;
-
-                      var marginRight =
-                        _this.$ChatDOMFacade_entryPointSize === "compact"
-                          ? importNamespace("ChatPluginStyleUtils")
-                              .LABELED_ENTRY_POINT_COMPACT_ICON_MARGIN_RIGHT
-                          : importNamespace("ChatPluginStyleUtils")
-                              .LABELED_ENTRY_POINT_STANDARD_ICON_MARGIN_RIGHT;
-
                       if (_this.$ChatDOMFacade_entryPointLabel === "none") {
                         var _wrapperElement$child, _wrapperElement$child2;
                         var wrapperElement = document.createElement("div");
@@ -22513,13 +22489,7 @@ try {
                         var _iconSVG = data.entry_point_icon_svg;
                         importNamespace("sdk.DOM").html(
                           _this.$ChatDOMFacade_container,
-                          _this.$ChatDOMFacade_getLabelEntryPointHTML(
-                            containerHeight,
-                            marginRight,
-                            fontSize,
-                            lineHeight,
-                            _iconSVG
-                          )
+                          _this.$ChatDOMFacade_getLabelEntryPointHTML(_iconSVG)
                         );
                       }
 
@@ -22591,18 +22561,26 @@ try {
                   }
 
                   if (this.$ChatDOMFacade_entryPointLabel === "none") {
-                    var spinnerSVG = this.$ChatDOMFacade_getSpinnerSVG(0.6);
+                    var spinnerSize =
+                      this.$ChatDOMFacade_entryPointSize === "compact"
+                        ? 24
+                        : 36;
+                    var spinnerSVG = this.$ChatDOMFacade_getSpinnerSVG(
+                      spinnerSize
+                    );
                     importNamespace("sdk.DOM").html(
                       this.$ChatDOMFacade_container,
-                      spinnerSVG
+                      '\n          <div class="centered-container">\n            ' +
+                        spinnerSVG +
+                        "\n          </div>\n        "
                     );
                   } else {
-                    var spinnerScale =
+                    var _spinnerSize =
                       this.$ChatDOMFacade_entryPointSize === "compact"
-                        ? 0.8
-                        : 1;
+                        ? 20
+                        : 24;
                     var _spinnerSVG = this.$ChatDOMFacade_getSpinnerSVG(
-                      spinnerScale
+                      _spinnerSize
                     );
                     if (this.$ChatDOMFacade_entryPointIconEnum === "none") {
                       var marginRight =
@@ -22629,16 +22607,49 @@ try {
                   this.$ChatDOMFacade_spinnerShown = true;
                 };
                 _proto.$ChatDOMFacade_getLabelEntryPointHTML = function $ChatDOMFacade_getLabelEntryPointHTML(
-                  containerHeight,
-                  marginRight,
-                  fontSize,
-                  lineHeight,
                   iconSVG
                 ) {
+                  var containerHeight =
+                    this.$ChatDOMFacade_entryPointSize === "compact"
+                      ? importNamespace("ChatPluginStyleUtils")
+                          .LABELED_ENTRY_POINT_COMPACT_HEIGHT
+                      : importNamespace("ChatPluginStyleUtils")
+                          .LABELED_ENTRY_POINT_STANDARD_HEIGHT;
+
+                  var fontSize =
+                    this.$ChatDOMFacade_entryPointSize === "compact"
+                      ? importNamespace("ChatPluginStyleUtils")
+                          .LABELED_ENTRY_POINT_COMPACT_FONT_SIZE
+                      : importNamespace("ChatPluginStyleUtils")
+                          .LABELED_ENTRY_POINT_STANDARD_FONT_SIZE;
+
+                  var lineHeight =
+                    this.$ChatDOMFacade_entryPointSize === "compact"
+                      ? importNamespace("ChatPluginStyleUtils")
+                          .LABELED_ENTRY_POINT_COMPACT_LINE_HEIGHT
+                      : importNamespace("ChatPluginStyleUtils")
+                          .LABELED_ENTRY_POINT_STANDARD_LINE_HEIGHT;
+
+                  var marginRight =
+                    this.$ChatDOMFacade_entryPointSize === "compact"
+                      ? importNamespace("ChatPluginStyleUtils")
+                          .LABELED_ENTRY_POINT_COMPACT_ICON_MARGIN_RIGHT
+                      : importNamespace("ChatPluginStyleUtils")
+                          .LABELED_ENTRY_POINT_STANDARD_ICON_MARGIN_RIGHT;
+
+                  var paddingHorizontal =
+                    this.$ChatDOMFacade_entryPointSize === "compact"
+                      ? importNamespace("ChatPluginStyleUtils")
+                          .LABELED_ENTRY_POINT_COMPACT_PADDING_HORIZONTAL
+                      : importNamespace("ChatPluginStyleUtils")
+                          .LABELED_ENTRY_POINT_STANDARD_PADDING_HORIZONTAL;
+
                   return (
                     '\n      <div class="label-container" style="\n        height: ' +
                     containerHeight +
-                    'px;\n      ">\n        ' +
+                    "px;\n        padding: 0 " +
+                    paddingHorizontal +
+                    'px\n      ">\n        ' +
                     (iconSVG &&
                       '\n            <div class="label-container-icon" style="\n              margin-right: ' +
                         marginRight +
@@ -22669,12 +22680,14 @@ try {
                   );
                 };
                 _proto.$ChatDOMFacade_getSpinnerSVG = function $ChatDOMFacade_getSpinnerSVG(
-                  scale
+                  size
                 ) {
                   return (
-                    '\n      <svg class="spinning" x="0" y="0" viewbox="0 0 60 60">\n        <circle transform="scale(' +
-                    scale +
-                    ')" class="path" cx="30" cy="30" r="24" fill="none" stroke-width="6"></circle>\n      </svg>\n    '
+                    '\n      <svg class="spinning" x="0" y="0" width="' +
+                    size +
+                    '" height="' +
+                    size +
+                    '" viewbox="0 0 60 60">\n        <circle class="path" cx="30" cy="30" r="24" fill="none" stroke-width="6"></circle>\n      </svg>\n    '
                   );
                 };
                 _proto.$ChatDOMFacade_prepareShowDialog = function $ChatDOMFacade_prepareShowDialog(
@@ -27129,7 +27142,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1004907988","namespace":"FB","message":"' +
+        '","revision":"1004912569","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
