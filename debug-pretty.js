@@ -1,4 +1,4 @@
-/*1641859932,,JIT Construction: v1004927024,en_US*/
+/*1641949158,,JIT Construction: v1004931113,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3691,7 +3691,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1004927024",
+            revision: "1004931113",
             rtl: false,
             sdkab: null,
             sdkns: "FB",
@@ -13236,8 +13236,8 @@ try {
                   };
                 };
                 _proto.read = function read(message, context) {
-                  var rpc = ES("JSON", "parse", false, message),
-                    id = rpc.id;
+                  var rpc = ES("JSON", "parse", false, message);
+                  var id = rpc.id;
 
                   if (!rpc.method) {
                     if (!this.$JSONRPC_callbacks[id]) {
@@ -13254,9 +13254,9 @@ try {
                     return;
                   }
 
-                  var instance = this,
-                    method = this.local[rpc.method],
-                    send;
+                  var instance = this;
+                  var method = this.local[rpc.method];
+                  var send;
                   if (id) {
                     send = function send(type, value) {
                       var response = {
@@ -17357,14 +17357,14 @@ try {
 
               function getHeight() {
                 var document = require("DOMWrapper").getWindow().document;
-                var body = document.body,
-                  docElement = document.documentElement,
-                  bodyTop = Math.max(body.offsetTop, 0),
-                  docTop = Math.max(docElement.offsetTop, 0),
-                  bodyScroll = body.scrollHeight + bodyTop,
-                  bodyOffset = body.offsetHeight + bodyTop,
-                  docScroll = docElement.scrollHeight + docTop,
-                  docOffset = docElement.offsetHeight + docTop;
+                var body = document.body;
+                var docElement = document.documentElement;
+                var bodyTop = Math.max(body.offsetTop, 0);
+                var docTop = Math.max(docElement.offsetTop, 0);
+                var bodyScroll = body.scrollHeight + bodyTop;
+                var bodyOffset = body.offsetHeight + bodyTop;
+                var docScroll = docElement.scrollHeight + docTop;
+                var docOffset = docElement.offsetHeight + docTop;
 
                 return Math.max(bodyScroll, bodyOffset, docScroll, docOffset);
               }
@@ -17373,8 +17373,8 @@ try {
                 if (typeof params !== "object") {
                   params = {};
                 }
-                var minShrink = 0,
-                  minGrow = 0;
+                var minShrink = 0;
+                var minGrow = 0;
                 if (!params.height) {
                   params.height = getHeight();
 
@@ -27139,7 +27139,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1004927024","namespace":"FB","message":"' +
+        '","revision":"1004931113","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
