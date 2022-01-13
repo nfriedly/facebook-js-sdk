@@ -13,6 +13,8 @@ you're probably using in production.)
 
 The script does not commit if only the timestamp at the top has changed.
 
+See also: https://github.com/andyblackwell/adtech-js-monitoring/ - tracks all.js as well as a variety of other scripts from Facebook and other vendors.
+
 ---
 
 Setup
