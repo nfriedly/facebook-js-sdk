@@ -1,4 +1,4 @@
-/*1641949158,,JIT Construction: v1004931113,en_US*/
+/*1679159747,,JIT Construction: v1007136465,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -21,7 +21,7 @@
  */
 try {
   (window.FB && !window.FB.__buffer) ||
-    (function() {
+    (function () {
       var apply = Function.prototype.apply;
       function bindContext(fn, thisArg) {
         return function _sdkBound() {
@@ -31,13 +31,13 @@ try {
       var global = {
         __type: "JS_SDK_SANDBOX",
         window: window,
-        document: window.document
+        document: window.document,
       };
       var sandboxSafelist = [
         "setTimeout",
         "setInterval",
         "clearTimeout",
-        "clearInterval"
+        "clearInterval",
       ];
       for (var i = 0; i < sandboxSafelist.length; i++) {
         global[sandboxSafelist[i]] = bindContext(
@@ -45,13 +45,13 @@ try {
           window
         );
       }
-      (function() {
+      (function () {
         var self = window;
+        var globalThis = this;
         var __DEV__ = 1;
         function emptyFunction() {}
         var __transform_includes = {};
         var __annotator, __bodyWrapper;
-        var __buffer = window.FB && window.FB.__buffer;
         var __w, __t;
         var undefined;
         with (this) {
@@ -71,7 +71,7 @@ try {
            * @nolint
            */
 
-          (function() {
+          (function (globalScope) {
             var funcCalls = {};
 
             var createMeta = function createMeta(type, signature) {
@@ -183,33 +183,45 @@ try {
             };
 
             if (typeof __transform_includes === "undefined") {
-              __annotator = noopAnnotator;
-              __bodyWrapper = noopBodyWrapper;
+              globalScope.__annotator = noopAnnotator;
+              globalScope.__bodyWrapper = noopBodyWrapper;
             } else {
-              __annotator = genericAnnotator;
+              globalScope.__annotator = genericAnnotator;
 
               if ("codeusage" in __transform_includes) {
-                __annotator = noopAnnotator;
-                __bodyWrapper = codeUsageBodyWrapper;
-                __bodyWrapper.getCodeUsage = function() {
+                globalScope.__annotator = noopAnnotator;
+                globalScope.__bodyWrapper = codeUsageBodyWrapper;
+                globalScope.__bodyWrapper.getCodeUsage = function () {
                   return funcCalls;
                 };
-                __bodyWrapper.clearCodeUsage = function() {
+                globalScope.__bodyWrapper.clearCodeUsage = function () {
                   funcCalls = {};
                 };
               } else if ("typechecks" in __transform_includes) {
-                __bodyWrapper = __DEV__
+                globalScope.__bodyWrapper = __DEV__
                   ? typecheckBodyWrapper
                   : noopBodyWrapper;
               } else {
-                __bodyWrapper = noopBodyWrapper;
+                globalScope.__bodyWrapper = noopBodyWrapper;
               }
             }
-          })();
-          __t = function(x) {
+          })(
+            typeof globalThis !== "undefined"
+              ? globalThis
+              : typeof global !== "undefined"
+              ? global
+              : typeof window !== "undefined"
+              ? window
+              : typeof this !== "undefined"
+              ? this
+              : typeof self !== "undefined"
+              ? self
+              : {}
+          );
+          __t = function (x) {
             return x[0];
           };
-          __w = function(x) {
+          __w = function (x) {
             return x;
           };
           /**
@@ -223,12 +235,13 @@ try {
            * This means that it is generally only usable in cases where all resources are
            * resolved and packaged together.
            *
-           * @providesInline fbmodule-runtime-lite
-           * @format
            *  strict
+           * @format
+           * @oncall jsinfra
+           * @providesInline fbmodule-runtime-lite
            */
 
-          (function(global) {
+          (function (global) {
             var map = {};
 
             var defaultCJSDeps = [
@@ -237,7 +250,7 @@ try {
               "requireDynamic",
               "requireLazy",
               "module",
-              "exports"
+              "exports",
             ];
 
             var defaultESMDeps = [
@@ -247,7 +260,7 @@ try {
               "importNamespace",
               "requireLazy",
               "module",
-              "exports"
+              "exports",
             ];
 
             var REQUIRE_WHEN_READY = 1;
@@ -372,7 +385,7 @@ try {
                   defaultExport: EMPTY,
                   exports: {},
                   special: _special || 0,
-                  resolved: false
+                  resolved: false,
                 };
 
                 if (_special != null && _special & REQUIRE_WHEN_READY) {
@@ -382,7 +395,7 @@ try {
                 map[id] = {
                   defaultExport: factory,
                   exports: factory,
-                  resolved: true
+                  resolved: true,
                 };
               }
             }
@@ -392,9 +405,9 @@ try {
             global.importDefault = importDefault;
             global.importNamespace = importNamespace;
 
-            global.$RefreshReg$ = function() {};
-            global.$RefreshSig$ = function() {
-              return function(type) {
+            global.$RefreshReg$ = function () {};
+            global.$RefreshSig$ = function () {
+              return function (type) {
                 return type;
               };
             };
@@ -402,8 +415,8 @@ try {
           /**
            * (c) Meta Platforms, Inc. and affiliates. Confidential and proprietary.
            *
-           * @format
            *
+           * @format
            */ __d(
             "ES5FunctionPrototype",
             [],
@@ -443,7 +456,7 @@ try {
                     return "bound: " + target;
                   };
                   return bound;
-                }
+                },
               };
               var _default = ES5FunctionPrototype;
               exports["default"] = _default;
@@ -552,7 +565,7 @@ try {
                     }
                   }
                   return result;
-                }
+                },
               };
               var _default = ES5StringPrototype;
               exports["default"] = _default;
@@ -562,8 +575,8 @@ try {
           /**
            * (c) Meta Platforms, Inc. and affiliates. Confidential and proprietary.
            *
-           * @format
            *
+           * @format
            */ __d(
             "ES6Array",
             [],
@@ -643,7 +656,7 @@ try {
 
                   ret.length = key;
                   return ret;
-                }
+                },
               };
               var _default = ES6Array;
               exports["default"] = _default;
@@ -731,8 +744,9 @@ try {
                     O[k] = value;
                     k++;
                   }
+
                   return O;
-                }
+                },
               };
               var _default = ES6ArrayPrototype;
               exports["default"] = _default;
@@ -756,31 +770,32 @@ try {
               exports
             ) {
               var EPSILON = Math.pow(2, -52);
+
               var MAX_SAFE_INTEGER = Math.pow(2, 53) - 1;
               var MIN_SAFE_INTEGER = -1 * MAX_SAFE_INTEGER;
 
               var ES6Number = {
-                isFinite: (function(_isFinite) {
+                isFinite: (function (_isFinite) {
                   function isFinite(_x) {
                     return _isFinite.apply(this, arguments);
                   }
-                  isFinite.toString = function() {
+                  isFinite.toString = function () {
                     return _isFinite.toString();
                   };
                   return isFinite;
-                })(function(value) {
+                })(function (value) {
                   return typeof value === "number" && isFinite(value);
                 }),
 
-                isNaN: (function(_isNaN) {
+                isNaN: (function (_isNaN) {
                   function isNaN(_x2) {
                     return _isNaN.apply(this, arguments);
                   }
-                  isNaN.toString = function() {
+                  isNaN.toString = function () {
                     return _isNaN.toString();
                   };
                   return isNaN;
-                })(function(value) {
+                })(function (value) {
                   return typeof value === "number" && isNaN(value);
                 }),
 
@@ -799,7 +814,7 @@ try {
 
                 EPSILON: EPSILON,
                 MAX_SAFE_INTEGER: MAX_SAFE_INTEGER,
-                MIN_SAFE_INTEGER: MIN_SAFE_INTEGER
+                MIN_SAFE_INTEGER: MIN_SAFE_INTEGER,
               };
               var _default = ES6Number;
               exports["default"] = _default;
@@ -809,8 +824,8 @@ try {
           /**
            * (c) Meta Platforms, Inc. and affiliates. Confidential and proprietary.
            *
-           * @format
            *
+           * @format
            */ __d(
             "ES6Object",
             [],
@@ -866,7 +881,7 @@ try {
                   } else {
                     return x !== x && y !== y;
                   }
-                }
+                },
               };
               var _default = ES6Object;
               exports["default"] = _default;
@@ -894,7 +909,7 @@ try {
                   return (
                     Object.prototype.toString.call(object) == "[object Array]"
                   );
-                }
+                },
               };
               var _default = ES5Array;
               exports["default"] = _default;
@@ -904,8 +919,8 @@ try {
           /**
            * (c) Meta Platforms, Inc. and affiliates. Confidential and proprietary.
            *
-           * @format
            *  strict
+           * @format
            */ __d(
             "ES5ArrayPrototype",
             [],
@@ -934,7 +949,7 @@ try {
                     }
                   }
                   return -1;
-                }
+                },
               };
               var _default = ES5ArrayPrototype;
               exports["default"] = _default;
@@ -944,8 +959,8 @@ try {
           /**
            * (c) Meta Platforms, Inc. and affiliates. Confidential and proprietary.
            *
-           * @format
            *
+           * @format
            */ __d(
             "ES7ArrayPrototype",
             ["ES5Array", "ES5ArrayPrototype"],
@@ -1016,7 +1031,7 @@ try {
                     i++;
                   }
                   return false;
-                }
+                },
               };
 
               module.exports = ES7ArrayPrototype;
@@ -1068,7 +1083,7 @@ try {
                     }
                   }
                   return values;
-                }
+                },
               };
               var _default = ES7Object;
               exports["default"] = _default;
@@ -1097,7 +1112,7 @@ try {
                 },
                 trimRight: function trimRight() {
                   return this.replace(/\s+$/, "");
-                }
+                },
               };
               var _default = ES7StringPrototype;
               exports["default"] = _default;
@@ -1131,6 +1146,7 @@ try {
            * DETAILS AND GUIDANCE: http://fburl.com/js-libs-www
            *
            * @preserve-header
+           * @noformat
            * @nolint
            */
           __d(
@@ -1152,7 +1168,7 @@ try {
               var define;
 
               function TROMPLE_MAIN() {
-                (function() {
+                (function () {
                   // Detect the `define` function exposed by asynchronous module loaders. The
                   // strict `define` check is necessary for compatibility with `r.js`.
                   var isLoader = typeof define === "function" && define.amd;
@@ -1160,7 +1176,7 @@ try {
                   // A set of types used to distinguish objects from primitives.
                   var objectTypes = {
                     function: true,
-                    object: true
+                    object: true,
                   };
 
                   // Detect the `exports` object exposed by CommonJS implementations.
@@ -1268,7 +1284,7 @@ try {
                               typeof stringify == "function" && isExtended;
                           if (stringifySupported) {
                             // A test function object with a custom `toJSON` method.
-                            (value = function() {
+                            (value = function () {
                               return 1;
                             }).toJSON = value;
                             try {
@@ -1317,8 +1333,8 @@ try {
                                     true,
                                     false,
                                     null,
-                                    "\x00\b\n\f\r\t"
-                                  ]
+                                    "\x00\b\n\f\r\t",
+                                  ],
                                 }) == serialized &&
                                 // FF 3.1b1 and b2 ignore the `filter` and `width` arguments.
                                 stringify(null, value) === "1" &&
@@ -1408,22 +1424,11 @@ try {
                         // A mapping between the months of the year and the number of days between
                         // January 1st and the first of the respective month.
                         var Months = [
-                          0,
-                          31,
-                          59,
-                          90,
-                          120,
-                          151,
-                          181,
-                          212,
-                          243,
-                          273,
-                          304,
-                          334
+                          0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334,
                         ];
                         // Internal: Calculates the number of days between the Unix epoch and the
                         // first day of the given month.
-                        var getDay = function(year, month) {
+                        var getDay = function (year, month) {
                           return (
                             Months[month] +
                             365 * (year - 1970) +
@@ -1437,7 +1442,7 @@ try {
                       // Internal: Determines if a property is a direct property of the given
                       // object. Delegates to the native `Object#hasOwnProperty` method.
                       if (!(isProperty = objectProto.hasOwnProperty)) {
-                        isProperty = function(property) {
+                        isProperty = function (property) {
                           var members = {},
                             constructor;
                           if (
@@ -1445,13 +1450,13 @@ try {
                             (members.__proto__ = {
                               // The *proto* property cannot be set multiple times in recent
                               // versions of Firefox and SeaMonkey.
-                              toString: 1
+                              toString: 1,
                             }),
                             members).toString != getClass
                           ) {
                             // Safari <= 2.0.3 doesn't implement `Object#hasOwnProperty`, but
                             // supports the mutable *proto* property.
-                            isProperty = function(property) {
+                            isProperty = function (property) {
                               // Capture and break the object's prototype chain (see section 8.6.2
                               // of the ES 5.1 spec). The parenthesized expression prevents an
                               // unsafe transformation by the Closure Compiler.
@@ -1467,7 +1472,7 @@ try {
                             constructor = members.constructor;
                             // Use the `constructor` property to simulate `Object#hasOwnProperty` in
                             // other environments.
-                            isProperty = function(property) {
+                            isProperty = function (property) {
                               var parent = (this.constructor || constructor)
                                 .prototype;
                               return (
@@ -1486,7 +1491,7 @@ try {
 
                       // Internal: Normalizes the `for...in` iteration algorithm across
                       // environments. Each enumerated key is yielded to a `callback` function.
-                      forEach = function(object, callback) {
+                      forEach = function (object, callback) {
                         var size = 0,
                           Properties,
                           members,
@@ -1495,7 +1500,7 @@ try {
                         // Tests for bugs in the current environment's `for...in` algorithm. The
                         // `valueOf` property inherits the non-enumerable flag from
                         // `Object.prototype` in older versions of IE, Netscape, and Mozilla.
-                        (Properties = function() {
+                        (Properties = function () {
                           this.valueOf = 0;
                         }).prototype.valueOf = 0;
 
@@ -1519,11 +1524,11 @@ try {
                             "propertyIsEnumerable",
                             "isPrototypeOf",
                             "hasOwnProperty",
-                            "constructor"
+                            "constructor",
                           ];
                           // IE <= 8, Mozilla 1.0, and Netscape 6.2 ignore shadowed non-enumerable
                           // properties.
-                          forEach = function(object, callback) {
+                          forEach = function (object, callback) {
                             var isFunction =
                                 getClass.call(object) == functionClass,
                               property,
@@ -1554,7 +1559,7 @@ try {
                           };
                         } else if (size == 2) {
                           // Safari <= 2.0.4 enumerates shadowed properties twice.
-                          forEach = function(object, callback) {
+                          forEach = function (object, callback) {
                             // Create a set of iterated properties.
                             var members = {},
                               isFunction =
@@ -1576,7 +1581,7 @@ try {
                           };
                         } else {
                           // No bugs detected; use the standard `for...in` algorithm.
-                          forEach = function(object, callback) {
+                          forEach = function (object, callback) {
                             var isFunction =
                                 getClass.call(object) == functionClass,
                               property,
@@ -1621,13 +1626,13 @@ try {
                           12: "\\f",
                           10: "\\n",
                           13: "\\r",
-                          9: "\\t"
+                          9: "\\t",
                         };
 
                         // Internal: Converts `value` into a zero-padded string such that its
                         // length is at least equal to `width`. The `width` must be <= 6.
                         var leadingZeroes = "000000";
-                        var toPaddedString = function(width, value) {
+                        var toPaddedString = function (width, value) {
                           // The `|| 0` expression is necessary to work around a bug in
                           // Opera <= 7.54u2 where `0 == -0`, but `String(-0) !== "0"`.
                           return (leadingZeroes + (value || 0)).slice(-width);
@@ -1638,7 +1643,7 @@ try {
                         // their escaped equivalents. This is an implementation of the
                         // `Quote(value)` operation defined in ES 5.1 section 15.12.3.
                         var unicodePrefix = "\\u00";
-                        var quote = function(value) {
+                        var quote = function (value) {
                           var result = '"',
                             index = 0,
                             length = value.length,
@@ -1677,7 +1682,7 @@ try {
 
                         // Internal: Recursively serializes an object. Implements the
                         // `Str(key, holder)`, `JO(value)`, and `JA(value)` operations.
-                        var serialize = function(
+                        var serialize = function (
                           property,
                           object,
                           callback,
@@ -1865,7 +1870,7 @@ try {
                               // Recursively serialize object members. Members are selected from
                               // either a user-specified list of property names, or the object
                               // itself.
-                              forEach(properties || value, function(property) {
+                              forEach(properties || value, function (property) {
                                 var element = serialize(
                                   property,
                                   value,
@@ -1908,7 +1913,7 @@ try {
                         };
 
                         // Public: `JSON.stringify`. See ES 5.1 section 15.12.3.
-                        exports.stringify = function(source, filter, width) {
+                        exports.stringify = function (source, filter, width) {
                           var whitespace, callback, properties, className;
                           if (objectTypes[typeof filter] && filter) {
                             if (
@@ -1977,14 +1982,14 @@ try {
                           116: "\t",
                           110: "\n",
                           102: "\f",
-                          114: "\r"
+                          114: "\r",
                         };
 
                         // Internal: Stores the parser state.
                         var Index, Source;
 
                         // Internal: Resets the parser state and throws a `SyntaxError`.
-                        var abort = function() {
+                        var abort = function () {
                           Index = Source = null;
                           throw SyntaxError();
                         };
@@ -1992,7 +1997,7 @@ try {
                         // Internal: Returns the next token, or `"$"` if the parser has reached
                         // the end of the source string. A token may be a string, number, `null`
                         // literal, or Boolean literal.
-                        var lex = function() {
+                        var lex = function () {
                           var source = Source,
                             length = source.length,
                             value,
@@ -2217,7 +2222,7 @@ try {
                         };
 
                         // Internal: Parses a JSON `value` token.
-                        var get = function(value) {
+                        var get = function (value) {
                           var results, hasMembers;
                           if (value == "$") {
                             // Unexpected end of input.
@@ -2310,7 +2315,7 @@ try {
                         };
 
                         // Internal: Updates a traversed object member.
-                        var update = function(source, property, callback) {
+                        var update = function (source, property, callback) {
                           var element = walk(source, property, callback);
                           if (element === undef) {
                             delete source[property];
@@ -2322,7 +2327,7 @@ try {
                         // Internal: Recursively traverses a parsed JSON object, invoking the
                         // `callback` function for each value. This is an implementation of the
                         // `Walk(holder, name)` operation defined in ES 5.1 section 15.12.2.
-                        var walk = function(source, property, callback) {
+                        var walk = function (source, property, callback) {
                           var value = source[property],
                             length;
                           if (typeof value == "object" && value) {
@@ -2334,7 +2339,7 @@ try {
                                 update(value, length, callback);
                               }
                             } else {
-                              forEach(value, function(property) {
+                              forEach(value, function (property) {
                                 update(value, property, callback);
                               });
                             }
@@ -2343,7 +2348,7 @@ try {
                         };
 
                         // Public: `JSON.parse`. See ES 5.1 section 15.12.2.
-                        exports.parse = function(source, callback) {
+                        exports.parse = function (source, callback) {
                           var result, value;
                           Index = 0;
                           Source = "" + source;
@@ -2384,7 +2389,7 @@ try {
                       (root["JSON3"] = {
                         // Public: Restores the original value of the global `JSON` object and
                         // returns a reference to the `JSON3` object.
-                        noConflict: function() {
+                        noConflict: function () {
                           if (!isRestored) {
                             isRestored = true;
                             root.JSON = nativeJSON;
@@ -2392,23 +2397,23 @@ try {
                             nativeJSON = previousJSON = null;
                           }
                           return JSON3;
-                        }
+                        },
                       })
                     );
 
                     root.JSON = {
                       parse: JSON3.parse,
-                      stringify: JSON3.stringify
+                      stringify: JSON3.stringify,
                     };
                   }
 
                   // Export for asynchronous module loaders.
                   if (isLoader) {
-                    define(function() {
+                    define(function () {
                       return JSON3;
                     });
                   }
-                }.call(this));
+                }).call(this);
               }
 
               var TROMPLE_HAS_RAN = false;
@@ -2434,7 +2439,12 @@ try {
             },
             null
           );
-
+          /**
+           * @generated by yarn - see http://fburl.com/js-libs-www
+           * @flow
+           * @nolint
+           * @noformat
+           */
           __d(
             "json3",
             ["json3-3.3.2"],
@@ -2446,10 +2456,6 @@ try {
               module,
               exports
             ) {
-              // @generated by yarn - see http://fburl.com/js-libs-www
-              // @flow
-              // @nolint
-
               // this module should be typed via `json3.js.flow`, otherwise it's `any`
               module.exports = (require("json3-3.3.2")() /*: any */);
 
@@ -2460,13 +2466,13 @@ try {
           /**
            * (c) Meta Platforms, Inc. and affiliates. Confidential and proprietary.
            *
-           *
            * scripts/static_resources/js/fb-transforms/babel-7/babel-plugin-jssdk
            * converts ES5/ES6 code into using this module in ES3 style.
            *
-           * @ServerCallableModule
-           * @format
            *
+           * @format
+           * @oncall plugins_and_sdks
+           * @ServerCallableModule
            */ __d(
             "ES",
             [
@@ -2479,7 +2485,7 @@ try {
               "ES7ArrayPrototype",
               "ES7Object",
               "ES7StringPrototype",
-              "json3"
+              "json3",
             ],
             function $module_ES(
               global,
@@ -2494,25 +2500,25 @@ try {
 
               var methodCache = {
                 "JSON.stringify": importDefault("json3").stringify,
-                "JSON.parse": importDefault("json3").parse
+                "JSON.parse": importDefault("json3").parse,
               };
 
               var es5Polyfills = {
                 "Function.prototype": importDefault("ES5FunctionPrototype"),
-                "String.prototype": importDefault("ES5StringPrototype")
+                "String.prototype": importDefault("ES5StringPrototype"),
               };
 
               var es6Polyfills = {
                 Object: importDefault("ES6Object"),
                 "Array.prototype": importDefault("ES6ArrayPrototype"),
                 Number: importDefault("ES6Number"),
-                Array: importDefault("ES6Array")
+                Array: importDefault("ES6Array"),
               };
 
               var es7Polyfills = {
                 Object: importDefault("ES7Object"),
                 "String.prototype": importDefault("ES7StringPrototype"),
-                "Array.prototype": importDefault("ES7ArrayPrototype")
+                "Array.prototype": importDefault("ES7ArrayPrototype"),
               };
 
               function setupMethodsCache(polyfills) {
@@ -2636,8 +2642,8 @@ try {
           /**
            * (c) Meta Platforms, Inc. and affiliates. Confidential and proprietary.
            *
-           * @format
            *
+           * @format
            */ __d(
             "ES5Object",
             [],
@@ -2668,6 +2674,7 @@ try {
                   }
 
                   F.prototype = proto;
+
                   return new F();
                 },
 
@@ -2699,7 +2706,7 @@ try {
 
                 seal: function seal(object) {
                   return object;
-                }
+                },
               };
 
               function F() {}
@@ -2714,8 +2721,8 @@ try {
           /**
            * (c) Meta Platforms, Inc. and affiliates. Confidential and proprietary.
            *
-           * @ServerCallableModule
            * @format
+           * @ServerCallableModule
            */ __d(
             "sdk.babelHelpers",
             ["ES5FunctionPrototype", "ES5Object", "ES6Object"],
@@ -2730,7 +2737,7 @@ try {
               var babelHelpers = {};
               var hasOwn = Object.prototype.hasOwnProperty;
 
-              babelHelpers.inheritsLoose = function(subClass, superClass) {
+              babelHelpers.inheritsLoose = function (subClass, superClass) {
                 require("ES6Object").assign(subClass, superClass);
                 subClass.prototype = require("ES5Object").create(
                   superClass && superClass.prototype
@@ -2742,10 +2749,10 @@ try {
 
               babelHelpers.inherits = babelHelpers.inheritsLoose;
 
-              babelHelpers.wrapNativeSuper = function(Class) {
+              babelHelpers.wrapNativeSuper = function (Class) {
                 var _cache = typeof Map === "function" ? new Map() : undefined;
 
-                babelHelpers.wrapNativeSuper = function(Class) {
+                babelHelpers.wrapNativeSuper = function (Class) {
                   if (Class === null) {
                     return null;
                   }
@@ -2770,7 +2777,7 @@ try {
                 return babelHelpers.wrapNativeSuper(Class);
               };
 
-              babelHelpers.assertThisInitialized = function(self) {
+              babelHelpers.assertThisInitialized = function (self) {
                 if (self === void 0) {
                   throw new ReferenceError(
                     "this hasn't been initialised - super() hasn't been called"
@@ -2783,13 +2790,13 @@ try {
 
               babelHelpers["extends"] = babelHelpers._extends;
 
-              babelHelpers.construct = function(klass, arr) {
+              babelHelpers.construct = function (klass, arr) {
                 var a = [null];
                 a.push.apply(a, arr);
                 return new (Function.prototype.bind.apply(klass, a))();
               };
 
-              babelHelpers.objectWithoutPropertiesLoose = function(obj, keys) {
+              babelHelpers.objectWithoutPropertiesLoose = function (obj, keys) {
                 var target = {};
                 for (var i in obj) {
                   if (!hasOwn.call(obj, i) || keys.indexOf(i) >= 0) {
@@ -2803,7 +2810,10 @@ try {
               babelHelpers.objectWithoutProperties =
                 babelHelpers.objectWithoutPropertiesLoose;
 
-              babelHelpers.taggedTemplateLiteralLoose = function(strings, raw) {
+              babelHelpers.taggedTemplateLiteralLoose = function (
+                strings,
+                raw
+              ) {
                 if (!raw) {
                   raw = strings.slice(0);
                 }
@@ -2836,17 +2846,17 @@ try {
            * @nolint
            */
 
-          (function(global, undefined) {
+          (function (global, undefined) {
             var KIND_KEYS = "keys";
             var KIND_VALUES = "values";
             var KIND_ENTRIES = "entries";
 
-            var ArrayIterators = (function() {
+            var ArrayIterators = (function () {
               var hasNative = hasNativeIterator(Array);
               var ArrayIterator;
 
               if (!hasNative) {
-                ArrayIterator = (function() {
+                ArrayIterator = (function () {
                   "use strict";
 
                   function ArrayIterator(array, kind) {
@@ -2884,7 +2894,7 @@ try {
                     typeof Symbol === "function"
                       ? Symbol.iterator
                       : "@@iterator"
-                  ] = function() {
+                  ] = function () {
                     return this;
                   };
                   return ArrayIterator;
@@ -2893,37 +2903,37 @@ try {
 
               return {
                 keys: hasNative
-                  ? function(array) {
+                  ? function (array) {
                       return array.keys();
                     }
-                  : function(array) {
+                  : function (array) {
                       return new ArrayIterator(array, KIND_KEYS);
                     },
 
                 values: hasNative
-                  ? function(array) {
+                  ? function (array) {
                       return array.values();
                     }
-                  : function(array) {
+                  : function (array) {
                       return new ArrayIterator(array, KIND_VALUES);
                     },
 
                 entries: hasNative
-                  ? function(array) {
+                  ? function (array) {
                       return array.entries();
                     }
-                  : function(array) {
+                  : function (array) {
                       return new ArrayIterator(array, KIND_ENTRIES);
-                    }
+                    },
               };
             })();
 
-            var StringIterators = (function() {
+            var StringIterators = (function () {
               var hasNative = hasNativeIterator(String);
               var StringIterator;
 
               if (!hasNative) {
-                StringIterator = (function() {
+                StringIterator = (function () {
                   "use strict";
 
                   function StringIterator(string) {
@@ -2967,7 +2977,7 @@ try {
                     typeof Symbol === "function"
                       ? Symbol.iterator
                       : "@@iterator"
-                  ] = function() {
+                  ] = function () {
                     return this;
                   };
                   return StringIterator;
@@ -2982,14 +2992,14 @@ try {
                 },
 
                 values: hasNative
-                  ? function(string) {
+                  ? function (string) {
                       return string[
                         typeof Symbol === "function"
                           ? Symbol.iterator
                           : "@@iterator"
                       ]();
                     }
-                  : function(string) {
+                  : function (string) {
                       return new StringIterator(string);
                     },
 
@@ -2997,7 +3007,7 @@ try {
                   throw TypeError(
                     "Strings default iterator doesn't implement entries."
                   );
-                }
+                },
               };
             })();
 
@@ -3011,7 +3021,7 @@ try {
                 typeof classObject.prototype.entries === "function"
               );
             }
-            var ObjectIterator = (function() {
+            var ObjectIterator = (function () {
               "use strict";
               function ObjectIterator(object, kind) {
                 this.$ObjectIterator_iteratedObject = object;
@@ -3038,18 +3048,18 @@ try {
                 } else if (kind === KIND_VALUES) {
                   return {
                     value: this.$ObjectIterator_iteratedObject[key],
-                    done: false
+                    done: false,
                   };
                 } else if (kind === KIND_ENTRIES) {
                   return {
                     value: [key, this.$ObjectIterator_iteratedObject[key]],
-                    done: false
+                    done: false,
                   };
                 }
               };
               _proto3[
                 typeof Symbol === "function" ? Symbol.iterator : "@@iterator"
-              ] = function() {
+              ] = function () {
                 return this;
               };
               return ObjectIterator;
@@ -3066,7 +3076,7 @@ try {
 
               entries: function entries(object) {
                 return new ObjectIterator(object, KIND_ENTRIES);
-              }
+              },
             };
 
             function enumerate(object, kind) {
@@ -3104,11 +3114,21 @@ try {
                 return enumerate(object, KIND_ENTRIES);
               },
 
-              generic: GenericIterators.entries
+              generic: GenericIterators.entries,
             });
 
             global.FB_enumerate = enumerate;
-          })(typeof global === "undefined" ? this : global);
+          })(
+            typeof global === "object"
+              ? global
+              : typeof this === "object"
+              ? this
+              : typeof window === "object"
+              ? window
+              : typeof self === "object"
+              ? self
+              : {}
+          );
           /**
            * Copyright 2013-2014 Facebook, Inc.
            *
@@ -3126,7 +3146,7 @@ try {
            * @nolint
            */
 
-          (function(global, undefined) {
+          (function (global, undefined) {
             var windowObj = global.window || global;
             function guid() {
               return (
@@ -3171,7 +3191,7 @@ try {
 
             var enumerate = global.FB_enumerate;
 
-            var Map = (function() {
+            var Map = (function () {
               if (!shouldPolyfillES6Collection("Map")) {
                 return windowObj.Map;
               }
@@ -3188,7 +3208,7 @@ try {
               }
 
               var OLD_IE_HASH_PREFIX = "IE_HASH_";
-              var Map = (function() {
+              var Map = (function () {
                 "use strict";
 
                 function Map(iterable) {
@@ -3290,12 +3310,12 @@ try {
                 };
                 _proto[
                   typeof Symbol === "function" ? Symbol.iterator : "@@iterator"
-                ] = function() {
+                ] = function () {
                   return this.entries();
                 };
                 return Map;
               })();
-              var MapIterator = (function() {
+              var MapIterator = (function () {
                 "use strict";
 
                 function MapIterator(map, kind) {
@@ -3354,7 +3374,7 @@ try {
                 };
                 _proto2[
                   typeof Symbol === "function" ? Symbol.iterator : "@@iterator"
-                ] = function() {
+                ] = function () {
                   return this;
                 };
                 return MapIterator;
@@ -3424,7 +3444,7 @@ try {
                     } else {
                       Object.defineProperty(map, SECRET_SIZE_PROP, {
                         value: 0,
-                        writable: true
+                        writable: true,
                       });
 
                       Object.defineProperty(map, "size", {
@@ -3440,7 +3460,7 @@ try {
                         },
                         get: function get() {
                           return map[SECRET_SIZE_PROP];
-                        }
+                        },
                       });
                     }
 
@@ -3462,7 +3482,7 @@ try {
                 return { value: value, done: done };
               }
 
-              Map.__isES5 = (function() {
+              Map.__isES5 = (function () {
                 try {
                   Object.defineProperty({}, "__.$#x", {});
                   return true;
@@ -3517,7 +3537,7 @@ try {
                 }
               }
 
-              var createHash = (function() {
+              var createHash = (function () {
                 var propIsEnumerable = Object.prototype.propertyIsEnumerable;
                 var hashCounter = 0;
 
@@ -3529,10 +3549,10 @@ try {
                         enumerable: false,
                         writable: false,
                         configurable: false,
-                        value: hashCounter
+                        value: hashCounter,
                       });
                     } else if (o.propertyIsEnumerable) {
-                      o.propertyIsEnumerable = function() {
+                      o.propertyIsEnumerable = function () {
                         return propIsEnumerable.apply(this, arguments);
                       };
                       o.propertyIsEnumerable[hashProperty] = hashCounter;
@@ -3555,11 +3575,11 @@ try {
               return __annotator(Map, { name: "Map" });
             })();
 
-            var Set = (function() {
+            var Set = (function () {
               if (!shouldPolyfillES6Collection("Set")) {
                 return windowObj.Set;
               }
-              var Set = (function() {
+              var Set = (function () {
                 "use strict";
 
                 function Set(iterable) {
@@ -3616,7 +3636,7 @@ try {
                 };
                 _proto3[
                   typeof Symbol === "function" ? Symbol.iterator : "@@iterator"
-                ] = function() {
+                ] = function () {
                   return this.values();
                 };
                 return Set;
@@ -3636,7 +3656,7 @@ try {
           __d("JSSDKCanvasPrefetcherConfig", [], {
             enabled: true,
             excludedAppIds: [144959615576466, 768691303149786, 320528941393723],
-            sampleRate: 500
+            sampleRate: 500,
           });
           __d("JSSDKConfig", [], {
             features: {
@@ -3673,33 +3693,41 @@ try {
                 "112682113428700",
                 "271628573687012",
                 "385757598521443",
-                "100545935690488"
+                "100545935690488",
               ],
               should_enable_ig_login_status_fetch: true,
-              xfoa_login_enabled: false
-            }
+              log_cookies_usage: { rate: 0.1 },
+              allow_shadow_dom_for_apps_with_id: [
+                520916077950649, 152351391599356, 132081130190180,
+                468663283258845, 409976882430412, 189845245141894, 360467581347,
+                274266067164,
+              ],
+              allow_shadow_dom: true,
+              xfoa_login_enabled: false,
+            },
           });
           __d("JSSDKCssConfig", [], {
             rules:
-              '.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}\u0040keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}\n.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_dialog_advanced{border-radius:8px;padding:10px}.fb_dialog_content{background:#fff;color:#373737}.fb_dialog_close_icon{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{left:5px;right:auto;top:5px}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50\u0025;float:left;padding:5px 0 7px 26px}body.fb_hidden{height:100\u0025;left:0;margin:0;overflow:visible;position:absolute;top:-10000px;transform:none;width:100\u0025}.fb_dialog.fb_dialog_mobile.loading{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ya/r/3rhSv5V8j3o.gif) white no-repeat 50\u0025 50\u0025;min-height:100\u0025;min-width:100\u0025;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{background:none;height:auto;min-height:initial;min-width:initial;width:auto}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100\u0025}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{clear:both;color:#fff;display:block;font-size:18px;padding-top:20px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .4);bottom:0;left:0;min-height:100\u0025;position:absolute;right:0;top:0;width:100\u0025;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_mobile .fb_dialog_iframe{position:sticky;top:0}.fb_dialog_content .dialog_header{background:linear-gradient(from(#738aba), to(#2c4987));border-bottom:1px solid;border-color:#043b87;box-shadow:white 0 1px 1px -1px inset;color:#fff;font:bold 14px Helvetica, sans-serif;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{height:43px;width:100\u0025}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:linear-gradient(from(#4267B2), to(#2a4887));background-clip:padding-box;border:1px solid #29487d;border-radius:3px;display:inline-block;line-height:18px;margin-top:3px;max-width:85px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{background:none;border:none;color:#fff;font:bold 12px Helvetica, sans-serif;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat 50\u0025 50\u0025;border:1px solid #4a4a4a;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f5f6f7;border:1px solid #4a4a4a;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https://static.xx.fbcdn.net/rsrc.php/v3/yD/r/t-wz8gw1xG1.png);background-position:50\u0025 50\u0025;background-repeat:no-repeat;height:24px;width:24px}\u0040keyframes rotateSpinner{0\u0025{transform:rotate(0deg)}100\u0025{transform:rotate(360deg)}}\n.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100\u0025}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100\u0025}\n.fb_mpn_mobile_landing_page_slide_out{animation-duration:200ms;animation-name:fb_mpn_landing_page_slide_out;transition-timing-function:ease-in}.fb_mpn_mobile_landing_page_slide_out_from_left{animation-duration:200ms;animation-name:fb_mpn_landing_page_slide_out_from_left;transition-timing-function:ease-in}.fb_mpn_mobile_landing_page_slide_up{animation-duration:500ms;animation-name:fb_mpn_landing_page_slide_up;transition-timing-function:ease-in}.fb_mpn_mobile_bounce_in{animation-duration:300ms;animation-name:fb_mpn_bounce_in;transition-timing-function:ease-in}.fb_mpn_mobile_bounce_out{animation-duration:300ms;animation-name:fb_mpn_bounce_out;transition-timing-function:ease-in}.fb_mpn_mobile_bounce_out_v2{animation-duration:300ms;animation-name:fb_mpn_fade_out;transition-timing-function:ease-in}.fb_customer_chat_bounce_in_v2{animation-duration:300ms;animation-name:fb_bounce_in_v2;transition-timing-function:ease-in}.fb_customer_chat_bounce_in_from_left{animation-duration:300ms;animation-name:fb_bounce_in_from_left;transition-timing-function:ease-in}.fb_customer_chat_bounce_out_v2{animation-duration:300ms;animation-name:fb_bounce_out_v2;transition-timing-function:ease-in}.fb_customer_chat_bounce_out_from_left{animation-duration:300ms;animation-name:fb_bounce_out_from_left;transition-timing-function:ease-in}.fb_invisible_flow{display:inherit;height:0;overflow-x:hidden;width:0}\u0040keyframes fb_mpn_landing_page_slide_out{0\u0025{margin:0 12px;width:100\u0025 - 24px}60\u0025{border-radius:18px}100\u0025{border-radius:50\u0025;margin:0 24px;width:60px}}\u0040keyframes fb_mpn_landing_page_slide_out_from_left{0\u0025{left:12px;width:100\u0025 - 24px}60\u0025{border-radius:18px}100\u0025{border-radius:50\u0025;left:12px;width:60px}}\u0040keyframes fb_mpn_landing_page_slide_up{0\u0025{bottom:0;opacity:0}100\u0025{bottom:24px;opacity:1}}\u0040keyframes fb_mpn_bounce_in{0\u0025{opacity:.5;top:100\u0025}100\u0025{opacity:1;top:0}}\u0040keyframes fb_mpn_fade_out{0\u0025{bottom:30px;opacity:1}100\u0025{bottom:0;opacity:0}}\u0040keyframes fb_mpn_bounce_out{0\u0025{opacity:1;top:0}100\u0025{opacity:.5;top:100\u0025}}\u0040keyframes fb_bounce_in_v2{0\u0025{opacity:0;transform:scale(0, 0);transform-origin:bottom right}50\u0025{transform:scale(1.03, 1.03);transform-origin:bottom right}100\u0025{opacity:1;transform:scale(1, 1);transform-origin:bottom right}}\u0040keyframes fb_bounce_in_from_left{0\u0025{opacity:0;transform:scale(0, 0);transform-origin:bottom left}50\u0025{transform:scale(1.03, 1.03);transform-origin:bottom left}100\u0025{opacity:1;transform:scale(1, 1);transform-origin:bottom left}}\u0040keyframes fb_bounce_out_v2{0\u0025{opacity:1;transform:scale(1, 1);transform-origin:bottom right}100\u0025{opacity:0;transform:scale(0, 0);transform-origin:bottom right}}\u0040keyframes fb_bounce_out_from_left{0\u0025{opacity:1;transform:scale(1, 1);transform-origin:bottom left}100\u0025{opacity:0;transform:scale(0, 0);transform-origin:bottom left}}\u0040keyframes slideInFromBottom{0\u0025{opacity:.1;transform:translateY(100\u0025)}100\u0025{opacity:1;transform:translateY(0)}}\u0040keyframes slideInFromBottomDelay{0\u0025{opacity:0;transform:translateY(100\u0025)}97\u0025{opacity:0;transform:translateY(100\u0025)}100\u0025{opacity:1;transform:translateY(0)}}',
+              ".fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:'lucida grande', tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}\u0040keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}\n.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:'lucida grande', tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}\u0040keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}\n.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_dialog_advanced{border-radius:8px;padding:10px}.fb_dialog_content{background:#fff;color:#373737}.fb_dialog_close_icon{background:url(https://connect.facebook.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{left:5px;right:auto;top:5px}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https://connect.facebook.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(https://connect.facebook.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https://connect.facebook.net/rsrc.php/v3/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50\u0025;float:left;padding:5px 0 7px 26px}body.fb_hidden{height:100\u0025;left:0;margin:0;overflow:visible;position:absolute;top:-10000px;transform:none;width:100\u0025}.fb_dialog.fb_dialog_mobile.loading{background:url(https://connect.facebook.net/rsrc.php/v3/ya/r/3rhSv5V8j3o.gif) white no-repeat 50\u0025 50\u0025;min-height:100\u0025;min-width:100\u0025;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{background:none;height:auto;min-height:initial;min-width:initial;width:auto}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100\u0025}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{clear:both;color:#fff;display:block;font-size:18px;padding-top:20px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .4);bottom:0;left:0;min-height:100\u0025;position:absolute;right:0;top:0;width:100\u0025;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_mobile .fb_dialog_iframe{position:sticky;top:0}.fb_dialog_content .dialog_header{background:linear-gradient(from(#738aba), to(#2c4987));border-bottom:1px solid;border-color:#043b87;box-shadow:white 0 1px 1px -1px inset;color:#fff;font:bold 14px Helvetica, sans-serif;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{height:43px;width:100\u0025}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:linear-gradient(from(#4267B2), to(#2a4887));background-clip:padding-box;border:1px solid #29487d;border-radius:3px;display:inline-block;line-height:18px;margin-top:3px;max-width:85px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{background:none;border:none;color:#fff;font:bold 12px Helvetica, sans-serif;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https://connect.facebook.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat 50\u0025 50\u0025;border:1px solid #4a4a4a;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f5f6f7;border:1px solid #4a4a4a;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https://connect.facebook.net/rsrc.php/v3/yD/r/t-wz8gw1xG1.png);background-position:50\u0025 50\u0025;background-repeat:no-repeat;height:24px;width:24px}\u0040keyframes rotateSpinner{0\u0025{transform:rotate(0deg)}100\u0025{transform:rotate(360deg)}}\n.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100\u0025}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100\u0025}\n.fb_mpn_mobile_landing_page_slide_out{animation-duration:200ms;animation-name:fb_mpn_landing_page_slide_out;transition-timing-function:ease-in}.fb_mpn_mobile_landing_page_slide_out_from_left{animation-duration:200ms;animation-name:fb_mpn_landing_page_slide_out_from_left;transition-timing-function:ease-in}.fb_mpn_mobile_landing_page_slide_up{animation-duration:500ms;animation-name:fb_mpn_landing_page_slide_up;transition-timing-function:ease-in}.fb_mpn_mobile_bounce_in{animation-duration:300ms;animation-name:fb_mpn_bounce_in;transition-timing-function:ease-in}.fb_mpn_mobile_bounce_out{animation-duration:300ms;animation-name:fb_mpn_bounce_out;transition-timing-function:ease-in}.fb_mpn_mobile_bounce_out_v2{animation-duration:300ms;animation-name:fb_mpn_fade_out;transition-timing-function:ease-in}.fb_customer_chat_bounce_in_v2{animation-duration:300ms;animation-name:fb_bounce_in_v2;transition-timing-function:ease-in}.fb_customer_chat_bounce_in_from_left{animation-duration:300ms;animation-name:fb_bounce_in_from_left;transition-timing-function:ease-in}.fb_customer_chat_bounce_out_v2{animation-duration:300ms;animation-name:fb_bounce_out_v2;transition-timing-function:ease-in}.fb_customer_chat_bounce_out_from_left{animation-duration:300ms;animation-name:fb_bounce_out_from_left;transition-timing-function:ease-in}.fb_invisible_flow{display:inherit;height:0;overflow-x:hidden;width:0}\u0040keyframes fb_mpn_landing_page_slide_out{0\u0025{margin:0 12px;width:100\u0025 - 24px}60\u0025{border-radius:18px}100\u0025{border-radius:50\u0025;margin:0 24px;width:60px}}\u0040keyframes fb_mpn_landing_page_slide_out_from_left{0\u0025{left:12px;width:100\u0025 - 24px}60\u0025{border-radius:18px}100\u0025{border-radius:50\u0025;left:12px;width:60px}}\u0040keyframes fb_mpn_landing_page_slide_up{0\u0025{bottom:0;opacity:0}100\u0025{bottom:24px;opacity:1}}\u0040keyframes fb_mpn_bounce_in{0\u0025{opacity:.5;top:100\u0025}100\u0025{opacity:1;top:0}}\u0040keyframes fb_mpn_fade_out{0\u0025{bottom:30px;opacity:1}100\u0025{bottom:0;opacity:0}}\u0040keyframes fb_mpn_bounce_out{0\u0025{opacity:1;top:0}100\u0025{opacity:.5;top:100\u0025}}\u0040keyframes fb_bounce_in_v2{0\u0025{opacity:0;transform:scale(0, 0);transform-origin:bottom right}50\u0025{transform:scale(1.03, 1.03);transform-origin:bottom right}100\u0025{opacity:1;transform:scale(1, 1);transform-origin:bottom right}}\u0040keyframes fb_bounce_in_from_left{0\u0025{opacity:0;transform:scale(0, 0);transform-origin:bottom left}50\u0025{transform:scale(1.03, 1.03);transform-origin:bottom left}100\u0025{opacity:1;transform:scale(1, 1);transform-origin:bottom left}}\u0040keyframes fb_bounce_out_v2{0\u0025{opacity:1;transform:scale(1, 1);transform-origin:bottom right}100\u0025{opacity:0;transform:scale(0, 0);transform-origin:bottom right}}\u0040keyframes fb_bounce_out_from_left{0\u0025{opacity:1;transform:scale(1, 1);transform-origin:bottom left}100\u0025{opacity:0;transform:scale(0, 0);transform-origin:bottom left}}\u0040keyframes slideInFromBottom{0\u0025{opacity:.1;transform:translateY(100\u0025)}100\u0025{opacity:1;transform:translateY(0)}}\u0040keyframes slideInFromBottomDelay{0\u0025{opacity:0;transform:translateY(100\u0025)}97\u0025{opacity:0;transform:translateY(100\u0025)}100\u0025{opacity:1;transform:translateY(0)}}",
             components: [
               "css:fb.css.base",
               "css:fb.css.dialog",
               "css:fb.css.iframewidget",
-              "css:fb.css.customer_chat_plugin_iframe"
-            ]
+              "css:fb.css.customer_chat_plugin_iframe",
+            ],
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1004931113",
+            revision: "1007136465",
             rtl: false,
             sdkab: null,
-            sdkns: "FB",
-            sdkurl: "https://connect.facebook.net/en_US/all/debug.js"
+            sdkns: "",
+            sdkurl: "https://connect.facebook.net/en_US/sdk/debug.js",
+            scribeurl: "https://www.facebook.com/platform/scribe_endpoint.php/",
           });
           __d("JSSDKXDConfig", [], {
             XXdUrl: "/x/connect/xd_arbiter/?version=46",
-            useCdn: true
+            useCdn: true,
           });
           __d("UrlMapConfig", [], {
             www: "www.facebook.com",
@@ -3714,9 +3742,13 @@ try {
             graph_facebook: "graph.facebook.com",
             graph_gaming: "graph.fb.gg",
             graph_instagram: "graph.instagram.com",
-            www_instagram: "www.instagram.com"
+            www_instagram: "www.instagram.com",
+            social_plugin: "socialplugin.facebook.net",
           });
-          __d("JSSDKShadowCssConfig", [], {});
+          __d("JSSDKShadowCssConfig", [], {
+            "css:fb.shadow.css.fb_login_button":
+              ".fb_login_button_container{align-content:center;align-items:center;border:0;color:#fff;display:flex;font-family:'Roboto', 'Freight Sans LF Pro', Helvetica, Arial, 'Lucida Grande', sans-serif;font-weight:bold;margin:auto}.fb-button-main-element{display:flex;flex-wrap:nowrap;overflow:hidden}.fb-iframe-overlay{display:flex}.fb-button-main-element:hover{cursor:pointer}.fb-button-main-element:focus{filter:brightness(80\u0025)}.fb_button_label_element{align-items:center;display:flex;font-weight:bold;justify-content:center}.fb_button_label{margin:auto;pointer-events:none}.fb_button_svg_logo{height:1.33em;margin-left:.4em;margin-right:.4em;padding:.065em}.login_fb_logo .f_logo_f{fill:transparent}.single_button_svg_logo{margin-bottom:.08em}",
+          });
           __d(
             "DOMWrapper",
             [],
@@ -3811,7 +3843,8 @@ try {
 
               function wrapFunction(fn, type, source) {
                 var callee = type in wrappers ? wrappers[type](fn, source) : fn;
-                return function() {
+
+                return function () {
                   for (
                     var _len = arguments.length,
                       args = new Array(_len),
@@ -3825,7 +3858,7 @@ try {
                 };
               }
 
-              wrapFunction.setWrapper = function(fn, type) {
+              wrapFunction.setWrapper = function (fn, type) {
                 wrappers[type] = fn;
               };
               exports["default"] = wrapFunction;
@@ -3859,7 +3892,7 @@ try {
               function create(fn, description) {
                 var _description;
                 if (!rootObject) {
-                  this.setPrefix("__globalCallbacks");
+                  setPrefix("__globalCallbacks");
                 }
                 var id = importDefault("guid")();
                 rootObject[id] = importDefault("wrapFunction")(
@@ -3902,7 +3935,7 @@ try {
                 DEBUG: 3,
                 INFO: 2,
                 WARNING: 1,
-                ERROR: 0
+                ERROR: 0,
               };
 
               var log = function log(name, logLevel, format) {
@@ -3968,7 +4001,7 @@ try {
                 nativeInstagramApp: /Instagram/i.test(uas),
                 nativeMessengeriOSApp: /MessengerForiOS/i.test(uas),
                 nativeMessengerAndroidApp: /Orca\-Android/i.test(uas),
-                ucBrowser: /UCBrowser/i.test(uas)
+                ucBrowser: /UCBrowser/i.test(uas),
               };
 
               var mobile = /Mobile/i.test(uas);
@@ -3981,12 +4014,13 @@ try {
                 osx: NaN,
                 edge: NaN,
                 operaMini: NaN,
-                ucWeb: NaN
+                ucWeb: NaN,
               };
 
-              var agent = /(?:MSIE.(\d+\.\d+))|(?:(?:Firefox|GranParadiso|Iceweasel).(\d+\.\d+))|(?:AppleWebKit.(\d+(?:\.\d+)?))|(?:Trident\/\d+\.\d+.*rv:(\d+\.\d+))/.exec(
-                uas
-              );
+              var agent =
+                /(?:MSIE.(\d+\.\d+))|(?:(?:Firefox|GranParadiso|Iceweasel).(\d+\.\d+))|(?:AppleWebKit.(\d+(?:\.\d+)?))|(?:Trident\/\d+\.\d+.*rv:(\d+\.\d+))/.exec(
+                  uas
+                );
 
               if (agent) {
                 versions.ie = agent[1]
@@ -4035,7 +4069,7 @@ try {
                   return parseFloat(versions[key]);
                 };
 
-                getVersion.getVersionParts = function() {
+                getVersion.getVersionParts = function () {
                   return getVersionParts(versions[key]);
                 };
 
@@ -4043,43 +4077,43 @@ try {
               });
 
               Object.keys(devices).map(function map_$0(key) {
-                UA[key] = function() {
+                UA[key] = function () {
                   return devices[key];
                 };
               });
 
-              UA.mobile = function() {
+              UA.mobile = function () {
                 return (
                   devices.iphone || devices.ipad || devices.android || mobile
                 );
               };
 
-              UA.mTouch = function() {
+              UA.mTouch = function () {
                 return devices.android || devices.iphone || devices.ipad;
               };
-              UA.facebookInAppBrowser = function() {
+              UA.facebookInAppBrowser = function () {
                 return devices.nativeApp || devices.nativeAndroidApp;
               };
-              UA.inAppBrowser = function() {
+              UA.inAppBrowser = function () {
                 return (
                   devices.nativeApp ||
                   devices.nativeAndroidApp ||
                   devices.nativeInstagramApp
                 );
               };
-              UA.mBasic = function() {
+              UA.mBasic = function () {
                 return !!(versions.ucWeb || versions.operaMini);
               };
-              UA.instagram = function() {
+              UA.instagram = function () {
                 return devices.nativeInstagramApp;
               };
-              UA.messenger = function() {
+              UA.messenger = function () {
                 return (
                   devices.nativeMessengeriOSApp ||
                   devices.nativeMessengerAndroidApp
                 );
               };
-              UA.isSupportedIABVersion = function(supportedVersion) {
+              UA.isSupportedIABVersion = function (supportedVersion) {
                 if (!UA.facebookInAppBrowser()) {
                   return false;
                 }
@@ -4122,6 +4156,7 @@ try {
                 }
 
                 var fn;
+
                 while ((fn = queue.shift())) {
                   fn();
                 }
@@ -4225,7 +4260,7 @@ try {
                 for (var key in opts.params) {
                   if (Object.prototype.hasOwnProperty.call(opts.params, key)) {
                     var val = opts.params[key];
-                    if (val !== null && val !== undefined) {
+                    if (val != null) {
                       var input = document.createElement("input");
                       input.name = key;
                       input.value = val;
@@ -4422,6 +4457,7 @@ try {
                 for (var i = 0, id; (id = names[i++]); ) {
                   if (!(id in cssRules)) {
                     allIncluded = false;
+
                     cssRules[id] = true;
                   }
                 }
@@ -4482,7 +4518,7 @@ try {
                     ? window.innerHeight
                     : root == null
                     ? void 0
-                    : root.clientHeight
+                    : root.clientHeight,
                 };
               }
 
@@ -4528,7 +4564,7 @@ try {
               module,
               exports
             ) {
-              var ManagedError = (function(_Error) {
+              var ManagedError = (function (_Error) {
                 babelHelpers.inheritsLoose(ManagedError, _Error);
 
                 function ManagedError(message, innerError) {
@@ -4572,7 +4608,7 @@ try {
                   message: err.message,
                   name: err.name,
                   script: err.fileName || err.sourceURL || err.script,
-                  stack: err.stackTrace || err.stack
+                  stack: err.stackTrace || err.stack,
                 };
 
                 info._originalError = err;
@@ -4662,7 +4698,7 @@ try {
                     }
                   }
                   return this;
-                }
+                },
               };
 
               module.exports = ObservableMixin;
@@ -4683,7 +4719,7 @@ try {
               module,
               exports
             ) {
-              var AssertionError = (function(_ManagedError) {
+              var AssertionError = (function (_ManagedError) {
                 babelHelpers.inheritsLoose(AssertionError, _ManagedError);
                 function AssertionError(message) {
                   return _ManagedError.call(this, message) || this;
@@ -4788,7 +4824,8 @@ try {
 
               function define(type, test) {
                 Assert["is" + type] = test;
-                Assert["maybe" + type] = function(expression, message) {
+
+                Assert["maybe" + type] = function (expression, message) {
                   return expression == null
                     ? expression
                     : test(expression, message);
@@ -4813,7 +4850,7 @@ try {
                 isUndefined: placeholder,
                 maybeObject: placeholder,
                 maybeNumber: placeholder,
-                maybeFunction: placeholder
+                maybeFunction: placeholder,
               };
 
               [
@@ -4822,15 +4859,12 @@ try {
                 "Number",
                 "Object",
                 "String",
-                "Undefined"
+                "Undefined",
               ].forEach(function forEach_$0(type) {
-                define(type, ES(
-                  assertType,
-                  "bind",
-                  true,
-                  null,
-                  type.toLowerCase()
-                ));
+                define(
+                  type,
+                  ES(assertType, "bind", true, null, type.toLowerCase())
+                );
               });
               var _default = Assert;
               exports["default"] = _default;
@@ -4900,7 +4934,7 @@ try {
                   prototype &&
                   Object.prototype.hasOwnProperty.call(prototype, "constructor")
                     ? prototype.constructor
-                    : function() {
+                    : function () {
                         this.parent.apply(this, arguments);
                       };
 
@@ -4937,19 +4971,19 @@ try {
                   mixin(constructor, mixins);
                 }
 
-                constructor.prototype.parent = function() {
+                constructor.prototype.parent = function () {
                   this.parent = from.prototype.parent;
                   from.apply(this, arguments);
                 };
 
-                constructor.prototype.parentCall = function(method) {
+                constructor.prototype.parentCall = function (method) {
                   return from.prototype[method].apply(
                     this,
                     Array.prototype.slice.call(arguments, 1)
                   );
                 };
 
-                constructor.extend = function(prototype, mixins) {
+                constructor.extend = function (prototype, mixins) {
                   return _extend(this, prototype, mixins);
                 };
                 return constructor;
@@ -4958,7 +4992,7 @@ try {
               ES("Object", "assign", false, Type.prototype, {
                 instanceOf: function instanceOf(type) {
                   return _instanceOf(type, this);
-                }
+                },
               });
 
               ES("Object", "assign", false, Type, {
@@ -4967,7 +5001,7 @@ try {
                     ? _extend.apply(null, arguments)
                     : _extend(null, prototype, mixins);
                 },
-                instanceOf: _instanceOf
+                instanceOf: _instanceOf,
               });
 
               module.exports = Type;
@@ -5002,7 +5036,7 @@ try {
                     Object.keys(properties).forEach(function forEach_$0(name) {
                       propContainer[name] = properties[name];
 
-                      model["set" + name] = function(value) {
+                      model["set" + name] = function (value) {
                         if (value === propContainer[name]) {
                           return model;
                         }
@@ -5011,11 +5045,11 @@ try {
                         return model;
                       };
 
-                      model["get" + name] = function() {
+                      model["get" + name] = function () {
                         return propContainer[name];
                       };
                     });
-                  }
+                  },
                 },
                 importDefault("ObservableMixin")
               );
@@ -5040,7 +5074,7 @@ try {
                 UNKNOWN: 0,
                 PAGETAB: 1,
                 CANVAS: 2,
-                PLATFORM: 4
+                PLATFORM: 4,
               };
 
               var Runtime = new (importDefault("sdk.Model"))({
@@ -5053,6 +5087,7 @@ try {
                 FamilyLoginLoaded: false,
                 GraphDomain: "",
                 Initialized: false,
+                IsSPIN: Boolean(importNamespace("JSSDKRuntimeConfig").isSPIN),
                 IsVersioned: false,
                 KidDirectedSite: undefined,
                 Locale: importNamespace("JSSDKRuntimeConfig").locale,
@@ -5068,7 +5103,7 @@ try {
                 UseCookie: false,
                 UseLocalStorage: true,
                 UserID: "",
-                Version: undefined
+                Version: undefined,
               });
 
               ES("Object", "assign", false, Runtime, {
@@ -5084,10 +5119,10 @@ try {
                     this.isEnvironment(ENVIRONMENTS.CANVAS) ||
                     this.isEnvironment(ENVIRONMENTS.PAGETAB)
                   );
-                }
+                },
               });
 
-              (function() {
+              (function () {
                 var environment = /app_runner/.test(window.name)
                   ? ENVIRONMENTS.PAGETAB
                   : /iframe_canvas/.test(window.name)
@@ -5128,7 +5163,7 @@ try {
                 }
 
                 function guard(func, entry) {
-                  return function() {
+                  return function () {
                     if (!handleError) {
                       return func.apply(this, arguments);
                     }
@@ -5176,7 +5211,7 @@ try {
 
                 function unguard(func) {
                   if (!func.__wrapper) {
-                    func.__wrapper = function() {
+                    func.__wrapper = function () {
                       try {
                         return func.apply(this, arguments);
                       } catch (e) {
@@ -5200,8 +5235,12 @@ try {
                   }
                 }
 
-                function wrap(real, entry) {
-                  return function(fn, delay) {
+                function wrap(
+                  real,
+
+                  entry
+                ) {
+                  return function (fn, delay) {
                     var name =
                       entry +
                       ":" +
@@ -5223,7 +5262,7 @@ try {
 
                 return {
                   guard: guard,
-                  unguard: unguard
+                  unguard: unguard,
                 };
               }
               exports.create = create;
@@ -5302,7 +5341,7 @@ try {
               var _default = {
                 encode: encode,
                 decode: decode,
-                appendToUrl: appendToUrl
+                appendToUrl: appendToUrl,
               };
               exports["default"] = _default;
             },
@@ -5326,10 +5365,17 @@ try {
                 iframeTarget: "",
                 iframeToken: "",
                 isCQuick: false,
+                jssp_header_sent: false,
+                jssp_targeting_enabled: false,
                 start: Date.now(),
                 nocatch: false,
-                enableDefaultTrustedTypePolicy: false,
-                ig_server_override: ""
+                useTrustedTypes: false,
+                isTrustedTypesReportOnly: false,
+                enableDefaultTrustedTypesPolicy: false,
+                ig_server_override: "",
+                ig_mqtt_wss_endpoint: "",
+                ig_mqtt_polling_endpoint: "",
+                scheduledCSSJSScheduler: false,
               };
 
               if (global.Env) {
@@ -5359,7 +5405,7 @@ try {
                 PREVIOUS_FILE: 1,
                 PREVIOUS_FRAME: 2,
                 PREVIOUS_DIR: 3,
-                FORCED_KEY: 4
+                FORCED_KEY: 4,
               };
 
               function err(format) {
@@ -5388,7 +5434,7 @@ try {
               }
               var _default = {
                 err: err,
-                TAALOpcode: TAALOpcode
+                TAALOpcode: TAALOpcode,
               };
               exports["default"] = _default;
             },
@@ -5451,7 +5497,7 @@ try {
                     return String(p);
                   });
                   error.taalOpcodes = [
-                    importDefault("fb-error-lite").TAALOpcode.PREVIOUS_FRAME
+                    importDefault("fb-error-lite").TAALOpcode.PREVIOUS_FRAME,
                   ];
 
                   error.stack;
@@ -5521,9 +5567,8 @@ try {
                 var protocol = "https";
 
                 if (key === "graph_domain") {
-                  var graphDomain = importDefault(
-                    "sdk.Runtime"
-                  ).getGraphDomain();
+                  var graphDomain =
+                    importDefault("sdk.Runtime").getGraphDomain();
                   if (!!graphDomain) {
                     key = "graph_".concat(graphDomain);
                   } else {
@@ -5591,7 +5636,14 @@ try {
 
                 image.src = importDefault("QueryString").appendToUrl(url, {
                   c: category,
-                  m: ES("JSON", "stringify", false, data)
+                  m: ES(
+                    "JSON",
+                    "stringify",
+                    false,
+                    babelHelpers["extends"]({}, data, {
+                      isSPIN: importDefault("sdk.Runtime").getIsSPIN(),
+                    })
+                  ),
                 });
               }
               exports.log = log;
@@ -5629,7 +5681,7 @@ try {
               }
 
               function create(config) {
-                return function() {
+                return function () {
                   for (
                     var _len = arguments.length,
                       args = new Array(_len),
@@ -5692,7 +5744,7 @@ try {
                   importNamespace("sdk.Scribe").log("jssdk_error", {
                     appId: importDefault("sdk.Runtime").getClientID(),
                     error: error.name || error.message,
-                    extra: error
+                    extra: error,
                   });
                 }
               );
@@ -5711,7 +5763,7 @@ try {
               "sdk.Content",
               "sdk.DOM",
               "sdk.ErrorHandling",
-              "sdk.domReady"
+              "sdk.domReady",
             ],
             function $module_FB(
               global,
@@ -5722,6 +5774,13 @@ try {
               module,
               exports
             ) {
+              if (window.FB && window.FB.__buffer) {
+                window.__buffer = babelHelpers["extends"](
+                  {},
+                  window.FB.__buffer
+                );
+              }
+
               var externalInterface = (window.FB = {});
 
               var FB = {};
@@ -5778,21 +5837,23 @@ try {
 
                     if (result && typeof result === "object") {
                       facade = Object.create(result);
+
                       facade.__wrapped = result;
 
-                      for (var key in result) {
-                        var property = result[key];
+                      for (var _key in result) {
+                        var property = result[_key];
                         if (
                           typeof property !== "function" ||
-                          key === "constructor"
+                          _key === "constructor"
                         ) {
                           continue;
                         }
                         isPlainObject = false;
-                        facade[key] = protect(
+
+                        facade[_key] = protect(
                           property,
-                          accessor + ":" + key,
-                          key,
+                          accessor + ":" + _key,
+                          _key,
                           result
                         );
                       }
@@ -5836,12 +5897,40 @@ try {
               }
 
               ES("Object", "assign", false, FB, {
-                provide: provide
+                provide: provide,
               });
               var _default = FB;
               exports["default"] = _default;
             },
             98
+          );
+
+          __d(
+            "AppUserPropertyAPIBuiltinField",
+            [],
+            function $module_AppUserPropertyAPIBuiltinField(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              module.exports = {
+                GENDER: "$gender",
+                CITY: "$city",
+                STATE: "$state",
+                ZIPCODE: "$zipcode",
+                COUNTRY: "$country",
+                LANGUAGE: "$language",
+                CURRENCY: "$currency",
+                INSTALL_SOURCE: "$install_source",
+                USER_TYPE: "$user_type",
+                ACCOUNT_CREATED_TIME: "$account_created_time",
+                APP_ID: "$app_id",
+              };
+            },
+            null
           );
           __d(
             "ArgumentError",
@@ -5855,7 +5944,7 @@ try {
               module,
               exports
             ) {
-              var ArgumentError = (function(_ManagedError) {
+              var ArgumentError = (function (_ManagedError) {
                 babelHelpers.inheritsLoose(ArgumentError, _ManagedError);
                 function ArgumentError(message, innerError) {
                   return _ManagedError.call(this, message, innerError) || this;
@@ -5884,7 +5973,7 @@ try {
                 for (var _key in obj) {
                   if (Object.prototype.hasOwnProperty.call(obj, _key)) {
                     var value = obj[_key];
-                    if (null === value || undefined === value) {
+                    if (value == null) {
                       continue;
                     } else if (typeof value === "string") {
                       flat[_key] = value;
@@ -5929,22 +6018,17 @@ try {
             function $module_performanceNow(
               global,
               require,
-              requireDynamic,
+              importDefault,
+              importNamespace,
               requireLazy,
               module,
               exports
             ) {
-              var c_performance;
-
               var performanceNow;
 
-              if (
-                (c_performance || (c_performance = require("performance"))).now
-              ) {
+              if (importDefault("performance").now) {
                 performanceNow = function performanceNow() {
-                  return (
-                    c_performance || (c_performance = require("performance"))
-                  ).now();
+                  return importDefault("performance").now();
                 };
               } else {
                 var cstart = global._cstart;
@@ -5965,10 +6049,26 @@ try {
                   return now;
                 };
               }
-
-              module.exports = performanceNow;
+              var _default = performanceNow;
+              exports["default"] = _default;
             },
-            null
+            98
+          );
+          __d(
+            "performanceNowSinceAppStart",
+            ["performanceNow"],
+            function $module_performanceNowSinceAppStart(
+              global,
+              require,
+              importDefault,
+              importNamespace,
+              requireLazy,
+              module,
+              exports
+            ) {
+              exports["default"] = importDefault("performanceNow");
+            },
+            98
           );
           __d(
             "removeFromArray",
@@ -5993,7 +6093,7 @@ try {
           );
           __d(
             "fb-error",
-            ["performanceNow", "removeFromArray"],
+            ["performanceNowSinceAppStart", "removeFromArray"],
             function $module_fb_error(
               global,
               require,
@@ -6003,13 +6103,12 @@ try {
               exports
             ) {
               "use strict";
-              var c_performanceNow;
 
               var TAALOpcode = {
                 PREVIOUS_FILE: 1,
                 PREVIOUS_FRAME: 2,
                 PREVIOUS_DIR: 3,
-                FORCED_KEY: 4
+                FORCED_KEY: 4,
               };
 
               function err(format) {
@@ -6080,11 +6179,11 @@ try {
                       hasLoggedAnyProductionError = true;
                     }
                   }
-                }
+                },
               };
 
               var ErrorDynamicData = {
-                access_token: null
+                access_token: null,
               };
 
               var messagesPerWindow = 6;
@@ -6094,8 +6193,7 @@ try {
               var lastCacheClear = 0;
 
               function _cleanupCache() {
-                var now = (c_performanceNow ||
-                  (c_performanceNow = require("performanceNow")))();
+                var now = require("performanceNowSinceAppStart")();
 
                 if (now > lastCacheClear + windowMilliseconds) {
                   var cutoff = now - cacheClearAfter;
@@ -6138,15 +6236,14 @@ try {
               function _rateLimit(key) {
                 _cleanupCache();
 
-                var now = (c_performanceNow ||
-                  (c_performanceNow = require("performanceNow")))();
+                var now = require("performanceNowSinceAppStart")();
                 var state = rateLimitCache.get(key);
 
                 if (state == null) {
                   rateLimitCache.set(key, {
                     dropped: 0,
                     logged: [now],
-                    lastAccessed: now
+                    lastAccessed: now,
                   });
 
                   return 1;
@@ -6172,14 +6269,26 @@ try {
               var ErrorFilter = {
                 shouldLog: function shouldLog(error) {
                   return _rateLimit(error.hash);
-                }
+                },
               };
+
+              var RESCRIPT_INTERNAL_KEY = "RE_EXN_ID";
 
               function getErrorSafe(maybeError) {
                 var error = null;
 
                 if (maybeError == null || typeof maybeError !== "object") {
                   error = err("Non-object thrown: %s", String(maybeError));
+                } else if (
+                  Object.prototype.hasOwnProperty.call(
+                    maybeError,
+                    RESCRIPT_INTERNAL_KEY
+                  )
+                ) {
+                  error = err(
+                    "Rescript exception thrown: %s",
+                    ES("JSON", "stringify", false, maybeError)
+                  );
                 } else if (typeof maybeError.message !== "string") {
                   error = err(
                     "Non-error thrown: %s, keys: %s",
@@ -6256,7 +6365,7 @@ try {
 
                   ErrorPubSub = errorPubSub;
                   global.addEventListener("error", onGlobalError);
-                }
+                },
               };
 
               var guardList = [];
@@ -6286,7 +6395,7 @@ try {
                       return e.deferredSource;
                     }
                   }
-                }
+                },
               };
 
               function errorLevelDefiner(error) {
@@ -6323,7 +6432,7 @@ try {
               }
 
               var globalMetadata = [];
-              var ErrorMetadata = (function() {
+              var ErrorMetadata = (function () {
                 function ErrorMetadata() {
                   this.metadata = [].concat(globalMetadata);
                 }
@@ -6373,20 +6482,18 @@ try {
                 ErrorMetadata.getGlobalMetadata = function getGlobalMetadata() {
                   return globalMetadata;
                 };
-                ErrorMetadata.unsetGlobalMetadata = function unsetGlobalMetadata(
-                  product,
-                  name
-                ) {
-                  globalMetadata = globalMetadata.filter(
-                    function globalMetadata_filter_$0(entry) {
-                      return !(
-                        Array.isArray(entry) &&
-                        entry[0] === product &&
-                        entry[1] === name
-                      );
-                    }
-                  );
-                };
+                ErrorMetadata.unsetGlobalMetadata =
+                  function unsetGlobalMetadata(product, name) {
+                    globalMetadata = globalMetadata.filter(
+                      function globalMetadata_filter_$0(entry) {
+                        return !(
+                          Array.isArray(entry) &&
+                          entry[0] === product &&
+                          entry[1] === name
+                        );
+                      }
+                    );
+                  };
                 return ErrorMetadata;
               })();
 
@@ -6395,7 +6502,7 @@ try {
                 info: 2,
                 warn: 3,
                 error: 4,
-                fatal: 5
+                fatal: 5,
               };
 
               function aggregateError(error, context) {
@@ -6539,7 +6646,7 @@ try {
               var ErrorSerializer = {
                 aggregateError: aggregateError,
                 toReadableMessage: toReadableMessage,
-                toStringParams: toStringParams
+                toStringParams: toStringParams,
               };
 
               var MAX_LENGTH = 5;
@@ -6573,7 +6680,7 @@ try {
               var ErrorXFBDebug = {
                 add: add,
                 addFromXHR: addFromXHR,
-                getAll: getAll
+                getAll: getAll,
               };
 
               var CHARS = "abcdefghijklmnopqrstuvwxyz012345";
@@ -6615,7 +6722,7 @@ try {
                 /\(([^\s\)\()]+):(\d+):(\d+)\)$/,
                 /@([^\s\)\()]+):(\d+):(\d+)$/,
                 /^([^\s\)\()]+):(\d+):(\d+)$/,
-                /^at ([^\s\)\()]+):(\d+):(\d+)$/
+                /^at ([^\s\)\()]+):(\d+):(\d+)$/,
               ];
 
               var CLEANUP_STACK_PATTERN = /^\w+:\s.*?\n/g;
@@ -6708,7 +6815,7 @@ try {
                   identifier: identifier,
                   script: script,
                   line: line,
-                  column: column
+                  column: column,
                 };
 
                 stackFrame.text = formatStackFrame(stackFrame);
@@ -6793,11 +6900,11 @@ try {
                   _error$messageFormat !== void 0
                     ? _error$messageFormat
                     : error.message;
-                var messageParams = ((_error$messageParams =
-                  error.messageParams) !== null &&
-                _error$messageParams !== void 0
-                  ? _error$messageParams
-                  : []
+                var messageParams = (
+                  (_error$messageParams = error.messageParams) !== null &&
+                  _error$messageParams !== void 0
+                    ? _error$messageParams
+                    : []
                 ).map(function map_$0(param) {
                   return String(param);
                 });
@@ -6895,8 +7002,7 @@ try {
                   metadata: metadata,
                   name: name,
                   page_time: Math.floor(
-                    (c_performanceNow ||
-                      (c_performanceNow = require("performanceNow")))()
+                    require("performanceNowSinceAppStart")()
                   ),
                   project: project,
                   reactComponentStack: reactComponentStack,
@@ -6905,7 +7011,7 @@ try {
                   stack: stack,
                   stackFrames: stackData,
                   type: type,
-                  xFBDebug: ErrorXFBDebug.getAll()
+                  xFBDebug: ErrorXFBDebug.getAll(),
                 };
 
                 if (error.forcedKey != null) {
@@ -6946,7 +7052,7 @@ try {
               var ErrorNormalizeUtils = {
                 formatStackFrame: formatStackFrame,
                 normalizeError: normalizeError,
-                ifNormalizedError: ifNormalizedError
+                ifNormalizedError: ifNormalizedError,
               };
 
               var GLOBAL_REACT_ERROR_HANDLER_TAG = "<global.react>";
@@ -6990,9 +7096,8 @@ try {
                 },
 
                 reportError: function reportError(error) {
-                  var normalizedError = ErrorNormalizeUtils.normalizeError(
-                    error
-                  );
+                  var normalizedError =
+                    ErrorNormalizeUtils.normalizeError(error);
                   ErrorPubSub$1.reportNormalizedError(normalizedError);
                 },
 
@@ -7032,9 +7137,8 @@ try {
                     var deferredSource = ErrorGuardState.findDeferredSource();
 
                     if (deferredSource != null) {
-                      normalizedError.deferredSource = ErrorNormalizeUtils.normalizeError(
-                        deferredSource
-                      );
+                      normalizedError.deferredSource =
+                        ErrorNormalizeUtils.normalizeError(deferredSource);
                     }
                   }
 
@@ -7069,7 +7173,7 @@ try {
 
                   isReporting = false;
                   return true;
-                }
+                },
               };
 
               ErrorPubSub$1.addListener(ErrorBrowserConsole.errorListener);
@@ -7086,15 +7190,17 @@ try {
                 ) {
                   ErrorGuardState.pushGuard({
                     name:
-                      (metaArgs === null || metaArgs === void 0
+                      ((metaArgs === null || metaArgs === void 0
                         ? void 0
-                        : metaArgs.name) ||
+                        : metaArgs.name) != null
+                        ? metaArgs.name
+                        : null) ||
                       (func.name ? "func_name:" + func.name : null) ||
                       ANONYMOUS_GUARD_TAG,
                     deferredSource:
                       metaArgs === null || metaArgs === void 0
                         ? void 0
-                        : metaArgs.deferredSource
+                        : metaArgs.deferredSource,
                   });
 
                   if (_skipGuard) {
@@ -7113,10 +7219,11 @@ try {
                       var _ref5 =
                           metaArgs !== null && metaArgs !== void 0
                             ? metaArgs
-                            : {},
+                            : babelHelpers["extends"]({}, null),
                         deferredSource = _ref5.deferredSource,
                         onError = _ref5.onError,
                         onNormalizedError = _ref5.onNormalizedError;
+
                       var error = getErrorSafe(ex);
                       var errorContext = {
                         deferredSource: deferredSource,
@@ -7132,13 +7239,12 @@ try {
                         type:
                           metaArgs === null || metaArgs === void 0
                             ? void 0
-                            : metaArgs.errorType
+                            : metaArgs.errorType,
                       };
 
                       ErrorSerializer.aggregateError(error, errorContext);
-                      var normalizedError = ErrorNormalizeUtils.normalizeError(
-                        error
-                      );
+                      var normalizedError =
+                        ErrorNormalizeUtils.normalizeError(error);
 
                       if (error == null && func) {
                         normalizedError.extra[
@@ -7154,7 +7260,8 @@ try {
                         }
                       }
 
-                      normalizedError.guardList = ErrorGuardState.cloneGuardList();
+                      normalizedError.guardList =
+                        ErrorGuardState.cloneGuardList();
 
                       if (onError) {
                         onError(error);
@@ -7207,7 +7314,7 @@ try {
 
                 skipGuardGlobal: function skipGuardGlobal(value) {
                   _skipGuard = value;
-                }
+                },
               };
 
               var MAX_MESSAGE_LENGTH = 1024;
@@ -7242,15 +7349,16 @@ try {
               }
 
               function _convertStack(stackFrames) {
-                return (stackFrames !== null && stackFrames !== void 0
-                  ? stackFrames
-                  : []
+                return (
+                  stackFrames !== null && stackFrames !== void 0
+                    ? stackFrames
+                    : []
                 ).map(function map_$0(frame) {
                   return {
                     column: _toInt64Nullable(frame.column),
                     identifier: frame.identifier,
                     line: _toInt64Nullable(frame.line),
-                    script: frame.script
+                    script: frame.script,
                   };
                 });
               }
@@ -7339,7 +7447,7 @@ try {
                         }),
                   web_session_id: info.web_session_id,
                   version: "3",
-                  xFBDebug: error.xFBDebug
+                  xFBDebug: error.xFBDebug,
                 };
                 var blameModule = error.blameModule,
                   deferredSource = error.deferredSource;
@@ -7350,7 +7458,7 @@ try {
 
                 if (deferredSource && deferredSource.stackFrames) {
                   newError.deferredSource = {
-                    stackFrames: _convertStack(deferredSource.stackFrames)
+                    stackFrames: _convertStack(deferredSource.stackFrames),
                   };
                 }
 
@@ -7378,6 +7486,8 @@ try {
               }
 
               function postError(error, info, logger) {
+                var _info$projectBlocklis;
+
                 pagePosition++;
 
                 if (info.sample_weight === 0) {
@@ -7390,12 +7500,20 @@ try {
                   return false;
                 }
 
+                if (
+                  (_info$projectBlocklis = info.projectBlocklist) !== null &&
+                  _info$projectBlocklis !== void 0 &&
+                  ES(_info$projectBlocklis, "includes", true, error.project)
+                ) {
+                  return false;
+                }
+
                 var errorPayload = createErrorPayload(error, info);
 
                 ES("Object", "assign", false, errorPayload, {
                   ancestors: errorAncestors.slice(),
                   clientWeight: _toInt64(clientWeight),
-                  page_position: _toInt64(pagePosition)
+                  page_position: _toInt64(pagePosition),
                 });
 
                 if (errorAncestors.length < 15) {
@@ -7408,16 +7526,18 @@ try {
 
               var ErrorPoster = {
                 createErrorPayload: createErrorPayload,
-                postError: postError
+                postError: postError,
               };
 
-              var localErrorPubSub = null;
+              var maybeLocalErrorPubSub = null;
               var subscribed = false;
 
               function onunhandledrejection(event) {
-                if (!localErrorPubSub) {
+                if (maybeLocalErrorPubSub == null) {
                   return;
                 }
+
+                var localErrorPubSub = maybeLocalErrorPubSub;
 
                 var reason = event.reason;
                 var expandedError;
@@ -7451,13 +7571,27 @@ try {
                   }
                 }
 
+                try {
+                  var promise = event.promise;
+                  expandedError.stack =
+                    String(expandedError.stack || "") +
+                    (promise != null && typeof promise.settledStack === "string"
+                      ? "\n(<promise_settled_stack_below>)\n" +
+                        promise.settledStack
+                      : "") +
+                    (promise != null && typeof promise.createdStack === "string"
+                      ? "\n(<promise_created_stack_below>)\n" +
+                        promise.createdStack
+                      : "");
+                } catch (_unused2) {}
+
                 localErrorPubSub.reportError(expandedError);
 
                 event.preventDefault();
               }
 
               function setup(injectedErrorPubSub) {
-                localErrorPubSub = injectedErrorPubSub;
+                maybeLocalErrorPubSub = injectedErrorPubSub;
 
                 if (
                   typeof global.addEventListener === "function" &&
@@ -7473,7 +7607,7 @@ try {
 
               var ErrorUnhandledRejectionHandler = {
                 onunhandledrejection: onunhandledrejection,
-                setup: setup
+                setup: setup,
               };
 
               var ErrorSetup = {
@@ -7496,9 +7630,9 @@ try {
                       ErrorPoster.postError(error, loggingInfo, logger);
                     }
                   );
-                }
+                },
               };
-              var FBLogMessage = (function() {
+              var FBLogMessage = (function () {
                 function FBLogMessage(project) {
                   this.project = project;
                   this.events = [];
@@ -7539,7 +7673,7 @@ try {
                         this.normalizedError.messageParams,
                         params
                       ),
-                      forcedKey: forcedKey
+                      forcedKey: forcedKey,
                     };
 
                     normalizedError = babelHelpers["extends"](
@@ -7553,7 +7687,7 @@ try {
                         ),
                         project: project,
                         type: type,
-                        loggingSource: "FBLOGGER"
+                        loggingSource: "FBLOGGER",
                       }
                     );
                   } else if (error) {
@@ -7571,7 +7705,7 @@ try {
                       forcedKey: forcedKey,
                       project: project,
                       type: type,
-                      loggingSource: "FBLOGGER"
+                      loggingSource: "FBLOGGER",
                     });
 
                     normalizedError = ErrorNormalizeUtils.normalizeError(error);
@@ -7585,9 +7719,8 @@ try {
                     }
 
                     error.messageFormat = safeFormat;
-                    error.messageParams = ErrorSerializer.toStringParams(
-                      params
-                    );
+                    error.messageParams =
+                      ErrorSerializer.toStringParams(params);
                     error.blameModule = blameModule;
                     error.forcedKey = forcedKey;
                     error.project = project;
@@ -7596,14 +7729,27 @@ try {
 
                     error.taalOpcodes = [
                       TAALOpcode.PREVIOUS_FRAME,
-                      TAALOpcode.PREVIOUS_FRAME
+                      TAALOpcode.PREVIOUS_FRAME,
                     ].concat(this.taalOpcodes);
                     normalizedError = ErrorNormalizeUtils.normalizeError(error);
                     normalizedError.name = "FBLogger";
                   }
 
                   if (!metadata.isEmpty()) {
-                    normalizedError.metadata = metadata.format();
+                    if (normalizedError.metadata == null) {
+                      normalizedError.metadata = metadata.format();
+                    } else {
+                      var allMetadata = normalizedError.metadata.concat(
+                        metadata.format()
+                      );
+                      var uniqueMetadata = new Set(allMetadata);
+                      normalizedError.metadata = ES(
+                        "Array",
+                        "from",
+                        false,
+                        uniqueMetadata.values()
+                      );
+                    }
                   }
 
                   if (events.length > 0) {
@@ -7736,12 +7882,11 @@ try {
 
                   return this;
                 };
-                _proto2.catchingNormalizedError = function catchingNormalizedError(
-                  normalizedError
-                ) {
-                  this.normalizedError = normalizedError;
-                  return this;
-                };
+                _proto2.catchingNormalizedError =
+                  function catchingNormalizedError(normalizedError) {
+                    this.normalizedError = normalizedError;
+                    return this;
+                  };
                 _proto2.event = function event(_event) {
                   this.events.push(_event);
                   return this;
@@ -7758,10 +7903,11 @@ try {
                   this.taalOpcodes.push(TAALOpcode.PREVIOUS_FRAME);
                   return this;
                 };
-                _proto2.blameToPreviousDirectory = function blameToPreviousDirectory() {
-                  this.taalOpcodes.push(TAALOpcode.PREVIOUS_DIR);
-                  return this;
-                };
+                _proto2.blameToPreviousDirectory =
+                  function blameToPreviousDirectory() {
+                    this.taalOpcodes.push(TAALOpcode.PREVIOUS_DIR);
+                    return this;
+                  };
                 _proto2.addToCategoryKey = function addToCategoryKey(addedKey) {
                   this.forcedKey = addedKey;
                   return this;
@@ -7787,7 +7933,7 @@ try {
                 return logger;
               };
 
-              FBLogger.addGlobalMetadata = function(product, name, value) {
+              FBLogger.addGlobalMetadata = function (product, name, value) {
                 ErrorMetadata.addGlobalMetadata(product, name, value);
               };
 
@@ -7828,7 +7974,7 @@ try {
                       : [];
                   error.taalOpcodes.push(TAALOpcode.PREVIOUS_DIR);
                   return error;
-                }
+                },
               };
 
               var index = {
@@ -7850,7 +7996,7 @@ try {
                 getErrorSafe: getErrorSafe,
                 getSimpleHash: getSimpleHash,
                 TAAL: TAAL,
-                TAALOpcode: TAALOpcode
+                TAALOpcode: TAALOpcode,
               };
 
               module.exports = index;
@@ -7885,6 +8031,8 @@ try {
               module,
               exports
             ) {
+              "use strict";
+
               var ARRAY_QUERY_PATTERN = /^([-_\w]+)((?:\[[-_\w]*\])+)=?(.*)/;
 
               function replaceBadKeys(key) {
@@ -7923,6 +8071,7 @@ try {
                     } else {
                       var key = queryAsArray[ii].substring(0, splitIndex);
                       var value = queryAsArray[ii].substring(splitIndex + 1);
+
                       result[decodeComponent(key)] = decodeComponent(value);
                     }
                   } else {
@@ -7940,6 +8089,7 @@ try {
                             indices[i + 1] && !indices[i + 1].match(/^\d{1,3}$/)
                               ? {}
                               : [];
+
                           resultNode[_key] = nv;
                           if (resultNode[_key] !== nv) {
                             return result;
@@ -7956,6 +8106,7 @@ try {
                         } else {
                           resultNode.push([]);
                         }
+
                         resultNode = resultNode[resultNode.length - 1];
                       }
                     }
@@ -7966,9 +8117,8 @@ try {
                     ) {
                       resultNode.push(_value);
                     } else {
-                      resultNode[
-                        replaceBadKeys(indices[indices.length - 1])
-                      ] = _value;
+                      resultNode[replaceBadKeys(indices[indices.length - 1])] =
+                        _value;
                     }
                   }
                 }
@@ -7996,7 +8146,7 @@ try {
               }
 
               function _flattenPHPQueryData(obj, name, componentsObject) {
-                if (obj === null || obj === undefined) {
+                if (obj == null) {
                   componentsObject[name] = undefined;
                 } else if (typeof obj === "object") {
                   typeof obj.appendChild !== "function" ||
@@ -8090,10 +8240,10 @@ try {
               }
 
               var PHPQuerySerializer = {
-                serialize: serialize,
-                encodeComponent: encodeComponent,
+                decodeComponent: decodeComponent,
                 deserialize: deserialize,
-                decodeComponent: decodeComponent
+                encodeComponent: encodeComponent,
+                serialize: serialize,
               };
 
               module.exports = PHPQuerySerializer;
@@ -8146,12 +8296,10 @@ try {
               }
               exports.serialize = serialize;
               exports.encodeComponent = encodeComponent;
-              exports.deserialize = importNamespace(
-                "PHPQuerySerializer"
-              ).deserialize;
-              exports.decodeComponent = importNamespace(
-                "PHPQuerySerializer"
-              ).decodeComponent;
+              exports.deserialize =
+                importNamespace("PHPQuerySerializer").deserialize;
+              exports.decodeComponent =
+                importNamespace("PHPQuerySerializer").decodeComponent;
             },
             98
           );
@@ -8210,7 +8358,7 @@ try {
                   path: captures[6] ? captures[6] : null,
                   query: captures[7] ? captures[7].substr(1) : null,
                   fragment: captures[8] ? captures[8].substr(1) : null,
-                  isGenericURI: authority === null && !!scheme
+                  isGenericURI: authority === null && !!scheme,
                 };
 
                 return uri;
@@ -8269,7 +8417,11 @@ try {
               module,
               exports
             ) {
+              "use strict";
+
               var defaultSchemes = importDefault("createObjectFrom")([
+                "apk",
+                "accountscenter",
                 "aidemos",
                 "aistudio",
                 "blob",
@@ -8303,6 +8455,7 @@ try {
                 "intent",
                 "itms",
                 "itms-apps",
+                "itms-services",
                 "lasso",
                 "market",
                 "svn+ssh",
@@ -8318,6 +8471,7 @@ try {
                 "chrome-extension",
                 "webcal",
                 "instagram",
+                "iglite",
                 "fb124024574287414",
                 "fb124024574287414rc",
                 "fb124024574287414master",
@@ -8327,12 +8481,16 @@ try {
                 "fbpixelcloud",
                 "fbapi20130214",
                 "fb1196383223757595",
+                "tbauth",
                 "oculus",
                 "oculus.store",
                 "oculus.feed",
                 "oculusstore",
                 "odh",
+                "com.oculus.rd",
+                "aria",
                 "skype",
+                "ms-windows-store",
                 "callto",
                 "messenger",
                 "workchat",
@@ -8341,19 +8499,34 @@ try {
                 "data",
                 "fb-mk",
                 "munki",
-                "kirigami",
                 "origami-file",
                 "fb-nimble-vrsrecorder",
                 "fb-nimble-monohandtrackingvis",
                 "together",
                 "togetherbl",
+                "horizonlauncher",
                 "venues",
                 "whatsapp-consumer",
                 "whatsapp-smb",
                 "fb-ide-opener",
                 "fb-vscode",
                 "fb-vscode-insiders",
-                "spark-studio"
+                "editor",
+                "spark-studio",
+                "arstudio",
+                "manifold",
+                "origami-internal",
+                "origami-public",
+                "stella",
+                "mwa",
+                "mattermost",
+                "logaggregator",
+                "workrooms",
+                "pcoip",
+                "cinema",
+                "home",
+                "oculus360photos",
+                "systemux",
               ]);
 
               function isAllowed(schema) {
@@ -8370,6 +8543,35 @@ try {
             98
           );
           __d(
+            "isSameOrigin",
+            [],
+            function $module_isSameOrigin(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              "use strict";
+
+              function isSameOrigin(first, second) {
+                if (
+                  !first.getProtocol() ||
+                  !first.getDomain() ||
+                  !second.getProtocol() ||
+                  !second.getDomain()
+                ) {
+                  return false;
+                }
+
+                return first.getOrigin() === second.getOrigin();
+              }
+              exports["default"] = isSameOrigin;
+            },
+            66
+          );
+          __d(
             "setHostSubdomain",
             [],
             function $module_setHostSubdomain(
@@ -8380,6 +8582,8 @@ try {
               module,
               exports
             ) {
+              "use strict";
+
               function setHostSubdomain(domain, subdomain) {
                 var pieces = domain.split(".");
                 if (pieces.length < 3) {
@@ -8401,7 +8605,8 @@ try {
               "PHPStrictQuerySerializer",
               "URIRFC3986",
               "URISchemes",
-              "setHostSubdomain"
+              "isSameOrigin",
+              "setHostSubdomain",
             ],
             function $module_URIAbstractBase(
               global,
@@ -8426,7 +8631,7 @@ try {
               );
 
               var uriFilters = [];
-              var URIAbstractBase = (function() {
+              var URIAbstractBase = (function () {
                 "use strict";
                 URIAbstractBase.parse = function parse(
                   uri,
@@ -8465,7 +8670,7 @@ try {
                   ).parse(uriToParse) || {
                     fragment: null,
                     scheme: null,
-                    query: null
+                    query: null,
                   };
 
                   if (
@@ -8556,13 +8761,9 @@ try {
                     return false;
                   }
 
-                  var safe =
-                    uri.getProtocol() === "mailto" ||
-                    uri.getProtocol() === "tel" ||
-                    uri.getProtocol() === "sms";
                   if (
                     uri.getProtocol() &&
-                    !safe &&
+                    !uri.getIsGeneric() &&
                     !uri.getDomain() &&
                     uri.getPath() !== ""
                   ) {
@@ -8728,41 +8929,43 @@ try {
                     PHPQuerySerializerNoEncoding
                   );
                 };
-                _proto.$URIAbstractBase_renderQuery = function $URIAbstractBase_renderQuery(
-                  rawQuery,
-                  preserveQuery,
-                  isDomainNeedRawQuery,
-                  PHPQuerySerializerNoEncoding
-                ) {
-                  if (rawQuery === void 0) {
-                    rawQuery = false;
-                  }
-                  if (preserveQuery === void 0) {
-                    preserveQuery = false;
-                  }
-                  if (isDomainNeedRawQuery === void 0) {
-                    isDomainNeedRawQuery = function isDomainNeedRawQuery() {
-                      return false;
-                    };
-                  }
-                  if (PHPQuerySerializerNoEncoding === void 0) {
-                    PHPQuerySerializerNoEncoding = null;
-                  }
-                  if (
-                    !this.$URIAbstractBase_isQueryParamModified &&
-                    (preserveQuery || isDomainNeedRawQuery(this.getDomain()))
+                _proto.$URIAbstractBase_renderQuery =
+                  function $URIAbstractBase_renderQuery(
+                    rawQuery,
+                    preserveQuery,
+                    isDomainNeedRawQuery,
+                    PHPQuerySerializerNoEncoding
                   ) {
-                    var _this$$URIAbstractBas;
-                    return (_this$$URIAbstractBas = this
-                      .$URIAbstractBase_originalRawQuery) != null
-                      ? _this$$URIAbstractBas
-                      : "";
-                  }
-                  return (rawQuery && PHPQuerySerializerNoEncoding
-                    ? PHPQuerySerializerNoEncoding
-                    : this.$URIAbstractBase_serializer
-                  ).serialize(this.getQueryData());
-                };
+                    if (rawQuery === void 0) {
+                      rawQuery = false;
+                    }
+                    if (preserveQuery === void 0) {
+                      preserveQuery = false;
+                    }
+                    if (isDomainNeedRawQuery === void 0) {
+                      isDomainNeedRawQuery = function isDomainNeedRawQuery() {
+                        return false;
+                      };
+                    }
+                    if (PHPQuerySerializerNoEncoding === void 0) {
+                      PHPQuerySerializerNoEncoding = null;
+                    }
+                    if (
+                      !this.$URIAbstractBase_isQueryParamModified &&
+                      (preserveQuery || isDomainNeedRawQuery(this.getDomain()))
+                    ) {
+                      var _this$$URIAbstractBas;
+                      return (_this$$URIAbstractBas =
+                        this.$URIAbstractBase_originalRawQuery) != null
+                        ? _this$$URIAbstractBas
+                        : "";
+                    }
+                    return (
+                      rawQuery && PHPQuerySerializerNoEncoding
+                        ? PHPQuerySerializerNoEncoding
+                        : this.$URIAbstractBase_serializer
+                    ).serialize(this.getQueryData());
+                  };
                 _proto.removeQueryData = function removeQueryData(keys) {
                   if (!Array.isArray(keys)) {
                     keys = [keys];
@@ -8782,15 +8985,15 @@ try {
                 _proto.getFragment = function getFragment() {
                   return this.$URIAbstractBase_fragment;
                 };
-                _proto.setForceFragmentSeparator = function setForceFragmentSeparator(
-                  shouldForce
-                ) {
-                  this.$URIAbstractBase_forceFragmentSeparator = shouldForce;
-                  return this;
-                };
-                _proto.getForceFragmentSeparator = function getForceFragmentSeparator() {
-                  return this.$URIAbstractBase_forceFragmentSeparator;
-                };
+                _proto.setForceFragmentSeparator =
+                  function setForceFragmentSeparator(shouldForce) {
+                    this.$URIAbstractBase_forceFragmentSeparator = shouldForce;
+                    return this;
+                  };
+                _proto.getForceFragmentSeparator =
+                  function getForceFragmentSeparator() {
+                    return this.$URIAbstractBase_forceFragmentSeparator;
+                  };
                 _proto.setIsGeneric = function setIsGeneric(isGeneric) {
                   this.$URIAbstractBase_isGeneric = isGeneric;
                   return this;
@@ -8810,7 +9013,8 @@ try {
                 _proto.setQueryParamModified = function setQueryParamModified(
                   isQueryParamModified
                 ) {
-                  this.$URIAbstractBase_isQueryParamModified = isQueryParamModified;
+                  this.$URIAbstractBase_isQueryParamModified =
+                    isQueryParamModified;
                   return this;
                 };
                 _proto.isEmpty = function isEmpty() {
@@ -8880,110 +9084,111 @@ try {
                     PHPQuerySerializerNoEncoding
                   );
                 };
-                _proto.toStringStrictQueryEncoding = function toStringStrictQueryEncoding(
-                  isDomainNeedRawQuery
-                ) {
-                  if (isDomainNeedRawQuery === void 0) {
-                    isDomainNeedRawQuery = function isDomainNeedRawQuery() {
-                      return false;
-                    };
-                  }
-                  return this.$URIAbstractBase_toStringWithFilters(
-                    true,
-                    false,
-                    isDomainNeedRawQuery,
-                    require("PHPStrictQuerySerializer")
-                  );
-                };
-                _proto.$URIAbstractBase_toStringWithFilters = function $URIAbstractBase_toStringWithFilters(
-                  rawQuery,
-                  preserveQuery,
-                  isDomainNeedRawQuery,
-                  PHPQuerySerializerNoEncoding
-                ) {
-                  if (rawQuery === void 0) {
-                    rawQuery = false;
-                  }
-                  if (preserveQuery === void 0) {
-                    preserveQuery = false;
-                  }
-                  if (isDomainNeedRawQuery === void 0) {
-                    isDomainNeedRawQuery = function isDomainNeedRawQuery() {
-                      return false;
-                    };
-                  }
-                  if (PHPQuerySerializerNoEncoding === void 0) {
-                    PHPQuerySerializerNoEncoding = null;
-                  }
-                  var uri = this;
-                  for (var i = 0; i < uriFilters.length; i++) {
-                    uri = uriFilters[i](uri);
-                  }
-                  return uri.$URIAbstractBase_toStringImpl(
+                _proto.toStringStrictQueryEncoding =
+                  function toStringStrictQueryEncoding(isDomainNeedRawQuery) {
+                    if (isDomainNeedRawQuery === void 0) {
+                      isDomainNeedRawQuery = function isDomainNeedRawQuery() {
+                        return false;
+                      };
+                    }
+                    return this.$URIAbstractBase_toStringWithFilters(
+                      true,
+                      false,
+                      isDomainNeedRawQuery,
+                      require("PHPStrictQuerySerializer")
+                    );
+                  };
+                _proto.$URIAbstractBase_toStringWithFilters =
+                  function $URIAbstractBase_toStringWithFilters(
                     rawQuery,
                     preserveQuery,
                     isDomainNeedRawQuery,
                     PHPQuerySerializerNoEncoding
-                  );
-                };
-                _proto.$URIAbstractBase_toStringImpl = function $URIAbstractBase_toStringImpl(
-                  rawQuery,
-                  preserveQuery,
-                  isDomainNeedRawQuery,
-                  PHPQuerySerializerNoEncoding
-                ) {
-                  if (rawQuery === void 0) {
-                    rawQuery = false;
-                  }
-                  if (preserveQuery === void 0) {
-                    preserveQuery = false;
-                  }
-                  if (isDomainNeedRawQuery === void 0) {
-                    isDomainNeedRawQuery = function isDomainNeedRawQuery() {
-                      return false;
-                    };
-                  }
-                  if (PHPQuerySerializerNoEncoding === void 0) {
-                    PHPQuerySerializerNoEncoding = null;
-                  }
-                  var str = "";
-                  var protocol = this.getProtocol();
-                  if (protocol) {
-                    str += protocol + ":" + (this.getIsGeneric() ? "" : "//");
-                  }
-                  var domain = this.getDomain();
-                  if (domain) {
-                    str += domain;
-                  }
-                  var port = this.getPort();
-                  if (port) {
-                    str += ":" + port;
-                  }
-
-                  var path = this.getPath();
-                  if (path) {
-                    str += path;
-                  } else if (str) {
-                    str += "/";
-                  }
-                  var queryStr = this.$URIAbstractBase_renderQuery(
+                  ) {
+                    if (rawQuery === void 0) {
+                      rawQuery = false;
+                    }
+                    if (preserveQuery === void 0) {
+                      preserveQuery = false;
+                    }
+                    if (isDomainNeedRawQuery === void 0) {
+                      isDomainNeedRawQuery = function isDomainNeedRawQuery() {
+                        return false;
+                      };
+                    }
+                    if (PHPQuerySerializerNoEncoding === void 0) {
+                      PHPQuerySerializerNoEncoding = null;
+                    }
+                    var uri = this;
+                    for (var i = 0; i < uriFilters.length; i++) {
+                      uri = uriFilters[i](uri);
+                    }
+                    return uri.$URIAbstractBase_toStringImpl(
+                      rawQuery,
+                      preserveQuery,
+                      isDomainNeedRawQuery,
+                      PHPQuerySerializerNoEncoding
+                    );
+                  };
+                _proto.$URIAbstractBase_toStringImpl =
+                  function $URIAbstractBase_toStringImpl(
                     rawQuery,
                     preserveQuery,
                     isDomainNeedRawQuery,
                     PHPQuerySerializerNoEncoding
-                  );
+                  ) {
+                    if (rawQuery === void 0) {
+                      rawQuery = false;
+                    }
+                    if (preserveQuery === void 0) {
+                      preserveQuery = false;
+                    }
+                    if (isDomainNeedRawQuery === void 0) {
+                      isDomainNeedRawQuery = function isDomainNeedRawQuery() {
+                        return false;
+                      };
+                    }
+                    if (PHPQuerySerializerNoEncoding === void 0) {
+                      PHPQuerySerializerNoEncoding = null;
+                    }
+                    var str = "";
+                    var protocol = this.getProtocol();
+                    if (protocol) {
+                      str += protocol + ":" + (this.getIsGeneric() ? "" : "//");
+                    }
+                    var domain = this.getDomain();
+                    if (domain) {
+                      str += domain;
+                    }
+                    var port = this.getPort();
+                    if (port) {
+                      str += ":" + port;
+                    }
 
-                  if (queryStr) {
-                    str += "?" + queryStr;
-                  }
-                  var fragment = this.getFragment();
-                  if (fragment) {
-                    str += "#" + fragment;
-                  } else if (this.getForceFragmentSeparator()) {
-                    str += "#";
-                  }
-                  return str;
-                };
+                    var path = this.getPath();
+                    if (path) {
+                      str += path;
+                    } else if (str) {
+                      str += "/";
+                    }
+                    var queryStr = this.$URIAbstractBase_renderQuery(
+                      rawQuery,
+                      preserveQuery,
+                      isDomainNeedRawQuery,
+                      PHPQuerySerializerNoEncoding
+                    );
+
+                    if (queryStr) {
+                      str += "?" + queryStr;
+                    }
+                    var fragment = this.getFragment();
+                    if (fragment) {
+                      str += "#" + fragment;
+                    } else if (this.getForceFragmentSeparator()) {
+                      str += "#";
+                    }
+                    return str;
+                  };
                 URIAbstractBase.registerFilter = function registerFilter(
                   filter
                 ) {
@@ -8999,16 +9204,7 @@ try {
                   );
                 };
                 _proto.isSameOrigin = function isSameOrigin(otherURI) {
-                  if (
-                    !this.getProtocol() ||
-                    !this.getDomain() ||
-                    !otherURI.getProtocol() ||
-                    !otherURI.getDomain()
-                  ) {
-                    return false;
-                  }
-
-                  return this.getOrigin() === otherURI.getOrigin();
+                  return require("isSameOrigin")(this, otherURI);
                 };
                 _proto.getQualifiedURIBase = function getQualifiedURIBase() {
                   return new URIAbstractBase(
@@ -9022,6 +9218,7 @@ try {
                       window.location.href,
                       this.$URIAbstractBase_serializer
                     );
+
                     this.setProtocol(current.getProtocol())
                       .setDomain(current.getDomain())
                       .setPort(current.getPort());
@@ -9057,29 +9254,30 @@ try {
                     this.$URIAbstractBase_serializer
                   );
                 };
-                URIAbstractBase.isDomainSubdomainOfDomain = function isDomainSubdomainOfDomain(
-                  domain,
-                  superdomain,
-                  serializer
-                ) {
-                  if (superdomain === "" || domain === "") {
-                    return false;
-                  }
-
-                  if (ES(domain, "endsWith", true, superdomain)) {
-                    var domainLen = domain.length;
-                    var superdomainLen = superdomain.length;
-                    var pos = domainLen - superdomainLen - 1;
-
-                    if (domainLen === superdomainLen || domain[pos] === ".") {
-                      var uri = new URIAbstractBase(null, serializer);
-                      uri.setDomain(superdomain);
-                      return URIAbstractBase.isValid(uri, serializer);
+                URIAbstractBase.isDomainSubdomainOfDomain =
+                  function isDomainSubdomainOfDomain(
+                    domain,
+                    superdomain,
+                    serializer
+                  ) {
+                    if (superdomain === "" || domain === "") {
+                      return false;
                     }
-                  }
 
-                  return false;
-                };
+                    if (ES(domain, "endsWith", true, superdomain)) {
+                      var domainLen = domain.length;
+                      var superdomainLen = superdomain.length;
+                      var pos = domainLen - superdomainLen - 1;
+
+                      if (domainLen === superdomainLen || domain[pos] === ".") {
+                        var uri = new URIAbstractBase(null, serializer);
+                        uri.setDomain(superdomain);
+                        return URIAbstractBase.isValid(uri, serializer);
+                      }
+                    }
+
+                    return false;
+                  };
                 return URIAbstractBase;
               })();
 
@@ -9107,9 +9305,9 @@ try {
                 },
                 deserialize: function deserialize(text) {
                   return text ? importDefault("QueryString").decode(text) : {};
-                }
+                },
               };
-              var URI = (function(_URIBase) {
+              var URI = (function (_URIBase) {
                 babelHelpers.inheritsLoose(URI, _URIBase);
                 function URI(uri) {
                   return _URIBase.call(this, uri, serializer) || this;
@@ -9141,7 +9339,7 @@ try {
               "Log",
               "flattenObject",
               "sdk.URI",
-              "sprintf"
+              "sprintf",
             ],
             function $module_ApiClientUtils(
               global,
@@ -9156,7 +9354,7 @@ try {
                 get: true,
                 post: true,
                 delete: true,
-                put: true
+                put: true,
               };
 
               function parseCallDataFromArgs(args) {
@@ -9254,6 +9452,7 @@ try {
                 if (x != null) {
                   return x;
                 }
+
                 var error = new Error(message);
                 error.framesToPop = 1;
                 throw error;
@@ -9312,12 +9511,12 @@ try {
                   code: 1,
                   error_subcode: 1357046,
                   message: "Received Invalid JSON reply.",
-                  type: "http"
-                }
+                  type: "http",
+                },
               };
 
               safelyParseResponse.ERROR = ERROR;
-              safelyParseResponse.setErrorHandler = function(newHandler) {
+              safelyParseResponse.setErrorHandler = function (newHandler) {
                 errorHandler = newHandler;
               };
               var _default = safelyParseResponse;
@@ -9359,7 +9558,7 @@ try {
               "ApiClientUtils",
               "QueryString",
               "sdk.safelyParseResponse",
-              "whitelistObjectKeys"
+              "whitelistObjectKeys",
             ],
             function $module_ApiBatcher(
               global,
@@ -9376,7 +9575,7 @@ try {
               var REQUESTS_PER_BATCH = 50;
 
               var DEFAULT_BATCH_APP_ID = 105440539523;
-              var ApiBatcher = (function() {
+              var ApiBatcher = (function () {
                 function ApiBatcher(executeRequest, clientID) {
                   this.$ApiBatcher_batchCalls = [];
                   this.$ApiBatcher_batchCallbacks = [];
@@ -9396,9 +9595,8 @@ try {
                   ) {
                     args[_key] = arguments[_key];
                   }
-                  var _ApiBatcher$prepareBa = ApiBatcher.prepareBatchParams(
-                      args
-                    ),
+                  var _ApiBatcher$prepareBa =
+                      ApiBatcher.prepareBatchParams(args),
                     body = _ApiBatcher$prepareBa.body,
                     callback = _ApiBatcher$prepareBa.callback,
                     method = _ApiBatcher$prepareBa.method,
@@ -9406,7 +9604,7 @@ try {
 
                   var batchCall = {
                     method: method,
-                    relative_url: relative_url
+                    relative_url: relative_url,
                   };
 
                   if (body) {
@@ -9420,12 +9618,12 @@ try {
                     this.$ApiBatcher_batchCalls.length == REQUESTS_PER_BATCH
                   ) {
                     if (this.$ApiBatcher_scheduleID) {
-                      clearTimeout(this.$ApiBatcher_scheduleID);
+                      window.clearTimeout(this.$ApiBatcher_scheduleID);
                     }
                     this.$ApiBatcher_dispatchBatchCalls();
                   } else if (!this.$ApiBatcher_scheduleID) {
-                    this.$ApiBatcher_scheduleID = setTimeout(
-                      function setTimeout_$0() {
+                    this.$ApiBatcher_scheduleID = window.setTimeout(
+                      function window_setTimeout_$0() {
                         _this.$ApiBatcher_dispatchBatchCalls();
                       },
                       0
@@ -9439,9 +9637,10 @@ try {
                   if (keptQueryParams === void 0) {
                     keptQueryParams = [];
                   }
-                  var _ApiClientUtils$parse = importNamespace(
-                      "ApiClientUtils"
-                    ).parseCallDataFromArgs(args),
+                  var _ApiClientUtils$parse =
+                      importNamespace("ApiClientUtils").parseCallDataFromArgs(
+                        args
+                      ),
                     uri = _ApiClientUtils$parse.uri,
                     callback = _ApiClientUtils$parse.callback,
                     method = _ApiClientUtils$parse.params.method;
@@ -9463,80 +9662,81 @@ try {
                     body: body,
                     callback: callback,
                     method: method,
-                    relative_url: relative_url
+                    relative_url: relative_url,
                   };
                 };
-                _proto.$ApiBatcher_dispatchBatchCalls = function $ApiBatcher_dispatchBatchCalls() {
-                  this.$ApiBatcher_batchCalls.length > 0 ||
-                    invariant(
-                      0,
-                      "ApiClient: _batchCalls is empty at dispatch."
-                    );
+                _proto.$ApiBatcher_dispatchBatchCalls =
+                  function $ApiBatcher_dispatchBatchCalls() {
+                    this.$ApiBatcher_batchCalls.length > 0 ||
+                      invariant(
+                        0,
+                        "ApiClient: _batchCalls is empty at dispatch."
+                      );
 
-                  this.$ApiBatcher_batchCalls.length ===
-                    this.$ApiBatcher_batchCallbacks.length ||
-                    invariant(
-                      0,
-                      "ApiClient: Every batch call should have a callback"
-                    );
+                    this.$ApiBatcher_batchCalls.length ===
+                      this.$ApiBatcher_batchCallbacks.length ||
+                      invariant(
+                        0,
+                        "ApiClient: Every batch call should have a callback"
+                      );
 
-                  var copiedBatchCalls = this.$ApiBatcher_batchCalls;
-                  var copiedBatchCallbacks = this.$ApiBatcher_batchCallbacks;
-                  this.$ApiBatcher_batchCalls = [];
-                  this.$ApiBatcher_batchCallbacks = [];
-                  this.$ApiBatcher_scheduleID = null;
+                    var copiedBatchCalls = this.$ApiBatcher_batchCalls;
+                    var copiedBatchCallbacks = this.$ApiBatcher_batchCallbacks;
+                    this.$ApiBatcher_batchCalls = [];
+                    this.$ApiBatcher_batchCallbacks = [];
+                    this.$ApiBatcher_scheduleID = null;
 
-                  if (copiedBatchCalls.length === 1) {
-                    var call = copiedBatchCalls[0];
-                    var callback = copiedBatchCallbacks[0];
+                    if (copiedBatchCalls.length === 1) {
+                      var call = copiedBatchCalls[0];
+                      var callback = copiedBatchCallbacks[0];
 
-                    var body = call.body
-                      ? importDefault("QueryString").decode(call.body)
-                      : null;
+                      var body = call.body
+                        ? importDefault("QueryString").decode(call.body)
+                        : null;
+
+                      this.executeRequest(
+                        call.relative_url,
+                        call.method,
+                        body,
+                        callback
+                      );
+                      return;
+                    }
 
                     this.executeRequest(
-                      call.relative_url,
-                      call.method,
-                      body,
-                      callback
-                    );
-                    return;
-                  }
+                      "/",
+                      "POST",
+                      {
+                        batch: copiedBatchCalls,
+                        include_headers: false,
+                        batch_app_id:
+                          this.$ApiBatcher_clientID || DEFAULT_BATCH_APP_ID,
+                      },
 
-                  this.executeRequest(
-                    "/",
-                    "POST",
-                    {
-                      batch: copiedBatchCalls,
-                      include_headers: false,
-                      batch_app_id:
-                        this.$ApiBatcher_clientID || DEFAULT_BATCH_APP_ID
-                    },
-
-                    function executeRequest_$3(response) {
-                      if (Array.isArray(response)) {
-                        response.forEach(function response_forEach_$0(
-                          data,
-                          idx
-                        ) {
-                          copiedBatchCallbacks[idx](
-                            importDefault("sdk.safelyParseResponse")(
-                              data && data.body
-                            )
+                      function executeRequest_$3(response) {
+                        if (Array.isArray(response)) {
+                          response.forEach(function response_forEach_$0(
+                            data,
+                            idx
+                          ) {
+                            copiedBatchCallbacks[idx](
+                              importDefault("sdk.safelyParseResponse")(
+                                data && data.body
+                              )
+                            );
+                          });
+                        } else {
+                          copiedBatchCallbacks.forEach(
+                            function copiedBatchCallbacks_forEach_$0(callback) {
+                              return callback({
+                                error: { message: "Fatal: batch call failed." },
+                              });
+                            }
                           );
-                        });
-                      } else {
-                        copiedBatchCallbacks.forEach(
-                          function copiedBatchCallbacks_forEach_$0(callback) {
-                            return callback({
-                              error: { message: "Fatal: batch call failed." }
-                            });
-                          }
-                        );
+                        }
                       }
-                    }
-                  );
-                };
+                    );
+                  };
                 return ApiBatcher;
               })();
               exports["default"] = ApiBatcher;
@@ -9561,7 +9761,7 @@ try {
                 error_subcode: 1357045,
                 message: "unknown error (empty response)",
                 type: "http",
-                status: 0
+                status: 0,
               };
               exports.PARSE_ERROR_TEMPLATE = PARSE_ERROR_TEMPLATE;
             },
@@ -9569,7 +9769,7 @@ try {
           );
           __d(
             "sdk.Cookie",
-            ["QueryString", "sdk.Runtime"],
+            ["QueryString", "sdk.Runtime", "sdk.Scribe", "sdk.feature"],
             function $module_sdk_Cookie(
               global,
               require,
@@ -9581,8 +9781,28 @@ try {
             ) {
               var domain = null;
 
+              var JSSDK_COOKIE_PREFIX = ["fblo_", "fbsr_", "fbm_"];
+
               function setRaw(startingPrefix, val, ts, secure) {
                 var _domain;
+                if (
+                  !ES(JSSDK_COOKIE_PREFIX, "includes", true, startingPrefix)
+                ) {
+                  importNamespace("sdk.Scribe").log("jssdk_error", {
+                    appId: importDefault("sdk.Runtime").getClientID(),
+                    error: "unknown_cookie_prefix." + startingPrefix,
+                  });
+
+                  if (
+                    importDefault("sdk.feature")(
+                      "limit_unknown_cookie_setting",
+                      false
+                    )
+                  ) {
+                    return;
+                  }
+                }
+
                 var prefix =
                   startingPrefix + importDefault("sdk.Runtime").getClientID();
 
@@ -9621,7 +9841,7 @@ try {
                   startingPrefix + importDefault("sdk.Runtime").getClientID();
                 var regExp = new RegExp("\\b" + prefix + "=([^;]*)\\b");
                 var matches = document.cookie.match(regExp);
-                if (matches === null || matches === undefined) {
+                if (matches == null) {
                   return null;
                 } else {
                   return matches[1];
@@ -9632,7 +9852,7 @@ try {
                 domain = val;
 
                 var meta = importDefault("QueryString").encode({
-                  base_domain: domain !== null && domain !== "." ? domain : ""
+                  base_domain: domain !== null && domain !== "." ? domain : "",
                 });
 
                 var expiration = new Date();
@@ -9646,11 +9866,7 @@ try {
 
               function loadMeta() {
                 var cookie = getRaw("fbm_");
-                if (
-                  cookie !== null &&
-                  cookie !== undefined &&
-                  domain === null
-                ) {
+                if (cookie != null && domain === null) {
                   var meta = importDefault("QueryString").decode(cookie);
 
                   domain = meta.base_domain;
@@ -9673,7 +9889,7 @@ try {
               }
 
               function clearSignedRequestCookie() {
-                this.loadMeta();
+                loadMeta();
                 setRaw("fbsr_", "", 0, true);
               }
               exports.setRaw = setRaw;
@@ -9695,7 +9911,7 @@ try {
               "RequestConstants",
               "sdk.Cookie",
               "sdk.safelyParseResponse",
-              "wrapFunction"
+              "wrapFunction",
             ],
             function $module_CORSRequest(
               global,
@@ -9706,14 +9922,28 @@ try {
               module,
               exports
             ) {
-              function createCORSRequest(method, url) {
+              function createCORSRequest(method, url, additionalArgs) {
+                var _additionalArgs;
+                if (additionalArgs === void 0) {
+                  additionalArgs = { withCredentials: false };
+                }
                 if (!self.XMLHttpRequest) {
                   return null;
                 }
                 var xhr = new XMLHttpRequest();
                 var noop = function noop() {};
+
+                if (
+                  (_additionalArgs = additionalArgs) == null
+                    ? void 0
+                    : _additionalArgs.withCredentials
+                ) {
+                  xhr.withCredentials = true;
+                }
+
                 if ("withCredentials" in xhr) {
                   xhr.open(method, url, true);
+
                   xhr.setRequestHeader(
                     "Content-type",
                     "application/x-www-form-urlencoded"
@@ -9734,7 +9964,7 @@ try {
                 var wrapper = {
                   send: function send(data) {
                     xhr.send(data);
-                  }
+                  },
                 };
 
                 var onload = importDefault("wrapFunction")(
@@ -9759,15 +9989,15 @@ try {
                   "XMLHttpRequest:error"
                 );
 
-                xhr.onload = function() {
+                xhr.onload = function () {
                   onload();
                 };
 
-                xhr.onerror = function() {
+                xhr.onerror = function () {
                   onerror();
                 };
 
-                xhr.onreadystatechange = function() {
+                xhr.onreadystatechange = function () {
                   if (xhr.readyState == 4) {
                     if (xhr.status == 200) {
                       onload();
@@ -9793,7 +10023,19 @@ try {
                 return text;
               }
 
-              function execute(url, method, params, cb) {
+              function execute(
+                url,
+
+                method,
+
+                params,
+
+                cb,
+                additionalArgs
+              ) {
+                if (additionalArgs === void 0) {
+                  additionalArgs = { withCredentials: false };
+                }
                 if (
                   ES(url, "includes", true, "/../") ||
                   ES(url, "includes", true, "/..\\") ||
@@ -9826,12 +10068,12 @@ try {
                   data = "";
                 }
 
-                var request = createCORSRequest(method, url);
+                var request = createCORSRequest(method, url, additionalArgs);
                 if (!request) {
                   return false;
                 }
 
-                request.onload = function(xhr) {
+                request.onload = function (xhr) {
                   cb(
                     importDefault("sdk.safelyParseResponse")(
                       unshieldResponse(xhr.responseText),
@@ -9841,7 +10083,7 @@ try {
                   );
                 };
 
-                request.onerror = function(xhr) {
+                request.onerror = function (xhr) {
                   if (xhr.responseText) {
                     cb(
                       importDefault("sdk.safelyParseResponse")(
@@ -9857,9 +10099,9 @@ try {
                         importNamespace("RequestConstants")
                           .PARSE_ERROR_TEMPLATE,
                         {
-                          status: xhr.status
+                          status: xhr.status,
                         }
-                      )
+                      ),
                     });
                   }
                 };
@@ -9868,7 +10110,7 @@ try {
               }
 
               var CORSRequest = {
-                execute: execute
+                execute: execute,
               };
               var _default = CORSRequest;
               exports["default"] = _default;
@@ -9886,7 +10128,7 @@ try {
               "ObservableMixin",
               "QueryString",
               "UrlMap",
-              "flattenObject"
+              "flattenObject",
             ],
             function $module_ApiClient(
               global,
@@ -9901,6 +10143,7 @@ try {
               var clientID;
               var defaultParams;
               var keptQueryParams = [];
+              var withCredentials = false;
 
               var MAX_QUERYSTRING_LENGTH = 2000;
 
@@ -9910,7 +10153,7 @@ try {
                 friends_get: true,
                 notifications_get: true,
                 stream_get: true,
-                users_getinfo: true
+                users_getinfo: true,
               };
 
               var defaultTransports = ["cors"];
@@ -9949,7 +10192,7 @@ try {
 
                 params = importDefault("flattenObject")(params);
                 var availableTransports = {
-                  cors: importDefault("CORSRequest")
+                  cors: importDefault("CORSRequest"),
                 };
 
                 var getParams = {};
@@ -9981,7 +10224,11 @@ try {
                 for (var i = 0; i < transports.length; i++) {
                   var transport = availableTransports[transports[i]];
                   var paramsCopy = babelHelpers["extends"]({}, params);
-                  if (transport.execute(url, method, paramsCopy, cb)) {
+                  if (
+                    transport.execute(url, method, paramsCopy, cb, {
+                      withCredentials: withCredentials,
+                    })
+                  ) {
                     return;
                   }
                 }
@@ -9989,8 +10236,8 @@ try {
                 cb({
                   error: {
                     type: "no-transport",
-                    message: "Could not find a usable transport for request"
-                  }
+                    message: "Could not find a usable transport for request",
+                  },
                 });
               }
 
@@ -10057,9 +10304,10 @@ try {
                 ) {
                   args[_key] = arguments[_key];
                 }
-                var _ApiClientUtils$parse = importNamespace(
-                    "ApiClientUtils"
-                  ).parseCallDataFromArgs(args),
+                var _ApiClientUtils$parse =
+                    importNamespace("ApiClientUtils").parseCallDataFromArgs(
+                      args
+                    ),
                   uri = _ApiClientUtils$parse.uri,
                   callback = _ApiClientUtils$parse.callback,
                   params = _ApiClientUtils$parse.params;
@@ -10189,12 +10437,21 @@ try {
                       accessToken = access_token;
                     }
                   },
+                  setWithCredentials: function setWithCredentials(
+                    with_credentials
+                  ) {
+                    withCredentials = with_credentials;
+                  },
+                  getWithCredentials: function getWithCredentials() {
+                    return withCredentials;
+                  },
                   getClientID: function getClientID() {
                     return clientID;
                   },
                   getAccessToken: function getAccessToken() {
                     return accessToken;
                   },
+
                   setClientID: function setClientID(client_id) {
                     if (clientID && clientID !== client_id) {
                       logger.warn(
@@ -10226,16 +10483,17 @@ try {
                   setKeptQueryParams: function setKeptQueryParams(params) {
                     keptQueryParams = params;
                   },
-                  getCurrentlyExecutingRequestCount: function getCurrentlyExecutingRequestCount() {
-                    return currentlyExecutingRequests;
-                  },
+                  getCurrentlyExecutingRequestCount:
+                    function getCurrentlyExecutingRequestCount() {
+                      return currentlyExecutingRequests;
+                    },
                   getQueuedRequestCount: function getQueuedRequestCount() {
                     return requestQueue.length;
                   },
                   rest: requestUsingRest,
                   graph: requestUsingGraph,
                   scheduleBatchCall: scheduleBatchCall,
-                  prepareBatchParams: prepareBatchParams
+                  prepareBatchParams: prepareBatchParams,
                 }
               );
 
@@ -10251,44 +10509,259 @@ try {
             98
           );
           __d(
-            "sdk.PlatformVersioning",
-            ["ManagedError", "sdk.Runtime"],
-            function $module_sdk_PlatformVersioning(
+            "FBEventsParamList",
+            [],
+            function $module_FBEventsParamList(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              "use strict";
+
+              var APPEND_DEEP = "deep";
+              var APPEND_SHALLOW = "shallow";
+              var ParamList = (function () {
+                function ParamList() {
+                  this.list = [];
+                }
+                var _proto = ParamList.prototype;
+                _proto.append = function append(name, value) {
+                  this.$ParamList_append(
+                    encodeURIComponent(name),
+                    value,
+                    APPEND_DEEP
+                  );
+                };
+                _proto.each = function each(fn) {
+                  var list = this.list;
+                  for (var i = 0, len = list.length; i < len; i++) {
+                    fn(list[i][0], list[i][1]);
+                  }
+                };
+                _proto.toQueryString = function toQueryString() {
+                  var output = [];
+                  this.each(function each_$0(name, value) {
+                    output.push(name + "=" + encodeURIComponent(value));
+                  });
+                  return output.join("&");
+                };
+                _proto.$ParamList_append = function $ParamList_append(
+                  name,
+                  value,
+                  appendType
+                ) {
+                  if (Object(value) !== value) {
+                    this.$ParamList_appendPrimitive(name, value);
+                  } else {
+                    if (appendType === APPEND_DEEP) {
+                      this.$ParamList_appendObject(name, value);
+                    } else {
+                      this.$ParamList_appendPrimitive(name, stringify(value));
+                    }
+                  }
+                };
+                _proto.$ParamList_appendPrimitive =
+                  function $ParamList_appendPrimitive(name, value) {
+                    if (value != null) {
+                      this.list.push([name, value]);
+                    }
+                  };
+                _proto.$ParamList_appendObject =
+                  function $ParamList_appendObject(name, object) {
+                    for (var key in object) {
+                      if (Object.prototype.hasOwnProperty.call(object, key)) {
+                        var childName =
+                          name + "[" + encodeURIComponent(key) + "]";
+
+                        this.$ParamList_append(
+                          childName,
+                          object[key],
+                          APPEND_SHALLOW
+                        );
+                      }
+                    }
+                  };
+                return ParamList;
+              })();
+
+              function stringify(value) {
+                if (
+                  typeof JSON === "undefined" ||
+                  JSON === null ||
+                  !ES("JSON", "stringify", false)
+                ) {
+                  return Object.prototype.toString.call(value);
+                } else {
+                  return ES("JSON", "stringify", false, value);
+                }
+              }
+              exports["default"] = ParamList;
+            },
+            66
+          );
+          __d(
+            "FBEventsUtils",
+            [],
+            function $module_FBEventsUtils(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              "use strict";
+
+              var isLegacy = !("addEventListener" in document);
+
+              function listenOnce(element, eventName, callback) {
+                var compatEventName = isLegacy ? "on" + eventName : eventName;
+                var listener = function listener() {
+                  isLegacy
+                    ? element.detachEvent &&
+                      element.detachEvent(compatEventName, listener)
+                    : element.removeEventListener(
+                        compatEventName,
+                        listener,
+                        false
+                      );
+                  callback();
+                };
+                isLegacy
+                  ? element.attachEvent &&
+                    element.attachEvent(compatEventName, listener)
+                  : element.addEventListener(compatEventName, listener, false);
+              }
+              exports.listenOnce = listenOnce;
+            },
+            66
+          );
+          __d(
+            "FBPixelEndpoint",
+            ["invariant", "FBEventsParamList", "FBEventsUtils"],
+            function $module_FBPixelEndpoint(
               global,
               require,
               importDefault,
               importNamespace,
               requireLazy,
               module,
-              exports
+              exports,
+              invariant
             ) {
-              var REGEX = /^v\d+\.\d\d?$/;
+              "use strict";
 
-              function assertVersionIsSet() {
-                if (!importDefault("sdk.Runtime").getVersion()) {
-                  throw new (importDefault("ManagedError"))(
-                    "init not called with valid version"
-                  );
+              var ENDPOINT = "https://www.facebook.com/tr/";
+
+              var currentUrl = location.href;
+              var inFrame = window.top !== window;
+              var referrerUrl = document.referrer;
+
+              function getParamList(id, eventName, customData, customParams) {
+                if (customParams === void 0) {
+                  customParams = {};
+                }
+                var paramList = new (importDefault("FBEventsParamList"))();
+                paramList.append("id", id);
+                paramList.append("ev", eventName);
+                paramList.append("dl", currentUrl);
+                paramList.append("rl", referrerUrl);
+                paramList.append("if", inFrame);
+
+                paramList.append("ts", new Date().valueOf());
+                paramList.append("cd", customData);
+                paramList.append("sw", window.screen.width);
+                paramList.append("sh", window.screen.height);
+
+                for (var param in customParams) {
+                  paramList.append(param, customParams[param]);
+                }
+
+                return paramList;
+              }
+
+              function sendEvent(id, eventName, customData, customParams) {
+                var paramList = getParamList(
+                  id,
+                  eventName,
+                  customData,
+                  customParams
+                );
+                var queryString = paramList.toQueryString();
+                if (2048 > (ENDPOINT + "?" + queryString).length) {
+                  sendGET(ENDPOINT, queryString);
+                } else {
+                  sendPOST(ENDPOINT, paramList);
                 }
               }
 
-              function assertValidVersion(version) {
-                if (!REGEX.test(version)) {
-                  throw new (importDefault("ManagedError"))(
-                    "invalid version specified"
-                  );
-                }
+              function sendGET(endpoint, queryString) {
+                var image = new Image();
+                image.src = endpoint + "?" + queryString;
               }
-              exports.REGEX = REGEX;
-              exports.assertVersionIsSet = assertVersionIsSet;
-              exports.assertValidVersion = assertValidVersion;
+
+              function sendPOST(endpoint, paramList) {
+                var _document$body;
+                var name = "fb" + Math.random().toString().replace(".", "");
+                var form = document.createElement("form");
+                form.method = "post";
+                form.action = endpoint;
+                form.target = name;
+                form.acceptCharset = "utf-8";
+                form.style.display = "none";
+
+                var isLegacyIE = !!(
+                  window.attachEvent && !window.addEventListener
+                );
+                var el = isLegacyIE ? '<iframe name="' + name + '">' : "iframe";
+                var iframe = document.createElement(el);
+                iframe instanceof HTMLIFrameElement ||
+                  invariant(0, "element must be an iframe");
+
+                iframe.src = "javascript:false";
+                iframe.id = name;
+                iframe.name = name;
+                form.appendChild(iframe);
+
+                importNamespace("FBEventsUtils").listenOnce(
+                  iframe,
+                  "load",
+                  function Utils_listenOnce_$2() {
+                    paramList.each(function paramList_each_$0(name, value) {
+                      var input = document.createElement("input");
+                      input.name = name;
+                      input.value = value;
+                      form.appendChild(input);
+                    });
+
+                    importNamespace("FBEventsUtils").listenOnce(
+                      iframe,
+                      "load",
+                      function Utils_listenOnce_$2() {
+                        var _form$parentNode;
+                        (_form$parentNode = form.parentNode) == null
+                          ? void 0
+                          : _form$parentNode.removeChild(form);
+                      }
+                    );
+                    form.submit();
+                  }
+                );
+                (_document$body = document.body) == null
+                  ? void 0
+                  : _document$body.appendChild(form);
+              }
+              exports.sendEvent = sendEvent;
             },
             98
           );
           __d(
-            "sdk.warnInsecure",
-            ["Log", "sdk.Runtime", "sdk.Scribe", "sdk.feature"],
-            function $module_sdk_warnInsecure(
+            "FBAppEvents",
+            ["ApiClient", "FBPixelEndpoint"],
+            function $module_FBAppEvents(
               global,
               require,
               importDefault,
@@ -10299,58 +10772,106 @@ try {
             ) {
               "use strict";
 
-              var httpsOnlyLearnMore = importDefault("sdk.feature")(
-                "https_only_learn_more",
-                ""
-              );
-              var logged = {};
-
-              function warnInsecure(methodName) {
-                if (window.location.protocol !== "https:") {
-                  importNamespace("Log").log(
-                    "error",
-                    -1,
-                    "The method FB.%s can no longer be called from http pages. %s",
-                    methodName,
-                    httpsOnlyLearnMore
-                  );
-
-                  if (
-                    importDefault("sdk.feature")(
-                      "https_only_scribe_logging",
-                      true
-                    ) &&
-                    !Object.prototype.hasOwnProperty.call(logged, methodName)
-                  ) {
-                    importNamespace("sdk.Scribe").log("jssdk_error", {
-                      appId: importDefault("sdk.Runtime").getClientID(),
-                      error: "HttpsOnly",
-                      extra: {
-                        message: methodName
-                      }
-                    });
-
-                    logged[methodName] = true;
-                  }
+              function logEvent(
+                appID,
+                eventName,
+                params,
+                valueToSum,
+                accessToken
+              ) {
+                var customParams = {};
+                if (valueToSum != null) {
+                  customParams.vts = valueToSum.toString();
                 }
-                return true;
+                if (accessToken != null) {
+                  customParams.at = accessToken;
+                }
+
+                importNamespace("FBPixelEndpoint").sendEvent(
+                  appID.toString(),
+                  eventName,
+                  params,
+                  customParams
+                );
               }
-              exports["default"] = warnInsecure;
+
+              function updateUserProperties(userID, appID, params, cb) {
+                var url = "/" + appID + "/user_properties";
+                var data = {
+                  data: [{ user_unique_id: userID, custom_data: params }],
+                };
+                importDefault("ApiClient").graph(url, "post", data, cb);
+              }
+              exports.logEvent = logEvent;
+              exports.updateUserProperties = updateUserProperties;
             },
             98
           );
           __d(
-            "sdk.api",
-            [
-              "ApiClient",
-              "sdk.PlatformVersioning",
-              "sdk.Runtime",
-              "sdk.Scribe",
-              "sdk.URI",
-              "sdk.feature",
-              "sdk.warnInsecure"
-            ],
-            function $module_sdk_api(
+            "Miny",
+            [],
+            function $module_Miny(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              var MAGIC = "Miny1";
+              var LO = "wxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-_".split("");
+
+              var Miny = {
+                encode: function encode(s) {
+                  var _s$match;
+                  if (/^$|[~\\]|__proto__/.test(s)) {
+                    return s;
+                  }
+
+                  var parts =
+                    (_s$match = s.match(/\w+|\W+/g)) != null ? _s$match : [];
+
+                  var i;
+
+                  var dict = Object.create(null);
+                  for (i = 0; i < parts.length; i++) {
+                    dict[parts[i]] = (dict[parts[i]] || 0) + 1;
+                  }
+
+                  var keys = Object.keys(dict);
+
+                  keys.sort(function keys_sort_$0(a, b) {
+                    return parseInt(dict[b], 10) - parseInt(dict[a], 10);
+                  });
+
+                  for (i = 0; i < keys.length; i++) {
+                    var n = (i - (i % 32)) / 32;
+
+                    dict[keys[i]] = n
+                      ? n.toString(32) + LO[i % 32]
+                      : LO[i % 32];
+                  }
+
+                  var codes = "";
+                  for (i = 0; i < parts.length; i++) {
+                    codes += dict[parts[i]];
+                  }
+
+                  keys.unshift(MAGIC, keys.length);
+
+                  keys.push(codes);
+                  return keys.join("~");
+                },
+              };
+              var _default = Miny;
+              exports["default"] = _default;
+            },
+            66
+          );
+          __d(
+            "getBlankIframeSrc",
+            ["sdk.UA"],
+            function $module_getBlankIframeSrc(
               global,
               require,
               importDefault,
@@ -10359,198 +10880,788 @@ try {
               module,
               exports
             ) {
-              var shouldLogResponseError = importDefault("sdk.feature")(
-                "should_log_response_error",
-                false
-              );
+              function getBlankIframeSrc() {
+                return importDefault("sdk.UA").ie() < 10
+                  ? "javascript:false"
+                  : "about:blank";
+              }
+              exports["default"] = getBlankIframeSrc;
+            },
+            98
+          );
+          __d(
+            "insertIframe",
+            ["GlobalCallback", "getBlankIframeSrc", "guid"],
+            function $module_insertIframe(
+              global,
+              require,
+              importDefault,
+              importNamespace,
+              requireLazy,
+              module,
+              exports
+            ) {
+              function insertIframe(opts) {
+                var id = opts.id != null ? opts.id : importDefault("guid")();
+                var name =
+                  opts.name != null ? opts.name : importDefault("guid")();
 
-              var currentAccessToken;
-
-              importDefault("sdk.Runtime").subscribe(
-                "ClientID.change",
-                function Runtime_subscribe_$1(value) {
-                  return importDefault("ApiClient").setClientID(value);
-                }
-              );
-
-              importDefault("sdk.Runtime").subscribe(
-                "AccessToken.change",
-                function Runtime_subscribe_$1(value) {
-                  currentAccessToken = value;
-                  importDefault("ApiClient").setAccessToken(value);
-                }
-              );
-
-              importDefault("ApiClient").setDefaultParams({
-                sdk: "joey"
-              });
-
-              importDefault("ApiClient").subscribe(
-                "request.complete",
-                function ApiClient_subscribe_$1(
-                  endpoint,
-                  method,
-                  params,
-                  response
-                ) {
-                  var invalidateToken = false;
-                  if (response && typeof response === "object") {
-                    if (response.error) {
-                      if (
-                        response.error == "invalid_token" ||
-                        (response.error.type == "OAuthException" &&
-                          response.error.code == 190)
-                      ) {
-                        invalidateToken = true;
-                      }
-                    } else if (response.error_code) {
-                      if (response.error_code == "190") {
-                        invalidateToken = true;
-                      }
+                var srcSet = false;
+                var onloadDone = false;
+                var callback = function callback() {
+                  if (srcSet && !onloadDone) {
+                    onloadDone = true;
+                    if (typeof opts.onload === "function") {
+                      opts.onload(opts.root.firstChild);
                     }
                   }
-                  if (
-                    invalidateToken &&
-                    currentAccessToken ===
-                      importDefault("sdk.Runtime").getAccessToken()
-                  ) {
-                    importDefault("sdk.Runtime").setAccessToken(null);
-                  }
-                }
-              );
+                };
+                var globalCallback =
+                  importNamespace("GlobalCallback").create(callback);
 
-              importDefault("ApiClient").subscribe(
-                "request.complete",
-                function ApiClient_subscribe_$1(
-                  endpoint,
-                  method,
-                  params,
-                  response
-                ) {
-                  if (
-                    ((endpoint == "/me/permissions" && method === "delete") ||
-                      (endpoint == "/restserver.php" &&
-                        params.method == "Auth.revokeAuthorization")) &&
-                    response === true
-                  ) {
-                    importDefault("sdk.Runtime").setAccessToken(null);
-                  }
-                }
-              );
+                if (document.attachEvent) {
+                  var html =
+                    "<iframe" +
+                    ' id="' +
+                    id +
+                    '"' +
+                    ' name="' +
+                    name +
+                    '"' +
+                    (opts.title != null ? ' title="' + opts.title + '"' : "") +
+                    (opts.className != null
+                      ? ' class="' + opts.className + '"'
+                      : "") +
+                    ' style="border:none;' +
+                    (opts.width != null ? "width:" + opts.width + "px;" : "") +
+                    (opts.height != null
+                      ? "height:" + opts.height + "px;"
+                      : "") +
+                    '"' +
+                    ' src="' +
+                    importDefault("getBlankIframeSrc")() +
+                    '"' +
+                    ' frameborder="0"' +
+                    ' scrolling="no"' +
+                    ' allowtransparency="true"' +
+                    ' onload="' +
+                    globalCallback +
+                    '()"' +
+                    "></iframe>";
 
-              importDefault("ApiClient").subscribe(
-                "request.error",
-                function ApiClient_subscribe_$1(
-                  endpoint,
-                  method,
-                  params,
-                  response
-                ) {
-                  if (
-                    shouldLogResponseError &&
-                    response.error.type === "http"
-                  ) {
-                    importNamespace("sdk.Scribe").log("jssdk_error", {
-                      appId: importDefault("sdk.Runtime").getClientID(),
-                      error: "transport",
-                      extra: {
-                        name: "transport",
+                  opts.root.innerHTML =
+                    '<iframe src="' +
+                    importDefault("getBlankIframeSrc")() +
+                    '"' +
+                    ' frameborder="0"' +
+                    ' scrolling="no"' +
+                    ' style="height:1px"></iframe>';
 
-                        message:
-                          ES("JSON", "stringify", false, response.error) +
-                          " from " +
-                          endpoint +
-                          " , " +
-                          method
-                      }
-                    });
-                  }
-                }
-              );
+                  srcSet = true;
 
-              function api(pathOrObject) {
-                for (
-                  var _len = arguments.length,
-                    additionalArgs = new Array(_len > 1 ? _len - 1 : 0),
-                    _key = 1;
-                  _key < _len;
-                  _key++
-                ) {
-                  additionalArgs[_key - 1] = arguments[_key];
-                }
-                importDefault("sdk.warnInsecure")("api");
+                  window.setTimeout(function window_setTimeout_$0() {
+                    opts.root.innerHTML = html;
 
-                if (typeof pathOrObject === "string") {
-                  if (importDefault("sdk.Runtime").getIsVersioned()) {
-                    importNamespace(
-                      "sdk.PlatformVersioning"
-                    ).assertVersionIsSet();
-                    var path = pathOrObject;
-
-                    if (!/https?/.test(path) && path.charAt(0) !== "/") {
-                      path = "/" + path;
-                    }
-                    path = new (importDefault("sdk.URI"))(path)
-                      .setDomain("")
-                      .setProtocol("")
-                      .toString();
-
-                    if (
-                      !importNamespace("sdk.PlatformVersioning").REGEX.test(
-                        path.substring(1, path.indexOf("/", 1))
-                      )
-                    ) {
-                      path =
-                        "/" + importDefault("sdk.Runtime").getVersion() + path;
-                    }
-
-                    var args = [path].concat(
-                      Array.prototype.slice.call(arguments, 1)
-                    );
-                    importDefault("ApiClient").graph.apply(
-                      importDefault("ApiClient"),
-                      args
-                    );
-                  } else {
-                    importDefault("ApiClient").graph.apply(
-                      importDefault("ApiClient"),
-                      arguments
-                    );
-                  }
+                    opts.root.firstChild.src = opts.url;
+                    typeof opts.onInsert === "function" &&
+                      opts.onInsert(opts.root.firstChild);
+                  }, 0);
                 } else {
-                  importDefault("ApiClient").rest.apply(
-                    importDefault("ApiClient"),
-                    arguments
+                  var node = document.createElement("iframe");
+                  node.id = id;
+                  node.name = name;
+                  node.onload = callback;
+                  node.scrolling = "no";
+                  node.style.border = "none";
+                  node.style.overflow = "hidden";
+                  if (opts.title != null) {
+                    node.title = opts.title;
+                  }
+                  if (opts.className != null) {
+                    node.className = opts.className;
+                  }
+                  if (opts.height !== undefined) {
+                    node.style.height = opts.height + "px";
+                  }
+                  if (opts.width !== undefined) {
+                    if (opts.width === "100%") {
+                      node.style.width = opts.width;
+                    } else {
+                      node.style.width = opts.width + "px";
+                    }
+                  }
+                  opts.root.appendChild(node);
+
+                  srcSet = true;
+
+                  node.src = opts.url;
+                  opts.onInsert && opts.onInsert(node);
+                }
+              }
+              exports["default"] = insertIframe;
+            },
+            98
+          );
+          __d(
+            "sdk.Impressions",
+            [
+              "Miny",
+              "QueryString",
+              "UrlMap",
+              "getBlankIframeSrc",
+              "guid",
+              "insertIframe",
+              "sdk.Content",
+              "sdk.Runtime",
+            ],
+            function $module_sdk_Impressions(
+              global,
+              require,
+              importDefault,
+              importNamespace,
+              requireLazy,
+              module,
+              exports
+            ) {
+              function impression(params, should_include_creds) {
+                if (should_include_creds === void 0) {
+                  should_include_creds = false;
+                }
+                var clientID = importDefault("sdk.Runtime").getClientID();
+                var isCanvas = importDefault("sdk.Runtime").isEnvironment(
+                  importDefault("sdk.Runtime").ENVIRONMENTS.CANVAS
+                );
+
+                if (
+                  clientID &&
+                  (typeof params.api_key !== "string" || params.api_key === "")
+                ) {
+                  params.api_key = clientID;
+                }
+
+                params.kid_directed_site =
+                  importDefault("sdk.Runtime").getKidDirectedSite();
+
+                var url =
+                  importNamespace("UrlMap").resolve("www") +
+                  "/platform/impression.php/" +
+                  importDefault("guid")() +
+                  "/";
+                if (isCanvas) {
+                  url =
+                    importNamespace("UrlMap").resolve("www") +
+                    "/platform/canvas_impression.php/" +
+                    importDefault("guid")() +
+                    "/";
+                }
+
+                var fullUrlPath = importDefault("QueryString").appendToUrl(
+                  url,
+                  params
+                );
+                if (fullUrlPath.length > 2000) {
+                  if (params.payload && typeof params.payload === "string") {
+                    var payload = params.payload;
+                    var minyPayload = importDefault("Miny").encode(payload);
+                    if (minyPayload && minyPayload.length < payload.length) {
+                      params.payload = minyPayload;
+                      fullUrlPath = importDefault("QueryString").appendToUrl(
+                        url,
+                        params
+                      );
+                    }
+                  }
+                }
+
+                if (window.fetch) {
+                  makeRequest(
+                    url,
+                    fullUrlPath,
+                    params,
+                    should_include_creds || isCanvas
+                  );
+                } else {
+                  _makeRequest_DEPRECATED(
+                    url,
+                    fullUrlPath,
+                    params,
+                    should_include_creds || isCanvas
                   );
                 }
               }
 
-              module.exports = api;
+              function makeRequest(
+                url,
+                fullUrlPath,
+                params,
+                should_include_creds
+              ) {
+                if (should_include_creds === void 0) {
+                  should_include_creds = false;
+                }
+                var standardFetchOptions = {
+                  mode: "no-cors",
+                  credentials: "include",
+                };
+
+                if (!should_include_creds) {
+                  standardFetchOptions.credentials = "omit";
+                }
+
+                if (fullUrlPath.length <= 2000) {
+                  window.fetch(fullUrlPath, standardFetchOptions);
+                } else {
+                  var searchParams = new URLSearchParams();
+
+                  for (var key in params) {
+                    if (Object.prototype.hasOwnProperty.call(params, key)) {
+                      var val = params[key];
+                      if (val != null) {
+                        searchParams.set(key, val);
+                      }
+                    }
+                  }
+
+                  var fetchOptions = babelHelpers["extends"](
+                    {
+                      method: "POST",
+                      body: searchParams,
+                    },
+                    standardFetchOptions
+                  );
+
+                  window.fetch(url, fetchOptions);
+                }
+              }
+
+              function _makeRequest_DEPRECATED(
+                url,
+                fullUrlPath,
+                params,
+                should_include_creds
+              ) {
+                if (should_include_creds === void 0) {
+                  should_include_creds = false;
+                }
+                if (fullUrlPath.length <= 2000) {
+                  var image = new Image();
+                  if (!should_include_creds) {
+                    image.crossOrigin = "anonymous";
+                  }
+
+                  image.src = fullUrlPath;
+                } else {
+                  if (!should_include_creds) {
+                    return;
+                  }
+
+                  var name = importDefault("guid")();
+                  var root = importNamespace("sdk.Content").appendHidden(
+                    document.createElement("div")
+                  );
+                  importDefault("insertIframe")({
+                    url: importDefault("getBlankIframeSrc")(),
+                    root: root,
+                    name: name,
+                    className: "fb_hidden fb_invisible",
+                    onload: function onload() {
+                      if (root.parentNode != null) {
+                        root.parentNode.removeChild(root);
+                      }
+                    },
+                  });
+
+                  importNamespace("sdk.Content").submitToTarget({
+                    url: url,
+                    target: name,
+                    params: params,
+                  });
+                }
+              }
+
+              function log(lid, payload) {
+                if (
+                  typeof payload.source !== "string" ||
+                  payload.source === ""
+                ) {
+                  payload.source = "jssdk";
+                }
+
+                impression({
+                  lid: lid,
+                  payload: ES("JSON", "stringify", false, payload),
+                });
+              }
+              exports.impression = impression;
+              exports.log = log;
             },
-            34
+            98
           );
           __d(
-            "legacy:fb.api",
-            ["FB", "sdk.api"],
-            function $module_legacy_fb_api(
+            "sdk.AppEvents",
+            [
+              "AppUserPropertyAPIBuiltinField",
+              "Assert",
+              "FBAppEvents",
+              "sdk.Impressions",
+              "sdk.Model",
+              "sdk.Runtime",
+            ],
+            function $module_sdk_AppEvents(
+              global,
+              require,
+              importDefault,
+              importNamespace,
+              requireLazy,
+              module,
+              exports
+            ) {
+              var EventNames = Object.freeze({
+                COMPLETED_REGISTRATION: "fb_mobile_complete_registration",
+                VIEWED_CONTENT: "fb_mobile_content_view",
+                SEARCHED: "fb_mobile_search",
+                RATED: "fb_mobile_rate",
+                COMPLETED_TUTORIAL: "fb_mobile_tutorial_completion",
+                ADDED_TO_CART: "fb_mobile_add_to_cart",
+                ADDED_TO_WISHLIST: "fb_mobile_add_to_wishlist",
+                INITIATED_CHECKOUT: "fb_mobile_initiated_checkout",
+                ADDED_PAYMENT_INFO: "fb_mobile_add_payment_info",
+                ACHIEVED_LEVEL: "fb_mobile_level_achieved",
+                UNLOCKED_ACHIEVEMENT: "fb_mobile_achievement_unlocked",
+                PAGE_VIEW: "fb_page_view",
+                SPENT_CREDITS: "fb_mobile_spent_credits",
+              });
+
+              var HiddenEventNames = Object.freeze({
+                ACTIVATED_APP: "fb_mobile_activate_app",
+                PURCHASED: "fb_mobile_purchase",
+              });
+
+              var ParameterNames = Object.freeze({
+                APP_USER_ID: "_app_user_id",
+                APP_VERSION: "_appVersion",
+                CURRENCY: "fb_currency",
+                REGISTRATION_METHOD: "fb_registration_method",
+                CONTENT_TYPE: "fb_content_type",
+                CONTENT_ID: "fb_content_id",
+                SEARCH_STRING: "fb_search_string",
+                SUCCESS: "fb_success",
+                MAX_RATING_VALUE: "fb_max_rating_value",
+                PAYMENT_INFO_AVAILABLE: "fb_payment_info_available",
+                NUM_ITEMS: "fb_num_items",
+                LEVEL: "fb_level",
+                DESCRIPTION: "fb_description",
+              });
+
+              var EVENT_NAME_REGEX = /^[0-9a-zA-Z_][0-9a-zA-Z _-]{0,39}$/;
+              var MAX_EVENT_NAME_LENGTH = 40;
+              var USER_PROPERTIES_KEY_REGEX = EVENT_NAME_REGEX;
+              var MAX_USER_PROPERTIES_KEY_LENGTH = MAX_EVENT_NAME_LENGTH;
+              var MAX_USER_ID_LENGTH = 100;
+              var MAX_APP_VERSION_LENGTH = 100;
+              var MAX_USER_PROPERTIES = 100;
+              var MAX_USER_PROPERTIES_VALUE_LENGTH = 100;
+              var PREDEFINED_USER_PROPS = ES(
+                "Object",
+                "values",
+                false,
+                importDefault("AppUserPropertyAPIBuiltinField")
+              );
+              _c = PREDEFINED_USER_PROPS;
+
+              var AppProps = new (importDefault("sdk.Model"))({
+                UserID: "",
+                Version: "",
+              });
+
+              function logEvent(eventName, valueToSum, params) {
+                var appID = assertGetValidAppID();
+                assertValidEventName(eventName);
+
+                var userID = AppProps.getUserID();
+                if (userID !== "") {
+                  params = params || {};
+                  params[ParameterNames.APP_USER_ID] = userID;
+                }
+
+                var appVersion = AppProps.getVersion();
+                if (appVersion !== "") {
+                  params = params || {};
+                  params[ParameterNames.APP_VERSION] = appVersion;
+                }
+
+                if (importDefault("sdk.Runtime").isCanvasEnvironment()) {
+                  logCanvasEvent(appID, eventName, valueToSum, params);
+                } else {
+                  logAppEvent(appID, eventName, valueToSum, params);
+                }
+              }
+
+              function logPurchase(purchaseAmount, currency, params) {
+                var extraParams = {};
+                extraParams[ParameterNames.CURRENCY] = currency;
+
+                logEvent(
+                  HiddenEventNames.PURCHASED,
+                  purchaseAmount,
+                  babelHelpers["extends"]({}, params, extraParams)
+                );
+              }
+
+              function activateApp() {
+                logEvent(HiddenEventNames.ACTIVATED_APP);
+              }
+
+              function logPageView() {
+                logEvent(EventNames.PAGE_VIEW);
+              }
+
+              function setUserID(userID) {
+                assertValidUserID(userID);
+                AppProps.setUserID(userID);
+              }
+
+              function getUserID() {
+                return AppProps.getUserID();
+              }
+
+              function clearUserID() {
+                AppProps.setUserID("");
+              }
+
+              function setAppVersion(appVersion) {
+                assertValidAppVersion(appVersion);
+                AppProps.setVersion(appVersion);
+              }
+
+              function getAppVersion() {
+                return AppProps.getVersion();
+              }
+
+              function clearAppVersion() {
+                AppProps.setVersion("");
+              }
+
+              function updateUserProperties(params, cb) {
+                var appID = assertGetValidAppID();
+                var userID = getUserID();
+                assertValidUserID(userID);
+
+                Object.keys(params).forEach(function forEach_$0(k) {
+                  return params[k] == null && delete params[k];
+                });
+                assertValidUserProperties(params);
+                importNamespace("FBAppEvents").updateUserProperties(
+                  userID,
+                  appID,
+                  params,
+                  cb
+                );
+              }
+
+              function logCanvasEvent(appID, eventName, valueToSum, params) {
+                var payload = {
+                  ae: 1,
+                  ev: eventName,
+                  vts: valueToSum,
+                  canvas: 1,
+                };
+
+                if (params) {
+                  payload.cd = params;
+                }
+                importNamespace("sdk.Impressions").impression({
+                  api_key: appID,
+                  payload: ES("JSON", "stringify", false, payload),
+                });
+              }
+
+              function logAppEvent(appID, eventName, valueToSum, params) {
+                var accessToken = importDefault("sdk.Runtime").getAccessToken();
+                importNamespace("FBAppEvents").logEvent(
+                  appID,
+                  eventName,
+                  params || {},
+                  valueToSum,
+                  accessToken
+                );
+              }
+
+              function assertGetValidAppID() {
+                var appID = importDefault("sdk.Runtime").getClientID();
+                importDefault("Assert").isTrue(
+                  appID !== null && appID.length > 0,
+                  "You need to call FB.init() with App ID first."
+                );
+
+                return appID;
+              }
+
+              function assertValidUserProperties(params) {
+                importDefault("Assert").isTrue(
+                  Object.keys(params).length <= MAX_USER_PROPERTIES,
+                  "The total number of user properties cannot exceed " +
+                    MAX_USER_PROPERTIES +
+                    "."
+                );
+
+                for (var _key in params) {
+                  importDefault("Assert").isTrue(
+                    USER_PROPERTIES_KEY_REGEX.test(_key) ||
+                      ES(PREDEFINED_USER_PROPS, "includes", true, _key),
+                    "Invalid user properties key name: " +
+                      _key +
+                      ". " +
+                      "It must be between 1 and " +
+                      MAX_USER_PROPERTIES_KEY_LENGTH +
+                      " " +
+                      "characters, and must contain only alphanumerics, _, - or spaces, " +
+                      "starting with alphanumeric or _. " +
+                      "Or, it must be a pre-defined user property"
+                  );
+
+                  importDefault("Assert").isTrue(
+                    params[_key].toString().length <=
+                      MAX_USER_PROPERTIES_VALUE_LENGTH,
+                    "Invalid user properties value: " +
+                      params[_key] +
+                      ". " +
+                      "It must be no longer than " +
+                      MAX_USER_PROPERTIES_VALUE_LENGTH +
+                      " characters."
+                  );
+                }
+              }
+
+              function assertValidEventName(eventName) {
+                importDefault("Assert").isTrue(
+                  EVENT_NAME_REGEX.test(eventName),
+                  "Invalid event name: " +
+                    eventName +
+                    ". " +
+                    "It must be between 1 and " +
+                    MAX_EVENT_NAME_LENGTH +
+                    " characters, " +
+                    "and must be contain only alphanumerics, _, - or spaces, " +
+                    "starting with alphanumeric or _."
+                );
+              }
+
+              function assertValidAppVersion(appVersion) {
+                importDefault("Assert").isTrue(
+                  appVersion.length <= MAX_APP_VERSION_LENGTH,
+                  "Invalid app version: " +
+                    appVersion +
+                    ". " +
+                    "It must be no longer than " +
+                    MAX_APP_VERSION_LENGTH +
+                    " characters."
+                );
+              }
+
+              function assertValidUserID(userID) {
+                importDefault("Assert").isTrue(
+                  userID.length !== 0,
+                  "User ID must be set before updateUserProperties can be called."
+                );
+
+                importDefault("Assert").isTrue(
+                  userID.length <= MAX_USER_ID_LENGTH,
+                  "Invalid user ID: " +
+                    userID +
+                    ". " +
+                    "It must be no longer than " +
+                    MAX_USER_ID_LENGTH +
+                    " characters."
+                );
+              }
+
+              var AppEvents = Object.freeze({
+                logEvent: logEvent,
+                logPurchase: logPurchase,
+                activateApp: activateApp,
+                logPageView: logPageView,
+                setUserID: setUserID,
+                getUserID: getUserID,
+                clearUserID: clearUserID,
+                updateUserProperties: updateUserProperties,
+                setAppVersion: setAppVersion,
+                getAppVersion: getAppVersion,
+                clearAppVersion: clearAppVersion,
+                EventNames: EventNames,
+                ParameterNames: ParameterNames,
+              });
+              var _c;
+              $RefreshReg$(_c, "PREDEFINED_USER_PROPS");
+              exports.assertGetValidAppID = assertGetValidAppID;
+              exports.assertValidUserProperties = assertValidUserProperties;
+              exports.assertValidEventName = assertValidEventName;
+              exports.assertValidAppVersion = assertValidAppVersion;
+              exports.assertValidUserID = assertValidUserID;
+              exports.AppEvents = AppEvents;
+            },
+            98
+          );
+          __d(
+            "sdk.Event",
+            [],
+            function $module_sdk_Event(
               global,
               require,
               requireDynamic,
               requireLazy,
-              __DO_NOT_USE__module,
-              __DO_NOT_USE__exports
+              module,
+              exports
             ) {
-              require("FB").provide("", { api: require("sdk.api") });
+              "use strict";
+
+              var SUBSCRIBE = "event.subscribe";
+
+              var UNSUBSCRIBE = "event.unsubscribe";
+
+              var _subscribersMap;
+
+              function subscribers() {
+                if (!_subscribersMap) {
+                  _subscribersMap = {};
+                }
+                return _subscribersMap;
+              }
+
+              function subscribe(name, cb) {
+                var subs = subscribers();
+
+                if (!subs[name]) {
+                  subs[name] = [cb];
+                } else {
+                  if (subs[name].indexOf(cb) == -1) {
+                    subs[name].push(cb);
+                  }
+                }
+                if (name != SUBSCRIBE && name != UNSUBSCRIBE) {
+                  fire(SUBSCRIBE, name, subs[name]);
+                }
+              }
+
+              function unsubscribe(name, cb) {
+                var subs = subscribers()[name];
+                if (subs) {
+                  subs.forEach(function subs_forEach_$0(value, key) {
+                    if (value === cb) {
+                      subs.splice(key, 1);
+                    }
+                  });
+                }
+                if (name != SUBSCRIBE && name != UNSUBSCRIBE) {
+                  fire(UNSUBSCRIBE, name, subs);
+                }
+              }
+
+              function monitor(name, callback) {
+                var _arguments = arguments;
+                if (!callback()) {
+                  var fn = function fn() {
+                    if (callback.apply(callback, _arguments)) {
+                      unsubscribe(name, fn);
+                    }
+                  };
+
+                  subscribe(name, fn);
+                }
+              }
+
+              function clear(name) {
+                delete subscribers()[name];
+              }
+
+              function fire(name) {
+                for (
+                  var _len = arguments.length,
+                    args = new Array(_len > 1 ? _len - 1 : 0),
+                    _key = 1;
+                  _key < _len;
+                  _key++
+                ) {
+                  args[_key - 1] = arguments[_key];
+                }
+                var subs = subscribers()[name];
+
+                if (subs) {
+                  subs.forEach(function subs_forEach_$0(sub) {
+                    if (sub) {
+                      sub.apply(this, args);
+                    }
+                  });
+                }
+              }
+              exports.SUBSCRIBE = SUBSCRIBE;
+              exports.UNSUBSCRIBE = UNSUBSCRIBE;
+              exports.subscribers = subscribers;
+              exports.subscribe = subscribe;
+              exports.unsubscribe = unsubscribe;
+              exports.monitor = monitor;
+              exports.clear = clear;
+              exports.fire = fire;
             },
-            3
+            66
+          );
+          __d(
+            "sdk.AppEvents-public",
+            ["Assert", "FB", "sdk.AppEvents", "sdk.Event", "sdk.Runtime"],
+            function $module_sdk_AppEvents_public(
+              global,
+              require,
+              importDefault,
+              importNamespace,
+              requireLazy,
+              module,
+              exports
+            ) {
+              function init() {
+                importNamespace("sdk.Event").subscribe(
+                  "init:post",
+                  function Event_subscribe_$1(options) {
+                    if (importDefault("sdk.Runtime").getClientID()) {
+                      if (options.autoLogAppEvents !== undefined) {
+                        importDefault("Assert").isBoolean(
+                          options.autoLogAppEvents,
+                          "Type of property autoLogAppEvents must be boolean"
+                        );
+
+                        importDefault("sdk.Runtime").setAutoLogAppEvents(
+                          options.autoLogAppEvents
+                        );
+                      }
+
+                      if (importDefault("sdk.Runtime").getAutoLogAppEvents()) {
+                        importNamespace(
+                          "sdk.AppEvents"
+                        ).AppEvents.logPageView();
+                      }
+                    }
+                  }
+                );
+
+                importDefault("FB").provide(
+                  "AppEvents",
+                  importNamespace("sdk.AppEvents").AppEvents
+                );
+              }
+
+              var SDKAppEvents = { init: init };
+              var _default = SDKAppEvents;
+              exports["default"] = _default;
+            },
+            98
           );
           __d(
             "sdk.AuthState",
-            [],
+            ["sdk.AuthUtils"],
             function $module_sdk_AuthState(
               global,
               require,
-              requireDynamic,
+              importDefault,
+              importNamespace,
               requireLazy,
               module,
               exports
@@ -10564,7 +11675,7 @@ try {
                   igAuthResponse: null,
                   fbAuthResponse: null,
                   fbLoginStatus: null,
-                  igLoginStatus: null
+                  igLoginStatus: null,
                 };
 
                 return {
@@ -10572,7 +11683,10 @@ try {
                   shouldSecondLoginRequestTimeOut: false,
                   mixedAuthState: initialMixedState,
                   loadState: null,
-                  timer: null
+                  timer: null,
+                  currentTimeOut:
+                    importNamespace("sdk.AuthUtils").AuthConstants
+                      .CONNECTED_REVALIDATE_PERIOD,
                 };
               }
 
@@ -10593,12 +11707,12 @@ try {
 
               var State = {
                 getState: getState,
-                setState: setState
+                setState: setState,
               };
               var _default = State;
               exports["default"] = _default;
             },
-            66
+            98
           );
           __d(
             "sdk.Observable",
@@ -10611,43 +11725,25 @@ try {
               module,
               exports
             ) {
-              var Observable = (function() {
-                function Observable() {
-                  this.$Observable_observableEvents = {};
-                  this.getSubscribers = ES(
-                    this.getSubscribers,
-                    "bind",
-                    true,
-                    this
-                  );
-                  this.clearSubscribers = ES(
-                    this.clearSubscribers,
-                    "bind",
-                    true,
-                    this
-                  );
-                  this.subscribe = ES(this.subscribe, "bind", true, this);
-                  this.unsubscribe = ES(this.unsubscribe, "bind", true, this);
-                  this.inform = ES(this.inform, "bind", true, this);
-                }
-                var _proto = Observable.prototype;
-                _proto.getSubscribers = function getSubscribers(toWhat) {
+              var Observable = function Observable() {
+                var _this = this;
+                this.getSubscribers = function (toWhat) {
                   return (
-                    this.$Observable_observableEvents[toWhat] ||
-                    (this.$Observable_observableEvents[toWhat] = [])
+                    _this.$Observable_observableEvents[toWhat] ||
+                    (_this.$Observable_observableEvents[toWhat] = [])
                   );
                 };
-                _proto.clearSubscribers = function clearSubscribers(toWhat) {
+                this.clearSubscribers = function (toWhat) {
                   if (toWhat) {
-                    this.$Observable_observableEvents[toWhat] = [];
+                    _this.$Observable_observableEvents[toWhat] = [];
                   }
                 };
-                _proto.subscribe = function subscribe(toWhat, withWhat) {
-                  var list = this.getSubscribers(toWhat);
+                this.subscribe = function (toWhat, withWhat) {
+                  var list = _this.getSubscribers(toWhat);
                   list.push(withWhat);
                 };
-                _proto.unsubscribe = function unsubscribe(toWhat, withWhat) {
-                  var list = this.getSubscribers(toWhat);
+                this.unsubscribe = function (toWhat, withWhat) {
+                  var list = _this.getSubscribers(toWhat);
                   for (var i = 0; i < list.length; i++) {
                     if (list[i] === withWhat) {
                       list.splice(i, 1);
@@ -10655,17 +11751,17 @@ try {
                     }
                   }
                 };
-                _proto.inform = function inform(what, withWhat) {
-                  var list = this.getSubscribers(what);
+                this.inform = function (what, withWhat) {
+                  var list = _this.getSubscribers(what);
                   for (var i = 0; i < list.length; i++) {
                     if (list[i] === null) {
                       continue;
                     }
                     if (__DEV__) {
-                      list[i].call(this, withWhat);
+                      list[i].call(_this, withWhat);
                     } else {
                       try {
-                        list[i].call(this, withWhat);
+                        list[i].call(_this, withWhat);
                       } catch (e) {
                         window.setTimeout(function window_setTimeout_$0() {
                           throw e;
@@ -10674,8 +11770,8 @@ try {
                     }
                   }
                 };
-                return Observable;
-              })();
+                this.$Observable_observableEvents = {};
+              };
               exports.Observable = Observable;
             },
             66
@@ -10716,13 +11812,14 @@ try {
                   fbAuthResponse: null,
                   fbLoginStatus: null,
                   igAuthResponse: null,
-                  igLoginStatus: null
+                  igLoginStatus: null,
                 };
 
                 var shouldSecondLoginRequestTimeOut = false;
                 importDefault("sdk.AuthState").setState({
                   mixedAuthState: mixedAuthState,
-                  shouldSecondLoginRequestTimeOut: shouldSecondLoginRequestTimeOut
+                  shouldSecondLoginRequestTimeOut:
+                    shouldSecondLoginRequestTimeOut,
                 });
               }
 
@@ -10747,6 +11844,26 @@ try {
                 );
               }
 
+              function setRevalidateTimer(timeout) {
+                if (timeout === void 0) {
+                  timeout = AuthConstants.CONNECTED_REVALIDATE_PERIOD;
+                }
+                var currentTimer =
+                  importDefault("sdk.AuthState").getState().timer;
+                if (currentTimer) {
+                  window.clearTimeout(currentTimer);
+                }
+                var timer = window.setTimeout(function window_setTimeout_$0() {
+                  AuthInternalEvent.inform(
+                    AuthConstants.REVALIDATE_TIMER_TIMEOUT
+                  );
+                }, timeout);
+                importDefault("sdk.AuthState").setState({ timer: timer });
+                importDefault("sdk.AuthState").setState({
+                  currentTimeOut: timeout,
+                });
+              }
+
               function removeLogoutState() {
                 importNamespace("sdk.Cookie").setRaw(
                   AuthConstants.LOGOUT_COOKIE_PREFIX,
@@ -10761,9 +11878,10 @@ try {
                   true
                 );
               }
+
               var observable = new (importNamespace(
                 "sdk.Observable"
-              )).Observable();
+              ).Observable)();
               function inform(key, value) {
                 observable.inform(key, value);
               }
@@ -10789,7 +11907,7 @@ try {
                 subscribe: subscribe,
                 clearSubscribers: clearSubscribers,
                 unsubscribe: unsubscribe,
-                getSubscribers: getSubscribers
+                getSubscribers: getSubscribers,
               };
 
               var AuthConstants = {
@@ -10801,13 +11919,15 @@ try {
                 LOGOUT_COOKIE_PREFIX: "fblo_",
                 CORS_FETCH_COMPLETED_EVENT: "cors_fetch_completed",
                 XFOA_FINAL_RESPONSE_EVENT: "xfoa_final_response",
-                LOAD_XFOA_SUBSCRIBERS: "load_xfoa_subscribers"
+                LOAD_XFOA_SUBSCRIBERS: "load_xfoa_subscribers",
+                REVALIDATE_TIMER_TIMEOUT: "revalidate_timer_timeout",
               };
               exports.isInstagramLogin = isInstagramLogin;
               exports.setBaseDomain = setBaseDomain;
               exports.resetFBAndIGLoginStatus = resetFBAndIGLoginStatus;
               exports.setGraphDomain = setGraphDomain;
               exports.setLogoutState = setLogoutState;
+              exports.setRevalidateTimer = setRevalidateTimer;
               exports.removeLogoutState = removeLogoutState;
               exports.AuthInternalEvent = AuthInternalEvent;
               exports.AuthConstants = AuthConstants;
@@ -10904,9 +12024,8 @@ try {
                   longLivedToken != null &&
                   longLivedToken !== ""
                 ) {
-                  var localStorage = importNamespace(
-                    "sdk.WebStorage"
-                  ).getLocalStorage();
+                  var localStorage =
+                    importNamespace("sdk.WebStorage").getLocalStorage();
                   if (localStorage) {
                     var token_prefix = importNamespace(
                       "sdk.AuthUtils"
@@ -10924,9 +12043,8 @@ try {
               }
 
               function removeLocalStorageToken(loginSource) {
-                var localStorage = importNamespace(
-                  "sdk.WebStorage"
-                ).getLocalStorage();
+                var localStorage =
+                  importNamespace("sdk.WebStorage").getLocalStorage();
                 if (localStorage) {
                   if (loginSource === "instagram") {
                     localStorage.removeItem(
@@ -10948,9 +12066,8 @@ try {
                 if (!shouldEnableAuthStorage()) {
                   return;
                 }
-                var sessionStorage = importNamespace(
-                  "sdk.WebStorage"
-                ).getSessionStorage();
+                var sessionStorage =
+                  importNamespace("sdk.WebStorage").getSessionStorage();
                 if (sessionStorage) {
                   sessionStorage.setItem(
                     importNamespace("sdk.AuthUtils").AuthConstants
@@ -10971,7 +12088,7 @@ try {
                             )
                           : Date.now() +
                             importNamespace("sdk.AuthUtils").AuthConstants
-                              .DEFAULT_REVALIDATE_PERIOD
+                              .DEFAULT_REVALIDATE_PERIOD,
                     })
                   );
                 }
@@ -10989,9 +12106,8 @@ try {
                 var fbToken = null;
                 var igToken = null;
                 if (importDefault("sdk.Runtime").getUseLocalStorage()) {
-                  var localStorage = importNamespace(
-                    "sdk.WebStorage"
-                  ).getLocalStorageForRead();
+                  var localStorage =
+                    importNamespace("sdk.WebStorage").getLocalStorageForRead();
                   if (localStorage) {
                     fbToken = localStorage.getItem(
                       importNamespace("sdk.AuthUtils").AuthConstants
@@ -11008,7 +12124,7 @@ try {
                 }
                 return {
                   fbToken: fbToken,
-                  igToken: igToken
+                  igToken: igToken,
                 };
               }
 
@@ -11016,9 +12132,8 @@ try {
                 if (!shouldEnableAuthStorage()) {
                   return null;
                 }
-                var sessionStorage = importNamespace(
-                  "sdk.WebStorage"
-                ).getSessionStorageForRead();
+                var sessionStorage =
+                  importNamespace("sdk.WebStorage").getSessionStorageForRead();
                 if (sessionStorage) {
                   var rawCachedResponse = sessionStorage.getItem(
                     importNamespace("sdk.AuthUtils").AuthConstants
@@ -11053,473 +12168,6 @@ try {
               exports.setSessionStorage = setSessionStorage;
               exports.getLocalStorageTokens = getLocalStorageTokens;
               exports.getCachedResponse = getCachedResponse;
-            },
-            98
-          );
-          __d(
-            "Miny",
-            [],
-            function $module_Miny(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              var MAGIC = "Miny1";
-              var LO = "wxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-_".split("");
-
-              var Miny = {
-                encode: function encode(s) {
-                  var _s$match;
-                  if (/^$|[~\\]|__proto__/.test(s)) {
-                    return s;
-                  }
-
-                  var parts =
-                    (_s$match = s.match(/\w+|\W+/g)) != null ? _s$match : [];
-
-                  var i;
-
-                  var dict = Object.create(null);
-                  for (i = 0; i < parts.length; i++) {
-                    dict[parts[i]] = (dict[parts[i]] || 0) + 1;
-                  }
-
-                  var keys = Object.keys(dict);
-                  keys.sort(function keys_sort_$0(a, b) {
-                    return parseInt(dict[b], 10) - parseInt(dict[a], 10);
-                  });
-
-                  for (i = 0; i < keys.length; i++) {
-                    var n = (i - (i % 32)) / 32;
-                    dict[keys[i]] = n
-                      ? n.toString(32) + LO[i % 32]
-                      : LO[i % 32];
-                  }
-
-                  var codes = "";
-                  for (i = 0; i < parts.length; i++) {
-                    codes += dict[parts[i]];
-                  }
-
-                  keys.unshift(MAGIC, keys.length);
-                  keys.push(codes);
-                  return keys.join("~");
-                }
-              };
-              var _default = Miny;
-              exports["default"] = _default;
-            },
-            66
-          );
-          __d(
-            "getBlankIframeSrc",
-            ["sdk.UA"],
-            function $module_getBlankIframeSrc(
-              global,
-              require,
-              importDefault,
-              importNamespace,
-              requireLazy,
-              module,
-              exports
-            ) {
-              function getBlankIframeSrc() {
-                return importDefault("sdk.UA").ie() < 10
-                  ? "javascript:false"
-                  : "about:blank";
-              }
-              exports["default"] = getBlankIframeSrc;
-            },
-            98
-          );
-          __d(
-            "insertIframe",
-            ["GlobalCallback", "getBlankIframeSrc", "guid"],
-            function $module_insertIframe(
-              global,
-              require,
-              importDefault,
-              importNamespace,
-              requireLazy,
-              module,
-              exports
-            ) {
-              function insertIframe(opts) {
-                var id = opts.id != null ? opts.id : importDefault("guid")();
-                var name =
-                  opts.name != null ? opts.name : importDefault("guid")();
-
-                var srcSet = false;
-                var onloadDone = false;
-                var callback = function callback() {
-                  if (srcSet && !onloadDone) {
-                    onloadDone = true;
-                    if (typeof opts.onload === "function") {
-                      opts.onload(opts.root.firstChild);
-                    }
-                  }
-                };
-                var globalCallback = importNamespace("GlobalCallback").create(
-                  callback
-                );
-
-                if (document.attachEvent) {
-                  var html =
-                    "<iframe" +
-                    ' id="' +
-                    id +
-                    '"' +
-                    ' name="' +
-                    name +
-                    '"' +
-                    (opts.title != null ? ' title="' + opts.title + '"' : "") +
-                    (opts.className != null
-                      ? ' class="' + opts.className + '"'
-                      : "") +
-                    ' style="border:none;' +
-                    (opts.width != null ? "width:" + opts.width + "px;" : "") +
-                    (opts.height != null
-                      ? "height:" + opts.height + "px;"
-                      : "") +
-                    '"' +
-                    ' src="' +
-                    importDefault("getBlankIframeSrc")() +
-                    '"' +
-                    ' frameborder="0"' +
-                    ' scrolling="no"' +
-                    ' allowtransparency="true"' +
-                    ' onload="' +
-                    globalCallback +
-                    '()"' +
-                    "></iframe>";
-
-                  opts.root.innerHTML =
-                    '<iframe src="' +
-                    importDefault("getBlankIframeSrc")() +
-                    '"' +
-                    ' frameborder="0"' +
-                    ' scrolling="no"' +
-                    ' style="height:1px"></iframe>';
-
-                  srcSet = true;
-
-                  window.setTimeout(function window_setTimeout_$0() {
-                    opts.root.innerHTML = html;
-
-                    opts.root.firstChild.src = opts.url;
-                    typeof opts.onInsert === "function" &&
-                      opts.onInsert(opts.root.firstChild);
-                  }, 0);
-                } else {
-                  var node = document.createElement("iframe");
-                  node.id = id;
-                  node.name = name;
-                  node.onload = callback;
-                  node.scrolling = "no";
-                  node.style.border = "none";
-                  node.style.overflow = "hidden";
-                  if (opts.title != null) {
-                    node.title = opts.title;
-                  }
-                  if (opts.className != null) {
-                    node.className = opts.className;
-                  }
-                  if (opts.height !== undefined) {
-                    node.style.height = opts.height + "px";
-                  }
-                  if (opts.width !== undefined) {
-                    if (opts.width === "100%") {
-                      node.style.width = opts.width;
-                    } else {
-                      node.style.width = opts.width + "px";
-                    }
-                  }
-                  opts.root.appendChild(node);
-
-                  srcSet = true;
-
-                  node.src = opts.url;
-                  opts.onInsert && opts.onInsert(node);
-                }
-              }
-              exports["default"] = insertIframe;
-            },
-            98
-          );
-          __d(
-            "sdk.Impressions",
-            [
-              "Miny",
-              "QueryString",
-              "UrlMap",
-              "getBlankIframeSrc",
-              "guid",
-              "insertIframe",
-              "sdk.Content",
-              "sdk.Runtime"
-            ],
-            function $module_sdk_Impressions(
-              global,
-              require,
-              importDefault,
-              importNamespace,
-              requireLazy,
-              module,
-              exports
-            ) {
-              function impression(params, should_include_creds) {
-                if (should_include_creds === void 0) {
-                  should_include_creds = false;
-                }
-                var clientID = importDefault("sdk.Runtime").getClientID();
-                var isCanvas = importDefault("sdk.Runtime").isEnvironment(
-                  importDefault("sdk.Runtime").ENVIRONMENTS.CANVAS
-                );
-
-                if (
-                  clientID &&
-                  (typeof params.api_key !== "string" || params.api_key === "")
-                ) {
-                  params.api_key = clientID;
-                }
-
-                params.kid_directed_site = importDefault(
-                  "sdk.Runtime"
-                ).getKidDirectedSite();
-
-                var url =
-                  importNamespace("UrlMap").resolve("www") +
-                  "/platform/impression.php/" +
-                  importDefault("guid")() +
-                  "/";
-                if (isCanvas) {
-                  url =
-                    importNamespace("UrlMap").resolve("www") +
-                    "/platform/canvas_impression.php/" +
-                    importDefault("guid")() +
-                    "/";
-                }
-
-                var fullUrlPath = importDefault("QueryString").appendToUrl(
-                  url,
-                  params
-                );
-                if (fullUrlPath.length > 2000) {
-                  if (params.payload && typeof params.payload === "string") {
-                    var payload = params.payload;
-                    var minyPayload = importDefault("Miny").encode(payload);
-                    if (minyPayload && minyPayload.length < payload.length) {
-                      params.payload = minyPayload;
-                      fullUrlPath = importDefault("QueryString").appendToUrl(
-                        url,
-                        params
-                      );
-                    }
-                  }
-                }
-
-                if (window.fetch) {
-                  makeRequest(
-                    url,
-                    fullUrlPath,
-                    params,
-                    should_include_creds || isCanvas
-                  );
-                } else {
-                  _makeRequest_DEPRECATED(
-                    url,
-                    fullUrlPath,
-                    params,
-                    should_include_creds || isCanvas
-                  );
-                }
-              }
-
-              function makeRequest(
-                url,
-                fullUrlPath,
-                params,
-                should_include_creds
-              ) {
-                if (should_include_creds === void 0) {
-                  should_include_creds = false;
-                }
-                var standardFetchOptions = {
-                  mode: "no-cors",
-                  credentials: "include"
-                };
-
-                if (!should_include_creds) {
-                  standardFetchOptions.credentials = "omit";
-                }
-
-                if (fullUrlPath.length <= 2000) {
-                  window.fetch(fullUrlPath, standardFetchOptions);
-                } else {
-                  var searchParams = new URLSearchParams();
-
-                  for (var key in params) {
-                    if (Object.prototype.hasOwnProperty.call(params, key)) {
-                      var val = params[key];
-                      if (val !== null && val !== undefined) {
-                        searchParams.set(key, val);
-                      }
-                    }
-                  }
-
-                  var fetchOptions = babelHelpers["extends"](
-                    {
-                      method: "POST",
-                      body: searchParams
-                    },
-                    standardFetchOptions
-                  );
-
-                  window.fetch(url, fetchOptions);
-                }
-              }
-
-              function _makeRequest_DEPRECATED(
-                url,
-                fullUrlPath,
-                params,
-                should_include_creds
-              ) {
-                if (should_include_creds === void 0) {
-                  should_include_creds = false;
-                }
-                if (fullUrlPath.length <= 2000) {
-                  var image = new Image();
-                  if (!should_include_creds) {
-                    image.crossOrigin = "anonymous";
-                  }
-
-                  image.src = fullUrlPath;
-                } else {
-                  if (!should_include_creds) {
-                    return;
-                  }
-
-                  var name = importDefault("guid")();
-                  var root = importNamespace("sdk.Content").appendHidden(
-                    document.createElement("div")
-                  );
-                  importDefault("insertIframe")({
-                    url: importDefault("getBlankIframeSrc")(),
-                    root: root,
-                    name: name,
-                    className: "fb_hidden fb_invisible",
-                    onload: function onload() {
-                      if (root.parentNode != null) {
-                        root.parentNode.removeChild(root);
-                      }
-                    }
-                  });
-
-                  importNamespace("sdk.Content").submitToTarget({
-                    url: url,
-                    target: name,
-                    params: params
-                  });
-                }
-              }
-
-              function log(lid, payload) {
-                if (
-                  typeof payload.source !== "string" ||
-                  payload.source === ""
-                ) {
-                  payload.source = "jssdk";
-                }
-
-                impression({
-                  lid: lid,
-                  payload: ES("JSON", "stringify", false, payload)
-                });
-              }
-              exports.impression = impression;
-              exports.log = log;
-            },
-            98
-          );
-          __d(
-            "sdk.LoggingUtils",
-            ["sdk.Impressions", "sdk.feature"],
-            function $module_sdk_LoggingUtils(
-              global,
-              require,
-              importDefault,
-              importNamespace,
-              requireLazy,
-              module,
-              exports
-            ) {
-              "use strict";
-
-              var logEventName = {
-                buttonLoad: "client_login_button_load",
-                buttonClick: "client_login_click",
-                loginSuccess: "client_login_success",
-                loginCancel: "client_login_cancel",
-                popupHide: "client_login_popup_hide_xfoa",
-                popupShow: "client_login_popup_show_xfoa",
-                loginEnd: "client_login_end",
-                loginStart: "client_login_start",
-                loginCompleteHeartbeat: "client_login_complete_heartbeat",
-                loginStatusPopupShowXfoa: "client_login_status_popup_show_xfoa",
-                loginStatusPopupHideXfoa: "client_login_status_popup_hide_xfoa",
-                loginStatusPopupClickXfoa:
-                  "client_login_status_popup_click_xfoa",
-                loginStatusPopupErrorXfoa:
-                  "client_login_status_popup_error_xfoa"
-              };
-
-              function logEvent(loggerID, actionName, extraPayload) {
-                importNamespace("sdk.Impressions").log(117, {
-                  payload: babelHelpers["extends"]({}, extraPayload || {}, {
-                    logger_id: loggerID,
-                    action: actionName,
-                    client_funnel_version: importDefault("sdk.feature")(
-                      "oauth_funnel_logger_version",
-                      1
-                    )
-                  })
-                });
-              }
-
-              function logLoginEvent(params, actionName) {
-                var cbt =
-                  params && params.cbt !== undefined ? Number(params.cbt) : 0;
-                logEvent(
-                  params == null ? void 0 : params.logger_id,
-                  actionName,
-                  {
-                    cbt_delta: Date.now() - cbt
-                  }
-                );
-              }
-
-              function logPopupEvent(loggerID, actionName) {
-                if (actionName !== undefined) {
-                  logEvent(loggerID, actionName);
-                }
-              }
-
-              function logDisambiguationTrayEvent(error, loggerID) {
-                if (error !== undefined) {
-                  logEvent(loggerID, logEventName.loginStatusPopupErrorXfoa, {
-                    message: error
-                  });
-                }
-              }
-              exports.logEventName = logEventName;
-              exports.logEvent = logEvent;
-              exports.logLoginEvent = logLoginEvent;
-              exports.logPopupEvent = logPopupEvent;
-              exports.logDisambiguationTrayEvent = logDisambiguationTrayEvent;
             },
             98
           );
@@ -11604,7 +12252,7 @@ try {
                       );
                     })
                   );
-                }
+                },
               };
               var _default = Base64;
               exports["default"] = _default;
@@ -11683,7 +12331,7 @@ try {
               "sdk.Scribe",
               "sdk.URI",
               "sdk.feature",
-              "sdk.getContextType"
+              "sdk.getContextType",
             ],
             function $module_sdk_statusCORS(
               global,
@@ -11716,7 +12364,7 @@ try {
                   if (xhr) {
                     xhr.open("GET", url.toString(), true);
                     xhr.withCredentials = true;
-                    xhr.onreadystatechange = function() {
+                    xhr.onreadystatechange = function () {
                       if (xhr.readyState === 4) {
                         if (
                           importDefault("sdk.feature")(
@@ -11727,7 +12375,7 @@ try {
                           var events = {
                             init: fetchStart,
                             close: Date.now(),
-                            method: "cors"
+                            method: "cors",
                           };
 
                           importNamespace("Log").debug(
@@ -11737,7 +12385,7 @@ try {
                           importNamespace("sdk.Impressions").log(
                             PLATFORM_E2E_TRACKING_LOG_ID,
                             {
-                              payload: events
+                              payload: events,
                             }
                           );
                         }
@@ -11746,14 +12394,12 @@ try {
                           var _xhr$getResponseHeade, _xhr$getResponseHeade2;
                           onCORSSuccess(
                             cb,
-                            (_xhr$getResponseHeade = xhr.getResponseHeader(
-                              "fb-s"
-                            )) != null
+                            (_xhr$getResponseHeade =
+                              xhr.getResponseHeader("fb-s")) != null
                               ? _xhr$getResponseHeade
                               : "unknown",
-                            (_xhr$getResponseHeade2 = xhr.getResponseHeader(
-                              "fb-ar"
-                            )) != null
+                            (_xhr$getResponseHeade2 =
+                              xhr.getResponseHeader("fb-ar")) != null
                               ? _xhr$getResponseHeade2
                               : "{}",
                             loginSource
@@ -11780,7 +12426,7 @@ try {
                       );
 
                       importDefault("sdk.AuthState").setState({
-                        shouldSecondLoginRequestTimeOut: true
+                        shouldSecondLoginRequestTimeOut: true,
                       });
                     }, DEFAULT_TIMEOUT);
                   }
@@ -11791,7 +12437,7 @@ try {
                     .fetch(url.toString(), {
                       referrer: "/",
                       mode: "cors",
-                      credentials: "include"
+                      credentials: "include",
                     })
                     .then(function then_$0(response) {
                       if (
@@ -11799,7 +12445,7 @@ try {
                           .shouldSecondLoginRequestTimeOut
                       ) {
                         importDefault("sdk.AuthState").setState({
-                          shouldSecondLoginRequestTimeOut: false
+                          shouldSecondLoginRequestTimeOut: false,
                         });
 
                         return;
@@ -11809,14 +12455,12 @@ try {
                         var _response$headers$get, _response$headers$get2;
                         onCORSSuccess(
                           cb,
-                          (_response$headers$get = response.headers.get(
-                            "fb-s"
-                          )) != null
+                          (_response$headers$get =
+                            response.headers.get("fb-s")) != null
                             ? _response$headers$get
                             : "unknown",
-                          (_response$headers$get2 = response.headers.get(
-                            "fb-ar"
-                          )) != null
+                          (_response$headers$get2 =
+                            response.headers.get("fb-ar")) != null
                             ? _response$headers$get2
                             : "{}",
                           loginSource
@@ -11836,7 +12480,7 @@ try {
                           .shouldSecondLoginRequestTimeOut
                       ) {
                         importDefault("sdk.AuthState").setState({
-                          shouldSecondLoginRequestTimeOut: false
+                          shouldSecondLoginRequestTimeOut: false,
                         });
 
                         return;
@@ -11876,7 +12520,7 @@ try {
                       userID: xhrAuthResponse.user_id,
                       expiresIn: Number(xhrAuthResponse.expires_in),
                       signedRequest: xhrAuthResponse.signed_request,
-                      graphDomain: xhrAuthResponse.graph_domain
+                      graphDomain: xhrAuthResponse.graph_domain,
                     };
 
                     if (xhrAuthResponse.enforce_https != null) {
@@ -11909,7 +12553,7 @@ try {
                       authResponse: authResponse,
                       status: loginStatus,
                       loginSource: loginSource,
-                      cb: cb
+                      cb: cb,
                     };
 
                     importNamespace("sdk.AuthUtils").AuthInternalEvent.inform(
@@ -11926,7 +12570,7 @@ try {
                       authResponse: null,
                       status: loginStatus,
                       loginSource: loginSource,
-                      cb: cb
+                      cb: cb,
                     };
 
                     importNamespace("sdk.AuthUtils").AuthInternalEvent.inform(
@@ -11956,7 +12600,7 @@ try {
                     importNamespace("sdk.Scribe").log("jssdk_error", {
                       appId: importDefault("sdk.Runtime").getClientID(),
                       error: "CORS_STATUS_FETCH_CANCELLED",
-                      extra: { message: "Status 0 returned." }
+                      extra: { message: "Status 0 returned." },
                     });
                   }
                   importNamespace("Log").error(
@@ -11966,7 +12610,7 @@ try {
                   importNamespace("sdk.Scribe").log("jssdk_error", {
                     appId: importDefault("sdk.Runtime").getClientID(),
                     error: "CORS_STATUS_FETCH",
-                    extra: { message: "HTTP Status Code " + httpStatus }
+                    extra: { message: "HTTP Status Code " + httpStatus },
                   });
 
                   importNamespace("Log").error(
@@ -11982,7 +12626,7 @@ try {
                     status: importDefault("sdk.Runtime").getLoginStatus(),
                     loginSource: loginSource,
                     cb: cb,
-                    shouldSetAuthResponse: false
+                    shouldSetAuthResponse: false,
                   };
 
                   importNamespace("sdk.AuthUtils").AuthInternalEvent.inform(
@@ -11996,7 +12640,7 @@ try {
                     status: "unknown",
                     loginSource: loginSource,
                     cb: cb,
-                    shouldSetAuthResponse: false
+                    shouldSetAuthResponse: false,
                   };
 
                   importNamespace("sdk.AuthUtils").AuthInternalEvent.inform(
@@ -12008,9 +12652,8 @@ try {
               }
 
               function getCurrentAuthResponseSource() {
-                var currentAuthResponse = importDefault(
-                  "sdk.AuthState"
-                ).getState().currentAuthResponse;
+                var currentAuthResponse =
+                  importDefault("sdk.AuthState").getState().currentAuthResponse;
                 if (currentAuthResponse) {
                   if (
                     importNamespace("sdk.AuthUtils").isInstagramLogin(
@@ -12064,8 +12707,8 @@ try {
               }
 
               function isTheOtherLoginStatusLoaded(loginSource) {
-                var mixedAuthState = importDefault("sdk.AuthState").getState()
-                  .mixedAuthState;
+                var mixedAuthState =
+                  importDefault("sdk.AuthState").getState().mixedAuthState;
                 switch (loginSource) {
                   case "facebook":
                     return (
@@ -12093,8 +12736,8 @@ try {
               }
 
               function defaultLoginSourceToUnknownStatus(loginSource) {
-                var mixedAuthState = importDefault("sdk.AuthState").getState()
-                  .mixedAuthState;
+                var mixedAuthState =
+                  importDefault("sdk.AuthState").getState().mixedAuthState;
                 if (
                   (mixedAuthState == null
                     ? void 0
@@ -12108,7 +12751,7 @@ try {
                 var response = {
                   authResponse: null,
                   status: "unknown",
-                  loginSource: loginSource
+                  loginSource: loginSource,
                 };
 
                 importNamespace("sdk.AuthUtils").AuthInternalEvent.inform(
@@ -12118,7 +12761,7 @@ try {
               }
 
               var StatusCORS = {
-                getLoginStatusCORS: getLoginStatusCORS
+                getLoginStatusCORS: getLoginStatusCORS,
               };
               var _default = StatusCORS;
               exports["default"] = _default;
@@ -12126,10 +12769,509 @@ try {
             98
           );
           __d(
-            "sdk.Auth",
+            "sdk.Auth.LoginStatus",
             [
               "Log",
               "QueryString",
+              "sdk.Auth",
+              "sdk.AuthState",
+              "sdk.AuthStorageUtils",
+              "sdk.AuthUtils",
+              "sdk.Cookie",
+              "sdk.Runtime",
+              "sdk.Scribe",
+              "sdk.SignedRequest",
+              "sdk.feature",
+              "sdk.statusCORS",
+            ],
+            function $module_sdk_Auth_LoginStatus(
+              global,
+              require,
+              importDefault,
+              importNamespace,
+              requireLazy,
+              module,
+              exports
+            ) {
+              "use strict";
+
+              var facebookRe = /^https?:\/\/([\w\.]+)?\.facebook\.com\/?/;
+              importDefault("sdk.Runtime").subscribe(
+                "AccessToken.change",
+                function Runtime_subscribe_$1(value) {
+                  if (
+                    !value &&
+                    importDefault("sdk.Runtime").getLoginStatus() ===
+                      "connected"
+                  ) {
+                    getLoginStatus(null, true);
+                  }
+                }
+              );
+
+              function onSDKInit(options) {
+                if (options.legacyStatusInit) {
+                  LoginStatus.getLoginStatus(
+                    function LoginStatus_getLoginStatus_$0(response) {
+                      if (response != null && response.status === "connected") {
+                        importNamespace("sdk.Scribe").log("jssdk_error", {
+                          appId: importDefault("sdk.Runtime").getClientID(),
+                          error: "legacy_status_init_success",
+                        });
+                      }
+                    }
+                  );
+                } else if (options.status) {
+                  LoginStatus.getLoginStatus();
+                }
+                if (importDefault("sdk.Runtime").getClientID()) {
+                  if (importDefault("sdk.Runtime").getUseCookie()) {
+                    if (
+                      importDefault("sdk.feature")("log_cookies_usage", false)
+                    ) {
+                      importNamespace("sdk.Scribe").log("jssdk_error", {
+                        appId: importDefault("sdk.Runtime").getClientID(),
+                        error: "jssdk_cookie_toggled_on",
+                      });
+                    }
+
+                    var signedRequest =
+                      importNamespace("sdk.Cookie").loadSignedRequest();
+                    var parsedSignedRequest;
+                    if (signedRequest) {
+                      try {
+                        parsedSignedRequest =
+                          importNamespace("sdk.SignedRequest").parse(
+                            signedRequest
+                          );
+                      } catch (_unused) {
+                        importNamespace(
+                          "sdk.Cookie"
+                        ).clearSignedRequestCookie();
+                      }
+                      if (
+                        parsedSignedRequest != null &&
+                        parsedSignedRequest.user_id != null
+                      ) {
+                        importDefault("sdk.Runtime").setCookieUserID(
+                          parsedSignedRequest.user_id
+                        );
+                      }
+                    }
+                  }
+                }
+              }
+              function fetchLoginStatus(fn) {
+                if (window.location.protocol !== "https:") {
+                  unknownStatus(fn);
+                }
+                var timer = importDefault("sdk.AuthState").getState().timer;
+                if (timer) {
+                  window.clearTimeout(timer);
+                  importDefault("sdk.AuthState").setState({ timer: null });
+                }
+                importNamespace("sdk.AuthUtils").resetFBAndIGLoginStatus();
+
+                var fb_logged_out =
+                  importNamespace("sdk.Cookie").getRaw(
+                    importNamespace("sdk.AuthUtils").AuthConstants
+                      .LOGOUT_COOKIE_PREFIX
+                  ) === "y";
+                var _checkFragment = checkFragment(fn),
+                  access_token = _checkFragment.access_token,
+                  redirect_cancelled = _checkFragment.redirect_cancelled;
+
+                if (fb_logged_out || redirect_cancelled) {
+                  unknownStatus(fn);
+                  return;
+                }
+                var _getLocalStorageToken = importNamespace(
+                    "sdk.AuthStorageUtils"
+                  ).getLocalStorageTokens(),
+                  fbToken = _getLocalStorageToken.fbToken,
+                  igToken = _getLocalStorageToken.igToken;
+
+                if (access_token != null) {
+                  if (ES(access_token, "startsWith", true, "IG")) {
+                    igToken = access_token;
+                  } else {
+                    fbToken = access_token;
+                  }
+                }
+
+                if (
+                  importDefault("sdk.Runtime").getShouldLoadFamilyLogin() &&
+                  importDefault("sdk.feature")(
+                    "should_enable_ig_login_status_fetch",
+                    false
+                  )
+                ) {
+                  if (importDefault("sdk.Runtime").getFamilyLoginLoaded()) {
+                    importNamespace("sdk.AuthUtils").AuthInternalEvent.inform(
+                      importNamespace("sdk.AuthUtils").AuthConstants
+                        .LOAD_XFOA_SUBSCRIBERS
+                    );
+                  } else {
+                    importDefault("sdk.Runtime").subscribe(
+                      "FamilyLoginLoaded.change",
+                      function Runtime_subscribe_$1(value) {
+                        if (value) {
+                          importNamespace(
+                            "sdk.AuthUtils"
+                          ).AuthInternalEvent.inform(
+                            importNamespace("sdk.AuthUtils").AuthConstants
+                              .LOAD_XFOA_SUBSCRIBERS
+                          );
+                        }
+                      }
+                    );
+                  }
+                } else {
+                  importNamespace("sdk.AuthUtils").AuthInternalEvent.subscribe(
+                    importNamespace("sdk.AuthUtils").AuthConstants
+                      .CORS_FETCH_COMPLETED_EVENT,
+                    importDefault("sdk.Auth").setFinalAuthResponse
+                  );
+                }
+
+                issueXFoACorsFetch(fbToken, igToken, fn);
+              }
+
+              function issueXFoACorsFetch(fbToken, igToken, fn) {
+                importDefault("sdk.statusCORS").getLoginStatusCORS(
+                  fn,
+                  fbToken,
+                  importDefault("sdk.AuthState").getState().currentAuthResponse,
+                  "facebook"
+                );
+
+                if (
+                  importDefault("sdk.Runtime").getShouldLoadFamilyLogin() &&
+                  importDefault("sdk.feature")(
+                    "should_enable_ig_login_status_fetch",
+                    false
+                  )
+                ) {
+                  if (igToken != null) {
+                    importDefault("sdk.statusCORS").getLoginStatusCORS(
+                      fn,
+                      igToken,
+                      importDefault("sdk.AuthState").getState()
+                        .currentAuthResponse,
+                      "instagram"
+                    );
+                  } else {
+                    var _response = {
+                      authResponse: null,
+                      status: "unknown",
+                      loginSource: "instagram",
+                      cb: fn,
+                    };
+
+                    importNamespace("sdk.AuthUtils").AuthInternalEvent.inform(
+                      importNamespace("sdk.AuthUtils").AuthConstants
+                        .CORS_FETCH_COMPLETED_EVENT,
+                      _response
+                    );
+                  }
+                }
+              }
+
+              function checkFragment(fn) {
+                var redirAccessToken = null;
+                var redirCancelled = false;
+                if (
+                  importDefault("sdk.Runtime").getLoginStatus() !==
+                    "connected" &&
+                  (document.referrer === "" ||
+                    facebookRe.test(document.referrer))
+                ) {
+                  var fragment = location.hash.substr(1);
+                  if (fragment !== "") {
+                    var fragmentParams = importDefault("QueryString").decode(
+                      fragment,
+                      true
+                    );
+                    redirAccessToken = fragmentParams.access_token;
+                    var redirSignedRequest = fragmentParams.signed_request;
+                    if (redirAccessToken != null) {
+                      importNamespace("sdk.AuthUtils").removeLogoutState();
+                    }
+
+                    if (window == top && redirAccessToken != null) {
+                      var ofn = fn;
+                      fn = function fn(response) {
+                        var _response$authRespons;
+                        if (
+                          response != null &&
+                          response.status === "connected" &&
+                          ((_response$authRespons = response.authResponse) ==
+                          null
+                            ? void 0
+                            : _response$authRespons.accessToken) ===
+                            redirAccessToken
+                        ) {
+                          delete fragmentParams.access_token;
+                          delete fragmentParams.code;
+                          delete fragmentParams.signed_request;
+                          location.hash =
+                            importDefault("QueryString").encode(fragmentParams);
+                          if (
+                            redirSignedRequest != null &&
+                            response.authResponse != null
+                          ) {
+                            response.authResponse.signedRequest =
+                              redirSignedRequest;
+                          }
+                        }
+                        if (ofn != null) {
+                          ofn(response);
+                        }
+                      };
+                    }
+                  }
+
+                  var queryParams = importDefault("QueryString").decode(
+                    location.search
+                  );
+                  if (queryParams.error === "access_denied") {
+                    redirCancelled = true;
+                  }
+                }
+                return {
+                  access_token: redirAccessToken,
+                  redirect_cancelled: redirCancelled,
+                };
+              }
+
+              function getLoginStatus(cb, force) {
+                if (force === void 0) {
+                  force = false;
+                }
+                var appID = importDefault("sdk.Runtime").getClientID();
+                if (appID == null || appID === "") {
+                  importNamespace("Log").warn(
+                    "FB.getLoginStatus() called before calling FB.init()."
+                  );
+                  unknownStatus(cb);
+                  return;
+                }
+
+                if (
+                  !(typeof appID === "number" || typeof appID === "string") ||
+                  appID === 0 ||
+                  (typeof appID === "string" &&
+                    (appID === "0" || !/^\d+$/.test(appID)))
+                ) {
+                  importNamespace("Log").warn(
+                    "FB.getLoginStatus() not checked for an invalid client ID " +
+                      appID
+                  );
+
+                  unknownStatus(cb);
+                  return;
+                }
+
+                var skipCache =
+                  importDefault("sdk.Runtime").getLoginStatus() !==
+                    "connected" &&
+                  facebookRe.test(document.referrer) &&
+                  location.hash.indexOf("cb=") > -1;
+
+                if (!skipCache && !force) {
+                  var cachedResponse = importNamespace(
+                    "sdk.AuthStorageUtils"
+                  ).getCachedResponse();
+                  if (cachedResponse != null) {
+                    var _cachedResponse$statu;
+                    importDefault("sdk.AuthState").setState({
+                      loadState: "loaded",
+                    });
+                    importDefault("sdk.Auth").setAuthResponse(
+                      cachedResponse.authResponse,
+                      (_cachedResponse$statu = cachedResponse.status) != null
+                        ? _cachedResponse$statu
+                        : "unknown",
+                      "facebook",
+                      true
+                    );
+
+                    importNamespace("sdk.AuthUtils").setRevalidateTimer(
+                      cachedResponse.status === "connected"
+                        ? importNamespace("sdk.AuthUtils").AuthConstants
+                            .CONNECTED_REVALIDATE_PERIOD
+                        : importNamespace("sdk.AuthUtils").AuthConstants
+                            .DEFAULT_REVALIDATE_PERIOD
+                    );
+                  }
+                }
+
+                if (!force) {
+                  if (
+                    importDefault("sdk.AuthState").getState().loadState ===
+                    "loaded"
+                  ) {
+                    if (cb) {
+                      var _response2 = {
+                        authResponse:
+                          importDefault("sdk.Auth").getAuthResponse(),
+                        status: importDefault("sdk.Runtime").getLoginStatus(),
+                      };
+
+                      cb(_response2);
+                    }
+                    return;
+                  } else if (
+                    importDefault("sdk.AuthState").getState().loadState ===
+                    "loading"
+                  ) {
+                    if (cb) {
+                      importNamespace(
+                        "sdk.AuthUtils"
+                      ).AuthInternalEvent.subscribe("FB.loginStatus", cb);
+                    }
+                    return;
+                  }
+                }
+
+                if (cb) {
+                  importNamespace("sdk.AuthUtils").AuthInternalEvent.subscribe(
+                    "FB.loginStatus",
+                    cb
+                  );
+                }
+
+                importDefault("sdk.AuthState").setState({
+                  loadState: "loading",
+                });
+
+                var lsCb = function lsCb(response) {
+                  importDefault("sdk.AuthState").setState({
+                    loadState: "loaded",
+                  });
+
+                  importNamespace("sdk.AuthUtils").AuthInternalEvent.inform(
+                    "FB.loginStatus",
+                    response
+                  );
+                  importNamespace(
+                    "sdk.AuthUtils"
+                  ).AuthInternalEvent.clearSubscribers("FB.loginStatus");
+                };
+
+                fetchLoginStatus(lsCb);
+              }
+
+              function unknownStatus(cb) {
+                var unk_status = "unknown";
+                importDefault("sdk.Auth").setAuthResponse(
+                  null,
+                  unk_status,
+                  null
+                );
+                var response = {
+                  authResponse: null,
+                  status: unk_status,
+                  loginSource: null,
+                };
+
+                if (cb) {
+                  cb(response);
+                }
+              }
+
+              var LoginStatus = {
+                getLoginStatus: getLoginStatus,
+                fetchLoginStatus: fetchLoginStatus,
+                onSDKInit: onSDKInit,
+              };
+              var _default = LoginStatus;
+              exports["default"] = _default;
+            },
+            98
+          );
+          __d(
+            "sdk.LoggingUtils",
+            ["sdk.Impressions", "sdk.feature"],
+            function $module_sdk_LoggingUtils(
+              global,
+              require,
+              importDefault,
+              importNamespace,
+              requireLazy,
+              module,
+              exports
+            ) {
+              "use strict";
+
+              var logEventName = {
+                buttonLoad: "client_login_button_load",
+                buttonClick: "client_login_click",
+                loginSuccess: "client_login_success",
+                loginCancel: "client_login_cancel",
+                popupHide: "client_login_popup_hide_xfoa",
+                popupShow: "client_login_popup_show_xfoa",
+                loginEnd: "client_login_end",
+                loginStart: "client_login_start",
+                loginCompleteHeartbeat: "client_login_complete_heartbeat",
+                loginStatusPopupShowXfoa: "client_login_status_popup_show_xfoa",
+                loginStatusPopupHideXfoa: "client_login_status_popup_hide_xfoa",
+                loginStatusPopupClickXfoa:
+                  "client_login_status_popup_click_xfoa",
+                loginStatusPopupErrorXfoa:
+                  "client_login_status_popup_error_xfoa",
+              };
+
+              function logEvent(loggerID, actionName, extraPayload) {
+                importNamespace("sdk.Impressions").log(117, {
+                  payload: babelHelpers["extends"]({}, extraPayload || {}, {
+                    logger_id: loggerID,
+                    action: actionName,
+                    client_funnel_version: importDefault("sdk.feature")(
+                      "oauth_funnel_logger_version",
+                      1
+                    ),
+                  }),
+                });
+              }
+
+              function logLoginEvent(params, actionName) {
+                var cbt =
+                  params && params.cbt !== undefined ? Number(params.cbt) : 0;
+                logEvent(
+                  params == null ? void 0 : params.logger_id,
+                  actionName,
+                  {
+                    cbt_delta: Date.now() - cbt,
+                  }
+                );
+              }
+
+              function logPopupEvent(loggerID, actionName) {
+                if (actionName !== undefined) {
+                  logEvent(loggerID, actionName);
+                }
+              }
+
+              function logDisambiguationTrayEvent(error, loggerID) {
+                if (error !== undefined) {
+                  logEvent(loggerID, logEventName.loginStatusPopupErrorXfoa, {
+                    message: error,
+                  });
+                }
+              }
+              exports.logEventName = logEventName;
+              exports.logEvent = logEvent;
+              exports.logLoginEvent = logLoginEvent;
+              exports.logPopupEvent = logPopupEvent;
+              exports.logDisambiguationTrayEvent = logDisambiguationTrayEvent;
+            },
+            98
+          );
+          __d(
+            "sdk.Auth",
+            [
+              "Log",
               "UrlMap",
               "sdk.AuthState",
               "sdk.AuthStorageUtils",
@@ -12140,10 +13282,8 @@ try {
               "sdk.Runtime",
               "sdk.Scribe",
               "sdk.SignedRequest",
-              "sdk.UA",
               "sdk.URI",
-              "sdk.feature",
-              "sdk.statusCORS"
+              "sdk.ui",
             ],
             function $module_sdk_Auth(
               global,
@@ -12158,20 +13298,35 @@ try {
 
               var LOGIN_COMPLETE_HEARTBEAT_TIMEOUT = 5 * 1000;
 
-              var facebookRe = /^https?:\/\/([\w\.]+)?\.facebook\.com\/?/;
-
-              importDefault("sdk.Runtime").subscribe(
-                "AccessToken.change",
-                function Runtime_subscribe_$1(value) {
-                  if (
-                    !value &&
-                    importDefault("sdk.Runtime").getLoginStatus() ===
-                      "connected"
-                  ) {
-                    Auth.getLoginStatus(null, true);
-                  }
+              function login(cb, opts) {
+                if (opts && opts.perms && !opts.scope) {
+                  opts.scope = opts.perms;
+                  delete opts.perms;
+                  importNamespace("Log").warn(
+                    "OAuth2 specification states that 'perms' " +
+                      "should now be called 'scope'.  Please update."
+                  );
                 }
-              );
+                var canvas =
+                  importDefault("sdk.Runtime").isEnvironment(
+                    importDefault("sdk.Runtime").ENVIRONMENTS.CANVAS
+                  ) ||
+                  importDefault("sdk.Runtime").isEnvironment(
+                    importDefault("sdk.Runtime").ENVIRONMENTS.PAGETAB
+                  );
+                importDefault("sdk.ui")(
+                  babelHelpers["extends"](
+                    {
+                      method: "permissions.oauth",
+                      display: canvas ? "async" : "popup",
+                      domain: location.hostname,
+                    },
+                    opts || {}
+                  ),
+
+                  cb
+                );
+              }
 
               function toWebOAuthStatus(status) {
                 switch (status) {
@@ -12194,7 +13349,7 @@ try {
                     (finalResponse == null ? void 0 : finalResponse.status) ===
                     "connected"
                   ) {
-                    setRevalidateTimer();
+                    importNamespace("sdk.AuthUtils").setRevalidateTimer();
                   }
                   setAuthResponse(
                     finalResponse == null ? void 0 : finalResponse.authResponse,
@@ -12206,7 +13361,7 @@ try {
                 }
                 var cb = finalResponse == null ? void 0 : finalResponse.cb;
                 if (cb != null) {
-                  var _response = {
+                  var response = {
                     authResponse:
                       finalResponse == null
                         ? void 0
@@ -12215,10 +13370,12 @@ try {
                       finalResponse == null ? void 0 : finalResponse.status
                     ),
                     loginSource:
-                      finalResponse == null ? void 0 : finalResponse.loginSource
+                      finalResponse == null
+                        ? void 0
+                        : finalResponse.loginSource,
                   };
 
-                  cb(_response);
+                  cb(response);
                 }
                 importNamespace(
                   "sdk.AuthUtils"
@@ -12247,14 +13404,13 @@ try {
                   fromCache = false;
                 }
                 var currentUserID = importDefault("sdk.Runtime").getUserID();
-                var currentStatus = importDefault(
-                  "sdk.Runtime"
-                ).getLoginStatus();
+                var currentStatus =
+                  importDefault("sdk.Runtime").getLoginStatus();
 
                 var userID = "";
                 if (authResponse != null) {
                   importDefault("sdk.AuthState").setState({
-                    loadState: "loaded"
+                    loadState: "loaded",
                   });
 
                   if (
@@ -12336,13 +13492,13 @@ try {
                 );
 
                 importDefault("sdk.AuthState").setState({
-                  currentAuthResponse: authResponse
+                  currentAuthResponse: authResponse,
                 });
 
                 var response = {
                   authResponse: authResponse,
                   status: status,
-                  loginSource: loginSource
+                  loginSource: loginSource,
                 };
 
                 if (logout || both) {
@@ -12409,18 +13565,23 @@ try {
                   );
 
                   var xhr = new XMLHttpRequest();
+                  var cb_invoked = false;
                   if (xhr) {
                     xhr.open("GET", url.toString(), true);
                     xhr.withCredentials = true;
                     if (cb) {
-                      xhr.onreadystatechange = function() {
+                      xhr.onreadystatechange = function () {
                         if (xhr.readyState >= 2) {
+                          if (cb_invoked) {
+                            return;
+                          }
                           cb({
                             authResponse: getAuthResponse(),
-                            status: importDefault(
-                              "sdk.Runtime"
-                            ).getLoginStatus()
+                            status:
+                              importDefault("sdk.Runtime").getLoginStatus(),
                           });
+
+                          cb_invoked = true;
                         }
                       };
                     }
@@ -12430,7 +13591,7 @@ try {
                 importNamespace("sdk.Scribe").log("jssdk_error", {
                   appId: importDefault("sdk.Runtime").getClientID(),
                   error: "PLATFORM_AUTH_LOGOUT",
-                  extra: { args: { fblo: true } }
+                  extra: { args: { fblo: true } },
                 });
               }
 
@@ -12440,7 +13601,7 @@ try {
                 _method,
                 requestParams
               ) {
-                return function(params) {
+                return function (params) {
                   var status;
                   if (params && params.access_token) {
                     var parsedSignedRequest = importNamespace(
@@ -12457,7 +13618,7 @@ try {
                       userID: user_id,
                       expiresIn: Number(params.expires_in),
                       signedRequest: params.signed_request,
-                      graphDomain: params.graph_domain
+                      graphDomain: params.graph_domain,
                     };
 
                     if (params.asset_scopes) {
@@ -12467,7 +13628,7 @@ try {
                           "parse",
                           false,
                           params.asset_scopes
-                        )
+                        ),
                       });
                     }
 
@@ -12475,7 +13636,6 @@ try {
 
                     importNamespace("sdk.AuthUtils").removeLogoutState();
                     status = "connected";
-
                     setAuthResponse(authResponse, status);
                     logSuccessfulAuth(requestParams);
                   } else if (params && params.asset_scopes) {
@@ -12485,14 +13645,13 @@ try {
                         "parse",
                         false,
                         params.asset_scopes
-                      )
+                      ),
                     };
 
                     authResponse = populateAuthResponse(authResponse, params);
 
                     importNamespace("sdk.AuthUtils").removeLogoutState();
                     status = "connected";
-
                     setAuthResponse(authResponse, status);
                     logSuccessfulAuth(requestParams);
                   } else if (
@@ -12509,10 +13668,10 @@ try {
                     setAuthResponse(null, status);
                     var message =
                       params.error_message || params.error_description;
-                    var _response2 = {
+                    var response = {
                       authResponse: getAuthResponse(),
                       status: status,
-                      message: message
+                      message: message,
                     };
 
                     if (
@@ -12521,12 +13680,12 @@ try {
                     ) {
                       importNamespace("sdk.AuthUtils").AuthInternalEvent.inform(
                         "loginDenied",
-                        _response2
+                        response
                       );
                     } else {
                       importNamespace("sdk.AuthUtils").AuthInternalEvent.inform(
                         "loginError",
-                        _response2
+                        response
                       );
                     }
                   } else if (params && params.result) {
@@ -12535,12 +13694,12 @@ try {
                   }
 
                   if (cb) {
-                    var _response3 = {
+                    var _response = {
                       authResponse: authResponse,
-                      status: importDefault("sdk.Runtime").getLoginStatus()
+                      status: importDefault("sdk.Runtime").getLoginStatus(),
                     };
 
-                    cb(_response3);
+                    cb(_response);
                   }
                   return authResponse;
                 };
@@ -12572,7 +13731,7 @@ try {
               function populateAuthResponse(authResponse, params) {
                 if (params.granted_scopes) {
                   authResponse = babelHelpers["extends"]({}, authResponse, {
-                    grantedScopes: params.granted_scopes
+                    grantedScopes: params.granted_scopes,
                   });
                 }
 
@@ -12580,7 +13739,7 @@ try {
                   authResponse = babelHelpers["extends"]({}, authResponse, {
                     data_access_expiration_time: Number(
                       params.data_access_expiration_time
-                    )
+                    ),
                   });
                 }
 
@@ -12600,7 +13759,7 @@ try {
 
                 if (params.referred) {
                   authResponse = babelHelpers["extends"]({}, authResponse, {
-                    referred: params.referred
+                    referred: params.referred,
                   });
                 }
                 importNamespace("sdk.AuthStorageUtils").setLocalStorageToken(
@@ -12611,405 +13770,19 @@ try {
                 return authResponse;
               }
 
-              function unknownStatus(cb) {
-                var unk_status = "unknown";
-                setAuthResponse(null, unk_status, null);
-                var response = {
-                  authResponse: null,
-                  status: unk_status,
-                  loginSource: null
-                };
-
-                if (cb) {
-                  cb(response);
-                }
-              }
-
-              function executeIABCallback(cb) {
-                if (cb) {
-                  var _response4 = {
-                    authResponse: getAuthResponse(),
-                    status: importDefault("sdk.Runtime").getLoginStatus()
-                  };
-
-                  cb(_response4);
-                }
-                window.removeEventListener(
-                  "fbNativeLoginResponse",
-                  function window_removeEventListener_$1(_ev) {
-                    return executeIABCallback(cb);
-                  }
-                );
-              }
-
-              function checkFragment(fn) {
-                var redirAccessToken = null;
-                var redirCancelled = false;
-                if (
-                  importDefault("sdk.Runtime").getLoginStatus() !==
-                    "connected" &&
-                  (document.referrer === "" ||
-                    facebookRe.test(document.referrer))
-                ) {
-                  var fragment = location.hash.substr(1);
-                  if (fragment !== "") {
-                    var fragmentParams = importDefault("QueryString").decode(
-                      fragment,
-                      true
-                    );
-                    redirAccessToken = fragmentParams.access_token;
-                    var redirSignedRequest = fragmentParams.signed_request;
-                    if (redirAccessToken != null) {
-                      importNamespace("sdk.AuthUtils").removeLogoutState();
-                    }
-
-                    if (window == top && redirAccessToken != null) {
-                      var ofn = fn;
-                      fn = function fn(response) {
-                        var _response$authRespons;
-                        if (
-                          response != null &&
-                          response.status === "connected" &&
-                          ((_response$authRespons = response.authResponse) ==
-                          null
-                            ? void 0
-                            : _response$authRespons.accessToken) ===
-                            redirAccessToken
-                        ) {
-                          delete fragmentParams.access_token;
-                          delete fragmentParams.code;
-                          delete fragmentParams.signed_request;
-                          location.hash = importDefault("QueryString").encode(
-                            fragmentParams
-                          );
-                          if (
-                            redirSignedRequest != null &&
-                            response.authResponse != null
-                          ) {
-                            response.authResponse.signedRequest = redirSignedRequest;
-                          }
-                        }
-                        if (ofn != null) {
-                          ofn(response);
-                        }
-                      };
-                    }
-                  }
-
-                  var queryParams = importDefault("QueryString").decode(
-                    location.search
-                  );
-                  if (queryParams.error === "access_denied") {
-                    redirCancelled = true;
-                  }
-                }
-                return {
-                  access_token: redirAccessToken,
-                  redirect_cancelled: redirCancelled
-                };
-              }
-
-              function shouldFetchIABLoginStatus() {
-                return (
-                  importDefault("sdk.UA").isSupportedIABVersion(
-                    parseFloat(
-                      importDefault("sdk.feature")(
-                        "iab_login_android_support_version",
-                        "999.0"
-                      )
-                    )
-                  ) &&
-                  window.FBLogin &&
-                  typeof window.FBLogin.showFBLoginBottomSheetInIAB ===
-                    "function" &&
-                  importDefault("sdk.feature")("iab_login_status", false)
-                );
-              }
-
-              function setUpIABStatusFetch(fn, fbToken, igToken) {
-                window.addEventListener(
-                  "fbNativeLoginResponse",
-                  function window_addEventListener_$1(_ev) {
-                    return executeIABCallback(fn);
-                  }
-                );
-
-                window.addEventListener(
-                  "fbNativeLoginFallbackResponse",
-                  function window_addEventListener_$1(_ev) {
-                    issueXFoACorsFetch(fbToken, igToken, fn);
-                  }
-                );
-                var clientID = importDefault("sdk.Runtime").getClientID();
-                window.FBLogin.showFBLoginBottomSheetInIAB(clientID);
-              }
-
-              function fetchLoginStatus(fn) {
-                if (window.location.protocol !== "https:") {
-                  unknownStatus(fn);
-                }
-                var timer = importDefault("sdk.AuthState").getState().timer;
-                if (timer) {
-                  window.clearTimeout(timer);
-                  importDefault("sdk.AuthState").setState({ timer: null });
-                }
-                importNamespace("sdk.AuthUtils").resetFBAndIGLoginStatus();
-
-                var fb_logged_out =
-                  importNamespace("sdk.Cookie").getRaw(
-                    importNamespace("sdk.AuthUtils").AuthConstants
-                      .LOGOUT_COOKIE_PREFIX
-                  ) === "y";
-                var _checkFragment = checkFragment(fn),
-                  access_token = _checkFragment.access_token,
-                  redirect_cancelled = _checkFragment.redirect_cancelled;
-
-                if (fb_logged_out || redirect_cancelled) {
-                  unknownStatus(fn);
-                  return;
-                }
-                var _getLocalStorageToken = importNamespace(
-                    "sdk.AuthStorageUtils"
-                  ).getLocalStorageTokens(),
-                  fbToken = _getLocalStorageToken.fbToken,
-                  igToken = _getLocalStorageToken.igToken;
-
-                if (access_token != null) {
-                  if (ES(access_token, "startsWith", true, "IG")) {
-                    igToken = access_token;
-                  } else {
-                    fbToken = access_token;
-                  }
-                }
-
-                if (
-                  importDefault("sdk.Runtime").getShouldLoadFamilyLogin() &&
-                  importDefault("sdk.feature")(
-                    "should_enable_ig_login_status_fetch",
-                    false
-                  )
-                ) {
-                  if (importDefault("sdk.Runtime").getFamilyLoginLoaded()) {
-                    importNamespace("sdk.AuthUtils").AuthInternalEvent.inform(
-                      importNamespace("sdk.AuthUtils").AuthConstants
-                        .LOAD_XFOA_SUBSCRIBERS
-                    );
-                  } else {
-                    importDefault("sdk.Runtime").subscribe(
-                      "FamilyLoginLoaded.change",
-                      function Runtime_subscribe_$1(value) {
-                        if (value) {
-                          importNamespace(
-                            "sdk.AuthUtils"
-                          ).AuthInternalEvent.inform(
-                            importNamespace("sdk.AuthUtils").AuthConstants
-                              .LOAD_XFOA_SUBSCRIBERS
-                          );
-                        }
-                      }
-                    );
-                  }
-                } else {
-                  importNamespace("sdk.AuthUtils").AuthInternalEvent.subscribe(
-                    importNamespace("sdk.AuthUtils").AuthConstants
-                      .CORS_FETCH_COMPLETED_EVENT,
-                    setFinalAuthResponse
-                  );
-                }
-
-                if (shouldFetchIABLoginStatus()) {
-                  setUpIABStatusFetch(fn, fbToken);
-                } else {
-                  issueXFoACorsFetch(fbToken, igToken, fn);
-                }
-              }
-
-              function issueXFoACorsFetch(fbToken, igToken, fn) {
-                importDefault("sdk.statusCORS").getLoginStatusCORS(
-                  fn,
-                  fbToken,
-                  importDefault("sdk.AuthState").getState().currentAuthResponse,
-                  "facebook"
-                );
-
-                if (
-                  importDefault("sdk.Runtime").getShouldLoadFamilyLogin() &&
-                  importDefault("sdk.feature")(
-                    "should_enable_ig_login_status_fetch",
-                    false
-                  )
-                ) {
-                  if (igToken != null) {
-                    importDefault("sdk.statusCORS").getLoginStatusCORS(
-                      fn,
-                      igToken,
-                      importDefault("sdk.AuthState").getState()
-                        .currentAuthResponse,
-                      "instagram"
-                    );
-                  } else {
-                    var _response5 = {
-                      authResponse: null,
-                      status: "unknown",
-                      loginSource: "instagram",
-                      cb: fn
-                    };
-
-                    importNamespace("sdk.AuthUtils").AuthInternalEvent.inform(
-                      importNamespace("sdk.AuthUtils").AuthConstants
-                        .CORS_FETCH_COMPLETED_EVENT,
-                      _response5
-                    );
-                  }
-                }
-              }
-
-              function setRevalidateTimer(timeout) {
-                if (timeout === void 0) {
-                  timeout = importNamespace("sdk.AuthUtils").AuthConstants
-                    .CONNECTED_REVALIDATE_PERIOD;
-                }
-                var currentTimer = importDefault("sdk.AuthState").getState()
-                  .timer;
-                if (currentTimer) {
-                  window.clearTimeout(currentTimer);
-                }
-                var timer = window.setTimeout(function window_setTimeout_$0() {
-                  fetchLoginStatus(function fetchLoginStatus_$0() {});
-                }, timeout);
-                importDefault("sdk.AuthState").setState({ timer: timer });
-              }
-
-              function getLoginStatus(cb, force) {
-                if (force === void 0) {
-                  force = false;
-                }
-                var appID = importDefault("sdk.Runtime").getClientID();
-                if (appID == null || appID === "") {
-                  importNamespace("Log").warn(
-                    "FB.getLoginStatus() called before calling FB.init()."
-                  );
-                  unknownStatus(cb);
-                  return;
-                }
-
-                if (
-                  !(typeof appID === "number" || typeof appID === "string") ||
-                  appID === 0 ||
-                  (typeof appID === "string" &&
-                    (appID === "0" || !/^\d+$/.test(appID)))
-                ) {
-                  importNamespace("Log").warn(
-                    "FB.getLoginStatus() not checked for an invalid client ID " +
-                      appID
-                  );
-
-                  unknownStatus(cb);
-                  return;
-                }
-
-                var skipCache =
-                  importDefault("sdk.Runtime").getLoginStatus() !==
-                    "connected" &&
-                  facebookRe.test(document.referrer) &&
-                  location.hash.indexOf("cb=") > -1;
-
-                if (!skipCache && !force) {
-                  var cachedResponse = importNamespace(
-                    "sdk.AuthStorageUtils"
-                  ).getCachedResponse();
-                  if (cachedResponse != null) {
-                    var _cachedResponse$statu;
-                    importDefault("sdk.AuthState").setState({
-                      loadState: "loaded"
-                    });
-                    setAuthResponse(
-                      cachedResponse.authResponse,
-                      (_cachedResponse$statu = cachedResponse.status) != null
-                        ? _cachedResponse$statu
-                        : "unknown",
-                      "facebook",
-                      true
-                    );
-
-                    setRevalidateTimer(
-                      cachedResponse.status === "connected"
-                        ? importNamespace("sdk.AuthUtils").AuthConstants
-                            .CONNECTED_REVALIDATE_PERIOD
-                        : importNamespace("sdk.AuthUtils").AuthConstants
-                            .DEFAULT_REVALIDATE_PERIOD
-                    );
-                  }
-                }
-
-                if (!force) {
-                  if (
-                    importDefault("sdk.AuthState").getState().loadState ===
-                    "loaded"
-                  ) {
-                    if (cb) {
-                      var _response6 = {
-                        authResponse: getAuthResponse(),
-                        status: importDefault("sdk.Runtime").getLoginStatus()
-                      };
-
-                      cb(_response6);
-                    }
-                    return;
-                  } else if (
-                    importDefault("sdk.AuthState").getState().loadState ===
-                    "loading"
-                  ) {
-                    if (cb) {
-                      importNamespace(
-                        "sdk.AuthUtils"
-                      ).AuthInternalEvent.subscribe("FB.loginStatus", cb);
-                    }
-                    return;
-                  }
-                }
-
-                if (cb) {
-                  importNamespace("sdk.AuthUtils").AuthInternalEvent.subscribe(
-                    "FB.loginStatus",
-                    cb
-                  );
-                }
-
-                importDefault("sdk.AuthState").setState({
-                  loadState: "loading"
-                });
-
-                var lsCb = function lsCb(response) {
-                  importDefault("sdk.AuthState").setState({
-                    loadState: "loaded"
-                  });
-
-                  importNamespace("sdk.AuthUtils").AuthInternalEvent.inform(
-                    "FB.loginStatus",
-                    response
-                  );
-                  importNamespace(
-                    "sdk.AuthUtils"
-                  ).AuthInternalEvent.clearSubscribers("FB.loginStatus");
-                };
-
-                fetchLoginStatus(lsCb);
-              }
-
               var Auth = {
-                getLoginStatus: getLoginStatus,
-                fetchLoginStatus: fetchLoginStatus,
                 setFinalAuthResponse: setFinalAuthResponse,
+                login: login,
                 logout: logout,
                 setAuthResponse: setAuthResponse,
                 getAuthResponse: getAuthResponse,
                 parseSignedRequest: importNamespace("sdk.SignedRequest").parse,
                 xdResponseWrapper: xdResponseWrapper,
-                subscribe: importNamespace("sdk.AuthUtils").AuthInternalEvent
-                  .subscribe,
-                unsubscribe: importNamespace("sdk.AuthUtils").AuthInternalEvent
-                  .unsubscribe
+                subscribe:
+                  importNamespace("sdk.AuthUtils").AuthInternalEvent.subscribe,
+                unsubscribe:
+                  importNamespace("sdk.AuthUtils").AuthInternalEvent
+                    .unsubscribe,
               };
               var _default = Auth;
               exports["default"] = _default;
@@ -13052,7 +13825,7 @@ try {
               exports
             ) {
               function makeEmptyFunction(arg) {
-                return function() {
+                return function () {
                   return arg;
                 };
               }
@@ -13063,10 +13836,11 @@ try {
               emptyFunction.thatReturnsFalse = makeEmptyFunction(false);
               emptyFunction.thatReturnsTrue = makeEmptyFunction(true);
               emptyFunction.thatReturnsNull = makeEmptyFunction(null);
-              emptyFunction.thatReturnsThis = function() {
+
+              emptyFunction.thatReturnsThis = function () {
                 return this;
               };
-              emptyFunction.thatReturnsArgument = function(arg) {
+              emptyFunction.thatReturnsArgument = function (arg) {
                 return arg;
               };
               var _default = emptyFunction;
@@ -13075,8 +13849,60 @@ try {
             66
           );
           __d(
+            "passiveEventListenerUtil",
+            [],
+            function $module_passiveEventListenerUtil(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              "use strict";
+
+              var _isPassiveEventListenerSupported = false;
+              try {
+                var opts = Object.defineProperty(
+                  {},
+
+                  "passive",
+                  {
+                    get: function get() {
+                      _isPassiveEventListenerSupported = true;
+                    },
+                  }
+                );
+
+                window.addEventListener("test", null, opts);
+              } catch (_unused) {}
+
+              var isPassiveEventListenerSupported =
+                _isPassiveEventListenerSupported;
+
+              function makeEventOptions(options) {
+                if (isPassiveEventListenerSupported) {
+                  return options;
+                }
+                return typeof options === "boolean"
+                  ? options
+                  : options.capture || false;
+              }
+              exports.isPassiveEventListenerSupported =
+                isPassiveEventListenerSupported;
+              exports.makeEventOptions = makeEventOptions;
+            },
+            66
+          );
+          __d(
             "DOMEventListener",
-            ["invariant", "dedupString", "emptyFunction", "wrapFunction"],
+            [
+              "invariant",
+              "dedupString",
+              "emptyFunction",
+              "passiveEventListenerUtil",
+              "wrapFunction",
+            ],
             function $module_DOMEventListener(
               global,
               require,
@@ -13086,16 +13912,8 @@ try {
               exports,
               invariant
             ) {
-              var supportsPassive = false;
-              try {
-                var opts = Object.defineProperty({}, "passive", {
-                  get: function get() {
-                    supportsPassive = true;
-                  }
-                });
-
-                window.addEventListener("test", null, opts);
-              } catch (_unused) {}
+              var isPassiveEventListenerSupported =
+                require("passiveEventListenerUtil").isPassiveEventListenerSupported;
 
               var _add, _remove;
 
@@ -13114,7 +13932,7 @@ try {
                   target.addEventListener(
                     name,
                     listener.wrapper,
-                    supportsPassive ? options : false
+                    isPassiveEventListenerSupported ? options : false
                   );
                 };
                 _remove = function remove(target, name, listener, options) {
@@ -13125,7 +13943,7 @@ try {
                     name,
 
                     listener.wrapper,
-                    supportsPassive ? options : false
+                    isPassiveEventListenerSupported ? options : false
                   );
                 };
               } else if (window.attachEvent) {
@@ -13166,11 +13984,11 @@ try {
                   return {
                     remove: function remove() {
                       _remove(target, name, listener, options);
-                    }
+                    },
                   };
                 },
 
-                remove: _remove
+                remove: _remove,
               };
 
               module.exports = DOMEventListener;
@@ -13188,14 +14006,14 @@ try {
               module,
               exports
             ) {
-              var JSONRPC = (function() {
+              var JSONRPC = (function () {
                 "use strict";
                 function JSONRPC(write) {
                   var _this = this;
                   this.$JSONRPC_counter = 0;
                   this.$JSONRPC_callbacks = {};
 
-                  this.remote = function(context) {
+                  this.remote = function (context) {
                     _this.$JSONRPC_context = context;
                     return _this.remote;
                   };
@@ -13207,10 +14025,10 @@ try {
                 var _proto = JSONRPC.prototype;
                 _proto.stub = function stub(_stub) {
                   var _this2 = this;
-                  this.remote[_stub] = function() {
+                  this.remote[_stub] = function () {
                     var message = {
                       jsonrpc: "2.0",
-                      method: _stub
+                      method: _stub,
                     };
                     for (
                       var _len = arguments.length,
@@ -13261,7 +14079,7 @@ try {
                     send = function send(type, value) {
                       var response = {
                         jsonrpc: "2.0",
-                        id: id
+                        id: id,
                       };
 
                       response[type] = value;
@@ -13286,7 +14104,7 @@ try {
                     send("error", {
                       code: -32601,
                       message: "Method not found",
-                      data: rpc.method
+                      data: rpc.method,
                     });
 
                     return;
@@ -13311,7 +14129,7 @@ try {
                     send("error", {
                       code: -32603,
                       message: "Internal error",
-                      data: rpcEx.message
+                      data: rpcEx.message,
                     });
                   }
                 };
@@ -13334,7 +14152,7 @@ try {
               exports
             ) {
               var registry = {};
-              var Queue = (function() {
+              var Queue = (function () {
                 function Queue(opts) {
                   this._timeout = null;
 
@@ -13456,7 +14274,7 @@ try {
               exports
             ) {
               var outQueue = new (importDefault("Queue"))();
-              var jsonrpc = new (importDefault("JSONRPC"))(function(message) {
+              var jsonrpc = new (importDefault("JSONRPC"))(function (message) {
                 outQueue.enqueue(message);
               });
 
@@ -13476,7 +14294,7 @@ try {
                 },
                 getOutQueue: function getOutQueue() {
                   return outQueue;
-                }
+                },
               };
               var _default = RPC;
               exports["default"] = _default;
@@ -13489,13 +14307,14 @@ try {
             function $module_sdk_Canvas_Environment(
               global,
               require,
-              requireDynamic,
+              importDefault,
+              importNamespace,
               requireLazy,
               module,
               exports
             ) {
               function getPageInfo(appCallback) {
-                require("sdk.RPC").remote.getPageInfo(
+                importDefault("sdk.RPC").remote.getPageInfo(
                   function RPC_remote_getPageInfo_$0(response) {
                     appCallback(response.result);
                   }
@@ -13503,20 +14322,23 @@ try {
               }
 
               function scrollTo(x, y) {
-                require("sdk.RPC").remote.scrollTo({ x: x || 0, y: y || 0 });
+                importDefault("sdk.RPC").remote.scrollTo({
+                  x: x || 0,
+                  y: y || 0,
+                });
               }
 
-              require("sdk.RPC").stub("getPageInfo");
-              require("sdk.RPC").stub("scrollTo");
+              importDefault("sdk.RPC").stub("getPageInfo");
+              importDefault("sdk.RPC").stub("scrollTo");
 
               var Environment = {
                 getPageInfo: getPageInfo,
-                scrollTo: scrollTo
+                scrollTo: scrollTo,
               };
-
-              module.exports = Environment;
+              var _default = Environment;
+              exports["default"] = _default;
             },
-            null
+            98
           );
           __d(
             "sdk.DialogUtils",
@@ -13724,7 +14546,7 @@ try {
               function setDialogPositionToTop(dialog, isTablet, pageInfo) {
                 var _view$scrollTop2, _view$height5;
 
-                this.setDialogPositionToCenter(dialog, isTablet, pageInfo);
+                setDialogPositionToCenter(dialog, isTablet, pageInfo);
 
                 var view = importNamespace("sdk.DOM").getViewportInfo();
                 var top =
@@ -13742,8 +14564,7 @@ try {
                 var overlay = document.createElement("div");
 
                 overlay.setAttribute("id", "fb_dialog_ipad_overlay");
-
-                this.applyScreenDimensions(overlay);
+                applyScreenDimensions(overlay);
                 return overlay;
               }
 
@@ -13797,7 +14618,7 @@ try {
 
                 return {
                   dialogElement: dialogElement,
-                  contentRoot: contentRoot
+                  contentRoot: contentRoot,
                 };
               }
 
@@ -13812,7 +14633,8 @@ try {
               exports.isOrientationPotrait = isOrientationPotrait;
               exports.addDoubleClickAction = addDoubleClickAction;
               exports.addIdleDesktopAction = addIdleDesktopAction;
-              exports.addMobileOrientationChangeAction = addMobileOrientationChangeAction;
+              exports.addMobileOrientationChangeAction =
+                addMobileOrientationChangeAction;
               exports.applyScreenDimensions = applyScreenDimensions;
               exports.setDialogPositionToCenter = setDialogPositionToCenter;
               exports.setDialogPositionToTop = setDialogPositionToTop;
@@ -13835,7 +14657,7 @@ try {
             ) {
               var fbt = function fbt() {};
 
-              fbt._ = function(table) {
+              fbt._ = function (table) {
                 if (__DEV__) {
                   if (arguments.length > 1) {
                     var e = new Error("You are not using a simple string");
@@ -13882,7 +14704,7 @@ try {
               "sdk.DialogUtils",
               "sdk.Runtime",
               "sdk.UA",
-              "sdk.fbt"
+              "sdk.fbt",
             ],
             function $module_sdk_Dialog(
               global,
@@ -13906,7 +14728,7 @@ try {
                 if (height != null && width != null) {
                   return {
                     width: Math.min(width, MAX_WIDTH_MOBILE),
-                    height: Math.min(height, MAX_HEIGHT_MOBILE)
+                    height: Math.min(height, MAX_HEIGHT_MOBILE),
                   };
                 }
                 return null;
@@ -13953,7 +14775,7 @@ try {
                     }
 
                     return this;
-                  }
+                  },
                 },
                 importDefault("ObservableMixin")
               );
@@ -14011,7 +14833,7 @@ try {
 
                   return Dialog.create({
                     content: content,
-                    width: width
+                    width: width,
                   });
                 },
 
@@ -14057,7 +14879,7 @@ try {
                   return Dialog.create({
                     classes:
                       "loading" + (Dialog.isTabletStyle() ? " centered" : ""),
-                    content: content
+                    content: content,
                   });
                 },
 
@@ -14076,9 +14898,8 @@ try {
                     return;
                   }
                   if (Dialog._overlayEl == null) {
-                    var newOverlay = importNamespace(
-                      "sdk.DialogUtils"
-                    ).setupNewDarkOverlay();
+                    var newOverlay =
+                      importNamespace("sdk.DialogUtils").setupNewDarkOverlay();
                     newOverlay.className = "";
                     Dialog._overlayEl = newOverlay;
                     importNamespace("sdk.Content").append(
@@ -14167,7 +14988,7 @@ try {
                       importDefault("sdk.Runtime").ENVIRONMENTS.CANVAS
                     )
                   ) {
-                    importNamespace("sdk.Canvas.Environment").getPageInfo(
+                    importDefault("sdk.Canvas.Environment").getPageInfo(
                       function CanvasEnvironment_getPageInfo_$0(pageInfo) {
                         Dialog._centerActive(pageInfo);
                       }
@@ -14239,9 +15060,9 @@ try {
                         _DOM$getViewportInfo3;
                       if (
                         (_ref =
-                          (_DOM$getViewportInfo = importNamespace(
-                            "sdk.DOM"
-                          ).getViewportInfo()) == null
+                          (_DOM$getViewportInfo =
+                            importNamespace("sdk.DOM").getViewportInfo()) ==
+                          null
                             ? void 0
                             : _DOM$getViewportInfo.width) != null
                           ? _ref
@@ -14250,9 +15071,9 @@ try {
                         var _ref2, _DOM$getViewportInfo2;
                         size.width =
                           (_ref2 =
-                            (_DOM$getViewportInfo2 = importNamespace(
-                              "sdk.DOM"
-                            ).getViewportInfo()) == null
+                            (_DOM$getViewportInfo2 =
+                              importNamespace("sdk.DOM").getViewportInfo()) ==
+                            null
                               ? void 0
                               : _DOM$getViewportInfo2.width) != null
                             ? _ref2
@@ -14260,9 +15081,9 @@ try {
                       }
                       if (
                         (_ref3 =
-                          (_DOM$getViewportInfo3 = importNamespace(
-                            "sdk.DOM"
-                          ).getViewportInfo()) == null
+                          (_DOM$getViewportInfo3 =
+                            importNamespace("sdk.DOM").getViewportInfo()) ==
+                          null
                             ? void 0
                             : _DOM$getViewportInfo3.height) != null
                           ? _ref3
@@ -14271,9 +15092,9 @@ try {
                         var _ref4, _DOM$getViewportInfo4;
                         size.height =
                           (_ref4 =
-                            (_DOM$getViewportInfo4 = importNamespace(
-                              "sdk.DOM"
-                            ).getViewportInfo()) == null
+                            (_DOM$getViewportInfo4 =
+                              importNamespace("sdk.DOM").getViewportInfo()) ==
+                            null
                               ? void 0
                               : _DOM$getViewportInfo4.height) != null
                             ? _ref4
@@ -14285,14 +15106,14 @@ try {
                     if (importDefault("sdk.UA").ipad()) {
                       return {
                         width: MAX_WIDTH_MOBILE,
-                        height: MAX_HEIGHT_MOBILE
+                        height: MAX_HEIGHT_MOBILE,
                       };
                     }
 
                     if (importDefault("sdk.UA").android()) {
                       return {
                         width: screen.availWidth,
-                        height: screen.availHeight
+                        height: screen.availHeight,
                       };
                     } else {
                       var width = window.innerWidth;
@@ -14304,13 +15125,13 @@ try {
                         height: Math.max(
                           height,
                           isLandscape ? screen.width : screen.height
-                        )
+                        ),
                       };
                     }
                   }
                   return {
                     width: MAX_WIDTH_DESKTOP,
-                    height: MAX_HEIGHT_DESKTOP
+                    height: MAX_HEIGHT_DESKTOP,
                   };
                 },
 
@@ -14318,9 +15139,8 @@ try {
                   var _ref5, _DOM$getViewportInfo5;
                   Dialog._availScreenWidth =
                     (_ref5 =
-                      (_DOM$getViewportInfo5 = importNamespace(
-                        "sdk.DOM"
-                      ).getViewportInfo()) == null
+                      (_DOM$getViewportInfo5 =
+                        importNamespace("sdk.DOM").getViewportInfo()) == null
                         ? void 0
                         : _DOM$getViewportInfo5.width) != null
                       ? _ref5
@@ -14355,9 +15175,8 @@ try {
                   }
                   Dialog._availScreenWidth =
                     (_ref6 =
-                      (_DOM$getViewportInfo6 = importNamespace(
-                        "sdk.DOM"
-                      ).getViewportInfo()) == null
+                      (_DOM$getViewportInfo6 =
+                        importNamespace("sdk.DOM").getViewportInfo()) == null
                         ? void 0
                         : _DOM$getViewportInfo6.width) != null
                       ? _ref6
@@ -14370,9 +15189,8 @@ try {
                 },
 
                 create: function create(opts) {
-                  var created = importNamespace(
-                    "sdk.DialogUtils"
-                  ).setupNewDialog(opts);
+                  var created =
+                    importNamespace("sdk.DialogUtils").setupNewDialog(opts);
                   importNamespace("sdk.Content").append(created.dialogElement);
                   if (opts.visible) {
                     Dialog.show(created.dialogElement);
@@ -14468,7 +15286,7 @@ try {
                     (size.height >= MAX_HEIGHT_MOBILE ||
                       size.width >= MAX_WIDTH_MOBILE)
                   );
-                }
+                },
               };
               var _default = Dialog;
               exports["default"] = _default;
@@ -14476,113 +15294,175 @@ try {
             98
           );
           __d(
-            "sdk.Event",
-            [],
-            function $module_sdk_Event(
+            "sdk.PlatformVersioning",
+            ["ManagedError", "sdk.Runtime"],
+            function $module_sdk_PlatformVersioning(
               global,
               require,
-              requireDynamic,
+              importDefault,
+              importNamespace,
+              requireLazy,
+              module,
+              exports
+            ) {
+              var REGEX = /^v\d+\.\d\d?$/;
+
+              function assertVersionIsSet() {
+                if (!importDefault("sdk.Runtime").getVersion()) {
+                  throw new (importDefault("ManagedError"))(
+                    "init not called with valid version"
+                  );
+                }
+              }
+
+              function assertValidVersion(version) {
+                if (!REGEX.test(version)) {
+                  throw new (importDefault("ManagedError"))(
+                    "invalid version specified"
+                  );
+                }
+              }
+              exports.REGEX = REGEX;
+              exports.assertVersionIsSet = assertVersionIsSet;
+              exports.assertValidVersion = assertValidVersion;
+            },
+            98
+          );
+          __d(
+            "sdk.warnInsecure",
+            ["Log", "sdk.Runtime", "sdk.Scribe", "sdk.feature"],
+            function $module_sdk_warnInsecure(
+              global,
+              require,
+              importDefault,
+              importNamespace,
               requireLazy,
               module,
               exports
             ) {
               "use strict";
 
-              var SUBSCRIBE = "event.subscribe";
+              var httpsOnlyLearnMore = importDefault("sdk.feature")(
+                "https_only_learn_more",
+                ""
+              );
+              var logged = {};
 
-              var UNSUBSCRIBE = "event.unsubscribe";
+              function warnInsecure(methodName) {
+                if (window.location.protocol !== "https:") {
+                  importNamespace("Log").log(
+                    "error",
+                    -1,
+                    "The method FB.%s can no longer be called from http pages. %s",
+                    methodName,
+                    httpsOnlyLearnMore
+                  );
 
-              function subscribers() {
-                if (!this._subscribersMap) {
-                  this._subscribersMap = {};
-                }
+                  if (
+                    importDefault("sdk.feature")(
+                      "https_only_scribe_logging",
+                      true
+                    ) &&
+                    !Object.prototype.hasOwnProperty.call(logged, methodName)
+                  ) {
+                    importNamespace("sdk.Scribe").log("jssdk_error", {
+                      appId: importDefault("sdk.Runtime").getClientID(),
+                      error: "HttpsOnly",
+                      extra: {
+                        message: methodName,
+                      },
+                    });
 
-                return this._subscribersMap;
-              }
-
-              function subscribe(name, cb) {
-                var subs = this.subscribers();
-
-                if (!subs[name]) {
-                  subs[name] = [cb];
-                } else {
-                  if (subs[name].indexOf(cb) == -1) {
-                    subs[name].push(cb);
+                    logged[methodName] = true;
                   }
                 }
-
-                if (name != this.SUBSCRIBE && name != this.UNSUBSCRIBE) {
-                  this.fire(this.SUBSCRIBE, name, subs[name]);
-                }
+                return true;
               }
-
-              function unsubscribe(name, cb) {
-                var subs = this.subscribers()[name];
-                if (subs) {
-                  subs.forEach(function subs_forEach_$0(value, key) {
-                    if (value === cb) {
-                      subs.splice(key, 1);
-                    }
-                  });
-                }
-
-                if (name != this.SUBSCRIBE && name != this.UNSUBSCRIBE) {
-                  this.fire(this.UNSUBSCRIBE, name, subs);
-                }
-              }
-
-              function monitor(name, callback) {
-                if (!callback()) {
-                  var ctx = this;
-                  var fn = function fn() {
-                    if (callback.apply(callback, arguments)) {
-                      ctx.unsubscribe(name, fn);
-                    }
-                  };
-
-                  this.subscribe(name, fn);
-                }
-              }
-
-              function clear(name) {
-                delete this.subscribers()[name];
-              }
-
-              function fire(name) {
+              exports["default"] = warnInsecure;
+            },
+            98
+          );
+          __d(
+            "sdk.api",
+            [
+              "ApiClient",
+              "sdk.PlatformVersioning",
+              "sdk.Runtime",
+              "sdk.URI",
+              "sdk.warnInsecure",
+            ],
+            function $module_sdk_api(
+              global,
+              require,
+              importDefault,
+              importNamespace,
+              requireLazy,
+              module,
+              exports
+            ) {
+              function api(pathOrObject) {
                 for (
                   var _len = arguments.length,
-                    args = new Array(_len > 1 ? _len - 1 : 0),
+                    additionalArgs = new Array(_len > 1 ? _len - 1 : 0),
                     _key = 1;
                   _key < _len;
                   _key++
                 ) {
-                  args[_key - 1] = arguments[_key];
+                  additionalArgs[_key - 1] = arguments[_key];
                 }
+                importDefault("sdk.warnInsecure")("api");
 
-                var subs = this.subscribers()[name];
+                if (typeof pathOrObject === "string") {
+                  if (importDefault("sdk.Runtime").getIsVersioned()) {
+                    importNamespace(
+                      "sdk.PlatformVersioning"
+                    ).assertVersionIsSet();
+                    var path = pathOrObject;
 
-                if (subs) {
-                  subs.forEach(function subs_forEach_$0(sub) {
-                    if (sub) {
-                      sub.apply(this, args);
+                    if (!/https?/.test(path) && path.charAt(0) !== "/") {
+                      path = "/" + path;
                     }
-                  });
+                    path = new (importDefault("sdk.URI"))(path)
+                      .setDomain("")
+                      .setProtocol("")
+                      .toString();
+
+                    if (
+                      !importNamespace("sdk.PlatformVersioning").REGEX.test(
+                        path.substring(1, path.indexOf("/", 1))
+                      )
+                    ) {
+                      path =
+                        "/" + importDefault("sdk.Runtime").getVersion() + path;
+                    }
+
+                    var args = [path].concat(
+                      Array.prototype.slice.call(arguments, 1)
+                    );
+                    importDefault("ApiClient").graph.apply(
+                      importDefault("ApiClient"),
+                      args
+                    );
+                  } else {
+                    importDefault("ApiClient").graph.apply(
+                      importDefault("ApiClient"),
+                      arguments
+                    );
+                  }
+                } else {
+                  importDefault("ApiClient").rest.apply(
+                    importDefault("ApiClient"),
+                    arguments
+                  );
                 }
               }
-              exports.SUBSCRIBE = SUBSCRIBE;
-              exports.UNSUBSCRIBE = UNSUBSCRIBE;
-              exports.subscribers = subscribers;
-              exports.subscribe = subscribe;
-              exports.unsubscribe = unsubscribe;
-              exports.monitor = monitor;
-              exports.clear = clear;
-              exports.fire = fire;
+              exports["default"] = api;
             },
-            66
+            98
           );
           __d(
             "sdk.Frictionless",
-            ["sdk.Auth", "sdk.Dialog", "sdk.Event", "sdk.api"],
+            ["sdk.Auth.LoginStatus", "sdk.Dialog", "sdk.Event", "sdk.api"],
             function $module_sdk_Frictionless(
               global,
               require,
@@ -14624,8 +15504,8 @@ try {
                 init: function init() {
                   Frictionless._useFrictionless = true;
 
-                  importDefault("sdk.Auth").getLoginStatus(
-                    function Auth_getLoginStatus_$0(response) {
+                  importDefault("sdk.Auth.LoginStatus").getLoginStatus(
+                    function LoginStatus_getLoginStatus_$0(response) {
                       if (
                         (response == null ? void 0 : response.status) ==
                         "connected"
@@ -14649,7 +15529,7 @@ try {
                   cb,
                   hidden
                 ) {
-                  return function(params) {
+                  return function (params) {
                     var updated = params && params.updated_frictionless;
                     if (Frictionless._useFrictionless && updated !== null) {
                       Frictionless._updateRecipients();
@@ -14679,7 +15559,7 @@ try {
                   if (typeof checkedUserIds === "string") {
                     checkedUserIds = checkedUserIds.split(",");
                   }
-                  checkedUserIds = checkedUserIds.map(
+                  var checkedUserIdsMap = checkedUserIds.map(
                     function checkedUserIds_map_$0(s) {
                       return String(s).trim();
                     }
@@ -14687,25 +15567,16 @@ try {
 
                   var allowed = true;
                   var has_user_ids = false;
-                  checkedUserIds.forEach(function checkedUserIds_forEach_$0(
-                    user_id
-                  ) {
-                    allowed =
-                      allowed && user_id in Frictionless._allowedRecipients;
-                    has_user_ids = true;
-                  });
+                  checkedUserIdsMap.forEach(
+                    function checkedUserIdsMap_forEach_$0(user_id) {
+                      allowed =
+                        allowed && user_id in Frictionless._allowedRecipients;
+                      has_user_ids = true;
+                    }
+                  );
                   return allowed && has_user_ids;
-                }
+                },
               };
-
-              importNamespace("sdk.Event").subscribe(
-                "init:post",
-                function Event_subscribe_$1(options) {
-                  if (options.frictionlessRequests) {
-                    Frictionless.init();
-                  }
-                }
-              );
               var _default = Frictionless;
               exports["default"] = _default;
             },
@@ -14778,19 +15649,20 @@ try {
                 }
 
                 var bridgeCalled = false;
-                var nativeExtensionsReadyCallback = function nativeExtensionsReadyCallback() {
-                  var bridge = getAPIBridge();
-                  if (bridgeCalled || !bridge) {
-                    return;
-                  }
-                  bridgeCalled = true;
-                  func(bridge);
-                  importNamespace("DOMEventListener").remove(
-                    window,
-                    NATIVE_EXTENSIONS_READY_EVENT,
-                    nativeExtensionsReadyCallback
-                  );
-                };
+                var nativeExtensionsReadyCallback =
+                  function nativeExtensionsReadyCallback() {
+                    var bridge = getAPIBridge();
+                    if (bridgeCalled || !bridge) {
+                      return;
+                    }
+                    bridgeCalled = true;
+                    func(bridge);
+                    importNamespace("DOMEventListener").remove(
+                      window,
+                      NATIVE_EXTENSIONS_READY_EVENT,
+                      nativeExtensionsReadyCallback
+                    );
+                  };
 
                 importNamespace("DOMEventListener").add(
                   window,
@@ -14817,7 +15689,7 @@ try {
               "use strict";
 
               var outQueue = new (importDefault("Queue"))();
-              var jsonrpc = new (importDefault("JSONRPC"))(function(message) {
+              var jsonrpc = new (importDefault("JSONRPC"))(function (message) {
                 outQueue.enqueue(message);
               });
 
@@ -14833,13 +15705,13 @@ try {
                   function NativeExtensions_onReady_$0(bridge) {
                     extensionAPIBridge = bridge;
 
-                    window._FBBrowserCallbackHandler = function(message) {
+                    window._FBBrowserCallbackHandler = function (message) {
                       rpcQueue.enqueue(ES("JSON", "stringify", false, message));
                     };
 
                     bridge.initializeCallbackHandler(
                       ES("JSON", "stringify", false, {
-                        name: "_FBBrowserCallbackHandler"
+                        name: "_FBBrowserCallbackHandler",
                       })
                     );
 
@@ -14912,7 +15784,7 @@ try {
                       false
                     );
                   }
-                }
+                },
               };
               var _default = Native;
               exports["default"] = _default;
@@ -14926,7 +15798,7 @@ try {
               "sdk.Runtime",
               "sdk.Scribe",
               "sdk.UA",
-              "sdk.feature"
+              "sdk.feature",
             ],
             function $module_sdk_Popup(
               global,
@@ -14939,12 +15811,16 @@ try {
             ) {
               "use strict";
 
-              function popup(call, isOAuth) {
+              function popup(
+                call,
+
+                isOAuth
+              ) {
                 var featuresString = getPopupFeaturesString({
                   name: call.name,
                   height: call.size.height,
                   width: call.size.width,
-                  isOAuth: isOAuth
+                  isOAuth: isOAuth,
                 });
 
                 var popup;
@@ -14954,7 +15830,7 @@ try {
                     importNamespace("sdk.Content").submitToTarget({
                       url: call.url,
                       target: call.id,
-                      params: call.params
+                      params: call.params,
                     });
                   }
                 } else {
@@ -14975,8 +15851,8 @@ try {
                       appId: importDefault("sdk.Runtime").getClientID(),
                       error: error,
                       extra: {
-                        call: call.name
-                      }
+                        call: call.name,
+                      },
                     });
                   }
                 }
@@ -15027,6 +15903,39 @@ try {
             98
           );
           __d(
+            "isFacebookDotNetURI",
+            [],
+            function $module_isFacebookDotNetURI(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              "use strict";
+
+              function isFacebookDotNetURI(uri) {
+                if (
+                  uri.getProtocol() !== "http" &&
+                  uri.getProtocol() !== "https"
+                ) {
+                  return false;
+                }
+                var port = Number(uri.getPort());
+                if (!!port && port !== 80 && port !== 443) {
+                  return false;
+                }
+                if (uri.isSubdomainOfDomain("facebook.net")) {
+                  return true;
+                }
+                return false;
+              }
+              exports["default"] = isFacebookDotNetURI;
+            },
+            66
+          );
+          __d(
             "isFacebookURI",
             [],
             function $module_isFacebookURI(
@@ -15060,7 +15969,7 @@ try {
                 );
               }
 
-              isFacebookURI.setRegex = function(regex) {
+              isFacebookURI.setRegex = function (regex) {
                 facebookURIRegex = regex;
               };
               exports["default"] = isFacebookURI;
@@ -15128,9 +16037,8 @@ try {
                   for (var i = 0; i < parts.length; i++) {
                     var part = parts[i];
 
-                    var matches = /^frames\[[\'\"]?([a-zA-Z0-9\-_]+)[\'\"]?\]$/.exec(
-                      part
-                    );
+                    var matches =
+                      /^frames\[[\'\"]?([a-zA-Z0-9\-_]+)[\'\"]?\]$/.exec(part);
 
                     if (matches) {
                       node = node.frames[matches[1]];
@@ -15163,6 +16071,7 @@ try {
               "Queue",
               "UrlMap",
               "guid",
+              "isFacebookDotNetURI",
               "isFacebookURI",
               "isInstagramURI",
               "resolveWindow",
@@ -15171,7 +16080,7 @@ try {
               "sdk.Runtime",
               "sdk.Scribe",
               "sdk.URI",
-              "sdk.feature"
+              "sdk.feature",
             ],
             function $module_sdk_XD(
               global,
@@ -15187,7 +16096,8 @@ try {
               var messageToFacebookRelation = "parent";
               var xdProxyName = null;
 
-              var facebookRe = /^https:\/\/.*\.(facebook|instagram)\.com$/;
+              var facebookRe =
+                /^https:\/\/.*\.(facebook|instagram)\.(com|net)$/;
 
               var xdArbiterTier = importNamespace("JSSDKXDConfig").useCdn
                 ? "cdn"
@@ -15266,7 +16176,7 @@ try {
                               {
                                 xdArbiterHandleMessage: true,
                                 message: message,
-                                origin: origin
+                                origin: origin,
                               },
 
                               senderOrigin
@@ -15304,15 +16214,15 @@ try {
               }
 
               function onMessage(message, senderOrigin) {
+                var senderOriginURI = new (importDefault("sdk.URI"))(
+                  senderOrigin
+                );
                 if (
                   senderOrigin != null &&
                   senderOrigin !== "native" &&
-                  !importDefault("isFacebookURI")(
-                    new (importDefault("sdk.URI"))(senderOrigin)
-                  ) &&
-                  !importDefault("isInstagramURI")(
-                    new (importDefault("sdk.URI"))(senderOrigin)
-                  )
+                  !importDefault("isFacebookURI")(senderOriginURI) &&
+                  !importDefault("isFacebookDotNetURI")(senderOriginURI) &&
+                  !importDefault("isInstagramURI")(senderOriginURI)
                 ) {
                   return;
                 }
@@ -15365,9 +16275,7 @@ try {
                     tryRegister(xdProxyName);
                   }
                 } else {
-                  importDefault("Queue")
-                    .get(recipient, {})
-                    .enqueue(message);
+                  importDefault("Queue").get(recipient, {}).enqueue(message);
                 }
               }
 
@@ -15446,7 +16354,7 @@ try {
                               {
                                 xdArbiterHandleMessage: true,
                                 message: message,
-                                origin: origin
+                                origin: origin,
                               },
 
                               senderOrigin
@@ -15456,13 +16364,6 @@ try {
 
                         return;
                       }
-                      importNamespace("Log").warn(
-                        "Received message of type %s from %s, expected a string. %s",
-                        typeof message,
-                        origin,
-                        ES("JSON", "stringify", false, message)
-                      );
-
                       return;
                     }
                   }
@@ -15503,7 +16404,7 @@ try {
                     {
                       xdArbiterRegister: true,
                       xdProxyName: xdProxyName,
-                      origin: origin
+                      origin: origin,
                     },
                     "*"
                   );
@@ -15524,8 +16425,9 @@ try {
                           appId: importDefault("sdk.Runtime").getClientID(),
                           error: "XD_FB_QUEUE_INITIALIZATION",
                           extra: {
-                            message: "Failed to initialize in " + timeout + "ms"
-                          }
+                            message:
+                              "Failed to initialize in " + timeout + "ms",
+                          },
                         });
 
                         importNamespace("Log").error(
@@ -15558,7 +16460,7 @@ try {
                     method: method,
                     params: ES("JSON", "stringify", false, params || {}),
                     behavior: behavior || "p",
-                    relation: relation
+                    relation: relation,
                   });
                 },
 
@@ -15570,9 +16472,8 @@ try {
                       origin: origin + "/" + channel,
                       domain: location.hostname,
                       relation: relation || "opener",
-                      is_canvas: importDefault(
-                        "sdk.Runtime"
-                      ).isCanvasEnvironment()
+                      is_canvas:
+                        importDefault("sdk.Runtime").isCanvasEnvironment(),
                     });
 
                   return xdArbiterHttpsUrl + xdArbiterFragment;
@@ -15589,7 +16490,7 @@ try {
                   }
                   XD._callbacks[id] = cb;
                   return id;
-                }
+                },
               };
 
               importNamespace("sdk.Event").subscribe(
@@ -15710,6 +16611,7 @@ try {
               "insertIframe",
               "resolveURI",
               "sdk.Auth",
+              "sdk.Auth.LoginStatus",
               "sdk.Content",
               "sdk.DOM",
               "sdk.Dialog",
@@ -15728,7 +16630,7 @@ try {
               "sdk.feature",
               "sdk.getContextType",
               "sdk.modFeatureCheck",
-              "sdk.openMessenger"
+              "sdk.openMessenger",
             ],
             function $module_sdk_UIServer(
               global,
@@ -15769,7 +16671,7 @@ try {
                     return "parent";
                   }
                   return UIServer.getXdRelation(params);
-                }
+                },
               };
 
               function isSupportedOauth(params) {
@@ -15812,12 +16714,10 @@ try {
                       (call == null
                         ? void 0
                         : call.cb({
-                            status: importDefault(
-                              "sdk.Runtime"
-                            ).getLoginStatus(),
-                            authResponse: importDefault(
-                              "sdk.Auth"
-                            ).getAuthResponse()
+                            status:
+                              importDefault("sdk.Runtime").getLoginStatus(),
+                            authResponse:
+                              importDefault("sdk.Auth").getAuthResponse(),
                           }));
                   }
                   return;
@@ -15850,7 +16750,7 @@ try {
                 var defaultResponseType = {
                   token: true,
                   signed_request: true,
-                  graph_domain: true
+                  graph_domain: true,
                 };
 
                 var responseTypes = Object.keys(
@@ -15873,7 +16773,7 @@ try {
                     client_id: importDefault("sdk.Runtime").getClientID(),
                     origin: importDefault("sdk.getContextType")(),
                     response_type: responseTypes,
-                    domain: location.hostname
+                    domain: location.hostname,
                   });
 
                   call.cb = importDefault("sdk.Auth").xdResponseWrapper(
@@ -15888,7 +16788,7 @@ try {
                       function UIServer__xdNextHandler_$0(_params) {
                         cb({
                           authResponse: null,
-                          status: "not_authorized"
+                          status: "not_authorized",
                         });
                       },
                       id,
@@ -15912,7 +16812,7 @@ try {
 
                     origin: importDefault("sdk.getContextType")(),
                     response_type: responseTypes,
-                    domain: location.hostname
+                    domain: location.hostname,
                   });
                 }
 
@@ -15942,7 +16842,7 @@ try {
                     }
                     call.params.display = "popup";
                     return call;
-                  }
+                  },
                 },
 
                 gaming_friendfinder: {
@@ -15957,11 +16857,11 @@ try {
                     call.url += importDefault("sdk.Runtime").getClientID();
                     call.size = {
                       width: 400,
-                      height: 800
+                      height: 800,
                     };
 
                     return call;
-                  }
+                  },
                 },
 
                 gaming_media_library: {
@@ -15970,11 +16870,11 @@ try {
                     call.url += call.params.media_id;
                     call.size = {
                       width: 400,
-                      height: 800
+                      height: 800,
                     };
 
                     return call;
-                  }
+                  },
                 },
 
                 apprequests: {
@@ -16005,38 +16905,38 @@ try {
                     call.closeIcon = false;
                     return call;
                   },
-                  getXdRelation: MobileIframeable.getXdRelation
+                  getXdRelation: MobileIframeable.getXdRelation,
                 },
 
                 "permissions.oauth": {
                   url: "dialog/oauth",
                   size: {
                     width: importDefault("sdk.UA").mobile() ? null : 600,
-                    height: importDefault("sdk.UA").mobile() ? null : 679
+                    height: importDefault("sdk.UA").mobile() ? null : 679,
                   },
 
                   transform: function transform(call) {
                     return permission_oauth_transform(call);
-                  }
+                  },
                 },
 
                 "permissions.ig_oauth": {
                   url: "oauth/authorize",
                   size: {
                     width: importDefault("sdk.UA").mobile() ? null : 600,
-                    height: importDefault("sdk.UA").mobile() ? null : 679
+                    height: importDefault("sdk.UA").mobile() ? null : 679,
                   },
 
                   transform: function transform(call) {
                     return permission_oauth_transform(call);
-                  }
+                  },
                 },
 
                 photo_picker: {
                   url: "dialog/photo_picker",
                   size: {
                     width: importDefault("sdk.UA").mobile() ? null : 600,
-                    height: importDefault("sdk.UA").mobile() ? null : 679
+                    height: importDefault("sdk.UA").mobile() ? null : 679,
                   },
 
                   transform: function transform(call) {
@@ -16065,11 +16965,11 @@ try {
                       ),
 
                       origin: importDefault("sdk.getContextType")(),
-                      domain: location.hostname
+                      domain: location.hostname,
                     });
 
                     return call;
-                  }
+                  },
                 },
 
                 "auth.logout": {
@@ -16085,18 +16985,20 @@ try {
                     } else {
                       importDefault("sdk.Auth").logout(call.cb);
                     }
-                  }
+                  },
                 },
 
                 "login.status": {
                   transform: function transform(call) {
-                    importDefault("sdk.Auth").getLoginStatus(call.cb);
-                  }
+                    importDefault("sdk.Auth.LoginStatus").getLoginStatus(
+                      call.cb
+                    );
+                  },
                 },
 
                 pay: {
                   size: { width: 555, height: 120 },
-                  connectDisplay: "popup"
+                  connectDisplay: "popup",
                 },
 
                 live_broadcast: {
@@ -16109,7 +17011,7 @@ try {
                     }
                     return call;
                   },
-                  require_access_token: true
+                  require_access_token: true,
                 },
 
                 boost: {
@@ -16117,12 +17019,12 @@ try {
                     call.size = { width: 960, height: 760 };
                     call.params.display = "popup";
                     return call;
-                  }
+                  },
                 },
 
                 share_referral: {
-                  size: { width: 482, height: 725 }
-                }
+                  size: { width: 482, height: 725 },
+                },
               };
 
               var _dialogStates = {};
@@ -16131,7 +17033,7 @@ try {
 
               function _trackRunState(cb, id) {
                 _dialogStates[id] = true;
-                return function(response) {
+                return function (response) {
                   delete _dialogStates[id];
                   cb(response);
                 };
@@ -16153,7 +17055,7 @@ try {
                 _oauthMethodNameSet: new Set([
                   "permissions.oauth",
                   "permissions.request",
-                  "permissions.ig_oauth"
+                  "permissions.ig_oauth",
                 ]),
 
                 _loadedNodes: {},
@@ -16176,7 +17078,7 @@ try {
                         channel: UIServer._xdChannelHandler(
                           call.id,
                           "parent.parent"
-                        )
+                        ),
                       },
 
                       true
@@ -16223,7 +17125,7 @@ try {
                     access_token:
                       (useSSL &&
                         importDefault("sdk.Runtime").getAccessToken()) ||
-                      undefined
+                      undefined,
                   });
 
                   params.display = UIServer.getDisplayMode(method, params);
@@ -16318,7 +17220,7 @@ try {
                     dialog: importDefault("sdk.Dialog").newInstance(
                       id,
                       params.display
-                    )
+                    ),
                   };
 
                   var transform = method.transform
@@ -16362,7 +17264,7 @@ try {
                         channel_url: UIServer._xdChannelHandler(
                           id,
                           relation === "parent" ? "parent.parent" : "opener"
-                        )
+                        ),
                       },
 
                       true
@@ -16506,6 +17408,7 @@ try {
                     call,
                     UIServer.isOAuth({ method: call.name })
                   );
+
                   if (popup) {
                     UIServer.setLoadedNode(call, popup, "popup");
 
@@ -16524,7 +17427,7 @@ try {
                     type: type,
                     fbCallID: call.id,
                     method: call.name,
-                    params: call.params
+                    params: call.params,
                   };
 
                   UIServer._loadedNodes[call.id] = node;
@@ -16552,7 +17455,7 @@ try {
                       error_code: 4201,
                       error_message: importDefault("sdk.fbt")._(
                         "User canceled the Dialog flow"
-                      )
+                      ),
                     });
 
                     UIServer._triggerDefault(call.id, errorResult);
@@ -16564,7 +17467,7 @@ try {
                       call.closeIcon === undefined ? true : call.closeIcon,
                     classes: importDefault("sdk.Dialog").isTabletStyle()
                       ? "centered"
-                      : ""
+                      : "",
                   };
 
                   call.root = importDefault("sdk.Dialog").create(dialogOptions);
@@ -16624,9 +17527,8 @@ try {
                     location.pathname;
                   delete call.params.access_token;
 
-                  call.params.is_canvas = importDefault(
-                    "sdk.Runtime"
-                  ).isCanvasEnvironment();
+                  call.params.is_canvas =
+                    importDefault("sdk.Runtime").isCanvasEnvironment();
 
                   var handler = function handler(response) {
                     var result = response.result;
@@ -16686,9 +17588,9 @@ try {
                         importNamespace("sdk.Content").submitToTarget({
                           url: call.url,
                           target: node.name,
-                          params: call.params
+                          params: call.params,
                         });
-                      }
+                      },
                     });
                   } else {
                     importDefault("insertIframe")({
@@ -16699,7 +17601,7 @@ try {
                       height: call.size.height,
                       id: call.id,
                       name: call.frameName,
-                      onInsert: activate
+                      onInsert: activate,
                     });
                   }
                 },
@@ -16740,7 +17642,7 @@ try {
                   }
                   UIServer._xdRecv(
                     data,
-                    UIServer._defaultCb[id] || function() {}
+                    UIServer._defaultCb[id] || function () {}
                   );
                 },
 
@@ -16754,7 +17656,7 @@ try {
                       ) &&
                       id in UIServer._defaultCb
                     ) {
-                      var _ret = (function() {
+                      var _ret = (function () {
                         var node = UIServer._loadedNodes[id];
                         if (node.type != "popup" && node.type != "native") {
                           return "continue";
@@ -16764,8 +17666,12 @@ try {
                         try {
                           if (win.closed) {
                             if (UIServer.isOAuth(node)) {
-                              importDefault("sdk.Auth").getLoginStatus(
-                                function Auth_getLoginStatus_$0(response) {
+                              importDefault(
+                                "sdk.Auth.LoginStatus"
+                              ).getLoginStatus(
+                                function LoginStatus_getLoginStatus_$0(
+                                  response
+                                ) {
                                   if (
                                     (response == null
                                       ? void 0
@@ -16811,7 +17717,8 @@ try {
                                           response.authResponse &&
                                           response.authResponse.grantedScopes
                                         ) {
-                                          response.authResponse.grantedScopes = grantedScopesString;
+                                          response.authResponse.grantedScopes =
+                                            grantedScopesString;
                                         }
                                         UIServer._triggerDefault(id, response);
                                       }
@@ -17008,22 +17915,26 @@ try {
                   );
                 },
 
-                xdResponseWrapperPhotoPicker: function xdResponseWrapperPhotoPicker(
-                  cb
-                ) {
-                  return function(params) {
-                    var response;
-                    if (params && params.result && params.result.closeWindow) {
-                      response = "Photo picker call was cancelled by the user";
-                    } else {
-                      response = params.photos;
-                    }
-                    if (cb) {
-                      cb(response);
-                    }
-                    return null;
-                  };
-                }
+                xdResponseWrapperPhotoPicker:
+                  function xdResponseWrapperPhotoPicker(cb) {
+                    return function (params) {
+                      var response;
+                      if (
+                        params &&
+                        params.result &&
+                        params.result.closeWindow
+                      ) {
+                        response =
+                          "Photo picker call was cancelled by the user";
+                      } else {
+                        response = params.photos;
+                      }
+                      if (cb) {
+                        cb(response);
+                      }
+                      return null;
+                    };
+                  },
               };
 
               importNamespace("sdk.Extensions").stub("showDialog");
@@ -17042,7 +17953,7 @@ try {
               "sdk.PlatformVersioning",
               "sdk.Runtime",
               "sdk.UIServer",
-              "sdk.feature"
+              "sdk.feature",
             ],
             function $module_sdk_ui(
               global,
@@ -17099,9 +18010,8 @@ try {
                   importDefault("sdk.UIServer").isOAuth(method) &&
                   (params.display == "iframe" || params.display == "dialog")
                 ) {
-                  params.display = importDefault(
-                    "sdk.UIServer"
-                  ).checkOauthDisplay(params);
+                  params.display =
+                    importDefault("sdk.UIServer").checkOauthDisplay(params);
                 }
 
                 if (params.display === "native" && method !== "send") {
@@ -17120,7 +18030,7 @@ try {
                 }
                 var call = importDefault("sdk.UIServer").prepareCall(
                   params,
-                  cb || function() {}
+                  cb || function () {}
                 );
                 if (!call) {
                   return null;
@@ -17155,7 +18065,7 @@ try {
                       );
 
                       importNamespace("sdk.Impressions").log(114, {
-                        payload: events
+                        payload: events,
                       });
                     }
                   );
@@ -17163,183 +18073,182 @@ try {
                 displayFn(call);
                 return call.dialog;
               }
-
-              module.exports = ui;
+              exports["default"] = ui;
             },
-            34
+            98
           );
           __d(
-            "legacy:fb.auth",
+            "sdk.Auth-public",
             [
               "FB",
-              "Log",
               "sdk.Auth",
-              "sdk.Cookie",
+              "sdk.Auth.LoginStatus",
+              "sdk.AuthUtils",
               "sdk.Event",
               "sdk.Runtime",
-              "sdk.Scribe",
-              "sdk.SignedRequest",
               "sdk.ui",
-              "sdk.warnInsecure"
+              "sdk.warnInsecure",
             ],
-            function $module_legacy_fb_auth(
+            function $module_sdk_Auth_public(
               global,
               require,
-              requireDynamic,
+              importDefault,
+              importNamespace,
               requireLazy,
-              __DO_NOT_USE__module,
-              __DO_NOT_USE__exports
+              module,
+              exports
             ) {
-              var sdkAuth;
-              var sdkEvent;
+              "use strict";
 
-              require("FB").provide("", {
-                getLoginStatus: function getLoginStatus() {
-                  require("sdk.warnInsecure")("getLoginStatus");
-                  return require("sdk.Auth").getLoginStatus.apply(
-                    require("sdk.Auth"),
-                    arguments
-                  );
-                },
-
-                getAuthResponse: function getAuthResponse() {
-                  require("sdk.warnInsecure")("getAuthResponse");
-                  return require("sdk.Auth").getAuthResponse();
-                },
-
-                getAccessToken: function getAccessToken() {
-                  require("sdk.warnInsecure")("getAccessToken");
-                  return require("sdk.Runtime").getAccessToken() || null;
-                },
-
-                getUserID: function getUserID() {
-                  require("sdk.warnInsecure")("getUserID");
-                  return (
-                    require("sdk.Runtime").getUserID() ||
-                    require("sdk.Runtime").getCookieUserID()
-                  );
-                },
-
-                login: function login(cb, opts) {
-                  require("sdk.warnInsecure")("login");
-                  if (opts && opts.perms && !opts.scope) {
-                    opts.scope = opts.perms;
-                    delete opts.perms;
-                    require("Log").warn(
-                      "OAuth2 specification states that 'perms' " +
-                        "should now be called 'scope'.  Please update."
+              function init() {
+                importDefault("FB").provide("", {
+                  getLoginStatus: function getLoginStatus() {
+                    importDefault("sdk.warnInsecure")("getLoginStatus");
+                    return importDefault(
+                      "sdk.Auth.LoginStatus"
+                    ).getLoginStatus.apply(
+                      importDefault("sdk.Auth"),
+                      arguments
                     );
-                  }
-                  var canvas =
-                    require("sdk.Runtime").isEnvironment(
-                      require("sdk.Runtime").ENVIRONMENTS.CANVAS
-                    ) ||
-                    require("sdk.Runtime").isEnvironment(
-                      require("sdk.Runtime").ENVIRONMENTS.PAGETAB
+                  },
+
+                  getAuthResponse: function getAuthResponse() {
+                    importDefault("sdk.warnInsecure")("getAuthResponse");
+                    return importDefault("sdk.Auth").getAuthResponse();
+                  },
+
+                  getAccessToken: function getAccessToken() {
+                    importDefault("sdk.warnInsecure")("getAccessToken");
+                    return (
+                      importDefault("sdk.Runtime").getAccessToken() || null
                     );
-                  require("sdk.ui")(
-                    babelHelpers["extends"](
-                      {
-                        method: "permissions.oauth",
-                        display: canvas ? "async" : "popup",
-                        domain: location.hostname
-                      },
-                      opts || {}
-                    ),
+                  },
 
-                    cb
-                  );
-                },
+                  getUserID: function getUserID() {
+                    importDefault("sdk.warnInsecure")("getUserID");
+                    return (
+                      importDefault("sdk.Runtime").getUserID() ||
+                      importDefault("sdk.Runtime").getCookieUserID()
+                    );
+                  },
 
-                logout: function logout(cb) {
-                  require("sdk.ui")(
-                    { method: "auth.logout", display: "hidden" },
-                    cb
-                  );
-                }
-              });
+                  login: function login(cb, opts) {
+                    importDefault("sdk.warnInsecure")("login");
+                    importDefault("sdk.Auth").login(cb, opts);
+                  },
 
-              (sdkAuth = require("sdk.Auth")).subscribe(
-                "logout",
-                ES(
-                  (sdkEvent = require("sdk.Event")).fire,
-                  "bind",
-                  true,
-                  sdkEvent,
-                  "auth.logout"
-                )
-              );
-              sdkAuth.subscribe(
-                "login",
-                ES(sdkEvent.fire, "bind", true, sdkEvent, "auth.login")
-              );
-              sdkAuth.subscribe(
-                "authresponse.change",
-                ES(
-                  sdkEvent.fire,
-                  "bind",
-                  true,
-                  sdkEvent,
-                  "auth.authResponseChange"
-                )
-              );
+                  logout: function logout(cb) {
+                    importDefault("sdk.ui")(
+                      { method: "auth.logout", display: "hidden" },
+                      cb
+                    );
+                  },
+                });
 
-              sdkAuth.subscribe(
-                "status.change",
-                ES(sdkEvent.fire, "bind", true, sdkEvent, "auth.statusChange")
-              );
-              sdkAuth.subscribe(
-                "loginDenied",
-                ES(sdkEvent.fire, "bind", true, sdkEvent, "auth.denied")
-              );
-              sdkAuth.subscribe(
-                "loginError",
-                ES(sdkEvent.fire, "bind", true, sdkEvent, "auth.error")
-              );
+                importDefault("sdk.Auth").subscribe(
+                  "logout",
+                  ES(
+                    importNamespace("sdk.Event").fire,
+                    "bind",
+                    true,
+                    importNamespace("sdk.Event"),
+                    "auth.logout"
+                  )
+                );
 
-              sdkEvent.subscribe("init:post", function Event_subscribe_$1(
-                options
-              ) {
-                if (options.legacyStatusInit) {
-                  require("sdk.Auth").getLoginStatus(
-                    function Auth_getLoginStatus_$0(response) {
-                      if (response != null && response.status === "connected") {
-                        require("sdk.Scribe").log("jssdk_error", {
-                          appId: require("sdk.Runtime").getClientID(),
-                          error: "legacy_status_init_success"
-                        });
-                      }
-                    }
-                  );
-                } else if (options.status) {
-                  require("sdk.Auth").getLoginStatus();
-                }
-                if (require("sdk.Runtime").getClientID()) {
-                  if (require("sdk.Runtime").getUseCookie()) {
-                    var signedRequest = require("sdk.Cookie").loadSignedRequest();
-                    var parsedSignedRequest;
-                    if (signedRequest) {
-                      try {
-                        parsedSignedRequest = require("sdk.SignedRequest").parse(
-                          signedRequest
-                        );
-                      } catch (_unused) {
-                        require("sdk.Cookie").clearSignedRequestCookie();
-                      }
-                      if (
-                        parsedSignedRequest != null &&
-                        parsedSignedRequest.user_id != null
-                      ) {
-                        require("sdk.Runtime").setCookieUserID(
-                          parsedSignedRequest.user_id
-                        );
-                      }
+                importDefault("sdk.Auth").subscribe(
+                  "login",
+                  ES(
+                    importNamespace("sdk.Event").fire,
+                    "bind",
+                    true,
+                    importNamespace("sdk.Event"),
+                    "auth.login"
+                  )
+                );
+                importDefault("sdk.Auth").subscribe(
+                  "authresponse.change",
+                  ES(
+                    importNamespace("sdk.Event").fire,
+                    "bind",
+                    true,
+                    importNamespace("sdk.Event"),
+                    "auth.authResponseChange"
+                  )
+                );
+
+                importDefault("sdk.Auth").subscribe(
+                  "status.change",
+                  ES(
+                    importNamespace("sdk.Event").fire,
+                    "bind",
+                    true,
+                    importNamespace("sdk.Event"),
+                    "auth.statusChange"
+                  )
+                );
+
+                importDefault("sdk.Auth").subscribe(
+                  "loginDenied",
+                  ES(
+                    importNamespace("sdk.Event").fire,
+                    "bind",
+                    true,
+                    importNamespace("sdk.Event"),
+                    "auth.denied"
+                  )
+                );
+
+                importDefault("sdk.Auth").subscribe(
+                  "loginError",
+                  ES(
+                    importNamespace("sdk.Event").fire,
+                    "bind",
+                    true,
+                    importNamespace("sdk.Event"),
+                    "auth.error"
+                  )
+                );
+
+                importDefault("sdk.Runtime").subscribe(
+                  "AccessToken.change",
+                  function Runtime_subscribe_$1(value) {
+                    if (
+                      !value &&
+                      importDefault("sdk.Runtime").getLoginStatus() ===
+                        "connected"
+                    ) {
+                      importDefault("sdk.Auth.LoginStatus").getLoginStatus(
+                        null,
+                        true
+                      );
                     }
                   }
-                }
-              });
+                );
+
+                importNamespace("sdk.AuthUtils").AuthInternalEvent.subscribe(
+                  importNamespace("sdk.AuthUtils").AuthConstants
+                    .REVALIDATE_TIMER_TIMEOUT,
+                  function AuthInternalEvent_subscribe_$1(_response) {
+                    importDefault("sdk.Auth.LoginStatus").fetchLoginStatus(
+                      function LoginStatus_fetchLoginStatus_$0() {}
+                    );
+                  }
+                );
+
+                importNamespace("sdk.Event").subscribe(
+                  "init:post",
+                  function Event_subscribe_$1(options) {
+                    importDefault("sdk.Auth.LoginStatus").onSDKInit(options);
+                  }
+                );
+              }
+
+              var SDKAuth = { init: init };
+              var _default = SDKAuth;
+              exports["default"] = _default;
             },
-            3
+            98
           );
           __d(
             "sdk.Canvas.IframeHandling",
@@ -17347,7 +18256,8 @@ try {
             function $module_sdk_Canvas_IframeHandling(
               global,
               require,
-              requireDynamic,
+              importDefault,
+              importNamespace,
               requireLazy,
               module,
               exports
@@ -17356,8 +18266,11 @@ try {
               var autoGrowLastSize;
 
               function getHeight() {
-                var document = require("DOMWrapper").getWindow().document;
+                var document =
+                  importNamespace("DOMWrapper").getWindow().document;
+
                 var body = document.body;
+
                 var docElement = document.documentElement;
                 var bodyTop = Math.max(body.offsetTop, 0);
                 var docTop = Math.max(docElement.offsetTop, 0);
@@ -17388,13 +18301,14 @@ try {
 
                 if (autoGrowLastSize) {
                   var oldHeight = autoGrowLastSize.height;
+
                   var dHeight = params.height - oldHeight;
                   if (dHeight <= minGrow && dHeight >= -minShrink) {
                     return false;
                   }
                 }
                 autoGrowLastSize = params;
-                require("sdk.RPC").remote.setSize(params);
+                importDefault("sdk.RPC").remote.setSize(params);
                 return true;
               }
 
@@ -17406,29 +18320,32 @@ try {
 
                 if (on || on === undefined) {
                   if (autoGrowTimer === null) {
-                    autoGrowTimer = setInterval(function setInterval_$0() {
-                      setSize();
-                    }, interval || 100);
+                    autoGrowTimer = window.setInterval(
+                      function window_setInterval_$0() {
+                        setSize();
+                      },
+                      interval || 100
+                    );
                   }
                   setSize();
                 } else {
                   if (autoGrowTimer !== null) {
-                    clearInterval(autoGrowTimer);
+                    window.clearInterval(autoGrowTimer);
                     autoGrowTimer = null;
                   }
                 }
               }
 
-              require("sdk.RPC").stub("setSize");
+              importDefault("sdk.RPC").stub("setSize");
 
               var IframeHandling = {
                 setSize: setSize,
-                setAutoGrow: setAutoGrow
+                setAutoGrow: setAutoGrow,
               };
-
-              module.exports = IframeHandling;
+              var _default = IframeHandling;
+              exports["default"] = _default;
             },
-            null
+            98
           );
           __d(
             "sdk.Canvas.Navigation",
@@ -17442,7 +18359,7 @@ try {
               exports
             ) {
               function setUrlHandler(callback) {
-                require("sdk.RPC").local.navigate = function(path) {
+                require("sdk.RPC").local.navigate = function (path) {
                   callback({ path: path });
                 };
                 require("sdk.RPC").remote.setNavigationEnabled(true);
@@ -17451,16 +18368,16 @@ try {
               require("sdk.RPC").stub("setNavigationEnabled");
 
               var Navigation = {
-                setUrlHandler: setUrlHandler
+                setUrlHandler: setUrlHandler,
               };
-
-              module.exports = Navigation;
+              var _default = Navigation;
+              exports["default"] = _default;
             },
-            null
+            66
           );
           __d(
             "sdk.Canvas.Plugin",
-            ["Log", "sdk.RPC", "sdk.Runtime", "sdk.UA", "sdk.api"],
+            ["Log", "sdk.Runtime", "sdk.UA", "sdk.api"],
             function $module_sdk_Canvas_Plugin(
               global,
               require,
@@ -17488,9 +18405,13 @@ try {
 
               function hideUnityElement(elem) {
                 elem._hideunity_savedstyle = {};
+
                 elem._hideunity_savedstyle.left = elem.style.left;
+
                 elem._hideunity_savedstyle.position = elem.style.position;
+
                 elem._hideunity_savedstyle.width = elem.style.width;
+
                 elem._hideunity_savedstyle.height = elem.style.height;
                 elem.style.left = "-10000px";
                 elem.style.position = "absolute";
@@ -17614,7 +18535,7 @@ try {
                 if (Math.random() <= 1 / 1000) {
                   var opts = {
                     unity: unityPresent,
-                    flash: flashPresent
+                    flash: flashPresent,
                   };
 
                   importDefault("sdk.api")(
@@ -17625,22 +18546,6 @@ try {
                   );
                 }
               }
-
-              importDefault("sdk.RPC").local.hidePluginObjects = function() {
-                importNamespace("Log").info("hidePluginObjects called");
-                hidePluginCallback({ state: "opened" });
-              };
-              importDefault("sdk.RPC").local.showPluginObjects = function() {
-                importNamespace("Log").info("showPluginObjects called");
-                hidePluginCallback({ state: "closed" });
-              };
-
-              importDefault("sdk.RPC").local.showFlashObjects = importDefault(
-                "sdk.RPC"
-              ).local.showPluginObjects;
-              importDefault("sdk.RPC").local.hideFlashObjects = importDefault(
-                "sdk.RPC"
-              ).local.hidePluginObjects;
 
               function hidePluginElement() {
                 hideFlashElement();
@@ -17658,242 +18563,14 @@ try {
                   devHidePluginCallback = callback;
                 },
 
+                hidePluginCallback: hidePluginCallback,
                 hidePluginElement: hidePluginElement,
-                showPluginElement: showPluginElement
+                showPluginElement: showPluginElement,
               };
               var _default = Plugin;
               exports["default"] = _default;
             },
             98
-          );
-          __d(
-            "sdk.Canvas.Tti",
-            ["sdk.RPC", "sdk.Runtime"],
-            function $module_sdk_Canvas_Tti(
-              global,
-              require,
-              importDefault,
-              importNamespace,
-              requireLazy,
-              module,
-              exports
-            ) {
-              function passAppTtiMessage(callback, messageName) {
-                var params = {
-                  appId: importDefault("sdk.Runtime").getClientID(),
-                  time: Date.now(),
-                  name: messageName
-                };
-
-                var args = [params];
-                if (callback) {
-                  args.push(function args_push_$0(response) {
-                    callback(response.result);
-                  });
-                }
-
-                importDefault("sdk.RPC").remote.logTtiMessage.apply(null, args);
-              }
-
-              function startTimer() {
-                passAppTtiMessage(null, "StartIframeAppTtiTimer");
-              }
-
-              function stopTimer(callback) {
-                passAppTtiMessage(callback, "StopIframeAppTtiTimer");
-              }
-
-              function setDoneLoading(callback) {
-                passAppTtiMessage(callback, "RecordIframeAppTti");
-              }
-
-              importDefault("sdk.RPC").stub("logTtiMessage");
-
-              var Tti = {
-                setDoneLoading: setDoneLoading,
-                startTimer: startTimer,
-                stopTimer: stopTimer
-              };
-              var _default = Tti;
-              exports["default"] = _default;
-            },
-            98
-          );
-          __d(
-            "legacy:fb.canvas",
-            [
-              "Assert",
-              "FB",
-              "sdk.Canvas.Environment",
-              "sdk.Canvas.IframeHandling",
-              "sdk.Canvas.Navigation",
-              "sdk.Canvas.Plugin",
-              "sdk.Canvas.Tti",
-              "sdk.Event",
-              "sdk.RPC",
-              "sdk.Runtime"
-            ],
-            function $module_legacy_fb_canvas(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              __DO_NOT_USE__module,
-              __DO_NOT_USE__exports
-            ) {
-              require("FB").provide("Canvas", {
-                setSize: function setSize(params) {
-                  require("Assert").maybeObject(params, "Invalid argument");
-                  return require("sdk.Canvas.IframeHandling").setSize.apply(
-                    null,
-                    arguments
-                  );
-                },
-
-                setAutoGrow: function setAutoGrow() {
-                  return require("sdk.Canvas.IframeHandling").setAutoGrow.apply(
-                    null,
-                    arguments
-                  );
-                },
-
-                getPageInfo: function getPageInfo(callback) {
-                  require("Assert").isFunction(callback, "Invalid argument");
-                  return require("sdk.Canvas.Environment").getPageInfo.apply(
-                    null,
-                    arguments
-                  );
-                },
-
-                scrollTo: function scrollTo(x, y) {
-                  require("Assert").maybeNumber(x, "Invalid argument");
-                  require("Assert").maybeNumber(y, "Invalid argument");
-                  return require("sdk.Canvas.Environment").scrollTo.apply(
-                    null,
-                    arguments
-                  );
-                },
-
-                setDoneLoading: function setDoneLoading(callback) {
-                  require("Assert").maybeFunction(callback, "Invalid argument");
-                  return require("sdk.Canvas.Tti").setDoneLoading.apply(
-                    null,
-                    arguments
-                  );
-                },
-
-                startTimer: function startTimer() {
-                  return require("sdk.Canvas.Tti").startTimer.apply(
-                    null,
-                    arguments
-                  );
-                },
-
-                stopTimer: function stopTimer(callback) {
-                  require("Assert").maybeFunction(callback, "Invalid argument");
-                  return require("sdk.Canvas.Tti").stopTimer.apply(
-                    null,
-                    arguments
-                  );
-                },
-
-                getHash: function getHash(callback) {
-                  require("Assert").isFunction(callback, "Invalid argument");
-                  return require("sdk.Canvas.Navigation").getHash.apply(
-                    null,
-                    arguments
-                  );
-                },
-
-                setHash: function setHash(hash) {
-                  require("Assert").isString(hash, "Invalid argument");
-                  return require("sdk.Canvas.Navigation").setHash.apply(
-                    null,
-                    arguments
-                  );
-                },
-
-                setUrlHandler: function setUrlHandler(callback) {
-                  require("Assert").isFunction(callback, "Invalid argument");
-                  return require("sdk.Canvas.Navigation").setUrlHandler.apply(
-                    null,
-                    arguments
-                  );
-                }
-              });
-
-              require("sdk.RPC").local.fireEvent = ES(
-                require("sdk.Event").fire,
-                "bind",
-                true,
-                require("sdk.Event")
-              );
-
-              require("sdk.Event").subscribe(
-                "init:post",
-                function Event_subscribe_$1(options) {
-                  if (
-                    require("sdk.Runtime").isEnvironment(
-                      require("sdk.Runtime").ENVIRONMENTS.CANVAS
-                    )
-                  ) {
-                    require("Assert").isTrue(
-                      !options.hideFlashCallback || !options.hidePluginCallback,
-                      "cannot specify deprecated hideFlashCallback and new hidePluginCallback"
-                    );
-
-                    require("sdk.Canvas.Plugin")._setHidePluginCallback(
-                      options.hidePluginCallback || options.hideFlashCallback
-                    );
-                  }
-                }
-              );
-            },
-            3
-          );
-          __d(
-            "legacy:fb.canvas-legacy",
-            ["Assert", "FB", "Log", "sdk.Canvas.Tti"],
-            function $module_legacy_fb_canvas_legacy(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              __DO_NOT_USE__module,
-              __DO_NOT_USE__exports
-            ) {
-              require("FB").provide("CanvasInsights", {
-                setDoneLoading: function setDoneLoading(callback) {
-                  require("Log").warn(
-                    "Deprecated: use FB.Canvas.setDoneLoading"
-                  );
-                  require("Assert").maybeFunction(callback, "Invalid argument");
-                  return require("sdk.Canvas.Tti").setDoneLoading.apply(
-                    null,
-                    arguments
-                  );
-                }
-              });
-            },
-            3
-          );
-          __d(
-            "legacy:fb.canvas.plugin",
-            ["FB", "sdk.Canvas.Plugin"],
-            function $module_legacy_fb_canvas_plugin(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              __DO_NOT_USE__module,
-              __DO_NOT_USE__exports
-            ) {
-              require("FB").provide(
-                "Canvas.Plugin",
-                require("sdk.Canvas.Plugin")
-              );
-            },
-            3
           );
           __d(
             "sdk.Canvas.Prefetcher",
@@ -17911,7 +18588,7 @@ try {
 
               var COLLECT = {
                 AUTOMATIC: 0,
-                MANUAL: 1
+                MANUAL: 1,
               };
 
               var excludedAppIds =
@@ -17927,7 +18604,7 @@ try {
                 var resourceFieldsByTag = {
                   object: "data",
                   link: "href",
-                  script: "src"
+                  script: "src",
                 };
 
                 if (collectionMode == COLLECT.AUTOMATIC) {
@@ -17958,7 +18635,7 @@ try {
                   "post",
                   {
                     urls: ES("JSON", "stringify", false, links),
-                    is_https: location.protocol === "https:"
+                    is_https: location.protocol === "https:",
                   }
                 );
 
@@ -18010,7 +18687,7 @@ try {
                 addStaticResource: addStaticResource,
                 setCollectionMode: setCollectionMode,
 
-                _maybeSample: maybeSample
+                _maybeSample: maybeSample,
               };
               var _default = CanvasPrefetcher;
               exports["default"] = _default;
@@ -18018,193 +18695,360 @@ try {
             98
           );
           __d(
-            "legacy:fb.canvas.prefetcher",
-            ["FB", "sdk.Canvas.Prefetcher", "sdk.Event", "sdk.Runtime"],
-            function $module_legacy_fb_canvas_prefetcher(
+            "sdk.Canvas.Tti",
+            ["sdk.RPC", "sdk.Runtime"],
+            function $module_sdk_Canvas_Tti(
               global,
               require,
-              requireDynamic,
-              requireLazy,
-              __DO_NOT_USE__module,
-              __DO_NOT_USE__exports
-            ) {
-              require("FB").provide(
-                "Canvas.Prefetcher",
-                require("sdk.Canvas.Prefetcher")
-              );
-
-              require("sdk.Event").subscribe(
-                "init:post",
-                function Event_subscribe_$1(options) {
-                  if (
-                    require("sdk.Runtime").isEnvironment(
-                      require("sdk.Runtime").ENVIRONMENTS.CANVAS
-                    )
-                  ) {
-                    require("sdk.Canvas.Prefetcher")._maybeSample();
-                  }
-                }
-              );
-            },
-            3
-          );
-          __d(
-            "legacy:fb.compat.ui",
-            ["FB", "Log", "sdk.UIServer", "sdk.ui"],
-            function $module_legacy_fb_compat_ui(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              __DO_NOT_USE__module,
-              __DO_NOT_USE__exports
-            ) {
-              require("FB").provide("", {
-                share: function share(u) {
-                  require("Log").error(
-                    "share() has been deprecated. Please use FB.ui() instead."
-                  );
-                  require("sdk.ui")({
-                    display: "popup",
-                    method: "stream.share",
-                    u: u
-                  });
-                },
-
-                publish: function publish(post, cb) {
-                  require("Log").error(
-                    "publish() has been deprecated. Please use FB.ui() instead."
-                  );
-                  post = post || {};
-                  require("sdk.ui")(
-                    babelHelpers["extends"](
-                      {
-                        display: "popup",
-                        method: "stream.publish",
-                        preview: 1
-                      },
-                      post || {}
-                    ),
-                    cb
-                  );
-                },
-
-                addFriend: function addFriend(id, cb) {
-                  require("Log").error(
-                    "addFriend() has been deprecated. Please use FB.ui() instead."
-                  );
-                  require("sdk.ui")(
-                    { display: "popup", id: id, method: "friend.add" },
-                    cb
-                  );
-                }
-              });
-
-              require("sdk.UIServer").Methods[
-                "auth.login"
-              ] = require("sdk.UIServer").Methods["permissions.request"];
-            },
-            3
-          );
-          __d(
-            "sdk.Data",
-            ["Log"],
-            function $module_sdk_Data(
-              global,
-              require,
-              requireDynamic,
+              importDefault,
+              importNamespace,
               requireLazy,
               module,
               exports
             ) {
-              var logError = function logError() {
-                require("Log").error(
-                  "##########################\n" +
-                    "#  FB.Data has been deprecated.\n" +
-                    "#  Please use FB.api().\n" +
-                    "#  https://developers.facebook.com/docs/javascript/reference/FB.api/\n" +
-                    "##########################"
-                );
+              function passAppTtiMessage(callback, messageName) {
+                var params = {
+                  appId: importDefault("sdk.Runtime").getClientID(),
+                  time: Date.now(),
+                  name: messageName,
+                };
+
+                var args = [params];
+                if (callback) {
+                  args.push(function args_push_$0(response) {
+                    callback(response.result);
+                  });
+                }
+
+                importDefault("sdk.RPC").remote.logTtiMessage.apply(null, args);
+              }
+
+              function startTimer() {
+                passAppTtiMessage(null, "StartIframeAppTtiTimer");
+              }
+
+              function stopTimer(callback) {
+                passAppTtiMessage(callback, "StopIframeAppTtiTimer");
+              }
+
+              function setDoneLoading(callback) {
+                passAppTtiMessage(callback, "RecordIframeAppTti");
+              }
+
+              importDefault("sdk.RPC").stub("logTtiMessage");
+
+              var Tti = {
+                setDoneLoading: setDoneLoading,
+                startTimer: startTimer,
+                stopTimer: stopTimer,
               };
-
-              var Data = {
-                query: logError,
-
-                waitOn: logError,
-
-                process: logError
-              };
-
-              module.exports = Data;
+              var _default = Tti;
+              exports["default"] = _default;
             },
-            null
+            98
           );
           __d(
-            "legacy:fb.data",
-            ["FB", "sdk.Data"],
-            function $module_legacy_fb_data(
+            "sdk.Canvas-public",
+            [
+              "Assert",
+              "FB",
+              "Log",
+              "sdk.Canvas.Environment",
+              "sdk.Canvas.IframeHandling",
+              "sdk.Canvas.Navigation",
+              "sdk.Canvas.Plugin",
+              "sdk.Canvas.Prefetcher",
+              "sdk.Canvas.Tti",
+              "sdk.Event",
+              "sdk.RPC",
+              "sdk.Runtime",
+            ],
+            function $module_sdk_Canvas_public(
               global,
               require,
-              requireDynamic,
+              importDefault,
+              importNamespace,
               requireLazy,
-              __DO_NOT_USE__module,
-              __DO_NOT_USE__exports
+              module,
+              exports
             ) {
-              require("FB").provide("Data", require("sdk.Data"));
-            },
-            3
-          );
-          __d(
-            "legacy:fb.event",
-            ["FB", "Log", "sdk.Event"],
-            function $module_legacy_fb_event(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              __DO_NOT_USE__module,
-              __DO_NOT_USE__exports
-            ) {
-              var warn = function warn(name) {
-                return require("Log").error(
-                  "FB.Event." + name + "() has been deprecated"
-                );
-              };
+              function init() {
+                importDefault("FB").provide("Canvas", {
+                  setSize: function setSize(params) {
+                    importDefault("Assert").maybeObject(
+                      params,
+                      "Invalid argument"
+                    );
+                    return importDefault(
+                      "sdk.Canvas.IframeHandling"
+                    ).setSize.apply(null, arguments);
+                  },
 
-              require("FB").provide("Event", {
-                subscribe: function subscribe(name, cb) {
-                  return require("sdk.Event").subscribe(name, cb);
-                },
+                  setAutoGrow: function setAutoGrow() {
+                    return importDefault(
+                      "sdk.Canvas.IframeHandling"
+                    ).setAutoGrow.apply(null, arguments);
+                  },
 
-                unsubscribe: ES(
-                  require("sdk.Event").unsubscribe,
+                  getPageInfo: function getPageInfo(callback) {
+                    importDefault("Assert").isFunction(
+                      callback,
+                      "Invalid argument"
+                    );
+                    return importDefault(
+                      "sdk.Canvas.Environment"
+                    ).getPageInfo.apply(null, arguments);
+                  },
+
+                  scrollTo: function scrollTo(x, y) {
+                    importDefault("Assert").maybeNumber(x, "Invalid argument");
+                    importDefault("Assert").maybeNumber(y, "Invalid argument");
+                    return importDefault(
+                      "sdk.Canvas.Environment"
+                    ).scrollTo.apply(null, arguments);
+                  },
+
+                  setDoneLoading: function setDoneLoading(callback) {
+                    importDefault("Assert").maybeFunction(
+                      callback,
+                      "Invalid argument"
+                    );
+                    return importDefault("sdk.Canvas.Tti").setDoneLoading.apply(
+                      null,
+                      arguments
+                    );
+                  },
+
+                  startTimer: function startTimer() {
+                    return importDefault("sdk.Canvas.Tti").startTimer.apply(
+                      null,
+                      arguments
+                    );
+                  },
+
+                  stopTimer: function stopTimer(callback) {
+                    importDefault("Assert").maybeFunction(
+                      callback,
+                      "Invalid argument"
+                    );
+                    return importDefault("sdk.Canvas.Tti").stopTimer.apply(
+                      null,
+                      arguments
+                    );
+                  },
+
+                  setUrlHandler: function setUrlHandler(callback) {
+                    importDefault("Assert").isFunction(
+                      callback,
+                      "Invalid argument"
+                    );
+                    return importDefault(
+                      "sdk.Canvas.Navigation"
+                    ).setUrlHandler.apply(null, arguments);
+                  },
+                });
+
+                importDefault("sdk.RPC").local.fireEvent = ES(
+                  importNamespace("sdk.Event").fire,
                   "bind",
                   true,
-                  require("sdk.Event")
-                ),
-                clear: ES(warn, "bind", true, null, "clear"),
-                fire: ES(warn, "bind", true, null, "fire")
-              });
+                  importNamespace("sdk.Event")
+                );
+
+                importNamespace("sdk.Event").subscribe(
+                  "init:post",
+                  function Event_subscribe_$1(options) {
+                    if (
+                      importDefault("sdk.Runtime").isEnvironment(
+                        importDefault("sdk.Runtime").ENVIRONMENTS.CANVAS
+                      )
+                    ) {
+                      importDefault("Assert").isTrue(
+                        !options.hideFlashCallback ||
+                          !options.hidePluginCallback,
+                        "cannot specify deprecated hideFlashCallback and new hidePluginCallback"
+                      );
+
+                      importDefault("sdk.Canvas.Plugin")._setHidePluginCallback(
+                        options.hidePluginCallback || options.hideFlashCallback
+                      );
+                    }
+                  }
+                );
+              }
+
+              function initRPC() {
+                importDefault("sdk.RPC").local.hidePluginObjects = function () {
+                  importNamespace("Log").info("hidePluginObjects called");
+                  importDefault("sdk.Canvas.Plugin").hidePluginCallback({
+                    state: "opened",
+                  });
+                };
+                importDefault("sdk.RPC").local.showPluginObjects = function () {
+                  importNamespace("Log").info("showPluginObjects called");
+                  importDefault("sdk.Canvas.Plugin").hidePluginCallback({
+                    state: "closed",
+                  });
+                };
+
+                importDefault("sdk.RPC").local.showFlashObjects =
+                  importDefault("sdk.RPC").local.showPluginObjects;
+                importDefault("sdk.RPC").local.hideFlashObjects =
+                  importDefault("sdk.RPC").local.hidePluginObjects;
+              }
+
+              function initCanvasPlugin() {
+                initRPC();
+                importDefault("FB").provide(
+                  "Canvas.Plugin",
+                  importDefault("sdk.Canvas.Plugin")
+                );
+              }
+
+              function initCanvasPrefetcher() {
+                importDefault("FB").provide(
+                  "Canvas.Prefetcher",
+                  importDefault("sdk.Canvas.Prefetcher")
+                );
+
+                importNamespace("sdk.Event").subscribe(
+                  "init:post",
+                  function Event_subscribe_$1(_options) {
+                    if (
+                      importDefault("sdk.Runtime").isEnvironment(
+                        importDefault("sdk.Runtime").ENVIRONMENTS.CANVAS
+                      )
+                    ) {
+                      importDefault("sdk.Canvas.Prefetcher")._maybeSample();
+                    }
+                  }
+                );
+              }
+
+              function initCanvasPresence() {
+                var _s = $RefreshSig$(),
+                  _s2 = $RefreshSig$();
+                importNamespace("sdk.Event").subscribe(
+                  importNamespace("sdk.Event").SUBSCRIBE,
+                  subscriptionAdded
+                );
+                importNamespace("sdk.Event").subscribe(
+                  importNamespace("sdk.Event").UNSUBSCRIBE,
+                  subscriptionRemoved
+                );
+
+                importDefault("sdk.RPC").stub("useFriendsOnline");
+                function subscriptionAdded(name, callbacks) {
+                  _s();
+                  if (name != "canvas.friendsOnlineUpdated") {
+                    return;
+                  }
+                  if (callbacks.length === 1) {
+                    importDefault("sdk.RPC").remote.useFriendsOnline(true);
+                  }
+                }
+                _s(subscriptionAdded, "G0wvazfjIhF4NZAVPKeup5g085k=", true);
+
+                function subscriptionRemoved(name, callbacks) {
+                  _s2();
+                  if (name != "canvas.friendsOnlineUpdated") {
+                    return;
+                  }
+                  if (callbacks.length === 0) {
+                    importDefault("sdk.RPC").remote.useFriendsOnline(false);
+                  }
+                }
+                _s2(subscriptionRemoved, "G0wvazfjIhF4NZAVPKeup5g085k=", true);
+              }
+              var SDKCanvas = {
+                init: init,
+                initCanvasPlugin: initCanvasPlugin,
+                initCanvasPrefetcher: initCanvasPrefetcher,
+                initCanvasPresence: initCanvasPresence,
+                initRPC: initRPC,
+              };
+              var _default = SDKCanvas;
+              exports["default"] = _default;
             },
-            3
+            98
           );
           __d(
-            "legacy:fb.frictionless",
-            ["FB", "sdk.Frictionless"],
-            function $module_legacy_fb_frictionless(
+            "sdk.Event-public",
+            ["FB", "Log", "sdk.Event"],
+            function $module_sdk_Event_public(
               global,
               require,
-              requireDynamic,
+              importDefault,
+              importNamespace,
               requireLazy,
-              __DO_NOT_USE__module,
-              __DO_NOT_USE__exports
+              module,
+              exports
             ) {
-              require("FB").provide(
-                "Frictionless",
-                require("sdk.Frictionless")
-              );
+              function init() {
+                var warn = function warn(name) {
+                  return importNamespace("Log").error(
+                    "FB.Event." + name + "() has been deprecated"
+                  );
+                };
+
+                importDefault("FB").provide("Event", {
+                  subscribe: function subscribe(name, cb) {
+                    return importNamespace("sdk.Event").subscribe(name, cb);
+                  },
+
+                  unsubscribe: ES(
+                    importNamespace("sdk.Event").unsubscribe,
+                    "bind",
+                    true,
+                    importNamespace("sdk.Event")
+                  ),
+
+                  clear: ES(warn, "bind", true, null, "clear"),
+
+                  fire: ES(warn, "bind", true, null, "fire"),
+                });
+              }
+
+              var SDKEvent = { init: init };
+              var _default = SDKEvent;
+              exports["default"] = _default;
             },
-            3
+            98
+          );
+          __d(
+            "sdk.Frictionless-public",
+            ["FB", "sdk.Event", "sdk.Frictionless"],
+            function $module_sdk_Frictionless_public(
+              global,
+              require,
+              importDefault,
+              importNamespace,
+              requireLazy,
+              module,
+              exports
+            ) {
+              "use strict";
+
+              function init() {
+                importNamespace("sdk.Event").subscribe(
+                  "init:post",
+                  function Event_subscribe_$1(options) {
+                    if (options.frictionlessRequests) {
+                      importDefault("sdk.Frictionless").init();
+                    }
+                  }
+                );
+                importDefault("FB").provide(
+                  "Frictionless",
+                  importDefault("sdk.Frictionless")
+                );
+              }
+
+              var SDKFrictionless = { init: init };
+              var _default = SDKFrictionless;
+              exports["default"] = _default;
+            },
+            98
           );
           __d(
             "sdk.GamingServices",
@@ -18222,7 +19066,7 @@ try {
                 importDefault("sdk.ui")(
                   {
                     display: "touch",
-                    method: "gaming_friendfinder"
+                    method: "gaming_friendfinder",
                   },
 
                   cb
@@ -18240,7 +19084,7 @@ try {
                   "POST",
                   {
                     caption: caption,
-                    url: imageUri
+                    url: imageUri,
                   },
 
                   function api_$3(apiResponse) {
@@ -18258,7 +19102,7 @@ try {
                         {
                           display: "touch",
                           method: "gaming_media_library",
-                          media_id: upload_id
+                          media_id: upload_id,
                         },
 
                         function ui_$1(_response) {
@@ -18271,318 +19115,20 @@ try {
                   }
                 );
               }
-              exports.friendFinder = friendFinder;
-              exports.uploadImageToMediaLibrary = uploadImageToMediaLibrary;
+
+              var GamingServices = {
+                friendFinder: friendFinder,
+                uploadImageToMediaLibrary: uploadImageToMediaLibrary,
+              };
+              var _default = GamingServices;
+              exports["default"] = _default;
             },
             98
           );
           __d(
-            "legacy:fb.gamingservices",
+            "sdk.GamingServices-public",
             ["FB", "sdk.GamingServices"],
-            function $module_legacy_fb_gamingservices(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              __DO_NOT_USE__module,
-              __DO_NOT_USE__exports
-            ) {
-              require("FB").provide("", {
-                gamingservices: require("sdk.GamingServices")
-              });
-            },
-            3
-          );
-
-          __d(
-            "AppUserPropertyAPIBuiltinField",
-            [],
-            function $module_AppUserPropertyAPIBuiltinField(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              module.exports = {
-                GENDER: "$gender",
-                CITY: "$city",
-                STATE: "$state",
-                ZIPCODE: "$zipcode",
-                COUNTRY: "$country",
-                LANGUAGE: "$language",
-                CURRENCY: "$currency",
-                INSTALL_SOURCE: "$install_source",
-                USER_TYPE: "$user_type",
-                ACCOUNT_CREATED_TIME: "$account_created_time",
-                APP_ID: "$app_id"
-              };
-            },
-            null
-          );
-          __d(
-            "FBEventsParamList",
-            [],
-            function $module_FBEventsParamList(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              "use strict";
-
-              var APPEND_DEEP = "deep";
-              var APPEND_SHALLOW = "shallow";
-              var ParamList = (function() {
-                function ParamList() {
-                  this.list = [];
-                }
-                var _proto = ParamList.prototype;
-                _proto.append = function append(name, value) {
-                  this.$ParamList_append(
-                    encodeURIComponent(name),
-                    value,
-                    APPEND_DEEP
-                  );
-                };
-                _proto.each = function each(fn) {
-                  var list = this.list;
-                  for (var i = 0, len = list.length; i < len; i++) {
-                    fn(list[i][0], list[i][1]);
-                  }
-                };
-                _proto.toQueryString = function toQueryString() {
-                  var output = [];
-                  this.each(function each_$0(name, value) {
-                    output.push(name + "=" + encodeURIComponent(value));
-                  });
-                  return output.join("&");
-                };
-                _proto.$ParamList_append = function $ParamList_append(
-                  name,
-                  value,
-                  appendType
-                ) {
-                  if (Object(value) !== value) {
-                    this.$ParamList_appendPrimitive(name, value);
-                  } else {
-                    if (appendType === APPEND_DEEP) {
-                      this.$ParamList_appendObject(name, value);
-                    } else {
-                      this.$ParamList_appendPrimitive(name, stringify(value));
-                    }
-                  }
-                };
-                _proto.$ParamList_appendPrimitive = function $ParamList_appendPrimitive(
-                  name,
-                  value
-                ) {
-                  if (value != null) {
-                    this.list.push([name, value]);
-                  }
-                };
-                _proto.$ParamList_appendObject = function $ParamList_appendObject(
-                  name,
-                  object
-                ) {
-                  for (var key in object) {
-                    if (Object.prototype.hasOwnProperty.call(object, key)) {
-                      var childName =
-                        name + "[" + encodeURIComponent(key) + "]";
-
-                      this.$ParamList_append(
-                        childName,
-                        object[key],
-                        APPEND_SHALLOW
-                      );
-                    }
-                  }
-                };
-                return ParamList;
-              })();
-
-              function stringify(value) {
-                if (
-                  typeof JSON === "undefined" ||
-                  JSON === null ||
-                  !ES("JSON", "stringify", false)
-                ) {
-                  return Object.prototype.toString.call(value);
-                } else {
-                  return ES("JSON", "stringify", false, value);
-                }
-              }
-              exports["default"] = ParamList;
-            },
-            66
-          );
-          __d(
-            "FBEventsUtils",
-            [],
-            function $module_FBEventsUtils(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              "use strict";
-
-              var isLegacy = !("addEventListener" in document);
-
-              function listenOnce(element, eventName, callback) {
-                var compatEventName = isLegacy ? "on" + eventName : eventName;
-                var listener = function listener() {
-                  isLegacy
-                    ? element.detachEvent &&
-                      element.detachEvent(compatEventName, listener)
-                    : element.removeEventListener(
-                        compatEventName,
-                        listener,
-                        false
-                      );
-                  callback();
-                };
-                isLegacy
-                  ? element.attachEvent &&
-                    element.attachEvent(compatEventName, listener)
-                  : element.addEventListener(compatEventName, listener, false);
-              }
-              exports.listenOnce = listenOnce;
-            },
-            66
-          );
-          __d(
-            "FBPixelEndpoint",
-            ["invariant", "FBEventsParamList", "FBEventsUtils"],
-            function $module_FBPixelEndpoint(
-              global,
-              require,
-              importDefault,
-              importNamespace,
-              requireLazy,
-              module,
-              exports,
-              invariant
-            ) {
-              "use strict";
-
-              var ENDPOINT = "https://www.facebook.com/tr/";
-
-              var currentUrl = location.href;
-              var inFrame = window.top !== window;
-              var referrerUrl = document.referrer;
-
-              function getParamList(id, eventName, customData, customParams) {
-                if (customParams === void 0) {
-                  customParams = {};
-                }
-                var paramList = new (importDefault("FBEventsParamList"))();
-                paramList.append("id", id);
-                paramList.append("ev", eventName);
-                paramList.append("dl", currentUrl);
-                paramList.append("rl", referrerUrl);
-                paramList.append("if", inFrame);
-
-                paramList.append("ts", new Date().valueOf());
-                paramList.append("cd", customData);
-                paramList.append("sw", window.screen.width);
-                paramList.append("sh", window.screen.height);
-
-                for (var param in customParams) {
-                  paramList.append(param, customParams[param]);
-                }
-
-                return paramList;
-              }
-
-              function sendEvent(id, eventName, customData, customParams) {
-                var paramList = getParamList(
-                  id,
-                  eventName,
-                  customData,
-                  customParams
-                );
-                var queryString = paramList.toQueryString();
-                if (2048 > (ENDPOINT + "?" + queryString).length) {
-                  sendGET(ENDPOINT, queryString);
-                } else {
-                  sendPOST(ENDPOINT, paramList);
-                }
-              }
-
-              function sendGET(endpoint, queryString) {
-                var image = new Image();
-                image.src = endpoint + "?" + queryString;
-              }
-
-              function sendPOST(endpoint, paramList) {
-                var _document$body;
-                var name =
-                  "fb" +
-                  Math.random()
-                    .toString()
-                    .replace(".", "");
-                var form = document.createElement("form");
-                form.method = "post";
-                form.action = endpoint;
-                form.target = name;
-                form.acceptCharset = "utf-8";
-                form.style.display = "none";
-
-                var isLegacyIE = !!(
-                  window.attachEvent && !window.addEventListener
-                );
-                var el = isLegacyIE ? '<iframe name="' + name + '">' : "iframe";
-                var iframe = document.createElement(el);
-                iframe instanceof HTMLIFrameElement ||
-                  invariant(0, "element must be an iframe");
-
-                iframe.src = "javascript:false";
-                iframe.id = name;
-                iframe.name = name;
-                form.appendChild(iframe);
-
-                importNamespace("FBEventsUtils").listenOnce(
-                  iframe,
-                  "load",
-                  function Utils_listenOnce_$2() {
-                    paramList.each(function paramList_each_$0(name, value) {
-                      var input = document.createElement("input");
-                      input.name = name;
-                      input.value = value;
-                      form.appendChild(input);
-                    });
-
-                    importNamespace("FBEventsUtils").listenOnce(
-                      iframe,
-                      "load",
-                      function Utils_listenOnce_$2() {
-                        var _form$parentNode;
-                        (_form$parentNode = form.parentNode) == null
-                          ? void 0
-                          : _form$parentNode.removeChild(form);
-                      }
-                    );
-                    form.submit();
-                  }
-                );
-                (_document$body = document.body) == null
-                  ? void 0
-                  : _document$body.appendChild(form);
-              }
-              exports.sendEvent = sendEvent;
-            },
-            98
-          );
-          __d(
-            "FBAppEvents",
-            ["ApiClient", "FBPixelEndpoint"],
-            function $module_FBAppEvents(
+            function $module_sdk_GamingServices_public(
               global,
               require,
               importDefault,
@@ -18592,456 +19138,23 @@ try {
               exports
             ) {
               "use strict";
-
-              function logEvent(
-                appID,
-                eventName,
-                params,
-                valueToSum,
-                accessToken
-              ) {
-                var customParams = {};
-                if (valueToSum != null) {
-                  customParams.vts = valueToSum.toString();
-                }
-                if (accessToken != null) {
-                  customParams.at = accessToken;
-                }
-
-                importNamespace("FBPixelEndpoint").sendEvent(
-                  appID.toString(),
-                  eventName,
-                  params,
-                  customParams
-                );
-              }
-
-              function updateUserProperties(userID, appID, params, cb) {
-                var url = "/" + appID + "/user_properties";
-                var data = {
-                  data: [{ user_unique_id: userID, custom_data: params }]
-                };
-                importDefault("ApiClient").graph(url, "post", data, cb);
-              }
-              exports.logEvent = logEvent;
-              exports.updateUserProperties = updateUserProperties;
-            },
-            98
-          );
-          __d(
-            "sdk.AppEvents",
-            [
-              "AppUserPropertyAPIBuiltinField",
-              "Assert",
-              "FBAppEvents",
-              "sdk.Event",
-              "sdk.Impressions",
-              "sdk.Model",
-              "sdk.Runtime"
-            ],
-            function $module_sdk_AppEvents(
-              global,
-              require,
-              importDefault,
-              importNamespace,
-              requireLazy,
-              module,
-              exports
-            ) {
-              var EventNames = Object.freeze({
-                COMPLETED_REGISTRATION: "fb_mobile_complete_registration",
-                VIEWED_CONTENT: "fb_mobile_content_view",
-                SEARCHED: "fb_mobile_search",
-                RATED: "fb_mobile_rate",
-                COMPLETED_TUTORIAL: "fb_mobile_tutorial_completion",
-                ADDED_TO_CART: "fb_mobile_add_to_cart",
-                ADDED_TO_WISHLIST: "fb_mobile_add_to_wishlist",
-                INITIATED_CHECKOUT: "fb_mobile_initiated_checkout",
-                ADDED_PAYMENT_INFO: "fb_mobile_add_payment_info",
-                ACHIEVED_LEVEL: "fb_mobile_level_achieved",
-                UNLOCKED_ACHIEVEMENT: "fb_mobile_achievement_unlocked",
-                PAGE_VIEW: "fb_page_view",
-                SPENT_CREDITS: "fb_mobile_spent_credits"
-              });
-
-              var HiddenEventNames = Object.freeze({
-                ACTIVATED_APP: "fb_mobile_activate_app",
-                PURCHASED: "fb_mobile_purchase"
-              });
-
-              var ParameterNames = Object.freeze({
-                APP_USER_ID: "_app_user_id",
-                APP_VERSION: "_appVersion",
-                CURRENCY: "fb_currency",
-                REGISTRATION_METHOD: "fb_registration_method",
-                CONTENT_TYPE: "fb_content_type",
-                CONTENT_ID: "fb_content_id",
-                SEARCH_STRING: "fb_search_string",
-                SUCCESS: "fb_success",
-                MAX_RATING_VALUE: "fb_max_rating_value",
-                PAYMENT_INFO_AVAILABLE: "fb_payment_info_available",
-                NUM_ITEMS: "fb_num_items",
-                LEVEL: "fb_level",
-                DESCRIPTION: "fb_description"
-              });
-
-              var EVENT_NAME_REGEX = /^[0-9a-zA-Z_][0-9a-zA-Z _-]{0,39}$/;
-              var MAX_EVENT_NAME_LENGTH = 40;
-              var USER_PROPERTIES_KEY_REGEX = EVENT_NAME_REGEX;
-              var MAX_USER_PROPERTIES_KEY_LENGTH = MAX_EVENT_NAME_LENGTH;
-              var MAX_USER_ID_LENGTH = 100;
-              var MAX_APP_VERSION_LENGTH = 100;
-              var MAX_USER_PROPERTIES = 100;
-              var MAX_USER_PROPERTIES_VALUE_LENGTH = 100;
-              var PREDEFINED_USER_PROPS = ES(
-                "Object",
-                "values",
-                false,
-                importDefault("AppUserPropertyAPIBuiltinField")
-              );
-              _c = PREDEFINED_USER_PROPS;
-
-              var AppProps = new (importDefault("sdk.Model"))({
-                UserID: "",
-                Version: ""
-              });
-
-              function logCanvasEvent(appID, eventName, valueToSum, params) {
-                var payload = {
-                  ae: 1,
-                  ev: eventName,
-                  vts: valueToSum,
-                  canvas: 1
-                };
-
-                if (params) {
-                  payload.cd = params;
-                }
-                importNamespace("sdk.Impressions").impression({
-                  api_key: appID,
-                  payload: ES("JSON", "stringify", false, payload)
-                });
-              }
-
-              function logAppEvent(appID, eventName, valueToSum, params) {
-                var accessToken = importDefault("sdk.Runtime").getAccessToken();
-                importNamespace("FBAppEvents").logEvent(
-                  appID,
-                  eventName,
-                  params || {},
-                  valueToSum,
-                  accessToken
-                );
-              }
-
-              function logEvent(appID, eventName, valueToSum, params) {
-                assertValidEventName(eventName);
-
-                var userID = AppProps.getUserID();
-                if (userID !== "") {
-                  params = params || {};
-                  params[ParameterNames.APP_USER_ID] = userID;
-                }
-
-                var appVersion = AppProps.getVersion();
-                if (appVersion !== "") {
-                  params = params || {};
-                  params[ParameterNames.APP_VERSION] = appVersion;
-                }
-
-                if (importDefault("sdk.Runtime").isCanvasEnvironment()) {
-                  logCanvasEvent(appID, eventName, valueToSum, params);
-                } else {
-                  logAppEvent(appID, eventName, valueToSum, params);
-                }
-              }
-
-              function assertValidEventName(eventName) {
-                importDefault("Assert").isTrue(
-                  EVENT_NAME_REGEX.test(eventName),
-                  "Invalid event name: " +
-                    eventName +
-                    ". " +
-                    "It must be between 1 and " +
-                    MAX_EVENT_NAME_LENGTH +
-                    " characters, " +
-                    "and must be contain only alphanumerics, _, - or spaces, " +
-                    "starting with alphanumeric or _."
-                );
-              }
-
-              function logPurchase(appID, purchaseAmount, currency, params) {
-                var extraParams = {};
-                extraParams[ParameterNames.CURRENCY] = currency;
-
-                logEvent(
-                  appID,
-                  HiddenEventNames.PURCHASED,
-                  purchaseAmount,
-                  babelHelpers["extends"]({}, params, extraParams)
-                );
-              }
-
-              function activateApp(appID) {
-                logEvent(appID, HiddenEventNames.ACTIVATED_APP);
-              }
-
-              function logPageView(appID) {
-                logEvent(appID, EventNames.PAGE_VIEW);
-              }
-
-              function assertValidUserID(userID) {
-                importDefault("Assert").isTrue(
-                  userID.length !== 0,
-                  "User ID must be set before updateUserProperties can be called."
-                );
-
-                importDefault("Assert").isTrue(
-                  userID.length <= MAX_USER_ID_LENGTH,
-                  "Invalid user ID: " +
-                    userID +
-                    ". " +
-                    "It must be no longer than " +
-                    MAX_USER_ID_LENGTH +
-                    " characters."
-                );
-              }
-
-              function setUserID(userID) {
-                assertValidUserID(userID);
-                AppProps.setUserID(userID);
-              }
-
-              function getUserID() {
-                return AppProps.getUserID();
-              }
-
-              function clearUserID() {
-                AppProps.setUserID("");
-              }
-
-              function assertValidAppVersion(appVersion) {
-                importDefault("Assert").isTrue(
-                  appVersion.length <= MAX_APP_VERSION_LENGTH,
-                  "Invalid app version: " +
-                    appVersion +
-                    ". " +
-                    "It must be no longer than " +
-                    MAX_APP_VERSION_LENGTH +
-                    " characters."
-                );
-              }
-
-              function setAppVersion(appVersion) {
-                assertValidAppVersion(appVersion);
-                AppProps.setVersion(appVersion);
-              }
-
-              function getAppVersion() {
-                return AppProps.getVersion();
-              }
-
-              function clearAppVersion() {
-                AppProps.setVersion("");
-              }
-
-              function assertValidUserProperties(params) {
-                importDefault("Assert").isTrue(
-                  Object.keys(params).length <= MAX_USER_PROPERTIES,
-                  "The total number of user properties cannot exceed " +
-                    MAX_USER_PROPERTIES +
-                    "."
-                );
-
-                for (var _key in params) {
-                  importDefault("Assert").isTrue(
-                    USER_PROPERTIES_KEY_REGEX.test(_key) ||
-                      ES(PREDEFINED_USER_PROPS, "includes", true, _key),
-                    "Invalid user properties key name: " +
-                      _key +
-                      ". " +
-                      "It must be between 1 and " +
-                      MAX_USER_PROPERTIES_KEY_LENGTH +
-                      " " +
-                      "characters, and must contain only alphanumerics, _, - or spaces, " +
-                      "starting with alphanumeric or _. " +
-                      "Or, it must be a pre-defined user property"
-                  );
-
-                  importDefault("Assert").isTrue(
-                    params[_key].toString().length <=
-                      MAX_USER_PROPERTIES_VALUE_LENGTH,
-                    "Invalid user properties value: " +
-                      params[_key] +
-                      ". " +
-                      "It must be no longer than " +
-                      MAX_USER_PROPERTIES_VALUE_LENGTH +
-                      " characters."
-                  );
-                }
-              }
-
-              function updateUserProperties(appID, params, cb) {
-                var userID = getUserID();
-                assertValidUserID(userID);
-
-                Object.keys(params).forEach(function forEach_$0(k) {
-                  return params[k] == null && delete params[k];
-                });
-                assertValidUserProperties(params);
-                importNamespace("FBAppEvents").updateUserProperties(
-                  userID,
-                  appID,
-                  params,
-                  cb
-                );
-              }
-
-              importNamespace("sdk.Event").subscribe(
-                "init:post",
-                function Event_subscribe_$1(options) {
-                  if (importDefault("sdk.Runtime").getClientID()) {
-                    if (options.autoLogAppEvents !== undefined) {
-                      importDefault("Assert").isBoolean(
-                        options.autoLogAppEvents,
-                        "Type of property autoLogAppEvents must be boolean"
-                      );
-
-                      importDefault("sdk.Runtime").setAutoLogAppEvents(
-                        options.autoLogAppEvents
-                      );
-                    }
-
-                    if (importDefault("sdk.Runtime").getAutoLogAppEvents()) {
-                      logPageView(importDefault("sdk.Runtime").getClientID());
-                    }
-                  }
-                }
-              );
-              var _c;
-              $RefreshReg$(_c, "PREDEFINED_USER_PROPS");
-              exports.EventNames = EventNames;
-              exports.ParameterNames = ParameterNames;
-              exports.logEvent = logEvent;
-              exports.assertValidEventName = assertValidEventName;
-              exports.logPurchase = logPurchase;
-              exports.activateApp = activateApp;
-              exports.logPageView = logPageView;
-              exports.assertValidUserID = assertValidUserID;
-              exports.setUserID = setUserID;
-              exports.getUserID = getUserID;
-              exports.clearUserID = clearUserID;
-              exports.assertValidAppVersion = assertValidAppVersion;
-              exports.setAppVersion = setAppVersion;
-              exports.getAppVersion = getAppVersion;
-              exports.clearAppVersion = clearAppVersion;
-              exports.assertValidUserProperties = assertValidUserProperties;
-              exports.updateUserProperties = updateUserProperties;
-            },
-            98
-          );
-          __d(
-            "sdk.MBasicInitializer",
-            [
-              "UrlMap",
-              "sdk.DOM",
-              "sdk.Runtime",
-              "sdk.UA",
-              "sdk.URI",
-              "sdk.fbt"
-            ],
-            function $module_sdk_MBasicInitializer(
-              global,
-              require,
-              importDefault,
-              importNamespace,
-              requireLazy,
-              module,
-              exports
-            ) {
-              var sharePluginInitialize = function sharePluginInitialize() {
-                function replaceWithLink(share_button) {
-                  if (!share_button) {
-                    return;
-                  }
-                  var share_button_container = share_button.parentNode;
-                  if (!share_button_container) {
-                    return;
-                  }
-                  var href =
-                    importNamespace("sdk.DOM").getAttr(share_button, "href") ||
-                    window.location.href;
-                  var dialog = new (importDefault("sdk.URI"))(
-                    importNamespace("UrlMap").resolve("m")
-                  );
-                  dialog.setPath("/dialog/share");
-                  dialog.addQueryData("href", encodeURI(href));
-                  dialog.addQueryData(
-                    "app_id",
-                    importDefault("sdk.Runtime").getClientID()
-                  );
-                  dialog.addQueryData("mbasic_link", 1);
-                  var link = document.createElement("a");
-
-                  link.style = "display:inline-block; zoom:1;";
-                  link.textContent = importDefault("sdk.fbt")._(
-                    "Share to Facebook"
-                  );
-
-                  link.setAttribute("href", dialog.toString());
-                  link.setAttribute("target", "_blank");
-                  share_button_container.insertBefore(link, share_button);
-                  share_button_container.removeChild(share_button);
-                }
-
-                ES(
-                  "Array",
-                  "from",
-                  false,
-                  document.getElementsByTagName("fb:share-button")
-                ).forEach(function forEach_$0(button) {
-                  return replaceWithLink(button);
-                });
-
-                ES(
-                  "Array",
-                  "from",
-                  false,
-                  document.getElementsByClassName("fb-share-button")
-                ).forEach(function forEach_$0(button) {
-                  return replaceWithLink(button);
-                });
-              };
 
               function init() {
-                if (!importDefault("sdk.UA").mBasic()) {
-                  return;
-                }
-                sharePluginInitialize();
+                importDefault("FB").provide("", {
+                  gamingservices: importDefault("sdk.GamingServices"),
+                });
               }
-              exports.init = init;
+
+              var SDKGamingServices = { init: init };
+              var _default = SDKGamingServices;
+              exports["default"] = _default;
             },
             98
           );
           __d(
-            "sdk.init",
-            [
-              "Log",
-              "ManagedError",
-              "QueryString",
-              "sdk.AppEvents",
-              "sdk.Cookie",
-              "sdk.ErrorHandling",
-              "sdk.Event",
-              "sdk.Frictionless",
-              "sdk.MBasicInitializer",
-              "sdk.PlatformVersioning",
-              "sdk.Runtime",
-              "sdk.UA",
-              "sdk.URI",
-              "sdk.XD"
-            ],
-            function $module_sdk_init(
+            "sdk.PluginUtils",
+            ["resolveURI", "sdk.Event"],
+            function $module_sdk_PluginUtils(
               global,
               require,
               importDefault,
@@ -19050,238 +19163,964 @@ try {
               module,
               exports
             ) {
-              require("sdk.XD");
-              require("sdk.AppEvents");
-              require("sdk.Frictionless");
+              var types = {
+                string: function string(value) {
+                  return value;
+                },
+                bool: function bool(value) {
+                  return value != null
+                    ? /^(?:true|1|yes|on)$/i.test(value)
+                    : undefined;
+                },
+                url: function url(value) {
+                  return importDefault("resolveURI")(value);
+                },
+                url_maybe: function url_maybe(value) {
+                  return value != null && value !== ""
+                    ? importDefault("resolveURI")(value)
+                    : undefined;
+                },
+                hostname: function hostname(value) {
+                  return value != null && value !== ""
+                    ? value
+                    : "window.location.hostname";
+                },
+                px: function px(value) {
+                  if (typeof value === "string") {
+                    var match = value.match(/^(\d+)(?:px)?$/);
+                    return match != null ? parseInt(match[0], 10) : undefined;
+                  } else if (typeof value === "number") {
+                    return value;
+                  } else {
+                    return undefined;
+                  }
+                },
+                text: function text(value) {
+                  return value;
+                },
+              };
 
-              function parseAppId(appId) {
-                var looksValid =
-                  (typeof appId === "number" && appId > 0) ||
-                  (typeof appId === "string" &&
-                    /^[0-9a-f]{21,}$|^[0-9]{1,21}$/.test(appId));
-                if (looksValid) {
-                  return appId.toString();
-                }
-                importNamespace("Log").warn(
-                  "Invalid App Id: Must be a number or numeric string representing " +
-                    "the application id."
-                );
-
-                return null;
+              function getVal(attr, key) {
+                var _ref, _ref2, _ref3, _ref4, _ref5, _attr$key;
+                return (_ref =
+                  (_ref2 =
+                    (_ref3 =
+                      (_ref4 =
+                        (_ref5 =
+                          (_attr$key = attr[key]) != null
+                            ? _attr$key
+                            : attr[key.replace(/_/g, "-")]) != null
+                          ? _ref5
+                          : attr[key.replace(/_/g, "")]) != null
+                        ? _ref4
+                        : attr["data-" + key]) != null
+                      ? _ref3
+                      : attr["data-" + key.replace(/_/g, "-")]) != null
+                    ? _ref2
+                    : attr["data-" + key.replace(/_/g, "")]) != null
+                  ? _ref
+                  : undefined;
               }
 
-              function init(options) {
-                if (importDefault("sdk.Runtime").getInitialized()) {
-                  importNamespace("Log").warn(
-                    "FB.init has already been called - this could indicate a problem"
-                  );
-                }
-
-                if (importDefault("sdk.Runtime").getIsVersioned()) {
-                  if (
-                    Object.prototype.toString.call(options) !==
-                    "[object Object]"
-                  ) {
-                    throw new (importDefault("ManagedError"))(
-                      "Invalid argument"
-                    );
+              function validate(defn, elem, attr, params) {
+                Object.keys(defn).forEach(function forEach_$0(key) {
+                  if (defn[key] === "text" && !attr[key]) {
+                    var _ref6, _elem$textContent;
+                    attr[key] =
+                      (_ref6 =
+                        (_elem$textContent = elem.textContent) != null
+                          ? _elem$textContent
+                          : elem.innerText) != null
+                        ? _ref6
+                        : undefined;
+                    elem.setAttribute(key, attr[key]);
                   }
-
-                  if (options.authResponse) {
-                    throw new (importDefault("ManagedError"))(
-                      "Setting authResponse is not supported"
-                    );
-                  }
-
-                  if (!options.version) {
-                    options.version = new (importDefault("sdk.URI"))(
-                      location.href
-                    ).getQueryData().sdk_version;
-                  }
-
-                  importNamespace("sdk.PlatformVersioning").assertValidVersion(
-                    options.version
-                  );
-                  importDefault("sdk.Runtime").setVersion(options.version);
-                } else {
-                  if (/number|string/.test(typeof options)) {
-                    importNamespace("Log").warn(
-                      "FB.init called with invalid parameters"
-                    );
-                    options = { apiKey: options };
-                  }
-
-                  if (options.status == null) {
-                    options.legacyStatusInit = true;
-                  }
-
-                  options = babelHelpers["extends"](
-                    {
-                      status: true
-                    },
-                    options || {}
-                  );
-                }
-
-                var appId = parseAppId(options.appId || options.apiKey);
-                if (appId !== null) {
-                  importDefault("sdk.Runtime").setClientID(appId);
-                }
-
-                if ("scope" in options) {
-                  importDefault("sdk.Runtime").setScope(options.scope);
-                }
-
-                if (options.cookie) {
-                  importDefault("sdk.Runtime").setUseCookie(true);
-                  if (typeof options.cookie === "string") {
-                    importNamespace("sdk.Cookie").setDomain(options.cookie);
-                  }
-                }
-
-                if (
-                  options.localStorage === false ||
-                  options.localStorage === "false"
-                ) {
-                  importDefault("sdk.Runtime").setUseLocalStorage(false);
-                }
-
-                if (options.kidDirectedSite) {
-                  importDefault("sdk.Runtime").setKidDirectedSite(true);
-                }
-
-                if (options.useFamilyLogin) {
-                  importDefault("sdk.Runtime").setShouldLoadFamilyLogin(true);
-                }
-
-                if (
-                  options.autoLogAppEvents === "1" ||
-                  options.autoLogAppEvents === "true"
-                ) {
-                  options.autoLogAppEvents = true;
-                }
-
-                if (options.ab) {
-                  importDefault("sdk.Runtime").setSDKAB(options.ab);
-                }
-
-                importDefault("sdk.Runtime").setInitialized(true);
-
-                if (importDefault("sdk.UA").mBasic()) {
-                  importNamespace("sdk.MBasicInitializer").init();
-                }
-
-                importNamespace("sdk.Event").fire("init:post", options);
-              }
-
-              window.setTimeout(function window_setTimeout_$0() {
-                var pattern = /(connect\.facebook\.net|\.facebook\.com\/assets.php|\.facebook\.net\/assets.php).*?#(.*)/;
-                ES(
-                  "Array",
-                  "from",
-                  false,
-                  window.document.getElementsByTagName("script")
-                ).forEach(function forEach_$0(script) {
-                  if (script.src) {
-                    var match = pattern.exec(script.src);
-                    if (match) {
-                      var opts = {};
-                      var decoded = importDefault("QueryString").decode(
-                        match[2]
-                      );
-                      for (var key in decoded) {
-                        if (
-                          Object.prototype.hasOwnProperty.call(decoded, key)
-                        ) {
-                          var val = decoded[key];
-                          if (val === "0") {
-                            opts[key] = 0;
-                          } else {
-                            opts[key] = val;
-                          }
-                        }
-                      }
-
-                      init(opts);
-                    }
-                  }
+                  params[key] = types[defn[key]](getVal(attr, key));
                 });
+              }
 
-                if (window.fbAsyncInit && !window.fbAsyncInit.hasRun) {
-                  importNamespace("sdk.Event").fire("init:asyncstart");
-                  window.fbAsyncInit.hasRun = true;
-                  importDefault("sdk.ErrorHandling").unguard(
-                    window.fbAsyncInit
-                  )();
+              function resize(elem, width, height) {
+                if (width === "100%") {
+                  elem.style.width = "100%";
+                } else if (width != null && width !== "") {
+                  elem.style.width = width + "px";
                 }
-              }, 0);
 
-              module.exports = init;
+                if ((height != null && height !== "") || height === 0) {
+                  elem.style.height = height + "px";
+                }
+              }
+
+              function resizeBubbler(pluginID) {
+                return function (msg) {
+                  var message = {
+                    width: msg.width,
+                    height: msg.height,
+                    pluginID: pluginID,
+                  };
+                  importNamespace("sdk.Event").fire("xfbml.resize", message);
+                };
+              }
+
+              function parse(dim) {
+                if (dim === "100%") {
+                  return "100%";
+                }
+
+                return dim != null ? parseInt(dim, 10) : undefined;
+              }
+
+              function collapseIframe(iframe) {
+                if (iframe != null) {
+                  resize(iframe, 0, 0);
+                }
+              }
+
+              var baseParams = {
+                skin: "string",
+                font: "string",
+                width: "string",
+                height: "px",
+                ref: "string",
+                lazy: "bool",
+                color_scheme: "string",
+              };
+              exports.getVal = getVal;
+              exports.validate = validate;
+              exports.resize = resize;
+              exports.resizeBubbler = resizeBubbler;
+              exports.parse = parse;
+              exports.collapseIframe = collapseIframe;
+              exports.baseParams = baseParams;
             },
-            34
+            98
           );
           __d(
-            "legacy:fb.init",
-            ["FB", "sdk.Event", "sdk.init"],
-            function $module_legacy_fb_init(
+            "isNumberLike",
+            [],
+            function $module_isNumberLike(
               global,
               require,
               requireDynamic,
               requireLazy,
-              __DO_NOT_USE__module,
-              __DO_NOT_USE__exports
+              module,
+              exports
+            ) {
+              function isNumberLike(n) {
+                return !isNaN(parseFloat(n)) && isFinite(n);
+              }
+              exports["default"] = isNumberLike;
+            },
+            66
+          );
+          __d(
+            "sdk.createIframe",
+            ["DOMEventListener", "getBlankIframeSrc", "guid", "isNumberLike"],
+            function $module_sdk_createIframe(
+              global,
+              require,
+              importDefault,
+              importNamespace,
+              requireLazy,
+              module,
+              exports
+            ) {
+              function createIframe(opts_arg) {
+                var opts = ES("Object", "assign", false, {}, opts_arg);
+                var frame;
+
+                var name = opts.name || importDefault("guid")();
+
+                var root = opts.root;
+
+                var style = opts.style || { border: "none" };
+
+                var src = opts.url;
+
+                var onLoad = opts.onload;
+
+                var onError = opts.onerror;
+
+                frame = document.createElement("iframe");
+                frame.name = name;
+
+                delete opts.style;
+
+                delete opts.name;
+
+                delete opts.url;
+
+                delete opts.root;
+
+                delete opts.onload;
+
+                delete opts.onerror;
+
+                delete opts.height;
+
+                delete opts.width;
+
+                if (opts.frameBorder === undefined) {
+                  opts.frameBorder = 0;
+                }
+
+                if (opts.allowTransparency === undefined) {
+                  opts.allowTransparency = true;
+                }
+
+                if (opts.allowFullscreen === undefined) {
+                  opts.allowFullscreen = true;
+                }
+
+                if (opts.scrolling === undefined) {
+                  opts.scrolling = "no";
+                }
+
+                if (opts.allow === undefined) {
+                  opts.allow = "encrypted-media";
+                }
+
+                if (opts.lazy) {
+                  opts.loading = "lazy";
+
+                  if (style.visibility) {
+                    delete style.visibility;
+                  }
+                }
+
+                delete opts.lazy;
+
+                if (
+                  opts_arg.width != null &&
+                  importDefault("isNumberLike")(opts_arg.width)
+                ) {
+                  frame.width = opts_arg.width + "px";
+                }
+                if (
+                  opts_arg.height != null &&
+                  importDefault("isNumberLike")(opts_arg.height)
+                ) {
+                  frame.height = opts_arg.height + "px";
+                }
+
+                if (opts.testid && frame.dataset != null) {
+                  frame.dataset.testid = opts.testid;
+                  delete opts.testid;
+                }
+
+                for (var key in opts) {
+                  if (Object.prototype.hasOwnProperty.call(opts, key)) {
+                    frame.setAttribute(key, opts[key]);
+                  }
+                }
+
+                ES("Object", "assign", false, frame.style, style);
+
+                frame.src = importDefault("getBlankIframeSrc")();
+                if (root != null) {
+                  root.appendChild(frame);
+                }
+                if (onLoad) {
+                  var onLoadListener = importNamespace("DOMEventListener").add(
+                    frame,
+                    "load",
+                    function DOMEventListener_add_$2() {
+                      onLoadListener.remove();
+                      onLoad();
+                    }
+                  );
+                }
+
+                if (onError) {
+                  var onErrorListener = importNamespace("DOMEventListener").add(
+                    frame,
+                    "error",
+                    function DOMEventListener_add_$2() {
+                      onErrorListener.remove();
+                      onError();
+                    }
+                  );
+                }
+
+                frame.src = src;
+                return frame;
+              }
+              exports["default"] = createIframe;
+            },
+            98
+          );
+          __d(
+            "IframePlugin",
+            [
+              "Log",
+              "ObservableMixin",
+              "QueryString",
+              "Type",
+              "UrlMap",
+              "guid",
+              "sdk.Auth.LoginStatus",
+              "sdk.AuthUtils",
+              "sdk.DOM",
+              "sdk.Event",
+              "sdk.PlatformVersioning",
+              "sdk.PluginUtils",
+              "sdk.Runtime",
+              "sdk.UA",
+              "sdk.URI",
+              "sdk.XD",
+              "sdk.createIframe",
+            ],
+            function $module_IframePlugin(
+              global,
+              require,
+              importDefault,
+              importNamespace,
+              requireLazy,
+              module,
+              exports
+            ) {
+              var IframePlugin = importDefault("Type").extend(
+                {
+                  constructor: function constructor(elem, ns, tag, attr) {
+                    var _this = this;
+
+                    this.parent();
+                    tag = tag.replace(/-/g, "_");
+
+                    var pluginId = importNamespace("sdk.PluginUtils").getVal(
+                      attr,
+                      "plugin_id"
+                    );
+
+                    this.subscribe(
+                      "xd.resize",
+                      importNamespace("sdk.PluginUtils").resizeBubbler(pluginId)
+                    );
+
+                    this.subscribe(
+                      "xd.resize.flow",
+                      importNamespace("sdk.PluginUtils").resizeBubbler(pluginId)
+                    );
+
+                    this.subscribe(
+                      "xd.resize.flow",
+                      function subscribe_$1(message) {
+                        ES(
+                          "Object",
+                          "assign",
+                          false,
+                          _this._iframeOptions.root.style,
+                          {
+                            verticalAlign: "bottom",
+                            overflow: "",
+                          }
+                        );
+
+                        importNamespace("sdk.PluginUtils").resize(
+                          _this._iframeOptions.root,
+                          importNamespace("sdk.PluginUtils").parse(
+                            message.width
+                          ),
+                          importNamespace("sdk.PluginUtils").parse(
+                            message.height
+                          )
+                        );
+
+                        _this.updateLift();
+
+                        window.clearTimeout(_this._timeoutID);
+                      }
+                    );
+
+                    this.subscribe("xd.resize", function subscribe_$1(message) {
+                      ES(
+                        "Object",
+                        "assign",
+                        false,
+                        _this._iframeOptions.root.style,
+                        {
+                          verticalAlign: "bottom",
+                          overflow: "",
+                        }
+                      );
+
+                      importNamespace("sdk.PluginUtils").resize(
+                        _this._iframeOptions.root,
+                        importNamespace("sdk.PluginUtils").parse(message.width),
+                        importNamespace("sdk.PluginUtils").parse(message.height)
+                      );
+
+                      importNamespace("sdk.PluginUtils").resize(
+                        _this._iframe,
+                        importNamespace("sdk.PluginUtils").parse(message.width),
+                        importNamespace("sdk.PluginUtils").parse(message.height)
+                      );
+
+                      _this._isIframeResized = true;
+
+                      _this.updateLift();
+
+                      window.clearTimeout(_this._timeoutID);
+                    });
+
+                    this.subscribe(
+                      "xd.resize.iframe",
+                      function subscribe_$1(message) {
+                        importNamespace("sdk.PluginUtils").resize(
+                          _this._iframe,
+                          importNamespace("sdk.PluginUtils").parse(
+                            message.width
+                          ),
+                          importNamespace("sdk.PluginUtils").parse(
+                            message.height
+                          )
+                        );
+
+                        _this._isIframeResized = true;
+
+                        _this.updateLift();
+
+                        window.clearTimeout(_this._timeoutID);
+                      }
+                    );
+
+                    this.subscribe(
+                      "xd.sdk_event",
+                      function subscribe_$1(message) {
+                        var data = ES("JSON", "parse", false, message.data);
+                        data.pluginID = pluginId;
+                        importNamespace("sdk.Event").fire(
+                          message.event,
+                          data,
+                          elem
+                        );
+                      }
+                    );
+
+                    var url =
+                      importNamespace("UrlMap").resolve("www") +
+                      "/plugins/" +
+                      tag +
+                      ".php?";
+                    var params = {};
+
+                    importNamespace("sdk.PluginUtils").validate(
+                      this.getParams(),
+                      elem,
+                      attr,
+                      params
+                    );
+                    importNamespace("sdk.PluginUtils").validate(
+                      importNamespace("sdk.PluginUtils").baseParams,
+                      elem,
+                      attr,
+                      params
+                    );
+
+                    ES("Object", "assign", false, params, {
+                      app_id: importDefault("sdk.Runtime").getClientID(),
+                      locale: importDefault("sdk.Runtime").getLocale(),
+                      sdk: "joey",
+                      kid_directed_site:
+                        importDefault("sdk.Runtime").getKidDirectedSite(),
+                      channel: importNamespace("sdk.XD").handler(
+                        function XD_handler_$0(msg) {
+                          if (msg != null) {
+                            _this.inform("xd." + msg.type, msg);
+                          }
+                        },
+                        "parent.parent",
+                        true
+                      ),
+                    });
+
+                    if (this.shouldIgnoreWidth()) {
+                      params.width = void 0;
+                    }
+
+                    params.container_width = elem.offsetWidth;
+
+                    importNamespace("sdk.DOM").addCss(elem, "fb_iframe_widget");
+                    var name = importDefault("guid")();
+
+                    this.subscribe("xd.verify", function subscribe_$1(msg) {
+                      importNamespace("sdk.XD").sendToFacebook(name, {
+                        method: "xd/verify",
+                        params: ES("JSON", "stringify", false, msg.token),
+                      });
+                    });
+
+                    this.subscribe(
+                      "xd.refreshLoginStatus",
+                      function subscribe_$1() {
+                        importNamespace("sdk.AuthUtils").removeLogoutState();
+                        importDefault("sdk.Auth.LoginStatus").getLoginStatus(
+                          ES(_this.inform, "bind", true, _this, "login.status"),
+                          true
+                        );
+                      }
+                    );
+
+                    var flow = document.createElement("span");
+
+                    ES("Object", "assign", false, flow.style, {
+                      verticalAlign: "top",
+
+                      width: params.lazy ? "1px" : "0px",
+
+                      height: params.lazy ? "1px" : "0px",
+                      overflow: "hidden",
+                    });
+
+                    this._element = elem;
+
+                    this._ns = ns;
+
+                    this._tag = tag;
+
+                    this._params = params;
+
+                    this._config = this.getConfig();
+
+                    this._iframeOptions = {
+                      root: flow,
+                      url: url + importDefault("QueryString").encode(params),
+                      name: name,
+
+                      width:
+                        this._config.mobile_fullsize &&
+                        importDefault("sdk.UA").mobile()
+                          ? void 0
+                          : params.width || 1000,
+
+                      height: params.height || 1000,
+                      style: {
+                        border: "none",
+                        visibility: "hidden",
+                      },
+
+                      title:
+                        this._ns + ":" + this._tag + " Facebook Social Plugin",
+
+                      testid:
+                        this._ns + ":" + this._tag + " Facebook Social Plugin",
+
+                      onload: function onload() {
+                        return _this.inform("render");
+                      },
+
+                      onerror: function onerror() {
+                        return importNamespace(
+                          "sdk.PluginUtils"
+                        ).collapseIframe(_this._iframe);
+                      },
+
+                      lazy: params.lazy,
+                    };
+
+                    if (this.isFluid() && params.width !== "auto") {
+                      importNamespace("sdk.DOM").addCss(
+                        this._element,
+                        "fb_iframe_widget_fluid_desktop"
+                      );
+
+                      if (!params.width && this._config.full_width) {
+                        this._element.style.width = "100%";
+
+                        this._iframeOptions.root.style.width = "100%";
+
+                        this._iframeOptions.style.width = "100%";
+
+                        this._params.container_width =
+                          this._element.offsetWidth;
+
+                        this._iframeOptions.url =
+                          url +
+                          importDefault("QueryString").encode(this._params);
+                      }
+                    }
+                  },
+
+                  shouldIgnoreWidth: function shouldIgnoreWidth() {
+                    return (
+                      importDefault("sdk.UA").mobile() &&
+                      this.getConfig().mobile_fullsize
+                    );
+                  },
+
+                  useInlineHeightForMobile:
+                    function useInlineHeightForMobile() {
+                      return true;
+                    },
+
+                  process: function process() {
+                    var _this2 = this;
+                    if (importDefault("sdk.Runtime").getIsVersioned()) {
+                      importNamespace(
+                        "sdk.PlatformVersioning"
+                      ).assertVersionIsSet();
+
+                      var uri = new (importDefault("sdk.URI"))(
+                        this._iframeOptions.url
+                      );
+
+                      this._iframeOptions.url = uri
+                        .setPath(
+                          "/" +
+                            importDefault("sdk.Runtime").getVersion() +
+                            uri.getPath()
+                        )
+                        .toString();
+                    }
+
+                    var params = babelHelpers["extends"]({}, this._params);
+                    delete params.channel;
+                    var query = importDefault("QueryString").encode(params);
+
+                    if (
+                      this._element.getAttribute("fb-iframe-plugin-query") ==
+                      query
+                    ) {
+                      importNamespace("Log").info(
+                        "Skipping render: %s:%s %s",
+                        this._ns,
+                        this._tag,
+                        query
+                      );
+
+                      this.inform("render");
+                      return;
+                    }
+
+                    this._element.setAttribute("fb-iframe-plugin-query", query);
+
+                    this.subscribe("render", function subscribe_$1() {
+                      importNamespace("sdk.Event").fire("iframeplugin:onload");
+
+                      _this2._iframe.style.visibility = "visible";
+
+                      if (!_this2._isIframeResized) {
+                        importNamespace("sdk.PluginUtils").collapseIframe(
+                          _this2._iframe
+                        );
+                      }
+                    });
+
+                    while (this._element.firstChild) {
+                      this._element.removeChild(this._element.firstChild);
+                    }
+
+                    this._element.appendChild(this._iframeOptions.root);
+                    var timeout = importDefault("sdk.UA").mobile() ? 120 : 45;
+
+                    this._timeoutID = window.setTimeout(
+                      function window_setTimeout_$0() {
+                        importNamespace("sdk.PluginUtils").collapseIframe(
+                          _this2._iframe
+                        );
+
+                        importNamespace("Log").warn(
+                          "%s:%s failed to resize in %ss",
+                          _this2._ns,
+                          _this2._tag,
+                          timeout
+                        );
+                      },
+                      timeout * 1000
+                    );
+
+                    this._iframe = importDefault("sdk.createIframe")(
+                      this._iframeOptions
+                    );
+                    importNamespace("sdk.Event").fire("iframeplugin:create");
+
+                    if (
+                      importDefault("sdk.UA").mobile() ||
+                      params.width === "auto"
+                    ) {
+                      if (this.useInlineHeightForMobile()) {
+                        importNamespace("sdk.DOM").addCss(
+                          this._element,
+                          "fb_iframe_widget_fluid"
+                        );
+                      }
+
+                      if (!this._iframeOptions.width) {
+                        ES("Object", "assign", false, this._element.style, {
+                          display: "block",
+                          width: "100%",
+                          height: "auto",
+                        });
+
+                        ES(
+                          "Object",
+                          "assign",
+                          false,
+                          this._iframeOptions.root.style,
+                          {
+                            width: "100%",
+                            height: "auto",
+                          }
+                        );
+
+                        var iframeStyle = {
+                          height: "auto",
+                          position: "static",
+                          width: "100%",
+                        };
+
+                        if (
+                          importDefault("sdk.UA").iphone() ||
+                          importDefault("sdk.UA").ipad()
+                        ) {
+                          ES("Object", "assign", false, iframeStyle, {
+                            width: "220px",
+                            "min-width": "100%",
+                          });
+                        }
+
+                        ES(
+                          "Object",
+                          "assign",
+                          false,
+                          this._iframe.style,
+                          iframeStyle
+                        );
+                      }
+                    }
+                  },
+
+                  getConfig: function getConfig() {
+                    return {};
+                  },
+
+                  isFluid: function isFluid() {
+                    var config = this.getConfig();
+                    return config.fluid;
+                  },
+
+                  updateLift: function updateLift() {
+                    var same =
+                      this._iframe.style.width ===
+                        this._iframeOptions.root.style.width &&
+                      this._iframe.style.height ===
+                        this._iframeOptions.root.style.height;
+
+                    importNamespace("sdk.DOM")[same ? "removeCss" : "addCss"](
+                      this._iframe,
+                      "fb_iframe_widget_lift"
+                    );
+                  },
+                },
+                importDefault("ObservableMixin")
+              );
+
+              IframePlugin.withParams = function (params, config) {
+                return IframePlugin.extend({
+                  getParams: function getParams() {
+                    return params;
+                  },
+
+                  getConfig: function getConfig() {
+                    return config ? config : {};
+                  },
+                });
+              };
+              var _default = IframePlugin;
+              exports["default"] = _default;
+            },
+            98
+          );
+          __d(
+            "PluginConfig",
+            ["sdk.feature"],
+            function $module_PluginConfig(
+              global,
+              require,
+              importDefault,
+              importNamespace,
+              requireLazy,
+              module,
+              exports
+            ) {
+              var comment_embed = {
+                mobile_fullsize: true,
+              };
+
+              var messengerpreconfirmation = {
+                mobile_fullsize: true,
+              };
+
+              var messengeraccountconfirmation = {
+                mobile_fullsize: true,
+              };
+
+              var messengerbusinesslink = {
+                mobile_fullsize: true,
+              };
+
+              var messengertoggle = {
+                mobile_fullsize: true,
+              };
+
+              var post = {
+                fluid: importDefault("sdk.feature")("fluid_embed", false),
+                mobile_fullsize: true,
+              };
+
+              var PluginConfig = {
+                comment_embed: comment_embed,
+                messengerpreconfirmation: messengerpreconfirmation,
+                messengeraccountconfirmation: messengeraccountconfirmation,
+                messengerbusinesslink: messengerbusinesslink,
+                messengertoggle: messengertoggle,
+                post: post,
+              };
+              var _default = PluginConfig;
+              exports["default"] = _default;
+            },
+            98
+          );
+          __d(
+            "PluginAttrTypes",
+            [],
+            function $module_PluginAttrTypes(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
             ) {
               "use strict";
 
-              require("FB").provide("", { init: require("sdk.init") });
+              var string = "string";
 
-              require("sdk.Event").subscribe(
-                "init:post",
-                function Event_subscribe_$1() {
-                  if (__buffer) {
-                    __buffer.replay();
-                  }
-                }
-              );
-
-              window.setTimeout(function window_setTimeout_$0() {
-                if (__buffer && __buffer.opts) {
-                  require("sdk.init")(__buffer.opts);
-                }
-              }, 0);
+              var bool = "bool";
+              var url = "url";
+              exports.string = string;
+              exports.bool = bool;
+              exports.url = url;
             },
-            3
+            66
           );
           __d(
-            "legacy:fb.json",
-            ["FB", "ManagedError"],
-            function $module_legacy_fb_json(
+            "PluginTags",
+            ["PluginAttrTypes"],
+            function $module_PluginTags(
               global,
               require,
-              requireDynamic,
+              importDefault,
+              importNamespace,
               requireLazy,
-              __DO_NOT_USE__module,
-              __DO_NOT_USE__exports
+              module,
+              exports
             ) {
-              require("FB").provide("JSON", {
-                stringify: function stringify(obj) {
-                  try {
-                    return ES("JSON", "stringify", false, obj);
-                  } catch (e) {
-                    throw new (require("ManagedError"))(e.message, e);
-                  }
+              var PluginTags = {
+                ad_library_spend_tracker: {
+                  country: importNamespace("PluginAttrTypes").string,
+                  time_preset: importNamespace("PluginAttrTypes").string,
+                  custom_start_date: importNamespace("PluginAttrTypes").string,
+                  custom_end_date: importNamespace("PluginAttrTypes").string,
+                  race_type: importNamespace("PluginAttrTypes").string,
+                  state: importNamespace("PluginAttrTypes").string,
+                  district: importNamespace("PluginAttrTypes").string,
+                  page_ids: importNamespace("PluginAttrTypes").string,
+                  include_vps: importNamespace("PluginAttrTypes").bool,
                 },
 
-                parse: function parse(str) {
-                  try {
-                    return ES("JSON", "parse", false, str);
-                  } catch (e) {
-                    throw new (require("ManagedError"))(e.message, e);
-                  }
-                }
+                comment_embed: {
+                  href: importNamespace("PluginAttrTypes").url,
+                  include_parent: importNamespace("PluginAttrTypes").bool,
+                },
+
+                composer: {
+                  action_type: importNamespace("PluginAttrTypes").string,
+                  action_properties: importNamespace("PluginAttrTypes").string,
+                },
+
+                create_event_button: {},
+
+                group: {
+                  href: importNamespace("PluginAttrTypes").url,
+                  show_social_context: importNamespace("PluginAttrTypes").bool,
+                  show_group_info: importNamespace("PluginAttrTypes").bool,
+                  show_metadata: importNamespace("PluginAttrTypes").bool,
+                },
+
+                like: {
+                  href: importNamespace("PluginAttrTypes").url,
+                  layout: importNamespace("PluginAttrTypes").string,
+                  show_faces: importNamespace("PluginAttrTypes").bool,
+                  share: importNamespace("PluginAttrTypes").bool,
+                  action: importNamespace("PluginAttrTypes").string,
+
+                  send: importNamespace("PluginAttrTypes").bool,
+                  size: importNamespace("PluginAttrTypes").string,
+                },
+
+                like_box: {
+                  href: importNamespace("PluginAttrTypes").string,
+                  show_faces: importNamespace("PluginAttrTypes").bool,
+                  header: importNamespace("PluginAttrTypes").bool,
+                  stream: importNamespace("PluginAttrTypes").bool,
+                  force_wall: importNamespace("PluginAttrTypes").bool,
+                  show_border: importNamespace("PluginAttrTypes").bool,
+
+                  id: importNamespace("PluginAttrTypes").string,
+                  connections: importNamespace("PluginAttrTypes").string,
+                  profile_id: importNamespace("PluginAttrTypes").string,
+                  name: importNamespace("PluginAttrTypes").string,
+                },
+
+                page: {
+                  href: importNamespace("PluginAttrTypes").string,
+                  hide_cta: importNamespace("PluginAttrTypes").bool,
+                  hide_cover: importNamespace("PluginAttrTypes").bool,
+                  small_header: importNamespace("PluginAttrTypes").bool,
+                  adapt_container_width:
+                    importNamespace("PluginAttrTypes").bool,
+                  show_facepile: importNamespace("PluginAttrTypes").bool,
+                  show_posts: importNamespace("PluginAttrTypes").bool,
+                  tabs: importNamespace("PluginAttrTypes").string,
+                },
+
+                page_events: {
+                  href: importNamespace("PluginAttrTypes").url,
+                },
+
+                post: {
+                  href: importNamespace("PluginAttrTypes").url,
+                  show_text: importNamespace("PluginAttrTypes").bool,
+                },
+
+                profile_pic: {
+                  uid: importNamespace("PluginAttrTypes").string,
+                  linked: importNamespace("PluginAttrTypes").bool,
+                  href: importNamespace("PluginAttrTypes").string,
+                  size: importNamespace("PluginAttrTypes").string,
+                  facebook_logo: importNamespace("PluginAttrTypes").bool,
+                },
+
+                send_to_mobile: {
+                  max_rows: importNamespace("PluginAttrTypes").string,
+                  show_faces: importNamespace("PluginAttrTypes").bool,
+                  size: importNamespace("PluginAttrTypes").string,
+                },
+              };
+
+              var aliases = {
+                fan: "like_box",
+                likebox: "like_box",
+              };
+
+              Object.keys(aliases).forEach(function forEach_$0(key) {
+                PluginTags[key] = PluginTags[aliases[key]];
               });
+              var _default = PluginTags;
+              exports["default"] = _default;
             },
-            3
+            98
           );
           __d(
             "runOnce",
@@ -19298,7 +20137,7 @@ try {
                 var hasRun = false;
                 var result;
 
-                return function() {
+                return function () {
                   if (!hasRun) {
                     hasRun = true;
                     result = func();
@@ -19309,209 +20148,6 @@ try {
               exports["default"] = runOnce;
             },
             66
-          );
-          __d(
-            "sdk.Time",
-            ["Log", "sdk.Impressions", "sdk.Runtime", "sdk.feature"],
-            function $module_sdk_Time(
-              global,
-              require,
-              importDefault,
-              importNamespace,
-              requireLazy,
-              module,
-              exports
-            ) {
-              "use strict";
-
-              var perf = window.performance;
-
-              var couldLog =
-                perf && "now" in perf && "getEntriesByName" in perf;
-
-              var startTime;
-              var data = {};
-
-              if (couldLog) {
-                var sdkurl = importDefault("sdk.Runtime").getSDKUrl();
-                var bootloadedTiming = null;
-                var timing = perf
-                  .getEntriesByType("resource")
-                  .filter(function filter_$0(t) {
-                    return ES(t.name, "startsWith", true, sdkurl);
-                  });
-
-                if (timing.length > 1) {
-                  if (timing > 2) {
-                    timing = null;
-                  } else {
-                    var bootId = ES(
-                      timing,
-                      "findIndex",
-                      true,
-                      function timing_findIndex_$0(t) {
-                        return ES(
-                          t.name,
-                          "startsWith",
-                          true,
-                          sdkurl + "?hash="
-                        );
-                      }
-                    );
-
-                    if (!bootId) {
-                      timing = null;
-                    } else {
-                      bootloadedTiming = timing.splice(bootId)[0];
-                      timing = timing[0];
-                    }
-                  }
-                } else if (timing.length === 1) {
-                  var frame = document.getElementById("facebook-jssdk-iframe");
-                  if (frame && frame instanceof HTMLIFrameElement) {
-                    bootloadedTiming = frame.contentWindow.performance
-                      .getEntriesByType("resource")
-                      .find(function find_$0(t) {
-                        return ES(t.name, "startsWith", true, sdkurl);
-                      });
-                  }
-                  timing = timing[0];
-                } else {
-                  timing = null;
-                }
-
-                if (timing) {
-                  data.fetchTime = Math.round(timing.duration);
-                  if (bootloadedTiming) {
-                    data.fetchTime += Math.round(bootloadedTiming.duration);
-                  }
-
-                  if ("transferSize" in timing) {
-                    data.transferSize = timing.transferSize;
-                    if (bootloadedTiming) {
-                      data.transferSize += bootloadedTiming.transferSize;
-                    }
-                  }
-                  importNamespace("Log").debug(
-                    "sdkperf: it took %s ms and %s bytes to load %s",
-                    data.fetchTime,
-                    data.transferSize,
-                    sdkurl
-                  );
-
-                  startTime = timing.startTime;
-
-                  data.ns = importDefault("sdk.Runtime").getSDKNS();
-
-                  if (startTime) {
-                    window.setTimeout(function window_setTimeout_$0() {
-                      var shouldLog = importDefault("sdk.feature")(
-                        "log_perf",
-                        false
-                      );
-                      var testId = importDefault("sdk.Runtime").getSDKAB();
-                      if (testId) {
-                        data.ab = testId;
-                        shouldLog = true;
-                      }
-                      if (shouldLog) {
-                        importNamespace("sdk.Impressions").log(116, data);
-                      }
-                    }, 10000);
-                  }
-                }
-              }
-
-              function log(key) {
-                if (!couldLog || !startTime) {
-                  return;
-                }
-                data[key] = Math.round(perf.now() - startTime);
-                importNamespace("Log").debug(
-                  "sdkperf: %s logged after %s ms",
-                  key,
-                  data[key]
-                );
-              }
-              exports.log = log;
-            },
-            98
-          );
-          __d(
-            "legacy:fb.time",
-            ["runOnce", "sdk.Event", "sdk.Time"],
-            function $module_legacy_fb_time(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              __DO_NOT_USE__module,
-              __DO_NOT_USE__exports
-            ) {
-              "use strict";
-              var sdkEvent;
-
-              (sdkEvent = require("sdk.Event")).subscribe(
-                "init:post",
-                function Event_subscribe_$1() {
-                  require("sdk.Time").log("init");
-                }
-              );
-
-              sdkEvent.subscribe(
-                "init:asyncstart",
-                function Event_subscribe_$1() {
-                  require("sdk.Time").log("asyncstart");
-                }
-              );
-
-              sdkEvent.subscribe(
-                "iframeplugin:create",
-                require("runOnce")(function runOnce_$0() {
-                  return require("sdk.Time").log("pluginframe");
-                })
-              );
-
-              sdkEvent.subscribe(
-                "iframeplugin:onload",
-                require("runOnce")(function runOnce_$0() {
-                  return require("sdk.Time").log("ttfp");
-                })
-              );
-            },
-            3
-          );
-          __d(
-            "legacy:fb.ua",
-            ["FB", "sdk.UA"],
-            function $module_legacy_fb_ua(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              __DO_NOT_USE__module,
-              __DO_NOT_USE__exports
-            ) {
-              require("FB").provide("UA", {
-                nativeApp: require("sdk.UA").nativeApp
-              });
-            },
-            3
-          );
-          __d(
-            "legacy:fb.ui",
-            ["FB", "sdk.ui"],
-            function $module_legacy_fb_ui(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              __DO_NOT_USE__module,
-              __DO_NOT_USE__exports
-            ) {
-              require("FB").provide("", { ui: require("sdk.ui") });
-            },
-            3
           );
           __d(
             "XFBML",
@@ -19532,7 +20168,7 @@ try {
 
               var observable = new (importNamespace(
                 "sdk.Observable"
-              )).Observable();
+              ).Observable)();
 
               function propStr(object, property) {
                 return (object[property] + "").trim();
@@ -19645,6 +20281,7 @@ try {
 
                   count++;
                   tags++;
+
                   var renderer = new info.ctor(
                     element,
                     info.xmlns,
@@ -19720,7 +20357,7 @@ try {
                   var _dom, _cb;
                   _parse(
                     (_dom = dom) != null ? _dom : document.body,
-                    (_cb = cb) != null ? _cb : function() {},
+                    (_cb = cb) != null ? _cb : function () {},
                     true
                   );
                 },
@@ -19729,1076 +20366,9 @@ try {
                   _parse(document.body, function _parse_$1() {}, false);
                 },
                 subscribe: observable.subscribe,
-                unsubscribe: observable.unsubscribe
+                unsubscribe: observable.unsubscribe,
               };
               var _default = XFBML;
-              exports["default"] = _default;
-            },
-            98
-          );
-          __d(
-            "legacy:fb.xfbml",
-            [
-              "AssertionError",
-              "FB",
-              "XFBML",
-              "sdk.Event",
-              "sdk.domReady",
-              "wrapFunction"
-            ],
-            function $module_legacy_fb_xfbml(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              __DO_NOT_USE__module,
-              __DO_NOT_USE__exports
-            ) {
-              require("FB").provide("XFBML", {
-                parse: function parse(dom) {
-                  if (
-                    dom != null &&
-                    !(
-                      (dom.nodeType === 1 || dom.nodeType === 9) &&
-                      typeof dom.nodeName === "string"
-                    )
-                  ) {
-                    throw new (require("AssertionError"))("Invalid argument");
-                  }
-
-                  if (dom && dom.nodeType === 9) {
-                    dom = dom.body;
-                  }
-                  return require("XFBML").parse.apply(null, arguments);
-                }
-              });
-
-              require("XFBML").subscribe("parse", function XFBML_subscribe_$1(
-                counts
-              ) {
-                return require("sdk.Event").fire(
-                  "xfbml.parse",
-                  counts[0],
-                  counts[1]
-                );
-              });
-
-              require("XFBML").subscribe("render", function XFBML_subscribe_$1(
-                counts
-              ) {
-                return require("sdk.Event").fire(
-                  "xfbml.render",
-                  counts[0],
-                  counts[1]
-                );
-              });
-
-              require("sdk.Event").subscribe(
-                "init:post",
-                function Event_subscribe_$1(options) {
-                  if (options.xfbml) {
-                    setTimeout(
-                      require("wrapFunction")(
-                        ES(
-                          require("sdk.domReady"),
-                          "bind",
-                          true,
-                          null,
-                          require("XFBML").parse
-                        ),
-                        "entry",
-                        "init:post:xfbml.parse"
-                      ),
-
-                      0
-                    );
-                  }
-                }
-              );
-
-              try {
-                if (document.namespaces && !document.namespaces.item.fb) {
-                  document.namespaces.add("fb");
-                }
-              } catch (e) {}
-            },
-            3
-          );
-          __d(
-            "sdk.PluginUtils",
-            ["resolveURI", "sdk.Event"],
-            function $module_sdk_PluginUtils(
-              global,
-              require,
-              importDefault,
-              importNamespace,
-              requireLazy,
-              module,
-              exports
-            ) {
-              var types = {
-                string: function string(value) {
-                  return value;
-                },
-                bool: function bool(value) {
-                  return value != null
-                    ? /^(?:true|1|yes|on)$/i.test(value)
-                    : undefined;
-                },
-                url: function url(value) {
-                  return importDefault("resolveURI")(value);
-                },
-                url_maybe: function url_maybe(value) {
-                  return value != null && value !== ""
-                    ? importDefault("resolveURI")(value)
-                    : undefined;
-                },
-                hostname: function hostname(value) {
-                  return value != null && value !== ""
-                    ? value
-                    : "window.location.hostname";
-                },
-                px: function px(value) {
-                  if (typeof value === "string") {
-                    var match = value.match(/^(\d+)(?:px)?$/);
-                    return match != null ? parseInt(match[0], 10) : undefined;
-                  } else if (typeof value === "number") {
-                    return value;
-                  } else {
-                    return undefined;
-                  }
-                },
-                text: function text(value) {
-                  return value;
-                }
-              };
-
-              function getVal(attr, key) {
-                var _ref, _ref2, _ref3, _ref4, _ref5, _attr$key;
-                var val =
-                  (_ref =
-                    (_ref2 =
-                      (_ref3 =
-                        (_ref4 =
-                          (_ref5 =
-                            (_attr$key = attr[key]) != null
-                              ? _attr$key
-                              : attr[key.replace(/_/g, "-")]) != null
-                            ? _ref5
-                            : attr[key.replace(/_/g, "")]) != null
-                          ? _ref4
-                          : attr["data-" + key]) != null
-                        ? _ref3
-                        : attr["data-" + key.replace(/_/g, "-")]) != null
-                      ? _ref2
-                      : attr["data-" + key.replace(/_/g, "")]) != null
-                    ? _ref
-                    : undefined;
-                return val;
-              }
-
-              function validate(defn, elem, attr, params) {
-                Object.keys(defn).forEach(function forEach_$0(key) {
-                  if (defn[key] === "text" && !attr[key]) {
-                    var _ref6, _elem$textContent;
-                    attr[key] =
-                      (_ref6 =
-                        (_elem$textContent = elem.textContent) != null
-                          ? _elem$textContent
-                          : elem.innerText) != null
-                        ? _ref6
-                        : undefined;
-                    elem.setAttribute(key, attr[key]);
-                  }
-                  params[key] = types[defn[key]](getVal(attr, key));
-                });
-              }
-
-              function resize(elem, width, height) {
-                if (width === "100%") {
-                  elem.style.width = "100%";
-                } else if (width != null && width !== "") {
-                  elem.style.width = width + "px";
-                }
-
-                if ((height != null && height !== "") || height === 0) {
-                  elem.style.height = height + "px";
-                }
-              }
-
-              function resizeBubbler(pluginID) {
-                return function(msg) {
-                  var message = {
-                    width: msg.width,
-                    height: msg.height,
-                    pluginID: pluginID
-                  };
-                  importNamespace("sdk.Event").fire("xfbml.resize", message);
-                };
-              }
-
-              function parse(dim) {
-                if (dim === "100%") {
-                  return "100%";
-                }
-
-                return dim != null ? parseInt(dim, 10) : undefined;
-              }
-
-              function collapseIframe(iframe) {
-                if (iframe != null) {
-                  resize(iframe, 0, 0);
-                }
-              }
-
-              var baseParams = {
-                skin: "string",
-                font: "string",
-                width: "string",
-                height: "px",
-                ref: "string",
-                lazy: "bool",
-                color_scheme: "string"
-              };
-              exports.getVal = getVal;
-              exports.validate = validate;
-              exports.resize = resize;
-              exports.resizeBubbler = resizeBubbler;
-              exports.parse = parse;
-              exports.collapseIframe = collapseIframe;
-              exports.baseParams = baseParams;
-            },
-            98
-          );
-          __d(
-            "isNumberLike",
-            [],
-            function $module_isNumberLike(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              function isNumberLike(n) {
-                return !isNaN(parseFloat(n)) && isFinite(n);
-              }
-              exports["default"] = isNumberLike;
-            },
-            66
-          );
-          __d(
-            "sdk.createIframe",
-            ["DOMEventListener", "getBlankIframeSrc", "guid", "isNumberLike"],
-            function $module_sdk_createIframe(
-              global,
-              require,
-              importDefault,
-              importNamespace,
-              requireLazy,
-              module,
-              exports
-            ) {
-              function createIframe(opts_arg) {
-                var opts = ES("Object", "assign", false, {}, opts_arg);
-                var frame;
-                var name = opts.name || importDefault("guid")();
-                var root = opts.root;
-                var style = opts.style || { border: "none" };
-                var src = opts.url;
-                var onLoad = opts.onload;
-                var onError = opts.onerror;
-
-                frame = document.createElement("iframe");
-                frame.name = name;
-
-                delete opts.style;
-                delete opts.name;
-                delete opts.url;
-                delete opts.root;
-                delete opts.onload;
-                delete opts.onerror;
-                delete opts.height;
-                delete opts.width;
-
-                if (opts.frameBorder === undefined) {
-                  opts.frameBorder = 0;
-                }
-
-                if (opts.allowTransparency === undefined) {
-                  opts.allowTransparency = true;
-                }
-
-                if (opts.allowFullscreen === undefined) {
-                  opts.allowFullscreen = true;
-                }
-
-                if (opts.scrolling === undefined) {
-                  opts.scrolling = "no";
-                }
-
-                if (opts.allow === undefined) {
-                  opts.allow = "encrypted-media";
-                }
-
-                if (opts.lazy) {
-                  opts.loading = "lazy";
-
-                  if (style.visibility) {
-                    delete style.visibility;
-                  }
-                }
-                delete opts.lazy;
-
-                if (
-                  opts_arg.width != null &&
-                  importDefault("isNumberLike")(opts_arg.width)
-                ) {
-                  frame.width = opts_arg.width + "px";
-                }
-                if (
-                  opts_arg.height != null &&
-                  importDefault("isNumberLike")(opts_arg.height)
-                ) {
-                  frame.height = opts_arg.height + "px";
-                }
-
-                if (opts.testid && frame.dataset != null) {
-                  frame.dataset.testid = opts.testid;
-                  delete opts.testid;
-                }
-
-                for (var key in opts) {
-                  if (Object.prototype.hasOwnProperty.call(opts, key)) {
-                    frame.setAttribute(key, opts[key]);
-                  }
-                }
-
-                ES("Object", "assign", false, frame.style, style);
-
-                frame.src = importDefault("getBlankIframeSrc")();
-                if (root != null) {
-                  root.appendChild(frame);
-                }
-                if (onLoad) {
-                  var onLoadListener = importNamespace("DOMEventListener").add(
-                    frame,
-                    "load",
-                    function DOMEventListener_add_$2() {
-                      onLoadListener.remove();
-                      onLoad();
-                    }
-                  );
-                }
-
-                if (onError) {
-                  var onErrorListener = importNamespace("DOMEventListener").add(
-                    frame,
-                    "error",
-                    function DOMEventListener_add_$2() {
-                      onErrorListener.remove();
-                      onError();
-                    }
-                  );
-                }
-
-                frame.src = src;
-                return frame;
-              }
-              exports["default"] = createIframe;
-            },
-            98
-          );
-          __d(
-            "IframePlugin",
-            [
-              "Log",
-              "ObservableMixin",
-              "QueryString",
-              "Type",
-              "UrlMap",
-              "guid",
-              "sdk.Auth",
-              "sdk.AuthUtils",
-              "sdk.DOM",
-              "sdk.Event",
-              "sdk.PlatformVersioning",
-              "sdk.PluginUtils",
-              "sdk.Runtime",
-              "sdk.UA",
-              "sdk.URI",
-              "sdk.XD",
-              "sdk.createIframe"
-            ],
-            function $module_IframePlugin(
-              global,
-              require,
-              importDefault,
-              importNamespace,
-              requireLazy,
-              module,
-              exports
-            ) {
-              var IframePlugin = importDefault("Type").extend(
-                {
-                  constructor: function constructor(elem, ns, tag, attr) {
-                    var _this = this;
-
-                    this.parent();
-                    tag = tag.replace(/-/g, "_");
-
-                    var pluginId = importNamespace("sdk.PluginUtils").getVal(
-                      attr,
-                      "plugin_id"
-                    );
-
-                    this.subscribe(
-                      "xd.resize",
-                      importNamespace("sdk.PluginUtils").resizeBubbler(pluginId)
-                    );
-
-                    this.subscribe(
-                      "xd.resize.flow",
-                      importNamespace("sdk.PluginUtils").resizeBubbler(pluginId)
-                    );
-
-                    this.subscribe("xd.resize.flow", function subscribe_$1(
-                      message
-                    ) {
-                      ES(
-                        "Object",
-                        "assign",
-                        false,
-                        _this._iframeOptions.root.style,
-                        {
-                          verticalAlign: "bottom",
-                          overflow: ""
-                        }
-                      );
-
-                      importNamespace("sdk.PluginUtils").resize(
-                        _this._iframeOptions.root,
-                        importNamespace("sdk.PluginUtils").parse(message.width),
-                        importNamespace("sdk.PluginUtils").parse(message.height)
-                      );
-
-                      _this.updateLift();
-
-                      window.clearTimeout(_this._timeoutID);
-                    });
-
-                    this.subscribe("xd.resize", function subscribe_$1(message) {
-                      ES(
-                        "Object",
-                        "assign",
-                        false,
-                        _this._iframeOptions.root.style,
-                        {
-                          verticalAlign: "bottom",
-                          overflow: ""
-                        }
-                      );
-
-                      importNamespace("sdk.PluginUtils").resize(
-                        _this._iframeOptions.root,
-                        importNamespace("sdk.PluginUtils").parse(message.width),
-                        importNamespace("sdk.PluginUtils").parse(message.height)
-                      );
-
-                      importNamespace("sdk.PluginUtils").resize(
-                        _this._iframe,
-                        importNamespace("sdk.PluginUtils").parse(message.width),
-                        importNamespace("sdk.PluginUtils").parse(message.height)
-                      );
-
-                      _this._isIframeResized = true;
-
-                      _this.updateLift();
-
-                      window.clearTimeout(_this._timeoutID);
-                    });
-
-                    this.subscribe("xd.resize.iframe", function subscribe_$1(
-                      message
-                    ) {
-                      importNamespace("sdk.PluginUtils").resize(
-                        _this._iframe,
-                        importNamespace("sdk.PluginUtils").parse(message.width),
-                        importNamespace("sdk.PluginUtils").parse(message.height)
-                      );
-
-                      _this._isIframeResized = true;
-
-                      _this.updateLift();
-
-                      window.clearTimeout(_this._timeoutID);
-                    });
-
-                    this.subscribe("xd.sdk_event", function subscribe_$1(
-                      message
-                    ) {
-                      var data = ES("JSON", "parse", false, message.data);
-                      data.pluginID = pluginId;
-                      importNamespace("sdk.Event").fire(
-                        message.event,
-                        data,
-                        elem
-                      );
-                    });
-
-                    var url =
-                      importNamespace("UrlMap").resolve("www") +
-                      "/plugins/" +
-                      tag +
-                      ".php?";
-                    var params = {};
-
-                    importNamespace("sdk.PluginUtils").validate(
-                      this.getParams(),
-                      elem,
-                      attr,
-                      params
-                    );
-                    importNamespace("sdk.PluginUtils").validate(
-                      importNamespace("sdk.PluginUtils").baseParams,
-                      elem,
-                      attr,
-                      params
-                    );
-
-                    ES("Object", "assign", false, params, {
-                      app_id: importDefault("sdk.Runtime").getClientID(),
-                      locale: importDefault("sdk.Runtime").getLocale(),
-                      sdk: "joey",
-                      kid_directed_site: importDefault(
-                        "sdk.Runtime"
-                      ).getKidDirectedSite(),
-                      channel: importNamespace("sdk.XD").handler(
-                        function XD_handler_$0(msg) {
-                          if (msg != null) {
-                            _this.inform("xd." + msg.type, msg);
-                          }
-                        },
-                        "parent.parent",
-                        true
-                      )
-                    });
-
-                    if (this.shouldIgnoreWidth()) {
-                      params.width = void 0;
-                    }
-
-                    params.container_width = elem.offsetWidth;
-
-                    importNamespace("sdk.DOM").addCss(elem, "fb_iframe_widget");
-                    var name = importDefault("guid")();
-
-                    this.subscribe("xd.verify", function subscribe_$1(msg) {
-                      importNamespace("sdk.XD").sendToFacebook(name, {
-                        method: "xd/verify",
-                        params: ES("JSON", "stringify", false, msg.token)
-                      });
-                    });
-
-                    this.subscribe(
-                      "xd.refreshLoginStatus",
-                      function subscribe_$1() {
-                        importNamespace("sdk.AuthUtils").removeLogoutState();
-                        importDefault("sdk.Auth").getLoginStatus(
-                          ES(_this.inform, "bind", true, _this, "login.status"),
-                          true
-                        );
-                      }
-                    );
-
-                    var flow = document.createElement("span");
-
-                    ES("Object", "assign", false, flow.style, {
-                      verticalAlign: "top",
-                      width: params.lazy ? "1px" : "0px",
-                      height: params.lazy ? "1px" : "0px",
-                      overflow: "hidden"
-                    });
-
-                    this._element = elem;
-
-                    this._ns = ns;
-
-                    this._tag = tag;
-
-                    this._params = params;
-
-                    this._config = this.getConfig();
-
-                    this._iframeOptions = {
-                      root: flow,
-                      url: url + importDefault("QueryString").encode(params),
-                      name: name,
-
-                      width:
-                        this._config.mobile_fullsize &&
-                        importDefault("sdk.UA").mobile()
-                          ? void 0
-                          : params.width || 1000,
-                      height: params.height || 1000,
-                      style: {
-                        border: "none",
-                        visibility: "hidden"
-                      },
-
-                      title:
-                        this._ns + ":" + this._tag + " Facebook Social Plugin",
-
-                      testid:
-                        this._ns + ":" + this._tag + " Facebook Social Plugin",
-
-                      onload: function onload() {
-                        return _this.inform("render");
-                      },
-
-                      onerror: function onerror() {
-                        return importNamespace(
-                          "sdk.PluginUtils"
-                        ).collapseIframe(_this._iframe);
-                      },
-                      lazy: params.lazy
-                    };
-
-                    if (this.isFluid() && params.width !== "auto") {
-                      importNamespace("sdk.DOM").addCss(
-                        this._element,
-                        "fb_iframe_widget_fluid_desktop"
-                      );
-
-                      if (!params.width && this._config.full_width) {
-                        this._element.style.width = "100%";
-
-                        this._iframeOptions.root.style.width = "100%";
-
-                        this._iframeOptions.style.width = "100%";
-
-                        this._params.container_width = this._element.offsetWidth;
-
-                        this._iframeOptions.url =
-                          url +
-                          importDefault("QueryString").encode(this._params);
-                      }
-                    }
-                  },
-
-                  shouldIgnoreWidth: function shouldIgnoreWidth() {
-                    return (
-                      importDefault("sdk.UA").mobile() &&
-                      this.getConfig().mobile_fullsize
-                    );
-                  },
-
-                  useInlineHeightForMobile: function useInlineHeightForMobile() {
-                    return true;
-                  },
-
-                  process: function process() {
-                    var _this2 = this;
-                    if (importDefault("sdk.Runtime").getIsVersioned()) {
-                      importNamespace(
-                        "sdk.PlatformVersioning"
-                      ).assertVersionIsSet();
-
-                      var uri = new (importDefault("sdk.URI"))(
-                        this._iframeOptions.url
-                      );
-
-                      this._iframeOptions.url = uri
-                        .setPath(
-                          "/" +
-                            importDefault("sdk.Runtime").getVersion() +
-                            uri.getPath()
-                        )
-                        .toString();
-                    }
-
-                    var params = babelHelpers["extends"]({}, this._params);
-                    delete params.channel;
-                    var query = importDefault("QueryString").encode(params);
-
-                    if (
-                      this._element.getAttribute("fb-iframe-plugin-query") ==
-                      query
-                    ) {
-                      importNamespace("Log").info(
-                        "Skipping render: %s:%s %s",
-                        this._ns,
-                        this._tag,
-                        query
-                      );
-
-                      this.inform("render");
-                      return;
-                    }
-
-                    this._element.setAttribute("fb-iframe-plugin-query", query);
-
-                    this.subscribe("render", function subscribe_$1() {
-                      importNamespace("sdk.Event").fire("iframeplugin:onload");
-
-                      _this2._iframe.style.visibility = "visible";
-
-                      if (!_this2._isIframeResized) {
-                        importNamespace("sdk.PluginUtils").collapseIframe(
-                          _this2._iframe
-                        );
-                      }
-                    });
-
-                    while (this._element.firstChild) {
-                      this._element.removeChild(this._element.firstChild);
-                    }
-
-                    this._element.appendChild(this._iframeOptions.root);
-                    var timeout = importDefault("sdk.UA").mobile() ? 120 : 45;
-
-                    this._timeoutID = window.setTimeout(
-                      function window_setTimeout_$0() {
-                        importNamespace("sdk.PluginUtils").collapseIframe(
-                          _this2._iframe
-                        );
-
-                        importNamespace("Log").warn(
-                          "%s:%s failed to resize in %ss",
-                          _this2._ns,
-                          _this2._tag,
-                          timeout
-                        );
-                      },
-                      timeout * 1000
-                    );
-
-                    this._iframe = importDefault("sdk.createIframe")(
-                      this._iframeOptions
-                    );
-                    importNamespace("sdk.Event").fire("iframeplugin:create");
-
-                    if (
-                      importDefault("sdk.UA").mobile() ||
-                      params.width === "auto"
-                    ) {
-                      if (this.useInlineHeightForMobile()) {
-                        importNamespace("sdk.DOM").addCss(
-                          this._element,
-                          "fb_iframe_widget_fluid"
-                        );
-                      }
-
-                      if (!this._iframeOptions.width) {
-                        ES("Object", "assign", false, this._element.style, {
-                          display: "block",
-                          width: "100%",
-                          height: "auto"
-                        });
-
-                        ES(
-                          "Object",
-                          "assign",
-                          false,
-                          this._iframeOptions.root.style,
-                          {
-                            width: "100%",
-                            height: "auto"
-                          }
-                        );
-
-                        var iframeStyle = {
-                          height: "auto",
-                          position: "static",
-                          width: "100%"
-                        };
-
-                        if (
-                          importDefault("sdk.UA").iphone() ||
-                          importDefault("sdk.UA").ipad()
-                        ) {
-                          ES("Object", "assign", false, iframeStyle, {
-                            width: "220px",
-                            "min-width": "100%"
-                          });
-                        }
-
-                        ES(
-                          "Object",
-                          "assign",
-                          false,
-                          this._iframe.style,
-                          iframeStyle
-                        );
-                      }
-                    }
-                  },
-
-                  getConfig: function getConfig() {
-                    return {};
-                  },
-
-                  isFluid: function isFluid() {
-                    var config = this.getConfig();
-                    return config.fluid;
-                  },
-
-                  updateLift: function updateLift() {
-                    var same =
-                      this._iframe.style.width ===
-                        this._iframeOptions.root.style.width &&
-                      this._iframe.style.height ===
-                        this._iframeOptions.root.style.height;
-
-                    importNamespace("sdk.DOM")[same ? "removeCss" : "addCss"](
-                      this._iframe,
-                      "fb_iframe_widget_lift"
-                    );
-                  }
-                },
-                importDefault("ObservableMixin")
-              );
-
-              IframePlugin.withParams = function(params, config) {
-                return IframePlugin.extend({
-                  getParams: function getParams() {
-                    return params;
-                  },
-
-                  getConfig: function getConfig() {
-                    return config ? config : {};
-                  }
-                });
-              };
-              var _default = IframePlugin;
-              exports["default"] = _default;
-            },
-            98
-          );
-          __d(
-            "PluginConfig",
-            ["sdk.feature"],
-            function $module_PluginConfig(
-              global,
-              require,
-              importDefault,
-              importNamespace,
-              requireLazy,
-              module,
-              exports
-            ) {
-              var comment_embed = {
-                mobile_fullsize: true
-              };
-
-              var messengerpreconfirmation = {
-                mobile_fullsize: true
-              };
-
-              var messengeraccountconfirmation = {
-                mobile_fullsize: true
-              };
-
-              var messengerbusinesslink = {
-                mobile_fullsize: true
-              };
-
-              var messengertoggle = {
-                mobile_fullsize: true
-              };
-
-              var messengermessageus = {
-                mobile_fullsize: true
-              };
-
-              var post = {
-                fluid: importDefault("sdk.feature")("fluid_embed", false),
-                mobile_fullsize: true
-              };
-
-              var send_to_messenger = {
-                mobile_fullsize: true
-              };
-              exports.comment_embed = comment_embed;
-              exports.messengerpreconfirmation = messengerpreconfirmation;
-              exports.messengeraccountconfirmation = messengeraccountconfirmation;
-              exports.messengerbusinesslink = messengerbusinesslink;
-              exports.messengertoggle = messengertoggle;
-              exports.messengermessageus = messengermessageus;
-              exports.post = post;
-              exports.send_to_messenger = send_to_messenger;
-            },
-            98
-          );
-          __d(
-            "PluginAttrTypes",
-            [],
-            function $module_PluginAttrTypes(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              "use strict";
-
-              var string = "string";
-
-              var bool = "bool";
-              var url = "url";
-              exports.string = string;
-              exports.bool = bool;
-              exports.url = url;
-            },
-            66
-          );
-          __d(
-            "PluginTags",
-            ["PluginAttrTypes"],
-            function $module_PluginTags(
-              global,
-              require,
-              importDefault,
-              importNamespace,
-              requireLazy,
-              module,
-              exports
-            ) {
-              var PluginTags = {
-                ad_library_spend_tracker: {
-                  country: importNamespace("PluginAttrTypes").string,
-                  time_preset: importNamespace("PluginAttrTypes").string,
-                  custom_start_date: importNamespace("PluginAttrTypes").string,
-                  custom_end_date: importNamespace("PluginAttrTypes").string,
-                  race_type: importNamespace("PluginAttrTypes").string,
-                  state: importNamespace("PluginAttrTypes").string,
-                  district: importNamespace("PluginAttrTypes").string,
-                  page_ids: importNamespace("PluginAttrTypes").string,
-                  include_vps: importNamespace("PluginAttrTypes").bool
-                },
-
-                comment_embed: {
-                  href: importNamespace("PluginAttrTypes").url,
-                  include_parent: importNamespace("PluginAttrTypes").bool
-                },
-
-                composer: {
-                  action_type: importNamespace("PluginAttrTypes").string,
-                  action_properties: importNamespace("PluginAttrTypes").string
-                },
-
-                create_event_button: {},
-
-                group: {
-                  href: importNamespace("PluginAttrTypes").url,
-                  show_social_context: importNamespace("PluginAttrTypes").bool,
-                  show_group_info: importNamespace("PluginAttrTypes").bool,
-                  show_metadata: importNamespace("PluginAttrTypes").bool
-                },
-
-                like: {
-                  href: importNamespace("PluginAttrTypes").url,
-                  layout: importNamespace("PluginAttrTypes").string,
-                  show_faces: importNamespace("PluginAttrTypes").bool,
-                  share: importNamespace("PluginAttrTypes").bool,
-                  action: importNamespace("PluginAttrTypes").string,
-
-                  send: importNamespace("PluginAttrTypes").bool,
-                  size: importNamespace("PluginAttrTypes").string
-                },
-
-                like_box: {
-                  href: importNamespace("PluginAttrTypes").string,
-                  show_faces: importNamespace("PluginAttrTypes").bool,
-                  header: importNamespace("PluginAttrTypes").bool,
-                  stream: importNamespace("PluginAttrTypes").bool,
-                  force_wall: importNamespace("PluginAttrTypes").bool,
-                  show_border: importNamespace("PluginAttrTypes").bool,
-
-                  id: importNamespace("PluginAttrTypes").string,
-                  connections: importNamespace("PluginAttrTypes").string,
-                  profile_id: importNamespace("PluginAttrTypes").string,
-                  name: importNamespace("PluginAttrTypes").string
-                },
-
-                page: {
-                  href: importNamespace("PluginAttrTypes").string,
-                  hide_cta: importNamespace("PluginAttrTypes").bool,
-                  hide_cover: importNamespace("PluginAttrTypes").bool,
-                  small_header: importNamespace("PluginAttrTypes").bool,
-                  adapt_container_width: importNamespace("PluginAttrTypes")
-                    .bool,
-                  show_facepile: importNamespace("PluginAttrTypes").bool,
-                  show_posts: importNamespace("PluginAttrTypes").bool,
-                  tabs: importNamespace("PluginAttrTypes").string
-                },
-
-                messenger_checkbox: {
-                  messenger_app_id: importNamespace("PluginAttrTypes").string,
-                  page_id: importNamespace("PluginAttrTypes").string,
-                  pixel_id: importNamespace("PluginAttrTypes").string,
-                  prechecked: importNamespace("PluginAttrTypes").bool,
-                  allow_login: importNamespace("PluginAttrTypes").bool,
-                  size: importNamespace("PluginAttrTypes").string,
-                  origin: importNamespace("PluginAttrTypes").string,
-                  user_ref: importNamespace("PluginAttrTypes").string,
-                  identity_match: importNamespace("PluginAttrTypes").string,
-                  center_align: importNamespace("PluginAttrTypes").bool
-                },
-
-                messengermessageus: {
-                  messenger_app_id: importNamespace("PluginAttrTypes").string,
-                  page_id: importNamespace("PluginAttrTypes").string,
-                  color: importNamespace("PluginAttrTypes").string,
-                  size: importNamespace("PluginAttrTypes").string
-                },
-
-                send_to_messenger: {
-                  messenger_app_id: importNamespace("PluginAttrTypes").string,
-                  page_id: importNamespace("PluginAttrTypes").string,
-                  color: importNamespace("PluginAttrTypes").string,
-                  size: importNamespace("PluginAttrTypes").string,
-                  enforce_login: importNamespace("PluginAttrTypes").bool,
-                  identity_match: importNamespace("PluginAttrTypes").string,
-                  origin: importNamespace("PluginAttrTypes").string,
-                  cta_text: importNamespace("PluginAttrTypes").string
-                },
-
-                page_events: {
-                  href: importNamespace("PluginAttrTypes").url
-                },
-
-                post: {
-                  href: importNamespace("PluginAttrTypes").url,
-                  show_text: importNamespace("PluginAttrTypes").bool
-                },
-
-                profile_pic: {
-                  uid: importNamespace("PluginAttrTypes").string,
-                  linked: importNamespace("PluginAttrTypes").bool,
-                  href: importNamespace("PluginAttrTypes").string,
-                  size: importNamespace("PluginAttrTypes").string,
-                  facebook_logo: importNamespace("PluginAttrTypes").bool
-                },
-
-                send_to_mobile: {
-                  max_rows: importNamespace("PluginAttrTypes").string,
-                  show_faces: importNamespace("PluginAttrTypes").bool,
-                  size: importNamespace("PluginAttrTypes").string
-                }
-              };
-
-              var aliases = {
-                fan: "like_box",
-                likebox: "like_box"
-              };
-
-              Object.keys(aliases).forEach(function forEach_$0(key) {
-                PluginTags[key] = PluginTags[aliases[key]];
-              });
-              var _default = PluginTags;
               exports["default"] = _default;
             },
             98
@@ -20814,7 +20384,7 @@ try {
               "sdk.PluginUtils",
               "sdk.Runtime",
               "sdk.UA",
-              "sdk.URI"
+              "sdk.URI",
             ],
             function $module_sdk_XFBML_Comments(
               global,
@@ -20858,7 +20428,7 @@ try {
                   height: "px",
                   ref: "string",
                   lazy: "bool",
-                  color_scheme: "string"
+                  color_scheme: "string",
                 },
 
                 importNamespace("sdk.PluginUtils").baseParams
@@ -20962,24 +20532,25 @@ try {
 
                   this.parent(elem, ns, tag, attr);
 
-                  this.subscribe("xd.sdk_event", function subscribe_$1(
-                    message
-                  ) {
-                    importNamespace("sdk.Event").fire(
-                      message.event,
-                      ES("JSON", "parse", false, message.data)
-                    );
-                  });
+                  this.subscribe(
+                    "xd.sdk_event",
+                    function subscribe_$1(message) {
+                      importNamespace("sdk.Event").fire(
+                        message.event,
+                        ES("JSON", "parse", false, message.data)
+                      );
+                    }
+                  );
                 },
                 getConfig: function getConfig() {
                   return {
                     fluid: true,
-                    full_width: true
+                    full_width: true,
                   };
                 },
                 getParams: function getParams() {
                   return params;
-                }
+                },
               });
               var _default = Comments;
               exports["default"] = _default;
@@ -21008,30 +20579,31 @@ try {
 
                   this.parent(elem, ns, "comments", attr);
 
-                  this.subscribe("xd.comment_count", function subscribe_$1(
-                    message
-                  ) {
-                    var data = ES("JSON", "parse", false, message.data);
-                    importNamespace("sdk.DOM").html(
-                      elem,
-                      importDefault("sprintf")(
-                        '<span class="fb_comments_count">%s</span>',
-                        data.count
-                      )
-                    );
+                  this.subscribe(
+                    "xd.comment_count",
+                    function subscribe_$1(message) {
+                      var data = ES("JSON", "parse", false, message.data);
+                      importNamespace("sdk.DOM").html(
+                        elem,
+                        importDefault("sprintf")(
+                          '<span class="fb_comments_count">%s</span>',
+                          data.count
+                        )
+                      );
 
-                    if (data.count > 0) {
+                      if (data.count > 0) {
+                        importNamespace("sdk.DOM").removeCss(
+                          elem,
+                          "fb_comments_count_zero"
+                        );
+                      }
                       importNamespace("sdk.DOM").removeCss(
                         elem,
-                        "fb_comments_count_zero"
+                        "fb_iframe_widget"
                       );
                     }
-                    importNamespace("sdk.DOM").removeCss(
-                      elem,
-                      "fb_iframe_widget"
-                    );
-                  });
-                }
+                  );
+                },
               });
               var _default = CommentsCount;
               exports["default"] = _default;
@@ -21079,26 +20651,26 @@ try {
                   isValid: {
                     value: function value(x) {
                       return getReverseMap(this).has(x);
-                    }
+                    },
                   },
 
                   cast: {
                     value: function value(x) {
                       return this.isValid(x) ? x : undefined;
-                    }
+                    },
                   },
 
                   members: {
                     value: function value() {
                       return getReverseMap(this).keys();
-                    }
+                    },
                   },
 
                   getName: {
                     value: function value(_value) {
                       return getReverseMap(this).get(_value);
-                    }
-                  }
+                    },
+                  },
                 })
               );
 
@@ -21120,24 +20692,24 @@ try {
                         return hasOwnProperty.call(this, x);
                       }
                       return false;
-                    }
+                    },
                   },
 
                   cast: {
-                    value: EnumPrototype.cast
+                    value: EnumPrototype.cast,
                   },
 
                   members: {
                     value: function value() {
                       return Object.getOwnPropertyNames(this).values();
-                    }
+                    },
                   },
 
                   getName: {
                     value: function value(_value2) {
                       return _value2;
-                    }
-                  }
+                    },
+                  },
                 })
               );
 
@@ -21170,7 +20742,7 @@ try {
                 MESSENGER_ICON: "messenger_icon",
                 CHAT_ROUND_ICON: "chat_round_icon",
                 CHAT_ANGULAR_ICON: "chat_angular_icon",
-                NONE: "none"
+                NONE: "none",
               });
               var _default = ChatPluginEntryPointIconEnum;
               exports["default"] = _default;
@@ -21192,7 +20764,7 @@ try {
                 NONE: "none",
                 CHAT: "chat",
                 HELP: "help",
-                ASK_US: "ask_us"
+                ASK_US: "ask_us",
               });
               var _default = ChatPluginEntryPointLabelEnum;
               exports["default"] = _default;
@@ -21212,7 +20784,7 @@ try {
             ) {
               var _default = Object.freeze({
                 STANDARD: "standard",
-                COMPACT: "compact"
+                COMPACT: "compact",
               });
               exports["default"] = _default;
             },
@@ -21245,8 +20817,8 @@ try {
                 importDefault("performance").timing &&
                 importDefault("performance").timing.navigationStart
               ) {
-                var navigationStart = importDefault("performance").timing
-                  .navigationStart;
+                var navigationStart =
+                  importDefault("performance").timing.navigationStart;
                 performanceAbsoluteNow = function performanceAbsoluteNow() {
                   return importDefault("performance").now() + navigationStart;
                 };
@@ -21276,15 +20848,22 @@ try {
             ) {
               "use strict";
 
-              function preLogging(event_name, params, calculate_loading_time) {
+              function preLogging(
+                should_use_new_domain,
+                event_name,
+                params,
+                calculate_loading_time
+              ) {
                 var _params$request_time;
                 if (calculate_loading_time === void 0) {
                   calculate_loading_time = true;
                 }
                 var request_time = importDefault("performanceAbsoluteNow")();
-                var uri =
-                  importNamespace("UrlMap").resolve("www") +
-                  "/plugins/customer_chat/SDK/";
+                var uri = should_use_new_domain
+                  ? importNamespace("UrlMap").resolve("social_plugin") +
+                    "/customer_chat/SDK/"
+                  : importNamespace("UrlMap").resolve("www") +
+                    "/plugins/customer_chat/SDK/";
                 var prev_time =
                   (_params$request_time = params.request_time) != null
                     ? _params$request_time
@@ -21299,7 +20878,7 @@ try {
                   "get",
                   babelHelpers["extends"]({}, params, {
                     event_name: event_name,
-                    loading_time: loading_time
+                    loading_time: loading_time,
                   }),
                   function CORSRequest_execute_$3() {
                     return null;
@@ -21311,12 +20890,168 @@ try {
             98
           );
           __d(
-            "ChatPluginStyleUtils",
-            [],
-            function $module_ChatPluginStyleUtils(
+            "LiveChatPluginConstants",
+            ["$InternalEnum"],
+            function $module_LiveChatPluginConstants(
               global,
               require,
               requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              "use strict";
+
+              var ARBITER_PREFIX = "LiveChatEvent/";
+
+              var MQTT = "mqtt";
+              var MQTTGatewayConnectionState = require("$InternalEnum")({
+                CONNECTED: "Connected",
+                CONNECTING: "Connecting",
+                DISCONNECTED: "Disconnected",
+              });
+
+              var LOGIN_CHECK_INTERVAL = 250;
+
+              var CLOSE_TIMESTAMPS = ARBITER_PREFIX + "close_timestamps";
+              var RESET_BADGING = ARBITER_PREFIX + "reset_badging";
+              var STATE_UPDATE = ARBITER_PREFIX + "state";
+              var SWITCH_ACCOUNT = ARBITER_PREFIX + "switch_account";
+              var TYPING_UPDATE = ARBITER_PREFIX + "typing";
+              var UNREAD_COUNT_UPDATE = ARBITER_PREFIX + "unread_count";
+              var UPDATE_MESSAGE_LIST = ARBITER_PREFIX + "update_message_list";
+              var GUEST_MODE_CONNECT = "platform/plugins/connect/guest";
+              var GUEST_UPGRADE_SUCCESS =
+                ARBITER_PREFIX + "guest_upgrade_success";
+              var GUEST_UPGRADE_SUCCESS_INCOGNITO =
+                ARBITER_PREFIX + "guest_upgrade_success_incognito";
+              var NAVIGATE_TO_WELCOME_PAGE =
+                ARBITER_PREFIX + "navigate_to_welcome_page";
+              var ACCESS_TOKEN_LOGIN = "platform/plugins/connect/access_token";
+              var START_RE_ENGAGEMENT = ARBITER_PREFIX + "start_re_engagement";
+
+              var PROMPT_FALLBACK_HEIGHT = 124;
+              var PROMPT_REDESIGN_FALLBACK_HEIGHT = 187;
+              var PROMPT_CONTAINER_PADDING_HEIGHT = 24;
+              var WELCOME_PAGE_GUEST_FALLBACK_HEIGHT = 424;
+              var WELCOME_PAGE_NO_GUEST_FALLBACK_HEIGHT = 288;
+              var WELCOME_PAGE_GUEST_FALLBACK_HEIGHT_WITH_COMPACT = 313;
+              var WELCOME_PAGE_NO_GUEST_FALLBACK_HEIGHT_WITH_COMPACT = 219;
+              var WELCOME_PAGE_ATTRIBUTION_OFFEST_HEIGHT = 40;
+              var WELCOME_PAGE_ATTRIBUTION_OFFSET_HEIGHT_WITH_COMPACT = 36;
+              var MAIN_IFRAME_PADDING_HEIGHT = 24;
+              var MAIN_IFRAME_PADDING_HEIGHT_WITH_COMPACT = 18;
+              var THREAD_PAGE_HEIGHT = 708;
+              var THREAD_PAGE_HEIGHT_COMPACT = 540;
+              var RE_ENGAGEMENT_COLLAPSED_DIALOG_HEIGHT = 244;
+              var RE_ENGAGEMENT_COLLAPSED_DIALOG_HEIGHT_COMPACT = 202;
+              var RE_ENGAGEMENT_EXPANDED_DIALOG_HEIGHT = 509;
+              var RE_ENGAGEMENT_EXPANDED_DIALOG_HEIGHT_COMPACT = 430;
+              var GREETING_TEXT_BOTTOM_SPACING_OFFEST = 6;
+
+              var LOGGED_IN_CHAT_MODE = 0;
+              var GUEST_CHAT_MODE = 1;
+              var INVALID_CHAT_MODE = -1;
+              var MESSENGING_PLUGIN = "messaging_plugin";
+              var GUEST_SESSION_STORAGE_VALIDITY_MS = 86340000;
+              var GUEST_SEND_BUTTON_COLOR_EMPTY_INPUT = "#8A8D91";
+              var LIVE_CHAT_ENTRYPOINT_ATTRIBUTION_TAG =
+                "entrypoint:customer_chat_plugin";
+
+              var ITP_CONSISTENCY_UNKNOWN_LOGGED_OUT = 0;
+              var ITP_CONSISTENCY_CONSISTENT_LOGGED_IN = 1;
+              var ITP_CONSISTENCY_INCONSISTENT = 2;
+              var ITP_CONSISTENCY_CONSISTENT_NO_ITP = 3;
+
+              var NEW_MESSAGE_UPDATE = "new_message_update";
+              var INITIAL_FETCH = "initial_fetch";
+
+              var PLUGIN_FADE_DELAY = 5000;
+
+              var HELP_DEX_LINK =
+                "https://www.facebook.com/business/help/1661027437357021";
+              exports.MQTT = MQTT;
+              exports.MQTTGatewayConnectionState = MQTTGatewayConnectionState;
+              exports.LOGIN_CHECK_INTERVAL = LOGIN_CHECK_INTERVAL;
+              exports.CLOSE_TIMESTAMPS = CLOSE_TIMESTAMPS;
+              exports.RESET_BADGING = RESET_BADGING;
+              exports.STATE_UPDATE = STATE_UPDATE;
+              exports.SWITCH_ACCOUNT = SWITCH_ACCOUNT;
+              exports.TYPING_UPDATE = TYPING_UPDATE;
+              exports.UNREAD_COUNT_UPDATE = UNREAD_COUNT_UPDATE;
+              exports.UPDATE_MESSAGE_LIST = UPDATE_MESSAGE_LIST;
+              exports.GUEST_MODE_CONNECT = GUEST_MODE_CONNECT;
+              exports.GUEST_UPGRADE_SUCCESS = GUEST_UPGRADE_SUCCESS;
+              exports.GUEST_UPGRADE_SUCCESS_INCOGNITO =
+                GUEST_UPGRADE_SUCCESS_INCOGNITO;
+              exports.NAVIGATE_TO_WELCOME_PAGE = NAVIGATE_TO_WELCOME_PAGE;
+              exports.ACCESS_TOKEN_LOGIN = ACCESS_TOKEN_LOGIN;
+              exports.START_RE_ENGAGEMENT = START_RE_ENGAGEMENT;
+              exports.PROMPT_FALLBACK_HEIGHT = PROMPT_FALLBACK_HEIGHT;
+              exports.PROMPT_REDESIGN_FALLBACK_HEIGHT =
+                PROMPT_REDESIGN_FALLBACK_HEIGHT;
+              exports.PROMPT_CONTAINER_PADDING_HEIGHT =
+                PROMPT_CONTAINER_PADDING_HEIGHT;
+              exports.WELCOME_PAGE_GUEST_FALLBACK_HEIGHT =
+                WELCOME_PAGE_GUEST_FALLBACK_HEIGHT;
+              exports.WELCOME_PAGE_NO_GUEST_FALLBACK_HEIGHT =
+                WELCOME_PAGE_NO_GUEST_FALLBACK_HEIGHT;
+              exports.WELCOME_PAGE_GUEST_FALLBACK_HEIGHT_WITH_COMPACT =
+                WELCOME_PAGE_GUEST_FALLBACK_HEIGHT_WITH_COMPACT;
+              exports.WELCOME_PAGE_NO_GUEST_FALLBACK_HEIGHT_WITH_COMPACT =
+                WELCOME_PAGE_NO_GUEST_FALLBACK_HEIGHT_WITH_COMPACT;
+              exports.WELCOME_PAGE_ATTRIBUTION_OFFEST_HEIGHT =
+                WELCOME_PAGE_ATTRIBUTION_OFFEST_HEIGHT;
+              exports.WELCOME_PAGE_ATTRIBUTION_OFFSET_HEIGHT_WITH_COMPACT =
+                WELCOME_PAGE_ATTRIBUTION_OFFSET_HEIGHT_WITH_COMPACT;
+              exports.MAIN_IFRAME_PADDING_HEIGHT = MAIN_IFRAME_PADDING_HEIGHT;
+              exports.MAIN_IFRAME_PADDING_HEIGHT_WITH_COMPACT =
+                MAIN_IFRAME_PADDING_HEIGHT_WITH_COMPACT;
+              exports.THREAD_PAGE_HEIGHT = THREAD_PAGE_HEIGHT;
+              exports.THREAD_PAGE_HEIGHT_COMPACT = THREAD_PAGE_HEIGHT_COMPACT;
+              exports.RE_ENGAGEMENT_COLLAPSED_DIALOG_HEIGHT =
+                RE_ENGAGEMENT_COLLAPSED_DIALOG_HEIGHT;
+              exports.RE_ENGAGEMENT_COLLAPSED_DIALOG_HEIGHT_COMPACT =
+                RE_ENGAGEMENT_COLLAPSED_DIALOG_HEIGHT_COMPACT;
+              exports.RE_ENGAGEMENT_EXPANDED_DIALOG_HEIGHT =
+                RE_ENGAGEMENT_EXPANDED_DIALOG_HEIGHT;
+              exports.RE_ENGAGEMENT_EXPANDED_DIALOG_HEIGHT_COMPACT =
+                RE_ENGAGEMENT_EXPANDED_DIALOG_HEIGHT_COMPACT;
+              exports.GREETING_TEXT_BOTTOM_SPACING_OFFEST =
+                GREETING_TEXT_BOTTOM_SPACING_OFFEST;
+              exports.LOGGED_IN_CHAT_MODE = LOGGED_IN_CHAT_MODE;
+              exports.GUEST_CHAT_MODE = GUEST_CHAT_MODE;
+              exports.INVALID_CHAT_MODE = INVALID_CHAT_MODE;
+              exports.MESSENGING_PLUGIN = MESSENGING_PLUGIN;
+              exports.GUEST_SESSION_STORAGE_VALIDITY_MS =
+                GUEST_SESSION_STORAGE_VALIDITY_MS;
+              exports.GUEST_SEND_BUTTON_COLOR_EMPTY_INPUT =
+                GUEST_SEND_BUTTON_COLOR_EMPTY_INPUT;
+              exports.LIVE_CHAT_ENTRYPOINT_ATTRIBUTION_TAG =
+                LIVE_CHAT_ENTRYPOINT_ATTRIBUTION_TAG;
+              exports.ITP_CONSISTENCY_UNKNOWN_LOGGED_OUT =
+                ITP_CONSISTENCY_UNKNOWN_LOGGED_OUT;
+              exports.ITP_CONSISTENCY_CONSISTENT_LOGGED_IN =
+                ITP_CONSISTENCY_CONSISTENT_LOGGED_IN;
+              exports.ITP_CONSISTENCY_INCONSISTENT =
+                ITP_CONSISTENCY_INCONSISTENT;
+              exports.ITP_CONSISTENCY_CONSISTENT_NO_ITP =
+                ITP_CONSISTENCY_CONSISTENT_NO_ITP;
+              exports.NEW_MESSAGE_UPDATE = NEW_MESSAGE_UPDATE;
+              exports.INITIAL_FETCH = INITIAL_FETCH;
+              exports.PLUGIN_FADE_DELAY = PLUGIN_FADE_DELAY;
+              exports.HELP_DEX_LINK = HELP_DEX_LINK;
+            },
+            66
+          );
+          __d(
+            "ChatPluginStyleUtils",
+            ["LiveChatPluginConstants"],
+            function $module_ChatPluginStyleUtils(
+              global,
+              require,
+              importDefault,
+              importNamespace,
               requireLazy,
               module,
               exports
@@ -21333,16 +21068,24 @@ try {
               var LABELED_ENTRY_POINT_COMPACT_PADDING_HORIZONTAL = 14;
               var ICON_ENTRY_POINT_STANDARD_HEIGHT = 60;
               var ICON_ENTRY_POINT_COMPACT_HEIGHT = 44;
+              var LABELED_ONLY_ENTRY_POINT_STANDARD_WIDTH_SHORT = 70;
+              var LABELED_ONLY_ENTRY_POINT_STANDARD_WIDTH_LONG = 86;
+              var LABELED_ONLY_ENTRY_POINT_COMPACT_WIDTH_SHORT = 63;
+              var LABELED_ONLY_ENTRY_POINT_COMPACT_WIDTH_LONG = 76;
+              var LABELED_WITH_ICON_ENTRY_POINT_STANDARD_WIDTH_SHORT = 99;
+              var LABELED_WITH_ICON_ENTRY_POINT_STANDARD_WIDTH_LONG = 114;
+              var LABELED_WITH_ICON_ENTRY_POINT_COMPACT_WIDTH_SHORT = 85;
+              var LABELED_WITH_ICON_ENTRY_POINT_COMPACT_WIDTH_LONG = 98;
               var ENTRY_POINT_MARGIN = 12;
 
               function getMobileStyleText() {
                 var mobilePromptWidth = screen.width;
                 var widthStyleStr = "width: " + mobilePromptWidth + "px;";
-                var styleText =
-                  "padding: 0; position: fixed; z-index: 2147483646;box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.15);border-radius: 16px;bottom: 24px; top: auto; right:0;" +
-                  widthStyleStr;
 
-                return styleText;
+                return (
+                  "padding: 0; position: fixed; z-index: 2147483646;box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.15);border-radius: 16px;bottom: 24px; top: auto; right:0;" +
+                  widthStyleStr
+                );
               }
 
               function positionElementAtWindowFooter(element) {
@@ -21359,7 +21102,6 @@ try {
                 isLoadedByFacade,
                 shouldIconDelay,
                 entryPointLabel,
-                shouldShowEntryPointCustomization,
                 entryPointSize
               ) {
                 var baseStyle = getEntryPointBaseStyle(
@@ -21369,11 +21111,9 @@ try {
                 );
 
                 var iconStyle = getEntryPointIconStyle(
-                  shouldShowEntryPointCustomization,
                   entryPointLabel,
                   entryPointSize
                 );
-
                 var alignmentStyle = getEntryPointAlignmentStyle(
                   alignment,
                   sideSpacing
@@ -21385,10 +21125,9 @@ try {
                   alignmentStyle
                 );
 
-                var sortedStyle = Object.fromEntries(
+                return Object.fromEntries(
                   ES("Object", "entries", false, style).sort()
                 );
-                return sortedStyle;
               }
 
               function getIconStyleText(
@@ -21398,7 +21137,6 @@ try {
                 isLoadedByFacade,
                 shouldIconDelay,
                 label,
-                shouldShowEntryPointCustomization,
                 entryPointSize
               ) {
                 var style = getEntryPointStyle(
@@ -21408,7 +21146,6 @@ try {
                   isLoadedByFacade,
                   shouldIconDelay,
                   label,
-                  shouldShowEntryPointCustomization,
                   entryPointSize
                 );
 
@@ -21420,32 +21157,27 @@ try {
                 bottomSpacing,
                 sideSpacing,
                 entryPointLabel,
-                shouldShowEntryPointCustomization,
                 entryPointSize
               ) {
                 var totalSpacingSpacing =
                   sideSpacing + (alignment == "right" ? -2 : 43);
                 var totalBottomSpacing =
                   bottomSpacing + ICON_ENTRY_POINT_STANDARD_HEIGHT - 16;
-                if (shouldShowEntryPointCustomization) {
-                  totalBottomSpacing = bottomSpacing - 16;
-                  if (entryPointLabel === "none") {
-                    if (entryPointSize === "compact") {
-                      totalBottomSpacing += ICON_ENTRY_POINT_COMPACT_HEIGHT;
-                    } else {
-                      totalBottomSpacing += ICON_ENTRY_POINT_STANDARD_HEIGHT;
-                    }
+                totalBottomSpacing = bottomSpacing - 16;
+                if (entryPointLabel === "none") {
+                  if (entryPointSize === "compact") {
+                    totalBottomSpacing += ICON_ENTRY_POINT_COMPACT_HEIGHT;
                   } else {
-                    if (entryPointSize === "compact") {
-                      totalBottomSpacing += LABELED_ENTRY_POINT_COMPACT_HEIGHT;
-                    } else {
-                      totalBottomSpacing += LABELED_ENTRY_POINT_STANDARD_HEIGHT;
-                    }
+                    totalBottomSpacing += ICON_ENTRY_POINT_STANDARD_HEIGHT;
                   }
-                } else if (entryPointSize === "compact") {
-                  totalBottomSpacing =
-                    bottomSpacing + ICON_ENTRY_POINT_COMPACT_HEIGHT - 16;
+                } else {
+                  if (entryPointSize === "compact") {
+                    totalBottomSpacing += LABELED_ENTRY_POINT_COMPACT_HEIGHT;
+                  } else {
+                    totalBottomSpacing += LABELED_ENTRY_POINT_STANDARD_HEIGHT;
+                  }
                 }
+
                 var styleTextBase = {
                   bottom: totalBottomSpacing.toString() + "px",
                   position: "fixed",
@@ -21453,20 +21185,20 @@ try {
                   height: "24px",
                   zIndex: 2147483645,
                   borderRadius: "4pt",
-                  background: "none"
+                  background: "none",
                 };
 
                 var styleText = {};
                 switch (alignment) {
                   case "right":
                     styleText = babelHelpers["extends"]({}, styleTextBase, {
-                      right: totalSpacingSpacing + "px"
+                      right: totalSpacingSpacing + "px",
                     });
 
                     break;
                   case "left":
                     styleText = babelHelpers["extends"]({}, styleTextBase, {
-                      left: totalSpacingSpacing + "px"
+                      left: totalSpacingSpacing + "px",
                     });
 
                     break;
@@ -21476,6 +21208,111 @@ try {
                   ES("Object", "entries", false, styleText).sort()
                 );
                 return ES("JSON", "stringify", false, sortedStyle);
+              }
+
+              function getAvailabilityStatusStyleText(
+                alignment,
+                bottomSpacing,
+                sideSpacing,
+                entryPointLabel,
+                entryPointIconEnum,
+                entryPointSize,
+                isLoadedByFacade,
+                shouldAddAnimation
+              ) {
+                var totalSpacingSpacing = sideSpacing;
+                var totalBottomSpacing = bottomSpacing - 2.5;
+
+                if (alignment === "left") {
+                  totalSpacingSpacing = sideSpacing - 15;
+                  if (entryPointLabel === "none") {
+                    if (entryPointSize === "compact") {
+                      totalSpacingSpacing += ICON_ENTRY_POINT_COMPACT_HEIGHT;
+                    } else {
+                      totalSpacingSpacing += ICON_ENTRY_POINT_STANDARD_HEIGHT;
+                    }
+                  } else {
+                    if (entryPointIconEnum === "none") {
+                      if (entryPointLabel === "ask_us") {
+                        if (entryPointSize === "compact") {
+                          totalSpacingSpacing +=
+                            LABELED_ONLY_ENTRY_POINT_COMPACT_WIDTH_LONG;
+                        } else {
+                          totalSpacingSpacing +=
+                            LABELED_ONLY_ENTRY_POINT_STANDARD_WIDTH_LONG;
+                        }
+                      } else {
+                        if (entryPointSize === "compact") {
+                          totalSpacingSpacing +=
+                            LABELED_ONLY_ENTRY_POINT_COMPACT_WIDTH_SHORT;
+                        } else {
+                          totalSpacingSpacing +=
+                            LABELED_ONLY_ENTRY_POINT_STANDARD_WIDTH_SHORT;
+                        }
+                      }
+                    } else {
+                      if (entryPointLabel === "ask_us") {
+                        if (entryPointSize === "compact") {
+                          totalSpacingSpacing +=
+                            LABELED_WITH_ICON_ENTRY_POINT_COMPACT_WIDTH_LONG;
+                        } else {
+                          totalSpacingSpacing +=
+                            LABELED_WITH_ICON_ENTRY_POINT_STANDARD_WIDTH_LONG;
+                        }
+                      } else {
+                        if (entryPointSize === "compact") {
+                          totalSpacingSpacing +=
+                            LABELED_WITH_ICON_ENTRY_POINT_COMPACT_WIDTH_SHORT;
+                        } else {
+                          totalSpacingSpacing +=
+                            LABELED_WITH_ICON_ENTRY_POINT_STANDARD_WIDTH_SHORT;
+                        }
+                      }
+                    }
+                  }
+                }
+
+                var styleTextBase = {
+                  bottom: totalBottomSpacing.toString() + "px",
+                  position: "fixed",
+                  zIndex: 2147483646,
+                  height: "15px",
+                  width: "15px",
+                  borderRadius: "50%",
+                };
+
+                var styleText = {};
+                switch (alignment) {
+                  case "right":
+                    styleText = babelHelpers["extends"]({}, styleTextBase, {
+                      right: totalSpacingSpacing + "px",
+                    });
+
+                    break;
+                  case "left":
+                    styleText = babelHelpers["extends"]({}, styleTextBase, {
+                      left: totalSpacingSpacing + "px",
+                    });
+
+                    break;
+                }
+
+                if (isLoadedByFacade === false) {
+                  styleText = babelHelpers["extends"]({}, styleText, {
+                    animation:
+                      shouldAddAnimation === true
+                        ? "slideInFromBottomDelay 3.5s ease-out"
+                        : null,
+                    backgroundColor: "#31CC46",
+                    border: "2.5px solid white",
+                    height: "10px",
+                    width: "10px",
+                  });
+                }
+
+                return Object.fromEntries(
+                  ES("Object", "entries", false, styleText).sort()
+                );
               }
 
               function getMobileLandingStyleText(isDialogVisible) {
@@ -21493,30 +21330,26 @@ try {
                 sideSpacing,
                 isDialogVisible,
                 entryPointLabel,
-                shouldShowEntryPointCustomization,
                 entryPointSize,
                 windowSize
               ) {
                 var totalSideSpacing = sideSpacing - ENTRY_POINT_MARGIN;
 
                 var entryPointHeight = ICON_ENTRY_POINT_STANDARD_HEIGHT;
-                if (shouldShowEntryPointCustomization) {
-                  if (entryPointLabel === "none") {
-                    if (entryPointSize === "compact") {
-                      entryPointHeight = ICON_ENTRY_POINT_COMPACT_HEIGHT;
-                    } else {
-                      entryPointHeight = ICON_ENTRY_POINT_STANDARD_HEIGHT;
-                    }
+                if (entryPointLabel === "none") {
+                  if (entryPointSize === "compact") {
+                    entryPointHeight = ICON_ENTRY_POINT_COMPACT_HEIGHT;
                   } else {
-                    if (entryPointSize === "compact") {
-                      entryPointHeight = LABELED_ENTRY_POINT_COMPACT_HEIGHT;
-                    } else {
-                      entryPointHeight = LABELED_ENTRY_POINT_STANDARD_HEIGHT;
-                    }
+                    entryPointHeight = ICON_ENTRY_POINT_STANDARD_HEIGHT;
                   }
-                } else if (entryPointSize === "compact") {
-                  entryPointHeight = ICON_ENTRY_POINT_COMPACT_HEIGHT;
+                } else {
+                  if (entryPointSize === "compact") {
+                    entryPointHeight = LABELED_ENTRY_POINT_COMPACT_HEIGHT;
+                  } else {
+                    entryPointHeight = LABELED_ENTRY_POINT_STANDARD_HEIGHT;
+                  }
                 }
+
                 var bottomSpacingForDialog = entryPointHeight + bottomSpacing;
                 var bottomSpacingString =
                   " bottom: " + bottomSpacingForDialog.toString() + "px;";
@@ -21563,38 +21396,134 @@ try {
                 return styleText;
               }
 
+              function getDesktopGreetingBottomSpacingWithReEngagementDialog(
+                isHidden,
+                bottomSpacing,
+                entryPointLabel,
+                entryPointSize,
+                isCompact
+              ) {
+                var bottomSpacingValue = getDesktopGreetingBottomSpacing(
+                  bottomSpacing,
+                  entryPointLabel,
+                  entryPointSize
+                );
+
+                if (!isHidden) {
+                  var collapsedDialogHeight = isCompact
+                    ? importNamespace("LiveChatPluginConstants")
+                        .RE_ENGAGEMENT_COLLAPSED_DIALOG_HEIGHT_COMPACT
+                    : importNamespace("LiveChatPluginConstants")
+                        .RE_ENGAGEMENT_COLLAPSED_DIALOG_HEIGHT;
+                  var paddingHeight = isCompact
+                    ? importNamespace("LiveChatPluginConstants")
+                        .MAIN_IFRAME_PADDING_HEIGHT_WITH_COMPACT
+                    : importNamespace("LiveChatPluginConstants")
+                        .MAIN_IFRAME_PADDING_HEIGHT;
+                  var totalHeight = collapsedDialogHeight + paddingHeight;
+                  bottomSpacingValue +=
+                    totalHeight -
+                    importNamespace("LiveChatPluginConstants")
+                      .GREETING_TEXT_BOTTOM_SPACING_OFFEST;
+                }
+                return bottomSpacingValue;
+              }
+
+              function getDesktopGreetingBottomSpacing(
+                bottomSpacing,
+                entryPointLabel,
+                entryPointSize
+              ) {
+                var entryPointHeight = ENTRY_POINT_MARGIN;
+                if (entryPointLabel === "none") {
+                  if (entryPointSize === "compact") {
+                    entryPointHeight += ICON_ENTRY_POINT_COMPACT_HEIGHT;
+                  } else {
+                    entryPointHeight += ICON_ENTRY_POINT_STANDARD_HEIGHT;
+                  }
+                } else {
+                  if (entryPointSize === "compact") {
+                    entryPointHeight += LABELED_ENTRY_POINT_COMPACT_HEIGHT;
+                  } else {
+                    entryPointHeight += LABELED_ENTRY_POINT_STANDARD_HEIGHT;
+                  }
+                }
+
+                return entryPointHeight + bottomSpacing;
+              }
+
+              function getDesktopGreetingStyleText(
+                alignment,
+                bottomSpacing,
+                sideSpacing,
+                entryPointLabel,
+                entryPointSize
+              ) {
+                var totalSideSpacing = sideSpacing - ENTRY_POINT_MARGIN;
+                var bottomSpacingValue = getDesktopGreetingBottomSpacing(
+                  bottomSpacing,
+                  entryPointLabel,
+                  entryPointSize
+                );
+
+                var styleTextBase = {
+                  padding: 0,
+                  position: "fixed",
+                  zIndex: 2147483646,
+                  borderRadius: "16px",
+                  top: "auto",
+                  width: "247px",
+                  maxHeight: "calc(100% - 80px)",
+                  background: "none",
+                  height: "72px",
+                };
+
+                var styleText = {};
+                styleText = babelHelpers["extends"]({}, styleTextBase, {
+                  bottom: bottomSpacingValue + "px",
+                });
+
+                switch (alignment) {
+                  case "right":
+                    styleText = babelHelpers["extends"]({}, styleText, {
+                      right: "6px",
+                      marginRight: totalSideSpacing + "px",
+                    });
+
+                    break;
+                  case "left":
+                    styleText = babelHelpers["extends"]({}, styleText, {
+                      left: "2px",
+                      marginLeft: totalSideSpacing + "px",
+                    });
+
+                    break;
+                }
+
+                styleText = babelHelpers["extends"]({}, styleText, {
+                  animation: "slideInFromBottomDelay 3s ease-out",
+                });
+                var sortedStyle = Object.fromEntries(
+                  ES("Object", "entries", false, styleText).sort()
+                );
+                return ES("JSON", "stringify", false, sortedStyle);
+              }
+
               function getDesktopWelcomeMessageStyleText(
                 alignment,
                 bottomSpacing,
                 sideSpacing,
                 shouldIconDelay,
                 entryPointLabel,
-                shouldShowEntryPointCustomization,
                 entryPointSize
               ) {
                 var totalSideSpacing = sideSpacing - ENTRY_POINT_MARGIN;
-                var entryPointHeight =
-                  ICON_ENTRY_POINT_STANDARD_HEIGHT + ENTRY_POINT_MARGIN;
-                if (shouldShowEntryPointCustomization) {
-                  entryPointHeight = ENTRY_POINT_MARGIN;
-                  if (entryPointLabel === "none") {
-                    if (entryPointSize === "compact") {
-                      entryPointHeight += ICON_ENTRY_POINT_COMPACT_HEIGHT;
-                    } else {
-                      entryPointHeight += ICON_ENTRY_POINT_STANDARD_HEIGHT;
-                    }
-                  } else {
-                    if (entryPointSize === "compact") {
-                      entryPointHeight += LABELED_ENTRY_POINT_COMPACT_HEIGHT;
-                    } else {
-                      entryPointHeight += LABELED_ENTRY_POINT_STANDARD_HEIGHT;
-                    }
-                  }
-                } else if (entryPointSize === "compact") {
-                  entryPointHeight =
-                    ICON_ENTRY_POINT_COMPACT_HEIGHT + ENTRY_POINT_MARGIN;
-                }
-                var bottomSpacingValue = entryPointHeight + bottomSpacing;
+                var bottomSpacingValue = getDesktopGreetingBottomSpacing(
+                  bottomSpacing,
+                  entryPointLabel,
+                  entryPointSize
+                );
+
                 var bottomSpacingString =
                   " bottom: " + bottomSpacingValue.toString() + "px;";
                 var styleTextBase =
@@ -21604,11 +21533,11 @@ try {
                 switch (alignment) {
                   case "right":
                     styleText +=
-                      " right: 4px; margin-right: " + totalSideSpacing + "px;";
+                      " right: 6px; margin-right: " + totalSideSpacing + "px;";
                     break;
                   case "left":
                     styleText +=
-                      " left: 4px; margin-left: " + totalSideSpacing + "px;";
+                      " left: 2px; margin-left: " + totalSideSpacing + "px;";
                     break;
                 }
 
@@ -21624,7 +21553,6 @@ try {
                 bottomSpacing,
                 shouldIconDelay,
                 entryPointLabel,
-                shouldShowEntryPointCustomization,
                 entryPointSize
               ) {
                 var iconHeight =
@@ -21633,9 +21561,9 @@ try {
                     : ICON_ENTRY_POINT_STANDARD_HEIGHT;
 
                 var styleText =
-                  "position: fixed; z-index: 2147483646; box-shadow: none; border-radius: 18px 0px 18px 18px; bottom: 0px; right: 0px; width: calc(80% - 40px); bottom: 24px;";
+                  "position: fixed; z-index: 2147483646; box-shadow: none; border-radius: 18px 0px 18px 18px; right: 0px; width: calc(80% - 40px); bottom: 24px;";
                 if (height != null && typeof bottomSpacing == "number") {
-                  styleText += " height: " + height + "px; ";
+                  styleText += " height: " + height + "px;";
 
                   var bottomSpacingValue = bottomSpacing;
                   if (height < iconHeight) {
@@ -21643,42 +21571,211 @@ try {
                   }
                   styleText += " bottom: " + bottomSpacingValue + "px;";
                 } else {
-                  styleText += " height: 60px; ";
+                  styleText += " height: 60px;";
                 }
                 styleText +=
                   alignment === "left"
-                    ? " left: calc(84px + 5%); "
-                    : " left: 5%; ";
+                    ? " left: calc(84px + 5%);"
+                    : " left: 5%;";
 
-                styleText += Boolean(shouldIconDelay)
-                  ? " animation: slideInFromBottomDelay 6s ease-in;"
-                  : " animation: slideInFromBottomDelay 3s ease-in;";
+                if (
+                  entryPointLabel !== "none" &&
+                  typeof bottomSpacing === "number"
+                ) {
+                  var labeledHeight =
+                    entryPointSize === "compact"
+                      ? LABELED_ENTRY_POINT_COMPACT_HEIGHT
+                      : LABELED_ENTRY_POINT_STANDARD_HEIGHT;
+                  var _bottomSpacingValue = bottomSpacing + labeledHeight + 12;
+                  styleText += " bottom: " + _bottomSpacingValue + "px;";
 
-                if (shouldShowEntryPointCustomization) {
-                  if (
-                    entryPointLabel !== "none" &&
-                    typeof bottomSpacing === "number"
-                  ) {
-                    var labeledHeight =
-                      entryPointSize === "compact"
-                        ? LABELED_ENTRY_POINT_COMPACT_HEIGHT
-                        : LABELED_ENTRY_POINT_STANDARD_HEIGHT;
-                    var _bottomSpacingValue =
-                      bottomSpacing + labeledHeight + 12;
-                    styleText += " bottom: " + _bottomSpacingValue + "px;";
-
-                    switch (alignment) {
-                      case "right":
-                        styleText += " right: 20px; left: auto";
-                        break;
-                      case "left":
-                        styleText += " left: 20px; right: auto";
-                        break;
-                    }
+                  switch (alignment) {
+                    case "right":
+                      styleText += " right: 20px; left: auto;";
+                      break;
+                    case "left":
+                      styleText += " left: 20px; right: auto;";
+                      break;
                   }
                 }
 
                 return styleText;
+              }
+
+              function getMobileReengagementCollapsedDialogStyleText(
+                alignment,
+                bottomSpacing,
+                shouldIconDelay,
+                sideSpacing,
+                entryPointSize
+              ) {
+                var styleText =
+                  "position: fixed; z-index: 2147483646; box-shadow: none; border-radius: 18px 0px 18px 18px;width: 306px;bottom: 24px; right: 20px;";
+
+                if (typeof bottomSpacing === "number") {
+                  var labeledHeight =
+                    entryPointSize === "compact"
+                      ? LABELED_ENTRY_POINT_COMPACT_HEIGHT
+                      : LABELED_ENTRY_POINT_STANDARD_HEIGHT;
+                  var bottomSpacingValue = bottomSpacing + labeledHeight + 12;
+                  styleText += " bottom: " + bottomSpacingValue + "px;";
+                }
+                if (typeof sideSpacing === "number") {
+                  var totalSideSpacing = sideSpacing - ENTRY_POINT_MARGIN;
+                  switch (alignment) {
+                    case "right":
+                      styleText +=
+                        " right: " + (totalSideSpacing + 4) + "px; left:auto";
+                      break;
+                    case "left":
+                      styleText +=
+                        " left: " + (totalSideSpacing - 4) + "px; right:auto";
+                      break;
+                  }
+                }
+
+                return styleText;
+              }
+
+              function getWelcomeMessageBubbleStyle(
+                shouldShowLeftStyle,
+                chatPluginInterface
+              ) {
+                var bubbleBase = {
+                  alignItems: "flex-start",
+                  background: "#FFFFFF",
+                  borderRadius: "18px",
+                  bottom: 0,
+                  boxShadow: "0 4px 12px 0 rgba(0, 0, 0, 0.15)",
+                  display: "flex",
+                  flexDirection: "row",
+                  position: "absolute",
+                };
+
+                var bubbleLeft = babelHelpers["extends"]({}, bubbleBase, {
+                  marginLeft: "12px",
+                  padding: "8px 0px 8px 8px",
+                  width: "90%",
+                });
+
+                var bubbleRight = babelHelpers["extends"]({}, bubbleBase, {
+                  padding: "8px 0px 8px 12px",
+                  width: "93%",
+                });
+
+                var styleText = shouldShowLeftStyle ? bubbleLeft : bubbleRight;
+                if (chatPluginInterface === "desktop") {
+                  styleText = babelHelpers["extends"]({}, styleText, {
+                    cursor: "pointer",
+                  });
+                }
+
+                return Object.fromEntries(
+                  ES("Object", "entries", false, styleText).sort()
+                );
+              }
+
+              function getWelcomeMessageTextStyle(
+                shouldShowLeftStyle,
+                chatPluginInterface
+              ) {
+                var bubbleTextBase = {
+                  display: "inline-block",
+                  fontSize: "17px",
+                  lineHeight: "22px",
+                  textAlign: "left",
+                  width: "90%",
+                  wordWrap: "break-word",
+                };
+
+                var bubbleTextRight = babelHelpers["extends"](
+                  {},
+                  bubbleTextBase,
+                  {
+                    paddingRight: "18px",
+                  }
+                );
+
+                if (chatPluginInterface === "mobile") {
+                  bubbleTextRight = babelHelpers["extends"](
+                    {},
+                    bubbleTextRight,
+                    { paddingLeft: "12px" }
+                  );
+                }
+                var bubbleTextLeft = babelHelpers["extends"](
+                  {},
+                  bubbleTextBase,
+                  {
+                    paddingRight: "12px",
+                    paddingLeft: "12px",
+                  }
+                );
+
+                var styleText = shouldShowLeftStyle
+                  ? bubbleTextLeft
+                  : bubbleTextRight;
+
+                return Object.fromEntries(
+                  ES("Object", "entries", false, styleText).sort()
+                );
+              }
+
+              function getMinusButtonStyle(
+                shouldShowLeftStyle,
+                chatPluginInterface
+              ) {
+                var minusButtonStyleBase = {
+                  position: "absolute",
+                  top: "-2px",
+                  width: "38px",
+                };
+
+                if (chatPluginInterface === "desktop") {
+                  minusButtonStyleBase = babelHelpers["extends"](
+                    {},
+                    minusButtonStyleBase,
+                    { cursor: "pointer" }
+                  );
+                }
+                var minusButtonStyleLeft = babelHelpers["extends"](
+                  {},
+                  minusButtonStyleBase,
+                  { left: "-4px" }
+                );
+                var minusButtonStyleRight = babelHelpers["extends"](
+                  {},
+                  minusButtonStyleBase,
+                  {
+                    right: "-4px",
+                  }
+                );
+
+                var styleText = shouldShowLeftStyle
+                  ? minusButtonStyleLeft
+                  : minusButtonStyleRight;
+
+                return Object.fromEntries(
+                  ES("Object", "entries", false, styleText).sort()
+                );
+              }
+
+              function getMinusButtonVisibility(iconClicked) {
+                var styleText = {
+                  visibility: iconClicked ? "hidden" : "visible",
+                };
+
+                return Object.fromEntries(
+                  ES("Object", "entries", false, styleText).sort()
+                );
+              }
+
+              function getNoOutlineFocus() {
+                var styleText = { outline: "none" };
+
+                return Object.fromEntries(
+                  ES("Object", "entries", false, styleText).sort()
+                );
               }
 
               function getEntryPointBaseStyle(
@@ -21699,51 +21796,34 @@ try {
                   padding: "0",
                   position: "fixed",
                   top: "auto",
-                  zIndex: 2147483644
+                  zIndex: 2147483644,
                 };
               }
 
-              function getEntryPointIconStyle(
-                shouldShowEntryPointCustomization,
-                entryPointLabel,
-                entryPointSize
-              ) {
-                if (shouldShowEntryPointCustomization) {
-                  if (entryPointLabel !== "none") {
-                    var height =
-                      entryPointSize === "compact"
-                        ? LABELED_ENTRY_POINT_COMPACT_HEIGHT
-                        : LABELED_ENTRY_POINT_STANDARD_HEIGHT;
-                    return {
-                      borderRadius: "60px",
-                      boxShadow: null,
-                      height: height + "px",
-                      width: "auto"
-                    };
-                  } else {
-                    var size =
-                      entryPointSize === "compact"
-                        ? ICON_ENTRY_POINT_COMPACT_HEIGHT
-                        : ICON_ENTRY_POINT_STANDARD_HEIGHT;
-                    return {
-                      borderRadius: "60px",
-                      boxShadow: "0 4px 12px 0 rgba(0, 0, 0, 0.15)",
-                      height: size + "px",
-                      width: size + "px"
-                    };
-                  }
+              function getEntryPointIconStyle(entryPointLabel, entryPointSize) {
+                if (entryPointLabel !== "none") {
+                  var height =
+                    entryPointSize === "compact"
+                      ? LABELED_ENTRY_POINT_COMPACT_HEIGHT
+                      : LABELED_ENTRY_POINT_STANDARD_HEIGHT;
+                  return {
+                    borderRadius: "60px",
+                    boxShadow: null,
+                    height: height + "px",
+                    width: "auto",
+                  };
+                } else {
+                  var size =
+                    entryPointSize === "compact"
+                      ? ICON_ENTRY_POINT_COMPACT_HEIGHT
+                      : ICON_ENTRY_POINT_STANDARD_HEIGHT;
+                  return {
+                    borderRadius: "60px",
+                    boxShadow: "0 4px 12px 0 rgba(0, 0, 0, 0.15)",
+                    height: size + "px",
+                    width: size + "px",
+                  };
                 }
-                var iconSize =
-                  entryPointSize === "compact"
-                    ? ICON_ENTRY_POINT_COMPACT_HEIGHT
-                    : ICON_ENTRY_POINT_STANDARD_HEIGHT;
-
-                return {
-                  borderRadius: "30px",
-                  boxShadow: "0 4px 12px 0 rgba(0, 0, 0, 0.15)",
-                  height: iconSize + "px",
-                  width: iconSize + "px"
-                };
               }
 
               function getEntryPointAlignmentStyle(alignment, sideSpacing) {
@@ -21751,12 +21831,12 @@ try {
                 switch (alignment) {
                   case "right":
                     return {
-                      right: totalSideSpacing + "px"
+                      right: totalSideSpacing + "px",
                     };
 
                   case "left":
                     return {
-                      left: totalSideSpacing + "px"
+                      left: totalSideSpacing + "px",
                     };
                 }
               }
@@ -21771,30 +21851,77 @@ try {
                   return "slideInFromBottom 0.3s ease-out";
                 }
               }
-              exports.LABELED_ENTRY_POINT_STANDARD_HEIGHT = LABELED_ENTRY_POINT_STANDARD_HEIGHT;
-              exports.LABELED_ENTRY_POINT_COMPACT_HEIGHT = LABELED_ENTRY_POINT_COMPACT_HEIGHT;
-              exports.LABELED_ENTRY_POINT_STANDARD_FONT_SIZE = LABELED_ENTRY_POINT_STANDARD_FONT_SIZE;
-              exports.LABELED_ENTRY_POINT_COMPACT_FONT_SIZE = LABELED_ENTRY_POINT_COMPACT_FONT_SIZE;
-              exports.LABELED_ENTRY_POINT_STANDARD_LINE_HEIGHT = LABELED_ENTRY_POINT_STANDARD_LINE_HEIGHT;
-              exports.LABELED_ENTRY_POINT_COMPACT_LINE_HEIGHT = LABELED_ENTRY_POINT_COMPACT_LINE_HEIGHT;
-              exports.LABELED_ENTRY_POINT_STANDARD_ICON_MARGIN_RIGHT = LABELED_ENTRY_POINT_STANDARD_ICON_MARGIN_RIGHT;
-              exports.LABELED_ENTRY_POINT_COMPACT_ICON_MARGIN_RIGHT = LABELED_ENTRY_POINT_COMPACT_ICON_MARGIN_RIGHT;
-              exports.LABELED_ENTRY_POINT_STANDARD_PADDING_HORIZONTAL = LABELED_ENTRY_POINT_STANDARD_PADDING_HORIZONTAL;
-              exports.LABELED_ENTRY_POINT_COMPACT_PADDING_HORIZONTAL = LABELED_ENTRY_POINT_COMPACT_PADDING_HORIZONTAL;
-              exports.ICON_ENTRY_POINT_STANDARD_HEIGHT = ICON_ENTRY_POINT_STANDARD_HEIGHT;
-              exports.ICON_ENTRY_POINT_COMPACT_HEIGHT = ICON_ENTRY_POINT_COMPACT_HEIGHT;
+              exports.LABELED_ENTRY_POINT_STANDARD_HEIGHT =
+                LABELED_ENTRY_POINT_STANDARD_HEIGHT;
+              exports.LABELED_ENTRY_POINT_COMPACT_HEIGHT =
+                LABELED_ENTRY_POINT_COMPACT_HEIGHT;
+              exports.LABELED_ENTRY_POINT_STANDARD_FONT_SIZE =
+                LABELED_ENTRY_POINT_STANDARD_FONT_SIZE;
+              exports.LABELED_ENTRY_POINT_COMPACT_FONT_SIZE =
+                LABELED_ENTRY_POINT_COMPACT_FONT_SIZE;
+              exports.LABELED_ENTRY_POINT_STANDARD_LINE_HEIGHT =
+                LABELED_ENTRY_POINT_STANDARD_LINE_HEIGHT;
+              exports.LABELED_ENTRY_POINT_COMPACT_LINE_HEIGHT =
+                LABELED_ENTRY_POINT_COMPACT_LINE_HEIGHT;
+              exports.LABELED_ENTRY_POINT_STANDARD_ICON_MARGIN_RIGHT =
+                LABELED_ENTRY_POINT_STANDARD_ICON_MARGIN_RIGHT;
+              exports.LABELED_ENTRY_POINT_COMPACT_ICON_MARGIN_RIGHT =
+                LABELED_ENTRY_POINT_COMPACT_ICON_MARGIN_RIGHT;
+              exports.LABELED_ENTRY_POINT_STANDARD_PADDING_HORIZONTAL =
+                LABELED_ENTRY_POINT_STANDARD_PADDING_HORIZONTAL;
+              exports.LABELED_ENTRY_POINT_COMPACT_PADDING_HORIZONTAL =
+                LABELED_ENTRY_POINT_COMPACT_PADDING_HORIZONTAL;
+              exports.ICON_ENTRY_POINT_STANDARD_HEIGHT =
+                ICON_ENTRY_POINT_STANDARD_HEIGHT;
+              exports.ICON_ENTRY_POINT_COMPACT_HEIGHT =
+                ICON_ENTRY_POINT_COMPACT_HEIGHT;
+              exports.LABELED_ONLY_ENTRY_POINT_STANDARD_WIDTH_SHORT =
+                LABELED_ONLY_ENTRY_POINT_STANDARD_WIDTH_SHORT;
+              exports.LABELED_ONLY_ENTRY_POINT_STANDARD_WIDTH_LONG =
+                LABELED_ONLY_ENTRY_POINT_STANDARD_WIDTH_LONG;
+              exports.LABELED_ONLY_ENTRY_POINT_COMPACT_WIDTH_SHORT =
+                LABELED_ONLY_ENTRY_POINT_COMPACT_WIDTH_SHORT;
+              exports.LABELED_ONLY_ENTRY_POINT_COMPACT_WIDTH_LONG =
+                LABELED_ONLY_ENTRY_POINT_COMPACT_WIDTH_LONG;
+              exports.LABELED_WITH_ICON_ENTRY_POINT_STANDARD_WIDTH_SHORT =
+                LABELED_WITH_ICON_ENTRY_POINT_STANDARD_WIDTH_SHORT;
+              exports.LABELED_WITH_ICON_ENTRY_POINT_STANDARD_WIDTH_LONG =
+                LABELED_WITH_ICON_ENTRY_POINT_STANDARD_WIDTH_LONG;
+              exports.LABELED_WITH_ICON_ENTRY_POINT_COMPACT_WIDTH_SHORT =
+                LABELED_WITH_ICON_ENTRY_POINT_COMPACT_WIDTH_SHORT;
+              exports.LABELED_WITH_ICON_ENTRY_POINT_COMPACT_WIDTH_LONG =
+                LABELED_WITH_ICON_ENTRY_POINT_COMPACT_WIDTH_LONG;
               exports.getMobileStyleText = getMobileStyleText;
-              exports.positionElementAtWindowFooter = positionElementAtWindowFooter;
+              exports.positionElementAtWindowFooter =
+                positionElementAtWindowFooter;
               exports.getEntryPointStyle = getEntryPointStyle;
               exports.getIconStyleText = getIconStyleText;
               exports.getUnreadCountStyleText = getUnreadCountStyleText;
+              exports.getAvailabilityStatusStyleText =
+                getAvailabilityStatusStyleText;
               exports.getMobileLandingStyleText = getMobileLandingStyleText;
               exports.getDesktopStyleText = getDesktopStyleText;
-              exports.getMobileFullScreenStyleText = getMobileFullScreenStyleText;
-              exports.getDesktopWelcomeMessageStyleText = getDesktopWelcomeMessageStyleText;
-              exports.getMobileWelcomeMessageStyleText = getMobileWelcomeMessageStyleText;
+              exports.getMobileFullScreenStyleText =
+                getMobileFullScreenStyleText;
+              exports.getDesktopGreetingBottomSpacingWithReEngagementDialog =
+                getDesktopGreetingBottomSpacingWithReEngagementDialog;
+              exports.getDesktopGreetingBottomSpacing =
+                getDesktopGreetingBottomSpacing;
+              exports.getDesktopGreetingStyleText = getDesktopGreetingStyleText;
+              exports.getDesktopWelcomeMessageStyleText =
+                getDesktopWelcomeMessageStyleText;
+              exports.getMobileWelcomeMessageStyleText =
+                getMobileWelcomeMessageStyleText;
+              exports.getMobileReengagementCollapsedDialogStyleText =
+                getMobileReengagementCollapsedDialogStyleText;
+              exports.getWelcomeMessageBubbleStyle =
+                getWelcomeMessageBubbleStyle;
+              exports.getWelcomeMessageTextStyle = getWelcomeMessageTextStyle;
+              exports.getMinusButtonStyle = getMinusButtonStyle;
+              exports.getMinusButtonVisibility = getMinusButtonVisibility;
+              exports.getNoOutlineFocus = getNoOutlineFocus;
             },
-            66
+            98
           );
           __d(
             "DOMPlugin",
@@ -21807,7 +21934,7 @@ try {
               "sdk.PluginUtils",
               "sdk.Runtime",
               "sdk.XD",
-              "sdk.feature"
+              "sdk.feature",
             ],
             function $module_DOMPlugin(
               global,
@@ -21818,7 +21945,7 @@ try {
               module,
               exports
             ) {
-              var DOMPlugin = (function(_Observable) {
+              var DOMPlugin = (function (_Observable) {
                 babelHelpers.inheritsLoose(DOMPlugin, _Observable);
                 var _proto = DOMPlugin.prototype;
                 _proto.render = function render(_root) {};
@@ -21851,9 +21978,8 @@ try {
                     app_id: importDefault("sdk.Runtime").getClientID(),
                     locale: importDefault("sdk.Runtime").getLocale(),
                     sdk: "joey",
-                    kid_directed_site: importDefault(
-                      "sdk.Runtime"
-                    ).getKidDirectedSite(),
+                    kid_directed_site:
+                      importDefault("sdk.Runtime").getKidDirectedSite(),
                     channel: importNamespace("sdk.XD").handler(
                       function XD_handler_$0(msg) {
                         if (msg != null) {
@@ -21862,7 +21988,7 @@ try {
                       },
                       "parent.parent",
                       true
-                    )
+                    ),
                   });
                   return _this;
                 }
@@ -21899,6 +22025,7 @@ try {
               function maybeCreateShadowRootAndRenderInDOM(
                 element,
                 render,
+
                 shadowCss
               ) {
                 if (shadowCss === void 0) {
@@ -21915,7 +22042,7 @@ try {
                     mode: importDefault("sdk.feature")(
                       "shadow_dom_plugin_mode",
                       "closed"
-                    )
+                    ),
                   });
 
                   shadowCss.forEach(function shadowCss_forEach_$0(
@@ -21943,7 +22070,8 @@ try {
                 }
               }
               exports.DOMPlugin = DOMPlugin;
-              exports.maybeCreateShadowRootAndRenderInDOM = maybeCreateShadowRootAndRenderInDOM;
+              exports.maybeCreateShadowRootAndRenderInDOM =
+                maybeCreateShadowRootAndRenderInDOM;
             },
             98
           );
@@ -22016,7 +22144,7 @@ try {
 
               var requestAnimationFrame =
                 importDefault("nativeRequestAnimationFrame") ||
-                function(callback) {
+                function (callback) {
                   var currTime = importDefault("performanceNow")();
                   var timeDelay = Math.max(0, 16 - (currTime - lastTime));
                   lastTime = currTime + timeDelay;
@@ -22162,7 +22290,7 @@ try {
                   callback(new IdleCallbackDeadline(null));
                 }
               }
-              var IdleCallbackDeadline = (function() {
+              var IdleCallbackDeadline = (function () {
                 function IdleCallbackDeadline(deadline) {
                   this.didTimeout = deadline == null;
                   this.$IdleCallbackDeadline_deadline = deadline;
@@ -22200,7 +22328,7 @@ try {
               exports
             ) {
               "use strict";
-              var IdleCallback = (function() {
+              var IdleCallback = (function () {
                 function IdleCallback(timeout, callback, minIdleTime) {
                   if (minIdleTime === void 0) {
                     minIdleTime = importDefault("sdk.feature")(
@@ -22278,12 +22406,24 @@ try {
               module,
               exports
             ) {
+              "use strict";
+
               function uuid() {
+                var _self, _self$crypto;
+                var randomUUID =
+                  (_self = self) == null
+                    ? void 0
+                    : (_self$crypto = _self.crypto) == null
+                    ? void 0
+                    : _self$crypto.randomUUID;
+                if (typeof randomUUID === "function") {
+                  return self.crypto.randomUUID();
+                }
                 return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(
                   /[xy]/g,
                   function replace_$1(c) {
                     var r = (Math.random() * 16) | 0;
-                    var v = c == "x" ? r : (r & 3) | 8;
+                    var v = c === "x" ? r : (r & 3) | 8;
                     return v.toString(16);
                   }
                 );
@@ -22313,7 +22453,7 @@ try {
               "sdk.XFBML.CustomerChatNew",
               "sdk.fbt",
               "sdk.feature",
-              "uuid"
+              "uuid",
             ],
             function $module_sdk_XFBML_ChatDOM(
               global,
@@ -22328,9 +22468,9 @@ try {
               var LoadingState = require("$InternalEnum").Mirrored([
                 "WAITING",
                 "LOADING",
-                "LOADED"
+                "LOADED",
               ]);
-              var ChatDOMFacade = (function(_DOMPlugin) {
+              var ChatDOMFacade = (function (_DOMPlugin) {
                 babelHelpers.inheritsLoose(ChatDOMFacade, _DOMPlugin);
 
                 function ChatDOMFacade(element, ns, tag, attr) {
@@ -22348,7 +22488,7 @@ try {
                       theme_color: "string",
                       override: "string",
                       attribution_version: "string",
-                      is_loaded_by_facade: "bool"
+                      is_loaded_by_facade: "bool",
                     }) || this;
 
                   var requestTime = importDefault("performanceAbsoluteNow")();
@@ -22359,10 +22499,12 @@ try {
                     current_url: currentUrl,
                     log_id: logId,
                     request_time: requestTime,
-                    is_loaded_by_facade: true
+                    is_loaded_by_facade: true,
+                    should_use_new_domain: attr.should_use_new_domain,
                   });
 
                   importNamespace("ChatPluginSDKPreLoggingUtils").preLogging(
+                    Boolean(attr.should_use_new_domain),
                     "chat_plugin_sdk_facade_create",
                     _this.params,
                     false
@@ -22371,9 +22513,8 @@ try {
                   importNamespace("sdk.DOM").remove(element);
                   importNamespace("sdk.Content").append(element);
 
-                  _this.$ChatDOMFacade_container = document.createElement(
-                    "div"
-                  );
+                  _this.$ChatDOMFacade_container =
+                    document.createElement("div");
 
                   _this.$ChatDOMFacade_loadingState = LoadingState.WAITING;
                   _this.$ChatDOMFacade_spinnerShown = false;
@@ -22382,6 +22523,13 @@ try {
                   _this.$ChatDOMFacade_entryPointSize = "standard";
                   _this.$ChatDOMFacade_entryPointLabel = "none";
                   _this.$ChatDOMFacade_entryPointIconEnum = "none";
+                  _this.$ChatDOMFacade_alignment = "left";
+                  _this.$ChatDOMFacade_bottomSpacing = 0;
+                  _this.$ChatDOMFacade_sideSpacing = 0;
+                  _this.$ChatDOMFacade_isPageActive = false;
+                  _this.$ChatDOMFacade_shouldUseNewDomain = Boolean(
+                    attr.should_use_new_domain
+                  );
 
                   _this.shadowCss = ["css:fb.shadow.css.chatdom"];
 
@@ -22398,7 +22546,7 @@ try {
                       "chat_plugin_facade_timeout_ms",
                       8000
                     ),
-                    function() {
+                    function () {
                       var endTime = importDefault("performanceAbsoluteNow")();
                       importNamespace("Log").info(
                         "facadeperf: Idle callback starts full load in %sms.",
@@ -22414,9 +22562,11 @@ try {
                 _proto.render = function render(_root) {
                   var _this = this;
                   this.$ChatDOMFacade_container.classList.add("container");
-                  var uri =
-                    importNamespace("UrlMap").resolve("www") +
-                    "/plugins/customer_chat/facade/";
+                  var uri = this.$ChatDOMFacade_shouldUseNewDomain
+                    ? importNamespace("UrlMap").resolve("social_plugin") +
+                      "/customer_chat/facade/"
+                    : importNamespace("UrlMap").resolve("www") +
+                      "/plugins/customer_chat/facade/";
                   importDefault("CORSRequest").execute(
                     uri,
                     "get",
@@ -22436,9 +22586,9 @@ try {
                         return;
                       }
 
-                      var alignment = data.alignment;
-                      var bottomSpacing = data.bottom_spacing;
-                      var sideSpacing = data.side_spacing;
+                      _this.$ChatDOMFacade_alignment = data.alignment;
+                      _this.$ChatDOMFacade_bottomSpacing = data.bottom_spacing;
+                      _this.$ChatDOMFacade_sideSpacing = data.side_spacing;
                       var themeColor = data.theme_color;
                       _this.$ChatDOMFacade_entryPointSize =
                         (_getJSEnumSafe = importDefault("getJSEnumSafe")(
@@ -22462,22 +22612,20 @@ try {
                         ).cast(data.entry_point_icon_enum)) != null
                           ? _ChatPluginEntryPoint2
                           : "none";
+                      _this.$ChatDOMFacade_isPageActive =
+                        data.away_hours_enabled && !data.is_page_away;
 
                       if (_this.$ChatDOMFacade_entryPointLabel === "none") {
-                        var _wrapperElement$child, _wrapperElement$child2;
                         var wrapperElement = document.createElement("div");
                         importNamespace("sdk.DOM").html(
                           wrapperElement,
                           data.entry_point_icon_svg
                         );
+
                         var iconSVG =
-                          (_wrapperElement$child =
-                            wrapperElement.children[0]) == null
+                          wrapperElement == null
                             ? void 0
-                            : (_wrapperElement$child2 =
-                                _wrapperElement$child.children[1]) == null
-                            ? void 0
-                            : _wrapperElement$child2.outerHTML;
+                            : wrapperElement.outerHTML;
                         importNamespace("sdk.DOM").html(
                           _this.$ChatDOMFacade_container,
                           iconSVG
@@ -22493,13 +22641,12 @@ try {
                       var css = importNamespace(
                         "ChatPluginStyleUtils"
                       ).getEntryPointStyle(
-                        alignment,
-                        bottomSpacing,
-                        sideSpacing,
+                        data.alignment,
+                        data.bottom_spacing,
+                        data.side_spacing,
                         false,
                         true,
                         data.entry_point_label,
-                        true,
                         _this.$ChatDOMFacade_entryPointSize
                       );
 
@@ -22510,11 +22657,45 @@ try {
                         _this.$ChatDOMFacade_container.style,
                         css
                       );
-                      _this.$ChatDOMFacade_container.style.backgroundColor = themeColor;
+                      _this.$ChatDOMFacade_container.style.backgroundColor =
+                        themeColor;
+
+                      if (_this.$ChatDOMFacade_isPageActive) {
+                        var availabilityStatusCss = importNamespace(
+                          "ChatPluginStyleUtils"
+                        ).getAvailabilityStatusStyleText(
+                          data.alignment,
+                          data.bottom_spacing,
+                          data.side_spacing,
+                          data.entry_point_label,
+                          data.entry_point_icon_enum,
+                          _this.$ChatDOMFacade_entryPointSize,
+                          false,
+                          true
+                        );
+
+                        var availabilityStatusWrapperElement =
+                          document.createElement("div");
+                        ES(
+                          "Object",
+                          "assign",
+                          false,
+                          availabilityStatusWrapperElement.style,
+                          availabilityStatusCss
+                        );
+
+                        _this.$ChatDOMFacade_container.append(
+                          availabilityStatusWrapperElement
+                        );
+                      }
 
                       importNamespace(
                         "ChatPluginSDKPreLoggingUtils"
-                      ).preLogging("chat_plugin_sdk_facade_load", _this.params);
+                      ).preLogging(
+                        _this.$ChatDOMFacade_shouldUseNewDomain,
+                        "chat_plugin_sdk_facade_load",
+                        _this.params
+                      );
                     }
                   );
 
@@ -22529,220 +22710,701 @@ try {
 
                   return this.$ChatDOMFacade_container;
                 };
-                _proto.$ChatDOMFacade_getEntryPointLabelText = function $ChatDOMFacade_getEntryPointLabelText(
-                  label
-                ) {
-                  switch (label) {
-                    case "chat":
-                      return importDefault("sdk.fbt")._("Chat");
-                    case "help":
-                      return importDefault("sdk.fbt")._("Help");
-                    case "ask_us":
-                      return importDefault("sdk.fbt")._("Ask us");
-                    case "none":
-                      return "";
-                  }
-                };
-                _proto.$ChatDOMFacade_hideFacade = function $ChatDOMFacade_hideFacade() {
-                  var _this$element$parentN;
-                  (_this$element$parentN = this.element.parentNode) == null
-                    ? void 0
-                    : _this$element$parentN.removeChild(this.element);
-                };
-                _proto.$ChatDOMFacade_showSpinner = function $ChatDOMFacade_showSpinner() {
-                  if (
-                    this.$ChatDOMFacade_spinnerShown ||
-                    this.$ChatDOMFacade_loadingState === LoadingState.LOADED
-                  ) {
-                    return;
-                  }
+                _proto.$ChatDOMFacade_getEntryPointLabelText =
+                  function $ChatDOMFacade_getEntryPointLabelText(label) {
+                    switch (label) {
+                      case "chat":
+                        return importDefault("sdk.fbt")._("Chat");
+                      case "help":
+                        return importDefault("sdk.fbt")._("Help");
+                      case "ask_us":
+                        return importDefault("sdk.fbt")._("Ask us");
+                      case "none":
+                        return "";
+                    }
+                  };
+                _proto.$ChatDOMFacade_hideFacade =
+                  function $ChatDOMFacade_hideFacade() {
+                    var _this$element$parentN;
+                    (_this$element$parentN = this.element.parentNode) == null
+                      ? void 0
+                      : _this$element$parentN.removeChild(this.element);
+                  };
+                _proto.$ChatDOMFacade_showSpinner =
+                  function $ChatDOMFacade_showSpinner() {
+                    if (
+                      this.$ChatDOMFacade_spinnerShown ||
+                      this.$ChatDOMFacade_loadingState === LoadingState.LOADED
+                    ) {
+                      return;
+                    }
 
-                  if (this.$ChatDOMFacade_entryPointLabel === "none") {
-                    var spinnerSize =
-                      this.$ChatDOMFacade_entryPointSize === "compact"
-                        ? 24
-                        : 36;
-                    var spinnerSVG = this.$ChatDOMFacade_getSpinnerSVG(
-                      spinnerSize
-                    );
-                    importNamespace("sdk.DOM").html(
-                      this.$ChatDOMFacade_container,
-                      '\n          <div class="centered-container">\n            ' +
-                        spinnerSVG +
-                        "\n          </div>\n        "
-                    );
-                  } else {
-                    var _spinnerSize =
-                      this.$ChatDOMFacade_entryPointSize === "compact"
-                        ? 20
-                        : 24;
-                    var _spinnerSVG = this.$ChatDOMFacade_getSpinnerSVG(
-                      _spinnerSize
-                    );
-                    if (this.$ChatDOMFacade_entryPointIconEnum === "none") {
-                      var marginRight =
+                    if (this.$ChatDOMFacade_entryPointLabel === "none") {
+                      var spinnerSize =
                         this.$ChatDOMFacade_entryPointSize === "compact"
-                          ? importNamespace("ChatPluginStyleUtils")
-                              .LABELED_ENTRY_POINT_COMPACT_ICON_MARGIN_RIGHT
-                          : importNamespace("ChatPluginStyleUtils")
-                              .LABELED_ENTRY_POINT_STANDARD_ICON_MARGIN_RIGHT;
-
+                          ? 24
+                          : 36;
+                      var spinnerSVG =
+                        this.$ChatDOMFacade_getSpinnerSVG(spinnerSize);
                       importNamespace("sdk.DOM").html(
-                        this.$ChatDOMFacade_container.children[0],
-                        this.$ChatDOMFacade_getLabelOnlyEntryPointSpinner(
-                          marginRight,
-                          _spinnerSVG
-                        ) + this.$ChatDOMFacade_container.children[0].innerHTML
+                        this.$ChatDOMFacade_container,
+                        '\n          <div class="centered-container">\n            ' +
+                          spinnerSVG +
+                          "\n          </div>\n        "
                       );
                     } else {
-                      importNamespace("sdk.DOM").html(
-                        this.$ChatDOMFacade_container.children[0].children[0],
-                        _spinnerSVG
+                      var _spinnerSize =
+                        this.$ChatDOMFacade_entryPointSize === "compact"
+                          ? 20
+                          : 24;
+                      var _spinnerSVG =
+                        this.$ChatDOMFacade_getSpinnerSVG(_spinnerSize);
+                      if (this.$ChatDOMFacade_entryPointIconEnum === "none") {
+                        var marginRight =
+                          this.$ChatDOMFacade_entryPointSize === "compact"
+                            ? importNamespace("ChatPluginStyleUtils")
+                                .LABELED_ENTRY_POINT_COMPACT_ICON_MARGIN_RIGHT
+                            : importNamespace("ChatPluginStyleUtils")
+                                .LABELED_ENTRY_POINT_STANDARD_ICON_MARGIN_RIGHT;
+
+                        importNamespace("sdk.DOM").html(
+                          this.$ChatDOMFacade_container.children[0],
+                          this.$ChatDOMFacade_getLabelOnlyEntryPointSpinner(
+                            marginRight,
+                            _spinnerSVG
+                          ) +
+                            this.$ChatDOMFacade_container.children[0].innerHTML
+                        );
+
+                        if (this.$ChatDOMFacade_isPageActive) {
+                          var availabilityStatusCss = importNamespace(
+                            "ChatPluginStyleUtils"
+                          ).getAvailabilityStatusStyleText(
+                            this.$ChatDOMFacade_alignment,
+                            this.$ChatDOMFacade_bottomSpacing,
+                            this.$ChatDOMFacade_sideSpacing,
+                            this.$ChatDOMFacade_entryPointLabel,
+                            "chat_round_icon",
+                            this.$ChatDOMFacade_entryPointSize,
+                            false,
+                            false
+                          );
+
+                          var availabilityStatusWrapperElement =
+                            document.createElement("div");
+                          ES(
+                            "Object",
+                            "assign",
+                            false,
+                            availabilityStatusWrapperElement.style,
+                            availabilityStatusCss
+                          );
+
+                          importNamespace("sdk.DOM").remove(
+                            this.$ChatDOMFacade_container.children[1]
+                          );
+                          this.$ChatDOMFacade_container.append(
+                            availabilityStatusWrapperElement
+                          );
+                        }
+                      } else {
+                        importNamespace("sdk.DOM").html(
+                          this.$ChatDOMFacade_container.children[0].children[0],
+                          _spinnerSVG
+                        );
+                      }
+                    }
+                    this.$ChatDOMFacade_spinnerShown = true;
+                  };
+                _proto.$ChatDOMFacade_getLabelEntryPointHTML =
+                  function $ChatDOMFacade_getLabelEntryPointHTML(iconSVG) {
+                    var containerHeight =
+                      this.$ChatDOMFacade_entryPointSize === "compact"
+                        ? importNamespace("ChatPluginStyleUtils")
+                            .LABELED_ENTRY_POINT_COMPACT_HEIGHT
+                        : importNamespace("ChatPluginStyleUtils")
+                            .LABELED_ENTRY_POINT_STANDARD_HEIGHT;
+
+                    var fontSize =
+                      this.$ChatDOMFacade_entryPointSize === "compact"
+                        ? importNamespace("ChatPluginStyleUtils")
+                            .LABELED_ENTRY_POINT_COMPACT_FONT_SIZE
+                        : importNamespace("ChatPluginStyleUtils")
+                            .LABELED_ENTRY_POINT_STANDARD_FONT_SIZE;
+
+                    var lineHeight =
+                      this.$ChatDOMFacade_entryPointSize === "compact"
+                        ? importNamespace("ChatPluginStyleUtils")
+                            .LABELED_ENTRY_POINT_COMPACT_LINE_HEIGHT
+                        : importNamespace("ChatPluginStyleUtils")
+                            .LABELED_ENTRY_POINT_STANDARD_LINE_HEIGHT;
+
+                    var marginRight =
+                      this.$ChatDOMFacade_entryPointSize === "compact"
+                        ? importNamespace("ChatPluginStyleUtils")
+                            .LABELED_ENTRY_POINT_COMPACT_ICON_MARGIN_RIGHT
+                        : importNamespace("ChatPluginStyleUtils")
+                            .LABELED_ENTRY_POINT_STANDARD_ICON_MARGIN_RIGHT;
+
+                    var paddingHorizontal =
+                      this.$ChatDOMFacade_entryPointSize === "compact"
+                        ? importNamespace("ChatPluginStyleUtils")
+                            .LABELED_ENTRY_POINT_COMPACT_PADDING_HORIZONTAL
+                        : importNamespace("ChatPluginStyleUtils")
+                            .LABELED_ENTRY_POINT_STANDARD_PADDING_HORIZONTAL;
+
+                    return (
+                      '\n      <div class="label-container" style="\n        height: ' +
+                      containerHeight +
+                      "px;\n        padding: 0 " +
+                      paddingHorizontal +
+                      'px\n      ">\n        ' +
+                      (iconSVG &&
+                        '\n            <div class="label-container-icon" style="\n              margin-right: ' +
+                          marginRight +
+                          'px;\n            ">\n              ' +
+                          iconSVG +
+                          "\n            </div>\n          ") +
+                      '\n        <div\n          class="label-container-label"\n          style="\n            font-size: ' +
+                      fontSize +
+                      "px;\n            line-height: " +
+                      lineHeight +
+                      'px;\n        ">' +
+                      this.$ChatDOMFacade_getEntryPointLabelText(
+                        this.$ChatDOMFacade_entryPointLabel
+                      ).toString() +
+                      "</div>\n      </div>\n    "
+                    );
+                  };
+                _proto.$ChatDOMFacade_getLabelOnlyEntryPointSpinner =
+                  function $ChatDOMFacade_getLabelOnlyEntryPointSpinner(
+                    marginRight,
+                    spinnerSVG
+                  ) {
+                    return (
+                      '\n      <div class="label-container-icon" style="\n        margin-right: ' +
+                      marginRight +
+                      'px;\n      ">\n        ' +
+                      spinnerSVG +
+                      "\n      </div>\n    "
+                    );
+                  };
+                _proto.$ChatDOMFacade_getSpinnerSVG =
+                  function $ChatDOMFacade_getSpinnerSVG(size) {
+                    return (
+                      '\n      <svg class="spinning" x="0" y="0" width="' +
+                      size +
+                      '" height="' +
+                      size +
+                      '" viewbox="0 0 60 60">\n        <circle class="path" cx="30" cy="30" r="24" fill="none" stroke-width="6"></circle>\n      </svg>\n    '
+                    );
+                  };
+                _proto.$ChatDOMFacade_prepareShowDialog =
+                  function $ChatDOMFacade_prepareShowDialog(showDialog) {
+                    if (
+                      showDialog &&
+                      this.$ChatDOMFacade_renderer &&
+                      !this.$ChatDOMFacade_willShowDialog
+                    ) {
+                      this.$ChatDOMFacade_willShowDialog = true;
+                      var renderer = this.$ChatDOMFacade_renderer;
+                      renderer.subscribe(
+                        "iframes_loaded",
+                        function renderer_subscribe_$1(_message) {
+                          renderer.showDialog();
+                        }
                       );
                     }
-                  }
-                  this.$ChatDOMFacade_spinnerShown = true;
-                };
-                _proto.$ChatDOMFacade_getLabelEntryPointHTML = function $ChatDOMFacade_getLabelEntryPointHTML(
-                  iconSVG
-                ) {
-                  var containerHeight =
-                    this.$ChatDOMFacade_entryPointSize === "compact"
-                      ? importNamespace("ChatPluginStyleUtils")
-                          .LABELED_ENTRY_POINT_COMPACT_HEIGHT
-                      : importNamespace("ChatPluginStyleUtils")
-                          .LABELED_ENTRY_POINT_STANDARD_HEIGHT;
-
-                  var fontSize =
-                    this.$ChatDOMFacade_entryPointSize === "compact"
-                      ? importNamespace("ChatPluginStyleUtils")
-                          .LABELED_ENTRY_POINT_COMPACT_FONT_SIZE
-                      : importNamespace("ChatPluginStyleUtils")
-                          .LABELED_ENTRY_POINT_STANDARD_FONT_SIZE;
-
-                  var lineHeight =
-                    this.$ChatDOMFacade_entryPointSize === "compact"
-                      ? importNamespace("ChatPluginStyleUtils")
-                          .LABELED_ENTRY_POINT_COMPACT_LINE_HEIGHT
-                      : importNamespace("ChatPluginStyleUtils")
-                          .LABELED_ENTRY_POINT_STANDARD_LINE_HEIGHT;
-
-                  var marginRight =
-                    this.$ChatDOMFacade_entryPointSize === "compact"
-                      ? importNamespace("ChatPluginStyleUtils")
-                          .LABELED_ENTRY_POINT_COMPACT_ICON_MARGIN_RIGHT
-                      : importNamespace("ChatPluginStyleUtils")
-                          .LABELED_ENTRY_POINT_STANDARD_ICON_MARGIN_RIGHT;
-
-                  var paddingHorizontal =
-                    this.$ChatDOMFacade_entryPointSize === "compact"
-                      ? importNamespace("ChatPluginStyleUtils")
-                          .LABELED_ENTRY_POINT_COMPACT_PADDING_HORIZONTAL
-                      : importNamespace("ChatPluginStyleUtils")
-                          .LABELED_ENTRY_POINT_STANDARD_PADDING_HORIZONTAL;
-
-                  return (
-                    '\n      <div class="label-container" style="\n        height: ' +
-                    containerHeight +
-                    "px;\n        padding: 0 " +
-                    paddingHorizontal +
-                    'px\n      ">\n        ' +
-                    (iconSVG &&
-                      '\n            <div class="label-container-icon" style="\n              margin-right: ' +
-                        marginRight +
-                        'px;\n            ">\n              ' +
-                        iconSVG +
-                        "\n            </div>\n          ") +
-                    '\n        <div\n          class="label-container-label"\n          style="\n            font-size: ' +
-                    fontSize +
-                    "px;\n            line-height: " +
-                    lineHeight +
-                    'px;\n        ">' +
-                    this.$ChatDOMFacade_getEntryPointLabelText(
-                      this.$ChatDOMFacade_entryPointLabel
-                    ).toString() +
-                    "</div>\n      </div>\n    "
-                  );
-                };
-                _proto.$ChatDOMFacade_getLabelOnlyEntryPointSpinner = function $ChatDOMFacade_getLabelOnlyEntryPointSpinner(
-                  marginRight,
-                  spinnerSVG
-                ) {
-                  return (
-                    '\n      <div class="label-container-icon" style="\n        margin-right: ' +
-                    marginRight +
-                    'px;\n      ">\n        ' +
-                    spinnerSVG +
-                    "\n      </div>\n    "
-                  );
-                };
-                _proto.$ChatDOMFacade_getSpinnerSVG = function $ChatDOMFacade_getSpinnerSVG(
-                  size
-                ) {
-                  return (
-                    '\n      <svg class="spinning" x="0" y="0" width="' +
-                    size +
-                    '" height="' +
-                    size +
-                    '" viewbox="0 0 60 60">\n        <circle class="path" cx="30" cy="30" r="24" fill="none" stroke-width="6"></circle>\n      </svg>\n    '
-                  );
-                };
-                _proto.$ChatDOMFacade_prepareShowDialog = function $ChatDOMFacade_prepareShowDialog(
-                  showDialog
-                ) {
-                  if (
-                    showDialog &&
-                    this.$ChatDOMFacade_renderer &&
-                    !this.$ChatDOMFacade_willShowDialog
+                  };
+                _proto.$ChatDOMFacade_loadFullPlugin =
+                  function $ChatDOMFacade_loadFullPlugin(
+                    showDialog,
+                    showSpinner
                   ) {
-                    this.$ChatDOMFacade_willShowDialog = true;
-                    var renderer = this.$ChatDOMFacade_renderer;
+                    var _this2 = this;
+                    if (showSpinner) {
+                      this.$ChatDOMFacade_showSpinner();
+                    }
+                    this.$ChatDOMFacade_prepareShowDialog(showDialog);
+                    if (
+                      this.$ChatDOMFacade_loadingState !== LoadingState.WAITING
+                    ) {
+                      return;
+                    }
+                    this.$ChatDOMFacade_loadingState = LoadingState.LOADING;
+                    var container = document.createElement("div");
+                    importNamespace("sdk.Content").append(
+                      container,
+                      this.element
+                    );
+                    var renderer = new (importDefault(
+                      "sdk.XFBML.CustomerChatNew"
+                    ))(container, "fb", "customerchat", this.params);
+
+                    this.$ChatDOMFacade_renderer = renderer;
                     renderer.subscribe(
-                      "iframes_loaded",
+                      "xd.mpn.setupIconIframe",
                       function renderer_subscribe_$1(_message) {
-                        renderer.showDialog();
+                        _this2.$ChatDOMFacade_loadingState =
+                          LoadingState.LOADED;
+                        _this2.$ChatDOMFacade_hideFacade();
                       }
                     );
-                  }
-                };
-                _proto.$ChatDOMFacade_loadFullPlugin = function $ChatDOMFacade_loadFullPlugin(
-                  showDialog,
-                  showSpinner
-                ) {
-                  var _this2 = this;
-                  if (showSpinner) {
-                    this.$ChatDOMFacade_showSpinner();
-                  }
-                  this.$ChatDOMFacade_prepareShowDialog(showDialog);
-                  if (
-                    this.$ChatDOMFacade_loadingState !== LoadingState.WAITING
-                  ) {
-                    return;
-                  }
-                  this.$ChatDOMFacade_loadingState = LoadingState.LOADING;
-                  var container = document.createElement("div");
-                  importNamespace("sdk.Content").append(
-                    container,
-                    this.element
-                  );
-                  var renderer = new (importDefault(
-                    "sdk.XFBML.CustomerChatNew"
-                  ))(container, "fb", "customerchat", this.params);
-
-                  this.$ChatDOMFacade_renderer = renderer;
-                  renderer.subscribe(
-                    "xd.mpn.setupIconIframe",
-                    function renderer_subscribe_$1(_message) {
-                      _this2.$ChatDOMFacade_loadingState = LoadingState.LOADED;
-                      _this2.$ChatDOMFacade_hideFacade();
-                    }
-                  );
-                  this.$ChatDOMFacade_prepareShowDialog(showDialog);
-                  renderer.process();
-                };
+                    this.$ChatDOMFacade_prepareShowDialog(showDialog);
+                    renderer.process();
+                  };
                 return ChatDOMFacade;
               })(importNamespace("DOMPlugin").DOMPlugin);
               exports["default"] = ChatDOMFacade;
+            },
+            98
+          );
+          __d(
+            "IframePluginClass",
+            [
+              "Log",
+              "QueryString",
+              "UrlMap",
+              "guid",
+              "sdk.Auth.LoginStatus",
+              "sdk.AuthUtils",
+              "sdk.DOM",
+              "sdk.Event",
+              "sdk.Observable",
+              "sdk.PlatformVersioning",
+              "sdk.PluginUtils",
+              "sdk.Runtime",
+              "sdk.UA",
+              "sdk.URI",
+              "sdk.XD",
+              "sdk.createIframe",
+            ],
+            function $module_IframePluginClass(
+              global,
+              require,
+              importDefault,
+              importNamespace,
+              requireLazy,
+              module,
+              exports
+            ) {
+              var IframePluginClass = (function (_Observable) {
+                babelHelpers.inheritsLoose(IframePluginClass, _Observable);
+
+                function IframePluginClass(elem, ns, tag, attr, config) {
+                  var _this;
+                  if (config === void 0) {
+                    config = null;
+                  }
+                  _this = _Observable.call(this) || this;
+                  tag = tag.replace(/-/g, "_");
+
+                  _this.$IframePluginClass_isIframeResized = false;
+
+                  _this.config =
+                    config != null
+                      ? config
+                      : {
+                          fluid: false,
+                          mobile_fullsize: false,
+                          full_width: false,
+                        };
+
+                  var pluginId = importNamespace("sdk.PluginUtils").getVal(
+                    attr,
+                    "plugin_id"
+                  );
+                  _this.subscribe(
+                    "xd.resize",
+                    importNamespace("sdk.PluginUtils").resizeBubbler(pluginId)
+                  );
+                  _this.subscribe(
+                    "xd.resize.flow",
+                    importNamespace("sdk.PluginUtils").resizeBubbler(pluginId)
+                  );
+
+                  _this.subscribe(
+                    "xd.resize.flow",
+                    function _this_subscribe_$1(message) {
+                      ES(
+                        "Object",
+                        "assign",
+                        false,
+                        _this.iframeOptions.root.style,
+                        {
+                          verticalAlign: "bottom",
+                          overflow: "",
+                        }
+                      );
+
+                      importNamespace("sdk.PluginUtils").resize(
+                        _this.iframeOptions.root,
+                        importNamespace("sdk.PluginUtils").parse(message.width),
+                        importNamespace("sdk.PluginUtils").parse(message.height)
+                      );
+
+                      _this.updateLift();
+                      window.clearTimeout(_this.$IframePluginClass_timeoutID);
+                    }
+                  );
+
+                  _this.subscribe(
+                    "xd.resize",
+                    function _this_subscribe_$1(message) {
+                      ES(
+                        "Object",
+                        "assign",
+                        false,
+                        _this.iframeOptions.root.style,
+                        {
+                          verticalAlign: "bottom",
+                          overflow: "",
+                        }
+                      );
+
+                      importNamespace("sdk.PluginUtils").resize(
+                        _this.iframeOptions.root,
+                        importNamespace("sdk.PluginUtils").parse(message.width),
+                        importNamespace("sdk.PluginUtils").parse(message.height)
+                      );
+
+                      importNamespace("sdk.PluginUtils").resize(
+                        _this.iframe,
+                        importNamespace("sdk.PluginUtils").parse(message.width),
+                        importNamespace("sdk.PluginUtils").parse(message.height)
+                      );
+
+                      _this.$IframePluginClass_isIframeResized = true;
+                      _this.updateLift();
+                      window.clearTimeout(_this.$IframePluginClass_timeoutID);
+                    }
+                  );
+
+                  _this.subscribe(
+                    "xd.resize.iframe",
+                    function _this_subscribe_$1(message) {
+                      importNamespace("sdk.PluginUtils").resize(
+                        _this.iframe,
+                        importNamespace("sdk.PluginUtils").parse(message.width),
+                        importNamespace("sdk.PluginUtils").parse(message.height)
+                      );
+
+                      _this.$IframePluginClass_isIframeResized = true;
+                      _this.updateLift();
+                      window.clearTimeout(_this.$IframePluginClass_timeoutID);
+                    }
+                  );
+
+                  _this.subscribe(
+                    "xd.sdk_event",
+                    function _this_subscribe_$1(message) {
+                      var data = ES("JSON", "parse", false, message.data);
+                      data.pluginID = pluginId;
+                      importNamespace("sdk.Event").fire(
+                        message.event,
+                        data,
+                        elem
+                      );
+                    }
+                  );
+
+                  var url = attr.should_use_new_domain
+                    ? importNamespace("UrlMap").resolve("social_plugin") +
+                      "/" +
+                      tag +
+                      ".php?"
+                    : importNamespace("UrlMap").resolve("www") +
+                      "/plugins/" +
+                      tag +
+                      ".php?";
+                  var params = {};
+
+                  importNamespace("sdk.PluginUtils").validate(
+                    _this.getParams(),
+                    elem,
+                    attr,
+                    params
+                  );
+                  importNamespace("sdk.PluginUtils").validate(
+                    importNamespace("sdk.PluginUtils").baseParams,
+                    elem,
+                    attr,
+                    params
+                  );
+
+                  ES("Object", "assign", false, params, {
+                    app_id: importDefault("sdk.Runtime").getClientID(),
+                    locale: importDefault("sdk.Runtime").getLocale(),
+                    sdk: "joey",
+                    kid_directed_site:
+                      importDefault("sdk.Runtime").getKidDirectedSite(),
+                    channel: importNamespace("sdk.XD").handler(
+                      function XD_handler_$0(msg) {
+                        if (msg != null) {
+                          _this.inform("xd." + msg.type, msg);
+                        }
+                      },
+                      "parent.parent",
+                      true
+                    ),
+                  });
+
+                  if (_this.shouldIgnoreWidth()) {
+                    params.width = void 0;
+                  }
+
+                  params.container_width = elem.offsetWidth;
+
+                  importNamespace("sdk.DOM").addCss(elem, "fb_iframe_widget");
+                  var name = importDefault("guid")();
+                  _this.subscribe(
+                    "xd.verify",
+                    function _this_subscribe_$1(msg) {
+                      importNamespace("sdk.XD").sendToFacebook(name, {
+                        method: "xd/verify",
+                        params: ES("JSON", "stringify", false, msg.token),
+                      });
+                    }
+                  );
+
+                  _this.subscribe(
+                    "xd.refreshLoginStatus",
+                    function _this_subscribe_$1() {
+                      importNamespace("sdk.AuthUtils").removeLogoutState();
+                      importDefault("sdk.Auth.LoginStatus").getLoginStatus(
+                        ES(
+                          _this.inform,
+                          "bind",
+                          true,
+                          babelHelpers.assertThisInitialized(_this),
+                          "login.status"
+                        ),
+                        true
+                      );
+                    }
+                  );
+
+                  var flow = document.createElement("span");
+
+                  ES("Object", "assign", false, flow.style, {
+                    verticalAlign: "top",
+
+                    width: params.lazy ? "1px" : "0px",
+
+                    height: params.lazy ? "1px" : "0px",
+                    overflow: "hidden",
+                  });
+
+                  _this.element = elem;
+                  _this.ns = ns;
+                  _this.tag = tag;
+                  _this.params = params;
+                  _this.iframeOptions = {
+                    root: flow,
+                    url: url + importDefault("QueryString").encode(params),
+                    name: name,
+
+                    width:
+                      _this.config.mobile_fullsize &&
+                      importDefault("sdk.UA").mobile()
+                        ? void 0
+                        : params.width || 1000,
+
+                    height: params.height || 1000,
+                    style: {
+                      border: "none",
+                      visibility: "hidden",
+                    },
+
+                    title:
+                      _this.ns + ":" + _this.tag + " Facebook Social Plugin",
+                    testid:
+                      _this.ns + ":" + _this.tag + " Facebook Social Plugin",
+                    onload: function onload() {
+                      return _this.inform("render");
+                    },
+                    onerror: function onerror() {
+                      return importNamespace("sdk.PluginUtils").collapseIframe(
+                        _this.iframe
+                      );
+                    },
+
+                    lazy: params.lazy,
+                  };
+
+                  if (_this.config.fluid && params.width !== "auto") {
+                    importNamespace("sdk.DOM").addCss(
+                      _this.element,
+                      "fbiframe_widget_fluid_desktop"
+                    );
+
+                    if (!params.width && _this.config.full_width) {
+                      _this.element.style.width = "100%";
+                      _this.iframeOptions.root.style.width = "100%";
+                      _this.iframeOptions.style.width = "100%";
+                      _this.params.container_width = _this.element.offsetWidth;
+                      _this.iframeOptions.url =
+                        url + importDefault("QueryString").encode(_this.params);
+                    }
+                  }
+                  return _this;
+                }
+                var _proto = IframePluginClass.prototype;
+                _proto.shouldIgnoreWidth = function shouldIgnoreWidth() {
+                  return (
+                    importDefault("sdk.UA").mobile() &&
+                    this.config.mobile_fullsize
+                  );
+                };
+                _proto.useInlineHeightForMobile =
+                  function useInlineHeightForMobile() {
+                    return true;
+                  };
+                _proto.process = function process() {
+                  var _this2 = this;
+                  if (importDefault("sdk.Runtime").getIsVersioned()) {
+                    importNamespace(
+                      "sdk.PlatformVersioning"
+                    ).assertVersionIsSet();
+                    var uri = new (importDefault("sdk.URI"))(
+                      this.iframeOptions.url
+                    );
+                    this.iframeOptions.url = uri
+                      .setPath(
+                        "/" +
+                          importDefault("sdk.Runtime").getVersion() +
+                          uri.getPath()
+                      )
+                      .toString();
+                  }
+
+                  var params = babelHelpers["extends"]({}, this.params);
+                  delete params.channel;
+                  var query = importDefault("QueryString").encode(params);
+                  if (
+                    this.element.getAttribute("fb-iframe-plugin-query") == query
+                  ) {
+                    importNamespace("Log").info(
+                      "Skipping render: %s:%s %s",
+                      this.ns,
+                      this.tag,
+                      query
+                    );
+                    this.inform("render");
+                    return;
+                  }
+                  this.element.setAttribute("fb-iframe-plugin-query", query);
+
+                  this.subscribe("render", function subscribe_$1() {
+                    importNamespace("sdk.Event").fire("iframeplugin:onload");
+                    _this2.iframe.style.visibility = "visible";
+
+                    if (!_this2.$IframePluginClass_isIframeResized) {
+                      importNamespace("sdk.PluginUtils").collapseIframe(
+                        _this2.iframe
+                      );
+                    }
+                  });
+
+                  while (this.element.firstChild) {
+                    this.element.removeChild(this.element.firstChild);
+                  }
+                  this.element.appendChild(this.iframeOptions.root);
+                  var timeout = importDefault("sdk.UA").mobile() ? 120 : 45;
+                  this.$IframePluginClass_timeoutID = window.setTimeout(
+                    function window_setTimeout_$0() {
+                      importNamespace("sdk.PluginUtils").collapseIframe(
+                        _this2.iframe
+                      );
+                      importNamespace("Log").warn(
+                        "%s:%s failed to resize in %ss",
+                        _this2.ns,
+                        _this2.tag,
+                        timeout
+                      );
+                    },
+                    timeout * 1000
+                  );
+
+                  this.iframe = importDefault("sdk.createIframe")(
+                    this.iframeOptions
+                  );
+                  importNamespace("sdk.Event").fire("iframeplugin:create");
+
+                  if (
+                    importDefault("sdk.UA").mobile() ||
+                    params.width === "auto"
+                  ) {
+                    if (this.useInlineHeightForMobile()) {
+                      importNamespace("sdk.DOM").addCss(
+                        this.element,
+                        "fbiframe_widget_fluid"
+                      );
+                    }
+
+                    if (!this.iframeOptions.width) {
+                      ES("Object", "assign", false, this.element.style, {
+                        display: "block",
+                        width: "100%",
+                        height: "auto",
+                      });
+
+                      ES(
+                        "Object",
+                        "assign",
+                        false,
+                        this.iframeOptions.root.style,
+                        {
+                          width: "100%",
+                          height: "auto",
+                        }
+                      );
+
+                      var iframeStyle = {
+                        height: "auto",
+                        position: "static",
+                        width: "100%",
+                      };
+
+                      if (
+                        importDefault("sdk.UA").iphone() ||
+                        importDefault("sdk.UA").ipad()
+                      ) {
+                        ES("Object", "assign", false, iframeStyle, {
+                          width: "220px",
+                          minWidth: "100%",
+                        });
+                      }
+
+                      ES(
+                        "Object",
+                        "assign",
+                        false,
+                        this.iframe.style,
+                        iframeStyle
+                      );
+                    }
+                  }
+                };
+                _proto.getParams = function getParams() {
+                  return this.params;
+                };
+                _proto.updateLift = function updateLift() {
+                  var same =
+                    this.iframe.style.width ===
+                      this.iframeOptions.root.style.width &&
+                    this.iframe.style.height ===
+                      this.iframeOptions.root.style.height;
+                  (same
+                    ? importNamespace("sdk.DOM").removeCss
+                    : importNamespace("sdk.DOM").addCss)(
+                    this.iframe,
+                    "fbiframe_widget_lift"
+                  );
+                };
+                return IframePluginClass;
+              })(importNamespace("sdk.Observable").Observable);
+              exports["default"] = IframePluginClass;
             },
             98
           );
@@ -22759,7 +23421,7 @@ try {
             ) {
               "use strict";
 
-              var USER_INTERACTION_TIMEOUT = 5000;
+              var USER_INTERACTION_TIMEOUT = 3600000;
 
               function hasUserInteraction(euit) {
                 if (euit == null) {
@@ -22772,86 +23434,12 @@ try {
             66
           );
           __d(
-            "MPNConstants",
-            ["$InternalEnum"],
-            function $module_MPNConstants(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              "use strict";
-              var InternalEnum;
-              var MPNRedirect = (InternalEnum = require("$InternalEnum"))({
-                NEW_GUEST_SESSION: "new_guest_sess",
-                ITP_CONTINUE_SESSION: "ipt_continue_sess",
-                FB_LOG_IN: "fb_log_in",
-                GUEST_UPGRADE: "guest_upgrade",
-                GUEST_UPGRADE_SWITCH_ACCOUNT: "guest_upgrade_switch_account"
-              });
-              var MPNUpgradePrompt = InternalEnum({
-                NOT_SHOWN: "not_shown",
-                ATTACHMENT_UPSELL: "attachment_upsell",
-                DONT_WAIT_FOR_REPLY_UPSELL: "dont_wait_for_reply_upsell",
-                CONTINUE_IN_MESSENGER: "continue_in_messenger",
-                OPEN_THREAD: "open_thread",
-                BACK_AND_FORTH: "back_and_forth",
-                END_CHAT: "end_chat"
-              });
-              var MPNVisibility = InternalEnum({
-                HIDDEN: "hidden",
-                NOT_HIDDEN: "not-hidden"
-              });
-              var MPNGreenDotSize = InternalEnum.Mirrored(["LARGE", "MEDIUM"]);
-              var MPNQuickReplyLayout = InternalEnum.Mirrored([
-                "HORIZONTAL",
-                "VERTICAL"
-              ]);
-              var MPNQuickReplyContentType = InternalEnum({
-                TEXT: "text",
-                USER_EMAIL: "user_email",
-                USER_PHONE_NUMBER: "user_phone_number",
-                USER_STATE: "user_state",
-                USER_ZIP_CODE: "user_zip_code"
-              });
-              var MPNCufeeScoreType = InternalEnum.Mirrored([
-                "CSAT",
-                "CES",
-                "NPS",
-                "FREE_FORM"
-              ]);
-              var MPNCufeeScoreOption = InternalEnum.Mirrored([
-                "FIVE_STARS",
-                "FIVE_EMOJIS",
-                "ONE_TO_FIVE",
-                "ONE_TO_SEVEN",
-                "ZERO_TO_TEN",
-                "NONE"
-              ]);
-
-              var MPNCufeeWordLimit = 400;
-              exports.MPNRedirect = MPNRedirect;
-              exports.MPNUpgradePrompt = MPNUpgradePrompt;
-              exports.MPNVisibility = MPNVisibility;
-              exports.MPNGreenDotSize = MPNGreenDotSize;
-              exports.MPNQuickReplyLayout = MPNQuickReplyLayout;
-              exports.MPNQuickReplyContentType = MPNQuickReplyContentType;
-              exports.MPNCufeeScoreType = MPNCufeeScoreType;
-              exports.MPNCufeeScoreOption = MPNCufeeScoreOption;
-              exports.MPNCufeeWordLimit = MPNCufeeWordLimit;
-            },
-            66
-          );
-          __d(
             "MPNLocalState",
             [],
             function $module_MPNLocalState(
               global,
               require,
-              importDefault,
-              importNamespace,
+              requireDynamic,
               requireLazy,
               module,
               exports
@@ -22863,13 +23451,15 @@ try {
                 WELCOME_PAGE: 2,
                 ITP_CONTINUE: 3,
                 THREAD_VIEW: 4,
-                BUBBLE: 5
+                BUBBLE: 5,
+                REENGAGEMENT_COLLAPSED_VIEW: 6,
+                REENGAGEMENT_EXPANDED_VIEW: 7,
               };
 
               var MPNChatState = {
                 CHAT_NOT_STARTED: 1,
                 LOGGED_IN_CHAT_STARTED: 2,
-                GUEST_CHAT_STARTED: 3
+                GUEST_CHAT_STARTED: 3,
               };
 
               var LOCAL_STATE_KEY = "__fb_chat_plugin";
@@ -22877,7 +23467,7 @@ try {
               exports.MPNChatState = MPNChatState;
               exports.LOCAL_STATE_KEY = LOCAL_STATE_KEY;
             },
-            98
+            66
           );
           __d(
             "getFacebookOriginForTarget",
@@ -22891,7 +23481,11 @@ try {
               module,
               exports
             ) {
-              function getFacebookOriginForTarget(cb, target) {
+              function getFacebookOriginForTarget(
+                cb,
+
+                target
+              ) {
                 if (target === void 0) {
                   target = top;
                 }
@@ -22904,7 +23498,7 @@ try {
                   function window_addEventListener_$1(event) {
                     if (event.source === target && event.data.xdArbiterAck) {
                       if (
-                        /\.facebook\.com$/.test(event.origin) &&
+                        /\.facebook\.(com|net)$/.test(event.origin) &&
                         /^https:/.test(event.origin)
                       ) {
                         if (ackReceived === false) {
@@ -22944,6 +23538,40 @@ try {
               exports["default"] = getFacebookOriginForTarget;
             },
             98
+          );
+          __d(
+            "MPNSingletonProvider",
+            [],
+            function $module_MPNSingletonProvider(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              "use strict";
+              var MPNSingletonProvider = (function () {
+                function MPNSingletonProvider(createInstanceFn) {
+                  this.$MPNSingletonProvider_instance = null;
+                  this.$MPNSingletonProvider_constructor = createInstanceFn;
+                }
+                var _proto = MPNSingletonProvider.prototype;
+                _proto.get = function get() {
+                  if (this.$MPNSingletonProvider_instance == null) {
+                    this.$MPNSingletonProvider_instance =
+                      this.$MPNSingletonProvider_constructor();
+                  }
+                  return this.$MPNSingletonProvider_instance;
+                };
+                _proto.clear = function clear() {
+                  this.$MPNSingletonProvider_instance = null;
+                };
+                return MPNSingletonProvider;
+              })();
+              exports["default"] = MPNSingletonProvider;
+            },
+            66
           );
           __d(
             "sdk.DocumentTitle",
@@ -23002,45 +23630,12 @@ try {
                 return {
                   stop: function stop() {
                     temporaryTitle = null;
-                  }
+                  },
                 };
               }
               exports.get = get;
               exports.set = set;
               exports.blink = blink;
-            },
-            66
-          );
-          __d(
-            "MPNSingletonProvider",
-            [],
-            function $module_MPNSingletonProvider(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              "use strict";
-              var MPNSingletonProvider = (function() {
-                function MPNSingletonProvider(createInstanceFn) {
-                  this.$MPNSingletonProvider_instance = null;
-                  this.$MPNSingletonProvider_constructor = createInstanceFn;
-                }
-                var _proto = MPNSingletonProvider.prototype;
-                _proto.get = function get() {
-                  if (this.$MPNSingletonProvider_instance == null) {
-                    this.$MPNSingletonProvider_instance = this.$MPNSingletonProvider_constructor();
-                  }
-                  return this.$MPNSingletonProvider_instance;
-                };
-                _proto.clear = function clear() {
-                  this.$MPNSingletonProvider_instance = null;
-                };
-                return MPNSingletonProvider;
-              })();
-              exports["default"] = MPNSingletonProvider;
             },
             66
           );
@@ -23065,18 +23660,28 @@ try {
                   "/plugins/customer_chat/bubble"
                 : importNamespace("UrlMap").resolve("www") +
                   "/plugins/customer_chat/bubble";
+
+              var blankIFrameNewDomainURI = importDefault(
+                "sdk.Runtime"
+              ).getIsVersioned()
+                ? importNamespace("UrlMap").resolve("social_plugin") +
+                  "/" +
+                  importDefault("sdk.Runtime").getVersion() +
+                  "/customer_chat/bubble"
+                : importNamespace("UrlMap").resolve("social_plugin") +
+                  "/customer_chat/bubble";
               var _default = {
                 attribute: {
                   alignment: "alignment",
                   mobilePath: "mobile_path",
-                  desktopBottomSpacing: "desktop_bottom_spacing"
+                  desktopBottomSpacing: "desktop_bottom_spacing",
                 },
 
                 path: {
                   landingPage: "/",
                   welcomePage: "/welcome",
                   bubble: "/bubble",
-                  itp: "/itpcontinue"
+                  itp: "/itpcontinue",
                 },
 
                 localStateKey: importNamespace("MPNLocalState").LOCAL_STATE_KEY,
@@ -23085,10 +23690,11 @@ try {
                   "mozAnimationEnd",
                   "MSAnimationEnd",
                   "oAnimationEnd",
-                  "webkitAnimationEnd"
+                  "webkitAnimationEnd",
                 ],
 
-                blankFrameURL: blankIFrameURI
+                blankFrameURL: blankIFrameURI,
+                blankFrameNewDomainURL: blankIFrameNewDomainURI,
               };
               exports["default"] = _default;
             },
@@ -23105,7 +23711,7 @@ try {
               "sdk.DocumentTitle",
               "sdk.URI",
               "sdk.WebStorage",
-              "sdk.cp.Constants"
+              "sdk.cp.Constants",
             ],
             function $module_sdk_cp_Actions(
               global,
@@ -23117,7 +23723,7 @@ try {
               exports
             ) {
               "use strict";
-              var MPNSDKActions = (function() {
+              var MPNSDKActions = (function () {
                 function MPNSDKActions() {}
                 var _proto = MPNSDKActions.prototype;
                 _proto.reloadIframe = function reloadIframe(
@@ -23133,9 +23739,9 @@ try {
 
                   var queryData = iframeSrcUri.getQueryData();
                   queryData.local_state =
-                    (_WebStorage$getLocalS = importNamespace(
-                      "sdk.WebStorage"
-                    ).getLocalStorage()) == null
+                    (_WebStorage$getLocalS =
+                      importNamespace("sdk.WebStorage").getLocalStorage()) ==
+                    null
                       ? void 0
                       : _WebStorage$getLocalS.getItem(
                           importDefault("sdk.cp.Constants").localStateKey
@@ -23148,37 +23754,38 @@ try {
                   ) {
                     queryData.has_explicit_interaction = "1";
                   }
+                  queryData.is_implicit_reload = "1";
                   iframeSrcUri.setQueryData(queryData);
                   iframe.src = iframeSrcUri.valueOf();
                 };
-                _proto.getExplicitUserInteractionFlag = function getExplicitUserInteractionFlag() {
-                  var storage = importNamespace(
-                    "sdk.WebStorage"
-                  ).getLocalStorage();
-                  var localState = null;
-                  if (storage != null) {
-                    try {
-                      localState = storage.getItem(
-                        importNamespace("MPNLocalState").LOCAL_STATE_KEY
-                      );
-                    } catch (_unused) {
-                      return false;
+                _proto.getExplicitUserInteractionFlag =
+                  function getExplicitUserInteractionFlag() {
+                    var storage =
+                      importNamespace("sdk.WebStorage").getLocalStorage();
+                    var localState = null;
+                    if (storage != null) {
+                      try {
+                        localState = storage.getItem(
+                          importNamespace("MPNLocalState").LOCAL_STATE_KEY
+                        );
+                      } catch (_unused) {
+                        return false;
+                      }
                     }
-                  }
-                  if (localState != null) {
-                    try {
-                      var stateObj = ES("JSON", "parse", false, localState);
-                      return importNamespace(
-                        "MPNExplicitUserInteractions"
-                      ).hasUserInteraction(
-                        stateObj == null ? void 0 : stateObj.euit
-                      );
-                    } catch (_unused2) {
-                      return false;
+                    if (localState != null) {
+                      try {
+                        var stateObj = ES("JSON", "parse", false, localState);
+                        return importNamespace(
+                          "MPNExplicitUserInteractions"
+                        ).hasUserInteraction(
+                          stateObj == null ? void 0 : stateObj.euit
+                        );
+                      } catch (_unused2) {
+                        return false;
+                      }
                     }
-                  }
-                  return false;
-                };
+                    return false;
+                  };
                 _proto.setDialogAppearance = function setDialogAppearance(
                   iframe,
                   appearance
@@ -23189,7 +23796,8 @@ try {
                   var height = appearance.height,
                     boxShadow = appearance.boxShadow,
                     margin = appearance.margin,
-                    width = appearance.width;
+                    width = appearance.width,
+                    bottom = appearance.bottom;
                   if (boxShadow != null) {
                     importNamespace("sdk.DOM").setStyle(
                       iframe,
@@ -23214,14 +23822,20 @@ try {
                   if (width != null) {
                     importNamespace("sdk.DOM").setStyle(iframe, "width", width);
                   }
+                  if (bottom != null) {
+                    importNamespace("sdk.DOM").setStyle(
+                      iframe,
+                      "bottom",
+                      bottom
+                    );
+                  }
                 };
                 _proto.blinkPageTitle = function blinkPageTitle(title) {
                   var _this = this;
                   if (title != null) {
                     this.$MPNSDKActions_stopBlinking();
-                    this.$MPNSDKActions_titleBlinkToken = importNamespace(
-                      "sdk.DocumentTitle"
-                    ).blink(title);
+                    this.$MPNSDKActions_titleBlinkToken =
+                      importNamespace("sdk.DocumentTitle").blink(title);
                     importDefault("DOMEventListener").add(
                       window,
                       "focus",
@@ -23236,1460 +23850,23 @@ try {
                     this.$MPNSDKActions_stopBlinking();
                   }
                 };
-                _proto.$MPNSDKActions_stopBlinking = function $MPNSDKActions_stopBlinking() {
-                  if (this.$MPNSDKActions_titleBlinkToken != null) {
-                    this.$MPNSDKActions_titleBlinkToken.stop();
-                    this.$MPNSDKActions_titleBlinkToken = null;
-                  }
-                };
+                _proto.$MPNSDKActions_stopBlinking =
+                  function $MPNSDKActions_stopBlinking() {
+                    if (this.$MPNSDKActions_titleBlinkToken != null) {
+                      this.$MPNSDKActions_titleBlinkToken.stop();
+                      this.$MPNSDKActions_titleBlinkToken = null;
+                    }
+                  };
                 return MPNSDKActions;
               })();
 
               var _provider = new (importDefault("MPNSingletonProvider"))(
-                function() {
+                function () {
                   return new MPNSDKActions();
                 }
               );
               var _default = _provider.get();
               exports["default"] = _default;
-            },
-            98
-          );
-          __d(
-            "sdk.XFBML.CustomerChat",
-            [
-              "ChatPluginSDKPreLoggingUtils",
-              "DOMEventListener",
-              "IframePlugin",
-              "Log",
-              "MPNExplicitUserInteractions",
-              "MPNLocalState",
-              "QueryString",
-              "UrlMap",
-              "getFacebookOriginForTarget",
-              "performanceAbsoluteNow",
-              "sdk.Content",
-              "sdk.DOM",
-              "sdk.DialogUtils",
-              "sdk.DocumentTitle",
-              "sdk.Event",
-              "sdk.Runtime",
-              "sdk.UA",
-              "sdk.URI",
-              "sdk.WebStorage",
-              "sdk.XD",
-              "sdk.XFBML.CustomerChatWrapper",
-              "sdk.cp.Actions",
-              "sdk.createIframe",
-              "uuid"
-            ],
-            function $module_sdk_XFBML_CustomerChat(
-              global,
-              require,
-              importDefault,
-              importNamespace,
-              requireLazy,
-              module,
-              exports
-            ) {
-              "use strict";
-
-              var ANIMATION_EVENTS = [
-                "animationend",
-                "mozAnimationEnd",
-                "MSAnimationEnd",
-                "oAnimationEnd",
-                "webkitAnimationEnd"
-              ];
-
-              var _blinkerToken = null;
-              var _bubbleIFrame = null;
-              var _bubbleIFrameName = null;
-              var _dialogIFrame = null;
-              var _dialogIFrameName = "";
-              var _dialogIFrameOrigin = null;
-              var _iconInnerIFrame = null;
-              var _isHidden = false;
-              var _isIframeHidden = false;
-              var _unreadCountIFrame = null;
-              var _unreadCountIFrameName = null;
-              var _visibilityGuard = null;
-
-              var ARRT_ALIGNMENT = "alignment";
-              var ARRT_MOBILE_PATH = "mobile_path";
-              var ARRT_DESKTP_BOTTOM_SPACING = "desktop_bottom_spacing";
-              var BUBBLE = "/bubble";
-              var ITP_PAGE = "/itpcontinue";
-              var LANDING_PAGE = "/";
-              var WELCOME_PAGE = "/welcome";
-
-              var CustomerChat = importDefault("IframePlugin").extend({
-                constructor: function constructor(elem, ns, tag, attr) {
-                  importNamespace("sdk.DOM").addCss(elem, "fb_invisible_flow");
-
-                  importNamespace("sdk.DOM").remove(elem);
-                  importNamespace("sdk.Content").append(elem);
-
-                  this.parent(elem, ns, tag, attr);
-
-                  this._updateDialogIframeOptions();
-
-                  importNamespace("sdk.Event").fire("customerchat.load");
-
-                  this._setUpSubscriptions();
-
-                  importNamespace("ChatPluginSDKPreLoggingUtils").preLogging(
-                    "chat_plugin_sdk_dialog_iframe_create",
-
-                    this._params,
-                    false
-                  );
-                },
-
-                _updateDialogIframeOptions: function _updateDialogIframeOptions() {
-                  var storage = importNamespace(
-                    "sdk.WebStorage"
-                  ).getLocalStorage();
-                  var localState = null;
-                  if (storage != null) {
-                    try {
-                      localState = storage.getItem(
-                        importNamespace("MPNLocalState").LOCAL_STATE_KEY
-                      );
-                    } catch (_unused) {
-                      importNamespace("Log").warn(
-                        "Failed to access localStorage"
-                      );
-                    }
-                  }
-                  if (localState != null) {
-                    ES("Object", "assign", false, this._params, {
-                      local_state: localState
-                    });
-                  }
-
-                  if (localState != null) {
-                    try {
-                      var stateObj = ES("JSON", "parse", false, localState);
-                      if (
-                        importNamespace(
-                          "MPNExplicitUserInteractions"
-                        ).hasUserInteraction(
-                          stateObj == null ? void 0 : stateObj.euit
-                        )
-                      ) {
-                        ES("Object", "assign", false, this._params, {
-                          has_explicit_interaction: 1
-                        });
-                      }
-                    } catch (_unused2) {
-                      importNamespace("Log").warn("Invalid local state");
-                    }
-                  }
-
-                  var requestTime = importDefault("performanceAbsoluteNow")();
-
-                  var logId = importDefault("uuid")();
-                  var currentUrl = window.location.href;
-
-                  ES("Object", "assign", false, this._params, {
-                    current_url: currentUrl,
-                    log_id: logId,
-                    request_time: requestTime
-                  });
-
-                  var url =
-                    importNamespace("UrlMap").resolve("www") +
-                    "/plugins/" +
-                    this._tag +
-                    ".php?";
-
-                  this._iframeOptions.url =
-                    url + importDefault("QueryString").encode(this._params);
-
-                  this._iframeOptions.title = "";
-                },
-
-                _setUpSubscriptions: function _setUpSubscriptions() {
-                  var _this = this;
-
-                  this.subscribe("render", function subscribe_$1() {
-                    importNamespace("ChatPluginSDKPreLoggingUtils").preLogging(
-                      "chat_plugin_sdk_dialog_iframe_load",
-
-                      _this._params
-                    );
-                  });
-
-                  this.subscribe("xd.mpn.storeState", function subscribe_$1(
-                    message
-                  ) {
-                    _this._storeStateInfo(message.state);
-                  });
-
-                  this.subscribe("xd.mpn.getState", function subscribe_$1(_) {
-                    var state = _this._getStateInfo();
-                    var event = {
-                      name: "mpnDidFetchState",
-                      params: ES("JSON", "stringify", false, state || {})
-                    };
-
-                    postMessageToDialogFrame(event);
-                    postMessaegToBubbleFrame(event);
-                  });
-
-                  this.subscribe(
-                    "xd.mpn.setupIconIframe",
-                    function subscribe_$1(message) {
-                      _this._handleSetupIconIframe(message);
-                    }
-                  );
-
-                  this.subscribe(
-                    "xd.mpn.setupDialogIframe",
-                    function subscribe_$1(message) {
-                      _this._handleSetupDialogIframe(message);
-                    }
-                  );
-
-                  this.subscribe(
-                    "xd.mpn.toggleDialogVisibility",
-                    function subscribe_$1(message) {
-                      _this._handleToggleDialogVisibility(message);
-                    }
-                  );
-
-                  this.subscribe(
-                    "xd.mpn.updateDialogAppearance",
-                    function subscribe_$1(message) {
-                      _this._handleUpdateDialogAppearance(message);
-                    }
-                  );
-
-                  this.subscribe(
-                    "xd.mpn.updateIconAppearance",
-                    function subscribe_$1(message) {
-                      _this._handleUpdateIconAppearance(message);
-                    }
-                  );
-
-                  this.subscribe("xd.mpn.reload", function subscribe_$1(
-                    message
-                  ) {
-                    _this._handleReload(message);
-                  });
-
-                  this.subscribe(
-                    "xd.mpn.updatePageTitle",
-                    function subscribe_$1(message) {
-                      _this._handleUpdatePageTitle({
-                        titleText: message.title
-                      });
-                    }
-                  );
-
-                  importNamespace(
-                    "sdk.XFBML.CustomerChatWrapper"
-                  ).CustomerChatInternalEvent.subscribe(
-                    importNamespace("sdk.XFBML.CustomerChatWrapper")
-                      .CustomerChatInternalEventType.SHOW,
-                    CustomerChat.show
-                  );
-
-                  importNamespace(
-                    "sdk.XFBML.CustomerChatWrapper"
-                  ).CustomerChatInternalEvent.subscribe(
-                    importNamespace("sdk.XFBML.CustomerChatWrapper")
-                      .CustomerChatInternalEventType.HIDE,
-                    CustomerChat.hide
-                  );
-
-                  importNamespace(
-                    "sdk.XFBML.CustomerChatWrapper"
-                  ).CustomerChatInternalEvent.subscribe(
-                    importNamespace("sdk.XFBML.CustomerChatWrapper")
-                      .CustomerChatInternalEventType.SHOW_DIALOG,
-                    CustomerChat.showDialog
-                  );
-
-                  importNamespace(
-                    "sdk.XFBML.CustomerChatWrapper"
-                  ).CustomerChatInternalEvent.subscribe(
-                    importNamespace("sdk.XFBML.CustomerChatWrapper")
-                      .CustomerChatInternalEventType.HIDE_DIALOG,
-                    CustomerChat.hideDialog
-                  );
-
-                  importNamespace(
-                    "sdk.XFBML.CustomerChatWrapper"
-                  ).CustomerChatInternalEvent.subscribe(
-                    importNamespace("sdk.XFBML.CustomerChatWrapper")
-                      .CustomerChatInternalEventType.UPDATE,
-                    CustomerChat.update
-                  );
-                },
-
-                _handleSetupIconIframe: function _handleSetupIconIframe(
-                  message
-                ) {
-                  var _this2 = this;
-                  if (_bubbleIFrame) {
-                    importNamespace("sdk.DOM").remove(_bubbleIFrame);
-                  }
-                  var frameName = message.frameName,
-                    iconSVG = message.iconSVG;
-                  var newElement = importNamespace(
-                    "sdk.DialogUtils"
-                  ).setupNewDialog();
-
-                  var css = ES("JSON", "parse", false, message.cssText);
-                  var iconDiv = document.createElement("div");
-                  if (iconSVG != null) {
-                    importNamespace("sdk.DOM").html(iconDiv, iconSVG);
-                    ES("Object", "assign", false, iconDiv.style, css);
-                    importNamespace("sdk.Content").append(
-                      iconDiv,
-                      newElement.contentRoot
-                    );
-                    iconDiv.style.boxShadow = "none";
-                  }
-
-                  var bubbleIFrameName = "blank_" + frameName;
-                  _bubbleIFrame = newElement.dialogElement;
-
-                  _dialogIFrameName = this._iframeOptions.name;
-                  _iconInnerIFrame = importDefault("sdk.createIframe")({
-                    url: this._getBubbleFrameURL(),
-                    name: bubbleIFrameName,
-                    root: newElement.contentRoot,
-                    tabindex: -1,
-                    width: 60,
-                    style: css,
-                    "data-testid": "bubble_iframe",
-                    onload: function onload() {
-                      importNamespace(
-                        "ChatPluginSDKPreLoggingUtils"
-                      ).preLogging(
-                        "chat_plugin_sdk_icon_iframe_load",
-
-                        _this2._params
-                      );
-
-                      _bubbleIFrameName = bubbleIFrameName;
-
-                      _this2._notifyDialogIFrame();
-                      window.setTimeout(function window_setTimeout_$0() {
-                        importNamespace("sdk.DOM").remove(iconDiv);
-                      }, 100);
-                    }
-                  });
-
-                  _bubbleIFrame.setAttribute(ARRT_ALIGNMENT, message.alignment);
-                  importNamespace("sdk.Content").append(_bubbleIFrame);
-
-                  var unreadCountIFrameName = "unread_" + frameName;
-                  _unreadCountIFrame = importDefault("sdk.createIframe")({
-                    url: this._getBubbleFrameURL(),
-                    name: unreadCountIFrameName,
-                    root: newElement.contentRoot,
-                    tabindex: -1,
-                    style: ES(
-                      "JSON",
-                      "parse",
-                      false,
-                      message.unreadCountCssText
-                    ),
-                    "data-testid": "unread_iframe",
-                    onload: function onload() {
-                      _unreadCountIFrameName = unreadCountIFrameName;
-
-                      _this2._notifyDialogIFrame();
-                    }
-                  });
-
-                  importNamespace("sdk.Content").append(
-                    _unreadCountIFrame,
-                    newElement.contentRoot
-                  );
-                },
-
-                _notifyDialogIFrame: function _notifyDialogIFrame() {
-                  var _iconInnerIFrame2, _unreadCountIFrame2;
-                  postMessageToDialogFrame({
-                    name: "bubbleFrameLoaded",
-                    frameName: _bubbleIFrameName,
-                    unreadCountFrameName: _unreadCountIFrameName,
-                    iconSrc:
-                      (_iconInnerIFrame2 = _iconInnerIFrame) == null
-                        ? void 0
-                        : _iconInnerIFrame2.src,
-                    unreadSrc:
-                      (_unreadCountIFrame2 = _unreadCountIFrame) == null
-                        ? void 0
-                        : _unreadCountIFrame2.src,
-
-                    request_time: this._params.request_time,
-
-                    log_id: this._params.log_id
-                  });
-                },
-
-                _handleSetupDialogIframe: function _handleSetupDialogIframe(
-                  message
-                ) {
-                  var cssText = message.cssText,
-                    mobilePath = message.mobilePath,
-                    isDialogHidden = message.isDialogHidden,
-                    desktopBottomSpacing = message.desktopBottomSpacing;
-                  if (_bubbleIFrame) {
-                    mobilePath &&
-                      _bubbleIFrame.setAttribute(ARRT_MOBILE_PATH, mobilePath);
-                    desktopBottomSpacing &&
-                      _bubbleIFrame.setAttribute(
-                        ARRT_DESKTP_BOTTOM_SPACING,
-                        desktopBottomSpacing.toString()
-                      );
-                  }
-
-                  _visibilityGuard = null;
-                  _isHidden = isDialogHidden === "true";
-
-                  if (this._iframe) {
-                    this._iframe.setAttribute("data-testid", "dialog_iframe");
-
-                    this._iframe.style.cssText = cssText;
-                  }
-
-                  _dialogIFrame = this._iframe;
-
-                  _dialogIFrameName = this._iframe.name;
-
-                  var isMobile = importDefault("sdk.UA").mobile();
-                  if (isMobile && !_isHidden) {
-                    if (mobilePath == LANDING_PAGE) {
-                      var bounceInAnimationName = _getBounceInAnimation();
-                      bounceInAnimationName != null &&
-                        importNamespace("sdk.DOM").addCss(
-                          _dialogIFrame,
-                          bounceInAnimationName
-                        );
-                    }
-
-                    if (mobilePath != LANDING_PAGE && mobilePath != BUBBLE) {
-                      setParentDocumentPositionFixed();
-                    }
-                  }
-
-                  if (_isIframeHidden) {
-                    CustomerChat.hide();
-                  }
-                },
-
-                _handleToggleDialogVisibility: function _handleToggleDialogVisibility(
-                  message
-                ) {
-                  var shouldHide = message.shouldHide;
-                  _isHidden = shouldHide === "true";
-                  if (_isHidden) {
-                    hideDialogIframe(this._iframe);
-                  } else {
-                    showDialogIframe(this._iframe);
-                  }
-                },
-
-                _handleUpdateDialogAppearance: function _handleUpdateDialogAppearance(
-                  message
-                ) {
-                  if (!this._iframe) {
-                    return;
-                  }
-                  var height = message.height,
-                    boxShadow = message.boxShadow,
-                    margin = message.margin,
-                    width = message.width;
-                  if (boxShadow != null) {
-                    importNamespace("sdk.DOM").setStyle(
-                      this._iframe,
-                      "boxShadow",
-                      boxShadow
-                    );
-                  }
-                  if (margin != null) {
-                    importNamespace("sdk.DOM").setStyle(
-                      this._iframe,
-                      "margin",
-                      margin
-                    );
-                  }
-                  if (height != null) {
-                    importNamespace("sdk.DOM").setStyle(
-                      this._iframe,
-                      "height",
-                      height
-                    );
-                  }
-                  if (width != null) {
-                    importNamespace("sdk.DOM").setStyle(
-                      this._iframe,
-                      "width",
-                      width
-                    );
-                  }
-                },
-
-                _handleUpdateIconAppearance: function _handleUpdateIconAppearance(
-                  message
-                ) {
-                  if (!_iconInnerIFrame) {
-                    return;
-                  }
-                  var width = message.width,
-                    boxShadow = message.boxShadow;
-                  if (width != null) {
-                    importNamespace("sdk.DOM").setStyle(
-                      _iconInnerIFrame,
-                      "width",
-                      width
-                    );
-                  }
-                  if (boxShadow != null) {
-                    importNamespace("sdk.DOM").setStyle(
-                      _iconInnerIFrame,
-                      "boxShadow",
-                      boxShadow
-                    );
-                  }
-                },
-
-                _handleReload: function _handleReload(message) {
-                  var _WebStorage$getLocalS;
-
-                  var iframeSrcUri = new (importDefault("sdk.URI"))(
-                    this._iframe.src
-                  );
-
-                  var queryData = iframeSrcUri.getQueryData();
-                  queryData.local_state =
-                    (_WebStorage$getLocalS = importNamespace(
-                      "sdk.WebStorage"
-                    ).getLocalStorage()) == null
-                      ? void 0
-                      : _WebStorage$getLocalS.getItem(
-                          importNamespace("MPNLocalState").LOCAL_STATE_KEY
-                        );
-                  queryData.request_time = Date.now();
-                  if (
-                    message.hasExplicitInteraction ||
-                    importDefault(
-                      "sdk.cp.Actions"
-                    ).getExplicitUserInteractionFlag()
-                  ) {
-                    queryData.has_explicit_interaction = "1";
-                  }
-                  iframeSrcUri.setQueryData(queryData);
-
-                  this._iframe.src = iframeSrcUri.valueOf();
-                },
-
-                _storeStateInfo: function _storeStateInfo(message) {
-                  var storage = importNamespace(
-                    "sdk.WebStorage"
-                  ).getLocalStorageForRead();
-                  if (!storage) {
-                    return;
-                  }
-                  try {
-                    if (message == null) {
-                      storage.removeItem(
-                        importNamespace("MPNLocalState").LOCAL_STATE_KEY
-                      );
-                    } else {
-                      var currState = storage.getItem(
-                        importNamespace("MPNLocalState").LOCAL_STATE_KEY
-                      );
-                      if (currState == null) {
-                        storage.setItem(
-                          importNamespace("MPNLocalState").LOCAL_STATE_KEY,
-                          ES(
-                            "JSON",
-                            "stringify",
-                            false,
-                            ES("JSON", "parse", false, message)
-                          )
-                        );
-                      } else {
-                        var parsedCurrentState = ES(
-                          "JSON",
-                          "parse",
-                          false,
-                          currState
-                        );
-                        var parsedMessage = ES("JSON", "parse", false, message);
-                        storage.setItem(
-                          importNamespace("MPNLocalState").LOCAL_STATE_KEY,
-                          ES(
-                            "JSON",
-                            "stringify",
-                            false,
-
-                            babelHelpers["extends"](
-                              {},
-                              parsedCurrentState,
-                              parsedMessage
-                            )
-                          )
-                        );
-                      }
-                    }
-                  } catch (_unused3) {
-                    return;
-                  }
-                },
-
-                _getStateInfo: function _getStateInfo() {
-                  var storage = importNamespace(
-                    "sdk.WebStorage"
-                  ).getLocalStorageForRead();
-                  if (!storage) {
-                    return;
-                  }
-                  var item = storage.getItem(
-                    importNamespace("MPNLocalState").LOCAL_STATE_KEY
-                  );
-                  if (!item) {
-                    return null;
-                  }
-                  return ES("JSON", "parse", false, item);
-                },
-
-                _handleUpdatePageTitle: function _handleUpdatePageTitle(
-                  message
-                ) {
-                  var _this3 = this;
-                  if (!_blinkerToken && message.titleText) {
-                    _blinkerToken = importNamespace("sdk.DocumentTitle").blink(
-                      message.titleText
-                    );
-                    importNamespace("DOMEventListener").add(
-                      window,
-                      "focus",
-                      function DOMEventListener_add_$2(_e) {
-                        _this3._stopBlinking();
-                      }
-                    );
-                  } else if (_blinkerToken && !message.titleText) {
-                    this._stopBlinking();
-                  }
-                },
-
-                getParams: function getParams() {
-                  return {
-                    allow_guests: "bool",
-                    attribution: "string",
-                    greeting_dialog_display: "string",
-                    greeting_dialog_delay: "string",
-                    logged_in_greeting: "string",
-                    logged_out_greeting: "string",
-                    minimized: "bool",
-                    page_id: "string",
-                    theme_color: "string",
-                    override: "string",
-                    attribution_version: "string",
-                    is_loaded_by_facade: "bool"
-                  };
-                },
-
-                _stopBlinking: function _stopBlinking() {
-                  if (_blinkerToken) {
-                    _blinkerToken.stop();
-                    _blinkerToken = null;
-                  }
-                },
-
-                _getBubbleFrameURL: function _getBubbleFrameURL() {
-                  return importDefault("sdk.Runtime").getIsVersioned()
-                    ? importNamespace("UrlMap").resolve("www") +
-                        "/" +
-                        importDefault("sdk.Runtime").getVersion() +
-                        "/plugins/customer_chat/bubble"
-                    : "";
-                }
-              });
-
-              function postMessageToIframe(frameName, message) {
-                var pmf = function pmf(origin) {
-                  var _window$frames$frameN;
-                  (_window$frames$frameN = window.frames[frameName]) == null
-                    ? void 0
-                    : _window$frames$frameN.postMessage(
-                        babelHelpers["extends"](
-                          {},
-
-                          message
-                        ),
-
-                        origin
-                      );
-                };
-                if (_dialogIFrameOrigin === null) {
-                  importDefault("getFacebookOriginForTarget")(
-                    function getFacebookOriginForTarget_$0(origin) {
-                      _dialogIFrameOrigin = origin;
-                      pmf(_dialogIFrameOrigin);
-                    },
-                    window.frames[frameName]
-                  );
-                } else {
-                  pmf(_dialogIFrameOrigin);
-                }
-              }
-
-              function postMessaegToBubbleFrame(message) {
-                var _bubbleIFrameName2;
-                postMessageToIframe(
-                  (_bubbleIFrameName2 = _bubbleIFrameName) != null
-                    ? _bubbleIFrameName2
-                    : "",
-                  message
-                );
-              }
-
-              function postMessageToDialogFrame(message) {
-                postMessageToIframe(_dialogIFrameName, message);
-              }
-
-              function handleSDKCall(event) {
-                postMessageToDialogFrame({
-                  name: "CustomerChat.SDK.Called",
-                  event: event
-                });
-              }
-
-              function setParentDocumentPositionFixed() {
-                var mobile_overlay = "fb_new_ui_mobile_overlay_active";
-                importNamespace("sdk.DOM").addCss(
-                  document.body,
-                  mobile_overlay
-                );
-              }
-
-              function showDialogIframe(dialogIframe) {
-                if (!dialogIframe) {
-                  return;
-                }
-                if (_visibilityGuard === null || _visibilityGuard === false) {
-                  var bounceInAnimationName = _getBounceInAnimation();
-                  var bounceOutAnimationName = _getBounceOutAnimation();
-                  bounceOutAnimationName != null &&
-                    importNamespace("sdk.DOM").removeCss(
-                      dialogIframe,
-                      bounceOutAnimationName
-                    );
-                  bounceInAnimationName != null &&
-                    importNamespace("sdk.DOM").addCss(
-                      dialogIframe,
-                      bounceInAnimationName
-                    );
-
-                  if (importDefault("sdk.UA").mobile()) {
-                    importNamespace("sdk.DOM").setStyle(
-                      dialogIframe,
-                      "maxHeight",
-                      "100%"
-                    );
-                    importNamespace("sdk.DOM").setStyle(
-                      dialogIframe,
-                      "height",
-                      "100%"
-                    );
-                    importNamespace("sdk.DOM").setStyle(
-                      dialogIframe,
-                      "width",
-                      "100%"
-                    );
-                  } else {
-                    var desktopBottomSpacingString =
-                      _bubbleIFrame &&
-                      importNamespace("sdk.DOM").getAttr(
-                        _bubbleIFrame,
-                        ARRT_DESKTP_BOTTOM_SPACING
-                      );
-                    var desktopBottomSpacingForDialog =
-                      desktopBottomSpacingString == null
-                        ? "80"
-                        : Number(desktopBottomSpacingString) + 60;
-                    importNamespace("sdk.DOM").setStyle(
-                      dialogIframe,
-                      "maxHeight",
-                      "calc(100% - " + desktopBottomSpacingForDialog + "px)"
-                    );
-
-                    importNamespace("sdk.DOM").setStyle(
-                      dialogIframe,
-                      "minHeight",
-                      "300px"
-                    );
-                  }
-
-                  postMessageToDialogFrame({
-                    name: "CustomerChat.isDialogHidden",
-                    params: { is_dialog_hidden: false }
-                  });
-
-                  postMessaegToBubbleFrame({
-                    name: "CustomerChat.isDialogHidden",
-                    params: { is_dialog_hidden: false }
-                  });
-
-                  _visibilityGuard = true;
-                  importNamespace("sdk.Event").fire("customerchat.dialogShow");
-                }
-              }
-
-              function hideDialogIframe(dialogIframe) {
-                if (!dialogIframe) {
-                  return;
-                }
-                if (_visibilityGuard === null || _visibilityGuard === true) {
-                  var bounceInAnimationName = _getBounceInAnimation();
-                  var bounceOutAnimationName = _getBounceOutAnimation();
-
-                  bounceInAnimationName != null &&
-                    importNamespace("sdk.DOM").removeCss(
-                      dialogIframe,
-                      bounceInAnimationName
-                    );
-                  bounceOutAnimationName != null &&
-                    importNamespace("sdk.DOM").addCss(
-                      dialogIframe,
-                      bounceOutAnimationName
-                    );
-
-                  var animationEventListeners = {};
-                  ANIMATION_EVENTS.forEach(function ANIMATION_EVENTS_forEach_$0(
-                    event
-                  ) {
-                    var hideDialog = function hideDialog(_) {
-                      if (_isHidden) {
-                        importNamespace("sdk.DOM").setStyle(
-                          dialogIframe,
-                          "maxHeight",
-                          "0"
-                        );
-                        importNamespace("sdk.DOM").setStyle(
-                          dialogIframe,
-                          "minHeight",
-                          "0"
-                        );
-                        ANIMATION_EVENTS.forEach(
-                          function ANIMATION_EVENTS_forEach_$0(event) {
-                            if (animationEventListeners[event]) {
-                              importNamespace("DOMEventListener").remove(
-                                dialogIframe,
-                                event,
-                                animationEventListeners[event]
-                              );
-
-                              delete animationEventListeners[event];
-                            }
-                          }
-                        );
-                        _visibilityGuard = false;
-                      }
-                    };
-                    animationEventListeners[event] = hideDialog;
-                    importNamespace("DOMEventListener").add(
-                      dialogIframe,
-                      event,
-                      hideDialog
-                    );
-                  });
-
-                  postMessageToDialogFrame({
-                    name: "CustomerChat.isDialogHidden",
-                    params: { is_dialog_hidden: true }
-                  });
-
-                  postMessaegToBubbleFrame({
-                    name: "CustomerChat.isDialogHidden",
-                    params: { is_dialog_hidden: true }
-                  });
-                }
-                importNamespace("sdk.Event").fire("customerchat.dialogHide");
-              }
-
-              function _getBounceInAnimation() {
-                if (!_bubbleIFrame) {
-                  return;
-                }
-                var alignment = importNamespace("sdk.DOM").getAttr(
-                  _bubbleIFrame,
-                  ARRT_ALIGNMENT
-                );
-                var mobilePath = importNamespace("sdk.DOM").getAttr(
-                  _bubbleIFrame,
-                  ARRT_MOBILE_PATH
-                );
-                var isMobile = importDefault("sdk.UA").mobile();
-                var bounceInAnimationName;
-                if (isMobile) {
-                  switch (mobilePath) {
-                    case LANDING_PAGE:
-                      return "fb_mpn_mobile_landing_page_slide_up";
-                    case WELCOME_PAGE:
-                    case BUBBLE:
-                    case ITP_PAGE:
-                      return null;
-                    default:
-                      return "fb_mpn_mobile_bounce_in";
-                  }
-                } else {
-                  switch (alignment) {
-                    case "left":
-                      bounceInAnimationName =
-                        "fb_customer_chat_bounce_in_from_left";
-                      break;
-                    case "right":
-                    default:
-                      bounceInAnimationName = "fb_customer_chat_bounce_in_v2";
-                  }
-                }
-                return bounceInAnimationName;
-              }
-
-              function _getBounceOutAnimation() {
-                if (!_bubbleIFrame) {
-                  return;
-                }
-                var alignment = importNamespace("sdk.DOM").getAttr(
-                  _bubbleIFrame,
-                  ARRT_ALIGNMENT
-                );
-                var mobilePath = importNamespace("sdk.DOM").getAttr(
-                  _bubbleIFrame,
-                  ARRT_MOBILE_PATH
-                );
-                var isMobile = importDefault("sdk.UA").mobile();
-                var bounceOutAnimationName;
-                if (isMobile) {
-                  switch (mobilePath) {
-                    case LANDING_PAGE:
-                      return alignment === "left"
-                        ? "fb_mpn_mobile_landing_page_slide_out_from_left"
-                        : "fb_mpn_mobile_landing_page_slide_out";
-                    case BUBBLE:
-                      return "fb_mpn_mobile_bounce_out_v2";
-                    default:
-                      return "fb_mpn_mobile_bounce_out";
-                  }
-                } else {
-                  switch (alignment) {
-                    case "left":
-                      bounceOutAnimationName =
-                        "fb_customer_chat_bounce_out_from_left";
-                      break;
-                    case "right":
-                    default:
-                      bounceOutAnimationName = "fb_customer_chat_bounce_out_v2";
-                  }
-                }
-                return bounceOutAnimationName;
-              }
-
-              CustomerChat.show = function(shouldShowDialog) {
-                if (shouldShowDialog === void 0) {
-                  shouldShowDialog = true;
-                }
-                _isIframeHidden = false;
-                if (_bubbleIFrame != null) {
-                  importNamespace("sdk.DOM").setStyle(
-                    _bubbleIFrame,
-                    "display",
-                    "inline"
-                  );
-                }
-                if (shouldShowDialog) {
-                  _isHidden = false;
-                  showDialogIframe(_dialogIFrame);
-                }
-                importNamespace("sdk.Event").fire("customerchat.show");
-                handleSDKCall("show");
-              };
-
-              CustomerChat.hide = function() {
-                _isIframeHidden = true;
-                if (_bubbleIFrame != null) {
-                  importNamespace("sdk.DOM").setStyle(
-                    _bubbleIFrame,
-                    "display",
-                    "none"
-                  );
-                }
-                _isHidden = true;
-                hideDialogIframe(_dialogIFrame);
-                importNamespace("sdk.Event").fire("customerchat.hide");
-                handleSDKCall("hide");
-              };
-
-              CustomerChat.showDialog = function() {
-                if (_bubbleIFrame != null) {
-                  importNamespace("sdk.DOM").setStyle(
-                    _bubbleIFrame,
-                    "display",
-                    "inline"
-                  );
-                }
-                _isHidden = false;
-                showDialogIframe(_dialogIFrame);
-                handleSDKCall("showDialog");
-              };
-
-              CustomerChat.hideDialog = function() {
-                _isHidden = true;
-                hideDialogIframe(_dialogIFrame);
-                handleSDKCall("hideDialog");
-              };
-
-              CustomerChat.update = function(data) {
-                importNamespace("sdk.XD").sendToFacebook(_dialogIFrameName, {
-                  method: "updateCustomerChat",
-                  params: ES("JSON", "stringify", false, data || {})
-                });
-
-                handleSDKCall("update");
-              };
-              var _default = CustomerChat;
-              exports["default"] = _default;
-            },
-            98
-          );
-          __d(
-            "IframePluginClass",
-            [
-              "Log",
-              "QueryString",
-              "UrlMap",
-              "guid",
-              "sdk.Auth",
-              "sdk.AuthUtils",
-              "sdk.DOM",
-              "sdk.Event",
-              "sdk.Observable",
-              "sdk.PlatformVersioning",
-              "sdk.PluginUtils",
-              "sdk.Runtime",
-              "sdk.UA",
-              "sdk.URI",
-              "sdk.XD",
-              "sdk.createIframe"
-            ],
-            function $module_IframePluginClass(
-              global,
-              require,
-              importDefault,
-              importNamespace,
-              requireLazy,
-              module,
-              exports
-            ) {
-              var IframePluginClass = (function(_Observable) {
-                babelHelpers.inheritsLoose(IframePluginClass, _Observable);
-
-                function IframePluginClass(elem, ns, tag, attr) {
-                  var _this;
-                  _this = _Observable.call(this) || this;
-                  tag = tag.replace(/-/g, "_");
-
-                  _this.$IframePluginClass_isIframeResized = false;
-
-                  _this.config = {
-                    fluid: false,
-                    mobile_fullsize: false,
-                    full_width: false
-                  };
-
-                  var pluginId = importNamespace("sdk.PluginUtils").getVal(
-                    attr,
-                    "plugin_id"
-                  );
-                  _this.subscribe(
-                    "xd.resize",
-                    importNamespace("sdk.PluginUtils").resizeBubbler(pluginId)
-                  );
-                  _this.subscribe(
-                    "xd.resize.flow",
-                    importNamespace("sdk.PluginUtils").resizeBubbler(pluginId)
-                  );
-
-                  _this.subscribe("xd.resize.flow", function _this_subscribe_$1(
-                    message
-                  ) {
-                    ES(
-                      "Object",
-                      "assign",
-                      false,
-                      _this.iframeOptions.root.style,
-                      {
-                        verticalAlign: "bottom",
-                        overflow: ""
-                      }
-                    );
-
-                    importNamespace("sdk.PluginUtils").resize(
-                      _this.iframeOptions.root,
-                      importNamespace("sdk.PluginUtils").parse(message.width),
-                      importNamespace("sdk.PluginUtils").parse(message.height)
-                    );
-
-                    _this.updateLift();
-                    window.clearTimeout(_this.$IframePluginClass_timeoutID);
-                  });
-
-                  _this.subscribe("xd.resize", function _this_subscribe_$1(
-                    message
-                  ) {
-                    ES(
-                      "Object",
-                      "assign",
-                      false,
-                      _this.iframeOptions.root.style,
-                      {
-                        verticalAlign: "bottom",
-                        overflow: ""
-                      }
-                    );
-
-                    importNamespace("sdk.PluginUtils").resize(
-                      _this.iframeOptions.root,
-                      importNamespace("sdk.PluginUtils").parse(message.width),
-                      importNamespace("sdk.PluginUtils").parse(message.height)
-                    );
-
-                    importNamespace("sdk.PluginUtils").resize(
-                      _this.iframe,
-                      importNamespace("sdk.PluginUtils").parse(message.width),
-                      importNamespace("sdk.PluginUtils").parse(message.height)
-                    );
-
-                    _this.$IframePluginClass_isIframeResized = true;
-                    _this.updateLift();
-                    window.clearTimeout(_this.$IframePluginClass_timeoutID);
-                  });
-
-                  _this.subscribe(
-                    "xd.resize.iframe",
-                    function _this_subscribe_$1(message) {
-                      importNamespace("sdk.PluginUtils").resize(
-                        _this.iframe,
-                        importNamespace("sdk.PluginUtils").parse(message.width),
-                        importNamespace("sdk.PluginUtils").parse(message.height)
-                      );
-
-                      _this.$IframePluginClass_isIframeResized = true;
-                      _this.updateLift();
-                      window.clearTimeout(_this.$IframePluginClass_timeoutID);
-                    }
-                  );
-
-                  _this.subscribe("xd.sdk_event", function _this_subscribe_$1(
-                    message
-                  ) {
-                    var data = ES("JSON", "parse", false, message.data);
-                    data.pluginID = pluginId;
-                    importNamespace("sdk.Event").fire(
-                      message.event,
-                      data,
-                      elem
-                    );
-                  });
-
-                  var url =
-                    importNamespace("UrlMap").resolve("www") +
-                    "/plugins/" +
-                    tag +
-                    ".php?";
-                  var params = {};
-
-                  importNamespace("sdk.PluginUtils").validate(
-                    _this.getParams(),
-                    elem,
-                    attr,
-                    params
-                  );
-                  importNamespace("sdk.PluginUtils").validate(
-                    importNamespace("sdk.PluginUtils").baseParams,
-                    elem,
-                    attr,
-                    params
-                  );
-
-                  ES("Object", "assign", false, params, {
-                    app_id: importDefault("sdk.Runtime").getClientID(),
-                    locale: importDefault("sdk.Runtime").getLocale(),
-                    sdk: "joey",
-                    kid_directed_site: importDefault(
-                      "sdk.Runtime"
-                    ).getKidDirectedSite(),
-                    channel: importNamespace("sdk.XD").handler(
-                      function XD_handler_$0(msg) {
-                        if (msg != null) {
-                          _this.inform("xd." + msg.type, msg);
-                        }
-                      },
-                      "parent.parent",
-                      true
-                    )
-                  });
-
-                  if (_this.shouldIgnoreWidth()) {
-                    params.width = void 0;
-                  }
-
-                  params.container_width = elem.offsetWidth;
-
-                  importNamespace("sdk.DOM").addCss(elem, "fb_iframe_widget");
-                  var name = importDefault("guid")();
-                  _this.subscribe("xd.verify", function _this_subscribe_$1(
-                    msg
-                  ) {
-                    importNamespace("sdk.XD").sendToFacebook(name, {
-                      method: "xd/verify",
-                      params: ES("JSON", "stringify", false, msg.token)
-                    });
-                  });
-
-                  _this.subscribe(
-                    "xd.refreshLoginStatus",
-                    function _this_subscribe_$1() {
-                      importNamespace("sdk.AuthUtils").removeLogoutState();
-                      importDefault("sdk.Auth").getLoginStatus(
-                        ES(
-                          _this.inform,
-                          "bind",
-                          true,
-                          babelHelpers.assertThisInitialized(_this),
-                          "login.status"
-                        ),
-                        true
-                      );
-                    }
-                  );
-
-                  var flow = document.createElement("span");
-
-                  ES("Object", "assign", false, flow.style, {
-                    verticalAlign: "top",
-                    width: params.lazy ? "1px" : "0px",
-                    height: params.lazy ? "1px" : "0px",
-                    overflow: "hidden"
-                  });
-
-                  _this.element = elem;
-                  _this.ns = ns;
-                  _this.tag = tag;
-                  _this.params = params;
-                  _this.iframeOptions = {
-                    root: flow,
-                    url: url + importDefault("QueryString").encode(params),
-                    name: name,
-
-                    width:
-                      _this.config.mobile_fullsize &&
-                      importDefault("sdk.UA").mobile()
-                        ? void 0
-                        : params.width || 1000,
-                    height: params.height || 1000,
-                    style: {
-                      border: "none",
-                      visibility: "hidden"
-                    },
-
-                    title:
-                      _this.ns + ":" + _this.tag + " Facebook Social Plugin",
-                    testid:
-                      _this.ns + ":" + _this.tag + " Facebook Social Plugin",
-                    onload: function onload() {
-                      return _this.inform("render");
-                    },
-                    onerror: function onerror() {
-                      return importNamespace("sdk.PluginUtils").collapseIframe(
-                        _this.iframe
-                      );
-                    },
-                    lazy: params.lazy
-                  };
-
-                  if (_this.config.fluid && params.width !== "auto") {
-                    importNamespace("sdk.DOM").addCss(
-                      _this.element,
-                      "fbiframe_widget_fluid_desktop"
-                    );
-                    if (!params.width && _this.config.full_width) {
-                      _this.element.style.width = "100%";
-                      _this.iframeOptions.root.style.width = "100%";
-                      _this.iframeOptions.style.width = "100%";
-                      _this.params.container_width = _this.element.offsetWidth;
-                      _this.iframeOptions.url =
-                        url + importDefault("QueryString").encode(_this.params);
-                    }
-                  }
-                  return _this;
-                }
-                var _proto = IframePluginClass.prototype;
-                _proto.shouldIgnoreWidth = function shouldIgnoreWidth() {
-                  return (
-                    importDefault("sdk.UA").mobile() &&
-                    this.config.mobile_fullsize
-                  );
-                };
-                _proto.useInlineHeightForMobile = function useInlineHeightForMobile() {
-                  return true;
-                };
-                _proto.process = function process() {
-                  var _this = this;
-                  if (importDefault("sdk.Runtime").getIsVersioned()) {
-                    importNamespace(
-                      "sdk.PlatformVersioning"
-                    ).assertVersionIsSet();
-                    var uri = new (importDefault("sdk.URI"))(
-                      this.iframeOptions.url
-                    );
-                    this.iframeOptions.url = uri
-                      .setPath(
-                        "/" +
-                          importDefault("sdk.Runtime").getVersion() +
-                          uri.getPath()
-                      )
-                      .toString();
-                  }
-
-                  var params = babelHelpers["extends"]({}, this.params);
-                  delete params.channel;
-                  var query = importDefault("QueryString").encode(params);
-                  if (
-                    this.element.getAttribute("fb-iframe-plugin-query") == query
-                  ) {
-                    importNamespace("Log").info(
-                      "Skipping render: %s:%s %s",
-                      this.ns,
-                      this.tag,
-                      query
-                    );
-                    this.inform("render");
-                    return;
-                  }
-                  this.element.setAttribute("fb-iframe-plugin-query", query);
-
-                  this.subscribe("render", function subscribe_$1() {
-                    importNamespace("sdk.Event").fire("iframeplugin:onload");
-                    _this.iframe.style.visibility = "visible";
-
-                    if (!_this.$IframePluginClass_isIframeResized) {
-                      importNamespace("sdk.PluginUtils").collapseIframe(
-                        _this.iframe
-                      );
-                    }
-                  });
-
-                  while (this.element.firstChild) {
-                    this.element.removeChild(this.element.firstChild);
-                  }
-                  this.element.appendChild(this.iframeOptions.root);
-                  var timeout = importDefault("sdk.UA").mobile() ? 120 : 45;
-                  this.$IframePluginClass_timeoutID = window.setTimeout(
-                    function window_setTimeout_$0() {
-                      importNamespace("sdk.PluginUtils").collapseIframe(
-                        _this.iframe
-                      );
-                      importNamespace("Log").warn(
-                        "%s:%s failed to resize in %ss",
-                        _this.ns,
-                        _this.tag,
-                        timeout
-                      );
-                    },
-                    timeout * 1000
-                  );
-
-                  this.iframe = importDefault("sdk.createIframe")(
-                    this.iframeOptions
-                  );
-                  importNamespace("sdk.Event").fire("iframeplugin:create");
-
-                  if (
-                    importDefault("sdk.UA").mobile() ||
-                    params.width === "auto"
-                  ) {
-                    if (this.useInlineHeightForMobile()) {
-                      importNamespace("sdk.DOM").addCss(
-                        this.element,
-                        "fbiframe_widget_fluid"
-                      );
-                    }
-
-                    if (!this.iframeOptions.width) {
-                      ES("Object", "assign", false, this.element.style, {
-                        display: "block",
-                        width: "100%",
-                        height: "auto"
-                      });
-
-                      ES(
-                        "Object",
-                        "assign",
-                        false,
-                        this.iframeOptions.root.style,
-                        {
-                          width: "100%",
-                          height: "auto"
-                        }
-                      );
-
-                      var iframeStyle = {
-                        height: "auto",
-                        position: "static",
-                        width: "100%"
-                      };
-
-                      if (
-                        importDefault("sdk.UA").iphone() ||
-                        importDefault("sdk.UA").ipad()
-                      ) {
-                        ES("Object", "assign", false, iframeStyle, {
-                          width: "220px",
-                          minWidth: "100%"
-                        });
-                      }
-
-                      ES(
-                        "Object",
-                        "assign",
-                        false,
-                        this.iframe.style,
-                        iframeStyle
-                      );
-                    }
-                  }
-                };
-                _proto.getParams = function getParams() {
-                  return this.params;
-                };
-                _proto.updateLift = function updateLift() {
-                  var same =
-                    this.iframe.style.width ===
-                      this.iframeOptions.root.style.width &&
-                    this.iframe.style.height ===
-                      this.iframeOptions.root.style.height;
-                  (same
-                    ? importNamespace("sdk.DOM").removeCss
-                    : importNamespace("sdk.DOM").addCss)(
-                    this.iframe,
-                    "fbiframe_widget_lift"
-                  );
-                };
-                return IframePluginClass;
-              })(importNamespace("sdk.Observable").Observable);
-              exports["default"] = IframePluginClass;
             },
             98
           );
@@ -24802,13 +23979,12 @@ try {
               exports
             ) {
               "use strict";
-              var MPNSDKStorage = (function() {
+              var MPNSDKStorage = (function () {
                 function MPNSDKStorage() {}
                 var _proto = MPNSDKStorage.prototype;
                 _proto.setState = function setState(state) {
-                  var storage = importNamespace(
-                    "sdk.WebStorage"
-                  ).getLocalStorageForRead();
+                  var storage =
+                    importNamespace("sdk.WebStorage").getLocalStorageForRead();
                   if (!storage) {
                     return;
                   }
@@ -24859,9 +24035,8 @@ try {
                   }
                 };
                 _proto.getStateJSON = function getStateJSON() {
-                  var storage = importNamespace(
-                    "sdk.WebStorage"
-                  ).getLocalStorageForRead();
+                  var storage =
+                    importNamespace("sdk.WebStorage").getLocalStorageForRead();
                   if (!storage) {
                     return "{}";
                   }
@@ -24883,7 +24058,7 @@ try {
               })();
 
               var _provider = new (importDefault("MPNSingletonProvider"))(
-                function() {
+                function () {
                   return new MPNSDKStorage();
                 }
               );
@@ -24917,7 +24092,7 @@ try {
               "sdk.cp.Animation",
               "sdk.cp.Constants",
               "sdk.cp.Storage",
-              "sdk.createIframe"
+              "sdk.createIframe",
             ],
             function $module_sdk_XFBML_CustomerChatNew(
               global,
@@ -24929,7 +24104,7 @@ try {
               exports
             ) {
               "use strict";
-              var CustomerChat = (function(_IframePluginClass) {
+              var CustomerChat = (function (_IframePluginClass) {
                 babelHelpers.inheritsLoose(CustomerChat, _IframePluginClass);
 
                 function CustomerChat(elem, ns, tag, attr) {
@@ -24943,11 +24118,15 @@ try {
                   _this.$CustomerChat_dialogIFrameName = null;
                   _this.$CustomerChat_unreadCountIFrame = null;
                   _this.$CustomerChat_unreadCountIFrameName = null;
+                  _this.$CustomerChat_availabilityStatusIFrame = null;
+                  _this.$CustomerChat_availabilityStatusIFrameName = null;
+                  _this.$CustomerChat_greetingIFrame = null;
+                  _this.$CustomerChat_greetingIFrameName = null;
                   _this.$CustomerChat_iframesLoaded = false;
                   _this.$CustomerChat_dialogIFrameOrigin = null;
                   _this.$CustomerChat_isDialogHidden = false;
                   _this.$CustomerChat_isPluginHidden = false;
-                  _this.show = function(shouldShowDialog) {
+                  _this.show = function (shouldShowDialog) {
                     if (shouldShowDialog === void 0) {
                       shouldShowDialog = true;
                     }
@@ -24967,7 +24146,7 @@ try {
                     importNamespace("sdk.Event").fire("customerchat.show");
                     _this.$CustomerChat_handleSDKCall("show");
                   };
-                  _this.hide = function() {
+                  _this.hide = function () {
                     _this.$CustomerChat_isPluginHidden = true;
                     if (_this.$CustomerChat_bubbleIFrame != null) {
                       importNamespace("sdk.DOM").setStyle(
@@ -24982,7 +24161,7 @@ try {
                     importNamespace("sdk.Event").fire("customerchat.hide");
                     _this.$CustomerChat_handleSDKCall("hide");
                   };
-                  _this.showDialog = function() {
+                  _this.showDialog = function () {
                     if (_this.$CustomerChat_bubbleIFrame != null) {
                       importNamespace("sdk.DOM").setStyle(
                         _this.$CustomerChat_bubbleIFrame,
@@ -24995,13 +24174,13 @@ try {
                     );
                     _this.$CustomerChat_handleSDKCall("showDialog");
                   };
-                  _this.hideDialog = function() {
+                  _this.hideDialog = function () {
                     _this.$CustomerChat_hideDialogIframe(
                       _this.$CustomerChat_dialogIFrame
                     );
                     _this.$CustomerChat_handleSDKCall("hideDialog");
                   };
-                  _this.update = function(data) {
+                  _this.update = function (data) {
                     var _this$$CustomerChat_d;
                     importNamespace("sdk.XD").sendToFacebook(
                       (_this$$CustomerChat_d =
@@ -25010,7 +24189,7 @@ try {
                         : "",
                       {
                         method: "updateCustomerChat",
-                        params: ES("JSON", "stringify", false, data || {})
+                        params: ES("JSON", "stringify", false, data || {}),
                       }
                     );
 
@@ -25019,10 +24198,14 @@ try {
                   importNamespace("sdk.DOM").addCss(elem, "fb_invisible_flow");
                   importNamespace("sdk.DOM").remove(elem);
                   importNamespace("sdk.Content").append(elem);
+                  _this.$CustomerChat_shouldUseNewDomain = Boolean(
+                    attr.should_use_new_domain
+                  );
                   _this.$CustomerChat_updateDialogIframeOptions();
                   importNamespace("sdk.Event").fire("customerchat.load");
                   _this.$CustomerChat_setUpSubscriptions();
                   importNamespace("ChatPluginSDKPreLoggingUtils").preLogging(
+                    _this.$CustomerChat_shouldUseNewDomain,
                     "chat_plugin_sdk_dialog_iframe_create",
                     _this.params,
                     false
@@ -25030,354 +24213,493 @@ try {
                   return _this;
                 }
                 var _proto = CustomerChat.prototype;
-                _proto.$CustomerChat_updateDialogIframeOptions = function $CustomerChat_updateDialogIframeOptions() {
-                  var storage = importNamespace(
-                    "sdk.WebStorage"
-                  ).getLocalStorage();
-                  var localState = null;
-                  if (storage != null) {
-                    try {
-                      localState = storage.getItem(
-                        importNamespace("MPNLocalState").LOCAL_STATE_KEY
-                      );
-                    } catch (_unused) {
-                      importNamespace("Log").warn(
-                        "Failed to access localStorage"
-                      );
-                    }
-                  }
-                  if (localState != null) {
-                    ES("Object", "assign", false, this.params, {
-                      local_state: localState
-                    });
-                  }
-                  if (localState != null) {
-                    try {
-                      var stateObj = ES("JSON", "parse", false, localState);
-                      if (
-                        importNamespace(
-                          "MPNExplicitUserInteractions"
-                        ).hasUserInteraction(
-                          stateObj == null ? void 0 : stateObj.euit
-                        )
-                      ) {
-                        ES("Object", "assign", false, this.params, {
-                          has_explicit_interaction: 1
-                        });
+                _proto.$CustomerChat_updateDialogIframeOptions =
+                  function $CustomerChat_updateDialogIframeOptions() {
+                    var storage =
+                      importNamespace("sdk.WebStorage").getLocalStorage();
+                    var localState = null;
+                    if (storage != null) {
+                      try {
+                        localState = storage.getItem(
+                          importNamespace("MPNLocalState").LOCAL_STATE_KEY
+                        );
+                      } catch (_unused) {
+                        importNamespace("Log").warn(
+                          "Failed to access localStorage"
+                        );
                       }
-                    } catch (_unused2) {
-                      importNamespace("Log").warn("Invalid local state");
                     }
-                  }
-                  var requestTime = importDefault("performanceAbsoluteNow")();
-                  ES("Object", "assign", false, this.params, {
-                    request_time: requestTime
-                  });
-                  var url =
-                    importNamespace("UrlMap").resolve("www") +
-                    "/plugins/" +
-                    this.tag +
-                    ".php?";
-                  this.iframeOptions.url =
-                    url + importDefault("QueryString").encode(this.params);
-                  this.iframeOptions.title = "";
-                };
-                _proto.$CustomerChat_setUpSubscriptions = function $CustomerChat_setUpSubscriptions() {
-                  var _this = this;
-                  this.subscribe("render", function subscribe_$1() {
-                    importNamespace("ChatPluginSDKPreLoggingUtils").preLogging(
-                      "chat_plugin_sdk_dialog_iframe_load",
-                      _this.params
-                    );
-                  });
-                  this.subscribe("xd.mpn.storeState", function subscribe_$1(
-                    message
-                  ) {
-                    importDefault("sdk.cp.Storage").setState(message.state);
-                  });
-                  this.subscribe("xd.mpn.getState", function subscribe_$1(_) {
-                    var state = importDefault("sdk.cp.Storage").getStateJSON();
-                    var event = { name: "mpnDidFetchState", params: state };
-                    _this.$CustomerChat_postMessageToDialogFrame(event);
-                    _this.$CustomerChat_postMessageToBubbleFrame(event);
-                  });
-                  this.subscribe(
-                    "xd.mpn.setupIconIframe",
-                    function subscribe_$1(message) {
-                      _this.$CustomerChat_handleSetupIconIframe(message);
+                    if (localState != null) {
+                      ES("Object", "assign", false, this.params, {
+                        local_state: localState,
+                      });
                     }
-                  );
-                  this.subscribe(
-                    "xd.mpn.setupDialogIframe",
-                    function subscribe_$1(message) {
-                      _this.$CustomerChat_handleSetupDialogIframe(message);
+                    if (localState != null) {
+                      try {
+                        var stateObj = ES("JSON", "parse", false, localState);
+                        if (
+                          importNamespace(
+                            "MPNExplicitUserInteractions"
+                          ).hasUserInteraction(
+                            stateObj == null ? void 0 : stateObj.euit
+                          )
+                        ) {
+                          ES("Object", "assign", false, this.params, {
+                            has_explicit_interaction: 1,
+                          });
+                        }
+                      } catch (_unused2) {
+                        importNamespace("Log").warn("Invalid local state");
+                      }
                     }
-                  );
-                  this.subscribe(
-                    "xd.mpn.toggleDialogVisibility",
-                    function subscribe_$1(message) {
-                      _this.$CustomerChat_handleToggleDialogVisibility(message);
-                    }
-                  );
-                  this.subscribe(
-                    "xd.mpn.updateDialogAppearance",
-                    function subscribe_$1(message) {
-                      importDefault("sdk.cp.Actions").setDialogAppearance(
-                        _this.iframe,
-                        message
-                      );
-                    }
-                  );
-                  this.subscribe(
-                    "xd.mpn.updateIconAppearance",
-                    function subscribe_$1(message) {
-                      importDefault("sdk.cp.Actions").setDialogAppearance(
-                        _this.$CustomerChat_iconInnerIFrame,
-                        message
-                      );
-                    }
-                  );
-                  this.subscribe("xd.mpn.reload", function subscribe_$1(
-                    message
-                  ) {
-                    importDefault("sdk.cp.Actions").reloadIframe(
-                      _this.iframe,
-                      message.hasExplicitInteraction
-                    );
-                  });
-                  this.subscribe(
-                    "xd.mpn.updatePageTitle",
-                    function subscribe_$1(message) {
-                      importDefault("sdk.cp.Actions").blinkPageTitle(
-                        message.title
-                      );
-                    }
-                  );
-                  importNamespace(
-                    "sdk.XFBML.CustomerChatWrapper"
-                  ).CustomerChatInternalEvent.subscribe(
-                    importNamespace("sdk.XFBML.CustomerChatWrapper")
-                      .CustomerChatInternalEventType.SHOW,
-                    this.show
-                  );
-                  importNamespace(
-                    "sdk.XFBML.CustomerChatWrapper"
-                  ).CustomerChatInternalEvent.subscribe(
-                    importNamespace("sdk.XFBML.CustomerChatWrapper")
-                      .CustomerChatInternalEventType.HIDE,
-                    this.hide
-                  );
-                  importNamespace(
-                    "sdk.XFBML.CustomerChatWrapper"
-                  ).CustomerChatInternalEvent.subscribe(
-                    importNamespace("sdk.XFBML.CustomerChatWrapper")
-                      .CustomerChatInternalEventType.SHOW_DIALOG,
-                    this.showDialog
-                  );
-                  importNamespace(
-                    "sdk.XFBML.CustomerChatWrapper"
-                  ).CustomerChatInternalEvent.subscribe(
-                    importNamespace("sdk.XFBML.CustomerChatWrapper")
-                      .CustomerChatInternalEventType.HIDE_DIALOG,
-                    this.hideDialog
-                  );
-                  importNamespace(
-                    "sdk.XFBML.CustomerChatWrapper"
-                  ).CustomerChatInternalEvent.subscribe(
-                    importNamespace("sdk.XFBML.CustomerChatWrapper")
-                      .CustomerChatInternalEventType.UPDATE,
-                    this.update
-                  );
-                };
-                _proto.$CustomerChat_handleSetupIconIframe = function $CustomerChat_handleSetupIconIframe(
-                  message
-                ) {
-                  var _this2 = this;
-                  if (this.$CustomerChat_bubbleIFrame) {
-                    importNamespace("sdk.DOM").remove(
-                      this.$CustomerChat_bubbleIFrame
-                    );
-                  }
-                  var frameName = message.frameName,
-                    iconSVG = message.iconSVG;
-                  var newElement = importNamespace(
-                    "sdk.DialogUtils"
-                  ).setupNewDialog();
-                  var css = ES("JSON", "parse", false, message.cssText);
-                  var iconDiv = document.createElement("div");
-                  if (iconSVG != null) {
-                    importNamespace("sdk.DOM").html(iconDiv, iconSVG);
-                    ES("Object", "assign", false, iconDiv.style, css);
-                    iconDiv.style.boxShadow = "none";
-                    importNamespace("sdk.Content").append(
-                      iconDiv,
-                      newElement.contentRoot
-                    );
-                  }
-                  var bubbleIFrameName = "blank_" + frameName;
-                  this.$CustomerChat_bubbleIFrame = newElement.dialogElement;
-                  this.$CustomerChat_iconInnerIFrame = importDefault(
-                    "sdk.createIframe"
-                  )({
-                    url: importDefault("sdk.cp.Constants").blankFrameURL,
-                    name: bubbleIFrameName,
-                    root: newElement.contentRoot,
-                    tabindex: -1,
-                    width: 60,
-                    style: css,
-                    "data-testid": "bubble_iframe",
-                    onload: function onload() {
+                    var requestTime = importDefault("performanceAbsoluteNow")();
+                    ES("Object", "assign", false, this.params, {
+                      request_time: requestTime,
+                    });
+                    var url = this.$CustomerChat_shouldUseNewDomain
+                      ? importNamespace("UrlMap").resolve("social_plugin") +
+                        "/" +
+                        this.tag +
+                        ".php?"
+                      : importNamespace("UrlMap").resolve("www") +
+                        "/plugins/" +
+                        this.tag +
+                        ".php?";
+                    this.iframeOptions.url =
+                      url + importDefault("QueryString").encode(this.params);
+                    this.iframeOptions.title = "";
+                  };
+                _proto.$CustomerChat_setUpSubscriptions =
+                  function $CustomerChat_setUpSubscriptions() {
+                    var _this = this;
+                    this.subscribe("render", function subscribe_$1() {
                       importNamespace(
                         "ChatPluginSDKPreLoggingUtils"
                       ).preLogging(
-                        "chat_plugin_sdk_icon_iframe_load",
-                        _this2.params
+                        _this.$CustomerChat_shouldUseNewDomain,
+                        "chat_plugin_sdk_dialog_iframe_load",
+                        _this.params
                       );
-                      _this2.$CustomerChat_bubbleIFrameName = bubbleIFrameName;
-                      _this2.$CustomerChat_notifyDialogIFrame();
-                      _this2.$CustomerChat_checkIfIframesLoadedAndNotify();
-                      window.setTimeout(function window_setTimeout_$0() {
-                        importNamespace("sdk.DOM").remove(iconDiv);
-                      }, 100);
-                    }
-                  });
-                  if (this.$CustomerChat_bubbleIFrame) {
-                    this.$CustomerChat_bubbleIFrame.setAttribute(
-                      importDefault("sdk.cp.Constants").attribute.alignment,
-                      message.alignment
+                    });
+                    this.subscribe(
+                      "xd.mpn.storeState",
+                      function subscribe_$1(message) {
+                        importDefault("sdk.cp.Storage").setState(message.state);
+                      }
                     );
-                  }
-                  if (this.$CustomerChat_bubbleIFrame) {
-                    importNamespace("sdk.Content").append(
-                      this.$CustomerChat_bubbleIFrame
+                    this.subscribe("xd.mpn.getState", function subscribe_$1(_) {
+                      var state =
+                        importDefault("sdk.cp.Storage").getStateJSON();
+                      var event = { name: "mpnDidFetchState", params: state };
+                      _this.$CustomerChat_postMessageToDialogFrame(event);
+                      _this.$CustomerChat_postMessageToBubbleFrame(event);
+                    });
+                    this.subscribe(
+                      "xd.mpn.setupIconIframe",
+                      function subscribe_$1(message) {
+                        _this.$CustomerChat_handleSetupIconIframe(message);
+                      }
                     );
-                  }
-                  var unreadCountIFrameName = "unread_" + frameName;
-                  this.$CustomerChat_unreadCountIFrame = importDefault(
-                    "sdk.createIframe"
-                  )({
-                    url: importDefault("sdk.cp.Constants").blankFrameURL,
-                    name: unreadCountIFrameName,
-                    root: newElement.contentRoot,
-                    tabindex: -1,
-                    style: ES(
-                      "JSON",
-                      "parse",
-                      false,
-                      message.unreadCountCssText
-                    ),
-                    "data-testid": "unread_iframe",
-                    onload: function onload() {
-                      _this2.$CustomerChat_unreadCountIFrameName = unreadCountIFrameName;
-                      _this2.$CustomerChat_notifyDialogIFrame();
-                      _this2.$CustomerChat_checkIfIframesLoadedAndNotify();
-                    }
-                  });
-                  importNamespace("sdk.Content").append(
-                    this.$CustomerChat_unreadCountIFrame,
-                    newElement.contentRoot
-                  );
-                };
-                _proto.$CustomerChat_checkIfIframesLoadedAndNotify = function $CustomerChat_checkIfIframesLoadedAndNotify() {
-                  if (
-                    this.$CustomerChat_bubbleIFrameName !== null &&
-                    this.$CustomerChat_unreadCountIFrameName !== null &&
-                    this.$CustomerChat_dialogIFrameName !== null &&
-                    !this.$CustomerChat_iframesLoaded
-                  ) {
-                    this.$CustomerChat_iframesLoaded = true;
-                    this.inform("iframes_loaded");
-                  }
-                };
-                _proto.$CustomerChat_notifyDialogIFrame = function $CustomerChat_notifyDialogIFrame() {
-                  var _this$$CustomerChat_i, _this$$CustomerChat_u;
-                  this.$CustomerChat_postMessageToDialogFrame({
-                    name: "bubbleFrameLoaded",
-                    frameName: this.$CustomerChat_bubbleIFrameName,
-                    unreadCountFrameName: this
-                      .$CustomerChat_unreadCountIFrameName,
-                    iconSrc:
-                      (_this$$CustomerChat_i = this
-                        .$CustomerChat_iconInnerIFrame) == null
-                        ? void 0
-                        : _this$$CustomerChat_i.src,
-                    unreadSrc:
-                      (_this$$CustomerChat_u = this
-                        .$CustomerChat_unreadCountIFrame) == null
-                        ? void 0
-                        : _this$$CustomerChat_u.src,
-                    request_time: this.params.request_time,
-                    log_id: this.params.log_id
-                  });
-                };
-                _proto.$CustomerChat_handleSetupDialogIframe = function $CustomerChat_handleSetupDialogIframe(
-                  message
-                ) {
-                  var cssText = message.cssText,
-                    mobilePath = message.mobilePath,
-                    isDialogHidden = message.isDialogHidden,
-                    desktopBottomSpacing = message.desktopBottomSpacing;
-                  if (this.$CustomerChat_bubbleIFrame) {
-                    mobilePath &&
-                      this.$CustomerChat_bubbleIFrame.setAttribute(
-                        importDefault("sdk.cp.Constants").attribute.mobilePath,
-                        mobilePath
-                      );
-                    desktopBottomSpacing &&
-                      this.$CustomerChat_bubbleIFrame.setAttribute(
-                        importDefault("sdk.cp.Constants").attribute
-                          .desktopBottomSpacing,
-                        desktopBottomSpacing.toString()
-                      );
-                  }
-                  this.$CustomerChat_isDialogHidden = isDialogHidden === "true";
-                  if (this.iframe) {
-                    this.iframe.setAttribute("data-testid", "dialog_iframe");
-                    this.iframe.style.cssText = cssText;
-                  }
-                  this.$CustomerChat_dialogIFrame = this.iframe;
-                  this.$CustomerChat_dialogIFrameName = this.iframe.name;
-                  this.$CustomerChat_checkIfIframesLoadedAndNotify();
-                  var isMobile = importDefault("sdk.UA").mobile();
-                  if (isMobile && !this.$CustomerChat_isDialogHidden) {
-                    if (
-                      mobilePath ==
-                      importDefault("sdk.cp.Constants").path.landingPage
-                    ) {
-                      var bounceInAnimationName = importNamespace(
-                        "sdk.cp.Animation"
-                      ).iframeBounceInAnimation(
+                    this.subscribe(
+                      "xd.mpn.setupDialogIframe",
+                      function subscribe_$1(message) {
+                        _this.$CustomerChat_handleSetupDialogIframe(message);
+                      }
+                    );
+                    this.subscribe(
+                      "xd.mpn.toggleDialogVisibility",
+                      function subscribe_$1(message) {
+                        _this.$CustomerChat_handleToggleDialogVisibility(
+                          message
+                        );
+                      }
+                    );
+                    this.subscribe(
+                      "xd.mpn.toggleGreetingDialogVisibility",
+                      function subscribe_$1(message) {
+                        _this.$CustomerChat_handleToggleGreetingDialogVisibility(
+                          message
+                        );
+                      }
+                    );
+                    this.subscribe(
+                      "xd.mpn.updateGreetingAppearance",
+                      function subscribe_$1(message) {
+                        importDefault("sdk.cp.Actions").setDialogAppearance(
+                          _this.$CustomerChat_greetingIFrame,
+                          message
+                        );
+                      }
+                    );
+                    this.subscribe(
+                      "xd.mpn.updateDialogAppearance",
+                      function subscribe_$1(message) {
+                        importDefault("sdk.cp.Actions").setDialogAppearance(
+                          _this.iframe,
+                          message
+                        );
+                      }
+                    );
+                    this.subscribe(
+                      "xd.mpn.updateIconAppearance",
+                      function subscribe_$1(message) {
+                        importDefault("sdk.cp.Actions").setDialogAppearance(
+                          _this.$CustomerChat_iconInnerIFrame,
+                          message
+                        );
+                      }
+                    );
+                    this.subscribe(
+                      "xd.mpn.reload",
+                      function subscribe_$1(message) {
+                        importDefault("sdk.cp.Actions").reloadIframe(
+                          _this.iframe,
+                          message.hasExplicitInteraction
+                        );
+                      }
+                    );
+                    this.subscribe(
+                      "xd.mpn.updatePageTitle",
+                      function subscribe_$1(message) {
+                        importDefault("sdk.cp.Actions").blinkPageTitle(
+                          message.title
+                        );
+                      }
+                    );
+                    this.subscribe(
+                      "xd.mpn.navigateToWelcomePage",
+                      function subscribe_$1(message) {
+                        _this.$CustomerChat_notifyDialogToNaviagetToWelcomePage(
+                          message.isHidden
+                        );
+                      }
+                    );
+                    importNamespace(
+                      "sdk.XFBML.CustomerChatWrapper"
+                    ).CustomerChatInternalEvent.subscribe(
+                      importNamespace("sdk.XFBML.CustomerChatWrapper")
+                        .CustomerChatInternalEventType.SHOW,
+                      this.show
+                    );
+                    importNamespace(
+                      "sdk.XFBML.CustomerChatWrapper"
+                    ).CustomerChatInternalEvent.subscribe(
+                      importNamespace("sdk.XFBML.CustomerChatWrapper")
+                        .CustomerChatInternalEventType.HIDE,
+                      this.hide
+                    );
+                    importNamespace(
+                      "sdk.XFBML.CustomerChatWrapper"
+                    ).CustomerChatInternalEvent.subscribe(
+                      importNamespace("sdk.XFBML.CustomerChatWrapper")
+                        .CustomerChatInternalEventType.SHOW_DIALOG,
+                      this.showDialog
+                    );
+                    importNamespace(
+                      "sdk.XFBML.CustomerChatWrapper"
+                    ).CustomerChatInternalEvent.subscribe(
+                      importNamespace("sdk.XFBML.CustomerChatWrapper")
+                        .CustomerChatInternalEventType.HIDE_DIALOG,
+                      this.hideDialog
+                    );
+                    importNamespace(
+                      "sdk.XFBML.CustomerChatWrapper"
+                    ).CustomerChatInternalEvent.subscribe(
+                      importNamespace("sdk.XFBML.CustomerChatWrapper")
+                        .CustomerChatInternalEventType.UPDATE,
+                      this.update
+                    );
+                  };
+                _proto.$CustomerChat_handleSetupIconIframe =
+                  function $CustomerChat_handleSetupIconIframe(message) {
+                    var _this2 = this;
+                    if (this.$CustomerChat_bubbleIFrame) {
+                      importNamespace("sdk.DOM").remove(
                         this.$CustomerChat_bubbleIFrame
                       );
-                      bounceInAnimationName != null &&
-                        importNamespace("sdk.DOM").addCss(
-                          this.$CustomerChat_dialogIFrame,
-                          bounceInAnimationName
+                    }
+                    var frameName = message.frameName,
+                      iconSVG = message.iconSVG;
+                    var newElement =
+                      importNamespace("sdk.DialogUtils").setupNewDialog();
+                    var css = ES("JSON", "parse", false, message.cssText);
+                    var iconDiv = document.createElement("div");
+                    if (iconSVG != null) {
+                      importNamespace("sdk.DOM").html(iconDiv, iconSVG);
+                      ES("Object", "assign", false, iconDiv.style, css);
+                      iconDiv.style.boxShadow = "none";
+                      importNamespace("sdk.Content").append(
+                        iconDiv,
+                        newElement.contentRoot
+                      );
+                    }
+                    var bubbleIFrameName = "blank_" + frameName;
+                    this.$CustomerChat_bubbleIFrame = newElement.dialogElement;
+                    this.$CustomerChat_iconInnerIFrame = importDefault(
+                      "sdk.createIframe"
+                    )({
+                      url: this.$CustomerChat_shouldUseNewDomain
+                        ? importDefault("sdk.cp.Constants")
+                            .blankFrameNewDomainURL
+                        : importDefault("sdk.cp.Constants").blankFrameURL,
+                      name: bubbleIFrameName,
+                      root: newElement.contentRoot,
+                      tabindex: -1,
+                      width: 60,
+                      style: css,
+                      "data-testid": "bubble_iframe",
+                      onload: function onload() {
+                        importNamespace(
+                          "ChatPluginSDKPreLoggingUtils"
+                        ).preLogging(
+                          _this2.$CustomerChat_shouldUseNewDomain,
+                          "chat_plugin_sdk_icon_iframe_load",
+                          _this2.params
+                        );
+                        _this2.$CustomerChat_bubbleIFrameName =
+                          bubbleIFrameName;
+                        _this2.$CustomerChat_notifyDialogIFrame();
+                        _this2.$CustomerChat_checkIfIframesLoadedAndNotify();
+                        window.setTimeout(function window_setTimeout_$0() {
+                          importNamespace("sdk.DOM").remove(iconDiv);
+                        }, 100);
+                      },
+                    });
+                    if (this.$CustomerChat_bubbleIFrame) {
+                      this.$CustomerChat_bubbleIFrame.setAttribute(
+                        importDefault("sdk.cp.Constants").attribute.alignment,
+                        message.alignment
+                      );
+                    }
+                    if (this.$CustomerChat_bubbleIFrame) {
+                      importNamespace("sdk.Content").append(
+                        this.$CustomerChat_bubbleIFrame
+                      );
+                    }
+                    var availabilityStatusIFrameName =
+                      "availabilityStatus_" + frameName;
+                    this.$CustomerChat_availabilityStatusIFrame = importDefault(
+                      "sdk.createIframe"
+                    )({
+                      url: this.$CustomerChat_shouldUseNewDomain
+                        ? importDefault("sdk.cp.Constants")
+                            .blankFrameNewDomainURL
+                        : importDefault("sdk.cp.Constants").blankFrameURL,
+                      name: availabilityStatusIFrameName,
+                      root: newElement.contentRoot,
+                      tabindex: -1,
+                      style: ES(
+                        "JSON",
+                        "parse",
+                        false,
+                        message.availabilityStatusCssText
+                      ),
+                      "data-testid": "availabilityStatus_iframe",
+                      onload: function onload() {
+                        _this2.$CustomerChat_availabilityStatusIFrameName =
+                          availabilityStatusIFrameName;
+                        _this2.$CustomerChat_notifyDialogIFrame();
+                        _this2.$CustomerChat_checkIfIframesLoadedAndNotify();
+                      },
+                    });
+                    importNamespace("sdk.Content").append(
+                      this.$CustomerChat_availabilityStatusIFrame,
+                      newElement.contentRoot
+                    );
+                    var unreadCountIFrameName = "unread_" + frameName;
+                    this.$CustomerChat_unreadCountIFrame = importDefault(
+                      "sdk.createIframe"
+                    )({
+                      url: this.$CustomerChat_shouldUseNewDomain
+                        ? importDefault("sdk.cp.Constants")
+                            .blankFrameNewDomainURL
+                        : importDefault("sdk.cp.Constants").blankFrameURL,
+                      name: unreadCountIFrameName,
+                      root: newElement.contentRoot,
+                      tabindex: -1,
+                      style: ES(
+                        "JSON",
+                        "parse",
+                        false,
+                        message.unreadCountCssText
+                      ),
+                      "data-testid": "unread_iframe",
+                      onload: function onload() {
+                        _this2.$CustomerChat_unreadCountIFrameName =
+                          unreadCountIFrameName;
+                        _this2.$CustomerChat_notifyDialogIFrame();
+                        _this2.$CustomerChat_checkIfIframesLoadedAndNotify();
+                      },
+                    });
+                    importNamespace("sdk.Content").append(
+                      this.$CustomerChat_unreadCountIFrame,
+                      newElement.contentRoot
+                    );
+                    var isMobile = importDefault("sdk.UA").mobile();
+                    if (!isMobile) {
+                      var greetingIFrameName = "greeting_" + frameName;
+                      this.$CustomerChat_greetingIFrame = importDefault(
+                        "sdk.createIframe"
+                      )({
+                        url: this.$CustomerChat_shouldUseNewDomain
+                          ? importDefault("sdk.cp.Constants")
+                              .blankFrameNewDomainURL
+                          : importDefault("sdk.cp.Constants").blankFrameURL,
+                        name: greetingIFrameName,
+                        root: newElement.contentRoot,
+                        tabindex: -1,
+                        style: ES(
+                          "JSON",
+                          "parse",
+                          false,
+                          message.greetingCssText
+                        ),
+                        "data-testid": "greeting_iframe",
+                        onload: function onload() {
+                          _this2.$CustomerChat_greetingIFrameName =
+                            greetingIFrameName;
+                          _this2.$CustomerChat_notifyDialogIFrame();
+                          _this2.$CustomerChat_checkIfIframesLoadedAndNotify();
+                        },
+                      });
+                      importNamespace("sdk.Content").append(
+                        this.$CustomerChat_greetingIFrame,
+                        newElement.contentRoot
+                      );
+                    }
+                  };
+                _proto.$CustomerChat_checkIfIframesLoadedAndNotify =
+                  function $CustomerChat_checkIfIframesLoadedAndNotify() {
+                    if (
+                      this.$CustomerChat_bubbleIFrameName !== null &&
+                      this.$CustomerChat_unreadCountIFrameName !== null &&
+                      this.$CustomerChat_availabilityStatusIFrameName !==
+                        null &&
+                      this.$CustomerChat_dialogIFrameName !== null &&
+                      this.$CustomerChat_greetingIFrameName !== null &&
+                      !this.$CustomerChat_iframesLoaded
+                    ) {
+                      this.$CustomerChat_iframesLoaded = true;
+                      this.inform("iframes_loaded");
+                    }
+                  };
+                _proto.$CustomerChat_notifyDialogIFrame =
+                  function $CustomerChat_notifyDialogIFrame() {
+                    var _this$$CustomerChat_i, _this$$CustomerChat_u;
+                    this.$CustomerChat_postMessageToDialogFrame({
+                      name: "bubbleFrameLoaded",
+                      frameName: this.$CustomerChat_bubbleIFrameName,
+                      unreadCountFrameName:
+                        this.$CustomerChat_unreadCountIFrameName,
+                      availabilityStatusIframeName:
+                        this.$CustomerChat_availabilityStatusIFrameName,
+                      greetingIframeName: this.$CustomerChat_greetingIFrameName,
+                      iconSrc:
+                        (_this$$CustomerChat_i =
+                          this.$CustomerChat_iconInnerIFrame) == null
+                          ? void 0
+                          : _this$$CustomerChat_i.src,
+                      unreadSrc:
+                        (_this$$CustomerChat_u =
+                          this.$CustomerChat_unreadCountIFrame) == null
+                          ? void 0
+                          : _this$$CustomerChat_u.src,
+                      request_time: this.params.request_time,
+                      log_id: this.params.log_id,
+                    });
+                  };
+                _proto.$CustomerChat_notifyDialogToNaviagetToWelcomePage =
+                  function $CustomerChat_notifyDialogToNaviagetToWelcomePage(
+                    isHidden
+                  ) {
+                    this.$CustomerChat_postMessageToDialogFrame({
+                      name: "navigateToWelcomePage",
+                      isHidden: isHidden,
+                    });
+                  };
+                _proto.$CustomerChat_handleSetupDialogIframe =
+                  function $CustomerChat_handleSetupDialogIframe(message) {
+                    var cssText = message.cssText,
+                      mobilePath = message.mobilePath,
+                      isDialogHidden = message.isDialogHidden,
+                      desktopBottomSpacing = message.desktopBottomSpacing;
+                    if (this.$CustomerChat_bubbleIFrame) {
+                      mobilePath &&
+                        this.$CustomerChat_bubbleIFrame.setAttribute(
+                          importDefault("sdk.cp.Constants").attribute
+                            .mobilePath,
+                          mobilePath
+                        );
+                      desktopBottomSpacing &&
+                        this.$CustomerChat_bubbleIFrame.setAttribute(
+                          importDefault("sdk.cp.Constants").attribute
+                            .desktopBottomSpacing,
+                          desktopBottomSpacing.toString()
                         );
                     }
-                    if (
-                      mobilePath !=
-                        importDefault("sdk.cp.Constants").path.landingPage &&
-                      mobilePath !=
-                        importDefault("sdk.cp.Constants").path.bubble
-                    ) {
-                      this.$CustomerChat_setParentDocumentPositionFixed();
+                    this.$CustomerChat_isDialogHidden =
+                      isDialogHidden === "true";
+                    if (this.iframe) {
+                      this.iframe.setAttribute("data-testid", "dialog_iframe");
+                      this.iframe.style.cssText = cssText;
                     }
-                  }
-                  if (this.$CustomerChat_isPluginHidden) {
-                    this.hide();
-                  }
-                };
-                _proto.$CustomerChat_handleToggleDialogVisibility = function $CustomerChat_handleToggleDialogVisibility(
-                  message
-                ) {
-                  var shouldHide = message.shouldHide;
-                  if (shouldHide === "true") {
-                    this.$CustomerChat_hideDialogIframe(this.iframe);
-                  } else {
-                    this.$CustomerChat_showDialogIframe(this.iframe);
-                  }
-                };
+                    this.$CustomerChat_dialogIFrame = this.iframe;
+                    this.$CustomerChat_dialogIFrameName = this.iframe.name;
+                    this.$CustomerChat_checkIfIframesLoadedAndNotify();
+                    var isMobile = importDefault("sdk.UA").mobile();
+                    if (isMobile && !this.$CustomerChat_isDialogHidden) {
+                      if (
+                        mobilePath ==
+                        importDefault("sdk.cp.Constants").path.landingPage
+                      ) {
+                        var bounceInAnimationName = importNamespace(
+                          "sdk.cp.Animation"
+                        ).iframeBounceInAnimation(
+                          this.$CustomerChat_bubbleIFrame
+                        );
+                        bounceInAnimationName != null &&
+                          importNamespace("sdk.DOM").addCss(
+                            this.$CustomerChat_dialogIFrame,
+                            bounceInAnimationName
+                          );
+                      }
+                      if (
+                        mobilePath !=
+                          importDefault("sdk.cp.Constants").path.landingPage &&
+                        mobilePath !=
+                          importDefault("sdk.cp.Constants").path.bubble
+                      ) {
+                        this.$CustomerChat_setParentDocumentPositionFixed();
+                      }
+                    }
+                    if (this.$CustomerChat_isPluginHidden) {
+                      this.hide();
+                    }
+                  };
+                _proto.$CustomerChat_handleToggleDialogVisibility =
+                  function $CustomerChat_handleToggleDialogVisibility(message) {
+                    var shouldHide = message.shouldHide;
+                    if (shouldHide === "true") {
+                      this.$CustomerChat_hideDialogIframe(this.iframe);
+                    } else {
+                      this.$CustomerChat_showDialogIframe(this.iframe);
+                    }
+                  };
+                _proto.$CustomerChat_handleToggleGreetingDialogVisibility =
+                  function $CustomerChat_handleToggleGreetingDialogVisibility(
+                    message
+                  ) {
+                    var shouldHide = message.shouldHide;
+                    if (shouldHide === "true") {
+                      this.$CustomerChat_hideGreetingDialogIframe(
+                        this.$CustomerChat_greetingIFrame
+                      );
+                    } else {
+                      this.$CustomerChat_showGreetingDialogIframe(
+                        this.$CustomerChat_greetingIFrame
+                      );
+                    }
+                  };
                 _proto.getParams = function getParams() {
                   return {
                     allow_guests: "bool",
@@ -25394,227 +24716,267 @@ try {
                     is_loaded_by_facade: "bool",
                     current_url: "string",
                     log_id: "string",
-                    request_time: "px"
+                    request_time: "px",
                   };
                 };
-                _proto.$CustomerChat_postMessageToIframe = function $CustomerChat_postMessageToIframe(
-                  frameName,
-                  message
-                ) {
-                  var _this3 = this;
-                  var frame = window.frames[frameName];
-                  var pmf = function pmf(origin) {
-                    frame == null
-                      ? void 0
-                      : frame.postMessage(
-                          babelHelpers["extends"]({}, message),
-                          origin
-                        );
-                  };
-                  if (this.$CustomerChat_dialogIFrameOrigin === null) {
-                    importDefault("getFacebookOriginForTarget")(
-                      function getFacebookOriginForTarget_$0(origin) {
-                        _this3.$CustomerChat_dialogIFrameOrigin = origin;
-                        pmf(_this3.$CustomerChat_dialogIFrameOrigin);
-                      },
-                      frame
-                    );
-                  } else {
-                    pmf(this.$CustomerChat_dialogIFrameOrigin);
-                  }
-                };
-                _proto.$CustomerChat_postMessageToBubbleFrame = function $CustomerChat_postMessageToBubbleFrame(
-                  message
-                ) {
-                  var _this$$CustomerChat_b;
-                  this.$CustomerChat_postMessageToIframe(
-                    (_this$$CustomerChat_b = this
-                      .$CustomerChat_bubbleIFrameName) != null
-                      ? _this$$CustomerChat_b
-                      : "",
+                _proto.$CustomerChat_postMessageToIframe =
+                  function $CustomerChat_postMessageToIframe(
+                    frameName,
                     message
-                  );
-                };
-                _proto.$CustomerChat_postMessageToDialogFrame = function $CustomerChat_postMessageToDialogFrame(
-                  message
-                ) {
-                  var _this$$CustomerChat_d2;
-                  this.$CustomerChat_postMessageToIframe(
-                    (_this$$CustomerChat_d2 = this
-                      .$CustomerChat_dialogIFrameName) != null
-                      ? _this$$CustomerChat_d2
-                      : "",
-                    message
-                  );
-                };
-                _proto.$CustomerChat_handleSDKCall = function $CustomerChat_handleSDKCall(
-                  event
-                ) {
-                  this.$CustomerChat_postMessageToDialogFrame({
-                    name: "CustomerChat.SDK.Called",
-                    event: event
-                  });
-                };
-                _proto.$CustomerChat_setParentDocumentPositionFixed = function $CustomerChat_setParentDocumentPositionFixed() {
-                  var mobile_overlay = "fb_new_ui_mobile_overlay_active";
-                  importNamespace("sdk.DOM").addCss(
-                    document.body,
-                    mobile_overlay
-                  );
-                };
-                _proto.$CustomerChat_showDialogIframe = function $CustomerChat_showDialogIframe(
-                  dialogIframe
-                ) {
-                  if (!dialogIframe) {
-                    return;
-                  }
-                  if (this.$CustomerChat_isDialogHidden) {
-                    this.$CustomerChat_isDialogHidden = false;
-                    var bounceInAnimationName = importNamespace(
-                      "sdk.cp.Animation"
-                    ).iframeBounceInAnimation(this.$CustomerChat_bubbleIFrame);
-                    var bounceOutAnimationName = importNamespace(
-                      "sdk.cp.Animation"
-                    ).iframeBounceOutAnimation(this.$CustomerChat_bubbleIFrame);
-                    bounceOutAnimationName != null &&
-                      importNamespace("sdk.DOM").removeCss(
-                        dialogIframe,
-                        bounceOutAnimationName
-                      );
-                    bounceInAnimationName != null &&
-                      importNamespace("sdk.DOM").addCss(
-                        dialogIframe,
-                        bounceInAnimationName
-                      );
-                    if (importDefault("sdk.UA").mobile()) {
-                      importNamespace("sdk.DOM").setStyle(
-                        dialogIframe,
-                        "maxHeight",
-                        "100%"
-                      );
-                      importNamespace("sdk.DOM").setStyle(
-                        dialogIframe,
-                        "height",
-                        "100%"
-                      );
-                      importNamespace("sdk.DOM").setStyle(
-                        dialogIframe,
-                        "width",
-                        "100%"
+                  ) {
+                    var _this3 = this;
+                    var frame = window.frames[frameName];
+                    var pmf = function pmf(origin) {
+                      frame == null
+                        ? void 0
+                        : frame.postMessage(
+                            babelHelpers["extends"]({}, message),
+                            origin
+                          );
+                    };
+                    if (this.$CustomerChat_dialogIFrameOrigin === null) {
+                      importDefault("getFacebookOriginForTarget")(
+                        function getFacebookOriginForTarget_$0(origin) {
+                          _this3.$CustomerChat_dialogIFrameOrigin = origin;
+                          pmf(_this3.$CustomerChat_dialogIFrameOrigin);
+                        },
+                        frame
                       );
                     } else {
-                      var desktopBottomSpacingString =
-                        this.$CustomerChat_bubbleIFrame &&
-                        importNamespace("sdk.DOM").getAttr(
-                          this.$CustomerChat_bubbleIFrame,
-                          importDefault("sdk.cp.Constants").attribute
-                            .desktopBottomSpacing
-                        );
-                      var desktopBottomSpacingForDialog =
-                        desktopBottomSpacingString == null
-                          ? "80"
-                          : Number(desktopBottomSpacingString) + 60;
-                      importNamespace("sdk.DOM").setStyle(
-                        dialogIframe,
-                        "maxHeight",
-                        "calc(100% - " + desktopBottomSpacingForDialog + "px)"
-                      );
-                      importNamespace("sdk.DOM").setStyle(
-                        dialogIframe,
-                        "minHeight",
-                        "300px"
-                      );
+                      pmf(this.$CustomerChat_dialogIFrameOrigin);
                     }
-                    this.$CustomerChat_postMessageToDialogFrame({
-                      name: "CustomerChat.isDialogHidden",
-                      params: { is_dialog_hidden: false }
-                    });
-                    this.$CustomerChat_postMessageToBubbleFrame({
-                      name: "CustomerChat.isDialogHidden",
-                      params: { is_dialog_hidden: false }
-                    });
-                    importNamespace("sdk.Event").fire(
-                      "customerchat.dialogShow"
+                  };
+                _proto.$CustomerChat_postMessageToBubbleFrame =
+                  function $CustomerChat_postMessageToBubbleFrame(message) {
+                    var _this$$CustomerChat_b;
+                    this.$CustomerChat_postMessageToIframe(
+                      (_this$$CustomerChat_b =
+                        this.$CustomerChat_bubbleIFrameName) != null
+                        ? _this$$CustomerChat_b
+                        : "",
+                      message
                     );
-                  }
-                };
-                _proto.$CustomerChat_hideDialogIframe = function $CustomerChat_hideDialogIframe(
-                  dialogIframe
-                ) {
-                  var _this4 = this;
-                  if (!dialogIframe) {
-                    return;
-                  }
-                  if (!this.$CustomerChat_isDialogHidden) {
-                    this.$CustomerChat_isDialogHidden = true;
-                    var bounceInAnimationName = importNamespace(
-                      "sdk.cp.Animation"
-                    ).iframeBounceInAnimation(this.$CustomerChat_bubbleIFrame);
-                    var bounceOutAnimationName = importNamespace(
-                      "sdk.cp.Animation"
-                    ).iframeBounceOutAnimation(this.$CustomerChat_bubbleIFrame);
-                    bounceInAnimationName != null &&
-                      importNamespace("sdk.DOM").removeCss(
-                        dialogIframe,
-                        bounceInAnimationName
+                  };
+                _proto.$CustomerChat_postMessageToDialogFrame =
+                  function $CustomerChat_postMessageToDialogFrame(message) {
+                    var _this$$CustomerChat_d2;
+                    this.$CustomerChat_postMessageToIframe(
+                      (_this$$CustomerChat_d2 =
+                        this.$CustomerChat_dialogIFrameName) != null
+                        ? _this$$CustomerChat_d2
+                        : "",
+                      message
+                    );
+                  };
+                _proto.$CustomerChat_handleSDKCall =
+                  function $CustomerChat_handleSDKCall(event) {
+                    this.$CustomerChat_postMessageToDialogFrame({
+                      name: "CustomerChat.SDK.Called",
+                      event: event,
+                    });
+                  };
+                _proto.$CustomerChat_setParentDocumentPositionFixed =
+                  function $CustomerChat_setParentDocumentPositionFixed() {
+                    var mobile_overlay = "fb_new_ui_mobile_overlay_active";
+                    importNamespace("sdk.DOM").addCss(
+                      document.body,
+                      mobile_overlay
+                    );
+                  };
+                _proto.$CustomerChat_showDialogIframe =
+                  function $CustomerChat_showDialogIframe(dialogIframe) {
+                    if (!dialogIframe) {
+                      return;
+                    }
+                    if (this.$CustomerChat_isDialogHidden) {
+                      this.$CustomerChat_isDialogHidden = false;
+                      var bounceInAnimationName = importNamespace(
+                        "sdk.cp.Animation"
+                      ).iframeBounceInAnimation(
+                        this.$CustomerChat_bubbleIFrame
                       );
-                    bounceOutAnimationName != null &&
-                      importNamespace("sdk.DOM").addCss(
-                        dialogIframe,
-                        bounceOutAnimationName
+                      var bounceOutAnimationName = importNamespace(
+                        "sdk.cp.Animation"
+                      ).iframeBounceOutAnimation(
+                        this.$CustomerChat_bubbleIFrame
                       );
-                    var animationEventListeners = {};
-                    importDefault("sdk.cp.Constants").animationEvents.forEach(
-                      function MPNConstants_animationEvents_forEach_$0(event) {
-                        var hideDialog = function hideDialog(_) {
-                          if (_this4.$CustomerChat_isDialogHidden) {
-                            importNamespace("sdk.DOM").setStyle(
-                              dialogIframe,
-                              "maxHeight",
-                              "0"
-                            );
-                            importNamespace("sdk.DOM").setStyle(
-                              dialogIframe,
-                              "minHeight",
-                              "0"
-                            );
-                            importDefault(
-                              "sdk.cp.Constants"
-                            ).animationEvents.forEach(
-                              function MPNConstants_animationEvents_forEach_$0(
-                                event
-                              ) {
-                                if (animationEventListeners[event]) {
-                                  importNamespace("DOMEventListener").remove(
-                                    dialogIframe,
-                                    event,
-                                    animationEventListeners[event]
-                                  );
-                                  delete animationEventListeners[event];
-                                }
-                              }
-                            );
-                          }
-                        };
-                        animationEventListeners[event] = hideDialog;
-                        importNamespace("DOMEventListener").add(
+                      bounceOutAnimationName != null &&
+                        importNamespace("sdk.DOM").removeCss(
                           dialogIframe,
-                          event,
-                          hideDialog
+                          bounceOutAnimationName
+                        );
+                      bounceInAnimationName != null &&
+                        importNamespace("sdk.DOM").addCss(
+                          dialogIframe,
+                          bounceInAnimationName
+                        );
+                      if (importDefault("sdk.UA").mobile()) {
+                        importNamespace("sdk.DOM").setStyle(
+                          dialogIframe,
+                          "maxHeight",
+                          "100%"
+                        );
+                        importNamespace("sdk.DOM").setStyle(
+                          dialogIframe,
+                          "height",
+                          "100%"
+                        );
+                        importNamespace("sdk.DOM").setStyle(
+                          dialogIframe,
+                          "width",
+                          "100%"
+                        );
+                      } else {
+                        var desktopBottomSpacingString =
+                          this.$CustomerChat_bubbleIFrame &&
+                          importNamespace("sdk.DOM").getAttr(
+                            this.$CustomerChat_bubbleIFrame,
+                            importDefault("sdk.cp.Constants").attribute
+                              .desktopBottomSpacing
+                          );
+                        var desktopBottomSpacingForDialog =
+                          desktopBottomSpacingString == null
+                            ? "80"
+                            : Number(desktopBottomSpacingString) + 60;
+                        importNamespace("sdk.DOM").setStyle(
+                          dialogIframe,
+                          "maxHeight",
+                          "calc(100% - " + desktopBottomSpacingForDialog + "px)"
+                        );
+                        importNamespace("sdk.DOM").setStyle(
+                          dialogIframe,
+                          "minHeight",
+                          "300px"
                         );
                       }
+                      this.$CustomerChat_postMessageToDialogFrame({
+                        name: "CustomerChat.isDialogHidden",
+                        params: { is_dialog_hidden: false },
+                      });
+                      this.$CustomerChat_postMessageToBubbleFrame({
+                        name: "CustomerChat.isDialogHidden",
+                        params: { is_dialog_hidden: false },
+                      });
+                      importNamespace("sdk.Event").fire(
+                        "customerchat.dialogShow"
+                      );
+                    }
+                  };
+                _proto.$CustomerChat_hideDialogIframe =
+                  function $CustomerChat_hideDialogIframe(dialogIframe) {
+                    var _this4 = this;
+                    if (!dialogIframe) {
+                      return;
+                    }
+                    if (!this.$CustomerChat_isDialogHidden) {
+                      this.$CustomerChat_isDialogHidden = true;
+                      var bounceInAnimationName = importNamespace(
+                        "sdk.cp.Animation"
+                      ).iframeBounceInAnimation(
+                        this.$CustomerChat_bubbleIFrame
+                      );
+                      var bounceOutAnimationName = importNamespace(
+                        "sdk.cp.Animation"
+                      ).iframeBounceOutAnimation(
+                        this.$CustomerChat_bubbleIFrame
+                      );
+                      bounceInAnimationName != null &&
+                        importNamespace("sdk.DOM").removeCss(
+                          dialogIframe,
+                          bounceInAnimationName
+                        );
+                      bounceOutAnimationName != null &&
+                        importNamespace("sdk.DOM").addCss(
+                          dialogIframe,
+                          bounceOutAnimationName
+                        );
+                      var animationEventListeners = {};
+                      importDefault("sdk.cp.Constants").animationEvents.forEach(
+                        function MPNConstants_animationEvents_forEach_$0(
+                          event
+                        ) {
+                          var hideDialog = function hideDialog(_) {
+                            if (_this4.$CustomerChat_isDialogHidden) {
+                              importNamespace("sdk.DOM").setStyle(
+                                dialogIframe,
+                                "maxHeight",
+                                "0"
+                              );
+                              importNamespace("sdk.DOM").setStyle(
+                                dialogIframe,
+                                "minHeight",
+                                "0"
+                              );
+                              importDefault(
+                                "sdk.cp.Constants"
+                              ).animationEvents.forEach(
+                                function MPNConstants_animationEvents_forEach_$0(
+                                  event
+                                ) {
+                                  if (animationEventListeners[event]) {
+                                    importNamespace("DOMEventListener").remove(
+                                      dialogIframe,
+                                      event,
+                                      animationEventListeners[event]
+                                    );
+                                    delete animationEventListeners[event];
+                                  }
+                                }
+                              );
+                            }
+                          };
+                          animationEventListeners[event] = hideDialog;
+                          importNamespace("DOMEventListener").add(
+                            dialogIframe,
+                            event,
+                            hideDialog
+                          );
+                        }
+                      );
+                      this.$CustomerChat_postMessageToDialogFrame({
+                        name: "CustomerChat.isDialogHidden",
+                        params: { is_dialog_hidden: true },
+                      });
+                      this.$CustomerChat_postMessageToBubbleFrame({
+                        name: "CustomerChat.isDialogHidden",
+                        params: { is_dialog_hidden: true },
+                      });
+                    }
+                    importNamespace("sdk.Event").fire(
+                      "customerchat.dialogHide"
                     );
-                    this.$CustomerChat_postMessageToDialogFrame({
-                      name: "CustomerChat.isDialogHidden",
-                      params: { is_dialog_hidden: true }
-                    });
-                    this.$CustomerChat_postMessageToBubbleFrame({
-                      name: "CustomerChat.isDialogHidden",
-                      params: { is_dialog_hidden: true }
-                    });
-                  }
-                  importNamespace("sdk.Event").fire("customerchat.dialogHide");
-                };
+                  };
+                _proto.$CustomerChat_hideGreetingDialogIframe =
+                  function $CustomerChat_hideGreetingDialogIframe(
+                    greetingIframe
+                  ) {
+                    if (!greetingIframe) {
+                      return;
+                    }
+                    importNamespace("sdk.DOM").setStyle(
+                      greetingIframe,
+                      "maxHeight",
+                      "0"
+                    );
+                    importNamespace("sdk.DOM").setStyle(
+                      greetingIframe,
+                      "minHeight",
+                      "0"
+                    );
+                  };
+                _proto.$CustomerChat_showGreetingDialogIframe =
+                  function $CustomerChat_showGreetingDialogIframe(
+                    greetingIframe
+                  ) {
+                    if (!greetingIframe) {
+                      return;
+                    }
+                    importNamespace("sdk.DOM").setStyle(
+                      greetingIframe,
+                      "maxHeight",
+                      "calc(100% - 80px)"
+                    );
+                  };
                 return CustomerChat;
               })(importDefault("IframePluginClass"));
               exports["default"] = CustomerChat;
@@ -25629,7 +24991,6 @@ try {
               "UrlMap",
               "sdk.Observable",
               "sdk.XFBML.ChatDOM",
-              "sdk.XFBML.CustomerChat"
             ],
             function $module_sdk_XFBML_CustomerChatWrapper(
               global,
@@ -25645,23 +25006,19 @@ try {
                 HIDE: "HIDE",
                 SHOW_DIALOG: "SHOW_DIALOG",
                 HIDE_DIALOG: "HIDE_DIALOG",
-                UPDATE: "UDPATE"
+                UPDATE: "UDPATE",
               });
 
               var CustomerChatInternalEvent = new (importNamespace(
                 "sdk.Observable"
-              )).Observable();
+              ).Observable)();
 
-              var CustomerChatWrapperPlugin = function CustomerChatWrapperPlugin(
-                element,
-                ns,
-                tag,
-                attr
-              ) {
-                return new CustomerChatWrapper(element, ns, tag, attr);
-              };
+              var CustomerChatWrapperPlugin =
+                function CustomerChatWrapperPlugin(element, ns, tag, attr) {
+                  return new CustomerChatWrapper(element, ns, tag, attr);
+                };
               _c = CustomerChatWrapperPlugin;
-              var CustomerChatWrapper = (function(_Observable) {
+              var CustomerChatWrapper = (function (_Observable) {
                 babelHelpers.inheritsLoose(CustomerChatWrapper, _Observable);
 
                 function CustomerChatWrapper(element, ns, tag, attr) {
@@ -25676,38 +25033,29 @@ try {
                 var _proto = CustomerChatWrapper.prototype;
                 _proto.process = function process() {
                   var _this = this;
-                  var page_id = this.$CustomerChatWrapper_attr.page_id;
                   var uri =
-                    importNamespace("UrlMap").resolve("www") +
-                    "/plugins/customer_chat/facade_gating/";
+                    importNamespace("UrlMap").resolve("social_plugin") +
+                    "/new_domain_gating/";
                   importDefault("CORSRequest").execute(
                     uri,
                     "get",
                     {
-                      page_id: page_id
+                      page_id: this.$CustomerChatWrapper_attr.page_id,
+                      endpoint: this.$CustomerChatWrapper_tag,
                     },
 
                     function CORSRequest_execute_$3(data) {
-                      var shouldShowFacade = data.should_show_facade;
-                      if (shouldShowFacade) {
-                        _this.$CustomerChatWrapper_plugin = new (importDefault(
-                          "sdk.XFBML.ChatDOM"
-                        ))(
-                          _this.$CustomerChatWrapper_element,
-                          _this.$CustomerChatWrapper_ns,
-                          _this.$CustomerChatWrapper_tag,
-                          _this.$CustomerChatWrapper_attr
-                        );
-                      } else {
-                        _this.$CustomerChatWrapper_plugin = new (importDefault(
-                          "sdk.XFBML.CustomerChat"
-                        ))(
-                          _this.$CustomerChatWrapper_element,
-                          _this.$CustomerChatWrapper_ns,
-                          _this.$CustomerChatWrapper_tag,
-                          _this.$CustomerChatWrapper_attr
-                        );
-                      }
+                      _this.$CustomerChatWrapper_attr.should_use_new_domain =
+                        data.should_use_new_domain;
+                      _this.$CustomerChatWrapper_plugin = new (importDefault(
+                        "sdk.XFBML.ChatDOM"
+                      ))(
+                        _this.$CustomerChatWrapper_element,
+                        _this.$CustomerChatWrapper_ns,
+                        _this.$CustomerChatWrapper_tag,
+                        _this.$CustomerChatWrapper_attr
+                      );
+
                       _this.$CustomerChatWrapper_plugin.subscribe(
                         "render",
                         function _this_$CustomerChatWrapper_plugin_subscribe_$1() {
@@ -25722,7 +25070,8 @@ try {
               })(importNamespace("sdk.Observable").Observable);
               var _c;
               $RefreshReg$(_c, "CustomerChatWrapperPlugin");
-              exports.CustomerChatInternalEventType = CustomerChatInternalEventType;
+              exports.CustomerChatInternalEventType =
+                CustomerChatInternalEventType;
               exports.CustomerChatInternalEvent = CustomerChatInternalEvent;
               exports.CustomerChatWrapperPlugin = CustomerChatWrapperPlugin;
             },
@@ -25755,7 +25104,9 @@ try {
                     fbe_redirect_uri: "string",
                     fbe_scopes: "string",
                     fbe_state: "string",
-                    hide_manage_button: "bool"
+                    hide_manage_button: "bool",
+                    hide_explore_more_options: "bool",
+                    preferred_ad_options: "string",
                   };
                 },
 
@@ -25776,9 +25127,9 @@ try {
                     name: "LWIAdsCreationRootIframe",
                     root: document.body,
                     height: 300,
-                    width: 950
+                    width: 950,
                   });
-                }
+                },
               });
               var _default = LWIAdsCreation;
               exports["default"] = _default;
@@ -25811,7 +25162,7 @@ try {
                     fbe_extras: "string",
                     fbe_redirect_uri: "string",
                     fbe_scopes: "string",
-                    fbe_state: "string"
+                    fbe_state: "string",
                   };
                 },
 
@@ -25832,9 +25183,9 @@ try {
                     name: "LWIAdsInsightsRootIframe",
                     root: document.body,
                     height: 800,
-                    width: 1050
+                    width: 1050,
                   });
-                }
+                },
               });
               var _default = LWIAdsInsights;
               exports["default"] = _default;
@@ -25843,11 +25194,12 @@ try {
           );
           __d(
             "safeEval",
-            [],
+            ["sdk.Runtime", "sdk.Scribe"],
             function $module_safeEval(
               global,
               require,
-              requireDynamic,
+              importDefault,
+              importNamespace,
               requireLazy,
               module,
               exports
@@ -25867,6 +25219,14 @@ try {
                   return window[source].apply(null, args || []);
                 }
 
+                importNamespace("sdk.Scribe").log("jssdk_error", {
+                  appId: importDefault("sdk.Runtime").getClientID(),
+                  error: "USE_OF_EVAL_FUNCTION",
+                  extra: {
+                    message: "Developer used an eval function",
+                  },
+                });
+
                 return Function(
                   'return eval("' + source.replace(/\"/g, '\\"') + '");'
                 ).apply(null, args || []);
@@ -25874,7 +25234,797 @@ try {
 
               module.exports = safeEval;
             },
-            null
+            34
+          );
+          __d(
+            "sdk.SVGLogos",
+            ["guid"],
+            function $module_sdk_SVGLogos(
+              global,
+              require,
+              importDefault,
+              importNamespace,
+              requireLazy,
+              module,
+              exports
+            ) {
+              "use strict";
+
+              var fsilo =
+                "M90,212v-75h-27v-31h27v-25q0,-40 40,-40q15,0 24,2v26h-14q-16,0 -16,16v21h30l-5,31h-27v75";
+              var outera = "a106 106,0,1,0,-32 0";
+              var innera = "a106 106,1,0,1,-32 0";
+
+              function applyAttribs(target, attribs) {
+                Object.getOwnPropertyNames(attribs).forEach(function forEach_$0(
+                  p
+                ) {
+                  return target.setAttribute(p, attribs[p]);
+                });
+
+                return target;
+              }
+
+              function svgE(root, tag, attribs) {
+                var x = applyAttribs(
+                  document.createElementNS("http://www.w3.org/2000/svg", tag),
+                  attribs
+                );
+
+                root == null ? void 0 : root.appendChild(x);
+                return x;
+              }
+
+              var close = function close(attribs) {
+                var svg = svgE(
+                  null,
+                  "svg",
+                  ES(
+                    "Object",
+                    "assign",
+                    false,
+
+                    { viewBox: "0 0 100 100", preserveAspectRatio: "xMinYMin" },
+                    attribs
+                  )
+                );
+
+                svgE(svg, "line", {
+                  x1: "0",
+                  y1: "100",
+                  x2: "100",
+                  y2: "0",
+                  "stroke-width": "12",
+                });
+
+                svgE(svg, "line", {
+                  x1: "0",
+                  y1: "0",
+                  x2: "100",
+                  y2: "100",
+                  "stroke-width": "12",
+                });
+
+                return svg;
+              };
+
+              var facebook = function facebook(attribs) {
+                var svg = svgE(
+                  null,
+                  "svg",
+                  ES(
+                    "Object",
+                    "assign",
+                    false,
+
+                    { viewBox: "0 0 213 213", preserveAspectRatio: "xMinYMin" },
+                    attribs
+                  )
+                );
+
+                svgE(svg, "path", {
+                  d: fsilo + outera,
+                  class: "f_logo_circle",
+                });
+                svgE(svg, "path", { d: fsilo + innera, class: "f_logo_f" });
+                return svg;
+              };
+              var facebookWhite = function facebookWhite(attribs) {
+                var svg = svgE(
+                  null,
+                  "svg",
+                  ES(
+                    "Object",
+                    "assign",
+                    false,
+
+                    { viewBox: "0 0 213 213", preserveAspectRatio: "xMinYMin" },
+                    attribs
+                  )
+                );
+
+                svgE(svg, "path", {
+                  d: fsilo + outera,
+                  class: "f_logo_circle",
+                  fill: "white",
+                });
+
+                svgE(svg, "path", {
+                  d: fsilo + innera,
+                  class: "f_logo_f",
+                  fill: "white",
+                });
+                return svg;
+              };
+              var instagram = function instagram(attribs) {
+                var svg = svgE(
+                  null,
+                  "svg",
+                  ES(
+                    "Object",
+                    "assign",
+                    false,
+
+                    {
+                      viewBox: "-2 -2 104 104",
+                      preserveAspectRatio: "xMinYMin",
+                    },
+                    attribs
+                  )
+                );
+
+                svgE(svg, "rect", {
+                  x: "5",
+                  y: "5",
+                  width: "91",
+                  height: "91",
+                  "stroke-width": "9",
+                  rx: "23",
+                  class: "ig_logo_body",
+                });
+
+                svgE(svg, "circle", {
+                  cx: "77",
+                  cy: "23",
+                  r: "6",
+                  class: "ig_logo_flash",
+                });
+                svgE(svg, "circle", {
+                  cx: "50",
+                  cy: "50",
+                  r: "21",
+                  "stroke-width": "9",
+                  class: "ig_logo_lens",
+                });
+
+                return svg;
+              };
+              var instagramColor = function instagramColor(attribs) {
+                var maskID = importDefault("guid")();
+                var svg = svgE(
+                  null,
+                  "svg",
+                  ES(
+                    "Object",
+                    "assign",
+                    false,
+
+                    {
+                      viewBox: "-2 -2 104 104",
+                      preserveAspectRatio: "xMinYMin",
+                    },
+                    attribs
+                  )
+                );
+
+                var defs = svgE(svg, "defs", {});
+                var mask = svgE(defs, "mask", {
+                  id: maskID,
+                });
+
+                svgE(mask, "circle", {
+                  cx: "77",
+                  cy: "23",
+                  r: "6",
+                  fill: "white",
+                });
+                svgE(mask, "circle", {
+                  cx: "50",
+                  cy: "50",
+                  r: "21",
+                  "stroke-width": "9",
+                  stroke: "white",
+                });
+
+                svgE(mask, "rect", {
+                  x: "5",
+                  y: "5",
+                  width: "91",
+                  height: "91",
+                  "stroke-width": "9",
+                  rx: "23",
+                  stroke: "white",
+                  fill: "none",
+                });
+
+                var rg1 = svgE(defs, "linearGradient", {
+                  id: "purplepink",
+                  x1: "0",
+                  x2: ".15",
+                  y1: "0",
+                  y2: ".6",
+                });
+
+                svgE(rg1, "stop", {
+                  offset: "12%",
+                  "stop-color": "rgb(88,85,214)",
+                });
+                svgE(rg1, "stop", {
+                  offset: "85%",
+                  "stop-color": "rgb(215,27,122)",
+                });
+                var rg2 = svgE(defs, "radialGradient", {
+                  id: "yelloworange",
+                  cx: ".35",
+                  cy: "1",
+                  r: "2",
+                });
+
+                svgE(rg2, "stop", {
+                  offset: "7%",
+                  "stop-color": "rgb(252,215,114)",
+                });
+                svgE(rg2, "stop", {
+                  offset: "20%",
+                  "stop-color": "rgb(244,102,37)",
+                });
+                svgE(rg2, "stop", {
+                  offset: "38%",
+                  "stop-color": "rgb(225,37,122)",
+                  "stop-opacity": "0",
+                });
+
+                svgE(svg, "rect", {
+                  x: "1",
+                  y: "1",
+                  width: "99",
+                  height: "99",
+                  "stroke-width": "0",
+                  rx: "23",
+                  fill: "url(#purplepink)",
+                  style: "mask: url(#" + maskID + ")",
+                });
+
+                svgE(svg, "rect", {
+                  x: "1",
+                  y: "1",
+                  width: "99",
+                  height: "99",
+                  "stroke-width": "0",
+                  rx: "23",
+                  fill: "url(#yelloworange)",
+                  style: "mask: url(#" + maskID + ")",
+                });
+
+                return svg;
+              };
+              exports.close = close;
+              exports.facebook = facebook;
+              exports.facebookWhite = facebookWhite;
+              exports.instagram = instagram;
+              exports.instagramColor = instagramColor;
+            },
+            98
+          );
+          __d(
+            "sdk.SharedStringConstants",
+            ["sdk.fbt"],
+            function $module_sdk_SharedStringConstants(
+              global,
+              require,
+              importDefault,
+              importNamespace,
+              requireLazy,
+              module,
+              exports
+            ) {
+              "use strict";
+
+              var buttonStringsFBT = {
+                continueWith: importDefault("sdk.fbt")._(
+                  "Continue with {facebook_app_name} or {instagram_app_name}"
+                ),
+
+                continueWithShort: importDefault("sdk.fbt")._(
+                  "{facebook_app_name} or {instagram_app_name}"
+                ),
+
+                loginButtonAriaLabel: importDefault("sdk.fbt")._(
+                  "Continue with Facebook or Instagram"
+                ),
+
+                logout: importDefault("sdk.fbt")._("Logout"),
+
+                logoutButtonAriaLabel: importDefault("sdk.fbt")._(
+                  "Logout the current website"
+                ),
+
+                titleText: importDefault("sdk.fbt")._("Choose Account"),
+
+                promptText: importDefault("sdk.fbt")._(
+                  "Which account would you like to use to log in?"
+                ),
+
+                facebookText: importDefault("sdk.fbt")._(
+                  "Log in with Facebook"
+                ),
+
+                facebookTextShort: importDefault("sdk.fbt")._("Log in"),
+
+                instagramText: importDefault("sdk.fbt")._(
+                  "Log in with Instagram"
+                ),
+
+                disambiguationDialogAriaLabelText: importDefault("sdk.fbt")._(
+                  "Log in with Facebook or Instagram"
+                ),
+
+                fbButtonText: importDefault("sdk.fbt")._(
+                  "Continue with Facebook"
+                ),
+
+                igButtonText: importDefault("sdk.fbt")._(
+                  "Continue with Instagram"
+                ),
+              };
+              exports.buttonStringsFBT = buttonStringsFBT;
+            },
+            98
+          );
+          __d(
+            "sdk.XFBML.ShadowDOMLoginButton",
+            [
+              "DOMPlugin",
+              "UrlMap",
+              "sdk.Auth",
+              "sdk.Event",
+              "sdk.LoggingUtils",
+              "sdk.PluginUtils",
+              "sdk.Runtime",
+              "sdk.SVGLogos",
+              "sdk.SharedStringConstants",
+              "sdk.createIframe",
+              "sdk.ui",
+            ],
+            function $module_sdk_XFBML_ShadowDOMLoginButton(
+              global,
+              require,
+              importDefault,
+              importNamespace,
+              requireLazy,
+              module,
+              exports
+            ) {
+              var fontSize = { small: "11px", medium: "13px", large: "16px" };
+              var heightSize = { small: "20px", medium: "30px", large: "40px" };
+              var facebookToken = "{facebook_app_name}";
+              var FBLoginButtonPlugin = (function (_DOMPlugin) {
+                babelHelpers.inheritsLoose(FBLoginButtonPlugin, _DOMPlugin);
+
+                function FBLoginButtonPlugin(elem, ns, tag, attr, inParams) {
+                  var _this;
+                  _this =
+                    _DOMPlugin.call(this, elem, ns, tag, attr, inParams) ||
+                    this;
+                  _this.stateObservers = [];
+                  _this.shadowCss = ["css:fb.shadow.css.fb_login_button"];
+                  _this.container = document.createElement("div");
+                  _this.container.classList.add("fb_login_button_container");
+                  _this.container.dir = "auto";
+                  _this.loginButtonText = _this.updateLabel();
+                  _this.fbLoginButton = document.createElement("button");
+                  _this.borderRadius = _this.updateRadius(_this.params);
+
+                  _this.fbLoginButton = _this.createSingleButton(
+                    _this.loginButtonText
+                  );
+
+                  _this.createFBButton(
+                    "fb-button-main-element",
+                    importNamespace("sdk.SharedStringConstants")
+                      .buttonStringsFBT.logout,
+                    importNamespace("sdk.SharedStringConstants")
+                      .buttonStringsFBT.logoutButtonAriaLabel,
+                    setLabelContainer,
+                    function _this_createFBButton_$4(state) {
+                      this.style.display =
+                        state.status === "connected" ? "flex" : "none";
+                    },
+                    ES(
+                      function (e) {
+                        importDefault("sdk.Auth").logout();
+                        if (
+                          e &&
+                          e.detail === 0 &&
+                          this.fbLoginButton &&
+                          this.fbLoginButton.style.display !== "none"
+                        ) {
+                          this.fbLoginButton.focus();
+                        }
+                      },
+                      "bind",
+                      true,
+                      babelHelpers.assertThisInitialized(_this)
+                    )
+                  );
+                  return _this;
+                }
+                var _proto = FBLoginButtonPlugin.prototype;
+                _proto.render = function render(_root) {
+                  var _this = this;
+                  this.updateDisplay({
+                    shouldHideDisambiguation: true,
+                    status: importDefault("sdk.Runtime").getLoginStatus(),
+                  });
+
+                  importNamespace("sdk.Event").subscribe(
+                    "auth.statusChange",
+                    function Event_subscribe_$1(response) {
+                      var state = {
+                        shouldHideDisambiguation: true,
+                        status: response.status,
+                        fxApp: response.loginSource,
+                      };
+
+                      _this.updateDisplay(state);
+                    }
+                  );
+                  return this.container;
+                };
+                _proto.createSingleButton = function createSingleButton(
+                  labelText
+                ) {
+                  return this.createFBButton(
+                    "fb-button-main-element",
+                    labelText,
+                    labelText,
+                    setSingleButtonLabel,
+                    function createFBButton_$4(state) {
+                      this.style.display =
+                        state.status === "connected" ? "none" : "flex";
+                    },
+                    ES(
+                      function (e) {
+                        e.stopPropagation();
+                        importNamespace("sdk.LoggingUtils").logLoginEvent(
+                          this.params,
+                          importNamespace("sdk.LoggingUtils").logEventName
+                            .buttonClick + "_single_fb"
+                        );
+                        this.loginTrigger();
+                      },
+                      "bind",
+                      true,
+                      this
+                    )
+                  );
+                };
+                _proto.loginTrigger = function loginTrigger() {
+                  var scope = "";
+                  importDefault("sdk.ui")(
+                    {
+                      method: "permissions.oauth",
+                      display: "popup",
+                      scope: scope,
+                    },
+
+                    this.loginCb()
+                  );
+                };
+                _proto.createFBButton = function createFBButton(
+                  buttonClass,
+                  labelText,
+                  ariaLabelText,
+                  setLabel,
+
+                  updateDisplay,
+                  onClick
+                ) {
+                  var fbButton = document.createElement("button");
+                  fbButton.classList.add(buttonClass);
+                  fbButton.setAttribute("aria-label", ariaLabelText);
+                  var labelContainer = document.createElement("span");
+                  labelContainer.classList.add("fb_button_label_element");
+                  labelContainer.classList.add("fb_button_label");
+                  this.applyStyles(fbButton, this.params);
+                  if (this.use_continue_as === true) {
+                    labelContainer.append(
+                      this.createIframeOverlay(this.container, this.params)
+                    );
+                  } else {
+                    setLabel(this.params, labelText, labelContainer);
+                  }
+                  fbButton.appendChild(labelContainer);
+
+                  fbButton.addEventListener(
+                    "click",
+                    function fbButton_addEventListener_$1(event) {
+                      onClick(event);
+                      fbButton.blur();
+                    }
+                  );
+
+                  fbButton.updateDisplay = ES(
+                    updateDisplay,
+                    "bind",
+                    true,
+                    fbButton
+                  );
+                  this.stateObservers.push(fbButton);
+                  this.container.appendChild(fbButton);
+                  return fbButton;
+                };
+                _proto.loginCb = function loginCb() {
+                  var _this2 = this;
+                  return function (response) {
+                    if (
+                      response.authResponse != null &&
+                      response.status === "connected"
+                    ) {
+                      importNamespace("sdk.LoggingUtils").logLoginEvent(
+                        _this2.params,
+                        importNamespace("sdk.LoggingUtils").logEventName
+                          .loginSuccess + "_single_fb"
+                      );
+                    } else {
+                      importNamespace("sdk.LoggingUtils").logLoginEvent(
+                        _this2.params,
+                        importNamespace("sdk.LoggingUtils").logEventName
+                          .loginCancel + "_single_fb"
+                      );
+                    }
+                  };
+                };
+                _proto.updateDisplay = function updateDisplay(state) {
+                  this.stateObservers.forEach(
+                    function stateObservers_forEach_$0(comp) {
+                      return comp.updateDisplay(state);
+                    }
+                  );
+                };
+                _proto.updateLabel = function updateLabel() {
+                  var textLabel =
+                    this.params["button-type"] === "login_with"
+                      ? importNamespace("sdk.SharedStringConstants")
+                          .buttonStringsFBT.facebookText
+                      : importNamespace("sdk.SharedStringConstants")
+                          .buttonStringsFBT.fbButtonText;
+                  var loginLabel = doesTextFit(this.params, textLabel);
+
+                  if (this.params["button-type"] === "login_with") {
+                    textLabel = loginLabel
+                      ? textLabel
+                      : importNamespace("sdk.SharedStringConstants")
+                          .buttonStringsFBT.facebookTextShort;
+                  }
+                  return textLabel;
+                };
+                _proto.updateRadius = function updateRadius(params) {
+                  var _PluginUtils$getVal;
+                  var radius =
+                    (_PluginUtils$getVal = importNamespace(
+                      "sdk.PluginUtils"
+                    ).getVal(params, "layout")) != null
+                      ? _PluginUtils$getVal
+                      : "default";
+                  var sizeParams = String(
+                    importNamespace("sdk.PluginUtils").getVal(params, "size")
+                  );
+                  var size = sizeParams !== "" ? sizeParams : "small";
+                  var radiusDefault = size === "large" ? "4px" : "3px";
+
+                  return radius === "rounded" ? "20px" : radiusDefault;
+                };
+                _proto.applyStyles = function applyStyles(component, params) {
+                  var _PluginUtils$getVal2;
+                  var sizeParams = String(
+                    importNamespace("sdk.PluginUtils").getVal(params, "size")
+                  );
+                  var size = sizeParams !== "" ? sizeParams : "small";
+                  component.style.borderRadius = this.borderRadius;
+
+                  var width =
+                    (_PluginUtils$getVal2 = importNamespace(
+                      "sdk.PluginUtils"
+                    ).getVal(params, "width")) != null
+                      ? _PluginUtils$getVal2
+                      : null;
+                  component.style.width = getWidthForSize(
+                    size,
+                    width
+                  ).toString();
+
+                  component.style.fontSize = fontSize[size];
+                  component.style.height = heightSize[size];
+                  component.style.backgroundColor = "rgb(26,119,242)";
+                  component.style.color = "#fff";
+                  component.style.border = "0";
+                  component.style.fontWeight = "bold";
+                };
+                _proto.createIframeOverlay = function createIframeOverlay(
+                  container,
+                  params
+                ) {
+                  var _PluginUtils$getVal3, _PluginUtils$getVal4;
+                  var sizeParams = String(
+                    importNamespace("sdk.PluginUtils").getVal(params, "size")
+                  );
+                  var size = sizeParams !== "" ? sizeParams : "small";
+                  var appId = importDefault("sdk.Runtime").getClientID();
+                  var radiusParam = String(
+                    importNamespace("sdk.PluginUtils").getVal(params, "layout")
+                  );
+                  var radius = radiusParam !== "" ? radiusParam : "default";
+                  var widthParam =
+                    (_PluginUtils$getVal3 = importNamespace(
+                      "sdk.PluginUtils"
+                    ).getVal(params, "width")) != null
+                      ? _PluginUtils$getVal3
+                      : null;
+                  var width = getWidthForSize(size, widthParam).toString();
+                  var url =
+                    importNamespace("UrlMap").resolve("www") +
+                    ("/plugins/login_button_overlay/" +
+                      appId +
+                      "/" +
+                      width +
+                      "/" +
+                      size +
+                      "/" +
+                      radius +
+                      "/");
+                  var optArgs = {
+                    root: container,
+                    url: url,
+                    borderRadius:
+                      (_PluginUtils$getVal4 = importNamespace(
+                        "sdk.PluginUtils"
+                      ).getVal(params, "layout")) != null
+                        ? _PluginUtils$getVal4
+                        : "default",
+                    width: width,
+                  };
+
+                  var iframe = importDefault("sdk.createIframe")(optArgs);
+                  iframe.classList.add("fb-iframe-overlay");
+                  return iframe;
+                };
+                return FBLoginButtonPlugin;
+              })(importNamespace("DOMPlugin").DOMPlugin);
+
+              function getWidthForSize(sizeFromParam, width) {
+                var size = sizeFromParam != null ? sizeFromParam : "small";
+                if (width === "" || width == null) {
+                  return getMinWidthForSize(size);
+                }
+                return widthClamp(size, width);
+              }
+
+              function widthClamp(size, width) {
+                var widthAsNumber = !isNaN(width) ? Number(width) : 0;
+                var minSize = getMinWidthForSize(size);
+                var maxSize = getMaxWidthForSize(size);
+                if (widthAsNumber < getMinWidthForSize(size)) {
+                  return minSize;
+                }
+                if (widthAsNumber > getMaxWidthForSize(size)) {
+                  return maxSize;
+                }
+                return widthAsNumber;
+              }
+
+              function getMinWidthForSize(size) {
+                switch (size) {
+                  case "large":
+                    return 240;
+                  case "medium":
+                    return 200;
+                  default:
+                    return 200;
+                }
+              }
+
+              function getMaxWidthForSize(size) {
+                switch (size) {
+                  case "large":
+                    return 400;
+                  case "medium":
+                    return 320;
+                  default:
+                    return 300;
+                }
+              }
+
+              function doesTextFit(params, text) {
+                var _PluginUtils$getVal5, _PluginUtils$getVal6;
+                var textToMeasure = text.replace(
+                  /\s?{facebook_app_name}\s?/,
+                  ""
+                );
+                var width =
+                  (_PluginUtils$getVal5 = importNamespace(
+                    "sdk.PluginUtils"
+                  ).getVal(params, "width")) != null
+                    ? _PluginUtils$getVal5
+                    : null;
+                var size =
+                  (_PluginUtils$getVal6 = importNamespace(
+                    "sdk.PluginUtils"
+                  ).getVal(params, "size")) != null
+                    ? _PluginUtils$getVal6
+                    : "large";
+                var widthForSize = getWidthForSize(size, width);
+                var textWidth = getTextWidth(textToMeasure)
+                  ? getTextWidth(textToMeasure)
+                  : 0;
+                return textWidth < widthForSize;
+              }
+
+              function getTextWidth(text) {
+                var canvas =
+                  getTextWidth.canvas ||
+                  (getTextWidth.canvas = document.createElement("canvas"));
+
+                var context = canvas.getContext("2d");
+                var metrics =
+                  context == null ? void 0 : context.measureText(text);
+                return metrics == null ? void 0 : metrics.width;
+              }
+
+              function setSingleButtonLabel(params, label, labelContainer) {
+                var labelText = document.createElement("span");
+                var buttonLogo = getLogo();
+                buttonLogo.classList.add("single_button_svg_logo");
+                labelContainer.append(buttonLogo);
+                labelText.textContent = doesTextFit(params, label) ? label : "";
+                labelContainer.append(labelText);
+              }
+
+              function setLabelContainer(params, label, labelContainer) {
+                labelContainer.textContent = "";
+                var facebookLocation = label.search(facebookToken);
+                var facebookTokenEnd = facebookLocation + facebookToken.length;
+
+                var startSegmentEnd = Math.min(facebookLocation);
+                var midSegmentStart = Math.min(facebookTokenEnd);
+                var midSegmentEnd = Math.max(facebookLocation);
+                var endSegmentStart = Math.max(facebookTokenEnd);
+
+                var fbLogo = getLogo();
+
+                var startText = document.createElement("span");
+                startText.style.whiteSpace = "nowrap";
+                startText.append(label.substring(0, startSegmentEnd));
+                var midText = document.createElement("span");
+                midText.style.whiteSpace = "nowrap";
+                midText.append(label.substring(midSegmentStart, midSegmentEnd));
+                var endText = document.createElement("span");
+                endText.style.whiteSpace = "nowrap";
+                endText.append(label.substring(endSegmentStart, label.length));
+                labelContainer.append(fbLogo);
+                labelContainer.append(startText);
+                labelContainer.append(midText);
+                labelContainer.append(endText);
+              }
+
+              function getLogo() {
+                return importNamespace("sdk.SVGLogos").facebookWhite({
+                  class: "fb_button_svg_logo login_fb_logo",
+                });
+              }
+              exports["default"] = FBLoginButtonPlugin;
+            },
+            98
           );
           __d(
             "sdk.XFBML.LoginButton",
@@ -25884,6 +26034,7 @@ try {
               "guid",
               "safeEval",
               "sdk.Auth",
+              "sdk.Auth.LoginStatus",
               "sdk.Dialog",
               "sdk.ErrorHandling",
               "sdk.Impressions",
@@ -25892,9 +26043,11 @@ try {
               "sdk.Scribe",
               "sdk.UIServer",
               "sdk.XD",
+              "sdk.XFBML.ShadowDOMLoginButton",
               "sdk.feature",
               "sdk.getContextType",
-              "sdk.ui"
+              "sdk.modFeatureCheck",
+              "sdk.ui",
             ],
             function $module_sdk_XFBML_LoginButton(
               global,
@@ -25945,8 +26098,8 @@ try {
                       method: "loginComplete",
                       params: ES("JSON", "stringify", false, {
                         frame_name: call.id,
-                        status: importDefault("sdk.Runtime").getLoginStatus()
-                      })
+                        status: importDefault("sdk.Runtime").getLoginStatus(),
+                      }),
                     });
                   }
 
@@ -25959,21 +26112,48 @@ try {
                 );
                 if (call != null) {
                   call.dims = {};
+
                   call.dims.screenX = window.screenX;
+
                   call.dims.screenY = window.screenY;
+
                   call.dims.outerWidth = window.outerWidth;
+
                   call.dims.outerHeight = window.outerHeight;
+
                   call.dims.screenWidth = window.screen.width;
                 }
 
                 importNamespace("sdk.XD").sendToFacebook(iframe_name, {
                   method: "loginButtonStateInit",
-                  params: ES("JSON", "stringify", false, { call: call })
+                  params: ES("JSON", "stringify", false, { call: call }),
                 });
               }
 
               var LoginButton = importDefault("IframePlugin").extend({
                 constructor: function constructor(elem, ns, tag, attr) {
+                  if (
+                    (importNamespace("sdk.modFeatureCheck").forIDs(
+                      "allow_shadow_dom_for_apps_with_id",
+                      [importDefault("sdk.Runtime").getClientID()]
+                    ) ||
+                      (attr["data-shadow-test"] != null &&
+                        attr["data-shadow-test"] === "true")) &&
+                    importDefault("sdk.feature")("allow_shadow_dom", false) ===
+                      true &&
+                    attr["data-use-continue-as"] !== "true"
+                  ) {
+                    return new (importDefault(
+                      "sdk.XFBML.ShadowDOMLoginButton"
+                    ))(elem, ns, tag, attr, {
+                      width: "string",
+                      size: "string",
+                      "button-type": "string",
+                      layout: "string",
+                      "auto-logout-link": "bool",
+                      "use-continue-as": "bool",
+                    });
+                  }
                   if (location.protocol !== "https:") {
                     var httpsWarning =
                       "The Login Button plugin no longer works on http pages. " +
@@ -25996,8 +26176,8 @@ try {
                         appId: importDefault("sdk.Runtime").getClientID(),
                         error: "HttpsOnly",
                         extra: {
-                          message: "LoginButton"
-                        }
+                          message: "LoginButton",
+                        },
                       });
                     }
                   }
@@ -26032,7 +26212,7 @@ try {
                     invokeHandler(cb, null, [response]);
                     importNamespace("sdk.XD").sendToFacebook(iframeName, {
                       method: "loginReload",
-                      params: ES("JSON", "stringify", false, response)
+                      params: ES("JSON", "stringify", false, response),
                     });
                   };
 
@@ -26044,7 +26224,7 @@ try {
                         function ui_$1(response) {
                           importNamespace("sdk.XD").sendToFacebook(iframeName, {
                             method: "loginComplete",
-                            params: "{}"
+                            params: "{}",
                           });
 
                           dialog_open_cb(response);
@@ -26087,57 +26267,59 @@ try {
                     }
                   );
 
-                  this.subscribe("xd.login_button_click", function subscribe_$1(
-                    msg
-                  ) {
-                    var params = ES("JSON", "parse", false, msg.params);
-                    if (params.popup) {
-                      if (importDefault("sdk.feature")("e2e_tracking", true)) {
-                        var dialog = importDefault("sdk.Dialog").get(
-                          params.call.id
-                        );
-                        dialog.subscribe(
-                          "e2e:end",
-                          function dialog_subscribe_$1(events) {
-                            events.method = params.call.params.method;
-                            events.display = params.call.params.display;
-                            importNamespace("Log").debug(
-                              "e2e: %s",
-                              ES("JSON", "stringify", false, events)
-                            );
+                  this.subscribe(
+                    "xd.login_button_click",
+                    function subscribe_$1(msg) {
+                      var params = ES("JSON", "parse", false, msg.params);
+                      if (params.popup) {
+                        if (
+                          importDefault("sdk.feature")("e2e_tracking", true)
+                        ) {
+                          var dialog = importDefault("sdk.Dialog").get(
+                            params.call.id
+                          );
+                          dialog.subscribe(
+                            "e2e:end",
+                            function dialog_subscribe_$1(events) {
+                              events.method = params.call.params.method;
+                              events.display = params.call.params.display;
+                              importNamespace("Log").debug(
+                                "e2e: %s",
+                                ES("JSON", "stringify", false, events)
+                              );
 
-                            importNamespace("sdk.Impressions").log(114, {
-                              payload: events
-                            });
-                          }
-                        );
-                      }
-                    } else {
-                      if (
-                        importDefault("sdk.feature")(
-                          "popup_blocker_scribe_logging",
-                          true
-                        )
-                      ) {
-                        importNamespace("sdk.Scribe").log("jssdk_error", {
-                          appId: importDefault("sdk.Runtime").getClientID(),
-                          error: "POPUP_MAYBE_BLOCKED_NEW",
-                          extra: {
-                            call: params.call.name
-                          }
-                        });
+                              importNamespace("sdk.Impressions").log(114, {
+                                payload: events,
+                              });
+                            }
+                          );
+                        }
+                      } else {
+                        if (
+                          importDefault("sdk.feature")(
+                            "popup_blocker_scribe_logging",
+                            true
+                          )
+                        ) {
+                          importNamespace("sdk.Scribe").log("jssdk_error", {
+                            appId: importDefault("sdk.Runtime").getClientID(),
+                            error: "POPUP_MAYBE_BLOCKED_NEW",
+                            extra: {
+                              call: params.call.name,
+                            },
+                          });
+                        }
                       }
                     }
-                  });
+                  );
 
                   var refreshCb = function refreshCb() {
                     invokeHandler(cb, null, [
                       {
                         status: importDefault("sdk.Runtime").getLoginStatus(),
-                        authResponse: importDefault(
-                          "sdk.Auth"
-                        ).getAuthResponse()
-                      }
+                        authResponse:
+                          importDefault("sdk.Auth").getAuthResponse(),
+                      },
                     ]);
                   };
 
@@ -26146,7 +26328,10 @@ try {
                   this.subscribe(
                     "xd.login_button_popup_closed",
                     function subscribe_$1() {
-                      importDefault("sdk.Auth").getLoginStatus(refreshCb, true);
+                      importDefault("sdk.Auth.LoginStatus").getLoginStatus(
+                        refreshCb,
+                        true
+                      );
                     }
                   );
                 },
@@ -26179,9 +26364,10 @@ try {
                     height: "px",
                     force_confirmation: "bool",
                     messenger_page_id: "string",
-                    reset_messenger_state: "bool"
+                    reset_messenger_state: "bool",
+                    config_id: "string",
                   };
-                }
+                },
               });
               var _default = LoginButton;
               exports["default"] = _default;
@@ -26189,105 +26375,9 @@ try {
             98
           );
           __d(
-            "isNode",
-            [],
-            function $module_isNode(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports
-            ) {
-              function isNode(object) {
-                var _object$ownerDocument, _doc$defaultView;
-                var doc =
-                  object != null
-                    ? (_object$ownerDocument = object.ownerDocument) != null
-                      ? _object$ownerDocument
-                      : object
-                    : document;
-                var defaultView =
-                  (_doc$defaultView = doc.defaultView) != null
-                    ? _doc$defaultView
-                    : window;
-                return !!(
-                  object != null &&
-                  (typeof defaultView.Node === "function"
-                    ? object instanceof defaultView.Node
-                    : typeof object === "object" &&
-                      typeof object.nodeType === "number" &&
-                      typeof object.nodeName === "string")
-                );
-              }
-              exports["default"] = isNode;
-            },
-            66
-          );
-          __d(
-            "isTextNode",
-            ["isNode"],
-            function $module_isTextNode(
-              global,
-              require,
-              importDefault,
-              importNamespace,
-              requireLazy,
-              module,
-              exports
-            ) {
-              function isTextNode(object) {
-                return importDefault("isNode")(object) && object.nodeType == 3;
-              }
-              exports["default"] = isTextNode;
-            },
-            98
-          );
-          __d(
-            "containsNode",
-            ["isTextNode"],
-            function $module_containsNode(
-              global,
-              require,
-              importDefault,
-              importNamespace,
-              requireLazy,
-              module,
-              exports
-            ) {
-              function containsNode(outerNode, innerNode) {
-                if (!outerNode || !innerNode) {
-                  return false;
-                } else if (outerNode === innerNode) {
-                  return true;
-                } else if (importDefault("isTextNode")(outerNode)) {
-                  return false;
-                } else if (importDefault("isTextNode")(innerNode)) {
-                  return containsNode(outerNode, innerNode.parentNode);
-                } else if ("contains" in outerNode) {
-                  return outerNode.contains(innerNode);
-                } else if (outerNode.compareDocumentPosition) {
-                  return !!(outerNode.compareDocumentPosition(innerNode) & 16);
-                } else {
-                  return false;
-                }
-              }
-              exports["default"] = containsNode;
-            },
-            98
-          );
-          __d(
-            "sdk.XFBML.Quote",
-            [
-              "DOMEventListener",
-              "IframePlugin",
-              "containsNode",
-              "sdk.DOM",
-              "sdk.UA",
-              "sdk.XD",
-              "sdk.feature"
-            ],
-            function $module_sdk_XFBML_Quote(
+            "sdk.XFBML.MessengerCheckbox",
+            ["FB", "IframePluginClass", "Log", "PluginAttrTypes", "sdk.XD"],
+            function $module_sdk_XFBML_MessengerCheckbox(
               global,
               require,
               importDefault,
@@ -26298,207 +26388,318 @@ try {
             ) {
               "use strict";
 
-              var QUOTABLE_CLASS_NAME = "fb-quotable";
-              var PLUGIN_WIDTH = 155;
-              var PLUGIN_HEIGHT = 70;
+              function getIframeNameByParams(_ref) {
+                var app_id = _ref.app_id,
+                  page_id = _ref.page_id,
+                  user_ref = _ref.user_ref;
+                var selector =
+                  '[page_id="' +
+                  page_id +
+                  '"][messenger_app_id="' +
+                  app_id +
+                  '"][user_ref="' +
+                  user_ref +
+                  '"] iframe';
+                var element = document.querySelector(selector);
 
-              var selection = "";
-              var singleton = null;
-              var quotableAreas = [];
-              var forceShow = false;
-              var xfbmlElement = null;
-              var isMobile = importDefault("sdk.UA").mobile();
-
-              function getSelectionParent(selectionObject) {
-                var range = selectionObject.getRangeAt(0);
-                var container = range.startContainer;
-
-                return container.nodeType === 3
-                  ? container.parentNode
-                  : container;
+                return (
+                  (element == null ? void 0 : element.getAttribute("name")) ||
+                  null
+                );
               }
 
-              function handleSelection() {
-                if (!document.getSelection || isMobile) {
-                  return;
-                }
-                var selectionObject = document.getSelection();
-                if (selectionObject.rangeCount === 0) {
-                  clearSelection();
-                  return;
-                }
-                var areasLength = quotableAreas.length;
-                clearSelection();
+              importDefault("FB").provide("CheckboxPlugin", {
+                confirm: function confirm(params) {
+                  var app_id = params.app_id,
+                    page_id = params.page_id,
+                    user_ref = params.user_ref;
+                  var iframeName = getIframeNameByParams(params);
 
-                if (areasLength) {
-                  var areaMatch = false;
-                  for (var i = 0; i < areasLength; i++) {
-                    if (
-                      importDefault("containsNode")(
-                        quotableAreas[i],
-                        selectionObject.focusNode
-                      )
-                    ) {
-                      areaMatch = true;
-                      break;
-                    }
-                  }
-                  if (!areaMatch) {
+                  if (app_id == null) {
+                    importNamespace("Log").warn(
+                      "app_id is a required parameter."
+                    );
                     return;
                   }
-                }
 
-                selection = selectionObject.toString();
-                if (selection === "") {
-                  clearSelection();
-                  return;
-                }
-
-                selection = selection
-                  .toString()
-                  .replace(/\s+/g, " ")
-                  .trim();
-
-                var selectionLimit = Number(
-                  importDefault("sdk.feature")("sharequotelimit", 500)
-                );
-                var selectionArray = selection.split("");
-                if (selectionArray.length > selectionLimit) {
-                  var truncate = selectionArray;
-                  truncate.length = selectionLimit - 3;
-                  selection = truncate.join("") + "...";
-                }
-
-                if (!forceShow && xfbmlElement) {
-                  var _getSelectionParent;
-
-                  (_getSelectionParent = getSelectionParent(selectionObject)) ==
-                  null
-                    ? void 0
-                    : _getSelectionParent.appendChild(xfbmlElement);
-
-                  var flyoutPosition = getFlyoutPosition(selectionObject);
-                  xfbmlElement.style.left = flyoutPosition.x + "px";
-                  xfbmlElement.style.top = flyoutPosition.y + "px";
-                }
-              }
-
-              function getFlyoutPosition(selectionObject) {
-                var _measuringStartSpan$p, _measuringEndSpan$par;
-                var sizedPlugin = xfbmlElement && xfbmlElement.offsetWidth;
-                var pluginHeight =
-                  sizedPlugin !== null && xfbmlElement
-                    ? xfbmlElement.offsetHeight
-                    : PLUGIN_HEIGHT;
-                var pluginWidth =
-                  sizedPlugin !== null && xfbmlElement
-                    ? xfbmlElement.offsetWidth
-                    : PLUGIN_WIDTH;
-                var range = selectionObject.getRangeAt(0);
-                var measuringStartSpan = document.createElement("span");
-                var measuringEndSpan = document.createElement("span");
-                var tmpStartRange = document.createRange();
-                tmpStartRange.setStart(range.startContainer, range.startOffset);
-                tmpStartRange.insertNode(measuringStartSpan);
-                var tmpEndRange = document.createRange();
-                tmpEndRange.setStart(range.endContainer, range.endOffset);
-                tmpEndRange.insertNode(measuringEndSpan);
-                var y = measuringStartSpan.offsetTop - pluginHeight;
-                var x =
-                  measuringStartSpan.offsetLeft +
-                  (measuringEndSpan.offsetLeft -
-                    measuringStartSpan.offsetLeft) /
-                    2 -
-                  pluginWidth / 2;
-                (_measuringStartSpan$p = measuringStartSpan.parentNode) == null
-                  ? void 0
-                  : _measuringStartSpan$p.removeChild(measuringStartSpan);
-                (_measuringEndSpan$par = measuringEndSpan.parentNode) == null
-                  ? void 0
-                  : _measuringEndSpan$par.removeChild(measuringEndSpan);
-                return { x: x, y: y };
-              }
-
-              function clearSelection() {
-                selection = "";
-                if (!forceShow && xfbmlElement) {
-                  xfbmlElement.style.left = "-9999px";
-                }
-              }
-
-              var Quote = importDefault("IframePlugin").extend({
-                constructor: function constructor(elem, ns, tag, attr) {
-                  var _this = this;
-                  if (singleton) {
-                    return singleton;
+                  if (page_id == null) {
+                    importNamespace("Log").warn(
+                      "page_id is a required parameter."
+                    );
+                    return;
                   }
 
-                  this.parent(elem, ns, tag, attr);
-                  forceShow =
-                    importNamespace("sdk.DOM").getAttr(elem, "layout") ===
-                    "button";
-                  xfbmlElement = elem;
+                  if (user_ref == null) {
+                    importNamespace("Log").warn(
+                      "user_ref is a required parameter."
+                    );
+                    return;
+                  }
 
-                  xfbmlElement.style.position = "absolute";
-                  xfbmlElement.style.display = "";
+                  if (iframeName == null) {
+                    importNamespace("Log").warn(
+                      "No matching checkbox for the app_id, page_id, and user_ref given."
+                    );
 
-                  importDefault("DOMEventListener").add(
-                    document,
-                    "keyup",
-                    handleSelection
+                    return;
+                  }
+
+                  importNamespace("sdk.XD").sendToFacebook(iframeName, {
+                    method: "confirmCheckboxSubmission",
+                    params: params,
+                  });
+                },
+              });
+              var MessengerCheckbox = (function (_IframePluginClass) {
+                babelHelpers.inheritsLoose(
+                  MessengerCheckbox,
+                  _IframePluginClass
+                );
+                function MessengerCheckbox(elem, ns, tag, attr) {
+                  return (
+                    _IframePluginClass.call(this, elem, ns, tag, attr, {
+                      fluid: true,
+                      full_width: true,
+                      mobile_fullsize: false,
+                    }) || this
                   );
-                  importDefault("DOMEventListener").add(
-                    document,
-                    "mouseup",
-                    handleSelection
-                  );
+                }
+                var _proto = MessengerCheckbox.prototype;
+                _proto.getParams = function getParams() {
+                  return {
+                    messenger_app_id: importNamespace("PluginAttrTypes").string,
+                    page_id: importNamespace("PluginAttrTypes").string,
+                    pixel_id: importNamespace("PluginAttrTypes").string,
+                    prechecked: importNamespace("PluginAttrTypes").bool,
+                    allow_login: importNamespace("PluginAttrTypes").bool,
+                    size: importNamespace("PluginAttrTypes").string,
+                    origin: importNamespace("PluginAttrTypes").string,
+                    user_ref: importNamespace("PluginAttrTypes").string,
+                    identity_match: importNamespace("PluginAttrTypes").string,
+                    center_align: importNamespace("PluginAttrTypes").bool,
+                    opt_in_type: importNamespace("PluginAttrTypes").string,
+                    promotional_frequency:
+                      importNamespace("PluginAttrTypes").string,
+                    promotional_topic:
+                      importNamespace("PluginAttrTypes").string,
+                  };
+                };
+                return MessengerCheckbox;
+              })(importDefault("IframePluginClass"));
+              exports["default"] = MessengerCheckbox;
+            },
+            98
+          );
+          __d(
+            "sdk.XFBML.MessengerCheckboxWrapper",
+            [
+              "CORSRequest",
+              "UrlMap",
+              "sdk.Observable",
+              "sdk.XFBML.MessengerCheckbox",
+            ],
+            function $module_sdk_XFBML_MessengerCheckboxWrapper(
+              global,
+              require,
+              importDefault,
+              importNamespace,
+              requireLazy,
+              module,
+              exports
+            ) {
+              var MessengerCheckboxWrapperPlugin =
+                function MessengerCheckboxWrapperPlugin(
+                  element,
+                  ns,
+                  tag,
+                  attr
+                ) {
+                  return new MessengerCheckboxWrapper(element, ns, tag, attr);
+                };
+              _c = MessengerCheckboxWrapperPlugin;
+              var MessengerCheckboxWrapper = (function (_Observable) {
+                babelHelpers.inheritsLoose(
+                  MessengerCheckboxWrapper,
+                  _Observable
+                );
 
-                  this.subscribe(
-                    "xd.getTextSelection",
-                    function subscribe_$1() {
-                      importDefault("sdk.XD").sendToFacebook(
-                        _this._iframeOptions.name,
-                        {
-                          method: "setTextSelection",
-                          params: ES("JSON", "stringify", false, {
-                            text: selection
-                          })
+                function MessengerCheckboxWrapper(element, ns, tag, attr) {
+                  var _this;
+                  _this = _Observable.call(this) || this;
+                  _this.$MessengerCheckboxWrapper_element = element;
+                  _this.$MessengerCheckboxWrapper_ns = ns;
+                  _this.$MessengerCheckboxWrapper_tag = tag;
+                  _this.$MessengerCheckboxWrapper_attr = attr;
+                  return _this;
+                }
+                var _proto = MessengerCheckboxWrapper.prototype;
+                _proto.process = function process() {
+                  var _this = this;
+                  var uri =
+                    importNamespace("UrlMap").resolve("social_plugin") +
+                    "/new_domain_gating/";
+                  importDefault("CORSRequest").execute(
+                    uri,
+                    "get",
+                    {
+                      page_id: this.$MessengerCheckboxWrapper_attr.page_id,
+                      endpoint: this.$MessengerCheckboxWrapper_tag,
+                    },
+
+                    function CORSRequest_execute_$3(data) {
+                      _this.$MessengerCheckboxWrapper_attr.should_use_new_domain =
+                        data.should_use_new_domain;
+                      _this.$MessengerCheckboxWrapper_plugin =
+                        new (importDefault("sdk.XFBML.MessengerCheckbox"))(
+                          _this.$MessengerCheckboxWrapper_element,
+                          _this.$MessengerCheckboxWrapper_ns,
+                          _this.$MessengerCheckboxWrapper_tag,
+                          _this.$MessengerCheckboxWrapper_attr
+                        );
+
+                      _this.$MessengerCheckboxWrapper_plugin.subscribe(
+                        "render",
+                        function _this_$MessengerCheckboxWrapper_plugin_subscribe_$1() {
+                          _this.inform("render");
                         }
                       );
-
-                      clearSelection();
+                      _this.$MessengerCheckboxWrapper_plugin.process();
                     }
                   );
-
-                  quotableAreas = ES(
-                    "Array",
-                    "from",
-                    false,
-                    document.getElementsByTagName("*")
-                  ).filter(function filter_$0(element) {
-                    return (
-                      element.nodeName.toLowerCase() === "article" ||
-                      importNamespace("sdk.DOM").containsCss(
-                        element,
-                        QUOTABLE_CLASS_NAME
-                      )
-                    );
-                  });
-
-                  clearSelection();
-
-                  singleton = this;
-                  return singleton;
-                },
-
-                getParams: function getParams() {
-                  return {
-                    href: "url",
-                    layout: "string"
-                  };
+                };
+                return MessengerCheckboxWrapper;
+              })(importNamespace("sdk.Observable").Observable);
+              var _default = MessengerCheckboxWrapperPlugin;
+              var _c;
+              $RefreshReg$(_c, "MessengerCheckboxWrapperPlugin");
+              exports["default"] = _default;
+            },
+            98
+          );
+          __d(
+            "sdk.XFBML.MessengerMessageUs",
+            ["IframePluginClass", "PluginAttrTypes"],
+            function $module_sdk_XFBML_MessengerMessageUs(
+              global,
+              require,
+              importDefault,
+              importNamespace,
+              requireLazy,
+              module,
+              exports
+            ) {
+              "use strict";
+              var MessengerMessageUs = (function (_IframePluginClass) {
+                babelHelpers.inheritsLoose(
+                  MessengerMessageUs,
+                  _IframePluginClass
+                );
+                function MessengerMessageUs(elem, ns, tag, attr) {
+                  return (
+                    _IframePluginClass.call(this, elem, ns, tag, attr, {
+                      fluid: false,
+                      full_width: false,
+                      mobile_fullsize: true,
+                    }) || this
+                  );
                 }
-              });
-              var _default = Quote;
+                var _proto = MessengerMessageUs.prototype;
+                _proto.getParams = function getParams() {
+                  return {
+                    messenger_app_id: importNamespace("PluginAttrTypes").string,
+                    page_id: importNamespace("PluginAttrTypes").string,
+                    color: importNamespace("PluginAttrTypes").string,
+                    size: importNamespace("PluginAttrTypes").string,
+                  };
+                };
+                return MessengerMessageUs;
+              })(importDefault("IframePluginClass"));
+              exports["default"] = MessengerMessageUs;
+            },
+            98
+          );
+          __d(
+            "sdk.XFBML.MessengerMessageUsWrapper",
+            [
+              "CORSRequest",
+              "UrlMap",
+              "sdk.Observable",
+              "sdk.XFBML.MessengerMessageUs",
+            ],
+            function $module_sdk_XFBML_MessengerMessageUsWrapper(
+              global,
+              require,
+              importDefault,
+              importNamespace,
+              requireLazy,
+              module,
+              exports
+            ) {
+              var MessengerMessageUsWrapperPlugin =
+                function MessengerMessageUsWrapperPlugin(
+                  element,
+                  ns,
+                  tag,
+                  attr
+                ) {
+                  return new MessengerMessageUsWrapper(element, ns, tag, attr);
+                };
+              _c = MessengerMessageUsWrapperPlugin;
+              var MessengerMessageUsWrapper = (function (_Observable) {
+                babelHelpers.inheritsLoose(
+                  MessengerMessageUsWrapper,
+                  _Observable
+                );
+
+                function MessengerMessageUsWrapper(element, ns, tag, attr) {
+                  var _this;
+                  _this = _Observable.call(this) || this;
+                  _this.$MessengerMessageUsWrapper_element = element;
+                  _this.$MessengerMessageUsWrapper_ns = ns;
+                  _this.$MessengerMessageUsWrapper_tag = tag;
+                  _this.$MessengerMessageUsWrapper_attr = attr;
+                  return _this;
+                }
+                var _proto = MessengerMessageUsWrapper.prototype;
+                _proto.process = function process() {
+                  var _this = this;
+                  var uri =
+                    importNamespace("UrlMap").resolve("social_plugin") +
+                    "/new_domain_gating/";
+                  importDefault("CORSRequest").execute(
+                    uri,
+                    "get",
+                    {
+                      page_id: this.$MessengerMessageUsWrapper_attr.page_id,
+                      endpoint: this.$MessengerMessageUsWrapper_tag,
+                    },
+
+                    function CORSRequest_execute_$3(data) {
+                      _this.$MessengerMessageUsWrapper_attr.should_use_new_domain =
+                        data.should_use_new_domain;
+                      _this.$MessengerMessageUsWrapper_plugin =
+                        new (importDefault("sdk.XFBML.MessengerMessageUs"))(
+                          _this.$MessengerMessageUsWrapper_element,
+                          _this.$MessengerMessageUsWrapper_ns,
+                          _this.$MessengerMessageUsWrapper_tag,
+                          _this.$MessengerMessageUsWrapper_attr
+                        );
+
+                      _this.$MessengerMessageUsWrapper_plugin.subscribe(
+                        "render",
+                        function _this_$MessengerMessageUsWrapper_plugin_subscribe_$1() {
+                          _this.inform("render");
+                        }
+                      );
+                      _this.$MessengerMessageUsWrapper_plugin.process();
+                    }
+                  );
+                };
+                return MessengerMessageUsWrapper;
+              })(importNamespace("sdk.Observable").Observable);
+              var _default = MessengerMessageUsWrapperPlugin;
+              var _c;
+              $RefreshReg$(_c, "MessengerMessageUsWrapperPlugin");
               exports["default"] = _default;
             },
             98
@@ -26515,7 +26716,7 @@ try {
               "sdk.Runtime",
               "sdk.UA",
               "sdk.XD",
-              "sdk.createIframe"
+              "sdk.createIframe",
             ],
             function $module_sdk_XFBML_Save(
               global,
@@ -26556,9 +26757,10 @@ try {
                       };
 
                       if (isMobile) {
-                        darkOverlay = importNamespace(
-                          "sdk.DialogUtils"
-                        ).setupNewDarkOverlay();
+                        darkOverlay =
+                          importNamespace(
+                            "sdk.DialogUtils"
+                          ).setupNewDarkOverlay();
                         hide(darkOverlay);
                         importNamespace("sdk.Content").append(darkOverlay);
                         importNamespace("sdk.DialogUtils").addDoubleClickAction(
@@ -26712,16 +26914,15 @@ try {
                   fromIframe
                 ) {
                   var _this2 = this;
-                  var created = importNamespace(
-                    "sdk.DialogUtils"
-                  ).setupNewDialog();
+                  var created =
+                    importNamespace("sdk.DialogUtils").setupNewDialog();
 
                   var onloadFunc = function onloadFunc() {
                     importNamespace("sdk.XD").sendToFacebook(fromIframe, {
                       method: "saveOverlayIFrameAck",
                       params: ES("JSON", "stringify", false, {
-                        name: "overlay_" + _this2._iframeOptions.name
-                      })
+                        name: "overlay_" + _this2._iframeOptions.name,
+                      }),
                     });
                   };
 
@@ -26732,7 +26933,7 @@ try {
                     root: created.contentRoot,
                     tabindex: -1,
 
-                    onload: ES(onloadFunc, "bind", true, this)
+                    onload: ES(onloadFunc, "bind", true, this),
                   });
 
                   importNamespace("sdk.DOM").addCss(
@@ -26777,11 +26978,134 @@ try {
                   return {
                     uri: "url",
                     url_category: "string",
-                    size: "string"
+                    size: "string",
                   };
-                }
+                },
               });
               var _default = Save;
+              exports["default"] = _default;
+            },
+            98
+          );
+          __d(
+            "sdk.XFBML.SendToMessenger",
+            ["IframePluginClass", "PluginAttrTypes"],
+            function $module_sdk_XFBML_SendToMessenger(
+              global,
+              require,
+              importDefault,
+              importNamespace,
+              requireLazy,
+              module,
+              exports
+            ) {
+              "use strict";
+              var SendToMessenger = (function (_IframePluginClass) {
+                babelHelpers.inheritsLoose(SendToMessenger, _IframePluginClass);
+                function SendToMessenger(elem, ns, tag, attr) {
+                  return (
+                    _IframePluginClass.call(this, elem, ns, tag, attr, {
+                      fluid: false,
+                      full_width: false,
+                      mobile_fullsize: true,
+                    }) || this
+                  );
+                }
+                var _proto = SendToMessenger.prototype;
+                _proto.getParams = function getParams() {
+                  return {
+                    messenger_app_id: importNamespace("PluginAttrTypes").string,
+                    page_id: importNamespace("PluginAttrTypes").string,
+                    color: importNamespace("PluginAttrTypes").string,
+                    size: importNamespace("PluginAttrTypes").string,
+                    enforce_login: importNamespace("PluginAttrTypes").bool,
+                    identity_match: importNamespace("PluginAttrTypes").string,
+                    origin: importNamespace("PluginAttrTypes").string,
+                    cta_text: importNamespace("PluginAttrTypes").string,
+                    allow_login: importNamespace("PluginAttrTypes").bool,
+                  };
+                };
+                return SendToMessenger;
+              })(importDefault("IframePluginClass"));
+              exports["default"] = SendToMessenger;
+            },
+            98
+          );
+          __d(
+            "sdk.XFBML.SendToMessengerWrapper",
+            [
+              "CORSRequest",
+              "UrlMap",
+              "sdk.Observable",
+              "sdk.XFBML.SendToMessenger",
+            ],
+            function $module_sdk_XFBML_SendToMessengerWrapper(
+              global,
+              require,
+              importDefault,
+              importNamespace,
+              requireLazy,
+              module,
+              exports
+            ) {
+              var SendToMessengerWrapperPlugin =
+                function SendToMessengerWrapperPlugin(element, ns, tag, attr) {
+                  return new SendToMessengerWrapper(element, ns, tag, attr);
+                };
+              _c = SendToMessengerWrapperPlugin;
+              var SendToMessengerWrapper = (function (_Observable) {
+                babelHelpers.inheritsLoose(SendToMessengerWrapper, _Observable);
+
+                function SendToMessengerWrapper(element, ns, tag, attr) {
+                  var _this;
+                  _this = _Observable.call(this) || this;
+                  _this.$SendToMessengerWrapper_element = element;
+                  _this.$SendToMessengerWrapper_ns = ns;
+                  _this.$SendToMessengerWrapper_tag = tag;
+                  _this.$SendToMessengerWrapper_attr = attr;
+                  return _this;
+                }
+                var _proto = SendToMessengerWrapper.prototype;
+                _proto.process = function process() {
+                  var _this = this;
+                  var uri =
+                    importNamespace("UrlMap").resolve("social_plugin") +
+                    "/new_domain_gating/";
+                  importDefault("CORSRequest").execute(
+                    uri,
+                    "get",
+                    {
+                      page_id: this.$SendToMessengerWrapper_attr.page_id,
+                      endpoint: this.$SendToMessengerWrapper_tag,
+                    },
+
+                    function CORSRequest_execute_$3(data) {
+                      _this.$SendToMessengerWrapper_attr.should_use_new_domain =
+                        data.should_use_new_domain;
+                      _this.$SendToMessengerWrapper_plugin = new (importDefault(
+                        "sdk.XFBML.SendToMessenger"
+                      ))(
+                        _this.$SendToMessengerWrapper_element,
+                        _this.$SendToMessengerWrapper_ns,
+                        _this.$SendToMessengerWrapper_tag,
+                        _this.$SendToMessengerWrapper_attr
+                      );
+
+                      _this.$SendToMessengerWrapper_plugin.subscribe(
+                        "render",
+                        function _this_$SendToMessengerWrapper_plugin_subscribe_$1() {
+                          _this.inform("render");
+                        }
+                      );
+                      _this.$SendToMessengerWrapper_plugin.process();
+                    }
+                  );
+                };
+                return SendToMessengerWrapper;
+              })(importNamespace("sdk.Observable").Observable);
+              var _default = SendToMessengerWrapperPlugin;
+              var _c;
+              $RefreshReg$(_c, "SendToMessengerWrapperPlugin");
               exports["default"] = _default;
             },
             98
@@ -26811,9 +27135,9 @@ try {
                     layout: "string",
                     mobile_iframe: "bool",
                     type: "string",
-                    size: "string"
+                    size: "string",
                   };
-                }
+                },
               });
               var _default = ShareButton;
               exports["default"] = _default;
@@ -26827,7 +27151,7 @@ try {
               "IframePlugin",
               "ObservableMixin",
               "sdk.Event",
-              "sdk.XD"
+              "sdk.XD",
             ],
             function $module_sdk_XFBML_Video(
               global,
@@ -26838,7 +27162,7 @@ try {
               module,
               exports
             ) {
-              var VideoCache = (function() {
+              var VideoCache = (function () {
                 function VideoCache(initData) {
                   this.$VideoCache_isMuted = initData.isMuted;
                   this.$VideoCache_volume = initData.volume;
@@ -26874,8 +27198,13 @@ try {
                 };
                 return VideoCache;
               })();
-              var VideoController = (function() {
-                function VideoController(iframeName, observableMixin, cache) {
+              var VideoController = (function () {
+                function VideoController(
+                  iframeName,
+
+                  observableMixin,
+                  cache
+                ) {
                   this.$VideoController_iframeName = iframeName;
                   this.$VideoController_sharedObservable = observableMixin;
                   this.$VideoController_cache = cache;
@@ -26886,7 +27215,7 @@ try {
                     this.$VideoController_iframeName,
                     {
                       method: "play",
-                      params: ES("JSON", "stringify", false, {})
+                      params: ES("JSON", "stringify", false, {}),
                     }
                   );
                 };
@@ -26895,7 +27224,7 @@ try {
                     this.$VideoController_iframeName,
                     {
                       method: "pause",
-                      params: ES("JSON", "stringify", false, {})
+                      params: ES("JSON", "stringify", false, {}),
                     }
                   );
                 };
@@ -26906,8 +27235,8 @@ try {
                     {
                       method: "seek",
                       params: ES("JSON", "stringify", false, {
-                        target: target
-                      })
+                        target: target,
+                      }),
                     }
                   );
                 };
@@ -26916,7 +27245,7 @@ try {
                     this.$VideoController_iframeName,
                     {
                       method: "mute",
-                      params: ES("JSON", "stringify", false, {})
+                      params: ES("JSON", "stringify", false, {}),
                     }
                   );
                 };
@@ -26925,7 +27254,7 @@ try {
                     this.$VideoController_iframeName,
                     {
                       method: "unmute",
-                      params: ES("JSON", "stringify", false, {})
+                      params: ES("JSON", "stringify", false, {}),
                     }
                   );
                 };
@@ -26936,8 +27265,8 @@ try {
                     {
                       method: "setVolume",
                       params: ES("JSON", "stringify", false, {
-                        volume: volume
-                      })
+                        volume: volume,
+                      }),
                     }
                   );
                 };
@@ -26970,7 +27299,7 @@ try {
                         event,
                         callback
                       );
-                    }
+                    },
                   };
                 };
                 return VideoController;
@@ -26986,27 +27315,28 @@ try {
 
                   this._sharedVideoCache = null;
 
-                  this.subscribe("xd.onVideoAPIReady", function subscribe_$1(
-                    msg
-                  ) {
-                    this._sharedObservable = new (importDefault(
-                      "ObservableMixin"
-                    ))();
-                    this._sharedVideoCache = new VideoCache(
-                      ES("JSON", "parse", false, msg.data)
-                    );
-                    this._videoController = new VideoController(
-                      this._iframeOptions.name,
-                      this._sharedObservable,
-                      this._sharedVideoCache
-                    );
+                  this.subscribe(
+                    "xd.onVideoAPIReady",
+                    function subscribe_$1(msg) {
+                      this._sharedObservable = new (importDefault(
+                        "ObservableMixin"
+                      ))();
+                      this._sharedVideoCache = new VideoCache(
+                        ES("JSON", "parse", false, msg.data)
+                      );
+                      this._videoController = new VideoController(
+                        this._iframeOptions.name,
+                        this._sharedObservable,
+                        this._sharedVideoCache
+                      );
 
-                    importNamespace("sdk.Event").fire("xfbml.ready", {
-                      type: "video",
-                      id: attr.id,
-                      instance: this._videoController
-                    });
-                  });
+                      importNamespace("sdk.Event").fire("xfbml.ready", {
+                        type: "video",
+                        id: attr.id,
+                        instance: this._videoController,
+                      });
+                    }
+                  );
 
                   this.subscribe("xd.stateChange", function subscribe_$1(msg) {
                     this._sharedObservable.inform(msg.state);
@@ -27029,16 +27359,16 @@ try {
                     controls: "bool",
                     href: "url",
                     show_captions: "bool",
-                    show_text: "bool"
+                    show_text: "bool",
                   };
                 },
 
                 getConfig: function getConfig() {
                   return {
                     fluid: true,
-                    full_width: true
+                    full_width: true,
                   };
-                }
+                },
               });
               var _default = Video;
               exports["default"] = _default;
@@ -27046,83 +27376,931 @@ try {
             98
           );
           __d(
-            "legacy:fb.xfbml.plugins",
+            "sdk.CustomTags",
             [
-              "IframePlugin",
-              "PluginConfig",
-              "PluginTags",
-              "XFBML",
               "sdk.XFBML.Comments",
               "sdk.XFBML.CommentsCount",
               "sdk.XFBML.CustomerChatWrapper",
               "sdk.XFBML.LWIAdsCreation",
               "sdk.XFBML.LWIAdsInsights",
               "sdk.XFBML.LoginButton",
-              "sdk.XFBML.Quote",
+              "sdk.XFBML.MessengerCheckboxWrapper",
+              "sdk.XFBML.MessengerMessageUsWrapper",
               "sdk.XFBML.Save",
+              "sdk.XFBML.SendToMessengerWrapper",
               "sdk.XFBML.ShareButton",
               "sdk.XFBML.Video",
-              "sdk.feature"
             ],
-            function $module_legacy_fb_xfbml_plugins(
+            function $module_sdk_CustomTags(
+              global,
+              require,
+              importDefault,
+              importNamespace,
+              requireLazy,
+              module,
+              exports
+            ) {
+              "use strict";
+
+              var CustomTags = {
+                comments: require("sdk.XFBML.Comments"),
+                comments_count: require("sdk.XFBML.CommentsCount"),
+                login_button: require("sdk.XFBML.LoginButton"),
+                customerchat: importNamespace("sdk.XFBML.CustomerChatWrapper")
+                  .CustomerChatWrapperPlugin,
+                lwi_ads_creation: require("sdk.XFBML.LWIAdsCreation"),
+                lwi_ads_insights: require("sdk.XFBML.LWIAdsInsights"),
+                messengermessageus: require("sdk.XFBML.MessengerMessageUsWrapper"),
+                send_to_messenger: require("sdk.XFBML.SendToMessengerWrapper"),
+                messenger_checkbox: require("sdk.XFBML.MessengerCheckboxWrapper"),
+                save: require("sdk.XFBML.Save"),
+                share_button: require("sdk.XFBML.ShareButton"),
+                video: require("sdk.XFBML.Video"),
+              };
+              var _default = CustomTags;
+              exports["default"] = _default;
+            },
+            98
+          );
+          __d(
+            "sdk.XFBML-public",
+            [
+              "AssertionError",
+              "FB",
+              "IframePlugin",
+              "PluginConfig",
+              "PluginTags",
+              "XFBML",
+              "sdk.CustomTags",
+              "sdk.Event",
+              "sdk.domReady",
+              "sdk.feature",
+              "wrapFunction",
+            ],
+            function $module_sdk_XFBML_public(
               global,
               require,
               requireDynamic,
               requireLazy,
+              module,
+              exports
+            ) {
+              function init() {
+                require("FB").provide("XFBML", {
+                  parse: function parse(dom) {
+                    if (
+                      dom != null &&
+                      !(
+                        (dom.nodeType === 1 || dom.nodeType === 9) &&
+                        typeof dom.nodeName === "string"
+                      )
+                    ) {
+                      throw new (require("AssertionError"))("Invalid argument");
+                    }
+
+                    if (dom && dom.nodeType === 9) {
+                      dom = dom.body;
+                    }
+                    return require("XFBML").parse.apply(null, arguments);
+                  },
+                });
+
+                require("XFBML").subscribe(
+                  "parse",
+                  function XFBML_subscribe_$1(counts) {
+                    return require("sdk.Event").fire(
+                      "xfbml.parse",
+                      counts[0],
+                      counts[1]
+                    );
+                  }
+                );
+
+                require("XFBML").subscribe(
+                  "render",
+                  function XFBML_subscribe_$1(counts) {
+                    return require("sdk.Event").fire(
+                      "xfbml.render",
+                      counts[0],
+                      counts[1]
+                    );
+                  }
+                );
+
+                require("sdk.Event").subscribe(
+                  "init:post",
+                  function Event_subscribe_$1(options) {
+                    if (options.xfbml) {
+                      window.setTimeout(
+                        require("wrapFunction")(
+                          ES(
+                            require("sdk.domReady"),
+                            "bind",
+                            true,
+                            null,
+                            require("XFBML").parse
+                          ),
+                          "entry",
+                          "init:post:xfbml.parse"
+                        ),
+
+                        0
+                      );
+                    }
+                  }
+                );
+
+                try {
+                  if (document.namespaces && !document.namespaces.item.fb) {
+                    document.namespaces.add("fb");
+                  }
+                } catch (_unused) {}
+              }
+
+              function initXFBMLBasedSocialPlugin() {
+                var blocklist = require("sdk.feature")(
+                  "plugin_tags_blocklist",
+                  []
+                );
+
+                Object.keys(require("PluginTags")).forEach(function forEach_$0(
+                  tag
+                ) {
+                  if (blocklist.indexOf(tag) !== -1) {
+                    return;
+                  }
+                  require("XFBML").registerTag({
+                    xmlns: "fb",
+                    localName: tag.replace(/_/g, "-"),
+                    ctor: require("IframePlugin").withParams(
+                      require("PluginTags")[tag],
+                      require("PluginConfig")[tag]
+                    ),
+                  });
+                });
+
+                Object.keys(require("sdk.CustomTags")).forEach(
+                  function forEach_$0(tag) {
+                    if (blocklist.indexOf(tag) !== -1) {
+                      return;
+                    }
+                    require("XFBML").registerTag({
+                      xmlns: "fb",
+                      localName: tag.replace(/_/g, "-"),
+                      ctor: require("sdk.CustomTags")[tag],
+                    });
+                  }
+                );
+              }
+
+              var SDKXFBML = {
+                init: init,
+                initXFBMLBasedSocialPlugin: initXFBMLBasedSocialPlugin,
+              };
+              var _default = SDKXFBML;
+              exports["default"] = _default;
+            },
+            66
+          );
+          __d(
+            "sdk.api-public",
+            [
+              "ApiClient",
+              "FB",
+              "sdk.Runtime",
+              "sdk.Scribe",
+              "sdk.api",
+              "sdk.feature",
+            ],
+            function $module_sdk_api_public(
+              global,
+              require,
+              importDefault,
+              importNamespace,
+              requireLazy,
+              module,
+              exports
+            ) {
+              var shouldLogResponseError = importDefault("sdk.feature")(
+                "should_log_response_error",
+                false
+              );
+
+              var currentAccessToken;
+
+              function init() {
+                importDefault("sdk.Runtime").subscribe(
+                  "ClientID.change",
+                  function Runtime_subscribe_$1(value) {
+                    return importDefault("ApiClient").setClientID(value);
+                  }
+                );
+
+                importDefault("sdk.Runtime").subscribe(
+                  "AccessToken.change",
+                  function Runtime_subscribe_$1(value) {
+                    currentAccessToken = value;
+                    importDefault("ApiClient").setAccessToken(value);
+                  }
+                );
+
+                importDefault("ApiClient").setDefaultParams({
+                  sdk: "joey",
+                });
+
+                importDefault("ApiClient").subscribe(
+                  "request.complete",
+
+                  function ApiClient_subscribe_$1(
+                    endpoint,
+                    method,
+                    params,
+                    response
+                  ) {
+                    var invalidateToken = false;
+                    if (response && typeof response === "object") {
+                      if (response.error) {
+                        if (
+                          response.error == "invalid_token" ||
+                          (response.error.type == "OAuthException" &&
+                            response.error.code == 190)
+                        ) {
+                          invalidateToken = true;
+                        }
+                      } else if (response.error_code) {
+                        if (response.error_code == "190") {
+                          invalidateToken = true;
+                        }
+                      }
+                    }
+                    if (
+                      invalidateToken &&
+                      currentAccessToken ===
+                        importDefault("sdk.Runtime").getAccessToken()
+                    ) {
+                      importDefault("sdk.Runtime").setAccessToken(null);
+                    }
+                  }
+                );
+
+                importDefault("ApiClient").subscribe(
+                  "request.complete",
+                  function ApiClient_subscribe_$1(
+                    endpoint,
+                    method,
+                    params,
+                    response
+                  ) {
+                    if (
+                      ((endpoint == "/me/permissions" && method === "delete") ||
+                        (endpoint == "/restserver.php" &&
+                          params.method == "Auth.revokeAuthorization")) &&
+                      response === true
+                    ) {
+                      importDefault("sdk.Runtime").setAccessToken(null);
+                    }
+                  }
+                );
+
+                importDefault("ApiClient").subscribe(
+                  "request.error",
+
+                  function ApiClient_subscribe_$1(
+                    endpoint,
+                    method,
+                    params,
+                    response
+                  ) {
+                    if (
+                      shouldLogResponseError &&
+                      response.error.type === "http"
+                    ) {
+                      importNamespace("sdk.Scribe").log("jssdk_error", {
+                        appId: importDefault("sdk.Runtime").getClientID(),
+                        error: "transport",
+                        extra: {
+                          name: "transport",
+
+                          message:
+                            ES("JSON", "stringify", false, response.error) +
+                            " from " +
+                            endpoint +
+                            " , " +
+                            method,
+                        },
+                      });
+                    }
+                  }
+                );
+
+                importDefault("FB").provide("", {
+                  api: importDefault("sdk.api"),
+                });
+              }
+
+              var SDKGraphAPI = {
+                init: init,
+              };
+              var _default = SDKGraphAPI;
+              exports["default"] = _default;
+            },
+            98
+          );
+          __d(
+            "sdk.MBasicInitializer",
+            [
+              "UrlMap",
+              "sdk.DOM",
+              "sdk.Runtime",
+              "sdk.UA",
+              "sdk.URI",
+              "sdk.fbt",
+            ],
+            function $module_sdk_MBasicInitializer(
+              global,
+              require,
+              importDefault,
+              importNamespace,
+              requireLazy,
+              module,
+              exports
+            ) {
+              var sharePluginInitialize = function sharePluginInitialize() {
+                function replaceWithLink(share_button) {
+                  if (!share_button) {
+                    return;
+                  }
+                  var share_button_container = share_button.parentNode;
+                  if (!share_button_container) {
+                    return;
+                  }
+                  var href =
+                    importNamespace("sdk.DOM").getAttr(share_button, "href") ||
+                    window.location.href;
+                  var dialog = new (importDefault("sdk.URI"))(
+                    importNamespace("UrlMap").resolve("m")
+                  );
+                  dialog.setPath("/dialog/share");
+                  dialog.addQueryData("href", encodeURI(href));
+                  dialog.addQueryData(
+                    "app_id",
+                    importDefault("sdk.Runtime").getClientID()
+                  );
+                  dialog.addQueryData("mbasic_link", 1);
+                  var link = document.createElement("a");
+
+                  link.style = "display:inline-block; zoom:1;";
+                  link.textContent =
+                    importDefault("sdk.fbt")._("Share to Facebook");
+
+                  link.setAttribute("href", dialog.toString());
+                  link.setAttribute("target", "_blank");
+                  share_button_container.insertBefore(link, share_button);
+                  share_button_container.removeChild(share_button);
+                }
+
+                ES(
+                  "Array",
+                  "from",
+                  false,
+                  document.getElementsByTagName("fb:share-button")
+                ).forEach(function forEach_$0(button) {
+                  return replaceWithLink(button);
+                });
+
+                ES(
+                  "Array",
+                  "from",
+                  false,
+                  document.getElementsByClassName("fb-share-button")
+                ).forEach(function forEach_$0(button) {
+                  return replaceWithLink(button);
+                });
+              };
+
+              function init() {
+                if (!importDefault("sdk.UA").mBasic()) {
+                  return;
+                }
+                sharePluginInitialize();
+              }
+              exports.init = init;
+            },
+            98
+          );
+          __d(
+            "sdk.init",
+            [
+              "Log",
+              "ManagedError",
+              "sdk.Cookie",
+              "sdk.Event",
+              "sdk.MBasicInitializer",
+              "sdk.PlatformVersioning",
+              "sdk.Runtime",
+              "sdk.UA",
+              "sdk.URI",
+            ],
+            function $module_sdk_init(
+              global,
+              require,
+              importDefault,
+              importNamespace,
+              requireLazy,
+              module,
+              exports
+            ) {
+              function parseAppId(appId) {
+                var looksValid =
+                  (typeof appId === "number" && appId > 0) ||
+                  (typeof appId === "string" &&
+                    /^[0-9a-f]{21,}$|^[0-9]{1,21}$/.test(appId));
+                if (looksValid) {
+                  return appId.toString();
+                }
+                importNamespace("Log").warn(
+                  "Invalid App Id: Must be a number or numeric string representing " +
+                    "the application id."
+                );
+
+                return null;
+              }
+
+              function init(options) {
+                if (importDefault("sdk.Runtime").getInitialized()) {
+                  importNamespace("Log").warn(
+                    "FB.init has already been called - this could indicate a problem"
+                  );
+                }
+
+                if (importDefault("sdk.Runtime").getIsVersioned()) {
+                  if (
+                    Object.prototype.toString.call(options) !==
+                    "[object Object]"
+                  ) {
+                    throw new (importDefault("ManagedError"))(
+                      "Invalid argument"
+                    );
+                  }
+
+                  if (options.authResponse) {
+                    throw new (importDefault("ManagedError"))(
+                      "Setting authResponse is not supported"
+                    );
+                  }
+
+                  if (!options.version) {
+                    options.version = new (importDefault("sdk.URI"))(
+                      location.href
+                    ).getQueryData().sdk_version;
+                  }
+
+                  importNamespace("sdk.PlatformVersioning").assertValidVersion(
+                    options.version
+                  );
+                  importDefault("sdk.Runtime").setVersion(options.version);
+                } else {
+                  if (/number|string/.test(typeof options)) {
+                    importNamespace("Log").warn(
+                      "FB.init called with invalid parameters"
+                    );
+                    options = { apiKey: options };
+                  }
+
+                  if (options.status == null) {
+                    options.legacyStatusInit = true;
+                  }
+
+                  options = babelHelpers["extends"](
+                    {
+                      status: true,
+                    },
+                    options || {}
+                  );
+                }
+
+                var appId = parseAppId(options.appId || options.apiKey);
+                if (appId !== null) {
+                  importDefault("sdk.Runtime").setClientID(appId);
+                }
+
+                if ("scope" in options) {
+                  importDefault("sdk.Runtime").setScope(options.scope);
+                }
+
+                if (options.cookie) {
+                  importDefault("sdk.Runtime").setUseCookie(true);
+                  if (typeof options.cookie === "string") {
+                    importNamespace("sdk.Cookie").setDomain(options.cookie);
+                  }
+                }
+
+                if (
+                  options.localStorage === false ||
+                  options.localStorage === "false"
+                ) {
+                  importDefault("sdk.Runtime").setUseLocalStorage(false);
+                }
+
+                if (options.kidDirectedSite) {
+                  importDefault("sdk.Runtime").setKidDirectedSite(true);
+                }
+
+                if (options.useFamilyLogin) {
+                  importDefault("sdk.Runtime").setShouldLoadFamilyLogin(true);
+                }
+
+                if (
+                  options.autoLogAppEvents === "1" ||
+                  options.autoLogAppEvents === "true"
+                ) {
+                  options.autoLogAppEvents = true;
+                }
+
+                if (options.ab) {
+                  importDefault("sdk.Runtime").setSDKAB(options.ab);
+                }
+
+                importDefault("sdk.Runtime").setInitialized(true);
+
+                if (importDefault("sdk.UA").mBasic()) {
+                  importNamespace("sdk.MBasicInitializer").init();
+                }
+
+                importNamespace("sdk.Event").fire("init:post", options);
+              }
+              exports["default"] = init;
+            },
+            98
+          );
+          __d(
+            "sdk.init-public",
+            [
+              "FB",
+              "QueryString",
+              "sdk.AppEvents",
+              "sdk.ErrorHandling",
+              "sdk.Event",
+              "sdk.Frictionless",
+              "sdk.XD",
+              "sdk.init",
+            ],
+            function $module_sdk_init_public(
+              global,
+              require,
+              importDefault,
+              importNamespace,
+              requireLazy,
+              module,
+              exports
+            ) {
+              "use strict";
+
+              function initialize() {
+                require("sdk.XD");
+                require("sdk.AppEvents");
+                require("sdk.Frictionless");
+
+                window.setTimeout(function window_setTimeout_$0() {
+                  var pattern =
+                    /(connect\.facebook\.net|\.facebook\.com\/assets.php|\.facebook\.net\/assets.php).*?#(.*)/;
+                  ES(
+                    "Array",
+                    "from",
+                    false,
+                    window.document.getElementsByTagName("script")
+                  ).forEach(function forEach_$0(script) {
+                    if (script.src) {
+                      var match = pattern.exec(script.src);
+                      if (match) {
+                        var opts = {};
+                        var decoded = importDefault("QueryString").decode(
+                          match[2]
+                        );
+                        for (var key in decoded) {
+                          if (
+                            Object.prototype.hasOwnProperty.call(decoded, key)
+                          ) {
+                            var val = decoded[key];
+                            if (val === "0") {
+                              opts[key] = 0;
+                            } else {
+                              opts[key] = val;
+                            }
+                          }
+                        }
+
+                        importDefault("sdk.init")(opts);
+                      }
+                    }
+                  });
+
+                  if (window.fbAsyncInit && !window.fbAsyncInit.hasRun) {
+                    importNamespace("sdk.Event").fire("init:asyncstart");
+                    window.fbAsyncInit.hasRun = true;
+                    importDefault("sdk.ErrorHandling").unguard(
+                      window.fbAsyncInit
+                    )();
+                  }
+                }, 0);
+                importDefault("FB").provide("", {
+                  init: importDefault("sdk.init"),
+                });
+
+                importNamespace("sdk.Event").subscribe(
+                  "init:post",
+                  function Event_subscribe_$1() {
+                    if (window.__buffer !== undefined) {
+                      window.__buffer.replay();
+                    }
+                  }
+                );
+
+                window.setTimeout(function window_setTimeout_$0() {
+                  if (window.__buffer && window.__buffer.opts) {
+                    importDefault("sdk.init")(window.__buffer.opts);
+                  }
+                }, 0);
+              }
+
+              var SDKInit = { initialize: initialize };
+              var _default = SDKInit;
+              exports["default"] = _default;
+            },
+            98
+          );
+          __d(
+            "sdk.Time",
+            ["Log", "sdk.Impressions", "sdk.Runtime", "sdk.URI", "sdk.feature"],
+            function $module_sdk_Time(
+              global,
+              require,
+              importDefault,
+              importNamespace,
+              requireLazy,
+              module,
+              exports
+            ) {
+              "use strict";
+
+              var perf = window.performance;
+
+              var couldLog =
+                perf && "now" in perf && "getEntriesByName" in perf;
+
+              var startTime;
+              var data = {};
+              function recordBootload() {
+                function isFileSPINServedJSSDK(resource, SDKUrl) {
+                  var doesResourceMatchJSSDK = false;
+                  try {
+                    var resourceURI = new (importDefault("sdk.URI"))(
+                      resource.name
+                    );
+                    var domain = resourceURI.getDomain();
+                    var path = resourceURI.getPath();
+
+                    doesResourceMatchJSSDK =
+                      domain === SDKUrl.getDomain() &&
+                      ES(path, "includes", true, "/rsrc.php/");
+                  } catch (e) {
+                    importNamespace("Log").error(
+                      "Malformed URL was passed to the URL constructor: Error %s occured",
+                      e.message
+                    );
+                  }
+                  return doesResourceMatchJSSDK;
+                }
+
+                function getPerformanceResourceTimings(SDKUrl) {
+                  var timings = perf
+                    .getEntriesByType("resource")
+                    .filter(function filter_$0(t) {
+                      return isFileSPINServedJSSDK(
+                        t,
+                        new (importDefault("sdk.URI"))(SDKUrl)
+                      );
+                    });
+
+                  var isJSSDKServedFromSPIN = timings.length >= 1;
+
+                  if (!isJSSDKServedFromSPIN) {
+                    timings = perf
+                      .getEntriesByType("resource")
+                      .filter(function filter_$0(t) {
+                        return ES(t.name, "startsWith", true, SDKUrl);
+                      });
+                  }
+                  return timings;
+                }
+                if (couldLog) {
+                  var sdkurl = importDefault("sdk.Runtime").getSDKUrl();
+                  var bootloadedTiming = null;
+                  var timing = getPerformanceResourceTimings(sdkurl);
+
+                  if (timing.length > 1) {
+                    if (timing > 2) {
+                      timing = null;
+                    } else {
+                      var bootId = ES(
+                        timing,
+                        "findIndex",
+                        true,
+                        function timing_findIndex_$0(t) {
+                          return ES(
+                            t.name,
+                            "startsWith",
+                            true,
+                            sdkurl + "?hash="
+                          );
+                        }
+                      );
+
+                      if (!bootId) {
+                        timing = null;
+                      } else {
+                        bootloadedTiming = timing.splice(bootId)[0];
+                        timing = timing[0];
+                      }
+                    }
+                  } else if (timing.length === 1) {
+                    var frame = document.getElementById(
+                      "facebook-jssdk-iframe"
+                    );
+                    if (frame && frame instanceof HTMLIFrameElement) {
+                      bootloadedTiming = frame.contentWindow.performance
+                        .getEntriesByType("resource")
+                        .find(function find_$0(t) {
+                          return ES(t.name, "startsWith", true, sdkurl);
+                        });
+                    }
+                    timing = timing[0];
+                  } else {
+                    timing = null;
+                  }
+
+                  if (timing) {
+                    data.fetchTime = Math.round(timing.duration);
+                    if (bootloadedTiming) {
+                      data.fetchTime += Math.round(bootloadedTiming.duration);
+                    }
+
+                    if ("transferSize" in timing) {
+                      data.transferSize = timing.transferSize;
+                      if (bootloadedTiming) {
+                        data.transferSize += bootloadedTiming.transferSize;
+                      }
+                    }
+                    importNamespace("Log").debug(
+                      "sdkperf: it took %s ms and %s bytes to load %s",
+                      data.fetchTime,
+                      data.transferSize,
+                      sdkurl
+                    );
+
+                    startTime = timing.startTime;
+
+                    data.ns = importDefault("sdk.Runtime").getSDKNS();
+
+                    if (startTime) {
+                      window.setTimeout(function window_setTimeout_$0() {
+                        var shouldLog = importDefault("sdk.feature")(
+                          "log_perf",
+                          false
+                        );
+                        var testId = importDefault("sdk.Runtime").getSDKAB();
+                        if (testId) {
+                          data.ab = testId;
+                          shouldLog = true;
+                        }
+                        if (shouldLog) {
+                          importNamespace("sdk.Impressions").log(116, data);
+                        }
+                      }, 10000);
+                    }
+                  }
+                }
+              }
+
+              function log(key) {
+                if (!couldLog || !startTime) {
+                  return;
+                }
+                data[key] = Math.round(perf.now() - startTime);
+                importNamespace("Log").debug(
+                  "sdkperf: %s logged after %s ms",
+                  key,
+                  data[key]
+                );
+              }
+              exports.recordBootload = recordBootload;
+              exports.log = log;
+            },
+            98
+          );
+          __d(
+            "sdk.time-public",
+            ["runOnce", "sdk.Event", "sdk.Time"],
+            function $module_sdk_time_public(
+              global,
+              require,
+              importDefault,
+              importNamespace,
+              requireLazy,
+              module,
+              exports
+            ) {
+              "use strict";
+
+              function init() {
+                importNamespace("sdk.Time").recordBootload();
+
+                importNamespace("sdk.Event").subscribe(
+                  "init:post",
+                  function Event_subscribe_$1() {
+                    importNamespace("sdk.Time").log("init");
+                  }
+                );
+
+                importNamespace("sdk.Event").subscribe(
+                  "init:asyncstart",
+                  function Event_subscribe_$1() {
+                    importNamespace("sdk.Time").log("asyncstart");
+                  }
+                );
+
+                importNamespace("sdk.Event").subscribe(
+                  "iframeplugin:create",
+                  importDefault("runOnce")(function runOnce_$0() {
+                    return importNamespace("sdk.Time").log("pluginframe");
+                  })
+                );
+
+                importNamespace("sdk.Event").subscribe(
+                  "iframeplugin:onload",
+                  importDefault("runOnce")(function runOnce_$0() {
+                    return importNamespace("sdk.Time").log("ttfp");
+                  })
+                );
+              }
+
+              var SDKTime = { init: init };
+              var _default = SDKTime;
+              exports["default"] = _default;
+            },
+            98
+          );
+          __d(
+            "legacy:fb.sdk.index",
+            [
+              "FB",
+              "sdk.AppEvents-public",
+              "sdk.Auth-public",
+              "sdk.Canvas-public",
+              "sdk.Event-public",
+              "sdk.Frictionless-public",
+              "sdk.GamingServices-public",
+              "sdk.Runtime",
+              "sdk.XFBML-public",
+              "sdk.api-public",
+              "sdk.init-public",
+              "sdk.time-public",
+              "sdk.ui",
+            ],
+            function $module_legacy_fb_sdk_index(
+              global,
+              require,
+              importDefault,
+              importNamespace,
+              requireLazy,
               __DO_NOT_USE__module,
               __DO_NOT_USE__exports
             ) {
-              var customTags = {
-                comments: require("sdk.XFBML.Comments"),
-                comments_count: require("sdk.XFBML.CommentsCount"),
-                login_button: require("sdk.XFBML.LoginButton"),
-                customerchat: require("sdk.XFBML.CustomerChatWrapper")
-                  .CustomerChatWrapperPlugin,
-
-                lwi_ads_creation: require("sdk.XFBML.LWIAdsCreation"),
-                lwi_ads_insights: require("sdk.XFBML.LWIAdsInsights"),
-                quote: require("sdk.XFBML.Quote"),
-                save: require("sdk.XFBML.Save"),
-                share_button: require("sdk.XFBML.ShareButton"),
-                video: require("sdk.XFBML.Video")
-              };
-
-              var blacklist = require("sdk.feature")(
-                "plugin_tags_blacklist",
-                []
-              );
-
-              Object.keys(require("PluginTags")).forEach(function forEach_$0(
-                tag
-              ) {
-                if (blacklist.indexOf(tag) !== -1) {
-                  return;
-                }
-                require("XFBML").registerTag({
-                  xmlns: "fb",
-                  localName: tag.replace(/_/g, "-"),
-                  ctor: require("IframePlugin").withParams(
-                    require("PluginTags")[tag],
-                    require("PluginConfig")[tag]
-                  )
-                });
-              });
-
-              Object.keys(customTags).forEach(function forEach_$0(tag) {
-                if (blacklist.indexOf(tag) !== -1) {
-                  return;
-                }
-                require("XFBML").registerTag({
-                  xmlns: "fb",
-                  localName: tag.replace(/_/g, "-"),
-                  ctor: customTags[tag]
-                });
-              });
+              importDefault("sdk.api-public").init();
+              importDefault("sdk.AppEvents-public").init();
+              importDefault("sdk.Auth-public").init();
+              importDefault("sdk.Canvas-public").init();
+              importDefault("sdk.Canvas-public").initCanvasPlugin();
+              importDefault("sdk.Canvas-public").initCanvasPrefetcher();
+              importDefault("sdk.Canvas-public").initCanvasPresence();
+              importDefault("sdk.Event-public").init();
+              importDefault("sdk.Frictionless-public").init();
+              importDefault("sdk.GamingServices-public").init();
+              importDefault("sdk.init-public").initialize();
+              importDefault("sdk.time-public").init();
+              importDefault("FB").provide("", { ui: importDefault("sdk.ui") });
+              importDefault("sdk.XFBML-public").init();
+              importDefault("sdk.XFBML-public").initXFBMLBasedSocialPlugin();
+              importDefault("sdk.Runtime").setIsVersioned(true);
             },
-            3
+            35
           );
+
+          if (window.FB && window.FB.__buffer) {
+            window.__buffer = babelHelpers["extends"]({}, window.FB.__buffer);
+          }
         }
-      }.call(global));
+      }).call(global);
     })();
 } catch (e) {
   var i = new Image();
@@ -27139,7 +28317,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1004931113","namespace":"FB","message":"' +
+        '","revision":"1007136465","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
