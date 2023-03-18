@@ -17,10 +17,19 @@ See also: https://github.com/andyblackwell/adtech-js-monitoring/ - tracks all.js
 
 ---
 
-Setup
------
+## Running your own copy
 
-To run your own copy (which I recommend), you'll need to fork the github project, test the shell script, and then 
+Running your own copy is easy, and recommended!
+
+### Setup on GitHub
+
+I think just forking this project will be enough to get your own instance that updates on the same schedule as this one.
+
+Note that if GitHub were to ever take this repo down, they may take down forks also.
+
+### Setup locally
+
+Clone the github project, test the shell script, and then 
 set up cronjob like so:
 
     MAILTO="you@[your_site].com"
@@ -29,17 +38,9 @@ set up cronjob like so:
 
 This setup sends an email if there were errors, but not if everything worked successfully.
 
-Setup on Heroku
----------------
+### Setup on Heroku
 
-This script works well on a free Heroku instance. Put your github username and password (or [token](https://github.com/settings/tokens)) in environmental variables like so:
-
-    heroku config:add GH_USER=<username>
-    heroku config:add GH_PASS=<password>
-    
-Then add the [Heroku Scheduler](https://addons.heroku.com/scheduler) addon and create a task that runs `./heroku.sh` as often as you'd like.
-
----
+This used to work on a free Heroku instance, but I can't log into Heroku any more :shrug:. 
 
 Official FB links
 -----------------
