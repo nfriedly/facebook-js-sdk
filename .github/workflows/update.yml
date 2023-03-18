@@ -8,5 +8,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
+    - name: setup
+      run: |
+       git config --global user.name "actions-bot"
+       git config --global user.email "actions-bot@localhost"
     - name: run update script
       run: ./update_fb_github.sh
