@@ -19,8 +19,8 @@ getChanges(){
 	# make a backup copy to diff against the latest all.js/css.
 	mv debug.js debug_old.js
 
-	# download the latest facebook all.js/css
-	curl --silent -O https://connect.facebook.net/en_US/all/debug.js
+	# download the latest facebook debug.js
+	curl --silent -O https://connect.facebook.net/en_US/sdk/debug.js
 	
 	# grab the versions from the old and new js files
 	local new_version=$(getVersion debug.js)
