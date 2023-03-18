@@ -1,6 +1,11 @@
 name: Check for Updates
 
 on:
+  # Run automatically every 10 mintes
+  schedule:
+  # minute hour dom month dow
+  - cron: '*/10 * * * *'
+  # or run whenever we trigger it from github's UI
   workflow_dispatch:
 
 jobs:
