@@ -4,9 +4,8 @@ Facebook JS SDK, tracked and de-minified
 This project aims to provide a useful resource to developers who are working with 
 Facebook's JS SDK and would like to see what has changed recently. 
 
-My server runs a cronjob every 10 minutes that downloads the latest 
-https://connect.facebook.net/en_US/sdk/debug.js, commits any changes, and then pushes to 
-github. 
+The script here regularly downloads https://connect.facebook.net/en_US/sdk/debug.js,
+commits any changes, and then pushes to github. 
 
 (debug.js is the non-minified version of http://connect.facebook.net/en_US/sdk.js that 
 you're probably using in production.)
