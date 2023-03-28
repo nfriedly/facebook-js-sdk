@@ -1,4 +1,4 @@
-/*1679415333,,JIT Construction: v1007147803,en_US*/
+/*1679986611,,JIT Construction: v1007192664,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3718,7 +3718,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1007147803",
+            revision: "1007192664",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -26620,12 +26620,7 @@ try {
           );
           __d(
             "sdk.XFBML.MessengerMessageUsWrapper",
-            [
-              "CORSRequest",
-              "UrlMap",
-              "sdk.Observable",
-              "sdk.XFBML.MessengerMessageUs",
-            ],
+            ["sdk.Observable", "sdk.XFBML.MessengerMessageUs"],
             function $module_sdk_XFBML_MessengerMessageUsWrapper(
               global,
               require,
@@ -26663,37 +26658,23 @@ try {
                 var _proto = MessengerMessageUsWrapper.prototype;
                 _proto.process = function process() {
                   var _this = this;
-                  var uri =
-                    importNamespace("UrlMap").resolve("social_plugin") +
-                    "/new_domain_gating/";
-                  importDefault("CORSRequest").execute(
-                    uri,
-                    "get",
-                    {
-                      page_id: this.$MessengerMessageUsWrapper_attr.page_id,
-                      endpoint: this.$MessengerMessageUsWrapper_tag,
-                    },
+                  this.$MessengerMessageUsWrapper_attr.should_use_new_domain = true;
+                  this.$MessengerMessageUsWrapper_plugin = new (importDefault(
+                    "sdk.XFBML.MessengerMessageUs"
+                  ))(
+                    this.$MessengerMessageUsWrapper_element,
+                    this.$MessengerMessageUsWrapper_ns,
+                    this.$MessengerMessageUsWrapper_tag,
+                    this.$MessengerMessageUsWrapper_attr
+                  );
 
-                    function CORSRequest_execute_$3(data) {
-                      _this.$MessengerMessageUsWrapper_attr.should_use_new_domain =
-                        data.should_use_new_domain;
-                      _this.$MessengerMessageUsWrapper_plugin =
-                        new (importDefault("sdk.XFBML.MessengerMessageUs"))(
-                          _this.$MessengerMessageUsWrapper_element,
-                          _this.$MessengerMessageUsWrapper_ns,
-                          _this.$MessengerMessageUsWrapper_tag,
-                          _this.$MessengerMessageUsWrapper_attr
-                        );
-
-                      _this.$MessengerMessageUsWrapper_plugin.subscribe(
-                        "render",
-                        function _this_$MessengerMessageUsWrapper_plugin_subscribe_$1() {
-                          _this.inform("render");
-                        }
-                      );
-                      _this.$MessengerMessageUsWrapper_plugin.process();
+                  this.$MessengerMessageUsWrapper_plugin.subscribe(
+                    "render",
+                    function $MessengerMessageUsWrapper_plugin_subscribe_$1() {
+                      _this.inform("render");
                     }
                   );
+                  this.$MessengerMessageUsWrapper_plugin.process();
                 };
                 return MessengerMessageUsWrapper;
               })(importNamespace("sdk.Observable").Observable);
@@ -28317,7 +28298,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1007147803","namespace":"FB","message":"' +
+        '","revision":"1007192664","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
