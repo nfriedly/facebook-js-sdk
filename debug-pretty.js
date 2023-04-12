@@ -1,4 +1,4 @@
-/*1680998202,,JIT Construction: v1007275463,en_US*/
+/*1681286198,,JIT Construction: v1007294211,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3732,7 +3732,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1007275463",
+            revision: "1007294211",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -26503,12 +26503,7 @@ try {
           );
           __d(
             "sdk.XFBML.MessengerCheckboxWrapper",
-            [
-              "CORSRequest",
-              "UrlMap",
-              "sdk.Observable",
-              "sdk.XFBML.MessengerCheckbox",
-            ],
+            ["sdk.Observable", "sdk.XFBML.MessengerCheckbox"],
             function $module_sdk_XFBML_MessengerCheckboxWrapper(
               global,
               require,
@@ -26546,37 +26541,23 @@ try {
                 var _proto = MessengerCheckboxWrapper.prototype;
                 _proto.process = function process() {
                   var _this = this;
-                  var uri =
-                    importNamespace("UrlMap").resolve("social_plugin") +
-                    "/new_domain_gating/";
-                  importDefault("CORSRequest").execute(
-                    uri,
-                    "get",
-                    {
-                      page_id: this.$MessengerCheckboxWrapper_attr.page_id,
-                      endpoint: this.$MessengerCheckboxWrapper_tag,
-                    },
+                  this.$MessengerCheckboxWrapper_attr.should_use_new_domain = true;
+                  this.$MessengerCheckboxWrapper_plugin = new (importDefault(
+                    "sdk.XFBML.MessengerCheckbox"
+                  ))(
+                    this.$MessengerCheckboxWrapper_element,
+                    this.$MessengerCheckboxWrapper_ns,
+                    this.$MessengerCheckboxWrapper_tag,
+                    this.$MessengerCheckboxWrapper_attr
+                  );
 
-                    function CORSRequest_execute_$3(data) {
-                      _this.$MessengerCheckboxWrapper_attr.should_use_new_domain =
-                        data.should_use_new_domain;
-                      _this.$MessengerCheckboxWrapper_plugin =
-                        new (importDefault("sdk.XFBML.MessengerCheckbox"))(
-                          _this.$MessengerCheckboxWrapper_element,
-                          _this.$MessengerCheckboxWrapper_ns,
-                          _this.$MessengerCheckboxWrapper_tag,
-                          _this.$MessengerCheckboxWrapper_attr
-                        );
-
-                      _this.$MessengerCheckboxWrapper_plugin.subscribe(
-                        "render",
-                        function _this_$MessengerCheckboxWrapper_plugin_subscribe_$1() {
-                          _this.inform("render");
-                        }
-                      );
-                      _this.$MessengerCheckboxWrapper_plugin.process();
+                  this.$MessengerCheckboxWrapper_plugin.subscribe(
+                    "render",
+                    function $MessengerCheckboxWrapper_plugin_subscribe_$1() {
+                      _this.inform("render");
                     }
                   );
+                  this.$MessengerCheckboxWrapper_plugin.process();
                 };
                 return MessengerCheckboxWrapper;
               })(importNamespace("sdk.Observable").Observable);
@@ -28289,7 +28270,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1007275463","namespace":"FB","message":"' +
+        '","revision":"1007294211","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
