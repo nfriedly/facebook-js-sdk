@@ -1,4 +1,4 @@
-/*1682672205,,JIT Construction: v1007396342,en_US*/
+/*1682708201,,JIT Construction: v1007397618,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3732,7 +3732,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1007396342",
+            revision: "1007397618",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -13207,6 +13207,26 @@ try {
             98
           );
           __d(
+            "isStringNullOrEmpty",
+            [],
+            function $module_isStringNullOrEmpty(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports
+            ) {
+              "use strict";
+
+              function isStringNullOrEmpty(str) {
+                return str == null || str === "";
+              }
+              exports["default"] = isStringNullOrEmpty;
+            },
+            66
+          );
+          __d(
             "sdk.LoggingUtils",
             ["sdk.Impressions", "sdk.feature"],
             function $module_sdk_LoggingUtils(
@@ -13289,6 +13309,7 @@ try {
             [
               "Log",
               "UrlMap",
+              "isStringNullOrEmpty",
               "sdk.AuthState",
               "sdk.AuthStorageUtils",
               "sdk.AuthUtils",
@@ -13311,9 +13332,7 @@ try {
               exports
             ) {
               require("sdk.Frictionless");
-
               var LOGIN_COMPLETE_HEARTBEAT_TIMEOUT = 5 * 1000;
-
               function login(cb, opts) {
                 if (opts && opts.perms && !opts.scope) {
                   opts.scope = opts.perms;
@@ -13343,7 +13362,6 @@ try {
                   cb
                 );
               }
-
               function toWebOAuthStatus(status) {
                 switch (status) {
                   case "connected":
@@ -13354,7 +13372,6 @@ try {
                     return "unknown";
                 }
               }
-
               function setFinalAuthResponse(finalResponse) {
                 if (
                   (finalResponse == null
@@ -13406,7 +13423,6 @@ try {
                     .XFOA_FINAL_RESPONSE_EVENT
                 );
               }
-
               function setAuthResponse(
                 authResponse,
                 status,
@@ -13483,8 +13499,7 @@ try {
                   (importDefault("sdk.Runtime").getUseCookie() &&
                     importDefault("sdk.Runtime").getCookieUserID() !== userID);
                 var logout =
-                  currentUserID != null &&
-                  currentUserID !== "" &&
+                  !importDefault("isStringNullOrEmpty")(currentUserID) &&
                   authResponse == null;
 
                 var both =
@@ -13551,12 +13566,10 @@ try {
 
                 return response;
               }
-
               function getAuthResponse() {
                 return importDefault("sdk.AuthState").getState()
                   .currentAuthResponse;
               }
-
               function logout(cb) {
                 var currentAuthResponse = getAuthResponse();
                 var currentLoginSource = importNamespace(
@@ -13610,7 +13623,6 @@ try {
                   extra: { args: { fblo: true } },
                 });
               }
-
               function xdResponseWrapper(
                 cb,
                 authResponse,
@@ -13720,7 +13732,6 @@ try {
                   return authResponse;
                 };
               }
-
               function logSuccessfulAuth(requestParams) {
                 if (
                   requestParams &&
@@ -13743,7 +13754,6 @@ try {
                   );
                 }, LOGIN_COMPLETE_HEARTBEAT_TIMEOUT);
               }
-
               function populateAuthResponse(authResponse, params) {
                 if (params.granted_scopes) {
                   authResponse = babelHelpers["extends"]({}, authResponse, {
@@ -13785,7 +13795,6 @@ try {
 
                 return authResponse;
               }
-
               var Auth = {
                 setFinalAuthResponse: setFinalAuthResponse,
                 login: login,
@@ -28286,7 +28295,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1007396342","namespace":"FB","message":"' +
+        '","revision":"1007397618","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
