@@ -1,4 +1,4 @@
-/*1682817708,,JIT Construction: v1007403572,en_US*/
+/*1683197799,,JIT Construction: v1007432406,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3732,7 +3732,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1007403572",
+            revision: "1007432406",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -22432,9 +22432,9 @@ try {
             98
           );
           __d(
-            "uuid",
+            "uuidv4",
             [],
-            function $module_uuid(
+            function $module_uuidv4(
               global,
               require,
               requireDynamic,
@@ -22444,7 +22444,7 @@ try {
             ) {
               "use strict";
 
-              function uuid() {
+              function uuidv4() {
                 var _self, _self$crypto;
                 var randomUUID =
                   (_self = self) == null
@@ -22464,9 +22464,26 @@ try {
                   }
                 );
               }
-              exports["default"] = uuid;
+              exports["default"] = uuidv4;
             },
             66
+          );
+          __d(
+            "uuid",
+            ["uuidv4"],
+            function $module_uuid(
+              global,
+              require,
+              importDefault,
+              importNamespace,
+              requireLazy,
+              module,
+              exports
+            ) {
+              "use strict";
+              exports["default"] = importDefault("uuidv4");
+            },
+            98
           );
           __d(
             "sdk.XFBML.ChatDOM",
@@ -28295,7 +28312,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1007403572","namespace":"FB","message":"' +
+        '","revision":"1007432406","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
