@@ -1,4 +1,4 @@
-/*1683921400,,JIT Construction: v1007485967,en_US*/
+/*1684286498,,JIT Construction: v1007505843,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3666,7 +3666,19 @@ try {
 
             global.Map = Map;
             global.Set = Set;
-          })(typeof global === "undefined" ? this : global);
+          })(
+            typeof globalThis !== "undefined"
+              ? globalThis
+              : typeof global !== "undefined"
+              ? global
+              : typeof window !== "undefined"
+              ? window
+              : typeof this !== "undefined"
+              ? this
+              : typeof self !== "undefined"
+              ? self
+              : {}
+          );
           __d("JSSDKCanvasPrefetcherConfig", [], {
             enabled: true,
             excludedAppIds: [144959615576466, 768691303149786, 320528941393723],
@@ -3732,7 +3744,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1007485967",
+            revision: "1007505843",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -28284,7 +28296,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1007485967","namespace":"FB","message":"' +
+        '","revision":"1007505843","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
