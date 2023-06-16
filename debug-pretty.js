@@ -1,4 +1,4 @@
-/*1686855407,,JIT Construction: v1007689899,en_US*/
+/*1686881921,,JIT Construction: v1007693839,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3744,7 +3744,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1007689899",
+            revision: "1007693839",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -6335,6 +6335,21 @@ try {
                     )
                   );
                 } else if (
+                  maybeError.messageFormat != null &&
+                  typeof maybeError.messageFormat !== "string"
+                ) {
+                  error = err(
+                    "Error with non-string messageFormat thrown: %s, %s, keys: %s",
+                    String(maybeError.message),
+                    String(maybeError),
+                    ES(
+                      "JSON",
+                      "stringify",
+                      false,
+                      Object.keys(maybeError).sort()
+                    )
+                  );
+                } else if (
                   Object.isExtensible &&
                   !Object.isExtensible(maybeError)
                 ) {
@@ -6652,10 +6667,11 @@ try {
 
               function _printf(format, params) {
                 var index = 0;
+                var safeFormat = String(format);
 
-                var formattedMessage = format.replace(
+                var formattedMessage = safeFormat.replace(
                   /%s/g,
-                  function format_replace_$1() {
+                  function safeFormat_replace_$1() {
                     return index < params.length ? params[index++] : "NOPARAM";
                   }
                 );
@@ -28308,7 +28324,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1007689899","namespace":"FB","message":"' +
+        '","revision":"1007693839","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
