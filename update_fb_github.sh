@@ -76,7 +76,7 @@ if [[ $JS_CHANGES ]]; then
 	echo "Sending changes to github"
 
 	# commit with the date and a short summary
-	/usr/bin/git commit -m "FB update `date +'%A, %B %-d, %Y'`: `git diff --cached --shortstat | sed 's/1 files* changed, //'`"
+	/usr/bin/git commit -m "FB update `date +'%A, %B %-d, %Y'`: `git diff --cached --shortstat | sed 's/[0-9]\{1,\} files* changed, //'`"
 	/usr/bin/git push -q origin master
 else
 	echo "No changes"
