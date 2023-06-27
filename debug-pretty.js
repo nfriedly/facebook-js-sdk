@@ -1,4 +1,4 @@
-/*1687391801,,JIT Construction: v1007719123,en_US*/
+/*1687832725,,JIT Construction: v1007750478,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3744,7 +3744,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1007719123",
+            revision: "1007750478",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -4343,7 +4343,7 @@ try {
                   : null;
               }
 
-              function html(dom, content) {
+              function dangerouslySetInnerHtml(dom, content) {
                 try {
                   dom.innerHTML = content;
                 } catch (e) {
@@ -4564,7 +4564,7 @@ try {
               }
               exports.getAttr = getAttr;
               exports.getBoolAttr = getBoolAttr;
-              exports.html = html;
+              exports.dangerouslySetInnerHtml = dangerouslySetInnerHtml;
               exports.containsCss = containsCss;
               exports.addCss = addCss;
               exports.removeCss = removeCss;
@@ -20647,7 +20647,7 @@ try {
                     "xd.comment_count",
                     function subscribe_$1(message) {
                       var data = ES("JSON", "parse", false, message.data);
-                      importNamespace("sdk.DOM").html(
+                      importNamespace("sdk.DOM").dangerouslySetInnerHtml(
                         elem,
                         importDefault("sprintf")(
                           '<span class="fb_comments_count">%s</span>',
@@ -22682,7 +22682,7 @@ try {
 
                       if (_this.$ChatDOMFacade_entryPointLabel === "none") {
                         var wrapperElement = document.createElement("div");
-                        importNamespace("sdk.DOM").html(
+                        importNamespace("sdk.DOM").dangerouslySetInnerHtml(
                           wrapperElement,
                           data.entry_point_icon_svg
                         );
@@ -22691,13 +22691,13 @@ try {
                           wrapperElement == null
                             ? void 0
                             : wrapperElement.outerHTML;
-                        importNamespace("sdk.DOM").html(
+                        importNamespace("sdk.DOM").dangerouslySetInnerHtml(
                           _this.$ChatDOMFacade_container,
                           iconSVG
                         );
                       } else {
                         var _iconSVG = data.entry_point_icon_svg;
-                        importNamespace("sdk.DOM").html(
+                        importNamespace("sdk.DOM").dangerouslySetInnerHtml(
                           _this.$ChatDOMFacade_container,
                           _this.$ChatDOMFacade_getLabelEntryPointHTML(_iconSVG)
                         );
@@ -22811,7 +22811,7 @@ try {
                           : 36;
                       var spinnerSVG =
                         this.$ChatDOMFacade_getSpinnerSVG(spinnerSize);
-                      importNamespace("sdk.DOM").html(
+                      importNamespace("sdk.DOM").dangerouslySetInnerHtml(
                         this.$ChatDOMFacade_container,
                         '\n          <div class="centered-container">\n            ' +
                           spinnerSVG +
@@ -22832,7 +22832,7 @@ try {
                             : importNamespace("ChatPluginStyleUtils")
                                 .LABELED_ENTRY_POINT_STANDARD_ICON_MARGIN_RIGHT;
 
-                        importNamespace("sdk.DOM").html(
+                        importNamespace("sdk.DOM").dangerouslySetInnerHtml(
                           this.$ChatDOMFacade_container.children[0],
                           this.$ChatDOMFacade_getLabelOnlyEntryPointSpinner(
                             marginRight,
@@ -22873,7 +22873,7 @@ try {
                           );
                         }
                       } else {
-                        importNamespace("sdk.DOM").html(
+                        importNamespace("sdk.DOM").dangerouslySetInnerHtml(
                           this.$ChatDOMFacade_container.children[0].children[0],
                           _spinnerSVG
                         );
@@ -24490,7 +24490,10 @@ try {
                     var css = ES("JSON", "parse", false, message.cssText);
                     var iconDiv = document.createElement("div");
                     if (iconSVG != null) {
-                      importNamespace("sdk.DOM").html(iconDiv, iconSVG);
+                      importNamespace("sdk.DOM").dangerouslySetInnerHtml(
+                        iconDiv,
+                        iconSVG
+                      );
                       ES("Object", "assign", false, iconDiv.style, css);
                       iconDiv.style.boxShadow = "none";
                       importNamespace("sdk.Content").append(
@@ -28324,7 +28327,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1007719123","namespace":"FB","message":"' +
+        '","revision":"1007750478","namespace":"FB","message":"' +
         e.message +
         '"}}'
     );
