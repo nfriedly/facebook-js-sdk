@@ -1,4 +1,4 @@
-/*1690865812,,JIT Construction: v1007941544,en_US*/
+/*1691207802,,JIT Construction: v1007981046,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3739,7 +3739,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1007941544",
+            revision: "1007981046",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -25068,13 +25068,7 @@ try {
           );
           __d(
             "sdk.XFBML.CustomerChatWrapper",
-            [
-              "$InternalEnum",
-              "CORSRequest",
-              "UrlMap",
-              "sdk.Observable",
-              "sdk.XFBML.ChatDOM",
-            ],
+            ["$InternalEnum", "sdk.Observable", "sdk.XFBML.ChatDOM"],
             function $module_sdk_XFBML_CustomerChatWrapper(
               global,
               require,
@@ -25116,38 +25110,22 @@ try {
                 var _proto = CustomerChatWrapper.prototype;
                 _proto.process = function process() {
                   var _this = this;
-                  var uri =
-                    importNamespace("UrlMap").resolve("social_plugin") +
-                    "/new_domain_gating/";
-                  importDefault("CORSRequest").execute(
-                    uri,
-                    "get",
-                    {
-                      page_id: this.$CustomerChatWrapper_attr.page_id,
-                      endpoint: this.$CustomerChatWrapper_tag,
-                    },
-
-                    function CORSRequest_execute_$3(data) {
-                      _this.$CustomerChatWrapper_attr.should_use_new_domain =
-                        data.should_use_new_domain;
-                      _this.$CustomerChatWrapper_plugin = new (importDefault(
-                        "sdk.XFBML.ChatDOM",
-                      ))(
-                        _this.$CustomerChatWrapper_element,
-                        _this.$CustomerChatWrapper_ns,
-                        _this.$CustomerChatWrapper_tag,
-                        _this.$CustomerChatWrapper_attr,
-                      );
-
-                      _this.$CustomerChatWrapper_plugin.subscribe(
-                        "render",
-                        function _this_$CustomerChatWrapper_plugin_subscribe_$1() {
-                          _this.inform("render");
-                        },
-                      );
-                      _this.$CustomerChatWrapper_plugin.process();
+                  this.$CustomerChatWrapper_attr.should_use_new_domain = false;
+                  this.$CustomerChatWrapper_plugin = new (importDefault(
+                    "sdk.XFBML.ChatDOM",
+                  ))(
+                    this.$CustomerChatWrapper_element,
+                    this.$CustomerChatWrapper_ns,
+                    this.$CustomerChatWrapper_tag,
+                    this.$CustomerChatWrapper_attr,
+                  );
+                  this.$CustomerChatWrapper_plugin.subscribe(
+                    "render",
+                    function $CustomerChatWrapper_plugin_subscribe_$1() {
+                      _this.inform("render");
                     },
                   );
+                  this.$CustomerChatWrapper_plugin.process();
                 };
                 return CustomerChatWrapper;
               })(importNamespace("sdk.Observable").Observable);
@@ -28342,7 +28320,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1007941544","namespace":"FB","message":"' +
+        '","revision":"1007981046","namespace":"FB","message":"' +
         e.message +
         '"}}',
     );
