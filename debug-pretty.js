@@ -1,4 +1,4 @@
-/*1691633617,,JIT Construction: v1008006305,en_US*/
+/*1692151403,,JIT Construction: v1008069817,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3739,7 +3739,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1008006305",
+            revision: "1008069817",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -5114,6 +5114,7 @@ try {
                 Locale: importNamespace("JSSDKRuntimeConfig").locale,
                 LoggedIntoFacebook: undefined,
                 LoginStatus: undefined,
+                OverrideDefaultResponseType: false,
                 Revision: importNamespace("JSSDKRuntimeConfig").revision,
                 Rtl: importNamespace("JSSDKRuntimeConfig").rtl,
                 Scope: undefined,
@@ -16816,20 +16817,24 @@ try {
                   graph_domain: true,
                 };
 
-                var responseTypes = Object.keys(
-                  ES(
-                    "Object",
-                    "assign",
-                    false,
+                var overrideDefaultResponseType =
+                  importDefault("sdk.Runtime").getOverrideDefaultResponseType();
+                var responseTypes = overrideDefaultResponseType
+                  ? call.params.response_type
+                  : Object.keys(
+                      ES(
+                        "Object",
+                        "assign",
+                        false,
 
-                    call.params.response_type
-                      ? importDefault("createObjectFrom")(
-                          call.params.response_type.split(","),
-                        )
-                      : {},
-                    defaultResponseType,
-                  ),
-                ).join(",");
+                        call.params.response_type
+                          ? importDefault("createObjectFrom")(
+                              call.params.response_type.split(","),
+                            )
+                          : {},
+                        defaultResponseType,
+                      ),
+                    ).join(",");
 
                 if (call.params.display === "async") {
                   ES("Object", "assign", false, call.params, {
@@ -27913,6 +27918,12 @@ try {
                   importDefault("sdk.Runtime").setShouldLoadFamilyLogin(true);
                 }
 
+                if (options.overrideDefaultResponseType) {
+                  importDefault("sdk.Runtime").setOverrideDefaultResponseType(
+                    true,
+                  );
+                }
+
                 if (
                   options.autoLogAppEvents === "1" ||
                   options.autoLogAppEvents === "true"
@@ -28320,7 +28331,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1008006305","namespace":"FB","message":"' +
+        '","revision":"1008069817","namespace":"FB","message":"' +
         e.message +
         '"}}',
     );
