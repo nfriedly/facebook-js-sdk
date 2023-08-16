@@ -1,4 +1,4 @@
-/*1692151403,,JIT Construction: v1008069817,en_US*/
+/*1692165408,,JIT Construction: v1008075055,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3739,7 +3739,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1008069817",
+            revision: "1008075055",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -13670,7 +13670,7 @@ try {
               ) {
                 return function (params) {
                   var status;
-                  if (params && params.access_token) {
+                  if (params && (params.access_token || params.code)) {
                     var parsedSignedRequest = importNamespace(
                       "sdk.SignedRequest",
                     ).parse(params.signed_request);
@@ -13681,12 +13681,33 @@ try {
                           : null
                         : null;
                     authResponse = {
-                      accessToken: params.access_token,
                       userID: user_id,
                       expiresIn: Number(params.expires_in),
-                      signedRequest: params.signed_request,
-                      graphDomain: params.graph_domain,
                     };
+
+                    if (params.access_token) {
+                      authResponse = babelHelpers["extends"]({}, authResponse, {
+                        accessToken: params.access_token,
+                      });
+                    }
+
+                    if (params.code) {
+                      authResponse = babelHelpers["extends"]({}, authResponse, {
+                        code: params.code,
+                      });
+                    }
+
+                    if (params.signed_request) {
+                      authResponse = babelHelpers["extends"]({}, authResponse, {
+                        signedRequest: params.signed_request,
+                      });
+                    }
+
+                    if (params.graph_domain) {
+                      authResponse = babelHelpers["extends"]({}, authResponse, {
+                        graphDomain: params.graph_domain,
+                      });
+                    }
 
                     if (params.asset_scopes) {
                       authResponse = babelHelpers["extends"]({}, authResponse, {
@@ -28331,7 +28352,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1008069817","namespace":"FB","message":"' +
+        '","revision":"1008075055","namespace":"FB","message":"' +
         e.message +
         '"}}',
     );
