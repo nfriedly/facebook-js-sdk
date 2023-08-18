@@ -1,4 +1,4 @@
-/*1692255409,,JIT Construction: v1008101569,en_US*/
+/*1692345399,,JIT Construction: v1008126642,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3739,7 +3739,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1008101569",
+            revision: "1008126642",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -16854,24 +16854,23 @@ try {
                   graph_domain: true,
                 };
 
-                var overrideDefaultResponseType =
-                  importDefault("sdk.Runtime").getOverrideDefaultResponseType();
-                var responseTypes = overrideDefaultResponseType
-                  ? call.params.response_type
-                  : Object.keys(
-                      ES(
-                        "Object",
-                        "assign",
-                        false,
+                var responseTypes =
+                  call.params.override_default_response_type === true
+                    ? call.params.response_type
+                    : Object.keys(
+                        ES(
+                          "Object",
+                          "assign",
+                          false,
 
-                        call.params.response_type
-                          ? importDefault("createObjectFrom")(
-                              call.params.response_type.split(","),
-                            )
-                          : {},
-                        defaultResponseType,
-                      ),
-                    ).join(",");
+                          call.params.response_type
+                            ? importDefault("createObjectFrom")(
+                                call.params.response_type.split(","),
+                              )
+                            : {},
+                          defaultResponseType,
+                        ),
+                      ).join(",");
 
                 if (call.params.display === "async") {
                   ES("Object", "assign", false, call.params, {
@@ -28368,7 +28367,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1008101569","namespace":"FB","message":"' +
+        '","revision":"1008126642","namespace":"FB","message":"' +
         e.message +
         '"}}',
     );
