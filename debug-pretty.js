@@ -1,4 +1,4 @@
-/*1692403011,,JIT Construction: v1008141469,en_US*/
+/*1692784615,,JIT Construction: v1008211241,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3739,7 +3739,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1008141469",
+            revision: "1008211241",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -5114,7 +5114,6 @@ try {
                 Locale: importNamespace("JSSDKRuntimeConfig").locale,
                 LoggedIntoFacebook: undefined,
                 LoginStatus: undefined,
-                OverrideDefaultResponseType: false,
                 Revision: importNamespace("JSSDKRuntimeConfig").revision,
                 Rtl: importNamespace("JSSDKRuntimeConfig").rtl,
                 Scope: undefined,
@@ -27954,12 +27953,6 @@ try {
                   importDefault("sdk.Runtime").setShouldLoadFamilyLogin(true);
                 }
 
-                if (options.overrideDefaultResponseType) {
-                  importDefault("sdk.Runtime").setOverrideDefaultResponseType(
-                    true,
-                  );
-                }
-
                 if (
                   options.autoLogAppEvents === "1" ||
                   options.autoLogAppEvents === "true"
@@ -28367,7 +28360,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1008141469","namespace":"FB","message":"' +
+        '","revision":"1008211241","namespace":"FB","message":"' +
         e.message +
         '"}}',
     );
