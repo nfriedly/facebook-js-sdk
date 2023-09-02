@@ -1,4 +1,4 @@
-/*1693271933,,JIT Construction: v1008310937,en_US*/
+/*1693659456,,JIT Construction: v1008421197,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3739,7 +3739,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1008310937",
+            revision: "1008421197",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -8436,9 +8436,9 @@ try {
             66,
           );
           __d(
-            "createObjectFrom",
+            "$InternalEnum",
             [],
-            function $module_createObjectFrom(
+            function $module__InternalEnum(
               global,
               require,
               requireDynamic,
@@ -8446,48 +8446,126 @@ try {
               module,
               exports,
             ) {
-              function createObjectFrom(keys, values) {
-                if (__DEV__) {
-                  if (!Array.isArray(keys)) {
-                    throw new TypeError("Must pass an array of keys.");
-                  }
-                }
-                if (values === undefined) {
-                  return createObjectFrom(keys, true);
+              "use strict";
+
+              var hasOwnProperty = Object.prototype.hasOwnProperty;
+
+              var reverseMapCache =
+                typeof WeakMap === "function" ? new WeakMap() : new Map();
+
+              function getReverseMap(enumObject) {
+                var reverseMap = reverseMapCache.get(enumObject);
+                if (reverseMap !== undefined) {
+                  return reverseMap;
                 }
 
-                var object = {};
-                if (Array.isArray(values)) {
-                  for (var ii = keys.length - 1; ii >= 0; ii--) {
-                    object[keys[ii]] = values[ii];
-                  }
-                } else {
-                  for (var _ii = keys.length - 1; _ii >= 0; _ii--) {
-                    object[keys[_ii]] = values;
-                  }
-                }
-
-                return object;
+                var newReverseMap = new Map();
+                Object.getOwnPropertyNames(enumObject).forEach(
+                  function forEach_$0(name) {
+                    newReverseMap.set(enumObject[name], name);
+                  },
+                );
+                try {
+                  reverseMapCache.set(enumObject, newReverseMap);
+                } catch (_) {}
+                return newReverseMap;
               }
-              exports["default"] = createObjectFrom;
+
+              var EnumPrototype = Object.freeze(
+                Object.defineProperties(Object.create(null), {
+                  isValid: {
+                    value: function value(x) {
+                      return getReverseMap(this).has(x);
+                    },
+                  },
+
+                  cast: {
+                    value: function value(x) {
+                      return this.isValid(x) ? x : undefined;
+                    },
+                  },
+
+                  members: {
+                    value: function value() {
+                      return getReverseMap(this).keys();
+                    },
+                  },
+
+                  getName: {
+                    value: function value(_value) {
+                      return getReverseMap(this).get(_value);
+                    },
+                  },
+                }),
+              );
+
+              function Enum(members) {
+                var o = Object.create(EnumPrototype);
+                for (var k in members) {
+                  if (hasOwnProperty.call(members, k)) {
+                    Object.defineProperty(o, k, { value: members[k] });
+                  }
+                }
+                return Object.freeze(o);
+              }
+
+              var EnumMirroredPrototype = Object.freeze(
+                Object.defineProperties(Object.create(null), {
+                  isValid: {
+                    value: function value(x) {
+                      if (typeof x === "string") {
+                        return hasOwnProperty.call(this, x);
+                      }
+                      return false;
+                    },
+                  },
+
+                  cast: {
+                    value: EnumPrototype.cast,
+                  },
+
+                  members: {
+                    value: function value() {
+                      return Object.getOwnPropertyNames(this).values();
+                    },
+                  },
+
+                  getName: {
+                    value: function value(_value2) {
+                      return _value2;
+                    },
+                  },
+                }),
+              );
+
+              Enum.Mirrored = function EnumMirrored(members) {
+                var o = Object.create(EnumMirroredPrototype);
+                for (var i = 0, len = members.length; i < len; ++i) {
+                  Object.defineProperty(o, members[i], { value: members[i] });
+                }
+                return Object.freeze(o);
+              };
+
+              Object.freeze(Enum.Mirrored);
+
+              module.exports = Object.freeze(Enum);
             },
-            66,
+            null,
           );
           __d(
             "URISchemes",
-            ["createObjectFrom"],
+            ["$InternalEnum"],
             function $module_URISchemes(
               global,
               require,
-              importDefault,
-              importNamespace,
+              requireDynamic,
               requireLazy,
               module,
               exports,
             ) {
               "use strict";
 
-              var defaultSchemes = importDefault("createObjectFrom")([
+              var defaultSchemes = new Set([
                 "about",
                 "accountscenter",
                 "aidemos",
@@ -8600,19 +8678,35 @@ try {
                 "oculus360photos",
                 "systemux",
               ]);
+              var Options = require("$InternalEnum")({
+                EXPLICITLY_ALLOWED_SCHEMES_ONLY:
+                  "explicitly_allowed_schemes_only",
+                INCLUDE_DEFAULTS: "include_defaults",
+              });
 
-              function isAllowed(schema) {
-                if (schema == null || schema === "") {
+              function isAllowed(
+                scheme,
+                schemeOptions,
+                explicitlyAllowedSchemes,
+              ) {
+                if (schemeOptions === void 0) {
+                  schemeOptions = Options.INCLUDE_DEFAULTS;
+                }
+                if (scheme == null || scheme === "") {
                   return true;
                 }
-                return Object.prototype.hasOwnProperty.call(
-                  defaultSchemes,
-                  schema.toLowerCase(),
+                return (
+                  (explicitlyAllowedSchemes == null
+                    ? void 0
+                    : explicitlyAllowedSchemes.has(scheme.toLowerCase())) ||
+                  (schemeOptions === Options.INCLUDE_DEFAULTS &&
+                    defaultSchemes.has(scheme.toLowerCase()))
                 );
               }
+              exports.Options = Options;
               exports.isAllowed = isAllowed;
             },
-            98,
+            66,
           );
           __d(
             "isSameOrigin",
@@ -8749,7 +8843,11 @@ try {
                     !shouldThrow &&
                     !(
                       c_URISchemes || (c_URISchemes = require("URISchemes"))
-                    ).isAllowed(components.scheme)
+                    ).isAllowed(
+                      components.scheme,
+                      uri.$URIAbstractBase_schemeOptions,
+                      uri.$URIAbstractBase_explicitlyAllowedSchemes,
+                    )
                   ) {
                     return false;
                   }
@@ -8848,17 +8946,48 @@ try {
 
                   return true;
                 };
-                URIAbstractBase.tryParse = function tryParse(uri, serializer) {
-                  var result = new URIAbstractBase(null, serializer);
+                URIAbstractBase.tryParse = function tryParse(
+                  uri,
+                  serializer,
+                  schemeOptions,
+                  explicitlyAllowedSchemes,
+                ) {
+                  var result = new URIAbstractBase(
+                    null,
+                    serializer,
+                    schemeOptions,
+                    explicitlyAllowedSchemes,
+                  );
+
                   return URIAbstractBase.parse(result, uri, false, serializer)
                     ? result
                     : null;
                 };
-                URIAbstractBase.isValid = function isValid(uri, serializer) {
-                  return !!URIAbstractBase.tryParse(uri, serializer);
+                URIAbstractBase.isValid = function isValid(
+                  uri,
+                  serializer,
+                  schemeOptions,
+                  explicitlyAllowedSchemes,
+                ) {
+                  return !!URIAbstractBase.tryParse(
+                    uri,
+                    serializer,
+                    schemeOptions,
+                    explicitlyAllowedSchemes,
+                  );
                 };
 
-                function URIAbstractBase(uri, serializer) {
+                function URIAbstractBase(
+                  uri,
+                  serializer,
+                  schemeOptions,
+                  explicitlyAllowedSchemes,
+                ) {
+                  if (schemeOptions === void 0) {
+                    schemeOptions = (
+                      c_URISchemes || (c_URISchemes = require("URISchemes"))
+                    ).Options.INCLUDE_DEFAULTS;
+                  }
                   serializer || invariant(0, "no serializer set");
                   this.$URIAbstractBase_serializer = serializer;
 
@@ -8870,6 +8999,9 @@ try {
                   this.$URIAbstractBase_isGeneric = false;
                   this.$URIAbstractBase_queryData = {};
                   this.$URIAbstractBase_forceFragmentSeparator = false;
+                  this.$URIAbstractBase_schemeOptions = schemeOptions;
+                  this.$URIAbstractBase_explicitlyAllowedSchemes =
+                    explicitlyAllowedSchemes;
                   URIAbstractBase.parse(this, uri, true, serializer);
                   this.$URIAbstractBase_isQueryParamModified = false;
                 }
@@ -8878,7 +9010,11 @@ try {
                   if (
                     !(
                       c_URISchemes || (c_URISchemes = require("URISchemes"))
-                    ).isAllowed(protocol)
+                    ).isAllowed(
+                      protocol,
+                      this.$URIAbstractBase_schemeOptions,
+                      this.$URIAbstractBase_explicitlyAllowedSchemes,
+                    )
                   ) {
                     false ||
                       invariant(
@@ -15682,6 +15818,44 @@ try {
             98,
           );
           __d(
+            "createObjectFrom",
+            [],
+            function $module_createObjectFrom(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports,
+            ) {
+              function createObjectFrom(keys, values) {
+                if (__DEV__) {
+                  if (!Array.isArray(keys)) {
+                    throw new TypeError("Must pass an array of keys.");
+                  }
+                }
+                if (values === undefined) {
+                  return createObjectFrom(keys, true);
+                }
+
+                var object = {};
+                if (Array.isArray(values)) {
+                  for (var ii = keys.length - 1; ii >= 0; ii--) {
+                    object[keys[ii]] = values[ii];
+                  }
+                } else {
+                  for (var _ii = keys.length - 1; _ii >= 0; _ii--) {
+                    object[keys[_ii]] = values;
+                  }
+                }
+
+                return object;
+              }
+              exports["default"] = createObjectFrom;
+            },
+            66,
+          );
+          __d(
             "resolveURI",
             [],
             function $module_resolveURI(
@@ -20717,123 +20891,6 @@ try {
               exports["default"] = _default;
             },
             98,
-          );
-          __d(
-            "$InternalEnum",
-            [],
-            function $module__InternalEnum(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports,
-            ) {
-              "use strict";
-
-              var hasOwnProperty = Object.prototype.hasOwnProperty;
-
-              var reverseMapCache =
-                typeof WeakMap === "function" ? new WeakMap() : new Map();
-
-              function getReverseMap(enumObject) {
-                var reverseMap = reverseMapCache.get(enumObject);
-                if (reverseMap !== undefined) {
-                  return reverseMap;
-                }
-
-                var newReverseMap = new Map();
-                Object.getOwnPropertyNames(enumObject).forEach(
-                  function forEach_$0(name) {
-                    newReverseMap.set(enumObject[name], name);
-                  },
-                );
-                try {
-                  reverseMapCache.set(enumObject, newReverseMap);
-                } catch (_) {}
-                return newReverseMap;
-              }
-
-              var EnumPrototype = Object.freeze(
-                Object.defineProperties(Object.create(null), {
-                  isValid: {
-                    value: function value(x) {
-                      return getReverseMap(this).has(x);
-                    },
-                  },
-
-                  cast: {
-                    value: function value(x) {
-                      return this.isValid(x) ? x : undefined;
-                    },
-                  },
-
-                  members: {
-                    value: function value() {
-                      return getReverseMap(this).keys();
-                    },
-                  },
-
-                  getName: {
-                    value: function value(_value) {
-                      return getReverseMap(this).get(_value);
-                    },
-                  },
-                }),
-              );
-
-              function Enum(members) {
-                var o = Object.create(EnumPrototype);
-                for (var k in members) {
-                  if (hasOwnProperty.call(members, k)) {
-                    Object.defineProperty(o, k, { value: members[k] });
-                  }
-                }
-                return Object.freeze(o);
-              }
-
-              var EnumMirroredPrototype = Object.freeze(
-                Object.defineProperties(Object.create(null), {
-                  isValid: {
-                    value: function value(x) {
-                      if (typeof x === "string") {
-                        return hasOwnProperty.call(this, x);
-                      }
-                      return false;
-                    },
-                  },
-
-                  cast: {
-                    value: EnumPrototype.cast,
-                  },
-
-                  members: {
-                    value: function value() {
-                      return Object.getOwnPropertyNames(this).values();
-                    },
-                  },
-
-                  getName: {
-                    value: function value(_value2) {
-                      return _value2;
-                    },
-                  },
-                }),
-              );
-
-              Enum.Mirrored = function EnumMirrored(members) {
-                var o = Object.create(EnumMirroredPrototype);
-                for (var i = 0, len = members.length; i < len; ++i) {
-                  Object.defineProperty(o, members[i], { value: members[i] });
-                }
-                return Object.freeze(o);
-              };
-
-              Object.freeze(Enum.Mirrored);
-
-              module.exports = Object.freeze(Enum);
-            },
-            null,
           );
           __d(
             "ChatPluginEntryPointIconEnum",
@@ -28359,7 +28416,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1008310937","namespace":"FB","message":"' +
+        '","revision":"1008421197","namespace":"FB","message":"' +
         e.message +
         '"}}',
     );
