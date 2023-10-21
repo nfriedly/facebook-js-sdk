@@ -1,4 +1,4 @@
-/*1695348311,,JIT Construction: v1008791423,en_US*/
+/*1697899020,,JIT Construction: v1009398717,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -277,9 +277,9 @@ try {
               "exports",
             ];
 
-            var REQUIRE_WHEN_READY = 1;
-            var ES_MODULE_IMPORTS = 32;
-            var ES_MODULE_EXPORTS = 64;
+            var REQUIRE_WHEN_READY = 0x1;
+            var ES_MODULE_IMPORTS = 0x20;
+            var ES_MODULE_EXPORTS = 0x40;
             var EMPTY = {};
 
             var hasOwnProperty = Object.prototype.hasOwnProperty;
@@ -2967,11 +2967,11 @@ try {
                     var ret;
                     var first = s.charCodeAt(index);
 
-                    if (first < 55296 || first > 56319 || index + 1 === len) {
+                    if (first < 0xd800 || first > 0xdbff || index + 1 === len) {
                       ret = s[index];
                     } else {
                       var second = s.charCodeAt(index + 1);
-                      if (second < 56320 || second > 57343) {
+                      if (second < 0xdc00 || second > 0xdfff) {
                         ret = s[index];
                       } else {
                         ret = s[index] + s[index + 1];
@@ -3739,7 +3739,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1008791423",
+            revision: "1009398717",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -5091,6 +5091,8 @@ try {
               module,
               exports,
             ) {
+              var _importNamespace_JSSDKRuntimeConfig;
+
               var ENVIRONMENTS = {
                 UNKNOWN: 0,
                 PAGETAB: 1,
@@ -5108,18 +5110,21 @@ try {
                 FamilyLoginLoaded: false,
                 GraphDomain: "",
                 Initialized: false,
-                IsSPIN: Boolean(importNamespace("JSSDKRuntimeConfig").isSPIN),
+                IsSPIN: Boolean(
+                  (_importNamespace_JSSDKRuntimeConfig =
+                    importNamespace("JSSDKRuntimeConfig")).isSPIN,
+                ),
                 IsVersioned: false,
                 KidDirectedSite: undefined,
-                Locale: importNamespace("JSSDKRuntimeConfig").locale,
+                Locale: _importNamespace_JSSDKRuntimeConfig.locale,
                 LoggedIntoFacebook: undefined,
                 LoginStatus: undefined,
-                Revision: importNamespace("JSSDKRuntimeConfig").revision,
-                Rtl: importNamespace("JSSDKRuntimeConfig").rtl,
+                Revision: _importNamespace_JSSDKRuntimeConfig.revision,
+                Rtl: _importNamespace_JSSDKRuntimeConfig.rtl,
                 Scope: undefined,
-                SDKAB: importNamespace("JSSDKRuntimeConfig").sdkab,
-                SDKUrl: importNamespace("JSSDKRuntimeConfig").sdkurl,
-                SDKNS: importNamespace("JSSDKRuntimeConfig").sdkns,
+                SDKAB: _importNamespace_JSSDKRuntimeConfig.sdkab,
+                SDKUrl: _importNamespace_JSSDKRuntimeConfig.sdkurl,
+                SDKNS: _importNamespace_JSSDKRuntimeConfig.sdkns,
                 ShouldLoadFamilyLogin: false,
                 UseCookie: false,
                 UseLocalStorage: true,
@@ -5388,6 +5393,7 @@ try {
                 isCQuick: false,
                 jssp_header_sent: false,
                 jssp_targeting_enabled: false,
+                loadHyperion: false,
                 start: Date.now(),
                 nocatch: false,
                 useTrustedTypes: false,
@@ -5474,6 +5480,7 @@ try {
               exports,
             ) {
               "use strict";
+              var _importDefault_closure_Env;
 
               function invariant(condition, format) {
                 if (!condition) {
@@ -5538,7 +5545,10 @@ try {
                 }
 
                 var decoderLink =
-                  importDefault("Env").show_invariant_decoder === true
+                  (
+                    _importDefault_closure_Env ||
+                    (_importDefault_closure_Env = importDefault("Env"))
+                  ).show_invariant_decoder === true
                     ? "visit " +
                       buildDecoderLink(number, params) +
                       " to see the full message."
@@ -7018,8 +7028,8 @@ try {
 
               var de =
                 ">___?456789:;<=_______" +
-                "\u0000\u0001\u0002\u0003\u0004\u0005\u0006\u0007\b\t\n\u000B\f\r\u000E\u000F\u0010\u0011\u0012\u0013\u0014\u0015\u0016\u0017\u0018\u0019" +
-                "______\u001A\u001B\u001C\u001D\u001E\u001F !\"#$%&'()*+,-./0123";
+                "\x00\x01\x02\x03\x04\x05\x06\x07\b\t\n\x0b\f\r\x0e\x0f\x10\x11\x12\x13\x14\x15\x16\x17\x18\x19" +
+                "______\x1a\x1b\x1c\x1d\x1e\x1f !\"#$%&'()*+,-./0123";
               function de4(c) {
                 var num =
                   (de.charCodeAt(c.charCodeAt(0) - 43) << 18) |
@@ -7037,10 +7047,7 @@ try {
                 encode: function encode(input) {
                   var str = unescape(encodeURI(input));
                   var i = (str.length + 2) % 3;
-                  str = (str + "\u0000\u0000".slice(i)).replace(
-                    /[\s\S]{3}/g,
-                    en3,
-                  );
+                  str = (str + "\0\0".slice(i)).replace(/[\s\S]{3}/g, en3);
                   return str.slice(0, str.length + i - 2) + "==".slice(i);
                 },
                 decode: function decode(input) {
@@ -7528,11 +7535,23 @@ try {
               module,
               exports,
             ) {
+              var _importDefault_closure_performance;
+
               var performanceNow;
 
-              if (importDefault("performance").now) {
+              if (
+                (
+                  _importDefault_closure_performance ||
+                  (_importDefault_closure_performance =
+                    importDefault("performance"))
+                ).now
+              ) {
                 performanceNow = function performanceNow() {
-                  return importDefault("performance").now();
+                  return (
+                    _importDefault_closure_performance ||
+                    (_importDefault_closure_performance =
+                      importDefault("performance"))
+                  ).now();
                 };
               } else {
                 var cstart = global._cstart;
@@ -7570,7 +7589,11 @@ try {
               module,
               exports,
             ) {
-              exports["default"] = importDefault("performanceNow");
+              var _importDefault_closure_performanceNow;
+              exports["default"] =
+                _importDefault_closure_performanceNow ||
+                (_importDefault_closure_performanceNow =
+                  importDefault("performanceNow"));
             },
             98,
           );
@@ -8240,7 +8263,7 @@ try {
                 var simpleHash = "";
 
                 for (var j = 0; j < 6; j++) {
-                  simpleHash = CHARS.charAt(hash & 31) + simpleHash;
+                  simpleHash = CHARS.charAt(hash & 0x1f) + simpleHash;
                   hash >>= 5;
                 }
 
@@ -9589,7 +9612,7 @@ try {
 
               function replaceBadKeys(key) {
                 if (key === "hasOwnProperty" || key === "__proto__") {
-                  return "\uD83D\uDF56";
+                  return "\ud83d\udf56";
                 }
                 return key;
               }
@@ -9814,6 +9837,8 @@ try {
               module,
               exports,
             ) {
+              var _importNamespace_closure_PHPQuerySerializer;
+
               function serialize(obj) {
                 var kv_pairs = [];
                 var componentsObject = importDefault("flattenPHPQueryData")(
@@ -9848,10 +9873,13 @@ try {
               }
               exports.serialize = serialize;
               exports.encodeComponent = encodeComponent;
-              exports.deserialize =
-                importNamespace("PHPQuerySerializer").deserialize;
+              exports.deserialize = (
+                _importNamespace_closure_PHPQuerySerializer ||
+                (_importNamespace_closure_PHPQuerySerializer =
+                  importNamespace("PHPQuerySerializer"))
+              ).deserialize;
               exports.decodeComponent =
-                importNamespace("PHPQuerySerializer").decodeComponent;
+                _importNamespace_closure_PHPQuerySerializer.decodeComponent;
             },
             98,
           );
@@ -14583,7 +14611,8 @@ try {
                 if (!self.XMLHttpRequest) {
                   return null;
                 }
-                var xhr = new XMLHttpRequest();
+                var xhr;
+                xhr = new XMLHttpRequest();
                 var noop = function noop() {};
 
                 if (
@@ -14596,7 +14625,6 @@ try {
 
                 if ("withCredentials" in xhr) {
                   xhr.open(method, url, true);
-
                   xhr.setRequestHeader(
                     "Content-type",
                     "application/x-www-form-urlencoded",
@@ -14650,15 +14678,17 @@ try {
                   onerror();
                 };
 
-                xhr.onreadystatechange = function () {
-                  if (xhr.readyState == 4) {
-                    if (xhr.status == 200) {
-                      onload();
-                    } else {
-                      onerror();
+                if (xhr instanceof XMLHttpRequest) {
+                  xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4) {
+                      if (xhr.status === 200) {
+                        onload();
+                      } else {
+                        onerror();
+                      }
                     }
-                  }
-                };
+                  };
+                }
 
                 return wrapper;
               }
@@ -14716,7 +14746,7 @@ try {
                 params.suppress_http_code = 1;
                 var data = importDefault("QueryString").encode(params);
 
-                if (method != "post") {
+                if (method !== "post") {
                   url = importDefault("QueryString").appendToUrl(url, data);
                   data = "";
                 }
@@ -18008,6 +18038,8 @@ try {
               "use strict";
 
               function init() {
+                var _importNamespace_sdkEvent;
+                var _importDefault_sdkAuth;
                 importDefault("FB").provide("", {
                   getLoginStatus: function getLoginStatus() {
                     importDefault("sdk.warnInsecure")("getLoginStatus");
@@ -18052,67 +18084,68 @@ try {
                   },
                 });
 
-                importDefault("sdk.Auth").subscribe(
+                (_importDefault_sdkAuth = importDefault("sdk.Auth")).subscribe(
                   "logout",
                   ES(
-                    importNamespace("sdk.Event").fire,
+                    (_importNamespace_sdkEvent = importNamespace("sdk.Event"))
+                      .fire,
                     "bind",
                     true,
-                    importNamespace("sdk.Event"),
+                    _importNamespace_sdkEvent,
                     "auth.logout",
                   ),
                 );
 
-                importDefault("sdk.Auth").subscribe(
+                _importDefault_sdkAuth.subscribe(
                   "login",
                   ES(
-                    importNamespace("sdk.Event").fire,
+                    _importNamespace_sdkEvent.fire,
                     "bind",
                     true,
-                    importNamespace("sdk.Event"),
+                    _importNamespace_sdkEvent,
                     "auth.login",
                   ),
                 );
-                importDefault("sdk.Auth").subscribe(
+                _importDefault_sdkAuth.subscribe(
                   "authresponse.change",
                   ES(
-                    importNamespace("sdk.Event").fire,
+                    _importNamespace_sdkEvent.fire,
                     "bind",
                     true,
-                    importNamespace("sdk.Event"),
+                    _importNamespace_sdkEvent,
                     "auth.authResponseChange",
                   ),
                 );
 
-                importDefault("sdk.Auth").subscribe(
+                _importDefault_sdkAuth.subscribe(
                   "status.change",
                   ES(
-                    importNamespace("sdk.Event").fire,
+                    _importNamespace_sdkEvent.fire,
                     "bind",
                     true,
-                    importNamespace("sdk.Event"),
+                    _importNamespace_sdkEvent,
                     "auth.statusChange",
                   ),
                 );
 
-                importDefault("sdk.Auth").subscribe(
+                _importDefault_sdkAuth.subscribe(
                   "loginDenied",
                   ES(
-                    importNamespace("sdk.Event").fire,
+                    _importNamespace_sdkEvent.fire,
                     "bind",
                     true,
-                    importNamespace("sdk.Event"),
+                    _importNamespace_sdkEvent,
                     "auth.denied",
                   ),
                 );
 
-                importDefault("sdk.Auth").subscribe(
+                _importDefault_sdkAuth.subscribe(
                   "loginError",
                   ES(
-                    importNamespace("sdk.Event").fire,
+                    _importNamespace_sdkEvent.fire,
                     "bind",
                     true,
-                    importNamespace("sdk.Event"),
+                    _importNamespace_sdkEvent,
                     "auth.error",
                   ),
                 );
@@ -18143,7 +18176,7 @@ try {
                   },
                 );
 
-                importNamespace("sdk.Event").subscribe(
+                _importNamespace_sdkEvent.subscribe(
                   "init:post",
                   function Event_subscribe_$1(options) {
                     importDefault("sdk.Auth.LoginStatus").onSDKInit(options);
@@ -18785,23 +18818,27 @@ try {
               }
 
               function initRPC() {
-                importDefault("sdk.RPC").local.hidePluginObjects = function () {
-                  importNamespace("Log").info("hidePluginObjects called");
-                  importDefault("sdk.Canvas.Plugin").hidePluginCallback({
-                    state: "opened",
-                  });
-                };
-                importDefault("sdk.RPC").local.showPluginObjects = function () {
+                var _importDefault_sdkRPC;
+
+                (_importDefault_sdkRPC =
+                  importDefault("sdk.RPC")).local.hidePluginObjects =
+                  function () {
+                    importNamespace("Log").info("hidePluginObjects called");
+                    importDefault("sdk.Canvas.Plugin").hidePluginCallback({
+                      state: "opened",
+                    });
+                  };
+                _importDefault_sdkRPC.local.showPluginObjects = function () {
                   importNamespace("Log").info("showPluginObjects called");
                   importDefault("sdk.Canvas.Plugin").hidePluginCallback({
                     state: "closed",
                   });
                 };
 
-                importDefault("sdk.RPC").local.showFlashObjects =
-                  importDefault("sdk.RPC").local.showPluginObjects;
-                importDefault("sdk.RPC").local.hideFlashObjects =
-                  importDefault("sdk.RPC").local.hidePluginObjects;
+                _importDefault_sdkRPC.local.showFlashObjects =
+                  _importDefault_sdkRPC.local.showPluginObjects;
+                _importDefault_sdkRPC.local.hideFlashObjects =
+                  _importDefault_sdkRPC.local.hidePluginObjects;
               }
 
               function initCanvasPlugin() {
@@ -18835,12 +18872,14 @@ try {
               function initCanvasPresence() {
                 var _s = $RefreshSig$(),
                   _s2 = $RefreshSig$();
-                importNamespace("sdk.Event").subscribe(
-                  importNamespace("sdk.Event").SUBSCRIBE,
+                var _importNamespace_sdkEvent;
+                (_importNamespace_sdkEvent =
+                  importNamespace("sdk.Event")).subscribe(
+                  _importNamespace_sdkEvent.SUBSCRIBE,
                   subscriptionAdded,
                 );
-                importNamespace("sdk.Event").subscribe(
-                  importNamespace("sdk.Event").UNSUBSCRIBE,
+                _importNamespace_sdkEvent.subscribe(
+                  _importNamespace_sdkEvent.UNSUBSCRIBE,
                   subscriptionRemoved,
                 );
 
@@ -19390,27 +19429,25 @@ try {
                 {
                   constructor: function constructor(elem, ns, tag, attr) {
                     var _this = this;
+                    var _importNamespace_sdkPluginUtils;
 
                     this.parent();
                     tag = tag.replace(/-/g, "_");
 
-                    var pluginId = importNamespace("sdk.PluginUtils").getVal(
+                    var pluginId = (_importNamespace_sdkPluginUtils =
+                      importNamespace("sdk.PluginUtils")).getVal(
                       attr,
                       "plugin_id",
                     );
 
                     this.subscribe(
                       "xd.resize",
-                      importNamespace("sdk.PluginUtils").resizeBubbler(
-                        pluginId,
-                      ),
+                      _importNamespace_sdkPluginUtils.resizeBubbler(pluginId),
                     );
 
                     this.subscribe(
                       "xd.resize.flow",
-                      importNamespace("sdk.PluginUtils").resizeBubbler(
-                        pluginId,
-                      ),
+                      _importNamespace_sdkPluginUtils.resizeBubbler(pluginId),
                     );
 
                     this.subscribe(
@@ -19444,6 +19481,8 @@ try {
                     );
 
                     this.subscribe("xd.resize", function subscribe_$1(message) {
+                      var _importNamespace_sdkPluginUtils;
+
                       ES(
                         "Object",
                         "assign",
@@ -19455,20 +19494,17 @@ try {
                         },
                       );
 
-                      importNamespace("sdk.PluginUtils").resize(
+                      (_importNamespace_sdkPluginUtils =
+                        importNamespace("sdk.PluginUtils")).resize(
                         _this._iframeOptions.root,
-                        importNamespace("sdk.PluginUtils").parse(message.width),
-                        importNamespace("sdk.PluginUtils").parse(
-                          message.height,
-                        ),
+                        _importNamespace_sdkPluginUtils.parse(message.width),
+                        _importNamespace_sdkPluginUtils.parse(message.height),
                       );
 
-                      importNamespace("sdk.PluginUtils").resize(
+                      _importNamespace_sdkPluginUtils.resize(
                         _this._iframe,
-                        importNamespace("sdk.PluginUtils").parse(message.width),
-                        importNamespace("sdk.PluginUtils").parse(
-                          message.height,
-                        ),
+                        _importNamespace_sdkPluginUtils.parse(message.width),
+                        _importNamespace_sdkPluginUtils.parse(message.height),
                       );
 
                       _this._isIframeResized = true;
@@ -19519,14 +19555,14 @@ try {
                       ".php?";
                     var params = {};
 
-                    importNamespace("sdk.PluginUtils").validate(
+                    _importNamespace_sdkPluginUtils.validate(
                       this.getParams(),
                       elem,
                       attr,
                       params,
                     );
-                    importNamespace("sdk.PluginUtils").validate(
-                      importNamespace("sdk.PluginUtils").baseParams,
+                    _importNamespace_sdkPluginUtils.validate(
+                      _importNamespace_sdkPluginUtils.baseParams,
                       elem,
                       attr,
                       params,
@@ -19931,96 +19967,98 @@ try {
               module,
               exports,
             ) {
+              var _importNamespace_PluginAttrTypes;
+
               var PluginTags = {
                 ad_library_spend_tracker: {
-                  country: importNamespace("PluginAttrTypes").string,
-                  time_preset: importNamespace("PluginAttrTypes").string,
-                  custom_start_date: importNamespace("PluginAttrTypes").string,
-                  custom_end_date: importNamespace("PluginAttrTypes").string,
-                  race_type: importNamespace("PluginAttrTypes").string,
-                  state: importNamespace("PluginAttrTypes").string,
-                  district: importNamespace("PluginAttrTypes").string,
-                  page_ids: importNamespace("PluginAttrTypes").string,
-                  include_vps: importNamespace("PluginAttrTypes").bool,
+                  country: (_importNamespace_PluginAttrTypes =
+                    importNamespace("PluginAttrTypes")).string,
+                  time_preset: _importNamespace_PluginAttrTypes.string,
+                  custom_start_date: _importNamespace_PluginAttrTypes.string,
+                  custom_end_date: _importNamespace_PluginAttrTypes.string,
+                  race_type: _importNamespace_PluginAttrTypes.string,
+                  state: _importNamespace_PluginAttrTypes.string,
+                  district: _importNamespace_PluginAttrTypes.string,
+                  page_ids: _importNamespace_PluginAttrTypes.string,
+                  include_vps: _importNamespace_PluginAttrTypes.bool,
                 },
 
                 comment_embed: {
-                  href: importNamespace("PluginAttrTypes").url,
-                  include_parent: importNamespace("PluginAttrTypes").bool,
+                  href: _importNamespace_PluginAttrTypes.url,
+                  include_parent: _importNamespace_PluginAttrTypes.bool,
                 },
 
                 composer: {
-                  action_type: importNamespace("PluginAttrTypes").string,
-                  action_properties: importNamespace("PluginAttrTypes").string,
+                  action_type: _importNamespace_PluginAttrTypes.string,
+                  action_properties: _importNamespace_PluginAttrTypes.string,
                 },
 
                 create_event_button: {},
 
                 group: {
-                  href: importNamespace("PluginAttrTypes").url,
-                  show_social_context: importNamespace("PluginAttrTypes").bool,
-                  show_group_info: importNamespace("PluginAttrTypes").bool,
-                  show_metadata: importNamespace("PluginAttrTypes").bool,
+                  href: _importNamespace_PluginAttrTypes.url,
+                  show_social_context: _importNamespace_PluginAttrTypes.bool,
+                  show_group_info: _importNamespace_PluginAttrTypes.bool,
+                  show_metadata: _importNamespace_PluginAttrTypes.bool,
                 },
 
                 like: {
-                  href: importNamespace("PluginAttrTypes").url,
-                  layout: importNamespace("PluginAttrTypes").string,
-                  show_faces: importNamespace("PluginAttrTypes").bool,
-                  share: importNamespace("PluginAttrTypes").bool,
-                  action: importNamespace("PluginAttrTypes").string,
+                  href: _importNamespace_PluginAttrTypes.url,
+                  layout: _importNamespace_PluginAttrTypes.string,
+                  show_faces: _importNamespace_PluginAttrTypes.bool,
+                  share: _importNamespace_PluginAttrTypes.bool,
+                  action: _importNamespace_PluginAttrTypes.string,
 
-                  send: importNamespace("PluginAttrTypes").bool,
-                  size: importNamespace("PluginAttrTypes").string,
+                  send: _importNamespace_PluginAttrTypes.bool,
+                  size: _importNamespace_PluginAttrTypes.string,
                 },
 
                 like_box: {
-                  href: importNamespace("PluginAttrTypes").string,
-                  show_faces: importNamespace("PluginAttrTypes").bool,
-                  header: importNamespace("PluginAttrTypes").bool,
-                  stream: importNamespace("PluginAttrTypes").bool,
-                  force_wall: importNamespace("PluginAttrTypes").bool,
-                  show_border: importNamespace("PluginAttrTypes").bool,
+                  href: _importNamespace_PluginAttrTypes.string,
+                  show_faces: _importNamespace_PluginAttrTypes.bool,
+                  header: _importNamespace_PluginAttrTypes.bool,
+                  stream: _importNamespace_PluginAttrTypes.bool,
+                  force_wall: _importNamespace_PluginAttrTypes.bool,
+                  show_border: _importNamespace_PluginAttrTypes.bool,
 
-                  id: importNamespace("PluginAttrTypes").string,
-                  connections: importNamespace("PluginAttrTypes").string,
-                  profile_id: importNamespace("PluginAttrTypes").string,
-                  name: importNamespace("PluginAttrTypes").string,
+                  id: _importNamespace_PluginAttrTypes.string,
+                  connections: _importNamespace_PluginAttrTypes.string,
+                  profile_id: _importNamespace_PluginAttrTypes.string,
+                  name: _importNamespace_PluginAttrTypes.string,
                 },
 
                 page: {
-                  href: importNamespace("PluginAttrTypes").string,
-                  hide_cta: importNamespace("PluginAttrTypes").bool,
-                  hide_cover: importNamespace("PluginAttrTypes").bool,
-                  small_header: importNamespace("PluginAttrTypes").bool,
-                  adapt_container_width:
-                    importNamespace("PluginAttrTypes").bool,
-                  show_facepile: importNamespace("PluginAttrTypes").bool,
-                  show_posts: importNamespace("PluginAttrTypes").bool,
-                  tabs: importNamespace("PluginAttrTypes").string,
+                  href: _importNamespace_PluginAttrTypes.string,
+                  hide_cta: _importNamespace_PluginAttrTypes.bool,
+                  hide_cover: _importNamespace_PluginAttrTypes.bool,
+                  small_header: _importNamespace_PluginAttrTypes.bool,
+                  adapt_container_width: _importNamespace_PluginAttrTypes.bool,
+                  show_facepile: _importNamespace_PluginAttrTypes.bool,
+                  show_posts: _importNamespace_PluginAttrTypes.bool,
+                  tabs: _importNamespace_PluginAttrTypes.string,
                 },
 
                 page_events: {
-                  href: importNamespace("PluginAttrTypes").url,
+                  href: _importNamespace_PluginAttrTypes.url,
                 },
 
                 post: {
-                  href: importNamespace("PluginAttrTypes").url,
-                  show_text: importNamespace("PluginAttrTypes").bool,
+                  href: _importNamespace_PluginAttrTypes.url,
+                  show_text: _importNamespace_PluginAttrTypes.bool,
                 },
 
                 profile_pic: {
-                  uid: importNamespace("PluginAttrTypes").string,
-                  linked: importNamespace("PluginAttrTypes").bool,
-                  href: importNamespace("PluginAttrTypes").string,
-                  size: importNamespace("PluginAttrTypes").string,
-                  facebook_logo: importNamespace("PluginAttrTypes").bool,
+                  uid: _importNamespace_PluginAttrTypes.string,
+                  linked: _importNamespace_PluginAttrTypes.bool,
+                  href: _importNamespace_PluginAttrTypes.string,
+                  size: _importNamespace_PluginAttrTypes.string,
+                  facebook_logo: _importNamespace_PluginAttrTypes.bool,
                 },
 
                 send_to_mobile: {
-                  max_rows: importNamespace("PluginAttrTypes").string,
-                  show_faces: importNamespace("PluginAttrTypes").bool,
-                  size: importNamespace("PluginAttrTypes").string,
+                  max_rows: _importNamespace_PluginAttrTypes.string,
+                  show_faces: _importNamespace_PluginAttrTypes.bool,
+                  size: _importNamespace_PluginAttrTypes.string,
                 },
               };
 
@@ -20600,6 +20638,8 @@ try {
               module,
               exports,
             ) {
+              var _importDefault_closure_performance;
+
               var performanceAbsoluteNow;
 
               var fallback = function fallback() {
@@ -20611,15 +20651,36 @@ try {
               }
 
               if (
-                importDefault("performance").now &&
-                importDefault("performance").timing &&
-                importDefault("performance").timing.navigationStart
+                (
+                  _importDefault_closure_performance ||
+                  (_importDefault_closure_performance =
+                    importDefault("performance"))
+                ).now &&
+                (
+                  _importDefault_closure_performance ||
+                  (_importDefault_closure_performance =
+                    importDefault("performance"))
+                ).timing &&
+                (
+                  _importDefault_closure_performance ||
+                  (_importDefault_closure_performance =
+                    importDefault("performance"))
+                ).timing.navigationStart
               ) {
-                var navigationStart =
-                  importDefault("performance").timing.navigationStart;
+                var navigationStart = (
+                  _importDefault_closure_performance ||
+                  (_importDefault_closure_performance =
+                    importDefault("performance"))
+                ).timing.navigationStart;
 
                 performanceAbsoluteNow = function performanceAbsoluteNow() {
-                  return importDefault("performance").now() + navigationStart;
+                  return (
+                    (
+                      _importDefault_closure_performance ||
+                      (_importDefault_closure_performance =
+                        importDefault("performance"))
+                    ).now() + navigationStart
+                  );
                 };
               } else {
                 performanceAbsoluteNow = function performanceAbsoluteNow() {
@@ -20646,6 +20707,7 @@ try {
               exports,
             ) {
               "use strict";
+              var _importDefault_closure_performanceAbsoluteNow;
 
               function preLogging(
                 should_use_new_domain,
@@ -20657,7 +20719,11 @@ try {
                 if (calculate_loading_time === void 0) {
                   calculate_loading_time = true;
                 }
-                var request_time = importDefault("performanceAbsoluteNow")();
+                var request_time = (
+                  _importDefault_closure_performanceAbsoluteNow ||
+                  (_importDefault_closure_performanceAbsoluteNow =
+                    importDefault("performanceAbsoluteNow"))
+                )();
                 var uri = should_use_new_domain
                   ? importNamespace("UrlMap").resolve("social_plugin") +
                     "/customer_chat/SDK/"
@@ -21939,16 +22005,28 @@ try {
               module,
               exports,
             ) {
+              var _importDefault_closure_performanceNow;
+
               var lastTime = 0;
 
               var requestAnimationFrame =
                 importDefault("nativeRequestAnimationFrame") ||
                 function (callback) {
-                  var currTime = importDefault("performanceNow")();
+                  var currTime = (
+                    _importDefault_closure_performanceNow ||
+                    (_importDefault_closure_performanceNow =
+                      importDefault("performanceNow"))
+                  )();
                   var timeDelay = Math.max(0, 16 - (currTime - lastTime));
                   lastTime = currTime + timeDelay;
                   return global.setTimeout(function global_setTimeout_$0() {
-                    callback(importDefault("performanceNow")());
+                    callback(
+                      (
+                        _importDefault_closure_performanceNow ||
+                        (_importDefault_closure_performanceNow =
+                          importDefault("performanceNow"))
+                      )(),
+                    );
                   }, timeDelay);
                 };
               var _default = requestAnimationFrame;
@@ -21968,6 +22046,8 @@ try {
               module,
               exports,
             ) {
+              var _importDefault_closure_performanceNow;
+
               var _callbacks = [];
               var _currentCallback = 0;
               var _currentHandle = 0;
@@ -22012,7 +22092,11 @@ try {
                     function requestAnimationFramePolyfill_$0(frameStartTime) {
                       _isScheduled = false;
                       startIdlePeriod(
-                        importDefault("performanceNow")() - frameStartTime,
+                        (
+                          _importDefault_closure_performanceNow ||
+                          (_importDefault_closure_performanceNow =
+                            importDefault("performanceNow"))
+                        )() - frameStartTime,
                       );
                     },
                   );
@@ -22038,7 +22122,11 @@ try {
               }
 
               function startIdlePeriod(frameDelay) {
-                var now = importDefault("performanceNow")();
+                var now = (
+                  _importDefault_closure_performanceNow ||
+                  (_importDefault_closure_performanceNow =
+                    importDefault("performanceNow"))
+                )();
 
                 if (now > _lastDeadline) {
                   var time = calculateDeadline(frameDelay);
@@ -22073,7 +22161,11 @@ try {
               function invokeIdleCallbacks(deadline) {
                 var callback;
                 while (
-                  importDefault("performanceNow")() < deadline &&
+                  (
+                    _importDefault_closure_performanceNow ||
+                    (_importDefault_closure_performanceNow =
+                      importDefault("performanceNow"))
+                  )() < deadline &&
                   (callback = popNextCallback())
                 ) {
                   callback(new IdleCallbackDeadline(deadline));
@@ -22099,7 +22191,11 @@ try {
                   var deadline = this.$IdleCallbackDeadline_deadline;
 
                   if (deadline != null) {
-                    var now = importDefault("performanceNow")();
+                    var now = (
+                      _importDefault_closure_performanceNow ||
+                      (_importDefault_closure_performanceNow =
+                        importDefault("performanceNow"))
+                    )();
                     if (now < deadline) {
                       return deadline - now;
                     }
@@ -22222,7 +22318,7 @@ try {
                   /[xy]/g,
                   function replace_$1(c) {
                     var r = (Math.random() * 16) | 0;
-                    var v = c === "x" ? r : (r & 3) | 8;
+                    var v = c === "x" ? r : (r & 0x3) | 0x8;
                     return v.toString(16);
                   },
                 );
@@ -22264,6 +22360,7 @@ try {
               exports,
             ) {
               "use strict";
+              var _importDefault_closure_performanceAbsoluteNow;
               var LoadingState = require("$InternalEnum").Mirrored([
                 "WAITING",
                 "LOADING",
@@ -22290,7 +22387,11 @@ try {
                       is_loaded_by_facade: "bool",
                     }) || this;
 
-                  var requestTime = importDefault("performanceAbsoluteNow")();
+                  var requestTime = (
+                    _importDefault_closure_performanceAbsoluteNow ||
+                    (_importDefault_closure_performanceAbsoluteNow =
+                      importDefault("performanceAbsoluteNow"))
+                  )();
 
                   var logId = importDefault("uuidv4")();
                   var currentUrl = window.location.href;
@@ -22332,9 +22433,8 @@ try {
 
                   _this.shadowCss = ["css:fb.shadow.css.chatdom"];
 
-                  _this.$ChatDOMFacade_initTime = importDefault(
-                    "performanceAbsoluteNow",
-                  )();
+                  _this.$ChatDOMFacade_initTime =
+                    _importDefault_closure_performanceAbsoluteNow();
                   importNamespace("Log").info(
                     "facadeperf: Started browser idle loader.",
                   );
@@ -22346,7 +22446,11 @@ try {
                       8000,
                     ),
                     function () {
-                      var endTime = importDefault("performanceAbsoluteNow")();
+                      var endTime = (
+                        _importDefault_closure_performanceAbsoluteNow ||
+                        (_importDefault_closure_performanceAbsoluteNow =
+                          importDefault("performanceAbsoluteNow"))
+                      )();
                       importNamespace("Log").info(
                         "facadeperf: Idle callback starts full load in %sms.",
                         endTime - _this.$ChatDOMFacade_initTime,
@@ -22375,7 +22479,11 @@ try {
                         _data$entry_point_siz,
                         _ChatPluginEntryPoint,
                         _ChatPluginEntryPoint2;
-                      var endTime = importDefault("performanceAbsoluteNow")();
+                      var endTime = (
+                        _importDefault_closure_performanceAbsoluteNow ||
+                        (_importDefault_closure_performanceAbsoluteNow =
+                          importDefault("performanceAbsoluteNow"))
+                      )();
                       importNamespace("Log").info(
                         "facadeperf: CORS request completed in %sms.",
                         endTime - _this.$ChatDOMFacade_initTime,
@@ -22852,6 +22960,7 @@ try {
                   _this.subscribe(
                     "xd.resize",
                     function _this_subscribe_$1(message) {
+                      var _importNamespace_sdkPluginUtils;
                       ES(
                         "Object",
                         "assign",
@@ -22863,20 +22972,17 @@ try {
                         },
                       );
 
-                      importNamespace("sdk.PluginUtils").resize(
+                      (_importNamespace_sdkPluginUtils =
+                        importNamespace("sdk.PluginUtils")).resize(
                         _this.iframeOptions.root,
-                        importNamespace("sdk.PluginUtils").parse(message.width),
-                        importNamespace("sdk.PluginUtils").parse(
-                          message.height,
-                        ),
+                        _importNamespace_sdkPluginUtils.parse(message.width),
+                        _importNamespace_sdkPluginUtils.parse(message.height),
                       );
 
-                      importNamespace("sdk.PluginUtils").resize(
+                      _importNamespace_sdkPluginUtils.resize(
                         _this.iframe,
-                        importNamespace("sdk.PluginUtils").parse(message.width),
-                        importNamespace("sdk.PluginUtils").parse(
-                          message.height,
-                        ),
+                        _importNamespace_sdkPluginUtils.parse(message.width),
+                        _importNamespace_sdkPluginUtils.parse(message.height),
                       );
 
                       _this.$IframePluginClass_isIframeResized = true;
@@ -23911,6 +24017,7 @@ try {
               exports,
             ) {
               "use strict";
+              var _importDefault_closure_performanceAbsoluteNow;
               var CustomerChat = (function (_IframePluginClass) {
                 babelHelpers.inheritsLoose(CustomerChat, _IframePluginClass);
 
@@ -24059,7 +24166,11 @@ try {
                         importNamespace("Log").warn("Invalid local state");
                       }
                     }
-                    var requestTime = importDefault("performanceAbsoluteNow")();
+                    var requestTime = (
+                      _importDefault_closure_performanceAbsoluteNow ||
+                      (_importDefault_closure_performanceAbsoluteNow =
+                        importDefault("performanceAbsoluteNow"))
+                    )();
                     ES("Object", "assign", false, this.params, {
                       request_time: requestTime,
                     });
@@ -24079,6 +24190,7 @@ try {
                 _proto.$CustomerChat_setUpSubscriptions =
                   function $CustomerChat_setUpSubscriptions() {
                     var _this = this;
+                    var _importNamespace_sdkXFBMLCustomerChatWrapper;
                     this.subscribe("render", function subscribe_$1() {
                       importNamespace(
                         "ChatPluginSDKPreLoggingUtils",
@@ -24181,38 +24293,31 @@ try {
                         );
                       },
                     );
-                    importNamespace(
-                      "sdk.XFBML.CustomerChatWrapper",
-                    ).CustomerChatInternalEvent.subscribe(
-                      importNamespace("sdk.XFBML.CustomerChatWrapper")
+                    (_importNamespace_sdkXFBMLCustomerChatWrapper =
+                      importNamespace(
+                        "sdk.XFBML.CustomerChatWrapper",
+                      )).CustomerChatInternalEvent.subscribe(
+                      _importNamespace_sdkXFBMLCustomerChatWrapper
                         .CustomerChatInternalEventType.SHOW,
                       this.show,
                     );
-                    importNamespace(
-                      "sdk.XFBML.CustomerChatWrapper",
-                    ).CustomerChatInternalEvent.subscribe(
-                      importNamespace("sdk.XFBML.CustomerChatWrapper")
+                    _importNamespace_sdkXFBMLCustomerChatWrapper.CustomerChatInternalEvent.subscribe(
+                      _importNamespace_sdkXFBMLCustomerChatWrapper
                         .CustomerChatInternalEventType.HIDE,
                       this.hide,
                     );
-                    importNamespace(
-                      "sdk.XFBML.CustomerChatWrapper",
-                    ).CustomerChatInternalEvent.subscribe(
-                      importNamespace("sdk.XFBML.CustomerChatWrapper")
+                    _importNamespace_sdkXFBMLCustomerChatWrapper.CustomerChatInternalEvent.subscribe(
+                      _importNamespace_sdkXFBMLCustomerChatWrapper
                         .CustomerChatInternalEventType.SHOW_DIALOG,
                       this.showDialog,
                     );
-                    importNamespace(
-                      "sdk.XFBML.CustomerChatWrapper",
-                    ).CustomerChatInternalEvent.subscribe(
-                      importNamespace("sdk.XFBML.CustomerChatWrapper")
+                    _importNamespace_sdkXFBMLCustomerChatWrapper.CustomerChatInternalEvent.subscribe(
+                      _importNamespace_sdkXFBMLCustomerChatWrapper
                         .CustomerChatInternalEventType.HIDE_DIALOG,
                       this.hideDialog,
                     );
-                    importNamespace(
-                      "sdk.XFBML.CustomerChatWrapper",
-                    ).CustomerChatInternalEvent.subscribe(
-                      importNamespace("sdk.XFBML.CustomerChatWrapper")
+                    _importNamespace_sdkXFBMLCustomerChatWrapper.CustomerChatInternalEvent.subscribe(
+                      _importNamespace_sdkXFBMLCustomerChatWrapper
                         .CustomerChatInternalEventType.UPDATE,
                       this.update,
                     );
@@ -25319,51 +25424,47 @@ try {
               exports,
             ) {
               "use strict";
+              var _importDefault_sdkfbt;
 
               var buttonStringsFBT = {
-                continueWith: importDefault("sdk.fbt")._(
+                continueWith: (_importDefault_sdkfbt =
+                  importDefault("sdk.fbt"))._(
                   "Continue with {facebook_app_name} or {instagram_app_name}",
                 ),
 
-                continueWithShort: importDefault("sdk.fbt")._(
+                continueWithShort: _importDefault_sdkfbt._(
                   "{facebook_app_name} or {instagram_app_name}",
                 ),
 
-                loginButtonAriaLabel: importDefault("sdk.fbt")._(
+                loginButtonAriaLabel: _importDefault_sdkfbt._(
                   "Continue with Facebook or Instagram",
                 ),
 
-                logout: importDefault("sdk.fbt")._("Logout"),
+                logout: _importDefault_sdkfbt._("Logout"),
 
-                logoutButtonAriaLabel: importDefault("sdk.fbt")._(
+                logoutButtonAriaLabel: _importDefault_sdkfbt._(
                   "Logout the current website",
                 ),
 
-                titleText: importDefault("sdk.fbt")._("Choose Account"),
+                titleText: _importDefault_sdkfbt._("Choose Account"),
 
-                promptText: importDefault("sdk.fbt")._(
+                promptText: _importDefault_sdkfbt._(
                   "Which account would you like to use to log in?",
                 ),
 
-                facebookText: importDefault("sdk.fbt")._(
-                  "Log in with Facebook",
-                ),
+                facebookText: _importDefault_sdkfbt._("Log in with Facebook"),
 
-                facebookTextShort: importDefault("sdk.fbt")._("Log in"),
+                facebookTextShort: _importDefault_sdkfbt._("Log in"),
 
-                instagramText: importDefault("sdk.fbt")._(
-                  "Log in with Instagram",
-                ),
+                instagramText: _importDefault_sdkfbt._("Log in with Instagram"),
 
-                disambiguationDialogAriaLabelText: importDefault("sdk.fbt")._(
+                disambiguationDialogAriaLabelText: _importDefault_sdkfbt._(
                   "Log in with Facebook or Instagram",
                 ),
 
-                fbButtonText: importDefault("sdk.fbt")._(
-                  "Continue with Facebook",
-                ),
+                fbButtonText: _importDefault_sdkfbt._("Continue with Facebook"),
 
-                igButtonText: importDefault("sdk.fbt")._(
+                igButtonText: _importDefault_sdkfbt._(
                   "Continue with Instagram",
                 ),
               };
@@ -26256,22 +26357,23 @@ try {
                 }
                 var _proto = MessengerCheckbox.prototype;
                 _proto.getParams = function getParams() {
+                  var _importNamespace_PluginAttrTypes;
                   return {
-                    messenger_app_id: importNamespace("PluginAttrTypes").string,
-                    page_id: importNamespace("PluginAttrTypes").string,
-                    pixel_id: importNamespace("PluginAttrTypes").string,
-                    prechecked: importNamespace("PluginAttrTypes").bool,
-                    allow_login: importNamespace("PluginAttrTypes").bool,
-                    size: importNamespace("PluginAttrTypes").string,
-                    origin: importNamespace("PluginAttrTypes").string,
-                    user_ref: importNamespace("PluginAttrTypes").string,
-                    identity_match: importNamespace("PluginAttrTypes").string,
-                    center_align: importNamespace("PluginAttrTypes").bool,
-                    opt_in_type: importNamespace("PluginAttrTypes").string,
+                    messenger_app_id: (_importNamespace_PluginAttrTypes =
+                      importNamespace("PluginAttrTypes")).string,
+                    page_id: _importNamespace_PluginAttrTypes.string,
+                    pixel_id: _importNamespace_PluginAttrTypes.string,
+                    prechecked: _importNamespace_PluginAttrTypes.bool,
+                    allow_login: _importNamespace_PluginAttrTypes.bool,
+                    size: _importNamespace_PluginAttrTypes.string,
+                    origin: _importNamespace_PluginAttrTypes.string,
+                    user_ref: _importNamespace_PluginAttrTypes.string,
+                    identity_match: _importNamespace_PluginAttrTypes.string,
+                    center_align: _importNamespace_PluginAttrTypes.bool,
+                    opt_in_type: _importNamespace_PluginAttrTypes.string,
                     promotional_frequency:
-                      importNamespace("PluginAttrTypes").string,
-                    promotional_topic:
-                      importNamespace("PluginAttrTypes").string,
+                      _importNamespace_PluginAttrTypes.string,
+                    promotional_topic: _importNamespace_PluginAttrTypes.string,
                   };
                 };
                 return MessengerCheckbox;
@@ -26376,11 +26478,13 @@ try {
                 }
                 var _proto = MessengerMessageUs.prototype;
                 _proto.getParams = function getParams() {
+                  var _importNamespace_PluginAttrTypes;
                   return {
-                    messenger_app_id: importNamespace("PluginAttrTypes").string,
-                    page_id: importNamespace("PluginAttrTypes").string,
-                    color: importNamespace("PluginAttrTypes").string,
-                    size: importNamespace("PluginAttrTypes").string,
+                    messenger_app_id: (_importNamespace_PluginAttrTypes =
+                      importNamespace("PluginAttrTypes")).string,
+                    page_id: _importNamespace_PluginAttrTypes.string,
+                    color: _importNamespace_PluginAttrTypes.string,
+                    size: _importNamespace_PluginAttrTypes.string,
                   };
                 };
                 return MessengerMessageUs;
@@ -26765,16 +26869,18 @@ try {
                 }
                 var _proto = SendToMessenger.prototype;
                 _proto.getParams = function getParams() {
+                  var _importNamespace_PluginAttrTypes;
                   return {
-                    messenger_app_id: importNamespace("PluginAttrTypes").string,
-                    page_id: importNamespace("PluginAttrTypes").string,
-                    color: importNamespace("PluginAttrTypes").string,
-                    size: importNamespace("PluginAttrTypes").string,
-                    enforce_login: importNamespace("PluginAttrTypes").bool,
-                    identity_match: importNamespace("PluginAttrTypes").string,
-                    origin: importNamespace("PluginAttrTypes").string,
-                    cta_text: importNamespace("PluginAttrTypes").string,
-                    allow_login: importNamespace("PluginAttrTypes").bool,
+                    messenger_app_id: (_importNamespace_PluginAttrTypes =
+                      importNamespace("PluginAttrTypes")).string,
+                    page_id: _importNamespace_PluginAttrTypes.string,
+                    color: _importNamespace_PluginAttrTypes.string,
+                    size: _importNamespace_PluginAttrTypes.string,
+                    enforce_login: _importNamespace_PluginAttrTypes.bool,
+                    identity_match: _importNamespace_PluginAttrTypes.string,
+                    origin: _importNamespace_PluginAttrTypes.string,
+                    cta_text: _importNamespace_PluginAttrTypes.string,
+                    allow_login: _importNamespace_PluginAttrTypes.bool,
                   };
                 };
                 return SendToMessenger;
@@ -27321,6 +27427,7 @@ try {
               var currentAccessToken;
 
               function init() {
+                var _importDefault_ApiClient;
                 importDefault("sdk.Runtime").subscribe(
                   "ClientID.change",
                   function Runtime_subscribe_$1(value) {
@@ -27336,11 +27443,12 @@ try {
                   },
                 );
 
-                importDefault("ApiClient").setDefaultParams({
+                (_importDefault_ApiClient =
+                  importDefault("ApiClient")).setDefaultParams({
                   sdk: "joey",
                 });
 
-                importDefault("ApiClient").subscribe(
+                _importDefault_ApiClient.subscribe(
                   "request.complete",
 
                   function ApiClient_subscribe_$1(
@@ -27375,7 +27483,7 @@ try {
                   },
                 );
 
-                importDefault("ApiClient").subscribe(
+                _importDefault_ApiClient.subscribe(
                   "request.complete",
                   function ApiClient_subscribe_$1(
                     endpoint,
@@ -27394,7 +27502,7 @@ try {
                   },
                 );
 
-                importDefault("ApiClient").subscribe(
+                _importDefault_ApiClient.subscribe(
                   "request.error",
 
                   function ApiClient_subscribe_$1(
@@ -27952,30 +28060,32 @@ try {
               "use strict";
 
               function init() {
+                var _importNamespace_sdkEvent;
                 importNamespace("sdk.Time").recordBootload();
 
-                importNamespace("sdk.Event").subscribe(
+                (_importNamespace_sdkEvent =
+                  importNamespace("sdk.Event")).subscribe(
                   "init:post",
                   function Event_subscribe_$1() {
                     importNamespace("sdk.Time").log("init");
                   },
                 );
 
-                importNamespace("sdk.Event").subscribe(
+                _importNamespace_sdkEvent.subscribe(
                   "init:asyncstart",
                   function Event_subscribe_$1() {
                     importNamespace("sdk.Time").log("asyncstart");
                   },
                 );
 
-                importNamespace("sdk.Event").subscribe(
+                _importNamespace_sdkEvent.subscribe(
                   "iframeplugin:create",
                   importDefault("runOnce")(function runOnce_$0() {
                     return importNamespace("sdk.Time").log("pluginframe");
                   }),
                 );
 
-                importNamespace("sdk.Event").subscribe(
+                _importNamespace_sdkEvent.subscribe(
                   "iframeplugin:onload",
                   importDefault("runOnce")(function runOnce_$0() {
                     return importNamespace("sdk.Time").log("ttfp");
@@ -28015,13 +28125,16 @@ try {
               __DO_NOT_USE__module,
               __DO_NOT_USE__exports,
             ) {
+              var _importDefault_sdkCanvaspublic;
+
               importDefault("sdk.api-public").init();
               importDefault("sdk.AppEvents-public").init();
               importDefault("sdk.Auth-public").init();
-              importDefault("sdk.Canvas-public").init();
-              importDefault("sdk.Canvas-public").initCanvasPlugin();
-              importDefault("sdk.Canvas-public").initCanvasPrefetcher();
-              importDefault("sdk.Canvas-public").initCanvasPresence();
+              (_importDefault_sdkCanvaspublic =
+                importDefault("sdk.Canvas-public")).init();
+              _importDefault_sdkCanvaspublic.initCanvasPlugin();
+              _importDefault_sdkCanvaspublic.initCanvasPrefetcher();
+              _importDefault_sdkCanvaspublic.initCanvasPresence();
               importDefault("sdk.Event-public").init();
               importDefault("sdk.Frictionless-public").init();
               importDefault("sdk.GamingServices-public").init();
@@ -28056,7 +28169,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1008791423","namespace":"FB","message":"' +
+        '","revision":"1009398717","namespace":"FB","message":"' +
         e.message +
         '"}}',
     );
