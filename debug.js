@@ -1,4 +1,4 @@
-/*1698461542,,JIT Construction: v1009546204,en_US*/
+/*1699322238,,JIT Construction: v1009723846,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -2027,14 +2027,16 @@ module.exports = (require("json3-3.3.2")()/*: any */);
 /**
  * (c) Meta Platforms, Inc. and affiliates. Confidential and proprietary.
  *
- * scripts/static_resources/js/fb-transforms/babel-7/babel-plugin-jssdk
- * converts ES5/ES6 code into using this module in ES3 style.
- *
  * 
  * @format
  * @oncall jssdk
  * @ServerCallableModule
  */__d("ES",["ES5FunctionPrototype","ES5StringPrototype","ES6Array","ES6ArrayPrototype","ES6Number","ES6Object","ES7ArrayPrototype","ES7Object","ES7StringPrototype","json3"],(function $module_ES(global,require,importDefault,importNamespace,requireLazy,module,exports){
+
+
+
+
+
 
 
 
@@ -3565,7 +3567,15 @@ typeof this!=='undefined'?
 this:
 typeof self!=='undefined'?
 self:
-{});      __d("JSSDKCanvasPrefetcherConfig",[],{"enabled":true,"excludedAppIds":[144959615576466,768691303149786,320528941393723],"sampleRate":500});__d("JSSDKConfig",[],{"features":{"allow_non_canvas_app_events":false,"error_handling":{"rate":4},"e2e_ping_tracking":{"rate":0.1},"xd_timeout":{"rate":1,"value":60000},"use_bundle":false,"should_log_response_error":true,"popup_blocker_scribe_logging":{"rate":100},"https_only_enforce_starting":2538809200000,"https_only_learn_more":"https:\/\/developers.facebook.com\/blog\/post\/2018\/06\/08\/enforce-https-facebook-login\/","https_only_scribe_logging":{"rate":1},"log_perf":{"rate":0.001},"use_x_xd":{"rate":100},"cache_auth_response":{"rate":100},"oauth_funnel_logger_version":1,"force_popup_to_canvas_apps_with_id":[],"force_popup_to_all_canvas_app":false,"max_oauth_dialog_retries":{"rate":100,"value":10},"plugin_tags_blacklist":[],"idle_callback_wait_time_ms":3000,"chat_plugin_facade_timeout_ms":8000,"chat_plugin_facade_enabled_pageids":["102493178867330","107331571710078","1032787970130843","107771111665395","261907812360345","101305975654752","275483104252055","101664622285042","112682113428700","271628573687012","385757598521443","100545935690488"],"should_enable_ig_login_status_fetch":true,"log_cookies_usage":{"rate":0.1},"allow_shadow_dom_for_apps_with_id":[520916077950649,152351391599356,132081130190180,468663283258845,409976882430412,189845245141894,360467581347,274266067164],"allow_shadow_dom":true,"xfoa_login_enabled":false}});__d("JSSDKCssConfig",[],{"rules":".fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:'lucida grande', tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}\u0040keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}\n.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:'lucida grande', tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}\u0040keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}\n.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_dialog_advanced{border-radius:8px;padding:10px}.fb_dialog_content{background:#fff;color:#373737}.fb_dialog_close_icon{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v3\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{left:5px;right:auto;top:5px}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v3\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v3\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v3\/yd\/r\/Cou7n-nqK52.gif) no-repeat 5px 50\u0025;float:left;padding:5px 0 7px 26px}body.fb_hidden{height:100\u0025;left:0;margin:0;overflow:visible;position:absolute;top:-10000px;transform:none;width:100\u0025}.fb_dialog.fb_dialog_mobile.loading{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v3\/ya\/r\/3rhSv5V8j3o.gif) white no-repeat 50\u0025 50\u0025;min-height:100\u0025;min-width:100\u0025;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{background:none;height:auto;min-height:initial;min-width:initial;width:auto}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100\u0025}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{clear:both;color:#fff;display:block;font-size:18px;padding-top:20px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .4);bottom:0;left:0;min-height:100\u0025;position:absolute;right:0;top:0;width:100\u0025;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_mobile .fb_dialog_iframe{position:sticky;top:0}.fb_dialog_content .dialog_header{background:linear-gradient(from(#738aba), to(#2c4987));border-bottom:1px solid;border-color:#043b87;box-shadow:white 0 1px 1px -1px inset;color:#fff;font:bold 14px Helvetica, sans-serif;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{height:43px;width:100\u0025}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:linear-gradient(from(#4267B2), to(#2a4887));background-clip:padding-box;border:1px solid #29487d;border-radius:3px;display:inline-block;line-height:18px;margin-top:3px;max-width:85px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{background:none;border:none;color:#fff;font:bold 12px Helvetica, sans-serif;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v3\/y9\/r\/jKEcVPZFk-2.gif) no-repeat 50\u0025 50\u0025;border:1px solid #4a4a4a;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f5f6f7;border:1px solid #4a4a4a;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https:\/\/connect.facebook.net\/rsrc.php\/v3\/yD\/r\/t-wz8gw1xG1.png);background-position:50\u0025 50\u0025;background-repeat:no-repeat;height:24px;width:24px}\u0040keyframes rotateSpinner{0\u0025{transform:rotate(0deg)}100\u0025{transform:rotate(360deg)}}\n.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100\u0025}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100\u0025}\n.fb_mpn_mobile_landing_page_slide_out{animation-duration:200ms;animation-name:fb_mpn_landing_page_slide_out;transition-timing-function:ease-in}.fb_mpn_mobile_landing_page_slide_out_from_left{animation-duration:200ms;animation-name:fb_mpn_landing_page_slide_out_from_left;transition-timing-function:ease-in}.fb_mpn_mobile_landing_page_slide_up{animation-duration:500ms;animation-name:fb_mpn_landing_page_slide_up;transition-timing-function:ease-in}.fb_mpn_mobile_bounce_in{animation-duration:300ms;animation-name:fb_mpn_bounce_in;transition-timing-function:ease-in}.fb_mpn_mobile_bounce_out{animation-duration:300ms;animation-name:fb_mpn_bounce_out;transition-timing-function:ease-in}.fb_mpn_mobile_bounce_out_v2{animation-duration:300ms;animation-name:fb_mpn_fade_out;transition-timing-function:ease-in}.fb_customer_chat_bounce_in_v2{animation-duration:300ms;animation-name:fb_bounce_in_v2;transition-timing-function:ease-in}.fb_customer_chat_bounce_in_from_left{animation-duration:300ms;animation-name:fb_bounce_in_from_left;transition-timing-function:ease-in}.fb_customer_chat_bounce_out_v2{animation-duration:300ms;animation-name:fb_bounce_out_v2;transition-timing-function:ease-in}.fb_customer_chat_bounce_out_from_left{animation-duration:300ms;animation-name:fb_bounce_out_from_left;transition-timing-function:ease-in}.fb_invisible_flow{display:inherit;height:0;overflow-x:hidden;width:0}\u0040keyframes fb_mpn_landing_page_slide_out{0\u0025{margin:0 12px;width:100\u0025 - 24px}60\u0025{border-radius:18px}100\u0025{border-radius:50\u0025;margin:0 24px;width:60px}}\u0040keyframes fb_mpn_landing_page_slide_out_from_left{0\u0025{left:12px;width:100\u0025 - 24px}60\u0025{border-radius:18px}100\u0025{border-radius:50\u0025;left:12px;width:60px}}\u0040keyframes fb_mpn_landing_page_slide_up{0\u0025{bottom:0;opacity:0}100\u0025{bottom:24px;opacity:1}}\u0040keyframes fb_mpn_bounce_in{0\u0025{opacity:.5;top:100\u0025}100\u0025{opacity:1;top:0}}\u0040keyframes fb_mpn_fade_out{0\u0025{bottom:30px;opacity:1}100\u0025{bottom:0;opacity:0}}\u0040keyframes fb_mpn_bounce_out{0\u0025{opacity:1;top:0}100\u0025{opacity:.5;top:100\u0025}}\u0040keyframes fb_bounce_in_v2{0\u0025{opacity:0;transform:scale(0, 0);transform-origin:bottom right}50\u0025{transform:scale(1.03, 1.03);transform-origin:bottom right}100\u0025{opacity:1;transform:scale(1, 1);transform-origin:bottom right}}\u0040keyframes fb_bounce_in_from_left{0\u0025{opacity:0;transform:scale(0, 0);transform-origin:bottom left}50\u0025{transform:scale(1.03, 1.03);transform-origin:bottom left}100\u0025{opacity:1;transform:scale(1, 1);transform-origin:bottom left}}\u0040keyframes fb_bounce_out_v2{0\u0025{opacity:1;transform:scale(1, 1);transform-origin:bottom right}100\u0025{opacity:0;transform:scale(0, 0);transform-origin:bottom right}}\u0040keyframes fb_bounce_out_from_left{0\u0025{opacity:1;transform:scale(1, 1);transform-origin:bottom left}100\u0025{opacity:0;transform:scale(0, 0);transform-origin:bottom left}}\u0040keyframes slideInFromBottom{0\u0025{opacity:.1;transform:translateY(100\u0025)}100\u0025{opacity:1;transform:translateY(0)}}\u0040keyframes slideInFromBottomDelay{0\u0025{opacity:0;transform:translateY(100\u0025)}97\u0025{opacity:0;transform:translateY(100\u0025)}100\u0025{opacity:1;transform:translateY(0)}}","components":["css:fb.css.base","css:fb.css.dialog","css:fb.css.iframewidget","css:fb.css.customer_chat_plugin_iframe"]});__d("JSSDKRuntimeConfig",[],{"locale":"en_US","revision":"1009546204","rtl":false,"sdkab":null,"sdkns":"","sdkurl":"https:\/\/connect.facebook.net\/en_US\/sdk\/debug.js","scribeurl":"https:\/\/www.facebook.com\/platform\/scribe_endpoint.php\/"});__d("JSSDKXDConfig",[],{"XXdUrl":"\/x\/connect\/xd_arbiter\/?version=46","useCdn":true});__d("UrlMapConfig",[],{"www":"www.facebook.com","m":"m.facebook.com","business":"business.facebook.com","api":"api.facebook.com","api_read":"api-read.facebook.com","graph":"graph.facebook.com","an":"an.facebook.com","fbcdn":"static.xx.fbcdn.net","cdn":"staticxx.facebook.com","graph_facebook":"graph.facebook.com","graph_gaming":"graph.fb.gg","graph_instagram":"graph.instagram.com","www_instagram":"www.instagram.com","social_plugin":"socialplugin.facebook.net"});__d("JSSDKShadowCssConfig",[],{"css:fb.shadow.css.fb_login_button":".fb_login_button_container{align-content:center;align-items:center;border:0;color:#fff;display:flex;font-family:'Roboto', 'Freight Sans LF Pro', Helvetica, Arial, 'Lucida Grande', sans-serif;font-weight:bold;margin:auto}.fb-button-main-element{display:flex;flex-wrap:nowrap;overflow:hidden}.fb-iframe-overlay{display:flex}.fb-button-main-element:hover{cursor:pointer}.fb-button-main-element:focus{filter:brightness(80\u0025)}.fb_button_label_element{align-items:center;display:flex;font-weight:bold;justify-content:center}.fb_button_label{margin:auto;pointer-events:none}.fb_button_svg_logo{height:1.33em;margin-left:.4em;margin-right:.4em;padding:.065em}.login_fb_logo .f_logo_f{fill:transparent}.single_button_svg_logo{margin-bottom:.08em}"});                                                                                                                                                                                                                                                                                                                                                                                                                                                         __d("DOMWrapper",[],function $module_DOMWrapper(global,require,requireDynamic,requireLazy,module,exports){
+{});      __d("JSSDKCanvasPrefetcherConfig",[],{"enabled":true,"excludedAppIds":[144959615576466,768691303149786,320528941393723],"sampleRate":500});__d("JSSDKConfig",[],{"features":{"allow_non_canvas_app_events":false,"error_handling":{"rate":4},"e2e_ping_tracking":{"rate":0.1},"xd_timeout":{"rate":1,"value":60000},"use_bundle":false,"should_log_response_error":true,"popup_blocker_scribe_logging":{"rate":100},"https_only_enforce_starting":2538809200000,"https_only_learn_more":"https:\/\/developers.facebook.com\/blog\/post\/2018\/06\/08\/enforce-https-facebook-login\/","https_only_scribe_logging":{"rate":1},"log_perf":{"rate":0.001},"use_x_xd":{"rate":100},"cache_auth_response":{"rate":100},"oauth_funnel_logger_version":1,"force_popup_to_canvas_apps_with_id":[],"force_popup_to_all_canvas_app":false,"max_oauth_dialog_retries":{"rate":100,"value":10},"plugin_tags_blacklist":[],"idle_callback_wait_time_ms":3000,"chat_plugin_facade_timeout_ms":8000,"chat_plugin_facade_enabled_pageids":["102493178867330","107331571710078","1032787970130843","107771111665395","261907812360345","101305975654752","275483104252055","101664622285042","112682113428700","271628573687012","385757598521443","100545935690488"],"should_enable_ig_login_status_fetch":true,"log_cookies_usage":{"rate":0.1},"allow_shadow_dom_for_apps_with_id":[520916077950649,152351391599356,132081130190180,468663283258845,409976882430412,189845245141894,360467581347,274266067164],"allow_shadow_dom":true,"xfoa_login_enabled":false}});__d("JSSDKCssConfig",[],{"rules":".fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:'lucida grande', tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}\u0040keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}\n.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:'lucida grande', tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}\u0040keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}\n.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_dialog_advanced{border-radius:8px;padding:10px}.fb_dialog_content{background:#fff;color:#373737}.fb_dialog_close_icon{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v3\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{left:5px;right:auto;top:5px}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v3\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v3\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v3\/yd\/r\/Cou7n-nqK52.gif) no-repeat 5px 50\u0025;float:left;padding:5px 0 7px 26px}body.fb_hidden{height:100\u0025;left:0;margin:0;overflow:visible;position:absolute;top:-10000px;transform:none;width:100\u0025}.fb_dialog.fb_dialog_mobile.loading{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v3\/ya\/r\/3rhSv5V8j3o.gif) white no-repeat 50\u0025 50\u0025;min-height:100\u0025;min-width:100\u0025;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{background:none;height:auto;min-height:initial;min-width:initial;width:auto}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100\u0025}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{clear:both;color:#fff;display:block;font-size:18px;padding-top:20px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .4);bottom:0;left:0;min-height:100\u0025;position:absolute;right:0;top:0;width:100\u0025;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_mobile .fb_dialog_iframe{position:sticky;top:0}.fb_dialog_content .dialog_header{background:linear-gradient(from(#738aba), to(#2c4987));border-bottom:1px solid;border-color:#043b87;box-shadow:white 0 1px 1px -1px inset;color:#fff;font:bold 14px Helvetica, sans-serif;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{height:43px;width:100\u0025}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:linear-gradient(from(#4267B2), to(#2a4887));background-clip:padding-box;border:1px solid #29487d;border-radius:3px;display:inline-block;line-height:18px;margin-top:3px;max-width:85px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{background:none;border:none;color:#fff;font:bold 12px Helvetica, sans-serif;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v3\/y9\/r\/jKEcVPZFk-2.gif) no-repeat 50\u0025 50\u0025;border:1px solid #4a4a4a;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f5f6f7;border:1px solid #4a4a4a;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https:\/\/connect.facebook.net\/rsrc.php\/v3\/yD\/r\/t-wz8gw1xG1.png);background-position:50\u0025 50\u0025;background-repeat:no-repeat;height:24px;width:24px}\u0040keyframes rotateSpinner{0\u0025{transform:rotate(0deg)}100\u0025{transform:rotate(360deg)}}\n.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100\u0025}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100\u0025}\n.fb_mpn_mobile_landing_page_slide_out{animation-duration:200ms;animation-name:fb_mpn_landing_page_slide_out;transition-timing-function:ease-in}.fb_mpn_mobile_landing_page_slide_out_from_left{animation-duration:200ms;animation-name:fb_mpn_landing_page_slide_out_from_left;transition-timing-function:ease-in}.fb_mpn_mobile_landing_page_slide_up{animation-duration:500ms;animation-name:fb_mpn_landing_page_slide_up;transition-timing-function:ease-in}.fb_mpn_mobile_bounce_in{animation-duration:300ms;animation-name:fb_mpn_bounce_in;transition-timing-function:ease-in}.fb_mpn_mobile_bounce_out{animation-duration:300ms;animation-name:fb_mpn_bounce_out;transition-timing-function:ease-in}.fb_mpn_mobile_bounce_out_v2{animation-duration:300ms;animation-name:fb_mpn_fade_out;transition-timing-function:ease-in}.fb_customer_chat_bounce_in_v2{animation-duration:300ms;animation-name:fb_bounce_in_v2;transition-timing-function:ease-in}.fb_customer_chat_bounce_in_from_left{animation-duration:300ms;animation-name:fb_bounce_in_from_left;transition-timing-function:ease-in}.fb_customer_chat_bounce_out_v2{animation-duration:300ms;animation-name:fb_bounce_out_v2;transition-timing-function:ease-in}.fb_customer_chat_bounce_out_from_left{animation-duration:300ms;animation-name:fb_bounce_out_from_left;transition-timing-function:ease-in}.fb_invisible_flow{display:inherit;height:0;overflow-x:hidden;width:0}\u0040keyframes fb_mpn_landing_page_slide_out{0\u0025{margin:0 12px;width:100\u0025 - 24px}60\u0025{border-radius:18px}100\u0025{border-radius:50\u0025;margin:0 24px;width:60px}}\u0040keyframes fb_mpn_landing_page_slide_out_from_left{0\u0025{left:12px;width:100\u0025 - 24px}60\u0025{border-radius:18px}100\u0025{border-radius:50\u0025;left:12px;width:60px}}\u0040keyframes fb_mpn_landing_page_slide_up{0\u0025{bottom:0;opacity:0}100\u0025{bottom:24px;opacity:1}}\u0040keyframes fb_mpn_bounce_in{0\u0025{opacity:.5;top:100\u0025}100\u0025{opacity:1;top:0}}\u0040keyframes fb_mpn_fade_out{0\u0025{bottom:30px;opacity:1}100\u0025{bottom:0;opacity:0}}\u0040keyframes fb_mpn_bounce_out{0\u0025{opacity:1;top:0}100\u0025{opacity:.5;top:100\u0025}}\u0040keyframes fb_bounce_in_v2{0\u0025{opacity:0;transform:scale(0, 0);transform-origin:bottom right}50\u0025{transform:scale(1.03, 1.03);transform-origin:bottom right}100\u0025{opacity:1;transform:scale(1, 1);transform-origin:bottom right}}\u0040keyframes fb_bounce_in_from_left{0\u0025{opacity:0;transform:scale(0, 0);transform-origin:bottom left}50\u0025{transform:scale(1.03, 1.03);transform-origin:bottom left}100\u0025{opacity:1;transform:scale(1, 1);transform-origin:bottom left}}\u0040keyframes fb_bounce_out_v2{0\u0025{opacity:1;transform:scale(1, 1);transform-origin:bottom right}100\u0025{opacity:0;transform:scale(0, 0);transform-origin:bottom right}}\u0040keyframes fb_bounce_out_from_left{0\u0025{opacity:1;transform:scale(1, 1);transform-origin:bottom left}100\u0025{opacity:0;transform:scale(0, 0);transform-origin:bottom left}}\u0040keyframes slideInFromBottom{0\u0025{opacity:.1;transform:translateY(100\u0025)}100\u0025{opacity:1;transform:translateY(0)}}\u0040keyframes slideInFromBottomDelay{0\u0025{opacity:0;transform:translateY(100\u0025)}97\u0025{opacity:0;transform:translateY(100\u0025)}100\u0025{opacity:1;transform:translateY(0)}}","components":["css:fb.css.base","css:fb.css.dialog","css:fb.css.iframewidget","css:fb.css.customer_chat_plugin_iframe"]});__d("JSSDKRuntimeConfig",[],{"locale":"en_US","revision":"1009723846","rtl":false,"sdkab":null,"sdkns":"","sdkurl":"https:\/\/connect.facebook.net\/en_US\/sdk\/debug.js","scribeurl":"https:\/\/www.facebook.com\/platform\/scribe_endpoint.php\/"});__d("JSSDKXDConfig",[],{"XXdUrl":"\/x\/connect\/xd_arbiter\/?version=46","useCdn":true});__d("UrlMapConfig",[],{"www":"www.facebook.com","m":"m.facebook.com","business":"business.facebook.com","api":"api.facebook.com","api_read":"api-read.facebook.com","graph":"graph.facebook.com","an":"an.facebook.com","fbcdn":"static.xx.fbcdn.net","cdn":"staticxx.facebook.com","graph_facebook":"graph.facebook.com","graph_gaming":"graph.fb.gg","graph_instagram":"graph.instagram.com","www_instagram":"www.instagram.com","social_plugin":"socialplugin.facebook.net"});__d("JSSDKShadowCssConfig",[],{"css:fb.shadow.css.fb_login_button":".fb_login_button_container{align-content:center;align-items:center;border:0;color:#fff;display:flex;font-family:'Roboto', 'Freight Sans LF Pro', Helvetica, Arial, 'Lucida Grande', sans-serif;font-weight:bold;margin:auto}.fb-button-main-element{display:flex;flex-wrap:nowrap;overflow:hidden}.fb-iframe-overlay{display:flex}.fb-button-main-element:hover{cursor:pointer}.fb-button-main-element:focus{filter:brightness(80\u0025)}.fb_button_label_element{align-items:center;display:flex;font-weight:bold;justify-content:center}.fb_button_label{margin:auto;pointer-events:none}.fb_button_svg_logo{height:1.33em;margin-left:.4em;margin-right:.4em;padding:.065em}.login_fb_logo .f_logo_f{fill:transparent}.single_button_svg_logo{margin-bottom:.08em}"});                                                                                                                                                __d("DOMWrapper",[],(function $module_DOMWrapper(global,require,requireDynamic,requireLazy,module,exports){
+
+
+
+
+
+
+
+
 
 'use strict';
 
@@ -3585,7 +3595,7 @@ windowRef=win;
 }
 function getWindow(){
 return windowRef||self;
-}exports.setRoot=setRoot;exports.getRoot=getRoot;exports.setWindow=setWindow;exports.getWindow=getWindow;},66);
+}exports.setRoot=setRoot;exports.getRoot=getRoot;exports.setWindow=setWindow;exports.getWindow=getWindow;}),66);
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     __d("dotAccess",[],function $module_dotAccess(global,require,requireDynamic,requireLazy,module,exports){
 
 function dotAccess(
@@ -3639,7 +3649,26 @@ type)
 {
 wrappers[type]=fn;
 };exports["default"]=wrapFunction;},66);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           __d("GlobalCallback",["DOMWrapper","dotAccess","guid","wrapFunction"],function $module_GlobalCallback(global,require,importDefault,importNamespace,requireLazy,module,exports){
+                                                                                                                                                __d("GlobalCallback",["DOMWrapper","dotAccess","guid","wrapFunction"],(function $module_GlobalCallback(global,require,importDefault,importNamespace,requireLazy,module,exports){
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -3672,7 +3701,7 @@ return callbackPrefix+"."+id;
 function remove(name){
 var id=name.substring(callbackPrefix.length+1);
 delete rootObject[id];
-}exports.setPrefix=setPrefix;exports.create=create;exports.remove=remove;},98);
+}exports.setPrefix=setPrefix;exports.create=create;exports.remove=remove;}),98);
                                                                                                                                                                                                                                                                                                                                                                                                                                                   __d("Log",[],function $module_Log(global,require,requireDynamic,requireLazy,module,exports){
 
 'use strict';
@@ -3736,7 +3765,46 @@ var warn=ES(log,"bind",true,null,'warn',Level.WARNING);
 
 
 var error=ES(log,"bind",true,null,'error',Level.ERROR);exports.Level=Level;exports.log=log;exports.setLevel=setLevel;exports.debug=debug;exports.info=info;exports.warn=warn;exports.error=error;},66);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     __d("sdk.UA",[],function $module_sdk_UA(global,require,requireDynamic,requireLazy,module,exports){
+                                                                                                                                          __d("sdk.UA",[],function $module_sdk_UA(global,require,requireDynamic,requireLazy,module,exports){
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -4105,7 +4173,10 @@ var attribute=getAttr(dom,name);
 return attribute!=null?/^(true|1|yes|on)$/.test(attribute):null;
 }
 
-function dangerouslySetInnerHtml(dom,content){
+function dangerouslySetInnerHtml(
+dom,
+content)
+{
 try{
 dom.innerHTML=content;
 }catch(e){
@@ -4362,7 +4433,14 @@ _this.message='';
 }
 _this.innerError=innerError;return _this;
 }return ManagedError;}(babelHelpers.wrapNativeSuper(Error));exports["default"]=ManagedError;},66);
-                                                                                                                                                                                                                                                                                                                                                                                                                                    __d("normalizeError",["sdk.UA"],function $module_normalizeError(global,require,importDefault,importNamespace,requireLazy,module,exports){
+                                                                                                                                   __d("normalizeError",["sdk.UA"],function $module_normalizeError(global,require,importDefault,importNamespace,requireLazy,module,exports){
+
+
+
+
+
+
+
 
 'use strict';
 
@@ -4506,7 +4584,12 @@ return this;
 
 
 module.exports=ObservableMixin;var _c;$RefreshReg$(_c,"ObservableMixin");},null);
-                                                                                                                                                                                                                             __d("AssertionError",["ManagedError"],function $module_AssertionError(global,require,importDefault,importNamespace,requireLazy,module,exports){var
+                                                                                                                           __d("AssertionError",["ManagedError"],function $module_AssertionError(global,require,importDefault,importNamespace,requireLazy,module,exports){var
+
+
+
+
+
 
 
 
@@ -4529,7 +4612,12 @@ function sprintf(format){for(var _len=arguments.length,args=new Array(_len>1?_le
 var index=0;
 return format.replace(/%s/g,function format_replace_$1(){return String(args[index++]);});
 }exports["default"]=sprintf;}),66);
-                                                                                                                                                                                                                                     __d("Assert",["AssertionError","sprintf"],function $module_Assert(global,require,importDefault,importNamespace,requireLazy,module,exports){
+                                                                                                                           __d("Assert",["AssertionError","sprintf"],function $module_Assert(global,require,importDefault,importNamespace,requireLazy,module,exports){
+
+
+
+
+
 
 
 
@@ -4825,7 +4913,32 @@ instanceOf:_instanceOf});
 
 
 module.exports=Type;var _c;$RefreshReg$(_c,"Type");},null);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               __d("sdk.Model",["ObservableMixin","Type"],function $module_sdk_Model(global,require,importDefault,importNamespace,requireLazy,module,exports){
+                                                                                                                                   __d("sdk.Model",["ObservableMixin","Type"],function $module_sdk_Model(global,require,importDefault,importNamespace,requireLazy,module,exports){
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 'use strict';
 
@@ -4868,7 +4981,12 @@ return propContainer[name];
 
 
 Model;exports["default"]=_default;},98);
-                                                                                                                                                                                                                                                                           __d("sdk.Runtime",["JSSDKRuntimeConfig","sdk.Model"],function $module_sdk_Runtime(global,require,importDefault,importNamespace,requireLazy,module,exports){var _importNamespace_JSSDKRuntimeConfig;
+                                                                                                                                                __d("sdk.Runtime",["JSSDKRuntimeConfig","sdk.Model"],function $module_sdk_Runtime(global,require,importDefault,importNamespace,requireLazy,module,exports){var _importNamespace_JSSDKRuntimeConfig;
+
+
+
+
+
 
 
 
@@ -5386,7 +5504,18 @@ join('&');
 }
 return decodeURI;
 }exports["default"]=invariant;},98);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    __d("UrlMap",["invariant","UrlMapConfig","sdk.Runtime"],function $module_UrlMap(global,require,importDefault,importNamespace,requireLazy,module,exports,invariant){
+                                                                                                                    __d("UrlMap",["invariant","UrlMapConfig","sdk.Runtime"],(function $module_UrlMap(global,require,importDefault,importNamespace,requireLazy,module,exports,invariant){
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -5426,7 +5555,7 @@ return protocol+'://'+importNamespace("UrlMapConfig")[key];
 
 key in importNamespace("UrlMapConfig")||invariant(0,'Unknown key in UrlMapConfig: %s',key);
 return'';
-}exports.resolve=resolve;},98);
+}exports.resolve=resolve;}),98);
                                                                                                                                  __d("sdk.Scribe",["QueryString","UrlMap","sdk.Runtime"],function $module_sdk_Scribe(global,require,importDefault,importNamespace,requireLazy,module,exports){
 
 
@@ -5539,7 +5668,16 @@ error:error.name||error.message,
 extra:error});
 
 });exports["default"]=_default;}),98);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                              __d("FB",["DOMWrapper","GlobalCallback","JSSDKCssConfig","Log","dotAccess","sdk.Content","sdk.DOM","sdk.ErrorHandling","sdk.domReady"],function $module_FB(global,require,importDefault,importNamespace,requireLazy,module,exports){
+                                                                                                                                   __d("FB",["DOMWrapper","GlobalCallback","JSSDKCssConfig","Log","dotAccess","sdk.Content","sdk.DOM","sdk.ErrorHandling","sdk.domReady"],function $module_FB(global,require,importDefault,importNamespace,requireLazy,module,exports){
+
+
+
+
+
+
+
+
+
 
 
 
@@ -5705,7 +5843,11 @@ __d("AppUserPropertyAPIBuiltinField",[],(function $module_AppUserPropertyAPIBuil
 module.exports = {"GENDER":"$gender","CITY":"$city","STATE":"$state","ZIPCODE":"$zipcode","COUNTRY":"$country","LANGUAGE":"$language","CURRENCY":"$currency","INSTALL_SOURCE":"$install_source","USER_TYPE":"$user_type","ACCOUNT_CREATED_TIME":"$account_created_time","APP_ID":"$app_id"};
 
       }),null);
-                                                                                                                                                                                                 __d("sdk.AppEvents",["AppUserPropertyAPIBuiltinField","Assert","sdk.Model","sdk.Runtime"],function $module_sdk_AppEvents(global,require,importDefault,importNamespace,requireLazy,module,exports){
+                                                                                                                                   __d("sdk.AppEvents",["AppUserPropertyAPIBuiltinField","Assert","sdk.Model","sdk.Runtime"],function $module_sdk_AppEvents(global,require,importDefault,importNamespace,requireLazy,module,exports){
+
+
+
+
 
 
 
@@ -6096,7 +6238,11 @@ sub.apply(this,args);
 });
 }
 }exports.SUBSCRIBE=SUBSCRIBE;exports.UNSUBSCRIBE=UNSUBSCRIBE;exports.subscribers=subscribers;exports.subscribe=subscribe;exports.unsubscribe=unsubscribe;exports.monitor=monitor;exports.clear=clear;exports.fire=fire;},66);
-                                                                                                                                                                      __d("sdk.AppEvents-public",["Assert","FB","sdk.AppEvents","sdk.Event","sdk.Runtime"],function $module_sdk_AppEvents_public(global,require,importDefault,importNamespace,requireLazy,module,exports){
+                                                                                                                    __d("sdk.AppEvents-public",["Assert","FB","sdk.AppEvents","sdk.Event","sdk.Runtime"],function $module_sdk_AppEvents_public(global,require,importDefault,importNamespace,requireLazy,module,exports){
+
+
+
+
 
 
 
@@ -6130,7 +6276,13 @@ importDefault("FB").provide('AppEvents',importNamespace("sdk.AppEvents").AppEven
 var SDKAppEvents={init:init};var _default=
 
 SDKAppEvents;exports["default"]=_default;},98);
-                                                                                                                                                                                                                                                                                              __d("sdk.AuthState",["sdk.AuthUtils"],function $module_sdk_AuthState(global,require,importDefault,importNamespace,requireLazy,module,exports){
+                                                                                                                                          __d("sdk.AuthState",["sdk.AuthUtils"],function $module_sdk_AuthState(global,require,importDefault,importNamespace,requireLazy,module,exports){
+
+
+
+
+
+
 
 'use strict';
 
@@ -6186,7 +6338,15 @@ setState:setState};var _default=
 
 
 State;exports["default"]=_default;},98);
-                                                                                                                                                                                                                                                                                                                                                                                                                                    __d("sdk.Cookie",["QueryString","sdk.Runtime","sdk.Scribe","sdk.feature"],function $module_sdk_Cookie(global,require,importDefault,importNamespace,requireLazy,module,exports){
+                                                                                                                                                __d("sdk.Cookie",["QueryString","sdk.Runtime","sdk.Scribe","sdk.feature"],function $module_sdk_Cookie(global,require,importDefault,importNamespace,requireLazy,module,exports){
+
+
+
+
+
+
+
+
 
 
 
@@ -6336,7 +6496,21 @@ function clearSignedRequestCookie(){
 loadMeta();
 setRaw('fbsr_','',0,true);
 }exports.setRaw=setRaw;exports.getRaw=getRaw;exports.setDomain=setDomain;exports.getDomain=getDomain;exports.loadMeta=loadMeta;exports.loadSignedRequest=loadSignedRequest;exports.setSignedRequestCookie=setSignedRequestCookie;exports.clearSignedRequestCookie=clearSignedRequestCookie;},98);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             __d("sdk.Observable",[],function $module_sdk_Observable(global,require,requireDynamic,requireLazy,module,exports){var
+                                                                                                                           __d("sdk.Observable",[],function $module_sdk_Observable(global,require,requireDynamic,requireLazy,module,exports){var
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Observable=
 
 
@@ -6346,12 +6520,12 @@ function Observable(){var _this=this;this.
 
 getSubscribers=function(toWhat){
 return(
-_this.$Observable_observableEvents[toWhat]||(_this.$Observable_observableEvents[toWhat]=[]));
+_this.$Observable$p_observableEvents[toWhat]||(_this.$Observable$p_observableEvents[toWhat]=[]));
 
 };this.
 clearSubscribers=function(toWhat){
 if(toWhat){
-_this.$Observable_observableEvents[toWhat]=[];
+_this.$Observable$p_observableEvents[toWhat]=[];
 }
 };this.
 subscribe=function(
@@ -6393,8 +6567,12 @@ throw e;
 }
 }
 }
-};this.$Observable_observableEvents={};};exports.Observable=Observable;},66);
-                                                                                                                                                                                        __d("sdk.AuthUtils",["sdk.AuthState","sdk.Cookie","sdk.Observable","sdk.Runtime"],function $module_sdk_AuthUtils(global,require,importDefault,importNamespace,requireLazy,module,exports){
+};this.$Observable$p_observableEvents={};};exports.Observable=Observable;},66);
+                                                                                                                                          __d("sdk.AuthUtils",["sdk.AuthState","sdk.Cookie","sdk.Observable","sdk.Runtime"],function $module_sdk_AuthUtils(global,require,importDefault,importNamespace,requireLazy,module,exports){
+
+
+
+
 
 'use strict';
 
@@ -6560,7 +6738,16 @@ CORS_FETCH_COMPLETED_EVENT:'cors_fetch_completed',
 XFOA_FINAL_RESPONSE_EVENT:'xfoa_final_response',
 LOAD_XFOA_SUBSCRIBERS:'load_xfoa_subscribers',
 REVALIDATE_TIMER_TIMEOUT:'revalidate_timer_timeout'};exports.isInstagramLogin=isInstagramLogin;exports.setBaseDomain=setBaseDomain;exports.resetFBAndIGLoginStatus=resetFBAndIGLoginStatus;exports.setGraphDomain=setGraphDomain;exports.setLogoutState=setLogoutState;exports.setRevalidateTimer=setRevalidateTimer;exports.removeLogoutState=removeLogoutState;exports.AuthInternalEvent=AuthInternalEvent;exports.AuthConstants=AuthConstants;},98);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                __d("sdk.WebStorage",["Log"],function $module_sdk_WebStorage(global,require,importDefault,importNamespace,requireLazy,module,exports){
+                                                                                                          __d("sdk.WebStorage",["Log"],(function $module_sdk_WebStorage(global,require,importDefault,importNamespace,requireLazy,module,exports){
+
+
+
+
+
+
+
+
+
 
 'use strict';
 
@@ -6634,8 +6821,19 @@ return storage;
 importNamespace("Log").warn('Failed to get session storage');
 }
 return null;
-}exports.getLocalStorage=getLocalStorage;exports.getLocalStorageForRead=getLocalStorageForRead;exports.getSessionStorage=getSessionStorage;exports.getSessionStorageForRead=getSessionStorageForRead;},98);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               __d("sdk.AuthStorageUtils",["sdk.AuthUtils","sdk.Runtime","sdk.WebStorage","sdk.feature"],function $module_sdk_AuthStorageUtils(global,require,importDefault,importNamespace,requireLazy,module,exports){
+}exports.getLocalStorage=getLocalStorage;exports.getLocalStorageForRead=getLocalStorageForRead;exports.getSessionStorage=getSessionStorage;exports.getSessionStorageForRead=getSessionStorageForRead;}),98);
+                                                                                                                                          __d("sdk.AuthStorageUtils",["sdk.AuthUtils","sdk.Runtime","sdk.WebStorage","sdk.feature"],function $module_sdk_AuthStorageUtils(global,require,importDefault,importNamespace,requireLazy,module,exports){
+
+
+
+
+
+
+
+
+
+
+
 
 'use strict';
 
@@ -6857,7 +7055,16 @@ return en.charCodeAt(
 
 
 Base64;exports["default"]=_default;},66);
-                                                                                                                                                                                                                                                                                                                                                                                     __d("sdk.SignedRequest",["Base64"],function $module_sdk_SignedRequest(global,require,importDefault,importNamespace,requireLazy,module,exports){
+                                                                                                          __d("sdk.SignedRequest",["Base64"],function $module_sdk_SignedRequest(global,require,importDefault,importNamespace,requireLazy,module,exports){
+
+
+
+
+
+
+
+
+
 
 
 
@@ -6873,7 +7080,13 @@ replace(/\-/g,'+').
 replace(/\_/g,'/');
 return importDefault("Base64").decodeObject(payload);
 }exports.parse=parse;},98);
-                                                                                                                                                                                                                                                                                                                                              __d("Miny",[],function $module_Miny(global,require,requireDynamic,requireLazy,module,exports){
+                                                                                                                              __d("Miny",[],function $module_Miny(global,require,requireDynamic,requireLazy,module,exports){
+
+
+
+
+
+
 
 var MAGIC='Miny1';
 var LO='wxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-_'.split('');
@@ -6923,14 +7136,38 @@ return keys.join('~');
 
 
 Miny;exports["default"]=_default;},66);
-                                                                                                                                                                                                                                                                                                                                                                                                            __d("getBlankIframeSrc",["sdk.UA"],(function $module_getBlankIframeSrc(global,require,importDefault,importNamespace,requireLazy,module,exports){
+                                                                                                                         __d("getBlankIframeSrc",["sdk.UA"],(function $module_getBlankIframeSrc(global,require,importDefault,importNamespace,requireLazy,module,exports){
+
+
+
+
+
+
+
 
 
 
 function getBlankIframeSrc(){
 return importDefault("sdk.UA").ie()<10?'javascript:false':'about:blank';
 }exports["default"]=getBlankIframeSrc;}),98);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           __d("insertIframe",["GlobalCallback","getBlankIframeSrc","guid"],(function $module_insertIframe(global,require,importDefault,importNamespace,requireLazy,module,exports){
+                                                                                                                               __d("insertIframe",["GlobalCallback","getBlankIframeSrc","guid"],(function $module_insertIframe(global,require,importDefault,importNamespace,requireLazy,module,exports){
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -10945,7 +11182,21 @@ return false;
 
 
 module.exports=URIAbstractBase;},null);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         __d("sdk.URI",["QueryString","URIAbstractBase"],function $module_sdk_URI(global,require,importDefault,importNamespace,requireLazy,module,exports){
+                                                                                                                __d("sdk.URI",["QueryString","URIAbstractBase"],function $module_sdk_URI(global,require,importDefault,importNamespace,requireLazy,module,exports){
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -11003,7 +11254,12 @@ return 5;
 }
 return 1;
 }exports["default"]=getContextType;},98);
-                                                                                                                                                                                                                                                                        __d("sdk.statusCORS",["Log","UrlMap","sdk.AuthState","sdk.AuthStorageUtils","sdk.AuthUtils","sdk.Impressions","sdk.Runtime","sdk.Scribe","sdk.URI","sdk.feature","sdk.getContextType"],function $module_sdk_statusCORS(global,require,importDefault,importNamespace,requireLazy,module,exports){
+                                                                                                                                          __d("sdk.statusCORS",["Log","UrlMap","sdk.AuthState","sdk.AuthStorageUtils","sdk.AuthUtils","sdk.Impressions","sdk.Runtime","sdk.Scribe","sdk.URI","sdk.feature","sdk.getContextType"],function $module_sdk_statusCORS(global,require,importDefault,importNamespace,requireLazy,module,exports){
+
+
+
+
+
 
 'use strict';
 
@@ -11350,7 +11606,11 @@ getLoginStatusCORS:getLoginStatusCORS};var _default=
 
 
 StatusCORS;exports["default"]=_default;},98);
-                                                                                                                                                                                             __d("sdk.Auth.LoginStatus",["Log","QueryString","sdk.Auth","sdk.AuthState","sdk.AuthStorageUtils","sdk.AuthUtils","sdk.Cookie","sdk.Runtime","sdk.Scribe","sdk.SignedRequest","sdk.feature","sdk.statusCORS"],function $module_sdk_Auth_LoginStatus(global,require,importDefault,importNamespace,requireLazy,module,exports){
+                                                                                                                             __d("sdk.Auth.LoginStatus",["Log","QueryString","sdk.Auth","sdk.AuthState","sdk.AuthStorageUtils","sdk.AuthUtils","sdk.Cookie","sdk.Runtime","sdk.Scribe","sdk.SignedRequest","sdk.feature","sdk.statusCORS"],function $module_sdk_Auth_LoginStatus(global,require,importDefault,importNamespace,requireLazy,module,exports){
+
+
+
+
 
 'use strict';
 
@@ -11761,7 +12021,14 @@ message:error});
 
 }
 }exports.logEventName=logEventName;exports.logEvent=logEvent;exports.logLoginEvent=logLoginEvent;exports.logPopupEvent=logPopupEvent;exports.logDisambiguationTrayEvent=logDisambiguationTrayEvent;},98);
-                                                                                                                                                                                                                                                                                                                                                                                                                                          __d("sdk.Auth",["Log","UrlMap","isStringNullOrEmpty","sdk.AuthState","sdk.AuthStorageUtils","sdk.AuthUtils","sdk.Cookie","sdk.Frictionless","sdk.LoggingUtils","sdk.Runtime","sdk.Scribe","sdk.SignedRequest","sdk.URI","sdk.ui"],function $module_sdk_Auth(global,require,importDefault,importNamespace,requireLazy,module,exports){
+                                                                                                                                            __d("sdk.Auth",["Log","UrlMap","isStringNullOrEmpty","sdk.AuthState","sdk.AuthStorageUtils","sdk.AuthUtils","sdk.Cookie","sdk.Frictionless","sdk.LoggingUtils","sdk.Runtime","sdk.Scribe","sdk.SignedRequest","sdk.URI","sdk.ui"],function $module_sdk_Auth(global,require,importDefault,importNamespace,requireLazy,module,exports){
+
+
+
+
+
+
+
 
 
 
@@ -12289,7 +12556,17 @@ return options;
 }
 return typeof options==='boolean'?options:options.capture||false;
 }exports.isPassiveEventListenerSupported=isPassiveEventListenerSupported;exports.makeEventOptions=makeEventOptions;},66);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        __d("DOMEventListener",["invariant","dedupString","emptyFunction","passiveEventListenerUtil","wrapFunction"],function $module_DOMEventListener(global,require,requireDynamic,requireLazy,module,exports,invariant){var
+                                                                                                                                      __d("DOMEventListener",["invariant","dedupString","emptyFunction","passiveEventListenerUtil","wrapFunction"],function $module_DOMEventListener(global,require,requireDynamic,requireLazy,module,exports,invariant){var
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -13838,7 +14115,12 @@ size.height>=MAX_HEIGHT_MOBILE||size.width>=MAX_WIDTH_MOBILE));
 
 
 Dialog;exports["default"]=_default;},98);
-                                                                                                                                                                                                                                      __d("ArgumentError",["ManagedError"],function $module_ArgumentError(global,require,importDefault,importNamespace,requireLazy,module,exports){var
+                                                                                                                           __d("ArgumentError",["ManagedError"],function $module_ArgumentError(global,require,importDefault,importNamespace,requireLazy,module,exports){var
+
+
+
+
+
 
 
 
@@ -14083,9 +14365,9 @@ ApiBatcher=function(){
 
 
 
-function ApiBatcher(executeRequest,clientID){this.$ApiBatcher_batchCalls=[];this.$ApiBatcher_batchCallbacks=[];this.$ApiBatcher_scheduleID=null;
+function ApiBatcher(executeRequest,clientID){this.$ApiBatcher$p_batchCalls=[];this.$ApiBatcher$p_batchCallbacks=[];this.$ApiBatcher$p_scheduleID=null;
 this.executeRequest=executeRequest;
-this.$ApiBatcher_clientID=clientID;
+this.$ApiBatcher$p_clientID=clientID;
 }var _proto=ApiBatcher.prototype;_proto.
 
 scheduleBatchCall=function scheduleBatchCall(){var _this=this;for(var _len=arguments.length,args=new Array(_len),_key=0;_key<_len;_key++){args[_key]=arguments[_key];}var _ApiBatcher$prepareBa=
@@ -14101,20 +14383,20 @@ if(body){
 batchCall.body=body;
 }
 
-this.$ApiBatcher_batchCalls.push(batchCall);
-this.$ApiBatcher_batchCallbacks.push(callback);
+this.$ApiBatcher$p_batchCalls.push(batchCall);
+this.$ApiBatcher$p_batchCallbacks.push(callback);
 
 
 
-if(this.$ApiBatcher_batchCalls.length==REQUESTS_PER_BATCH){
-if(this.$ApiBatcher_scheduleID){
-window.clearTimeout(this.$ApiBatcher_scheduleID);
+if(this.$ApiBatcher$p_batchCalls.length==REQUESTS_PER_BATCH){
+if(this.$ApiBatcher$p_scheduleID){
+window.clearTimeout(this.$ApiBatcher$p_scheduleID);
 }
-this.$ApiBatcher_dispatchBatchCalls();
-}else if(!this.$ApiBatcher_scheduleID){
+this.$ApiBatcher$p_dispatchBatchCalls();
+}else if(!this.$ApiBatcher$p_scheduleID){
 
-this.$ApiBatcher_scheduleID=window.setTimeout(function window_setTimeout_$0(){
-_this.$ApiBatcher_dispatchBatchCalls();
+this.$ApiBatcher$p_scheduleID=window.setTimeout(function window_setTimeout_$0(){
+_this.$ApiBatcher$p_dispatchBatchCalls();
 },0);
 }
 };ApiBatcher.
@@ -14150,28 +14432,28 @@ callback:callback,
 method:method,
 relative_url:relative_url};
 
-};_proto.
+};_proto.$ApiBatcher$p_dispatchBatchCalls=function $ApiBatcher$p_dispatchBatchCalls()
 
 
 
 
 
-$ApiBatcher_dispatchBatchCalls=function $ApiBatcher_dispatchBatchCalls(){
+{
 
-this.$ApiBatcher_batchCalls.length>0||invariant(0,
+this.$ApiBatcher$p_batchCalls.length>0||invariant(0,
 'ApiClient: _batchCalls is empty at dispatch.');
 
 
-this.$ApiBatcher_batchCalls.length===this.$ApiBatcher_batchCallbacks.length||invariant(0,
+this.$ApiBatcher$p_batchCalls.length===this.$ApiBatcher$p_batchCallbacks.length||invariant(0,
 'ApiClient: Every batch call should have a callback');
 
 
 
-var copiedBatchCalls=this.$ApiBatcher_batchCalls;
-var copiedBatchCallbacks=this.$ApiBatcher_batchCallbacks;
-this.$ApiBatcher_batchCalls=[];
-this.$ApiBatcher_batchCallbacks=[];
-this.$ApiBatcher_scheduleID=null;
+var copiedBatchCalls=this.$ApiBatcher$p_batchCalls;
+var copiedBatchCallbacks=this.$ApiBatcher$p_batchCallbacks;
+this.$ApiBatcher$p_batchCalls=[];
+this.$ApiBatcher$p_batchCallbacks=[];
+this.$ApiBatcher$p_scheduleID=null;
 
 
 if(copiedBatchCalls.length===1){
@@ -14191,7 +14473,7 @@ this.executeRequest(
 {
 batch:copiedBatchCalls,
 include_headers:false,
-batch_app_id:this.$ApiBatcher_clientID||DEFAULT_BATCH_APP_ID},
+batch_app_id:this.$ApiBatcher$p_clientID||DEFAULT_BATCH_APP_ID},
 
 function executeRequest_$3(response){
 if(Array.isArray(response)){
@@ -14215,7 +14497,23 @@ error_subcode:1357045,
 message:'unknown error (empty response)',
 type:'http',
 status:0};exports.PARSE_ERROR_TEMPLATE=PARSE_ERROR_TEMPLATE;}),98);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    __d("CORSRequest",["Log","QueryString","RequestConstants","sdk.Cookie","sdk.safelyParseResponse","wrapFunction"],function $module_CORSRequest(global,require,importDefault,importNamespace,requireLazy,module,exports){
+                                                                                                                                   __d("CORSRequest",["Log","QueryString","RequestConstants","sdk.Cookie","sdk.safelyParseResponse","wrapFunction"],function $module_CORSRequest(global,require,importDefault,importNamespace,requireLazy,module,exports){
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -14250,8 +14548,6 @@ xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
 }else if(self.XDomainRequest){
 xhr=new XDomainRequest();
 try{
-
-
 
 
 
@@ -14859,7 +15155,11 @@ if(!REGEX.test(version)){
 throw new(importDefault("ManagedError"))('invalid version specified');
 }
 }exports.REGEX=REGEX;exports.assertVersionIsSet=assertVersionIsSet;exports.assertValidVersion=assertValidVersion;}),98);
-                                                                                                                                                                                      __d("sdk.warnInsecure",["Log","sdk.Runtime","sdk.Scribe","sdk.feature"],function $module_sdk_warnInsecure(global,require,importDefault,importNamespace,requireLazy,module,exports){
+                                                                                                                                 __d("sdk.warnInsecure",["Log","sdk.Runtime","sdk.Scribe","sdk.feature"],function $module_sdk_warnInsecure(global,require,importDefault,importNamespace,requireLazy,module,exports){
+
+
+
+
 
 'use strict';
 
@@ -15115,7 +15415,12 @@ object[keys[_ii]]=values;
 
 return object;
 }exports["default"]=createObjectFrom;},66);
-                                                                                                                                                                                                                                                                                             __d("resolveURI",[],function $module_resolveURI(global,require,requireDynamic,requireLazy,module,exports){
+                                                                                                                                          __d("resolveURI",[],(function $module_resolveURI(global,require,requireDynamic,requireLazy,module,exports){
+
+
+
+
+
 
 function resolveURI(
 uri)
@@ -15128,7 +15433,7 @@ return window.location.href;
 var a=document.createElement('a');
 a.href=uri;
 return a.href;
-}exports["default"]=resolveURI;},66);
+}exports["default"]=resolveURI;}),66);
                                                                                                                                __d("sdk.NativeExtensions",["DOMEventListener","Log","sdk.UA"],function $module_sdk_NativeExtensions(global,require,importDefault,importNamespace,requireLazy,module,exports){
 
 
@@ -15307,7 +15612,11 @@ window.addEventListener(NATIVE_READY_EVENT,nativeReadyCallback,false);
 
 
 Native;exports["default"]=_default;},98);
-                                                                                                                                                                      __d("sdk.Popup",["sdk.Content","sdk.Runtime","sdk.Scribe","sdk.UA","sdk.feature"],function $module_sdk_Popup(global,require,importDefault,importNamespace,requireLazy,module,exports){
+                                                                                                                                          __d("sdk.Popup",["sdk.Content","sdk.Runtime","sdk.Scribe","sdk.UA","sdk.feature"],function $module_sdk_Popup(global,require,importDefault,importNamespace,requireLazy,module,exports){
+
+
+
+
 
 'use strict';
 
@@ -15514,7 +15823,12 @@ instagramURIRegex=new RegExp('(^|\\.)instagram\\.com$','i');
 }
 return instagramURIRegex.test(uri.getDomain());
 }exports["default"]=isInstagramURI;},66);
-                                                                                                                                                                                                                                                 __d("resolveWindow",[],function $module_resolveWindow(global,require,requireDynamic,requireLazy,module,exports){
+                                                                                                          __d("resolveWindow",[],(function $module_resolveWindow(global,require,requireDynamic,requireLazy,module,exports){
+
+
+
+
+
 
 
 
@@ -15552,7 +15866,7 @@ return null;
 }
 
 return node;
-}exports["default"]=resolveWindow;},66);
+}exports["default"]=resolveWindow;}),66);
                                                                                                                     __d("sdk.XD",["JSSDKXDConfig","Log","QueryString","Queue","UrlMap","guid","isFacebookDotNetURI","isFacebookURI","isInstagramURI","resolveWindow","sdk.Event","sdk.RPC","sdk.Runtime","sdk.Scribe","sdk.URI","sdk.feature"],function $module_sdk_XD(global,require,importDefault,importNamespace,requireLazy,module,exports){
 
 
@@ -16069,7 +16383,12 @@ window.location.href=fallbackURL;
 },FALLBACK_TIMEOUT);
 window.location.href=uri;
 }exports["default"]=openMessenger;}),98);
-                                                                                                                                                                                                                                                                                       __d("sdk.UIServer",["Log","QueryString","UrlMap","createObjectFrom","flattenObject","guid","insertIframe","resolveURI","sdk.Auth","sdk.Auth.LoginStatus","sdk.Content","sdk.DOM","sdk.Dialog","sdk.Event","sdk.Extensions","sdk.Frictionless","sdk.LoggingUtils","sdk.Native","sdk.Popup","sdk.RPC","sdk.Runtime","sdk.UA","sdk.XD","sdk.api","sdk.fbt","sdk.feature","sdk.getContextType","sdk.modFeatureCheck","sdk.openMessenger"],function $module_sdk_UIServer(global,require,importDefault,importNamespace,requireLazy,module,exports){
+                                                                                                                                   __d("sdk.UIServer",["Log","QueryString","UrlMap","createObjectFrom","flattenObject","guid","insertIframe","resolveURI","sdk.Auth","sdk.Auth.LoginStatus","sdk.Content","sdk.DOM","sdk.Dialog","sdk.Event","sdk.Extensions","sdk.Frictionless","sdk.LoggingUtils","sdk.Native","sdk.Popup","sdk.RPC","sdk.Runtime","sdk.UA","sdk.XD","sdk.api","sdk.fbt","sdk.feature","sdk.getContextType","sdk.modFeatureCheck","sdk.openMessenger"],function $module_sdk_UIServer(global,require,importDefault,importNamespace,requireLazy,module,exports){
+
+
+
+
+
 
 
 
@@ -17570,7 +17889,11 @@ payload:events});
 displayFn(call);
 return call.dialog;
 }exports["default"]=ui;},98);
-                                                                                                                                                                                      __d("sdk.Auth-public",["FB","sdk.Auth","sdk.Auth.LoginStatus","sdk.AuthUtils","sdk.Event","sdk.Runtime","sdk.ui","sdk.warnInsecure"],function $module_sdk_Auth_public(global,require,importDefault,importNamespace,requireLazy,module,exports){
+                                                                                                                             __d("sdk.Auth-public",["FB","sdk.Auth","sdk.Auth.LoginStatus","sdk.AuthUtils","sdk.Event","sdk.Runtime","sdk.ui","sdk.warnInsecure"],function $module_sdk_Auth_public(global,require,importDefault,importNamespace,requireLazy,module,exports){
+
+
+
+
 
 'use strict';
 
@@ -18189,7 +18512,12 @@ stopTimer:stopTimer};var _default=
 
 
 Tti;exports["default"]=_default;}),98);
-                                                                                                                                                                                                                          __d("sdk.Canvas-public",["Assert","FB","Log","sdk.Canvas.Environment","sdk.Canvas.IframeHandling","sdk.Canvas.Navigation","sdk.Canvas.Plugin","sdk.Canvas.Prefetcher","sdk.Canvas.Tti","sdk.Event","sdk.RPC","sdk.Runtime"],function $module_sdk_Canvas_public(global,require,importDefault,importNamespace,requireLazy,module,exports){
+                                                                                                                            __d("sdk.Canvas-public",["Assert","FB","Log","sdk.Canvas.Environment","sdk.Canvas.IframeHandling","sdk.Canvas.Navigation","sdk.Canvas.Plugin","sdk.Canvas.Prefetcher","sdk.Canvas.Tti","sdk.Event","sdk.RPC","sdk.Runtime"],function $module_sdk_Canvas_public(global,require,importDefault,importNamespace,requireLazy,module,exports){
+
+
+
+
+
 
 
 
@@ -18329,7 +18657,11 @@ initCanvasPresence:initCanvasPresence,
 initRPC:initRPC};var _default=
 
 SDKCanvas;exports["default"]=_default;},98);
-                                                                                                                                                                                                          __d("sdk.Event-public",["FB","Log","sdk.Event"],function $module_sdk_Event_public(global,require,importDefault,importNamespace,requireLazy,module,exports){
+                                                                                                                                 __d("sdk.Event-public",["FB","Log","sdk.Event"],function $module_sdk_Event_public(global,require,importDefault,importNamespace,requireLazy,module,exports){
+
+
+
+
 
 
 
@@ -18355,7 +18687,11 @@ fire:ES(warn,"bind",true,null,'fire')});
 
 var SDKEvent={init:init};var _default=
 SDKEvent;exports["default"]=_default;},98);
-                                                                                                                                                                                                      __d("sdk.Frictionless-public",["FB","sdk.Event","sdk.Frictionless"],(function $module_sdk_Frictionless_public(global,require,importDefault,importNamespace,requireLazy,module,exports){
+                                                                                                                                          __d("sdk.Frictionless-public",["FB","sdk.Event","sdk.Frictionless"],(function $module_sdk_Frictionless_public(global,require,importDefault,importNamespace,requireLazy,module,exports){
+
+
+
+
 
 'use strict';
 
@@ -18452,7 +18788,11 @@ cb(apiResponse);
 
 var GamingServices={friendFinder:friendFinder,uploadImageToMediaLibrary:uploadImageToMediaLibrary};var _default=
 GamingServices;exports["default"]=_default;},98);
-                                                                                                                                                                                      __d("sdk.GamingServices-public",["FB","sdk.GamingServices"],(function $module_sdk_GamingServices_public(global,require,importDefault,importNamespace,requireLazy,module,exports){
+                                                                                                                                           __d("sdk.GamingServices-public",["FB","sdk.GamingServices"],(function $module_sdk_GamingServices_public(global,require,importDefault,importNamespace,requireLazy,module,exports){
+
+
+
+
 
 'use strict';
 
@@ -18586,7 +18926,11 @@ color_scheme:'string'};exports.getVal=getVal;exports.validate=validate;exports.r
 function isNumberLike(n){
 return!isNaN(parseFloat(n))&&isFinite(n);
 }exports["default"]=isNumberLike;},66);
-                                                                                                                                               __d("sdk.createIframe",["DOMEventListener","getBlankIframeSrc","guid","isNumberLike"],function $module_sdk_createIframe(global,require,importDefault,importNamespace,requireLazy,module,exports){
+                                                                                                                    __d("sdk.createIframe",["DOMEventListener","getBlankIframeSrc","guid","isNumberLike"],function $module_sdk_createIframe(global,require,importDefault,importNamespace,requireLazy,module,exports){
+
+
+
+
 
 
 
@@ -18759,7 +19103,14 @@ onError();
 frame.src=src;
 return frame;
 }exports["default"]=createIframe;},98);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                  __d("IframePlugin",["Log","ObservableMixin","QueryString","Type","UrlMap","guid","sdk.Auth.LoginStatus","sdk.AuthUtils","sdk.DOM","sdk.Event","sdk.PlatformVersioning","sdk.PluginUtils","sdk.Runtime","sdk.UA","sdk.URI","sdk.XD","sdk.createIframe"],function $module_IframePlugin(global,require,importDefault,importNamespace,requireLazy,module,exports){
+                                                                                                                                                __d("IframePlugin",["Log","ObservableMixin","QueryString","Type","UrlMap","guid","sdk.Auth.LoginStatus","sdk.AuthUtils","sdk.DOM","sdk.Event","sdk.PlatformVersioning","sdk.PluginUtils","sdk.Runtime","sdk.UA","sdk.URI","sdk.XD","sdk.createIframe"],function $module_IframePlugin(global,require,importDefault,importNamespace,requireLazy,module,exports){
+
+
+
+
+
+
+
 
 
 
@@ -19196,7 +19547,14 @@ return config?config:{};
 };var _default=
 
 IframePlugin;exports["default"]=_default;},98);
-                                                                                                                                                                                                                                                                                   __d("PluginConfig",["sdk.feature"],(function $module_PluginConfig(global,require,importDefault,importNamespace,requireLazy,module,exports){
+                                                                                                                __d("PluginConfig",["sdk.feature"],(function $module_PluginConfig(global,require,importDefault,importNamespace,requireLazy,module,exports){
+
+
+
+
+
+
+
 
 
 
@@ -19231,7 +19589,11 @@ post:post};var _default=
 
 
 PluginConfig;exports["default"]=_default;}),98);
-                                                                                                                                                __d("PluginAttrTypes",[],(function $module_PluginAttrTypes(global,require,requireDynamic,requireLazy,module,exports){
+                                                                                                          __d("PluginAttrTypes",[],(function $module_PluginAttrTypes(global,require,requireDynamic,requireLazy,module,exports){
+
+
+
+
 
 'use strict';
 
@@ -19239,7 +19601,34 @@ var string='string';
 
 var bool='bool';
 var url='url';exports.string=string;exports.bool=bool;exports.url=url;}),66);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 __d("PluginTags",["PluginAttrTypes"],function $module_PluginTags(global,require,importDefault,importNamespace,requireLazy,module,exports){var _importNamespace_PluginAttrTypes;
+                                                                                                   __d("PluginTags",["PluginAttrTypes"],function $module_PluginTags(global,require,importDefault,importNamespace,requireLazy,module,exports){var _importNamespace_PluginAttrTypes;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -19359,7 +19748,14 @@ result=func();
 return result;
 };
 }exports["default"]=runOnce;}),66);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                        __d("XFBML",["Assert","Log","runOnce","sdk.Observable"],function $module_XFBML(global,require,importDefault,importNamespace,requireLazy,module,exports){
+                                                                                                                         __d("XFBML",["Assert","Log","runOnce","sdk.Observable"],function $module_XFBML(global,require,importDefault,importNamespace,requireLazy,module,exports){
+
+
+
+
+
+
+
 
 
 
@@ -19594,7 +19990,11 @@ unsubscribe:observable.unsubscribe};var _default=
 
 
 XFBML;exports["default"]=_default;},98);
-                                                                                                                                                            __d("sdk.XFBML.Comments",["IframePlugin","QueryString","UrlMap","sdk.DOM","sdk.Event","sdk.PluginUtils","sdk.Runtime","sdk.UA","sdk.URI"],function $module_sdk_XFBML_Comments(global,require,importDefault,importNamespace,requireLazy,module,exports){
+                                                                                                                  __d("sdk.XFBML.Comments",["IframePlugin","QueryString","UrlMap","sdk.DOM","sdk.Event","sdk.PluginUtils","sdk.Runtime","sdk.UA","sdk.URI"],function $module_sdk_XFBML_Comments(global,require,importDefault,importNamespace,requireLazy,module,exports){
+
+
+
+
 
 
 
@@ -19842,7 +20242,12 @@ performanceAbsoluteNow=function performanceAbsoluteNow(){return fallback();};
 performanceAbsoluteNow.setFallback=setFallback;var _default=
 
 performanceAbsoluteNow;exports["default"]=_default;},98);
-                                                                                                                                                                                                                                                                                        __d("ChatPluginSDKPreLoggingUtils",["CORSRequest","UrlMap","performanceAbsoluteNow"],function $module_ChatPluginSDKPreLoggingUtils(global,require,importDefault,importNamespace,requireLazy,module,exports){
+                                                                                                                                       __d("ChatPluginSDKPreLoggingUtils",["CORSRequest","UrlMap","performanceAbsoluteNow"],(function $module_ChatPluginSDKPreLoggingUtils(global,require,importDefault,importNamespace,requireLazy,module,exports){
+
+
+
+
+
 
 'use strict';var _importDefault_closure_performanceAbsoluteNow;
 
@@ -19873,8 +20278,12 @@ uri,
 params,{event_name:event_name,loading_time:loading_time}),
 function CORSRequest_execute_$3(){return null;});
 
-}exports.preLogging=preLogging;},98);
-                                                                                                                                                                                                          __d("LiveChatPluginConstants",["$InternalEnum"],function $module_LiveChatPluginConstants(global,require,requireDynamic,requireLazy,module,exports){
+}exports.preLogging=preLogging;}),98);
+                                                                                                                                 __d("LiveChatPluginConstants",["$InternalEnum"],function $module_LiveChatPluginConstants(global,require,requireDynamic,requireLazy,module,exports){
+
+
+
+
 
 'use strict';
 
@@ -20715,7 +21124,15 @@ return'slideInFromBottomDelay 3s ease-out';
 return'slideInFromBottom 0.3s ease-out';
 }
 }exports.LABELED_ENTRY_POINT_STANDARD_HEIGHT=LABELED_ENTRY_POINT_STANDARD_HEIGHT;exports.LABELED_ENTRY_POINT_COMPACT_HEIGHT=LABELED_ENTRY_POINT_COMPACT_HEIGHT;exports.LABELED_ENTRY_POINT_STANDARD_FONT_SIZE=LABELED_ENTRY_POINT_STANDARD_FONT_SIZE;exports.LABELED_ENTRY_POINT_COMPACT_FONT_SIZE=LABELED_ENTRY_POINT_COMPACT_FONT_SIZE;exports.LABELED_ENTRY_POINT_STANDARD_LINE_HEIGHT=LABELED_ENTRY_POINT_STANDARD_LINE_HEIGHT;exports.LABELED_ENTRY_POINT_COMPACT_LINE_HEIGHT=LABELED_ENTRY_POINT_COMPACT_LINE_HEIGHT;exports.LABELED_ENTRY_POINT_STANDARD_ICON_MARGIN_RIGHT=LABELED_ENTRY_POINT_STANDARD_ICON_MARGIN_RIGHT;exports.LABELED_ENTRY_POINT_COMPACT_ICON_MARGIN_RIGHT=LABELED_ENTRY_POINT_COMPACT_ICON_MARGIN_RIGHT;exports.LABELED_ENTRY_POINT_STANDARD_PADDING_HORIZONTAL=LABELED_ENTRY_POINT_STANDARD_PADDING_HORIZONTAL;exports.LABELED_ENTRY_POINT_COMPACT_PADDING_HORIZONTAL=LABELED_ENTRY_POINT_COMPACT_PADDING_HORIZONTAL;exports.ICON_ENTRY_POINT_STANDARD_HEIGHT=ICON_ENTRY_POINT_STANDARD_HEIGHT;exports.ICON_ENTRY_POINT_COMPACT_HEIGHT=ICON_ENTRY_POINT_COMPACT_HEIGHT;exports.LABELED_ONLY_ENTRY_POINT_STANDARD_WIDTH_SHORT=LABELED_ONLY_ENTRY_POINT_STANDARD_WIDTH_SHORT;exports.LABELED_ONLY_ENTRY_POINT_STANDARD_WIDTH_LONG=LABELED_ONLY_ENTRY_POINT_STANDARD_WIDTH_LONG;exports.LABELED_ONLY_ENTRY_POINT_COMPACT_WIDTH_SHORT=LABELED_ONLY_ENTRY_POINT_COMPACT_WIDTH_SHORT;exports.LABELED_ONLY_ENTRY_POINT_COMPACT_WIDTH_LONG=LABELED_ONLY_ENTRY_POINT_COMPACT_WIDTH_LONG;exports.LABELED_WITH_ICON_ENTRY_POINT_STANDARD_WIDTH_SHORT=LABELED_WITH_ICON_ENTRY_POINT_STANDARD_WIDTH_SHORT;exports.LABELED_WITH_ICON_ENTRY_POINT_STANDARD_WIDTH_LONG=LABELED_WITH_ICON_ENTRY_POINT_STANDARD_WIDTH_LONG;exports.LABELED_WITH_ICON_ENTRY_POINT_COMPACT_WIDTH_SHORT=LABELED_WITH_ICON_ENTRY_POINT_COMPACT_WIDTH_SHORT;exports.LABELED_WITH_ICON_ENTRY_POINT_COMPACT_WIDTH_LONG=LABELED_WITH_ICON_ENTRY_POINT_COMPACT_WIDTH_LONG;exports.getMobileStyleText=getMobileStyleText;exports.positionElementAtWindowFooter=positionElementAtWindowFooter;exports.getEntryPointStyle=getEntryPointStyle;exports.getIconStyleText=getIconStyleText;exports.getUnreadCountStyleText=getUnreadCountStyleText;exports.getAvailabilityStatusStyleText=getAvailabilityStatusStyleText;exports.getMobileLandingStyleText=getMobileLandingStyleText;exports.getDesktopStyleText=getDesktopStyleText;exports.getMobileFullScreenStyleText=getMobileFullScreenStyleText;exports.getDesktopGreetingBottomSpacingWithReEngagementDialog=getDesktopGreetingBottomSpacingWithReEngagementDialog;exports.getDesktopGreetingBottomSpacing=getDesktopGreetingBottomSpacing;exports.getDesktopGreetingStyleText=getDesktopGreetingStyleText;exports.getDesktopWelcomeMessageStyleText=getDesktopWelcomeMessageStyleText;exports.getMobileWelcomeMessageStyleText=getMobileWelcomeMessageStyleText;exports.getMobileReengagementCollapsedDialogStyleText=getMobileReengagementCollapsedDialogStyleText;exports.getWelcomeMessageBubbleStyle=getWelcomeMessageBubbleStyle;exports.getWelcomeMessageTextStyle=getWelcomeMessageTextStyle;exports.getMinusButtonStyle=getMinusButtonStyle;exports.getMinusButtonVisibility=getMinusButtonVisibility;exports.getNoOutlineFocus=getNoOutlineFocus;},98);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                     __d("DOMPlugin",["JSSDKShadowCssConfig","Log","QueryString","sdk.DOM","sdk.Observable","sdk.PluginUtils","sdk.Runtime","sdk.XD","sdk.feature"],function $module_DOMPlugin(global,require,importDefault,importNamespace,requireLazy,module,exports){var
+                                                                                                                    __d("DOMPlugin",["JSSDKShadowCssConfig","Log","QueryString","sdk.DOM","sdk.Observable","sdk.PluginUtils","sdk.Runtime","sdk.XD","sdk.feature"],function $module_DOMPlugin(global,require,importDefault,importNamespace,requireLazy,module,exports){var
+
+
+
+
+
+
+
+
 
 
 
@@ -21106,7 +21523,15 @@ return deadline-now;
 
 return 0;
 };return IdleCallbackDeadline;}();exports.requestIdleCallback=requestIdleCallback;exports.cancelIdleCallback=cancelIdleCallback;},98);
-                                                                                                                                                                                                                                                                                                                                                                                               __d("sdk.IdleCallback",["IdleCallbackImplementation","sdk.feature"],function $module_sdk_IdleCallback(global,require,importDefault,importNamespace,requireLazy,module,exports){
+                                                                                                                                       __d("sdk.IdleCallback",["IdleCallbackImplementation","sdk.feature"],function $module_sdk_IdleCallback(global,require,importDefault,importNamespace,requireLazy,module,exports){
+
+
+
+
+
+
+
+
 
 'use strict';var
 
@@ -21126,19 +21551,19 @@ timeout,
 callback,
 minIdleTime)
 {if(minIdleTime===void 0){minIdleTime=importDefault("sdk.feature")('idle_callback_wait_time_ms',2000);}
-this.$IdleCallback_minIdleTime=minIdleTime;
-this.$IdleCallback_callback=callback;
-this.$IdleCallback_timeout=timeout;
+this.$IdleCallback$p_minIdleTime=minIdleTime;
+this.$IdleCallback$p_callback=callback;
+this.$IdleCallback$p_timeout=timeout;
 }var _proto=IdleCallback.prototype;_proto.
 
 start=function start(){var _this=this;
 if(
-this.$IdleCallback_minIdleTime===0||
-isNaN(this.$IdleCallback_minIdleTime)||
-this.$IdleCallback_timeout===0||
-isNaN(this.$IdleCallback_timeout))
+this.$IdleCallback$p_minIdleTime===0||
+isNaN(this.$IdleCallback$p_minIdleTime)||
+this.$IdleCallback$p_timeout===0||
+isNaN(this.$IdleCallback$p_timeout))
 {
-this.$IdleCallback_callback();
+this.$IdleCallback$p_callback();
 return null;
 }
 
@@ -21150,13 +21575,13 @@ window.requestIdleCallback:importNamespace("IdleCallbackImplementation").request
 var totalTimeElapsed=0;
 var prevTime=0;
 var waitUntilIdle=function waitUntilIdle(deadline){
-if(totalTimeElapsed>_this.$IdleCallback_minIdleTime){
-_this.$IdleCallback_callback();
+if(totalTimeElapsed>_this.$IdleCallback$p_minIdleTime){
+_this.$IdleCallback$p_callback();
 return;
 }
 var timeNow=Date.now();
-if(timeNow-startTimestamp>_this.$IdleCallback_timeout){
-_this.$IdleCallback_callback();
+if(timeNow-startTimestamp>_this.$IdleCallback$p_timeout){
+_this.$IdleCallback$p_callback();
 return;
 }
 var timeRemaining=deadline.timeRemaining();
@@ -21314,80 +21739,83 @@ false);
 importNamespace("sdk.DOM").remove(element);
 importNamespace("sdk.Content").append(element);
 
-_this.$ChatDOMFacade_container=document.createElement('div');
+_this.$ChatDOMFacade$p_container=document.createElement('div');
 
-_this.$ChatDOMFacade_loadingState=LoadingState.WAITING;
-_this.$ChatDOMFacade_spinnerShown=false;
-_this.$ChatDOMFacade_willShowDialog=false;
+_this.$ChatDOMFacade$p_loadingState=LoadingState.WAITING;
+_this.$ChatDOMFacade$p_spinnerShown=false;
+_this.$ChatDOMFacade$p_willShowDialog=false;
 
-_this.$ChatDOMFacade_entryPointSize="standard";
-_this.$ChatDOMFacade_entryPointLabel="none";
-_this.$ChatDOMFacade_entryPointIconEnum="none";
-_this.$ChatDOMFacade_alignment="left";
-_this.$ChatDOMFacade_bottomSpacing=0;
-_this.$ChatDOMFacade_sideSpacing=0;
-_this.$ChatDOMFacade_isPageActive=false;
-_this.$ChatDOMFacade_shouldUseNewDomain=Boolean(attr.should_use_new_domain);
+_this.$ChatDOMFacade$p_entryPointSize="standard";
+_this.$ChatDOMFacade$p_entryPointLabel="none";
+_this.$ChatDOMFacade$p_entryPointIconEnum="none";
+_this.$ChatDOMFacade$p_alignment="left";
+_this.$ChatDOMFacade$p_bottomSpacing=0;
+_this.$ChatDOMFacade$p_sideSpacing=0;
+_this.$ChatDOMFacade$p_isPageActive=false;
+_this.$ChatDOMFacade$p_shouldUseNewDomain=Boolean(attr.should_use_new_domain);
 
 _this.shadowCss=['css:fb.shadow.css.chatdom'];
 
 
-_this.$ChatDOMFacade_initTime=_importDefault_closure_performanceAbsoluteNow();
+_this.$ChatDOMFacade$p_initTime=_importDefault_closure_performanceAbsoluteNow();
 importNamespace("Log").info('facadeperf: Started browser idle loader.');
-_this.$ChatDOMFacade_idleCallbackID=new(importDefault("sdk.IdleCallback"))(
+_this.$ChatDOMFacade$p_idleCallbackID=new(importDefault("sdk.IdleCallback"))(
 importDefault("sdk.feature")('chat_plugin_facade_timeout_ms',8000),
 function(){
 var endTime=(_importDefault_closure_performanceAbsoluteNow||(_importDefault_closure_performanceAbsoluteNow=importDefault("performanceAbsoluteNow")))();
 importNamespace("Log").info(
 'facadeperf: Idle callback starts full load in %sms.',
-endTime-_this.$ChatDOMFacade_initTime);
+endTime-_this.$ChatDOMFacade$p_initTime);
 
-_this.$ChatDOMFacade_loadFullPlugin(false,false);
+_this.$ChatDOMFacade$p_loadFullPlugin(false,false);
 }).
 start();return _this;
 }var _proto=ChatDOMFacade.prototype;_proto.
 
 render=function render(_root){var _this=this;
-this.$ChatDOMFacade_container.classList.add('container');
-var uri=this.$ChatDOMFacade_shouldUseNewDomain?
+this.$ChatDOMFacade$p_container.classList.add('container');
+var uri=this.$ChatDOMFacade$p_shouldUseNewDomain?
 importNamespace("UrlMap").resolve('social_plugin')+'/customer_chat/facade/':
 importNamespace("UrlMap").resolve('www')+'/plugins/customer_chat/facade/';
 importDefault("CORSRequest").execute(uri,'get',this.params,function CORSRequest_execute_$3(data){var _getJSEnumSafe,_data$entry_point_siz,_ChatPluginEntryPoint,_ChatPluginEntryPoint2;
 var endTime=(_importDefault_closure_performanceAbsoluteNow||(_importDefault_closure_performanceAbsoluteNow=importDefault("performanceAbsoluteNow")))();
 importNamespace("Log").info(
 'facadeperf: CORS request completed in %sms.',
-endTime-_this.$ChatDOMFacade_initTime);
+endTime-_this.$ChatDOMFacade$p_initTime);
 
 if(data.error){
 return;
 }
 
-_this.$ChatDOMFacade_alignment=data.alignment;
-_this.$ChatDOMFacade_bottomSpacing=data.bottom_spacing;
-_this.$ChatDOMFacade_sideSpacing=data.side_spacing;
+_this.$ChatDOMFacade$p_alignment=data.alignment;
+_this.$ChatDOMFacade$p_bottomSpacing=data.bottom_spacing;
+_this.$ChatDOMFacade$p_sideSpacing=data.side_spacing;
 var themeColor=data.theme_color;
-_this.$ChatDOMFacade_entryPointSize=(_getJSEnumSafe=
+_this.$ChatDOMFacade$p_entryPointSize=(_getJSEnumSafe=
 importDefault("getJSEnumSafe")(importDefault("ChatPluginEntryPointSizeEnum"),(_data$entry_point_siz=
 
 data.entry_point_size)==null?void 0:_data$entry_point_siz.toUpperCase()))!=null?_getJSEnumSafe:
 "standard";
-_this.$ChatDOMFacade_entryPointLabel=(_ChatPluginEntryPoint=
+_this.$ChatDOMFacade$p_entryPointLabel=(_ChatPluginEntryPoint=
 importDefault("ChatPluginEntryPointLabelEnum").cast(data.entry_point_label))!=null?_ChatPluginEntryPoint:
 "none";
-_this.$ChatDOMFacade_entryPointIconEnum=(_ChatPluginEntryPoint2=
+_this.$ChatDOMFacade$p_entryPointIconEnum=(_ChatPluginEntryPoint2=
 importDefault("ChatPluginEntryPointIconEnum").cast(data.entry_point_icon_enum))!=null?_ChatPluginEntryPoint2:
 "none";
-_this.$ChatDOMFacade_isPageActive=data.away_hours_enabled&&!data.is_page_away;
+_this.$ChatDOMFacade$p_isPageActive=data.away_hours_enabled&&!data.is_page_away;
 
-if(_this.$ChatDOMFacade_entryPointLabel==="none"){
+if(_this.$ChatDOMFacade$p_entryPointLabel==="none"){
 var wrapperElement=document.createElement('div');
 importNamespace("sdk.DOM").dangerouslySetInnerHtml(wrapperElement,data.entry_point_icon_svg);
 
 var iconSVG=wrapperElement==null?void 0:wrapperElement.outerHTML;
-importNamespace("sdk.DOM").dangerouslySetInnerHtml(_this.$ChatDOMFacade_container,iconSVG);
+importNamespace("sdk.DOM").dangerouslySetInnerHtml(_this.$ChatDOMFacade$p_container,iconSVG);
 }else{
 var _iconSVG=data.entry_point_icon_svg;
-importNamespace("sdk.DOM").dangerouslySetInnerHtml(_this.$ChatDOMFacade_container,_this.$ChatDOMFacade_getLabelEntryPointHTML(_iconSVG));
+importNamespace("sdk.DOM").dangerouslySetInnerHtml(
+_this.$ChatDOMFacade$p_container,
+_this.$ChatDOMFacade$p_getLabelEntryPointHTML(_iconSVG));
+
 }
 
 var css=importNamespace("ChatPluginStyleUtils").getEntryPointStyle(
@@ -21397,21 +21825,21 @@ data.side_spacing,
 false,
 true,
 data.entry_point_label,
-_this.$ChatDOMFacade_entryPointSize);
+_this.$ChatDOMFacade$p_entryPointSize);
 
 
-ES("Object","assign",false,_this.$ChatDOMFacade_container.style,css);
-_this.$ChatDOMFacade_container.style.backgroundColor=themeColor;
+ES("Object","assign",false,_this.$ChatDOMFacade$p_container.style,css);
+_this.$ChatDOMFacade$p_container.style.backgroundColor=themeColor;
 
 
-if(_this.$ChatDOMFacade_isPageActive){
+if(_this.$ChatDOMFacade$p_isPageActive){
 var availabilityStatusCss=importNamespace("ChatPluginStyleUtils").getAvailabilityStatusStyleText(
 data.alignment,
 data.bottom_spacing,
 data.side_spacing,
 data.entry_point_label,
 data.entry_point_icon_enum,
-_this.$ChatDOMFacade_entryPointSize,
+_this.$ChatDOMFacade$p_entryPointSize,
 false,
 true);
 
@@ -21420,24 +21848,24 @@ ES("Object","assign",false,
 availabilityStatusWrapperElement.style,
 availabilityStatusCss);
 
-_this.$ChatDOMFacade_container.append(availabilityStatusWrapperElement);
+_this.$ChatDOMFacade$p_container.append(availabilityStatusWrapperElement);
 }
 
 importNamespace("ChatPluginSDKPreLoggingUtils").preLogging(
-_this.$ChatDOMFacade_shouldUseNewDomain,
+_this.$ChatDOMFacade$p_shouldUseNewDomain,
 "chat_plugin_sdk_facade_load",
 _this.params);
 
 });
 
-this.$ChatDOMFacade_container.addEventListener('click',function $ChatDOMFacade_container_addEventListener_$1(_event){
-_this.$ChatDOMFacade_loadFullPlugin(true,true);
+this.$ChatDOMFacade$p_container.addEventListener('click',function $ChatDOMFacade$p_container_addEventListener_$1(_event){
+_this.$ChatDOMFacade$p_loadFullPlugin(true,true);
 });
 
-return this.$ChatDOMFacade_container;
-};_proto.
+return this.$ChatDOMFacade$p_container;
+};_proto.$ChatDOMFacade$p_getEntryPointLabelText=function $ChatDOMFacade$p_getEntryPointLabelText(
 
-$ChatDOMFacade_getEntryPointLabelText=function $ChatDOMFacade_getEntryPointLabelText(label){
+label){
 switch(label){
 case"chat":
 return importDefault("sdk.fbt")._("Chat");
@@ -21448,23 +21876,23 @@ return importDefault("sdk.fbt")._("Ask us");
 case"none":
 return'';}
 
-};_proto.
+};_proto.$ChatDOMFacade$p_hideFacade=function $ChatDOMFacade$p_hideFacade()
 
-$ChatDOMFacade_hideFacade=function $ChatDOMFacade_hideFacade(){var _this$element$parentN;
+{var _this$element$parentN;
 (_this$element$parentN=this.element.parentNode)==null?void 0:_this$element$parentN.removeChild(this.element);
-};_proto.
+};_proto.$ChatDOMFacade$p_showSpinner=function $ChatDOMFacade$p_showSpinner()
 
-$ChatDOMFacade_showSpinner=function $ChatDOMFacade_showSpinner(){
-if(this.$ChatDOMFacade_spinnerShown||this.$ChatDOMFacade_loadingState===LoadingState.LOADED){
+{
+if(this.$ChatDOMFacade$p_spinnerShown||this.$ChatDOMFacade$p_loadingState===LoadingState.LOADED){
 return;
 }
 
-if(this.$ChatDOMFacade_entryPointLabel==="none"){
+if(this.$ChatDOMFacade$p_entryPointLabel==="none"){
 var spinnerSize=
-this.$ChatDOMFacade_entryPointSize==="compact"?24:36;
-var spinnerSVG=this.$ChatDOMFacade_getSpinnerSVG(spinnerSize);
+this.$ChatDOMFacade$p_entryPointSize==="compact"?24:36;
+var spinnerSVG=this.$ChatDOMFacade$p_getSpinnerSVG(spinnerSize);
 importNamespace("sdk.DOM").dangerouslySetInnerHtml(
-this.$ChatDOMFacade_container,"\n          <div class=\"centered-container\">\n            "+
+this.$ChatDOMFacade$p_container,"\n          <div class=\"centered-container\">\n            "+
 
 
 spinnerSVG+"\n          </div>\n        ");
@@ -21473,28 +21901,28 @@ spinnerSVG+"\n          </div>\n        ");
 
 }else{
 var _spinnerSize=
-this.$ChatDOMFacade_entryPointSize==="compact"?20:24;
-var _spinnerSVG=this.$ChatDOMFacade_getSpinnerSVG(_spinnerSize);
-if(this.$ChatDOMFacade_entryPointIconEnum==="none"){
+this.$ChatDOMFacade$p_entryPointSize==="compact"?20:24;
+var _spinnerSVG=this.$ChatDOMFacade$p_getSpinnerSVG(_spinnerSize);
+if(this.$ChatDOMFacade$p_entryPointIconEnum==="none"){
 var marginRight=
-this.$ChatDOMFacade_entryPointSize==="compact"?importNamespace("ChatPluginStyleUtils").LABELED_ENTRY_POINT_COMPACT_ICON_MARGIN_RIGHT:importNamespace("ChatPluginStyleUtils").LABELED_ENTRY_POINT_STANDARD_ICON_MARGIN_RIGHT;
+this.$ChatDOMFacade$p_entryPointSize==="compact"?importNamespace("ChatPluginStyleUtils").LABELED_ENTRY_POINT_COMPACT_ICON_MARGIN_RIGHT:importNamespace("ChatPluginStyleUtils").LABELED_ENTRY_POINT_STANDARD_ICON_MARGIN_RIGHT;
 
 
 importNamespace("sdk.DOM").dangerouslySetInnerHtml(
-this.$ChatDOMFacade_container.children[0],
-this.$ChatDOMFacade_getLabelOnlyEntryPointSpinner(marginRight,_spinnerSVG)+
+this.$ChatDOMFacade$p_container.children[0],
+this.$ChatDOMFacade$p_getLabelOnlyEntryPointSpinner(marginRight,_spinnerSVG)+
 
-this.$ChatDOMFacade_container.children[0].innerHTML);
+this.$ChatDOMFacade$p_container.children[0].innerHTML);
 
 
-if(this.$ChatDOMFacade_isPageActive){
+if(this.$ChatDOMFacade$p_isPageActive){
 var availabilityStatusCss=importNamespace("ChatPluginStyleUtils").getAvailabilityStatusStyleText(
-this.$ChatDOMFacade_alignment,
-this.$ChatDOMFacade_bottomSpacing,
-this.$ChatDOMFacade_sideSpacing,
-this.$ChatDOMFacade_entryPointLabel,
+this.$ChatDOMFacade$p_alignment,
+this.$ChatDOMFacade$p_bottomSpacing,
+this.$ChatDOMFacade$p_sideSpacing,
+this.$ChatDOMFacade$p_entryPointLabel,
 "chat_round_icon",
-this.$ChatDOMFacade_entryPointSize,
+this.$ChatDOMFacade$p_entryPointSize,
 false,
 false);
 
@@ -21504,35 +21932,38 @@ ES("Object","assign",false,
 availabilityStatusWrapperElement.style,
 availabilityStatusCss);
 
-importNamespace("sdk.DOM").remove(this.$ChatDOMFacade_container.children[1]);
-this.$ChatDOMFacade_container.append(availabilityStatusWrapperElement);
+importNamespace("sdk.DOM").remove(this.$ChatDOMFacade$p_container.children[1]);
+this.$ChatDOMFacade$p_container.append(availabilityStatusWrapperElement);
 }
 }else{
-importNamespace("sdk.DOM").dangerouslySetInnerHtml(this.$ChatDOMFacade_container.children[0].children[0],_spinnerSVG);
-}
-}
-this.$ChatDOMFacade_spinnerShown=true;
-};_proto.
+importNamespace("sdk.DOM").dangerouslySetInnerHtml(
+this.$ChatDOMFacade$p_container.children[0].children[0],
+_spinnerSVG);
 
-$ChatDOMFacade_getLabelEntryPointHTML=function $ChatDOMFacade_getLabelEntryPointHTML(iconSVG){
+}
+}
+this.$ChatDOMFacade$p_spinnerShown=true;
+};_proto.$ChatDOMFacade$p_getLabelEntryPointHTML=function $ChatDOMFacade$p_getLabelEntryPointHTML(
+
+iconSVG){
 var containerHeight=
-this.$ChatDOMFacade_entryPointSize==="compact"?importNamespace("ChatPluginStyleUtils").LABELED_ENTRY_POINT_COMPACT_HEIGHT:importNamespace("ChatPluginStyleUtils").LABELED_ENTRY_POINT_STANDARD_HEIGHT;
+this.$ChatDOMFacade$p_entryPointSize==="compact"?importNamespace("ChatPluginStyleUtils").LABELED_ENTRY_POINT_COMPACT_HEIGHT:importNamespace("ChatPluginStyleUtils").LABELED_ENTRY_POINT_STANDARD_HEIGHT;
 
 
 var fontSize=
-this.$ChatDOMFacade_entryPointSize==="compact"?importNamespace("ChatPluginStyleUtils").LABELED_ENTRY_POINT_COMPACT_FONT_SIZE:importNamespace("ChatPluginStyleUtils").LABELED_ENTRY_POINT_STANDARD_FONT_SIZE;
+this.$ChatDOMFacade$p_entryPointSize==="compact"?importNamespace("ChatPluginStyleUtils").LABELED_ENTRY_POINT_COMPACT_FONT_SIZE:importNamespace("ChatPluginStyleUtils").LABELED_ENTRY_POINT_STANDARD_FONT_SIZE;
 
 
 var lineHeight=
-this.$ChatDOMFacade_entryPointSize==="compact"?importNamespace("ChatPluginStyleUtils").LABELED_ENTRY_POINT_COMPACT_LINE_HEIGHT:importNamespace("ChatPluginStyleUtils").LABELED_ENTRY_POINT_STANDARD_LINE_HEIGHT;
+this.$ChatDOMFacade$p_entryPointSize==="compact"?importNamespace("ChatPluginStyleUtils").LABELED_ENTRY_POINT_COMPACT_LINE_HEIGHT:importNamespace("ChatPluginStyleUtils").LABELED_ENTRY_POINT_STANDARD_LINE_HEIGHT;
 
 
 var marginRight=
-this.$ChatDOMFacade_entryPointSize==="compact"?importNamespace("ChatPluginStyleUtils").LABELED_ENTRY_POINT_COMPACT_ICON_MARGIN_RIGHT:importNamespace("ChatPluginStyleUtils").LABELED_ENTRY_POINT_STANDARD_ICON_MARGIN_RIGHT;
+this.$ChatDOMFacade$p_entryPointSize==="compact"?importNamespace("ChatPluginStyleUtils").LABELED_ENTRY_POINT_COMPACT_ICON_MARGIN_RIGHT:importNamespace("ChatPluginStyleUtils").LABELED_ENTRY_POINT_STANDARD_ICON_MARGIN_RIGHT;
 
 
 var paddingHorizontal=
-this.$ChatDOMFacade_entryPointSize==="compact"?importNamespace("ChatPluginStyleUtils").LABELED_ENTRY_POINT_COMPACT_PADDING_HORIZONTAL:importNamespace("ChatPluginStyleUtils").LABELED_ENTRY_POINT_STANDARD_PADDING_HORIZONTAL;
+this.$ChatDOMFacade$p_entryPointSize==="compact"?importNamespace("ChatPluginStyleUtils").LABELED_ENTRY_POINT_COMPACT_PADDING_HORIZONTAL:importNamespace("ChatPluginStyleUtils").LABELED_ENTRY_POINT_STANDARD_PADDING_HORIZONTAL;
 
 
 
@@ -21556,14 +21987,14 @@ iconSVG+"\n            </div>\n          ")+"\n        <div\n          class=\"l
 
 fontSize+"px;\n            line-height: "+
 lineHeight+"px;\n        \">"+
-this.$ChatDOMFacade_getEntryPointLabelText(
-this.$ChatDOMFacade_entryPointLabel).
+this.$ChatDOMFacade$p_getEntryPointLabelText(
+this.$ChatDOMFacade$p_entryPointLabel).
 toString()+"</div>\n      </div>\n    ";
 
 
-};_proto.
+};_proto.$ChatDOMFacade$p_getLabelOnlyEntryPointSpinner=function $ChatDOMFacade$p_getLabelOnlyEntryPointSpinner(
 
-$ChatDOMFacade_getLabelOnlyEntryPointSpinner=function $ChatDOMFacade_getLabelOnlyEntryPointSpinner(
+
 marginRight,
 spinnerSVG)
 {
@@ -21574,35 +22005,35 @@ marginRight+"px;\n      \">\n        "+
 spinnerSVG+"\n      </div>\n    ";
 
 
-};_proto.
+};_proto.$ChatDOMFacade$p_getSpinnerSVG=function $ChatDOMFacade$p_getSpinnerSVG(
 
-$ChatDOMFacade_getSpinnerSVG=function $ChatDOMFacade_getSpinnerSVG(size){
+size){
 return"\n      <svg class=\"spinning\" x=\"0\" y=\"0\" width=\""+
 size+"\" height=\""+size+"\" viewbox=\"0 0 60 60\">\n        <circle class=\"path\" cx=\"30\" cy=\"30\" r=\"24\" fill=\"none\" stroke-width=\"6\"></circle>\n      </svg>\n    ";
 
 
 
-};_proto.
+};_proto.$ChatDOMFacade$p_prepareShowDialog=function $ChatDOMFacade$p_prepareShowDialog(
 
-$ChatDOMFacade_prepareShowDialog=function $ChatDOMFacade_prepareShowDialog(showDialog){
-if(showDialog&&this.$ChatDOMFacade_renderer&&!this.$ChatDOMFacade_willShowDialog){
-this.$ChatDOMFacade_willShowDialog=true;
-var renderer=this.$ChatDOMFacade_renderer;
+showDialog){
+if(showDialog&&this.$ChatDOMFacade$p_renderer&&!this.$ChatDOMFacade$p_willShowDialog){
+this.$ChatDOMFacade$p_willShowDialog=true;
+var renderer=this.$ChatDOMFacade$p_renderer;
 renderer.subscribe('iframes_loaded',function renderer_subscribe_$1(_message){
 renderer.showDialog();
 });
 }
-};_proto.
+};_proto.$ChatDOMFacade$p_loadFullPlugin=function $ChatDOMFacade$p_loadFullPlugin(
 
-$ChatDOMFacade_loadFullPlugin=function $ChatDOMFacade_loadFullPlugin(showDialog,showSpinner){var _this2=this;
+showDialog,showSpinner){var _this2=this;
 if(showSpinner){
-this.$ChatDOMFacade_showSpinner();
+this.$ChatDOMFacade$p_showSpinner();
 }
-this.$ChatDOMFacade_prepareShowDialog(showDialog);
-if(this.$ChatDOMFacade_loadingState!==LoadingState.WAITING){
+this.$ChatDOMFacade$p_prepareShowDialog(showDialog);
+if(this.$ChatDOMFacade$p_loadingState!==LoadingState.WAITING){
 return;
 }
-this.$ChatDOMFacade_loadingState=LoadingState.LOADING;
+this.$ChatDOMFacade$p_loadingState=LoadingState.LOADING;
 var container=document.createElement('div');
 importNamespace("sdk.Content").append(container,this.element);
 var renderer=new(importDefault("sdk.XFBML.CustomerChatNew"))(
@@ -21611,15 +22042,22 @@ container,
 'customerchat',
 this.params);
 
-this.$ChatDOMFacade_renderer=renderer;
+this.$ChatDOMFacade$p_renderer=renderer;
 renderer.subscribe('xd.mpn.setupIconIframe',function renderer_subscribe_$1(_message){
-_this2.$ChatDOMFacade_loadingState=LoadingState.LOADED;
-_this2.$ChatDOMFacade_hideFacade();
+_this2.$ChatDOMFacade$p_loadingState=LoadingState.LOADED;
+_this2.$ChatDOMFacade$p_hideFacade();
 });
-this.$ChatDOMFacade_prepareShowDialog(showDialog);
+this.$ChatDOMFacade$p_prepareShowDialog(showDialog);
 renderer.process();
 };return ChatDOMFacade;}(importNamespace("DOMPlugin").DOMPlugin);exports["default"]=ChatDOMFacade;},98);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                 __d("IframePluginClass",["Log","QueryString","UrlMap","guid","sdk.Auth.LoginStatus","sdk.AuthUtils","sdk.DOM","sdk.Event","sdk.Observable","sdk.PlatformVersioning","sdk.PluginUtils","sdk.Runtime","sdk.UA","sdk.URI","sdk.XD","sdk.createIframe"],function $module_IframePluginClass(global,require,importDefault,importNamespace,requireLazy,module,exports){var
+                                                                                                                               __d("IframePluginClass",["Log","QueryString","UrlMap","guid","sdk.Auth.LoginStatus","sdk.AuthUtils","sdk.DOM","sdk.Event","sdk.Observable","sdk.PlatformVersioning","sdk.PluginUtils","sdk.Runtime","sdk.UA","sdk.URI","sdk.XD","sdk.createIframe"],function $module_IframePluginClass(global,require,importDefault,importNamespace,requireLazy,module,exports){var
+
+
+
+
+
+
+
 
 
 
@@ -21669,7 +22107,7 @@ config)
 _this=_Observable.call(this)||this;
 tag=tag.replace(/-/g,'_');
 
-_this.$IframePluginClass_isIframeResized=false;
+_this.$IframePluginClass$p_isIframeResized=false;
 
 _this.config=
 config!=null?
@@ -21695,7 +22133,7 @@ importNamespace("sdk.PluginUtils").parse(message.width),
 importNamespace("sdk.PluginUtils").parse(message.height));
 
 _this.updateLift();
-window.clearTimeout(_this.$IframePluginClass_timeoutID);
+window.clearTimeout(_this.$IframePluginClass$p_timeoutID);
 });
 
 _this.subscribe('xd.resize',function _this_subscribe_$1(message){var _importNamespace_sdkPluginUtils;
@@ -21713,9 +22151,9 @@ _this.iframe,
 _importNamespace_sdkPluginUtils.parse(message.width),
 _importNamespace_sdkPluginUtils.parse(message.height));
 
-_this.$IframePluginClass_isIframeResized=true;
+_this.$IframePluginClass$p_isIframeResized=true;
 _this.updateLift();
-window.clearTimeout(_this.$IframePluginClass_timeoutID);
+window.clearTimeout(_this.$IframePluginClass$p_timeoutID);
 });
 
 _this.subscribe('xd.resize.iframe',function _this_subscribe_$1(message){
@@ -21724,9 +22162,9 @@ _this.iframe,
 importNamespace("sdk.PluginUtils").parse(message.width),
 importNamespace("sdk.PluginUtils").parse(message.height));
 
-_this.$IframePluginClass_isIframeResized=true;
+_this.$IframePluginClass$p_isIframeResized=true;
 _this.updateLift();
-window.clearTimeout(_this.$IframePluginClass_timeoutID);
+window.clearTimeout(_this.$IframePluginClass$p_timeoutID);
 });
 
 _this.subscribe('xd.sdk_event',function _this_subscribe_$1(message){
@@ -21883,7 +22321,7 @@ _this2.iframe.style.visibility='visible';
 
 
 
-if(!_this2.$IframePluginClass_isIframeResized){
+if(!_this2.$IframePluginClass$p_isIframeResized){
 importNamespace("sdk.PluginUtils").collapseIframe(_this2.iframe);
 }
 });
@@ -21893,7 +22331,7 @@ this.element.removeChild(this.element.firstChild);
 }
 this.element.appendChild(this.iframeOptions.root);
 var timeout=importDefault("sdk.UA").mobile()?120:45;
-this.$IframePluginClass_timeoutID=window.setTimeout(function window_setTimeout_$0(){
+this.$IframePluginClass$p_timeoutID=window.setTimeout(function window_setTimeout_$0(){
 importNamespace("sdk.PluginUtils").collapseIframe(_this2.iframe);
 importNamespace("Log").warn('%s:%s failed to resize in %ss',_this2.ns,_this2.tag,timeout);
 },timeout*1000);
@@ -21967,7 +22405,11 @@ this.iframe.style.width===this.iframeOptions.root.style.width&&
 this.iframe.style.height===this.iframeOptions.root.style.height;
 (same?importNamespace("sdk.DOM").removeCss:importNamespace("sdk.DOM").addCss)(this.iframe,'fbiframe_widget_lift');
 };return IframePluginClass;}(importNamespace("sdk.Observable").Observable);exports["default"]=IframePluginClass;},98);
-                                                                                                                                                                                                                    __d("MPNExplicitUserInteractions",[],(function $module_MPNExplicitUserInteractions(global,require,requireDynamic,requireLazy,module,exports){
+                                                                                                                                       __d("MPNExplicitUserInteractions",[],(function $module_MPNExplicitUserInteractions(global,require,requireDynamic,requireLazy,module,exports){
+
+
+
+
 
 'use strict';
 
@@ -21979,7 +22421,11 @@ return false;
 }
 return Date.now()<=euit+USER_INTERACTION_TIMEOUT;
 }exports.hasUserInteraction=hasUserInteraction;}),66);
-                                                                                                                                                                                                        __d("MPNLocalState",[],(function $module_MPNLocalState(global,require,requireDynamic,requireLazy,module,exports){
+                                                                                                                                       __d("MPNLocalState",[],(function $module_MPNLocalState(global,require,requireDynamic,requireLazy,module,exports){
+
+
+
+
 
 'use strict';
 
@@ -22004,7 +22450,13 @@ GUEST_CHAT_STARTED:3};
 
 
 var LOCAL_STATE_KEY='__fb_chat_plugin';exports.MPNLocalStatePath=MPNLocalStatePath;exports.MPNChatState=MPNChatState;exports.LOCAL_STATE_KEY=LOCAL_STATE_KEY;}),66);
-                                                                                                                                                                                                                                                                                                                                                                                              __d("getFacebookOriginForTarget",["Log"],function $module_getFacebookOriginForTarget(global,require,importDefault,importNamespace,requireLazy,module,exports){
+                                                                                                                         __d("getFacebookOriginForTarget",["Log"],function $module_getFacebookOriginForTarget(global,require,importDefault,importNamespace,requireLazy,module,exports){
+
+
+
+
+
+
 
 
 function getFacebookOriginForTarget(
@@ -22054,7 +22506,11 @@ window.clearInterval(intervalId);
 }
 },200);
 }exports["default"]=getFacebookOriginForTarget;},98);
-                                                                                                                                                                              __d("MPNSingletonProvider",[],function $module_MPNSingletonProvider(global,require,requireDynamic,requireLazy,module,exports){
+                                                                                                                                       __d("MPNSingletonProvider",[],function $module_MPNSingletonProvider(global,require,requireDynamic,requireLazy,module,exports){
+
+
+
+
 
 'use strict';var
 
@@ -22158,7 +22614,11 @@ temporaryTitle=null;
 }};
 
 }exports.get=get;exports.set=set;exports.blink=blink;}),66);
-                                                                                                                                                                          __d("sdk.cp.Constants",["MPNLocalState","UrlMap","sdk.Runtime"],(function $module_sdk_cp_Constants(global,require,importDefault,importNamespace,requireLazy,module,exports){
+                                                                                                                                       __d("sdk.cp.Constants",["MPNLocalState","UrlMap","sdk.Runtime"],(function $module_sdk_cp_Constants(global,require,importDefault,importNamespace,requireLazy,module,exports){
+
+
+
+
 
 'use strict';
 
@@ -22203,7 +22663,12 @@ animationEvents:[
 
 blankFrameURL:blankIFrameURI,
 blankFrameNewDomainURL:blankIFrameNewDomainURI};exports["default"]=_default;}),98);
-                                                                                                                                                                                                                                                                                        __d("sdk.cp.Actions",["DOMEventListener","MPNExplicitUserInteractions","MPNLocalState","MPNSingletonProvider","sdk.DOM","sdk.DocumentTitle","sdk.URI","sdk.WebStorage","sdk.cp.Constants"],function $module_sdk_cp_Actions(global,require,importDefault,importNamespace,requireLazy,module,exports){
+                                                                                                                                       __d("sdk.cp.Actions",["DOMEventListener","MPNExplicitUserInteractions","MPNLocalState","MPNSingletonProvider","sdk.DOM","sdk.DocumentTitle","sdk.URI","sdk.WebStorage","sdk.cp.Constants"],function $module_sdk_cp_Actions(global,require,importDefault,importNamespace,requireLazy,module,exports){
+
+
+
+
+
 
 'use strict';var
 
@@ -22333,7 +22798,11 @@ var _provider=new(importDefault("MPNSingletonProvider"))(function(){
 return new MPNSDKActions();
 });var _default=
 _provider.get();exports["default"]=_default;},98);
-                                                                                                                                                                                                                __d("sdk.cp.Animation",["sdk.DOM","sdk.UA","sdk.cp.Constants"],function $module_sdk_cp_Animation(global,require,importDefault,importNamespace,requireLazy,module,exports){
+                                                                                                                                       __d("sdk.cp.Animation",["sdk.DOM","sdk.UA","sdk.cp.Constants"],function $module_sdk_cp_Animation(global,require,importDefault,importNamespace,requireLazy,module,exports){
+
+
+
+
 
 'use strict';
 
@@ -22406,7 +22875,12 @@ bounceOutAnimationName='fb_customer_chat_bounce_out_v2';}
 }
 return bounceOutAnimationName;
 }exports.iframeBounceInAnimation=iframeBounceInAnimation;exports.iframeBounceOutAnimation=iframeBounceOutAnimation;},98);
-                                                                                                                                                                                                                                                  __d("sdk.cp.Storage",["MPNSingletonProvider","sdk.WebStorage","sdk.cp.Constants"],function $module_sdk_cp_Storage(global,require,importDefault,importNamespace,requireLazy,module,exports){
+                                                                                                                                       __d("sdk.cp.Storage",["MPNSingletonProvider","sdk.WebStorage","sdk.cp.Constants"],function $module_sdk_cp_Storage(global,require,importDefault,importNamespace,requireLazy,module,exports){
+
+
+
+
+
 
 'use strict';var
 
@@ -22548,7 +23022,7 @@ CustomerChat=function(_IframePluginClass){babelHelpers.inheritsLoose(CustomerCha
 
 
 function CustomerChat(elem,ns,tag,attr){var _this;
-_this=_IframePluginClass.call(this,elem,ns,tag,attr)||this;_this.$CustomerChat_bubbleIFrame=null;_this.$CustomerChat_bubbleIFrameName=null;_this.$CustomerChat_iconInnerIFrame=null;_this.$CustomerChat_dialogIFrame=null;_this.$CustomerChat_dialogIFrameName=null;_this.$CustomerChat_unreadCountIFrame=null;_this.$CustomerChat_unreadCountIFrameName=null;_this.$CustomerChat_availabilityStatusIFrame=null;_this.$CustomerChat_availabilityStatusIFrameName=null;_this.$CustomerChat_greetingIFrame=null;_this.$CustomerChat_greetingIFrameName=null;_this.$CustomerChat_iframesLoaded=false;_this.$CustomerChat_dialogIFrameOrigin=null;_this.$CustomerChat_isDialogHidden=false;_this.$CustomerChat_isPluginHidden=false;_this.
+_this=_IframePluginClass.call(this,elem,ns,tag,attr)||this;_this.$CustomerChat$p_bubbleIFrame=null;_this.$CustomerChat$p_bubbleIFrameName=null;_this.$CustomerChat$p_iconInnerIFrame=null;_this.$CustomerChat$p_dialogIFrame=null;_this.$CustomerChat$p_dialogIFrameName=null;_this.$CustomerChat$p_unreadCountIFrame=null;_this.$CustomerChat$p_unreadCountIFrameName=null;_this.$CustomerChat$p_availabilityStatusIFrame=null;_this.$CustomerChat$p_availabilityStatusIFrameName=null;_this.$CustomerChat$p_greetingIFrame=null;_this.$CustomerChat$p_greetingIFrameName=null;_this.$CustomerChat$p_iframesLoaded=false;_this.$CustomerChat$p_dialogIFrameOrigin=null;_this.$CustomerChat$p_isDialogHidden=false;_this.$CustomerChat$p_isPluginHidden=false;_this.
 
 
 
@@ -23098,47 +23572,47 @@ _this=_IframePluginClass.call(this,elem,ns,tag,attr)||this;_this.$CustomerChat_b
 show=function(
 shouldShowDialog)
 {if(shouldShowDialog===void 0){shouldShowDialog=true;}
-_this.$CustomerChat_isPluginHidden=false;
-if(_this.$CustomerChat_bubbleIFrame!=null){
-importNamespace("sdk.DOM").setStyle(_this.$CustomerChat_bubbleIFrame,'display','inline');
+_this.$CustomerChat$p_isPluginHidden=false;
+if(_this.$CustomerChat$p_bubbleIFrame!=null){
+importNamespace("sdk.DOM").setStyle(_this.$CustomerChat$p_bubbleIFrame,'display','inline');
 }
 if(shouldShowDialog){
-_this.$CustomerChat_showDialogIframe(_this.$CustomerChat_dialogIFrame);
+_this.$CustomerChat$p_showDialogIframe(_this.$CustomerChat$p_dialogIFrame);
 }
 importNamespace("sdk.Event").fire('customerchat.show');
-_this.$CustomerChat_handleSDKCall('show');
+_this.$CustomerChat$p_handleSDKCall('show');
 };_this.
 
 hide=function(){
-_this.$CustomerChat_isPluginHidden=true;
-if(_this.$CustomerChat_bubbleIFrame!=null){
-importNamespace("sdk.DOM").setStyle(_this.$CustomerChat_bubbleIFrame,'display','none');
+_this.$CustomerChat$p_isPluginHidden=true;
+if(_this.$CustomerChat$p_bubbleIFrame!=null){
+importNamespace("sdk.DOM").setStyle(_this.$CustomerChat$p_bubbleIFrame,'display','none');
 }
-_this.$CustomerChat_hideDialogIframe(_this.$CustomerChat_dialogIFrame);
+_this.$CustomerChat$p_hideDialogIframe(_this.$CustomerChat$p_dialogIFrame);
 importNamespace("sdk.Event").fire('customerchat.hide');
-_this.$CustomerChat_handleSDKCall('hide');
+_this.$CustomerChat$p_handleSDKCall('hide');
 };_this.
 
 showDialog=function(){
-if(_this.$CustomerChat_bubbleIFrame!=null){
-importNamespace("sdk.DOM").setStyle(_this.$CustomerChat_bubbleIFrame,'display','inline');
+if(_this.$CustomerChat$p_bubbleIFrame!=null){
+importNamespace("sdk.DOM").setStyle(_this.$CustomerChat$p_bubbleIFrame,'display','inline');
 }
-_this.$CustomerChat_showDialogIframe(_this.$CustomerChat_dialogIFrame);
-_this.$CustomerChat_handleSDKCall('showDialog');
+_this.$CustomerChat$p_showDialogIframe(_this.$CustomerChat$p_dialogIFrame);
+_this.$CustomerChat$p_handleSDKCall('showDialog');
 };_this.
 
 hideDialog=function(){
-_this.$CustomerChat_hideDialogIframe(_this.$CustomerChat_dialogIFrame);
-_this.$CustomerChat_handleSDKCall('hideDialog');
+_this.$CustomerChat$p_hideDialogIframe(_this.$CustomerChat$p_dialogIFrame);
+_this.$CustomerChat$p_handleSDKCall('hideDialog');
 };_this.
 
-update=function(data){var _this$$CustomerChat_d;
-importNamespace("sdk.XD").sendToFacebook((_this$$CustomerChat_d=_this.$CustomerChat_dialogIFrameName)!=null?_this$$CustomerChat_d:'',{
+update=function(data){var _this$$CustomerChat$p;
+importNamespace("sdk.XD").sendToFacebook((_this$$CustomerChat$p=_this.$CustomerChat$p_dialogIFrameName)!=null?_this$$CustomerChat$p:'',{
 method:'updateCustomerChat',
 params:ES("JSON","stringify",false,data||{})});
 
-_this.$CustomerChat_handleSDKCall('update');
-};importNamespace("sdk.DOM").addCss(elem,'fb_invisible_flow');importNamespace("sdk.DOM").remove(elem);importNamespace("sdk.Content").append(elem);_this.$CustomerChat_shouldUseNewDomain=Boolean(attr.should_use_new_domain);_this.$CustomerChat_updateDialogIframeOptions();importNamespace("sdk.Event").fire('customerchat.load');_this.$CustomerChat_setUpSubscriptions();importNamespace("ChatPluginSDKPreLoggingUtils").preLogging(_this.$CustomerChat_shouldUseNewDomain,"chat_plugin_sdk_dialog_iframe_create",_this.params,false);return _this;}var _proto=CustomerChat.prototype;_proto.$CustomerChat_updateDialogIframeOptions=function $CustomerChat_updateDialogIframeOptions(){var storage=importNamespace("sdk.WebStorage").getLocalStorage();var localState=null;if(storage!=null){try{localState=storage.getItem(importNamespace("MPNLocalState").LOCAL_STATE_KEY);}catch(_unused){importNamespace("Log").warn('Failed to access localStorage');}}if(localState!=null){ES("Object","assign",false,this.params,{local_state:localState});}if(localState!=null){try{var stateObj=ES("JSON","parse",false,localState);if(importNamespace("MPNExplicitUserInteractions").hasUserInteraction(stateObj==null?void 0:stateObj.euit)){ES("Object","assign",false,this.params,{has_explicit_interaction:1});}}catch(_unused2){importNamespace("Log").warn('Invalid local state');}}var requestTime=(_importDefault_closure_performanceAbsoluteNow||(_importDefault_closure_performanceAbsoluteNow=importDefault("performanceAbsoluteNow")))();ES("Object","assign",false,this.params,{request_time:requestTime});var url=this.$CustomerChat_shouldUseNewDomain?importNamespace("UrlMap").resolve('social_plugin')+'/'+this.tag+'.php?':importNamespace("UrlMap").resolve('www')+'/plugins/'+this.tag+'.php?';this.iframeOptions.url=url+importDefault("QueryString").encode(this.params);this.iframeOptions.title='';};_proto.$CustomerChat_setUpSubscriptions=function $CustomerChat_setUpSubscriptions(){var _this=this;var _importNamespace_sdkXFBMLCustomerChatWrapper;this.subscribe('render',function subscribe_$1(){importNamespace("ChatPluginSDKPreLoggingUtils").preLogging(_this.$CustomerChat_shouldUseNewDomain,"chat_plugin_sdk_dialog_iframe_load",_this.params);});this.subscribe('xd.mpn.storeState',function subscribe_$1(message){importDefault("sdk.cp.Storage").setState(message.state);});this.subscribe('xd.mpn.getState',function subscribe_$1(_){var state=importDefault("sdk.cp.Storage").getStateJSON();var event={name:'mpnDidFetchState',params:state};_this.$CustomerChat_postMessageToDialogFrame(event);_this.$CustomerChat_postMessageToBubbleFrame(event);});this.subscribe('xd.mpn.setupIconIframe',function subscribe_$1(message){_this.$CustomerChat_handleSetupIconIframe(message);});this.subscribe('xd.mpn.setupDialogIframe',function subscribe_$1(message){_this.$CustomerChat_handleSetupDialogIframe(message);});this.subscribe('xd.mpn.toggleDialogVisibility',function subscribe_$1(message){_this.$CustomerChat_handleToggleDialogVisibility(message);});this.subscribe('xd.mpn.toggleGreetingDialogVisibility',function subscribe_$1(message){_this.$CustomerChat_handleToggleGreetingDialogVisibility(message);});this.subscribe('xd.mpn.updateGreetingAppearance',function subscribe_$1(message){importDefault("sdk.cp.Actions").setDialogAppearance(_this.$CustomerChat_greetingIFrame,message);});this.subscribe('xd.mpn.updateDialogAppearance',function subscribe_$1(message){importDefault("sdk.cp.Actions").setDialogAppearance(_this.iframe,message);});this.subscribe('xd.mpn.updateIconAppearance',function subscribe_$1(message){importDefault("sdk.cp.Actions").setDialogAppearance(_this.$CustomerChat_iconInnerIFrame,message);});this.subscribe('xd.mpn.reload',function subscribe_$1(message){importDefault("sdk.cp.Actions").reloadIframe(_this.iframe,message.hasExplicitInteraction);});this.subscribe('xd.mpn.updatePageTitle',function subscribe_$1(message){importDefault("sdk.cp.Actions").blinkPageTitle(message.title);});this.subscribe('xd.mpn.navigateToWelcomePage',function subscribe_$1(message){_this.$CustomerChat_notifyDialogToNaviagetToWelcomePage(message.isHidden);});(_importNamespace_sdkXFBMLCustomerChatWrapper=importNamespace("sdk.XFBML.CustomerChatWrapper")).CustomerChatInternalEvent.subscribe(_importNamespace_sdkXFBMLCustomerChatWrapper.CustomerChatInternalEventType.SHOW,this.show);_importNamespace_sdkXFBMLCustomerChatWrapper.CustomerChatInternalEvent.subscribe(_importNamespace_sdkXFBMLCustomerChatWrapper.CustomerChatInternalEventType.HIDE,this.hide);_importNamespace_sdkXFBMLCustomerChatWrapper.CustomerChatInternalEvent.subscribe(_importNamespace_sdkXFBMLCustomerChatWrapper.CustomerChatInternalEventType.SHOW_DIALOG,this.showDialog);_importNamespace_sdkXFBMLCustomerChatWrapper.CustomerChatInternalEvent.subscribe(_importNamespace_sdkXFBMLCustomerChatWrapper.CustomerChatInternalEventType.HIDE_DIALOG,this.hideDialog);_importNamespace_sdkXFBMLCustomerChatWrapper.CustomerChatInternalEvent.subscribe(_importNamespace_sdkXFBMLCustomerChatWrapper.CustomerChatInternalEventType.UPDATE,this.update);};_proto.$CustomerChat_handleSetupIconIframe=function $CustomerChat_handleSetupIconIframe(message){var _this2=this;if(this.$CustomerChat_bubbleIFrame){importNamespace("sdk.DOM").remove(this.$CustomerChat_bubbleIFrame);}var frameName=message.frameName,iconSVG=message.iconSVG;var newElement=importNamespace("sdk.DialogUtils").setupNewDialog();var css=ES("JSON","parse",false,message.cssText);var iconDiv=document.createElement('div');if(iconSVG!=null){importNamespace("sdk.DOM").dangerouslySetInnerHtml(iconDiv,iconSVG);ES("Object","assign",false,iconDiv.style,css);iconDiv.style.boxShadow='none';importNamespace("sdk.Content").append(iconDiv,newElement.contentRoot);}var bubbleIFrameName='blank_'+frameName;this.$CustomerChat_bubbleIFrame=newElement.dialogElement;this.$CustomerChat_iconInnerIFrame=importDefault("sdk.createIframe")({url:this.$CustomerChat_shouldUseNewDomain?importDefault("sdk.cp.Constants").blankFrameNewDomainURL:importDefault("sdk.cp.Constants").blankFrameURL,name:bubbleIFrameName,root:newElement.contentRoot,tabindex:-1,width:60,style:css,'data-testid':'bubble_iframe',onload:function onload(){importNamespace("ChatPluginSDKPreLoggingUtils").preLogging(_this2.$CustomerChat_shouldUseNewDomain,"chat_plugin_sdk_icon_iframe_load",_this2.params);_this2.$CustomerChat_bubbleIFrameName=bubbleIFrameName;_this2.$CustomerChat_notifyDialogIFrame();_this2.$CustomerChat_checkIfIframesLoadedAndNotify();window.setTimeout(function window_setTimeout_$0(){importNamespace("sdk.DOM").remove(iconDiv);},100);}});if(this.$CustomerChat_bubbleIFrame){this.$CustomerChat_bubbleIFrame.setAttribute(importDefault("sdk.cp.Constants").attribute.alignment,message.alignment);}if(this.$CustomerChat_bubbleIFrame){importNamespace("sdk.Content").append(this.$CustomerChat_bubbleIFrame);}var availabilityStatusIFrameName='availabilityStatus_'+frameName;this.$CustomerChat_availabilityStatusIFrame=importDefault("sdk.createIframe")({url:this.$CustomerChat_shouldUseNewDomain?importDefault("sdk.cp.Constants").blankFrameNewDomainURL:importDefault("sdk.cp.Constants").blankFrameURL,name:availabilityStatusIFrameName,root:newElement.contentRoot,tabindex:-1,style:ES("JSON","parse",false,message.availabilityStatusCssText),'data-testid':'availabilityStatus_iframe',onload:function onload(){_this2.$CustomerChat_availabilityStatusIFrameName=availabilityStatusIFrameName;_this2.$CustomerChat_notifyDialogIFrame();_this2.$CustomerChat_checkIfIframesLoadedAndNotify();}});importNamespace("sdk.Content").append(this.$CustomerChat_availabilityStatusIFrame,newElement.contentRoot);var unreadCountIFrameName='unread_'+frameName;this.$CustomerChat_unreadCountIFrame=importDefault("sdk.createIframe")({url:this.$CustomerChat_shouldUseNewDomain?importDefault("sdk.cp.Constants").blankFrameNewDomainURL:importDefault("sdk.cp.Constants").blankFrameURL,name:unreadCountIFrameName,root:newElement.contentRoot,tabindex:-1,style:ES("JSON","parse",false,message.unreadCountCssText),'data-testid':'unread_iframe',onload:function onload(){_this2.$CustomerChat_unreadCountIFrameName=unreadCountIFrameName;_this2.$CustomerChat_notifyDialogIFrame();_this2.$CustomerChat_checkIfIframesLoadedAndNotify();}});importNamespace("sdk.Content").append(this.$CustomerChat_unreadCountIFrame,newElement.contentRoot);var isMobile=importDefault("sdk.UA").mobile();if(!isMobile){var greetingIFrameName='greeting_'+frameName;this.$CustomerChat_greetingIFrame=importDefault("sdk.createIframe")({url:this.$CustomerChat_shouldUseNewDomain?importDefault("sdk.cp.Constants").blankFrameNewDomainURL:importDefault("sdk.cp.Constants").blankFrameURL,name:greetingIFrameName,root:newElement.contentRoot,tabindex:-1,style:ES("JSON","parse",false,message.greetingCssText),'data-testid':'greeting_iframe',onload:function onload(){_this2.$CustomerChat_greetingIFrameName=greetingIFrameName;_this2.$CustomerChat_notifyDialogIFrame();_this2.$CustomerChat_checkIfIframesLoadedAndNotify();}});importNamespace("sdk.Content").append(this.$CustomerChat_greetingIFrame,newElement.contentRoot);}};_proto.$CustomerChat_checkIfIframesLoadedAndNotify=function $CustomerChat_checkIfIframesLoadedAndNotify(){if(this.$CustomerChat_bubbleIFrameName!==null&&this.$CustomerChat_unreadCountIFrameName!==null&&this.$CustomerChat_availabilityStatusIFrameName!==null&&this.$CustomerChat_dialogIFrameName!==null&&this.$CustomerChat_greetingIFrameName!==null&&!this.$CustomerChat_iframesLoaded){this.$CustomerChat_iframesLoaded=true;this.inform('iframes_loaded');}};_proto.$CustomerChat_notifyDialogIFrame=function $CustomerChat_notifyDialogIFrame(){var _this$$CustomerChat_i,_this$$CustomerChat_u;this.$CustomerChat_postMessageToDialogFrame({name:'bubbleFrameLoaded',frameName:this.$CustomerChat_bubbleIFrameName,unreadCountFrameName:this.$CustomerChat_unreadCountIFrameName,availabilityStatusIframeName:this.$CustomerChat_availabilityStatusIFrameName,greetingIframeName:this.$CustomerChat_greetingIFrameName,iconSrc:(_this$$CustomerChat_i=this.$CustomerChat_iconInnerIFrame)==null?void 0:_this$$CustomerChat_i.src,unreadSrc:(_this$$CustomerChat_u=this.$CustomerChat_unreadCountIFrame)==null?void 0:_this$$CustomerChat_u.src,request_time:this.params.request_time,log_id:this.params.log_id});};_proto.$CustomerChat_notifyDialogToNaviagetToWelcomePage=function $CustomerChat_notifyDialogToNaviagetToWelcomePage(isHidden){this.$CustomerChat_postMessageToDialogFrame({name:'navigateToWelcomePage',isHidden:isHidden});};_proto.$CustomerChat_handleSetupDialogIframe=function $CustomerChat_handleSetupDialogIframe(message){var cssText=message.cssText,mobilePath=message.mobilePath,isDialogHidden=message.isDialogHidden,desktopBottomSpacing=message.desktopBottomSpacing;if(this.$CustomerChat_bubbleIFrame){mobilePath&&this.$CustomerChat_bubbleIFrame.setAttribute(importDefault("sdk.cp.Constants").attribute.mobilePath,mobilePath);desktopBottomSpacing&&this.$CustomerChat_bubbleIFrame.setAttribute(importDefault("sdk.cp.Constants").attribute.desktopBottomSpacing,desktopBottomSpacing.toString());}this.$CustomerChat_isDialogHidden=isDialogHidden==='true';if(this.iframe){this.iframe.setAttribute('data-testid','dialog_iframe');this.iframe.style.cssText=cssText;}this.$CustomerChat_dialogIFrame=this.iframe;this.$CustomerChat_dialogIFrameName=this.iframe.name;this.$CustomerChat_checkIfIframesLoadedAndNotify();var isMobile=importDefault("sdk.UA").mobile();if(isMobile&&!this.$CustomerChat_isDialogHidden){if(mobilePath==importDefault("sdk.cp.Constants").path.landingPage){var bounceInAnimationName=importNamespace("sdk.cp.Animation").iframeBounceInAnimation(this.$CustomerChat_bubbleIFrame);bounceInAnimationName!=null&&importNamespace("sdk.DOM").addCss(this.$CustomerChat_dialogIFrame,bounceInAnimationName);}if(mobilePath!=importDefault("sdk.cp.Constants").path.landingPage&&mobilePath!=importDefault("sdk.cp.Constants").path.bubble){this.$CustomerChat_setParentDocumentPositionFixed();}}if(this.$CustomerChat_isPluginHidden){this.hide();}};_proto.$CustomerChat_handleToggleDialogVisibility=function $CustomerChat_handleToggleDialogVisibility(message){var shouldHide=message.shouldHide;if(shouldHide==='true'){this.$CustomerChat_hideDialogIframe(this.iframe);}else{this.$CustomerChat_showDialogIframe(this.iframe);}};_proto.$CustomerChat_handleToggleGreetingDialogVisibility=function $CustomerChat_handleToggleGreetingDialogVisibility(message){var shouldHide=message.shouldHide;if(shouldHide==='true'){this.$CustomerChat_hideGreetingDialogIframe(this.$CustomerChat_greetingIFrame);}else{this.$CustomerChat_showGreetingDialogIframe(this.$CustomerChat_greetingIFrame);}};_proto.getParams=function getParams(){return{allow_guests:'bool',attribution:'string',greeting_dialog_display:'string',greeting_dialog_delay:'string',logged_in_greeting:'string',logged_out_greeting:'string',minimized:'bool',page_id:'string',theme_color:'string',override:'string',attribution_version:'string',is_loaded_by_facade:'bool',current_url:'string',log_id:'string',request_time:'px'};};_proto.$CustomerChat_postMessageToIframe=function $CustomerChat_postMessageToIframe(frameName,message){var _this3=this;var frame=window.frames[frameName];var pmf=function pmf(origin){frame==null?void 0:frame.postMessage(babelHelpers["extends"]({},message),origin);};if(this.$CustomerChat_dialogIFrameOrigin===null){importDefault("getFacebookOriginForTarget")(function getFacebookOriginForTarget_$0(origin){_this3.$CustomerChat_dialogIFrameOrigin=origin;pmf(_this3.$CustomerChat_dialogIFrameOrigin);},frame);}else{pmf(this.$CustomerChat_dialogIFrameOrigin);}};_proto.$CustomerChat_postMessageToBubbleFrame=function $CustomerChat_postMessageToBubbleFrame(message){var _this$$CustomerChat_b;this.$CustomerChat_postMessageToIframe((_this$$CustomerChat_b=this.$CustomerChat_bubbleIFrameName)!=null?_this$$CustomerChat_b:'',message);};_proto.$CustomerChat_postMessageToDialogFrame=function $CustomerChat_postMessageToDialogFrame(message){var _this$$CustomerChat_d2;this.$CustomerChat_postMessageToIframe((_this$$CustomerChat_d2=this.$CustomerChat_dialogIFrameName)!=null?_this$$CustomerChat_d2:'',message);};_proto.$CustomerChat_handleSDKCall=function $CustomerChat_handleSDKCall(event){this.$CustomerChat_postMessageToDialogFrame({name:'CustomerChat.SDK.Called',event:event});};_proto.$CustomerChat_setParentDocumentPositionFixed=function $CustomerChat_setParentDocumentPositionFixed(){var mobile_overlay='fb_new_ui_mobile_overlay_active';importNamespace("sdk.DOM").addCss(document.body,mobile_overlay);};_proto.$CustomerChat_showDialogIframe=function $CustomerChat_showDialogIframe(dialogIframe){if(!dialogIframe){return;}if(this.$CustomerChat_isDialogHidden){this.$CustomerChat_isDialogHidden=false;var bounceInAnimationName=importNamespace("sdk.cp.Animation").iframeBounceInAnimation(this.$CustomerChat_bubbleIFrame);var bounceOutAnimationName=importNamespace("sdk.cp.Animation").iframeBounceOutAnimation(this.$CustomerChat_bubbleIFrame);bounceOutAnimationName!=null&&importNamespace("sdk.DOM").removeCss(dialogIframe,bounceOutAnimationName);bounceInAnimationName!=null&&importNamespace("sdk.DOM").addCss(dialogIframe,bounceInAnimationName);if(importDefault("sdk.UA").mobile()){importNamespace("sdk.DOM").setStyle(dialogIframe,'maxHeight','100%');importNamespace("sdk.DOM").setStyle(dialogIframe,'height','100%');importNamespace("sdk.DOM").setStyle(dialogIframe,'width','100%');}else{var desktopBottomSpacingString=this.$CustomerChat_bubbleIFrame&&importNamespace("sdk.DOM").getAttr(this.$CustomerChat_bubbleIFrame,importDefault("sdk.cp.Constants").attribute.desktopBottomSpacing);var desktopBottomSpacingForDialog=desktopBottomSpacingString==null?'80':Number(desktopBottomSpacingString)+60;importNamespace("sdk.DOM").setStyle(dialogIframe,'maxHeight','calc(100% - '+desktopBottomSpacingForDialog+'px)');importNamespace("sdk.DOM").setStyle(dialogIframe,'minHeight','300px');}this.$CustomerChat_postMessageToDialogFrame({name:'CustomerChat.isDialogHidden',params:{is_dialog_hidden:false}});this.$CustomerChat_postMessageToBubbleFrame({name:'CustomerChat.isDialogHidden',params:{is_dialog_hidden:false}});importNamespace("sdk.Event").fire('customerchat.dialogShow');}};_proto.$CustomerChat_hideDialogIframe=function $CustomerChat_hideDialogIframe(dialogIframe){var _this4=this;if(!dialogIframe){return;}if(!this.$CustomerChat_isDialogHidden){this.$CustomerChat_isDialogHidden=true;var bounceInAnimationName=importNamespace("sdk.cp.Animation").iframeBounceInAnimation(this.$CustomerChat_bubbleIFrame);var bounceOutAnimationName=importNamespace("sdk.cp.Animation").iframeBounceOutAnimation(this.$CustomerChat_bubbleIFrame);bounceInAnimationName!=null&&importNamespace("sdk.DOM").removeCss(dialogIframe,bounceInAnimationName);bounceOutAnimationName!=null&&importNamespace("sdk.DOM").addCss(dialogIframe,bounceOutAnimationName);var animationEventListeners={};importDefault("sdk.cp.Constants").animationEvents.forEach(function MPNConstants_animationEvents_forEach_$0(event){var hideDialog=function hideDialog(_){if(_this4.$CustomerChat_isDialogHidden){importNamespace("sdk.DOM").setStyle(dialogIframe,'maxHeight','0');importNamespace("sdk.DOM").setStyle(dialogIframe,'minHeight','0');importDefault("sdk.cp.Constants").animationEvents.forEach(function MPNConstants_animationEvents_forEach_$0(event){if(animationEventListeners[event]){importNamespace("DOMEventListener").remove(dialogIframe,event,animationEventListeners[event]);delete animationEventListeners[event];}});}};animationEventListeners[event]=hideDialog;importNamespace("DOMEventListener").add(dialogIframe,event,hideDialog);});this.$CustomerChat_postMessageToDialogFrame({name:'CustomerChat.isDialogHidden',params:{is_dialog_hidden:true}});this.$CustomerChat_postMessageToBubbleFrame({name:'CustomerChat.isDialogHidden',params:{is_dialog_hidden:true}});}importNamespace("sdk.Event").fire('customerchat.dialogHide');};_proto.$CustomerChat_hideGreetingDialogIframe=function $CustomerChat_hideGreetingDialogIframe(greetingIframe){if(!greetingIframe){return;}importNamespace("sdk.DOM").setStyle(greetingIframe,'maxHeight','0');importNamespace("sdk.DOM").setStyle(greetingIframe,'minHeight','0');};_proto.$CustomerChat_showGreetingDialogIframe=function $CustomerChat_showGreetingDialogIframe(greetingIframe){if(!greetingIframe){return;}importNamespace("sdk.DOM").setStyle(greetingIframe,'maxHeight','calc(100% - 80px)');};return CustomerChat;}(importDefault("IframePluginClass"));exports["default"]=CustomerChat;},98);
+_this.$CustomerChat$p_handleSDKCall('update');
+};importNamespace("sdk.DOM").addCss(elem,'fb_invisible_flow');importNamespace("sdk.DOM").remove(elem);importNamespace("sdk.Content").append(elem);_this.$CustomerChat$p_shouldUseNewDomain=Boolean(attr.should_use_new_domain);_this.$CustomerChat$p_updateDialogIframeOptions();importNamespace("sdk.Event").fire('customerchat.load');_this.$CustomerChat$p_setUpSubscriptions();importNamespace("ChatPluginSDKPreLoggingUtils").preLogging(_this.$CustomerChat$p_shouldUseNewDomain,"chat_plugin_sdk_dialog_iframe_create",_this.params,false);return _this;}var _proto=CustomerChat.prototype;_proto.$CustomerChat$p_updateDialogIframeOptions=function $CustomerChat$p_updateDialogIframeOptions(){var storage=importNamespace("sdk.WebStorage").getLocalStorage();var localState=null;if(storage!=null){try{localState=storage.getItem(importNamespace("MPNLocalState").LOCAL_STATE_KEY);}catch(_unused){importNamespace("Log").warn('Failed to access localStorage');}}if(localState!=null){ES("Object","assign",false,this.params,{local_state:localState});}if(localState!=null){try{var stateObj=ES("JSON","parse",false,localState);if(importNamespace("MPNExplicitUserInteractions").hasUserInteraction(stateObj==null?void 0:stateObj.euit)){ES("Object","assign",false,this.params,{has_explicit_interaction:1});}}catch(_unused2){importNamespace("Log").warn('Invalid local state');}}var requestTime=(_importDefault_closure_performanceAbsoluteNow||(_importDefault_closure_performanceAbsoluteNow=importDefault("performanceAbsoluteNow")))();ES("Object","assign",false,this.params,{request_time:requestTime});var url=this.$CustomerChat$p_shouldUseNewDomain?importNamespace("UrlMap").resolve('social_plugin')+'/'+this.tag+'.php?':importNamespace("UrlMap").resolve('www')+'/plugins/'+this.tag+'.php?';this.iframeOptions.url=url+importDefault("QueryString").encode(this.params);this.iframeOptions.title='';};_proto.$CustomerChat$p_setUpSubscriptions=function $CustomerChat$p_setUpSubscriptions(){var _this=this;var _importNamespace_sdkXFBMLCustomerChatWrapper;this.subscribe('render',function subscribe_$1(){importNamespace("ChatPluginSDKPreLoggingUtils").preLogging(_this.$CustomerChat$p_shouldUseNewDomain,"chat_plugin_sdk_dialog_iframe_load",_this.params);});this.subscribe('xd.mpn.storeState',function subscribe_$1(message){importDefault("sdk.cp.Storage").setState(message.state);});this.subscribe('xd.mpn.getState',function subscribe_$1(_){var state=importDefault("sdk.cp.Storage").getStateJSON();var event={name:'mpnDidFetchState',params:state};_this.$CustomerChat$p_postMessageToDialogFrame(event);_this.$CustomerChat$p_postMessageToBubbleFrame(event);});this.subscribe('xd.mpn.setupIconIframe',function subscribe_$1(message){_this.$CustomerChat$p_handleSetupIconIframe(message);});this.subscribe('xd.mpn.setupDialogIframe',function subscribe_$1(message){_this.$CustomerChat$p_handleSetupDialogIframe(message);});this.subscribe('xd.mpn.toggleDialogVisibility',function subscribe_$1(message){_this.$CustomerChat$p_handleToggleDialogVisibility(message);});this.subscribe('xd.mpn.toggleGreetingDialogVisibility',function subscribe_$1(message){_this.$CustomerChat$p_handleToggleGreetingDialogVisibility(message);});this.subscribe('xd.mpn.updateGreetingAppearance',function subscribe_$1(message){importDefault("sdk.cp.Actions").setDialogAppearance(_this.$CustomerChat$p_greetingIFrame,message);});this.subscribe('xd.mpn.updateDialogAppearance',function subscribe_$1(message){importDefault("sdk.cp.Actions").setDialogAppearance(_this.iframe,message);});this.subscribe('xd.mpn.updateIconAppearance',function subscribe_$1(message){importDefault("sdk.cp.Actions").setDialogAppearance(_this.$CustomerChat$p_iconInnerIFrame,message);});this.subscribe('xd.mpn.reload',function subscribe_$1(message){importDefault("sdk.cp.Actions").reloadIframe(_this.iframe,message.hasExplicitInteraction);});this.subscribe('xd.mpn.updatePageTitle',function subscribe_$1(message){importDefault("sdk.cp.Actions").blinkPageTitle(message.title);});this.subscribe('xd.mpn.navigateToWelcomePage',function subscribe_$1(message){_this.$CustomerChat$p_notifyDialogToNaviagetToWelcomePage(message.isHidden);});(_importNamespace_sdkXFBMLCustomerChatWrapper=importNamespace("sdk.XFBML.CustomerChatWrapper")).CustomerChatInternalEvent.subscribe(_importNamespace_sdkXFBMLCustomerChatWrapper.CustomerChatInternalEventType.SHOW,this.show);_importNamespace_sdkXFBMLCustomerChatWrapper.CustomerChatInternalEvent.subscribe(_importNamespace_sdkXFBMLCustomerChatWrapper.CustomerChatInternalEventType.HIDE,this.hide);_importNamespace_sdkXFBMLCustomerChatWrapper.CustomerChatInternalEvent.subscribe(_importNamespace_sdkXFBMLCustomerChatWrapper.CustomerChatInternalEventType.SHOW_DIALOG,this.showDialog);_importNamespace_sdkXFBMLCustomerChatWrapper.CustomerChatInternalEvent.subscribe(_importNamespace_sdkXFBMLCustomerChatWrapper.CustomerChatInternalEventType.HIDE_DIALOG,this.hideDialog);_importNamespace_sdkXFBMLCustomerChatWrapper.CustomerChatInternalEvent.subscribe(_importNamespace_sdkXFBMLCustomerChatWrapper.CustomerChatInternalEventType.UPDATE,this.update);};_proto.$CustomerChat$p_handleSetupIconIframe=function $CustomerChat$p_handleSetupIconIframe(message){var _this2=this;if(this.$CustomerChat$p_bubbleIFrame){importNamespace("sdk.DOM").remove(this.$CustomerChat$p_bubbleIFrame);}var frameName=message.frameName,iconSVG=message.iconSVG;var newElement=importNamespace("sdk.DialogUtils").setupNewDialog();var css=ES("JSON","parse",false,message.cssText);var iconDiv=document.createElement('div');if(iconSVG!=null){importNamespace("sdk.DOM").dangerouslySetInnerHtml(iconDiv,iconSVG);ES("Object","assign",false,iconDiv.style,css);iconDiv.style.boxShadow='none';importNamespace("sdk.Content").append(iconDiv,newElement.contentRoot);}var bubbleIFrameName='blank_'+frameName;this.$CustomerChat$p_bubbleIFrame=newElement.dialogElement;this.$CustomerChat$p_iconInnerIFrame=importDefault("sdk.createIframe")({url:this.$CustomerChat$p_shouldUseNewDomain?importDefault("sdk.cp.Constants").blankFrameNewDomainURL:importDefault("sdk.cp.Constants").blankFrameURL,name:bubbleIFrameName,root:newElement.contentRoot,tabindex:-1,width:60,style:css,'data-testid':'bubble_iframe',onload:function onload(){importNamespace("ChatPluginSDKPreLoggingUtils").preLogging(_this2.$CustomerChat$p_shouldUseNewDomain,"chat_plugin_sdk_icon_iframe_load",_this2.params);_this2.$CustomerChat$p_bubbleIFrameName=bubbleIFrameName;_this2.$CustomerChat$p_notifyDialogIFrame();_this2.$CustomerChat$p_checkIfIframesLoadedAndNotify();window.setTimeout(function window_setTimeout_$0(){importNamespace("sdk.DOM").remove(iconDiv);},100);}});if(this.$CustomerChat$p_bubbleIFrame){this.$CustomerChat$p_bubbleIFrame.setAttribute(importDefault("sdk.cp.Constants").attribute.alignment,message.alignment);}if(this.$CustomerChat$p_bubbleIFrame){importNamespace("sdk.Content").append(this.$CustomerChat$p_bubbleIFrame);}var availabilityStatusIFrameName='availabilityStatus_'+frameName;this.$CustomerChat$p_availabilityStatusIFrame=importDefault("sdk.createIframe")({url:this.$CustomerChat$p_shouldUseNewDomain?importDefault("sdk.cp.Constants").blankFrameNewDomainURL:importDefault("sdk.cp.Constants").blankFrameURL,name:availabilityStatusIFrameName,root:newElement.contentRoot,tabindex:-1,style:ES("JSON","parse",false,message.availabilityStatusCssText),'data-testid':'availabilityStatus_iframe',onload:function onload(){_this2.$CustomerChat$p_availabilityStatusIFrameName=availabilityStatusIFrameName;_this2.$CustomerChat$p_notifyDialogIFrame();_this2.$CustomerChat$p_checkIfIframesLoadedAndNotify();}});importNamespace("sdk.Content").append(this.$CustomerChat$p_availabilityStatusIFrame,newElement.contentRoot);var unreadCountIFrameName='unread_'+frameName;this.$CustomerChat$p_unreadCountIFrame=importDefault("sdk.createIframe")({url:this.$CustomerChat$p_shouldUseNewDomain?importDefault("sdk.cp.Constants").blankFrameNewDomainURL:importDefault("sdk.cp.Constants").blankFrameURL,name:unreadCountIFrameName,root:newElement.contentRoot,tabindex:-1,style:ES("JSON","parse",false,message.unreadCountCssText),'data-testid':'unread_iframe',onload:function onload(){_this2.$CustomerChat$p_unreadCountIFrameName=unreadCountIFrameName;_this2.$CustomerChat$p_notifyDialogIFrame();_this2.$CustomerChat$p_checkIfIframesLoadedAndNotify();}});importNamespace("sdk.Content").append(this.$CustomerChat$p_unreadCountIFrame,newElement.contentRoot);var isMobile=importDefault("sdk.UA").mobile();if(!isMobile){var greetingIFrameName='greeting_'+frameName;this.$CustomerChat$p_greetingIFrame=importDefault("sdk.createIframe")({url:this.$CustomerChat$p_shouldUseNewDomain?importDefault("sdk.cp.Constants").blankFrameNewDomainURL:importDefault("sdk.cp.Constants").blankFrameURL,name:greetingIFrameName,root:newElement.contentRoot,tabindex:-1,style:ES("JSON","parse",false,message.greetingCssText),'data-testid':'greeting_iframe',onload:function onload(){_this2.$CustomerChat$p_greetingIFrameName=greetingIFrameName;_this2.$CustomerChat$p_notifyDialogIFrame();_this2.$CustomerChat$p_checkIfIframesLoadedAndNotify();}});importNamespace("sdk.Content").append(this.$CustomerChat$p_greetingIFrame,newElement.contentRoot);}};_proto.$CustomerChat$p_checkIfIframesLoadedAndNotify=function $CustomerChat$p_checkIfIframesLoadedAndNotify(){if(this.$CustomerChat$p_bubbleIFrameName!==null&&this.$CustomerChat$p_unreadCountIFrameName!==null&&this.$CustomerChat$p_availabilityStatusIFrameName!==null&&this.$CustomerChat$p_dialogIFrameName!==null&&this.$CustomerChat$p_greetingIFrameName!==null&&!this.$CustomerChat$p_iframesLoaded){this.$CustomerChat$p_iframesLoaded=true;this.inform('iframes_loaded');}};_proto.$CustomerChat$p_notifyDialogIFrame=function $CustomerChat$p_notifyDialogIFrame(){var _this$$CustomerChat$p2,_this$$CustomerChat$p3;this.$CustomerChat$p_postMessageToDialogFrame({name:'bubbleFrameLoaded',frameName:this.$CustomerChat$p_bubbleIFrameName,unreadCountFrameName:this.$CustomerChat$p_unreadCountIFrameName,availabilityStatusIframeName:this.$CustomerChat$p_availabilityStatusIFrameName,greetingIframeName:this.$CustomerChat$p_greetingIFrameName,iconSrc:(_this$$CustomerChat$p2=this.$CustomerChat$p_iconInnerIFrame)==null?void 0:_this$$CustomerChat$p2.src,unreadSrc:(_this$$CustomerChat$p3=this.$CustomerChat$p_unreadCountIFrame)==null?void 0:_this$$CustomerChat$p3.src,request_time:this.params.request_time,log_id:this.params.log_id});};_proto.$CustomerChat$p_notifyDialogToNaviagetToWelcomePage=function $CustomerChat$p_notifyDialogToNaviagetToWelcomePage(isHidden){this.$CustomerChat$p_postMessageToDialogFrame({name:'navigateToWelcomePage',isHidden:isHidden});};_proto.$CustomerChat$p_handleSetupDialogIframe=function $CustomerChat$p_handleSetupDialogIframe(message){var cssText=message.cssText,mobilePath=message.mobilePath,isDialogHidden=message.isDialogHidden,desktopBottomSpacing=message.desktopBottomSpacing;if(this.$CustomerChat$p_bubbleIFrame){mobilePath&&this.$CustomerChat$p_bubbleIFrame.setAttribute(importDefault("sdk.cp.Constants").attribute.mobilePath,mobilePath);desktopBottomSpacing&&this.$CustomerChat$p_bubbleIFrame.setAttribute(importDefault("sdk.cp.Constants").attribute.desktopBottomSpacing,desktopBottomSpacing.toString());}this.$CustomerChat$p_isDialogHidden=isDialogHidden==='true';if(this.iframe){this.iframe.setAttribute('data-testid','dialog_iframe');this.iframe.style.cssText=cssText;}this.$CustomerChat$p_dialogIFrame=this.iframe;this.$CustomerChat$p_dialogIFrameName=this.iframe.name;this.$CustomerChat$p_checkIfIframesLoadedAndNotify();var isMobile=importDefault("sdk.UA").mobile();if(isMobile&&!this.$CustomerChat$p_isDialogHidden){if(mobilePath==importDefault("sdk.cp.Constants").path.landingPage){var bounceInAnimationName=importNamespace("sdk.cp.Animation").iframeBounceInAnimation(this.$CustomerChat$p_bubbleIFrame);bounceInAnimationName!=null&&importNamespace("sdk.DOM").addCss(this.$CustomerChat$p_dialogIFrame,bounceInAnimationName);}if(mobilePath!=importDefault("sdk.cp.Constants").path.landingPage&&mobilePath!=importDefault("sdk.cp.Constants").path.bubble){this.$CustomerChat$p_setParentDocumentPositionFixed();}}if(this.$CustomerChat$p_isPluginHidden){this.hide();}};_proto.$CustomerChat$p_handleToggleDialogVisibility=function $CustomerChat$p_handleToggleDialogVisibility(message){var shouldHide=message.shouldHide;if(shouldHide==='true'){this.$CustomerChat$p_hideDialogIframe(this.iframe);}else{this.$CustomerChat$p_showDialogIframe(this.iframe);}};_proto.$CustomerChat$p_handleToggleGreetingDialogVisibility=function $CustomerChat$p_handleToggleGreetingDialogVisibility(message){var shouldHide=message.shouldHide;if(shouldHide==='true'){this.$CustomerChat$p_hideGreetingDialogIframe(this.$CustomerChat$p_greetingIFrame);}else{this.$CustomerChat$p_showGreetingDialogIframe(this.$CustomerChat$p_greetingIFrame);}};_proto.getParams=function getParams(){return{allow_guests:'bool',attribution:'string',greeting_dialog_display:'string',greeting_dialog_delay:'string',logged_in_greeting:'string',logged_out_greeting:'string',minimized:'bool',page_id:'string',theme_color:'string',override:'string',attribution_version:'string',is_loaded_by_facade:'bool',current_url:'string',log_id:'string',request_time:'px'};};_proto.$CustomerChat$p_postMessageToIframe=function $CustomerChat$p_postMessageToIframe(frameName,message){var _this3=this;var frame=window.frames[frameName];var pmf=function pmf(origin){frame==null?void 0:frame.postMessage(babelHelpers["extends"]({},message),origin);};if(this.$CustomerChat$p_dialogIFrameOrigin===null){importDefault("getFacebookOriginForTarget")(function getFacebookOriginForTarget_$0(origin){_this3.$CustomerChat$p_dialogIFrameOrigin=origin;pmf(_this3.$CustomerChat$p_dialogIFrameOrigin);},frame);}else{pmf(this.$CustomerChat$p_dialogIFrameOrigin);}};_proto.$CustomerChat$p_postMessageToBubbleFrame=function $CustomerChat$p_postMessageToBubbleFrame(message){var _this$$CustomerChat$p4;this.$CustomerChat$p_postMessageToIframe((_this$$CustomerChat$p4=this.$CustomerChat$p_bubbleIFrameName)!=null?_this$$CustomerChat$p4:'',message);};_proto.$CustomerChat$p_postMessageToDialogFrame=function $CustomerChat$p_postMessageToDialogFrame(message){var _this$$CustomerChat$p5;this.$CustomerChat$p_postMessageToIframe((_this$$CustomerChat$p5=this.$CustomerChat$p_dialogIFrameName)!=null?_this$$CustomerChat$p5:'',message);};_proto.$CustomerChat$p_handleSDKCall=function $CustomerChat$p_handleSDKCall(event){this.$CustomerChat$p_postMessageToDialogFrame({name:'CustomerChat.SDK.Called',event:event});};_proto.$CustomerChat$p_setParentDocumentPositionFixed=function $CustomerChat$p_setParentDocumentPositionFixed(){var mobile_overlay='fb_new_ui_mobile_overlay_active';importNamespace("sdk.DOM").addCss(document.body,mobile_overlay);};_proto.$CustomerChat$p_showDialogIframe=function $CustomerChat$p_showDialogIframe(dialogIframe){if(!dialogIframe){return;}if(this.$CustomerChat$p_isDialogHidden){this.$CustomerChat$p_isDialogHidden=false;var bounceInAnimationName=importNamespace("sdk.cp.Animation").iframeBounceInAnimation(this.$CustomerChat$p_bubbleIFrame);var bounceOutAnimationName=importNamespace("sdk.cp.Animation").iframeBounceOutAnimation(this.$CustomerChat$p_bubbleIFrame);bounceOutAnimationName!=null&&importNamespace("sdk.DOM").removeCss(dialogIframe,bounceOutAnimationName);bounceInAnimationName!=null&&importNamespace("sdk.DOM").addCss(dialogIframe,bounceInAnimationName);if(importDefault("sdk.UA").mobile()){importNamespace("sdk.DOM").setStyle(dialogIframe,'maxHeight','100%');importNamespace("sdk.DOM").setStyle(dialogIframe,'height','100%');importNamespace("sdk.DOM").setStyle(dialogIframe,'width','100%');}else{var desktopBottomSpacingString=this.$CustomerChat$p_bubbleIFrame&&importNamespace("sdk.DOM").getAttr(this.$CustomerChat$p_bubbleIFrame,importDefault("sdk.cp.Constants").attribute.desktopBottomSpacing);var desktopBottomSpacingForDialog=desktopBottomSpacingString==null?'80':Number(desktopBottomSpacingString)+60;importNamespace("sdk.DOM").setStyle(dialogIframe,'maxHeight','calc(100% - '+desktopBottomSpacingForDialog+'px)');importNamespace("sdk.DOM").setStyle(dialogIframe,'minHeight','300px');}this.$CustomerChat$p_postMessageToDialogFrame({name:'CustomerChat.isDialogHidden',params:{is_dialog_hidden:false}});this.$CustomerChat$p_postMessageToBubbleFrame({name:'CustomerChat.isDialogHidden',params:{is_dialog_hidden:false}});importNamespace("sdk.Event").fire('customerchat.dialogShow');}};_proto.$CustomerChat$p_hideDialogIframe=function $CustomerChat$p_hideDialogIframe(dialogIframe){var _this4=this;if(!dialogIframe){return;}if(!this.$CustomerChat$p_isDialogHidden){this.$CustomerChat$p_isDialogHidden=true;var bounceInAnimationName=importNamespace("sdk.cp.Animation").iframeBounceInAnimation(this.$CustomerChat$p_bubbleIFrame);var bounceOutAnimationName=importNamespace("sdk.cp.Animation").iframeBounceOutAnimation(this.$CustomerChat$p_bubbleIFrame);bounceInAnimationName!=null&&importNamespace("sdk.DOM").removeCss(dialogIframe,bounceInAnimationName);bounceOutAnimationName!=null&&importNamespace("sdk.DOM").addCss(dialogIframe,bounceOutAnimationName);var animationEventListeners={};importDefault("sdk.cp.Constants").animationEvents.forEach(function MPNConstants_animationEvents_forEach_$0(event){var hideDialog=function hideDialog(_){if(_this4.$CustomerChat$p_isDialogHidden){importNamespace("sdk.DOM").setStyle(dialogIframe,'maxHeight','0');importNamespace("sdk.DOM").setStyle(dialogIframe,'minHeight','0');importDefault("sdk.cp.Constants").animationEvents.forEach(function MPNConstants_animationEvents_forEach_$0(event){if(animationEventListeners[event]){importNamespace("DOMEventListener").remove(dialogIframe,event,animationEventListeners[event]);delete animationEventListeners[event];}});}};animationEventListeners[event]=hideDialog;importNamespace("DOMEventListener").add(dialogIframe,event,hideDialog);});this.$CustomerChat$p_postMessageToDialogFrame({name:'CustomerChat.isDialogHidden',params:{is_dialog_hidden:true}});this.$CustomerChat$p_postMessageToBubbleFrame({name:'CustomerChat.isDialogHidden',params:{is_dialog_hidden:true}});}importNamespace("sdk.Event").fire('customerchat.dialogHide');};_proto.$CustomerChat$p_hideGreetingDialogIframe=function $CustomerChat$p_hideGreetingDialogIframe(greetingIframe){if(!greetingIframe){return;}importNamespace("sdk.DOM").setStyle(greetingIframe,'maxHeight','0');importNamespace("sdk.DOM").setStyle(greetingIframe,'minHeight','0');};_proto.$CustomerChat$p_showGreetingDialogIframe=function $CustomerChat$p_showGreetingDialogIframe(greetingIframe){if(!greetingIframe){return;}importNamespace("sdk.DOM").setStyle(greetingIframe,'maxHeight','calc(100% - 80px)');};return CustomerChat;}(importDefault("IframePluginClass"));exports["default"]=CustomerChat;},98);
                                                                                                                           __d("sdk.XFBML.CustomerChatWrapper",["$InternalEnum","sdk.Observable","sdk.XFBML.ChatDOM"],function $module_sdk_XFBML_CustomerChatWrapper(global,require,importDefault,importNamespace,requireLazy,module,exports){var
 
 
@@ -23179,21 +23653,29 @@ tag,
 attr)
 {var _this;
 _this=_Observable.call(this)||this;
-_this.$CustomerChatWrapper_element=element;
-_this.$CustomerChatWrapper_ns=ns;
-_this.$CustomerChatWrapper_tag=tag;
-_this.$CustomerChatWrapper_attr=attr;return _this;
+_this.$CustomerChatWrapper$p_element=element;
+_this.$CustomerChatWrapper$p_ns=ns;
+_this.$CustomerChatWrapper$p_tag=tag;
+_this.$CustomerChatWrapper$p_attr=attr;return _this;
 }var _proto=CustomerChatWrapper.prototype;_proto.
 
 process=function process(){var _this=this;
-this.$CustomerChatWrapper_attr.should_use_new_domain=false;
-this.$CustomerChatWrapper_plugin=new(importDefault("sdk.XFBML.ChatDOM"))(this.$CustomerChatWrapper_element,this.$CustomerChatWrapper_ns,this.$CustomerChatWrapper_tag,this.$CustomerChatWrapper_attr);
-this.$CustomerChatWrapper_plugin.subscribe('render',function $CustomerChatWrapper_plugin_subscribe_$1(){
+this.$CustomerChatWrapper$p_attr.should_use_new_domain=false;
+this.$CustomerChatWrapper$p_plugin=new(importDefault("sdk.XFBML.ChatDOM"))(this.$CustomerChatWrapper$p_element,this.$CustomerChatWrapper$p_ns,this.$CustomerChatWrapper$p_tag,this.$CustomerChatWrapper$p_attr);
+this.$CustomerChatWrapper$p_plugin.subscribe('render',function $CustomerChatWrapper$p_plugin_subscribe_$1(){
 _this.inform('render');
 });
-this.$CustomerChatWrapper_plugin.process();
+this.$CustomerChatWrapper$p_plugin.process();
 };return CustomerChatWrapper;}(importNamespace("sdk.Observable").Observable);var _c;$RefreshReg$(_c,"CustomerChatWrapperPlugin");exports.CustomerChatInternalEventType=CustomerChatInternalEventType;exports.CustomerChatInternalEvent=CustomerChatInternalEvent;exports.CustomerChatWrapperPlugin=CustomerChatWrapperPlugin;},98);
-                                                                                                                                                                                                                                                                                                      __d("sdk.XFBML.LWIAdsCreation",["IframePlugin","sdk.createIframe"],function $module_sdk_XFBML_LWIAdsCreation(global,require,importDefault,importNamespace,requireLazy,module,exports){
+                                                                                                                           __d("sdk.XFBML.LWIAdsCreation",["IframePlugin","sdk.createIframe"],function $module_sdk_XFBML_LWIAdsCreation(global,require,importDefault,importNamespace,requireLazy,module,exports){
+
+
+
+
+
+
+
+
 
 'use strict';
 
@@ -23519,7 +24001,11 @@ style:"mask: url(#"+maskID+")"});
 
 return svg;
 };exports.close=close;exports.facebook=facebook;exports.facebookWhite=facebookWhite;exports.instagram=instagram;exports.instagramColor=instagramColor;},98);
-                                                                                                                                                                                      __d("sdk.SharedStringConstants",["sdk.fbt"],function $module_sdk_SharedStringConstants(global,require,importDefault,importNamespace,requireLazy,module,exports){
+                                                                                                                                          __d("sdk.SharedStringConstants",["sdk.fbt"],function $module_sdk_SharedStringConstants(global,require,importDefault,importNamespace,requireLazy,module,exports){
+
+
+
+
 
 'use strict';var _importDefault_sdkfbt;
 
@@ -24382,24 +24868,24 @@ tag,
 attr)
 {var _this;
 _this=_Observable.call(this)||this;
-_this.$MessengerCheckboxWrapper_element=element;
-_this.$MessengerCheckboxWrapper_ns=ns;
-_this.$MessengerCheckboxWrapper_tag=tag;
-_this.$MessengerCheckboxWrapper_attr=attr;return _this;
+_this.$MessengerCheckboxWrapper$p_element=element;
+_this.$MessengerCheckboxWrapper$p_ns=ns;
+_this.$MessengerCheckboxWrapper$p_tag=tag;
+_this.$MessengerCheckboxWrapper$p_attr=attr;return _this;
 }var _proto=MessengerCheckboxWrapper.prototype;_proto.
 
 process=function process(){var _this=this;
-this.$MessengerCheckboxWrapper_attr.should_use_new_domain=true;
-this.$MessengerCheckboxWrapper_plugin=new(importDefault("sdk.XFBML.MessengerCheckbox"))(
-this.$MessengerCheckboxWrapper_element,
-this.$MessengerCheckboxWrapper_ns,
-this.$MessengerCheckboxWrapper_tag,
-this.$MessengerCheckboxWrapper_attr);
+this.$MessengerCheckboxWrapper$p_attr.should_use_new_domain=true;
+this.$MessengerCheckboxWrapper$p_plugin=new(importDefault("sdk.XFBML.MessengerCheckbox"))(
+this.$MessengerCheckboxWrapper$p_element,
+this.$MessengerCheckboxWrapper$p_ns,
+this.$MessengerCheckboxWrapper$p_tag,
+this.$MessengerCheckboxWrapper$p_attr);
 
-this.$MessengerCheckboxWrapper_plugin.subscribe('render',function $MessengerCheckboxWrapper_plugin_subscribe_$1(){
+this.$MessengerCheckboxWrapper$p_plugin.subscribe('render',function $MessengerCheckboxWrapper$p_plugin_subscribe_$1(){
 _this.inform('render');
 });
-this.$MessengerCheckboxWrapper_plugin.process();
+this.$MessengerCheckboxWrapper$p_plugin.process();
 };return MessengerCheckboxWrapper;}(importNamespace("sdk.Observable").Observable);var _default=
 
 
@@ -24463,24 +24949,24 @@ tag,
 attr)
 {var _this;
 _this=_Observable.call(this)||this;
-_this.$MessengerMessageUsWrapper_element=element;
-_this.$MessengerMessageUsWrapper_ns=ns;
-_this.$MessengerMessageUsWrapper_tag=tag;
-_this.$MessengerMessageUsWrapper_attr=attr;return _this;
+_this.$MessengerMessageUsWrapper$p_element=element;
+_this.$MessengerMessageUsWrapper$p_ns=ns;
+_this.$MessengerMessageUsWrapper$p_tag=tag;
+_this.$MessengerMessageUsWrapper$p_attr=attr;return _this;
 }var _proto=MessengerMessageUsWrapper.prototype;_proto.
 
 process=function process(){var _this=this;
-this.$MessengerMessageUsWrapper_attr.should_use_new_domain=true;
-this.$MessengerMessageUsWrapper_plugin=new(importDefault("sdk.XFBML.MessengerMessageUs"))(
-this.$MessengerMessageUsWrapper_element,
-this.$MessengerMessageUsWrapper_ns,
-this.$MessengerMessageUsWrapper_tag,
-this.$MessengerMessageUsWrapper_attr);
+this.$MessengerMessageUsWrapper$p_attr.should_use_new_domain=true;
+this.$MessengerMessageUsWrapper$p_plugin=new(importDefault("sdk.XFBML.MessengerMessageUs"))(
+this.$MessengerMessageUsWrapper$p_element,
+this.$MessengerMessageUsWrapper$p_ns,
+this.$MessengerMessageUsWrapper$p_tag,
+this.$MessengerMessageUsWrapper$p_attr);
 
-this.$MessengerMessageUsWrapper_plugin.subscribe('render',function $MessengerMessageUsWrapper_plugin_subscribe_$1(){
+this.$MessengerMessageUsWrapper$p_plugin.subscribe('render',function $MessengerMessageUsWrapper$p_plugin_subscribe_$1(){
 _this.inform('render');
 });
-this.$MessengerMessageUsWrapper_plugin.process();
+this.$MessengerMessageUsWrapper$p_plugin.process();
 };return MessengerMessageUsWrapper;}(importNamespace("sdk.Observable").Observable);var _default=
 
 
@@ -24737,24 +25223,24 @@ tag,
 attr)
 {var _this;
 _this=_Observable.call(this)||this;
-_this.$SendToMessengerWrapper_element=element;
-_this.$SendToMessengerWrapper_ns=ns;
-_this.$SendToMessengerWrapper_tag=tag;
-_this.$SendToMessengerWrapper_attr=attr;return _this;
+_this.$SendToMessengerWrapper$p_element=element;
+_this.$SendToMessengerWrapper$p_ns=ns;
+_this.$SendToMessengerWrapper$p_tag=tag;
+_this.$SendToMessengerWrapper$p_attr=attr;return _this;
 }var _proto=SendToMessengerWrapper.prototype;_proto.
 
 process=function process(){var _this=this;
-this.$SendToMessengerWrapper_attr.should_use_new_domain=true;
-this.$SendToMessengerWrapper_plugin=new(importDefault("sdk.XFBML.SendToMessenger"))(
-this.$SendToMessengerWrapper_element,
-this.$SendToMessengerWrapper_ns,
-this.$SendToMessengerWrapper_tag,
-this.$SendToMessengerWrapper_attr);
+this.$SendToMessengerWrapper$p_attr.should_use_new_domain=true;
+this.$SendToMessengerWrapper$p_plugin=new(importDefault("sdk.XFBML.SendToMessenger"))(
+this.$SendToMessengerWrapper$p_element,
+this.$SendToMessengerWrapper$p_ns,
+this.$SendToMessengerWrapper$p_tag,
+this.$SendToMessengerWrapper$p_attr);
 
-this.$SendToMessengerWrapper_plugin.subscribe('render',function $SendToMessengerWrapper_plugin_subscribe_$1(){
+this.$SendToMessengerWrapper$p_plugin.subscribe('render',function $SendToMessengerWrapper$p_plugin_subscribe_$1(){
 _this.inform('render');
 });
-this.$SendToMessengerWrapper_plugin.process();
+this.$SendToMessengerWrapper$p_plugin.process();
 };return SendToMessengerWrapper;}(importNamespace("sdk.Observable").Observable);var _default=
 
 
@@ -24817,41 +25303,41 @@ VideoCache=function(){
 
 
 function VideoCache(initData){
-this.$VideoCache_isMuted=initData.isMuted;
-this.$VideoCache_volume=initData.volume;
-this.$VideoCache_timePosition=initData.timePosition;
-this.$VideoCache_duration=initData.duration;
+this.$VideoCache$p_isMuted=initData.isMuted;
+this.$VideoCache$p_volume=initData.volume;
+this.$VideoCache$p_timePosition=initData.timePosition;
+this.$VideoCache$p_duration=initData.duration;
 }var _proto=VideoCache.prototype;_proto.
 
 update=function update(data){
 if(data.isMuted!==undefined){
-this.$VideoCache_isMuted=data.isMuted;
+this.$VideoCache$p_isMuted=data.isMuted;
 }
 if(data.volume!==undefined){
-this.$VideoCache_volume=data.volume;
+this.$VideoCache$p_volume=data.volume;
 }
 if(data.timePosition!==undefined){
-this.$VideoCache_timePosition=data.timePosition;
+this.$VideoCache$p_timePosition=data.timePosition;
 }
 if(data.duration!==undefined){
-this.$VideoCache_duration=data.duration;
+this.$VideoCache$p_duration=data.duration;
 }
 };_proto.
 
 isMuted=function isMuted(){
-return this.$VideoCache_isMuted;
+return this.$VideoCache$p_isMuted;
 };_proto.
 
 getVolume=function getVolume(){
-return this.$VideoCache_isMuted?0:this.$VideoCache_volume;
+return this.$VideoCache$p_isMuted?0:this.$VideoCache$p_volume;
 };_proto.
 
 getCurrentPosition=function getCurrentPosition(){
-return this.$VideoCache_timePosition;
+return this.$VideoCache$p_timePosition;
 };_proto.
 
 getDuration=function getDuration(){
-return this.$VideoCache_duration;
+return this.$VideoCache$p_duration;
 };return VideoCache;}();var
 
 
@@ -24867,20 +25353,20 @@ iframeName,
 observableMixin,
 cache)
 {
-this.$VideoController_iframeName=iframeName;
-this.$VideoController_sharedObservable=observableMixin;
-this.$VideoController_cache=cache;
+this.$VideoController$p_iframeName=iframeName;
+this.$VideoController$p_sharedObservable=observableMixin;
+this.$VideoController$p_cache=cache;
 }var _proto2=VideoController.prototype;_proto2.
 
 play=function play(){
-importNamespace("sdk.XD").sendToFacebook(this.$VideoController_iframeName,{
+importNamespace("sdk.XD").sendToFacebook(this.$VideoController$p_iframeName,{
 method:'play',
 params:ES("JSON","stringify",false,{})});
 
 };_proto2.
 
 pause=function pause(){
-importNamespace("sdk.XD").sendToFacebook(this.$VideoController_iframeName,{
+importNamespace("sdk.XD").sendToFacebook(this.$VideoController$p_iframeName,{
 method:'pause',
 params:ES("JSON","stringify",false,{})});
 
@@ -24889,7 +25375,7 @@ params:ES("JSON","stringify",false,{})});
 
 seek=function seek(target){
 importDefault("Assert").isNumber(target,'Invalid argument');
-importNamespace("sdk.XD").sendToFacebook(this.$VideoController_iframeName,{
+importNamespace("sdk.XD").sendToFacebook(this.$VideoController$p_iframeName,{
 method:'seek',
 params:ES("JSON","stringify",false,{
 target:target})});
@@ -24898,14 +25384,14 @@ target:target})});
 };_proto2.
 
 mute=function mute(){
-importNamespace("sdk.XD").sendToFacebook(this.$VideoController_iframeName,{
+importNamespace("sdk.XD").sendToFacebook(this.$VideoController$p_iframeName,{
 method:'mute',
 params:ES("JSON","stringify",false,{})});
 
 };_proto2.
 
 unmute=function unmute(){
-importNamespace("sdk.XD").sendToFacebook(this.$VideoController_iframeName,{
+importNamespace("sdk.XD").sendToFacebook(this.$VideoController$p_iframeName,{
 method:'unmute',
 params:ES("JSON","stringify",false,{})});
 
@@ -24914,7 +25400,7 @@ params:ES("JSON","stringify",false,{})});
 
 setVolume=function setVolume(volume){
 importDefault("Assert").isNumber(volume,'Invalid argument');
-importNamespace("sdk.XD").sendToFacebook(this.$VideoController_iframeName,{
+importNamespace("sdk.XD").sendToFacebook(this.$VideoController$p_iframeName,{
 method:'setVolume',
 params:ES("JSON","stringify",false,{
 volume:volume})});
@@ -24923,28 +25409,28 @@ volume:volume})});
 };_proto2.
 
 isMuted=function isMuted(){
-return this.$VideoController_cache.isMuted();
+return this.$VideoController$p_cache.isMuted();
 };_proto2.
 
 getVolume=function getVolume(){
-return this.$VideoController_cache.getVolume();
+return this.$VideoController$p_cache.getVolume();
 };_proto2.
 
 getCurrentPosition=function getCurrentPosition(){
-return this.$VideoController_cache.getCurrentPosition();
+return this.$VideoController$p_cache.getCurrentPosition();
 };_proto2.
 
 getDuration=function getDuration(){
-return this.$VideoController_cache.getDuration();
+return this.$VideoController$p_cache.getDuration();
 };_proto2.
 
 subscribe=function subscribe(event,callback){var _this=this;
 importDefault("Assert").isString(event,'Invalid argument');
 importDefault("Assert").isFunction(callback,'Invalid argument');
-this.$VideoController_sharedObservable.subscribe(event,callback);
+this.$VideoController$p_sharedObservable.subscribe(event,callback);
 return{
 release:function release(){
-_this.$VideoController_sharedObservable.unsubscribe(event,callback);
+_this.$VideoController$p_sharedObservable.unsubscribe(event,callback);
 }};
 
 };return VideoController;}();
@@ -25005,7 +25491,11 @@ full_width:true};
 
 
 Video;exports["default"]=_default;},98);
-                                                                                                                                                                                                                                                     __d("sdk.CustomTags",["sdk.XFBML.Comments","sdk.XFBML.CommentsCount","sdk.XFBML.CustomerChatWrapper","sdk.XFBML.LWIAdsCreation","sdk.XFBML.LWIAdsInsights","sdk.XFBML.LoginButton","sdk.XFBML.MessengerCheckboxWrapper","sdk.XFBML.MessengerMessageUsWrapper","sdk.XFBML.Save","sdk.XFBML.SendToMessengerWrapper","sdk.XFBML.ShareButton","sdk.XFBML.Video"],(function $module_sdk_CustomTags(global,require,importDefault,importNamespace,requireLazy,module,exports){
+                                                                                                                                 __d("sdk.CustomTags",["sdk.XFBML.Comments","sdk.XFBML.CommentsCount","sdk.XFBML.CustomerChatWrapper","sdk.XFBML.LWIAdsCreation","sdk.XFBML.LWIAdsInsights","sdk.XFBML.LoginButton","sdk.XFBML.MessengerCheckboxWrapper","sdk.XFBML.MessengerMessageUsWrapper","sdk.XFBML.Save","sdk.XFBML.SendToMessengerWrapper","sdk.XFBML.ShareButton","sdk.XFBML.Video"],(function $module_sdk_CustomTags(global,require,importDefault,importNamespace,requireLazy,module,exports){
+
+
+
+
 
 
 'use strict';
@@ -25138,7 +25628,10 @@ ctor:require("sdk.CustomTags")[tag]});
 
 var SDKXFBML={init:init,initXFBMLBasedSocialPlugin:initXFBMLBasedSocialPlugin};var _default=
 SDKXFBML;exports["default"]=_default;},66);
-                                                                                                                                                                                   __d("sdk.api-public",["ApiClient","FB","sdk.Runtime","sdk.Scribe","sdk.api","sdk.feature"],function $module_sdk_api_public(global,require,importDefault,importNamespace,requireLazy,module,exports){
+                                                                                                                                 __d("sdk.api-public",["ApiClient","FB","sdk.Runtime","sdk.Scribe","sdk.api","sdk.feature"],function $module_sdk_api_public(global,require,importDefault,importNamespace,requireLazy,module,exports){
+
+
+
 
 
 
@@ -25240,7 +25733,11 @@ var SDKGraphAPI={
 init:init};var _default=
 
 SDKGraphAPI;exports["default"]=_default;},98);
-                                                                                                                                                                                                                                        __d("sdk.MBasicInitializer",["UrlMap","sdk.DOM","sdk.Runtime","sdk.UA","sdk.URI","sdk.fbt"],function $module_sdk_MBasicInitializer(global,require,importDefault,importNamespace,requireLazy,module,exports){
+                                                                                                                                                        __d("sdk.MBasicInitializer",["UrlMap","sdk.DOM","sdk.Runtime","sdk.UA","sdk.URI","sdk.fbt"],function $module_sdk_MBasicInitializer(global,require,importDefault,importNamespace,requireLazy,module,exports){
+
+
+
+
 
 
 
@@ -25433,7 +25930,13 @@ importNamespace("sdk.MBasicInitializer").init();
 
 importNamespace("sdk.Event").fire('init:post',options);
 }exports["default"]=init;},98);
-                                                                                                                                                                                                                                                                                                                          __d("sdk.init-public",["FB","QueryString","sdk.AppEvents","sdk.ErrorHandling","sdk.Event","sdk.Frictionless","sdk.XD","sdk.init"],function $module_sdk_init_public(global,require,importDefault,importNamespace,requireLazy,module,exports){
+                                                                                                                                 __d("sdk.init-public",["FB","QueryString","sdk.AppEvents","sdk.ErrorHandling","sdk.Event","sdk.Frictionless","sdk.XD","sdk.init"],function $module_sdk_init_public(global,require,importDefault,importNamespace,requireLazy,module,exports){
+
+
+
+
+
+
 
 
 
@@ -25510,7 +26013,18 @@ importDefault("sdk.init")(window.__buffer.opts);
 
 var SDKInit={initialize:initialize};var _default=
 SDKInit;exports["default"]=_default;},98);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  __d("sdk.Time",["Log","sdk.Impressions","sdk.Runtime","sdk.URI","sdk.feature"],function $module_sdk_Time(global,require,importDefault,importNamespace,requireLazy,module,exports){
+                                                                                                                                                __d("sdk.Time",["Log","sdk.Impressions","sdk.Runtime","sdk.URI","sdk.feature"],function $module_sdk_Time(global,require,importDefault,importNamespace,requireLazy,module,exports){
+
+
+
+
+
+
+
+
+
+
+
 
 'use strict';
 
@@ -25735,4 +26249,4 @@ importDefault("sdk.Runtime").setIsVersioned(true);}),35);
                                                                                                                                                                                                                                                                                                     
 if(window.FB&&window.FB.__buffer){
 window.__buffer=babelHelpers["extends"]({},window.FB.__buffer);
-}    }  }).call(global);})();} catch (e) {var i = new Image();i.crossOrigin = 'anonymous';i.dataset.testid = 'fbSDKErrorReport';i.src='https://www.facebook.com/platform/scribe_endpoint.php/?c=jssdk_error&m='+encodeURIComponent('{"error":"LOAD", "extra": {"name":"'+e.name+'","line":"'+(e.lineNumber||e.line)+'","script":"'+(e.fileName||e.sourceURL||e.script||"debug.js")+'","stack":"'+(e.stackTrace||e.stack)+'","revision":"1009546204","namespace":"FB","message":"'+e.message+'"}}');document.body.appendChild(i);}
+}    }  }).call(global);})();} catch (e) {var i = new Image();i.crossOrigin = 'anonymous';i.dataset.testid = 'fbSDKErrorReport';i.src='https://www.facebook.com/platform/scribe_endpoint.php/?c=jssdk_error&m='+encodeURIComponent('{"error":"LOAD", "extra": {"name":"'+e.name+'","line":"'+(e.lineNumber||e.line)+'","script":"'+(e.fileName||e.sourceURL||e.script||"debug.js")+'","stack":"'+(e.stackTrace||e.stack)+'","revision":"1009723846","namespace":"FB","message":"'+e.message+'"}}');document.body.appendChild(i);}
