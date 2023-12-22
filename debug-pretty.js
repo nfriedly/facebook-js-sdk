@@ -1,4 +1,4 @@
-/*1703094302,,JIT Construction: v1010532715,en_US*/
+/*1703213617,,JIT Construction: v1010571561,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3735,7 +3735,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1010532715",
+            revision: "1010571561",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -11628,6 +11628,7 @@ try {
               function fetchLoginStatus(fn) {
                 if (window.location.protocol !== "https:") {
                   unknownStatus(fn);
+                  return;
                 }
                 var timer = importDefault("sdk.AuthState").getState().timer;
                 if (timer) {
@@ -28178,7 +28179,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1010532715","namespace":"FB","message":"' +
+        '","revision":"1010571561","namespace":"FB","message":"' +
         e.message +
         '"}}',
     );
