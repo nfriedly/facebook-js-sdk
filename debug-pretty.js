@@ -1,4 +1,4 @@
-/*1703213617,,JIT Construction: v1010571561,en_US*/
+/*1705035399,,JIT Construction: v1010784913,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3735,7 +3735,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1010571561",
+            revision: "1010784913",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -9182,6 +9182,8 @@ try {
                   );
                 },
               };
+
+              var MAX_EVENTS_LOG_SIZE = 20;
               var FBLogMessage = (function () {
                 function FBLogMessage(project) {
                   this.project = project;
@@ -9213,33 +9215,33 @@ try {
                   }
 
                   if (this.normalizedError) {
-                    var errorMessage = {
-                      message:
-                        this.normalizedError.messageFormat +
-                        " [Caught in: " +
-                        safeFormat +
-                        "]",
-                      params: [].concat(
-                        this.normalizedError.messageParams,
-                        params,
-                      ),
-                      forcedKey: forcedKey,
-                    };
-
                     normalizedError = babelHelpers["extends"](
                       {},
                       this.normalizedError,
                       {
-                        message: errorMessage.message,
-                        messageFormat: errorMessage.message,
+                        messageFormat:
+                          this.normalizedError.messageFormat +
+                          " [Caught in: " +
+                          safeFormat +
+                          "]",
                         messageParams: ErrorSerializer.toStringParams(
-                          errorMessage.params,
+                          [].concat(this.normalizedError.messageParams, params),
                         ),
                         project: project,
                         type: type,
                         loggingSource: "FBLOGGER",
                       },
                     );
+
+                    normalizedError.message =
+                      ErrorSerializer.toReadableMessage(normalizedError);
+
+                    if (forcedKey != null) {
+                      normalizedError.forcedKey =
+                        normalizedError.forcedKey != null
+                          ? forcedKey + "_" + normalizedError.forcedKey
+                          : forcedKey;
+                    }
                   } else if (error) {
                     if (this.taalOpcodes.length > 0) {
                       new FBLogMessage("fblogger")
@@ -9311,7 +9313,20 @@ try {
                         events,
                       );
                     } else {
-                      normalizedError.events = events;
+                      normalizedError.events = [].concat(events);
+                    }
+
+                    if (
+                      normalizedError.events != null &&
+                      normalizedError.events.length > MAX_EVENTS_LOG_SIZE
+                    ) {
+                      var omitted =
+                        normalizedError.events.length - MAX_EVENTS_LOG_SIZE;
+                      normalizedError.events.splice(
+                        0,
+                        omitted + 1,
+                        "<first " + omitted + " events omitted>",
+                      );
                     }
                   }
 
@@ -28179,7 +28194,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1010571561","namespace":"FB","message":"' +
+        '","revision":"1010784913","namespace":"FB","message":"' +
         e.message +
         '"}}',
     );
