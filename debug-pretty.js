@@ -1,4 +1,4 @@
-/*1705035399,,JIT Construction: v1010784913,en_US*/
+/*1706686687,,JIT Construction: v1011126345,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3735,7 +3735,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1010784913",
+            revision: "1011126345",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -3836,6 +3836,20 @@ try {
               exports,
             ) {
               function guid() {
+                if (
+                  typeof crypto === "object" &&
+                  typeof crypto.getRandomValues === "function" &&
+                  typeof String.prototype.padStart === "function"
+                ) {
+                  var numbers = crypto.getRandomValues(new Uint32Array(2));
+
+                  return (
+                    "f" +
+                    numbers[0].toString(16).padStart(8, "0") +
+                    numbers[1].toString(16).padStart(8, "0")
+                  );
+                }
+
                 return (
                   "f" +
                   (Math.random() * (1 << 30)).toString(16).replace(".", "")
@@ -10199,6 +10213,7 @@ try {
                 "home",
                 "oculus360photos",
                 "systemux",
+                "moonstone",
               ]);
               var Options = require("$InternalEnum")({
                 EXPLICITLY_ALLOWED_SCHEMES_ONLY:
@@ -28194,7 +28209,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1010784913","namespace":"FB","message":"' +
+        '","revision":"1011126345","namespace":"FB","message":"' +
         e.message +
         '"}}',
     );
