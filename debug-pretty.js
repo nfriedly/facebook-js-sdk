@@ -1,4 +1,4 @@
-/*1706686687,,JIT Construction: v1011126345,en_US*/
+/*1707557903,,JIT Construction: v1011346580,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3735,7 +3735,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1011126345",
+            revision: "1011346580",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -22000,6 +22000,47 @@ try {
             66,
           );
           __d(
+            "ExecutionEnvironment",
+            [],
+            function $module_ExecutionEnvironment(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports,
+            ) {
+              "use strict";
+
+              var canUseDOM = !!(
+                global !== undefined &&
+                global.document &&
+                global.document.createElement
+              );
+
+              var isInWorker = typeof WorkerGlobalScope === "function";
+              var isInSharedWorker =
+                typeof SharedWorkerGlobalScope === "function" &&
+                self instanceof SharedWorkerGlobalScope;
+
+              var ExecutionEnvironment = {
+                canUseDOM: canUseDOM,
+                canUseEventListeners:
+                  canUseDOM &&
+                  !!(global.addEventListener || global.attachEvent),
+                canUseViewport: canUseDOM && !!window.screen,
+                canUseWorkers: typeof Worker !== "undefined",
+
+                isInBrowser: canUseDOM || isInWorker,
+                isInSharedWorker: isInSharedWorker,
+                isInWorker: isInWorker,
+              };
+              var _default = ExecutionEnvironment;
+              exports["default"] = _default;
+            },
+            66,
+          );
+          __d(
             "nativeRequestAnimationFrame",
             [],
             function $module_nativeRequestAnimationFrame(
@@ -22024,7 +22065,11 @@ try {
           );
           __d(
             "requestAnimationFramePolyfill",
-            ["nativeRequestAnimationFrame", "performanceNow"],
+            [
+              "ExecutionEnvironment",
+              "nativeRequestAnimationFrame",
+              "performanceNow",
+            ],
             function $module_requestAnimationFramePolyfill(
               global,
               require,
@@ -22034,12 +22079,35 @@ try {
               module,
               exports,
             ) {
+              var _importDefault_closure_ExecutionEnvironment;
               var _importDefault_closure_performanceNow;
 
               var lastTime = 0;
 
+              var maybeNativeRequestAnimationFrame = importDefault(
+                "nativeRequestAnimationFrame",
+              );
+
+              if (
+                (
+                  _importDefault_closure_ExecutionEnvironment ||
+                  (_importDefault_closure_ExecutionEnvironment = importDefault(
+                    "ExecutionEnvironment",
+                  ))
+                ).isInWorker &&
+                maybeNativeRequestAnimationFrame != null
+              ) {
+                try {
+                  maybeNativeRequestAnimationFrame(
+                    function maybeNativeRequestAnimationFrame_$0() {},
+                  );
+                } catch (_error) {
+                  maybeNativeRequestAnimationFrame = null;
+                }
+              }
+
               var requestAnimationFrame =
-                importDefault("nativeRequestAnimationFrame") ||
+                maybeNativeRequestAnimationFrame ||
                 function (callback) {
                   var currTime = (
                     _importDefault_closure_performanceNow ||
@@ -28209,7 +28277,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1011126345","namespace":"FB","message":"' +
+        '","revision":"1011346580","namespace":"FB","message":"' +
         e.message +
         '"}}',
     );
