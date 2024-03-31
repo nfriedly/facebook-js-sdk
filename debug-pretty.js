@@ -1,4 +1,4 @@
-/*1711511796,,JIT Construction: v1012335620,en_US*/
+/*1711924765,,JIT Construction: v1012443625,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3732,7 +3732,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1012335620",
+            revision: "1012443625",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -10211,6 +10211,7 @@ try {
                 "oculus360photos",
                 "systemux",
                 "moonstone",
+                "upi",
               ]);
               var Options = require("$InternalEnum")({
                 EXPLICITLY_ALLOWED_SCHEMES_ONLY:
@@ -14115,7 +14116,7 @@ try {
               var _default = Dialog;
               exports["default"] = _default;
             },
-            98,
+            226,
           );
           __d(
             "ArgumentError",
@@ -17905,7 +17906,7 @@ try {
               var _default = UIServer;
               exports["default"] = _default;
             },
-            98,
+            226,
           );
           __d(
             "sdk.ui",
@@ -22964,7 +22965,7 @@ try {
               })(importNamespace("DOMPlugin").DOMPlugin);
               exports["default"] = ChatDOMFacade;
             },
-            98,
+            226,
           );
           __d(
             "IframePluginClass",
@@ -25573,7 +25574,7 @@ try {
               };
               exports.buttonStringsFBT = buttonStringsFBT;
             },
-            98,
+            226,
           );
           __d(
             "sdk.XFBML.ShadowDOMLoginButton",
@@ -27731,7 +27732,7 @@ try {
               }
               exports.init = init;
             },
-            98,
+            226,
           );
           __d(
             "sdk.init",
@@ -28274,7 +28275,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1012335620","namespace":"FB","message":"' +
+        '","revision":"1012443625","namespace":"FB","message":"' +
         e.message +
         '"}}',
     );
