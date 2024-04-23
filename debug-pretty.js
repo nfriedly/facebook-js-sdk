@@ -1,4 +1,4 @@
-/*1712648393,,JIT Construction: v1012639221,en_US*/
+/*1713902208,,JIT Construction: v1012986541,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3732,7 +3732,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1012639221",
+            revision: "1012986541",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -9101,47 +9101,128 @@ try {
                 var localErrorPubSub = maybeLocalErrorPubSub;
 
                 var reason = event.reason;
-                var expandedError;
+                var withKeys;
+                var expandedError = getErrorSafe(reason);
 
                 if (
-                  reason != null &&
+                  reason !== expandedError &&
                   typeof reason === "object" &&
-                  (reason.name == null ||
-                    reason.name === "" ||
-                    reason.message == null ||
-                    reason.message === "")
+                  reason !== null
                 ) {
-                  try {
-                    expandedError = err(
-                      "UnhandledRejection: %s",
-                      ES("JSON", "stringify", false, reason),
-                    );
-                    expandedError.loggingSource = "ONUNHANDLEDREJECTION";
-                  } catch (_unused) {
-                    expandedError = err(
-                      "UnhandledRejection: (circular) %s",
-                      Object.keys(reason).join(","),
-                    );
-                    expandedError.loggingSource = "ONUNHANDLEDREJECTION";
-                  }
-                } else {
-                  expandedError = getErrorSafe(reason);
+                  withKeys = Object.keys(reason).sort().slice(0, 3);
 
-                  if (!expandedError.loggingSource) {
-                    expandedError.loggingSource = "ONUNHANDLEDREJECTION";
+                  if (
+                    typeof reason.message !== "string" &&
+                    typeof reason.messageFormat === "string"
+                  ) {
+                    reason.message = reason.messageFormat;
+                    expandedError = getErrorSafe(reason);
+                  }
+
+                  if (
+                    typeof reason.message !== "string" &&
+                    typeof reason.errorMsg === "string"
+                  ) {
+                    if (/^\s*\<!doctype/i.test(reason.errorMsg)) {
+                      var match =
+                        /<title>([^<]+)<\/title>(?:(?:.|\n)*<h1>([^<]+)<\/h1>)?/im.exec(
+                          reason.errorMsg,
+                        );
+
+                      if (match) {
+                        var _match$, _match$2;
+
+                        expandedError = err(
+                          'HTML document with title="%s" and h1="%s"',
+                          (_match$ = match[1]) !== null && _match$ !== void 0
+                            ? _match$
+                            : "",
+                          (_match$2 = match[2]) !== null && _match$2 !== void 0
+                            ? _match$2
+                            : "",
+                        );
+                      } else {
+                        expandedError = err("HTML document sanitized");
+                      }
+                    } else if (/^\s*<\?xml/i.test(reason.errorMsg)) {
+                      expandedError = err("XML document sanitized");
+                    } else {
+                      reason.message = reason.errorMsg;
+                      expandedError = getErrorSafe(reason);
+                    }
+                  }
+
+                  if (
+                    expandedError !== reason &&
+                    typeof reason.name === "string"
+                  ) {
+                    expandedError.name = reason.name;
+                  }
+
+                  if (
+                    typeof reason.name !== "string" &&
+                    typeof reason.errorCode === "string"
+                  ) {
+                    expandedError.name =
+                      "UnhandledRejectionWith_errorCode_" + reason.errorCode;
+                  }
+
+                  if (
+                    typeof reason.name !== "string" &&
+                    typeof reason.error === "number"
+                  ) {
+                    expandedError.name =
+                      "UnhandledRejectionWith_error_" + String(reason.error);
                   }
                 }
+
+                expandedError.loggingSource = "ONUNHANDLEDREJECTION";
+                expandedError.name =
+                  expandedError === reason &&
+                  expandedError.name != null &&
+                  expandedError.name !== ""
+                    ? expandedError.name
+                    : typeof (reason === null || reason === void 0
+                          ? void 0
+                          : reason.name) === "string" && reason.name !== ""
+                      ? reason.name
+                      : withKeys != null && withKeys.length > 0
+                        ? "UnhandledRejectionWith_" + withKeys.join("_")
+                        : "UnhandledRejection_" +
+                          (reason === null ? "null" : typeof reason);
+
+                try {
+                  var reasonStack =
+                    reason === null || reason === void 0
+                      ? void 0
+                      : reason.stack;
+
+                  if (typeof reasonStack !== "string" || reasonStack === "") {
+                    reasonStack = expandedError.stack;
+                  }
+
+                  if (typeof reasonStack !== "string" || reasonStack === "") {
+                    reasonStack = err("").stack;
+                  }
+
+                  expandedError.stack =
+                    expandedError.name +
+                    ": " +
+                    expandedError.message +
+                    "\n" +
+                    reasonStack.split("\n").slice(1).join("\n");
+                } catch (_unused) {}
 
                 try {
                   var promise = event.promise;
                   expandedError.stack =
-                    String(expandedError.stack || "") +
+                    expandedError.stack +
                     (promise != null && typeof promise.settledStack === "string"
-                      ? "\n(<promise_settled_stack_below>)\n" +
+                      ? "\n    at <promise_settled_stack_below>\n" +
                         promise.settledStack
                       : "") +
                     (promise != null && typeof promise.createdStack === "string"
-                      ? "\n(<promise_created_stack_below>)\n" +
+                      ? "\n    at <promise_created_stack_below>\n" +
                         promise.createdStack
                       : "");
                 } catch (_unused2) {}
@@ -10212,6 +10293,7 @@ try {
                 "systemux",
                 "moonstone",
                 "upi",
+                "q4bconfigurator",
               ]);
               var Options = require("$InternalEnum")({
                 EXPLICITLY_ALLOWED_SCHEMES_ONLY:
@@ -22724,6 +22806,7 @@ try {
                         return importDefault("sdk.fbt")._("Help");
                       case "ask_us":
                         return importDefault("sdk.fbt")._("Ask us");
+
                       case "none":
                         return "";
                     }
@@ -28275,7 +28358,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1012639221","namespace":"FB","message":"' +
+        '","revision":"1012986541","namespace":"FB","message":"' +
         e.message +
         '"}}',
     );
