@@ -1,4 +1,4 @@
-/*1713902208,,JIT Construction: v1012986541,en_US*/
+/*1714102879,,JIT Construction: v1013068429,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3732,7 +3732,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1012986541",
+            revision: "1013068429",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -16748,6 +16748,7 @@ try {
                 if (
                   importDefault("sdk.Auth").getAuthResponse() &&
                   !call.params.scope &&
+                  !call.params.config_id &&
                   !call.params.asset_scope &&
                   !call.params.auth_type
                 ) {
@@ -25923,6 +25924,7 @@ try {
                   ).toString();
 
                   component.style.fontSize = fontSize[size];
+
                   component.style.height = heightSize[size];
                   component.style.backgroundColor = "rgb(26,119,242)";
                   component.style.color = "#fff";
@@ -27558,6 +27560,7 @@ try {
                     require("XFBML").registerTag({
                       xmlns: "fb",
                       localName: tag.replace(/_/g, "-"),
+
                       ctor: require("IframePlugin").withParams(
                         require("PluginTags")[tag],
                         require("PluginConfig")[tag],
@@ -28358,7 +28361,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1012986541","namespace":"FB","message":"' +
+        '","revision":"1013068429","namespace":"FB","message":"' +
         e.message +
         '"}}',
     );
