@@ -1,4 +1,4 @@
-/*1715756197,,JIT Construction: v1013518740,en_US*/
+/*1716403190,,JIT Construction: v1013686293,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3732,7 +3732,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1013518740",
+            revision: "1013686293",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -9103,6 +9103,7 @@ try {
                 var reason = event.reason;
                 var withKeys;
                 var expandedError = getErrorSafe(reason);
+                var nameToAssign = null;
 
                 if (
                   reason !== expandedError &&
@@ -9156,14 +9157,14 @@ try {
                     expandedError !== reason &&
                     typeof reason.name === "string"
                   ) {
-                    expandedError.name = reason.name;
+                    nameToAssign = reason.name;
                   }
 
                   if (
                     typeof reason.name !== "string" &&
                     typeof reason.errorCode === "string"
                   ) {
-                    expandedError.name =
+                    nameToAssign =
                       "UnhandledRejectionWith_errorCode_" + reason.errorCode;
                   }
 
@@ -9171,25 +9172,30 @@ try {
                     typeof reason.name !== "string" &&
                     typeof reason.error === "number"
                   ) {
-                    expandedError.name =
+                    nameToAssign =
                       "UnhandledRejectionWith_error_" + String(reason.error);
                   }
                 }
 
                 expandedError.loggingSource = "ONUNHANDLEDREJECTION";
-                expandedError.name =
-                  expandedError === reason &&
-                  expandedError.name != null &&
-                  expandedError.name !== ""
-                    ? expandedError.name
-                    : typeof (reason === null || reason === void 0
-                          ? void 0
-                          : reason.name) === "string" && reason.name !== ""
-                      ? reason.name
-                      : withKeys != null && withKeys.length > 0
-                        ? "UnhandledRejectionWith_" + withKeys.join("_")
-                        : "UnhandledRejection_" +
-                          (reason === null ? "null" : typeof reason);
+
+                try {
+                  nameToAssign =
+                    expandedError === reason &&
+                    nameToAssign != null &&
+                    nameToAssign !== ""
+                      ? nameToAssign
+                      : typeof (reason === null || reason === void 0
+                            ? void 0
+                            : reason.name) === "string" && reason.name !== ""
+                        ? reason.name
+                        : withKeys != null && withKeys.length > 0
+                          ? "UnhandledRejectionWith_" + withKeys.join("_")
+                          : "UnhandledRejection_" +
+                            (reason === null ? "null" : typeof reason);
+
+                  expandedError.name = nameToAssign;
+                } catch (_unused) {}
 
                 try {
                   var reasonStack =
@@ -9211,7 +9217,7 @@ try {
                     expandedError.message +
                     "\n" +
                     reasonStack.split("\n").slice(1).join("\n");
-                } catch (_unused) {}
+                } catch (_unused2) {}
 
                 try {
                   var promise = event.promise;
@@ -9225,7 +9231,7 @@ try {
                       ? "\n    at <promise_created_stack_below>\n" +
                         promise.createdStack
                       : "");
-                } catch (_unused2) {}
+                } catch (_unused3) {}
 
                 localErrorPubSub.reportError(expandedError);
 
@@ -9547,7 +9553,7 @@ try {
                   try {
                     errorToThrow.message =
                       ErrorSerializer.toReadableMessage(errorToThrow);
-                  } catch (_unused3) {}
+                  } catch (_unused4) {}
 
                   throw errorToThrow;
                 };
@@ -9626,7 +9632,7 @@ try {
                       value:
                         CUSTOM_NAME_PREFIX + " " + name + CUSTOM_NAME_SUFFIX,
                     });
-                  } catch (_unused4) {}
+                  } catch (_unused5) {}
                 }
 
                 return fn;
@@ -10312,6 +10318,7 @@ try {
                 "moonstone",
                 "upi",
                 "q4bconfigurator",
+                "q4bnux",
               ]);
               var Options = require("$InternalEnum")({
                 EXPLICITLY_ALLOWED_SCHEMES_ONLY:
@@ -28379,7 +28386,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1013518740","namespace":"FB","message":"' +
+        '","revision":"1013686293","namespace":"FB","message":"' +
         e.message +
         '"}}',
     );
