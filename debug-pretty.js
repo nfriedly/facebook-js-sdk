@@ -1,4 +1,4 @@
-/*1720017971,,JIT Construction: v1014647652,en_US*/
+/*1720314203,,JIT Construction: v1014709243,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3732,7 +3732,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1014647652",
+            revision: "1014709243",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -3785,9 +3785,11 @@ try {
               function getRoot() {
                 return rootElement || document.body;
               }
+
               function setWindow(win) {
                 windowRef = win;
               }
+
               function getWindow() {
                 return windowRef || self;
               }
@@ -6718,6 +6720,7 @@ try {
               var observable = new (importNamespace(
                 "sdk.Observable",
               ).Observable)();
+
               function inform(key, value) {
                 observable.inform(key, value);
               }
@@ -11760,6 +11763,7 @@ try {
                   }
                 }
               }
+
               function fetchLoginStatus(fn) {
                 if (window.location.protocol !== "https:") {
                   unknownStatus(fn);
@@ -12217,6 +12221,7 @@ try {
             ) {
               require("sdk.Frictionless");
               var LOGIN_COMPLETE_HEARTBEAT_TIMEOUT = 5 * 1000;
+
               function login(cb, opts) {
                 if (opts && opts.perms && !opts.scope) {
                   opts.scope = opts.perms;
@@ -12246,6 +12251,7 @@ try {
                   cb,
                 );
               }
+
               function toWebOAuthStatus(status) {
                 switch (status) {
                   case "connected":
@@ -12256,6 +12262,7 @@ try {
                     return "unknown";
                 }
               }
+
               function setFinalAuthResponse(finalResponse) {
                 if (
                   (finalResponse == null
@@ -12307,6 +12314,7 @@ try {
                     .XFOA_FINAL_RESPONSE_EVENT,
                 );
               }
+
               function setAuthResponse(
                 authResponse,
                 status,
@@ -12450,10 +12458,12 @@ try {
 
                 return response;
               }
+
               function getAuthResponse() {
                 return importDefault("sdk.AuthState").getState()
                   .currentAuthResponse;
               }
+
               function logout(cb) {
                 var currentAuthResponse = getAuthResponse();
                 var currentLoginSource = importNamespace(
@@ -12507,6 +12517,7 @@ try {
                   extra: { args: { fblo: true } },
                 });
               }
+
               function xdResponseWrapper(
                 cb,
                 authResponse,
@@ -12637,6 +12648,7 @@ try {
                   return authResponse;
                 };
               }
+
               function logSuccessfulAuth(requestParams) {
                 if (
                   requestParams &&
@@ -12659,6 +12671,7 @@ try {
                   );
                 }, LOGIN_COMPLETE_HEARTBEAT_TIMEOUT);
               }
+
               function populateAuthResponse(authResponse, params) {
                 if (params.granted_scopes) {
                   authResponse = babelHelpers["extends"]({}, authResponse, {
@@ -15797,6 +15810,7 @@ try {
               var local = jsonrpc.local;
               var remote = jsonrpc.remote;
               var stub = ES(jsonrpc.stub, "bind", true, jsonrpc);
+
               function supportsDialog(method) {
                 return (
                   !!extensionAPIBridge &&
@@ -18628,6 +18642,7 @@ try {
                 hideFlashElement();
                 hideUnityElement();
               }
+
               function showPluginElement() {
                 showFlashElement();
                 showUnityElement();
@@ -28109,6 +28124,7 @@ try {
 
               var startTime;
               var data = {};
+
               function recordBootload() {
                 function isFileSPINServedJSSDK(resource, SDKUrl) {
                   var doesResourceMatchJSSDK = false;
@@ -28388,7 +28404,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1014647652","namespace":"FB","message":"' +
+        '","revision":"1014709243","namespace":"FB","message":"' +
         e.message +
         '"}}',
     );
