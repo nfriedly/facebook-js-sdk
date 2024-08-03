@@ -1,4 +1,4 @@
-/*1721828284,,JIT Construction: v1015108323,en_US*/
+/*1722703610,,JIT Construction: v1015382981,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3732,7 +3732,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1015108323",
+            revision: "1015382981",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -10323,6 +10323,7 @@ try {
                 "q4bconfigurator",
                 "q4bnux",
                 "fb-viewapp",
+                "x-safari-https",
               ]);
               var Options = require("$InternalEnum")({
                 EXPLICITLY_ALLOWED_SCHEMES_ONLY:
@@ -14773,11 +14774,22 @@ try {
                 }
 
                 if ("withCredentials" in xhr) {
+                  var _additionalArgs2;
                   xhr.open(method, url, true);
                   xhr.setRequestHeader(
                     "Content-type",
                     "application/x-www-form-urlencoded",
                   );
+                  if (
+                    (_additionalArgs2 = additionalArgs) == null
+                      ? void 0
+                      : _additionalArgs2.customHeaders
+                  ) {
+                    xhr.setRequestHeader(
+                      "x-fb-tenant-routing-control",
+                      "ads_manager_read_regions",
+                    );
+                  }
                 } else if (self.XDomainRequest) {
                   xhr = new XDomainRequest();
                   try {
@@ -15054,12 +15066,33 @@ try {
                 var transports = defaultTransports;
 
                 for (var i = 0; i < transports.length; i++) {
+                  var _params;
                   var transport = availableTransports[transports[i]];
+
+                  var additionalArgs = { withCredentials: withCredentials };
+                  if (
+                    (_params = params) == null
+                      ? void 0
+                      : _params.ads_manager_read_regions
+                  ) {
+                    additionalArgs = babelHelpers["extends"](
+                      {},
+                      additionalArgs,
+                      {
+                        customHeaders: params.ads_manager_read_regions,
+                      },
+                    );
+                  }
+
                   var paramsCopy = babelHelpers["extends"]({}, params);
                   if (
-                    transport.execute(url, method, paramsCopy, cb, {
-                      withCredentials: withCredentials,
-                    })
+                    transport.execute(
+                      url,
+                      method,
+                      paramsCopy,
+                      cb,
+                      additionalArgs,
+                    )
                   ) {
                     return;
                   }
@@ -22146,6 +22179,7 @@ try {
               var isInSharedWorker =
                 typeof SharedWorkerGlobalScope === "function" &&
                 self instanceof SharedWorkerGlobalScope;
+              var isInWorkerOrSharedWorker = isInWorker || isInSharedWorker;
 
               var ExecutionEnvironment = {
                 canUseDOM: canUseDOM,
@@ -22158,6 +22192,7 @@ try {
                 isInBrowser: canUseDOM || isInWorker,
                 isInSharedWorker: isInSharedWorker,
                 isInWorker: isInWorker,
+                isInWorkerOrSharedWorker: isInWorkerOrSharedWorker,
               };
               var _default = ExecutionEnvironment;
               exports["default"] = _default;
@@ -28405,7 +28440,7 @@ try {
         (e.fileName || e.sourceURL || e.script || "debug.js") +
         '","stack":"' +
         (e.stackTrace || e.stack) +
-        '","revision":"1015108323","namespace":"FB","message":"' +
+        '","revision":"1015382981","namespace":"FB","message":"' +
         e.message +
         '"}}',
     );
