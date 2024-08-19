@@ -1,4 +1,4 @@
-/*1723035632,,JIT Construction: v1015471330,en_US*/
+/*1724079385,,JIT Construction: v1015783013,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -65,6 +65,7 @@ try {
            * Please see the DEX https://fburl.com/80903169 for more information.
            *
            * @provides GenericFunctionVisitor
+           * @requires TypeChecker
            * @polyfillUAs
            * @noflow
            * @nolint
@@ -140,25 +141,6 @@ try {
               return fn.apply(scope, args);
             };
 
-            var typecheckBodyWrapper = function typecheckBodyWrapper(
-              scope,
-              args,
-              fn,
-              params,
-            ) {
-              if (params && params.params) {
-                __t.apply(scope, params.params);
-              }
-
-              var result = fn.apply(scope, args);
-
-              if (params && params.returns) {
-                __t([result, params.returns]);
-              }
-
-              return result;
-            };
-
             var codeUsageBodyWrapper = function codeUsageBodyWrapper(
               scope,
               args,
@@ -196,10 +178,6 @@ try {
                 globalScope.__bodyWrapper.clearCodeUsage = function () {
                   funcCalls = {};
                 };
-              } else if ("typechecks" in __transform_includes) {
-                globalScope.__bodyWrapper = __DEV__
-                  ? typecheckBodyWrapper
-                  : noopBodyWrapper;
               } else {
                 globalScope.__bodyWrapper = noopBodyWrapper;
               }
@@ -3143,7 +3121,6 @@ try {
            * @polyfillUAs old webkit modern
            * @preventMunge
            * @requires iterator.enumerate
-           * @requires TypeChecker
            * @requires GenericFunctionVisitor
            * @noflow
            * @nolint
@@ -3732,7 +3709,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1015471330",
+            revision: "1015783013",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -18606,11 +18583,13 @@ try {
                   false,
                   window.document.getElementsByTagName("object"),
                 );
+
                 candidates = candidates.concat(
                   ES(
                     "Array",
                     "from",
                     false,
+
                     window.document.getElementsByTagName("embed"),
                   ),
                 );
@@ -22179,7 +22158,7 @@ try {
               var isInSharedWorker =
                 typeof SharedWorkerGlobalScope === "function" &&
                 self instanceof SharedWorkerGlobalScope;
-              var isInWorkerOrSharedWorker = isInWorker || isInSharedWorker;
+              var isInMainThread = !isInWorker && canUseDOM;
 
               var ExecutionEnvironment = {
                 canUseDOM: canUseDOM,
@@ -22190,9 +22169,9 @@ try {
                 canUseWorkers: typeof Worker !== "undefined",
 
                 isInBrowser: canUseDOM || isInWorker,
+                isInMainThread: isInMainThread,
                 isInSharedWorker: isInSharedWorker,
                 isInWorker: isInWorker,
-                isInWorkerOrSharedWorker: isInWorkerOrSharedWorker,
               };
               var _default = ExecutionEnvironment;
               exports["default"] = _default;
@@ -28238,6 +28217,7 @@ try {
                         timing = null;
                       } else {
                         bootloadedTiming = timing.splice(bootId)[0];
+
                         timing = timing[0];
                       }
                     }
@@ -28252,6 +28232,7 @@ try {
                           return ES(t.name, "startsWith", true, sdkurl);
                         });
                     }
+
                     timing = timing[0];
                   } else {
                     timing = null;
@@ -28425,24 +28406,27 @@ try {
         }
       }).call(global);
     })();
-} catch (e) {
-  var i = new Image();
-  i.crossOrigin = "anonymous";
-  i.dataset.testid = "fbSDKErrorReport";
-  i.src =
+} catch (__fb_err) {
+  var __fb_i = new Image();
+  __fb_i.crossOrigin = "anonymous";
+  __fb_i.dataset.testid = "fbSDKErrorReport";
+  __fb_i.src =
     "https://www.facebook.com/platform/scribe_endpoint.php/?c=jssdk_error&m=" +
     encodeURIComponent(
       '{"error":"LOAD", "extra": {"name":"' +
-        e.name +
+        __fb_err.name +
         '","line":"' +
-        (e.lineNumber || e.line) +
+        (__fb_err.lineNumber || __fb_err.line) +
         '","script":"' +
-        (e.fileName || e.sourceURL || e.script || "debug.js") +
+        (__fb_err.fileName ||
+          __fb_err.sourceURL ||
+          __fb_err.script ||
+          "debug.js") +
         '","stack":"' +
-        (e.stackTrace || e.stack) +
-        '","revision":"1015471330","namespace":"FB","message":"' +
-        e.message +
+        (__fb_err.stackTrace || __fb_err.stack) +
+        '","revision":"1015783013","namespace":"FB","message":"' +
+        __fb_err.message +
         '"}}',
     );
-  document.body.appendChild(i);
+  document.body.appendChild(__fb_i);
 }
