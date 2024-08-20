@@ -1,4 +1,4 @@
-/*1724079385,,JIT Construction: v1015783013,en_US*/
+/*1724140669,,JIT Construction: v1015816230,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -2513,6 +2513,7 @@ try {
                   if (accessor.length === 2) {
                     var obj = accessor[0],
                       prop = accessor[1];
+
                     if (!obj || !prop || !window[obj] || !window[obj][prop]) {
                       var windowObj = obj ? window[obj] : "-";
                       var windowObjProp =
@@ -3709,7 +3710,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1015783013",
+            revision: "1015816230",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -4187,6 +4188,7 @@ try {
                   window.addEventListener("load", flush, false);
                 } else if (document.attachEvent) {
                   document.attachEvent("onreadystatechange", flush);
+
                   window.attachEvent("onload", flush);
                 }
               }
@@ -5803,6 +5805,7 @@ try {
 
               if (__DEV__) {
                 FB.require = require;
+
                 window._FB = FB;
               }
 
@@ -15959,7 +15962,9 @@ try {
               function getPopupFeaturesString(options) {
                 var _screenX = window.screenX;
                 var screenY = window.screenY;
+
                 var outerWidth = window.outerWidth;
+
                 var outerHeight = window.outerHeight;
 
                 var width = importDefault("sdk.UA").mobile()
@@ -16760,6 +16765,7 @@ try {
                 },
                 getXdRelation: function getXdRelation(params) {
                   var display = params.display;
+
                   if (
                     display === "touch" &&
                     window.postMessage &&
@@ -28086,7 +28092,9 @@ try {
 
                   if (window.fbAsyncInit && !window.fbAsyncInit.hasRun) {
                     importNamespace("sdk.Event").fire("init:asyncstart");
+
                     window.fbAsyncInit.hasRun = true;
+
                     importDefault("sdk.ErrorHandling").unguard(
                       window.fbAsyncInit,
                     )();
@@ -28424,7 +28432,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1015783013","namespace":"FB","message":"' +
+        '","revision":"1015816230","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
