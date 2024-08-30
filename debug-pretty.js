@@ -1,4 +1,4 @@
-/*1724140669,,JIT Construction: v1015816230,en_US*/
+/*1725043085,,JIT Construction: v1016111442,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -257,6 +257,7 @@ try {
             var REQUIRE_WHEN_READY = 0x1;
             var ES_MODULE_IMPORTS = 0x20;
             var ES_MODULE_EXPORTS = 0x40;
+            var DO_NOT_REDEFINE = 0x100;
             var EMPTY = {};
 
             var hasOwnProperty = Object.prototype.hasOwnProperty;
@@ -369,6 +370,13 @@ try {
             }
 
             function define(id, deps, factory, _special) {
+              if (hasOwnProperty.call(map, id)) {
+                var _special2 = map[id].special || 0;
+
+                if (_special2 & DO_NOT_REDEFINE) {
+                  return;
+                }
+              }
               if (typeof factory === "function") {
                 map[id] = {
                   factory: factory,
@@ -390,6 +398,27 @@ try {
                 };
               }
             }
+
+            function ifRequireable(id, cbYes, cbNo) {
+              var module = getOrIntializeModule(id, true);
+
+              if (module) {
+                if (typeof cbYes === "function") {
+                  return cbYes(requireInterop(id));
+                }
+              } else if (typeof cbNo === "function") {
+                return cbNo();
+              }
+            }
+
+            define(
+              "ifRequireable",
+              [],
+              function () {
+                return ifRequireable;
+              },
+              DO_NOT_REDEFINE,
+            );
 
             global.__d = define;
             global.require = requireInterop;
@@ -3710,7 +3739,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1015816230",
+            revision: "1016111442",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -10004,6 +10033,8 @@ try {
               module,
               exports,
             ) {
+              "use strict";
+
               var PARSE_PATTERN = new RegExp(
                 "^" +
                   "([^:/?#]+:)?" +
@@ -16765,7 +16796,6 @@ try {
                 },
                 getXdRelation: function getXdRelation(params) {
                   var display = params.display;
-
                   if (
                     display === "touch" &&
                     window.postMessage &&
@@ -23817,20 +23847,16 @@ try {
               var blankIFrameURI = importDefault("sdk.Runtime").getIsVersioned()
                 ? importNamespace("UrlMap").resolve("www") +
                   "/" +
-                  importDefault("sdk.Runtime").getVersion() +
-                  "/plugins/customer_chat/bubble"
-                : importNamespace("UrlMap").resolve("www") +
-                  "/plugins/customer_chat/bubble";
+                  importDefault("sdk.Runtime").getVersion()
+                : importNamespace("UrlMap").resolve("www");
 
               var blankIFrameNewDomainURI = importDefault(
                 "sdk.Runtime",
               ).getIsVersioned()
                 ? importNamespace("UrlMap").resolve("social_plugin") +
                   "/" +
-                  importDefault("sdk.Runtime").getVersion() +
-                  "/customer_chat/bubble"
-                : importNamespace("UrlMap").resolve("social_plugin") +
-                  "/customer_chat/bubble";
+                  importDefault("sdk.Runtime").getVersion()
+                : importNamespace("UrlMap").resolve("social_plugin");
               var _default = {
                 attribute: {
                   alignment: "alignment",
@@ -28432,7 +28458,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1015816230","namespace":"FB","message":"' +
+        '","revision":"1016111442","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
