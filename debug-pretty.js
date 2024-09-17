@@ -1,4 +1,4 @@
-/*1725043085,,JIT Construction: v1016111442,en_US*/
+/*1726559273,,JIT Construction: v1016549359,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3739,7 +3739,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1016111442",
+            revision: "1016549359",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -15993,7 +15993,6 @@ try {
               function getPopupFeaturesString(options) {
                 var _screenX = window.screenX;
                 var screenY = window.screenY;
-
                 var outerWidth = window.outerWidth;
 
                 var outerHeight = window.outerHeight;
@@ -28458,7 +28457,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1016111442","namespace":"FB","message":"' +
+        '","revision":"1016549359","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
