@@ -1,4 +1,4 @@
-/*1726559273,,JIT Construction: v1016549359,en_US*/
+/*1726757804,,JIT Construction: v1016627401,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3582,7 +3582,7 @@ typeof this!=='undefined'?
 this:
 typeof self!=='undefined'?
 self:
-{});      __d("JSSDKCanvasPrefetcherConfig",[],{"enabled":true,"excludedAppIds":[144959615576466,768691303149786,320528941393723],"sampleRate":500});__d("JSSDKConfig",[],{"features":{"allow_non_canvas_app_events":false,"error_handling":{"rate":4},"e2e_ping_tracking":{"rate":0.1},"xd_timeout":{"rate":1,"value":60000},"use_bundle":false,"should_log_response_error":true,"popup_blocker_scribe_logging":{"rate":100},"https_only_enforce_starting":2538809200000,"https_only_learn_more":"https:\/\/developers.facebook.com\/blog\/post\/2018\/06\/08\/enforce-https-facebook-login\/","https_only_scribe_logging":{"rate":1},"log_perf":{"rate":0.001},"use_x_xd":{"rate":100},"cache_auth_response":{"rate":100},"oauth_funnel_logger_version":1,"force_popup_to_canvas_apps_with_id":[],"force_popup_to_all_canvas_app":false,"max_oauth_dialog_retries":{"rate":100,"value":10},"plugin_tags_blacklist":[],"idle_callback_wait_time_ms":3000,"chat_plugin_facade_timeout_ms":8000,"chat_plugin_facade_enabled_pageids":["102493178867330","107331571710078","1032787970130843","107771111665395","261907812360345","101305975654752","275483104252055","101664622285042","112682113428700","271628573687012","385757598521443","100545935690488"],"should_enable_ig_login_status_fetch":true,"log_cookies_usage":{"rate":0.1},"allow_shadow_dom_for_apps_with_id":[520916077950649,152351391599356,132081130190180,468663283258845,409976882430412,189845245141894,360467581347,274266067164],"allow_shadow_dom":true}});__d("JSSDKCssConfig",[],{"rules":".fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:'lucida grande', tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}\u0040keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}\n.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:'lucida grande', tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}\u0040keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}\n.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_dialog_advanced{border-radius:8px;padding:10px}.fb_dialog_content{background:#fff;color:#373737}.fb_dialog_close_icon{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v3\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{left:5px;right:auto;top:5px}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v3\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v3\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v3\/yd\/r\/Cou7n-nqK52.gif) no-repeat 5px 50\u0025;float:left;padding:5px 0 7px 26px}body.fb_hidden{height:100\u0025;left:0;margin:0;overflow:visible;position:absolute;top:-10000px;transform:none;width:100\u0025}.fb_dialog.fb_dialog_mobile.loading{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v3\/ya\/r\/3rhSv5V8j3o.gif) white no-repeat 50\u0025 50\u0025;min-height:100\u0025;min-width:100\u0025;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{background:none;height:auto;min-height:initial;min-width:initial;width:auto}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100\u0025}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{clear:both;color:#fff;display:block;font-size:18px;padding-top:20px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .4);bottom:0;left:0;min-height:100\u0025;position:absolute;right:0;top:0;width:100\u0025;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_mobile .fb_dialog_iframe{position:sticky;top:0}.fb_dialog_content .dialog_header{background:linear-gradient(from(#738aba), to(#2c4987));border-bottom:1px solid;border-color:#043b87;box-shadow:white 0 1px 1px -1px inset;color:#fff;font:bold 14px Helvetica, sans-serif;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{height:43px;width:100\u0025}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:linear-gradient(from(#4267B2), to(#2a4887));background-clip:padding-box;border:1px solid #29487d;border-radius:3px;display:inline-block;line-height:18px;margin-top:3px;max-width:85px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{background:none;border:none;color:#fff;font:bold 12px Helvetica, sans-serif;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v3\/y9\/r\/jKEcVPZFk-2.gif) no-repeat 50\u0025 50\u0025;border:1px solid #4a4a4a;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f5f6f7;border:1px solid #4a4a4a;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https:\/\/connect.facebook.net\/rsrc.php\/v3\/yD\/r\/t-wz8gw1xG1.png);background-position:50\u0025 50\u0025;background-repeat:no-repeat;height:24px;width:24px}\u0040keyframes rotateSpinner{0\u0025{transform:rotate(0deg)}100\u0025{transform:rotate(360deg)}}\n.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100\u0025}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100\u0025}\n.fb_mpn_mobile_landing_page_slide_out{animation-duration:200ms;animation-name:fb_mpn_landing_page_slide_out;transition-timing-function:ease-in}.fb_mpn_mobile_landing_page_slide_out_from_left{animation-duration:200ms;animation-name:fb_mpn_landing_page_slide_out_from_left;transition-timing-function:ease-in}.fb_mpn_mobile_landing_page_slide_up{animation-duration:500ms;animation-name:fb_mpn_landing_page_slide_up;transition-timing-function:ease-in}.fb_mpn_mobile_bounce_in{animation-duration:300ms;animation-name:fb_mpn_bounce_in;transition-timing-function:ease-in}.fb_mpn_mobile_bounce_out{animation-duration:300ms;animation-name:fb_mpn_bounce_out;transition-timing-function:ease-in}.fb_mpn_mobile_bounce_out_v2{animation-duration:300ms;animation-name:fb_mpn_fade_out;transition-timing-function:ease-in}.fb_customer_chat_bounce_in_v2{animation-duration:300ms;animation-name:fb_bounce_in_v2;transition-timing-function:ease-in}.fb_customer_chat_bounce_in_from_left{animation-duration:300ms;animation-name:fb_bounce_in_from_left;transition-timing-function:ease-in}.fb_customer_chat_bounce_out_v2{animation-duration:300ms;animation-name:fb_bounce_out_v2;transition-timing-function:ease-in}.fb_customer_chat_bounce_out_from_left{animation-duration:300ms;animation-name:fb_bounce_out_from_left;transition-timing-function:ease-in}.fb_invisible_flow{display:inherit;height:0;overflow-x:hidden;width:0}\u0040keyframes fb_mpn_landing_page_slide_out{0\u0025{margin:0 12px;width:100\u0025 - 24px}60\u0025{border-radius:18px}100\u0025{border-radius:50\u0025;margin:0 24px;width:60px}}\u0040keyframes fb_mpn_landing_page_slide_out_from_left{0\u0025{left:12px;width:100\u0025 - 24px}60\u0025{border-radius:18px}100\u0025{border-radius:50\u0025;left:12px;width:60px}}\u0040keyframes fb_mpn_landing_page_slide_up{0\u0025{bottom:0;opacity:0}100\u0025{bottom:24px;opacity:1}}\u0040keyframes fb_mpn_bounce_in{0\u0025{opacity:.5;top:100\u0025}100\u0025{opacity:1;top:0}}\u0040keyframes fb_mpn_fade_out{0\u0025{bottom:30px;opacity:1}100\u0025{bottom:0;opacity:0}}\u0040keyframes fb_mpn_bounce_out{0\u0025{opacity:1;top:0}100\u0025{opacity:.5;top:100\u0025}}\u0040keyframes fb_bounce_in_v2{0\u0025{opacity:0;transform:scale(0, 0);transform-origin:bottom right}50\u0025{transform:scale(1.03, 1.03);transform-origin:bottom right}100\u0025{opacity:1;transform:scale(1, 1);transform-origin:bottom right}}\u0040keyframes fb_bounce_in_from_left{0\u0025{opacity:0;transform:scale(0, 0);transform-origin:bottom left}50\u0025{transform:scale(1.03, 1.03);transform-origin:bottom left}100\u0025{opacity:1;transform:scale(1, 1);transform-origin:bottom left}}\u0040keyframes fb_bounce_out_v2{0\u0025{opacity:1;transform:scale(1, 1);transform-origin:bottom right}100\u0025{opacity:0;transform:scale(0, 0);transform-origin:bottom right}}\u0040keyframes fb_bounce_out_from_left{0\u0025{opacity:1;transform:scale(1, 1);transform-origin:bottom left}100\u0025{opacity:0;transform:scale(0, 0);transform-origin:bottom left}}\u0040keyframes slideInFromBottom{0\u0025{opacity:.1;transform:translateY(100\u0025)}100\u0025{opacity:1;transform:translateY(0)}}\u0040keyframes slideInFromBottomDelay{0\u0025{opacity:0;transform:translateY(100\u0025)}97\u0025{opacity:0;transform:translateY(100\u0025)}100\u0025{opacity:1;transform:translateY(0)}}","components":["css:fb.css.base","css:fb.css.dialog","css:fb.css.iframewidget","css:fb.css.customer_chat_plugin_iframe"]});__d("JSSDKRuntimeConfig",[],{"locale":"en_US","revision":"1016549359","rtl":false,"sdkab":null,"sdkns":"","sdkurl":"https:\/\/connect.facebook.net\/en_US\/sdk\/debug.js","scribeurl":"https:\/\/www.facebook.com\/platform\/scribe_endpoint.php\/"});__d("JSSDKXDConfig",[],{"XXdUrl":"\/x\/connect\/xd_arbiter\/?version=46","useCdn":true});__d("UrlMapConfig",[],{"www":"www.facebook.com","m":"m.facebook.com","business":"business.facebook.com","api":"api.facebook.com","api_read":"api-read.facebook.com","graph":"graph.facebook.com","an":"an.facebook.com","fbcdn":"static.xx.fbcdn.net","cdn":"staticxx.facebook.com","graph_facebook":"graph.facebook.com","graph_gaming":"graph.fb.gg","graph_instagram":"graph.instagram.com","www_instagram":"www.instagram.com","social_plugin":"socialplugin.facebook.net"});__d("JSSDKShadowCssConfig",[],{"css:fb.shadow.css.fb_login_button":".fb_login_button_container{align-content:center;align-items:center;border:0;color:#fff;display:flex;font-family:'Roboto', 'Freight Sans LF Pro', Helvetica, Arial, 'Lucida Grande', sans-serif;font-weight:bold;margin:auto}.fb-button-main-element{display:flex;flex-wrap:nowrap;overflow:hidden}.fb-iframe-overlay{display:flex}.fb-button-main-element:hover{cursor:pointer}.fb-button-main-element:focus{filter:brightness(80\u0025)}.fb_button_label_element{align-items:center;display:flex;font-weight:bold;justify-content:center}.fb_button_label{margin:auto;pointer-events:none}.fb_button_svg_logo{height:1.33em;margin-left:.4em;margin-right:.4em;padding:.065em}.login_fb_logo .f_logo_f{fill:transparent}.single_button_svg_logo{margin-bottom:.08em}"});                                                                                                                                 __d("DOMWrapper",[],(function $module_DOMWrapper(global,require,requireDynamic,requireLazy,module,exports){
+{});      __d("JSSDKCanvasPrefetcherConfig",[],{"enabled":true,"excludedAppIds":[144959615576466,768691303149786,320528941393723],"sampleRate":500});__d("JSSDKConfig",[],{"features":{"allow_non_canvas_app_events":false,"error_handling":{"rate":4},"e2e_ping_tracking":{"rate":0.1},"xd_timeout":{"rate":1,"value":60000},"use_bundle":false,"should_log_response_error":true,"popup_blocker_scribe_logging":{"rate":100},"https_only_enforce_starting":2538809200000,"https_only_learn_more":"https:\/\/developers.facebook.com\/blog\/post\/2018\/06\/08\/enforce-https-facebook-login\/","https_only_scribe_logging":{"rate":1},"log_perf":{"rate":0.001},"use_x_xd":{"rate":100},"cache_auth_response":{"rate":100},"oauth_funnel_logger_version":1,"force_popup_to_canvas_apps_with_id":[],"force_popup_to_all_canvas_app":false,"max_oauth_dialog_retries":{"rate":100,"value":10},"plugin_tags_blacklist":[],"idle_callback_wait_time_ms":3000,"chat_plugin_facade_timeout_ms":8000,"chat_plugin_facade_enabled_pageids":["102493178867330","107331571710078","1032787970130843","107771111665395","261907812360345","101305975654752","275483104252055","101664622285042","112682113428700","271628573687012","385757598521443","100545935690488"],"should_enable_ig_login_status_fetch":true,"log_cookies_usage":{"rate":0.1},"allow_shadow_dom_for_apps_with_id":[520916077950649,152351391599356,132081130190180,468663283258845,409976882430412,189845245141894,360467581347,274266067164],"allow_shadow_dom":true}});__d("JSSDKCssConfig",[],{"rules":".fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:'lucida grande', tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}\u0040keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}\n.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:'lucida grande', tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}\u0040keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}\n.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_dialog_advanced{border-radius:8px;padding:10px}.fb_dialog_content{background:#fff;color:#373737}.fb_dialog_close_icon{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v3\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{left:5px;right:auto;top:5px}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v3\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v3\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v3\/yd\/r\/Cou7n-nqK52.gif) no-repeat 5px 50\u0025;float:left;padding:5px 0 7px 26px}body.fb_hidden{height:100\u0025;left:0;margin:0;overflow:visible;position:absolute;top:-10000px;transform:none;width:100\u0025}.fb_dialog.fb_dialog_mobile.loading{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v3\/ya\/r\/3rhSv5V8j3o.gif) white no-repeat 50\u0025 50\u0025;min-height:100\u0025;min-width:100\u0025;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{background:none;height:auto;min-height:initial;min-width:initial;width:auto}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100\u0025}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{clear:both;color:#fff;display:block;font-size:18px;padding-top:20px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .4);bottom:0;left:0;min-height:100\u0025;position:absolute;right:0;top:0;width:100\u0025;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_mobile .fb_dialog_iframe{position:sticky;top:0}.fb_dialog_content .dialog_header{background:linear-gradient(from(#738aba), to(#2c4987));border-bottom:1px solid;border-color:#043b87;box-shadow:white 0 1px 1px -1px inset;color:#fff;font:bold 14px Helvetica, sans-serif;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{height:43px;width:100\u0025}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:linear-gradient(from(#4267B2), to(#2a4887));background-clip:padding-box;border:1px solid #29487d;border-radius:3px;display:inline-block;line-height:18px;margin-top:3px;max-width:85px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{background:none;border:none;color:#fff;font:bold 12px Helvetica, sans-serif;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v3\/y9\/r\/jKEcVPZFk-2.gif) no-repeat 50\u0025 50\u0025;border:1px solid #4a4a4a;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f5f6f7;border:1px solid #4a4a4a;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https:\/\/connect.facebook.net\/rsrc.php\/v3\/yD\/r\/t-wz8gw1xG1.png);background-position:50\u0025 50\u0025;background-repeat:no-repeat;height:24px;width:24px}\u0040keyframes rotateSpinner{0\u0025{transform:rotate(0deg)}100\u0025{transform:rotate(360deg)}}\n.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100\u0025}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100\u0025}\n.fb_mpn_mobile_landing_page_slide_out{animation-duration:200ms;animation-name:fb_mpn_landing_page_slide_out;transition-timing-function:ease-in}.fb_mpn_mobile_landing_page_slide_out_from_left{animation-duration:200ms;animation-name:fb_mpn_landing_page_slide_out_from_left;transition-timing-function:ease-in}.fb_mpn_mobile_landing_page_slide_up{animation-duration:500ms;animation-name:fb_mpn_landing_page_slide_up;transition-timing-function:ease-in}.fb_mpn_mobile_bounce_in{animation-duration:300ms;animation-name:fb_mpn_bounce_in;transition-timing-function:ease-in}.fb_mpn_mobile_bounce_out{animation-duration:300ms;animation-name:fb_mpn_bounce_out;transition-timing-function:ease-in}.fb_mpn_mobile_bounce_out_v2{animation-duration:300ms;animation-name:fb_mpn_fade_out;transition-timing-function:ease-in}.fb_customer_chat_bounce_in_v2{animation-duration:300ms;animation-name:fb_bounce_in_v2;transition-timing-function:ease-in}.fb_customer_chat_bounce_in_from_left{animation-duration:300ms;animation-name:fb_bounce_in_from_left;transition-timing-function:ease-in}.fb_customer_chat_bounce_out_v2{animation-duration:300ms;animation-name:fb_bounce_out_v2;transition-timing-function:ease-in}.fb_customer_chat_bounce_out_from_left{animation-duration:300ms;animation-name:fb_bounce_out_from_left;transition-timing-function:ease-in}.fb_invisible_flow{display:inherit;height:0;overflow-x:hidden;width:0}\u0040keyframes fb_mpn_landing_page_slide_out{0\u0025{margin:0 12px;width:100\u0025 - 24px}60\u0025{border-radius:18px}100\u0025{border-radius:50\u0025;margin:0 24px;width:60px}}\u0040keyframes fb_mpn_landing_page_slide_out_from_left{0\u0025{left:12px;width:100\u0025 - 24px}60\u0025{border-radius:18px}100\u0025{border-radius:50\u0025;left:12px;width:60px}}\u0040keyframes fb_mpn_landing_page_slide_up{0\u0025{bottom:0;opacity:0}100\u0025{bottom:24px;opacity:1}}\u0040keyframes fb_mpn_bounce_in{0\u0025{opacity:.5;top:100\u0025}100\u0025{opacity:1;top:0}}\u0040keyframes fb_mpn_fade_out{0\u0025{bottom:30px;opacity:1}100\u0025{bottom:0;opacity:0}}\u0040keyframes fb_mpn_bounce_out{0\u0025{opacity:1;top:0}100\u0025{opacity:.5;top:100\u0025}}\u0040keyframes fb_bounce_in_v2{0\u0025{opacity:0;transform:scale(0, 0);transform-origin:bottom right}50\u0025{transform:scale(1.03, 1.03);transform-origin:bottom right}100\u0025{opacity:1;transform:scale(1, 1);transform-origin:bottom right}}\u0040keyframes fb_bounce_in_from_left{0\u0025{opacity:0;transform:scale(0, 0);transform-origin:bottom left}50\u0025{transform:scale(1.03, 1.03);transform-origin:bottom left}100\u0025{opacity:1;transform:scale(1, 1);transform-origin:bottom left}}\u0040keyframes fb_bounce_out_v2{0\u0025{opacity:1;transform:scale(1, 1);transform-origin:bottom right}100\u0025{opacity:0;transform:scale(0, 0);transform-origin:bottom right}}\u0040keyframes fb_bounce_out_from_left{0\u0025{opacity:1;transform:scale(1, 1);transform-origin:bottom left}100\u0025{opacity:0;transform:scale(0, 0);transform-origin:bottom left}}\u0040keyframes slideInFromBottom{0\u0025{opacity:.1;transform:translateY(100\u0025)}100\u0025{opacity:1;transform:translateY(0)}}\u0040keyframes slideInFromBottomDelay{0\u0025{opacity:0;transform:translateY(100\u0025)}97\u0025{opacity:0;transform:translateY(100\u0025)}100\u0025{opacity:1;transform:translateY(0)}}","components":["css:fb.css.base","css:fb.css.dialog","css:fb.css.iframewidget","css:fb.css.customer_chat_plugin_iframe"]});__d("JSSDKRuntimeConfig",[],{"locale":"en_US","revision":"1016627401","rtl":false,"sdkab":null,"sdkns":"","sdkurl":"https:\/\/connect.facebook.net\/en_US\/sdk\/debug.js","scribeurl":"https:\/\/www.facebook.com\/platform\/scribe_endpoint.php\/"});__d("JSSDKXDConfig",[],{"XXdUrl":"\/x\/connect\/xd_arbiter\/?version=46","useCdn":true});__d("UrlMapConfig",[],{"www":"www.facebook.com","m":"m.facebook.com","business":"business.facebook.com","api":"api.facebook.com","api_read":"api-read.facebook.com","graph":"graph.facebook.com","an":"an.facebook.com","fbcdn":"static.xx.fbcdn.net","cdn":"staticxx.facebook.com","graph_facebook":"graph.facebook.com","graph_gaming":"graph.fb.gg","graph_instagram":"graph.instagram.com","www_instagram":"www.instagram.com","social_plugin":"socialplugin.facebook.net"});__d("JSSDKShadowCssConfig",[],{"css:fb.shadow.css.fb_login_button":".fb_login_button_container{align-content:center;align-items:center;border:0;color:#fff;display:flex;font-family:'Roboto', 'Freight Sans LF Pro', Helvetica, Arial, 'Lucida Grande', sans-serif;font-weight:bold;margin:auto}.fb-button-main-element{display:flex;flex-wrap:nowrap;overflow:hidden}.fb-iframe-overlay{display:flex}.fb-button-main-element:hover{cursor:pointer}.fb-button-main-element:focus{filter:brightness(80\u0025)}.fb_button_label_element{align-items:center;display:flex;font-weight:bold;justify-content:center}.fb_button_label{margin:auto;pointer-events:none}.fb_button_svg_logo{height:1.33em;margin-left:.4em;margin-right:.4em;padding:.065em}.login_fb_logo .f_logo_f{fill:transparent}.single_button_svg_logo{margin-bottom:.08em}"});                                                                                                                                 __d("DOMWrapper",[],(function $module_DOMWrapper(global,require,requireDynamic,requireLazy,module,exports){
 
 
 
@@ -13343,8 +13343,8 @@ typeof n==='number'?n:parseInt(n,10));};
 var view=importNamespace("sdk.DOM").getViewportInfo();
 var width=parseNumber(dialog.offsetWidth);
 var height=parseNumber(dialog.offsetHeight);
-var left=(_view$scrollLeft=
-view.scrollLeft)!=null?_view$scrollLeft:0+((_view$width=view.width)!=null?_view$width:MAX_WIDTH_DESKTOP-width)/2;
+var left=
+((_view$scrollLeft=view.scrollLeft)!=null?_view$scrollLeft:0)+((_view$width=view.width)!=null?_view$width:MAX_WIDTH_DESKTOP-width)/2;
 
 
 
@@ -20471,854 +20471,6 @@ params,{event_name:event_name,loading_time:loading_time}),
 function CORSRequest_execute_$3(){return null;});
 
 }exports.preLogging=preLogging;}),98);
-                                                                                                                                 __d("LiveChatPluginConstants",["$InternalEnum"],function $module_LiveChatPluginConstants(global,require,requireDynamic,requireLazy,module,exports){
-
-
-
-
-
-'use strict';
-
-var ARBITER_PREFIX='LiveChatEvent/';
-
-
-var MQTT='mqtt';var
-
-
-
-MQTTGatewayConnectionState=require("$InternalEnum")({
-CONNECTED:'Connected',
-CONNECTING:'Connecting',
-DISCONNECTED:'Disconnected'});
-
-
-var LOGIN_CHECK_INTERVAL=250;
-
-var CLOSE_TIMESTAMPS=ARBITER_PREFIX+'close_timestamps';
-var RESET_BADGING=ARBITER_PREFIX+'reset_badging';
-var STATE_UPDATE=ARBITER_PREFIX+'state';
-var SWITCH_ACCOUNT=ARBITER_PREFIX+'switch_account';
-var TYPING_UPDATE=ARBITER_PREFIX+'typing';
-var UNREAD_COUNT_UPDATE=ARBITER_PREFIX+'unread_count';
-var UPDATE_MESSAGE_LIST=ARBITER_PREFIX+
-'update_message_list';
-var GUEST_MODE_CONNECT='platform/plugins/connect/guest';
-var GUEST_UPGRADE_SUCCESS=ARBITER_PREFIX+
-'guest_upgrade_success';
-var GUEST_UPGRADE_SUCCESS_INCOGNITO=ARBITER_PREFIX+
-'guest_upgrade_success_incognito';
-var NAVIGATE_TO_WELCOME_PAGE=ARBITER_PREFIX+
-'navigate_to_welcome_page';
-var ACCESS_TOKEN_LOGIN='platform/plugins/connect/access_token';
-var START_RE_ENGAGEMENT=ARBITER_PREFIX+
-'start_re_engagement';
-
-var PROMPT_FALLBACK_HEIGHT=124;
-var PROMPT_REDESIGN_FALLBACK_HEIGHT=187;
-var PROMPT_CONTAINER_PADDING_HEIGHT=24;
-var WELCOME_PAGE_GUEST_FALLBACK_HEIGHT=424;
-var WELCOME_PAGE_NO_GUEST_FALLBACK_HEIGHT=288;
-var WELCOME_PAGE_GUEST_FALLBACK_HEIGHT_WITH_COMPACT=313;
-var WELCOME_PAGE_NO_GUEST_FALLBACK_HEIGHT_WITH_COMPACT=219;
-var WELCOME_PAGE_ATTRIBUTION_OFFEST_HEIGHT=40;
-var WELCOME_PAGE_ATTRIBUTION_OFFSET_HEIGHT_WITH_COMPACT=36;
-var MAIN_IFRAME_PADDING_HEIGHT=24;
-var MAIN_IFRAME_PADDING_HEIGHT_WITH_COMPACT=18;
-var THREAD_PAGE_HEIGHT=708;
-var THREAD_PAGE_HEIGHT_COMPACT=540;
-var RE_ENGAGEMENT_COLLAPSED_DIALOG_HEIGHT=244;
-var RE_ENGAGEMENT_COLLAPSED_DIALOG_HEIGHT_COMPACT=202;
-var RE_ENGAGEMENT_EXPANDED_DIALOG_HEIGHT=509;
-var RE_ENGAGEMENT_EXPANDED_DIALOG_HEIGHT_COMPACT=430;
-var GREETING_TEXT_BOTTOM_SPACING_OFFEST=6;
-
-
-var LOGGED_IN_CHAT_MODE=0;
-var GUEST_CHAT_MODE=1;
-var INVALID_CHAT_MODE=-1;
-var MESSENGING_PLUGIN='messaging_plugin';
-var GUEST_SESSION_STORAGE_VALIDITY_MS=86340000;
-var GUEST_SEND_BUTTON_COLOR_EMPTY_INPUT='#8A8D91';
-var LIVE_CHAT_ENTRYPOINT_ATTRIBUTION_TAG=
-'entrypoint:customer_chat_plugin';
-
-var ITP_CONSISTENCY_UNKNOWN_LOGGED_OUT=0;
-var ITP_CONSISTENCY_CONSISTENT_LOGGED_IN=1;
-var ITP_CONSISTENCY_INCONSISTENT=2;
-var ITP_CONSISTENCY_CONSISTENT_NO_ITP=3;
-
-
-var NEW_MESSAGE_UPDATE='new_message_update';
-var INITIAL_FETCH='initial_fetch';
-
-
-var PLUGIN_FADE_DELAY=5000;
-
-var HELP_DEX_LINK=
-'https://www.facebook.com/business/help/1661027437357021';exports.MQTT=MQTT;exports.MQTTGatewayConnectionState=MQTTGatewayConnectionState;exports.LOGIN_CHECK_INTERVAL=LOGIN_CHECK_INTERVAL;exports.CLOSE_TIMESTAMPS=CLOSE_TIMESTAMPS;exports.RESET_BADGING=RESET_BADGING;exports.STATE_UPDATE=STATE_UPDATE;exports.SWITCH_ACCOUNT=SWITCH_ACCOUNT;exports.TYPING_UPDATE=TYPING_UPDATE;exports.UNREAD_COUNT_UPDATE=UNREAD_COUNT_UPDATE;exports.UPDATE_MESSAGE_LIST=UPDATE_MESSAGE_LIST;exports.GUEST_MODE_CONNECT=GUEST_MODE_CONNECT;exports.GUEST_UPGRADE_SUCCESS=GUEST_UPGRADE_SUCCESS;exports.GUEST_UPGRADE_SUCCESS_INCOGNITO=GUEST_UPGRADE_SUCCESS_INCOGNITO;exports.NAVIGATE_TO_WELCOME_PAGE=NAVIGATE_TO_WELCOME_PAGE;exports.ACCESS_TOKEN_LOGIN=ACCESS_TOKEN_LOGIN;exports.START_RE_ENGAGEMENT=START_RE_ENGAGEMENT;exports.PROMPT_FALLBACK_HEIGHT=PROMPT_FALLBACK_HEIGHT;exports.PROMPT_REDESIGN_FALLBACK_HEIGHT=PROMPT_REDESIGN_FALLBACK_HEIGHT;exports.PROMPT_CONTAINER_PADDING_HEIGHT=PROMPT_CONTAINER_PADDING_HEIGHT;exports.WELCOME_PAGE_GUEST_FALLBACK_HEIGHT=WELCOME_PAGE_GUEST_FALLBACK_HEIGHT;exports.WELCOME_PAGE_NO_GUEST_FALLBACK_HEIGHT=WELCOME_PAGE_NO_GUEST_FALLBACK_HEIGHT;exports.WELCOME_PAGE_GUEST_FALLBACK_HEIGHT_WITH_COMPACT=WELCOME_PAGE_GUEST_FALLBACK_HEIGHT_WITH_COMPACT;exports.WELCOME_PAGE_NO_GUEST_FALLBACK_HEIGHT_WITH_COMPACT=WELCOME_PAGE_NO_GUEST_FALLBACK_HEIGHT_WITH_COMPACT;exports.WELCOME_PAGE_ATTRIBUTION_OFFEST_HEIGHT=WELCOME_PAGE_ATTRIBUTION_OFFEST_HEIGHT;exports.WELCOME_PAGE_ATTRIBUTION_OFFSET_HEIGHT_WITH_COMPACT=WELCOME_PAGE_ATTRIBUTION_OFFSET_HEIGHT_WITH_COMPACT;exports.MAIN_IFRAME_PADDING_HEIGHT=MAIN_IFRAME_PADDING_HEIGHT;exports.MAIN_IFRAME_PADDING_HEIGHT_WITH_COMPACT=MAIN_IFRAME_PADDING_HEIGHT_WITH_COMPACT;exports.THREAD_PAGE_HEIGHT=THREAD_PAGE_HEIGHT;exports.THREAD_PAGE_HEIGHT_COMPACT=THREAD_PAGE_HEIGHT_COMPACT;exports.RE_ENGAGEMENT_COLLAPSED_DIALOG_HEIGHT=RE_ENGAGEMENT_COLLAPSED_DIALOG_HEIGHT;exports.RE_ENGAGEMENT_COLLAPSED_DIALOG_HEIGHT_COMPACT=RE_ENGAGEMENT_COLLAPSED_DIALOG_HEIGHT_COMPACT;exports.RE_ENGAGEMENT_EXPANDED_DIALOG_HEIGHT=RE_ENGAGEMENT_EXPANDED_DIALOG_HEIGHT;exports.RE_ENGAGEMENT_EXPANDED_DIALOG_HEIGHT_COMPACT=RE_ENGAGEMENT_EXPANDED_DIALOG_HEIGHT_COMPACT;exports.GREETING_TEXT_BOTTOM_SPACING_OFFEST=GREETING_TEXT_BOTTOM_SPACING_OFFEST;exports.LOGGED_IN_CHAT_MODE=LOGGED_IN_CHAT_MODE;exports.GUEST_CHAT_MODE=GUEST_CHAT_MODE;exports.INVALID_CHAT_MODE=INVALID_CHAT_MODE;exports.MESSENGING_PLUGIN=MESSENGING_PLUGIN;exports.GUEST_SESSION_STORAGE_VALIDITY_MS=GUEST_SESSION_STORAGE_VALIDITY_MS;exports.GUEST_SEND_BUTTON_COLOR_EMPTY_INPUT=GUEST_SEND_BUTTON_COLOR_EMPTY_INPUT;exports.LIVE_CHAT_ENTRYPOINT_ATTRIBUTION_TAG=LIVE_CHAT_ENTRYPOINT_ATTRIBUTION_TAG;exports.ITP_CONSISTENCY_UNKNOWN_LOGGED_OUT=ITP_CONSISTENCY_UNKNOWN_LOGGED_OUT;exports.ITP_CONSISTENCY_CONSISTENT_LOGGED_IN=ITP_CONSISTENCY_CONSISTENT_LOGGED_IN;exports.ITP_CONSISTENCY_INCONSISTENT=ITP_CONSISTENCY_INCONSISTENT;exports.ITP_CONSISTENCY_CONSISTENT_NO_ITP=ITP_CONSISTENCY_CONSISTENT_NO_ITP;exports.NEW_MESSAGE_UPDATE=NEW_MESSAGE_UPDATE;exports.INITIAL_FETCH=INITIAL_FETCH;exports.PLUGIN_FADE_DELAY=PLUGIN_FADE_DELAY;exports.HELP_DEX_LINK=HELP_DEX_LINK;},66);
-                                                                                                                                 __d("ChatPluginStyleUtils",["LiveChatPluginConstants"],function $module_ChatPluginStyleUtils(global,require,importDefault,importNamespace,requireLazy,module,exports){
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-var LABELED_ENTRY_POINT_STANDARD_HEIGHT=44;
-var LABELED_ENTRY_POINT_COMPACT_HEIGHT=36;
-var LABELED_ENTRY_POINT_STANDARD_FONT_SIZE=17;
-var LABELED_ENTRY_POINT_COMPACT_FONT_SIZE=15;
-var LABELED_ENTRY_POINT_STANDARD_LINE_HEIGHT=22;
-var LABELED_ENTRY_POINT_COMPACT_LINE_HEIGHT=20;
-var LABELED_ENTRY_POINT_STANDARD_ICON_MARGIN_RIGHT=6;
-var LABELED_ENTRY_POINT_COMPACT_ICON_MARGIN_RIGHT=4;
-var LABELED_ENTRY_POINT_STANDARD_PADDING_HORIZONTAL=16;
-var LABELED_ENTRY_POINT_COMPACT_PADDING_HORIZONTAL=14;
-var ICON_ENTRY_POINT_STANDARD_HEIGHT=60;
-var ICON_ENTRY_POINT_COMPACT_HEIGHT=44;
-var LABELED_ONLY_ENTRY_POINT_STANDARD_WIDTH_SHORT=70;
-var LABELED_ONLY_ENTRY_POINT_STANDARD_WIDTH_LONG=86;
-var LABELED_ONLY_ENTRY_POINT_COMPACT_WIDTH_SHORT=63;
-var LABELED_ONLY_ENTRY_POINT_COMPACT_WIDTH_LONG=76;
-var LABELED_WITH_ICON_ENTRY_POINT_STANDARD_WIDTH_SHORT=99;
-var LABELED_WITH_ICON_ENTRY_POINT_STANDARD_WIDTH_LONG=114;
-var LABELED_WITH_ICON_ENTRY_POINT_COMPACT_WIDTH_SHORT=85;
-var LABELED_WITH_ICON_ENTRY_POINT_COMPACT_WIDTH_LONG=98;
-var ENTRY_POINT_MARGIN=12;
-
-function getMobileStyleText(){
-
-
-var mobilePromptWidth=screen.width;
-var widthStyleStr='width: '+mobilePromptWidth+'px;';
-
-return(
-'padding: 0; position: fixed; z-index: 2147483646;box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.15);border-radius: 16px;bottom: 24px; top: auto; right:0;'+
-widthStyleStr);
-
-}
-
-function positionElementAtWindowFooter(element){
-if(element instanceof HTMLElement){
-element.style.marginTop=window.innerHeight-element.clientHeight+'px';
-}
-}
-
-function getEntryPointStyle(
-alignment,
-bottomSpacing,
-sideSpacing,
-isLoadedByFacade,
-shouldIconDelay,
-entryPointLabel,
-entryPointSize)
-{
-
-
-var baseStyle=getEntryPointBaseStyle(
-bottomSpacing,
-isLoadedByFacade,
-shouldIconDelay);
-
-var iconStyle=getEntryPointIconStyle(entryPointLabel,entryPointSize);
-var alignmentStyle=getEntryPointAlignmentStyle(alignment,sideSpacing);
-var style=babelHelpers["extends"]({},
-baseStyle,
-iconStyle,
-alignmentStyle);
-
-
-return Object.fromEntries(ES("Object","entries",false,style).sort());
-}
-
-function getIconStyleText(
-alignment,
-bottomSpacing,
-sideSpacing,
-isLoadedByFacade,
-shouldIconDelay,
-label,
-entryPointSize)
-{
-var style=getEntryPointStyle(
-alignment,
-bottomSpacing,
-sideSpacing,
-isLoadedByFacade,
-shouldIconDelay,
-label,
-entryPointSize);
-
-return ES("JSON","stringify",false,style);
-}
-
-function getUnreadCountStyleText(
-alignment,
-bottomSpacing,
-sideSpacing,
-entryPointLabel,
-entryPointSize)
-{
-
-
-
-var totalSpacingSpacing=
-sideSpacing+(alignment=="right"?-2:43);
-var totalBottomSpacing=
-bottomSpacing+ICON_ENTRY_POINT_STANDARD_HEIGHT-16;
-totalBottomSpacing=bottomSpacing-16;
-if(entryPointLabel==="none"){
-if(entryPointSize==="compact"){
-totalBottomSpacing+=ICON_ENTRY_POINT_COMPACT_HEIGHT;
-}else{
-totalBottomSpacing+=ICON_ENTRY_POINT_STANDARD_HEIGHT;
-}
-}else{
-if(entryPointSize==="compact"){
-totalBottomSpacing+=LABELED_ENTRY_POINT_COMPACT_HEIGHT;
-}else{
-totalBottomSpacing+=LABELED_ENTRY_POINT_STANDARD_HEIGHT;
-}
-}
-
-var styleTextBase={
-bottom:totalBottomSpacing.toString()+'px',
-position:'fixed',
-width:'20px',
-height:'24px',
-zIndex:2147483645,
-borderRadius:'4pt',
-background:'none'};
-
-var styleText={};
-switch(alignment){
-case"right":
-styleText=babelHelpers["extends"]({},
-styleTextBase,{
-right:totalSpacingSpacing+"px"});
-
-break;
-case"left":
-styleText=babelHelpers["extends"]({},
-styleTextBase,{
-left:totalSpacingSpacing+"px"});
-
-break;}
-
-var sortedStyle=Object.fromEntries(ES("Object","entries",false,styleText).sort());
-return ES("JSON","stringify",false,sortedStyle);
-}
-
-function getAvailabilityStatusStyleText(
-alignment,
-bottomSpacing,
-sideSpacing,
-entryPointLabel,
-entryPointIconEnum,
-entryPointSize,
-isLoadedByFacade,
-shouldAddAnimation)
-{
-var totalSpacingSpacing=sideSpacing;
-var totalBottomSpacing=bottomSpacing-2.5;
-
-if(alignment==="left"){
-totalSpacingSpacing=sideSpacing-15;
-if(entryPointLabel==="none"){
-if(entryPointSize==="compact"){
-totalSpacingSpacing+=ICON_ENTRY_POINT_COMPACT_HEIGHT;
-}else{
-totalSpacingSpacing+=ICON_ENTRY_POINT_STANDARD_HEIGHT;
-}
-}else{
-
-if(
-entryPointIconEnum==="none")
-{
-
-if(
-entryPointLabel==="ask_us")
-{
-if(entryPointSize==="compact"){
-totalSpacingSpacing+=LABELED_ONLY_ENTRY_POINT_COMPACT_WIDTH_LONG;
-}else{
-totalSpacingSpacing+=LABELED_ONLY_ENTRY_POINT_STANDARD_WIDTH_LONG;
-}
-}else{
-
-if(entryPointSize==="compact"){
-totalSpacingSpacing+=LABELED_ONLY_ENTRY_POINT_COMPACT_WIDTH_SHORT;
-}else{
-totalSpacingSpacing+=
-LABELED_ONLY_ENTRY_POINT_STANDARD_WIDTH_SHORT;
-}
-}
-}else{
-
-if(
-entryPointLabel==="ask_us")
-{
-if(entryPointSize==="compact"){
-totalSpacingSpacing+=
-LABELED_WITH_ICON_ENTRY_POINT_COMPACT_WIDTH_LONG;
-}else{
-totalSpacingSpacing+=
-LABELED_WITH_ICON_ENTRY_POINT_STANDARD_WIDTH_LONG;
-}
-}else{
-
-if(entryPointSize==="compact"){
-totalSpacingSpacing+=
-LABELED_WITH_ICON_ENTRY_POINT_COMPACT_WIDTH_SHORT;
-}else{
-totalSpacingSpacing+=
-LABELED_WITH_ICON_ENTRY_POINT_STANDARD_WIDTH_SHORT;
-}
-}
-}
-}
-}
-
-var styleTextBase={
-bottom:totalBottomSpacing.toString()+'px',
-position:'fixed',
-zIndex:2147483646,
-height:'15px',
-width:'15px',
-borderRadius:'50%'};
-
-var styleText={};
-switch(alignment){
-case"right":
-styleText=babelHelpers["extends"]({},
-styleTextBase,{
-right:totalSpacingSpacing+"px"});
-
-break;
-case"left":
-styleText=babelHelpers["extends"]({},
-styleTextBase,{
-left:totalSpacingSpacing+"px"});
-
-break;}
-
-if(isLoadedByFacade===false){
-styleText=babelHelpers["extends"]({},
-styleText,{
-animation:
-shouldAddAnimation===true?
-'slideInFromBottomDelay 3.5s ease-out':
-null,
-backgroundColor:'#31CC46',
-border:'2.5px solid white',
-height:'10px',
-width:'10px'});
-
-}
-
-return Object.fromEntries(ES("Object","entries",false,styleText).sort());
-}
-
-function getMobileLandingStyleText(isDialogVisible){
-
-
-var styleText=
-'padding: 0; position: fixed; z-index: 2147483646;box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.15);border-radius: 16px;bottom: 24px; top: auto; right:0; margin: 0 12px; width: calc(100% - 24px);';
-var heightStyle=
-isDialogVisible===true?' height: 60px;':' height: 0px;';
-styleText+=heightStyle;
-return styleText;
-}
-
-function getDesktopStyleText(
-alignment,
-bottomSpacing,
-sideSpacing,
-isDialogVisible,
-entryPointLabel,
-entryPointSize,
-windowSize)
-{
-var totalSideSpacing=sideSpacing-ENTRY_POINT_MARGIN;
-
-
-var entryPointHeight=ICON_ENTRY_POINT_STANDARD_HEIGHT;
-if(entryPointLabel==="none"){
-if(entryPointSize==="compact"){
-entryPointHeight=ICON_ENTRY_POINT_COMPACT_HEIGHT;
-}else{
-entryPointHeight=ICON_ENTRY_POINT_STANDARD_HEIGHT;
-}
-}else{
-if(entryPointSize==="compact"){
-entryPointHeight=LABELED_ENTRY_POINT_COMPACT_HEIGHT;
-}else{
-entryPointHeight=LABELED_ENTRY_POINT_STANDARD_HEIGHT;
-}
-}
-
-var bottomSpacingForDialog=entryPointHeight+bottomSpacing;
-var bottomSpacingString=
-' bottom: '+bottomSpacingForDialog.toString()+'px;';
-
-var styleTextBase=
-'padding: 0; position: fixed; z-index: 2147483646; border-radius: 16px; top: auto; background: none; minHeight: 300px;';
-var styleTextSizeStandard=' width: 399px;';
-var styleTextSizeCompact=' width: 324px;';
-var styleText=
-styleTextBase+(
-windowSize==="compact"?
-styleTextSizeCompact:
-styleTextSizeStandard)+
-bottomSpacingString;
-if(isDialogVisible){
-styleText+=
-' max-height: calc(100% - '+bottomSpacingForDialog.toString()+'px);';
-}else{
-styleText+=' max-height: 0;';
-}
-
-switch(alignment){
-case"right":
-styleText+=" right: "+(totalSideSpacing+4)+"px;";
-break;
-case"left":
-styleText+=" left: "+(totalSideSpacing-4)+"px;";
-break;}
-
-return styleText;
-}
-
-function getMobileFullScreenStyleText(
-isDialogVisible)
-{
-var styleText=
-'position: fixed; z-index: 2147483646; box-shadow: none; border-radius: 0; top: 0px; right: 0px; width: 100%;';
-var heightStyle=
-isDialogVisible===true?
-' height: 100%; max-height: 100%;':
-' max-height: 0px;';
-styleText+=heightStyle;
-return styleText;
-}
-
-
-function getDesktopGreetingBottomSpacingWithReEngagementDialog(
-isHidden,
-bottomSpacing,
-entryPointLabel,
-entryPointSize,
-isCompact)
-{
-var bottomSpacingValue=getDesktopGreetingBottomSpacing(
-bottomSpacing,
-entryPointLabel,
-entryPointSize);
-
-if(!isHidden){
-var collapsedDialogHeight=isCompact?
-importNamespace("LiveChatPluginConstants").RE_ENGAGEMENT_COLLAPSED_DIALOG_HEIGHT_COMPACT:
-importNamespace("LiveChatPluginConstants").RE_ENGAGEMENT_COLLAPSED_DIALOG_HEIGHT;
-var paddingHeight=isCompact?
-importNamespace("LiveChatPluginConstants").MAIN_IFRAME_PADDING_HEIGHT_WITH_COMPACT:
-importNamespace("LiveChatPluginConstants").MAIN_IFRAME_PADDING_HEIGHT;
-var totalHeight=collapsedDialogHeight+paddingHeight;
-bottomSpacingValue+=
-totalHeight-importNamespace("LiveChatPluginConstants").GREETING_TEXT_BOTTOM_SPACING_OFFEST;
-}
-return bottomSpacingValue;
-}
-
-function getDesktopGreetingBottomSpacing(
-bottomSpacing,
-entryPointLabel,
-entryPointSize)
-{
-var entryPointHeight=ENTRY_POINT_MARGIN;
-if(entryPointLabel==="none"){
-if(entryPointSize==="compact"){
-entryPointHeight+=ICON_ENTRY_POINT_COMPACT_HEIGHT;
-}else{
-entryPointHeight+=ICON_ENTRY_POINT_STANDARD_HEIGHT;
-}
-}else{
-if(entryPointSize==="compact"){
-entryPointHeight+=LABELED_ENTRY_POINT_COMPACT_HEIGHT;
-}else{
-entryPointHeight+=LABELED_ENTRY_POINT_STANDARD_HEIGHT;
-}
-}
-
-return entryPointHeight+bottomSpacing;
-}
-
-function getDesktopGreetingStyleText(
-alignment,
-bottomSpacing,
-sideSpacing,
-entryPointLabel,
-entryPointSize)
-{
-
-
-var totalSideSpacing=sideSpacing-ENTRY_POINT_MARGIN;
-var bottomSpacingValue=getDesktopGreetingBottomSpacing(
-bottomSpacing,
-entryPointLabel,
-entryPointSize);
-
-var styleTextBase={
-padding:0,
-position:'fixed',
-zIndex:2147483646,
-borderRadius:'16px',
-top:'auto',
-width:'247px',
-maxHeight:'calc(100% - 80px)',
-background:'none',
-height:'72px'};
-
-
-var styleText={};
-styleText=babelHelpers["extends"]({},
-styleTextBase,{
-bottom:bottomSpacingValue+"px"});
-
-switch(alignment){
-case"right":
-styleText=babelHelpers["extends"]({},
-styleText,{
-right:'6px',
-marginRight:totalSideSpacing+"px"});
-
-break;
-case"left":
-styleText=babelHelpers["extends"]({},
-styleText,{
-left:'2px',
-marginLeft:totalSideSpacing+"px"});
-
-break;}
-
-styleText=babelHelpers["extends"]({},styleText,{animation:'slideInFromBottomDelay 3s ease-out'});
-var sortedStyle=Object.fromEntries(ES("Object","entries",false,styleText).sort());
-return ES("JSON","stringify",false,sortedStyle);
-}
-
-function getDesktopWelcomeMessageStyleText(
-alignment,
-bottomSpacing,
-sideSpacing,
-shouldIconDelay,
-entryPointLabel,
-entryPointSize)
-{
-
-
-var totalSideSpacing=sideSpacing-ENTRY_POINT_MARGIN;
-var bottomSpacingValue=getDesktopGreetingBottomSpacing(
-bottomSpacing,
-entryPointLabel,
-entryPointSize);
-
-var bottomSpacingString=
-' bottom: '+bottomSpacingValue.toString()+'px;';
-var styleTextBase=
-'padding: 0; position: fixed; z-index: 2147483646;border-radius: 16px; top: auto; width: 247px; max-height: calc(100% - 80px); background: none;'+
-bottomSpacingString;
-var styleText=styleTextBase;
-switch(alignment){
-case"right":
-styleText+=" right: 6px; margin-right: "+totalSideSpacing+"px;";
-break;
-case"left":
-styleText+=" left: 2px; margin-left: "+totalSideSpacing+"px;";
-break;}
-
-styleText+=Boolean(shouldIconDelay)?
-' animation: slideInFromBottomDelay 6s ease-out;':
-' animation: slideInFromBottomDelay 3s ease-out;';
-return styleText;
-}
-
-function getMobileWelcomeMessageStyleText(
-height,
-alignment,
-bottomSpacing,
-shouldIconDelay,
-entryPointLabel,
-entryPointSize)
-{
-var iconHeight=
-entryPointSize==="compact"?
-ICON_ENTRY_POINT_COMPACT_HEIGHT:
-ICON_ENTRY_POINT_STANDARD_HEIGHT;
-
-
-
-
-var styleText=
-'position: fixed; z-index: 2147483646; box-shadow: none; border-radius: 18px 0px 18px 18px; right: 0px; width: calc(80% - 40px); bottom: 24px;';
-if(height!=null&&typeof bottomSpacing=='number'){
-styleText+=' height: '+height+'px;';
-
-var bottomSpacingValue=bottomSpacing;
-if(height<iconHeight){
-bottomSpacingValue=bottomSpacing+12;
-}
-styleText+=" bottom: "+bottomSpacingValue+"px;";
-}else{
-
-styleText+=' height: 60px;';
-}
-styleText+=
-alignment==="left"?
-' left: calc(84px + 5%);':
-' left: 5%;';
-
-if(
-entryPointLabel!=="none"&&
-typeof bottomSpacing==='number')
-{
-var labeledHeight=
-entryPointSize==="compact"?
-LABELED_ENTRY_POINT_COMPACT_HEIGHT:
-LABELED_ENTRY_POINT_STANDARD_HEIGHT;
-var _bottomSpacingValue=bottomSpacing+labeledHeight+12;
-styleText+=" bottom: "+_bottomSpacingValue+"px;";
-
-switch(alignment){
-case"right":
-styleText+=' right: 20px; left: auto;';
-break;
-case"left":
-styleText+=' left: 20px; right: auto;';
-break;}
-
-}
-
-return styleText;
-}
-
-function getMobileReengagementCollapsedDialogStyleText(
-alignment,
-bottomSpacing,
-shouldIconDelay,
-sideSpacing,
-entryPointSize)
-{
-var styleText=
-'position: fixed; z-index: 2147483646; box-shadow: none; border-radius: 18px 0px 18px 18px;width: 306px;bottom: 24px; right: 20px;';
-
-if(typeof bottomSpacing==='number'){
-var labeledHeight=
-entryPointSize==="compact"?
-LABELED_ENTRY_POINT_COMPACT_HEIGHT:
-LABELED_ENTRY_POINT_STANDARD_HEIGHT;
-var bottomSpacingValue=bottomSpacing+labeledHeight+12;
-styleText+=" bottom: "+bottomSpacingValue+"px;";
-}
-if(typeof sideSpacing==='number'){
-var totalSideSpacing=sideSpacing-ENTRY_POINT_MARGIN;
-switch(alignment){
-case"right":
-styleText+=" right: "+(totalSideSpacing+4)+"px; left:auto";
-break;
-case"left":
-styleText+=" left: "+(totalSideSpacing-4)+"px; right:auto";
-break;}
-
-}
-
-return styleText;
-}
-
-function getWelcomeMessageBubbleStyle(
-shouldShowLeftStyle,
-chatPluginInterface)
-{
-var bubbleBase={
-alignItems:'flex-start',
-background:'#FFFFFF',
-borderRadius:'18px',
-bottom:0,
-boxShadow:'0 4px 12px 0 rgba(0, 0, 0, 0.15)',
-display:'flex',
-flexDirection:'row',
-position:'absolute'};
-
-var bubbleLeft=babelHelpers["extends"]({},
-bubbleBase,{
-marginLeft:'12px',
-padding:'8px 0px 8px 8px',
-width:'90%'});
-
-var bubbleRight=babelHelpers["extends"]({},
-bubbleBase,{
-padding:'8px 0px 8px 12px',
-width:'93%'});
-
-var styleText=shouldShowLeftStyle?bubbleLeft:bubbleRight;
-if(chatPluginInterface==="desktop"){
-styleText=babelHelpers["extends"]({},styleText,{cursor:'pointer'});
-}
-
-return Object.fromEntries(ES("Object","entries",false,styleText).sort());
-}
-
-function getWelcomeMessageTextStyle(
-shouldShowLeftStyle,
-chatPluginInterface)
-{
-var bubbleTextBase={
-display:'inline-block',
-fontSize:'17px',
-lineHeight:'22px',
-textAlign:'left',
-width:'90%',
-wordWrap:'break-word'};
-
-var bubbleTextRight=babelHelpers["extends"]({},
-bubbleTextBase,{
-paddingRight:'18px'});
-
-if(chatPluginInterface==="mobile"){
-bubbleTextRight=babelHelpers["extends"]({},bubbleTextRight,{paddingLeft:'12px'});
-}
-var bubbleTextLeft=babelHelpers["extends"]({},
-bubbleTextBase,{
-paddingRight:'12px',
-paddingLeft:'12px'});
-
-var styleText=shouldShowLeftStyle?bubbleTextLeft:bubbleTextRight;
-
-return Object.fromEntries(ES("Object","entries",false,styleText).sort());
-}
-
-function getMinusButtonStyle(
-shouldShowLeftStyle,
-chatPluginInterface)
-{
-var minusButtonStyleBase={
-position:'absolute',
-top:'-2px',
-width:'38px'};
-
-if(chatPluginInterface==="desktop"){
-minusButtonStyleBase=babelHelpers["extends"]({},minusButtonStyleBase,{cursor:'pointer'});
-}
-var minusButtonStyleLeft=babelHelpers["extends"]({},minusButtonStyleBase,{left:'-4px'});
-var minusButtonStyleRight=babelHelpers["extends"]({},
-minusButtonStyleBase,{
-right:'-4px'});
-
-var styleText=shouldShowLeftStyle?
-minusButtonStyleLeft:
-minusButtonStyleRight;
-
-return Object.fromEntries(ES("Object","entries",false,styleText).sort());
-}
-
-function getMinusButtonVisibility(iconClicked){
-var styleText={
-visibility:iconClicked?'hidden':'visible'};
-
-
-return Object.fromEntries(ES("Object","entries",false,styleText).sort());
-}
-
-function getNoOutlineFocus(){
-var styleText={outline:'none'};
-
-return Object.fromEntries(ES("Object","entries",false,styleText).sort());
-}
-
-function getEntryPointBaseStyle(
-bottomSpacing,
-isLoadedByFacade,
-shouldIconDelay)
-{
-return{
-animation:getIconAnimation(isLoadedByFacade,shouldIconDelay),
-background:'none',
-bottom:bottomSpacing.toString()+'px',
-display:'block',
-margin:'0 12px 0 12px',
-overflow:'visible',
-padding:'0',
-position:'fixed',
-top:'auto',
-zIndex:2147483644};
-
-}
-
-function getEntryPointIconStyle(
-entryPointLabel,
-entryPointSize)
-{
-if(entryPointLabel!=="none"){
-var height=
-entryPointSize==="compact"?
-LABELED_ENTRY_POINT_COMPACT_HEIGHT:
-LABELED_ENTRY_POINT_STANDARD_HEIGHT;
-return{
-borderRadius:'60px',
-boxShadow:null,
-height:height+'px',
-width:'auto'};
-
-}else{
-var size=
-entryPointSize==="compact"?
-ICON_ENTRY_POINT_COMPACT_HEIGHT:
-ICON_ENTRY_POINT_STANDARD_HEIGHT;
-return{
-borderRadius:'60px',
-boxShadow:'0 4px 12px 0 rgba(0, 0, 0, 0.15)',
-height:size+'px',
-width:size+'px'};
-
-}
-}
-
-function getEntryPointAlignmentStyle(
-alignment,
-sideSpacing)
-{
-var totalSideSpacing=sideSpacing-ENTRY_POINT_MARGIN;
-switch(alignment){
-case"right":
-return{
-right:totalSideSpacing+"px"};
-
-case"left":
-return{
-left:totalSideSpacing+"px"};}
-
-
-}
-
-function getIconAnimation(
-isLoadedByFacade,
-shouldIconDelay)
-{
-if(Boolean(isLoadedByFacade)){
-return null;
-}
-if(Boolean(shouldIconDelay)){
-
-return'slideInFromBottomDelay 3s ease-out';
-}else{
-return'slideInFromBottom 0.3s ease-out';
-}
-}exports.LABELED_ENTRY_POINT_STANDARD_HEIGHT=LABELED_ENTRY_POINT_STANDARD_HEIGHT;exports.LABELED_ENTRY_POINT_COMPACT_HEIGHT=LABELED_ENTRY_POINT_COMPACT_HEIGHT;exports.LABELED_ENTRY_POINT_STANDARD_FONT_SIZE=LABELED_ENTRY_POINT_STANDARD_FONT_SIZE;exports.LABELED_ENTRY_POINT_COMPACT_FONT_SIZE=LABELED_ENTRY_POINT_COMPACT_FONT_SIZE;exports.LABELED_ENTRY_POINT_STANDARD_LINE_HEIGHT=LABELED_ENTRY_POINT_STANDARD_LINE_HEIGHT;exports.LABELED_ENTRY_POINT_COMPACT_LINE_HEIGHT=LABELED_ENTRY_POINT_COMPACT_LINE_HEIGHT;exports.LABELED_ENTRY_POINT_STANDARD_ICON_MARGIN_RIGHT=LABELED_ENTRY_POINT_STANDARD_ICON_MARGIN_RIGHT;exports.LABELED_ENTRY_POINT_COMPACT_ICON_MARGIN_RIGHT=LABELED_ENTRY_POINT_COMPACT_ICON_MARGIN_RIGHT;exports.LABELED_ENTRY_POINT_STANDARD_PADDING_HORIZONTAL=LABELED_ENTRY_POINT_STANDARD_PADDING_HORIZONTAL;exports.LABELED_ENTRY_POINT_COMPACT_PADDING_HORIZONTAL=LABELED_ENTRY_POINT_COMPACT_PADDING_HORIZONTAL;exports.ICON_ENTRY_POINT_STANDARD_HEIGHT=ICON_ENTRY_POINT_STANDARD_HEIGHT;exports.ICON_ENTRY_POINT_COMPACT_HEIGHT=ICON_ENTRY_POINT_COMPACT_HEIGHT;exports.LABELED_ONLY_ENTRY_POINT_STANDARD_WIDTH_SHORT=LABELED_ONLY_ENTRY_POINT_STANDARD_WIDTH_SHORT;exports.LABELED_ONLY_ENTRY_POINT_STANDARD_WIDTH_LONG=LABELED_ONLY_ENTRY_POINT_STANDARD_WIDTH_LONG;exports.LABELED_ONLY_ENTRY_POINT_COMPACT_WIDTH_SHORT=LABELED_ONLY_ENTRY_POINT_COMPACT_WIDTH_SHORT;exports.LABELED_ONLY_ENTRY_POINT_COMPACT_WIDTH_LONG=LABELED_ONLY_ENTRY_POINT_COMPACT_WIDTH_LONG;exports.LABELED_WITH_ICON_ENTRY_POINT_STANDARD_WIDTH_SHORT=LABELED_WITH_ICON_ENTRY_POINT_STANDARD_WIDTH_SHORT;exports.LABELED_WITH_ICON_ENTRY_POINT_STANDARD_WIDTH_LONG=LABELED_WITH_ICON_ENTRY_POINT_STANDARD_WIDTH_LONG;exports.LABELED_WITH_ICON_ENTRY_POINT_COMPACT_WIDTH_SHORT=LABELED_WITH_ICON_ENTRY_POINT_COMPACT_WIDTH_SHORT;exports.LABELED_WITH_ICON_ENTRY_POINT_COMPACT_WIDTH_LONG=LABELED_WITH_ICON_ENTRY_POINT_COMPACT_WIDTH_LONG;exports.getMobileStyleText=getMobileStyleText;exports.positionElementAtWindowFooter=positionElementAtWindowFooter;exports.getEntryPointStyle=getEntryPointStyle;exports.getIconStyleText=getIconStyleText;exports.getUnreadCountStyleText=getUnreadCountStyleText;exports.getAvailabilityStatusStyleText=getAvailabilityStatusStyleText;exports.getMobileLandingStyleText=getMobileLandingStyleText;exports.getDesktopStyleText=getDesktopStyleText;exports.getMobileFullScreenStyleText=getMobileFullScreenStyleText;exports.getDesktopGreetingBottomSpacingWithReEngagementDialog=getDesktopGreetingBottomSpacingWithReEngagementDialog;exports.getDesktopGreetingBottomSpacing=getDesktopGreetingBottomSpacing;exports.getDesktopGreetingStyleText=getDesktopGreetingStyleText;exports.getDesktopWelcomeMessageStyleText=getDesktopWelcomeMessageStyleText;exports.getMobileWelcomeMessageStyleText=getMobileWelcomeMessageStyleText;exports.getMobileReengagementCollapsedDialogStyleText=getMobileReengagementCollapsedDialogStyleText;exports.getWelcomeMessageBubbleStyle=getWelcomeMessageBubbleStyle;exports.getWelcomeMessageTextStyle=getWelcomeMessageTextStyle;exports.getMinusButtonStyle=getMinusButtonStyle;exports.getMinusButtonVisibility=getMinusButtonVisibility;exports.getNoOutlineFocus=getNoOutlineFocus;},98);
                                                                                                                     __d("DOMPlugin",["JSSDKShadowCssConfig","Log","QueryString","sdk.DOM","sdk.Observable","sdk.PluginUtils","sdk.Runtime","sdk.XD","sdk.feature"],function $module_DOMPlugin(global,require,importDefault,importNamespace,requireLazy,module,exports){var
 
 
@@ -21881,23 +21033,9 @@ var v=c==='x'?r:r&0x3|0x8;
 return v.toString(16);
 });
 }exports["default"]=uuidv4;}),66);
-                                                                                                                                       __d("sdk.XFBML.ChatDOM",["$InternalEnum","CORSRequest","ChatPluginEntryPointIconEnum","ChatPluginEntryPointLabelEnum","ChatPluginEntryPointSizeEnum","ChatPluginSDKPreLoggingUtils","ChatPluginStyleUtils","DOMPlugin","Log","UrlMap","getJSEnumSafe","performanceAbsoluteNow","sdk.Content","sdk.DOM","sdk.IdleCallback","sdk.XFBML.CustomerChatNew","sdk.fbt","sdk.feature","uuidv4"],function $module_sdk_XFBML_ChatDOM(global,require,importDefault,importNamespace,requireLazy,module,exports){
+                                                                                                                                       __d("sdk.XFBML.ChatDOM",["$InternalEnum","CORSRequest","ChatPluginEntryPointIconEnum","ChatPluginEntryPointLabelEnum","ChatPluginEntryPointSizeEnum","ChatPluginSDKPreLoggingUtils","DOMPlugin","Log","UrlMap","getJSEnumSafe","performanceAbsoluteNow","sdk.Content","sdk.DOM","sdk.IdleCallback","sdk.XFBML.CustomerChatNew","sdk.feature","uuidv4"],function $module_sdk_XFBML_ChatDOM(global,require,importDefault,importNamespace,requireLazy,module,exports){
 
 'use strict';var _importDefault_closure_performanceAbsoluteNow;var
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -22064,7 +21202,6 @@ _this.$ChatDOMFacade$p_isPageActive=data.away_hours_enabled&&!data.is_page_away;
 if(_this.$ChatDOMFacade$p_entryPointLabel==="none"){
 var wrapperElement=document.createElement('div');
 importNamespace("sdk.DOM").dangerouslySetInnerHtml(wrapperElement,data.entry_point_icon_svg);
-
 var iconSVG=wrapperElement==null?void 0:wrapperElement.outerHTML;
 importNamespace("sdk.DOM").dangerouslySetInnerHtml(_this.$ChatDOMFacade$p_container,iconSVG);
 }else{
@@ -22075,35 +21212,11 @@ _this.$ChatDOMFacade$p_getLabelEntryPointHTML(_iconSVG));
 
 }
 
-var css=importNamespace("ChatPluginStyleUtils").getEntryPointStyle(
-data.alignment,
-data.bottom_spacing,
-data.side_spacing,
-false,
-true,
-data.entry_point_label,
-_this.$ChatDOMFacade$p_entryPointSize);
-
-
-ES("Object","assign",false,_this.$ChatDOMFacade$p_container.style,css);
 _this.$ChatDOMFacade$p_container.style.backgroundColor=themeColor;
 
 
 if(_this.$ChatDOMFacade$p_isPageActive){
-var availabilityStatusCss=importNamespace("ChatPluginStyleUtils").getAvailabilityStatusStyleText(
-data.alignment,
-data.bottom_spacing,
-data.side_spacing,
-data.entry_point_label,
-data.entry_point_icon_enum,
-_this.$ChatDOMFacade$p_entryPointSize,
-false,
-true);
-
 var availabilityStatusWrapperElement=document.createElement('div');
-ES("Object","assign",false,
-availabilityStatusWrapperElement.style,
-availabilityStatusCss);
 
 _this.$ChatDOMFacade$p_container.append(availabilityStatusWrapperElement);
 }
@@ -22120,23 +21233,6 @@ _this.$ChatDOMFacade$p_loadFullPlugin(true,true);
 });
 
 return this.$ChatDOMFacade$p_container;
-};_proto.$ChatDOMFacade$p_getEntryPointLabelText=function $ChatDOMFacade$p_getEntryPointLabelText(
-
-label){
-switch(label){
-case"chat":
-return importDefault("sdk.fbt")._("Chat");
-case"help":
-return importDefault("sdk.fbt")._("Help");
-case"ask_us":
-return importDefault("sdk.fbt")._("Ask us");
-
-
-
-
-case"none":
-return'';}
-
 };_proto.$ChatDOMFacade$p_hideFacade=function $ChatDOMFacade$p_hideFacade()
 
 {var _this$element$parentN;
@@ -22165,34 +21261,16 @@ var _spinnerSize=
 this.$ChatDOMFacade$p_entryPointSize==="compact"?20:24;
 var _spinnerSVG=this.$ChatDOMFacade$p_getSpinnerSVG(_spinnerSize);
 if(this.$ChatDOMFacade$p_entryPointIconEnum==="none"){
-var marginRight=
-this.$ChatDOMFacade$p_entryPointSize==="compact"?importNamespace("ChatPluginStyleUtils").LABELED_ENTRY_POINT_COMPACT_ICON_MARGIN_RIGHT:importNamespace("ChatPluginStyleUtils").LABELED_ENTRY_POINT_STANDARD_ICON_MARGIN_RIGHT;
-
-
+var marginRight=100;
 importNamespace("sdk.DOM").dangerouslySetInnerHtml(
 this.$ChatDOMFacade$p_container.children[0],
 this.$ChatDOMFacade$p_getLabelOnlyEntryPointSpinner(marginRight,_spinnerSVG)+
-
 this.$ChatDOMFacade$p_container.children[0].innerHTML);
 
 
 if(this.$ChatDOMFacade$p_isPageActive){
-var availabilityStatusCss=importNamespace("ChatPluginStyleUtils").getAvailabilityStatusStyleText(
-this.$ChatDOMFacade$p_alignment,
-this.$ChatDOMFacade$p_bottomSpacing,
-this.$ChatDOMFacade$p_sideSpacing,
-this.$ChatDOMFacade$p_entryPointLabel,
-"chat_round_icon",
-this.$ChatDOMFacade$p_entryPointSize,
-false,
-false);
-
 var availabilityStatusWrapperElement=
 document.createElement('div');
-ES("Object","assign",false,
-availabilityStatusWrapperElement.style,
-availabilityStatusCss);
-
 importNamespace("sdk.DOM").remove(this.$ChatDOMFacade$p_container.children[1]);
 this.$ChatDOMFacade$p_container.append(availabilityStatusWrapperElement);
 }
@@ -22207,50 +21285,27 @@ this.$ChatDOMFacade$p_spinnerShown=true;
 };_proto.$ChatDOMFacade$p_getLabelEntryPointHTML=function $ChatDOMFacade$p_getLabelEntryPointHTML(
 
 iconSVG){
-var containerHeight=
-this.$ChatDOMFacade$p_entryPointSize==="compact"?importNamespace("ChatPluginStyleUtils").LABELED_ENTRY_POINT_COMPACT_HEIGHT:importNamespace("ChatPluginStyleUtils").LABELED_ENTRY_POINT_STANDARD_HEIGHT;
-
-
-var fontSize=
-this.$ChatDOMFacade$p_entryPointSize==="compact"?importNamespace("ChatPluginStyleUtils").LABELED_ENTRY_POINT_COMPACT_FONT_SIZE:importNamespace("ChatPluginStyleUtils").LABELED_ENTRY_POINT_STANDARD_FONT_SIZE;
-
-
-var lineHeight=
-this.$ChatDOMFacade$p_entryPointSize==="compact"?importNamespace("ChatPluginStyleUtils").LABELED_ENTRY_POINT_COMPACT_LINE_HEIGHT:importNamespace("ChatPluginStyleUtils").LABELED_ENTRY_POINT_STANDARD_LINE_HEIGHT;
-
-
-var marginRight=
-this.$ChatDOMFacade$p_entryPointSize==="compact"?importNamespace("ChatPluginStyleUtils").LABELED_ENTRY_POINT_COMPACT_ICON_MARGIN_RIGHT:importNamespace("ChatPluginStyleUtils").LABELED_ENTRY_POINT_STANDARD_ICON_MARGIN_RIGHT;
-
-
-var paddingHorizontal=
-this.$ChatDOMFacade$p_entryPointSize==="compact"?importNamespace("ChatPluginStyleUtils").LABELED_ENTRY_POINT_COMPACT_PADDING_HORIZONTAL:importNamespace("ChatPluginStyleUtils").LABELED_ENTRY_POINT_STANDARD_PADDING_HORIZONTAL;
+return"\n      <div class=\"label-container\" style=\"\n        height: $10px;\n        padding: 0 $10px\n      \">\n        "+(
 
 
 
-return"\n      <div class=\"label-container\" style=\"\n        height: "+
-
-containerHeight+"px;\n        padding: 0 "+
-paddingHorizontal+"px\n      \">\n        "+(
 
 
-iconSVG&&"\n            <div class=\"label-container-icon\" style=\"\n              margin-right: "+
+iconSVG&&"\n            <div class=\"label-container-icon\" style=\"\n              margin-right: $10px;\n            \">\n              "+
 
 
-marginRight+"px;\n            \">\n              "+
 
-iconSVG+"\n            </div>\n          ")+"\n        <div\n          class=\"label-container-label\"\n          style=\"\n            font-size: "+
+
+iconSVG+"\n            </div>\n          ")+"\n        <div\n          class=\"label-container-label\"\n          style=\"\n            font-size: $10px;\n            line-height: $10px;\n        \"></div>\n      </div>\n    ";
 
 
 
 
 
 
-fontSize+"px;\n            line-height: "+
-lineHeight+"px;\n        \">"+
-this.$ChatDOMFacade$p_getEntryPointLabelText(
-this.$ChatDOMFacade$p_entryPointLabel).
-toString()+"</div>\n      </div>\n    ";
+
+
+
 
 
 };_proto.$ChatDOMFacade$p_getLabelOnlyEntryPointSpinner=function $ChatDOMFacade$p_getLabelOnlyEntryPointSpinner(
@@ -22310,7 +21365,7 @@ _this2.$ChatDOMFacade$p_hideFacade();
 });
 this.$ChatDOMFacade$p_prepareShowDialog(showDialog);
 renderer.process();
-};return ChatDOMFacade;}(importNamespace("DOMPlugin").DOMPlugin);exports["default"]=ChatDOMFacade;},226);
+};return ChatDOMFacade;}(importNamespace("DOMPlugin").DOMPlugin);exports["default"]=ChatDOMFacade;},98);
                                                                                                                                __d("IframePluginClass",["Log","QueryString","UrlMap","guid","sdk.Auth.LoginStatus","sdk.AuthUtils","sdk.DOM","sdk.Event","sdk.Observable","sdk.PlatformVersioning","sdk.PluginUtils","sdk.Runtime","sdk.UA","sdk.URI","sdk.XD","sdk.createIframe"],function $module_IframePluginClass(global,require,importDefault,importNamespace,requireLazy,module,exports){var
 
 
@@ -22666,51 +21721,6 @@ this.iframe.style.width===this.iframeOptions.root.style.width&&
 this.iframe.style.height===this.iframeOptions.root.style.height;
 (same?importNamespace("sdk.DOM").removeCss:importNamespace("sdk.DOM").addCss)(this.iframe,'fbiframe_widget_lift');
 };return IframePluginClass;}(importNamespace("sdk.Observable").Observable);exports["default"]=IframePluginClass;},98);
-                                                                                                                                       __d("MPNExplicitUserInteractions",[],(function $module_MPNExplicitUserInteractions(global,require,requireDynamic,requireLazy,module,exports){
-
-
-
-
-
-'use strict';
-
-var USER_INTERACTION_TIMEOUT=3600000;
-
-function hasUserInteraction(euit){
-if(euit==null){
-return false;
-}
-return Date.now()<=euit+USER_INTERACTION_TIMEOUT;
-}exports.hasUserInteraction=hasUserInteraction;}),66);
-                                                                                                                                       __d("MPNLocalState",[],(function $module_MPNLocalState(global,require,requireDynamic,requireLazy,module,exports){
-
-
-
-
-
-'use strict';
-
-
-
-
-var MPNLocalStatePath={
-LANDING_BANNER:1,
-WELCOME_PAGE:2,
-ITP_CONTINUE:3,
-THREAD_VIEW:4,
-BUBBLE:5,
-REENGAGEMENT_COLLAPSED_VIEW:6,
-REENGAGEMENT_EXPANDED_VIEW:7};
-
-
-
-var MPNChatState={
-CHAT_NOT_STARTED:1,
-LOGGED_IN_CHAT_STARTED:2,
-GUEST_CHAT_STARTED:3};
-
-
-var LOCAL_STATE_KEY='__fb_chat_plugin';exports.MPNLocalStatePath=MPNLocalStatePath;exports.MPNChatState=MPNChatState;exports.LOCAL_STATE_KEY=LOCAL_STATE_KEY;}),66);
                                                                                                           __d("getFacebookOriginForTarget",["Log"],function $module_getFacebookOriginForTarget(global,require,importDefault,importNamespace,requireLazy,module,exports){
 
 
@@ -22767,33 +21777,6 @@ window.clearInterval(intervalId);
 }
 },200);
 }exports["default"]=getFacebookOriginForTarget;},98);
-                                                                                                                                       __d("MPNSingletonProvider",[],function $module_MPNSingletonProvider(global,require,requireDynamic,requireLazy,module,exports){
-
-
-
-
-
-'use strict';var
-
-MPNSingletonProvider=function(){
-
-
-
-function MPNSingletonProvider(createInstanceFn){
-this.$MPNSingletonProvider_instance=null;
-this.$MPNSingletonProvider_constructor=createInstanceFn;
-}var _proto=MPNSingletonProvider.prototype;_proto.
-
-get=function get(){
-if(this.$MPNSingletonProvider_instance==null){
-this.$MPNSingletonProvider_instance=this.$MPNSingletonProvider_constructor();
-}
-return this.$MPNSingletonProvider_instance;
-};_proto.
-
-clear=function clear(){
-this.$MPNSingletonProvider_instance=null;
-};return MPNSingletonProvider;}();exports["default"]=MPNSingletonProvider;},66);
                                                                                                           __d("sdk.DocumentTitle",[],(function $module_sdk_DocumentTitle(global,require,requireDynamic,requireLazy,module,exports){
 
 
@@ -22875,14 +21858,13 @@ temporaryTitle=null;
 }};
 
 }exports.get=get;exports.set=set;exports.blink=blink;}),66);
-                                                                                                                                       __d("sdk.cp.Constants",["MPNLocalState","UrlMap","sdk.Runtime"],(function $module_sdk_cp_Constants(global,require,importDefault,importNamespace,requireLazy,module,exports){
+                                                                                                                                       __d("sdk.cp.Constants",["UrlMap","sdk.Runtime"],(function $module_sdk_cp_Constants(global,require,importDefault,importNamespace,requireLazy,module,exports){
 
 
 
 
 
 'use strict';
-
 
 
 
@@ -22908,7 +21890,7 @@ welcomePage:'/welcome',
 bubble:'/bubble',
 itp:'/itpcontinue'},
 
-localStateKey:importNamespace("MPNLocalState").LOCAL_STATE_KEY,
+
 animationEvents:[
 'animationend',
 'mozAnimationEnd',
@@ -22918,7 +21900,7 @@ animationEvents:[
 
 blankFrameURL:blankIFrameURI,
 blankFrameNewDomainURL:blankIFrameNewDomainURI};exports["default"]=_default;}),98);
-                                                                                                                                       __d("sdk.cp.Actions",["DOMEventListener","MPNExplicitUserInteractions","MPNLocalState","MPNSingletonProvider","sdk.DOM","sdk.DocumentTitle","sdk.URI","sdk.WebStorage","sdk.cp.Constants"],function $module_sdk_cp_Actions(global,require,importDefault,importNamespace,requireLazy,module,exports){
+                                                                                                                                       __d("sdk.cp.Actions",["DOMEventListener","sdk.DOM","sdk.DocumentTitle","sdk.URI"],function $module_sdk_cp_Actions(global,require,importDefault,importNamespace,requireLazy,module,exports){
 
 
 
@@ -22944,11 +21926,6 @@ blankFrameNewDomainURL:blankIFrameNewDomainURI};exports["default"]=_default;}),9
 
 
 
-
-
-
-
-
 MPNSDKActions=function(){function MPNSDKActions(){}var _proto=MPNSDKActions.prototype;_proto.
 
 
@@ -22956,7 +21933,7 @@ MPNSDKActions=function(){function MPNSDKActions(){}var _proto=MPNSDKActions.prot
 reloadIframe=function reloadIframe(
 iframe,
 hasExplicitInteraction)
-{var _WebStorage$getLocalS;
+{
 if(iframe==null){
 return;
 }
@@ -22966,9 +21943,6 @@ var iframeSrcUri=new(importDefault("sdk.URI"))(iframe.src);
 
 
 var queryData=iframeSrcUri.getQueryData();
-queryData.local_state=(_WebStorage$getLocalS=importNamespace("sdk.WebStorage").getLocalStorage())==null?void 0:_WebStorage$getLocalS.getItem(
-importDefault("sdk.cp.Constants").localStateKey);
-
 queryData.request_time=Date.now();
 if(
 hasExplicitInteraction==='true'||
@@ -22982,23 +21956,6 @@ iframe.src=iframeSrcUri.valueOf();
 };_proto.
 
 getExplicitUserInteractionFlag=function getExplicitUserInteractionFlag(){
-var storage=importNamespace("sdk.WebStorage").getLocalStorage();
-var localState=null;
-if(storage!=null){
-try{
-localState=storage.getItem(importNamespace("MPNLocalState").LOCAL_STATE_KEY);
-}catch(_unused){
-return false;
-}
-}
-if(localState!=null){
-try{
-var stateObj=ES("JSON","parse",false,localState);
-return importNamespace("MPNExplicitUserInteractions").hasUserInteraction(stateObj==null?void 0:stateObj.euit);
-}catch(_unused2){
-return false;
-}
-}
 return false;
 };_proto.
 
@@ -23046,13 +22003,7 @@ if(this.$MPNSDKActions_titleBlinkToken!=null){
 this.$MPNSDKActions_titleBlinkToken.stop();
 this.$MPNSDKActions_titleBlinkToken=null;
 }
-};return MPNSDKActions;}();
-
-
-var _provider=new(importDefault("MPNSingletonProvider"))(function(){
-return new MPNSDKActions();
-});var _default=
-_provider.get();exports["default"]=_default;},98);
+};return MPNSDKActions;}();},34);
                                                                                                                                        __d("sdk.cp.Animation",["sdk.DOM","sdk.UA","sdk.cp.Constants"],function $module_sdk_cp_Animation(global,require,importDefault,importNamespace,requireLazy,module,exports){
 
 
@@ -23130,7 +22081,7 @@ bounceOutAnimationName='fb_customer_chat_bounce_out_v2';}
 }
 return bounceOutAnimationName;
 }exports.iframeBounceInAnimation=iframeBounceInAnimation;exports.iframeBounceOutAnimation=iframeBounceOutAnimation;},98);
-                                                                                                                                       __d("sdk.cp.Storage",["MPNSingletonProvider","sdk.WebStorage","sdk.cp.Constants"],function $module_sdk_cp_Storage(global,require,importDefault,importNamespace,requireLazy,module,exports){
+                                                                                                                                       __d("sdk.cp.Storage",["sdk.WebStorage"],(function $module_sdk_cp_Storage(global,require,importDefault,importNamespace,requireLazy,module,exports){
 
 
 
@@ -23142,66 +22093,20 @@ return bounceOutAnimationName;
 
 
 
-
-
 MPNSDKStorage=function(){function MPNSDKStorage(){}var _proto=MPNSDKStorage.prototype;_proto.
 setState=function setState(state){
 var storage=importNamespace("sdk.WebStorage").getLocalStorageForRead();
 if(!storage){
 return;
 }
-try{
-if(state==null){
-storage.removeItem(importDefault("sdk.cp.Constants").localStateKey);
-}else{
-var currState=storage.getItem(importDefault("sdk.cp.Constants").localStateKey);
-if(currState==null){
-storage.setItem(
-importDefault("sdk.cp.Constants").localStateKey,ES("JSON","stringify",false,ES("JSON","parse",false,
-state)));
-
-}else{
-var parsedCurrentState=ES("JSON","parse",false,currState);
-var parsedMessage=ES("JSON","parse",false,state);
-storage.setItem(
-importDefault("sdk.cp.Constants").localStateKey,ES("JSON","stringify",false,
-babelHelpers["extends"]({},
-parsedCurrentState,
-parsedMessage)));
-
-
-}
-}
-}catch(_unused){
-return;
-}
 };_proto.
 
 getStateJSON=function getStateJSON(){
-var storage=importNamespace("sdk.WebStorage").getLocalStorageForRead();
-if(!storage){
 return'{}';
-}
-var item=storage.getItem(importDefault("sdk.cp.Constants").localStateKey);
-if(item==null){
-return'{}';
-}
-
-return ES("JSON","stringify",false,ES("JSON","parse",false,item));
-};return MPNSDKStorage;}();
-
-
-var _provider=new(importDefault("MPNSingletonProvider"))(function(){
-return new MPNSDKStorage();
-});var _default=
-_provider.get();exports["default"]=_default;},98);
-                                                                                                                                                                     __d("sdk.XFBML.CustomerChatNew",["ChatPluginSDKPreLoggingUtils","DOMEventListener","IframePluginClass","Log","MPNExplicitUserInteractions","MPNLocalState","QueryString","UrlMap","getFacebookOriginForTarget","performanceAbsoluteNow","sdk.Content","sdk.DOM","sdk.DialogUtils","sdk.Event","sdk.UA","sdk.WebStorage","sdk.XD","sdk.XFBML.CustomerChatWrapper","sdk.cp.Actions","sdk.cp.Animation","sdk.cp.Constants","sdk.cp.Storage","sdk.createIframe"],function $module_sdk_XFBML_CustomerChatNew(global,require,importDefault,importNamespace,requireLazy,module,exports){
+};return MPNSDKStorage;}();}),34);
+                                                                                                                                                                     __d("sdk.XFBML.CustomerChatNew",["ChatPluginSDKPreLoggingUtils","DOMEventListener","IframePluginClass","QueryString","UrlMap","getFacebookOriginForTarget","performanceAbsoluteNow","sdk.Content","sdk.DOM","sdk.DialogUtils","sdk.Event","sdk.UA","sdk.WebStorage","sdk.XD","sdk.XFBML.CustomerChatWrapper","sdk.cp.Animation","sdk.cp.Constants","sdk.createIframe"],function $module_sdk_XFBML_CustomerChatNew(global,require,importDefault,importNamespace,requireLazy,module,exports){
 
 'use strict';var _importDefault_closure_performanceAbsoluteNow;var
-
-
-
-
 
 
 
@@ -23781,49 +22686,6 @@ _this=_IframePluginClass.call(this,elem,ns,tag,attr)||this;_this.$CustomerChat$p
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 show=function(
 shouldShowDialog)
 {if(shouldShowDialog===void 0){shouldShowDialog=true;}
@@ -23867,7 +22729,7 @@ method:'updateCustomerChat',
 params:ES("JSON","stringify",false,data||{})});
 
 _this.$CustomerChat$p_handleSDKCall('update');
-};importNamespace("sdk.DOM").addCss(elem,'fb_invisible_flow');importNamespace("sdk.DOM").remove(elem);importNamespace("sdk.Content").append(elem);_this.$CustomerChat$p_shouldUseNewDomain=Boolean(attr.should_use_new_domain);_this.$CustomerChat$p_updateDialogIframeOptions();importNamespace("sdk.Event").fire('customerchat.load');_this.$CustomerChat$p_setUpSubscriptions();importNamespace("ChatPluginSDKPreLoggingUtils").preLogging(_this.$CustomerChat$p_shouldUseNewDomain,"chat_plugin_sdk_dialog_iframe_create",_this.params,false);return _this;}var _proto=CustomerChat.prototype;_proto.$CustomerChat$p_updateDialogIframeOptions=function $CustomerChat$p_updateDialogIframeOptions(){var storage=importNamespace("sdk.WebStorage").getLocalStorage();var localState=null;if(storage!=null){try{localState=storage.getItem(importNamespace("MPNLocalState").LOCAL_STATE_KEY);}catch(_unused){importNamespace("Log").warn('Failed to access localStorage');}}if(localState!=null){ES("Object","assign",false,this.params,{local_state:localState});}if(localState!=null){try{var stateObj=ES("JSON","parse",false,localState);if(importNamespace("MPNExplicitUserInteractions").hasUserInteraction(stateObj==null?void 0:stateObj.euit)){ES("Object","assign",false,this.params,{has_explicit_interaction:1});}}catch(_unused2){importNamespace("Log").warn('Invalid local state');}}var requestTime=(_importDefault_closure_performanceAbsoluteNow||(_importDefault_closure_performanceAbsoluteNow=importDefault("performanceAbsoluteNow")))();ES("Object","assign",false,this.params,{request_time:requestTime});var url=this.$CustomerChat$p_shouldUseNewDomain?importNamespace("UrlMap").resolve('social_plugin')+'/'+this.tag+'.php?':importNamespace("UrlMap").resolve('www')+'/plugins/'+this.tag+'.php?';this.iframeOptions.url=url+importDefault("QueryString").encode(this.params);this.iframeOptions.title='';};_proto.$CustomerChat$p_setUpSubscriptions=function $CustomerChat$p_setUpSubscriptions(){var _this=this;var _importNamespace_sdkXFBMLCustomerChatWrapper;this.subscribe('render',function subscribe_$1(){importNamespace("ChatPluginSDKPreLoggingUtils").preLogging(_this.$CustomerChat$p_shouldUseNewDomain,"chat_plugin_sdk_dialog_iframe_load",_this.params);});this.subscribe('xd.mpn.storeState',function subscribe_$1(message){importDefault("sdk.cp.Storage").setState(message.state);});this.subscribe('xd.mpn.getState',function subscribe_$1(_){var state=importDefault("sdk.cp.Storage").getStateJSON();var event={name:'mpnDidFetchState',params:state};_this.$CustomerChat$p_postMessageToDialogFrame(event);_this.$CustomerChat$p_postMessageToBubbleFrame(event);});this.subscribe('xd.mpn.setupIconIframe',function subscribe_$1(message){_this.$CustomerChat$p_handleSetupIconIframe(message);});this.subscribe('xd.mpn.setupDialogIframe',function subscribe_$1(message){_this.$CustomerChat$p_handleSetupDialogIframe(message);});this.subscribe('xd.mpn.toggleDialogVisibility',function subscribe_$1(message){_this.$CustomerChat$p_handleToggleDialogVisibility(message);});this.subscribe('xd.mpn.toggleGreetingDialogVisibility',function subscribe_$1(message){_this.$CustomerChat$p_handleToggleGreetingDialogVisibility(message);});this.subscribe('xd.mpn.updateGreetingAppearance',function subscribe_$1(message){importDefault("sdk.cp.Actions").setDialogAppearance(_this.$CustomerChat$p_greetingIFrame,message);});this.subscribe('xd.mpn.updateDialogAppearance',function subscribe_$1(message){importDefault("sdk.cp.Actions").setDialogAppearance(_this.iframe,message);});this.subscribe('xd.mpn.updateIconAppearance',function subscribe_$1(message){importDefault("sdk.cp.Actions").setDialogAppearance(_this.$CustomerChat$p_iconInnerIFrame,message);});this.subscribe('xd.mpn.reload',function subscribe_$1(message){importDefault("sdk.cp.Actions").reloadIframe(_this.iframe,message.hasExplicitInteraction);});this.subscribe('xd.mpn.updatePageTitle',function subscribe_$1(message){importDefault("sdk.cp.Actions").blinkPageTitle(message.title);});this.subscribe('xd.mpn.navigateToWelcomePage',function subscribe_$1(message){_this.$CustomerChat$p_notifyDialogToNaviagetToWelcomePage(message.isHidden);});(_importNamespace_sdkXFBMLCustomerChatWrapper=importNamespace("sdk.XFBML.CustomerChatWrapper")).CustomerChatInternalEvent.subscribe(_importNamespace_sdkXFBMLCustomerChatWrapper.CustomerChatInternalEventType.SHOW,this.show);_importNamespace_sdkXFBMLCustomerChatWrapper.CustomerChatInternalEvent.subscribe(_importNamespace_sdkXFBMLCustomerChatWrapper.CustomerChatInternalEventType.HIDE,this.hide);_importNamespace_sdkXFBMLCustomerChatWrapper.CustomerChatInternalEvent.subscribe(_importNamespace_sdkXFBMLCustomerChatWrapper.CustomerChatInternalEventType.SHOW_DIALOG,this.showDialog);_importNamespace_sdkXFBMLCustomerChatWrapper.CustomerChatInternalEvent.subscribe(_importNamespace_sdkXFBMLCustomerChatWrapper.CustomerChatInternalEventType.HIDE_DIALOG,this.hideDialog);_importNamespace_sdkXFBMLCustomerChatWrapper.CustomerChatInternalEvent.subscribe(_importNamespace_sdkXFBMLCustomerChatWrapper.CustomerChatInternalEventType.UPDATE,this.update);};_proto.$CustomerChat$p_handleSetupIconIframe=function $CustomerChat$p_handleSetupIconIframe(message){var _this2=this;if(this.$CustomerChat$p_bubbleIFrame){importNamespace("sdk.DOM").remove(this.$CustomerChat$p_bubbleIFrame);}var frameName=message.frameName,iconSVG=message.iconSVG;var newElement=importNamespace("sdk.DialogUtils").setupNewDialog();var css=ES("JSON","parse",false,message.cssText);var iconDiv=document.createElement('div');if(iconSVG!=null){importNamespace("sdk.DOM").dangerouslySetInnerHtml(iconDiv,iconSVG);ES("Object","assign",false,iconDiv.style,css);iconDiv.style.boxShadow='none';importNamespace("sdk.Content").append(iconDiv,newElement.contentRoot);}var bubbleIFrameName='blank_'+frameName;this.$CustomerChat$p_bubbleIFrame=newElement.dialogElement;this.$CustomerChat$p_iconInnerIFrame=importDefault("sdk.createIframe")({url:this.$CustomerChat$p_shouldUseNewDomain?importDefault("sdk.cp.Constants").blankFrameNewDomainURL:importDefault("sdk.cp.Constants").blankFrameURL,name:bubbleIFrameName,root:newElement.contentRoot,tabindex:-1,width:60,style:css,'data-testid':'bubble_iframe',onload:function onload(){importNamespace("ChatPluginSDKPreLoggingUtils").preLogging(_this2.$CustomerChat$p_shouldUseNewDomain,"chat_plugin_sdk_icon_iframe_load",_this2.params);_this2.$CustomerChat$p_bubbleIFrameName=bubbleIFrameName;_this2.$CustomerChat$p_notifyDialogIFrame();_this2.$CustomerChat$p_checkIfIframesLoadedAndNotify();window.setTimeout(function window_setTimeout_$0(){importNamespace("sdk.DOM").remove(iconDiv);},100);}});if(this.$CustomerChat$p_bubbleIFrame){this.$CustomerChat$p_bubbleIFrame.setAttribute(importDefault("sdk.cp.Constants").attribute.alignment,message.alignment);}if(this.$CustomerChat$p_bubbleIFrame){importNamespace("sdk.Content").append(this.$CustomerChat$p_bubbleIFrame);}var availabilityStatusIFrameName='availabilityStatus_'+frameName;this.$CustomerChat$p_availabilityStatusIFrame=importDefault("sdk.createIframe")({url:this.$CustomerChat$p_shouldUseNewDomain?importDefault("sdk.cp.Constants").blankFrameNewDomainURL:importDefault("sdk.cp.Constants").blankFrameURL,name:availabilityStatusIFrameName,root:newElement.contentRoot,tabindex:-1,style:ES("JSON","parse",false,message.availabilityStatusCssText),'data-testid':'availabilityStatus_iframe',onload:function onload(){_this2.$CustomerChat$p_availabilityStatusIFrameName=availabilityStatusIFrameName;_this2.$CustomerChat$p_notifyDialogIFrame();_this2.$CustomerChat$p_checkIfIframesLoadedAndNotify();}});importNamespace("sdk.Content").append(this.$CustomerChat$p_availabilityStatusIFrame,newElement.contentRoot);var unreadCountIFrameName='unread_'+frameName;this.$CustomerChat$p_unreadCountIFrame=importDefault("sdk.createIframe")({url:this.$CustomerChat$p_shouldUseNewDomain?importDefault("sdk.cp.Constants").blankFrameNewDomainURL:importDefault("sdk.cp.Constants").blankFrameURL,name:unreadCountIFrameName,root:newElement.contentRoot,tabindex:-1,style:ES("JSON","parse",false,message.unreadCountCssText),'data-testid':'unread_iframe',onload:function onload(){_this2.$CustomerChat$p_unreadCountIFrameName=unreadCountIFrameName;_this2.$CustomerChat$p_notifyDialogIFrame();_this2.$CustomerChat$p_checkIfIframesLoadedAndNotify();}});importNamespace("sdk.Content").append(this.$CustomerChat$p_unreadCountIFrame,newElement.contentRoot);var isMobile=importDefault("sdk.UA").mobile();if(!isMobile){var greetingIFrameName='greeting_'+frameName;this.$CustomerChat$p_greetingIFrame=importDefault("sdk.createIframe")({url:this.$CustomerChat$p_shouldUseNewDomain?importDefault("sdk.cp.Constants").blankFrameNewDomainURL:importDefault("sdk.cp.Constants").blankFrameURL,name:greetingIFrameName,root:newElement.contentRoot,tabindex:-1,style:ES("JSON","parse",false,message.greetingCssText),'data-testid':'greeting_iframe',onload:function onload(){_this2.$CustomerChat$p_greetingIFrameName=greetingIFrameName;_this2.$CustomerChat$p_notifyDialogIFrame();_this2.$CustomerChat$p_checkIfIframesLoadedAndNotify();}});importNamespace("sdk.Content").append(this.$CustomerChat$p_greetingIFrame,newElement.contentRoot);}};_proto.$CustomerChat$p_checkIfIframesLoadedAndNotify=function $CustomerChat$p_checkIfIframesLoadedAndNotify(){if(this.$CustomerChat$p_bubbleIFrameName!==null&&this.$CustomerChat$p_unreadCountIFrameName!==null&&this.$CustomerChat$p_availabilityStatusIFrameName!==null&&this.$CustomerChat$p_dialogIFrameName!==null&&this.$CustomerChat$p_greetingIFrameName!==null&&!this.$CustomerChat$p_iframesLoaded){this.$CustomerChat$p_iframesLoaded=true;this.inform('iframes_loaded');}};_proto.$CustomerChat$p_notifyDialogIFrame=function $CustomerChat$p_notifyDialogIFrame(){var _this$$CustomerChat$p2,_this$$CustomerChat$p3;this.$CustomerChat$p_postMessageToDialogFrame({name:'bubbleFrameLoaded',frameName:this.$CustomerChat$p_bubbleIFrameName,unreadCountFrameName:this.$CustomerChat$p_unreadCountIFrameName,availabilityStatusIframeName:this.$CustomerChat$p_availabilityStatusIFrameName,greetingIframeName:this.$CustomerChat$p_greetingIFrameName,iconSrc:(_this$$CustomerChat$p2=this.$CustomerChat$p_iconInnerIFrame)==null?void 0:_this$$CustomerChat$p2.src,unreadSrc:(_this$$CustomerChat$p3=this.$CustomerChat$p_unreadCountIFrame)==null?void 0:_this$$CustomerChat$p3.src,request_time:this.params.request_time,log_id:this.params.log_id});};_proto.$CustomerChat$p_notifyDialogToNaviagetToWelcomePage=function $CustomerChat$p_notifyDialogToNaviagetToWelcomePage(isHidden){this.$CustomerChat$p_postMessageToDialogFrame({name:'navigateToWelcomePage',isHidden:isHidden});};_proto.$CustomerChat$p_handleSetupDialogIframe=function $CustomerChat$p_handleSetupDialogIframe(message){var cssText=message.cssText,mobilePath=message.mobilePath,isDialogHidden=message.isDialogHidden,desktopBottomSpacing=message.desktopBottomSpacing;if(this.$CustomerChat$p_bubbleIFrame){mobilePath&&this.$CustomerChat$p_bubbleIFrame.setAttribute(importDefault("sdk.cp.Constants").attribute.mobilePath,mobilePath);desktopBottomSpacing&&this.$CustomerChat$p_bubbleIFrame.setAttribute(importDefault("sdk.cp.Constants").attribute.desktopBottomSpacing,desktopBottomSpacing.toString());}this.$CustomerChat$p_isDialogHidden=isDialogHidden==='true';if(this.iframe){this.iframe.setAttribute('data-testid','dialog_iframe');this.iframe.style.cssText=cssText;}this.$CustomerChat$p_dialogIFrame=this.iframe;this.$CustomerChat$p_dialogIFrameName=this.iframe.name;this.$CustomerChat$p_checkIfIframesLoadedAndNotify();var isMobile=importDefault("sdk.UA").mobile();if(isMobile&&!this.$CustomerChat$p_isDialogHidden){if(mobilePath==importDefault("sdk.cp.Constants").path.landingPage){var bounceInAnimationName=importNamespace("sdk.cp.Animation").iframeBounceInAnimation(this.$CustomerChat$p_bubbleIFrame);bounceInAnimationName!=null&&importNamespace("sdk.DOM").addCss(this.$CustomerChat$p_dialogIFrame,bounceInAnimationName);}if(mobilePath!=importDefault("sdk.cp.Constants").path.landingPage&&mobilePath!=importDefault("sdk.cp.Constants").path.bubble){this.$CustomerChat$p_setParentDocumentPositionFixed();}}if(this.$CustomerChat$p_isPluginHidden){this.hide();}};_proto.$CustomerChat$p_handleToggleDialogVisibility=function $CustomerChat$p_handleToggleDialogVisibility(message){var shouldHide=message.shouldHide;if(shouldHide==='true'){this.$CustomerChat$p_hideDialogIframe(this.iframe);}else{this.$CustomerChat$p_showDialogIframe(this.iframe);}};_proto.$CustomerChat$p_handleToggleGreetingDialogVisibility=function $CustomerChat$p_handleToggleGreetingDialogVisibility(message){var shouldHide=message.shouldHide;if(shouldHide==='true'){this.$CustomerChat$p_hideGreetingDialogIframe(this.$CustomerChat$p_greetingIFrame);}else{this.$CustomerChat$p_showGreetingDialogIframe(this.$CustomerChat$p_greetingIFrame);}};_proto.getParams=function getParams(){return{allow_guests:'bool',attribution:'string',greeting_dialog_display:'string',greeting_dialog_delay:'string',logged_in_greeting:'string',logged_out_greeting:'string',minimized:'bool',page_id:'string',theme_color:'string',override:'string',attribution_version:'string',is_loaded_by_facade:'bool',current_url:'string',log_id:'string',request_time:'px'};};_proto.$CustomerChat$p_postMessageToIframe=function $CustomerChat$p_postMessageToIframe(frameName,message){var _this3=this;var frame=window.frames[frameName];var pmf=function pmf(origin){frame==null?void 0:frame.postMessage(babelHelpers["extends"]({},message),origin);};if(this.$CustomerChat$p_dialogIFrameOrigin===null){importDefault("getFacebookOriginForTarget")(function getFacebookOriginForTarget_$0(origin){_this3.$CustomerChat$p_dialogIFrameOrigin=origin;pmf(_this3.$CustomerChat$p_dialogIFrameOrigin);},frame);}else{pmf(this.$CustomerChat$p_dialogIFrameOrigin);}};_proto.$CustomerChat$p_postMessageToBubbleFrame=function $CustomerChat$p_postMessageToBubbleFrame(message){var _this$$CustomerChat$p4;this.$CustomerChat$p_postMessageToIframe((_this$$CustomerChat$p4=this.$CustomerChat$p_bubbleIFrameName)!=null?_this$$CustomerChat$p4:'',message);};_proto.$CustomerChat$p_postMessageToDialogFrame=function $CustomerChat$p_postMessageToDialogFrame(message){var _this$$CustomerChat$p5;this.$CustomerChat$p_postMessageToIframe((_this$$CustomerChat$p5=this.$CustomerChat$p_dialogIFrameName)!=null?_this$$CustomerChat$p5:'',message);};_proto.$CustomerChat$p_handleSDKCall=function $CustomerChat$p_handleSDKCall(event){this.$CustomerChat$p_postMessageToDialogFrame({name:'CustomerChat.SDK.Called',event:event});};_proto.$CustomerChat$p_setParentDocumentPositionFixed=function $CustomerChat$p_setParentDocumentPositionFixed(){var mobile_overlay='fb_new_ui_mobile_overlay_active';importNamespace("sdk.DOM").addCss(document.body,mobile_overlay);};_proto.$CustomerChat$p_showDialogIframe=function $CustomerChat$p_showDialogIframe(dialogIframe){if(!dialogIframe){return;}if(this.$CustomerChat$p_isDialogHidden){this.$CustomerChat$p_isDialogHidden=false;var bounceInAnimationName=importNamespace("sdk.cp.Animation").iframeBounceInAnimation(this.$CustomerChat$p_bubbleIFrame);var bounceOutAnimationName=importNamespace("sdk.cp.Animation").iframeBounceOutAnimation(this.$CustomerChat$p_bubbleIFrame);bounceOutAnimationName!=null&&importNamespace("sdk.DOM").removeCss(dialogIframe,bounceOutAnimationName);bounceInAnimationName!=null&&importNamespace("sdk.DOM").addCss(dialogIframe,bounceInAnimationName);if(importDefault("sdk.UA").mobile()){importNamespace("sdk.DOM").setStyle(dialogIframe,'maxHeight','100%');importNamespace("sdk.DOM").setStyle(dialogIframe,'height','100%');importNamespace("sdk.DOM").setStyle(dialogIframe,'width','100%');}else{var desktopBottomSpacingString=this.$CustomerChat$p_bubbleIFrame&&importNamespace("sdk.DOM").getAttr(this.$CustomerChat$p_bubbleIFrame,importDefault("sdk.cp.Constants").attribute.desktopBottomSpacing);var desktopBottomSpacingForDialog=desktopBottomSpacingString==null?'80':Number(desktopBottomSpacingString)+60;importNamespace("sdk.DOM").setStyle(dialogIframe,'maxHeight','calc(100% - '+desktopBottomSpacingForDialog+'px)');importNamespace("sdk.DOM").setStyle(dialogIframe,'minHeight','300px');}this.$CustomerChat$p_postMessageToDialogFrame({name:'CustomerChat.isDialogHidden',params:{is_dialog_hidden:false}});this.$CustomerChat$p_postMessageToBubbleFrame({name:'CustomerChat.isDialogHidden',params:{is_dialog_hidden:false}});importNamespace("sdk.Event").fire('customerchat.dialogShow');}};_proto.$CustomerChat$p_hideDialogIframe=function $CustomerChat$p_hideDialogIframe(dialogIframe){var _this4=this;if(!dialogIframe){return;}if(!this.$CustomerChat$p_isDialogHidden){this.$CustomerChat$p_isDialogHidden=true;var bounceInAnimationName=importNamespace("sdk.cp.Animation").iframeBounceInAnimation(this.$CustomerChat$p_bubbleIFrame);var bounceOutAnimationName=importNamespace("sdk.cp.Animation").iframeBounceOutAnimation(this.$CustomerChat$p_bubbleIFrame);bounceInAnimationName!=null&&importNamespace("sdk.DOM").removeCss(dialogIframe,bounceInAnimationName);bounceOutAnimationName!=null&&importNamespace("sdk.DOM").addCss(dialogIframe,bounceOutAnimationName);var animationEventListeners={};importDefault("sdk.cp.Constants").animationEvents.forEach(function MPNConstants_animationEvents_forEach_$0(event){var hideDialog=function hideDialog(_){if(_this4.$CustomerChat$p_isDialogHidden){importNamespace("sdk.DOM").setStyle(dialogIframe,'maxHeight','0');importNamespace("sdk.DOM").setStyle(dialogIframe,'minHeight','0');importDefault("sdk.cp.Constants").animationEvents.forEach(function MPNConstants_animationEvents_forEach_$0(event){if(animationEventListeners[event]){importNamespace("DOMEventListener").remove(dialogIframe,event,animationEventListeners[event]);delete animationEventListeners[event];}});}};animationEventListeners[event]=hideDialog;importNamespace("DOMEventListener").add(dialogIframe,event,hideDialog);});this.$CustomerChat$p_postMessageToDialogFrame({name:'CustomerChat.isDialogHidden',params:{is_dialog_hidden:true}});this.$CustomerChat$p_postMessageToBubbleFrame({name:'CustomerChat.isDialogHidden',params:{is_dialog_hidden:true}});}importNamespace("sdk.Event").fire('customerchat.dialogHide');};_proto.$CustomerChat$p_hideGreetingDialogIframe=function $CustomerChat$p_hideGreetingDialogIframe(greetingIframe){if(!greetingIframe){return;}importNamespace("sdk.DOM").setStyle(greetingIframe,'maxHeight','0');importNamespace("sdk.DOM").setStyle(greetingIframe,'minHeight','0');};_proto.$CustomerChat$p_showGreetingDialogIframe=function $CustomerChat$p_showGreetingDialogIframe(greetingIframe){if(!greetingIframe){return;}importNamespace("sdk.DOM").setStyle(greetingIframe,'maxHeight','calc(100% - 80px)');};return CustomerChat;}(importDefault("IframePluginClass"));exports["default"]=CustomerChat;},98);
+};importNamespace("sdk.DOM").addCss(elem,'fb_invisible_flow');importNamespace("sdk.DOM").remove(elem);importNamespace("sdk.Content").append(elem);_this.$CustomerChat$p_shouldUseNewDomain=Boolean(attr.should_use_new_domain);_this.$CustomerChat$p_updateDialogIframeOptions();importNamespace("sdk.Event").fire('customerchat.load');_this.$CustomerChat$p_setUpSubscriptions();importNamespace("ChatPluginSDKPreLoggingUtils").preLogging(_this.$CustomerChat$p_shouldUseNewDomain,"chat_plugin_sdk_dialog_iframe_create",_this.params,false);return _this;}var _proto=CustomerChat.prototype;_proto.$CustomerChat$p_updateDialogIframeOptions=function $CustomerChat$p_updateDialogIframeOptions(){var storage=importNamespace("sdk.WebStorage").getLocalStorage();var localState=null;var requestTime=(_importDefault_closure_performanceAbsoluteNow||(_importDefault_closure_performanceAbsoluteNow=importDefault("performanceAbsoluteNow")))();ES("Object","assign",false,this.params,{request_time:requestTime});var url=this.$CustomerChat$p_shouldUseNewDomain?importNamespace("UrlMap").resolve('social_plugin')+'/'+this.tag+'.php?':importNamespace("UrlMap").resolve('www')+'/plugins/'+this.tag+'.php?';this.iframeOptions.url=url+importDefault("QueryString").encode(this.params);this.iframeOptions.title='';};_proto.$CustomerChat$p_setUpSubscriptions=function $CustomerChat$p_setUpSubscriptions(){var _this=this;var _importNamespace_sdkXFBMLCustomerChatWrapper;this.subscribe('render',function subscribe_$1(){importNamespace("ChatPluginSDKPreLoggingUtils").preLogging(_this.$CustomerChat$p_shouldUseNewDomain,"chat_plugin_sdk_dialog_iframe_load",_this.params);});this.subscribe('xd.mpn.storeState',function subscribe_$1(message){});this.subscribe('xd.mpn.getState',function subscribe_$1(_){var event={name:'mpnDidFetchState'};_this.$CustomerChat$p_postMessageToDialogFrame(event);_this.$CustomerChat$p_postMessageToBubbleFrame(event);});this.subscribe('xd.mpn.setupIconIframe',function subscribe_$1(message){_this.$CustomerChat$p_handleSetupIconIframe(message);});this.subscribe('xd.mpn.setupDialogIframe',function subscribe_$1(message){_this.$CustomerChat$p_handleSetupDialogIframe(message);});this.subscribe('xd.mpn.toggleDialogVisibility',function subscribe_$1(message){_this.$CustomerChat$p_handleToggleDialogVisibility(message);});this.subscribe('xd.mpn.toggleGreetingDialogVisibility',function subscribe_$1(message){_this.$CustomerChat$p_handleToggleGreetingDialogVisibility(message);});this.subscribe('xd.mpn.navigateToWelcomePage',function subscribe_$1(message){_this.$CustomerChat$p_notifyDialogToNaviagetToWelcomePage(message.isHidden);});(_importNamespace_sdkXFBMLCustomerChatWrapper=importNamespace("sdk.XFBML.CustomerChatWrapper")).CustomerChatInternalEvent.subscribe(_importNamespace_sdkXFBMLCustomerChatWrapper.CustomerChatInternalEventType.SHOW,this.show);_importNamespace_sdkXFBMLCustomerChatWrapper.CustomerChatInternalEvent.subscribe(_importNamespace_sdkXFBMLCustomerChatWrapper.CustomerChatInternalEventType.HIDE,this.hide);_importNamespace_sdkXFBMLCustomerChatWrapper.CustomerChatInternalEvent.subscribe(_importNamespace_sdkXFBMLCustomerChatWrapper.CustomerChatInternalEventType.SHOW_DIALOG,this.showDialog);_importNamespace_sdkXFBMLCustomerChatWrapper.CustomerChatInternalEvent.subscribe(_importNamespace_sdkXFBMLCustomerChatWrapper.CustomerChatInternalEventType.HIDE_DIALOG,this.hideDialog);_importNamespace_sdkXFBMLCustomerChatWrapper.CustomerChatInternalEvent.subscribe(_importNamespace_sdkXFBMLCustomerChatWrapper.CustomerChatInternalEventType.UPDATE,this.update);};_proto.$CustomerChat$p_handleSetupIconIframe=function $CustomerChat$p_handleSetupIconIframe(message){var _this2=this;if(this.$CustomerChat$p_bubbleIFrame){importNamespace("sdk.DOM").remove(this.$CustomerChat$p_bubbleIFrame);}var frameName=message.frameName,iconSVG=message.iconSVG;var newElement=importNamespace("sdk.DialogUtils").setupNewDialog();var css=ES("JSON","parse",false,message.cssText);var iconDiv=document.createElement('div');if(iconSVG!=null){importNamespace("sdk.DOM").dangerouslySetInnerHtml(iconDiv,iconSVG);ES("Object","assign",false,iconDiv.style,css);iconDiv.style.boxShadow='none';importNamespace("sdk.Content").append(iconDiv,newElement.contentRoot);}var bubbleIFrameName='blank_'+frameName;this.$CustomerChat$p_bubbleIFrame=newElement.dialogElement;this.$CustomerChat$p_iconInnerIFrame=importDefault("sdk.createIframe")({url:this.$CustomerChat$p_shouldUseNewDomain?importDefault("sdk.cp.Constants").blankFrameNewDomainURL:importDefault("sdk.cp.Constants").blankFrameURL,name:bubbleIFrameName,root:newElement.contentRoot,tabindex:-1,width:60,style:css,'data-testid':'bubble_iframe',onload:function onload(){importNamespace("ChatPluginSDKPreLoggingUtils").preLogging(_this2.$CustomerChat$p_shouldUseNewDomain,"chat_plugin_sdk_icon_iframe_load",_this2.params);_this2.$CustomerChat$p_bubbleIFrameName=bubbleIFrameName;_this2.$CustomerChat$p_notifyDialogIFrame();_this2.$CustomerChat$p_checkIfIframesLoadedAndNotify();window.setTimeout(function window_setTimeout_$0(){importNamespace("sdk.DOM").remove(iconDiv);},100);}});if(this.$CustomerChat$p_bubbleIFrame){this.$CustomerChat$p_bubbleIFrame.setAttribute(importDefault("sdk.cp.Constants").attribute.alignment,message.alignment);}if(this.$CustomerChat$p_bubbleIFrame){importNamespace("sdk.Content").append(this.$CustomerChat$p_bubbleIFrame);}var availabilityStatusIFrameName='availabilityStatus_'+frameName;this.$CustomerChat$p_availabilityStatusIFrame=importDefault("sdk.createIframe")({url:this.$CustomerChat$p_shouldUseNewDomain?importDefault("sdk.cp.Constants").blankFrameNewDomainURL:importDefault("sdk.cp.Constants").blankFrameURL,name:availabilityStatusIFrameName,root:newElement.contentRoot,tabindex:-1,style:ES("JSON","parse",false,message.availabilityStatusCssText),'data-testid':'availabilityStatus_iframe',onload:function onload(){_this2.$CustomerChat$p_availabilityStatusIFrameName=availabilityStatusIFrameName;_this2.$CustomerChat$p_notifyDialogIFrame();_this2.$CustomerChat$p_checkIfIframesLoadedAndNotify();}});importNamespace("sdk.Content").append(this.$CustomerChat$p_availabilityStatusIFrame,newElement.contentRoot);var unreadCountIFrameName='unread_'+frameName;this.$CustomerChat$p_unreadCountIFrame=importDefault("sdk.createIframe")({url:this.$CustomerChat$p_shouldUseNewDomain?importDefault("sdk.cp.Constants").blankFrameNewDomainURL:importDefault("sdk.cp.Constants").blankFrameURL,name:unreadCountIFrameName,root:newElement.contentRoot,tabindex:-1,style:ES("JSON","parse",false,message.unreadCountCssText),'data-testid':'unread_iframe',onload:function onload(){_this2.$CustomerChat$p_unreadCountIFrameName=unreadCountIFrameName;_this2.$CustomerChat$p_notifyDialogIFrame();_this2.$CustomerChat$p_checkIfIframesLoadedAndNotify();}});importNamespace("sdk.Content").append(this.$CustomerChat$p_unreadCountIFrame,newElement.contentRoot);var isMobile=importDefault("sdk.UA").mobile();if(!isMobile){var greetingIFrameName='greeting_'+frameName;this.$CustomerChat$p_greetingIFrame=importDefault("sdk.createIframe")({url:this.$CustomerChat$p_shouldUseNewDomain?importDefault("sdk.cp.Constants").blankFrameNewDomainURL:importDefault("sdk.cp.Constants").blankFrameURL,name:greetingIFrameName,root:newElement.contentRoot,tabindex:-1,style:ES("JSON","parse",false,message.greetingCssText),'data-testid':'greeting_iframe',onload:function onload(){_this2.$CustomerChat$p_greetingIFrameName=greetingIFrameName;_this2.$CustomerChat$p_notifyDialogIFrame();_this2.$CustomerChat$p_checkIfIframesLoadedAndNotify();}});importNamespace("sdk.Content").append(this.$CustomerChat$p_greetingIFrame,newElement.contentRoot);}};_proto.$CustomerChat$p_checkIfIframesLoadedAndNotify=function $CustomerChat$p_checkIfIframesLoadedAndNotify(){if(this.$CustomerChat$p_bubbleIFrameName!==null&&this.$CustomerChat$p_unreadCountIFrameName!==null&&this.$CustomerChat$p_availabilityStatusIFrameName!==null&&this.$CustomerChat$p_dialogIFrameName!==null&&this.$CustomerChat$p_greetingIFrameName!==null&&!this.$CustomerChat$p_iframesLoaded){this.$CustomerChat$p_iframesLoaded=true;this.inform('iframes_loaded');}};_proto.$CustomerChat$p_notifyDialogIFrame=function $CustomerChat$p_notifyDialogIFrame(){var _this$$CustomerChat$p2,_this$$CustomerChat$p3;this.$CustomerChat$p_postMessageToDialogFrame({name:'bubbleFrameLoaded',frameName:this.$CustomerChat$p_bubbleIFrameName,unreadCountFrameName:this.$CustomerChat$p_unreadCountIFrameName,availabilityStatusIframeName:this.$CustomerChat$p_availabilityStatusIFrameName,greetingIframeName:this.$CustomerChat$p_greetingIFrameName,iconSrc:(_this$$CustomerChat$p2=this.$CustomerChat$p_iconInnerIFrame)==null?void 0:_this$$CustomerChat$p2.src,unreadSrc:(_this$$CustomerChat$p3=this.$CustomerChat$p_unreadCountIFrame)==null?void 0:_this$$CustomerChat$p3.src,request_time:this.params.request_time,log_id:this.params.log_id});};_proto.$CustomerChat$p_notifyDialogToNaviagetToWelcomePage=function $CustomerChat$p_notifyDialogToNaviagetToWelcomePage(isHidden){this.$CustomerChat$p_postMessageToDialogFrame({name:'navigateToWelcomePage',isHidden:isHidden});};_proto.$CustomerChat$p_handleSetupDialogIframe=function $CustomerChat$p_handleSetupDialogIframe(message){var cssText=message.cssText,mobilePath=message.mobilePath,isDialogHidden=message.isDialogHidden,desktopBottomSpacing=message.desktopBottomSpacing;if(this.$CustomerChat$p_bubbleIFrame){mobilePath&&this.$CustomerChat$p_bubbleIFrame.setAttribute(importDefault("sdk.cp.Constants").attribute.mobilePath,mobilePath);desktopBottomSpacing&&this.$CustomerChat$p_bubbleIFrame.setAttribute(importDefault("sdk.cp.Constants").attribute.desktopBottomSpacing,desktopBottomSpacing.toString());}this.$CustomerChat$p_isDialogHidden=isDialogHidden==='true';if(this.iframe){this.iframe.setAttribute('data-testid','dialog_iframe');this.iframe.style.cssText=cssText;}this.$CustomerChat$p_dialogIFrame=this.iframe;this.$CustomerChat$p_dialogIFrameName=this.iframe.name;this.$CustomerChat$p_checkIfIframesLoadedAndNotify();var isMobile=importDefault("sdk.UA").mobile();if(isMobile&&!this.$CustomerChat$p_isDialogHidden){if(mobilePath==importDefault("sdk.cp.Constants").path.landingPage){var bounceInAnimationName=importNamespace("sdk.cp.Animation").iframeBounceInAnimation(this.$CustomerChat$p_bubbleIFrame);bounceInAnimationName!=null&&importNamespace("sdk.DOM").addCss(this.$CustomerChat$p_dialogIFrame,bounceInAnimationName);}if(mobilePath!=importDefault("sdk.cp.Constants").path.landingPage&&mobilePath!=importDefault("sdk.cp.Constants").path.bubble){this.$CustomerChat$p_setParentDocumentPositionFixed();}}if(this.$CustomerChat$p_isPluginHidden){this.hide();}};_proto.$CustomerChat$p_handleToggleDialogVisibility=function $CustomerChat$p_handleToggleDialogVisibility(message){var shouldHide=message.shouldHide;if(shouldHide==='true'){this.$CustomerChat$p_hideDialogIframe(this.iframe);}else{this.$CustomerChat$p_showDialogIframe(this.iframe);}};_proto.$CustomerChat$p_handleToggleGreetingDialogVisibility=function $CustomerChat$p_handleToggleGreetingDialogVisibility(message){var shouldHide=message.shouldHide;if(shouldHide==='true'){this.$CustomerChat$p_hideGreetingDialogIframe(this.$CustomerChat$p_greetingIFrame);}else{this.$CustomerChat$p_showGreetingDialogIframe(this.$CustomerChat$p_greetingIFrame);}};_proto.getParams=function getParams(){return{allow_guests:'bool',attribution:'string',greeting_dialog_display:'string',greeting_dialog_delay:'string',logged_in_greeting:'string',logged_out_greeting:'string',minimized:'bool',page_id:'string',theme_color:'string',override:'string',attribution_version:'string',is_loaded_by_facade:'bool',current_url:'string',log_id:'string',request_time:'px'};};_proto.$CustomerChat$p_postMessageToIframe=function $CustomerChat$p_postMessageToIframe(frameName,message){var _this3=this;var frame=window.frames[frameName];var pmf=function pmf(origin){frame==null?void 0:frame.postMessage(babelHelpers["extends"]({},message),origin);};if(this.$CustomerChat$p_dialogIFrameOrigin===null){importDefault("getFacebookOriginForTarget")(function getFacebookOriginForTarget_$0(origin){_this3.$CustomerChat$p_dialogIFrameOrigin=origin;pmf(_this3.$CustomerChat$p_dialogIFrameOrigin);},frame);}else{pmf(this.$CustomerChat$p_dialogIFrameOrigin);}};_proto.$CustomerChat$p_postMessageToBubbleFrame=function $CustomerChat$p_postMessageToBubbleFrame(message){var _this$$CustomerChat$p4;this.$CustomerChat$p_postMessageToIframe((_this$$CustomerChat$p4=this.$CustomerChat$p_bubbleIFrameName)!=null?_this$$CustomerChat$p4:'',message);};_proto.$CustomerChat$p_postMessageToDialogFrame=function $CustomerChat$p_postMessageToDialogFrame(message){var _this$$CustomerChat$p5;this.$CustomerChat$p_postMessageToIframe((_this$$CustomerChat$p5=this.$CustomerChat$p_dialogIFrameName)!=null?_this$$CustomerChat$p5:'',message);};_proto.$CustomerChat$p_handleSDKCall=function $CustomerChat$p_handleSDKCall(event){this.$CustomerChat$p_postMessageToDialogFrame({name:'CustomerChat.SDK.Called',event:event});};_proto.$CustomerChat$p_setParentDocumentPositionFixed=function $CustomerChat$p_setParentDocumentPositionFixed(){var mobile_overlay='fb_new_ui_mobile_overlay_active';importNamespace("sdk.DOM").addCss(document.body,mobile_overlay);};_proto.$CustomerChat$p_showDialogIframe=function $CustomerChat$p_showDialogIframe(dialogIframe){if(!dialogIframe){return;}if(this.$CustomerChat$p_isDialogHidden){this.$CustomerChat$p_isDialogHidden=false;var bounceInAnimationName=importNamespace("sdk.cp.Animation").iframeBounceInAnimation(this.$CustomerChat$p_bubbleIFrame);var bounceOutAnimationName=importNamespace("sdk.cp.Animation").iframeBounceOutAnimation(this.$CustomerChat$p_bubbleIFrame);bounceOutAnimationName!=null&&importNamespace("sdk.DOM").removeCss(dialogIframe,bounceOutAnimationName);bounceInAnimationName!=null&&importNamespace("sdk.DOM").addCss(dialogIframe,bounceInAnimationName);if(importDefault("sdk.UA").mobile()){importNamespace("sdk.DOM").setStyle(dialogIframe,'maxHeight','100%');importNamespace("sdk.DOM").setStyle(dialogIframe,'height','100%');importNamespace("sdk.DOM").setStyle(dialogIframe,'width','100%');}else{var desktopBottomSpacingString=this.$CustomerChat$p_bubbleIFrame&&importNamespace("sdk.DOM").getAttr(this.$CustomerChat$p_bubbleIFrame,importDefault("sdk.cp.Constants").attribute.desktopBottomSpacing);var desktopBottomSpacingForDialog=desktopBottomSpacingString==null?'80':Number(desktopBottomSpacingString)+60;importNamespace("sdk.DOM").setStyle(dialogIframe,'maxHeight','calc(100% - '+desktopBottomSpacingForDialog+'px)');importNamespace("sdk.DOM").setStyle(dialogIframe,'minHeight','300px');}this.$CustomerChat$p_postMessageToDialogFrame({name:'CustomerChat.isDialogHidden',params:{is_dialog_hidden:false}});this.$CustomerChat$p_postMessageToBubbleFrame({name:'CustomerChat.isDialogHidden',params:{is_dialog_hidden:false}});importNamespace("sdk.Event").fire('customerchat.dialogShow');}};_proto.$CustomerChat$p_hideDialogIframe=function $CustomerChat$p_hideDialogIframe(dialogIframe){var _this4=this;if(!dialogIframe){return;}if(!this.$CustomerChat$p_isDialogHidden){this.$CustomerChat$p_isDialogHidden=true;var bounceInAnimationName=importNamespace("sdk.cp.Animation").iframeBounceInAnimation(this.$CustomerChat$p_bubbleIFrame);var bounceOutAnimationName=importNamespace("sdk.cp.Animation").iframeBounceOutAnimation(this.$CustomerChat$p_bubbleIFrame);bounceInAnimationName!=null&&importNamespace("sdk.DOM").removeCss(dialogIframe,bounceInAnimationName);bounceOutAnimationName!=null&&importNamespace("sdk.DOM").addCss(dialogIframe,bounceOutAnimationName);var animationEventListeners={};importDefault("sdk.cp.Constants").animationEvents.forEach(function MPNConstants_animationEvents_forEach_$0(event){var hideDialog=function hideDialog(_){if(_this4.$CustomerChat$p_isDialogHidden){importNamespace("sdk.DOM").setStyle(dialogIframe,'maxHeight','0');importNamespace("sdk.DOM").setStyle(dialogIframe,'minHeight','0');importDefault("sdk.cp.Constants").animationEvents.forEach(function MPNConstants_animationEvents_forEach_$0(event){if(animationEventListeners[event]){importNamespace("DOMEventListener").remove(dialogIframe,event,animationEventListeners[event]);delete animationEventListeners[event];}});}};animationEventListeners[event]=hideDialog;importNamespace("DOMEventListener").add(dialogIframe,event,hideDialog);});this.$CustomerChat$p_postMessageToDialogFrame({name:'CustomerChat.isDialogHidden',params:{is_dialog_hidden:true}});this.$CustomerChat$p_postMessageToBubbleFrame({name:'CustomerChat.isDialogHidden',params:{is_dialog_hidden:true}});}importNamespace("sdk.Event").fire('customerchat.dialogHide');};_proto.$CustomerChat$p_hideGreetingDialogIframe=function $CustomerChat$p_hideGreetingDialogIframe(greetingIframe){if(!greetingIframe){return;}importNamespace("sdk.DOM").setStyle(greetingIframe,'maxHeight','0');importNamespace("sdk.DOM").setStyle(greetingIframe,'minHeight','0');};_proto.$CustomerChat$p_showGreetingDialogIframe=function $CustomerChat$p_showGreetingDialogIframe(greetingIframe){if(!greetingIframe){return;}importNamespace("sdk.DOM").setStyle(greetingIframe,'maxHeight','calc(100% - 80px)');};return CustomerChat;}(importDefault("IframePluginClass"));exports["default"]=CustomerChat;},98);
                                                                                                                           __d("sdk.XFBML.CustomerChatWrapper",["$InternalEnum","sdk.Observable","sdk.XFBML.ChatDOM"],function $module_sdk_XFBML_CustomerChatWrapper(global,require,importDefault,importNamespace,requireLazy,module,exports){var
 
 
@@ -26524,4 +25386,4 @@ importDefault("sdk.Runtime").setIsVersioned(true);}),35);
 if(window.FB&&window.FB.__buffer){
 
 window.__buffer=babelHelpers["extends"]({},window.FB.__buffer);
-}    }  }).call(global);})();} catch (__fb_err) {var __fb_i = new Image();__fb_i.crossOrigin = 'anonymous';__fb_i.dataset.testid = 'fbSDKErrorReport';__fb_i.src='https://www.facebook.com/platform/scribe_endpoint.php/?c=jssdk_error&m='+encodeURIComponent('{"error":"LOAD", "extra": {"name":"'+__fb_err.name+'","line":"'+(__fb_err.lineNumber||__fb_err.line)+'","script":"'+(__fb_err.fileName||__fb_err.sourceURL||__fb_err.script||"debug.js")+'","stack":"'+(__fb_err.stackTrace||__fb_err.stack)+'","revision":"1016549359","namespace":"FB","message":"'+__fb_err.message+'"}}');document.body.appendChild(__fb_i);}
+}    }  }).call(global);})();} catch (__fb_err) {var __fb_i = new Image();__fb_i.crossOrigin = 'anonymous';__fb_i.dataset.testid = 'fbSDKErrorReport';__fb_i.src='https://www.facebook.com/platform/scribe_endpoint.php/?c=jssdk_error&m='+encodeURIComponent('{"error":"LOAD", "extra": {"name":"'+__fb_err.name+'","line":"'+(__fb_err.lineNumber||__fb_err.line)+'","script":"'+(__fb_err.fileName||__fb_err.sourceURL||__fb_err.script||"debug.js")+'","stack":"'+(__fb_err.stackTrace||__fb_err.stack)+'","revision":"1016627401","namespace":"FB","message":"'+__fb_err.message+'"}}');document.body.appendChild(__fb_i);}

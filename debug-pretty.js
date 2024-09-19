@@ -1,4 +1,4 @@
-/*1726559273,,JIT Construction: v1016549359,en_US*/
+/*1726757804,,JIT Construction: v1016627401,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3739,7 +3739,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1016549359",
+            revision: "1016627401",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -13422,13 +13422,13 @@ try {
                 var width = parseNumber(dialog.offsetWidth);
                 var height = parseNumber(dialog.offsetHeight);
                 var left =
-                  (_view$scrollLeft = view.scrollLeft) != null
+                  ((_view$scrollLeft = view.scrollLeft) != null
                     ? _view$scrollLeft
-                    : 0 +
-                      ((_view$width = view.width) != null
-                        ? _view$width
-                        : MAX_WIDTH_DESKTOP - width) /
-                        2;
+                    : 0) +
+                  ((_view$width = view.width) != null
+                    ? _view$width
+                    : MAX_WIDTH_DESKTOP - width) /
+                    2;
 
                 var minTop =
                   ((_view$height = view.height) != null
@@ -20955,1040 +20955,6 @@ try {
             98,
           );
           __d(
-            "LiveChatPluginConstants",
-            ["$InternalEnum"],
-            function $module_LiveChatPluginConstants(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports,
-            ) {
-              "use strict";
-
-              var ARBITER_PREFIX = "LiveChatEvent/";
-
-              var MQTT = "mqtt";
-              var MQTTGatewayConnectionState = require("$InternalEnum")({
-                CONNECTED: "Connected",
-                CONNECTING: "Connecting",
-                DISCONNECTED: "Disconnected",
-              });
-
-              var LOGIN_CHECK_INTERVAL = 250;
-
-              var CLOSE_TIMESTAMPS = ARBITER_PREFIX + "close_timestamps";
-              var RESET_BADGING = ARBITER_PREFIX + "reset_badging";
-              var STATE_UPDATE = ARBITER_PREFIX + "state";
-              var SWITCH_ACCOUNT = ARBITER_PREFIX + "switch_account";
-              var TYPING_UPDATE = ARBITER_PREFIX + "typing";
-              var UNREAD_COUNT_UPDATE = ARBITER_PREFIX + "unread_count";
-              var UPDATE_MESSAGE_LIST = ARBITER_PREFIX + "update_message_list";
-              var GUEST_MODE_CONNECT = "platform/plugins/connect/guest";
-              var GUEST_UPGRADE_SUCCESS =
-                ARBITER_PREFIX + "guest_upgrade_success";
-              var GUEST_UPGRADE_SUCCESS_INCOGNITO =
-                ARBITER_PREFIX + "guest_upgrade_success_incognito";
-              var NAVIGATE_TO_WELCOME_PAGE =
-                ARBITER_PREFIX + "navigate_to_welcome_page";
-              var ACCESS_TOKEN_LOGIN = "platform/plugins/connect/access_token";
-              var START_RE_ENGAGEMENT = ARBITER_PREFIX + "start_re_engagement";
-
-              var PROMPT_FALLBACK_HEIGHT = 124;
-              var PROMPT_REDESIGN_FALLBACK_HEIGHT = 187;
-              var PROMPT_CONTAINER_PADDING_HEIGHT = 24;
-              var WELCOME_PAGE_GUEST_FALLBACK_HEIGHT = 424;
-              var WELCOME_PAGE_NO_GUEST_FALLBACK_HEIGHT = 288;
-              var WELCOME_PAGE_GUEST_FALLBACK_HEIGHT_WITH_COMPACT = 313;
-              var WELCOME_PAGE_NO_GUEST_FALLBACK_HEIGHT_WITH_COMPACT = 219;
-              var WELCOME_PAGE_ATTRIBUTION_OFFEST_HEIGHT = 40;
-              var WELCOME_PAGE_ATTRIBUTION_OFFSET_HEIGHT_WITH_COMPACT = 36;
-              var MAIN_IFRAME_PADDING_HEIGHT = 24;
-              var MAIN_IFRAME_PADDING_HEIGHT_WITH_COMPACT = 18;
-              var THREAD_PAGE_HEIGHT = 708;
-              var THREAD_PAGE_HEIGHT_COMPACT = 540;
-              var RE_ENGAGEMENT_COLLAPSED_DIALOG_HEIGHT = 244;
-              var RE_ENGAGEMENT_COLLAPSED_DIALOG_HEIGHT_COMPACT = 202;
-              var RE_ENGAGEMENT_EXPANDED_DIALOG_HEIGHT = 509;
-              var RE_ENGAGEMENT_EXPANDED_DIALOG_HEIGHT_COMPACT = 430;
-              var GREETING_TEXT_BOTTOM_SPACING_OFFEST = 6;
-
-              var LOGGED_IN_CHAT_MODE = 0;
-              var GUEST_CHAT_MODE = 1;
-              var INVALID_CHAT_MODE = -1;
-              var MESSENGING_PLUGIN = "messaging_plugin";
-              var GUEST_SESSION_STORAGE_VALIDITY_MS = 86340000;
-              var GUEST_SEND_BUTTON_COLOR_EMPTY_INPUT = "#8A8D91";
-              var LIVE_CHAT_ENTRYPOINT_ATTRIBUTION_TAG =
-                "entrypoint:customer_chat_plugin";
-
-              var ITP_CONSISTENCY_UNKNOWN_LOGGED_OUT = 0;
-              var ITP_CONSISTENCY_CONSISTENT_LOGGED_IN = 1;
-              var ITP_CONSISTENCY_INCONSISTENT = 2;
-              var ITP_CONSISTENCY_CONSISTENT_NO_ITP = 3;
-
-              var NEW_MESSAGE_UPDATE = "new_message_update";
-              var INITIAL_FETCH = "initial_fetch";
-
-              var PLUGIN_FADE_DELAY = 5000;
-
-              var HELP_DEX_LINK =
-                "https://www.facebook.com/business/help/1661027437357021";
-              exports.MQTT = MQTT;
-              exports.MQTTGatewayConnectionState = MQTTGatewayConnectionState;
-              exports.LOGIN_CHECK_INTERVAL = LOGIN_CHECK_INTERVAL;
-              exports.CLOSE_TIMESTAMPS = CLOSE_TIMESTAMPS;
-              exports.RESET_BADGING = RESET_BADGING;
-              exports.STATE_UPDATE = STATE_UPDATE;
-              exports.SWITCH_ACCOUNT = SWITCH_ACCOUNT;
-              exports.TYPING_UPDATE = TYPING_UPDATE;
-              exports.UNREAD_COUNT_UPDATE = UNREAD_COUNT_UPDATE;
-              exports.UPDATE_MESSAGE_LIST = UPDATE_MESSAGE_LIST;
-              exports.GUEST_MODE_CONNECT = GUEST_MODE_CONNECT;
-              exports.GUEST_UPGRADE_SUCCESS = GUEST_UPGRADE_SUCCESS;
-              exports.GUEST_UPGRADE_SUCCESS_INCOGNITO =
-                GUEST_UPGRADE_SUCCESS_INCOGNITO;
-              exports.NAVIGATE_TO_WELCOME_PAGE = NAVIGATE_TO_WELCOME_PAGE;
-              exports.ACCESS_TOKEN_LOGIN = ACCESS_TOKEN_LOGIN;
-              exports.START_RE_ENGAGEMENT = START_RE_ENGAGEMENT;
-              exports.PROMPT_FALLBACK_HEIGHT = PROMPT_FALLBACK_HEIGHT;
-              exports.PROMPT_REDESIGN_FALLBACK_HEIGHT =
-                PROMPT_REDESIGN_FALLBACK_HEIGHT;
-              exports.PROMPT_CONTAINER_PADDING_HEIGHT =
-                PROMPT_CONTAINER_PADDING_HEIGHT;
-              exports.WELCOME_PAGE_GUEST_FALLBACK_HEIGHT =
-                WELCOME_PAGE_GUEST_FALLBACK_HEIGHT;
-              exports.WELCOME_PAGE_NO_GUEST_FALLBACK_HEIGHT =
-                WELCOME_PAGE_NO_GUEST_FALLBACK_HEIGHT;
-              exports.WELCOME_PAGE_GUEST_FALLBACK_HEIGHT_WITH_COMPACT =
-                WELCOME_PAGE_GUEST_FALLBACK_HEIGHT_WITH_COMPACT;
-              exports.WELCOME_PAGE_NO_GUEST_FALLBACK_HEIGHT_WITH_COMPACT =
-                WELCOME_PAGE_NO_GUEST_FALLBACK_HEIGHT_WITH_COMPACT;
-              exports.WELCOME_PAGE_ATTRIBUTION_OFFEST_HEIGHT =
-                WELCOME_PAGE_ATTRIBUTION_OFFEST_HEIGHT;
-              exports.WELCOME_PAGE_ATTRIBUTION_OFFSET_HEIGHT_WITH_COMPACT =
-                WELCOME_PAGE_ATTRIBUTION_OFFSET_HEIGHT_WITH_COMPACT;
-              exports.MAIN_IFRAME_PADDING_HEIGHT = MAIN_IFRAME_PADDING_HEIGHT;
-              exports.MAIN_IFRAME_PADDING_HEIGHT_WITH_COMPACT =
-                MAIN_IFRAME_PADDING_HEIGHT_WITH_COMPACT;
-              exports.THREAD_PAGE_HEIGHT = THREAD_PAGE_HEIGHT;
-              exports.THREAD_PAGE_HEIGHT_COMPACT = THREAD_PAGE_HEIGHT_COMPACT;
-              exports.RE_ENGAGEMENT_COLLAPSED_DIALOG_HEIGHT =
-                RE_ENGAGEMENT_COLLAPSED_DIALOG_HEIGHT;
-              exports.RE_ENGAGEMENT_COLLAPSED_DIALOG_HEIGHT_COMPACT =
-                RE_ENGAGEMENT_COLLAPSED_DIALOG_HEIGHT_COMPACT;
-              exports.RE_ENGAGEMENT_EXPANDED_DIALOG_HEIGHT =
-                RE_ENGAGEMENT_EXPANDED_DIALOG_HEIGHT;
-              exports.RE_ENGAGEMENT_EXPANDED_DIALOG_HEIGHT_COMPACT =
-                RE_ENGAGEMENT_EXPANDED_DIALOG_HEIGHT_COMPACT;
-              exports.GREETING_TEXT_BOTTOM_SPACING_OFFEST =
-                GREETING_TEXT_BOTTOM_SPACING_OFFEST;
-              exports.LOGGED_IN_CHAT_MODE = LOGGED_IN_CHAT_MODE;
-              exports.GUEST_CHAT_MODE = GUEST_CHAT_MODE;
-              exports.INVALID_CHAT_MODE = INVALID_CHAT_MODE;
-              exports.MESSENGING_PLUGIN = MESSENGING_PLUGIN;
-              exports.GUEST_SESSION_STORAGE_VALIDITY_MS =
-                GUEST_SESSION_STORAGE_VALIDITY_MS;
-              exports.GUEST_SEND_BUTTON_COLOR_EMPTY_INPUT =
-                GUEST_SEND_BUTTON_COLOR_EMPTY_INPUT;
-              exports.LIVE_CHAT_ENTRYPOINT_ATTRIBUTION_TAG =
-                LIVE_CHAT_ENTRYPOINT_ATTRIBUTION_TAG;
-              exports.ITP_CONSISTENCY_UNKNOWN_LOGGED_OUT =
-                ITP_CONSISTENCY_UNKNOWN_LOGGED_OUT;
-              exports.ITP_CONSISTENCY_CONSISTENT_LOGGED_IN =
-                ITP_CONSISTENCY_CONSISTENT_LOGGED_IN;
-              exports.ITP_CONSISTENCY_INCONSISTENT =
-                ITP_CONSISTENCY_INCONSISTENT;
-              exports.ITP_CONSISTENCY_CONSISTENT_NO_ITP =
-                ITP_CONSISTENCY_CONSISTENT_NO_ITP;
-              exports.NEW_MESSAGE_UPDATE = NEW_MESSAGE_UPDATE;
-              exports.INITIAL_FETCH = INITIAL_FETCH;
-              exports.PLUGIN_FADE_DELAY = PLUGIN_FADE_DELAY;
-              exports.HELP_DEX_LINK = HELP_DEX_LINK;
-            },
-            66,
-          );
-          __d(
-            "ChatPluginStyleUtils",
-            ["LiveChatPluginConstants"],
-            function $module_ChatPluginStyleUtils(
-              global,
-              require,
-              importDefault,
-              importNamespace,
-              requireLazy,
-              module,
-              exports,
-            ) {
-              var LABELED_ENTRY_POINT_STANDARD_HEIGHT = 44;
-              var LABELED_ENTRY_POINT_COMPACT_HEIGHT = 36;
-              var LABELED_ENTRY_POINT_STANDARD_FONT_SIZE = 17;
-              var LABELED_ENTRY_POINT_COMPACT_FONT_SIZE = 15;
-              var LABELED_ENTRY_POINT_STANDARD_LINE_HEIGHT = 22;
-              var LABELED_ENTRY_POINT_COMPACT_LINE_HEIGHT = 20;
-              var LABELED_ENTRY_POINT_STANDARD_ICON_MARGIN_RIGHT = 6;
-              var LABELED_ENTRY_POINT_COMPACT_ICON_MARGIN_RIGHT = 4;
-              var LABELED_ENTRY_POINT_STANDARD_PADDING_HORIZONTAL = 16;
-              var LABELED_ENTRY_POINT_COMPACT_PADDING_HORIZONTAL = 14;
-              var ICON_ENTRY_POINT_STANDARD_HEIGHT = 60;
-              var ICON_ENTRY_POINT_COMPACT_HEIGHT = 44;
-              var LABELED_ONLY_ENTRY_POINT_STANDARD_WIDTH_SHORT = 70;
-              var LABELED_ONLY_ENTRY_POINT_STANDARD_WIDTH_LONG = 86;
-              var LABELED_ONLY_ENTRY_POINT_COMPACT_WIDTH_SHORT = 63;
-              var LABELED_ONLY_ENTRY_POINT_COMPACT_WIDTH_LONG = 76;
-              var LABELED_WITH_ICON_ENTRY_POINT_STANDARD_WIDTH_SHORT = 99;
-              var LABELED_WITH_ICON_ENTRY_POINT_STANDARD_WIDTH_LONG = 114;
-              var LABELED_WITH_ICON_ENTRY_POINT_COMPACT_WIDTH_SHORT = 85;
-              var LABELED_WITH_ICON_ENTRY_POINT_COMPACT_WIDTH_LONG = 98;
-              var ENTRY_POINT_MARGIN = 12;
-
-              function getMobileStyleText() {
-                var mobilePromptWidth = screen.width;
-                var widthStyleStr = "width: " + mobilePromptWidth + "px;";
-
-                return (
-                  "padding: 0; position: fixed; z-index: 2147483646;box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.15);border-radius: 16px;bottom: 24px; top: auto; right:0;" +
-                  widthStyleStr
-                );
-              }
-
-              function positionElementAtWindowFooter(element) {
-                if (element instanceof HTMLElement) {
-                  element.style.marginTop =
-                    window.innerHeight - element.clientHeight + "px";
-                }
-              }
-
-              function getEntryPointStyle(
-                alignment,
-                bottomSpacing,
-                sideSpacing,
-                isLoadedByFacade,
-                shouldIconDelay,
-                entryPointLabel,
-                entryPointSize,
-              ) {
-                var baseStyle = getEntryPointBaseStyle(
-                  bottomSpacing,
-                  isLoadedByFacade,
-                  shouldIconDelay,
-                );
-
-                var iconStyle = getEntryPointIconStyle(
-                  entryPointLabel,
-                  entryPointSize,
-                );
-                var alignmentStyle = getEntryPointAlignmentStyle(
-                  alignment,
-                  sideSpacing,
-                );
-                var style = babelHelpers["extends"](
-                  {},
-                  baseStyle,
-                  iconStyle,
-                  alignmentStyle,
-                );
-
-                return Object.fromEntries(
-                  ES("Object", "entries", false, style).sort(),
-                );
-              }
-
-              function getIconStyleText(
-                alignment,
-                bottomSpacing,
-                sideSpacing,
-                isLoadedByFacade,
-                shouldIconDelay,
-                label,
-                entryPointSize,
-              ) {
-                var style = getEntryPointStyle(
-                  alignment,
-                  bottomSpacing,
-                  sideSpacing,
-                  isLoadedByFacade,
-                  shouldIconDelay,
-                  label,
-                  entryPointSize,
-                );
-
-                return ES("JSON", "stringify", false, style);
-              }
-
-              function getUnreadCountStyleText(
-                alignment,
-                bottomSpacing,
-                sideSpacing,
-                entryPointLabel,
-                entryPointSize,
-              ) {
-                var totalSpacingSpacing =
-                  sideSpacing + (alignment == "right" ? -2 : 43);
-                var totalBottomSpacing =
-                  bottomSpacing + ICON_ENTRY_POINT_STANDARD_HEIGHT - 16;
-                totalBottomSpacing = bottomSpacing - 16;
-                if (entryPointLabel === "none") {
-                  if (entryPointSize === "compact") {
-                    totalBottomSpacing += ICON_ENTRY_POINT_COMPACT_HEIGHT;
-                  } else {
-                    totalBottomSpacing += ICON_ENTRY_POINT_STANDARD_HEIGHT;
-                  }
-                } else {
-                  if (entryPointSize === "compact") {
-                    totalBottomSpacing += LABELED_ENTRY_POINT_COMPACT_HEIGHT;
-                  } else {
-                    totalBottomSpacing += LABELED_ENTRY_POINT_STANDARD_HEIGHT;
-                  }
-                }
-
-                var styleTextBase = {
-                  bottom: totalBottomSpacing.toString() + "px",
-                  position: "fixed",
-                  width: "20px",
-                  height: "24px",
-                  zIndex: 2147483645,
-                  borderRadius: "4pt",
-                  background: "none",
-                };
-
-                var styleText = {};
-                switch (alignment) {
-                  case "right":
-                    styleText = babelHelpers["extends"]({}, styleTextBase, {
-                      right: totalSpacingSpacing + "px",
-                    });
-
-                    break;
-                  case "left":
-                    styleText = babelHelpers["extends"]({}, styleTextBase, {
-                      left: totalSpacingSpacing + "px",
-                    });
-
-                    break;
-                }
-
-                var sortedStyle = Object.fromEntries(
-                  ES("Object", "entries", false, styleText).sort(),
-                );
-                return ES("JSON", "stringify", false, sortedStyle);
-              }
-
-              function getAvailabilityStatusStyleText(
-                alignment,
-                bottomSpacing,
-                sideSpacing,
-                entryPointLabel,
-                entryPointIconEnum,
-                entryPointSize,
-                isLoadedByFacade,
-                shouldAddAnimation,
-              ) {
-                var totalSpacingSpacing = sideSpacing;
-                var totalBottomSpacing = bottomSpacing - 2.5;
-
-                if (alignment === "left") {
-                  totalSpacingSpacing = sideSpacing - 15;
-                  if (entryPointLabel === "none") {
-                    if (entryPointSize === "compact") {
-                      totalSpacingSpacing += ICON_ENTRY_POINT_COMPACT_HEIGHT;
-                    } else {
-                      totalSpacingSpacing += ICON_ENTRY_POINT_STANDARD_HEIGHT;
-                    }
-                  } else {
-                    if (entryPointIconEnum === "none") {
-                      if (entryPointLabel === "ask_us") {
-                        if (entryPointSize === "compact") {
-                          totalSpacingSpacing +=
-                            LABELED_ONLY_ENTRY_POINT_COMPACT_WIDTH_LONG;
-                        } else {
-                          totalSpacingSpacing +=
-                            LABELED_ONLY_ENTRY_POINT_STANDARD_WIDTH_LONG;
-                        }
-                      } else {
-                        if (entryPointSize === "compact") {
-                          totalSpacingSpacing +=
-                            LABELED_ONLY_ENTRY_POINT_COMPACT_WIDTH_SHORT;
-                        } else {
-                          totalSpacingSpacing +=
-                            LABELED_ONLY_ENTRY_POINT_STANDARD_WIDTH_SHORT;
-                        }
-                      }
-                    } else {
-                      if (entryPointLabel === "ask_us") {
-                        if (entryPointSize === "compact") {
-                          totalSpacingSpacing +=
-                            LABELED_WITH_ICON_ENTRY_POINT_COMPACT_WIDTH_LONG;
-                        } else {
-                          totalSpacingSpacing +=
-                            LABELED_WITH_ICON_ENTRY_POINT_STANDARD_WIDTH_LONG;
-                        }
-                      } else {
-                        if (entryPointSize === "compact") {
-                          totalSpacingSpacing +=
-                            LABELED_WITH_ICON_ENTRY_POINT_COMPACT_WIDTH_SHORT;
-                        } else {
-                          totalSpacingSpacing +=
-                            LABELED_WITH_ICON_ENTRY_POINT_STANDARD_WIDTH_SHORT;
-                        }
-                      }
-                    }
-                  }
-                }
-
-                var styleTextBase = {
-                  bottom: totalBottomSpacing.toString() + "px",
-                  position: "fixed",
-                  zIndex: 2147483646,
-                  height: "15px",
-                  width: "15px",
-                  borderRadius: "50%",
-                };
-
-                var styleText = {};
-                switch (alignment) {
-                  case "right":
-                    styleText = babelHelpers["extends"]({}, styleTextBase, {
-                      right: totalSpacingSpacing + "px",
-                    });
-
-                    break;
-                  case "left":
-                    styleText = babelHelpers["extends"]({}, styleTextBase, {
-                      left: totalSpacingSpacing + "px",
-                    });
-
-                    break;
-                }
-
-                if (isLoadedByFacade === false) {
-                  styleText = babelHelpers["extends"]({}, styleText, {
-                    animation:
-                      shouldAddAnimation === true
-                        ? "slideInFromBottomDelay 3.5s ease-out"
-                        : null,
-                    backgroundColor: "#31CC46",
-                    border: "2.5px solid white",
-                    height: "10px",
-                    width: "10px",
-                  });
-                }
-
-                return Object.fromEntries(
-                  ES("Object", "entries", false, styleText).sort(),
-                );
-              }
-
-              function getMobileLandingStyleText(isDialogVisible) {
-                var styleText =
-                  "padding: 0; position: fixed; z-index: 2147483646;box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.15);border-radius: 16px;bottom: 24px; top: auto; right:0; margin: 0 12px; width: calc(100% - 24px);";
-                var heightStyle =
-                  isDialogVisible === true ? " height: 60px;" : " height: 0px;";
-                styleText += heightStyle;
-                return styleText;
-              }
-
-              function getDesktopStyleText(
-                alignment,
-                bottomSpacing,
-                sideSpacing,
-                isDialogVisible,
-                entryPointLabel,
-                entryPointSize,
-                windowSize,
-              ) {
-                var totalSideSpacing = sideSpacing - ENTRY_POINT_MARGIN;
-
-                var entryPointHeight = ICON_ENTRY_POINT_STANDARD_HEIGHT;
-                if (entryPointLabel === "none") {
-                  if (entryPointSize === "compact") {
-                    entryPointHeight = ICON_ENTRY_POINT_COMPACT_HEIGHT;
-                  } else {
-                    entryPointHeight = ICON_ENTRY_POINT_STANDARD_HEIGHT;
-                  }
-                } else {
-                  if (entryPointSize === "compact") {
-                    entryPointHeight = LABELED_ENTRY_POINT_COMPACT_HEIGHT;
-                  } else {
-                    entryPointHeight = LABELED_ENTRY_POINT_STANDARD_HEIGHT;
-                  }
-                }
-
-                var bottomSpacingForDialog = entryPointHeight + bottomSpacing;
-                var bottomSpacingString =
-                  " bottom: " + bottomSpacingForDialog.toString() + "px;";
-
-                var styleTextBase =
-                  "padding: 0; position: fixed; z-index: 2147483646; border-radius: 16px; top: auto; background: none; minHeight: 300px;";
-                var styleTextSizeStandard = " width: 399px;";
-                var styleTextSizeCompact = " width: 324px;";
-                var styleText =
-                  styleTextBase +
-                  (windowSize === "compact"
-                    ? styleTextSizeCompact
-                    : styleTextSizeStandard) +
-                  bottomSpacingString;
-                if (isDialogVisible) {
-                  styleText +=
-                    " max-height: calc(100% - " +
-                    bottomSpacingForDialog.toString() +
-                    "px);";
-                } else {
-                  styleText += " max-height: 0;";
-                }
-
-                switch (alignment) {
-                  case "right":
-                    styleText += " right: " + (totalSideSpacing + 4) + "px;";
-                    break;
-                  case "left":
-                    styleText += " left: " + (totalSideSpacing - 4) + "px;";
-                    break;
-                }
-
-                return styleText;
-              }
-
-              function getMobileFullScreenStyleText(isDialogVisible) {
-                var styleText =
-                  "position: fixed; z-index: 2147483646; box-shadow: none; border-radius: 0; top: 0px; right: 0px; width: 100%;";
-                var heightStyle =
-                  isDialogVisible === true
-                    ? " height: 100%; max-height: 100%;"
-                    : " max-height: 0px;";
-                styleText += heightStyle;
-                return styleText;
-              }
-
-              function getDesktopGreetingBottomSpacingWithReEngagementDialog(
-                isHidden,
-                bottomSpacing,
-                entryPointLabel,
-                entryPointSize,
-                isCompact,
-              ) {
-                var bottomSpacingValue = getDesktopGreetingBottomSpacing(
-                  bottomSpacing,
-                  entryPointLabel,
-                  entryPointSize,
-                );
-
-                if (!isHidden) {
-                  var collapsedDialogHeight = isCompact
-                    ? importNamespace("LiveChatPluginConstants")
-                        .RE_ENGAGEMENT_COLLAPSED_DIALOG_HEIGHT_COMPACT
-                    : importNamespace("LiveChatPluginConstants")
-                        .RE_ENGAGEMENT_COLLAPSED_DIALOG_HEIGHT;
-                  var paddingHeight = isCompact
-                    ? importNamespace("LiveChatPluginConstants")
-                        .MAIN_IFRAME_PADDING_HEIGHT_WITH_COMPACT
-                    : importNamespace("LiveChatPluginConstants")
-                        .MAIN_IFRAME_PADDING_HEIGHT;
-                  var totalHeight = collapsedDialogHeight + paddingHeight;
-                  bottomSpacingValue +=
-                    totalHeight -
-                    importNamespace("LiveChatPluginConstants")
-                      .GREETING_TEXT_BOTTOM_SPACING_OFFEST;
-                }
-                return bottomSpacingValue;
-              }
-
-              function getDesktopGreetingBottomSpacing(
-                bottomSpacing,
-                entryPointLabel,
-                entryPointSize,
-              ) {
-                var entryPointHeight = ENTRY_POINT_MARGIN;
-                if (entryPointLabel === "none") {
-                  if (entryPointSize === "compact") {
-                    entryPointHeight += ICON_ENTRY_POINT_COMPACT_HEIGHT;
-                  } else {
-                    entryPointHeight += ICON_ENTRY_POINT_STANDARD_HEIGHT;
-                  }
-                } else {
-                  if (entryPointSize === "compact") {
-                    entryPointHeight += LABELED_ENTRY_POINT_COMPACT_HEIGHT;
-                  } else {
-                    entryPointHeight += LABELED_ENTRY_POINT_STANDARD_HEIGHT;
-                  }
-                }
-
-                return entryPointHeight + bottomSpacing;
-              }
-
-              function getDesktopGreetingStyleText(
-                alignment,
-                bottomSpacing,
-                sideSpacing,
-                entryPointLabel,
-                entryPointSize,
-              ) {
-                var totalSideSpacing = sideSpacing - ENTRY_POINT_MARGIN;
-                var bottomSpacingValue = getDesktopGreetingBottomSpacing(
-                  bottomSpacing,
-                  entryPointLabel,
-                  entryPointSize,
-                );
-
-                var styleTextBase = {
-                  padding: 0,
-                  position: "fixed",
-                  zIndex: 2147483646,
-                  borderRadius: "16px",
-                  top: "auto",
-                  width: "247px",
-                  maxHeight: "calc(100% - 80px)",
-                  background: "none",
-                  height: "72px",
-                };
-
-                var styleText = {};
-                styleText = babelHelpers["extends"]({}, styleTextBase, {
-                  bottom: bottomSpacingValue + "px",
-                });
-
-                switch (alignment) {
-                  case "right":
-                    styleText = babelHelpers["extends"]({}, styleText, {
-                      right: "6px",
-                      marginRight: totalSideSpacing + "px",
-                    });
-
-                    break;
-                  case "left":
-                    styleText = babelHelpers["extends"]({}, styleText, {
-                      left: "2px",
-                      marginLeft: totalSideSpacing + "px",
-                    });
-
-                    break;
-                }
-
-                styleText = babelHelpers["extends"]({}, styleText, {
-                  animation: "slideInFromBottomDelay 3s ease-out",
-                });
-                var sortedStyle = Object.fromEntries(
-                  ES("Object", "entries", false, styleText).sort(),
-                );
-                return ES("JSON", "stringify", false, sortedStyle);
-              }
-
-              function getDesktopWelcomeMessageStyleText(
-                alignment,
-                bottomSpacing,
-                sideSpacing,
-                shouldIconDelay,
-                entryPointLabel,
-                entryPointSize,
-              ) {
-                var totalSideSpacing = sideSpacing - ENTRY_POINT_MARGIN;
-                var bottomSpacingValue = getDesktopGreetingBottomSpacing(
-                  bottomSpacing,
-                  entryPointLabel,
-                  entryPointSize,
-                );
-
-                var bottomSpacingString =
-                  " bottom: " + bottomSpacingValue.toString() + "px;";
-                var styleTextBase =
-                  "padding: 0; position: fixed; z-index: 2147483646;border-radius: 16px; top: auto; width: 247px; max-height: calc(100% - 80px); background: none;" +
-                  bottomSpacingString;
-                var styleText = styleTextBase;
-                switch (alignment) {
-                  case "right":
-                    styleText +=
-                      " right: 6px; margin-right: " + totalSideSpacing + "px;";
-                    break;
-                  case "left":
-                    styleText +=
-                      " left: 2px; margin-left: " + totalSideSpacing + "px;";
-                    break;
-                }
-
-                styleText += Boolean(shouldIconDelay)
-                  ? " animation: slideInFromBottomDelay 6s ease-out;"
-                  : " animation: slideInFromBottomDelay 3s ease-out;";
-                return styleText;
-              }
-
-              function getMobileWelcomeMessageStyleText(
-                height,
-                alignment,
-                bottomSpacing,
-                shouldIconDelay,
-                entryPointLabel,
-                entryPointSize,
-              ) {
-                var iconHeight =
-                  entryPointSize === "compact"
-                    ? ICON_ENTRY_POINT_COMPACT_HEIGHT
-                    : ICON_ENTRY_POINT_STANDARD_HEIGHT;
-
-                var styleText =
-                  "position: fixed; z-index: 2147483646; box-shadow: none; border-radius: 18px 0px 18px 18px; right: 0px; width: calc(80% - 40px); bottom: 24px;";
-                if (height != null && typeof bottomSpacing == "number") {
-                  styleText += " height: " + height + "px;";
-
-                  var bottomSpacingValue = bottomSpacing;
-                  if (height < iconHeight) {
-                    bottomSpacingValue = bottomSpacing + 12;
-                  }
-                  styleText += " bottom: " + bottomSpacingValue + "px;";
-                } else {
-                  styleText += " height: 60px;";
-                }
-                styleText +=
-                  alignment === "left"
-                    ? " left: calc(84px + 5%);"
-                    : " left: 5%;";
-
-                if (
-                  entryPointLabel !== "none" &&
-                  typeof bottomSpacing === "number"
-                ) {
-                  var labeledHeight =
-                    entryPointSize === "compact"
-                      ? LABELED_ENTRY_POINT_COMPACT_HEIGHT
-                      : LABELED_ENTRY_POINT_STANDARD_HEIGHT;
-                  var _bottomSpacingValue = bottomSpacing + labeledHeight + 12;
-                  styleText += " bottom: " + _bottomSpacingValue + "px;";
-
-                  switch (alignment) {
-                    case "right":
-                      styleText += " right: 20px; left: auto;";
-                      break;
-                    case "left":
-                      styleText += " left: 20px; right: auto;";
-                      break;
-                  }
-                }
-
-                return styleText;
-              }
-
-              function getMobileReengagementCollapsedDialogStyleText(
-                alignment,
-                bottomSpacing,
-                shouldIconDelay,
-                sideSpacing,
-                entryPointSize,
-              ) {
-                var styleText =
-                  "position: fixed; z-index: 2147483646; box-shadow: none; border-radius: 18px 0px 18px 18px;width: 306px;bottom: 24px; right: 20px;";
-
-                if (typeof bottomSpacing === "number") {
-                  var labeledHeight =
-                    entryPointSize === "compact"
-                      ? LABELED_ENTRY_POINT_COMPACT_HEIGHT
-                      : LABELED_ENTRY_POINT_STANDARD_HEIGHT;
-                  var bottomSpacingValue = bottomSpacing + labeledHeight + 12;
-                  styleText += " bottom: " + bottomSpacingValue + "px;";
-                }
-                if (typeof sideSpacing === "number") {
-                  var totalSideSpacing = sideSpacing - ENTRY_POINT_MARGIN;
-                  switch (alignment) {
-                    case "right":
-                      styleText +=
-                        " right: " + (totalSideSpacing + 4) + "px; left:auto";
-                      break;
-                    case "left":
-                      styleText +=
-                        " left: " + (totalSideSpacing - 4) + "px; right:auto";
-                      break;
-                  }
-                }
-
-                return styleText;
-              }
-
-              function getWelcomeMessageBubbleStyle(
-                shouldShowLeftStyle,
-                chatPluginInterface,
-              ) {
-                var bubbleBase = {
-                  alignItems: "flex-start",
-                  background: "#FFFFFF",
-                  borderRadius: "18px",
-                  bottom: 0,
-                  boxShadow: "0 4px 12px 0 rgba(0, 0, 0, 0.15)",
-                  display: "flex",
-                  flexDirection: "row",
-                  position: "absolute",
-                };
-
-                var bubbleLeft = babelHelpers["extends"]({}, bubbleBase, {
-                  marginLeft: "12px",
-                  padding: "8px 0px 8px 8px",
-                  width: "90%",
-                });
-
-                var bubbleRight = babelHelpers["extends"]({}, bubbleBase, {
-                  padding: "8px 0px 8px 12px",
-                  width: "93%",
-                });
-
-                var styleText = shouldShowLeftStyle ? bubbleLeft : bubbleRight;
-                if (chatPluginInterface === "desktop") {
-                  styleText = babelHelpers["extends"]({}, styleText, {
-                    cursor: "pointer",
-                  });
-                }
-
-                return Object.fromEntries(
-                  ES("Object", "entries", false, styleText).sort(),
-                );
-              }
-
-              function getWelcomeMessageTextStyle(
-                shouldShowLeftStyle,
-                chatPluginInterface,
-              ) {
-                var bubbleTextBase = {
-                  display: "inline-block",
-                  fontSize: "17px",
-                  lineHeight: "22px",
-                  textAlign: "left",
-                  width: "90%",
-                  wordWrap: "break-word",
-                };
-
-                var bubbleTextRight = babelHelpers["extends"](
-                  {},
-                  bubbleTextBase,
-                  {
-                    paddingRight: "18px",
-                  },
-                );
-
-                if (chatPluginInterface === "mobile") {
-                  bubbleTextRight = babelHelpers["extends"](
-                    {},
-                    bubbleTextRight,
-                    { paddingLeft: "12px" },
-                  );
-                }
-                var bubbleTextLeft = babelHelpers["extends"](
-                  {},
-                  bubbleTextBase,
-                  {
-                    paddingRight: "12px",
-                    paddingLeft: "12px",
-                  },
-                );
-
-                var styleText = shouldShowLeftStyle
-                  ? bubbleTextLeft
-                  : bubbleTextRight;
-
-                return Object.fromEntries(
-                  ES("Object", "entries", false, styleText).sort(),
-                );
-              }
-
-              function getMinusButtonStyle(
-                shouldShowLeftStyle,
-                chatPluginInterface,
-              ) {
-                var minusButtonStyleBase = {
-                  position: "absolute",
-                  top: "-2px",
-                  width: "38px",
-                };
-
-                if (chatPluginInterface === "desktop") {
-                  minusButtonStyleBase = babelHelpers["extends"](
-                    {},
-                    minusButtonStyleBase,
-                    { cursor: "pointer" },
-                  );
-                }
-                var minusButtonStyleLeft = babelHelpers["extends"](
-                  {},
-                  minusButtonStyleBase,
-                  { left: "-4px" },
-                );
-                var minusButtonStyleRight = babelHelpers["extends"](
-                  {},
-                  minusButtonStyleBase,
-                  {
-                    right: "-4px",
-                  },
-                );
-
-                var styleText = shouldShowLeftStyle
-                  ? minusButtonStyleLeft
-                  : minusButtonStyleRight;
-
-                return Object.fromEntries(
-                  ES("Object", "entries", false, styleText).sort(),
-                );
-              }
-
-              function getMinusButtonVisibility(iconClicked) {
-                var styleText = {
-                  visibility: iconClicked ? "hidden" : "visible",
-                };
-
-                return Object.fromEntries(
-                  ES("Object", "entries", false, styleText).sort(),
-                );
-              }
-
-              function getNoOutlineFocus() {
-                var styleText = { outline: "none" };
-
-                return Object.fromEntries(
-                  ES("Object", "entries", false, styleText).sort(),
-                );
-              }
-
-              function getEntryPointBaseStyle(
-                bottomSpacing,
-                isLoadedByFacade,
-                shouldIconDelay,
-              ) {
-                return {
-                  animation: getIconAnimation(
-                    isLoadedByFacade,
-                    shouldIconDelay,
-                  ),
-                  background: "none",
-                  bottom: bottomSpacing.toString() + "px",
-                  display: "block",
-                  margin: "0 12px 0 12px",
-                  overflow: "visible",
-                  padding: "0",
-                  position: "fixed",
-                  top: "auto",
-                  zIndex: 2147483644,
-                };
-              }
-
-              function getEntryPointIconStyle(entryPointLabel, entryPointSize) {
-                if (entryPointLabel !== "none") {
-                  var height =
-                    entryPointSize === "compact"
-                      ? LABELED_ENTRY_POINT_COMPACT_HEIGHT
-                      : LABELED_ENTRY_POINT_STANDARD_HEIGHT;
-                  return {
-                    borderRadius: "60px",
-                    boxShadow: null,
-                    height: height + "px",
-                    width: "auto",
-                  };
-                } else {
-                  var size =
-                    entryPointSize === "compact"
-                      ? ICON_ENTRY_POINT_COMPACT_HEIGHT
-                      : ICON_ENTRY_POINT_STANDARD_HEIGHT;
-                  return {
-                    borderRadius: "60px",
-                    boxShadow: "0 4px 12px 0 rgba(0, 0, 0, 0.15)",
-                    height: size + "px",
-                    width: size + "px",
-                  };
-                }
-              }
-
-              function getEntryPointAlignmentStyle(alignment, sideSpacing) {
-                var totalSideSpacing = sideSpacing - ENTRY_POINT_MARGIN;
-                switch (alignment) {
-                  case "right":
-                    return {
-                      right: totalSideSpacing + "px",
-                    };
-
-                  case "left":
-                    return {
-                      left: totalSideSpacing + "px",
-                    };
-                }
-              }
-
-              function getIconAnimation(isLoadedByFacade, shouldIconDelay) {
-                if (Boolean(isLoadedByFacade)) {
-                  return null;
-                }
-                if (Boolean(shouldIconDelay)) {
-                  return "slideInFromBottomDelay 3s ease-out";
-                } else {
-                  return "slideInFromBottom 0.3s ease-out";
-                }
-              }
-              exports.LABELED_ENTRY_POINT_STANDARD_HEIGHT =
-                LABELED_ENTRY_POINT_STANDARD_HEIGHT;
-              exports.LABELED_ENTRY_POINT_COMPACT_HEIGHT =
-                LABELED_ENTRY_POINT_COMPACT_HEIGHT;
-              exports.LABELED_ENTRY_POINT_STANDARD_FONT_SIZE =
-                LABELED_ENTRY_POINT_STANDARD_FONT_SIZE;
-              exports.LABELED_ENTRY_POINT_COMPACT_FONT_SIZE =
-                LABELED_ENTRY_POINT_COMPACT_FONT_SIZE;
-              exports.LABELED_ENTRY_POINT_STANDARD_LINE_HEIGHT =
-                LABELED_ENTRY_POINT_STANDARD_LINE_HEIGHT;
-              exports.LABELED_ENTRY_POINT_COMPACT_LINE_HEIGHT =
-                LABELED_ENTRY_POINT_COMPACT_LINE_HEIGHT;
-              exports.LABELED_ENTRY_POINT_STANDARD_ICON_MARGIN_RIGHT =
-                LABELED_ENTRY_POINT_STANDARD_ICON_MARGIN_RIGHT;
-              exports.LABELED_ENTRY_POINT_COMPACT_ICON_MARGIN_RIGHT =
-                LABELED_ENTRY_POINT_COMPACT_ICON_MARGIN_RIGHT;
-              exports.LABELED_ENTRY_POINT_STANDARD_PADDING_HORIZONTAL =
-                LABELED_ENTRY_POINT_STANDARD_PADDING_HORIZONTAL;
-              exports.LABELED_ENTRY_POINT_COMPACT_PADDING_HORIZONTAL =
-                LABELED_ENTRY_POINT_COMPACT_PADDING_HORIZONTAL;
-              exports.ICON_ENTRY_POINT_STANDARD_HEIGHT =
-                ICON_ENTRY_POINT_STANDARD_HEIGHT;
-              exports.ICON_ENTRY_POINT_COMPACT_HEIGHT =
-                ICON_ENTRY_POINT_COMPACT_HEIGHT;
-              exports.LABELED_ONLY_ENTRY_POINT_STANDARD_WIDTH_SHORT =
-                LABELED_ONLY_ENTRY_POINT_STANDARD_WIDTH_SHORT;
-              exports.LABELED_ONLY_ENTRY_POINT_STANDARD_WIDTH_LONG =
-                LABELED_ONLY_ENTRY_POINT_STANDARD_WIDTH_LONG;
-              exports.LABELED_ONLY_ENTRY_POINT_COMPACT_WIDTH_SHORT =
-                LABELED_ONLY_ENTRY_POINT_COMPACT_WIDTH_SHORT;
-              exports.LABELED_ONLY_ENTRY_POINT_COMPACT_WIDTH_LONG =
-                LABELED_ONLY_ENTRY_POINT_COMPACT_WIDTH_LONG;
-              exports.LABELED_WITH_ICON_ENTRY_POINT_STANDARD_WIDTH_SHORT =
-                LABELED_WITH_ICON_ENTRY_POINT_STANDARD_WIDTH_SHORT;
-              exports.LABELED_WITH_ICON_ENTRY_POINT_STANDARD_WIDTH_LONG =
-                LABELED_WITH_ICON_ENTRY_POINT_STANDARD_WIDTH_LONG;
-              exports.LABELED_WITH_ICON_ENTRY_POINT_COMPACT_WIDTH_SHORT =
-                LABELED_WITH_ICON_ENTRY_POINT_COMPACT_WIDTH_SHORT;
-              exports.LABELED_WITH_ICON_ENTRY_POINT_COMPACT_WIDTH_LONG =
-                LABELED_WITH_ICON_ENTRY_POINT_COMPACT_WIDTH_LONG;
-              exports.getMobileStyleText = getMobileStyleText;
-              exports.positionElementAtWindowFooter =
-                positionElementAtWindowFooter;
-              exports.getEntryPointStyle = getEntryPointStyle;
-              exports.getIconStyleText = getIconStyleText;
-              exports.getUnreadCountStyleText = getUnreadCountStyleText;
-              exports.getAvailabilityStatusStyleText =
-                getAvailabilityStatusStyleText;
-              exports.getMobileLandingStyleText = getMobileLandingStyleText;
-              exports.getDesktopStyleText = getDesktopStyleText;
-              exports.getMobileFullScreenStyleText =
-                getMobileFullScreenStyleText;
-              exports.getDesktopGreetingBottomSpacingWithReEngagementDialog =
-                getDesktopGreetingBottomSpacingWithReEngagementDialog;
-              exports.getDesktopGreetingBottomSpacing =
-                getDesktopGreetingBottomSpacing;
-              exports.getDesktopGreetingStyleText = getDesktopGreetingStyleText;
-              exports.getDesktopWelcomeMessageStyleText =
-                getDesktopWelcomeMessageStyleText;
-              exports.getMobileWelcomeMessageStyleText =
-                getMobileWelcomeMessageStyleText;
-              exports.getMobileReengagementCollapsedDialogStyleText =
-                getMobileReengagementCollapsedDialogStyleText;
-              exports.getWelcomeMessageBubbleStyle =
-                getWelcomeMessageBubbleStyle;
-              exports.getWelcomeMessageTextStyle = getWelcomeMessageTextStyle;
-              exports.getMinusButtonStyle = getMinusButtonStyle;
-              exports.getMinusButtonVisibility = getMinusButtonVisibility;
-              exports.getNoOutlineFocus = getNoOutlineFocus;
-            },
-            98,
-          );
-          __d(
             "DOMPlugin",
             [
               "JSSDKShadowCssConfig",
@@ -22606,7 +21572,6 @@ try {
               "ChatPluginEntryPointLabelEnum",
               "ChatPluginEntryPointSizeEnum",
               "ChatPluginSDKPreLoggingUtils",
-              "ChatPluginStyleUtils",
               "DOMPlugin",
               "Log",
               "UrlMap",
@@ -22616,7 +21581,6 @@ try {
               "sdk.DOM",
               "sdk.IdleCallback",
               "sdk.XFBML.CustomerChatNew",
-              "sdk.fbt",
               "sdk.feature",
               "uuidv4",
             ],
@@ -22799,7 +21763,6 @@ try {
                           wrapperElement,
                           data.entry_point_icon_svg,
                         );
-
                         var iconSVG =
                           wrapperElement == null
                             ? void 0
@@ -22818,51 +21781,12 @@ try {
                         );
                       }
 
-                      var css = importNamespace(
-                        "ChatPluginStyleUtils",
-                      ).getEntryPointStyle(
-                        data.alignment,
-                        data.bottom_spacing,
-                        data.side_spacing,
-                        false,
-                        true,
-                        data.entry_point_label,
-                        _this.$ChatDOMFacade$p_entryPointSize,
-                      );
-
-                      ES(
-                        "Object",
-                        "assign",
-                        false,
-                        _this.$ChatDOMFacade$p_container.style,
-                        css,
-                      );
                       _this.$ChatDOMFacade$p_container.style.backgroundColor =
                         themeColor;
 
                       if (_this.$ChatDOMFacade$p_isPageActive) {
-                        var availabilityStatusCss = importNamespace(
-                          "ChatPluginStyleUtils",
-                        ).getAvailabilityStatusStyleText(
-                          data.alignment,
-                          data.bottom_spacing,
-                          data.side_spacing,
-                          data.entry_point_label,
-                          data.entry_point_icon_enum,
-                          _this.$ChatDOMFacade$p_entryPointSize,
-                          false,
-                          true,
-                        );
-
                         var availabilityStatusWrapperElement =
                           document.createElement("div");
-                        ES(
-                          "Object",
-                          "assign",
-                          false,
-                          availabilityStatusWrapperElement.style,
-                          availabilityStatusCss,
-                        );
 
                         _this.$ChatDOMFacade$p_container.append(
                           availabilityStatusWrapperElement,
@@ -22890,20 +21814,6 @@ try {
 
                   return this.$ChatDOMFacade$p_container;
                 };
-                _proto.$ChatDOMFacade$p_getEntryPointLabelText =
-                  function $ChatDOMFacade$p_getEntryPointLabelText(label) {
-                    switch (label) {
-                      case "chat":
-                        return importDefault("sdk.fbt")._("Chat");
-                      case "help":
-                        return importDefault("sdk.fbt")._("Help");
-                      case "ask_us":
-                        return importDefault("sdk.fbt")._("Ask us");
-
-                      case "none":
-                        return "";
-                    }
-                  };
                 _proto.$ChatDOMFacade$p_hideFacade =
                   function $ChatDOMFacade$p_hideFacade() {
                     var _this$element$parentN;
@@ -22941,13 +21851,7 @@ try {
                       var _spinnerSVG =
                         this.$ChatDOMFacade$p_getSpinnerSVG(_spinnerSize);
                       if (this.$ChatDOMFacade$p_entryPointIconEnum === "none") {
-                        var marginRight =
-                          this.$ChatDOMFacade$p_entryPointSize === "compact"
-                            ? importNamespace("ChatPluginStyleUtils")
-                                .LABELED_ENTRY_POINT_COMPACT_ICON_MARGIN_RIGHT
-                            : importNamespace("ChatPluginStyleUtils")
-                                .LABELED_ENTRY_POINT_STANDARD_ICON_MARGIN_RIGHT;
-
+                        var marginRight = 100;
                         importNamespace("sdk.DOM").dangerouslySetInnerHtml(
                           this.$ChatDOMFacade$p_container.children[0],
                           this.$ChatDOMFacade$p_getLabelOnlyEntryPointSpinner(
@@ -22959,29 +21863,8 @@ try {
                         );
 
                         if (this.$ChatDOMFacade$p_isPageActive) {
-                          var availabilityStatusCss = importNamespace(
-                            "ChatPluginStyleUtils",
-                          ).getAvailabilityStatusStyleText(
-                            this.$ChatDOMFacade$p_alignment,
-                            this.$ChatDOMFacade$p_bottomSpacing,
-                            this.$ChatDOMFacade$p_sideSpacing,
-                            this.$ChatDOMFacade$p_entryPointLabel,
-                            "chat_round_icon",
-                            this.$ChatDOMFacade$p_entryPointSize,
-                            false,
-                            false,
-                          );
-
                           var availabilityStatusWrapperElement =
                             document.createElement("div");
-                          ES(
-                            "Object",
-                            "assign",
-                            false,
-                            availabilityStatusWrapperElement.style,
-                            availabilityStatusCss,
-                          );
-
                           importNamespace("sdk.DOM").remove(
                             this.$ChatDOMFacade$p_container.children[1],
                           );
@@ -23001,62 +21884,13 @@ try {
                   };
                 _proto.$ChatDOMFacade$p_getLabelEntryPointHTML =
                   function $ChatDOMFacade$p_getLabelEntryPointHTML(iconSVG) {
-                    var containerHeight =
-                      this.$ChatDOMFacade$p_entryPointSize === "compact"
-                        ? importNamespace("ChatPluginStyleUtils")
-                            .LABELED_ENTRY_POINT_COMPACT_HEIGHT
-                        : importNamespace("ChatPluginStyleUtils")
-                            .LABELED_ENTRY_POINT_STANDARD_HEIGHT;
-
-                    var fontSize =
-                      this.$ChatDOMFacade$p_entryPointSize === "compact"
-                        ? importNamespace("ChatPluginStyleUtils")
-                            .LABELED_ENTRY_POINT_COMPACT_FONT_SIZE
-                        : importNamespace("ChatPluginStyleUtils")
-                            .LABELED_ENTRY_POINT_STANDARD_FONT_SIZE;
-
-                    var lineHeight =
-                      this.$ChatDOMFacade$p_entryPointSize === "compact"
-                        ? importNamespace("ChatPluginStyleUtils")
-                            .LABELED_ENTRY_POINT_COMPACT_LINE_HEIGHT
-                        : importNamespace("ChatPluginStyleUtils")
-                            .LABELED_ENTRY_POINT_STANDARD_LINE_HEIGHT;
-
-                    var marginRight =
-                      this.$ChatDOMFacade$p_entryPointSize === "compact"
-                        ? importNamespace("ChatPluginStyleUtils")
-                            .LABELED_ENTRY_POINT_COMPACT_ICON_MARGIN_RIGHT
-                        : importNamespace("ChatPluginStyleUtils")
-                            .LABELED_ENTRY_POINT_STANDARD_ICON_MARGIN_RIGHT;
-
-                    var paddingHorizontal =
-                      this.$ChatDOMFacade$p_entryPointSize === "compact"
-                        ? importNamespace("ChatPluginStyleUtils")
-                            .LABELED_ENTRY_POINT_COMPACT_PADDING_HORIZONTAL
-                        : importNamespace("ChatPluginStyleUtils")
-                            .LABELED_ENTRY_POINT_STANDARD_PADDING_HORIZONTAL;
-
                     return (
-                      '\n      <div class="label-container" style="\n        height: ' +
-                      containerHeight +
-                      "px;\n        padding: 0 " +
-                      paddingHorizontal +
-                      'px\n      ">\n        ' +
+                      '\n      <div class="label-container" style="\n        height: $10px;\n        padding: 0 $10px\n      ">\n        ' +
                       (iconSVG &&
-                        '\n            <div class="label-container-icon" style="\n              margin-right: ' +
-                          marginRight +
-                          'px;\n            ">\n              ' +
+                        '\n            <div class="label-container-icon" style="\n              margin-right: $10px;\n            ">\n              ' +
                           iconSVG +
                           "\n            </div>\n          ") +
-                      '\n        <div\n          class="label-container-label"\n          style="\n            font-size: ' +
-                      fontSize +
-                      "px;\n            line-height: " +
-                      lineHeight +
-                      'px;\n        ">' +
-                      this.$ChatDOMFacade$p_getEntryPointLabelText(
-                        this.$ChatDOMFacade$p_entryPointLabel,
-                      ).toString() +
-                      "</div>\n      </div>\n    "
+                      '\n        <div\n          class="label-container-label"\n          style="\n            font-size: $10px;\n            line-height: $10px;\n        "></div>\n      </div>\n    '
                     );
                   };
                 _proto.$ChatDOMFacade$p_getLabelOnlyEntryPointSpinner =
@@ -23141,7 +21975,7 @@ try {
               })(importNamespace("DOMPlugin").DOMPlugin);
               exports["default"] = ChatDOMFacade;
             },
-            226,
+            98,
           );
           __d(
             "IframePluginClass",
@@ -23599,67 +22433,6 @@ try {
             98,
           );
           __d(
-            "MPNExplicitUserInteractions",
-            [],
-            function $module_MPNExplicitUserInteractions(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports,
-            ) {
-              "use strict";
-
-              var USER_INTERACTION_TIMEOUT = 3600000;
-
-              function hasUserInteraction(euit) {
-                if (euit == null) {
-                  return false;
-                }
-                return Date.now() <= euit + USER_INTERACTION_TIMEOUT;
-              }
-              exports.hasUserInteraction = hasUserInteraction;
-            },
-            66,
-          );
-          __d(
-            "MPNLocalState",
-            [],
-            function $module_MPNLocalState(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports,
-            ) {
-              "use strict";
-
-              var MPNLocalStatePath = {
-                LANDING_BANNER: 1,
-                WELCOME_PAGE: 2,
-                ITP_CONTINUE: 3,
-                THREAD_VIEW: 4,
-                BUBBLE: 5,
-                REENGAGEMENT_COLLAPSED_VIEW: 6,
-                REENGAGEMENT_EXPANDED_VIEW: 7,
-              };
-
-              var MPNChatState = {
-                CHAT_NOT_STARTED: 1,
-                LOGGED_IN_CHAT_STARTED: 2,
-                GUEST_CHAT_STARTED: 3,
-              };
-
-              var LOCAL_STATE_KEY = "__fb_chat_plugin";
-              exports.MPNLocalStatePath = MPNLocalStatePath;
-              exports.MPNChatState = MPNChatState;
-              exports.LOCAL_STATE_KEY = LOCAL_STATE_KEY;
-            },
-            66,
-          );
-          __d(
             "getFacebookOriginForTarget",
             ["Log"],
             function $module_getFacebookOriginForTarget(
@@ -23730,40 +22503,6 @@ try {
             98,
           );
           __d(
-            "MPNSingletonProvider",
-            [],
-            function $module_MPNSingletonProvider(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports,
-            ) {
-              "use strict";
-              var MPNSingletonProvider = (function () {
-                function MPNSingletonProvider(createInstanceFn) {
-                  this.$MPNSingletonProvider_instance = null;
-                  this.$MPNSingletonProvider_constructor = createInstanceFn;
-                }
-                var _proto = MPNSingletonProvider.prototype;
-                _proto.get = function get() {
-                  if (this.$MPNSingletonProvider_instance == null) {
-                    this.$MPNSingletonProvider_instance =
-                      this.$MPNSingletonProvider_constructor();
-                  }
-                  return this.$MPNSingletonProvider_instance;
-                };
-                _proto.clear = function clear() {
-                  this.$MPNSingletonProvider_instance = null;
-                };
-                return MPNSingletonProvider;
-              })();
-              exports["default"] = MPNSingletonProvider;
-            },
-            66,
-          );
-          __d(
             "sdk.DocumentTitle",
             [],
             function $module_sdk_DocumentTitle(
@@ -23831,7 +22570,7 @@ try {
           );
           __d(
             "sdk.cp.Constants",
-            ["MPNLocalState", "UrlMap", "sdk.Runtime"],
+            ["UrlMap", "sdk.Runtime"],
             function $module_sdk_cp_Constants(
               global,
               require,
@@ -23870,7 +22609,6 @@ try {
                   itp: "/itpcontinue",
                 },
 
-                localStateKey: importNamespace("MPNLocalState").LOCAL_STATE_KEY,
                 animationEvents: [
                   "animationend",
                   "mozAnimationEnd",
@@ -23888,17 +22626,7 @@ try {
           );
           __d(
             "sdk.cp.Actions",
-            [
-              "DOMEventListener",
-              "MPNExplicitUserInteractions",
-              "MPNLocalState",
-              "MPNSingletonProvider",
-              "sdk.DOM",
-              "sdk.DocumentTitle",
-              "sdk.URI",
-              "sdk.WebStorage",
-              "sdk.cp.Constants",
-            ],
+            ["DOMEventListener", "sdk.DOM", "sdk.DocumentTitle", "sdk.URI"],
             function $module_sdk_cp_Actions(
               global,
               require,
@@ -23916,7 +22644,6 @@ try {
                   iframe,
                   hasExplicitInteraction,
                 ) {
-                  var _WebStorage$getLocalS;
                   if (iframe == null) {
                     return;
                   }
@@ -23924,15 +22651,6 @@ try {
                   var iframeSrcUri = new (importDefault("sdk.URI"))(iframe.src);
 
                   var queryData = iframeSrcUri.getQueryData();
-                  queryData.local_state =
-                    (_WebStorage$getLocalS =
-                      importNamespace("sdk.WebStorage").getLocalStorage()) ==
-                    null
-                      ? void 0
-                      : _WebStorage$getLocalS.getItem(
-                          importDefault("sdk.cp.Constants").localStateKey,
-                        );
-
                   queryData.request_time = Date.now();
                   if (
                     hasExplicitInteraction === "true" ||
@@ -23946,30 +22664,6 @@ try {
                 };
                 _proto.getExplicitUserInteractionFlag =
                   function getExplicitUserInteractionFlag() {
-                    var storage =
-                      importNamespace("sdk.WebStorage").getLocalStorage();
-                    var localState = null;
-                    if (storage != null) {
-                      try {
-                        localState = storage.getItem(
-                          importNamespace("MPNLocalState").LOCAL_STATE_KEY,
-                        );
-                      } catch (_unused) {
-                        return false;
-                      }
-                    }
-                    if (localState != null) {
-                      try {
-                        var stateObj = ES("JSON", "parse", false, localState);
-                        return importNamespace(
-                          "MPNExplicitUserInteractions",
-                        ).hasUserInteraction(
-                          stateObj == null ? void 0 : stateObj.euit,
-                        );
-                      } catch (_unused2) {
-                        return false;
-                      }
-                    }
                     return false;
                   };
                 _proto.setDialogAppearance = function setDialogAppearance(
@@ -24045,16 +22739,8 @@ try {
                   };
                 return MPNSDKActions;
               })();
-
-              var _provider = new (importDefault("MPNSingletonProvider"))(
-                function () {
-                  return new MPNSDKActions();
-                },
-              );
-              var _default = _provider.get();
-              exports["default"] = _default;
             },
-            98,
+            34,
           );
           __d(
             "sdk.cp.Animation",
@@ -24154,7 +22840,7 @@ try {
           );
           __d(
             "sdk.cp.Storage",
-            ["MPNSingletonProvider", "sdk.WebStorage", "sdk.cp.Constants"],
+            ["sdk.WebStorage"],
             function $module_sdk_cp_Storage(
               global,
               require,
@@ -24174,84 +22860,14 @@ try {
                   if (!storage) {
                     return;
                   }
-                  try {
-                    if (state == null) {
-                      storage.removeItem(
-                        importDefault("sdk.cp.Constants").localStateKey,
-                      );
-                    } else {
-                      var currState = storage.getItem(
-                        importDefault("sdk.cp.Constants").localStateKey,
-                      );
-                      if (currState == null) {
-                        storage.setItem(
-                          importDefault("sdk.cp.Constants").localStateKey,
-                          ES(
-                            "JSON",
-                            "stringify",
-                            false,
-                            ES("JSON", "parse", false, state),
-                          ),
-                        );
-                      } else {
-                        var parsedCurrentState = ES(
-                          "JSON",
-                          "parse",
-                          false,
-                          currState,
-                        );
-                        var parsedMessage = ES("JSON", "parse", false, state);
-                        storage.setItem(
-                          importDefault("sdk.cp.Constants").localStateKey,
-                          ES(
-                            "JSON",
-                            "stringify",
-                            false,
-                            babelHelpers["extends"](
-                              {},
-                              parsedCurrentState,
-                              parsedMessage,
-                            ),
-                          ),
-                        );
-                      }
-                    }
-                  } catch (_unused) {
-                    return;
-                  }
                 };
                 _proto.getStateJSON = function getStateJSON() {
-                  var storage =
-                    importNamespace("sdk.WebStorage").getLocalStorageForRead();
-                  if (!storage) {
-                    return "{}";
-                  }
-                  var item = storage.getItem(
-                    importDefault("sdk.cp.Constants").localStateKey,
-                  );
-                  if (item == null) {
-                    return "{}";
-                  }
-
-                  return ES(
-                    "JSON",
-                    "stringify",
-                    false,
-                    ES("JSON", "parse", false, item),
-                  );
+                  return "{}";
                 };
                 return MPNSDKStorage;
               })();
-
-              var _provider = new (importDefault("MPNSingletonProvider"))(
-                function () {
-                  return new MPNSDKStorage();
-                },
-              );
-              var _default = _provider.get();
-              exports["default"] = _default;
             },
-            98,
+            34,
           );
           __d(
             "sdk.XFBML.CustomerChatNew",
@@ -24259,9 +22875,6 @@ try {
               "ChatPluginSDKPreLoggingUtils",
               "DOMEventListener",
               "IframePluginClass",
-              "Log",
-              "MPNExplicitUserInteractions",
-              "MPNLocalState",
               "QueryString",
               "UrlMap",
               "getFacebookOriginForTarget",
@@ -24274,10 +22887,8 @@ try {
               "sdk.WebStorage",
               "sdk.XD",
               "sdk.XFBML.CustomerChatWrapper",
-              "sdk.cp.Actions",
               "sdk.cp.Animation",
               "sdk.cp.Constants",
-              "sdk.cp.Storage",
               "sdk.createIframe",
             ],
             function $module_sdk_XFBML_CustomerChatNew(
@@ -24405,40 +23016,6 @@ try {
                     var storage =
                       importNamespace("sdk.WebStorage").getLocalStorage();
                     var localState = null;
-                    if (storage != null) {
-                      try {
-                        localState = storage.getItem(
-                          importNamespace("MPNLocalState").LOCAL_STATE_KEY,
-                        );
-                      } catch (_unused) {
-                        importNamespace("Log").warn(
-                          "Failed to access localStorage",
-                        );
-                      }
-                    }
-                    if (localState != null) {
-                      ES("Object", "assign", false, this.params, {
-                        local_state: localState,
-                      });
-                    }
-                    if (localState != null) {
-                      try {
-                        var stateObj = ES("JSON", "parse", false, localState);
-                        if (
-                          importNamespace(
-                            "MPNExplicitUserInteractions",
-                          ).hasUserInteraction(
-                            stateObj == null ? void 0 : stateObj.euit,
-                          )
-                        ) {
-                          ES("Object", "assign", false, this.params, {
-                            has_explicit_interaction: 1,
-                          });
-                        }
-                      } catch (_unused2) {
-                        importNamespace("Log").warn("Invalid local state");
-                      }
-                    }
                     var requestTime = (
                       _importDefault_closure_performanceAbsoluteNow ||
                       (_importDefault_closure_performanceAbsoluteNow =
@@ -24475,14 +23052,10 @@ try {
                     });
                     this.subscribe(
                       "xd.mpn.storeState",
-                      function subscribe_$1(message) {
-                        importDefault("sdk.cp.Storage").setState(message.state);
-                      },
+                      function subscribe_$1(message) {},
                     );
                     this.subscribe("xd.mpn.getState", function subscribe_$1(_) {
-                      var state =
-                        importDefault("sdk.cp.Storage").getStateJSON();
-                      var event = { name: "mpnDidFetchState", params: state };
+                      var event = { name: "mpnDidFetchState" };
                       _this.$CustomerChat$p_postMessageToDialogFrame(event);
                       _this.$CustomerChat$p_postMessageToBubbleFrame(event);
                     });
@@ -24511,50 +23084,6 @@ try {
                       function subscribe_$1(message) {
                         _this.$CustomerChat$p_handleToggleGreetingDialogVisibility(
                           message,
-                        );
-                      },
-                    );
-                    this.subscribe(
-                      "xd.mpn.updateGreetingAppearance",
-                      function subscribe_$1(message) {
-                        importDefault("sdk.cp.Actions").setDialogAppearance(
-                          _this.$CustomerChat$p_greetingIFrame,
-                          message,
-                        );
-                      },
-                    );
-                    this.subscribe(
-                      "xd.mpn.updateDialogAppearance",
-                      function subscribe_$1(message) {
-                        importDefault("sdk.cp.Actions").setDialogAppearance(
-                          _this.iframe,
-                          message,
-                        );
-                      },
-                    );
-                    this.subscribe(
-                      "xd.mpn.updateIconAppearance",
-                      function subscribe_$1(message) {
-                        importDefault("sdk.cp.Actions").setDialogAppearance(
-                          _this.$CustomerChat$p_iconInnerIFrame,
-                          message,
-                        );
-                      },
-                    );
-                    this.subscribe(
-                      "xd.mpn.reload",
-                      function subscribe_$1(message) {
-                        importDefault("sdk.cp.Actions").reloadIframe(
-                          _this.iframe,
-                          message.hasExplicitInteraction,
-                        );
-                      },
-                    );
-                    this.subscribe(
-                      "xd.mpn.updatePageTitle",
-                      function subscribe_$1(message) {
-                        importDefault("sdk.cp.Actions").blinkPageTitle(
-                          message.title,
                         );
                       },
                     );
@@ -28457,7 +26986,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1016549359","namespace":"FB","message":"' +
+        '","revision":"1016627401","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
