@@ -1,4 +1,4 @@
-/*1730289408,,JIT Construction: v1017795464,en_US*/
+/*1730393800,,JIT Construction: v1017838824,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3701,17 +3701,16 @@ try {
           });
           __d("JSSDKCssConfig", [], {
             rules:
-              ".fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0px;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:'lucida grande', tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}\u0040keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}\n.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0px;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:'lucida grande', tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}\u0040keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}\n.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_dialog_advanced{border-radius:8px;padding:10px}.fb_dialog_content{background:#fff;color:#373737}.fb_dialog_close_icon{background:url(https://connect.facebook.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{left:5px;right:auto;top:5px}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https://connect.facebook.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(https://connect.facebook.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https://connect.facebook.net/rsrc.php/v3/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50\u0025;float:left;padding:5px 0 7px 26px}body.fb_hidden{height:100\u0025;left:0px;margin:0px;overflow:visible;position:absolute;top:-10000px;transform:none;width:100\u0025}.fb_dialog.fb_dialog_mobile.loading{background:url(https://connect.facebook.net/rsrc.php/v3/ya/r/3rhSv5V8j3o.gif) white no-repeat 50\u0025 50\u0025;min-height:100\u0025;min-width:100\u0025;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{background:none;height:auto;min-height:initial;min-width:initial;width:auto}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100\u0025}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{clear:both;color:#fff;display:block;font-size:18px;padding-top:20px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .4);bottom:0;left:0;min-height:100\u0025;position:absolute;right:0;top:0;width:100\u0025;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_mobile .fb_dialog_iframe{position:sticky;top:0}.fb_dialog_content .dialog_header{background:linear-gradient(from(#738aba), to(#2c4987));border-bottom:1px solid;border-color:#043b87;box-shadow:white 0px 1px 1px -1px inset;color:#fff;font:bold 14px Helvetica, sans-serif;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0px -1px 0px;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{height:43px;width:100\u0025}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:linear-gradient(from(#4267B2), to(#2a4887));background-clip:padding-box;border:1px solid #29487d;border-radius:3px;display:inline-block;line-height:18px;margin-top:3px;max-width:85px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{background:none;border:none;color:#fff;font:bold 12px Helvetica, sans-serif;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0px -1px 0px}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https://connect.facebook.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat 50\u0025 50\u0025;border:1px solid #4a4a4a;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f5f6f7;border:1px solid #4a4a4a;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https://connect.facebook.net/rsrc.php/v3/yD/r/t-wz8gw1xG1.png);background-position:50\u0025 50\u0025;background-repeat:no-repeat;height:24px;width:24px}\u0040keyframes rotateSpinner{0\u0025{transform:rotate(0deg)}100\u0025{transform:rotate(360deg)}}\n.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100\u0025}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100\u0025}\n.fb_mpn_mobile_landing_page_slide_out{animation-duration:200ms;animation-name:fb_mpn_landing_page_slide_out;transition-timing-function:ease-in}.fb_mpn_mobile_landing_page_slide_out_from_left{animation-duration:200ms;animation-name:fb_mpn_landing_page_slide_out_from_left;transition-timing-function:ease-in}.fb_mpn_mobile_landing_page_slide_up{animation-duration:500ms;animation-name:fb_mpn_landing_page_slide_up;transition-timing-function:ease-in}.fb_mpn_mobile_bounce_in{animation-duration:300ms;animation-name:fb_mpn_bounce_in;transition-timing-function:ease-in}.fb_mpn_mobile_bounce_out{animation-duration:300ms;animation-name:fb_mpn_bounce_out;transition-timing-function:ease-in}.fb_mpn_mobile_bounce_out_v2{animation-duration:300ms;animation-name:fb_mpn_fade_out;transition-timing-function:ease-in}.fb_customer_chat_bounce_in_v2{animation-duration:300ms;animation-name:fb_bounce_in_v2;transition-timing-function:ease-in}.fb_customer_chat_bounce_in_from_left{animation-duration:300ms;animation-name:fb_bounce_in_from_left;transition-timing-function:ease-in}.fb_customer_chat_bounce_out_v2{animation-duration:300ms;animation-name:fb_bounce_out_v2;transition-timing-function:ease-in}.fb_customer_chat_bounce_out_from_left{animation-duration:300ms;animation-name:fb_bounce_out_from_left;transition-timing-function:ease-in}.fb_invisible_flow{display:inherit;height:0;overflow-x:hidden;width:0}\u0040keyframes fb_mpn_landing_page_slide_out{0\u0025{margin:0 12px;width:100\u0025 - 24px}60\u0025{border-radius:18px}100\u0025{border-radius:50\u0025;margin:0 24px;width:60px}}\u0040keyframes fb_mpn_landing_page_slide_out_from_left{0\u0025{left:12px;width:100\u0025 - 24px}60\u0025{border-radius:18px}100\u0025{border-radius:50\u0025;left:12px;width:60px}}\u0040keyframes fb_mpn_landing_page_slide_up{0\u0025{bottom:0;opacity:0}100\u0025{bottom:24px;opacity:1}}\u0040keyframes fb_mpn_bounce_in{0\u0025{opacity:.5;top:100\u0025}100\u0025{opacity:1;top:0}}\u0040keyframes fb_mpn_fade_out{0\u0025{bottom:30px;opacity:1}100\u0025{bottom:0px;opacity:0}}\u0040keyframes fb_mpn_bounce_out{0\u0025{opacity:1;top:0}100\u0025{opacity:.5;top:100\u0025}}\u0040keyframes fb_bounce_in_v2{0\u0025{opacity:0;transform:scale(0, 0);transform-origin:bottom right}50\u0025{transform:scale(1.03, 1.03);transform-origin:bottom right}100\u0025{opacity:1;transform:scale(1, 1);transform-origin:bottom right}}\u0040keyframes fb_bounce_in_from_left{0\u0025{opacity:0;transform:scale(0, 0);transform-origin:bottom left}50\u0025{transform:scale(1.03, 1.03);transform-origin:bottom left}100\u0025{opacity:1;transform:scale(1, 1);transform-origin:bottom left}}\u0040keyframes fb_bounce_out_v2{0\u0025{opacity:1;transform:scale(1, 1);transform-origin:bottom right}100\u0025{opacity:0;transform:scale(0, 0);transform-origin:bottom right}}\u0040keyframes fb_bounce_out_from_left{0\u0025{opacity:1;transform:scale(1, 1);transform-origin:bottom left}100\u0025{opacity:0;transform:scale(0, 0);transform-origin:bottom left}}\u0040keyframes slideInFromBottom{0\u0025{opacity:.1;transform:translateY(100\u0025)}100\u0025{opacity:1;transform:translateY(0)}}\u0040keyframes slideInFromBottomDelay{0\u0025{opacity:0;transform:translateY(100\u0025)}97\u0025{opacity:0;transform:translateY(100\u0025)}100\u0025{opacity:1;transform:translateY(0)}}",
+              ".fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0px;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:'lucida grande', tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}\u0040keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}\n.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0px;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:'lucida grande', tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}\u0040keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}\n.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_dialog_advanced{border-radius:8px;padding:10px}.fb_dialog_content{background:#fff;color:#373737}.fb_dialog_close_icon{background:url(https://connect.facebook.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{left:5px;right:auto;top:5px}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https://connect.facebook.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(https://connect.facebook.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https://connect.facebook.net/rsrc.php/v3/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50\u0025;float:left;padding:5px 0 7px 26px}body.fb_hidden{height:100\u0025;left:0px;margin:0px;overflow:visible;position:absolute;top:-10000px;transform:none;width:100\u0025}.fb_dialog.fb_dialog_mobile.loading{background:url(https://connect.facebook.net/rsrc.php/v3/ya/r/3rhSv5V8j3o.gif) white no-repeat 50\u0025 50\u0025;min-height:100\u0025;min-width:100\u0025;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{background:none;height:auto;min-height:initial;min-width:initial;width:auto}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100\u0025}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{clear:both;color:#fff;display:block;font-size:18px;padding-top:20px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .4);bottom:0;left:0;min-height:100\u0025;position:absolute;right:0;top:0;width:100\u0025;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_mobile .fb_dialog_iframe{position:sticky;top:0}.fb_dialog_content .dialog_header{background:linear-gradient(from(#738aba), to(#2c4987));border-bottom:1px solid;border-color:#043b87;box-shadow:white 0px 1px 1px -1px inset;color:#fff;font:bold 14px Helvetica, sans-serif;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0px -1px 0px;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{height:43px;width:100\u0025}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:linear-gradient(from(#4267B2), to(#2a4887));background-clip:padding-box;border:1px solid #29487d;border-radius:3px;display:inline-block;line-height:18px;margin-top:3px;max-width:85px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{background:none;border:none;color:#fff;font:bold 12px Helvetica, sans-serif;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0px -1px 0px}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https://connect.facebook.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat 50\u0025 50\u0025;border:1px solid #4a4a4a;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f5f6f7;border:1px solid #4a4a4a;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https://connect.facebook.net/rsrc.php/v3/yD/r/t-wz8gw1xG1.png);background-position:50\u0025 50\u0025;background-repeat:no-repeat;height:24px;width:24px}\u0040keyframes rotateSpinner{0\u0025{transform:rotate(0deg)}100\u0025{transform:rotate(360deg)}}\n.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100\u0025}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100\u0025}",
             components: [
               "css:fb.css.base",
               "css:fb.css.dialog",
               "css:fb.css.iframewidget",
-              "css:fb.css.customer_chat_plugin_iframe",
             ],
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1017795464",
+            revision: "1017838824",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -20824,3036 +20823,6 @@ try {
           );
 
           __d(
-            "ChatPluginEntryPointIconEnum",
-            ["$InternalEnum"],
-            function $module_ChatPluginEntryPointIconEnum(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports,
-            ) {
-              var ChatPluginEntryPointIconEnum = require("$InternalEnum")({
-                MESSENGER_ICON: "messenger_icon",
-                CHAT_ROUND_ICON: "chat_round_icon",
-                CHAT_ANGULAR_ICON: "chat_angular_icon",
-                NONE: "none",
-              });
-              var _default = ChatPluginEntryPointIconEnum;
-              exports["default"] = _default;
-            },
-            66,
-          );
-
-          __d(
-            "ChatPluginEntryPointLabelEnum",
-            ["$InternalEnum"],
-            function $module_ChatPluginEntryPointLabelEnum(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports,
-            ) {
-              var ChatPluginEntryPointLabelEnum = require("$InternalEnum")({
-                NONE: "none",
-                CHAT: "chat",
-                HELP: "help",
-                ASK_US: "ask_us",
-              });
-              var _default = ChatPluginEntryPointLabelEnum;
-              exports["default"] = _default;
-            },
-            66,
-          );
-
-          __d(
-            "ChatPluginEntryPointSizeEnum",
-            [],
-            function $module_ChatPluginEntryPointSizeEnum(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports,
-            ) {
-              var _default = Object.freeze({
-                STANDARD: "standard",
-                COMPACT: "compact",
-              });
-              exports["default"] = _default;
-            },
-            66,
-          );
-
-          __d(
-            "performanceAbsoluteNow",
-            ["performance"],
-            function $module_performanceAbsoluteNow(
-              global,
-              require,
-              importDefault,
-              importNamespace,
-              requireLazy,
-              module,
-              exports,
-            ) {
-              var _importDefault_closure_performance;
-
-              var performanceAbsoluteNow;
-
-              var fallback = function fallback() {
-                return Date.now();
-              };
-
-              function setFallback(fn) {
-                fallback = fn;
-              }
-
-              if (
-                (
-                  _importDefault_closure_performance ||
-                  (_importDefault_closure_performance =
-                    importDefault("performance"))
-                ).now &&
-                (
-                  _importDefault_closure_performance ||
-                  (_importDefault_closure_performance =
-                    importDefault("performance"))
-                ).timing &&
-                (
-                  _importDefault_closure_performance ||
-                  (_importDefault_closure_performance =
-                    importDefault("performance"))
-                ).timing.navigationStart
-              ) {
-                var navigationStart = (
-                  _importDefault_closure_performance ||
-                  (_importDefault_closure_performance =
-                    importDefault("performance"))
-                ).timing.navigationStart;
-
-                performanceAbsoluteNow = function performanceAbsoluteNow() {
-                  return (
-                    (
-                      _importDefault_closure_performance ||
-                      (_importDefault_closure_performance =
-                        importDefault("performance"))
-                    ).now() + navigationStart
-                  );
-                };
-              } else {
-                performanceAbsoluteNow = function performanceAbsoluteNow() {
-                  return fallback();
-                };
-              }
-
-              performanceAbsoluteNow.setFallback = setFallback;
-              var _default = performanceAbsoluteNow;
-              exports["default"] = _default;
-            },
-            98,
-          );
-          __d(
-            "ChatPluginSDKPreLoggingUtils",
-            ["CORSRequest", "UrlMap", "performanceAbsoluteNow"],
-            function $module_ChatPluginSDKPreLoggingUtils(
-              global,
-              require,
-              importDefault,
-              importNamespace,
-              requireLazy,
-              module,
-              exports,
-            ) {
-              "use strict";
-              var _importDefault_closure_performanceAbsoluteNow;
-
-              function preLogging(
-                should_use_new_domain,
-                event_name,
-                params,
-                calculate_loading_time,
-              ) {
-                var _params$request_time;
-                if (calculate_loading_time === void 0) {
-                  calculate_loading_time = true;
-                }
-                var request_time = (
-                  _importDefault_closure_performanceAbsoluteNow ||
-                  (_importDefault_closure_performanceAbsoluteNow =
-                    importDefault("performanceAbsoluteNow"))
-                )();
-                var uri = should_use_new_domain
-                  ? importNamespace("UrlMap").resolve("social_plugin") +
-                    "/customer_chat/SDK/"
-                  : importNamespace("UrlMap").resolve("www") +
-                    "/plugins/customer_chat/SDK/";
-                var prev_time =
-                  (_params$request_time = params.request_time) != null
-                    ? _params$request_time
-                    : undefined;
-                var loading_time = 0;
-                if (typeof prev_time === "number" && calculate_loading_time) {
-                  loading_time = request_time - prev_time;
-                }
-                params.request_time = request_time;
-                importDefault("CORSRequest").execute(
-                  uri,
-                  "get",
-                  babelHelpers["extends"]({}, params, {
-                    event_name: event_name,
-                    loading_time: loading_time,
-                  }),
-                  function CORSRequest_execute_$3() {
-                    return null;
-                  },
-                );
-              }
-              exports.preLogging = preLogging;
-            },
-            98,
-          );
-
-          __d(
-            "DOMPlugin",
-            [
-              "JSSDKShadowCssConfig",
-              "Log",
-              "QueryString",
-              "sdk.DOM",
-              "sdk.Observable",
-              "sdk.PluginUtils",
-              "sdk.Runtime",
-              "sdk.XD",
-              "sdk.feature",
-            ],
-            function $module_DOMPlugin(
-              global,
-              require,
-              importDefault,
-              importNamespace,
-              requireLazy,
-              module,
-              exports,
-            ) {
-              var DOMPlugin = (function (_Observable) {
-                babelHelpers.inheritsLoose(DOMPlugin, _Observable);
-                var _proto = DOMPlugin.prototype;
-                _proto.render = function render(_root) {};
-
-                function DOMPlugin(element, ns, tag, attr, inParams, config) {
-                  var _config;
-                  var _this;
-                  _this = _Observable.call(this) || this;
-                  _this.shadowCss = [];
-
-                  _this.element = element;
-                  _this.tag = tag.replace(/-/g, "_");
-                  _this.ns = ns;
-                  _this.config = (_config = config) != null ? _config : {};
-                  _this.params = {};
-                  importNamespace("sdk.PluginUtils").validate(
-                    inParams,
-                    element,
-                    attr,
-                    _this.params,
-                  );
-                  importNamespace("sdk.PluginUtils").validate(
-                    importNamespace("sdk.PluginUtils").baseParams,
-                    element,
-                    attr,
-                    _this.params,
-                  );
-
-                  ES("Object", "assign", false, _this.params, {
-                    app_id: importDefault("sdk.Runtime").getClientID(),
-                    locale: importDefault("sdk.Runtime").getLocale(),
-                    sdk: "joey",
-                    kid_directed_site:
-                      importDefault("sdk.Runtime").getKidDirectedSite(),
-                    channel: importNamespace("sdk.XD").handler(
-                      function XD_handler_$0(msg) {
-                        if (msg != null) {
-                          _this.inform("xd." + msg.type, msg);
-                        }
-                      },
-                      "parent.parent",
-                      true,
-                    ),
-                  });
-                  return _this;
-                }
-                _proto.process = function process() {
-                  var params = babelHelpers["extends"]({}, this.params);
-                  delete params.channel;
-                  var query = importDefault("QueryString").encode(params);
-                  if (
-                    this.element.getAttribute("fb-iframe-plugin-query") ===
-                    query
-                  ) {
-                    importNamespace("Log").info(
-                      "Skipping render: %s:%s %s",
-                      this.ns,
-                      this.tag,
-                      query,
-                    );
-                    this.inform("render");
-                    return;
-                  }
-                  this.element.setAttribute("fb-iframe-plugin-query", query);
-
-                  maybeCreateShadowRootAndRenderInDOM(
-                    this.element,
-                    ES(this.render, "bind", true, this),
-                    this.shadowCss,
-                  );
-
-                  this.inform("render");
-                };
-                return DOMPlugin;
-              })(importNamespace("sdk.Observable").Observable);
-
-              function maybeCreateShadowRootAndRenderInDOM(
-                element,
-                render,
-
-                shadowCss,
-              ) {
-                if (shadowCss === void 0) {
-                  shadowCss = [];
-                }
-                while (element.firstChild) {
-                  element.removeChild(element.firstChild);
-                }
-
-                if (typeof element.attachShadow === "function") {
-                  var shadowRootWrapper = document.createElement("div");
-                  element.appendChild(shadowRootWrapper);
-                  var shadowRoot = shadowRootWrapper.attachShadow({
-                    mode: importDefault("sdk.feature")(
-                      "shadow_dom_plugin_mode",
-                      "closed",
-                    ),
-                  });
-
-                  shadowCss.forEach(
-                    function shadowCss_forEach_$0(cssModuleName) {
-                      return importNamespace("sdk.DOM").addCssRules(
-                        importDefault("JSSDKShadowCssConfig")[cssModuleName],
-                        [cssModuleName],
-                        shadowRoot,
-                      );
-                    },
-                  );
-
-                  shadowRoot.appendChild(render(shadowRoot));
-                } else {
-                  shadowCss.forEach(
-                    function shadowCss_forEach_$0(cssModuleName) {
-                      return importNamespace("sdk.DOM").addCssRules(
-                        importDefault("JSSDKShadowCssConfig")[cssModuleName],
-                        [cssModuleName],
-                      );
-                    },
-                  );
-
-                  element.appendChild(render(document));
-                }
-              }
-              exports.DOMPlugin = DOMPlugin;
-              exports.maybeCreateShadowRootAndRenderInDOM =
-                maybeCreateShadowRootAndRenderInDOM;
-            },
-            98,
-          );
-          __d(
-            "getJSEnumSafe",
-            [],
-            function $module_getJSEnumSafe(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports,
-            ) {
-              "use strict";
-
-              function getJSEnumSafe(map, key) {
-                if (key == null) {
-                  return null;
-                }
-
-                if (!Object.prototype.hasOwnProperty.call(map, key)) {
-                  return null;
-                }
-
-                var safeKey = key;
-
-                return map[safeKey];
-              }
-              exports["default"] = getJSEnumSafe;
-            },
-            66,
-          );
-
-          __d(
-            "ExecutionEnvironment",
-            [],
-            function $module_ExecutionEnvironment(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports,
-            ) {
-              "use strict";
-
-              var canUseDOM = !!(
-                global !== undefined &&
-                global.document &&
-                global.document.createElement
-              );
-
-              var isInWorker = typeof WorkerGlobalScope === "function";
-              var isInSharedWorker =
-                typeof SharedWorkerGlobalScope === "function" &&
-                self instanceof SharedWorkerGlobalScope;
-              var isInMainThread = !isInWorker && canUseDOM;
-
-              var ExecutionEnvironment = {
-                canUseDOM: canUseDOM,
-                canUseEventListeners:
-                  canUseDOM &&
-                  !!(global.addEventListener || global.attachEvent),
-                canUseViewport: canUseDOM && !!window.screen,
-                canUseWorkers: typeof Worker !== "undefined",
-
-                isInBrowser: canUseDOM || isInWorker,
-                isInMainThread: isInMainThread,
-                isInSharedWorker: isInSharedWorker,
-                isInWorker: isInWorker,
-              };
-              var _default = ExecutionEnvironment;
-              exports["default"] = _default;
-            },
-            66,
-          );
-          __d(
-            "nativeRequestAnimationFrame",
-            [],
-            function $module_nativeRequestAnimationFrame(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports,
-            ) {
-              var nativeRequestAnimationFrame =
-                global.__fbNativeRequestAnimationFrame ||
-                global.requestAnimationFrame ||
-                global.webkitRequestAnimationFrame ||
-                global.mozRequestAnimationFrame ||
-                global.oRequestAnimationFrame ||
-                global.msRequestAnimationFrame;
-              var _default = nativeRequestAnimationFrame;
-              exports["default"] = _default;
-            },
-            66,
-          );
-
-          __d(
-            "requestAnimationFramePolyfill",
-            [
-              "ExecutionEnvironment",
-              "nativeRequestAnimationFrame",
-              "performanceNow",
-            ],
-            function $module_requestAnimationFramePolyfill(
-              global,
-              require,
-              importDefault,
-              importNamespace,
-              requireLazy,
-              module,
-              exports,
-            ) {
-              var _importDefault_closure_ExecutionEnvironment;
-              var _importDefault_closure_performanceNow;
-
-              var lastTime = 0;
-
-              var maybeNativeRequestAnimationFrame = importDefault(
-                "nativeRequestAnimationFrame",
-              );
-
-              if (
-                (
-                  _importDefault_closure_ExecutionEnvironment ||
-                  (_importDefault_closure_ExecutionEnvironment = importDefault(
-                    "ExecutionEnvironment",
-                  ))
-                ).isInWorker &&
-                maybeNativeRequestAnimationFrame != null
-              ) {
-                try {
-                  maybeNativeRequestAnimationFrame(
-                    function maybeNativeRequestAnimationFrame_$0() {},
-                  );
-                } catch (_error) {
-                  maybeNativeRequestAnimationFrame = null;
-                }
-              }
-
-              var requestAnimationFrame =
-                maybeNativeRequestAnimationFrame ||
-                function (callback) {
-                  var currTime = (
-                    _importDefault_closure_performanceNow ||
-                    (_importDefault_closure_performanceNow =
-                      importDefault("performanceNow"))
-                  )();
-                  var timeDelay = Math.max(0, 16 - (currTime - lastTime));
-                  lastTime = currTime + timeDelay;
-                  return global.setTimeout(function global_setTimeout_$0() {
-                    callback(
-                      (
-                        _importDefault_closure_performanceNow ||
-                        (_importDefault_closure_performanceNow =
-                          importDefault("performanceNow"))
-                      )(),
-                    );
-                  }, timeDelay);
-                };
-              var _default = requestAnimationFrame;
-              exports["default"] = _default;
-            },
-            98,
-          );
-
-          __d(
-            "IdleCallbackImplementation",
-            ["performanceNow", "requestAnimationFramePolyfill"],
-            function $module_IdleCallbackImplementation(
-              global,
-              require,
-              importDefault,
-              importNamespace,
-              requireLazy,
-              module,
-              exports,
-            ) {
-              var _importDefault_closure_performanceNow;
-
-              var _callbacks = [];
-              var _currentCallback = 0;
-              var _currentHandle = 0;
-              var _lastDeadline = -1;
-              var _isScheduled = false;
-
-              var FRAME_TIME = 1000 / 60;
-              var BUFFER_TIME = 2;
-
-              function toIdleCallbackID(handle) {
-                return handle;
-              }
-              function toHandle(idleCallbackID) {
-                return idleCallbackID;
-              }
-
-              function requestIdleCallback(callback, options) {
-                var handle = _currentHandle++;
-
-                _callbacks[handle] = callback;
-                scheduleIdlePeriod();
-
-                if (options != null && options.timeout > 0) {
-                  var idleCallbackID = toIdleCallbackID(handle);
-                  global.setTimeout(function global_setTimeout_$0() {
-                    return invokeIdleCallbackTimeout(idleCallbackID);
-                  }, options.timeout);
-                }
-
-                return toIdleCallbackID(handle);
-              }
-
-              function cancelIdleCallback(idleCallackID) {
-                var handle = toHandle(idleCallackID);
-                _callbacks[handle] = null;
-              }
-
-              function scheduleIdlePeriod() {
-                if (!_isScheduled) {
-                  _isScheduled = true;
-                  importDefault("requestAnimationFramePolyfill")(
-                    function requestAnimationFramePolyfill_$0(frameStartTime) {
-                      _isScheduled = false;
-                      startIdlePeriod(
-                        (
-                          _importDefault_closure_performanceNow ||
-                          (_importDefault_closure_performanceNow =
-                            importDefault("performanceNow"))
-                        )() - frameStartTime,
-                      );
-                    },
-                  );
-                }
-              }
-
-              function calculateDeadline(frameDelay) {
-                var effectiveFrameTime = FRAME_TIME - BUFFER_TIME;
-
-                if (frameDelay < effectiveFrameTime) {
-                  return effectiveFrameTime - frameDelay;
-                }
-
-                var frameOffset = frameDelay % FRAME_TIME;
-                if (
-                  frameOffset > effectiveFrameTime ||
-                  frameOffset < BUFFER_TIME
-                ) {
-                  return 0;
-                } else {
-                  return effectiveFrameTime - frameOffset;
-                }
-              }
-
-              function startIdlePeriod(frameDelay) {
-                var now = (
-                  _importDefault_closure_performanceNow ||
-                  (_importDefault_closure_performanceNow =
-                    importDefault("performanceNow"))
-                )();
-
-                if (now > _lastDeadline) {
-                  var time = calculateDeadline(frameDelay);
-                  if (time > 0) {
-                    var _deadline = now + time;
-                    invokeIdleCallbacks(_deadline);
-                    _lastDeadline = _deadline;
-                  }
-                }
-
-                if (hasIdleCallback()) {
-                  scheduleIdlePeriod();
-                }
-              }
-
-              function hasIdleCallback() {
-                return _currentCallback < _callbacks.length;
-              }
-
-              function popNextCallback() {
-                while (hasIdleCallback()) {
-                  var callback = _callbacks[_currentCallback];
-                  _currentCallback++;
-
-                  if (callback) {
-                    return callback;
-                  }
-                }
-                return null;
-              }
-
-              function invokeIdleCallbacks(deadline) {
-                var callback;
-                while (
-                  (
-                    _importDefault_closure_performanceNow ||
-                    (_importDefault_closure_performanceNow =
-                      importDefault("performanceNow"))
-                  )() < deadline &&
-                  (callback = popNextCallback())
-                ) {
-                  callback(new IdleCallbackDeadline(deadline));
-                }
-              }
-
-              function invokeIdleCallbackTimeout(idleCallbackID) {
-                var handle = toHandle(idleCallbackID);
-                var callback = _callbacks[handle];
-
-                if (callback) {
-                  cancelIdleCallback(idleCallbackID);
-                  callback(new IdleCallbackDeadline(null));
-                }
-              }
-              var IdleCallbackDeadline = (function () {
-                function IdleCallbackDeadline(deadline) {
-                  this.didTimeout = deadline == null;
-                  this.$IdleCallbackDeadline_deadline = deadline;
-                }
-                var _proto = IdleCallbackDeadline.prototype;
-                _proto.timeRemaining = function timeRemaining() {
-                  var deadline = this.$IdleCallbackDeadline_deadline;
-
-                  if (deadline != null) {
-                    var now = (
-                      _importDefault_closure_performanceNow ||
-                      (_importDefault_closure_performanceNow =
-                        importDefault("performanceNow"))
-                    )();
-                    if (now < deadline) {
-                      return deadline - now;
-                    }
-                  }
-
-                  return 0;
-                };
-                return IdleCallbackDeadline;
-              })();
-              exports.requestIdleCallback = requestIdleCallback;
-              exports.cancelIdleCallback = cancelIdleCallback;
-            },
-            98,
-          );
-
-          __d(
-            "sdk.IdleCallback",
-            ["IdleCallbackImplementation", "sdk.feature"],
-            function $module_sdk_IdleCallback(
-              global,
-              require,
-              importDefault,
-              importNamespace,
-              requireLazy,
-              module,
-              exports,
-            ) {
-              "use strict";
-              var IdleCallback = (function () {
-                function IdleCallback(timeout, callback, minIdleTime) {
-                  if (minIdleTime === void 0) {
-                    minIdleTime = importDefault("sdk.feature")(
-                      "idle_callback_wait_time_ms",
-                      2000,
-                    );
-                  }
-                  this.$IdleCallback$p_minIdleTime = minIdleTime;
-                  this.$IdleCallback$p_callback = callback;
-                  this.$IdleCallback$p_timeout = timeout;
-                }
-                var _proto = IdleCallback.prototype;
-                _proto.start = function start() {
-                  var _this = this;
-                  if (
-                    this.$IdleCallback$p_minIdleTime === 0 ||
-                    isNaN(this.$IdleCallback$p_minIdleTime) ||
-                    this.$IdleCallback$p_timeout === 0 ||
-                    isNaN(this.$IdleCallback$p_timeout)
-                  ) {
-                    this.$IdleCallback$p_callback();
-                    return null;
-                  }
-
-                  var startTimestamp = Date.now();
-                  var requestIdleCallbackFunc = this.isBrowserCompatible()
-                    ? window.requestIdleCallback
-                    : importNamespace("IdleCallbackImplementation")
-                        .requestIdleCallback;
-
-                  var totalTimeElapsed = 0;
-                  var prevTime = 0;
-                  var waitUntilIdle = function waitUntilIdle(deadline) {
-                    if (totalTimeElapsed > _this.$IdleCallback$p_minIdleTime) {
-                      _this.$IdleCallback$p_callback();
-                      return;
-                    }
-                    var timeNow = Date.now();
-                    if (
-                      timeNow - startTimestamp >
-                      _this.$IdleCallback$p_timeout
-                    ) {
-                      _this.$IdleCallback$p_callback();
-                      return;
-                    }
-                    var timeRemaining = deadline.timeRemaining();
-                    totalTimeElapsed +=
-                      timeRemaining >= 49 && prevTime >= 49 ? timeRemaining : 0;
-                    prevTime = timeRemaining;
-                    requestIdleCallbackFunc(waitUntilIdle);
-                  };
-                  return requestIdleCallbackFunc(waitUntilIdle);
-                };
-                _proto.isBrowserCompatible = function isBrowserCompatible() {
-                  if (typeof window === "undefined") {
-                    return false;
-                  }
-
-                  return typeof window.requestIdleCallback === "function";
-                };
-                return IdleCallback;
-              })();
-              exports["default"] = IdleCallback;
-            },
-            98,
-          );
-          __d(
-            "uuidv4",
-            [],
-            function $module_uuidv4(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports,
-            ) {
-              "use strict";
-
-              function uuidv4() {
-                var _self, _self$crypto;
-                var randomUUID =
-                  (_self = self) == null
-                    ? void 0
-                    : (_self$crypto = _self.crypto) == null
-                      ? void 0
-                      : _self$crypto.randomUUID;
-                if (typeof randomUUID === "function") {
-                  return self.crypto.randomUUID();
-                }
-                return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(
-                  /[xy]/g,
-                  function replace_$1(c) {
-                    var r = (Math.random() * 16) | 0;
-                    var v = c === "x" ? r : (r & 0x3) | 0x8;
-                    return v.toString(16);
-                  },
-                );
-              }
-              exports["default"] = uuidv4;
-            },
-            66,
-          );
-
-          __d(
-            "sdk.XFBML.ChatDOM",
-            [
-              "$InternalEnum",
-              "CORSRequest",
-              "ChatPluginEntryPointIconEnum",
-              "ChatPluginEntryPointLabelEnum",
-              "ChatPluginEntryPointSizeEnum",
-              "ChatPluginSDKPreLoggingUtils",
-              "DOMPlugin",
-              "Log",
-              "UrlMap",
-              "getJSEnumSafe",
-              "performanceAbsoluteNow",
-              "sdk.Content",
-              "sdk.DOM",
-              "sdk.IdleCallback",
-              "sdk.XFBML.CustomerChatNew",
-              "sdk.feature",
-              "uuidv4",
-            ],
-            function $module_sdk_XFBML_ChatDOM(
-              global,
-              require,
-              importDefault,
-              importNamespace,
-              requireLazy,
-              module,
-              exports,
-            ) {
-              "use strict";
-              var _importDefault_closure_performanceAbsoluteNow;
-              var LoadingState = require("$InternalEnum").Mirrored([
-                "WAITING",
-                "LOADING",
-                "LOADED",
-              ]);
-              var ChatDOMFacade = (function (_DOMPlugin) {
-                babelHelpers.inheritsLoose(ChatDOMFacade, _DOMPlugin);
-
-                function ChatDOMFacade(element, ns, tag, attr) {
-                  var _this;
-                  _this =
-                    _DOMPlugin.call(this, element, ns, tag, attr, {
-                      allow_guests: "bool",
-                      attribution: "string",
-                      greeting_dialog_display: "string",
-                      greeting_dialog_delay: "string",
-                      logged_in_greeting: "string",
-                      logged_out_greeting: "string",
-                      minimized: "bool",
-                      page_id: "string",
-                      theme_color: "string",
-                      override: "string",
-                      attribution_version: "string",
-                      is_loaded_by_facade: "bool",
-                    }) || this;
-
-                  var requestTime = (
-                    _importDefault_closure_performanceAbsoluteNow ||
-                    (_importDefault_closure_performanceAbsoluteNow =
-                      importDefault("performanceAbsoluteNow"))
-                  )();
-
-                  var logId = importDefault("uuidv4")();
-                  var currentUrl = window.location.href;
-                  ES("Object", "assign", false, _this.params, {
-                    current_url: currentUrl,
-                    log_id: logId,
-                    request_time: requestTime,
-                    is_loaded_by_facade: true,
-                    should_use_new_domain: attr.should_use_new_domain,
-                  });
-
-                  importNamespace("ChatPluginSDKPreLoggingUtils").preLogging(
-                    Boolean(attr.should_use_new_domain),
-                    "chat_plugin_sdk_facade_create",
-                    _this.params,
-                    false,
-                  );
-
-                  importNamespace("sdk.DOM").remove(element);
-                  importNamespace("sdk.Content").append(element);
-
-                  _this.$ChatDOMFacade$p_container =
-                    document.createElement("div");
-
-                  _this.$ChatDOMFacade$p_loadingState = LoadingState.WAITING;
-                  _this.$ChatDOMFacade$p_spinnerShown = false;
-                  _this.$ChatDOMFacade$p_willShowDialog = false;
-
-                  _this.$ChatDOMFacade$p_entryPointSize = "standard";
-                  _this.$ChatDOMFacade$p_entryPointLabel = "none";
-                  _this.$ChatDOMFacade$p_entryPointIconEnum = "none";
-                  _this.$ChatDOMFacade$p_alignment = "left";
-                  _this.$ChatDOMFacade$p_bottomSpacing = 0;
-                  _this.$ChatDOMFacade$p_sideSpacing = 0;
-                  _this.$ChatDOMFacade$p_isPageActive = false;
-                  _this.$ChatDOMFacade$p_shouldUseNewDomain = Boolean(
-                    attr.should_use_new_domain,
-                  );
-
-                  _this.shadowCss = ["css:fb.shadow.css.chatdom"];
-
-                  _this.$ChatDOMFacade$p_initTime =
-                    _importDefault_closure_performanceAbsoluteNow();
-                  importNamespace("Log").info(
-                    "facadeperf: Started browser idle loader.",
-                  );
-                  _this.$ChatDOMFacade$p_idleCallbackID = new (importDefault(
-                    "sdk.IdleCallback",
-                  ))(
-                    importDefault("sdk.feature")(
-                      "chat_plugin_facade_timeout_ms",
-                      8000,
-                    ),
-                    function () {
-                      var endTime = (
-                        _importDefault_closure_performanceAbsoluteNow ||
-                        (_importDefault_closure_performanceAbsoluteNow =
-                          importDefault("performanceAbsoluteNow"))
-                      )();
-                      importNamespace("Log").info(
-                        "facadeperf: Idle callback starts full load in %sms.",
-                        endTime - _this.$ChatDOMFacade$p_initTime,
-                      );
-
-                      _this.$ChatDOMFacade$p_loadFullPlugin(false, false);
-                    },
-                  ).start();
-                  return _this;
-                }
-                var _proto = ChatDOMFacade.prototype;
-                _proto.render = function render(_root) {
-                  var _this = this;
-                  this.$ChatDOMFacade$p_container.classList.add("container");
-                  var uri = this.$ChatDOMFacade$p_shouldUseNewDomain
-                    ? importNamespace("UrlMap").resolve("social_plugin") +
-                      "/customer_chat/facade/"
-                    : importNamespace("UrlMap").resolve("www") +
-                      "/plugins/customer_chat/facade/";
-                  importDefault("CORSRequest").execute(
-                    uri,
-                    "get",
-                    this.params,
-                    function CORSRequest_execute_$3(data) {
-                      var _getJSEnumSafe,
-                        _data$entry_point_siz,
-                        _ChatPluginEntryPoint,
-                        _ChatPluginEntryPoint2;
-                      var endTime = (
-                        _importDefault_closure_performanceAbsoluteNow ||
-                        (_importDefault_closure_performanceAbsoluteNow =
-                          importDefault("performanceAbsoluteNow"))
-                      )();
-                      importNamespace("Log").info(
-                        "facadeperf: CORS request completed in %sms.",
-                        endTime - _this.$ChatDOMFacade$p_initTime,
-                      );
-
-                      if (data.error) {
-                        return;
-                      }
-
-                      _this.$ChatDOMFacade$p_alignment = data.alignment;
-                      _this.$ChatDOMFacade$p_bottomSpacing =
-                        data.bottom_spacing;
-                      _this.$ChatDOMFacade$p_sideSpacing = data.side_spacing;
-                      var themeColor = data.theme_color;
-                      _this.$ChatDOMFacade$p_entryPointSize =
-                        (_getJSEnumSafe = importDefault("getJSEnumSafe")(
-                          importDefault("ChatPluginEntryPointSizeEnum"),
-                          (_data$entry_point_siz = data.entry_point_size) ==
-                            null
-                            ? void 0
-                            : _data$entry_point_siz.toUpperCase(),
-                        )) != null
-                          ? _getJSEnumSafe
-                          : "standard";
-                      _this.$ChatDOMFacade$p_entryPointLabel =
-                        (_ChatPluginEntryPoint = importDefault(
-                          "ChatPluginEntryPointLabelEnum",
-                        ).cast(data.entry_point_label)) != null
-                          ? _ChatPluginEntryPoint
-                          : "none";
-                      _this.$ChatDOMFacade$p_entryPointIconEnum =
-                        (_ChatPluginEntryPoint2 = importDefault(
-                          "ChatPluginEntryPointIconEnum",
-                        ).cast(data.entry_point_icon_enum)) != null
-                          ? _ChatPluginEntryPoint2
-                          : "none";
-                      _this.$ChatDOMFacade$p_isPageActive =
-                        data.away_hours_enabled && !data.is_page_away;
-
-                      if (_this.$ChatDOMFacade$p_entryPointLabel === "none") {
-                        var wrapperElement = document.createElement("div");
-                        importNamespace("sdk.DOM").dangerouslySetInnerHtml(
-                          wrapperElement,
-                          data.entry_point_icon_svg,
-                        );
-                        var iconSVG =
-                          wrapperElement == null
-                            ? void 0
-                            : wrapperElement.outerHTML;
-                        importNamespace("sdk.DOM").dangerouslySetInnerHtml(
-                          _this.$ChatDOMFacade$p_container,
-                          iconSVG,
-                        );
-                      } else {
-                        var _iconSVG = data.entry_point_icon_svg;
-                        importNamespace("sdk.DOM").dangerouslySetInnerHtml(
-                          _this.$ChatDOMFacade$p_container,
-                          _this.$ChatDOMFacade$p_getLabelEntryPointHTML(
-                            _iconSVG,
-                          ),
-                        );
-                      }
-
-                      _this.$ChatDOMFacade$p_container.style.backgroundColor =
-                        themeColor;
-
-                      if (_this.$ChatDOMFacade$p_isPageActive) {
-                        var availabilityStatusWrapperElement =
-                          document.createElement("div");
-
-                        _this.$ChatDOMFacade$p_container.append(
-                          availabilityStatusWrapperElement,
-                        );
-                      }
-
-                      importNamespace(
-                        "ChatPluginSDKPreLoggingUtils",
-                      ).preLogging(
-                        _this.$ChatDOMFacade$p_shouldUseNewDomain,
-                        "chat_plugin_sdk_facade_load",
-                        _this.params,
-                      );
-                    },
-                  );
-
-                  this.$ChatDOMFacade$p_container.addEventListener(
-                    "click",
-                    function $ChatDOMFacade$p_container_addEventListener_$1(
-                      _event,
-                    ) {
-                      _this.$ChatDOMFacade$p_loadFullPlugin(true, true);
-                    },
-                  );
-
-                  return this.$ChatDOMFacade$p_container;
-                };
-                _proto.$ChatDOMFacade$p_hideFacade =
-                  function $ChatDOMFacade$p_hideFacade() {
-                    var _this$element$parentN;
-                    (_this$element$parentN = this.element.parentNode) == null
-                      ? void 0
-                      : _this$element$parentN.removeChild(this.element);
-                  };
-                _proto.$ChatDOMFacade$p_showSpinner =
-                  function $ChatDOMFacade$p_showSpinner() {
-                    if (
-                      this.$ChatDOMFacade$p_spinnerShown ||
-                      this.$ChatDOMFacade$p_loadingState === LoadingState.LOADED
-                    ) {
-                      return;
-                    }
-
-                    if (this.$ChatDOMFacade$p_entryPointLabel === "none") {
-                      var spinnerSize =
-                        this.$ChatDOMFacade$p_entryPointSize === "compact"
-                          ? 24
-                          : 36;
-                      var spinnerSVG =
-                        this.$ChatDOMFacade$p_getSpinnerSVG(spinnerSize);
-                      importNamespace("sdk.DOM").dangerouslySetInnerHtml(
-                        this.$ChatDOMFacade$p_container,
-                        '\n          <div class="centered-container">\n            ' +
-                          spinnerSVG +
-                          "\n          </div>\n        ",
-                      );
-                    } else {
-                      var _spinnerSize =
-                        this.$ChatDOMFacade$p_entryPointSize === "compact"
-                          ? 20
-                          : 24;
-                      var _spinnerSVG =
-                        this.$ChatDOMFacade$p_getSpinnerSVG(_spinnerSize);
-                      if (this.$ChatDOMFacade$p_entryPointIconEnum === "none") {
-                        var marginRight = 100;
-                        importNamespace("sdk.DOM").dangerouslySetInnerHtml(
-                          this.$ChatDOMFacade$p_container.children[0],
-                          this.$ChatDOMFacade$p_getLabelOnlyEntryPointSpinner(
-                            marginRight,
-                            _spinnerSVG,
-                          ) +
-                            this.$ChatDOMFacade$p_container.children[0]
-                              .innerHTML,
-                        );
-
-                        if (this.$ChatDOMFacade$p_isPageActive) {
-                          var availabilityStatusWrapperElement =
-                            document.createElement("div");
-                          importNamespace("sdk.DOM").remove(
-                            this.$ChatDOMFacade$p_container.children[1],
-                          );
-                          this.$ChatDOMFacade$p_container.append(
-                            availabilityStatusWrapperElement,
-                          );
-                        }
-                      } else {
-                        importNamespace("sdk.DOM").dangerouslySetInnerHtml(
-                          this.$ChatDOMFacade$p_container.children[0]
-                            .children[0],
-                          _spinnerSVG,
-                        );
-                      }
-                    }
-                    this.$ChatDOMFacade$p_spinnerShown = true;
-                  };
-                _proto.$ChatDOMFacade$p_getLabelEntryPointHTML =
-                  function $ChatDOMFacade$p_getLabelEntryPointHTML(iconSVG) {
-                    return (
-                      '\n      <div class="label-container" style="\n        height: $10px;\n        padding: 0 $10px\n      ">\n        ' +
-                      (iconSVG &&
-                        '\n            <div class="label-container-icon" style="\n              margin-right: $10px;\n            ">\n              ' +
-                          iconSVG +
-                          "\n            </div>\n          ") +
-                      '\n        <div\n          class="label-container-label"\n          style="\n            font-size: $10px;\n            line-height: $10px;\n        "></div>\n      </div>\n    '
-                    );
-                  };
-                _proto.$ChatDOMFacade$p_getLabelOnlyEntryPointSpinner =
-                  function $ChatDOMFacade$p_getLabelOnlyEntryPointSpinner(
-                    marginRight,
-                    spinnerSVG,
-                  ) {
-                    return (
-                      '\n      <div class="label-container-icon" style="\n        margin-right: ' +
-                      marginRight +
-                      'px;\n      ">\n        ' +
-                      spinnerSVG +
-                      "\n      </div>\n    "
-                    );
-                  };
-                _proto.$ChatDOMFacade$p_getSpinnerSVG =
-                  function $ChatDOMFacade$p_getSpinnerSVG(size) {
-                    return (
-                      '\n      <svg class="spinning" x="0" y="0" width="' +
-                      size +
-                      '" height="' +
-                      size +
-                      '" viewbox="0 0 60 60">\n        <circle class="path" cx="30" cy="30" r="24" fill="none" stroke-width="6"></circle>\n      </svg>\n    '
-                    );
-                  };
-                _proto.$ChatDOMFacade$p_prepareShowDialog =
-                  function $ChatDOMFacade$p_prepareShowDialog(showDialog) {
-                    if (
-                      showDialog &&
-                      this.$ChatDOMFacade$p_renderer &&
-                      !this.$ChatDOMFacade$p_willShowDialog
-                    ) {
-                      this.$ChatDOMFacade$p_willShowDialog = true;
-                      var renderer = this.$ChatDOMFacade$p_renderer;
-                      renderer.subscribe(
-                        "iframes_loaded",
-                        function renderer_subscribe_$1(_message) {
-                          renderer.showDialog();
-                        },
-                      );
-                    }
-                  };
-                _proto.$ChatDOMFacade$p_loadFullPlugin =
-                  function $ChatDOMFacade$p_loadFullPlugin(
-                    showDialog,
-                    showSpinner,
-                  ) {
-                    var _this2 = this;
-                    if (showSpinner) {
-                      this.$ChatDOMFacade$p_showSpinner();
-                    }
-                    this.$ChatDOMFacade$p_prepareShowDialog(showDialog);
-                    if (
-                      this.$ChatDOMFacade$p_loadingState !==
-                      LoadingState.WAITING
-                    ) {
-                      return;
-                    }
-                    this.$ChatDOMFacade$p_loadingState = LoadingState.LOADING;
-                    var container = document.createElement("div");
-                    importNamespace("sdk.Content").append(
-                      container,
-                      this.element,
-                    );
-                    var renderer = new (importDefault(
-                      "sdk.XFBML.CustomerChatNew",
-                    ))(container, "fb", "customerchat", this.params);
-
-                    this.$ChatDOMFacade$p_renderer = renderer;
-                    renderer.subscribe(
-                      "xd.mpn.setupIconIframe",
-                      function renderer_subscribe_$1(_message) {
-                        _this2.$ChatDOMFacade$p_loadingState =
-                          LoadingState.LOADED;
-                        _this2.$ChatDOMFacade$p_hideFacade();
-                      },
-                    );
-                    this.$ChatDOMFacade$p_prepareShowDialog(showDialog);
-                    renderer.process();
-                  };
-                return ChatDOMFacade;
-              })(importNamespace("DOMPlugin").DOMPlugin);
-              exports["default"] = ChatDOMFacade;
-            },
-            98,
-          );
-
-          __d(
-            "IframePluginClass",
-            [
-              "Log",
-              "QueryString",
-              "UrlMap",
-              "guid",
-              "sdk.Auth.LoginStatus",
-              "sdk.AuthUtils",
-              "sdk.DOM",
-              "sdk.Event",
-              "sdk.Observable",
-              "sdk.PlatformVersioning",
-              "sdk.PluginUtils",
-              "sdk.Runtime",
-              "sdk.UA",
-              "sdk.URI",
-              "sdk.XD",
-              "sdk.createIframe",
-            ],
-            function $module_IframePluginClass(
-              global,
-              require,
-              importDefault,
-              importNamespace,
-              requireLazy,
-              module,
-              exports,
-            ) {
-              var IframePluginClass = (function (_Observable) {
-                babelHelpers.inheritsLoose(IframePluginClass, _Observable);
-
-                function IframePluginClass(elem, ns, tag, attr, config) {
-                  var _this;
-                  if (config === void 0) {
-                    config = null;
-                  }
-                  _this = _Observable.call(this) || this;
-                  tag = tag.replace(/-/g, "_");
-
-                  _this.$IframePluginClass$p_isIframeResized = false;
-
-                  _this.config =
-                    config != null
-                      ? config
-                      : {
-                          fluid: false,
-                          mobile_fullsize: false,
-                          full_width: false,
-                        };
-
-                  var pluginId = importNamespace("sdk.PluginUtils").getVal(
-                    attr,
-                    "plugin_id",
-                  );
-                  _this.subscribe(
-                    "xd.resize",
-                    importNamespace("sdk.PluginUtils").resizeBubbler(pluginId),
-                  );
-                  _this.subscribe(
-                    "xd.resize.flow",
-                    importNamespace("sdk.PluginUtils").resizeBubbler(pluginId),
-                  );
-
-                  _this.subscribe(
-                    "xd.resize.flow",
-                    function _this_subscribe_$1(message) {
-                      ES(
-                        "Object",
-                        "assign",
-                        false,
-                        _this.iframeOptions.root.style,
-                        {
-                          verticalAlign: "bottom",
-                          overflow: "",
-                        },
-                      );
-
-                      importNamespace("sdk.PluginUtils").resize(
-                        _this.iframeOptions.root,
-                        importNamespace("sdk.PluginUtils").parse(message.width),
-                        importNamespace("sdk.PluginUtils").parse(
-                          message.height,
-                        ),
-                      );
-
-                      _this.updateLift();
-                      window.clearTimeout(_this.$IframePluginClass$p_timeoutID);
-                    },
-                  );
-
-                  _this.subscribe(
-                    "xd.resize",
-                    function _this_subscribe_$1(message) {
-                      var _importNamespace_sdkPluginUtils;
-                      ES(
-                        "Object",
-                        "assign",
-                        false,
-                        _this.iframeOptions.root.style,
-                        {
-                          verticalAlign: "bottom",
-                          overflow: "",
-                        },
-                      );
-
-                      (_importNamespace_sdkPluginUtils =
-                        importNamespace("sdk.PluginUtils")).resize(
-                        _this.iframeOptions.root,
-                        _importNamespace_sdkPluginUtils.parse(message.width),
-                        _importNamespace_sdkPluginUtils.parse(message.height),
-                      );
-
-                      _importNamespace_sdkPluginUtils.resize(
-                        _this.iframe,
-                        _importNamespace_sdkPluginUtils.parse(message.width),
-                        _importNamespace_sdkPluginUtils.parse(message.height),
-                      );
-
-                      _this.$IframePluginClass$p_isIframeResized = true;
-                      _this.updateLift();
-                      window.clearTimeout(_this.$IframePluginClass$p_timeoutID);
-                    },
-                  );
-
-                  _this.subscribe(
-                    "xd.resize.iframe",
-                    function _this_subscribe_$1(message) {
-                      importNamespace("sdk.PluginUtils").resize(
-                        _this.iframe,
-                        importNamespace("sdk.PluginUtils").parse(message.width),
-                        importNamespace("sdk.PluginUtils").parse(
-                          message.height,
-                        ),
-                      );
-
-                      _this.$IframePluginClass$p_isIframeResized = true;
-                      _this.updateLift();
-                      window.clearTimeout(_this.$IframePluginClass$p_timeoutID);
-                    },
-                  );
-
-                  _this.subscribe(
-                    "xd.sdk_event",
-                    function _this_subscribe_$1(message) {
-                      var data = ES("JSON", "parse", false, message.data);
-                      data.pluginID = pluginId;
-                      importNamespace("sdk.Event").fire(
-                        message.event,
-                        data,
-                        elem,
-                      );
-                    },
-                  );
-
-                  var url = attr.should_use_new_domain
-                    ? importNamespace("UrlMap").resolve("social_plugin") +
-                      "/" +
-                      tag +
-                      ".php?"
-                    : importNamespace("UrlMap").resolve("www") +
-                      "/plugins/" +
-                      tag +
-                      ".php?";
-                  var params = {};
-
-                  importNamespace("sdk.PluginUtils").validate(
-                    _this.getParams(),
-                    elem,
-                    attr,
-                    params,
-                  );
-                  importNamespace("sdk.PluginUtils").validate(
-                    importNamespace("sdk.PluginUtils").baseParams,
-                    elem,
-                    attr,
-                    params,
-                  );
-
-                  ES("Object", "assign", false, params, {
-                    app_id: importDefault("sdk.Runtime").getClientID(),
-                    locale: importDefault("sdk.Runtime").getLocale(),
-                    sdk: "joey",
-                    kid_directed_site:
-                      importDefault("sdk.Runtime").getKidDirectedSite(),
-                    channel: importNamespace("sdk.XD").handler(
-                      function XD_handler_$0(msg) {
-                        if (msg != null) {
-                          _this.inform("xd." + msg.type, msg);
-                        }
-                      },
-                      "parent.parent",
-                      true,
-                    ),
-                  });
-
-                  if (_this.shouldIgnoreWidth()) {
-                    params.width = void 0;
-                  }
-
-                  params.container_width = elem.offsetWidth;
-
-                  importNamespace("sdk.DOM").addCss(elem, "fb_iframe_widget");
-                  var name = importDefault("guid")();
-                  _this.subscribe(
-                    "xd.verify",
-                    function _this_subscribe_$1(msg) {
-                      importNamespace("sdk.XD").sendToFacebook(name, {
-                        method: "xd/verify",
-                        params: ES("JSON", "stringify", false, msg.token),
-                      });
-                    },
-                  );
-
-                  _this.subscribe(
-                    "xd.refreshLoginStatus",
-                    function _this_subscribe_$1() {
-                      importNamespace("sdk.AuthUtils").removeLogoutState();
-                      importDefault("sdk.Auth.LoginStatus").getLoginStatus(
-                        ES(
-                          _this.inform,
-                          "bind",
-                          true,
-                          babelHelpers.assertThisInitialized(_this),
-                          "login.status",
-                        ),
-                        true,
-                      );
-                    },
-                  );
-
-                  var flow = document.createElement("span");
-
-                  ES("Object", "assign", false, flow.style, {
-                    verticalAlign: "top",
-
-                    width: params.lazy ? "1px" : "0px",
-
-                    height: params.lazy ? "1px" : "0px",
-                    overflow: "hidden",
-                  });
-
-                  _this.element = elem;
-                  _this.ns = ns;
-                  _this.tag = tag;
-                  _this.params = params;
-                  _this.iframeOptions = {
-                    root: flow,
-                    url: url + importDefault("QueryString").encode(params),
-                    name: name,
-
-                    width:
-                      _this.config.mobile_fullsize &&
-                      importDefault("sdk.UA").mobile()
-                        ? void 0
-                        : params.width || 1000,
-
-                    height: params.height || 1000,
-                    style: {
-                      border: "none",
-                      visibility: "hidden",
-                    },
-
-                    title:
-                      _this.ns + ":" + _this.tag + " Facebook Social Plugin",
-                    testid:
-                      _this.ns + ":" + _this.tag + " Facebook Social Plugin",
-                    onload: function onload() {
-                      return _this.inform("render");
-                    },
-                    onerror: function onerror() {
-                      return importNamespace("sdk.PluginUtils").collapseIframe(
-                        _this.iframe,
-                      );
-                    },
-
-                    lazy: params.lazy,
-                  };
-
-                  if (_this.config.fluid && params.width !== "auto") {
-                    importNamespace("sdk.DOM").addCss(
-                      _this.element,
-                      "fbiframe_widget_fluid_desktop",
-                    );
-
-                    if (!params.width && _this.config.full_width) {
-                      _this.element.style.width = "100%";
-                      _this.iframeOptions.root.style.width = "100%";
-                      _this.iframeOptions.style.width = "100%";
-                      _this.params.container_width = _this.element.offsetWidth;
-                      _this.iframeOptions.url =
-                        url + importDefault("QueryString").encode(_this.params);
-                    }
-                  }
-                  return _this;
-                }
-                var _proto = IframePluginClass.prototype;
-                _proto.shouldIgnoreWidth = function shouldIgnoreWidth() {
-                  return (
-                    importDefault("sdk.UA").mobile() &&
-                    this.config.mobile_fullsize
-                  );
-                };
-                _proto.useInlineHeightForMobile =
-                  function useInlineHeightForMobile() {
-                    return true;
-                  };
-                _proto.process = function process() {
-                  var _this2 = this;
-                  if (importDefault("sdk.Runtime").getIsVersioned()) {
-                    importNamespace(
-                      "sdk.PlatformVersioning",
-                    ).assertVersionIsSet();
-                    var uri = new (importDefault("sdk.URI"))(
-                      this.iframeOptions.url,
-                    );
-                    this.iframeOptions.url = uri
-                      .setPath(
-                        "/" +
-                          importDefault("sdk.Runtime").getVersion() +
-                          uri.getPath(),
-                      )
-                      .toString();
-                  }
-
-                  var params = babelHelpers["extends"]({}, this.params);
-                  delete params.channel;
-                  var query = importDefault("QueryString").encode(params);
-                  if (
-                    this.element.getAttribute("fb-iframe-plugin-query") == query
-                  ) {
-                    importNamespace("Log").info(
-                      "Skipping render: %s:%s %s",
-                      this.ns,
-                      this.tag,
-                      query,
-                    );
-                    this.inform("render");
-                    return;
-                  }
-                  this.element.setAttribute("fb-iframe-plugin-query", query);
-
-                  this.subscribe("render", function subscribe_$1() {
-                    importNamespace("sdk.Event").fire("iframeplugin:onload");
-                    _this2.iframe.style.visibility = "visible";
-
-                    if (!_this2.$IframePluginClass$p_isIframeResized) {
-                      importNamespace("sdk.PluginUtils").collapseIframe(
-                        _this2.iframe,
-                      );
-                    }
-                  });
-
-                  while (this.element.firstChild) {
-                    this.element.removeChild(this.element.firstChild);
-                  }
-                  this.element.appendChild(this.iframeOptions.root);
-                  var timeout = importDefault("sdk.UA").mobile() ? 120 : 45;
-                  this.$IframePluginClass$p_timeoutID = window.setTimeout(
-                    function window_setTimeout_$0() {
-                      importNamespace("sdk.PluginUtils").collapseIframe(
-                        _this2.iframe,
-                      );
-                      importNamespace("Log").warn(
-                        "%s:%s failed to resize in %ss",
-                        _this2.ns,
-                        _this2.tag,
-                        timeout,
-                      );
-                    },
-                    timeout * 1000,
-                  );
-
-                  this.iframe = importDefault("sdk.createIframe")(
-                    this.iframeOptions,
-                  );
-                  importNamespace("sdk.Event").fire("iframeplugin:create");
-
-                  if (
-                    importDefault("sdk.UA").mobile() ||
-                    params.width === "auto"
-                  ) {
-                    if (this.useInlineHeightForMobile()) {
-                      importNamespace("sdk.DOM").addCss(
-                        this.element,
-                        "fbiframe_widget_fluid",
-                      );
-                    }
-
-                    if (!this.iframeOptions.width) {
-                      ES("Object", "assign", false, this.element.style, {
-                        display: "block",
-                        width: "100%",
-                        height: "auto",
-                      });
-
-                      ES(
-                        "Object",
-                        "assign",
-                        false,
-                        this.iframeOptions.root.style,
-                        {
-                          width: "100%",
-                          height: "auto",
-                        },
-                      );
-
-                      var iframeStyle = {
-                        height: "auto",
-                        position: "static",
-                        width: "100%",
-                      };
-
-                      if (
-                        importDefault("sdk.UA").iphone() ||
-                        importDefault("sdk.UA").ipad()
-                      ) {
-                        ES("Object", "assign", false, iframeStyle, {
-                          width: "220px",
-                          minWidth: "100%",
-                        });
-                      }
-
-                      ES(
-                        "Object",
-                        "assign",
-                        false,
-                        this.iframe.style,
-                        iframeStyle,
-                      );
-                    }
-                  }
-                };
-                _proto.getParams = function getParams() {
-                  return this.params;
-                };
-                _proto.updateLift = function updateLift() {
-                  var same =
-                    this.iframe.style.width ===
-                      this.iframeOptions.root.style.width &&
-                    this.iframe.style.height ===
-                      this.iframeOptions.root.style.height;
-                  (same
-                    ? importNamespace("sdk.DOM").removeCss
-                    : importNamespace("sdk.DOM").addCss)(
-                    this.iframe,
-                    "fbiframe_widget_lift",
-                  );
-                };
-                return IframePluginClass;
-              })(importNamespace("sdk.Observable").Observable);
-              exports["default"] = IframePluginClass;
-            },
-            98,
-          );
-
-          __d(
-            "getFacebookOriginForTarget",
-            ["Log"],
-            function $module_getFacebookOriginForTarget(
-              global,
-              require,
-              importDefault,
-              importNamespace,
-              requireLazy,
-              module,
-              exports,
-            ) {
-              function getFacebookOriginForTarget(
-                cb,
-
-                target,
-              ) {
-                if (target === void 0) {
-                  target = top;
-                }
-                var intervalId = 0;
-                var ackReceived = false;
-                var retries = 200;
-
-                window.addEventListener(
-                  "message",
-                  function window_addEventListener_$1(event) {
-                    if (event.source === target && event.data.xdArbiterAck) {
-                      if (
-                        /\.facebook\.(com|net)$/.test(event.origin) &&
-                        /^https:/.test(event.origin)
-                      ) {
-                        if (ackReceived === false) {
-                          ackReceived = true;
-                          importNamespace("Log").debug(
-                            "initXdArbiter got xdArbiterAck from " +
-                              event.origin,
-                          );
-                          cb(event.origin);
-                        }
-                      } else {
-                        importNamespace("Log").error(
-                          "xdAbiterAck was not from Facebook: ",
-                          event.origin,
-                        );
-                      }
-                    }
-                  },
-                  false,
-                );
-
-                target.postMessage({ xdArbiterSyn: true }, "*");
-
-                intervalId = window.setInterval(
-                  function window_setInterval_$0() {
-                    if (!ackReceived && retries > 0) {
-                      retries--;
-                      importNamespace("Log").debug("resending xdArbiterSyn");
-                      target.postMessage({ xdArbiterSyn: true }, "*");
-                    } else {
-                      window.clearInterval(intervalId);
-                    }
-                  },
-                  200,
-                );
-              }
-              exports["default"] = getFacebookOriginForTarget;
-            },
-            98,
-          );
-          __d(
-            "sdk.DocumentTitle",
-            [],
-            function $module_sdk_DocumentTitle(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports,
-            ) {
-              var trueTitle = document.title;
-              var temporaryTitle = null;
-              var BLINK_SPEED = 1500;
-              var interval = null;
-              var showingBlinkTitle = false;
-
-              function _doBlink() {
-                if (temporaryTitle !== null) {
-                  if (!showingBlinkTitle) {
-                    _setBlinkTitle(temporaryTitle);
-                  } else {
-                    _resetTitle();
-                  }
-                } else {
-                  clearInterval(interval);
-                  interval = null;
-                  _resetTitle();
-                }
-              }
-
-              function _setBlinkTitle(new_title) {
-                document.title = new_title;
-                showingBlinkTitle = true;
-              }
-
-              function _resetTitle() {
-                set(trueTitle);
-                showingBlinkTitle = false;
-              }
-
-              function get() {
-                return trueTitle;
-              }
-
-              function set(newTitle) {
-                document.title = newTitle;
-              }
-
-              function blink(title) {
-                temporaryTitle = title;
-                if (interval === null) {
-                  interval = setInterval(_doBlink, BLINK_SPEED);
-                }
-                return {
-                  stop: function stop() {
-                    temporaryTitle = null;
-                  },
-                };
-              }
-              exports.get = get;
-              exports.set = set;
-              exports.blink = blink;
-            },
-            66,
-          );
-          __d(
-            "sdk.cp.Constants",
-            ["UrlMap", "sdk.Runtime"],
-            function $module_sdk_cp_Constants(
-              global,
-              require,
-              importDefault,
-              importNamespace,
-              requireLazy,
-              module,
-              exports,
-            ) {
-              "use strict";
-
-              var blankIFrameURI = importDefault("sdk.Runtime").getIsVersioned()
-                ? importNamespace("UrlMap").resolve("www") +
-                  "/" +
-                  importDefault("sdk.Runtime").getVersion()
-                : importNamespace("UrlMap").resolve("www");
-
-              var blankIFrameNewDomainURI = importDefault(
-                "sdk.Runtime",
-              ).getIsVersioned()
-                ? importNamespace("UrlMap").resolve("social_plugin") +
-                  "/" +
-                  importDefault("sdk.Runtime").getVersion()
-                : importNamespace("UrlMap").resolve("social_plugin");
-              var _default = {
-                attribute: {
-                  alignment: "alignment",
-                  mobilePath: "mobile_path",
-                  desktopBottomSpacing: "desktop_bottom_spacing",
-                },
-
-                path: {
-                  landingPage: "/",
-                  welcomePage: "/welcome",
-                  bubble: "/bubble",
-                  itp: "/itpcontinue",
-                },
-
-                animationEvents: [
-                  "animationend",
-                  "mozAnimationEnd",
-                  "MSAnimationEnd",
-                  "oAnimationEnd",
-                  "webkitAnimationEnd",
-                ],
-
-                blankFrameURL: blankIFrameURI,
-                blankFrameNewDomainURL: blankIFrameNewDomainURI,
-              };
-              exports["default"] = _default;
-            },
-            98,
-          );
-
-          __d(
-            "sdk.cp.Actions",
-            ["DOMEventListener", "sdk.DOM", "sdk.DocumentTitle", "sdk.URI"],
-            function $module_sdk_cp_Actions(
-              global,
-              require,
-              importDefault,
-              importNamespace,
-              requireLazy,
-              module,
-              exports,
-            ) {
-              "use strict";
-              var MPNSDKActions = (function () {
-                function MPNSDKActions() {}
-                var _proto = MPNSDKActions.prototype;
-                _proto.reloadIframe = function reloadIframe(
-                  iframe,
-                  hasExplicitInteraction,
-                ) {
-                  if (iframe == null) {
-                    return;
-                  }
-
-                  var iframeSrcUri = new (importDefault("sdk.URI"))(iframe.src);
-
-                  var queryData = iframeSrcUri.getQueryData();
-                  queryData.request_time = Date.now();
-                  if (
-                    hasExplicitInteraction === "true" ||
-                    this.getExplicitUserInteractionFlag()
-                  ) {
-                    queryData.has_explicit_interaction = "1";
-                  }
-                  queryData.is_implicit_reload = "1";
-                  iframeSrcUri.setQueryData(queryData);
-                  iframe.src = iframeSrcUri.valueOf();
-                };
-                _proto.getExplicitUserInteractionFlag =
-                  function getExplicitUserInteractionFlag() {
-                    return false;
-                  };
-                _proto.setDialogAppearance = function setDialogAppearance(
-                  iframe,
-                  appearance,
-                ) {
-                  if (iframe == null) {
-                    return;
-                  }
-                  var height = appearance.height,
-                    boxShadow = appearance.boxShadow,
-                    margin = appearance.margin,
-                    width = appearance.width,
-                    bottom = appearance.bottom;
-                  if (boxShadow != null) {
-                    importNamespace("sdk.DOM").setStyle(
-                      iframe,
-                      "boxShadow",
-                      boxShadow,
-                    );
-                  }
-                  if (margin != null) {
-                    importNamespace("sdk.DOM").setStyle(
-                      iframe,
-                      "margin",
-                      margin,
-                    );
-                  }
-                  if (height != null) {
-                    importNamespace("sdk.DOM").setStyle(
-                      iframe,
-                      "height",
-                      height,
-                    );
-                  }
-                  if (width != null) {
-                    importNamespace("sdk.DOM").setStyle(iframe, "width", width);
-                  }
-                  if (bottom != null) {
-                    importNamespace("sdk.DOM").setStyle(
-                      iframe,
-                      "bottom",
-                      bottom,
-                    );
-                  }
-                };
-                _proto.blinkPageTitle = function blinkPageTitle(title) {
-                  var _this = this;
-                  if (title != null) {
-                    this.$MPNSDKActions_stopBlinking();
-                    this.$MPNSDKActions_titleBlinkToken =
-                      importNamespace("sdk.DocumentTitle").blink(title);
-                    importDefault("DOMEventListener").add(
-                      window,
-                      "focus",
-                      function DOMEventListener_add_$2(_e) {
-                        _this.$MPNSDKActions_stopBlinking();
-                      },
-                    );
-                  } else if (
-                    this.$MPNSDKActions_titleBlinkToken &&
-                    title == null
-                  ) {
-                    this.$MPNSDKActions_stopBlinking();
-                  }
-                };
-                _proto.$MPNSDKActions_stopBlinking =
-                  function $MPNSDKActions_stopBlinking() {
-                    if (this.$MPNSDKActions_titleBlinkToken != null) {
-                      this.$MPNSDKActions_titleBlinkToken.stop();
-                      this.$MPNSDKActions_titleBlinkToken = null;
-                    }
-                  };
-                return MPNSDKActions;
-              })();
-            },
-            34,
-          );
-
-          __d(
-            "sdk.cp.Animation",
-            ["sdk.DOM", "sdk.UA", "sdk.cp.Constants"],
-            function $module_sdk_cp_Animation(
-              global,
-              require,
-              importDefault,
-              importNamespace,
-              requireLazy,
-              module,
-              exports,
-            ) {
-              "use strict";
-
-              function iframeBounceInAnimation(iframe) {
-                if (!iframe) {
-                  return;
-                }
-                var alignment = importNamespace("sdk.DOM").getAttr(
-                  iframe,
-                  importDefault("sdk.cp.Constants").attribute.alignment,
-                );
-                var mobilePath = importNamespace("sdk.DOM").getAttr(
-                  iframe,
-                  importDefault("sdk.cp.Constants").attribute.mobilePath,
-                );
-                var isMobile = importDefault("sdk.UA").mobile();
-                var bounceInAnimationName;
-                if (isMobile) {
-                  switch (mobilePath) {
-                    case importDefault("sdk.cp.Constants").path.landingPage:
-                      return "fb_mpn_mobile_landing_page_slide_up";
-                    case importDefault("sdk.cp.Constants").path.welcomePage:
-                    case importDefault("sdk.cp.Constants").path.bubble:
-                    case importDefault("sdk.cp.Constants").path.itp:
-                      return null;
-                    default:
-                      return "fb_mpn_mobile_bounce_in";
-                  }
-                } else {
-                  switch (alignment) {
-                    case "left":
-                      bounceInAnimationName =
-                        "fb_customer_chat_bounce_in_from_left";
-                      break;
-                    case "right":
-                    default:
-                      bounceInAnimationName = "fb_customer_chat_bounce_in_v2";
-                  }
-                }
-                return bounceInAnimationName;
-              }
-
-              function iframeBounceOutAnimation(iframe) {
-                if (!iframe) {
-                  return;
-                }
-                var alignment = importNamespace("sdk.DOM").getAttr(
-                  iframe,
-                  importDefault("sdk.cp.Constants").attribute.alignment,
-                );
-                var mobilePath = importNamespace("sdk.DOM").getAttr(
-                  iframe,
-                  importDefault("sdk.cp.Constants").attribute.mobilePath,
-                );
-                var isMobile = importDefault("sdk.UA").mobile();
-                var bounceOutAnimationName;
-                if (isMobile) {
-                  switch (mobilePath) {
-                    case importDefault("sdk.cp.Constants").path.landingPage:
-                      return alignment === "left"
-                        ? "fb_mpn_mobile_landing_page_slide_out_from_left"
-                        : "fb_mpn_mobile_landing_page_slide_out";
-                    case importDefault("sdk.cp.Constants").path.bubble:
-                      return "fb_mpn_mobile_bounce_out_v2";
-                    default:
-                      return "fb_mpn_mobile_bounce_out";
-                  }
-                } else {
-                  switch (alignment) {
-                    case "left":
-                      bounceOutAnimationName =
-                        "fb_customer_chat_bounce_out_from_left";
-                      break;
-                    case "right":
-                    default:
-                      bounceOutAnimationName = "fb_customer_chat_bounce_out_v2";
-                  }
-                }
-                return bounceOutAnimationName;
-              }
-              exports.iframeBounceInAnimation = iframeBounceInAnimation;
-              exports.iframeBounceOutAnimation = iframeBounceOutAnimation;
-            },
-            98,
-          );
-          __d(
-            "sdk.cp.Storage",
-            ["sdk.WebStorage"],
-            function $module_sdk_cp_Storage(
-              global,
-              require,
-              importDefault,
-              importNamespace,
-              requireLazy,
-              module,
-              exports,
-            ) {
-              "use strict";
-              var MPNSDKStorage = (function () {
-                function MPNSDKStorage() {}
-                var _proto = MPNSDKStorage.prototype;
-                _proto.setState = function setState(state) {
-                  var storage =
-                    importNamespace("sdk.WebStorage").getLocalStorageForRead();
-                  if (!storage) {
-                    return;
-                  }
-                };
-                _proto.getStateJSON = function getStateJSON() {
-                  return "{}";
-                };
-                return MPNSDKStorage;
-              })();
-            },
-            34,
-          );
-
-          __d(
-            "sdk.XFBML.CustomerChatNew",
-            [
-              "ChatPluginSDKPreLoggingUtils",
-              "DOMEventListener",
-              "IframePluginClass",
-              "QueryString",
-              "UrlMap",
-              "getFacebookOriginForTarget",
-              "performanceAbsoluteNow",
-              "sdk.Content",
-              "sdk.DOM",
-              "sdk.DialogUtils",
-              "sdk.Event",
-              "sdk.UA",
-              "sdk.WebStorage",
-              "sdk.XD",
-              "sdk.XFBML.CustomerChatWrapper",
-              "sdk.cp.Animation",
-              "sdk.cp.Constants",
-              "sdk.createIframe",
-            ],
-            function $module_sdk_XFBML_CustomerChatNew(
-              global,
-              require,
-              importDefault,
-              importNamespace,
-              requireLazy,
-              module,
-              exports,
-            ) {
-              "use strict";
-              var _importDefault_closure_performanceAbsoluteNow;
-              var CustomerChat = (function (_IframePluginClass) {
-                babelHelpers.inheritsLoose(CustomerChat, _IframePluginClass);
-
-                function CustomerChat(elem, ns, tag, attr) {
-                  var _this;
-                  _this =
-                    _IframePluginClass.call(this, elem, ns, tag, attr) || this;
-                  _this.$CustomerChat$p_bubbleIFrame = null;
-                  _this.$CustomerChat$p_bubbleIFrameName = null;
-                  _this.$CustomerChat$p_iconInnerIFrame = null;
-                  _this.$CustomerChat$p_dialogIFrame = null;
-                  _this.$CustomerChat$p_dialogIFrameName = null;
-                  _this.$CustomerChat$p_unreadCountIFrame = null;
-                  _this.$CustomerChat$p_unreadCountIFrameName = null;
-                  _this.$CustomerChat$p_availabilityStatusIFrame = null;
-                  _this.$CustomerChat$p_availabilityStatusIFrameName = null;
-                  _this.$CustomerChat$p_greetingIFrame = null;
-                  _this.$CustomerChat$p_greetingIFrameName = null;
-                  _this.$CustomerChat$p_iframesLoaded = false;
-                  _this.$CustomerChat$p_dialogIFrameOrigin = null;
-                  _this.$CustomerChat$p_isDialogHidden = false;
-                  _this.$CustomerChat$p_isPluginHidden = false;
-                  _this.show = function (shouldShowDialog) {
-                    if (shouldShowDialog === void 0) {
-                      shouldShowDialog = true;
-                    }
-                    _this.$CustomerChat$p_isPluginHidden = false;
-                    if (_this.$CustomerChat$p_bubbleIFrame != null) {
-                      importNamespace("sdk.DOM").setStyle(
-                        _this.$CustomerChat$p_bubbleIFrame,
-                        "display",
-                        "inline",
-                      );
-                    }
-                    if (shouldShowDialog) {
-                      _this.$CustomerChat$p_showDialogIframe(
-                        _this.$CustomerChat$p_dialogIFrame,
-                      );
-                    }
-                    importNamespace("sdk.Event").fire("customerchat.show");
-                    _this.$CustomerChat$p_handleSDKCall("show");
-                  };
-                  _this.hide = function () {
-                    _this.$CustomerChat$p_isPluginHidden = true;
-                    if (_this.$CustomerChat$p_bubbleIFrame != null) {
-                      importNamespace("sdk.DOM").setStyle(
-                        _this.$CustomerChat$p_bubbleIFrame,
-                        "display",
-                        "none",
-                      );
-                    }
-                    _this.$CustomerChat$p_hideDialogIframe(
-                      _this.$CustomerChat$p_dialogIFrame,
-                    );
-                    importNamespace("sdk.Event").fire("customerchat.hide");
-                    _this.$CustomerChat$p_handleSDKCall("hide");
-                  };
-                  _this.showDialog = function () {
-                    if (_this.$CustomerChat$p_bubbleIFrame != null) {
-                      importNamespace("sdk.DOM").setStyle(
-                        _this.$CustomerChat$p_bubbleIFrame,
-                        "display",
-                        "inline",
-                      );
-                    }
-                    _this.$CustomerChat$p_showDialogIframe(
-                      _this.$CustomerChat$p_dialogIFrame,
-                    );
-                    _this.$CustomerChat$p_handleSDKCall("showDialog");
-                  };
-                  _this.hideDialog = function () {
-                    _this.$CustomerChat$p_hideDialogIframe(
-                      _this.$CustomerChat$p_dialogIFrame,
-                    );
-                    _this.$CustomerChat$p_handleSDKCall("hideDialog");
-                  };
-                  _this.update = function (data) {
-                    var _this$$CustomerChat$p;
-                    importNamespace("sdk.XD").sendToFacebook(
-                      (_this$$CustomerChat$p =
-                        _this.$CustomerChat$p_dialogIFrameName) != null
-                        ? _this$$CustomerChat$p
-                        : "",
-                      {
-                        method: "updateCustomerChat",
-                        params: ES("JSON", "stringify", false, data || {}),
-                      },
-                    );
-
-                    _this.$CustomerChat$p_handleSDKCall("update");
-                  };
-                  importNamespace("sdk.DOM").addCss(elem, "fb_invisible_flow");
-                  importNamespace("sdk.DOM").remove(elem);
-                  importNamespace("sdk.Content").append(elem);
-                  _this.$CustomerChat$p_shouldUseNewDomain = Boolean(
-                    attr.should_use_new_domain,
-                  );
-                  _this.$CustomerChat$p_updateDialogIframeOptions();
-                  importNamespace("sdk.Event").fire("customerchat.load");
-                  _this.$CustomerChat$p_setUpSubscriptions();
-                  importNamespace("ChatPluginSDKPreLoggingUtils").preLogging(
-                    _this.$CustomerChat$p_shouldUseNewDomain,
-                    "chat_plugin_sdk_dialog_iframe_create",
-                    _this.params,
-                    false,
-                  );
-                  return _this;
-                }
-                var _proto = CustomerChat.prototype;
-                _proto.$CustomerChat$p_updateDialogIframeOptions =
-                  function $CustomerChat$p_updateDialogIframeOptions() {
-                    var storage =
-                      importNamespace("sdk.WebStorage").getLocalStorage();
-                    var localState = null;
-                    var requestTime = (
-                      _importDefault_closure_performanceAbsoluteNow ||
-                      (_importDefault_closure_performanceAbsoluteNow =
-                        importDefault("performanceAbsoluteNow"))
-                    )();
-                    ES("Object", "assign", false, this.params, {
-                      request_time: requestTime,
-                    });
-                    var url = this.$CustomerChat$p_shouldUseNewDomain
-                      ? importNamespace("UrlMap").resolve("social_plugin") +
-                        "/" +
-                        this.tag +
-                        ".php?"
-                      : importNamespace("UrlMap").resolve("www") +
-                        "/plugins/" +
-                        this.tag +
-                        ".php?";
-                    this.iframeOptions.url =
-                      url + importDefault("QueryString").encode(this.params);
-                    this.iframeOptions.title = "";
-                  };
-                _proto.$CustomerChat$p_setUpSubscriptions =
-                  function $CustomerChat$p_setUpSubscriptions() {
-                    var _this = this;
-                    var _importNamespace_sdkXFBMLCustomerChatWrapper;
-                    this.subscribe("render", function subscribe_$1() {
-                      importNamespace(
-                        "ChatPluginSDKPreLoggingUtils",
-                      ).preLogging(
-                        _this.$CustomerChat$p_shouldUseNewDomain,
-                        "chat_plugin_sdk_dialog_iframe_load",
-                        _this.params,
-                      );
-                    });
-                    this.subscribe(
-                      "xd.mpn.storeState",
-                      function subscribe_$1(message) {},
-                    );
-                    this.subscribe("xd.mpn.getState", function subscribe_$1(_) {
-                      var event = { name: "mpnDidFetchState" };
-                      _this.$CustomerChat$p_postMessageToDialogFrame(event);
-                      _this.$CustomerChat$p_postMessageToBubbleFrame(event);
-                    });
-                    this.subscribe(
-                      "xd.mpn.setupIconIframe",
-                      function subscribe_$1(message) {
-                        _this.$CustomerChat$p_handleSetupIconIframe(message);
-                      },
-                    );
-                    this.subscribe(
-                      "xd.mpn.setupDialogIframe",
-                      function subscribe_$1(message) {
-                        _this.$CustomerChat$p_handleSetupDialogIframe(message);
-                      },
-                    );
-                    this.subscribe(
-                      "xd.mpn.toggleDialogVisibility",
-                      function subscribe_$1(message) {
-                        _this.$CustomerChat$p_handleToggleDialogVisibility(
-                          message,
-                        );
-                      },
-                    );
-                    this.subscribe(
-                      "xd.mpn.toggleGreetingDialogVisibility",
-                      function subscribe_$1(message) {
-                        _this.$CustomerChat$p_handleToggleGreetingDialogVisibility(
-                          message,
-                        );
-                      },
-                    );
-                    this.subscribe(
-                      "xd.mpn.navigateToWelcomePage",
-                      function subscribe_$1(message) {
-                        _this.$CustomerChat$p_notifyDialogToNaviagetToWelcomePage(
-                          message.isHidden,
-                        );
-                      },
-                    );
-                    (_importNamespace_sdkXFBMLCustomerChatWrapper =
-                      importNamespace(
-                        "sdk.XFBML.CustomerChatWrapper",
-                      )).CustomerChatInternalEvent.subscribe(
-                      _importNamespace_sdkXFBMLCustomerChatWrapper
-                        .CustomerChatInternalEventType.SHOW,
-                      this.show,
-                    );
-                    _importNamespace_sdkXFBMLCustomerChatWrapper.CustomerChatInternalEvent.subscribe(
-                      _importNamespace_sdkXFBMLCustomerChatWrapper
-                        .CustomerChatInternalEventType.HIDE,
-                      this.hide,
-                    );
-                    _importNamespace_sdkXFBMLCustomerChatWrapper.CustomerChatInternalEvent.subscribe(
-                      _importNamespace_sdkXFBMLCustomerChatWrapper
-                        .CustomerChatInternalEventType.SHOW_DIALOG,
-                      this.showDialog,
-                    );
-                    _importNamespace_sdkXFBMLCustomerChatWrapper.CustomerChatInternalEvent.subscribe(
-                      _importNamespace_sdkXFBMLCustomerChatWrapper
-                        .CustomerChatInternalEventType.HIDE_DIALOG,
-                      this.hideDialog,
-                    );
-                    _importNamespace_sdkXFBMLCustomerChatWrapper.CustomerChatInternalEvent.subscribe(
-                      _importNamespace_sdkXFBMLCustomerChatWrapper
-                        .CustomerChatInternalEventType.UPDATE,
-                      this.update,
-                    );
-                  };
-                _proto.$CustomerChat$p_handleSetupIconIframe =
-                  function $CustomerChat$p_handleSetupIconIframe(message) {
-                    var _this2 = this;
-                    if (this.$CustomerChat$p_bubbleIFrame) {
-                      importNamespace("sdk.DOM").remove(
-                        this.$CustomerChat$p_bubbleIFrame,
-                      );
-                    }
-                    var frameName = message.frameName,
-                      iconSVG = message.iconSVG;
-                    var newElement =
-                      importNamespace("sdk.DialogUtils").setupNewDialog();
-                    var css = ES("JSON", "parse", false, message.cssText);
-                    var iconDiv = document.createElement("div");
-                    if (iconSVG != null) {
-                      importNamespace("sdk.DOM").dangerouslySetInnerHtml(
-                        iconDiv,
-                        iconSVG,
-                      );
-                      ES("Object", "assign", false, iconDiv.style, css);
-                      iconDiv.style.boxShadow = "none";
-                      importNamespace("sdk.Content").append(
-                        iconDiv,
-                        newElement.contentRoot,
-                      );
-                    }
-                    var bubbleIFrameName = "blank_" + frameName;
-                    this.$CustomerChat$p_bubbleIFrame =
-                      newElement.dialogElement;
-                    this.$CustomerChat$p_iconInnerIFrame = importDefault(
-                      "sdk.createIframe",
-                    )({
-                      url: this.$CustomerChat$p_shouldUseNewDomain
-                        ? importDefault("sdk.cp.Constants")
-                            .blankFrameNewDomainURL
-                        : importDefault("sdk.cp.Constants").blankFrameURL,
-                      name: bubbleIFrameName,
-                      root: newElement.contentRoot,
-                      tabindex: -1,
-                      width: 60,
-                      style: css,
-                      "data-testid": "bubble_iframe",
-                      onload: function onload() {
-                        importNamespace(
-                          "ChatPluginSDKPreLoggingUtils",
-                        ).preLogging(
-                          _this2.$CustomerChat$p_shouldUseNewDomain,
-                          "chat_plugin_sdk_icon_iframe_load",
-                          _this2.params,
-                        );
-                        _this2.$CustomerChat$p_bubbleIFrameName =
-                          bubbleIFrameName;
-                        _this2.$CustomerChat$p_notifyDialogIFrame();
-                        _this2.$CustomerChat$p_checkIfIframesLoadedAndNotify();
-                        window.setTimeout(function window_setTimeout_$0() {
-                          importNamespace("sdk.DOM").remove(iconDiv);
-                        }, 100);
-                      },
-                    });
-                    if (this.$CustomerChat$p_bubbleIFrame) {
-                      this.$CustomerChat$p_bubbleIFrame.setAttribute(
-                        importDefault("sdk.cp.Constants").attribute.alignment,
-                        message.alignment,
-                      );
-                    }
-                    if (this.$CustomerChat$p_bubbleIFrame) {
-                      importNamespace("sdk.Content").append(
-                        this.$CustomerChat$p_bubbleIFrame,
-                      );
-                    }
-                    var availabilityStatusIFrameName =
-                      "availabilityStatus_" + frameName;
-                    this.$CustomerChat$p_availabilityStatusIFrame =
-                      importDefault("sdk.createIframe")({
-                        url: this.$CustomerChat$p_shouldUseNewDomain
-                          ? importDefault("sdk.cp.Constants")
-                              .blankFrameNewDomainURL
-                          : importDefault("sdk.cp.Constants").blankFrameURL,
-                        name: availabilityStatusIFrameName,
-                        root: newElement.contentRoot,
-                        tabindex: -1,
-                        style: ES(
-                          "JSON",
-                          "parse",
-                          false,
-                          message.availabilityStatusCssText,
-                        ),
-                        "data-testid": "availabilityStatus_iframe",
-                        onload: function onload() {
-                          _this2.$CustomerChat$p_availabilityStatusIFrameName =
-                            availabilityStatusIFrameName;
-                          _this2.$CustomerChat$p_notifyDialogIFrame();
-                          _this2.$CustomerChat$p_checkIfIframesLoadedAndNotify();
-                        },
-                      });
-                    importNamespace("sdk.Content").append(
-                      this.$CustomerChat$p_availabilityStatusIFrame,
-                      newElement.contentRoot,
-                    );
-                    var unreadCountIFrameName = "unread_" + frameName;
-                    this.$CustomerChat$p_unreadCountIFrame = importDefault(
-                      "sdk.createIframe",
-                    )({
-                      url: this.$CustomerChat$p_shouldUseNewDomain
-                        ? importDefault("sdk.cp.Constants")
-                            .blankFrameNewDomainURL
-                        : importDefault("sdk.cp.Constants").blankFrameURL,
-                      name: unreadCountIFrameName,
-                      root: newElement.contentRoot,
-                      tabindex: -1,
-                      style: ES(
-                        "JSON",
-                        "parse",
-                        false,
-                        message.unreadCountCssText,
-                      ),
-                      "data-testid": "unread_iframe",
-                      onload: function onload() {
-                        _this2.$CustomerChat$p_unreadCountIFrameName =
-                          unreadCountIFrameName;
-                        _this2.$CustomerChat$p_notifyDialogIFrame();
-                        _this2.$CustomerChat$p_checkIfIframesLoadedAndNotify();
-                      },
-                    });
-                    importNamespace("sdk.Content").append(
-                      this.$CustomerChat$p_unreadCountIFrame,
-                      newElement.contentRoot,
-                    );
-                    var isMobile = importDefault("sdk.UA").mobile();
-                    if (!isMobile) {
-                      var greetingIFrameName = "greeting_" + frameName;
-                      this.$CustomerChat$p_greetingIFrame = importDefault(
-                        "sdk.createIframe",
-                      )({
-                        url: this.$CustomerChat$p_shouldUseNewDomain
-                          ? importDefault("sdk.cp.Constants")
-                              .blankFrameNewDomainURL
-                          : importDefault("sdk.cp.Constants").blankFrameURL,
-                        name: greetingIFrameName,
-                        root: newElement.contentRoot,
-                        tabindex: -1,
-                        style: ES(
-                          "JSON",
-                          "parse",
-                          false,
-                          message.greetingCssText,
-                        ),
-                        "data-testid": "greeting_iframe",
-                        onload: function onload() {
-                          _this2.$CustomerChat$p_greetingIFrameName =
-                            greetingIFrameName;
-                          _this2.$CustomerChat$p_notifyDialogIFrame();
-                          _this2.$CustomerChat$p_checkIfIframesLoadedAndNotify();
-                        },
-                      });
-                      importNamespace("sdk.Content").append(
-                        this.$CustomerChat$p_greetingIFrame,
-                        newElement.contentRoot,
-                      );
-                    }
-                  };
-                _proto.$CustomerChat$p_checkIfIframesLoadedAndNotify =
-                  function $CustomerChat$p_checkIfIframesLoadedAndNotify() {
-                    if (
-                      this.$CustomerChat$p_bubbleIFrameName !== null &&
-                      this.$CustomerChat$p_unreadCountIFrameName !== null &&
-                      this.$CustomerChat$p_availabilityStatusIFrameName !==
-                        null &&
-                      this.$CustomerChat$p_dialogIFrameName !== null &&
-                      this.$CustomerChat$p_greetingIFrameName !== null &&
-                      !this.$CustomerChat$p_iframesLoaded
-                    ) {
-                      this.$CustomerChat$p_iframesLoaded = true;
-                      this.inform("iframes_loaded");
-                    }
-                  };
-                _proto.$CustomerChat$p_notifyDialogIFrame =
-                  function $CustomerChat$p_notifyDialogIFrame() {
-                    var _this$$CustomerChat$p2, _this$$CustomerChat$p3;
-                    this.$CustomerChat$p_postMessageToDialogFrame({
-                      name: "bubbleFrameLoaded",
-                      frameName: this.$CustomerChat$p_bubbleIFrameName,
-                      unreadCountFrameName:
-                        this.$CustomerChat$p_unreadCountIFrameName,
-                      availabilityStatusIframeName:
-                        this.$CustomerChat$p_availabilityStatusIFrameName,
-                      greetingIframeName:
-                        this.$CustomerChat$p_greetingIFrameName,
-                      iconSrc:
-                        (_this$$CustomerChat$p2 =
-                          this.$CustomerChat$p_iconInnerIFrame) == null
-                          ? void 0
-                          : _this$$CustomerChat$p2.src,
-                      unreadSrc:
-                        (_this$$CustomerChat$p3 =
-                          this.$CustomerChat$p_unreadCountIFrame) == null
-                          ? void 0
-                          : _this$$CustomerChat$p3.src,
-                      request_time: this.params.request_time,
-                      log_id: this.params.log_id,
-                    });
-                  };
-                _proto.$CustomerChat$p_notifyDialogToNaviagetToWelcomePage =
-                  function $CustomerChat$p_notifyDialogToNaviagetToWelcomePage(
-                    isHidden,
-                  ) {
-                    this.$CustomerChat$p_postMessageToDialogFrame({
-                      name: "navigateToWelcomePage",
-                      isHidden: isHidden,
-                    });
-                  };
-                _proto.$CustomerChat$p_handleSetupDialogIframe =
-                  function $CustomerChat$p_handleSetupDialogIframe(message) {
-                    var cssText = message.cssText,
-                      mobilePath = message.mobilePath,
-                      isDialogHidden = message.isDialogHidden,
-                      desktopBottomSpacing = message.desktopBottomSpacing;
-                    if (this.$CustomerChat$p_bubbleIFrame) {
-                      mobilePath &&
-                        this.$CustomerChat$p_bubbleIFrame.setAttribute(
-                          importDefault("sdk.cp.Constants").attribute
-                            .mobilePath,
-                          mobilePath,
-                        );
-                      desktopBottomSpacing &&
-                        this.$CustomerChat$p_bubbleIFrame.setAttribute(
-                          importDefault("sdk.cp.Constants").attribute
-                            .desktopBottomSpacing,
-                          desktopBottomSpacing.toString(),
-                        );
-                    }
-                    this.$CustomerChat$p_isDialogHidden =
-                      isDialogHidden === "true";
-                    if (this.iframe) {
-                      this.iframe.setAttribute("data-testid", "dialog_iframe");
-                      this.iframe.style.cssText = cssText;
-                    }
-                    this.$CustomerChat$p_dialogIFrame = this.iframe;
-                    this.$CustomerChat$p_dialogIFrameName = this.iframe.name;
-                    this.$CustomerChat$p_checkIfIframesLoadedAndNotify();
-                    var isMobile = importDefault("sdk.UA").mobile();
-                    if (isMobile && !this.$CustomerChat$p_isDialogHidden) {
-                      if (
-                        mobilePath ==
-                        importDefault("sdk.cp.Constants").path.landingPage
-                      ) {
-                        var bounceInAnimationName = importNamespace(
-                          "sdk.cp.Animation",
-                        ).iframeBounceInAnimation(
-                          this.$CustomerChat$p_bubbleIFrame,
-                        );
-                        bounceInAnimationName != null &&
-                          importNamespace("sdk.DOM").addCss(
-                            this.$CustomerChat$p_dialogIFrame,
-                            bounceInAnimationName,
-                          );
-                      }
-                      if (
-                        mobilePath !=
-                          importDefault("sdk.cp.Constants").path.landingPage &&
-                        mobilePath !=
-                          importDefault("sdk.cp.Constants").path.bubble
-                      ) {
-                        this.$CustomerChat$p_setParentDocumentPositionFixed();
-                      }
-                    }
-                    if (this.$CustomerChat$p_isPluginHidden) {
-                      this.hide();
-                    }
-                  };
-                _proto.$CustomerChat$p_handleToggleDialogVisibility =
-                  function $CustomerChat$p_handleToggleDialogVisibility(
-                    message,
-                  ) {
-                    var shouldHide = message.shouldHide;
-                    if (shouldHide === "true") {
-                      this.$CustomerChat$p_hideDialogIframe(this.iframe);
-                    } else {
-                      this.$CustomerChat$p_showDialogIframe(this.iframe);
-                    }
-                  };
-                _proto.$CustomerChat$p_handleToggleGreetingDialogVisibility =
-                  function $CustomerChat$p_handleToggleGreetingDialogVisibility(
-                    message,
-                  ) {
-                    var shouldHide = message.shouldHide;
-                    if (shouldHide === "true") {
-                      this.$CustomerChat$p_hideGreetingDialogIframe(
-                        this.$CustomerChat$p_greetingIFrame,
-                      );
-                    } else {
-                      this.$CustomerChat$p_showGreetingDialogIframe(
-                        this.$CustomerChat$p_greetingIFrame,
-                      );
-                    }
-                  };
-                _proto.getParams = function getParams() {
-                  return {
-                    allow_guests: "bool",
-                    attribution: "string",
-                    greeting_dialog_display: "string",
-                    greeting_dialog_delay: "string",
-                    logged_in_greeting: "string",
-                    logged_out_greeting: "string",
-                    minimized: "bool",
-                    page_id: "string",
-                    theme_color: "string",
-                    override: "string",
-                    attribution_version: "string",
-                    is_loaded_by_facade: "bool",
-                    current_url: "string",
-                    log_id: "string",
-                    request_time: "px",
-                  };
-                };
-                _proto.$CustomerChat$p_postMessageToIframe =
-                  function $CustomerChat$p_postMessageToIframe(
-                    frameName,
-                    message,
-                  ) {
-                    var _this3 = this;
-                    var frame = window.frames[frameName];
-                    var pmf = function pmf(origin) {
-                      frame == null
-                        ? void 0
-                        : frame.postMessage(
-                            babelHelpers["extends"]({}, message),
-                            origin,
-                          );
-                    };
-                    if (this.$CustomerChat$p_dialogIFrameOrigin === null) {
-                      importDefault("getFacebookOriginForTarget")(
-                        function getFacebookOriginForTarget_$0(origin) {
-                          _this3.$CustomerChat$p_dialogIFrameOrigin = origin;
-                          pmf(_this3.$CustomerChat$p_dialogIFrameOrigin);
-                        },
-                        frame,
-                      );
-                    } else {
-                      pmf(this.$CustomerChat$p_dialogIFrameOrigin);
-                    }
-                  };
-                _proto.$CustomerChat$p_postMessageToBubbleFrame =
-                  function $CustomerChat$p_postMessageToBubbleFrame(message) {
-                    var _this$$CustomerChat$p4;
-                    this.$CustomerChat$p_postMessageToIframe(
-                      (_this$$CustomerChat$p4 =
-                        this.$CustomerChat$p_bubbleIFrameName) != null
-                        ? _this$$CustomerChat$p4
-                        : "",
-                      message,
-                    );
-                  };
-                _proto.$CustomerChat$p_postMessageToDialogFrame =
-                  function $CustomerChat$p_postMessageToDialogFrame(message) {
-                    var _this$$CustomerChat$p5;
-                    this.$CustomerChat$p_postMessageToIframe(
-                      (_this$$CustomerChat$p5 =
-                        this.$CustomerChat$p_dialogIFrameName) != null
-                        ? _this$$CustomerChat$p5
-                        : "",
-                      message,
-                    );
-                  };
-                _proto.$CustomerChat$p_handleSDKCall =
-                  function $CustomerChat$p_handleSDKCall(event) {
-                    this.$CustomerChat$p_postMessageToDialogFrame({
-                      name: "CustomerChat.SDK.Called",
-                      event: event,
-                    });
-                  };
-                _proto.$CustomerChat$p_setParentDocumentPositionFixed =
-                  function $CustomerChat$p_setParentDocumentPositionFixed() {
-                    var mobile_overlay = "fb_new_ui_mobile_overlay_active";
-                    importNamespace("sdk.DOM").addCss(
-                      document.body,
-                      mobile_overlay,
-                    );
-                  };
-                _proto.$CustomerChat$p_showDialogIframe =
-                  function $CustomerChat$p_showDialogIframe(dialogIframe) {
-                    if (!dialogIframe) {
-                      return;
-                    }
-                    if (this.$CustomerChat$p_isDialogHidden) {
-                      this.$CustomerChat$p_isDialogHidden = false;
-                      var bounceInAnimationName = importNamespace(
-                        "sdk.cp.Animation",
-                      ).iframeBounceInAnimation(
-                        this.$CustomerChat$p_bubbleIFrame,
-                      );
-                      var bounceOutAnimationName = importNamespace(
-                        "sdk.cp.Animation",
-                      ).iframeBounceOutAnimation(
-                        this.$CustomerChat$p_bubbleIFrame,
-                      );
-                      bounceOutAnimationName != null &&
-                        importNamespace("sdk.DOM").removeCss(
-                          dialogIframe,
-                          bounceOutAnimationName,
-                        );
-                      bounceInAnimationName != null &&
-                        importNamespace("sdk.DOM").addCss(
-                          dialogIframe,
-                          bounceInAnimationName,
-                        );
-                      if (importDefault("sdk.UA").mobile()) {
-                        importNamespace("sdk.DOM").setStyle(
-                          dialogIframe,
-                          "maxHeight",
-                          "100%",
-                        );
-                        importNamespace("sdk.DOM").setStyle(
-                          dialogIframe,
-                          "height",
-                          "100%",
-                        );
-                        importNamespace("sdk.DOM").setStyle(
-                          dialogIframe,
-                          "width",
-                          "100%",
-                        );
-                      } else {
-                        var desktopBottomSpacingString =
-                          this.$CustomerChat$p_bubbleIFrame &&
-                          importNamespace("sdk.DOM").getAttr(
-                            this.$CustomerChat$p_bubbleIFrame,
-                            importDefault("sdk.cp.Constants").attribute
-                              .desktopBottomSpacing,
-                          );
-                        var desktopBottomSpacingForDialog =
-                          desktopBottomSpacingString == null
-                            ? "80"
-                            : Number(desktopBottomSpacingString) + 60;
-                        importNamespace("sdk.DOM").setStyle(
-                          dialogIframe,
-                          "maxHeight",
-                          "calc(100% - " +
-                            desktopBottomSpacingForDialog +
-                            "px)",
-                        );
-                        importNamespace("sdk.DOM").setStyle(
-                          dialogIframe,
-                          "minHeight",
-                          "300px",
-                        );
-                      }
-                      this.$CustomerChat$p_postMessageToDialogFrame({
-                        name: "CustomerChat.isDialogHidden",
-                        params: { is_dialog_hidden: false },
-                      });
-                      this.$CustomerChat$p_postMessageToBubbleFrame({
-                        name: "CustomerChat.isDialogHidden",
-                        params: { is_dialog_hidden: false },
-                      });
-                      importNamespace("sdk.Event").fire(
-                        "customerchat.dialogShow",
-                      );
-                    }
-                  };
-                _proto.$CustomerChat$p_hideDialogIframe =
-                  function $CustomerChat$p_hideDialogIframe(dialogIframe) {
-                    var _this4 = this;
-                    if (!dialogIframe) {
-                      return;
-                    }
-                    if (!this.$CustomerChat$p_isDialogHidden) {
-                      this.$CustomerChat$p_isDialogHidden = true;
-                      var bounceInAnimationName = importNamespace(
-                        "sdk.cp.Animation",
-                      ).iframeBounceInAnimation(
-                        this.$CustomerChat$p_bubbleIFrame,
-                      );
-                      var bounceOutAnimationName = importNamespace(
-                        "sdk.cp.Animation",
-                      ).iframeBounceOutAnimation(
-                        this.$CustomerChat$p_bubbleIFrame,
-                      );
-                      bounceInAnimationName != null &&
-                        importNamespace("sdk.DOM").removeCss(
-                          dialogIframe,
-                          bounceInAnimationName,
-                        );
-                      bounceOutAnimationName != null &&
-                        importNamespace("sdk.DOM").addCss(
-                          dialogIframe,
-                          bounceOutAnimationName,
-                        );
-                      var animationEventListeners = {};
-                      importDefault("sdk.cp.Constants").animationEvents.forEach(
-                        function MPNConstants_animationEvents_forEach_$0(
-                          event,
-                        ) {
-                          var hideDialog = function hideDialog(_) {
-                            if (_this4.$CustomerChat$p_isDialogHidden) {
-                              importNamespace("sdk.DOM").setStyle(
-                                dialogIframe,
-                                "maxHeight",
-                                "0",
-                              );
-                              importNamespace("sdk.DOM").setStyle(
-                                dialogIframe,
-                                "minHeight",
-                                "0",
-                              );
-                              importDefault(
-                                "sdk.cp.Constants",
-                              ).animationEvents.forEach(
-                                function MPNConstants_animationEvents_forEach_$0(
-                                  event,
-                                ) {
-                                  if (animationEventListeners[event]) {
-                                    importNamespace("DOMEventListener").remove(
-                                      dialogIframe,
-                                      event,
-                                      animationEventListeners[event],
-                                    );
-                                    delete animationEventListeners[event];
-                                  }
-                                },
-                              );
-                            }
-                          };
-                          animationEventListeners[event] = hideDialog;
-                          importNamespace("DOMEventListener").add(
-                            dialogIframe,
-                            event,
-                            hideDialog,
-                          );
-                        },
-                      );
-                      this.$CustomerChat$p_postMessageToDialogFrame({
-                        name: "CustomerChat.isDialogHidden",
-                        params: { is_dialog_hidden: true },
-                      });
-                      this.$CustomerChat$p_postMessageToBubbleFrame({
-                        name: "CustomerChat.isDialogHidden",
-                        params: { is_dialog_hidden: true },
-                      });
-                    }
-                    importNamespace("sdk.Event").fire(
-                      "customerchat.dialogHide",
-                    );
-                  };
-                _proto.$CustomerChat$p_hideGreetingDialogIframe =
-                  function $CustomerChat$p_hideGreetingDialogIframe(
-                    greetingIframe,
-                  ) {
-                    if (!greetingIframe) {
-                      return;
-                    }
-                    importNamespace("sdk.DOM").setStyle(
-                      greetingIframe,
-                      "maxHeight",
-                      "0",
-                    );
-                    importNamespace("sdk.DOM").setStyle(
-                      greetingIframe,
-                      "minHeight",
-                      "0",
-                    );
-                  };
-                _proto.$CustomerChat$p_showGreetingDialogIframe =
-                  function $CustomerChat$p_showGreetingDialogIframe(
-                    greetingIframe,
-                  ) {
-                    if (!greetingIframe) {
-                      return;
-                    }
-                    importNamespace("sdk.DOM").setStyle(
-                      greetingIframe,
-                      "maxHeight",
-                      "calc(100% - 80px)",
-                    );
-                  };
-                return CustomerChat;
-              })(importDefault("IframePluginClass"));
-              exports["default"] = CustomerChat;
-            },
-            98,
-          );
-
-          __d(
-            "sdk.XFBML.CustomerChatWrapper",
-            ["$InternalEnum", "sdk.Observable", "sdk.XFBML.ChatDOM"],
-            function $module_sdk_XFBML_CustomerChatWrapper(
-              global,
-              require,
-              importDefault,
-              importNamespace,
-              requireLazy,
-              module,
-              exports,
-            ) {
-              var CustomerChatInternalEventType = require("$InternalEnum")({
-                SHOW: "SHOW",
-                HIDE: "HIDE",
-                SHOW_DIALOG: "SHOW_DIALOG",
-                HIDE_DIALOG: "HIDE_DIALOG",
-                UPDATE: "UDPATE",
-              });
-
-              var CustomerChatInternalEvent = new (importNamespace(
-                "sdk.Observable",
-              ).Observable)();
-
-              var CustomerChatWrapperPlugin =
-                function CustomerChatWrapperPlugin(element, ns, tag, attr) {
-                  return new CustomerChatWrapper(element, ns, tag, attr);
-                };
-              _c = CustomerChatWrapperPlugin;
-              var CustomerChatWrapper = (function (_Observable) {
-                babelHelpers.inheritsLoose(CustomerChatWrapper, _Observable);
-
-                function CustomerChatWrapper(element, ns, tag, attr) {
-                  var _this;
-                  _this = _Observable.call(this) || this;
-                  _this.$CustomerChatWrapper$p_element = element;
-                  _this.$CustomerChatWrapper$p_ns = ns;
-                  _this.$CustomerChatWrapper$p_tag = tag;
-                  _this.$CustomerChatWrapper$p_attr = attr;
-                  return _this;
-                }
-                var _proto = CustomerChatWrapper.prototype;
-                _proto.process = function process() {
-                  var _this = this;
-                  this.$CustomerChatWrapper$p_attr.should_use_new_domain = false;
-                  this.$CustomerChatWrapper$p_plugin = new (importDefault(
-                    "sdk.XFBML.ChatDOM",
-                  ))(
-                    this.$CustomerChatWrapper$p_element,
-                    this.$CustomerChatWrapper$p_ns,
-                    this.$CustomerChatWrapper$p_tag,
-                    this.$CustomerChatWrapper$p_attr,
-                  );
-                  this.$CustomerChatWrapper$p_plugin.subscribe(
-                    "render",
-                    function $CustomerChatWrapper$p_plugin_subscribe_$1() {
-                      _this.inform("render");
-                    },
-                  );
-                  this.$CustomerChatWrapper$p_plugin.process();
-                };
-                return CustomerChatWrapper;
-              })(importNamespace("sdk.Observable").Observable);
-              var _c;
-              $RefreshReg$(_c, "CustomerChatWrapperPlugin");
-              exports.CustomerChatInternalEventType =
-                CustomerChatInternalEventType;
-              exports.CustomerChatInternalEvent = CustomerChatInternalEvent;
-              exports.CustomerChatWrapperPlugin = CustomerChatWrapperPlugin;
-            },
-            98,
-          );
-
-          __d(
             "sdk.XFBML.LWIAdsCreation",
             ["IframePlugin", "sdk.createIframe"],
             function $module_sdk_XFBML_LWIAdsCreation(
@@ -24013,6 +20982,159 @@ try {
               module.exports = safeEval;
             },
             34,
+          );
+
+          __d(
+            "DOMPlugin",
+            [
+              "JSSDKShadowCssConfig",
+              "Log",
+              "QueryString",
+              "sdk.DOM",
+              "sdk.Observable",
+              "sdk.PluginUtils",
+              "sdk.Runtime",
+              "sdk.XD",
+              "sdk.feature",
+            ],
+            function $module_DOMPlugin(
+              global,
+              require,
+              importDefault,
+              importNamespace,
+              requireLazy,
+              module,
+              exports,
+            ) {
+              var DOMPlugin = (function (_Observable) {
+                babelHelpers.inheritsLoose(DOMPlugin, _Observable);
+                var _proto = DOMPlugin.prototype;
+                _proto.render = function render(_root) {};
+
+                function DOMPlugin(element, ns, tag, attr, inParams, config) {
+                  var _config;
+                  var _this;
+                  _this = _Observable.call(this) || this;
+                  _this.shadowCss = [];
+
+                  _this.element = element;
+                  _this.tag = tag.replace(/-/g, "_");
+                  _this.ns = ns;
+                  _this.config = (_config = config) != null ? _config : {};
+                  _this.params = {};
+                  importNamespace("sdk.PluginUtils").validate(
+                    inParams,
+                    element,
+                    attr,
+                    _this.params,
+                  );
+                  importNamespace("sdk.PluginUtils").validate(
+                    importNamespace("sdk.PluginUtils").baseParams,
+                    element,
+                    attr,
+                    _this.params,
+                  );
+
+                  ES("Object", "assign", false, _this.params, {
+                    app_id: importDefault("sdk.Runtime").getClientID(),
+                    locale: importDefault("sdk.Runtime").getLocale(),
+                    sdk: "joey",
+                    kid_directed_site:
+                      importDefault("sdk.Runtime").getKidDirectedSite(),
+                    channel: importNamespace("sdk.XD").handler(
+                      function XD_handler_$0(msg) {
+                        if (msg != null) {
+                          _this.inform("xd." + msg.type, msg);
+                        }
+                      },
+                      "parent.parent",
+                      true,
+                    ),
+                  });
+                  return _this;
+                }
+                _proto.process = function process() {
+                  var params = babelHelpers["extends"]({}, this.params);
+                  delete params.channel;
+                  var query = importDefault("QueryString").encode(params);
+                  if (
+                    this.element.getAttribute("fb-iframe-plugin-query") ===
+                    query
+                  ) {
+                    importNamespace("Log").info(
+                      "Skipping render: %s:%s %s",
+                      this.ns,
+                      this.tag,
+                      query,
+                    );
+                    this.inform("render");
+                    return;
+                  }
+                  this.element.setAttribute("fb-iframe-plugin-query", query);
+
+                  maybeCreateShadowRootAndRenderInDOM(
+                    this.element,
+                    ES(this.render, "bind", true, this),
+                    this.shadowCss,
+                  );
+
+                  this.inform("render");
+                };
+                return DOMPlugin;
+              })(importNamespace("sdk.Observable").Observable);
+
+              function maybeCreateShadowRootAndRenderInDOM(
+                element,
+                render,
+
+                shadowCss,
+              ) {
+                if (shadowCss === void 0) {
+                  shadowCss = [];
+                }
+                while (element.firstChild) {
+                  element.removeChild(element.firstChild);
+                }
+
+                if (typeof element.attachShadow === "function") {
+                  var shadowRootWrapper = document.createElement("div");
+                  element.appendChild(shadowRootWrapper);
+                  var shadowRoot = shadowRootWrapper.attachShadow({
+                    mode: importDefault("sdk.feature")(
+                      "shadow_dom_plugin_mode",
+                      "closed",
+                    ),
+                  });
+
+                  shadowCss.forEach(
+                    function shadowCss_forEach_$0(cssModuleName) {
+                      return importNamespace("sdk.DOM").addCssRules(
+                        importDefault("JSSDKShadowCssConfig")[cssModuleName],
+                        [cssModuleName],
+                        shadowRoot,
+                      );
+                    },
+                  );
+
+                  shadowRoot.appendChild(render(shadowRoot));
+                } else {
+                  shadowCss.forEach(
+                    function shadowCss_forEach_$0(cssModuleName) {
+                      return importNamespace("sdk.DOM").addCssRules(
+                        importDefault("JSSDKShadowCssConfig")[cssModuleName],
+                        [cssModuleName],
+                      );
+                    },
+                  );
+
+                  element.appendChild(render(document));
+                }
+              }
+              exports.DOMPlugin = DOMPlugin;
+              exports.maybeCreateShadowRootAndRenderInDOM =
+                maybeCreateShadowRootAndRenderInDOM;
+            },
+            98,
           );
 
           __d(
@@ -25155,6 +22277,462 @@ try {
           );
 
           __d(
+            "IframePluginClass",
+            [
+              "Log",
+              "QueryString",
+              "UrlMap",
+              "guid",
+              "sdk.Auth.LoginStatus",
+              "sdk.AuthUtils",
+              "sdk.DOM",
+              "sdk.Event",
+              "sdk.Observable",
+              "sdk.PlatformVersioning",
+              "sdk.PluginUtils",
+              "sdk.Runtime",
+              "sdk.UA",
+              "sdk.URI",
+              "sdk.XD",
+              "sdk.createIframe",
+            ],
+            function $module_IframePluginClass(
+              global,
+              require,
+              importDefault,
+              importNamespace,
+              requireLazy,
+              module,
+              exports,
+            ) {
+              var IframePluginClass = (function (_Observable) {
+                babelHelpers.inheritsLoose(IframePluginClass, _Observable);
+
+                function IframePluginClass(elem, ns, tag, attr, config) {
+                  var _this;
+                  if (config === void 0) {
+                    config = null;
+                  }
+                  _this = _Observable.call(this) || this;
+                  tag = tag.replace(/-/g, "_");
+
+                  _this.$IframePluginClass$p_isIframeResized = false;
+
+                  _this.config =
+                    config != null
+                      ? config
+                      : {
+                          fluid: false,
+                          mobile_fullsize: false,
+                          full_width: false,
+                        };
+
+                  var pluginId = importNamespace("sdk.PluginUtils").getVal(
+                    attr,
+                    "plugin_id",
+                  );
+                  _this.subscribe(
+                    "xd.resize",
+                    importNamespace("sdk.PluginUtils").resizeBubbler(pluginId),
+                  );
+                  _this.subscribe(
+                    "xd.resize.flow",
+                    importNamespace("sdk.PluginUtils").resizeBubbler(pluginId),
+                  );
+
+                  _this.subscribe(
+                    "xd.resize.flow",
+                    function _this_subscribe_$1(message) {
+                      ES(
+                        "Object",
+                        "assign",
+                        false,
+                        _this.iframeOptions.root.style,
+                        {
+                          verticalAlign: "bottom",
+                          overflow: "",
+                        },
+                      );
+
+                      importNamespace("sdk.PluginUtils").resize(
+                        _this.iframeOptions.root,
+                        importNamespace("sdk.PluginUtils").parse(message.width),
+                        importNamespace("sdk.PluginUtils").parse(
+                          message.height,
+                        ),
+                      );
+
+                      _this.updateLift();
+                      window.clearTimeout(_this.$IframePluginClass$p_timeoutID);
+                    },
+                  );
+
+                  _this.subscribe(
+                    "xd.resize",
+                    function _this_subscribe_$1(message) {
+                      var _importNamespace_sdkPluginUtils;
+                      ES(
+                        "Object",
+                        "assign",
+                        false,
+                        _this.iframeOptions.root.style,
+                        {
+                          verticalAlign: "bottom",
+                          overflow: "",
+                        },
+                      );
+
+                      (_importNamespace_sdkPluginUtils =
+                        importNamespace("sdk.PluginUtils")).resize(
+                        _this.iframeOptions.root,
+                        _importNamespace_sdkPluginUtils.parse(message.width),
+                        _importNamespace_sdkPluginUtils.parse(message.height),
+                      );
+
+                      _importNamespace_sdkPluginUtils.resize(
+                        _this.iframe,
+                        _importNamespace_sdkPluginUtils.parse(message.width),
+                        _importNamespace_sdkPluginUtils.parse(message.height),
+                      );
+
+                      _this.$IframePluginClass$p_isIframeResized = true;
+                      _this.updateLift();
+                      window.clearTimeout(_this.$IframePluginClass$p_timeoutID);
+                    },
+                  );
+
+                  _this.subscribe(
+                    "xd.resize.iframe",
+                    function _this_subscribe_$1(message) {
+                      importNamespace("sdk.PluginUtils").resize(
+                        _this.iframe,
+                        importNamespace("sdk.PluginUtils").parse(message.width),
+                        importNamespace("sdk.PluginUtils").parse(
+                          message.height,
+                        ),
+                      );
+
+                      _this.$IframePluginClass$p_isIframeResized = true;
+                      _this.updateLift();
+                      window.clearTimeout(_this.$IframePluginClass$p_timeoutID);
+                    },
+                  );
+
+                  _this.subscribe(
+                    "xd.sdk_event",
+                    function _this_subscribe_$1(message) {
+                      var data = ES("JSON", "parse", false, message.data);
+                      data.pluginID = pluginId;
+                      importNamespace("sdk.Event").fire(
+                        message.event,
+                        data,
+                        elem,
+                      );
+                    },
+                  );
+
+                  var url = attr.should_use_new_domain
+                    ? importNamespace("UrlMap").resolve("social_plugin") +
+                      "/" +
+                      tag +
+                      ".php?"
+                    : importNamespace("UrlMap").resolve("www") +
+                      "/plugins/" +
+                      tag +
+                      ".php?";
+                  var params = {};
+
+                  importNamespace("sdk.PluginUtils").validate(
+                    _this.getParams(),
+                    elem,
+                    attr,
+                    params,
+                  );
+                  importNamespace("sdk.PluginUtils").validate(
+                    importNamespace("sdk.PluginUtils").baseParams,
+                    elem,
+                    attr,
+                    params,
+                  );
+
+                  ES("Object", "assign", false, params, {
+                    app_id: importDefault("sdk.Runtime").getClientID(),
+                    locale: importDefault("sdk.Runtime").getLocale(),
+                    sdk: "joey",
+                    kid_directed_site:
+                      importDefault("sdk.Runtime").getKidDirectedSite(),
+                    channel: importNamespace("sdk.XD").handler(
+                      function XD_handler_$0(msg) {
+                        if (msg != null) {
+                          _this.inform("xd." + msg.type, msg);
+                        }
+                      },
+                      "parent.parent",
+                      true,
+                    ),
+                  });
+
+                  if (_this.shouldIgnoreWidth()) {
+                    params.width = void 0;
+                  }
+
+                  params.container_width = elem.offsetWidth;
+
+                  importNamespace("sdk.DOM").addCss(elem, "fb_iframe_widget");
+                  var name = importDefault("guid")();
+                  _this.subscribe(
+                    "xd.verify",
+                    function _this_subscribe_$1(msg) {
+                      importNamespace("sdk.XD").sendToFacebook(name, {
+                        method: "xd/verify",
+                        params: ES("JSON", "stringify", false, msg.token),
+                      });
+                    },
+                  );
+
+                  _this.subscribe(
+                    "xd.refreshLoginStatus",
+                    function _this_subscribe_$1() {
+                      importNamespace("sdk.AuthUtils").removeLogoutState();
+                      importDefault("sdk.Auth.LoginStatus").getLoginStatus(
+                        ES(
+                          _this.inform,
+                          "bind",
+                          true,
+                          babelHelpers.assertThisInitialized(_this),
+                          "login.status",
+                        ),
+                        true,
+                      );
+                    },
+                  );
+
+                  var flow = document.createElement("span");
+
+                  ES("Object", "assign", false, flow.style, {
+                    verticalAlign: "top",
+
+                    width: params.lazy ? "1px" : "0px",
+
+                    height: params.lazy ? "1px" : "0px",
+                    overflow: "hidden",
+                  });
+
+                  _this.element = elem;
+                  _this.ns = ns;
+                  _this.tag = tag;
+                  _this.params = params;
+                  _this.iframeOptions = {
+                    root: flow,
+                    url: url + importDefault("QueryString").encode(params),
+                    name: name,
+
+                    width:
+                      _this.config.mobile_fullsize &&
+                      importDefault("sdk.UA").mobile()
+                        ? void 0
+                        : params.width || 1000,
+
+                    height: params.height || 1000,
+                    style: {
+                      border: "none",
+                      visibility: "hidden",
+                    },
+
+                    title:
+                      _this.ns + ":" + _this.tag + " Facebook Social Plugin",
+                    testid:
+                      _this.ns + ":" + _this.tag + " Facebook Social Plugin",
+                    onload: function onload() {
+                      return _this.inform("render");
+                    },
+                    onerror: function onerror() {
+                      return importNamespace("sdk.PluginUtils").collapseIframe(
+                        _this.iframe,
+                      );
+                    },
+
+                    lazy: params.lazy,
+                  };
+
+                  if (_this.config.fluid && params.width !== "auto") {
+                    importNamespace("sdk.DOM").addCss(
+                      _this.element,
+                      "fbiframe_widget_fluid_desktop",
+                    );
+
+                    if (!params.width && _this.config.full_width) {
+                      _this.element.style.width = "100%";
+                      _this.iframeOptions.root.style.width = "100%";
+                      _this.iframeOptions.style.width = "100%";
+                      _this.params.container_width = _this.element.offsetWidth;
+                      _this.iframeOptions.url =
+                        url + importDefault("QueryString").encode(_this.params);
+                    }
+                  }
+                  return _this;
+                }
+                var _proto = IframePluginClass.prototype;
+                _proto.shouldIgnoreWidth = function shouldIgnoreWidth() {
+                  return (
+                    importDefault("sdk.UA").mobile() &&
+                    this.config.mobile_fullsize
+                  );
+                };
+                _proto.useInlineHeightForMobile =
+                  function useInlineHeightForMobile() {
+                    return true;
+                  };
+                _proto.process = function process() {
+                  var _this2 = this;
+                  if (importDefault("sdk.Runtime").getIsVersioned()) {
+                    importNamespace(
+                      "sdk.PlatformVersioning",
+                    ).assertVersionIsSet();
+                    var uri = new (importDefault("sdk.URI"))(
+                      this.iframeOptions.url,
+                    );
+                    this.iframeOptions.url = uri
+                      .setPath(
+                        "/" +
+                          importDefault("sdk.Runtime").getVersion() +
+                          uri.getPath(),
+                      )
+                      .toString();
+                  }
+
+                  var params = babelHelpers["extends"]({}, this.params);
+                  delete params.channel;
+                  var query = importDefault("QueryString").encode(params);
+                  if (
+                    this.element.getAttribute("fb-iframe-plugin-query") == query
+                  ) {
+                    importNamespace("Log").info(
+                      "Skipping render: %s:%s %s",
+                      this.ns,
+                      this.tag,
+                      query,
+                    );
+                    this.inform("render");
+                    return;
+                  }
+                  this.element.setAttribute("fb-iframe-plugin-query", query);
+
+                  this.subscribe("render", function subscribe_$1() {
+                    importNamespace("sdk.Event").fire("iframeplugin:onload");
+                    _this2.iframe.style.visibility = "visible";
+
+                    if (!_this2.$IframePluginClass$p_isIframeResized) {
+                      importNamespace("sdk.PluginUtils").collapseIframe(
+                        _this2.iframe,
+                      );
+                    }
+                  });
+
+                  while (this.element.firstChild) {
+                    this.element.removeChild(this.element.firstChild);
+                  }
+                  this.element.appendChild(this.iframeOptions.root);
+                  var timeout = importDefault("sdk.UA").mobile() ? 120 : 45;
+                  this.$IframePluginClass$p_timeoutID = window.setTimeout(
+                    function window_setTimeout_$0() {
+                      importNamespace("sdk.PluginUtils").collapseIframe(
+                        _this2.iframe,
+                      );
+                      importNamespace("Log").warn(
+                        "%s:%s failed to resize in %ss",
+                        _this2.ns,
+                        _this2.tag,
+                        timeout,
+                      );
+                    },
+                    timeout * 1000,
+                  );
+
+                  this.iframe = importDefault("sdk.createIframe")(
+                    this.iframeOptions,
+                  );
+                  importNamespace("sdk.Event").fire("iframeplugin:create");
+
+                  if (
+                    importDefault("sdk.UA").mobile() ||
+                    params.width === "auto"
+                  ) {
+                    if (this.useInlineHeightForMobile()) {
+                      importNamespace("sdk.DOM").addCss(
+                        this.element,
+                        "fbiframe_widget_fluid",
+                      );
+                    }
+
+                    if (!this.iframeOptions.width) {
+                      ES("Object", "assign", false, this.element.style, {
+                        display: "block",
+                        width: "100%",
+                        height: "auto",
+                      });
+
+                      ES(
+                        "Object",
+                        "assign",
+                        false,
+                        this.iframeOptions.root.style,
+                        {
+                          width: "100%",
+                          height: "auto",
+                        },
+                      );
+
+                      var iframeStyle = {
+                        height: "auto",
+                        position: "static",
+                        width: "100%",
+                      };
+
+                      if (
+                        importDefault("sdk.UA").iphone() ||
+                        importDefault("sdk.UA").ipad()
+                      ) {
+                        ES("Object", "assign", false, iframeStyle, {
+                          width: "220px",
+                          minWidth: "100%",
+                        });
+                      }
+
+                      ES(
+                        "Object",
+                        "assign",
+                        false,
+                        this.iframe.style,
+                        iframeStyle,
+                      );
+                    }
+                  }
+                };
+                _proto.getParams = function getParams() {
+                  return this.params;
+                };
+                _proto.updateLift = function updateLift() {
+                  var same =
+                    this.iframe.style.width ===
+                      this.iframeOptions.root.style.width &&
+                    this.iframe.style.height ===
+                      this.iframeOptions.root.style.height;
+                  (same
+                    ? importNamespace("sdk.DOM").removeCss
+                    : importNamespace("sdk.DOM").addCss)(
+                    this.iframe,
+                    "fbiframe_widget_lift",
+                  );
+                };
+                return IframePluginClass;
+              })(importNamespace("sdk.Observable").Observable);
+              exports["default"] = IframePluginClass;
+            },
+            98,
+          );
+
+          __d(
             "sdk.XFBML.MessengerCheckbox",
             ["FB", "IframePluginClass", "Log", "PluginAttrTypes", "sdk.XD"],
             function $module_sdk_XFBML_MessengerCheckbox(
@@ -26117,7 +23695,6 @@ try {
             [
               "sdk.XFBML.Comments",
               "sdk.XFBML.CommentsCount",
-              "sdk.XFBML.CustomerChatWrapper",
               "sdk.XFBML.LWIAdsCreation",
               "sdk.XFBML.LWIAdsInsights",
               "sdk.XFBML.LoginButton",
@@ -26131,8 +23708,7 @@ try {
             function $module_sdk_CustomTags(
               global,
               require,
-              importDefault,
-              importNamespace,
+              requireDynamic,
               requireLazy,
               module,
               exports,
@@ -26143,8 +23719,6 @@ try {
                 comments: require("sdk.XFBML.Comments"),
                 comments_count: require("sdk.XFBML.CommentsCount"),
                 login_button: require("sdk.XFBML.LoginButton"),
-                customerchat: importNamespace("sdk.XFBML.CustomerChatWrapper")
-                  .CustomerChatWrapperPlugin,
                 lwi_ads_creation: require("sdk.XFBML.LWIAdsCreation"),
                 lwi_ads_insights: require("sdk.XFBML.LWIAdsInsights"),
                 messengermessageus: require("sdk.XFBML.MessengerMessageUsWrapper"),
@@ -26157,7 +23731,7 @@ try {
               var _default = CustomTags;
               exports["default"] = _default;
             },
-            98,
+            66,
           );
 
           __d(
@@ -27083,7 +24657,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1017795464","namespace":"FB","message":"' +
+        '","revision":"1017838824","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
