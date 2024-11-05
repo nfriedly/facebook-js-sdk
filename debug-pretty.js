@@ -1,4 +1,4 @@
-/*1730393800,,JIT Construction: v1017838824,en_US*/
+/*1730814278,,JIT Construction: v1017944947,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -2842,7 +2842,21 @@ try {
             null,
           );
           var ES = require("ES");
-          var babelHelpers = require("sdk.babelHelpers");
+          var babelHelpers = require("sdk.babelHelpers"); /**
+           * (c) Meta Platforms, Inc. and affiliates. Confidential and proprietary.
+           *
+           * Provides specific iterators (String/Array) with fallback to a generic object
+           * iterator.
+           *
+           * @provides iterator.enumerate
+           * @requires Array
+           *           Object.enumFix
+           *           Object
+           *           Object.es6
+           * @polyfillUAs
+           * @noflow
+           * @nolint
+           */
 
           (function (global, undefined) {
             var KIND_KEYS = "keys";
@@ -3127,6 +3141,20 @@ try {
                     ? self
                     : {},
           );
+          /**
+           * Copyright 2013-2014 Facebook, Inc.
+           *
+           * Provides polyfills for:
+           * - ES6 implementations of Map/Set (https://caniuse.com/es6)
+           *
+           * @provides Collections.es6
+           * @polyfillUAs old webkit modern
+           * @preventMunge
+           * @requires iterator.enumerate
+           * @requires GenericFunctionVisitor
+           * @noflow
+           * @nolint
+           */
 
           (function (global, undefined) {
             var windowObj = global.window || global;
@@ -3710,7 +3738,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1017838824",
+            revision: "1017944947",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -3778,7 +3806,6 @@ try {
             },
             66,
           );
-
           __d(
             "dotAccess",
             [],
@@ -3837,7 +3864,6 @@ try {
             },
             66,
           );
-
           __d(
             "wrapFunction",
             [],
@@ -3926,7 +3952,6 @@ try {
             },
             98,
           );
-
           __d(
             "Log",
             [],
@@ -3990,7 +4015,6 @@ try {
             },
             66,
           );
-
           __d(
             "sdk.UA",
             [],
@@ -4145,7 +4169,6 @@ try {
             },
             66,
           );
-
           __d(
             "sdk.domReady",
             [],
@@ -4201,7 +4224,6 @@ try {
             },
             67,
           );
-
           __d(
             "sdk.Content",
             ["Log", "sdk.UA", "sdk.domReady"],
@@ -4295,7 +4317,6 @@ try {
             },
             98,
           );
-
           __d(
             "sdk.DOM",
             ["guid", "sdk.domReady"],
@@ -4569,7 +4590,6 @@ try {
             },
             98,
           );
-
           __d(
             "ManagedError",
             [],
@@ -4605,7 +4625,6 @@ try {
             },
             66,
           );
-
           __d(
             "normalizeError",
             ["sdk.UA"],
@@ -4646,7 +4665,6 @@ try {
             },
             98,
           );
-
           __d(
             "ObservableMixin",
             [],
@@ -4726,7 +4744,6 @@ try {
             },
             null,
           );
-
           __d(
             "AssertionError",
             ["ManagedError"],
@@ -4780,7 +4797,6 @@ try {
             },
             66,
           );
-
           __d(
             "Assert",
             ["AssertionError", "sprintf"],
@@ -4892,7 +4908,6 @@ try {
             },
             98,
           );
-
           __d(
             "Type",
             ["Assert"],
@@ -5032,7 +5047,6 @@ try {
             },
             null,
           );
-
           __d(
             "sdk.Model",
             ["ObservableMixin", "Type"],
@@ -5081,7 +5095,6 @@ try {
             },
             98,
           );
-
           __d(
             "sdk.Runtime",
             ["JSSDKRuntimeConfig", "sdk.Model"],
@@ -5168,7 +5181,6 @@ try {
             },
             98,
           );
-
           __d(
             "sdk.ErrorHandler",
             ["ManagedError", "normalizeError", "sdk.Runtime", "wrapFunction"],
@@ -5377,7 +5389,6 @@ try {
             },
             66,
           );
-
           __d(
             "Env",
             [],
@@ -5472,7 +5483,6 @@ try {
             },
             66,
           );
-
           __d(
             "invariant",
             ["Env", "fb-error-lite", "sprintf"],
@@ -5626,7 +5636,6 @@ try {
             },
             98,
           );
-
           __d(
             "sdk.Scribe",
             ["QueryString", "UrlMap", "sdk.Runtime"],
@@ -5687,7 +5696,6 @@ try {
             },
             98,
           );
-
           __d(
             "sdk.FeatureFunctor",
             [],
@@ -5790,7 +5798,6 @@ try {
             },
             98,
           );
-
           __d(
             "FB",
             [
@@ -5972,7 +5979,6 @@ try {
             },
             null,
           );
-
           __d(
             "sdk.AppEvents",
             [
@@ -6207,7 +6213,6 @@ try {
             },
             98,
           );
-
           __d(
             "sdk.Event",
             [],
@@ -6311,7 +6316,6 @@ try {
             },
             66,
           );
-
           __d(
             "sdk.AppEvents-public",
             ["Assert", "FB", "sdk.AppEvents", "sdk.Event", "sdk.Runtime"],
@@ -6360,7 +6364,6 @@ try {
             },
             98,
           );
-
           __d(
             "sdk.AuthState",
             ["sdk.AuthUtils"],
@@ -6421,7 +6424,6 @@ try {
             },
             98,
           );
-
           __d(
             "sdk.Cookie",
             ["QueryString", "sdk.Runtime", "sdk.Scribe", "sdk.feature"],
@@ -6558,7 +6560,6 @@ try {
             },
             98,
           );
-
           __d(
             "sdk.Observable",
             [],
@@ -6621,7 +6622,6 @@ try {
             },
             66,
           );
-
           __d(
             "sdk.AuthUtils",
             ["sdk.AuthState", "sdk.Cookie", "sdk.Observable", "sdk.Runtime"],
@@ -6851,7 +6851,6 @@ try {
             },
             98,
           );
-
           __d(
             "sdk.AuthStorageUtils",
             ["sdk.AuthUtils", "sdk.Runtime", "sdk.WebStorage", "sdk.feature"],
@@ -7019,7 +7018,6 @@ try {
             },
             98,
           );
-
           __d(
             "Base64",
             [],
@@ -7105,7 +7103,6 @@ try {
             },
             66,
           );
-
           __d(
             "sdk.SignedRequest",
             ["Base64"],
@@ -7133,7 +7130,6 @@ try {
             },
             98,
           );
-
           __d(
             "Miny",
             [],
@@ -7327,7 +7323,6 @@ try {
             },
             98,
           );
-
           __d(
             "sdk.Impressions",
             [
@@ -7641,7 +7636,6 @@ try {
             },
             66,
           );
-
           __d(
             "fb-error",
             ["performanceNowSinceAppStart", "removeFromArray"],
@@ -9986,7 +9980,6 @@ try {
             },
             34,
           );
-
           __d(
             "PHPStrictQuerySerializer",
             ["PHPQuerySerializer", "flattenPHPQueryData"],
@@ -10045,7 +10038,6 @@ try {
             },
             98,
           );
-
           __d(
             "URIRFC3986",
             [],
@@ -10112,7 +10104,6 @@ try {
             },
             66,
           );
-
           __d(
             "$InternalEnum",
             [],
@@ -10230,7 +10221,6 @@ try {
             },
             null,
           );
-
           __d(
             "URISchemes",
             ["$InternalEnum"],
@@ -10394,7 +10384,6 @@ try {
             },
             66,
           );
-
           __d(
             "isSameOrigin",
             [],
@@ -10450,7 +10439,6 @@ try {
             },
             66,
           );
-
           __d(
             "URIAbstractBase",
             [
@@ -11185,7 +11173,6 @@ try {
             },
             null,
           );
-
           __d(
             "sdk.URI",
             ["QueryString", "URIAbstractBase"],
@@ -11232,7 +11219,6 @@ try {
             },
             98,
           );
-
           __d(
             "sdk.getContextType",
             ["sdk.Runtime", "sdk.UA"],
@@ -11265,7 +11251,6 @@ try {
             },
             98,
           );
-
           __d(
             "sdk.statusCORS",
             [
@@ -11716,7 +11701,6 @@ try {
             },
             98,
           );
-
           __d(
             "sdk.Auth.LoginStatus",
             [
@@ -12141,7 +12125,6 @@ try {
             },
             98,
           );
-
           __d(
             "isStringNullOrEmpty",
             [],
@@ -12162,7 +12145,6 @@ try {
             },
             66,
           );
-
           __d(
             "sdk.LoggingUtils",
             ["sdk.Impressions", "sdk.feature"],
@@ -12241,7 +12223,6 @@ try {
             },
             98,
           );
-
           __d(
             "sdk.Auth",
             [
@@ -12806,7 +12787,6 @@ try {
             },
             66,
           );
-
           __d(
             "emptyFunction",
             [],
@@ -12844,7 +12824,6 @@ try {
             },
             66,
           );
-
           __d(
             "passiveEventListenerUtil",
             [],
@@ -12891,7 +12870,6 @@ try {
             },
             66,
           );
-
           __d(
             "DOMEventListener",
             [
@@ -12993,7 +12971,6 @@ try {
             },
             null,
           );
-
           __d(
             "JSONRPC",
             ["Log"],
@@ -13139,7 +13116,6 @@ try {
             },
             null,
           );
-
           __d(
             "Queue",
             [],
@@ -13261,7 +13237,6 @@ try {
             },
             66,
           );
-
           __d(
             "sdk.RPC",
             ["Assert", "JSONRPC", "Queue"],
@@ -13341,7 +13316,6 @@ try {
             },
             98,
           );
-
           __d(
             "sdk.DialogUtils",
             ["DOMEventListener", "sdk.Content", "sdk.DOM", "sdk.UA"],
@@ -13646,7 +13620,6 @@ try {
             },
             98,
           );
-
           __d(
             "sdk.fbt",
             [],
@@ -13695,7 +13668,6 @@ try {
             },
             66,
           );
-
           __d(
             "sdk.Dialog",
             [
@@ -14297,7 +14269,6 @@ try {
             },
             226,
           );
-
           __d(
             "ArgumentError",
             ["ManagedError"],
@@ -14321,7 +14292,6 @@ try {
             },
             98,
           );
-
           __d(
             "flattenObject",
             [],
@@ -14356,7 +14326,6 @@ try {
             },
             66,
           );
-
           __d(
             "ApiClientUtils",
             [
@@ -14436,7 +14405,6 @@ try {
             },
             98,
           );
-
           __d(
             "errorCode",
             [],
@@ -14489,7 +14457,6 @@ try {
             },
             66,
           );
-
           __d(
             "sdk.safelyParseResponse",
             ["errorCode", "nullthrows"],
@@ -14553,7 +14520,6 @@ try {
             },
             98,
           );
-
           __d(
             "whitelistObjectKeys",
             [],
@@ -14581,7 +14547,6 @@ try {
             },
             66,
           );
-
           __d(
             "ApiBatcher",
             [
@@ -14798,7 +14763,6 @@ try {
             },
             98,
           );
-
           __d(
             "CORSRequest",
             [
@@ -15015,7 +14979,6 @@ try {
             },
             98,
           );
-
           __d(
             "ApiClient",
             [
@@ -15450,7 +15413,6 @@ try {
             },
             98,
           );
-
           __d(
             "sdk.warnInsecure",
             ["Log", "sdk.Runtime", "sdk.Scribe", "sdk.feature"],
@@ -15583,7 +15545,6 @@ try {
             },
             98,
           );
-
           __d(
             "sdk.Frictionless",
             ["sdk.Auth.LoginStatus", "sdk.Dialog", "sdk.Event", "sdk.api"],
@@ -15706,7 +15667,6 @@ try {
             },
             98,
           );
-
           __d(
             "createObjectFrom",
             [],
@@ -15769,7 +15729,6 @@ try {
             },
             66,
           );
-
           __d(
             "sdk.NativeExtensions",
             ["DOMEventListener", "Log", "sdk.UA"],
@@ -15838,7 +15797,6 @@ try {
             },
             98,
           );
-
           __d(
             "sdk.Extensions",
             ["JSONRPC", "Queue", "sdk.NativeExtensions", "sdk.UA"],
@@ -15904,7 +15862,6 @@ try {
             },
             98,
           );
-
           __d(
             "sdk.Native",
             ["Log", "sdk.UA"],
@@ -15958,7 +15915,6 @@ try {
             },
             98,
           );
-
           __d(
             "sdk.Popup",
             [
@@ -16071,7 +16027,6 @@ try {
             },
             98,
           );
-
           __d(
             "isFacebookDotNetURI",
             [],
@@ -16105,7 +16060,6 @@ try {
             },
             66,
           );
-
           __d(
             "isFacebookURI",
             [],
@@ -16147,7 +16101,6 @@ try {
             },
             66,
           );
-
           __d(
             "isInstagramURI",
             [],
@@ -16234,7 +16187,6 @@ try {
             },
             66,
           );
-
           __d(
             "sdk.XD",
             [
@@ -16678,7 +16630,6 @@ try {
             },
             34,
           );
-
           __d(
             "sdk.modFeatureCheck",
             ["JSSDKConfig"],
@@ -16773,7 +16724,6 @@ try {
             },
             98,
           );
-
           __d(
             "sdk.UIServer",
             [
@@ -18121,7 +18071,6 @@ try {
             },
             226,
           );
-
           __d(
             "sdk.ui",
             [
@@ -18255,7 +18204,6 @@ try {
             },
             98,
           );
-
           __d(
             "sdk.Auth-public",
             [
@@ -18557,7 +18505,6 @@ try {
             },
             66,
           );
-
           __d(
             "sdk.Canvas.Plugin",
             ["Log", "sdk.Runtime", "sdk.UA", "sdk.api"],
@@ -18758,7 +18705,6 @@ try {
             },
             98,
           );
-
           __d(
             "sdk.Canvas.Prefetcher",
             ["JSSDKCanvasPrefetcherConfig", "sdk.Runtime", "sdk.api"],
@@ -18934,7 +18880,6 @@ try {
             },
             98,
           );
-
           __d(
             "sdk.Canvas-public",
             [
@@ -19166,7 +19111,6 @@ try {
             },
             98,
           );
-
           __d(
             "sdk.Event-public",
             ["FB", "Log", "sdk.Event"],
@@ -19245,7 +19189,6 @@ try {
             },
             98,
           );
-
           __d(
             "sdk.GamingServices",
             ["sdk.api", "sdk.ui"],
@@ -19347,7 +19290,6 @@ try {
             },
             98,
           );
-
           __d(
             "sdk.PluginUtils",
             ["resolveURI", "sdk.Event"],
@@ -19492,7 +19434,6 @@ try {
             },
             98,
           );
-
           __d(
             "isNumberLike",
             [],
@@ -19511,7 +19452,6 @@ try {
             },
             66,
           );
-
           __d(
             "sdk.createIframe",
             ["DOMEventListener", "getBlankIframeSrc", "guid", "isNumberLike"],
@@ -19648,7 +19588,6 @@ try {
             },
             98,
           );
-
           __d(
             "IframePlugin",
             [
@@ -20209,7 +20148,6 @@ try {
             },
             66,
           );
-
           __d(
             "PluginTags",
             ["PluginAttrTypes"],
@@ -20357,7 +20295,6 @@ try {
             },
             66,
           );
-
           __d(
             "XFBML",
             ["Assert", "Log", "runOnce", "sdk.Observable"],
@@ -20582,7 +20519,6 @@ try {
             },
             98,
           );
-
           __d(
             "sdk.XFBML.Comments",
             [
@@ -20767,7 +20703,6 @@ try {
             },
             98,
           );
-
           __d(
             "sdk.XFBML.CommentsCount",
             ["sdk.DOM", "sdk.XFBML.Comments", "sprintf"],
@@ -20821,7 +20756,6 @@ try {
             },
             98,
           );
-
           __d(
             "sdk.XFBML.LWIAdsCreation",
             ["IframePlugin", "sdk.createIframe"],
@@ -20881,7 +20815,6 @@ try {
             },
             98,
           );
-
           __d(
             "sdk.XFBML.LWIAdsInsights",
             ["IframePlugin", "sdk.createIframe"],
@@ -20938,7 +20871,6 @@ try {
             },
             98,
           );
-
           __d(
             "safeEval",
             ["sdk.Runtime", "sdk.Scribe"],
@@ -20983,7 +20915,6 @@ try {
             },
             34,
           );
-
           __d(
             "DOMPlugin",
             [
@@ -21136,7 +21067,6 @@ try {
             },
             98,
           );
-
           __d(
             "sdk.SVGLogos",
             ["guid"],
@@ -21417,7 +21347,6 @@ try {
             },
             98,
           );
-
           __d(
             "sdk.SharedStringConstants",
             ["sdk.fbt"],
@@ -21479,7 +21408,6 @@ try {
             },
             226,
           );
-
           __d(
             "sdk.XFBML.ShadowDOMLoginButton",
             [
@@ -21926,7 +21854,6 @@ try {
             },
             98,
           );
-
           __d(
             "sdk.XFBML.LoginButton",
             [
@@ -22275,7 +22202,6 @@ try {
             },
             98,
           );
-
           __d(
             "IframePluginClass",
             [
@@ -22731,7 +22657,6 @@ try {
             },
             98,
           );
-
           __d(
             "sdk.XFBML.MessengerCheckbox",
             ["FB", "IframePluginClass", "Log", "PluginAttrTypes", "sdk.XD"],
@@ -22849,7 +22774,6 @@ try {
             },
             98,
           );
-
           __d(
             "sdk.XFBML.MessengerCheckboxWrapper",
             ["sdk.Observable", "sdk.XFBML.MessengerCheckbox"],
@@ -22917,7 +22841,6 @@ try {
             },
             98,
           );
-
           __d(
             "sdk.XFBML.MessengerMessageUs",
             ["IframePluginClass", "PluginAttrTypes"],
@@ -22962,7 +22885,6 @@ try {
             },
             98,
           );
-
           __d(
             "sdk.XFBML.MessengerMessageUsWrapper",
             ["sdk.Observable", "sdk.XFBML.MessengerMessageUs"],
@@ -23030,7 +22952,6 @@ try {
             },
             98,
           );
-
           __d(
             "sdk.XFBML.Save",
             [
@@ -23314,7 +23235,6 @@ try {
             },
             98,
           );
-
           __d(
             "sdk.XFBML.SendToMessenger",
             ["IframePluginClass", "PluginAttrTypes"],
@@ -23361,7 +23281,6 @@ try {
             },
             98,
           );
-
           __d(
             "sdk.XFBML.SendToMessengerWrapper",
             ["sdk.Observable", "sdk.XFBML.SendToMessenger"],
@@ -23421,7 +23340,6 @@ try {
             },
             98,
           );
-
           __d(
             "sdk.XFBML.ShareButton",
             ["IframePlugin"],
@@ -23456,7 +23374,6 @@ try {
             },
             98,
           );
-
           __d(
             "sdk.XFBML.Video",
             [
@@ -23733,7 +23650,6 @@ try {
             },
             66,
           );
-
           __d(
             "sdk.XFBML-public",
             [
@@ -23875,7 +23791,6 @@ try {
             },
             66,
           );
-
           __d(
             "sdk.api-public",
             [
@@ -24022,7 +23937,6 @@ try {
             },
             98,
           );
-
           __d(
             "sdk.MBasicInitializer",
             [
@@ -24105,7 +24019,6 @@ try {
             },
             226,
           );
-
           __d(
             "sdk.init",
             [
@@ -24251,7 +24164,6 @@ try {
             },
             98,
           );
-
           __d(
             "sdk.init-public",
             [
@@ -24350,7 +24262,6 @@ try {
             },
             98,
           );
-
           __d(
             "sdk.Time",
             ["Log", "sdk.Impressions", "sdk.Runtime", "sdk.URI", "sdk.feature"],
@@ -24657,7 +24568,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1017838824","namespace":"FB","message":"' +
+        '","revision":"1017944947","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
