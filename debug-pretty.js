@@ -1,4 +1,4 @@
-/*1730814278,,JIT Construction: v1017944947,en_US*/
+/*1730922566,,JIT Construction: v1017987660,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3738,7 +3738,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1017944947",
+            revision: "1017987660",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -22842,117 +22842,6 @@ try {
             98,
           );
           __d(
-            "sdk.XFBML.MessengerMessageUs",
-            ["IframePluginClass", "PluginAttrTypes"],
-            function $module_sdk_XFBML_MessengerMessageUs(
-              global,
-              require,
-              importDefault,
-              importNamespace,
-              requireLazy,
-              module,
-              exports,
-            ) {
-              "use strict";
-              var MessengerMessageUs = (function (_IframePluginClass) {
-                babelHelpers.inheritsLoose(
-                  MessengerMessageUs,
-                  _IframePluginClass,
-                );
-                function MessengerMessageUs(elem, ns, tag, attr) {
-                  return (
-                    _IframePluginClass.call(this, elem, ns, tag, attr, {
-                      fluid: false,
-                      full_width: false,
-                      mobile_fullsize: true,
-                    }) || this
-                  );
-                }
-                var _proto = MessengerMessageUs.prototype;
-                _proto.getParams = function getParams() {
-                  var _importNamespace_PluginAttrTypes;
-                  return {
-                    messenger_app_id: (_importNamespace_PluginAttrTypes =
-                      importNamespace("PluginAttrTypes")).string,
-                    page_id: _importNamespace_PluginAttrTypes.string,
-                    color: _importNamespace_PluginAttrTypes.string,
-                    size: _importNamespace_PluginAttrTypes.string,
-                  };
-                };
-                return MessengerMessageUs;
-              })(importDefault("IframePluginClass"));
-              exports["default"] = MessengerMessageUs;
-            },
-            98,
-          );
-          __d(
-            "sdk.XFBML.MessengerMessageUsWrapper",
-            ["sdk.Observable", "sdk.XFBML.MessengerMessageUs"],
-            function $module_sdk_XFBML_MessengerMessageUsWrapper(
-              global,
-              require,
-              importDefault,
-              importNamespace,
-              requireLazy,
-              module,
-              exports,
-            ) {
-              var MessengerMessageUsWrapperPlugin =
-                function MessengerMessageUsWrapperPlugin(
-                  element,
-                  ns,
-                  tag,
-                  attr,
-                ) {
-                  return new MessengerMessageUsWrapper(element, ns, tag, attr);
-                };
-              _c = MessengerMessageUsWrapperPlugin;
-              var MessengerMessageUsWrapper = (function (_Observable) {
-                babelHelpers.inheritsLoose(
-                  MessengerMessageUsWrapper,
-                  _Observable,
-                );
-
-                function MessengerMessageUsWrapper(element, ns, tag, attr) {
-                  var _this;
-                  _this = _Observable.call(this) || this;
-                  _this.$MessengerMessageUsWrapper$p_element = element;
-                  _this.$MessengerMessageUsWrapper$p_ns = ns;
-                  _this.$MessengerMessageUsWrapper$p_tag = tag;
-                  _this.$MessengerMessageUsWrapper$p_attr = attr;
-                  return _this;
-                }
-                var _proto = MessengerMessageUsWrapper.prototype;
-                _proto.process = function process() {
-                  var _this = this;
-                  this.$MessengerMessageUsWrapper$p_attr.should_use_new_domain = true;
-                  this.$MessengerMessageUsWrapper$p_plugin = new (importDefault(
-                    "sdk.XFBML.MessengerMessageUs",
-                  ))(
-                    this.$MessengerMessageUsWrapper$p_element,
-                    this.$MessengerMessageUsWrapper$p_ns,
-                    this.$MessengerMessageUsWrapper$p_tag,
-                    this.$MessengerMessageUsWrapper$p_attr,
-                  );
-
-                  this.$MessengerMessageUsWrapper$p_plugin.subscribe(
-                    "render",
-                    function $MessengerMessageUsWrapper$p_plugin_subscribe_$1() {
-                      _this.inform("render");
-                    },
-                  );
-                  this.$MessengerMessageUsWrapper$p_plugin.process();
-                };
-                return MessengerMessageUsWrapper;
-              })(importNamespace("sdk.Observable").Observable);
-              var _default = MessengerMessageUsWrapperPlugin;
-              var _c;
-              $RefreshReg$(_c, "MessengerMessageUsWrapperPlugin");
-              exports["default"] = _default;
-            },
-            98,
-          );
-          __d(
             "sdk.XFBML.Save",
             [
               "IframePlugin",
@@ -23236,111 +23125,6 @@ try {
             98,
           );
           __d(
-            "sdk.XFBML.SendToMessenger",
-            ["IframePluginClass", "PluginAttrTypes"],
-            function $module_sdk_XFBML_SendToMessenger(
-              global,
-              require,
-              importDefault,
-              importNamespace,
-              requireLazy,
-              module,
-              exports,
-            ) {
-              "use strict";
-              var SendToMessenger = (function (_IframePluginClass) {
-                babelHelpers.inheritsLoose(SendToMessenger, _IframePluginClass);
-                function SendToMessenger(elem, ns, tag, attr) {
-                  return (
-                    _IframePluginClass.call(this, elem, ns, tag, attr, {
-                      fluid: false,
-                      full_width: false,
-                      mobile_fullsize: true,
-                    }) || this
-                  );
-                }
-                var _proto = SendToMessenger.prototype;
-                _proto.getParams = function getParams() {
-                  var _importNamespace_PluginAttrTypes;
-                  return {
-                    messenger_app_id: (_importNamespace_PluginAttrTypes =
-                      importNamespace("PluginAttrTypes")).string,
-                    page_id: _importNamespace_PluginAttrTypes.string,
-                    color: _importNamespace_PluginAttrTypes.string,
-                    size: _importNamespace_PluginAttrTypes.string,
-                    enforce_login: _importNamespace_PluginAttrTypes.bool,
-                    identity_match: _importNamespace_PluginAttrTypes.string,
-                    origin: _importNamespace_PluginAttrTypes.string,
-                    cta_text: _importNamespace_PluginAttrTypes.string,
-                    allow_login: _importNamespace_PluginAttrTypes.bool,
-                  };
-                };
-                return SendToMessenger;
-              })(importDefault("IframePluginClass"));
-              exports["default"] = SendToMessenger;
-            },
-            98,
-          );
-          __d(
-            "sdk.XFBML.SendToMessengerWrapper",
-            ["sdk.Observable", "sdk.XFBML.SendToMessenger"],
-            function $module_sdk_XFBML_SendToMessengerWrapper(
-              global,
-              require,
-              importDefault,
-              importNamespace,
-              requireLazy,
-              module,
-              exports,
-            ) {
-              var SendToMessengerWrapperPlugin =
-                function SendToMessengerWrapperPlugin(element, ns, tag, attr) {
-                  return new SendToMessengerWrapper(element, ns, tag, attr);
-                };
-              _c = SendToMessengerWrapperPlugin;
-              var SendToMessengerWrapper = (function (_Observable) {
-                babelHelpers.inheritsLoose(SendToMessengerWrapper, _Observable);
-
-                function SendToMessengerWrapper(element, ns, tag, attr) {
-                  var _this;
-                  _this = _Observable.call(this) || this;
-                  _this.$SendToMessengerWrapper$p_element = element;
-                  _this.$SendToMessengerWrapper$p_ns = ns;
-                  _this.$SendToMessengerWrapper$p_tag = tag;
-                  _this.$SendToMessengerWrapper$p_attr = attr;
-                  return _this;
-                }
-                var _proto = SendToMessengerWrapper.prototype;
-                _proto.process = function process() {
-                  var _this = this;
-                  this.$SendToMessengerWrapper$p_attr.should_use_new_domain = true;
-                  this.$SendToMessengerWrapper$p_plugin = new (importDefault(
-                    "sdk.XFBML.SendToMessenger",
-                  ))(
-                    this.$SendToMessengerWrapper$p_element,
-                    this.$SendToMessengerWrapper$p_ns,
-                    this.$SendToMessengerWrapper$p_tag,
-                    this.$SendToMessengerWrapper$p_attr,
-                  );
-
-                  this.$SendToMessengerWrapper$p_plugin.subscribe(
-                    "render",
-                    function $SendToMessengerWrapper$p_plugin_subscribe_$1() {
-                      _this.inform("render");
-                    },
-                  );
-                  this.$SendToMessengerWrapper$p_plugin.process();
-                };
-                return SendToMessengerWrapper;
-              })(importNamespace("sdk.Observable").Observable);
-              var _default = SendToMessengerWrapperPlugin;
-              var _c;
-              $RefreshReg$(_c, "SendToMessengerWrapperPlugin");
-              exports["default"] = _default;
-            },
-            98,
-          );
-          __d(
             "sdk.XFBML.ShareButton",
             ["IframePlugin"],
             function $module_sdk_XFBML_ShareButton(
@@ -23616,9 +23400,7 @@ try {
               "sdk.XFBML.LWIAdsInsights",
               "sdk.XFBML.LoginButton",
               "sdk.XFBML.MessengerCheckboxWrapper",
-              "sdk.XFBML.MessengerMessageUsWrapper",
               "sdk.XFBML.Save",
-              "sdk.XFBML.SendToMessengerWrapper",
               "sdk.XFBML.ShareButton",
               "sdk.XFBML.Video",
             ],
@@ -23638,8 +23420,6 @@ try {
                 login_button: require("sdk.XFBML.LoginButton"),
                 lwi_ads_creation: require("sdk.XFBML.LWIAdsCreation"),
                 lwi_ads_insights: require("sdk.XFBML.LWIAdsInsights"),
-                messengermessageus: require("sdk.XFBML.MessengerMessageUsWrapper"),
-                send_to_messenger: require("sdk.XFBML.SendToMessengerWrapper"),
                 messenger_checkbox: require("sdk.XFBML.MessengerCheckboxWrapper"),
                 save: require("sdk.XFBML.Save"),
                 share_button: require("sdk.XFBML.ShareButton"),
@@ -24568,7 +24348,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1017944947","namespace":"FB","message":"' +
+        '","revision":"1017987660","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
