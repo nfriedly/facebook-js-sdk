@@ -1,4 +1,4 @@
-/*1734065180,,JIT Construction: v1018841592,en_US*/
+/*1734868604,,JIT Construction: v1019055684,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3684,7 +3684,7 @@ try {
             features: {
               allow_non_canvas_app_events: false,
               error_handling: { rate: 4 },
-              e2e_ping_tracking: { rate: 0.10000000000000001 },
+              e2e_ping_tracking: { rate: 0.1 },
               xd_timeout: { rate: 1, value: 60000 },
               use_bundle: false,
               should_log_response_error: true,
@@ -3718,7 +3718,7 @@ try {
                 "100545935690488",
               ],
               should_enable_ig_login_status_fetch: true,
-              log_cookies_usage: { rate: 0.10000000000000001 },
+              log_cookies_usage: { rate: 0.1 },
               allow_shadow_dom_for_apps_with_id: [
                 520916077950649, 152351391599356, 132081130190180,
                 468663283258845, 409976882430412, 189845245141894, 360467581347,
@@ -3738,7 +3738,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1018841592",
+            revision: "1019055684",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -24361,7 +24361,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1018841592","namespace":"FB","message":"' +
+        '","revision":"1019055684","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
