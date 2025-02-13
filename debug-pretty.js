@@ -1,4 +1,4 @@
-/*1736998898,,JIT Construction: v1019367137,en_US*/
+/*1739439560,,JIT Construction: v1020080276,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3738,7 +3738,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1019367137",
+            revision: "1020080276",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -10536,8 +10536,8 @@ try {
                       (_require_closure_URISchemes = require("URISchemes"))
                     ).isAllowed(
                       components.scheme,
-                      uri.$URIAbstractBase_schemeOptions,
-                      uri.$URIAbstractBase_explicitlyAllowedSchemes,
+                      uri.$URIAbstractBase$p_schemeOptions,
+                      uri.$URIAbstractBase$p_explicitlyAllowedSchemes,
                     )
                   ) {
                     return false;
@@ -10681,21 +10681,21 @@ try {
                     ).Options.INCLUDE_DEFAULTS;
                   }
                   serializer || invariant(0, "no serializer set");
-                  this.$URIAbstractBase_serializer = serializer;
+                  this.$URIAbstractBase$p_serializer = serializer;
 
-                  this.$URIAbstractBase_protocol = "";
-                  this.$URIAbstractBase_domain = "";
-                  this.$URIAbstractBase_port = "";
-                  this.$URIAbstractBase_path = "";
-                  this.$URIAbstractBase_fragment = "";
-                  this.$URIAbstractBase_isGeneric = false;
-                  this.$URIAbstractBase_queryData = {};
-                  this.$URIAbstractBase_forceFragmentSeparator = false;
-                  this.$URIAbstractBase_schemeOptions = schemeOptions;
-                  this.$URIAbstractBase_explicitlyAllowedSchemes =
+                  this.$URIAbstractBase$p_protocol = "";
+                  this.$URIAbstractBase$p_domain = "";
+                  this.$URIAbstractBase$p_port = "";
+                  this.$URIAbstractBase$p_path = "";
+                  this.$URIAbstractBase$p_fragment = "";
+                  this.$URIAbstractBase$p_isGeneric = false;
+                  this.$URIAbstractBase$p_queryData = {};
+                  this.$URIAbstractBase$p_forceFragmentSeparator = false;
+                  this.$URIAbstractBase$p_schemeOptions = schemeOptions;
+                  this.$URIAbstractBase$p_explicitlyAllowedSchemes =
                     explicitlyAllowedSchemes;
                   URIAbstractBase.parse(this, uri, true, serializer);
-                  this.$URIAbstractBase_isQueryParamModified = false;
+                  this.$URIAbstractBase$p_isQueryParamModified = false;
                 }
                 var _proto = URIAbstractBase.prototype;
                 _proto.setProtocol = function setProtocol(protocol) {
@@ -10705,8 +10705,8 @@ try {
                       (_require_closure_URISchemes = require("URISchemes"))
                     ).isAllowed(
                       protocol,
-                      this.$URIAbstractBase_schemeOptions,
-                      this.$URIAbstractBase_explicitlyAllowedSchemes,
+                      this.$URIAbstractBase$p_schemeOptions,
+                      this.$URIAbstractBase$p_explicitlyAllowedSchemes,
                     )
                   ) {
                     false ||
@@ -10716,11 +10716,11 @@ try {
                         protocol,
                       );
                   }
-                  this.$URIAbstractBase_protocol = protocol;
+                  this.$URIAbstractBase$p_protocol = protocol;
                   return this;
                 };
                 _proto.getProtocol = function getProtocol() {
-                  return (this.$URIAbstractBase_protocol || "").toLowerCase();
+                  return (this.$URIAbstractBase$p_protocol || "").toLowerCase();
                 };
                 _proto.setSecure = function setSecure(secure) {
                   return this.setProtocol(secure ? "https" : "http");
@@ -10738,18 +10738,18 @@ try {
                     );
                   }
 
-                  this.$URIAbstractBase_domain = domain;
+                  this.$URIAbstractBase$p_domain = domain;
                   return this;
                 };
                 _proto.getDomain = function getDomain() {
-                  return this.$URIAbstractBase_domain;
+                  return this.$URIAbstractBase$p_domain;
                 };
                 _proto.setPort = function setPort(port) {
-                  this.$URIAbstractBase_port = port;
+                  this.$URIAbstractBase$p_port = port;
                   return this;
                 };
                 _proto.getPort = function getPort() {
-                  return this.$URIAbstractBase_port;
+                  return this.$URIAbstractBase$p_port;
                 };
                 _proto.setPath = function setPath(path) {
                   if (__DEV__) {
@@ -10770,11 +10770,11 @@ try {
                       }
                     }
                   }
-                  this.$URIAbstractBase_path = path;
+                  this.$URIAbstractBase$p_path = path;
                   return this;
                 };
                 _proto.getPath = function getPath() {
-                  return this.$URIAbstractBase_path;
+                  return this.$URIAbstractBase$p_path;
                 };
                 _proto.addQueryData = function addQueryData(mapOrKey, value) {
                   if (
@@ -10785,26 +10785,26 @@ try {
                       "Object",
                       "assign",
                       false,
-                      this.$URIAbstractBase_queryData,
+                      this.$URIAbstractBase$p_queryData,
                       mapOrKey,
                     );
                   } else {
-                    this.$URIAbstractBase_queryData[mapOrKey] = value;
+                    this.$URIAbstractBase$p_queryData[mapOrKey] = value;
                   }
-                  this.$URIAbstractBase_isQueryParamModified = true;
+                  this.$URIAbstractBase$p_isQueryParamModified = true;
                   return this;
                 };
                 _proto.setQueryData = function setQueryData(map) {
-                  this.$URIAbstractBase_queryData = map;
-                  this.$URIAbstractBase_isQueryParamModified = true;
+                  this.$URIAbstractBase$p_queryData = map;
+                  this.$URIAbstractBase$p_isQueryParamModified = true;
                   return this;
                 };
                 _proto.getQueryData = function getQueryData() {
-                  return this.$URIAbstractBase_queryData;
+                  return this.$URIAbstractBase$p_queryData;
                 };
                 _proto.setQueryString = function setQueryString(queryString) {
                   return this.setQueryData(
-                    this.$URIAbstractBase_serializer.deserialize(queryString),
+                    this.$URIAbstractBase$p_serializer.deserialize(queryString),
                   );
                 };
                 _proto.getQueryString = function getQueryString(
@@ -10823,15 +10823,15 @@ try {
                   if (PHPQuerySerializerNoEncoding === void 0) {
                     PHPQuerySerializerNoEncoding = null;
                   }
-                  return this.$URIAbstractBase_renderQuery(
+                  return this.$URIAbstractBase$p_renderQuery(
                     false,
                     preserveQuery,
                     isDomainNeedRawQuery,
                     PHPQuerySerializerNoEncoding,
                   );
                 };
-                _proto.$URIAbstractBase_renderQuery =
-                  function $URIAbstractBase_renderQuery(
+                _proto.$URIAbstractBase$p_renderQuery =
+                  function $URIAbstractBase$p_renderQuery(
                     rawQuery,
                     preserveQuery,
                     isDomainNeedRawQuery,
@@ -10852,19 +10852,19 @@ try {
                       PHPQuerySerializerNoEncoding = null;
                     }
                     if (
-                      !this.$URIAbstractBase_isQueryParamModified &&
+                      !this.$URIAbstractBase$p_isQueryParamModified &&
                       (preserveQuery || isDomainNeedRawQuery(this.getDomain()))
                     ) {
                       var _this$$URIAbstractBas;
                       return (_this$$URIAbstractBas =
-                        this.$URIAbstractBase_originalRawQuery) != null
+                        this.$URIAbstractBase$p_originalRawQuery) != null
                         ? _this$$URIAbstractBas
                         : "";
                     }
                     return (
                       rawQuery && PHPQuerySerializerNoEncoding
                         ? PHPQuerySerializerNoEncoding
-                        : this.$URIAbstractBase_serializer
+                        : this.$URIAbstractBase$p_serializer
                     ).serialize(this.getQueryData());
                   };
                 _proto.removeQueryData = function removeQueryData(keys) {
@@ -10872,49 +10872,50 @@ try {
                     keys = [keys];
                   }
                   for (var i = 0, length = keys.length; i < length; ++i) {
-                    delete this.$URIAbstractBase_queryData[keys[i]];
+                    delete this.$URIAbstractBase$p_queryData[keys[i]];
                   }
-                  this.$URIAbstractBase_isQueryParamModified = true;
+                  this.$URIAbstractBase$p_isQueryParamModified = true;
                   return this;
                 };
                 _proto.setFragment = function setFragment(fragment) {
-                  this.$URIAbstractBase_fragment = fragment;
+                  this.$URIAbstractBase$p_fragment = fragment;
 
                   this.setForceFragmentSeparator(false);
                   return this;
                 };
                 _proto.getFragment = function getFragment() {
-                  return this.$URIAbstractBase_fragment;
+                  return this.$URIAbstractBase$p_fragment;
                 };
                 _proto.setForceFragmentSeparator =
                   function setForceFragmentSeparator(shouldForce) {
-                    this.$URIAbstractBase_forceFragmentSeparator = shouldForce;
+                    this.$URIAbstractBase$p_forceFragmentSeparator =
+                      shouldForce;
                     return this;
                   };
                 _proto.getForceFragmentSeparator =
                   function getForceFragmentSeparator() {
-                    return this.$URIAbstractBase_forceFragmentSeparator;
+                    return this.$URIAbstractBase$p_forceFragmentSeparator;
                   };
                 _proto.setIsGeneric = function setIsGeneric(isGeneric) {
-                  this.$URIAbstractBase_isGeneric = isGeneric;
+                  this.$URIAbstractBase$p_isGeneric = isGeneric;
                   return this;
                 };
                 _proto.getIsGeneric = function getIsGeneric() {
-                  return this.$URIAbstractBase_isGeneric;
+                  return this.$URIAbstractBase$p_isGeneric;
                 };
                 _proto.getOriginalRawQuery = function getOriginalRawQuery() {
-                  return this.$URIAbstractBase_originalRawQuery;
+                  return this.$URIAbstractBase$p_originalRawQuery;
                 };
                 _proto.setOriginalRawQuery = function setOriginalRawQuery(
                   originalRawQuery,
                 ) {
-                  this.$URIAbstractBase_originalRawQuery = originalRawQuery;
+                  this.$URIAbstractBase$p_originalRawQuery = originalRawQuery;
                   return this;
                 };
                 _proto.setQueryParamModified = function setQueryParamModified(
                   isQueryParamModified,
                 ) {
-                  this.$URIAbstractBase_isQueryParamModified =
+                  this.$URIAbstractBase$p_isQueryParamModified =
                     isQueryParamModified;
                   return this;
                 };
@@ -10940,7 +10941,7 @@ try {
                   if (PHPQuerySerializerNoEncoding === void 0) {
                     PHPQuerySerializerNoEncoding = null;
                   }
-                  return this.$URIAbstractBase_toStringWithFilters(
+                  return this.$URIAbstractBase$p_toStringWithFilters(
                     false,
                     false,
                     isDomainNeedRawQuery,
@@ -10959,7 +10960,7 @@ try {
                   if (PHPQuerySerializerNoEncoding === void 0) {
                     PHPQuerySerializerNoEncoding = null;
                   }
-                  return this.$URIAbstractBase_toStringWithFilters(
+                  return this.$URIAbstractBase$p_toStringWithFilters(
                     true,
                     false,
                     isDomainNeedRawQuery,
@@ -10978,7 +10979,7 @@ try {
                   if (PHPQuerySerializerNoEncoding === void 0) {
                     PHPQuerySerializerNoEncoding = null;
                   }
-                  return this.$URIAbstractBase_toStringWithFilters(
+                  return this.$URIAbstractBase$p_toStringWithFilters(
                     false,
                     true,
                     isDomainNeedRawQuery,
@@ -10992,15 +10993,15 @@ try {
                         return false;
                       };
                     }
-                    return this.$URIAbstractBase_toStringWithFilters(
+                    return this.$URIAbstractBase$p_toStringWithFilters(
                       true,
                       false,
                       isDomainNeedRawQuery,
                       require("PHPStrictQuerySerializer"),
                     );
                   };
-                _proto.$URIAbstractBase_toStringWithFilters =
-                  function $URIAbstractBase_toStringWithFilters(
+                _proto.$URIAbstractBase$p_toStringWithFilters =
+                  function $URIAbstractBase$p_toStringWithFilters(
                     rawQuery,
                     preserveQuery,
                     isDomainNeedRawQuery,
@@ -11024,15 +11025,15 @@ try {
                     for (var i = 0; i < uriFilters.length; i++) {
                       uri = uriFilters[i](uri);
                     }
-                    return uri.$URIAbstractBase_toStringImpl(
+                    return uri.$URIAbstractBase$p_toStringImpl(
                       rawQuery,
                       preserveQuery,
                       isDomainNeedRawQuery,
                       PHPQuerySerializerNoEncoding,
                     );
                   };
-                _proto.$URIAbstractBase_toStringImpl =
-                  function $URIAbstractBase_toStringImpl(
+                _proto.$URIAbstractBase$p_toStringImpl =
+                  function $URIAbstractBase$p_toStringImpl(
                     rawQuery,
                     preserveQuery,
                     isDomainNeedRawQuery,
@@ -11072,7 +11073,7 @@ try {
                     } else if (str) {
                       str += "/";
                     }
-                    var queryStr = this.$URIAbstractBase_renderQuery(
+                    var queryStr = this.$URIAbstractBase$p_renderQuery(
                       rawQuery,
                       preserveQuery,
                       isDomainNeedRawQuery,
@@ -11110,14 +11111,14 @@ try {
                 _proto.getQualifiedURIBase = function getQualifiedURIBase() {
                   return new URIAbstractBase(
                     this,
-                    this.$URIAbstractBase_serializer,
+                    this.$URIAbstractBase$p_serializer,
                   ).qualify();
                 };
                 _proto.qualify = function qualify() {
                   if (!this.getDomain()) {
                     var current = new URIAbstractBase(
                       window.location.href,
-                      this.$URIAbstractBase_serializer,
+                      this.$URIAbstractBase$p_serializer,
                     );
 
                     this.setProtocol(current.getProtocol())
@@ -11152,7 +11153,7 @@ try {
                   return URIAbstractBase.isDomainSubdomainOfDomain(
                     domain,
                     superdomain,
-                    this.$URIAbstractBase_serializer,
+                    this.$URIAbstractBase$p_serializer,
                   );
                 };
                 URIAbstractBase.isDomainSubdomainOfDomain =
@@ -24360,7 +24361,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1019367137","namespace":"FB","message":"' +
+        '","revision":"1020080276","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
