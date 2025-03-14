@@ -1,4 +1,4 @@
-/*1741330318,,JIT Construction: v1020681104,en_US*/
+/*1741920642,,JIT Construction: v1020888736,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3738,7 +3738,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1020681104",
+            revision: "1020888736",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -9273,6 +9273,20 @@ try {
                       : "");
                 } catch (_unused3) {}
 
+                try {
+                  var _promise = event.promise;
+
+                  if (
+                    "__isPromiseWithTracing" in _promise &&
+                    _promise.__isPromiseWithTracing === true &&
+                    _promise.deferredError != null
+                  ) {
+                    expandedError.deferredSource = getErrorSafe(
+                      _promise.deferredError,
+                    );
+                  }
+                } catch (_unused4) {}
+
                 localErrorPubSub.reportError(expandedError);
 
                 event.preventDefault();
@@ -9593,7 +9607,7 @@ try {
                   try {
                     errorToThrow.message =
                       ErrorSerializer.toReadableMessage(errorToThrow);
-                  } catch (_unused4) {}
+                  } catch (_unused5) {}
 
                   throw errorToThrow;
                 };
@@ -9672,7 +9686,7 @@ try {
                       value:
                         CUSTOM_NAME_PREFIX + " " + name + CUSTOM_NAME_SUFFIX,
                     });
-                  } catch (_unused5) {}
+                  } catch (_unused6) {}
                 }
 
                 return fn;
@@ -24363,7 +24377,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1020681104","namespace":"FB","message":"' +
+        '","revision":"1020888736","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
