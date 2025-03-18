@@ -1,4 +1,4 @@
-/*1741920642,,JIT Construction: v1020888736,en_US*/
+/*1742281004,,JIT Construction: v1020994582,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3738,7 +3738,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1020888736",
+            revision: "1020994582",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -7607,26 +7607,6 @@ try {
             98,
           );
           __d(
-            "performanceNowSinceAppStart",
-            ["performanceNow"],
-            function $module_performanceNowSinceAppStart(
-              global,
-              require,
-              importDefault,
-              importNamespace,
-              requireLazy,
-              module,
-              exports,
-            ) {
-              var _importDefault_closure_performanceNow;
-              exports["default"] =
-                _importDefault_closure_performanceNow ||
-                (_importDefault_closure_performanceNow =
-                  importDefault("performanceNow"));
-            },
-            98,
-          );
-          __d(
             "removeFromArray",
             [],
             function $module_removeFromArray(
@@ -7649,7 +7629,7 @@ try {
           );
           __d(
             "fb-error",
-            ["performanceNowSinceAppStart", "removeFromArray"],
+            ["performanceNow", "removeFromArray"],
             function $module_fb_error(
               global,
               require,
@@ -7659,6 +7639,7 @@ try {
               exports,
             ) {
               "use strict";
+              var _require_closure_performanceNow;
 
               var TAALOpcode = {
                 PREVIOUS_FILE: 1,
@@ -7757,7 +7738,10 @@ try {
               var lastCacheClear = 0;
 
               function _cleanupCache() {
-                var now = require("performanceNowSinceAppStart")();
+                var now = (
+                  _require_closure_performanceNow ||
+                  (_require_closure_performanceNow = require("performanceNow"))
+                )();
 
                 if (now > lastCacheClear + windowMilliseconds) {
                   var cutoff = now - cacheClearAfter;
@@ -7800,7 +7784,10 @@ try {
               function _rateLimit(key) {
                 _cleanupCache();
 
-                var now = require("performanceNowSinceAppStart")();
+                var now = (
+                  _require_closure_performanceNow ||
+                  (_require_closure_performanceNow = require("performanceNow"))
+                )();
                 var state = rateLimitCache.get(key);
 
                 if (state == null) {
@@ -8592,7 +8579,10 @@ try {
                   metadata: metadata,
                   name: name,
                   page_time: Math.floor(
-                    require("performanceNowSinceAppStart")(),
+                    (
+                      _require_closure_performanceNow ||
+                      (_require_closure_performanceNow = require("performanceNow"))
+                    )(),
                   ),
                   project: project,
                   reactComponentStack: reactComponentStack,
@@ -24377,7 +24367,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1020888736","namespace":"FB","message":"' +
+        '","revision":"1020994582","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
