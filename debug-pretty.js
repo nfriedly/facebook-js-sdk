@@ -1,4 +1,4 @@
-/*1744300597,,JIT Construction: v1021763468,en_US*/
+/*1744325812,,JIT Construction: v1021781680,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3738,7 +3738,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1021763468",
+            revision: "1021781680",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -7746,32 +7746,9 @@ try {
                 if (now > lastCacheClear + windowMilliseconds) {
                   var cutoff = now - cacheClearAfter;
 
-                  for (
-                    var _iterator = rateLimitCache,
-                      _isArray = Array.isArray(_iterator),
-                      _i = 0,
-                      _iterator = _isArray
-                        ? _iterator
-                        : _iterator[
-                            typeof Symbol === "function"
-                              ? Symbol.iterator
-                              : "@@iterator"
-                          ]();
-                    ;
-
-                  ) {
-                    var _ref2;
-                    if (_isArray) {
-                      if (_i >= _iterator.length) break;
-                      _ref2 = _iterator[_i++];
-                    } else {
-                      _i = _iterator.next();
-                      if (_i.done) break;
-                      _ref2 = _i.value;
-                    }
-                    var _ref3 = _ref2;
-                    var key = _ref3[0];
-                    var state = _ref3[1];
+                  for (var _ref of rateLimitCache) {
+                    var key = _ref[0];
+                    var state = _ref[1];
                     if (state.lastAccessed < cutoff) {
                       rateLimitCache["delete"](key);
                     }
@@ -7964,8 +7941,7 @@ try {
                 },
 
                 findDeferredSource: function findDeferredSource() {
-                  for (var _i2 = 0; _i2 < guardList.length; _i2++) {
-                    var e = guardList[_i2];
+                  for (var e of guardList) {
                     if (e.deferredSource != null) {
                       return e.deferredSource;
                     }
@@ -8273,8 +8249,7 @@ try {
                   toBeHashed[_key2] = arguments[_key2];
                 }
 
-                for (var _i3 = 0; _i3 < toBeHashed.length; _i3++) {
-                  var s = toBeHashed[_i3];
+                for (var s of toBeHashed) {
                   if (s != null) {
                     var len = s.length;
 
@@ -8361,8 +8336,7 @@ try {
                 } else {
                   var matches;
 
-                  for (var _i4 = 0; _i4 < STACK_FRAME_FORMATS.length; _i4++) {
-                    var re = STACK_FRAME_FORMATS[_i4];
+                  for (var re of STACK_FRAME_FORMATS) {
                     matches = frame.match(re);
 
                     if (matches != null) {
@@ -8426,11 +8400,11 @@ try {
                 });
               }
 
-              function formatStackFrame(_ref4) {
-                var identifier = _ref4.identifier,
-                  script = _ref4.script,
-                  line = _ref4.line,
-                  column = _ref4.column;
+              function formatStackFrame(_ref2) {
+                var identifier = _ref2.identifier,
+                  script = _ref2.script,
+                  line = _ref2.line,
+                  column = _ref2.column;
                 var text =
                   "    at " +
                   (identifier !== null && identifier !== void 0
@@ -8805,13 +8779,13 @@ try {
                   } catch (ex) {
                     try {
                       var _metaArgs$project;
-                      var _ref5 =
+                      var _ref3 =
                           metaArgs !== null && metaArgs !== void 0
                             ? metaArgs
                             : babelHelpers["extends"]({}, null),
-                        deferredSource = _ref5.deferredSource,
-                        onError = _ref5.onError,
-                        onNormalizedError = _ref5.onNormalizedError;
+                        deferredSource = _ref3.deferredSource,
+                        onError = _ref3.onError,
+                        onNormalizedError = _ref3.onNormalizedError;
 
                       var error = getErrorSafe(ex);
                       var errorContext = {
@@ -24372,7 +24346,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1021763468","namespace":"FB","message":"' +
+        '","revision":"1021781680","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
