@@ -1,4 +1,4 @@
-/*1746082598,,JIT Construction: v1022415793,en_US*/
+/*1746122206,,JIT Construction: v1022425321,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3738,7 +3738,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1022415793",
+            revision: "1022425321",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -8663,8 +8663,13 @@ try {
                       var isTestEnv = typeof expect !== "undefined";
 
                       if (isTestEnv) {
+                        var tagsSection =
+                          normalizedError.tags != null
+                            ? "[" + normalizedError.tags.join(",") + "]"
+                            : "";
                         console.error(
-                          normalizedError.message +
+                          tagsSection +
+                            normalizedError.message +
                             "\n" +
                             normalizedError.stack,
                         );
@@ -9013,6 +9018,7 @@ try {
                   web_session_id: info.web_session_id,
                   version: "3",
                   xFBDebug: error.xFBDebug,
+                  tags: error.tags,
                 };
                 var blameModule = error.blameModule,
                   deferredSource = error.deferredSource;
@@ -9467,6 +9473,7 @@ try {
                     }
                   }
 
+                  normalizedError.tags = this.loggerTags;
                   ErrorPubSub$1.reportNormalizedError(normalizedError);
                   return error;
                 };
@@ -9625,6 +9632,10 @@ try {
                   value,
                 ) {
                   this.metadata.addEntry(product, name, value);
+                  return this;
+                };
+                _proto2.tags = function tags(_tags) {
+                  this.loggerTags = _tags;
                   return this;
                 };
                 return FBLogMessage;
@@ -24349,7 +24360,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1022415793","namespace":"FB","message":"' +
+        '","revision":"1022425321","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
