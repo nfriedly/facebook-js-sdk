@@ -1,4 +1,4 @@
-/*1746136598,,JIT Construction: v1022437314,en_US*/
+/*1746683810,,JIT Construction: v1022634042,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3738,7 +3738,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1022437314",
+            revision: "1022634042",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -9329,6 +9329,87 @@ try {
               var MAX_EVENTS_LOG_SIZE = 20;
               var FBLogMessage = (function () {
                 function FBLogMessage(project) {
+                  var _this = this;
+                  this.FATAL = function (string) {
+                    var formattedString = string.join("%s");
+                    for (
+                      var _len4 = arguments.length,
+                        expressions = new Array(_len4 > 1 ? _len4 - 1 : 0),
+                        _key4 = 1;
+                      _key4 < _len4;
+                      _key4++
+                    ) {
+                      expressions[_key4 - 1] = arguments[_key4];
+                    }
+                    _this.fatal.apply(
+                      _this,
+                      [formattedString].concat(expressions),
+                    );
+                  };
+                  this.MUSTFIX = function (string) {
+                    var formattedString = string.join("%s");
+                    for (
+                      var _len5 = arguments.length,
+                        expressions = new Array(_len5 > 1 ? _len5 - 1 : 0),
+                        _key5 = 1;
+                      _key5 < _len5;
+                      _key5++
+                    ) {
+                      expressions[_key5 - 1] = arguments[_key5];
+                    }
+                    _this.mustfix.apply(
+                      _this,
+                      [formattedString].concat(expressions),
+                    );
+                  };
+                  this.WARN = function (string) {
+                    var formattedString = string.join("%s");
+                    for (
+                      var _len6 = arguments.length,
+                        expressions = new Array(_len6 > 1 ? _len6 - 1 : 0),
+                        _key6 = 1;
+                      _key6 < _len6;
+                      _key6++
+                    ) {
+                      expressions[_key6 - 1] = arguments[_key6];
+                    }
+                    _this.warn.apply(
+                      _this,
+                      [formattedString].concat(expressions),
+                    );
+                  };
+                  this.INFO = function (string) {
+                    var formattedString = string.join("%s");
+                    for (
+                      var _len7 = arguments.length,
+                        expressions = new Array(_len7 > 1 ? _len7 - 1 : 0),
+                        _key7 = 1;
+                      _key7 < _len7;
+                      _key7++
+                    ) {
+                      expressions[_key7 - 1] = arguments[_key7];
+                    }
+                    _this.info.apply(
+                      _this,
+                      [formattedString].concat(expressions),
+                    );
+                  };
+                  this.DEBUG = function (string) {
+                    var formattedString = string.join("%s");
+                    for (
+                      var _len8 = arguments.length,
+                        expressions = new Array(_len8 > 1 ? _len8 - 1 : 0),
+                        _key8 = 1;
+                      _key8 < _len8;
+                      _key8++
+                    ) {
+                      expressions[_key8 - 1] = arguments[_key8];
+                    }
+                    _this.debug.apply(
+                      _this,
+                      [formattedString].concat(expressions),
+                    );
+                  };
                   this.project = project;
                   this.events = [];
                   this.metadata = new ErrorMetadata();
@@ -9348,15 +9429,14 @@ try {
                   var error = this.error;
                   var normalizedError;
                   for (
-                    var _len4 = arguments.length,
-                      params = new Array(_len4 > 2 ? _len4 - 2 : 0),
-                      _key4 = 2;
-                    _key4 < _len4;
-                    _key4++
+                    var _len9 = arguments.length,
+                      params = new Array(_len9 > 2 ? _len9 - 2 : 0),
+                      _key9 = 2;
+                    _key9 < _len9;
+                    _key9++
                   ) {
-                    params[_key4 - 2] = arguments[_key4];
+                    params[_key9 - 2] = arguments[_key9];
                   }
-
                   if (this.normalizedError) {
                     normalizedError = babelHelpers["extends"](
                       {},
@@ -9375,10 +9455,8 @@ try {
                         loggingSource: "FBLOGGER",
                       },
                     );
-
                     normalizedError.message =
                       ErrorSerializer.toReadableMessage(normalizedError);
-
                     if (forcedKey != null) {
                       normalizedError.forcedKey =
                         normalizedError.forcedKey != null
@@ -9392,7 +9470,6 @@ try {
                         .blameToPreviousFrame()
                         .warn("Blame helpers do not work with catching");
                     }
-
                     ErrorSerializer.aggregateError(error, {
                       messageFormat: safeFormat,
                       messageParams: ErrorSerializer.toStringParams(params),
@@ -9402,17 +9479,14 @@ try {
                       type: type,
                       loggingSource: "FBLOGGER",
                     });
-
                     normalizedError = ErrorNormalizeUtils.normalizeError(error);
                   } else {
                     error = new Error(safeFormat);
-
                     if (error.stack === undefined) {
                       try {
                         throw error;
                       } catch (_) {}
                     }
-
                     error.messageFormat = safeFormat;
                     error.messageParams =
                       ErrorSerializer.toStringParams(params);
@@ -9421,7 +9495,6 @@ try {
                     error.project = project;
                     error.type = type;
                     error.loggingSource = "FBLOGGER";
-
                     error.taalOpcodes = [
                       TAALOpcode.PREVIOUS_FRAME,
                       TAALOpcode.PREVIOUS_FRAME,
@@ -9429,7 +9502,6 @@ try {
                     normalizedError = ErrorNormalizeUtils.normalizeError(error);
                     normalizedError.name = "FBLogger";
                   }
-
                   if (!metadata.isEmpty()) {
                     if (normalizedError.metadata == null) {
                       normalizedError.metadata = metadata.format();
@@ -9446,7 +9518,6 @@ try {
                       );
                     }
                   }
-
                   if (events.length > 0) {
                     if (normalizedError.events != null) {
                       var _normalizedError$even;
@@ -9458,7 +9529,6 @@ try {
                     } else {
                       normalizedError.events = [].concat(events);
                     }
-
                     if (
                       normalizedError.events != null &&
                       normalizedError.events.length > MAX_EVENTS_LOG_SIZE
@@ -9472,89 +9542,11 @@ try {
                       );
                     }
                   }
-
                   normalizedError.tags = this.loggerTags;
                   ErrorPubSub$1.reportNormalizedError(normalizedError);
                   return error;
                 };
                 _proto2.fatal = function fatal(format) {
-                  for (
-                    var _len5 = arguments.length,
-                      params = new Array(_len5 > 1 ? _len5 - 1 : 0),
-                      _key5 = 1;
-                    _key5 < _len5;
-                    _key5++
-                  ) {
-                    params[_key5 - 1] = arguments[_key5];
-                  }
-                  this.$FBLogMessage_log.apply(
-                    this,
-                    ["fatal", format].concat(params),
-                  );
-                };
-                _proto2.mustfix = function mustfix(format) {
-                  for (
-                    var _len6 = arguments.length,
-                      params = new Array(_len6 > 1 ? _len6 - 1 : 0),
-                      _key6 = 1;
-                    _key6 < _len6;
-                    _key6++
-                  ) {
-                    params[_key6 - 1] = arguments[_key6];
-                  }
-                  this.$FBLogMessage_log.apply(
-                    this,
-                    ["error", format].concat(params),
-                  );
-                };
-                _proto2.warn = function warn(format) {
-                  for (
-                    var _len7 = arguments.length,
-                      params = new Array(_len7 > 1 ? _len7 - 1 : 0),
-                      _key7 = 1;
-                    _key7 < _len7;
-                    _key7++
-                  ) {
-                    params[_key7 - 1] = arguments[_key7];
-                  }
-                  this.$FBLogMessage_log.apply(
-                    this,
-                    ["warn", format].concat(params),
-                  );
-                };
-                _proto2.info = function info(format) {
-                  for (
-                    var _len8 = arguments.length,
-                      params = new Array(_len8 > 1 ? _len8 - 1 : 0),
-                      _key8 = 1;
-                    _key8 < _len8;
-                    _key8++
-                  ) {
-                    params[_key8 - 1] = arguments[_key8];
-                  }
-                  this.$FBLogMessage_log.apply(
-                    this,
-                    ["info", format].concat(params),
-                  );
-                };
-                _proto2.debug = function debug(format) {
-                  if (__DEV__) {
-                    for (
-                      var _len9 = arguments.length,
-                        params = new Array(_len9 > 1 ? _len9 - 1 : 0),
-                        _key9 = 1;
-                      _key9 < _len9;
-                      _key9++
-                    ) {
-                      params[_key9 - 1] = arguments[_key9];
-                    }
-                    this.$FBLogMessage_log.apply(
-                      this,
-                      ["debug", format].concat(params),
-                    );
-                  }
-                };
-                _proto2.mustfixThrow = function mustfixThrow(format) {
                   for (
                     var _len10 = arguments.length,
                       params = new Array(_len10 > 1 ? _len10 - 1 : 0),
@@ -9564,12 +9556,87 @@ try {
                   ) {
                     params[_key10 - 1] = arguments[_key10];
                   }
-
+                  this.$FBLogMessage_log.apply(
+                    this,
+                    ["fatal", format].concat(params),
+                  );
+                };
+                _proto2.mustfix = function mustfix(format) {
+                  for (
+                    var _len11 = arguments.length,
+                      params = new Array(_len11 > 1 ? _len11 - 1 : 0),
+                      _key11 = 1;
+                    _key11 < _len11;
+                    _key11++
+                  ) {
+                    params[_key11 - 1] = arguments[_key11];
+                  }
+                  this.$FBLogMessage_log.apply(
+                    this,
+                    ["error", format].concat(params),
+                  );
+                };
+                _proto2.warn = function warn(format) {
+                  for (
+                    var _len12 = arguments.length,
+                      params = new Array(_len12 > 1 ? _len12 - 1 : 0),
+                      _key12 = 1;
+                    _key12 < _len12;
+                    _key12++
+                  ) {
+                    params[_key12 - 1] = arguments[_key12];
+                  }
+                  this.$FBLogMessage_log.apply(
+                    this,
+                    ["warn", format].concat(params),
+                  );
+                };
+                _proto2.info = function info(format) {
+                  for (
+                    var _len13 = arguments.length,
+                      params = new Array(_len13 > 1 ? _len13 - 1 : 0),
+                      _key13 = 1;
+                    _key13 < _len13;
+                    _key13++
+                  ) {
+                    params[_key13 - 1] = arguments[_key13];
+                  }
+                  this.$FBLogMessage_log.apply(
+                    this,
+                    ["info", format].concat(params),
+                  );
+                };
+                _proto2.debug = function debug(format) {
+                  if (__DEV__) {
+                    for (
+                      var _len14 = arguments.length,
+                        params = new Array(_len14 > 1 ? _len14 - 1 : 0),
+                        _key14 = 1;
+                      _key14 < _len14;
+                      _key14++
+                    ) {
+                      params[_key14 - 1] = arguments[_key14];
+                    }
+                    this.$FBLogMessage_log.apply(
+                      this,
+                      ["debug", format].concat(params),
+                    );
+                  }
+                };
+                _proto2.mustfixThrow = function mustfixThrow(format) {
+                  for (
+                    var _len15 = arguments.length,
+                      params = new Array(_len15 > 1 ? _len15 - 1 : 0),
+                      _key15 = 1;
+                    _key15 < _len15;
+                    _key15++
+                  ) {
+                    params[_key15 - 1] = arguments[_key15];
+                  }
                   var errorToThrow = this.$FBLogMessage_log.apply(
                     this,
                     ["error", format].concat(params),
                   );
-
                   if (!errorToThrow) {
                     errorToThrow = err(
                       "mustfixThrow does not support catchingNormalizedError",
@@ -9577,12 +9644,10 @@ try {
                     errorToThrow.taalOpcodes = errorToThrow.taalOpcodes || [];
                     errorToThrow.taalOpcodes.push(TAALOpcode.PREVIOUS_FRAME);
                   }
-
                   try {
                     errorToThrow.message =
                       ErrorSerializer.toReadableMessage(errorToThrow);
                   } catch (_unused5) {}
-
                   throw errorToThrow;
                 };
                 _proto2.catching = function catching(error) {
@@ -9593,7 +9658,6 @@ try {
                   } else {
                     this.error = error;
                   }
-
                   return this;
                 };
                 _proto2.catchingNormalizedError =
@@ -24360,7 +24424,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1022437314","namespace":"FB","message":"' +
+        '","revision":"1022634042","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
