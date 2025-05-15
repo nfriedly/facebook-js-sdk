@@ -1,4 +1,4 @@
-/*1747259431,,JIT Construction: v1022842143,en_US*/
+/*1747272157,,JIT Construction: v1022850882,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3738,7 +3738,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1022842143",
+            revision: "1022850882",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -4818,7 +4818,7 @@ try {
               }
 
               function assertType(type, expression, message) {
-                var _message;
+                var _message2;
                 var actualType;
 
                 if (expression === undefined) {
@@ -4836,8 +4836,8 @@ try {
 
                 assert(
                   type.indexOf(actualType) !== -1,
-                  (_message = message) != null
-                    ? _message
+                  (_message2 = message) != null
+                    ? _message2
                     : importDefault("sprintf")(
                         "Expression is of type %s, not %s",
                         actualType,
@@ -4849,11 +4849,11 @@ try {
               }
 
               function assertInstanceOf(type, expression, message) {
-                var _message2;
+                var _message3;
                 assert(
                   expression instanceof type,
-                  (_message2 = message) != null
-                    ? _message2
+                  (_message3 = message) != null
+                    ? _message3
                     : "Expression not instance of type",
                 );
 
@@ -9548,6 +9548,36 @@ try {
                 };
                 _proto2.fatal = function fatal(format) {
                   for (
+                    var _len0 = arguments.length,
+                      params = new Array(_len0 > 1 ? _len0 - 1 : 0),
+                      _key0 = 1;
+                    _key0 < _len0;
+                    _key0++
+                  ) {
+                    params[_key0 - 1] = arguments[_key0];
+                  }
+                  this.$FBLogMessage_log.apply(
+                    this,
+                    ["fatal", format].concat(params),
+                  );
+                };
+                _proto2.mustfix = function mustfix(format) {
+                  for (
+                    var _len1 = arguments.length,
+                      params = new Array(_len1 > 1 ? _len1 - 1 : 0),
+                      _key1 = 1;
+                    _key1 < _len1;
+                    _key1++
+                  ) {
+                    params[_key1 - 1] = arguments[_key1];
+                  }
+                  this.$FBLogMessage_log.apply(
+                    this,
+                    ["error", format].concat(params),
+                  );
+                };
+                _proto2.warn = function warn(format) {
+                  for (
                     var _len10 = arguments.length,
                       params = new Array(_len10 > 1 ? _len10 - 1 : 0),
                       _key10 = 1;
@@ -9558,10 +9588,10 @@ try {
                   }
                   this.$FBLogMessage_log.apply(
                     this,
-                    ["fatal", format].concat(params),
+                    ["warn", format].concat(params),
                   );
                 };
-                _proto2.mustfix = function mustfix(format) {
+                _proto2.info = function info(format) {
                   for (
                     var _len11 = arguments.length,
                       params = new Array(_len11 > 1 ? _len11 - 1 : 0),
@@ -9573,49 +9603,19 @@ try {
                   }
                   this.$FBLogMessage_log.apply(
                     this,
-                    ["error", format].concat(params),
-                  );
-                };
-                _proto2.warn = function warn(format) {
-                  for (
-                    var _len12 = arguments.length,
-                      params = new Array(_len12 > 1 ? _len12 - 1 : 0),
-                      _key12 = 1;
-                    _key12 < _len12;
-                    _key12++
-                  ) {
-                    params[_key12 - 1] = arguments[_key12];
-                  }
-                  this.$FBLogMessage_log.apply(
-                    this,
-                    ["warn", format].concat(params),
-                  );
-                };
-                _proto2.info = function info(format) {
-                  for (
-                    var _len13 = arguments.length,
-                      params = new Array(_len13 > 1 ? _len13 - 1 : 0),
-                      _key13 = 1;
-                    _key13 < _len13;
-                    _key13++
-                  ) {
-                    params[_key13 - 1] = arguments[_key13];
-                  }
-                  this.$FBLogMessage_log.apply(
-                    this,
                     ["info", format].concat(params),
                   );
                 };
                 _proto2.debug = function debug(format) {
                   if (__DEV__) {
                     for (
-                      var _len14 = arguments.length,
-                        params = new Array(_len14 > 1 ? _len14 - 1 : 0),
-                        _key14 = 1;
-                      _key14 < _len14;
-                      _key14++
+                      var _len12 = arguments.length,
+                        params = new Array(_len12 > 1 ? _len12 - 1 : 0),
+                        _key12 = 1;
+                      _key12 < _len12;
+                      _key12++
                     ) {
-                      params[_key14 - 1] = arguments[_key14];
+                      params[_key12 - 1] = arguments[_key12];
                     }
                     this.$FBLogMessage_log.apply(
                       this,
@@ -9625,13 +9625,13 @@ try {
                 };
                 _proto2.mustfixThrow = function mustfixThrow(format) {
                   for (
-                    var _len15 = arguments.length,
-                      params = new Array(_len15 > 1 ? _len15 - 1 : 0),
-                      _key15 = 1;
-                    _key15 < _len15;
-                    _key15++
+                    var _len13 = arguments.length,
+                      params = new Array(_len13 > 1 ? _len13 - 1 : 0),
+                      _key13 = 1;
+                    _key13 < _len13;
+                    _key13++
                   ) {
-                    params[_key15 - 1] = arguments[_key15];
+                    params[_key13 - 1] = arguments[_key13];
                   }
                   var errorToThrow = this.$FBLogMessage_log.apply(
                     this,
@@ -14106,50 +14106,50 @@ try {
                   if (importDefault("sdk.UA").mobile()) {
                     var size = getMobileSize();
                     if (size) {
-                      var _ref,
+                      var _DOM$getViewportInfo$,
                         _DOM$getViewportInfo,
-                        _ref3,
+                        _DOM$getViewportInfo$3,
                         _DOM$getViewportInfo3;
                       if (
-                        (_ref =
+                        (_DOM$getViewportInfo$ =
                           (_DOM$getViewportInfo =
                             importNamespace("sdk.DOM").getViewportInfo()) ==
                           null
                             ? void 0
                             : _DOM$getViewportInfo.width) != null
-                          ? _ref
+                          ? _DOM$getViewportInfo$
                           : MAX_WIDTH_MOBILE <= size.width
                       ) {
-                        var _ref2, _DOM$getViewportInfo2;
+                        var _DOM$getViewportInfo$2, _DOM$getViewportInfo2;
                         size.width =
-                          (_ref2 =
+                          (_DOM$getViewportInfo$2 =
                             (_DOM$getViewportInfo2 =
                               importNamespace("sdk.DOM").getViewportInfo()) ==
                             null
                               ? void 0
                               : _DOM$getViewportInfo2.width) != null
-                            ? _ref2
+                            ? _DOM$getViewportInfo$2
                             : MAX_WIDTH_MOBILE - MARGIN_SURROUNDING;
                       }
                       if (
-                        (_ref3 =
+                        (_DOM$getViewportInfo$3 =
                           (_DOM$getViewportInfo3 =
                             importNamespace("sdk.DOM").getViewportInfo()) ==
                           null
                             ? void 0
                             : _DOM$getViewportInfo3.height) != null
-                          ? _ref3
+                          ? _DOM$getViewportInfo$3
                           : MAX_HEIGHT_MOBILE <= size.height
                       ) {
-                        var _ref4, _DOM$getViewportInfo4;
+                        var _DOM$getViewportInfo$4, _DOM$getViewportInfo4;
                         size.height =
-                          (_ref4 =
+                          (_DOM$getViewportInfo$4 =
                             (_DOM$getViewportInfo4 =
                               importNamespace("sdk.DOM").getViewportInfo()) ==
                             null
                               ? void 0
                               : _DOM$getViewportInfo4.height) != null
-                            ? _ref4
+                            ? _DOM$getViewportInfo$4
                             : MAX_HEIGHT_MOBILE - MARGIN_SURROUNDING;
                       }
                       return size;
@@ -14188,14 +14188,14 @@ try {
                 },
 
                 _handleOrientationChange: function _handleOrientationChange() {
-                  var _ref5, _DOM$getViewportInfo5;
+                  var _DOM$getViewportInfo$5, _DOM$getViewportInfo5;
                   Dialog._availScreenWidth =
-                    (_ref5 =
+                    (_DOM$getViewportInfo$5 =
                       (_DOM$getViewportInfo5 =
                         importNamespace("sdk.DOM").getViewportInfo()) == null
                         ? void 0
                         : _DOM$getViewportInfo5.width) != null
-                      ? _ref5
+                      ? _DOM$getViewportInfo$5
                       : MAX_WIDTH_MOBILE;
 
                   if (Dialog.isTabletStyle()) {
@@ -14221,17 +14221,17 @@ try {
                 },
 
                 _addOrientationHandler: function _addOrientationHandler() {
-                  var _ref6, _DOM$getViewportInfo6;
+                  var _DOM$getViewportInfo$6, _DOM$getViewportInfo6;
                   if (!importDefault("sdk.UA").mobile()) {
                     return;
                   }
                   Dialog._availScreenWidth =
-                    (_ref6 =
+                    (_DOM$getViewportInfo$6 =
                       (_DOM$getViewportInfo6 =
                         importNamespace("sdk.DOM").getViewportInfo()) == null
                         ? void 0
                         : _DOM$getViewportInfo6.width) != null
-                      ? _ref6
+                      ? _DOM$getViewportInfo$6
                       : MAX_WIDTH_MOBILE;
                   importNamespace(
                     "sdk.DialogUtils",
@@ -21563,7 +21563,7 @@ try {
                 }
                 var _proto = FBLoginButtonPlugin.prototype;
                 _proto.render = function render(_root) {
-                  var _this = this;
+                  var _this2 = this;
                   this.updateDisplay({
                     shouldHideDisambiguation: true,
                     status: importDefault("sdk.Runtime").getLoginStatus(),
@@ -21578,7 +21578,7 @@ try {
                         fxApp: response.loginSource,
                       };
 
-                      _this.updateDisplay(state);
+                      _this2.updateDisplay(state);
                     },
                   );
                   return this.container;
@@ -21667,20 +21667,20 @@ try {
                   return fbButton;
                 };
                 _proto.loginCb = function loginCb() {
-                  var _this2 = this;
+                  var _this3 = this;
                   return function (response) {
                     if (
                       response.authResponse != null &&
                       response.status === "connected"
                     ) {
                       importNamespace("sdk.LoggingUtils").logLoginEvent(
-                        _this2.params,
+                        _this3.params,
                         importNamespace("sdk.LoggingUtils").logEventName
                           .loginSuccess + "_single_fb",
                       );
                     } else {
                       importNamespace("sdk.LoggingUtils").logLoginEvent(
-                        _this2.params,
+                        _this3.params,
                         importNamespace("sdk.LoggingUtils").logEventName
                           .loginCancel + "_single_fb",
                       );
@@ -22889,7 +22889,7 @@ try {
                 }
                 var _proto = MessengerCheckboxWrapper.prototype;
                 _proto.process = function process() {
-                  var _this = this;
+                  var _this2 = this;
                   this.$MessengerCheckboxWrapper$p_attr.should_use_new_domain = true;
                   this.$MessengerCheckboxWrapper$p_plugin = new (importDefault(
                     "sdk.XFBML.MessengerCheckbox",
@@ -22903,7 +22903,7 @@ try {
                   this.$MessengerCheckboxWrapper$p_plugin.subscribe(
                     "render",
                     function $MessengerCheckboxWrapper$p_plugin_subscribe_$1() {
-                      _this.inform("render");
+                      _this2.inform("render");
                     },
                   );
                   this.$MessengerCheckboxWrapper$p_plugin.process();
@@ -24424,7 +24424,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1022842143","namespace":"FB","message":"' +
+        '","revision":"1022850882","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
