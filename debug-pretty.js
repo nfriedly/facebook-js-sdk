@@ -1,4 +1,4 @@
-/*1748044601,,JIT Construction: v1023155650,en_US*/
+/*1748904998,,JIT Construction: v1023411956,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3738,7 +3738,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1023155650",
+            revision: "1023411956",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -7553,8 +7553,108 @@ try {
             66,
           );
           __d(
+            "SimpleHook",
+            [],
+            function $module_SimpleHook(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports,
+            ) {
+              "use strict";
+              var SimpleHook = (function () {
+                function SimpleHook() {
+                  this.__callbacks = [];
+                  this.call = this.$SimpleHook_call;
+                }
+                var _proto = SimpleHook.prototype;
+                _proto.hasCallback = function hasCallback(cb) {
+                  var callbacks = this.__callbacks;
+                  return (
+                    callbacks.length > 0 &&
+                    (cb == null ||
+                      callbacks.some(function callbacks_some_$0(func) {
+                        return func === cb || func.$SimpleHook_original === cb;
+                      }))
+                  );
+                };
+                _proto.add = function add(listener, options) {
+                  var that = this;
+                  var cb;
+                  if ((options == null ? void 0 : options.once) === true) {
+                    var tmp = function tmp() {
+                      that.remove(cb);
+                      listener.apply(null, arguments);
+                    };
+                    tmp.$SimpleHook_original = listener;
+                    cb = tmp;
+                  } else {
+                    cb = listener;
+                  }
+                  this.__callbacks.push(cb);
+                  return cb;
+                };
+                _proto.removeLast = function removeLast() {
+                  return this.__callbacks.pop();
+                };
+                _proto.remove = function remove(listener) {
+                  return this.removeIf(function removeIf_$0(l) {
+                    return l === listener;
+                  });
+                };
+                _proto.removeIf = function removeIf(condition) {
+                  var previousList = this.__callbacks;
+                  this.__callbacks = previousList.filter(
+                    function previousList_filter_$0(l) {
+                      return !condition(l);
+                    },
+                  );
+                  return previousList.length > this.__callbacks.length;
+                };
+                _proto.clear = function clear() {
+                  this.__callbacks = [];
+                };
+                _proto.$SimpleHook_call = function $SimpleHook_call() {
+                  var callbacks = this.__callbacks;
+                  for (var i = 0, len = callbacks.length; i < len; ++i) {
+                    var callback = callbacks[i];
+
+                    callback.apply(null, arguments);
+                  }
+                };
+                return SimpleHook;
+              })();
+              exports.SimpleHook = SimpleHook;
+            },
+            66,
+          );
+          __d(
+            "performanceNowOnAdjust",
+            ["SimpleHook"],
+            function $module_performanceNowOnAdjust(
+              global,
+              require,
+              importDefault,
+              importNamespace,
+              requireLazy,
+              module,
+              exports,
+            ) {
+              "use strict";
+
+              var performanceNowOnAdjust = new (importNamespace(
+                "SimpleHook",
+              ).SimpleHook)();
+              var _default = performanceNowOnAdjust;
+              exports["default"] = _default;
+            },
+            98,
+          );
+          __d(
             "performanceNow",
-            ["performance"],
+            ["performance", "performanceNowOnAdjust"],
             function $module_performanceNow(
               global,
               require,
@@ -7575,12 +7675,20 @@ try {
                     importDefault("performance"))
                 ).now
               ) {
+                var _delta = 0;
+                importDefault("performanceNowOnAdjust").add(
+                  function performanceNowOnAdjust_add_$0(delta) {
+                    _delta = delta;
+                  },
+                );
                 performanceNow = function performanceNow() {
                   return (
-                    _importDefault_closure_performance ||
-                    (_importDefault_closure_performance =
-                      importDefault("performance"))
-                  ).now();
+                    (
+                      _importDefault_closure_performance ||
+                      (_importDefault_closure_performance =
+                        importDefault("performance"))
+                    ).now() + _delta
+                  );
                 };
               } else {
                 var cstart = global._cstart;
@@ -24424,7 +24532,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1023155650","namespace":"FB","message":"' +
+        '","revision":"1023411956","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
