@@ -1,4 +1,4 @@
-/*1748904998,,JIT Construction: v1023411956,en_US*/
+/*1748991400,,JIT Construction: v1023460401,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3729,7 +3729,7 @@ try {
           });
           __d("JSSDKCssConfig", [], {
             rules:
-              ".fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0px;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:'lucida grande', tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}\u0040keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}\n.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0px;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:'lucida grande', tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}\u0040keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}\n.fb_dialog{background:rgba(82,82,82,.7);position:absolute;top:-10000px;z-index:10001}.fb_dialog_advanced{border-radius:8px;padding:10px}.fb_dialog_content{background:#fff;color:#373737}.fb_dialog_close_icon{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{left:5px;right:auto;top:5px}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/yd\/r\/Cou7n-nqK52.gif) no-repeat 5px 50\u0025;float:left;padding:5px 0 7px 26px}body.fb_hidden{height:100\u0025;left:0px;margin:0px;overflow:visible;position:absolute;top:-10000px;transform:none;width:100\u0025}.fb_dialog.fb_dialog_mobile.loading{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/ya\/r\/3rhSv5V8j3o.gif) white no-repeat 50\u0025 50\u0025;min-height:100\u0025;min-width:100\u0025;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{background:none;height:auto;min-height:initial;min-width:initial;width:auto}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100\u0025}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{clear:both;color:white;display:block;font-size:18px;padding-top:20px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0,0,0,.4);bottom:0;left:0;min-height:100\u0025;position:absolute;right:0;top:0;width:100\u0025;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_mobile .fb_dialog_iframe{position:sticky;top:0}.fb_dialog_content .dialog_header{background:linear-gradient(from(#738aba), to(#2c4987));border-bottom:1px solid;border-color:#043b87;box-shadow:white 0px 1px 1px -1px inset;color:#fff;font:bold 14px Helvetica, sans-serif;text-overflow:ellipsis;text-shadow:rgba(0,30,84,.296875) 0px -1px 0px;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{height:43px;width:100\u0025}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:linear-gradient(from(#4267b2), to(#2a4887));background-clip:padding-box;border:1px solid #29487d;border-radius:3px;display:inline-block;line-height:18px;margin-top:3px;max-width:85px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{background:none;border:none;color:white;font:bold 12px Helvetica, sans-serif;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0,30,84,.296875) 0px -1px 0px}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/y9\/r\/jKEcVPZFk-2.gif) no-repeat 50\u0025 50\u0025;border:1px solid #4a4a4a;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f5f6f7;border:1px solid #4a4a4a;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/yD\/r\/t-wz8gw1xG1.png);background-position:50\u0025 50\u0025;background-repeat:no-repeat;height:24px;width:24px}\u0040keyframes rotateSpinner{0\u0025{transform:rotate(0deg)}100\u0025{transform:rotate(360deg)}}\n.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100\u0025}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100\u0025}",
+              ".fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0px;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:lucida grande,tahoma,verdana,arial,sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:400;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}\u0040keyframes fb_transform{0\u0025{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}\n\n.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0px;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:lucida grande,tahoma,verdana,arial,sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:400;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}\u0040keyframes fb_transform{0\u0025{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}\n\n.fb_dialog{background:#525252b3;position:absolute;top:-10000px;z-index:10001}.fb_dialog_advanced{border-radius:8px;padding:10px}.fb_dialog_content{background:#fff;color:#373737}.fb_dialog_close_icon{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{left:5px;right:auto;top:5px}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:700;margin:0}.fb_dialog_content .dialog_title>span{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/yd\/r\/Cou7n-nqK52.gif) no-repeat 5px 50\u0025;float:left;padding:5px 0 7px 26px}body.fb_hidden{height:100\u0025;left:0;margin:0;overflow:visible;position:absolute;top:-10000px;transform:none;width:100\u0025}.fb_dialog.fb_dialog_mobile.loading{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/ya\/r\/3rhSv5V8j3o.gif) #fff no-repeat 50\u0025 50\u0025;min-height:100\u0025;min-width:100\u0025;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{background:none;height:auto;min-height:initial;min-width:initial;width:auto}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100\u0025}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{clear:both;color:#fff;display:block;font-size:18px;padding-top:20px}#fb-root #fb_dialog_ipad_overlay{background:#0006;inset:0;min-height:100\u0025;position:absolute;width:100\u0025;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_mobile .fb_dialog_iframe{position:sticky;top:0}.fb_dialog_content .dialog_header{background:linear-gradient(from(#738aba),to(#2c4987));border-bottom:1px solid;border-color:#043b87;box-shadow:#fff 0 1px 1px -1px inset;color:#fff;font:700 14px Helvetica,sans-serif;text-overflow:ellipsis;text-shadow:rgba(0,30,84,.296875) 0px -1px 0px;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{height:43px;width:100\u0025}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:linear-gradient(from(#4267B2),to(#2a4887));background-clip:padding-box;border:1px solid #29487d;border-radius:3px;display:inline-block;line-height:18px;margin-top:3px;max-width:85px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{background:none;border:none;color:#fff;font:700 12px Helvetica,sans-serif;margin:2px -12px;padding:2px 6px 3px;text-shadow:rgba(0,30,84,.296875) 0px -1px 0px}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:700;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/y9\/r\/jKEcVPZFk-2.gif) no-repeat 50\u0025 50\u0025;border:1px solid #4A4A4A;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f5f6f7;border:1px solid #4A4A4A;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/yD\/r\/t-wz8gw1xG1.png);background-position:50\u0025 50\u0025;background-repeat:no-repeat;height:24px;width:24px}\u0040keyframes rotateSpinner{0\u0025{transform:rotate(0)}to{transform:rotate(360deg)}}\n\n.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100\u0025}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100\u0025}\n",
             components: [
               "css:fb.css.base",
               "css:fb.css.dialog",
@@ -3738,7 +3738,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1023411956",
+            revision: "1023460401",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -3768,7 +3768,7 @@ try {
           });
           __d("JSSDKShadowCssConfig", [], {
             "css:fb.shadow.css.fb_login_button":
-              ".fb_login_button_container{align-content:center;align-items:center;border:0;color:white;display:flex;font-family:'Roboto', 'Freight Sans LF Pro', Helvetica, Arial, 'Lucida Grande', sans-serif;font-weight:bold;margin:auto}.fb-button-main-element{display:flex;flex-wrap:nowrap;overflow:hidden}.fb-iframe-overlay{display:flex}.fb-button-main-element:hover{cursor:pointer}.fb-button-main-element:focus{filter:brightness(80\u0025)}.fb_button_label_element{align-items:center;display:flex;font-weight:bold;justify-content:center}.fb_button_label{margin:auto;pointer-events:none}.fb_button_svg_logo{height:1.33em;margin-left:.4em;margin-right:.4em;padding:.065em}.login_fb_logo .f_logo_f{fill:transparent}.single_button_svg_logo{margin-bottom:.08em}",
+              ".fb_login_button_container{align-content:center;align-items:center;border:0;color:#fff;display:flex;font-family:Roboto,Freight Sans LF Pro,Helvetica,Arial,Lucida Grande,sans-serif;font-weight:700;margin:auto}.fb-button-main-element{display:flex;flex-wrap:nowrap;overflow:hidden}.fb-iframe-overlay{display:flex}.fb-button-main-element:hover{cursor:pointer}.fb-button-main-element:focus{filter:brightness(80\u0025)}.fb_button_label_element{align-items:center;display:flex;font-weight:700;justify-content:center}.fb_button_label{margin:auto;pointer-events:none}.fb_button_svg_logo{height:1.33em;margin-left:.4em;margin-right:.4em;padding:.065em}.login_fb_logo .f_logo_f{fill:transparent}.single_button_svg_logo{margin-bottom:.08em}\n",
           });
           __d(
             "DOMWrapper",
@@ -4818,7 +4818,7 @@ try {
               }
 
               function assertType(type, expression, message) {
-                var _message2;
+                var _message;
                 var actualType;
 
                 if (expression === undefined) {
@@ -4836,8 +4836,8 @@ try {
 
                 assert(
                   type.indexOf(actualType) !== -1,
-                  (_message2 = message) != null
-                    ? _message2
+                  (_message = message) != null
+                    ? _message
                     : importDefault("sprintf")(
                         "Expression is of type %s, not %s",
                         actualType,
@@ -4849,11 +4849,11 @@ try {
               }
 
               function assertInstanceOf(type, expression, message) {
-                var _message3;
+                var _message2;
                 assert(
                   expression instanceof type,
-                  (_message3 = message) != null
-                    ? _message3
+                  (_message2 = message) != null
+                    ? _message2
                     : "Expression not instance of type",
                 );
 
@@ -9656,36 +9656,6 @@ try {
                 };
                 _proto2.fatal = function fatal(format) {
                   for (
-                    var _len0 = arguments.length,
-                      params = new Array(_len0 > 1 ? _len0 - 1 : 0),
-                      _key0 = 1;
-                    _key0 < _len0;
-                    _key0++
-                  ) {
-                    params[_key0 - 1] = arguments[_key0];
-                  }
-                  this.$FBLogMessage_log.apply(
-                    this,
-                    ["fatal", format].concat(params),
-                  );
-                };
-                _proto2.mustfix = function mustfix(format) {
-                  for (
-                    var _len1 = arguments.length,
-                      params = new Array(_len1 > 1 ? _len1 - 1 : 0),
-                      _key1 = 1;
-                    _key1 < _len1;
-                    _key1++
-                  ) {
-                    params[_key1 - 1] = arguments[_key1];
-                  }
-                  this.$FBLogMessage_log.apply(
-                    this,
-                    ["error", format].concat(params),
-                  );
-                };
-                _proto2.warn = function warn(format) {
-                  for (
                     var _len10 = arguments.length,
                       params = new Array(_len10 > 1 ? _len10 - 1 : 0),
                       _key10 = 1;
@@ -9696,10 +9666,10 @@ try {
                   }
                   this.$FBLogMessage_log.apply(
                     this,
-                    ["warn", format].concat(params),
+                    ["fatal", format].concat(params),
                   );
                 };
-                _proto2.info = function info(format) {
+                _proto2.mustfix = function mustfix(format) {
                   for (
                     var _len11 = arguments.length,
                       params = new Array(_len11 > 1 ? _len11 - 1 : 0),
@@ -9711,19 +9681,49 @@ try {
                   }
                   this.$FBLogMessage_log.apply(
                     this,
+                    ["error", format].concat(params),
+                  );
+                };
+                _proto2.warn = function warn(format) {
+                  for (
+                    var _len12 = arguments.length,
+                      params = new Array(_len12 > 1 ? _len12 - 1 : 0),
+                      _key12 = 1;
+                    _key12 < _len12;
+                    _key12++
+                  ) {
+                    params[_key12 - 1] = arguments[_key12];
+                  }
+                  this.$FBLogMessage_log.apply(
+                    this,
+                    ["warn", format].concat(params),
+                  );
+                };
+                _proto2.info = function info(format) {
+                  for (
+                    var _len13 = arguments.length,
+                      params = new Array(_len13 > 1 ? _len13 - 1 : 0),
+                      _key13 = 1;
+                    _key13 < _len13;
+                    _key13++
+                  ) {
+                    params[_key13 - 1] = arguments[_key13];
+                  }
+                  this.$FBLogMessage_log.apply(
+                    this,
                     ["info", format].concat(params),
                   );
                 };
                 _proto2.debug = function debug(format) {
                   if (__DEV__) {
                     for (
-                      var _len12 = arguments.length,
-                        params = new Array(_len12 > 1 ? _len12 - 1 : 0),
-                        _key12 = 1;
-                      _key12 < _len12;
-                      _key12++
+                      var _len14 = arguments.length,
+                        params = new Array(_len14 > 1 ? _len14 - 1 : 0),
+                        _key14 = 1;
+                      _key14 < _len14;
+                      _key14++
                     ) {
-                      params[_key12 - 1] = arguments[_key12];
+                      params[_key14 - 1] = arguments[_key14];
                     }
                     this.$FBLogMessage_log.apply(
                       this,
@@ -9733,13 +9733,13 @@ try {
                 };
                 _proto2.mustfixThrow = function mustfixThrow(format) {
                   for (
-                    var _len13 = arguments.length,
-                      params = new Array(_len13 > 1 ? _len13 - 1 : 0),
-                      _key13 = 1;
-                    _key13 < _len13;
-                    _key13++
+                    var _len15 = arguments.length,
+                      params = new Array(_len15 > 1 ? _len15 - 1 : 0),
+                      _key15 = 1;
+                    _key15 < _len15;
+                    _key15++
                   ) {
-                    params[_key13 - 1] = arguments[_key13];
+                    params[_key15 - 1] = arguments[_key15];
                   }
                   var errorToThrow = this.$FBLogMessage_log.apply(
                     this,
@@ -14214,50 +14214,50 @@ try {
                   if (importDefault("sdk.UA").mobile()) {
                     var size = getMobileSize();
                     if (size) {
-                      var _DOM$getViewportInfo$,
+                      var _ref,
                         _DOM$getViewportInfo,
-                        _DOM$getViewportInfo$3,
+                        _ref3,
                         _DOM$getViewportInfo3;
                       if (
-                        (_DOM$getViewportInfo$ =
+                        (_ref =
                           (_DOM$getViewportInfo =
                             importNamespace("sdk.DOM").getViewportInfo()) ==
                           null
                             ? void 0
                             : _DOM$getViewportInfo.width) != null
-                          ? _DOM$getViewportInfo$
+                          ? _ref
                           : MAX_WIDTH_MOBILE <= size.width
                       ) {
-                        var _DOM$getViewportInfo$2, _DOM$getViewportInfo2;
+                        var _ref2, _DOM$getViewportInfo2;
                         size.width =
-                          (_DOM$getViewportInfo$2 =
+                          (_ref2 =
                             (_DOM$getViewportInfo2 =
                               importNamespace("sdk.DOM").getViewportInfo()) ==
                             null
                               ? void 0
                               : _DOM$getViewportInfo2.width) != null
-                            ? _DOM$getViewportInfo$2
+                            ? _ref2
                             : MAX_WIDTH_MOBILE - MARGIN_SURROUNDING;
                       }
                       if (
-                        (_DOM$getViewportInfo$3 =
+                        (_ref3 =
                           (_DOM$getViewportInfo3 =
                             importNamespace("sdk.DOM").getViewportInfo()) ==
                           null
                             ? void 0
                             : _DOM$getViewportInfo3.height) != null
-                          ? _DOM$getViewportInfo$3
+                          ? _ref3
                           : MAX_HEIGHT_MOBILE <= size.height
                       ) {
-                        var _DOM$getViewportInfo$4, _DOM$getViewportInfo4;
+                        var _ref4, _DOM$getViewportInfo4;
                         size.height =
-                          (_DOM$getViewportInfo$4 =
+                          (_ref4 =
                             (_DOM$getViewportInfo4 =
                               importNamespace("sdk.DOM").getViewportInfo()) ==
                             null
                               ? void 0
                               : _DOM$getViewportInfo4.height) != null
-                            ? _DOM$getViewportInfo$4
+                            ? _ref4
                             : MAX_HEIGHT_MOBILE - MARGIN_SURROUNDING;
                       }
                       return size;
@@ -14296,14 +14296,14 @@ try {
                 },
 
                 _handleOrientationChange: function _handleOrientationChange() {
-                  var _DOM$getViewportInfo$5, _DOM$getViewportInfo5;
+                  var _ref5, _DOM$getViewportInfo5;
                   Dialog._availScreenWidth =
-                    (_DOM$getViewportInfo$5 =
+                    (_ref5 =
                       (_DOM$getViewportInfo5 =
                         importNamespace("sdk.DOM").getViewportInfo()) == null
                         ? void 0
                         : _DOM$getViewportInfo5.width) != null
-                      ? _DOM$getViewportInfo$5
+                      ? _ref5
                       : MAX_WIDTH_MOBILE;
 
                   if (Dialog.isTabletStyle()) {
@@ -14329,17 +14329,17 @@ try {
                 },
 
                 _addOrientationHandler: function _addOrientationHandler() {
-                  var _DOM$getViewportInfo$6, _DOM$getViewportInfo6;
+                  var _ref6, _DOM$getViewportInfo6;
                   if (!importDefault("sdk.UA").mobile()) {
                     return;
                   }
                   Dialog._availScreenWidth =
-                    (_DOM$getViewportInfo$6 =
+                    (_ref6 =
                       (_DOM$getViewportInfo6 =
                         importNamespace("sdk.DOM").getViewportInfo()) == null
                         ? void 0
                         : _DOM$getViewportInfo6.width) != null
-                      ? _DOM$getViewportInfo$6
+                      ? _ref6
                       : MAX_WIDTH_MOBILE;
                   importNamespace(
                     "sdk.DialogUtils",
@@ -21671,7 +21671,7 @@ try {
                 }
                 var _proto = FBLoginButtonPlugin.prototype;
                 _proto.render = function render(_root) {
-                  var _this2 = this;
+                  var _this = this;
                   this.updateDisplay({
                     shouldHideDisambiguation: true,
                     status: importDefault("sdk.Runtime").getLoginStatus(),
@@ -21686,7 +21686,7 @@ try {
                         fxApp: response.loginSource,
                       };
 
-                      _this2.updateDisplay(state);
+                      _this.updateDisplay(state);
                     },
                   );
                   return this.container;
@@ -21775,20 +21775,20 @@ try {
                   return fbButton;
                 };
                 _proto.loginCb = function loginCb() {
-                  var _this3 = this;
+                  var _this2 = this;
                   return function (response) {
                     if (
                       response.authResponse != null &&
                       response.status === "connected"
                     ) {
                       importNamespace("sdk.LoggingUtils").logLoginEvent(
-                        _this3.params,
+                        _this2.params,
                         importNamespace("sdk.LoggingUtils").logEventName
                           .loginSuccess + "_single_fb",
                       );
                     } else {
                       importNamespace("sdk.LoggingUtils").logLoginEvent(
-                        _this3.params,
+                        _this2.params,
                         importNamespace("sdk.LoggingUtils").logEventName
                           .loginCancel + "_single_fb",
                       );
@@ -22997,7 +22997,7 @@ try {
                 }
                 var _proto = MessengerCheckboxWrapper.prototype;
                 _proto.process = function process() {
-                  var _this2 = this;
+                  var _this = this;
                   this.$MessengerCheckboxWrapper$p_attr.should_use_new_domain = true;
                   this.$MessengerCheckboxWrapper$p_plugin = new (importDefault(
                     "sdk.XFBML.MessengerCheckbox",
@@ -23011,7 +23011,7 @@ try {
                   this.$MessengerCheckboxWrapper$p_plugin.subscribe(
                     "render",
                     function $MessengerCheckboxWrapper$p_plugin_subscribe_$1() {
-                      _this2.inform("render");
+                      _this.inform("render");
                     },
                   );
                   this.$MessengerCheckboxWrapper$p_plugin.process();
@@ -24532,7 +24532,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1023411956","namespace":"FB","message":"' +
+        '","revision":"1023460401","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
