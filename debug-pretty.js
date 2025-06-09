@@ -1,4 +1,4 @@
-/*1749172967,,JIT Construction: v1023556955,en_US*/
+/*1749502610,,JIT Construction: v1023640731,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -67,7 +67,7 @@ try {
            * @provides GenericFunctionVisitor
            * @requires TypeChecker
            * @polyfillUAs
-           * @noflow
+           *
            * @nolint
            */
 
@@ -222,7 +222,7 @@ try {
            * This means that it is generally only usable in cases where all resources are
            * resolved and packaged together.
            *
-           *  strict
+           *
            * @format
            * @oncall jsinfra
            * @providesInline fbmodule-runtime-lite
@@ -482,7 +482,7 @@ try {
           /**
            * (c) Meta Platforms, Inc. and affiliates. Confidential and proprietary.
            *
-           *  strict
+           *
            * @format
            */ __d(
             "ES5StringPrototype",
@@ -682,7 +682,7 @@ try {
           /**
            * (c) Meta Platforms, Inc. and affiliates. Confidential and proprietary.
            *
-           *  strict
+           *
            * @format
            */ __d(
             "ES6ArrayPrototype",
@@ -772,7 +772,7 @@ try {
           /**
            * (c) Meta Platforms, Inc. and affiliates. Confidential and proprietary.
            *
-           *  strict
+           *
            * @format
            */ __d(
             "ES6Number",
@@ -907,7 +907,7 @@ try {
           /**
            * (c) Meta Platforms, Inc. and affiliates. Confidential and proprietary.
            *
-           *  strict
+           *
            * @format
            */ __d(
             "ES5Array",
@@ -935,7 +935,7 @@ try {
           /**
            * (c) Meta Platforms, Inc. and affiliates. Confidential and proprietary.
            *
-           *  strict
+           *
            * @format
            */ __d(
             "ES5ArrayPrototype",
@@ -1057,7 +1057,7 @@ try {
           /**
            * (c) Meta Platforms, Inc. and affiliates. Confidential and proprietary.
            *
-           *  strict
+           *
            * @format
            */ __d(
             "ES7Object",
@@ -1109,7 +1109,7 @@ try {
           /**
            * (c) Meta Platforms, Inc. and affiliates. Confidential and proprietary.
            *
-           *  strict
+           *
            * @format
            */ __d(
             "ES7StringPrototype",
@@ -2850,7 +2850,7 @@ try {
            *           Object
            *           Object.es6
            * @polyfillUAs
-           * @noflow
+           *
            * @nolint
            */
 
@@ -3148,7 +3148,7 @@ try {
            * @preventMunge
            * @requires iterator.enumerate
            * @requires GenericFunctionVisitor
-           * @noflow
+           *
            * @nolint
            */
 
@@ -3734,7 +3734,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1023556955",
+            revision: "1023640731",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -24420,7 +24420,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1023556955","namespace":"FB","message":"' +
+        '","revision":"1023640731","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
