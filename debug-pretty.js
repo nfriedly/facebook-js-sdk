@@ -1,4 +1,4 @@
-/*1749502610,,JIT Construction: v1023640731,en_US*/
+/*1749531481,,JIT Construction: v1023667566,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3734,7 +3734,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1023640731",
+            revision: "1023667566",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -3923,7 +3923,6 @@ try {
               }
 
               function create(fn, description) {
-                var _description;
                 if (!rootObject) {
                   setPrefix("__globalCallbacks");
                 }
@@ -3931,9 +3930,7 @@ try {
                 rootObject[id] = importDefault("wrapFunction")(
                   fn,
                   "entry",
-                  (_description = description) != null
-                    ? _description
-                    : "GlobalCallback",
+                  description != null ? description : "GlobalCallback",
                 );
 
                 return callbackPrefix + "." + id;
@@ -4439,7 +4436,6 @@ try {
                   ) {
                     var sheet = styleSheetList[i];
                     if (sheet instanceof CSSStyleSheet) {
-                      var _value;
                       for (var j = 0; j < sheet.cssRules.length; j++) {
                         var rule = sheet.cssRules[j];
                         if (rule instanceof CSSStyleRule) {
@@ -4458,7 +4454,7 @@ try {
                           "{" +
                           camelToDashed(styleProp) +
                           ":" +
-                          ((_value = value) != null ? _value : "") +
+                          (value != null ? value : "") +
                           "}",
                         0,
                       );
@@ -4814,7 +4810,6 @@ try {
               }
 
               function assertType(type, expression, message) {
-                var _message;
                 var actualType;
 
                 if (expression === undefined) {
@@ -4832,8 +4827,8 @@ try {
 
                 assert(
                   type.indexOf(actualType) !== -1,
-                  (_message = message) != null
-                    ? _message
+                  message != null
+                    ? message
                     : importDefault("sprintf")(
                         "Expression is of type %s, not %s",
                         actualType,
@@ -4845,12 +4840,9 @@ try {
               }
 
               function assertInstanceOf(type, expression, message) {
-                var _message2;
                 assert(
                   expression instanceof type,
-                  (_message2 = message) != null
-                    ? _message2
-                    : "Expression not instance of type",
+                  message != null ? message : "Expression not instance of type",
                 );
 
                 return expression;
@@ -9303,6 +9295,7 @@ try {
                       var annotatedLoggingInfo = babelHelpers["extends"](
                         {},
                         loggingInfo,
+                        {},
                         (_addAnnotations =
                           addAnnotations === null || addAnnotations === void 0
                             ? void 0
@@ -15119,6 +15112,7 @@ try {
                 var params = babelHelpers["extends"](
                   {},
                   defaultParams,
+                  {},
                   paramsRaw,
                 );
 
@@ -20571,10 +20565,9 @@ try {
                 },
 
                 parse: function parse(dom, cb) {
-                  var _dom, _cb;
                   _parse(
-                    (_dom = dom) != null ? _dom : document.body,
-                    (_cb = cb) != null ? _cb : function () {},
+                    dom != null ? dom : document.body,
+                    cb != null ? cb : function () {},
                     true,
                   );
                 },
@@ -21014,7 +21007,6 @@ try {
                 _proto.render = function render(_root) {};
 
                 function DOMPlugin(element, ns, tag, attr, inParams, config) {
-                  var _config;
                   var _this;
                   _this = _Observable.call(this) || this;
                   _this.shadowCss = [];
@@ -21022,7 +21014,7 @@ try {
                   _this.element = element;
                   _this.tag = tag.replace(/-/g, "_");
                   _this.ns = ns;
-                  _this.config = (_config = config) != null ? _config : {};
+                  _this.config = config != null ? config : {};
                   _this.params = {};
                   importNamespace("sdk.PluginUtils").validate(
                     inParams,
@@ -24420,7 +24412,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1023640731","namespace":"FB","message":"' +
+        '","revision":"1023667566","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
