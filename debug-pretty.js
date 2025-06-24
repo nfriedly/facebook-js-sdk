@@ -1,4 +1,4 @@
-/*1750300141,,JIT Construction: v1023998261,en_US*/
+/*1750798603,,JIT Construction: v1024147423,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3734,7 +3734,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1023998261",
+            revision: "1024147423",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -9403,6 +9403,7 @@ try {
                   this.events = [];
                   this.metadata = new ErrorMetadata();
                   this.taalOpcodes = [];
+                  this.loggerTags = new Set();
                 }
                 var _proto2 = FBLogMessage.prototype;
                 _proto2.$FBLogMessage_log = function $FBLogMessage_log(
@@ -9531,7 +9532,12 @@ try {
                       );
                     }
                   }
-                  normalizedError.tags = this.loggerTags;
+                  normalizedError.tags = ES(
+                    "Array",
+                    "from",
+                    false,
+                    this.loggerTags,
+                  );
                   ErrorPubSub$1.reportNormalizedError(normalizedError);
                   return error;
                 };
@@ -9688,7 +9694,10 @@ try {
                   return this;
                 };
                 _proto2.tags = function tags(_tags) {
-                  this.loggerTags = _tags;
+                  var _this2 = this;
+                  _tags.forEach(function _tags_forEach_$0(tag) {
+                    return _this2.loggerTags.add(tag);
+                  });
                   return this;
                 };
                 return FBLogMessage;
@@ -24416,7 +24425,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1023998261","namespace":"FB","message":"' +
+        '","revision":"1024147423","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
