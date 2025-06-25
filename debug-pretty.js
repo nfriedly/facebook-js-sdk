@@ -1,4 +1,4 @@
-/*1750798603,,JIT Construction: v1024147423,en_US*/
+/*1750814575,,JIT Construction: v1024157779,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -312,7 +312,6 @@ try {
                       dep = requireInterop.call(null, deps[i]);
                     }
                 }
-
                 args.push(dep);
               }
               var ret = module.factory.apply(global, args);
@@ -3452,14 +3451,12 @@ try {
                         value: 0,
                         writable: true,
                       });
-
                       Object.defineProperty(map, "size", {
                         set: function set(v) {
                           console.error(
                             "PLEASE FIX ME: You are changing the map size property which " +
                               "should not be writable and will break in production.",
                           );
-
                           throw new Error(
                             "The map size property is not writable.",
                           );
@@ -3734,7 +3731,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1024147423",
+            revision: "1024157779",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -4033,7 +4030,6 @@ try {
                 nativeMessengerAndroidApp: /Orca\-Android/i.test(uas),
                 ucBrowser: /UCBrowser/i.test(uas),
               };
-
               var mobile = /Mobile/i.test(uas);
 
               var versions = {
@@ -4046,12 +4042,10 @@ try {
                 operaMini: NaN,
                 ucWeb: NaN,
               };
-
               var agent =
                 /(?:MSIE.(\d+\.\d+))|(?:(?:Firefox|GranParadiso|Iceweasel).(\d+\.\d+))|(?:AppleWebKit.(\d+(?:\.\d+)?))|(?:Trident\/\d+\.\d+.*rv:(\d+\.\d+))/.exec(
                   uas,
                 );
-
               if (agent) {
                 versions.ie = agent[1]
                   ? parseFloat(agent[1])
@@ -4835,7 +4829,6 @@ try {
                         type,
                       ),
                 );
-
                 return expression;
               }
 
@@ -4844,7 +4837,6 @@ try {
                   expression instanceof type,
                   message != null ? message : "Expression not instance of type",
                 );
-
                 return expression;
               }
 
@@ -6093,7 +6085,6 @@ try {
                   appID !== null && appID.length > 0,
                   "You need to call FB.init() with App ID first.",
                 );
-
                 return appID;
               }
 
@@ -6104,7 +6095,6 @@ try {
                     MAX_USER_PROPERTIES +
                     ".",
                 );
-
                 for (var _key in params) {
                   importDefault("Assert").isTrue(
                     USER_PROPERTIES_KEY_REGEX.test(_key) ||
@@ -6119,7 +6109,6 @@ try {
                       "starting with alphanumeric or _. " +
                       "Or, it must be a pre-defined user property",
                   );
-
                   importDefault("Assert").isTrue(
                     params[_key].toString().length <=
                       MAX_USER_PROPERTIES_VALUE_LENGTH,
@@ -6164,7 +6153,6 @@ try {
                   userID.length !== 0,
                   "User ID must be set before updateUserProperties can be called.",
                 );
-
                 importDefault("Assert").isTrue(
                   userID.length <= MAX_USER_ID_LENGTH,
                   "Invalid user ID: " +
@@ -6327,7 +6315,6 @@ try {
                           options.autoLogAppEvents,
                           "Type of property autoLogAppEvents must be boolean",
                         );
-
                         importDefault("sdk.Runtime").setAutoLogAppEvents(
                           options.autoLogAppEvents,
                         );
@@ -6376,7 +6363,6 @@ try {
                   fbLoginStatus: null,
                   igLoginStatus: null,
                 };
-
                 return {
                   currentAuthResponse: null,
                   shouldSecondLoginRequestTimeOut: false,
@@ -6438,7 +6424,6 @@ try {
                     appId: importDefault("sdk.Runtime").getClientID(),
                     error: "unknown_cookie_prefix." + startingPrefix,
                   });
-
                   if (
                     importDefault("sdk.feature")(
                       "limit_unknown_cookie_setting",
@@ -6500,7 +6485,6 @@ try {
                 var meta = importDefault("QueryString").encode({
                   base_domain: domain !== null && domain !== "." ? domain : "",
                 });
-
                 var expiration = new Date();
                 expiration.setFullYear(expiration.getFullYear() + 1);
                 setRaw("fbm_", meta, expiration.getTime(), true);
@@ -6649,7 +6633,6 @@ try {
                   igAuthResponse: null,
                   igLoginStatus: null,
                 };
-
                 var shouldSecondLoginRequestTimeOut = false;
                 importDefault("sdk.AuthState").setState({
                   mixedAuthState: mixedAuthState,
@@ -6960,7 +6943,6 @@ try {
                         .LOCAL_STORAGE_TOKEN_PREFIX +
                         importDefault("sdk.Runtime").getClientID(),
                     );
-
                     igToken = localStorage.getItem(
                       importNamespace("sdk.AuthUtils").AuthConstants
                         .IG_LOCAL_STORAGE_TOKEN_PREFIX +
@@ -6986,7 +6968,6 @@ try {
                       .SESSION_STORAGE_LOGIN_STATUS_PREFIX +
                       importDefault("sdk.Runtime").getClientID(),
                   );
-
                   if (rawCachedResponse != null) {
                     try {
                       var cachedResponse = ES(
@@ -7423,7 +7404,6 @@ try {
                   mode: "no-cors",
                   credentials: "include",
                 };
-
                 if (!should_include_creds) {
                   standardFetchOptions.credentials = "omit";
                 }
@@ -7699,12 +7679,10 @@ try {
               var defaultConfig = {
                 skipDupErrorGuard: false,
               };
-
               var ErrorConfig = {
                 config: defaultConfig,
                 setup: setup,
               };
-
               var _initialized = false;
 
               function setup(config) {
@@ -7761,7 +7739,6 @@ try {
                     logged: [now],
                     lastAccessed: now,
                   });
-
                   return 1;
                 }
                 var dropped = state.dropped,
@@ -8355,7 +8332,6 @@ try {
                   line: line,
                   column: column,
                 };
-
                 stackFrame.text = formatStackFrame(stackFrame);
                 return stackFrame;
               }
@@ -8724,7 +8700,6 @@ try {
                   return true;
                 },
               };
-
               ErrorPubSub$1.addListener(ErrorBrowserConsole.errorListener);
 
               var ANONYMOUS_GUARD_TAG = "<anonymous guard>";
@@ -8797,7 +8772,6 @@ try {
                             ? void 0
                             : metaArgs.errorType,
                       };
-
                       ErrorSerializer.aggregateError(error, errorContext);
                       var normalizedError =
                         ErrorNormalizeUtils.normalizeError(error);
@@ -9543,6 +9517,36 @@ try {
                 };
                 _proto2.fatal = function fatal(format) {
                   for (
+                    var _len0 = arguments.length,
+                      params = new Array(_len0 > 1 ? _len0 - 1 : 0),
+                      _key0 = 1;
+                    _key0 < _len0;
+                    _key0++
+                  ) {
+                    params[_key0 - 1] = arguments[_key0];
+                  }
+                  this.$FBLogMessage_log.apply(
+                    this,
+                    ["fatal", format].concat(params),
+                  );
+                };
+                _proto2.mustfix = function mustfix(format) {
+                  for (
+                    var _len1 = arguments.length,
+                      params = new Array(_len1 > 1 ? _len1 - 1 : 0),
+                      _key1 = 1;
+                    _key1 < _len1;
+                    _key1++
+                  ) {
+                    params[_key1 - 1] = arguments[_key1];
+                  }
+                  this.$FBLogMessage_log.apply(
+                    this,
+                    ["error", format].concat(params),
+                  );
+                };
+                _proto2.warn = function warn(format) {
+                  for (
                     var _len10 = arguments.length,
                       params = new Array(_len10 > 1 ? _len10 - 1 : 0),
                       _key10 = 1;
@@ -9553,10 +9557,10 @@ try {
                   }
                   this.$FBLogMessage_log.apply(
                     this,
-                    ["fatal", format].concat(params),
+                    ["warn", format].concat(params),
                   );
                 };
-                _proto2.mustfix = function mustfix(format) {
+                _proto2.info = function info(format) {
                   for (
                     var _len11 = arguments.length,
                       params = new Array(_len11 > 1 ? _len11 - 1 : 0),
@@ -9568,49 +9572,19 @@ try {
                   }
                   this.$FBLogMessage_log.apply(
                     this,
-                    ["error", format].concat(params),
-                  );
-                };
-                _proto2.warn = function warn(format) {
-                  for (
-                    var _len12 = arguments.length,
-                      params = new Array(_len12 > 1 ? _len12 - 1 : 0),
-                      _key12 = 1;
-                    _key12 < _len12;
-                    _key12++
-                  ) {
-                    params[_key12 - 1] = arguments[_key12];
-                  }
-                  this.$FBLogMessage_log.apply(
-                    this,
-                    ["warn", format].concat(params),
-                  );
-                };
-                _proto2.info = function info(format) {
-                  for (
-                    var _len13 = arguments.length,
-                      params = new Array(_len13 > 1 ? _len13 - 1 : 0),
-                      _key13 = 1;
-                    _key13 < _len13;
-                    _key13++
-                  ) {
-                    params[_key13 - 1] = arguments[_key13];
-                  }
-                  this.$FBLogMessage_log.apply(
-                    this,
                     ["info", format].concat(params),
                   );
                 };
                 _proto2.debug = function debug(format) {
                   if (__DEV__) {
                     for (
-                      var _len14 = arguments.length,
-                        params = new Array(_len14 > 1 ? _len14 - 1 : 0),
-                        _key14 = 1;
-                      _key14 < _len14;
-                      _key14++
+                      var _len12 = arguments.length,
+                        params = new Array(_len12 > 1 ? _len12 - 1 : 0),
+                        _key12 = 1;
+                      _key12 < _len12;
+                      _key12++
                     ) {
-                      params[_key14 - 1] = arguments[_key14];
+                      params[_key12 - 1] = arguments[_key12];
                     }
                     this.$FBLogMessage_log.apply(
                       this,
@@ -9620,13 +9594,13 @@ try {
                 };
                 _proto2.mustfixThrow = function mustfixThrow(format) {
                   for (
-                    var _len15 = arguments.length,
-                      params = new Array(_len15 > 1 ? _len15 - 1 : 0),
-                      _key15 = 1;
-                    _key15 < _len15;
-                    _key15++
+                    var _len13 = arguments.length,
+                      params = new Array(_len13 > 1 ? _len13 - 1 : 0),
+                      _key13 = 1;
+                    _key13 < _len13;
+                    _key13++
                   ) {
-                    params[_key15 - 1] = arguments[_key15];
+                    params[_key13 - 1] = arguments[_key13];
                   }
                   var errorToThrow = this.$FBLogMessage_log.apply(
                     this,
@@ -10164,7 +10138,6 @@ try {
                   fragment: captures[8] ? captures[8].substr(1) : null,
                   isGenericURI: authority === null && !!scheme,
                 };
-
                 return uri;
               }
               exports.parse = parse;
@@ -10214,19 +10187,16 @@ try {
                       return getReverseMap(this).has(x);
                     },
                   },
-
                   cast: {
                     value: function value(x) {
                       return this.isValid(x) ? x : undefined;
                     },
                   },
-
                   members: {
                     value: function value() {
                       return getReverseMap(this).keys();
                     },
                   },
-
                   getName: {
                     value: function value(_value) {
                       return getReverseMap(this).get(_value);
@@ -10255,17 +10225,14 @@ try {
                       return false;
                     },
                   },
-
                   cast: {
                     value: EnumPrototype.cast,
                   },
-
                   members: {
                     value: function value() {
                       return Object.getOwnPropertyNames(this).values();
                     },
                   },
-
                   getName: {
                     value: function value(_value2) {
                       return _value2;
@@ -10567,7 +10534,6 @@ try {
                         serializer.serialize(uriToParse.getQueryData()),
                       ),
                     );
-
                     uri.setFragment(uriToParse.getFragment());
                     uri.setIsGeneric(uriToParse.getIsGeneric());
                     uri.setForceFragmentSeparator(
@@ -10587,7 +10553,6 @@ try {
                     scheme: null,
                     query: null,
                   };
-
                   if (
                     !shouldThrow &&
                     !(
@@ -10708,7 +10673,6 @@ try {
                     schemeOptions,
                     explicitlyAllowedSchemes,
                   );
-
                   return URIAbstractBase.parse(result, uri, false, serializer)
                     ? result
                     : null;
@@ -11139,7 +11103,6 @@ try {
                       isDomainNeedRawQuery,
                       PHPQuerySerializerNoEncoding,
                     );
-
                     if (queryStr) {
                       str += "?" + queryStr;
                     }
@@ -11180,7 +11143,6 @@ try {
                       window.location.href,
                       this.$URIAbstractBase$p_serializer,
                     );
-
                     this.setProtocol(current.getProtocol())
                       .setDomain(current.getDomain())
                       .setPort(current.getPort());
@@ -11384,7 +11346,6 @@ try {
                             close: Date.now(),
                             method: "cors",
                           };
-
                           importNamespace("Log").debug(
                             "e2e: %s",
                             ES("JSON", "stringify", false, events),
@@ -11431,7 +11392,6 @@ try {
                       defaultLoginSourceToUnknownStatus(
                         loginSource === "facebook" ? "instagram" : "facebook",
                       );
-
                       importDefault("sdk.AuthState").setState({
                         shouldSecondLoginRequestTimeOut: true,
                       });
@@ -11562,13 +11522,11 @@ try {
                       loginSource: loginSource,
                       cb: cb,
                     };
-
                     importNamespace("sdk.AuthUtils").AuthInternalEvent.inform(
                       importNamespace("sdk.AuthUtils").AuthConstants
                         .CORS_FETCH_COMPLETED_EVENT,
                       response,
                     );
-
                     break;
                   case "not_authorized":
                   case "unknown":
@@ -11579,7 +11537,6 @@ try {
                       loginSource: loginSource,
                       cb: cb,
                     };
-
                     importNamespace("sdk.AuthUtils").AuthInternalEvent.inform(
                       importNamespace("sdk.AuthUtils").AuthConstants
                         .CORS_FETCH_COMPLETED_EVENT,
@@ -11619,7 +11576,6 @@ try {
                     error: "CORS_STATUS_FETCH",
                     extra: { message: "HTTP Status Code " + httpStatus },
                   });
-
                   importNamespace("Log").error(
                     "Error retrieving login status, HTTP status code: " +
                       httpStatus,
@@ -11635,7 +11591,6 @@ try {
                     cb: cb,
                     shouldSetAuthResponse: false,
                   };
-
                   importNamespace("sdk.AuthUtils").AuthInternalEvent.inform(
                     importNamespace("sdk.AuthUtils").AuthConstants
                       .CORS_FETCH_COMPLETED_EVENT,
@@ -11649,7 +11604,6 @@ try {
                     cb: cb,
                     shouldSetAuthResponse: false,
                   };
-
                   importNamespace("sdk.AuthUtils").AuthInternalEvent.inform(
                     importNamespace("sdk.AuthUtils").AuthConstants
                       .CORS_FETCH_COMPLETED_EVENT,
@@ -11760,7 +11714,6 @@ try {
                   status: "unknown",
                   loginSource: loginSource,
                 };
-
                 importNamespace("sdk.AuthUtils").AuthInternalEvent.inform(
                   "xFoAFetchCompleted",
                   response,
@@ -11953,7 +11906,6 @@ try {
                   importDefault("sdk.AuthState").getState().currentAuthResponse,
                   "facebook",
                 );
-
                 if (
                   importDefault("sdk.Runtime").getShouldLoadFamilyLogin() &&
                   importDefault("sdk.feature")(
@@ -11976,7 +11928,6 @@ try {
                       loginSource: "instagram",
                       cb: fn,
                     };
-
                     importNamespace("sdk.AuthUtils").AuthInternalEvent.inform(
                       importNamespace("sdk.AuthUtils").AuthConstants
                         .CORS_FETCH_COMPLETED_EVENT,
@@ -12076,7 +12027,6 @@ try {
                     "FB.getLoginStatus() not checked for an invalid client ID " +
                       appID,
                   );
-
                   unknownStatus(cb);
                   return;
                 }
@@ -12104,7 +12054,6 @@ try {
                       "facebook",
                       true,
                     );
-
                     importNamespace("sdk.AuthUtils").setRevalidateTimer(
                       cachedResponse.status === "connected"
                         ? importNamespace("sdk.AuthUtils").AuthConstants
@@ -12126,7 +12075,6 @@ try {
                           importDefault("sdk.Auth").getAuthResponse(),
                         status: importDefault("sdk.Runtime").getLoginStatus(),
                       };
-
                       cb(_response2);
                     }
                     return;
@@ -12183,7 +12131,6 @@ try {
                   status: unk_status,
                   loginSource: null,
                 };
-
                 if (cb) {
                   cb(response);
                 }
@@ -12403,7 +12350,6 @@ try {
                         ? void 0
                         : finalResponse.loginSource,
                   };
-
                   cb(response);
                 }
                 importNamespace(
@@ -12454,7 +12400,6 @@ try {
                     var parsedSignedRequest = importNamespace(
                       "sdk.SignedRequest",
                     ).parse(authResponse.signedRequest);
-
                     if (
                       parsedSignedRequest != null &&
                       parsedSignedRequest !== "" &&
@@ -12591,7 +12536,6 @@ try {
                     "access_token",
                     currentAuthResponse.accessToken,
                   );
-
                   var xhr = new XMLHttpRequest();
                   var cb_invoked = false;
                   if (xhr) {
@@ -12608,7 +12552,6 @@ try {
                             status:
                               importDefault("sdk.Runtime").getLoginStatus(),
                           });
-
                           cb_invoked = true;
                         }
                       };
@@ -12747,7 +12690,6 @@ try {
                       authResponse: authResponse,
                       status: importDefault("sdk.Runtime").getLoginStatus(),
                     };
-
                     cb(_response);
                   }
                   return authResponse;
@@ -12978,7 +12920,6 @@ try {
                     "entry",
                     require("dedupString")("DOMEventListener.add " + name),
                   );
-
                   target.addEventListener(
                     name,
                     listener.wrapper,
@@ -13007,7 +12948,6 @@ try {
                     "entry",
                     "DOMEventListener.add " + name,
                   );
-
                   target.attachEvent ||
                     invariant(0, "`target` has no `attachEvent` method.");
                   target.attachEvent("on" + name, listener.wrapper);
@@ -13131,7 +13071,6 @@ try {
                         jsonrpc: "2.0",
                         id: id,
                       };
-
                       response[type] = value;
 
                       window.setTimeout(function window_setTimeout_$0() {
@@ -13156,7 +13095,6 @@ try {
                       message: "Method not found",
                       data: rpc.method,
                     });
-
                     return;
                   }
 
@@ -13719,7 +13657,6 @@ try {
                       "Translation table type [PatternString, PatternHash] not supported: " +
                         table.toString(),
                     );
-
                     _e.stack;
                     throw _e;
                   }
@@ -14104,50 +14041,50 @@ try {
                   if (importDefault("sdk.UA").mobile()) {
                     var size = getMobileSize();
                     if (size) {
-                      var _ref,
+                      var _DOM$getViewportInfo$,
                         _DOM$getViewportInfo,
-                        _ref3,
+                        _DOM$getViewportInfo$3,
                         _DOM$getViewportInfo3;
                       if (
-                        (_ref =
+                        (_DOM$getViewportInfo$ =
                           (_DOM$getViewportInfo =
                             importNamespace("sdk.DOM").getViewportInfo()) ==
                           null
                             ? void 0
                             : _DOM$getViewportInfo.width) != null
-                          ? _ref
+                          ? _DOM$getViewportInfo$
                           : MAX_WIDTH_MOBILE <= size.width
                       ) {
-                        var _ref2, _DOM$getViewportInfo2;
+                        var _DOM$getViewportInfo$2, _DOM$getViewportInfo2;
                         size.width =
-                          (_ref2 =
+                          (_DOM$getViewportInfo$2 =
                             (_DOM$getViewportInfo2 =
                               importNamespace("sdk.DOM").getViewportInfo()) ==
                             null
                               ? void 0
                               : _DOM$getViewportInfo2.width) != null
-                            ? _ref2
+                            ? _DOM$getViewportInfo$2
                             : MAX_WIDTH_MOBILE - MARGIN_SURROUNDING;
                       }
                       if (
-                        (_ref3 =
+                        (_DOM$getViewportInfo$3 =
                           (_DOM$getViewportInfo3 =
                             importNamespace("sdk.DOM").getViewportInfo()) ==
                           null
                             ? void 0
                             : _DOM$getViewportInfo3.height) != null
-                          ? _ref3
+                          ? _DOM$getViewportInfo$3
                           : MAX_HEIGHT_MOBILE <= size.height
                       ) {
-                        var _ref4, _DOM$getViewportInfo4;
+                        var _DOM$getViewportInfo$4, _DOM$getViewportInfo4;
                         size.height =
-                          (_ref4 =
+                          (_DOM$getViewportInfo$4 =
                             (_DOM$getViewportInfo4 =
                               importNamespace("sdk.DOM").getViewportInfo()) ==
                             null
                               ? void 0
                               : _DOM$getViewportInfo4.height) != null
-                            ? _ref4
+                            ? _DOM$getViewportInfo$4
                             : MAX_HEIGHT_MOBILE - MARGIN_SURROUNDING;
                       }
                       return size;
@@ -14186,14 +14123,14 @@ try {
                 },
 
                 _handleOrientationChange: function _handleOrientationChange() {
-                  var _ref5, _DOM$getViewportInfo5;
+                  var _DOM$getViewportInfo$5, _DOM$getViewportInfo5;
                   Dialog._availScreenWidth =
-                    (_ref5 =
+                    (_DOM$getViewportInfo$5 =
                       (_DOM$getViewportInfo5 =
                         importNamespace("sdk.DOM").getViewportInfo()) == null
                         ? void 0
                         : _DOM$getViewportInfo5.width) != null
-                      ? _ref5
+                      ? _DOM$getViewportInfo$5
                       : MAX_WIDTH_MOBILE;
 
                   if (Dialog.isTabletStyle()) {
@@ -14219,17 +14156,17 @@ try {
                 },
 
                 _addOrientationHandler: function _addOrientationHandler() {
-                  var _ref6, _DOM$getViewportInfo6;
+                  var _DOM$getViewportInfo$6, _DOM$getViewportInfo6;
                   if (!importDefault("sdk.UA").mobile()) {
                     return;
                   }
                   Dialog._availScreenWidth =
-                    (_ref6 =
+                    (_DOM$getViewportInfo$6 =
                       (_DOM$getViewportInfo6 =
                         importNamespace("sdk.DOM").getViewportInfo()) == null
                         ? void 0
                         : _DOM$getViewportInfo6.width) != null
-                      ? _ref6
+                      ? _DOM$getViewportInfo$6
                       : MAX_WIDTH_MOBILE;
                   importNamespace(
                     "sdk.DialogUtils",
@@ -14584,7 +14521,6 @@ try {
                   type: "http",
                 },
               };
-
               safelyParseResponse.ERROR = ERROR;
               safelyParseResponse.setErrorHandler = function (newHandler) {
                 errorHandler = newHandler;
@@ -14783,7 +14719,6 @@ try {
                         batch_app_id:
                           this.$ApiBatcher$p_clientID || DEFAULT_BATCH_APP_ID,
                       },
-
                       function executeRequest_$3(response) {
                         if (Array.isArray(response)) {
                           response.forEach(
@@ -14900,7 +14835,6 @@ try {
                     xhr.send(data);
                   },
                 };
-
                 var onload = importDefault("wrapFunction")(
                   function wrapFunction_$0() {
                     onload = noop;
@@ -14911,7 +14845,6 @@ try {
                   "entry",
                   "XMLHttpRequest:load",
                 );
-
                 var onerror = importDefault("wrapFunction")(
                   function wrapFunction_$0() {
                     onerror = noop;
@@ -15517,7 +15450,6 @@ try {
                     methodName,
                     httpsOnlyLearnMore,
                   );
-
                   if (
                     importDefault("sdk.feature")(
                       "https_only_scribe_logging",
@@ -15532,7 +15464,6 @@ try {
                         message: methodName,
                       },
                     });
-
                     logged[methodName] = true;
                   }
                 }
@@ -15836,7 +15767,6 @@ try {
                     "FB.NativeExtensions.onReady only works when the page is rendered " +
                       "in a WebView of the native Facebook app.",
                   );
-
                   return;
                 }
 
@@ -15959,7 +15889,6 @@ try {
                         "in a WebView of the native Facebook app. Test if this is the " +
                         "case calling FB.UA.nativeApp()",
                     );
-
                     return;
                   }
 
@@ -16367,7 +16296,6 @@ try {
                               pluginName,
                               origin,
                             );
-
                             return;
                           }
                           if (window.frames[pluginName] != null) {
@@ -16377,7 +16305,6 @@ try {
                                 message: message,
                                 origin: origin,
                               },
-
                               senderOrigin,
                             );
                           } else {
@@ -16392,7 +16319,6 @@ try {
                           "Plugin attempted to register from non-Facebook domain %s",
                           senderOrigin,
                         );
-
                         return;
                       }
                     } else {
@@ -16531,7 +16457,6 @@ try {
                                   origin,
                                   senderOrigin,
                                 );
-
                                 return;
                               }
 
@@ -16554,7 +16479,6 @@ try {
                                   message: message,
                                   origin: origin,
                                 },
-
                                 senderOrigin,
                               );
                             },
@@ -16583,7 +16507,6 @@ try {
                   importNamespace("Log").warn(
                     "cannot deliver messages to facebook unless window.parent is top and facebook.com.",
                   );
-
                   return;
                 }
 
@@ -16628,7 +16551,6 @@ try {
                               "Failed to initialize in " + timeout + "ms",
                           },
                         });
-
                         importNamespace("Log").error(
                           "xdAbiterRegisterAck not received",
                         );
@@ -16674,7 +16596,6 @@ try {
                       is_canvas:
                         importDefault("sdk.Runtime").isCanvasEnvironment(),
                     });
-
                   return xdArbiterHttpsUrl + xdArbiterFragment;
                 },
 
@@ -17013,7 +16934,6 @@ try {
                         call.params,
                       ),
                     ),
-
                     origin: importDefault("sdk.getContextType")(),
                     response_type: responseTypes,
                     domain: location.hostname,
@@ -17063,7 +16983,6 @@ try {
                       width: 400,
                       height: 800,
                     };
-
                     return call;
                   },
                 },
@@ -17076,7 +16995,6 @@ try {
                       width: 400,
                       height: 800,
                     };
-
                     return call;
                   },
                 },
@@ -17118,7 +17036,6 @@ try {
                     width: importDefault("sdk.UA").mobile() ? null : 600,
                     height: importDefault("sdk.UA").mobile() ? null : 679,
                   },
-
                   transform: function transform(call) {
                     return permission_oauth_transform(call);
                   },
@@ -17130,7 +17047,6 @@ try {
                     width: importDefault("sdk.UA").mobile() ? null : 600,
                     height: importDefault("sdk.UA").mobile() ? null : 679,
                   },
-
                   transform: function transform(call) {
                     return permission_oauth_transform(call);
                   },
@@ -17142,7 +17058,6 @@ try {
                     width: importDefault("sdk.UA").mobile() ? null : 600,
                     height: importDefault("sdk.UA").mobile() ? null : 679,
                   },
-
                   transform: function transform(call) {
                     if (!importDefault("sdk.Runtime").getClientID()) {
                       importNamespace("Log").error(
@@ -17167,7 +17082,6 @@ try {
                           call.params,
                         ),
                       ),
-
                       origin: importDefault("sdk.getContextType")(),
                       domain: location.hostname,
                     });
@@ -17217,7 +17131,6 @@ try {
                   },
                   require_access_token: true,
                 },
-
                 boost: {
                   transform: function transform(call) {
                     call.size = { width: 960, height: 760 };
@@ -17284,7 +17197,6 @@ try {
                           "parent.parent",
                         ),
                       },
-
                       true,
                     );
                   }
@@ -17361,7 +17273,6 @@ try {
                       importNamespace("Log").error(
                         "Your request to oauth has exceeded the rate limit, please try again later",
                       );
-
                       return;
                     }
                     _oauthDialogRequestCount++;
@@ -17470,7 +17381,6 @@ try {
                           relation === "parent" ? "parent.parent" : "opener",
                         ),
                       },
-
                       true,
                     );
                   }
@@ -17612,7 +17522,6 @@ try {
                     call,
                     UIServer.isOAuth({ method: call.name }),
                   );
-
                   if (popup) {
                     UIServer.setLoadedNode(call, popup, "popup");
 
@@ -17633,7 +17542,6 @@ try {
                     method: call.name,
                     params: call.params,
                   };
-
                   UIServer._loadedNodes[call.id] = node;
                 },
 
@@ -17661,7 +17569,6 @@ try {
                         "User canceled the Dialog flow",
                       ),
                     });
-
                     UIServer._triggerDefault(call.id, errorResult);
                   };
 
@@ -18251,7 +18158,6 @@ try {
                     '"display" must be one of "popup", ' +
                       '"dialog", "iframe", "touch", "async", "hidden", or "none"',
                   );
-
                   return null;
                 }
 
@@ -18743,7 +18649,6 @@ try {
                     unity: unityPresent,
                     flash: flashPresent,
                   };
-
                   importDefault("sdk.api")(
                     importDefault("sdk.Runtime").getClientID() +
                       "/occludespopups",
@@ -19075,7 +18980,6 @@ try {
                           !options.hidePluginCallback,
                         "cannot specify deprecated hideFlashCallback and new hidePluginCallback",
                       );
-
                       importDefault("sdk.Canvas.Plugin")._setHidePluginCallback(
                         options.hidePluginCallback || options.hideFlashCallback,
                       );
@@ -19281,7 +19185,6 @@ try {
                     display: "touch",
                     method: "gaming_friendfinder",
                   },
-
                   cb,
                 );
               }
@@ -19299,7 +19202,6 @@ try {
                     caption: caption,
                     url: imageUri,
                   },
-
                   function api_$3(apiResponse) {
                     if (
                       shouldOpenMediaDialog === false ||
@@ -19317,7 +19219,6 @@ try {
                           method: "gaming_media_library",
                           media_id: upload_id,
                         },
-
                         function ui_$1(_response) {
                           if (cb !== null) {
                             cb(apiResponse);
@@ -19730,7 +19631,6 @@ try {
                             overflow: "",
                           },
                         );
-
                         importNamespace("sdk.PluginUtils").resize(
                           _this._iframeOptions.root,
                           importNamespace("sdk.PluginUtils").parse(
@@ -19760,14 +19660,12 @@ try {
                           overflow: "",
                         },
                       );
-
                       (_importNamespace_sdkPluginUtils =
                         importNamespace("sdk.PluginUtils")).resize(
                         _this._iframeOptions.root,
                         _importNamespace_sdkPluginUtils.parse(message.width),
                         _importNamespace_sdkPluginUtils.parse(message.height),
                       );
-
                       _importNamespace_sdkPluginUtils.resize(
                         _this._iframe,
                         _importNamespace_sdkPluginUtils.parse(message.width),
@@ -20168,19 +20066,15 @@ try {
               var messengerpreconfirmation = {
                 mobile_fullsize: true,
               };
-
               var messengeraccountconfirmation = {
                 mobile_fullsize: true,
               };
-
               var messengerbusinesslink = {
                 mobile_fullsize: true,
               };
-
               var messengertoggle = {
                 mobile_fullsize: true,
               };
-
               var post = {
                 fluid: importDefault("sdk.feature")("fluid_embed", false),
                 mobile_fullsize: true,
@@ -20445,7 +20339,6 @@ try {
                     !!dom.getElementsByTagName,
                   "Invalid DOM node passed to FB.XFBML.parse()",
                 );
-
                 importDefault("Assert").isFunction(
                   callback,
                   "Invalid callback passed to FB.XFBML.parse()",
@@ -20809,7 +20702,6 @@ try {
                           data.count,
                         ),
                       );
-
                       if (data.count > 0) {
                         importNamespace("sdk.DOM").removeCss(
                           elem,
@@ -21108,7 +21000,6 @@ try {
                       "closed",
                     ),
                   });
-
                   shadowCss.forEach(
                     function shadowCss_forEach_$0(cssModuleName) {
                       return importNamespace("sdk.DOM").addCssRules(
@@ -21118,7 +21009,6 @@ try {
                       );
                     },
                   );
-
                   shadowRoot.appendChild(render(shadowRoot));
                 } else {
                   shadowCss.forEach(
@@ -21129,7 +21019,6 @@ try {
                       );
                     },
                   );
-
                   element.appendChild(render(document));
                 }
               }
@@ -21164,7 +21053,6 @@ try {
                     return target.setAttribute(p, attribs[p]);
                   },
                 );
-
                 return target;
               }
 
@@ -21173,7 +21061,6 @@ try {
                   document.createElementNS("http://www.w3.org/2000/svg", tag),
                   attribs,
                 );
-
                 root == null ? void 0 : root.appendChild(x);
                 return x;
               }
@@ -21191,7 +21078,6 @@ try {
                     attribs,
                   ),
                 );
-
                 svgE(svg, "line", {
                   x1: "0",
                   y1: "100",
@@ -21199,7 +21085,6 @@ try {
                   y2: "0",
                   "stroke-width": "12",
                 });
-
                 svgE(svg, "line", {
                   x1: "0",
                   y1: "0",
@@ -21207,7 +21092,6 @@ try {
                   y2: "100",
                   "stroke-width": "12",
                 });
-
                 return svg;
               };
 
@@ -21224,7 +21108,6 @@ try {
                     attribs,
                   ),
                 );
-
                 svgE(svg, "path", {
                   d: fsilo + outera,
                   class: "f_logo_circle",
@@ -21245,13 +21128,11 @@ try {
                     attribs,
                   ),
                 );
-
                 svgE(svg, "path", {
                   d: fsilo + outera,
                   class: "f_logo_circle",
                   fill: "white",
                 });
-
                 svgE(svg, "path", {
                   d: fsilo + innera,
                   class: "f_logo_f",
@@ -21275,7 +21156,6 @@ try {
                     attribs,
                   ),
                 );
-
                 svgE(svg, "rect", {
                   x: "5",
                   y: "5",
@@ -21285,7 +21165,6 @@ try {
                   rx: "23",
                   class: "ig_logo_body",
                 });
-
                 svgE(svg, "circle", {
                   cx: "77",
                   cy: "23",
@@ -21299,7 +21178,6 @@ try {
                   "stroke-width": "9",
                   class: "ig_logo_lens",
                 });
-
                 return svg;
               };
               var instagramColor = function instagramColor(attribs) {
@@ -21319,12 +21197,10 @@ try {
                     attribs,
                   ),
                 );
-
                 var defs = svgE(svg, "defs", {});
                 var mask = svgE(defs, "mask", {
                   id: maskID,
                 });
-
                 svgE(mask, "circle", {
                   cx: "77",
                   cy: "23",
@@ -21338,7 +21214,6 @@ try {
                   "stroke-width": "9",
                   stroke: "white",
                 });
-
                 svgE(mask, "rect", {
                   x: "5",
                   y: "5",
@@ -21349,7 +21224,6 @@ try {
                   stroke: "white",
                   fill: "none",
                 });
-
                 var rg1 = svgE(defs, "linearGradient", {
                   id: "purplepink",
                   x1: "0",
@@ -21357,7 +21231,6 @@ try {
                   y1: "0",
                   y2: ".6",
                 });
-
                 svgE(rg1, "stop", {
                   offset: "12%",
                   "stop-color": "rgb(88,85,214)",
@@ -21372,7 +21245,6 @@ try {
                   cy: "1",
                   r: "2",
                 });
-
                 svgE(rg2, "stop", {
                   offset: "7%",
                   "stop-color": "rgb(252,215,114)",
@@ -21386,7 +21258,6 @@ try {
                   "stop-color": "rgb(225,37,122)",
                   "stop-opacity": "0",
                 });
-
                 svgE(svg, "rect", {
                   x: "1",
                   y: "1",
@@ -21397,7 +21268,6 @@ try {
                   fill: "url(#purplepink)",
                   style: "mask: url(#" + maskID + ")",
                 });
-
                 svgE(svg, "rect", {
                   x: "1",
                   y: "1",
@@ -21408,7 +21278,6 @@ try {
                   fill: "url(#yelloworange)",
                   style: "mask: url(#" + maskID + ")",
                 });
-
                 return svg;
               };
               exports.close = close;
@@ -21560,7 +21429,7 @@ try {
                 }
                 var _proto = FBLoginButtonPlugin.prototype;
                 _proto.render = function render(_root) {
-                  var _this = this;
+                  var _this2 = this;
                   this.updateDisplay({
                     shouldHideDisambiguation: true,
                     status: importDefault("sdk.Runtime").getLoginStatus(),
@@ -21574,8 +21443,7 @@ try {
                         status: response.status,
                         fxApp: response.loginSource,
                       };
-
-                      _this.updateDisplay(state);
+                      _this2.updateDisplay(state);
                     },
                   );
                   return this.container;
@@ -21616,7 +21484,6 @@ try {
                       display: "popup",
                       scope: scope,
                     },
-
                     this.loginCb(),
                   );
                 };
@@ -21664,20 +21531,20 @@ try {
                   return fbButton;
                 };
                 _proto.loginCb = function loginCb() {
-                  var _this2 = this;
+                  var _this3 = this;
                   return function (response) {
                     if (
                       response.authResponse != null &&
                       response.status === "connected"
                     ) {
                       importNamespace("sdk.LoggingUtils").logLoginEvent(
-                        _this2.params,
+                        _this3.params,
                         importNamespace("sdk.LoggingUtils").logEventName
                           .loginSuccess + "_single_fb",
                       );
                     } else {
                       importNamespace("sdk.LoggingUtils").logLoginEvent(
-                        _this2.params,
+                        _this3.params,
                         importNamespace("sdk.LoggingUtils").logEventName
                           .loginCancel + "_single_fb",
                       );
@@ -21794,7 +21661,6 @@ try {
                         : "default",
                     width: width,
                   };
-
                   var iframe = importDefault("sdk.createIframe")(optArgs);
                   iframe.classList.add("fb-iframe-overlay");
                   return iframe;
@@ -22098,7 +21964,6 @@ try {
                           response.error_code,
                           response.error_message || response.error_description,
                         );
-
                         return;
                       }
 
@@ -22126,7 +21991,6 @@ try {
                             method: "loginComplete",
                             params: "{}",
                           });
-
                           dialog_open_cb(response);
                         },
                       );
@@ -22351,7 +22215,6 @@ try {
                           overflow: "",
                         },
                       );
-
                       importNamespace("sdk.PluginUtils").resize(
                         _this.iframeOptions.root,
                         importNamespace("sdk.PluginUtils").parse(message.width),
@@ -22359,7 +22222,6 @@ try {
                           message.height,
                         ),
                       );
-
                       _this.updateLift();
                       window.clearTimeout(_this.$IframePluginClass$p_timeoutID);
                     },
@@ -22380,20 +22242,17 @@ try {
                           overflow: "",
                         },
                       );
-
                       (_importNamespace_sdkPluginUtils =
                         importNamespace("sdk.PluginUtils")).resize(
                         _this.iframeOptions.root,
                         _importNamespace_sdkPluginUtils.parse(message.width),
                         _importNamespace_sdkPluginUtils.parse(message.height),
                       );
-
                       _importNamespace_sdkPluginUtils.resize(
                         _this.iframe,
                         _importNamespace_sdkPluginUtils.parse(message.width),
                         _importNamespace_sdkPluginUtils.parse(message.height),
                       );
-
                       _this.$IframePluginClass$p_isIframeResized = true;
                       _this.updateLift();
                       window.clearTimeout(_this.$IframePluginClass$p_timeoutID);
@@ -22410,7 +22269,6 @@ try {
                           message.height,
                         ),
                       );
-
                       _this.$IframePluginClass$p_isIframeResized = true;
                       _this.updateLift();
                       window.clearTimeout(_this.$IframePluginClass$p_timeoutID);
@@ -22537,7 +22395,6 @@ try {
                       border: "none",
                       visibility: "hidden",
                     },
-
                     title:
                       _this.ns + ":" + _this.tag + " Facebook Social Plugin",
                     testid:
@@ -22800,7 +22657,6 @@ try {
                     importNamespace("Log").warn(
                       "No matching checkbox for the app_id, page_id, and user_ref given.",
                     );
-
                     return;
                   }
 
@@ -22890,7 +22746,7 @@ try {
                 }
                 var _proto = MessengerCheckboxWrapper.prototype;
                 _proto.process = function process() {
-                  var _this = this;
+                  var _this2 = this;
                   this.$MessengerCheckboxWrapper$p_attr.should_use_new_domain = true;
                   this.$MessengerCheckboxWrapper$p_plugin = new (importDefault(
                     "sdk.XFBML.MessengerCheckbox",
@@ -22900,11 +22756,10 @@ try {
                     this.$MessengerCheckboxWrapper$p_tag,
                     this.$MessengerCheckboxWrapper$p_attr,
                   );
-
                   this.$MessengerCheckboxWrapper$p_plugin.subscribe(
                     "render",
                     function $MessengerCheckboxWrapper$p_plugin_subscribe_$1() {
-                      _this.inform("render");
+                      _this2.inform("render");
                     },
                   );
                   this.$MessengerCheckboxWrapper$p_plugin.process();
@@ -22990,7 +22845,6 @@ try {
                         ES("JSON", "parse", false, message.data),
                         message.fromIframe,
                       );
-
                       hide(dialog);
                       importNamespace("sdk.Content").append(dialog);
 
@@ -23149,7 +23003,6 @@ try {
 
                     onload: ES(onloadFunc, "bind", true, this),
                   });
-
                   importNamespace("sdk.DOM").addCss(
                     created.contentRoot,
                     "fb_dialog_iframe",
@@ -23422,7 +23275,6 @@ try {
                         this._sharedObservable,
                         this._sharedVideoCache,
                       );
-
                       importNamespace("sdk.Event").fire("xfbml.ready", {
                         type: "video",
                         id: attr.id,
@@ -23560,7 +23412,6 @@ try {
                     );
                   },
                 );
-
                 require("XFBML").subscribe(
                   "render",
                   function XFBML_subscribe_$1(counts) {
@@ -23588,7 +23439,6 @@ try {
                           "entry",
                           "init:post:xfbml.parse",
                         ),
-
                         0,
                       );
                     }
@@ -23780,7 +23630,6 @@ try {
                     }
                   },
                 );
-
                 importDefault("FB").provide("", {
                   api: importDefault("sdk.api"),
                 });
@@ -23855,7 +23704,6 @@ try {
                 ).forEach(function forEach_$0(button) {
                   return replaceWithLink(button);
                 });
-
                 ES(
                   "Array",
                   "from",
@@ -23910,7 +23758,6 @@ try {
                   "Invalid App Id: Must be a number or numeric string representing " +
                     "the application id.",
                 );
-
                 return null;
               }
 
@@ -24257,7 +24104,6 @@ try {
                       data.transferSize,
                       sdkurl,
                     );
-
                     startTime = timing.startTime;
 
                     data.ns = importDefault("sdk.Runtime").getSDKNS();
@@ -24425,7 +24271,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1024147423","namespace":"FB","message":"' +
+        '","revision":"1024157779","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
