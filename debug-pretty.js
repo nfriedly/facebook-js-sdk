@@ -1,4 +1,4 @@
-/*1750814575,,JIT Construction: v1024157779,en_US*/
+/*1751057800,,JIT Construction: v1024271405,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3731,7 +3731,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1024157779",
+            revision: "1024271405",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -9291,8 +9291,11 @@ try {
 
               var MAX_EVENTS_LOG_SIZE = 20;
               var FBLogMessage = (function () {
-                function FBLogMessage(project) {
+                function FBLogMessage(project, tags) {
                   var _this = this;
+                  if (tags === void 0) {
+                    tags = [];
+                  }
                   this.FATAL = function (string) {
                     var formattedString = string.join("%s");
                     for (
@@ -9377,7 +9380,7 @@ try {
                   this.events = [];
                   this.metadata = new ErrorMetadata();
                   this.taalOpcodes = [];
-                  this.loggerTags = new Set();
+                  this.loggerTags = new Set(tags);
                 }
                 var _proto2 = FBLogMessage.prototype;
                 _proto2.$FBLogMessage_log = function $FBLogMessage_log(
@@ -9668,11 +9671,20 @@ try {
                   return this;
                 };
                 _proto2.tags = function tags(_tags) {
-                  var _this2 = this;
-                  _tags.forEach(function _tags_forEach_$0(tag) {
-                    return _this2.loggerTags.add(tag);
+                  var newTags = _tags.concat(
+                    ES("Array", "from", false, this.loggerTags),
+                  );
+                  var newLogger = new FBLogMessage(this.project, newTags);
+                  this.events.forEach(function events_forEach_$0(event) {
+                    return newLogger.event(event);
                   });
-                  return this;
+                  this.metadata.getAll().forEach(function forEach_$0(_ref4) {
+                    var product = _ref4[0],
+                      name = _ref4[1],
+                      value = _ref4[2];
+                    return newLogger.addMetadata(product, name, value);
+                  });
+                  return newLogger;
                 };
                 return FBLogMessage;
               })();
@@ -24271,7 +24283,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1024157779","namespace":"FB","message":"' +
+        '","revision":"1024271405","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
