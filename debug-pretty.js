@@ -1,4 +1,4 @@
-/*1751505776,,JIT Construction: v1024407307,en_US*/
+/*1751525928,,JIT Construction: v1024416099,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3731,7 +3731,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1024407307",
+            revision: "1024416099",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -22187,6 +22187,10 @@ try {
                     attr,
                     "plugin_id",
                   );
+                  var iframeName = importNamespace("sdk.PluginUtils").getVal(
+                    attr,
+                    "iframe_name",
+                  );
                   _this.subscribe(
                     "xd.resize",
                     importNamespace("sdk.PluginUtils").resizeBubbler(pluginId),
@@ -22330,7 +22334,10 @@ try {
                   params.container_width = elem.offsetWidth;
 
                   importNamespace("sdk.DOM").addCss(elem, "fb_iframe_widget");
-                  var name = importDefault("guid")();
+                  var name =
+                    iframeName != null
+                      ? String(iframeName)
+                      : importDefault("guid")();
                   _this.subscribe(
                     "xd.verify",
                     function _this_subscribe_$1(msg) {
@@ -24265,7 +24272,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1024407307","namespace":"FB","message":"' +
+        '","revision":"1024416099","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
