@@ -1,4 +1,4 @@
-/*1754367348,,JIT Construction: v1025512569,en_US*/
+/*1754534281,,JIT Construction: v1025605674,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3731,7 +3731,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1025512569",
+            revision: "1025605674",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -10388,6 +10388,7 @@ try {
                 "spark-studio",
                 "spark-player",
                 "spark-simulator",
+                "meta-spatial-editor",
                 "cosmo-player",
                 "arstudio",
                 "manifold",
@@ -24253,7 +24254,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1025512569","namespace":"FB","message":"' +
+        '","revision":"1025605674","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
