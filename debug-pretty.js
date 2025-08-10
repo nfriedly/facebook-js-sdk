@@ -1,4 +1,4 @@
-/*1754658580,,JIT Construction: v1025671648,en_US*/
+/*1754816229,,JIT Construction: v1025722814,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3731,7 +3731,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1025671648",
+            revision: "1025722814",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -16085,17 +16085,12 @@ try {
               exports,
             ) {
               var facebookURIRegex = null;
-              var playlistURIRegex = null;
 
               var FB_PROTOCOLS = ["http", "https"];
 
               function isFacebookURI(uri) {
                 if (!facebookURIRegex) {
                   facebookURIRegex = new RegExp("(^|\\.)facebook\\.com$", "i");
-                }
-
-                if (!playlistURIRegex) {
-                  playlistURIRegex = new RegExp("^/playlist/\\d+$");
                 }
 
                 if (uri.isEmpty() && uri.toString() !== "#") {
@@ -16108,8 +16103,7 @@ try {
 
                 return (
                   FB_PROTOCOLS.indexOf(uri.getProtocol()) !== -1 &&
-                  facebookURIRegex.test(uri.getDomain()) &&
-                  !playlistURIRegex.test(uri.getPath())
+                  facebookURIRegex.test(uri.getDomain())
                 );
               }
 
@@ -24260,7 +24254,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1025671648","namespace":"FB","message":"' +
+        '","revision":"1025722814","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
