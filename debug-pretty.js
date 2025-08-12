@@ -1,4 +1,4 @@
-/*1754999798,,JIT Construction: v1025787392,en_US*/
+/*1755028652,,JIT Construction: v1025800168,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3731,7 +3731,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1025787392",
+            revision: "1025800168",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -9320,7 +9320,8 @@ try {
                     );
                   };
                   this.MUSTFIX = function (string) {
-                    var formattedString = string.join("%s");
+                    var formattedString =
+                      _this.getTagString() + string.join("%s");
                     for (
                       var _len5 = arguments.length,
                         expressions = new Array(_len5 > 1 ? _len5 - 1 : 0),
@@ -9336,7 +9337,8 @@ try {
                     );
                   };
                   this.WARN = function (string) {
-                    var formattedString = string.join("%s");
+                    var formattedString =
+                      _this.getTagString() + string.join("%s");
                     for (
                       var _len6 = arguments.length,
                         expressions = new Array(_len6 > 1 ? _len6 - 1 : 0),
@@ -9352,7 +9354,8 @@ try {
                     );
                   };
                   this.INFO = function (string) {
-                    var formattedString = string.join("%s");
+                    var formattedString =
+                      _this.getTagString() + string.join("%s");
                     for (
                       var _len7 = arguments.length,
                         expressions = new Array(_len7 > 1 ? _len7 - 1 : 0),
@@ -9368,7 +9371,8 @@ try {
                     );
                   };
                   this.DEBUG = function (string) {
-                    var formattedString = string.join("%s");
+                    var formattedString =
+                      _this.getTagString() + string.join("%s");
                     for (
                       var _len8 = arguments.length,
                         expressions = new Array(_len8 > 1 ? _len8 - 1 : 0),
@@ -9692,6 +9696,15 @@ try {
                     return newLogger.addMetadata(product, name, value);
                   });
                   return newLogger;
+                };
+                _proto2.getTagString = function getTagString() {
+                  var tagString =
+                    this.loggerTags.size > 0
+                      ? "[" +
+                        ES("Array", "from", false, this.loggerTags).join("|") +
+                        "] "
+                      : "";
+                  return tagString;
                 };
                 return FBLogMessage;
               })();
@@ -24254,7 +24267,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1025787392","namespace":"FB","message":"' +
+        '","revision":"1025800168","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
