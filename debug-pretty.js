@@ -1,4 +1,4 @@
-/*1755052199,,JIT Construction: v1025824984,en_US*/
+/*1755061134,,JIT Construction: v1025831037,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3028,7 +3028,7 @@ try {
                 typeof classObject.prototype.entries === "function"
               );
             }
-            var ObjectIterator = (function () {
+            var _ObjectIterator = (function () {
               "use strict";
               function ObjectIterator(object, kind) {
                 this.$ObjectIterator_iteratedObject = object;
@@ -3074,15 +3074,15 @@ try {
 
             var GenericIterators = {
               keys: function keys(object) {
-                return new ObjectIterator(object, KIND_KEYS);
+                return new _ObjectIterator(object, KIND_KEYS);
               },
 
               values: function values(object) {
-                return new ObjectIterator(object, KIND_VALUES);
+                return new _ObjectIterator(object, KIND_VALUES);
               },
 
               entries: function entries(object) {
-                return new ObjectIterator(object, KIND_ENTRIES);
+                return new _ObjectIterator(object, KIND_ENTRIES);
               },
             };
 
@@ -3196,7 +3196,7 @@ try {
 
             var enumerate = global.FB_enumerate;
 
-            var Map = (function () {
+            var _Map = (function () {
               if (!shouldPolyfillES6Collection("Map")) {
                 return windowObj.Map;
               }
@@ -3213,7 +3213,7 @@ try {
               }
 
               var OLD_IE_HASH_PREFIX = "IE_HASH_";
-              var Map = (function () {
+              var _Map2 = (function () {
                 "use strict";
 
                 function Map(iterable) {
@@ -3285,13 +3285,13 @@ try {
                   }
                 };
                 _proto.entries = function entries() {
-                  return new MapIterator(this, KIND_KEY_VALUE);
+                  return new _MapIterator(this, KIND_KEY_VALUE);
                 };
                 _proto.keys = function keys() {
-                  return new MapIterator(this, KIND_KEY);
+                  return new _MapIterator(this, KIND_KEY);
                 };
                 _proto.values = function values() {
-                  return new MapIterator(this, KIND_VALUE);
+                  return new _MapIterator(this, KIND_VALUE);
                 };
                 _proto.forEach = function forEach(callback, thisArg) {
                   if (typeof callback !== "function") {
@@ -3320,7 +3320,7 @@ try {
                 };
                 return Map;
               })();
-              var MapIterator = (function () {
+              var _MapIterator = (function () {
                 "use strict";
 
                 function MapIterator(map, kind) {
@@ -3340,7 +3340,7 @@ try {
                 }
                 var _proto2 = MapIterator.prototype;
                 _proto2.next = function next() {
-                  if ((!this) instanceof Map) {
+                  if ((!this) instanceof _Map2) {
                     throw new TypeError(
                       "Expected to be called on a MapIterator.",
                     );
@@ -3438,7 +3438,7 @@ try {
                 map._otherIndex = {};
 
                 if (__DEV__) {
-                  if (Map.__isES5) {
+                  if (_Map2.__isES5) {
                     if (
                       Object.prototype.hasOwnProperty.call(
                         map,
@@ -3485,7 +3485,7 @@ try {
                 return { value: value, done: done };
               }
 
-              Map.__isES5 = (function () {
+              _Map2.__isES5 = (function () {
                 try {
                   Object.defineProperty({}, "__.$#x", {});
                   return true;
@@ -3495,7 +3495,7 @@ try {
               })();
 
               function isExtensible(o) {
-                if (!Map.__isES5 || !Object.isExtensible) {
+                if (!_Map2.__isES5 || !Object.isExtensible) {
                   return true;
                 } else {
                   return Object.isExtensible(o);
@@ -3528,14 +3528,14 @@ try {
                 if (o[hashProperty]) {
                   return o[hashProperty];
                 } else if (
-                  !Map.__isES5 &&
+                  !_Map2.__isES5 &&
                   o.propertyIsEnumerable &&
                   o.propertyIsEnumerable[hashProperty]
                 ) {
                   return o.propertyIsEnumerable[hashProperty];
-                } else if (!Map.__isES5 && isNode(o) && getIENodeHash(o)) {
+                } else if (!_Map2.__isES5 && isNode(o) && getIENodeHash(o)) {
                   return getIENodeHash(o);
-                } else if (!Map.__isES5 && o[hashProperty]) {
+                } else if (!_Map2.__isES5 && o[hashProperty]) {
                   return o[hashProperty];
                 }
               }
@@ -3547,7 +3547,7 @@ try {
                 return function createHash(o) {
                   if (isExtensible(o)) {
                     hashCounter += 1;
-                    if (Map.__isES5) {
+                    if (_Map2.__isES5) {
                       Object.defineProperty(o, hashProperty, {
                         enumerable: false,
                         writable: false,
@@ -3575,14 +3575,14 @@ try {
                 };
               })();
 
-              return __annotator(Map, { name: "Map" });
+              return __annotator(_Map2, { name: "Map" });
             })();
 
-            var Set = (function () {
+            var _Set = (function () {
               if (!shouldPolyfillES6Collection("Set")) {
                 return windowObj.Set;
               }
-              var Set = (function () {
+              var _Set2 = (function () {
                 "use strict";
 
                 function Set(iterable) {
@@ -3646,15 +3646,15 @@ try {
               })();
 
               function initSet(set) {
-                set._map = new Map();
+                set._map = new _Map();
                 set.size = set._map.size;
               }
 
-              return __annotator(Set, { name: "Set" });
+              return __annotator(_Set2, { name: "Set" });
             })();
 
-            global.Map = Map;
-            global.Set = Set;
+            global.Map = _Map;
+            global.Set = _Set;
           })(
             typeof globalThis !== "undefined"
               ? globalThis
@@ -3731,7 +3731,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1025824984",
+            revision: "1025831037",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -4588,7 +4588,7 @@ try {
               module,
               exports,
             ) {
-              var ManagedError = (function (_Error) {
+              var _ManagedError = (function (_Error) {
                 function ManagedError(message, innerError) {
                   var _this;
                   _this =
@@ -4607,7 +4607,7 @@ try {
                 babelHelpers.inheritsLoose(ManagedError, _Error);
                 return ManagedError;
               })(babelHelpers.wrapNativeSuper(Error));
-              exports["default"] = ManagedError;
+              exports["default"] = _ManagedError;
             },
             66,
           );
@@ -4746,14 +4746,14 @@ try {
               module,
               exports,
             ) {
-              var AssertionError = (function (_ManagedError) {
+              var _AssertionError = (function (_ManagedError) {
                 function AssertionError(message) {
                   return _ManagedError.call(this, message) || this;
                 }
                 babelHelpers.inheritsLoose(AssertionError, _ManagedError);
                 return AssertionError;
               })(importDefault("ManagedError"));
-              exports["default"] = AssertionError;
+              exports["default"] = _AssertionError;
             },
             98,
           );
@@ -7955,7 +7955,7 @@ try {
               }
 
               var globalMetadata = [];
-              var ErrorMetadata = (function () {
+              var _ErrorMetadata = (function () {
                 function ErrorMetadata() {
                   this.metadata = [].concat(globalMetadata);
                 }
@@ -8053,7 +8053,7 @@ try {
                     (_error$metadata = error.metadata) !== null &&
                     _error$metadata !== void 0
                       ? _error$metadata
-                      : new ErrorMetadata();
+                      : new _ErrorMetadata();
 
                   if (contextMeta != null) {
                     metadata.addEntries.apply(metadata, contextMeta.getAll());
@@ -8438,7 +8438,7 @@ try {
                     : reactComponentStack.map(normalizeStackFrame);
                 var metadata = error.metadata
                   ? error.metadata.format()
-                  : new ErrorMetadata().format();
+                  : new _ErrorMetadata().format();
 
                 if (metadata.length === 0) {
                   metadata = undefined;
@@ -9297,7 +9297,7 @@ try {
               };
 
               var MAX_EVENTS_LOG_SIZE = 20;
-              var FBLogMessage = (function () {
+              var _FBLogMessage = (function () {
                 function FBLogMessage(project, tags) {
                   var _this = this;
                   if (tags === void 0) {
@@ -9389,7 +9389,7 @@ try {
                   };
                   this.project = project;
                   this.events = [];
-                  this.metadata = new ErrorMetadata();
+                  this.metadata = new _ErrorMetadata();
                   this.taalOpcodes = [];
                   this.loggerTags = new Set(tags);
                 }
@@ -9710,7 +9710,7 @@ try {
               })();
 
               var FBLogger = function FBLogger(project, event) {
-                var logger = new FBLogMessage(project);
+                var logger = new _FBLogMessage(project);
 
                 if (event != null) {
                   return logger.event(project + "." + event);
@@ -9720,7 +9720,7 @@ try {
               };
 
               FBLogger.addGlobalMetadata = function (product, name, value) {
-                ErrorMetadata.addGlobalMetadata(product, name, value);
+                _ErrorMetadata.addGlobalMetadata(product, name, value);
               };
 
               var CUSTOM_NAME_PREFIX = "<CUSTOM_NAME:";
@@ -9787,7 +9787,7 @@ try {
                 ErrorGlobalEventHandler: ErrorGlobalEventHandler,
                 ErrorGuard: ErrorGuard,
                 ErrorGuardState: ErrorGuardState,
-                ErrorMetadata: ErrorMetadata,
+                ErrorMetadata: _ErrorMetadata,
                 ErrorNormalizeUtils: ErrorNormalizeUtils,
                 ErrorPoster: ErrorPoster,
                 ErrorPubSub: ErrorPubSub$1,
@@ -10554,7 +10554,7 @@ try {
               );
 
               var uriFilters = [];
-              var URIAbstractBase = (function () {
+              var _URIAbstractBase = (function () {
                 "use strict";
 
                 function URIAbstractBase(
@@ -11235,7 +11235,7 @@ try {
                 return URIAbstractBase;
               })();
 
-              module.exports = URIAbstractBase;
+              module.exports = _URIAbstractBase;
             },
             null,
           );
@@ -11261,7 +11261,7 @@ try {
                   return text ? importDefault("QueryString").decode(text) : {};
                 },
               };
-              var URI = (function (_URIBase) {
+              var _URI = (function (_URIBase) {
                 function URI(uri) {
                   return _URIBase.call(this, uri, serializer) || this;
                 }
@@ -11281,7 +11281,7 @@ try {
                 };
                 return URI;
               })(importDefault("URIAbstractBase"));
-              exports["default"] = URI;
+              exports["default"] = _URI;
             },
             98,
           );
@@ -13024,7 +13024,7 @@ try {
               module,
               exports,
             ) {
-              var JSONRPC = (function () {
+              var _JSONRPC = (function () {
                 "use strict";
                 function JSONRPC(write) {
                   var _this = this;
@@ -13152,7 +13152,7 @@ try {
                 return JSONRPC;
               })();
 
-              module.exports = JSONRPC;
+              module.exports = _JSONRPC;
             },
             null,
           );
@@ -13168,7 +13168,7 @@ try {
               exports,
             ) {
               var registry = {};
-              var Queue = (function () {
+              var _Queue = (function () {
                 function Queue(opts) {
                   this._timeout = null;
 
@@ -13273,7 +13273,7 @@ try {
                 };
                 return Queue;
               })();
-              exports["default"] = Queue;
+              exports["default"] = _Queue;
             },
             66,
           );
@@ -14319,14 +14319,14 @@ try {
               module,
               exports,
             ) {
-              var ArgumentError = (function (_ManagedError) {
+              var _ArgumentError = (function (_ManagedError) {
                 function ArgumentError(message, innerError) {
                   return _ManagedError.call(this, message, innerError) || this;
                 }
                 babelHelpers.inheritsLoose(ArgumentError, _ManagedError);
                 return ArgumentError;
               })(importDefault("ManagedError"));
-              exports["default"] = ArgumentError;
+              exports["default"] = _ArgumentError;
             },
             98,
           );
@@ -14608,7 +14608,7 @@ try {
               var REQUESTS_PER_BATCH = 50;
 
               var DEFAULT_BATCH_APP_ID = 105440539523;
-              var ApiBatcher = (function () {
+              var _ApiBatcher = (function () {
                 function ApiBatcher(executeRequest, clientID) {
                   this.$ApiBatcher$p_batchCalls = [];
                   this.$ApiBatcher$p_batchCallbacks = [];
@@ -14771,7 +14771,7 @@ try {
                   };
                 return ApiBatcher;
               })();
-              exports["default"] = ApiBatcher;
+              exports["default"] = _ApiBatcher;
             },
             98,
           );
@@ -20900,7 +20900,7 @@ try {
               module,
               exports,
             ) {
-              var DOMPlugin = (function (_Observable) {
+              var _DOMPlugin = (function (_Observable) {
                 function DOMPlugin(element, ns, tag, attr, inParams, config) {
                   var _this;
                   _this = _Observable.call(this) || this;
@@ -21019,7 +21019,7 @@ try {
                   element.appendChild(render(document));
                 }
               }
-              exports.DOMPlugin = DOMPlugin;
+              exports.DOMPlugin = _DOMPlugin;
               exports.maybeCreateShadowRootAndRenderInDOM =
                 maybeCreateShadowRootAndRenderInDOM;
             },
@@ -21373,7 +21373,7 @@ try {
               var fontSize = { small: "11px", medium: "13px", large: "16px" };
               var heightSize = { small: "20px", medium: "30px", large: "40px" };
               var facebookToken = "{facebook_app_name}";
-              var FBLoginButtonPlugin = (function (_DOMPlugin) {
+              var _FBLoginButtonPlugin = (function (_DOMPlugin) {
                 function FBLoginButtonPlugin(elem, ns, tag, attr, inParams) {
                   var _this;
                   _this =
@@ -21784,7 +21784,7 @@ try {
                   class: "fb_button_svg_logo login_fb_logo",
                 });
               }
-              exports["default"] = FBLoginButtonPlugin;
+              exports["default"] = _FBLoginButtonPlugin;
             },
             98,
           );
@@ -22163,7 +22163,7 @@ try {
               module,
               exports,
             ) {
-              var IframePluginClass = (function (_Observable) {
+              var _IframePluginClass = (function (_Observable) {
                 function IframePluginClass(elem, ns, tag, attr, config) {
                   var _this;
                   if (config === void 0) {
@@ -22583,7 +22583,7 @@ try {
                 };
                 return IframePluginClass;
               })(importNamespace("sdk.Observable").Observable);
-              exports["default"] = IframePluginClass;
+              exports["default"] = _IframePluginClass;
             },
             98,
           );
@@ -22662,7 +22662,7 @@ try {
                   });
                 },
               });
-              var MessengerCheckbox = (function (_IframePluginClass) {
+              var _MessengerCheckbox = (function (_IframePluginClass) {
                 function MessengerCheckbox(elem, ns, tag, attr) {
                   return (
                     _IframePluginClass.call(this, elem, ns, tag, attr, {
@@ -22699,7 +22699,7 @@ try {
                 };
                 return MessengerCheckbox;
               })(importDefault("IframePluginClass"));
-              exports["default"] = MessengerCheckbox;
+              exports["default"] = _MessengerCheckbox;
             },
             98,
           );
@@ -22722,10 +22722,10 @@ try {
                   tag,
                   attr,
                 ) {
-                  return new MessengerCheckboxWrapper(element, ns, tag, attr);
+                  return new _MessengerCheckboxWrapper(element, ns, tag, attr);
                 };
               _c = MessengerCheckboxWrapperPlugin;
-              var MessengerCheckboxWrapper = (function (_Observable) {
+              var _MessengerCheckboxWrapper = (function (_Observable) {
                 function MessengerCheckboxWrapper(element, ns, tag, attr) {
                   var _this;
                   _this = _Observable.call(this) || this;
@@ -23101,7 +23101,7 @@ try {
               module,
               exports,
             ) {
-              var VideoCache = (function () {
+              var _VideoCache = (function () {
                 function VideoCache(initData) {
                   this.$VideoCache$p_isMuted = initData.isMuted;
                   this.$VideoCache$p_volume = initData.volume;
@@ -23139,7 +23139,7 @@ try {
                 };
                 return VideoCache;
               })();
-              var VideoController = (function () {
+              var _VideoController = (function () {
                 function VideoController(
                   iframeName,
 
@@ -23262,10 +23262,10 @@ try {
                       this._sharedObservable = new (importDefault(
                         "ObservableMixin",
                       ))();
-                      this._sharedVideoCache = new VideoCache(
+                      this._sharedVideoCache = new _VideoCache(
                         ES("JSON", "parse", false, msg.data),
                       );
-                      this._videoController = new VideoController(
+                      this._videoController = new _VideoController(
                         this._iframeOptions.name,
                         this._sharedObservable,
                         this._sharedVideoCache,
@@ -24266,7 +24266,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1025824984","namespace":"FB","message":"' +
+        '","revision":"1025831037","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
