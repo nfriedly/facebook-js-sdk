@@ -1,4 +1,4 @@
-/*1755061134,,JIT Construction: v1025831037,en_US*/
+/*1755122203,,JIT Construction: v1025861663,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3731,7 +3731,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1025831037",
+            revision: "1025861663",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -11439,7 +11439,7 @@ try {
                     .then(function then_$0(response) {
                       if (
                         importDefault("sdk.AuthState").getState()
-                          .shouldSecondLoginRequestTimeOut
+                          .shouldSecondLoginRequestTimeOut === true
                       ) {
                         importDefault("sdk.AuthState").setState({
                           shouldSecondLoginRequestTimeOut: false,
@@ -11474,7 +11474,7 @@ try {
                     ["catch"](function $0(_e) {
                       if (
                         importDefault("sdk.AuthState").getState()
-                          .shouldSecondLoginRequestTimeOut
+                          .shouldSecondLoginRequestTimeOut === true
                       ) {
                         importDefault("sdk.AuthState").setState({
                           shouldSecondLoginRequestTimeOut: false,
@@ -24266,7 +24266,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1025831037","namespace":"FB","message":"' +
+        '","revision":"1025861663","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
