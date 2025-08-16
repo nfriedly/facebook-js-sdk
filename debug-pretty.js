@@ -1,4 +1,4 @@
-/*1755233903,,JIT Construction: v1025936105,en_US*/
+/*1755334611,,JIT Construction: v1025984773,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3731,7 +3731,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1025936105",
+            revision: "1025984773",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -6380,14 +6380,12 @@ try {
               }
 
               function getState() {
-                return ES("Object", "assign", false, initState(), authState);
+                return babelHelpers["extends"]({}, initState(), authState);
               }
 
               function setState(newState) {
-                authState = ES(
-                  "Object",
-                  "assign",
-                  false,
+                authState = babelHelpers["extends"](
+                  {},
                   initState(),
                   authState,
                   newState,
@@ -24263,7 +24261,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1025936105","namespace":"FB","message":"' +
+        '","revision":"1025984773","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
