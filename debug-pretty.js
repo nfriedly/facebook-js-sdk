@@ -1,4 +1,4 @@
-/*1756871802,,JIT Construction: v1026628527,en_US*/
+/*1756900597,,JIT Construction: v1026640367,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3731,7 +3731,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1026628527",
+            revision: "1026640367",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -4498,6 +4498,7 @@ try {
                   return (attrVal += v + " ");
                 });
                 style.setAttribute("data-fbcssmodules", attrVal.trim());
+
                 if (dom == null || dom === document) {
                   document.getElementsByTagName("head")[0].appendChild(style);
                 } else {
@@ -9899,6 +9900,7 @@ try {
                               : [];
 
                           resultNode[_key] = nv;
+
                           if (resultNode[_key] !== nv) {
                             return result;
                           }
@@ -24257,7 +24259,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1026628527","namespace":"FB","message":"' +
+        '","revision":"1026640367","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
