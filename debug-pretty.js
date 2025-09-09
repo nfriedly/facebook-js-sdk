@@ -1,4 +1,4 @@
-/*1757368596,,JIT Construction: v1026845502,en_US*/
+/*1757393796,,JIT Construction: v1026871906,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3731,7 +3731,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1026845502",
+            revision: "1026871906",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -19426,7 +19426,11 @@ try {
               module,
               exports,
             ) {
-              function createIframe(opts_arg) {
+              function createIframe(
+                opts_arg,
+
+                postBodyParams,
+              ) {
                 var opts = ES("Object", "assign", false, {}, opts_arg);
                 var frame;
 
@@ -19544,7 +19548,24 @@ try {
                   );
                 }
 
-                frame.src = src;
+                if (postBodyParams) {
+                  var form = document.createElement("form");
+                  form.method = "POST";
+
+                  form.action = src;
+                  form.target = name;
+                  for (var _key in postBodyParams) {
+                    var input = document.createElement("input");
+                    input.type = "hidden";
+                    input.name = _key;
+                    input.value = postBodyParams[_key];
+                    form.appendChild(input);
+                  }
+                  document.body.appendChild(form);
+                  form.submit();
+                } else {
+                  frame.src = src;
+                }
                 return frame;
               }
               exports["default"] = createIframe;
@@ -22152,12 +22173,24 @@ try {
               exports,
             ) {
               var _IframePluginClass = (function (_Observable) {
-                function IframePluginClass(elem, ns, tag, attr, config) {
+                function IframePluginClass(
+                  elem,
+                  ns,
+                  tag,
+                  attr,
+                  config,
+
+                  postBodyParams,
+                ) {
                   var _this;
                   if (config === void 0) {
                     config = null;
                   }
+                  if (postBodyParams === void 0) {
+                    postBodyParams = undefined;
+                  }
                   _this = _Observable.call(this) || this;
+                  _this.postBodyParams = postBodyParams;
                   tag = tag.replace(/-/g, "_");
 
                   _this.$IframePluginClass$p_isIframeResized = false;
@@ -22495,6 +22528,7 @@ try {
 
                   this.iframe = importDefault("sdk.createIframe")(
                     this.iframeOptions,
+                    this.postBodyParams,
                   );
                   importNamespace("sdk.Event").fire("iframeplugin:create");
 
@@ -24254,7 +24288,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1026845502","namespace":"FB","message":"' +
+        '","revision":"1026871906","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
