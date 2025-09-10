@@ -1,4 +1,4 @@
-/*1757541403,,JIT Construction: v1026959227,en_US*/
+/*1757548597,,JIT Construction: v1026964568,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3732,7 +3732,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1026959227",
+            revision: "1026964568",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -6617,7 +6617,11 @@ try {
             ) {
               "use strict";
 
-              var YEAR_MS = 365 * 24 * 60 * 60 * 1000;
+              var SEC_MS = 1000;
+              var MIN_MS = 60 * SEC_MS;
+              var HOUR_MS = 60 * MIN_MS;
+              var DAY_MS = 24 * HOUR_MS;
+              var YEAR_MS = 365 * DAY_MS;
 
               function isInstagramLogin(authResponse) {
                 if (authResponse != null && authResponse.graphDomain != null) {
@@ -6653,7 +6657,7 @@ try {
                 if (graphDomain != null) {
                   importDefault("sdk.Runtime").setGraphDomain(graphDomain);
 
-                  if (graphDomain == "instagram") {
+                  if (graphDomain === "instagram") {
                     importDefault("sdk.Runtime").setIsVersioned(false);
                   }
                 } else {
@@ -6741,8 +6745,8 @@ try {
                 LOCAL_STORAGE_TOKEN_PREFIX: "fblst_",
                 IG_LOCAL_STORAGE_TOKEN_PREFIX: "iglst_",
                 SESSION_STORAGE_LOGIN_STATUS_PREFIX: "fbssls_",
-                CONNECTED_REVALIDATE_PERIOD: 60 * 90 * 1000,
-                DEFAULT_REVALIDATE_PERIOD: 60 * 60 * 24 * 1000,
+                CONNECTED_REVALIDATE_PERIOD: MIN_MS * 90,
+                DEFAULT_REVALIDATE_PERIOD: DAY_MS,
                 LOGOUT_COOKIE_PREFIX: "fblo_",
                 CORS_FETCH_COMPLETED_EVENT: "cors_fetch_completed",
                 XFOA_FINAL_RESPONSE_EVENT: "xfoa_final_response",
@@ -12486,12 +12490,12 @@ try {
                   authResponse != null &&
                   currentUserID != null &&
                   currentUserID !== "" &&
-                  currentUserID != userID;
+                  currentUserID !== userID;
 
                 var authResponseChange =
-                  authResponse !=
+                  authResponse !==
                   importDefault("sdk.AuthState").getState().currentAuthResponse;
-                var statusChange = status != currentStatus;
+                var statusChange = status !== currentStatus;
 
                 importDefault("sdk.Runtime").setLoginStatus(status);
                 importDefault("sdk.Runtime").setAccessToken(
@@ -24239,7 +24243,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1026959227","namespace":"FB","message":"' +
+        '","revision":"1026964568","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
