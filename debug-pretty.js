@@ -1,4 +1,4 @@
-/*1757393796,,JIT Construction: v1026871906,en_US*/
+/*1757541403,,JIT Construction: v1026959227,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -908,6 +908,7 @@ try {
            *
            *
            * @format
+           * @oncall jssdk
            */ __d(
             "ES5Array",
             [],
@@ -922,7 +923,7 @@ try {
               var ES5Array = {
                 isArray: function isArray(object) {
                   return (
-                    Object.prototype.toString.call(object) == "[object Array]"
+                    Object.prototype.toString.call(object) === "[object Array]"
                   );
                 },
               };
@@ -3731,7 +3732,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1026871906",
+            revision: "1026959227",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -4921,7 +4922,7 @@ try {
 
                 if (which instanceof Type) {
                   for (var i = 0; i < which.__mixins.length; i++) {
-                    if (which.__mixins[i] == constructor) {
+                    if (which.__mixins[i] === constructor) {
                       return true;
                     }
                   }
@@ -4936,8 +4937,7 @@ try {
                 if (!Array.isArray(from)) {
                   from = [from];
                 }
-
-                for (var i = 0; i < from.length; i++) {
+                var _loop = function _loop() {
                   var mixinFrom = from[i];
 
                   if (typeof mixinFrom === "function") {
@@ -4948,6 +4948,9 @@ try {
                   Object.keys(mixinFrom).forEach(function forEach_$0(key) {
                     prototype[key] = mixinFrom[key];
                   });
+                };
+                for (var i = 0; i < from.length; i++) {
+                  _loop();
                 }
               }
 
@@ -15884,58 +15887,6 @@ try {
             98,
           );
           __d(
-            "sdk.Native",
-            ["Log", "sdk.UA"],
-            function $module_sdk_Native(
-              global,
-              require,
-              importDefault,
-              importNamespace,
-              requireLazy,
-              module,
-              exports,
-            ) {
-              var NATIVE_READY_EVENT = "fbNativeReady";
-
-              var Native = {
-                onready: function onready(func) {
-                  if (!importDefault("sdk.UA").nativeApp()) {
-                    importNamespace("Log").error(
-                      "FB.Native.onready only works when the page is rendered " +
-                        "in a WebView of the native Facebook app. Test if this is the " +
-                        "case calling FB.UA.nativeApp()",
-                    );
-                    return;
-                  }
-
-                  if (window.__fbNative && !this.nativeReady) {
-                    ES("Object", "assign", false, this, window.__fbNative);
-                  }
-
-                  if (this.nativeReady) {
-                    func();
-                  } else {
-                    var _nativeReadyCallback = function nativeReadyCallback() {
-                      window.removeEventListener(
-                        NATIVE_READY_EVENT,
-                        _nativeReadyCallback,
-                      );
-                      this.onready(func);
-                    };
-                    window.addEventListener(
-                      NATIVE_READY_EVENT,
-                      _nativeReadyCallback,
-                      false,
-                    );
-                  }
-                },
-              };
-              var _default = Native;
-              exports["default"] = _default;
-            },
-            98,
-          );
-          __d(
             "sdk.Popup",
             [
               "sdk.Content",
@@ -17262,10 +17213,10 @@ try {
                   }
 
                   if (
-                    (method.url == "dialog/oauth" ||
-                      method.url == "dialog/permissions.request") &&
-                    (params.display == "iframe" ||
-                      (params.display == "touch" && params.in_iframe))
+                    (method.url === "dialog/oauth" ||
+                      method.url === "dialog/permissions.request") &&
+                    (params.display === "iframe" ||
+                      (params.display === "touch" && params.in_iframe))
                   ) {
                     params.display = UIServer.checkOauthDisplay(params);
                   }
@@ -17290,7 +17241,7 @@ try {
                   }
 
                   if (
-                    params.display == "popup" &&
+                    params.display === "popup" &&
                     !method.require_access_token
                   ) {
                     delete params.access_token;
@@ -17335,7 +17286,7 @@ try {
                         params.fx_app === "instagram" ||
                           params.fx_app === "ig_single"
                           ? "www_instagram"
-                          : params.display == "touch"
+                          : params.display === "touch"
                             ? "m"
                             : "www",
                       ) +
@@ -17722,7 +17673,7 @@ try {
                   if (data.height) {
                     node.style.height = data.height + "px";
                   }
-                  if (data.width && data.width != 0) {
+                  if (data.width && data.width !== 0) {
                     node.style.width = data.width + "px";
                   }
 
@@ -17752,7 +17703,7 @@ try {
 
                 _popupMonitor: function _popupMonitor() {
                   var found;
-                  var _loop = function _loop() {
+                  var _loop = function _loop(id) {
                     if (
                       Object.prototype.hasOwnProperty.call(
                         UIServer._loadedNodes,
@@ -17843,7 +17794,7 @@ try {
                     }
                   };
                   for (var id in UIServer._loadedNodes) {
-                    if (_loop()) continue;
+                    if (_loop(id)) continue;
                   }
 
                   if (found && !UIServer._popupInterval) {
@@ -17865,15 +17816,15 @@ try {
                         return;
                       }
 
-                      if (data.type == "resize") {
+                      if (data.type === "resize") {
                         UIServer._handleResizeMessage(frame, data);
-                      } else if (data.type == "hide") {
+                      } else if (data.type === "hide") {
                         importDefault("sdk.Dialog").hide(node);
-                      } else if (data.type == "rendered") {
+                      } else if (data.type === "rendered") {
                         var root = importDefault("sdk.Dialog")._findRoot(node);
 
                         importDefault("sdk.Dialog").show(root);
-                      } else if (data.type == "fireevent") {
+                      } else if (data.type === "fireevent") {
                         importNamespace("sdk.Event").fire(data.event, data);
                       }
                     },
@@ -18085,7 +18036,7 @@ try {
                   return null;
                 }
 
-                if (params.method == "pay.prompt") {
+                if (params.method === "pay.prompt") {
                   params.method = "pay";
                 }
 
@@ -18104,7 +18055,7 @@ try {
 
                 if (
                   importDefault("sdk.UIServer").isOAuth(method) &&
-                  (params.display == "iframe" || params.display == "dialog")
+                  (params.display === "iframe" || params.display === "dialog")
                 ) {
                   params.display =
                     importDefault("sdk.UIServer").checkOauthDisplay(params);
@@ -24288,7 +24239,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1026871906","namespace":"FB","message":"' +
+        '","revision":"1026959227","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
