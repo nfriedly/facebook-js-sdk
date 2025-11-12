@@ -1,4 +1,4 @@
-/*1762818997,,JIT Construction: v1029678855,en_US*/
+/*1762930677,,JIT Construction: v1029761680,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3733,7 +3733,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1029678855",
+            revision: "1029761680",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -12220,6 +12220,10 @@ try {
                 popupShow: "client_login_popup_show_xfoa",
                 loginEnd: "client_login_end",
                 loginStart: "client_login_start",
+                loginDeniedResponse: "client_login_denied_response",
+                loginFastDeniedResponse: "client_login_fast_denied_response",
+                loginErrorResponse: "client_login_error_response",
+                loginUnexpectedResponse: "client_login_unexpected_response",
                 loginCompleteHeartbeat: "client_login_complete_heartbeat",
                 loginStatusPopupShowXfoa: "client_login_status_popup_show_xfoa",
                 loginStatusPopupHideXfoa: "client_login_status_popup_hide_xfoa",
@@ -12598,9 +12602,13 @@ try {
                 authResponse,
                 _method,
                 requestParams,
+                loginStartTime,
               ) {
                 return function (params) {
                   var status;
+                  var authEventToLog =
+                    importNamespace("sdk.LoggingUtils").logEventName
+                      .loginUnexpectedResponse;
                   if (params && (params.access_token || params.code)) {
                     var parsedSignedRequest = importNamespace(
                       "sdk.SignedRequest",
@@ -12656,7 +12664,8 @@ try {
                     importNamespace("sdk.AuthUtils").removeLogoutState();
                     status = "connected";
                     setAuthResponse(authResponse, status);
-                    logSuccessfulAuth(requestParams);
+                    authEventToLog =
+                      importNamespace("sdk.LoggingUtils").logEventName.loginEnd;
                   } else if (params && params.asset_scopes) {
                     authResponse = {
                       asset_scopes: ES(
@@ -12672,7 +12681,8 @@ try {
                     importNamespace("sdk.AuthUtils").removeLogoutState();
                     status = "connected";
                     setAuthResponse(authResponse, status);
-                    logSuccessfulAuth(requestParams);
+                    authEventToLog =
+                      importNamespace("sdk.LoggingUtils").logEventName.loginEnd;
                   } else if (
                     params &&
                     (params.error ||
@@ -12701,11 +12711,28 @@ try {
                         "loginDenied",
                         response,
                       );
+
+                      var FAST_DENIED_THRESHOLD_MS = 500;
+                      if (
+                        loginStartTime != null &&
+                        Date.now() - loginStartTime < FAST_DENIED_THRESHOLD_MS
+                      ) {
+                        authEventToLog =
+                          importNamespace("sdk.LoggingUtils").logEventName
+                            .loginFastDeniedResponse;
+                      } else {
+                        authEventToLog =
+                          importNamespace("sdk.LoggingUtils").logEventName
+                            .loginDeniedResponse;
+                      }
                     } else {
                       importNamespace("sdk.AuthUtils").AuthInternalEvent.inform(
                         "loginError",
                         response,
                       );
+                      authEventToLog =
+                        importNamespace("sdk.LoggingUtils").logEventName
+                          .loginErrorResponse;
                     }
                   } else if (params && params.result) {
                     var _params$result;
@@ -12715,6 +12742,8 @@ try {
                         ? void 0
                         : _params$result.authResponse;
                   }
+
+                  logAuthEvent(requestParams, authEventToLog);
 
                   if (cb) {
                     var _response = {
@@ -12727,18 +12756,26 @@ try {
                 };
               }
 
-              function logSuccessfulAuth(requestParams) {
+              function shouldDropLog(requestParams) {
                 if (
                   requestParams &&
                   requestParams.tp &&
                   requestParams.tp !== "unspecified"
                 ) {
+                  return true;
+                }
+
+                return false;
+              }
+
+              function logAuthEvent(requestParams, event) {
+                if (shouldDropLog(requestParams)) {
                   return;
                 }
 
                 importNamespace("sdk.LoggingUtils").logLoginEvent(
                   requestParams,
-                  importNamespace("sdk.LoggingUtils").logEventName.loginEnd,
+                  event,
                 );
 
                 window.setTimeout(function window_setTimeout_$0() {
@@ -16892,6 +16929,7 @@ try {
                     importDefault("sdk.Auth").getAuthResponse(),
                     "permissions.oauth",
                     call.params,
+                    Date.now(),
                   );
                 } else {
                   if (isReauthenticate) {
@@ -17965,6 +18003,7 @@ try {
                       authResponse,
                       method,
                       requestParams,
+                      Date.now(),
                     ),
                     frame,
                     target,
@@ -24264,7 +24303,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1029678855","namespace":"FB","message":"' +
+        '","revision":"1029761680","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
