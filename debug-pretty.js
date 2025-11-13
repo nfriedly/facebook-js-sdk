@@ -1,4 +1,4 @@
-/*1763034998,,JIT Construction: v1029832670,en_US*/
+/*1763039284,,JIT Construction: v1029835515,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3733,7 +3733,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1029832670",
+            revision: "1029835515",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -24000,7 +24000,14 @@ try {
           );
           __d(
             "sdk.Time",
-            ["Log", "sdk.Impressions", "sdk.Runtime", "sdk.URI", "sdk.feature"],
+            [
+              "Log",
+              "getErrorSafe",
+              "sdk.Impressions",
+              "sdk.Runtime",
+              "sdk.URI",
+              "sdk.feature",
+            ],
             function $module_sdk_Time(
               global,
               require,
@@ -24034,9 +24041,10 @@ try {
                       domain === SDKUrl.getDomain() &&
                       ES(path, "includes", true, "/rsrc.php/");
                   } catch (e) {
+                    var error = importDefault("getErrorSafe")(e);
                     importNamespace("Log").error(
                       "Malformed URL was passed to the URL constructor: Error %s occured",
-                      e.message,
+                      error.message,
                     );
                   }
                   return doesResourceMatchJSSDK;
@@ -24064,9 +24072,10 @@ try {
                     }
                     return timings;
                   } catch (e) {
+                    var error = importDefault("getErrorSafe")(e);
                     importNamespace("Log").error(
                       "Malformed URL was passed to the URL constructor: Error %s occured",
-                      e.message,
+                      error.message,
                     );
                   }
                 }
@@ -24303,7 +24312,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1029832670","namespace":"FB","message":"' +
+        '","revision":"1029835515","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
