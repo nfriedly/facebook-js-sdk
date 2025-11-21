@@ -1,4 +1,4 @@
-/*1763672207,,JIT Construction: v1030185293,en_US*/
+/*1763691868,,JIT Construction: v1030209354,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3585,7 +3585,7 @@ this:
 typeof self!=='undefined'?
 self:
 {}
-);      __d("JSSDKCanvasPrefetcherConfig",[],{"enabled":true,"excludedAppIds":[144959615576466,768691303149786,320528941393723],"sampleRate":500});__d("JSSDKConfig",[],{"features":{"allow_non_canvas_app_events":false,"error_handling":{"rate":4},"e2e_ping_tracking":{"rate":0.1},"xd_timeout":{"rate":1,"value":60000},"use_bundle":false,"should_log_response_error":true,"popup_blocker_scribe_logging":{"rate":100},"https_only_enforce_starting":2538809200000,"https_only_learn_more":"https:\/\/developers.facebook.com\/blog\/post\/2018\/06\/08\/enforce-https-facebook-login\/","https_only_scribe_logging":{"rate":1},"log_perf":{"rate":0.001},"use_x_xd":{"rate":100},"cache_auth_response":{"rate":100},"oauth_funnel_logger_version":1,"force_popup_to_canvas_apps_with_id":[],"force_popup_to_all_canvas_app":false,"max_oauth_dialog_retries":{"rate":100,"value":10},"plugin_tags_blacklist":[],"idle_callback_wait_time_ms":3000,"chat_plugin_facade_timeout_ms":8000,"chat_plugin_facade_enabled_pageids":["102493178867330","107331571710078","1032787970130843","107771111665395","261907812360345","101305975654752","275483104252055","101664622285042","112682113428700","271628573687012","385757598521443","100545935690488"],"should_enable_ig_login_status_fetch":true,"log_cookies_usage":{"rate":0.1},"allow_shadow_dom_for_apps_with_id":[520916077950649,152351391599356,132081130190180,468663283258845,409976882430412,189845245141894,360467581347,274266067164],"allow_shadow_dom":true}});__d("JSSDKCssConfig",[],{"rules":".fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0px;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:lucida grande,tahoma,verdana,arial,sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:400;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}\u0040keyframes fb_transform{0\u0025{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}\n\n.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0px;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:lucida grande,tahoma,verdana,arial,sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:400;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}\u0040keyframes fb_transform{0\u0025{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}\n\n.fb_dialog{background:#525252b3;position:absolute;top:-10000px;z-index:10001}.fb_dialog_advanced{border-radius:8px;padding:10px}.fb_dialog_content{background:#fff;color:#373737}.fb_dialog_close_icon{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{left:5px;right:auto;top:5px}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:700;margin:0}.fb_dialog_content .dialog_title>span{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/yd\/r\/Cou7n-nqK52.gif) no-repeat 5px 50\u0025;float:left;padding:5px 0 7px 26px}body.fb_hidden{height:100\u0025;left:0;margin:0;overflow:visible;position:absolute;top:-10000px;transform:none;width:100\u0025}.fb_dialog.fb_dialog_mobile.loading{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/ya\/r\/3rhSv5V8j3o.gif) #fff no-repeat 50\u0025 50\u0025;min-height:100\u0025;min-width:100\u0025;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{background:none;height:auto;min-height:initial;min-width:initial;width:auto}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100\u0025}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{clear:both;color:#fff;display:block;font-size:18px;padding-top:20px}#fb-root #fb_dialog_ipad_overlay{background:#0006;inset:0;min-height:100\u0025;position:absolute;width:100\u0025;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_mobile .fb_dialog_iframe{position:sticky;top:0}.fb_dialog_content .dialog_header{background:linear-gradient(from(#738aba),to(#2c4987));border-bottom:1px solid;border-color:#043b87;box-shadow:#fff 0 1px 1px -1px inset;color:#fff;font:700 14px Helvetica,sans-serif;text-overflow:ellipsis;text-shadow:rgba(0,30,84,.296875) 0px -1px 0px;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{height:43px;width:100\u0025}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:linear-gradient(from(#4267B2),to(#2a4887));background-clip:padding-box;border:1px solid #29487d;border-radius:3px;display:inline-block;line-height:18px;margin-top:3px;max-width:85px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{background:none;border:none;color:#fff;font:700 12px Helvetica,sans-serif;margin:2px -12px;padding:2px 6px 3px;text-shadow:rgba(0,30,84,.296875) 0px -1px 0px}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:700;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/y9\/r\/jKEcVPZFk-2.gif) no-repeat 50\u0025 50\u0025;border:1px solid #4A4A4A;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f5f6f7;border:1px solid #4A4A4A;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/yD\/r\/t-wz8gw1xG1.png);background-position:50\u0025 50\u0025;background-repeat:no-repeat;height:24px;width:24px}\u0040keyframes rotateSpinner{0\u0025{transform:rotate(0)}to{transform:rotate(360deg)}}\n\n.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100\u0025}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100\u0025}\n","components":["css:fb.css.base","css:fb.css.dialog","css:fb.css.iframewidget"]});__d("JSSDKRuntimeConfig",[],{"locale":"en_US","revision":"1030185293","rtl":false,"sdkab":null,"sdkns":"","sdkurl":"https:\/\/connect.facebook.net\/en_US\/sdk\/debug.js","scribeurl":"https:\/\/www.facebook.com\/platform\/scribe_endpoint.php\/"});__d("JSSDKXDConfig",[],{"XXdUrl":"\/x\/connect\/xd_arbiter\/?version=46","useCdn":true});__d("UrlMapConfig",[],{"www":"www.facebook.com","m":"m.facebook.com","business":"business.facebook.com","api":"api.facebook.com","api_read":"api-read.facebook.com","graph":"graph.facebook.com","an":"an.facebook.com","fbcdn":"static.xx.fbcdn.net","cdn":"staticxx.facebook.com","graph_facebook":"graph.facebook.com","graph_gaming":"graph.fb.gg","graph_instagram":"graph.instagram.com","www_instagram":"www.instagram.com","social_plugin":"socialplugin.facebook.net"});__d("JSSDKShadowCssConfig",[],{"css:fb.shadow.css.fb_login_button":".fb_login_button_container{align-content:center;align-items:center;border:0;color:#fff;display:flex;font-family:Roboto,Freight Sans LF Pro,Helvetica,Arial,Lucida Grande,sans-serif;font-weight:700;margin:auto}.fb-button-main-element{display:flex;flex-wrap:nowrap;overflow:hidden}.fb-iframe-overlay{display:flex}.fb-button-main-element:hover{cursor:pointer}.fb-button-main-element:focus{filter:brightness(80\u0025)}.fb_button_label_element{align-items:center;display:flex;font-weight:700;justify-content:center}.fb_button_label{margin:auto;pointer-events:none}.fb_button_svg_logo{height:1.33em;margin-left:.4em;margin-right:.4em;padding:.065em}.login_fb_logo .f_logo_f{fill:transparent}.single_button_svg_logo{margin-bottom:.08em}\n"});                                                                                                                          __d("DOMWrapper",[],(function $module_DOMWrapper(global,require,requireDynamic,requireLazy,module,exports){
+);      __d("JSSDKCanvasPrefetcherConfig",[],{"enabled":true,"excludedAppIds":[144959615576466,768691303149786,320528941393723],"sampleRate":500});__d("JSSDKConfig",[],{"features":{"allow_non_canvas_app_events":false,"error_handling":{"rate":4},"e2e_ping_tracking":{"rate":0.1},"xd_timeout":{"rate":1,"value":60000},"use_bundle":false,"should_log_response_error":true,"popup_blocker_scribe_logging":{"rate":100},"https_only_enforce_starting":2538809200000,"https_only_learn_more":"https:\/\/developers.facebook.com\/blog\/post\/2018\/06\/08\/enforce-https-facebook-login\/","https_only_scribe_logging":{"rate":1},"log_perf":{"rate":0.001},"use_x_xd":{"rate":100},"cache_auth_response":{"rate":100},"oauth_funnel_logger_version":1,"force_popup_to_canvas_apps_with_id":[],"force_popup_to_all_canvas_app":false,"max_oauth_dialog_retries":{"rate":100,"value":10},"plugin_tags_blacklist":[],"idle_callback_wait_time_ms":3000,"chat_plugin_facade_timeout_ms":8000,"chat_plugin_facade_enabled_pageids":["102493178867330","107331571710078","1032787970130843","107771111665395","261907812360345","101305975654752","275483104252055","101664622285042","112682113428700","271628573687012","385757598521443","100545935690488"],"should_enable_ig_login_status_fetch":true,"log_cookies_usage":{"rate":0.1},"allow_shadow_dom_for_apps_with_id":[520916077950649,152351391599356,132081130190180,468663283258845,409976882430412,189845245141894,360467581347,274266067164],"allow_shadow_dom":true}});__d("JSSDKCssConfig",[],{"rules":".fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0px;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:lucida grande,tahoma,verdana,arial,sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:400;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}\u0040keyframes fb_transform{0\u0025{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}\n\n.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0px;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:lucida grande,tahoma,verdana,arial,sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:400;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}\u0040keyframes fb_transform{0\u0025{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}\n\n.fb_dialog{background:#525252b3;position:absolute;top:-10000px;z-index:10001}.fb_dialog_advanced{border-radius:8px;padding:10px}.fb_dialog_content{background:#fff;color:#373737}.fb_dialog_close_icon{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{left:5px;right:auto;top:5px}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:700;margin:0}.fb_dialog_content .dialog_title>span{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/yd\/r\/Cou7n-nqK52.gif) no-repeat 5px 50\u0025;float:left;padding:5px 0 7px 26px}body.fb_hidden{height:100\u0025;left:0;margin:0;overflow:visible;position:absolute;top:-10000px;transform:none;width:100\u0025}.fb_dialog.fb_dialog_mobile.loading{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/ya\/r\/3rhSv5V8j3o.gif) #fff no-repeat 50\u0025 50\u0025;min-height:100\u0025;min-width:100\u0025;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{background:none;height:auto;min-height:initial;min-width:initial;width:auto}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100\u0025}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{clear:both;color:#fff;display:block;font-size:18px;padding-top:20px}#fb-root #fb_dialog_ipad_overlay{background:#0006;inset:0;min-height:100\u0025;position:absolute;width:100\u0025;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_mobile .fb_dialog_iframe{position:sticky;top:0}.fb_dialog_content .dialog_header{background:linear-gradient(from(#738aba),to(#2c4987));border-bottom:1px solid;border-color:#043b87;box-shadow:#fff 0 1px 1px -1px inset;color:#fff;font:700 14px Helvetica,sans-serif;text-overflow:ellipsis;text-shadow:rgba(0,30,84,.296875) 0px -1px 0px;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{height:43px;width:100\u0025}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:linear-gradient(from(#4267B2),to(#2a4887));background-clip:padding-box;border:1px solid #29487d;border-radius:3px;display:inline-block;line-height:18px;margin-top:3px;max-width:85px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{background:none;border:none;color:#fff;font:700 12px Helvetica,sans-serif;margin:2px -12px;padding:2px 6px 3px;text-shadow:rgba(0,30,84,.296875) 0px -1px 0px}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:700;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/y9\/r\/jKEcVPZFk-2.gif) no-repeat 50\u0025 50\u0025;border:1px solid #4A4A4A;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f5f6f7;border:1px solid #4A4A4A;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/yD\/r\/t-wz8gw1xG1.png);background-position:50\u0025 50\u0025;background-repeat:no-repeat;height:24px;width:24px}\u0040keyframes rotateSpinner{0\u0025{transform:rotate(0)}to{transform:rotate(360deg)}}\n\n.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100\u0025}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100\u0025}\n","components":["css:fb.css.base","css:fb.css.dialog","css:fb.css.iframewidget"]});__d("JSSDKRuntimeConfig",[],{"locale":"en_US","revision":"1030209354","rtl":false,"sdkab":null,"sdkns":"","sdkurl":"https:\/\/connect.facebook.net\/en_US\/sdk\/debug.js","scribeurl":"https:\/\/www.facebook.com\/platform\/scribe_endpoint.php\/"});__d("JSSDKXDConfig",[],{"XXdUrl":"\/x\/connect\/xd_arbiter\/?version=46","useCdn":true});__d("UrlMapConfig",[],{"www":"www.facebook.com","m":"m.facebook.com","business":"business.facebook.com","api":"api.facebook.com","api_read":"api-read.facebook.com","graph":"graph.facebook.com","an":"an.facebook.com","fbcdn":"static.xx.fbcdn.net","cdn":"staticxx.facebook.com","graph_facebook":"graph.facebook.com","graph_gaming":"graph.fb.gg","graph_instagram":"graph.instagram.com","www_instagram":"www.instagram.com","social_plugin":"socialplugin.facebook.net"});__d("JSSDKShadowCssConfig",[],{"css:fb.shadow.css.fb_login_button":".fb_login_button_container{align-content:center;align-items:center;border:0;color:#fff;display:flex;font-family:Roboto,Freight Sans LF Pro,Helvetica,Arial,Lucida Grande,sans-serif;font-weight:700;margin:auto}.fb-button-main-element{display:flex;flex-wrap:nowrap;overflow:hidden}.fb-iframe-overlay{display:flex}.fb-button-main-element:hover{cursor:pointer}.fb-button-main-element:focus{filter:brightness(80\u0025)}.fb_button_label_element{align-items:center;display:flex;font-weight:700;justify-content:center}.fb_button_label{margin:auto;pointer-events:none}.fb_button_svg_logo{height:1.33em;margin-left:.4em;margin-right:.4em;padding:.065em}.login_fb_logo .f_logo_f{fill:transparent}.single_button_svg_logo{margin-bottom:.08em}\n"});                                                                                                                          __d("DOMWrapper",[],(function $module_DOMWrapper(global,require,requireDynamic,requireLazy,module,exports){
 
 
 
@@ -4181,7 +4181,1652 @@ if(form.parentNode){
 form.parentNode.removeChild(form);
 }
 }exports.append=append;exports.appendHidden=appendHidden;exports.submitToTarget=submitToTarget;},98);
-                                                                                                                    __d("sdk.DOM",["guid","sdk.domReady"],function $module_sdk_DOM(global,require,importDefault,importNamespace,requireLazy,module,exports){
+                                                                                                                       __d("performance",[],(function $module_performance(global,require,requireDynamic,requireLazy,module,exports){
+
+'use strict';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var performance=
+
+global.performance||
+global.msPerformance||
+global.webkitPerformance||
+{};var _default=
+
+performance;exports["default"]=_default;}),66);
+                                                                                                                              __d("performanceNow",["performance"],(function $module_performanceNow(global,require,importDefault,importNamespace,requireLazy,module,exports){var _importDefault_closure_performance;
+
+
+
+var performanceNow;
+
+
+
+
+
+
+if((_importDefault_closure_performance||(_importDefault_closure_performance=importDefault("performance"))).now){
+performanceNow=function performanceNow(){return(_importDefault_closure_performance||(_importDefault_closure_performance=importDefault("performance"))).now();};
+}else{
+
+
+var cstart=global._cstart;
+var initialDate=Date.now();
+var epoch=
+typeof cstart==='number'&&cstart<initialDate?cstart:initialDate;
+var last=0;
+performanceNow=function performanceNow(){
+var dateNow=Date.now();
+var now=dateNow-epoch;
+if(now<last){
+
+
+
+
+
+
+
+
+
+
+
+
+
+epoch-=last-now;
+now=dateNow-epoch;
+}
+last=now;
+return now;
+};
+}var _default=
+
+performanceNow;exports["default"]=_default;}),98);
+                                                                                                                      __d("removeFromArray",[],(function $module_removeFromArray(global,require,requireDynamic,requireLazy,module,exports){
+
+
+
+
+function removeFromArray(array,element){
+var index=array.indexOf(element);
+if(index!==-1){
+array.splice(index,1);
+}
+}exports["default"]=removeFromArray;}),66);
+                                                                                                                                                                                                                                                           __d("fb-error",["performanceNow","removeFromArray"],function $module_fb_error(global,require,requireDynamic,requireLazy,module,exports){
+'use strict';var _require_closure_performanceNow;
+
+
+
+
+var TAALOpcode={
+PREVIOUS_FILE:1,
+PREVIOUS_FRAME:2,
+PREVIOUS_DIR:3,
+FORCED_KEY:4
+};
+
+function err(format){
+var err=new Error(format);
+
+if(err.stack===undefined){
+try{
+throw err;
+}catch(_){}
+}
+
+err.messageFormat=format;for(var _len=arguments.length,rawArgs=new Array(_len>1?_len-1:0),_key=1;_key<_len;_key++){rawArgs[_key-1]=arguments[_key];}
+err.messageParams=rawArgs.map(function rawArgs_map_$0(p){return String(p);});
+err.taalOpcodes=[TAALOpcode.PREVIOUS_FRAME];
+return err;
+}
+
+var hasLoggedAnyProductionError=false;
+var ErrorBrowserConsole={
+errorListener:function errorListener(error){
+var cons=global.console;
+var method=cons[error.type]?error.type:'error';
+
+if(__DEV__){
+var message=error.message+"\n";
+var isTestEnv=typeof expect!=='undefined';
+
+if(isTestEnv){
+cons[method](message+error.stack);
+}else{
+cons[method](message,error);
+}
+}else{
+if(error.type==='fatal'||method==='error'&&!hasLoggedAnyProductionError){
+var _message=error.message;
+cons.error('ErrorUtils caught an error:\n\n'+_message+"\n\nSubsequent non-fatal errors won't be logged; see "+'https://fburl.com/debugjs.',error);
+hasLoggedAnyProductionError=true;
+}
+}
+}
+
+};
+
+var defaultConfig={
+skipDupErrorGuard:false
+};
+var ErrorConfig={
+config:defaultConfig,
+setup:setup
+};
+var _initialized=false;
+
+function setup(config){
+if(_initialized===false){
+_initialized=true;
+ErrorConfig.config=Object.freeze(config);
+}
+}
+
+var ErrorDynamicData={
+access_token:null
+};
+
+var messagesPerWindow=6;
+var windowMilliseconds=60000;
+var cacheClearAfter=10*windowMilliseconds;
+var rateLimitCache=new Map();
+var lastCacheClear=0;
+
+function _cleanupCache(){
+var now=(_require_closure_performanceNow||(_require_closure_performanceNow=require("performanceNow")))();
+
+if(now>lastCacheClear+windowMilliseconds){
+var cutoff=now-cacheClearAfter;
+
+for(var _ref2 of rateLimitCache){var key=_ref2[0];var state=_ref2[1];
+if(state.lastAccessed<cutoff){
+rateLimitCache["delete"](key);
+}
+}
+
+lastCacheClear=now;
+}
+}
+
+function _rateLimit(key){
+_cleanupCache();
+
+var now=(_require_closure_performanceNow||(_require_closure_performanceNow=require("performanceNow")))();
+var state=rateLimitCache.get(key);
+
+if(state==null){
+rateLimitCache.set(key,{
+dropped:0,
+logged:[now],
+lastAccessed:now
+});
+return 1;
+}
+
+var
+dropped=
+
+state.dropped,logged=state.logged;
+state.lastAccessed=now;
+
+while(logged[0]<now-windowMilliseconds){
+logged.shift();
+}
+
+if(logged.length<messagesPerWindow){
+state.dropped=0;
+logged.push(now);
+return dropped+1;
+}else{
+state.dropped++;
+return null;
+}
+}
+
+var ErrorFilter={
+shouldLog:function shouldLog(error){
+return _rateLimit(error.hash);
+}
+
+};
+
+var RESCRIPT_INTERNAL_KEY='RE_EXN_ID';
+function getErrorSafe(maybeError){
+var error=null;
+
+if(maybeError==null||typeof maybeError!=='object'){
+error=err('Non-object thrown: %s',String(maybeError));
+}else if(Object.prototype.hasOwnProperty.call(maybeError,RESCRIPT_INTERNAL_KEY)){
+error=err('Rescript exception thrown: %s',ES("JSON","stringify",false,maybeError));
+}else if(typeof(maybeError===null||maybeError===void 0?void 0:maybeError.then)==='function'){
+error=err('Promise thrown: %s',ES("JSON","stringify",false,maybeError));
+}else if(typeof maybeError.message!=='string'){
+error=err('Non-error thrown: %s, keys: %s',String(maybeError),ES("JSON","stringify",false,Object.keys(maybeError).sort()));
+}else if(maybeError.messageFormat!=null&&typeof maybeError.messageFormat!=='string'){
+error=err('Error with non-string messageFormat thrown: %s, %s, keys: %s',String(maybeError.message),String(maybeError),ES("JSON","stringify",false,Object.keys(maybeError).sort()));
+}else if(Object.isExtensible&&!Object.isExtensible(maybeError)){
+error=err('Non-extensible thrown: %s',String(maybeError.message));
+}
+
+if(error!=null){
+error.taalOpcodes=error.taalOpcodes||[];
+error.taalOpcodes.push(TAALOpcode.PREVIOUS_FRAME);
+return error;
+}
+
+return maybeError;
+}
+
+var GLOBAL_ERROR_HANDLER_TAG=typeof window==='undefined'?'<self.onerror>':'<window.onerror>';
+var ErrorPubSub;
+
+function onGlobalError(event){
+var _ErrorPubSub;
+
+var error=event.error!=null?getErrorSafe(event.error):err(event.message||'');
+
+if(error.fileName==null&&event.filename!=null){
+error.fileName=event.filename;
+}
+
+if(error.line==null&&event.lineno!=null){
+error.line=event.lineno;
+}
+
+if(error.column==null&&event.colno!=null){
+error.column=event.colno;
+}
+
+error.guardList=[GLOBAL_ERROR_HANDLER_TAG];
+error.loggingSource='ONERROR';
+(_ErrorPubSub=ErrorPubSub)===null||_ErrorPubSub===void 0?void 0:_ErrorPubSub.reportError(error);
+}
+
+var ErrorGlobalEventHandler={
+setup:function setup(errorPubSub){
+if(typeof global.addEventListener!=='function'){
+return;
+}
+
+if(ErrorPubSub!=null){
+return;
+}
+
+ErrorPubSub=errorPubSub;
+global.addEventListener('error',onGlobalError);
+}
+
+};
+
+var guardList=[];
+var ErrorGuardState={
+pushGuard:function pushGuard(entry){
+guardList.unshift(entry);
+},
+
+popGuard:function popGuard(){
+guardList.shift();
+},
+
+inGuard:function inGuard(){
+return guardList.length!==0;
+},
+
+cloneGuardList:function cloneGuardList(){
+return guardList.map(function guardList_map_$0(e){return e.name;});
+},
+
+findDeferredSource:function findDeferredSource(){
+for(var e of guardList){
+if(e.deferredSource!=null){
+return e.deferredSource;
+}
+}
+}
+
+};
+
+function errorLevelDefiner(error){
+if(error.type!=null){
+return error.type;
+}
+
+if(error.loggingSource=='GUARDED'||error.loggingSource=='ERROR_BOUNDARY'){
+return'fatal';
+}
+
+if(error.name=='SyntaxError'){
+return'fatal';
+}
+
+if(error.loggingSource=='ONERROR'&&error.message.indexOf('ResizeObserver loop')>=0){
+return'warn';
+}
+
+if(error.stack!=null&&error.stack.indexOf('chrome-extension://')>=0){
+return'warn';
+}
+
+return'error';
+}
+
+var globalMetadata=[];var
+_ErrorMetadata=function(){
+function ErrorMetadata(){
+this.metadata=[].concat(globalMetadata);
+}var _proto=ErrorMetadata.prototype;_proto.
+
+addEntries=function addEntries(){var _this$metadata;
+(_this$metadata=this.metadata).push.apply(_this$metadata,arguments);
+return this;
+};_proto.
+
+addEntry=function addEntry(product,name,value){
+this.metadata.push([product,name,value]);
+return this;
+};_proto.
+
+isEmpty=function isEmpty(){
+return this.metadata.length===0;
+};_proto.
+
+clearEntries=function clearEntries(){
+this.metadata=[];
+};_proto.
+
+format=function format(){
+var formattedMetadata=[];
+this.metadata.forEach(function metadata_forEach_$0(entry){
+if(entry&&entry.length){
+var formattedEntry=entry.map(function entry_map_$0(s){return s!=null?String(s).replace(/:/g,'_'):'';}).join(':');
+formattedMetadata.push(formattedEntry);
+}
+});
+return formattedMetadata;
+};_proto.
+
+getAll=function getAll(){
+return this.metadata;
+};ErrorMetadata.
+
+addGlobalMetadata=function addGlobalMetadata(product,name,value){
+globalMetadata.push([product,name,value]);
+};ErrorMetadata.
+
+getGlobalMetadata=function getGlobalMetadata(){
+return globalMetadata;
+};ErrorMetadata.
+
+unsetGlobalMetadata=function unsetGlobalMetadata(product,name){
+globalMetadata=globalMetadata.filter(function globalMetadata_filter_$0(entry){
+return!(Array.isArray(entry)&&entry[0]===product&&entry[1]===name);
+});
+};return ErrorMetadata;}();
+
+
+
+var LEVEL_PRI={
+debug:1,
+info:2,
+warn:3,
+error:4,
+fatal:5
+};
+
+function aggregateError(error,context){
+var _error$messageFormat,_error$messageParams;
+
+if(Object.isFrozen(error)){
+return;
+}
+
+if(context.type){
+if(!error.type||LEVEL_PRI[error.type]>LEVEL_PRI[context.type]){
+error.type=context.type;
+}
+}
+
+var contextMeta=context.metadata;
+
+if(contextMeta!=null){
+var _error$metadata;
+
+var metadata=(_error$metadata=error.metadata)!==null&&_error$metadata!==void 0?_error$metadata:new _ErrorMetadata();
+
+if(contextMeta!=null){
+metadata.addEntries.apply(metadata,contextMeta.getAll());
+}
+
+error.metadata=metadata;
+}
+
+if(context.project!=null){
+error.project=context.project;
+}
+
+if(context.errorName!=null){
+error.errorName=context.errorName;
+}
+
+if(context.componentStack!=null){
+error.componentStack=context.componentStack;
+}
+
+if(context.deferredSource!=null){
+error.deferredSource=context.deferredSource;
+}
+
+if(context.blameModule!=null){
+error.blameModule=context.blameModule;
+}
+
+if(context.loggingSource!=null){
+error.loggingSource=context.loggingSource;
+}
+
+var messageFormat=(_error$messageFormat=error.messageFormat)!==null&&_error$messageFormat!==void 0?_error$messageFormat:error.message;
+var messageParams=(_error$messageParams=error.messageParams)!==null&&_error$messageParams!==void 0?_error$messageParams:[];
+
+if(messageFormat!==context.messageFormat&&context.messageFormat!=null){
+var _context$messageParam;
+
+messageFormat+=" [Caught in: "+context.messageFormat+"]";
+messageParams.push.apply(messageParams,(_context$messageParam=context.messageParams)!==null&&_context$messageParam!==void 0?_context$messageParam:[]);
+}
+
+error.messageFormat=messageFormat;
+error.messageParams=messageParams;
+var firstKey=context.forcedKey;
+var secondKey=error.forcedKey;
+var forcedKey=firstKey!=null&&secondKey!=null?firstKey+"_"+secondKey:firstKey!==null&&firstKey!==void 0?firstKey:secondKey;
+error.forcedKey=forcedKey;
+}
+
+function toReadableMessage(error){
+var _error$messageFormat2;
+
+return _printf((_error$messageFormat2=error.messageFormat)!==null&&_error$messageFormat2!==void 0?_error$messageFormat2:error.message,error.messageParams||[]);
+}
+
+function _printf(format,params){
+var index=0;
+var safeFormat=String(format);
+var formattedMessage=safeFormat.replace(/%s/g,function safeFormat_replace_$1(){return index<params.length?params[index++]:'NOPARAM';});
+
+if(index<params.length){
+formattedMessage+=" PARAMS"+ES("JSON","stringify",false,params.slice(index));
+}
+
+return formattedMessage;
+}
+
+function toStringParams(params){
+return(params!==null&&params!==void 0?params:[]).map(function map_$0(param){return String(param);});
+}
+
+var ErrorSerializer={
+aggregateError:aggregateError,
+toReadableMessage:toReadableMessage,
+toStringParams:toStringParams
+};
+
+var MAX_LENGTH=5;
+var headerValues=[];
+
+function add(value){
+headerValues.push(value);
+
+if(headerValues.length>MAX_LENGTH){
+headerValues.shift();
+}
+}
+
+function addFromXHR(req){
+var headers=req.getAllResponseHeaders();
+
+if(headers!=null&&headers.indexOf('X-FB-Debug')>=0){
+var xfbDebug=req.getResponseHeader('X-FB-Debug');
+
+if(xfbDebug){
+add(xfbDebug);
+}
+}
+}
+
+function getAll(){
+return headerValues;
+}
+
+var ErrorXFBDebug={
+add:add,
+addFromXHR:addFromXHR,
+getAll:getAll
+};
+
+var CHARS='abcdefghijklmnopqrstuvwxyz012345';
+function getSimpleHash(){
+var hash=0;for(var _len2=arguments.length,toBeHashed=new Array(_len2),_key2=0;_key2<_len2;_key2++){toBeHashed[_key2]=arguments[_key2];}
+
+for(var s of toBeHashed){
+if(s!=null){
+var len=s.length;
+
+for(var i=0;i<len;i++){
+hash=(hash<<5)-hash+s.charCodeAt(i);
+}
+}
+}
+
+var simpleHash='';
+
+for(var j=0;j<6;j++){
+simpleHash=CHARS.charAt(hash&0x1f)+simpleHash;
+hash>>=5;
+}
+
+return simpleHash;
+}
+
+var STACK_FRAME_FORMATS=[/\(([^\s\)\()]+):(\d+):(\d+)\)$/,/@([^\s\)\()]+):(\d+):(\d+)$/,/^([^\s\)\()]+):(\d+):(\d+)$/,/^at ([^\s\)\()]+):(\d+):(\d+)$/];
+var CLEANUP_STACK_PATTERN=/^\w+:\s.*?\n/g;
+
+if(Error.stackTraceLimit!=null&&Error.stackTraceLimit<80){
+Error.stackTraceLimit=80;
+}
+
+function getStackWithoutMessage(error){
+var
+name=
+
+
+error.name,message=error.message,stack=error.stack;
+
+if(stack==null){
+return null;
+}
+
+if(name!=null&&message!=null&&message!==''){
+var prefix=name+": "+message+"\n";
+
+if(ES(stack,"startsWith",true,prefix)){
+return stack.substr(prefix.length);
+}
+
+if(stack===name+": "+message){
+return null;
+}
+}
+
+if(name!=null){
+var _prefix=name+"\n";
+
+if(ES(stack,"startsWith",true,_prefix)){
+return stack.substr(_prefix.length);
+}
+}
+
+if(message!=null&&message!==''){
+var _prefix2=": "+message+"\n";
+var _index=stack.indexOf(_prefix2);
+var maybeName=stack.substring(0,_index);
+
+if(/^\w+$/.test(maybeName)){
+return stack.substring(_index+_prefix2.length);
+}
+}
+
+return stack.replace(CLEANUP_STACK_PATTERN,'');
+}
+
+function normalizeStackFrame(frameRaw){
+var frame=frameRaw.trim();
+var identifier=frame;
+var script;
+var line;
+var column;
+
+if(ES(frame,"includes",true,'charset=utf-8;base64,')){
+identifier='<inlined-file>';
+}else{
+var matches;
+
+for(var re of STACK_FRAME_FORMATS){
+matches=frame.match(re);
+
+if(matches!=null){
+break;
+}
+}
+
+if(matches!=null&&matches.length===4){
+script=matches[1];
+line=parseInt(matches[2],10);
+column=parseInt(matches[3],10);
+identifier=frame.substring(0,frame.length-matches[0].length);
+}else{
+identifier=frame;
+}
+
+identifier=identifier.replace(/^at /,'').trim();
+}
+
+var stackFrame={
+identifier:identifier,
+script:script,
+line:line,
+column:column
+};
+stackFrame.text=formatStackFrame(stackFrame);
+return stackFrame;
+}
+
+function normalizeStack(stack){
+if(stack==null||stack===''){
+return[];
+}
+
+return stack.split(/\n\n/)[0].split('\n').map(normalizeStackFrame);
+}
+
+function normalizeErrorStack(error){
+var stackWithoutMessage=getStackWithoutMessage(error);
+return normalizeStack(stackWithoutMessage);
+}
+
+function normalizeReactComponentStack(componentStack){
+if(componentStack==null||componentStack===''){
+return null;
+}
+
+var stack=componentStack.split('\n');
+stack.splice(0,1);
+return stack.map(function stack_map_$0(line){return line.trim();});
+}
+
+function formatStackFrame(_ref3)
+
+
+
+
+{var identifier=_ref3.identifier,script=_ref3.script,line=_ref3.line,column=_ref3.column;
+var text="    at "+(identifier!==null&&identifier!==void 0?identifier:'<unknown>');
+
+if(script!=null&&line!=null&&column!=null){
+text+=" ("+script+":"+line+":"+column+")";
+}
+
+return text;
+}
+
+function normalizeError(error){
+var _error$taalOpcodes,_error$messageFormat,_error$messageParams,_error$errorName,_error$lineNumber,_error$columnNumber,_error$fileName,_error$extra,_error$guardList,_error$tags;
+
+var stackData=normalizeErrorStack(error);
+var taalOpcodes=(_error$taalOpcodes=error.taalOpcodes)!==null&&_error$taalOpcodes!==void 0?_error$taalOpcodes:[];
+var framesToPop=error.framesToPop;
+
+if(framesToPop!=null){
+framesToPop=Math.min(framesToPop,stackData.length);
+
+while(framesToPop-->0){
+taalOpcodes.unshift(TAALOpcode.PREVIOUS_FRAME);
+}
+}
+
+var messageFormat=(_error$messageFormat=error.messageFormat)!==null&&_error$messageFormat!==void 0?_error$messageFormat:error.message;
+var messageParams=((_error$messageParams=error.messageParams)!==null&&_error$messageParams!==void 0?_error$messageParams:[]).map(function map_$0(param){return String(param);});
+var reactComponentStack=normalizeReactComponentStack(error.componentStack);
+var componentStackFrames=reactComponentStack==null?null:reactComponentStack.map(normalizeStackFrame);
+var metadata=error.metadata?error.metadata.format():new _ErrorMetadata().format();
+
+if(metadata.length===0){
+metadata=undefined;
+}
+
+var stack=stackData.map(function stackData_map_$0(frame){return frame.text;}).join('\n');
+var name=(_error$errorName=error.errorName)!==null&&_error$errorName!==void 0?_error$errorName:error.name;
+var type=errorLevelDefiner(error);
+var
+loggingSource=
+
+error.loggingSource,project=error.project;
+var line=(_error$lineNumber=error.lineNumber)!==null&&_error$lineNumber!==void 0?_error$lineNumber:error.line;
+var column=(_error$columnNumber=error.columnNumber)!==null&&_error$columnNumber!==void 0?_error$columnNumber:error.column;
+var script=(_error$fileName=error.fileName)!==null&&_error$fileName!==void 0?_error$fileName:error.sourceURL;
+var hasStackFrames=stackData.length>0;
+
+if(hasStackFrames&&line==null){
+line=stackData[0].line;
+}
+
+if(hasStackFrames&&column==null){
+column=stackData[0].column;
+}
+
+if(hasStackFrames&&script==null){
+script=stackData[0].script;
+}
+
+var info={
+blameModule:error.blameModule,
+cause:error.cause,
+column:column==null?null:String(column),
+clientTime:Math.floor(Date.now()/1000),
+componentStackFrames:componentStackFrames,
+deferredSource:error.deferredSource!=null?normalizeError(error.deferredSource):null,
+extra:(_error$extra=error.extra)!==null&&_error$extra!==void 0?_error$extra:{},
+fbtrace_id:error.fbtrace_id,
+guardList:(_error$guardList=error.guardList)!==null&&_error$guardList!==void 0?_error$guardList:[],
+hash:getSimpleHash(name,stack,type,project,loggingSource),
+isNormalizedError:true,
+line:line==null?null:String(line),
+loggingSource:loggingSource,
+message:ErrorSerializer.toReadableMessage(error),
+messageFormat:messageFormat,
+messageParams:messageParams,
+metadata:metadata,
+name:name,
+page_time:Math.floor((_require_closure_performanceNow||(_require_closure_performanceNow=require("performanceNow")))()),
+project:project,
+reactComponentStack:reactComponentStack,
+script:script,
+serverHash:error.serverHash,
+stack:stack,
+stackFrames:stackData,
+type:type,
+xFBDebug:ErrorXFBDebug.getAll(),
+tags:(_error$tags=error.tags)!==null&&_error$tags!==void 0?_error$tags:[]
+};
+
+if(error.forcedKey!=null){
+info.forcedKey=error.forcedKey;
+}
+
+if(taalOpcodes.length>0){
+info.taalOpcodes=taalOpcodes;
+}
+
+var location=global.location;
+
+if(location){
+info.windowLocationURL=location.href;
+}
+
+for(var k in info){
+if(info[k]==null){
+delete info[k];
+}
+}
+
+return info;
+}
+
+function ifNormalizedError(maybeNormalizedError){
+if(maybeNormalizedError!=null&&typeof maybeNormalizedError==='object'&&maybeNormalizedError.isNormalizedError===true){
+return maybeNormalizedError;
+}
+
+return null;
+}
+
+var ErrorNormalizeUtils={
+formatStackFrame:formatStackFrame,
+normalizeError:normalizeError,
+ifNormalizedError:ifNormalizedError
+};
+
+var GLOBAL_REACT_ERROR_HANDLER_TAG='<global.react>';
+var listeners=[];
+var history=[];
+var MAX_HISTORY=50;
+var isReporting=false;
+var ErrorPubSub$1={
+history:history,
+
+addListener:function addListener(listener,noPlayback){if(noPlayback===void 0){noPlayback=false;}
+listeners.push(listener);
+
+if(!noPlayback){
+history.forEach(function history_forEach_$0(error){
+var _error$loggingSource;
+
+return listener(error,(_error$loggingSource=error.loggingSource)!==null&&_error$loggingSource!==void 0?_error$loggingSource:'DEPRECATED');
+});
+}
+},
+
+unshiftListener:function unshiftListener(listener){
+listeners.unshift(listener);
+},
+
+removeListener:function removeListener(listener){
+require("removeFromArray")(listeners,listener);
+},
+
+reportError:function reportError(error){
+var normalizedError=ErrorNormalizeUtils.normalizeError(error);
+ErrorPubSub$1.reportNormalizedError(normalizedError);
+},
+
+reportNormalizedError:function reportNormalizedError(normalizedError){
+if(isReporting){
+if(__DEV__){
+var isTestEnv=typeof expect!=='undefined';
+
+if(isTestEnv){
+var tagsSection=normalizedError.tags!=null?'['+normalizedError.tags.join(',')+']':'';
+console.error(tagsSection+normalizedError.message+'\n'+normalizedError.stack);
+}else{
+console.error('Error reported during error processing',normalizedError);
+}
+}
+
+return false;
+}
+
+var guardList=ErrorGuardState.cloneGuardList();
+
+if(normalizedError.componentStackFrames){
+guardList.unshift(GLOBAL_REACT_ERROR_HANDLER_TAG);
+}
+
+if(guardList.length>0){
+normalizedError.guardList=guardList;
+}
+
+if(normalizedError.deferredSource==null){
+var deferredSource=ErrorGuardState.findDeferredSource();
+
+if(deferredSource!=null){
+normalizedError.deferredSource=ErrorNormalizeUtils.normalizeError(deferredSource);
+}
+}
+
+if(history.length>MAX_HISTORY){
+history.splice(MAX_HISTORY/2,1);
+}
+
+history.push(normalizedError);
+isReporting=true;
+
+for(var i=0;i<listeners.length;i++){
+try{
+var _normalizedError$logg;
+
+listeners[i](normalizedError,(_normalizedError$logg=normalizedError.loggingSource)!==null&&_normalizedError$logg!==void 0?_normalizedError$logg:'DEPRECATED');
+}catch(e){
+if(__DEV__){
+console.error('Error thrown from listener during error processing',e);
+}
+}
+}
+
+isReporting=false;
+return true;
+}
+
+};
+ErrorPubSub$1.addListener(ErrorBrowserConsole.errorListener);
+
+var ANONYMOUS_GUARD_TAG='<anonymous guard>';
+var _skipGuard=false;
+var ErrorGuard={
+applyWithGuard:function applyWithGuard(func,context,args,metaArgs){
+if(ErrorConfig.config.skipDupErrorGuard&&'__isMetaErrorGuarded'in func){
+return func.apply(context,args);
+}
+
+ErrorGuardState.pushGuard({
+name:((metaArgs===null||metaArgs===void 0?void 0:metaArgs.name)!=null?metaArgs.name:null)||(func.name?"func_name:"+func.name:null)||ANONYMOUS_GUARD_TAG,
+deferredSource:metaArgs===null||metaArgs===void 0?void 0:metaArgs.deferredSource
+});
+
+if(_skipGuard){
+try{
+return func.apply(context,args);
+}finally{
+ErrorGuardState.popGuard();
+}
+}
+
+try{
+return Function.prototype.apply.call(func,context,args);
+}catch(ex){
+try{
+var _metaArgs$project;
+
+var _ref4=
+
+
+
+metaArgs!==null&&metaArgs!==void 0?metaArgs:babelHelpers["extends"]({},null),deferredSource=_ref4.deferredSource,onError=_ref4.onError,onNormalizedError=_ref4.onNormalizedError;
+
+var error=getErrorSafe(ex);
+var errorContext={
+deferredSource:deferredSource,
+loggingSource:'GUARDED',
+project:(_metaArgs$project=metaArgs===null||metaArgs===void 0?void 0:metaArgs.project)!==null&&_metaArgs$project!==void 0?_metaArgs$project:'ErrorGuard',
+type:metaArgs===null||metaArgs===void 0?void 0:metaArgs.errorType
+};
+ErrorSerializer.aggregateError(error,errorContext);
+var normalizedError=ErrorNormalizeUtils.normalizeError(error);
+
+if(error==null&&func){
+normalizedError.extra[func.toString().substring(0,100)]='function';
+
+if(args!=null&&args.length){
+normalizedError.extra[ES("Array","from",false,args).toString().substring(0,100)]='args';
+}
+}
+
+normalizedError.guardList=ErrorGuardState.cloneGuardList();
+
+if(onError){
+onError(error);
+}
+
+if(onNormalizedError){
+onNormalizedError(normalizedError);
+}
+
+ErrorPubSub$1.reportNormalizedError(normalizedError);
+}catch(e){}
+}finally{
+ErrorGuardState.popGuard();
+}
+},
+
+guard:function guard(func,metaArgs){
+function guarded(){for(var _len3=arguments.length,args=new Array(_len3),_key3=0;_key3<_len3;_key3++){args[_key3]=arguments[_key3];}
+return ErrorGuard.applyWithGuard(func,this,args,metaArgs);
+}
+
+guarded.__isMetaErrorGuarded=true;
+
+if(func.__SMmeta){
+guarded.__SMmeta=func.__SMmeta;
+}
+
+if(__DEV__){
+guarded.toString=ES(func.toString,"bind",true,func);
+}
+
+return guarded;
+},
+
+inGuard:function inGuard(){
+return ErrorGuardState.inGuard();
+},
+
+skipGuardGlobal:function skipGuardGlobal(value){
+_skipGuard=value;
+}
+
+};
+
+var MAX_MESSAGE_LENGTH=1024;
+var errorAncestors=[];
+var pagePosition=0;
+
+function _toInt64(n){
+return String(n);
+}
+
+function _toInt64Nullable(n){
+return n==null?null:String(n);
+}
+
+function _mergeExtra(errorExtra,extra){
+var mergedExtra={};
+
+if(extra){
+extra.forEach(function extra_forEach_$0(key){
+mergedExtra[key]=true;
+});
+}
+
+Object.keys(errorExtra).forEach(function forEach_$0(key){
+if(errorExtra[key]){
+mergedExtra[key]=true;
+}else if(mergedExtra[key]){
+delete mergedExtra[key];
+}
+});
+return Object.keys(mergedExtra);
+}
+
+function _convertStack(stackFrames){
+return(stackFrames!==null&&stackFrames!==void 0?stackFrames:[]).map(function map_$0(frame){
+return{
+column:_toInt64Nullable(frame.column),
+identifier:frame.identifier,
+line:_toInt64Nullable(frame.line),
+script:frame.script
+};
+});
+}
+
+function _truncateHugeString(stringOrParam){
+var s=String(stringOrParam);
+
+if(s.length>MAX_MESSAGE_LENGTH){
+return s.substring(0,MAX_MESSAGE_LENGTH-3)+'...';
+}
+
+return s;
+}
+
+function createErrorPayload(error,info){
+var _info$bundle_variant,_info$frontend_env,_info$rollout_hash,_info$additional_clie;
+
+var newError={
+appId:_toInt64Nullable(info.appId),
+cavalry_lid:info.cavalry_lid,
+access_token:ErrorDynamicData.access_token,
+ancestor_hash:error.hash,
+bundle_variant:(_info$bundle_variant=info.bundle_variant)!==null&&_info$bundle_variant!==void 0?_info$bundle_variant:null,
+clientTime:_toInt64(error.clientTime),
+column:error.column,
+componentStackFrames:_convertStack(error.componentStackFrames),
+events:error.events,
+extra:_mergeExtra(error.extra,info.extra),
+forcedKey:error.forcedKey,
+frontend_env:(_info$frontend_env=info.frontend_env)!==null&&_info$frontend_env!==void 0?_info$frontend_env:null,
+guardList:error.guardList,
+line:error.line,
+loggingFramework:info.loggingFramework,
+messageFormat:_truncateHugeString(error.messageFormat),
+messageParams:error.messageParams.map(_truncateHugeString),
+name:error.name,
+sample_weight:_toInt64Nullable(info.sample_weight),
+script:error.script,
+site_category:info.site_category,
+stackFrames:_convertStack(error.stackFrames),
+type:error.type,
+page_time:_toInt64Nullable(error.page_time),
+project:error.project,
+push_phase:info.push_phase,
+report_source:info.report_source,
+report_source_ref:info.report_source_ref,
+rollout_hash:(_info$rollout_hash=info.rollout_hash)!==null&&_info$rollout_hash!==void 0?_info$rollout_hash:null,
+script_path:info.script_path,
+server_revision:_toInt64Nullable(info.server_revision),
+spin:_toInt64Nullable(info.spin),
+svn_rev:String(info.client_revision),
+additional_client_revisions:ES("Array","from",false,(_info$additional_clie=info.additional_client_revisions)!==null&&_info$additional_clie!==void 0?_info$additional_clie:[]).map(_toInt64),
+taalOpcodes:error.taalOpcodes==null?null:error.taalOpcodes.map(function error_taalOpcodes_map_$0(v){return v;}),
+web_session_id:info.web_session_id,
+version:'3',
+xFBDebug:error.xFBDebug,
+tags:error.tags
+};
+var
+blameModule=
+
+error.blameModule,deferredSource=error.deferredSource;
+
+if(blameModule!=null){
+newError.blameModule=String(blameModule);
+}
+
+if(deferredSource&&deferredSource.stackFrames){
+newError.deferredSource={
+stackFrames:_convertStack(deferredSource.stackFrames)
+};
+}
+
+if(error.metadata){
+newError.metadata=error.metadata;
+}
+
+if(error.loadingUrls){
+newError.loadingUrls=error.loadingUrls;
+}
+
+if(error.serverHash!=null){
+newError.serverHash=error.serverHash;
+}
+
+if(error.windowLocationURL!=null){
+newError.windowLocationURL=error.windowLocationURL;
+}
+
+if(error.loggingSource!=null){
+newError.loggingSource=error.loggingSource;
+}
+
+return newError;
+}
+
+function postError(error,info,logger){
+var _info$projectBlocklis;
+
+pagePosition++;
+
+if(info.sample_weight===0){
+return false;
+}
+
+var clientWeight=ErrorFilter.shouldLog(error);
+
+if(clientWeight==null){
+return false;
+}
+
+if((_info$projectBlocklis=info.projectBlocklist)!==null&&_info$projectBlocklis!==void 0&&ES(_info$projectBlocklis,"includes",true,error.project)){
+return false;
+}
+
+var errorPayload=createErrorPayload(error,info);
+ES("Object","assign",false,errorPayload,{
+ancestors:errorAncestors.slice(),
+clientWeight:_toInt64(clientWeight),
+page_position:_toInt64(pagePosition)
+});
+
+if(errorAncestors.length<15&&ES(['fatal','error'],"includes",true,error.type)){
+errorAncestors.push(error.hash);
+}
+
+logger(errorPayload);
+return true;
+}
+
+var ErrorPoster={
+createErrorPayload:createErrorPayload,
+postError:postError
+};
+
+var maybeLocalErrorPubSub=null;
+var subscribed=false;
+
+function onunhandledrejection(event){
+if(maybeLocalErrorPubSub==null){
+return;
+}
+
+var localErrorPubSub=maybeLocalErrorPubSub;
+var reason=event.reason;
+var withKeys;
+var expandedError=getErrorSafe(reason);
+var nameToAssign=null;
+
+if(reason!==expandedError&&typeof reason==='object'&&reason!==null){
+withKeys=Object.keys(reason).sort().slice(0,3);
+
+if(typeof reason.message!=='string'&&typeof reason.messageFormat==='string'){
+reason.message=reason.messageFormat;
+expandedError=getErrorSafe(reason);
+}
+
+if(typeof reason.message!=='string'&&typeof reason.errorMsg==='string'){
+if(/^\s*\<!doctype/i.test(reason.errorMsg)){
+var match=/<title>([^<]+)<\/title>(?:(?:.|\n)*<h1>([^<]+)<\/h1>)?/im.exec(reason.errorMsg);
+
+if(match){
+var _match$,_match$2;
+
+expandedError=err('HTML document with title="%s" and h1="%s"',(_match$=match[1])!==null&&_match$!==void 0?_match$:'',(_match$2=match[2])!==null&&_match$2!==void 0?_match$2:'');
+}else{
+expandedError=err('HTML document sanitized');
+}
+}else if(/^\s*<\?xml/i.test(reason.errorMsg)){
+expandedError=err('XML document sanitized');
+}else{
+reason.message=reason.errorMsg;
+expandedError=getErrorSafe(reason);
+}
+}
+
+if(expandedError!==reason&&typeof reason.name==='string'){
+nameToAssign=reason.name;
+}
+
+if(typeof reason.name!=='string'&&typeof reason.errorCode==='string'){
+nameToAssign='UnhandledRejectionWith_errorCode_'+reason.errorCode;
+}
+
+if(typeof reason.name!=='string'&&typeof reason.error==='number'){
+nameToAssign='UnhandledRejectionWith_error_'+String(reason.error);
+}
+}
+
+expandedError.loggingSource='ONUNHANDLEDREJECTION';
+
+try{
+nameToAssign=expandedError===reason&&nameToAssign!=null&&nameToAssign!==''?nameToAssign:typeof(reason===null||reason===void 0?void 0:reason.name)==='string'&&reason.name!==''?reason.name:withKeys!=null&&withKeys.length>0?'UnhandledRejectionWith_'+withKeys.join('_'):'UnhandledRejection_'+(reason===null?'null':typeof reason);
+expandedError.name=nameToAssign;
+}catch(_unused){}
+
+try{
+var reasonStack=reason===null||reason===void 0?void 0:reason.stack;
+
+if(typeof reasonStack!=='string'||reasonStack===''){
+reasonStack=expandedError.stack;
+}
+
+if(typeof reasonStack!=='string'||reasonStack===''){
+reasonStack=err('').stack;
+}
+
+expandedError.stack=expandedError.name+': '+expandedError.message+'\n'+reasonStack.split('\n').slice(1).join('\n');
+}catch(_unused2){}
+
+try{
+var promise=event.promise;
+expandedError.stack=expandedError.stack+(promise!=null&&typeof promise.settledStack==='string'?'\n    at <promise_settled_stack_below>\n'+promise.settledStack:'')+(promise!=null&&typeof promise.createdStack==='string'?'\n    at <promise_created_stack_below>\n'+promise.createdStack:'');
+}catch(_unused3){}
+
+try{
+var _promise=event.promise;
+
+if('__isPromiseWithTracing'in _promise&&_promise.__isPromiseWithTracing===true&&_promise.deferredError!=null){
+expandedError.deferredSource=getErrorSafe(_promise.deferredError);
+}
+}catch(_unused4){}
+
+localErrorPubSub.reportError(expandedError);
+event.preventDefault();
+}
+
+function setup$1(injectedErrorPubSub){
+maybeLocalErrorPubSub=injectedErrorPubSub;
+
+if(typeof global.addEventListener==='function'&&!subscribed){
+subscribed=true;
+global.addEventListener('unhandledrejection',onunhandledrejection);
+}
+}
+
+var ErrorUnhandledRejectionHandler={
+onunhandledrejection:onunhandledrejection,
+setup:setup$1
+};
+
+var ErrorSetup={
+preSetup:function preSetup(options){
+if(options==null||options.ignoreOnError!==true){
+ErrorGlobalEventHandler.setup(ErrorPubSub$1);
+}
+
+if(options==null||options.ignoreOnUnahndledRejection!==true){
+ErrorUnhandledRejectionHandler.setup(ErrorPubSub$1);
+}
+},
+
+setup:function setup(loggingInfo,logger,addAnnotations){
+ErrorPubSub$1.addListener(function ErrorPubSub$1_addListener_$0(error){
+var _addAnnotations;
+
+var annotatedLoggingInfo=babelHelpers["extends"]({},loggingInfo,
+(_addAnnotations=addAnnotations===null||addAnnotations===void 0?void 0:addAnnotations())!==null&&_addAnnotations!==void 0?_addAnnotations:{});
+
+ErrorPoster.postError(error,annotatedLoggingInfo,logger);
+});
+}
+
+};
+
+var MAX_EVENTS_LOG_SIZE=20;var
+_FBLogMessage=function(){
+function FBLogMessage(project,tags){var _this=this;if(tags===void 0){tags=[];}this.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+FATAL=function(string){
+var formattedString=string.join('%s');for(var _len4=arguments.length,expressions=new Array(_len4>1?_len4-1:0),_key4=1;_key4<_len4;_key4++){expressions[_key4-1]=arguments[_key4];}
+_this.fatal.apply(_this,[formattedString].concat(expressions));
+};this.
+MUSTFIX=function(string){
+var formattedString=_this.getTagString()+string.join('%s');for(var _len5=arguments.length,expressions=new Array(_len5>1?_len5-1:0),_key5=1;_key5<_len5;_key5++){expressions[_key5-1]=arguments[_key5];}
+_this.mustfix.apply(_this,[formattedString].concat(expressions));
+};this.
+WARN=function(string){
+var formattedString=_this.getTagString()+string.join('%s');for(var _len6=arguments.length,expressions=new Array(_len6>1?_len6-1:0),_key6=1;_key6<_len6;_key6++){expressions[_key6-1]=arguments[_key6];}
+_this.warn.apply(_this,[formattedString].concat(expressions));
+};this.
+INFO=function(string){
+var formattedString=_this.getTagString()+string.join('%s');for(var _len7=arguments.length,expressions=new Array(_len7>1?_len7-1:0),_key7=1;_key7<_len7;_key7++){expressions[_key7-1]=arguments[_key7];}
+_this.info.apply(_this,[formattedString].concat(expressions));
+};this.
+DEBUG=function(string){
+var formattedString=_this.getTagString()+string.join('%s');for(var _len8=arguments.length,expressions=new Array(_len8>1?_len8-1:0),_key8=1;_key8<_len8;_key8++){expressions[_key8-1]=arguments[_key8];}
+_this.debug.apply(_this,[formattedString].concat(expressions));
+};this.project=project;this.events=[];this.metadata=new _ErrorMetadata();this.taalOpcodes=[];this.loggerTags=new Set(tags);}var _proto2=FBLogMessage.prototype;_proto2.$FBLogMessage_log=function $FBLogMessage_log(type,format){var safeFormat=String(format);var events=this.events,project=this.project,metadata=this.metadata,blameModule=this.blameModule,forcedKey=this.forcedKey;var error=this.error;var normalizedError;for(var _len9=arguments.length,params=new Array(_len9>2?_len9-2:0),_key9=2;_key9<_len9;_key9++){params[_key9-2]=arguments[_key9];}if(this.normalizedError){normalizedError=babelHelpers["extends"]({},this.normalizedError,{messageFormat:this.normalizedError.messageFormat+" [Caught in: "+safeFormat+"]",messageParams:ErrorSerializer.toStringParams([].concat(this.normalizedError.messageParams,params)),project:project,type:type,loggingSource:'FBLOGGER'});normalizedError.message=ErrorSerializer.toReadableMessage(normalizedError);if(forcedKey!=null){normalizedError.forcedKey=normalizedError.forcedKey!=null?forcedKey+"_"+normalizedError.forcedKey:forcedKey;}}else if(error){if(this.taalOpcodes.length>0){new FBLogMessage('fblogger').blameToPreviousFrame().blameToPreviousFrame().warn('Blame helpers do not work with catching');}ErrorSerializer.aggregateError(error,{messageFormat:safeFormat,messageParams:ErrorSerializer.toStringParams(params),errorName:error.name,forcedKey:forcedKey,project:project,type:type,loggingSource:'FBLOGGER'});normalizedError=ErrorNormalizeUtils.normalizeError(error);}else{error=new Error(safeFormat);if(error.stack===undefined){try{throw error;}catch(_){}}error.messageFormat=safeFormat;error.messageParams=ErrorSerializer.toStringParams(params);error.blameModule=blameModule;error.forcedKey=forcedKey;error.project=project;error.type=type;error.loggingSource='FBLOGGER';error.taalOpcodes=[TAALOpcode.PREVIOUS_FRAME,TAALOpcode.PREVIOUS_FRAME].concat(this.taalOpcodes);normalizedError=ErrorNormalizeUtils.normalizeError(error);normalizedError.name='FBLogger';}if(!metadata.isEmpty()){if(normalizedError.metadata==null){normalizedError.metadata=metadata.format();}else{var allMetadata=normalizedError.metadata.concat(metadata.format());var uniqueMetadata=new Set(allMetadata);normalizedError.metadata=ES("Array","from",false,uniqueMetadata.values());}}if(events.length>0){if(normalizedError.events!=null){var _normalizedError$even;(_normalizedError$even=normalizedError.events).push.apply(_normalizedError$even,events);}else{normalizedError.events=[].concat(events);}if(normalizedError.events!=null&&normalizedError.events.length>MAX_EVENTS_LOG_SIZE){var omitted=normalizedError.events.length-MAX_EVENTS_LOG_SIZE;normalizedError.events.splice(0,omitted+1,"<first "+omitted+" events omitted>");}}normalizedError.tags=ES("Array","from",false,this.loggerTags);ErrorPubSub$1.reportNormalizedError(normalizedError);return error;};_proto2.fatal=function fatal(format){for(var _len0=arguments.length,params=new Array(_len0>1?_len0-1:0),_key0=1;_key0<_len0;_key0++){params[_key0-1]=arguments[_key0];}this.$FBLogMessage_log.apply(this,['fatal',format].concat(params));};_proto2.mustfix=function mustfix(format){for(var _len1=arguments.length,params=new Array(_len1>1?_len1-1:0),_key1=1;_key1<_len1;_key1++){params[_key1-1]=arguments[_key1];}this.$FBLogMessage_log.apply(this,['error',format].concat(params));};_proto2.warn=function warn(format){for(var _len10=arguments.length,params=new Array(_len10>1?_len10-1:0),_key10=1;_key10<_len10;_key10++){params[_key10-1]=arguments[_key10];}this.$FBLogMessage_log.apply(this,['warn',format].concat(params));};_proto2.info=function info(format){for(var _len11=arguments.length,params=new Array(_len11>1?_len11-1:0),_key11=1;_key11<_len11;_key11++){params[_key11-1]=arguments[_key11];}this.$FBLogMessage_log.apply(this,['info',format].concat(params));};_proto2.debug=function debug(format){if(__DEV__){for(var _len12=arguments.length,params=new Array(_len12>1?_len12-1:0),_key12=1;_key12<_len12;_key12++){params[_key12-1]=arguments[_key12];}this.$FBLogMessage_log.apply(this,['debug',format].concat(params));}};_proto2.mustfixThrow=function mustfixThrow(format){for(var _len13=arguments.length,params=new Array(_len13>1?_len13-1:0),_key13=1;_key13<_len13;_key13++){params[_key13-1]=arguments[_key13];}var errorToThrow=this.$FBLogMessage_log.apply(this,['error',format].concat(params));if(!errorToThrow){errorToThrow=err('mustfixThrow does not support catchingNormalizedError');errorToThrow.taalOpcodes=errorToThrow.taalOpcodes||[];errorToThrow.taalOpcodes.push(TAALOpcode.PREVIOUS_FRAME);}try{errorToThrow.message=ErrorSerializer.toReadableMessage(errorToThrow);}catch(_unused5){}errorToThrow.is_js_error=true;throw errorToThrow;};_proto2.catching=function catching(error){if(!(error instanceof Error)){new FBLogMessage('fblogger').blameToPreviousFrame().warn('Catching non-Error object is not supported');}else{this.error=error;}return this;};_proto2.catchingNormalizedError=function catchingNormalizedError(normalizedError){this.normalizedError=normalizedError;return this;};_proto2.event=function event(_event){this.events.push(_event);return this;};_proto2.blameToModule=function blameToModule(module){this.blameModule=module;return this;};_proto2.blameToPreviousFile=function blameToPreviousFile(){this.taalOpcodes.push(TAALOpcode.PREVIOUS_FILE);return this;};_proto2.blameToPreviousFrame=function blameToPreviousFrame(){this.taalOpcodes.push(TAALOpcode.PREVIOUS_FRAME);return this;};_proto2.blameToPreviousDirectory=function blameToPreviousDirectory(){this.taalOpcodes.push(TAALOpcode.PREVIOUS_DIR);return this;};_proto2.addToCategoryKey=function addToCategoryKey(addedKey){this.forcedKey=addedKey;return this;};_proto2.addMetadata=function addMetadata(product,name,value){this.metadata.addEntry(product,name,value);return this;};_proto2.tags=function tags(_tags){var newTags=_tags.concat(ES("Array","from",false,this.loggerTags));var newLogger=new FBLogMessage(this.project,newTags);this.events.forEach(function events_forEach_$0(event){return newLogger.event(event);});this.metadata.getAll().forEach(function forEach_$0(_ref5){var product=_ref5[0],name=_ref5[1],value=_ref5[2];return newLogger.addMetadata(product,name,value);});return newLogger;};_proto2.getTagString=function getTagString(){var tagString=this.loggerTags.size>0?"["+ES("Array","from",false,this.loggerTags).join('|')+"] ":'';return tagString;};return FBLogMessage;}();
+
+
+var FBLogger=function FBLogger(project,event){
+var logger=new _FBLogMessage(project);
+
+if(event!=null){
+return logger.event(project+"."+event);
+}
+
+return logger;
+};
+
+FBLogger.addGlobalMetadata=function(product,name,value){
+_ErrorMetadata.addGlobalMetadata(product,name,value);
+};
+
+var CUSTOM_NAME_PREFIX='<CUSTOM_NAME:';
+var CUSTOM_NAME_SUFFIX='>';
+function renameFunction(fn,name){
+if(fn!=null&&name!=null){
+try{
+Object.defineProperty(fn,'name',{
+value:CUSTOM_NAME_PREFIX+" "+name+CUSTOM_NAME_SUFFIX
+});
+}catch(_unused6){}
+}
+
+return fn;
+}
+
+var TAAL={
+blameToPreviousFile:function blameToPreviousFile(error){
+var _error$taalOpcodes;
+
+error.taalOpcodes=(_error$taalOpcodes=error.taalOpcodes)!==null&&_error$taalOpcodes!==void 0?_error$taalOpcodes:[];
+error.taalOpcodes.push(TAALOpcode.PREVIOUS_FILE);
+return error;
+},
+
+blameToPreviousFrame:function blameToPreviousFrame(error){
+var _error$taalOpcodes2;
+
+error.taalOpcodes=(_error$taalOpcodes2=error.taalOpcodes)!==null&&_error$taalOpcodes2!==void 0?_error$taalOpcodes2:[];
+error.taalOpcodes.push(TAALOpcode.PREVIOUS_FRAME);
+return error;
+},
+
+blameToPreviousDirectory:function blameToPreviousDirectory(error){
+var _error$taalOpcodes3;
+
+error.taalOpcodes=(_error$taalOpcodes3=error.taalOpcodes)!==null&&_error$taalOpcodes3!==void 0?_error$taalOpcodes3:[];
+error.taalOpcodes.push(TAALOpcode.PREVIOUS_DIR);
+return error;
+}
+
+};
+
+var index={
+err:err,
+ErrorBrowserConsole:ErrorBrowserConsole,
+ErrorConfig:ErrorConfig,
+ErrorDynamicData:ErrorDynamicData,
+ErrorFilter:ErrorFilter,
+ErrorGlobalEventHandler:ErrorGlobalEventHandler,
+ErrorGuard:ErrorGuard,
+ErrorGuardState:ErrorGuardState,
+ErrorMetadata:_ErrorMetadata,
+ErrorNormalizeUtils:ErrorNormalizeUtils,
+ErrorPoster:ErrorPoster,
+ErrorPubSub:ErrorPubSub$1,
+ErrorSerializer:ErrorSerializer,
+ErrorSetup:ErrorSetup,
+ErrorXFBDebug:ErrorXFBDebug,
+FBLogger:FBLogger,
+getErrorSafe:getErrorSafe,
+getSimpleHash:getSimpleHash,
+TAAL:TAAL,
+TAALOpcode:TAALOpcode,
+renameFunction:renameFunction
+};
+
+module.exports=index;},null);
+                                                                                                                                                                                                                                         __d("getErrorSafe",["fb-error"],function $module_getErrorSafe(global,require,importDefault,importNamespace,requireLazy,module,exports){
+
+'use strict';exports["default"]=importDefault("fb-error").getErrorSafe;},98);
+                                                                                                                    __d("sdk.DOM",["getErrorSafe","guid","sdk.domReady"],function $module_sdk_DOM(global,require,importDefault,importNamespace,requireLazy,module,exports){
+
 
 
 
@@ -4221,7 +5866,8 @@ content)
 {
 try{
 dom.innerHTML=content;
-}catch(e){
+}catch(mixedError){
+var e=importDefault("getErrorSafe")(mixedError);
 throw new Error('Could not set innerHTML : '+e.message);
 }
 }
@@ -7567,1647 +9213,6 @@ lid:lid,
 payload:ES("JSON","stringify",false,payload)
 });
 }exports.impression=impression;exports.log=log;},98);
-                                                                                                                       __d("performance",[],(function $module_performance(global,require,requireDynamic,requireLazy,module,exports){
-
-'use strict';
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-var performance=
-
-global.performance||
-global.msPerformance||
-global.webkitPerformance||
-{};var _default=
-
-performance;exports["default"]=_default;}),66);
-                                                                                                                              __d("performanceNow",["performance"],(function $module_performanceNow(global,require,importDefault,importNamespace,requireLazy,module,exports){var _importDefault_closure_performance;
-
-
-
-var performanceNow;
-
-
-
-
-
-
-if((_importDefault_closure_performance||(_importDefault_closure_performance=importDefault("performance"))).now){
-performanceNow=function performanceNow(){return(_importDefault_closure_performance||(_importDefault_closure_performance=importDefault("performance"))).now();};
-}else{
-
-
-var cstart=global._cstart;
-var initialDate=Date.now();
-var epoch=
-typeof cstart==='number'&&cstart<initialDate?cstart:initialDate;
-var last=0;
-performanceNow=function performanceNow(){
-var dateNow=Date.now();
-var now=dateNow-epoch;
-if(now<last){
-
-
-
-
-
-
-
-
-
-
-
-
-
-epoch-=last-now;
-now=dateNow-epoch;
-}
-last=now;
-return now;
-};
-}var _default=
-
-performanceNow;exports["default"]=_default;}),98);
-                                                                                                                      __d("removeFromArray",[],(function $module_removeFromArray(global,require,requireDynamic,requireLazy,module,exports){
-
-
-
-
-function removeFromArray(array,element){
-var index=array.indexOf(element);
-if(index!==-1){
-array.splice(index,1);
-}
-}exports["default"]=removeFromArray;}),66);
-                                                                                                                                                                                                                                                           __d("fb-error",["performanceNow","removeFromArray"],function $module_fb_error(global,require,requireDynamic,requireLazy,module,exports){
-'use strict';var _require_closure_performanceNow;
-
-
-
-
-var TAALOpcode={
-PREVIOUS_FILE:1,
-PREVIOUS_FRAME:2,
-PREVIOUS_DIR:3,
-FORCED_KEY:4
-};
-
-function err(format){
-var err=new Error(format);
-
-if(err.stack===undefined){
-try{
-throw err;
-}catch(_){}
-}
-
-err.messageFormat=format;for(var _len=arguments.length,rawArgs=new Array(_len>1?_len-1:0),_key=1;_key<_len;_key++){rawArgs[_key-1]=arguments[_key];}
-err.messageParams=rawArgs.map(function rawArgs_map_$0(p){return String(p);});
-err.taalOpcodes=[TAALOpcode.PREVIOUS_FRAME];
-return err;
-}
-
-var hasLoggedAnyProductionError=false;
-var ErrorBrowserConsole={
-errorListener:function errorListener(error){
-var cons=global.console;
-var method=cons[error.type]?error.type:'error';
-
-if(__DEV__){
-var message=error.message+"\n";
-var isTestEnv=typeof expect!=='undefined';
-
-if(isTestEnv){
-cons[method](message+error.stack);
-}else{
-cons[method](message,error);
-}
-}else{
-if(error.type==='fatal'||method==='error'&&!hasLoggedAnyProductionError){
-var _message=error.message;
-cons.error('ErrorUtils caught an error:\n\n'+_message+"\n\nSubsequent non-fatal errors won't be logged; see "+'https://fburl.com/debugjs.',error);
-hasLoggedAnyProductionError=true;
-}
-}
-}
-
-};
-
-var defaultConfig={
-skipDupErrorGuard:false
-};
-var ErrorConfig={
-config:defaultConfig,
-setup:setup
-};
-var _initialized=false;
-
-function setup(config){
-if(_initialized===false){
-_initialized=true;
-ErrorConfig.config=Object.freeze(config);
-}
-}
-
-var ErrorDynamicData={
-access_token:null
-};
-
-var messagesPerWindow=6;
-var windowMilliseconds=60000;
-var cacheClearAfter=10*windowMilliseconds;
-var rateLimitCache=new Map();
-var lastCacheClear=0;
-
-function _cleanupCache(){
-var now=(_require_closure_performanceNow||(_require_closure_performanceNow=require("performanceNow")))();
-
-if(now>lastCacheClear+windowMilliseconds){
-var cutoff=now-cacheClearAfter;
-
-for(var _ref2 of rateLimitCache){var key=_ref2[0];var state=_ref2[1];
-if(state.lastAccessed<cutoff){
-rateLimitCache["delete"](key);
-}
-}
-
-lastCacheClear=now;
-}
-}
-
-function _rateLimit(key){
-_cleanupCache();
-
-var now=(_require_closure_performanceNow||(_require_closure_performanceNow=require("performanceNow")))();
-var state=rateLimitCache.get(key);
-
-if(state==null){
-rateLimitCache.set(key,{
-dropped:0,
-logged:[now],
-lastAccessed:now
-});
-return 1;
-}
-
-var
-dropped=
-
-state.dropped,logged=state.logged;
-state.lastAccessed=now;
-
-while(logged[0]<now-windowMilliseconds){
-logged.shift();
-}
-
-if(logged.length<messagesPerWindow){
-state.dropped=0;
-logged.push(now);
-return dropped+1;
-}else{
-state.dropped++;
-return null;
-}
-}
-
-var ErrorFilter={
-shouldLog:function shouldLog(error){
-return _rateLimit(error.hash);
-}
-
-};
-
-var RESCRIPT_INTERNAL_KEY='RE_EXN_ID';
-function getErrorSafe(maybeError){
-var error=null;
-
-if(maybeError==null||typeof maybeError!=='object'){
-error=err('Non-object thrown: %s',String(maybeError));
-}else if(Object.prototype.hasOwnProperty.call(maybeError,RESCRIPT_INTERNAL_KEY)){
-error=err('Rescript exception thrown: %s',ES("JSON","stringify",false,maybeError));
-}else if(typeof(maybeError===null||maybeError===void 0?void 0:maybeError.then)==='function'){
-error=err('Promise thrown: %s',ES("JSON","stringify",false,maybeError));
-}else if(typeof maybeError.message!=='string'){
-error=err('Non-error thrown: %s, keys: %s',String(maybeError),ES("JSON","stringify",false,Object.keys(maybeError).sort()));
-}else if(maybeError.messageFormat!=null&&typeof maybeError.messageFormat!=='string'){
-error=err('Error with non-string messageFormat thrown: %s, %s, keys: %s',String(maybeError.message),String(maybeError),ES("JSON","stringify",false,Object.keys(maybeError).sort()));
-}else if(Object.isExtensible&&!Object.isExtensible(maybeError)){
-error=err('Non-extensible thrown: %s',String(maybeError.message));
-}
-
-if(error!=null){
-error.taalOpcodes=error.taalOpcodes||[];
-error.taalOpcodes.push(TAALOpcode.PREVIOUS_FRAME);
-return error;
-}
-
-return maybeError;
-}
-
-var GLOBAL_ERROR_HANDLER_TAG=typeof window==='undefined'?'<self.onerror>':'<window.onerror>';
-var ErrorPubSub;
-
-function onGlobalError(event){
-var _ErrorPubSub;
-
-var error=event.error!=null?getErrorSafe(event.error):err(event.message||'');
-
-if(error.fileName==null&&event.filename!=null){
-error.fileName=event.filename;
-}
-
-if(error.line==null&&event.lineno!=null){
-error.line=event.lineno;
-}
-
-if(error.column==null&&event.colno!=null){
-error.column=event.colno;
-}
-
-error.guardList=[GLOBAL_ERROR_HANDLER_TAG];
-error.loggingSource='ONERROR';
-(_ErrorPubSub=ErrorPubSub)===null||_ErrorPubSub===void 0?void 0:_ErrorPubSub.reportError(error);
-}
-
-var ErrorGlobalEventHandler={
-setup:function setup(errorPubSub){
-if(typeof global.addEventListener!=='function'){
-return;
-}
-
-if(ErrorPubSub!=null){
-return;
-}
-
-ErrorPubSub=errorPubSub;
-global.addEventListener('error',onGlobalError);
-}
-
-};
-
-var guardList=[];
-var ErrorGuardState={
-pushGuard:function pushGuard(entry){
-guardList.unshift(entry);
-},
-
-popGuard:function popGuard(){
-guardList.shift();
-},
-
-inGuard:function inGuard(){
-return guardList.length!==0;
-},
-
-cloneGuardList:function cloneGuardList(){
-return guardList.map(function guardList_map_$0(e){return e.name;});
-},
-
-findDeferredSource:function findDeferredSource(){
-for(var e of guardList){
-if(e.deferredSource!=null){
-return e.deferredSource;
-}
-}
-}
-
-};
-
-function errorLevelDefiner(error){
-if(error.type!=null){
-return error.type;
-}
-
-if(error.loggingSource=='GUARDED'||error.loggingSource=='ERROR_BOUNDARY'){
-return'fatal';
-}
-
-if(error.name=='SyntaxError'){
-return'fatal';
-}
-
-if(error.loggingSource=='ONERROR'&&error.message.indexOf('ResizeObserver loop')>=0){
-return'warn';
-}
-
-if(error.stack!=null&&error.stack.indexOf('chrome-extension://')>=0){
-return'warn';
-}
-
-return'error';
-}
-
-var globalMetadata=[];var
-_ErrorMetadata=function(){
-function ErrorMetadata(){
-this.metadata=[].concat(globalMetadata);
-}var _proto=ErrorMetadata.prototype;_proto.
-
-addEntries=function addEntries(){var _this$metadata;
-(_this$metadata=this.metadata).push.apply(_this$metadata,arguments);
-return this;
-};_proto.
-
-addEntry=function addEntry(product,name,value){
-this.metadata.push([product,name,value]);
-return this;
-};_proto.
-
-isEmpty=function isEmpty(){
-return this.metadata.length===0;
-};_proto.
-
-clearEntries=function clearEntries(){
-this.metadata=[];
-};_proto.
-
-format=function format(){
-var formattedMetadata=[];
-this.metadata.forEach(function metadata_forEach_$0(entry){
-if(entry&&entry.length){
-var formattedEntry=entry.map(function entry_map_$0(s){return s!=null?String(s).replace(/:/g,'_'):'';}).join(':');
-formattedMetadata.push(formattedEntry);
-}
-});
-return formattedMetadata;
-};_proto.
-
-getAll=function getAll(){
-return this.metadata;
-};ErrorMetadata.
-
-addGlobalMetadata=function addGlobalMetadata(product,name,value){
-globalMetadata.push([product,name,value]);
-};ErrorMetadata.
-
-getGlobalMetadata=function getGlobalMetadata(){
-return globalMetadata;
-};ErrorMetadata.
-
-unsetGlobalMetadata=function unsetGlobalMetadata(product,name){
-globalMetadata=globalMetadata.filter(function globalMetadata_filter_$0(entry){
-return!(Array.isArray(entry)&&entry[0]===product&&entry[1]===name);
-});
-};return ErrorMetadata;}();
-
-
-
-var LEVEL_PRI={
-debug:1,
-info:2,
-warn:3,
-error:4,
-fatal:5
-};
-
-function aggregateError(error,context){
-var _error$messageFormat,_error$messageParams;
-
-if(Object.isFrozen(error)){
-return;
-}
-
-if(context.type){
-if(!error.type||LEVEL_PRI[error.type]>LEVEL_PRI[context.type]){
-error.type=context.type;
-}
-}
-
-var contextMeta=context.metadata;
-
-if(contextMeta!=null){
-var _error$metadata;
-
-var metadata=(_error$metadata=error.metadata)!==null&&_error$metadata!==void 0?_error$metadata:new _ErrorMetadata();
-
-if(contextMeta!=null){
-metadata.addEntries.apply(metadata,contextMeta.getAll());
-}
-
-error.metadata=metadata;
-}
-
-if(context.project!=null){
-error.project=context.project;
-}
-
-if(context.errorName!=null){
-error.errorName=context.errorName;
-}
-
-if(context.componentStack!=null){
-error.componentStack=context.componentStack;
-}
-
-if(context.deferredSource!=null){
-error.deferredSource=context.deferredSource;
-}
-
-if(context.blameModule!=null){
-error.blameModule=context.blameModule;
-}
-
-if(context.loggingSource!=null){
-error.loggingSource=context.loggingSource;
-}
-
-var messageFormat=(_error$messageFormat=error.messageFormat)!==null&&_error$messageFormat!==void 0?_error$messageFormat:error.message;
-var messageParams=(_error$messageParams=error.messageParams)!==null&&_error$messageParams!==void 0?_error$messageParams:[];
-
-if(messageFormat!==context.messageFormat&&context.messageFormat!=null){
-var _context$messageParam;
-
-messageFormat+=" [Caught in: "+context.messageFormat+"]";
-messageParams.push.apply(messageParams,(_context$messageParam=context.messageParams)!==null&&_context$messageParam!==void 0?_context$messageParam:[]);
-}
-
-error.messageFormat=messageFormat;
-error.messageParams=messageParams;
-var firstKey=context.forcedKey;
-var secondKey=error.forcedKey;
-var forcedKey=firstKey!=null&&secondKey!=null?firstKey+"_"+secondKey:firstKey!==null&&firstKey!==void 0?firstKey:secondKey;
-error.forcedKey=forcedKey;
-}
-
-function toReadableMessage(error){
-var _error$messageFormat2;
-
-return _printf((_error$messageFormat2=error.messageFormat)!==null&&_error$messageFormat2!==void 0?_error$messageFormat2:error.message,error.messageParams||[]);
-}
-
-function _printf(format,params){
-var index=0;
-var safeFormat=String(format);
-var formattedMessage=safeFormat.replace(/%s/g,function safeFormat_replace_$1(){return index<params.length?params[index++]:'NOPARAM';});
-
-if(index<params.length){
-formattedMessage+=" PARAMS"+ES("JSON","stringify",false,params.slice(index));
-}
-
-return formattedMessage;
-}
-
-function toStringParams(params){
-return(params!==null&&params!==void 0?params:[]).map(function map_$0(param){return String(param);});
-}
-
-var ErrorSerializer={
-aggregateError:aggregateError,
-toReadableMessage:toReadableMessage,
-toStringParams:toStringParams
-};
-
-var MAX_LENGTH=5;
-var headerValues=[];
-
-function add(value){
-headerValues.push(value);
-
-if(headerValues.length>MAX_LENGTH){
-headerValues.shift();
-}
-}
-
-function addFromXHR(req){
-var headers=req.getAllResponseHeaders();
-
-if(headers!=null&&headers.indexOf('X-FB-Debug')>=0){
-var xfbDebug=req.getResponseHeader('X-FB-Debug');
-
-if(xfbDebug){
-add(xfbDebug);
-}
-}
-}
-
-function getAll(){
-return headerValues;
-}
-
-var ErrorXFBDebug={
-add:add,
-addFromXHR:addFromXHR,
-getAll:getAll
-};
-
-var CHARS='abcdefghijklmnopqrstuvwxyz012345';
-function getSimpleHash(){
-var hash=0;for(var _len2=arguments.length,toBeHashed=new Array(_len2),_key2=0;_key2<_len2;_key2++){toBeHashed[_key2]=arguments[_key2];}
-
-for(var s of toBeHashed){
-if(s!=null){
-var len=s.length;
-
-for(var i=0;i<len;i++){
-hash=(hash<<5)-hash+s.charCodeAt(i);
-}
-}
-}
-
-var simpleHash='';
-
-for(var j=0;j<6;j++){
-simpleHash=CHARS.charAt(hash&0x1f)+simpleHash;
-hash>>=5;
-}
-
-return simpleHash;
-}
-
-var STACK_FRAME_FORMATS=[/\(([^\s\)\()]+):(\d+):(\d+)\)$/,/@([^\s\)\()]+):(\d+):(\d+)$/,/^([^\s\)\()]+):(\d+):(\d+)$/,/^at ([^\s\)\()]+):(\d+):(\d+)$/];
-var CLEANUP_STACK_PATTERN=/^\w+:\s.*?\n/g;
-
-if(Error.stackTraceLimit!=null&&Error.stackTraceLimit<80){
-Error.stackTraceLimit=80;
-}
-
-function getStackWithoutMessage(error){
-var
-name=
-
-
-error.name,message=error.message,stack=error.stack;
-
-if(stack==null){
-return null;
-}
-
-if(name!=null&&message!=null&&message!==''){
-var prefix=name+": "+message+"\n";
-
-if(ES(stack,"startsWith",true,prefix)){
-return stack.substr(prefix.length);
-}
-
-if(stack===name+": "+message){
-return null;
-}
-}
-
-if(name!=null){
-var _prefix=name+"\n";
-
-if(ES(stack,"startsWith",true,_prefix)){
-return stack.substr(_prefix.length);
-}
-}
-
-if(message!=null&&message!==''){
-var _prefix2=": "+message+"\n";
-var _index=stack.indexOf(_prefix2);
-var maybeName=stack.substring(0,_index);
-
-if(/^\w+$/.test(maybeName)){
-return stack.substring(_index+_prefix2.length);
-}
-}
-
-return stack.replace(CLEANUP_STACK_PATTERN,'');
-}
-
-function normalizeStackFrame(frameRaw){
-var frame=frameRaw.trim();
-var identifier=frame;
-var script;
-var line;
-var column;
-
-if(ES(frame,"includes",true,'charset=utf-8;base64,')){
-identifier='<inlined-file>';
-}else{
-var matches;
-
-for(var re of STACK_FRAME_FORMATS){
-matches=frame.match(re);
-
-if(matches!=null){
-break;
-}
-}
-
-if(matches!=null&&matches.length===4){
-script=matches[1];
-line=parseInt(matches[2],10);
-column=parseInt(matches[3],10);
-identifier=frame.substring(0,frame.length-matches[0].length);
-}else{
-identifier=frame;
-}
-
-identifier=identifier.replace(/^at /,'').trim();
-}
-
-var stackFrame={
-identifier:identifier,
-script:script,
-line:line,
-column:column
-};
-stackFrame.text=formatStackFrame(stackFrame);
-return stackFrame;
-}
-
-function normalizeStack(stack){
-if(stack==null||stack===''){
-return[];
-}
-
-return stack.split(/\n\n/)[0].split('\n').map(normalizeStackFrame);
-}
-
-function normalizeErrorStack(error){
-var stackWithoutMessage=getStackWithoutMessage(error);
-return normalizeStack(stackWithoutMessage);
-}
-
-function normalizeReactComponentStack(componentStack){
-if(componentStack==null||componentStack===''){
-return null;
-}
-
-var stack=componentStack.split('\n');
-stack.splice(0,1);
-return stack.map(function stack_map_$0(line){return line.trim();});
-}
-
-function formatStackFrame(_ref3)
-
-
-
-
-{var identifier=_ref3.identifier,script=_ref3.script,line=_ref3.line,column=_ref3.column;
-var text="    at "+(identifier!==null&&identifier!==void 0?identifier:'<unknown>');
-
-if(script!=null&&line!=null&&column!=null){
-text+=" ("+script+":"+line+":"+column+")";
-}
-
-return text;
-}
-
-function normalizeError(error){
-var _error$taalOpcodes,_error$messageFormat,_error$messageParams,_error$errorName,_error$lineNumber,_error$columnNumber,_error$fileName,_error$extra,_error$guardList,_error$tags;
-
-var stackData=normalizeErrorStack(error);
-var taalOpcodes=(_error$taalOpcodes=error.taalOpcodes)!==null&&_error$taalOpcodes!==void 0?_error$taalOpcodes:[];
-var framesToPop=error.framesToPop;
-
-if(framesToPop!=null){
-framesToPop=Math.min(framesToPop,stackData.length);
-
-while(framesToPop-->0){
-taalOpcodes.unshift(TAALOpcode.PREVIOUS_FRAME);
-}
-}
-
-var messageFormat=(_error$messageFormat=error.messageFormat)!==null&&_error$messageFormat!==void 0?_error$messageFormat:error.message;
-var messageParams=((_error$messageParams=error.messageParams)!==null&&_error$messageParams!==void 0?_error$messageParams:[]).map(function map_$0(param){return String(param);});
-var reactComponentStack=normalizeReactComponentStack(error.componentStack);
-var componentStackFrames=reactComponentStack==null?null:reactComponentStack.map(normalizeStackFrame);
-var metadata=error.metadata?error.metadata.format():new _ErrorMetadata().format();
-
-if(metadata.length===0){
-metadata=undefined;
-}
-
-var stack=stackData.map(function stackData_map_$0(frame){return frame.text;}).join('\n');
-var name=(_error$errorName=error.errorName)!==null&&_error$errorName!==void 0?_error$errorName:error.name;
-var type=errorLevelDefiner(error);
-var
-loggingSource=
-
-error.loggingSource,project=error.project;
-var line=(_error$lineNumber=error.lineNumber)!==null&&_error$lineNumber!==void 0?_error$lineNumber:error.line;
-var column=(_error$columnNumber=error.columnNumber)!==null&&_error$columnNumber!==void 0?_error$columnNumber:error.column;
-var script=(_error$fileName=error.fileName)!==null&&_error$fileName!==void 0?_error$fileName:error.sourceURL;
-var hasStackFrames=stackData.length>0;
-
-if(hasStackFrames&&line==null){
-line=stackData[0].line;
-}
-
-if(hasStackFrames&&column==null){
-column=stackData[0].column;
-}
-
-if(hasStackFrames&&script==null){
-script=stackData[0].script;
-}
-
-var info={
-blameModule:error.blameModule,
-cause:error.cause,
-column:column==null?null:String(column),
-clientTime:Math.floor(Date.now()/1000),
-componentStackFrames:componentStackFrames,
-deferredSource:error.deferredSource!=null?normalizeError(error.deferredSource):null,
-extra:(_error$extra=error.extra)!==null&&_error$extra!==void 0?_error$extra:{},
-fbtrace_id:error.fbtrace_id,
-guardList:(_error$guardList=error.guardList)!==null&&_error$guardList!==void 0?_error$guardList:[],
-hash:getSimpleHash(name,stack,type,project,loggingSource),
-isNormalizedError:true,
-line:line==null?null:String(line),
-loggingSource:loggingSource,
-message:ErrorSerializer.toReadableMessage(error),
-messageFormat:messageFormat,
-messageParams:messageParams,
-metadata:metadata,
-name:name,
-page_time:Math.floor((_require_closure_performanceNow||(_require_closure_performanceNow=require("performanceNow")))()),
-project:project,
-reactComponentStack:reactComponentStack,
-script:script,
-serverHash:error.serverHash,
-stack:stack,
-stackFrames:stackData,
-type:type,
-xFBDebug:ErrorXFBDebug.getAll(),
-tags:(_error$tags=error.tags)!==null&&_error$tags!==void 0?_error$tags:[]
-};
-
-if(error.forcedKey!=null){
-info.forcedKey=error.forcedKey;
-}
-
-if(taalOpcodes.length>0){
-info.taalOpcodes=taalOpcodes;
-}
-
-var location=global.location;
-
-if(location){
-info.windowLocationURL=location.href;
-}
-
-for(var k in info){
-if(info[k]==null){
-delete info[k];
-}
-}
-
-return info;
-}
-
-function ifNormalizedError(maybeNormalizedError){
-if(maybeNormalizedError!=null&&typeof maybeNormalizedError==='object'&&maybeNormalizedError.isNormalizedError===true){
-return maybeNormalizedError;
-}
-
-return null;
-}
-
-var ErrorNormalizeUtils={
-formatStackFrame:formatStackFrame,
-normalizeError:normalizeError,
-ifNormalizedError:ifNormalizedError
-};
-
-var GLOBAL_REACT_ERROR_HANDLER_TAG='<global.react>';
-var listeners=[];
-var history=[];
-var MAX_HISTORY=50;
-var isReporting=false;
-var ErrorPubSub$1={
-history:history,
-
-addListener:function addListener(listener,noPlayback){if(noPlayback===void 0){noPlayback=false;}
-listeners.push(listener);
-
-if(!noPlayback){
-history.forEach(function history_forEach_$0(error){
-var _error$loggingSource;
-
-return listener(error,(_error$loggingSource=error.loggingSource)!==null&&_error$loggingSource!==void 0?_error$loggingSource:'DEPRECATED');
-});
-}
-},
-
-unshiftListener:function unshiftListener(listener){
-listeners.unshift(listener);
-},
-
-removeListener:function removeListener(listener){
-require("removeFromArray")(listeners,listener);
-},
-
-reportError:function reportError(error){
-var normalizedError=ErrorNormalizeUtils.normalizeError(error);
-ErrorPubSub$1.reportNormalizedError(normalizedError);
-},
-
-reportNormalizedError:function reportNormalizedError(normalizedError){
-if(isReporting){
-if(__DEV__){
-var isTestEnv=typeof expect!=='undefined';
-
-if(isTestEnv){
-var tagsSection=normalizedError.tags!=null?'['+normalizedError.tags.join(',')+']':'';
-console.error(tagsSection+normalizedError.message+'\n'+normalizedError.stack);
-}else{
-console.error('Error reported during error processing',normalizedError);
-}
-}
-
-return false;
-}
-
-var guardList=ErrorGuardState.cloneGuardList();
-
-if(normalizedError.componentStackFrames){
-guardList.unshift(GLOBAL_REACT_ERROR_HANDLER_TAG);
-}
-
-if(guardList.length>0){
-normalizedError.guardList=guardList;
-}
-
-if(normalizedError.deferredSource==null){
-var deferredSource=ErrorGuardState.findDeferredSource();
-
-if(deferredSource!=null){
-normalizedError.deferredSource=ErrorNormalizeUtils.normalizeError(deferredSource);
-}
-}
-
-if(history.length>MAX_HISTORY){
-history.splice(MAX_HISTORY/2,1);
-}
-
-history.push(normalizedError);
-isReporting=true;
-
-for(var i=0;i<listeners.length;i++){
-try{
-var _normalizedError$logg;
-
-listeners[i](normalizedError,(_normalizedError$logg=normalizedError.loggingSource)!==null&&_normalizedError$logg!==void 0?_normalizedError$logg:'DEPRECATED');
-}catch(e){
-if(__DEV__){
-console.error('Error thrown from listener during error processing',e);
-}
-}
-}
-
-isReporting=false;
-return true;
-}
-
-};
-ErrorPubSub$1.addListener(ErrorBrowserConsole.errorListener);
-
-var ANONYMOUS_GUARD_TAG='<anonymous guard>';
-var _skipGuard=false;
-var ErrorGuard={
-applyWithGuard:function applyWithGuard(func,context,args,metaArgs){
-if(ErrorConfig.config.skipDupErrorGuard&&'__isMetaErrorGuarded'in func){
-return func.apply(context,args);
-}
-
-ErrorGuardState.pushGuard({
-name:((metaArgs===null||metaArgs===void 0?void 0:metaArgs.name)!=null?metaArgs.name:null)||(func.name?"func_name:"+func.name:null)||ANONYMOUS_GUARD_TAG,
-deferredSource:metaArgs===null||metaArgs===void 0?void 0:metaArgs.deferredSource
-});
-
-if(_skipGuard){
-try{
-return func.apply(context,args);
-}finally{
-ErrorGuardState.popGuard();
-}
-}
-
-try{
-return Function.prototype.apply.call(func,context,args);
-}catch(ex){
-try{
-var _metaArgs$project;
-
-var _ref4=
-
-
-
-metaArgs!==null&&metaArgs!==void 0?metaArgs:babelHelpers["extends"]({},null),deferredSource=_ref4.deferredSource,onError=_ref4.onError,onNormalizedError=_ref4.onNormalizedError;
-
-var error=getErrorSafe(ex);
-var errorContext={
-deferredSource:deferredSource,
-loggingSource:'GUARDED',
-project:(_metaArgs$project=metaArgs===null||metaArgs===void 0?void 0:metaArgs.project)!==null&&_metaArgs$project!==void 0?_metaArgs$project:'ErrorGuard',
-type:metaArgs===null||metaArgs===void 0?void 0:metaArgs.errorType
-};
-ErrorSerializer.aggregateError(error,errorContext);
-var normalizedError=ErrorNormalizeUtils.normalizeError(error);
-
-if(error==null&&func){
-normalizedError.extra[func.toString().substring(0,100)]='function';
-
-if(args!=null&&args.length){
-normalizedError.extra[ES("Array","from",false,args).toString().substring(0,100)]='args';
-}
-}
-
-normalizedError.guardList=ErrorGuardState.cloneGuardList();
-
-if(onError){
-onError(error);
-}
-
-if(onNormalizedError){
-onNormalizedError(normalizedError);
-}
-
-ErrorPubSub$1.reportNormalizedError(normalizedError);
-}catch(e){}
-}finally{
-ErrorGuardState.popGuard();
-}
-},
-
-guard:function guard(func,metaArgs){
-function guarded(){for(var _len3=arguments.length,args=new Array(_len3),_key3=0;_key3<_len3;_key3++){args[_key3]=arguments[_key3];}
-return ErrorGuard.applyWithGuard(func,this,args,metaArgs);
-}
-
-guarded.__isMetaErrorGuarded=true;
-
-if(func.__SMmeta){
-guarded.__SMmeta=func.__SMmeta;
-}
-
-if(__DEV__){
-guarded.toString=ES(func.toString,"bind",true,func);
-}
-
-return guarded;
-},
-
-inGuard:function inGuard(){
-return ErrorGuardState.inGuard();
-},
-
-skipGuardGlobal:function skipGuardGlobal(value){
-_skipGuard=value;
-}
-
-};
-
-var MAX_MESSAGE_LENGTH=1024;
-var errorAncestors=[];
-var pagePosition=0;
-
-function _toInt64(n){
-return String(n);
-}
-
-function _toInt64Nullable(n){
-return n==null?null:String(n);
-}
-
-function _mergeExtra(errorExtra,extra){
-var mergedExtra={};
-
-if(extra){
-extra.forEach(function extra_forEach_$0(key){
-mergedExtra[key]=true;
-});
-}
-
-Object.keys(errorExtra).forEach(function forEach_$0(key){
-if(errorExtra[key]){
-mergedExtra[key]=true;
-}else if(mergedExtra[key]){
-delete mergedExtra[key];
-}
-});
-return Object.keys(mergedExtra);
-}
-
-function _convertStack(stackFrames){
-return(stackFrames!==null&&stackFrames!==void 0?stackFrames:[]).map(function map_$0(frame){
-return{
-column:_toInt64Nullable(frame.column),
-identifier:frame.identifier,
-line:_toInt64Nullable(frame.line),
-script:frame.script
-};
-});
-}
-
-function _truncateHugeString(stringOrParam){
-var s=String(stringOrParam);
-
-if(s.length>MAX_MESSAGE_LENGTH){
-return s.substring(0,MAX_MESSAGE_LENGTH-3)+'...';
-}
-
-return s;
-}
-
-function createErrorPayload(error,info){
-var _info$bundle_variant,_info$frontend_env,_info$rollout_hash,_info$additional_clie;
-
-var newError={
-appId:_toInt64Nullable(info.appId),
-cavalry_lid:info.cavalry_lid,
-access_token:ErrorDynamicData.access_token,
-ancestor_hash:error.hash,
-bundle_variant:(_info$bundle_variant=info.bundle_variant)!==null&&_info$bundle_variant!==void 0?_info$bundle_variant:null,
-clientTime:_toInt64(error.clientTime),
-column:error.column,
-componentStackFrames:_convertStack(error.componentStackFrames),
-events:error.events,
-extra:_mergeExtra(error.extra,info.extra),
-forcedKey:error.forcedKey,
-frontend_env:(_info$frontend_env=info.frontend_env)!==null&&_info$frontend_env!==void 0?_info$frontend_env:null,
-guardList:error.guardList,
-line:error.line,
-loggingFramework:info.loggingFramework,
-messageFormat:_truncateHugeString(error.messageFormat),
-messageParams:error.messageParams.map(_truncateHugeString),
-name:error.name,
-sample_weight:_toInt64Nullable(info.sample_weight),
-script:error.script,
-site_category:info.site_category,
-stackFrames:_convertStack(error.stackFrames),
-type:error.type,
-page_time:_toInt64Nullable(error.page_time),
-project:error.project,
-push_phase:info.push_phase,
-report_source:info.report_source,
-report_source_ref:info.report_source_ref,
-rollout_hash:(_info$rollout_hash=info.rollout_hash)!==null&&_info$rollout_hash!==void 0?_info$rollout_hash:null,
-script_path:info.script_path,
-server_revision:_toInt64Nullable(info.server_revision),
-spin:_toInt64Nullable(info.spin),
-svn_rev:String(info.client_revision),
-additional_client_revisions:ES("Array","from",false,(_info$additional_clie=info.additional_client_revisions)!==null&&_info$additional_clie!==void 0?_info$additional_clie:[]).map(_toInt64),
-taalOpcodes:error.taalOpcodes==null?null:error.taalOpcodes.map(function error_taalOpcodes_map_$0(v){return v;}),
-web_session_id:info.web_session_id,
-version:'3',
-xFBDebug:error.xFBDebug,
-tags:error.tags
-};
-var
-blameModule=
-
-error.blameModule,deferredSource=error.deferredSource;
-
-if(blameModule!=null){
-newError.blameModule=String(blameModule);
-}
-
-if(deferredSource&&deferredSource.stackFrames){
-newError.deferredSource={
-stackFrames:_convertStack(deferredSource.stackFrames)
-};
-}
-
-if(error.metadata){
-newError.metadata=error.metadata;
-}
-
-if(error.loadingUrls){
-newError.loadingUrls=error.loadingUrls;
-}
-
-if(error.serverHash!=null){
-newError.serverHash=error.serverHash;
-}
-
-if(error.windowLocationURL!=null){
-newError.windowLocationURL=error.windowLocationURL;
-}
-
-if(error.loggingSource!=null){
-newError.loggingSource=error.loggingSource;
-}
-
-return newError;
-}
-
-function postError(error,info,logger){
-var _info$projectBlocklis;
-
-pagePosition++;
-
-if(info.sample_weight===0){
-return false;
-}
-
-var clientWeight=ErrorFilter.shouldLog(error);
-
-if(clientWeight==null){
-return false;
-}
-
-if((_info$projectBlocklis=info.projectBlocklist)!==null&&_info$projectBlocklis!==void 0&&ES(_info$projectBlocklis,"includes",true,error.project)){
-return false;
-}
-
-var errorPayload=createErrorPayload(error,info);
-ES("Object","assign",false,errorPayload,{
-ancestors:errorAncestors.slice(),
-clientWeight:_toInt64(clientWeight),
-page_position:_toInt64(pagePosition)
-});
-
-if(errorAncestors.length<15&&ES(['fatal','error'],"includes",true,error.type)){
-errorAncestors.push(error.hash);
-}
-
-logger(errorPayload);
-return true;
-}
-
-var ErrorPoster={
-createErrorPayload:createErrorPayload,
-postError:postError
-};
-
-var maybeLocalErrorPubSub=null;
-var subscribed=false;
-
-function onunhandledrejection(event){
-if(maybeLocalErrorPubSub==null){
-return;
-}
-
-var localErrorPubSub=maybeLocalErrorPubSub;
-var reason=event.reason;
-var withKeys;
-var expandedError=getErrorSafe(reason);
-var nameToAssign=null;
-
-if(reason!==expandedError&&typeof reason==='object'&&reason!==null){
-withKeys=Object.keys(reason).sort().slice(0,3);
-
-if(typeof reason.message!=='string'&&typeof reason.messageFormat==='string'){
-reason.message=reason.messageFormat;
-expandedError=getErrorSafe(reason);
-}
-
-if(typeof reason.message!=='string'&&typeof reason.errorMsg==='string'){
-if(/^\s*\<!doctype/i.test(reason.errorMsg)){
-var match=/<title>([^<]+)<\/title>(?:(?:.|\n)*<h1>([^<]+)<\/h1>)?/im.exec(reason.errorMsg);
-
-if(match){
-var _match$,_match$2;
-
-expandedError=err('HTML document with title="%s" and h1="%s"',(_match$=match[1])!==null&&_match$!==void 0?_match$:'',(_match$2=match[2])!==null&&_match$2!==void 0?_match$2:'');
-}else{
-expandedError=err('HTML document sanitized');
-}
-}else if(/^\s*<\?xml/i.test(reason.errorMsg)){
-expandedError=err('XML document sanitized');
-}else{
-reason.message=reason.errorMsg;
-expandedError=getErrorSafe(reason);
-}
-}
-
-if(expandedError!==reason&&typeof reason.name==='string'){
-nameToAssign=reason.name;
-}
-
-if(typeof reason.name!=='string'&&typeof reason.errorCode==='string'){
-nameToAssign='UnhandledRejectionWith_errorCode_'+reason.errorCode;
-}
-
-if(typeof reason.name!=='string'&&typeof reason.error==='number'){
-nameToAssign='UnhandledRejectionWith_error_'+String(reason.error);
-}
-}
-
-expandedError.loggingSource='ONUNHANDLEDREJECTION';
-
-try{
-nameToAssign=expandedError===reason&&nameToAssign!=null&&nameToAssign!==''?nameToAssign:typeof(reason===null||reason===void 0?void 0:reason.name)==='string'&&reason.name!==''?reason.name:withKeys!=null&&withKeys.length>0?'UnhandledRejectionWith_'+withKeys.join('_'):'UnhandledRejection_'+(reason===null?'null':typeof reason);
-expandedError.name=nameToAssign;
-}catch(_unused){}
-
-try{
-var reasonStack=reason===null||reason===void 0?void 0:reason.stack;
-
-if(typeof reasonStack!=='string'||reasonStack===''){
-reasonStack=expandedError.stack;
-}
-
-if(typeof reasonStack!=='string'||reasonStack===''){
-reasonStack=err('').stack;
-}
-
-expandedError.stack=expandedError.name+': '+expandedError.message+'\n'+reasonStack.split('\n').slice(1).join('\n');
-}catch(_unused2){}
-
-try{
-var promise=event.promise;
-expandedError.stack=expandedError.stack+(promise!=null&&typeof promise.settledStack==='string'?'\n    at <promise_settled_stack_below>\n'+promise.settledStack:'')+(promise!=null&&typeof promise.createdStack==='string'?'\n    at <promise_created_stack_below>\n'+promise.createdStack:'');
-}catch(_unused3){}
-
-try{
-var _promise=event.promise;
-
-if('__isPromiseWithTracing'in _promise&&_promise.__isPromiseWithTracing===true&&_promise.deferredError!=null){
-expandedError.deferredSource=getErrorSafe(_promise.deferredError);
-}
-}catch(_unused4){}
-
-localErrorPubSub.reportError(expandedError);
-event.preventDefault();
-}
-
-function setup$1(injectedErrorPubSub){
-maybeLocalErrorPubSub=injectedErrorPubSub;
-
-if(typeof global.addEventListener==='function'&&!subscribed){
-subscribed=true;
-global.addEventListener('unhandledrejection',onunhandledrejection);
-}
-}
-
-var ErrorUnhandledRejectionHandler={
-onunhandledrejection:onunhandledrejection,
-setup:setup$1
-};
-
-var ErrorSetup={
-preSetup:function preSetup(options){
-if(options==null||options.ignoreOnError!==true){
-ErrorGlobalEventHandler.setup(ErrorPubSub$1);
-}
-
-if(options==null||options.ignoreOnUnahndledRejection!==true){
-ErrorUnhandledRejectionHandler.setup(ErrorPubSub$1);
-}
-},
-
-setup:function setup(loggingInfo,logger,addAnnotations){
-ErrorPubSub$1.addListener(function ErrorPubSub$1_addListener_$0(error){
-var _addAnnotations;
-
-var annotatedLoggingInfo=babelHelpers["extends"]({},loggingInfo,
-(_addAnnotations=addAnnotations===null||addAnnotations===void 0?void 0:addAnnotations())!==null&&_addAnnotations!==void 0?_addAnnotations:{});
-
-ErrorPoster.postError(error,annotatedLoggingInfo,logger);
-});
-}
-
-};
-
-var MAX_EVENTS_LOG_SIZE=20;var
-_FBLogMessage=function(){
-function FBLogMessage(project,tags){var _this=this;if(tags===void 0){tags=[];}this.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-FATAL=function(string){
-var formattedString=string.join('%s');for(var _len4=arguments.length,expressions=new Array(_len4>1?_len4-1:0),_key4=1;_key4<_len4;_key4++){expressions[_key4-1]=arguments[_key4];}
-_this.fatal.apply(_this,[formattedString].concat(expressions));
-};this.
-MUSTFIX=function(string){
-var formattedString=_this.getTagString()+string.join('%s');for(var _len5=arguments.length,expressions=new Array(_len5>1?_len5-1:0),_key5=1;_key5<_len5;_key5++){expressions[_key5-1]=arguments[_key5];}
-_this.mustfix.apply(_this,[formattedString].concat(expressions));
-};this.
-WARN=function(string){
-var formattedString=_this.getTagString()+string.join('%s');for(var _len6=arguments.length,expressions=new Array(_len6>1?_len6-1:0),_key6=1;_key6<_len6;_key6++){expressions[_key6-1]=arguments[_key6];}
-_this.warn.apply(_this,[formattedString].concat(expressions));
-};this.
-INFO=function(string){
-var formattedString=_this.getTagString()+string.join('%s');for(var _len7=arguments.length,expressions=new Array(_len7>1?_len7-1:0),_key7=1;_key7<_len7;_key7++){expressions[_key7-1]=arguments[_key7];}
-_this.info.apply(_this,[formattedString].concat(expressions));
-};this.
-DEBUG=function(string){
-var formattedString=_this.getTagString()+string.join('%s');for(var _len8=arguments.length,expressions=new Array(_len8>1?_len8-1:0),_key8=1;_key8<_len8;_key8++){expressions[_key8-1]=arguments[_key8];}
-_this.debug.apply(_this,[formattedString].concat(expressions));
-};this.project=project;this.events=[];this.metadata=new _ErrorMetadata();this.taalOpcodes=[];this.loggerTags=new Set(tags);}var _proto2=FBLogMessage.prototype;_proto2.$FBLogMessage_log=function $FBLogMessage_log(type,format){var safeFormat=String(format);var events=this.events,project=this.project,metadata=this.metadata,blameModule=this.blameModule,forcedKey=this.forcedKey;var error=this.error;var normalizedError;for(var _len9=arguments.length,params=new Array(_len9>2?_len9-2:0),_key9=2;_key9<_len9;_key9++){params[_key9-2]=arguments[_key9];}if(this.normalizedError){normalizedError=babelHelpers["extends"]({},this.normalizedError,{messageFormat:this.normalizedError.messageFormat+" [Caught in: "+safeFormat+"]",messageParams:ErrorSerializer.toStringParams([].concat(this.normalizedError.messageParams,params)),project:project,type:type,loggingSource:'FBLOGGER'});normalizedError.message=ErrorSerializer.toReadableMessage(normalizedError);if(forcedKey!=null){normalizedError.forcedKey=normalizedError.forcedKey!=null?forcedKey+"_"+normalizedError.forcedKey:forcedKey;}}else if(error){if(this.taalOpcodes.length>0){new FBLogMessage('fblogger').blameToPreviousFrame().blameToPreviousFrame().warn('Blame helpers do not work with catching');}ErrorSerializer.aggregateError(error,{messageFormat:safeFormat,messageParams:ErrorSerializer.toStringParams(params),errorName:error.name,forcedKey:forcedKey,project:project,type:type,loggingSource:'FBLOGGER'});normalizedError=ErrorNormalizeUtils.normalizeError(error);}else{error=new Error(safeFormat);if(error.stack===undefined){try{throw error;}catch(_){}}error.messageFormat=safeFormat;error.messageParams=ErrorSerializer.toStringParams(params);error.blameModule=blameModule;error.forcedKey=forcedKey;error.project=project;error.type=type;error.loggingSource='FBLOGGER';error.taalOpcodes=[TAALOpcode.PREVIOUS_FRAME,TAALOpcode.PREVIOUS_FRAME].concat(this.taalOpcodes);normalizedError=ErrorNormalizeUtils.normalizeError(error);normalizedError.name='FBLogger';}if(!metadata.isEmpty()){if(normalizedError.metadata==null){normalizedError.metadata=metadata.format();}else{var allMetadata=normalizedError.metadata.concat(metadata.format());var uniqueMetadata=new Set(allMetadata);normalizedError.metadata=ES("Array","from",false,uniqueMetadata.values());}}if(events.length>0){if(normalizedError.events!=null){var _normalizedError$even;(_normalizedError$even=normalizedError.events).push.apply(_normalizedError$even,events);}else{normalizedError.events=[].concat(events);}if(normalizedError.events!=null&&normalizedError.events.length>MAX_EVENTS_LOG_SIZE){var omitted=normalizedError.events.length-MAX_EVENTS_LOG_SIZE;normalizedError.events.splice(0,omitted+1,"<first "+omitted+" events omitted>");}}normalizedError.tags=ES("Array","from",false,this.loggerTags);ErrorPubSub$1.reportNormalizedError(normalizedError);return error;};_proto2.fatal=function fatal(format){for(var _len0=arguments.length,params=new Array(_len0>1?_len0-1:0),_key0=1;_key0<_len0;_key0++){params[_key0-1]=arguments[_key0];}this.$FBLogMessage_log.apply(this,['fatal',format].concat(params));};_proto2.mustfix=function mustfix(format){for(var _len1=arguments.length,params=new Array(_len1>1?_len1-1:0),_key1=1;_key1<_len1;_key1++){params[_key1-1]=arguments[_key1];}this.$FBLogMessage_log.apply(this,['error',format].concat(params));};_proto2.warn=function warn(format){for(var _len10=arguments.length,params=new Array(_len10>1?_len10-1:0),_key10=1;_key10<_len10;_key10++){params[_key10-1]=arguments[_key10];}this.$FBLogMessage_log.apply(this,['warn',format].concat(params));};_proto2.info=function info(format){for(var _len11=arguments.length,params=new Array(_len11>1?_len11-1:0),_key11=1;_key11<_len11;_key11++){params[_key11-1]=arguments[_key11];}this.$FBLogMessage_log.apply(this,['info',format].concat(params));};_proto2.debug=function debug(format){if(__DEV__){for(var _len12=arguments.length,params=new Array(_len12>1?_len12-1:0),_key12=1;_key12<_len12;_key12++){params[_key12-1]=arguments[_key12];}this.$FBLogMessage_log.apply(this,['debug',format].concat(params));}};_proto2.mustfixThrow=function mustfixThrow(format){for(var _len13=arguments.length,params=new Array(_len13>1?_len13-1:0),_key13=1;_key13<_len13;_key13++){params[_key13-1]=arguments[_key13];}var errorToThrow=this.$FBLogMessage_log.apply(this,['error',format].concat(params));if(!errorToThrow){errorToThrow=err('mustfixThrow does not support catchingNormalizedError');errorToThrow.taalOpcodes=errorToThrow.taalOpcodes||[];errorToThrow.taalOpcodes.push(TAALOpcode.PREVIOUS_FRAME);}try{errorToThrow.message=ErrorSerializer.toReadableMessage(errorToThrow);}catch(_unused5){}errorToThrow.is_js_error=true;throw errorToThrow;};_proto2.catching=function catching(error){if(!(error instanceof Error)){new FBLogMessage('fblogger').blameToPreviousFrame().warn('Catching non-Error object is not supported');}else{this.error=error;}return this;};_proto2.catchingNormalizedError=function catchingNormalizedError(normalizedError){this.normalizedError=normalizedError;return this;};_proto2.event=function event(_event){this.events.push(_event);return this;};_proto2.blameToModule=function blameToModule(module){this.blameModule=module;return this;};_proto2.blameToPreviousFile=function blameToPreviousFile(){this.taalOpcodes.push(TAALOpcode.PREVIOUS_FILE);return this;};_proto2.blameToPreviousFrame=function blameToPreviousFrame(){this.taalOpcodes.push(TAALOpcode.PREVIOUS_FRAME);return this;};_proto2.blameToPreviousDirectory=function blameToPreviousDirectory(){this.taalOpcodes.push(TAALOpcode.PREVIOUS_DIR);return this;};_proto2.addToCategoryKey=function addToCategoryKey(addedKey){this.forcedKey=addedKey;return this;};_proto2.addMetadata=function addMetadata(product,name,value){this.metadata.addEntry(product,name,value);return this;};_proto2.tags=function tags(_tags){var newTags=_tags.concat(ES("Array","from",false,this.loggerTags));var newLogger=new FBLogMessage(this.project,newTags);this.events.forEach(function events_forEach_$0(event){return newLogger.event(event);});this.metadata.getAll().forEach(function forEach_$0(_ref5){var product=_ref5[0],name=_ref5[1],value=_ref5[2];return newLogger.addMetadata(product,name,value);});return newLogger;};_proto2.getTagString=function getTagString(){var tagString=this.loggerTags.size>0?"["+ES("Array","from",false,this.loggerTags).join('|')+"] ":'';return tagString;};return FBLogMessage;}();
-
-
-var FBLogger=function FBLogger(project,event){
-var logger=new _FBLogMessage(project);
-
-if(event!=null){
-return logger.event(project+"."+event);
-}
-
-return logger;
-};
-
-FBLogger.addGlobalMetadata=function(product,name,value){
-_ErrorMetadata.addGlobalMetadata(product,name,value);
-};
-
-var CUSTOM_NAME_PREFIX='<CUSTOM_NAME:';
-var CUSTOM_NAME_SUFFIX='>';
-function renameFunction(fn,name){
-if(fn!=null&&name!=null){
-try{
-Object.defineProperty(fn,'name',{
-value:CUSTOM_NAME_PREFIX+" "+name+CUSTOM_NAME_SUFFIX
-});
-}catch(_unused6){}
-}
-
-return fn;
-}
-
-var TAAL={
-blameToPreviousFile:function blameToPreviousFile(error){
-var _error$taalOpcodes;
-
-error.taalOpcodes=(_error$taalOpcodes=error.taalOpcodes)!==null&&_error$taalOpcodes!==void 0?_error$taalOpcodes:[];
-error.taalOpcodes.push(TAALOpcode.PREVIOUS_FILE);
-return error;
-},
-
-blameToPreviousFrame:function blameToPreviousFrame(error){
-var _error$taalOpcodes2;
-
-error.taalOpcodes=(_error$taalOpcodes2=error.taalOpcodes)!==null&&_error$taalOpcodes2!==void 0?_error$taalOpcodes2:[];
-error.taalOpcodes.push(TAALOpcode.PREVIOUS_FRAME);
-return error;
-},
-
-blameToPreviousDirectory:function blameToPreviousDirectory(error){
-var _error$taalOpcodes3;
-
-error.taalOpcodes=(_error$taalOpcodes3=error.taalOpcodes)!==null&&_error$taalOpcodes3!==void 0?_error$taalOpcodes3:[];
-error.taalOpcodes.push(TAALOpcode.PREVIOUS_DIR);
-return error;
-}
-
-};
-
-var index={
-err:err,
-ErrorBrowserConsole:ErrorBrowserConsole,
-ErrorConfig:ErrorConfig,
-ErrorDynamicData:ErrorDynamicData,
-ErrorFilter:ErrorFilter,
-ErrorGlobalEventHandler:ErrorGlobalEventHandler,
-ErrorGuard:ErrorGuard,
-ErrorGuardState:ErrorGuardState,
-ErrorMetadata:_ErrorMetadata,
-ErrorNormalizeUtils:ErrorNormalizeUtils,
-ErrorPoster:ErrorPoster,
-ErrorPubSub:ErrorPubSub$1,
-ErrorSerializer:ErrorSerializer,
-ErrorSetup:ErrorSetup,
-ErrorXFBDebug:ErrorXFBDebug,
-FBLogger:FBLogger,
-getErrorSafe:getErrorSafe,
-getSimpleHash:getSimpleHash,
-TAAL:TAAL,
-TAALOpcode:TAALOpcode,
-renameFunction:renameFunction
-};
-
-module.exports=index;},null);
                                                                                                                               __d("FBLogger",["fb-error"],(function $module_FBLogger(global,require,importDefault,importNamespace,requireLazy,module,exports){
 
 'use strict';exports["default"]=importDefault("fb-error").FBLogger;}),98);
@@ -13204,7 +13209,7 @@ return result;
 
 
 fbt;exports["default"]=_default;},66);
-                                                                                                                         __d("sdk.Dialog",["DOMEventListener","ObservableMixin","Type","sdk.Canvas.Environment","sdk.Content","sdk.DOM","sdk.DialogUtils","sdk.Runtime","sdk.UA","sdk.fbt"],function $module_sdk_Dialog(global,require,importDefault,importNamespace,requireLazy,module,exports){
+                                                                                                                                          __d("sdk.Dialog",["DOMEventListener","ObservableMixin","Type","sdk.Canvas.Environment","sdk.Content","sdk.DOM","sdk.DialogUtils","sdk.Runtime","sdk.UA","sdk.fbt"],function $module_sdk_Dialog(global,require,importDefault,importNamespace,requireLazy,module,exports){
 
 
 
@@ -13944,9 +13949,6 @@ flat[_key]=ES("JSON","stringify",false,value);
 
 return flat;
 }exports["default"]=flattenObject;},66);
-                                                                                                                                                                                                                                         __d("getErrorSafe",["fb-error"],function $module_getErrorSafe(global,require,importDefault,importNamespace,requireLazy,module,exports){
-
-'use strict';exports["default"]=importDefault("fb-error").getErrorSafe;},98);
                                                                                                    __d("ApiClientUtils",["ArgumentError","Assert","Log","flattenObject","getErrorSafe","sdk.URI","sprintf"],function $module_ApiClientUtils(global,require,importDefault,importNamespace,requireLazy,module,exports){
 
 
@@ -22969,4 +22971,4 @@ importDefault("sdk.Runtime").setIsVersioned(true);}),35);
 if(window.FB&&window.FB.__buffer){
 
 window.__buffer=babelHelpers["extends"]({},window.FB.__buffer);
-}    }  }).call(global);})();} catch (__fb_err) {var __fb_i = new Image();__fb_i.crossOrigin = 'anonymous';__fb_i.dataset.testid = 'fbSDKErrorReport';__fb_i.src='https://www.facebook.com/platform/scribe_endpoint.php/?c=jssdk_error&m='+encodeURIComponent('{"error":"LOAD", "extra": {"name":"'+__fb_err.name+'","line":"'+(__fb_err.lineNumber||__fb_err.line)+'","script":"'+(__fb_err.fileName||__fb_err.sourceURL||__fb_err.script||"debug.js")+'","stack":"'+(__fb_err.stackTrace||__fb_err.stack)+'","revision":"1030185293","namespace":"FB","message":"'+__fb_err.message+'"}}');document.body.appendChild(__fb_i);}
+}    }  }).call(global);})();} catch (__fb_err) {var __fb_i = new Image();__fb_i.crossOrigin = 'anonymous';__fb_i.dataset.testid = 'fbSDKErrorReport';__fb_i.src='https://www.facebook.com/platform/scribe_endpoint.php/?c=jssdk_error&m='+encodeURIComponent('{"error":"LOAD", "extra": {"name":"'+__fb_err.name+'","line":"'+(__fb_err.lineNumber||__fb_err.line)+'","script":"'+(__fb_err.fileName||__fb_err.sourceURL||__fb_err.script||"debug.js")+'","stack":"'+(__fb_err.stackTrace||__fb_err.stack)+'","revision":"1030209354","namespace":"FB","message":"'+__fb_err.message+'"}}');document.body.appendChild(__fb_i);}
