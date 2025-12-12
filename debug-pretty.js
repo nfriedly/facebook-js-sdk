@@ -1,4 +1,4 @@
-/*1765497398,,JIT Construction: v1030971918,en_US*/
+/*1765509763,,JIT Construction: v1030985848,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3738,7 +3738,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1030971918",
+            revision: "1030985848",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -9054,6 +9054,44 @@ try {
                 return observable.getSubscribers(key);
               }
 
+              function getMobileOperatingSystem() {
+                var nav = (navigator !== undefined && navigator) || null;
+                var ua =
+                  (nav && (nav.userAgent || nav.vendor || nav.platform)) ||
+                  null;
+
+                if (ua == null || typeof ua !== "string") {
+                  return "unknown";
+                }
+
+                var userAgent = ua.toLowerCase();
+
+                if (ES(userAgent, "includes", true, "windows phone")) {
+                  return "windows phone";
+                }
+
+                if (ES(userAgent, "includes", true, "android")) {
+                  return "android";
+                }
+
+                if (ES(userAgent, "includes", true, "windows")) {
+                  return "windows";
+                }
+
+                var isIOSUA = /\b(iPad|iPhone|iPod)\b/i.test(ua);
+                var isIPadOS13Plus =
+                  !isIOSUA &&
+                  nav != null &&
+                  (nav.platform === "MacIntel" || nav.platform === "MacPPC") &&
+                  window !== undefined &&
+                  "ontouchend" in window;
+
+                if (isIOSUA || isIPadOS13Plus) {
+                  return "ios";
+                }
+
+                return "unknown";
+              }
               var AuthInternalEvent = {
                 inform: inform,
                 subscribe: subscribe,
@@ -9081,6 +9119,7 @@ try {
               exports.setLogoutState = setLogoutState;
               exports.setRevalidateTimer = setRevalidateTimer;
               exports.removeLogoutState = removeLogoutState;
+              exports.getMobileOperatingSystem = getMobileOperatingSystem;
               exports.AuthInternalEvent = AuthInternalEvent;
               exports.AuthConstants = AuthConstants;
             },
@@ -16805,6 +16844,7 @@ try {
               "resolveURI",
               "sdk.Auth",
               "sdk.Auth.LoginStatus",
+              "sdk.AuthUtils",
               "sdk.Content",
               "sdk.DOM",
               "sdk.Dialog",
@@ -17296,6 +17336,7 @@ try {
                 },
 
                 prepareCall: function prepareCall(params, cb) {
+                  var _feature2;
                   var name = params.method.toLowerCase();
                   var method = Object.prototype.hasOwnProperty.call(
                     UIServer.Methods,
@@ -17358,6 +17399,8 @@ try {
                     delete params.access_token;
                   }
 
+                  var versionAdded = false;
+
                   if (
                     importDefault("sdk.Runtime").getIsVersioned() &&
                     method.url.substring(0, 7) === "dialog/"
@@ -17371,7 +17414,25 @@ try {
                       version !== "null"
                     ) {
                       method.url = version + "/" + method.url;
+                      versionAdded = true;
                     }
+                  }
+                  if (
+                    !versionAdded &&
+                    ((_feature2 = importDefault("sdk.feature")(
+                      "use_extended_dialog_path",
+                      false,
+                    )) != null
+                      ? _feature2
+                      : false) &&
+                    method.url &&
+                    typeof method.url === "string" &&
+                    ES(method.url, "includes", true, "dialog/oauth") &&
+                    importNamespace(
+                      "sdk.AuthUtils",
+                    ).getMobileOperatingSystem() === "android"
+                  ) {
+                    method.url += "/index.php";
                   }
 
                   if (shouldEnforceSingleDialogInstance(params)) {
@@ -24385,7 +24446,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1030971918","namespace":"FB","message":"' +
+        '","revision":"1030985848","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
