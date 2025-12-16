@@ -1,4 +1,4 @@
-/*1765907845,,JIT Construction: v1031148438,en_US*/
+/*1765925809,,JIT Construction: v1031169290,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3739,7 +3739,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1031148438",
+            revision: "1031169290",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -3759,6 +3759,7 @@ try {
             api_read: "api-read.facebook.com",
             graph: "graph.facebook.com",
             an: "an.facebook.com",
+            oauth: "oauth.facebook.com",
             fbcdn: "static.xx.fbcdn.net",
             cdn: "staticxx.facebook.com",
             graph_facebook: "graph.facebook.com",
@@ -14502,11 +14503,20 @@ try {
                     } else if (typeof value === "string") {
                       flat[_key] = value;
                     } else {
-                      flat[_key] = ES("JSON", "stringify", false, value);
+                      var _JSON$stringify;
+
+                      flat[_key] =
+                        (_JSON$stringify = ES(
+                          "JSON",
+                          "stringify",
+                          false,
+                          value,
+                        )) != null
+                          ? _JSON$stringify
+                          : "";
                     }
                   }
                 }
-
                 return flat;
               }
               exports["default"] = flattenObject;
@@ -22316,6 +22326,8 @@ try {
               module,
               exports,
             ) {
+              var setTimeout = window.setTimeout;
+              var clearTimeout = window.clearTimeout;
               var _IframePluginClass = (function (_Observable) {
                 function IframePluginClass(
                   elem,
@@ -22391,7 +22403,7 @@ try {
                         ),
                       );
                       _this.updateLift();
-                      window.clearTimeout(_this.$IframePluginClass$p_timeoutID);
+                      clearTimeout(_this.$IframePluginClass$p_timeoutID);
                     },
                   );
 
@@ -22423,7 +22435,7 @@ try {
                       );
                       _this.$IframePluginClass$p_isIframeResized = true;
                       _this.updateLift();
-                      window.clearTimeout(_this.$IframePluginClass$p_timeoutID);
+                      clearTimeout(_this.$IframePluginClass$p_timeoutID);
                     },
                   );
 
@@ -22439,7 +22451,7 @@ try {
                       );
                       _this.$IframePluginClass$p_isIframeResized = true;
                       _this.updateLift();
-                      window.clearTimeout(_this.$IframePluginClass$p_timeoutID);
+                      clearTimeout(_this.$IframePluginClass$p_timeoutID);
                     },
                   );
 
@@ -22663,8 +22675,8 @@ try {
                   }
                   this.element.appendChild(this.iframeOptions.root);
                   var timeout = importDefault("sdk.UA").mobile() ? 120 : 45;
-                  this.$IframePluginClass$p_timeoutID = window.setTimeout(
-                    function window_setTimeout_$0() {
+                  this.$IframePluginClass$p_timeoutID = setTimeout(
+                    function setTimeout_$0() {
                       importNamespace("sdk.PluginUtils").collapseIframe(
                         _this2.iframe,
                       );
@@ -24453,7 +24465,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1031148438","namespace":"FB","message":"' +
+        '","revision":"1031169290","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
