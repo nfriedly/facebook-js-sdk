@@ -1,4 +1,4 @@
-/*1766422713,,JIT Construction: v1031395807,en_US*/
+/*1766457073,,JIT Construction: v1031424117,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -776,6 +776,7 @@ try {
            *
            *
            * @format
+           * @oncall jssdk
            */ __d(
             "ES6Number",
             [],
@@ -3739,7 +3740,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1031395807",
+            revision: "1031424117",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -23929,9 +23930,14 @@ try {
               exports,
             ) {
               function isPlainObject(value) {
-                return (
-                  Object.prototype.toString.call(value) === "[object Object]"
-                );
+                if (value == null || typeof value !== "object") {
+                  return false;
+                }
+
+                var objectProto = Object.getPrototypeOf({});
+                var proto = Object.getPrototypeOf(value);
+
+                return proto === objectProto || proto == null;
               }
 
               function parseAppId(appId) {
@@ -24465,7 +24471,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1031395807","namespace":"FB","message":"' +
+        '","revision":"1031424117","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
