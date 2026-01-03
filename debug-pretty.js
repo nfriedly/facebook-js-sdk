@@ -1,4 +1,4 @@
-/*1767214606,,JIT Construction: v1031548524,en_US*/
+/*1767407303,,JIT Construction: v1031592179,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -2690,9 +2690,9 @@ try {
                     );
                   }
 
-                  F.prototype = proto;
-
-                  return new F();
+                  var obj = {};
+                  Object.setPrototypeOf(obj, proto);
+                  return obj;
                 },
 
                 keys: function keys(object) {
@@ -2725,12 +2725,7 @@ try {
                   return object;
                 },
               };
-
-              function F() {}
-              _c = F;
               var _default = ES5Object;
-              var _c;
-              $RefreshReg$(_c, "F");
               exports["default"] = _default;
             },
             66,
@@ -3740,7 +3735,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1031548524",
+            revision: "1031592179",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -7934,13 +7929,10 @@ try {
                   }
                 }
 
-                if (key in importNamespace("UrlMapConfig")) {
-                  return (
-                    protocol + "://" + importNamespace("UrlMapConfig")[key]
-                  );
+                if (key in importDefault("UrlMapConfig")) {
+                  return protocol + "://" + importDefault("UrlMapConfig")[key];
                 }
-
-                key in importNamespace("UrlMapConfig") ||
+                key in importDefault("UrlMapConfig") ||
                   invariant(0, "Unknown key in UrlMapConfig: %s", key);
                 return "";
               }
@@ -8902,9 +8894,6 @@ try {
                 this.inform = function (what, withWhat) {
                   var list = _this.getSubscribers(what);
                   var _loop = function _loop() {
-                    if (list[i] === null) {
-                      return 1;
-                    }
                     if (__DEV__) {
                       list[i].call(_this, withWhat);
                     } else {
@@ -8918,7 +8907,7 @@ try {
                     }
                   };
                   for (var i = 0; i < list.length; i++) {
-                    if (_loop()) continue;
+                    _loop();
                   }
                 };
                 this.$Observable$p_observableEvents = {};
@@ -24471,7 +24460,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1031548524","namespace":"FB","message":"' +
+        '","revision":"1031592179","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
