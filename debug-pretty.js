@@ -1,4 +1,4 @@
-/*1767407303,,JIT Construction: v1031592179,en_US*/
+/*1767419807,,JIT Construction: v1031597579,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -789,7 +789,6 @@ try {
               exports,
             ) {
               var EPSILON = Math.pow(2, -52);
-
               var MAX_SAFE_INTEGER = Math.pow(2, 53) - 1;
               var MIN_SAFE_INTEGER = -1 * MAX_SAFE_INTEGER;
 
@@ -3735,7 +3734,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1031592179",
+            revision: "1031597579",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -6961,8 +6960,23 @@ try {
                   info.line = parseInt(matches[2], 10);
                 }
 
-                for (var k in info) {
-                  info[k] == null && delete info[k];
+                if (info.line == null) {
+                  delete info.line;
+                }
+                if (info.message == null) {
+                  delete info.message;
+                }
+                if (info.name == null) {
+                  delete info.name;
+                }
+                if (info.script == null) {
+                  delete info.script;
+                }
+                if (info.stack == null) {
+                  delete info.stack;
+                }
+                if (info._originalError == null) {
+                  delete info._originalError;
                 }
                 return info;
               }
@@ -14402,7 +14416,10 @@ try {
                     if (is_active) {
                       Dialog._hideLoader();
                       if (Dialog._stack.length > 0) {
-                        Dialog.show(Dialog._stack.pop());
+                        var nextDialog = Dialog._stack.pop();
+                        if (nextDialog != null) {
+                          Dialog.show(nextDialog);
+                        }
                       } else {
                         Dialog._lowerActive();
                         importNamespace("sdk.DialogUtils").onDialogHideCleanup(
@@ -15336,8 +15353,9 @@ try {
                   currentlyExecutingRequests < maxConcurrentRequests;
                 if (shouldExecuteQueuedRequest) {
                   var nextRequest = requestQueue.shift();
-
-                  nextRequest();
+                  if (nextRequest != null) {
+                    nextRequest();
+                  }
                 }
               }
 
@@ -17740,7 +17758,7 @@ try {
                         function Dialog_showLoader_$0() {
                           UIServer._triggerDefault(call.id, null);
                         },
-                        0,
+                        "",
                       );
                     } else {
                       UIServer.iframe(call);
@@ -22026,17 +22044,13 @@ try {
                   popup_cb,
                 );
                 if (call != null) {
-                  call.dims = {};
-
-                  call.dims.screenX = window.screenX;
-
-                  call.dims.screenY = window.screenY;
-
-                  call.dims.outerWidth = window.outerWidth;
-
-                  call.dims.outerHeight = window.outerHeight;
-
-                  call.dims.screenWidth = window.screen.width;
+                  call.dims = {
+                    screenX: window.screenX,
+                    screenY: window.screenY,
+                    outerWidth: window.outerWidth,
+                    outerHeight: window.outerHeight,
+                    screenWidth: window.screen.width,
+                  };
                 }
 
                 importNamespace("sdk.XD").sendToFacebook(iframe_name, {
@@ -24460,7 +24474,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1031592179","namespace":"FB","message":"' +
+        '","revision":"1031597579","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
