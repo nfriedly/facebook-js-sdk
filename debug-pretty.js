@@ -1,4 +1,4 @@
-/*1767419807,,JIT Construction: v1031597579,en_US*/
+/*1767427003,,JIT Construction: v1031598452,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -446,16 +446,21 @@ try {
             ) {
               var ES5FunctionPrototype = {
                 bind: function bind(context) {
+                  for (
+                    var _len = arguments.length,
+                      appliedArguments = new Array(_len > 1 ? _len - 1 : 0),
+                      _key = 1;
+                    _key < _len;
+                    _key++
+                  ) {
+                    appliedArguments[_key - 1] = arguments[_key];
+                  }
+
                   if (typeof this !== "function") {
                     throw new TypeError("Bind must be called on a function");
                   }
 
                   var target = this;
-
-                  var appliedArguments = Array.prototype.slice.call(
-                    arguments,
-                    1,
-                  );
                   function bound() {
                     return target.apply(
                       context,
@@ -1084,9 +1089,9 @@ try {
                   }
 
                   var entries = [];
-                  for (var key in object) {
-                    if (hasOwnProperty.call(object, key)) {
-                      entries.push([key, object[key]]);
+                  for (var _key in object) {
+                    if (hasOwnProperty.call(object, _key)) {
+                      entries.push([_key, object[_key]]);
                     }
                   }
                   return entries;
@@ -1098,9 +1103,9 @@ try {
                   }
 
                   var values = [];
-                  for (var key in object) {
-                    if (hasOwnProperty.call(object, key)) {
-                      values.push(object[key]);
+                  for (var _key2 in object) {
+                    if (hasOwnProperty.call(object, _key2)) {
+                      values.push(object[_key2]);
                     }
                   }
                   return values;
@@ -3734,7 +3739,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1031597579",
+            revision: "1031598452",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -4182,10 +4187,10 @@ try {
                 if (!queue) {
                   return;
                 }
+                var currentQueue = queue;
 
                 var fn;
-
-                while ((fn = queue.shift())) {
+                while ((fn = currentQueue.shift())) {
                   fn();
                 }
                 queue = null;
@@ -6798,7 +6803,6 @@ try {
                 for (var i = 0, id; (id = names[i++]); ) {
                   if (!(id in cssRules)) {
                     allIncluded = false;
-
                     cssRules[id] = true;
                   }
                 }
@@ -7178,50 +7182,46 @@ try {
                 return expression;
               }
 
-              function define(type, test) {
-                Assert["is" + type] = test;
-
-                Assert["maybe" + type] = function (expression, message) {
-                  return expression == null
-                    ? expression
-                    : test(expression, message);
-                };
-              }
-
-              var placeholder = function placeholder(expression, _message) {
-                return expression;
-              };
-
               var Assert = {
                 isInstanceOf: assertInstanceOf,
                 isTrue: assert,
                 isTruthy: function isTruthy(expression, message) {
                   return assert(!!expression, message);
                 },
-                isBoolean: placeholder,
-                isFunction: placeholder,
-                isNumber: placeholder,
-                isObject: placeholder,
-                isString: placeholder,
-                isUndefined: placeholder,
-                maybeObject: placeholder,
-                maybeNumber: placeholder,
-                maybeFunction: placeholder,
+                isBoolean: function isBoolean(expression, message) {
+                  return assertType("boolean", expression, message);
+                },
+                isFunction: function isFunction(expression, message) {
+                  return assertType("function", expression, message);
+                },
+                isNumber: function isNumber(expression, message) {
+                  return assertType("number", expression, message);
+                },
+                isObject: function isObject(expression, message) {
+                  return assertType("object", expression, message);
+                },
+                isString: function isString(expression, message) {
+                  return assertType("string", expression, message);
+                },
+                isUndefined: function isUndefined(expression, message) {
+                  return assertType("undefined", expression, message);
+                },
+                maybeObject: function maybeObject(expression, message) {
+                  return expression == null
+                    ? expression
+                    : assertType("object", expression, message);
+                },
+                maybeNumber: function maybeNumber(expression, message) {
+                  return expression == null
+                    ? expression
+                    : assertType("number", expression, message);
+                },
+                maybeFunction: function maybeFunction(expression, message) {
+                  return expression == null
+                    ? expression
+                    : assertType("function", expression, message);
+                },
               };
-
-              [
-                "Boolean",
-                "Function",
-                "Number",
-                "Object",
-                "String",
-                "Undefined",
-              ].forEach(function forEach_$0(type) {
-                define(
-                  type,
-                  ES(assertType, "bind", true, null, type.toLowerCase()),
-                );
-              });
               var _default = Assert;
               exports["default"] = _default;
             },
@@ -8080,7 +8080,7 @@ try {
               exports,
             ) {
               var _default = importNamespace("sdk.FeatureFunctor").create(
-                importNamespace("JSSDKConfig"),
+                importDefault("JSSDKConfig"),
               );
               exports["default"] = _default;
             },
@@ -8227,8 +8227,7 @@ try {
                     if (!isPlainObject) {
                       return facade;
                     }
-
-                    return isPlainObject ? result : facade;
+                    return result;
                   },
                   accessor,
                 );
@@ -14558,9 +14557,15 @@ try {
               };
 
               function parseCallDataFromArgs(args) {
-                var path = args.shift();
-                importDefault("Assert").isString(path, "Invalid path");
-
+                var pathArg = args.shift();
+                importDefault("Assert").isString(pathArg, "Invalid path");
+                if (typeof pathArg !== "string") {
+                  throw new (importDefault("ArgumentError"))(
+                    "Invalid path",
+                    "Invalid path",
+                  );
+                }
+                var path = pathArg;
                 if (!/^https?/.test(path) && path.charAt(0) !== "/") {
                   path = "/" + path;
                 }
@@ -15712,9 +15717,7 @@ try {
                         "/" + importDefault("sdk.Runtime").getVersion() + path;
                     }
 
-                    var args = [path].concat(
-                      Array.prototype.slice.call(arguments, 1),
-                    );
+                    var args = [path].concat(additionalArgs);
                     importDefault("ApiClient").graph.apply(
                       importDefault("ApiClient"),
                       args,
@@ -16652,7 +16655,6 @@ try {
                     ? _feature
                     : 60000;
                 var retryInterval = 200;
-                var intervalId = 0;
                 var retries = timeout / retryInterval;
 
                 var registerFunc = function registerFunc() {
@@ -16666,7 +16668,7 @@ try {
                   );
                 };
 
-                intervalId = window.setInterval(
+                var intervalId = window.setInterval(
                   function window_setInterval_$0() {
                     if (!facebookQueue.isStarted() && retries > 0) {
                       retries--;
@@ -18390,20 +18392,28 @@ try {
 
                 (_importDefault_sdkAuth = importDefault("sdk.Auth")).subscribe(
                   "logout",
-                  ES(
-                    (_importNamespace_sdkEvent = importNamespace("sdk.Event"))
-                      .fire,
-                    "bind",
-                    true,
-                    _importNamespace_sdkEvent,
-                    "auth.logout",
-                  ),
+                  function Auth_subscribe_$1() {
+                    for (
+                      var _len = arguments.length,
+                        args = new Array(_len),
+                        _key = 0;
+                      _key < _len;
+                      _key++
+                    ) {
+                      args[_key] = arguments[_key];
+                    }
+                    return importNamespace("sdk.Event").fire.apply(
+                      importNamespace("sdk.Event"),
+                      ["auth.logout"].concat(args),
+                    );
+                  },
                 );
 
                 _importDefault_sdkAuth.subscribe(
                   "login",
                   ES(
-                    _importNamespace_sdkEvent.fire,
+                    (_importNamespace_sdkEvent = importNamespace("sdk.Event"))
+                      .fire,
                     "bind",
                     true,
                     _importNamespace_sdkEvent,
@@ -18846,28 +18856,39 @@ try {
               var links = [];
 
               function sample() {
-                var resourceFieldsByTag = {
-                  object: "data",
-                  link: "href",
-                  script: "src",
-                };
-
                 if (collectionMode == COLLECT.AUTOMATIC) {
-                  Object.keys(resourceFieldsByTag).forEach(
-                    function forEach_$0(tagName) {
-                      var propertyName = resourceFieldsByTag[tagName];
-                      ES(
-                        "Array",
-                        "from",
-                        false,
-                        document.getElementsByTagName(tagName),
-                      ).forEach(function forEach_$0(tag) {
-                        if (tag[propertyName]) {
-                          links.push(tag[propertyName]);
-                        }
-                      });
-                    },
-                  );
+                  ES(
+                    "Array",
+                    "from",
+                    false,
+                    document.getElementsByTagName("object"),
+                  ).forEach(function forEach_$0(tag) {
+                    if (tag.data) {
+                      links.push(tag.data);
+                    }
+                  });
+
+                  ES(
+                    "Array",
+                    "from",
+                    false,
+                    document.getElementsByTagName("link"),
+                  ).forEach(function forEach_$0(tag) {
+                    if (tag.href) {
+                      links.push(tag.href);
+                    }
+                  });
+
+                  ES(
+                    "Array",
+                    "from",
+                    false,
+                    document.getElementsByTagName("script"),
+                  ).forEach(function forEach_$0(tag) {
+                    if (tag.src) {
+                      links.push(tag.src);
+                    }
+                  });
                 }
 
                 if (links.length === 0) {
@@ -19245,13 +19266,7 @@ try {
                   subscribe: function subscribe(name, cb) {
                     return importNamespace("sdk.Event").subscribe(name, cb);
                   },
-
-                  unsubscribe: ES(
-                    importNamespace("sdk.Event").unsubscribe,
-                    "bind",
-                    true,
-                    importNamespace("sdk.Event"),
-                  ),
+                  unsubscribe: importNamespace("sdk.Event").unsubscribe,
 
                   clear: ES(warn, "bind", true, null, "clear"),
 
@@ -20188,10 +20203,18 @@ try {
                       this._iframe.style.height ===
                         this._iframeOptions.root.style.height;
 
-                    importNamespace("sdk.DOM")[same ? "removeCss" : "addCss"](
-                      this._iframe,
-                      "fb_iframe_widget_lift",
-                    );
+                    var iframe = this._iframe;
+                    if (same) {
+                      importNamespace("sdk.DOM").removeCss(
+                        iframe,
+                        "fb_iframe_widget_lift",
+                      );
+                    } else {
+                      importNamespace("sdk.DOM").addCss(
+                        iframe,
+                        "fb_iframe_widget_lift",
+                      );
+                    }
                   },
                 },
                 importDefault("ObservableMixin"),
@@ -20494,7 +20517,6 @@ try {
                     attrs[propStr(at, "name")] = propStr(at, "value");
                   },
                 );
-
                 return attrs;
               }
 
@@ -20849,15 +20871,13 @@ try {
               exports,
             ) {
               var CommentsCount = importDefault("sdk.XFBML.Comments").extend({
-                constructor: function constructor(elem, ns, tag, attr) {
+                constructor: function CommentsCount(elem, ns, tag, attr) {
                   importNamespace("sdk.DOM").addCss(
                     elem,
                     "fb_comments_count_zero",
                   );
                   attr.count = 1;
-
                   this.parent(elem, ns, "comments", attr);
-
                   this.subscribe(
                     "xd.comment_count",
                     function subscribe_$1(message) {
@@ -21069,6 +21089,10 @@ try {
               module,
               exports,
             ) {
+              function supportsShadowDOM(element) {
+                var el = element;
+                return typeof el.attachShadow === "function";
+              }
               var _DOMPlugin = (function (_Observable) {
                 function DOMPlugin(element, ns, tag, attr, inParams, config) {
                   var _this;
@@ -21157,7 +21181,7 @@ try {
                   element.removeChild(element.firstChild);
                 }
 
-                if (typeof element.attachShadow === "function") {
+                if (supportsShadowDOM(element)) {
                   var shadowRootWrapper = document.createElement("div");
                   element.appendChild(shadowRootWrapper);
                   var mode = importDefault("sdk.feature")(
@@ -21777,9 +21801,14 @@ try {
                     width,
                   ).toString();
 
-                  component.style.fontSize = fontSize[size];
-
-                  component.style.height = heightSize[size];
+                  if (
+                    size === "small" ||
+                    size === "medium" ||
+                    size === "large"
+                  ) {
+                    component.style.fontSize = fontSize[size];
+                    component.style.height = heightSize[size];
+                  }
                   component.style.backgroundColor = "rgb(26,119,242)";
                   component.style.color = "#fff";
                   component.style.border = "0";
@@ -23871,8 +23900,7 @@ try {
                   );
                   dialog.addQueryData("mbasic_link", 1);
                   var link = document.createElement("a");
-
-                  link.style = "display:inline-block; zoom:1;";
+                  link.style.cssText = "display:inline-block; zoom:1;";
                   link.textContent =
                     importDefault("sdk.fbt")._("Share to Facebook");
 
@@ -24474,7 +24502,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1031597579","namespace":"FB","message":"' +
+        '","revision":"1031598452","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
