@@ -1,4 +1,4 @@
-/*1767759098,,JIT Construction: v1031708965,en_US*/
+/*1767826607,,JIT Construction: v1031738505,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3740,7 +3740,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1031708965",
+            revision: "1031738505",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -16525,7 +16525,6 @@ try {
                   if (!XD._forever[messageObj.cb]) {
                     delete XD._callbacks[messageObj.cb];
                   }
-
                   if (cb) {
                     cb(messageObj);
                   }
@@ -23123,7 +23122,11 @@ try {
                             hideDialog();
                             allNodes.forEach(
                               function allNodes_forEach_$0(elem) {
-                                elem && elem.parentNode.removeChild(elem);
+                                var _elem$parentNode;
+                                elem == null ||
+                                  (_elem$parentNode = elem.parentNode) ==
+                                    null ||
+                                  _elem$parentNode.removeChild(elem);
                               },
                             );
                           }
@@ -24508,7 +24511,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1031708965","namespace":"FB","message":"' +
+        '","revision":"1031738505","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
