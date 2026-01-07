@@ -1,4 +1,4 @@
-/*1767669823,,JIT Construction: v1031663825,en_US*/
+/*1767748991,,JIT Construction: v1031701073,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3740,7 +3740,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1031663825",
+            revision: "1031701073",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -14431,7 +14431,10 @@ try {
                       Dialog._active === null &&
                       Dialog._stack.length > 0
                     ) {
-                      Dialog.show(Dialog._stack.pop());
+                      var _nextDialog = Dialog._stack.pop();
+                      if (_nextDialog != null) {
+                        Dialog.show(_nextDialog);
+                      }
                     }
 
                     window.setTimeout(function window_setTimeout_$0() {
@@ -15402,18 +15405,18 @@ try {
                   url,
                   method == "get" ? "get" : "post",
                   params,
-                  ES(
-                    inspect,
-                    "bind",
-                    true,
-                    null,
-                    callback,
-                    uri.getPath(),
-                    method,
-                    params,
-                    Date.now(),
-                    requestIndex,
-                  ),
+                  function request_$3(response, done) {
+                    return inspect(
+                      callback,
+                      uri.getPath(),
+                      method,
+                      params,
+                      Date.now(),
+                      requestIndex,
+                      response,
+                      done,
+                    );
+                  },
                 );
               }
 
@@ -15449,19 +15452,18 @@ try {
                 var url =
                   importNamespace("UrlMap").resolve(domain) + "/restserver.php";
                 var requestIndex = requestCounter++;
-                var inspector = ES(
-                  inspect,
-                  "bind",
-                  true,
-                  null,
-                  cb,
-                  "/restserver.php",
-                  "get",
-                  params,
-                  Date.now(),
-                  requestIndex,
-                );
-
+                var inspector = function inspector(response, done) {
+                  return inspect(
+                    cb,
+                    "/restserver.php",
+                    "get",
+                    params,
+                    Date.now(),
+                    requestIndex,
+                    response,
+                    done,
+                  );
+                };
                 request(url, "get", params, inspector);
               }
 
@@ -18409,22 +18411,29 @@ try {
                     );
                   },
                 );
-
                 _importDefault_sdkAuth.subscribe(
                   "login",
-                  ES(
-                    (_importNamespace_sdkEvent = importNamespace("sdk.Event"))
-                      .fire,
-                    "bind",
-                    true,
-                    _importNamespace_sdkEvent,
-                    "auth.login",
-                  ),
+                  function Auth_subscribe_$1() {
+                    for (
+                      var _len2 = arguments.length,
+                        args = new Array(_len2),
+                        _key2 = 0;
+                      _key2 < _len2;
+                      _key2++
+                    ) {
+                      args[_key2] = arguments[_key2];
+                    }
+                    return importNamespace("sdk.Event").fire.apply(
+                      importNamespace("sdk.Event"),
+                      ["auth.login"].concat(args),
+                    );
+                  },
                 );
                 _importDefault_sdkAuth.subscribe(
                   "authresponse.change",
                   ES(
-                    _importNamespace_sdkEvent.fire,
+                    (_importNamespace_sdkEvent = importNamespace("sdk.Event"))
+                      .fire,
                     "bind",
                     true,
                     _importNamespace_sdkEvent,
@@ -19115,12 +19124,8 @@ try {
                   },
                 });
 
-                importDefault("sdk.RPC").local.fireEvent = ES(
-                  importNamespace("sdk.Event").fire,
-                  "bind",
-                  true,
-                  importNamespace("sdk.Event"),
-                );
+                importDefault("sdk.RPC").local.fireEvent =
+                  importNamespace("sdk.Event").fire;
 
                 importNamespace("sdk.Event").subscribe(
                   "init:post",
@@ -19662,11 +19667,9 @@ try {
 
                 delete opts.lazy;
 
-                if (
-                  opts_arg.width != null &&
-                  importDefault("isNumberLike")(opts_arg.width)
-                ) {
-                  frame.width = opts_arg.width + "px";
+                var width = opts_arg.width;
+                if (width != null && importDefault("isNumberLike")(width)) {
+                  frame.width = width + "px";
                 }
                 if (
                   opts_arg.height != null &&
@@ -24503,7 +24506,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1031663825","namespace":"FB","message":"' +
+        '","revision":"1031701073","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
