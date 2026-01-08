@@ -1,4 +1,4 @@
-/*1767842625,,JIT Construction: v1031751873,en_US*/
+/*1767851842,,JIT Construction: v1031755485,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -824,7 +824,9 @@ try {
                 }),
 
                 isInteger: function isInteger(value) {
-                  return this.isFinite(value) && Math.floor(value) === value;
+                  return (
+                    ES6Number.isFinite(value) && Math.floor(value) === value
+                  );
                 },
 
                 isSafeInteger: function isSafeInteger(value) {
@@ -1020,45 +1022,47 @@ try {
                 return number >= 0 ? 1 : -1;
               }
 
-              var ES7ArrayPrototype = {
-                includes: function includes(needle) {
-                  "use strict";
+              function includes(needle) {
+                "use strict";
 
-                  if (
-                    needle !== undefined &&
-                    isArray(this) &&
-                    !(typeof needle === "number" && isNaN(needle))
-                  ) {
-                    return indexOf.apply(this, arguments) !== -1;
-                  }
+                if (
+                  needle !== undefined &&
+                  isArray(this) &&
+                  !(typeof needle === "number" && isNaN(needle))
+                ) {
+                  return indexOf.apply(this, arguments) !== -1;
+                }
 
-                  var o = Object(this);
-                  var len = o.length ? toLength(o.length) : 0;
+                var o = Object(this);
+                var len = o.length ? toLength(o.length) : 0;
 
-                  if (len === 0) {
-                    return false;
-                  }
-
-                  var fromIndex =
-                    arguments.length > 1 ? toInteger(arguments[1]) : 0;
-
-                  var i =
-                    fromIndex < 0 ? Math.max(len + fromIndex, 0) : fromIndex;
-
-                  var NaNLookup = isNaN(needle) && typeof needle === "number";
-
-                  while (i < len) {
-                    var value = o[i];
-                    if (
-                      value === needle ||
-                      (typeof value === "number" && NaNLookup && isNaN(value))
-                    ) {
-                      return true;
-                    }
-                    i++;
-                  }
+                if (len === 0) {
                   return false;
-                },
+                }
+
+                var fromIndex =
+                  arguments.length > 1 ? toInteger(arguments[1]) : 0;
+
+                var i =
+                  fromIndex < 0 ? Math.max(len + fromIndex, 0) : fromIndex;
+
+                var NaNLookup = isNaN(needle) && typeof needle === "number";
+
+                while (i < len) {
+                  var value = o[i];
+                  if (
+                    value === needle ||
+                    (typeof value === "number" && NaNLookup && isNaN(value))
+                  ) {
+                    return true;
+                  }
+                  i++;
+                }
+                return false;
+              }
+
+              var ES7ArrayPrototype = {
+                includes: includes,
               };
 
               module.exports = ES7ArrayPrototype;
@@ -3740,7 +3744,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1031751873",
+            revision: "1031755485",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -4208,8 +4212,7 @@ try {
 
               if (!domIsReady) {
                 queue = [];
-
-                if (document.addEventListener) {
+                if ("addEventListener" in document) {
                   document.addEventListener("DOMContentLoaded", flush, false);
                   window.addEventListener("load", flush, false);
                 } else if (document.attachEvent) {
@@ -7549,16 +7552,19 @@ try {
                       }
                       data.entry = entry;
 
-                      var sanitizedArgs = Array.prototype.slice
-                        .call(arguments)
-                        .map(function map_$0(arg) {
-                          var type = Object.prototype.toString.call(arg);
-                          return /^\[object (String|Number|Boolean|Object|Date)\]$/.test(
-                            type,
-                          )
-                            ? arg
-                            : arg.toString();
-                        });
+                      var sanitizedArgs = ES(
+                        "Array",
+                        "from",
+                        false,
+                        arguments,
+                      ).map(function map_$0(arg) {
+                        var type = Object.prototype.toString.call(arg);
+                        return /^\[object (String|Number|Boolean|Object|Date)\]$/.test(
+                          type,
+                        )
+                          ? arg
+                          : arg.toString();
+                      });
 
                       data.args = ES(
                         "JSON",
@@ -13849,7 +13855,6 @@ try {
                 if (result == null) {
                   if (
                     typeof table === "object" &&
-                    table !== null &&
                     !Array.isArray(table) &&
                     "*" in table
                   ) {
@@ -15028,7 +15033,10 @@ try {
                 } else if (self.XDomainRequest) {
                   xhr = new XDomainRequest();
                   try {
-                    xhr.open(method, url);
+                    xhr.open(
+                      method === "get" || method === "GET" ? "GET" : "POST",
+                      url,
+                    );
 
                     xhr.onprogress = xhr.ontimeout = noop;
                   } catch (_unused) {
@@ -15102,7 +15110,6 @@ try {
 
               function execute(
                 url,
-
                 method,
 
                 params,
@@ -15830,7 +15837,7 @@ try {
                       delete params.updated_frictionless;
                     }
 
-                    cb && cb(params);
+                    cb(params);
                   };
                 },
 
@@ -18432,20 +18439,28 @@ try {
                 );
                 _importDefault_sdkAuth.subscribe(
                   "authresponse.change",
-                  ES(
-                    (_importNamespace_sdkEvent = importNamespace("sdk.Event"))
-                      .fire,
-                    "bind",
-                    true,
-                    _importNamespace_sdkEvent,
-                    "auth.authResponseChange",
-                  ),
+                  function Auth_subscribe_$1() {
+                    for (
+                      var _len3 = arguments.length,
+                        args = new Array(_len3),
+                        _key3 = 0;
+                      _key3 < _len3;
+                      _key3++
+                    ) {
+                      args[_key3] = arguments[_key3];
+                    }
+                    return importNamespace("sdk.Event").fire.apply(
+                      importNamespace("sdk.Event"),
+                      ["auth.authResponseChange"].concat(args),
+                    );
+                  },
                 );
 
                 _importDefault_sdkAuth.subscribe(
                   "status.change",
                   ES(
-                    _importNamespace_sdkEvent.fire,
+                    (_importNamespace_sdkEvent = importNamespace("sdk.Event"))
+                      .fire,
                     "bind",
                     true,
                     _importNamespace_sdkEvent,
@@ -19672,11 +19687,9 @@ try {
                 if (width != null && importDefault("isNumberLike")(width)) {
                   frame.width = width + "px";
                 }
-                if (
-                  opts_arg.height != null &&
-                  importDefault("isNumberLike")(opts_arg.height)
-                ) {
-                  frame.height = opts_arg.height + "px";
+                var height = opts_arg.height;
+                if (height != null && importDefault("isNumberLike")(height)) {
+                  frame.height = height + "px";
                 }
 
                 if (opts.testid && frame.dataset != null) {
@@ -20175,10 +20188,8 @@ try {
                           importDefault("sdk.UA").iphone() ||
                           importDefault("sdk.UA").ipad()
                         ) {
-                          ES("Object", "assign", false, iframeStyle, {
-                            width: "220px",
-                            "min-width": "100%",
-                          });
+                          iframeStyle.width = "220px";
+                          iframeStyle["min-width"] = "100%";
                         }
 
                         ES(
@@ -21937,15 +21948,21 @@ try {
                 return textWidth < widthForSize;
               }
 
-              function getTextWidth(text) {
-                var canvas =
-                  getTextWidth.canvas ||
-                  (getTextWidth.canvas = document.createElement("canvas"));
+              var cachedCanvas = null;
 
+              function getTextWidth(text) {
+                var _metrics$width;
+                var canvas =
+                  cachedCanvas != null
+                    ? cachedCanvas
+                    : (cachedCanvas = document.createElement("canvas"));
                 var context = canvas.getContext("2d");
                 var metrics =
                   context == null ? void 0 : context.measureText(text);
-                return metrics == null ? void 0 : metrics.width;
+                return (_metrics$width =
+                  metrics == null ? void 0 : metrics.width) != null
+                  ? _metrics$width
+                  : 0;
               }
 
               function setSingleButtonLabel(params, label, labelContainer) {
@@ -24511,7 +24528,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1031751873","namespace":"FB","message":"' +
+        '","revision":"1031755485","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
