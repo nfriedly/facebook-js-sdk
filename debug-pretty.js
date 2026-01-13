@@ -1,4 +1,4 @@
-/*1768280515,,JIT Construction: v1031918589,en_US*/
+/*1768341406,,JIT Construction: v1031942327,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3747,7 +3747,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1031918589",
+            revision: "1031942327",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -14864,9 +14864,9 @@ try {
                       importNamespace("ApiClientUtils").parseCallDataFromArgs(
                         args,
                       ),
-                    uri = _ApiClientUtils$parse.uri,
                     callback = _ApiClientUtils$parse.callback,
-                    method = _ApiClientUtils$parse.params.method;
+                    method = _ApiClientUtils$parse.params.method,
+                    uri = _ApiClientUtils$parse.uri;
 
                   var body;
                   var relative_url = uri.removeQueryData("method").toString();
@@ -15391,9 +15391,9 @@ try {
                     importNamespace("ApiClientUtils").parseCallDataFromArgs(
                       args,
                     ),
-                  uri = _ApiClientUtils$parse.uri,
                   callback = _ApiClientUtils$parse.callback,
-                  params = _ApiClientUtils$parse.params;
+                  params = _ApiClientUtils$parse.params,
+                  uri = _ApiClientUtils$parse.uri;
                 var method = params.method;
 
                 if (requestIsTooLargeForGet(uri, method)) {
@@ -24530,7 +24530,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1031918589","namespace":"FB","message":"' +
+        '","revision":"1031942327","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
