@@ -1,4 +1,4 @@
-/*1768953418,,JIT Construction: v1032208134,en_US*/
+/*1768962926,,JIT Construction: v1032225227,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3747,7 +3747,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1032208134",
+            revision: "1032225227",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -12346,6 +12346,7 @@ try {
                   "client_login_status_popup_click_xfoa",
                 loginStatusPopupErrorXfoa:
                   "client_login_status_popup_error_xfoa",
+                loginUsingOauthSubdomain: "client_login_using_oauth_subdomain",
               };
 
               function logEvent(loggerID, actionName, extraPayload) {
@@ -17093,6 +17094,16 @@ try {
                     importNamespace("sdk.LoggingUtils").logEventName.loginStart,
                     { cbt_delta: 0 },
                   );
+                  if (
+                    typeof (call == null ? void 0 : call.url) === "string" &&
+                    call.url.indexOf("://oauth.") !== -1
+                  ) {
+                    importNamespace("sdk.LoggingUtils").logLoginEvent(
+                      call.params,
+                      importNamespace("sdk.LoggingUtils").logEventName
+                        .loginUsingOauthSubdomain,
+                    );
+                  }
                 }
 
                 return call;
@@ -17365,7 +17376,7 @@ try {
                 },
 
                 prepareCall: function prepareCall(params, cb) {
-                  var _feature2;
+                  var _feature2, _feature3;
                   var name = params.method.toLowerCase();
                   var method = Object.prototype.hasOwnProperty.call(
                     UIServer.Methods,
@@ -17478,6 +17489,19 @@ try {
                     cb = _trackRunState(cb, name);
                   }
 
+                  var useOauthSubdomain =
+                    ((_feature3 = importDefault("sdk.feature")(
+                      "use_oauth_subdomain",
+                      false,
+                    )) != null
+                      ? _feature3
+                      : false) &&
+                    params.display === "touch" &&
+                    method.url === "dialog/oauth" &&
+                    importNamespace(
+                      "sdk.AuthUtils",
+                    ).getMobileOperatingSystem() === "android";
+
                   var call = {
                     cb: cb,
                     id: id,
@@ -17487,9 +17511,11 @@ try {
                         params.fx_app === "instagram" ||
                           params.fx_app === "ig_single"
                           ? "www_instagram"
-                          : params.display === "touch"
-                            ? "m"
-                            : "www",
+                          : useOauthSubdomain
+                            ? "oauth"
+                            : params.display === "touch"
+                              ? "m"
+                              : "www",
                       ) +
                       "/" +
                       method.url,
@@ -24522,7 +24548,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1032208134","namespace":"FB","message":"' +
+        '","revision":"1032225227","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
