@@ -1,4 +1,4 @@
-/*1769122679,,JIT Construction: v1032329374,en_US*/
+/*1769126202,,JIT Construction: v1032337917,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3684,6 +3684,24 @@ try {
                       ? self
                       : {},
           );
+          __d("cr:1126", [], function (g, r, rd, rl, m, e) {
+            m.exports = require("TimeSliceImpl");
+          });
+          __d("cr:986633", [], function (g, r, rd, rl, m, e) {
+            m.exports = require("setTimeoutAcrossTransitionsBlue");
+          });
+          __d("cr:7391", [], function (g, r, rd, rl, m, e) {
+            m.exports = require("setTimeoutAcrossTransitionsWWW");
+          });
+          __d("cr:6640", [], function (g, r, rd, rl, m, e) {
+            m.exports = require("PromiseImpl");
+          });
+          __d("PromiseUsePolyfillSetImmediateGK", [], {
+            www_always_use_polyfill_setimmediate: false,
+          });
+          __d("ImmediateImplementationExperiments", [], {
+            prefer_message_channel: true,
+          });
           __d("JSSDKCanvasPrefetcherConfig", [], {
             enabled: true,
             excludedAppIds: [144959615576466, 768691303149786, 320528941393723],
@@ -3740,7 +3758,7 @@ try {
           });
           __d("JSSDKCssConfig", [], {
             rules:
-              ".fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0px;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:lucida grande,tahoma,verdana,arial,sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:400;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}\u0040keyframes fb_transform{0\u0025{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}\n\n.fb_dialog{background:#525252b3;position:absolute;top:-10000px;z-index:10001}.fb_dialog_advanced{border-radius:8px;padding:10px}.fb_dialog_content{background:#fff;color:#373737}.fb_dialog_close_icon{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{left:5px;right:auto;top:5px}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:700;margin:0}.fb_dialog_content .dialog_title>span{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/yd\/r\/Cou7n-nqK52.gif) no-repeat 5px 50\u0025;float:left;padding:5px 0 7px 26px}body.fb_hidden{height:100\u0025;left:0;margin:0;overflow:visible;position:absolute;top:-10000px;transform:none;width:100\u0025}.fb_dialog.fb_dialog_mobile.loading{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/ya\/r\/3rhSv5V8j3o.gif) #fff no-repeat 50\u0025 50\u0025;min-height:100\u0025;min-width:100\u0025;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{background:none;height:auto;min-height:initial;min-width:initial;width:auto}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100\u0025}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{clear:both;color:#fff;display:block;font-size:18px;padding-top:20px}#fb-root #fb_dialog_ipad_overlay{background:#0006;inset:0;min-height:100\u0025;position:absolute;width:100\u0025;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_mobile .fb_dialog_iframe{position:sticky;top:0}.fb_dialog_content .dialog_header{background:linear-gradient(from(#738aba),to(#2c4987));border-bottom:1px solid;border-color:#043b87;box-shadow:#fff 0 1px 1px -1px inset;color:#fff;font:700 14px Helvetica,sans-serif;text-overflow:ellipsis;text-shadow:rgba(0,30,84,.296875) 0px -1px 0px;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{height:43px;width:100\u0025}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:linear-gradient(from(#4267B2),to(#2a4887));background-clip:padding-box;border:1px solid #29487d;border-radius:3px;display:inline-block;line-height:18px;margin-top:3px;max-width:85px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{background:none;border:none;color:#fff;font:700 12px Helvetica,sans-serif;margin:2px -12px;padding:2px 6px 3px;text-shadow:rgba(0,30,84,.296875) 0px -1px 0px}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:700;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/y9\/r\/jKEcVPZFk-2.gif) no-repeat 50\u0025 50\u0025;border:1px solid #4A4A4A;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f5f6f7;border:1px solid #4A4A4A;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/y2\/r\/onuUJj0tCqE.png);background-position:50\u0025 50\u0025;background-repeat:no-repeat;height:24px;width:24px}\u0040keyframes rotateSpinner{0\u0025{transform:rotate(0)}to{transform:rotate(360deg)}}\n\n.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100\u0025}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100\u0025}\n",
+              ".fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0px;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:lucida grande,tahoma,verdana,arial,sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:400;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}\u0040keyframes fb_transform{0\u0025{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}\n\n.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0px;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:lucida grande,tahoma,verdana,arial,sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:400;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}\u0040keyframes fb_transform{0\u0025{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}\n\n.fb_dialog{background:#525252b3;position:absolute;top:-10000px;z-index:10001}.fb_dialog_advanced{border-radius:8px;padding:10px}.fb_dialog_content{background:#fff;color:#373737}.fb_dialog_close_icon{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{left:5px;right:auto;top:5px}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:700;margin:0}.fb_dialog_content .dialog_title>span{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/yd\/r\/Cou7n-nqK52.gif) no-repeat 5px 50\u0025;float:left;padding:5px 0 7px 26px}body.fb_hidden{height:100\u0025;left:0;margin:0;overflow:visible;position:absolute;top:-10000px;transform:none;width:100\u0025}.fb_dialog.fb_dialog_mobile.loading{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/ya\/r\/3rhSv5V8j3o.gif) #fff no-repeat 50\u0025 50\u0025;min-height:100\u0025;min-width:100\u0025;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{background:none;height:auto;min-height:initial;min-width:initial;width:auto}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100\u0025}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{clear:both;color:#fff;display:block;font-size:18px;padding-top:20px}#fb-root #fb_dialog_ipad_overlay{background:#0006;inset:0;min-height:100\u0025;position:absolute;width:100\u0025;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_mobile .fb_dialog_iframe{position:sticky;top:0}.fb_dialog_content .dialog_header{background:linear-gradient(from(#738aba),to(#2c4987));border-bottom:1px solid;border-color:#043b87;box-shadow:#fff 0 1px 1px -1px inset;color:#fff;font:700 14px Helvetica,sans-serif;text-overflow:ellipsis;text-shadow:rgba(0,30,84,.296875) 0px -1px 0px;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{height:43px;width:100\u0025}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:linear-gradient(from(#4267B2),to(#2a4887));background-clip:padding-box;border:1px solid #29487d;border-radius:3px;display:inline-block;line-height:18px;margin-top:3px;max-width:85px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{background:none;border:none;color:#fff;font:700 12px Helvetica,sans-serif;margin:2px -12px;padding:2px 6px 3px;text-shadow:rgba(0,30,84,.296875) 0px -1px 0px}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:700;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/y9\/r\/jKEcVPZFk-2.gif) no-repeat 50\u0025 50\u0025;border:1px solid #4A4A4A;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f5f6f7;border:1px solid #4A4A4A;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/y2\/r\/onuUJj0tCqE.png);background-position:50\u0025 50\u0025;background-repeat:no-repeat;height:24px;width:24px}\u0040keyframes rotateSpinner{0\u0025{transform:rotate(0)}to{transform:rotate(360deg)}}\n\n.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100\u0025}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100\u0025}\n",
             components: [
               "css:fb.css.base",
               "css:fb.css.dialog",
@@ -3749,7 +3767,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1032329374",
+            revision: "1032337917",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -3783,9 +3801,9 @@ try {
               ".fb_login_button_container{align-content:center;align-items:center;border:0;color:#fff;display:flex;font-family:Roboto,Freight Sans LF Pro,Helvetica,Arial,Lucida Grande,sans-serif;font-weight:700;margin:auto}.fb-button-main-element{display:flex;flex-wrap:nowrap;overflow:hidden}.fb-iframe-overlay{display:flex}.fb-button-main-element:hover{cursor:pointer}.fb-button-main-element:focus{filter:brightness(80\u0025)}.fb_button_label_element{align-items:center;display:flex;font-weight:700;justify-content:center}.fb_button_label{margin:auto;pointer-events:none}.fb_button_svg_logo{height:1.33em;margin-left:.4em;margin-right:.4em;padding:.065em}.login_fb_logo .f_logo_f{fill:transparent}.single_button_svg_logo{margin-bottom:.08em}\n",
           });
           __d(
-            "DOMWrapper",
+            "Env",
             [],
-            function $module_DOMWrapper(
+            function $module_Env(
               global,
               require,
               requireDynamic,
@@ -3793,535 +3811,36 @@ try {
               module,
               exports,
             ) {
-              "use strict";
-
-              var rootElement, windowRef;
-
-              function setRoot(root) {
-                rootElement = root;
-              }
-
-              function getRoot() {
-                return rootElement || document.body;
-              }
-
-              function setWindow(win) {
-                windowRef = win;
-              }
-
-              function getWindow() {
-                return windowRef || self;
-              }
-              exports.setRoot = setRoot;
-              exports.getRoot = getRoot;
-              exports.setWindow = setWindow;
-              exports.getWindow = getWindow;
-            },
-            66,
-          );
-          __d(
-            "dotAccess",
-            [],
-            function $module_dotAccess(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports,
-            ) {
-              function dotAccess(head, path, create) {
-                var stack = path.split(".");
-                do {
-                  var key = stack.shift();
-                  head = head[key] || (create && (head[key] = {}));
-                } while (stack.length && head);
-                return head;
-              }
-              exports["default"] = dotAccess;
-            },
-            66,
-          );
-          __d(
-            "guid",
-            [],
-            function $module_guid(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports,
-            ) {
-              function guid() {
-                if (
-                  typeof crypto === "object" &&
-                  typeof crypto.getRandomValues === "function" &&
-                  typeof String.prototype.padStart === "function"
-                ) {
-                  var numbers = crypto.getRandomValues(new Uint32Array(2));
-
-                  return (
-                    "f" +
-                    numbers[0].toString(16).padStart(8, "0") +
-                    numbers[1].toString(16).padStart(8, "0")
-                  );
-                }
-
-                return (
-                  "f" +
-                  (Math.random() * (1 << 30)).toString(16).replace(".", "")
-                );
-              }
-              exports["default"] = guid;
-            },
-            66,
-          );
-          __d(
-            "wrapFunction",
-            [],
-            function $module_wrapFunction(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports,
-            ) {
-              var wrappers = {};
-
-              function wrapFunction(fn, type, source) {
-                var callee = type in wrappers ? wrappers[type](fn, source) : fn;
-
-                return function () {
-                  for (
-                    var _len = arguments.length,
-                      args = new Array(_len),
-                      _key = 0;
-                    _key < _len;
-                    _key++
-                  ) {
-                    args[_key] = arguments[_key];
-                  }
-                  return callee.apply(this, args);
-                };
-              }
-
-              wrapFunction.setWrapper = function (fn, type) {
-                wrappers[type] = fn;
-              };
-              exports["default"] = wrapFunction;
-            },
-            66,
-          );
-          __d(
-            "GlobalCallback",
-            ["DOMWrapper", "dotAccess", "guid", "wrapFunction"],
-            function $module_GlobalCallback(
-              global,
-              require,
-              importDefault,
-              importNamespace,
-              requireLazy,
-              module,
-              exports,
-            ) {
-              var rootObject;
-              var callbackPrefix;
-
-              function setPrefix(prefix) {
-                rootObject = importDefault("dotAccess")(
-                  importNamespace("DOMWrapper").getWindow(),
-                  prefix,
-                  true,
-                );
-                callbackPrefix = prefix;
-              }
-
-              function create(fn, description) {
-                if (!rootObject) {
-                  setPrefix("__globalCallbacks");
-                }
-                var id = importDefault("guid")();
-                rootObject[id] = importDefault("wrapFunction")(
-                  fn,
-                  "entry",
-                  description != null ? description : "GlobalCallback",
-                );
-
-                return callbackPrefix + "." + id;
-              }
-
-              function remove(name) {
-                var id = name.substring(callbackPrefix.length + 1);
-                delete rootObject[id];
-              }
-              exports.setPrefix = setPrefix;
-              exports.create = create;
-              exports.remove = remove;
-            },
-            98,
-          );
-          __d(
-            "Log",
-            [],
-            function $module_Log(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports,
-            ) {
-              "use strict";
-
-              var level = __DEV__ ? 3 : -1;
-
-              var Level = {
-                DEBUG: 3,
-                INFO: 2,
-                WARNING: 1,
-                ERROR: 0,
+              var Env = {
+                ajaxpipe_token: null,
+                compat_iframe_token: null,
+                iframeKey: "",
+                iframeTarget: "",
+                iframeToken: "",
+                isCQuick: false,
+                jssp_header_sent: false,
+                jssp_targeting_enabled: false,
+                loadHyperion: false,
+                start: Date.now(),
+                nocatch: false,
+                useTrustedTypes: false,
+                isTrustedTypesReportOnly: false,
+                enableDefaultTrustedTypesPolicy: false,
+                ig_server_override: "",
+                barcelona_server_override: "",
+                ig_mqtt_wss_endpoint: "",
+                ig_mqtt_polling_endpoint: "",
               };
 
-              var log = function log(name, logLevel, format) {
-                for (
-                  var _len = arguments.length,
-                    args = new Array(_len > 3 ? _len - 3 : 0),
-                    _key = 3;
-                  _key < _len;
-                  _key++
-                ) {
-                  args[_key - 3] = arguments[_key];
-                }
-                var index = 0;
-                var msg = format.replace(/%s/g, function format_replace_$1() {
-                  return String(args[index++]);
-                });
-                var console = window.console;
-                if (console && level >= logLevel) {
-                  console[name in console ? name : "log"](msg);
-                }
-              };
-
-              function setLevel(l) {
-                level = l;
+              if (global.Env) {
+                ES("Object", "assign", false, Env, global.Env);
               }
 
-              var debug = ES(log, "bind", true, null, "debug", Level.DEBUG);
-
-              var info = ES(log, "bind", true, null, "info", Level.INFO);
-
-              var warn = ES(log, "bind", true, null, "warn", Level.WARNING);
-
-              var error = ES(log, "bind", true, null, "error", Level.ERROR);
-              exports.Level = Level;
-              exports.log = log;
-              exports.setLevel = setLevel;
-              exports.debug = debug;
-              exports.info = info;
-              exports.warn = warn;
-              exports.error = error;
-            },
-            66,
-          );
-          __d(
-            "sdk.UA",
-            [],
-            function $module_sdk_UA(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports,
-            ) {
-              var uas = navigator.userAgent;
-
-              var devices = {
-                iphone: /\b(iPhone|iP[ao]d)/.test(uas),
-                ipad: /\b(iP[ao]d)/.test(uas),
-                android: /Android/i.test(uas),
-                nativeApp: /FBAN\/\w+;/i.test(uas) && !/FBAN\/mLite;/.test(uas),
-                nativeAndroidApp: /FB_IAB\/\w+;/i.test(uas),
-                nativeInstagramApp: /Instagram/i.test(uas),
-                nativeMessengeriOSApp: /MessengerForiOS/i.test(uas),
-                nativeMessengerAndroidApp: /Orca\-Android/i.test(uas),
-                ucBrowser: /UCBrowser/i.test(uas),
-              };
-              var mobile = /Mobile/i.test(uas);
-
-              var versions = {
-                ie: NaN,
-                firefox: NaN,
-                chrome: NaN,
-                webkit: NaN,
-                osx: NaN,
-                edge: NaN,
-                operaMini: NaN,
-                ucWeb: NaN,
-              };
-              var agent =
-                /(?:MSIE.(\d+\.\d+))|(?:(?:Firefox|GranParadiso|Iceweasel).(\d+\.\d+))|(?:AppleWebKit.(\d+(?:\.\d+)?))|(?:Trident\/\d+\.\d+.*rv:(\d+\.\d+))/.exec(
-                  uas,
-                );
-              if (agent) {
-                versions.ie = agent[1]
-                  ? parseFloat(agent[1])
-                  : agent[4]
-                    ? parseFloat(agent[4])
-                    : NaN;
-
-                versions.firefox = agent[2] || "";
-                versions.webkit = agent[3] || "";
-                if (agent[3]) {
-                  var chromeAgent = /(?:Chrome\/(\d+\.\d+))/.exec(uas);
-                  versions.chrome = chromeAgent ? chromeAgent[1] : "";
-                  var edgeAgent = /(?:Edge\/(\d+\.\d+))/.exec(uas);
-                  versions.edge = edgeAgent ? edgeAgent[1] : "";
-                }
-              }
-
-              var mac = /(?:Mac OS X (\d+(?:[._]\d+)?))/.exec(uas);
-              if (mac) {
-                versions.osx = mac[1];
-              }
-
-              var operaMini = /(?:Opera Mini\/(\d+(?:\.\d+)?))/.exec(uas);
-              if (operaMini) {
-                versions.operaMini = operaMini[1];
-              }
-
-              var ucWeb = /(?:UCWEB\/(\d+(?:\.\d+))?)/.exec(uas);
-              if (ucWeb) {
-                versions.ucWeb = ucWeb[1] || "2.0";
-              }
-
-              function getVersionParts(version) {
-                return String(version)
-                  .split(".")
-                  .map(function map_$0(v) {
-                    return parseFloat(v);
-                  });
-              }
-
-              var UA = {};
-
-              Object.keys(versions).map(function map_$0(key) {
-                var getVersion = function getVersion() {
-                  return parseFloat(versions[key]);
-                };
-
-                getVersion.getVersionParts = function () {
-                  return getVersionParts(versions[key]);
-                };
-
-                UA[key] = getVersion;
-              });
-
-              Object.keys(devices).map(function map_$0(key) {
-                UA[key] = function () {
-                  return devices[key];
-                };
-              });
-
-              UA.mobile = function () {
-                return (
-                  devices.iphone || devices.ipad || devices.android || mobile
-                );
-              };
-
-              UA.mTouch = function () {
-                return devices.android || devices.iphone || devices.ipad;
-              };
-              UA.facebookInAppBrowser = function () {
-                return devices.nativeApp || devices.nativeAndroidApp;
-              };
-              UA.inAppBrowser = function () {
-                return (
-                  devices.nativeApp ||
-                  devices.nativeAndroidApp ||
-                  devices.nativeInstagramApp
-                );
-              };
-              UA.mBasic = function () {
-                return !!(versions.ucWeb || versions.operaMini);
-              };
-              UA.instagram = function () {
-                return devices.nativeInstagramApp;
-              };
-              UA.messenger = function () {
-                return (
-                  devices.nativeMessengeriOSApp ||
-                  devices.nativeMessengerAndroidApp
-                );
-              };
-              UA.isSupportedIABVersion = function (supportedVersion) {
-                if (!UA.facebookInAppBrowser()) {
-                  return false;
-                }
-                var fb4aVersionRaw = /(?:FBAV\/(\d+(\.\d+)+))/.exec(
-                  navigator.userAgent,
-                );
-                if (fb4aVersionRaw) {
-                  var fb4aVersion = parseFloat(fb4aVersionRaw[1]);
-                  if (fb4aVersion >= supportedVersion) {
-                    return true;
-                  }
-                }
-                return false;
-              };
-              var _default = UA;
+              global.Env = Env;
+              var _default = Env;
               exports["default"] = _default;
             },
             66,
-          );
-          __d(
-            "sdk.domReady",
-            [],
-            function $module_sdk_domReady(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports,
-            ) {
-              var queue;
-              var domIsReady =
-                "readyState" in document
-                  ? /loaded|complete/.test(document.readyState)
-                  : !!document.body;
-
-              function flush() {
-                if (!queue) {
-                  return;
-                }
-                var currentQueue = queue;
-
-                var fn;
-                while ((fn = currentQueue.shift())) {
-                  fn();
-                }
-                queue = null;
-              }
-
-              function domReady(fn) {
-                if (queue) {
-                  queue.push(fn);
-                  return;
-                } else {
-                  fn();
-                }
-              }
-
-              if (!domIsReady) {
-                queue = [];
-                if ("addEventListener" in document) {
-                  document.addEventListener("DOMContentLoaded", flush, false);
-                  window.addEventListener("load", flush, false);
-                } else if (document.attachEvent) {
-                  document.attachEvent("onreadystatechange", flush);
-
-                  window.attachEvent("onload", flush);
-                }
-              }
-              exports["default"] = domReady;
-            },
-            67,
-          );
-          __d(
-            "sdk.Content",
-            ["Log", "sdk.UA", "sdk.domReady"],
-            function $module_sdk_Content(
-              global,
-              require,
-              importDefault,
-              importNamespace,
-              requireLazy,
-              module,
-              exports,
-            ) {
-              "use strict";
-
-              var visibleRoot;
-              var hiddenRoot;
-
-              function append(content, root) {
-                if (!root) {
-                  if (!visibleRoot) {
-                    visibleRoot = root = document.getElementById("fb-root");
-                    if (!root) {
-                      importNamespace("Log").warn(
-                        'The "fb-root" div has not been created, auto-creating',
-                      );
-
-                      visibleRoot = root = document.createElement("div");
-                      root.id = "fb-root";
-
-                      if (importDefault("sdk.UA").ie() || !document.body) {
-                        importDefault("sdk.domReady")(function domReady_$0() {
-                          if (root && document.body) {
-                            document.body.appendChild(root);
-                          }
-                        });
-                      } else {
-                        document.body.appendChild(root);
-                      }
-                    }
-                    root.className += " fb_reset";
-                  } else {
-                    root = visibleRoot;
-                  }
-                }
-
-                root.appendChild(content);
-                return content;
-              }
-
-              function appendHidden(content) {
-                if (!hiddenRoot) {
-                  hiddenRoot = document.createElement("div");
-                  var style = hiddenRoot.style;
-                  style.position = "absolute";
-                  style.top = "-10000px";
-                  style.width = "0";
-                  style.height = "0";
-                  hiddenRoot = append(hiddenRoot);
-                }
-
-                return append(content, hiddenRoot);
-              }
-
-              function submitToTarget(opts, get) {
-                var form = document.createElement("form");
-                form.action = opts.url;
-                form.target = opts.target;
-                form.method = get ? "GET" : "POST";
-                appendHidden(form);
-
-                for (var key in opts.params) {
-                  if (Object.prototype.hasOwnProperty.call(opts.params, key)) {
-                    var val = opts.params[key];
-                    if (val != null) {
-                      var input = document.createElement("input");
-                      input.name = key;
-                      input.value = val;
-                      form.appendChild(input);
-                    }
-                  }
-                }
-
-                form.submit();
-                if (form.parentNode) {
-                  form.parentNode.removeChild(form);
-                }
-              }
-              exports.append = append;
-              exports.appendHidden = appendHidden;
-              exports.submitToTarget = submitToTarget;
-            },
-            98,
           );
           __d(
             "performance",
@@ -6619,6 +6138,2742 @@ try {
             null,
           );
           __d(
+            "ErrorGuard",
+            ["fb-error"],
+            function $module_ErrorGuard(
+              global,
+              require,
+              importDefault,
+              importNamespace,
+              requireLazy,
+              module,
+              exports,
+            ) {
+              "use strict";
+              exports["default"] = importDefault("fb-error").ErrorGuard;
+            },
+            98,
+          );
+          __d(
+            "FBLogger",
+            ["fb-error"],
+            function $module_FBLogger(
+              global,
+              require,
+              importDefault,
+              importNamespace,
+              requireLazy,
+              module,
+              exports,
+            ) {
+              "use strict";
+              exports["default"] = importDefault("fb-error").FBLogger;
+            },
+            98,
+          );
+          __d(
+            "CircularBuffer",
+            ["FBLogger"],
+            function $module_CircularBuffer(
+              global,
+              require,
+              importDefault,
+              importNamespace,
+              requireLazy,
+              module,
+              exports,
+            ) {
+              var _CircularBuffer = (function () {
+                function CircularBuffer(size) {
+                  if (size <= 0) {
+                    throw importDefault("FBLogger")("comet_infra").mustfixThrow(
+                      "Buffer size should be a positive integer",
+                    );
+                  }
+                  this.$CircularBuffer$p_size = size;
+                  this.$CircularBuffer$p_head = 0;
+                  this.$CircularBuffer$p_buffer = [];
+                  this.$CircularBuffer$p_onEvict = [];
+                }
+                var _proto = CircularBuffer.prototype;
+                _proto.write = function write(entry) {
+                  var _this = this;
+                  if (
+                    this.$CircularBuffer$p_buffer.length <
+                    this.$CircularBuffer$p_size
+                  ) {
+                    this.$CircularBuffer$p_buffer.push(entry);
+                  } else {
+                    this.$CircularBuffer$p_onEvict.forEach(
+                      function $CircularBuffer$p_onEvict_forEach_$0(cb) {
+                        return cb(
+                          _this.$CircularBuffer$p_buffer[
+                            _this.$CircularBuffer$p_head
+                          ],
+                        );
+                      },
+                    );
+                    this.$CircularBuffer$p_buffer[this.$CircularBuffer$p_head] =
+                      entry;
+                    this.$CircularBuffer$p_head++;
+                    this.$CircularBuffer$p_head %= this.$CircularBuffer$p_size;
+                  }
+                  return this;
+                };
+                _proto.onEvict = function onEvict(cb) {
+                  this.$CircularBuffer$p_onEvict.push(cb);
+                  return this;
+                };
+                _proto.read = function read() {
+                  return this.$CircularBuffer$p_buffer
+                    .slice(this.$CircularBuffer$p_head)
+                    .concat(
+                      this.$CircularBuffer$p_buffer.slice(
+                        0,
+                        this.$CircularBuffer$p_head,
+                      ),
+                    );
+                };
+                _proto.expand = function expand(size) {
+                  if (size > this.$CircularBuffer$p_size) {
+                    var all = this.read();
+                    this.$CircularBuffer$p_head = 0;
+                    this.$CircularBuffer$p_buffer = all;
+                    this.$CircularBuffer$p_size = size;
+                  }
+                  return this;
+                };
+                _proto.dropFirst = function dropFirst(num) {
+                  if (num <= this.$CircularBuffer$p_size) {
+                    var all = this.read();
+                    this.$CircularBuffer$p_head = 0;
+                    all.splice(0, num);
+                    this.$CircularBuffer$p_buffer = all;
+                  }
+                  return this;
+                };
+                _proto.clear = function clear() {
+                  this.$CircularBuffer$p_head = 0;
+                  this.$CircularBuffer$p_buffer = [];
+                  return this;
+                };
+                _proto.currentSize = function currentSize() {
+                  return this.$CircularBuffer$p_buffer.length;
+                };
+                _proto.lastElement = function lastElement() {
+                  return this.$CircularBuffer$p_buffer[
+                    this.$CircularBuffer$p_head
+                  ];
+                };
+                return CircularBuffer;
+              })();
+              exports["default"] = _CircularBuffer;
+            },
+            98,
+          );
+          __d(
+            "ErrorPubSub",
+            ["fb-error"],
+            function $module_ErrorPubSub(
+              global,
+              require,
+              importDefault,
+              importNamespace,
+              requireLazy,
+              module,
+              exports,
+            ) {
+              "use strict";
+              exports["default"] = importDefault("fb-error").ErrorPubSub;
+            },
+            98,
+          );
+          __d(
+            "IntervalTrackingBoundedBuffer",
+            ["CircularBuffer", "ErrorPubSub"],
+            function $module_IntervalTrackingBoundedBuffer(
+              global,
+              require,
+              importDefault,
+              importNamespace,
+              requireLazy,
+              module,
+              exports,
+            ) {
+              "use strict";
+              var _importDefault_closure_ErrorPubSub;
+
+              var DEFAULT_BUFFER_SIZE = 5000;
+              var _IntervalTrackingBoundedBuffer = (function () {
+                function IntervalTrackingBoundedBuffer(size) {
+                  var _this = this;
+                  this.$IntervalTrackingBoundedBuffer$p_startOfBufferItemIndex = 0;
+                  if (size != null) {
+                    if (size <= 0) {
+                      throw new Error(
+                        "Size for a buffer must be greater than zero.",
+                      );
+                    }
+                  } else {
+                    size = DEFAULT_BUFFER_SIZE;
+                  }
+                  this.$IntervalTrackingBoundedBuffer$p_size = size;
+                  this.$IntervalTrackingBoundedBuffer$p_buffer =
+                    new (importDefault("CircularBuffer"))(size);
+                  this.$IntervalTrackingBoundedBuffer$p_buffer.onEvict(
+                    function $IntervalTrackingBoundedBuffer$p_buffer_onEvict_$0() {
+                      _this.$IntervalTrackingBoundedBuffer$p_startOfBufferItemIndex++;
+                    },
+                  );
+                  this.$IntervalTrackingBoundedBuffer$p_openIntervals = [];
+                  this.$IntervalTrackingBoundedBuffer$p_idCounter = 1;
+                  this.$IntervalTrackingBoundedBuffer$p_itemIndex = 0;
+                }
+                var _proto = IntervalTrackingBoundedBuffer.prototype;
+                _proto.open = function open() {
+                  var _this2 = this;
+                  var id = this.$IntervalTrackingBoundedBuffer$p_idCounter++;
+                  var closed = false;
+                  var missedEntriesAtTheTimeOfClose;
+                  var startIndex =
+                    this.$IntervalTrackingBoundedBuffer$p_itemIndex;
+                  var interval = {
+                    id: id,
+                    startIdx: startIndex,
+                    hasOverflown: function hasOverflown() {
+                      return interval.getOverflowSize() > 0;
+                    },
+                    getOverflowSize: function getOverflowSize() {
+                      return missedEntriesAtTheTimeOfClose != null
+                        ? missedEntriesAtTheTimeOfClose
+                        : Math.max(
+                            _this2.$IntervalTrackingBoundedBuffer$p_startOfBufferItemIndex -
+                              startIndex,
+                            0,
+                          );
+                    },
+                    close: function close() {
+                      if (closed) {
+                        return [];
+                      } else {
+                        closed = true;
+                        missedEntriesAtTheTimeOfClose =
+                          _this2.$IntervalTrackingBoundedBuffer$p_startOfBufferItemIndex -
+                          startIndex;
+                        return _this2.$IntervalTrackingBoundedBuffer$p_close(
+                          id,
+                        );
+                      }
+                    },
+                  };
+                  this.$IntervalTrackingBoundedBuffer$p_openIntervals.push(
+                    interval,
+                  );
+                  return interval;
+                };
+                _proto.pushElement = function pushElement(data) {
+                  if (
+                    this.$IntervalTrackingBoundedBuffer$p_openIntervals.length >
+                    0
+                  ) {
+                    this.$IntervalTrackingBoundedBuffer$p_buffer.write(data);
+                    this.$IntervalTrackingBoundedBuffer$p_itemIndex++;
+                  }
+                  return this;
+                };
+                _proto.isActive = function isActive() {
+                  return (
+                    this.$IntervalTrackingBoundedBuffer$p_openIntervals.length >
+                    0
+                  );
+                };
+                _proto.$IntervalTrackingBoundedBuffer$p_toRealIndex =
+                  function $IntervalTrackingBoundedBuffer$p_toRealIndex(
+                    absoluteIndex,
+                  ) {
+                    return Math.max(
+                      absoluteIndex -
+                        this
+                          .$IntervalTrackingBoundedBuffer$p_startOfBufferItemIndex,
+                      0,
+                    );
+                  };
+                _proto.$IntervalTrackingBoundedBuffer$p_close =
+                  function $IntervalTrackingBoundedBuffer$p_close(intervalId) {
+                    var minStartingIndex,
+                      minStartingIndexWithoutThis,
+                      thisIdx,
+                      thisStartIdx;
+                    for (
+                      var ii = 0;
+                      ii <
+                      this.$IntervalTrackingBoundedBuffer$p_openIntervals
+                        .length;
+                      ii++
+                    ) {
+                      var _this$$IntervalTracki =
+                          this.$IntervalTrackingBoundedBuffer$p_openIntervals[
+                            ii
+                          ],
+                        startIdx = _this$$IntervalTracki.startIdx,
+                        id = _this$$IntervalTracki.id;
+                      if (id === intervalId) {
+                        thisIdx = ii;
+                        thisStartIdx = startIdx;
+                      } else if (
+                        minStartingIndexWithoutThis == null ||
+                        startIdx < minStartingIndexWithoutThis
+                      ) {
+                        minStartingIndexWithoutThis = startIdx;
+                      }
+                      if (
+                        minStartingIndex == null ||
+                        startIdx < minStartingIndex
+                      ) {
+                        minStartingIndex = startIdx;
+                      }
+                    }
+                    if (
+                      thisIdx == null ||
+                      minStartingIndex == null ||
+                      thisStartIdx == null
+                    ) {
+                      (
+                        _importDefault_closure_ErrorPubSub ||
+                        (_importDefault_closure_ErrorPubSub =
+                          importDefault("ErrorPubSub"))
+                      ).reportError(
+                        new Error(
+                          "messed up state inside IntervalTrackingBoundedBuffer",
+                        ),
+                      );
+                      return [];
+                    }
+                    this.$IntervalTrackingBoundedBuffer$p_openIntervals.splice(
+                      thisIdx,
+                      1,
+                    );
+                    var realIntervalStartIndex =
+                      this.$IntervalTrackingBoundedBuffer$p_toRealIndex(
+                        thisStartIdx,
+                      );
+                    var items = this.$IntervalTrackingBoundedBuffer$p_buffer
+                      .read()
+                      .slice(realIntervalStartIndex);
+                    var dropCount =
+                      this.$IntervalTrackingBoundedBuffer$p_toRealIndex(
+                        minStartingIndexWithoutThis == null
+                          ? this.$IntervalTrackingBoundedBuffer$p_itemIndex
+                          : minStartingIndexWithoutThis,
+                      ) -
+                      this.$IntervalTrackingBoundedBuffer$p_toRealIndex(
+                        minStartingIndex,
+                      );
+                    if (dropCount > 0) {
+                      this.$IntervalTrackingBoundedBuffer$p_buffer.dropFirst(
+                        dropCount,
+                      );
+                      this.$IntervalTrackingBoundedBuffer$p_startOfBufferItemIndex +=
+                        dropCount;
+                    }
+                    return items;
+                  };
+                return IntervalTrackingBoundedBuffer;
+              })();
+              exports["default"] = _IntervalTrackingBoundedBuffer;
+            },
+            98,
+          );
+          __d(
+            "WorkerUtils",
+            [],
+            function $module_WorkerUtils(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports,
+            ) {
+              "use strict";
+
+              function isWorkerContext() {
+                try {
+                  return (
+                    "WorkerGlobalScope" in global &&
+                    global instanceof global.WorkerGlobalScope
+                  );
+                } catch (_unused) {
+                  return false;
+                }
+              }
+
+              function isSharedWorkerContext() {
+                try {
+                  return (
+                    "SharedWorkerGlobalScope" in global &&
+                    global instanceof global.SharedWorkerGlobalScope
+                  );
+                } catch (_unused2) {
+                  return false;
+                }
+              }
+              exports.isWorkerContext = isWorkerContext;
+              exports.isSharedWorkerContext = isSharedWorkerContext;
+            },
+            66,
+          );
+          __d(
+            "getReusableTimeSliceContinuation",
+            [],
+            function $module_getReusableTimeSliceContinuation(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports,
+            ) {
+              "use strict";
+
+              function getReusableTimeSliceContinuation(
+                timeSlice,
+                SECRET_GUARD_KEY,
+                name,
+              ) {
+                var finished = false;
+                var currentContinuation =
+                  timeSlice.getGuardedContinuation(name);
+                var guard = function guard(fn) {
+                  currentContinuation(function currentContinuation_$0() {
+                    if (!finished) {
+                      currentContinuation =
+                        timeSlice.getGuardedContinuation(name);
+                    }
+                    fn();
+                  });
+                };
+                guard.last = function (fn) {
+                  var realCurrent = currentContinuation;
+                  finish();
+                  realCurrent(fn);
+                };
+
+                guard[SECRET_GUARD_KEY] = {};
+                function finish() {
+                  finished = true;
+                  currentContinuation = function currentContinuation(fn) {
+                    fn();
+                  };
+                }
+                return guard;
+              }
+              exports["default"] = getReusableTimeSliceContinuation;
+            },
+            66,
+          );
+          __d(
+            "fb-error-lite",
+            [],
+            function $module_fb_error_lite(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports,
+            ) {
+              "use strict";
+
+              var TAALOpcode = {
+                PREVIOUS_FILE: 1,
+                PREVIOUS_FRAME: 2,
+                PREVIOUS_DIR: 3,
+                FORCED_KEY: 4,
+              };
+
+              function err(format) {
+                var err = new Error(format);
+
+                if (err.stack === undefined) {
+                  try {
+                    throw err;
+                  } catch (_) {}
+                }
+                err.messageFormat = format;
+                for (
+                  var _len = arguments.length,
+                    rawArgs = new Array(_len > 1 ? _len - 1 : 0),
+                    _key = 1;
+                  _key < _len;
+                  _key++
+                ) {
+                  rawArgs[_key - 1] = arguments[_key];
+                }
+                err.messageParams = rawArgs.map(function rawArgs_map_$0(p) {
+                  return String(p);
+                });
+                err.taalOpcodes = [TAALOpcode.PREVIOUS_FRAME];
+                return err;
+              }
+              var _default = {
+                err: err,
+                TAALOpcode: TAALOpcode,
+              };
+              exports["default"] = _default;
+            },
+            66,
+          );
+          __d(
+            "sprintf",
+            [],
+            function $module_sprintf(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports,
+            ) {
+              "use strict";
+
+              function sprintf(format) {
+                for (
+                  var _len = arguments.length,
+                    args = new Array(_len > 1 ? _len - 1 : 0),
+                    _key = 1;
+                  _key < _len;
+                  _key++
+                ) {
+                  args[_key - 1] = arguments[_key];
+                }
+                var index = 0;
+                return format.replace(/%s/g, function format_replace_$1() {
+                  return String(args[index++]);
+                });
+              }
+              exports["default"] = sprintf;
+            },
+            66,
+          );
+          __d(
+            "invariant",
+            ["Env", "fb-error-lite", "sprintf"],
+            function $module_invariant(
+              global,
+              require,
+              importDefault,
+              importNamespace,
+              requireLazy,
+              module,
+              exports,
+            ) {
+              "use strict";
+              var _importDefault_closure_Env;
+
+              function invariant(condition, format) {
+                if (!condition) {
+                  var formatString = format;
+                  for (
+                    var _len = arguments.length,
+                      params = new Array(_len > 2 ? _len - 2 : 0),
+                      _key = 2;
+                    _key < _len;
+                    _key++
+                  ) {
+                    params[_key - 2] = arguments[_key];
+                  }
+                  if (typeof formatString === "number") {
+                    var _buildProdMessage = buildProdMessage(
+                        formatString,
+                        params,
+                      ),
+                      _message = _buildProdMessage.message,
+                      decoderLink = _buildProdMessage.decoderLink;
+                    formatString = _message;
+                    params.unshift(decoderLink);
+                  } else if (formatString === undefined) {
+                    formatString = "Invariant: ";
+                    for (var i = 0; i < params.length; i++) {
+                      formatString += "%s,";
+                    }
+                  }
+
+                  var message = formatString;
+                  if (__DEV__) {
+                    message = importDefault("sprintf").apply(
+                      void 0,
+                      [formatString].concat(params),
+                    );
+                  }
+                  var error = new Error(message);
+                  error.name = "Invariant Violation";
+                  error.messageFormat = formatString;
+                  error.messageParams = params.map(function params_map_$0(p) {
+                    return String(p);
+                  });
+                  error.taalOpcodes = [
+                    importDefault("fb-error-lite").TAALOpcode.PREVIOUS_FRAME,
+                  ];
+
+                  error.stack;
+                  throw error;
+                }
+              }
+
+              function buildProdMessage(number, params) {
+                var message = "Minified invariant #" + number + "; %s";
+                if (params.length > 0) {
+                  message +=
+                    " Params: " +
+                    params
+                      .map(function params_map_$0(_) {
+                        return "%s";
+                      })
+                      .join(", ");
+                }
+
+                var decoderLink =
+                  (
+                    _importDefault_closure_Env ||
+                    (_importDefault_closure_Env = importDefault("Env"))
+                  ).show_invariant_decoder === true
+                    ? "visit " +
+                      buildDecoderLink(number, params) +
+                      " to see the full message."
+                    : "";
+
+                return { message: message, decoderLink: decoderLink };
+              }
+
+              function buildDecoderLink(number, params) {
+                var decodeURI =
+                  "https://www.internalfb.com/intern/invariant/" + number + "/";
+                if (params.length > 0) {
+                  decodeURI +=
+                    "?" +
+                    params
+                      .map(function params_map_$0(param, index) {
+                        return (
+                          "args[" +
+                          index +
+                          "]=" +
+                          encodeURIComponent(String(param))
+                        );
+                      })
+                      .join("&");
+                }
+                return decodeURI;
+              }
+              exports["default"] = invariant;
+            },
+            98,
+          );
+          __d(
+            "SimpleHook",
+            [],
+            function $module_SimpleHook(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports,
+            ) {
+              "use strict";
+              var _SimpleHook = (function () {
+                function SimpleHook() {
+                  this.__callbacks = [];
+                  this.call = this.$SimpleHook_call;
+                }
+                var _proto = SimpleHook.prototype;
+                _proto.hasCallback = function hasCallback(cb) {
+                  var callbacks = this.__callbacks;
+                  return (
+                    callbacks.length > 0 &&
+                    (cb == null ||
+                      callbacks.some(function callbacks_some_$0(func) {
+                        return func === cb || func.$SimpleHook_original === cb;
+                      }))
+                  );
+                };
+                _proto.add = function add(listener, options) {
+                  var that = this;
+                  var cb;
+                  if ((options == null ? void 0 : options.once) === true) {
+                    var tmp = function tmp() {
+                      that.remove(cb);
+                      listener.apply(null, arguments);
+                    };
+                    tmp.$SimpleHook_original = listener;
+                    cb = tmp;
+                  } else {
+                    cb = listener;
+                  }
+                  this.__callbacks.push(cb);
+                  return cb;
+                };
+                _proto.removeLast = function removeLast() {
+                  return this.__callbacks.pop();
+                };
+                _proto.remove = function remove(listener) {
+                  return this.removeIf(function removeIf_$0(l) {
+                    return l === listener;
+                  });
+                };
+                _proto.removeIf = function removeIf(condition) {
+                  var previousList = this.__callbacks;
+                  this.__callbacks = previousList.filter(
+                    function previousList_filter_$0(l) {
+                      return !condition(l);
+                    },
+                  );
+                  return previousList.length > this.__callbacks.length;
+                };
+                _proto.clear = function clear() {
+                  this.__callbacks = [];
+                };
+                _proto.$SimpleHook_call = function $SimpleHook_call() {
+                  var callbacks = this.__callbacks;
+                  for (var i = 0, len = callbacks.length; i < len; ++i) {
+                    var callback = callbacks[i];
+
+                    callback.apply(null, arguments);
+                  }
+                };
+                return SimpleHook;
+              })();
+              exports.SimpleHook = _SimpleHook;
+            },
+            66,
+          );
+          __d(
+            "performanceAbsoluteNowOnAdjust",
+            ["SimpleHook"],
+            function $module_performanceAbsoluteNowOnAdjust(
+              global,
+              require,
+              importDefault,
+              importNamespace,
+              requireLazy,
+              module,
+              exports,
+            ) {
+              "use strict";
+
+              var performanceNowOnAdjust = new (importNamespace(
+                "SimpleHook",
+              ).SimpleHook)();
+              var _default = performanceNowOnAdjust;
+              exports["default"] = _default;
+            },
+            98,
+          );
+          __d(
+            "performanceAbsoluteNow",
+            ["performance", "performanceAbsoluteNowOnAdjust"],
+            function $module_performanceAbsoluteNow(
+              global,
+              require,
+              importDefault,
+              importNamespace,
+              requireLazy,
+              module,
+              exports,
+            ) {
+              var _importDefault_closure_performance;
+
+              var fallback = function fallback() {
+                return Date.now();
+              };
+
+              function setFallback(fn) {
+                fallback = fn;
+              }
+
+              var timeOriginDelta = 0;
+              var timeOrigin = -1;
+              var performanceIsDefined =
+                typeof (
+                  _importDefault_closure_performance ||
+                  (_importDefault_closure_performance =
+                    importDefault("performance"))
+                ) === "object";
+              var performanceNowIsDefined =
+                performanceIsDefined &&
+                typeof (
+                  _importDefault_closure_performance ||
+                  (_importDefault_closure_performance =
+                    importDefault("performance"))
+                ).now === "function";
+              if (performanceIsDefined) {
+                if (
+                  (
+                    _importDefault_closure_performance ||
+                    (_importDefault_closure_performance =
+                      importDefault("performance"))
+                  ).timeOrigin
+                ) {
+                  timeOrigin = (
+                    _importDefault_closure_performance ||
+                    (_importDefault_closure_performance =
+                      importDefault("performance"))
+                  ).timeOrigin;
+                } else if (
+                  (
+                    _importDefault_closure_performance ||
+                    (_importDefault_closure_performance =
+                      importDefault("performance"))
+                  ).timing &&
+                  (
+                    _importDefault_closure_performance ||
+                    (_importDefault_closure_performance =
+                      importDefault("performance"))
+                  ).timing.navigationStart
+                ) {
+                  timeOrigin = (
+                    _importDefault_closure_performance ||
+                    (_importDefault_closure_performance =
+                      importDefault("performance"))
+                  ).timing.navigationStart;
+                }
+              }
+
+              var coreFunction;
+              var coreAdjustedFunction;
+              var __adjust = function __adjust() {
+                return 0;
+              };
+              if (performanceNowIsDefined && timeOrigin !== -1) {
+                coreFunction = function coreFunction() {
+                  return (
+                    (
+                      _importDefault_closure_performance ||
+                      (_importDefault_closure_performance =
+                        importDefault("performance"))
+                    ).now() + timeOrigin
+                  );
+                };
+                coreAdjustedFunction = function coreAdjustedFunction() {
+                  return coreFunction() + timeOriginDelta;
+                };
+
+                __adjust = function __adjust() {
+                  var delta = Date.now() - coreFunction();
+                  if (delta > 500) {
+                    timeOriginDelta = delta;
+                    importDefault("performanceAbsoluteNowOnAdjust").call(delta);
+                  }
+                  return delta;
+                };
+
+                if (
+                  typeof window === "object" &&
+                  typeof window.addEventListener === "function"
+                ) {
+                  var SafeEventOptions = {
+                    capture: false,
+                    passive: true,
+                  };
+                  window.addEventListener("blur", __adjust, SafeEventOptions);
+                  window.addEventListener("focus", __adjust, SafeEventOptions);
+                }
+              } else {
+                coreAdjustedFunction = coreFunction = function coreFunction() {
+                  return fallback();
+                };
+              }
+
+              var extensions = {
+                setFallback: setFallback,
+                fromRelativeTime: (function () {
+                  if (timeOrigin === -1) {
+                    var navigationStartApproximate = performanceNowIsDefined
+                      ? Date.now() -
+                        (
+                          _importDefault_closure_performance ||
+                          (_importDefault_closure_performance =
+                            importDefault("performance"))
+                        ).now()
+                      : 0;
+                    return function (timestamp) {
+                      return timestamp + navigationStartApproximate;
+                    };
+                  } else {
+                    return function (timestamp) {
+                      return timestamp + timeOrigin;
+                    };
+                  }
+                })(),
+                __adjust: __adjust,
+                adjusted: coreAdjustedFunction,
+              };
+
+              var performanceAbsoluteNow = ES(
+                "Object",
+                "assign",
+                false,
+
+                coreFunction,
+                extensions,
+              );
+              var _default = performanceAbsoluteNow;
+              exports["default"] = _default;
+            },
+            98,
+          );
+          __d(
+            "wrapFunction",
+            [],
+            function $module_wrapFunction(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports,
+            ) {
+              var wrappers = {};
+
+              function wrapFunction(fn, type, source) {
+                var callee = type in wrappers ? wrappers[type](fn, source) : fn;
+
+                return function () {
+                  for (
+                    var _len = arguments.length,
+                      args = new Array(_len),
+                      _key = 0;
+                    _key < _len;
+                    _key++
+                  ) {
+                    args[_key] = arguments[_key];
+                  }
+                  return callee.apply(this, args);
+                };
+              }
+
+              wrapFunction.setWrapper = function (fn, type) {
+                wrappers[type] = fn;
+              };
+              exports["default"] = wrapFunction;
+            },
+            66,
+          );
+          __d(
+            "TimeSliceImpl",
+            [
+              "invariant",
+              "Env",
+              "ErrorGuard",
+              "FBLogger",
+              "IntervalTrackingBoundedBuffer",
+              "WorkerUtils",
+              "getReusableTimeSliceContinuation",
+              "performanceAbsoluteNow",
+              "wrapFunction",
+            ],
+            function $module_TimeSliceImpl(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports,
+              invariant,
+            ) {
+              var _require_closure_Env;
+              var _require_closure_ErrorGuard;
+              var _require_closure_performanceAbsoluteNow;
+              var _require_closure_WorkerUtils;
+
+              var _executionObserversInBeforeOrder = [];
+              var _executionObserversInAfterOrder = [];
+
+              var SECRET_GUARD_KEY = "key" + Math.random();
+
+              var idCounter = 1;
+
+              var guarded = false;
+
+              var timesliceBufferSize = (
+                _require_closure_Env || (_require_closure_Env = require("Env"))
+              ).timesliceBufferSize;
+              if (timesliceBufferSize == null) {
+                timesliceBufferSize = 5000;
+              }
+
+              var buffer = new (require("IntervalTrackingBoundedBuffer"))(
+                timesliceBufferSize,
+              );
+
+              var framesStack = [];
+              var creationDataStack = [];
+              var executionDataStack = [];
+
+              function _currentFrame() {
+                return peek(framesStack);
+              }
+
+              function peek(array) {
+                return array.length > 0 ? array[array.length - 1] : null;
+              }
+
+              function _pushState(frame, creationData) {
+                var executionData = {};
+                (
+                  _require_closure_ErrorGuard ||
+                  (_require_closure_ErrorGuard = require("ErrorGuard"))
+                ).applyWithGuard(_callOnBeforeExecutionCallbacks, null, [
+                  frame,
+                  creationData,
+                  executionData,
+                ]);
+                _require_closure_ErrorGuard.applyWithGuard(
+                  _callOnAfterExecutionStartedCallbacks,
+                  null,
+                  [frame, creationData, executionData],
+                );
+                framesStack.push(frame);
+                creationDataStack.push(creationData);
+                executionDataStack.push(executionData);
+              }
+
+              function _callOnCreateExecutionCallbacks(
+                creationData,
+                name,
+                meta,
+              ) {
+                _executionObserversInBeforeOrder.forEach(
+                  function _executionObserversInBeforeOrder_forEach_$0(
+                    observer,
+                  ) {
+                    var data = observer.onNewContextCreated(
+                      _currentFrame(),
+                      name,
+                      meta,
+                    );
+                    creationData[observer.getBeforeID()] = data;
+                  },
+                );
+              }
+
+              function _callOnAfterExecutionEndedCallbacks(
+                lastFrame,
+                creationData,
+                executionData,
+              ) {
+                _executionObserversInAfterOrder.forEach(
+                  function _executionObserversInAfterOrder_forEach_$0(obs) {
+                    obs.onAfterContextEnded(
+                      lastFrame,
+                      creationData[obs.getBeforeID()],
+                      executionData[obs.getBeforeID()],
+                      lastFrame.meta,
+                    );
+                  },
+                );
+              }
+
+              function _callOnBeforeExecutionCallbacks(
+                newFrame,
+                creationData,
+                executionDataHolder,
+              ) {
+                _executionObserversInBeforeOrder.forEach(
+                  function _executionObserversInBeforeOrder_forEach_$0(obs) {
+                    var execData = obs.onBeforeContextStarted(
+                      newFrame,
+                      creationData[obs.getBeforeID()],
+                      newFrame.meta,
+                    );
+                    executionDataHolder[obs.getBeforeID()] = execData;
+                  },
+                );
+              }
+
+              function _callOnAfterExecutionStartedCallbacks(
+                currentFrame,
+                creationData,
+                executionData,
+              ) {
+                _executionObserversInBeforeOrder.forEach(
+                  function _executionObserversInBeforeOrder_forEach_$0(obs) {
+                    var newExecData = obs.onAfterContextStarted(
+                      currentFrame,
+                      creationData[obs.getBeforeID()],
+                      executionData[obs.getBeforeID()],
+                      currentFrame.meta,
+                    );
+                    executionData[obs.getBeforeID()] = newExecData;
+                  },
+                );
+              }
+
+              function _restoreState() {
+                var lastFrame = _currentFrame();
+                var lastCreationData = peek(creationDataStack);
+                var lastExecutionData = peek(executionDataStack);
+                if (
+                  lastFrame == null ||
+                  lastCreationData == null ||
+                  lastExecutionData == null
+                ) {
+                  require("FBLogger")("TimeSlice").mustfix(
+                    "popped too many times off the timeslice stack",
+                  );
+                  guarded = false;
+                  return;
+                }
+                (
+                  _require_closure_ErrorGuard ||
+                  (_require_closure_ErrorGuard = require("ErrorGuard"))
+                ).applyWithGuard(_callOnAfterExecutionEndedCallbacks, null, [
+                  lastFrame,
+                  lastCreationData,
+                  lastExecutionData,
+                ]);
+                guarded = !lastFrame.isRoot;
+                framesStack.pop();
+                creationDataStack.pop();
+                executionDataStack.pop();
+              }
+
+              var TimeSlice = {
+                PropagationType: {
+                  CONTINUATION: 0,
+                  EXECUTION: 1,
+                  ORPHAN: 2,
+                },
+
+                guard: function guard(fn, name, metaArgs) {
+                  typeof fn === "function" ||
+                    invariant(0, "Function fn is required");
+                  typeof name === "string" ||
+                    invariant(0, "String name is required");
+
+                  var meta = getMeta(metaArgs);
+
+                  if (fn[SECRET_GUARD_KEY]) {
+                    return fn;
+                  }
+
+                  var parentFrame;
+                  if (guarded) {
+                    parentFrame = _currentFrame();
+                  }
+                  var observerData = {};
+                  var executionNumber = 0;
+
+                  var timeSliceGuarded = function timeSliceGuarded() {
+                    var beginTime = (
+                      _require_closure_performanceAbsoluteNow ||
+                      (_require_closure_performanceAbsoluteNow = require("performanceAbsoluteNow"))
+                    )();
+
+                    var newContextID = idCounter++;
+                    var newFrame = {
+                      contextID: newContextID,
+                      name: name,
+                      isRoot: !guarded,
+                      executionNumber: executionNumber++,
+                      meta: meta,
+                      absBeginTimeMs: beginTime,
+                    };
+
+                    _pushState(newFrame, observerData);
+
+                    if (parentFrame != null) {
+                      var isContinuation = !!meta.isContinuation;
+                      if (parentFrame.isRoot) {
+                        newFrame.indirectParentID = parentFrame.contextID;
+                        newFrame.isEdgeContinuation = isContinuation;
+                      } else {
+                        newFrame.indirectParentID =
+                          parentFrame.indirectParentID;
+                        newFrame.isEdgeContinuation = !!(
+                          isContinuation && parentFrame.isEdgeContinuation
+                        );
+                      }
+                    }
+
+                    var workerContext = (
+                      _require_closure_WorkerUtils ||
+                      (_require_closure_WorkerUtils = require("WorkerUtils"))
+                    ).isWorkerContext();
+
+                    guarded = true;
+                    try {
+                      for (
+                        var _len = arguments.length,
+                          args = new Array(_len),
+                          _key = 0;
+                        _key < _len;
+                        _key++
+                      ) {
+                        args[_key] = arguments[_key];
+                      }
+                      if (!newFrame.isRoot || workerContext) {
+                        return fn.apply(this, args);
+                      } else {
+                        return (
+                          _require_closure_ErrorGuard ||
+                          (_require_closure_ErrorGuard = require("ErrorGuard"))
+                        ).applyWithGuard(fn, this, args, {
+                          name: "TimeSlice" + (name ? ": " + name : ""),
+                        });
+                      }
+                    } finally {
+                      var lastFrame = _currentFrame();
+                      if (lastFrame == null) {
+                        require("FBLogger")("TimeSlice").mustfix(
+                          "timeslice stack misaligned, not logging the block",
+                        );
+                        guarded = false;
+                      } else {
+                        var isRoot = lastFrame.isRoot,
+                          contextID = lastFrame.contextID,
+                          indirectParentID = lastFrame.indirectParentID,
+                          isEdgeContinuation = lastFrame.isEdgeContinuation;
+                        var endTime = (
+                          _require_closure_performanceAbsoluteNow ||
+                          (_require_closure_performanceAbsoluteNow = require("performanceAbsoluteNow"))
+                        )();
+                        lastFrame.absEndTimeMs = endTime;
+                        if (isRoot && beginTime != null) {
+                          var entry = {
+                            begin: beginTime,
+                            end: endTime,
+                            id: contextID,
+                            indirectParentID: indirectParentID,
+                            representsExecution: true,
+                            isEdgeContinuation:
+                              parentFrame && isEdgeContinuation,
+
+                            guard: name,
+                          };
+
+                          if (fn.__SMmeta != null) {
+                            var _name = fn.__SMmeta.name;
+
+                            var _module = fn.__SMmeta.module;
+                            if (_name != null) {
+                              entry.name = _name;
+                            }
+                            if (_module != null) {
+                              entry.module = _module;
+                            }
+                          }
+
+                          buffer.pushElement(entry);
+                        }
+                        _restoreState();
+                      }
+                    }
+                  };
+
+                  timeSliceGuarded[SECRET_GUARD_KEY] = {};
+
+                  (
+                    _require_closure_ErrorGuard ||
+                    (_require_closure_ErrorGuard = require("ErrorGuard"))
+                  ).applyWithGuard(_callOnCreateExecutionCallbacks, null, [
+                    observerData,
+                    name,
+                    meta,
+                  ]);
+                  return timeSliceGuarded;
+                },
+
+                copyGuardForWrapper: function copyGuardForWrapper(fn, wrapper) {
+                  if (fn && fn[SECRET_GUARD_KEY]) {
+                    wrapper[SECRET_GUARD_KEY] = fn[SECRET_GUARD_KEY];
+                  }
+                  return wrapper;
+                },
+
+                getContext: function getContext() {
+                  return _currentFrame();
+                },
+
+                getGuardedContinuation: function getGuardedContinuation(name) {
+                  function firstArgInvoker(callback) {
+                    for (
+                      var _len2 = arguments.length,
+                        args = new Array(_len2 > 1 ? _len2 - 1 : 0),
+                        _key2 = 1;
+                      _key2 < _len2;
+                      _key2++
+                    ) {
+                      args[_key2 - 1] = arguments[_key2];
+                    }
+                    return callback.apply(this, args);
+                  }
+
+                  return TimeSlice.guard(firstArgInvoker, name, {
+                    propagationType: TimeSlice.PropagationType.CONTINUATION,
+                  });
+                },
+
+                getReusableContinuation: function getReusableContinuation(
+                  name,
+                ) {
+                  return require("getReusableTimeSliceContinuation")(
+                    TimeSlice,
+                    SECRET_GUARD_KEY,
+                    name,
+                  );
+                },
+
+                getPlaceholderReusableContinuation:
+                  function getPlaceholderReusableContinuation() {
+                    var placeholder = function placeholder(fn) {
+                      return fn();
+                    };
+                    placeholder.last = placeholder;
+                    return placeholder;
+                  },
+
+                getGuardNameStack: function getGuardNameStack() {
+                  return framesStack.map(function framesStack_map_$0(frame) {
+                    return frame.name;
+                  });
+                },
+
+                registerExecutionContextObserver:
+                  function registerExecutionContextObserver(observer) {
+                    var added = false;
+                    for (
+                      var ii = 0;
+                      ii < _executionObserversInBeforeOrder.length;
+                      ii++
+                    ) {
+                      if (
+                        _executionObserversInBeforeOrder[ii].getBeforeID() >
+                        observer.getBeforeID()
+                      ) {
+                        _executionObserversInBeforeOrder.splice(
+                          ii,
+                          0,
+                          observer,
+                        );
+                        added = true;
+                        break;
+                      }
+                    }
+                    if (!added) {
+                      _executionObserversInBeforeOrder.push(observer);
+                    }
+                    for (
+                      var _ii = 0;
+                      _ii < _executionObserversInAfterOrder.length;
+                      _ii++
+                    ) {
+                      if (
+                        _executionObserversInAfterOrder[_ii].getAfterID() >
+                        observer.getAfterID()
+                      ) {
+                        _executionObserversInAfterOrder.splice(
+                          _ii,
+                          0,
+                          observer,
+                        );
+                        return;
+                      }
+                    }
+                    _executionObserversInAfterOrder.push(observer);
+                  },
+
+                catchUpOnDemandExecutionContextObservers:
+                  function catchUpOnDemandExecutionContextObservers(observer) {
+                    for (var ii = 0; ii < framesStack.length; ii++) {
+                      var frame = framesStack[ii];
+                      var creationDataForFrame = creationDataStack[ii];
+                      var executionDataForFrame = executionDataStack[ii] || {};
+                      var data = observer.onBeforeContextStartedWhileEnabled(
+                        frame,
+                        creationDataForFrame[observer.getBeforeID()],
+                        frame.meta,
+                      );
+                      executionDataForFrame[observer.getBeforeID()] = data;
+                      executionDataStack[ii] = executionDataForFrame;
+                    }
+                  },
+
+                getBuffer: function getBuffer() {
+                  return buffer;
+                },
+              };
+
+              function getMeta(metaArgs) {
+                var meta = {};
+                if (
+                  metaArgs &&
+                  metaArgs.propagateCounterAttribution !== undefined
+                ) {
+                  meta.propagateCounterAttribution =
+                    metaArgs.propagateCounterAttribution;
+                }
+                if (metaArgs && metaArgs.root !== undefined) {
+                  meta.root = metaArgs.root;
+                }
+                switch (metaArgs && metaArgs.propagationType) {
+                  case TimeSlice.PropagationType.CONTINUATION:
+                    meta.isContinuation = true;
+                    meta.extendsExecution = true;
+                    break;
+                  case TimeSlice.PropagationType.ORPHAN:
+                    meta.isContinuation = false;
+                    meta.extendsExecution = false;
+                    break;
+                  case TimeSlice.PropagationType.EXECUTION:
+                  default:
+                    meta.isContinuation = false;
+                    meta.extendsExecution = true;
+                }
+                return meta;
+              }
+
+              require("wrapFunction").setWrapper(
+                function wrapFunction_setWrapper_$0(fn, name) {
+                  return TimeSlice.guard(fn, name, { registerCallStack: true });
+                },
+                "entry",
+              );
+
+              global.TimeSlice = TimeSlice;
+
+              module.exports = TimeSlice;
+            },
+            6,
+          );
+          __d(
+            "requireCond",
+            [],
+            function $module_requireCond(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports,
+            ) {
+              function requireCond(_type, _condition, _mb) {
+                throw new Error("Cannot use raw untransformed requireCond.");
+              }
+              var _default = requireCond;
+              exports["default"] = _default;
+            },
+            66,
+          );
+          __d(
+            "TimeSlice",
+            ["cr:1126"],
+            function $module_TimeSlice(
+              global,
+              require,
+              importDefault,
+              importNamespace,
+              requireLazy,
+              module,
+              exports,
+            ) {
+              exports["default"] = require("cr:1126");
+            },
+            98,
+          );
+          __d(
+            "setTimeoutAcrossTransitionsBlue",
+            ["TimeSlice"],
+            function $module_setTimeoutAcrossTransitionsBlue(
+              global,
+              require,
+              importDefault,
+              importNamespace,
+              requireLazy,
+              module,
+              exports,
+            ) {
+              var setTimeout = global.__fbNativeSetTimeout || global.setTimeout;
+
+              function setTimeoutAcrossTransitions(callback, ms) {
+                var guardedCallback = importDefault("TimeSlice").guard(
+                  callback,
+                  "setTimeout",
+                  {
+                    propagationType:
+                      importDefault("TimeSlice").PropagationType.CONTINUATION,
+                    registerCallStack: true,
+                  },
+                );
+                for (
+                  var _len = arguments.length,
+                    args = new Array(_len > 2 ? _len - 2 : 0),
+                    _key = 2;
+                  _key < _len;
+                  _key++
+                ) {
+                  args[_key - 2] = arguments[_key];
+                }
+
+                return Function.prototype.apply.call(
+                  setTimeout,
+                  global,
+                  [guardedCallback, ms].concat(args),
+                );
+              }
+              exports["default"] = setTimeoutAcrossTransitions;
+            },
+            98,
+          );
+          __d(
+            "setTimeoutAcrossTransitionsWWW",
+            ["cr:986633"],
+            function $module_setTimeoutAcrossTransitionsWWW(
+              global,
+              require,
+              importDefault,
+              importNamespace,
+              requireLazy,
+              module,
+              exports,
+            ) {
+              exports["default"] = require("cr:986633");
+            },
+            98,
+          );
+          __d(
+            "err",
+            ["fb-error"],
+            function $module_err(
+              global,
+              require,
+              importDefault,
+              importNamespace,
+              requireLazy,
+              module,
+              exports,
+            ) {
+              "use strict";
+              exports["default"] = importDefault("fb-error").err;
+            },
+            98,
+          );
+          __d(
+            "ImmediateImplementation",
+            ["ImmediateImplementationExperiments"],
+            function $module_ImmediateImplementation(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports,
+            ) {
+              (function (global, undefined) {
+                "use strict";
+
+                var nextHandle = 1;
+                var tasksByHandle = {};
+                var queueHead = {};
+                var queueTail = queueHead;
+                var currentlyRunningATask = false;
+                var doc = global.document;
+                var setImmediate;
+                var setImmediatePostMessage;
+                var setImmediateMessageChannel;
+
+                var messagePrefix = "setImmediate$" + Math.random() + "$";
+
+                function isInsideUserActivationChain() {
+                  var event = global.event;
+                  if (!event) {
+                    return false;
+                  }
+
+                  return (
+                    (event.isTrusted &&
+                      [
+                        "change",
+                        "click",
+                        "contextmenu",
+                        "dblclick",
+                        "mouseup",
+                        "pointerup",
+                        "reset",
+                        "submit",
+                        "touchend",
+                      ].includes(event.type)) ||
+                    (event.type === "message" &&
+                      event.source === global &&
+                      typeof event.data === "string" &&
+                      event.data.indexOf(messagePrefix) === 0)
+                  );
+                }
+
+                function addFromSetImmediateArguments(args) {
+                  var handler = args[0];
+                  args = Array.prototype.slice.call(args, 1);
+                  tasksByHandle[nextHandle] = function () {
+                    handler.apply(undefined, args);
+                  };
+                  queueTail = queueTail.next = { handle: nextHandle++ };
+                  return queueTail.handle;
+                }
+
+                function flushQueue() {
+                  var next, task;
+                  while (!currentlyRunningATask && (next = queueHead.next)) {
+                    queueHead = next;
+                    if ((task = tasksByHandle[next.handle])) {
+                      currentlyRunningATask = true;
+                      try {
+                        task();
+                        currentlyRunningATask = false;
+                      } finally {
+                        clearImmediate(next.handle);
+                        if (currentlyRunningATask) {
+                          currentlyRunningATask = false;
+
+                          if (queueHead.next) {
+                            setImmediate(flushQueue);
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+
+                function clearImmediate(handle) {
+                  delete tasksByHandle[handle];
+                }
+
+                function canUsePostMessage() {
+                  if (global.postMessage && !global.importScripts) {
+                    var postMessageIsAsynchronous = true;
+
+                    var _onMessage = function onMessage() {
+                      postMessageIsAsynchronous = false;
+                      if (global.removeEventListener) {
+                        global.removeEventListener(
+                          "message",
+                          _onMessage,
+                          false,
+                        );
+                      } else {
+                        global.detachEvent("onmessage", _onMessage);
+                      }
+                    };
+
+                    if (global.addEventListener) {
+                      global.addEventListener("message", _onMessage, false);
+                    } else if (global.attachEvent) {
+                      global.attachEvent("onmessage", _onMessage);
+                    } else {
+                      return false;
+                    }
+
+                    global.postMessage("", "*");
+                    return postMessageIsAsynchronous;
+                  }
+                }
+
+                function installPostMessageImplementation() {
+                  var onGlobalMessage = function onGlobalMessage(event) {
+                    if (
+                      event.source === global &&
+                      typeof event.data === "string" &&
+                      event.data.indexOf(messagePrefix) === 0
+                    ) {
+                      flushQueue();
+                    }
+                  };
+
+                  if (global.addEventListener) {
+                    global.addEventListener("message", onGlobalMessage, false);
+                  } else {
+                    global.attachEvent("onmessage", onGlobalMessage);
+                  }
+
+                  setImmediate = function setImmediate() {
+                    var handle = addFromSetImmediateArguments(arguments);
+
+                    if (global.originalPostMessage) {
+                      global.originalPostMessage(messagePrefix + handle, "*");
+                    } else {
+                      global.postMessage(messagePrefix + handle, "*");
+                    }
+                    return handle;
+                  };
+                  setImmediatePostMessage = setImmediate;
+                }
+
+                function installMessageChannelImplementation() {
+                  var channel = new MessageChannel();
+                  var pendingImmediate = false;
+                  channel.port1.onmessage = function (e) {
+                    pendingImmediate = false;
+                    flushQueue();
+                  };
+                  setImmediate = function setImmediate() {
+                    var handle = addFromSetImmediateArguments(arguments);
+                    if (!pendingImmediate) {
+                      channel.port2.postMessage(handle);
+                      pendingImmediate = true;
+                    }
+                    return handle;
+                  };
+                  setImmediateMessageChannel = setImmediate;
+                }
+
+                function installReadyStateChangeImplementation() {
+                  var html = doc.documentElement;
+                  setImmediate = function setImmediate() {
+                    var handle = addFromSetImmediateArguments(arguments);
+
+                    var script = doc.createElement("script");
+                    script.onreadystatechange = function () {
+                      script.onreadystatechange = null;
+                      html.removeChild(script);
+                      script = null;
+                      flushQueue();
+                    };
+                    html.appendChild(script);
+                    return handle;
+                  };
+                }
+
+                function installSetTimeoutImplementation() {
+                  setImmediate = function setImmediate() {
+                    setTimeout(flushQueue, 0);
+                    return addFromSetImmediateArguments(arguments);
+                  };
+                }
+
+                if (canUsePostMessage()) {
+                  if (
+                    global.MessageChannel &&
+                    require("ImmediateImplementationExperiments")
+                      .prefer_message_channel
+                  ) {
+                    installPostMessageImplementation();
+                    installMessageChannelImplementation();
+
+                    setImmediate = function setImmediate() {
+                      if (isInsideUserActivationChain()) {
+                        return setImmediatePostMessage.apply(null, arguments);
+                      } else {
+                        return setImmediateMessageChannel.apply(
+                          null,
+                          arguments,
+                        );
+                      }
+                    };
+                  } else {
+                    installPostMessageImplementation();
+                  }
+                } else if (global.MessageChannel) {
+                  installMessageChannelImplementation();
+                } else if (
+                  doc &&
+                  doc.createElement &&
+                  "onreadystatechange" in doc.createElement("script")
+                ) {
+                  installReadyStateChangeImplementation();
+                } else {
+                  installSetTimeoutImplementation();
+                }
+
+                exports.setImmediate = setImmediate;
+                exports.clearImmediate = clearImmediate;
+              })(
+                typeof self === "undefined"
+                  ? typeof global === "undefined"
+                    ? this
+                    : global
+                  : self,
+              );
+            },
+            null,
+          );
+          __d(
+            "setImmediatePolyfill",
+            [
+              "invariant",
+              "ImmediateImplementation",
+              "PromiseUsePolyfillSetImmediateGK",
+            ],
+            function $module_setImmediatePolyfill(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports,
+              invariant,
+            ) {
+              var setImmediateImplementation = global.setImmediate;
+              if (
+                require("PromiseUsePolyfillSetImmediateGK")
+                  .www_always_use_polyfill_setimmediate ||
+                !setImmediateImplementation
+              ) {
+                var ImmediateImplementation = require("ImmediateImplementation");
+                setImmediateImplementation =
+                  ImmediateImplementation.setImmediate;
+              }
+
+              function setImmediate(callback) {
+                typeof callback === "function" ||
+                  invariant(0, "Callback must be a function");
+                for (
+                  var _len = arguments.length,
+                    args = new Array(_len > 1 ? _len - 1 : 0),
+                    _key = 1;
+                  _key < _len;
+                  _key++
+                ) {
+                  args[_key - 1] = arguments[_key];
+                }
+                return setImmediateImplementation.apply(
+                  void 0,
+                  [callback].concat(args),
+                );
+              }
+
+              module.exports = setImmediate;
+            },
+            null,
+          );
+          __d(
+            "setImmediateAcrossTransitions",
+            ["TimeSlice", "setImmediatePolyfill"],
+            function $module_setImmediateAcrossTransitions(
+              global,
+              require,
+              importDefault,
+              importNamespace,
+              requireLazy,
+              module,
+              exports,
+            ) {
+              function setImmediateAcrossTransitions(callback) {
+                var guardedCallback = importDefault("TimeSlice").guard(
+                  callback,
+                  "setImmediate",
+                  {
+                    propagationType:
+                      importDefault("TimeSlice").PropagationType.CONTINUATION,
+                    registerCallStack: true,
+                  },
+                );
+                for (
+                  var _len = arguments.length,
+                    args = new Array(_len > 1 ? _len - 1 : 0),
+                    _key = 1;
+                  _key < _len;
+                  _key++
+                ) {
+                  args[_key - 1] = arguments[_key];
+                }
+
+                return importDefault("setImmediatePolyfill").apply(
+                  void 0,
+                  [guardedCallback].concat(args),
+                );
+              }
+              exports["default"] = setImmediateAcrossTransitions;
+            },
+            98,
+          );
+          __d(
+            "setTimeoutAcrossTransitions",
+            ["cr:7391"],
+            function $module_setTimeoutAcrossTransitions(
+              global,
+              require,
+              importDefault,
+              importNamespace,
+              requireLazy,
+              module,
+              exports,
+            ) {
+              exports["default"] = require("cr:7391");
+            },
+            98,
+          );
+          __d(
+            "PromiseImpl",
+            [
+              "ErrorPubSub",
+              "TimeSlice",
+              "err",
+              "setImmediateAcrossTransitions",
+              "setTimeoutAcrossTransitions",
+            ],
+            function $module_PromiseImpl(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports,
+            ) {
+              "use strict";
+              var _require_closure_ErrorPubSub;
+
+              function noop() {}
+
+              var LAST_ERROR = null;
+              var IS_ERROR = {};
+              function getThen(obj) {
+                try {
+                  return obj.then;
+                } catch (ex) {
+                  LAST_ERROR = ex;
+                  return IS_ERROR;
+                }
+              }
+
+              function tryCallOne(fn, a) {
+                try {
+                  return fn(a);
+                } catch (ex) {
+                  LAST_ERROR = ex;
+                  return IS_ERROR;
+                }
+              }
+              function tryCallTwo(fn, a, b) {
+                try {
+                  fn(a, b);
+                } catch (ex) {
+                  LAST_ERROR = ex;
+                  return IS_ERROR;
+                }
+              }
+
+              function Promise(fn) {
+                if (typeof this !== "object") {
+                  throw new TypeError("Promises must be constructed via new");
+                }
+                if (typeof fn !== "function") {
+                  throw new TypeError("not a function");
+                }
+                this._state = 0;
+                this._value = null;
+                this._deferreds = [];
+                if (fn === noop) {
+                  return;
+                }
+                doResolve(fn, this);
+              }
+              _c = Promise;
+              Promise._noop = noop;
+
+              Promise.prototype.then = function (onFulfilled, onRejected) {
+                if (this.constructor !== Promise) {
+                  return safeThen(this, onFulfilled, onRejected);
+                }
+                var res = new Promise(noop);
+                handle(this, new Handler(onFulfilled, onRejected, res));
+                return res;
+              };
+
+              function safeThen(self, onFulfilled, onRejected) {
+                return new self.constructor(function (resolve, reject) {
+                  var res = new Promise(noop);
+                  res.then(resolve, reject);
+                  handle(self, new Handler(onFulfilled, onRejected, res));
+                });
+              }
+              function handle(self, deferred) {
+                while (self._state === 3) {
+                  self = self._value;
+                }
+                if (self._state === 0) {
+                  self._deferreds.push(deferred);
+                  return;
+                }
+                require("setImmediateAcrossTransitions")(
+                  function PromiseFulfill() {
+                    var cb =
+                      self._state === 1
+                        ? deferred.onFulfilled
+                        : deferred.onRejected;
+                    if (cb === null) {
+                      deferred.continuation(
+                        function deferred_continuation_$0() {},
+                      );
+                      if (self._state === 1) {
+                        resolve(deferred.promise, self._value);
+                      } else {
+                        reject(deferred.promise, self._value);
+                      }
+                      return;
+                    }
+                    var ret = tryCallOne(
+                      deferred.continuation.bind(null, cb),
+                      self._value,
+                    );
+                    if (ret === IS_ERROR) {
+                      reject(deferred.promise, LAST_ERROR);
+                    } else {
+                      resolve(deferred.promise, ret);
+                    }
+                  },
+                );
+              }
+              function resolve(self, newValue) {
+                if (newValue === self) {
+                  return reject(
+                    self,
+                    new TypeError("A promise cannot be resolved with itself."),
+                  );
+                }
+                if (
+                  newValue &&
+                  (typeof newValue === "object" ||
+                    typeof newValue === "function")
+                ) {
+                  var then = getThen(newValue);
+                  if (then === IS_ERROR) {
+                    return reject(self, LAST_ERROR);
+                  }
+                  if (then === self.then && newValue instanceof Promise) {
+                    self._state = 3;
+                    self._value = newValue;
+                    finale(self);
+                    return;
+                  } else if (typeof then === "function") {
+                    doResolve(then.bind(newValue), self);
+                    return;
+                  }
+                }
+                self._state = 1;
+                self._value = newValue;
+                finale(self);
+              }
+
+              function reject(self, newValue) {
+                self._state = 2;
+                self._value = newValue;
+                finale(self);
+              }
+              function finale(self) {
+                for (var i = 0; i < self._deferreds.length; i++) {
+                  handle(self, self._deferreds[i]);
+                }
+                self._deferreds = null;
+              }
+
+              function Handler(onFulfilled, onRejected, promise) {
+                this.onFulfilled =
+                  typeof onFulfilled === "function" ? onFulfilled : null;
+                this.onRejected =
+                  typeof onRejected === "function" ? onRejected : null;
+                this.continuation =
+                  require("TimeSlice").getGuardedContinuation(
+                    "Promise Handler",
+                  );
+                this.promise = promise;
+              }
+              _c2 = Handler;
+
+              function doResolve(fn, promise) {
+                var done = false;
+                var res = tryCallTwo(
+                  fn,
+                  function tryCallTwo_$1(value) {
+                    if (done) {
+                      return;
+                    }
+                    done = true;
+                    resolve(promise, value);
+                  },
+                  function tryCallTwo_$2(reason) {
+                    if (done) {
+                      return;
+                    }
+                    done = true;
+                    reject(promise, reason);
+                  },
+                );
+                if (!done && res === IS_ERROR) {
+                  done = true;
+                  reject(promise, LAST_ERROR);
+                }
+              }
+
+              var TRUE = valuePromise(true);
+              var FALSE = valuePromise(false);
+              var NULL = valuePromise(null);
+              var UNDEFINED = valuePromise(undefined);
+              var ZERO = valuePromise(0);
+              var EMPTYSTRING = valuePromise("");
+
+              function valuePromise(value) {
+                var p = new Promise(Promise._noop);
+                p._state = 1;
+                p._value = value;
+                return p;
+              }
+              Promise.resolve = function (value) {
+                if (value instanceof Promise) {
+                  return value;
+                }
+
+                if (value === null) {
+                  return NULL;
+                }
+                if (value === undefined) {
+                  return UNDEFINED;
+                }
+                if (value === true) {
+                  return TRUE;
+                }
+                if (value === false) {
+                  return FALSE;
+                }
+                if (value === 0) {
+                  return ZERO;
+                }
+                if (value === "") {
+                  return EMPTYSTRING;
+                }
+
+                if (typeof value === "object" || typeof value === "function") {
+                  try {
+                    var then = value.then;
+                    if (typeof then === "function") {
+                      return new Promise(then.bind(value));
+                    }
+                  } catch (ex) {
+                    return new Promise(function (resolve, reject) {
+                      reject(ex);
+                    });
+                  }
+                }
+                return valuePromise(value);
+              };
+
+              Promise.all = function (arr) {
+                if (!Array.isArray(arr)) {
+                  arr = [
+                    Promise.reject(
+                      new TypeError("Promise.all must be passed an array."),
+                    ),
+                  ];
+                }
+
+                var args = Array.prototype.slice.call(arr);
+
+                return new Promise(function (resolve, reject) {
+                  if (args.length === 0) {
+                    return resolve([]);
+                  }
+                  var remaining = args.length;
+                  function res(i, val) {
+                    if (
+                      val &&
+                      (typeof val === "object" || typeof val === "function")
+                    ) {
+                      if (
+                        val instanceof Promise &&
+                        val.then === Promise.prototype.then
+                      ) {
+                        while (val._state === 3) {
+                          val = val._value;
+                        }
+                        if (val._state === 1) {
+                          return res(i, val._value);
+                        }
+                        if (val._state === 2) {
+                          reject(val._value);
+                        }
+                        val.then(function val_then_$0(val) {
+                          res(i, val);
+                        }, reject);
+                        return;
+                      } else {
+                        var then = val.then;
+                        if (typeof then === "function") {
+                          var p = new Promise(then.bind(val));
+                          p.then(function p_then_$0(val) {
+                            res(i, val);
+                          }, reject);
+                          return;
+                        }
+                      }
+                    }
+                    args[i] = val;
+                    if (--remaining === 0) {
+                      resolve(args);
+                    }
+                  }
+                  for (var i = 0; i < args.length; i++) {
+                    res(i, args[i]);
+                  }
+                });
+              };
+
+              Promise.reject = function (value) {
+                return new Promise(function (resolve, reject) {
+                  reject(value);
+                });
+              };
+
+              Promise.race = function (values) {
+                return new Promise(function (resolve, reject) {
+                  values.forEach(function values_forEach_$0(value) {
+                    Promise.resolve(value).then(resolve, reject);
+                  });
+                });
+              };
+
+              Promise.prototype["catch"] = function (onRejected) {
+                return this.then(null, onRejected);
+              };
+
+              Promise.prototype.done = function (onFulfilled, onRejected) {
+                (
+                  _require_closure_ErrorPubSub ||
+                  (_require_closure_ErrorPubSub = require("ErrorPubSub"))
+                ).reportError(
+                  require("err")(
+                    "Promise.done is deprecated. Please use promiseDone.",
+                  ),
+                );
+
+                var errorLocation = new Error("Promise.done");
+                var self = arguments.length
+                  ? this.then.apply(this, arguments)
+                  : this;
+                self.then(null, function self_then_$1(err) {
+                  require("setTimeoutAcrossTransitions")(
+                    function setTimeoutAcrossTransitions_$0() {
+                      if (err instanceof Error) {
+                        throw err;
+                      } else {
+                        errorLocation.message = "" + err;
+                        throw errorLocation;
+                      }
+                    },
+                    0,
+                  );
+                });
+              };
+
+              module.exports = Promise;
+              var _c, _c2;
+              $RefreshReg$(_c, "Promise");
+              $RefreshReg$(_c2, "Handler");
+            },
+            null,
+          );
+          __d(
+            "DOMWrapper",
+            [],
+            function $module_DOMWrapper(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports,
+            ) {
+              "use strict";
+
+              var rootElement, windowRef;
+
+              function setRoot(root) {
+                rootElement = root;
+              }
+
+              function getRoot() {
+                return rootElement || document.body;
+              }
+
+              function setWindow(win) {
+                windowRef = win;
+              }
+
+              function getWindow() {
+                return windowRef || self;
+              }
+              exports.setRoot = setRoot;
+              exports.getRoot = getRoot;
+              exports.setWindow = setWindow;
+              exports.getWindow = getWindow;
+            },
+            66,
+          );
+          __d(
+            "dotAccess",
+            [],
+            function $module_dotAccess(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports,
+            ) {
+              function dotAccess(head, path, create) {
+                var stack = path.split(".");
+                do {
+                  var key = stack.shift();
+                  head = head[key] || (create && (head[key] = {}));
+                } while (stack.length && head);
+                return head;
+              }
+              exports["default"] = dotAccess;
+            },
+            66,
+          );
+          __d(
+            "guid",
+            [],
+            function $module_guid(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports,
+            ) {
+              function guid() {
+                if (
+                  typeof crypto === "object" &&
+                  typeof crypto.getRandomValues === "function" &&
+                  typeof String.prototype.padStart === "function"
+                ) {
+                  var numbers = crypto.getRandomValues(new Uint32Array(2));
+
+                  return (
+                    "f" +
+                    numbers[0].toString(16).padStart(8, "0") +
+                    numbers[1].toString(16).padStart(8, "0")
+                  );
+                }
+
+                return (
+                  "f" +
+                  (Math.random() * (1 << 30)).toString(16).replace(".", "")
+                );
+              }
+              exports["default"] = guid;
+            },
+            66,
+          );
+          __d(
+            "GlobalCallback",
+            ["DOMWrapper", "dotAccess", "guid", "wrapFunction"],
+            function $module_GlobalCallback(
+              global,
+              require,
+              importDefault,
+              importNamespace,
+              requireLazy,
+              module,
+              exports,
+            ) {
+              var rootObject;
+              var callbackPrefix;
+
+              function setPrefix(prefix) {
+                rootObject = importDefault("dotAccess")(
+                  importNamespace("DOMWrapper").getWindow(),
+                  prefix,
+                  true,
+                );
+                callbackPrefix = prefix;
+              }
+
+              function create(fn, description) {
+                if (!rootObject) {
+                  setPrefix("__globalCallbacks");
+                }
+                var id = importDefault("guid")();
+                rootObject[id] = importDefault("wrapFunction")(
+                  fn,
+                  "entry",
+                  description != null ? description : "GlobalCallback",
+                );
+
+                return callbackPrefix + "." + id;
+              }
+
+              function remove(name) {
+                var id = name.substring(callbackPrefix.length + 1);
+                delete rootObject[id];
+              }
+              exports.setPrefix = setPrefix;
+              exports.create = create;
+              exports.remove = remove;
+            },
+            98,
+          );
+          __d(
+            "Log",
+            [],
+            function $module_Log(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports,
+            ) {
+              "use strict";
+
+              var level = __DEV__ ? 3 : -1;
+
+              var Level = {
+                DEBUG: 3,
+                INFO: 2,
+                WARNING: 1,
+                ERROR: 0,
+              };
+
+              var log = function log(name, logLevel, format) {
+                for (
+                  var _len = arguments.length,
+                    args = new Array(_len > 3 ? _len - 3 : 0),
+                    _key = 3;
+                  _key < _len;
+                  _key++
+                ) {
+                  args[_key - 3] = arguments[_key];
+                }
+                var index = 0;
+                var msg = format.replace(/%s/g, function format_replace_$1() {
+                  return String(args[index++]);
+                });
+                var console = window.console;
+                if (console && level >= logLevel) {
+                  console[name in console ? name : "log"](msg);
+                }
+              };
+
+              function setLevel(l) {
+                level = l;
+              }
+
+              var debug = ES(log, "bind", true, null, "debug", Level.DEBUG);
+
+              var info = ES(log, "bind", true, null, "info", Level.INFO);
+
+              var warn = ES(log, "bind", true, null, "warn", Level.WARNING);
+
+              var error = ES(log, "bind", true, null, "error", Level.ERROR);
+              exports.Level = Level;
+              exports.log = log;
+              exports.setLevel = setLevel;
+              exports.debug = debug;
+              exports.info = info;
+              exports.warn = warn;
+              exports.error = error;
+            },
+            66,
+          );
+          __d(
+            "sdk.UA",
+            [],
+            function $module_sdk_UA(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports,
+            ) {
+              var uas = navigator.userAgent;
+
+              var devices = {
+                iphone: /\b(iPhone|iP[ao]d)/.test(uas),
+                ipad: /\b(iP[ao]d)/.test(uas),
+                android: /Android/i.test(uas),
+                nativeApp: /FBAN\/\w+;/i.test(uas) && !/FBAN\/mLite;/.test(uas),
+                nativeAndroidApp: /FB_IAB\/\w+;/i.test(uas),
+                nativeInstagramApp: /Instagram/i.test(uas),
+                nativeMessengeriOSApp: /MessengerForiOS/i.test(uas),
+                nativeMessengerAndroidApp: /Orca\-Android/i.test(uas),
+                ucBrowser: /UCBrowser/i.test(uas),
+              };
+              var mobile = /Mobile/i.test(uas);
+
+              var versions = {
+                ie: NaN,
+                firefox: NaN,
+                chrome: NaN,
+                webkit: NaN,
+                osx: NaN,
+                edge: NaN,
+                operaMini: NaN,
+                ucWeb: NaN,
+              };
+              var agent =
+                /(?:MSIE.(\d+\.\d+))|(?:(?:Firefox|GranParadiso|Iceweasel).(\d+\.\d+))|(?:AppleWebKit.(\d+(?:\.\d+)?))|(?:Trident\/\d+\.\d+.*rv:(\d+\.\d+))/.exec(
+                  uas,
+                );
+              if (agent) {
+                versions.ie = agent[1]
+                  ? parseFloat(agent[1])
+                  : agent[4]
+                    ? parseFloat(agent[4])
+                    : NaN;
+
+                versions.firefox = agent[2] || "";
+                versions.webkit = agent[3] || "";
+                if (agent[3]) {
+                  var chromeAgent = /(?:Chrome\/(\d+\.\d+))/.exec(uas);
+                  versions.chrome = chromeAgent ? chromeAgent[1] : "";
+                  var edgeAgent = /(?:Edge\/(\d+\.\d+))/.exec(uas);
+                  versions.edge = edgeAgent ? edgeAgent[1] : "";
+                }
+              }
+
+              var mac = /(?:Mac OS X (\d+(?:[._]\d+)?))/.exec(uas);
+              if (mac) {
+                versions.osx = mac[1];
+              }
+
+              var operaMini = /(?:Opera Mini\/(\d+(?:\.\d+)?))/.exec(uas);
+              if (operaMini) {
+                versions.operaMini = operaMini[1];
+              }
+
+              var ucWeb = /(?:UCWEB\/(\d+(?:\.\d+))?)/.exec(uas);
+              if (ucWeb) {
+                versions.ucWeb = ucWeb[1] || "2.0";
+              }
+
+              function getVersionParts(version) {
+                return String(version)
+                  .split(".")
+                  .map(function map_$0(v) {
+                    return parseFloat(v);
+                  });
+              }
+
+              var UA = {};
+
+              Object.keys(versions).map(function map_$0(key) {
+                var getVersion = function getVersion() {
+                  return parseFloat(versions[key]);
+                };
+
+                getVersion.getVersionParts = function () {
+                  return getVersionParts(versions[key]);
+                };
+
+                UA[key] = getVersion;
+              });
+
+              Object.keys(devices).map(function map_$0(key) {
+                UA[key] = function () {
+                  return devices[key];
+                };
+              });
+
+              UA.mobile = function () {
+                return (
+                  devices.iphone || devices.ipad || devices.android || mobile
+                );
+              };
+
+              UA.mTouch = function () {
+                return devices.android || devices.iphone || devices.ipad;
+              };
+              UA.facebookInAppBrowser = function () {
+                return devices.nativeApp || devices.nativeAndroidApp;
+              };
+              UA.inAppBrowser = function () {
+                return (
+                  devices.nativeApp ||
+                  devices.nativeAndroidApp ||
+                  devices.nativeInstagramApp
+                );
+              };
+              UA.mBasic = function () {
+                return !!(versions.ucWeb || versions.operaMini);
+              };
+              UA.instagram = function () {
+                return devices.nativeInstagramApp;
+              };
+              UA.messenger = function () {
+                return (
+                  devices.nativeMessengeriOSApp ||
+                  devices.nativeMessengerAndroidApp
+                );
+              };
+              UA.isSupportedIABVersion = function (supportedVersion) {
+                if (!UA.facebookInAppBrowser()) {
+                  return false;
+                }
+                var fb4aVersionRaw = /(?:FBAV\/(\d+(\.\d+)+))/.exec(
+                  navigator.userAgent,
+                );
+                if (fb4aVersionRaw) {
+                  var fb4aVersion = parseFloat(fb4aVersionRaw[1]);
+                  if (fb4aVersion >= supportedVersion) {
+                    return true;
+                  }
+                }
+                return false;
+              };
+              var _default = UA;
+              exports["default"] = _default;
+            },
+            66,
+          );
+          __d(
+            "sdk.domReady",
+            [],
+            function $module_sdk_domReady(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports,
+            ) {
+              var queue;
+              var domIsReady =
+                "readyState" in document
+                  ? /loaded|complete/.test(document.readyState)
+                  : !!document.body;
+
+              function flush() {
+                if (!queue) {
+                  return;
+                }
+                var currentQueue = queue;
+
+                var fn;
+                while ((fn = currentQueue.shift())) {
+                  fn();
+                }
+                queue = null;
+              }
+
+              function domReady(fn) {
+                if (queue) {
+                  queue.push(fn);
+                  return;
+                } else {
+                  fn();
+                }
+              }
+
+              if (!domIsReady) {
+                queue = [];
+                if ("addEventListener" in document) {
+                  document.addEventListener("DOMContentLoaded", flush, false);
+                  window.addEventListener("load", flush, false);
+                } else if (document.attachEvent) {
+                  document.attachEvent("onreadystatechange", flush);
+
+                  window.attachEvent("onload", flush);
+                }
+              }
+              exports["default"] = domReady;
+            },
+            67,
+          );
+          __d(
+            "sdk.Content",
+            ["Log", "sdk.UA", "sdk.domReady"],
+            function $module_sdk_Content(
+              global,
+              require,
+              importDefault,
+              importNamespace,
+              requireLazy,
+              module,
+              exports,
+            ) {
+              "use strict";
+
+              var visibleRoot;
+              var hiddenRoot;
+
+              function append(content, root) {
+                if (!root) {
+                  if (!visibleRoot) {
+                    visibleRoot = root = document.getElementById("fb-root");
+                    if (!root) {
+                      importNamespace("Log").warn(
+                        'The "fb-root" div has not been created, auto-creating',
+                      );
+
+                      visibleRoot = root = document.createElement("div");
+                      root.id = "fb-root";
+
+                      if (importDefault("sdk.UA").ie() || !document.body) {
+                        importDefault("sdk.domReady")(function domReady_$0() {
+                          if (root && document.body) {
+                            document.body.appendChild(root);
+                          }
+                        });
+                      } else {
+                        document.body.appendChild(root);
+                      }
+                    }
+                    root.className += " fb_reset";
+                  } else {
+                    root = visibleRoot;
+                  }
+                }
+
+                root.appendChild(content);
+                return content;
+              }
+
+              function appendHidden(content) {
+                if (!hiddenRoot) {
+                  hiddenRoot = document.createElement("div");
+                  var style = hiddenRoot.style;
+                  style.position = "absolute";
+                  style.top = "-10000px";
+                  style.width = "0";
+                  style.height = "0";
+                  hiddenRoot = append(hiddenRoot);
+                }
+
+                return append(content, hiddenRoot);
+              }
+
+              function submitToTarget(opts, get) {
+                var form = document.createElement("form");
+                form.action = opts.url;
+                form.target = opts.target;
+                form.method = get ? "GET" : "POST";
+                appendHidden(form);
+
+                for (var key in opts.params) {
+                  if (Object.prototype.hasOwnProperty.call(opts.params, key)) {
+                    var val = opts.params[key];
+                    if (val != null) {
+                      var input = document.createElement("input");
+                      input.name = key;
+                      input.value = val;
+                      form.appendChild(input);
+                    }
+                  }
+                }
+
+                form.submit();
+                if (form.parentNode) {
+                  form.parentNode.removeChild(form);
+                }
+              }
+              exports.append = append;
+              exports.appendHidden = appendHidden;
+              exports.submitToTarget = submitToTarget;
+            },
+            98,
+          );
+          __d(
             "getErrorSafe",
             ["fb-error"],
             function $module_getErrorSafe(
@@ -7101,38 +9356,6 @@ try {
               exports["default"] = _AssertionError;
             },
             98,
-          );
-          __d(
-            "sprintf",
-            [],
-            function $module_sprintf(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports,
-            ) {
-              "use strict";
-
-              function sprintf(format) {
-                for (
-                  var _len = arguments.length,
-                    args = new Array(_len > 1 ? _len - 1 : 0),
-                    _key = 1;
-                  _key < _len;
-                  _key++
-                ) {
-                  args[_key - 1] = arguments[_key];
-                }
-                var index = 0;
-                return format.replace(/%s/g, function format_replace_$1() {
-                  return String(args[index++]);
-                });
-              }
-              exports["default"] = sprintf;
-            },
-            66,
           );
           __d(
             "Assert",
@@ -7720,213 +9943,6 @@ try {
               exports["default"] = _default;
             },
             66,
-          );
-          __d(
-            "Env",
-            [],
-            function $module_Env(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports,
-            ) {
-              var Env = {
-                ajaxpipe_token: null,
-                compat_iframe_token: null,
-                iframeKey: "",
-                iframeTarget: "",
-                iframeToken: "",
-                isCQuick: false,
-                jssp_header_sent: false,
-                jssp_targeting_enabled: false,
-                loadHyperion: false,
-                start: Date.now(),
-                nocatch: false,
-                useTrustedTypes: false,
-                isTrustedTypesReportOnly: false,
-                enableDefaultTrustedTypesPolicy: false,
-                ig_server_override: "",
-                barcelona_server_override: "",
-                ig_mqtt_wss_endpoint: "",
-                ig_mqtt_polling_endpoint: "",
-              };
-
-              if (global.Env) {
-                ES("Object", "assign", false, Env, global.Env);
-              }
-
-              global.Env = Env;
-              var _default = Env;
-              exports["default"] = _default;
-            },
-            66,
-          );
-          __d(
-            "fb-error-lite",
-            [],
-            function $module_fb_error_lite(
-              global,
-              require,
-              requireDynamic,
-              requireLazy,
-              module,
-              exports,
-            ) {
-              "use strict";
-
-              var TAALOpcode = {
-                PREVIOUS_FILE: 1,
-                PREVIOUS_FRAME: 2,
-                PREVIOUS_DIR: 3,
-                FORCED_KEY: 4,
-              };
-
-              function err(format) {
-                var err = new Error(format);
-
-                if (err.stack === undefined) {
-                  try {
-                    throw err;
-                  } catch (_) {}
-                }
-                err.messageFormat = format;
-                for (
-                  var _len = arguments.length,
-                    rawArgs = new Array(_len > 1 ? _len - 1 : 0),
-                    _key = 1;
-                  _key < _len;
-                  _key++
-                ) {
-                  rawArgs[_key - 1] = arguments[_key];
-                }
-                err.messageParams = rawArgs.map(function rawArgs_map_$0(p) {
-                  return String(p);
-                });
-                err.taalOpcodes = [TAALOpcode.PREVIOUS_FRAME];
-                return err;
-              }
-              var _default = {
-                err: err,
-                TAALOpcode: TAALOpcode,
-              };
-              exports["default"] = _default;
-            },
-            66,
-          );
-          __d(
-            "invariant",
-            ["Env", "fb-error-lite", "sprintf"],
-            function $module_invariant(
-              global,
-              require,
-              importDefault,
-              importNamespace,
-              requireLazy,
-              module,
-              exports,
-            ) {
-              "use strict";
-              var _importDefault_closure_Env;
-
-              function invariant(condition, format) {
-                if (!condition) {
-                  var formatString = format;
-                  for (
-                    var _len = arguments.length,
-                      params = new Array(_len > 2 ? _len - 2 : 0),
-                      _key = 2;
-                    _key < _len;
-                    _key++
-                  ) {
-                    params[_key - 2] = arguments[_key];
-                  }
-                  if (typeof formatString === "number") {
-                    var _buildProdMessage = buildProdMessage(
-                        formatString,
-                        params,
-                      ),
-                      _message = _buildProdMessage.message,
-                      decoderLink = _buildProdMessage.decoderLink;
-                    formatString = _message;
-                    params.unshift(decoderLink);
-                  } else if (formatString === undefined) {
-                    formatString = "Invariant: ";
-                    for (var i = 0; i < params.length; i++) {
-                      formatString += "%s,";
-                    }
-                  }
-
-                  var message = formatString;
-                  if (__DEV__) {
-                    message = importDefault("sprintf").apply(
-                      void 0,
-                      [formatString].concat(params),
-                    );
-                  }
-                  var error = new Error(message);
-                  error.name = "Invariant Violation";
-                  error.messageFormat = formatString;
-                  error.messageParams = params.map(function params_map_$0(p) {
-                    return String(p);
-                  });
-                  error.taalOpcodes = [
-                    importDefault("fb-error-lite").TAALOpcode.PREVIOUS_FRAME,
-                  ];
-
-                  error.stack;
-                  throw error;
-                }
-              }
-
-              function buildProdMessage(number, params) {
-                var message = "Minified invariant #" + number + "; %s";
-                if (params.length > 0) {
-                  message +=
-                    " Params: " +
-                    params
-                      .map(function params_map_$0(_) {
-                        return "%s";
-                      })
-                      .join(", ");
-                }
-
-                var decoderLink =
-                  (
-                    _importDefault_closure_Env ||
-                    (_importDefault_closure_Env = importDefault("Env"))
-                  ).show_invariant_decoder === true
-                    ? "visit " +
-                      buildDecoderLink(number, params) +
-                      " to see the full message."
-                    : "";
-
-                return { message: message, decoderLink: decoderLink };
-              }
-
-              function buildDecoderLink(number, params) {
-                var decodeURI =
-                  "https://www.internalfb.com/intern/invariant/" + number + "/";
-                if (params.length > 0) {
-                  decodeURI +=
-                    "?" +
-                    params
-                      .map(function params_map_$0(param, index) {
-                        return (
-                          "args[" +
-                          index +
-                          "]=" +
-                          encodeURIComponent(String(param))
-                        );
-                      })
-                      .join("&");
-                }
-                return decodeURI;
-              }
-              exports["default"] = invariant;
-            },
-            98,
           );
           __d(
             "UrlMap",
@@ -9696,6 +11712,297 @@ try {
             98,
           );
           __d(
+            "PromiseAnnotate",
+            [],
+            function $module_PromiseAnnotate(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports,
+            ) {
+              "use strict";
+
+              function setDisplayName(t, name) {
+                t.displayName = name;
+                return t;
+              }
+              function getDisplayName(t) {
+                var displayName = t.displayName;
+                if (typeof displayName === "string") {
+                  return displayName;
+                } else {
+                  return null;
+                }
+              }
+              exports.setDisplayName = setDisplayName;
+              exports.getDisplayName = getDisplayName;
+            },
+            66,
+          );
+          __d(
+            "Promise",
+            ["cr:6640"],
+            function $module_Promise(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports,
+            ) {
+              "use strict";
+              var _require;
+
+              var Promise =
+                (_require = require("cr:6640")) != null
+                  ? _require
+                  : global.Promise;
+
+              if (!Promise.allSettled) {
+                Promise.allSettled = function (iterable) {
+                  var arr;
+                  if (
+                    (typeof Symbol === "function"
+                      ? Symbol.iterator
+                      : "@@iterator") in iterable
+                  ) {
+                    arr = ES("Array", "from", false, iterable);
+                  } else {
+                    return Promise.reject(
+                      new TypeError(
+                        "Promise.allSettled must be passed an iterable.",
+                      ),
+                    );
+                  }
+
+                  var promises = Array(arr.length);
+                  var _loop = function _loop() {
+                    var value = arr[i];
+
+                    var isThenable =
+                      typeof value === "object" &&
+                      value !== null &&
+                      typeof value.then === "function";
+                    promises[i] = isThenable
+                      ? new Promise(function (resolve, _reject) {
+                          value.then(
+                            function onFulfilled(value) {
+                              resolve({ status: "fulfilled", value: value });
+                            },
+                            function onRejected(reason) {
+                              resolve({ status: "rejected", reason: reason });
+                            },
+                          );
+                        })
+                      : Promise.resolve({
+                          status: "fulfilled",
+                          value: value,
+                        });
+                  };
+                  for (var i = 0, len = arr.length; i < len; ++i) {
+                    _loop();
+                  }
+                  return Promise.all(promises);
+                };
+              }
+
+              if (!Promise.prototype["finally"]) {
+                Promise.prototype["finally"] = function (onSettle) {
+                  return this.then(
+                    function then_$0(value) {
+                      return Promise.resolve(onSettle()).then(
+                        function then_$0() {
+                          return value;
+                        },
+                      );
+                    },
+                    function then_$1(error) {
+                      return Promise.resolve(onSettle()).then(
+                        function then_$0() {
+                          throw error;
+                        },
+                      );
+                    },
+                  );
+                };
+              }
+
+              module.exports = Promise;
+            },
+            null,
+          );
+          __d(
+            "asyncToGeneratorRuntime",
+            ["Promise"],
+            function $module_asyncToGeneratorRuntime(
+              global,
+              require,
+              requireDynamic,
+              requireLazy,
+              module,
+              exports,
+            ) {
+              "use strict";
+              var _require_closure_Promise;
+
+              function asyncGeneratorStep(
+                gen,
+                resolve,
+                reject,
+                _next,
+                _throw,
+                key,
+                arg,
+              ) {
+                try {
+                  var info = gen[key](arg);
+                  var value = info.value;
+                } catch (error) {
+                  reject(error);
+                  return;
+                }
+
+                if (info.done) {
+                  resolve(value);
+                } else {
+                  (
+                    _require_closure_Promise ||
+                    (_require_closure_Promise = require("Promise"))
+                  )
+                    .resolve(value)
+                    .then(_next, _throw);
+                }
+              }
+
+              function asyncToGenerator(fn) {
+                return function () {
+                  var self = this,
+                    args = arguments;
+                  return new (
+                    _require_closure_Promise ||
+                    (_require_closure_Promise = require("Promise"))
+                  )(function (resolve, reject) {
+                    var gen = fn.apply(self, args);
+                    function _next(value) {
+                      asyncGeneratorStep(
+                        gen,
+                        resolve,
+                        reject,
+                        _next,
+                        _throw,
+                        "next",
+                        value,
+                      );
+                    }
+                    function _throw(err) {
+                      asyncGeneratorStep(
+                        gen,
+                        resolve,
+                        reject,
+                        _next,
+                        _throw,
+                        "throw",
+                        err,
+                      );
+                    }
+
+                    _next(undefined);
+                  });
+                };
+              }
+              exports.asyncToGenerator = asyncToGenerator;
+            },
+            66,
+          );
+          __d(
+            "promiseDone",
+            [
+              "ErrorPubSub",
+              "PromiseAnnotate",
+              "asyncToGeneratorRuntime",
+              "getErrorSafe",
+            ],
+            function $module_promiseDone(
+              global,
+              require,
+              importDefault,
+              importNamespace,
+              requireLazy,
+              module,
+              exports,
+            ) {
+              var _importNamespace_closure_PromiseAnnotate;
+              var _importDefault_closure_ErrorPubSub;
+
+              function logError(err) {
+                var error = importDefault("getErrorSafe")(err);
+                error.loggingSource = "PROMISE_DONE";
+                (
+                  _importDefault_closure_ErrorPubSub ||
+                  (_importDefault_closure_ErrorPubSub =
+                    importDefault("ErrorPubSub"))
+                ).reportError(error);
+              }
+
+              function wrapReject(onReject) {
+                return (function () {
+                  var _ref =
+                    require("asyncToGeneratorRuntime").asyncToGenerator(
+                      function* asyncToGeneratorRuntime_asyncToGenerator_$0(
+                        err,
+                      ) {
+                        try {
+                          var result = yield onReject(err);
+
+                          return result;
+                        } catch (err2) {
+                          logError(err2);
+                        }
+                      },
+                    );
+                  return function (_x) {
+                    return _ref.apply(this, arguments);
+                  };
+                })();
+              }
+
+              function promiseDone(
+                promise,
+                onFulfill,
+
+                onReject,
+              ) {
+                var finalOnReject =
+                  onReject != null ? wrapReject(onReject) : null;
+                var finalPromise =
+                  arguments.length > 1
+                    ? promise.then(onFulfill, finalOnReject)
+                    : promise;
+
+                if (onReject == null) {
+                  finalPromise.then(null, logError);
+                }
+
+                var promiseDisplayName = (
+                  _importNamespace_closure_PromiseAnnotate ||
+                  (_importNamespace_closure_PromiseAnnotate =
+                    importNamespace("PromiseAnnotate"))
+                ).getDisplayName(promise);
+                if (promiseDisplayName != null) {
+                  void (
+                    _importNamespace_closure_PromiseAnnotate ||
+                    (_importNamespace_closure_PromiseAnnotate =
+                      importNamespace("PromiseAnnotate"))
+                  ).setDisplayName(finalPromise, promiseDisplayName);
+                }
+              }
+              exports["default"] = promiseDone;
+            },
+            98,
+          );
+          __d(
             "sdk.Impressions",
             [
               "Miny",
@@ -9704,6 +12011,7 @@ try {
               "getBlankIframeSrc",
               "guid",
               "insertIframe",
+              "promiseDone",
               "sdk.Content",
               "sdk.Runtime",
             ],
@@ -9792,16 +12100,22 @@ try {
                 if (should_include_creds === void 0) {
                   should_include_creds = false;
                 }
-                var standardFetchOptions = {
-                  mode: "no-cors",
-                  credentials: "include",
-                };
-                if (!should_include_creds) {
-                  standardFetchOptions.credentials = "omit";
-                }
-
                 if (fullUrlPath.length <= 2000) {
-                  window.fetch(fullUrlPath, standardFetchOptions);
+                  if (should_include_creds) {
+                    importDefault("promiseDone")(
+                      window.fetch(fullUrlPath, {
+                        mode: "no-cors",
+                        credentials: "include",
+                      }),
+                    );
+                  } else {
+                    importDefault("promiseDone")(
+                      window.fetch(fullUrlPath, {
+                        mode: "no-cors",
+                        credentials: "omit",
+                      }),
+                    );
+                  }
                 } else {
                   var searchParams = new URLSearchParams();
 
@@ -9814,15 +12128,25 @@ try {
                     }
                   }
 
-                  var fetchOptions = babelHelpers["extends"](
-                    {
-                      method: "POST",
-                      body: searchParams,
-                    },
-                    standardFetchOptions,
-                  );
-
-                  window.fetch(url, fetchOptions);
+                  if (should_include_creds) {
+                    importDefault("promiseDone")(
+                      window.fetch(url, {
+                        method: "POST",
+                        body: searchParams,
+                        mode: "no-cors",
+                        credentials: "include",
+                      }),
+                    );
+                  } else {
+                    importDefault("promiseDone")(
+                      window.fetch(url, {
+                        method: "POST",
+                        body: searchParams,
+                        mode: "no-cors",
+                        credentials: "omit",
+                      }),
+                    );
+                  }
                 }
               }
 
@@ -9886,23 +12210,6 @@ try {
               }
               exports.impression = impression;
               exports.log = log;
-            },
-            98,
-          );
-          __d(
-            "FBLogger",
-            ["fb-error"],
-            function $module_FBLogger(
-              global,
-              require,
-              importDefault,
-              importNamespace,
-              requireLazy,
-              module,
-              exports,
-            ) {
-              "use strict";
-              exports["default"] = importDefault("fb-error").FBLogger;
             },
             98,
           );
@@ -24550,7 +26857,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1032329374","namespace":"FB","message":"' +
+        '","revision":"1032337917","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
