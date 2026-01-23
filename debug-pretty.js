@@ -1,4 +1,4 @@
-/*1769126202,,JIT Construction: v1032337917,en_US*/
+/*1769131390,,JIT Construction: v1032343623,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3767,7 +3767,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1032337917",
+            revision: "1032343623",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -19806,7 +19806,9 @@ try {
                       ? _feature3
                       : false) &&
                     params.display === "touch" &&
-                    method.url === "dialog/oauth" &&
+                    method.url &&
+                    typeof method.url === "string" &&
+                    ES(method.url, "includes", true, "dialog/oauth") &&
                     importNamespace(
                       "sdk.AuthUtils",
                     ).getMobileOperatingSystem() === "android";
@@ -26857,7 +26859,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1032337917","namespace":"FB","message":"' +
+        '","revision":"1032343623","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
