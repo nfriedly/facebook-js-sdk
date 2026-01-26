@@ -1,4 +1,4 @@
-/*1769131390,,JIT Construction: v1032343623,en_US*/
+/*1769395319,,JIT Construction: v1032437547,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -553,7 +553,7 @@ try {
                   if (isNaN(pos)) {
                     pos = 0;
                   }
-                  return string.indexOf(String(search), pos) != -1;
+                  return string.indexOf(String(search), pos) !== -1;
                 },
 
                 repeat: function repeat(count) {
@@ -3753,7 +3753,7 @@ try {
               ],
               allow_shadow_dom: true,
               use_extended_dialog_path: { rate: 100 },
-              use_oauth_subdomain: { rate: 1 },
+              use_oauth_subdomain: { rate: 10 },
             },
           });
           __d("JSSDKCssConfig", [], {
@@ -3767,7 +3767,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1032343623",
+            revision: "1032437547",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -10586,7 +10586,7 @@ try {
                 if (!subs[name]) {
                   subs[name] = [cb];
                 } else {
-                  if (subs[name].indexOf(cb) == -1) {
+                  if (subs[name].indexOf(cb) === -1) {
                     subs[name].push(cb);
                   }
                 }
@@ -17180,7 +17180,7 @@ try {
 
                   var body;
                   var relative_url = uri.removeQueryData("method").toString();
-                  if (method.toLowerCase() == "post") {
+                  if (method.toLowerCase() === "post") {
                     var queryData = uri.getQueryData();
                     body = importDefault("QueryString").encode(queryData);
                     var filteredQueryData = importDefault(
@@ -18810,7 +18810,7 @@ try {
                     return;
                   }
 
-                  if (message.substring(0, 1) == "{") {
+                  if (message.substring(0, 1) === "{") {
                     try {
                       message = ES("JSON", "parse", false, message);
                     } catch (_unused2) {
@@ -26859,7 +26859,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1032343623","namespace":"FB","message":"' +
+        '","revision":"1032437547","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
