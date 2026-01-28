@@ -1,4 +1,4 @@
-/*1769551008,,JIT Construction: v1032534684,en_US*/
+/*1769634088,,JIT Construction: v1032587805,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3753,7 +3753,7 @@ try {
               ],
               allow_shadow_dom: true,
               use_extended_dialog_path: { rate: 100 },
-              use_oauth_subdomain: { rate: 50 },
+              use_oauth_subdomain: { rate: 100 },
             },
           });
           __d("JSSDKCssConfig", [], {
@@ -3767,7 +3767,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1032534684",
+            revision: "1032587805",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -4589,8 +4589,8 @@ try {
               }
 
               function getStackWithoutMessage(error) {
-                var name = error.name,
-                  message = error.message,
+                var message = error.message,
+                  name = error.name,
                   stack = error.stack;
 
                 if (stack == null) {
@@ -4704,10 +4704,10 @@ try {
               }
 
               function formatStackFrame(_ref3) {
-                var identifier = _ref3.identifier,
-                  script = _ref3.script,
+                var column = _ref3.column,
+                  identifier = _ref3.identifier,
                   line = _ref3.line,
-                  column = _ref3.column;
+                  script = _ref3.script;
                 var text =
                   "    at " +
                   (identifier !== null && identifier !== void 0
@@ -5729,11 +5729,11 @@ try {
                   format,
                 ) {
                   var safeFormat = String(format);
-                  var events = this.events,
-                    project = this.project,
+                  var blameModule = this.blameModule,
+                    events = this.events,
+                    forcedKey = this.forcedKey,
                     metadata = this.metadata,
-                    blameModule = this.blameModule,
-                    forcedKey = this.forcedKey;
+                    project = this.project;
                   var error = this.error;
                   var normalizedError;
                   for (
@@ -7330,10 +7330,10 @@ try {
                         );
                         guarded = false;
                       } else {
-                        var isRoot = lastFrame.isRoot,
-                          contextID = lastFrame.contextID,
+                        var contextID = lastFrame.contextID,
                           indirectParentID = lastFrame.indirectParentID,
-                          isEdgeContinuation = lastFrame.isEdgeContinuation;
+                          isEdgeContinuation = lastFrame.isEdgeContinuation,
+                          isRoot = lastFrame.isRoot;
                         var endTime = (
                           _require_closure_performanceAbsoluteNow ||
                           (_require_closure_performanceAbsoluteNow = require("performanceAbsoluteNow"))
@@ -26856,7 +26856,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1032534684","namespace":"FB","message":"' +
+        '","revision":"1032587805","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
