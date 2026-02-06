@@ -1,4 +1,4 @@
-/*1770335891,,JIT Construction: v1033008986,en_US*/
+/*1770349213,,JIT Construction: v1033020866,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3767,7 +3767,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1033008986",
+            revision: "1033020866",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -10299,7 +10299,6 @@ try {
             },
             98,
           );
-
           __d(
             "AppUserPropertyAPIBuiltinField",
             [],
@@ -10311,21 +10310,22 @@ try {
               module,
               exports,
             ) {
-              module.exports = {
+              var _default = Object.freeze({
+                GENDER: "$gender",
+                CITY: "$city",
+                STATE: "$state",
+                ZIPCODE: "$zipcode",
+                COUNTRY: "$country",
+                LANGUAGE: "$language",
+                CURRENCY: "$currency",
+                INSTALL_SOURCE: "$install_source",
+                USER_TYPE: "$user_type",
                 ACCOUNT_CREATED_TIME: "$account_created_time",
                 APP_ID: "$app_id",
-                CITY: "$city",
-                COUNTRY: "$country",
-                CURRENCY: "$currency",
-                GENDER: "$gender",
-                INSTALL_SOURCE: "$install_source",
-                LANGUAGE: "$language",
-                STATE: "$state",
-                USER_TYPE: "$user_type",
-                ZIPCODE: "$zipcode",
-              };
+              });
+              exports["default"] = _default;
             },
-            null,
+            66,
           );
           __d(
             "sdk.AppEvents",
@@ -26867,7 +26867,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1033008986","namespace":"FB","message":"' +
+        '","revision":"1033020866","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
