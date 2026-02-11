@@ -1,4 +1,4 @@
-/*1770660516,,JIT Construction: v1033140046,en_US*/
+/*1770778289,,JIT Construction: v1033252619,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3767,7 +3767,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1033140046",
+            revision: "1033252619",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -19703,16 +19703,13 @@ try {
                     ? babelHelpers["extends"]({}, UIServer.Methods[name])
                     : {};
                   var id = params.id || importDefault("guid")();
-                  var useSSL = true;
 
                   ES("Object", "assign", false, params, {
                     app_id: importDefault("sdk.Runtime").getClientID(),
                     locale: importDefault("sdk.Runtime").getLocale(),
                     sdk: "joey",
-
                     access_token:
-                      (useSSL &&
-                        importDefault("sdk.Runtime").getAccessToken()) ||
+                      importDefault("sdk.Runtime").getAccessToken() ||
                       undefined,
                   });
 
@@ -26868,7 +26865,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1033140046","namespace":"FB","message":"' +
+        '","revision":"1033252619","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
