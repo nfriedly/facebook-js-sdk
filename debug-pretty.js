@@ -1,4 +1,4 @@
-/*1770778289,,JIT Construction: v1033252619,en_US*/
+/*1770781919,,JIT Construction: v1033258346,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3767,7 +3767,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1033252619",
+            revision: "1033258346",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -7712,18 +7712,23 @@ try {
 
                 function addFromSetImmediateArguments(args) {
                   var handler = args[0];
+
                   args = Array.prototype.slice.call(args, 1);
+
                   tasksByHandle[nextHandle] = function () {
                     handler.apply(undefined, args);
                   };
+
                   queueTail = queueTail.next = { handle: nextHandle++ };
                   return queueTail.handle;
                 }
 
                 function flushQueue() {
                   var next, task;
+
                   while (!currentlyRunningATask && (next = queueHead.next)) {
                     queueHead = next;
+
                     if ((task = tasksByHandle[next.handle])) {
                       currentlyRunningATask = true;
                       try {
@@ -7884,6 +7889,7 @@ try {
                 }
 
                 exports.setImmediate = setImmediate;
+
                 exports.clearImmediate = clearImmediate;
               })(
                 typeof self === "undefined"
@@ -7918,6 +7924,7 @@ try {
                 !setImmediateImplementation
               ) {
                 var ImmediateImplementation = require("ImmediateImplementation");
+
                 setImmediateImplementation =
                   ImmediateImplementation.setImmediate;
               }
@@ -26865,7 +26872,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1033252619","namespace":"FB","message":"' +
+        '","revision":"1033258346","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
