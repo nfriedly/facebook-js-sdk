@@ -1,4 +1,4 @@
-/*1771020158,,JIT Construction: v1033451588,en_US*/
+/*1771040350,,JIT Construction: v1033472679,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -2746,6 +2746,7 @@ try {
           /**
            * (c) Meta Platforms, Inc. and affiliates. Confidential and proprietary.
            *
+           *
            * @format
            * @oncall jssdk
            * @ServerCallableModule
@@ -2761,6 +2762,7 @@ try {
               exports,
             ) {
               var babelHelpers = {};
+
               var hasOwn = Object.prototype.hasOwnProperty;
 
               babelHelpers.inheritsLoose = function (subClass, superClass) {
@@ -2793,7 +2795,9 @@ try {
                     }
                     _cache.set(Class, Wrapper);
                   }
+
                   babelHelpers.inheritsLoose(Wrapper, Class);
+
                   function Wrapper() {
                     Class.apply(this, arguments);
                   }
@@ -2818,7 +2822,9 @@ try {
 
               babelHelpers.construct = function (klass, arr) {
                 var a = [null];
+
                 a.push.apply(a, arr);
+
                 return new (Function.prototype.bind.apply(klass, a))();
               };
 
@@ -2828,6 +2834,7 @@ try {
                   if (!hasOwn.call(obj, i) || keys.indexOf(i) >= 0) {
                     continue;
                   }
+
                   target[i] = obj[i];
                 }
                 return target;
@@ -3768,7 +3775,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1033451588",
+            revision: "1033472679",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -26897,7 +26904,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1033451588","namespace":"FB","message":"' +
+        '","revision":"1033472679","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
