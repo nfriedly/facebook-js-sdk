@@ -1,4 +1,4 @@
-/*1771040350,,JIT Construction: v1033472679,en_US*/
+/*1771351783,,JIT Construction: v1033552831,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3775,7 +3775,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1033472679",
+            revision: "1033552831",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -16521,7 +16521,7 @@ try {
                     )
                   ) {
                     importDefault("sdk.Canvas.Environment").getPageInfo(
-                      function CanvasEnvironment_getPageInfo_$0(pageInfo) {
+                      function Environment_getPageInfo_$0(pageInfo) {
                         Dialog._centerActive(pageInfo);
                       },
                     );
@@ -26904,7 +26904,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1033472679","namespace":"FB","message":"' +
+        '","revision":"1033552831","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
