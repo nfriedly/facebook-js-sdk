@@ -1,4 +1,4 @@
-/*1771451954,,JIT Construction: v1033647198,en_US*/
+/*1771472757,,JIT Construction: v1033679241,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3775,7 +3775,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1033647198",
+            revision: "1033679241",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -22917,7 +22917,7 @@ try {
                   dom &&
                     dom.nodeType &&
                     dom.nodeType === 1 &&
-                    !!dom.getElementsByTagName,
+                    "getElementsByTagName" in dom,
                   "Invalid DOM node passed to FB.XFBML.parse()",
                 );
                 importDefault("Assert").isFunction(
@@ -26902,7 +26902,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1033647198","namespace":"FB","message":"' +
+        '","revision":"1033679241","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
