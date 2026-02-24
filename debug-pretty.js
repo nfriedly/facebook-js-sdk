@@ -1,4 +1,4 @@
-/*1771901468,,JIT Construction: v1033927531,en_US*/
+/*1771913624,,JIT Construction: v1033942132,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3774,7 +3774,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1033927531",
+            revision: "1033942132",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -22111,8 +22111,7 @@ try {
                 if (postBodyParams) {
                   var form = document.createElement("form");
                   form.method = "POST";
-
-                  form.action = src;
+                  form.action = opts_arg.url;
                   form.target = name;
                   for (var _key in postBodyParams) {
                     var input = document.createElement("input");
@@ -26902,7 +26901,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1033927531","namespace":"FB","message":"' +
+        '","revision":"1033942132","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
