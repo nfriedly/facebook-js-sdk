@@ -1,4 +1,4 @@
-/*1771891186,,JIT Construction: v1033916097,en_US*/
+/*1771901468,,JIT Construction: v1033927531,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3774,7 +3774,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1033916097",
+            revision: "1033927531",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -23509,22 +23509,22 @@ try {
                     _this.params,
                   );
 
-                  ES("Object", "assign", false, _this.params, {
-                    app_id: importDefault("sdk.Runtime").getClientID(),
-                    locale: importDefault("sdk.Runtime").getLocale(),
-                    sdk: "joey",
-                    kid_directed_site:
-                      importDefault("sdk.Runtime").getKidDirectedSite(),
-                    channel: importNamespace("sdk.XD").handler(
-                      function XD_handler_$0(msg) {
-                        if (msg != null) {
-                          _this.inform("xd." + msg.type, msg);
-                        }
-                      },
-                      "parent.parent",
-                      true,
-                    ),
-                  });
+                  _this.params.app_id =
+                    importDefault("sdk.Runtime").getClientID();
+                  _this.params.locale =
+                    importDefault("sdk.Runtime").getLocale();
+                  _this.params.sdk = "joey";
+                  _this.params.kid_directed_site =
+                    importDefault("sdk.Runtime").getKidDirectedSite();
+                  _this.params.channel = importNamespace("sdk.XD").handler(
+                    function XD_handler_$0(msg) {
+                      if (msg != null) {
+                        _this.inform("xd." + msg.type, msg);
+                      }
+                    },
+                    "parent.parent",
+                    true,
+                  );
                   return _this;
                 }
                 babelHelpers.inheritsLoose(DOMPlugin, _Observable);
@@ -26902,7 +26902,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1033916097","namespace":"FB","message":"' +
+        '","revision":"1033927531","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
