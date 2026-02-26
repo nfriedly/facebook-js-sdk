@@ -1,4 +1,4 @@
-/*1772080153,,JIT Construction: v1034095029,en_US*/
+/*1772086367,,JIT Construction: v1034102384,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -831,7 +831,7 @@ try {
 
                 isSafeInteger: function isSafeInteger(value) {
                   return (
-                    this.isFinite(value) &&
+                    ES6Number.isFinite(value) &&
                     value >= this.MIN_SAFE_INTEGER &&
                     value <= this.MAX_SAFE_INTEGER &&
                     Math.floor(value) === value
@@ -3774,7 +3774,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1034095029",
+            revision: "1034102384",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -26901,7 +26901,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1034095029","namespace":"FB","message":"' +
+        '","revision":"1034102384","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
