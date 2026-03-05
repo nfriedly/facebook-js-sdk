@@ -1,4 +1,4 @@
-/*1772712053,,JIT Construction: v1034558489,en_US*/
+/*1772744617,,JIT Construction: v1034583662,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3774,7 +3774,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1034558489",
+            revision: "1034583662",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -12967,14 +12967,22 @@ try {
             function $module_URIAbstractBase(
               global,
               require,
-              requireDynamic,
+              importDefault,
+              importNamespace,
               requireLazy,
               module,
               exports,
               invariant,
             ) {
-              var _require_closure_URISchemes;
-              var _require_closure_URIRFC3986;
+              var _importNamespace_closure_URISchemes;
+              var _importNamespace_closure_URIRFC3986;
+
+              var PHPStrictQuerySerializer = {
+                deserialize: importNamespace("PHPStrictQuerySerializer")
+                  .deserialize,
+                serialize: importNamespace("PHPStrictQuerySerializer")
+                  .serialize,
+              };
 
               var UNSAFE_DOMAIN_PATTERN = new RegExp(
                 "[\\x00-\\x2c\\x2f\\x3b-\\x40\\x5c\\x5e\\x60\\x7b-\\x7f" +
@@ -12988,8 +12996,6 @@ try {
 
               var uriFilters = [];
               var _URIAbstractBase = (function () {
-                "use strict";
-
                 function URIAbstractBase(
                   uri,
                   serializer,
@@ -12998,8 +13004,9 @@ try {
                 ) {
                   if (schemeOptions === void 0) {
                     schemeOptions = (
-                      _require_closure_URISchemes ||
-                      (_require_closure_URISchemes = require("URISchemes"))
+                      _importNamespace_closure_URISchemes ||
+                      (_importNamespace_closure_URISchemes =
+                        importNamespace("URISchemes"))
                     ).Options.INCLUDE_DEFAULTS;
                   }
                   serializer || invariant(0, "no serializer set");
@@ -13049,8 +13056,9 @@ try {
                   }
                   uriToParse = uriToParse.toString().trim();
                   var components = (
-                    _require_closure_URIRFC3986 ||
-                    (_require_closure_URIRFC3986 = require("URIRFC3986"))
+                    _importNamespace_closure_URIRFC3986 ||
+                    (_importNamespace_closure_URIRFC3986 =
+                      importNamespace("URIRFC3986"))
                   ).parse(uriToParse) || {
                     fragment: null,
                     scheme: null,
@@ -13059,8 +13067,9 @@ try {
                   if (
                     !shouldThrow &&
                     !(
-                      _require_closure_URISchemes ||
-                      (_require_closure_URISchemes = require("URISchemes"))
+                      _importNamespace_closure_URISchemes ||
+                      (_importNamespace_closure_URISchemes =
+                        importNamespace("URISchemes"))
                     ).isAllowed(
                       components.scheme,
                       uri.$URIAbstractBase$p_schemeOptions,
@@ -13147,7 +13156,7 @@ try {
                     !uri.getDomain() &&
                     uri.getPath() !== ""
                   ) {
-                    require("FBLogger")("uri").warn(
+                    importDefault("FBLogger")("uri").warn(
                       'URI.parse: invalid URI (protocol "' +
                         uri.getProtocol() +
                         '" with no domain)',
@@ -13197,8 +13206,9 @@ try {
                 _proto.setProtocol = function setProtocol(protocol) {
                   if (
                     !(
-                      _require_closure_URISchemes ||
-                      (_require_closure_URISchemes = require("URISchemes"))
+                      _importNamespace_closure_URISchemes ||
+                      (_importNamespace_closure_URISchemes =
+                        importNamespace("URISchemes"))
                     ).isAllowed(
                       protocol,
                       this.$URIAbstractBase$p_schemeOptions,
@@ -13494,7 +13504,8 @@ try {
                       true,
                       false,
                       isDomainNeedRawQuery,
-                      require("PHPStrictQuerySerializer"),
+
+                      PHPStrictQuerySerializer,
                     );
                   };
                 _proto.$URIAbstractBase$p_toStringWithFilters =
@@ -13602,7 +13613,7 @@ try {
                   );
                 };
                 _proto.isSameOrigin = function isSameOrigin(otherURI) {
-                  return require("isSameOrigin")(this, otherURI);
+                  return importDefault("isSameOrigin")(this, otherURI);
                 };
                 _proto.getQualifiedURIBase = function getQualifiedURIBase() {
                   return new URIAbstractBase(
@@ -13626,7 +13637,7 @@ try {
                   var qualified = this.qualify();
                   var domain = qualified.getDomain();
                   return this.setDomain(
-                    require("setHostSubdomain")(domain, subdomain),
+                    importDefault("setHostSubdomain")(domain, subdomain),
                   );
                 };
                 _proto.getSubdomain = function getSubdomain() {
@@ -13681,10 +13692,9 @@ try {
                   };
                 return URIAbstractBase;
               })();
-
-              module.exports = _URIAbstractBase;
+              exports["default"] = _URIAbstractBase;
             },
-            null,
+            98,
           );
           __d(
             "sdk.URI",
@@ -26899,7 +26909,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1034558489","namespace":"FB","message":"' +
+        '","revision":"1034583662","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
