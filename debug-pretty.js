@@ -1,4 +1,4 @@
-/*1772705213,,JIT Construction: v1034557247,en_US*/
+/*1772712053,,JIT Construction: v1034558489,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3127,7 +3127,7 @@ try {
               }
             }
 
-            Object.assign(enumerate, {
+            ES("Object", "assign", false, enumerate, {
               KIND_KEYS: KIND_KEYS,
               KIND_VALUES: KIND_VALUES,
               KIND_ENTRIES: KIND_ENTRIES,
@@ -3321,7 +3321,12 @@ try {
                     throw new TypeError("Callback must be callable.");
                   }
 
-                  var boundCallback = callback.bind(thisArg || undefined);
+                  var boundCallback = ES(
+                    callback,
+                    "bind",
+                    true,
+                    thisArg || undefined,
+                  );
                   var mapData = this._mapData;
 
                   for (var i = 0; i < mapData.length; i++) {
@@ -3769,7 +3774,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1034557247",
+            revision: "1034558489",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -3835,7 +3840,7 @@ try {
               };
 
               if (global.Env) {
-                Object.assign(Env, global.Env);
+                ES("Object", "assign", false, Env, global.Env);
               }
 
               global.Env = Env;
@@ -4128,19 +4133,27 @@ try {
                 ) {
                   error = err(
                     "Rescript exception thrown: %s",
-                    JSON.stringify(maybeError),
+                    ES("JSON", "stringify", false, maybeError),
                   );
                 } else if (
                   typeof (maybeError === null || maybeError === void 0
                     ? void 0
                     : maybeError.then) === "function"
                 ) {
-                  error = err("Promise thrown: %s", JSON.stringify(maybeError));
+                  error = err(
+                    "Promise thrown: %s",
+                    ES("JSON", "stringify", false, maybeError),
+                  );
                 } else if (typeof maybeError.message !== "string") {
                   error = err(
                     "Non-error thrown: %s, keys: %s",
                     String(maybeError),
-                    JSON.stringify(Object.keys(maybeError).sort()),
+                    ES(
+                      "JSON",
+                      "stringify",
+                      false,
+                      Object.keys(maybeError).sort(),
+                    ),
                   );
                 } else if (
                   maybeError.messageFormat != null &&
@@ -4150,7 +4163,12 @@ try {
                     "Error with non-string messageFormat thrown: %s, %s, keys: %s",
                     String(maybeError.message),
                     String(maybeError),
-                    JSON.stringify(Object.keys(maybeError).sort()),
+                    ES(
+                      "JSON",
+                      "stringify",
+                      false,
+                      Object.keys(maybeError).sort(),
+                    ),
                   );
                 } else if (
                   Object.isExtensible &&
@@ -4478,7 +4496,8 @@ try {
 
                 if (index < params.length) {
                   formattedMessage +=
-                    " PARAMS" + JSON.stringify(params.slice(index));
+                    " PARAMS" +
+                    ES("JSON", "stringify", false, params.slice(index));
                 }
 
                 return formattedMessage;
@@ -4588,7 +4607,7 @@ try {
                 if (name != null && message != null && message !== "") {
                   var prefix = name + ": " + message + "\n";
 
-                  if (stack.startsWith(prefix)) {
+                  if (ES(stack, "startsWith", true, prefix)) {
                     return stack.substr(prefix.length);
                   }
 
@@ -4600,7 +4619,7 @@ try {
                 if (name != null) {
                   var _prefix = name + "\n";
 
-                  if (stack.startsWith(_prefix)) {
+                  if (ES(stack, "startsWith", true, _prefix)) {
                     return stack.substr(_prefix.length);
                   }
                 }
@@ -4625,7 +4644,7 @@ try {
                 var line;
                 var column;
 
-                if (frame.includes("charset=utf-8;base64,")) {
+                if (ES(frame, "includes", true, "charset=utf-8;base64,")) {
                   identifier = "<inlined-file>";
                 } else {
                   var matches;
@@ -5113,7 +5132,9 @@ try {
 
                         if (args != null && args.length) {
                           normalizedError.extra[
-                            Array.from(args).toString().substring(0, 100)
+                            ES("Array", "from", false, args)
+                              .toString()
+                              .substring(0, 100)
                           ] = "args";
                         }
                       }
@@ -5162,7 +5183,7 @@ try {
                   }
 
                   if (__DEV__) {
-                    guarded.toString = func.toString.bind(func);
+                    guarded.toString = ES(func.toString, "bind", true, func);
                   }
 
                   return guarded;
@@ -5287,7 +5308,10 @@ try {
                   server_revision: _toInt64Nullable(info.server_revision),
                   spin: _toInt64Nullable(info.spin),
                   svn_rev: String(info.client_revision),
-                  additional_client_revisions: Array.from(
+                  additional_client_revisions: ES(
+                    "Array",
+                    "from",
+                    false,
                     (_info$additional_clie =
                       info.additional_client_revisions) !== null &&
                       _info$additional_clie !== void 0
@@ -5361,13 +5385,13 @@ try {
                 if (
                   (_info$projectBlocklis = info.projectBlocklist) !== null &&
                   _info$projectBlocklis !== void 0 &&
-                  _info$projectBlocklis.includes(error.project)
+                  ES(_info$projectBlocklis, "includes", true, error.project)
                 ) {
                   return false;
                 }
 
                 var errorPayload = createErrorPayload(error, info);
-                Object.assign(errorPayload, {
+                ES("Object", "assign", false, errorPayload, {
                   ancestors: errorAncestors.slice(),
                   clientWeight: _toInt64(clientWeight),
                   page_position: _toInt64(pagePosition),
@@ -5375,7 +5399,7 @@ try {
 
                 if (
                   errorAncestors.length < 15 &&
-                  ["fatal", "error"].includes(error.type)
+                  ES(["fatal", "error"], "includes", true, error.type)
                 ) {
                   errorAncestors.push(error.hash);
                 }
@@ -5801,7 +5825,10 @@ try {
                         metadata.format(),
                       );
                       var uniqueMetadata = new Set(allMetadata);
-                      normalizedError.metadata = Array.from(
+                      normalizedError.metadata = ES(
+                        "Array",
+                        "from",
+                        false,
                         uniqueMetadata.values(),
                       );
                     }
@@ -5830,7 +5857,12 @@ try {
                       );
                     }
                   }
-                  normalizedError.tags = Array.from(this.loggerTags);
+                  normalizedError.tags = ES(
+                    "Array",
+                    "from",
+                    false,
+                    this.loggerTags,
+                  );
                   ErrorPubSub$1.reportNormalizedError(normalizedError);
                   return error;
                 };
@@ -5988,7 +6020,9 @@ try {
                   return this;
                 };
                 _proto2.tags = function tags(_tags) {
-                  var newTags = _tags.concat(Array.from(this.loggerTags));
+                  var newTags = _tags.concat(
+                    ES("Array", "from", false, this.loggerTags),
+                  );
                   var newLogger = new FBLogMessage(this.project, newTags);
                   this.events.forEach(function events_forEach_$0(event) {
                     return newLogger.event(event);
@@ -6004,7 +6038,9 @@ try {
                 _proto2.getTagString = function getTagString() {
                   var tagString =
                     this.loggerTags.size > 0
-                      ? "[" + Array.from(this.loggerTags).join("|") + "] "
+                      ? "[" +
+                        ES("Array", "from", false, this.loggerTags).join("|") +
+                        "] "
                       : "";
                   return tagString;
                 };
@@ -6980,7 +7016,11 @@ try {
                 adjusted: coreAdjustedFunction,
               };
 
-              var performanceAbsoluteNow = Object.assign(
+              var performanceAbsoluteNow = ES(
+                "Object",
+                "assign",
+                false,
+
                 coreFunction,
                 extensions,
               );
@@ -8532,13 +8572,13 @@ try {
                 level = l;
               }
 
-              var debug = log.bind(null, "debug", Level.DEBUG);
+              var debug = ES(log, "bind", true, null, "debug", Level.DEBUG);
 
-              var info = log.bind(null, "info", Level.INFO);
+              var info = ES(log, "bind", true, null, "info", Level.INFO);
 
-              var warn = log.bind(null, "warn", Level.WARNING);
+              var warn = ES(log, "bind", true, null, "warn", Level.WARNING);
 
-              var error = log.bind(null, "error", Level.ERROR);
+              var error = ES(log, "bind", true, null, "error", Level.ERROR);
               exports.Level = Level;
               exports.log = log;
               exports.setLevel = setLevel;
@@ -8948,7 +8988,10 @@ try {
                   return [];
                 }
                 var _tagName = tagName || "*";
-                return Array.from(
+                return ES(
+                  "Array",
+                  "from",
+                  false,
                   _dom.querySelectorAll(_tagName + "." + className),
                 );
               }
@@ -9527,7 +9570,13 @@ try {
                 constructor.prototype = new F();
 
                 if (prototype) {
-                  Object.assign(constructor.prototype, prototype);
+                  ES(
+                    "Object",
+                    "assign",
+                    false,
+                    constructor.prototype,
+                    prototype,
+                  );
                 }
 
                 constructor.prototype.constructor = constructor;
@@ -9561,13 +9610,13 @@ try {
                 return constructor;
               }
 
-              Object.assign(Type.prototype, {
+              ES("Object", "assign", false, Type.prototype, {
                 instanceOf: function instanceOf(type) {
                   return _instanceOf(type, this);
                 },
               });
 
-              Object.assign(Type, {
+              ES("Object", "assign", false, Type, {
                 extend: function extend(prototype, mixins) {
                   return typeof prototype === "function"
                     ? _extend.apply(null, arguments)
@@ -9683,7 +9732,7 @@ try {
                 Version: undefined,
               });
 
-              Object.assign(Runtime, {
+              ES("Object", "assign", false, Runtime, {
                 ENVIRONMENTS: ENVIRONMENTS,
 
                 isEnvironment: function isEnvironment(target) {
@@ -9762,21 +9811,26 @@ try {
                       }
                       data.entry = entry;
 
-                      var sanitizedArgs = Array.from(arguments).map(
-                        function map_$0(arg) {
-                          var type = Object.prototype.toString.call(arg);
-                          return /^\[object (String|Number|Boolean|Object|Date)\]$/.test(
-                            type,
-                          )
-                            ? arg
-                            : arg.toString();
-                        },
-                      );
+                      var sanitizedArgs = ES(
+                        "Array",
+                        "from",
+                        false,
+                        arguments,
+                      ).map(function map_$0(arg) {
+                        var type = Object.prototype.toString.call(arg);
+                        return /^\[object (String|Number|Boolean|Object|Date)\]$/.test(
+                          type,
+                        )
+                          ? arg
+                          : arg.toString();
+                      });
 
-                      data.args = JSON.stringify(sanitizedArgs).substring(
-                        0,
-                        200,
-                      );
+                      data.args = ES(
+                        "JSON",
+                        "stringify",
+                        false,
+                        sanitizedArgs,
+                      ).substring(0, 200);
                       errorHandler(data);
                     } finally {
                       currentEntry = "";
@@ -9979,7 +10033,7 @@ try {
                 }
 
                 if (category === "jssdk_error") {
-                  var msgKey = JSON.stringify(data);
+                  var msgKey = ES("JSON", "stringify", false, data);
                   if (
                     Object.prototype.hasOwnProperty.call(sentErrors, msgKey)
                   ) {
@@ -10005,7 +10059,10 @@ try {
 
                 image.src = importDefault("QueryString").appendToUrl(url, {
                   c: category,
-                  m: JSON.stringify(
+                  m: ES(
+                    "JSON",
+                    "stringify",
+                    false,
                     babelHelpers["extends"]({}, data, {
                       isSPIN: importDefault("sdk.Runtime").getIsSPIN(),
                     }),
@@ -10263,7 +10320,7 @@ try {
                 });
               }
 
-              Object.assign(FB, {
+              ES("Object", "assign", false, FB, {
                 provide: provide,
               });
               var _default = FB;
@@ -10361,7 +10418,10 @@ try {
               var MAX_APP_VERSION_LENGTH = 100;
               var MAX_USER_PROPERTIES = 100;
               var MAX_USER_PROPERTIES_VALUE_LENGTH = 100;
-              var PREDEFINED_USER_PROPS = Object.values(
+              var PREDEFINED_USER_PROPS = ES(
+                "Object",
+                "values",
+                false,
                 importDefault("AppUserPropertyAPIBuiltinField"),
               );
               _c = PREDEFINED_USER_PROPS;
@@ -10434,7 +10494,7 @@ try {
                 for (var _key in params) {
                   importDefault("Assert").isTrue(
                     USER_PROPERTIES_KEY_REGEX.test(_key) ||
-                      PREDEFINED_USER_PROPS.includes(_key),
+                      ES(PREDEFINED_USER_PROPS, "includes", true, _key),
                     "Invalid user properties key name: " +
                       _key +
                       ". " +
@@ -10750,7 +10810,9 @@ try {
               var JSSDK_COOKIE_PREFIX = ["fblo_", "fbsr_", "fbm_"];
 
               function setRaw(startingPrefix, val, ts, secure) {
-                if (!JSSDK_COOKIE_PREFIX.includes(startingPrefix)) {
+                if (
+                  !ES(JSSDK_COOKIE_PREFIX, "includes", true, startingPrefix)
+                ) {
                   importNamespace("sdk.Scribe").log("jssdk_error", {
                     appId: importDefault("sdk.Runtime").getClientID(),
                     error: "unknown_cookie_prefix." + startingPrefix,
@@ -11068,15 +11130,15 @@ try {
 
                 var userAgent = ua.toLowerCase();
 
-                if (userAgent.includes("windows phone")) {
+                if (ES(userAgent, "includes", true, "windows phone")) {
                   return "windows phone";
                 }
 
-                if (userAgent.includes("android")) {
+                if (ES(userAgent, "includes", true, "android")) {
                   return "android";
                 }
 
-                if (userAgent.includes("windows")) {
+                if (ES(userAgent, "includes", true, "windows")) {
                   return "windows";
                 }
 
@@ -11276,7 +11338,7 @@ try {
                     importNamespace("sdk.AuthUtils").AuthConstants
                       .SESSION_STORAGE_LOGIN_STATUS_PREFIX +
                       importDefault("sdk.Runtime").getClientID(),
-                    JSON.stringify({
+                    ES("JSON", "stringify", false, {
                       authResponse: authResponse,
                       status: status,
                       expiresAt:
@@ -11344,7 +11406,12 @@ try {
                   );
                   if (rawCachedResponse != null) {
                     try {
-                      var cachedResponse = JSON.parse(rawCachedResponse);
+                      var cachedResponse = ES(
+                        "JSON",
+                        "parse",
+                        false,
+                        rawCachedResponse,
+                      );
                       if (
                         cachedResponse != null &&
                         cachedResponse.expiresAt != null &&
@@ -11432,10 +11499,10 @@ try {
                   }
                 },
                 encodeObject: function encodeObject(obj) {
-                  return Base64.encode(JSON.stringify(obj));
+                  return Base64.encode(ES("JSON", "stringify", false, obj));
                 },
                 decodeObject: function decodeObject(b64) {
-                  return JSON.parse(Base64.decode(b64));
+                  return ES("JSON", "parse", false, Base64.decode(b64));
                 },
 
                 encodeNums: function encodeNums(l) {
@@ -11733,7 +11800,7 @@ try {
                       ? Symbol.iterator
                       : "@@iterator") in iterable
                   ) {
-                    arr = Array.from(iterable);
+                    arr = ES("Array", "from", false, iterable);
                   } else {
                     return Promise.reject(
                       new TypeError(
@@ -12170,7 +12237,7 @@ try {
 
                 impression({
                   lid: lid,
-                  payload: JSON.stringify(payload),
+                  payload: ES("JSON", "stringify", false, payload),
                 });
               }
               exports.impression = impression;
@@ -13063,7 +13130,7 @@ try {
                   if (
                     uri.getDomain() &&
                     uri.getPath() &&
-                    !uri.getPath().startsWith("/")
+                    !ES(uri.getPath(), "startsWith", true, "/")
                   ) {
                     if (shouldThrow) {
                       throw new Error(
@@ -13211,7 +13278,13 @@ try {
                     Object.prototype.toString.call(mapOrKey) ===
                     "[object Object]"
                   ) {
-                    Object.assign(this.$URIAbstractBase$p_queryData, mapOrKey);
+                    ES(
+                      "Object",
+                      "assign",
+                      false,
+                      this.$URIAbstractBase$p_queryData,
+                      mapOrKey,
+                    );
                   } else {
                     this.$URIAbstractBase$p_queryData[mapOrKey] = value;
                   }
@@ -13588,7 +13661,7 @@ try {
                       return false;
                     }
 
-                    if (domain.endsWith(superdomain)) {
+                    if (ES(domain, "endsWith", true, superdomain)) {
                       var domainLen = domain.length;
                       var superdomainLen = superdomain.length;
                       var pos = domainLen - superdomainLen - 1;
@@ -13762,7 +13835,7 @@ try {
                           };
                           importNamespace("Log").debug(
                             "e2e: %s",
-                            JSON.stringify(events),
+                            ES("JSON", "stringify", false, events),
                           );
                           importNamespace("sdk.Impressions").log(
                             PLATFORM_E2E_TRACKING_LOG_ID,
@@ -13889,7 +13962,12 @@ try {
                 }
                 switch (loginStatus) {
                   case "connected":
-                    var xhrAuthResponse = JSON.parse(authResponseHeader);
+                    var xhrAuthResponse = ES(
+                      "JSON",
+                      "parse",
+                      false,
+                      authResponseHeader,
+                    );
 
                     var authResponse = {
                       accessToken: xhrAuthResponse.access_token,
@@ -14265,7 +14343,7 @@ try {
                   igToken = _getLocalStorageToken.igToken;
 
                 if (access_token != null) {
-                  if (access_token.startsWith("IG")) {
+                  if (ES(access_token, "startsWith", true, "IG")) {
                     igToken = access_token;
                   } else {
                     fbToken = access_token;
@@ -15031,7 +15109,12 @@ try {
 
                     if (params.asset_scopes) {
                       authResponse = babelHelpers["extends"]({}, authResponse, {
-                        asset_scopes: JSON.parse(params.asset_scopes),
+                        asset_scopes: ES(
+                          "JSON",
+                          "parse",
+                          false,
+                          params.asset_scopes,
+                        ),
                       });
                     }
 
@@ -15044,7 +15127,12 @@ try {
                       importNamespace("sdk.LoggingUtils").logEventName.loginEnd;
                   } else if (params && params.asset_scopes) {
                     authResponse = {
-                      asset_scopes: JSON.parse(params.asset_scopes),
+                      asset_scopes: ES(
+                        "JSON",
+                        "parse",
+                        false,
+                        params.asset_scopes,
+                      ),
                     };
 
                     authResponse = populateAuthResponse(authResponse, params);
@@ -15492,13 +15580,13 @@ try {
                     message.params = args;
 
                     _this2.$JSONRPC_write(
-                      JSON.stringify(message),
+                      ES("JSON", "stringify", false, message),
                       _this2.$JSONRPC_context || { method: _stub },
                     );
                   };
                 };
                 _proto.read = function read(message, context) {
-                  var rpc = JSON.parse(message);
+                  var rpc = ES("JSON", "parse", false, message);
                   var id = rpc.id;
 
                   if (!rpc.method) {
@@ -15532,7 +15620,7 @@ try {
 
                       window.setTimeout(function window_setTimeout_$0() {
                         instance.$JSONRPC_write(
-                          JSON.stringify(response),
+                          ES("JSON", "stringify", false, response),
                           context,
                         );
                       }, 0);
@@ -15555,9 +15643,9 @@ try {
                     return;
                   }
 
-                  rpc.params.push(send.bind(null, "result"));
+                  rpc.params.push(ES(send, "bind", true, null, "result"));
 
-                  rpc.params.push(send.bind(null, "error"));
+                  rpc.params.push(ES(send, "bind", true, null, "error"));
 
                   try {
                     var returnValue = method.apply(context || null, rpc.params);
@@ -15727,7 +15815,7 @@ try {
               var RPC = {
                 local: jsonrpc.local,
                 remote: jsonrpc.remote,
-                stub: jsonrpc.stub.bind(jsonrpc),
+                stub: ES(jsonrpc.stub, "bind", true, jsonrpc),
                 setInQueue: function setInQueue(queue) {
                   importDefault("Assert").isInstanceOf(
                     importDefault("Queue"),
@@ -16210,7 +16298,7 @@ try {
 
                   trackEvents: function trackEvents(events) {
                     if (typeof events === "string") {
-                      events = JSON.parse(events);
+                      events = ES("JSON", "parse", false, events);
                     }
                     for (var key in events) {
                       if (Object.prototype.hasOwnProperty.call(events, key)) {
@@ -16640,7 +16728,13 @@ try {
                     Dialog.show(created.dialogElement);
                   }
                   if (typeof opts.styles === "object") {
-                    Object.assign(created.dialogElement.style, opts.styles);
+                    ES(
+                      "Object",
+                      "assign",
+                      false,
+                      created.dialogElement.style,
+                      opts.styles,
+                    );
                   }
                   return created.contentRoot;
                 },
@@ -16785,7 +16879,12 @@ try {
                       var _JSON$stringify;
 
                       flat[_key] =
-                        (_JSON$stringify = JSON.stringify(value)) != null
+                        (_JSON$stringify = ES(
+                          "JSON",
+                          "stringify",
+                          false,
+                          value,
+                        )) != null
                           ? _JSON$stringify
                           : "";
                     }
@@ -16973,7 +17072,12 @@ try {
                 try {
                   return rawResponse === null
                     ? ERROR
-                    : JSON.parse(importDefault("nullthrows")(rawResponse));
+                    : ES(
+                        "JSON",
+                        "parse",
+                        false,
+                        importDefault("nullthrows")(rawResponse),
+                      );
                 } catch (ex) {
                   var error = importDefault("getErrorSafe")(ex);
                   return errorHandler(error, rawResponse, url, responseCode);
@@ -17365,10 +17469,10 @@ try {
                   additionalArgs = { withCredentials: false };
                 }
                 if (
-                  url.includes("/../") ||
-                  url.includes("/..\\") ||
-                  url.includes("\\../") ||
-                  url.includes("\\..\\")
+                  ES(url, "includes", true, "/../") ||
+                  ES(url, "includes", true, "/..\\") ||
+                  ES(url, "includes", true, "\\../") ||
+                  ES(url, "includes", true, "\\..\\")
                 ) {
                   importNamespace("Log").error(
                     "CORSRequest.execute(): path traversal is not allowed.",
@@ -17731,7 +17835,10 @@ try {
                 );
               }
 
-              var ApiClient = Object.assign(
+              var ApiClient = ES(
+                "Object",
+                "assign",
+                false,
                 new (importDefault("ObservableMixin"))(),
                 {
                   setAccessToken: function setAccessToken(access_token) {
@@ -18284,11 +18391,13 @@ try {
                     extensionAPIBridge = bridge;
 
                     window._FBBrowserCallbackHandler = function (message) {
-                      rpcQueue.enqueue(JSON.stringify(message));
+                      rpcQueue.enqueue(ES("JSON", "stringify", false, message));
                     };
 
                     bridge.initializeCallbackHandler(
-                      JSON.stringify({ name: "_FBBrowserCallbackHandler" }),
+                      ES("JSON", "stringify", false, {
+                        name: "_FBBrowserCallbackHandler",
+                      }),
                     );
 
                     outQueue.start(function outQueue_start_$0(message) {
@@ -18300,7 +18409,7 @@ try {
 
               var local = jsonrpc.local;
               var remote = jsonrpc.remote;
-              var stub = jsonrpc.stub.bind(jsonrpc);
+              var stub = ES(jsonrpc.stub, "bind", true, jsonrpc);
 
               function supportsDialog(method) {
                 return (
@@ -18751,7 +18860,7 @@ try {
 
                   if (message.substring(0, 1) === "{") {
                     try {
-                      message = JSON.parse(message);
+                      message = ES("JSON", "parse", false, message);
                     } catch (_unused2) {
                       importNamespace("Log").warn(
                         "Failed to decode %s as JSON",
@@ -18969,7 +19078,7 @@ try {
                 inform: function inform(method, params, relation, behavior) {
                   sendToFacebook("facebook", {
                     method: method,
-                    params: JSON.stringify(params || {}),
+                    params: ES("JSON", "stringify", false, params || {}),
                     behavior: behavior || "p",
                     relation: relation,
                   });
@@ -19256,7 +19365,8 @@ try {
 
                 var auth_type = call.params.auth_type;
                 var isReauthenticate =
-                  auth_type && auth_type.includes("reauthenticate");
+                  auth_type &&
+                  ES(auth_type, "includes", true, "reauthenticate");
                 var defaultResponseType = {
                   token: true,
                   signed_request: true,
@@ -19267,7 +19377,11 @@ try {
                   call.params.override_default_response_type === true
                     ? call.params.response_type
                     : Object.keys(
-                        Object.assign(
+                        ES(
+                          "Object",
+                          "assign",
+                          false,
+
                           call.params.response_type
                             ? importDefault("createObjectFrom")(
                                 call.params.response_type.split(","),
@@ -19278,7 +19392,7 @@ try {
                       ).join(",");
 
                 if (call.params.display === "async") {
-                  Object.assign(call.params, {
+                  ES("Object", "assign", false, call.params, {
                     client_id: importDefault("sdk.Runtime").getClientID(),
                     origin: importDefault("sdk.getContextType")(),
                     response_type: responseTypes,
@@ -19307,7 +19421,7 @@ try {
                     );
                   }
 
-                  Object.assign(call.params, {
+                  ES("Object", "assign", false, call.params, {
                     client_id: importDefault("sdk.Runtime").getClientID(),
                     redirect_uri: importDefault("resolveURI")(
                       UIServer.xdHandler(
@@ -19465,7 +19579,7 @@ try {
                     var id = call.id;
                     delete call.cb;
 
-                    Object.assign(call.params, {
+                    ES("Object", "assign", false, call.params, {
                       client_id: importDefault("sdk.Runtime").getClientID(),
                       redirect_uri: importDefault("resolveURI")(
                         UIServer.xdHandlerPhotoPicker(
@@ -19581,7 +19695,10 @@ try {
                     call.params.display == "dialog" ||
                     call.params.display == "iframe"
                   ) {
-                    Object.assign(
+                    ES(
+                      "Object",
+                      "assign",
+                      false,
                       call.params,
                       {
                         display: "iframe",
@@ -19626,7 +19743,7 @@ try {
                     : {};
                   var id = params.id || importDefault("guid")();
 
-                  Object.assign(params, {
+                  ES("Object", "assign", false, params, {
                     app_id: importDefault("sdk.Runtime").getClientID(),
                     locale: importDefault("sdk.Runtime").getLocale(),
                     sdk: "joey",
@@ -19704,7 +19821,7 @@ try {
                       : false) &&
                     method.url &&
                     typeof method.url === "string" &&
-                    method.url.includes("dialog/oauth") &&
+                    ES(method.url, "includes", true, "dialog/oauth") &&
                     importNamespace(
                       "sdk.AuthUtils",
                     ).getMobileOperatingSystem() === "android"
@@ -19736,7 +19853,7 @@ try {
                     params.display === "touch" &&
                     method.url &&
                     typeof method.url === "string" &&
-                    method.url.includes("dialog/oauth") &&
+                    ES(method.url, "includes", true, "dialog/oauth") &&
                     importNamespace(
                       "sdk.AuthUtils",
                     ).getMobileOperatingSystem() === "android";
@@ -19798,7 +19915,10 @@ try {
                   }
 
                   if (relation === "parent" || relation === "opener") {
-                    Object.assign(
+                    ES(
+                      "Object",
+                      "assign",
+                      false,
                       call.params,
                       {
                         channel_url: UIServer._xdChannelHandler(
@@ -19988,7 +20108,7 @@ try {
                   call.className = "FB_UI_Dialog";
 
                   var onClose = function onClose() {
-                    var errorResult = JSON.stringify({
+                    var errorResult = ES("JSON", "stringify", false, {
                       error_code: 4201,
                       error_message: importDefault("sdk.fbt")._(
                         "User canceled the Dialog flow",
@@ -20379,7 +20499,7 @@ try {
                           cb(
                             params.result &&
                               params.result != UIServer._resultToken &&
-                              JSON.parse(params.result),
+                              ES("JSON", "parse", false, params.result),
                           );
                       },
                       frame,
@@ -20574,7 +20694,7 @@ try {
                       events.display = displayName;
                       importNamespace("Log").debug(
                         "e2e: %s",
-                        JSON.stringify(events),
+                        ES("JSON", "stringify", false, events),
                       );
 
                       importNamespace("sdk.Impressions").log(114, {
@@ -20717,8 +20837,11 @@ try {
 
                 _importDefault_sdkAuth.subscribe(
                   "status.change",
-                  (_importNamespace_sdkEvent =
-                    importNamespace("sdk.Event")).fire.bind(
+                  ES(
+                    (_importNamespace_sdkEvent = importNamespace("sdk.Event"))
+                      .fire,
+                    "bind",
+                    true,
                     _importNamespace_sdkEvent,
                     "auth.statusChange",
                   ),
@@ -20726,7 +20849,10 @@ try {
 
                 _importDefault_sdkAuth.subscribe(
                   "loginDenied",
-                  _importNamespace_sdkEvent.fire.bind(
+                  ES(
+                    _importNamespace_sdkEvent.fire,
+                    "bind",
+                    true,
                     _importNamespace_sdkEvent,
                     "auth.denied",
                   ),
@@ -20734,7 +20860,10 @@ try {
 
                 _importDefault_sdkAuth.subscribe(
                   "loginError",
-                  _importNamespace_sdkEvent.fire.bind(
+                  ES(
+                    _importNamespace_sdkEvent.fire,
+                    "bind",
+                    true,
                     _importNamespace_sdkEvent,
                     "auth.error",
                   ),
@@ -21005,12 +21134,20 @@ try {
               }
 
               function hidePluginCallback(params) {
-                var candidates = Array.from(
+                var candidates = ES(
+                  "Array",
+                  "from",
+                  false,
                   window.document.getElementsByTagName("object"),
                 );
 
                 candidates = candidates.concat(
-                  Array.from(window.document.getElementsByTagName("embed")),
+                  ES(
+                    "Array",
+                    "from",
+                    false,
+                    window.document.getElementsByTagName("embed"),
+                  ),
                 );
 
                 var flashPresent = false;
@@ -21125,29 +21262,38 @@ try {
 
               function sample() {
                 if (collectionMode == COLLECT.AUTOMATIC) {
-                  Array.from(document.getElementsByTagName("object")).forEach(
-                    function forEach_$0(tag) {
-                      if (tag.data) {
-                        links.push(tag.data);
-                      }
-                    },
-                  );
+                  ES(
+                    "Array",
+                    "from",
+                    false,
+                    document.getElementsByTagName("object"),
+                  ).forEach(function forEach_$0(tag) {
+                    if (tag.data) {
+                      links.push(tag.data);
+                    }
+                  });
 
-                  Array.from(document.getElementsByTagName("link")).forEach(
-                    function forEach_$0(tag) {
-                      if (tag.href) {
-                        links.push(tag.href);
-                      }
-                    },
-                  );
+                  ES(
+                    "Array",
+                    "from",
+                    false,
+                    document.getElementsByTagName("link"),
+                  ).forEach(function forEach_$0(tag) {
+                    if (tag.href) {
+                      links.push(tag.href);
+                    }
+                  });
 
-                  Array.from(document.getElementsByTagName("script")).forEach(
-                    function forEach_$0(tag) {
-                      if (tag.src) {
-                        links.push(tag.src);
-                      }
-                    },
-                  );
+                  ES(
+                    "Array",
+                    "from",
+                    false,
+                    document.getElementsByTagName("script"),
+                  ).forEach(function forEach_$0(tag) {
+                    if (tag.src) {
+                      links.push(tag.src);
+                    }
+                  });
                 }
 
                 if (links.length === 0) {
@@ -21159,7 +21305,7 @@ try {
                     "/staticresources",
                   "post",
                   {
-                    urls: JSON.stringify(links),
+                    urls: ES("JSON", "stringify", false, links),
                     is_https: location.protocol === "https:",
                   },
                 );
@@ -21184,7 +21330,10 @@ try {
                       importNamespace("JSSDKCanvasPrefetcherConfig")
                         .sampleRate ||
                   !importNamespace("JSSDKCanvasPrefetcherConfig").enabled ||
-                  excludedAppIds.includes(
+                  ES(
+                    excludedAppIds,
+                    "includes",
+                    true,
                     importDefault("sdk.Runtime").getClientID(),
                   )
                 ) {
@@ -21520,9 +21669,9 @@ try {
                   },
                   unsubscribe: importNamespace("sdk.Event").unsubscribe,
 
-                  clear: warn.bind(null, "clear"),
+                  clear: ES(warn, "bind", true, null, "clear"),
 
-                  fire: warn.bind(null, "fire"),
+                  fire: ES(warn, "bind", true, null, "fire"),
                 });
               }
 
@@ -21849,7 +21998,7 @@ try {
                   deferPostRequest = false;
                 }
 
-                var opts = Object.assign({}, opts_arg);
+                var opts = ES("Object", "assign", false, {}, opts_arg);
                 var frame;
 
                 var name = opts.name || importDefault("guid")();
@@ -21933,7 +22082,7 @@ try {
                   }
                 }
 
-                Object.assign(frame.style, style);
+                ES("Object", "assign", false, frame.style, style);
 
                 frame.src = importDefault("getBlankIframeSrc")();
                 if (root != null) {
@@ -22048,10 +22197,16 @@ try {
                     this.subscribe(
                       "xd.resize.flow",
                       function subscribe_$1(message) {
-                        Object.assign(_this._iframeOptions.root.style, {
-                          verticalAlign: "bottom",
-                          overflow: "",
-                        });
+                        ES(
+                          "Object",
+                          "assign",
+                          false,
+                          _this._iframeOptions.root.style,
+                          {
+                            verticalAlign: "bottom",
+                            overflow: "",
+                          },
+                        );
                         importNamespace("sdk.PluginUtils").resize(
                           _this._iframeOptions.root,
                           importNamespace("sdk.PluginUtils").parse(
@@ -22071,10 +22226,16 @@ try {
                     this.subscribe("xd.resize", function subscribe_$1(message) {
                       var _importNamespace_sdkPluginUtils;
 
-                      Object.assign(_this._iframeOptions.root.style, {
-                        verticalAlign: "bottom",
-                        overflow: "",
-                      });
+                      ES(
+                        "Object",
+                        "assign",
+                        false,
+                        _this._iframeOptions.root.style,
+                        {
+                          verticalAlign: "bottom",
+                          overflow: "",
+                        },
+                      );
                       (_importNamespace_sdkPluginUtils =
                         importNamespace("sdk.PluginUtils")).resize(
                         _this._iframeOptions.root,
@@ -22118,7 +22279,7 @@ try {
                     this.subscribe(
                       "xd.sdk_event",
                       function subscribe_$1(message) {
-                        var data = JSON.parse(message.data);
+                        var data = ES("JSON", "parse", false, message.data);
                         data.pluginID = pluginId;
                         importNamespace("sdk.Event").fire(
                           message.event,
@@ -22148,7 +22309,7 @@ try {
                       params,
                     );
 
-                    Object.assign(params, {
+                    ES("Object", "assign", false, params, {
                       app_id: importDefault("sdk.Runtime").getClientID(),
                       locale: importDefault("sdk.Runtime").getLocale(),
                       sdk: "joey",
@@ -22177,7 +22338,7 @@ try {
                     this.subscribe("xd.verify", function subscribe_$1(msg) {
                       importNamespace("sdk.XD").sendToFacebook(name, {
                         method: "xd/verify",
-                        params: JSON.stringify(msg.token),
+                        params: ES("JSON", "stringify", false, msg.token),
                       });
                     });
 
@@ -22186,7 +22347,7 @@ try {
                       function subscribe_$1() {
                         importNamespace("sdk.AuthUtils").removeLogoutState();
                         importDefault("sdk.Auth.LoginStatus").getLoginStatus(
-                          _this.inform.bind(_this, "login.status"),
+                          ES(_this.inform, "bind", true, _this, "login.status"),
                           true,
                         );
                       },
@@ -22194,7 +22355,7 @@ try {
 
                     var flow = document.createElement("span");
 
-                    Object.assign(flow.style, {
+                    ES("Object", "assign", false, flow.style, {
                       verticalAlign: "top",
                       width: params.lazy ? "1px" : "0px",
                       height: params.lazy ? "1px" : "0px",
@@ -22373,16 +22534,22 @@ try {
                       }
 
                       if (!this._iframeOptions.width) {
-                        Object.assign(this._element.style, {
+                        ES("Object", "assign", false, this._element.style, {
                           display: "block",
                           width: "100%",
                           height: "auto",
                         });
 
-                        Object.assign(this._iframeOptions.root.style, {
-                          width: "100%",
-                          height: "auto",
-                        });
+                        ES(
+                          "Object",
+                          "assign",
+                          false,
+                          this._iframeOptions.root.style,
+                          {
+                            width: "100%",
+                            height: "auto",
+                          },
+                        );
 
                         var iframeStyle = {
                           height: "auto",
@@ -22398,7 +22565,13 @@ try {
                           iframeStyle["min-width"] = "100%";
                         }
 
-                        Object.assign(this._iframe.style, iframeStyle);
+                        ES(
+                          "Object",
+                          "assign",
+                          false,
+                          this._iframe.style,
+                          iframeStyle,
+                        );
                       }
                     }
                   },
@@ -22728,9 +22901,11 @@ try {
 
               function attr(element) {
                 var attrs = {};
-                Array.from(element.attributes).forEach(function forEach_$0(at) {
-                  attrs[propStr(at, "name")] = propStr(at, "value");
-                });
+                ES("Array", "from", false, element.attributes).forEach(
+                  function forEach_$0(at) {
+                    attrs[propStr(at, "name")] = propStr(at, "value");
+                  },
+                );
                 return attrs;
               }
 
@@ -22774,53 +22949,56 @@ try {
                   );
                 };
 
-                Array.from(dom.getElementsByTagName("*")).forEach(
-                  function forEach_$0(element) {
-                    if (
-                      reparse !== true &&
-                      element.getAttribute("fb-xfbml-state")
-                    ) {
-                      return;
+                ES(
+                  "Array",
+                  "from",
+                  false,
+                  dom.getElementsByTagName("*"),
+                ).forEach(function forEach_$0(element) {
+                  if (
+                    reparse !== true &&
+                    element.getAttribute("fb-xfbml-state")
+                  ) {
+                    return;
+                  }
+                  if (element.nodeType !== 1) {
+                    return;
+                  }
+
+                  var info = xfbmlInfo(element) || html5Info(element);
+                  if (info == null) {
+                    return;
+                  }
+
+                  count++;
+                  tags++;
+
+                  var renderer = new info.ctor(
+                    element,
+                    info.xmlns,
+                    info.localName,
+                    attr(element),
+                  );
+
+                  renderer.subscribe(
+                    "render",
+                    importDefault("runOnce")(function runOnce_$0() {
+                      element.setAttribute("fb-xfbml-state", "rendered");
+                      onrender();
+                    }),
+                  );
+
+                  var _render = function render() {
+                    if (element.getAttribute("fb-xfbml-state") == "parsed") {
+                      observable.subscribe("render.queue", _render);
+                    } else {
+                      element.setAttribute("fb-xfbml-state", "parsed");
+                      renderer.process();
                     }
-                    if (element.nodeType !== 1) {
-                      return;
-                    }
+                  };
 
-                    var info = xfbmlInfo(element) || html5Info(element);
-                    if (info == null) {
-                      return;
-                    }
-
-                    count++;
-                    tags++;
-
-                    var renderer = new info.ctor(
-                      element,
-                      info.xmlns,
-                      info.localName,
-                      attr(element),
-                    );
-
-                    renderer.subscribe(
-                      "render",
-                      importDefault("runOnce")(function runOnce_$0() {
-                        element.setAttribute("fb-xfbml-state", "rendered");
-                        onrender();
-                      }),
-                    );
-
-                    var _render = function render() {
-                      if (element.getAttribute("fb-xfbml-state") == "parsed") {
-                        observable.subscribe("render.queue", _render);
-                      } else {
-                        element.setAttribute("fb-xfbml-state", "parsed");
-                        renderer.process();
-                      }
-                    };
-
-                    _render();
-                  },
-                );
+                  _render();
+                });
 
                 observable.inform("parse", [pc, tags]);
 
@@ -22954,7 +23132,7 @@ try {
                   }
                 });
                 Object.keys(attr).forEach(function forEach_$0(key) {
-                  if (key.startsWith("data-")) {
+                  if (ES(key, "startsWith", true, "data-")) {
                     delete attr[key];
                   }
                 });
@@ -23049,7 +23227,7 @@ try {
                     function subscribe_$1(message) {
                       importNamespace("sdk.Event").fire(
                         message.event,
-                        JSON.parse(message.data),
+                        ES("JSON", "parse", false, message.data),
                       );
                     },
                   );
@@ -23092,7 +23270,7 @@ try {
                   this.subscribe(
                     "xd.comment_count",
                     function subscribe_$1(message) {
-                      var data = JSON.parse(message.data);
+                      var data = ES("JSON", "parse", false, message.data);
                       importNamespace("sdk.DOM").dangerouslySetInnerHtml(
                         elem,
                         importDefault("sprintf")(
@@ -23370,8 +23548,7 @@ try {
 
                   maybeCreateShadowRootAndRenderInDOM(
                     this.element,
-
-                    this.render.bind(this),
+                    ES(this.render, "bind", true, this),
                     this.shadowCss,
                   );
 
@@ -23810,17 +23987,22 @@ try {
                       this.style.display =
                         state.status === "connected" ? "flex" : "none";
                     },
-                    function (e) {
-                      importDefault("sdk.Auth").logout();
-                      if (
-                        e &&
-                        e.detail === 0 &&
-                        this.fbLoginButton &&
-                        this.fbLoginButton.style.display !== "none"
-                      ) {
-                        this.fbLoginButton.focus();
-                      }
-                    }.bind(_this),
+                    ES(
+                      function (e) {
+                        importDefault("sdk.Auth").logout();
+                        if (
+                          e &&
+                          e.detail === 0 &&
+                          this.fbLoginButton &&
+                          this.fbLoginButton.style.display !== "none"
+                        ) {
+                          this.fbLoginButton.focus();
+                        }
+                      },
+                      "bind",
+                      true,
+                      _this,
+                    ),
                   );
                   return _this;
                 }
@@ -23858,15 +24040,20 @@ try {
                       this.style.display =
                         state.status === "connected" ? "none" : "flex";
                     },
-                    function (e) {
-                      e.stopPropagation();
-                      importNamespace("sdk.LoggingUtils").logLoginEvent(
-                        this.params,
-                        importNamespace("sdk.LoggingUtils").logEventName
-                          .buttonClick + "_single_fb",
-                      );
-                      this.loginTrigger();
-                    }.bind(this),
+                    ES(
+                      function (e) {
+                        e.stopPropagation();
+                        importNamespace("sdk.LoggingUtils").logLoginEvent(
+                          this.params,
+                          importNamespace("sdk.LoggingUtils").logEventName
+                            .buttonClick + "_single_fb",
+                        );
+                        this.loginTrigger();
+                      },
+                      "bind",
+                      true,
+                      this,
+                    ),
                   );
                 };
                 _proto.loginTrigger = function loginTrigger() {
@@ -23913,7 +24100,12 @@ try {
                     },
                   );
 
-                  fbButton.updateDisplay = updateDisplay.bind(fbButton);
+                  fbButton.updateDisplay = ES(
+                    updateDisplay,
+                    "bind",
+                    true,
+                    fbButton,
+                  );
                   this.stateObservers.push(fbButton);
                   this.container.appendChild(fbButton);
                   return fbButton;
@@ -24261,7 +24453,7 @@ try {
                   if (call != null) {
                     importNamespace("sdk.XD").sendToFacebook(iframe_name, {
                       method: "loginComplete",
-                      params: JSON.stringify({
+                      params: ES("JSON", "stringify", false, {
                         frame_name: call.id,
                         status: importDefault("sdk.Runtime").getLoginStatus(),
                       }),
@@ -24287,7 +24479,7 @@ try {
 
                 importNamespace("sdk.XD").sendToFacebook(iframe_name, {
                   method: "loginButtonStateInit",
-                  params: JSON.stringify({ call: call }),
+                  params: ES("JSON", "stringify", false, { call: call }),
                 });
               }
 
@@ -24372,7 +24564,7 @@ try {
                     invokeHandler(cb, null, [response]);
                     importNamespace("sdk.XD").sendToFacebook(iframeName, {
                       method: "loginReload",
-                      params: JSON.stringify(response),
+                      params: ES("JSON", "stringify", false, response),
                     });
                   };
 
@@ -24380,7 +24572,7 @@ try {
                     "xd.login_button_dialog_open",
                     function subscribe_$1(msg) {
                       importDefault("sdk.ui")(
-                        JSON.parse(msg.params),
+                        ES("JSON", "parse", false, msg.params),
                         function ui_$1(response) {
                           importNamespace("sdk.XD").sendToFacebook(iframeName, {
                             method: "loginComplete",
@@ -24395,7 +24587,7 @@ try {
                   this.subscribe(
                     "xd.login_button_prepare_call",
                     function subscribe_$1(msg) {
-                      var params = JSON.parse(msg.params);
+                      var params = ES("JSON", "parse", false, msg.params);
                       var paramsCopyForClosure = msg.params;
 
                       prepareCall(params, iframeName, dialog_open_cb);
@@ -24403,7 +24595,12 @@ try {
                       importDefault("sdk.Auth").subscribe(
                         "status.change",
                         function Auth_subscribe_$1(response) {
-                          var closureParams = JSON.parse(paramsCopyForClosure);
+                          var closureParams = ES(
+                            "JSON",
+                            "parse",
+                            false,
+                            paramsCopyForClosure,
+                          );
                           closureParams.logger_id = importDefault("guid")();
                           if (
                             response != null &&
@@ -24424,7 +24621,7 @@ try {
                   this.subscribe(
                     "xd.login_button_click",
                     function subscribe_$1(msg) {
-                      var params = JSON.parse(msg.params);
+                      var params = ES("JSON", "parse", false, msg.params);
                       if (params.popup) {
                         if (
                           importDefault("sdk.feature")("e2e_tracking", true)
@@ -24439,7 +24636,7 @@ try {
                               events.display = params.call.params.display;
                               importNamespace("Log").debug(
                                 "e2e: %s",
-                                JSON.stringify(events),
+                                ES("JSON", "stringify", false, events),
                               );
 
                               importNamespace("sdk.Impressions").log(114, {
@@ -24616,10 +24813,16 @@ try {
                   _this.subscribe(
                     "xd.resize.flow",
                     function _this_subscribe_$1(message) {
-                      Object.assign(_this.iframeOptions.root.style, {
-                        verticalAlign: "bottom",
-                        overflow: "",
-                      });
+                      ES(
+                        "Object",
+                        "assign",
+                        false,
+                        _this.iframeOptions.root.style,
+                        {
+                          verticalAlign: "bottom",
+                          overflow: "",
+                        },
+                      );
                       importNamespace("sdk.PluginUtils").resize(
                         _this.iframeOptions.root,
                         importNamespace("sdk.PluginUtils").parse(message.width),
@@ -24637,10 +24840,16 @@ try {
                     function _this_subscribe_$1(message) {
                       var _importNamespace_sdkPluginUtils;
 
-                      Object.assign(_this.iframeOptions.root.style, {
-                        verticalAlign: "bottom",
-                        overflow: "",
-                      });
+                      ES(
+                        "Object",
+                        "assign",
+                        false,
+                        _this.iframeOptions.root.style,
+                        {
+                          verticalAlign: "bottom",
+                          overflow: "",
+                        },
+                      );
                       (_importNamespace_sdkPluginUtils =
                         importNamespace("sdk.PluginUtils")).resize(
                         _this.iframeOptions.root,
@@ -24677,7 +24886,7 @@ try {
                   _this.subscribe(
                     "xd.sdk_event",
                     function _this_subscribe_$1(message) {
-                      var data = JSON.parse(message.data);
+                      var data = ES("JSON", "parse", false, message.data);
                       data.pluginID = pluginId;
                       importNamespace("sdk.Event").fire(
                         message.event,
@@ -24711,7 +24920,7 @@ try {
                     params,
                   );
 
-                  Object.assign(params, {
+                  ES("Object", "assign", false, params, {
                     app_id: importDefault("sdk.Runtime").getClientID(),
                     locale: importDefault("sdk.Runtime").getLocale(),
                     sdk: "joey",
@@ -24744,7 +24953,7 @@ try {
                     function _this_subscribe_$1(msg) {
                       importNamespace("sdk.XD").sendToFacebook(name, {
                         method: "xd/verify",
-                        params: JSON.stringify(msg.token),
+                        params: ES("JSON", "stringify", false, msg.token),
                       });
                     },
                   );
@@ -24754,7 +24963,7 @@ try {
                     function _this_subscribe_$1() {
                       importNamespace("sdk.AuthUtils").removeLogoutState();
                       importDefault("sdk.Auth.LoginStatus").getLoginStatus(
-                        _this.inform.bind(_this, "login.status"),
+                        ES(_this.inform, "bind", true, _this, "login.status"),
                         true,
                       );
                     },
@@ -24762,7 +24971,7 @@ try {
 
                   var flow = document.createElement("span");
 
-                  Object.assign(flow.style, {
+                  ES("Object", "assign", false, flow.style, {
                     verticalAlign: "top",
 
                     width: params.lazy ? "1px" : "0px",
@@ -24928,16 +25137,22 @@ try {
                     }
 
                     if (!this.iframeOptions.width) {
-                      Object.assign(this.element.style, {
+                      ES("Object", "assign", false, this.element.style, {
                         display: "block",
                         width: "100%",
                         height: "auto",
                       });
 
-                      Object.assign(this.iframeOptions.root.style, {
-                        width: "100%",
-                        height: "auto",
-                      });
+                      ES(
+                        "Object",
+                        "assign",
+                        false,
+                        this.iframeOptions.root.style,
+                        {
+                          width: "100%",
+                          height: "auto",
+                        },
+                      );
 
                       var iframeStyle = {
                         height: "auto",
@@ -24949,13 +25164,19 @@ try {
                         importDefault("sdk.UA").iphone() ||
                         importDefault("sdk.UA").ipad()
                       ) {
-                        Object.assign(iframeStyle, {
+                        ES("Object", "assign", false, iframeStyle, {
                           width: "220px",
                           minWidth: "100%",
                         });
                       }
 
-                      Object.assign(this.iframe.style, iframeStyle);
+                      ES(
+                        "Object",
+                        "assign",
+                        false,
+                        this.iframe.style,
+                        iframeStyle,
+                      );
                     }
                   }
                 };
@@ -25231,7 +25452,7 @@ try {
                       }
 
                       var dialog = _this.setupNewIframeDialog(
-                        JSON.parse(message.data),
+                        ES("JSON", "parse", false, message.data),
                         message.fromIframe,
                       );
                       hide(dialog);
@@ -25381,7 +25602,7 @@ try {
                   var onloadFunc = function onloadFunc() {
                     importNamespace("sdk.XD").sendToFacebook(fromIframe, {
                       method: "saveOverlayIFrameAck",
-                      params: JSON.stringify({
+                      params: ES("JSON", "stringify", false, {
                         name: "overlay_" + _this2._iframeOptions.name,
                       }),
                     });
@@ -25394,14 +25615,20 @@ try {
                     root: created.contentRoot,
                     tabindex: -1,
 
-                    onload: onloadFunc.bind(this),
+                    onload: ES(onloadFunc, "bind", true, this),
                   });
                   importNamespace("sdk.DOM").addCss(
                     created.contentRoot,
                     "fb_dialog_iframe",
                   );
 
-                  Object.assign(created.dialogElement.style, data.style || {});
+                  ES(
+                    "Object",
+                    "assign",
+                    false,
+                    created.dialogElement.style,
+                    data.style || {},
+                  );
                   importNamespace("sdk.DOM").setStyle(
                     created.dialogElement,
                     "width",
@@ -25548,7 +25775,7 @@ try {
                     this.$VideoController$p_iframeName,
                     {
                       method: "play",
-                      params: JSON.stringify({}),
+                      params: ES("JSON", "stringify", false, {}),
                     },
                   );
                 };
@@ -25557,7 +25784,7 @@ try {
                     this.$VideoController$p_iframeName,
                     {
                       method: "pause",
-                      params: JSON.stringify({}),
+                      params: ES("JSON", "stringify", false, {}),
                     },
                   );
                 };
@@ -25567,7 +25794,7 @@ try {
                     this.$VideoController$p_iframeName,
                     {
                       method: "seek",
-                      params: JSON.stringify({
+                      params: ES("JSON", "stringify", false, {
                         target: target,
                       }),
                     },
@@ -25578,7 +25805,7 @@ try {
                     this.$VideoController$p_iframeName,
                     {
                       method: "mute",
-                      params: JSON.stringify({}),
+                      params: ES("JSON", "stringify", false, {}),
                     },
                   );
                 };
@@ -25587,7 +25814,7 @@ try {
                     this.$VideoController$p_iframeName,
                     {
                       method: "unmute",
-                      params: JSON.stringify({}),
+                      params: ES("JSON", "stringify", false, {}),
                     },
                   );
                 };
@@ -25597,7 +25824,7 @@ try {
                     this.$VideoController$p_iframeName,
                     {
                       method: "setVolume",
-                      params: JSON.stringify({
+                      params: ES("JSON", "stringify", false, {
                         volume: volume,
                       }),
                     },
@@ -25655,7 +25882,7 @@ try {
                         "ObservableMixin",
                       ))();
                       this._sharedVideoCache = new _VideoCache(
-                        JSON.parse(msg.data),
+                        ES("JSON", "parse", false, msg.data),
                       );
                       this._videoController = new _VideoController(
                         this._iframeOptions.name,
@@ -25677,7 +25904,9 @@ try {
                   this.subscribe(
                     "xd.cachedStateUpdateRequest",
                     function subscribe_$1(msg) {
-                      this._sharedVideoCache.update(JSON.parse(msg.data));
+                      this._sharedVideoCache.update(
+                        ES("JSON", "parse", false, msg.data),
+                      );
                     },
                   );
                 },
@@ -25814,7 +26043,10 @@ try {
                     if (options.xfbml) {
                       window.setTimeout(
                         require("wrapFunction")(
-                          require("sdk.domReady").bind(
+                          ES(
+                            require("sdk.domReady"),
+                            "bind",
+                            true,
                             null,
                             require("XFBML").parse,
                           ),
@@ -26000,7 +26232,7 @@ try {
                           name: "transport",
 
                           message:
-                            JSON.stringify(response.error) +
+                            ES("JSON", "stringify", false, response.error) +
                             " from " +
                             endpoint +
                             " , " +
@@ -26075,12 +26307,18 @@ try {
                   share_button_container.removeChild(share_button);
                 }
 
-                Array.from(
+                ES(
+                  "Array",
+                  "from",
+                  false,
                   document.getElementsByTagName("fb:share-button"),
                 ).forEach(function forEach_$0(button) {
                   return replaceWithLink(button);
                 });
-                Array.from(
+                ES(
+                  "Array",
+                  "from",
+                  false,
                   document.getElementsByClassName("fb-share-button"),
                 ).forEach(function forEach_$0(button) {
                   return replaceWithLink(button);
@@ -26280,7 +26518,10 @@ try {
                 window.setTimeout(function window_setTimeout_$0() {
                   var pattern =
                     /(connect\.facebook\.net|\.facebook\.com\/assets.php|\.facebook\.net\/assets.php).*?#(.*)/;
-                  Array.from(
+                  ES(
+                    "Array",
+                    "from",
+                    false,
                     window.document.getElementsByTagName("script"),
                   ).forEach(function forEach_$0(script) {
                     if (script.src) {
@@ -26385,7 +26626,7 @@ try {
 
                     doesResourceMatchJSSDK =
                       domain === SDKUrl.getDomain() &&
-                      path.includes("/rsrc.php/");
+                      ES(path, "includes", true, "/rsrc.php/");
                   } catch (e) {
                     var error = importDefault("getErrorSafe")(e);
                     importNamespace("Log").error(
@@ -26413,7 +26654,7 @@ try {
                       timings = perf
                         .getEntriesByType("resource")
                         .filter(function filter_$0(t) {
-                          return t.name.startsWith(SDKUrl);
+                          return ES(t.name, "startsWith", true, SDKUrl);
                         });
                     }
                     return timings;
@@ -26434,11 +26675,20 @@ try {
                     if (timing > 2) {
                       timing = null;
                     } else {
-                      var bootId = timing.findIndex(
+                      var bootId = ES(
+                        timing,
+                        "findIndex",
+                        true,
                         function timing_findIndex_$0(t) {
-                          return t.name.startsWith(sdkurl + "?hash=");
+                          return ES(
+                            t.name,
+                            "startsWith",
+                            true,
+                            sdkurl + "?hash=",
+                          );
                         },
                       );
+
                       if (!bootId) {
                         timing = null;
                       } else {
@@ -26455,7 +26705,7 @@ try {
                       bootloadedTiming = frame.contentWindow.performance
                         .getEntriesByType("resource")
                         .find(function find_$0(t) {
-                          return t.name.startsWith(sdkurl);
+                          return ES(t.name, "startsWith", true, sdkurl);
                         });
                     }
 
@@ -26649,7 +26899,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1034557247","namespace":"FB","message":"' +
+        '","revision":"1034558489","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
