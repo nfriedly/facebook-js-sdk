@@ -1,4 +1,4 @@
-/*1772744617,,JIT Construction: v1034583662,en_US*/
+/*1772830842,,JIT Construction: v1034662339,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3774,7 +3774,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1034583662",
+            revision: "1034662339",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -7082,16 +7082,17 @@ try {
             function $module_TimeSliceImpl(
               global,
               require,
-              requireDynamic,
+              importDefault,
+              importNamespace,
               requireLazy,
               module,
               exports,
               invariant,
             ) {
-              var _require_closure_Env;
-              var _require_closure_ErrorGuard;
-              var _require_closure_performanceAbsoluteNow;
-              var _require_closure_WorkerUtils;
+              var _importNamespace_closure_WorkerUtils;
+              var _importDefault_closure_Env;
+              var _importDefault_closure_ErrorGuard;
+              var _importDefault_closure_performanceAbsoluteNow;
 
               var _executionObserversInBeforeOrder = [];
               var _executionObserversInAfterOrder = [];
@@ -7103,13 +7104,14 @@ try {
               var guarded = false;
 
               var timesliceBufferSize = (
-                _require_closure_Env || (_require_closure_Env = require("Env"))
+                _importDefault_closure_Env ||
+                (_importDefault_closure_Env = importDefault("Env"))
               ).timesliceBufferSize;
               if (timesliceBufferSize == null) {
                 timesliceBufferSize = 5000;
               }
 
-              var buffer = new (require("IntervalTrackingBoundedBuffer"))(
+              var buffer = new (importDefault("IntervalTrackingBoundedBuffer"))(
                 timesliceBufferSize,
               );
 
@@ -7128,14 +7130,15 @@ try {
               function _pushState(frame, creationData) {
                 var executionData = {};
                 (
-                  _require_closure_ErrorGuard ||
-                  (_require_closure_ErrorGuard = require("ErrorGuard"))
+                  _importDefault_closure_ErrorGuard ||
+                  (_importDefault_closure_ErrorGuard =
+                    importDefault("ErrorGuard"))
                 ).applyWithGuard(_callOnBeforeExecutionCallbacks, null, [
                   frame,
                   creationData,
                   executionData,
                 ]);
-                _require_closure_ErrorGuard.applyWithGuard(
+                _importDefault_closure_ErrorGuard.applyWithGuard(
                   _callOnAfterExecutionStartedCallbacks,
                   null,
                   [frame, creationData, executionData],
@@ -7225,15 +7228,16 @@ try {
                   lastCreationData == null ||
                   lastExecutionData == null
                 ) {
-                  require("FBLogger")("TimeSlice").mustfix(
+                  importDefault("FBLogger")("TimeSlice").mustfix(
                     "popped too many times off the timeslice stack",
                   );
                   guarded = false;
                   return;
                 }
                 (
-                  _require_closure_ErrorGuard ||
-                  (_require_closure_ErrorGuard = require("ErrorGuard"))
+                  _importDefault_closure_ErrorGuard ||
+                  (_importDefault_closure_ErrorGuard =
+                    importDefault("ErrorGuard"))
                 ).applyWithGuard(_callOnAfterExecutionEndedCallbacks, null, [
                   lastFrame,
                   lastCreationData,
@@ -7273,8 +7277,9 @@ try {
 
                   var timeSliceGuarded = function timeSliceGuarded() {
                     var beginTime = (
-                      _require_closure_performanceAbsoluteNow ||
-                      (_require_closure_performanceAbsoluteNow = require("performanceAbsoluteNow"))
+                      _importDefault_closure_performanceAbsoluteNow ||
+                      (_importDefault_closure_performanceAbsoluteNow =
+                        importDefault("performanceAbsoluteNow"))
                     )();
 
                     var newContextID = idCounter++;
@@ -7304,8 +7309,9 @@ try {
                     }
 
                     var workerContext = (
-                      _require_closure_WorkerUtils ||
-                      (_require_closure_WorkerUtils = require("WorkerUtils"))
+                      _importNamespace_closure_WorkerUtils ||
+                      (_importNamespace_closure_WorkerUtils =
+                        importNamespace("WorkerUtils"))
                     ).isWorkerContext();
 
                     guarded = true;
@@ -7323,8 +7329,9 @@ try {
                         return fn.apply(this, args);
                       } else {
                         return (
-                          _require_closure_ErrorGuard ||
-                          (_require_closure_ErrorGuard = require("ErrorGuard"))
+                          _importDefault_closure_ErrorGuard ||
+                          (_importDefault_closure_ErrorGuard =
+                            importDefault("ErrorGuard"))
                         ).applyWithGuard(fn, this, args, {
                           name: "TimeSlice" + (name ? ": " + name : ""),
                         });
@@ -7332,7 +7339,7 @@ try {
                     } finally {
                       var lastFrame = _currentFrame();
                       if (lastFrame == null) {
-                        require("FBLogger")("TimeSlice").mustfix(
+                        importDefault("FBLogger")("TimeSlice").mustfix(
                           "timeslice stack misaligned, not logging the block",
                         );
                         guarded = false;
@@ -7342,8 +7349,9 @@ try {
                           isEdgeContinuation = lastFrame.isEdgeContinuation,
                           isRoot = lastFrame.isRoot;
                         var endTime = (
-                          _require_closure_performanceAbsoluteNow ||
-                          (_require_closure_performanceAbsoluteNow = require("performanceAbsoluteNow"))
+                          _importDefault_closure_performanceAbsoluteNow ||
+                          (_importDefault_closure_performanceAbsoluteNow =
+                            importDefault("performanceAbsoluteNow"))
                         )();
                         lastFrame.absEndTimeMs = endTime;
                         if (isRoot && beginTime != null) {
@@ -7381,8 +7389,9 @@ try {
                   timeSliceGuarded[SECRET_GUARD_KEY] = {};
 
                   (
-                    _require_closure_ErrorGuard ||
-                    (_require_closure_ErrorGuard = require("ErrorGuard"))
+                    _importDefault_closure_ErrorGuard ||
+                    (_importDefault_closure_ErrorGuard =
+                      importDefault("ErrorGuard"))
                   ).applyWithGuard(_callOnCreateExecutionCallbacks, null, [
                     observerData,
                     name,
@@ -7424,7 +7433,7 @@ try {
                 getReusableContinuation: function getReusableContinuation(
                   name,
                 ) {
-                  return require("getReusableTimeSliceContinuation")(
+                  return importDefault("getReusableTimeSliceContinuation")(
                     TimeSlice,
                     SECRET_GUARD_KEY,
                     name,
@@ -7540,7 +7549,7 @@ try {
                 return meta;
               }
 
-              require("wrapFunction").setWrapper(
+              importDefault("wrapFunction").setWrapper(
                 function wrapFunction_setWrapper_$0(fn, name) {
                   return TimeSlice.guard(fn, name, { registerCallStack: true });
                 },
@@ -7548,10 +7557,10 @@ try {
               );
 
               global.TimeSlice = TimeSlice;
-
-              module.exports = TimeSlice;
+              var _default = TimeSlice;
+              exports["default"] = _default;
             },
-            6,
+            102,
           );
           __d(
             "requireCond",
@@ -26909,7 +26918,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1034583662","namespace":"FB","message":"' +
+        '","revision":"1034662339","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
