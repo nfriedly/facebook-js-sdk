@@ -1,4 +1,4 @@
-/*1773110853,,JIT Construction: v1034813620,en_US*/
+/*1773113896,,JIT Construction: v1034826139,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3774,7 +3774,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1034813620",
+            revision: "1034826139",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -20753,7 +20753,6 @@ try {
               "use strict";
 
               function init() {
-                var _importNamespace_sdkEvent;
                 var _importDefault_sdkAuth;
                 importDefault("FB").provide("", {
                   getLoginStatus: function getLoginStatus() {
@@ -20853,39 +20852,59 @@ try {
                     );
                   },
                 );
-
                 _importDefault_sdkAuth.subscribe(
                   "status.change",
-                  ES(
-                    (_importNamespace_sdkEvent = importNamespace("sdk.Event"))
-                      .fire,
-                    "bind",
-                    true,
-                    _importNamespace_sdkEvent,
-                    "auth.statusChange",
-                  ),
+                  function Auth_subscribe_$1() {
+                    for (
+                      var _len4 = arguments.length,
+                        args = new Array(_len4),
+                        _key4 = 0;
+                      _key4 < _len4;
+                      _key4++
+                    ) {
+                      args[_key4] = arguments[_key4];
+                    }
+                    return importNamespace("sdk.Event").fire.apply(
+                      importNamespace("sdk.Event"),
+                      ["auth.statusChange"].concat(args),
+                    );
+                  },
                 );
-
                 _importDefault_sdkAuth.subscribe(
                   "loginDenied",
-                  ES(
-                    _importNamespace_sdkEvent.fire,
-                    "bind",
-                    true,
-                    _importNamespace_sdkEvent,
-                    "auth.denied",
-                  ),
+                  function Auth_subscribe_$1() {
+                    for (
+                      var _len5 = arguments.length,
+                        args = new Array(_len5),
+                        _key5 = 0;
+                      _key5 < _len5;
+                      _key5++
+                    ) {
+                      args[_key5] = arguments[_key5];
+                    }
+                    return importNamespace("sdk.Event").fire.apply(
+                      importNamespace("sdk.Event"),
+                      ["auth.denied"].concat(args),
+                    );
+                  },
                 );
-
                 _importDefault_sdkAuth.subscribe(
                   "loginError",
-                  ES(
-                    _importNamespace_sdkEvent.fire,
-                    "bind",
-                    true,
-                    _importNamespace_sdkEvent,
-                    "auth.error",
-                  ),
+                  function Auth_subscribe_$1() {
+                    for (
+                      var _len6 = arguments.length,
+                        args = new Array(_len6),
+                        _key6 = 0;
+                      _key6 < _len6;
+                      _key6++
+                    ) {
+                      args[_key6] = arguments[_key6];
+                    }
+                    return importNamespace("sdk.Event").fire.apply(
+                      importNamespace("sdk.Event"),
+                      ["auth.error"].concat(args),
+                    );
+                  },
                 );
 
                 importDefault("sdk.Runtime").subscribe(
@@ -20914,7 +20933,7 @@ try {
                   },
                 );
 
-                _importNamespace_sdkEvent.subscribe(
+                importNamespace("sdk.Event").subscribe(
                   "init:post",
                   function Event_subscribe_$1(options) {
                     importDefault("sdk.Auth.LoginStatus").onSDKInit(options);
@@ -26918,7 +26937,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1034813620","namespace":"FB","message":"' +
+        '","revision":"1034826139","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
