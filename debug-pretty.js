@@ -1,4 +1,4 @@
-/*1773187091,,JIT Construction: v1034886289,en_US*/
+/*1773197240,,JIT Construction: v1034906703,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3774,7 +3774,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1034886289",
+            revision: "1034906703",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -10244,7 +10244,7 @@ try {
                 }
               });
 
-              function protect(fn, accessor, key, context) {
+              function protect(fn, accessor, _key, context) {
                 return importDefault("sdk.ErrorHandling").guard(
                   function ErrorHandling_guard_$0() {
                     function unwrap(val) {
@@ -10274,20 +10274,20 @@ try {
 
                       facade.__wrapped = result;
 
-                      for (var _key in result) {
-                        var property = result[_key];
+                      for (var key in result) {
+                        var property = result[key];
                         if (
                           typeof property !== "function" ||
-                          _key === "constructor"
+                          key === "constructor"
                         ) {
                           continue;
                         }
                         isPlainObject = false;
 
-                        facade[_key] = protect(
+                        facade[key] = protect(
                           property,
-                          accessor + ":" + _key,
-                          _key,
+                          accessor + ":" + key,
+                          key,
                           result,
                         );
                       }
@@ -18603,6 +18603,7 @@ try {
                 if (!facebookURIRegex) {
                   facebookURIRegex = new RegExp("(^|\\.)facebook\\.com$", "i");
                 }
+                var regex = facebookURIRegex;
 
                 if (uri.isEmpty() && uri.toString() !== "#") {
                   return false;
@@ -18614,7 +18615,7 @@ try {
 
                 return (
                   FB_PROTOCOLS.indexOf(uri.getProtocol()) !== -1 &&
-                  facebookURIRegex.test(uri.getDomain())
+                  regex.test(uri.getDomain())
                 );
               }
 
@@ -23464,6 +23465,10 @@ try {
               module,
               exports,
             ) {
+              function isFunction(value) {
+                return typeof value === "function";
+              }
+
               function safeEval(source, args) {
                 if (source === null || typeof source === "undefined") {
                   return;
@@ -23472,11 +23477,14 @@ try {
                   return source;
                 }
 
-                if (
-                  /^\w+$/.test(source) &&
-                  typeof window[source] === "function"
-                ) {
-                  return window[source].apply(null, args || []);
+                if (/^\w+$/.test(source)) {
+                  var windowValue = window[source];
+                  if (isFunction(windowValue)) {
+                    return windowValue.apply(
+                      null,
+                      args != null ? [].concat(args) : [],
+                    );
+                  }
                 }
 
                 importNamespace("sdk.Scribe").log("jssdk_error", {
@@ -23487,7 +23495,7 @@ try {
                   },
                 });
 
-                return Function(
+                return new Function(
                   'return eval("' + source.replace(/\"/g, '\\"') + '");',
                 ).apply(null, args || []);
               }
@@ -26203,9 +26211,9 @@ try {
                 _importDefault_ApiClient.subscribe(
                   "request.complete",
                   function ApiClient_subscribe_$1(
-                    endpoint,
+                    _endpoint,
                     _method,
-                    params,
+                    _params,
                     response,
                   ) {
                     var invalidateToken = false;
@@ -26258,7 +26266,7 @@ try {
                   function ApiClient_subscribe_$1(
                     endpoint,
                     method,
-                    params,
+                    _params,
                     response,
                   ) {
                     if (
@@ -26601,6 +26609,10 @@ try {
                     importNamespace("sdk.Event").fire("init:asyncstart");
                     fbAsyncInit.hasRun = true;
                     importDefault("sdk.ErrorHandling").unguard(fbAsyncInit)();
+
+                    if (window.__buffer) {
+                      window.__buffer.opts = null;
+                    }
                   }
                 }, 0);
                 importDefault("FB").provide("", {
@@ -26943,7 +26955,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1034886289","namespace":"FB","message":"' +
+        '","revision":"1034906703","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
