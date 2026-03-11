@@ -1,4 +1,4 @@
-/*1773197240,,JIT Construction: v1034906703,en_US*/
+/*1773209243,,JIT Construction: v1034920861,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3774,7 +3774,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1034906703",
+            revision: "1034920861",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -6324,7 +6324,9 @@ try {
                   } else {
                     size = DEFAULT_BUFFER_SIZE;
                   }
+
                   this.$IntervalTrackingBoundedBuffer$p_size = size;
+
                   this.$IntervalTrackingBoundedBuffer$p_buffer =
                     new (importDefault("CircularBuffer"))(size);
                   this.$IntervalTrackingBoundedBuffer$p_buffer.onEvict(
@@ -6551,6 +6553,7 @@ try {
                 var finished = false;
                 var currentContinuation =
                   timeSlice.getGuardedContinuation(name);
+
                 var guard = function guard(fn) {
                   currentContinuation(function currentContinuation_$0() {
                     if (!finished) {
@@ -8444,6 +8447,7 @@ try {
                 var stack = path.split(".");
                 do {
                   var key = stack.shift();
+
                   head = head[key] || (create && (head[key] = {}));
                 } while (stack.length && head);
                 return head;
@@ -17132,7 +17136,11 @@ try {
               module,
               exports,
             ) {
-              function allowlistObjectKeys(source, allowlist) {
+              function allowlistObjectKeys(
+                source,
+
+                allowlist,
+              ) {
                 var result = {};
                 var keys = Array.isArray(allowlist)
                   ? allowlist
@@ -26955,7 +26963,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1034906703","namespace":"FB","message":"' +
+        '","revision":"1034920861","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
