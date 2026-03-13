@@ -1,4 +1,4 @@
-/*1773370138,,JIT Construction: v1035083696,en_US*/
+/*1773439230,,JIT Construction: v1035141891,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3774,7 +3774,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1035083696",
+            revision: "1035141891",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -9750,22 +9750,23 @@ try {
                 ENVIRONMENTS: ENVIRONMENTS,
 
                 isEnvironment: function isEnvironment(target) {
-                  var environment = this.getEnvironment();
+                  var environment = Runtime.getEnvironment();
                   return (target | environment) === environment;
                 },
 
                 isCanvasEnvironment: function isCanvasEnvironment() {
                   return (
-                    this.isEnvironment(ENVIRONMENTS.CANVAS) ||
-                    this.isEnvironment(ENVIRONMENTS.PAGETAB)
+                    Runtime.isEnvironment(ENVIRONMENTS.CANVAS) ||
+                    Runtime.isEnvironment(ENVIRONMENTS.PAGETAB)
                   );
                 },
               });
 
               (function () {
-                var environment = /app_runner/.test(window.name)
+                var windowName = String(window.name);
+                var environment = /app_runner/.test(windowName)
                   ? ENVIRONMENTS.PAGETAB
-                  : /iframe_canvas/.test(window.name)
+                  : /iframe_canvas/.test(windowName)
                     ? ENVIRONMENTS.CANVAS
                     : ENVIRONMENTS.UNKNOWN;
 
@@ -20021,7 +20022,7 @@ try {
                     if (
                       importNamespace("sdk.modFeatureCheck").forIDs(
                         "force_popup_to_canvas_apps_with_id",
-                        [importDefault("sdk.Runtime").getClientID()],
+                        [Number(importDefault("sdk.Runtime").getClientID())],
                       ) ||
                       importDefault("sdk.feature")(
                         "force_popup_to_all_canvas_app",
@@ -20072,7 +20073,7 @@ try {
                 },
 
                 canIframe: function canIframe(params) {
-                  return importDefault("sdk.Runtime").getAccessToken();
+                  return importDefault("sdk.Runtime").getAccessToken() !== "";
                 },
 
                 getXdRelation: function getXdRelation(params) {
@@ -24546,7 +24547,7 @@ try {
                   if (
                     (importNamespace("sdk.modFeatureCheck").forIDs(
                       "allow_shadow_dom_for_apps_with_id",
-                      [importDefault("sdk.Runtime").getClientID()],
+                      [Number(importDefault("sdk.Runtime").getClientID())],
                     ) ||
                       (attr["data-shadow-test"] != null &&
                         attr["data-shadow-test"] === "true")) &&
@@ -26809,7 +26810,7 @@ try {
                           false,
                         );
                         var testId = importDefault("sdk.Runtime").getSDKAB();
-                        if (testId) {
+                        if (testId != null) {
                           data.ab = testId;
                           shouldLog = true;
                         }
@@ -26965,7 +26966,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1035083696","namespace":"FB","message":"' +
+        '","revision":"1035141891","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
