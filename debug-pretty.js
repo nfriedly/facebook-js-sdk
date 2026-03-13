@@ -1,4 +1,4 @@
-/*1773439230,,JIT Construction: v1035141891,en_US*/
+/*1773446368,,JIT Construction: v1035148941,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -832,8 +832,8 @@ try {
                 isSafeInteger: function isSafeInteger(value) {
                   return (
                     ES6Number.isFinite(value) &&
-                    value >= this.MIN_SAFE_INTEGER &&
-                    value <= this.MAX_SAFE_INTEGER &&
+                    value >= MIN_SAFE_INTEGER &&
+                    value <= MAX_SAFE_INTEGER &&
                     Math.floor(value) === value
                   );
                 },
@@ -3774,7 +3774,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1035141891",
+            revision: "1035148941",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -12166,12 +12166,11 @@ try {
                 } else {
                   var searchParams = new URLSearchParams();
 
-                  for (var key in params) {
-                    if (Object.prototype.hasOwnProperty.call(params, key)) {
-                      var val = params[key];
-                      if (val != null) {
-                        searchParams.set(key, val);
-                      }
+                  for (var _ref2 of ES("Object", "entries", false, params)) {
+                    var key = _ref2[0];
+                    var val = _ref2[1];
+                    if (val != null) {
+                      searchParams.set(key, String(val));
                     }
                   }
 
@@ -26966,7 +26965,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1035141891","namespace":"FB","message":"' +
+        '","revision":"1035148941","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
