@@ -1,4 +1,4 @@
-/*1773446368,,JIT Construction: v1035148941,en_US*/
+/*1773459526,,JIT Construction: v1035169204,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3774,7 +3774,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1035148941",
+            revision: "1035169204",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -26558,6 +26558,7 @@ try {
               "sdk.ErrorHandling",
               "sdk.Event",
               "sdk.Frictionless",
+              "sdk.Runtime",
               "sdk.XD",
               "sdk.init",
             ],
@@ -26619,10 +26620,6 @@ try {
                     importNamespace("sdk.Event").fire("init:asyncstart");
                     fbAsyncInit.hasRun = true;
                     importDefault("sdk.ErrorHandling").unguard(fbAsyncInit)();
-
-                    if (window.__buffer) {
-                      window.__buffer.opts = null;
-                    }
                   }
                 }, 0);
                 importDefault("FB").provide("", {
@@ -26639,8 +26636,13 @@ try {
                 );
 
                 window.setTimeout(function window_setTimeout_$0() {
-                  if (window.__buffer && window.__buffer.opts != null) {
-                    importDefault("sdk.init")(window.__buffer.opts);
+                  var buffer = window.__buffer;
+                  if (
+                    buffer &&
+                    buffer.opts != null &&
+                    !importDefault("sdk.Runtime").getInitialized()
+                  ) {
+                    importDefault("sdk.init")(buffer.opts);
                   }
                 }, 0);
               }
@@ -26965,7 +26967,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1035148941","namespace":"FB","message":"' +
+        '","revision":"1035169204","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
