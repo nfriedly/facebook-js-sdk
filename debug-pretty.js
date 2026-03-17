@@ -1,4 +1,4 @@
-/*1773742219,,JIT Construction: v1035325481,en_US*/
+/*1773784994,,JIT Construction: v1035354658,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3772,7 +3772,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1035325481",
+            revision: "1035354658",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -13043,33 +13043,33 @@ try {
                 }
                 URIAbstractBase.parse = function parse(
                   uri,
-                  uriToParse,
+                  rawUri,
                   shouldThrow,
                   serializer,
                 ) {
-                  if (!uriToParse) {
+                  if (rawUri == null || rawUri === "") {
                     return true;
                   }
-                  if (uriToParse instanceof URIAbstractBase) {
-                    uri.setProtocol(uriToParse.getProtocol());
-                    uri.setDomain(uriToParse.getDomain());
-                    uri.setPort(uriToParse.getPort());
-                    uri.setPath(uriToParse.getPath());
+                  if (rawUri instanceof URIAbstractBase) {
+                    uri.setProtocol(rawUri.getProtocol());
+                    uri.setDomain(rawUri.getDomain());
+                    uri.setPort(rawUri.getPort());
+                    uri.setPath(rawUri.getPath());
                     uri.setQueryData(
                       serializer.deserialize(
-                        serializer.serialize(uriToParse.getQueryData()),
+                        serializer.serialize(rawUri.getQueryData()),
                       ),
                     );
-                    uri.setFragment(uriToParse.getFragment());
-                    uri.setIsGeneric(uriToParse.getIsGeneric());
+                    uri.setFragment(rawUri.getFragment());
+                    uri.setIsGeneric(rawUri.getIsGeneric());
                     uri.setForceFragmentSeparator(
-                      uriToParse.getForceFragmentSeparator(),
+                      rawUri.getForceFragmentSeparator(),
                     );
-                    uri.setOriginalRawQuery(uriToParse.getOriginalRawQuery());
+                    uri.setOriginalRawQuery(rawUri.getOriginalRawQuery());
                     uri.setQueryParamModified(false);
                     return true;
                   }
-                  uriToParse = uriToParse.toString().trim();
+                  var uriToParse = rawUri.toString().trim();
                   var components = (
                     _importNamespace_closure_URIRFC3986 ||
                     (_importNamespace_closure_URIRFC3986 =
@@ -13141,7 +13141,11 @@ try {
                     }
                     return false;
                   }
-                  if (!uri.getProtocol() && SECURITY_PATTERN.test(uriToParse)) {
+                  if (
+                    !ES(uriToParse, "startsWith", true, "#") &&
+                    !uri.getProtocol() &&
+                    SECURITY_PATTERN.test(uriToParse)
+                  ) {
                     if (shouldThrow) {
                       throw new Error(
                         "URI.parse: invalid URI (unsafe protocol-relative URLs): " +
@@ -26966,7 +26970,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1035325481","namespace":"FB","message":"' +
+        '","revision":"1035354658","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
