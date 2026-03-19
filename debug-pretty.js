@@ -1,4 +1,4 @@
-/*1773784994,,JIT Construction: v1035354658,en_US*/
+/*1773894855,,JIT Construction: v1035484955,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3772,7 +3772,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1035354658",
+            revision: "1035484955",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -9721,14 +9721,11 @@ try {
                 FamilyLoginLoaded: false,
                 GraphDomain: "",
                 Initialized: false,
-                IsSPIN: Boolean(
-                  (_importNamespace_JSSDKRuntimeConfig =
-                    importNamespace("JSSDKRuntimeConfig")).isSPIN,
-                ),
                 IsVersioned: false,
                 KidDirectedSite: undefined,
                 Lib: "",
-                Locale: _importNamespace_JSSDKRuntimeConfig.locale,
+                Locale: (_importNamespace_JSSDKRuntimeConfig =
+                  importNamespace("JSSDKRuntimeConfig")).locale,
                 LoggedIntoFacebook: undefined,
                 LoginStatus: undefined,
                 Revision: _importNamespace_JSSDKRuntimeConfig.revision,
@@ -10072,14 +10069,7 @@ try {
 
                 image.src = importDefault("QueryString").appendToUrl(url, {
                   c: category,
-                  m: ES(
-                    "JSON",
-                    "stringify",
-                    false,
-                    babelHelpers["extends"]({}, data, {
-                      isSPIN: importDefault("sdk.Runtime").getIsSPIN(),
-                    }),
-                  ),
+                  m: ES("JSON", "stringify", false, data),
                 });
               }
               exports.log = log;
@@ -26718,16 +26708,6 @@ try {
                           new (importDefault("sdk.URI"))(SDKUrl),
                         );
                       });
-
-                    var isJSSDKServedFromSPIN = timings.length >= 1;
-
-                    if (!isJSSDKServedFromSPIN) {
-                      timings = perf
-                        .getEntriesByType("resource")
-                        .filter(function filter_$0(t) {
-                          return ES(t.name, "startsWith", true, SDKUrl);
-                        });
-                    }
                     return timings;
                   } catch (e) {
                     var error = importDefault("getErrorSafe")(e);
@@ -26970,7 +26950,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1035354658","namespace":"FB","message":"' +
+        '","revision":"1035484955","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
