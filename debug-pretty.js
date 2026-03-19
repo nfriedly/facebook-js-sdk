@@ -1,4 +1,4 @@
-/*1773894855,,JIT Construction: v1035484955,en_US*/
+/*1773907484,,JIT Construction: v1035504971,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3772,7 +3772,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1035484955",
+            revision: "1035504971",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -10481,7 +10481,7 @@ try {
               function assertGetValidAppID() {
                 var appID = importDefault("sdk.Runtime").getClientID();
                 importDefault("Assert").isTrue(
-                  appID !== null && appID.length > 0,
+                  typeof appID === "string" && appID.length > 0,
                   "You need to call FB.init() with App ID first.",
                 );
                 return appID;
@@ -21107,15 +21107,12 @@ try {
               );
 
               function hideUnityElement(elem) {
-                elem._hideunity_savedstyle = {};
-
-                elem._hideunity_savedstyle.left = elem.style.left;
-
-                elem._hideunity_savedstyle.position = elem.style.position;
-
-                elem._hideunity_savedstyle.width = elem.style.width;
-
-                elem._hideunity_savedstyle.height = elem.style.height;
+                elem._hideunity_savedstyle = {
+                  left: elem.style.left,
+                  position: elem.style.position,
+                  width: elem.style.width,
+                  height: elem.style.height,
+                };
                 elem.style.left = "-10000px";
                 elem.style.position = "absolute";
                 elem.style.width = "1px";
@@ -21178,14 +21175,13 @@ try {
               }
 
               function hidePluginCallback(params) {
-                var candidates = ES(
-                  "Array",
-                  "from",
-                  false,
-                  window.document.getElementsByTagName("object"),
-                );
-
-                candidates = candidates.concat(
+                var candidates = [].concat(
+                  ES(
+                    "Array",
+                    "from",
+                    false,
+                    window.document.getElementsByTagName("object"),
+                  ),
                   ES(
                     "Array",
                     "from",
@@ -21428,14 +21424,16 @@ try {
                   name: messageName,
                 };
 
-                var args = [params];
                 if (callback) {
-                  args.push(function args_push_$0(response) {
-                    callback(response.result);
-                  });
+                  importDefault("sdk.RPC").remote.logTtiMessage(
+                    params,
+                    function RPC_remote_logTtiMessage_$1(response) {
+                      callback(response.result);
+                    },
+                  );
+                } else {
+                  importDefault("sdk.RPC").remote.logTtiMessage(params);
                 }
-
-                importDefault("sdk.RPC").remote.logTtiMessage.apply(null, args);
               }
 
               function startTimer() {
@@ -21953,7 +21951,7 @@ try {
                   elem.style.width = width + "px";
                 }
 
-                if ((height != null && height !== "") || height === 0) {
+                if (height != null && height !== "") {
                   elem.style.height = height + "px";
                 }
               }
@@ -26950,7 +26948,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1035484955","namespace":"FB","message":"' +
+        '","revision":"1035504971","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
