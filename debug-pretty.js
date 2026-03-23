@@ -1,4 +1,4 @@
-/*1774257222,,JIT Construction: v1035718650,en_US*/
+/*1774299919,,JIT Construction: v1035731846,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -2554,7 +2554,6 @@ try {
                   if (accessor.length === 2) {
                     var obj = accessor[0],
                       prop = accessor[1];
-
                     if (!obj || !prop || !window[obj] || !window[obj][prop]) {
                       var windowObj = obj ? window[obj] : "-";
                       var windowObjProp =
@@ -2565,9 +2564,9 @@ try {
                             ", " +
                             prop +
                             ", " +
-                            windowObj +
+                            String(windowObj) +
                             ", " +
-                            windowObjProp +
+                            String(windowObjProp) +
                             ", " +
                             pName),
                       );
@@ -2598,7 +2597,7 @@ try {
 
                     methodCache[pName + "." + _prop] =
                       nativeFunction &&
-                      /\{\s+\[native code\]\s\}/.test(nativeFunction)
+                      /\{\s+\[native code\]\s\}/.test(String(nativeFunction))
                         ? nativeFunction
                         : polyfillObject[_prop];
                   }
@@ -3772,7 +3771,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1035718650",
+            revision: "1035731846",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -24860,16 +24859,8 @@ try {
                   _this.subscribe(
                     "xd.resize.flow",
                     function _this_subscribe_$1(message) {
-                      ES(
-                        "Object",
-                        "assign",
-                        false,
-                        _this.iframeOptions.root.style,
-                        {
-                          verticalAlign: "bottom",
-                          overflow: "",
-                        },
-                      );
+                      _this.iframeOptions.root.style.verticalAlign = "bottom";
+                      _this.iframeOptions.root.style.overflow = "";
                       importNamespace("sdk.PluginUtils").resize(
                         _this.iframeOptions.root,
                         importNamespace("sdk.PluginUtils").parse(message.width),
@@ -24886,17 +24877,8 @@ try {
                     "xd.resize",
                     function _this_subscribe_$1(message) {
                       var _importNamespace_sdkPluginUtils;
-
-                      ES(
-                        "Object",
-                        "assign",
-                        false,
-                        _this.iframeOptions.root.style,
-                        {
-                          verticalAlign: "bottom",
-                          overflow: "",
-                        },
-                      );
+                      _this.iframeOptions.root.style.verticalAlign = "bottom";
+                      _this.iframeOptions.root.style.overflow = "";
                       (_importNamespace_sdkPluginUtils =
                         importNamespace("sdk.PluginUtils")).resize(
                         _this.iframeOptions.root,
@@ -24967,22 +24949,20 @@ try {
                     params,
                   );
 
-                  ES("Object", "assign", false, params, {
-                    app_id: importDefault("sdk.Runtime").getClientID(),
-                    locale: importDefault("sdk.Runtime").getLocale(),
-                    sdk: "joey",
-                    kid_directed_site:
-                      importDefault("sdk.Runtime").getKidDirectedSite(),
-                    channel: importNamespace("sdk.XD").handler(
-                      function XD_handler_$0(msg) {
-                        if (msg != null) {
-                          _this.inform("xd." + msg.type, msg);
-                        }
-                      },
-                      "parent.parent",
-                      true,
-                    ),
-                  });
+                  params.app_id = importDefault("sdk.Runtime").getClientID();
+                  params.locale = importDefault("sdk.Runtime").getLocale();
+                  params.sdk = "joey";
+                  params.kid_directed_site =
+                    importDefault("sdk.Runtime").getKidDirectedSite();
+                  params.channel = importNamespace("sdk.XD").handler(
+                    function XD_handler_$0(msg) {
+                      if (msg != null) {
+                        _this.inform("xd." + msg.type, msg);
+                      }
+                    },
+                    "parent.parent",
+                    true,
+                  );
 
                   if (_this.shouldIgnoreWidth()) {
                     params.width = void 0;
@@ -25018,14 +24998,10 @@ try {
 
                   var flow = document.createElement("span");
 
-                  ES("Object", "assign", false, flow.style, {
-                    verticalAlign: "top",
-
-                    width: params.lazy ? "1px" : "0px",
-
-                    height: params.lazy ? "1px" : "0px",
-                    overflow: "hidden",
-                  });
+                  flow.style.verticalAlign = "top";
+                  flow.style.width = params.lazy ? "1px" : "0px";
+                  flow.style.height = params.lazy ? "1px" : "0px";
+                  flow.style.overflow = "hidden";
 
                   _this.element = elem;
                   _this.ns = ns;
@@ -25041,7 +25017,6 @@ try {
                       importDefault("sdk.UA").mobile()
                         ? void 0
                         : params.width || 1000,
-
                     height: params.height || 1000,
                     style: {
                       border: "none",
@@ -25059,7 +25034,6 @@ try {
                         _this.iframe,
                       );
                     },
-
                     lazy: params.lazy,
                     allow: importNamespace("sdk.PluginUtils").getVal(
                       attr,
@@ -25072,7 +25046,6 @@ try {
                       _this.element,
                       "fbiframe_widget_fluid_desktop",
                     );
-
                     if (!params.width && _this.config.full_width) {
                       _this.element.style.width = "100%";
                       _this.iframeOptions.root.style.width = "100%";
@@ -25184,46 +25157,24 @@ try {
                     }
 
                     if (!this.iframeOptions.width) {
-                      ES("Object", "assign", false, this.element.style, {
-                        display: "block",
-                        width: "100%",
-                        height: "auto",
-                      });
+                      this.element.style.display = "block";
+                      this.element.style.width = "100%";
+                      this.element.style.height = "auto";
 
-                      ES(
-                        "Object",
-                        "assign",
-                        false,
-                        this.iframeOptions.root.style,
-                        {
-                          width: "100%",
-                          height: "auto",
-                        },
-                      );
+                      this.iframeOptions.root.style.width = "100%";
+                      this.iframeOptions.root.style.height = "auto";
 
-                      var iframeStyle = {
-                        height: "auto",
-                        position: "static",
-                        width: "100%",
-                      };
+                      this.iframe.style.height = "auto";
+                      this.iframe.style.position = "static";
+                      this.iframe.style.width = "100%";
 
                       if (
                         importDefault("sdk.UA").iphone() ||
                         importDefault("sdk.UA").ipad()
                       ) {
-                        ES("Object", "assign", false, iframeStyle, {
-                          width: "220px",
-                          minWidth: "100%",
-                        });
+                        this.iframe.style.width = "220px";
+                        this.iframe.style.minWidth = "100%";
                       }
-
-                      ES(
-                        "Object",
-                        "assign",
-                        false,
-                        this.iframe.style,
-                        iframeStyle,
-                      );
                     }
                   }
                 };
@@ -26946,7 +26897,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1035718650","namespace":"FB","message":"' +
+        '","revision":"1035731846","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
