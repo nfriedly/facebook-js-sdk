@@ -1,4 +1,4 @@
-/*1774299919,,JIT Construction: v1035731846,en_US*/
+/*1774332849,,JIT Construction: v1035805204,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3771,7 +3771,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1035731846",
+            revision: "1035805204",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -11576,30 +11576,36 @@ try {
 
                   var i;
 
-                  var dict = Object.create(null);
+                  var dict = new Map();
                   for (i = 0; i < parts.length; i++) {
-                    dict[parts[i]] = (dict[parts[i]] || 0) + 1;
+                    var _dict$get;
+                    dict.set(
+                      parts[i],
+                      ((_dict$get = dict.get(parts[i])) != null
+                        ? _dict$get
+                        : 0) + 1,
+                    );
                   }
 
-                  var keys = Object.keys(dict);
+                  var keys = ES("Array", "from", false, dict.keys());
                   keys.sort(function keys_sort_$0(a, b) {
-                    return parseInt(dict[b], 10) - parseInt(dict[a], 10);
+                    return Number(dict.get(b)) - Number(dict.get(a));
                   });
 
                   for (i = 0; i < keys.length; i++) {
                     var n = (i - (i % 32)) / 32;
-                    dict[keys[i]] = n
-                      ? n.toString(32) + LO[i % 32]
-                      : LO[i % 32];
+                    dict.set(
+                      keys[i],
+                      n ? n.toString(32) + LO[i % 32] : LO[i % 32],
+                    );
                   }
 
                   var codes = "";
                   for (i = 0; i < parts.length; i++) {
-                    codes += dict[parts[i]];
+                    codes += String(dict.get(parts[i]));
                   }
 
-                  keys.unshift(MAGIC, keys.length);
-
+                  keys.unshift(MAGIC, String(keys.length));
                   keys.push(codes);
                   return keys.join("~");
                 },
@@ -25681,7 +25687,7 @@ try {
               "use strict";
 
               var ShareButton = importDefault("IframePlugin").extend({
-                constructor: function constructor(elem, ns, tag, attr) {
+                constructor: function ShareButton(elem, ns, tag, attr) {
                   this.parent(elem, ns, tag, attr);
                 },
 
@@ -26897,7 +26903,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1035731846","namespace":"FB","message":"' +
+        '","revision":"1035805204","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
