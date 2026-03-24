@@ -1,4 +1,4 @@
-/*1774332849,,JIT Construction: v1035805204,en_US*/
+/*1774343443,,JIT Construction: v1035819858,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -2752,7 +2752,8 @@ try {
             function $module_sdk_babelHelpers(
               global,
               require,
-              requireDynamic,
+              importDefault,
+              importNamespace,
               requireLazy,
               module,
               exports,
@@ -2762,8 +2763,8 @@ try {
               var hasOwn = Object.prototype.hasOwnProperty;
 
               babelHelpers.inheritsLoose = function (subClass, superClass) {
-                require("ES6Object").assign(subClass, superClass);
-                subClass.prototype = require("ES5Object").create(
+                importDefault("ES6Object").assign(subClass, superClass);
+                subClass.prototype = importDefault("ES5Object").create(
                   superClass && superClass.prototype,
                 );
                 subClass.prototype.constructor = subClass;
@@ -2812,7 +2813,7 @@ try {
                 return self;
               };
 
-              babelHelpers._extends = require("ES6Object").assign;
+              babelHelpers._extends = importDefault("ES6Object").assign;
 
               babelHelpers["extends"] = babelHelpers._extends;
 
@@ -2850,11 +2851,11 @@ try {
                 return strings;
               };
 
-              babelHelpers.bind = require("ES5FunctionPrototype").bind;
-
-              module.exports = babelHelpers;
+              babelHelpers.bind = importDefault("ES5FunctionPrototype").bind;
+              var _default = babelHelpers;
+              exports["default"] = _default;
             },
-            null,
+            98,
           );
           var ES = require("ES");
           var babelHelpers = require("sdk.babelHelpers"); /**
@@ -3771,7 +3772,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1035805204",
+            revision: "1035819858",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -9361,12 +9362,11 @@ try {
                   return this;
                 },
               };
-
-              module.exports = ObservableMixin;
               var _c;
               $RefreshReg$(_c, "ObservableMixin");
+              exports["default"] = ObservableMixin;
             },
-            null,
+            66,
           );
           __d(
             "AssertionError",
@@ -26903,7 +26903,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1035805204","namespace":"FB","message":"' +
+        '","revision":"1035819858","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
