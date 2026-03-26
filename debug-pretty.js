@@ -1,4 +1,4 @@
-/*1774343443,,JIT Construction: v1035819858,en_US*/
+/*1774493484,,JIT Construction: v1035984861,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -504,7 +504,6 @@ try {
               var ES5StringPrototype = {
                 startsWith: function startsWith(search) {
                   var string = String(this);
-
                   if (this == null) {
                     throw new TypeError(
                       "String.prototype.startsWith called on null or undefined",
@@ -520,7 +519,6 @@ try {
 
                 endsWith: function endsWith(search) {
                   var string = String(this);
-
                   if (this == null) {
                     throw new TypeError(
                       "String.prototype.endsWith called on null or undefined",
@@ -547,7 +545,6 @@ try {
                       "String.prototype.contains called on null or undefined",
                     );
                   }
-
                   var string = String(this);
                   var pos = arguments.length > 1 ? Number(arguments[1]) : 0;
                   if (isNaN(pos)) {
@@ -562,7 +559,6 @@ try {
                       "String.prototype.repeat called on null or undefined",
                     );
                   }
-
                   var string = String(this);
                   var n = count ? Number(count) : 0;
                   if (isNaN(n)) {
@@ -3772,7 +3768,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1035819858",
+            revision: "1035984861",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -7928,7 +7924,8 @@ try {
             function $module_setImmediatePolyfill(
               global,
               require,
-              requireDynamic,
+              importDefault,
+              importNamespace,
               requireLazy,
               module,
               exports,
@@ -7936,14 +7933,13 @@ try {
             ) {
               var setImmediateImplementation = global.setImmediate;
               if (
-                require("PromiseUsePolyfillSetImmediateGK")
+                importDefault("PromiseUsePolyfillSetImmediateGK")
                   .www_always_use_polyfill_setimmediate ||
                 !setImmediateImplementation
               ) {
-                var ImmediateImplementation = require("ImmediateImplementation");
-
-                setImmediateImplementation =
-                  ImmediateImplementation.setImmediate;
+                setImmediateImplementation = importDefault(
+                  "ImmediateImplementation",
+                ).setImmediate;
               }
 
               function setImmediate(callback) {
@@ -7963,10 +7959,9 @@ try {
                   [callback].concat(args),
                 );
               }
-
-              module.exports = setImmediate;
+              exports["default"] = setImmediate;
             },
-            null,
+            98,
           );
           __d(
             "setImmediateAcrossTransitions",
@@ -8629,7 +8624,7 @@ try {
                 nativeMessengerAndroidApp: /Orca\-Android/i.test(uas),
                 ucBrowser: /UCBrowser/i.test(uas),
               };
-              var mobile = /Mobile/i.test(uas);
+              var _mobile = /Mobile/i.test(uas);
 
               var versions = {
                 ie: NaN,
@@ -8685,72 +8680,106 @@ try {
                   });
               }
 
-              var UA = {};
-
-              Object.keys(versions).map(function map_$0(key) {
+              function createVersionFunc(key) {
                 var getVersion = function getVersion() {
                   return parseFloat(versions[key]);
                 };
-
                 getVersion.getVersionParts = function () {
                   return getVersionParts(versions[key]);
                 };
+                return getVersion;
+              }
 
-                UA[key] = getVersion;
-              });
+              var UA = {
+                ie: createVersionFunc("ie"),
+                firefox: createVersionFunc("firefox"),
+                chrome: createVersionFunc("chrome"),
+                webkit: createVersionFunc("webkit"),
+                osx: createVersionFunc("osx"),
+                edge: createVersionFunc("edge"),
+                operaMini: createVersionFunc("operaMini"),
+                ucWeb: createVersionFunc("ucWeb"),
 
-              Object.keys(devices).map(function map_$0(key) {
-                UA[key] = function () {
-                  return devices[key];
-                };
-              });
+                iphone: function iphone() {
+                  return devices.iphone;
+                },
+                ipad: function ipad() {
+                  return devices.ipad;
+                },
+                android: function android() {
+                  return devices.android;
+                },
+                nativeApp: function nativeApp() {
+                  return devices.nativeApp;
+                },
+                nativeAndroidApp: function nativeAndroidApp() {
+                  return devices.nativeAndroidApp;
+                },
+                nativeInstagramApp: function nativeInstagramApp() {
+                  return devices.nativeInstagramApp;
+                },
+                nativeMetaIAB: function nativeMetaIAB() {
+                  return devices.nativeMetaIAB;
+                },
+                nativeMessengeriOSApp: function nativeMessengeriOSApp() {
+                  return devices.nativeMessengeriOSApp;
+                },
+                nativeMessengerAndroidApp:
+                  function nativeMessengerAndroidApp() {
+                    return devices.nativeMessengerAndroidApp;
+                  },
+                ucBrowser: function ucBrowser() {
+                  return devices.ucBrowser;
+                },
 
-              UA.mobile = function () {
-                return (
-                  devices.iphone || devices.ipad || devices.android || mobile
-                );
-              };
-
-              UA.mTouch = function () {
-                return devices.android || devices.iphone || devices.ipad;
-              };
-              UA.facebookInAppBrowser = function () {
-                return devices.nativeApp || devices.nativeAndroidApp;
-              };
-              UA.inAppBrowser = function () {
-                return (
-                  devices.nativeApp ||
-                  devices.nativeAndroidApp ||
-                  devices.nativeInstagramApp ||
-                  devices.nativeMetaIAB
-                );
-              };
-              UA.mBasic = function () {
-                return !!(versions.ucWeb || versions.operaMini);
-              };
-              UA.instagram = function () {
-                return devices.nativeInstagramApp;
-              };
-              UA.messenger = function () {
-                return (
-                  devices.nativeMessengeriOSApp ||
-                  devices.nativeMessengerAndroidApp
-                );
-              };
-              UA.isSupportedIABVersion = function (supportedVersion) {
-                if (!UA.facebookInAppBrowser()) {
-                  return false;
-                }
-                var fb4aVersionRaw = /(?:FBAV\/(\d+(\.\d+)+))/.exec(
-                  navigator.userAgent,
-                );
-                if (fb4aVersionRaw) {
-                  var fb4aVersion = parseFloat(fb4aVersionRaw[1]);
-                  if (fb4aVersion >= supportedVersion) {
-                    return true;
+                mobile: function mobile() {
+                  return (
+                    devices.iphone || devices.ipad || devices.android || _mobile
+                  );
+                },
+                mTouch: function mTouch() {
+                  return devices.android || devices.iphone || devices.ipad;
+                },
+                facebookInAppBrowser: function facebookInAppBrowser() {
+                  return devices.nativeApp || devices.nativeAndroidApp;
+                },
+                inAppBrowser: function inAppBrowser() {
+                  return (
+                    devices.nativeApp ||
+                    devices.nativeAndroidApp ||
+                    devices.nativeInstagramApp ||
+                    devices.nativeMetaIAB
+                  );
+                },
+                mBasic: function mBasic() {
+                  return !!(versions.ucWeb || versions.operaMini);
+                },
+                instagram: function instagram() {
+                  return devices.nativeInstagramApp;
+                },
+                messenger: function messenger() {
+                  return (
+                    devices.nativeMessengeriOSApp ||
+                    devices.nativeMessengerAndroidApp
+                  );
+                },
+                isSupportedIABVersion: function isSupportedIABVersion(
+                  supportedVersion,
+                ) {
+                  if (!UA.facebookInAppBrowser()) {
+                    return false;
                   }
-                }
-                return false;
+                  var fb4aVersionRaw = /(?:FBAV\/(\d+(\.\d+)+))/.exec(
+                    navigator.userAgent,
+                  );
+                  if (fb4aVersionRaw) {
+                    var fb4aVersion = parseFloat(fb4aVersionRaw[1]);
+                    if (fb4aVersion >= supportedVersion) {
+                      return true;
+                    }
+                  }
+                  return false;
+                },
               };
               var _default = UA;
               exports["default"] = _default;
@@ -17439,7 +17468,7 @@ try {
                 var onload = importDefault("wrapFunction")(
                   function wrapFunction_$0() {
                     onload = noop;
-                    if ("onload" in wrapper) {
+                    if (wrapper.onload != null) {
                       wrapper.onload(xhr);
                     }
                   },
@@ -17449,7 +17478,7 @@ try {
                 var onerror = importDefault("wrapFunction")(
                   function wrapFunction_$0() {
                     onerror = noop;
-                    if ("onerror" in wrapper) {
+                    if (wrapper.onerror != null) {
                       wrapper.onerror(xhr);
                     }
                   },
@@ -17588,6 +17617,8 @@ try {
               module,
               exports,
             ) {
+              var _importNamespace_Log;
+
               var accessToken;
               var clientID;
               var defaultParams;
@@ -17613,8 +17644,12 @@ try {
               var requestCounter = 0;
 
               var apiBatcher;
-
-              var logger = importNamespace("Log");
+              var logger = {
+                debug: (_importNamespace_Log = importNamespace("Log")).debug,
+                error: _importNamespace_Log.error,
+                log: _importNamespace_Log.log,
+                warn: _importNamespace_Log.warn,
+              };
 
               function request(url, method, paramsRaw, cb) {
                 var shouldQueueRequest =
@@ -26653,15 +26688,20 @@ try {
 
                 function getPerformanceResourceTimings(SDKUrl) {
                   try {
-                    var timings = perf
-                      .getEntriesByType("resource")
-                      .filter(function filter_$0(t) {
-                        return isFileSPINServedJSSDK(
-                          t,
+                    var entries = perf.getEntriesByType("resource");
+                    var filtered = [];
+                    for (var entry of entries) {
+                      if (
+                        entry instanceof PerformanceResourceTiming &&
+                        isFileSPINServedJSSDK(
+                          entry,
                           new (importDefault("sdk.URI"))(SDKUrl),
-                        );
-                      });
-                    return timings;
+                        )
+                      ) {
+                        filtered.push(entry);
+                      }
+                    }
+                    return filtered;
                   } catch (e) {
                     var error = importDefault("getErrorSafe")(e);
                     importNamespace("Log").error(
@@ -26673,17 +26713,17 @@ try {
                 if (couldLog) {
                   var sdkurl = importDefault("sdk.Runtime").getSDKUrl();
                   var bootloadedTiming = null;
-                  var timing = getPerformanceResourceTimings(sdkurl);
+                  var timings = getPerformanceResourceTimings(sdkurl);
+                  var selectedTiming = null;
 
-                  if (timing && timing.length > 1) {
-                    if (timing > 2) {
-                      timing = null;
+                  if (timings != null && timings.length > 1) {
+                    if (timings.length > 2) {
                     } else {
                       var bootId = ES(
-                        timing,
+                        timings,
                         "findIndex",
                         true,
-                        function timing_findIndex_$0(t) {
+                        function timings_findIndex_$0(t) {
                           return ES(
                             t.name,
                             "startsWith",
@@ -26694,41 +26734,42 @@ try {
                       );
 
                       if (!bootId) {
-                        timing = null;
                       } else {
-                        bootloadedTiming = timing.splice(bootId)[0];
-
-                        timing = timing[0];
+                        var timingsCopy = [].concat(timings);
+                        bootloadedTiming = timingsCopy.splice(bootId, 1)[0];
+                        selectedTiming = timingsCopy[0];
                       }
                     }
-                  } else if (timing && timing.length === 1) {
+                  } else if (timings != null && timings.length === 1) {
                     var frame = document.getElementById(
                       "facebook-jssdk-iframe",
                     );
-                    if (frame && frame instanceof HTMLIFrameElement) {
-                      bootloadedTiming = frame.contentWindow.performance
-                        .getEntriesByType("resource")
-                        .find(function find_$0(t) {
+                    if (frame != null && frame instanceof HTMLIFrameElement) {
+                      var frameEntries =
+                        frame.contentWindow.performance.getEntriesByType(
+                          "resource",
+                        );
+                      var frameEntry = frameEntries.find(
+                        function frameEntries_find_$0(t) {
                           return ES(t.name, "startsWith", true, sdkurl);
-                        });
+                        },
+                      );
+                      if (frameEntry instanceof PerformanceResourceTiming) {
+                        bootloadedTiming = frameEntry;
+                      }
                     }
-
-                    timing = timing[0];
-                  } else {
-                    timing = null;
+                    selectedTiming = timings[0];
                   }
 
-                  if (timing) {
-                    data.fetchTime = Math.round(timing.duration);
-                    if (bootloadedTiming) {
+                  if (selectedTiming != null) {
+                    data.fetchTime = Math.round(selectedTiming.duration);
+                    if (bootloadedTiming != null) {
                       data.fetchTime += Math.round(bootloadedTiming.duration);
                     }
 
-                    if ("transferSize" in timing) {
-                      data.transferSize = timing.transferSize;
-                      if (bootloadedTiming) {
-                        data.transferSize += bootloadedTiming.transferSize;
-                      }
+                    data.transferSize = selectedTiming.transferSize;
+                    if (bootloadedTiming != null) {
+                      data.transferSize += bootloadedTiming.transferSize;
                     }
                     importNamespace("Log").debug(
                       "sdkperf: it took %s ms and %s bytes to load %s",
@@ -26736,7 +26777,7 @@ try {
                       data.transferSize,
                       sdkurl,
                     );
-                    startTime = timing.startTime;
+                    startTime = selectedTiming.startTime;
 
                     data.ns = importDefault("sdk.Runtime").getSDKNS();
 
@@ -26748,7 +26789,7 @@ try {
                         );
                         var testId = importDefault("sdk.Runtime").getSDKAB();
                         if (testId != null) {
-                          data.ab = testId;
+                          data.ab = String(testId);
                           shouldLog = true;
                         }
                         if (shouldLog) {
@@ -26903,7 +26944,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1035819858","namespace":"FB","message":"' +
+        '","revision":"1035984861","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
