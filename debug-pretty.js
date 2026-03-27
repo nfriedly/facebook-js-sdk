@@ -1,4 +1,4 @@
-/*1774493484,,JIT Construction: v1035984861,en_US*/
+/*1774589171,,JIT Construction: v1036094556,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -716,7 +716,6 @@ try {
                     predicate,
                     thisArg,
                   );
-
                   return index === -1 ? void 0 : this[index];
                 },
 
@@ -729,7 +728,6 @@ try {
                   if (typeof predicate !== "function") {
                     throw new TypeError("predicate must be a function");
                   }
-
                   var list = Object(this);
                   var length = list.length >>> 0;
                   for (var i = 0; i < length; i++) {
@@ -746,7 +744,6 @@ try {
                       "Array.prototype.fill called on null or undefined",
                     );
                   }
-
                   var O = Object(this);
                   var len = O.length >>> 0;
                   var start = arguments[1];
@@ -3768,7 +3765,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1035984861",
+            revision: "1036094556",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -9747,6 +9744,8 @@ try {
                 EnforceHttps: false,
                 Environment: ENVIRONMENTS.UNKNOWN,
                 FamilyLoginLoaded: false,
+                FedCMContext: "signin",
+                FedCMMode: "active",
                 GraphDomain: "",
                 Initialized: false,
                 IsVersioned: false,
@@ -9764,6 +9763,7 @@ try {
                 SDKNS: _importNamespace_JSSDKRuntimeConfig.sdkns,
                 ShouldLoadFamilyLogin: false,
                 UseCookie: false,
+                UseFedCM: false,
                 UseLocalStorage: true,
                 UserID: "",
                 Version: undefined,
@@ -14710,6 +14710,155 @@ try {
             66,
           );
           __d(
+            "sdk.FedCM",
+            ["sdk.Runtime"],
+            function $module_sdk_FedCM(
+              global,
+              require,
+              importDefault,
+              importNamespace,
+              requireLazy,
+              module,
+              exports,
+            ) {
+              var CONFIG_URL = "https://www.facebook.com/fed_cm/config.json";
+
+              var w = window;
+
+              function parseTokenToAuthResponse(token) {
+                var _parsed$expires_in, _parsed$signed_reques;
+                var parsed = ES("JSON", "parse", false, token);
+                if (
+                  parsed == null ||
+                  typeof parsed !== "object" ||
+                  typeof parsed.access_token !== "string" ||
+                  parsed.access_token === "" ||
+                  typeof parsed.user_id !== "string" ||
+                  parsed.user_id === ""
+                ) {
+                  return null;
+                }
+                return {
+                  accessToken: parsed.access_token,
+                  userID: parsed.user_id,
+                  expiresIn: Number(
+                    (_parsed$expires_in = parsed.expires_in) != null
+                      ? _parsed$expires_in
+                      : 0,
+                  ),
+                  signedRequest:
+                    (_parsed$signed_reques = parsed.signed_request) != null
+                      ? _parsed$signed_reques
+                      : "",
+                  graphDomain: parsed.graph_domain,
+                };
+              }
+
+              function isFedCMSupported() {
+                return (
+                  w.IdentityCredential !== undefined &&
+                  w.isSecureContext === true
+                );
+              }
+
+              function getProviderConfig(options) {
+                var _w$crypto$randomUUID, _w$crypto;
+                var clientId = importDefault("sdk.Runtime").getClientID();
+                var nonce =
+                  (_w$crypto$randomUUID =
+                    (_w$crypto = w.crypto) == null ||
+                    _w$crypto.randomUUID == null
+                      ? void 0
+                      : _w$crypto.randomUUID()) != null
+                    ? _w$crypto$randomUUID
+                    : String(Date.now());
+                var config = {
+                  configURL: CONFIG_URL,
+                  clientId: clientId,
+                  nonce: nonce,
+                };
+                if ((options == null ? void 0 : options.scope) != null) {
+                  config.params = { scope: options.scope };
+                }
+                return config;
+              }
+
+              function processCredential(credential) {
+                try {
+                  var authResponse = parseTokenToAuthResponse(credential.token);
+                  if (authResponse == null) {
+                    return { status: "error", error: "Invalid credential" };
+                  }
+                  return { status: "success", authResponse: authResponse };
+                } catch (error) {
+                  return { status: "error", error: error };
+                }
+              }
+
+              function requestFedCMCredential(scope, options) {
+                var provider = getProviderConfig(
+                  scope != null ? { scope: scope } : undefined,
+                );
+
+                var requestOptions = {
+                  identity: {
+                    providers: [provider],
+                  },
+                };
+                if ((options == null ? void 0 : options.context) != null) {
+                  requestOptions.identity.context = options.context;
+                }
+                if ((options == null ? void 0 : options.mediation) != null) {
+                  requestOptions.mediation = options.mediation;
+                }
+
+                return w.navigator.credentials.get(requestOptions).then(
+                  function then_$0(credential) {
+                    if (
+                      credential == null ||
+                      typeof credential.token !== "string"
+                    ) {
+                      return { status: "error", error: "Invalid credential" };
+                    }
+                    try {
+                      var authResponse = parseTokenToAuthResponse(
+                        credential.token,
+                      );
+                      if (authResponse == null) {
+                        return { status: "error", error: "Invalid credential" };
+                      }
+                      return { status: "success", authResponse: authResponse };
+                    } catch (error) {
+                      return { status: "error", error: error };
+                    }
+                  },
+                  function then_$1(error) {
+                    if (
+                      error != null &&
+                      typeof error === "object" &&
+                      "name" in error &&
+                      error.name === "NotAllowedError"
+                    ) {
+                      if (
+                        (options == null ? void 0 : options.passive) === true
+                      ) {
+                        return { status: "dismissed" };
+                      }
+                      return { status: "user_cancelled" };
+                    }
+                    return { status: "error", error: error };
+                  },
+                );
+              }
+              exports.CONFIG_URL = CONFIG_URL;
+              exports.isFedCMSupported = isFedCMSupported;
+              exports.getProviderConfig = getProviderConfig;
+              exports.processCredential = processCredential;
+              exports.requestFedCMCredential = requestFedCMCredential;
+            },
+            98,
+          );
+          __d(
             "sdk.LoggingUtils",
             ["sdk.Impressions", "sdk.feature"],
             function $module_sdk_LoggingUtils(
@@ -14802,6 +14951,7 @@ try {
               "sdk.AuthStorageUtils",
               "sdk.AuthUtils",
               "sdk.Cookie",
+              "sdk.FedCM",
               "sdk.Frictionless",
               "sdk.LoggingUtils",
               "sdk.Runtime",
@@ -14838,18 +14988,60 @@ try {
                   importDefault("sdk.Runtime").isEnvironment(
                     importDefault("sdk.Runtime").ENVIRONMENTS.PAGETAB,
                   );
-                importDefault("sdk.ui")(
-                  babelHelpers["extends"](
-                    {
-                      method: "permissions.oauth",
-                      display: canvas ? "async" : "popup",
-                      domain: location.hostname,
-                    },
-                    opts || {},
-                  ),
 
-                  cb,
-                );
+                var openPopup = function openPopup() {
+                  importDefault("sdk.ui")(
+                    babelHelpers["extends"](
+                      {
+                        method: "permissions.oauth",
+                        display: canvas ? "async" : "popup",
+                        domain: location.hostname,
+                      },
+                      opts || {},
+                    ),
+
+                    cb,
+                  );
+                };
+
+                if (
+                  importDefault("sdk.Runtime").getUseFedCM() &&
+                  !canvas &&
+                  importNamespace("sdk.FedCM").isFedCMSupported()
+                ) {
+                  importNamespace("sdk.FedCM")
+                    .requestFedCMCredential(
+                      opts == null ? void 0 : opts.scope,
+                      {
+                        context: importDefault("sdk.Runtime").getFedCMContext(),
+                      },
+                    )
+                    .then(function then_$0(result) {
+                      if (result.status === "success") {
+                        importNamespace("sdk.AuthUtils").removeLogoutState();
+                        importNamespace("sdk.AuthUtils").setRevalidateTimer();
+                        setAuthResponse(result.authResponse, "connected");
+                        cb == null ||
+                          cb({
+                            authResponse: result.authResponse,
+                            status: "connected",
+                          });
+                      } else if (result.status === "user_cancelled") {
+                        importNamespace("sdk.AuthUtils").setLogoutState();
+                        setAuthResponse(null, "unknown");
+                        cb == null ||
+                          cb({ authResponse: null, status: "unknown" });
+                      } else {
+                        openPopup();
+                      }
+                    })
+                    ["catch"](function $0() {
+                      openPopup();
+                    });
+                  return;
+                }
+
+                openPopup();
               }
 
               function toWebOAuthStatus(status) {
@@ -14957,7 +15149,11 @@ try {
                     }
                   }
 
-                  if (importDefault("sdk.Runtime").getUseCookie()) {
+                  if (
+                    importDefault("sdk.Runtime").getUseCookie() &&
+                    authResponse.signedRequest != null &&
+                    authResponse.signedRequest !== ""
+                  ) {
                     var expirationTime =
                       authResponse.expiresIn === 0
                         ? 0
@@ -20784,6 +20980,7 @@ try {
               "sdk.Auth.LoginStatus",
               "sdk.AuthUtils",
               "sdk.Event",
+              "sdk.FedCM",
               "sdk.Runtime",
               "sdk.ui",
               "sdk.warnInsecure",
@@ -20984,6 +21181,41 @@ try {
                   "init:post",
                   function Event_subscribe_$1(options) {
                     importDefault("sdk.Auth.LoginStatus").onSDKInit(options);
+
+                    if (
+                      importDefault("sdk.Runtime").getFedCMMode() ===
+                        "passive" &&
+                      importDefault("sdk.Runtime").getUseFedCM() &&
+                      importDefault("sdk.Runtime").getClientID() !== "" &&
+                      importNamespace("sdk.FedCM").isFedCMSupported() &&
+                      !importDefault("sdk.Runtime").isCanvasEnvironment()
+                    ) {
+                      void importNamespace("sdk.FedCM")
+                        .requestFedCMCredential(
+                          importDefault("sdk.Runtime").getScope(),
+                          {
+                            mediation: "optional",
+                            passive: true,
+                            context:
+                              importDefault("sdk.Runtime").getFedCMContext(),
+                          },
+                        )
+                        .then(function then_$0(result) {
+                          if (result.status === "success") {
+                            importNamespace(
+                              "sdk.AuthUtils",
+                            ).removeLogoutState();
+                            importNamespace(
+                              "sdk.AuthUtils",
+                            ).setRevalidateTimer();
+                            importDefault("sdk.Auth").setAuthResponse(
+                              result.authResponse,
+                              "connected",
+                            );
+                          }
+                        })
+                        ["catch"](function $0() {});
+                    }
                   },
                 );
               }
@@ -21760,6 +21992,38 @@ try {
 
               var SDKEvent = { init: init };
               var _default = SDKEvent;
+              exports["default"] = _default;
+            },
+            98,
+          );
+          __d(
+            "sdk.FedCM-public",
+            ["FB", "sdk.FedCM"],
+            function $module_sdk_FedCM_public(
+              global,
+              require,
+              importDefault,
+              importNamespace,
+              requireLazy,
+              module,
+              exports,
+            ) {
+              "use strict";
+
+              function init() {
+                var _importNamespace_sdkFedCM;
+                importDefault("FB").provide("FedCM", {
+                  getProviderConfig: (_importNamespace_sdkFedCM =
+                    importNamespace("sdk.FedCM")).getProviderConfig,
+                  processCredential:
+                    _importNamespace_sdkFedCM.processCredential,
+                  isSupported: _importNamespace_sdkFedCM.isFedCMSupported,
+                  CONFIG_URL: _importNamespace_sdkFedCM.CONFIG_URL,
+                });
+              }
+
+              var SDKFedCM = { init: init };
+              var _default = SDKFedCM;
               exports["default"] = _default;
             },
             98,
@@ -26504,6 +26768,39 @@ try {
                 }
 
                 if (
+                  options.fedCM === true ||
+                  (options.fedCM != null && typeof options.fedCM === "object")
+                ) {
+                  importDefault("sdk.Runtime").setUseFedCM(true);
+
+                  var fedCMConfig =
+                    typeof options.fedCM === "object" ? options.fedCM : {};
+
+                  if (fedCMConfig.autoPrompt) {
+                    importDefault("sdk.Runtime").setFedCMMode("passive");
+                  }
+
+                  if (
+                    fedCMConfig.context === "signin" ||
+                    fedCMConfig.context === "signup" ||
+                    fedCMConfig.context === "use"
+                  ) {
+                    importDefault("sdk.Runtime").setFedCMContext(
+                      fedCMConfig.context,
+                    );
+                  } else if (fedCMConfig.context != null) {
+                    importNamespace("Log").warn(
+                      'Invalid fedCM.context: "%s". Must be "signin", "signup", or "use".',
+                      fedCMConfig.context,
+                    );
+                  }
+                } else if (options.fedCM != null && options.fedCM !== false) {
+                  importNamespace("Log").warn(
+                    "Invalid fedCM value. Must be true, false, or an options object.",
+                  );
+                }
+
+                if (
                   options.autoLogAppEvents === "1" ||
                   options.autoLogAppEvents === "true"
                 ) {
@@ -26879,6 +27176,7 @@ try {
               "sdk.Auth-public",
               "sdk.Canvas-public",
               "sdk.Event-public",
+              "sdk.FedCM-public",
               "sdk.Frictionless-public",
               "sdk.GamingServices-public",
               "sdk.Runtime",
@@ -26904,6 +27202,7 @@ try {
               importDefault("sdk.Auth-public").init();
               (_importDefault_sdkCanvaspublic =
                 importDefault("sdk.Canvas-public")).init();
+              importDefault("sdk.FedCM-public").init();
               _importDefault_sdkCanvaspublic.initCanvasPlugin();
               _importDefault_sdkCanvaspublic.initCanvasPrefetcher();
               _importDefault_sdkCanvaspublic.initCanvasPresence();
@@ -26944,7 +27243,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1035984861","namespace":"FB","message":"' +
+        '","revision":"1036094556","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
