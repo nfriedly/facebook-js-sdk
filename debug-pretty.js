@@ -1,4 +1,4 @@
-/*1775470671,,JIT Construction: v1036711911,en_US*/
+/*1775585500,,JIT Construction: v1036821440,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -862,9 +862,11 @@ try {
               var ES6Object = {
                 assign: function assign(target) {
                   if (target == null) {
-                    throw new TypeError(
+                    var e = new TypeError(
                       "Object.assign target cannot be null or undefined",
                     );
+                    void e.stack;
+                    throw e;
                   }
 
                   target = Object(target);
@@ -3765,7 +3767,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1036711911",
+            revision: "1036821440",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -9596,7 +9598,9 @@ try {
                 require("Assert").isFunction(constructor);
 
                 if (from && from.prototype instanceof Type === false) {
-                  throw new Error("parent type does not inherit from Type");
+                  var e = new Error("parent type does not inherit from Type");
+                  void e.stack;
+                  throw e;
                 }
                 from = from || Type;
 
@@ -15959,7 +15963,9 @@ try {
                   var processor = this._processor;
                   if (processor == null) {
                     this._stopped = true;
-                    throw new Error("No processor available");
+                    var e = new Error("No processor available");
+                    void e.stack;
+                    throw e;
                   }
 
                   var interval = this._interval;
@@ -27246,7 +27252,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1036711911","namespace":"FB","message":"' +
+        '","revision":"1036821440","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
