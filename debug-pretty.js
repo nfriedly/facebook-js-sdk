@@ -1,4 +1,4 @@
-/*1776135110,,JIT Construction: v1037250833,en_US*/
+/*1776155007,,JIT Construction: v1037280436,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3769,7 +3769,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1037250833",
+            revision: "1037280436",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -21286,9 +21286,15 @@ try {
                 }
 
                 if (autoGrowLastSize) {
-                  var oldHeight = autoGrowLastSize.height;
-
-                  var dHeight = params.height - oldHeight;
+                  var _autoGrowLastSize$hei, _params$height;
+                  var oldHeight =
+                    (_autoGrowLastSize$hei = autoGrowLastSize.height) != null
+                      ? _autoGrowLastSize$hei
+                      : 0;
+                  var dHeight =
+                    ((_params$height = params.height) != null
+                      ? _params$height
+                      : 0) - oldHeight;
                   if (dHeight <= minGrow && dHeight >= -minShrink) {
                     return false;
                   }
@@ -23574,11 +23580,9 @@ try {
               }
 
               var Comments = importDefault("IframePlugin").extend({
-                constructor: function constructor(elem, ns, tag, attr) {
+                constructor: function Comments(elem, ns, tag, attr) {
                   attr = setupAttributes(elem, attr);
-
                   this.parent(elem, ns, tag, attr);
-
                   this.subscribe(
                     "xd.sdk_event",
                     function subscribe_$1(message) {
@@ -23728,9 +23732,8 @@ try {
               "use strict";
 
               var LWIAdsInsights = importDefault("IframePlugin").extend({
-                constructor: function constructor(elem, ns, tag, attr) {
+                constructor: function LWIAdsInsights(elem, ns, tag, attr) {
                   this.parent(elem, ns, tag, attr);
-
                   this._setUpSubscriptions();
                 },
 
@@ -23745,7 +23748,6 @@ try {
 
                 _setUpSubscriptions: function _setUpSubscriptions() {
                   var _this = this;
-
                   this.subscribe(
                     "xd.lwiadsinsights.load",
                     function subscribe_$1(message) {
@@ -27256,7 +27258,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1037250833","namespace":"FB","message":"' +
+        '","revision":"1037280436","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
