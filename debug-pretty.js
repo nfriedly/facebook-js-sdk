@@ -1,4 +1,4 @@
-/*1776155007,,JIT Construction: v1037280436,en_US*/
+/*1776211610,,JIT Construction: v1037337676,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3769,7 +3769,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1037280436",
+            revision: "1037337676",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -7678,7 +7678,8 @@ try {
             function $module_ImmediateImplementation(
               global,
               require,
-              requireDynamic,
+              importDefault,
+              importNamespace,
               requireLazy,
               module,
               exports,
@@ -7871,7 +7872,7 @@ try {
                 if (canUsePostMessage()) {
                   if (
                     global.MessageChannel &&
-                    require("ImmediateImplementationExperiments")
+                    importDefault("ImmediateImplementationExperiments")
                       .prefer_message_channel
                   ) {
                     installPostMessageImplementation();
@@ -7913,7 +7914,7 @@ try {
                   : self,
               );
             },
-            null,
+            34,
           );
           __d(
             "setImmediatePolyfill",
@@ -27258,7 +27259,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1037280436","namespace":"FB","message":"' +
+        '","revision":"1037337676","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
