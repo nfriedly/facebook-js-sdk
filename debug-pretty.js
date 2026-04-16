@@ -1,4 +1,4 @@
-/*1776302671,,JIT Construction: v1037444161,en_US*/
+/*1776317964,,JIT Construction: v1037463644,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3769,7 +3769,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1037444161",
+            revision: "1037463644",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -6291,8 +6291,25 @@ try {
             98,
           );
           __d(
+            "err",
+            ["fb-error"],
+            function $module_err(
+              global,
+              require,
+              importDefault,
+              importNamespace,
+              requireLazy,
+              module,
+              exports,
+            ) {
+              "use strict";
+              exports["default"] = importDefault("fb-error").err;
+            },
+            98,
+          );
+          __d(
             "IntervalTrackingBoundedBuffer",
-            ["CircularBuffer", "ErrorPubSub"],
+            ["CircularBuffer", "ErrorPubSub", "err"],
             function $module_IntervalTrackingBoundedBuffer(
               global,
               require,
@@ -6312,9 +6329,11 @@ try {
                   this.$IntervalTrackingBoundedBuffer$p_startOfBufferItemIndex = 0;
                   if (size != null) {
                     if (size <= 0) {
-                      throw new Error(
+                      var e = new Error(
                         "Size for a buffer must be greater than zero.",
                       );
+                      void e.stack;
+                      throw e;
                     }
                   } else {
                     size = DEFAULT_BUFFER_SIZE;
@@ -6447,7 +6466,7 @@ try {
                         (_importDefault_closure_ErrorPubSub =
                           importDefault("ErrorPubSub"))
                       ).reportError(
-                        new Error(
+                        importDefault("err")(
                           "messed up state inside IntervalTrackingBoundedBuffer",
                         ),
                       );
@@ -7656,23 +7675,6 @@ try {
             98,
           );
           __d(
-            "err",
-            ["fb-error"],
-            function $module_err(
-              global,
-              require,
-              importDefault,
-              importNamespace,
-              requireLazy,
-              module,
-              exports,
-            ) {
-              "use strict";
-              exports["default"] = importDefault("fb-error").err;
-            },
-            98,
-          );
-          __d(
             "ImmediateImplementation",
             ["ImmediateImplementationExperiments"],
             function $module_ImmediateImplementation(
@@ -8074,10 +8076,14 @@ try {
 
               function Promise(fn) {
                 if (typeof this !== "object") {
-                  throw new TypeError("Promises must be constructed via new");
+                  var e = new TypeError("Promises must be constructed via new");
+                  void e.stack;
+                  throw e;
                 }
                 if (typeof fn !== "function") {
-                  throw new TypeError("not a function");
+                  var _e = new TypeError("not a function");
+                  void _e.stack;
+                  throw _e;
                 }
                 this._state = 0;
                 this._value = null;
@@ -8145,10 +8151,11 @@ try {
               }
               function resolve(self, newValue) {
                 if (newValue === self) {
-                  return reject(
-                    self,
-                    new TypeError("A promise cannot be resolved with itself."),
+                  var e = new TypeError(
+                    "A promise cannot be resolved with itself.",
                   );
+                  void e.stack;
+                  return reject(self, e);
                 }
                 if (
                   newValue &&
@@ -8278,11 +8285,9 @@ try {
 
               Promise.all = function (arr) {
                 if (!Array.isArray(arr)) {
-                  arr = [
-                    Promise.reject(
-                      new TypeError("Promise.all must be passed an array."),
-                    ),
-                  ];
+                  var e = new TypeError("Promise.all must be passed an array.");
+                  void e.stack;
+                  arr = [Promise.reject(e)];
                 }
 
                 var args = Array.prototype.slice.call(arr);
@@ -8364,7 +8369,7 @@ try {
                   ),
                 );
 
-                var errorLocation = new Error("Promise.done");
+                var errorLocation = require("err")("Promise.done");
                 var self = arguments.length
                   ? this.then.apply(this, arguments)
                   : this;
@@ -27260,7 +27265,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1037444161","namespace":"FB","message":"' +
+        '","revision":"1037463644","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
