@@ -1,4 +1,4 @@
-/*1776384380,,JIT Construction: v1037516798,en_US*/
+/*1776726456,,JIT Construction: v1037726364,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3769,7 +3769,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1037516798",
+            revision: "1037726364",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -22008,9 +22008,7 @@ try {
                     return importNamespace("sdk.Event").subscribe(name, cb);
                   },
                   unsubscribe: importNamespace("sdk.Event").unsubscribe,
-
                   clear: ES(warn, "bind", true, null, "clear"),
-
                   fire: ES(warn, "bind", true, null, "fire"),
                 });
               }
@@ -25818,7 +25816,6 @@ try {
                           return hideDialog();
                         },
                       );
-
                       importNamespace("sdk.Event").subscribe(
                         "savePlugin:hideDialog",
                         function Event_subscribe_$1() {
@@ -27155,7 +27152,6 @@ try {
               function init() {
                 var _importNamespace_sdkEvent;
                 importNamespace("sdk.Time").recordBootload();
-
                 (_importNamespace_sdkEvent =
                   importNamespace("sdk.Event")).subscribe(
                   "init:post",
@@ -27267,7 +27263,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1037516798","namespace":"FB","message":"' +
+        '","revision":"1037726364","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
