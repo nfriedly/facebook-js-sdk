@@ -1,4 +1,4 @@
-/*1776734673,,JIT Construction: v1037753511,en_US*/
+/*1776749873,,JIT Construction: v1037766293,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3771,7 +3771,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1037753511",
+            revision: "1037766293",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -8157,7 +8157,11 @@ try {
                     "A promise cannot be resolved with itself.",
                   );
                   void e.stack;
-                  return reject(self, e);
+                  try {
+                    throw e;
+                  } catch (error) {
+                    return reject(self, error);
+                  }
                 }
                 if (
                   newValue &&
@@ -8289,7 +8293,11 @@ try {
                 if (!Array.isArray(arr)) {
                   var e = new TypeError("Promise.all must be passed an array.");
                   void e.stack;
-                  arr = [Promise.reject(e)];
+                  try {
+                    throw e;
+                  } catch (error) {
+                    arr = [Promise.reject(error)];
+                  }
                 }
 
                 var args = Array.prototype.slice.call(arr);
@@ -27267,7 +27275,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1037753511","namespace":"FB","message":"' +
+        '","revision":"1037766293","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
