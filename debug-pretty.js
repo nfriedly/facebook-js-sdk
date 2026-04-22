@@ -1,4 +1,4 @@
-/*1776821060,,JIT Construction: v1037847281,en_US*/
+/*1776899360,,JIT Construction: v1037925115,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3772,7 +3772,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1037847281",
+            revision: "1037925115",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -14737,8 +14737,134 @@ try {
             66,
           );
           __d(
+            "sdk.LoggingUtils",
+            ["sdk.Impressions", "sdk.feature"],
+            function $module_sdk_LoggingUtils(
+              global,
+              require,
+              importDefault,
+              importNamespace,
+              requireLazy,
+              module,
+              exports,
+            ) {
+              "use strict";
+
+              var logEventName = {
+                buttonLoad: "client_login_button_load",
+                buttonClick: "client_login_click",
+                loginSuccess: "client_login_success",
+                loginCancel: "client_login_cancel",
+                popupHide: "client_login_popup_hide_xfoa",
+                popupShow: "client_login_popup_show_xfoa",
+                loginEnd: "client_login_end",
+                loginStart: "client_login_start",
+                loginDeniedResponse: "client_login_denied_response",
+                loginFastDeniedResponse: "client_login_fast_denied_response",
+                loginErrorResponse: "client_login_error_response",
+                loginUnexpectedResponse: "client_login_unexpected_response",
+                loginCompleteHeartbeat: "client_login_complete_heartbeat",
+                loginStatusPopupShowXfoa: "client_login_status_popup_show_xfoa",
+                loginStatusPopupHideXfoa: "client_login_status_popup_hide_xfoa",
+                loginStatusPopupClickXfoa:
+                  "client_login_status_popup_click_xfoa",
+                loginStatusPopupErrorXfoa:
+                  "client_login_status_popup_error_xfoa",
+                loginUsingOauthSubdomain: "client_login_using_oauth_subdomain",
+                fedcmRequestStart: "client_fedcm_request_start",
+                fedcmSuccess: "client_fedcm_success",
+                fedcmUserCancelled: "client_fedcm_user_cancelled",
+                fedcmDismissed: "client_fedcm_dismissed",
+                fedcmError: "client_fedcm_error",
+                fedcmFallbackPopup: "client_fedcm_fallback_popup",
+                fedcmUnsupported: "client_fedcm_unsupported",
+                fedcmPassiveStart: "client_fedcm_passive_start",
+                fedcmPassiveResolved: "client_fedcm_passive_resolved",
+                fedcmPassiveSkipped: "client_fedcm_passive_skipped",
+              };
+
+              function logEvent(loggerID, actionName, extraPayload) {
+                importNamespace("sdk.Impressions").log(117, {
+                  payload: babelHelpers["extends"]({}, extraPayload || {}, {
+                    logger_id: loggerID,
+                    action: actionName,
+                    client_funnel_version: importDefault("sdk.feature")(
+                      "oauth_funnel_logger_version",
+                      1,
+                    ),
+                  }),
+                });
+              }
+
+              function shouldDropLog(params) {
+                if (
+                  params != null &&
+                  typeof params.tp === "string" &&
+                  params.tp !== "" &&
+                  params.tp !== "unspecified"
+                ) {
+                  return true;
+                }
+                return false;
+              }
+
+              function logLoginEvent(params, actionName) {
+                var cbt =
+                  params && params.cbt !== undefined ? Number(params.cbt) : 0;
+                logEvent(
+                  params == null ? void 0 : params.logger_id,
+                  actionName,
+                  {
+                    cbt_delta: Date.now() - cbt,
+                  },
+                );
+              }
+
+              function logFedCMEvent(params, actionName, extra) {
+                if (shouldDropLog(params)) {
+                  return;
+                }
+                var cbt =
+                  params && params.cbt !== undefined ? Number(params.cbt) : 0;
+                logEvent(
+                  params == null ? void 0 : params.logger_id,
+                  actionName,
+                  babelHelpers["extends"]({}, extra || {}, {
+                    cbt_delta: Date.now() - cbt,
+                    fedcm_mediation:
+                      params == null ? void 0 : params.fedcm_mediation,
+                    fedcm_passive:
+                      (params == null ? void 0 : params.fedcm_passive) === true,
+                  }),
+                );
+              }
+
+              function logPopupEvent(loggerID, actionName) {
+                if (actionName !== undefined) {
+                  logEvent(loggerID, actionName);
+                }
+              }
+
+              function logDisambiguationTrayEvent(error, loggerID) {
+                if (error !== undefined) {
+                  logEvent(loggerID, logEventName.loginStatusPopupErrorXfoa, {
+                    message: error,
+                  });
+                }
+              }
+              exports.logEventName = logEventName;
+              exports.logEvent = logEvent;
+              exports.shouldDropLog = shouldDropLog;
+              exports.logLoginEvent = logLoginEvent;
+              exports.logFedCMEvent = logFedCMEvent;
+              exports.logPopupEvent = logPopupEvent;
+              exports.logDisambiguationTrayEvent = logDisambiguationTrayEvent;
+            },
+            98,
+          );
+          __d(
             "sdk.FedCM",
-            ["sdk.Runtime", "sdk.feature"],
+            ["sdk.LoggingUtils", "sdk.Runtime", "sdk.Scribe", "sdk.feature"],
             function $module_sdk_FedCM(
               global,
               require,
@@ -14840,12 +14966,31 @@ try {
                   requestOptions.mediation = options.mediation;
                 }
 
+                var logParams = {
+                  logger_id: options == null ? void 0 : options.logger_id,
+                  cbt: options == null ? void 0 : options.cbt,
+                  fedcm_mediation: options == null ? void 0 : options.mediation,
+                  fedcm_passive:
+                    (options == null ? void 0 : options.passive) === true,
+                  tp: options == null ? void 0 : options.tp,
+                };
+                importNamespace("sdk.LoggingUtils").logFedCMEvent(
+                  logParams,
+                  importNamespace("sdk.LoggingUtils").logEventName
+                    .fedcmRequestStart,
+                );
+
                 return w.navigator.credentials.get(requestOptions).then(
                   function then_$0(credential) {
                     if (
                       credential == null ||
                       typeof credential.token !== "string"
                     ) {
+                      logFedCMError(
+                        logParams,
+                        "InvalidCredential",
+                        "Missing token",
+                      );
                       return { status: "error", error: "Invalid credential" };
                     }
                     try {
@@ -14853,10 +14998,25 @@ try {
                         credential.token,
                       );
                       if (authResponse == null) {
+                        logFedCMError(
+                          logParams,
+                          "InvalidCredential",
+                          "Malformed token",
+                        );
                         return { status: "error", error: "Invalid credential" };
                       }
+                      importNamespace("sdk.LoggingUtils").logFedCMEvent(
+                        logParams,
+                        importNamespace("sdk.LoggingUtils").logEventName
+                          .fedcmSuccess,
+                      );
                       return { status: "success", authResponse: authResponse };
                     } catch (error) {
+                      logFedCMError(
+                        logParams,
+                        getErrorName(error),
+                        getErrorMessage(error),
+                      );
                       return { status: "error", error: error };
                     }
                   },
@@ -14870,12 +15030,83 @@ try {
                       if (
                         (options == null ? void 0 : options.passive) === true
                       ) {
+                        importNamespace("sdk.LoggingUtils").logFedCMEvent(
+                          logParams,
+                          importNamespace("sdk.LoggingUtils").logEventName
+                            .fedcmDismissed,
+                        );
                         return { status: "dismissed" };
                       }
+                      importNamespace("sdk.LoggingUtils").logFedCMEvent(
+                        logParams,
+                        importNamespace("sdk.LoggingUtils").logEventName
+                          .fedcmUserCancelled,
+                      );
                       return { status: "user_cancelled" };
                     }
+                    logFedCMError(
+                      logParams,
+                      getErrorName(error),
+                      getErrorMessage(error),
+                    );
                     return { status: "error", error: error };
                   },
+                );
+              }
+
+              function getErrorName(error) {
+                if (
+                  error != null &&
+                  typeof error === "object" &&
+                  "name" in error &&
+                  typeof error.name === "string"
+                ) {
+                  return error.name;
+                }
+                return "UnknownError";
+              }
+
+              function getErrorMessage(error) {
+                if (
+                  error != null &&
+                  typeof error === "object" &&
+                  "message" in error &&
+                  typeof error.message === "string"
+                ) {
+                  return error.message;
+                }
+                return String(error);
+              }
+
+              function logFedCMError(logParams, errorName, errorMessage) {
+                importNamespace("sdk.LoggingUtils").logFedCMEvent(
+                  logParams,
+                  importNamespace("sdk.LoggingUtils").logEventName.fedcmError,
+                  {
+                    error_name: errorName,
+                    error_message: errorMessage,
+                  },
+                );
+
+                var behavioral = importNamespace(
+                  "sdk.LoggingUtils",
+                ).shouldDropLog(logParams)
+                  ? {}
+                  : {
+                      fedcm_passive: logParams.fedcm_passive,
+                      fedcm_mediation: logParams.fedcm_mediation,
+                    };
+                importNamespace("sdk.Scribe").log(
+                  "jssdk_error",
+                  babelHelpers["extends"](
+                    {
+                      appId: importDefault("sdk.Runtime").getClientID(),
+                      error: "PLATFORM_FEDCM_ERROR",
+                      error_name: errorName,
+                      error_message: errorMessage,
+                    },
+                    behavioral,
+                  ),
                 );
               }
               exports.CONFIG_URL = CONFIG_URL;
@@ -14883,89 +15114,6 @@ try {
               exports.getProviderConfig = getProviderConfig;
               exports.processCredential = processCredential;
               exports.requestFedCMCredential = requestFedCMCredential;
-            },
-            98,
-          );
-          __d(
-            "sdk.LoggingUtils",
-            ["sdk.Impressions", "sdk.feature"],
-            function $module_sdk_LoggingUtils(
-              global,
-              require,
-              importDefault,
-              importNamespace,
-              requireLazy,
-              module,
-              exports,
-            ) {
-              "use strict";
-
-              var logEventName = {
-                buttonLoad: "client_login_button_load",
-                buttonClick: "client_login_click",
-                loginSuccess: "client_login_success",
-                loginCancel: "client_login_cancel",
-                popupHide: "client_login_popup_hide_xfoa",
-                popupShow: "client_login_popup_show_xfoa",
-                loginEnd: "client_login_end",
-                loginStart: "client_login_start",
-                loginDeniedResponse: "client_login_denied_response",
-                loginFastDeniedResponse: "client_login_fast_denied_response",
-                loginErrorResponse: "client_login_error_response",
-                loginUnexpectedResponse: "client_login_unexpected_response",
-                loginCompleteHeartbeat: "client_login_complete_heartbeat",
-                loginStatusPopupShowXfoa: "client_login_status_popup_show_xfoa",
-                loginStatusPopupHideXfoa: "client_login_status_popup_hide_xfoa",
-                loginStatusPopupClickXfoa:
-                  "client_login_status_popup_click_xfoa",
-                loginStatusPopupErrorXfoa:
-                  "client_login_status_popup_error_xfoa",
-                loginUsingOauthSubdomain: "client_login_using_oauth_subdomain",
-              };
-
-              function logEvent(loggerID, actionName, extraPayload) {
-                importNamespace("sdk.Impressions").log(117, {
-                  payload: babelHelpers["extends"]({}, extraPayload || {}, {
-                    logger_id: loggerID,
-                    action: actionName,
-                    client_funnel_version: importDefault("sdk.feature")(
-                      "oauth_funnel_logger_version",
-                      1,
-                    ),
-                  }),
-                });
-              }
-
-              function logLoginEvent(params, actionName) {
-                var cbt =
-                  params && params.cbt !== undefined ? Number(params.cbt) : 0;
-                logEvent(
-                  params == null ? void 0 : params.logger_id,
-                  actionName,
-                  {
-                    cbt_delta: Date.now() - cbt,
-                  },
-                );
-              }
-
-              function logPopupEvent(loggerID, actionName) {
-                if (actionName !== undefined) {
-                  logEvent(loggerID, actionName);
-                }
-              }
-
-              function logDisambiguationTrayEvent(error, loggerID) {
-                if (error !== undefined) {
-                  logEvent(loggerID, logEventName.loginStatusPopupErrorXfoa, {
-                    message: error,
-                  });
-                }
-              }
-              exports.logEventName = logEventName;
-              exports.logEvent = logEvent;
-              exports.logLoginEvent = logLoginEvent;
-              exports.logPopupEvent = logPopupEvent;
-              exports.logDisambiguationTrayEvent = logDisambiguationTrayEvent;
             },
             98,
           );
@@ -15032,16 +15180,30 @@ try {
                   );
                 };
 
-                if (
-                  importDefault("sdk.Runtime").getUseFedCM() &&
-                  !canvas &&
-                  importNamespace("sdk.FedCM").isFedCMSupported()
-                ) {
+                if (importDefault("sdk.Runtime").getUseFedCM() && !canvas) {
+                  var fedcmLogParams = {
+                    logger_id: opts == null ? void 0 : opts.logger_id,
+                    cbt: opts == null ? void 0 : opts.cbt,
+                    fedcm_passive: false,
+                    tp: opts == null ? void 0 : opts.tp,
+                  };
+                  if (!importNamespace("sdk.FedCM").isFedCMSupported()) {
+                    importNamespace("sdk.LoggingUtils").logFedCMEvent(
+                      fedcmLogParams,
+                      importNamespace("sdk.LoggingUtils").logEventName
+                        .fedcmUnsupported,
+                    );
+                    openPopup();
+                    return;
+                  }
                   importNamespace("sdk.FedCM")
                     .requestFedCMCredential(
                       opts == null ? void 0 : opts.scope,
                       {
+                        cbt: opts == null ? void 0 : opts.cbt,
                         context: importDefault("sdk.Runtime").getFedCMContext(),
+                        logger_id: opts == null ? void 0 : opts.logger_id,
+                        tp: opts == null ? void 0 : opts.tp,
                       },
                     )
                     .then(function then_$0(result) {
@@ -15060,10 +15222,26 @@ try {
                         cb == null ||
                           cb({ authResponse: null, status: "unknown" });
                       } else {
+                        importNamespace("sdk.LoggingUtils").logFedCMEvent(
+                          fedcmLogParams,
+                          importNamespace("sdk.LoggingUtils").logEventName
+                            .fedcmFallbackPopup,
+                          {
+                            reason: result.status,
+                          },
+                        );
                         openPopup();
                       }
                     })
                     ["catch"](function $0() {
+                      importNamespace("sdk.LoggingUtils").logFedCMEvent(
+                        fedcmLogParams,
+                        importNamespace("sdk.LoggingUtils").logEventName
+                          .fedcmFallbackPopup,
+                        {
+                          reason: "exception",
+                        },
+                      );
                       openPopup();
                     });
                   return;
@@ -15493,20 +15671,12 @@ try {
                 };
               }
 
-              function shouldDropLog(requestParams) {
-                if (
-                  requestParams &&
-                  requestParams.tp &&
-                  requestParams.tp !== "unspecified"
-                ) {
-                  return true;
-                }
-
-                return false;
-              }
-
               function logAuthEvent(requestParams, event) {
-                if (shouldDropLog(requestParams)) {
+                if (
+                  importNamespace("sdk.LoggingUtils").shouldDropLog(
+                    requestParams,
+                  )
+                ) {
                   return;
                 }
 
@@ -21012,6 +21182,7 @@ try {
               "sdk.AuthUtils",
               "sdk.Event",
               "sdk.FedCM",
+              "sdk.LoggingUtils",
               "sdk.Runtime",
               "sdk.ui",
               "sdk.warnInsecure",
@@ -21214,41 +21385,92 @@ try {
                     importDefault("sdk.Auth.LoginStatus").onSDKInit(options);
 
                     if (
-                      importDefault("sdk.Runtime").getFedCMMode() ===
-                        "passive" &&
-                      importDefault("sdk.Runtime").getUseFedCM() &&
-                      importDefault("sdk.Runtime").getClientID() !== "" &&
-                      importNamespace("sdk.FedCM").isFedCMSupported() &&
-                      !importDefault("sdk.Runtime").isCanvasEnvironment() &&
-                      importDefault("sdk.Runtime").getLoginStatus() !==
-                        "connected"
+                      importDefault("sdk.Runtime").getFedCMMode() !==
+                        "passive" ||
+                      !importDefault("sdk.Runtime").getUseFedCM()
                     ) {
-                      void importNamespace("sdk.FedCM")
-                        .requestFedCMCredential(
-                          importDefault("sdk.Runtime").getScope(),
-                          {
-                            mediation: "optional",
-                            passive: true,
-                            context:
-                              importDefault("sdk.Runtime").getFedCMContext(),
-                          },
-                        )
-                        .then(function then_$0(result) {
-                          if (result.status === "success") {
-                            importNamespace(
-                              "sdk.AuthUtils",
-                            ).removeLogoutState();
-                            importNamespace(
-                              "sdk.AuthUtils",
-                            ).setRevalidateTimer();
-                            importDefault("sdk.Auth").setAuthResponse(
-                              result.authResponse,
-                              "connected",
-                            );
-                          }
-                        })
-                        ["catch"](function $0() {});
+                      return;
                     }
+
+                    var passiveLogParams = {
+                      fedcm_passive: true,
+                      fedcm_mediation: "optional",
+                    };
+
+                    var skipReason = null;
+                    if (importDefault("sdk.Runtime").getClientID() === "") {
+                      skipReason = "no_client_id";
+                    } else if (
+                      importDefault("sdk.Runtime").isCanvasEnvironment()
+                    ) {
+                      skipReason = "canvas";
+                    } else if (
+                      importDefault("sdk.Runtime").getLoginStatus() ===
+                      "connected"
+                    ) {
+                      skipReason = "already_connected";
+                    } else if (
+                      !importNamespace("sdk.FedCM").isFedCMSupported()
+                    ) {
+                      skipReason = "unsupported";
+                    }
+
+                    if (skipReason != null) {
+                      importNamespace("sdk.LoggingUtils").logFedCMEvent(
+                        passiveLogParams,
+                        importNamespace("sdk.LoggingUtils").logEventName
+                          .fedcmPassiveSkipped,
+                        {
+                          reason: skipReason,
+                        },
+                      );
+                      return;
+                    }
+
+                    importNamespace("sdk.LoggingUtils").logFedCMEvent(
+                      passiveLogParams,
+                      importNamespace("sdk.LoggingUtils").logEventName
+                        .fedcmPassiveStart,
+                    );
+
+                    void importNamespace("sdk.FedCM")
+                      .requestFedCMCredential(
+                        importDefault("sdk.Runtime").getScope(),
+                        {
+                          mediation: "optional",
+                          passive: true,
+                          context:
+                            importDefault("sdk.Runtime").getFedCMContext(),
+                        },
+                      )
+                      .then(function then_$0(result) {
+                        importNamespace("sdk.LoggingUtils").logFedCMEvent(
+                          passiveLogParams,
+                          importNamespace("sdk.LoggingUtils").logEventName
+                            .fedcmPassiveResolved,
+                          {
+                            result_status: result.status,
+                          },
+                        );
+                        if (result.status === "success") {
+                          importNamespace("sdk.AuthUtils").removeLogoutState();
+                          importNamespace("sdk.AuthUtils").setRevalidateTimer();
+                          importDefault("sdk.Auth").setAuthResponse(
+                            result.authResponse,
+                            "connected",
+                          );
+                        }
+                      })
+                      ["catch"](function $0() {
+                        importNamespace("sdk.LoggingUtils").logFedCMEvent(
+                          passiveLogParams,
+                          importNamespace("sdk.LoggingUtils").logEventName
+                            .fedcmPassiveResolved,
+                          {
+                            result_status: "exception",
+                          },
+                        );
+                      });
                   },
                 );
               }
@@ -27277,7 +27499,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1037847281","namespace":"FB","message":"' +
+        '","revision":"1037925115","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );

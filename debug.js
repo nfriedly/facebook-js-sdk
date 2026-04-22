@@ -1,4 +1,4 @@
-/*1776821060,,JIT Construction: v1037847281,en_US*/
+/*1776899360,,JIT Construction: v1037925115,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3621,7 +3621,7 @@ this:
 typeof self!=='undefined'?
 self:
 {}
-);      __d("cr:1126",[],function(g,r,rd,rl,m,e){m.exports=require("TimeSliceImpl");});__d("cr:986633",[],function(g,r,rd,rl,m,e){m.exports=require("setTimeoutAcrossTransitionsBlue");});__d("cr:7391",[],function(g,r,rd,rl,m,e){m.exports=require("setTimeoutAcrossTransitionsWWW");});__d("cr:6640",[],function(g,r,rd,rl,m,e){m.exports=require("PromiseImpl");});__d("PromiseUsePolyfillSetImmediateGK",[],{"www_always_use_polyfill_setimmediate":false});__d("ImmediateImplementationExperiments",[],{"prefer_message_channel":true});__d("JSSDKCanvasPrefetcherConfig",[],{"enabled":true,"excludedAppIds":[144959615576466,768691303149786,320528941393723],"sampleRate":500});__d("JSSDKConfig",[],{"features":{"allow_non_canvas_app_events":false,"error_handling":{"rate":4},"e2e_ping_tracking":{"rate":0.1},"xd_timeout":{"rate":1,"value":60000},"use_bundle":false,"should_log_response_error":true,"popup_blocker_scribe_logging":{"rate":100},"https_only_enforce_starting":2538809200000,"https_only_learn_more":"https:\/\/developers.facebook.com\/blog\/post\/2018\/06\/08\/enforce-https-facebook-login\/","https_only_scribe_logging":{"rate":1},"log_perf":{"rate":0.001},"use_x_xd":{"rate":100},"cache_auth_response":{"rate":100},"oauth_funnel_logger_version":1,"force_popup_to_canvas_apps_with_id":[],"force_popup_to_all_canvas_app":false,"max_oauth_dialog_retries":{"rate":100,"value":10},"plugin_tags_blacklist":[],"idle_callback_wait_time_ms":3000,"chat_plugin_facade_timeout_ms":8000,"chat_plugin_facade_enabled_pageids":["102493178867330","107331571710078","1032787970130843","107771111665395","261907812360345","101305975654752","275483104252055","101664622285042","112682113428700","271628573687012","385757598521443","100545935690488"],"should_enable_ig_login_status_fetch":true,"log_cookies_usage":{"rate":0.1},"allow_shadow_dom_for_apps_with_id":[520916077950649,152351391599356,132081130190180,468663283258845,409976882430412,189845245141894,360467581347,274266067164],"allow_shadow_dom":true,"use_extended_dialog_path":{"rate":100},"use_oauth_subdomain":{"rate":100},"fedcm_enabled":true}});__d("JSSDKCssConfig",[],{"rules":".fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0px;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:lucida grande,tahoma,verdana,arial,sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:400;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}\u0040keyframes fb_transform{0\u0025{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}\n\n.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0px;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:lucida grande,tahoma,verdana,arial,sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:400;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}\u0040keyframes fb_transform{0\u0025{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}\n\n.fb_dialog{background:#525252b3;position:absolute;top:-10000px;z-index:10001}.fb_dialog_advanced{border-radius:8px;padding:10px}.fb_dialog_content{background:#fff;color:#373737}.fb_dialog_close_icon{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{left:5px;right:auto;top:5px}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:700;margin:0}.fb_dialog_content .dialog_title>span{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/yd\/r\/Cou7n-nqK52.gif) no-repeat 5px 50\u0025;float:left;padding:5px 0 7px 26px}body.fb_hidden{height:100\u0025;left:0;margin:0;overflow:visible;position:absolute;top:-10000px;transform:none;width:100\u0025}.fb_dialog.fb_dialog_mobile.loading{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/ya\/r\/3rhSv5V8j3o.gif) #fff no-repeat 50\u0025 50\u0025;min-height:100\u0025;min-width:100\u0025;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{background:none;height:auto;min-height:initial;min-width:initial;width:auto}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100\u0025}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{clear:both;color:#fff;display:block;font-size:18px;padding-top:20px}#fb-root #fb_dialog_ipad_overlay{background:#0006;inset:0;min-height:100\u0025;position:absolute;width:100\u0025;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_mobile .fb_dialog_iframe{position:sticky;top:0}.fb_dialog_content .dialog_header{background:linear-gradient(from(#738aba),to(#2c4987));border-bottom:1px solid;border-color:#043b87;box-shadow:#fff 0 1px 1px -1px inset;color:#fff;font:700 14px Helvetica,sans-serif;text-overflow:ellipsis;text-shadow:rgba(0,30,84,.296875) 0px -1px 0px;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{height:43px;width:100\u0025}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:linear-gradient(from(#4267B2),to(#2a4887));background-clip:padding-box;border:1px solid #29487d;border-radius:3px;display:inline-block;line-height:18px;margin-top:3px;max-width:85px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{background:none;border:none;color:#fff;font:700 12px Helvetica,sans-serif;margin:2px -12px;padding:2px 6px 3px;text-shadow:rgba(0,30,84,.296875) 0px -1px 0px}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:700;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/y9\/r\/jKEcVPZFk-2.gif) no-repeat 50\u0025 50\u0025;border:1px solid #4A4A4A;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f5f6f7;border:1px solid #4A4A4A;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/y2\/r\/onuUJj0tCqE.png);background-position:50\u0025 50\u0025;background-repeat:no-repeat;height:24px;width:24px}\u0040keyframes rotateSpinner{0\u0025{transform:rotate(0)}to{transform:rotate(360deg)}}\n\n.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100\u0025}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100\u0025}\n","components":["css:fb.css.base","css:fb.css.dialog","css:fb.css.iframewidget"]});__d("JSSDKRuntimeConfig",[],{"locale":"en_US","revision":"1037847281","rtl":false,"sdkab":null,"sdkns":"","sdkurl":"https:\/\/connect.facebook.net\/en_US\/sdk\/debug.js","scribeurl":"https:\/\/www.facebook.com\/platform\/scribe_endpoint.php\/"});__d("JSSDKXDConfig",[],{"XXdUrl":"\/x\/connect\/xd_arbiter\/?version=46","useCdn":true});__d("UrlMapConfig",[],{"www":"www.facebook.com","m":"m.facebook.com","business":"business.facebook.com","api":"api.facebook.com","api_read":"api-read.facebook.com","graph":"graph.facebook.com","an":"an.facebook.com","oauth":"oauth.facebook.com","fbcdn":"static.xx.fbcdn.net","cdn":"staticxx.facebook.com","graph_facebook":"graph.facebook.com","graph_gaming":"graph.fb.gg","graph_instagram":"graph.instagram.com","www_instagram":"www.instagram.com","social_plugin":"socialplugin.facebook.net"});__d("JSSDKShadowCssConfig",[],{"css:fb.shadow.css.fb_login_button":".fb_login_button_container{align-content:center;align-items:center;border:0;color:#fff;display:flex;font-family:Roboto,Freight Sans LF Pro,Helvetica,Arial,Lucida Grande,sans-serif;font-weight:700;margin:auto}.fb-button-main-element{display:flex;flex-wrap:nowrap;overflow:hidden}.fb-iframe-overlay{display:flex}.fb-button-main-element:hover{cursor:pointer}.fb-button-main-element:focus{filter:brightness(80\u0025)}.fb_button_label_element{align-items:center;display:flex;font-weight:700;justify-content:center}.fb_button_label{margin:auto;pointer-events:none}.fb_button_svg_logo{height:1.33em;margin-left:.4em;margin-right:.4em;padding:.065em}.login_fb_logo .f_logo_f{fill:transparent}.single_button_svg_logo{margin-bottom:.08em}\n"});                                                                                                                                     __d("Env",[],function $module_Env(global,require,requireDynamic,requireLazy,module,exports){
+);      __d("cr:1126",[],function(g,r,rd,rl,m,e){m.exports=require("TimeSliceImpl");});__d("cr:986633",[],function(g,r,rd,rl,m,e){m.exports=require("setTimeoutAcrossTransitionsBlue");});__d("cr:7391",[],function(g,r,rd,rl,m,e){m.exports=require("setTimeoutAcrossTransitionsWWW");});__d("cr:6640",[],function(g,r,rd,rl,m,e){m.exports=require("PromiseImpl");});__d("PromiseUsePolyfillSetImmediateGK",[],{"www_always_use_polyfill_setimmediate":false});__d("ImmediateImplementationExperiments",[],{"prefer_message_channel":true});__d("JSSDKCanvasPrefetcherConfig",[],{"enabled":true,"excludedAppIds":[144959615576466,768691303149786,320528941393723],"sampleRate":500});__d("JSSDKConfig",[],{"features":{"allow_non_canvas_app_events":false,"error_handling":{"rate":4},"e2e_ping_tracking":{"rate":0.1},"xd_timeout":{"rate":1,"value":60000},"use_bundle":false,"should_log_response_error":true,"popup_blocker_scribe_logging":{"rate":100},"https_only_enforce_starting":2538809200000,"https_only_learn_more":"https:\/\/developers.facebook.com\/blog\/post\/2018\/06\/08\/enforce-https-facebook-login\/","https_only_scribe_logging":{"rate":1},"log_perf":{"rate":0.001},"use_x_xd":{"rate":100},"cache_auth_response":{"rate":100},"oauth_funnel_logger_version":1,"force_popup_to_canvas_apps_with_id":[],"force_popup_to_all_canvas_app":false,"max_oauth_dialog_retries":{"rate":100,"value":10},"plugin_tags_blacklist":[],"idle_callback_wait_time_ms":3000,"chat_plugin_facade_timeout_ms":8000,"chat_plugin_facade_enabled_pageids":["102493178867330","107331571710078","1032787970130843","107771111665395","261907812360345","101305975654752","275483104252055","101664622285042","112682113428700","271628573687012","385757598521443","100545935690488"],"should_enable_ig_login_status_fetch":true,"log_cookies_usage":{"rate":0.1},"allow_shadow_dom_for_apps_with_id":[520916077950649,152351391599356,132081130190180,468663283258845,409976882430412,189845245141894,360467581347,274266067164],"allow_shadow_dom":true,"use_extended_dialog_path":{"rate":100},"use_oauth_subdomain":{"rate":100},"fedcm_enabled":true}});__d("JSSDKCssConfig",[],{"rules":".fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0px;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:lucida grande,tahoma,verdana,arial,sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:400;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}\u0040keyframes fb_transform{0\u0025{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}\n\n.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0px;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:lucida grande,tahoma,verdana,arial,sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:400;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}\u0040keyframes fb_transform{0\u0025{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}\n\n.fb_dialog{background:#525252b3;position:absolute;top:-10000px;z-index:10001}.fb_dialog_advanced{border-radius:8px;padding:10px}.fb_dialog_content{background:#fff;color:#373737}.fb_dialog_close_icon{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{left:5px;right:auto;top:5px}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:700;margin:0}.fb_dialog_content .dialog_title>span{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/yd\/r\/Cou7n-nqK52.gif) no-repeat 5px 50\u0025;float:left;padding:5px 0 7px 26px}body.fb_hidden{height:100\u0025;left:0;margin:0;overflow:visible;position:absolute;top:-10000px;transform:none;width:100\u0025}.fb_dialog.fb_dialog_mobile.loading{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/ya\/r\/3rhSv5V8j3o.gif) #fff no-repeat 50\u0025 50\u0025;min-height:100\u0025;min-width:100\u0025;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{background:none;height:auto;min-height:initial;min-width:initial;width:auto}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100\u0025}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{clear:both;color:#fff;display:block;font-size:18px;padding-top:20px}#fb-root #fb_dialog_ipad_overlay{background:#0006;inset:0;min-height:100\u0025;position:absolute;width:100\u0025;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_mobile .fb_dialog_iframe{position:sticky;top:0}.fb_dialog_content .dialog_header{background:linear-gradient(from(#738aba),to(#2c4987));border-bottom:1px solid;border-color:#043b87;box-shadow:#fff 0 1px 1px -1px inset;color:#fff;font:700 14px Helvetica,sans-serif;text-overflow:ellipsis;text-shadow:rgba(0,30,84,.296875) 0px -1px 0px;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{height:43px;width:100\u0025}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:linear-gradient(from(#4267B2),to(#2a4887));background-clip:padding-box;border:1px solid #29487d;border-radius:3px;display:inline-block;line-height:18px;margin-top:3px;max-width:85px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{background:none;border:none;color:#fff;font:700 12px Helvetica,sans-serif;margin:2px -12px;padding:2px 6px 3px;text-shadow:rgba(0,30,84,.296875) 0px -1px 0px}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:700;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/y9\/r\/jKEcVPZFk-2.gif) no-repeat 50\u0025 50\u0025;border:1px solid #4A4A4A;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f5f6f7;border:1px solid #4A4A4A;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/y2\/r\/onuUJj0tCqE.png);background-position:50\u0025 50\u0025;background-repeat:no-repeat;height:24px;width:24px}\u0040keyframes rotateSpinner{0\u0025{transform:rotate(0)}to{transform:rotate(360deg)}}\n\n.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100\u0025}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100\u0025}\n","components":["css:fb.css.base","css:fb.css.dialog","css:fb.css.iframewidget"]});__d("JSSDKRuntimeConfig",[],{"locale":"en_US","revision":"1037925115","rtl":false,"sdkab":null,"sdkns":"","sdkurl":"https:\/\/connect.facebook.net\/en_US\/sdk\/debug.js","scribeurl":"https:\/\/www.facebook.com\/platform\/scribe_endpoint.php\/"});__d("JSSDKXDConfig",[],{"XXdUrl":"\/x\/connect\/xd_arbiter\/?version=46","useCdn":true});__d("UrlMapConfig",[],{"www":"www.facebook.com","m":"m.facebook.com","business":"business.facebook.com","api":"api.facebook.com","api_read":"api-read.facebook.com","graph":"graph.facebook.com","an":"an.facebook.com","oauth":"oauth.facebook.com","fbcdn":"static.xx.fbcdn.net","cdn":"staticxx.facebook.com","graph_facebook":"graph.facebook.com","graph_gaming":"graph.fb.gg","graph_instagram":"graph.instagram.com","www_instagram":"www.instagram.com","social_plugin":"socialplugin.facebook.net"});__d("JSSDKShadowCssConfig",[],{"css:fb.shadow.css.fb_login_button":".fb_login_button_container{align-content:center;align-items:center;border:0;color:#fff;display:flex;font-family:Roboto,Freight Sans LF Pro,Helvetica,Arial,Lucida Grande,sans-serif;font-weight:700;margin:auto}.fb-button-main-element{display:flex;flex-wrap:nowrap;overflow:hidden}.fb-iframe-overlay{display:flex}.fb-button-main-element:hover{cursor:pointer}.fb-button-main-element:focus{filter:brightness(80\u0025)}.fb_button_label_element{align-items:center;display:flex;font-weight:700;justify-content:center}.fb_button_label{margin:auto;pointer-events:none}.fb_button_svg_logo{height:1.33em;margin-left:.4em;margin-right:.4em;padding:.065em}.login_fb_logo .f_logo_f{fill:transparent}.single_button_svg_logo{margin-bottom:.08em}\n"});                                                                                                                                     __d("Env",[],function $module_Env(global,require,requireDynamic,requireLazy,module,exports){
 
 var Env=
 
@@ -14154,7 +14154,120 @@ str)
 {
 return str==null||str==='';
 }exports["default"]=isStringNullOrEmpty;},66);
-                                                                                                                             __d("sdk.FedCM",["sdk.Runtime","sdk.feature"],function $module_sdk_FedCM(global,require,importDefault,importNamespace,requireLazy,module,exports){
+                                                                                                                             __d("sdk.LoggingUtils",["sdk.Impressions","sdk.feature"],function $module_sdk_LoggingUtils(global,require,importDefault,importNamespace,requireLazy,module,exports){
+
+'use strict';
+
+
+
+
+var logEventName={
+buttonLoad:'client_login_button_load',
+buttonClick:'client_login_click',
+loginSuccess:'client_login_success',
+loginCancel:'client_login_cancel',
+popupHide:'client_login_popup_hide_xfoa',
+popupShow:'client_login_popup_show_xfoa',
+loginEnd:'client_login_end',
+loginStart:'client_login_start',
+loginDeniedResponse:'client_login_denied_response',
+loginFastDeniedResponse:'client_login_fast_denied_response',
+loginErrorResponse:'client_login_error_response',
+loginUnexpectedResponse:'client_login_unexpected_response',
+loginCompleteHeartbeat:'client_login_complete_heartbeat',
+loginStatusPopupShowXfoa:'client_login_status_popup_show_xfoa',
+loginStatusPopupHideXfoa:'client_login_status_popup_hide_xfoa',
+loginStatusPopupClickXfoa:'client_login_status_popup_click_xfoa',
+loginStatusPopupErrorXfoa:'client_login_status_popup_error_xfoa',
+loginUsingOauthSubdomain:'client_login_using_oauth_subdomain',
+fedcmRequestStart:'client_fedcm_request_start',
+fedcmSuccess:'client_fedcm_success',
+fedcmUserCancelled:'client_fedcm_user_cancelled',
+fedcmDismissed:'client_fedcm_dismissed',
+fedcmError:'client_fedcm_error',
+fedcmFallbackPopup:'client_fedcm_fallback_popup',
+fedcmUnsupported:'client_fedcm_unsupported',
+fedcmPassiveStart:'client_fedcm_passive_start',
+fedcmPassiveResolved:'client_fedcm_passive_resolved',
+fedcmPassiveSkipped:'client_fedcm_passive_skipped'
+};
+
+function logEvent(
+loggerID,
+actionName,
+extraPayload)
+{
+
+importNamespace("sdk.Impressions").log(117,{
+payload:babelHelpers["extends"]({},
+extraPayload||{},{
+logger_id:loggerID,
+action:actionName,
+client_funnel_version:importDefault("sdk.feature")('oauth_funnel_logger_version',1)})
+
+});
+}
+
+
+
+
+
+
+function shouldDropLog(params){
+if(
+params!=null&&
+typeof params.tp==='string'&&
+params.tp!==''&&
+params.tp!=='unspecified')
+{
+return true;
+}
+return false;
+}
+
+function logLoginEvent(
+params,
+actionName)
+{
+var cbt=params&&params.cbt!==undefined?Number(params.cbt):0;
+logEvent(params==null?void 0:params.logger_id,actionName,{
+cbt_delta:Date.now()-cbt
+});
+}
+
+function logFedCMEvent(
+params,
+actionName,
+extra)
+{
+if(shouldDropLog(params)){
+return;
+}
+var cbt=params&&params.cbt!==undefined?Number(params.cbt):0;
+logEvent(params==null?void 0:params.logger_id,actionName,babelHelpers["extends"]({},
+extra||{},{
+cbt_delta:Date.now()-cbt,
+fedcm_mediation:params==null?void 0:params.fedcm_mediation,
+fedcm_passive:(params==null?void 0:params.fedcm_passive)===true})
+);
+}
+
+function logPopupEvent(loggerID,actionName){
+if(actionName!==undefined){
+logEvent(loggerID,actionName);
+}
+}
+
+function logDisambiguationTrayEvent(error,loggerID){
+if(error!==undefined){
+logEvent(loggerID,logEventName.loginStatusPopupErrorXfoa,{
+message:error
+});
+}
+}exports.logEventName=logEventName;exports.logEvent=logEvent;exports.shouldDropLog=shouldDropLog;exports.logLoginEvent=logLoginEvent;exports.logFedCMEvent=logFedCMEvent;exports.logPopupEvent=logPopupEvent;exports.logDisambiguationTrayEvent=logDisambiguationTrayEvent;},98);
+                                                                                                                             __d("sdk.FedCM",["sdk.LoggingUtils","sdk.Runtime","sdk.Scribe","sdk.feature"],function $module_sdk_FedCM(global,require,importDefault,importNamespace,requireLazy,module,exports){
+
+
 
 
 
@@ -14279,6 +14392,13 @@ return{status:'error',error:error};
 function requestFedCMCredential(
 scope,
 options)
+
+
+
+
+
+
+
 {
 var provider=getProviderConfig(scope!=null?{scope:scope}:undefined);
 
@@ -14295,18 +14415,31 @@ if((options==null?void 0:options.mediation)!=null){
 requestOptions.mediation=options.mediation;
 }
 
+var logParams={
+logger_id:options==null?void 0:options.logger_id,
+cbt:options==null?void 0:options.cbt,
+fedcm_mediation:options==null?void 0:options.mediation,
+fedcm_passive:(options==null?void 0:options.passive)===true,
+tp:options==null?void 0:options.tp
+};
+importNamespace("sdk.LoggingUtils").logFedCMEvent(logParams,importNamespace("sdk.LoggingUtils").logEventName.fedcmRequestStart);
+
 return w.navigator.credentials.get(requestOptions).then(
 function then_$0(credential){
 if(credential==null||typeof credential.token!=='string'){
+logFedCMError(logParams,'InvalidCredential','Missing token');
 return{status:'error',error:'Invalid credential'};
 }
 try{
 var authResponse=parseTokenToAuthResponse(credential.token);
 if(authResponse==null){
+logFedCMError(logParams,'InvalidCredential','Malformed token');
 return{status:'error',error:'Invalid credential'};
 }
+importNamespace("sdk.LoggingUtils").logFedCMEvent(logParams,importNamespace("sdk.LoggingUtils").logEventName.fedcmSuccess);
 return{status:'success',authResponse:authResponse};
 }catch(error){
+logFedCMError(logParams,getErrorName(error),getErrorMessage(error));
 return{status:'error',error:error};
 }
 },
@@ -14318,82 +14451,73 @@ typeof error==='object'&&
 error.name==='NotAllowedError')
 {
 if((options==null?void 0:options.passive)===true){
+importNamespace("sdk.LoggingUtils").logFedCMEvent(logParams,importNamespace("sdk.LoggingUtils").logEventName.fedcmDismissed);
 return{status:'dismissed'};
 }
+importNamespace("sdk.LoggingUtils").logFedCMEvent(logParams,importNamespace("sdk.LoggingUtils").logEventName.fedcmUserCancelled);
 return{status:'user_cancelled'};
 }
+logFedCMError(logParams,getErrorName(error),getErrorMessage(error));
 return{status:'error',error:error};
 }
 );
-}exports.CONFIG_URL=CONFIG_URL;exports.isFedCMSupported=isFedCMSupported;exports.getProviderConfig=getProviderConfig;exports.processCredential=processCredential;exports.requestFedCMCredential=requestFedCMCredential;},98);
-                                                                                                                             __d("sdk.LoggingUtils",["sdk.Impressions","sdk.feature"],function $module_sdk_LoggingUtils(global,require,importDefault,importNamespace,requireLazy,module,exports){
+}
 
-'use strict';
+function getErrorName(error){
+if(
+error!=null&&
+typeof error==='object'&&
+'name'in error&&
+typeof error.name==='string')
+{
+return error.name;
+}
+return'UnknownError';
+}
+
+function getErrorMessage(error){
+if(
+error!=null&&
+typeof error==='object'&&
+'message'in error&&
+typeof error.message==='string')
+{
+return error.message;
+}
+return String(error);
+}
+
+function logFedCMError(
+logParams,
+errorName,
+errorMessage)
+{
+importNamespace("sdk.LoggingUtils").logFedCMEvent(logParams,importNamespace("sdk.LoggingUtils").logEventName.fedcmError,{
+error_name:errorName,
+error_message:errorMessage
+});
 
 
-
-
-var logEventName={
-buttonLoad:'client_login_button_load',
-buttonClick:'client_login_click',
-loginSuccess:'client_login_success',
-loginCancel:'client_login_cancel',
-popupHide:'client_login_popup_hide_xfoa',
-popupShow:'client_login_popup_show_xfoa',
-loginEnd:'client_login_end',
-loginStart:'client_login_start',
-loginDeniedResponse:'client_login_denied_response',
-loginFastDeniedResponse:'client_login_fast_denied_response',
-loginErrorResponse:'client_login_error_response',
-loginUnexpectedResponse:'client_login_unexpected_response',
-loginCompleteHeartbeat:'client_login_complete_heartbeat',
-loginStatusPopupShowXfoa:'client_login_status_popup_show_xfoa',
-loginStatusPopupHideXfoa:'client_login_status_popup_hide_xfoa',
-loginStatusPopupClickXfoa:'client_login_status_popup_click_xfoa',
-loginStatusPopupErrorXfoa:'client_login_status_popup_error_xfoa',
-loginUsingOauthSubdomain:'client_login_using_oauth_subdomain'
+var behavioral=importNamespace("sdk.LoggingUtils").shouldDropLog(logParams)?
+{}:
+{
+fedcm_passive:logParams.fedcm_passive,
+fedcm_mediation:logParams.fedcm_mediation
 };
-
-function logEvent(
-loggerID,
-actionName,
-extraPayload)
-{
-
-importNamespace("sdk.Impressions").log(117,{
-payload:babelHelpers["extends"]({},
-extraPayload||{},{
-logger_id:loggerID,
-action:actionName,
-client_funnel_version:importDefault("sdk.feature")('oauth_funnel_logger_version',1)})
-
-});
-}
-
-function logLoginEvent(
-params,
-actionName)
-{
-var cbt=params&&params.cbt!==undefined?Number(params.cbt):0;
-logEvent(params==null?void 0:params.logger_id,actionName,{
-cbt_delta:Date.now()-cbt
-});
-}
-
-function logPopupEvent(loggerID,actionName){
-if(actionName!==undefined){
-logEvent(loggerID,actionName);
-}
-}
-
-function logDisambiguationTrayEvent(error,loggerID){
-if(error!==undefined){
-logEvent(loggerID,logEventName.loginStatusPopupErrorXfoa,{
-message:error
-});
-}
-}exports.logEventName=logEventName;exports.logEvent=logEvent;exports.logLoginEvent=logLoginEvent;exports.logPopupEvent=logPopupEvent;exports.logDisambiguationTrayEvent=logDisambiguationTrayEvent;},98);
+importNamespace("sdk.Scribe").log('jssdk_error',babelHelpers["extends"]({
+appId:importDefault("sdk.Runtime").getClientID(),
+error:'PLATFORM_FEDCM_ERROR',
+error_name:errorName,
+error_message:errorMessage},
+behavioral)
+);
+}exports.CONFIG_URL=CONFIG_URL;exports.isFedCMSupported=isFedCMSupported;exports.getProviderConfig=getProviderConfig;exports.processCredential=processCredential;exports.requestFedCMCredential=requestFedCMCredential;},98);
                                                                                                                              __d("sdk.Auth",["Log","UrlMap","isStringNullOrEmpty","sdk.AuthState","sdk.AuthStorageUtils","sdk.AuthUtils","sdk.Cookie","sdk.FedCM","sdk.Frictionless","sdk.LoggingUtils","sdk.Runtime","sdk.Scribe","sdk.SignedRequest","sdk.URI","sdk.ui"],function $module_sdk_Auth(global,require,importDefault,importNamespace,requireLazy,module,exports){
+
+
+
+
+
 
 
 
@@ -14467,8 +14591,24 @@ cb
 );
 };
 
-if(importDefault("sdk.Runtime").getUseFedCM()&&!canvas&&importNamespace("sdk.FedCM").isFedCMSupported()){
-importNamespace("sdk.FedCM").requestFedCMCredential(opts==null?void 0:opts.scope,{context:importDefault("sdk.Runtime").getFedCMContext()}).
+if(importDefault("sdk.Runtime").getUseFedCM()&&!canvas){
+var fedcmLogParams={
+logger_id:opts==null?void 0:opts.logger_id,
+cbt:opts==null?void 0:opts.cbt,
+fedcm_passive:false,
+tp:opts==null?void 0:opts.tp
+};
+if(!importNamespace("sdk.FedCM").isFedCMSupported()){
+importNamespace("sdk.LoggingUtils").logFedCMEvent(fedcmLogParams,importNamespace("sdk.LoggingUtils").logEventName.fedcmUnsupported);
+openPopup();
+return;
+}
+importNamespace("sdk.FedCM").requestFedCMCredential(opts==null?void 0:opts.scope,{
+cbt:opts==null?void 0:opts.cbt,
+context:importDefault("sdk.Runtime").getFedCMContext(),
+logger_id:opts==null?void 0:opts.logger_id,
+tp:opts==null?void 0:opts.tp
+}).
 then(function then_$0(result){
 if(result.status==='success'){
 importNamespace("sdk.AuthUtils").removeLogoutState();
@@ -14480,10 +14620,16 @@ importNamespace("sdk.AuthUtils").setLogoutState();
 setAuthResponse(null,'unknown');
 cb==null||cb({authResponse:null,status:'unknown'});
 }else{
+importNamespace("sdk.LoggingUtils").logFedCMEvent(fedcmLogParams,importNamespace("sdk.LoggingUtils").logEventName.fedcmFallbackPopup,{
+reason:result.status
+});
 openPopup();
 }
 })["catch"](
 function $0(){
+importNamespace("sdk.LoggingUtils").logFedCMEvent(fedcmLogParams,importNamespace("sdk.LoggingUtils").logEventName.fedcmFallbackPopup,{
+reason:'exception'
+});
 openPopup();
 });
 return;
@@ -14847,22 +14993,11 @@ return authResponse;
 };
 }
 
-
-function shouldDropLog(requestParams){
-
-if(requestParams&&requestParams.tp&&requestParams.tp!=='unspecified'){
-return true;
-}
-
-return false;
-}
-
 function logAuthEvent(
 requestParams,
 event)
 {
-
-if(shouldDropLog(requestParams)){
+if(importNamespace("sdk.LoggingUtils").shouldDropLog(requestParams)){
 return;
 }
 
@@ -20428,13 +20563,14 @@ payload:events
 displayFn(call);
 return call.dialog;
 }exports["default"]=ui;},98);
-                                                                                                                             __d("sdk.Auth-public",["FB","sdk.Auth","sdk.Auth.LoginStatus","sdk.AuthUtils","sdk.Event","sdk.FedCM","sdk.Runtime","sdk.ui","sdk.warnInsecure"],function $module_sdk_Auth_public(global,require,importDefault,importNamespace,requireLazy,module,exports){
+                                                                                                                             __d("sdk.Auth-public",["FB","sdk.Auth","sdk.Auth.LoginStatus","sdk.AuthUtils","sdk.Event","sdk.FedCM","sdk.LoggingUtils","sdk.Runtime","sdk.ui","sdk.warnInsecure"],function $module_sdk_Auth_public(global,require,importDefault,importNamespace,requireLazy,module,exports){
 
 
 
 
 
 'use strict';
+
 
 
 
@@ -20522,28 +20658,57 @@ importDefault("sdk.Auth.LoginStatus").fetchLoginStatus(function LoginStatus_fetc
 importNamespace("sdk.Event").subscribe('init:post',function Event_subscribe_$1(options){
 importDefault("sdk.Auth.LoginStatus").onSDKInit(options);
 
-if(
-importDefault("sdk.Runtime").getFedCMMode()==='passive'&&
-importDefault("sdk.Runtime").getUseFedCM()&&
-importDefault("sdk.Runtime").getClientID()!==''&&
-importNamespace("sdk.FedCM").isFedCMSupported()&&
-!importDefault("sdk.Runtime").isCanvasEnvironment()&&
-importDefault("sdk.Runtime").getLoginStatus()!=='connected')
-{
+
+
+if(importDefault("sdk.Runtime").getFedCMMode()!=='passive'||!importDefault("sdk.Runtime").getUseFedCM()){
+return;
+}
+
+var passiveLogParams={
+fedcm_passive:true,
+fedcm_mediation:'optional'
+};
+
+var skipReason=null;
+if(importDefault("sdk.Runtime").getClientID()===''){
+skipReason='no_client_id';
+}else if(importDefault("sdk.Runtime").isCanvasEnvironment()){
+skipReason='canvas';
+}else if(importDefault("sdk.Runtime").getLoginStatus()==='connected'){
+skipReason='already_connected';
+}else if(!importNamespace("sdk.FedCM").isFedCMSupported()){
+skipReason='unsupported';
+}
+
+if(skipReason!=null){
+importNamespace("sdk.LoggingUtils").logFedCMEvent(passiveLogParams,importNamespace("sdk.LoggingUtils").logEventName.fedcmPassiveSkipped,{
+reason:skipReason
+});
+return;
+}
+
+importNamespace("sdk.LoggingUtils").logFedCMEvent(passiveLogParams,importNamespace("sdk.LoggingUtils").logEventName.fedcmPassiveStart);
+
 void importNamespace("sdk.FedCM").requestFedCMCredential(importDefault("sdk.Runtime").getScope(),{
 mediation:'optional',
 passive:true,
 context:importDefault("sdk.Runtime").getFedCMContext()
 }).
 then(function then_$0(result){
+importNamespace("sdk.LoggingUtils").logFedCMEvent(passiveLogParams,importNamespace("sdk.LoggingUtils").logEventName.fedcmPassiveResolved,{
+result_status:result.status
+});
 if(result.status==='success'){
 importNamespace("sdk.AuthUtils").removeLogoutState();
 importNamespace("sdk.AuthUtils").setRevalidateTimer();
 importDefault("sdk.Auth").setAuthResponse(result.authResponse,'connected');
 }
 })["catch"](
-function $0(){});
-}
+function $0(){
+importNamespace("sdk.LoggingUtils").logFedCMEvent(passiveLogParams,importNamespace("sdk.LoggingUtils").logEventName.fedcmPassiveResolved,{
+result_status:'exception'
+});
+});
 });
 }
 
@@ -25954,4 +26119,4 @@ importDefault("sdk.Runtime").setIsVersioned(true);}),35);
 
 if(window.FB&&window.FB.__buffer){
 window.__buffer=babelHelpers["extends"]({},window.FB.__buffer);
-}    }  }).call(global);})();} catch (__fb_err) {var __fb_i = new Image();__fb_i.crossOrigin = 'anonymous';__fb_i.dataset.testid = 'fbSDKErrorReport';__fb_i.src='https://www.facebook.com/platform/scribe_endpoint.php/?c=jssdk_error&m='+encodeURIComponent('{"error":"LOAD", "extra": {"name":"'+__fb_err.name+'","line":"'+(__fb_err.lineNumber||__fb_err.line)+'","script":"'+(__fb_err.fileName||__fb_err.sourceURL||__fb_err.script||"debug.js")+'","stack":"'+(__fb_err.stackTrace||__fb_err.stack)+'","revision":"1037847281","namespace":"FB","message":"'+__fb_err.message+'"}}');document.body.appendChild(__fb_i);}
+}    }  }).call(global);})();} catch (__fb_err) {var __fb_i = new Image();__fb_i.crossOrigin = 'anonymous';__fb_i.dataset.testid = 'fbSDKErrorReport';__fb_i.src='https://www.facebook.com/platform/scribe_endpoint.php/?c=jssdk_error&m='+encodeURIComponent('{"error":"LOAD", "extra": {"name":"'+__fb_err.name+'","line":"'+(__fb_err.lineNumber||__fb_err.line)+'","script":"'+(__fb_err.fileName||__fb_err.sourceURL||__fb_err.script||"debug.js")+'","stack":"'+(__fb_err.stackTrace||__fb_err.stack)+'","revision":"1037925115","namespace":"FB","message":"'+__fb_err.message+'"}}');document.body.appendChild(__fb_i);}
