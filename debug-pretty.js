@@ -1,4 +1,4 @@
-/*1776749873,,JIT Construction: v1037766293,en_US*/
+/*1776821060,,JIT Construction: v1037847281,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3758,6 +3758,7 @@ try {
               allow_shadow_dom: true,
               use_extended_dialog_path: { rate: 100 },
               use_oauth_subdomain: { rate: 100 },
+              fedcm_enabled: true,
             },
           });
           __d("JSSDKCssConfig", [], {
@@ -3771,7 +3772,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1037766293",
+            revision: "1037847281",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -14737,7 +14738,7 @@ try {
           );
           __d(
             "sdk.FedCM",
-            ["sdk.Runtime"],
+            ["sdk.Runtime", "sdk.feature"],
             function $module_sdk_FedCM(
               global,
               require,
@@ -14782,6 +14783,7 @@ try {
 
               function isFedCMSupported() {
                 return (
+                  importDefault("sdk.feature")("fedcm_enabled", true) &&
                   w.IdentityCredential !== undefined &&
                   w.isSecureContext === true
                 );
@@ -27275,7 +27277,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1037766293","namespace":"FB","message":"' +
+        '","revision":"1037847281","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
