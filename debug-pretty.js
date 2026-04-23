@@ -1,4 +1,4 @@
-/*1776899360,,JIT Construction: v1037925115,en_US*/
+/*1776946275,,JIT Construction: v1037977667,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3772,7 +3772,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1037925115",
+            revision: "1037977667",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -14864,7 +14864,15 @@ try {
           );
           __d(
             "sdk.FedCM",
-            ["sdk.LoggingUtils", "sdk.Runtime", "sdk.Scribe", "sdk.feature"],
+            [
+              "sdk.AuthStorageUtils",
+              "sdk.AuthUtils",
+              "sdk.LoggingUtils",
+              "sdk.Runtime",
+              "sdk.Scribe",
+              "sdk.SignedRequest",
+              "sdk.feature",
+            ],
             function $module_sdk_FedCM(
               global,
               require,
@@ -14879,32 +14887,84 @@ try {
               var w = window;
 
               function parseTokenToAuthResponse(token) {
-                var _parsed$expires_in, _parsed$signed_reques;
+                var _SignedRequest$parse$, _SignedRequest$parse;
                 var parsed = ES("JSON", "parse", false, token);
                 if (
                   parsed == null ||
                   typeof parsed !== "object" ||
                   typeof parsed.access_token !== "string" ||
-                  parsed.access_token === "" ||
-                  typeof parsed.user_id !== "string" ||
-                  parsed.user_id === ""
+                  parsed.access_token === ""
                 ) {
                   return null;
                 }
-                return {
+                var signedRequest =
+                  typeof parsed.signed_request === "string"
+                    ? parsed.signed_request
+                    : "";
+                var userID =
+                  (_SignedRequest$parse$ =
+                    (_SignedRequest$parse =
+                      importNamespace("sdk.SignedRequest").parse(
+                        signedRequest,
+                      )) == null
+                      ? void 0
+                      : _SignedRequest$parse.user_id) != null
+                    ? _SignedRequest$parse$
+                    : null;
+                var authResponse = {
                   accessToken: parsed.access_token,
-                  userID: parsed.user_id,
-                  expiresIn: Number(
-                    (_parsed$expires_in = parsed.expires_in) != null
-                      ? _parsed$expires_in
-                      : 0,
-                  ),
-                  signedRequest:
-                    (_parsed$signed_reques = parsed.signed_request) != null
-                      ? _parsed$signed_reques
-                      : "",
-                  graphDomain: parsed.graph_domain,
+                  userID: userID,
+                  expiresIn: Number(parsed.expires_in),
+                  signedRequest: signedRequest,
                 };
+                if (parsed.graph_domain) {
+                  authResponse = babelHelpers["extends"]({}, authResponse, {
+                    graphDomain: parsed.graph_domain,
+                  });
+                }
+                if (parsed.asset_scopes) {
+                  authResponse = babelHelpers["extends"]({}, authResponse, {
+                    asset_scopes: ES(
+                      "JSON",
+                      "parse",
+                      false,
+                      parsed.asset_scopes,
+                    ),
+                  });
+                }
+                if (parsed.granted_scopes) {
+                  authResponse = babelHelpers["extends"]({}, authResponse, {
+                    grantedScopes: parsed.granted_scopes,
+                  });
+                }
+                if (parsed.data_access_expiration_time) {
+                  authResponse = babelHelpers["extends"]({}, authResponse, {
+                    data_access_expiration_time: Number(
+                      parsed.data_access_expiration_time,
+                    ),
+                  });
+                }
+                if (parsed.referred) {
+                  authResponse = babelHelpers["extends"]({}, authResponse, {
+                    referred: parsed.referred,
+                  });
+                }
+                if (parsed.base_domain != null) {
+                  importNamespace("sdk.AuthUtils").setBaseDomain(
+                    parsed.base_domain,
+                  );
+                }
+                importNamespace("sdk.AuthUtils").setGraphDomain(
+                  parsed.graph_domain,
+                );
+                if (parsed.enforce_https) {
+                  importDefault("sdk.Runtime").setEnforceHttps(true);
+                }
+                importNamespace("sdk.AuthStorageUtils").setLocalStorageToken(
+                  authResponse,
+                  parsed.long_lived_token,
+                );
+                return authResponse;
               }
 
               function isFedCMSupported() {
@@ -27499,7 +27559,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1037925115","namespace":"FB","message":"' +
+        '","revision":"1037977667","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
