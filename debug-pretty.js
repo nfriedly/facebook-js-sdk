@@ -1,4 +1,4 @@
-/*1777019598,,JIT Construction: v1038063777,en_US*/
+/*1777321024,,JIT Construction: v1038220568,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3772,7 +3772,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1038063777",
+            revision: "1038220568",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -18762,7 +18762,9 @@ try {
               function createObjectFrom(keys, values) {
                 if (__DEV__) {
                   if (!Array.isArray(keys)) {
-                    throw new TypeError("Must pass an array of keys.");
+                    var e = new TypeError("Must pass an array of keys.");
+                    void e.stack;
+                    throw e;
                   }
                 }
                 if (values === undefined) {
@@ -27556,7 +27558,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1038063777","namespace":"FB","message":"' +
+        '","revision":"1038220568","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
