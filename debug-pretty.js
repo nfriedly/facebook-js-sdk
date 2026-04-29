@@ -1,4 +1,4 @@
-/*1777321024,,JIT Construction: v1038220568,en_US*/
+/*1777441970,,JIT Construction: v1038370626,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3772,7 +3772,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1038220568",
+            revision: "1038370626",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -17507,12 +17507,14 @@ try {
               "use strict";
 
               function errorCode(name) {
-                throw new Error(
+                var e = new Error(
                   "errorCode" +
                     '("' +
                     name +
                     '"): This should not happen. Oh noes!',
                 );
+                void e.stack;
+                throw e;
               }
               exports["default"] = errorCode;
             },
@@ -27558,7 +27560,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1038220568","namespace":"FB","message":"' +
+        '","revision":"1038370626","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
