@@ -1,4 +1,4 @@
-/*1777544938,,JIT Construction: v1038496757,en_US*/
+/*1777594211,,JIT Construction: v1038557912,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3772,7 +3772,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1038496757",
+            revision: "1038557912",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -11863,11 +11863,11 @@ try {
                   ) {
                     arr = ES("Array", "from", false, iterable);
                   } else {
-                    return Promise.reject(
-                      new TypeError(
-                        "Promise.allSettled must be passed an iterable.",
-                      ),
+                    var e = new TypeError(
+                      "Promise.allSettled must be passed an iterable.",
                     );
+                    void e.stack;
+                    return Promise.reject(e);
                   }
 
                   var promises = Array(arr.length);
@@ -13096,6 +13096,7 @@ try {
                   shouldThrow,
                   serializer,
                 ) {
+                  var _components$port;
                   if (rawUri == null || rawUri === "") {
                     return true;
                   }
@@ -13150,7 +13151,11 @@ try {
                     return false;
                   }
                   uri.setDomain(components.host || "");
-                  uri.setPort(components.port || "");
+                  uri.setPort(
+                    (_components$port = components.port) != null
+                      ? _components$port
+                      : "",
+                  );
                   uri.setPath(components.path || "");
                   if (shouldThrow) {
                     uri.setQueryData(
@@ -27560,7 +27565,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1038496757","namespace":"FB","message":"' +
+        '","revision":"1038557912","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
