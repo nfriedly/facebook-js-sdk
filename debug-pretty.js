@@ -1,4 +1,4 @@
-/*1777936338,,JIT Construction: v1038740778,en_US*/
+/*1777953603,,JIT Construction: v1038780184,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3772,7 +3772,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1038740778",
+            revision: "1038780184",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -10522,9 +10522,9 @@ try {
                 AppProps.setVersion("");
               }
 
-              function updateUserProperties(_params, _cb) {
-                if (_cb) {
-                  _cb(null);
+              function updateUserProperties(_params, cb) {
+                if (cb) {
+                  cb(null);
                 }
               }
 
@@ -10656,13 +10656,13 @@ try {
 
               var UNSUBSCRIBE = "event.unsubscribe";
 
-              var _subscribersMap;
+              var subscribersMap;
 
               function subscribers() {
-                if (!_subscribersMap) {
-                  _subscribersMap = {};
+                if (!subscribersMap) {
+                  subscribersMap = {};
                 }
-                return _subscribersMap;
+                return subscribersMap;
               }
 
               function subscribe(name, cb) {
@@ -12931,6 +12931,7 @@ try {
                 "aura",
                 "basel",
                 "lantern",
+                "fb-owl",
               ]);
               var Options = require("$InternalEnum")({
                 EXPLICITLY_ALLOWED_SCHEMES_ONLY:
@@ -27565,7 +27566,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1038740778","namespace":"FB","message":"' +
+        '","revision":"1038780184","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
