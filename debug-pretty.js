@@ -1,4 +1,4 @@
-/*1777953603,,JIT Construction: v1038780184,en_US*/
+/*1778030688,,JIT Construction: v1038875253,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3772,7 +3772,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1038780184",
+            revision: "1038875253",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -14740,6 +14740,124 @@ try {
             66,
           );
           __d(
+            "sdk.AuthResponseBuilder",
+            [
+              "sdk.AuthStorageUtils",
+              "sdk.AuthUtils",
+              "sdk.Runtime",
+              "sdk.SignedRequest",
+            ],
+            function $module_sdk_AuthResponseBuilder(
+              global,
+              require,
+              importDefault,
+              importNamespace,
+              requireLazy,
+              module,
+              exports,
+            ) {
+              "use strict";
+
+              function populateAuthResponse(authResponse, params) {
+                var result = authResponse;
+                if (params.granted_scopes) {
+                  result = babelHelpers["extends"]({}, result, {
+                    grantedScopes: params.granted_scopes,
+                  });
+                }
+
+                if (params.data_access_expiration_time) {
+                  result = babelHelpers["extends"]({}, result, {
+                    data_access_expiration_time: Number(
+                      params.data_access_expiration_time,
+                    ),
+                  });
+                }
+
+                if (params.base_domain != null) {
+                  importNamespace("sdk.AuthUtils").setBaseDomain(
+                    params.base_domain,
+                  );
+                }
+
+                importNamespace("sdk.AuthUtils").setGraphDomain(
+                  params.graph_domain,
+                );
+
+                if (params.enforce_https) {
+                  importDefault("sdk.Runtime").setEnforceHttps(true);
+                }
+
+                if (params.referred) {
+                  result = babelHelpers["extends"]({}, result, {
+                    referred: params.referred,
+                  });
+                }
+                importNamespace("sdk.AuthStorageUtils").setLocalStorageToken(
+                  result,
+                  params.long_lived_token,
+                );
+
+                return result;
+              }
+
+              function buildAuthResponseFromParams(params) {
+                var parsedSignedRequest = importNamespace(
+                  "sdk.SignedRequest",
+                ).parse(params.signed_request);
+                var user_id =
+                  parsedSignedRequest != null
+                    ? parsedSignedRequest.user_id != null
+                      ? parsedSignedRequest.user_id
+                      : null
+                    : null;
+                var authResponse = {
+                  userID: user_id,
+                  expiresIn: Number(params.expires_in),
+                };
+
+                if (params.access_token) {
+                  authResponse = babelHelpers["extends"]({}, authResponse, {
+                    accessToken: params.access_token,
+                  });
+                }
+
+                if (params.code) {
+                  authResponse = babelHelpers["extends"]({}, authResponse, {
+                    code: params.code,
+                  });
+                }
+
+                if (params.signed_request) {
+                  authResponse = babelHelpers["extends"]({}, authResponse, {
+                    signedRequest: params.signed_request,
+                  });
+                }
+
+                if (params.graph_domain) {
+                  authResponse = babelHelpers["extends"]({}, authResponse, {
+                    graphDomain: params.graph_domain,
+                  });
+                }
+
+                if (params.asset_scopes) {
+                  authResponse = babelHelpers["extends"]({}, authResponse, {
+                    asset_scopes: ES(
+                      "JSON",
+                      "parse",
+                      false,
+                      params.asset_scopes,
+                    ),
+                  });
+                }
+
+                return populateAuthResponse(authResponse, params);
+              }
+              exports.buildAuthResponseFromParams = buildAuthResponseFromParams;
+            },
+            98,
+          );
+          __d(
             "sdk.LoggingUtils",
             ["sdk.Impressions", "sdk.feature"],
             function $module_sdk_LoggingUtils(
@@ -14868,12 +14986,10 @@ try {
           __d(
             "sdk.FedCM",
             [
-              "sdk.AuthStorageUtils",
-              "sdk.AuthUtils",
+              "sdk.AuthResponseBuilder",
               "sdk.LoggingUtils",
               "sdk.Runtime",
               "sdk.Scribe",
-              "sdk.SignedRequest",
               "sdk.feature",
             ],
             function $module_sdk_FedCM(
@@ -14890,7 +15006,6 @@ try {
               var w = window;
 
               function parseTokenToAuthResponse(token) {
-                var _SignedRequest$parse$, _SignedRequest$parse;
                 var parsed = ES("JSON", "parse", false, token);
                 if (
                   parsed == null ||
@@ -14900,74 +15015,9 @@ try {
                 ) {
                   return null;
                 }
-                var signedRequest =
-                  typeof parsed.signed_request === "string"
-                    ? parsed.signed_request
-                    : "";
-                var userID =
-                  (_SignedRequest$parse$ =
-                    (_SignedRequest$parse =
-                      importNamespace("sdk.SignedRequest").parse(
-                        signedRequest,
-                      )) == null
-                      ? void 0
-                      : _SignedRequest$parse.user_id) != null
-                    ? _SignedRequest$parse$
-                    : null;
-                var authResponse = {
-                  accessToken: parsed.access_token,
-                  userID: userID,
-                  expiresIn: Number(parsed.expires_in),
-                  signedRequest: signedRequest,
-                };
-                if (parsed.graph_domain) {
-                  authResponse = babelHelpers["extends"]({}, authResponse, {
-                    graphDomain: parsed.graph_domain,
-                  });
-                }
-                if (parsed.asset_scopes) {
-                  authResponse = babelHelpers["extends"]({}, authResponse, {
-                    asset_scopes: ES(
-                      "JSON",
-                      "parse",
-                      false,
-                      parsed.asset_scopes,
-                    ),
-                  });
-                }
-                if (parsed.granted_scopes) {
-                  authResponse = babelHelpers["extends"]({}, authResponse, {
-                    grantedScopes: parsed.granted_scopes,
-                  });
-                }
-                if (parsed.data_access_expiration_time) {
-                  authResponse = babelHelpers["extends"]({}, authResponse, {
-                    data_access_expiration_time: Number(
-                      parsed.data_access_expiration_time,
-                    ),
-                  });
-                }
-                if (parsed.referred) {
-                  authResponse = babelHelpers["extends"]({}, authResponse, {
-                    referred: parsed.referred,
-                  });
-                }
-                if (parsed.base_domain != null) {
-                  importNamespace("sdk.AuthUtils").setBaseDomain(
-                    parsed.base_domain,
-                  );
-                }
-                importNamespace("sdk.AuthUtils").setGraphDomain(
-                  parsed.graph_domain,
-                );
-                if (parsed.enforce_https) {
-                  importDefault("sdk.Runtime").setEnforceHttps(true);
-                }
-                importNamespace("sdk.AuthStorageUtils").setLocalStorageToken(
-                  authResponse,
-                  parsed.long_lived_token,
-                );
-                return authResponse;
+                return importNamespace(
+                  "sdk.AuthResponseBuilder",
+                ).buildAuthResponseFromParams(parsed);
               }
 
               function isFedCMSupported() {
@@ -15186,6 +15236,7 @@ try {
               "Log",
               "UrlMap",
               "isStringNullOrEmpty",
+              "sdk.AuthResponseBuilder",
               "sdk.AuthState",
               "sdk.AuthStorageUtils",
               "sdk.AuthUtils",
@@ -15588,56 +15639,9 @@ try {
                     importNamespace("sdk.LoggingUtils").logEventName
                       .loginUnexpectedResponse;
                   if (params && (params.access_token || params.code)) {
-                    var parsedSignedRequest = importNamespace(
-                      "sdk.SignedRequest",
-                    ).parse(params.signed_request);
-                    var user_id =
-                      parsedSignedRequest != null
-                        ? parsedSignedRequest.user_id != null
-                          ? parsedSignedRequest.user_id
-                          : null
-                        : null;
-                    authResponse = {
-                      userID: user_id,
-                      expiresIn: Number(params.expires_in),
-                    };
-
-                    if (params.access_token) {
-                      authResponse = babelHelpers["extends"]({}, authResponse, {
-                        accessToken: params.access_token,
-                      });
-                    }
-
-                    if (params.code) {
-                      authResponse = babelHelpers["extends"]({}, authResponse, {
-                        code: params.code,
-                      });
-                    }
-
-                    if (params.signed_request) {
-                      authResponse = babelHelpers["extends"]({}, authResponse, {
-                        signedRequest: params.signed_request,
-                      });
-                    }
-
-                    if (params.graph_domain) {
-                      authResponse = babelHelpers["extends"]({}, authResponse, {
-                        graphDomain: params.graph_domain,
-                      });
-                    }
-
-                    if (params.asset_scopes) {
-                      authResponse = babelHelpers["extends"]({}, authResponse, {
-                        asset_scopes: ES(
-                          "JSON",
-                          "parse",
-                          false,
-                          params.asset_scopes,
-                        ),
-                      });
-                    }
-
-                    authResponse = populateAuthResponse(authResponse, params);
+                    authResponse = importNamespace(
+                      "sdk.AuthResponseBuilder",
+                    ).buildAuthResponseFromParams(params);
 
                     importNamespace("sdk.AuthUtils").removeLogoutState();
                     status = "connected";
@@ -15645,16 +15649,9 @@ try {
                     authEventToLog =
                       importNamespace("sdk.LoggingUtils").logEventName.loginEnd;
                   } else if (params && params.asset_scopes) {
-                    authResponse = {
-                      asset_scopes: ES(
-                        "JSON",
-                        "parse",
-                        false,
-                        params.asset_scopes,
-                      ),
-                    };
-
-                    authResponse = populateAuthResponse(authResponse, params);
+                    authResponse = importNamespace(
+                      "sdk.AuthResponseBuilder",
+                    ).buildAuthResponseFromParams(params);
 
                     importNamespace("sdk.AuthUtils").removeLogoutState();
                     status = "connected";
@@ -15757,47 +15754,6 @@ try {
                 }, LOGIN_COMPLETE_HEARTBEAT_TIMEOUT);
               }
 
-              function populateAuthResponse(authResponse, params) {
-                if (params.granted_scopes) {
-                  authResponse = babelHelpers["extends"]({}, authResponse, {
-                    grantedScopes: params.granted_scopes,
-                  });
-                }
-
-                if (params.data_access_expiration_time) {
-                  authResponse = babelHelpers["extends"]({}, authResponse, {
-                    data_access_expiration_time: Number(
-                      params.data_access_expiration_time,
-                    ),
-                  });
-                }
-
-                if (params.base_domain != null) {
-                  importNamespace("sdk.AuthUtils").setBaseDomain(
-                    params.base_domain,
-                  );
-                }
-
-                importNamespace("sdk.AuthUtils").setGraphDomain(
-                  params.graph_domain,
-                );
-
-                if (params.enforce_https) {
-                  importDefault("sdk.Runtime").setEnforceHttps(true);
-                }
-
-                if (params.referred) {
-                  authResponse = babelHelpers["extends"]({}, authResponse, {
-                    referred: params.referred,
-                  });
-                }
-                importNamespace("sdk.AuthStorageUtils").setLocalStorageToken(
-                  authResponse,
-                  params.long_lived_token,
-                );
-
-                return authResponse;
-              }
               var Auth = {
                 setFinalAuthResponse: setFinalAuthResponse,
                 login: login,
@@ -20154,8 +20110,20 @@ try {
                 },
 
                 pay: {
-                  size: { width: 555, height: 120 },
-                  connectDisplay: "popup",
+                  transform: function transform(call) {
+                    importNamespace("Log").error(
+                      'FB.ui({method: "pay"}) has been deprecated. ' +
+                        "Canvas and Instant Games payment subscriptions were deprecated in 2024. " +
+                        "For current Meta Pay capabilities, see https://www.meta.com/meta-pay/.",
+                    );
+                    if (call.cb) {
+                      call.cb({
+                        error_code: 4201,
+                        error_message:
+                          'FB.ui method "pay" has been deprecated and is no longer supported.',
+                      });
+                    }
+                  },
                 },
 
                 live_broadcast: {
@@ -27566,7 +27534,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1038780184","namespace":"FB","message":"' +
+        '","revision":"1038875253","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
