@@ -1,4 +1,4 @@
-/*1778030688,,JIT Construction: v1038875253,en_US*/
+/*1778053413,,JIT Construction: v1038897100,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3772,7 +3772,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1038875253",
+            revision: "1038897100",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -20110,20 +20110,8 @@ try {
                 },
 
                 pay: {
-                  transform: function transform(call) {
-                    importNamespace("Log").error(
-                      'FB.ui({method: "pay"}) has been deprecated. ' +
-                        "Canvas and Instant Games payment subscriptions were deprecated in 2024. " +
-                        "For current Meta Pay capabilities, see https://www.meta.com/meta-pay/.",
-                    );
-                    if (call.cb) {
-                      call.cb({
-                        error_code: 4201,
-                        error_message:
-                          'FB.ui method "pay" has been deprecated and is no longer supported.',
-                      });
-                    }
-                  },
+                  size: { width: 555, height: 120 },
+                  connectDisplay: "popup",
                 },
 
                 live_broadcast: {
@@ -27534,7 +27522,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1038875253","namespace":"FB","message":"' +
+        '","revision":"1038897100","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
