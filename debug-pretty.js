@@ -1,4 +1,4 @@
-/*1778088232,,JIT Construction: v1038918443,en_US*/
+/*1778122355,,JIT Construction: v1038967158,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3772,7 +3772,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1038918443",
+            revision: "1038967158",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -21613,19 +21613,20 @@ try {
             function $module_sdk_Canvas_Navigation(
               global,
               require,
-              requireDynamic,
+              importDefault,
+              importNamespace,
               requireLazy,
               module,
               exports,
             ) {
               function setUrlHandler(callback) {
-                require("sdk.RPC").local.navigate = function (path) {
+                importDefault("sdk.RPC").local.navigate = function (path) {
                   callback({ path: path });
                 };
-                require("sdk.RPC").remote.setNavigationEnabled(true);
+                importDefault("sdk.RPC").remote.setNavigationEnabled(true);
               }
 
-              require("sdk.RPC").stub("setNavigationEnabled");
+              importDefault("sdk.RPC").stub("setNavigationEnabled");
 
               var Navigation = {
                 setUrlHandler: setUrlHandler,
@@ -21633,7 +21634,7 @@ try {
               var _default = Navigation;
               exports["default"] = _default;
             },
-            66,
+            98,
           );
           __d(
             "sdk.Canvas.Plugin",
@@ -26574,13 +26575,14 @@ try {
             function $module_sdk_XFBML_public(
               global,
               require,
-              requireDynamic,
+              importDefault,
+              importNamespace,
               requireLazy,
               module,
               exports,
             ) {
               function init() {
-                require("FB").provide("XFBML", {
+                importDefault("FB").provide("XFBML", {
                   parse: function parse(dom) {
                     if (
                       dom != null &&
@@ -26589,30 +26591,32 @@ try {
                         typeof dom.nodeName === "string"
                       )
                     ) {
-                      throw new (require("AssertionError"))("Invalid argument");
+                      throw new (importDefault("AssertionError"))(
+                        "Invalid argument",
+                      );
                     }
 
                     if (dom && dom.nodeType === 9) {
                       dom = dom.body;
                     }
-                    return require("XFBML").parse.apply(null, arguments);
+                    return importDefault("XFBML").parse.apply(null, arguments);
                   },
                 });
 
-                require("XFBML").subscribe(
+                importDefault("XFBML").subscribe(
                   "parse",
                   function XFBML_subscribe_$1(counts) {
-                    return require("sdk.Event").fire(
+                    return importNamespace("sdk.Event").fire(
                       "xfbml.parse",
                       counts[0],
                       counts[1],
                     );
                   },
                 );
-                require("XFBML").subscribe(
+                importDefault("XFBML").subscribe(
                   "render",
                   function XFBML_subscribe_$1(counts) {
-                    return require("sdk.Event").fire(
+                    return importNamespace("sdk.Event").fire(
                       "xfbml.render",
                       counts[0],
                       counts[1],
@@ -26620,18 +26624,18 @@ try {
                   },
                 );
 
-                require("sdk.Event").subscribe(
+                importNamespace("sdk.Event").subscribe(
                   "init:post",
                   function Event_subscribe_$1(options) {
                     if (options.xfbml) {
                       window.setTimeout(
-                        require("wrapFunction")(
+                        importDefault("wrapFunction")(
                           ES(
-                            require("sdk.domReady"),
+                            importDefault("sdk.domReady"),
                             "bind",
                             true,
                             null,
-                            require("XFBML").parse,
+                            importDefault("XFBML").parse,
                           ),
                           "entry",
                           "init:post:xfbml.parse",
@@ -26650,37 +26654,37 @@ try {
               }
 
               function initXFBMLBasedSocialPlugin() {
-                var blocklist = require("sdk.feature")(
+                var blocklist = importDefault("sdk.feature")(
                   "plugin_tags_blocklist",
                   [],
                 );
 
-                Object.keys(require("PluginTags")).forEach(
+                Object.keys(importDefault("PluginTags")).forEach(
                   function forEach_$0(tag) {
                     if (blocklist.indexOf(tag) !== -1) {
                       return;
                     }
-                    require("XFBML").registerTag({
+                    importDefault("XFBML").registerTag({
                       xmlns: "fb",
                       localName: tag.replace(/_/g, "-"),
 
-                      ctor: require("IframePlugin").withParams(
-                        require("PluginTags")[tag],
-                        require("PluginConfig")[tag],
+                      ctor: importDefault("IframePlugin").withParams(
+                        importDefault("PluginTags")[tag],
+                        importDefault("PluginConfig")[tag],
                       ),
                     });
                   },
                 );
 
-                Object.keys(require("sdk.CustomTags")).forEach(
+                Object.keys(importDefault("sdk.CustomTags")).forEach(
                   function forEach_$0(tag) {
                     if (blocklist.indexOf(tag) !== -1) {
                       return;
                     }
-                    require("XFBML").registerTag({
+                    importDefault("XFBML").registerTag({
                       xmlns: "fb",
                       localName: tag.replace(/_/g, "-"),
-                      ctor: require("sdk.CustomTags")[tag],
+                      ctor: importDefault("sdk.CustomTags")[tag],
                     });
                   },
                 );
@@ -26693,7 +26697,7 @@ try {
               var _default = SDKXFBML;
               exports["default"] = _default;
             },
-            66,
+            98,
           );
           __d(
             "sdk.api-public",
@@ -27522,7 +27526,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1038918443","namespace":"FB","message":"' +
+        '","revision":"1038967158","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
