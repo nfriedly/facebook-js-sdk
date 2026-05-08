@@ -1,4 +1,4 @@
-/*1778264328,,JIT Construction: v1039108300,en_US*/
+/*1778281953,,JIT Construction: v1039137065,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3772,7 +3772,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1039108300",
+            revision: "1039137065",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -6965,7 +6965,7 @@ try {
 
               var coreFunction;
               var coreAdjustedFunction;
-              var __adjust = function __adjust() {
+              var adjust = function adjust() {
                 return 0;
               };
               if (performanceNowIsDefined && timeOrigin !== -1) {
@@ -6982,7 +6982,7 @@ try {
                   return coreFunction() + timeOriginDelta;
                 };
 
-                __adjust = function __adjust() {
+                adjust = function adjust() {
                   var delta = Date.now() - coreFunction();
                   if (delta > 500) {
                     timeOriginDelta = delta;
@@ -6999,8 +6999,8 @@ try {
                     capture: false,
                     passive: true,
                   };
-                  window.addEventListener("blur", __adjust, SafeEventOptions);
-                  window.addEventListener("focus", __adjust, SafeEventOptions);
+                  window.addEventListener("blur", adjust, SafeEventOptions);
+                  window.addEventListener("focus", adjust, SafeEventOptions);
                 }
               } else {
                 coreAdjustedFunction = coreFunction = function coreFunction() {
@@ -7029,7 +7029,7 @@ try {
                     };
                   }
                 })(),
-                __adjust: __adjust,
+                __adjust: adjust,
                 adjusted: coreAdjustedFunction,
               };
 
@@ -27528,7 +27528,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1039108300","namespace":"FB","message":"' +
+        '","revision":"1039137065","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
