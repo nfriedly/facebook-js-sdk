@@ -1,4 +1,4 @@
-/*1778549157,,JIT Construction: v1039284531,en_US*/
+/*1778565294,,JIT Construction: v1039300149,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3772,7 +3772,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1039284531",
+            revision: "1039300149",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -13029,6 +13029,7 @@ try {
               "PHPStrictQuerySerializer",
               "URIRFC3986",
               "URISchemes",
+              "err",
               "isSameOrigin",
               "setHostSubdomain",
             ],
@@ -13183,7 +13184,7 @@ try {
                   uri.setQueryParamModified(false);
                   if (components.userinfo !== null) {
                     if (shouldThrow) {
-                      throw new Error(
+                      throw importDefault("err")(
                         "URI.parse: invalid URI (userinfo is not allowed in a URI): " +
                           uriToParse,
                       );
@@ -13192,7 +13193,7 @@ try {
                   }
                   if (!uri.getDomain() && uri.getPath().indexOf("\\") !== -1) {
                     if (shouldThrow) {
-                      throw new Error(
+                      throw importDefault("err")(
                         "URI.parse: invalid URI (no domain but multiple back-slashes): " +
                           uriToParse,
                       );
@@ -13205,7 +13206,7 @@ try {
                     SECURITY_PATTERN.test(uriToParse)
                   ) {
                     if (shouldThrow) {
-                      throw new Error(
+                      throw importDefault("err")(
                         "URI.parse: invalid URI (unsafe protocol-relative URLs): " +
                           uriToParse +
                           "'",
@@ -13219,7 +13220,7 @@ try {
                     !ES(uri.getPath(), "startsWith", true, "/")
                   ) {
                     if (shouldThrow) {
-                      throw new Error(
+                      throw importDefault("err")(
                         "URI.parse: invalid URI (domain and path where path lacks leading slash): " +
                           uriToParse,
                       );
@@ -13240,7 +13241,7 @@ try {
                     );
                     if (uri.enforceProtocolRequiresDomain()) {
                       if (shouldThrow) {
-                        throw new Error(
+                        throw importDefault("err")(
                           "URI.parse: invalid URI (protocol and path but no domain): " +
                             uriToParse,
                         );
@@ -13313,7 +13314,7 @@ try {
                 };
                 _proto.setDomain = function setDomain(domain) {
                   if (UNSAFE_DOMAIN_PATTERN.test(domain)) {
-                    throw new Error(
+                    throw importDefault("err")(
                       "URI.setDomain: unsafe domain specified: " +
                         domain +
                         " for url " +
@@ -27529,7 +27530,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1039284531","namespace":"FB","message":"' +
+        '","revision":"1039300149","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
