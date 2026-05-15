@@ -1,4 +1,4 @@
-/*1778565294,,JIT Construction: v1039300149,en_US*/
+/*1778856029,,JIT Construction: v1039593028,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3772,7 +3772,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1039300149",
+            revision: "1039593028",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -18680,17 +18680,18 @@ try {
                 },
 
                 isAllowed: function isAllowed(user_ids) {
-                  var checkedUserIds = user_ids;
-                  if (!checkedUserIds) {
+                  if (user_ids == null) {
                     return false;
                   }
 
-                  if (typeof checkedUserIds === "number") {
-                    return checkedUserIds in Frictionless._allowedRecipients;
+                  if (typeof user_ids === "number") {
+                    return user_ids in Frictionless._allowedRecipients;
                   }
-                  if (typeof checkedUserIds === "string") {
-                    checkedUserIds = checkedUserIds.split(",");
-                  }
+
+                  var checkedUserIds =
+                    typeof user_ids === "string"
+                      ? user_ids.split(",")
+                      : user_ids;
                   var checkedUserIdsMap = checkedUserIds.map(
                     function checkedUserIds_map_$0(s) {
                       return String(s).trim();
@@ -27530,7 +27531,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1039300149","namespace":"FB","message":"' +
+        '","revision":"1039593028","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
