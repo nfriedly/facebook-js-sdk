@@ -1,4 +1,4 @@
-/*1779222248,,JIT Construction: v1039812514,en_US*/
+/*1779850404,,JIT Construction: v1040191107,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3772,7 +3772,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1039812514",
+            revision: "1040191107",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -4051,7 +4051,7 @@ try {
               var rateLimitCache = new Map();
               var lastCacheClear = 0;
 
-              function _cleanupCache() {
+              function cleanupCache() {
                 var now = (
                   _require_closure_performanceNow ||
                   (_require_closure_performanceNow = require("performanceNow"))
@@ -4072,9 +4072,8 @@ try {
                 }
               }
 
-              function _rateLimit(key) {
-                _cleanupCache();
-
+              function rateLimit(key) {
+                cleanupCache();
                 var now = (
                   _require_closure_performanceNow ||
                   (_require_closure_performanceNow = require("performanceNow"))
@@ -4110,7 +4109,7 @@ try {
 
               var ErrorFilter = {
                 shouldLog: function shouldLog(error) {
-                  return _rateLimit(error.hash);
+                  return rateLimit(error.hash);
                 },
               };
 
@@ -4470,7 +4469,7 @@ try {
               function toReadableMessage(error) {
                 var _error$messageFormat2;
 
-                return _printf(
+                return printf(
                   (_error$messageFormat2 = error.messageFormat) !== null &&
                     _error$messageFormat2 !== void 0
                     ? _error$messageFormat2
@@ -4479,7 +4478,7 @@ try {
                 );
               }
 
-              function _printf(format, params) {
+              function printf(format, params) {
                 var index = 0;
                 var safeFormat = String(format);
                 var formattedMessage = safeFormat.replace(
@@ -5047,7 +5046,7 @@ try {
               ErrorPubSub$1.addListener(ErrorBrowserConsole.errorListener);
 
               var ANONYMOUS_GUARD_TAG = "<anonymous guard>";
-              var _skipGuard = false;
+              var skipGuard = false;
               var ErrorGuard = {
                 applyWithGuard: function applyWithGuard(
                   func,
@@ -5077,7 +5076,7 @@ try {
                         : metaArgs.deferredSource,
                   });
 
-                  if (_skipGuard) {
+                  if (skipGuard) {
                     try {
                       return func.apply(context, args);
                     } finally {
@@ -5189,7 +5188,7 @@ try {
                 },
 
                 skipGuardGlobal: function skipGuardGlobal(value) {
-                  _skipGuard = value;
+                  skipGuard = value;
                 },
               };
 
@@ -5197,15 +5196,15 @@ try {
               var errorAncestors = [];
               var pagePosition = 0;
 
-              function _toInt64(n) {
+              function toInt64(n) {
                 return String(n);
               }
 
-              function _toInt64Nullable(n) {
+              function toInt64Nullable(n) {
                 return n == null ? null : String(n);
               }
 
-              function _mergeExtra(errorExtra, extra) {
+              function mergeExtra(errorExtra, extra) {
                 var mergedExtra = {};
 
                 if (extra) {
@@ -5224,22 +5223,22 @@ try {
                 return Object.keys(mergedExtra);
               }
 
-              function _convertStack(stackFrames) {
+              function convertStack(stackFrames) {
                 return (
                   stackFrames !== null && stackFrames !== void 0
                     ? stackFrames
                     : []
                 ).map(function map_$0(frame) {
                   return {
-                    column: _toInt64Nullable(frame.column),
+                    column: toInt64Nullable(frame.column),
                     identifier: frame.identifier,
-                    line: _toInt64Nullable(frame.line),
+                    line: toInt64Nullable(frame.line),
                     script: frame.script,
                   };
                 });
               }
 
-              function _truncateHugeString(stringOrParam) {
+              function truncateHugeString(stringOrParam) {
                 var s = String(stringOrParam);
 
                 if (s.length > MAX_MESSAGE_LENGTH) {
@@ -5256,7 +5255,7 @@ try {
                   _info$additional_clie;
 
                 var newError = {
-                  appId: _toInt64Nullable(info.appId),
+                  appId: toInt64Nullable(info.appId),
                   cavalry_lid: info.cavalry_lid,
                   access_token: ErrorDynamicData.access_token,
                   ancestor_hash: error.hash,
@@ -5265,13 +5264,13 @@ try {
                     _info$bundle_variant !== void 0
                       ? _info$bundle_variant
                       : null,
-                  clientTime: _toInt64(error.clientTime),
+                  clientTime: toInt64(error.clientTime),
                   column: error.column,
-                  componentStackFrames: _convertStack(
+                  componentStackFrames: convertStack(
                     error.componentStackFrames,
                   ),
                   events: error.events,
-                  extra: _mergeExtra(error.extra, info.extra),
+                  extra: mergeExtra(error.extra, info.extra),
                   forcedKey: error.forcedKey,
                   frontend_env:
                     (_info$frontend_env = info.frontend_env) !== null &&
@@ -5281,15 +5280,15 @@ try {
                   guardList: error.guardList,
                   line: error.line,
                   loggingFramework: info.loggingFramework,
-                  messageFormat: _truncateHugeString(error.messageFormat),
-                  messageParams: error.messageParams.map(_truncateHugeString),
+                  messageFormat: truncateHugeString(error.messageFormat),
+                  messageParams: error.messageParams.map(truncateHugeString),
                   name: error.name,
-                  sample_weight: _toInt64Nullable(info.sample_weight),
+                  sample_weight: toInt64Nullable(info.sample_weight),
                   script: error.script,
                   site_category: info.site_category,
-                  stackFrames: _convertStack(error.stackFrames),
+                  stackFrames: convertStack(error.stackFrames),
                   type: error.type,
-                  page_time: _toInt64Nullable(error.page_time),
+                  page_time: toInt64Nullable(error.page_time),
                   project: error.project,
                   push_phase: info.push_phase,
                   report_source: info.report_source,
@@ -5300,8 +5299,8 @@ try {
                       ? _info$rollout_hash
                       : null,
                   script_path: info.script_path,
-                  server_revision: _toInt64Nullable(info.server_revision),
-                  spin: _toInt64Nullable(info.spin),
+                  server_revision: toInt64Nullable(info.server_revision),
+                  spin: toInt64Nullable(info.spin),
                   svn_rev: String(info.client_revision),
                   additional_client_revisions: ES(
                     "Array",
@@ -5312,7 +5311,7 @@ try {
                       _info$additional_clie !== void 0
                       ? _info$additional_clie
                       : [],
-                  ).map(_toInt64),
+                  ).map(toInt64),
                   taalOpcodes:
                     error.taalOpcodes == null
                       ? null
@@ -5335,7 +5334,7 @@ try {
 
                 if (deferredSource && deferredSource.stackFrames) {
                   newError.deferredSource = {
-                    stackFrames: _convertStack(deferredSource.stackFrames),
+                    stackFrames: convertStack(deferredSource.stackFrames),
                   };
                 }
 
@@ -5388,8 +5387,8 @@ try {
                 var errorPayload = createErrorPayload(error, info);
                 ES("Object", "assign", false, errorPayload, {
                   ancestors: errorAncestors.slice(),
-                  clientWeight: _toInt64(clientWeight),
-                  page_position: _toInt64(pagePosition),
+                  clientWeight: toInt64(clientWeight),
+                  page_position: toInt64(pagePosition),
                 });
 
                 if (
@@ -27533,7 +27532,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1039812514","namespace":"FB","message":"' +
+        '","revision":"1040191107","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
