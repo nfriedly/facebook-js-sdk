@@ -1,4 +1,4 @@
-/*1779877026,,JIT Construction: v1040217598,en_US*/
+/*1780350905,,JIT Construction: v1040601590,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3772,7 +3772,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1040217598",
+            revision: "1040601590",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -20244,6 +20244,17 @@ try {
 
                   params.display = UIServer.getDisplayMode(method, params);
 
+                  if (
+                    name === "pay" &&
+                    params.display !== "async" &&
+                    !importDefault("sdk.Runtime").isCanvasEnvironment()
+                  ) {
+                    importNamespace("Log").error(
+                      'FB.ui({method: "pay"}) is no longer supported.',
+                    );
+                    return;
+                  }
+
                   if (!method.url) {
                     method.url = "dialog/" + name;
                   }
@@ -27532,7 +27543,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1040217598","namespace":"FB","message":"' +
+        '","revision":"1040601590","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
