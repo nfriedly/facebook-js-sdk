@@ -1,4 +1,4 @@
-/*1781578444,,JIT Construction: v1041526342,en_US*/
+/*1781678211,,JIT Construction: v1041627196,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3772,7 +3772,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1041526342",
+            revision: "1041627196",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -11864,11 +11864,13 @@ try {
                   ) {
                     arr = ES("Array", "from", false, iterable);
                   } else {
-                    var e = new TypeError(
-                      "Promise.allSettled must be passed an iterable.",
-                    );
-                    void e.stack;
-                    return Promise.reject(e);
+                    return new Promise(function () {
+                      var e = new TypeError(
+                        "Promise.allSettled must be passed an iterable.",
+                      );
+                      void e.stack;
+                      throw e;
+                    });
                   }
 
                   var promises = Array(arr.length);
@@ -27542,7 +27544,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1041526342","namespace":"FB","message":"' +
+        '","revision":"1041627196","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
