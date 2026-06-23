@@ -1,4 +1,4 @@
-/*1782164236,,JIT Construction: v1041898753,en_US*/
+/*1782183185,,JIT Construction: v1041931423,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3772,7 +3772,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1041898753",
+            revision: "1041931423",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -16160,93 +16160,101 @@ try {
               var registry = {};
               var _Queue = (function () {
                 function Queue(opts) {
-                  this._timeout = null;
+                  this.$Queue$p_timeout = null;
 
-                  this._interval = (opts == null ? void 0 : opts.interval) || 0;
-                  this._processor = opts == null ? void 0 : opts.processor;
+                  this.$Queue$p_interval =
+                    (opts == null ? void 0 : opts.interval) || 0;
+                  this.$Queue$p_processor =
+                    opts == null ? void 0 : opts.processor;
 
-                  this._queue = [];
-                  this._stopped = true;
+                  this.$Queue$p_queue = [];
+                  this.$Queue$p_stopped = true;
                 }
                 var _proto = Queue.prototype;
-                _proto._dispatch = function _dispatch(force) {
+                _proto.$Queue$p_dispatch = function $Queue$p_dispatch(_force) {
                   var _this = this;
-                  if (force === void 0) {
-                    force = false;
+                  if (_force === void 0) {
+                    _force = false;
                   }
-                  if (this._stopped || this._queue.length === 0) {
+                  if (
+                    this.$Queue$p_stopped ||
+                    this.$Queue$p_queue.length === 0
+                  ) {
                     return;
                   }
 
-                  var processor = this._processor;
+                  var processor = this.$Queue$p_processor;
                   if (processor == null) {
-                    this._stopped = true;
+                    this.$Queue$p_stopped = true;
                     var e = new Error("No processor available");
                     void e.stack;
                     throw e;
                   }
 
-                  var interval = this._interval;
+                  var interval = this.$Queue$p_interval;
                   if (interval != null) {
-                    processor.call(this, this._queue.shift());
-                    this._timeout = setTimeout(function setTimeout_$0() {
-                      return _this._dispatch();
-                    }, interval);
+                    processor.call(this, this.$Queue$p_queue.shift());
+                    this.$Queue$p_timeout = window.setTimeout(
+                      function window_setTimeout_$0() {
+                        return _this.$Queue$p_dispatch();
+                      },
+                      interval,
+                    );
                   } else {
-                    while (this._queue.length) {
-                      processor.call(this, this._queue.shift());
+                    while (this.$Queue$p_queue.length) {
+                      processor.call(this, this.$Queue$p_queue.shift());
                     }
                   }
                 };
                 _proto.enqueue = function enqueue(message) {
-                  if (this._processor && !this._stopped) {
-                    this._processor(message);
+                  if (this.$Queue$p_processor && !this.$Queue$p_stopped) {
+                    this.$Queue$p_processor(message);
                   } else {
-                    this._queue.push(message);
+                    this.$Queue$p_queue.push(message);
                   }
                   return this;
                 };
                 _proto.start = function start(processor) {
                   if (processor) {
-                    this._processor = processor;
+                    this.$Queue$p_processor = processor;
                   }
-                  this._stopped = false;
-                  this._dispatch();
+                  this.$Queue$p_stopped = false;
+                  this.$Queue$p_dispatch();
                   return this;
                 };
                 _proto.isStarted = function isStarted() {
-                  return !this._stopped;
+                  return !this.$Queue$p_stopped;
                 };
                 _proto.dispatch = function dispatch() {
-                  this._dispatch(true);
+                  this.$Queue$p_dispatch(true);
                 };
                 _proto.stop = function stop(scheduled) {
-                  this._stopped = true;
-                  if (scheduled && this._timeout != null) {
-                    clearTimeout(this._timeout);
+                  this.$Queue$p_stopped = true;
+                  if (scheduled && this.$Queue$p_timeout != null) {
+                    window.clearTimeout(this.$Queue$p_timeout);
                   }
                   return this;
                 };
                 _proto.merge = function merge(queue, prepend) {
                   if (prepend) {
-                    var _this$_queue;
-                    (_this$_queue = this._queue).unshift.apply(
-                      _this$_queue,
-                      queue._queue,
+                    var _this$$Queue$p_queue;
+                    (_this$$Queue$p_queue = this.$Queue$p_queue).unshift.apply(
+                      _this$$Queue$p_queue,
+                      queue.$Queue$p_queue,
                     );
                   } else {
-                    var _this$_queue2;
-                    (_this$_queue2 = this._queue).push.apply(
-                      _this$_queue2,
-                      queue._queue,
+                    var _this$$Queue$p_queue2;
+                    (_this$$Queue$p_queue2 = this.$Queue$p_queue).push.apply(
+                      _this$$Queue$p_queue2,
+                      queue.$Queue$p_queue,
                     );
                   }
-                  queue._queue = [];
-                  this._dispatch();
+                  queue.$Queue$p_queue = [];
+                  this.$Queue$p_dispatch();
                   return this;
                 };
                 _proto.getLength = function getLength() {
-                  return this._queue.length;
+                  return this.$Queue$p_queue.length;
                 };
                 Queue.get = function get(name, opts) {
                   var queue;
@@ -27545,7 +27553,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1041898753","namespace":"FB","message":"' +
+        '","revision":"1041931423","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
