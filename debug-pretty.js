@@ -1,4 +1,4 @@
-/*1782195434,,JIT Construction: v1041948108,en_US*/
+/*1782501883,,JIT Construction: v1042205873,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3772,7 +3772,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1041948108",
+            revision: "1042205873",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -19115,6 +19115,8 @@ try {
               module,
               exports,
             ) {
+              var instagramURIRegexString = "(^|\\.)instagram\\.com$";
+
               var instagramURIRegex = null;
 
               function isInstagramURI(uri) {
@@ -19131,10 +19133,7 @@ try {
                 }
 
                 if (!instagramURIRegex) {
-                  instagramURIRegex = new RegExp(
-                    "(^|\\.)instagram\\.com$",
-                    "i",
-                  );
+                  instagramURIRegex = new RegExp(instagramURIRegexString, "i");
                 }
                 return instagramURIRegex.test(uri.getDomain());
               }
@@ -27553,7 +27552,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1041948108","namespace":"FB","message":"' +
+        '","revision":"1042205873","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
