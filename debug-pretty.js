@@ -1,4 +1,4 @@
-/*1782501883,,JIT Construction: v1042205873,en_US*/
+/*1782627702,,JIT Construction: v1042265736,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -1855,7 +1855,7 @@ try {
                           if (typeof value == "object") {
                             // Check for cyclic structures. This is a linear search; performance
                             // is inversely proportional to the number of unique nested objects.
-                            for (length = stack.length; length--; ) {
+                            for (length = stack.length; length--;) {
                               if (stack[length] === value) {
                                 // Cyclic structures cannot be serialized by `JSON.stringify`.
                                 throw TypeError();
@@ -2065,7 +2065,7 @@ try {
                                 // begin parsing the string. String tokens are prefixed with the
                                 // sentinel `@` character to distinguish them from punctuators and
                                 // end-of-string tokens.
-                                for (value = "@", Index++; Index < length; ) {
+                                for (value = "@", Index++; Index < length;) {
                                   charCode = source.charCodeAt(Index);
                                   if (charCode < 32) {
                                     // Unescaped ASCII control characters (those with a code unit
@@ -2102,15 +2102,13 @@ try {
                                           charCode = source.charCodeAt(Index);
                                           // A valid sequence comprises four hexdigits (case-
                                           // insensitive) that form a single hexadecimal value.
-                                          if (
-                                            !(
-                                              (charCode >= 48 &&
-                                                charCode <= 57) ||
-                                              (charCode >= 97 &&
-                                                charCode <= 102) ||
-                                              (charCode >= 65 && charCode <= 70)
-                                            )
-                                          ) {
+                                          if (!(
+                                            (charCode >= 48 &&
+                                              charCode <= 57) ||
+                                            (charCode >= 97 &&
+                                              charCode <= 102) ||
+                                            (charCode >= 65 && charCode <= 70)
+                                          )) {
                                             // Invalid Unicode escape sequence.
                                             abort();
                                           }
@@ -2366,7 +2364,7 @@ try {
                             // because its `Object#hasOwnProperty` implementation returns `false`
                             // for array indices (e.g., `![1, 2, 3].hasOwnProperty("0")`).
                             if (getClass.call(value) == arrayClass) {
-                              for (length = value.length; length--; ) {
+                              for (length = value.length; length--;) {
                                 update(value, length, callback);
                               }
                             } else {
@@ -3772,7 +3770,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1042205873",
+            revision: "1042265736",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -9140,7 +9138,7 @@ try {
                 }
 
                 var allIncluded = true;
-                for (var i = 0, id; (id = names[i++]); ) {
+                for (var i = 0, id; (id = names[i++]);) {
                   if (!(id in cssRules)) {
                     allIncluded = false;
                     cssRules[id] = true;
@@ -27552,7 +27550,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1042205873","namespace":"FB","message":"' +
+        '","revision":"1042265736","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
