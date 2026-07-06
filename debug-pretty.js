@@ -1,4 +1,4 @@
-/*1782768178,,JIT Construction: v1042323432,en_US*/
+/*1783365893,,JIT Construction: v1042675222,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3770,7 +3770,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1042323432",
+            revision: "1042675222",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -23910,7 +23910,7 @@ try {
               exports,
             ) {
               var CommentsCount = importDefault("sdk.XFBML.Comments").extend({
-                constructor: function CommentsCount(elem, ns, tag, attr) {
+                constructor: function CommentsCount(elem, ns, _tag, attr) {
                   importNamespace("sdk.DOM").addCss(
                     elem,
                     "fb_comments_count_zero",
@@ -27550,7 +27550,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1042323432","namespace":"FB","message":"' +
+        '","revision":"1042675222","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
