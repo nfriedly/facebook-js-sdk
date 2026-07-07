@@ -1,4 +1,4 @@
-/*1783365893,,JIT Construction: v1042675222,en_US*/
+/*1783387619,,JIT Construction: v1042721937,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -2772,7 +2772,7 @@ try {
               babelHelpers.inherits = babelHelpers.inheritsLoose;
 
               babelHelpers.wrapNativeSuper = function (Class) {
-                var _cache = typeof Map === "function" ? new Map() : undefined;
+                var cache = typeof Map === "function" ? new Map() : undefined;
 
                 babelHelpers.wrapNativeSuper = function (Class) {
                   if (Class === null) {
@@ -2783,15 +2783,14 @@ try {
                       "Super expression must either be null or a function",
                     );
                   }
-                  if (_cache !== undefined) {
-                    if (_cache.has(Class)) {
-                      return _cache.get(Class);
+                  if (cache !== undefined) {
+                    if (cache.has(Class)) {
+                      return cache.get(Class);
                     }
-                    _cache.set(Class, Wrapper);
+                    cache.set(Class, Wrapper);
                   }
 
                   babelHelpers.inheritsLoose(Wrapper, Class);
-
                   function Wrapper() {
                     Class.apply(this, arguments);
                   }
@@ -3770,7 +3769,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1042675222",
+            revision: "1042721937",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -27550,7 +27549,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1042675222","namespace":"FB","message":"' +
+        '","revision":"1042721937","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
