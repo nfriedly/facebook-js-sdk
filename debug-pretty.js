@@ -1,4 +1,4 @@
-/*1785552730,,JIT Construction: v1044286350,en_US*/
+/*1786002421,,JIT Construction: v1044616138,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3769,7 +3769,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1044286350",
+            revision: "1044616138",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -13449,11 +13449,9 @@ try {
                     ).serialize(this.getQueryData());
                   };
                 _proto.removeQueryData = function removeQueryData(keys) {
-                  if (!Array.isArray(keys)) {
-                    keys = [keys];
-                  }
-                  for (var i = 0, length = keys.length; i < length; ++i) {
-                    delete this.$URIAbstractBase$p_queryData[keys[i]];
+                  var keyList = Array.isArray(keys) ? keys : [keys];
+                  for (var i = 0, length = keyList.length; i < length; ++i) {
+                    delete this.$URIAbstractBase$p_queryData[keyList[i]];
                   }
                   this.$URIAbstractBase$p_isQueryParamModified = true;
                   return this;
@@ -27546,7 +27544,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1044286350","namespace":"FB","message":"' +
+        '","revision":"1044616138","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
