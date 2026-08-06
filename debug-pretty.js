@@ -1,4 +1,4 @@
-/*1786002421,,JIT Construction: v1044616138,en_US*/
+/*1786060395,,JIT Construction: v1044676071,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3769,7 +3769,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1044616138",
+            revision: "1044676071",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -13235,15 +13235,13 @@ try {
                         uri.getProtocol() +
                         '" with no domain)',
                     );
-                    if (uri.enforceProtocolRequiresDomain()) {
-                      if (shouldThrow) {
-                        throw importDefault("err")(
-                          "URI.parse: invalid URI (protocol and path but no domain): " +
-                            uriToParse,
-                        );
-                      }
-                      return false;
+                    if (shouldThrow) {
+                      throw importDefault("err")(
+                        "URI.parse: invalid URI (protocol and path but no domain): " +
+                          uriToParse,
+                      );
                     }
+                    return false;
                   }
                   return true;
                 };
@@ -13758,10 +13756,6 @@ try {
 
                     return false;
                   };
-                _proto.enforceProtocolRequiresDomain =
-                  function enforceProtocolRequiresDomain() {
-                    return true;
-                  };
                 return URIAbstractBase;
               })();
               exports["default"] = _URIAbstractBase;
@@ -13770,7 +13764,7 @@ try {
           );
           __d(
             "sdk.URI",
-            ["QueryString", "URIAbstractBase", "sdk.feature"],
+            ["QueryString", "URIAbstractBase"],
             function $module_sdk_URI(
               global,
               require,
@@ -13808,16 +13802,6 @@ try {
                     serializer,
                   );
                 };
-                _proto.enforceProtocolRequiresDomain =
-                  function enforceProtocolRequiresDomain() {
-                    var _feature;
-                    return (_feature = importDefault("sdk.feature")(
-                      "enforce_protocol_requires_domain",
-                      true,
-                    )) != null
-                      ? _feature
-                      : true;
-                  };
                 return URI;
               })(importDefault("URIAbstractBase"));
               exports["default"] = _URI;
@@ -27544,7 +27528,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1044616138","namespace":"FB","message":"' +
+        '","revision":"1044676071","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
