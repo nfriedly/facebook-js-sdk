@@ -1,4 +1,4 @@
-/*1786060395,,JIT Construction: v1044676071,en_US*/
+/*1786071098,,JIT Construction: v1044691440,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3769,7 +3769,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1044676071",
+            revision: "1044691440",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -6331,14 +6331,11 @@ try {
                       void e.stack;
                       throw e;
                     }
-                  } else {
-                    size = DEFAULT_BUFFER_SIZE;
                   }
-
-                  this.$IntervalTrackingBoundedBuffer$p_size = size;
-
+                  var bufferSize = size != null ? size : DEFAULT_BUFFER_SIZE;
+                  this.$IntervalTrackingBoundedBuffer$p_size = bufferSize;
                   this.$IntervalTrackingBoundedBuffer$p_buffer =
-                    new (importDefault("CircularBuffer"))(size);
+                    new (importDefault("CircularBuffer"))(bufferSize);
                   this.$IntervalTrackingBoundedBuffer$p_buffer.onEvict(
                     function $IntervalTrackingBoundedBuffer$p_buffer_onEvict_$0() {
                       _this.$IntervalTrackingBoundedBuffer$p_startOfBufferItemIndex++;
@@ -27528,7 +27525,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1044676071","namespace":"FB","message":"' +
+        '","revision":"1044691440","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
