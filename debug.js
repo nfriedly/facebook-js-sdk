@@ -1,4 +1,4 @@
-/*1787026027,,JIT Construction: v1045418364,en_US*/
+/*1787076027,,JIT Construction: v1045456189,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3620,7 +3620,7 @@ this:
 typeof self!=='undefined'?
 self:
 {}
-);      __d("cr:1126",[],function(g,r,rd,rl,m,e){m.exports=require("TimeSliceImpl");});__d("cr:986633",[],function(g,r,rd,rl,m,e){m.exports=require("setTimeoutAcrossTransitionsBlue");});__d("cr:7391",[],function(g,r,rd,rl,m,e){m.exports=require("setTimeoutAcrossTransitionsWWW");});__d("cr:6640",[],function(g,r,rd,rl,m,e){m.exports=require("PromiseImpl");});__d("PromiseUsePolyfillSetImmediateGK",[],{"www_always_use_polyfill_setimmediate":false});__d("ImmediateImplementationExperiments",[],{"prefer_message_channel":true});__d("JSSDKCanvasPrefetcherConfig",[],{"enabled":true,"excludedAppIds":[144959615576466,768691303149786,320528941393723],"sampleRate":500});__d("JSSDKConfig",[],{"features":{"allow_non_canvas_app_events":false,"error_handling":{"rate":4},"e2e_ping_tracking":{"rate":0.1},"xd_timeout":{"rate":1,"value":60000},"use_bundle":false,"should_log_response_error":true,"popup_blocker_scribe_logging":{"rate":100},"https_only_enforce_starting":2538809200000,"https_only_learn_more":"https:\/\/developers.facebook.com\/blog\/post\/2018\/06\/08\/enforce-https-facebook-login\/","https_only_scribe_logging":{"rate":1},"log_perf":{"rate":0.001},"use_x_xd":{"rate":100},"cache_auth_response":{"rate":100},"oauth_funnel_logger_version":1,"force_popup_to_canvas_apps_with_id":[],"force_popup_to_all_canvas_app":false,"max_oauth_dialog_retries":{"rate":100,"value":10},"plugin_tags_blacklist":[],"idle_callback_wait_time_ms":3000,"chat_plugin_facade_timeout_ms":8000,"chat_plugin_facade_enabled_pageids":["102493178867330","107331571710078","1032787970130843","107771111665395","261907812360345","101305975654752","275483104252055","101664622285042","112682113428700","271628573687012","385757598521443","100545935690488"],"should_enable_ig_login_status_fetch":true,"log_cookies_usage":{"rate":0.1},"allow_shadow_dom_for_apps_with_id":[520916077950649,152351391599356,132081130190180,468663283258845,409976882430412,189845245141894,360467581347,274266067164],"allow_shadow_dom":true,"use_extended_dialog_path":{"rate":100},"use_oauth_subdomain":{"rate":100},"fedcm_enabled":true}});__d("JSSDKCssConfig",[],{"rules":".fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0px;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:lucida grande,tahoma,verdana,arial,sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:400;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}\u0040keyframes fb_transform{0\u0025{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}\n\n.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0px;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:lucida grande,tahoma,verdana,arial,sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:400;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}\u0040keyframes fb_transform{0\u0025{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}\n\n.fb_dialog{background:#525252b3;position:absolute;top:-10000px;z-index:10001}.fb_dialog_advanced{border-radius:8px;padding:10px}.fb_dialog_content{background:#fff;color:#373737}.fb_dialog_close_icon{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{left:5px;right:auto;top:5px}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:700;margin:0}.fb_dialog_content .dialog_title>span{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/yd\/r\/Cou7n-nqK52.gif) no-repeat 5px 50\u0025;float:left;padding:5px 0 7px 26px}body.fb_hidden{height:100\u0025;left:0;margin:0;overflow:visible;position:absolute;top:-10000px;transform:none;width:100\u0025}.fb_dialog.fb_dialog_mobile.loading{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/ya\/r\/3rhSv5V8j3o.gif) #fff no-repeat 50\u0025 50\u0025;min-height:100\u0025;min-width:100\u0025;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{background:none;height:auto;min-height:initial;min-width:initial;width:auto}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100\u0025}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{clear:both;color:#fff;display:block;font-size:18px;padding-top:20px}#fb-root #fb_dialog_ipad_overlay{background:#0006;inset:0;min-height:100\u0025;position:absolute;width:100\u0025;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_mobile .fb_dialog_iframe{position:sticky;top:0}.fb_dialog_content .dialog_header{background:linear-gradient(from(#738aba),to(#2c4987));border-bottom:1px solid;border-color:#043b87;box-shadow:#fff 0 1px 1px -1px inset;color:#fff;font:700 14px Helvetica,sans-serif;text-overflow:ellipsis;text-shadow:rgba(0,30,84,.296875) 0px -1px 0px;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{height:43px;width:100\u0025}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:linear-gradient(from(#4267B2),to(#2a4887));background-clip:padding-box;border:1px solid #29487d;border-radius:3px;display:inline-block;line-height:18px;margin-top:3px;max-width:85px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{background:none;border:none;color:#fff;font:700 12px Helvetica,sans-serif;margin:2px -12px;padding:2px 6px 3px;text-shadow:rgba(0,30,84,.296875) 0px -1px 0px}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:700;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/y9\/r\/jKEcVPZFk-2.gif) no-repeat 50\u0025 50\u0025;border:1px solid #4A4A4A;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f5f6f7;border:1px solid #4A4A4A;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/y2\/r\/onuUJj0tCqE.png);background-position:50\u0025 50\u0025;background-repeat:no-repeat;height:24px;width:24px}\u0040keyframes rotateSpinner{0\u0025{transform:rotate(0)}to{transform:rotate(360deg)}}\n\n.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100\u0025}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100\u0025}\n","components":["css:fb.css.base","css:fb.css.dialog","css:fb.css.iframewidget"]});__d("JSSDKRuntimeConfig",[],{"locale":"en_US","revision":"1045418364","rtl":false,"sdkab":null,"sdkns":"","sdkurl":"https:\/\/connect.facebook.net\/en_US\/sdk\/debug.js","scribeurl":"https:\/\/www.facebook.com\/platform\/scribe_endpoint.php\/"});__d("JSSDKXDConfig",[],{"XXdUrl":"\/x\/connect\/xd_arbiter\/?version=46","useCdn":true});__d("UrlMapConfig",[],{"www":"www.facebook.com","m":"m.facebook.com","business":"business.facebook.com","api":"api.facebook.com","api_read":"api-read.facebook.com","graph":"graph.facebook.com","an":"an.facebook.com","oauth":"oauth.facebook.com","fbcdn":"static.xx.fbcdn.net","cdn":"staticxx.facebook.com","graph_facebook":"graph.facebook.com","graph_gaming":"graph.fb.gg","graph_instagram":"graph.instagram.com","www_instagram":"www.instagram.com","social_plugin":"socialplugin.facebook.net"});__d("JSSDKShadowCssConfig",[],{"css:fb.shadow.css.fb_login_button":".fb_login_button_container{align-content:center;align-items:center;border:0;color:#fff;display:flex;font-family:Roboto,Freight Sans LF Pro,Helvetica,Arial,Lucida Grande,sans-serif;font-weight:700;margin:auto}.fb-button-main-element{display:flex;flex-wrap:nowrap;overflow:hidden}.fb-iframe-overlay{display:flex}.fb-button-main-element:hover{cursor:pointer}.fb-button-main-element:focus{filter:brightness(80\u0025)}.fb_button_label_element{align-items:center;display:flex;font-weight:700;justify-content:center}.fb_button_label{margin:auto;pointer-events:none}.fb_button_svg_logo{height:1.33em;margin-left:.4em;margin-right:.4em;padding:.065em}.login_fb_logo .f_logo_f{fill:transparent}.single_button_svg_logo{margin-bottom:.08em}\n"});                                                                                                                                     __d("Env",[],function $module_Env(global,require,requireDynamic,requireLazy,module,exports){
+);      __d("cr:1126",[],function(g,r,rd,rl,m,e){m.exports=require("TimeSliceImpl");});__d("cr:986633",[],function(g,r,rd,rl,m,e){m.exports=require("setTimeoutAcrossTransitionsBlue");});__d("cr:7391",[],function(g,r,rd,rl,m,e){m.exports=require("setTimeoutAcrossTransitionsWWW");});__d("cr:6640",[],function(g,r,rd,rl,m,e){m.exports=require("PromiseImpl");});__d("PromiseUsePolyfillSetImmediateGK",[],{"www_always_use_polyfill_setimmediate":false});__d("ImmediateImplementationExperiments",[],{"prefer_message_channel":true});__d("JSSDKCanvasPrefetcherConfig",[],{"enabled":true,"excludedAppIds":[144959615576466,768691303149786,320528941393723],"sampleRate":500});__d("JSSDKConfig",[],{"features":{"allow_non_canvas_app_events":false,"error_handling":{"rate":4},"e2e_ping_tracking":{"rate":0.1},"xd_timeout":{"rate":1,"value":60000},"use_bundle":false,"should_log_response_error":true,"popup_blocker_scribe_logging":{"rate":100},"https_only_enforce_starting":2538809200000,"https_only_learn_more":"https:\/\/developers.facebook.com\/blog\/post\/2018\/06\/08\/enforce-https-facebook-login\/","https_only_scribe_logging":{"rate":1},"log_perf":{"rate":0.001},"use_x_xd":{"rate":100},"cache_auth_response":{"rate":100},"oauth_funnel_logger_version":1,"force_popup_to_canvas_apps_with_id":[],"force_popup_to_all_canvas_app":false,"max_oauth_dialog_retries":{"rate":100,"value":10},"plugin_tags_blacklist":[],"idle_callback_wait_time_ms":3000,"chat_plugin_facade_timeout_ms":8000,"chat_plugin_facade_enabled_pageids":["102493178867330","107331571710078","1032787970130843","107771111665395","261907812360345","101305975654752","275483104252055","101664622285042","112682113428700","271628573687012","385757598521443","100545935690488"],"should_enable_ig_login_status_fetch":true,"log_cookies_usage":{"rate":0.1},"allow_shadow_dom_for_apps_with_id":[520916077950649,152351391599356,132081130190180,468663283258845,409976882430412,189845245141894,360467581347,274266067164],"allow_shadow_dom":true,"use_extended_dialog_path":{"rate":100},"use_oauth_subdomain":{"rate":100},"fedcm_enabled":true}});__d("JSSDKCssConfig",[],{"rules":".fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0px;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:lucida grande,tahoma,verdana,arial,sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:400;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}\u0040keyframes fb_transform{0\u0025{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}\n\n.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0px;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:lucida grande,tahoma,verdana,arial,sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:400;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}\u0040keyframes fb_transform{0\u0025{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}\n\n.fb_dialog{background:#525252b3;position:absolute;top:-10000px;z-index:10001}.fb_dialog_advanced{border-radius:8px;padding:10px}.fb_dialog_content{background:#fff;color:#373737}.fb_dialog_close_icon{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{left:5px;right:auto;top:5px}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:700;margin:0}.fb_dialog_content .dialog_title>span{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/yd\/r\/Cou7n-nqK52.gif) no-repeat 5px 50\u0025;float:left;padding:5px 0 7px 26px}body.fb_hidden{height:100\u0025;left:0;margin:0;overflow:visible;position:absolute;top:-10000px;transform:none;width:100\u0025}.fb_dialog.fb_dialog_mobile.loading{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/ya\/r\/3rhSv5V8j3o.gif) #fff no-repeat 50\u0025 50\u0025;min-height:100\u0025;min-width:100\u0025;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{background:none;height:auto;min-height:initial;min-width:initial;width:auto}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100\u0025}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{clear:both;color:#fff;display:block;font-size:18px;padding-top:20px}#fb-root #fb_dialog_ipad_overlay{background:#0006;inset:0;min-height:100\u0025;position:absolute;width:100\u0025;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_mobile .fb_dialog_iframe{position:sticky;top:0}.fb_dialog_content .dialog_header{background:linear-gradient(from(#738aba),to(#2c4987));border-bottom:1px solid;border-color:#043b87;box-shadow:#fff 0 1px 1px -1px inset;color:#fff;font:700 14px Helvetica,sans-serif;text-overflow:ellipsis;text-shadow:rgba(0,30,84,.296875) 0px -1px 0px;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{height:43px;width:100\u0025}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:linear-gradient(from(#4267B2),to(#2a4887));background-clip:padding-box;border:1px solid #29487d;border-radius:3px;display:inline-block;line-height:18px;margin-top:3px;max-width:85px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{background:none;border:none;color:#fff;font:700 12px Helvetica,sans-serif;margin:2px -12px;padding:2px 6px 3px;text-shadow:rgba(0,30,84,.296875) 0px -1px 0px}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:700;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/y9\/r\/jKEcVPZFk-2.gif) no-repeat 50\u0025 50\u0025;border:1px solid #4A4A4A;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f5f6f7;border:1px solid #4A4A4A;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/y2\/r\/onuUJj0tCqE.png);background-position:50\u0025 50\u0025;background-repeat:no-repeat;height:24px;width:24px}\u0040keyframes rotateSpinner{0\u0025{transform:rotate(0)}to{transform:rotate(360deg)}}\n\n.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100\u0025}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100\u0025}\n","components":["css:fb.css.base","css:fb.css.dialog","css:fb.css.iframewidget"]});__d("JSSDKRuntimeConfig",[],{"locale":"en_US","revision":"1045456189","rtl":false,"sdkab":null,"sdkns":"","sdkurl":"https:\/\/connect.facebook.net\/en_US\/sdk\/debug.js","scribeurl":"https:\/\/www.facebook.com\/platform\/scribe_endpoint.php\/"});__d("JSSDKXDConfig",[],{"XXdUrl":"\/x\/connect\/xd_arbiter\/?version=46","useCdn":true});__d("UrlMapConfig",[],{"www":"www.facebook.com","m":"m.facebook.com","business":"business.facebook.com","api":"api.facebook.com","api_read":"api-read.facebook.com","graph":"graph.facebook.com","an":"an.facebook.com","oauth":"oauth.facebook.com","fbcdn":"static.xx.fbcdn.net","cdn":"staticxx.facebook.com","graph_facebook":"graph.facebook.com","graph_gaming":"graph.fb.gg","graph_instagram":"graph.instagram.com","www_instagram":"www.instagram.com","social_plugin":"socialplugin.facebook.net"});__d("JSSDKShadowCssConfig",[],{"css:fb.shadow.css.fb_login_button":".fb_login_button_container{align-content:center;align-items:center;border:0;color:#fff;display:flex;font-family:Roboto,Freight Sans LF Pro,Helvetica,Arial,Lucida Grande,sans-serif;font-weight:700;margin:auto}.fb-button-main-element{display:flex;flex-wrap:nowrap;overflow:hidden}.fb-iframe-overlay{display:flex}.fb-button-main-element:hover{cursor:pointer}.fb-button-main-element:focus{filter:brightness(80\u0025)}.fb_button_label_element{align-items:center;display:flex;font-weight:700;justify-content:center}.fb_button_label{margin:auto;pointer-events:none}.fb_button_svg_logo{height:1.33em;margin-left:.4em;margin-right:.4em;padding:.065em}.login_fb_logo .f_logo_f{fill:transparent}.single_button_svg_logo{margin-bottom:.08em}\n"});                                                                                                                                     __d("Env",[],function $module_Env(global,require,requireDynamic,requireLazy,module,exports){
 
 var Env=
 
@@ -9062,6 +9062,8 @@ Model;exports["default"]=_default;},98);
 
 
 
+
+
 var ENVIRONMENTS={
 UNKNOWN:0,
 PAGETAB:1,
@@ -9078,6 +9080,12 @@ EnforceHttps:false,
 Environment:ENVIRONMENTS.UNKNOWN,
 FamilyLoginLoaded:false,
 FedCMContext:'signin',
+
+
+
+
+
+FedCMExplicitlySet:false,
 FedCMMode:'active',
 GraphDomain:'',
 Initialized:false,
@@ -9694,1952 +9702,6 @@ provide:provide
 });var _default=
 
 FB;exports["default"]=_default;},98);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 __d("AppUserPropertyAPIBuiltinField",[],function $module_AppUserPropertyAPIBuiltinField(global,require,requireDynamic,requireLazy,module,exports){var _default=
-
-
-
-
-
-
-
-Object.freeze({
-"GENDER":"$gender",
-"CITY":"$city",
-"STATE":"$state",
-"ZIPCODE":"$zipcode",
-"COUNTRY":"$country",
-"LANGUAGE":"$language",
-"CURRENCY":"$currency",
-"INSTALL_SOURCE":"$install_source",
-"USER_TYPE":"$user_type",
-"ACCOUNT_CREATED_TIME":"$account_created_time",
-"APP_ID":"$app_id"
-});exports["default"]=_default;},66);
-                                                                                                                    __d("sdk.AppEvents",["AppUserPropertyAPIBuiltinField","Assert","sdk.Model","sdk.Runtime"],function $module_sdk_AppEvents(global,require,importDefault,importNamespace,requireLazy,module,exports){
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-var EventNames=Object.freeze({
-COMPLETED_REGISTRATION:'fb_mobile_complete_registration',
-VIEWED_CONTENT:'fb_mobile_content_view',
-SEARCHED:'fb_mobile_search',
-RATED:'fb_mobile_rate',
-COMPLETED_TUTORIAL:'fb_mobile_tutorial_completion',
-ADDED_TO_CART:'fb_mobile_add_to_cart',
-ADDED_TO_WISHLIST:'fb_mobile_add_to_wishlist',
-INITIATED_CHECKOUT:'fb_mobile_initiated_checkout',
-ADDED_PAYMENT_INFO:'fb_mobile_add_payment_info',
-ACHIEVED_LEVEL:'fb_mobile_level_achieved',
-UNLOCKED_ACHIEVEMENT:'fb_mobile_achievement_unlocked',
-PAGE_VIEW:'fb_page_view',
-SPENT_CREDITS:'fb_mobile_spent_credits'
-});
-
-
-var HiddenEventNames=Object.freeze({
-ACTIVATED_APP:'fb_mobile_activate_app',
-PURCHASED:'fb_mobile_purchase'
-});
-
-var ParameterNames=Object.freeze({
-APP_USER_ID:'_app_user_id',
-APP_VERSION:'_appVersion',
-CURRENCY:'fb_currency',
-REGISTRATION_METHOD:'fb_registration_method',
-CONTENT_TYPE:'fb_content_type',
-CONTENT_ID:'fb_content_id',
-SEARCH_STRING:'fb_search_string',
-SUCCESS:'fb_success',
-MAX_RATING_VALUE:'fb_max_rating_value',
-PAYMENT_INFO_AVAILABLE:'fb_payment_info_available',
-NUM_ITEMS:'fb_num_items',
-LEVEL:'fb_level',
-DESCRIPTION:'fb_description'
-});
-
-var EVENT_NAME_REGEX=/^[0-9a-zA-Z_][0-9a-zA-Z _-]{0,39}$/;
-var MAX_EVENT_NAME_LENGTH=40;
-var USER_PROPERTIES_KEY_REGEX=EVENT_NAME_REGEX;
-var MAX_USER_PROPERTIES_KEY_LENGTH=MAX_EVENT_NAME_LENGTH;
-var MAX_USER_ID_LENGTH=100;
-var MAX_APP_VERSION_LENGTH=100;
-var MAX_USER_PROPERTIES=100;
-var MAX_USER_PROPERTIES_VALUE_LENGTH=100;
-var PREDEFINED_USER_PROPS=ES("Object","values",false,importDefault("AppUserPropertyAPIBuiltinField"));_c=PREDEFINED_USER_PROPS;
-
-var AppProps=new(importDefault("sdk.Model"))({
-UserID:'',
-Version:''
-});
-
-
-function logEvent(
-_eventName,
-_valueToSum,
-_params)
-{}
-
-function logPurchase(
-_purchaseAmount,
-_currency,
-_params)
-{}
-
-function activateApp(){
-logEvent(HiddenEventNames.ACTIVATED_APP);
-}
-
-function logPageView(){
-logEvent(EventNames.PAGE_VIEW);
-}
-
-function setUserID(userID){
-assertValidUserID(userID);
-AppProps.setUserID(userID);
-}
-
-function getUserID(){
-return AppProps.getUserID();
-}
-
-function clearUserID(){
-AppProps.setUserID('');
-}
-
-function setAppVersion(appVersion){
-assertValidAppVersion(appVersion);
-AppProps.setVersion(appVersion);
-}
-
-function getAppVersion(){
-return AppProps.getVersion();
-}
-
-function clearAppVersion(){
-AppProps.setVersion('');
-}
-
-function updateUserProperties(
-_params,
-cb)
-{
-if(cb){
-cb(null);
-}
-}
-
-
-function assertGetValidAppID(){
-var appID=importDefault("sdk.Runtime").getClientID();
-importDefault("Assert").isTrue(
-typeof appID==='string'&&appID.length>0,
-'You need to call FB.init() with App ID first.'
-);
-return appID;
-}
-
-function assertValidUserProperties(params)
-
-
-{
-importDefault("Assert").isTrue(
-Object.keys(params).length<=MAX_USER_PROPERTIES,
-'The total number of user properties cannot exceed '+
-MAX_USER_PROPERTIES+
-'.'
-);
-for(var _key in params){
-importDefault("Assert").isTrue(
-USER_PROPERTIES_KEY_REGEX.test(_key)||ES(
-PREDEFINED_USER_PROPS,"includes",true,_key),
-'Invalid user properties key name: '+
-_key+
-'. '+
-'It must be between 1 and '+
-MAX_USER_PROPERTIES_KEY_LENGTH+
-' '+
-'characters, and must contain only alphanumerics, _, - or spaces, '+
-'starting with alphanumeric or _. '+
-'Or, it must be a pre-defined user property'
-);
-importDefault("Assert").isTrue(
-params[_key].toString().length<=MAX_USER_PROPERTIES_VALUE_LENGTH,
-'Invalid user properties value: '+
-params[_key]+
-'. '+
-'It must be no longer than '+
-MAX_USER_PROPERTIES_VALUE_LENGTH+
-' characters.'
-);
-}
-}
-
-
-function assertValidEventName(eventName){
-importDefault("Assert").isTrue(
-EVENT_NAME_REGEX.test(eventName),
-'Invalid event name: '+
-eventName+
-'. '+
-'It must be between 1 and '+
-MAX_EVENT_NAME_LENGTH+
-' characters, '+
-'and must be contain only alphanumerics, _, - or spaces, '+
-'starting with alphanumeric or _.'
-);
-}
-
-function assertValidAppVersion(appVersion){
-importDefault("Assert").isTrue(
-appVersion.length<=MAX_APP_VERSION_LENGTH,
-'Invalid app version: '+
-appVersion+
-'. '+
-'It must be no longer than '+
-MAX_APP_VERSION_LENGTH+
-' characters.'
-);
-}
-
-function assertValidUserID(userID){
-importDefault("Assert").isTrue(
-userID.length!==0,
-'User ID must be set before updateUserProperties can be called.'
-);
-importDefault("Assert").isTrue(
-userID.length<=MAX_USER_ID_LENGTH,
-'Invalid user ID: '+
-userID+
-'. '+
-'It must be no longer than '+
-MAX_USER_ID_LENGTH+
-' characters.'
-);
-}
-
-var AppEvents=Object.freeze({
-logEvent:logEvent,
-logPurchase:logPurchase,
-activateApp:activateApp,
-logPageView:logPageView,
-setUserID:setUserID,
-getUserID:getUserID,
-clearUserID:clearUserID,
-updateUserProperties:updateUserProperties,
-setAppVersion:setAppVersion,
-getAppVersion:getAppVersion,
-clearAppVersion:clearAppVersion,
-EventNames:EventNames,
-ParameterNames:ParameterNames
-});var _c;$RefreshReg$(_c,"PREDEFINED_USER_PROPS");exports.assertGetValidAppID=assertGetValidAppID;exports.assertValidUserProperties=assertValidUserProperties;exports.assertValidEventName=assertValidEventName;exports.assertValidAppVersion=assertValidAppVersion;exports.assertValidUserID=assertValidUserID;exports.AppEvents=AppEvents;},98);
-                                                                                                                    __d("sdk.Event",[],function $module_sdk_Event(global,require,requireDynamic,requireLazy,module,exports){
-
-'use strict';
-
-var SUBSCRIBE='event.subscribe';
-
-var UNSUBSCRIBE='event.unsubscribe';
-
-var subscribersMap;
-
-
-
-
-
-
-
-function subscribers(){
-
-
-
-
-if(!subscribersMap){
-subscribersMap={};
-}
-return subscribersMap;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function subscribe(name,cb){
-var subs=subscribers();
-
-if(!subs[name]){
-subs[name]=[cb];
-}else{
-if(subs[name].indexOf(cb)===-1){
-subs[name].push(cb);
-}
-}
-if(name!=SUBSCRIBE&&name!=UNSUBSCRIBE){
-fire(SUBSCRIBE,name,subs[name]);
-}
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function unsubscribe(name,cb){
-var subs=subscribers()[name];
-if(subs){
-subs.forEach(function subs_forEach_$0(value,key){
-if(value===cb){
-subs.splice(key,1);
-}
-});
-}
-if(name!=SUBSCRIBE&&name!=UNSUBSCRIBE){
-fire(UNSUBSCRIBE,name,subs);
-}
-}
-
-
-
-
-
-
-
-
-
-
-
-function monitor(name,callback){var _arguments=arguments;
-if(!callback()){
-var _fn=function fn(){
-if(callback.apply(callback,_arguments)){
-unsubscribe(name,_fn);
-}
-};
-
-subscribe(name,_fn);
-}
-}
-
-
-
-
-
-
-
-
-
-
-function clear(name){
-delete subscribers()[name];
-}
-
-
-
-
-
-
-
-function fire(name){for(var _len=arguments.length,args=new Array(_len>1?_len-1:0),_key=1;_key<_len;_key++){args[_key-1]=arguments[_key];}
-var subs=subscribers()[name];
-
-if(subs){
-subs.forEach(function subs_forEach_$0(sub){
-
-
-if(sub){
-sub.apply(this,args);
-}
-});
-}
-}exports.SUBSCRIBE=SUBSCRIBE;exports.UNSUBSCRIBE=UNSUBSCRIBE;exports.subscribers=subscribers;exports.subscribe=subscribe;exports.unsubscribe=unsubscribe;exports.monitor=monitor;exports.clear=clear;exports.fire=fire;},66);
-                                                                                                                    __d("sdk.AppEvents-public",["Assert","FB","sdk.AppEvents","sdk.Event","sdk.Runtime"],function $module_sdk_AppEvents_public(global,require,importDefault,importNamespace,requireLazy,module,exports){
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function init(){
-importNamespace("sdk.Event").subscribe('init:post',function Event_subscribe_$1(options){
-if(importDefault("sdk.Runtime").getClientID()){
-if(options.autoLogAppEvents!==undefined){
-importDefault("Assert").isBoolean(
-options.autoLogAppEvents,
-'Type of property autoLogAppEvents must be boolean'
-);
-importDefault("sdk.Runtime").setAutoLogAppEvents(options.autoLogAppEvents);
-}
-if(importDefault("sdk.Runtime").getAutoLogAppEvents()){
-importNamespace("sdk.AppEvents").AppEvents.logPageView();
-}
-}
-});
-
-importDefault("FB").provide('AppEvents',importNamespace("sdk.AppEvents").AppEvents);
-}
-
-var SDKAppEvents={init:init};var _default=
-
-SDKAppEvents;exports["default"]=_default;},98);
-                                                                                                                             __d("sdk.AuthState",["sdk.AuthUtils"],(function $module_sdk_AuthState(global,require,importDefault,importNamespace,requireLazy,module,exports){
-
-
-
-
-
-
-
-'use strict';
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-var authState=initState();
-
-
-function initState(){
-var initialMixedState={
-igAuthResponse:null,
-fbAuthResponse:null,
-fbLoginStatus:null,
-igLoginStatus:null
-};
-return{
-currentAuthResponse:null,
-shouldSecondLoginRequestTimeOut:false,
-mixedAuthState:initialMixedState,
-loadState:null,
-timer:null,
-currentTimeOut:importNamespace("sdk.AuthUtils").AuthConstants.CONNECTED_REVALIDATE_PERIOD
-};
-}
-
-function getState(){
-
-return babelHelpers["extends"]({},initState(),authState);
-}
-
-function setState(newState){
-authState=babelHelpers["extends"]({},initState(),authState,newState);
-}
-
-var State={
-getState:getState,
-setState:setState
-};var _default=
-
-State;exports["default"]=_default;}),98);
-                                                                                                                    __d("sdk.Cookie",["QueryString","sdk.Runtime","sdk.Scribe","sdk.feature"],function $module_sdk_Cookie(global,require,importDefault,importNamespace,requireLazy,module,exports){
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-var domain=null;
-
-var JSSDK_COOKIE_PREFIX=[
-'fblo_',
-'fbsr_',
-'fbm_'];
-
-
-
-
-
-
-
-
-
-
-function setRaw(
-startingPrefix,
-val,
-ts,
-secure)
-{
-if(!ES(JSSDK_COOKIE_PREFIX,"includes",true,startingPrefix)){
-importNamespace("sdk.Scribe").log('jssdk_error',{
-appId:importDefault("sdk.Runtime").getClientID(),
-error:'unknown_cookie_prefix.'+startingPrefix
-});
-if(importDefault("sdk.feature")('limit_unknown_cookie_setting',false)){
-return;
-}
-}
-
-var prefix=startingPrefix+importDefault("sdk.Runtime").getClientID();
-
-
-var secureFlag=secure?'; SameSite=None;Secure':'';
-var useDomain=domain!==null&&domain!=='.';
-
-if(useDomain){
-
-document.cookie=
-prefix+'=; expires=Wed, 04 Feb 2004 08:00:00 GMT'+secureFlag;
-
-document.cookie=
-prefix+
-'=; expires=Wed, 04 Feb 2004 08:00:00 GMT;'+
-'domain='+
-location.hostname+
-secureFlag;
-}
-
-var expires=new Date(ts).toUTCString();
-document.cookie=
-prefix+
-'='+
-val+(
-val&&ts===0?'':'; expires='+expires)+
-'; path=/'+(
-useDomain?'; domain='+(domain!=null?domain:''):'')+
-secureFlag;
-}
-
-function getRaw(startingPrefix){
-var prefix=startingPrefix+importDefault("sdk.Runtime").getClientID();
-var regExp=new RegExp('\\b'+prefix+'=([^;]*)\\b');
-var matches=document.cookie.match(regExp);
-if(matches==null){
-return null;
-}else{
-return matches[1];
-}
-}
-
-function setDomain(val){
-domain=val;
-
-var meta=importDefault("QueryString").encode({
-base_domain:domain!==null&&domain!=='.'?domain:''
-});
-var expiration=new Date();
-expiration.setFullYear(expiration.getFullYear()+1);
-setRaw('fbm_',meta,expiration.getTime(),true);
-}
-
-function getDomain(){
-return domain;
-}
-
-
-
-
-function loadMeta(){
-var cookie=getRaw('fbm_');
-if(cookie!=null&&domain===null){
-
-var meta=importDefault("QueryString").decode(cookie);
-
-domain=meta.base_domain;
-return{base_domain:domain};
-}
-return null;
-}
-
-
-
-
-
-
-function loadSignedRequest(){
-return getRaw('fbsr_');
-}
-
-
-
-
-
-
-
-
-
-
-function setSignedRequestCookie(
-signedRequest,
-expiration)
-{
-if(signedRequest===''){
-throw new Error('Value passed to Cookie.setSignedRequestCookie was empty.');
-}
-setRaw('fbsr_',signedRequest,expiration,true);
-}
-
-
-
-
-
-function clearSignedRequestCookie(){
-loadMeta();
-setRaw('fbsr_','',0,true);
-}exports.setRaw=setRaw;exports.getRaw=getRaw;exports.setDomain=setDomain;exports.getDomain=getDomain;exports.loadMeta=loadMeta;exports.loadSignedRequest=loadSignedRequest;exports.setSignedRequestCookie=setSignedRequestCookie;exports.clearSignedRequestCookie=clearSignedRequestCookie;},98);
-                                                                                                                    __d("sdk.Observable",[],function $module_sdk_Observable(global,require,requireDynamic,requireLazy,module,exports){var
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Observable=
-
-
-function Observable(){var _this=this;this.
-
-
-
-getSubscribers=
-function(toWhat){
-return(
-_this.$Observable$p_observableEvents[toWhat]||(_this.$Observable$p_observableEvents[toWhat]=[]));
-
-};this.
-clearSubscribers=function(toWhat){
-if(toWhat){
-_this.$Observable$p_observableEvents[toWhat]=[];
-}
-};this.
-subscribe=function(
-toWhat,
-withWhat)
-{
-var list=_this.getSubscribers(toWhat);
-list.push(withWhat);
-};this.
-unsubscribe=function(
-toWhat,
-withWhat)
-{
-var list=_this.getSubscribers(toWhat);
-for(var i=0;i<list.length;i++){
-if(list[i]===withWhat){
-list.splice(i,1);
-break;
-}
-}
-};this.
-inform=function(what,withWhat){
-var list=_this.getSubscribers(what);var _loop=function _loop()
-{
-if(__DEV__){
-list[i].call(_this,withWhat);
-}else{
-try{
-list[i].call(_this,withWhat);
-}catch(e){
-
-
-window.setTimeout(function window_setTimeout_$0(){
-throw e;
-},0);
-}
-}
-};for(var i=0;i<list.length;i++){_loop();}
-};this.$Observable$p_observableEvents={};};exports.Observable=Observable;},66);
-                                                                                                                             __d("sdk.AuthUtils",["sdk.AuthState","sdk.Cookie","sdk.Observable","sdk.Runtime"],function $module_sdk_AuthUtils(global,require,importDefault,importNamespace,requireLazy,module,exports){
-
-
-
-
-
-'use strict';
-
-
-
-
-
-
-
-
-var SEC_MS=1000;
-var MIN_MS=60*SEC_MS;
-var HOUR_MS=60*MIN_MS;
-var DAY_MS=24*HOUR_MS;
-var YEAR_MS=365*DAY_MS;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function isInstagramLogin(authResponse){
-if(authResponse!=null&&authResponse.graphDomain!=null){
-return authResponse.graphDomain==='instagram';
-}
-return false;
-}
-
-function setBaseDomain(baseDomain){
-if(importDefault("sdk.Runtime").getUseCookie()){
-if(importNamespace("sdk.Cookie").getDomain()==null){
-
-
-
-
-importNamespace("sdk.Cookie").setDomain('.'+baseDomain);
-}
-}
-}
-
-function resetFBAndIGLoginStatus(){
-var mixedAuthState={
-fbAuthResponse:null,
-fbLoginStatus:null,
-igAuthResponse:null,
-igLoginStatus:null
-};
-var shouldSecondLoginRequestTimeOut=false;
-importDefault("sdk.AuthState").setState({mixedAuthState:mixedAuthState,shouldSecondLoginRequestTimeOut:shouldSecondLoginRequestTimeOut});
-}
-
-function setGraphDomain(graphDomain){
-
-
-if(graphDomain!=null){
-importDefault("sdk.Runtime").setGraphDomain(graphDomain);
-
-
-if(graphDomain==='instagram'){
-importDefault("sdk.Runtime").setIsVersioned(false);
-}
-}else{
-importDefault("sdk.Runtime").setGraphDomain('');
-}
-}
-
-function setLogoutState(){
-importNamespace("sdk.Cookie").setRaw(
-AuthConstants.LOGOUT_COOKIE_PREFIX,
-'y',
-Date.now()+YEAR_MS,
-false
-);
-}
-
-function setRevalidateTimer(
-timeout)
-{if(timeout===void 0){timeout=AuthConstants.CONNECTED_REVALIDATE_PERIOD;}
-var currentTimer=importDefault("sdk.AuthState").getState().timer;
-if(currentTimer){
-window.clearTimeout(currentTimer);
-}
-var timer=window.setTimeout(function window_setTimeout_$0(){
-AuthInternalEvent.inform(AuthConstants.REVALIDATE_TIMER_TIMEOUT);
-},timeout);
-importDefault("sdk.AuthState").setState({timer:timer});
-importDefault("sdk.AuthState").setState({currentTimeOut:timeout});
-}
-
-function removeLogoutState(){
-importNamespace("sdk.Cookie").setRaw(AuthConstants.LOGOUT_COOKIE_PREFIX,'',0,false);
-importNamespace("sdk.Cookie").setRaw(AuthConstants.LOGOUT_COOKIE_PREFIX,'',0,true);
-}
-
-var observable=new(importNamespace("sdk.Observable").Observable)();
-
-function inform(key,value){
-observable.inform(key,value);
-}
-
-function subscribe(key,func){
-observable.subscribe(key,func);
-}
-
-function clearSubscribers(key){
-observable.clearSubscribers(key);
-}
-
-function unsubscribe(key,func){
-observable.unsubscribe(key,func);
-}
-
-function getSubscribers(key){
-return observable.getSubscribers(key);
-}
-
-
-
-
-
-function getMobileOperatingSystem(){
-
-
-var nav=navigator!==undefined&&navigator||null;
-var ua=
-nav&&(nav.userAgent||nav.vendor||nav.platform)||null;
-
-if(ua==null||typeof ua!=='string'){
-return'unknown';
-}
-
-var userAgent=ua.toLowerCase();
-
-
-if(ES(userAgent,"includes",true,'windows phone')){
-return'windows phone';
-}
-
-
-if(ES(userAgent,"includes",true,'android')){
-return'android';
-}
-
-
-if(ES(userAgent,"includes",true,'windows')){
-return'windows';
-}
-
-
-
-var isIOSUA=/\b(iPad|iPhone|iPod)\b/i.test(ua);
-var isIPadOS13Plus=
-!isIOSUA&&
-nav!=null&&(
-nav.platform==='MacIntel'||nav.platform==='MacPPC')&&
-window!==undefined&&
-'ontouchend'in window;
-
-if(isIOSUA||isIPadOS13Plus){
-return'ios';
-}
-
-return'unknown';
-}
-var AuthInternalEvent={
-inform:inform,
-subscribe:subscribe,
-clearSubscribers:clearSubscribers,
-unsubscribe:unsubscribe,
-getSubscribers:getSubscribers
-};
-
-var AuthConstants={
-LOCAL_STORAGE_TOKEN_PREFIX:'fblst_',
-IG_LOCAL_STORAGE_TOKEN_PREFIX:'iglst_',
-SESSION_STORAGE_LOGIN_STATUS_PREFIX:'fbssls_',
-CONNECTED_REVALIDATE_PERIOD:MIN_MS*90,
-DEFAULT_REVALIDATE_PERIOD:DAY_MS,
-LOGOUT_COOKIE_PREFIX:'fblo_',
-CORS_FETCH_COMPLETED_EVENT:'cors_fetch_completed',
-XFOA_FINAL_RESPONSE_EVENT:'xfoa_final_response',
-LOAD_XFOA_SUBSCRIBERS:'load_xfoa_subscribers',
-REVALIDATE_TIMER_TIMEOUT:'revalidate_timer_timeout'
-};exports.isInstagramLogin=isInstagramLogin;exports.setBaseDomain=setBaseDomain;exports.resetFBAndIGLoginStatus=resetFBAndIGLoginStatus;exports.setGraphDomain=setGraphDomain;exports.setLogoutState=setLogoutState;exports.setRevalidateTimer=setRevalidateTimer;exports.removeLogoutState=removeLogoutState;exports.getMobileOperatingSystem=getMobileOperatingSystem;exports.AuthInternalEvent=AuthInternalEvent;exports.AuthConstants=AuthConstants;},98);
-                                                                                                                    __d("sdk.WebStorage",["Log"],(function $module_sdk_WebStorage(global,require,importDefault,importNamespace,requireLazy,module,exports){
-
-
-
-
-
-
-
-
-
-
-'use strict';
-
-
-
-function getLocalStorage(){
-try{
-
-return window.localStorage;
-}catch(_unused){
-importNamespace("Log").warn('Failed to get local storage');
-}
-return null;
-}
-
-
-
-
-
-
-function getLocalStorageForRead(){
-try{
-
-var storage=window.localStorage;
-
-
-
-if(storage){
-var key='__test__'+Date.now();
-storage.setItem(key,'');
-storage.removeItem(key);
-}
-return storage;
-}catch(_unused2){
-importNamespace("Log").warn('Failed to get local storage');
-}
-return null;
-}
-
-function getSessionStorage(){
-try{
-
-return window.sessionStorage;
-}catch(_unused3){
-importNamespace("Log").warn('Failed to get session storage');
-}
-return null;
-}
-
-
-
-
-
-
-function getSessionStorageForRead(){
-try{
-
-var storage=window.sessionStorage;
-
-
-
-if(storage){
-var key='__test__'+Date.now();
-storage.setItem(key,'');
-storage.removeItem(key);
-}
-return storage;
-}catch(_unused4){
-importNamespace("Log").warn('Failed to get session storage');
-}
-return null;
-}
-
-
-
-
-function setItemGuarded(
-storage,
-key,
-value)
-{
-if(storage==null){
-return;
-}
-try{
-storage.setItem(key,value);
-}catch(_unused5){
-
-}
-}exports.getLocalStorage=getLocalStorage;exports.getLocalStorageForRead=getLocalStorageForRead;exports.getSessionStorage=getSessionStorage;exports.getSessionStorageForRead=getSessionStorageForRead;exports.setItemGuarded=setItemGuarded;}),98);
-                                                                                                                             __d("sdk.AuthStorageUtils",["sdk.AuthUtils","sdk.Runtime","sdk.WebStorage","sdk.feature"],function $module_sdk_AuthStorageUtils(global,require,importDefault,importNamespace,requireLazy,module,exports){
-
-
-
-
-
-
-
-
-
-
-
-
-'use strict';
-
-
-
-
-
-
-
-
-function setLocalStorageToken(
-authResponse,
-longLivedToken)
-{
-if(
-shouldEnableAuthStorage()&&
-longLivedToken!=null&&
-longLivedToken!=='')
-{
-var localStorage=importNamespace("sdk.WebStorage").getLocalStorage();
-if(localStorage){
-var token_prefix=importNamespace("sdk.AuthUtils").isInstagramLogin(authResponse)?
-importNamespace("sdk.AuthUtils").AuthConstants.IG_LOCAL_STORAGE_TOKEN_PREFIX:
-importNamespace("sdk.AuthUtils").AuthConstants.LOCAL_STORAGE_TOKEN_PREFIX;
-localStorage.setItem(
-token_prefix+importDefault("sdk.Runtime").getClientID(),
-longLivedToken
-);
-}
-}
-}
-
-function removeLocalStorageToken(loginSource){
-var localStorage=importNamespace("sdk.WebStorage").getLocalStorage();
-if(localStorage){
-if(loginSource==='instagram'){
-localStorage.removeItem(
-importNamespace("sdk.AuthUtils").AuthConstants.IG_LOCAL_STORAGE_TOKEN_PREFIX+importDefault("sdk.Runtime").getClientID()
-);
-}else{
-localStorage.removeItem(
-importNamespace("sdk.AuthUtils").AuthConstants.LOCAL_STORAGE_TOKEN_PREFIX+importDefault("sdk.Runtime").getClientID()
-);
-}
-}
-}
-
-function setSessionStorage(authResponse,status){
-if(!shouldEnableAuthStorage()){
-return;
-}
-var sessionStorage=importNamespace("sdk.WebStorage").getSessionStorage();
-if(sessionStorage){
-sessionStorage.setItem(
-importNamespace("sdk.AuthUtils").AuthConstants.SESSION_STORAGE_LOGIN_STATUS_PREFIX+importDefault("sdk.Runtime").getClientID(),ES("JSON","stringify",false,
-{
-authResponse:authResponse,
-status:status,
-expiresAt:
-authResponse!=null&&
-authResponse.expiresIn&&
-authResponse.expiresIn!==0?
-Date.now()+
-Math.min(
-authResponse.expiresIn*0.75*1000,
-importNamespace("sdk.AuthUtils").AuthConstants.CONNECTED_REVALIDATE_PERIOD
-):
-Date.now()+importNamespace("sdk.AuthUtils").AuthConstants.DEFAULT_REVALIDATE_PERIOD
-})
-);
-}
-}
-
-function shouldEnableAuthStorage(){
-return(
-importDefault("sdk.feature")('cache_auth_response',false)&&
-importDefault("sdk.Runtime").getUseLocalStorage()&&
-location.protocol==='https:');
-
-}
-
-function getLocalStorageTokens(){
-var fbToken=null;
-var igToken=null;
-if(importDefault("sdk.Runtime").getUseLocalStorage()){
-var localStorage=importNamespace("sdk.WebStorage").getLocalStorageForRead();
-if(localStorage){
-fbToken=localStorage.getItem(
-importNamespace("sdk.AuthUtils").AuthConstants.LOCAL_STORAGE_TOKEN_PREFIX+importDefault("sdk.Runtime").getClientID()
-);
-igToken=localStorage.getItem(
-importNamespace("sdk.AuthUtils").AuthConstants.IG_LOCAL_STORAGE_TOKEN_PREFIX+importDefault("sdk.Runtime").getClientID()
-);
-}
-}
-return{
-fbToken:fbToken,
-igToken:igToken
-};
-}
-
-function getCachedResponse(){
-if(!shouldEnableAuthStorage()){
-return null;
-}
-var sessionStorage=importNamespace("sdk.WebStorage").getSessionStorageForRead();
-if(sessionStorage){
-var rawCachedResponse=sessionStorage.getItem(
-importNamespace("sdk.AuthUtils").AuthConstants.SESSION_STORAGE_LOGIN_STATUS_PREFIX+importDefault("sdk.Runtime").getClientID()
-);
-if(rawCachedResponse!=null){
-try{
-var cachedResponse=ES("JSON","parse",false,rawCachedResponse);
-if(
-cachedResponse!=null&&
-cachedResponse.expiresAt!=null&&
-cachedResponse.expiresAt>Date.now())
-{
-return cachedResponse;
-}
-}catch(_unused){
-
-return null;
-}
-}
-}
-return null;
-}exports.setLocalStorageToken=setLocalStorageToken;exports.removeLocalStorageToken=removeLocalStorageToken;exports.setSessionStorage=setSessionStorage;exports.getLocalStorageTokens=getLocalStorageTokens;exports.getCachedResponse=getCachedResponse;},98);
-                                                                                                                    __d("Base64",[],function $module_Base64(global,require,requireDynamic,requireLazy,module,exports){
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-'use strict';
-
-var en=
-'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
-function en3(c){
-var num=
-c.charCodeAt(0)<<16|c.charCodeAt(1)<<8|c.charCodeAt(2);
-return String.fromCharCode(
-en.charCodeAt(num>>>18),
-en.charCodeAt(num>>>12&63),
-en.charCodeAt(num>>>6&63),
-en.charCodeAt(num&63)
-);
-}
-
-
-
-
-var de=
-'>___?456789:;<=_______'+
-'\x00\x01\x02\x03\x04\x05\x06\x07\b\t\n\x0b\f\r\x0e\x0f\x10\x11\x12\x13\x14\x15\x16\x17\x18\x19'+
-'______\x1a\x1b\x1c\x1d\x1e\x1f !"#$%&\'()*+,-./0123';
-function de4(c){
-var num=
-de.charCodeAt(c.charCodeAt(0)-43)<<18|
-de.charCodeAt(c.charCodeAt(1)-43)<<12|
-de.charCodeAt(c.charCodeAt(2)-43)<<6|
-de.charCodeAt(c.charCodeAt(3)-43);
-return String.fromCharCode(num>>>16,num>>>8&255,num&255);
-}
-
-var Base64=
-
-
-
-
-
-
-
-
-
-
-
-
-{
-encode:function encode(input){
-
-var str=unescape(encodeURI(input));
-var i=(str.length+2)%3;
-str=(str+'\0\0'.slice(i)).replace(/[\s\S]{3}/g,en3);
-return str.slice(0,str.length+i-2)+'=='.slice(i);
-},
-decode:function decode(input){
-
-var str=input.replace(/[^A-Za-z0-9+\/]/g,'');
-var i=str.length+3&3;
-str=(str+'AAA'.slice(i)).replace(/..../g,de4);
-str=str.slice(0,str.length+i-3);
-
-try{
-return decodeURIComponent(escape(str));
-}catch(_unused){
-var e=new Error('Not valid UTF-8');
-void e.stack;
-throw e;
-}
-},
-encodeObject:function encodeObject(
-obj)
-
-{
-return Base64.encode(ES("JSON","stringify",false,obj));
-},
-decodeObject:function decodeObject(b64){
-return ES("JSON","parse",false,Base64.decode(b64));
-},
-
-encodeNums:function encodeNums(l){
-return String.fromCharCode.apply(
-String,
-l.map(function l_map_$0(val){
-return en.charCodeAt(
-(val|-(val>63?1:0))&-(val>0?1:0)&63
-);
-})
-);
-}
-};var _default=
-
-Base64;exports["default"]=_default;},66);
-                                                                                                                    __d("sdk.SignedRequest",["Base64"],function $module_sdk_SignedRequest(global,require,importDefault,importNamespace,requireLazy,module,exports){
-
-
-
-
-
-
-
-
-
-
-
-
-function parse(signed_request){
-if(signed_request==null||signed_request===''){
-return null;
-}
-
-
-var payload=signed_request.
-split('.',2)[1].
-replace(/\-/g,'+').
-replace(/\_/g,'/');
-return importDefault("Base64").decodeObject(payload);
-}exports.parse=parse;},98);
-                                                                                                                    __d("Miny",[],function $module_Miny(global,require,requireDynamic,requireLazy,module,exports){
-
-
-
-
-
-
-
-
-
-var MAGIC='Miny1';
-var LO='wxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-_'.split('');
-
-var Miny={
-
-encode:function encode(s){var _s$match;
-if(/^$|[~\\]|__proto__/.test(s)){
-return s;
-}
-
-
-var parts=(_s$match=s.match(/\w+|\W+/g))!=null?_s$match:[];
-
-var i;
-
-
-var dict=new Map();
-for(i=0;i<parts.length;i++){var _dict$get;
-dict.set(parts[i],((_dict$get=dict.get(parts[i]))!=null?_dict$get:0)+1);
-}
-
-
-
-var keys=ES("Array","from",false,dict.keys());
-keys.sort(function keys_sort_$0(a,b){return Number(dict.get(b))-Number(dict.get(a));});
-
-
-for(i=0;i<keys.length;i++){
-var n=(i-i%32)/32;
-dict.set(keys[i],n?n.toString(32)+LO[i%32]:LO[i%32]);
-}
-
-
-var codes='';
-for(i=0;i<parts.length;i++){
-codes+=String(dict.get(parts[i]));
-}
-
-keys.unshift(MAGIC,String(keys.length));
-keys.push(codes);
-return keys.join('~');
-}
-};var _default=
-
-Miny;exports["default"]=_default;},66);
-                                                                                                                    __d("getBlankIframeSrc",["sdk.UA"],(function $module_getBlankIframeSrc(global,require,importDefault,importNamespace,requireLazy,module,exports){
-
-
-
-
-
-
-
-
-
-
-function getBlankIframeSrc(){
-return importDefault("sdk.UA").ie()<10?'javascript:false':'about:blank';
-}exports["default"]=getBlankIframeSrc;}),98);
-                                                                                                                    __d("insertIframe",["GlobalCallback","getBlankIframeSrc","guid"],(function $module_insertIframe(global,require,importDefault,importNamespace,requireLazy,module,exports){
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function insertIframe(opts)
-
-
-
-
-
-
-
-
-
-
-{
-
-
-
-var id=opts.id!=null?opts.id:importDefault("guid")();
-var name=opts.name!=null?opts.name:importDefault("guid")();
-
-
-
-
-
-
-var srcSet=false;
-var onloadDone=false;
-var callback=function callback(){
-if(srcSet&&!onloadDone){
-onloadDone=true;
-if(typeof opts.onload==='function'){
-opts.onload(opts.root.firstChild);
-}
-}
-};
-var globalCallback=importNamespace("GlobalCallback").create(callback);
-
-
-
-
-
-if(document.attachEvent){
-
-
-var html=
-'<iframe'+
-' id="'+
-id+
-'"'+
-' name="'+
-name+
-'"'+(
-opts.title!=null?' title="'+opts.title+'"':'')+(
-opts.className!=null?' class="'+opts.className+'"':'')+
-' style="border:none;'+(
-opts.width!=null?'width:'+opts.width+'px;':'')+(
-opts.height!=null?'height:'+opts.height+'px;':'')+
-'"'+
-' src="'+
-importDefault("getBlankIframeSrc")()+
-'"'+
-' frameborder="0"'+
-' scrolling="no"'+
-' allowtransparency="true"'+
-' onload="'+
-globalCallback+
-'()"'+
-'></iframe>';
-
-
-
-
-
-
-
-
-
-opts.root.innerHTML=
-'<iframe src="'+
-importDefault("getBlankIframeSrc")()+
-'"'+
-' frameborder="0"'+
-' scrolling="no"'+
-' style="height:1px"></iframe>';
-
-
-srcSet=true;
-
-
-
-
-
-
-window.setTimeout(function window_setTimeout_$0(){
-opts.root.innerHTML=html;
-var iframe=opts.root.firstChild;
-if(iframe instanceof HTMLIFrameElement){
-iframe.src=opts.url;
-}
-typeof opts.onInsert==='function'&&
-opts.onInsert(opts.root.firstChild);
-},0);
-}else{
-
-
-
-var node=document.createElement('iframe');
-node.id=id;
-node.name=name;
-node.onload=callback;
-node.scrolling='no';
-node.style.border='none';
-node.style.overflow='hidden';
-if(opts.title!=null){
-node.title=opts.title;
-}
-if(opts.className!=null){
-node.className=opts.className;
-}
-if(opts.height!==undefined){
-node.style.height=opts.height+'px';
-}
-if(opts.width!==undefined){
-if(opts.width==='100%'){
-node.style.width=opts.width;
-}else{
-node.style.width=opts.width+'px';
-}
-}
-opts.root.appendChild(node);
-
-
-srcSet=true;
-
-node.src=opts.url;
-opts.onInsert&&opts.onInsert(node);
-}
-}exports["default"]=insertIframe;}),98);
-                                                                                                                                                                                                                                                                     __d("PromiseAnnotate",[],function $module_PromiseAnnotate(global,require,requireDynamic,requireLazy,module,exports){
-
-'use strict';
-
-function setDisplayName(
-t,
-name)
-{
-
-t.displayName=name;
-return t;
-}
-function getDisplayName(t){
-
-var displayName=t.displayName;
-if(typeof displayName==='string'){
-return displayName;
-}else{
-return null;
-}
-}exports.setDisplayName=setDisplayName;exports.getDisplayName=getDisplayName;},66);
-                                                                                                                                                                                                                                                                                                              __d("Promise",["cr:6640"],function $module_Promise(global,require,requireDynamic,requireLazy,module,exports){
-
-'use strict';var _require;
-
-
-
-var Promise=(_require=
-
-require("cr:6640"))!=null?_require:global.Promise;
-
-if(!Promise.allSettled){
-Promise.allSettled=function(iterable){
-var arr;
-if((typeof Symbol==="function"?Symbol.iterator:"@@iterator")in iterable){
-arr=ES("Array","from",false,iterable);
-}else{
-return new Promise(function(){
-var e=new TypeError(
-'Promise.allSettled must be passed an iterable.'
-);
-void e.stack;
-throw e;
-});
-}
-
-var promises=Array(arr.length);var _loop=function _loop()
-
-
-{
-var value=arr[i];
-
-var isThenable=
-typeof value==='object'&&
-value!==null&&
-typeof value.then==='function';
-promises[i]=isThenable?
-new Promise(function(resolve,_reject){
-
-value.then(
-function onFulfilled(value){
-resolve({status:'fulfilled',value:value});
-},
-function onRejected(reason){
-resolve({status:'rejected',reason:reason});
-}
-);
-}):
-Promise.resolve({
-status:'fulfilled',
-value:value
-});
-};for(var i=0,len=arr.length;i<len;++i){_loop();}
-return Promise.all(promises);
-};
-}
-
-if(!Promise.prototype["finally"]){
-
-
-
-
-
-
-
-
-Promise.prototype["finally"]=function(onSettle){
-return this.then(
-function then_$0(value){return Promise.resolve(onSettle()).then(function then_$0(){return value;});},
-function then_$1(error){return(
-Promise.resolve(onSettle()).then(function then_$0(){
-throw error;
-}));}
-);
-};
-}
-
-module.exports=Promise;},null);
-                                                                                                                          __d("asyncToGeneratorRuntime",["Promise"],function $module_asyncToGeneratorRuntime(global,require,requireDynamic,requireLazy,module,exports){
-
-'use strict';var _require_closure_Promise;
-
-function asyncGeneratorStep(gen,resolve,reject,next,_throw,key,arg){
-try{
-var info=gen[key](arg);
-var value=info.value;
-}catch(error){
-reject(error);
-return;
-}
-
-if(info.done){
-resolve(value);
-}else{
-(_require_closure_Promise||(_require_closure_Promise=require("Promise"))).resolve(value).then(next,_throw);
-}
-}
-
-function asyncToGenerator(fn){
-return function(){
-var self=this,
-args=arguments;
-return new(_require_closure_Promise||(_require_closure_Promise=require("Promise")))(function(resolve,reject){
-var gen=fn.apply(self,args);
-function next(value){
-asyncGeneratorStep(gen,resolve,reject,next,_throw,'next',value);
-}
-function _throw(err){
-asyncGeneratorStep(gen,resolve,reject,next,_throw,'throw',err);
-}
-
-next(undefined);
-});
-};
-}exports.asyncToGenerator=asyncToGenerator;},66);
-                                                                                                                      __d("promiseDone",["ErrorPubSub","PromiseAnnotate","asyncToGeneratorRuntime","getErrorSafe"],function $module_promiseDone(global,require,importDefault,importNamespace,requireLazy,module,exports){var _importNamespace_closure_PromiseAnnotate;var _importDefault_closure_ErrorPubSub;
-
-
-
-
-
-
-
-
-
-function logError(err){
-var error=importDefault("getErrorSafe")(err);
-error.loggingSource='PROMISE_DONE';
-(_importDefault_closure_ErrorPubSub||(_importDefault_closure_ErrorPubSub=importDefault("ErrorPubSub"))).reportError(error);
-}
-
-function wrapReject(onReject){
-return function(){var _ref=require("asyncToGeneratorRuntime").asyncToGenerator(function*asyncToGeneratorRuntime_asyncToGenerator_$0(err){
-try{
-var result=yield onReject(err);
-
-return result;
-}catch(err2){
-logError(err2);
-}
-});return function(_x){return _ref.apply(this,arguments);};}();
-}
-
-
-
-
-
-function promiseDone(
-promise,
-onFulfill,
-
-onReject)
-{
-var finalOnReject=onReject!=null?wrapReject(onReject):null;
-var finalPromise=
-
-arguments.length>1?promise.then(onFulfill,finalOnReject):promise;
-
-if(onReject==null){
-
-finalPromise.then(null,logError);
-}
-
-
-
-var promiseDisplayName=(_importNamespace_closure_PromiseAnnotate||(_importNamespace_closure_PromiseAnnotate=importNamespace("PromiseAnnotate"))).getDisplayName(promise);
-if(promiseDisplayName!=null){
-void(_importNamespace_closure_PromiseAnnotate||(_importNamespace_closure_PromiseAnnotate=importNamespace("PromiseAnnotate"))).setDisplayName(finalPromise,promiseDisplayName);
-}
-}exports["default"]=promiseDone;},98);
-                                                                                                                    __d("sdk.Impressions",["Miny","QueryString","UrlMap","getBlankIframeSrc","guid","insertIframe","promiseDone","sdk.Content","sdk.Runtime"],function $module_sdk_Impressions(global,require,importDefault,importNamespace,requireLazy,module,exports){
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function impression(
-params,
-should_include_creds)
-{if(should_include_creds===void 0){should_include_creds=false;}
-var clientID=importDefault("sdk.Runtime").getClientID();
-var isCanvas=importDefault("sdk.Runtime").isEnvironment(importDefault("sdk.Runtime").ENVIRONMENTS.CANVAS);
-
-if(
-clientID&&(
-typeof params.api_key!=='string'||params.api_key===''))
-{
-params.api_key=clientID;
-}
-
-params.kid_directed_site=importDefault("sdk.Runtime").getKidDirectedSite();
-
-var url=importNamespace("UrlMap").resolve('www')+'/platform/impression.php/'+importDefault("guid")()+'/';
-if(isCanvas){
-
-url=
-importNamespace("UrlMap").resolve('www')+'/platform/canvas_impression.php/'+importDefault("guid")()+'/';
-}
-
-var fullUrlPath=importDefault("QueryString").appendToUrl(url,params);
-if(fullUrlPath.length>2000){
-
-
-if(params.payload&&typeof params.payload==='string'){
-var payload=params.payload;
-var minyPayload=importDefault("Miny").encode(payload);
-if(minyPayload&&minyPayload.length<payload.length){
-params.payload=minyPayload;
-fullUrlPath=importDefault("QueryString").appendToUrl(url,params);
-}
-}
-}
-
-if(window.fetch){
-makeRequest(url,fullUrlPath,params,should_include_creds||isCanvas);
-}else{
-makeRequest_DEPRECATED(
-url,
-fullUrlPath,
-params,
-should_include_creds||isCanvas
-);
-}
-}
-
-function makeRequest(
-url,
-fullUrlPath,
-params,
-should_include_creds)
-{if(should_include_creds===void 0){should_include_creds=false;}
-if(fullUrlPath.length<=2000){
-if(should_include_creds){
-importDefault("promiseDone")(
-window.fetch(fullUrlPath,{
-mode:'no-cors',
-credentials:'include'
-})
-);
-}else{
-importDefault("promiseDone")(
-window.fetch(fullUrlPath,{
-mode:'no-cors',
-credentials:'omit'
-})
-);
-}
-}else{
-var searchParams=new URLSearchParams();
-
-for(var _ref2 of ES("Object","entries",false,params)){var key=_ref2[0];var val=_ref2[1];
-if(val!=null){
-searchParams.set(key,String(val));
-}
-}
-
-if(should_include_creds){
-importDefault("promiseDone")(
-window.fetch(url,{
-method:'POST',
-body:searchParams,
-mode:'no-cors',
-credentials:'include'
-})
-);
-}else{
-importDefault("promiseDone")(
-window.fetch(url,{
-method:'POST',
-body:searchParams,
-mode:'no-cors',
-credentials:'omit'
-})
-);
-}
-}
-}
-
-function makeRequest_DEPRECATED(
-url,
-fullUrlPath,
-params,
-should_include_creds)
-{if(should_include_creds===void 0){should_include_creds=false;}
-if(fullUrlPath.length<=2000){
-var image=new Image();
-if(!should_include_creds){
-image.crossOrigin='anonymous';
-}
-
-image.src=fullUrlPath;
-}else{
-
-
-if(!should_include_creds){
-return;
-}
-
-var name=importDefault("guid")();
-var root=importNamespace("sdk.Content").appendHidden(document.createElement('div'));
-importDefault("insertIframe")({
-url:importDefault("getBlankIframeSrc")(),
-root:root,
-name:name,
-className:'fb_hidden fb_invisible',
-onload:function onload(){
-if(root.parentNode!=null){
-root.parentNode.removeChild(root);
-}
-}
-});
-
-importNamespace("sdk.Content").submitToTarget({
-url:url,
-target:name,
-params:params
-});
-}
-}
-
-function log(lid,payload){
-if(typeof payload.source!=='string'||payload.source===''){
-payload.source='jssdk';
-}
-
-impression({
-lid:lid,
-payload:ES("JSON","stringify",false,payload)
-});
-}exports.impression=impression;exports.log=log;},98);
                                                                                                                       __d("BaseDeserializePHPQueryData",[],(function $module_BaseDeserializePHPQueryData(global,require,requireDynamic,requireLazy,module,exports){
 
 'use strict';
@@ -13380,6 +11442,2234 @@ return this.toString();
 isValidURI=function isValidURI(uri){
 return importDefault("URIAbstractBase").isValid(uri,serializer);
 };return URI;}(importDefault("URIAbstractBase"));exports["default"]=_URI;},98);
+                                                                                                                    __d("sdk.WebStorage",["Log"],(function $module_sdk_WebStorage(global,require,importDefault,importNamespace,requireLazy,module,exports){
+
+
+
+
+
+
+
+
+
+
+'use strict';
+
+
+
+function getLocalStorage(){
+try{
+
+return window.localStorage;
+}catch(_unused){
+importNamespace("Log").warn('Failed to get local storage');
+}
+return null;
+}
+
+
+
+
+
+
+function getLocalStorageForRead(){
+try{
+
+var storage=window.localStorage;
+
+
+
+if(storage){
+var key='__test__'+Date.now();
+storage.setItem(key,'');
+storage.removeItem(key);
+}
+return storage;
+}catch(_unused2){
+importNamespace("Log").warn('Failed to get local storage');
+}
+return null;
+}
+
+function getSessionStorage(){
+try{
+
+return window.sessionStorage;
+}catch(_unused3){
+importNamespace("Log").warn('Failed to get session storage');
+}
+return null;
+}
+
+
+
+
+
+
+function getSessionStorageForRead(){
+try{
+
+var storage=window.sessionStorage;
+
+
+
+if(storage){
+var key='__test__'+Date.now();
+storage.setItem(key,'');
+storage.removeItem(key);
+}
+return storage;
+}catch(_unused4){
+importNamespace("Log").warn('Failed to get session storage');
+}
+return null;
+}
+
+
+
+
+function setItemGuarded(
+storage,
+key,
+value)
+{
+if(storage==null){
+return;
+}
+try{
+storage.setItem(key,value);
+}catch(_unused5){
+
+}
+}exports.getLocalStorage=getLocalStorage;exports.getLocalStorageForRead=getLocalStorageForRead;exports.getSessionStorage=getSessionStorage;exports.getSessionStorageForRead=getSessionStorageForRead;exports.setItemGuarded=setItemGuarded;}),98);
+                                                                                                                             __d("sdk.AppConfig",["sdk.Runtime","sdk.URI","sdk.WebStorage"],function $module_sdk_AppConfig(global,require,importDefault,importNamespace,requireLazy,module,exports){
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var STORAGE_PREFIX='fbapc_';
+
+
+
+
+
+
+
+
+
+
+
+var CACHE_TTL_MS=24*60*60*1000;
+
+var CONFIG_PATH_PREFIX='/app_config/json/';
+
+
+
+
+
+
+function getStorageKey(appID){
+return STORAGE_PREFIX+appID;
+}
+
+
+
+
+
+
+function getCachedAppConfig(appID){
+if(appID===''||!importDefault("sdk.Runtime").getUseLocalStorage()){
+return null;
+}
+var localStorage=importNamespace("sdk.WebStorage").getLocalStorageForRead();
+if(localStorage==null){
+return null;
+}
+var raw=localStorage.getItem(getStorageKey(appID));
+if(raw==null){
+return null;
+}
+try{
+var entry=ES("JSON","parse",false,raw);
+if(
+entry!=null&&
+typeof entry.expiresAt==='number'&&
+entry.expiresAt>Date.now()&&
+entry.config!=null&&
+typeof entry.config.fedcmDefault==='boolean')
+{
+return entry.config;
+}
+}catch(_unused){
+
+return null;
+}
+return null;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function applyAppConfig(config){
+if(importDefault("sdk.Runtime").getFedCMExplicitlySet()){
+return;
+}
+importDefault("sdk.Runtime").setUseFedCM(config!=null&&config.fedcmDefault===true);
+}
+
+
+
+
+
+
+
+
+
+function applyCachedAppConfig(){
+applyAppConfig(getCachedAppConfig(importDefault("sdk.Runtime").getClientID()));
+}
+
+function cacheAppConfig(appID,config){
+if(appID===''||!importDefault("sdk.Runtime").getUseLocalStorage()){
+return;
+}
+var localStorage=importNamespace("sdk.WebStorage").getLocalStorage();
+if(localStorage==null){
+return;
+}
+var entry={
+config:config,
+expiresAt:Date.now()+CACHE_TTL_MS
+};
+importNamespace("sdk.WebStorage").setItemGuarded(
+localStorage,
+getStorageKey(appID),ES("JSON","stringify",false,
+entry)
+);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+function shouldFetchAppConfig(appID){
+if(appID===''){
+return false;
+}
+
+if(importDefault("sdk.Runtime").getFedCMExplicitlySet()){
+return false;
+}
+if(location.protocol!=='https:'){
+return false;
+}
+if(importDefault("sdk.Runtime").isCanvasEnvironment()){
+return false;
+}
+if(!('IdentityCredential'in window)){
+return false;
+}
+if(getCachedAppConfig(appID)!=null){
+return false;
+}
+return true;
+}
+
+
+
+
+
+function buildConfigURL(appID){
+return new(importDefault("sdk.URI"))(importDefault("sdk.Runtime").getSDKUrl()).
+setPath(CONFIG_PATH_PREFIX+appID+'/').
+setQueryData({}).
+setFragment('').
+toString();
+}
+
+function parseAppConfig(payload){
+if(payload==null||typeof payload!=='object'){
+return null;
+}
+var fedcm=payload.fedcm;
+if(fedcm==null||typeof fedcm!=='object'){
+
+return null;
+}
+if(typeof fedcm["default"]!=='boolean'){
+return null;
+}
+return{fedcmDefault:fedcm["default"]};
+}
+
+
+
+
+
+
+function fetchAppConfig(){
+
+
+
+
+var appID=importDefault("sdk.Runtime").getClientID();
+if(!shouldFetchAppConfig(appID)){
+return;
+}
+if(typeof window.fetch!=='function'){
+return;
+}
+window.
+fetch(buildConfigURL(appID),{
+credentials:'omit',
+mode:'cors'
+}).
+then(function then_$0(response){
+if(!response.ok){
+return null;
+}
+return response.json();
+}).
+then(function then_$0(payload){
+var config=parseAppConfig(payload);
+if(config!=null){
+
+
+
+
+
+
+cacheAppConfig(appID,config);
+
+
+
+
+
+
+
+if(importDefault("sdk.Runtime").getClientID()===appID){
+applyAppConfig(config);
+}
+}
+})["catch"](
+function $0(){
+
+
+
+});
+}exports.getCachedAppConfig=getCachedAppConfig;exports.applyAppConfig=applyAppConfig;exports.applyCachedAppConfig=applyCachedAppConfig;exports.fetchAppConfig=fetchAppConfig;},98);
+                                                                                                                    __d("sdk.Event",[],function $module_sdk_Event(global,require,requireDynamic,requireLazy,module,exports){
+
+'use strict';
+
+var SUBSCRIBE='event.subscribe';
+
+var UNSUBSCRIBE='event.unsubscribe';
+
+var subscribersMap;
+
+
+
+
+
+
+
+function subscribers(){
+
+
+
+
+if(!subscribersMap){
+subscribersMap={};
+}
+return subscribersMap;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function subscribe(name,cb){
+var subs=subscribers();
+
+if(!subs[name]){
+subs[name]=[cb];
+}else{
+if(subs[name].indexOf(cb)===-1){
+subs[name].push(cb);
+}
+}
+if(name!=SUBSCRIBE&&name!=UNSUBSCRIBE){
+fire(SUBSCRIBE,name,subs[name]);
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function unsubscribe(name,cb){
+var subs=subscribers()[name];
+if(subs){
+subs.forEach(function subs_forEach_$0(value,key){
+if(value===cb){
+subs.splice(key,1);
+}
+});
+}
+if(name!=SUBSCRIBE&&name!=UNSUBSCRIBE){
+fire(UNSUBSCRIBE,name,subs);
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+function monitor(name,callback){var _arguments=arguments;
+if(!callback()){
+var _fn=function fn(){
+if(callback.apply(callback,_arguments)){
+unsubscribe(name,_fn);
+}
+};
+
+subscribe(name,_fn);
+}
+}
+
+
+
+
+
+
+
+
+
+
+function clear(name){
+delete subscribers()[name];
+}
+
+
+
+
+
+
+
+function fire(name){for(var _len=arguments.length,args=new Array(_len>1?_len-1:0),_key=1;_key<_len;_key++){args[_key-1]=arguments[_key];}
+var subs=subscribers()[name];
+
+if(subs){
+subs.forEach(function subs_forEach_$0(sub){
+
+
+if(sub){
+sub.apply(this,args);
+}
+});
+}
+}exports.SUBSCRIBE=SUBSCRIBE;exports.UNSUBSCRIBE=UNSUBSCRIBE;exports.subscribers=subscribers;exports.subscribe=subscribe;exports.unsubscribe=unsubscribe;exports.monitor=monitor;exports.clear=clear;exports.fire=fire;},66);
+                                                                                                                             __d("sdk.AppConfig-public",["sdk.AppConfig","sdk.Event"],(function $module_sdk_AppConfig_public(global,require,importDefault,importNamespace,requireLazy,module,exports){
+
+
+
+
+
+
+
+
+
+
+
+
+function init(){
+
+
+importNamespace("sdk.Event").subscribe('init:post',function Event_subscribe_$1(){
+importNamespace("sdk.AppConfig").fetchAppConfig();
+});
+}
+
+var SDKAppConfig={init:init};var _default=
+SDKAppConfig;exports["default"]=_default;}),98);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 __d("AppUserPropertyAPIBuiltinField",[],function $module_AppUserPropertyAPIBuiltinField(global,require,requireDynamic,requireLazy,module,exports){var _default=
+
+
+
+
+
+
+
+Object.freeze({
+"GENDER":"$gender",
+"CITY":"$city",
+"STATE":"$state",
+"ZIPCODE":"$zipcode",
+"COUNTRY":"$country",
+"LANGUAGE":"$language",
+"CURRENCY":"$currency",
+"INSTALL_SOURCE":"$install_source",
+"USER_TYPE":"$user_type",
+"ACCOUNT_CREATED_TIME":"$account_created_time",
+"APP_ID":"$app_id"
+});exports["default"]=_default;},66);
+                                                                                                                    __d("sdk.AppEvents",["AppUserPropertyAPIBuiltinField","Assert","sdk.Model","sdk.Runtime"],function $module_sdk_AppEvents(global,require,importDefault,importNamespace,requireLazy,module,exports){
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var EventNames=Object.freeze({
+COMPLETED_REGISTRATION:'fb_mobile_complete_registration',
+VIEWED_CONTENT:'fb_mobile_content_view',
+SEARCHED:'fb_mobile_search',
+RATED:'fb_mobile_rate',
+COMPLETED_TUTORIAL:'fb_mobile_tutorial_completion',
+ADDED_TO_CART:'fb_mobile_add_to_cart',
+ADDED_TO_WISHLIST:'fb_mobile_add_to_wishlist',
+INITIATED_CHECKOUT:'fb_mobile_initiated_checkout',
+ADDED_PAYMENT_INFO:'fb_mobile_add_payment_info',
+ACHIEVED_LEVEL:'fb_mobile_level_achieved',
+UNLOCKED_ACHIEVEMENT:'fb_mobile_achievement_unlocked',
+PAGE_VIEW:'fb_page_view',
+SPENT_CREDITS:'fb_mobile_spent_credits'
+});
+
+
+var HiddenEventNames=Object.freeze({
+ACTIVATED_APP:'fb_mobile_activate_app',
+PURCHASED:'fb_mobile_purchase'
+});
+
+var ParameterNames=Object.freeze({
+APP_USER_ID:'_app_user_id',
+APP_VERSION:'_appVersion',
+CURRENCY:'fb_currency',
+REGISTRATION_METHOD:'fb_registration_method',
+CONTENT_TYPE:'fb_content_type',
+CONTENT_ID:'fb_content_id',
+SEARCH_STRING:'fb_search_string',
+SUCCESS:'fb_success',
+MAX_RATING_VALUE:'fb_max_rating_value',
+PAYMENT_INFO_AVAILABLE:'fb_payment_info_available',
+NUM_ITEMS:'fb_num_items',
+LEVEL:'fb_level',
+DESCRIPTION:'fb_description'
+});
+
+var EVENT_NAME_REGEX=/^[0-9a-zA-Z_][0-9a-zA-Z _-]{0,39}$/;
+var MAX_EVENT_NAME_LENGTH=40;
+var USER_PROPERTIES_KEY_REGEX=EVENT_NAME_REGEX;
+var MAX_USER_PROPERTIES_KEY_LENGTH=MAX_EVENT_NAME_LENGTH;
+var MAX_USER_ID_LENGTH=100;
+var MAX_APP_VERSION_LENGTH=100;
+var MAX_USER_PROPERTIES=100;
+var MAX_USER_PROPERTIES_VALUE_LENGTH=100;
+var PREDEFINED_USER_PROPS=ES("Object","values",false,importDefault("AppUserPropertyAPIBuiltinField"));_c=PREDEFINED_USER_PROPS;
+
+var AppProps=new(importDefault("sdk.Model"))({
+UserID:'',
+Version:''
+});
+
+
+function logEvent(
+_eventName,
+_valueToSum,
+_params)
+{}
+
+function logPurchase(
+_purchaseAmount,
+_currency,
+_params)
+{}
+
+function activateApp(){
+logEvent(HiddenEventNames.ACTIVATED_APP);
+}
+
+function logPageView(){
+logEvent(EventNames.PAGE_VIEW);
+}
+
+function setUserID(userID){
+assertValidUserID(userID);
+AppProps.setUserID(userID);
+}
+
+function getUserID(){
+return AppProps.getUserID();
+}
+
+function clearUserID(){
+AppProps.setUserID('');
+}
+
+function setAppVersion(appVersion){
+assertValidAppVersion(appVersion);
+AppProps.setVersion(appVersion);
+}
+
+function getAppVersion(){
+return AppProps.getVersion();
+}
+
+function clearAppVersion(){
+AppProps.setVersion('');
+}
+
+function updateUserProperties(
+_params,
+cb)
+{
+if(cb){
+cb(null);
+}
+}
+
+
+function assertGetValidAppID(){
+var appID=importDefault("sdk.Runtime").getClientID();
+importDefault("Assert").isTrue(
+typeof appID==='string'&&appID.length>0,
+'You need to call FB.init() with App ID first.'
+);
+return appID;
+}
+
+function assertValidUserProperties(params)
+
+
+{
+importDefault("Assert").isTrue(
+Object.keys(params).length<=MAX_USER_PROPERTIES,
+'The total number of user properties cannot exceed '+
+MAX_USER_PROPERTIES+
+'.'
+);
+for(var _key in params){
+importDefault("Assert").isTrue(
+USER_PROPERTIES_KEY_REGEX.test(_key)||ES(
+PREDEFINED_USER_PROPS,"includes",true,_key),
+'Invalid user properties key name: '+
+_key+
+'. '+
+'It must be between 1 and '+
+MAX_USER_PROPERTIES_KEY_LENGTH+
+' '+
+'characters, and must contain only alphanumerics, _, - or spaces, '+
+'starting with alphanumeric or _. '+
+'Or, it must be a pre-defined user property'
+);
+importDefault("Assert").isTrue(
+params[_key].toString().length<=MAX_USER_PROPERTIES_VALUE_LENGTH,
+'Invalid user properties value: '+
+params[_key]+
+'. '+
+'It must be no longer than '+
+MAX_USER_PROPERTIES_VALUE_LENGTH+
+' characters.'
+);
+}
+}
+
+
+function assertValidEventName(eventName){
+importDefault("Assert").isTrue(
+EVENT_NAME_REGEX.test(eventName),
+'Invalid event name: '+
+eventName+
+'. '+
+'It must be between 1 and '+
+MAX_EVENT_NAME_LENGTH+
+' characters, '+
+'and must be contain only alphanumerics, _, - or spaces, '+
+'starting with alphanumeric or _.'
+);
+}
+
+function assertValidAppVersion(appVersion){
+importDefault("Assert").isTrue(
+appVersion.length<=MAX_APP_VERSION_LENGTH,
+'Invalid app version: '+
+appVersion+
+'. '+
+'It must be no longer than '+
+MAX_APP_VERSION_LENGTH+
+' characters.'
+);
+}
+
+function assertValidUserID(userID){
+importDefault("Assert").isTrue(
+userID.length!==0,
+'User ID must be set before updateUserProperties can be called.'
+);
+importDefault("Assert").isTrue(
+userID.length<=MAX_USER_ID_LENGTH,
+'Invalid user ID: '+
+userID+
+'. '+
+'It must be no longer than '+
+MAX_USER_ID_LENGTH+
+' characters.'
+);
+}
+
+var AppEvents=Object.freeze({
+logEvent:logEvent,
+logPurchase:logPurchase,
+activateApp:activateApp,
+logPageView:logPageView,
+setUserID:setUserID,
+getUserID:getUserID,
+clearUserID:clearUserID,
+updateUserProperties:updateUserProperties,
+setAppVersion:setAppVersion,
+getAppVersion:getAppVersion,
+clearAppVersion:clearAppVersion,
+EventNames:EventNames,
+ParameterNames:ParameterNames
+});var _c;$RefreshReg$(_c,"PREDEFINED_USER_PROPS");exports.assertGetValidAppID=assertGetValidAppID;exports.assertValidUserProperties=assertValidUserProperties;exports.assertValidEventName=assertValidEventName;exports.assertValidAppVersion=assertValidAppVersion;exports.assertValidUserID=assertValidUserID;exports.AppEvents=AppEvents;},98);
+                                                                                                                    __d("sdk.AppEvents-public",["Assert","FB","sdk.AppEvents","sdk.Event","sdk.Runtime"],function $module_sdk_AppEvents_public(global,require,importDefault,importNamespace,requireLazy,module,exports){
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function init(){
+importNamespace("sdk.Event").subscribe('init:post',function Event_subscribe_$1(options){
+if(importDefault("sdk.Runtime").getClientID()){
+if(options.autoLogAppEvents!==undefined){
+importDefault("Assert").isBoolean(
+options.autoLogAppEvents,
+'Type of property autoLogAppEvents must be boolean'
+);
+importDefault("sdk.Runtime").setAutoLogAppEvents(options.autoLogAppEvents);
+}
+if(importDefault("sdk.Runtime").getAutoLogAppEvents()){
+importNamespace("sdk.AppEvents").AppEvents.logPageView();
+}
+}
+});
+
+importDefault("FB").provide('AppEvents',importNamespace("sdk.AppEvents").AppEvents);
+}
+
+var SDKAppEvents={init:init};var _default=
+
+SDKAppEvents;exports["default"]=_default;},98);
+                                                                                                                             __d("sdk.AuthState",["sdk.AuthUtils"],(function $module_sdk_AuthState(global,require,importDefault,importNamespace,requireLazy,module,exports){
+
+
+
+
+
+
+
+'use strict';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var authState=initState();
+
+
+function initState(){
+var initialMixedState={
+igAuthResponse:null,
+fbAuthResponse:null,
+fbLoginStatus:null,
+igLoginStatus:null
+};
+return{
+currentAuthResponse:null,
+shouldSecondLoginRequestTimeOut:false,
+mixedAuthState:initialMixedState,
+loadState:null,
+timer:null,
+currentTimeOut:importNamespace("sdk.AuthUtils").AuthConstants.CONNECTED_REVALIDATE_PERIOD
+};
+}
+
+function getState(){
+
+return babelHelpers["extends"]({},initState(),authState);
+}
+
+function setState(newState){
+authState=babelHelpers["extends"]({},initState(),authState,newState);
+}
+
+var State={
+getState:getState,
+setState:setState
+};var _default=
+
+State;exports["default"]=_default;}),98);
+                                                                                                                    __d("sdk.Cookie",["QueryString","sdk.Runtime","sdk.Scribe","sdk.feature"],function $module_sdk_Cookie(global,require,importDefault,importNamespace,requireLazy,module,exports){
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var domain=null;
+
+var JSSDK_COOKIE_PREFIX=[
+'fblo_',
+'fbsr_',
+'fbm_'];
+
+
+
+
+
+
+
+
+
+
+function setRaw(
+startingPrefix,
+val,
+ts,
+secure)
+{
+if(!ES(JSSDK_COOKIE_PREFIX,"includes",true,startingPrefix)){
+importNamespace("sdk.Scribe").log('jssdk_error',{
+appId:importDefault("sdk.Runtime").getClientID(),
+error:'unknown_cookie_prefix.'+startingPrefix
+});
+if(importDefault("sdk.feature")('limit_unknown_cookie_setting',false)){
+return;
+}
+}
+
+var prefix=startingPrefix+importDefault("sdk.Runtime").getClientID();
+
+
+var secureFlag=secure?'; SameSite=None;Secure':'';
+var useDomain=domain!==null&&domain!=='.';
+
+if(useDomain){
+
+document.cookie=
+prefix+'=; expires=Wed, 04 Feb 2004 08:00:00 GMT'+secureFlag;
+
+document.cookie=
+prefix+
+'=; expires=Wed, 04 Feb 2004 08:00:00 GMT;'+
+'domain='+
+location.hostname+
+secureFlag;
+}
+
+var expires=new Date(ts).toUTCString();
+document.cookie=
+prefix+
+'='+
+val+(
+val&&ts===0?'':'; expires='+expires)+
+'; path=/'+(
+useDomain?'; domain='+(domain!=null?domain:''):'')+
+secureFlag;
+}
+
+function getRaw(startingPrefix){
+var prefix=startingPrefix+importDefault("sdk.Runtime").getClientID();
+var regExp=new RegExp('\\b'+prefix+'=([^;]*)\\b');
+var matches=document.cookie.match(regExp);
+if(matches==null){
+return null;
+}else{
+return matches[1];
+}
+}
+
+function setDomain(val){
+domain=val;
+
+var meta=importDefault("QueryString").encode({
+base_domain:domain!==null&&domain!=='.'?domain:''
+});
+var expiration=new Date();
+expiration.setFullYear(expiration.getFullYear()+1);
+setRaw('fbm_',meta,expiration.getTime(),true);
+}
+
+function getDomain(){
+return domain;
+}
+
+
+
+
+function loadMeta(){
+var cookie=getRaw('fbm_');
+if(cookie!=null&&domain===null){
+
+var meta=importDefault("QueryString").decode(cookie);
+
+domain=meta.base_domain;
+return{base_domain:domain};
+}
+return null;
+}
+
+
+
+
+
+
+function loadSignedRequest(){
+return getRaw('fbsr_');
+}
+
+
+
+
+
+
+
+
+
+
+function setSignedRequestCookie(
+signedRequest,
+expiration)
+{
+if(signedRequest===''){
+throw new Error('Value passed to Cookie.setSignedRequestCookie was empty.');
+}
+setRaw('fbsr_',signedRequest,expiration,true);
+}
+
+
+
+
+
+function clearSignedRequestCookie(){
+loadMeta();
+setRaw('fbsr_','',0,true);
+}exports.setRaw=setRaw;exports.getRaw=getRaw;exports.setDomain=setDomain;exports.getDomain=getDomain;exports.loadMeta=loadMeta;exports.loadSignedRequest=loadSignedRequest;exports.setSignedRequestCookie=setSignedRequestCookie;exports.clearSignedRequestCookie=clearSignedRequestCookie;},98);
+                                                                                                                    __d("sdk.Observable",[],function $module_sdk_Observable(global,require,requireDynamic,requireLazy,module,exports){var
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Observable=
+
+
+function Observable(){var _this=this;this.
+
+
+
+getSubscribers=
+function(toWhat){
+return(
+_this.$Observable$p_observableEvents[toWhat]||(_this.$Observable$p_observableEvents[toWhat]=[]));
+
+};this.
+clearSubscribers=function(toWhat){
+if(toWhat){
+_this.$Observable$p_observableEvents[toWhat]=[];
+}
+};this.
+subscribe=function(
+toWhat,
+withWhat)
+{
+var list=_this.getSubscribers(toWhat);
+list.push(withWhat);
+};this.
+unsubscribe=function(
+toWhat,
+withWhat)
+{
+var list=_this.getSubscribers(toWhat);
+for(var i=0;i<list.length;i++){
+if(list[i]===withWhat){
+list.splice(i,1);
+break;
+}
+}
+};this.
+inform=function(what,withWhat){
+var list=_this.getSubscribers(what);var _loop=function _loop()
+{
+if(__DEV__){
+list[i].call(_this,withWhat);
+}else{
+try{
+list[i].call(_this,withWhat);
+}catch(e){
+
+
+window.setTimeout(function window_setTimeout_$0(){
+throw e;
+},0);
+}
+}
+};for(var i=0;i<list.length;i++){_loop();}
+};this.$Observable$p_observableEvents={};};exports.Observable=Observable;},66);
+                                                                                                                             __d("sdk.AuthUtils",["sdk.AuthState","sdk.Cookie","sdk.Observable","sdk.Runtime"],function $module_sdk_AuthUtils(global,require,importDefault,importNamespace,requireLazy,module,exports){
+
+
+
+
+
+'use strict';
+
+
+
+
+
+
+
+
+var SEC_MS=1000;
+var MIN_MS=60*SEC_MS;
+var HOUR_MS=60*MIN_MS;
+var DAY_MS=24*HOUR_MS;
+var YEAR_MS=365*DAY_MS;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function isInstagramLogin(authResponse){
+if(authResponse!=null&&authResponse.graphDomain!=null){
+return authResponse.graphDomain==='instagram';
+}
+return false;
+}
+
+function setBaseDomain(baseDomain){
+if(importDefault("sdk.Runtime").getUseCookie()){
+if(importNamespace("sdk.Cookie").getDomain()==null){
+
+
+
+
+importNamespace("sdk.Cookie").setDomain('.'+baseDomain);
+}
+}
+}
+
+function resetFBAndIGLoginStatus(){
+var mixedAuthState={
+fbAuthResponse:null,
+fbLoginStatus:null,
+igAuthResponse:null,
+igLoginStatus:null
+};
+var shouldSecondLoginRequestTimeOut=false;
+importDefault("sdk.AuthState").setState({mixedAuthState:mixedAuthState,shouldSecondLoginRequestTimeOut:shouldSecondLoginRequestTimeOut});
+}
+
+function setGraphDomain(graphDomain){
+
+
+if(graphDomain!=null){
+importDefault("sdk.Runtime").setGraphDomain(graphDomain);
+
+
+if(graphDomain==='instagram'){
+importDefault("sdk.Runtime").setIsVersioned(false);
+}
+}else{
+importDefault("sdk.Runtime").setGraphDomain('');
+}
+}
+
+function setLogoutState(){
+importNamespace("sdk.Cookie").setRaw(
+AuthConstants.LOGOUT_COOKIE_PREFIX,
+'y',
+Date.now()+YEAR_MS,
+false
+);
+}
+
+function setRevalidateTimer(
+timeout)
+{if(timeout===void 0){timeout=AuthConstants.CONNECTED_REVALIDATE_PERIOD;}
+var currentTimer=importDefault("sdk.AuthState").getState().timer;
+if(currentTimer){
+window.clearTimeout(currentTimer);
+}
+var timer=window.setTimeout(function window_setTimeout_$0(){
+AuthInternalEvent.inform(AuthConstants.REVALIDATE_TIMER_TIMEOUT);
+},timeout);
+importDefault("sdk.AuthState").setState({timer:timer});
+importDefault("sdk.AuthState").setState({currentTimeOut:timeout});
+}
+
+function removeLogoutState(){
+importNamespace("sdk.Cookie").setRaw(AuthConstants.LOGOUT_COOKIE_PREFIX,'',0,false);
+importNamespace("sdk.Cookie").setRaw(AuthConstants.LOGOUT_COOKIE_PREFIX,'',0,true);
+}
+
+var observable=new(importNamespace("sdk.Observable").Observable)();
+
+function inform(key,value){
+observable.inform(key,value);
+}
+
+function subscribe(key,func){
+observable.subscribe(key,func);
+}
+
+function clearSubscribers(key){
+observable.clearSubscribers(key);
+}
+
+function unsubscribe(key,func){
+observable.unsubscribe(key,func);
+}
+
+function getSubscribers(key){
+return observable.getSubscribers(key);
+}
+
+
+
+
+
+function getMobileOperatingSystem(){
+
+
+var nav=navigator!==undefined&&navigator||null;
+var ua=
+nav&&(nav.userAgent||nav.vendor||nav.platform)||null;
+
+if(ua==null||typeof ua!=='string'){
+return'unknown';
+}
+
+var userAgent=ua.toLowerCase();
+
+
+if(ES(userAgent,"includes",true,'windows phone')){
+return'windows phone';
+}
+
+
+if(ES(userAgent,"includes",true,'android')){
+return'android';
+}
+
+
+if(ES(userAgent,"includes",true,'windows')){
+return'windows';
+}
+
+
+
+var isIOSUA=/\b(iPad|iPhone|iPod)\b/i.test(ua);
+var isIPadOS13Plus=
+!isIOSUA&&
+nav!=null&&(
+nav.platform==='MacIntel'||nav.platform==='MacPPC')&&
+window!==undefined&&
+'ontouchend'in window;
+
+if(isIOSUA||isIPadOS13Plus){
+return'ios';
+}
+
+return'unknown';
+}
+var AuthInternalEvent={
+inform:inform,
+subscribe:subscribe,
+clearSubscribers:clearSubscribers,
+unsubscribe:unsubscribe,
+getSubscribers:getSubscribers
+};
+
+var AuthConstants={
+LOCAL_STORAGE_TOKEN_PREFIX:'fblst_',
+IG_LOCAL_STORAGE_TOKEN_PREFIX:'iglst_',
+SESSION_STORAGE_LOGIN_STATUS_PREFIX:'fbssls_',
+CONNECTED_REVALIDATE_PERIOD:MIN_MS*90,
+DEFAULT_REVALIDATE_PERIOD:DAY_MS,
+LOGOUT_COOKIE_PREFIX:'fblo_',
+CORS_FETCH_COMPLETED_EVENT:'cors_fetch_completed',
+XFOA_FINAL_RESPONSE_EVENT:'xfoa_final_response',
+LOAD_XFOA_SUBSCRIBERS:'load_xfoa_subscribers',
+REVALIDATE_TIMER_TIMEOUT:'revalidate_timer_timeout'
+};exports.isInstagramLogin=isInstagramLogin;exports.setBaseDomain=setBaseDomain;exports.resetFBAndIGLoginStatus=resetFBAndIGLoginStatus;exports.setGraphDomain=setGraphDomain;exports.setLogoutState=setLogoutState;exports.setRevalidateTimer=setRevalidateTimer;exports.removeLogoutState=removeLogoutState;exports.getMobileOperatingSystem=getMobileOperatingSystem;exports.AuthInternalEvent=AuthInternalEvent;exports.AuthConstants=AuthConstants;},98);
+                                                                                                                             __d("sdk.AuthStorageUtils",["sdk.AuthUtils","sdk.Runtime","sdk.WebStorage","sdk.feature"],function $module_sdk_AuthStorageUtils(global,require,importDefault,importNamespace,requireLazy,module,exports){
+
+
+
+
+
+
+
+
+
+
+
+
+'use strict';
+
+
+
+
+
+
+
+
+function setLocalStorageToken(
+authResponse,
+longLivedToken)
+{
+if(
+shouldEnableAuthStorage()&&
+longLivedToken!=null&&
+longLivedToken!=='')
+{
+var localStorage=importNamespace("sdk.WebStorage").getLocalStorage();
+if(localStorage){
+var token_prefix=importNamespace("sdk.AuthUtils").isInstagramLogin(authResponse)?
+importNamespace("sdk.AuthUtils").AuthConstants.IG_LOCAL_STORAGE_TOKEN_PREFIX:
+importNamespace("sdk.AuthUtils").AuthConstants.LOCAL_STORAGE_TOKEN_PREFIX;
+localStorage.setItem(
+token_prefix+importDefault("sdk.Runtime").getClientID(),
+longLivedToken
+);
+}
+}
+}
+
+function removeLocalStorageToken(loginSource){
+var localStorage=importNamespace("sdk.WebStorage").getLocalStorage();
+if(localStorage){
+if(loginSource==='instagram'){
+localStorage.removeItem(
+importNamespace("sdk.AuthUtils").AuthConstants.IG_LOCAL_STORAGE_TOKEN_PREFIX+importDefault("sdk.Runtime").getClientID()
+);
+}else{
+localStorage.removeItem(
+importNamespace("sdk.AuthUtils").AuthConstants.LOCAL_STORAGE_TOKEN_PREFIX+importDefault("sdk.Runtime").getClientID()
+);
+}
+}
+}
+
+function setSessionStorage(authResponse,status){
+if(!shouldEnableAuthStorage()){
+return;
+}
+var sessionStorage=importNamespace("sdk.WebStorage").getSessionStorage();
+if(sessionStorage){
+sessionStorage.setItem(
+importNamespace("sdk.AuthUtils").AuthConstants.SESSION_STORAGE_LOGIN_STATUS_PREFIX+importDefault("sdk.Runtime").getClientID(),ES("JSON","stringify",false,
+{
+authResponse:authResponse,
+status:status,
+expiresAt:
+authResponse!=null&&
+authResponse.expiresIn&&
+authResponse.expiresIn!==0?
+Date.now()+
+Math.min(
+authResponse.expiresIn*0.75*1000,
+importNamespace("sdk.AuthUtils").AuthConstants.CONNECTED_REVALIDATE_PERIOD
+):
+Date.now()+importNamespace("sdk.AuthUtils").AuthConstants.DEFAULT_REVALIDATE_PERIOD
+})
+);
+}
+}
+
+function shouldEnableAuthStorage(){
+return(
+importDefault("sdk.feature")('cache_auth_response',false)&&
+importDefault("sdk.Runtime").getUseLocalStorage()&&
+location.protocol==='https:');
+
+}
+
+function getLocalStorageTokens(){
+var fbToken=null;
+var igToken=null;
+if(importDefault("sdk.Runtime").getUseLocalStorage()){
+var localStorage=importNamespace("sdk.WebStorage").getLocalStorageForRead();
+if(localStorage){
+fbToken=localStorage.getItem(
+importNamespace("sdk.AuthUtils").AuthConstants.LOCAL_STORAGE_TOKEN_PREFIX+importDefault("sdk.Runtime").getClientID()
+);
+igToken=localStorage.getItem(
+importNamespace("sdk.AuthUtils").AuthConstants.IG_LOCAL_STORAGE_TOKEN_PREFIX+importDefault("sdk.Runtime").getClientID()
+);
+}
+}
+return{
+fbToken:fbToken,
+igToken:igToken
+};
+}
+
+function getCachedResponse(){
+if(!shouldEnableAuthStorage()){
+return null;
+}
+var sessionStorage=importNamespace("sdk.WebStorage").getSessionStorageForRead();
+if(sessionStorage){
+var rawCachedResponse=sessionStorage.getItem(
+importNamespace("sdk.AuthUtils").AuthConstants.SESSION_STORAGE_LOGIN_STATUS_PREFIX+importDefault("sdk.Runtime").getClientID()
+);
+if(rawCachedResponse!=null){
+try{
+var cachedResponse=ES("JSON","parse",false,rawCachedResponse);
+if(
+cachedResponse!=null&&
+cachedResponse.expiresAt!=null&&
+cachedResponse.expiresAt>Date.now())
+{
+return cachedResponse;
+}
+}catch(_unused){
+
+return null;
+}
+}
+}
+return null;
+}exports.setLocalStorageToken=setLocalStorageToken;exports.removeLocalStorageToken=removeLocalStorageToken;exports.setSessionStorage=setSessionStorage;exports.getLocalStorageTokens=getLocalStorageTokens;exports.getCachedResponse=getCachedResponse;},98);
+                                                                                                                    __d("Base64",[],function $module_Base64(global,require,requireDynamic,requireLazy,module,exports){
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+'use strict';
+
+var en=
+'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
+function en3(c){
+var num=
+c.charCodeAt(0)<<16|c.charCodeAt(1)<<8|c.charCodeAt(2);
+return String.fromCharCode(
+en.charCodeAt(num>>>18),
+en.charCodeAt(num>>>12&63),
+en.charCodeAt(num>>>6&63),
+en.charCodeAt(num&63)
+);
+}
+
+
+
+
+var de=
+'>___?456789:;<=_______'+
+'\x00\x01\x02\x03\x04\x05\x06\x07\b\t\n\x0b\f\r\x0e\x0f\x10\x11\x12\x13\x14\x15\x16\x17\x18\x19'+
+'______\x1a\x1b\x1c\x1d\x1e\x1f !"#$%&\'()*+,-./0123';
+function de4(c){
+var num=
+de.charCodeAt(c.charCodeAt(0)-43)<<18|
+de.charCodeAt(c.charCodeAt(1)-43)<<12|
+de.charCodeAt(c.charCodeAt(2)-43)<<6|
+de.charCodeAt(c.charCodeAt(3)-43);
+return String.fromCharCode(num>>>16,num>>>8&255,num&255);
+}
+
+var Base64=
+
+
+
+
+
+
+
+
+
+
+
+
+{
+encode:function encode(input){
+
+var str=unescape(encodeURI(input));
+var i=(str.length+2)%3;
+str=(str+'\0\0'.slice(i)).replace(/[\s\S]{3}/g,en3);
+return str.slice(0,str.length+i-2)+'=='.slice(i);
+},
+decode:function decode(input){
+
+var str=input.replace(/[^A-Za-z0-9+\/]/g,'');
+var i=str.length+3&3;
+str=(str+'AAA'.slice(i)).replace(/..../g,de4);
+str=str.slice(0,str.length+i-3);
+
+try{
+return decodeURIComponent(escape(str));
+}catch(_unused){
+var e=new Error('Not valid UTF-8');
+void e.stack;
+throw e;
+}
+},
+encodeObject:function encodeObject(
+obj)
+
+{
+return Base64.encode(ES("JSON","stringify",false,obj));
+},
+decodeObject:function decodeObject(b64){
+return ES("JSON","parse",false,Base64.decode(b64));
+},
+
+encodeNums:function encodeNums(l){
+return String.fromCharCode.apply(
+String,
+l.map(function l_map_$0(val){
+return en.charCodeAt(
+(val|-(val>63?1:0))&-(val>0?1:0)&63
+);
+})
+);
+}
+};var _default=
+
+Base64;exports["default"]=_default;},66);
+                                                                                                                    __d("sdk.SignedRequest",["Base64"],function $module_sdk_SignedRequest(global,require,importDefault,importNamespace,requireLazy,module,exports){
+
+
+
+
+
+
+
+
+
+
+
+
+function parse(signed_request){
+if(signed_request==null||signed_request===''){
+return null;
+}
+
+
+var payload=signed_request.
+split('.',2)[1].
+replace(/\-/g,'+').
+replace(/\_/g,'/');
+return importDefault("Base64").decodeObject(payload);
+}exports.parse=parse;},98);
+                                                                                                                    __d("Miny",[],function $module_Miny(global,require,requireDynamic,requireLazy,module,exports){
+
+
+
+
+
+
+
+
+
+var MAGIC='Miny1';
+var LO='wxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-_'.split('');
+
+var Miny={
+
+encode:function encode(s){var _s$match;
+if(/^$|[~\\]|__proto__/.test(s)){
+return s;
+}
+
+
+var parts=(_s$match=s.match(/\w+|\W+/g))!=null?_s$match:[];
+
+var i;
+
+
+var dict=new Map();
+for(i=0;i<parts.length;i++){var _dict$get;
+dict.set(parts[i],((_dict$get=dict.get(parts[i]))!=null?_dict$get:0)+1);
+}
+
+
+
+var keys=ES("Array","from",false,dict.keys());
+keys.sort(function keys_sort_$0(a,b){return Number(dict.get(b))-Number(dict.get(a));});
+
+
+for(i=0;i<keys.length;i++){
+var n=(i-i%32)/32;
+dict.set(keys[i],n?n.toString(32)+LO[i%32]:LO[i%32]);
+}
+
+
+var codes='';
+for(i=0;i<parts.length;i++){
+codes+=String(dict.get(parts[i]));
+}
+
+keys.unshift(MAGIC,String(keys.length));
+keys.push(codes);
+return keys.join('~');
+}
+};var _default=
+
+Miny;exports["default"]=_default;},66);
+                                                                                                                    __d("getBlankIframeSrc",["sdk.UA"],(function $module_getBlankIframeSrc(global,require,importDefault,importNamespace,requireLazy,module,exports){
+
+
+
+
+
+
+
+
+
+
+function getBlankIframeSrc(){
+return importDefault("sdk.UA").ie()<10?'javascript:false':'about:blank';
+}exports["default"]=getBlankIframeSrc;}),98);
+                                                                                                                    __d("insertIframe",["GlobalCallback","getBlankIframeSrc","guid"],(function $module_insertIframe(global,require,importDefault,importNamespace,requireLazy,module,exports){
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function insertIframe(opts)
+
+
+
+
+
+
+
+
+
+
+{
+
+
+
+var id=opts.id!=null?opts.id:importDefault("guid")();
+var name=opts.name!=null?opts.name:importDefault("guid")();
+
+
+
+
+
+
+var srcSet=false;
+var onloadDone=false;
+var callback=function callback(){
+if(srcSet&&!onloadDone){
+onloadDone=true;
+if(typeof opts.onload==='function'){
+opts.onload(opts.root.firstChild);
+}
+}
+};
+var globalCallback=importNamespace("GlobalCallback").create(callback);
+
+
+
+
+
+if(document.attachEvent){
+
+
+var html=
+'<iframe'+
+' id="'+
+id+
+'"'+
+' name="'+
+name+
+'"'+(
+opts.title!=null?' title="'+opts.title+'"':'')+(
+opts.className!=null?' class="'+opts.className+'"':'')+
+' style="border:none;'+(
+opts.width!=null?'width:'+opts.width+'px;':'')+(
+opts.height!=null?'height:'+opts.height+'px;':'')+
+'"'+
+' src="'+
+importDefault("getBlankIframeSrc")()+
+'"'+
+' frameborder="0"'+
+' scrolling="no"'+
+' allowtransparency="true"'+
+' onload="'+
+globalCallback+
+'()"'+
+'></iframe>';
+
+
+
+
+
+
+
+
+
+opts.root.innerHTML=
+'<iframe src="'+
+importDefault("getBlankIframeSrc")()+
+'"'+
+' frameborder="0"'+
+' scrolling="no"'+
+' style="height:1px"></iframe>';
+
+
+srcSet=true;
+
+
+
+
+
+
+window.setTimeout(function window_setTimeout_$0(){
+opts.root.innerHTML=html;
+var iframe=opts.root.firstChild;
+if(iframe instanceof HTMLIFrameElement){
+iframe.src=opts.url;
+}
+typeof opts.onInsert==='function'&&
+opts.onInsert(opts.root.firstChild);
+},0);
+}else{
+
+
+
+var node=document.createElement('iframe');
+node.id=id;
+node.name=name;
+node.onload=callback;
+node.scrolling='no';
+node.style.border='none';
+node.style.overflow='hidden';
+if(opts.title!=null){
+node.title=opts.title;
+}
+if(opts.className!=null){
+node.className=opts.className;
+}
+if(opts.height!==undefined){
+node.style.height=opts.height+'px';
+}
+if(opts.width!==undefined){
+if(opts.width==='100%'){
+node.style.width=opts.width;
+}else{
+node.style.width=opts.width+'px';
+}
+}
+opts.root.appendChild(node);
+
+
+srcSet=true;
+
+node.src=opts.url;
+opts.onInsert&&opts.onInsert(node);
+}
+}exports["default"]=insertIframe;}),98);
+                                                                                                                                                                                                                                                                     __d("PromiseAnnotate",[],function $module_PromiseAnnotate(global,require,requireDynamic,requireLazy,module,exports){
+
+'use strict';
+
+function setDisplayName(
+t,
+name)
+{
+
+t.displayName=name;
+return t;
+}
+function getDisplayName(t){
+
+var displayName=t.displayName;
+if(typeof displayName==='string'){
+return displayName;
+}else{
+return null;
+}
+}exports.setDisplayName=setDisplayName;exports.getDisplayName=getDisplayName;},66);
+                                                                                                                                                                                                                                                                                                              __d("Promise",["cr:6640"],function $module_Promise(global,require,requireDynamic,requireLazy,module,exports){
+
+'use strict';var _require;
+
+
+
+var Promise=(_require=
+
+require("cr:6640"))!=null?_require:global.Promise;
+
+if(!Promise.allSettled){
+Promise.allSettled=function(iterable){
+var arr;
+if((typeof Symbol==="function"?Symbol.iterator:"@@iterator")in iterable){
+arr=ES("Array","from",false,iterable);
+}else{
+return new Promise(function(){
+var e=new TypeError(
+'Promise.allSettled must be passed an iterable.'
+);
+void e.stack;
+throw e;
+});
+}
+
+var promises=Array(arr.length);var _loop=function _loop()
+
+
+{
+var value=arr[i];
+
+var isThenable=
+typeof value==='object'&&
+value!==null&&
+typeof value.then==='function';
+promises[i]=isThenable?
+new Promise(function(resolve,_reject){
+
+value.then(
+function onFulfilled(value){
+resolve({status:'fulfilled',value:value});
+},
+function onRejected(reason){
+resolve({status:'rejected',reason:reason});
+}
+);
+}):
+Promise.resolve({
+status:'fulfilled',
+value:value
+});
+};for(var i=0,len=arr.length;i<len;++i){_loop();}
+return Promise.all(promises);
+};
+}
+
+if(!Promise.prototype["finally"]){
+
+
+
+
+
+
+
+
+Promise.prototype["finally"]=function(onSettle){
+return this.then(
+function then_$0(value){return Promise.resolve(onSettle()).then(function then_$0(){return value;});},
+function then_$1(error){return(
+Promise.resolve(onSettle()).then(function then_$0(){
+throw error;
+}));}
+);
+};
+}
+
+module.exports=Promise;},null);
+                                                                                                                          __d("asyncToGeneratorRuntime",["Promise"],function $module_asyncToGeneratorRuntime(global,require,requireDynamic,requireLazy,module,exports){
+
+'use strict';var _require_closure_Promise;
+
+function asyncGeneratorStep(gen,resolve,reject,next,_throw,key,arg){
+try{
+var info=gen[key](arg);
+var value=info.value;
+}catch(error){
+reject(error);
+return;
+}
+
+if(info.done){
+resolve(value);
+}else{
+(_require_closure_Promise||(_require_closure_Promise=require("Promise"))).resolve(value).then(next,_throw);
+}
+}
+
+function asyncToGenerator(fn){
+return function(){
+var self=this,
+args=arguments;
+return new(_require_closure_Promise||(_require_closure_Promise=require("Promise")))(function(resolve,reject){
+var gen=fn.apply(self,args);
+function next(value){
+asyncGeneratorStep(gen,resolve,reject,next,_throw,'next',value);
+}
+function _throw(err){
+asyncGeneratorStep(gen,resolve,reject,next,_throw,'throw',err);
+}
+
+next(undefined);
+});
+};
+}exports.asyncToGenerator=asyncToGenerator;},66);
+                                                                                                                      __d("promiseDone",["ErrorPubSub","PromiseAnnotate","asyncToGeneratorRuntime","getErrorSafe"],function $module_promiseDone(global,require,importDefault,importNamespace,requireLazy,module,exports){var _importNamespace_closure_PromiseAnnotate;var _importDefault_closure_ErrorPubSub;
+
+
+
+
+
+
+
+
+
+function logError(err){
+var error=importDefault("getErrorSafe")(err);
+error.loggingSource='PROMISE_DONE';
+(_importDefault_closure_ErrorPubSub||(_importDefault_closure_ErrorPubSub=importDefault("ErrorPubSub"))).reportError(error);
+}
+
+function wrapReject(onReject){
+return function(){var _ref=require("asyncToGeneratorRuntime").asyncToGenerator(function*asyncToGeneratorRuntime_asyncToGenerator_$0(err){
+try{
+var result=yield onReject(err);
+
+return result;
+}catch(err2){
+logError(err2);
+}
+});return function(_x){return _ref.apply(this,arguments);};}();
+}
+
+
+
+
+
+function promiseDone(
+promise,
+onFulfill,
+
+onReject)
+{
+var finalOnReject=onReject!=null?wrapReject(onReject):null;
+var finalPromise=
+
+arguments.length>1?promise.then(onFulfill,finalOnReject):promise;
+
+if(onReject==null){
+
+finalPromise.then(null,logError);
+}
+
+
+
+var promiseDisplayName=(_importNamespace_closure_PromiseAnnotate||(_importNamespace_closure_PromiseAnnotate=importNamespace("PromiseAnnotate"))).getDisplayName(promise);
+if(promiseDisplayName!=null){
+void(_importNamespace_closure_PromiseAnnotate||(_importNamespace_closure_PromiseAnnotate=importNamespace("PromiseAnnotate"))).setDisplayName(finalPromise,promiseDisplayName);
+}
+}exports["default"]=promiseDone;},98);
+                                                                                                                    __d("sdk.Impressions",["Miny","QueryString","UrlMap","getBlankIframeSrc","guid","insertIframe","promiseDone","sdk.Content","sdk.Runtime"],function $module_sdk_Impressions(global,require,importDefault,importNamespace,requireLazy,module,exports){
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function impression(
+params,
+should_include_creds)
+{if(should_include_creds===void 0){should_include_creds=false;}
+var clientID=importDefault("sdk.Runtime").getClientID();
+var isCanvas=importDefault("sdk.Runtime").isEnvironment(importDefault("sdk.Runtime").ENVIRONMENTS.CANVAS);
+
+if(
+clientID&&(
+typeof params.api_key!=='string'||params.api_key===''))
+{
+params.api_key=clientID;
+}
+
+params.kid_directed_site=importDefault("sdk.Runtime").getKidDirectedSite();
+
+var url=importNamespace("UrlMap").resolve('www')+'/platform/impression.php/'+importDefault("guid")()+'/';
+if(isCanvas){
+
+url=
+importNamespace("UrlMap").resolve('www')+'/platform/canvas_impression.php/'+importDefault("guid")()+'/';
+}
+
+var fullUrlPath=importDefault("QueryString").appendToUrl(url,params);
+if(fullUrlPath.length>2000){
+
+
+if(params.payload&&typeof params.payload==='string'){
+var payload=params.payload;
+var minyPayload=importDefault("Miny").encode(payload);
+if(minyPayload&&minyPayload.length<payload.length){
+params.payload=minyPayload;
+fullUrlPath=importDefault("QueryString").appendToUrl(url,params);
+}
+}
+}
+
+if(window.fetch){
+makeRequest(url,fullUrlPath,params,should_include_creds||isCanvas);
+}else{
+makeRequest_DEPRECATED(
+url,
+fullUrlPath,
+params,
+should_include_creds||isCanvas
+);
+}
+}
+
+function makeRequest(
+url,
+fullUrlPath,
+params,
+should_include_creds)
+{if(should_include_creds===void 0){should_include_creds=false;}
+if(fullUrlPath.length<=2000){
+if(should_include_creds){
+importDefault("promiseDone")(
+window.fetch(fullUrlPath,{
+mode:'no-cors',
+credentials:'include'
+})
+);
+}else{
+importDefault("promiseDone")(
+window.fetch(fullUrlPath,{
+mode:'no-cors',
+credentials:'omit'
+})
+);
+}
+}else{
+var searchParams=new URLSearchParams();
+
+for(var _ref2 of ES("Object","entries",false,params)){var key=_ref2[0];var val=_ref2[1];
+if(val!=null){
+searchParams.set(key,String(val));
+}
+}
+
+if(should_include_creds){
+importDefault("promiseDone")(
+window.fetch(url,{
+method:'POST',
+body:searchParams,
+mode:'no-cors',
+credentials:'include'
+})
+);
+}else{
+importDefault("promiseDone")(
+window.fetch(url,{
+method:'POST',
+body:searchParams,
+mode:'no-cors',
+credentials:'omit'
+})
+);
+}
+}
+}
+
+function makeRequest_DEPRECATED(
+url,
+fullUrlPath,
+params,
+should_include_creds)
+{if(should_include_creds===void 0){should_include_creds=false;}
+if(fullUrlPath.length<=2000){
+var image=new Image();
+if(!should_include_creds){
+image.crossOrigin='anonymous';
+}
+
+image.src=fullUrlPath;
+}else{
+
+
+if(!should_include_creds){
+return;
+}
+
+var name=importDefault("guid")();
+var root=importNamespace("sdk.Content").appendHidden(document.createElement('div'));
+importDefault("insertIframe")({
+url:importDefault("getBlankIframeSrc")(),
+root:root,
+name:name,
+className:'fb_hidden fb_invisible',
+onload:function onload(){
+if(root.parentNode!=null){
+root.parentNode.removeChild(root);
+}
+}
+});
+
+importNamespace("sdk.Content").submitToTarget({
+url:url,
+target:name,
+params:params
+});
+}
+}
+
+function log(lid,payload){
+if(typeof payload.source!=='string'||payload.source===''){
+payload.source='jssdk';
+}
+
+impression({
+lid:lid,
+payload:ES("JSON","stringify",false,payload)
+});
+}exports.impression=impression;exports.log=log;},98);
                                                                                                                     __d("sdk.getContextType",["sdk.Runtime","sdk.UA"],function $module_sdk_getContextType(global,require,importDefault,importNamespace,requireLazy,module,exports){
 
 
@@ -14314,7 +14604,12 @@ logEvent(params==null?void 0:params.logger_id,actionName,babelHelpers["extends"]
 extra||{},{
 cbt_delta:Date.now()-cbt,
 fedcm_mediation:params==null?void 0:params.fedcm_mediation,
-fedcm_passive:(params==null?void 0:params.fedcm_passive)===true})
+fedcm_passive:(params==null?void 0:params.fedcm_passive)===true,
+
+
+
+
+fedcm_defaulted:(params==null?void 0:params.fedcm_defaulted)===true})
 );
 }
 
@@ -14460,6 +14755,7 @@ options)
 
 
 
+
 {
 var provider=getProviderConfig(scope!=null?{scope:scope}:undefined);
 
@@ -14481,6 +14777,10 @@ logger_id:options==null?void 0:options.logger_id,
 cbt:options==null?void 0:options.cbt,
 fedcm_mediation:options==null?void 0:options.mediation,
 fedcm_passive:(options==null?void 0:options.passive)===true,
+
+
+
+fedcm_defaulted:(options==null?void 0:options.defaulted)===true,
 tp:options==null?void 0:options.tp
 };
 importNamespace("sdk.LoggingUtils").logFedCMEvent(logParams,importNamespace("sdk.LoggingUtils").logEventName.fedcmRequestStart);
@@ -14652,6 +14952,11 @@ var fedcmLogParams={
 logger_id:opts==null?void 0:opts.logger_id,
 cbt:opts==null?void 0:opts.cbt,
 fedcm_passive:false,
+
+
+
+
+fedcm_defaulted:!importDefault("sdk.Runtime").getFedCMExplicitlySet(),
 tp:opts==null?void 0:opts.tp
 };
 if(!importNamespace("sdk.FedCM").isFedCMSupported()){
@@ -14662,6 +14967,7 @@ return;
 importNamespace("sdk.FedCM").requestFedCMCredential(opts==null?void 0:opts.scope,{
 cbt:opts==null?void 0:opts.cbt,
 context:importDefault("sdk.Runtime").getFedCMContext(),
+defaulted:!importDefault("sdk.Runtime").getFedCMExplicitlySet(),
 logger_id:opts==null?void 0:opts.logger_id,
 tp:opts==null?void 0:opts.tp
 }).
@@ -25560,7 +25866,8 @@ return;
 }
 sharePluginInitialize();
 }exports.init=init;},226);
-                                                                                                                    __d("sdk.init",["Log","ManagedError","sdk.Cookie","sdk.Event","sdk.MBasicInitializer","sdk.PlatformVersioning","sdk.Runtime","sdk.UA","sdk.URI"],function $module_sdk_init(global,require,importDefault,importNamespace,requireLazy,module,exports){
+                                                                                                                    __d("sdk.init",["Log","ManagedError","sdk.AppConfig","sdk.Cookie","sdk.Event","sdk.MBasicInitializer","sdk.PlatformVersioning","sdk.Runtime","sdk.UA","sdk.URI"],function $module_sdk_init(global,require,importDefault,importNamespace,requireLazy,module,exports){
+
 
 
 
@@ -25694,11 +26001,28 @@ if(options.useFamilyLogin){
 importDefault("sdk.Runtime").setShouldLoadFamilyLogin(true);
 }
 
+
+
+
+
+
+
+importDefault("sdk.Runtime").setFedCMExplicitlySet(false);
+
 if(
 options.fedCM===true||
+
+
+
+
+
+
+options.fedCM==='true'||
+options.fedCM==='1'||
 options.fedCM!=null&&typeof options.fedCM==='object')
 {
 importDefault("sdk.Runtime").setUseFedCM(true);
+importDefault("sdk.Runtime").setFedCMExplicitlySet(true);
 
 var fedCMConfig=typeof options.fedCM==='object'?options.fedCM:{};
 
@@ -25718,9 +26042,34 @@ importNamespace("Log").warn(
 fedCMConfig.context
 );
 }
-}else if(options.fedCM!=null&&options.fedCM!==false){
+}else if(
+options.fedCM===false||
+
+
+
+
+
+
+
+options.fedCM==='false'||
+options.fedCM===0||
+options.fedCM==='0'||
+options.fedCM==='')
+{
+
+
+
+
+importDefault("sdk.Runtime").setUseFedCM(false);
+importDefault("sdk.Runtime").setFedCMExplicitlySet(true);
+}else if(options.fedCM!=null){
 importNamespace("Log").warn('Invalid fedCM value. Must be true, false, or an options object.');
 }
+
+
+
+
+importNamespace("sdk.AppConfig").applyCachedAppConfig();
 
 if(options.autoLogAppEvents==='1'||options.autoLogAppEvents==='true'){
 
@@ -26073,7 +26422,8 @@ importDefault("runOnce")(function runOnce_$0(){return importNamespace("sdk.Time"
 
 var SDKTime={init:init};var _default=
 SDKTime;exports["default"]=_default;}),98);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                  __d("legacy:fb.sdk.index",["FB","sdk.AppEvents-public","sdk.Auth-public","sdk.Canvas-public","sdk.Event-public","sdk.FedCM-public","sdk.Frictionless-public","sdk.GamingServices-public","sdk.Runtime","sdk.XFBML-public","sdk.api-public","sdk.init-public","sdk.time-public","sdk.ui"],(function $module_legacy_fb_sdk_index(global,require,importDefault,importNamespace,requireLazy,__DO_NOT_USE__module,__DO_NOT_USE__exports){var _importDefault_sdkCanvaspublic;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                  __d("legacy:fb.sdk.index",["FB","sdk.AppConfig-public","sdk.AppEvents-public","sdk.Auth-public","sdk.Canvas-public","sdk.Event-public","sdk.FedCM-public","sdk.Frictionless-public","sdk.GamingServices-public","sdk.Runtime","sdk.XFBML-public","sdk.api-public","sdk.init-public","sdk.time-public","sdk.ui"],(function $module_legacy_fb_sdk_index(global,require,importDefault,importNamespace,requireLazy,__DO_NOT_USE__module,__DO_NOT_USE__exports){var _importDefault_sdkCanvaspublic;
+
 
 
 
@@ -26092,6 +26442,7 @@ SDKTime;exports["default"]=_default;}),98);
 
 
 importDefault("sdk.api-public").init();
+importDefault("sdk.AppConfig-public").init();
 importDefault("sdk.AppEvents-public").init();
 importDefault("sdk.Auth-public").init();
 (_importDefault_sdkCanvaspublic=importDefault("sdk.Canvas-public")).init();
@@ -26120,4 +26471,4 @@ importDefault("sdk.Runtime").setIsVersioned(true);}),35);
 
 if(window.FB&&window.FB.__buffer){
 window.__buffer=babelHelpers["extends"]({},window.FB.__buffer);
-}    }  }).call(global);})();} catch (__fb_err) {var __fb_i = new Image();__fb_i.crossOrigin = 'anonymous';__fb_i.dataset.testid = 'fbSDKErrorReport';__fb_i.src='https://www.facebook.com/platform/scribe_endpoint.php/?c=jssdk_error&m='+encodeURIComponent('{"error":"LOAD", "extra": {"name":"'+__fb_err.name+'","line":"'+(__fb_err.lineNumber||__fb_err.line)+'","script":"'+(__fb_err.fileName||__fb_err.sourceURL||__fb_err.script||"debug.js")+'","stack":"'+(__fb_err.stackTrace||__fb_err.stack)+'","revision":"1045418364","namespace":"FB","message":"'+__fb_err.message+'"}}');document.body.appendChild(__fb_i);}
+}    }  }).call(global);})();} catch (__fb_err) {var __fb_i = new Image();__fb_i.crossOrigin = 'anonymous';__fb_i.dataset.testid = 'fbSDKErrorReport';__fb_i.src='https://www.facebook.com/platform/scribe_endpoint.php/?c=jssdk_error&m='+encodeURIComponent('{"error":"LOAD", "extra": {"name":"'+__fb_err.name+'","line":"'+(__fb_err.lineNumber||__fb_err.line)+'","script":"'+(__fb_err.fileName||__fb_err.sourceURL||__fb_err.script||"debug.js")+'","stack":"'+(__fb_err.stackTrace||__fb_err.stack)+'","revision":"1045456189","namespace":"FB","message":"'+__fb_err.message+'"}}');document.body.appendChild(__fb_i);}
