@@ -1,4 +1,4 @@
-/*1787076027,,JIT Construction: v1045456189,en_US*/
+/*1787176803,,JIT Construction: v1045578446,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3769,7 +3769,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1045456189",
+            revision: "1045578446",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -15134,14 +15134,22 @@ try {
                 );
               }
 
+              var FEDCM_SENTINEL_LOGGER_ID = "fedcm_client_no_logger_id";
+
               function logFedCMEvent(params, actionName, extra) {
                 if (shouldDropLog(params)) {
                   return;
                 }
                 var cbt =
                   params && params.cbt !== undefined ? Number(params.cbt) : 0;
+
+                var loggerID = params == null ? void 0 : params.logger_id;
+                var resolvedLoggerID =
+                  typeof loggerID === "string" && loggerID !== ""
+                    ? loggerID
+                    : FEDCM_SENTINEL_LOGGER_ID;
                 logEvent(
-                  params == null ? void 0 : params.logger_id,
+                  resolvedLoggerID,
                   actionName,
                   babelHelpers["extends"]({}, extra || {}, {
                     cbt_delta: Date.now() - cbt,
@@ -15174,6 +15182,7 @@ try {
               exports.logEvent = logEvent;
               exports.shouldDropLog = shouldDropLog;
               exports.logLoginEvent = logLoginEvent;
+              exports.FEDCM_SENTINEL_LOGGER_ID = FEDCM_SENTINEL_LOGGER_ID;
               exports.logFedCMEvent = logFedCMEvent;
               exports.logPopupEvent = logPopupEvent;
               exports.logDisambiguationTrayEvent = logDisambiguationTrayEvent;
@@ -21638,9 +21647,12 @@ try {
                       return;
                     }
 
+                    var trackingPreference =
+                      options == null ? void 0 : options.tp;
                     var passiveLogParams = {
                       fedcm_passive: true,
                       fedcm_mediation: "optional",
+                      tp: trackingPreference,
                     };
 
                     var skipReason = null;
@@ -21687,6 +21699,7 @@ try {
                           passive: true,
                           context:
                             importDefault("sdk.Runtime").getFedCMContext(),
+                          tp: trackingPreference,
                         },
                       )
                       .then(function then_$0(result) {
@@ -27769,7 +27782,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1045456189","namespace":"FB","message":"' +
+        '","revision":"1045578446","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
