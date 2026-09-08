@@ -1,4 +1,4 @@
-/*1788904597,,JIT Construction: v1047006794,en_US*/
+/*1788908204,,JIT Construction: v1047020237,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3766,7 +3766,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1047006794",
+            revision: "1047020237",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -12547,13 +12547,14 @@ try {
                   "init:post",
                   function Event_subscribe_$1(options) {
                     if (importDefault("sdk.Runtime").getClientID()) {
-                      if (options.autoLogAppEvents !== undefined) {
+                      var autoLogAppEvents = options.autoLogAppEvents;
+                      if (autoLogAppEvents !== undefined) {
                         importDefault("Assert").isBoolean(
-                          options.autoLogAppEvents,
+                          autoLogAppEvents,
                           "Type of property autoLogAppEvents must be boolean",
                         );
                         importDefault("sdk.Runtime").setAutoLogAppEvents(
-                          options.autoLogAppEvents,
+                          autoLogAppEvents,
                         );
                       }
                       if (importDefault("sdk.Runtime").getAutoLogAppEvents()) {
@@ -27778,7 +27779,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1047006794","namespace":"FB","message":"' +
+        '","revision":"1047020237","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
