@@ -1,4 +1,4 @@
-/*1788908204,,JIT Construction: v1047020237,en_US*/
+/*1788916329,,JIT Construction: v1047036440,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3766,7 +3766,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1047020237",
+            revision: "1047036440",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -17961,7 +17961,7 @@ try {
 
                     if (copiedBatchCalls.length === 1) {
                       var call = copiedBatchCalls[0];
-                      var callback = copiedBatchCallbacks[0];
+                      var _callback = copiedBatchCallbacks[0];
 
                       var body = call.body
                         ? importDefault("QueryString").decode(call.body)
@@ -17971,7 +17971,7 @@ try {
                         call.relative_url,
                         call.method,
                         body,
-                        callback,
+                        _callback,
                       );
                       return;
                     }
@@ -24855,26 +24855,21 @@ try {
                     importNamespace("sdk.SharedStringConstants")
                       .buttonStringsFBT.logoutButtonAriaLabel,
                     setLabelContainer,
-                    function _this_createFBButton_$4(state) {
-                      this.style.display =
+                    function _this_createFBButton_$4(button, state) {
+                      button.style.display =
                         state.status === "connected" ? "flex" : "none";
                     },
-                    ES(
-                      function (e) {
-                        importDefault("sdk.Auth").logout();
-                        if (
-                          e &&
-                          e.detail === 0 &&
-                          this.fbLoginButton &&
-                          this.fbLoginButton.style.display !== "none"
-                        ) {
-                          this.fbLoginButton.focus();
-                        }
-                      },
-                      "bind",
-                      true,
-                      _this,
-                    ),
+                    function _this_createFBButton_$5(e) {
+                      importDefault("sdk.Auth").logout();
+                      if (
+                        e &&
+                        e.detail === 0 &&
+                        _this.fbLoginButton &&
+                        _this.fbLoginButton.style.display !== "none"
+                      ) {
+                        _this.fbLoginButton.focus();
+                      }
+                    },
                   );
                   return _this;
                 }
@@ -24903,29 +24898,25 @@ try {
                 _proto.createSingleButton = function createSingleButton(
                   labelText,
                 ) {
+                  var _this3 = this;
                   return this.createFBButton(
                     "fb-button-main-element",
                     labelText,
                     labelText,
                     setSingleButtonLabel,
-                    function createFBButton_$4(state) {
-                      this.style.display =
+                    function createFBButton_$4(button, state) {
+                      button.style.display =
                         state.status === "connected" ? "none" : "flex";
                     },
-                    ES(
-                      function (e) {
-                        e.stopPropagation();
-                        importNamespace("sdk.LoggingUtils").logLoginEvent(
-                          this.params,
-                          importNamespace("sdk.LoggingUtils").logEventName
-                            .buttonClick + "_single_fb",
-                        );
-                        this.loginTrigger();
-                      },
-                      "bind",
-                      true,
-                      this,
-                    ),
+                    function createFBButton_$5(e) {
+                      e.stopPropagation();
+                      importNamespace("sdk.LoggingUtils").logLoginEvent(
+                        _this3.params,
+                        importNamespace("sdk.LoggingUtils").logEventName
+                          .buttonClick + "_single_fb",
+                      );
+                      _this3.loginTrigger();
+                    },
                   );
                 };
                 _proto.loginTrigger = function loginTrigger() {
@@ -24945,7 +24936,7 @@ try {
                   ariaLabelText,
                   setLabel,
 
-                  updateDisplay,
+                  _updateDisplay,
                   onClick,
                 ) {
                   var fbButton = document.createElement("button");
@@ -24973,27 +24964,29 @@ try {
                   );
                   var observer = {
                     element: fbButton,
-                    updateDisplay: ES(updateDisplay, "bind", true, fbButton),
+                    updateDisplay: function updateDisplay(state) {
+                      return _updateDisplay(fbButton, state);
+                    },
                   };
                   this.stateObservers.push(observer);
                   this.container.appendChild(fbButton);
                   return fbButton;
                 };
                 _proto.loginCb = function loginCb() {
-                  var _this3 = this;
+                  var _this4 = this;
                   return function (response) {
                     if (
                       response.authResponse != null &&
                       response.status === "connected"
                     ) {
                       importNamespace("sdk.LoggingUtils").logLoginEvent(
-                        _this3.params,
+                        _this4.params,
                         importNamespace("sdk.LoggingUtils").logEventName
                           .loginSuccess + "_single_fb",
                       );
                     } else {
                       importNamespace("sdk.LoggingUtils").logLoginEvent(
-                        _this3.params,
+                        _this4.params,
                         importNamespace("sdk.LoggingUtils").logEventName
                           .loginCancel + "_single_fb",
                       );
@@ -25048,12 +25041,13 @@ try {
                   var size = sizeParams !== "" ? sizeParams : "small";
                   component.style.borderRadius = this.borderRadius;
 
-                  var width =
+                  var width = String(
                     (_PluginUtils$getVal2 = importNamespace(
                       "sdk.PluginUtils",
                     ).getVal(params, "width")) != null
                       ? _PluginUtils$getVal2
-                      : null;
+                      : "",
+                  );
                   component.style.width = getWidthForSize(
                     size,
                     width,
@@ -25086,12 +25080,13 @@ try {
                     importNamespace("sdk.PluginUtils").getVal(params, "layout"),
                   );
                   var radius = radiusParam !== "" ? radiusParam : "default";
-                  var widthParam =
+                  var widthParam = String(
                     (_PluginUtils$getVal3 = importNamespace(
                       "sdk.PluginUtils",
                     ).getVal(params, "width")) != null
                       ? _PluginUtils$getVal3
-                      : null;
+                      : "",
+                  );
                   var width = getWidthForSize(size, widthParam).toString();
                   var url =
                     importNamespace("UrlMap").resolve("www") +
@@ -25171,18 +25166,20 @@ try {
                   /\s?{facebook_app_name}\s?/,
                   "",
                 );
-                var width =
+                var width = String(
                   (_PluginUtils$getVal5 = importNamespace(
                     "sdk.PluginUtils",
                   ).getVal(params, "width")) != null
                     ? _PluginUtils$getVal5
-                    : null;
-                var size =
+                    : "",
+                );
+                var size = String(
                   (_PluginUtils$getVal6 = importNamespace(
                     "sdk.PluginUtils",
                   ).getVal(params, "size")) != null
                     ? _PluginUtils$getVal6
-                    : "large";
+                    : "large",
+                );
                 var widthForSize = getWidthForSize(size, width);
                 var textWidth = getTextWidth(textToMeasure)
                   ? getTextWidth(textToMeasure)
@@ -27779,7 +27776,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1047020237","namespace":"FB","message":"' +
+        '","revision":"1047036440","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
