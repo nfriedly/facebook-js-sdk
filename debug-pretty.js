@@ -1,4 +1,4 @@
-/*1789102600,,JIT Construction: v1047288453,en_US*/
+/*1789185397,,JIT Construction: v1047368832,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3766,7 +3766,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1047288453",
+            revision: "1047368832",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -25688,6 +25688,7 @@ try {
                         ),
                       );
                       _this.updateLift();
+
                       clearTimeout(_this.$IframePluginClass$p_timeoutID);
                     },
                   );
@@ -25711,6 +25712,7 @@ try {
                       );
                       _this.$IframePluginClass$p_isIframeResized = true;
                       _this.updateLift();
+
                       clearTimeout(_this.$IframePluginClass$p_timeoutID);
                     },
                   );
@@ -25727,6 +25729,7 @@ try {
                       );
                       _this.$IframePluginClass$p_isIframeResized = true;
                       _this.updateLift();
+
                       clearTimeout(_this.$IframePluginClass$p_timeoutID);
                     },
                   );
@@ -25942,6 +25945,7 @@ try {
                   }
                   this.element.appendChild(this.iframeOptions.root);
                   var timeout = importDefault("sdk.UA").mobile() ? 120 : 45;
+
                   this.$IframePluginClass$p_timeoutID = setTimeout(
                     function setTimeout_$0() {
                       importNamespace("sdk.PluginUtils").collapseIframe(
@@ -27775,7 +27779,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1047288453","namespace":"FB","message":"' +
+        '","revision":"1047368832","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
