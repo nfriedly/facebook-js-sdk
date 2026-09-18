@@ -1,4 +1,4 @@
-/*1789628562,,JIT Construction: v1047760214,en_US*/
+/*1789703797,,JIT Construction: v1047853221,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3768,7 +3768,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1047760214",
+            revision: "1047853221",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -8840,6 +8840,7 @@ try {
                   window.addEventListener("load", flush, false);
                 } else if (document.attachEvent) {
                   document.attachEvent("onreadystatechange", flush);
+
                   if (window.attachEvent) {
                     window.attachEvent("onload", flush);
                   }
@@ -9036,6 +9037,7 @@ try {
                   return [];
                 }
                 var _tagName = tagName || "*";
+
                 return ES(
                   "Array",
                   "from",
@@ -16133,6 +16135,7 @@ try {
                   );
                   target.addEventListener(
                     name,
+
                     listener.wrapper,
                     isPassiveEventListenerSupported ? options : false,
                   );
@@ -16159,14 +16162,17 @@ try {
                     "entry",
                     "DOMEventListener.add " + name,
                   );
+
                   target.attachEvent ||
                     invariant(0, "`target` has no `attachEvent` method.");
+
                   target.attachEvent("on" + name, listener.wrapper);
                 };
                 _remove = function remove(target, name, listener, _options) {
                   if (_options === void 0) {
                     _options = false;
                   }
+
                   target.detachEvent ||
                     invariant(0, "`target` has no `detachEvent` method.");
 
@@ -27786,7 +27792,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1047760214","namespace":"FB","message":"' +
+        '","revision":"1047853221","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
