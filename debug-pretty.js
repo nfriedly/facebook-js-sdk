@@ -1,4 +1,4 @@
-/*1790056597,,JIT Construction: v1048115090,en_US*/
+/*1790107014,,JIT Construction: v1048172514,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3768,7 +3768,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1048115090",
+            revision: "1048172514",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -8270,7 +8270,7 @@ try {
                       return new Promise(then.bind(value));
                     }
                   } catch (ex) {
-                    return new Promise(function (resolve, reject) {
+                    return new Promise(function (_resolve, reject) {
                       reject(ex);
                     });
                   }
@@ -8341,7 +8341,7 @@ try {
               };
 
               Promise.reject = function (value) {
-                return new Promise(function (resolve, reject) {
+                return new Promise(function (_resolve, reject) {
                   reject(value);
                 });
               };
@@ -8358,7 +8358,7 @@ try {
                 return this.then(null, onRejected);
               };
 
-              Promise.prototype.done = function (onFulfilled, onRejected) {
+              Promise.prototype.done = function (_onFulfilled, _onRejected) {
                 (
                   _require_closure_ErrorPubSub ||
                   (_require_closure_ErrorPubSub = require("ErrorPubSub"))
@@ -10256,7 +10256,6 @@ try {
 
               if (__DEV__) {
                 FB.require = require;
-
                 window._FB = FB;
               }
 
@@ -27788,7 +27787,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1048115090","namespace":"FB","message":"' +
+        '","revision":"1048172514","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
