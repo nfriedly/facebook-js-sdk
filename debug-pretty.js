@@ -1,4 +1,4 @@
-/*1790107014,,JIT Construction: v1048172514,en_US*/
+/*1790200597,,JIT Construction: v1048289394,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3768,7 +3768,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1048172514",
+            revision: "1048289394",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -24317,6 +24317,14 @@ try {
                   }
                 }
 
+                var callbackCall = /^\s*(\w+)\s*\(\s*\)\s*;?\s*$/.exec(source);
+                if (callbackCall != null) {
+                  var _windowValue = window[callbackCall[1]];
+                  if (isFunction(_windowValue)) {
+                    return _windowValue();
+                  }
+                }
+
                 importNamespace("sdk.Scribe").log("jssdk_error", {
                   appId: importDefault("sdk.Runtime").getClientID(),
                   error: "USE_OF_EVAL_FUNCTION",
@@ -24325,11 +24333,7 @@ try {
                   },
                 });
 
-                return new Function(
-                  'return eval("' +
-                    source.replace(/\"/g, '\\"').replace(/`/g, "\\\\`") +
-                    '");',
-                ).apply(null, args || []);
+                return;
               }
 
               module.exports = safeEval;
@@ -27787,7 +27791,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1048172514","namespace":"FB","message":"' +
+        '","revision":"1048289394","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
