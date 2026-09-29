@@ -1,4 +1,4 @@
-/*1790647490,,JIT Construction: v1048711051,en_US*/
+/*1790719001,,JIT Construction: v1048792267,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3768,7 +3768,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1048711051",
+            revision: "1048792267",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -11410,7 +11410,7 @@ try {
                         protocol === "sms" ||
                         protocol === "data";
                       if (!safe) {
-                        console.warn(
+                        importDefault("FBLogger")("uri").warn(
                           'Path does not begin with a "/" which means this URI ' +
                             "will likely be malformed. Ensure any string passed to .setPath() " +
                             'leads with "/": path "%s" for uri "%s".',
@@ -27786,7 +27786,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1048711051","namespace":"FB","message":"' +
+        '","revision":"1048792267","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
