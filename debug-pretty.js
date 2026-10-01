@@ -1,4 +1,4 @@
-/*1790881064,,JIT Construction: v1049007170,en_US*/
+/*1790895395,,JIT Construction: v1049045808,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3770,7 +3770,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1049007170",
+            revision: "1049045808",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -24188,9 +24188,8 @@ try {
               "use strict";
 
               var LWIAdsCreation = importDefault("IframePlugin").extend({
-                constructor: function constructor(elem, ns, tag, attr) {
+                constructor: function LWIAdsCreation(elem, ns, tag, attr) {
                   this.parent(elem, ns, tag, attr);
-
                   this._setUpSubscriptions();
                 },
 
@@ -24208,7 +24207,6 @@ try {
 
                 _setUpSubscriptions: function _setUpSubscriptions() {
                   var _this = this;
-
                   this.subscribe(
                     "xd.lwiadscreation.load",
                     function subscribe_$1(message) {
@@ -27786,7 +27784,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1049007170","namespace":"FB","message":"' +
+        '","revision":"1049045808","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
