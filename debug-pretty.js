@@ -1,4 +1,4 @@
-/*1791017889,,JIT Construction: v1049208796,en_US*/
+/*1791103947,,JIT Construction: v1049246483,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3770,7 +3770,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1049208796",
+            revision: "1049246483",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -25362,7 +25362,7 @@ try {
               }
 
               var LoginButton = importDefault("IframePlugin").extend({
-                constructor: function constructor(elem, ns, tag, attr) {
+                constructor: function LoginButton(elem, ns, tag, attr) {
                   if (
                     (importNamespace("sdk.modFeatureCheck").forIDs(
                       "allow_shadow_dom_for_apps_with_id",
@@ -25419,7 +25419,6 @@ try {
                     "on_login",
                   );
                   var cb = null;
-
                   var iframeName = this._iframeOptions.name;
                   if (onlogin) {
                     cb = function cb(response) {
@@ -27784,7 +27783,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1049208796","namespace":"FB","message":"' +
+        '","revision":"1049246483","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
