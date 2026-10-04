@@ -1,4 +1,4 @@
-/*1791110862,,JIT Construction: v1049252074,en_US*/
+/*1791116749,,JIT Construction: v1049255234,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3769,7 +3769,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1049252074",
+            revision: "1049255234",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -8444,13 +8444,14 @@ try {
             ) {
               function dotAccess(head, path, create) {
                 var stack = path.split(".");
+                var current = head;
                 do {
                   var key = stack.shift();
-
-                  head =
-                    head[key] || (Boolean(create) ? (head[key] = {}) : create);
-                } while (stack.length && head);
-                return head;
+                  current =
+                    current[key] ||
+                    (Boolean(create) ? (current[key] = {}) : create);
+                } while (stack.length && current);
+                return current;
               }
               exports["default"] = dotAccess;
             },
@@ -26238,7 +26239,6 @@ try {
               var Save = importDefault("IframePlugin").extend({
                 constructor: function constructor(elem, ns, tag, attr) {
                   var _this = this;
-
                   this.parent(elem, ns, tag, attr);
                   var isMobile = importDefault("sdk.UA").mobile();
 
@@ -26294,7 +26294,6 @@ try {
                       };
 
                       var idleEvent;
-
                       _this.subscribe(
                         "xd.savePluginShowIframe",
                         function _this_subscribe_$1() {
@@ -26302,7 +26301,6 @@ try {
                             "savePlugin:hideDialog",
                           );
                           allNodes.forEach(show);
-
                           _this.positionOnScreen(dialog, darkOverlay);
 
                           if (!isMobile && !idleEvent) {
@@ -26312,7 +26310,6 @@ try {
                           }
                         },
                       );
-
                       _this.subscribe(
                         "xd.savePluginHideIframe",
                         function _this_subscribe_$1() {
@@ -27781,7 +27778,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1049252074","namespace":"FB","message":"' +
+        '","revision":"1049255234","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
