@@ -1,4 +1,4 @@
-/*1791103947,,JIT Construction: v1049246483,en_US*/
+/*1791110862,,JIT Construction: v1049252074,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -2828,7 +2828,6 @@ try {
                   if (!hasOwn.call(obj, i) || keys.indexOf(i) >= 0) {
                     continue;
                   }
-
                   target[i] = obj[i];
                 }
                 return target;
@@ -3770,7 +3769,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1049246483",
+            revision: "1049252074",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -10305,9 +10304,9 @@ try {
                     var isPlainObject = true;
 
                     if (result && typeof result === "object") {
-                      facade = Object.create(result);
-
-                      facade.__wrapped = result;
+                      var newFacade = Object.create(result);
+                      facade = newFacade;
+                      newFacade.__wrapped = result;
 
                       for (var key in result) {
                         var property = result[key];
@@ -10318,7 +10317,6 @@ try {
                           continue;
                         }
                         isPlainObject = false;
-
                         facade[key] = protect(
                           property,
                           accessor + ":" + key,
@@ -12906,8 +12904,7 @@ try {
                 }
                 var currentTimer =
                   importDefault("sdk.AuthState").getState().timer;
-
-                if (currentTimer) {
+                if (currentTimer != null && currentTimer !== 0) {
                   window.clearTimeout(currentTimer);
                 }
                 var timer = window.setTimeout(function window_setTimeout_$0() {
@@ -22930,7 +22927,8 @@ try {
                 if (opts.lazy) {
                   opts.loading = "lazy";
 
-                  if (style.visibility) {
+                  var visibility = style.visibility;
+                  if (visibility != null && visibility !== "") {
                     delete style.visibility;
                   }
                 }
@@ -27783,7 +27781,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1049246483","namespace":"FB","message":"' +
+        '","revision":"1049252074","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
