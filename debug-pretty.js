@@ -1,4 +1,4 @@
-/*1791146243,,JIT Construction: v1049267067,en_US*/
+/*1791237396,,JIT Construction: v1049338038,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3769,7 +3769,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1049267067",
+            revision: "1049338038",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -22760,7 +22760,8 @@ try {
 
               function validate(defn, elem, attr, params) {
                 Object.keys(defn).forEach(function forEach_$0(key) {
-                  if (defn[key] === "text" && !attr[key]) {
+                  var attrType = defn[key];
+                  if (attrType === "text" && !attr[key]) {
                     var _ref6, _elem$textContent;
                     attr[key] =
                       (_ref6 =
@@ -27778,7 +27779,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1049267067","namespace":"FB","message":"' +
+        '","revision":"1049338038","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
