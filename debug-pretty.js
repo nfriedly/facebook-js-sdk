@@ -1,4 +1,4 @@
-/*1791316600,,JIT Construction: v1049459221,en_US*/
+/*1791320198,,JIT Construction: v1049476576,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3769,7 +3769,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1049459221",
+            revision: "1049476576",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -9752,7 +9752,6 @@ try {
                 CookieUserID: "",
                 EnforceHttps: false,
                 Environment: ENVIRONMENTS.UNKNOWN,
-                FamilyLoginLoaded: false,
                 FedCMContext: "signin",
 
                 FedCMExplicitlySet: false,
@@ -9772,7 +9771,6 @@ try {
                 SDKAB: _importNamespace_JSSDKRuntimeConfig.sdkab,
                 SDKUrl: _importNamespace_JSSDKRuntimeConfig.sdkurl,
                 SDKNS: _importNamespace_JSSDKRuntimeConfig.sdkns,
-                ShouldLoadFamilyLogin: false,
                 UseCookie: false,
                 UseFedCM: false,
                 UseLocalStorage: true,
@@ -12600,16 +12598,8 @@ try {
               var authState = initState();
 
               function initState() {
-                var initialMixedState = {
-                  igAuthResponse: null,
-                  fbAuthResponse: null,
-                  fbLoginStatus: null,
-                  igLoginStatus: null,
-                };
                 return {
                   currentAuthResponse: null,
-                  shouldSecondLoginRequestTimeOut: false,
-                  mixedAuthState: initialMixedState,
                   loadState: null,
                   timer: null,
                   currentTimeOut:
@@ -12870,21 +12860,6 @@ try {
                 }
               }
 
-              function resetFBAndIGLoginStatus() {
-                var mixedAuthState = {
-                  fbAuthResponse: null,
-                  fbLoginStatus: null,
-                  igAuthResponse: null,
-                  igLoginStatus: null,
-                };
-                var shouldSecondLoginRequestTimeOut = false;
-                importDefault("sdk.AuthState").setState({
-                  mixedAuthState: mixedAuthState,
-                  shouldSecondLoginRequestTimeOut:
-                    shouldSecondLoginRequestTimeOut,
-                });
-              }
-
               function setGraphDomain(graphDomain) {
                 if (graphDomain != null) {
                   importDefault("sdk.Runtime").setGraphDomain(graphDomain);
@@ -13019,13 +12994,10 @@ try {
                 DEFAULT_REVALIDATE_PERIOD: DAY_MS,
                 LOGOUT_COOKIE_PREFIX: "fblo_",
                 CORS_FETCH_COMPLETED_EVENT: "cors_fetch_completed",
-                XFOA_FINAL_RESPONSE_EVENT: "xfoa_final_response",
-                LOAD_XFOA_SUBSCRIBERS: "load_xfoa_subscribers",
                 REVALIDATE_TIMER_TIMEOUT: "revalidate_timer_timeout",
               };
               exports.isInstagramLogin = isInstagramLogin;
               exports.setBaseDomain = setBaseDomain;
-              exports.resetFBAndIGLoginStatus = resetFBAndIGLoginStatus;
               exports.setGraphDomain = setGraphDomain;
               exports.setLogoutState = setLogoutState;
               exports.setRevalidateTimer = setRevalidateTimer;
@@ -14907,12 +14879,9 @@ try {
               "use strict";
 
               var logEventName = {
-                buttonLoad: "client_login_button_load",
                 buttonClick: "client_login_click",
                 loginSuccess: "client_login_success",
                 loginCancel: "client_login_cancel",
-                popupHide: "client_login_popup_hide_xfoa",
-                popupShow: "client_login_popup_show_xfoa",
                 loginEnd: "client_login_end",
                 loginStart: "client_login_start",
                 loginDeniedResponse: "client_login_denied_response",
@@ -14920,12 +14889,6 @@ try {
                 loginErrorResponse: "client_login_error_response",
                 loginUnexpectedResponse: "client_login_unexpected_response",
                 loginCompleteHeartbeat: "client_login_complete_heartbeat",
-                loginStatusPopupShowXfoa: "client_login_status_popup_show_xfoa",
-                loginStatusPopupHideXfoa: "client_login_status_popup_hide_xfoa",
-                loginStatusPopupClickXfoa:
-                  "client_login_status_popup_click_xfoa",
-                loginStatusPopupErrorXfoa:
-                  "client_login_status_popup_error_xfoa",
                 loginUsingOauthSubdomain: "client_login_using_oauth_subdomain",
                 fedcmRequestStart: "client_fedcm_request_start",
                 fedcmSuccess: "client_fedcm_success",
@@ -15006,28 +14969,12 @@ try {
                   }),
                 );
               }
-
-              function logPopupEvent(loggerID, actionName) {
-                if (actionName !== undefined) {
-                  logEvent(loggerID, actionName);
-                }
-              }
-
-              function logDisambiguationTrayEvent(error, loggerID) {
-                if (error !== undefined) {
-                  logEvent(loggerID, logEventName.loginStatusPopupErrorXfoa, {
-                    message: error,
-                  });
-                }
-              }
               exports.logEventName = logEventName;
               exports.logEvent = logEvent;
               exports.shouldDropLog = shouldDropLog;
               exports.logLoginEvent = logLoginEvent;
               exports.FEDCM_SENTINEL_LOGGER_ID = FEDCM_SENTINEL_LOGGER_ID;
               exports.logFedCMEvent = logFedCMEvent;
-              exports.logPopupEvent = logPopupEvent;
-              exports.logDisambiguationTrayEvent = logDisambiguationTrayEvent;
             },
             98,
           );
@@ -15477,12 +15424,6 @@ try {
                 ).AuthInternalEvent.clearSubscribers(
                   importNamespace("sdk.AuthUtils").AuthConstants
                     .CORS_FETCH_COMPLETED_EVENT,
-                );
-                importNamespace(
-                  "sdk.AuthUtils",
-                ).AuthInternalEvent.clearSubscribers(
-                  importNamespace("sdk.AuthUtils").AuthConstants
-                    .XFOA_FINAL_RESPONSE_EVENT,
                 );
               }
 
@@ -27128,10 +27069,6 @@ try {
                   importDefault("sdk.Runtime").setKidDirectedSite(true);
                 }
 
-                if (options.useFamilyLogin) {
-                  importDefault("sdk.Runtime").setShouldLoadFamilyLogin(true);
-                }
-
                 importDefault("sdk.Runtime").setFedCMExplicitlySet(false);
 
                 if (
@@ -27625,7 +27562,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1049459221","namespace":"FB","message":"' +
+        '","revision":"1049476576","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
