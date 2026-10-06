@@ -1,4 +1,4 @@
-/*1791237396,,JIT Construction: v1049338038,en_US*/
+/*1791249540,,JIT Construction: v1049366336,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3769,7 +3769,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1049338038",
+            revision: "1049366336",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -13127,29 +13127,19 @@ try {
                 );
               }
 
-              function getLocalStorageTokens() {
-                var fbToken = null;
-                var igToken = null;
-                if (importDefault("sdk.Runtime").getUseLocalStorage()) {
-                  var localStorage =
-                    importNamespace("sdk.WebStorage").getLocalStorageForRead();
-                  if (localStorage) {
-                    fbToken = localStorage.getItem(
+              function getLocalStorageToken() {
+                if (!importDefault("sdk.Runtime").getUseLocalStorage()) {
+                  return null;
+                }
+                var localStorage =
+                  importNamespace("sdk.WebStorage").getLocalStorageForRead();
+                return localStorage == null
+                  ? void 0
+                  : localStorage.getItem(
                       importNamespace("sdk.AuthUtils").AuthConstants
                         .LOCAL_STORAGE_TOKEN_PREFIX +
                         importDefault("sdk.Runtime").getClientID(),
                     );
-                    igToken = localStorage.getItem(
-                      importNamespace("sdk.AuthUtils").AuthConstants
-                        .IG_LOCAL_STORAGE_TOKEN_PREFIX +
-                        importDefault("sdk.Runtime").getClientID(),
-                    );
-                  }
-                }
-                return {
-                  fbToken: fbToken,
-                  igToken: igToken,
-                };
               }
 
               function getCachedResponse() {
@@ -13189,7 +13179,7 @@ try {
               exports.setLocalStorageToken = setLocalStorageToken;
               exports.removeLocalStorageToken = removeLocalStorageToken;
               exports.setSessionStorage = setSessionStorage;
-              exports.getLocalStorageTokens = getLocalStorageTokens;
+              exports.getLocalStorageToken = getLocalStorageToken;
               exports.getCachedResponse = getCachedResponse;
             },
             98,
@@ -14073,7 +14063,6 @@ try {
             ) {
               "use strict";
 
-              var DEFAULT_TIMEOUT = 60000;
               var PLATFORM_E2E_TRACKING_LOG_ID = 114;
 
               function getLoginStatusCORS(
@@ -14146,19 +14135,6 @@ try {
                   }
                 }
 
-                function timeOutSecondRequestIfNecessary() {
-                  if (!isTheOtherLoginStatusLoaded(loginSource)) {
-                    window.setTimeout(function window_setTimeout_$0() {
-                      defaultLoginSourceToUnknownStatus(
-                        loginSource === "facebook" ? "instagram" : "facebook",
-                      );
-                      importDefault("sdk.AuthState").setState({
-                        shouldSecondLoginRequestTimeOut: true,
-                      });
-                    }, DEFAULT_TIMEOUT);
-                  }
-                }
-
                 function corsFetch() {
                   window
                     .fetch(url.toString(), {
@@ -14167,17 +14143,6 @@ try {
                       credentials: "include",
                     })
                     .then(function then_$0(response) {
-                      if (
-                        importDefault("sdk.AuthState").getState()
-                          .shouldSecondLoginRequestTimeOut === true
-                      ) {
-                        importDefault("sdk.AuthState").setState({
-                          shouldSecondLoginRequestTimeOut: false,
-                        });
-
-                        return;
-                      }
-                      timeOutSecondRequestIfNecessary();
                       if (response.status === 200) {
                         var _response$headers$get, _response$headers$get2;
                         onCORSSuccess(
@@ -14202,17 +14167,6 @@ try {
                       }
                     })
                     ["catch"](function $0(_e) {
-                      if (
-                        importDefault("sdk.AuthState").getState()
-                          .shouldSecondLoginRequestTimeOut === true
-                      ) {
-                        importDefault("sdk.AuthState").setState({
-                          shouldSecondLoginRequestTimeOut: false,
-                        });
-
-                        return;
-                      }
-                      timeOutSecondRequestIfNecessary();
                       onCORSFailure(cb, 0, currentAuthResponse, loginSource);
                     });
                 }
@@ -14427,59 +14381,6 @@ try {
                 return url;
               }
 
-              function isTheOtherLoginStatusLoaded(loginSource) {
-                var mixedAuthState =
-                  importDefault("sdk.AuthState").getState().mixedAuthState;
-                switch (loginSource) {
-                  case "facebook":
-                    return (
-                      (mixedAuthState == null
-                        ? void 0
-                        : mixedAuthState.fbLoginStatus) === null &&
-                      (mixedAuthState == null
-                        ? void 0
-                        : mixedAuthState.igLoginStatus) !== null
-                    );
-
-                  case "instagram":
-                    return (
-                      (mixedAuthState == null
-                        ? void 0
-                        : mixedAuthState.igLoginStatus) === null &&
-                      (mixedAuthState == null
-                        ? void 0
-                        : mixedAuthState.fbLoginStatus) !== null
-                    );
-
-                  default:
-                    return false;
-                }
-              }
-
-              function defaultLoginSourceToUnknownStatus(loginSource) {
-                var mixedAuthState =
-                  importDefault("sdk.AuthState").getState().mixedAuthState;
-                if (
-                  (mixedAuthState == null
-                    ? void 0
-                    : mixedAuthState.fbLoginStatus) != null &&
-                  (mixedAuthState == null
-                    ? void 0
-                    : mixedAuthState.igLoginStatus) != null
-                ) {
-                  return;
-                }
-                var response = {
-                  authResponse: null,
-                  status: "unknown",
-                  loginSource: loginSource,
-                };
-                importNamespace("sdk.AuthUtils").AuthInternalEvent.inform(
-                  "xFoAFetchCompleted",
-                  response,
-                );
-              }
-
               var StatusCORS = {
                 getLoginStatusCORS: getLoginStatusCORS,
               };
@@ -14592,8 +14493,6 @@ try {
                   window.clearTimeout(timer);
                   importDefault("sdk.AuthState").setState({ timer: null });
                 }
-                importNamespace("sdk.AuthUtils").resetFBAndIGLoginStatus();
-
                 var fb_logged_out =
                   importNamespace("sdk.Cookie").getRaw(
                     importNamespace("sdk.AuthUtils").AuthConstants
@@ -14609,94 +14508,34 @@ try {
                   return;
                 }
 
-                var _getLocalStorageToken = importNamespace(
-                    "sdk.AuthStorageUtils",
-                  ).getLocalStorageTokens(),
-                  fbToken = _getLocalStorageToken.fbToken,
-                  igToken = _getLocalStorageToken.igToken;
+                var fbToken =
+                  access_token != null &&
+                  ES(access_token, "startsWith", true, "IG")
+                    ? importNamespace(
+                        "sdk.AuthStorageUtils",
+                      ).getLocalStorageToken()
+                    : access_token != null
+                      ? access_token
+                      : importNamespace(
+                          "sdk.AuthStorageUtils",
+                        ).getLocalStorageToken();
 
-                if (access_token != null) {
-                  if (ES(access_token, "startsWith", true, "IG")) {
-                    igToken = access_token;
-                  } else {
-                    fbToken = access_token;
-                  }
-                }
+                importNamespace("sdk.AuthUtils").AuthInternalEvent.subscribe(
+                  importNamespace("sdk.AuthUtils").AuthConstants
+                    .CORS_FETCH_COMPLETED_EVENT,
+                  importDefault("sdk.Auth").setFinalAuthResponse,
+                );
 
-                if (
-                  importDefault("sdk.Runtime").getShouldLoadFamilyLogin() &&
-                  importDefault("sdk.feature")(
-                    "should_enable_ig_login_status_fetch",
-                    false,
-                  )
-                ) {
-                  if (importDefault("sdk.Runtime").getFamilyLoginLoaded()) {
-                    importNamespace("sdk.AuthUtils").AuthInternalEvent.inform(
-                      importNamespace("sdk.AuthUtils").AuthConstants
-                        .LOAD_XFOA_SUBSCRIBERS,
-                    );
-                  } else {
-                    importDefault("sdk.Runtime").subscribe(
-                      "FamilyLoginLoaded.change",
-                      function Runtime_subscribe_$1(value) {
-                        if (value) {
-                          importNamespace(
-                            "sdk.AuthUtils",
-                          ).AuthInternalEvent.inform(
-                            importNamespace("sdk.AuthUtils").AuthConstants
-                              .LOAD_XFOA_SUBSCRIBERS,
-                          );
-                        }
-                      },
-                    );
-                  }
-                } else {
-                  importNamespace("sdk.AuthUtils").AuthInternalEvent.subscribe(
-                    importNamespace("sdk.AuthUtils").AuthConstants
-                      .CORS_FETCH_COMPLETED_EVENT,
-                    importDefault("sdk.Auth").setFinalAuthResponse,
-                  );
-                }
-
-                issueXFoACorsFetch(fbToken, igToken, fn);
+                issueCorsFetch(fbToken, fn);
               }
 
-              function issueXFoACorsFetch(fbToken, igToken, fn) {
+              function issueCorsFetch(fbToken, fn) {
                 importDefault("sdk.statusCORS").getLoginStatusCORS(
                   fn,
                   fbToken,
                   importDefault("sdk.AuthState").getState().currentAuthResponse,
                   "facebook",
                 );
-                if (
-                  importDefault("sdk.Runtime").getShouldLoadFamilyLogin() &&
-                  importDefault("sdk.feature")(
-                    "should_enable_ig_login_status_fetch",
-                    false,
-                  )
-                ) {
-                  if (igToken != null) {
-                    importDefault("sdk.statusCORS").getLoginStatusCORS(
-                      fn,
-                      igToken,
-                      importDefault("sdk.AuthState").getState()
-                        .currentAuthResponse,
-                      "instagram",
-                    );
-                  } else {
-                    var _response = {
-                      authResponse: null,
-                      status: "unknown",
-                      loginSource: "instagram",
-                      cb: fn,
-                    };
-                    importNamespace("sdk.AuthUtils").AuthInternalEvent.inform(
-                      importNamespace("sdk.AuthUtils").AuthConstants
-                        .CORS_FETCH_COMPLETED_EVENT,
-                      _response,
-                    );
-                  }
-                }
               }
 
               function checkFragment(fn) {
@@ -14832,12 +14671,12 @@ try {
                     "loaded"
                   ) {
                     if (cb) {
-                      var _response2 = {
+                      var _response = {
                         authResponse:
                           importDefault("sdk.Auth").getAuthResponse(),
                         status: importDefault("sdk.Runtime").getLoginStatus(),
                       };
-                      cb(_response2);
+                      cb(_response);
                     }
                     return;
                   } else if (
@@ -25225,7 +25064,7 @@ try {
                 labelContainer.append(labelText);
               }
 
-              function setLabelContainer(params, label, labelContainer) {
+              function setLabelContainer(_params, label, labelContainer) {
                 labelContainer.textContent = "";
                 var facebookLocation = label.search(facebookToken);
                 var facebookTokenEnd = facebookLocation + facebookToken.length;
@@ -27779,7 +27618,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1049338038","namespace":"FB","message":"' +
+        '","revision":"1049366336","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
