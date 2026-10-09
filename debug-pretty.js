@@ -1,4 +1,4 @@
-/*1791471494,,JIT Construction: v1049703040,en_US*/
+/*1791511826,,JIT Construction: v1049787865,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3769,7 +3769,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1049703040",
+            revision: "1049787865",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -4525,7 +4525,7 @@ try {
                 if (headers != null && headers.indexOf("X-FB-Debug") >= 0) {
                   var xfbDebug = req.getResponseHeader("X-FB-Debug");
 
-                  if (xfbDebug) {
+                  if (xfbDebug != null && xfbDebug !== "") {
                     add(xfbDebug);
                   }
                 }
@@ -5533,15 +5533,18 @@ try {
 
                 try {
                   var promise = event.promise;
+                  var promiseWithStack = promise;
                   expandedError.stack =
                     expandedError.stack +
-                    (promise != null && typeof promise.settledStack === "string"
+                    (promise != null &&
+                    typeof promiseWithStack.settledStack === "string"
                       ? "\n    at <promise_settled_stack_below>\n" +
-                        promise.settledStack
+                        promiseWithStack.settledStack
                       : "") +
-                    (promise != null && typeof promise.createdStack === "string"
+                    (promise != null &&
+                    typeof promiseWithStack.createdStack === "string"
                       ? "\n    at <promise_created_stack_below>\n" +
-                        promise.createdStack
+                        promiseWithStack.createdStack
                       : "");
                 } catch (_unused3) {}
 
@@ -27560,7 +27563,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1049703040","namespace":"FB","message":"' +
+        '","revision":"1049787865","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
