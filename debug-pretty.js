@@ -1,4 +1,4 @@
-/*1791557935,,JIT Construction: v1049839371,en_US*/
+/*1791845870,,JIT Construction: v1050109625,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3769,7 +3769,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1049839371",
+            revision: "1050109625",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -27360,10 +27360,14 @@ try {
                       "facebook-jssdk-iframe",
                     );
                     if (frame != null && frame instanceof HTMLIFrameElement) {
-                      var frameEntries =
-                        frame.contentWindow.performance.getEntriesByType(
-                          "resource",
+                      var frameWindow = frame.contentWindow;
+                      if (frameWindow == null) {
+                        throw new TypeError(
+                          "facebook-jssdk-iframe has no contentWindow",
                         );
+                      }
+                      var frameEntries =
+                        frameWindow.performance.getEntriesByType("resource");
                       var frameEntry = frameEntries.find(
                         function frameEntries_find_$0(t) {
                           return ES(t.name, "startsWith", true, sdkurl);
@@ -27562,7 +27566,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1049839371","namespace":"FB","message":"' +
+        '","revision":"1050109625","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
