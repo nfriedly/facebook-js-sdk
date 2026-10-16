@@ -1,4 +1,4 @@
-/*1792115929,,JIT Construction: v1050532919,en_US*/
+/*1792130205,,JIT Construction: v1050555521,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3769,7 +3769,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1050532919",
+            revision: "1050555521",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -23884,8 +23884,8 @@ try {
 
               var Comments = importDefault("IframePlugin").extend({
                 constructor: function Comments(elem, ns, tag, attr) {
-                  attr = setupAttributes(elem, attr);
-                  this.parent(elem, ns, tag, attr);
+                  var processedAttr = setupAttributes(elem, attr);
+                  this.parent(elem, ns, tag, processedAttr);
                   this.subscribe(
                     "xd.sdk_event",
                     function subscribe_$1(message) {
@@ -27565,7 +27565,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1050532919","namespace":"FB","message":"' +
+        '","revision":"1050555521","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
