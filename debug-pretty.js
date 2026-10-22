@@ -1,4 +1,4 @@
-/*1792569505,,JIT Construction: v1051117015,en_US*/
+/*1792634428,,JIT Construction: v1051245019,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3769,7 +3769,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1051117015",
+            revision: "1051245019",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -10041,7 +10041,8 @@ try {
               exports,
               invariant,
             ) {
-              function resolve(key) {
+              function resolve(keyInput) {
+                var key = keyInput;
                 var protocol = "https";
 
                 if (key === "graph_domain") {
@@ -16781,12 +16782,15 @@ try {
                   },
 
                   trackEvents: function trackEvents(events) {
-                    if (typeof events === "string") {
-                      events = ES("JSON", "parse", false, events);
+                    var parsedEvents = events;
+                    if (typeof parsedEvents === "string") {
+                      parsedEvents = ES("JSON", "parse", false, parsedEvents);
                     }
-                    for (var key in events) {
-                      if (Object.prototype.hasOwnProperty.call(events, key)) {
-                        this.trackEvent(key, events[key]);
+                    for (var key in parsedEvents) {
+                      if (
+                        Object.prototype.hasOwnProperty.call(parsedEvents, key)
+                      ) {
+                        this.trackEvent(key, parsedEvents[key]);
                       }
                     }
 
@@ -16833,7 +16837,7 @@ try {
                 },
 
                 _createWWWLoader: function _createWWWLoader(width) {
-                  width = width ? width : "460";
+                  var loaderWidth = width ? width : "460";
 
                   var content = document.createElement("div");
                   content.innerHTML =
@@ -16849,7 +16853,7 @@ try {
 
                   return Dialog.create({
                     content: content,
-                    width: width,
+                    width: loaderWidth,
                   });
                 },
 
@@ -16942,8 +16946,9 @@ try {
                 },
 
                 showLoader: function showLoader(cb, width) {
-                  if (!cb) {
-                    cb = function cb() {};
+                  var callback = cb;
+                  if (!callback) {
+                    callback = function callback() {};
                   }
 
                   var onClick = function onClick() {
@@ -16952,8 +16957,8 @@ try {
                       Dialog.isTabletStyle(),
                     );
                     Dialog._hideTabletOverlay();
-                    if (cb != null) {
-                      cb();
+                    if (callback != null) {
+                      callback();
                     }
                   };
 
@@ -20012,31 +20017,34 @@ try {
 
                 apprequests: {
                   transform: function transform(call) {
-                    call = MobileIframeable.transform(call);
+                    var transformedCall = MobileIframeable.transform(call);
 
-                    call.size = { width: 445, height: 635 };
-                    call.params.display = "popup";
-                    call.params.in_iframe = false;
+                    transformedCall.size = { width: 445, height: 635 };
+                    transformedCall.params.display = "popup";
+                    transformedCall.params.in_iframe = false;
 
-                    call.params.frictionless =
+                    transformedCall.params.frictionless =
                       importDefault("sdk.Frictionless") &&
                       importDefault("sdk.Frictionless")._useFrictionless;
-                    if (call.params.frictionless) {
+                    if (transformedCall.params.frictionless) {
                       if (
                         importDefault("sdk.Frictionless").isAllowed(
-                          call.params.to,
+                          transformedCall.params.to,
                         )
                       ) {
-                        call.hideLoader = true;
+                        transformedCall.hideLoader = true;
                       }
 
-                      call.cb = importDefault(
+                      transformedCall.cb = importDefault(
                         "sdk.Frictionless",
-                      )._processRequestResponse(call.cb, call.hideLoader);
+                      )._processRequestResponse(
+                        transformedCall.cb,
+                        transformedCall.hideLoader,
+                      );
                     }
 
-                    call.closeIcon = false;
-                    return call;
+                    transformedCall.closeIcon = false;
+                    return transformedCall;
                   },
                   getXdRelation: MobileIframeable.getXdRelation,
                 },
@@ -20342,6 +20350,7 @@ try {
                     method.url += "/index.php";
                   }
 
+                  var callback = cb;
                   if (shouldEnforceSingleDialogInstance(params)) {
                     if (dialogStates[name]) {
                       var errorMessage =
@@ -20353,7 +20362,7 @@ try {
                       return;
                     }
 
-                    cb = trackRunState(cb, name);
+                    callback = trackRunState(cb, name);
                   }
 
                   var useOauthSubdomain =
@@ -20372,7 +20381,7 @@ try {
                     ).getMobileOperatingSystem() === "android";
 
                   var call = {
-                    cb: cb,
+                    cb: callback,
                     id: id,
                     size: method.size || UIServer.getDefaultSize(),
                     url:
@@ -20593,14 +20602,14 @@ try {
                   if (type === "iframe") {
                     node.fbCallID = call.id;
                   }
-                  node = {
+                  var loadedNode = {
                     node: node,
                     type: type,
                     fbCallID: call.id,
                     method: call.name,
                     params: call.params,
                   };
-                  UIServer._loadedNodes[call.id] = node;
+                  UIServer._loadedNodes[call.id] = loadedNode;
                 },
 
                 getLoadedNode: function getLoadedNode(call) {
@@ -27563,7 +27572,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1051117015","namespace":"FB","message":"' +
+        '","revision":"1051245019","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
