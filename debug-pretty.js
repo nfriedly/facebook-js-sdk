@@ -1,4 +1,4 @@
-/*1793048217,,JIT Construction: v1051763891,en_US*/
+/*1793113161,,JIT Construction: v1051880875,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3769,7 +3769,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1051763891",
+            revision: "1051880875",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -8106,7 +8106,8 @@ try {
                   handle(self, new Handler(onFulfilled, onRejected, res));
                 });
               }
-              function handle(self, deferred) {
+              function handle(selfP, deferred) {
+                var self = selfP;
                 while (self._state === 3) {
                   self = self._value;
                 }
@@ -8281,7 +8282,9 @@ try {
                 return valuePromise(value);
               };
 
-              Promise.all = function (arr) {
+              Promise.all = function (arrP) {
+                var arr = arrP;
+
                 if (!Array.isArray(arr)) {
                   var e = new TypeError("Promise.all must be passed an array.");
                   void e.stack;
@@ -8299,7 +8302,8 @@ try {
                     return resolve([]);
                   }
                   var remaining = args.length;
-                  function res(i, val) {
+                  function res(i, valP) {
+                    var val = valP;
                     if (
                       val &&
                       (typeof val === "object" || typeof val === "function")
@@ -27572,7 +27576,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1051763891","namespace":"FB","message":"' +
+        '","revision":"1051880875","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
