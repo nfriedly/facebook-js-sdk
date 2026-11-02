@@ -1,4 +1,4 @@
-/*1793271404,,JIT Construction: v1052207594,en_US*/
+/*1793656596,,JIT Construction: v1052712929,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3758,7 +3758,7 @@ try {
           });
           __d("JSSDKCssConfig", [], {
             rules:
-              ".fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0px;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:lucida grande,tahoma,verdana,arial,sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:400;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}\u0040keyframes fb_transform{0\u0025{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}\n\n.fb_dialog{background:#525252b3;position:absolute;top:-10000px;z-index:10001}.fb_dialog_advanced{border-radius:8px;padding:10px}.fb_dialog_content{background:#fff;color:#373737}.fb_dialog_close_icon{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{left:5px;right:auto;top:5px}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:700;margin:0}.fb_dialog_content .dialog_title>span{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/yd\/r\/Cou7n-nqK52.gif) no-repeat 5px 50\u0025;float:left;padding:5px 0 7px 26px}body.fb_hidden{height:100\u0025;left:0;margin:0;overflow:visible;position:absolute;top:-10000px;transform:none;width:100\u0025}.fb_dialog.fb_dialog_mobile.loading{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/ya\/r\/3rhSv5V8j3o.gif) #fff no-repeat 50\u0025 50\u0025;min-height:100\u0025;min-width:100\u0025;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{background:none;height:auto;min-height:initial;min-width:initial;width:auto}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100\u0025}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{clear:both;color:#fff;display:block;font-size:18px;padding-top:20px}#fb-root #fb_dialog_ipad_overlay{background:#0006;inset:0;min-height:100\u0025;position:absolute;width:100\u0025;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_mobile .fb_dialog_iframe{position:sticky;top:0}.fb_dialog_content .dialog_header{background:linear-gradient(from(#738aba),to(#2c4987));border-bottom:1px solid;border-color:#043b87;box-shadow:#fff 0 1px 1px -1px inset;color:#fff;font:700 14px Helvetica,sans-serif;text-overflow:ellipsis;text-shadow:rgba(0,30,84,.296875) 0px -1px 0px;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{height:43px;width:100\u0025}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:linear-gradient(from(#4267B2),to(#2a4887));background-clip:padding-box;border:1px solid #29487d;border-radius:3px;display:inline-block;line-height:18px;margin-top:3px;max-width:85px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{background:none;border:none;color:#fff;font:700 12px Helvetica,sans-serif;margin:2px -12px;padding:2px 6px 3px;text-shadow:rgba(0,30,84,.296875) 0px -1px 0px}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:700;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/y9\/r\/jKEcVPZFk-2.gif) no-repeat 50\u0025 50\u0025;border:1px solid #4A4A4A;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f5f6f7;border:1px solid #4A4A4A;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/y2\/r\/onuUJj0tCqE.png);background-position:50\u0025 50\u0025;background-repeat:no-repeat;height:24px;width:24px}\u0040keyframes rotateSpinner{0\u0025{transform:rotate(0)}to{transform:rotate(360deg)}}\n\n.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100\u0025}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100\u0025}\n",
+              ".fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0px;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:lucida grande,tahoma,verdana,arial,sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:400;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}\u0040keyframes fb_transform{0\u0025{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}\n\n.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0px;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:lucida grande,tahoma,verdana,arial,sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:400;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}\u0040keyframes fb_transform{0\u0025{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}\n\n.fb_dialog{background:#525252b3;position:absolute;top:-10000px;z-index:10001}.fb_dialog_advanced{border-radius:8px;padding:10px}.fb_dialog_content{background:#fff;color:#373737}.fb_dialog_close_icon{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{left:5px;right:auto;top:5px}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/yq\/r\/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:700;margin:0}.fb_dialog_content .dialog_title>span{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/yd\/r\/Cou7n-nqK52.gif) no-repeat 5px 50\u0025;float:left;padding:5px 0 7px 26px}body.fb_hidden{height:100\u0025;left:0;margin:0;overflow:visible;position:absolute;top:-10000px;transform:none;width:100\u0025}.fb_dialog.fb_dialog_mobile.loading{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/ya\/r\/3rhSv5V8j3o.gif) #fff no-repeat 50\u0025 50\u0025;min-height:100\u0025;min-width:100\u0025;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{background:none;height:auto;min-height:initial;min-width:initial;width:auto}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100\u0025}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{clear:both;color:#fff;display:block;font-size:18px;padding-top:20px}#fb-root #fb_dialog_ipad_overlay{background:#0006;inset:0;min-height:100\u0025;position:absolute;width:100\u0025;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_mobile .fb_dialog_iframe{position:sticky;top:0}.fb_dialog_content .dialog_header{background:linear-gradient(from(#738aba),to(#2c4987));border-bottom:1px solid;border-color:#043b87;box-shadow:#fff 0 1px 1px -1px inset;color:#fff;font:700 14px Helvetica,sans-serif;text-overflow:ellipsis;text-shadow:rgba(0,30,84,.296875) 0px -1px 0px;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{height:43px;width:100\u0025}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:linear-gradient(from(#4267B2),to(#2a4887));background-clip:padding-box;border:1px solid #29487d;border-radius:3px;display:inline-block;line-height:18px;margin-top:3px;max-width:85px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{background:none;border:none;color:#fff;font:700 12px Helvetica,sans-serif;margin:2px -12px;padding:2px 6px 3px;text-shadow:rgba(0,30,84,.296875) 0px -1px 0px}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:700;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/y9\/r\/jKEcVPZFk-2.gif) no-repeat 50\u0025 50\u0025;border:1px solid #4A4A4A;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f5f6f7;border:1px solid #4A4A4A;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https:\/\/connect.facebook.net\/rsrc.php\/v4\/y2\/r\/onuUJj0tCqE.png);background-position:50\u0025 50\u0025;background-repeat:no-repeat;height:24px;width:24px}\u0040keyframes rotateSpinner{0\u0025{transform:rotate(0)}to{transform:rotate(360deg)}}\n\n.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100\u0025}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100\u0025}\n",
             components: [
               "css:fb.css.base",
               "css:fb.css.dialog",
@@ -3767,7 +3767,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1052207594",
+            revision: "1052712929",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -8866,34 +8866,37 @@ try {
               var hiddenRoot;
 
               function append(content, root) {
-                if (!root) {
+                var resolvedRoot = root;
+                if (!resolvedRoot) {
                   if (!visibleRoot) {
-                    visibleRoot = root = document.getElementById("fb-root");
-                    if (!root) {
+                    visibleRoot = resolvedRoot =
+                      document.getElementById("fb-root");
+                    if (!resolvedRoot) {
                       importNamespace("Log").warn(
                         'The "fb-root" div has not been created, auto-creating',
                       );
 
-                      visibleRoot = root = document.createElement("div");
-                      root.id = "fb-root";
+                      visibleRoot = resolvedRoot =
+                        document.createElement("div");
+                      resolvedRoot.id = "fb-root";
 
                       if (importDefault("sdk.UA").ie() || !document.body) {
                         importDefault("sdk.domReady")(function domReady_$0() {
-                          if (root && document.body) {
-                            document.body.appendChild(root);
+                          if (resolvedRoot && document.body) {
+                            document.body.appendChild(resolvedRoot);
                           }
                         });
                       } else {
-                        document.body.appendChild(root);
+                        document.body.appendChild(resolvedRoot);
                       }
                     }
-                    root.className += " fb_reset";
+                    resolvedRoot.className += " fb_reset";
                   } else {
-                    root = visibleRoot;
+                    resolvedRoot = visibleRoot;
                   }
                 }
 
-                root.appendChild(content);
+                resolvedRoot.appendChild(content);
                 return content;
               }
 
@@ -9568,11 +9571,9 @@ try {
               function mixin(to, from) {
                 var prototype = to.prototype;
 
-                if (!Array.isArray(from)) {
-                  from = [from];
-                }
+                var fromArray = Array.isArray(from) ? from : [from];
                 var _loop = function _loop() {
-                  var mixinFrom = from[i];
+                  var mixinFrom = fromArray[i];
 
                   if (typeof mixinFrom === "function") {
                     prototype.__mixins.push(mixinFrom);
@@ -9583,7 +9584,7 @@ try {
                     prototype[key] = mixinFrom[key];
                   });
                 };
-                for (var i = 0; i < from.length; i++) {
+                for (var i = 0; i < fromArray.length; i++) {
                   _loop();
                 }
               }
@@ -9609,9 +9610,9 @@ try {
                   void e.stack;
                   throw e;
                 }
-                from = from || Type;
+                var parentType = from || Type;
 
-                constructor.prototype = Object.create(from.prototype);
+                constructor.prototype = Object.create(parentType.prototype);
 
                 if (prototype) {
                   ES(
@@ -9625,10 +9626,10 @@ try {
 
                 constructor.prototype.constructor = constructor;
 
-                constructor.parent = from;
+                constructor.parent = parentType;
 
-                constructor.prototype.__mixins = from.prototype.__mixins
-                  ? Array.prototype.slice.call(from.prototype.__mixins)
+                constructor.prototype.__mixins = parentType.prototype.__mixins
+                  ? Array.prototype.slice.call(parentType.prototype.__mixins)
                   : [];
 
                 if (mixins) {
@@ -9636,12 +9637,12 @@ try {
                 }
 
                 constructor.prototype.parent = function () {
-                  this.parent = from.prototype.parent;
-                  from.apply(this, arguments);
+                  this.parent = parentType.prototype.parent;
+                  parentType.apply(this, arguments);
                 };
 
                 constructor.prototype.parentCall = function (method) {
-                  return from.prototype[method].apply(
+                  return parentType.prototype[method].apply(
                     this,
 
                     Array.prototype.slice.call(arguments, 1),
@@ -17949,13 +17950,14 @@ try {
               var JSON_HIJACKING_SHIELD_LEN = JSON_HIJACKING_SHIELD.length;
 
               function unshieldResponse(text) {
+                var result = text;
                 if (
-                  text.substring(0, JSON_HIJACKING_SHIELD_LEN) ==
+                  result.substring(0, JSON_HIJACKING_SHIELD_LEN) ==
                   JSON_HIJACKING_SHIELD
                 ) {
-                  text = text.substring(JSON_HIJACKING_SHIELD_LEN);
+                  result = result.substring(JSON_HIJACKING_SHIELD_LEN);
                 }
-                return text;
+                return result;
               }
 
               function execute(url, method, params, cb, additionalArgs) {
@@ -17977,12 +17979,20 @@ try {
                 params.suppress_http_code = 1;
                 var data = importDefault("QueryString").encode(params);
 
+                var requestUrl = url;
                 if (method === "get") {
-                  url = importDefault("QueryString").appendToUrl(url, data);
+                  requestUrl = importDefault("QueryString").appendToUrl(
+                    requestUrl,
+                    data,
+                  );
                   data = "";
                 }
 
-                var request = createCORSRequest(method, url, additionalArgs);
+                var request = createCORSRequest(
+                  method,
+                  requestUrl,
+                  additionalArgs,
+                );
                 if (!request) {
                   return false;
                 }
@@ -17991,7 +18001,7 @@ try {
                   cb(
                     importDefault("sdk.safelyParseResponse")(
                       unshieldResponse(xhr.responseText),
-                      url,
+                      requestUrl,
                       xhr.status,
                     ),
                   );
@@ -18002,7 +18012,7 @@ try {
                     cb(
                       importDefault("sdk.safelyParseResponse")(
                         unshieldResponse(xhr.responseText),
-                        url,
+                        requestUrl,
                         xhr.status,
                       ),
                     );
@@ -19354,28 +19364,30 @@ try {
                 ) {
                   return;
                 }
-                if (typeof message === "string") {
-                  if (/^FB_RPC:/.test(message)) {
-                    rpcQueue.enqueue(message.substring(7));
+                var messageValue = message;
+                if (typeof messageValue === "string") {
+                  if (/^FB_RPC:/.test(messageValue)) {
+                    rpcQueue.enqueue(messageValue.substring(7));
                     return;
                   }
 
-                  if (message.substring(0, 1) === "{") {
+                  if (messageValue.substring(0, 1) === "{") {
                     try {
-                      message = ES("JSON", "parse", false, message);
+                      messageValue = ES("JSON", "parse", false, messageValue);
                     } catch (_unused2) {
                       importNamespace("Log").warn(
                         "Failed to decode %s as JSON",
-                        message,
+                        messageValue,
                       );
                       return;
                     }
                   } else {
-                    message = importDefault("QueryString").decode(message);
+                    messageValue =
+                      importDefault("QueryString").decode(messageValue);
                   }
                 }
 
-                var messageObj = message;
+                var messageObj = messageValue;
                 if (messageObj.xd_action) {
                   handleAction(messageObj, senderOrigin);
                   return;
@@ -19605,12 +19617,12 @@ try {
                   persistent,
                   id,
                 ) {
-                  id = id || importDefault("guid")();
+                  var callbackId = id || importDefault("guid")();
                   if (persistent) {
-                    XD._forever[id] = true;
+                    XD._forever[callbackId] = true;
                   }
-                  XD._callbacks[id] = cb;
-                  return id;
+                  XD._callbacks[callbackId] = cb;
+                  return callbackId;
                 },
               };
 
@@ -22852,7 +22864,7 @@ try {
                     var _importNamespace_sdkPluginUtils;
 
                     this.parent();
-                    tag = tag.replace(/-/g, "_");
+                    var normalizedTag = tag.replace(/-/g, "_");
 
                     var pluginId = (_importNamespace_sdkPluginUtils =
                       importNamespace("sdk.PluginUtils")).getVal(
@@ -22968,7 +22980,7 @@ try {
                     var url =
                       importNamespace("UrlMap").resolve("www") +
                       "/plugins/" +
-                      tag +
+                      normalizedTag +
                       ".php?";
                     var params = {};
 
@@ -23042,7 +23054,7 @@ try {
 
                     this._ns = ns;
 
-                    this._tag = tag;
+                    this._tag = normalizedTag;
 
                     this._params = params;
 
@@ -27001,6 +27013,8 @@ try {
                   );
                 }
 
+                var initOptions = options;
+
                 if (importDefault("sdk.Runtime").getIsVersioned()) {
                   if (!isPlainObject(options)) {
                     throw new (importDefault("ManagedError"))(
@@ -27025,65 +27039,68 @@ try {
                   );
                   importDefault("sdk.Runtime").setVersion(options.version);
                 } else {
-                  if (/number|string/.test(typeof options)) {
+                  if (/number|string/.test(typeof initOptions)) {
                     importNamespace("Log").warn(
                       "FB.init called with invalid parameters",
                     );
-                    options = { apiKey: options };
+                    initOptions = { apiKey: initOptions };
                   }
 
-                  if (options.status == null) {
-                    options.legacyStatusInit = true;
+                  if (initOptions.status == null) {
+                    initOptions.legacyStatusInit = true;
                   }
 
-                  options = babelHelpers["extends"](
+                  initOptions = babelHelpers["extends"](
                     {
                       status: true,
                     },
-                    options || {},
+                    initOptions || {},
                   );
                 }
 
-                var appId = parseAppId(options.appId || options.apiKey);
+                var appId = parseAppId(initOptions.appId || initOptions.apiKey);
                 if (appId !== null) {
                   importDefault("sdk.Runtime").setClientID(appId);
                 }
 
-                if ("scope" in options) {
-                  importDefault("sdk.Runtime").setScope(options.scope);
+                if ("scope" in initOptions) {
+                  importDefault("sdk.Runtime").setScope(initOptions.scope);
                 }
 
-                if (options.cookie) {
+                if (initOptions.cookie) {
                   importDefault("sdk.Runtime").setUseCookie(true);
-                  if (typeof options.cookie === "string") {
-                    importNamespace("sdk.Cookie").setDomain(options.cookie);
+                  if (typeof initOptions.cookie === "string") {
+                    importNamespace("sdk.Cookie").setDomain(initOptions.cookie);
                   }
                 }
 
                 if (
-                  options.localStorage === false ||
-                  options.localStorage === "false"
+                  initOptions.localStorage === false ||
+                  initOptions.localStorage === "false"
                 ) {
                   importDefault("sdk.Runtime").setUseLocalStorage(false);
                 }
 
-                if (options.kidDirectedSite) {
+                if (initOptions.kidDirectedSite) {
                   importDefault("sdk.Runtime").setKidDirectedSite(true);
                 }
 
                 importDefault("sdk.Runtime").setFedCMExplicitlySet(false);
 
                 if (
-                  options.fedCM === true ||
-                  options.fedCM === "true" ||
-                  options.fedCM === "1" ||
-                  (options.fedCM != null && typeof options.fedCM === "object")
+                  initOptions.fedCM === true ||
+                  initOptions.fedCM === "true" ||
+                  initOptions.fedCM === "1" ||
+                  (initOptions.fedCM != null &&
+                    typeof initOptions.fedCM === "object")
                 ) {
                   importDefault("sdk.Runtime").setUseFedCM(true);
                   importDefault("sdk.Runtime").setFedCMExplicitlySet(true);
 
                   var fedCMConfig =
-                    typeof options.fedCM === "object" ? options.fedCM : {};
+                    typeof initOptions.fedCM === "object"
+                      ? initOptions.fedCM
+                      : {};
 
                   if (fedCMConfig.autoPrompt) {
                     importDefault("sdk.Runtime").setFedCMMode("passive");
@@ -27104,15 +27121,15 @@ try {
                     );
                   }
                 } else if (
-                  options.fedCM === false ||
-                  options.fedCM === "false" ||
-                  options.fedCM === 0 ||
-                  options.fedCM === "0" ||
-                  options.fedCM === ""
+                  initOptions.fedCM === false ||
+                  initOptions.fedCM === "false" ||
+                  initOptions.fedCM === 0 ||
+                  initOptions.fedCM === "0" ||
+                  initOptions.fedCM === ""
                 ) {
                   importDefault("sdk.Runtime").setUseFedCM(false);
                   importDefault("sdk.Runtime").setFedCMExplicitlySet(true);
-                } else if (options.fedCM != null) {
+                } else if (initOptions.fedCM != null) {
                   importNamespace("Log").warn(
                     "Invalid fedCM value. Must be true, false, or an options object.",
                   );
@@ -27121,18 +27138,18 @@ try {
                 importNamespace("sdk.AppConfig").applyCachedAppConfig();
 
                 if (
-                  options.autoLogAppEvents === "1" ||
-                  options.autoLogAppEvents === "true"
+                  initOptions.autoLogAppEvents === "1" ||
+                  initOptions.autoLogAppEvents === "true"
                 ) {
-                  options.autoLogAppEvents = true;
+                  initOptions.autoLogAppEvents = true;
                 }
 
-                if (options.ab) {
-                  importDefault("sdk.Runtime").setSDKAB(options.ab);
+                if (initOptions.ab) {
+                  importDefault("sdk.Runtime").setSDKAB(initOptions.ab);
                 }
 
-                if (options.lib) {
-                  importDefault("sdk.Runtime").setLib(options.lib);
+                if (initOptions.lib) {
+                  importDefault("sdk.Runtime").setLib(initOptions.lib);
                 }
 
                 importDefault("sdk.Runtime").setInitialized(true);
@@ -27141,7 +27158,7 @@ try {
                   importNamespace("sdk.MBasicInitializer").init();
                 }
 
-                importNamespace("sdk.Event").fire("init:post", options);
+                importNamespace("sdk.Event").fire("init:post", initOptions);
               }
               exports["default"] = init;
             },
@@ -27568,7 +27585,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1052207594","namespace":"FB","message":"' +
+        '","revision":"1052712929","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
