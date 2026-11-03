@@ -1,4 +1,4 @@
-/*1793656596,,JIT Construction: v1052712929,en_US*/
+/*1793674600,,JIT Construction: v1052791022,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3767,7 +3767,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1052712929",
+            revision: "1052791022",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -8914,7 +8914,11 @@ try {
                 return append(content, hiddenRoot);
               }
 
-              function submitToTarget(opts, get) {
+              function submitToTarget(
+                opts,
+
+                get,
+              ) {
                 var form = document.createElement("form");
                 form.action = opts.url;
                 form.target = opts.target;
@@ -8927,7 +8931,7 @@ try {
                     if (val != null) {
                       var input = document.createElement("input");
                       input.name = key;
-                      input.value = val;
+                      input.value = String(val);
                       form.appendChild(input);
                     }
                   }
@@ -21145,40 +21149,41 @@ try {
                   }
                 }
 
-                params = babelHelpers["extends"]({}, params);
-                if (!params.method) {
+                var paramsCopy = babelHelpers["extends"]({}, params);
+                if (!paramsCopy.method) {
                   importNamespace("Log").error(
                     '"method" is a required parameter for FB.ui().',
                   );
                   return null;
                 }
 
-                if (params.method === "pay.prompt") {
-                  params.method = "pay";
+                if (paramsCopy.method === "pay.prompt") {
+                  paramsCopy.method = "pay";
                 }
 
-                var method = params.method;
+                var method = paramsCopy.method;
 
-                if (params.redirect_uri) {
+                if (paramsCopy.redirect_uri) {
                   importNamespace("Log").warn(
                     "When using FB.ui, you should not specify a redirect_uri.",
                   );
-                  delete params.redirect_uri;
+                  delete paramsCopy.redirect_uri;
                 }
 
-                if (!params.fallback_redirect_uri) {
-                  params.fallback_redirect_uri = document.location.href;
+                if (!paramsCopy.fallback_redirect_uri) {
+                  paramsCopy.fallback_redirect_uri = document.location.href;
                 }
 
                 if (
                   importDefault("sdk.UIServer").isOAuth(method) &&
-                  (params.display === "iframe" || params.display === "dialog")
+                  (paramsCopy.display === "iframe" ||
+                    paramsCopy.display === "dialog")
                 ) {
-                  params.display =
-                    importDefault("sdk.UIServer").checkOauthDisplay(params);
+                  paramsCopy.display =
+                    importDefault("sdk.UIServer").checkOauthDisplay(paramsCopy);
                 }
 
-                if (params.display === "native" && method !== "send") {
+                if (paramsCopy.display === "native" && method !== "send") {
                   importNamespace("Log").error(
                     'display type "native" not supported',
                   );
@@ -21190,10 +21195,10 @@ try {
                   true,
                 );
                 if (enableE2E) {
-                  params.e2e = {};
+                  paramsCopy.e2e = {};
                 }
                 var call = importDefault("sdk.UIServer").prepareCall(
-                  params,
+                  paramsCopy,
                   cb || function () {},
                 );
                 if (!call) {
@@ -23043,12 +23048,10 @@ try {
 
                     var flow = document.createElement("span");
 
-                    ES("Object", "assign", false, flow.style, {
-                      verticalAlign: "top",
-                      width: params.lazy ? "1px" : "0px",
-                      height: params.lazy ? "1px" : "0px",
-                      overflow: "hidden",
-                    });
+                    flow.style.verticalAlign = "top";
+                    flow.style.width = params.lazy ? "1px" : "0px";
+                    flow.style.height = params.lazy ? "1px" : "0px";
+                    flow.style.overflow = "hidden";
 
                     this._element = elem;
 
@@ -27585,7 +27588,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1052712929","namespace":"FB","message":"' +
+        '","revision":"1052791022","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
