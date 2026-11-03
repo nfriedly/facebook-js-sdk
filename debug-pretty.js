@@ -1,4 +1,4 @@
-/*1793728598,,JIT Construction: v1052889962,en_US*/
+/*1793746598,,JIT Construction: v1052938686,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -1043,7 +1043,8 @@ try {
                 var i =
                   fromIndex < 0 ? Math.max(len + fromIndex, 0) : fromIndex;
 
-                var NaNLookup = isNaN(needle) && typeof needle === "number";
+                var NaNLookup =
+                  isNaN(Number(needle)) && typeof needle === "number";
 
                 while (i < len) {
                   var value = o[i];
@@ -3767,7 +3768,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1052889962",
+            revision: "1052938686",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -8689,7 +8690,7 @@ try {
 
               function createVersionFunc(key) {
                 var getVersion = function getVersion() {
-                  return parseFloat(versions[key]);
+                  return parseFloat(String(versions[key]));
                 };
                 getVersion.getVersionParts = function () {
                   return getVersionParts(versions[key]);
@@ -22655,7 +22656,7 @@ try {
               exports,
             ) {
               function isNumberLike(n) {
-                return !isNaN(parseFloat(n)) && isFinite(n);
+                return !isNaN(parseFloat(String(n))) && isFinite(Number(n));
               }
               exports["default"] = isNumberLike;
             },
@@ -24944,7 +24945,7 @@ try {
               }
 
               function widthClamp(size, width) {
-                var widthAsNumber = !isNaN(width) ? Number(width) : 0;
+                var widthAsNumber = !isNaN(Number(width)) ? Number(width) : 0;
                 var minSize = getMinWidthForSize(size);
                 var maxSize = getMaxWidthForSize(size);
                 if (widthAsNumber < getMinWidthForSize(size)) {
@@ -27588,7 +27589,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1052889962","namespace":"FB","message":"' +
+        '","revision":"1052938686","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
