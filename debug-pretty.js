@@ -1,4 +1,4 @@
-/*1793804198,,JIT Construction: v1053060988,en_US*/
+/*1793836597,,JIT Construction: v1053132912,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -993,14 +993,12 @@ try {
             function $module_ES7ArrayPrototype(
               global,
               require,
-              requireDynamic,
+              importDefault,
+              importNamespace,
               requireLazy,
               module,
               exports,
             ) {
-              var isArray = require("ES5Array").isArray;
-              var indexOf = require("ES5ArrayPrototype").indexOf;
-
               function toLength(number) {
                 return Math.min(
                   Math.max(toInteger(number), 0),
@@ -1024,10 +1022,15 @@ try {
 
                 if (
                   needle !== undefined &&
-                  isArray(this) &&
+                  importDefault("ES5Array").isArray(this) &&
                   !(typeof needle === "number" && isNaN(needle))
                 ) {
-                  return indexOf.apply(this, arguments) !== -1;
+                  return (
+                    importDefault("ES5ArrayPrototype").indexOf.apply(
+                      this,
+                      arguments,
+                    ) !== -1
+                  );
                 }
 
                 var o = Object(this);
@@ -1062,10 +1065,10 @@ try {
               var ES7ArrayPrototype = {
                 includes: includes,
               };
-
-              module.exports = ES7ArrayPrototype;
+              var _default = ES7ArrayPrototype;
+              exports["default"] = _default;
             },
-            null,
+            98,
           );
           /**
            * (c) Meta Platforms, Inc. and affiliates. Confidential and proprietary.
@@ -3768,7 +3771,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1053060988",
+            revision: "1053132912",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -9543,7 +9546,8 @@ try {
             function $module_Type(
               global,
               require,
-              requireDynamic,
+              importDefault,
+              importNamespace,
               requireLazy,
               module,
               exports,
@@ -9609,7 +9613,7 @@ try {
                         this.parent.apply(this, arguments);
                       };
 
-                require("Assert").isFunction(constructor);
+                importDefault("Assert").isFunction(constructor);
 
                 if (from && from.prototype instanceof Type === false) {
                   var e = new Error("parent type does not inherit from Type");
@@ -9675,12 +9679,11 @@ try {
                 },
                 instanceOf: _instanceOf,
               });
-
-              module.exports = Type;
               var _c;
               $RefreshReg$(_c, "Type");
+              exports["default"] = Type;
             },
-            null,
+            98,
           );
           __d(
             "sdk.Model",
@@ -16009,14 +16012,13 @@ try {
             function $module_JSONRPC(
               global,
               require,
-              requireDynamic,
+              importDefault,
+              importNamespace,
               requireLazy,
               module,
               exports,
             ) {
               var _JSONRPC = (function () {
-                "use strict";
-
                 function JSONRPC(write) {
                   var _this = this;
 
@@ -16073,7 +16075,10 @@ try {
 
                   if (!rpc.method) {
                     if (!this.$JSONRPC_callbacks[id]) {
-                      require("Log").warn("Could not find callback %s", id);
+                      importNamespace("Log").warn(
+                        "Could not find callback %s",
+                        id,
+                      );
                       return;
                     }
 
@@ -16112,7 +16117,7 @@ try {
                   }
 
                   if (!method) {
-                    require("Log").error(
+                    importNamespace("Log").error(
                       'Method "%s" has not been defined',
                       rpc.method,
                     );
@@ -16135,7 +16140,7 @@ try {
                       send("result", returnValue);
                     }
                   } catch (rpcEx) {
-                    require("Log").error(
+                    importNamespace("Log").error(
                       "Invokation of RPC method %s resulted in the error: %s",
                       rpc.method,
                       rpcEx.message,
@@ -16150,10 +16155,9 @@ try {
                 };
                 return JSONRPC;
               })();
-
-              module.exports = _JSONRPC;
+              exports["default"] = _JSONRPC;
             },
-            null,
+            98,
           );
           __d(
             "Queue",
@@ -24146,10 +24150,9 @@ try {
 
                 return;
               }
-
-              module.exports = safeEval;
+              exports["default"] = safeEval;
             },
-            34,
+            98,
           );
           __d(
             "DOMPlugin",
@@ -27590,7 +27593,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1053060988","namespace":"FB","message":"' +
+        '","revision":"1053132912","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
