@@ -1,4 +1,4 @@
-/*1794254199,,JIT Construction: v1053742331,en_US*/
+/*1794268602,,JIT Construction: v1053787253,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -872,7 +872,7 @@ try {
                     throw e;
                   }
 
-                  target = Object(target);
+                  var targetObject = Object(target);
 
                   for (
                     var i = 0;
@@ -892,12 +892,12 @@ try {
 
                     for (var prop in source) {
                       if (hasOwnProperty.call(source, prop)) {
-                        target[prop] = source[prop];
+                        targetObject[prop] = source[prop];
                       }
                     }
                   }
 
-                  return target;
+                  return targetObject;
                 },
 
                 is: function is(x, y) {
@@ -3771,7 +3771,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1053742331",
+            revision: "1053787253",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -25463,7 +25463,7 @@ try {
                   _this = _Observable.call(this) || this;
                   _this.postBodyParams = postBodyParams;
                   _this.deferPostRequest = deferPostRequest;
-                  tag = tag.replace(/-/g, "_");
+                  var normalizedTag = tag.replace(/-/g, "_");
 
                   _this.$IframePluginClass$p_isIframeResized = false;
 
@@ -25565,11 +25565,11 @@ try {
                   var url = attr.should_use_new_domain
                     ? importNamespace("UrlMap").resolve("social_plugin") +
                       "/" +
-                      tag +
+                      normalizedTag +
                       ".php?"
                     : importNamespace("UrlMap").resolve("www") +
                       "/plugins/" +
-                      tag +
+                      normalizedTag +
                       ".php?";
                   var params = {};
 
@@ -25642,7 +25642,7 @@ try {
 
                   _this.element = elem;
                   _this.ns = ns;
-                  _this.tag = tag;
+                  _this.tag = normalizedTag;
                   _this.params = params;
                   _this.iframeOptions = {
                     root: flow,
@@ -27590,7 +27590,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1053742331","namespace":"FB","message":"' +
+        '","revision":"1053787253","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
