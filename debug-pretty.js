@@ -1,4 +1,4 @@
-/*1794970596,,JIT Construction: v1055099339,en_US*/
+/*1795042598,,JIT Construction: v1055239907,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3771,7 +3771,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1055099339",
+            revision: "1055239907",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -15909,15 +15909,13 @@ try {
             function $module_DOMEventListener(
               global,
               require,
-              requireDynamic,
+              importDefault,
+              importNamespace,
               requireLazy,
               module,
               exports,
               invariant,
             ) {
-              var isPassiveEventListenerSupported =
-                require("passiveEventListenerUtil").isPassiveEventListenerSupported;
-
               var _add;
 
               var _remove;
@@ -15928,15 +15926,20 @@ try {
                     options = false;
                   }
 
-                  listener.wrapper = require("wrapFunction")(
+                  listener.wrapper = importDefault("wrapFunction")(
                     listener,
                     "entry",
-                    require("dedupString")("DOMEventListener.add " + name),
+                    importDefault("dedupString")(
+                      "DOMEventListener.add " + name,
+                    ),
                   );
                   target.addEventListener(
                     name,
                     listener.wrapper,
-                    isPassiveEventListenerSupported ? options : false,
+                    importNamespace("passiveEventListenerUtil")
+                      .isPassiveEventListenerSupported
+                      ? options
+                      : false,
                   );
                 };
                 _remove = function remove(target, name, listener, options) {
@@ -15947,7 +15950,10 @@ try {
                     name,
 
                     listener.wrapper,
-                    isPassiveEventListenerSupported ? options : false,
+                    importNamespace("passiveEventListenerUtil")
+                      .isPassiveEventListenerSupported
+                      ? options
+                      : false,
                   );
                 };
               } else if (window.attachEvent) {
@@ -15956,7 +15962,7 @@ try {
                     _options = false;
                   }
 
-                  listener.wrapper = require("wrapFunction")(
+                  listener.wrapper = importDefault("wrapFunction")(
                     listener,
                     "entry",
                     "DOMEventListener.add " + name,
@@ -15978,7 +15984,7 @@ try {
                   target.detachEvent("on" + name, listener.wrapper);
                 };
               } else {
-                _remove = _add = require("emptyFunction");
+                _remove = _add = importDefault("emptyFunction");
               }
 
               var DOMEventListener = {
@@ -16006,7 +16012,7 @@ try {
 
               module.exports = DOMEventListener;
             },
-            null,
+            34,
           );
           __d(
             "JSONRPC",
@@ -27592,7 +27598,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1055099339","namespace":"FB","message":"' +
+        '","revision":"1055239907","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
