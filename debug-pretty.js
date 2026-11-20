@@ -1,4 +1,4 @@
-/*1795128999,,JIT Construction: v1055451535,en_US*/
+/*1795150603,,JIT Construction: v1055517766,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3771,7 +3771,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1055451535",
+            revision: "1055517766",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -14059,6 +14059,8 @@ try {
 
               var PLATFORM_E2E_TRACKING_LOG_ID = 114;
 
+              var hasSentStatusCheckThisPage = false;
+
               function getLoginStatusCORS(
                 cb,
                 token,
@@ -14068,7 +14070,9 @@ try {
                 if (loginSource === void 0) {
                   loginSource = "facebook";
                 }
-                var url = getCORSTarget(token);
+                var isPageLoad = !hasSentStatusCheckThisPage;
+                hasSentStatusCheckThisPage = true;
+                var url = getCORSTarget(token, isPageLoad);
                 var fetchStart = Date.now();
 
                 function corsFetchXHR() {
@@ -14336,7 +14340,7 @@ try {
                 return null;
               }
 
-              function getCORSTarget(token) {
+              function getCORSTarget(token, isPageLoad) {
                 var url = new (importDefault("sdk.URI"))(
                   importNamespace("UrlMap")
                     .resolve("www")
@@ -14354,6 +14358,10 @@ try {
                     "wants_cookie_data",
                     importDefault("sdk.Runtime").getUseCookie(),
                   );
+
+                if (isPageLoad) {
+                  url.addQueryData("page_load", true);
+                }
 
                 if (!!window.location.ancestorOrigins) {
                   var ancestorOrigins = window.location.ancestorOrigins;
@@ -27598,7 +27606,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1055451535","namespace":"FB","message":"' +
+        '","revision":"1055517766","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
