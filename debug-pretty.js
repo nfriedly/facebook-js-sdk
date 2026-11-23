@@ -1,4 +1,4 @@
-/*1795218997,,JIT Construction: v1055640952,en_US*/
+/*1795470999,,JIT Construction: v1055923191,en_US*/
 
 /**
  * Copyright (c) 2017-present, Facebook, Inc. All rights reserved.
@@ -3771,7 +3771,7 @@ try {
           });
           __d("JSSDKRuntimeConfig", [], {
             locale: "en_US",
-            revision: "1055640952",
+            revision: "1055923191",
             rtl: false,
             sdkab: null,
             sdkns: "",
@@ -7101,8 +7101,8 @@ try {
               var _importDefault_closure_ErrorGuard;
               var _importDefault_closure_performanceAbsoluteNow;
 
-              var _executionObserversInBeforeOrder = [];
-              var _executionObserversInAfterOrder = [];
+              var executionObserversInBeforeOrder = [];
+              var executionObserversInAfterOrder = [];
 
               var SECRET_GUARD_KEY = "key" + Math.random();
 
@@ -7133,19 +7133,19 @@ try {
                 return array.length > 0 ? array[array.length - 1] : null;
               }
 
-              function _pushState(frame, creationData) {
+              function pushState(frame, creationData) {
                 var executionData = {};
                 (
                   _importDefault_closure_ErrorGuard ||
                   (_importDefault_closure_ErrorGuard =
                     importDefault("ErrorGuard"))
-                ).applyWithGuard(_callOnBeforeExecutionCallbacks, null, [
+                ).applyWithGuard(callOnBeforeExecutionCallbacks, null, [
                   frame,
                   creationData,
                   executionData,
                 ]);
                 _importDefault_closure_ErrorGuard.applyWithGuard(
-                  _callOnAfterExecutionStartedCallbacks,
+                  callOnAfterExecutionStartedCallbacks,
                   null,
                   [frame, creationData, executionData],
                 );
@@ -7154,13 +7154,13 @@ try {
                 executionDataStack.push(executionData);
               }
 
-              function _callOnCreateExecutionCallbacks(
+              function callOnCreateExecutionCallbacks(
                 creationData,
                 name,
                 meta,
               ) {
-                _executionObserversInBeforeOrder.forEach(
-                  function _executionObserversInBeforeOrder_forEach_$0(
+                executionObserversInBeforeOrder.forEach(
+                  function executionObserversInBeforeOrder_forEach_$0(
                     observer,
                   ) {
                     var data = observer.onNewContextCreated(
@@ -7173,13 +7173,13 @@ try {
                 );
               }
 
-              function _callOnAfterExecutionEndedCallbacks(
+              function callOnAfterExecutionEndedCallbacks(
                 lastFrame,
                 creationData,
                 executionData,
               ) {
-                _executionObserversInAfterOrder.forEach(
-                  function _executionObserversInAfterOrder_forEach_$0(obs) {
+                executionObserversInAfterOrder.forEach(
+                  function executionObserversInAfterOrder_forEach_$0(obs) {
                     obs.onAfterContextEnded(
                       lastFrame,
                       creationData[obs.getBeforeID()],
@@ -7190,13 +7190,13 @@ try {
                 );
               }
 
-              function _callOnBeforeExecutionCallbacks(
+              function callOnBeforeExecutionCallbacks(
                 newFrame,
                 creationData,
                 executionDataHolder,
               ) {
-                _executionObserversInBeforeOrder.forEach(
-                  function _executionObserversInBeforeOrder_forEach_$0(obs) {
+                executionObserversInBeforeOrder.forEach(
+                  function executionObserversInBeforeOrder_forEach_$0(obs) {
                     var execData = obs.onBeforeContextStarted(
                       newFrame,
                       creationData[obs.getBeforeID()],
@@ -7207,13 +7207,13 @@ try {
                 );
               }
 
-              function _callOnAfterExecutionStartedCallbacks(
+              function callOnAfterExecutionStartedCallbacks(
                 currentFrame,
                 creationData,
                 executionData,
               ) {
-                _executionObserversInBeforeOrder.forEach(
-                  function _executionObserversInBeforeOrder_forEach_$0(obs) {
+                executionObserversInBeforeOrder.forEach(
+                  function executionObserversInBeforeOrder_forEach_$0(obs) {
                     var newExecData = obs.onAfterContextStarted(
                       currentFrame,
                       creationData[obs.getBeforeID()],
@@ -7225,7 +7225,7 @@ try {
                 );
               }
 
-              function _restoreState() {
+              function restoreState() {
                 var lastFrame = _currentFrame();
                 var lastCreationData = peek(creationDataStack);
                 var lastExecutionData = peek(executionDataStack);
@@ -7244,7 +7244,7 @@ try {
                   _importDefault_closure_ErrorGuard ||
                   (_importDefault_closure_ErrorGuard =
                     importDefault("ErrorGuard"))
-                ).applyWithGuard(_callOnAfterExecutionEndedCallbacks, null, [
+                ).applyWithGuard(callOnAfterExecutionEndedCallbacks, null, [
                   lastFrame,
                   lastCreationData,
                   lastExecutionData,
@@ -7298,7 +7298,7 @@ try {
                       absBeginTimeMs: beginTime,
                     };
 
-                    _pushState(newFrame, observerData);
+                    pushState(newFrame, observerData);
 
                     if (parentFrame != null) {
                       var isContinuation = !!meta.isContinuation;
@@ -7387,7 +7387,7 @@ try {
 
                           buffer.pushElement(entry);
                         }
-                        _restoreState();
+                        restoreState();
                       }
                     }
                   };
@@ -7398,7 +7398,7 @@ try {
                     _importDefault_closure_ErrorGuard ||
                     (_importDefault_closure_ErrorGuard =
                       importDefault("ErrorGuard"))
-                  ).applyWithGuard(_callOnCreateExecutionCallbacks, null, [
+                  ).applyWithGuard(callOnCreateExecutionCallbacks, null, [
                     observerData,
                     name,
                     meta,
@@ -7466,43 +7466,35 @@ try {
                     var added = false;
                     for (
                       var ii = 0;
-                      ii < _executionObserversInBeforeOrder.length;
+                      ii < executionObserversInBeforeOrder.length;
                       ii++
                     ) {
                       if (
-                        _executionObserversInBeforeOrder[ii].getBeforeID() >
+                        executionObserversInBeforeOrder[ii].getBeforeID() >
                         observer.getBeforeID()
                       ) {
-                        _executionObserversInBeforeOrder.splice(
-                          ii,
-                          0,
-                          observer,
-                        );
+                        executionObserversInBeforeOrder.splice(ii, 0, observer);
                         added = true;
                         break;
                       }
                     }
                     if (!added) {
-                      _executionObserversInBeforeOrder.push(observer);
+                      executionObserversInBeforeOrder.push(observer);
                     }
                     for (
                       var _ii = 0;
-                      _ii < _executionObserversInAfterOrder.length;
+                      _ii < executionObserversInAfterOrder.length;
                       _ii++
                     ) {
                       if (
-                        _executionObserversInAfterOrder[_ii].getAfterID() >
+                        executionObserversInAfterOrder[_ii].getAfterID() >
                         observer.getAfterID()
                       ) {
-                        _executionObserversInAfterOrder.splice(
-                          _ii,
-                          0,
-                          observer,
-                        );
+                        executionObserversInAfterOrder.splice(_ii, 0, observer);
                         return;
                       }
                     }
-                    _executionObserversInAfterOrder.push(observer);
+                    executionObserversInAfterOrder.push(observer);
                   },
 
                 catchUpOnDemandExecutionContextObservers:
@@ -17807,19 +17799,27 @@ try {
                         if (Array.isArray(response)) {
                           response.forEach(
                             function response_forEach_$0(data, idx) {
-                              copiedBatchCallbacks[idx](
-                                importDefault("sdk.safelyParseResponse")(
-                                  data && data.body,
-                                ),
-                              );
+                              var _copiedBatchCallbacks;
+                              (_copiedBatchCallbacks =
+                                copiedBatchCallbacks[idx]) == null ||
+                                _copiedBatchCallbacks.call(
+                                  copiedBatchCallbacks,
+                                  importDefault("sdk.safelyParseResponse")(
+                                    data && data.body,
+                                  ),
+                                );
                             },
                           );
                         } else {
                           copiedBatchCallbacks.forEach(
                             function copiedBatchCallbacks_forEach_$0(callback) {
-                              return callback({
-                                error: { message: "Fatal: batch call failed." },
-                              });
+                              return callback == null
+                                ? void 0
+                                : callback({
+                                    error: {
+                                      message: "Fatal: batch call failed.",
+                                    },
+                                  });
                             },
                           );
                         }
@@ -27603,7 +27603,7 @@ try {
           "debug.js") +
         '","stack":"' +
         (__fb_err.stackTrace || __fb_err.stack) +
-        '","revision":"1055640952","namespace":"FB","message":"' +
+        '","revision":"1055923191","namespace":"FB","message":"' +
         __fb_err.message +
         '"}}',
     );
